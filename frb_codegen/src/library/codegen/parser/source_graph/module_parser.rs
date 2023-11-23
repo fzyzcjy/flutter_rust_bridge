@@ -170,32 +170,30 @@ fn parse_syn_item_mod_contentless(
         &file_path_candidates
     );
 
-    Ok(
-        if let Some(file_path) = first_existing_path(&file_path_candidates) {
-            let rust_crate_dir_for_file = find_rust_crate_dir(file_path)?;
-            let source_rust_content = read_rust_file(&file_path, &rust_crate_dir_for_file)?;
-            debug!("Trying to parse {:?}", file_path);
-            let source = ModuleSource::File(syn::parse_file(&source_rust_content).unwrap());
+    if let Some(file_path) = first_existing_path(&file_path_candidates) {
+        let rust_crate_dir_for_file = find_rust_crate_dir(file_path)?;
+        let source_rust_content = read_rust_file(&file_path, &rust_crate_dir_for_file)?;
+        debug!("Trying to parse {:?}", file_path);
+        let source = ModuleSource::File(syn::parse_file(&source_rust_content).unwrap());
 
-            Some(Module::parse(ModuleInfo {
-                visibility: Visibility::from_syn(&item_mod.vis),
-                file_path: file_path.to_owned(),
-                module_path,
-                source,
-            })?)
-        } else {
-            warn!(
-                "Skipping unresolvable module {} (tried {})",
-                &ident,
-                file_path_candidates
-                    .iter()
-                    .map(|p| path_to_string(p))
-                    .collect::<anyhow::Result<Vec<_>>>()?
-                    .join(", ")
-            );
-            None
-        },
-    )
+        Ok(Some(Module::parse(ModuleInfo {
+            visibility: Visibility::from_syn(&item_mod.vis),
+            file_path: file_path.to_owned(),
+            module_path,
+            source,
+        })?))
+    } else {
+        warn!(
+            "Skipping unresolvable module {} (tried {})",
+            &ident,
+            file_path_candidates
+                .iter()
+                .map(|p| path_to_string(p))
+                .collect::<anyhow::Result<Vec<_>>>()?
+                .join(", ")
+        );
+        Ok(None)
+    }
 }
 
 fn get_module_file_path_candidates(
