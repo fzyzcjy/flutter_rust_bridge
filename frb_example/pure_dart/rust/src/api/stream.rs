@@ -41,7 +41,7 @@ pub fn func_stream_return_error_twin_normal(_sink: StreamSink<String>) -> anyhow
 }
 
 pub fn func_stream_return_panic_twin_normal(_sink: StreamSink<String>) -> anyhow::Result<()> {
-    Err(anyhow!("deliberate panic"))
+    panic!("deliberate panic")
 }
 
 #[allow(unused_variables)]
