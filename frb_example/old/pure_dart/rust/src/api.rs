@@ -107,6 +107,7 @@ pub struct MyStreamEntry {
     pub hello: String,
 }
 
+// TODO #11193
 // https://github.com/fzyzcjy/flutter_rust_bridge/issues/398 reports a compile error like this
 pub fn handle_stream_of_struct(sink: StreamSink<MyStreamEntry>) {
     // Ok(())
@@ -606,23 +607,6 @@ pub fn create_event(address: String, payload: String) {
 pub struct Log {
     pub key: u32,
     pub value: u32,
-}
-
-pub fn handle_stream_sink_at_1(key: u32, max: u32, sink: StreamSink<Log>) {
-    spawn!(|| {
-        for i in 0..max {
-            let _ = sink.add(Log { key, value: i });
-        }
-        sink.close();
-    });
-}
-
-pub fn handle_stream_sink_at_2(key: u32, sink: StreamSink<Log>, max: u32) {
-    handle_stream_sink_at_1(key, max, sink)
-}
-
-pub fn handle_stream_sink_at_3(sink: StreamSink<Log>, key: u32, max: u32) {
-    handle_stream_sink_at_1(key, max, sink)
 }
 
 pub struct SumWith {
@@ -1593,8 +1577,4 @@ pub fn throw_anyhow() -> Result<(), anyhow::Error> {
 
 pub fn panic_with_custom_result() -> Result<(), CustomError> {
     panic!("just a panic");
-}
-
-pub fn stream_sink_throw_anyhow(_sink: StreamSink<String>) -> Result<()> {
-    Err(anyhow!("anyhow error"))
 }
