@@ -5,6 +5,8 @@ import 'api/attribute.dart';
 import 'api/chrono_type.dart';
 import 'api/comment.dart';
 import 'api/dart_dynamic.dart';
+import 'api/dart_opaque.dart';
+import 'api/dart_opaque_sync.dart';
 import 'api/enumeration.dart';
 import 'api/event_listener.dart';
 import 'api/exception.dart';
@@ -29,6 +31,8 @@ import 'api/pseudo_manual/primitive_twin_sync.dart';
 import 'api/pseudo_manual/simple_twin_sync.dart';
 import 'api/pseudo_manual/structure_twin_sync.dart';
 import 'api/raw_string.dart';
+import 'api/rust_opaque.dart';
+import 'api/rust_opaque_sync.dart';
 import 'api/simple.dart';
 import 'api/stream.dart';
 import 'api/structure.dart';
@@ -150,6 +154,44 @@ abstract class RustLibApi extends BaseApi {
       {dynamic hint});
 
   Future<dynamic> returnDartDynamic({dynamic hint});
+
+  Future<String> asyncAcceptDartOpaque({required Object opaque, dynamic hint});
+
+  Future<EnumDartOpaque> createEnumDartOpaque(
+      {required Object opaque, dynamic hint});
+
+  Future<DartOpaqueNested> createNestedDartOpaque(
+      {required Object opaque1, required Object opaque2, dynamic hint});
+
+  Future<void> dropStaticDartOpaque({dynamic hint});
+
+  Future<void> getEnumDartOpaque(
+      {required EnumDartOpaque opaque, dynamic hint});
+
+  Future<void> getNestedDartOpaque(
+      {required DartOpaqueNested opaque, dynamic hint});
+
+  Future<Object> loopBack({required Object opaque, dynamic hint});
+
+  Future<ObjectArray1> loopBackArray({required Object opaque, dynamic hint});
+
+  Future<void> loopBackArrayGet({required ObjectArray1 opaque, dynamic hint});
+
+  Future<Object?> loopBackOption({required Object opaque, dynamic hint});
+
+  Future<void> loopBackOptionGet({Object? opaque, dynamic hint});
+
+  Future<List<Object>> loopBackVec({required Object opaque, dynamic hint});
+
+  Future<void> loopBackVecGet({required List<Object> opaque, dynamic hint});
+
+  Future<void> panicUnwrapDartOpaque({required Object opaque, dynamic hint});
+
+  Future<void> setStaticDartOpaque({required Object opaque, dynamic hint});
+
+  Object returnNonDroppableDartOpaque({required Object opaque, dynamic hint});
+
+  String unwrapDartOpaque({required Object opaque, dynamic hint});
 
   Future<EnumSimpleTwinNormal> funcEnumSimpleTwinNormal(
       {required EnumSimpleTwinNormal arg, dynamic hint});
@@ -579,6 +621,42 @@ abstract class RustLibApi extends BaseApi {
       {dynamic hint});
 
   Future<RawStringItemStruct> testRawStringItemStruct({dynamic hint});
+
+  Future<EnumOpaqueArray5> createArrayOpaqueEnum({dynamic hint});
+
+  Future<OpaqueNested> createNestedOpaque({dynamic hint});
+
+  Future<HideData> createOpaque({dynamic hint});
+
+  Future<HideData?> createOptionOpaque({HideData? opaque, dynamic hint});
+
+  Future<NonSendHideData> createSyncOpaque({dynamic hint});
+
+  Future<FrbOpaqueReturn> frbGeneratorTest({dynamic hint});
+
+  Future<HideDataArray2> opaqueArray({dynamic hint});
+
+  Future<void> opaqueArrayRun({required HideDataArray2 data, dynamic hint});
+
+  Future<List<HideData>> opaqueVec({dynamic hint});
+
+  Future<void> opaqueVecRun({required List<HideData> data, dynamic hint});
+
+  Future<String> runEnumOpaque({required EnumOpaque opaque, dynamic hint});
+
+  Future<void> runNestedOpaque({required OpaqueNested opaque, dynamic hint});
+
+  Future<String> runNonClone({required NonCloneData clone, dynamic hint});
+
+  Future<String> runOpaque({required HideData opaque, dynamic hint});
+
+  Future<String> runOpaqueWithDelay({required HideData opaque, dynamic hint});
+
+  Future<String> unwrapRustOpaque({required HideData opaque, dynamic hint});
+
+  Future<FrbOpaqueSyncReturn> frbSyncGeneratorTest({dynamic hint});
+
+  String syncRunOpaque({required NonSendHideData opaque, dynamic hint});
 
   Future<int> simpleAdderTwinNormal(
       {required int a, required int b, dynamic hint});
@@ -1211,6 +1289,335 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kReturnDartDynamicConstMeta => const TaskConstMeta(
         debugName: "return_dart_dynamic",
         argNames: [],
+      );
+
+  @override
+  Future<String> asyncAcceptDartOpaque({required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_async_accept_dart_opaque(port_, arg0),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kAsyncAcceptDartOpaqueConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kAsyncAcceptDartOpaqueConstMeta => const TaskConstMeta(
+        debugName: "async_accept_dart_opaque",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<EnumDartOpaque> createEnumDartOpaque(
+      {required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_create_enum_dart_opaque(port_, arg0),
+      parseSuccessData: _wire2api_enum_dart_opaque,
+      parseErrorData: null,
+      constMeta: kCreateEnumDartOpaqueConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateEnumDartOpaqueConstMeta => const TaskConstMeta(
+        debugName: "create_enum_dart_opaque",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<DartOpaqueNested> createNestedDartOpaque(
+      {required Object opaque1, required Object opaque2, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque1);
+    var arg1 = api2wire_DartOpaque(opaque2);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_create_nested_dart_opaque(port_, arg0, arg1),
+      parseSuccessData: _wire2api_dart_opaque_nested,
+      parseErrorData: null,
+      constMeta: kCreateNestedDartOpaqueConstMeta,
+      argValues: [opaque1, opaque2],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateNestedDartOpaqueConstMeta => const TaskConstMeta(
+        debugName: "create_nested_dart_opaque",
+        argNames: ["opaque1", "opaque2"],
+      );
+
+  @override
+  Future<void> dropStaticDartOpaque({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_drop_static_dart_opaque(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kDropStaticDartOpaqueConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kDropStaticDartOpaqueConstMeta => const TaskConstMeta(
+        debugName: "drop_static_dart_opaque",
+        argNames: [],
+      );
+
+  @override
+  Future<void> getEnumDartOpaque(
+      {required EnumDartOpaque opaque, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_enum_dart_opaque(opaque);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_get_enum_dart_opaque(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kGetEnumDartOpaqueConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kGetEnumDartOpaqueConstMeta => const TaskConstMeta(
+        debugName: "get_enum_dart_opaque",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<void> getNestedDartOpaque(
+      {required DartOpaqueNested opaque, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_dart_opaque_nested(opaque);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_get_nested_dart_opaque(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kGetNestedDartOpaqueConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kGetNestedDartOpaqueConstMeta => const TaskConstMeta(
+        debugName: "get_nested_dart_opaque",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<Object> loopBack({required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_loop_back(port_, arg0),
+      parseSuccessData: _wire2api_DartOpaque,
+      parseErrorData: null,
+      constMeta: kLoopBackConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kLoopBackConstMeta => const TaskConstMeta(
+        debugName: "loop_back",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<ObjectArray1> loopBackArray({required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_loop_back_array(port_, arg0),
+      parseSuccessData: _wire2api_DartOpaque_array_1,
+      parseErrorData: null,
+      constMeta: kLoopBackArrayConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kLoopBackArrayConstMeta => const TaskConstMeta(
+        debugName: "loop_back_array",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<void> loopBackArrayGet({required ObjectArray1 opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque_array_1(opaque);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_loop_back_array_get(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kLoopBackArrayGetConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kLoopBackArrayGetConstMeta => const TaskConstMeta(
+        debugName: "loop_back_array_get",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<Object?> loopBackOption({required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_loop_back_option(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_DartOpaque,
+      parseErrorData: null,
+      constMeta: kLoopBackOptionConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kLoopBackOptionConstMeta => const TaskConstMeta(
+        debugName: "loop_back_option",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<void> loopBackOptionGet({Object? opaque, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_DartOpaque(opaque);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_loop_back_option_get(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kLoopBackOptionGetConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kLoopBackOptionGetConstMeta => const TaskConstMeta(
+        debugName: "loop_back_option_get",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<List<Object>> loopBackVec({required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_loop_back_vec(port_, arg0),
+      parseSuccessData: _wire2api_list_DartOpaque,
+      parseErrorData: null,
+      constMeta: kLoopBackVecConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kLoopBackVecConstMeta => const TaskConstMeta(
+        debugName: "loop_back_vec",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<void> loopBackVecGet({required List<Object> opaque, dynamic hint}) {
+    var arg0 = api2wire_list_DartOpaque(opaque);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_loop_back_vec_get(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kLoopBackVecGetConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kLoopBackVecGetConstMeta => const TaskConstMeta(
+        debugName: "loop_back_vec_get",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<void> panicUnwrapDartOpaque({required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_panic_unwrap_dart_opaque(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kPanicUnwrapDartOpaqueConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kPanicUnwrapDartOpaqueConstMeta => const TaskConstMeta(
+        debugName: "panic_unwrap_dart_opaque",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<void> setStaticDartOpaque({required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_set_static_dart_opaque(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kSetStaticDartOpaqueConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSetStaticDartOpaqueConstMeta => const TaskConstMeta(
+        debugName: "set_static_dart_opaque",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Object returnNonDroppableDartOpaque({required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_return_non_droppable_dart_opaque(arg0),
+      parseSuccessData: _wire2api_DartOpaque,
+      parseErrorData: null,
+      constMeta: kReturnNonDroppableDartOpaqueConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kReturnNonDroppableDartOpaqueConstMeta =>
+      const TaskConstMeta(
+        debugName: "return_non_droppable_dart_opaque",
+        argNames: ["opaque"],
+      );
+
+  @override
+  String unwrapDartOpaque({required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_unwrap_dart_opaque(arg0),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kUnwrapDartOpaqueConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kUnwrapDartOpaqueConstMeta => const TaskConstMeta(
+        debugName: "unwrap_dart_opaque",
+        argNames: ["opaque"],
       );
 
   @override
@@ -4609,6 +5016,340 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<EnumOpaqueArray5> createArrayOpaqueEnum({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_create_array_opaque_enum(port_),
+      parseSuccessData: _wire2api_enum_opaque_array_5,
+      parseErrorData: null,
+      constMeta: kCreateArrayOpaqueEnumConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateArrayOpaqueEnumConstMeta => const TaskConstMeta(
+        debugName: "create_array_opaque_enum",
+        argNames: [],
+      );
+
+  @override
+  Future<OpaqueNested> createNestedOpaque({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_create_nested_opaque(port_),
+      parseSuccessData: _wire2api_opaque_nested,
+      parseErrorData: null,
+      constMeta: kCreateNestedOpaqueConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateNestedOpaqueConstMeta => const TaskConstMeta(
+        debugName: "create_nested_opaque",
+        argNames: [],
+      );
+
+  @override
+  Future<HideData> createOpaque({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_create_opaque(port_),
+      parseSuccessData: _wire2api_RustOpaque_hide_data,
+      parseErrorData: null,
+      constMeta: kCreateOpaqueConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateOpaqueConstMeta => const TaskConstMeta(
+        debugName: "create_opaque",
+        argNames: [],
+      );
+
+  @override
+  Future<HideData?> createOptionOpaque({HideData? opaque, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_RustOpaque_hide_data(opaque);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_create_option_opaque(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_RustOpaque_hide_data,
+      parseErrorData: null,
+      constMeta: kCreateOptionOpaqueConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateOptionOpaqueConstMeta => const TaskConstMeta(
+        debugName: "create_option_opaque",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<NonSendHideData> createSyncOpaque({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_create_sync_opaque(port_),
+      parseSuccessData: _wire2api_RustOpaque_non_send_hide_data,
+      parseErrorData: null,
+      constMeta: kCreateSyncOpaqueConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateSyncOpaqueConstMeta => const TaskConstMeta(
+        debugName: "create_sync_opaque",
+        argNames: [],
+      );
+
+  @override
+  Future<FrbOpaqueReturn> frbGeneratorTest({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_frb_generator_test(port_),
+      parseSuccessData: _wire2api_RustOpaque_frb_opaque_return,
+      parseErrorData: null,
+      constMeta: kFrbGeneratorTestConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFrbGeneratorTestConstMeta => const TaskConstMeta(
+        debugName: "frb_generator_test",
+        argNames: [],
+      );
+
+  @override
+  Future<HideDataArray2> opaqueArray({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_opaque_array(port_),
+      parseSuccessData: _wire2api_RustOpaque_hide_data_array_2,
+      parseErrorData: null,
+      constMeta: kOpaqueArrayConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueArrayConstMeta => const TaskConstMeta(
+        debugName: "opaque_array",
+        argNames: [],
+      );
+
+  @override
+  Future<void> opaqueArrayRun({required HideDataArray2 data, dynamic hint}) {
+    var arg0 = api2wire_RustOpaque_hide_data_array_2(data);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_opaque_array_run(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kOpaqueArrayRunConstMeta,
+      argValues: [data],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueArrayRunConstMeta => const TaskConstMeta(
+        debugName: "opaque_array_run",
+        argNames: ["data"],
+      );
+
+  @override
+  Future<List<HideData>> opaqueVec({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_opaque_vec(port_),
+      parseSuccessData: _wire2api_list_RustOpaque_hide_data,
+      parseErrorData: null,
+      constMeta: kOpaqueVecConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueVecConstMeta => const TaskConstMeta(
+        debugName: "opaque_vec",
+        argNames: [],
+      );
+
+  @override
+  Future<void> opaqueVecRun({required List<HideData> data, dynamic hint}) {
+    var arg0 = api2wire_list_RustOpaque_hide_data(data);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_opaque_vec_run(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kOpaqueVecRunConstMeta,
+      argValues: [data],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueVecRunConstMeta => const TaskConstMeta(
+        debugName: "opaque_vec_run",
+        argNames: ["data"],
+      );
+
+  @override
+  Future<String> runEnumOpaque({required EnumOpaque opaque, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_enum_opaque(opaque);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_run_enum_opaque(port_, arg0),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kRunEnumOpaqueConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunEnumOpaqueConstMeta => const TaskConstMeta(
+        debugName: "run_enum_opaque",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<void> runNestedOpaque({required OpaqueNested opaque, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_opaque_nested(opaque);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_run_nested_opaque(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRunNestedOpaqueConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunNestedOpaqueConstMeta => const TaskConstMeta(
+        debugName: "run_nested_opaque",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<String> runNonClone({required NonCloneData clone, dynamic hint}) {
+    var arg0 = api2wire_RustOpaque_non_clone_data(clone);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_run_non_clone(port_, arg0),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kRunNonCloneConstMeta,
+      argValues: [clone],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunNonCloneConstMeta => const TaskConstMeta(
+        debugName: "run_non_clone",
+        argNames: ["clone"],
+      );
+
+  @override
+  Future<String> runOpaque({required HideData opaque, dynamic hint}) {
+    var arg0 = api2wire_RustOpaque_hide_data(opaque);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_run_opaque(port_, arg0),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kRunOpaqueConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunOpaqueConstMeta => const TaskConstMeta(
+        debugName: "run_opaque",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<String> runOpaqueWithDelay({required HideData opaque, dynamic hint}) {
+    var arg0 = api2wire_RustOpaque_hide_data(opaque);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_run_opaque_with_delay(port_, arg0),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kRunOpaqueWithDelayConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunOpaqueWithDelayConstMeta => const TaskConstMeta(
+        debugName: "run_opaque_with_delay",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<String> unwrapRustOpaque({required HideData opaque, dynamic hint}) {
+    var arg0 = api2wire_RustOpaque_hide_data(opaque);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_unwrap_rust_opaque(port_, arg0),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kUnwrapRustOpaqueConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kUnwrapRustOpaqueConstMeta => const TaskConstMeta(
+        debugName: "unwrap_rust_opaque",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<FrbOpaqueSyncReturn> frbSyncGeneratorTest({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_frb_sync_generator_test(port_),
+      parseSuccessData: _wire2api_RustOpaque_frb_opaque_sync_return,
+      parseErrorData: null,
+      constMeta: kFrbSyncGeneratorTestConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFrbSyncGeneratorTestConstMeta => const TaskConstMeta(
+        debugName: "frb_sync_generator_test",
+        argNames: [],
+      );
+
+  @override
+  String syncRunOpaque({required NonSendHideData opaque, dynamic hint}) {
+    var arg0 = api2wire_RustOpaque_non_send_hide_data(opaque);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_sync_run_opaque(arg0),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kSyncRunOpaqueConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSyncRunOpaqueConstMeta => const TaskConstMeta(
+        debugName: "sync_run_opaque",
+        argNames: ["opaque"],
+      );
+
+  @override
   Future<int> simpleAdderTwinNormal(
       {required int a, required int b, dynamic hint}) {
     var arg0 = api2wire_i_32(a);
@@ -4998,6 +5739,50 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         debugName: "handle_uuids",
         argNames: ["ids"],
       );
+
+  DropFnType get dropOpaqueMutexHideData => wire.drop_opaque_MutexHideData;
+  ShareFnType get shareOpaqueMutexHideData => wire.share_opaque_MutexHideData;
+  OpaqueTypeFinalizer get MutexHideDataFinalizer => wire.MutexHideDataFinalizer;
+
+  DropFnType get dropOpaqueRwLockHideData => wire.drop_opaque_RwLockHideData;
+  ShareFnType get shareOpaqueRwLockHideData => wire.share_opaque_RwLockHideData;
+  OpaqueTypeFinalizer get RwLockHideDataFinalizer =>
+      wire.RwLockHideDataFinalizer;
+
+  DropFnType get dropOpaqueDartDebug => wire.drop_opaque_DartDebug;
+  ShareFnType get shareOpaqueDartDebug => wire.share_opaque_DartDebug;
+  OpaqueTypeFinalizer get DartDebugFinalizer => wire.DartDebugFinalizer;
+
+  DropFnType get dropOpaqueFrbOpaqueReturn => wire.drop_opaque_FrbOpaqueReturn;
+  ShareFnType get shareOpaqueFrbOpaqueReturn =>
+      wire.share_opaque_FrbOpaqueReturn;
+  OpaqueTypeFinalizer get FrbOpaqueReturnFinalizer =>
+      wire.FrbOpaqueReturnFinalizer;
+
+  DropFnType get dropOpaqueFrbOpaqueSyncReturn =>
+      wire.drop_opaque_FrbOpaqueSyncReturn;
+  ShareFnType get shareOpaqueFrbOpaqueSyncReturn =>
+      wire.share_opaque_FrbOpaqueSyncReturn;
+  OpaqueTypeFinalizer get FrbOpaqueSyncReturnFinalizer =>
+      wire.FrbOpaqueSyncReturnFinalizer;
+
+  DropFnType get dropOpaqueHideData => wire.drop_opaque_HideData;
+  ShareFnType get shareOpaqueHideData => wire.share_opaque_HideData;
+  OpaqueTypeFinalizer get HideDataFinalizer => wire.HideDataFinalizer;
+
+  DropFnType get dropOpaqueint => wire.drop_opaque_int;
+  ShareFnType get shareOpaqueint => wire.share_opaque_int;
+  OpaqueTypeFinalizer get intFinalizer => wire.intFinalizer;
+
+  DropFnType get dropOpaqueNonCloneData => wire.drop_opaque_NonCloneData;
+  ShareFnType get shareOpaqueNonCloneData => wire.share_opaque_NonCloneData;
+  OpaqueTypeFinalizer get NonCloneDataFinalizer => wire.NonCloneDataFinalizer;
+
+  DropFnType get dropOpaqueNonSendHideData => wire.drop_opaque_NonSendHideData;
+  ShareFnType get shareOpaqueNonSendHideData =>
+      wire.share_opaque_NonSendHideData;
+  OpaqueTypeFinalizer get NonSendHideDataFinalizer =>
+      wire.NonSendHideDataFinalizer;
 }
 
 // Section: impl_wire2api
@@ -5028,6 +5813,52 @@ DateTime _wire2api_Chrono_Naive(dynamic raw) {
 
 DateTime _wire2api_Chrono_Utc(dynamic raw) {
   return wire2apiTimestamp(ts: _wire2api_i_64(raw).toInt(), isUtc: true);
+}
+
+Object _wire2api_DartOpaque(dynamic raw) {
+  return wire.get_dart_object(raw);
+}
+
+ObjectArray1 _wire2api_DartOpaque_array_1(dynamic raw) {
+  return ObjectArray1(
+      (raw as List<dynamic>).map(_wire2api_DartOpaque).toList());
+}
+
+MutexHideData _wire2api_RustOpaque_MutexHideData(dynamic raw) {
+  return MutexHideData.fromRaw(raw[0], raw[1]);
+}
+
+RwLockHideData _wire2api_RustOpaque_RwLockHideData(dynamic raw) {
+  return RwLockHideData.fromRaw(raw[0], raw[1]);
+}
+
+DartDebug _wire2api_RustOpaque_box_dynDartDebug(dynamic raw) {
+  return DartDebug.fromRaw(raw[0], raw[1]);
+}
+
+FrbOpaqueReturn _wire2api_RustOpaque_frb_opaque_return(dynamic raw) {
+  return FrbOpaqueReturn.fromRaw(raw[0], raw[1]);
+}
+
+FrbOpaqueSyncReturn _wire2api_RustOpaque_frb_opaque_sync_return(dynamic raw) {
+  return FrbOpaqueSyncReturn.fromRaw(raw[0], raw[1]);
+}
+
+HideData _wire2api_RustOpaque_hide_data(dynamic raw) {
+  return HideData.fromRaw(raw[0], raw[1]);
+}
+
+HideDataArray2 _wire2api_RustOpaque_hide_data_array_2(dynamic raw) {
+  return HideDataArray2(
+      (raw as List<dynamic>).map(_wire2api_RustOpaque_hide_data).toList());
+}
+
+int _wire2api_RustOpaque_i_32(dynamic raw) {
+  return int.fromRaw(raw[0], raw[1]);
+}
+
+NonSendHideData _wire2api_RustOpaque_non_send_hide_data(dynamic raw) {
+  return NonSendHideData.fromRaw(raw[0], raw[1]);
 }
 
 String _wire2api_String(dynamic raw) {
@@ -5202,6 +6033,14 @@ DateTime _wire2api_box_autoadd_Chrono_Naive(dynamic raw) {
 
 DateTime _wire2api_box_autoadd_Chrono_Utc(dynamic raw) {
   return _wire2api_Chrono_Utc(raw);
+}
+
+Object _wire2api_box_autoadd_DartOpaque(dynamic raw) {
+  return _wire2api_DartOpaque(raw);
+}
+
+HideData _wire2api_box_autoadd_RustOpaque_hide_data(dynamic raw) {
+  return _wire2api_RustOpaque_hide_data(raw);
 }
 
 A _wire2api_box_autoadd_a(dynamic raw) {
@@ -5473,6 +6312,16 @@ CustomStructErrorTwinSync _wire2api_custom_struct_error_twin_sync(dynamic raw) {
   );
 }
 
+DartOpaqueNested _wire2api_dart_opaque_nested(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2)
+    throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  return DartOpaqueNested(
+    first: _wire2api_DartOpaque(arr[0]),
+    second: _wire2api_DartOpaque(arr[1]),
+  );
+}
+
 dynamic _wire2api_dartabi(dynamic raw) {
   return raw;
 }
@@ -5500,6 +6349,53 @@ Element _wire2api_element(dynamic raw) {
     attributes: _wire2api_opt_list_attribute(arr[2]),
     children: _wire2api_opt_list_element(arr[3]),
   );
+}
+
+EnumDartOpaque _wire2api_enum_dart_opaque(dynamic raw) {
+  switch (raw[0]) {
+    case 0:
+      return EnumDartOpaque_Primitive(
+        _wire2api_i_32(raw[1]),
+      );
+    case 1:
+      return EnumDartOpaque_Opaque(
+        _wire2api_DartOpaque(raw[1]),
+      );
+    default:
+      throw Exception("unreachable");
+  }
+}
+
+EnumOpaque _wire2api_enum_opaque(dynamic raw) {
+  switch (raw[0]) {
+    case 0:
+      return EnumOpaque_Struct(
+        _wire2api_RustOpaque_hide_data(raw[1]),
+      );
+    case 1:
+      return EnumOpaque_Primitive(
+        _wire2api_RustOpaque_i_32(raw[1]),
+      );
+    case 2:
+      return EnumOpaque_TraitObj(
+        _wire2api_RustOpaque_box_dynDartDebug(raw[1]),
+      );
+    case 3:
+      return EnumOpaque_Mutex(
+        _wire2api_RustOpaque_MutexHideData(raw[1]),
+      );
+    case 4:
+      return EnumOpaque_RwLock(
+        _wire2api_RustOpaque_RwLockHideData(raw[1]),
+      );
+    default:
+      throw Exception("unreachable");
+  }
+}
+
+EnumOpaqueArray5 _wire2api_enum_opaque_array_5(dynamic raw) {
+  return EnumOpaqueArray5(
+      (raw as List<dynamic>).map(_wire2api_enum_opaque).toList());
 }
 
 EnumSimpleTwinNormal _wire2api_enum_simple_twin_normal(dynamic raw) {
@@ -5689,6 +6585,14 @@ int _wire2api_i_8(dynamic raw) {
   return raw as int;
 }
 
+List<Object> _wire2api_list_DartOpaque(dynamic raw) {
+  return (raw as List<dynamic>).map(_wire2api_DartOpaque).toList();
+}
+
+List<HideData> _wire2api_list_RustOpaque_hide_data(dynamic raw) {
+  return (raw as List<dynamic>).map(_wire2api_RustOpaque_hide_data).toList();
+}
+
 List<ApplicationEnvVar> _wire2api_list_application_env_var(dynamic raw) {
   return (raw as List<dynamic>).map(_wire2api_application_env_var).toList();
 }
@@ -5707,6 +6611,10 @@ List<bool> _wire2api_list_bool(dynamic raw) {
 
 List<Element> _wire2api_list_element(dynamic raw) {
   return (raw as List<dynamic>).map(_wire2api_element).toList();
+}
+
+List<EnumOpaque> _wire2api_list_enum_opaque(dynamic raw) {
+  return (raw as List<dynamic>).map(_wire2api_enum_opaque).toList();
 }
 
 List<MyEnum> _wire2api_list_my_enum(dynamic raw) {
@@ -5992,6 +6900,16 @@ OldSimpleStruct _wire2api_old_simple_struct(dynamic raw) {
   );
 }
 
+OpaqueNested _wire2api_opaque_nested(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2)
+    throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  return OpaqueNested(
+    first: _wire2api_RustOpaque_hide_data(arr[0]),
+    second: _wire2api_RustOpaque_hide_data(arr[1]),
+  );
+}
+
 String? _wire2api_opt_String(dynamic raw) {
   return raw == null ? null : _wire2api_String(raw);
 }
@@ -6010,6 +6928,14 @@ DateTime? _wire2api_opt_box_autoadd_Chrono_Naive(dynamic raw) {
 
 DateTime? _wire2api_opt_box_autoadd_Chrono_Utc(dynamic raw) {
   return raw == null ? null : _wire2api_box_autoadd_Chrono_Utc(raw);
+}
+
+Object? _wire2api_opt_box_autoadd_DartOpaque(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_DartOpaque(raw);
+}
+
+HideData? _wire2api_opt_box_autoadd_RustOpaque_hide_data(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_RustOpaque_hide_data(raw);
 }
 
 ApplicationEnv? _wire2api_opt_box_autoadd_application_env(dynamic raw) {

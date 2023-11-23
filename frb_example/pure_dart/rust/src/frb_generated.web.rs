@@ -27,6 +27,12 @@ impl Wire2Api<Vec<chrono::NaiveDateTime>> for Box<[i64]> {
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
+impl Wire2Api<DartOpaque> for JsValue {
+    fn wire2api(self) -> DartOpaque {
+        let arr = self.dyn_into::<JsArray>().unwrap();
+        unsafe { DartOpaque::new(arr.get(0), arr.get(1)) }
+    }
+}
 impl Wire2Api<String> for String {
     fn wire2api(self) -> String {
         self
@@ -285,12 +291,50 @@ impl Wire2Api<Customized> for JsValue {
         }
     }
 }
+impl Wire2Api<DartOpaqueNested> for JsValue {
+    fn wire2api(self) -> DartOpaqueNested {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        DartOpaqueNested {
+            first: self_.get(0).wire2api(),
+            second: self_.get(1).wire2api(),
+        }
+    }
+}
 impl Wire2Api<Distance> for JsValue {
     fn wire2api(self) -> Distance {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => Distance::Unknown,
             1 => Distance::Map(self_.get(1).wire2api()),
+            _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<EnumDartOpaque> for JsValue {
+    fn wire2api(self) -> EnumDartOpaque {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => EnumDartOpaque::Primitive(self_.get(1).wire2api()),
+            1 => EnumDartOpaque::Opaque(self_.get(1).wire2api()),
+            _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<EnumOpaque> for JsValue {
+    fn wire2api(self) -> EnumOpaque {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => EnumOpaque::Struct(self_.get(1).wire2api()),
+            1 => EnumOpaque::Primitive(self_.get(1).wire2api()),
+            2 => EnumOpaque::TraitObj(self_.get(1).wire2api()),
+            3 => EnumOpaque::Mutex(self_.get(1).wire2api()),
+            4 => EnumOpaque::RwLock(self_.get(1).wire2api()),
             _ => unreachable!(),
         }
     }
@@ -465,6 +509,24 @@ impl Wire2Api<[i32; 2]> for Box<[i32]> {
     fn wire2api(self) -> [i32; 2] {
         let vec: Vec<i32> = self.wire2api();
         support::from_vec_to_array(vec)
+    }
+}
+impl Wire2Api<Vec<DartOpaque>> for JsValue {
+    fn wire2api(self) -> Vec<DartOpaque> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
+impl Wire2Api<Vec<RustOpaque<HideData>>> for JsValue {
+    fn wire2api(self) -> Vec<RustOpaque<HideData>> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
     }
 }
 impl Wire2Api<Vec<ApplicationEnvVar>> for JsValue {
@@ -768,6 +830,21 @@ impl Wire2Api<Numbers> for JsValue {
             self_.length()
         );
         Numbers(self_.get(0).wire2api())
+    }
+}
+impl Wire2Api<OpaqueNested> for JsValue {
+    fn wire2api(self) -> OpaqueNested {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        OpaqueNested {
+            first: self_.get(0).wire2api(),
+            second: self_.get(1).wire2api(),
+        }
     }
 }
 impl Wire2Api<Option<String>> for Option<String> {
@@ -1123,6 +1200,88 @@ impl Wire2Api<Vec<chrono::NaiveDateTime>> for JsValue {
 impl Wire2Api<chrono::DateTime<chrono::Utc>> for JsValue {
     fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
         Wire2Api::<i64>::wire2api(self).wire2api()
+    }
+}
+impl Wire2Api<[DartOpaque; 1]> for JsValue {
+    fn wire2api(self) -> [DartOpaque; 1] {
+        let vec: Vec<DartOpaque> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
+impl Wire2Api<RustOpaque<Mutex<HideData>>> for JsValue {
+    fn wire2api(self) -> RustOpaque<Mutex<HideData>> {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+
+        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl Wire2Api<RustOpaque<RwLock<HideData>>> for JsValue {
+    fn wire2api(self) -> RustOpaque<RwLock<HideData>> {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+
+        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl Wire2Api<RustOpaque<Box<dyn DartDebug>>> for JsValue {
+    fn wire2api(self) -> RustOpaque<Box<dyn DartDebug>> {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+
+        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl Wire2Api<RustOpaque<HideData>> for JsValue {
+    fn wire2api(self) -> RustOpaque<HideData> {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+
+        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl Wire2Api<[RustOpaque<HideData>; 2]> for JsValue {
+    fn wire2api(self) -> [RustOpaque<HideData>; 2] {
+        let vec: Vec<RustOpaque<HideData>> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
+impl Wire2Api<RustOpaque<i32>> for JsValue {
+    fn wire2api(self) -> RustOpaque<i32> {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+
+        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl Wire2Api<RustOpaque<NonCloneData>> for JsValue {
+    fn wire2api(self) -> RustOpaque<NonCloneData> {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+
+        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl Wire2Api<RustOpaque<NonSendHideData>> for JsValue {
+    fn wire2api(self) -> RustOpaque<NonSendHideData> {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+
+        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
     }
 }
 impl Wire2Api<String> for JsValue {
@@ -1544,6 +1703,91 @@ pub fn wire_function_with_comments_triple_slash_single_line_twin_normal(port_: M
 #[wasm_bindgen]
 pub fn wire_return_dart_dynamic(port_: MessagePort) {
     wire_return_dart_dynamic_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_async_accept_dart_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_async_accept_dart_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_create_enum_dart_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_create_enum_dart_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_create_nested_dart_opaque(port_: MessagePort, opaque1: JsValue, opaque2: JsValue) {
+    wire_create_nested_dart_opaque_impl(port_, opaque1, opaque2)
+}
+
+#[wasm_bindgen]
+pub fn wire_drop_static_dart_opaque(port_: MessagePort) {
+    wire_drop_static_dart_opaque_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_get_enum_dart_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_get_enum_dart_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_get_nested_dart_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_get_nested_dart_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_loop_back(port_: MessagePort, opaque: JsValue) {
+    wire_loop_back_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_loop_back_array(port_: MessagePort, opaque: JsValue) {
+    wire_loop_back_array_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_loop_back_array_get(port_: MessagePort, opaque: JsValue) {
+    wire_loop_back_array_get_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_loop_back_option(port_: MessagePort, opaque: JsValue) {
+    wire_loop_back_option_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_loop_back_option_get(port_: MessagePort, opaque: JsValue) {
+    wire_loop_back_option_get_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_loop_back_vec(port_: MessagePort, opaque: JsValue) {
+    wire_loop_back_vec_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_loop_back_vec_get(port_: MessagePort, opaque: JsValue) {
+    wire_loop_back_vec_get_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_panic_unwrap_dart_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_panic_unwrap_dart_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_set_static_dart_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_set_static_dart_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_return_non_droppable_dart_opaque(opaque: JsValue) -> support::WireSyncReturn {
+    wire_return_non_droppable_dart_opaque_impl(opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_unwrap_dart_opaque(opaque: JsValue) -> support::WireSyncReturn {
+    wire_unwrap_dart_opaque_impl(opaque)
 }
 
 #[wasm_bindgen]
@@ -2387,6 +2631,96 @@ pub fn wire_test_raw_string_item_struct(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_create_array_opaque_enum(port_: MessagePort) {
+    wire_create_array_opaque_enum_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_create_nested_opaque(port_: MessagePort) {
+    wire_create_nested_opaque_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_create_opaque(port_: MessagePort) {
+    wire_create_opaque_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_create_option_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_create_option_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_create_sync_opaque(port_: MessagePort) {
+    wire_create_sync_opaque_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_frb_generator_test(port_: MessagePort) {
+    wire_frb_generator_test_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_opaque_array(port_: MessagePort) {
+    wire_opaque_array_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_opaque_array_run(port_: MessagePort, data: JsValue) {
+    wire_opaque_array_run_impl(port_, data)
+}
+
+#[wasm_bindgen]
+pub fn wire_opaque_vec(port_: MessagePort) {
+    wire_opaque_vec_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_opaque_vec_run(port_: MessagePort, data: JsValue) {
+    wire_opaque_vec_run_impl(port_, data)
+}
+
+#[wasm_bindgen]
+pub fn wire_run_enum_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_run_enum_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_run_nested_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_run_nested_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_run_non_clone(port_: MessagePort, clone: JsValue) {
+    wire_run_non_clone_impl(port_, clone)
+}
+
+#[wasm_bindgen]
+pub fn wire_run_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_run_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_run_opaque_with_delay(port_: MessagePort, opaque: JsValue) {
+    wire_run_opaque_with_delay_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_unwrap_rust_opaque(port_: MessagePort, opaque: JsValue) {
+    wire_unwrap_rust_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_frb_sync_generator_test(port_: MessagePort) {
+    wire_frb_sync_generator_test_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_sync_run_opaque(opaque: JsValue) -> support::WireSyncReturn {
+    wire_sync_run_opaque_impl(opaque)
+}
+
+#[wasm_bindgen]
 pub fn wire_simple_adder_twin_normal(port_: MessagePort, a: i32, b: i32) {
     wire_simple_adder_twin_normal_impl(port_, a, b)
 }
@@ -2479,4 +2813,124 @@ pub fn wire_handle_uuid(port_: MessagePort, id: Box<[u8]>) {
 #[wasm_bindgen]
 pub fn wire_handle_uuids(port_: MessagePort, ids: Box<[u8]>) {
     wire_handle_uuids_impl(port_, ids)
+}
+
+#[wasm_bindgen]
+pub fn drop_opaque_RustOpaque_MutexHideData(ptr: *const c_void) {
+    unsafe {
+        Arc::<Mutex<HideData>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_RustOpaque_MutexHideData(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<Mutex<HideData>>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[wasm_bindgen]
+pub fn drop_opaque_RustOpaque_RwLockHideData(ptr: *const c_void) {
+    unsafe {
+        Arc::<RwLock<HideData>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_RustOpaque_RwLockHideData(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<RwLock<HideData>>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[wasm_bindgen]
+pub fn drop_opaque_RustOpaque_box_dynDartDebug(ptr: *const c_void) {
+    unsafe {
+        Arc::<Box<dyn DartDebug>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_RustOpaque_box_dynDartDebug(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<Box<dyn DartDebug>>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[wasm_bindgen]
+pub fn drop_opaque_RustOpaque_frb_opaque_return(ptr: *const c_void) {
+    unsafe {
+        Arc::<FrbOpaqueReturn>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_RustOpaque_frb_opaque_return(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<FrbOpaqueReturn>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[wasm_bindgen]
+pub fn drop_opaque_RustOpaque_frb_opaque_sync_return(ptr: *const c_void) {
+    unsafe {
+        Arc::<FrbOpaqueSyncReturn>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_RustOpaque_frb_opaque_sync_return(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<FrbOpaqueSyncReturn>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[wasm_bindgen]
+pub fn drop_opaque_RustOpaque_hide_data(ptr: *const c_void) {
+    unsafe {
+        Arc::<HideData>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_RustOpaque_hide_data(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<HideData>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[wasm_bindgen]
+pub fn drop_opaque_RustOpaque_i_32(ptr: *const c_void) {
+    unsafe {
+        Arc::<i32>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_RustOpaque_i_32(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<i32>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[wasm_bindgen]
+pub fn drop_opaque_RustOpaque_non_send_hide_data(ptr: *const c_void) {
+    unsafe {
+        Arc::<NonSendHideData>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_RustOpaque_non_send_hide_data(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<NonSendHideData>::increment_strong_count(ptr as _);
+        ptr
+    }
 }

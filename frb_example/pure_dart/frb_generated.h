@@ -65,6 +65,39 @@ typedef struct wire_struct_with_comments_twin_normal {
   int32_t field_with_comments;
 } wire_struct_with_comments_twin_normal;
 
+typedef struct wire_DartOpaque {
+  int64_t port;
+  uintptr_t handle;
+} wire_DartOpaque;
+
+typedef struct wire_EnumDartOpaque_Primitive {
+  int32_t field0;
+} wire_EnumDartOpaque_Primitive;
+
+typedef struct wire_EnumDartOpaque_Opaque {
+  struct wire_DartOpaque field0;
+} wire_EnumDartOpaque_Opaque;
+
+typedef union EnumDartOpaqueKind {
+  struct wire_EnumDartOpaque_Primitive *Primitive;
+  struct wire_EnumDartOpaque_Opaque *Opaque;
+} EnumDartOpaqueKind;
+
+typedef struct wire_enum_dart_opaque {
+  int32_t tag;
+  union EnumDartOpaqueKind *kind;
+} wire_enum_dart_opaque;
+
+typedef struct wire_dart_opaque_nested {
+  struct wire_DartOpaque first;
+  struct wire_DartOpaque second;
+} wire_dart_opaque_nested;
+
+typedef struct wire_list_DartOpaque {
+  struct wire_DartOpaque *ptr;
+  int32_t len;
+} wire_list_DartOpaque;
+
 typedef struct wire_EnumWithItemMixedTwinNormal_A {
 
 } wire_EnumWithItemMixedTwinNormal_A;
@@ -579,6 +612,77 @@ typedef struct wire_tuple_struct_with_two_field_twin_sync {
   int32_t field1;
 } wire_tuple_struct_with_two_field_twin_sync;
 
+typedef struct wire_RustOpaque_hide_data {
+  const void *ptr;
+} wire_RustOpaque_hide_data;
+
+typedef struct wire_list_RustOpaque_hide_data {
+  struct wire_RustOpaque_hide_data *ptr;
+  int32_t len;
+} wire_list_RustOpaque_hide_data;
+
+typedef struct wire_EnumOpaque_Struct {
+  struct wire_RustOpaque_hide_data field0;
+} wire_EnumOpaque_Struct;
+
+typedef struct wire_RustOpaque_i_32 {
+  const void *ptr;
+} wire_RustOpaque_i_32;
+
+typedef struct wire_EnumOpaque_Primitive {
+  struct wire_RustOpaque_i_32 field0;
+} wire_EnumOpaque_Primitive;
+
+typedef struct wire_RustOpaque_box_dynDartDebug {
+  const void *ptr;
+} wire_RustOpaque_box_dynDartDebug;
+
+typedef struct wire_EnumOpaque_TraitObj {
+  struct wire_RustOpaque_box_dynDartDebug field0;
+} wire_EnumOpaque_TraitObj;
+
+typedef struct wire_RustOpaque_MutexHideData {
+  const void *ptr;
+} wire_RustOpaque_MutexHideData;
+
+typedef struct wire_EnumOpaque_Mutex {
+  struct wire_RustOpaque_MutexHideData field0;
+} wire_EnumOpaque_Mutex;
+
+typedef struct wire_RustOpaque_RwLockHideData {
+  const void *ptr;
+} wire_RustOpaque_RwLockHideData;
+
+typedef struct wire_EnumOpaque_RwLock {
+  struct wire_RustOpaque_RwLockHideData field0;
+} wire_EnumOpaque_RwLock;
+
+typedef union EnumOpaqueKind {
+  struct wire_EnumOpaque_Struct *Struct;
+  struct wire_EnumOpaque_Primitive *Primitive;
+  struct wire_EnumOpaque_TraitObj *TraitObj;
+  struct wire_EnumOpaque_Mutex *Mutex;
+  struct wire_EnumOpaque_RwLock *RwLock;
+} EnumOpaqueKind;
+
+typedef struct wire_enum_opaque {
+  int32_t tag;
+  union EnumOpaqueKind *kind;
+} wire_enum_opaque;
+
+typedef struct wire_opaque_nested {
+  struct wire_RustOpaque_hide_data first;
+  struct wire_RustOpaque_hide_data second;
+} wire_opaque_nested;
+
+typedef struct wire_RustOpaque_non_clone_data {
+  const void *ptr;
+} wire_RustOpaque_non_clone_data;
+
+typedef struct wire_RustOpaque_non_send_hide_data {
+  const void *ptr;
+} wire_RustOpaque_non_send_hide_data;
+
 typedef struct wire_struct_with_one_field_twin_normal {
   int32_t a;
 } wire_struct_with_one_field_twin_normal;
@@ -674,6 +778,42 @@ void wire_function_with_comments_triple_slash_multi_line_twin_normal(int64_t por
 void wire_function_with_comments_triple_slash_single_line_twin_normal(int64_t port_);
 
 void wire_return_dart_dynamic(int64_t port_);
+
+void wire_async_accept_dart_opaque(int64_t port_, struct wire_DartOpaque opaque);
+
+void wire_create_enum_dart_opaque(int64_t port_, struct wire_DartOpaque opaque);
+
+void wire_create_nested_dart_opaque(int64_t port_,
+                                    struct wire_DartOpaque opaque1,
+                                    struct wire_DartOpaque opaque2);
+
+void wire_drop_static_dart_opaque(int64_t port_);
+
+void wire_get_enum_dart_opaque(int64_t port_, struct wire_enum_dart_opaque *opaque);
+
+void wire_get_nested_dart_opaque(int64_t port_, struct wire_dart_opaque_nested *opaque);
+
+void wire_loop_back(int64_t port_, struct wire_DartOpaque opaque);
+
+void wire_loop_back_array(int64_t port_, struct wire_DartOpaque opaque);
+
+void wire_loop_back_array_get(int64_t port_, struct wire_list_DartOpaque *opaque);
+
+void wire_loop_back_option(int64_t port_, struct wire_DartOpaque opaque);
+
+void wire_loop_back_option_get(int64_t port_, struct wire_DartOpaque *opaque);
+
+void wire_loop_back_vec(int64_t port_, struct wire_DartOpaque opaque);
+
+void wire_loop_back_vec_get(int64_t port_, struct wire_list_DartOpaque *opaque);
+
+void wire_panic_unwrap_dart_opaque(int64_t port_, struct wire_DartOpaque opaque);
+
+void wire_set_static_dart_opaque(int64_t port_, struct wire_DartOpaque opaque);
+
+WireSyncReturn wire_return_non_droppable_dart_opaque(struct wire_DartOpaque opaque);
+
+WireSyncReturn wire_unwrap_dart_opaque(struct wire_DartOpaque opaque);
 
 void wire_func_enum_simple_twin_normal(int64_t port_, int32_t arg);
 
@@ -1033,6 +1173,42 @@ void wire_test_more_than_just_one_raw_string_struct(int64_t port_);
 
 void wire_test_raw_string_item_struct(int64_t port_);
 
+void wire_create_array_opaque_enum(int64_t port_);
+
+void wire_create_nested_opaque(int64_t port_);
+
+void wire_create_opaque(int64_t port_);
+
+void wire_create_option_opaque(int64_t port_, struct wire_RustOpaque_hide_data *opaque);
+
+void wire_create_sync_opaque(int64_t port_);
+
+void wire_frb_generator_test(int64_t port_);
+
+void wire_opaque_array(int64_t port_);
+
+void wire_opaque_array_run(int64_t port_, struct wire_list_RustOpaque_hide_data *data);
+
+void wire_opaque_vec(int64_t port_);
+
+void wire_opaque_vec_run(int64_t port_, struct wire_list_RustOpaque_hide_data *data);
+
+void wire_run_enum_opaque(int64_t port_, struct wire_enum_opaque *opaque);
+
+void wire_run_nested_opaque(int64_t port_, struct wire_opaque_nested *opaque);
+
+void wire_run_non_clone(int64_t port_, struct wire_RustOpaque_non_clone_data clone);
+
+void wire_run_opaque(int64_t port_, struct wire_RustOpaque_hide_data opaque);
+
+void wire_run_opaque_with_delay(int64_t port_, struct wire_RustOpaque_hide_data opaque);
+
+void wire_unwrap_rust_opaque(int64_t port_, struct wire_RustOpaque_hide_data opaque);
+
+void wire_frb_sync_generator_test(int64_t port_);
+
+WireSyncReturn wire_sync_run_opaque(struct wire_RustOpaque_non_send_hide_data opaque);
+
 void wire_simple_adder_twin_normal(int64_t port_, int32_t a, int32_t b);
 
 void wire_func_stream_realistic_twin_normal(int64_t port_, struct wire_list_prim_u_8 *arg);
@@ -1076,11 +1252,31 @@ void wire_handle_uuid(int64_t port_, struct wire_list_prim_u_8 *id);
 
 void wire_handle_uuids(int64_t port_, struct wire_list_prim_u_8 *ids);
 
+struct wire_DartOpaque new_DartOpaque(void);
+
+struct wire_RustOpaque_MutexHideData new_RustOpaque_MutexHideData(void);
+
+struct wire_RustOpaque_RwLockHideData new_RustOpaque_RwLockHideData(void);
+
+struct wire_RustOpaque_box_dynDartDebug new_RustOpaque_box_dynDartDebug(void);
+
+struct wire_RustOpaque_hide_data new_RustOpaque_hide_data(void);
+
+struct wire_RustOpaque_i_32 new_RustOpaque_i_32(void);
+
+struct wire_RustOpaque_non_clone_data new_RustOpaque_non_clone_data(void);
+
+struct wire_RustOpaque_non_send_hide_data new_RustOpaque_non_send_hide_data(void);
+
 struct wire_StringList *new_StringList(int32_t len);
 
 struct wire_application_env *new_box_application_env(void);
 
 int64_t *new_box_autoadd_Chrono_Utc(int64_t value);
+
+struct wire_DartOpaque *new_box_autoadd_DartOpaque(void);
+
+struct wire_RustOpaque_hide_data *new_box_autoadd_RustOpaque_hide_data(void);
 
 struct wire_a *new_box_autoadd_a(void);
 
@@ -1113,6 +1309,12 @@ struct wire_custom_struct_error_twin_normal *new_box_autoadd_custom_struct_error
 struct wire_custom_struct_error_twin_sync *new_box_autoadd_custom_struct_error_twin_sync(void);
 
 struct wire_customized *new_box_autoadd_customized(void);
+
+struct wire_dart_opaque_nested *new_box_autoadd_dart_opaque_nested(void);
+
+struct wire_enum_dart_opaque *new_box_autoadd_enum_dart_opaque(void);
+
+struct wire_enum_opaque *new_box_autoadd_enum_opaque(void);
 
 struct wire_enum_with_item_mixed_twin_normal *new_box_autoadd_enum_with_item_mixed_twin_normal(void);
 
@@ -1165,6 +1367,8 @@ struct wire_new_type_int *new_box_autoadd_new_type_int(void);
 struct wire_note *new_box_autoadd_note(void);
 
 struct wire_numbers *new_box_autoadd_numbers(void);
+
+struct wire_opaque_nested *new_box_autoadd_opaque_nested(void);
 
 struct wire_opt_vecs *new_box_autoadd_opt_vecs(void);
 
@@ -1236,6 +1440,10 @@ uint8_t *new_box_u_8(uint8_t value);
 
 int32_t *new_box_weekdays(int32_t value);
 
+struct wire_list_DartOpaque *new_list_DartOpaque(int32_t len);
+
+struct wire_list_RustOpaque_hide_data *new_list_RustOpaque_hide_data(int32_t len);
+
 struct wire_list_application_env_var *new_list_application_env_var(int32_t len);
 
 struct wire_list_attribute *new_list_attribute(int32_t len);
@@ -1282,6 +1490,38 @@ struct wire_list_test_id *new_list_test_id(int32_t len);
 
 struct wire_list_weekdays *new_list_weekdays(int32_t len);
 
+void drop_opaque_RustOpaque_MutexHideData(const void *ptr);
+
+const void *share_opaque_RustOpaque_MutexHideData(const void *ptr);
+
+void drop_opaque_RustOpaque_RwLockHideData(const void *ptr);
+
+const void *share_opaque_RustOpaque_RwLockHideData(const void *ptr);
+
+void drop_opaque_RustOpaque_box_dynDartDebug(const void *ptr);
+
+const void *share_opaque_RustOpaque_box_dynDartDebug(const void *ptr);
+
+void drop_opaque_RustOpaque_frb_opaque_return(const void *ptr);
+
+const void *share_opaque_RustOpaque_frb_opaque_return(const void *ptr);
+
+void drop_opaque_RustOpaque_frb_opaque_sync_return(const void *ptr);
+
+const void *share_opaque_RustOpaque_frb_opaque_sync_return(const void *ptr);
+
+void drop_opaque_RustOpaque_hide_data(const void *ptr);
+
+const void *share_opaque_RustOpaque_hide_data(const void *ptr);
+
+void drop_opaque_RustOpaque_i_32(const void *ptr);
+
+const void *share_opaque_RustOpaque_i_32(const void *ptr);
+
+void drop_opaque_RustOpaque_non_send_hide_data(const void *ptr);
+
+const void *share_opaque_RustOpaque_non_send_hide_data(const void *ptr);
+
 union AbcKind *inflate_Abc_A(void);
 
 union AbcKind *inflate_Abc_B(void);
@@ -1307,6 +1547,20 @@ union CustomNestedErrorOuterTwinSyncKind *inflate_CustomNestedErrorOuterTwinSync
 union CustomNestedErrorOuterTwinSyncKind *inflate_CustomNestedErrorOuterTwinSync_Two(void);
 
 union DistanceKind *inflate_Distance_Map(void);
+
+union EnumDartOpaqueKind *inflate_EnumDartOpaque_Primitive(void);
+
+union EnumDartOpaqueKind *inflate_EnumDartOpaque_Opaque(void);
+
+union EnumOpaqueKind *inflate_EnumOpaque_Struct(void);
+
+union EnumOpaqueKind *inflate_EnumOpaque_Primitive(void);
+
+union EnumOpaqueKind *inflate_EnumOpaque_TraitObj(void);
+
+union EnumOpaqueKind *inflate_EnumOpaque_Mutex(void);
+
+union EnumOpaqueKind *inflate_EnumOpaque_RwLock(void);
 
 union EnumWithItemMixedTwinNormalKind *inflate_EnumWithItemMixedTwinNormal_B(void);
 
@@ -1340,6 +1594,14 @@ union SpeedKind *inflate_Speed_GPS(void);
 static int64_t dummy_method_to_enforce_bundling(void) {
     int64_t dummy_var = 0;
     dummy_var ^= ((int64_t) (void*) drop_dart_object);
+    dummy_var ^= ((int64_t) (void*) drop_opaque_RustOpaque_MutexHideData);
+    dummy_var ^= ((int64_t) (void*) drop_opaque_RustOpaque_RwLockHideData);
+    dummy_var ^= ((int64_t) (void*) drop_opaque_RustOpaque_box_dynDartDebug);
+    dummy_var ^= ((int64_t) (void*) drop_opaque_RustOpaque_frb_opaque_return);
+    dummy_var ^= ((int64_t) (void*) drop_opaque_RustOpaque_frb_opaque_sync_return);
+    dummy_var ^= ((int64_t) (void*) drop_opaque_RustOpaque_hide_data);
+    dummy_var ^= ((int64_t) (void*) drop_opaque_RustOpaque_i_32);
+    dummy_var ^= ((int64_t) (void*) drop_opaque_RustOpaque_non_send_hide_data);
     dummy_var ^= ((int64_t) (void*) get_dart_object);
     dummy_var ^= ((int64_t) (void*) inflate_Abc_A);
     dummy_var ^= ((int64_t) (void*) inflate_Abc_B);
@@ -1354,6 +1616,13 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) inflate_CustomNestedErrorOuterTwinSync_One);
     dummy_var ^= ((int64_t) (void*) inflate_CustomNestedErrorOuterTwinSync_Two);
     dummy_var ^= ((int64_t) (void*) inflate_Distance_Map);
+    dummy_var ^= ((int64_t) (void*) inflate_EnumDartOpaque_Opaque);
+    dummy_var ^= ((int64_t) (void*) inflate_EnumDartOpaque_Primitive);
+    dummy_var ^= ((int64_t) (void*) inflate_EnumOpaque_Mutex);
+    dummy_var ^= ((int64_t) (void*) inflate_EnumOpaque_Primitive);
+    dummy_var ^= ((int64_t) (void*) inflate_EnumOpaque_RwLock);
+    dummy_var ^= ((int64_t) (void*) inflate_EnumOpaque_Struct);
+    dummy_var ^= ((int64_t) (void*) inflate_EnumOpaque_TraitObj);
     dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemMixedTwinNormal_B);
     dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemMixedTwinNormal_C);
     dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemMixedTwinSync_B);
@@ -1369,9 +1638,19 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) inflate_Measure_Distance);
     dummy_var ^= ((int64_t) (void*) inflate_Measure_Speed);
     dummy_var ^= ((int64_t) (void*) inflate_Speed_GPS);
+    dummy_var ^= ((int64_t) (void*) new_DartOpaque);
+    dummy_var ^= ((int64_t) (void*) new_RustOpaque_MutexHideData);
+    dummy_var ^= ((int64_t) (void*) new_RustOpaque_RwLockHideData);
+    dummy_var ^= ((int64_t) (void*) new_RustOpaque_box_dynDartDebug);
+    dummy_var ^= ((int64_t) (void*) new_RustOpaque_hide_data);
+    dummy_var ^= ((int64_t) (void*) new_RustOpaque_i_32);
+    dummy_var ^= ((int64_t) (void*) new_RustOpaque_non_clone_data);
+    dummy_var ^= ((int64_t) (void*) new_RustOpaque_non_send_hide_data);
     dummy_var ^= ((int64_t) (void*) new_StringList);
     dummy_var ^= ((int64_t) (void*) new_box_application_env);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_Chrono_Utc);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_DartOpaque);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_RustOpaque_hide_data);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_a);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_abc);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_application_env);
@@ -1388,6 +1667,9 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_custom_struct_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_custom_struct_error_twin_sync);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_customized);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_dart_opaque_nested);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_dart_opaque);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_opaque);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_with_item_mixed_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_with_item_mixed_twin_sync);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_with_item_struct_twin_normal);
@@ -1414,6 +1696,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_new_type_int);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_note);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_numbers);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_opaque_nested);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_opt_vecs);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_record_string_i_32);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_sequences);
@@ -1450,6 +1733,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_u_8);
     dummy_var ^= ((int64_t) (void*) new_box_weekdays);
     dummy_var ^= ((int64_t) (void*) new_dart_opaque);
+    dummy_var ^= ((int64_t) (void*) new_list_DartOpaque);
+    dummy_var ^= ((int64_t) (void*) new_list_RustOpaque_hide_data);
     dummy_var ^= ((int64_t) (void*) new_list_application_env_var);
     dummy_var ^= ((int64_t) (void*) new_list_attribute);
     dummy_var ^= ((int64_t) (void*) new_list_bool);
@@ -1473,6 +1758,14 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_list_record_string_i_32);
     dummy_var ^= ((int64_t) (void*) new_list_test_id);
     dummy_var ^= ((int64_t) (void*) new_list_weekdays);
+    dummy_var ^= ((int64_t) (void*) share_opaque_RustOpaque_MutexHideData);
+    dummy_var ^= ((int64_t) (void*) share_opaque_RustOpaque_RwLockHideData);
+    dummy_var ^= ((int64_t) (void*) share_opaque_RustOpaque_box_dynDartDebug);
+    dummy_var ^= ((int64_t) (void*) share_opaque_RustOpaque_frb_opaque_return);
+    dummy_var ^= ((int64_t) (void*) share_opaque_RustOpaque_frb_opaque_sync_return);
+    dummy_var ^= ((int64_t) (void*) share_opaque_RustOpaque_hide_data);
+    dummy_var ^= ((int64_t) (void*) share_opaque_RustOpaque_i_32);
+    dummy_var ^= ((int64_t) (void*) share_opaque_RustOpaque_non_send_hide_data);
     dummy_var ^= ((int64_t) (void*) store_dart_post_cobject);
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWith_concatenate);
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWith_concatenate_static);
@@ -1489,11 +1782,19 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_SumWith_sum);
     dummy_var ^= ((int64_t) (void*) wire_app_settings_stream);
     dummy_var ^= ((int64_t) (void*) wire_app_settings_vec_stream);
+    dummy_var ^= ((int64_t) (void*) wire_async_accept_dart_opaque);
     dummy_var ^= ((int64_t) (void*) wire_boxed_blob);
     dummy_var ^= ((int64_t) (void*) wire_call_new_module_system);
     dummy_var ^= ((int64_t) (void*) wire_call_old_module_system);
     dummy_var ^= ((int64_t) (void*) wire_close_event_listener);
+    dummy_var ^= ((int64_t) (void*) wire_create_array_opaque_enum);
+    dummy_var ^= ((int64_t) (void*) wire_create_enum_dart_opaque);
     dummy_var ^= ((int64_t) (void*) wire_create_event);
+    dummy_var ^= ((int64_t) (void*) wire_create_nested_dart_opaque);
+    dummy_var ^= ((int64_t) (void*) wire_create_nested_opaque);
+    dummy_var ^= ((int64_t) (void*) wire_create_opaque);
+    dummy_var ^= ((int64_t) (void*) wire_create_option_opaque);
+    dummy_var ^= ((int64_t) (void*) wire_create_sync_opaque);
     dummy_var ^= ((int64_t) (void*) wire_custom_enum_error_panic_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_custom_enum_error_panic_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_custom_enum_error_return_error_twin_normal);
@@ -1506,6 +1807,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_custom_struct_error_return_error_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_datetime_local);
     dummy_var ^= ((int64_t) (void*) wire_datetime_utc);
+    dummy_var ^= ((int64_t) (void*) wire_drop_static_dart_opaque);
     dummy_var ^= ((int64_t) (void*) wire_duration);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_bool_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_bool_twin_sync);
@@ -1575,6 +1877,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u8_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_first_number);
     dummy_var ^= ((int64_t) (void*) wire_first_sequence);
+    dummy_var ^= ((int64_t) (void*) wire_frb_generator_test);
+    dummy_var ^= ((int64_t) (void*) wire_frb_sync_generator_test);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_simple_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_simple_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_mixed_twin_normal);
@@ -1618,8 +1922,10 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_get_app_settings);
     dummy_var ^= ((int64_t) (void*) wire_get_array);
     dummy_var ^= ((int64_t) (void*) wire_get_complex_array);
+    dummy_var ^= ((int64_t) (void*) wire_get_enum_dart_opaque);
     dummy_var ^= ((int64_t) (void*) wire_get_fallible_app_settings);
     dummy_var ^= ((int64_t) (void*) wire_get_message);
+    dummy_var ^= ((int64_t) (void*) wire_get_nested_dart_opaque);
     dummy_var ^= ((int64_t) (void*) wire_get_sum_array);
     dummy_var ^= ((int64_t) (void*) wire_get_sum_struct);
     dummy_var ^= ((int64_t) (void*) wire_handle_big_buffers);
@@ -1650,6 +1956,13 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_is_app_embedded);
     dummy_var ^= ((int64_t) (void*) wire_last_number);
     dummy_var ^= ((int64_t) (void*) wire_list_of_primitive_enums);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back_array);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back_array_get);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back_option);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back_option_get);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back_vec);
+    dummy_var ^= ((int64_t) (void*) wire_loop_back_vec_get);
     dummy_var ^= ((int64_t) (void*) wire_mirror_struct_stream);
     dummy_var ^= ((int64_t) (void*) wire_mirror_tuple_stream);
     dummy_var ^= ((int64_t) (void*) wire_multiply_by_ten);
@@ -1657,7 +1970,12 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_nested_id);
     dummy_var ^= ((int64_t) (void*) wire_new_msgid);
     dummy_var ^= ((int64_t) (void*) wire_next_user_id);
+    dummy_var ^= ((int64_t) (void*) wire_opaque_array);
+    dummy_var ^= ((int64_t) (void*) wire_opaque_array_run);
+    dummy_var ^= ((int64_t) (void*) wire_opaque_vec);
+    dummy_var ^= ((int64_t) (void*) wire_opaque_vec_run);
     dummy_var ^= ((int64_t) (void*) wire_optional_empty_datetime_utc);
+    dummy_var ^= ((int64_t) (void*) wire_panic_unwrap_dart_opaque);
     dummy_var ^= ((int64_t) (void*) wire_print_note);
     dummy_var ^= ((int64_t) (void*) wire_register_event_listener);
     dummy_var ^= ((int64_t) (void*) wire_repeat_number);
@@ -1665,8 +1983,16 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_return_boxed_feed_id);
     dummy_var ^= ((int64_t) (void*) wire_return_boxed_raw_feed_id);
     dummy_var ^= ((int64_t) (void*) wire_return_dart_dynamic);
+    dummy_var ^= ((int64_t) (void*) wire_return_non_droppable_dart_opaque);
+    dummy_var ^= ((int64_t) (void*) wire_run_enum_opaque);
+    dummy_var ^= ((int64_t) (void*) wire_run_nested_opaque);
+    dummy_var ^= ((int64_t) (void*) wire_run_non_clone);
+    dummy_var ^= ((int64_t) (void*) wire_run_opaque);
+    dummy_var ^= ((int64_t) (void*) wire_run_opaque_with_delay);
+    dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque);
     dummy_var ^= ((int64_t) (void*) wire_simple_adder_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_simple_adder_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_sync_run_opaque);
     dummy_var ^= ((int64_t) (void*) wire_test_abc_enum);
     dummy_var ^= ((int64_t) (void*) wire_test_chrono);
     dummy_var ^= ((int64_t) (void*) wire_test_contains_mirrored_sub_struct);
@@ -1682,6 +2008,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_test_struct_with_enum);
     dummy_var ^= ((int64_t) (void*) wire_test_tuple);
     dummy_var ^= ((int64_t) (void*) wire_test_tuple_2);
+    dummy_var ^= ((int64_t) (void*) wire_unwrap_dart_opaque);
+    dummy_var ^= ((int64_t) (void*) wire_unwrap_rust_opaque);
     dummy_var ^= ((int64_t) (void*) wire_use_boxed_blob);
     dummy_var ^= ((int64_t) (void*) wire_use_imported_enum);
     dummy_var ^= ((int64_t) (void*) wire_use_imported_struct);

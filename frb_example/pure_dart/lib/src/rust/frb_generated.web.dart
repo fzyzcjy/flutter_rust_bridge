@@ -5,6 +5,8 @@ import 'api/attribute.dart';
 import 'api/chrono_type.dart';
 import 'api/comment.dart';
 import 'api/dart_dynamic.dart';
+import 'api/dart_opaque.dart';
+import 'api/dart_opaque_sync.dart';
 import 'api/enumeration.dart';
 import 'api/event_listener.dart';
 import 'api/exception.dart';
@@ -29,6 +31,8 @@ import 'api/pseudo_manual/primitive_twin_sync.dart';
 import 'api/pseudo_manual/simple_twin_sync.dart';
 import 'api/pseudo_manual/structure_twin_sync.dart';
 import 'api/raw_string.dart';
+import 'api/rust_opaque.dart';
+import 'api/rust_opaque_sync.dart';
 import 'api/simple.dart';
 import 'api/stream.dart';
 import 'api/structure.dart';
@@ -85,6 +89,56 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   Object api2wire_Chrono_Utc(DateTime raw) {
     return api2wire_i_64(BigInt.from(raw.millisecondsSinceEpoch));
+  }
+
+  @protected
+  Object api2wire_DartOpaque(Object raw) {
+    return [raw, dropPort];
+  }
+
+  @protected
+  List<dynamic> api2wire_DartOpaque_array_1(ObjectArray1 raw) {
+    return api2wire_list_DartOpaque(raw);
+  }
+
+  @protected
+  Object api2wire_RustOpaque_MutexHideData(MutexHideData raw) {
+    return raw.shareOrMove();
+  }
+
+  @protected
+  Object api2wire_RustOpaque_RwLockHideData(RwLockHideData raw) {
+    return raw.shareOrMove();
+  }
+
+  @protected
+  Object api2wire_RustOpaque_box_dynDartDebug(DartDebug raw) {
+    return raw.shareOrMove();
+  }
+
+  @protected
+  Object api2wire_RustOpaque_hide_data(HideData raw) {
+    return raw.shareOrMove();
+  }
+
+  @protected
+  List<dynamic> api2wire_RustOpaque_hide_data_array_2(HideDataArray2 raw) {
+    return api2wire_list_RustOpaque_hide_data(raw);
+  }
+
+  @protected
+  Object api2wire_RustOpaque_i_32(int raw) {
+    return raw.shareOrMove();
+  }
+
+  @protected
+  Object api2wire_RustOpaque_non_clone_data(NonCloneData raw) {
+    return raw.shareOrMove();
+  }
+
+  @protected
+  Object api2wire_RustOpaque_non_send_hide_data(NonSendHideData raw) {
+    return raw.shareOrMove();
   }
 
   @protected
@@ -182,6 +236,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  Object api2wire_box_autoadd_DartOpaque(Object raw) {
+    return api2wire_DartOpaque(raw);
+  }
+
+  @protected
+  Object api2wire_box_autoadd_RustOpaque_hide_data(HideData raw) {
+    return api2wire_RustOpaque_hide_data(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_a(A raw) {
     return api2wire_a(raw);
   }
@@ -266,6 +330,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> api2wire_box_autoadd_customized(Customized raw) {
     return api2wire_customized(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_dart_opaque_nested(DartOpaqueNested raw) {
+    return api2wire_dart_opaque_nested(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_enum_dart_opaque(EnumDartOpaque raw) {
+    return api2wire_enum_dart_opaque(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_enum_opaque(EnumOpaque raw) {
+    return api2wire_enum_opaque(raw);
   }
 
   @protected
@@ -402,6 +481,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> api2wire_box_autoadd_numbers(Numbers raw) {
     return api2wire_numbers(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_opaque_nested(OpaqueNested raw) {
+    return api2wire_opaque_nested(raw);
   }
 
   @protected
@@ -685,12 +769,50 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_dart_opaque_nested(DartOpaqueNested raw) {
+    return [api2wire_DartOpaque(raw.first), api2wire_DartOpaque(raw.second)];
+  }
+
+  @protected
   List<dynamic> api2wire_distance(Distance raw) {
     if (raw is Distance_Unknown) {
       return [0];
     }
     if (raw is Distance_Map) {
       return [1, api2wire_f_64(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> api2wire_enum_dart_opaque(EnumDartOpaque raw) {
+    if (raw is EnumDartOpaque_Primitive) {
+      return [0, api2wire_i_32(raw.field0)];
+    }
+    if (raw is EnumDartOpaque_Opaque) {
+      return [1, api2wire_DartOpaque(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> api2wire_enum_opaque(EnumOpaque raw) {
+    if (raw is EnumOpaque_Struct) {
+      return [0, api2wire_RustOpaque_hide_data(raw.field0)];
+    }
+    if (raw is EnumOpaque_Primitive) {
+      return [1, api2wire_RustOpaque_i_32(raw.field0)];
+    }
+    if (raw is EnumOpaque_TraitObj) {
+      return [2, api2wire_RustOpaque_box_dynDartDebug(raw.field0)];
+    }
+    if (raw is EnumOpaque_Mutex) {
+      return [3, api2wire_RustOpaque_MutexHideData(raw.field0)];
+    }
+    if (raw is EnumOpaque_RwLock) {
+      return [4, api2wire_RustOpaque_RwLockHideData(raw.field0)];
     }
 
     throw Exception('unreachable');
@@ -838,6 +960,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   Object api2wire_i_64(BigInt raw) {
     return castNativeBigInt(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_list_DartOpaque(List<Object> raw) {
+    return raw.map(api2wire_DartOpaque).toList();
+  }
+
+  @protected
+  List<dynamic> api2wire_list_RustOpaque_hide_data(List<HideData> raw) {
+    return raw.map(api2wire_RustOpaque_hide_data).toList();
   }
 
   @protected
@@ -1021,6 +1153,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_opaque_nested(OpaqueNested raw) {
+    return [
+      api2wire_RustOpaque_hide_data(raw.first),
+      api2wire_RustOpaque_hide_data(raw.second)
+    ];
+  }
+
+  @protected
   String? api2wire_opt_String(String? raw) {
     return raw == null ? null : api2wire_String(raw);
   }
@@ -1033,6 +1173,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   Object? api2wire_opt_box_autoadd_Chrono_Utc(DateTime? raw) {
     return raw == null ? null : api2wire_box_autoadd_Chrono_Utc(raw);
+  }
+
+  @protected
+  Object? api2wire_opt_box_autoadd_DartOpaque(Object? raw) {
+    return raw == null ? null : api2wire_box_autoadd_DartOpaque(raw);
+  }
+
+  @protected
+  Object? api2wire_opt_box_autoadd_RustOpaque_hide_data(HideData? raw) {
+    return raw == null ? null : api2wire_box_autoadd_RustOpaque_hide_data(raw);
   }
 
   @protected

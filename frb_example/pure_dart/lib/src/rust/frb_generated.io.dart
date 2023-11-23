@@ -5,6 +5,8 @@ import 'api/attribute.dart';
 import 'api/chrono_type.dart';
 import 'api/comment.dart';
 import 'api/dart_dynamic.dart';
+import 'api/dart_opaque.dart';
+import 'api/dart_opaque_sync.dart';
 import 'api/enumeration.dart';
 import 'api/event_listener.dart';
 import 'api/exception.dart';
@@ -29,6 +31,8 @@ import 'api/pseudo_manual/primitive_twin_sync.dart';
 import 'api/pseudo_manual/simple_twin_sync.dart';
 import 'api/pseudo_manual/structure_twin_sync.dart';
 import 'api/raw_string.dart';
+import 'api/rust_opaque.dart';
+import 'api/rust_opaque_sync.dart';
 import 'api/simple.dart';
 import 'api/stream.dart';
 import 'api/structure.dart';
@@ -91,6 +95,79 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  wire_DartOpaque api2wire_DartOpaque(Object raw) {
+    final ptr = wire.new_DartOpaque();
+    _api_fill_to_wire_DartOpaque(raw, ptr);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_list_DartOpaque> api2wire_DartOpaque_array_1(
+      ObjectArray1 raw) {
+    return api2wire_list_DartOpaque(raw);
+  }
+
+  @protected
+  wire_RustOpaque_MutexHideData api2wire_RustOpaque_MutexHideData(
+      MutexHideData raw) {
+    final ptr = wire.new_RustOpaque_MutexHideData();
+    _api_fill_to_wire_RustOpaque_MutexHideData(raw, ptr);
+    return ptr;
+  }
+
+  @protected
+  wire_RustOpaque_RwLockHideData api2wire_RustOpaque_RwLockHideData(
+      RwLockHideData raw) {
+    final ptr = wire.new_RustOpaque_RwLockHideData();
+    _api_fill_to_wire_RustOpaque_RwLockHideData(raw, ptr);
+    return ptr;
+  }
+
+  @protected
+  wire_RustOpaque_box_dynDartDebug api2wire_RustOpaque_box_dynDartDebug(
+      DartDebug raw) {
+    final ptr = wire.new_RustOpaque_box_dynDartDebug();
+    _api_fill_to_wire_RustOpaque_box_dynDartDebug(raw, ptr);
+    return ptr;
+  }
+
+  @protected
+  wire_RustOpaque_hide_data api2wire_RustOpaque_hide_data(HideData raw) {
+    final ptr = wire.new_RustOpaque_hide_data();
+    _api_fill_to_wire_RustOpaque_hide_data(raw, ptr);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_list_RustOpaque_hide_data>
+      api2wire_RustOpaque_hide_data_array_2(HideDataArray2 raw) {
+    return api2wire_list_RustOpaque_hide_data(raw);
+  }
+
+  @protected
+  wire_RustOpaque_i_32 api2wire_RustOpaque_i_32(int raw) {
+    final ptr = wire.new_RustOpaque_i_32();
+    _api_fill_to_wire_RustOpaque_i_32(raw, ptr);
+    return ptr;
+  }
+
+  @protected
+  wire_RustOpaque_non_clone_data api2wire_RustOpaque_non_clone_data(
+      NonCloneData raw) {
+    final ptr = wire.new_RustOpaque_non_clone_data();
+    _api_fill_to_wire_RustOpaque_non_clone_data(raw, ptr);
+    return ptr;
+  }
+
+  @protected
+  wire_RustOpaque_non_send_hide_data api2wire_RustOpaque_non_send_hide_data(
+      NonSendHideData raw) {
+    final ptr = wire.new_RustOpaque_non_send_hide_data();
+    _api_fill_to_wire_RustOpaque_non_send_hide_data(raw, ptr);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_list_prim_u_8> api2wire_String(String raw) {
     return api2wire_list_prim_u_8(utf8.encoder.convert(raw));
   }
@@ -131,6 +208,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   ffi.Pointer<ffi.Int64> api2wire_box_autoadd_Chrono_Utc(DateTime raw) {
     return wire.new_box_autoadd_Chrono_Utc(api2wire_Chrono_Utc(raw));
+  }
+
+  @protected
+  ffi.Pointer<wire_DartOpaque> api2wire_box_autoadd_DartOpaque(Object raw) {
+    final ptr = wire.new_box_autoadd_DartOpaque();
+    _api_fill_to_wire_DartOpaque(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_RustOpaque_hide_data>
+      api2wire_box_autoadd_RustOpaque_hide_data(HideData raw) {
+    final ptr = wire.new_box_autoadd_RustOpaque_hide_data();
+    _api_fill_to_wire_RustOpaque_hide_data(raw, ptr.ref);
+    return ptr;
   }
 
   @protected
@@ -255,6 +347,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_customized> api2wire_box_autoadd_customized(Customized raw) {
     final ptr = wire.new_box_autoadd_customized();
     _api_fill_to_wire_customized(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_dart_opaque_nested> api2wire_box_autoadd_dart_opaque_nested(
+      DartOpaqueNested raw) {
+    final ptr = wire.new_box_autoadd_dart_opaque_nested();
+    _api_fill_to_wire_dart_opaque_nested(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_enum_dart_opaque> api2wire_box_autoadd_enum_dart_opaque(
+      EnumDartOpaque raw) {
+    final ptr = wire.new_box_autoadd_enum_dart_opaque();
+    _api_fill_to_wire_enum_dart_opaque(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_enum_opaque> api2wire_box_autoadd_enum_opaque(
+      EnumOpaque raw) {
+    final ptr = wire.new_box_autoadd_enum_opaque();
+    _api_fill_to_wire_enum_opaque(raw, ptr.ref);
     return ptr;
   }
 
@@ -444,6 +560,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_numbers> api2wire_box_autoadd_numbers(Numbers raw) {
     final ptr = wire.new_box_autoadd_numbers();
     _api_fill_to_wire_numbers(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_opaque_nested> api2wire_box_autoadd_opaque_nested(
+      OpaqueNested raw) {
+    final ptr = wire.new_box_autoadd_opaque_nested();
+    _api_fill_to_wire_opaque_nested(raw, ptr.ref);
     return ptr;
   }
 
@@ -720,6 +844,25 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  ffi.Pointer<wire_list_DartOpaque> api2wire_list_DartOpaque(List<Object> raw) {
+    final ans = wire.new_list_DartOpaque(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      _api_fill_to_wire_DartOpaque(raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_list_RustOpaque_hide_data>
+      api2wire_list_RustOpaque_hide_data(List<HideData> raw) {
+    final ans = wire.new_list_RustOpaque_hide_data(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      _api_fill_to_wire_RustOpaque_hide_data(raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
+  }
+
+  @protected
   ffi.Pointer<wire_list_application_env_var> api2wire_list_application_env_var(
       List<ApplicationEnvVar> raw) {
     final ans = wire.new_list_application_env_var(raw.length);
@@ -944,6 +1087,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  ffi.Pointer<wire_DartOpaque> api2wire_opt_box_autoadd_DartOpaque(
+      Object? raw) {
+    return raw == null ? ffi.nullptr : api2wire_box_autoadd_DartOpaque(raw);
+  }
+
+  @protected
+  ffi.Pointer<wire_RustOpaque_hide_data>
+      api2wire_opt_box_autoadd_RustOpaque_hide_data(HideData? raw) {
+    return raw == null
+        ? ffi.nullptr
+        : api2wire_box_autoadd_RustOpaque_hide_data(raw);
+  }
+
+  @protected
   ffi.Pointer<wire_application_env> api2wire_opt_box_autoadd_application_env(
       ApplicationEnv? raw) {
     return raw == null
@@ -1136,6 +1293,46 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     return ans;
   }
 
+  void _api_fill_to_wire_DartOpaque(Object apiObj, wire_DartOpaque wireObj) {
+    wireObj.handle = wire.new_dart_opaque(apiObj);
+    wireObj.port = dropPort;
+  }
+
+  void _api_fill_to_wire_RustOpaque_MutexHideData(
+      MutexHideData apiObj, wire_RustOpaque_MutexHideData wireObj) {
+    wireObj.ptr = apiObj.shareOrMove();
+  }
+
+  void _api_fill_to_wire_RustOpaque_RwLockHideData(
+      RwLockHideData apiObj, wire_RustOpaque_RwLockHideData wireObj) {
+    wireObj.ptr = apiObj.shareOrMove();
+  }
+
+  void _api_fill_to_wire_RustOpaque_box_dynDartDebug(
+      DartDebug apiObj, wire_RustOpaque_box_dynDartDebug wireObj) {
+    wireObj.ptr = apiObj.shareOrMove();
+  }
+
+  void _api_fill_to_wire_RustOpaque_hide_data(
+      HideData apiObj, wire_RustOpaque_hide_data wireObj) {
+    wireObj.ptr = apiObj.shareOrMove();
+  }
+
+  void _api_fill_to_wire_RustOpaque_i_32(
+      int apiObj, wire_RustOpaque_i_32 wireObj) {
+    wireObj.ptr = apiObj.shareOrMove();
+  }
+
+  void _api_fill_to_wire_RustOpaque_non_clone_data(
+      NonCloneData apiObj, wire_RustOpaque_non_clone_data wireObj) {
+    wireObj.ptr = apiObj.shareOrMove();
+  }
+
+  void _api_fill_to_wire_RustOpaque_non_send_hide_data(
+      NonSendHideData apiObj, wire_RustOpaque_non_send_hide_data wireObj) {
+    wireObj.ptr = apiObj.shareOrMove();
+  }
+
   void _api_fill_to_wire_a(A apiObj, wire_a wireObj) {
     wireObj.a = api2wire_String(apiObj.a);
   }
@@ -1208,6 +1405,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void _api_fill_to_wire_box_application_env(
       ApplicationEnv apiObj, ffi.Pointer<wire_application_env> wireObj) {
     _api_fill_to_wire_application_env(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_DartOpaque(
+      Object apiObj, ffi.Pointer<wire_DartOpaque> wireObj) {
+    _api_fill_to_wire_DartOpaque(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_RustOpaque_hide_data(
+      HideData apiObj, ffi.Pointer<wire_RustOpaque_hide_data> wireObj) {
+    _api_fill_to_wire_RustOpaque_hide_data(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_a(A apiObj, ffi.Pointer<wire_a> wireObj) {
@@ -1289,6 +1496,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void _api_fill_to_wire_box_autoadd_customized(
       Customized apiObj, ffi.Pointer<wire_customized> wireObj) {
     _api_fill_to_wire_customized(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_dart_opaque_nested(
+      DartOpaqueNested apiObj, ffi.Pointer<wire_dart_opaque_nested> wireObj) {
+    _api_fill_to_wire_dart_opaque_nested(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_enum_dart_opaque(
+      EnumDartOpaque apiObj, ffi.Pointer<wire_enum_dart_opaque> wireObj) {
+    _api_fill_to_wire_enum_dart_opaque(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_enum_opaque(
+      EnumOpaque apiObj, ffi.Pointer<wire_enum_opaque> wireObj) {
+    _api_fill_to_wire_enum_opaque(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_enum_with_item_mixed_twin_normal(
@@ -1395,6 +1617,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void _api_fill_to_wire_box_autoadd_numbers(
       Numbers apiObj, ffi.Pointer<wire_numbers> wireObj) {
     _api_fill_to_wire_numbers(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_opaque_nested(
+      OpaqueNested apiObj, ffi.Pointer<wire_opaque_nested> wireObj) {
+    _api_fill_to_wire_opaque_nested(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_opt_vecs(
@@ -1626,6 +1853,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.non_final_field = api2wire_opt_String(apiObj.nonFinalField);
   }
 
+  void _api_fill_to_wire_dart_opaque_nested(
+      DartOpaqueNested apiObj, wire_dart_opaque_nested wireObj) {
+    wireObj.first = api2wire_DartOpaque(apiObj.first);
+    wireObj.second = api2wire_DartOpaque(apiObj.second);
+  }
+
   void _api_fill_to_wire_distance(Distance apiObj, wire_distance wireObj) {
     if (apiObj is Distance_Unknown) {
       wireObj.tag = 0;
@@ -1636,6 +1869,63 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       wireObj.tag = 1;
       wireObj.kind = wire.inflate_Distance_Map();
       wireObj.kind.ref.Map.ref.field0 = pre_field0;
+      return;
+    }
+  }
+
+  void _api_fill_to_wire_enum_dart_opaque(
+      EnumDartOpaque apiObj, wire_enum_dart_opaque wireObj) {
+    if (apiObj is EnumDartOpaque_Primitive) {
+      var pre_field0 = api2wire_i_32(apiObj.field0);
+      wireObj.tag = 0;
+      wireObj.kind = wire.inflate_EnumDartOpaque_Primitive();
+      wireObj.kind.ref.Primitive.ref.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is EnumDartOpaque_Opaque) {
+      var pre_field0 = api2wire_DartOpaque(apiObj.field0);
+      wireObj.tag = 1;
+      wireObj.kind = wire.inflate_EnumDartOpaque_Opaque();
+      wireObj.kind.ref.Opaque.ref.field0 = pre_field0;
+      return;
+    }
+  }
+
+  void _api_fill_to_wire_enum_opaque(
+      EnumOpaque apiObj, wire_enum_opaque wireObj) {
+    if (apiObj is EnumOpaque_Struct) {
+      var pre_field0 = api2wire_RustOpaque_hide_data(apiObj.field0);
+      wireObj.tag = 0;
+      wireObj.kind = wire.inflate_EnumOpaque_Struct();
+      wireObj.kind.ref.Struct.ref.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is EnumOpaque_Primitive) {
+      var pre_field0 = api2wire_RustOpaque_i_32(apiObj.field0);
+      wireObj.tag = 1;
+      wireObj.kind = wire.inflate_EnumOpaque_Primitive();
+      wireObj.kind.ref.Primitive.ref.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is EnumOpaque_TraitObj) {
+      var pre_field0 = api2wire_RustOpaque_box_dynDartDebug(apiObj.field0);
+      wireObj.tag = 2;
+      wireObj.kind = wire.inflate_EnumOpaque_TraitObj();
+      wireObj.kind.ref.TraitObj.ref.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is EnumOpaque_Mutex) {
+      var pre_field0 = api2wire_RustOpaque_MutexHideData(apiObj.field0);
+      wireObj.tag = 3;
+      wireObj.kind = wire.inflate_EnumOpaque_Mutex();
+      wireObj.kind.ref.Mutex.ref.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is EnumOpaque_RwLock) {
+      var pre_field0 = api2wire_RustOpaque_RwLockHideData(apiObj.field0);
+      wireObj.tag = 4;
+      wireObj.kind = wire.inflate_EnumOpaque_RwLock();
+      wireObj.kind.ref.RwLock.ref.field0 = pre_field0;
       return;
     }
   }
@@ -1868,6 +2158,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   void _api_fill_to_wire_numbers(Numbers apiObj, wire_numbers wireObj) {
     wireObj.field0 = api2wire_list_prim_i_32(apiObj.field0);
+  }
+
+  void _api_fill_to_wire_opaque_nested(
+      OpaqueNested apiObj, wire_opaque_nested wireObj) {
+    wireObj.first = api2wire_RustOpaque_hide_data(apiObj.first);
+    wireObj.second = api2wire_RustOpaque_hide_data(apiObj.second);
   }
 
   void _api_fill_to_wire_opt_vecs(OptVecs apiObj, wire_opt_vecs wireObj) {
@@ -2489,6 +2785,284 @@ class RustLibWire implements BaseWire {
           'wire_return_dart_dynamic');
   late final _wire_return_dart_dynamic =
       _wire_return_dart_dynamicPtr.asFunction<void Function(int)>();
+
+  void wire_async_accept_dart_opaque(
+    int port_,
+    wire_DartOpaque opaque,
+  ) {
+    return _wire_async_accept_dart_opaque(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_async_accept_dart_opaquePtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_DartOpaque)>>(
+      'wire_async_accept_dart_opaque');
+  late final _wire_async_accept_dart_opaque = _wire_async_accept_dart_opaquePtr
+      .asFunction<void Function(int, wire_DartOpaque)>();
+
+  void wire_create_enum_dart_opaque(
+    int port_,
+    wire_DartOpaque opaque,
+  ) {
+    return _wire_create_enum_dart_opaque(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_create_enum_dart_opaquePtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_DartOpaque)>>(
+      'wire_create_enum_dart_opaque');
+  late final _wire_create_enum_dart_opaque = _wire_create_enum_dart_opaquePtr
+      .asFunction<void Function(int, wire_DartOpaque)>();
+
+  void wire_create_nested_dart_opaque(
+    int port_,
+    wire_DartOpaque opaque1,
+    wire_DartOpaque opaque2,
+  ) {
+    return _wire_create_nested_dart_opaque(
+      port_,
+      opaque1,
+      opaque2,
+    );
+  }
+
+  late final _wire_create_nested_dart_opaquePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, wire_DartOpaque,
+              wire_DartOpaque)>>('wire_create_nested_dart_opaque');
+  late final _wire_create_nested_dart_opaque =
+      _wire_create_nested_dart_opaquePtr
+          .asFunction<void Function(int, wire_DartOpaque, wire_DartOpaque)>();
+
+  void wire_drop_static_dart_opaque(
+    int port_,
+  ) {
+    return _wire_drop_static_dart_opaque(
+      port_,
+    );
+  }
+
+  late final _wire_drop_static_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_drop_static_dart_opaque');
+  late final _wire_drop_static_dart_opaque =
+      _wire_drop_static_dart_opaquePtr.asFunction<void Function(int)>();
+
+  void wire_get_enum_dart_opaque(
+    int port_,
+    ffi.Pointer<wire_enum_dart_opaque> opaque,
+  ) {
+    return _wire_get_enum_dart_opaque(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_get_enum_dart_opaquePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_enum_dart_opaque>)>>(
+      'wire_get_enum_dart_opaque');
+  late final _wire_get_enum_dart_opaque = _wire_get_enum_dart_opaquePtr
+      .asFunction<void Function(int, ffi.Pointer<wire_enum_dart_opaque>)>();
+
+  void wire_get_nested_dart_opaque(
+    int port_,
+    ffi.Pointer<wire_dart_opaque_nested> opaque,
+  ) {
+    return _wire_get_nested_dart_opaque(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_get_nested_dart_opaquePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_dart_opaque_nested>)>>(
+      'wire_get_nested_dart_opaque');
+  late final _wire_get_nested_dart_opaque = _wire_get_nested_dart_opaquePtr
+      .asFunction<void Function(int, ffi.Pointer<wire_dart_opaque_nested>)>();
+
+  void wire_loop_back(
+    int port_,
+    wire_DartOpaque opaque,
+  ) {
+    return _wire_loop_back(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_loop_backPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_DartOpaque)>>(
+      'wire_loop_back');
+  late final _wire_loop_back =
+      _wire_loop_backPtr.asFunction<void Function(int, wire_DartOpaque)>();
+
+  void wire_loop_back_array(
+    int port_,
+    wire_DartOpaque opaque,
+  ) {
+    return _wire_loop_back_array(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_loop_back_arrayPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_DartOpaque)>>(
+      'wire_loop_back_array');
+  late final _wire_loop_back_array = _wire_loop_back_arrayPtr
+      .asFunction<void Function(int, wire_DartOpaque)>();
+
+  void wire_loop_back_array_get(
+    int port_,
+    ffi.Pointer<wire_list_DartOpaque> opaque,
+  ) {
+    return _wire_loop_back_array_get(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_loop_back_array_getPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64,
+              ffi.Pointer<wire_list_DartOpaque>)>>('wire_loop_back_array_get');
+  late final _wire_loop_back_array_get = _wire_loop_back_array_getPtr
+      .asFunction<void Function(int, ffi.Pointer<wire_list_DartOpaque>)>();
+
+  void wire_loop_back_option(
+    int port_,
+    wire_DartOpaque opaque,
+  ) {
+    return _wire_loop_back_option(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_loop_back_optionPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_DartOpaque)>>(
+      'wire_loop_back_option');
+  late final _wire_loop_back_option = _wire_loop_back_optionPtr
+      .asFunction<void Function(int, wire_DartOpaque)>();
+
+  void wire_loop_back_option_get(
+    int port_,
+    ffi.Pointer<wire_DartOpaque> opaque,
+  ) {
+    return _wire_loop_back_option_get(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_loop_back_option_getPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64,
+              ffi.Pointer<wire_DartOpaque>)>>('wire_loop_back_option_get');
+  late final _wire_loop_back_option_get = _wire_loop_back_option_getPtr
+      .asFunction<void Function(int, ffi.Pointer<wire_DartOpaque>)>();
+
+  void wire_loop_back_vec(
+    int port_,
+    wire_DartOpaque opaque,
+  ) {
+    return _wire_loop_back_vec(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_loop_back_vecPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_DartOpaque)>>(
+      'wire_loop_back_vec');
+  late final _wire_loop_back_vec =
+      _wire_loop_back_vecPtr.asFunction<void Function(int, wire_DartOpaque)>();
+
+  void wire_loop_back_vec_get(
+    int port_,
+    ffi.Pointer<wire_list_DartOpaque> opaque,
+  ) {
+    return _wire_loop_back_vec_get(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_loop_back_vec_getPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64,
+              ffi.Pointer<wire_list_DartOpaque>)>>('wire_loop_back_vec_get');
+  late final _wire_loop_back_vec_get = _wire_loop_back_vec_getPtr
+      .asFunction<void Function(int, ffi.Pointer<wire_list_DartOpaque>)>();
+
+  void wire_panic_unwrap_dart_opaque(
+    int port_,
+    wire_DartOpaque opaque,
+  ) {
+    return _wire_panic_unwrap_dart_opaque(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_panic_unwrap_dart_opaquePtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_DartOpaque)>>(
+      'wire_panic_unwrap_dart_opaque');
+  late final _wire_panic_unwrap_dart_opaque = _wire_panic_unwrap_dart_opaquePtr
+      .asFunction<void Function(int, wire_DartOpaque)>();
+
+  void wire_set_static_dart_opaque(
+    int port_,
+    wire_DartOpaque opaque,
+  ) {
+    return _wire_set_static_dart_opaque(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_set_static_dart_opaquePtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_DartOpaque)>>(
+      'wire_set_static_dart_opaque');
+  late final _wire_set_static_dart_opaque = _wire_set_static_dart_opaquePtr
+      .asFunction<void Function(int, wire_DartOpaque)>();
+
+  WireSyncReturn wire_return_non_droppable_dart_opaque(
+    wire_DartOpaque opaque,
+  ) {
+    return _wire_return_non_droppable_dart_opaque(
+      opaque,
+    );
+  }
+
+  late final _wire_return_non_droppable_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(wire_DartOpaque)>>(
+          'wire_return_non_droppable_dart_opaque');
+  late final _wire_return_non_droppable_dart_opaque =
+      _wire_return_non_droppable_dart_opaquePtr
+          .asFunction<WireSyncReturn Function(wire_DartOpaque)>();
+
+  WireSyncReturn wire_unwrap_dart_opaque(
+    wire_DartOpaque opaque,
+  ) {
+    return _wire_unwrap_dart_opaque(
+      opaque,
+    );
+  }
+
+  late final _wire_unwrap_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(wire_DartOpaque)>>(
+          'wire_unwrap_dart_opaque');
+  late final _wire_unwrap_dart_opaque = _wire_unwrap_dart_opaquePtr
+      .asFunction<WireSyncReturn Function(wire_DartOpaque)>();
 
   void wire_func_enum_simple_twin_normal(
     int port_,
@@ -5206,6 +5780,289 @@ class RustLibWire implements BaseWire {
   late final _wire_test_raw_string_item_struct =
       _wire_test_raw_string_item_structPtr.asFunction<void Function(int)>();
 
+  void wire_create_array_opaque_enum(
+    int port_,
+  ) {
+    return _wire_create_array_opaque_enum(
+      port_,
+    );
+  }
+
+  late final _wire_create_array_opaque_enumPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_create_array_opaque_enum');
+  late final _wire_create_array_opaque_enum =
+      _wire_create_array_opaque_enumPtr.asFunction<void Function(int)>();
+
+  void wire_create_nested_opaque(
+    int port_,
+  ) {
+    return _wire_create_nested_opaque(
+      port_,
+    );
+  }
+
+  late final _wire_create_nested_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_create_nested_opaque');
+  late final _wire_create_nested_opaque =
+      _wire_create_nested_opaquePtr.asFunction<void Function(int)>();
+
+  void wire_create_opaque(
+    int port_,
+  ) {
+    return _wire_create_opaque(
+      port_,
+    );
+  }
+
+  late final _wire_create_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_create_opaque');
+  late final _wire_create_opaque =
+      _wire_create_opaquePtr.asFunction<void Function(int)>();
+
+  void wire_create_option_opaque(
+    int port_,
+    ffi.Pointer<wire_RustOpaque_hide_data> opaque,
+  ) {
+    return _wire_create_option_opaque(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_create_option_opaquePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_RustOpaque_hide_data>)>>(
+      'wire_create_option_opaque');
+  late final _wire_create_option_opaque = _wire_create_option_opaquePtr
+      .asFunction<void Function(int, ffi.Pointer<wire_RustOpaque_hide_data>)>();
+
+  void wire_create_sync_opaque(
+    int port_,
+  ) {
+    return _wire_create_sync_opaque(
+      port_,
+    );
+  }
+
+  late final _wire_create_sync_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_create_sync_opaque');
+  late final _wire_create_sync_opaque =
+      _wire_create_sync_opaquePtr.asFunction<void Function(int)>();
+
+  void wire_frb_generator_test(
+    int port_,
+  ) {
+    return _wire_frb_generator_test(
+      port_,
+    );
+  }
+
+  late final _wire_frb_generator_testPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_frb_generator_test');
+  late final _wire_frb_generator_test =
+      _wire_frb_generator_testPtr.asFunction<void Function(int)>();
+
+  void wire_opaque_array(
+    int port_,
+  ) {
+    return _wire_opaque_array(
+      port_,
+    );
+  }
+
+  late final _wire_opaque_arrayPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_opaque_array');
+  late final _wire_opaque_array =
+      _wire_opaque_arrayPtr.asFunction<void Function(int)>();
+
+  void wire_opaque_array_run(
+    int port_,
+    ffi.Pointer<wire_list_RustOpaque_hide_data> data,
+  ) {
+    return _wire_opaque_array_run(
+      port_,
+      data,
+    );
+  }
+
+  late final _wire_opaque_array_runPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_list_RustOpaque_hide_data>)>>(
+      'wire_opaque_array_run');
+  late final _wire_opaque_array_run = _wire_opaque_array_runPtr.asFunction<
+      void Function(int, ffi.Pointer<wire_list_RustOpaque_hide_data>)>();
+
+  void wire_opaque_vec(
+    int port_,
+  ) {
+    return _wire_opaque_vec(
+      port_,
+    );
+  }
+
+  late final _wire_opaque_vecPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_opaque_vec');
+  late final _wire_opaque_vec =
+      _wire_opaque_vecPtr.asFunction<void Function(int)>();
+
+  void wire_opaque_vec_run(
+    int port_,
+    ffi.Pointer<wire_list_RustOpaque_hide_data> data,
+  ) {
+    return _wire_opaque_vec_run(
+      port_,
+      data,
+    );
+  }
+
+  late final _wire_opaque_vec_runPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_list_RustOpaque_hide_data>)>>(
+      'wire_opaque_vec_run');
+  late final _wire_opaque_vec_run = _wire_opaque_vec_runPtr.asFunction<
+      void Function(int, ffi.Pointer<wire_list_RustOpaque_hide_data>)>();
+
+  void wire_run_enum_opaque(
+    int port_,
+    ffi.Pointer<wire_enum_opaque> opaque,
+  ) {
+    return _wire_run_enum_opaque(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_run_enum_opaquePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64,
+              ffi.Pointer<wire_enum_opaque>)>>('wire_run_enum_opaque');
+  late final _wire_run_enum_opaque = _wire_run_enum_opaquePtr
+      .asFunction<void Function(int, ffi.Pointer<wire_enum_opaque>)>();
+
+  void wire_run_nested_opaque(
+    int port_,
+    ffi.Pointer<wire_opaque_nested> opaque,
+  ) {
+    return _wire_run_nested_opaque(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_run_nested_opaquePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64,
+              ffi.Pointer<wire_opaque_nested>)>>('wire_run_nested_opaque');
+  late final _wire_run_nested_opaque = _wire_run_nested_opaquePtr
+      .asFunction<void Function(int, ffi.Pointer<wire_opaque_nested>)>();
+
+  void wire_run_non_clone(
+    int port_,
+    wire_RustOpaque_non_clone_data clone,
+  ) {
+    return _wire_run_non_clone(
+      port_,
+      clone,
+    );
+  }
+
+  late final _wire_run_non_clonePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64,
+              wire_RustOpaque_non_clone_data)>>('wire_run_non_clone');
+  late final _wire_run_non_clone = _wire_run_non_clonePtr
+      .asFunction<void Function(int, wire_RustOpaque_non_clone_data)>();
+
+  void wire_run_opaque(
+    int port_,
+    wire_RustOpaque_hide_data opaque,
+  ) {
+    return _wire_run_opaque(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_run_opaquePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Int64, wire_RustOpaque_hide_data)>>('wire_run_opaque');
+  late final _wire_run_opaque = _wire_run_opaquePtr
+      .asFunction<void Function(int, wire_RustOpaque_hide_data)>();
+
+  void wire_run_opaque_with_delay(
+    int port_,
+    wire_RustOpaque_hide_data opaque,
+  ) {
+    return _wire_run_opaque_with_delay(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_run_opaque_with_delayPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64,
+              wire_RustOpaque_hide_data)>>('wire_run_opaque_with_delay');
+  late final _wire_run_opaque_with_delay = _wire_run_opaque_with_delayPtr
+      .asFunction<void Function(int, wire_RustOpaque_hide_data)>();
+
+  void wire_unwrap_rust_opaque(
+    int port_,
+    wire_RustOpaque_hide_data opaque,
+  ) {
+    return _wire_unwrap_rust_opaque(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_unwrap_rust_opaquePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64,
+              wire_RustOpaque_hide_data)>>('wire_unwrap_rust_opaque');
+  late final _wire_unwrap_rust_opaque = _wire_unwrap_rust_opaquePtr
+      .asFunction<void Function(int, wire_RustOpaque_hide_data)>();
+
+  void wire_frb_sync_generator_test(
+    int port_,
+  ) {
+    return _wire_frb_sync_generator_test(
+      port_,
+    );
+  }
+
+  late final _wire_frb_sync_generator_testPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_frb_sync_generator_test');
+  late final _wire_frb_sync_generator_test =
+      _wire_frb_sync_generator_testPtr.asFunction<void Function(int)>();
+
+  WireSyncReturn wire_sync_run_opaque(
+    wire_RustOpaque_non_send_hide_data opaque,
+  ) {
+    return _wire_sync_run_opaque(
+      opaque,
+    );
+  }
+
+  late final _wire_sync_run_opaquePtr = _lookup<
+      ffi.NativeFunction<
+          WireSyncReturn Function(
+              wire_RustOpaque_non_send_hide_data)>>('wire_sync_run_opaque');
+  late final _wire_sync_run_opaque = _wire_sync_run_opaquePtr.asFunction<
+      WireSyncReturn Function(wire_RustOpaque_non_send_hide_data)>();
+
   void wire_simple_adder_twin_normal(
     int port_,
     int a,
@@ -5540,6 +6397,87 @@ class RustLibWire implements BaseWire {
   late final _wire_handle_uuids = _wire_handle_uuidsPtr
       .asFunction<void Function(int, ffi.Pointer<wire_list_prim_u_8>)>();
 
+  wire_DartOpaque new_DartOpaque() {
+    return _new_DartOpaque();
+  }
+
+  late final _new_DartOpaquePtr =
+      _lookup<ffi.NativeFunction<wire_DartOpaque Function()>>('new_DartOpaque');
+  late final _new_DartOpaque =
+      _new_DartOpaquePtr.asFunction<wire_DartOpaque Function()>();
+
+  wire_RustOpaque_MutexHideData new_RustOpaque_MutexHideData() {
+    return _new_RustOpaque_MutexHideData();
+  }
+
+  late final _new_RustOpaque_MutexHideDataPtr =
+      _lookup<ffi.NativeFunction<wire_RustOpaque_MutexHideData Function()>>(
+          'new_RustOpaque_MutexHideData');
+  late final _new_RustOpaque_MutexHideData = _new_RustOpaque_MutexHideDataPtr
+      .asFunction<wire_RustOpaque_MutexHideData Function()>();
+
+  wire_RustOpaque_RwLockHideData new_RustOpaque_RwLockHideData() {
+    return _new_RustOpaque_RwLockHideData();
+  }
+
+  late final _new_RustOpaque_RwLockHideDataPtr =
+      _lookup<ffi.NativeFunction<wire_RustOpaque_RwLockHideData Function()>>(
+          'new_RustOpaque_RwLockHideData');
+  late final _new_RustOpaque_RwLockHideData = _new_RustOpaque_RwLockHideDataPtr
+      .asFunction<wire_RustOpaque_RwLockHideData Function()>();
+
+  wire_RustOpaque_box_dynDartDebug new_RustOpaque_box_dynDartDebug() {
+    return _new_RustOpaque_box_dynDartDebug();
+  }
+
+  late final _new_RustOpaque_box_dynDartDebugPtr =
+      _lookup<ffi.NativeFunction<wire_RustOpaque_box_dynDartDebug Function()>>(
+          'new_RustOpaque_box_dynDartDebug');
+  late final _new_RustOpaque_box_dynDartDebug =
+      _new_RustOpaque_box_dynDartDebugPtr
+          .asFunction<wire_RustOpaque_box_dynDartDebug Function()>();
+
+  wire_RustOpaque_hide_data new_RustOpaque_hide_data() {
+    return _new_RustOpaque_hide_data();
+  }
+
+  late final _new_RustOpaque_hide_dataPtr =
+      _lookup<ffi.NativeFunction<wire_RustOpaque_hide_data Function()>>(
+          'new_RustOpaque_hide_data');
+  late final _new_RustOpaque_hide_data = _new_RustOpaque_hide_dataPtr
+      .asFunction<wire_RustOpaque_hide_data Function()>();
+
+  wire_RustOpaque_i_32 new_RustOpaque_i_32() {
+    return _new_RustOpaque_i_32();
+  }
+
+  late final _new_RustOpaque_i_32Ptr =
+      _lookup<ffi.NativeFunction<wire_RustOpaque_i_32 Function()>>(
+          'new_RustOpaque_i_32');
+  late final _new_RustOpaque_i_32 =
+      _new_RustOpaque_i_32Ptr.asFunction<wire_RustOpaque_i_32 Function()>();
+
+  wire_RustOpaque_non_clone_data new_RustOpaque_non_clone_data() {
+    return _new_RustOpaque_non_clone_data();
+  }
+
+  late final _new_RustOpaque_non_clone_dataPtr =
+      _lookup<ffi.NativeFunction<wire_RustOpaque_non_clone_data Function()>>(
+          'new_RustOpaque_non_clone_data');
+  late final _new_RustOpaque_non_clone_data = _new_RustOpaque_non_clone_dataPtr
+      .asFunction<wire_RustOpaque_non_clone_data Function()>();
+
+  wire_RustOpaque_non_send_hide_data new_RustOpaque_non_send_hide_data() {
+    return _new_RustOpaque_non_send_hide_data();
+  }
+
+  late final _new_RustOpaque_non_send_hide_dataPtr = _lookup<
+          ffi.NativeFunction<wire_RustOpaque_non_send_hide_data Function()>>(
+      'new_RustOpaque_non_send_hide_data');
+  late final _new_RustOpaque_non_send_hide_data =
+      _new_RustOpaque_non_send_hide_dataPtr
+          .asFunction<wire_RustOpaque_non_send_hide_data Function()>();
+
   ffi.Pointer<wire_StringList> new_StringList(
     int len,
   ) {
@@ -5577,6 +6515,29 @@ class RustLibWire implements BaseWire {
           'new_box_autoadd_Chrono_Utc');
   late final _new_box_autoadd_Chrono_Utc = _new_box_autoadd_Chrono_UtcPtr
       .asFunction<ffi.Pointer<ffi.Int64> Function(int)>();
+
+  ffi.Pointer<wire_DartOpaque> new_box_autoadd_DartOpaque() {
+    return _new_box_autoadd_DartOpaque();
+  }
+
+  late final _new_box_autoadd_DartOpaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_DartOpaque> Function()>>(
+          'new_box_autoadd_DartOpaque');
+  late final _new_box_autoadd_DartOpaque = _new_box_autoadd_DartOpaquePtr
+      .asFunction<ffi.Pointer<wire_DartOpaque> Function()>();
+
+  ffi.Pointer<wire_RustOpaque_hide_data>
+      new_box_autoadd_RustOpaque_hide_data() {
+    return _new_box_autoadd_RustOpaque_hide_data();
+  }
+
+  late final _new_box_autoadd_RustOpaque_hide_dataPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Pointer<wire_RustOpaque_hide_data> Function()>>(
+      'new_box_autoadd_RustOpaque_hide_data');
+  late final _new_box_autoadd_RustOpaque_hide_data =
+      _new_box_autoadd_RustOpaque_hide_dataPtr
+          .asFunction<ffi.Pointer<wire_RustOpaque_hide_data> Function()>();
 
   ffi.Pointer<wire_a> new_box_autoadd_a() {
     return _new_box_autoadd_a();
@@ -5770,6 +6731,38 @@ class RustLibWire implements BaseWire {
           'new_box_autoadd_customized');
   late final _new_box_autoadd_customized = _new_box_autoadd_customizedPtr
       .asFunction<ffi.Pointer<wire_customized> Function()>();
+
+  ffi.Pointer<wire_dart_opaque_nested> new_box_autoadd_dart_opaque_nested() {
+    return _new_box_autoadd_dart_opaque_nested();
+  }
+
+  late final _new_box_autoadd_dart_opaque_nestedPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<wire_dart_opaque_nested> Function()>>(
+      'new_box_autoadd_dart_opaque_nested');
+  late final _new_box_autoadd_dart_opaque_nested =
+      _new_box_autoadd_dart_opaque_nestedPtr
+          .asFunction<ffi.Pointer<wire_dart_opaque_nested> Function()>();
+
+  ffi.Pointer<wire_enum_dart_opaque> new_box_autoadd_enum_dart_opaque() {
+    return _new_box_autoadd_enum_dart_opaque();
+  }
+
+  late final _new_box_autoadd_enum_dart_opaquePtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<wire_enum_dart_opaque> Function()>>(
+      'new_box_autoadd_enum_dart_opaque');
+  late final _new_box_autoadd_enum_dart_opaque =
+      _new_box_autoadd_enum_dart_opaquePtr
+          .asFunction<ffi.Pointer<wire_enum_dart_opaque> Function()>();
+
+  ffi.Pointer<wire_enum_opaque> new_box_autoadd_enum_opaque() {
+    return _new_box_autoadd_enum_opaque();
+  }
+
+  late final _new_box_autoadd_enum_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_enum_opaque> Function()>>(
+          'new_box_autoadd_enum_opaque');
+  late final _new_box_autoadd_enum_opaque = _new_box_autoadd_enum_opaquePtr
+      .asFunction<ffi.Pointer<wire_enum_opaque> Function()>();
 
   ffi.Pointer<wire_enum_with_item_mixed_twin_normal>
       new_box_autoadd_enum_with_item_mixed_twin_normal() {
@@ -6075,6 +7068,16 @@ class RustLibWire implements BaseWire {
           'new_box_autoadd_numbers');
   late final _new_box_autoadd_numbers = _new_box_autoadd_numbersPtr
       .asFunction<ffi.Pointer<wire_numbers> Function()>();
+
+  ffi.Pointer<wire_opaque_nested> new_box_autoadd_opaque_nested() {
+    return _new_box_autoadd_opaque_nested();
+  }
+
+  late final _new_box_autoadd_opaque_nestedPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_opaque_nested> Function()>>(
+          'new_box_autoadd_opaque_nested');
+  late final _new_box_autoadd_opaque_nested = _new_box_autoadd_opaque_nestedPtr
+      .asFunction<ffi.Pointer<wire_opaque_nested> Function()>();
 
   ffi.Pointer<wire_opt_vecs> new_box_autoadd_opt_vecs() {
     return _new_box_autoadd_opt_vecs();
@@ -6522,6 +7525,36 @@ class RustLibWire implements BaseWire {
   late final _new_box_weekdays =
       _new_box_weekdaysPtr.asFunction<ffi.Pointer<ffi.Int32> Function(int)>();
 
+  ffi.Pointer<wire_list_DartOpaque> new_list_DartOpaque(
+    int len,
+  ) {
+    return _new_list_DartOpaque(
+      len,
+    );
+  }
+
+  late final _new_list_DartOpaquePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_list_DartOpaque> Function(
+              ffi.Int32)>>('new_list_DartOpaque');
+  late final _new_list_DartOpaque = _new_list_DartOpaquePtr
+      .asFunction<ffi.Pointer<wire_list_DartOpaque> Function(int)>();
+
+  ffi.Pointer<wire_list_RustOpaque_hide_data> new_list_RustOpaque_hide_data(
+    int len,
+  ) {
+    return _new_list_RustOpaque_hide_data(
+      len,
+    );
+  }
+
+  late final _new_list_RustOpaque_hide_dataPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_list_RustOpaque_hide_data> Function(
+              ffi.Int32)>>('new_list_RustOpaque_hide_data');
+  late final _new_list_RustOpaque_hide_data = _new_list_RustOpaque_hide_dataPtr
+      .asFunction<ffi.Pointer<wire_list_RustOpaque_hide_data> Function(int)>();
+
   ffi.Pointer<wire_list_application_env_var> new_list_application_env_var(
     int len,
   ) {
@@ -6870,6 +7903,252 @@ class RustLibWire implements BaseWire {
   late final _new_list_weekdays = _new_list_weekdaysPtr
       .asFunction<ffi.Pointer<wire_list_weekdays> Function(int)>();
 
+  void drop_opaque_RustOpaque_MutexHideData(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _drop_opaque_RustOpaque_MutexHideData(
+      ptr,
+    );
+  }
+
+  late final _drop_opaque_RustOpaque_MutexHideDataPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'drop_opaque_RustOpaque_MutexHideData');
+  late final _drop_opaque_RustOpaque_MutexHideData =
+      _drop_opaque_RustOpaque_MutexHideDataPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  ffi.Pointer<ffi.Void> share_opaque_RustOpaque_MutexHideData(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _share_opaque_RustOpaque_MutexHideData(
+      ptr,
+    );
+  }
+
+  late final _share_opaque_RustOpaque_MutexHideDataPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              ffi.Pointer<ffi.Void>)>>('share_opaque_RustOpaque_MutexHideData');
+  late final _share_opaque_RustOpaque_MutexHideData =
+      _share_opaque_RustOpaque_MutexHideDataPtr
+          .asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
+
+  void drop_opaque_RustOpaque_RwLockHideData(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _drop_opaque_RustOpaque_RwLockHideData(
+      ptr,
+    );
+  }
+
+  late final _drop_opaque_RustOpaque_RwLockHideDataPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'drop_opaque_RustOpaque_RwLockHideData');
+  late final _drop_opaque_RustOpaque_RwLockHideData =
+      _drop_opaque_RustOpaque_RwLockHideDataPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  ffi.Pointer<ffi.Void> share_opaque_RustOpaque_RwLockHideData(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _share_opaque_RustOpaque_RwLockHideData(
+      ptr,
+    );
+  }
+
+  late final _share_opaque_RustOpaque_RwLockHideDataPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
+      'share_opaque_RustOpaque_RwLockHideData');
+  late final _share_opaque_RustOpaque_RwLockHideData =
+      _share_opaque_RustOpaque_RwLockHideDataPtr
+          .asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
+
+  void drop_opaque_RustOpaque_box_dynDartDebug(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _drop_opaque_RustOpaque_box_dynDartDebug(
+      ptr,
+    );
+  }
+
+  late final _drop_opaque_RustOpaque_box_dynDartDebugPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'drop_opaque_RustOpaque_box_dynDartDebug');
+  late final _drop_opaque_RustOpaque_box_dynDartDebug =
+      _drop_opaque_RustOpaque_box_dynDartDebugPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  ffi.Pointer<ffi.Void> share_opaque_RustOpaque_box_dynDartDebug(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _share_opaque_RustOpaque_box_dynDartDebug(
+      ptr,
+    );
+  }
+
+  late final _share_opaque_RustOpaque_box_dynDartDebugPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
+      'share_opaque_RustOpaque_box_dynDartDebug');
+  late final _share_opaque_RustOpaque_box_dynDartDebug =
+      _share_opaque_RustOpaque_box_dynDartDebugPtr
+          .asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
+
+  void drop_opaque_RustOpaque_frb_opaque_return(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _drop_opaque_RustOpaque_frb_opaque_return(
+      ptr,
+    );
+  }
+
+  late final _drop_opaque_RustOpaque_frb_opaque_returnPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'drop_opaque_RustOpaque_frb_opaque_return');
+  late final _drop_opaque_RustOpaque_frb_opaque_return =
+      _drop_opaque_RustOpaque_frb_opaque_returnPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  ffi.Pointer<ffi.Void> share_opaque_RustOpaque_frb_opaque_return(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _share_opaque_RustOpaque_frb_opaque_return(
+      ptr,
+    );
+  }
+
+  late final _share_opaque_RustOpaque_frb_opaque_returnPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
+      'share_opaque_RustOpaque_frb_opaque_return');
+  late final _share_opaque_RustOpaque_frb_opaque_return =
+      _share_opaque_RustOpaque_frb_opaque_returnPtr
+          .asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
+
+  void drop_opaque_RustOpaque_frb_opaque_sync_return(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _drop_opaque_RustOpaque_frb_opaque_sync_return(
+      ptr,
+    );
+  }
+
+  late final _drop_opaque_RustOpaque_frb_opaque_sync_returnPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'drop_opaque_RustOpaque_frb_opaque_sync_return');
+  late final _drop_opaque_RustOpaque_frb_opaque_sync_return =
+      _drop_opaque_RustOpaque_frb_opaque_sync_returnPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  ffi.Pointer<ffi.Void> share_opaque_RustOpaque_frb_opaque_sync_return(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _share_opaque_RustOpaque_frb_opaque_sync_return(
+      ptr,
+    );
+  }
+
+  late final _share_opaque_RustOpaque_frb_opaque_sync_returnPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
+      'share_opaque_RustOpaque_frb_opaque_sync_return');
+  late final _share_opaque_RustOpaque_frb_opaque_sync_return =
+      _share_opaque_RustOpaque_frb_opaque_sync_returnPtr
+          .asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
+
+  void drop_opaque_RustOpaque_hide_data(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _drop_opaque_RustOpaque_hide_data(
+      ptr,
+    );
+  }
+
+  late final _drop_opaque_RustOpaque_hide_dataPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'drop_opaque_RustOpaque_hide_data');
+  late final _drop_opaque_RustOpaque_hide_data =
+      _drop_opaque_RustOpaque_hide_dataPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  ffi.Pointer<ffi.Void> share_opaque_RustOpaque_hide_data(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _share_opaque_RustOpaque_hide_data(
+      ptr,
+    );
+  }
+
+  late final _share_opaque_RustOpaque_hide_dataPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              ffi.Pointer<ffi.Void>)>>('share_opaque_RustOpaque_hide_data');
+  late final _share_opaque_RustOpaque_hide_data =
+      _share_opaque_RustOpaque_hide_dataPtr
+          .asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
+
+  void drop_opaque_RustOpaque_i_32(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _drop_opaque_RustOpaque_i_32(
+      ptr,
+    );
+  }
+
+  late final _drop_opaque_RustOpaque_i_32Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'drop_opaque_RustOpaque_i_32');
+  late final _drop_opaque_RustOpaque_i_32 = _drop_opaque_RustOpaque_i_32Ptr
+      .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  ffi.Pointer<ffi.Void> share_opaque_RustOpaque_i_32(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _share_opaque_RustOpaque_i_32(
+      ptr,
+    );
+  }
+
+  late final _share_opaque_RustOpaque_i_32Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              ffi.Pointer<ffi.Void>)>>('share_opaque_RustOpaque_i_32');
+  late final _share_opaque_RustOpaque_i_32 = _share_opaque_RustOpaque_i_32Ptr
+      .asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
+
+  void drop_opaque_RustOpaque_non_send_hide_data(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _drop_opaque_RustOpaque_non_send_hide_data(
+      ptr,
+    );
+  }
+
+  late final _drop_opaque_RustOpaque_non_send_hide_dataPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'drop_opaque_RustOpaque_non_send_hide_data');
+  late final _drop_opaque_RustOpaque_non_send_hide_data =
+      _drop_opaque_RustOpaque_non_send_hide_dataPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  ffi.Pointer<ffi.Void> share_opaque_RustOpaque_non_send_hide_data(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _share_opaque_RustOpaque_non_send_hide_data(
+      ptr,
+    );
+  }
+
+  late final _share_opaque_RustOpaque_non_send_hide_dataPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
+      'share_opaque_RustOpaque_non_send_hide_data');
+  late final _share_opaque_RustOpaque_non_send_hide_data =
+      _share_opaque_RustOpaque_non_send_hide_dataPtr
+          .asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
+
   ffi.Pointer<AbcKind> inflate_Abc_A() {
     return _inflate_Abc_A();
   }
@@ -7023,6 +8302,77 @@ class RustLibWire implements BaseWire {
           'inflate_Distance_Map');
   late final _inflate_Distance_Map = _inflate_Distance_MapPtr
       .asFunction<ffi.Pointer<DistanceKind> Function()>();
+
+  ffi.Pointer<EnumDartOpaqueKind> inflate_EnumDartOpaque_Primitive() {
+    return _inflate_EnumDartOpaque_Primitive();
+  }
+
+  late final _inflate_EnumDartOpaque_PrimitivePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<EnumDartOpaqueKind> Function()>>(
+          'inflate_EnumDartOpaque_Primitive');
+  late final _inflate_EnumDartOpaque_Primitive =
+      _inflate_EnumDartOpaque_PrimitivePtr
+          .asFunction<ffi.Pointer<EnumDartOpaqueKind> Function()>();
+
+  ffi.Pointer<EnumDartOpaqueKind> inflate_EnumDartOpaque_Opaque() {
+    return _inflate_EnumDartOpaque_Opaque();
+  }
+
+  late final _inflate_EnumDartOpaque_OpaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<EnumDartOpaqueKind> Function()>>(
+          'inflate_EnumDartOpaque_Opaque');
+  late final _inflate_EnumDartOpaque_Opaque = _inflate_EnumDartOpaque_OpaquePtr
+      .asFunction<ffi.Pointer<EnumDartOpaqueKind> Function()>();
+
+  ffi.Pointer<EnumOpaqueKind> inflate_EnumOpaque_Struct() {
+    return _inflate_EnumOpaque_Struct();
+  }
+
+  late final _inflate_EnumOpaque_StructPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<EnumOpaqueKind> Function()>>(
+          'inflate_EnumOpaque_Struct');
+  late final _inflate_EnumOpaque_Struct = _inflate_EnumOpaque_StructPtr
+      .asFunction<ffi.Pointer<EnumOpaqueKind> Function()>();
+
+  ffi.Pointer<EnumOpaqueKind> inflate_EnumOpaque_Primitive() {
+    return _inflate_EnumOpaque_Primitive();
+  }
+
+  late final _inflate_EnumOpaque_PrimitivePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<EnumOpaqueKind> Function()>>(
+          'inflate_EnumOpaque_Primitive');
+  late final _inflate_EnumOpaque_Primitive = _inflate_EnumOpaque_PrimitivePtr
+      .asFunction<ffi.Pointer<EnumOpaqueKind> Function()>();
+
+  ffi.Pointer<EnumOpaqueKind> inflate_EnumOpaque_TraitObj() {
+    return _inflate_EnumOpaque_TraitObj();
+  }
+
+  late final _inflate_EnumOpaque_TraitObjPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<EnumOpaqueKind> Function()>>(
+          'inflate_EnumOpaque_TraitObj');
+  late final _inflate_EnumOpaque_TraitObj = _inflate_EnumOpaque_TraitObjPtr
+      .asFunction<ffi.Pointer<EnumOpaqueKind> Function()>();
+
+  ffi.Pointer<EnumOpaqueKind> inflate_EnumOpaque_Mutex() {
+    return _inflate_EnumOpaque_Mutex();
+  }
+
+  late final _inflate_EnumOpaque_MutexPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<EnumOpaqueKind> Function()>>(
+          'inflate_EnumOpaque_Mutex');
+  late final _inflate_EnumOpaque_Mutex = _inflate_EnumOpaque_MutexPtr
+      .asFunction<ffi.Pointer<EnumOpaqueKind> Function()>();
+
+  ffi.Pointer<EnumOpaqueKind> inflate_EnumOpaque_RwLock() {
+    return _inflate_EnumOpaque_RwLock();
+  }
+
+  late final _inflate_EnumOpaque_RwLockPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<EnumOpaqueKind> Function()>>(
+          'inflate_EnumOpaque_RwLock');
+  late final _inflate_EnumOpaque_RwLock = _inflate_EnumOpaque_RwLockPtr
+      .asFunction<ffi.Pointer<EnumOpaqueKind> Function()>();
 
   ffi.Pointer<EnumWithItemMixedTwinNormalKind>
       inflate_EnumWithItemMixedTwinNormal_B() {
@@ -7300,6 +8650,49 @@ final class wire_feature_chrono extends ffi.Struct {
 final class wire_struct_with_comments_twin_normal extends ffi.Struct {
   @ffi.Int32()
   external int field_with_comments;
+}
+
+final class wire_DartOpaque extends ffi.Struct {
+  @ffi.Int64()
+  external int port;
+
+  @ffi.UintPtr()
+  external int handle;
+}
+
+final class wire_EnumDartOpaque_Primitive extends ffi.Struct {
+  @ffi.Int32()
+  external int field0;
+}
+
+final class wire_EnumDartOpaque_Opaque extends ffi.Struct {
+  external wire_DartOpaque field0;
+}
+
+final class EnumDartOpaqueKind extends ffi.Union {
+  external ffi.Pointer<wire_EnumDartOpaque_Primitive> Primitive;
+
+  external ffi.Pointer<wire_EnumDartOpaque_Opaque> Opaque;
+}
+
+final class wire_enum_dart_opaque extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<EnumDartOpaqueKind> kind;
+}
+
+final class wire_dart_opaque_nested extends ffi.Struct {
+  external wire_DartOpaque first;
+
+  external wire_DartOpaque second;
+}
+
+final class wire_list_DartOpaque extends ffi.Struct {
+  external ffi.Pointer<wire_DartOpaque> ptr;
+
+  @ffi.Int32()
+  external int len;
 }
 
 final class wire_EnumWithItemMixedTwinNormal_A extends ffi.Opaque {}
@@ -7943,6 +9336,86 @@ final class wire_tuple_struct_with_two_field_twin_sync extends ffi.Struct {
 
   @ffi.Int32()
   external int field1;
+}
+
+final class wire_RustOpaque_hide_data extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> ptr;
+}
+
+final class wire_list_RustOpaque_hide_data extends ffi.Struct {
+  external ffi.Pointer<wire_RustOpaque_hide_data> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+final class wire_EnumOpaque_Struct extends ffi.Struct {
+  external wire_RustOpaque_hide_data field0;
+}
+
+final class wire_RustOpaque_i_32 extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> ptr;
+}
+
+final class wire_EnumOpaque_Primitive extends ffi.Struct {
+  external wire_RustOpaque_i_32 field0;
+}
+
+final class wire_RustOpaque_box_dynDartDebug extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> ptr;
+}
+
+final class wire_EnumOpaque_TraitObj extends ffi.Struct {
+  external wire_RustOpaque_box_dynDartDebug field0;
+}
+
+final class wire_RustOpaque_MutexHideData extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> ptr;
+}
+
+final class wire_EnumOpaque_Mutex extends ffi.Struct {
+  external wire_RustOpaque_MutexHideData field0;
+}
+
+final class wire_RustOpaque_RwLockHideData extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> ptr;
+}
+
+final class wire_EnumOpaque_RwLock extends ffi.Struct {
+  external wire_RustOpaque_RwLockHideData field0;
+}
+
+final class EnumOpaqueKind extends ffi.Union {
+  external ffi.Pointer<wire_EnumOpaque_Struct> Struct;
+
+  external ffi.Pointer<wire_EnumOpaque_Primitive> Primitive;
+
+  external ffi.Pointer<wire_EnumOpaque_TraitObj> TraitObj;
+
+  external ffi.Pointer<wire_EnumOpaque_Mutex> Mutex;
+
+  external ffi.Pointer<wire_EnumOpaque_RwLock> RwLock;
+}
+
+final class wire_enum_opaque extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<EnumOpaqueKind> kind;
+}
+
+final class wire_opaque_nested extends ffi.Struct {
+  external wire_RustOpaque_hide_data first;
+
+  external wire_RustOpaque_hide_data second;
+}
+
+final class wire_RustOpaque_non_clone_data extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> ptr;
+}
+
+final class wire_RustOpaque_non_send_hide_data extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> ptr;
 }
 
 final class wire_struct_with_one_field_twin_normal extends ffi.Struct {
