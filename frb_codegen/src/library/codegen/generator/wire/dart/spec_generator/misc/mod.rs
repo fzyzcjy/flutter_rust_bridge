@@ -40,6 +40,7 @@ pub(crate) fn generate(
             &context.config.default_external_library_stem,
             &context.config.default_external_library_relative_directory,
             &context.config.dart_impl_output_path,
+            cache,
             api_dart_actual_output_paths,
         )?,
         api_impl_normal_functions: (context.ir_pack.funcs.iter())
@@ -57,6 +58,7 @@ fn generate_boilerplate(
     default_external_library_relative_directory: &str,
     dart_impl_output_path: &TargetOrCommonMap<PathBuf>,
     api_dart_actual_output_paths: &[PathBuf],
+    cache: &IrPackComputedCache,
     context: WireDartGeneratorContext,
 ) -> anyhow::Result<Acc<Vec<WireDartOutputCode>>> {
     let DartOutputClassNamePack {
@@ -73,7 +75,7 @@ fn generate_boilerplate(
         generate_import_dart_api_layer(dart_impl_output_path, api_dart_actual_output_paths)?;
     universal_imports += &generate_imports_which_types_and_funcs_use(
         None,
-        &Some(TODO),
+        &Some(&cache.distinct_types.iter().collect_vec()),
         &None,
         context.as_api_dart_context(),
     )?;
