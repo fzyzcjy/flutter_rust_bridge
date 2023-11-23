@@ -35,40 +35,6 @@ pub enum KitchenSink {
     Enums(#[frb(default = "Weekdays.Sunday")] Weekdays),
 }
 
-#[frb(unimpl_fn_attr)]
-pub fn handle_enum_struct(val: KitchenSink) -> KitchenSink {
-    use KitchenSink::*;
-    use Weekdays::*;
-    let inc = |x| x + 1;
-    match val {
-        Primitives {
-            int32,
-            float64,
-            boolean,
-        } => Primitives {
-            int32: int32 + 1,
-            float64: float64 + 1.,
-            boolean: !boolean,
-        },
-        Nested(val, nested) => Nested(inc(val), Box::new(handle_enum_struct(*nested))),
-        Optional(a, b) => Optional(a.map(inc), b.map(inc)),
-        Buffer(ZeroCopyBuffer(mut buf)) => {
-            buf.push(1);
-            Buffer(ZeroCopyBuffer(buf))
-        }
-        Enums(day) => Enums(match day {
-            Monday => Tuesday,
-            Tuesday => Wednesday,
-            Wednesday => Thursday,
-            Thursday => Friday,
-            Friday => Saturday,
-            Saturday => Sunday,
-            Sunday => Monday,
-        }),
-        _ => val,
-    }
-}
-
 /// Example for @freezed and @meta.immutable
 #[frb(dart_metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]
 pub struct UserId {
