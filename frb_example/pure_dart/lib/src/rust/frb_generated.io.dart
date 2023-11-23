@@ -310,6 +310,156 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int api2wire_u_64(BigInt raw) {
     return raw.toInt();
   }
+
+  void _api_fill_to_wire_box_autoadd_enum_with_item_mixed(
+      EnumWithItemMixed apiObj,
+      ffi.Pointer<wire_enum_with_item_mixed> wireObj) {
+    _api_fill_to_wire_enum_with_item_mixed(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_enum_with_item_struct(
+      EnumWithItemStruct apiObj,
+      ffi.Pointer<wire_enum_with_item_struct> wireObj) {
+    _api_fill_to_wire_enum_with_item_struct(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_enum_with_item_tuple(
+      EnumWithItemTuple apiObj,
+      ffi.Pointer<wire_enum_with_item_tuple> wireObj) {
+    _api_fill_to_wire_enum_with_item_tuple(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_struct_with_comments_twin_normal(
+      StructWithCommentsTwinNormal apiObj,
+      ffi.Pointer<wire_struct_with_comments_twin_normal> wireObj) {
+    _api_fill_to_wire_struct_with_comments_twin_normal(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_struct_with_comments_twin_sync(
+      StructWithCommentsTwinSync apiObj,
+      ffi.Pointer<wire_struct_with_comments_twin_sync> wireObj) {
+    _api_fill_to_wire_struct_with_comments_twin_sync(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_struct_with_one_field(
+      StructWithOneField apiObj,
+      ffi.Pointer<wire_struct_with_one_field> wireObj) {
+    _api_fill_to_wire_struct_with_one_field(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_struct_with_two_field(
+      StructWithTwoField apiObj,
+      ffi.Pointer<wire_struct_with_two_field> wireObj) {
+    _api_fill_to_wire_struct_with_two_field(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_tuple_struct_with_one_field(
+      TupleStructWithOneField apiObj,
+      ffi.Pointer<wire_tuple_struct_with_one_field> wireObj) {
+    _api_fill_to_wire_tuple_struct_with_one_field(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_tuple_struct_with_two_field(
+      TupleStructWithTwoField apiObj,
+      ffi.Pointer<wire_tuple_struct_with_two_field> wireObj) {
+    _api_fill_to_wire_tuple_struct_with_two_field(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_enum_with_item_mixed(
+      EnumWithItemMixed apiObj, wire_enum_with_item_mixed wireObj) {
+    if (apiObj is EnumWithItemMixed_A) {
+      wireObj.tag = 0;
+      return;
+    }
+    if (apiObj is EnumWithItemMixed_B) {
+      var pre_field0 = api2wire_list_prim_u_8(apiObj.field0);
+      wireObj.tag = 1;
+      wireObj.kind = inner.inflate_EnumWithItemMixed_B();
+      wireObj.kind.ref.B.ref.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is EnumWithItemMixed_C) {
+      var pre_c_field = api2wire_String(apiObj.cField);
+      wireObj.tag = 2;
+      wireObj.kind = inner.inflate_EnumWithItemMixed_C();
+      wireObj.kind.ref.C.ref.c_field = pre_c_field;
+      return;
+    }
+  }
+
+  void _api_fill_to_wire_enum_with_item_struct(
+      EnumWithItemStruct apiObj, wire_enum_with_item_struct wireObj) {
+    if (apiObj is EnumWithItemStruct_A) {
+      var pre_a_field = api2wire_list_prim_u_8(apiObj.aField);
+      wireObj.tag = 0;
+      wireObj.kind = inner.inflate_EnumWithItemStruct_A();
+      wireObj.kind.ref.A.ref.a_field = pre_a_field;
+      return;
+    }
+    if (apiObj is EnumWithItemStruct_B) {
+      var pre_b_field = api2wire_list_prim_i_32(apiObj.bField);
+      wireObj.tag = 1;
+      wireObj.kind = inner.inflate_EnumWithItemStruct_B();
+      wireObj.kind.ref.B.ref.b_field = pre_b_field;
+      return;
+    }
+  }
+
+  void _api_fill_to_wire_enum_with_item_tuple(
+      EnumWithItemTuple apiObj, wire_enum_with_item_tuple wireObj) {
+    if (apiObj is EnumWithItemTuple_A) {
+      var pre_field0 = api2wire_list_prim_u_8(apiObj.field0);
+      wireObj.tag = 0;
+      wireObj.kind = inner.inflate_EnumWithItemTuple_A();
+      wireObj.kind.ref.A.ref.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is EnumWithItemTuple_B) {
+      var pre_field0 = api2wire_list_prim_i_32(apiObj.field0);
+      wireObj.tag = 1;
+      wireObj.kind = inner.inflate_EnumWithItemTuple_B();
+      wireObj.kind.ref.B.ref.field0 = pre_field0;
+      return;
+    }
+  }
+
+  void _api_fill_to_wire_struct_with_comments_twin_normal(
+      StructWithCommentsTwinNormal apiObj,
+      wire_struct_with_comments_twin_normal wireObj) {
+    wireObj.field_with_comments = api2wire_i_32(apiObj.fieldWithComments);
+  }
+
+  void _api_fill_to_wire_struct_with_comments_twin_sync(
+      StructWithCommentsTwinSync apiObj,
+      wire_struct_with_comments_twin_sync wireObj) {
+    wireObj.field_with_comments = api2wire_i_32(apiObj.fieldWithComments);
+  }
+
+  void _api_fill_to_wire_struct_with_one_field(
+      StructWithOneField apiObj, wire_struct_with_one_field wireObj) {
+    wireObj.a = api2wire_i_32(apiObj.a);
+  }
+
+  void _api_fill_to_wire_struct_with_two_field(
+      StructWithTwoField apiObj, wire_struct_with_two_field wireObj) {
+    wireObj.a = api2wire_i_32(apiObj.a);
+    wireObj.b = api2wire_i_32(apiObj.b);
+  }
+
+  void _api_fill_to_wire_struct_with_zero_field(
+      StructWithZeroField apiObj, wire_struct_with_zero_field wireObj) {}
+  void _api_fill_to_wire_tuple_struct_with_one_field(
+      TupleStructWithOneField apiObj,
+      wire_tuple_struct_with_one_field wireObj) {
+    wireObj.field0 = api2wire_i_32(apiObj.field0);
+  }
+
+  void _api_fill_to_wire_tuple_struct_with_two_field(
+      TupleStructWithTwoField apiObj,
+      wire_tuple_struct_with_two_field wireObj) {
+    wireObj.field0 = api2wire_i_32(apiObj.field0);
+    wireObj.field1 = api2wire_i_32(apiObj.field1);
+  }
 }
 
 // Section: c_binding
@@ -2476,152 +2626,4 @@ final class wire_tuple_struct_with_two_field extends ffi.Struct {
 
   @ffi.Int32()
   external int field1;
-}
-
-// Section: api_fill_to_wire_funcs
-
-void _api_fill_to_wire_box_autoadd_enum_with_item_mixed(
-    EnumWithItemMixed apiObj, ffi.Pointer<wire_enum_with_item_mixed> wireObj) {
-  _api_fill_to_wire_enum_with_item_mixed(apiObj, wireObj.ref);
-}
-
-void _api_fill_to_wire_box_autoadd_enum_with_item_struct(
-    EnumWithItemStruct apiObj,
-    ffi.Pointer<wire_enum_with_item_struct> wireObj) {
-  _api_fill_to_wire_enum_with_item_struct(apiObj, wireObj.ref);
-}
-
-void _api_fill_to_wire_box_autoadd_enum_with_item_tuple(
-    EnumWithItemTuple apiObj, ffi.Pointer<wire_enum_with_item_tuple> wireObj) {
-  _api_fill_to_wire_enum_with_item_tuple(apiObj, wireObj.ref);
-}
-
-void _api_fill_to_wire_box_autoadd_struct_with_comments_twin_normal(
-    StructWithCommentsTwinNormal apiObj,
-    ffi.Pointer<wire_struct_with_comments_twin_normal> wireObj) {
-  _api_fill_to_wire_struct_with_comments_twin_normal(apiObj, wireObj.ref);
-}
-
-void _api_fill_to_wire_box_autoadd_struct_with_comments_twin_sync(
-    StructWithCommentsTwinSync apiObj,
-    ffi.Pointer<wire_struct_with_comments_twin_sync> wireObj) {
-  _api_fill_to_wire_struct_with_comments_twin_sync(apiObj, wireObj.ref);
-}
-
-void _api_fill_to_wire_box_autoadd_struct_with_one_field(
-    StructWithOneField apiObj,
-    ffi.Pointer<wire_struct_with_one_field> wireObj) {
-  _api_fill_to_wire_struct_with_one_field(apiObj, wireObj.ref);
-}
-
-void _api_fill_to_wire_box_autoadd_struct_with_two_field(
-    StructWithTwoField apiObj,
-    ffi.Pointer<wire_struct_with_two_field> wireObj) {
-  _api_fill_to_wire_struct_with_two_field(apiObj, wireObj.ref);
-}
-
-void _api_fill_to_wire_box_autoadd_tuple_struct_with_one_field(
-    TupleStructWithOneField apiObj,
-    ffi.Pointer<wire_tuple_struct_with_one_field> wireObj) {
-  _api_fill_to_wire_tuple_struct_with_one_field(apiObj, wireObj.ref);
-}
-
-void _api_fill_to_wire_box_autoadd_tuple_struct_with_two_field(
-    TupleStructWithTwoField apiObj,
-    ffi.Pointer<wire_tuple_struct_with_two_field> wireObj) {
-  _api_fill_to_wire_tuple_struct_with_two_field(apiObj, wireObj.ref);
-}
-
-void _api_fill_to_wire_enum_with_item_mixed(
-    EnumWithItemMixed apiObj, wire_enum_with_item_mixed wireObj) {
-  if (apiObj is EnumWithItemMixed_A) {
-    wireObj.tag = 0;
-    return;
-  }
-  if (apiObj is EnumWithItemMixed_B) {
-    var pre_field0 = api2wire_list_prim_u_8(apiObj.field0);
-    wireObj.tag = 1;
-    wireObj.kind = inner.inflate_EnumWithItemMixed_B();
-    wireObj.kind.ref.B.ref.field0 = pre_field0;
-    return;
-  }
-  if (apiObj is EnumWithItemMixed_C) {
-    var pre_c_field = api2wire_String(apiObj.cField);
-    wireObj.tag = 2;
-    wireObj.kind = inner.inflate_EnumWithItemMixed_C();
-    wireObj.kind.ref.C.ref.c_field = pre_c_field;
-    return;
-  }
-}
-
-void _api_fill_to_wire_enum_with_item_struct(
-    EnumWithItemStruct apiObj, wire_enum_with_item_struct wireObj) {
-  if (apiObj is EnumWithItemStruct_A) {
-    var pre_a_field = api2wire_list_prim_u_8(apiObj.aField);
-    wireObj.tag = 0;
-    wireObj.kind = inner.inflate_EnumWithItemStruct_A();
-    wireObj.kind.ref.A.ref.a_field = pre_a_field;
-    return;
-  }
-  if (apiObj is EnumWithItemStruct_B) {
-    var pre_b_field = api2wire_list_prim_i_32(apiObj.bField);
-    wireObj.tag = 1;
-    wireObj.kind = inner.inflate_EnumWithItemStruct_B();
-    wireObj.kind.ref.B.ref.b_field = pre_b_field;
-    return;
-  }
-}
-
-void _api_fill_to_wire_enum_with_item_tuple(
-    EnumWithItemTuple apiObj, wire_enum_with_item_tuple wireObj) {
-  if (apiObj is EnumWithItemTuple_A) {
-    var pre_field0 = api2wire_list_prim_u_8(apiObj.field0);
-    wireObj.tag = 0;
-    wireObj.kind = inner.inflate_EnumWithItemTuple_A();
-    wireObj.kind.ref.A.ref.field0 = pre_field0;
-    return;
-  }
-  if (apiObj is EnumWithItemTuple_B) {
-    var pre_field0 = api2wire_list_prim_i_32(apiObj.field0);
-    wireObj.tag = 1;
-    wireObj.kind = inner.inflate_EnumWithItemTuple_B();
-    wireObj.kind.ref.B.ref.field0 = pre_field0;
-    return;
-  }
-}
-
-void _api_fill_to_wire_struct_with_comments_twin_normal(
-    StructWithCommentsTwinNormal apiObj,
-    wire_struct_with_comments_twin_normal wireObj) {
-  wireObj.field_with_comments = api2wire_i_32(apiObj.fieldWithComments);
-}
-
-void _api_fill_to_wire_struct_with_comments_twin_sync(
-    StructWithCommentsTwinSync apiObj,
-    wire_struct_with_comments_twin_sync wireObj) {
-  wireObj.field_with_comments = api2wire_i_32(apiObj.fieldWithComments);
-}
-
-void _api_fill_to_wire_struct_with_one_field(
-    StructWithOneField apiObj, wire_struct_with_one_field wireObj) {
-  wireObj.a = api2wire_i_32(apiObj.a);
-}
-
-void _api_fill_to_wire_struct_with_two_field(
-    StructWithTwoField apiObj, wire_struct_with_two_field wireObj) {
-  wireObj.a = api2wire_i_32(apiObj.a);
-  wireObj.b = api2wire_i_32(apiObj.b);
-}
-
-void _api_fill_to_wire_struct_with_zero_field(
-    StructWithZeroField apiObj, wire_struct_with_zero_field wireObj) {}
-void _api_fill_to_wire_tuple_struct_with_one_field(
-    TupleStructWithOneField apiObj, wire_tuple_struct_with_one_field wireObj) {
-  wireObj.field0 = api2wire_i_32(apiObj.field0);
-}
-
-void _api_fill_to_wire_tuple_struct_with_two_field(
-    TupleStructWithTwoField apiObj, wire_tuple_struct_with_two_field wireObj) {
-  wireObj.field0 = api2wire_i_32(apiObj.field0);
-  wireObj.field1 = api2wire_i_32(apiObj.field1);
 }
