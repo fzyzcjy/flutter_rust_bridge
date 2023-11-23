@@ -77,8 +77,8 @@ fn parse_datetime(args: &[IrType]) -> anyhow::Result<IrType> {
                 Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Local))
             }
 
-            _ => bail!("Invalid DateTime generic"),
+            _ => bail!("Invalid DateTime generic: {args:?}"),
         });
     }
-    bail!("Invalid DateTime generic")
+    bail!("Invalid DateTime generic: {args:?}")
 }
