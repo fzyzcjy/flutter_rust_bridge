@@ -25,6 +25,15 @@ impl WireRustOutputCode {
     }
 }
 
+impl From<String> for WireRustOutputCode {
+    fn from(body: String) -> Self {
+        Self {
+            body,
+            ..Default::default()
+        }
+    }
+}
+
 impl AddAssign for WireRustOutputCode {
     #[inline]
     fn add_assign(&mut self, rhs: Self) {

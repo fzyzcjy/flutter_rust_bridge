@@ -1,3 +1,5 @@
+use serde::Serialize;
+
 pub(crate) trait BasicCode {
     fn body(&self) -> &str;
 
@@ -8,15 +10,6 @@ pub(crate) trait BasicCode {
 #[macro_export]
 macro_rules! basic_code_impl {
     ($name:ident) => {
-        impl From<String> for $name {
-            fn from(body: String) -> Self {
-                Self {
-                    body,
-                    ..Default::default()
-                }
-            }
-        }
-
         impl From<&str> for $name {
             fn from(value: &str) -> Self {
                 value.to_owned().into()
@@ -51,4 +44,23 @@ macro_rules! basic_code_impl {
             }
         }
     };
+}
+
+#[derive(Default, Clone, Debug, Serialize)]
+pub(crate) struct DartBasicCode {
+    pub file_top: String,
+    pub import: String,
+    pub part: String,
+    pub body: String,
+}
+
+basic_code_impl!(DartBasicCode);
+
+impl From<String> for DartBasicCode {
+    fn from(body: String) -> Self {
+        Self {
+            body,
+            ..Default::default()
+        }
+    }
 }

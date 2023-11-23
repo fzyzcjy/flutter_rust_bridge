@@ -1,33 +1,37 @@
 use crate::basic_code_impl;
 use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNamePack;
+use crate::utils::basic_code::DartBasicCode;
 use itertools::Itertools;
 use serde::Serialize;
 use std::ops::AddAssign;
 
 #[derive(Default, Clone, Debug, Serialize)]
 pub(crate) struct WireDartOutputCode {
-    pub file_top: String,
-    pub import: String,
-    pub part: String,
+    pub basic: DartBasicCode,
     pub body_top: String,
     pub api_body: String,
     pub api_impl_body: String,
-    pub body: String,
 }
 
 basic_code_impl!(WireDartOutputCode);
 
+impl From<String> for WireDartOutputCode {
+    fn from(body: String) -> Self {
+        Self {
+            basic: body.into(),
+            ..Default::default()
+        }
+    }
+}
+
 impl AddAssign for WireDartOutputCode {
     #[inline]
     fn add_assign(&mut self, rhs: Self) {
-        self.file_top += &rhs.file_top;
-        self.import += &rhs.import;
-        self.part += &rhs.part;
+        self.basic += &rhs.basic;
         self.body_top += &rhs.body_top;
         self.api_body += &rhs.api_body;
         self.api_impl_body += &rhs.api_impl_body;
-        self.body += &rhs.body;
     }
 }
 
