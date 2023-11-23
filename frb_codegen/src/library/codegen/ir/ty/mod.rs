@@ -13,6 +13,7 @@ pub(crate) mod rust_opaque;
 pub(crate) mod structure;
 pub(crate) mod unencodable;
 
+use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
@@ -81,6 +82,10 @@ pub trait IrTypeTrait {
 
     #[inline]
     fn as_primitive(&self) -> Option<&IrTypePrimitive> {
+        None
+    }
+
+    fn self_namespace(&self) -> Option<Namespace> {
         None
     }
 }

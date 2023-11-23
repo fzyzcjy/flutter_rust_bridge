@@ -3,7 +3,7 @@
 use crate::codegen::ir::annotation::IrDartAnnotation;
 use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::namespace::NamespacedName;
+use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use convert_case::{Case, Casing};
@@ -46,6 +46,10 @@ impl IrTypeTrait for IrTypeStructRef {
 
     fn rust_api_type(&self) -> String {
         self.ident.0.name.to_string()
+    }
+
+    fn self_namespace(&self) -> Option<Namespace> {
+        Some(self.ident.0.namespace.clone())
     }
 }
 

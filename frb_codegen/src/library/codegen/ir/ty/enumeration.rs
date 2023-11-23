@@ -2,7 +2,7 @@
 
 use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::ident::IrIdent;
-use crate::codegen::ir::namespace::NamespacedName;
+use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::structure::IrStruct;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
@@ -70,6 +70,10 @@ impl IrTypeTrait for IrTypeEnumRef {
 
     fn rust_api_type(&self) -> String {
         self.ident.0.name.to_string()
+    }
+
+    fn self_namespace(&self) -> Option<Namespace> {
+        Some(self.ident.0.namespace.clone())
     }
 }
 
