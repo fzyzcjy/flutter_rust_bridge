@@ -1,3 +1,5 @@
+use crate::codegen::dumper::Dumper;
+use crate::codegen::ConfigDumpContent;
 use crate::library::commands::command_runner::execute_command;
 use anyhow::{bail, Context, Result};
 use itertools::Itertools;
@@ -13,7 +15,8 @@ pub(crate) fn cargo_expand(
     rust_crate_dir: &Path,
     module: Option<String>,
     rust_file_path: &Path,
-) -> Result<(String, String)> {
+    dumper: &Dumper,
+) -> Result<String> {
     let manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
 
     if !manifest_dir.is_empty() && rust_crate_dir == PathBuf::from(manifest_dir) {
@@ -31,7 +34,16 @@ pub(crate) fn cargo_expand(
         Vacant(entry) => entry.insert(run_cargo_expand(rust_crate_dir)?),
     };
 
-    (expanded, extract_module(expanded, module))
+    dumper.dump_str(
+        ConfigDumpContent::Source,
+        &format!(
+            "cargo_expand/{}.rs",
+            module.clone().unwrap_or("no_module".into())
+        ),
+        &expanded,
+    )?;
+
+    extract_module(expanded, module)
 }
 
 lazy_static! {
