@@ -98,3 +98,22 @@ fn optimize_imports(raw: &str) -> String {
         .dedup()
         .join("\n")
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    pub fn test_optimize_imports_simple() {
+        assert_eq!(
+            optimize_imports(
+                "
+                import 'orange.dart';
+                import 'apple.dart';
+                import 'orange.dart';
+                "
+            ),
+            "import 'apple.dart';\nimport 'orange.dart';"
+        );
+    }
+}
