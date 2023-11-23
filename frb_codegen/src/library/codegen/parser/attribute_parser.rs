@@ -2,6 +2,7 @@ use crate::codegen::ir::annotation::IrDartAnnotation;
 use crate::codegen::ir::default::IrDefaultValue;
 use crate::codegen::ir::import::IrDartImport;
 use crate::if_then_some;
+use anyhow::Context;
 use itertools::Itertools;
 use serde::{Serialize, Serializer};
 use syn::parse::{Parse, ParseStream};
@@ -13,13 +14,16 @@ const METADATA_IDENT: &str = "frb";
 pub(crate) struct FrbAttributes(Vec<FrbAttribute>);
 
 impl FrbAttributes {
-    pub(crate) fn parse(attrs: &[Attribute]) -> Result<Self> {
+    pub(crate) fn parse(attrs: &[Attribute]) -> anyhow::Result<Self> {
         Ok(Self(
             attrs
                 .iter()
                 .filter(|attr| attr.path().is_ident(METADATA_IDENT))
-                .map(|attr| attr.parse_args::<FrbAttribute>())
-                .collect::<Result<Vec<_>>>()?,
+                .map(|attr| {
+                    attr.parse_args::<FrbAttribute>()
+                        .with_context(|| format!("attr={attr:?}"))
+                })
+                .collect::<anyhow::Result<Vec<_>>>()?,
         ))
     }
 
