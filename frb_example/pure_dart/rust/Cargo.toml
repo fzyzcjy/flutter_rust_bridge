@@ -11,3 +11,5 @@ anyhow = { workspace = true, features = ["backtrace"] }
 flutter_rust_bridge = { workspace = true }
 log = "0.4.19"
 backtrace = "0.3.68"
+chrono = "0.4.26"
+uuid = "1.4.1"

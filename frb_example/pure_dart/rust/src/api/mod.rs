@@ -1,3 +1,4 @@
+mod chrono_type;
 pub mod comment;
 pub mod dart_opaque;
 pub mod enumeration;
@@ -12,3 +13,4 @@ pub mod rust_opaque;
 pub mod simple;
 pub mod stream;
 pub mod structure;
+mod uuid_type;

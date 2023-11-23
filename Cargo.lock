@@ -556,8 +556,10 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "backtrace",
+ "chrono",
  "flutter_rust_bridge",
  "log",
+ "uuid",
 ]
 
 [[package]]
