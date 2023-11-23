@@ -17,7 +17,7 @@ use crate::library::commands::cargo_metadata::execute_cargo_metadata;
 use crate::utils::path_utils::{
     find_dart_package_dir, find_rust_crate_dir, glob_path, path_to_string,
 };
-use crate::utils::rust_project_utils::compute_mod_from_path;
+use crate::utils::rust_project_utils::{compute_mod_from_path, compute_mod_from_rust_crate_path};
 use anyhow::{ensure, Context, Result};
 use convert_case::{Case, Casing};
 use itertools::Itertools;
@@ -58,8 +58,10 @@ impl InternalConfig {
                 rust_input_path_pack.one_rust_input_path(),
             )?);
         let rust_output_path = compute_rust_output_path(&config, &base_dir, &rust_crate_dir);
-        let rust_wire_mod =
-            compute_mod_from_path(&rust_output_path[TargetOrCommon::Common], &rust_crate_dir)?;
+        let rust_wire_mod = compute_mod_from_rust_crate_path(
+            &rust_output_path[TargetOrCommon::Common],
+            &rust_crate_dir,
+        )?;
 
         let dart_root = (config.dart_root.clone().map(PathBuf::from))
             .unwrap_or(find_dart_package_dir(&dart_output_dir)?);
