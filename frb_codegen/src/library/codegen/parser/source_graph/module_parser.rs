@@ -130,7 +130,7 @@ fn parse_syn_item_mod(info: &ModuleInfo, item_mod: &ItemMod) -> anyhow::Result<O
         None => {
             let file_path_candidates =
                 get_module_file_path_candidates(ident.to_string(), &info.file_path);
-            println!(
+            debug!(
                 "file_path_candidates {:?} {:?} {:?}",
                 ident.to_string(),
                 &info.file_path,
