@@ -40,8 +40,9 @@ pub(crate) fn generate(
             &context.config.default_external_library_stem,
             &context.config.default_external_library_relative_directory,
             &context.config.dart_impl_output_path,
-            cache,
             api_dart_actual_output_paths,
+            cache,
+            context,
         )?,
         api_impl_normal_functions: (context.ir_pack.funcs.iter())
             .map(|f| api_impl_body::generate_api_impl_normal_function(f, context))
