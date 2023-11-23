@@ -25,39 +25,11 @@ pub(crate) fn generate(
 ) -> Result<GeneratorApiDartOutput> {
     let spec = spec_generator::generate(ir_pack, config)?;
     dumper.dump(ConfigDumpContent::Spec, "spec_api_dart.json", &spec)?;
-    let text = text_generator::generate(&spec)?;
-    let output_texts = generate_output_path_texts(config, text);
+    let text = text_generator::generate(&spec, config)?;
     Ok(GeneratorApiDartOutput {
-        output_texts,
+        output_texts: text.output_texts,
         needs_freezed: spec.needs_freezed,
     })
-}
-
-fn generate_output_path_texts(
-    config: &GeneratorApiDartInternalConfig,
-    text: ApiDartOutputText,
-) -> PathTexts {
-    PathTexts(
-        (text.namespaced_texts.into_iter())
-            .map(|(namespace, text)| {
-                PathText::new(
-                    compute_path_from_namespace(&config.dart_decl_base_output_path, &namespace),
-                    text,
-                )
-            })
-            .collect_vec(),
-    )
-}
-
-fn compute_path_from_namespace(
-    dart_decl_base_output_path: &Path,
-    namespace: &Namespace,
-) -> PathBuf {
-    let chunks = namespace.path_exclude_self_crate();
-    let ans_without_extension = chunks
-        .iter()
-        .fold(dart_decl_base_output_path.to_owned(), |a, b| a.join(b));
-    ans_without_extension.with_extension("dart")
 }
 
 #[cfg(test)]
