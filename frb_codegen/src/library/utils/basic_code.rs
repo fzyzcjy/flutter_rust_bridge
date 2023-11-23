@@ -91,6 +91,7 @@ impl DartBasicHeaderCode {
             .map(|line| line.trim())
             .filter(|line| !line.is_empty())
             .sorted()
+            .dedup()
             .join("\n");
 
         format!("{}\n{}\n{}", self.file_top, sorted_imports, self.part)
