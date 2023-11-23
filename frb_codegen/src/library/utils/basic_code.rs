@@ -99,12 +99,6 @@ fn optimize_imports(raw: &str) -> String {
         .join("\n")
 }
 
-pub(crate) enum ProgrammingLang {
-    Dart,
-    Rust,
-    C,
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;

@@ -12,7 +12,6 @@ use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::Wi
 use crate::library::codegen::generator::wire::rust::spec_generator::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use crate::misc::consts::HANDLER_NAME;
-use crate::utils::basic_code::ProgrammingLang;
 use crate::utils::rust_project_utils::compute_mod_from_path;
 use itertools::Itertools;
 use serde::Serialize;
@@ -124,11 +123,7 @@ fn generate_imports(types: &[IrType], context: WireRustGeneratorContext) -> anyh
         .map(|rust_input_path| {
             Ok(format!(
                 "use crate::{}::*;\n",
-                compute_mod_from_path(
-                    rust_input_path,
-                    &context.config.rust_crate_dir,
-                    ProgrammingLang::Rust
-                )?
+                compute_mod_from_path(rust_input_path, &context.config.rust_crate_dir,)?
             ))
         })
         .collect::<anyhow::Result<Vec<_>>>()?

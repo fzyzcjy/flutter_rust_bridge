@@ -1,13 +1,8 @@
-use crate::utils::basic_code::ProgrammingLang;
 use crate::utils::path_utils::path_to_string;
 use anyhow::Context;
 use std::path::Path;
 
-pub(crate) fn compute_mod_from_path(
-    code_path: &Path,
-    root_path: &Path,
-    lang: ProgrammingLang,
-) -> anyhow::Result<String> {
+pub(crate) fn compute_mod_from_path(code_path: &Path, root_path: &Path) -> anyhow::Result<String> {
     (|| -> anyhow::Result<String> {
         let join_dir = match lang {
             ProgrammingLang::Dart => "lib",

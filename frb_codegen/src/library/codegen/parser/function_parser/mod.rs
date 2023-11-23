@@ -12,7 +12,6 @@ use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::function_extractor::GeneralizedItemFn;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::{TypeParser, TypeParserParsingContext};
-use crate::utils::basic_code::ProgrammingLang;
 use crate::utils::rust_project_utils::compute_mod_from_path;
 use anyhow::{bail, Context};
 use itertools::concat;
@@ -53,7 +52,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         debug!("parse_function function name: {:?}", func.sig().ident);
 
         let sig = func.sig();
-        let namespace = Namespace::new_from_path(file_path, rust_crate_dir, ProgrammingLang::Rust)?;
+        let namespace = Namespace::new_from_path(file_path, rust_crate_dir)?;
         let src_lineno = func.span().start().line;
 
         let owner = if let Some(owner) = parse_owner(func) {
