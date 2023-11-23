@@ -173,21 +173,22 @@ impl DartApiSpec {
     }
 }
 
-fn generate_freezed_header(
-    dart_output_file_root: &str,
-    needs_freezed: bool,
-) -> DartBasicHeaderCode {
-    if needs_freezed {
-        DartBasicHeaderCode {
-            import: "import 'package:freezed_annotation/freezed_annotation.dart' hide protected;"
-                .to_string(),
-            part: format!("part '{dart_output_file_root}.freezed.dart';"),
-            body: "".to_string(),
-        }
-    } else {
-        DartBasicHeaderCode::default()
-    }
-}
+// DONE
+// fn generate_freezed_header(
+//     dart_output_file_root: &str,
+//     needs_freezed: bool,
+// ) -> DartBasicHeaderCode {
+//     if needs_freezed {
+//         DartBasicHeaderCode {
+//             import: "import 'package:freezed_annotation/freezed_annotation.dart' hide protected;"
+//                 .to_string(),
+//             part: format!("part '{dart_output_file_root}.freezed.dart';"),
+//             body: "".to_string(),
+//         }
+//     } else {
+//         DartBasicHeaderCode::default()
+//     }
+// }
 
 fn generate_import_header(
     imports: HashSet<&IrDartImport>,
