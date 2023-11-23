@@ -1,3 +1,4 @@
+use itertools::Itertools;
 use serde::Serialize;
 use std::ops::AddAssign;
 
@@ -79,5 +80,19 @@ impl AddAssign for DartBasicHeaderCode {
         self.file_top += &rhs.file_top;
         self.import += &rhs.import;
         self.part += &rhs.part;
+    }
+}
+
+impl DartBasicHeaderCode {
+    pub(crate) fn all_code(&self) -> String {
+        let sorted_imports = self
+            .import
+            .split("\n")
+            .map(|line| line.trim())
+            .filter(|line| !line.is_empty())
+            .sorted()
+            .join("\n");
+
+        format!("{}\n{}\n{}", self.file_top, sorted_imports, self.part)
     }
 }

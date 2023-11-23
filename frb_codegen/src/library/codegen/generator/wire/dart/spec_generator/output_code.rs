@@ -67,14 +67,6 @@ impl WireDartOutputCode {
             ..
         } = &self;
 
-        let sorted_imports = self
-            .import
-            .split("\n")
-            .map(|line| line.trim())
-            .filter(|line| !line.is_empty())
-            .sorted()
-            .join("\n");
-
         let api_class_code = if target == TargetOrCommon::Common {
             format!(
                 "
@@ -119,10 +111,8 @@ impl WireDartOutputCode {
         };
 
         format!(
-            "{}\n{}\n{}\n{}\n{}\n{}\n{}",
-            self.file_top,
-            sorted_imports,
-            self.part,
+            "{}\n{}\n{}\n{}\n{}",
+            self.basic.all_code(),
             self.body_top,
             api_class_code,
             api_impl_class_code,
