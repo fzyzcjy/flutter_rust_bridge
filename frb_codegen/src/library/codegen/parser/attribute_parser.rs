@@ -327,7 +327,7 @@ mod tests {
     #[test]
     fn test_non_final() -> anyhow::Result<()> {
         assert_eq!(
-            parse("#[frb(non_final)]"),
+            parse("#[frb(non_final)]")?,
             FrbAttributes(vec![FrbAttribute::NonFinal]),
         );
         Ok(())
@@ -336,7 +336,7 @@ mod tests {
     #[test]
     fn test_sync() -> anyhow::Result<()> {
         assert_eq!(
-            parse("#[frb(sync)]"),
+            parse("#[frb(sync)]")?,
             FrbAttributes(vec![FrbAttribute::Sync]),
         );
         Ok(())
