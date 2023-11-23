@@ -73,7 +73,7 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::Uuid => "Uuid".to_owned(),
             IrTypeDelegate::Uuids => "Uuids".to_owned(),
             IrTypeDelegate::Backtrace => "String".to_owned(),
-            IrTypeDelegate::Anyhow => "FrbAnyhowException".to_owned(),
+            IrTypeDelegate::Anyhow => "AnyhowException".to_owned(),
         }
     }
 

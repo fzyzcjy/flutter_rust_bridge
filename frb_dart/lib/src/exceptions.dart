@@ -10,17 +10,16 @@ class PanicException implements FrbException {
   PanicException(this.error);
 }
 
-// TODO remove prefix Frb?
 /// The rust code returns `anyhow::Error`
-class FrbAnyhowException implements FrbException {
+class AnyhowException implements FrbException {
   /// The error message
   final String anyhow;
 
   /// The rust code returns `anyhow::Error`
-  FrbAnyhowException(this.anyhow);
+  AnyhowException(this.anyhow);
 
   @override
-  String toString() => 'FrbAnyhowException($anyhow)';
+  String toString() => 'AnyhowException($anyhow)';
 }
 
 /// Interface indicating exceptions that have backtrace (stack trace)

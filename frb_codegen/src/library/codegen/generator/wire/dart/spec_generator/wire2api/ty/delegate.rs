@@ -74,7 +74,7 @@ impl<'a> WireDartGeneratorWire2apiTrait for DelegateWireDartGenerator<'a> {
             final bytes = _wire2api_uint_8_list(raw);
             return wire2apiUuids(bytes);"
                 .to_owned(),
-            IrTypeDelegate::Anyhow => "return FrbAnyhowException(raw as String);".to_owned(),
+            IrTypeDelegate::Anyhow => "return AnyhowException(raw as String);".to_owned(),
         }
     }
 }
