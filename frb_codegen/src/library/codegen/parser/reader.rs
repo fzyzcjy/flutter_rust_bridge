@@ -17,11 +17,12 @@ pub(crate) fn read_rust_file(
 
     dumper.dump_str(
         ConfigDumpContent::Source,
-        rust_file_path
-            .strip_prefix(rust_crate_dir)
-            .context("not prefix")?
-            .to_str()
-            .unwrap(),
+        &("read_rust_file/".to_owned()
+            + rust_file_path
+                .strip_prefix(rust_crate_dir)
+                .context("not prefix")?
+                .to_str()
+                .unwrap()),
         &ans,
     )?;
 
