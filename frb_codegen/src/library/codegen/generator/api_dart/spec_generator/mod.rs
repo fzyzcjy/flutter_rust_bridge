@@ -92,9 +92,9 @@ fn generate_item(
                 .iter()
                 .filter(|f| f.owner == IrFuncOwnerInfo::Function)
                 .map(|f| function::generate(f, context))
-                .collect_vec()
+                .collect::<Result<Vec<_>>>()
         })
-        .unwrap_or_default();
+        .unwrap_or(Ok(vec![]))?;
 
     let classes = namespaced_types
         .map(|classes| {

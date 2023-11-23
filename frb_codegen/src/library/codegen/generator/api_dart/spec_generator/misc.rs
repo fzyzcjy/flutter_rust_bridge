@@ -6,6 +6,7 @@ use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::{DistinctTypeGatherer, IrPack, IrPackComputedCache};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
+use crate::library::codegen::ir::ty::IrTypeTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;
 use crate::utils::path_utils::path_to_string;
 use anyhow::Context;

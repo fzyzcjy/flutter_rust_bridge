@@ -15,9 +15,9 @@ use itertools::Itertools;
 pub(crate) fn generate_api_impl_normal_function(
     func: &IrFunc,
     context: WireDartGeneratorContext,
-) -> WireDartOutputCode {
+) -> anyhow::Result<WireDartOutputCode> {
     let api_dart_func =
-        api_dart::spec_generator::function::generate(func, context.as_api_dart_context());
+        api_dart::spec_generator::function::generate(func, context.as_api_dart_context())?;
 
     let const_meta_field_name = format!("k{}ConstMeta", func.name.name.to_case(Case::Pascal));
 
@@ -53,11 +53,11 @@ pub(crate) fn generate_api_impl_normal_function(
 
     let companion_field_implementation = generate_companion_field(func, &const_meta_field_name);
 
-    WireDartOutputCode {
+    Ok(WireDartOutputCode {
         api_body: format!("{func_expr};\n\n"),
         api_impl_body: format!("{function_implementation}\n\n{companion_field_implementation}\n\n"),
         ..Default::default()
-    }
+    })
 }
 
 fn generate_stmt_prepare_args(func: &IrFunc) -> Vec<String> {

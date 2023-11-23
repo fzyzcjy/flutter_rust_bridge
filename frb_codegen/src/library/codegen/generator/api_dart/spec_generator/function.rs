@@ -6,6 +6,7 @@ use crate::codegen::generator::api_dart::spec_generator::class::field::{
 };
 use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_dart_comments, generate_function_dart_return_type,
+    generate_imports_which_types_and_funcs_use,
 };
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::namespace::Namespace;
@@ -29,7 +30,7 @@ pub(crate) struct ApiDartGeneratedFunction {
 pub(crate) fn generate(
     func: &IrFunc,
     context: ApiDartGeneratorContext,
-) -> ApiDartGeneratedFunction {
+) -> anyhow::Result<ApiDartGeneratedFunction> {
     let params = generate_params(func, context, context.config.dart_enums_style);
 
     let func_expr = format!(
@@ -45,16 +46,16 @@ pub(crate) fn generate(
 
     let func_impl = generate_func_impl(func, &context.config.dart_entrypoint_class_name);
 
-    let header = generate_header(func, context.ir_pack);
+    let header = generate_header(func, context.ir_pack)?;
 
-    ApiDartGeneratedFunction {
+    Ok(ApiDartGeneratedFunction {
         namespace: func.name.namespace.clone(),
         header,
         func_comments,
         func_expr,
         func_impl,
         src_lineno: func.src_lineno,
-    }
+    })
 }
 
 fn generate_params(
@@ -96,9 +97,11 @@ fn generate_func_impl(func: &IrFunc, dart_entrypoint_class_name: &str) -> String
     format!("{dart_entrypoint_class_name}.instance.api.{func_name}({param_forwards})")
 }
 
-fn generate_header(func: &IrFunc, ir_pack: &IrPack) -> DartBasicHeaderCode {
-    DartBasicHeaderCode {
-        import: TODO,
-        ..Default::default()
-    }
+fn generate_header(func: &IrFunc, ir_pack: &IrPack) -> anyhow::Result<DartBasicHeaderCode> {
+    generate_imports_which_types_and_funcs_use(
+        &func.name.namespace.clone(),
+        &None,
+        &Some(&vec![func]),
+        ir_pack,
+    )
 }

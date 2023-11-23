@@ -43,7 +43,7 @@ pub(crate) fn generate(
         )?,
         api_impl_normal_functions: (context.ir_pack.funcs.iter())
             .map(|f| api_impl_body::generate_api_impl_normal_function(f, context))
-            .collect(),
+            .collect::<anyhow::Result<Vec<_>>>()?,
         api_impl_opaque_getters: (cache.distinct_types.iter())
             .filter_map(|ty| api_impl_body::generate_api_impl_opaque_getter(ty, context))
             .collect(),
