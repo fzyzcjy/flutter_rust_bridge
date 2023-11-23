@@ -10,6 +10,7 @@ class PanicException implements FrbException {
   PanicException(this.error);
 }
 
+// TODO remove prefix Frb?
 /// The rust code returns `anyhow::Error`
 class FrbAnyhowException implements FrbException {
   /// The error message
