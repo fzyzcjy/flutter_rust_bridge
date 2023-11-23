@@ -7,10 +7,10 @@ import '../test_utils.dart';
 Future<void> main() async {
   await RustLib.init();
 
-  addTestsIdentityFunctionCall(funcStructWithZeroFieldTwinNormal, [StructWithZeroField()]);
-  addTestsIdentityFunctionCall(funcStructWithOneFieldTwinNormal, [StructWithOneField(a: 42)]);
-  addTestsIdentityFunctionCall(funcStructWithTwoFieldTwinNormal, [StructWithTwoField(a: 10, b: 20)]);
-  addTestsIdentityFunctionCall(funcTupleStructWithOneFieldTwinNormal, [TupleStructWithOneField(field0: 42)]);
+  addTestsIdentityFunctionCall(funcStructWithZeroFieldTwinNormal, [StructWithZeroFieldTwinNormal()]);
+  addTestsIdentityFunctionCall(funcStructWithOneFieldTwinNormal, [StructWithOneFieldTwinNormal(a: 42)]);
+  addTestsIdentityFunctionCall(funcStructWithTwoFieldTwinNormal, [StructWithTwoFieldTwinNormal(a: 10, b: 20)]);
+  addTestsIdentityFunctionCall(funcTupleStructWithOneFieldTwinNormal, [TupleStructWithOneFieldTwinNormal(field0: 42)]);
   addTestsIdentityFunctionCall(
-      funcTupleStructWithTwoFieldTwinNormal, [TupleStructWithTwoField(field0: 10, field1: 20)]);
+      funcTupleStructWithTwoFieldTwinNormal, [TupleStructWithTwoFieldTwinNormal(field0: 10, field1: 20)]);
 }

@@ -9,23 +9,23 @@ Future<void> main() async {
   await RustLib.init();
 
   addTestsIdentityFunctionCall(funcEnumSimpleTwinNormal, [
-    EnumSimple.A,
-    EnumSimple.B,
+    EnumSimpleTwinNormal.A,
+    EnumSimpleTwinNormal.B,
   ]);
 
   addTestsIdentityFunctionCall(funcEnumWithItemMixedTwinNormal, [
-    EnumWithItemMixed.a(),
-    EnumWithItemMixed.b(Uint8List.fromList([42])),
-    EnumWithItemMixed.c(cField: 'hi'),
+    EnumWithItemMixedTwinNormal.a(),
+    EnumWithItemMixedTwinNormal.b(Uint8List.fromList([42])),
+    EnumWithItemMixedTwinNormal.c(cField: 'hi'),
   ]);
 
   addTestsIdentityFunctionCall(funcEnumWithItemStructTwinNormal, [
-    EnumWithItemStruct.a(aField: Uint8List.fromList([42])),
-    EnumWithItemStruct.b(bField: Int32List.fromList([200])),
+    EnumWithItemStructTwinNormal.a(aField: Uint8List.fromList([42])),
+    EnumWithItemStructTwinNormal.b(bField: Int32List.fromList([200])),
   ]);
 
   addTestsIdentityFunctionCall(funcEnumWithItemTupleTwinNormal, [
-    EnumWithItemTuple.a(Uint8List.fromList([42])),
-    EnumWithItemTuple.b(Int32List.fromList([200])),
+    EnumWithItemTupleTwinNormal.a(Uint8List.fromList([42])),
+    EnumWithItemTupleTwinNormal.b(Int32List.fromList([200])),
   ]);
 }

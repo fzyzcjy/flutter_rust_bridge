@@ -1,38 +1,44 @@
-pub struct StructWithZeroField {}
+pub struct StructWithZeroFieldTwinNormal {}
 
-pub fn func_struct_with_zero_field_twin_normal(arg: StructWithZeroField) -> StructWithZeroField {
+pub fn func_struct_with_zero_field_twin_normal(
+    arg: StructWithZeroFieldTwinNormal,
+) -> StructWithZeroFieldTwinNormal {
     arg
 }
 
-pub struct StructWithOneField {
+pub struct StructWithOneFieldTwinNormal {
     pub a: i32,
 }
 
-pub fn func_struct_with_one_field_twin_normal(arg: StructWithOneField) -> StructWithOneField {
+pub fn func_struct_with_one_field_twin_normal(
+    arg: StructWithOneFieldTwinNormal,
+) -> StructWithOneFieldTwinNormal {
     arg
 }
 
-pub struct StructWithTwoField {
+pub struct StructWithTwoFieldTwinNormal {
     pub a: i32,
     pub b: i32,
 }
 
-pub fn func_struct_with_two_field_twin_normal(arg: StructWithTwoField) -> StructWithTwoField {
+pub fn func_struct_with_two_field_twin_normal(
+    arg: StructWithTwoFieldTwinNormal,
+) -> StructWithTwoFieldTwinNormal {
     arg
 }
 
-pub struct TupleStructWithOneField(pub i32);
+pub struct TupleStructWithOneFieldTwinNormal(pub i32);
 
 pub fn func_tuple_struct_with_one_field_twin_normal(
-    arg: TupleStructWithOneField,
-) -> TupleStructWithOneField {
+    arg: TupleStructWithOneFieldTwinNormal,
+) -> TupleStructWithOneFieldTwinNormal {
     arg
 }
 
-pub struct TupleStructWithTwoField(pub i32, pub i32);
+pub struct TupleStructWithTwoFieldTwinNormal(pub i32, pub i32);
 
 pub fn func_tuple_struct_with_two_field_twin_normal(
-    arg: TupleStructWithTwoField,
-) -> TupleStructWithTwoField {
+    arg: TupleStructWithTwoFieldTwinNormal,
+) -> TupleStructWithTwoFieldTwinNormal {
     arg
 }
