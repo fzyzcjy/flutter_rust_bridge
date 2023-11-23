@@ -5,6 +5,7 @@ use crate::codegen::ir::ty::delegate::{
 };
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
+use crate::utils::basic_code::DartBasicHeaderCode;
 
 impl<'a> ApiDartGeneratorClassTrait for DelegateApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
@@ -39,6 +40,10 @@ fn generate_array(
         };
 
     Some(ApiDartGeneratedClass {
+        header: DartBasicHeaderCode {
+            import: "import 'package:collection/collection.dart';".to_owned(),
+            ..Default::default()
+        },
         namespace: array.namespace.clone(),
         code: format!(
             "

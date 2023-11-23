@@ -25,6 +25,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
                 comments, self.ir.ident.0.name, variants
             ),
             needs_freezed: false,
+            ..Default::default()
         })
     }
 

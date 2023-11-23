@@ -6,7 +6,7 @@ use std::path::PathBuf;
 use std::str::FromStr;
 
 /// The Rust files/modules/namespaces.
-#[derive(Debug, Clone, Hash, Eq, PartialEq, Serialize, Deserialize, Ord, PartialOrd)]
+#[derive(Debug, Clone, Hash, Eq, PartialEq, Serialize, Deserialize, Ord, PartialOrd, Default)]
 #[serde(transparent)]
 pub struct Namespace {
     // Represent via this, instead of `Vec<String>`, to avoid extra memory overhead

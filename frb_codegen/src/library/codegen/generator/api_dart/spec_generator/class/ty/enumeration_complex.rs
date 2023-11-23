@@ -40,6 +40,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
                 }}",
             ),
             needs_freezed: true,
+            ..Default::default()
         })
     }
 

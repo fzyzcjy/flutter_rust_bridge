@@ -30,6 +30,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
                 }}"
             ),
             needs_freezed: false,
+            ..Default::default()
         })
     }
 }

@@ -31,6 +31,7 @@ impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
                 self.generate_mode_non_freezed(src, &comments, &metadata, &methods)
             },
             needs_freezed: src.using_freezed(),
+            ..Default::default()
         })
     }
 }

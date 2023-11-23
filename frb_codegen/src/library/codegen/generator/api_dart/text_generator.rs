@@ -77,6 +77,10 @@ fn generate_end_api_text(
 
     header += item.imports.clone();
 
+    for c in &item.classes {
+        header += c.header.clone();
+    }
+
     let header = header.all_code();
 
     format!(
