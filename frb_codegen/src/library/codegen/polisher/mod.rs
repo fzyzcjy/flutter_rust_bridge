@@ -4,7 +4,9 @@ use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::commands::format_rust::format_rust;
 use crate::library::commands::dart_build_runner::dart_build_runner;
 use crate::library::commands::format_dart::format_dart;
+use anyhow::bail;
 use itertools::Itertools;
+use log::warn;
 use std::fs;
 use std::path::PathBuf;
 
@@ -18,10 +20,33 @@ pub(super) fn polish(
 ) -> anyhow::Result<()> {
     execute_try_add_mod_to_lib(config);
     execute_duplicate_c_output(config)?;
-    execute_build_runner(needs_freezed, config)?;
-    execute_dart_format(config, output_paths)?;
-    execute_rust_format(output_paths)?;
+
+    let mut ok = true;
+    ok &= warn_if_fail(
+        execute_build_runner(needs_freezed, config),
+        "execute_build_runner",
+    );
+    ok &= warn_if_fail(
+        execute_dart_format(config, output_paths),
+        "execute_dart_format",
+    );
+    ok &= warn_if_fail(execute_rust_format(output_paths), "execute_rust_format");
+
+    if !ok {
+        bail!("Some errors occurred, see logs above for more details");
+    }
+
     Ok(())
+}
+
+fn warn_if_fail(r: anyhow::Result<()>, debug_name: &str) -> bool {
+    match r {
+        Ok(_) => true,
+        Err(_) => {
+            warn!("Fail to {debug_name}, but continue to run.\nError details: {r:?}");
+            false
+        }
+    }
 }
 
 fn execute_build_runner(
