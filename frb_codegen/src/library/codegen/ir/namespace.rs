@@ -2,6 +2,8 @@ use itertools::Itertools;
 use serde::__private::ser::serialize_tagged_newtype;
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 use std::fmt::{Display, Formatter};
+use std::path::PathBuf;
+use std::str::FromStr;
 
 /// The Rust files/modules/namespaces.
 #[derive(Debug, Clone, Hash, Eq, PartialEq, Serialize, Deserialize, Ord, PartialOrd)]
@@ -42,6 +44,10 @@ impl Namespace {
             path.remove(0);
         }
         path
+    }
+
+    pub fn to_pseudo_io_path(&self, extension: &str) -> PathBuf {
+        PathBuf::from(&format!("{}.{extension}", self.path().join("/")))
     }
 }
 
@@ -114,6 +120,15 @@ mod tests {
         assert_eq!(serialized, r#""a::b/c""#);
         assert_eq!(original, recovered);
 
+        Ok(())
+    }
+
+    #[test]
+    pub fn test_to_pseudo_io_path() -> anyhow::Result<()> {
+        assert_eq!(
+            Namespace::new_raw("apple::orange".into()).to_pseudo_io_path("dart"),
+            PathBuf::from("/apple/orange.dart")
+        );
         Ok(())
     }
 }
