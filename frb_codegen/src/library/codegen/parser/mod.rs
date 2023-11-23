@@ -166,7 +166,10 @@ mod tests {
         let test_fixture_dir = get_test_fixture_dir(fixture_name);
         let rust_crate_dir = test_fixture_dir.clone();
 
-        let crate_map = Crate::parse(&rust_crate_dir.join("Cargo.toml"))?;
+        let crate_map = Crate::parse(
+            &rust_crate_dir.join("Cargo.toml"),
+            &Dumper(&Default::default()),
+        )?;
         json_golden_test(
             &serde_json::to_value(crate_map)?,
             &rust_crate_dir.join("expect_source_graph.json"),
