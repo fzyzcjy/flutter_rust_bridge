@@ -2,6 +2,7 @@ use crate::codegen::parser::source_graph::modules::{Module, ModuleInfo, ModuleSo
 use crate::library::commands::cargo_metadata::execute_cargo_metadata;
 use anyhow::{bail, Context};
 use cargo_metadata::{Metadata, MetadataCommand, Package};
+use log::debug;
 use std::fs;
 use std::path::{Path, PathBuf};
 use syn::File;
@@ -16,6 +17,8 @@ pub struct Crate {
 
 impl Crate {
     pub fn parse(manifest_path: &Path) -> anyhow::Result<Self> {
+        debug!("parse manifest_path={manifest_path:?}");
+
         let manifest_path = fs::canonicalize(manifest_path)?;
         let metadata = execute_cargo_metadata(&manifest_path)?;
 

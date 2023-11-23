@@ -8,7 +8,8 @@ use crate::utils::path_utils::{find_rust_crate_dir, path_to_string};
 use itertools::Itertools;
 use log::{debug, warn};
 use std::path::{Path, PathBuf};
-use syn::{Attribute, Ident, ItemEnum, ItemMod, ItemStruct, ItemType, PathArguments};
+use syn::token::Brace;
+use syn::{Attribute, Ident, Item, ItemEnum, ItemMod, ItemStruct, ItemType, PathArguments};
 
 impl Module {
     /// Maps out modules, structs and enums within the scope of this module
@@ -20,6 +21,8 @@ impl Module {
     //     - Import renames (use a::b as c) - these are silently ignored
     //     - Imports that start with two colons (use ::a::b) - these are also silently ignored
     pub fn parse(info: ModuleInfo) -> anyhow::Result<Self> {
+        debug!("parse START info={info:?}");
+
         let mut scope_modules = Vec::new();
         let mut scope_structs = Vec::new();
         let mut scope_enums = Vec::new();
@@ -48,7 +51,7 @@ impl Module {
             }
         }
 
-        Ok(Module {
+        let ans = Module {
             info,
             scope: ModuleScope {
                 modules: scope_modules,
@@ -57,7 +60,10 @@ impl Module {
                 // imports: vec![], // Will be filled in by resolve_imports()
                 type_alias: scope_types,
             },
-        })
+        };
+
+        debug!("parse END info={info:?}");
+        Ok(ans)
     }
 }
 
@@ -80,6 +86,8 @@ fn parse_syn_item_struct_or_enum<I: Clone, F, T>(
 where
     F: Fn(StructOrEnum<I>) -> T,
 {
+    debug!("parse_syn_item_struct_or_enum item_ident={item_ident:?}");
+
     let ParseMirrorIdentOutput { idents, mirror } = parse_mirror_ident(item_ident, item_attrs)?;
     Ok(idents
         .into_iter()
@@ -101,6 +109,8 @@ where
 }
 
 fn parse_syn_item_type(item_type: &ItemType) -> Option<TypeAlias> {
+    debug!("parse_syn_item_struct_or_enum item_type={item_type:?}");
+
     if item_type.generics.where_clause.is_none() && item_type.generics.lt_token.is_none() {
         Some(TypeAlias {
             ident: item_type.ident.to_string(),
@@ -112,6 +122,8 @@ fn parse_syn_item_type(item_type: &ItemType) -> Option<TypeAlias> {
 }
 
 fn parse_syn_item_mod(info: &ModuleInfo, item_mod: &ItemMod) -> anyhow::Result<Option<Module>> {
+    debug!("parse_syn_item_mod item_mod={item_mod:?}");
+
     let ident = item_mod.ident.clone();
 
     let module_path = {
@@ -121,48 +133,69 @@ fn parse_syn_item_mod(info: &ModuleInfo, item_mod: &ItemMod) -> anyhow::Result<O
     };
 
     Ok(match &item_mod.content {
-        Some(content) => Some(Module::parse(ModuleInfo {
-            visibility: Visibility::from_syn(&item_mod.vis),
-            file_path: info.file_path.clone(),
-            module_path,
-            source: ModuleSource::ModuleInFile(content.1.clone()),
-        })?),
-        None => {
-            let file_path_candidates =
-                get_module_file_path_candidates(ident.to_string(), &info.file_path);
-            debug!(
-                "file_path_candidates {:?} {:?} {:?}",
-                ident.to_string(),
-                &info.file_path,
-                &file_path_candidates
-            );
-
-            if let Some(file_path) = first_existing_path(&file_path_candidates) {
-                let rust_crate_dir_for_file = find_rust_crate_dir(file_path)?;
-                let source_rust_content = read_rust_file(&file_path, &rust_crate_dir_for_file)?;
-                debug!("Trying to parse {:?}", file_path);
-                let source = ModuleSource::File(syn::parse_file(&source_rust_content).unwrap());
-
-                Some(Module::parse(ModuleInfo {
-                    visibility: Visibility::from_syn(&item_mod.vis),
-                    file_path: file_path.to_owned(),
-                    module_path,
-                    source,
-                })?)
-            } else {
-                warn!(
-                    "Skipping unresolvable module {} (tried {})",
-                    &ident,
-                    file_path_candidates
-                        .iter()
-                        .map(|p| path_to_string(p))
-                        .collect::<anyhow::Result<Vec<_>>>()?
-                        .join(", ")
-                );
-                None
-            }
-        }
+        Some(content) => parse_syn_item_mod_contentful(info, item_mod, module_path, content)?,
+        None => parse_syn_item_mod_contentless(&info, &item_mod, module_path, ident)?,
     })
+}
+
+fn parse_syn_item_mod_contentful(
+    info: &ModuleInfo,
+    item_mod: &ItemMod,
+    module_path: Vec<String>,
+    content: &(Brace, Vec<Item>),
+) -> anyhow::Result<Option<Module>> {
+    debug!("parse_syn_item_mod_contentful module_path={module_path:?}");
+
+    Ok(Some(Module::parse(ModuleInfo {
+        visibility: Visibility::from_syn(&item_mod.vis),
+        file_path: info.file_path.clone(),
+        module_path,
+        source: ModuleSource::ModuleInFile(content.1.clone()),
+    })?))
+}
+
+fn parse_syn_item_mod_contentless(
+    info: &ModuleInfo,
+    item_mod: &ItemMod,
+    module_path: Vec<String>,
+    ident: Ident,
+) -> anyhow::Result<Option<Module>> {
+    debug!("parse_syn_item_mod_contentless module_path={module_path:?}");
+
+    let file_path_candidates = get_module_file_path_candidates(ident.to_string(), &info.file_path);
+    debug!(
+        "file_path_candidates {:?} {:?} {:?}",
+        ident.to_string(),
+        &info.file_path,
+        &file_path_candidates
+    );
+
+    Ok(
+        if let Some(file_path) = first_existing_path(&file_path_candidates) {
+            let rust_crate_dir_for_file = find_rust_crate_dir(file_path)?;
+            let source_rust_content = read_rust_file(&file_path, &rust_crate_dir_for_file)?;
+            debug!("Trying to parse {:?}", file_path);
+            let source = ModuleSource::File(syn::parse_file(&source_rust_content).unwrap());
+
+            Some(Module::parse(ModuleInfo {
+                visibility: Visibility::from_syn(&item_mod.vis),
+                file_path: file_path.to_owned(),
+                module_path,
+                source,
+            })?)
+        } else {
+            warn!(
+                "Skipping unresolvable module {} (tried {})",
+                &ident,
+                file_path_candidates
+                    .iter()
+                    .map(|p| path_to_string(p))
+                    .collect::<anyhow::Result<Vec<_>>>()?
+                    .join(", ")
+            );
+            None
+        },
+    )
 }
 
 fn get_module_file_path_candidates(
