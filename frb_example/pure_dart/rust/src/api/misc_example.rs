@@ -34,3 +34,15 @@ pub fn handle_nested_struct(s: MyNestedStruct) -> MyNestedStruct {
     let s_cloned = s.clone();
     s
 }
+
+pub struct BigBuffers {
+    pub int64: Vec<i64>,
+    pub uint64: Vec<u64>,
+}
+
+pub fn handle_big_buffers() -> BigBuffers {
+    BigBuffers {
+        int64: vec![i64::MIN, i64::MAX],
+        uint64: vec![u64::MAX],
+    }
+}
