@@ -28,7 +28,7 @@ impl IrTypeTrait for IrTypeUnencodable {
         lazy_static! {
             static ref NEG_FILTER: Regex = Regex::new(r"[^a-zA-Z0-9_]").unwrap();
         }
-        NEG_FILTER.replace_all(&self.string, "").into_string()
+        NEG_FILTER.replace_all(&self.string, "").into_owned()
     }
 
     fn rust_api_type(&self) -> String {
