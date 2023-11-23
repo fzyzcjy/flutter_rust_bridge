@@ -103,7 +103,7 @@ fn generate_header(
 ) -> anyhow::Result<DartBasicHeaderCode> {
     Ok(DartBasicHeaderCode {
         import: generate_imports_which_types_and_funcs_use(
-            Some(&func.name.namespace.clone()),
+            &func.name.namespace.clone(),
             &None,
             &Some(&vec![func]),
             context,

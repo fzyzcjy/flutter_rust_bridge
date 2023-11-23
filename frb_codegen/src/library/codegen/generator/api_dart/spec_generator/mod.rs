@@ -81,7 +81,7 @@ fn generate_item(
 ) -> Result<ApiDartOutputSpecItem> {
     let imports = DartBasicHeaderCode {
         import: generate_imports_which_types_and_funcs_use(
-            Some(namespace),
+            namespace,
             namespaced_types,
             funcs,
             context,
