@@ -1,6 +1,6 @@
 use crate::auxiliary::new_module_system::{use_new_module_system, NewSimpleStruct};
 use crate::auxiliary::old_module_system::{use_old_module_system, OldSimpleStruct};
-use crate::data::{EnumAlias, Id, MyEnum, MyStruct, StructAlias, UserIdAlias};
+use crate::auxiliary::sample_types::{EnumAlias, Id, MyEnum, MyStruct, StructAlias, UserIdAlias};
 
 // Function that uses imported struct (from within this crate)
 pub fn use_imported_struct(my_struct: MyStruct) -> bool {
