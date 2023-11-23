@@ -530,6 +530,7 @@ dependencies = [
  "log",
  "paste",
  "pathdiff",
+ "proc-macro2",
  "quote",
  "regex",
  "semver",

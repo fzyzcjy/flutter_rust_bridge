@@ -47,6 +47,7 @@ serial_test = "2.0.0"
 glob = "0.3.1"
 derivative = "2.2.0"
 paste = "1.0.14"
+proc-macro2 = { version = "1.0.66", features = ["span-locations"]}
 
 [dev-dependencies]
 semver = "1.0.12"
