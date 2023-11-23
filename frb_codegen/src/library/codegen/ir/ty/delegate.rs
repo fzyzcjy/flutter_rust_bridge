@@ -118,6 +118,13 @@ impl IrTypeTrait for IrTypeDelegate {
             _ => None,
         }
     }
+
+    fn self_namespace(&self) -> Option<Namespace> {
+        match self {
+            IrTypeDelegate::PrimitiveEnum(inner) => inner.ir.self_namespace(),
+            _ => None,
+        }
+    }
 }
 
 impl IrTypeDelegate {
