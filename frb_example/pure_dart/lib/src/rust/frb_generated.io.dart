@@ -25,7 +25,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   ffi.Pointer<wire_list_prim_u_8> api2wire_String(String raw) {
-    return api2wire_uint_8_list(utf8.encoder.convert(raw));
+    return api2wire_list_prim_u_8(utf8.encoder.convert(raw));
   }
 
   @protected
