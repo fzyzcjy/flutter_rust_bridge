@@ -9,7 +9,9 @@ use crate::codegen::generator::api_dart::spec_generator::misc::{
 };
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::namespace::Namespace;
+use crate::codegen::ir::pack::IrPack;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
+use crate::utils::basic_code::DartBasicHeaderCode;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 use serde::Serialize;
@@ -17,6 +19,7 @@ use serde::Serialize;
 #[derive(Debug, Serialize)]
 pub(crate) struct ApiDartGeneratedFunction {
     pub(crate) namespace: Namespace,
+    pub(crate) header: DartBasicHeaderCode,
     pub(crate) func_comments: String,
     pub(crate) func_expr: String,
     pub(crate) func_impl: String,
@@ -42,8 +45,11 @@ pub(crate) fn generate(
 
     let func_impl = generate_func_impl(func, &context.config.dart_entrypoint_class_name);
 
+    let header = generate_header(func, context.ir_pack);
+
     ApiDartGeneratedFunction {
         namespace: func.name.namespace.clone(),
+        header,
         func_comments,
         func_expr,
         func_impl,
@@ -88,4 +94,11 @@ fn generate_func_impl(func: &IrFunc, dart_entrypoint_class_name: &str) -> String
         .map(|name| format!("{name}: {name}"))
         .join(", ");
     format!("{dart_entrypoint_class_name}.instance.api.{func_name}({param_forwards})")
+}
+
+fn generate_header(func: &IrFunc, ir_pack: &IrPack) -> DartBasicHeaderCode {
+    DartBasicHeaderCode {
+        import: TODO,
+        ..Default::default()
+    }
 }

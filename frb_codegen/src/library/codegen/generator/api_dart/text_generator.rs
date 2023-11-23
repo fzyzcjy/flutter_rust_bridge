@@ -77,6 +77,9 @@ fn generate_end_api_text(
 
     header += item.imports.clone();
 
+    for f in &item.funcs {
+        header += f.header.clone();
+    }
     for c in &item.classes {
         header += c.header.clone();
     }
