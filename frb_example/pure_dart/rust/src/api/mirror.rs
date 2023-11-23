@@ -3,12 +3,12 @@
 // In this case, the struct ApplicationSettings is defined in another crate (called external-lib)
 
 // To use an external type with mirroring, it MUST be imported publicly (aka. re-export)
-pub use external_lib::{
+use flutter_rust_bridge::frb;
+pub use frb_example_pure_dart_exapmle_external_lib::{
     ApplicationEnv, ApplicationEnvVar, ApplicationMessage, ApplicationMode, ApplicationSettings,
     ListOfNestedRawStringMirrored, NestedRawStringMirrored, Numbers, RawStringEnumMirrored,
     RawStringMirrored, Sequences,
 };
-use flutter_rust_bridge::frb;
 
 // To mirror an external struct, you need to define a placeholder type with the same definition
 #[frb(mirror(ApplicationSettings))]
