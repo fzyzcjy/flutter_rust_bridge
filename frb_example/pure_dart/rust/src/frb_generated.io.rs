@@ -354,6 +354,11 @@ pub extern "C" fn wire_function_with_comments_triple_slash_single_line_twin_norm
 }
 
 #[no_mangle]
+pub extern "C" fn wire_func_enum_simple_twin_normal(port_: i64, arg: i32) {
+    wire_func_enum_simple_twin_normal_impl(port_, arg)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_StructWithCommentsTwinSync_instance_method_twin_sync(
     that: *mut wire_struct_with_comments_twin_sync,
 ) -> support::WireSyncReturn {

@@ -121,6 +121,22 @@ fn wire_function_with_comments_triple_slash_single_line_twin_normal_impl(port_: 
         },
     )
 }
+fn wire_func_enum_simple_twin_normal_impl(
+    port_: MessagePort,
+    arg: impl Wire2Api<EnumSimple> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, EnumSimple, _>(
+        WrapInfo {
+            debug_name: "func_enum_simple_twin_normal",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(func_enum_simple_twin_normal(api_arg))
+        },
+    )
+}
 fn wire_StructWithCommentsTwinSync_instance_method_twin_sync_impl(
     that: impl Wire2Api<StructWithCommentsTwinSync> + UnwindSafe,
 ) -> support::WireSyncReturn {
@@ -1343,6 +1359,15 @@ impl Wire2Api<bool> for bool {
         self
     }
 }
+impl Wire2Api<EnumSimple> for i32 {
+    fn wire2api(self) -> EnumSimple {
+        match self {
+            0 => EnumSimple::A,
+            1 => EnumSimple::B,
+            _ => unreachable!("Invalid variant for EnumSimple: {}", self),
+        }
+    }
+}
 impl Wire2Api<f32> for f32 {
     fn wire2api(self) -> f32 {
         self
@@ -1396,6 +1421,21 @@ impl Wire2Api<u8> for u8 {
 
 // Section: impl_into_dart
 
+impl support::IntoDart for EnumSimple {
+    fn into_dart(self) -> support::DartAbi {
+        match self {
+            Self::A => 0,
+            Self::B => 1,
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for EnumSimple {}
+impl rust2dart::IntoIntoDart<EnumSimple> for EnumSimple {
+    fn into_into_dart(self) -> EnumSimple {
+        self
+    }
+}
 impl support::IntoDart for StructWithZeroField {
     fn into_dart(self) -> support::DartAbi {
         Vec::<u8>::new().into_dart()

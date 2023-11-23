@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import, unused_element
 
 import 'api/comment.dart';
+import 'api/enumeration.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/optional_primitive.dart';
 import 'api/pseudo_manual/optional_primitive_twin_sync.dart';
@@ -64,6 +65,9 @@ abstract class RustLibApi extends BaseApi {
 
   Future<void> functionWithCommentsTripleSlashSingleLineTwinNormal(
       {dynamic hint});
+
+  Future<EnumSimple> funcEnumSimpleTwinNormal(
+      {required EnumSimple arg, dynamic hint});
 
   void structWithCommentsTwinSyncInstanceMethodTwinSync(
       {required StructWithCommentsTwinSync that, dynamic hint});
@@ -382,6 +386,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 "function_with_comments_triple_slash_single_line_twin_normal",
             argNames: [],
           );
+
+  @override
+  Future<EnumSimple> funcEnumSimpleTwinNormal(
+      {required EnumSimple arg, dynamic hint}) {
+    var arg0 = api2wire_enum_simple(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_func_enum_simple_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_enum_simple,
+      parseErrorData: null,
+      constMeta: kFuncEnumSimpleTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncEnumSimpleTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "func_enum_simple_twin_normal",
+        argNames: ["arg"],
+      );
 
   @override
   void structWithCommentsTwinSyncInstanceMethodTwinSync(
@@ -2012,6 +2036,10 @@ int _wire2api_box_autoadd_u_8(dynamic raw) {
   return raw as int;
 }
 
+EnumSimple _wire2api_enum_simple(dynamic raw) {
+  return EnumSimple.values[raw as int];
+}
+
 double _wire2api_f_32(dynamic raw) {
   return raw as double;
 }
@@ -2155,6 +2183,10 @@ void _wire2api_unit(dynamic raw) {
 
 bool api2wire_bool(bool raw) {
   return raw;
+}
+
+int api2wire_enum_simple(EnumSimple raw) {
+  return api2wire_i_32(raw.index);
 }
 
 double api2wire_f_32(double raw) {

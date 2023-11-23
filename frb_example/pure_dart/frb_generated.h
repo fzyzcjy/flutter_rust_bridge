@@ -82,6 +82,8 @@ void wire_function_with_comments_triple_slash_multi_line_twin_normal(int64_t por
 
 void wire_function_with_comments_triple_slash_single_line_twin_normal(int64_t port_);
 
+void wire_func_enum_simple_twin_normal(int64_t port_, int32_t arg);
+
 WireSyncReturn wire_StructWithCommentsTwinSync_instance_method_twin_sync(struct wire_struct_with_comments_twin_sync *that);
 
 WireSyncReturn wire_StructWithCommentsTwinSync_static_method_twin_sync(void);
@@ -389,6 +391,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u64_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u8_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u8_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_func_enum_simple_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_struct_with_zero_field_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_function_with_comments_slash_star_star_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_function_with_comments_slash_star_star_twin_sync);

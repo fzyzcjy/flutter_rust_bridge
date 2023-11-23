@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import, unused_element
 
 import 'api/comment.dart';
+import 'api/enumeration.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/optional_primitive.dart';
 import 'api/pseudo_manual/optional_primitive_twin_sync.dart';

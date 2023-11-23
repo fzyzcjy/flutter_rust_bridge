@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import, unused_element
 
 import 'api/comment.dart';
+import 'api/enumeration.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/optional_primitive.dart';
 import 'api/pseudo_manual/optional_primitive_twin_sync.dart';
@@ -353,6 +354,23 @@ class RustLibWire implements BaseWire {
   late final _wire_function_with_comments_triple_slash_single_line_twin_normal =
       _wire_function_with_comments_triple_slash_single_line_twin_normalPtr
           .asFunction<void Function(int)>();
+
+  void wire_func_enum_simple_twin_normal(
+    int port_,
+    int arg,
+  ) {
+    return _wire_func_enum_simple_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_enum_simple_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_func_enum_simple_twin_normal');
+  late final _wire_func_enum_simple_twin_normal =
+      _wire_func_enum_simple_twin_normalPtr
+          .asFunction<void Function(int, int)>();
 
   WireSyncReturn wire_StructWithCommentsTwinSync_instance_method_twin_sync(
     ffi.Pointer<wire_struct_with_comments_twin_sync> that,

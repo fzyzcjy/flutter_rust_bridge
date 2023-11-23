@@ -114,6 +114,11 @@ impl Wire2Api<bool> for JsValue {
         self.is_truthy()
     }
 }
+impl Wire2Api<EnumSimple> for JsValue {
+    fn wire2api(self) -> EnumSimple {
+        (self.unchecked_into_f64() as i32).wire2api()
+    }
+}
 impl Wire2Api<f32> for JsValue {
     fn wire2api(self) -> f32 {
         self.unchecked_into_f64() as _
@@ -249,6 +254,11 @@ pub fn wire_function_with_comments_triple_slash_multi_line_twin_normal(port_: Me
 #[wasm_bindgen]
 pub fn wire_function_with_comments_triple_slash_single_line_twin_normal(port_: MessagePort) {
     wire_function_with_comments_triple_slash_single_line_twin_normal_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_enum_simple_twin_normal(port_: MessagePort, arg: i32) {
+    wire_func_enum_simple_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
