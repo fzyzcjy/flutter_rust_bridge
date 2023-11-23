@@ -484,6 +484,26 @@ pub fn wire_func_enum_with_item_tuple_twin_normal(port_: MessagePort, arg: JsVal
 }
 
 #[wasm_bindgen]
+pub fn wire_func_return_error_twin_normal(port_: MessagePort) {
+    wire_func_return_error_twin_normal_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_return_panic_twin_normal(port_: MessagePort) {
+    wire_func_return_panic_twin_normal_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_return_unit_twin_normal(port_: MessagePort) {
+    wire_func_return_unit_twin_normal_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_string_twin_normal(port_: MessagePort, arg: String) {
+    wire_func_string_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
 pub fn wire_StructWithCommentsTwinSync_instance_method_twin_sync(
     that: JsValue,
 ) -> support::WireSyncReturn {
@@ -528,6 +548,26 @@ pub fn wire_func_enum_with_item_struct_twin_sync(arg: JsValue) -> support::WireS
 #[wasm_bindgen]
 pub fn wire_func_enum_with_item_tuple_twin_sync(arg: JsValue) -> support::WireSyncReturn {
     wire_func_enum_with_item_tuple_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_return_error_twin_sync() -> support::WireSyncReturn {
+    wire_func_return_error_twin_sync_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_func_return_panic_twin_sync() -> support::WireSyncReturn {
+    wire_func_return_panic_twin_sync_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_func_return_unit_twin_sync() -> support::WireSyncReturn {
+    wire_func_return_unit_twin_sync_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_func_string_twin_sync(arg: String) -> support::WireSyncReturn {
+    wire_func_string_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]

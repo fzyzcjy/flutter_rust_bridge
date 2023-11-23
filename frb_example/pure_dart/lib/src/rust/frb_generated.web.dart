@@ -2,8 +2,12 @@
 
 import 'api/comment.dart';
 import 'api/enumeration.dart';
+import 'api/exception.dart';
+import 'api/misc_type.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/enumeration_twin_sync.dart';
+import 'api/pseudo_manual/exception_twin_sync.dart';
+import 'api/pseudo_manual/misc_type_twin_sync.dart';
 import 'api/pseudo_manual/optional_primitive.dart';
 import 'api/pseudo_manual/optional_primitive_twin_sync.dart';
 import 'api/pseudo_manual/primitive.dart';

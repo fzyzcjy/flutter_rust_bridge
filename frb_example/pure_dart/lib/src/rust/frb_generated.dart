@@ -2,8 +2,12 @@
 
 import 'api/comment.dart';
 import 'api/enumeration.dart';
+import 'api/exception.dart';
+import 'api/misc_type.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/enumeration_twin_sync.dart';
+import 'api/pseudo_manual/exception_twin_sync.dart';
+import 'api/pseudo_manual/misc_type_twin_sync.dart';
 import 'api/pseudo_manual/optional_primitive.dart';
 import 'api/pseudo_manual/optional_primitive_twin_sync.dart';
 import 'api/pseudo_manual/primitive.dart';
@@ -82,6 +86,14 @@ abstract class RustLibApi extends BaseApi {
   Future<EnumWithItemTupleTwinNormal> funcEnumWithItemTupleTwinNormal(
       {required EnumWithItemTupleTwinNormal arg, dynamic hint});
 
+  Future<int> funcReturnErrorTwinNormal({dynamic hint});
+
+  Future<int> funcReturnPanicTwinNormal({dynamic hint});
+
+  Future<void> funcReturnUnitTwinNormal({dynamic hint});
+
+  Future<String> funcStringTwinNormal({required String arg, dynamic hint});
+
   void structWithCommentsTwinSyncInstanceMethodTwinSync(
       {required StructWithCommentsTwinSync that, dynamic hint});
 
@@ -104,6 +116,14 @@ abstract class RustLibApi extends BaseApi {
 
   EnumWithItemTupleTwinSync funcEnumWithItemTupleTwinSync(
       {required EnumWithItemTupleTwinSync arg, dynamic hint});
+
+  int funcReturnErrorTwinSync({dynamic hint});
+
+  int funcReturnPanicTwinSync({dynamic hint});
+
+  void funcReturnUnitTwinSync({dynamic hint});
+
+  String funcStringTwinSync({required String arg, dynamic hint});
 
   Future<bool?> exampleOptionalPrimitiveTypeBoolTwinNormal(
       {bool? arg, dynamic hint});
@@ -528,6 +548,79 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<int> funcReturnErrorTwinNormal({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_func_return_error_twin_normal(port_),
+      parseSuccessData: _wire2api_i_32,
+      parseErrorData: _wire2api_FrbAnyhowException,
+      constMeta: kFuncReturnErrorTwinNormalConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncReturnErrorTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "func_return_error_twin_normal",
+        argNames: [],
+      );
+
+  @override
+  Future<int> funcReturnPanicTwinNormal({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_func_return_panic_twin_normal(port_),
+      parseSuccessData: _wire2api_i_32,
+      parseErrorData: null,
+      constMeta: kFuncReturnPanicTwinNormalConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncReturnPanicTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "func_return_panic_twin_normal",
+        argNames: [],
+      );
+
+  @override
+  Future<void> funcReturnUnitTwinNormal({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_func_return_unit_twin_normal(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kFuncReturnUnitTwinNormalConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncReturnUnitTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "func_return_unit_twin_normal",
+        argNames: [],
+      );
+
+  @override
+  Future<String> funcStringTwinNormal({required String arg, dynamic hint}) {
+    var arg0 = api2wire_String(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_func_string_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kFuncStringTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncStringTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "func_string_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
   void structWithCommentsTwinSyncInstanceMethodTwinSync(
       {required StructWithCommentsTwinSync that, dynamic hint}) {
     var arg0 = api2wire_box_autoadd_struct_with_comments_twin_sync(that);
@@ -714,6 +807,79 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kFuncEnumWithItemTupleTwinSyncConstMeta =>
       const TaskConstMeta(
         debugName: "func_enum_with_item_tuple_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int funcReturnErrorTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_return_error_twin_sync(),
+      parseSuccessData: _wire2api_i_32,
+      parseErrorData: _wire2api_FrbAnyhowException,
+      constMeta: kFuncReturnErrorTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncReturnErrorTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "func_return_error_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  int funcReturnPanicTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_return_panic_twin_sync(),
+      parseSuccessData: _wire2api_i_32,
+      parseErrorData: null,
+      constMeta: kFuncReturnPanicTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncReturnPanicTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "func_return_panic_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  void funcReturnUnitTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_return_unit_twin_sync(),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kFuncReturnUnitTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncReturnUnitTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "func_return_unit_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  String funcStringTwinSync({required String arg, dynamic hint}) {
+    var arg0 = api2wire_String(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_string_twin_sync(arg0),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kFuncStringTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncStringTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "func_string_twin_sync",
         argNames: ["arg"],
       );
 
@@ -2387,6 +2553,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 }
 
 // Section: impl_wire2api
+
+FrbAnyhowException _wire2api_FrbAnyhowException(dynamic raw) {
+  return FrbAnyhowException(raw as String);
+}
 
 String _wire2api_String(dynamic raw) {
   return raw as String;

@@ -2,8 +2,12 @@
 
 import 'api/comment.dart';
 import 'api/enumeration.dart';
+import 'api/exception.dart';
+import 'api/misc_type.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/enumeration_twin_sync.dart';
+import 'api/pseudo_manual/exception_twin_sync.dart';
+import 'api/pseudo_manual/misc_type_twin_sync.dart';
 import 'api/pseudo_manual/optional_primitive.dart';
 import 'api/pseudo_manual/optional_primitive_twin_sync.dart';
 import 'api/pseudo_manual/primitive.dart';
@@ -869,6 +873,65 @@ class RustLibWire implements BaseWire {
           void Function(
               int, ffi.Pointer<wire_enum_with_item_tuple_twin_normal>)>();
 
+  void wire_func_return_error_twin_normal(
+    int port_,
+  ) {
+    return _wire_func_return_error_twin_normal(
+      port_,
+    );
+  }
+
+  late final _wire_func_return_error_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_func_return_error_twin_normal');
+  late final _wire_func_return_error_twin_normal =
+      _wire_func_return_error_twin_normalPtr.asFunction<void Function(int)>();
+
+  void wire_func_return_panic_twin_normal(
+    int port_,
+  ) {
+    return _wire_func_return_panic_twin_normal(
+      port_,
+    );
+  }
+
+  late final _wire_func_return_panic_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_func_return_panic_twin_normal');
+  late final _wire_func_return_panic_twin_normal =
+      _wire_func_return_panic_twin_normalPtr.asFunction<void Function(int)>();
+
+  void wire_func_return_unit_twin_normal(
+    int port_,
+  ) {
+    return _wire_func_return_unit_twin_normal(
+      port_,
+    );
+  }
+
+  late final _wire_func_return_unit_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_func_return_unit_twin_normal');
+  late final _wire_func_return_unit_twin_normal =
+      _wire_func_return_unit_twin_normalPtr.asFunction<void Function(int)>();
+
+  void wire_func_string_twin_normal(
+    int port_,
+    ffi.Pointer<wire_list_prim_u_8> arg,
+  ) {
+    return _wire_func_string_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_string_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_prim_u_8>)>>(
+      'wire_func_string_twin_normal');
+  late final _wire_func_string_twin_normal = _wire_func_string_twin_normalPtr
+      .asFunction<void Function(int, ffi.Pointer<wire_list_prim_u_8>)>();
+
   WireSyncReturn wire_StructWithCommentsTwinSync_instance_method_twin_sync(
     ffi.Pointer<wire_struct_with_comments_twin_sync> that,
   ) {
@@ -1002,6 +1065,54 @@ class RustLibWire implements BaseWire {
       _wire_func_enum_with_item_tuple_twin_syncPtr.asFunction<
           WireSyncReturn Function(
               ffi.Pointer<wire_enum_with_item_tuple_twin_sync>)>();
+
+  WireSyncReturn wire_func_return_error_twin_sync() {
+    return _wire_func_return_error_twin_sync();
+  }
+
+  late final _wire_func_return_error_twin_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+          'wire_func_return_error_twin_sync');
+  late final _wire_func_return_error_twin_sync =
+      _wire_func_return_error_twin_syncPtr
+          .asFunction<WireSyncReturn Function()>();
+
+  WireSyncReturn wire_func_return_panic_twin_sync() {
+    return _wire_func_return_panic_twin_sync();
+  }
+
+  late final _wire_func_return_panic_twin_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+          'wire_func_return_panic_twin_sync');
+  late final _wire_func_return_panic_twin_sync =
+      _wire_func_return_panic_twin_syncPtr
+          .asFunction<WireSyncReturn Function()>();
+
+  WireSyncReturn wire_func_return_unit_twin_sync() {
+    return _wire_func_return_unit_twin_sync();
+  }
+
+  late final _wire_func_return_unit_twin_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+          'wire_func_return_unit_twin_sync');
+  late final _wire_func_return_unit_twin_sync =
+      _wire_func_return_unit_twin_syncPtr
+          .asFunction<WireSyncReturn Function()>();
+
+  WireSyncReturn wire_func_string_twin_sync(
+    ffi.Pointer<wire_list_prim_u_8> arg,
+  ) {
+    return _wire_func_string_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_func_string_twin_syncPtr = _lookup<
+      ffi.NativeFunction<
+          WireSyncReturn Function(
+              ffi.Pointer<wire_list_prim_u_8>)>>('wire_func_string_twin_sync');
+  late final _wire_func_string_twin_sync = _wire_func_string_twin_syncPtr
+      .asFunction<WireSyncReturn Function(ffi.Pointer<wire_list_prim_u_8>)>();
 
   void wire_example_optional_primitive_type_bool_twin_normal(
     int port_,

@@ -1052,6 +1052,26 @@ pub extern "C" fn wire_func_enum_with_item_tuple_twin_normal(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_func_return_error_twin_normal(port_: i64) {
+    wire_func_return_error_twin_normal_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_func_return_panic_twin_normal(port_: i64) {
+    wire_func_return_panic_twin_normal_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_func_return_unit_twin_normal(port_: i64) {
+    wire_func_return_unit_twin_normal_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_func_string_twin_normal(port_: i64, arg: *mut wire_list_prim_u_8) {
+    wire_func_string_twin_normal_impl(port_, arg)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_StructWithCommentsTwinSync_instance_method_twin_sync(
     that: *mut wire_struct_with_comments_twin_sync,
 ) -> support::WireSyncReturn {
@@ -1106,6 +1126,28 @@ pub extern "C" fn wire_func_enum_with_item_tuple_twin_sync(
     arg: *mut wire_enum_with_item_tuple_twin_sync,
 ) -> support::WireSyncReturn {
     wire_func_enum_with_item_tuple_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_func_return_error_twin_sync() -> support::WireSyncReturn {
+    wire_func_return_error_twin_sync_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn wire_func_return_panic_twin_sync() -> support::WireSyncReturn {
+    wire_func_return_panic_twin_sync_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn wire_func_return_unit_twin_sync() -> support::WireSyncReturn {
+    wire_func_return_unit_twin_sync_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn wire_func_string_twin_sync(
+    arg: *mut wire_list_prim_u_8,
+) -> support::WireSyncReturn {
+    wire_func_string_twin_sync_impl(arg)
 }
 
 #[no_mangle]

@@ -251,6 +251,14 @@ void wire_func_enum_with_item_struct_twin_normal(int64_t port_,
 void wire_func_enum_with_item_tuple_twin_normal(int64_t port_,
                                                 struct wire_enum_with_item_tuple_twin_normal *arg);
 
+void wire_func_return_error_twin_normal(int64_t port_);
+
+void wire_func_return_panic_twin_normal(int64_t port_);
+
+void wire_func_return_unit_twin_normal(int64_t port_);
+
+void wire_func_string_twin_normal(int64_t port_, struct wire_list_prim_u_8 *arg);
+
 WireSyncReturn wire_StructWithCommentsTwinSync_instance_method_twin_sync(struct wire_struct_with_comments_twin_sync *that);
 
 WireSyncReturn wire_StructWithCommentsTwinSync_static_method_twin_sync(void);
@@ -268,6 +276,14 @@ WireSyncReturn wire_func_enum_with_item_mixed_twin_sync(struct wire_enum_with_it
 WireSyncReturn wire_func_enum_with_item_struct_twin_sync(struct wire_enum_with_item_struct_twin_sync *arg);
 
 WireSyncReturn wire_func_enum_with_item_tuple_twin_sync(struct wire_enum_with_item_tuple_twin_sync *arg);
+
+WireSyncReturn wire_func_return_error_twin_sync(void);
+
+WireSyncReturn wire_func_return_panic_twin_sync(void);
+
+WireSyncReturn wire_func_return_unit_twin_sync(void);
+
+WireSyncReturn wire_func_string_twin_sync(struct wire_list_prim_u_8 *arg);
 
 void wire_example_optional_primitive_type_bool_twin_normal(int64_t port_, bool *arg);
 
@@ -677,6 +693,14 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_struct_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_tuple_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_tuple_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_func_return_error_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_func_return_error_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_func_return_panic_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_func_return_panic_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_func_return_unit_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_func_return_unit_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_func_string_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_func_string_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_func_struct_with_one_field_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_struct_with_one_field_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_func_struct_with_two_field_twin_normal);

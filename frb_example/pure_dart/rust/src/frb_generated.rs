@@ -204,6 +204,49 @@ fn wire_func_enum_with_item_tuple_twin_normal_impl(
         },
     )
 }
+fn wire_func_return_error_twin_normal_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
+        WrapInfo {
+            debug_name: "func_return_error_twin_normal",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| func_return_error_twin_normal(),
+    )
+}
+fn wire_func_return_panic_twin_normal_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
+        WrapInfo {
+            debug_name: "func_return_panic_twin_normal",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(func_return_panic_twin_normal()),
+    )
+}
+fn wire_func_return_unit_twin_normal_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        WrapInfo {
+            debug_name: "func_return_unit_twin_normal",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(func_return_unit_twin_normal()),
+    )
+}
+fn wire_func_string_twin_normal_impl(port_: MessagePort, arg: impl Wire2Api<String> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+        WrapInfo {
+            debug_name: "func_string_twin_normal",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(func_string_twin_normal(api_arg))
+        },
+    )
+}
 fn wire_StructWithCommentsTwinSync_instance_method_twin_sync_impl(
     that: impl Wire2Api<StructWithCommentsTwinSync> + UnwindSafe,
 ) -> support::WireSyncReturn {
@@ -319,6 +362,51 @@ fn wire_func_enum_with_item_tuple_twin_sync_impl(
         move || {
             let api_arg = arg.wire2api();
             Result::<_, ()>::Ok(func_enum_with_item_tuple_twin_sync(api_arg))
+        },
+    )
+}
+fn wire_func_return_error_twin_sync_impl() -> support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "func_return_error_twin_sync",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || func_return_error_twin_sync(),
+    )
+}
+fn wire_func_return_panic_twin_sync_impl() -> support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "func_return_panic_twin_sync",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || Result::<_, ()>::Ok(func_return_panic_twin_sync()),
+    )
+}
+fn wire_func_return_unit_twin_sync_impl() -> support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "func_return_unit_twin_sync",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || Result::<_, ()>::Ok(func_return_unit_twin_sync()),
+    )
+}
+fn wire_func_string_twin_sync_impl(
+    arg: impl Wire2Api<String> + UnwindSafe,
+) -> support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "func_string_twin_sync",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            Result::<_, ()>::Ok(func_string_twin_sync(api_arg))
         },
     )
 }
