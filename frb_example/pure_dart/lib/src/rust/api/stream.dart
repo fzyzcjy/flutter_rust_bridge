@@ -17,3 +17,24 @@ Stream<int> funcStreamSinkArgPositionTwinNormal(
         {required int a, required int b, dynamic hint}) =>
     RustLib.instance.api
         .funcStreamSinkArgPositionTwinNormal(a: a, b: b, hint: hint);
+
+Stream<MyStreamEntry> handleStreamOfStruct({dynamic hint}) =>
+    RustLib.instance.api.handleStreamOfStruct(hint: hint);
+
+class MyStreamEntry {
+  final String hello;
+
+  const MyStreamEntry({
+    required this.hello,
+  });
+
+  @override
+  int get hashCode => hello.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyStreamEntry &&
+          runtimeType == other.runtimeType &&
+          hello == other.hello;
+}

@@ -15,6 +15,69 @@ impl Wire2Api<String> for String {
         self
     }
 }
+impl Wire2Api<Vec<String>> for JsValue {
+    fn wire2api(self) -> Vec<String> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
+impl Wire2Api<A> for JsValue {
+    fn wire2api(self) -> A {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        A {
+            a: self_.get(0).wire2api(),
+        }
+    }
+}
+impl Wire2Api<Abc> for JsValue {
+    fn wire2api(self) -> Abc {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => Abc::A(self_.get(1).wire2api()),
+            1 => Abc::B(self_.get(1).wire2api()),
+            2 => Abc::C(self_.get(1).wire2api()),
+            3 => Abc::JustInt(self_.get(1).wire2api()),
+            _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<B> for JsValue {
+    fn wire2api(self) -> B {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        B {
+            b: self_.get(0).wire2api(),
+        }
+    }
+}
+impl Wire2Api<C> for JsValue {
+    fn wire2api(self) -> C {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        C {
+            c: self_.get(0).wire2api(),
+        }
+    }
+}
 impl Wire2Api<CustomNestedErrorInnerTwinNormal> for JsValue {
     fn wire2api(self) -> CustomNestedErrorInnerTwinNormal {
         let self_ = self.unchecked_into::<JsArray>();
@@ -80,6 +143,16 @@ impl Wire2Api<CustomStructErrorTwinSync> for JsValue {
         );
         CustomStructErrorTwinSync {
             a: self_.get(0).wire2api(),
+        }
+    }
+}
+impl Wire2Api<Distance> for JsValue {
+    fn wire2api(self) -> Distance {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => Distance::Unknown,
+            1 => Distance::Map(self_.get(1).wire2api()),
+            _ => unreachable!(),
         }
     }
 }
@@ -166,6 +239,24 @@ impl Wire2Api<Vec<bool>> for JsValue {
             .collect()
     }
 }
+impl Wire2Api<Vec<MySize>> for JsValue {
+    fn wire2api(self) -> Vec<MySize> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
+impl Wire2Api<Vec<MyTreeNode>> for JsValue {
+    fn wire2api(self) -> Vec<MyTreeNode> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
 impl Wire2Api<Vec<f32>> for Box<[f32]> {
     fn wire2api(self) -> Vec<f32> {
         self.into_vec()
@@ -216,6 +307,15 @@ impl Wire2Api<Vec<u8>> for Box<[u8]> {
         self.into_vec()
     }
 }
+impl Wire2Api<Vec<Weekdays>> for JsValue {
+    fn wire2api(self) -> Vec<Weekdays> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
 impl Wire2Api<MacroStruct> for JsValue {
     fn wire2api(self) -> MacroStruct {
         let self_ = self.dyn_into::<JsArray>().unwrap();
@@ -227,6 +327,88 @@ impl Wire2Api<MacroStruct> for JsValue {
         );
         MacroStruct {
             data: self_.get(0).wire2api(),
+        }
+    }
+}
+impl Wire2Api<Measure> for JsValue {
+    fn wire2api(self) -> Measure {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => Measure::Speed(self_.get(1).wire2api()),
+            1 => Measure::Distance(self_.get(1).wire2api()),
+            _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<MyNestedStruct> for JsValue {
+    fn wire2api(self) -> MyNestedStruct {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        MyNestedStruct {
+            tree_node: self_.get(0).wire2api(),
+            weekday: self_.get(1).wire2api(),
+        }
+    }
+}
+impl Wire2Api<MySize> for JsValue {
+    fn wire2api(self) -> MySize {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        MySize {
+            width: self_.get(0).wire2api(),
+            height: self_.get(1).wire2api(),
+        }
+    }
+}
+impl Wire2Api<MyTreeNode> for JsValue {
+    fn wire2api(self) -> MyTreeNode {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        MyTreeNode {
+            value_i32: self_.get(0).wire2api(),
+            value_vec_u8: self_.get(1).wire2api(),
+            value_boolean: self_.get(2).wire2api(),
+            children: self_.get(3).wire2api(),
+        }
+    }
+}
+impl Wire2Api<Note> for JsValue {
+    fn wire2api(self) -> Note {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        Note {
+            day: self_.get(0).wire2api(),
+            body: self_.get(1).wire2api(),
+        }
+    }
+}
+impl Wire2Api<Speed> for JsValue {
+    fn wire2api(self) -> Speed {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => Speed::Unknown,
+            1 => Speed::GPS(self_.get(1).wire2api()),
+            _ => unreachable!(),
         }
     }
 }
@@ -255,6 +437,21 @@ impl Wire2Api<StructWithCommentsTwinSync> for JsValue {
         );
         StructWithCommentsTwinSync {
             field_with_comments: self_.get(0).wire2api(),
+        }
+    }
+}
+impl Wire2Api<StructWithEnum> for JsValue {
+    fn wire2api(self) -> StructWithEnum {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        StructWithEnum {
+            abc1: self_.get(0).wire2api(),
+            abc2: self_.get(1).wire2api(),
         }
     }
 }
@@ -398,6 +595,22 @@ impl Wire2Api<bool> for JsValue {
         self.is_truthy()
     }
 }
+impl Wire2Api<Box<Distance>> for JsValue {
+    fn wire2api(self) -> Box<Distance> {
+        Box::new(self.wire2api())
+    }
+}
+impl Wire2Api<Box<Speed>> for JsValue {
+    fn wire2api(self) -> Box<Speed> {
+        Box::new(self.wire2api())
+    }
+}
+impl Wire2Api<Box<Weekdays>> for JsValue {
+    fn wire2api(self) -> Box<Weekdays> {
+        let ptr: Box<i32> = self.wire2api();
+        Box::new(ptr.wire2api())
+    }
+}
 impl Wire2Api<EnumSimpleTwinNormal> for JsValue {
     fn wire2api(self) -> EnumSimpleTwinNormal {
         (self.unchecked_into_f64() as i32).wire2api()
@@ -516,6 +729,11 @@ impl Wire2Api<u8> for JsValue {
         self.unchecked_into_f64() as _
     }
 }
+impl Wire2Api<Weekdays> for JsValue {
+    fn wire2api(self) -> Weekdays {
+        (self.unchecked_into_f64() as i32).wire2api()
+    }
+}
 
 #[wasm_bindgen]
 pub fn wire_StructWithCommentsTwinNormal_instance_method_twin_normal(
@@ -566,6 +784,26 @@ pub fn wire_func_enum_with_item_tuple_twin_normal(port_: MessagePort, arg: JsVal
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_enum_parameter(port_: MessagePort, weekday: i32) {
+    wire_handle_enum_parameter_impl(port_, weekday)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_return_enum(port_: MessagePort, input: String) {
+    wire_handle_return_enum_impl(port_, input)
+}
+
+#[wasm_bindgen]
+pub fn wire_multiply_by_ten(port_: MessagePort, measure: JsValue) {
+    wire_multiply_by_ten_impl(port_, measure)
+}
+
+#[wasm_bindgen]
+pub fn wire_print_note(port_: MessagePort, note: JsValue) {
+    wire_print_note_impl(port_, note)
+}
+
+#[wasm_bindgen]
 pub fn wire_custom_enum_error_panic_twin_normal(port_: MessagePort) {
     wire_custom_enum_error_panic_twin_normal_impl(port_)
 }
@@ -611,6 +849,41 @@ pub fn wire_func_macro_struct(port_: MessagePort, arg: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_big_buffers(port_: MessagePort) {
+    wire_handle_big_buffers_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_complex_struct(port_: MessagePort, s: JsValue) {
+    wire_handle_complex_struct_impl(port_, s)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_nested_struct(port_: MessagePort, s: JsValue) {
+    wire_handle_nested_struct_impl(port_, s)
+}
+
+#[wasm_bindgen]
+pub fn wire_list_of_primitive_enums(port_: MessagePort, weekdays: JsValue) {
+    wire_list_of_primitive_enums_impl(port_, weekdays)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_abc_enum(port_: MessagePort, abc: JsValue) {
+    wire_test_abc_enum_impl(port_, abc)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_contains_mirrored_sub_struct(port_: MessagePort) {
+    wire_test_contains_mirrored_sub_struct_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_struct_with_enum(port_: MessagePort, se: JsValue) {
+    wire_test_struct_with_enum_impl(port_, se)
+}
+
+#[wasm_bindgen]
 pub fn wire_func_return_unit_twin_normal(port_: MessagePort) {
     wire_func_return_unit_twin_normal_impl(port_)
 }
@@ -618,6 +891,16 @@ pub fn wire_func_return_unit_twin_normal(port_: MessagePort) {
 #[wasm_bindgen]
 pub fn wire_func_string_twin_normal(port_: MessagePort, arg: String) {
     wire_func_string_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_list_of_struct(port_: MessagePort, l: JsValue) {
+    wire_handle_list_of_struct_impl(port_, l)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_string_list(port_: MessagePort, names: JsValue) {
+    wire_handle_string_list_impl(port_, names)
 }
 
 #[wasm_bindgen]
@@ -1102,6 +1385,11 @@ pub fn wire_func_stream_return_panic_twin_normal(port_: MessagePort) {
 #[wasm_bindgen]
 pub fn wire_func_stream_sink_arg_position_twin_normal(port_: MessagePort, a: u32, b: u32) {
     wire_func_stream_sink_arg_position_twin_normal_impl(port_, a, b)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_stream_of_struct(port_: MessagePort) {
+    wire_handle_stream_of_struct_impl(port_)
 }
 
 #[wasm_bindgen]

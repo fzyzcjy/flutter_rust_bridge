@@ -15,6 +15,300 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
+mixin _$Distance {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unknown,
+    required TResult Function(double field0) map,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unknown,
+    TResult? Function(double field0)? map,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unknown,
+    TResult Function(double field0)? map,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Distance_Unknown value) unknown,
+    required TResult Function(Distance_Map value) map,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Distance_Unknown value)? unknown,
+    TResult? Function(Distance_Map value)? map,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Distance_Unknown value)? unknown,
+    TResult Function(Distance_Map value)? map,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DistanceCopyWith<$Res> {
+  factory $DistanceCopyWith(Distance value, $Res Function(Distance) then) =
+      _$DistanceCopyWithImpl<$Res, Distance>;
+}
+
+/// @nodoc
+class _$DistanceCopyWithImpl<$Res, $Val extends Distance>
+    implements $DistanceCopyWith<$Res> {
+  _$DistanceCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$Distance_UnknownImplCopyWith<$Res> {
+  factory _$$Distance_UnknownImplCopyWith(_$Distance_UnknownImpl value,
+          $Res Function(_$Distance_UnknownImpl) then) =
+      __$$Distance_UnknownImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$Distance_UnknownImplCopyWithImpl<$Res>
+    extends _$DistanceCopyWithImpl<$Res, _$Distance_UnknownImpl>
+    implements _$$Distance_UnknownImplCopyWith<$Res> {
+  __$$Distance_UnknownImplCopyWithImpl(_$Distance_UnknownImpl _value,
+      $Res Function(_$Distance_UnknownImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$Distance_UnknownImpl implements Distance_Unknown {
+  const _$Distance_UnknownImpl();
+
+  @override
+  String toString() {
+    return 'Distance.unknown()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$Distance_UnknownImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unknown,
+    required TResult Function(double field0) map,
+  }) {
+    return unknown();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unknown,
+    TResult? Function(double field0)? map,
+  }) {
+    return unknown?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unknown,
+    TResult Function(double field0)? map,
+    required TResult orElse(),
+  }) {
+    if (unknown != null) {
+      return unknown();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Distance_Unknown value) unknown,
+    required TResult Function(Distance_Map value) map,
+  }) {
+    return unknown(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Distance_Unknown value)? unknown,
+    TResult? Function(Distance_Map value)? map,
+  }) {
+    return unknown?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Distance_Unknown value)? unknown,
+    TResult Function(Distance_Map value)? map,
+    required TResult orElse(),
+  }) {
+    if (unknown != null) {
+      return unknown(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Distance_Unknown implements Distance {
+  const factory Distance_Unknown() = _$Distance_UnknownImpl;
+}
+
+/// @nodoc
+abstract class _$$Distance_MapImplCopyWith<$Res> {
+  factory _$$Distance_MapImplCopyWith(
+          _$Distance_MapImpl value, $Res Function(_$Distance_MapImpl) then) =
+      __$$Distance_MapImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({double field0});
+}
+
+/// @nodoc
+class __$$Distance_MapImplCopyWithImpl<$Res>
+    extends _$DistanceCopyWithImpl<$Res, _$Distance_MapImpl>
+    implements _$$Distance_MapImplCopyWith<$Res> {
+  __$$Distance_MapImplCopyWithImpl(
+      _$Distance_MapImpl _value, $Res Function(_$Distance_MapImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$Distance_MapImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$Distance_MapImpl implements Distance_Map {
+  const _$Distance_MapImpl(this.field0);
+
+  @override
+  final double field0;
+
+  @override
+  String toString() {
+    return 'Distance.map(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$Distance_MapImpl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$Distance_MapImplCopyWith<_$Distance_MapImpl> get copyWith =>
+      __$$Distance_MapImplCopyWithImpl<_$Distance_MapImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unknown,
+    required TResult Function(double field0) map,
+  }) {
+    return map(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unknown,
+    TResult? Function(double field0)? map,
+  }) {
+    return map?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unknown,
+    TResult Function(double field0)? map,
+    required TResult orElse(),
+  }) {
+    if (map != null) {
+      return map(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Distance_Unknown value) unknown,
+    required TResult Function(Distance_Map value) map,
+  }) {
+    return map(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Distance_Unknown value)? unknown,
+    TResult? Function(Distance_Map value)? map,
+  }) {
+    return map?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Distance_Unknown value)? unknown,
+    TResult Function(Distance_Map value)? map,
+    required TResult orElse(),
+  }) {
+    if (map != null) {
+      return map(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Distance_Map implements Distance {
+  const factory Distance_Map(final double field0) = _$Distance_MapImpl;
+
+  double get field0;
+  @JsonKey(ignore: true)
+  _$$Distance_MapImplCopyWith<_$Distance_MapImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$EnumWithItemMixedTwinNormal {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -1194,4 +1488,648 @@ abstract class EnumWithItemTupleTwinNormal_B
   _$$EnumWithItemTupleTwinNormal_BImplCopyWith<
           _$EnumWithItemTupleTwinNormal_BImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$Measure {
+  Object get field0 => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Speed field0) speed,
+    required TResult Function(Distance field0) distance,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Speed field0)? speed,
+    TResult? Function(Distance field0)? distance,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Speed field0)? speed,
+    TResult Function(Distance field0)? distance,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Measure_Speed value) speed,
+    required TResult Function(Measure_Distance value) distance,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Measure_Speed value)? speed,
+    TResult? Function(Measure_Distance value)? distance,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Measure_Speed value)? speed,
+    TResult Function(Measure_Distance value)? distance,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MeasureCopyWith<$Res> {
+  factory $MeasureCopyWith(Measure value, $Res Function(Measure) then) =
+      _$MeasureCopyWithImpl<$Res, Measure>;
+}
+
+/// @nodoc
+class _$MeasureCopyWithImpl<$Res, $Val extends Measure>
+    implements $MeasureCopyWith<$Res> {
+  _$MeasureCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$Measure_SpeedImplCopyWith<$Res> {
+  factory _$$Measure_SpeedImplCopyWith(
+          _$Measure_SpeedImpl value, $Res Function(_$Measure_SpeedImpl) then) =
+      __$$Measure_SpeedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Speed field0});
+
+  $SpeedCopyWith<$Res> get field0;
+}
+
+/// @nodoc
+class __$$Measure_SpeedImplCopyWithImpl<$Res>
+    extends _$MeasureCopyWithImpl<$Res, _$Measure_SpeedImpl>
+    implements _$$Measure_SpeedImplCopyWith<$Res> {
+  __$$Measure_SpeedImplCopyWithImpl(
+      _$Measure_SpeedImpl _value, $Res Function(_$Measure_SpeedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$Measure_SpeedImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as Speed,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SpeedCopyWith<$Res> get field0 {
+    return $SpeedCopyWith<$Res>(_value.field0, (value) {
+      return _then(_value.copyWith(field0: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$Measure_SpeedImpl implements Measure_Speed {
+  const _$Measure_SpeedImpl(this.field0);
+
+  @override
+  final Speed field0;
+
+  @override
+  String toString() {
+    return 'Measure.speed(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$Measure_SpeedImpl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$Measure_SpeedImplCopyWith<_$Measure_SpeedImpl> get copyWith =>
+      __$$Measure_SpeedImplCopyWithImpl<_$Measure_SpeedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Speed field0) speed,
+    required TResult Function(Distance field0) distance,
+  }) {
+    return speed(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Speed field0)? speed,
+    TResult? Function(Distance field0)? distance,
+  }) {
+    return speed?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Speed field0)? speed,
+    TResult Function(Distance field0)? distance,
+    required TResult orElse(),
+  }) {
+    if (speed != null) {
+      return speed(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Measure_Speed value) speed,
+    required TResult Function(Measure_Distance value) distance,
+  }) {
+    return speed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Measure_Speed value)? speed,
+    TResult? Function(Measure_Distance value)? distance,
+  }) {
+    return speed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Measure_Speed value)? speed,
+    TResult Function(Measure_Distance value)? distance,
+    required TResult orElse(),
+  }) {
+    if (speed != null) {
+      return speed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Measure_Speed implements Measure {
+  const factory Measure_Speed(final Speed field0) = _$Measure_SpeedImpl;
+
+  @override
+  Speed get field0;
+  @JsonKey(ignore: true)
+  _$$Measure_SpeedImplCopyWith<_$Measure_SpeedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$Measure_DistanceImplCopyWith<$Res> {
+  factory _$$Measure_DistanceImplCopyWith(_$Measure_DistanceImpl value,
+          $Res Function(_$Measure_DistanceImpl) then) =
+      __$$Measure_DistanceImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Distance field0});
+
+  $DistanceCopyWith<$Res> get field0;
+}
+
+/// @nodoc
+class __$$Measure_DistanceImplCopyWithImpl<$Res>
+    extends _$MeasureCopyWithImpl<$Res, _$Measure_DistanceImpl>
+    implements _$$Measure_DistanceImplCopyWith<$Res> {
+  __$$Measure_DistanceImplCopyWithImpl(_$Measure_DistanceImpl _value,
+      $Res Function(_$Measure_DistanceImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$Measure_DistanceImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as Distance,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DistanceCopyWith<$Res> get field0 {
+    return $DistanceCopyWith<$Res>(_value.field0, (value) {
+      return _then(_value.copyWith(field0: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$Measure_DistanceImpl implements Measure_Distance {
+  const _$Measure_DistanceImpl(this.field0);
+
+  @override
+  final Distance field0;
+
+  @override
+  String toString() {
+    return 'Measure.distance(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$Measure_DistanceImpl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$Measure_DistanceImplCopyWith<_$Measure_DistanceImpl> get copyWith =>
+      __$$Measure_DistanceImplCopyWithImpl<_$Measure_DistanceImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Speed field0) speed,
+    required TResult Function(Distance field0) distance,
+  }) {
+    return distance(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Speed field0)? speed,
+    TResult? Function(Distance field0)? distance,
+  }) {
+    return distance?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Speed field0)? speed,
+    TResult Function(Distance field0)? distance,
+    required TResult orElse(),
+  }) {
+    if (distance != null) {
+      return distance(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Measure_Speed value) speed,
+    required TResult Function(Measure_Distance value) distance,
+  }) {
+    return distance(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Measure_Speed value)? speed,
+    TResult? Function(Measure_Distance value)? distance,
+  }) {
+    return distance?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Measure_Speed value)? speed,
+    TResult Function(Measure_Distance value)? distance,
+    required TResult orElse(),
+  }) {
+    if (distance != null) {
+      return distance(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Measure_Distance implements Measure {
+  const factory Measure_Distance(final Distance field0) =
+      _$Measure_DistanceImpl;
+
+  @override
+  Distance get field0;
+  @JsonKey(ignore: true)
+  _$$Measure_DistanceImplCopyWith<_$Measure_DistanceImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$Speed {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unknown,
+    required TResult Function(double field0) gps,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unknown,
+    TResult? Function(double field0)? gps,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unknown,
+    TResult Function(double field0)? gps,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Speed_Unknown value) unknown,
+    required TResult Function(Speed_GPS value) gps,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Speed_Unknown value)? unknown,
+    TResult? Function(Speed_GPS value)? gps,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Speed_Unknown value)? unknown,
+    TResult Function(Speed_GPS value)? gps,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SpeedCopyWith<$Res> {
+  factory $SpeedCopyWith(Speed value, $Res Function(Speed) then) =
+      _$SpeedCopyWithImpl<$Res, Speed>;
+}
+
+/// @nodoc
+class _$SpeedCopyWithImpl<$Res, $Val extends Speed>
+    implements $SpeedCopyWith<$Res> {
+  _$SpeedCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$Speed_UnknownImplCopyWith<$Res> {
+  factory _$$Speed_UnknownImplCopyWith(
+          _$Speed_UnknownImpl value, $Res Function(_$Speed_UnknownImpl) then) =
+      __$$Speed_UnknownImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$Speed_UnknownImplCopyWithImpl<$Res>
+    extends _$SpeedCopyWithImpl<$Res, _$Speed_UnknownImpl>
+    implements _$$Speed_UnknownImplCopyWith<$Res> {
+  __$$Speed_UnknownImplCopyWithImpl(
+      _$Speed_UnknownImpl _value, $Res Function(_$Speed_UnknownImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$Speed_UnknownImpl implements Speed_Unknown {
+  const _$Speed_UnknownImpl();
+
+  @override
+  String toString() {
+    return 'Speed.unknown()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$Speed_UnknownImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unknown,
+    required TResult Function(double field0) gps,
+  }) {
+    return unknown();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unknown,
+    TResult? Function(double field0)? gps,
+  }) {
+    return unknown?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unknown,
+    TResult Function(double field0)? gps,
+    required TResult orElse(),
+  }) {
+    if (unknown != null) {
+      return unknown();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Speed_Unknown value) unknown,
+    required TResult Function(Speed_GPS value) gps,
+  }) {
+    return unknown(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Speed_Unknown value)? unknown,
+    TResult? Function(Speed_GPS value)? gps,
+  }) {
+    return unknown?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Speed_Unknown value)? unknown,
+    TResult Function(Speed_GPS value)? gps,
+    required TResult orElse(),
+  }) {
+    if (unknown != null) {
+      return unknown(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Speed_Unknown implements Speed {
+  const factory Speed_Unknown() = _$Speed_UnknownImpl;
+}
+
+/// @nodoc
+abstract class _$$Speed_GPSImplCopyWith<$Res> {
+  factory _$$Speed_GPSImplCopyWith(
+          _$Speed_GPSImpl value, $Res Function(_$Speed_GPSImpl) then) =
+      __$$Speed_GPSImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({double field0});
+}
+
+/// @nodoc
+class __$$Speed_GPSImplCopyWithImpl<$Res>
+    extends _$SpeedCopyWithImpl<$Res, _$Speed_GPSImpl>
+    implements _$$Speed_GPSImplCopyWith<$Res> {
+  __$$Speed_GPSImplCopyWithImpl(
+      _$Speed_GPSImpl _value, $Res Function(_$Speed_GPSImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$Speed_GPSImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$Speed_GPSImpl implements Speed_GPS {
+  const _$Speed_GPSImpl(this.field0);
+
+  @override
+  final double field0;
+
+  @override
+  String toString() {
+    return 'Speed.gps(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$Speed_GPSImpl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$Speed_GPSImplCopyWith<_$Speed_GPSImpl> get copyWith =>
+      __$$Speed_GPSImplCopyWithImpl<_$Speed_GPSImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unknown,
+    required TResult Function(double field0) gps,
+  }) {
+    return gps(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unknown,
+    TResult? Function(double field0)? gps,
+  }) {
+    return gps?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unknown,
+    TResult Function(double field0)? gps,
+    required TResult orElse(),
+  }) {
+    if (gps != null) {
+      return gps(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Speed_Unknown value) unknown,
+    required TResult Function(Speed_GPS value) gps,
+  }) {
+    return gps(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Speed_Unknown value)? unknown,
+    TResult? Function(Speed_GPS value)? gps,
+  }) {
+    return gps?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Speed_Unknown value)? unknown,
+    TResult Function(Speed_GPS value)? gps,
+    required TResult orElse(),
+  }) {
+    if (gps != null) {
+      return gps(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Speed_GPS implements Speed {
+  const factory Speed_GPS(final double field0) = _$Speed_GPSImpl;
+
+  double get field0;
+  @JsonKey(ignore: true)
+  _$$Speed_GPSImplCopyWith<_$Speed_GPSImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

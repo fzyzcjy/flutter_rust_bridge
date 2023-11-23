@@ -4,6 +4,7 @@ import 'api/comment.dart';
 import 'api/enumeration.dart';
 import 'api/exception.dart';
 import 'api/inside_macro.dart';
+import 'api/misc_example.dart';
 import 'api/misc_type.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/enumeration_twin_sync.dart';
@@ -20,6 +21,7 @@ import 'api/pseudo_manual/structure_twin_sync.dart';
 import 'api/simple.dart';
 import 'api/stream.dart';
 import 'api/structure.dart';
+import 'auxiliary/sample_types.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'frb_generated.dart';
@@ -38,8 +40,61 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<String> api2wire_StringList(List<String> raw) {
+    return raw;
+  }
+
+  @protected
+  List<dynamic> api2wire_a(A raw) {
+    return [api2wire_String(raw.a)];
+  }
+
+  @protected
+  List<dynamic> api2wire_abc(Abc raw) {
+    if (raw is Abc_A) {
+      return [0, api2wire_box_autoadd_a(raw.field0)];
+    }
+    if (raw is Abc_B) {
+      return [1, api2wire_box_autoadd_b(raw.field0)];
+    }
+    if (raw is Abc_C) {
+      return [2, api2wire_box_autoadd_c(raw.field0)];
+    }
+    if (raw is Abc_JustInt) {
+      return [3, api2wire_i_32(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> api2wire_b(B raw) {
+    return [api2wire_i_32(raw.b)];
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_a(A raw) {
+    return api2wire_a(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_abc(Abc raw) {
+    return api2wire_abc(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_b(B raw) {
+    return api2wire_b(raw);
+  }
+
+  @protected
   bool api2wire_box_autoadd_bool(bool raw) {
     return api2wire_bool(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_c(C raw) {
+    return api2wire_c(raw);
   }
 
   @protected
@@ -150,6 +205,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_measure(Measure raw) {
+    return api2wire_measure(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_my_nested_struct(MyNestedStruct raw) {
+    return api2wire_my_nested_struct(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_my_tree_node(MyTreeNode raw) {
+    return api2wire_my_tree_node(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_note(Note raw) {
+    return api2wire_note(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_struct_with_comments_twin_normal(
       StructWithCommentsTwinNormal raw) {
     return api2wire_struct_with_comments_twin_normal(raw);
@@ -159,6 +234,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> api2wire_box_autoadd_struct_with_comments_twin_sync(
       StructWithCommentsTwinSync raw) {
     return api2wire_struct_with_comments_twin_sync(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_struct_with_enum(StructWithEnum raw) {
+    return api2wire_struct_with_enum(raw);
   }
 
   @protected
@@ -242,6 +322,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_distance(Distance raw) {
+    return api2wire_distance(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_speed(Speed raw) {
+    return api2wire_speed(raw);
+  }
+
+  @protected
+  int api2wire_box_weekdays(Weekdays raw) {
+    return api2wire_weekdays(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_c(C raw) {
+    return [api2wire_bool(raw.c)];
+  }
+
+  @protected
   List<dynamic> api2wire_custom_nested_error_inner_twin_normal(
       CustomNestedErrorInnerTwinNormal raw) {
     if (raw is CustomNestedErrorInnerTwinNormal_Three) {
@@ -309,6 +409,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> api2wire_custom_struct_error_twin_sync(
       CustomStructErrorTwinSync raw) {
     return [api2wire_String(raw.a)];
+  }
+
+  @protected
+  List<dynamic> api2wire_distance(Distance raw) {
+    if (raw is Distance_Unknown) {
+      return [0];
+    }
+    if (raw is Distance_Map) {
+      return [1, api2wire_f_64(raw.field0)];
+    }
+
+    throw Exception('unreachable');
   }
 
   @protected
@@ -406,6 +518,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_list_my_size(List<MySize> raw) {
+    return raw.map(api2wire_my_size).toList();
+  }
+
+  @protected
+  List<dynamic> api2wire_list_my_tree_node(List<MyTreeNode> raw) {
+    return raw.map(api2wire_my_tree_node).toList();
+  }
+
+  @protected
   Float32List api2wire_list_prim_f_32(Float32List raw) {
     return raw;
   }
@@ -456,8 +578,53 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_list_weekdays(List<Weekdays> raw) {
+    return raw.map(api2wire_weekdays).toList();
+  }
+
+  @protected
   List<dynamic> api2wire_macro_struct(MacroStruct raw) {
     return [api2wire_i_32(raw.data)];
+  }
+
+  @protected
+  List<dynamic> api2wire_measure(Measure raw) {
+    if (raw is Measure_Speed) {
+      return [0, api2wire_box_speed(raw.field0)];
+    }
+    if (raw is Measure_Distance) {
+      return [1, api2wire_box_distance(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> api2wire_my_nested_struct(MyNestedStruct raw) {
+    return [
+      api2wire_my_tree_node(raw.treeNode),
+      api2wire_weekdays(raw.weekday)
+    ];
+  }
+
+  @protected
+  List<dynamic> api2wire_my_size(MySize raw) {
+    return [api2wire_i_32(raw.width), api2wire_i_32(raw.height)];
+  }
+
+  @protected
+  List<dynamic> api2wire_my_tree_node(MyTreeNode raw) {
+    return [
+      api2wire_i_32(raw.valueI32),
+      api2wire_list_prim_u_8(raw.valueVecU8),
+      api2wire_bool(raw.valueBoolean),
+      api2wire_list_my_tree_node(raw.children)
+    ];
+  }
+
+  @protected
+  List<dynamic> api2wire_note(Note raw) {
+    return [api2wire_box_weekdays(raw.day), api2wire_String(raw.body)];
   }
 
   @protected
@@ -516,6 +683,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_speed(Speed raw) {
+    if (raw is Speed_Unknown) {
+      return [0];
+    }
+    if (raw is Speed_GPS) {
+      return [1, api2wire_f_64(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
   List<dynamic> api2wire_struct_with_comments_twin_normal(
       StructWithCommentsTwinNormal raw) {
     return [api2wire_i_32(raw.fieldWithComments)];
@@ -525,6 +704,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> api2wire_struct_with_comments_twin_sync(
       StructWithCommentsTwinSync raw) {
     return [api2wire_i_32(raw.fieldWithComments)];
+  }
+
+  @protected
+  List<dynamic> api2wire_struct_with_enum(StructWithEnum raw) {
+    return [api2wire_abc(raw.abc1), api2wire_abc(raw.abc2)];
   }
 
   @protected

@@ -8,3 +8,11 @@ Future<String> funcStringTwinNormal({required String arg, dynamic hint}) =>
 
 Future<void> funcReturnUnitTwinNormal({dynamic hint}) =>
     RustLib.instance.api.funcReturnUnitTwinNormal(hint: hint);
+
+Future<List<MySize>> handleListOfStruct(
+        {required List<MySize> l, dynamic hint}) =>
+    RustLib.instance.api.handleListOfStruct(l: l, hint: hint);
+
+Future<List<String>> handleStringList(
+        {required List<String> names, dynamic hint}) =>
+    RustLib.instance.api.handleStringList(names: names, hint: hint);

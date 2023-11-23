@@ -20,9 +20,13 @@
 
 use crate::api::comment::StructWithCommentsTwinNormal;
 use crate::api::comment::*;
+use crate::api::enumeration::Distance;
 use crate::api::enumeration::EnumWithItemMixedTwinNormal;
 use crate::api::enumeration::EnumWithItemStructTwinNormal;
 use crate::api::enumeration::EnumWithItemTupleTwinNormal;
+use crate::api::enumeration::Measure;
+use crate::api::enumeration::Note;
+use crate::api::enumeration::Speed;
 use crate::api::enumeration::*;
 use crate::api::exception::CustomEnumErrorTwinNormal;
 use crate::api::exception::CustomNestedErrorInnerTwinNormal;
@@ -31,6 +35,16 @@ use crate::api::exception::CustomStructErrorTwinNormal;
 use crate::api::exception::*;
 use crate::api::inside_macro::MacroStruct;
 use crate::api::inside_macro::*;
+use crate::api::misc_example::Abc;
+use crate::api::misc_example::BigBuffers;
+use crate::api::misc_example::ContainsMirroredSubStruct;
+use crate::api::misc_example::MyNestedStruct;
+use crate::api::misc_example::MyTreeNode;
+use crate::api::misc_example::StructWithEnum;
+use crate::api::misc_example::A;
+use crate::api::misc_example::B;
+use crate::api::misc_example::C;
+use crate::api::misc_example::*;
 use crate::api::misc_type::*;
 use crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync;
 use crate::api::pseudo_manual::comment_twin_sync::*;
@@ -58,6 +72,7 @@ use crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinS
 use crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwoFieldTwinSync;
 use crate::api::pseudo_manual::structure_twin_sync::*;
 use crate::api::simple::*;
+use crate::api::stream::MyStreamEntry;
 use crate::api::stream::*;
 use crate::api::structure::StructWithOneFieldTwinNormal;
 use crate::api::structure::StructWithTwoFieldTwinNormal;
@@ -65,6 +80,7 @@ use crate::api::structure::StructWithZeroFieldTwinNormal;
 use crate::api::structure::TupleStructWithOneFieldTwinNormal;
 use crate::api::structure::TupleStructWithTwoFieldTwinNormal;
 use crate::api::structure::*;
+use crate::auxiliary::sample_types::MySize;
 use core::panic::UnwindSafe;
 use flutter_rust_bridge::rust2dart::IntoIntoDart;
 use flutter_rust_bridge::*;
@@ -215,6 +231,61 @@ fn wire_func_enum_with_item_tuple_twin_normal_impl(
         },
     )
 }
+fn wire_handle_enum_parameter_impl(
+    port_: MessagePort,
+    weekday: impl Wire2Api<Weekdays> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Weekdays, _>(
+        WrapInfo {
+            debug_name: "handle_enum_parameter",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_weekday = weekday.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(handle_enum_parameter(api_weekday))
+        },
+    )
+}
+fn wire_handle_return_enum_impl(port_: MessagePort, input: impl Wire2Api<String> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<Weekdays>, _>(
+        WrapInfo {
+            debug_name: "handle_return_enum",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_input = input.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(handle_return_enum(api_input))
+        },
+    )
+}
+fn wire_multiply_by_ten_impl(port_: MessagePort, measure: impl Wire2Api<Measure> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<Measure>, _>(
+        WrapInfo {
+            debug_name: "multiply_by_ten",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_measure = measure.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(multiply_by_ten(api_measure))
+        },
+    )
+}
+fn wire_print_note_impl(port_: MessagePort, note: impl Wire2Api<Note> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ZeroCopyBuffer<Vec<u8>>, _>(
+        WrapInfo {
+            debug_name: "print_note",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_note = note.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(print_note(api_note))
+        },
+    )
+}
 fn wire_custom_enum_error_panic_twin_normal_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
@@ -326,6 +397,100 @@ fn wire_func_macro_struct_impl(port_: MessagePort, arg: impl Wire2Api<MacroStruc
         },
     )
 }
+fn wire_handle_big_buffers_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, BigBuffers, _>(
+        WrapInfo {
+            debug_name: "handle_big_buffers",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(handle_big_buffers()),
+    )
+}
+fn wire_handle_complex_struct_impl(port_: MessagePort, s: impl Wire2Api<MyTreeNode> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, MyTreeNode, _>(
+        WrapInfo {
+            debug_name: "handle_complex_struct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_s = s.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(handle_complex_struct(api_s))
+        },
+    )
+}
+fn wire_handle_nested_struct_impl(
+    port_: MessagePort,
+    s: impl Wire2Api<MyNestedStruct> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, MyNestedStruct, _>(
+        WrapInfo {
+            debug_name: "handle_nested_struct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_s = s.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(handle_nested_struct(api_s))
+        },
+    )
+}
+fn wire_list_of_primitive_enums_impl(
+    port_: MessagePort,
+    weekdays: impl Wire2Api<Vec<Weekdays>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<Weekdays>, _>(
+        WrapInfo {
+            debug_name: "list_of_primitive_enums",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_weekdays = weekdays.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(list_of_primitive_enums(api_weekdays))
+        },
+    )
+}
+fn wire_test_abc_enum_impl(port_: MessagePort, abc: impl Wire2Api<Abc> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Abc, _>(
+        WrapInfo {
+            debug_name: "test_abc_enum",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_abc = abc.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(test_abc_enum(api_abc))
+        },
+    )
+}
+fn wire_test_contains_mirrored_sub_struct_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ContainsMirroredSubStruct, _>(
+        WrapInfo {
+            debug_name: "test_contains_mirrored_sub_struct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(test_contains_mirrored_sub_struct()),
+    )
+}
+fn wire_test_struct_with_enum_impl(
+    port_: MessagePort,
+    se: impl Wire2Api<StructWithEnum> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, StructWithEnum, _>(
+        WrapInfo {
+            debug_name: "test_struct_with_enum",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_se = se.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(test_struct_with_enum(api_se))
+        },
+    )
+}
 fn wire_func_return_unit_twin_normal_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
@@ -346,6 +511,35 @@ fn wire_func_string_twin_normal_impl(port_: MessagePort, arg: impl Wire2Api<Stri
         move || {
             let api_arg = arg.wire2api();
             move |task_callback| Result::<_, ()>::Ok(func_string_twin_normal(api_arg))
+        },
+    )
+}
+fn wire_handle_list_of_struct_impl(port_: MessagePort, l: impl Wire2Api<Vec<MySize>> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<MySize>, _>(
+        WrapInfo {
+            debug_name: "handle_list_of_struct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_l = l.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(handle_list_of_struct(api_l))
+        },
+    )
+}
+fn wire_handle_string_list_impl(
+    port_: MessagePort,
+    names: impl Wire2Api<Vec<String>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<String>, _>(
+        WrapInfo {
+            debug_name: "handle_string_list",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_names = names.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(handle_string_list(api_names))
         },
     )
 }
@@ -1855,6 +2049,22 @@ fn wire_func_stream_sink_arg_position_twin_normal_impl(
         },
     )
 }
+fn wire_handle_stream_of_struct_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        WrapInfo {
+            debug_name: "handle_stream_of_struct",
+            port: Some(port_),
+            mode: FfiCallMode::Stream,
+        },
+        move || {
+            move |task_callback| {
+                Result::<_, ()>::Ok(handle_stream_of_struct(
+                    task_callback.stream_sink::<_, MyStreamEntry>(),
+                ))
+            }
+        },
+    )
+}
 fn wire_func_struct_with_one_field_twin_normal_impl(
     port_: MessagePort,
     arg: impl Wire2Api<StructWithOneFieldTwinNormal> + UnwindSafe,
@@ -2039,9 +2249,103 @@ impl Wire2Api<u8> for u8 {
         self
     }
 }
+impl Wire2Api<Weekdays> for i32 {
+    fn wire2api(self) -> Weekdays {
+        match self {
+            0 => Weekdays::Monday,
+            1 => Weekdays::Tuesday,
+            2 => Weekdays::Wednesday,
+            3 => Weekdays::Thursday,
+            4 => Weekdays::Friday,
+            5 => Weekdays::Saturday,
+            6 => Weekdays::Sunday,
+            _ => unreachable!("Invalid variant for Weekdays: {}", self),
+        }
+    }
+}
 
 // Section: impl_into_dart
 
+impl support::IntoDart for A {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.a.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for A {}
+impl rust2dart::IntoIntoDart<A> for A {
+    fn into_into_dart(self) -> A {
+        self
+    }
+}
+impl support::IntoDart for Abc {
+    fn into_dart(self) -> support::DartAbi {
+        match self {
+            Self::A(field0) => vec![0.into_dart(), field0.into_into_dart().into_dart()],
+            Self::B(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
+            Self::C(field0) => vec![2.into_dart(), field0.into_into_dart().into_dart()],
+            Self::JustInt(field0) => vec![3.into_dart(), field0.into_into_dart().into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for Abc {}
+impl rust2dart::IntoIntoDart<Abc> for Abc {
+    fn into_into_dart(self) -> Abc {
+        self
+    }
+}
+impl support::IntoDart for B {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.b.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for B {}
+impl rust2dart::IntoIntoDart<B> for B {
+    fn into_into_dart(self) -> B {
+        self
+    }
+}
+impl support::IntoDart for BigBuffers {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.int64.into_into_dart().into_dart(),
+            self.uint64.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for BigBuffers {}
+impl rust2dart::IntoIntoDart<BigBuffers> for BigBuffers {
+    fn into_into_dart(self) -> BigBuffers {
+        self
+    }
+}
+impl support::IntoDart for C {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.c.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for C {}
+impl rust2dart::IntoIntoDart<C> for C {
+    fn into_into_dart(self) -> C {
+        self
+    }
+}
+impl support::IntoDart for ContainsMirroredSubStruct {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.test.into_into_dart().into_dart(),
+            self.test2.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for ContainsMirroredSubStruct {}
+impl rust2dart::IntoIntoDart<ContainsMirroredSubStruct> for ContainsMirroredSubStruct {
+    fn into_into_dart(self) -> ContainsMirroredSubStruct {
+        self
+    }
+}
 impl support::IntoDart for CustomEnumErrorTwinNormal {
     fn into_dart(self) -> support::DartAbi {
         match self {
@@ -2171,6 +2475,21 @@ impl support::IntoDart for CustomStructErrorTwinSync {
 impl support::IntoDartExceptPrimitive for CustomStructErrorTwinSync {}
 impl rust2dart::IntoIntoDart<CustomStructErrorTwinSync> for CustomStructErrorTwinSync {
     fn into_into_dart(self) -> CustomStructErrorTwinSync {
+        self
+    }
+}
+impl support::IntoDart for Distance {
+    fn into_dart(self) -> support::DartAbi {
+        match self {
+            Self::Unknown => vec![0.into_dart()],
+            Self::Map(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for Distance {}
+impl rust2dart::IntoIntoDart<Distance> for Distance {
+    fn into_into_dart(self) -> Distance {
         self
     }
 }
@@ -2307,6 +2626,109 @@ impl rust2dart::IntoIntoDart<MacroStruct> for MacroStruct {
         self
     }
 }
+impl support::IntoDart for Measure {
+    fn into_dart(self) -> support::DartAbi {
+        match self {
+            Self::Speed(field0) => vec![0.into_dart(), field0.into_into_dart().into_dart()],
+            Self::Distance(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for Measure {}
+impl rust2dart::IntoIntoDart<Measure> for Measure {
+    fn into_into_dart(self) -> Measure {
+        self
+    }
+}
+impl support::IntoDart for MyNestedStruct {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.tree_node.into_into_dart().into_dart(),
+            self.weekday.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for MyNestedStruct {}
+impl rust2dart::IntoIntoDart<MyNestedStruct> for MyNestedStruct {
+    fn into_into_dart(self) -> MyNestedStruct {
+        self
+    }
+}
+impl support::IntoDart for MySize {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.width.into_into_dart().into_dart(),
+            self.height.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for MySize {}
+impl rust2dart::IntoIntoDart<MySize> for MySize {
+    fn into_into_dart(self) -> MySize {
+        self
+    }
+}
+impl support::IntoDart for MyStreamEntry {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.hello.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for MyStreamEntry {}
+impl rust2dart::IntoIntoDart<MyStreamEntry> for MyStreamEntry {
+    fn into_into_dart(self) -> MyStreamEntry {
+        self
+    }
+}
+impl support::IntoDart for MyTreeNode {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.value_i32.into_into_dart().into_dart(),
+            self.value_vec_u8.into_into_dart().into_dart(),
+            self.value_boolean.into_into_dart().into_dart(),
+            self.children.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for MyTreeNode {}
+impl rust2dart::IntoIntoDart<MyTreeNode> for MyTreeNode {
+    fn into_into_dart(self) -> MyTreeNode {
+        self
+    }
+}
+impl support::IntoDart for Speed {
+    fn into_dart(self) -> support::DartAbi {
+        match self {
+            Self::Unknown => vec![0.into_dart()],
+            Self::GPS(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for Speed {}
+impl rust2dart::IntoIntoDart<Speed> for Speed {
+    fn into_into_dart(self) -> Speed {
+        self
+    }
+}
+impl support::IntoDart for StructWithEnum {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.abc1.into_into_dart().into_dart(),
+            self.abc2.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for StructWithEnum {}
+impl rust2dart::IntoIntoDart<StructWithEnum> for StructWithEnum {
+    fn into_into_dart(self) -> StructWithEnum {
+        self
+    }
+}
 impl support::IntoDart for StructWithOneFieldTwinNormal {
     fn into_dart(self) -> support::DartAbi {
         vec![self.a.into_into_dart().into_dart()].into_dart()
@@ -2434,6 +2856,26 @@ impl support::IntoDart for TupleStructWithTwoFieldTwinSync {
 impl support::IntoDartExceptPrimitive for TupleStructWithTwoFieldTwinSync {}
 impl rust2dart::IntoIntoDart<TupleStructWithTwoFieldTwinSync> for TupleStructWithTwoFieldTwinSync {
     fn into_into_dart(self) -> TupleStructWithTwoFieldTwinSync {
+        self
+    }
+}
+impl support::IntoDart for Weekdays {
+    fn into_dart(self) -> support::DartAbi {
+        match self {
+            Self::Monday => 0,
+            Self::Tuesday => 1,
+            Self::Wednesday => 2,
+            Self::Thursday => 3,
+            Self::Friday => 4,
+            Self::Saturday => 5,
+            Self::Sunday => 6,
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for Weekdays {}
+impl rust2dart::IntoIntoDart<Weekdays> for Weekdays {
+    fn into_into_dart(self) -> Weekdays {
         self
     }
 }

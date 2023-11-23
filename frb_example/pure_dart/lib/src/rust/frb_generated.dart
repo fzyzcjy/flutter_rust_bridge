@@ -4,6 +4,7 @@ import 'api/comment.dart';
 import 'api/enumeration.dart';
 import 'api/exception.dart';
 import 'api/inside_macro.dart';
+import 'api/misc_example.dart';
 import 'api/misc_type.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/enumeration_twin_sync.dart';
@@ -20,6 +21,7 @@ import 'api/pseudo_manual/structure_twin_sync.dart';
 import 'api/simple.dart';
 import 'api/stream.dart';
 import 'api/structure.dart';
+import 'auxiliary/sample_types.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'frb_generated.io.dart'
@@ -88,6 +90,15 @@ abstract class RustLibApi extends BaseApi {
   Future<EnumWithItemTupleTwinNormal> funcEnumWithItemTupleTwinNormal(
       {required EnumWithItemTupleTwinNormal arg, dynamic hint});
 
+  Future<Weekdays> handleEnumParameter(
+      {required Weekdays weekday, dynamic hint});
+
+  Future<Weekdays?> handleReturnEnum({required String input, dynamic hint});
+
+  Future<Measure?> multiplyByTen({required Measure measure, dynamic hint});
+
+  Future<Uint8List> printNote({required Note note, dynamic hint});
+
   Future<void> customEnumErrorPanicTwinNormal({dynamic hint});
 
   Future<int> customEnumErrorReturnErrorTwinNormal({dynamic hint});
@@ -109,9 +120,33 @@ abstract class RustLibApi extends BaseApi {
 
   Future<MacroStruct> funcMacroStruct({required MacroStruct arg, dynamic hint});
 
+  Future<BigBuffers> handleBigBuffers({dynamic hint});
+
+  Future<MyTreeNode> handleComplexStruct({required MyTreeNode s, dynamic hint});
+
+  Future<MyNestedStruct> handleNestedStruct(
+      {required MyNestedStruct s, dynamic hint});
+
+  Future<List<Weekdays>> listOfPrimitiveEnums(
+      {required List<Weekdays> weekdays, dynamic hint});
+
+  Future<Abc> testAbcEnum({required Abc abc, dynamic hint});
+
+  Future<ContainsMirroredSubStruct> testContainsMirroredSubStruct(
+      {dynamic hint});
+
+  Future<StructWithEnum> testStructWithEnum(
+      {required StructWithEnum se, dynamic hint});
+
   Future<void> funcReturnUnitTwinNormal({dynamic hint});
 
   Future<String> funcStringTwinNormal({required String arg, dynamic hint});
+
+  Future<List<MySize>> handleListOfStruct(
+      {required List<MySize> l, dynamic hint});
+
+  Future<List<String>> handleStringList(
+      {required List<String> names, dynamic hint});
 
   void structWithCommentsTwinSyncInstanceMethodTwinSync(
       {required StructWithCommentsTwinSync that, dynamic hint});
@@ -364,6 +399,8 @@ abstract class RustLibApi extends BaseApi {
   Stream<int> funcStreamSinkArgPositionTwinNormal(
       {required int a, required int b, dynamic hint});
 
+  Stream<MyStreamEntry> handleStreamOfStruct({dynamic hint});
+
   Future<StructWithOneFieldTwinNormal> funcStructWithOneFieldTwinNormal(
       {required StructWithOneFieldTwinNormal arg, dynamic hint});
 
@@ -591,6 +628,83 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<Weekdays> handleEnumParameter(
+      {required Weekdays weekday, dynamic hint}) {
+    var arg0 = api2wire_weekdays(weekday);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_handle_enum_parameter(port_, arg0),
+      parseSuccessData: _wire2api_weekdays,
+      parseErrorData: null,
+      constMeta: kHandleEnumParameterConstMeta,
+      argValues: [weekday],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleEnumParameterConstMeta => const TaskConstMeta(
+        debugName: "handle_enum_parameter",
+        argNames: ["weekday"],
+      );
+
+  @override
+  Future<Weekdays?> handleReturnEnum({required String input, dynamic hint}) {
+    var arg0 = api2wire_String(input);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_handle_return_enum(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_weekdays,
+      parseErrorData: null,
+      constMeta: kHandleReturnEnumConstMeta,
+      argValues: [input],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleReturnEnumConstMeta => const TaskConstMeta(
+        debugName: "handle_return_enum",
+        argNames: ["input"],
+      );
+
+  @override
+  Future<Measure?> multiplyByTen({required Measure measure, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_measure(measure);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_multiply_by_ten(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_measure,
+      parseErrorData: null,
+      constMeta: kMultiplyByTenConstMeta,
+      argValues: [measure],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kMultiplyByTenConstMeta => const TaskConstMeta(
+        debugName: "multiply_by_ten",
+        argNames: ["measure"],
+      );
+
+  @override
+  Future<Uint8List> printNote({required Note note, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_note(note);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_print_note(port_, arg0),
+      parseSuccessData: _wire2api_ZeroCopyBuffer_list_prim_u_8,
+      parseErrorData: null,
+      constMeta: kPrintNoteConstMeta,
+      argValues: [note],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kPrintNoteConstMeta => const TaskConstMeta(
+        debugName: "print_note",
+        argNames: ["note"],
+      );
+
+  @override
   Future<void> customEnumErrorPanicTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_custom_enum_error_panic_twin_normal(port_),
@@ -773,6 +887,143 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<BigBuffers> handleBigBuffers({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_handle_big_buffers(port_),
+      parseSuccessData: _wire2api_big_buffers,
+      parseErrorData: null,
+      constMeta: kHandleBigBuffersConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleBigBuffersConstMeta => const TaskConstMeta(
+        debugName: "handle_big_buffers",
+        argNames: [],
+      );
+
+  @override
+  Future<MyTreeNode> handleComplexStruct(
+      {required MyTreeNode s, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_my_tree_node(s);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_handle_complex_struct(port_, arg0),
+      parseSuccessData: _wire2api_my_tree_node,
+      parseErrorData: null,
+      constMeta: kHandleComplexStructConstMeta,
+      argValues: [s],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleComplexStructConstMeta => const TaskConstMeta(
+        debugName: "handle_complex_struct",
+        argNames: ["s"],
+      );
+
+  @override
+  Future<MyNestedStruct> handleNestedStruct(
+      {required MyNestedStruct s, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_my_nested_struct(s);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_handle_nested_struct(port_, arg0),
+      parseSuccessData: _wire2api_my_nested_struct,
+      parseErrorData: null,
+      constMeta: kHandleNestedStructConstMeta,
+      argValues: [s],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleNestedStructConstMeta => const TaskConstMeta(
+        debugName: "handle_nested_struct",
+        argNames: ["s"],
+      );
+
+  @override
+  Future<List<Weekdays>> listOfPrimitiveEnums(
+      {required List<Weekdays> weekdays, dynamic hint}) {
+    var arg0 = api2wire_list_weekdays(weekdays);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_list_of_primitive_enums(port_, arg0),
+      parseSuccessData: _wire2api_list_weekdays,
+      parseErrorData: null,
+      constMeta: kListOfPrimitiveEnumsConstMeta,
+      argValues: [weekdays],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kListOfPrimitiveEnumsConstMeta => const TaskConstMeta(
+        debugName: "list_of_primitive_enums",
+        argNames: ["weekdays"],
+      );
+
+  @override
+  Future<Abc> testAbcEnum({required Abc abc, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_abc(abc);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_test_abc_enum(port_, arg0),
+      parseSuccessData: _wire2api_abc,
+      parseErrorData: null,
+      constMeta: kTestAbcEnumConstMeta,
+      argValues: [abc],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestAbcEnumConstMeta => const TaskConstMeta(
+        debugName: "test_abc_enum",
+        argNames: ["abc"],
+      );
+
+  @override
+  Future<ContainsMirroredSubStruct> testContainsMirroredSubStruct(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_test_contains_mirrored_sub_struct(port_),
+      parseSuccessData: _wire2api_contains_mirrored_sub_struct,
+      parseErrorData: null,
+      constMeta: kTestContainsMirroredSubStructConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestContainsMirroredSubStructConstMeta =>
+      const TaskConstMeta(
+        debugName: "test_contains_mirrored_sub_struct",
+        argNames: [],
+      );
+
+  @override
+  Future<StructWithEnum> testStructWithEnum(
+      {required StructWithEnum se, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_struct_with_enum(se);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_test_struct_with_enum(port_, arg0),
+      parseSuccessData: _wire2api_struct_with_enum,
+      parseErrorData: null,
+      constMeta: kTestStructWithEnumConstMeta,
+      argValues: [se],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestStructWithEnumConstMeta => const TaskConstMeta(
+        debugName: "test_struct_with_enum",
+        argNames: ["se"],
+      );
+
+  @override
   Future<void> funcReturnUnitTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_func_return_unit_twin_normal(port_),
@@ -807,6 +1058,46 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kFuncStringTwinNormalConstMeta => const TaskConstMeta(
         debugName: "func_string_twin_normal",
         argNames: ["arg"],
+      );
+
+  @override
+  Future<List<MySize>> handleListOfStruct(
+      {required List<MySize> l, dynamic hint}) {
+    var arg0 = api2wire_list_my_size(l);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_handle_list_of_struct(port_, arg0),
+      parseSuccessData: _wire2api_list_my_size,
+      parseErrorData: null,
+      constMeta: kHandleListOfStructConstMeta,
+      argValues: [l],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleListOfStructConstMeta => const TaskConstMeta(
+        debugName: "handle_list_of_struct",
+        argNames: ["l"],
+      );
+
+  @override
+  Future<List<String>> handleStringList(
+      {required List<String> names, dynamic hint}) {
+    var arg0 = api2wire_StringList(names);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_handle_string_list(port_, arg0),
+      parseSuccessData: _wire2api_StringList,
+      parseErrorData: null,
+      constMeta: kHandleStringListConstMeta,
+      argValues: [names],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleStringListConstMeta => const TaskConstMeta(
+        debugName: "handle_string_list",
+        argNames: ["names"],
       );
 
   @override
@@ -2830,6 +3121,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Stream<MyStreamEntry> handleStreamOfStruct({dynamic hint}) {
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) => wire.wire_handle_stream_of_struct(port_),
+      parseSuccessData: _wire2api_my_stream_entry,
+      parseErrorData: null,
+      constMeta: kHandleStreamOfStructConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleStreamOfStructConstMeta => const TaskConstMeta(
+        debugName: "handle_stream_of_struct",
+        argNames: [],
+      );
+
+  @override
   Future<StructWithOneFieldTwinNormal> funcStructWithOneFieldTwinNormal(
       {required StructWithOneFieldTwinNormal arg, dynamic hint}) {
     var arg0 = api2wire_box_autoadd_struct_with_one_field_twin_normal(arg);
@@ -2950,16 +3259,88 @@ AnyhowException _wire2api_AnyhowException(dynamic raw) {
   return AnyhowException(raw as String);
 }
 
+RawStringMirrored _wire2api_RawStringMirrored(dynamic raw) {}
 String _wire2api_String(dynamic raw) {
   return raw as String;
+}
+
+List<String> _wire2api_StringList(dynamic raw) {
+  return (raw as List<dynamic>).cast<String>();
+}
+
+Uint8List _wire2api_ZeroCopyBuffer_list_prim_u_8(dynamic raw) {
+  return raw as Uint8List;
+}
+
+A _wire2api_a(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return A(
+    a: _wire2api_String(arr[0]),
+  );
+}
+
+Abc _wire2api_abc(dynamic raw) {
+  switch (raw[0]) {
+    case 0:
+      return Abc_A(
+        _wire2api_box_autoadd_a(raw[1]),
+      );
+    case 1:
+      return Abc_B(
+        _wire2api_box_autoadd_b(raw[1]),
+      );
+    case 2:
+      return Abc_C(
+        _wire2api_box_autoadd_c(raw[1]),
+      );
+    case 3:
+      return Abc_JustInt(
+        _wire2api_i_32(raw[1]),
+      );
+    default:
+      throw Exception("unreachable");
+  }
+}
+
+B _wire2api_b(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return B(
+    b: _wire2api_i_32(arr[0]),
+  );
+}
+
+BigBuffers _wire2api_big_buffers(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2)
+    throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  return BigBuffers(
+    int64: _wire2api_list_prim_i_64(arr[0]),
+    uint64: _wire2api_list_prim_u_64(arr[1]),
+  );
 }
 
 bool _wire2api_bool(dynamic raw) {
   return raw as bool;
 }
 
+A _wire2api_box_autoadd_a(dynamic raw) {
+  return _wire2api_a(raw);
+}
+
+B _wire2api_box_autoadd_b(dynamic raw) {
+  return _wire2api_b(raw);
+}
+
 bool _wire2api_box_autoadd_bool(dynamic raw) {
   return raw as bool;
+}
+
+C _wire2api_box_autoadd_c(dynamic raw) {
+  return _wire2api_c(raw);
 }
 
 CustomNestedErrorInnerTwinNormal
@@ -2996,6 +3377,10 @@ int _wire2api_box_autoadd_i_8(dynamic raw) {
   return raw as int;
 }
 
+Measure _wire2api_box_autoadd_measure(dynamic raw) {
+  return _wire2api_measure(raw);
+}
+
 int _wire2api_box_autoadd_u_16(dynamic raw) {
   return raw as int;
 }
@@ -3010,6 +3395,37 @@ BigInt _wire2api_box_autoadd_u_64(dynamic raw) {
 
 int _wire2api_box_autoadd_u_8(dynamic raw) {
   return raw as int;
+}
+
+Weekdays _wire2api_box_autoadd_weekdays(dynamic raw) {
+  return _wire2api_weekdays(raw);
+}
+
+Distance _wire2api_box_distance(dynamic raw) {
+  return _wire2api_distance(raw);
+}
+
+Speed _wire2api_box_speed(dynamic raw) {
+  return _wire2api_speed(raw);
+}
+
+C _wire2api_c(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return C(
+    c: _wire2api_bool(arr[0]),
+  );
+}
+
+ContainsMirroredSubStruct _wire2api_contains_mirrored_sub_struct(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2)
+    throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  return ContainsMirroredSubStruct(
+    test: _wire2api_RawStringMirrored(arr[0]),
+    test2: _wire2api_a(arr[1]),
+  );
 }
 
 CustomEnumErrorTwinNormal _wire2api_custom_enum_error_twin_normal(dynamic raw) {
@@ -3127,6 +3543,19 @@ CustomStructErrorTwinSync _wire2api_custom_struct_error_twin_sync(dynamic raw) {
   return CustomStructErrorTwinSync(
     a: _wire2api_String(arr[0]),
   );
+}
+
+Distance _wire2api_distance(dynamic raw) {
+  switch (raw[0]) {
+    case 0:
+      return Distance_Unknown();
+    case 1:
+      return Distance_Map(
+        _wire2api_f_64(raw[1]),
+      );
+    default:
+      throw Exception("unreachable");
+  }
 }
 
 EnumSimpleTwinNormal _wire2api_enum_simple_twin_normal(dynamic raw) {
@@ -3265,6 +3694,14 @@ List<bool> _wire2api_list_bool(dynamic raw) {
   return (raw as List<dynamic>).map(_wire2api_bool).toList();
 }
 
+List<MySize> _wire2api_list_my_size(dynamic raw) {
+  return (raw as List<dynamic>).map(_wire2api_my_size).toList();
+}
+
+List<MyTreeNode> _wire2api_list_my_tree_node(dynamic raw) {
+  return (raw as List<dynamic>).map(_wire2api_my_tree_node).toList();
+}
+
 Float32List _wire2api_list_prim_f_32(dynamic raw) {
   return raw as Float32List;
 }
@@ -3305,12 +3742,72 @@ Uint8List _wire2api_list_prim_u_8(dynamic raw) {
   return raw as Uint8List;
 }
 
+List<Weekdays> _wire2api_list_weekdays(dynamic raw) {
+  return (raw as List<dynamic>).map(_wire2api_weekdays).toList();
+}
+
 MacroStruct _wire2api_macro_struct(dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 1)
     throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
   return MacroStruct(
     data: _wire2api_i_32(arr[0]),
+  );
+}
+
+Measure _wire2api_measure(dynamic raw) {
+  switch (raw[0]) {
+    case 0:
+      return Measure_Speed(
+        _wire2api_box_speed(raw[1]),
+      );
+    case 1:
+      return Measure_Distance(
+        _wire2api_box_distance(raw[1]),
+      );
+    default:
+      throw Exception("unreachable");
+  }
+}
+
+MyNestedStruct _wire2api_my_nested_struct(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2)
+    throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  return MyNestedStruct(
+    treeNode: _wire2api_my_tree_node(arr[0]),
+    weekday: _wire2api_weekdays(arr[1]),
+  );
+}
+
+MySize _wire2api_my_size(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2)
+    throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  return MySize(
+    width: _wire2api_i_32(arr[0]),
+    height: _wire2api_i_32(arr[1]),
+  );
+}
+
+MyStreamEntry _wire2api_my_stream_entry(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return MyStreamEntry(
+    hello: _wire2api_String(arr[0]),
+  );
+}
+
+MyTreeNode _wire2api_my_tree_node(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 4)
+    throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+  return MyTreeNode(
+    valueI32: _wire2api_i_32(arr[0]),
+    valueVecU8: _wire2api_list_prim_u_8(arr[1]),
+    valueBoolean: _wire2api_bool(arr[2]),
+    children: _wire2api_list_my_tree_node(arr[3]),
   );
 }
 
@@ -3342,6 +3839,10 @@ int? _wire2api_opt_box_autoadd_i_8(dynamic raw) {
   return raw == null ? null : _wire2api_box_autoadd_i_8(raw);
 }
 
+Measure? _wire2api_opt_box_autoadd_measure(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_measure(raw);
+}
+
 int? _wire2api_opt_box_autoadd_u_16(dynamic raw) {
   return raw == null ? null : _wire2api_box_autoadd_u_16(raw);
 }
@@ -3356,6 +3857,33 @@ BigInt? _wire2api_opt_box_autoadd_u_64(dynamic raw) {
 
 int? _wire2api_opt_box_autoadd_u_8(dynamic raw) {
   return raw == null ? null : _wire2api_box_autoadd_u_8(raw);
+}
+
+Weekdays? _wire2api_opt_box_autoadd_weekdays(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_weekdays(raw);
+}
+
+Speed _wire2api_speed(dynamic raw) {
+  switch (raw[0]) {
+    case 0:
+      return Speed_Unknown();
+    case 1:
+      return Speed_GPS(
+        _wire2api_f_64(raw[1]),
+      );
+    default:
+      throw Exception("unreachable");
+  }
+}
+
+StructWithEnum _wire2api_struct_with_enum(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2)
+    throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  return StructWithEnum(
+    abc1: _wire2api_abc(arr[0]),
+    abc2: _wire2api_abc(arr[1]),
+  );
 }
 
 StructWithOneFieldTwinNormal _wire2api_struct_with_one_field_twin_normal(
@@ -3478,6 +4006,10 @@ void _wire2api_unit(dynamic raw) {
   return;
 }
 
+Weekdays _wire2api_weekdays(dynamic raw) {
+  return Weekdays.values[raw as int];
+}
+
 // Section: api2wire_funcs
 
 bool api2wire_bool(bool raw) {
@@ -3522,4 +4054,8 @@ int api2wire_u_32(int raw) {
 
 int api2wire_u_8(int raw) {
   return raw;
+}
+
+int api2wire_weekdays(Weekdays raw) {
+  return api2wire_i_32(raw.index);
 }
