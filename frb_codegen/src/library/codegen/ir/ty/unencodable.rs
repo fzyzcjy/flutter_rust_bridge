@@ -27,6 +27,6 @@ impl IrTypeTrait for IrTypeUnencodable {
     }
 
     fn rust_api_type(&self) -> String {
-        unreachable!()
+        self.string.clone()
     }
 }
