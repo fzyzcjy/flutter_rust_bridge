@@ -76,21 +76,18 @@ pub fn handle_enum_parameter(weekday: Weekdays) -> Weekdays {
 }
 
 #[derive(Debug, Clone)]
-#[frb(freezed)]
 pub enum Speed {
     Unknown,
     GPS(f64),
 }
 
 #[derive(Debug, Clone)]
-#[frb(freezed)]
 pub enum Distance {
     Unknown,
     Map(f64),
 }
 
 #[derive(Debug, Clone)]
-#[frb(freezed)]
 pub enum Measure {
     Speed(Box<Speed>),
     Distance(Box<Distance>),
