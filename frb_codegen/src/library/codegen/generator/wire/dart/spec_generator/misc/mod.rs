@@ -68,7 +68,11 @@ fn generate_boilerplate(
     let file_top = "// ignore_for_file: unused_import, unused_element\n".to_owned();
 
     let universal_imports =
-        generate_import_dart_api_layer(dart_impl_output_path, api_dart_actual_output_paths)?;
+        generate_import_dart_api_layer(dart_impl_output_path, api_dart_actual_output_paths)?
+            + "
+        import 'dart:convert';
+        import 'dart:async';
+        ";
 
     Ok(Acc {
         common: vec![WireDartOutputCode {
