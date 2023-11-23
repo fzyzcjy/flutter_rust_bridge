@@ -68,15 +68,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
 fn parse_datetime(args: &[IrType]) -> anyhow::Result<IrType> {
     if let [Unencodable(IrTypeUnencodable { segments, .. })] = args {
-        return Ok(match &splay_segments(segments)[..] {
-            [("DateTime", None), ("Utc", None)] => {
-                Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Utc))
-            }
-
-            [("DateTime", None), ("Local", None)] => {
-                Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Local))
-            }
-
+        return Ok(match splay_segments(segments).last().unwrap() {
+            ("Utc", None) => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Utc)),
+            ("Local", None) => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Local)),
             _ => bail!("Invalid DateTime generic: {args:?}"),
         });
     }
