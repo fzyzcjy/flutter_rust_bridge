@@ -37,16 +37,7 @@ pub(crate) fn generate(
 ) -> anyhow::Result<WireDartOutputSpecMisc> {
     Ok(WireDartOutputSpecMisc {
         c_binding: c_binding::generate(&context.config, c_file_content)?,
-        boilerplate: generate_boilerplate(
-            &context.config.dart_output_class_name_pack,
-            &context.config.default_external_library_stem,
-            &context.config.default_external_library_relative_directory,
-            &context.config.dart_impl_output_path,
-            &context.config.dart_root,
-            api_dart_actual_output_paths,
-            cache,
-            context,
-        )?,
+        boilerplate: generate_boilerplate(api_dart_actual_output_paths, cache, context)?,
         api_impl_normal_functions: (context.ir_pack.funcs.iter())
             .map(|f| api_impl_body::generate_api_impl_normal_function(f, context))
             .collect::<anyhow::Result<Vec<_>>>()?,
@@ -57,11 +48,6 @@ pub(crate) fn generate(
 }
 
 fn generate_boilerplate(
-    dart_output_class_name_pack: &DartOutputClassNamePack,
-    default_external_library_stem: &str,
-    default_external_library_relative_directory: &str,
-    dart_impl_output_path: &TargetOrCommonMap<PathBuf>,
-    dart_root: &Path,
     api_dart_actual_output_paths: &[PathBuf],
     cache: &IrPackComputedCache,
     context: WireDartGeneratorContext,
@@ -72,14 +58,19 @@ fn generate_boilerplate(
         api_impl_class_name,
         wire_class_name,
         ..
-    } = &dart_output_class_name_pack;
+    } = &context.config.dart_output_class_name_pack;
 
     let file_top = "// ignore_for_file: unused_import, unused_element\n".to_owned();
 
-    let mut universal_imports =
-        generate_import_dart_api_layer(dart_impl_output_path, api_dart_actual_output_paths)?;
+    let mut universal_imports = generate_import_dart_api_layer(
+        &context.config.dart_impl_output_path,
+        api_dart_actual_output_paths,
+    )?;
     universal_imports += &generate_imports_which_types_and_funcs_use(
-        &Namespace::new_from_path(&dart_impl_output_path[TargetOrCommon::Common], dart_root)?,
+        &Namespace::new_from_path(
+            &context.config.dart_impl_output_path[TargetOrCommon::Common],
+            &context.config.dart_root,
+        )?,
         &Some(&cache.distinct_types.iter().collect_vec()),
         &None,
         context.as_api_dart_context(),
@@ -137,7 +128,9 @@ fn generate_boilerplate(
                   @override
                   String get defaultExternalLibraryRelativeDirectory => '{default_external_library_relative_directory}';
                 }}
-                "#
+                "#,
+                default_external_library_stem = context.config.default_external_library_stem,
+                default_external_library_relative_directory = context.config.default_external_library_relative_directory,
             ),
             ..Default::default()
         }],
