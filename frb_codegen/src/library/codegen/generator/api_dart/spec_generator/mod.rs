@@ -12,7 +12,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::class::ty::Api
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;
 use crate::utils::path_utils::path_to_string;
-use anyhow::Result;
+use anyhow::{Context, Result};
 use itertools::Itertools;
 use pathdiff::diff_paths;
 use serde::Serialize;
@@ -120,21 +120,26 @@ fn generate_imports(
         (classes.iter()).for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), ir_pack));
     }
     if let Some(funcs) = funcs {
-        (funcs.iter()).for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), true, true));
+        (funcs.iter()).for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), true, true, ir_pack));
     }
     let interest_types = gatherer.gather();
 
     let import = interest_types
         .iter()
         .filter_map(|ty| ty.self_namespace())
-        .map(|import_ty_namespace: &Namespace| {
+        .map(|import_ty_namespace| {
             let path_diff = diff_paths(
                 import_ty_namespace.to_pseudo_io_path("dart"),
                 (current_file_namespace.to_pseudo_io_path("dart").parent()).unwrap(),
             )
-            .unwrap();
-            format!("import '{}';\n", path_to_string(&path_diff).unwrap())
+            .context("cannot diff path")?;
+            Ok(format!(
+                "import '{}';\n",
+                path_to_string(&path_diff).unwrap()
+            ))
         })
+        .collect::<Result<Vec<_>>>()?
+        .iter()
         .join("");
 
     Ok(DartBasicHeaderCode {

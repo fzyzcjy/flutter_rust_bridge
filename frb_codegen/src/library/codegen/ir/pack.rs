@@ -42,7 +42,7 @@ impl IrPack {
         include_func_output: bool,
     ) {
         for func in &self.funcs {
-            func.visit_types(f, include_func_inputs, include_func_output)
+            func.visit_types(f, include_func_inputs, include_func_output, self)
         }
     }
 }
@@ -69,7 +69,7 @@ impl IrPackComputedCache {
 }
 
 pub(crate) struct DistinctTypeGatherer {
-    seen_idents: HashSet<IrIdent>,
+    seen_idents: HashSet<String>,
     ans: Vec<IrType>,
 }
 
@@ -93,7 +93,7 @@ impl DistinctTypeGatherer {
 
     pub(crate) fn gather(self) -> Vec<IrType> {
         self.ans
-            .iter()
+            .into_iter()
             // make the output change less when input change
             .sorted_by_key(|ty| ty.safe_ident())
             .collect()

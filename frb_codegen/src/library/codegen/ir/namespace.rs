@@ -47,7 +47,7 @@ impl Namespace {
     }
 
     pub fn to_pseudo_io_path(&self, extension: &str) -> PathBuf {
-        PathBuf::from(&format!("{}.{extension}", self.path().join("/")))
+        PathBuf::from(&format!("/{}.{extension}", self.path().join("/")))
     }
 }
 
