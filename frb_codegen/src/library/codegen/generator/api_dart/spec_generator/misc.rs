@@ -79,19 +79,7 @@ pub(super) fn generate_imports_which_types_and_funcs_use(
 
     let import = interest_types
         .iter()
-        .filter_map(|ty| ty.self_namespace())
-        .filter(|import_ty_namespace| import_ty_namespace != current_file_namespace)
-        .map(|import_ty_namespace| {
-            let path_diff = diff_paths(
-                import_ty_namespace.to_pseudo_io_path("dart"),
-                (current_file_namespace.to_pseudo_io_path("dart").parent()).unwrap(),
-            )
-            .context("cannot diff path")?;
-            Ok(format!(
-                "import '{}';\n",
-                path_to_string(&path_diff).unwrap()
-            ))
-        })
+        .map(|ty| generate_imports_from_ty(ty, current_file_namespace))
         .collect::<anyhow::Result<Vec<_>>>()?
         .iter()
         .join("");
@@ -100,4 +88,26 @@ pub(super) fn generate_imports_which_types_and_funcs_use(
         import,
         ..Default::default()
     })
+}
+
+fn generate_imports_from_ty(
+    ty: &IrType,
+    current_file_namespace: &Namespace,
+) -> anyhow::Result<String> {
+    let ty_namespace = ty.self_namespace();
+
+    let import_ty_itself = if ty_namespace != current_file_namespace {
+        let path_diff = diff_paths(
+            ty_namespace.to_pseudo_io_path("dart"),
+            (current_file_namespace.to_pseudo_io_path("dart").parent()).unwrap(),
+        )
+        .context("cannot diff path")?;
+        format!("import '{}';\n", path_to_string(&path_diff).unwrap())
+    } else {
+        "".to_owned()
+    };
+
+    let import_extra = ty.TODO();
+
+    Ok(import_ty_itself + import_extra)
 }
