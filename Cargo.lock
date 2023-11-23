@@ -558,9 +558,14 @@ dependencies = [
  "backtrace",
  "chrono",
  "flutter_rust_bridge",
+ "frb_example_pure_dart_exapmle_external_lib",
  "log",
  "uuid",
 ]
+
+[[package]]
+name = "frb_example_pure_dart_exapmle_external_lib"
+version = "0.1.0"
 
 [[package]]
 name = "futures"

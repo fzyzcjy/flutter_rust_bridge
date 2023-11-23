@@ -9,8 +9,8 @@
 !/frb_macros/src
 !/frb_example/pure_dart/rust/Cargo.toml
 !/frb_example/pure_dart/rust/src
-!/frb_example/pure_dart/rust/external/Cargo.toml
-!/frb_example/pure_dart/rust/external/src
+!/frb_example/pure_dart/rust/example_external_lib/Cargo.toml
+!/frb_example/pure_dart/rust/example_external_lib/src
 !/frb_example/pure_dart_multi/rust/Cargo.toml
 !/frb_example/pure_dart_multi/rust/src
 !/frb_example/with_flutter/rust/Cargo.toml

@@ -13,3 +13,4 @@ log = "0.4.19"
 backtrace = "0.3.68"
 chrono = "0.4.26"
 uuid = "1.4.1"
+external-lib = {path = "./example_external_lib", package="frb_example_pure_dart_exapmle_external_lib"}
