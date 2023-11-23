@@ -52,8 +52,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         debug!("parse_function function name: {:?}", func.sig().ident);
 
         let sig = func.sig();
-        let namespace =
-            Namespace::new_self_crate(compute_mod_from_rust_path(file_path, rust_crate_dir)?);
+        let namespace = Namespace::new_from_path(file_path, rust_crate_dir)?;
         let src_lineno = func.span().start().line;
 
         let owner = if let Some(owner) = parse_owner(func) {
