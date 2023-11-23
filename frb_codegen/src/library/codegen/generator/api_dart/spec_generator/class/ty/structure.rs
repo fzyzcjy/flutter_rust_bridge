@@ -30,6 +30,7 @@ impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
             } else {
                 self.generate_mode_non_freezed(src, &comments, &metadata, &methods)
             },
+            needs_freezed: src.using_freezed(),
         })
     }
 }

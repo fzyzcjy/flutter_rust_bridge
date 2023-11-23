@@ -4,7 +4,6 @@ use crate::codegen::generator::api_dart::spec_generator::base::{
 };
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
 use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
-use crate::codegen::generator::api_dart::spec_generator::misc::compute_needs_freezed;
 use crate::codegen::ir::func::IrFuncOwnerInfo;
 use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
 use crate::library::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
@@ -43,7 +42,7 @@ pub(crate) fn generate(
         .filter_map(|ty| ApiDartGenerator::new(ty.clone(), context).generate_class())
         .collect_vec();
 
-    let needs_freezed = compute_needs_freezed(&cache, context.ir_pack);
+    let needs_freezed = classes.iter().any(|c| c.needs_freezed);
 
     Ok(ApiDartOutputSpec {
         funcs,

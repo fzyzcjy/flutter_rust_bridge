@@ -8,4 +8,5 @@ pub(crate) mod ty;
 pub(crate) struct ApiDartGeneratedClass {
     pub(crate) namespace: Namespace,
     pub(crate) code: String,
+    pub(crate) needs_freezed: bool,
 }

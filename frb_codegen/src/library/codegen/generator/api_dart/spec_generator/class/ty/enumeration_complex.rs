@@ -39,6 +39,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
                     {variants}
                 }}",
             ),
+            needs_freezed: true,
         })
     }
 

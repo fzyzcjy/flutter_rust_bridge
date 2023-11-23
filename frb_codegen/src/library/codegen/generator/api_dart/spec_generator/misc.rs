@@ -52,18 +52,3 @@ pub(crate) fn generate_function_dart_return_type(func_mode: &IrFuncMode, inner: 
         IrFuncMode::Stream { .. } => format!("Stream<{inner}>"),
     }
 }
-
-pub(crate) fn compute_needs_freezed(cache: &IrPackComputedCache, ir_pack: &IrPack) -> bool {
-    cache
-        .distinct_types
-        .iter()
-        .any(|ty| compute_needs_freezed_for_type(ty, ir_pack))
-}
-
-fn compute_needs_freezed_for_type(ty: &IrType, ir_pack: &IrPack) -> bool {
-    match ty {
-        EnumRef(_) => true,
-        StructRef(st) => st.get(ir_pack).using_freezed(),
-        _ => false,
-    }
-}

@@ -53,5 +53,6 @@ fn generate_array(
               }}
             "
         ),
+        needs_freezed: false,
     })
 }

@@ -28,7 +28,8 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
                     @override
                     OpaqueTypeFinalizer get staticFinalizer => {dart_api_instance}.{dart_api_type}Finalizer;
                 }}"
-            )
+            ),
+            needs_freezed: false,
         })
     }
 }
