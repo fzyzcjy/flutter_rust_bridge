@@ -45,13 +45,13 @@ pub(crate) fn generate(
     let context = ApiDartGeneratorContext { ir_pack, config };
 
     let grouped_funcs = (ir_pack.funcs.iter()).into_group_map_by(|x| x.name.namespace.clone());
-    let grouped_classes = (cache.distinct_types.iter())
+    let grouped_namespaced_types = (cache.distinct_types.iter())
         .filter(|x| x.self_namespace().is_some())
         .into_group_map_by(|x| x.self_namespace().unwrap());
 
     let namespaces = grouped_funcs
         .keys()
-        .chain(grouped_classes.keys())
+        .chain(grouped_namespaced_types.keys())
         .collect::<HashSet<_>>();
 
     let namespaced_items = namespaces
@@ -61,7 +61,7 @@ pub(crate) fn generate(
                 namespace.to_owned(),
                 generate_item(
                     namespace,
-                    &grouped_classes.get(namespace),
+                    &grouped_namespaced_types.get(namespace),
                     &grouped_funcs.get(namespace),
                     context,
                 )?,
@@ -74,11 +74,11 @@ pub(crate) fn generate(
 
 fn generate_item(
     namespace: &Namespace,
-    classes: &Option<&Vec<&IrType>>,
+    namespaced_types: &Option<&Vec<&IrType>>,
     funcs: &Option<&Vec<&IrFunc>>,
     context: ApiDartGeneratorContext,
 ) -> Result<ApiDartOutputSpecItem> {
-    let imports = generate_imports(namespace, classes, funcs, context.ir_pack)?;
+    let imports = generate_imports(namespace, namespaced_types, funcs, context.ir_pack)?;
 
     let funcs = funcs
         .map(|funcs| {
@@ -90,7 +90,7 @@ fn generate_item(
         })
         .unwrap_or_default();
 
-    let classes = classes
+    let classes = namespaced_types
         .map(|classes| {
             classes
                 .iter()
@@ -111,13 +111,13 @@ fn generate_item(
 
 fn generate_imports(
     current_file_namespace: &Namespace,
-    classes: &Option<&Vec<&IrType>>,
+    namespaced_types: &Option<&Vec<&IrType>>,
     funcs: &Option<&Vec<&IrFunc>>,
     ir_pack: &IrPack,
 ) -> Result<DartBasicHeaderCode> {
     let mut gatherer = DistinctTypeGatherer::new();
-    if let Some(classes) = classes {
-        (classes.iter()).for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), ir_pack));
+    if let Some(namespaced_types) = namespaced_types {
+        (namespaced_types.iter()).for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), ir_pack));
     }
     if let Some(funcs) = funcs {
         (funcs.iter()).for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), true, true, ir_pack));
