@@ -908,6 +908,11 @@ pub fn wire_simple_adder_twin_sync(a: i32, b: i32) -> support::WireSyncReturn {
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_stream_realistic_twin_sync(port_: MessagePort, arg: String) {
+    wire_handle_stream_realistic_twin_sync_impl(port_, arg)
+}
+
+#[wasm_bindgen]
 pub fn wire_func_struct_with_one_field_twin_sync(arg: JsValue) -> support::WireSyncReturn {
     wire_func_struct_with_one_field_twin_sync_impl(arg)
 }
@@ -935,6 +940,11 @@ pub fn wire_func_tuple_struct_with_two_field_twin_sync(arg: JsValue) -> support:
 #[wasm_bindgen]
 pub fn wire_simple_adder_twin_normal(port_: MessagePort, a: i32, b: i32) {
     wire_simple_adder_twin_normal_impl(port_, a, b)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_stream_realistic_twin_normal(port_: MessagePort, arg: String) {
+    wire_handle_stream_realistic_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]

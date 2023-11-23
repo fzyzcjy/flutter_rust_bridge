@@ -1566,6 +1566,11 @@ pub extern "C" fn wire_simple_adder_twin_sync(a: i32, b: i32) -> support::WireSy
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_stream_realistic_twin_sync(port_: i64, arg: *mut wire_list_prim_u_8) {
+    wire_handle_stream_realistic_twin_sync_impl(port_, arg)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_func_struct_with_one_field_twin_sync(
     arg: *mut wire_struct_with_one_field_twin_sync,
 ) -> support::WireSyncReturn {
@@ -1603,6 +1608,14 @@ pub extern "C" fn wire_func_tuple_struct_with_two_field_twin_sync(
 #[no_mangle]
 pub extern "C" fn wire_simple_adder_twin_normal(port_: i64, a: i32, b: i32) {
     wire_simple_adder_twin_normal_impl(port_, a, b)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_stream_realistic_twin_normal(
+    port_: i64,
+    arg: *mut wire_list_prim_u_8,
+) {
+    wire_handle_stream_realistic_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]

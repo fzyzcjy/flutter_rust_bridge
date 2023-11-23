@@ -15,8 +15,10 @@ import 'api/pseudo_manual/primitive_list.dart';
 import 'api/pseudo_manual/primitive_list_twin_sync.dart';
 import 'api/pseudo_manual/primitive_twin_sync.dart';
 import 'api/pseudo_manual/simple_twin_sync.dart';
+import 'api/pseudo_manual/stream_twin_sync.dart';
 import 'api/pseudo_manual/structure_twin_sync.dart';
 import 'api/simple.dart';
+import 'api/stream.dart';
 import 'api/structure.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -303,6 +305,9 @@ abstract class RustLibApi extends BaseApi {
 
   int simpleAdderTwinSync({required int a, required int b, dynamic hint});
 
+  Stream<String> handleStreamRealisticTwinSync(
+      {required String arg, dynamic hint});
+
   StructWithOneFieldTwinSync funcStructWithOneFieldTwinSync(
       {required StructWithOneFieldTwinSync arg, dynamic hint});
 
@@ -320,6 +325,9 @@ abstract class RustLibApi extends BaseApi {
 
   Future<int> simpleAdderTwinNormal(
       {required int a, required int b, dynamic hint});
+
+  Stream<String> handleStreamRealisticTwinNormal(
+      {required String arg, dynamic hint});
 
   Future<StructWithOneFieldTwinNormal> funcStructWithOneFieldTwinNormal(
       {required StructWithOneFieldTwinNormal arg, dynamic hint});
@@ -2312,6 +2320,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Stream<String> handleStreamRealisticTwinSync(
+      {required String arg, dynamic hint}) {
+    var arg0 = api2wire_String(arg);
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) =>
+          wire.wire_handle_stream_realistic_twin_sync(port_, arg0),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kHandleStreamRealisticTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleStreamRealisticTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_stream_realistic_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
   StructWithOneFieldTwinSync funcStructWithOneFieldTwinSync(
       {required StructWithOneFieldTwinSync arg, dynamic hint}) {
     var arg0 = api2wire_box_autoadd_struct_with_one_field_twin_sync(arg);
@@ -2435,6 +2465,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kSimpleAdderTwinNormalConstMeta => const TaskConstMeta(
         debugName: "simple_adder_twin_normal",
         argNames: ["a", "b"],
+      );
+
+  @override
+  Stream<String> handleStreamRealisticTwinNormal(
+      {required String arg, dynamic hint}) {
+    var arg0 = api2wire_String(arg);
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) =>
+          wire.wire_handle_stream_realistic_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kHandleStreamRealisticTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleStreamRealisticTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_stream_realistic_twin_normal",
+        argNames: ["arg"],
       );
 
   @override
