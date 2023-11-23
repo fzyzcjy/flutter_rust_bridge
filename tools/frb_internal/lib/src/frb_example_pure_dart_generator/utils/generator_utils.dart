@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/utils/preludes.dart';
@@ -64,9 +65,14 @@ class _Duplicator {
       if (generator.duplicatorBlacklistNames.contains(fileName)) continue;
       if (DuplicatorMode.values.any((mode) => fileStem.contains(mode.postfix))) continue;
 
+      final fileContent = (file as File).readAsStringSync();
+      final annotation = _parseAnnotation(fileContent);
+
       for (final mode in DuplicatorMode.values) {
-        final outputText = computeDuplicatorPrelude(' from `$fileName`') +
-            generator.generateDuplicateCode((file as File).readAsStringSync(), mode);
+        if (annotation.forbiddenDuplicatorModes.contains(mode)) continue;
+
+        final outputText =
+            computeDuplicatorPrelude(' from `$fileName`') + generator.generateDuplicateCode(fileContent, mode);
         final targetPath = generator.interestDir
             .resolve('pseudo_manual/')
             .resolve('${generator.generateDuplicateFileStem(fileStem, mode)}.${generator.extension}')
@@ -75,4 +81,21 @@ class _Duplicator {
       }
     }
   }
+}
+
+_Annotation _parseAnnotation(String fileContent) {
+  const kPrefix = '// FRB_INTERNAL_GENERATOR:';
+  if (!fileContent.startsWith(kPrefix)) return const _Annotation();
+
+  final data = jsonDecode(fileContent.substring(kPrefix.length, fileContent.indexOf('\n'))) as Map<String, Object?>;
+  return _Annotation(
+    forbiddenDuplicatorModes:
+        (data['forbiddenDuplicatorModes'] as List<dynamic>).map((x) => DuplicatorMode.values.byName(x)).toList(),
+  );
+}
+
+class _Annotation {
+  final List<DuplicatorMode> forbiddenDuplicatorModes;
+
+  const _Annotation({this.forbiddenDuplicatorModes = []});
 }

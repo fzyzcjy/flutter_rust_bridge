@@ -1,3 +1,5 @@
+// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync"]}
+
 use anyhow::anyhow;
 use flutter_rust_bridge::{spawn, StreamSink};
 use log::info;
@@ -6,7 +8,6 @@ use std::sync::Arc;
 use std::thread::sleep;
 use std::time::Duration;
 
-// TODO reduced pseudo_manual types
 pub fn func_stream_realistic_twin_normal(sink: StreamSink<String>, arg: String) {
     info!("handle_stream_realistic arg={}", arg);
 
