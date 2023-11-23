@@ -89,15 +89,18 @@ fn generate_api_fill_to_wire_func(
             it => it,
         };
 
-        format!(
-            "void _api_fill_to_wire_{}({} apiObj, {} wireObj) {{
-                {body}
-            }}",
-            ty.safe_ident(),
-            ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type(),
-            WireDartGenerator::new(target_wire_type.clone(), context).dart_wire_type(Target::Io),
-        )
-        .into()
+        WireDartOutputCode {
+            api_impl_body: format!(
+                "void _api_fill_to_wire_{}({} apiObj, {} wireObj) {{
+                    {body}
+                }}",
+                ty.safe_ident(),
+                ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type(),
+                WireDartGenerator::new(target_wire_type.clone(), context)
+                    .dart_wire_type(Target::Io),
+            ),
+            ..Default::default()
+        }
     } else {
         Default::default()
     }
