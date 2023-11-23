@@ -21,7 +21,7 @@ pub(crate) fn compute_mod_from_path(
     })()
     .with_context(|| {
         format!(
-            "When compute_mod_from_rust_path(code_path={code_path:?}, root_path={crate_path:?})",
+            "When compute_mod_from_rust_path(code_path={code_path:?}, root_path={root_path:?})",
         )
     })
 }

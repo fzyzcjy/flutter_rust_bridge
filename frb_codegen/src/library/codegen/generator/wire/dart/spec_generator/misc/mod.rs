@@ -8,7 +8,7 @@ use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
-use crate::utils::basic_code::DartBasicHeaderCode;
+use crate::utils::basic_code::{DartBasicHeaderCode, ProgrammingLang};
 use crate::utils::path_utils::path_to_string;
 use crate::utils::rust_project_utils::compute_mod_from_path;
 use anyhow::Context;
@@ -70,6 +70,7 @@ fn generate_boilerplate(
         &Namespace::new_from_path(
             &context.config.dart_impl_output_path[TargetOrCommon::Common],
             &context.config.dart_root,
+            ProgrammingLang::Dart,
         )?,
         &Some(&cache.distinct_types.iter().collect_vec()),
         &None,
