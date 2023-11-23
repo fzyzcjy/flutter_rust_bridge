@@ -1,5 +1,7 @@
 pub mod array;
+pub mod chrono_type;
 pub mod comment;
+pub mod dart_dynamic;
 pub mod enumeration;
 pub mod exception;
 pub mod inside_macro;
@@ -11,3 +13,5 @@ pub mod raw_string;
 pub mod simple;
 pub mod stream;
 pub mod structure;
+pub mod tuple;
+pub mod uuid_type;
