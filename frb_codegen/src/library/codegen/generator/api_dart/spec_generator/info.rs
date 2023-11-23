@@ -14,6 +14,10 @@ use regex::Regex;
 #[enum_dispatch]
 pub(crate) trait ApiDartGeneratorInfoTrait {
     fn dart_api_type(&self) -> String;
+
+    fn dart_import(&self) -> Option<String> {
+        None
+    }
 }
 
 impl<'a> ApiDartGeneratorInfoTrait for BoxedApiDartGenerator<'a> {

@@ -99,20 +99,23 @@ fn generate_imports_from_ty(
     current_file_namespace: &Namespace,
     context: ApiDartGeneratorContext,
 ) -> anyhow::Result<String> {
-    let ty_namespace = ty.self_namespace();
-
-    let import_ty_itself = if ty_namespace != current_file_namespace {
-        let path_diff = diff_paths(
-            ty_namespace.to_pseudo_io_path("dart"),
-            (current_file_namespace.to_pseudo_io_path("dart").parent()).unwrap(),
-        )
-        .context("cannot diff path")?;
-        format!("import '{}';\n", path_to_string(&path_diff).unwrap())
-    } else {
-        "".to_owned()
+    let import_ty_itself = if let Some(ty_namespace) = ty.self_namespace() {
+        if ty_namespace != current_file_namespace {
+            let path_diff = diff_paths(
+                ty_namespace.to_pseudo_io_path("dart"),
+                (current_file_namespace.to_pseudo_io_path("dart").parent()).unwrap(),
+            )
+            .context("cannot diff path")?;
+            format!("import '{}';\n", path_to_string(&path_diff).unwrap())
+        } else {
+            "".into()
+        }
+        "".into()
     };
 
-    let import_extra = ApiDartGenerator::new(ty, context).TODO();
+    let import_extra = ApiDartGenerator::new(ty, context)
+        .dart_import()
+        .unwrap_or_default();
 
     Ok(import_ty_itself + import_extra)
 }
