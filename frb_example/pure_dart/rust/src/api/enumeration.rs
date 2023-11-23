@@ -40,3 +40,34 @@ pub fn func_enum_with_item_struct_twin_normal(
 ) -> EnumWithItemStructTwinNormal {
     arg
 }
+
+#[frb]
+#[derive(Debug)]
+pub struct Note {
+    #[frb(default = "Weekdays.Sunday")]
+    pub day: Box<Weekdays>,
+    pub body: String,
+}
+
+pub fn print_note(note: Note) -> ZeroCopyBuffer<Vec<u8>> {
+    info!("{:#?}", note);
+    ZeroCopyBuffer(vec![1, 2, 3])
+}
+
+pub fn handle_return_enum(input: String) -> Option<Weekdays> {
+    match input.as_str() {
+        "Monday" => Some(Weekdays::Monday),
+        "Tuesday" => Some(Weekdays::Tuesday),
+        "Wednesday" => Some(Weekdays::Wednesday),
+        "Thursday" => Some(Weekdays::Thursday),
+        "Friday" => Some(Weekdays::Friday),
+        "Saturday" => Some(Weekdays::Saturday),
+        "Sunday" => Some(Weekdays::Sunday),
+        _ => None,
+    }
+}
+
+pub fn handle_enum_parameter(weekday: Weekdays) -> Weekdays {
+    info!("The weekday is {:?}", weekday);
+    weekday
+}

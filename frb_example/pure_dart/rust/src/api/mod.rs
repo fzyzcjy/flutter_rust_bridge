@@ -1,3 +1,4 @@
+mod attribute;
 mod chrono_type;
 pub mod comment;
 pub mod dart_opaque;
