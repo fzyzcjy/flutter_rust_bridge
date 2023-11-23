@@ -1,5 +1,7 @@
 use crate::codegen::ir::func::IrFunc;
+use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumIdent};
+use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
 use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent};
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::ir::ty::IrTypeTrait;
@@ -23,24 +25,13 @@ impl IrPack {
         include_func_inputs: bool,
         include_func_output: bool,
     ) -> Vec<IrType> {
-        let mut seen_idents = HashSet::new();
-        let mut ans = Vec::new();
+        let mut gatherer = DistinctTypeGatherer::new();
         self.visit_types(
-            &mut |ty| {
-                let ident = ty.safe_ident();
-                let contains = seen_idents.contains(&ident);
-                if !contains {
-                    seen_idents.insert(ident);
-                    ans.push(ty.clone());
-                }
-                contains
-            },
+            &mut |ty| gatherer.add(ty),
             include_func_inputs,
             include_func_output,
         );
-        // make the output change less when input change
-        ans.sort_by_key(|ty| ty.safe_ident());
-        ans
+        gatherer.gather()
     }
 
     /// [f] returns [true] if it wants to stop going to the *children* of this subtree
@@ -74,5 +65,37 @@ impl IrPackComputedCache {
             distinct_output_types,
             distinct_types,
         }
+    }
+}
+
+pub(crate) struct DistinctTypeGatherer {
+    seen_idents: HashSet<IrIdent>,
+    ans: Vec<IrType>,
+}
+
+impl DistinctTypeGatherer {
+    pub fn new() -> Self {
+        Self {
+            seen_idents: HashSet::default(),
+            ans: vec![],
+        }
+    }
+
+    pub(crate) fn add(&mut self, ty: &IrType) -> bool {
+        let ident = ty.safe_ident();
+        let contains = self.seen_idents.contains(&ident);
+        if !contains {
+            self.seen_idents.insert(ident);
+            self.ans.push(ty.clone());
+        }
+        contains
+    }
+
+    pub(crate) fn gather(self) -> Vec<IrType> {
+        self.ans
+            .iter()
+            // make the output change less when input change
+            .sorted_by_key(|ty| ty.safe_ident())
+            .collect()
     }
 }
