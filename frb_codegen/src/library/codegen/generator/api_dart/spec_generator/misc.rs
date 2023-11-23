@@ -1,11 +1,16 @@
 use crate::codegen::ir::annotation::IrDartAnnotation;
 use crate::codegen::ir::comment::IrComment;
-use crate::codegen::ir::func::IrFuncMode;
+use crate::codegen::ir::func::{IrFunc, IrFuncMode};
 use crate::codegen::ir::import::IrDartImport;
-use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
+use crate::codegen::ir::namespace::Namespace;
+use crate::codegen::ir::pack::{DistinctTypeGatherer, IrPack, IrPackComputedCache};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
+use crate::utils::basic_code::DartBasicHeaderCode;
+use crate::utils::path_utils::path_to_string;
+use anyhow::Context;
 use itertools::Itertools;
+use pathdiff::diff_paths;
 
 /// A trailing newline is included if comments is not empty.
 pub(crate) fn generate_dart_comments(comments: &[IrComment]) -> String {
@@ -51,4 +56,44 @@ pub(crate) fn generate_function_dart_return_type(func_mode: &IrFuncMode, inner: 
         IrFuncMode::Sync => inner.to_string(),
         IrFuncMode::Stream { .. } => format!("Stream<{inner}>"),
     }
+}
+
+pub(super) fn generate_imports_which_types_use(
+    current_file_namespace: &Namespace,
+    namespaced_types: &Option<&Vec<&IrType>>,
+    funcs: &Option<&Vec<&IrFunc>>,
+    ir_pack: &IrPack,
+) -> anyhow::Result<DartBasicHeaderCode> {
+    let mut gatherer = DistinctTypeGatherer::new();
+    if let Some(namespaced_types) = namespaced_types {
+        (namespaced_types.iter()).for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), ir_pack));
+    }
+    if let Some(funcs) = funcs {
+        (funcs.iter()).for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), true, true, ir_pack));
+    }
+    let interest_types = gatherer.gather();
+
+    let import = interest_types
+        .iter()
+        .filter_map(|ty| ty.self_namespace())
+        .filter(|import_ty_namespace| import_ty_namespace != current_file_namespace)
+        .map(|import_ty_namespace| {
+            let path_diff = diff_paths(
+                import_ty_namespace.to_pseudo_io_path("dart"),
+                (current_file_namespace.to_pseudo_io_path("dart").parent()).unwrap(),
+            )
+            .context("cannot diff path")?;
+            Ok(format!(
+                "import '{}';\n",
+                path_to_string(&path_diff).unwrap()
+            ))
+        })
+        .collect::<anyhow::Result<Vec<_>>>()?
+        .iter()
+        .join("");
+
+    Ok(DartBasicHeaderCode {
+        import,
+        ..Default::default()
+    })
 }

@@ -115,36 +115,5 @@ fn generate_imports(
     funcs: &Option<&Vec<&IrFunc>>,
     ir_pack: &IrPack,
 ) -> Result<DartBasicHeaderCode> {
-    let mut gatherer = DistinctTypeGatherer::new();
-    if let Some(namespaced_types) = namespaced_types {
-        (namespaced_types.iter()).for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), ir_pack));
-    }
-    if let Some(funcs) = funcs {
-        (funcs.iter()).for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), true, true, ir_pack));
-    }
-    let interest_types = gatherer.gather();
-
-    let import = interest_types
-        .iter()
-        .filter_map(|ty| ty.self_namespace())
-        .filter(|import_ty_namespace| import_ty_namespace != current_file_namespace)
-        .map(|import_ty_namespace| {
-            let path_diff = diff_paths(
-                import_ty_namespace.to_pseudo_io_path("dart"),
-                (current_file_namespace.to_pseudo_io_path("dart").parent()).unwrap(),
-            )
-            .context("cannot diff path")?;
-            Ok(format!(
-                "import '{}';\n",
-                path_to_string(&path_diff).unwrap()
-            ))
-        })
-        .collect::<Result<Vec<_>>>()?
-        .iter()
-        .join("");
-
-    Ok(DartBasicHeaderCode {
-        import,
-        ..Default::default()
-    })
+    todo!()
 }
