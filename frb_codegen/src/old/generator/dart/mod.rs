@@ -235,9 +235,10 @@ fn get_dart_imports(ir_pack: &IrPack) -> HashSet<&IrDartImport> {
         .collect()
 }
 
-fn section_header(header: &str) -> String {
-    format!("// Section: {header}\n")
-}
+// DONE
+// fn section_header(header: &str) -> String {
+//     format!("// Section: {header}\n")
+// }
 
 /// A Dart bridge module consists of several members:
 /// - An `_Impl` class exposing the public Rust functions
