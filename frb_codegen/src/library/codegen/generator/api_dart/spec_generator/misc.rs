@@ -61,15 +61,15 @@ pub(crate) fn generate_function_dart_return_type(func_mode: &IrFuncMode, inner: 
 
 pub(super) fn generate_imports_which_types_and_funcs_use(
     current_file_namespace: &Namespace,
-    types: &Option<&Vec<&IrType>>,
-    funcs: &Option<&Vec<&IrFunc>>,
+    seed_types: &Option<&Vec<&IrType>>,
+    seed_funcs: &Option<&Vec<&IrFunc>>,
     ir_pack: &IrPack,
 ) -> anyhow::Result<DartBasicHeaderCode> {
     let mut gatherer = DistinctTypeGatherer::new();
-    if let Some(types) = types {
+    if let Some(types) = seed_types {
         (types.iter()).for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), ir_pack));
     }
-    if let Some(funcs) = funcs {
+    if let Some(funcs) = seed_funcs {
         (funcs.iter()).for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), true, true, ir_pack));
     }
     let interest_types = gatherer.gather();
