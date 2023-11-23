@@ -6,6 +6,8 @@ use crate::codegen::ir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegateArrayMode, IrTypeDelegatePrimitiveEnum,
     IrTypeDelegateTime,
 };
+use crate::codegen::ir::ty::primitive::IrTypePrimitive;
+use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
@@ -39,7 +41,10 @@ impl<'a> WireDartGeneratorApi2wireTrait for DelegateWireDartGenerator<'a> {
             },
 
             IrTypeDelegate::String => Acc {
-                io: Some("return api2wire_uint_8_list(utf8.encoder.convert(raw));".into()),
+                io: Some(format!(
+                    "return api2wire_{}(utf8.encoder.convert(raw));",
+                    uint8list_safe_ident()
+                )),
                 wasm: Some("return raw;".into()),
                 ..Default::default()
             },
@@ -86,12 +91,14 @@ impl<'a> WireDartGeneratorApi2wireTrait for DelegateWireDartGenerator<'a> {
                 return api2wire_int_64_list(ans);",
                 self.ir.safe_ident()
             ))),
-            IrTypeDelegate::Uuid => {
-                Acc::distribute(Some("return api2wire_uint_8_list(raw.toBytes());".into()))
-            }
-            IrTypeDelegate::Uuids => Acc::distribute(Some(
-                "return api2wire_uint_8_list(api2wireConcatenateBytes(raw));".into(),
-            )),
+            IrTypeDelegate::Uuid => Acc::distribute(Some(format!(
+                "return api2wire_{}(raw.toBytes());",
+                uint8list_safe_ident()
+            ))),
+            IrTypeDelegate::Uuids => Acc::distribute(Some(format!(
+                "return api2wire_{}(api2wireConcatenateBytes(raw));",
+                uint8list_safe_ident()
+            ))),
             IrTypeDelegate::Backtrace => unimplemented!(),
             IrTypeDelegate::Anyhow => unimplemented!(),
         }
@@ -106,4 +113,11 @@ impl<'a> WireDartGeneratorApi2wireTrait for DelegateWireDartGenerator<'a> {
                 .dart_wire_type(target),
         }
     }
+}
+
+fn uint8list_safe_ident() -> String {
+    IrTypePrimitiveList {
+        primitive: IrTypePrimitive::U8,
+    }
+    .safe_ident()
 }
