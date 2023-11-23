@@ -18,8 +18,6 @@ use crate::data::{EnumAlias, Id, MyEnum, MyStruct, StructAlias, UserIdAlias};
 pub use crate::data::{
     FrbOpaqueReturn, FrbOpaqueSyncReturn, HideData, NonCloneData, NonSendHideData,
 };
-use crate::new_module_system::{use_new_module_system, NewSimpleStruct};
-use crate::old_module_system::{use_old_module_system, OldSimpleStruct};
 use log::info;
 
 #[cfg(target_family = "wasm")]
@@ -38,13 +36,6 @@ extern "C" fn on_dylib_start() {
 pub struct Log {
     pub key: u32,
     pub value: u32,
-}
-
-pub fn call_old_module_system() -> OldSimpleStruct {
-    use_old_module_system(2)
-}
-pub fn call_new_module_system() -> NewSimpleStruct {
-    use_new_module_system(1)
 }
 
 pub struct BigBuffers {
