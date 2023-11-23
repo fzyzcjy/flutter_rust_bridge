@@ -45,6 +45,7 @@ pub fn func_enum_with_item_struct_twin_normal(
     arg
 }
 
+#[frb]
 #[derive(Debug)]
 pub struct Note {
     #[frb(default = "Weekdays.Sunday")]
