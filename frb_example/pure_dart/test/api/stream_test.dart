@@ -28,15 +28,19 @@ Future<void> main() async {
 
   test('call funcStreamReturnErrorTwinNormal', () async {
     await expectLater(
-        () async => funcStreamReturnErrorTwinNormal(),
-        throwsA(isA<AnyhowException>()
-            .having((x) => x.message, 'message', 'deliberate error')));
+      () async {
+        await for (final _ in funcStreamReturnErrorTwinNormal()) {}
+      },
+      throwsA(isA<AnyhowException>().having((x) => x.message, 'message', 'deliberate error')),
+    );
   });
 
   test('call funcStreamReturnPanicTwinNormal', () async {
     await expectLater(
-        () async => funcStreamReturnPanicTwinNormal(),
-        throwsA(isA<PanicException>()
-            .having((x) => x.message, 'message', 'deliberate panic')));
+      () async {
+        await for (final _ in funcStreamReturnPanicTwinNormal()) {}
+      },
+      throwsA(isA<PanicException>().having((x) => x.message, 'message', 'deliberate panic')),
+    );
   });
 }
