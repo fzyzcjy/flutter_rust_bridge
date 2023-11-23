@@ -40,6 +40,15 @@ typedef struct wire_message_id {
   struct wire_list_prim_u_8 *field0;
 } wire_message_id;
 
+typedef struct wire_customized {
+  struct wire_list_prim_u_8 *final_field;
+  struct wire_list_prim_u_8 *non_final_field;
+} wire_customized;
+
+typedef struct wire_user_id {
+  uint32_t value;
+} wire_user_id;
+
 typedef struct wire_list_prim_i_64 {
   int64_t *ptr;
   int32_t len;
@@ -174,6 +183,11 @@ typedef struct wire_note {
   struct wire_list_prim_u_8 *body;
 } wire_note;
 
+typedef struct wire_event {
+  struct wire_list_prim_u_8 *address;
+  struct wire_list_prim_u_8 *payload;
+} wire_event;
+
 typedef struct wire_CustomNestedErrorOuterTwinNormal_One {
   struct wire_list_prim_u_8 *field0;
 } wire_CustomNestedErrorOuterTwinNormal_One;
@@ -217,6 +231,14 @@ typedef struct wire_custom_struct_error_twin_normal {
 typedef struct wire_macro_struct {
   int32_t data;
 } wire_macro_struct;
+
+typedef struct wire_concatenate_with {
+  struct wire_list_prim_u_8 *a;
+} wire_concatenate_with;
+
+typedef struct wire_sum_with {
+  uint32_t x;
+} wire_sum_with;
 
 typedef struct wire_list_my_tree_node {
   struct wire_my_tree_node *ptr;
@@ -303,6 +325,75 @@ typedef struct wire_StringList {
 typedef struct wire_new_type_int {
   int64_t field0;
 } wire_new_type_int;
+
+typedef struct wire_list_prim_i_8 {
+  int8_t *ptr;
+  int32_t len;
+} wire_list_prim_i_8;
+
+typedef struct wire_list_prim_f_32 {
+  float *ptr;
+  int32_t len;
+} wire_list_prim_f_32;
+
+typedef struct wire_attribute {
+  struct wire_list_prim_u_8 *key;
+  struct wire_list_prim_u_8 *value;
+} wire_attribute;
+
+typedef struct wire_list_attribute {
+  struct wire_attribute *ptr;
+  int32_t len;
+} wire_list_attribute;
+
+typedef struct wire_list_opt_box_autoadd_attribute {
+  struct wire_attribute **ptr;
+  int32_t len;
+} wire_list_opt_box_autoadd_attribute;
+
+typedef struct wire_exotic_optionals {
+  int32_t *int32;
+  int64_t *int64;
+  double *float64;
+  bool *boolean;
+  struct wire_list_prim_u_8 *zerocopy;
+  struct wire_list_prim_i_8 *int8list;
+  struct wire_list_prim_u_8 *uint8list;
+  struct wire_list_prim_i_32 *int32list;
+  struct wire_list_prim_f_32 *float32list;
+  struct wire_list_prim_f_64 *float64list;
+  struct wire_list_attribute *attributes;
+  struct wire_list_opt_box_autoadd_attribute *attributes_nullable;
+  struct wire_list_opt_box_autoadd_attribute *nullable_attributes;
+  struct wire_new_type_int *newtypeint;
+} wire_exotic_optionals;
+
+typedef struct wire_list_opt_box_autoadd_i_32 {
+  int32_t **ptr;
+  int32_t len;
+} wire_list_opt_box_autoadd_i_32;
+
+typedef struct wire_list_opt_box_autoadd_weekdays {
+  int32_t **ptr;
+  int32_t len;
+} wire_list_opt_box_autoadd_weekdays;
+
+typedef struct wire_list_opt_String {
+  struct wire_list_prim_u_8 **ptr;
+  int32_t len;
+} wire_list_opt_String;
+
+typedef struct wire_list_opt_list_prim_i_32 {
+  struct wire_list_prim_i_32 **ptr;
+  int32_t len;
+} wire_list_opt_list_prim_i_32;
+
+typedef struct wire_opt_vecs {
+  struct wire_list_opt_box_autoadd_i_32 *i32;
+  struct wire_list_opt_box_autoadd_weekdays *enums;
+  struct wire_list_opt_String *strings;
+  struct wire_list_opt_list_prim_i_32 *buffers;
+} wire_opt_vecs;
 
 typedef struct wire_struct_with_comments_twin_sync {
   int32_t field_with_comments;
@@ -412,20 +503,10 @@ typedef struct wire_list_bool {
   int32_t len;
 } wire_list_bool;
 
-typedef struct wire_list_prim_f_32 {
-  float *ptr;
-  int32_t len;
-} wire_list_prim_f_32;
-
 typedef struct wire_list_prim_i_16 {
   int16_t *ptr;
   int32_t len;
 } wire_list_prim_i_16;
-
-typedef struct wire_list_prim_i_8 {
-  int8_t *ptr;
-  int32_t len;
-} wire_list_prim_i_8;
 
 typedef struct wire_list_prim_u_16 {
   uint16_t *ptr;
@@ -523,6 +604,10 @@ void wire_use_boxed_blob(int64_t port_, struct wire_blob *blob);
 
 void wire_use_msgid(int64_t port_, struct wire_message_id *id);
 
+void wire_handle_customized_struct(int64_t port_, struct wire_customized *val);
+
+void wire_next_user_id(int64_t port_, struct wire_user_id *user_id);
+
 void wire_datetime_local(int64_t port_, int64_t d);
 
 void wire_datetime_utc(int64_t port_, int64_t d);
@@ -575,6 +660,16 @@ void wire_multiply_by_ten(int64_t port_, struct wire_measure *measure);
 
 void wire_print_note(int64_t port_, struct wire_note *note);
 
+void wire_Event_as_string(int64_t port_, struct wire_event *that);
+
+void wire_close_event_listener(int64_t port_);
+
+void wire_create_event(int64_t port_,
+                       struct wire_list_prim_u_8 *address,
+                       struct wire_list_prim_u_8 *payload);
+
+void wire_register_event_listener(int64_t port_);
+
 void wire_custom_enum_error_panic_twin_normal(int64_t port_);
 
 void wire_custom_enum_error_return_error_twin_normal(int64_t port_);
@@ -594,6 +689,34 @@ void wire_func_type_fallible_panic_twin_normal(int64_t port_);
 void wire_func_type_infallible_panic_twin_normal(int64_t port_);
 
 void wire_func_macro_struct(int64_t port_, struct wire_macro_struct *arg);
+
+void wire_ConcatenateWith_concatenate(int64_t port_,
+                                      struct wire_concatenate_with *that,
+                                      struct wire_list_prim_u_8 *b);
+
+void wire_ConcatenateWith_concatenate_static(int64_t port_,
+                                             struct wire_list_prim_u_8 *a,
+                                             struct wire_list_prim_u_8 *b);
+
+void wire_ConcatenateWith_handle_some_static_stream_sink(int64_t port_, uint32_t key, uint32_t max);
+
+void wire_ConcatenateWith_handle_some_static_stream_sink_single_arg(int64_t port_);
+
+void wire_ConcatenateWith_handle_some_stream_sink(int64_t port_,
+                                                  struct wire_concatenate_with *that,
+                                                  uint32_t key,
+                                                  uint32_t max);
+
+void wire_ConcatenateWith_handle_some_stream_sink_at_1(int64_t port_,
+                                                       struct wire_concatenate_with *that);
+
+void wire_ConcatenateWith_new(int64_t port_, struct wire_list_prim_u_8 *a);
+
+void wire_SumWith_sum(int64_t port_, struct wire_sum_with *that, uint32_t y, uint32_t z);
+
+void wire_get_sum_array(int64_t port_, uint32_t a, uint32_t b, uint32_t c);
+
+void wire_get_sum_struct(int64_t port_);
 
 void wire_handle_big_buffers(int64_t port_);
 
@@ -616,6 +739,25 @@ void wire_handle_list_of_struct(int64_t port_, struct wire_list_my_size *l);
 void wire_handle_string_list(int64_t port_, struct wire_StringList *names);
 
 void wire_handle_newtype(int64_t port_, struct wire_new_type_int *arg);
+
+void wire_handle_increment_boxed_optional(int64_t port_, double *opt);
+
+void wire_handle_option_box_arguments(int64_t port_,
+                                      int8_t *i8box,
+                                      uint8_t *u8box,
+                                      int32_t *i32box,
+                                      int64_t *i64box,
+                                      double *f64box,
+                                      bool *boolbox,
+                                      struct wire_exotic_optionals *structbox);
+
+void wire_handle_optional_increment(int64_t port_, struct wire_exotic_optionals *opt);
+
+void wire_handle_optional_return(int64_t port_, double left, double right);
+
+void wire_handle_optional_struct(int64_t port_, struct wire_list_prim_u_8 *document);
+
+void wire_handle_vec_of_opts(int64_t port_, struct wire_opt_vecs *opt);
 
 WireSyncReturn wire_StructWithCommentsTwinSync_instance_method_twin_sync(struct wire_struct_with_comments_twin_sync *that);
 
@@ -842,6 +984,12 @@ void wire_test_tuple(int64_t port_, struct wire_record_string_i_32 *value);
 
 void wire_test_tuple_2(int64_t port_, struct wire_list_record_string_i_32 *value);
 
+void wire_handle_type_alias_id(int64_t port_, uint64_t input);
+
+void wire_handle_type_alias_model(int64_t port_, uint64_t input);
+
+void wire_handle_type_nest_alias_id(int64_t port_, uint64_t input);
+
 void wire_handle_nested_uuids(int64_t port_, struct wire_feature_uuid *ids);
 
 void wire_handle_uuid(int64_t port_, struct wire_list_prim_u_8 *id);
@@ -856,11 +1004,15 @@ struct wire_a *new_box_autoadd_a(void);
 
 struct wire_abc *new_box_autoadd_abc(void);
 
+struct wire_attribute *new_box_autoadd_attribute(void);
+
 struct wire_b *new_box_autoadd_b(void);
 
 bool *new_box_autoadd_bool(bool value);
 
 struct wire_c *new_box_autoadd_c(void);
+
+struct wire_concatenate_with *new_box_autoadd_concatenate_with(void);
 
 struct wire_custom_nested_error_inner_twin_normal *new_box_autoadd_custom_nested_error_inner_twin_normal(void);
 
@@ -874,6 +1026,8 @@ struct wire_custom_struct_error_twin_normal *new_box_autoadd_custom_struct_error
 
 struct wire_custom_struct_error_twin_sync *new_box_autoadd_custom_struct_error_twin_sync(void);
 
+struct wire_customized *new_box_autoadd_customized(void);
+
 struct wire_enum_with_item_mixed_twin_normal *new_box_autoadd_enum_with_item_mixed_twin_normal(void);
 
 struct wire_enum_with_item_mixed_twin_sync *new_box_autoadd_enum_with_item_mixed_twin_sync(void);
@@ -885,6 +1039,10 @@ struct wire_enum_with_item_struct_twin_sync *new_box_autoadd_enum_with_item_stru
 struct wire_enum_with_item_tuple_twin_normal *new_box_autoadd_enum_with_item_tuple_twin_normal(void);
 
 struct wire_enum_with_item_tuple_twin_sync *new_box_autoadd_enum_with_item_tuple_twin_sync(void);
+
+struct wire_event *new_box_autoadd_event(void);
+
+struct wire_exotic_optionals *new_box_autoadd_exotic_optionals(void);
 
 float *new_box_autoadd_f_32(float value);
 
@@ -918,6 +1076,8 @@ struct wire_new_type_int *new_box_autoadd_new_type_int(void);
 
 struct wire_note *new_box_autoadd_note(void);
 
+struct wire_opt_vecs *new_box_autoadd_opt_vecs(void);
+
 struct wire_record_string_i_32 *new_box_autoadd_record_string_i_32(void);
 
 struct wire_struct_with_comments_twin_normal *new_box_autoadd_struct_with_comments_twin_normal(void);
@@ -938,6 +1098,8 @@ struct wire_struct_with_zero_field_twin_normal *new_box_autoadd_struct_with_zero
 
 struct wire_struct_with_zero_field_twin_sync *new_box_autoadd_struct_with_zero_field_twin_sync(void);
 
+struct wire_sum_with *new_box_autoadd_sum_with(void);
+
 struct wire_test_id *new_box_autoadd_test_id(void);
 
 struct wire_tuple_struct_with_one_field_twin_normal *new_box_autoadd_tuple_struct_with_one_field_twin_normal(void);
@@ -956,19 +1118,49 @@ uint64_t *new_box_autoadd_u_64(uint64_t value);
 
 uint8_t *new_box_autoadd_u_8(uint8_t value);
 
+struct wire_user_id *new_box_autoadd_user_id(void);
+
+int32_t *new_box_autoadd_weekdays(int32_t value);
+
 struct wire_blob *new_box_blob(void);
+
+bool *new_box_bool(bool value);
 
 struct wire_distance *new_box_distance(void);
 
+struct wire_exotic_optionals *new_box_exotic_optionals(void);
+
+double *new_box_f_64(double value);
+
+int32_t *new_box_i_32(int32_t value);
+
+int64_t *new_box_i_64(int64_t value);
+
+int8_t *new_box_i_8(int8_t value);
+
 struct wire_speed *new_box_speed(void);
 
+uint8_t *new_box_u_8(uint8_t value);
+
 int32_t *new_box_weekdays(int32_t value);
+
+struct wire_list_attribute *new_list_attribute(int32_t len);
 
 struct wire_list_bool *new_list_bool(int32_t len);
 
 struct wire_list_my_size *new_list_my_size(int32_t len);
 
 struct wire_list_my_tree_node *new_list_my_tree_node(int32_t len);
+
+struct wire_list_opt_String *new_list_opt_String(int32_t len);
+
+struct wire_list_opt_box_autoadd_attribute *new_list_opt_box_autoadd_attribute(int32_t len);
+
+struct wire_list_opt_box_autoadd_i_32 *new_list_opt_box_autoadd_i_32(int32_t len);
+
+struct wire_list_opt_box_autoadd_weekdays *new_list_opt_box_autoadd_weekdays(int32_t len);
+
+struct wire_list_opt_list_prim_i_32 *new_list_opt_list_prim_i_32(int32_t len);
 
 struct wire_list_prim_f_32 *new_list_prim_f_32(int32_t len);
 
@@ -1087,21 +1279,26 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_Chrono_Utc);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_a);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_abc);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_attribute);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_b);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_bool);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_c);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_concatenate_with);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_custom_nested_error_inner_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_custom_nested_error_inner_twin_sync);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_custom_nested_error_outer_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_custom_nested_error_outer_twin_sync);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_custom_struct_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_custom_struct_error_twin_sync);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_customized);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_with_item_mixed_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_with_item_mixed_twin_sync);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_with_item_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_with_item_struct_twin_sync);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_with_item_tuple_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_with_item_tuple_twin_sync);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_event);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_exotic_optionals);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_f_32);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_f_64);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_feature_chrono);
@@ -1118,6 +1315,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_tree_node);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_new_type_int);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_note);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_opt_vecs);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_record_string_i_32);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_comments_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_comments_twin_sync);
@@ -1128,6 +1326,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_two_field_twin_sync);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_zero_field_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_zero_field_twin_sync);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_sum_with);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_test_id);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_tuple_struct_with_one_field_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_tuple_struct_with_one_field_twin_sync);
@@ -1137,14 +1336,29 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_u_32);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_u_64);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_u_8);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_user_id);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_weekdays);
     dummy_var ^= ((int64_t) (void*) new_box_blob);
+    dummy_var ^= ((int64_t) (void*) new_box_bool);
     dummy_var ^= ((int64_t) (void*) new_box_distance);
+    dummy_var ^= ((int64_t) (void*) new_box_exotic_optionals);
+    dummy_var ^= ((int64_t) (void*) new_box_f_64);
+    dummy_var ^= ((int64_t) (void*) new_box_i_32);
+    dummy_var ^= ((int64_t) (void*) new_box_i_64);
+    dummy_var ^= ((int64_t) (void*) new_box_i_8);
     dummy_var ^= ((int64_t) (void*) new_box_speed);
+    dummy_var ^= ((int64_t) (void*) new_box_u_8);
     dummy_var ^= ((int64_t) (void*) new_box_weekdays);
     dummy_var ^= ((int64_t) (void*) new_dart_opaque);
+    dummy_var ^= ((int64_t) (void*) new_list_attribute);
     dummy_var ^= ((int64_t) (void*) new_list_bool);
     dummy_var ^= ((int64_t) (void*) new_list_my_size);
     dummy_var ^= ((int64_t) (void*) new_list_my_tree_node);
+    dummy_var ^= ((int64_t) (void*) new_list_opt_String);
+    dummy_var ^= ((int64_t) (void*) new_list_opt_box_autoadd_attribute);
+    dummy_var ^= ((int64_t) (void*) new_list_opt_box_autoadd_i_32);
+    dummy_var ^= ((int64_t) (void*) new_list_opt_box_autoadd_weekdays);
+    dummy_var ^= ((int64_t) (void*) new_list_opt_list_prim_i_32);
     dummy_var ^= ((int64_t) (void*) new_list_prim_f_32);
     dummy_var ^= ((int64_t) (void*) new_list_prim_f_64);
     dummy_var ^= ((int64_t) (void*) new_list_prim_i_16);
@@ -1159,11 +1373,22 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_list_test_id);
     dummy_var ^= ((int64_t) (void*) new_list_weekdays);
     dummy_var ^= ((int64_t) (void*) store_dart_post_cobject);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWith_concatenate);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWith_concatenate_static);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWith_handle_some_static_stream_sink);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWith_handle_some_static_stream_sink_single_arg);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWith_handle_some_stream_sink);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWith_handle_some_stream_sink_at_1);
+    dummy_var ^= ((int64_t) (void*) wire_ConcatenateWith_new);
+    dummy_var ^= ((int64_t) (void*) wire_Event_as_string);
     dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinNormal_instance_method_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinNormal_static_method_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinSync_instance_method_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinSync_static_method_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_SumWith_sum);
     dummy_var ^= ((int64_t) (void*) wire_boxed_blob);
+    dummy_var ^= ((int64_t) (void*) wire_close_event_listener);
+    dummy_var ^= ((int64_t) (void*) wire_create_event);
     dummy_var ^= ((int64_t) (void*) wire_custom_enum_error_panic_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_custom_enum_error_panic_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_custom_enum_error_return_error_twin_normal);
@@ -1285,20 +1510,32 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_function_with_comments_triple_slash_single_line_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_get_array);
     dummy_var ^= ((int64_t) (void*) wire_get_complex_array);
+    dummy_var ^= ((int64_t) (void*) wire_get_sum_array);
+    dummy_var ^= ((int64_t) (void*) wire_get_sum_struct);
     dummy_var ^= ((int64_t) (void*) wire_handle_big_buffers);
     dummy_var ^= ((int64_t) (void*) wire_handle_complex_struct);
+    dummy_var ^= ((int64_t) (void*) wire_handle_customized_struct);
     dummy_var ^= ((int64_t) (void*) wire_handle_durations);
     dummy_var ^= ((int64_t) (void*) wire_handle_enum_parameter);
+    dummy_var ^= ((int64_t) (void*) wire_handle_increment_boxed_optional);
     dummy_var ^= ((int64_t) (void*) wire_handle_list_of_struct);
     dummy_var ^= ((int64_t) (void*) wire_handle_nested_struct);
     dummy_var ^= ((int64_t) (void*) wire_handle_nested_uuids);
     dummy_var ^= ((int64_t) (void*) wire_handle_newtype);
+    dummy_var ^= ((int64_t) (void*) wire_handle_option_box_arguments);
+    dummy_var ^= ((int64_t) (void*) wire_handle_optional_increment);
+    dummy_var ^= ((int64_t) (void*) wire_handle_optional_return);
+    dummy_var ^= ((int64_t) (void*) wire_handle_optional_struct);
     dummy_var ^= ((int64_t) (void*) wire_handle_return_enum);
     dummy_var ^= ((int64_t) (void*) wire_handle_stream_of_struct);
     dummy_var ^= ((int64_t) (void*) wire_handle_string_list);
     dummy_var ^= ((int64_t) (void*) wire_handle_timestamps);
+    dummy_var ^= ((int64_t) (void*) wire_handle_type_alias_id);
+    dummy_var ^= ((int64_t) (void*) wire_handle_type_alias_model);
+    dummy_var ^= ((int64_t) (void*) wire_handle_type_nest_alias_id);
     dummy_var ^= ((int64_t) (void*) wire_handle_uuid);
     dummy_var ^= ((int64_t) (void*) wire_handle_uuids);
+    dummy_var ^= ((int64_t) (void*) wire_handle_vec_of_opts);
     dummy_var ^= ((int64_t) (void*) wire_how_long_does_it_take);
     dummy_var ^= ((int64_t) (void*) wire_last_number);
     dummy_var ^= ((int64_t) (void*) wire_list_of_primitive_enums);
@@ -1306,8 +1543,10 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_naivedatetime);
     dummy_var ^= ((int64_t) (void*) wire_nested_id);
     dummy_var ^= ((int64_t) (void*) wire_new_msgid);
+    dummy_var ^= ((int64_t) (void*) wire_next_user_id);
     dummy_var ^= ((int64_t) (void*) wire_optional_empty_datetime_utc);
     dummy_var ^= ((int64_t) (void*) wire_print_note);
+    dummy_var ^= ((int64_t) (void*) wire_register_event_listener);
     dummy_var ^= ((int64_t) (void*) wire_return_boxed_feed_id);
     dummy_var ^= ((int64_t) (void*) wire_return_boxed_raw_feed_id);
     dummy_var ^= ((int64_t) (void*) wire_return_dart_dynamic);

@@ -3,6 +3,11 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+enum MyEnum {
+  False,
+  True,
+}
+
 class MySize {
   final int width;
   final int height;
@@ -22,4 +27,22 @@ class MySize {
           runtimeType == other.runtimeType &&
           width == other.width &&
           height == other.height;
+}
+
+class MyStruct {
+  final bool content;
+
+  const MyStruct({
+    required this.content,
+  });
+
+  @override
+  int get hashCode => content.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyStruct &&
+          runtimeType == other.runtimeType &&
+          content == other.content;
 }

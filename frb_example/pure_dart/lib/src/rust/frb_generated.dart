@@ -1,15 +1,19 @@
 // ignore_for_file: unused_import, unused_element
 
 import 'api/array.dart';
+import 'api/attribute.dart';
 import 'api/chrono_type.dart';
 import 'api/comment.dart';
 import 'api/dart_dynamic.dart';
 import 'api/enumeration.dart';
+import 'api/event_listener.dart';
 import 'api/exception.dart';
 import 'api/inside_macro.dart';
+import 'api/method.dart';
 import 'api/misc_example.dart';
 import 'api/misc_type.dart';
 import 'api/newtype_pattern.dart';
+import 'api/optional.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/enumeration_twin_sync.dart';
 import 'api/pseudo_manual/exception_twin_sync.dart';
@@ -27,6 +31,7 @@ import 'api/simple.dart';
 import 'api/stream.dart';
 import 'api/structure.dart';
 import 'api/tuple.dart';
+import 'api/type_alias.dart';
 import 'api/uuid_type.dart';
 import 'auxiliary/sample_types.dart';
 import 'dart:async';
@@ -34,6 +39,7 @@ import 'dart:convert';
 import 'frb_generated.io.dart'
     if (dart.library.html) 'frb_generated.web.dart.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:meta/meta.dart' as meta;
 import 'package:uuid/uuid.dart';
 
 /// Main entrypoint of the Rust API
@@ -93,6 +99,10 @@ abstract class RustLibApi extends BaseApi {
   Future<U8Array1600> useBoxedBlob({required Blob blob, dynamic hint});
 
   Future<U8Array32> useMsgid({required MessageId id, dynamic hint});
+
+  Future<void> handleCustomizedStruct({required Customized val, dynamic hint});
+
+  Future<UserId> nextUserId({required UserId userId, dynamic hint});
 
   Future<DateTime> datetimeLocal({required DateTime d, dynamic hint});
 
@@ -158,6 +168,15 @@ abstract class RustLibApi extends BaseApi {
 
   Future<Uint8List> printNote({required Note note, dynamic hint});
 
+  Future<String> eventAsString({required Event that, dynamic hint});
+
+  Future<void> closeEventListener({dynamic hint});
+
+  Future<void> createEvent(
+      {required String address, required String payload, dynamic hint});
+
+  Stream<Event> registerEventListener({dynamic hint});
+
   Future<void> customEnumErrorPanicTwinNormal({dynamic hint});
 
   Future<int> customEnumErrorReturnErrorTwinNormal({dynamic hint});
@@ -178,6 +197,37 @@ abstract class RustLibApi extends BaseApi {
   Future<int> funcTypeInfalliblePanicTwinNormal({dynamic hint});
 
   Future<MacroStruct> funcMacroStruct({required MacroStruct arg, dynamic hint});
+
+  Future<String> concatenateWithConcatenate(
+      {required ConcatenateWith that, required String b, dynamic hint});
+
+  Future<String> concatenateWithConcatenateStatic(
+      {required String a, required String b, dynamic hint});
+
+  Stream<Log2> concatenateWithHandleSomeStaticStreamSink(
+      {required int key, required int max, dynamic hint});
+
+  Stream<int> concatenateWithHandleSomeStaticStreamSinkSingleArg(
+      {dynamic hint});
+
+  Stream<Log2> concatenateWithHandleSomeStreamSink(
+      {required ConcatenateWith that,
+      required int key,
+      required int max,
+      dynamic hint});
+
+  Stream<int> concatenateWithHandleSomeStreamSinkAt1(
+      {required ConcatenateWith that, dynamic hint});
+
+  Future<ConcatenateWith> concatenateWithNew({required String a, dynamic hint});
+
+  Future<int> sumWithSum(
+      {required SumWith that, required int y, required int z, dynamic hint});
+
+  Future<SumWithArray3> getSumArray(
+      {required int a, required int b, required int c, dynamic hint});
+
+  Future<SumWith> getSumStruct({dynamic hint});
 
   Future<BigBuffers> handleBigBuffers({dynamic hint});
 
@@ -205,6 +255,28 @@ abstract class RustLibApi extends BaseApi {
       {required List<String> names, dynamic hint});
 
   Future<NewTypeInt> handleNewtype({required NewTypeInt arg, dynamic hint});
+
+  Future<double> handleIncrementBoxedOptional({double? opt, dynamic hint});
+
+  Future<String> handleOptionBoxArguments(
+      {int? i8Box,
+      int? u8Box,
+      int? i32Box,
+      BigInt? i64Box,
+      double? f64Box,
+      bool? boolbox,
+      ExoticOptionals? structbox,
+      dynamic hint});
+
+  Future<ExoticOptionals?> handleOptionalIncrement(
+      {ExoticOptionals? opt, dynamic hint});
+
+  Future<double?> handleOptionalReturn(
+      {required double left, required double right, dynamic hint});
+
+  Future<Element?> handleOptionalStruct({String? document, dynamic hint});
+
+  Future<OptVecs> handleVecOfOpts({required OptVecs opt, dynamic hint});
 
   void structWithCommentsTwinSyncInstanceMethodTwinSync(
       {required StructWithCommentsTwinSync that, dynamic hint});
@@ -485,6 +557,12 @@ abstract class RustLibApi extends BaseApi {
 
   Future<void> testTuple2({required List<(String, int)> value, dynamic hint});
 
+  Future<BigInt> handleTypeAliasId({required BigInt input, dynamic hint});
+
+  Future<TestModel> handleTypeAliasModel({required BigInt input, dynamic hint});
+
+  Future<BigInt> handleTypeNestAliasId({required BigInt input, dynamic hint});
+
   Future<FeatureUuid> handleNestedUuids(
       {required FeatureUuid ids, dynamic hint});
 
@@ -706,6 +784,44 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kUseMsgidConstMeta => const TaskConstMeta(
         debugName: "use_msgid",
         argNames: ["id"],
+      );
+
+  @override
+  Future<void> handleCustomizedStruct({required Customized val, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_customized(val);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_handle_customized_struct(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kHandleCustomizedStructConstMeta,
+      argValues: [val],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleCustomizedStructConstMeta => const TaskConstMeta(
+        debugName: "handle_customized_struct",
+        argNames: ["val"],
+      );
+
+  @override
+  Future<UserId> nextUserId({required UserId userId, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_user_id(userId);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_next_user_id(port_, arg0),
+      parseSuccessData: _wire2api_user_id,
+      parseErrorData: null,
+      constMeta: kNextUserIdConstMeta,
+      argValues: [userId],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNextUserIdConstMeta => const TaskConstMeta(
+        debugName: "next_user_id",
+        argNames: ["userId"],
       );
 
   @override
@@ -1202,6 +1318,82 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<String> eventAsString({required Event that, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_event(that);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_Event_as_string(port_, arg0),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kEventAsStringConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kEventAsStringConstMeta => const TaskConstMeta(
+        debugName: "Event_as_string",
+        argNames: ["that"],
+      );
+
+  @override
+  Future<void> closeEventListener({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_close_event_listener(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kCloseEventListenerConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCloseEventListenerConstMeta => const TaskConstMeta(
+        debugName: "close_event_listener",
+        argNames: [],
+      );
+
+  @override
+  Future<void> createEvent(
+      {required String address, required String payload, dynamic hint}) {
+    var arg0 = api2wire_String(address);
+    var arg1 = api2wire_String(payload);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_create_event(port_, arg0, arg1),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kCreateEventConstMeta,
+      argValues: [address, payload],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateEventConstMeta => const TaskConstMeta(
+        debugName: "create_event",
+        argNames: ["address", "payload"],
+      );
+
+  @override
+  Stream<Event> registerEventListener({dynamic hint}) {
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) => wire.wire_register_event_listener(port_),
+      parseSuccessData: _wire2api_event,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kRegisterEventListenerConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRegisterEventListenerConstMeta => const TaskConstMeta(
+        debugName: "register_event_listener",
+        argNames: [],
+      );
+
+  @override
   Future<void> customEnumErrorPanicTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_custom_enum_error_panic_twin_normal(port_),
@@ -1381,6 +1573,230 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kFuncMacroStructConstMeta => const TaskConstMeta(
         debugName: "func_macro_struct",
         argNames: ["arg"],
+      );
+
+  @override
+  Future<String> concatenateWithConcatenate(
+      {required ConcatenateWith that, required String b, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_concatenate_with(that);
+    var arg1 = api2wire_String(b);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_ConcatenateWith_concatenate(port_, arg0, arg1),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kConcatenateWithConcatenateConstMeta,
+      argValues: [that, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kConcatenateWithConcatenateConstMeta => const TaskConstMeta(
+        debugName: "ConcatenateWith_concatenate",
+        argNames: ["that", "b"],
+      );
+
+  @override
+  Future<String> concatenateWithConcatenateStatic(
+      {required String a, required String b, dynamic hint}) {
+    var arg0 = api2wire_String(a);
+    var arg1 = api2wire_String(b);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_ConcatenateWith_concatenate_static(port_, arg0, arg1),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kConcatenateWithConcatenateStaticConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kConcatenateWithConcatenateStaticConstMeta =>
+      const TaskConstMeta(
+        debugName: "ConcatenateWith_concatenate_static",
+        argNames: ["a", "b"],
+      );
+
+  @override
+  Stream<Log2> concatenateWithHandleSomeStaticStreamSink(
+      {required int key, required int max, dynamic hint}) {
+    var arg0 = api2wire_u_32(key);
+    var arg1 = api2wire_u_32(max);
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) =>
+          wire.wire_ConcatenateWith_handle_some_static_stream_sink(
+              port_, arg0, arg1),
+      parseSuccessData: _wire2api_log_2,
+      parseErrorData: null,
+      constMeta: kConcatenateWithHandleSomeStaticStreamSinkConstMeta,
+      argValues: [key, max],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kConcatenateWithHandleSomeStaticStreamSinkConstMeta =>
+      const TaskConstMeta(
+        debugName: "ConcatenateWith_handle_some_static_stream_sink",
+        argNames: ["key", "max"],
+      );
+
+  @override
+  Stream<int> concatenateWithHandleSomeStaticStreamSinkSingleArg(
+      {dynamic hint}) {
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) =>
+          wire.wire_ConcatenateWith_handle_some_static_stream_sink_single_arg(
+              port_),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: null,
+      constMeta: kConcatenateWithHandleSomeStaticStreamSinkSingleArgConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kConcatenateWithHandleSomeStaticStreamSinkSingleArgConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "ConcatenateWith_handle_some_static_stream_sink_single_arg",
+            argNames: [],
+          );
+
+  @override
+  Stream<Log2> concatenateWithHandleSomeStreamSink(
+      {required ConcatenateWith that,
+      required int key,
+      required int max,
+      dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_concatenate_with(that);
+    var arg1 = api2wire_u_32(key);
+    var arg2 = api2wire_u_32(max);
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) => wire.wire_ConcatenateWith_handle_some_stream_sink(
+          port_, arg0, arg1, arg2),
+      parseSuccessData: _wire2api_log_2,
+      parseErrorData: null,
+      constMeta: kConcatenateWithHandleSomeStreamSinkConstMeta,
+      argValues: [that, key, max],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kConcatenateWithHandleSomeStreamSinkConstMeta =>
+      const TaskConstMeta(
+        debugName: "ConcatenateWith_handle_some_stream_sink",
+        argNames: ["that", "key", "max"],
+      );
+
+  @override
+  Stream<int> concatenateWithHandleSomeStreamSinkAt1(
+      {required ConcatenateWith that, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_concatenate_with(that);
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) =>
+          wire.wire_ConcatenateWith_handle_some_stream_sink_at_1(port_, arg0),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: null,
+      constMeta: kConcatenateWithHandleSomeStreamSinkAt1ConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kConcatenateWithHandleSomeStreamSinkAt1ConstMeta =>
+      const TaskConstMeta(
+        debugName: "ConcatenateWith_handle_some_stream_sink_at_1",
+        argNames: ["that"],
+      );
+
+  @override
+  Future<ConcatenateWith> concatenateWithNew(
+      {required String a, dynamic hint}) {
+    var arg0 = api2wire_String(a);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_ConcatenateWith_new(port_, arg0),
+      parseSuccessData: _wire2api_concatenate_with,
+      parseErrorData: null,
+      constMeta: kConcatenateWithNewConstMeta,
+      argValues: [a],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kConcatenateWithNewConstMeta => const TaskConstMeta(
+        debugName: "ConcatenateWith_new",
+        argNames: ["a"],
+      );
+
+  @override
+  Future<int> sumWithSum(
+      {required SumWith that, required int y, required int z, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_sum_with(that);
+    var arg1 = api2wire_u_32(y);
+    var arg2 = api2wire_u_32(z);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_SumWith_sum(port_, arg0, arg1, arg2),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: null,
+      constMeta: kSumWithSumConstMeta,
+      argValues: [that, y, z],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSumWithSumConstMeta => const TaskConstMeta(
+        debugName: "SumWith_sum",
+        argNames: ["that", "y", "z"],
+      );
+
+  @override
+  Future<SumWithArray3> getSumArray(
+      {required int a, required int b, required int c, dynamic hint}) {
+    var arg0 = api2wire_u_32(a);
+    var arg1 = api2wire_u_32(b);
+    var arg2 = api2wire_u_32(c);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_get_sum_array(port_, arg0, arg1, arg2),
+      parseSuccessData: _wire2api_sum_with_array_3,
+      parseErrorData: null,
+      constMeta: kGetSumArrayConstMeta,
+      argValues: [a, b, c],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kGetSumArrayConstMeta => const TaskConstMeta(
+        debugName: "get_sum_array",
+        argNames: ["a", "b", "c"],
+      );
+
+  @override
+  Future<SumWith> getSumStruct({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_get_sum_struct(port_),
+      parseSuccessData: _wire2api_sum_with,
+      parseErrorData: null,
+      constMeta: kGetSumStructConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kGetSumStructConstMeta => const TaskConstMeta(
+        debugName: "get_sum_struct",
+        argNames: [],
       );
 
   @override
@@ -1594,6 +2010,148 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kHandleNewtypeConstMeta => const TaskConstMeta(
         debugName: "handle_newtype",
         argNames: ["arg"],
+      );
+
+  @override
+  Future<double> handleIncrementBoxedOptional({double? opt, dynamic hint}) {
+    var arg0 = api2wire_opt_box_f_64(opt);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_handle_increment_boxed_optional(port_, arg0),
+      parseSuccessData: _wire2api_f_64,
+      parseErrorData: null,
+      constMeta: kHandleIncrementBoxedOptionalConstMeta,
+      argValues: [opt],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleIncrementBoxedOptionalConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_increment_boxed_optional",
+        argNames: ["opt"],
+      );
+
+  @override
+  Future<String> handleOptionBoxArguments(
+      {int? i8Box,
+      int? u8Box,
+      int? i32Box,
+      BigInt? i64Box,
+      double? f64Box,
+      bool? boolbox,
+      ExoticOptionals? structbox,
+      dynamic hint}) {
+    var arg0 = api2wire_opt_box_i_8(i8Box);
+    var arg1 = api2wire_opt_box_u_8(u8Box);
+    var arg2 = api2wire_opt_box_i_32(i32Box);
+    var arg3 = api2wire_opt_box_i_64(i64Box);
+    var arg4 = api2wire_opt_box_f_64(f64Box);
+    var arg5 = api2wire_opt_box_bool(boolbox);
+    var arg6 = api2wire_opt_box_exotic_optionals(structbox);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_handle_option_box_arguments(
+          port_, arg0, arg1, arg2, arg3, arg4, arg5, arg6),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kHandleOptionBoxArgumentsConstMeta,
+      argValues: [i8Box, u8Box, i32Box, i64Box, f64Box, boolbox, structbox],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleOptionBoxArgumentsConstMeta => const TaskConstMeta(
+        debugName: "handle_option_box_arguments",
+        argNames: [
+          "i8Box",
+          "u8Box",
+          "i32Box",
+          "i64Box",
+          "f64Box",
+          "boolbox",
+          "structbox"
+        ],
+      );
+
+  @override
+  Future<ExoticOptionals?> handleOptionalIncrement(
+      {ExoticOptionals? opt, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_exotic_optionals(opt);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_handle_optional_increment(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_exotic_optionals,
+      parseErrorData: null,
+      constMeta: kHandleOptionalIncrementConstMeta,
+      argValues: [opt],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleOptionalIncrementConstMeta => const TaskConstMeta(
+        debugName: "handle_optional_increment",
+        argNames: ["opt"],
+      );
+
+  @override
+  Future<double?> handleOptionalReturn(
+      {required double left, required double right, dynamic hint}) {
+    var arg0 = api2wire_f_64(left);
+    var arg1 = api2wire_f_64(right);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_handle_optional_return(port_, arg0, arg1),
+      parseSuccessData: _wire2api_opt_box_autoadd_f_64,
+      parseErrorData: null,
+      constMeta: kHandleOptionalReturnConstMeta,
+      argValues: [left, right],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleOptionalReturnConstMeta => const TaskConstMeta(
+        debugName: "handle_optional_return",
+        argNames: ["left", "right"],
+      );
+
+  @override
+  Future<Element?> handleOptionalStruct({String? document, dynamic hint}) {
+    var arg0 = api2wire_opt_String(document);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_handle_optional_struct(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_element,
+      parseErrorData: null,
+      constMeta: kHandleOptionalStructConstMeta,
+      argValues: [document],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleOptionalStructConstMeta => const TaskConstMeta(
+        debugName: "handle_optional_struct",
+        argNames: ["document"],
+      );
+
+  @override
+  Future<OptVecs> handleVecOfOpts({required OptVecs opt, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_opt_vecs(opt);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_handle_vec_of_opts(port_, arg0),
+      parseSuccessData: _wire2api_opt_vecs,
+      parseErrorData: null,
+      constMeta: kHandleVecOfOptsConstMeta,
+      argValues: [opt],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleVecOfOptsConstMeta => const TaskConstMeta(
+        debugName: "handle_vec_of_opts",
+        argNames: ["opt"],
       );
 
   @override
@@ -3826,6 +4384,64 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<BigInt> handleTypeAliasId({required BigInt input, dynamic hint}) {
+    var arg0 = api2wire_u_64(input);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_handle_type_alias_id(port_, arg0),
+      parseSuccessData: _wire2api_u_64,
+      parseErrorData: null,
+      constMeta: kHandleTypeAliasIdConstMeta,
+      argValues: [input],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleTypeAliasIdConstMeta => const TaskConstMeta(
+        debugName: "handle_type_alias_id",
+        argNames: ["input"],
+      );
+
+  @override
+  Future<TestModel> handleTypeAliasModel(
+      {required BigInt input, dynamic hint}) {
+    var arg0 = api2wire_u_64(input);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_handle_type_alias_model(port_, arg0),
+      parseSuccessData: _wire2api_test_model,
+      parseErrorData: null,
+      constMeta: kHandleTypeAliasModelConstMeta,
+      argValues: [input],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleTypeAliasModelConstMeta => const TaskConstMeta(
+        debugName: "handle_type_alias_model",
+        argNames: ["input"],
+      );
+
+  @override
+  Future<BigInt> handleTypeNestAliasId({required BigInt input, dynamic hint}) {
+    var arg0 = api2wire_u_64(input);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_handle_type_nest_alias_id(port_, arg0),
+      parseSuccessData: _wire2api_u_64,
+      parseErrorData: null,
+      constMeta: kHandleTypeNestAliasIdConstMeta,
+      argValues: [input],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleTypeNestAliasIdConstMeta => const TaskConstMeta(
+        debugName: "handle_type_nest_alias_id",
+        argNames: ["input"],
+      );
+
+  @override
   Future<FeatureUuid> handleNestedUuids(
       {required FeatureUuid ids, dynamic hint}) {
     var arg0 = api2wire_box_autoadd_feature_uuid(ids);
@@ -3968,6 +4584,16 @@ Abc _wire2api_abc(dynamic raw) {
   }
 }
 
+Attribute _wire2api_attribute(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2)
+    throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  return Attribute(
+    key: _wire2api_String(arr[0]),
+    value: _wire2api_String(arr[1]),
+  );
+}
+
 B _wire2api_b(dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 1)
@@ -4016,6 +4642,10 @@ A _wire2api_box_autoadd_a(dynamic raw) {
   return _wire2api_a(raw);
 }
 
+Attribute _wire2api_box_autoadd_attribute(dynamic raw) {
+  return _wire2api_attribute(raw);
+}
+
 B _wire2api_box_autoadd_b(dynamic raw) {
   return _wire2api_b(raw);
 }
@@ -4036,6 +4666,14 @@ CustomNestedErrorInnerTwinNormal
 CustomNestedErrorInnerTwinSync
     _wire2api_box_autoadd_custom_nested_error_inner_twin_sync(dynamic raw) {
   return _wire2api_custom_nested_error_inner_twin_sync(raw);
+}
+
+Element _wire2api_box_autoadd_element(dynamic raw) {
+  return _wire2api_element(raw);
+}
+
+ExoticOptionals _wire2api_box_autoadd_exotic_optionals(dynamic raw) {
+  return _wire2api_exotic_optionals(raw);
 }
 
 double _wire2api_box_autoadd_f_32(dynamic raw) {
@@ -4064,6 +4702,10 @@ int _wire2api_box_autoadd_i_8(dynamic raw) {
 
 Measure _wire2api_box_autoadd_measure(dynamic raw) {
   return _wire2api_measure(raw);
+}
+
+NewTypeInt _wire2api_box_autoadd_new_type_int(dynamic raw) {
+  return _wire2api_new_type_int(raw);
 }
 
 int _wire2api_box_autoadd_u_16(dynamic raw) {
@@ -4108,6 +4750,15 @@ C _wire2api_c(dynamic raw) {
     throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
   return C(
     c: _wire2api_bool(arr[0]),
+  );
+}
+
+ConcatenateWith _wire2api_concatenate_with(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return ConcatenateWith(
+    a: _wire2api_String(arr[0]),
   );
 }
 
@@ -4245,6 +4896,18 @@ Distance _wire2api_distance(dynamic raw) {
   }
 }
 
+Element _wire2api_element(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 4)
+    throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+  return Element(
+    tag: _wire2api_opt_String(arr[0]),
+    text: _wire2api_opt_String(arr[1]),
+    attributes: _wire2api_opt_list_attribute(arr[2]),
+    children: _wire2api_opt_list_element(arr[3]),
+  );
+}
+
 EnumSimpleTwinNormal _wire2api_enum_simple_twin_normal(dynamic raw) {
   return EnumSimpleTwinNormal.values[raw as int];
 }
@@ -4353,6 +5016,38 @@ EnumWithItemTupleTwinSync _wire2api_enum_with_item_tuple_twin_sync(
   }
 }
 
+Event _wire2api_event(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2)
+    throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  return Event(
+    address: _wire2api_String(arr[0]),
+    payload: _wire2api_String(arr[1]),
+  );
+}
+
+ExoticOptionals _wire2api_exotic_optionals(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 14)
+    throw Exception('unexpected arr length: expect 14 but see ${arr.length}');
+  return ExoticOptionals(
+    int32: _wire2api_opt_box_autoadd_i_32(arr[0]),
+    int64: _wire2api_opt_box_autoadd_i_64(arr[1]),
+    float64: _wire2api_opt_box_autoadd_f_64(arr[2]),
+    boolean: _wire2api_opt_box_autoadd_bool(arr[3]),
+    zerocopy: _wire2api_opt_ZeroCopyBuffer_list_prim_u_8(arr[4]),
+    int8List: _wire2api_opt_list_prim_i_8(arr[5]),
+    uint8List: _wire2api_opt_list_prim_u_8(arr[6]),
+    int32List: _wire2api_opt_list_prim_i_32(arr[7]),
+    float32List: _wire2api_opt_list_prim_f_32(arr[8]),
+    float64List: _wire2api_opt_list_prim_f_64(arr[9]),
+    attributes: _wire2api_opt_list_attribute(arr[10]),
+    attributesNullable: _wire2api_list_opt_box_autoadd_attribute(arr[11]),
+    nullableAttributes: _wire2api_opt_list_opt_box_autoadd_attribute(arr[12]),
+    newtypeint: _wire2api_opt_box_autoadd_new_type_int(arr[13]),
+  );
+}
+
 double _wire2api_f_32(dynamic raw) {
   return raw as double;
 }
@@ -4400,8 +5095,16 @@ int _wire2api_i_8(dynamic raw) {
   return raw as int;
 }
 
+List<Attribute> _wire2api_list_attribute(dynamic raw) {
+  return (raw as List<dynamic>).map(_wire2api_attribute).toList();
+}
+
 List<bool> _wire2api_list_bool(dynamic raw) {
   return (raw as List<dynamic>).map(_wire2api_bool).toList();
+}
+
+List<Element> _wire2api_list_element(dynamic raw) {
+  return (raw as List<dynamic>).map(_wire2api_element).toList();
 }
 
 List<MySize> _wire2api_list_my_size(dynamic raw) {
@@ -4410,6 +5113,26 @@ List<MySize> _wire2api_list_my_size(dynamic raw) {
 
 List<MyTreeNode> _wire2api_list_my_tree_node(dynamic raw) {
   return (raw as List<dynamic>).map(_wire2api_my_tree_node).toList();
+}
+
+List<String?> _wire2api_list_opt_String(dynamic raw) {
+  return mapNonNull(raw as List<dynamic>, _wire2api_String);
+}
+
+List<Attribute?> _wire2api_list_opt_box_autoadd_attribute(dynamic raw) {
+  return mapNonNull(raw as List<dynamic>, _wire2api_box_autoadd_attribute);
+}
+
+List<int?> _wire2api_list_opt_box_autoadd_i_32(dynamic raw) {
+  return mapNonNull(raw as List<dynamic>, _wire2api_box_autoadd_i_32);
+}
+
+List<Weekdays?> _wire2api_list_opt_box_autoadd_weekdays(dynamic raw) {
+  return mapNonNull(raw as List<dynamic>, _wire2api_box_autoadd_weekdays);
+}
+
+List<Int32List?> _wire2api_list_opt_list_prim_i_32(dynamic raw) {
+  return mapNonNull(raw as List<dynamic>, _wire2api_list_prim_i_32);
 }
 
 List<Point> _wire2api_list_point(dynamic raw) {
@@ -4456,12 +5179,26 @@ Uint8List _wire2api_list_prim_u_8(dynamic raw) {
   return raw as Uint8List;
 }
 
+List<SumWith> _wire2api_list_sum_with(dynamic raw) {
+  return (raw as List<dynamic>).map(_wire2api_sum_with).toList();
+}
+
 List<TestId> _wire2api_list_test_id(dynamic raw) {
   return (raw as List<dynamic>).map(_wire2api_test_id).toList();
 }
 
 List<Weekdays> _wire2api_list_weekdays(dynamic raw) {
   return (raw as List<dynamic>).map(_wire2api_weekdays).toList();
+}
+
+Log2 _wire2api_log_2(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2)
+    throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  return Log2(
+    key: _wire2api_u_32(arr[0]),
+    value: _wire2api_String(arr[1]),
+  );
 }
 
 MacroStruct _wire2api_macro_struct(dynamic raw) {
@@ -4510,6 +5247,10 @@ MoreThanJustOneRawStringStruct _wire2api_more_than_just_one_raw_string_struct(
   );
 }
 
+MyEnum _wire2api_my_enum(dynamic raw) {
+  return MyEnum.values[raw as int];
+}
+
 MyNestedStruct _wire2api_my_nested_struct(dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 2)
@@ -4539,6 +5280,15 @@ MyStreamEntry _wire2api_my_stream_entry(dynamic raw) {
   );
 }
 
+MyStruct _wire2api_my_struct(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return MyStruct(
+    content: _wire2api_bool(arr[0]),
+  );
+}
+
 MyTreeNode _wire2api_my_tree_node(dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 4)
@@ -4560,6 +5310,14 @@ NewTypeInt _wire2api_new_type_int(dynamic raw) {
   );
 }
 
+String? _wire2api_opt_String(dynamic raw) {
+  return raw == null ? null : _wire2api_String(raw);
+}
+
+Uint8List? _wire2api_opt_ZeroCopyBuffer_list_prim_u_8(dynamic raw) {
+  return raw == null ? null : _wire2api_ZeroCopyBuffer_list_prim_u_8(raw);
+}
+
 Duration? _wire2api_opt_box_autoadd_Chrono_Duration(dynamic raw) {
   return raw == null ? null : _wire2api_box_autoadd_Chrono_Duration(raw);
 }
@@ -4574,6 +5332,14 @@ DateTime? _wire2api_opt_box_autoadd_Chrono_Utc(dynamic raw) {
 
 bool? _wire2api_opt_box_autoadd_bool(dynamic raw) {
   return raw == null ? null : _wire2api_box_autoadd_bool(raw);
+}
+
+Element? _wire2api_opt_box_autoadd_element(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_element(raw);
+}
+
+ExoticOptionals? _wire2api_opt_box_autoadd_exotic_optionals(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_exotic_optionals(raw);
 }
 
 double? _wire2api_opt_box_autoadd_f_32(dynamic raw) {
@@ -4604,6 +5370,10 @@ Measure? _wire2api_opt_box_autoadd_measure(dynamic raw) {
   return raw == null ? null : _wire2api_box_autoadd_measure(raw);
 }
 
+NewTypeInt? _wire2api_opt_box_autoadd_new_type_int(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_new_type_int(raw);
+}
+
 int? _wire2api_opt_box_autoadd_u_16(dynamic raw) {
   return raw == null ? null : _wire2api_box_autoadd_u_16(raw);
 }
@@ -4622,6 +5392,50 @@ int? _wire2api_opt_box_autoadd_u_8(dynamic raw) {
 
 Weekdays? _wire2api_opt_box_autoadd_weekdays(dynamic raw) {
   return raw == null ? null : _wire2api_box_autoadd_weekdays(raw);
+}
+
+List<Attribute>? _wire2api_opt_list_attribute(dynamic raw) {
+  return raw == null ? null : _wire2api_list_attribute(raw);
+}
+
+List<Element>? _wire2api_opt_list_element(dynamic raw) {
+  return raw == null ? null : _wire2api_list_element(raw);
+}
+
+List<Attribute?>? _wire2api_opt_list_opt_box_autoadd_attribute(dynamic raw) {
+  return raw == null ? null : _wire2api_list_opt_box_autoadd_attribute(raw);
+}
+
+Float32List? _wire2api_opt_list_prim_f_32(dynamic raw) {
+  return raw == null ? null : _wire2api_list_prim_f_32(raw);
+}
+
+Float64List? _wire2api_opt_list_prim_f_64(dynamic raw) {
+  return raw == null ? null : _wire2api_list_prim_f_64(raw);
+}
+
+Int32List? _wire2api_opt_list_prim_i_32(dynamic raw) {
+  return raw == null ? null : _wire2api_list_prim_i_32(raw);
+}
+
+Int8List? _wire2api_opt_list_prim_i_8(dynamic raw) {
+  return raw == null ? null : _wire2api_list_prim_i_8(raw);
+}
+
+Uint8List? _wire2api_opt_list_prim_u_8(dynamic raw) {
+  return raw == null ? null : _wire2api_list_prim_u_8(raw);
+}
+
+OptVecs _wire2api_opt_vecs(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 4)
+    throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+  return OptVecs(
+    i32: _wire2api_list_opt_box_autoadd_i_32(arr[0]),
+    enums: _wire2api_list_opt_box_autoadd_weekdays(arr[1]),
+    strings: _wire2api_list_opt_String(arr[2]),
+    buffers: _wire2api_list_opt_list_prim_i_32(arr[3]),
+  );
 }
 
 Point _wire2api_point(dynamic raw) {
@@ -4739,6 +5553,19 @@ StructWithZeroFieldTwinSync _wire2api_struct_with_zero_field_twin_sync(
   return StructWithZeroFieldTwinSync();
 }
 
+SumWith _wire2api_sum_with(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return SumWith(
+    x: _wire2api_u_32(arr[0]),
+  );
+}
+
+SumWithArray3 _wire2api_sum_with_array_3(dynamic raw) {
+  return SumWithArray3((raw as List<dynamic>).map(_wire2api_sum_with).toList());
+}
+
 TestChrono _wire2api_test_chrono(dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 3)
@@ -4761,6 +5588,18 @@ TestId _wire2api_test_id(dynamic raw) {
 
 TestIdArray2 _wire2api_test_id_array_2(dynamic raw) {
   return TestIdArray2((raw as List<dynamic>).map(_wire2api_test_id).toList());
+}
+
+TestModel _wire2api_test_model(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 4)
+    throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+  return TestModel(
+    id: _wire2api_u_64(arr[0]),
+    name: _wire2api_String(arr[1]),
+    aliasEnum: _wire2api_my_enum(arr[2]),
+    aliasStruct: _wire2api_my_struct(arr[3]),
+  );
 }
 
 TupleStructWithOneFieldTwinNormal
@@ -4839,6 +5678,15 @@ U8Array8 _wire2api_u_8_array_8(dynamic raw) {
 
 void _wire2api_unit(dynamic raw) {
   return;
+}
+
+UserId _wire2api_user_id(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return UserId(
+    value: _wire2api_u_32(arr[0]),
+  );
 }
 
 Weekdays _wire2api_weekdays(dynamic raw) {

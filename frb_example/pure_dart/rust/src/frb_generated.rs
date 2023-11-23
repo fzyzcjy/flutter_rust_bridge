@@ -24,6 +24,9 @@ use crate::api::array::MessageId;
 use crate::api::array::Point;
 use crate::api::array::TestId;
 use crate::api::array::*;
+use crate::api::attribute::Customized;
+use crate::api::attribute::UserId;
+use crate::api::attribute::*;
 use crate::api::chrono_type::FeatureChrono;
 use crate::api::chrono_type::TestChrono;
 use crate::api::chrono_type::*;
@@ -38,6 +41,8 @@ use crate::api::enumeration::Measure;
 use crate::api::enumeration::Note;
 use crate::api::enumeration::Speed;
 use crate::api::enumeration::*;
+use crate::api::event_listener::Event;
+use crate::api::event_listener::*;
 use crate::api::exception::CustomEnumErrorTwinNormal;
 use crate::api::exception::CustomNestedErrorInnerTwinNormal;
 use crate::api::exception::CustomNestedErrorOuterTwinNormal;
@@ -45,6 +50,10 @@ use crate::api::exception::CustomStructErrorTwinNormal;
 use crate::api::exception::*;
 use crate::api::inside_macro::MacroStruct;
 use crate::api::inside_macro::*;
+use crate::api::method::ConcatenateWith;
+use crate::api::method::Log2;
+use crate::api::method::SumWith;
+use crate::api::method::*;
 use crate::api::misc_example::Abc;
 use crate::api::misc_example::BigBuffers;
 use crate::api::misc_example::MyNestedStruct;
@@ -57,6 +66,11 @@ use crate::api::misc_example::*;
 use crate::api::misc_type::*;
 use crate::api::newtype_pattern::NewTypeInt;
 use crate::api::newtype_pattern::*;
+use crate::api::optional::Attribute;
+use crate::api::optional::Element;
+use crate::api::optional::ExoticOptionals;
+use crate::api::optional::OptVecs;
+use crate::api::optional::*;
 use crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync;
 use crate::api::pseudo_manual::comment_twin_sync::*;
 use crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync;
@@ -95,9 +109,12 @@ use crate::api::structure::TupleStructWithOneFieldTwinNormal;
 use crate::api::structure::TupleStructWithTwoFieldTwinNormal;
 use crate::api::structure::*;
 use crate::api::tuple::*;
+use crate::api::type_alias::TestModel;
+use crate::api::type_alias::*;
 use crate::api::uuid_type::FeatureUuid;
 use crate::api::uuid_type::*;
 use crate::auxiliary::sample_types::MySize;
+use crate::auxiliary::sample_types::MyStruct;
 use core::panic::UnwindSafe;
 use flutter_rust_bridge::rust2dart::IntoIntoDart;
 use flutter_rust_bridge::*;
@@ -240,6 +257,35 @@ fn wire_use_msgid_impl(port_: MessagePort, id: impl Wire2Api<MessageId> + Unwind
         move || {
             let api_id = id.wire2api();
             move |task_callback| Result::<_, ()>::Ok(use_msgid(api_id))
+        },
+    )
+}
+fn wire_handle_customized_struct_impl(
+    port_: MessagePort,
+    val: impl Wire2Api<Customized> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        WrapInfo {
+            debug_name: "handle_customized_struct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_val = val.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(handle_customized_struct(api_val))
+        },
+    )
+}
+fn wire_next_user_id_impl(port_: MessagePort, user_id: impl Wire2Api<UserId> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, UserId, _>(
+        WrapInfo {
+            debug_name: "next_user_id",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_user_id = user_id.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(next_user_id(api_user_id))
         },
     )
 }
@@ -599,6 +645,59 @@ fn wire_print_note_impl(port_: MessagePort, note: impl Wire2Api<Note> + UnwindSa
         },
     )
 }
+fn wire_Event_as_string_impl(port_: MessagePort, that: impl Wire2Api<Event> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+        WrapInfo {
+            debug_name: "Event_as_string",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_that = that.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(Event::as_string(&api_that))
+        },
+    )
+}
+fn wire_close_event_listener_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        WrapInfo {
+            debug_name: "close_event_listener",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(close_event_listener()),
+    )
+}
+fn wire_create_event_impl(
+    port_: MessagePort,
+    address: impl Wire2Api<String> + UnwindSafe,
+    payload: impl Wire2Api<String> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        WrapInfo {
+            debug_name: "create_event",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_address = address.wire2api();
+            let api_payload = payload.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(create_event(api_address, api_payload))
+        },
+    )
+}
+fn wire_register_event_listener_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        WrapInfo {
+            debug_name: "register_event_listener",
+            port: Some(port_),
+            mode: FfiCallMode::Stream,
+        },
+        move || {
+            move |task_callback| register_event_listener(task_callback.stream_sink::<_, Event>())
+        },
+    )
+}
 fn wire_custom_enum_error_panic_twin_normal_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
@@ -708,6 +807,195 @@ fn wire_func_macro_struct_impl(port_: MessagePort, arg: impl Wire2Api<MacroStruc
             let api_arg = arg.wire2api();
             move |task_callback| Result::<_, ()>::Ok(func_macro_struct(api_arg))
         },
+    )
+}
+fn wire_ConcatenateWith_concatenate_impl(
+    port_: MessagePort,
+    that: impl Wire2Api<ConcatenateWith> + UnwindSafe,
+    b: impl Wire2Api<String> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+        WrapInfo {
+            debug_name: "ConcatenateWith_concatenate",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_that = that.wire2api();
+            let api_b = b.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(ConcatenateWith::concatenate(&api_that, api_b))
+        },
+    )
+}
+fn wire_ConcatenateWith_concatenate_static_impl(
+    port_: MessagePort,
+    a: impl Wire2Api<String> + UnwindSafe,
+    b: impl Wire2Api<String> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+        WrapInfo {
+            debug_name: "ConcatenateWith_concatenate_static",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_a = a.wire2api();
+            let api_b = b.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(ConcatenateWith::concatenate_static(api_a, api_b))
+            }
+        },
+    )
+}
+fn wire_ConcatenateWith_handle_some_static_stream_sink_impl(
+    port_: MessagePort,
+    key: impl Wire2Api<u32> + UnwindSafe,
+    max: impl Wire2Api<u32> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        WrapInfo {
+            debug_name: "ConcatenateWith_handle_some_static_stream_sink",
+            port: Some(port_),
+            mode: FfiCallMode::Stream,
+        },
+        move || {
+            let api_key = key.wire2api();
+            let api_max = max.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(ConcatenateWith::handle_some_static_stream_sink(
+                    api_key,
+                    api_max,
+                    task_callback.stream_sink::<_, Log2>(),
+                ))
+            }
+        },
+    )
+}
+fn wire_ConcatenateWith_handle_some_static_stream_sink_single_arg_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        WrapInfo {
+            debug_name: "ConcatenateWith_handle_some_static_stream_sink_single_arg",
+            port: Some(port_),
+            mode: FfiCallMode::Stream,
+        },
+        move || {
+            move |task_callback| {
+                Result::<_, ()>::Ok(ConcatenateWith::handle_some_static_stream_sink_single_arg(
+                    task_callback.stream_sink::<_, u32>(),
+                ))
+            }
+        },
+    )
+}
+fn wire_ConcatenateWith_handle_some_stream_sink_impl(
+    port_: MessagePort,
+    that: impl Wire2Api<ConcatenateWith> + UnwindSafe,
+    key: impl Wire2Api<u32> + UnwindSafe,
+    max: impl Wire2Api<u32> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        WrapInfo {
+            debug_name: "ConcatenateWith_handle_some_stream_sink",
+            port: Some(port_),
+            mode: FfiCallMode::Stream,
+        },
+        move || {
+            let api_that = that.wire2api();
+            let api_key = key.wire2api();
+            let api_max = max.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(ConcatenateWith::handle_some_stream_sink(
+                    &api_that,
+                    api_key,
+                    api_max,
+                    task_callback.stream_sink::<_, Log2>(),
+                ))
+            }
+        },
+    )
+}
+fn wire_ConcatenateWith_handle_some_stream_sink_at_1_impl(
+    port_: MessagePort,
+    that: impl Wire2Api<ConcatenateWith> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        WrapInfo {
+            debug_name: "ConcatenateWith_handle_some_stream_sink_at_1",
+            port: Some(port_),
+            mode: FfiCallMode::Stream,
+        },
+        move || {
+            let api_that = that.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(ConcatenateWith::handle_some_stream_sink_at_1(
+                    &api_that,
+                    task_callback.stream_sink::<_, u32>(),
+                ))
+            }
+        },
+    )
+}
+fn wire_ConcatenateWith_new_impl(port_: MessagePort, a: impl Wire2Api<String> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ConcatenateWith, _>(
+        WrapInfo {
+            debug_name: "ConcatenateWith_new",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_a = a.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(ConcatenateWith::new(api_a))
+        },
+    )
+}
+fn wire_SumWith_sum_impl(
+    port_: MessagePort,
+    that: impl Wire2Api<SumWith> + UnwindSafe,
+    y: impl Wire2Api<u32> + UnwindSafe,
+    z: impl Wire2Api<u32> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32, _>(
+        WrapInfo {
+            debug_name: "SumWith_sum",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_that = that.wire2api();
+            let api_y = y.wire2api();
+            let api_z = z.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(SumWith::sum(&api_that, api_y, api_z))
+        },
+    )
+}
+fn wire_get_sum_array_impl(
+    port_: MessagePort,
+    a: impl Wire2Api<u32> + UnwindSafe,
+    b: impl Wire2Api<u32> + UnwindSafe,
+    c: impl Wire2Api<u32> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [SumWith; 3], _>(
+        WrapInfo {
+            debug_name: "get_sum_array",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_a = a.wire2api();
+            let api_b = b.wire2api();
+            let api_c = c.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(get_sum_array(api_a, api_b, api_c))
+        },
+    )
+}
+fn wire_get_sum_struct_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, SumWith, _>(
+        WrapInfo {
+            debug_name: "get_sum_struct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(get_sum_struct()),
     )
 }
 fn wire_handle_big_buffers_impl(port_: MessagePort) {
@@ -856,6 +1144,123 @@ fn wire_handle_newtype_impl(port_: MessagePort, arg: impl Wire2Api<NewTypeInt> +
         move || {
             let api_arg = arg.wire2api();
             move |task_callback| Result::<_, ()>::Ok(handle_newtype(api_arg))
+        },
+    )
+}
+fn wire_handle_increment_boxed_optional_impl(
+    port_: MessagePort,
+    opt: impl Wire2Api<Option<Box<f64>>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, f64, _>(
+        WrapInfo {
+            debug_name: "handle_increment_boxed_optional",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opt = opt.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(handle_increment_boxed_optional(api_opt))
+        },
+    )
+}
+fn wire_handle_option_box_arguments_impl(
+    port_: MessagePort,
+    i8box: impl Wire2Api<Option<Box<i8>>> + UnwindSafe,
+    u8box: impl Wire2Api<Option<Box<u8>>> + UnwindSafe,
+    i32box: impl Wire2Api<Option<Box<i32>>> + UnwindSafe,
+    i64box: impl Wire2Api<Option<Box<i64>>> + UnwindSafe,
+    f64box: impl Wire2Api<Option<Box<f64>>> + UnwindSafe,
+    boolbox: impl Wire2Api<Option<Box<bool>>> + UnwindSafe,
+    structbox: impl Wire2Api<Option<Box<ExoticOptionals>>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+        WrapInfo {
+            debug_name: "handle_option_box_arguments",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_i8box = i8box.wire2api();
+            let api_u8box = u8box.wire2api();
+            let api_i32box = i32box.wire2api();
+            let api_i64box = i64box.wire2api();
+            let api_f64box = f64box.wire2api();
+            let api_boolbox = boolbox.wire2api();
+            let api_structbox = structbox.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(handle_option_box_arguments(
+                    api_i8box,
+                    api_u8box,
+                    api_i32box,
+                    api_i64box,
+                    api_f64box,
+                    api_boolbox,
+                    api_structbox,
+                ))
+            }
+        },
+    )
+}
+fn wire_handle_optional_increment_impl(
+    port_: MessagePort,
+    opt: impl Wire2Api<Option<ExoticOptionals>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<ExoticOptionals>, _>(
+        WrapInfo {
+            debug_name: "handle_optional_increment",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opt = opt.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(handle_optional_increment(api_opt))
+        },
+    )
+}
+fn wire_handle_optional_return_impl(
+    port_: MessagePort,
+    left: impl Wire2Api<f64> + UnwindSafe,
+    right: impl Wire2Api<f64> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<f64>, _>(
+        WrapInfo {
+            debug_name: "handle_optional_return",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_left = left.wire2api();
+            let api_right = right.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(handle_optional_return(api_left, api_right))
+        },
+    )
+}
+fn wire_handle_optional_struct_impl(
+    port_: MessagePort,
+    document: impl Wire2Api<Option<String>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<Element>, _>(
+        WrapInfo {
+            debug_name: "handle_optional_struct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_document = document.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(handle_optional_struct(api_document))
+        },
+    )
+}
+fn wire_handle_vec_of_opts_impl(port_: MessagePort, opt: impl Wire2Api<OptVecs> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, OptVecs, _>(
+        WrapInfo {
+            debug_name: "handle_vec_of_opts",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opt = opt.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(handle_vec_of_opts(api_opt))
         },
     )
 }
@@ -2525,6 +2930,45 @@ fn wire_test_tuple_2_impl(
         },
     )
 }
+fn wire_handle_type_alias_id_impl(port_: MessagePort, input: impl Wire2Api<u64> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u64, _>(
+        WrapInfo {
+            debug_name: "handle_type_alias_id",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_input = input.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(handle_type_alias_id(api_input))
+        },
+    )
+}
+fn wire_handle_type_alias_model_impl(port_: MessagePort, input: impl Wire2Api<u64> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, TestModel, _>(
+        WrapInfo {
+            debug_name: "handle_type_alias_model",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_input = input.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(handle_type_alias_model(api_input))
+        },
+    )
+}
+fn wire_handle_type_nest_alias_id_impl(port_: MessagePort, input: impl Wire2Api<u64> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u64, _>(
+        WrapInfo {
+            debug_name: "handle_type_nest_alias_id",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_input = input.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(handle_type_nest_alias_id(api_input))
+        },
+    )
+}
 fn wire_handle_nested_uuids_impl(port_: MessagePort, ids: impl Wire2Api<FeatureUuid> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, FeatureUuid, _>(
         WrapInfo {
@@ -2729,6 +3173,21 @@ impl rust2dart::IntoIntoDart<Abc> for Abc {
         self
     }
 }
+impl support::IntoDart for Attribute {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.key.into_into_dart().into_dart(),
+            self.value.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for Attribute {}
+impl rust2dart::IntoIntoDart<Attribute> for Attribute {
+    fn into_into_dart(self) -> Attribute {
+        self
+    }
+}
 impl support::IntoDart for B {
     fn into_dart(self) -> support::DartAbi {
         vec![self.b.into_into_dart().into_dart()].into_dart()
@@ -2774,6 +3233,17 @@ impl support::IntoDart for C {
 impl support::IntoDartExceptPrimitive for C {}
 impl rust2dart::IntoIntoDart<C> for C {
     fn into_into_dart(self) -> C {
+        self
+    }
+}
+impl support::IntoDart for ConcatenateWith {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.a.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for ConcatenateWith {}
+impl rust2dart::IntoIntoDart<ConcatenateWith> for ConcatenateWith {
+    fn into_into_dart(self) -> ConcatenateWith {
         self
     }
 }
@@ -2924,6 +3394,23 @@ impl rust2dart::IntoIntoDart<Distance> for Distance {
         self
     }
 }
+impl support::IntoDart for Element {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.tag.into_dart(),
+            self.text.into_dart(),
+            self.attributes.into_dart(),
+            self.children.into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for Element {}
+impl rust2dart::IntoIntoDart<Element> for Element {
+    fn into_into_dart(self) -> Element {
+        self
+    }
+}
 impl support::IntoDart for EnumSimpleTwinNormal {
     fn into_dart(self) -> support::DartAbi {
         match self {
@@ -3046,6 +3533,48 @@ impl rust2dart::IntoIntoDart<EnumWithItemTupleTwinSync> for EnumWithItemTupleTwi
         self
     }
 }
+impl support::IntoDart for Event {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.address.into_into_dart().into_dart(),
+            self.payload.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for Event {}
+impl rust2dart::IntoIntoDart<Event> for Event {
+    fn into_into_dart(self) -> Event {
+        self
+    }
+}
+impl support::IntoDart for ExoticOptionals {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.int32.into_dart(),
+            self.int64.into_dart(),
+            self.float64.into_dart(),
+            self.boolean.into_dart(),
+            self.zerocopy.into_dart(),
+            self.int8list.into_dart(),
+            self.uint8list.into_dart(),
+            self.int32list.into_dart(),
+            self.float32list.into_dart(),
+            self.float64list.into_dart(),
+            self.attributes.into_dart(),
+            self.attributes_nullable.into_into_dart().into_dart(),
+            self.nullable_attributes.into_dart(),
+            self.newtypeint.into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for ExoticOptionals {}
+impl rust2dart::IntoIntoDart<ExoticOptionals> for ExoticOptionals {
+    fn into_into_dart(self) -> ExoticOptionals {
+        self
+    }
+}
 impl support::IntoDart for FeatureUuid {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -3069,6 +3598,21 @@ impl support::IntoDart for FeedId {
 impl support::IntoDartExceptPrimitive for FeedId {}
 impl rust2dart::IntoIntoDart<FeedId> for FeedId {
     fn into_into_dart(self) -> FeedId {
+        self
+    }
+}
+impl support::IntoDart for Log2 {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.key.into_into_dart().into_dart(),
+            self.value.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for Log2 {}
+impl rust2dart::IntoIntoDart<Log2> for Log2 {
+    fn into_into_dart(self) -> Log2 {
         self
     }
 }
@@ -3126,6 +3670,21 @@ impl rust2dart::IntoIntoDart<MoreThanJustOneRawStringStruct> for MoreThanJustOne
         self
     }
 }
+impl support::IntoDart for MyEnum {
+    fn into_dart(self) -> support::DartAbi {
+        match self {
+            Self::False => 0,
+            Self::True => 1,
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for MyEnum {}
+impl rust2dart::IntoIntoDart<MyEnum> for MyEnum {
+    fn into_into_dart(self) -> MyEnum {
+        self
+    }
+}
 impl support::IntoDart for MyNestedStruct {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -3167,6 +3726,17 @@ impl rust2dart::IntoIntoDart<MyStreamEntry> for MyStreamEntry {
         self
     }
 }
+impl support::IntoDart for MyStruct {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.content.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for MyStruct {}
+impl rust2dart::IntoIntoDart<MyStruct> for MyStruct {
+    fn into_into_dart(self) -> MyStruct {
+        self
+    }
+}
 impl support::IntoDart for MyTreeNode {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -3192,6 +3762,23 @@ impl support::IntoDart for NewTypeInt {
 impl support::IntoDartExceptPrimitive for NewTypeInt {}
 impl rust2dart::IntoIntoDart<NewTypeInt> for NewTypeInt {
     fn into_into_dart(self) -> NewTypeInt {
+        self
+    }
+}
+impl support::IntoDart for OptVecs {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.i32.into_into_dart().into_dart(),
+            self.enums.into_into_dart().into_dart(),
+            self.strings.into_into_dart().into_dart(),
+            self.buffers.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for OptVecs {}
+impl rust2dart::IntoIntoDart<OptVecs> for OptVecs {
+    fn into_into_dart(self) -> OptVecs {
         self
     }
 }
@@ -3325,6 +3912,17 @@ impl rust2dart::IntoIntoDart<StructWithZeroFieldTwinSync> for StructWithZeroFiel
         self
     }
 }
+impl support::IntoDart for SumWith {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.x.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for SumWith {}
+impl rust2dart::IntoIntoDart<SumWith> for SumWith {
+    fn into_into_dart(self) -> SumWith {
+        self
+    }
+}
 impl support::IntoDart for TestChrono {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -3349,6 +3947,23 @@ impl support::IntoDart for TestId {
 impl support::IntoDartExceptPrimitive for TestId {}
 impl rust2dart::IntoIntoDart<TestId> for TestId {
     fn into_into_dart(self) -> TestId {
+        self
+    }
+}
+impl support::IntoDart for TestModel {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.id.into_into_dart().into_dart(),
+            self.name.into_into_dart().into_dart(),
+            self.alias_enum.into_into_dart().into_dart(),
+            self.alias_struct.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for TestModel {}
+impl rust2dart::IntoIntoDart<TestModel> for TestModel {
+    fn into_into_dart(self) -> TestModel {
         self
     }
 }
@@ -3405,6 +4020,17 @@ impl support::IntoDart for TupleStructWithTwoFieldTwinSync {
 impl support::IntoDartExceptPrimitive for TupleStructWithTwoFieldTwinSync {}
 impl rust2dart::IntoIntoDart<TupleStructWithTwoFieldTwinSync> for TupleStructWithTwoFieldTwinSync {
     fn into_into_dart(self) -> TupleStructWithTwoFieldTwinSync {
+        self
+    }
+}
+impl support::IntoDart for UserId {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.value.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for UserId {}
+impl rust2dart::IntoIntoDart<UserId> for UserId {
+    fn into_into_dart(self) -> UserId {
         self
     }
 }

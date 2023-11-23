@@ -46,6 +46,11 @@ impl Wire2Api<Vec<uuid::Uuid>> for *mut wire_list_prim_u_8 {
         wire2api_uuids(multiple)
     }
 }
+impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for *mut wire_list_prim_u_8 {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<u8>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
 impl Wire2Api<A> for wire_a {
     fn wire2api(self) -> A {
         A {
@@ -80,6 +85,14 @@ impl Wire2Api<Abc> for wire_abc {
         }
     }
 }
+impl Wire2Api<Attribute> for wire_attribute {
+    fn wire2api(self) -> Attribute {
+        Attribute {
+            key: self.key.wire2api(),
+            value: self.value.wire2api(),
+        }
+    }
+}
 impl Wire2Api<B> for wire_b {
     fn wire2api(self) -> B {
         B {
@@ -110,6 +123,12 @@ impl Wire2Api<Abc> for *mut wire_abc {
         Wire2Api::<Abc>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<Attribute> for *mut wire_attribute {
+    fn wire2api(self) -> Attribute {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<Attribute>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<B> for *mut wire_b {
     fn wire2api(self) -> B {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -125,6 +144,12 @@ impl Wire2Api<C> for *mut wire_c {
     fn wire2api(self) -> C {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<C>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<ConcatenateWith> for *mut wire_concatenate_with {
+    fn wire2api(self) -> ConcatenateWith {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<ConcatenateWith>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<CustomNestedErrorInnerTwinNormal>
@@ -167,6 +192,12 @@ impl Wire2Api<CustomStructErrorTwinSync> for *mut wire_custom_struct_error_twin_
         Wire2Api::<CustomStructErrorTwinSync>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<Customized> for *mut wire_customized {
+    fn wire2api(self) -> Customized {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<Customized>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<EnumWithItemMixedTwinNormal> for *mut wire_enum_with_item_mixed_twin_normal {
     fn wire2api(self) -> EnumWithItemMixedTwinNormal {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -201,6 +232,18 @@ impl Wire2Api<EnumWithItemTupleTwinSync> for *mut wire_enum_with_item_tuple_twin
     fn wire2api(self) -> EnumWithItemTupleTwinSync {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<EnumWithItemTupleTwinSync>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<Event> for *mut wire_event {
+    fn wire2api(self) -> Event {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<Event>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<ExoticOptionals> for *mut wire_exotic_optionals {
+    fn wire2api(self) -> ExoticOptionals {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<ExoticOptionals>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<f32> for *mut f32 {
@@ -293,6 +336,12 @@ impl Wire2Api<Note> for *mut wire_note {
         Wire2Api::<Note>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<OptVecs> for *mut wire_opt_vecs {
+    fn wire2api(self) -> OptVecs {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<OptVecs>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<(String, i32)> for *mut wire_record_string_i_32 {
     fn wire2api(self) -> (String, i32) {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -353,6 +402,12 @@ impl Wire2Api<StructWithZeroFieldTwinSync> for *mut wire_struct_with_zero_field_
         Wire2Api::<StructWithZeroFieldTwinSync>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<SumWith> for *mut wire_sum_with {
+    fn wire2api(self) -> SumWith {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<SumWith>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<TestId> for *mut wire_test_id {
     fn wire2api(self) -> TestId {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -407,10 +462,27 @@ impl Wire2Api<u8> for *mut u8 {
         unsafe { *support::box_from_leak_ptr(self) }
     }
 }
+impl Wire2Api<UserId> for *mut wire_user_id {
+    fn wire2api(self) -> UserId {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<UserId>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<Weekdays> for *mut i32 {
+    fn wire2api(self) -> Weekdays {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<Weekdays>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<Box<Blob>> for *mut wire_blob {
     fn wire2api(self) -> Box<Blob> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<Blob>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<Box<bool>> for *mut bool {
+    fn wire2api(self) -> Box<bool> {
+        unsafe { support::box_from_leak_ptr(self) }
     }
 }
 impl Wire2Api<Box<Distance>> for *mut wire_distance {
@@ -419,10 +491,41 @@ impl Wire2Api<Box<Distance>> for *mut wire_distance {
         Wire2Api::<Distance>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<Box<ExoticOptionals>> for *mut wire_exotic_optionals {
+    fn wire2api(self) -> Box<ExoticOptionals> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<ExoticOptionals>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<Box<f64>> for *mut f64 {
+    fn wire2api(self) -> Box<f64> {
+        unsafe { support::box_from_leak_ptr(self) }
+    }
+}
+impl Wire2Api<Box<i32>> for *mut i32 {
+    fn wire2api(self) -> Box<i32> {
+        unsafe { support::box_from_leak_ptr(self) }
+    }
+}
+impl Wire2Api<Box<i64>> for *mut i64 {
+    fn wire2api(self) -> Box<i64> {
+        unsafe { support::box_from_leak_ptr(self) }
+    }
+}
+impl Wire2Api<Box<i8>> for *mut i8 {
+    fn wire2api(self) -> Box<i8> {
+        unsafe { support::box_from_leak_ptr(self) }
+    }
+}
 impl Wire2Api<Box<Speed>> for *mut wire_speed {
     fn wire2api(self) -> Box<Speed> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<Speed>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<Box<u8>> for *mut u8 {
+    fn wire2api(self) -> Box<u8> {
+        unsafe { support::box_from_leak_ptr(self) }
     }
 }
 impl Wire2Api<Box<[u8; 1600]>> for *mut wire_list_prim_u_8 {
@@ -440,6 +543,13 @@ impl Wire2Api<C> for wire_c {
     fn wire2api(self) -> C {
         C {
             c: self.c.wire2api(),
+        }
+    }
+}
+impl Wire2Api<ConcatenateWith> for wire_concatenate_with {
+    fn wire2api(self) -> ConcatenateWith {
+        ConcatenateWith {
+            a: self.a.wire2api(),
         }
     }
 }
@@ -522,6 +632,14 @@ impl Wire2Api<CustomStructErrorTwinSync> for wire_custom_struct_error_twin_sync 
     fn wire2api(self) -> CustomStructErrorTwinSync {
         CustomStructErrorTwinSync {
             a: self.a.wire2api(),
+        }
+    }
+}
+impl Wire2Api<Customized> for wire_customized {
+    fn wire2api(self) -> Customized {
+        Customized {
+            final_field: self.final_field.wire2api(),
+            non_final_field: self.non_final_field.wire2api(),
         }
     }
 }
@@ -654,6 +772,34 @@ impl Wire2Api<EnumWithItemTupleTwinSync> for wire_enum_with_item_tuple_twin_sync
         }
     }
 }
+impl Wire2Api<Event> for wire_event {
+    fn wire2api(self) -> Event {
+        Event {
+            address: self.address.wire2api(),
+            payload: self.payload.wire2api(),
+        }
+    }
+}
+impl Wire2Api<ExoticOptionals> for wire_exotic_optionals {
+    fn wire2api(self) -> ExoticOptionals {
+        ExoticOptionals {
+            int32: self.int32.wire2api(),
+            int64: self.int64.wire2api(),
+            float64: self.float64.wire2api(),
+            boolean: self.boolean.wire2api(),
+            zerocopy: self.zerocopy.wire2api(),
+            int8list: self.int8list.wire2api(),
+            uint8list: self.uint8list.wire2api(),
+            int32list: self.int32list.wire2api(),
+            float32list: self.float32list.wire2api(),
+            float64list: self.float64list.wire2api(),
+            attributes: self.attributes.wire2api(),
+            attributes_nullable: self.attributes_nullable.wire2api(),
+            nullable_attributes: self.nullable_attributes.wire2api(),
+            newtypeint: self.newtypeint.wire2api(),
+        }
+    }
+}
 impl Wire2Api<[f64; 16]> for *mut wire_list_prim_f_64 {
     fn wire2api(self) -> [f64; 16] {
         let vec: Vec<f64> = self.wire2api();
@@ -689,6 +835,15 @@ impl Wire2Api<[i32; 2]> for *mut wire_list_prim_i_32 {
         support::from_vec_to_array(vec)
     }
 }
+impl Wire2Api<Vec<Attribute>> for *mut wire_list_attribute {
+    fn wire2api(self) -> Vec<Attribute> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
 impl Wire2Api<Vec<bool>> for *mut wire_list_bool {
     fn wire2api(self) -> Vec<bool> {
         let vec = unsafe {
@@ -709,6 +864,51 @@ impl Wire2Api<Vec<MySize>> for *mut wire_list_my_size {
 }
 impl Wire2Api<Vec<MyTreeNode>> for *mut wire_list_my_tree_node {
     fn wire2api(self) -> Vec<MyTreeNode> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+impl Wire2Api<Vec<Option<String>>> for *mut wire_list_opt_String {
+    fn wire2api(self) -> Vec<Option<String>> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+impl Wire2Api<Vec<Option<Attribute>>> for *mut wire_list_opt_box_autoadd_attribute {
+    fn wire2api(self) -> Vec<Option<Attribute>> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+impl Wire2Api<Vec<Option<i32>>> for *mut wire_list_opt_box_autoadd_i_32 {
+    fn wire2api(self) -> Vec<Option<i32>> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+impl Wire2Api<Vec<Option<Weekdays>>> for *mut wire_list_opt_box_autoadd_weekdays {
+    fn wire2api(self) -> Vec<Option<Weekdays>> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+impl Wire2Api<Vec<Option<Vec<i32>>>> for *mut wire_list_opt_list_prim_i_32 {
+    fn wire2api(self) -> Vec<Option<Vec<i32>>> {
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -891,6 +1091,16 @@ impl Wire2Api<Note> for wire_note {
         }
     }
 }
+impl Wire2Api<OptVecs> for wire_opt_vecs {
+    fn wire2api(self) -> OptVecs {
+        OptVecs {
+            i32: self.i32.wire2api(),
+            enums: self.enums.wire2api(),
+            strings: self.strings.wire2api(),
+            buffers: self.buffers.wire2api(),
+        }
+    }
+}
 impl Wire2Api<(String, i32)> for wire_record_string_i_32 {
     fn wire2api(self) -> (String, i32) {
         (self.field0.wire2api(), self.field1.wire2api())
@@ -971,6 +1181,13 @@ impl Wire2Api<StructWithZeroFieldTwinSync> for wire_struct_with_zero_field_twin_
         StructWithZeroFieldTwinSync {}
     }
 }
+impl Wire2Api<SumWith> for wire_sum_with {
+    fn wire2api(self) -> SumWith {
+        SumWith {
+            x: self.x.wire2api(),
+        }
+    }
+}
 impl Wire2Api<TestId> for wire_test_id {
     fn wire2api(self) -> TestId {
         TestId(self.field0.wire2api())
@@ -1018,6 +1235,13 @@ impl Wire2Api<[u8; 8]> for *mut wire_list_prim_u_8 {
     fn wire2api(self) -> [u8; 8] {
         let vec: Vec<u8> = self.wire2api();
         support::from_vec_to_array(vec)
+    }
+}
+impl Wire2Api<UserId> for wire_user_id {
+    fn wire2api(self) -> UserId {
+        UserId {
+            value: self.value.wire2api(),
+        }
     }
 }
 
@@ -1075,6 +1299,13 @@ pub struct wire_Abc_JustInt {
 }
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_attribute {
+    key: *mut wire_list_prim_u_8,
+    value: *mut wire_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_b {
     b: i32,
 }
@@ -1089,6 +1320,12 @@ pub struct wire_blob {
 #[derive(Clone)]
 pub struct wire_c {
     c: bool,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_concatenate_with {
+    a: *mut wire_list_prim_u_8,
 }
 #[repr(C)]
 #[derive(Clone)]
@@ -1196,6 +1433,13 @@ pub struct wire_custom_struct_error_twin_normal {
 #[derive(Clone)]
 pub struct wire_custom_struct_error_twin_sync {
     a: *mut wire_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_customized {
+    final_field: *mut wire_list_prim_u_8,
+    non_final_field: *mut wire_list_prim_u_8,
 }
 #[repr(C)]
 #[derive(Clone)]
@@ -1375,6 +1619,32 @@ pub struct wire_EnumWithItemTupleTwinSync_B {
 }
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_event {
+    address: *mut wire_list_prim_u_8,
+    payload: *mut wire_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_exotic_optionals {
+    int32: *mut i32,
+    int64: *mut i64,
+    float64: *mut f64,
+    boolean: *mut bool,
+    zerocopy: *mut wire_list_prim_u_8,
+    int8list: *mut wire_list_prim_i_8,
+    uint8list: *mut wire_list_prim_u_8,
+    int32list: *mut wire_list_prim_i_32,
+    float32list: *mut wire_list_prim_f_32,
+    float64list: *mut wire_list_prim_f_64,
+    attributes: *mut wire_list_attribute,
+    attributes_nullable: *mut wire_list_opt_box_autoadd_attribute,
+    nullable_attributes: *mut wire_list_opt_box_autoadd_attribute,
+    newtypeint: *mut wire_new_type_int,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_feature_chrono {
     utc: i64,
     local: i64,
@@ -1397,6 +1667,13 @@ pub struct wire_feed_id {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_list_attribute {
+    ptr: *mut wire_attribute,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_list_bool {
     ptr: *mut bool,
     len: i32,
@@ -1413,6 +1690,41 @@ pub struct wire_list_my_size {
 #[derive(Clone)]
 pub struct wire_list_my_tree_node {
     ptr: *mut wire_my_tree_node,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_opt_String {
+    ptr: *mut *mut wire_list_prim_u_8,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_opt_box_autoadd_attribute {
+    ptr: *mut *mut wire_attribute,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_opt_box_autoadd_i_32 {
+    ptr: *mut *mut i32,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_opt_box_autoadd_weekdays {
+    ptr: *mut *mut i32,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_opt_list_prim_i_32 {
+    ptr: *mut *mut wire_list_prim_i_32,
     len: i32,
 }
 
@@ -1580,6 +1892,15 @@ pub struct wire_note {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_opt_vecs {
+    i32: *mut wire_list_opt_box_autoadd_i_32,
+    enums: *mut wire_list_opt_box_autoadd_weekdays,
+    strings: *mut wire_list_opt_String,
+    buffers: *mut wire_list_opt_list_prim_i_32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_record_string_i_32 {
     field0: *mut wire_list_prim_u_8,
     field1: i32,
@@ -1661,6 +1982,12 @@ pub struct wire_struct_with_zero_field_twin_sync {}
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_sum_with {
+    x: u32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_test_id {
     field0: *mut wire_list_prim_i_32,
 }
@@ -1689,6 +2016,12 @@ pub struct wire_tuple_struct_with_two_field_twin_normal {
 pub struct wire_tuple_struct_with_two_field_twin_sync {
     field0: i32,
     field1: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_user_id {
+    value: u32,
 }
 
 // Section: impl_new_with_nullptr
@@ -1727,6 +2060,19 @@ impl Default for wire_abc {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_attribute {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            key: core::ptr::null_mut(),
+            value: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_attribute {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 impl NewWithNullPtr for wire_b {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -1759,6 +2105,18 @@ impl NewWithNullPtr for wire_c {
     }
 }
 impl Default for wire_c {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_concatenate_with {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            a: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_concatenate_with {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -1835,6 +2193,19 @@ impl NewWithNullPtr for wire_custom_struct_error_twin_sync {
     }
 }
 impl Default for wire_custom_struct_error_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_customized {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            final_field: core::ptr::null_mut(),
+            non_final_field: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_customized {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -1926,6 +2297,44 @@ impl NewWithNullPtr for wire_enum_with_item_tuple_twin_sync {
     }
 }
 impl Default for wire_enum_with_item_tuple_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_event {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            address: core::ptr::null_mut(),
+            payload: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_event {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_exotic_optionals {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            int32: core::ptr::null_mut(),
+            int64: core::ptr::null_mut(),
+            float64: core::ptr::null_mut(),
+            boolean: core::ptr::null_mut(),
+            zerocopy: core::ptr::null_mut(),
+            int8list: core::ptr::null_mut(),
+            uint8list: core::ptr::null_mut(),
+            int32list: core::ptr::null_mut(),
+            float32list: core::ptr::null_mut(),
+            float64list: core::ptr::null_mut(),
+            attributes: core::ptr::null_mut(),
+            attributes_nullable: core::ptr::null_mut(),
+            nullable_attributes: core::ptr::null_mut(),
+            newtypeint: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_exotic_optionals {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -2073,6 +2482,21 @@ impl Default for wire_note {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_opt_vecs {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            i32: core::ptr::null_mut(),
+            enums: core::ptr::null_mut(),
+            strings: core::ptr::null_mut(),
+            buffers: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_opt_vecs {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 impl NewWithNullPtr for wire_record_string_i_32 {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -2206,6 +2630,18 @@ impl Default for wire_struct_with_zero_field_twin_sync {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_sum_with {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            x: Default::default(),
+        }
+    }
+}
+impl Default for wire_sum_with {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 impl NewWithNullPtr for wire_test_id {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -2268,6 +2704,18 @@ impl Default for wire_tuple_struct_with_two_field_twin_sync {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_user_id {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            value: Default::default(),
+        }
+    }
+}
+impl Default for wire_user_id {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 
 #[no_mangle]
 pub extern "C" fn wire_boxed_blob(port_: i64, blob: *mut wire_list_prim_u_8) {
@@ -2322,6 +2770,16 @@ pub extern "C" fn wire_use_boxed_blob(port_: i64, blob: *mut wire_blob) {
 #[no_mangle]
 pub extern "C" fn wire_use_msgid(port_: i64, id: *mut wire_message_id) {
     wire_use_msgid_impl(port_, id)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_customized_struct(port_: i64, val: *mut wire_customized) {
+    wire_handle_customized_struct_impl(port_, val)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_next_user_id(port_: i64, user_id: *mut wire_user_id) {
+    wire_next_user_id_impl(port_, user_id)
 }
 
 #[no_mangle]
@@ -2465,6 +2923,30 @@ pub extern "C" fn wire_print_note(port_: i64, note: *mut wire_note) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_Event_as_string(port_: i64, that: *mut wire_event) {
+    wire_Event_as_string_impl(port_, that)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_close_event_listener(port_: i64) {
+    wire_close_event_listener_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_create_event(
+    port_: i64,
+    address: *mut wire_list_prim_u_8,
+    payload: *mut wire_list_prim_u_8,
+) {
+    wire_create_event_impl(port_, address, payload)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_register_event_listener(port_: i64) {
+    wire_register_event_listener_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_custom_enum_error_panic_twin_normal(port_: i64) {
     wire_custom_enum_error_panic_twin_normal_impl(port_)
 }
@@ -2513,6 +2995,76 @@ pub extern "C" fn wire_func_type_infallible_panic_twin_normal(port_: i64) {
 #[no_mangle]
 pub extern "C" fn wire_func_macro_struct(port_: i64, arg: *mut wire_macro_struct) {
     wire_func_macro_struct_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_ConcatenateWith_concatenate(
+    port_: i64,
+    that: *mut wire_concatenate_with,
+    b: *mut wire_list_prim_u_8,
+) {
+    wire_ConcatenateWith_concatenate_impl(port_, that, b)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_ConcatenateWith_concatenate_static(
+    port_: i64,
+    a: *mut wire_list_prim_u_8,
+    b: *mut wire_list_prim_u_8,
+) {
+    wire_ConcatenateWith_concatenate_static_impl(port_, a, b)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_ConcatenateWith_handle_some_static_stream_sink(
+    port_: i64,
+    key: u32,
+    max: u32,
+) {
+    wire_ConcatenateWith_handle_some_static_stream_sink_impl(port_, key, max)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_ConcatenateWith_handle_some_static_stream_sink_single_arg(port_: i64) {
+    wire_ConcatenateWith_handle_some_static_stream_sink_single_arg_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_ConcatenateWith_handle_some_stream_sink(
+    port_: i64,
+    that: *mut wire_concatenate_with,
+    key: u32,
+    max: u32,
+) {
+    wire_ConcatenateWith_handle_some_stream_sink_impl(port_, that, key, max)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_ConcatenateWith_handle_some_stream_sink_at_1(
+    port_: i64,
+    that: *mut wire_concatenate_with,
+) {
+    wire_ConcatenateWith_handle_some_stream_sink_at_1_impl(port_, that)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_ConcatenateWith_new(port_: i64, a: *mut wire_list_prim_u_8) {
+    wire_ConcatenateWith_new_impl(port_, a)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_SumWith_sum(port_: i64, that: *mut wire_sum_with, y: u32, z: u32) {
+    wire_SumWith_sum_impl(port_, that, y, z)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_get_sum_array(port_: i64, a: u32, b: u32, c: u32) {
+    wire_get_sum_array_impl(port_, a, b, c)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_get_sum_struct(port_: i64) {
+    wire_get_sum_struct_impl(port_)
 }
 
 #[no_mangle]
@@ -2568,6 +3120,47 @@ pub extern "C" fn wire_handle_string_list(port_: i64, names: *mut wire_StringLis
 #[no_mangle]
 pub extern "C" fn wire_handle_newtype(port_: i64, arg: *mut wire_new_type_int) {
     wire_handle_newtype_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_increment_boxed_optional(port_: i64, opt: *mut f64) {
+    wire_handle_increment_boxed_optional_impl(port_, opt)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_option_box_arguments(
+    port_: i64,
+    i8box: *mut i8,
+    u8box: *mut u8,
+    i32box: *mut i32,
+    i64box: *mut i64,
+    f64box: *mut f64,
+    boolbox: *mut bool,
+    structbox: *mut wire_exotic_optionals,
+) {
+    wire_handle_option_box_arguments_impl(
+        port_, i8box, u8box, i32box, i64box, f64box, boolbox, structbox,
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_optional_increment(port_: i64, opt: *mut wire_exotic_optionals) {
+    wire_handle_optional_increment_impl(port_, opt)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_optional_return(port_: i64, left: f64, right: f64) {
+    wire_handle_optional_return_impl(port_, left, right)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_optional_struct(port_: i64, document: *mut wire_list_prim_u_8) {
+    wire_handle_optional_struct_impl(port_, document)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_vec_of_opts(port_: i64, opt: *mut wire_opt_vecs) {
+    wire_handle_vec_of_opts_impl(port_, opt)
 }
 
 #[no_mangle]
@@ -3224,6 +3817,21 @@ pub extern "C" fn wire_test_tuple_2(port_: i64, value: *mut wire_list_record_str
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_type_alias_id(port_: i64, input: u64) {
+    wire_handle_type_alias_id_impl(port_, input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_type_alias_model(port_: i64, input: u64) {
+    wire_handle_type_alias_model_impl(port_, input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_type_nest_alias_id(port_: i64, input: u64) {
+    wire_handle_type_nest_alias_id_impl(port_, input)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_handle_nested_uuids(port_: i64, ids: *mut wire_feature_uuid) {
     wire_handle_nested_uuids_impl(port_, ids)
 }
@@ -3263,6 +3871,11 @@ pub extern "C" fn new_box_autoadd_abc() -> *mut wire_abc {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_attribute() -> *mut wire_attribute {
+    support::new_leak_box_ptr(wire_attribute::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_b() -> *mut wire_b {
     support::new_leak_box_ptr(wire_b::new_with_null_ptr())
 }
@@ -3275,6 +3888,11 @@ pub extern "C" fn new_box_autoadd_bool(value: bool) -> *mut bool {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_c() -> *mut wire_c {
     support::new_leak_box_ptr(wire_c::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_concatenate_with() -> *mut wire_concatenate_with {
+    support::new_leak_box_ptr(wire_concatenate_with::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -3314,6 +3932,11 @@ pub extern "C" fn new_box_autoadd_custom_struct_error_twin_sync(
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_customized() -> *mut wire_customized {
+    support::new_leak_box_ptr(wire_customized::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_enum_with_item_mixed_twin_normal(
 ) -> *mut wire_enum_with_item_mixed_twin_normal {
     support::new_leak_box_ptr(wire_enum_with_item_mixed_twin_normal::new_with_null_ptr())
@@ -3347,6 +3970,16 @@ pub extern "C" fn new_box_autoadd_enum_with_item_tuple_twin_normal(
 pub extern "C" fn new_box_autoadd_enum_with_item_tuple_twin_sync(
 ) -> *mut wire_enum_with_item_tuple_twin_sync {
     support::new_leak_box_ptr(wire_enum_with_item_tuple_twin_sync::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_event() -> *mut wire_event {
+    support::new_leak_box_ptr(wire_event::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_exotic_optionals() -> *mut wire_exotic_optionals {
+    support::new_leak_box_ptr(wire_exotic_optionals::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -3430,6 +4063,11 @@ pub extern "C" fn new_box_autoadd_note() -> *mut wire_note {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_opt_vecs() -> *mut wire_opt_vecs {
+    support::new_leak_box_ptr(wire_opt_vecs::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_record_string_i_32() -> *mut wire_record_string_i_32 {
     support::new_leak_box_ptr(wire_record_string_i_32::new_with_null_ptr())
 }
@@ -3488,6 +4126,11 @@ pub extern "C" fn new_box_autoadd_struct_with_zero_field_twin_sync(
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_sum_with() -> *mut wire_sum_with {
+    support::new_leak_box_ptr(wire_sum_with::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_test_id() -> *mut wire_test_id {
     support::new_leak_box_ptr(wire_test_id::new_with_null_ptr())
 }
@@ -3537,8 +4180,23 @@ pub extern "C" fn new_box_autoadd_u_8(value: u8) -> *mut u8 {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_user_id() -> *mut wire_user_id {
+    support::new_leak_box_ptr(wire_user_id::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_weekdays(value: i32) -> *mut i32 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_blob() -> *mut wire_blob {
     support::new_leak_box_ptr(wire_blob::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_bool(value: bool) -> *mut bool {
+    support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
@@ -3547,13 +4205,52 @@ pub extern "C" fn new_box_distance() -> *mut wire_distance {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_exotic_optionals() -> *mut wire_exotic_optionals {
+    support::new_leak_box_ptr(wire_exotic_optionals::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_f_64(value: f64) -> *mut f64 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_i_32(value: i32) -> *mut i32 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_i_64(value: i64) -> *mut i64 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_i_8(value: i8) -> *mut i8 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_speed() -> *mut wire_speed {
     support::new_leak_box_ptr(wire_speed::new_with_null_ptr())
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_u_8(value: u8) -> *mut u8 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_weekdays(value: i32) -> *mut i32 {
     support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_attribute(len: i32) -> *mut wire_list_attribute {
+    let wrap = wire_list_attribute {
+        ptr: support::new_leak_vec_ptr(<wire_attribute>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
 }
 
 #[no_mangle]
@@ -3578,6 +4275,55 @@ pub extern "C" fn new_list_my_size(len: i32) -> *mut wire_list_my_size {
 pub extern "C" fn new_list_my_tree_node(len: i32) -> *mut wire_list_my_tree_node {
     let wrap = wire_list_my_tree_node {
         ptr: support::new_leak_vec_ptr(<wire_my_tree_node>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_opt_String(len: i32) -> *mut wire_list_opt_String {
+    let wrap = wire_list_opt_String {
+        ptr: support::new_leak_vec_ptr(core::ptr::null_mut(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_opt_box_autoadd_attribute(
+    len: i32,
+) -> *mut wire_list_opt_box_autoadd_attribute {
+    let wrap = wire_list_opt_box_autoadd_attribute {
+        ptr: support::new_leak_vec_ptr(core::ptr::null_mut(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_opt_box_autoadd_i_32(len: i32) -> *mut wire_list_opt_box_autoadd_i_32 {
+    let wrap = wire_list_opt_box_autoadd_i_32 {
+        ptr: support::new_leak_vec_ptr(core::ptr::null_mut(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_opt_box_autoadd_weekdays(
+    len: i32,
+) -> *mut wire_list_opt_box_autoadd_weekdays {
+    let wrap = wire_list_opt_box_autoadd_weekdays {
+        ptr: support::new_leak_vec_ptr(core::ptr::null_mut(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_opt_list_prim_i_32(len: i32) -> *mut wire_list_opt_list_prim_i_32 {
+    let wrap = wire_list_opt_list_prim_i_32 {
+        ptr: support::new_leak_vec_ptr(core::ptr::null_mut(), len),
         len,
     };
     support::new_leak_box_ptr(wrap)
