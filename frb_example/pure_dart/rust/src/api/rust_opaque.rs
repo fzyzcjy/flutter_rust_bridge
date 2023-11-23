@@ -1,3 +1,7 @@
+use flutter_rust_bridge::{DartSafe, RustOpaque};
+use std::fmt::Debug;
+use std::sync::{Mutex, RwLock};
+
 /// Opaque types
 pub trait DartDebug: DartSafe + Debug + Send + Sync {}
 impl<T: DartSafe + Debug + Send + Sync> DartDebug for T {}

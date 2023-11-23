@@ -1,3 +1,4 @@
+use flutter_rust_bridge::support::lazy_static;
 use flutter_rust_bridge::DartOpaque;
 
 pub fn sync_accept_dart_opaque(opaque: DartOpaque) -> SyncReturn<String> {
