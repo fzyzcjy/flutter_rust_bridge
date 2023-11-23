@@ -3,6 +3,8 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+part 'enumeration.freezed.dart';
+
 Future<EnumSimple> funcEnumSimpleTwinNormal(
         {required EnumSimple arg, dynamic hint}) =>
     RustLib.instance.api.funcEnumSimpleTwinNormal(arg: arg, hint: hint);
