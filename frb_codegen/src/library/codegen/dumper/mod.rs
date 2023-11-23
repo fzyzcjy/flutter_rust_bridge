@@ -19,14 +19,30 @@ impl Dumper<'_> {
         name: &str,
         data: &T,
     ) -> anyhow::Result<()> {
-        if !self.0.dump_contents.contains(&content) {
+        if !self.is_enabled(content) {
+            return Ok(());
+        }
+
+        self.dump_str(content, name, &serde_json::to_string_pretty(data)?)
+    }
+
+    pub(crate) fn dump_str(
+        &self,
+        content: ConfigDumpContent,
+        name: &str,
+        str: &str,
+    ) -> anyhow::Result<()> {
+        if !self.is_enabled(content) {
             return Ok(());
         }
 
         let path = self.0.dump_directory.join(name);
         info!("Dumping {name} into {path:?}");
 
-        let str = serde_json::to_string_pretty(data)?;
         create_dir_all_and_write(path, str)
+    }
+
+    fn is_enabled(&self, content: ConfigDumpContent) -> bool {
+        self.0.dump_contents.contains(&content)
     }
 }

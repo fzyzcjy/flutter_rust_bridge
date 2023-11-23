@@ -1,13 +1,31 @@
+use crate::codegen::dumper::Dumper;
+use crate::codegen::ConfigDumpContent;
 use crate::library::commands::cargo_expand::cargo_expand;
-use anyhow::Result;
+use anyhow::{Context, Result};
 use itertools::Itertools;
 use log::debug;
 use std::path::Path;
 
-pub(crate) fn read_rust_file(rust_file_path: &Path, rust_crate_dir: &Path) -> Result<String> {
+pub(crate) fn read_rust_file(
+    rust_file_path: &Path,
+    rust_crate_dir: &Path,
+    dumper: &Dumper,
+) -> Result<String> {
     let module = get_rust_mod(rust_file_path, rust_crate_dir)?;
     debug!("read_rust_file rust_file_path={rust_file_path:?} module={module:?}");
-    cargo_expand(&rust_crate_dir, module, rust_file_path)
+    let ans = cargo_expand(&rust_crate_dir, module, rust_file_path)?;
+
+    dumper.dump_str(
+        ConfigDumpContent::Source,
+        rust_file_path
+            .strip_prefix(rust_crate_dir)
+            .context("not prefix")?
+            .to_str()
+            .unwrap(),
+        &ans,
+    )?;
+
+    Ok(ans)
 }
 
 fn get_rust_mod(rust_file_path: &Path, rust_crate_dir: &Path) -> Result<Option<String>> {
