@@ -10,3 +10,4 @@ crate-type = ["cdylib"]
 anyhow = { workspace = true, features = ["backtrace"] }
 flutter_rust_bridge = { workspace = true }
 log = "0.4.19"
+backtrace = "0.3.68"

@@ -554,6 +554,7 @@ name = "frb_example_pure_dart"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "backtrace",
  "flutter_rust_bridge",
  "log",
 ]
