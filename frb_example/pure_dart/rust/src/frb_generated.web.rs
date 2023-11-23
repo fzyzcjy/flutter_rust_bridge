@@ -15,6 +15,40 @@ impl Wire2Api<String> for String {
         self
     }
 }
+impl Wire2Api<CustomNestedErrorInnerTwinNormal> for JsValue {
+    fn wire2api(self) -> CustomNestedErrorInnerTwinNormal {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => CustomNestedErrorInnerTwinNormal::Three(self_.get(1).wire2api()),
+            1 => CustomNestedErrorInnerTwinNormal::Four(self_.get(1).wire2api()),
+            _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<CustomNestedErrorOuterTwinNormal> for JsValue {
+    fn wire2api(self) -> CustomNestedErrorOuterTwinNormal {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => CustomNestedErrorOuterTwinNormal::One(self_.get(1).wire2api()),
+            1 => CustomNestedErrorOuterTwinNormal::Two(self_.get(1).wire2api()),
+            _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<CustomStructErrorTwinNormal> for JsValue {
+    fn wire2api(self) -> CustomStructErrorTwinNormal {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        CustomStructErrorTwinNormal {
+            a: self_.get(0).wire2api(),
+        }
+    }
+}
 impl Wire2Api<EnumWithItemMixedTwinNormal> for JsValue {
     fn wire2api(self) -> EnumWithItemMixedTwinNormal {
         let self_ = self.unchecked_into::<JsArray>();
@@ -146,6 +180,20 @@ impl Wire2Api<Vec<u64>> for Box<[u64]> {
 impl Wire2Api<Vec<u8>> for Box<[u8]> {
     fn wire2api(self) -> Vec<u8> {
         self.into_vec()
+    }
+}
+impl Wire2Api<MacroStruct> for JsValue {
+    fn wire2api(self) -> MacroStruct {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        MacroStruct {
+            data: self_.get(0).wire2api(),
+        }
     }
 }
 impl Wire2Api<StructWithCommentsTwinNormal> for JsValue {
@@ -484,13 +532,48 @@ pub fn wire_func_enum_with_item_tuple_twin_normal(port_: MessagePort, arg: JsVal
 }
 
 #[wasm_bindgen]
+pub fn wire_custom_enum_error_panic_twin_normal(port_: MessagePort) {
+    wire_custom_enum_error_panic_twin_normal_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_custom_enum_error_return_error_twin_normal(port_: MessagePort) {
+    wire_custom_enum_error_return_error_twin_normal_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_custom_enum_error_return_ok_twin_normal(port_: MessagePort) {
+    wire_custom_enum_error_return_ok_twin_normal_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_custom_nested_error_return_error_twin_normal(port_: MessagePort, arg: JsValue) {
+    wire_custom_nested_error_return_error_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_custom_struct_error_return_error_twin_normal(port_: MessagePort, arg: JsValue) {
+    wire_custom_struct_error_return_error_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
 pub fn wire_func_return_error_twin_normal(port_: MessagePort) {
     wire_func_return_error_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_return_panic_twin_normal(port_: MessagePort) {
-    wire_func_return_panic_twin_normal_impl(port_)
+pub fn wire_func_type_fallible_panic_twin_normal(port_: MessagePort) {
+    wire_func_type_fallible_panic_twin_normal_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_type_infallible_panic_twin_normal(port_: MessagePort) {
+    wire_func_type_infallible_panic_twin_normal_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_macro_struct(port_: MessagePort, arg: JsValue) {
+    wire_func_macro_struct_impl(port_, arg)
 }
 
 #[wasm_bindgen]

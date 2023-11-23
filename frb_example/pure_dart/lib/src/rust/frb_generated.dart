@@ -3,6 +3,7 @@
 import 'api/comment.dart';
 import 'api/enumeration.dart';
 import 'api/exception.dart';
+import 'api/inside_macro.dart';
 import 'api/misc_type.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/enumeration_twin_sync.dart';
@@ -87,9 +88,25 @@ abstract class RustLibApi extends BaseApi {
   Future<EnumWithItemTupleTwinNormal> funcEnumWithItemTupleTwinNormal(
       {required EnumWithItemTupleTwinNormal arg, dynamic hint});
 
+  Future<void> customEnumErrorPanicTwinNormal({dynamic hint});
+
+  Future<int> customEnumErrorReturnErrorTwinNormal({dynamic hint});
+
+  Future<int> customEnumErrorReturnOkTwinNormal({dynamic hint});
+
+  Future<void> customNestedErrorReturnErrorTwinNormal(
+      {required CustomNestedErrorOuterTwinNormal arg, dynamic hint});
+
+  Future<void> customStructErrorReturnErrorTwinNormal(
+      {required CustomStructErrorTwinNormal arg, dynamic hint});
+
   Future<int> funcReturnErrorTwinNormal({dynamic hint});
 
-  Future<int> funcReturnPanicTwinNormal({dynamic hint});
+  Future<int> funcTypeFalliblePanicTwinNormal({dynamic hint});
+
+  Future<int> funcTypeInfalliblePanicTwinNormal({dynamic hint});
+
+  Future<MacroStruct> funcMacroStruct({required MacroStruct arg, dynamic hint});
 
   Future<void> funcReturnUnitTwinNormal({dynamic hint});
 
@@ -559,6 +576,109 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<void> customEnumErrorPanicTwinNormal({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_custom_enum_error_panic_twin_normal(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_enum_error_twin_normal,
+      constMeta: kCustomEnumErrorPanicTwinNormalConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCustomEnumErrorPanicTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "custom_enum_error_panic_twin_normal",
+        argNames: [],
+      );
+
+  @override
+  Future<int> customEnumErrorReturnErrorTwinNormal({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_custom_enum_error_return_error_twin_normal(port_),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: _wire2api_custom_enum_error_twin_normal,
+      constMeta: kCustomEnumErrorReturnErrorTwinNormalConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCustomEnumErrorReturnErrorTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "custom_enum_error_return_error_twin_normal",
+        argNames: [],
+      );
+
+  @override
+  Future<int> customEnumErrorReturnOkTwinNormal({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_custom_enum_error_return_ok_twin_normal(port_),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: _wire2api_custom_enum_error_twin_normal,
+      constMeta: kCustomEnumErrorReturnOkTwinNormalConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCustomEnumErrorReturnOkTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "custom_enum_error_return_ok_twin_normal",
+        argNames: [],
+      );
+
+  @override
+  Future<void> customNestedErrorReturnErrorTwinNormal(
+      {required CustomNestedErrorOuterTwinNormal arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_custom_nested_error_outer_twin_normal(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_custom_nested_error_return_error_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_nested_error_outer_twin_normal,
+      constMeta: kCustomNestedErrorReturnErrorTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCustomNestedErrorReturnErrorTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "custom_nested_error_return_error_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<void> customStructErrorReturnErrorTwinNormal(
+      {required CustomStructErrorTwinNormal arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_custom_struct_error_twin_normal(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_custom_struct_error_return_error_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_struct_error_twin_normal,
+      constMeta: kCustomStructErrorReturnErrorTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCustomStructErrorReturnErrorTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "custom_struct_error_return_error_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
   Future<int> funcReturnErrorTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_func_return_error_twin_normal(port_),
@@ -577,21 +697,62 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<int> funcReturnPanicTwinNormal({dynamic hint}) {
+  Future<int> funcTypeFalliblePanicTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_func_return_panic_twin_normal(port_),
+      callFfi: (port_) => wire.wire_func_type_fallible_panic_twin_normal(port_),
       parseSuccessData: _wire2api_i_32,
-      parseErrorData: null,
-      constMeta: kFuncReturnPanicTwinNormalConstMeta,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kFuncTypeFalliblePanicTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kFuncReturnPanicTwinNormalConstMeta => const TaskConstMeta(
-        debugName: "func_return_panic_twin_normal",
+  TaskConstMeta get kFuncTypeFalliblePanicTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_type_fallible_panic_twin_normal",
         argNames: [],
+      );
+
+  @override
+  Future<int> funcTypeInfalliblePanicTwinNormal({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_func_type_infallible_panic_twin_normal(port_),
+      parseSuccessData: _wire2api_i_32,
+      parseErrorData: null,
+      constMeta: kFuncTypeInfalliblePanicTwinNormalConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncTypeInfalliblePanicTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_type_infallible_panic_twin_normal",
+        argNames: [],
+      );
+
+  @override
+  Future<MacroStruct> funcMacroStruct(
+      {required MacroStruct arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_macro_struct(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_func_macro_struct(port_, arg0),
+      parseSuccessData: _wire2api_macro_struct,
+      parseErrorData: null,
+      constMeta: kFuncMacroStructConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncMacroStructConstMeta => const TaskConstMeta(
+        debugName: "func_macro_struct",
+        argNames: ["arg"],
       );
 
   @override
@@ -2664,6 +2825,11 @@ bool _wire2api_box_autoadd_bool(dynamic raw) {
   return raw as bool;
 }
 
+CustomNestedErrorInnerTwinNormal
+    _wire2api_box_autoadd_custom_nested_error_inner_twin_normal(dynamic raw) {
+  return _wire2api_custom_nested_error_inner_twin_normal(raw);
+}
+
 double _wire2api_box_autoadd_f_32(dynamic raw) {
   return raw as double;
 }
@@ -2702,6 +2868,65 @@ BigInt _wire2api_box_autoadd_u_64(dynamic raw) {
 
 int _wire2api_box_autoadd_u_8(dynamic raw) {
   return raw as int;
+}
+
+CustomEnumErrorTwinNormal _wire2api_custom_enum_error_twin_normal(dynamic raw) {
+  switch (raw[0]) {
+    case 0:
+      return CustomEnumErrorTwinNormal_Error0(
+        e: _wire2api_String(raw[1]),
+        backtrace: _wire2api_String(raw[2]),
+      );
+    case 1:
+      return CustomEnumErrorTwinNormal_Error1(
+        e: _wire2api_u_32(raw[1]),
+        backtrace: _wire2api_String(raw[2]),
+      );
+    default:
+      throw Exception("unreachable");
+  }
+}
+
+CustomNestedErrorInnerTwinNormal
+    _wire2api_custom_nested_error_inner_twin_normal(dynamic raw) {
+  switch (raw[0]) {
+    case 0:
+      return CustomNestedErrorInnerTwinNormal_Three(
+        _wire2api_String(raw[1]),
+      );
+    case 1:
+      return CustomNestedErrorInnerTwinNormal_Four(
+        _wire2api_u_32(raw[1]),
+      );
+    default:
+      throw Exception("unreachable");
+  }
+}
+
+CustomNestedErrorOuterTwinNormal
+    _wire2api_custom_nested_error_outer_twin_normal(dynamic raw) {
+  switch (raw[0]) {
+    case 0:
+      return CustomNestedErrorOuterTwinNormal_One(
+        _wire2api_String(raw[1]),
+      );
+    case 1:
+      return CustomNestedErrorOuterTwinNormal_Two(
+        _wire2api_box_autoadd_custom_nested_error_inner_twin_normal(raw[1]),
+      );
+    default:
+      throw Exception("unreachable");
+  }
+}
+
+CustomStructErrorTwinNormal _wire2api_custom_struct_error_twin_normal(
+    dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return CustomStructErrorTwinNormal(
+    a: _wire2api_String(arr[0]),
+  );
 }
 
 EnumSimpleTwinNormal _wire2api_enum_simple_twin_normal(dynamic raw) {
@@ -2878,6 +3103,15 @@ Uint64List _wire2api_list_prim_u_64(dynamic raw) {
 
 Uint8List _wire2api_list_prim_u_8(dynamic raw) {
   return raw as Uint8List;
+}
+
+MacroStruct _wire2api_macro_struct(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return MacroStruct(
+    data: _wire2api_i_32(arr[0]),
+  );
 }
 
 bool? _wire2api_opt_box_autoadd_bool(dynamic raw) {

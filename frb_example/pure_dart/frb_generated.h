@@ -77,6 +77,50 @@ typedef struct wire_enum_with_item_tuple_twin_normal {
   union EnumWithItemTupleTwinNormalKind *kind;
 } wire_enum_with_item_tuple_twin_normal;
 
+typedef struct wire_CustomNestedErrorOuterTwinNormal_One {
+  struct wire_list_prim_u_8 *field0;
+} wire_CustomNestedErrorOuterTwinNormal_One;
+
+typedef struct wire_CustomNestedErrorInnerTwinNormal_Three {
+  struct wire_list_prim_u_8 *field0;
+} wire_CustomNestedErrorInnerTwinNormal_Three;
+
+typedef struct wire_CustomNestedErrorInnerTwinNormal_Four {
+  uint32_t field0;
+} wire_CustomNestedErrorInnerTwinNormal_Four;
+
+typedef union CustomNestedErrorInnerTwinNormalKind {
+  struct wire_CustomNestedErrorInnerTwinNormal_Three *Three;
+  struct wire_CustomNestedErrorInnerTwinNormal_Four *Four;
+} CustomNestedErrorInnerTwinNormalKind;
+
+typedef struct wire_custom_nested_error_inner_twin_normal {
+  int32_t tag;
+  union CustomNestedErrorInnerTwinNormalKind *kind;
+} wire_custom_nested_error_inner_twin_normal;
+
+typedef struct wire_CustomNestedErrorOuterTwinNormal_Two {
+  struct wire_custom_nested_error_inner_twin_normal *field0;
+} wire_CustomNestedErrorOuterTwinNormal_Two;
+
+typedef union CustomNestedErrorOuterTwinNormalKind {
+  struct wire_CustomNestedErrorOuterTwinNormal_One *One;
+  struct wire_CustomNestedErrorOuterTwinNormal_Two *Two;
+} CustomNestedErrorOuterTwinNormalKind;
+
+typedef struct wire_custom_nested_error_outer_twin_normal {
+  int32_t tag;
+  union CustomNestedErrorOuterTwinNormalKind *kind;
+} wire_custom_nested_error_outer_twin_normal;
+
+typedef struct wire_custom_struct_error_twin_normal {
+  struct wire_list_prim_u_8 *a;
+} wire_custom_struct_error_twin_normal;
+
+typedef struct wire_macro_struct {
+  int32_t data;
+} wire_macro_struct;
+
 typedef struct wire_struct_with_comments_twin_sync {
   int32_t field_with_comments;
 } wire_struct_with_comments_twin_sync;
@@ -251,9 +295,25 @@ void wire_func_enum_with_item_struct_twin_normal(int64_t port_,
 void wire_func_enum_with_item_tuple_twin_normal(int64_t port_,
                                                 struct wire_enum_with_item_tuple_twin_normal *arg);
 
+void wire_custom_enum_error_panic_twin_normal(int64_t port_);
+
+void wire_custom_enum_error_return_error_twin_normal(int64_t port_);
+
+void wire_custom_enum_error_return_ok_twin_normal(int64_t port_);
+
+void wire_custom_nested_error_return_error_twin_normal(int64_t port_,
+                                                       struct wire_custom_nested_error_outer_twin_normal *arg);
+
+void wire_custom_struct_error_return_error_twin_normal(int64_t port_,
+                                                       struct wire_custom_struct_error_twin_normal *arg);
+
 void wire_func_return_error_twin_normal(int64_t port_);
 
-void wire_func_return_panic_twin_normal(int64_t port_);
+void wire_func_type_fallible_panic_twin_normal(int64_t port_);
+
+void wire_func_type_infallible_panic_twin_normal(int64_t port_);
+
+void wire_func_macro_struct(int64_t port_, struct wire_macro_struct *arg);
 
 void wire_func_return_unit_twin_normal(int64_t port_);
 
@@ -464,6 +524,12 @@ void wire_func_tuple_struct_with_two_field_twin_normal(int64_t port_,
 
 bool *new_box_autoadd_bool(bool value);
 
+struct wire_custom_nested_error_inner_twin_normal *new_box_autoadd_custom_nested_error_inner_twin_normal(void);
+
+struct wire_custom_nested_error_outer_twin_normal *new_box_autoadd_custom_nested_error_outer_twin_normal(void);
+
+struct wire_custom_struct_error_twin_normal *new_box_autoadd_custom_struct_error_twin_normal(void);
+
 struct wire_enum_with_item_mixed_twin_normal *new_box_autoadd_enum_with_item_mixed_twin_normal(void);
 
 struct wire_enum_with_item_mixed_twin_sync *new_box_autoadd_enum_with_item_mixed_twin_sync(void);
@@ -487,6 +553,8 @@ int32_t *new_box_autoadd_i_32(int32_t value);
 int64_t *new_box_autoadd_i_64(int64_t value);
 
 int8_t *new_box_autoadd_i_8(int8_t value);
+
+struct wire_macro_struct *new_box_autoadd_macro_struct(void);
 
 struct wire_struct_with_comments_twin_normal *new_box_autoadd_struct_with_comments_twin_normal(void);
 
@@ -542,6 +610,14 @@ struct wire_list_prim_u_64 *new_list_prim_u_64(int32_t len);
 
 struct wire_list_prim_u_8 *new_list_prim_u_8(int32_t len);
 
+union CustomNestedErrorInnerTwinNormalKind *inflate_CustomNestedErrorInnerTwinNormal_Three(void);
+
+union CustomNestedErrorInnerTwinNormalKind *inflate_CustomNestedErrorInnerTwinNormal_Four(void);
+
+union CustomNestedErrorOuterTwinNormalKind *inflate_CustomNestedErrorOuterTwinNormal_One(void);
+
+union CustomNestedErrorOuterTwinNormalKind *inflate_CustomNestedErrorOuterTwinNormal_Two(void);
+
 union EnumWithItemMixedTwinNormalKind *inflate_EnumWithItemMixedTwinNormal_B(void);
 
 union EnumWithItemMixedTwinNormalKind *inflate_EnumWithItemMixedTwinNormal_C(void);
@@ -569,6 +645,10 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     int64_t dummy_var = 0;
     dummy_var ^= ((int64_t) (void*) drop_dart_object);
     dummy_var ^= ((int64_t) (void*) get_dart_object);
+    dummy_var ^= ((int64_t) (void*) inflate_CustomNestedErrorInnerTwinNormal_Four);
+    dummy_var ^= ((int64_t) (void*) inflate_CustomNestedErrorInnerTwinNormal_Three);
+    dummy_var ^= ((int64_t) (void*) inflate_CustomNestedErrorOuterTwinNormal_One);
+    dummy_var ^= ((int64_t) (void*) inflate_CustomNestedErrorOuterTwinNormal_Two);
     dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemMixedTwinNormal_B);
     dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemMixedTwinNormal_C);
     dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemMixedTwinSync_B);
@@ -582,6 +662,9 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemTupleTwinSync_A);
     dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemTupleTwinSync_B);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_bool);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_custom_nested_error_inner_twin_normal);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_custom_nested_error_outer_twin_normal);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_custom_struct_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_with_item_mixed_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_with_item_mixed_twin_sync);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_with_item_struct_twin_normal);
@@ -594,6 +677,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_i_32);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_i_64);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_i_8);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_macro_struct);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_comments_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_comments_twin_sync);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_one_field_twin_normal);
@@ -627,6 +711,11 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinNormal_static_method_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinSync_instance_method_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinSync_static_method_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_custom_enum_error_panic_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_custom_enum_error_return_error_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_custom_enum_error_return_ok_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_custom_nested_error_return_error_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_custom_struct_error_return_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_bool_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_bool_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_f32_twin_normal);
@@ -701,9 +790,9 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_struct_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_tuple_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_tuple_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_func_macro_struct);
     dummy_var ^= ((int64_t) (void*) wire_func_return_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_return_error_twin_sync);
-    dummy_var ^= ((int64_t) (void*) wire_func_return_panic_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_return_panic_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_func_return_unit_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_return_unit_twin_sync);
@@ -723,6 +812,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_func_tuple_struct_with_one_field_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_func_tuple_struct_with_two_field_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_tuple_struct_with_two_field_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_func_type_fallible_panic_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_func_type_infallible_panic_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_function_with_comments_slash_star_star_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_function_with_comments_slash_star_star_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_function_with_comments_triple_slash_multi_line_twin_normal);

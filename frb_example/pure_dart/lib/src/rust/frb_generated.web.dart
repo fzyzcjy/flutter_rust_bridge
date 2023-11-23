@@ -3,6 +3,7 @@
 import 'api/comment.dart';
 import 'api/enumeration.dart';
 import 'api/exception.dart';
+import 'api/inside_macro.dart';
 import 'api/misc_type.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/enumeration_twin_sync.dart';
@@ -39,6 +40,24 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   bool api2wire_box_autoadd_bool(bool raw) {
     return api2wire_bool(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_custom_nested_error_inner_twin_normal(
+      CustomNestedErrorInnerTwinNormal raw) {
+    return api2wire_custom_nested_error_inner_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_custom_nested_error_outer_twin_normal(
+      CustomNestedErrorOuterTwinNormal raw) {
+    return api2wire_custom_nested_error_outer_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_custom_struct_error_twin_normal(
+      CustomStructErrorTwinNormal raw) {
+    return api2wire_custom_struct_error_twin_normal(raw);
   }
 
   @protected
@@ -105,6 +124,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int api2wire_box_autoadd_i_8(int raw) {
     return api2wire_i_8(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_macro_struct(MacroStruct raw) {
+    return api2wire_macro_struct(raw);
   }
 
   @protected
@@ -197,6 +221,41 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int api2wire_box_autoadd_u_8(int raw) {
     return api2wire_u_8(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_custom_nested_error_inner_twin_normal(
+      CustomNestedErrorInnerTwinNormal raw) {
+    if (raw is CustomNestedErrorInnerTwinNormal_Three) {
+      return [0, api2wire_String(raw.field0)];
+    }
+    if (raw is CustomNestedErrorInnerTwinNormal_Four) {
+      return [1, api2wire_u_32(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> api2wire_custom_nested_error_outer_twin_normal(
+      CustomNestedErrorOuterTwinNormal raw) {
+    if (raw is CustomNestedErrorOuterTwinNormal_One) {
+      return [0, api2wire_String(raw.field0)];
+    }
+    if (raw is CustomNestedErrorOuterTwinNormal_Two) {
+      return [
+        1,
+        api2wire_box_autoadd_custom_nested_error_inner_twin_normal(raw.field0)
+      ];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> api2wire_custom_struct_error_twin_normal(
+      CustomStructErrorTwinNormal raw) {
+    return [api2wire_String(raw.a)];
   }
 
   @protected
@@ -341,6 +400,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   Uint8List api2wire_list_prim_u_8(Uint8List raw) {
     return raw;
+  }
+
+  @protected
+  List<dynamic> api2wire_macro_struct(MacroStruct raw) {
+    return [api2wire_i_32(raw.data)];
   }
 
   @protected

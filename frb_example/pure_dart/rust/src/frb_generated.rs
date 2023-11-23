@@ -24,7 +24,13 @@ use crate::api::enumeration::EnumWithItemMixedTwinNormal;
 use crate::api::enumeration::EnumWithItemStructTwinNormal;
 use crate::api::enumeration::EnumWithItemTupleTwinNormal;
 use crate::api::enumeration::*;
+use crate::api::exception::CustomEnumErrorTwinNormal;
+use crate::api::exception::CustomNestedErrorInnerTwinNormal;
+use crate::api::exception::CustomNestedErrorOuterTwinNormal;
+use crate::api::exception::CustomStructErrorTwinNormal;
 use crate::api::exception::*;
+use crate::api::inside_macro::MacroStruct;
+use crate::api::inside_macro::*;
 use crate::api::misc_type::*;
 use crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync;
 use crate::api::pseudo_manual::comment_twin_sync::*;
@@ -205,6 +211,68 @@ fn wire_func_enum_with_item_tuple_twin_normal_impl(
         },
     )
 }
+fn wire_custom_enum_error_panic_twin_normal_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        WrapInfo {
+            debug_name: "custom_enum_error_panic_twin_normal",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| custom_enum_error_panic_twin_normal(),
+    )
+}
+fn wire_custom_enum_error_return_error_twin_normal_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32, _>(
+        WrapInfo {
+            debug_name: "custom_enum_error_return_error_twin_normal",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| custom_enum_error_return_error_twin_normal(),
+    )
+}
+fn wire_custom_enum_error_return_ok_twin_normal_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32, _>(
+        WrapInfo {
+            debug_name: "custom_enum_error_return_ok_twin_normal",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| custom_enum_error_return_ok_twin_normal(),
+    )
+}
+fn wire_custom_nested_error_return_error_twin_normal_impl(
+    port_: MessagePort,
+    arg: impl Wire2Api<CustomNestedErrorOuterTwinNormal> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        WrapInfo {
+            debug_name: "custom_nested_error_return_error_twin_normal",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| custom_nested_error_return_error_twin_normal(api_arg)
+        },
+    )
+}
+fn wire_custom_struct_error_return_error_twin_normal_impl(
+    port_: MessagePort,
+    arg: impl Wire2Api<CustomStructErrorTwinNormal> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        WrapInfo {
+            debug_name: "custom_struct_error_return_error_twin_normal",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| custom_struct_error_return_error_twin_normal(api_arg)
+        },
+    )
+}
 fn wire_func_return_error_twin_normal_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
         WrapInfo {
@@ -215,14 +283,37 @@ fn wire_func_return_error_twin_normal_impl(port_: MessagePort) {
         move || move |task_callback| func_return_error_twin_normal(),
     )
 }
-fn wire_func_return_panic_twin_normal_impl(port_: MessagePort) {
+fn wire_func_type_fallible_panic_twin_normal_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
         WrapInfo {
-            debug_name: "func_return_panic_twin_normal",
+            debug_name: "func_type_fallible_panic_twin_normal",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Result::<_, ()>::Ok(func_return_panic_twin_normal()),
+        move || move |task_callback| func_type_fallible_panic_twin_normal(),
+    )
+}
+fn wire_func_type_infallible_panic_twin_normal_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
+        WrapInfo {
+            debug_name: "func_type_infallible_panic_twin_normal",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(func_type_infallible_panic_twin_normal()),
+    )
+}
+fn wire_func_macro_struct_impl(port_: MessagePort, arg: impl Wire2Api<MacroStruct> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, MacroStruct, _>(
+        WrapInfo {
+            debug_name: "func_macro_struct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(func_macro_struct(api_arg))
+        },
     )
 }
 fn wire_func_return_unit_twin_normal_impl(port_: MessagePort) {
@@ -1770,61 +1861,6 @@ fn wire_func_tuple_struct_with_two_field_twin_normal_impl(
     )
 }
 
-// Section: static_checks
-
-const _: fn() = || {
-    match None::<EnumWithItemMixedTwinNormal>.unwrap() {
-        EnumWithItemMixedTwinNormal::A => {}
-        EnumWithItemMixedTwinNormal::B(field0) => {
-            let _: Vec<u8> = field0;
-        }
-        EnumWithItemMixedTwinNormal::C { c_field } => {
-            let _: String = c_field;
-        }
-    }
-    match None::<EnumWithItemMixedTwinSync>.unwrap() {
-        EnumWithItemMixedTwinSync::A => {}
-        EnumWithItemMixedTwinSync::B(field0) => {
-            let _: Vec<u8> = field0;
-        }
-        EnumWithItemMixedTwinSync::C { c_field } => {
-            let _: String = c_field;
-        }
-    }
-    match None::<EnumWithItemStructTwinNormal>.unwrap() {
-        EnumWithItemStructTwinNormal::A { a_field } => {
-            let _: Vec<u8> = a_field;
-        }
-        EnumWithItemStructTwinNormal::B { b_field } => {
-            let _: Vec<i32> = b_field;
-        }
-    }
-    match None::<EnumWithItemStructTwinSync>.unwrap() {
-        EnumWithItemStructTwinSync::A { a_field } => {
-            let _: Vec<u8> = a_field;
-        }
-        EnumWithItemStructTwinSync::B { b_field } => {
-            let _: Vec<i32> = b_field;
-        }
-    }
-    match None::<EnumWithItemTupleTwinNormal>.unwrap() {
-        EnumWithItemTupleTwinNormal::A(field0) => {
-            let _: Vec<u8> = field0;
-        }
-        EnumWithItemTupleTwinNormal::B(field0) => {
-            let _: Vec<i32> = field0;
-        }
-    }
-    match None::<EnumWithItemTupleTwinSync>.unwrap() {
-        EnumWithItemTupleTwinSync::A(field0) => {
-            let _: Vec<u8> = field0;
-        }
-        EnumWithItemTupleTwinSync::B(field0) => {
-            let _: Vec<i32> = field0;
-        }
-    }
-};
-
 // Section: executor
 
 support::lazy_static! {
@@ -1921,6 +1957,74 @@ impl Wire2Api<u8> for u8 {
 
 // Section: impl_into_dart
 
+impl support::IntoDart for CustomEnumErrorTwinNormal {
+    fn into_dart(self) -> support::DartAbi {
+        match self {
+            Self::Error0 { e, backtrace } => vec![
+                0.into_dart(),
+                e.into_into_dart().into_dart(),
+                backtrace.into_into_dart().into_dart(),
+            ],
+            Self::Error1 { e, backtrace } => vec![
+                1.into_dart(),
+                e.into_into_dart().into_dart(),
+                backtrace.into_into_dart().into_dart(),
+            ],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for CustomEnumErrorTwinNormal {}
+impl rust2dart::IntoIntoDart<CustomEnumErrorTwinNormal> for CustomEnumErrorTwinNormal {
+    fn into_into_dart(self) -> CustomEnumErrorTwinNormal {
+        self
+    }
+}
+impl support::IntoDart for CustomNestedErrorInnerTwinNormal {
+    fn into_dart(self) -> support::DartAbi {
+        match self {
+            Self::Three(field0) => vec![0.into_dart(), field0.into_into_dart().into_dart()],
+            Self::Four(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for CustomNestedErrorInnerTwinNormal {}
+impl rust2dart::IntoIntoDart<CustomNestedErrorInnerTwinNormal>
+    for CustomNestedErrorInnerTwinNormal
+{
+    fn into_into_dart(self) -> CustomNestedErrorInnerTwinNormal {
+        self
+    }
+}
+impl support::IntoDart for CustomNestedErrorOuterTwinNormal {
+    fn into_dart(self) -> support::DartAbi {
+        match self {
+            Self::One(field0) => vec![0.into_dart(), field0.into_into_dart().into_dart()],
+            Self::Two(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for CustomNestedErrorOuterTwinNormal {}
+impl rust2dart::IntoIntoDart<CustomNestedErrorOuterTwinNormal>
+    for CustomNestedErrorOuterTwinNormal
+{
+    fn into_into_dart(self) -> CustomNestedErrorOuterTwinNormal {
+        self
+    }
+}
+impl support::IntoDart for CustomStructErrorTwinNormal {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.a.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for CustomStructErrorTwinNormal {}
+impl rust2dart::IntoIntoDart<CustomStructErrorTwinNormal> for CustomStructErrorTwinNormal {
+    fn into_into_dart(self) -> CustomStructErrorTwinNormal {
+        self
+    }
+}
 impl support::IntoDart for EnumSimpleTwinNormal {
     fn into_dart(self) -> support::DartAbi {
         match self {
@@ -2040,6 +2144,17 @@ impl support::IntoDart for EnumWithItemTupleTwinSync {
 impl support::IntoDartExceptPrimitive for EnumWithItemTupleTwinSync {}
 impl rust2dart::IntoIntoDart<EnumWithItemTupleTwinSync> for EnumWithItemTupleTwinSync {
     fn into_into_dart(self) -> EnumWithItemTupleTwinSync {
+        self
+    }
+}
+impl support::IntoDart for MacroStruct {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.data.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for MacroStruct {}
+impl rust2dart::IntoIntoDart<MacroStruct> for MacroStruct {
+    fn into_into_dart(self) -> MacroStruct {
         self
     }
 }

@@ -3,6 +3,7 @@
 import 'api/comment.dart';
 import 'api/enumeration.dart';
 import 'api/exception.dart';
+import 'api/inside_macro.dart';
 import 'api/misc_type.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/enumeration_twin_sync.dart';
@@ -40,6 +41,33 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   ffi.Pointer<ffi.Bool> api2wire_box_autoadd_bool(bool raw) {
     return wire.new_box_autoadd_bool(api2wire_bool(raw));
+  }
+
+  @protected
+  ffi.Pointer<wire_custom_nested_error_inner_twin_normal>
+      api2wire_box_autoadd_custom_nested_error_inner_twin_normal(
+          CustomNestedErrorInnerTwinNormal raw) {
+    final ptr = wire.new_box_autoadd_custom_nested_error_inner_twin_normal();
+    _api_fill_to_wire_custom_nested_error_inner_twin_normal(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_custom_nested_error_outer_twin_normal>
+      api2wire_box_autoadd_custom_nested_error_outer_twin_normal(
+          CustomNestedErrorOuterTwinNormal raw) {
+    final ptr = wire.new_box_autoadd_custom_nested_error_outer_twin_normal();
+    _api_fill_to_wire_custom_nested_error_outer_twin_normal(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_custom_struct_error_twin_normal>
+      api2wire_box_autoadd_custom_struct_error_twin_normal(
+          CustomStructErrorTwinNormal raw) {
+    final ptr = wire.new_box_autoadd_custom_struct_error_twin_normal();
+    _api_fill_to_wire_custom_struct_error_twin_normal(raw, ptr.ref);
+    return ptr;
   }
 
   @protected
@@ -124,6 +152,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   ffi.Pointer<ffi.Int8> api2wire_box_autoadd_i_8(int raw) {
     return wire.new_box_autoadd_i_8(api2wire_i_8(raw));
+  }
+
+  @protected
+  ffi.Pointer<wire_macro_struct> api2wire_box_autoadd_macro_struct(
+      MacroStruct raw) {
+    final ptr = wire.new_box_autoadd_macro_struct();
+    _api_fill_to_wire_macro_struct(raw, ptr.ref);
+    return ptr;
   }
 
   @protected
@@ -398,6 +434,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     return raw.toInt();
   }
 
+  void _api_fill_to_wire_box_autoadd_custom_nested_error_inner_twin_normal(
+      CustomNestedErrorInnerTwinNormal apiObj,
+      ffi.Pointer<wire_custom_nested_error_inner_twin_normal> wireObj) {
+    _api_fill_to_wire_custom_nested_error_inner_twin_normal(
+        apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_custom_nested_error_outer_twin_normal(
+      CustomNestedErrorOuterTwinNormal apiObj,
+      ffi.Pointer<wire_custom_nested_error_outer_twin_normal> wireObj) {
+    _api_fill_to_wire_custom_nested_error_outer_twin_normal(
+        apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_custom_struct_error_twin_normal(
+      CustomStructErrorTwinNormal apiObj,
+      ffi.Pointer<wire_custom_struct_error_twin_normal> wireObj) {
+    _api_fill_to_wire_custom_struct_error_twin_normal(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_enum_with_item_mixed_twin_normal(
       EnumWithItemMixedTwinNormal apiObj,
       ffi.Pointer<wire_enum_with_item_mixed_twin_normal> wireObj) {
@@ -432,6 +488,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       EnumWithItemTupleTwinSync apiObj,
       ffi.Pointer<wire_enum_with_item_tuple_twin_sync> wireObj) {
     _api_fill_to_wire_enum_with_item_tuple_twin_sync(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_macro_struct(
+      MacroStruct apiObj, ffi.Pointer<wire_macro_struct> wireObj) {
+    _api_fill_to_wire_macro_struct(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_struct_with_comments_twin_normal(
@@ -496,6 +557,52 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       ffi.Pointer<wire_tuple_struct_with_two_field_twin_sync> wireObj) {
     _api_fill_to_wire_tuple_struct_with_two_field_twin_sync(
         apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_custom_nested_error_inner_twin_normal(
+      CustomNestedErrorInnerTwinNormal apiObj,
+      wire_custom_nested_error_inner_twin_normal wireObj) {
+    if (apiObj is CustomNestedErrorInnerTwinNormal_Three) {
+      var pre_field0 = api2wire_String(apiObj.field0);
+      wireObj.tag = 0;
+      wireObj.kind = wire.inflate_CustomNestedErrorInnerTwinNormal_Three();
+      wireObj.kind.ref.Three.ref.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is CustomNestedErrorInnerTwinNormal_Four) {
+      var pre_field0 = api2wire_u_32(apiObj.field0);
+      wireObj.tag = 1;
+      wireObj.kind = wire.inflate_CustomNestedErrorInnerTwinNormal_Four();
+      wireObj.kind.ref.Four.ref.field0 = pre_field0;
+      return;
+    }
+  }
+
+  void _api_fill_to_wire_custom_nested_error_outer_twin_normal(
+      CustomNestedErrorOuterTwinNormal apiObj,
+      wire_custom_nested_error_outer_twin_normal wireObj) {
+    if (apiObj is CustomNestedErrorOuterTwinNormal_One) {
+      var pre_field0 = api2wire_String(apiObj.field0);
+      wireObj.tag = 0;
+      wireObj.kind = wire.inflate_CustomNestedErrorOuterTwinNormal_One();
+      wireObj.kind.ref.One.ref.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is CustomNestedErrorOuterTwinNormal_Two) {
+      var pre_field0 =
+          api2wire_box_autoadd_custom_nested_error_inner_twin_normal(
+              apiObj.field0);
+      wireObj.tag = 1;
+      wireObj.kind = wire.inflate_CustomNestedErrorOuterTwinNormal_Two();
+      wireObj.kind.ref.Two.ref.field0 = pre_field0;
+      return;
+    }
+  }
+
+  void _api_fill_to_wire_custom_struct_error_twin_normal(
+      CustomStructErrorTwinNormal apiObj,
+      wire_custom_struct_error_twin_normal wireObj) {
+    wireObj.a = api2wire_String(apiObj.a);
   }
 
   void _api_fill_to_wire_enum_with_item_mixed_twin_normal(
@@ -618,6 +725,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       wireObj.kind.ref.B.ref.field0 = pre_field0;
       return;
     }
+  }
+
+  void _api_fill_to_wire_macro_struct(
+      MacroStruct apiObj, wire_macro_struct wireObj) {
+    wireObj.data = api2wire_i_32(apiObj.data);
   }
 
   void _api_fill_to_wire_struct_with_comments_twin_normal(
@@ -874,6 +986,91 @@ class RustLibWire implements BaseWire {
           void Function(
               int, ffi.Pointer<wire_enum_with_item_tuple_twin_normal>)>();
 
+  void wire_custom_enum_error_panic_twin_normal(
+    int port_,
+  ) {
+    return _wire_custom_enum_error_panic_twin_normal(
+      port_,
+    );
+  }
+
+  late final _wire_custom_enum_error_panic_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_custom_enum_error_panic_twin_normal');
+  late final _wire_custom_enum_error_panic_twin_normal =
+      _wire_custom_enum_error_panic_twin_normalPtr
+          .asFunction<void Function(int)>();
+
+  void wire_custom_enum_error_return_error_twin_normal(
+    int port_,
+  ) {
+    return _wire_custom_enum_error_return_error_twin_normal(
+      port_,
+    );
+  }
+
+  late final _wire_custom_enum_error_return_error_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_custom_enum_error_return_error_twin_normal');
+  late final _wire_custom_enum_error_return_error_twin_normal =
+      _wire_custom_enum_error_return_error_twin_normalPtr
+          .asFunction<void Function(int)>();
+
+  void wire_custom_enum_error_return_ok_twin_normal(
+    int port_,
+  ) {
+    return _wire_custom_enum_error_return_ok_twin_normal(
+      port_,
+    );
+  }
+
+  late final _wire_custom_enum_error_return_ok_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_custom_enum_error_return_ok_twin_normal');
+  late final _wire_custom_enum_error_return_ok_twin_normal =
+      _wire_custom_enum_error_return_ok_twin_normalPtr
+          .asFunction<void Function(int)>();
+
+  void wire_custom_nested_error_return_error_twin_normal(
+    int port_,
+    ffi.Pointer<wire_custom_nested_error_outer_twin_normal> arg,
+  ) {
+    return _wire_custom_nested_error_return_error_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_custom_nested_error_return_error_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64,
+                  ffi.Pointer<wire_custom_nested_error_outer_twin_normal>)>>(
+      'wire_custom_nested_error_return_error_twin_normal');
+  late final _wire_custom_nested_error_return_error_twin_normal =
+      _wire_custom_nested_error_return_error_twin_normalPtr.asFunction<
+          void Function(
+              int, ffi.Pointer<wire_custom_nested_error_outer_twin_normal>)>();
+
+  void wire_custom_struct_error_return_error_twin_normal(
+    int port_,
+    ffi.Pointer<wire_custom_struct_error_twin_normal> arg,
+  ) {
+    return _wire_custom_struct_error_return_error_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_custom_struct_error_return_error_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64,
+                  ffi.Pointer<wire_custom_struct_error_twin_normal>)>>(
+      'wire_custom_struct_error_return_error_twin_normal');
+  late final _wire_custom_struct_error_return_error_twin_normal =
+      _wire_custom_struct_error_return_error_twin_normalPtr.asFunction<
+          void Function(
+              int, ffi.Pointer<wire_custom_struct_error_twin_normal>)>();
+
   void wire_func_return_error_twin_normal(
     int port_,
   ) {
@@ -888,19 +1085,52 @@ class RustLibWire implements BaseWire {
   late final _wire_func_return_error_twin_normal =
       _wire_func_return_error_twin_normalPtr.asFunction<void Function(int)>();
 
-  void wire_func_return_panic_twin_normal(
+  void wire_func_type_fallible_panic_twin_normal(
     int port_,
   ) {
-    return _wire_func_return_panic_twin_normal(
+    return _wire_func_type_fallible_panic_twin_normal(
       port_,
     );
   }
 
-  late final _wire_func_return_panic_twin_normalPtr =
+  late final _wire_func_type_fallible_panic_twin_normalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_func_return_panic_twin_normal');
-  late final _wire_func_return_panic_twin_normal =
-      _wire_func_return_panic_twin_normalPtr.asFunction<void Function(int)>();
+          'wire_func_type_fallible_panic_twin_normal');
+  late final _wire_func_type_fallible_panic_twin_normal =
+      _wire_func_type_fallible_panic_twin_normalPtr
+          .asFunction<void Function(int)>();
+
+  void wire_func_type_infallible_panic_twin_normal(
+    int port_,
+  ) {
+    return _wire_func_type_infallible_panic_twin_normal(
+      port_,
+    );
+  }
+
+  late final _wire_func_type_infallible_panic_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_func_type_infallible_panic_twin_normal');
+  late final _wire_func_type_infallible_panic_twin_normal =
+      _wire_func_type_infallible_panic_twin_normalPtr
+          .asFunction<void Function(int)>();
+
+  void wire_func_macro_struct(
+    int port_,
+    ffi.Pointer<wire_macro_struct> arg,
+  ) {
+    return _wire_func_macro_struct(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_macro_structPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64,
+              ffi.Pointer<wire_macro_struct>)>>('wire_func_macro_struct');
+  late final _wire_func_macro_struct = _wire_func_macro_structPtr
+      .asFunction<void Function(int, ffi.Pointer<wire_macro_struct>)>();
 
   void wire_func_return_unit_twin_normal(
     int port_,
@@ -2512,6 +2742,49 @@ class RustLibWire implements BaseWire {
   late final _new_box_autoadd_bool = _new_box_autoadd_boolPtr
       .asFunction<ffi.Pointer<ffi.Bool> Function(bool)>();
 
+  ffi.Pointer<wire_custom_nested_error_inner_twin_normal>
+      new_box_autoadd_custom_nested_error_inner_twin_normal() {
+    return _new_box_autoadd_custom_nested_error_inner_twin_normal();
+  }
+
+  late final _new_box_autoadd_custom_nested_error_inner_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<wire_custom_nested_error_inner_twin_normal>
+                      Function()>>(
+          'new_box_autoadd_custom_nested_error_inner_twin_normal');
+  late final _new_box_autoadd_custom_nested_error_inner_twin_normal =
+      _new_box_autoadd_custom_nested_error_inner_twin_normalPtr.asFunction<
+          ffi.Pointer<wire_custom_nested_error_inner_twin_normal> Function()>();
+
+  ffi.Pointer<wire_custom_nested_error_outer_twin_normal>
+      new_box_autoadd_custom_nested_error_outer_twin_normal() {
+    return _new_box_autoadd_custom_nested_error_outer_twin_normal();
+  }
+
+  late final _new_box_autoadd_custom_nested_error_outer_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<wire_custom_nested_error_outer_twin_normal>
+                      Function()>>(
+          'new_box_autoadd_custom_nested_error_outer_twin_normal');
+  late final _new_box_autoadd_custom_nested_error_outer_twin_normal =
+      _new_box_autoadd_custom_nested_error_outer_twin_normalPtr.asFunction<
+          ffi.Pointer<wire_custom_nested_error_outer_twin_normal> Function()>();
+
+  ffi.Pointer<wire_custom_struct_error_twin_normal>
+      new_box_autoadd_custom_struct_error_twin_normal() {
+    return _new_box_autoadd_custom_struct_error_twin_normal();
+  }
+
+  late final _new_box_autoadd_custom_struct_error_twin_normalPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_custom_struct_error_twin_normal>
+              Function()>>('new_box_autoadd_custom_struct_error_twin_normal');
+  late final _new_box_autoadd_custom_struct_error_twin_normal =
+      _new_box_autoadd_custom_struct_error_twin_normalPtr.asFunction<
+          ffi.Pointer<wire_custom_struct_error_twin_normal> Function()>();
+
   ffi.Pointer<wire_enum_with_item_mixed_twin_normal>
       new_box_autoadd_enum_with_item_mixed_twin_normal() {
     return _new_box_autoadd_enum_with_item_mixed_twin_normal();
@@ -2673,6 +2946,16 @@ class RustLibWire implements BaseWire {
           'new_box_autoadd_i_8');
   late final _new_box_autoadd_i_8 =
       _new_box_autoadd_i_8Ptr.asFunction<ffi.Pointer<ffi.Int8> Function(int)>();
+
+  ffi.Pointer<wire_macro_struct> new_box_autoadd_macro_struct() {
+    return _new_box_autoadd_macro_struct();
+  }
+
+  late final _new_box_autoadd_macro_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_macro_struct> Function()>>(
+          'new_box_autoadd_macro_struct');
+  late final _new_box_autoadd_macro_struct = _new_box_autoadd_macro_structPtr
+      .asFunction<ffi.Pointer<wire_macro_struct> Function()>();
 
   ffi.Pointer<wire_struct_with_comments_twin_normal>
       new_box_autoadd_struct_with_comments_twin_normal() {
@@ -3060,6 +3343,58 @@ class RustLibWire implements BaseWire {
   late final _new_list_prim_u_8 = _new_list_prim_u_8Ptr
       .asFunction<ffi.Pointer<wire_list_prim_u_8> Function(int)>();
 
+  ffi.Pointer<CustomNestedErrorInnerTwinNormalKind>
+      inflate_CustomNestedErrorInnerTwinNormal_Three() {
+    return _inflate_CustomNestedErrorInnerTwinNormal_Three();
+  }
+
+  late final _inflate_CustomNestedErrorInnerTwinNormal_ThreePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<CustomNestedErrorInnerTwinNormalKind>
+              Function()>>('inflate_CustomNestedErrorInnerTwinNormal_Three');
+  late final _inflate_CustomNestedErrorInnerTwinNormal_Three =
+      _inflate_CustomNestedErrorInnerTwinNormal_ThreePtr.asFunction<
+          ffi.Pointer<CustomNestedErrorInnerTwinNormalKind> Function()>();
+
+  ffi.Pointer<CustomNestedErrorInnerTwinNormalKind>
+      inflate_CustomNestedErrorInnerTwinNormal_Four() {
+    return _inflate_CustomNestedErrorInnerTwinNormal_Four();
+  }
+
+  late final _inflate_CustomNestedErrorInnerTwinNormal_FourPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<CustomNestedErrorInnerTwinNormalKind>
+              Function()>>('inflate_CustomNestedErrorInnerTwinNormal_Four');
+  late final _inflate_CustomNestedErrorInnerTwinNormal_Four =
+      _inflate_CustomNestedErrorInnerTwinNormal_FourPtr.asFunction<
+          ffi.Pointer<CustomNestedErrorInnerTwinNormalKind> Function()>();
+
+  ffi.Pointer<CustomNestedErrorOuterTwinNormalKind>
+      inflate_CustomNestedErrorOuterTwinNormal_One() {
+    return _inflate_CustomNestedErrorOuterTwinNormal_One();
+  }
+
+  late final _inflate_CustomNestedErrorOuterTwinNormal_OnePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<CustomNestedErrorOuterTwinNormalKind>
+              Function()>>('inflate_CustomNestedErrorOuterTwinNormal_One');
+  late final _inflate_CustomNestedErrorOuterTwinNormal_One =
+      _inflate_CustomNestedErrorOuterTwinNormal_OnePtr.asFunction<
+          ffi.Pointer<CustomNestedErrorOuterTwinNormalKind> Function()>();
+
+  ffi.Pointer<CustomNestedErrorOuterTwinNormalKind>
+      inflate_CustomNestedErrorOuterTwinNormal_Two() {
+    return _inflate_CustomNestedErrorOuterTwinNormal_Two();
+  }
+
+  late final _inflate_CustomNestedErrorOuterTwinNormal_TwoPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<CustomNestedErrorOuterTwinNormalKind>
+              Function()>>('inflate_CustomNestedErrorOuterTwinNormal_Two');
+  late final _inflate_CustomNestedErrorOuterTwinNormal_Two =
+      _inflate_CustomNestedErrorOuterTwinNormal_TwoPtr.asFunction<
+          ffi.Pointer<CustomNestedErrorOuterTwinNormalKind> Function()>();
+
   ffi.Pointer<EnumWithItemMixedTwinNormalKind>
       inflate_EnumWithItemMixedTwinNormal_B() {
     return _inflate_EnumWithItemMixedTwinNormal_B();
@@ -3311,6 +3646,58 @@ final class wire_enum_with_item_tuple_twin_normal extends ffi.Struct {
   external int tag;
 
   external ffi.Pointer<EnumWithItemTupleTwinNormalKind> kind;
+}
+
+final class wire_CustomNestedErrorOuterTwinNormal_One extends ffi.Struct {
+  external ffi.Pointer<wire_list_prim_u_8> field0;
+}
+
+final class wire_CustomNestedErrorInnerTwinNormal_Three extends ffi.Struct {
+  external ffi.Pointer<wire_list_prim_u_8> field0;
+}
+
+final class wire_CustomNestedErrorInnerTwinNormal_Four extends ffi.Struct {
+  @ffi.Uint32()
+  external int field0;
+}
+
+final class CustomNestedErrorInnerTwinNormalKind extends ffi.Union {
+  external ffi.Pointer<wire_CustomNestedErrorInnerTwinNormal_Three> Three;
+
+  external ffi.Pointer<wire_CustomNestedErrorInnerTwinNormal_Four> Four;
+}
+
+final class wire_custom_nested_error_inner_twin_normal extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<CustomNestedErrorInnerTwinNormalKind> kind;
+}
+
+final class wire_CustomNestedErrorOuterTwinNormal_Two extends ffi.Struct {
+  external ffi.Pointer<wire_custom_nested_error_inner_twin_normal> field0;
+}
+
+final class CustomNestedErrorOuterTwinNormalKind extends ffi.Union {
+  external ffi.Pointer<wire_CustomNestedErrorOuterTwinNormal_One> One;
+
+  external ffi.Pointer<wire_CustomNestedErrorOuterTwinNormal_Two> Two;
+}
+
+final class wire_custom_nested_error_outer_twin_normal extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<CustomNestedErrorOuterTwinNormalKind> kind;
+}
+
+final class wire_custom_struct_error_twin_normal extends ffi.Struct {
+  external ffi.Pointer<wire_list_prim_u_8> a;
+}
+
+final class wire_macro_struct extends ffi.Struct {
+  @ffi.Int32()
+  external int data;
 }
 
 final class wire_struct_with_comments_twin_sync extends ffi.Struct {

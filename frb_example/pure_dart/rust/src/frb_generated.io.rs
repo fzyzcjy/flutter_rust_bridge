@@ -13,6 +13,28 @@ impl Wire2Api<bool> for *mut bool {
         unsafe { *support::box_from_leak_ptr(self) }
     }
 }
+impl Wire2Api<CustomNestedErrorInnerTwinNormal>
+    for *mut wire_custom_nested_error_inner_twin_normal
+{
+    fn wire2api(self) -> CustomNestedErrorInnerTwinNormal {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<CustomNestedErrorInnerTwinNormal>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<CustomNestedErrorOuterTwinNormal>
+    for *mut wire_custom_nested_error_outer_twin_normal
+{
+    fn wire2api(self) -> CustomNestedErrorOuterTwinNormal {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<CustomNestedErrorOuterTwinNormal>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<CustomStructErrorTwinNormal> for *mut wire_custom_struct_error_twin_normal {
+    fn wire2api(self) -> CustomStructErrorTwinNormal {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<CustomStructErrorTwinNormal>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<EnumWithItemMixedTwinNormal> for *mut wire_enum_with_item_mixed_twin_normal {
     fn wire2api(self) -> EnumWithItemMixedTwinNormal {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -77,6 +99,12 @@ impl Wire2Api<i64> for *mut i64 {
 impl Wire2Api<i8> for *mut i8 {
     fn wire2api(self) -> i8 {
         unsafe { *support::box_from_leak_ptr(self) }
+    }
+}
+impl Wire2Api<MacroStruct> for *mut wire_macro_struct {
+    fn wire2api(self) -> MacroStruct {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<MacroStruct>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<StructWithCommentsTwinNormal> for *mut wire_struct_with_comments_twin_normal {
@@ -173,6 +201,47 @@ impl Wire2Api<u64> for *mut u64 {
 impl Wire2Api<u8> for *mut u8 {
     fn wire2api(self) -> u8 {
         unsafe { *support::box_from_leak_ptr(self) }
+    }
+}
+impl Wire2Api<CustomNestedErrorInnerTwinNormal> for wire_custom_nested_error_inner_twin_normal {
+    fn wire2api(self) -> CustomNestedErrorInnerTwinNormal {
+        match self.tag {
+            0 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Three);
+                CustomNestedErrorInnerTwinNormal::Three(ans.field0.wire2api())
+            },
+            1 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Four);
+                CustomNestedErrorInnerTwinNormal::Four(ans.field0.wire2api())
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<CustomNestedErrorOuterTwinNormal> for wire_custom_nested_error_outer_twin_normal {
+    fn wire2api(self) -> CustomNestedErrorOuterTwinNormal {
+        match self.tag {
+            0 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.One);
+                CustomNestedErrorOuterTwinNormal::One(ans.field0.wire2api())
+            },
+            1 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Two);
+                CustomNestedErrorOuterTwinNormal::Two(ans.field0.wire2api())
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<CustomStructErrorTwinNormal> for wire_custom_struct_error_twin_normal {
+    fn wire2api(self) -> CustomStructErrorTwinNormal {
+        CustomStructErrorTwinNormal {
+            a: self.a.wire2api(),
+        }
     }
 }
 impl Wire2Api<EnumWithItemMixedTwinNormal> for wire_enum_with_item_mixed_twin_normal {
@@ -380,6 +449,13 @@ impl Wire2Api<Vec<u8>> for *mut wire_list_prim_u_8 {
         }
     }
 }
+impl Wire2Api<MacroStruct> for wire_macro_struct {
+    fn wire2api(self) -> MacroStruct {
+        MacroStruct {
+            data: self.data.wire2api(),
+        }
+    }
+}
 impl Wire2Api<StructWithCommentsTwinNormal> for wire_struct_with_comments_twin_normal {
     fn wire2api(self) -> StructWithCommentsTwinNormal {
         StructWithCommentsTwinNormal {
@@ -457,6 +533,59 @@ impl Wire2Api<TupleStructWithTwoFieldTwinSync> for wire_tuple_struct_with_two_fi
 
 // Section: wire2api_class
 
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_custom_nested_error_inner_twin_normal {
+    tag: i32,
+    kind: *mut CustomNestedErrorInnerTwinNormalKind,
+}
+
+#[repr(C)]
+pub union CustomNestedErrorInnerTwinNormalKind {
+    Three: *mut wire_CustomNestedErrorInnerTwinNormal_Three,
+    Four: *mut wire_CustomNestedErrorInnerTwinNormal_Four,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_CustomNestedErrorInnerTwinNormal_Three {
+    field0: *mut wire_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_CustomNestedErrorInnerTwinNormal_Four {
+    field0: u32,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_custom_nested_error_outer_twin_normal {
+    tag: i32,
+    kind: *mut CustomNestedErrorOuterTwinNormalKind,
+}
+
+#[repr(C)]
+pub union CustomNestedErrorOuterTwinNormalKind {
+    One: *mut wire_CustomNestedErrorOuterTwinNormal_One,
+    Two: *mut wire_CustomNestedErrorOuterTwinNormal_Two,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_CustomNestedErrorOuterTwinNormal_One {
+    field0: *mut wire_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_CustomNestedErrorOuterTwinNormal_Two {
+    field0: *mut wire_custom_nested_error_inner_twin_normal,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_custom_struct_error_twin_normal {
+    a: *mut wire_list_prim_u_8,
+}
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_enum_with_item_mixed_twin_normal {
@@ -690,6 +819,12 @@ pub struct wire_list_prim_u_8 {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_macro_struct {
+    data: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_struct_with_comments_twin_normal {
     field_with_comments: i32,
 }
@@ -771,6 +906,44 @@ impl<T> NewWithNullPtr for *mut T {
         std::ptr::null_mut()
     }
 }
+impl NewWithNullPtr for wire_custom_nested_error_inner_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_custom_nested_error_inner_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_custom_nested_error_outer_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_custom_nested_error_outer_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_custom_struct_error_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            a: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_custom_struct_error_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 impl NewWithNullPtr for wire_enum_with_item_mixed_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -845,6 +1018,18 @@ impl NewWithNullPtr for wire_enum_with_item_tuple_twin_sync {
     }
 }
 impl Default for wire_enum_with_item_tuple_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_macro_struct {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            data: Default::default(),
+        }
+    }
+}
+impl Default for wire_macro_struct {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -1052,13 +1237,54 @@ pub extern "C" fn wire_func_enum_with_item_tuple_twin_normal(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_custom_enum_error_panic_twin_normal(port_: i64) {
+    wire_custom_enum_error_panic_twin_normal_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_custom_enum_error_return_error_twin_normal(port_: i64) {
+    wire_custom_enum_error_return_error_twin_normal_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_custom_enum_error_return_ok_twin_normal(port_: i64) {
+    wire_custom_enum_error_return_ok_twin_normal_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_custom_nested_error_return_error_twin_normal(
+    port_: i64,
+    arg: *mut wire_custom_nested_error_outer_twin_normal,
+) {
+    wire_custom_nested_error_return_error_twin_normal_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_custom_struct_error_return_error_twin_normal(
+    port_: i64,
+    arg: *mut wire_custom_struct_error_twin_normal,
+) {
+    wire_custom_struct_error_return_error_twin_normal_impl(port_, arg)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_func_return_error_twin_normal(port_: i64) {
     wire_func_return_error_twin_normal_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_func_return_panic_twin_normal(port_: i64) {
-    wire_func_return_panic_twin_normal_impl(port_)
+pub extern "C" fn wire_func_type_fallible_panic_twin_normal(port_: i64) {
+    wire_func_type_fallible_panic_twin_normal_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_func_type_infallible_panic_twin_normal(port_: i64) {
+    wire_func_type_infallible_panic_twin_normal_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_func_macro_struct(port_: i64, arg: *mut wire_macro_struct) {
+    wire_func_macro_struct_impl(port_, arg)
 }
 
 #[no_mangle]
@@ -1671,6 +1897,24 @@ pub extern "C" fn new_box_autoadd_bool(value: bool) -> *mut bool {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_custom_nested_error_inner_twin_normal(
+) -> *mut wire_custom_nested_error_inner_twin_normal {
+    support::new_leak_box_ptr(wire_custom_nested_error_inner_twin_normal::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_custom_nested_error_outer_twin_normal(
+) -> *mut wire_custom_nested_error_outer_twin_normal {
+    support::new_leak_box_ptr(wire_custom_nested_error_outer_twin_normal::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_custom_struct_error_twin_normal(
+) -> *mut wire_custom_struct_error_twin_normal {
+    support::new_leak_box_ptr(wire_custom_struct_error_twin_normal::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_enum_with_item_mixed_twin_normal(
 ) -> *mut wire_enum_with_item_mixed_twin_normal {
     support::new_leak_box_ptr(wire_enum_with_item_mixed_twin_normal::new_with_null_ptr())
@@ -1734,6 +1978,11 @@ pub extern "C" fn new_box_autoadd_i_64(value: i64) -> *mut i64 {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_i_8(value: i8) -> *mut i8 {
     support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_macro_struct() -> *mut wire_macro_struct {
+    support::new_leak_box_ptr(wire_macro_struct::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1925,6 +2174,46 @@ pub extern "C" fn new_list_prim_u_8(len: i32) -> *mut wire_list_prim_u_8 {
         len,
     };
     support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_CustomNestedErrorInnerTwinNormal_Three(
+) -> *mut CustomNestedErrorInnerTwinNormalKind {
+    support::new_leak_box_ptr(CustomNestedErrorInnerTwinNormalKind {
+        Three: support::new_leak_box_ptr(wire_CustomNestedErrorInnerTwinNormal_Three {
+            field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_CustomNestedErrorInnerTwinNormal_Four(
+) -> *mut CustomNestedErrorInnerTwinNormalKind {
+    support::new_leak_box_ptr(CustomNestedErrorInnerTwinNormalKind {
+        Four: support::new_leak_box_ptr(wire_CustomNestedErrorInnerTwinNormal_Four {
+            field0: Default::default(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_CustomNestedErrorOuterTwinNormal_One(
+) -> *mut CustomNestedErrorOuterTwinNormalKind {
+    support::new_leak_box_ptr(CustomNestedErrorOuterTwinNormalKind {
+        One: support::new_leak_box_ptr(wire_CustomNestedErrorOuterTwinNormal_One {
+            field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_CustomNestedErrorOuterTwinNormal_Two(
+) -> *mut CustomNestedErrorOuterTwinNormalKind {
+    support::new_leak_box_ptr(CustomNestedErrorOuterTwinNormalKind {
+        Two: support::new_leak_box_ptr(wire_CustomNestedErrorOuterTwinNormal_Two {
+            field0: core::ptr::null_mut(),
+        }),
+    })
 }
 
 #[no_mangle]
