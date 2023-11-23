@@ -5,7 +5,9 @@ use crate::codegen::parser::source_graph::modules::{
     Enum, Module, ModuleInfo, ModuleScope, ModuleSource, Struct, StructOrEnum, TypeAlias,
     Visibility,
 };
+use crate::codegen::parser::type_parser::misc::convert_ident_str;
 use crate::utils::path_utils::{find_rust_crate_dir, path_to_string};
+use anyhow::Context;
 use itertools::Itertools;
 use log::{debug, warn};
 use std::path::{Path, PathBuf};
@@ -271,7 +273,8 @@ fn parse_mirror_ident(
     ident: &Ident,
     attrs: &[Attribute],
 ) -> anyhow::Result<ParseMirrorIdentOutput> {
-    let attributes = FrbAttributes::parse(attrs)?;
+    let attributes = FrbAttributes::parse(attrs)
+        .with_context(|| format!("when parsing ident={ident:?} attrs={attrs:?}"))?;
     let mirror_info = attributes.mirror();
 
     let res = mirror_info
