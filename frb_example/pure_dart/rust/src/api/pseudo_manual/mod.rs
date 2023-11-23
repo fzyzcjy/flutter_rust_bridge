@@ -1,4 +1,5 @@
 pub mod comment_twin_sync;
+pub mod enumeration_twin_sync;
 pub mod exception_twin_sync;
 pub mod misc_type_twin_sync;
 pub mod optional_primitive;
@@ -8,3 +9,4 @@ pub mod primitive_list;
 pub mod primitive_list_twin_sync;
 pub mod primitive_twin_sync;
 pub mod simple_twin_sync;
+pub mod structure_twin_sync;
