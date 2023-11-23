@@ -4,6 +4,7 @@ use crate::codegen::generator::api_dart::spec_generator::base::{
 };
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
 use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
+use crate::codegen::generator::api_dart::spec_generator::misc::generate_imports_which_types_and_funcs_use;
 use crate::codegen::ir::func::{IrFunc, IrFuncOwnerInfo};
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::{DistinctTypeGatherer, IrPack, IrPackComputedCache};
@@ -78,7 +79,12 @@ fn generate_item(
     funcs: &Option<&Vec<&IrFunc>>,
     context: ApiDartGeneratorContext,
 ) -> Result<ApiDartOutputSpecItem> {
-    let imports = generate_imports(namespace, namespaced_types, funcs, context.ir_pack)?;
+    let imports = generate_imports_which_types_and_funcs_use(
+        namespace,
+        namespaced_types,
+        funcs,
+        context.ir_pack,
+    )?;
 
     let funcs = funcs
         .map(|funcs| {
@@ -107,13 +113,4 @@ fn generate_item(
         imports,
         needs_freezed,
     })
-}
-
-fn generate_imports(
-    current_file_namespace: &Namespace,
-    namespaced_types: &Option<&Vec<&IrType>>,
-    funcs: &Option<&Vec<&IrFunc>>,
-    ir_pack: &IrPack,
-) -> Result<DartBasicHeaderCode> {
-    todo!()
 }

@@ -58,15 +58,15 @@ pub(crate) fn generate_function_dart_return_type(func_mode: &IrFuncMode, inner: 
     }
 }
 
-pub(super) fn generate_imports_which_types_use(
+pub(super) fn generate_imports_which_types_and_funcs_use(
     current_file_namespace: &Namespace,
-    namespaced_types: &Option<&Vec<&IrType>>,
+    types: &Option<&Vec<&IrType>>,
     funcs: &Option<&Vec<&IrFunc>>,
     ir_pack: &IrPack,
 ) -> anyhow::Result<DartBasicHeaderCode> {
     let mut gatherer = DistinctTypeGatherer::new();
-    if let Some(namespaced_types) = namespaced_types {
-        (namespaced_types.iter()).for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), ir_pack));
+    if let Some(types) = types {
+        (types.iter()).for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), ir_pack));
     }
     if let Some(funcs) = funcs {
         (funcs.iter()).for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), true, true, ir_pack));
