@@ -8,6 +8,8 @@ use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use convert_case::{Case, Casing};
 use enum_dispatch::enum_dispatch;
 use itertools::Itertools;
+use lazy_static::lazy_static;
+use regex::Regex;
 
 #[enum_dispatch]
 pub(crate) trait ApiDartGeneratorInfoTrait {
@@ -181,6 +183,22 @@ impl<'a> ApiDartGeneratorInfoTrait for StructRefApiDartGenerator<'a> {
 
 impl<'a> ApiDartGeneratorInfoTrait for UnencodableApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        unreachable!()
+        rust_type_to_dart_type(&self.ir.rust_api_type())
     }
+}
+
+fn rust_type_to_dart_type(rust: &str) -> String {
+    lazy_static! {
+        static ref OPAQUE_FILTER: Regex =
+            Regex::new(r"(\bdyn|'static|\bDartSafe|\+ (Send|Sync|UnwindSafe|RefUnwindSafe))\b")
+                .unwrap();
+    }
+    OPAQUE_FILTER
+        .replace_all(rust, "")
+        .replace(char_not_alphanumeric, "_")
+        .to_case(Case::Pascal)
+}
+
+fn char_not_alphanumeric(c: char) -> bool {
+    !c.is_alphanumeric()
 }

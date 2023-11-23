@@ -5,22 +5,6 @@ use lazy_static::lazy_static;
 use quote::ToTokens;
 use regex::Regex;
 
-fn char_not_alphanumeric(c: char) -> bool {
-    !c.is_alphanumeric()
-}
-
-fn rust_type_to_dart_type(rust: &str) -> String {
-    lazy_static! {
-        static ref OPAQUE_FILTER: Regex =
-            Regex::new(r"(\bdyn|'static|\bDartSafe|\+ (Send|Sync|UnwindSafe|RefUnwindSafe))\b")
-                .unwrap();
-    }
-    OPAQUE_FILTER
-        .replace_all(rust, "")
-        .replace(char_not_alphanumeric, "_")
-        .to_case(Case::Pascal)
-}
-
 impl From<&syn::Type> for IrTypeRustOpaque {
     fn from(rust_ty: &syn::Type) -> Self {
         let inner_dart = match rust_ty {
