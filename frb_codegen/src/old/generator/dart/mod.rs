@@ -51,9 +51,9 @@ use crate::utils::method::{FunctionName, MethodNamingUtil};
 use crate::{ir::*, Opts};
 
 pub struct Output {
-    pub file_prelude: DartBasicCode,
-    pub decl_code: DartBasicCode,
-    pub impl_code: Acc<DartBasicCode>,
+    pub file_prelude: DartBasicHeaderCode,
+    pub decl_code: DartBasicHeaderCode,
+    pub impl_code: Acc<DartBasicHeaderCode>,
     pub needs_freezed: bool,
 }
 
@@ -173,25 +173,28 @@ impl DartApiSpec {
     }
 }
 
-fn generate_freezed_header(dart_output_file_root: &str, needs_freezed: bool) -> DartBasicCode {
+fn generate_freezed_header(
+    dart_output_file_root: &str,
+    needs_freezed: bool,
+) -> DartBasicHeaderCode {
     if needs_freezed {
-        DartBasicCode {
+        DartBasicHeaderCode {
             import: "import 'package:freezed_annotation/freezed_annotation.dart' hide protected;"
                 .to_string(),
             part: format!("part '{dart_output_file_root}.freezed.dart';"),
             body: "".to_string(),
         }
     } else {
-        DartBasicCode::default()
+        DartBasicHeaderCode::default()
     }
 }
 
 fn generate_import_header(
     imports: HashSet<&IrDartImport>,
     import_array: Option<&str>,
-) -> DartBasicCode {
+) -> DartBasicHeaderCode {
     if !imports.is_empty() || import_array.is_some() {
-        DartBasicCode {
+        DartBasicHeaderCode {
             import: imports
                 .iter()
                 .map(|it| match &it.alias {
@@ -205,12 +208,12 @@ fn generate_import_header(
             body: "".to_string(),
         }
     } else {
-        DartBasicCode::default()
+        DartBasicHeaderCode::default()
     }
 }
 
-fn generate_common_header() -> DartBasicCode {
-    DartBasicCode {
+fn generate_common_header() -> DartBasicHeaderCode {
+    DartBasicHeaderCode {
         import: format!(
             "{}{}",
             "import 'dart:convert';
@@ -242,7 +245,10 @@ fn section_header(header: &str) -> String {
 ///
 /// The `_Impl` class takes a `_Platform _platform` instance as a private member,
 /// and the `_Platform` exposes all of its methods decorated as `@protected`.
-fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<DartBasicCode> {
+fn generate_dart_implementation_body(
+    spec: &DartApiSpec,
+    config: &Opts,
+) -> Acc<DartBasicHeaderCode> {
     let mut lines = Acc::<Vec<_>>::default();
     let dart_api_impl_class_name = config.dart_api_impl_class_name();
     let dart_wire_class_name = config.dart_wire_class_name();
@@ -367,17 +373,17 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         "".into()
     };
     Acc {
-        common: DartBasicCode {
+        common: DartBasicHeaderCode {
             body: common,
             import: common_import,
             ..Default::default()
         },
-        io: DartBasicCode {
+        io: DartBasicHeaderCode {
             import: impl_import.clone(),
             body: io,
             ..Default::default()
         },
-        wasm: DartBasicCode {
+        wasm: DartBasicHeaderCode {
             import: impl_import,
             body: wasm,
             ..Default::default()
@@ -386,15 +392,15 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
 }
 
 fn generate_dart_declaration_code(
-    common_header: &DartBasicCode,
-    freezed_header: DartBasicCode,
-    import_header: DartBasicCode,
+    common_header: &DartBasicHeaderCode,
+    freezed_header: DartBasicHeaderCode,
+    import_header: DartBasicHeaderCode,
     declaration_body: String,
-) -> DartBasicCode {
+) -> DartBasicHeaderCode {
     common_header
         + &freezed_header
         + &import_header
-        + &DartBasicCode {
+        + &DartBasicHeaderCode {
             import: "".to_string(),
             part: "".to_string(),
             body: declaration_body,
@@ -402,14 +408,14 @@ fn generate_dart_declaration_code(
 }
 
 fn generate_dart_implementation_code(
-    common_header: &DartBasicCode,
-    implementation_body: Acc<DartBasicCode>,
-) -> Acc<DartBasicCode> {
+    common_header: &DartBasicHeaderCode,
+    implementation_body: Acc<DartBasicHeaderCode>,
+) -> Acc<DartBasicHeaderCode> {
     implementation_body.map(|body, _| common_header + &body)
 }
 
-fn generate_file_prelude() -> DartBasicCode {
-    DartBasicCode {
+fn generate_file_prelude() -> DartBasicHeaderCode {
+    DartBasicHeaderCode {
         import: format!("{}
             // ignore_for_file: non_constant_identifier_names, unused_element, duplicate_ignore, directives_ordering, curly_braces_in_flow_control_structures, unnecessary_lambdas, slash_for_doc_comments, prefer_const_literals_to_create_immutables, implicit_dynamic_list_literal, duplicate_import, unused_import, unnecessary_import, prefer_single_quotes, prefer_const_constructors, use_super_parameters, always_use_package_imports, annotate_overrides, invalid_use_of_protected_member, constant_identifier_names, invalid_use_of_internal_member, prefer_is_empty, unnecessary_const
             ",

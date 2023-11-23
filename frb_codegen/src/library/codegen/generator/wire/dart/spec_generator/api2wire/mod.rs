@@ -11,7 +11,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartG
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::generator::wire::dart::spec_generator::api2wire::ty::WireDartGeneratorApi2wireTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
-use crate::utils::basic_code::DartBasicCode;
+use crate::utils::basic_code::DartBasicHeaderCode;
 use serde::Serialize;
 
 mod misc;
@@ -71,7 +71,7 @@ fn generate_api2wire_func(
 
                     WireDartOutputCode {
                         api_impl_body,
-                        basic: DartBasicCode {
+                        basic: DartBasicHeaderCode {
                             body,
                             ..Default::default()
                         },

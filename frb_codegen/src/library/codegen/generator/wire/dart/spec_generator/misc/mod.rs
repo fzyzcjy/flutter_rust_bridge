@@ -6,7 +6,7 @@ use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDart
 use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
-use crate::utils::basic_code::DartBasicCode;
+use crate::utils::basic_code::DartBasicHeaderCode;
 use crate::utils::path_utils::path_to_string;
 use anyhow::Context;
 use itertools::Itertools;
@@ -74,7 +74,7 @@ fn generate_boilerplate(
 
     Ok(Acc {
         common: vec![WireDartOutputCode {
-            basic: DartBasicCode {
+            basic: DartBasicHeaderCode {
                 file_top: file_top.clone(),
                 import: format!(
                     "
@@ -125,7 +125,7 @@ fn generate_boilerplate(
             ..Default::default()
         }],
         io: vec![WireDartOutputCode {
-            basic: DartBasicCode {
+            basic: DartBasicHeaderCode {
                 file_top: file_top.clone(),
                 import: format!(
                     "
@@ -139,7 +139,7 @@ fn generate_boilerplate(
             ..Default::default()
         }],
         wasm: vec![WireDartOutputCode {
-            basic: DartBasicCode {
+            basic: DartBasicHeaderCode {
                 file_top: file_top.clone(),
                 import: format!(
                     "
