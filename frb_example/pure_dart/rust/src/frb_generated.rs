@@ -38,6 +38,10 @@ use crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync;
 use crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync;
 use crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync;
 use crate::api::pseudo_manual::enumeration_twin_sync::*;
+use crate::api::pseudo_manual::exception_twin_sync::CustomEnumErrorTwinSync;
+use crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync;
+use crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync;
+use crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorTwinSync;
 use crate::api::pseudo_manual::exception_twin_sync::*;
 use crate::api::pseudo_manual::misc_type_twin_sync::*;
 use crate::api::pseudo_manual::optional_primitive::*;
@@ -463,6 +467,71 @@ fn wire_func_enum_with_item_tuple_twin_sync_impl(
         },
     )
 }
+fn wire_custom_enum_error_panic_twin_sync_impl() -> support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "custom_enum_error_panic_twin_sync",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || custom_enum_error_panic_twin_sync(),
+    )
+}
+fn wire_custom_enum_error_return_error_twin_sync_impl() -> support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "custom_enum_error_return_error_twin_sync",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || custom_enum_error_return_error_twin_sync(),
+    )
+}
+fn wire_custom_enum_error_return_ok_twin_sync_impl(
+    arg: impl Wire2Api<u32> + UnwindSafe,
+) -> support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "custom_enum_error_return_ok_twin_sync",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            custom_enum_error_return_ok_twin_sync(api_arg)
+        },
+    )
+}
+fn wire_custom_nested_error_return_error_twin_sync_impl(
+    arg: impl Wire2Api<CustomNestedErrorOuterTwinSync> + UnwindSafe,
+) -> support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "custom_nested_error_return_error_twin_sync",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            custom_nested_error_return_error_twin_sync(api_arg)
+        },
+    )
+}
+fn wire_custom_struct_error_return_error_twin_sync_impl(
+    arg: impl Wire2Api<CustomStructErrorTwinSync> + UnwindSafe,
+) -> support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "custom_struct_error_return_error_twin_sync",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            custom_struct_error_return_error_twin_sync(api_arg)
+        },
+    )
+}
 fn wire_func_return_error_twin_sync_impl() -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -473,14 +542,24 @@ fn wire_func_return_error_twin_sync_impl() -> support::WireSyncReturn {
         move || func_return_error_twin_sync(),
     )
 }
-fn wire_func_return_panic_twin_sync_impl() -> support::WireSyncReturn {
+fn wire_func_type_fallible_panic_twin_sync_impl() -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
-            debug_name: "func_return_panic_twin_sync",
+            debug_name: "func_type_fallible_panic_twin_sync",
             port: None,
             mode: FfiCallMode::Sync,
         },
-        move || Result::<_, ()>::Ok(func_return_panic_twin_sync()),
+        move || func_type_fallible_panic_twin_sync(),
+    )
+}
+fn wire_func_type_infallible_panic_twin_sync_impl() -> support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "func_type_infallible_panic_twin_sync",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || Result::<_, ()>::Ok(func_type_infallible_panic_twin_sync()),
     )
 }
 fn wire_func_return_unit_twin_sync_impl() -> support::WireSyncReturn {
@@ -1986,6 +2065,29 @@ impl rust2dart::IntoIntoDart<CustomEnumErrorTwinNormal> for CustomEnumErrorTwinN
         self
     }
 }
+impl support::IntoDart for CustomEnumErrorTwinSync {
+    fn into_dart(self) -> support::DartAbi {
+        match self {
+            Self::One { message, backtrace } => vec![
+                0.into_dart(),
+                message.into_into_dart().into_dart(),
+                backtrace.into_into_dart().into_dart(),
+            ],
+            Self::Two { message, backtrace } => vec![
+                1.into_dart(),
+                message.into_into_dart().into_dart(),
+                backtrace.into_into_dart().into_dart(),
+            ],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for CustomEnumErrorTwinSync {}
+impl rust2dart::IntoIntoDart<CustomEnumErrorTwinSync> for CustomEnumErrorTwinSync {
+    fn into_into_dart(self) -> CustomEnumErrorTwinSync {
+        self
+    }
+}
 impl support::IntoDart for CustomNestedErrorInnerTwinNormal {
     fn into_dart(self) -> support::DartAbi {
         match self {
@@ -2000,6 +2102,21 @@ impl rust2dart::IntoIntoDart<CustomNestedErrorInnerTwinNormal>
     for CustomNestedErrorInnerTwinNormal
 {
     fn into_into_dart(self) -> CustomNestedErrorInnerTwinNormal {
+        self
+    }
+}
+impl support::IntoDart for CustomNestedErrorInnerTwinSync {
+    fn into_dart(self) -> support::DartAbi {
+        match self {
+            Self::Three(field0) => vec![0.into_dart(), field0.into_into_dart().into_dart()],
+            Self::Four(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for CustomNestedErrorInnerTwinSync {}
+impl rust2dart::IntoIntoDart<CustomNestedErrorInnerTwinSync> for CustomNestedErrorInnerTwinSync {
+    fn into_into_dart(self) -> CustomNestedErrorInnerTwinSync {
         self
     }
 }
@@ -2020,6 +2137,21 @@ impl rust2dart::IntoIntoDart<CustomNestedErrorOuterTwinNormal>
         self
     }
 }
+impl support::IntoDart for CustomNestedErrorOuterTwinSync {
+    fn into_dart(self) -> support::DartAbi {
+        match self {
+            Self::One(field0) => vec![0.into_dart(), field0.into_into_dart().into_dart()],
+            Self::Two(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for CustomNestedErrorOuterTwinSync {}
+impl rust2dart::IntoIntoDart<CustomNestedErrorOuterTwinSync> for CustomNestedErrorOuterTwinSync {
+    fn into_into_dart(self) -> CustomNestedErrorOuterTwinSync {
+        self
+    }
+}
 impl support::IntoDart for CustomStructErrorTwinNormal {
     fn into_dart(self) -> support::DartAbi {
         vec![self.a.into_into_dart().into_dart()].into_dart()
@@ -2028,6 +2160,17 @@ impl support::IntoDart for CustomStructErrorTwinNormal {
 impl support::IntoDartExceptPrimitive for CustomStructErrorTwinNormal {}
 impl rust2dart::IntoIntoDart<CustomStructErrorTwinNormal> for CustomStructErrorTwinNormal {
     fn into_into_dart(self) -> CustomStructErrorTwinNormal {
+        self
+    }
+}
+impl support::IntoDart for CustomStructErrorTwinSync {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.a.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for CustomStructErrorTwinSync {}
+impl rust2dart::IntoIntoDart<CustomStructErrorTwinSync> for CustomStructErrorTwinSync {
+    fn into_into_dart(self) -> CustomStructErrorTwinSync {
         self
     }
 }

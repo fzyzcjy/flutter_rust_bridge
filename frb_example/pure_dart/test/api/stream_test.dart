@@ -31,7 +31,8 @@ Future<void> main() async {
       () async {
         await for (final _ in funcStreamReturnErrorTwinNormal()) {}
       },
-      throwsA(isA<AnyhowException>().having((x) => x.message, 'message', 'deliberate error')),
+      throwsA(isA<AnyhowException>()
+          .having((x) => x.message, 'message', 'deliberate error')),
     );
   });
 
@@ -40,7 +41,8 @@ Future<void> main() async {
       () async {
         await for (final _ in funcStreamReturnPanicTwinNormal()) {}
       },
-      throwsA(isA<PanicException>().having((x) => x.message, 'message', 'deliberate panic')),
+      throwsA(isA<PanicException>()
+          .having((x) => x.message, 'message', 'deliberate panic')),
     );
   });
 }

@@ -9,22 +9,30 @@ Future<void> main() async {
   await RustLib.init();
 
   test('call funcReturnErrorTwinNormal', () async {
-    await expectLater(() async => funcReturnErrorTwinNormal(),
-        throwsA(isA<AnyhowException>().having((x) => x.message, 'message', 'deliberate error')));
+    await expectLater(
+        () async => funcReturnErrorTwinNormal(),
+        throwsA(isA<AnyhowException>()
+            .having((x) => x.message, 'message', 'deliberate error')));
   });
   test('call funcTypeFalliblePanicTwinNormal', () async {
-    await expectLater(() async => funcTypeFalliblePanicTwinNormal(),
-        throwsA(isA<PanicException>().having((x) => x.message, 'message', 'deliberate panic')));
+    await expectLater(
+        () async => funcTypeFalliblePanicTwinNormal(),
+        throwsA(isA<PanicException>()
+            .having((x) => x.message, 'message', 'deliberate panic')));
   });
   test('call funcTypeInfalliblePanicTwinNormal', () async {
-    await expectLater(() async => funcTypeInfalliblePanicTwinNormal(),
-        throwsA(isA<PanicException>().having((x) => x.message, 'message', 'deliberate panic')));
+    await expectLater(
+        () async => funcTypeInfalliblePanicTwinNormal(),
+        throwsA(isA<PanicException>()
+            .having((x) => x.message, 'message', 'deliberate panic')));
   });
 
   addTestsIdentityFunctionCall(customEnumErrorReturnOkTwinNormal, [100]);
   test('call customEnumErrorPanicTwinNormal', () async {
-    await expectLater(() async => customEnumErrorPanicTwinNormal(),
-        throwsA(isA<PanicException>().having((x) => x.message, 'message', 'deliberate panic')));
+    await expectLater(
+        () async => customEnumErrorPanicTwinNormal(),
+        throwsA(isA<PanicException>()
+            .having((x) => x.message, 'message', 'deliberate panic')));
   });
 
   test('call funcReturnErrorTwinNormal', () async {
@@ -39,8 +47,10 @@ Future<void> main() async {
     customNestedErrorReturnErrorTwinNormal,
     [
       const CustomNestedErrorOuterTwinNormal.one('hello'),
-      const CustomNestedErrorOuterTwinNormal.two(CustomNestedErrorInnerTwinNormal.three('hello')),
-      const CustomNestedErrorOuterTwinNormal.two(CustomNestedErrorInnerTwinNormal.four(42)),
+      const CustomNestedErrorOuterTwinNormal.two(
+          CustomNestedErrorInnerTwinNormal.three('hello')),
+      const CustomNestedErrorOuterTwinNormal.two(
+          CustomNestedErrorInnerTwinNormal.four(42)),
     ],
     equals,
   );

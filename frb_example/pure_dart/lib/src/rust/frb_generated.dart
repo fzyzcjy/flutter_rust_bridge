@@ -136,9 +136,23 @@ abstract class RustLibApi extends BaseApi {
   EnumWithItemTupleTwinSync funcEnumWithItemTupleTwinSync(
       {required EnumWithItemTupleTwinSync arg, dynamic hint});
 
+  void customEnumErrorPanicTwinSync({dynamic hint});
+
+  int customEnumErrorReturnErrorTwinSync({dynamic hint});
+
+  int customEnumErrorReturnOkTwinSync({required int arg, dynamic hint});
+
+  void customNestedErrorReturnErrorTwinSync(
+      {required CustomNestedErrorOuterTwinSync arg, dynamic hint});
+
+  void customStructErrorReturnErrorTwinSync(
+      {required CustomStructErrorTwinSync arg, dynamic hint});
+
   int funcReturnErrorTwinSync({dynamic hint});
 
-  int funcReturnPanicTwinSync({dynamic hint});
+  int funcTypeFalliblePanicTwinSync({dynamic hint});
+
+  int funcTypeInfalliblePanicTwinSync({dynamic hint});
 
   void funcReturnUnitTwinSync({dynamic hint});
 
@@ -986,6 +1000,106 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  void customEnumErrorPanicTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_custom_enum_error_panic_twin_sync(),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_enum_error_twin_sync,
+      constMeta: kCustomEnumErrorPanicTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCustomEnumErrorPanicTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "custom_enum_error_panic_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  int customEnumErrorReturnErrorTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_custom_enum_error_return_error_twin_sync(),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: _wire2api_custom_enum_error_twin_sync,
+      constMeta: kCustomEnumErrorReturnErrorTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCustomEnumErrorReturnErrorTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "custom_enum_error_return_error_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  int customEnumErrorReturnOkTwinSync({required int arg, dynamic hint}) {
+    var arg0 = api2wire_u_32(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_custom_enum_error_return_ok_twin_sync(arg0),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: _wire2api_custom_enum_error_twin_sync,
+      constMeta: kCustomEnumErrorReturnOkTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCustomEnumErrorReturnOkTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "custom_enum_error_return_ok_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  void customNestedErrorReturnErrorTwinSync(
+      {required CustomNestedErrorOuterTwinSync arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_custom_nested_error_outer_twin_sync(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_custom_nested_error_return_error_twin_sync(arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_nested_error_outer_twin_sync,
+      constMeta: kCustomNestedErrorReturnErrorTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCustomNestedErrorReturnErrorTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "custom_nested_error_return_error_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  void customStructErrorReturnErrorTwinSync(
+      {required CustomStructErrorTwinSync arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_custom_struct_error_twin_sync(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_custom_struct_error_return_error_twin_sync(arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_struct_error_twin_sync,
+      constMeta: kCustomStructErrorReturnErrorTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCustomStructErrorReturnErrorTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "custom_struct_error_return_error_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
   int funcReturnErrorTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () => wire.wire_func_return_error_twin_sync(),
@@ -1004,20 +1118,40 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  int funcReturnPanicTwinSync({dynamic hint}) {
+  int funcTypeFalliblePanicTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_return_panic_twin_sync(),
+      callFfi: () => wire.wire_func_type_fallible_panic_twin_sync(),
       parseSuccessData: _wire2api_i_32,
-      parseErrorData: null,
-      constMeta: kFuncReturnPanicTwinSyncConstMeta,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kFuncTypeFalliblePanicTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kFuncReturnPanicTwinSyncConstMeta => const TaskConstMeta(
-        debugName: "func_return_panic_twin_sync",
+  TaskConstMeta get kFuncTypeFalliblePanicTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_type_fallible_panic_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  int funcTypeInfalliblePanicTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_type_infallible_panic_twin_sync(),
+      parseSuccessData: _wire2api_i_32,
+      parseErrorData: null,
+      constMeta: kFuncTypeInfalliblePanicTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncTypeInfalliblePanicTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_type_infallible_panic_twin_sync",
         argNames: [],
       );
 
@@ -2833,6 +2967,11 @@ CustomNestedErrorInnerTwinNormal
   return _wire2api_custom_nested_error_inner_twin_normal(raw);
 }
 
+CustomNestedErrorInnerTwinSync
+    _wire2api_box_autoadd_custom_nested_error_inner_twin_sync(dynamic raw) {
+  return _wire2api_custom_nested_error_inner_twin_sync(raw);
+}
+
 double _wire2api_box_autoadd_f_32(dynamic raw) {
   return raw as double;
 }
@@ -2890,6 +3029,23 @@ CustomEnumErrorTwinNormal _wire2api_custom_enum_error_twin_normal(dynamic raw) {
   }
 }
 
+CustomEnumErrorTwinSync _wire2api_custom_enum_error_twin_sync(dynamic raw) {
+  switch (raw[0]) {
+    case 0:
+      return CustomEnumErrorTwinSync_One(
+        message: _wire2api_String(raw[1]),
+        backtrace: _wire2api_String(raw[2]),
+      );
+    case 1:
+      return CustomEnumErrorTwinSync_Two(
+        message: _wire2api_u_32(raw[1]),
+        backtrace: _wire2api_String(raw[2]),
+      );
+    default:
+      throw Exception("unreachable");
+  }
+}
+
 CustomNestedErrorInnerTwinNormal
     _wire2api_custom_nested_error_inner_twin_normal(dynamic raw) {
   switch (raw[0]) {
@@ -2899,6 +3055,22 @@ CustomNestedErrorInnerTwinNormal
       );
     case 1:
       return CustomNestedErrorInnerTwinNormal_Four(
+        _wire2api_u_32(raw[1]),
+      );
+    default:
+      throw Exception("unreachable");
+  }
+}
+
+CustomNestedErrorInnerTwinSync _wire2api_custom_nested_error_inner_twin_sync(
+    dynamic raw) {
+  switch (raw[0]) {
+    case 0:
+      return CustomNestedErrorInnerTwinSync_Three(
+        _wire2api_String(raw[1]),
+      );
+    case 1:
+      return CustomNestedErrorInnerTwinSync_Four(
         _wire2api_u_32(raw[1]),
       );
     default:
@@ -2922,12 +3094,37 @@ CustomNestedErrorOuterTwinNormal
   }
 }
 
+CustomNestedErrorOuterTwinSync _wire2api_custom_nested_error_outer_twin_sync(
+    dynamic raw) {
+  switch (raw[0]) {
+    case 0:
+      return CustomNestedErrorOuterTwinSync_One(
+        _wire2api_String(raw[1]),
+      );
+    case 1:
+      return CustomNestedErrorOuterTwinSync_Two(
+        _wire2api_box_autoadd_custom_nested_error_inner_twin_sync(raw[1]),
+      );
+    default:
+      throw Exception("unreachable");
+  }
+}
+
 CustomStructErrorTwinNormal _wire2api_custom_struct_error_twin_normal(
     dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 1)
     throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
   return CustomStructErrorTwinNormal(
+    a: _wire2api_String(arr[0]),
+  );
+}
+
+CustomStructErrorTwinSync _wire2api_custom_struct_error_twin_sync(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return CustomStructErrorTwinSync(
     a: _wire2api_String(arr[0]),
   );
 }

@@ -21,6 +21,12 @@ impl Wire2Api<CustomNestedErrorInnerTwinNormal>
         Wire2Api::<CustomNestedErrorInnerTwinNormal>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<CustomNestedErrorInnerTwinSync> for *mut wire_custom_nested_error_inner_twin_sync {
+    fn wire2api(self) -> CustomNestedErrorInnerTwinSync {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<CustomNestedErrorInnerTwinSync>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<CustomNestedErrorOuterTwinNormal>
     for *mut wire_custom_nested_error_outer_twin_normal
 {
@@ -29,10 +35,22 @@ impl Wire2Api<CustomNestedErrorOuterTwinNormal>
         Wire2Api::<CustomNestedErrorOuterTwinNormal>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<CustomNestedErrorOuterTwinSync> for *mut wire_custom_nested_error_outer_twin_sync {
+    fn wire2api(self) -> CustomNestedErrorOuterTwinSync {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<CustomNestedErrorOuterTwinSync>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<CustomStructErrorTwinNormal> for *mut wire_custom_struct_error_twin_normal {
     fn wire2api(self) -> CustomStructErrorTwinNormal {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<CustomStructErrorTwinNormal>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<CustomStructErrorTwinSync> for *mut wire_custom_struct_error_twin_sync {
+    fn wire2api(self) -> CustomStructErrorTwinSync {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<CustomStructErrorTwinSync>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<EnumWithItemMixedTwinNormal> for *mut wire_enum_with_item_mixed_twin_normal {
@@ -220,6 +238,23 @@ impl Wire2Api<CustomNestedErrorInnerTwinNormal> for wire_custom_nested_error_inn
         }
     }
 }
+impl Wire2Api<CustomNestedErrorInnerTwinSync> for wire_custom_nested_error_inner_twin_sync {
+    fn wire2api(self) -> CustomNestedErrorInnerTwinSync {
+        match self.tag {
+            0 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Three);
+                CustomNestedErrorInnerTwinSync::Three(ans.field0.wire2api())
+            },
+            1 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Four);
+                CustomNestedErrorInnerTwinSync::Four(ans.field0.wire2api())
+            },
+            _ => unreachable!(),
+        }
+    }
+}
 impl Wire2Api<CustomNestedErrorOuterTwinNormal> for wire_custom_nested_error_outer_twin_normal {
     fn wire2api(self) -> CustomNestedErrorOuterTwinNormal {
         match self.tag {
@@ -237,9 +272,33 @@ impl Wire2Api<CustomNestedErrorOuterTwinNormal> for wire_custom_nested_error_out
         }
     }
 }
+impl Wire2Api<CustomNestedErrorOuterTwinSync> for wire_custom_nested_error_outer_twin_sync {
+    fn wire2api(self) -> CustomNestedErrorOuterTwinSync {
+        match self.tag {
+            0 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.One);
+                CustomNestedErrorOuterTwinSync::One(ans.field0.wire2api())
+            },
+            1 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Two);
+                CustomNestedErrorOuterTwinSync::Two(ans.field0.wire2api())
+            },
+            _ => unreachable!(),
+        }
+    }
+}
 impl Wire2Api<CustomStructErrorTwinNormal> for wire_custom_struct_error_twin_normal {
     fn wire2api(self) -> CustomStructErrorTwinNormal {
         CustomStructErrorTwinNormal {
+            a: self.a.wire2api(),
+        }
+    }
+}
+impl Wire2Api<CustomStructErrorTwinSync> for wire_custom_struct_error_twin_sync {
+    fn wire2api(self) -> CustomStructErrorTwinSync {
+        CustomStructErrorTwinSync {
             a: self.a.wire2api(),
         }
     }
@@ -559,6 +618,30 @@ pub struct wire_CustomNestedErrorInnerTwinNormal_Four {
 }
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_custom_nested_error_inner_twin_sync {
+    tag: i32,
+    kind: *mut CustomNestedErrorInnerTwinSyncKind,
+}
+
+#[repr(C)]
+pub union CustomNestedErrorInnerTwinSyncKind {
+    Three: *mut wire_CustomNestedErrorInnerTwinSync_Three,
+    Four: *mut wire_CustomNestedErrorInnerTwinSync_Four,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_CustomNestedErrorInnerTwinSync_Three {
+    field0: *mut wire_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_CustomNestedErrorInnerTwinSync_Four {
+    field0: u32,
+}
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_custom_nested_error_outer_twin_normal {
     tag: i32,
     kind: *mut CustomNestedErrorOuterTwinNormalKind,
@@ -583,7 +666,37 @@ pub struct wire_CustomNestedErrorOuterTwinNormal_Two {
 }
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_custom_nested_error_outer_twin_sync {
+    tag: i32,
+    kind: *mut CustomNestedErrorOuterTwinSyncKind,
+}
+
+#[repr(C)]
+pub union CustomNestedErrorOuterTwinSyncKind {
+    One: *mut wire_CustomNestedErrorOuterTwinSync_One,
+    Two: *mut wire_CustomNestedErrorOuterTwinSync_Two,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_CustomNestedErrorOuterTwinSync_One {
+    field0: *mut wire_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_CustomNestedErrorOuterTwinSync_Two {
+    field0: *mut wire_custom_nested_error_inner_twin_sync,
+}
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_custom_struct_error_twin_normal {
+    a: *mut wire_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_custom_struct_error_twin_sync {
     a: *mut wire_list_prim_u_8,
 }
 #[repr(C)]
@@ -919,6 +1032,19 @@ impl Default for wire_custom_nested_error_inner_twin_normal {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_custom_nested_error_inner_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_custom_nested_error_inner_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 impl NewWithNullPtr for wire_custom_nested_error_outer_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -932,6 +1058,19 @@ impl Default for wire_custom_nested_error_outer_twin_normal {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_custom_nested_error_outer_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_custom_nested_error_outer_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 impl NewWithNullPtr for wire_custom_struct_error_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -940,6 +1079,18 @@ impl NewWithNullPtr for wire_custom_struct_error_twin_normal {
     }
 }
 impl Default for wire_custom_struct_error_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_custom_struct_error_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            a: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_custom_struct_error_twin_sync {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -1355,13 +1506,47 @@ pub extern "C" fn wire_func_enum_with_item_tuple_twin_sync(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_custom_enum_error_panic_twin_sync() -> support::WireSyncReturn {
+    wire_custom_enum_error_panic_twin_sync_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn wire_custom_enum_error_return_error_twin_sync() -> support::WireSyncReturn {
+    wire_custom_enum_error_return_error_twin_sync_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn wire_custom_enum_error_return_ok_twin_sync(arg: u32) -> support::WireSyncReturn {
+    wire_custom_enum_error_return_ok_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_custom_nested_error_return_error_twin_sync(
+    arg: *mut wire_custom_nested_error_outer_twin_sync,
+) -> support::WireSyncReturn {
+    wire_custom_nested_error_return_error_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_custom_struct_error_return_error_twin_sync(
+    arg: *mut wire_custom_struct_error_twin_sync,
+) -> support::WireSyncReturn {
+    wire_custom_struct_error_return_error_twin_sync_impl(arg)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_func_return_error_twin_sync() -> support::WireSyncReturn {
     wire_func_return_error_twin_sync_impl()
 }
 
 #[no_mangle]
-pub extern "C" fn wire_func_return_panic_twin_sync() -> support::WireSyncReturn {
-    wire_func_return_panic_twin_sync_impl()
+pub extern "C" fn wire_func_type_fallible_panic_twin_sync() -> support::WireSyncReturn {
+    wire_func_type_fallible_panic_twin_sync_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn wire_func_type_infallible_panic_twin_sync() -> support::WireSyncReturn {
+    wire_func_type_infallible_panic_twin_sync_impl()
 }
 
 #[no_mangle]
@@ -1903,15 +2088,33 @@ pub extern "C" fn new_box_autoadd_custom_nested_error_inner_twin_normal(
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_custom_nested_error_inner_twin_sync(
+) -> *mut wire_custom_nested_error_inner_twin_sync {
+    support::new_leak_box_ptr(wire_custom_nested_error_inner_twin_sync::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_custom_nested_error_outer_twin_normal(
 ) -> *mut wire_custom_nested_error_outer_twin_normal {
     support::new_leak_box_ptr(wire_custom_nested_error_outer_twin_normal::new_with_null_ptr())
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_custom_nested_error_outer_twin_sync(
+) -> *mut wire_custom_nested_error_outer_twin_sync {
+    support::new_leak_box_ptr(wire_custom_nested_error_outer_twin_sync::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_custom_struct_error_twin_normal(
 ) -> *mut wire_custom_struct_error_twin_normal {
     support::new_leak_box_ptr(wire_custom_struct_error_twin_normal::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_custom_struct_error_twin_sync(
+) -> *mut wire_custom_struct_error_twin_sync {
+    support::new_leak_box_ptr(wire_custom_struct_error_twin_sync::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -2197,6 +2400,26 @@ pub extern "C" fn inflate_CustomNestedErrorInnerTwinNormal_Four(
 }
 
 #[no_mangle]
+pub extern "C" fn inflate_CustomNestedErrorInnerTwinSync_Three(
+) -> *mut CustomNestedErrorInnerTwinSyncKind {
+    support::new_leak_box_ptr(CustomNestedErrorInnerTwinSyncKind {
+        Three: support::new_leak_box_ptr(wire_CustomNestedErrorInnerTwinSync_Three {
+            field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_CustomNestedErrorInnerTwinSync_Four(
+) -> *mut CustomNestedErrorInnerTwinSyncKind {
+    support::new_leak_box_ptr(CustomNestedErrorInnerTwinSyncKind {
+        Four: support::new_leak_box_ptr(wire_CustomNestedErrorInnerTwinSync_Four {
+            field0: Default::default(),
+        }),
+    })
+}
+
+#[no_mangle]
 pub extern "C" fn inflate_CustomNestedErrorOuterTwinNormal_One(
 ) -> *mut CustomNestedErrorOuterTwinNormalKind {
     support::new_leak_box_ptr(CustomNestedErrorOuterTwinNormalKind {
@@ -2211,6 +2434,26 @@ pub extern "C" fn inflate_CustomNestedErrorOuterTwinNormal_Two(
 ) -> *mut CustomNestedErrorOuterTwinNormalKind {
     support::new_leak_box_ptr(CustomNestedErrorOuterTwinNormalKind {
         Two: support::new_leak_box_ptr(wire_CustomNestedErrorOuterTwinNormal_Two {
+            field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_CustomNestedErrorOuterTwinSync_One(
+) -> *mut CustomNestedErrorOuterTwinSyncKind {
+    support::new_leak_box_ptr(CustomNestedErrorOuterTwinSyncKind {
+        One: support::new_leak_box_ptr(wire_CustomNestedErrorOuterTwinSync_One {
+            field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_CustomNestedErrorOuterTwinSync_Two(
+) -> *mut CustomNestedErrorOuterTwinSyncKind {
+    support::new_leak_box_ptr(CustomNestedErrorOuterTwinSyncKind {
+        Two: support::new_leak_box_ptr(wire_CustomNestedErrorOuterTwinSync_Two {
             field0: core::ptr::null_mut(),
         }),
     })

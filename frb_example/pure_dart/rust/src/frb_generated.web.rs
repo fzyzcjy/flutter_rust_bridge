@@ -25,12 +25,32 @@ impl Wire2Api<CustomNestedErrorInnerTwinNormal> for JsValue {
         }
     }
 }
+impl Wire2Api<CustomNestedErrorInnerTwinSync> for JsValue {
+    fn wire2api(self) -> CustomNestedErrorInnerTwinSync {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => CustomNestedErrorInnerTwinSync::Three(self_.get(1).wire2api()),
+            1 => CustomNestedErrorInnerTwinSync::Four(self_.get(1).wire2api()),
+            _ => unreachable!(),
+        }
+    }
+}
 impl Wire2Api<CustomNestedErrorOuterTwinNormal> for JsValue {
     fn wire2api(self) -> CustomNestedErrorOuterTwinNormal {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => CustomNestedErrorOuterTwinNormal::One(self_.get(1).wire2api()),
             1 => CustomNestedErrorOuterTwinNormal::Two(self_.get(1).wire2api()),
+            _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<CustomNestedErrorOuterTwinSync> for JsValue {
+    fn wire2api(self) -> CustomNestedErrorOuterTwinSync {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => CustomNestedErrorOuterTwinSync::One(self_.get(1).wire2api()),
+            1 => CustomNestedErrorOuterTwinSync::Two(self_.get(1).wire2api()),
             _ => unreachable!(),
         }
     }
@@ -45,6 +65,20 @@ impl Wire2Api<CustomStructErrorTwinNormal> for JsValue {
             self_.length()
         );
         CustomStructErrorTwinNormal {
+            a: self_.get(0).wire2api(),
+        }
+    }
+}
+impl Wire2Api<CustomStructErrorTwinSync> for JsValue {
+    fn wire2api(self) -> CustomStructErrorTwinSync {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        CustomStructErrorTwinSync {
             a: self_.get(0).wire2api(),
         }
     }
@@ -634,13 +668,43 @@ pub fn wire_func_enum_with_item_tuple_twin_sync(arg: JsValue) -> support::WireSy
 }
 
 #[wasm_bindgen]
+pub fn wire_custom_enum_error_panic_twin_sync() -> support::WireSyncReturn {
+    wire_custom_enum_error_panic_twin_sync_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_custom_enum_error_return_error_twin_sync() -> support::WireSyncReturn {
+    wire_custom_enum_error_return_error_twin_sync_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_custom_enum_error_return_ok_twin_sync(arg: u32) -> support::WireSyncReturn {
+    wire_custom_enum_error_return_ok_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_custom_nested_error_return_error_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+    wire_custom_nested_error_return_error_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_custom_struct_error_return_error_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+    wire_custom_struct_error_return_error_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
 pub fn wire_func_return_error_twin_sync() -> support::WireSyncReturn {
     wire_func_return_error_twin_sync_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_func_return_panic_twin_sync() -> support::WireSyncReturn {
-    wire_func_return_panic_twin_sync_impl()
+pub fn wire_func_type_fallible_panic_twin_sync() -> support::WireSyncReturn {
+    wire_func_type_fallible_panic_twin_sync_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_func_type_infallible_panic_twin_sync() -> support::WireSyncReturn {
+    wire_func_type_infallible_panic_twin_sync_impl()
 }
 
 #[wasm_bindgen]

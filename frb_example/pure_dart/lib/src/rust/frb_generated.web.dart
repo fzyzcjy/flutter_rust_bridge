@@ -49,15 +49,33 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_custom_nested_error_inner_twin_sync(
+      CustomNestedErrorInnerTwinSync raw) {
+    return api2wire_custom_nested_error_inner_twin_sync(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_custom_nested_error_outer_twin_normal(
       CustomNestedErrorOuterTwinNormal raw) {
     return api2wire_custom_nested_error_outer_twin_normal(raw);
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_custom_nested_error_outer_twin_sync(
+      CustomNestedErrorOuterTwinSync raw) {
+    return api2wire_custom_nested_error_outer_twin_sync(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_custom_struct_error_twin_normal(
       CustomStructErrorTwinNormal raw) {
     return api2wire_custom_struct_error_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_custom_struct_error_twin_sync(
+      CustomStructErrorTwinSync raw) {
+    return api2wire_custom_struct_error_twin_sync(raw);
   }
 
   @protected
@@ -237,6 +255,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_custom_nested_error_inner_twin_sync(
+      CustomNestedErrorInnerTwinSync raw) {
+    if (raw is CustomNestedErrorInnerTwinSync_Three) {
+      return [0, api2wire_String(raw.field0)];
+    }
+    if (raw is CustomNestedErrorInnerTwinSync_Four) {
+      return [1, api2wire_u_32(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
   List<dynamic> api2wire_custom_nested_error_outer_twin_normal(
       CustomNestedErrorOuterTwinNormal raw) {
     if (raw is CustomNestedErrorOuterTwinNormal_One) {
@@ -253,8 +284,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_custom_nested_error_outer_twin_sync(
+      CustomNestedErrorOuterTwinSync raw) {
+    if (raw is CustomNestedErrorOuterTwinSync_One) {
+      return [0, api2wire_String(raw.field0)];
+    }
+    if (raw is CustomNestedErrorOuterTwinSync_Two) {
+      return [
+        1,
+        api2wire_box_autoadd_custom_nested_error_inner_twin_sync(raw.field0)
+      ];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
   List<dynamic> api2wire_custom_struct_error_twin_normal(
       CustomStructErrorTwinNormal raw) {
+    return [api2wire_String(raw.a)];
+  }
+
+  @protected
+  List<dynamic> api2wire_custom_struct_error_twin_sync(
+      CustomStructErrorTwinSync raw) {
     return [api2wire_String(raw.a)];
   }
 

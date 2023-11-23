@@ -7,20 +7,61 @@ import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/exception_twin_
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
+import '../../test_utils.dart';
+
 Future<void> main() async {
   await RustLib.init();
 
   test('call funcReturnErrorTwinSync', () async {
     await expectLater(
         () async => funcReturnErrorTwinSync(),
-        throwsA(isA<AnyhowException>().having((x) => x.message, 'message',
-            'return_err() is called, thus deliberately return Err')));
+        throwsA(isA<AnyhowException>()
+            .having((x) => x.message, 'message', 'deliberate error')));
+  });
+  test('call funcTypeFalliblePanicTwinSync', () async {
+    await expectLater(
+        () async => funcTypeFalliblePanicTwinSync(),
+        throwsA(isA<PanicException>()
+            .having((x) => x.message, 'message', 'deliberate panic')));
+  });
+  test('call funcTypeInfalliblePanicTwinSync', () async {
+    await expectLater(
+        () async => funcTypeInfalliblePanicTwinSync(),
+        throwsA(isA<PanicException>()
+            .having((x) => x.message, 'message', 'deliberate panic')));
   });
 
-  test('call funcReturnPanicTwinSync', () async {
+  addTestsIdentityFunctionCall(customEnumErrorReturnOkTwinSync, [100]);
+  test('call customEnumErrorPanicTwinSync', () async {
     await expectLater(
-        () async => funcReturnPanicTwinSync(),
-        throwsA(isA<PanicException>().having((x) => x.message, 'message',
-            'return_panic() is called, thus deliberately panic')));
+        () async => customEnumErrorPanicTwinSync(),
+        throwsA(isA<PanicException>()
+            .having((x) => x.message, 'message', 'deliberate panic')));
   });
+
+  test('call funcReturnErrorTwinSync', () async {
+    await expectLater(
+        () async => customEnumErrorReturnErrorTwinSync(),
+        throwsA(isA<CustomEnumErrorTwinSync>()
+            .having((x) => x.message, 'message', 'deliberate error')
+            .having((x) => x.backtrace, 'backtrace', isNotEmpty)));
+  });
+
+  addTestsErrorFunctionCall(
+    customNestedErrorReturnErrorTwinSync,
+    [
+      const CustomNestedErrorOuterTwinSync.one('hello'),
+      const CustomNestedErrorOuterTwinSync.two(
+          CustomNestedErrorInnerTwinSync.three('hello')),
+      const CustomNestedErrorOuterTwinSync.two(
+          CustomNestedErrorInnerTwinSync.four(42)),
+    ],
+    equals,
+  );
+
+  addTestsErrorFunctionCall(
+    customStructErrorReturnErrorTwinSync,
+    [const CustomStructErrorTwinSync(a: 'hello')],
+    equals,
+  );
 }
