@@ -750,85 +750,6 @@ pub fn test_more_than_just_one_raw_string_struct() -> MoreThanJustOneRawStringSt
     }
 }
 
-#[frb(mirror(RawStringMirrored))]
-pub struct _RawStringMirrored {
-    pub r#value: String,
-}
-
-#[frb(mirror(NestedRawStringMirrored))]
-pub struct _NestedRawStringMirrored {
-    pub raw: RawStringMirrored,
-}
-
-#[frb(mirror(RawStringEnumMirrored))]
-pub enum _RawStringEnumMirrored {
-    Raw(RawStringMirrored),
-    Nested(NestedRawStringMirrored),
-    ListOfNested(ListOfNestedRawStringMirrored),
-}
-
-#[frb(mirror(ListOfNestedRawStringMirrored))]
-pub struct _ListOfRawNestedStringMirrored {
-    pub raw: Vec<NestedRawStringMirrored>,
-}
-
-pub fn test_raw_string_mirrored() -> RawStringMirrored {
-    RawStringMirrored {
-        r#value: "test".to_owned(),
-    }
-}
-
-pub fn test_nested_raw_string_mirrored() -> NestedRawStringMirrored {
-    NestedRawStringMirrored {
-        raw: RawStringMirrored {
-            r#value: "test".to_owned(),
-        },
-    }
-}
-
-pub fn test_raw_string_enum_mirrored(nested: bool) -> RawStringEnumMirrored {
-    if nested {
-        RawStringEnumMirrored::Nested(NestedRawStringMirrored {
-            raw: RawStringMirrored {
-                r#value: "test".to_owned(),
-            },
-        })
-    } else {
-        RawStringEnumMirrored::Raw(RawStringMirrored {
-            r#value: "test".to_owned(),
-        })
-    }
-}
-
-pub fn test_list_of_raw_nested_string_mirrored() -> ListOfNestedRawStringMirrored {
-    ListOfNestedRawStringMirrored {
-        raw: vec![NestedRawStringMirrored {
-            raw: RawStringMirrored {
-                r#value: "test".to_owned(),
-            },
-        }],
-    }
-}
-
-pub fn test_fallible_of_raw_string_mirrored() -> Result<Vec<RawStringMirrored>> {
-    Ok(vec![RawStringMirrored {
-        r#value: "test".to_owned(),
-    }])
-}
-
-// pub fn test_list_of_nested_enums_mirrored() -> Vec<RawStringEnumMirrored> {
-//     vec![
-//         RawStringEnumMirrored::Nested(NestedRawStringMirrored {
-//             raw: RawStringMirrored {
-//                 r#value: "test".to_owned(),
-//             },
-//         }),
-//         RawStringEnumMirrored::Raw(RawStringMirrored {
-//             r#value: "test".to_owned(),
-//         }),
-//     ]
-// }
-
 //This seems to be a bug in the syn parser (v1), for whoever tries to fix it, after each failed build you need to manually remove all rust generated files (bridge_*)
 // pub fn test_raw_string_item_struct_with_raw_string_in_func(r#type: String) -> RawStringItemStruct {
 //     RawStringItemStruct { r#type }
@@ -899,8 +820,4 @@ pub fn test_tuple(value: Option<(String, i32)>) -> (String, i32) {
 
 pub fn test_tuple_2(value: Vec<(String, i32)>) {
     drop(value)
-}
-
-pub fn sync_return_mirror() -> SyncReturn<ApplicationSettings> {
-    SyncReturn(external_lib::get_app_settings())
 }

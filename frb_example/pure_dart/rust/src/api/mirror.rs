@@ -130,3 +130,86 @@ pub fn first_number(nums: Numbers) -> Option<i32> {
 pub fn first_sequence(seqs: Sequences) -> Option<i32> {
     seqs.0.first().copied()
 }
+
+#[frb(mirror(RawStringMirrored))]
+pub struct _RawStringMirrored {
+    pub r#value: String,
+}
+
+#[frb(mirror(NestedRawStringMirrored))]
+pub struct _NestedRawStringMirrored {
+    pub raw: RawStringMirrored,
+}
+
+#[frb(mirror(RawStringEnumMirrored))]
+pub enum _RawStringEnumMirrored {
+    Raw(RawStringMirrored),
+    Nested(NestedRawStringMirrored),
+    ListOfNested(ListOfNestedRawStringMirrored),
+}
+
+#[frb(mirror(ListOfNestedRawStringMirrored))]
+pub struct _ListOfRawNestedStringMirrored {
+    pub raw: Vec<NestedRawStringMirrored>,
+}
+
+pub fn test_raw_string_mirrored() -> RawStringMirrored {
+    RawStringMirrored {
+        r#value: "test".to_owned(),
+    }
+}
+
+pub fn test_nested_raw_string_mirrored() -> NestedRawStringMirrored {
+    NestedRawStringMirrored {
+        raw: RawStringMirrored {
+            r#value: "test".to_owned(),
+        },
+    }
+}
+
+pub fn test_raw_string_enum_mirrored(nested: bool) -> RawStringEnumMirrored {
+    if nested {
+        RawStringEnumMirrored::Nested(NestedRawStringMirrored {
+            raw: RawStringMirrored {
+                r#value: "test".to_owned(),
+            },
+        })
+    } else {
+        RawStringEnumMirrored::Raw(RawStringMirrored {
+            r#value: "test".to_owned(),
+        })
+    }
+}
+
+pub fn test_list_of_raw_nested_string_mirrored() -> ListOfNestedRawStringMirrored {
+    ListOfNestedRawStringMirrored {
+        raw: vec![NestedRawStringMirrored {
+            raw: RawStringMirrored {
+                r#value: "test".to_owned(),
+            },
+        }],
+    }
+}
+
+pub fn test_fallible_of_raw_string_mirrored() -> Result<Vec<RawStringMirrored>> {
+    Ok(vec![RawStringMirrored {
+        r#value: "test".to_owned(),
+    }])
+}
+
+pub fn test_list_of_nested_enums_mirrored() -> Vec<RawStringEnumMirrored> {
+    vec![
+        RawStringEnumMirrored::Nested(NestedRawStringMirrored {
+            raw: RawStringMirrored {
+                r#value: "test".to_owned(),
+            },
+        }),
+        RawStringEnumMirrored::Raw(RawStringMirrored {
+            r#value: "test".to_owned(),
+        }),
+    ]
+}
+
+pub fn sync_return_mirror() -> SyncReturn<ApplicationSettings> {
+    SyncReturn(external_lib::get_app_settings())
+}
