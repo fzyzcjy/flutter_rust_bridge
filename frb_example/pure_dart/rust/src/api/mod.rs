@@ -13,4 +13,5 @@ pub mod rust_opaque;
 pub mod simple;
 pub mod stream;
 pub mod structure;
+mod tuple;
 mod uuid_type;
