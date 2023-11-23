@@ -74,21 +74,21 @@ impl<'a> WireDartGeneratorApi2wireTrait for DelegateWireDartGenerator<'a> {
             IrTypeDelegate::Time(ir) => match ir {
                 IrTypeDelegateTime::Utc | IrTypeDelegateTime::Local | IrTypeDelegateTime::Naive => {
                     Acc {
-                        io: Some("return api2wire_i64(raw.microsecondsSinceEpoch);".into()),
-                        wasm: Some("return api2wire_i64(raw.millisecondsSinceEpoch);".into()),
+                        io: Some("return api2wire_i_64(raw.microsecondsSinceEpoch);".into()),
+                        wasm: Some("return api2wire_i_64(raw.millisecondsSinceEpoch);".into()),
                         ..Default::default()
                     }
                 }
                 IrTypeDelegateTime::Duration => Acc {
-                    io: Some("return api2wire_i64(raw.inMicroseconds);".into()),
-                    wasm: Some("return api2wire_i64(raw.inMilliseconds);".into()),
+                    io: Some("return api2wire_i_64(raw.inMicroseconds);".into()),
+                    wasm: Some("return api2wire_i_64(raw.inMilliseconds);".into()),
                     ..Default::default()
                 },
             },
             IrTypeDelegate::TimeList(_) => Acc::distribute(Some(format!(
                 "final ans = Int64List(raw.length);
                 for (var i=0; i < raw.length; ++i) ans[i] = api2wire_Chrono_{}(raw[i]);
-                return api2wire_int_64_list(ans);",
+                return api2wire_list_prim_i_64(ans);",
                 self.ir.safe_ident()
             ))),
             IrTypeDelegate::Uuid => Acc::distribute(Some(format!(

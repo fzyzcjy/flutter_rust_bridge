@@ -3926,11 +3926,11 @@ List<String> _wire2api_StringList(dynamic raw) {
 }
 
 UuidValue _wire2api_Uuid(dynamic raw) {
-  return UuidValue.fromByteList(_wire2api_uint_8_list(raw));
+  return UuidValue.fromByteList(_wire2api_list_prim_u_8(raw));
 }
 
 List<UuidValue> _wire2api_Uuids(dynamic raw) {
-  final bytes = _wire2api_uint_8_list(raw);
+  final bytes = _wire2api_list_prim_u_8(raw);
   return wire2apiUuids(bytes);
 }
 

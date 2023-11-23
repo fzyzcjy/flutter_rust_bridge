@@ -45,7 +45,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   int api2wire_Chrono_Duration(Duration raw) {
-    return api2wire_i64(raw.inMicroseconds);
+    return api2wire_i_64(raw.inMicroseconds);
   }
 
   @protected
@@ -54,17 +54,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     final ans = Int64List(raw.length);
     for (var i = 0; i < raw.length; ++i)
       ans[i] = api2wire_Chrono_Chrono_DurationList(raw[i]);
-    return api2wire_int_64_list(ans);
+    return api2wire_list_prim_i_64(ans);
   }
 
   @protected
   int api2wire_Chrono_Local(DateTime raw) {
-    return api2wire_i64(raw.microsecondsSinceEpoch);
+    return api2wire_i_64(raw.microsecondsSinceEpoch);
   }
 
   @protected
   int api2wire_Chrono_Naive(DateTime raw) {
-    return api2wire_i64(raw.microsecondsSinceEpoch);
+    return api2wire_i_64(raw.microsecondsSinceEpoch);
   }
 
   @protected
@@ -73,12 +73,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     final ans = Int64List(raw.length);
     for (var i = 0; i < raw.length; ++i)
       ans[i] = api2wire_Chrono_Chrono_NaiveList(raw[i]);
-    return api2wire_int_64_list(ans);
+    return api2wire_list_prim_i_64(ans);
   }
 
   @protected
   int api2wire_Chrono_Utc(DateTime raw) {
-    return api2wire_i64(raw.microsecondsSinceEpoch);
+    return api2wire_i_64(raw.microsecondsSinceEpoch);
   }
 
   @protected
