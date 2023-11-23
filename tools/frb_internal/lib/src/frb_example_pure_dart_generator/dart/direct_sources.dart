@@ -14,7 +14,8 @@ String _generatePrimitive() {
   final builder = DartFileBuilder(importName: 'primitive');
   for (final ty in kPrimitiveTypes) {
     final values = ty.interestRawValues.map((value) => ty.primitiveWrapper(ty, value)).toList();
-    builder.addTestsIdentityFunctionCall('examplePrimitiveType${ReCase(ty.name).pascalCase}TwinNormal', values);
+    builder.addTestsIdentityFunctionCall('examplePrimitiveType${ReCase(ty.name).pascalCase}TwinNormal', values,
+        valueType: ty.dartTypeName);
   }
   return builder.toString();
 }
@@ -44,7 +45,8 @@ String _generateOptionalPrimitive() {
       "null",
       ...ty.interestRawValues.map((x) => ty.primitiveWrapper(ty, x)),
     ];
-    builder.addTestsIdentityFunctionCall('exampleOptionalPrimitiveType${ReCase(ty.name).pascalCase}TwinNormal', values);
+    builder.addTestsIdentityFunctionCall('exampleOptionalPrimitiveType${ReCase(ty.name).pascalCase}TwinNormal', values,
+        valueType: '${ty.dartTypeName}?');
   }
   return builder.toString();
 }

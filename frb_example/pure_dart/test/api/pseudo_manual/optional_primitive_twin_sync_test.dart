@@ -16,30 +16,35 @@ Future<void> main() async {
 
   group('optional_primitive', () {
     addTestsIdentityFunctionCall(
-        exampleOptionalPrimitiveTypeI8TwinSync, [null, 0, -128, 127]);
-    addTestsIdentityFunctionCall(
-        exampleOptionalPrimitiveTypeI16TwinSync, [null, 0, -32768, 32767]);
+        exampleOptionalPrimitiveTypeI8TwinSync, <int?>[null, 0, -128, 127]);
+    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeI16TwinSync,
+        <int?>[null, 0, -32768, 32767]);
     addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeI32TwinSync,
-        [null, 0, -2147483648, 2147483647]);
-    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeI64TwinSync, [
+        <int?>[null, 0, -2147483648, 2147483647]);
+    addTestsIdentityFunctionCall(
+        exampleOptionalPrimitiveTypeI64TwinSync, <BigInt?>[
       null,
       BigInt.parse("0"),
       BigInt.parse("-9223372036854775808"),
       BigInt.parse("9223372036854775807")
     ]);
     addTestsIdentityFunctionCall(
-        exampleOptionalPrimitiveTypeU8TwinSync, [null, 0, 255]);
+        exampleOptionalPrimitiveTypeU8TwinSync, <int?>[null, 0, 255]);
     addTestsIdentityFunctionCall(
-        exampleOptionalPrimitiveTypeU16TwinSync, [null, 0, 65535]);
+        exampleOptionalPrimitiveTypeU16TwinSync, <int?>[null, 0, 65535]);
     addTestsIdentityFunctionCall(
-        exampleOptionalPrimitiveTypeU32TwinSync, [null, 0, 4294967295]);
-    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeU64TwinSync,
-        [null, BigInt.parse("0"), BigInt.parse("9223372036854775807")]);
+        exampleOptionalPrimitiveTypeU32TwinSync, <int?>[null, 0, 4294967295]);
     addTestsIdentityFunctionCall(
-        exampleOptionalPrimitiveTypeF32TwinSync, [null, 0, -42.5, 123456]);
+        exampleOptionalPrimitiveTypeU64TwinSync, <BigInt?>[
+      null,
+      BigInt.parse("0"),
+      BigInt.parse("9223372036854775807")
+    ]);
+    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeF32TwinSync,
+        <double?>[null, 0, -42.5, 123456]);
+    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeF64TwinSync,
+        <double?>[null, 0, -42.5, 123456]);
     addTestsIdentityFunctionCall(
-        exampleOptionalPrimitiveTypeF64TwinSync, [null, 0, -42.5, 123456]);
-    addTestsIdentityFunctionCall(
-        exampleOptionalPrimitiveTypeBoolTwinSync, [null, false, true]);
+        exampleOptionalPrimitiveTypeBoolTwinSync, <bool?>[null, false, true]);
   });
 }

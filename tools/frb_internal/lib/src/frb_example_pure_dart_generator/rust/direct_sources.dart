@@ -63,6 +63,7 @@ String _generateOptionalPrimitive() {
 
 class PrimitiveTypeInfo {
   final String name;
+  final String dartTypeName;
   final String primitiveListName;
   final List<String> interestRawValues;
   final String Function(PrimitiveTypeInfo, String) primitiveWrapper;
@@ -70,6 +71,7 @@ class PrimitiveTypeInfo {
 
   const PrimitiveTypeInfo({
     required this.name,
+    required this.dartTypeName,
     required this.primitiveListName,
     required this.interestRawValues,
     this.primitiveWrapper = _defaultPrimitiveWrapper,
@@ -85,42 +87,50 @@ class PrimitiveTypeInfo {
 final kPrimitiveTypes = [
   PrimitiveTypeInfo(
     name: 'i8',
+    dartTypeName: 'int',
     primitiveListName: 'Int8List',
     interestRawValues: ['0', '-128', '127'],
   ),
   PrimitiveTypeInfo(
     name: 'i16',
+    dartTypeName: 'int',
     primitiveListName: 'Int16List',
     interestRawValues: ['0', '-32768', '32767'],
   ),
   PrimitiveTypeInfo(
     name: 'i32',
+    dartTypeName: 'int',
     primitiveListName: 'Int32List',
     interestRawValues: ['0', '-2147483648', '2147483647'],
   ),
   PrimitiveTypeInfo(
     name: 'i64',
+    dartTypeName: 'BigInt',
     primitiveListName: 'Int64List',
     interestRawValues: ['0', '-9223372036854775808', '9223372036854775807'],
     primitiveWrapper: (_, x) => 'BigInt.parse("$x")',
   ),
   PrimitiveTypeInfo(
     name: 'u8',
+    dartTypeName: 'int',
     primitiveListName: 'Uint8List',
     interestRawValues: ['0', '255'],
   ),
   PrimitiveTypeInfo(
     name: 'u16',
+    dartTypeName: 'int',
     primitiveListName: 'Uint16List',
     interestRawValues: ['0', '65535'],
   ),
   PrimitiveTypeInfo(
     name: 'u32',
+    dartTypeName: 'int',
     primitiveListName: 'Uint32List',
     interestRawValues: ['0', '4294967295'],
   ),
   PrimitiveTypeInfo(
     name: 'u64',
+    dartTypeName: 'BigInt',
     primitiveListName: 'Uint64List',
     // '18446744073709551615', // not support numbers bigger than max i64 yet (but implementable)
     interestRawValues: ['0', '9223372036854775807'],
@@ -128,16 +138,19 @@ final kPrimitiveTypes = [
   ),
   PrimitiveTypeInfo(
     name: 'f32',
+    dartTypeName: 'double',
     primitiveListName: 'Float32List',
     interestRawValues: ['0', '-42.5', '123456'],
   ),
   PrimitiveTypeInfo(
     name: 'f64',
+    dartTypeName: 'double',
     primitiveListName: 'Float64List',
     interestRawValues: ['0', '-42.5', '123456'],
   ),
   PrimitiveTypeInfo(
     name: 'bool',
+    dartTypeName: 'bool',
     primitiveListName: 'List<bool>',
     interestRawValues: ['false', 'true'],
     primitiveListWrapper: (info, x) => '<bool>[$x]',

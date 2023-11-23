@@ -9,10 +9,12 @@ class DartFileBuilder {
 
   void addTestsIdentityFunctionCall(
     String funcName,
-    List<String> values,
-  ) {
+    List<String> values, {
+    String? valueType,
+  }) {
     if (values.isEmpty) throw ArgumentError();
-    body += 'addTestsIdentityFunctionCall($funcName, [${values.join(", ")}]);';
+    final bracketedValueType = valueType == null ? "" : '<$valueType>';
+    body += 'addTestsIdentityFunctionCall($funcName, $bracketedValueType[${values.join(", ")}]);';
   }
 
   @override

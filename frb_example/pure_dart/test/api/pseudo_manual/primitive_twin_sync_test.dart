@@ -16,27 +16,28 @@ Future<void> main() async {
 
   group('primitive', () {
     addTestsIdentityFunctionCall(
-        examplePrimitiveTypeI8TwinSync, [0, -128, 127]);
+        examplePrimitiveTypeI8TwinSync, <int>[0, -128, 127]);
     addTestsIdentityFunctionCall(
-        examplePrimitiveTypeI16TwinSync, [0, -32768, 32767]);
+        examplePrimitiveTypeI16TwinSync, <int>[0, -32768, 32767]);
     addTestsIdentityFunctionCall(
-        examplePrimitiveTypeI32TwinSync, [0, -2147483648, 2147483647]);
-    addTestsIdentityFunctionCall(examplePrimitiveTypeI64TwinSync, [
+        examplePrimitiveTypeI32TwinSync, <int>[0, -2147483648, 2147483647]);
+    addTestsIdentityFunctionCall(examplePrimitiveTypeI64TwinSync, <BigInt>[
       BigInt.parse("0"),
       BigInt.parse("-9223372036854775808"),
       BigInt.parse("9223372036854775807")
     ]);
-    addTestsIdentityFunctionCall(examplePrimitiveTypeU8TwinSync, [0, 255]);
-    addTestsIdentityFunctionCall(examplePrimitiveTypeU16TwinSync, [0, 65535]);
+    addTestsIdentityFunctionCall(examplePrimitiveTypeU8TwinSync, <int>[0, 255]);
     addTestsIdentityFunctionCall(
-        examplePrimitiveTypeU32TwinSync, [0, 4294967295]);
+        examplePrimitiveTypeU16TwinSync, <int>[0, 65535]);
+    addTestsIdentityFunctionCall(
+        examplePrimitiveTypeU32TwinSync, <int>[0, 4294967295]);
     addTestsIdentityFunctionCall(examplePrimitiveTypeU64TwinSync,
-        [BigInt.parse("0"), BigInt.parse("9223372036854775807")]);
+        <BigInt>[BigInt.parse("0"), BigInt.parse("9223372036854775807")]);
     addTestsIdentityFunctionCall(
-        examplePrimitiveTypeF32TwinSync, [0, -42.5, 123456]);
+        examplePrimitiveTypeF32TwinSync, <double>[0, -42.5, 123456]);
     addTestsIdentityFunctionCall(
-        examplePrimitiveTypeF64TwinSync, [0, -42.5, 123456]);
+        examplePrimitiveTypeF64TwinSync, <double>[0, -42.5, 123456]);
     addTestsIdentityFunctionCall(
-        examplePrimitiveTypeBoolTwinSync, [false, true]);
+        examplePrimitiveTypeBoolTwinSync, <bool>[false, true]);
   });
 }

@@ -12,30 +12,35 @@ Future<void> main() async {
 
   group('optional_primitive', () {
     addTestsIdentityFunctionCall(
-        exampleOptionalPrimitiveTypeI8TwinNormal, [null, 0, -128, 127]);
-    addTestsIdentityFunctionCall(
-        exampleOptionalPrimitiveTypeI16TwinNormal, [null, 0, -32768, 32767]);
+        exampleOptionalPrimitiveTypeI8TwinNormal, <int?>[null, 0, -128, 127]);
+    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeI16TwinNormal,
+        <int?>[null, 0, -32768, 32767]);
     addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeI32TwinNormal,
-        [null, 0, -2147483648, 2147483647]);
-    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeI64TwinNormal, [
+        <int?>[null, 0, -2147483648, 2147483647]);
+    addTestsIdentityFunctionCall(
+        exampleOptionalPrimitiveTypeI64TwinNormal, <BigInt?>[
       null,
       BigInt.parse("0"),
       BigInt.parse("-9223372036854775808"),
       BigInt.parse("9223372036854775807")
     ]);
     addTestsIdentityFunctionCall(
-        exampleOptionalPrimitiveTypeU8TwinNormal, [null, 0, 255]);
+        exampleOptionalPrimitiveTypeU8TwinNormal, <int?>[null, 0, 255]);
     addTestsIdentityFunctionCall(
-        exampleOptionalPrimitiveTypeU16TwinNormal, [null, 0, 65535]);
+        exampleOptionalPrimitiveTypeU16TwinNormal, <int?>[null, 0, 65535]);
     addTestsIdentityFunctionCall(
-        exampleOptionalPrimitiveTypeU32TwinNormal, [null, 0, 4294967295]);
-    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeU64TwinNormal,
-        [null, BigInt.parse("0"), BigInt.parse("9223372036854775807")]);
+        exampleOptionalPrimitiveTypeU32TwinNormal, <int?>[null, 0, 4294967295]);
     addTestsIdentityFunctionCall(
-        exampleOptionalPrimitiveTypeF32TwinNormal, [null, 0, -42.5, 123456]);
+        exampleOptionalPrimitiveTypeU64TwinNormal, <BigInt?>[
+      null,
+      BigInt.parse("0"),
+      BigInt.parse("9223372036854775807")
+    ]);
+    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeF32TwinNormal,
+        <double?>[null, 0, -42.5, 123456]);
+    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeF64TwinNormal,
+        <double?>[null, 0, -42.5, 123456]);
     addTestsIdentityFunctionCall(
-        exampleOptionalPrimitiveTypeF64TwinNormal, [null, 0, -42.5, 123456]);
-    addTestsIdentityFunctionCall(
-        exampleOptionalPrimitiveTypeBoolTwinNormal, [null, false, true]);
+        exampleOptionalPrimitiveTypeBoolTwinNormal, <bool?>[null, false, true]);
   });
 }

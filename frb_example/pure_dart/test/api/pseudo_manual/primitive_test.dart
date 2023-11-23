@@ -12,27 +12,29 @@ Future<void> main() async {
 
   group('primitive', () {
     addTestsIdentityFunctionCall(
-        examplePrimitiveTypeI8TwinNormal, [0, -128, 127]);
+        examplePrimitiveTypeI8TwinNormal, <int>[0, -128, 127]);
     addTestsIdentityFunctionCall(
-        examplePrimitiveTypeI16TwinNormal, [0, -32768, 32767]);
+        examplePrimitiveTypeI16TwinNormal, <int>[0, -32768, 32767]);
     addTestsIdentityFunctionCall(
-        examplePrimitiveTypeI32TwinNormal, [0, -2147483648, 2147483647]);
-    addTestsIdentityFunctionCall(examplePrimitiveTypeI64TwinNormal, [
+        examplePrimitiveTypeI32TwinNormal, <int>[0, -2147483648, 2147483647]);
+    addTestsIdentityFunctionCall(examplePrimitiveTypeI64TwinNormal, <BigInt>[
       BigInt.parse("0"),
       BigInt.parse("-9223372036854775808"),
       BigInt.parse("9223372036854775807")
     ]);
-    addTestsIdentityFunctionCall(examplePrimitiveTypeU8TwinNormal, [0, 255]);
-    addTestsIdentityFunctionCall(examplePrimitiveTypeU16TwinNormal, [0, 65535]);
     addTestsIdentityFunctionCall(
-        examplePrimitiveTypeU32TwinNormal, [0, 4294967295]);
+        examplePrimitiveTypeU8TwinNormal, <int>[0, 255]);
+    addTestsIdentityFunctionCall(
+        examplePrimitiveTypeU16TwinNormal, <int>[0, 65535]);
+    addTestsIdentityFunctionCall(
+        examplePrimitiveTypeU32TwinNormal, <int>[0, 4294967295]);
     addTestsIdentityFunctionCall(examplePrimitiveTypeU64TwinNormal,
-        [BigInt.parse("0"), BigInt.parse("9223372036854775807")]);
+        <BigInt>[BigInt.parse("0"), BigInt.parse("9223372036854775807")]);
     addTestsIdentityFunctionCall(
-        examplePrimitiveTypeF32TwinNormal, [0, -42.5, 123456]);
+        examplePrimitiveTypeF32TwinNormal, <double>[0, -42.5, 123456]);
     addTestsIdentityFunctionCall(
-        examplePrimitiveTypeF64TwinNormal, [0, -42.5, 123456]);
+        examplePrimitiveTypeF64TwinNormal, <double>[0, -42.5, 123456]);
     addTestsIdentityFunctionCall(
-        examplePrimitiveTypeBoolTwinNormal, [false, true]);
+        examplePrimitiveTypeBoolTwinNormal, <bool>[false, true]);
   });
 }
