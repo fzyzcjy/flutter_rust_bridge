@@ -41,7 +41,7 @@ fn generate_array(
 
     Some(ApiDartGeneratedClass {
         header: DartBasicHeaderCode {
-            import: "import 'package:collection/collection.dart';".to_owned(),
+            import: "import 'package:collection/collection.dart';\n".to_owned(),
             ..Default::default()
         },
         namespace: array.namespace.clone(),
