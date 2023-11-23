@@ -1,4 +1,4 @@
-use crate::utils::rust_project_utils::compute_mod_from_path;
+use crate::utils::rust_project_utils::compute_mod_from_rust_crate_path;
 use itertools::Itertools;
 use serde::__private::ser::serialize_tagged_newtype;
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
@@ -35,8 +35,11 @@ impl Namespace {
         Self::new_raw(format!("{self_crate}{sep}{joined_path}"))
     }
 
-    pub(crate) fn new_from_path(code_path: &Path, crate_path: &Path) -> anyhow::Result<Self> {
-        let p = compute_mod_from_path(code_path, crate_path, lang)?;
+    pub(crate) fn new_from_rust_crate_path(
+        code_path: &Path,
+        rust_crate_path: &Path,
+    ) -> anyhow::Result<Self> {
+        let p = compute_mod_from_rust_crate_path(code_path, rust_crate_path)?;
         Ok(Self::new_self_crate(p))
     }
 

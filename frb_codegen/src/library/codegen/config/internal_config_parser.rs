@@ -17,7 +17,7 @@ use crate::library::commands::cargo_metadata::execute_cargo_metadata;
 use crate::utils::path_utils::{
     find_dart_package_dir, find_rust_crate_dir, glob_path, path_to_string,
 };
-use crate::utils::rust_project_utils::{compute_mod_from_path, compute_mod_from_rust_crate_path};
+use crate::utils::rust_project_utils::compute_mod_from_rust_crate_path;
 use anyhow::{ensure, Context, Result};
 use convert_case::{Case, Casing};
 use itertools::Itertools;

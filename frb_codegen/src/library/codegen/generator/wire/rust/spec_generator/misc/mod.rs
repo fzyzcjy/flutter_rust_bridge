@@ -12,7 +12,7 @@ use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::Wi
 use crate::library::codegen::generator::wire::rust::spec_generator::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use crate::misc::consts::HANDLER_NAME;
-use crate::utils::rust_project_utils::{compute_mod_from_path, compute_mod_from_rust_crate_path};
+use crate::utils::rust_project_utils::compute_mod_from_rust_crate_path;
 use itertools::Itertools;
 use serde::Serialize;
 use std::collections::HashSet;

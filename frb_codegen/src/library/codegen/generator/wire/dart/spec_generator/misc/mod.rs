@@ -10,7 +10,6 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
 use crate::utils::basic_code::DartBasicHeaderCode;
 use crate::utils::path_utils::path_to_string;
-use crate::utils::rust_project_utils::compute_mod_from_path;
 use anyhow::Context;
 use itertools::Itertools;
 use pathdiff::diff_paths;
