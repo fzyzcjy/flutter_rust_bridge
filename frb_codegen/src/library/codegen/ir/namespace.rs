@@ -111,7 +111,7 @@ mod tests {
         let serialized = serde_json::to_string(&original)?;
         let recovered: NamespacedName = serde_json::from_str(&serialized)?;
 
-        assert_eq!(serialized, r#""a::b::c""#);
+        assert_eq!(serialized, r#""a::b/c""#);
         assert_eq!(original, recovered);
 
         Ok(())

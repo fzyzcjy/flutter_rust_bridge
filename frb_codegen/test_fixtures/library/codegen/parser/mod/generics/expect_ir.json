@@ -1,1 +1,175 @@
-"TODO"
+{
+  "enum_pool": {},
+  "funcs": [
+    {
+      "comments": [],
+      "error_output": null,
+      "inputs": [
+        {
+          "comments": [],
+          "default": null,
+          "is_final": true,
+          "name": "arg",
+          "settings": {
+            "is_in_mirrored_enum": false
+          },
+          "ty": {
+            "Boxed": {
+              "exist_in_real_api": false,
+              "inner": {
+                "StructRef": {
+                  "ident": "crate::api/MyGenericStruct",
+                  "is_exception": false
+                }
+              }
+            }
+          }
+        }
+      ],
+      "mode": "Normal",
+      "name": "crate::api/generic_func_bool",
+      "output": {
+        "Primitive": "Unit"
+      },
+      "owner": "Function"
+    },
+    {
+      "comments": [],
+      "error_output": null,
+      "inputs": [
+        {
+          "comments": [],
+          "default": null,
+          "is_final": true,
+          "name": "arg",
+          "settings": {
+            "is_in_mirrored_enum": false
+          },
+          "ty": {
+            "Boxed": {
+              "exist_in_real_api": false,
+              "inner": {
+                "StructRef": {
+                  "ident": "crate::api/MyGenericStruct",
+                  "is_exception": false
+                }
+              }
+            }
+          }
+        }
+      ],
+      "mode": "Normal",
+      "name": "crate::api/generic_func_string",
+      "output": {
+        "Primitive": "Unit"
+      },
+      "owner": "Function"
+    },
+    {
+      "comments": [],
+      "error_output": null,
+      "inputs": [
+        {
+          "comments": [],
+          "default": null,
+          "is_final": true,
+          "name": "arg",
+          "settings": {
+            "is_in_mirrored_enum": false
+          },
+          "ty": {
+            "Boxed": {
+              "exist_in_real_api": false,
+              "inner": {
+                "StructRef": {
+                  "ident": "crate::api/MyGenericStruct",
+                  "is_exception": false
+                }
+              }
+            }
+          }
+        }
+      ],
+      "mode": "Normal",
+      "name": "crate::api/generic_func_string_repeated",
+      "output": {
+        "Primitive": "Unit"
+      },
+      "owner": "Function"
+    }
+  ],
+  "has_executor": false,
+  "struct_pool": {
+    "crate::api/MyGenericStruct": {
+      "comments": [],
+      "dart_metadata": [],
+      "fields": [
+        {
+          "comments": [],
+          "default": null,
+          "is_final": true,
+          "name": "generic_field",
+          "settings": {
+            "is_in_mirrored_enum": false
+          },
+          "ty": {
+            "Unencodable": {
+              "segments": [
+                {
+                  "args": null,
+                  "ident": "T"
+                }
+              ],
+              "string": "T"
+            }
+          }
+        },
+        {
+          "comments": [],
+          "default": null,
+          "is_final": true,
+          "name": "generic_boxed_field",
+          "settings": {
+            "is_in_mirrored_enum": false
+          },
+          "ty": {
+            "Boxed": {
+              "exist_in_real_api": true,
+              "inner": {
+                "Unencodable": {
+                  "segments": [
+                    {
+                      "args": null,
+                      "ident": "T"
+                    }
+                  ],
+                  "string": "T"
+                }
+              }
+            }
+          }
+        },
+        {
+          "comments": [],
+          "default": null,
+          "is_final": true,
+          "name": "normal_field",
+          "settings": {
+            "is_in_mirrored_enum": false
+          },
+          "ty": {
+            "Primitive": "I32"
+          }
+        }
+      ],
+      "is_fields_named": true,
+      "name": "crate::api/MyGenericStruct",
+      "path": [
+        "crate",
+        "api",
+        "MyGenericStruct"
+      ],
+      "wrapper_name": null
+    }
+  }
+}

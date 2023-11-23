@@ -1,4 +1,8 @@
 {
+  "dumper": {
+    "dump_contents": [],
+    "dump_directory": "{the-working-directory}/target/frb_dump"
+  },
   "generator": {
     "api_dart": {
       "dart3": true,

@@ -1,9 +1,9 @@
 {
   "enum_pool": {
-    "crate::api::MyEnum::MyEnum": {
+    "crate::api/MyEnum": {
       "comments": [],
       "mode": "Simple",
-      "name": "crate::api::MyEnum::MyEnum",
+      "name": "crate::api/MyEnum",
       "path": [
         "crate",
         "api",
@@ -43,7 +43,7 @@
             "Delegate": {
               "PrimitiveEnum": {
                 "ir": {
-                  "ident": "crate::api::MyEnum::MyEnum",
+                  "ident": "crate::api/MyEnum",
                   "is_exception": false
                 },
                 "repr": "I32"
@@ -53,7 +53,7 @@
         }
       ],
       "mode": "Normal",
-      "name": "crate::api::MyEnum_example_instance_method",
+      "name": "crate::api/MyEnum_example_instance_method",
       "output": {
         "Primitive": "Unit"
       },
@@ -70,7 +70,7 @@
       "error_output": null,
       "inputs": [],
       "mode": "Normal",
-      "name": "crate::api::MyEnum_example_static_method",
+      "name": "crate::api/MyEnum_example_static_method",
       "output": {
         "Primitive": "Unit"
       },
@@ -108,7 +108,7 @@
         }
       ],
       "mode": "Normal",
-      "name": "crate::api::MyStruct_example_instance_method",
+      "name": "crate::api/MyStruct_example_instance_method",
       "output": {
         "Primitive": "Unit"
       },
@@ -125,7 +125,7 @@
       "error_output": null,
       "inputs": [],
       "mode": "Normal",
-      "name": "crate::api::MyStruct_example_static_method",
+      "name": "crate::api/MyStruct_example_static_method",
       "output": {
         "Primitive": "Unit"
       },

@@ -1,9 +1,9 @@
 {
   "enum_pool": {
-    "crate::another_file::EnumInAnotherFile::EnumInAnotherFile": {
+    "crate::another_file/EnumInAnotherFile": {
       "comments": [],
       "mode": "Simple",
-      "name": "crate::another_file::EnumInAnotherFile::EnumInAnotherFile",
+      "name": "crate::another_file/EnumInAnotherFile",
       "path": [
         "crate",
         "another_file",
@@ -38,7 +38,7 @@
               "exist_in_real_api": false,
               "inner": {
                 "StructRef": {
-                  "ident": "crate::another_file::StructInAnotherFile::StructInAnotherFile",
+                  "ident": "crate::another_file/StructInAnotherFile",
                   "is_exception": false
                 }
               }
@@ -57,7 +57,7 @@
             "Delegate": {
               "PrimitiveEnum": {
                 "ir": {
-                  "ident": "crate::another_file::EnumInAnotherFile::EnumInAnotherFile",
+                  "ident": "crate::another_file/EnumInAnotherFile",
                   "is_exception": false
                 },
                 "repr": "I32"
@@ -67,7 +67,7 @@
         }
       ],
       "mode": "Normal",
-      "name": "crate::api::func_one",
+      "name": "crate::api/func_one",
       "output": {
         "Primitive": "Unit"
       },
@@ -76,7 +76,7 @@
   ],
   "has_executor": false,
   "struct_pool": {
-    "crate::another_file::StructInAnotherFile::StructInAnotherFile": {
+    "crate::another_file/StructInAnotherFile": {
       "comments": [],
       "dart_metadata": [],
       "fields": [
@@ -94,7 +94,7 @@
         }
       ],
       "is_fields_named": true,
-      "name": "crate::another_file::StructInAnotherFile::StructInAnotherFile",
+      "name": "crate::another_file/StructInAnotherFile",
       "path": [
         "crate",
         "another_file",

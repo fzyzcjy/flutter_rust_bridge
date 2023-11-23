@@ -33,7 +33,7 @@
         }
       ],
       "mode": "Normal",
-      "name": "crate::api::func_1",
+      "name": "crate::api/func_1",
       "output": {
         "Primitive": "Unit"
       },
@@ -46,7 +46,7 @@
       },
       "inputs": [],
       "mode": "Normal",
-      "name": "crate::api::func_anyhow_result",
+      "name": "crate::api/func_anyhow_result",
       "output": {
         "Primitive": "I32"
       },
