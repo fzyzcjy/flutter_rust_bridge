@@ -97,5 +97,5 @@ _Annotation _parseAnnotation(String fileContent) {
 class _Annotation {
   final List<DuplicatorMode> forbiddenDuplicatorModes;
 
-  const _Annotation({this.forbiddenDuplicatorModes = []});
+  const _Annotation({this.forbiddenDuplicatorModes = const []});
 }
