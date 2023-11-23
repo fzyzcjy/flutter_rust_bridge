@@ -9,14 +9,16 @@ Future<void> main() async {
   test('call funcReturnErrorTwinNormal', () async {
     await expectLater(
         () async => funcReturnErrorTwinNormal(),
-        throwsA(isA<AnyhowException>().having((x) => x.message, 'message',
-            'return_err() is called, thus deliberately return Err')));
+        throwsA(isA<AnyhowException>()
+            .having((x) => x.message, 'message', 'return_err() is called, thus deliberately return Err')));
   });
 
   test('call funcReturnPanicTwinNormal', () async {
     await expectLater(
         () async => funcReturnPanicTwinNormal(),
-        throwsA(isA<PanicException>().having((x) => x.message, 'message',
-            'return_panic() is called, thus deliberately panic')));
+        throwsA(isA<PanicException>()
+            .having((x) => x.message, 'message', 'return_panic() is called, thus deliberately panic')));
   });
+ 
+  TODO;
 }
