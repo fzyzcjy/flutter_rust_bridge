@@ -41,7 +41,12 @@ fn generate_end_api_text(
     dart_output_path: &Path,
     item: &ApiDartOutputSpecItem,
 ) -> String {
-    let funcs = item.funcs.iter().map(|f| generate_function(f)).join("\n\n");
+    let funcs = item
+        .funcs
+        .iter()
+        .sorted_by_key(|f| f.src_lineno)
+        .map(|f| generate_function(f))
+        .join("\n\n");
     let classes = item.classes.iter().map(|c| c.code.clone()).join("\n\n");
 
     // TODO use relative path calculation
