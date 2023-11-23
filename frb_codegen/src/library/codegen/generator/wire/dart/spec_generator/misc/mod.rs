@@ -66,10 +66,7 @@ fn generate_boilerplate(
         api_dart_actual_output_paths,
     )?;
     universal_imports += &generate_imports_which_types_and_funcs_use(
-        &Namespace::new_from_path(
-            &context.config.dart_impl_output_path[TargetOrCommon::Common],
-            &context.config.dart_root,
-        )?,
+        &Namespace::new_self_crate(file_stem(&context.config.dart_impl_output_path.io)),
         &Some(&cache.distinct_types.iter().collect_vec()),
         &None,
         context.as_api_dart_context(),
@@ -169,6 +166,10 @@ fn generate_boilerplate(
             ..Default::default()
         }],
     })
+}
+
+fn file_stem(p: &Path) -> String {
+    p.file_stem().unwrap().to_str().unwrap().into()
 }
 
 fn generate_import_dart_api_layer(
