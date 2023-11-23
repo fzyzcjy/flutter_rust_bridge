@@ -13,8 +13,13 @@ pub(crate) fn read_rust_file(
 ) -> Result<String> {
     let module = get_rust_mod(rust_file_path, rust_crate_dir)?;
     debug!("read_rust_file rust_file_path={rust_file_path:?} module={module:?}");
-    let ans = cargo_expand(&rust_crate_dir, module, rust_file_path)?;
+    let (raw_expanded, ans) = cargo_expand(&rust_crate_dir, module, rust_file_path)?;
 
+    dumper.dump_str(
+        ConfigDumpContent::Source,
+        "read_rust_file/raw_expanded.rs",
+        &raw_expanded,
+    )?;
     dumper.dump_str(
         ConfigDumpContent::Source,
         &("read_rust_file/".to_owned()

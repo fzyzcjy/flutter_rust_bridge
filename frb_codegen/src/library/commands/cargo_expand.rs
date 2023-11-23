@@ -13,7 +13,7 @@ pub(crate) fn cargo_expand(
     rust_crate_dir: &Path,
     module: Option<String>,
     rust_file_path: &Path,
-) -> Result<String> {
+) -> Result<(String, String)> {
     let manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
 
     if !manifest_dir.is_empty() && rust_crate_dir == PathBuf::from(manifest_dir) {
@@ -31,7 +31,7 @@ pub(crate) fn cargo_expand(
         Vacant(entry) => entry.insert(run_cargo_expand(rust_crate_dir)?),
     };
 
-    extract_module(expanded, module)
+    (expanded, extract_module(expanded, module))
 }
 
 lazy_static! {
