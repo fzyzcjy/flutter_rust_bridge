@@ -3,6 +3,7 @@ pub mod dart_opaque;
 pub mod enumeration;
 pub mod exception;
 pub mod inside_macro;
+pub mod method;
 pub mod mirror;
 pub mod misc_type;
 pub mod pseudo_manual;
