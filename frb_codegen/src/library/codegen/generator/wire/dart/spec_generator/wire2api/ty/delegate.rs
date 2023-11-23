@@ -53,10 +53,10 @@ impl<'a> WireDartGeneratorWire2apiTrait for DelegateWireDartGenerator<'a> {
             }
             IrTypeDelegate::Time(ir) => {
                 if ir == &IrTypeDelegateTime::Duration {
-                    "return wire2apiDuration(_wire2api_i64(raw));".to_owned()
+                    "return wire2apiDuration(_wire2api_i_64(raw));".to_owned()
                 } else {
                     format!(
-                        "return wire2apiTimestamp(ts: _wire2api_i64(raw), isUtc: {is_utc});",
+                        "return wire2apiTimestamp(ts: _wire2api_i_64(raw), isUtc: {is_utc});",
                         is_utc = matches!(ir, IrTypeDelegateTime::Naive | IrTypeDelegateTime::Utc)
                     )
                 }
