@@ -29,9 +29,10 @@ pub(crate) fn parse(config: &ParserInternalConfig, dumper: &Dumper) -> anyhow::R
     let rust_input_paths = &config.rust_input_path_pack.rust_input_paths;
     trace!("rust_input_paths={:?}", &rust_input_paths);
 
-    let file_data_arr = read_files(&rust_input_paths, &config.rust_crate_dir)?;
+    let file_data_arr = read_files(&rust_input_paths, &config.rust_crate_dir, dumper)?;
 
-    let crate_map = source_graph::crates::Crate::parse(&config.rust_crate_dir.join("Cargo.toml"))?;
+    let crate_map =
+        source_graph::crates::Crate::parse(&config.rust_crate_dir.join("Cargo.toml"), dumper)?;
     dumper.dump(SourceGraph, "source_graph.json", &crate_map)?;
 
     let src_fns = file_data_arr
@@ -82,11 +83,12 @@ struct FileData {
 fn read_files(
     rust_input_paths: &[PathBuf],
     rust_crate_dir: &PathBuf,
+    dumper: &Dumper,
 ) -> anyhow::Result<Vec<FileData>> {
     rust_input_paths
         .iter()
         .map(|rust_input_path| {
-            let content = read_rust_file(rust_input_path, &rust_crate_dir)?;
+            let content = read_rust_file(rust_input_path, &rust_crate_dir, dumper)?;
             let ast = syn::parse_file(&content)?;
             Ok(FileData {
                 path: (*rust_input_path).clone(),

@@ -1,3 +1,4 @@
+use crate::codegen::dumper::Dumper;
 use crate::codegen::parser::source_graph::modules::{Module, ModuleInfo, ModuleSource, Visibility};
 use crate::library::commands::cargo_metadata::execute_cargo_metadata;
 use anyhow::{bail, Context};
@@ -16,7 +17,7 @@ pub struct Crate {
 }
 
 impl Crate {
-    pub fn parse(manifest_path: &Path) -> anyhow::Result<Self> {
+    pub(crate) fn parse(manifest_path: &Path, dumper: &Dumper) -> anyhow::Result<Self> {
         debug!("parse manifest_path={manifest_path:?}");
 
         let manifest_path = fs::canonicalize(manifest_path)?;
@@ -29,7 +30,7 @@ impl Crate {
         let root_src_ast = syn::parse_file(&root_src_content)?;
 
         let root_module_info = get_root_module_info(root_src_file.clone(), root_src_ast);
-        let root_module = Module::parse(root_module_info)?;
+        let root_module = Module::parse(root_module_info, dumper)?;
 
         Ok(Crate {
             name: root_package.name.clone(),

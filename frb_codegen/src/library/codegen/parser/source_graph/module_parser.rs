@@ -1,3 +1,4 @@
+use crate::codegen::dumper::Dumper;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::reader::read_rust_file;
 use crate::codegen::parser::source_graph::modules::{
@@ -20,7 +21,7 @@ impl Module {
     // - When import parsing is enabled:
     //     - Import renames (use a::b as c) - these are silently ignored
     //     - Imports that start with two colons (use ::a::b) - these are also silently ignored
-    pub fn parse(info: ModuleInfo) -> anyhow::Result<Self> {
+    pub(crate) fn parse(info: ModuleInfo, dumper: &Dumper) -> anyhow::Result<Self> {
         debug!("parse START info={info:?}");
 
         let mut scope_modules = Vec::new();
@@ -45,7 +46,7 @@ impl Module {
                     scope_types.extend(parse_syn_item_type(item_type));
                 }
                 syn::Item::Mod(item_mod) => {
-                    scope_modules.extend(parse_syn_item_mod(&info, &item_mod)?);
+                    scope_modules.extend(parse_syn_item_mod(&info, &item_mod, dumper)?);
                 }
                 _ => {}
             }
@@ -121,7 +122,11 @@ fn parse_syn_item_type(item_type: &ItemType) -> Option<TypeAlias> {
     }
 }
 
-fn parse_syn_item_mod(info: &ModuleInfo, item_mod: &ItemMod) -> anyhow::Result<Option<Module>> {
+fn parse_syn_item_mod(
+    info: &ModuleInfo,
+    item_mod: &ItemMod,
+    dumper: &Dumper,
+) -> anyhow::Result<Option<Module>> {
     let ident = item_mod.ident.clone();
 
     let module_path = {
@@ -133,8 +138,10 @@ fn parse_syn_item_mod(info: &ModuleInfo, item_mod: &ItemMod) -> anyhow::Result<O
     debug!("parse_syn_item_mod module_path={module_path:?}");
 
     Ok(match &item_mod.content {
-        Some(content) => parse_syn_item_mod_contentful(info, item_mod, module_path, content)?,
-        None => parse_syn_item_mod_contentless(&info, &item_mod, module_path, ident)?,
+        Some(content) => {
+            parse_syn_item_mod_contentful(info, item_mod, module_path, content, dumper)?
+        }
+        None => parse_syn_item_mod_contentless(&info, &item_mod, module_path, ident, dumper)?,
     })
 }
 
@@ -143,15 +150,19 @@ fn parse_syn_item_mod_contentful(
     item_mod: &ItemMod,
     module_path: Vec<String>,
     content: &(Brace, Vec<Item>),
+    dumper: &Dumper,
 ) -> anyhow::Result<Option<Module>> {
     debug!("parse_syn_item_mod_contentful module_path={module_path:?}");
 
-    Ok(Some(Module::parse(ModuleInfo {
-        visibility: Visibility::from_syn(&item_mod.vis),
-        file_path: info.file_path.clone(),
-        module_path,
-        source: ModuleSource::ModuleInFile(content.1.clone()),
-    })?))
+    Ok(Some(Module::parse(
+        ModuleInfo {
+            visibility: Visibility::from_syn(&item_mod.vis),
+            file_path: info.file_path.clone(),
+            module_path,
+            source: ModuleSource::ModuleInFile(content.1.clone()),
+        },
+        dumper,
+    )?))
 }
 
 fn parse_syn_item_mod_contentless(
@@ -159,6 +170,7 @@ fn parse_syn_item_mod_contentless(
     item_mod: &ItemMod,
     module_path: Vec<String>,
     ident: Ident,
+    dumper: &Dumper,
 ) -> anyhow::Result<Option<Module>> {
     debug!("parse_syn_item_mod_contentless module_path={module_path:?}");
 
@@ -172,16 +184,19 @@ fn parse_syn_item_mod_contentless(
 
     if let Some(file_path) = first_existing_path(&file_path_candidates) {
         let rust_crate_dir_for_file = find_rust_crate_dir(file_path)?;
-        let source_rust_content = read_rust_file(&file_path, &rust_crate_dir_for_file)?;
+        let source_rust_content = read_rust_file(&file_path, &rust_crate_dir_for_file, dumper)?;
         debug!("Trying to parse {:?}", file_path);
         let source = ModuleSource::File(syn::parse_file(&source_rust_content).unwrap());
 
-        Ok(Some(Module::parse(ModuleInfo {
-            visibility: Visibility::from_syn(&item_mod.vis),
-            file_path: file_path.to_owned(),
-            module_path,
-            source,
-        })?))
+        Ok(Some(Module::parse(
+            ModuleInfo {
+                visibility: Visibility::from_syn(&item_mod.vis),
+                file_path: file_path.to_owned(),
+                module_path,
+                source,
+            },
+            dumper,
+        )?))
     } else {
         warn!(
             "Skipping unresolvable module {} (tried {})",
