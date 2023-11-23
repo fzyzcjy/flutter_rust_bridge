@@ -46,7 +46,7 @@ pub(crate) fn generate(
 
     let func_impl = generate_func_impl(func, &context.config.dart_entrypoint_class_name);
 
-    let header = generate_header(func, context.ir_pack)?;
+    let header = generate_header(func, context)?;
 
     Ok(ApiDartGeneratedFunction {
         namespace: func.name.namespace.clone(),
@@ -97,11 +97,14 @@ fn generate_func_impl(func: &IrFunc, dart_entrypoint_class_name: &str) -> String
     format!("{dart_entrypoint_class_name}.instance.api.{func_name}({param_forwards})")
 }
 
-fn generate_header(func: &IrFunc, ir_pack: &IrPack) -> anyhow::Result<DartBasicHeaderCode> {
+fn generate_header(
+    func: &IrFunc,
+    context: ApiDartGeneratorContext,
+) -> anyhow::Result<DartBasicHeaderCode> {
     generate_imports_which_types_and_funcs_use(
         &func.name.namespace.clone(),
         &None,
         &Some(&vec![func]),
-        ir_pack,
+        context,
     )
 }

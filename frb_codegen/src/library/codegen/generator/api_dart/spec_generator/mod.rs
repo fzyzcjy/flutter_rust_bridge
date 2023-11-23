@@ -79,12 +79,8 @@ fn generate_item(
     funcs: &Option<&Vec<&IrFunc>>,
     context: ApiDartGeneratorContext,
 ) -> Result<ApiDartOutputSpecItem> {
-    let imports = generate_imports_which_types_and_funcs_use(
-        namespace,
-        namespaced_types,
-        funcs,
-        context.ir_pack,
-    )?;
+    let imports =
+        generate_imports_which_types_and_funcs_use(namespace, namespaced_types, funcs, context)?;
 
     let funcs = funcs
         .map(|funcs| {

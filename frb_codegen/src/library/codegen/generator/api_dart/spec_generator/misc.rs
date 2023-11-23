@@ -1,3 +1,6 @@
+use crate::codegen::generator::api_dart::spec_generator::base::{
+    ApiDartGenerator, ApiDartGeneratorContext,
+};
 use crate::codegen::ir::annotation::IrDartAnnotation;
 use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode};
@@ -63,23 +66,24 @@ pub(super) fn generate_imports_which_types_and_funcs_use(
     current_file_namespace: &Namespace,
     seed_types: &Option<&Vec<&IrType>>,
     seed_funcs: &Option<&Vec<&IrFunc>>,
-    ir_pack: &IrPack,
+    context: ApiDartGeneratorContext,
 ) -> anyhow::Result<DartBasicHeaderCode> {
     let interest_types = {
         let mut gatherer = DistinctTypeGatherer::new();
         if let Some(types) = seed_types {
-            (types.iter()).for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), ir_pack));
+            (types.iter()).for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), context.ir_pack));
         }
         if let Some(funcs) = seed_funcs {
-            (funcs.iter())
-                .for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), true, true, ir_pack));
+            (funcs.iter()).for_each(|x| {
+                x.visit_types(&mut |ty| gatherer.add(ty), true, true, context.ir_pack)
+            });
         }
         gatherer.gather()
     };
 
     let import = interest_types
         .iter()
-        .map(|ty| generate_imports_from_ty(ty, current_file_namespace))
+        .map(|ty| generate_imports_from_ty(ty, current_file_namespace, context))
         .collect::<anyhow::Result<Vec<_>>>()?
         .iter()
         .join("");
@@ -93,6 +97,7 @@ pub(super) fn generate_imports_which_types_and_funcs_use(
 fn generate_imports_from_ty(
     ty: &IrType,
     current_file_namespace: &Namespace,
+    context: ApiDartGeneratorContext,
 ) -> anyhow::Result<String> {
     let ty_namespace = ty.self_namespace();
 
@@ -107,7 +112,7 @@ fn generate_imports_from_ty(
         "".to_owned()
     };
 
-    let import_extra = ty.TODO();
+    let import_extra = ApiDartGenerator::new(ty, context).TODO();
 
     Ok(import_ty_itself + import_extra)
 }
