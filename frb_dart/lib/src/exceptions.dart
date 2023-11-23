@@ -4,22 +4,25 @@ class FrbException implements Exception {}
 /// The rust code is panicked
 class PanicException implements FrbException {
   /// The error message
-  final String error;
+  final String message;
 
   /// The rust code is panicked
-  PanicException(this.error);
+  PanicException(this.message);
+
+  @override
+  String toString() => 'PanicException($message)';
 }
 
 /// The rust code returns `anyhow::Error`
 class AnyhowException implements FrbException {
   /// The error message
-  final String anyhow;
+  final String message;
 
   /// The rust code returns `anyhow::Error`
-  AnyhowException(this.anyhow);
+  AnyhowException(this.message);
 
   @override
-  String toString() => 'AnyhowException($anyhow)';
+  String toString() => 'AnyhowException($message)';
 }
 
 /// Interface indicating exceptions that have backtrace (stack trace)

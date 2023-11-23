@@ -12,11 +12,11 @@ Future<void> main() async {
 
   test('call funcReturnErrorTwinSync', () async {
     await expectLater(() async => funcReturnErrorTwinSync(),
-        throwsA(isA<AnyhowException>().having((x) => x.anyhow, 'anyhow', 'TODO')));
+        throwsA(isA<AnyhowException>().having((x) => x.message, 'anyhow', 'TODO')));
   });
 
   test('call funcReturnPanicTwinSync', () async {
-    await expectLater(
-        () async => funcReturnPanicTwinSync(), throwsA(isA<PanicException>().having((x) => x.error, 'error', 'TODO')));
+    await expectLater(() async => funcReturnPanicTwinSync(),
+        throwsA(isA<PanicException>().having((x) => x.message, 'error', 'TODO')));
   });
 }

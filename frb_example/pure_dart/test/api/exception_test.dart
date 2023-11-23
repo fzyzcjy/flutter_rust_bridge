@@ -7,12 +7,16 @@ Future<void> main() async {
   await RustLib.init();
 
   test('call funcReturnErrorTwinNormal', () async {
-    await expectLater(() async => funcReturnErrorTwinNormal(),
-        throwsA(isA<AnyhowException>().having((x) => x.anyhow, 'anyhow', 'TODO')));
+    await expectLater(
+        () async => funcReturnErrorTwinNormal(),
+        throwsA(isA<AnyhowException>()
+            .having((x) => x.message, 'message', 'return_err() is called, thus deliberately return Err')));
   });
 
   test('call funcReturnPanicTwinNormal', () async {
-    await expectLater(() async => funcReturnPanicTwinNormal(),
-        throwsA(isA<PanicException>().having((x) => x.error, 'error', 'TODO')));
+    await expectLater(
+        () async => funcReturnPanicTwinNormal(),
+        throwsA(isA<PanicException>()
+            .having((x) => x.message, 'message', 'return_panic() is called, thus deliberately panic')));
   });
 }
