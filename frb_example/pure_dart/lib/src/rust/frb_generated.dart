@@ -552,7 +552,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_func_return_error_twin_normal(port_),
       parseSuccessData: _wire2api_i_32,
-      parseErrorData: _wire2api_FrbAnyhowException,
+      parseErrorData: _wire2api_AnyhowException,
       constMeta: kFuncReturnErrorTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -815,7 +815,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () => wire.wire_func_return_error_twin_sync(),
       parseSuccessData: _wire2api_i_32,
-      parseErrorData: _wire2api_FrbAnyhowException,
+      parseErrorData: _wire2api_AnyhowException,
       constMeta: kFuncReturnErrorTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -2554,8 +2554,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
 // Section: impl_wire2api
 
-FrbAnyhowException _wire2api_FrbAnyhowException(dynamic raw) {
-  return FrbAnyhowException(raw as String);
+AnyhowException _wire2api_AnyhowException(dynamic raw) {
+  return AnyhowException(raw as String);
 }
 
 String _wire2api_String(dynamic raw) {

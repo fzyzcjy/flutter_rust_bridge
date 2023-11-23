@@ -7,8 +7,10 @@ Future<void> main() async {
   await RustLib.init();
 
   test('call funcReturnErrorTwinNormal', () async {
-    await expectLater(() async => funcReturnErrorTwinNormal(),
-        throwsA(isA<FrbAnyhowException>().having((x) => x.anyhow, 'anyhow', 'TODO')));
+    await expectLater(
+        () async => funcReturnErrorTwinNormal(),
+        throwsA(isA<FrbAnyhowException>()
+            .having((x) => x.anyhow, 'anyhow', 'TODO')));
   });
 
   test('call funcReturnPanicTwinNormal', () async {
