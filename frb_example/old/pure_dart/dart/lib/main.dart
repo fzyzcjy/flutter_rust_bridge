@@ -23,6 +23,14 @@ void main(List<String> args) async {
   final api = initializeExternalLibrary(dylibPath);
   tearDownAll(() => api.dispose());
 
+  test('dart call simpleAdder', () async {
+    expect(await api.simpleAdder(a: 42, b: 100), 142);
+  });
+
+  test('dart call simpleAdderSync', () {
+    expect(api.simpleAdderSync(a: 42, b: 100), 142);
+  });
+
   test('dart call primitiveTypes', () async {
     expect(
         await api.primitiveTypes(myI32: 123, myI64: 10000000000000, myF64: 12345678901234567890.123, myBool: true), 42);
@@ -244,6 +252,16 @@ void main(List<String> args) async {
     } on PanicException catch (e) {
       print('dart catch panic e: $e');
     }
+  });
+
+  test('dart call handle_stream', () async {
+    final stream = api.handleStream(arg: 'hello');
+    var cnt = 0;
+    await for (final value in stream) {
+      print("output from handle_stream's stream: $value");
+      cnt++;
+    }
+    expect(cnt, 10);
   });
 
   Future<void> testHandleStream(
