@@ -1,4 +1,5 @@
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
+use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
@@ -14,7 +15,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         context: &TypeParserParsingContext,
     ) -> anyhow::Result<FunctionPartialInfo> {
         Ok(match &sig.output {
-            ReturnType::Type(_, ty) => self.parse_fn_output_type(ty, context)?,
+            ReturnType::Type(_, ty) => {
+                remove_primitive_unit(self.parse_fn_output_type(ty, context)?)
+            }
             ReturnType::Default => Default::default(),
         })
     }
@@ -77,4 +80,15 @@ fn set_is_exception_flag(mut ty: IrType) -> IrType {
         _ => {}
     }
     ty
+}
+
+// Convert primitive Unit type -> None
+fn remove_primitive_unit(info: FunctionPartialInfo) -> FunctionPartialInfo {
+    let ok_output = if info.ok_output == Some(IrType::Primitive(IrTypePrimitive::Unit)) {
+        None
+    } else {
+        info.ok_output
+    };
+
+    FunctionPartialInfo { ok_output, ..info }
 }
