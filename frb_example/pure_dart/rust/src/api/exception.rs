@@ -25,7 +25,7 @@ pub enum CustomEnumErrorTwinNormal {
 pub fn custom_enum_error_return_error_twin_normal() -> Result<u32, CustomEnumErrorTwinNormal> {
     Err(CustomEnumErrorTwinNormal::Error0 {
         e: "deliberate error".into(),
-        backtrace: Backtrace::new(),
+        backtrace: Backtrace::capture(),
     })
 }
 
