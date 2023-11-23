@@ -51,17 +51,7 @@ impl IrPack {
         include_func_output: bool,
     ) {
         for func in &self.funcs {
-            if include_func_inputs {
-                for field in &func.inputs {
-                    field.ty.visit_types(f, self);
-                }
-            }
-            if include_func_output {
-                func.output.visit_types(f, self);
-                if let Some(error_output) = &func.error_output {
-                    error_output.visit_types(f, self);
-                }
-            }
+            func.visit_types(f, include_func_inputs, include_func_output)
         }
     }
 }

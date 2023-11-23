@@ -1,6 +1,7 @@
 use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
+use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::IrType;
 
 crate::ir! {
@@ -45,5 +46,25 @@ pub enum IrFuncOwnerInfoMethodMode {
 impl IrFunc {
     pub(crate) fn fallible(&self) -> bool {
         self.error_output.is_some()
+    }
+
+    pub(crate) fn visit_types<F: FnMut(&IrType) -> bool>(
+        &self,
+        f: &mut F,
+        include_inputs: bool,
+        include_output: bool,
+        ir_pack: &IrPack,
+    ) {
+        if include_inputs {
+            for field in &self.inputs {
+                field.ty.visit_types(f, ir_pack);
+            }
+        }
+        if include_output {
+            self.output.visit_types(f, ir_pack);
+            if let Some(error_output) = &self.error_output {
+                error_output.visit_types(f, ir_pack);
+            }
+        }
     }
 }
