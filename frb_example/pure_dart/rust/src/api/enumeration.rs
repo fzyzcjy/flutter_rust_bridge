@@ -1,13 +1,13 @@
+pub enum EnumSimple {
+    A,
+    B,
+}
+
+pub fn func_enum_simple_twin_normal(arg: EnumSimple) -> EnumSimple {
+    arg
+}
+
 // TODO
-// pub enum EnumSimple {
-//     A,
-//     B,
-// }
-//
-// pub fn func_enum_simple_twin_normal(arg: EnumSimple) -> EnumSimple {
-//     arg
-// }
-//
 // pub enum EnumWithItemMixed {
 //     A,
 //     B(Vec<u8>),
