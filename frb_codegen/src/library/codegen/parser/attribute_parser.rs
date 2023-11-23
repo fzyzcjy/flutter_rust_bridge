@@ -316,7 +316,7 @@ mod tests {
 
     #[test]
     fn test_mirror() -> anyhow::Result<()> {
-        let parsed = parse("#[frb(mirror(Apple))]")?;
+        let parsed = parse("#[frb(mirror(Apple, Orange))]")?;
         if let FrbAttribute::Mirror(FrbAttributeMirror(path)) = &parsed.0[0] {
             assert_eq!(quote!(#path).to_string(), "Apple");
         } else {
@@ -350,7 +350,7 @@ mod tests {
         )?;
         if let FrbAttribute::Metadata(NamedOption { value, .. }) = &parsed.0[0] {
             assert_eq!(value.0[0].content, "freezed");
-            // can have more assertions...
+            assert_eq!(value.0[1].content, "immutable");
         } else {
             unreachable!()
         }
