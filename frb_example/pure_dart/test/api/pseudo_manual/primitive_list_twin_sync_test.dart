@@ -74,9 +74,9 @@ Future<void> main() async {
       Float64List.fromList([123456])
     ]);
     addTestsIdentityFunctionCall(examplePrimitiveListTypeBoolTwinSync, [
-      [],
-      [false],
-      [true]
+      <bool>[],
+      <bool>[false],
+      <bool>[true]
     ]);
   });
 }

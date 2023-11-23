@@ -140,6 +140,6 @@ final kPrimitiveTypes = [
     name: 'bool',
     primitiveListName: 'List<bool>',
     interestRawValues: ['false', 'true'],
-    primitiveListWrapper: (info, x) => '[$x]',
+    primitiveListWrapper: (info, x) => '<bool>[$x]',
   ),
 ];
