@@ -60,6 +60,7 @@ impl FrbAttributes {
             .filter_map(
                 |item| if_then_some!(let FrbAttribute::Mirror(mirror) = item, mirror.0.clone()),
             )
+            .flatten()
             .collect()
     }
 
@@ -133,14 +134,16 @@ impl<K: Parse + std::fmt::Debug, V: Parse> Parse for NamedOption<K, V> {
 }
 
 #[derive(Clone, Debug, Eq, PartialEq)]
-struct FrbAttributeMirror(Path);
+struct FrbAttributeMirror(Vec<Path>);
 
 impl Parse for FrbAttributeMirror {
     fn parse(input: ParseStream<'_>) -> Result<Self> {
         let content;
         parenthesized!(content in input);
-        let path: Path = content.parse()?;
-        Ok(Self(path))
+        let paths = Punctuated::<Path, Token![,]>::parse_terminated(&content)?
+            .into_iter()
+            .collect();
+        Ok(Self(paths))
     }
 }
 
@@ -317,7 +320,8 @@ mod tests {
     #[test]
     fn test_mirror() -> anyhow::Result<()> {
         let parsed = parse("#[frb(mirror(Apple, Orange))]")?;
-        if let FrbAttribute::Mirror(FrbAttributeMirror(path)) = &parsed.0[0] {
+        if let FrbAttribute::Mirror(FrbAttributeMirror(paths)) = &parsed.0[0] {
+            let path = &paths[0];
             assert_eq!(quote!(#path).to_string(), "Apple");
         } else {
             unreachable!()
