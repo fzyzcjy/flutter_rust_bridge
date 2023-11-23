@@ -12,6 +12,7 @@ pub struct IrFunc {
     pub owner: IrFuncOwnerInfo,
     pub mode: IrFuncMode,
     pub comments: Vec<IrComment>,
+    pub src_lineno: usize,
 }
 
 #[derive(Copy)]

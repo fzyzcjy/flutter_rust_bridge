@@ -54,6 +54,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let sig = func.sig();
         let namespace =
             Namespace::new_self_crate(compute_mod_from_rust_path(file_path, rust_crate_dir)?);
+        let src_lineno = func.span().start();
 
         let owner = if let Some(owner) = parse_owner(func) {
             owner
@@ -83,6 +84,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             owner,
             mode,
             comments: parse_comments(func.attrs()),
+            src_lineno,
         }))
     }
 }

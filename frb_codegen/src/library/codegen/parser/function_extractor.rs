@@ -1,7 +1,9 @@
 use crate::if_then_some;
 use anyhow::Context;
 use itertools::Itertools;
+use quote::__private::Span;
 use std::path::PathBuf;
+use syn::spanned::Spanned;
 use syn::File;
 use syn::*;
 
@@ -33,6 +35,13 @@ impl GeneralizedItemFn {
         match self {
             GeneralizedItemFn::Function { item_fn } => &item_fn.attrs,
             GeneralizedItemFn::Method { impl_item_fn, .. } => &impl_item_fn.attrs,
+        }
+    }
+
+    pub(crate) fn span(&self) -> &Span {
+        match self {
+            GeneralizedItemFn::Function { item_fn } => &item_fn.span(),
+            GeneralizedItemFn::Method { impl_item_fn, .. } => &impl_item_fn.span(),
         }
     }
 }
