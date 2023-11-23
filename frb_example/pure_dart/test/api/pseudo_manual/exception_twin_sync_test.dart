@@ -11,12 +11,16 @@ Future<void> main() async {
   await RustLib.init();
 
   test('call funcReturnErrorTwinSync', () async {
-    await expectLater(() async => funcReturnErrorTwinSync(),
-        throwsA(isA<AnyhowException>().having((x) => x.message, 'anyhow', 'TODO')));
+    await expectLater(
+        () async => funcReturnErrorTwinSync(),
+        throwsA(isA<AnyhowException>().having((x) => x.message, 'message',
+            'return_err() is called, thus deliberately return Err')));
   });
 
   test('call funcReturnPanicTwinSync', () async {
-    await expectLater(() async => funcReturnPanicTwinSync(),
-        throwsA(isA<PanicException>().having((x) => x.message, 'error', 'TODO')));
+    await expectLater(
+        () async => funcReturnPanicTwinSync(),
+        throwsA(isA<PanicException>().having((x) => x.message, 'message',
+            'return_panic() is called, thus deliberately panic')));
   });
 }
