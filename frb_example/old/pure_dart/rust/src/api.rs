@@ -37,10 +37,3 @@ pub struct Log {
     pub key: u32,
     pub value: u32,
 }
-
-#[derive(Debug, Clone)]
-pub struct Empty {}
-
-pub fn empty_struct(empty: Empty) -> Empty {
-    empty
-}
