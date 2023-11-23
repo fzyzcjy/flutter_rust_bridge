@@ -38,10 +38,6 @@ pub struct Log {
     pub value: u32,
 }
 
-pub fn sync_void() -> SyncReturn<()> {
-    SyncReturn(())
-}
-
 pub fn handle_type_alias_id(input: Id) -> Id {
     input
 }
