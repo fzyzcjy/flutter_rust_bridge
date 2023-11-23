@@ -3,6 +3,7 @@
 import 'api/comment.dart';
 import 'api/enumeration.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
+import 'api/pseudo_manual/enumeration_twin_sync.dart';
 import 'api/pseudo_manual/optional_primitive.dart';
 import 'api/pseudo_manual/optional_primitive_twin_sync.dart';
 import 'api/pseudo_manual/primitive.dart';
@@ -10,6 +11,7 @@ import 'api/pseudo_manual/primitive_list.dart';
 import 'api/pseudo_manual/primitive_list_twin_sync.dart';
 import 'api/pseudo_manual/primitive_twin_sync.dart';
 import 'api/pseudo_manual/simple_twin_sync.dart';
+import 'api/pseudo_manual/structure_twin_sync.dart';
 import 'api/simple.dart';
 import 'api/structure.dart';
 import 'dart:async';
@@ -35,21 +37,39 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_enum_with_item_mixed(
-      EnumWithItemMixed raw) {
-    return api2wire_enum_with_item_mixed(raw);
+  List<dynamic> api2wire_box_autoadd_enum_with_item_mixed_twin_normal(
+      EnumWithItemMixedTwinNormal raw) {
+    return api2wire_enum_with_item_mixed_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_enum_with_item_struct(
-      EnumWithItemStruct raw) {
-    return api2wire_enum_with_item_struct(raw);
+  List<dynamic> api2wire_box_autoadd_enum_with_item_mixed_twin_sync(
+      EnumWithItemMixedTwinSync raw) {
+    return api2wire_enum_with_item_mixed_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_enum_with_item_tuple(
-      EnumWithItemTuple raw) {
-    return api2wire_enum_with_item_tuple(raw);
+  List<dynamic> api2wire_box_autoadd_enum_with_item_struct_twin_normal(
+      EnumWithItemStructTwinNormal raw) {
+    return api2wire_enum_with_item_struct_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_enum_with_item_struct_twin_sync(
+      EnumWithItemStructTwinSync raw) {
+    return api2wire_enum_with_item_struct_twin_sync(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_enum_with_item_tuple_twin_normal(
+      EnumWithItemTupleTwinNormal raw) {
+    return api2wire_enum_with_item_tuple_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_enum_with_item_tuple_twin_sync(
+      EnumWithItemTupleTwinSync raw) {
+    return api2wire_enum_with_item_tuple_twin_sync(raw);
   }
 
   @protected
@@ -95,33 +115,63 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_struct_with_one_field(
-      StructWithOneField raw) {
-    return api2wire_struct_with_one_field(raw);
+  List<dynamic> api2wire_box_autoadd_struct_with_one_field_twin_normal(
+      StructWithOneFieldTwinNormal raw) {
+    return api2wire_struct_with_one_field_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_struct_with_two_field(
-      StructWithTwoField raw) {
-    return api2wire_struct_with_two_field(raw);
+  List<dynamic> api2wire_box_autoadd_struct_with_one_field_twin_sync(
+      StructWithOneFieldTwinSync raw) {
+    return api2wire_struct_with_one_field_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_struct_with_zero_field(
-      StructWithZeroField raw) {
-    return api2wire_struct_with_zero_field(raw);
+  List<dynamic> api2wire_box_autoadd_struct_with_two_field_twin_normal(
+      StructWithTwoFieldTwinNormal raw) {
+    return api2wire_struct_with_two_field_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_tuple_struct_with_one_field(
-      TupleStructWithOneField raw) {
-    return api2wire_tuple_struct_with_one_field(raw);
+  List<dynamic> api2wire_box_autoadd_struct_with_two_field_twin_sync(
+      StructWithTwoFieldTwinSync raw) {
+    return api2wire_struct_with_two_field_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_tuple_struct_with_two_field(
-      TupleStructWithTwoField raw) {
-    return api2wire_tuple_struct_with_two_field(raw);
+  List<dynamic> api2wire_box_autoadd_struct_with_zero_field_twin_normal(
+      StructWithZeroFieldTwinNormal raw) {
+    return api2wire_struct_with_zero_field_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_struct_with_zero_field_twin_sync(
+      StructWithZeroFieldTwinSync raw) {
+    return api2wire_struct_with_zero_field_twin_sync(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_tuple_struct_with_one_field_twin_normal(
+      TupleStructWithOneFieldTwinNormal raw) {
+    return api2wire_tuple_struct_with_one_field_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_tuple_struct_with_one_field_twin_sync(
+      TupleStructWithOneFieldTwinSync raw) {
+    return api2wire_tuple_struct_with_one_field_twin_sync(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_tuple_struct_with_two_field_twin_normal(
+      TupleStructWithTwoFieldTwinNormal raw) {
+    return api2wire_tuple_struct_with_two_field_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_tuple_struct_with_two_field_twin_sync(
+      TupleStructWithTwoFieldTwinSync raw) {
+    return api2wire_tuple_struct_with_two_field_twin_sync(raw);
   }
 
   @protected
@@ -145,14 +195,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> api2wire_enum_with_item_mixed(EnumWithItemMixed raw) {
-    if (raw is EnumWithItemMixed_A) {
+  List<dynamic> api2wire_enum_with_item_mixed_twin_normal(
+      EnumWithItemMixedTwinNormal raw) {
+    if (raw is EnumWithItemMixedTwinNormal_A) {
       return [0];
     }
-    if (raw is EnumWithItemMixed_B) {
+    if (raw is EnumWithItemMixedTwinNormal_B) {
       return [1, api2wire_list_prim_u_8(raw.field0)];
     }
-    if (raw is EnumWithItemMixed_C) {
+    if (raw is EnumWithItemMixedTwinNormal_C) {
       return [2, api2wire_String(raw.cField)];
     }
 
@@ -160,11 +211,28 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> api2wire_enum_with_item_struct(EnumWithItemStruct raw) {
-    if (raw is EnumWithItemStruct_A) {
+  List<dynamic> api2wire_enum_with_item_mixed_twin_sync(
+      EnumWithItemMixedTwinSync raw) {
+    if (raw is EnumWithItemMixedTwinSync_A) {
+      return [0];
+    }
+    if (raw is EnumWithItemMixedTwinSync_B) {
+      return [1, api2wire_list_prim_u_8(raw.field0)];
+    }
+    if (raw is EnumWithItemMixedTwinSync_C) {
+      return [2, api2wire_String(raw.cField)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> api2wire_enum_with_item_struct_twin_normal(
+      EnumWithItemStructTwinNormal raw) {
+    if (raw is EnumWithItemStructTwinNormal_A) {
       return [0, api2wire_list_prim_u_8(raw.aField)];
     }
-    if (raw is EnumWithItemStruct_B) {
+    if (raw is EnumWithItemStructTwinNormal_B) {
       return [1, api2wire_list_prim_i_32(raw.bField)];
     }
 
@@ -172,11 +240,38 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> api2wire_enum_with_item_tuple(EnumWithItemTuple raw) {
-    if (raw is EnumWithItemTuple_A) {
+  List<dynamic> api2wire_enum_with_item_struct_twin_sync(
+      EnumWithItemStructTwinSync raw) {
+    if (raw is EnumWithItemStructTwinSync_A) {
+      return [0, api2wire_list_prim_u_8(raw.aField)];
+    }
+    if (raw is EnumWithItemStructTwinSync_B) {
+      return [1, api2wire_list_prim_i_32(raw.bField)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> api2wire_enum_with_item_tuple_twin_normal(
+      EnumWithItemTupleTwinNormal raw) {
+    if (raw is EnumWithItemTupleTwinNormal_A) {
       return [0, api2wire_list_prim_u_8(raw.field0)];
     }
-    if (raw is EnumWithItemTuple_B) {
+    if (raw is EnumWithItemTupleTwinNormal_B) {
+      return [1, api2wire_list_prim_i_32(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> api2wire_enum_with_item_tuple_twin_sync(
+      EnumWithItemTupleTwinSync raw) {
+    if (raw is EnumWithItemTupleTwinSync_A) {
+      return [0, api2wire_list_prim_u_8(raw.field0)];
+    }
+    if (raw is EnumWithItemTupleTwinSync_B) {
       return [1, api2wire_list_prim_i_32(raw.field0)];
     }
 
@@ -311,29 +406,62 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> api2wire_struct_with_one_field(StructWithOneField raw) {
+  List<dynamic> api2wire_struct_with_one_field_twin_normal(
+      StructWithOneFieldTwinNormal raw) {
     return [api2wire_i_32(raw.a)];
   }
 
   @protected
-  List<dynamic> api2wire_struct_with_two_field(StructWithTwoField raw) {
+  List<dynamic> api2wire_struct_with_one_field_twin_sync(
+      StructWithOneFieldTwinSync raw) {
+    return [api2wire_i_32(raw.a)];
+  }
+
+  @protected
+  List<dynamic> api2wire_struct_with_two_field_twin_normal(
+      StructWithTwoFieldTwinNormal raw) {
     return [api2wire_i_32(raw.a), api2wire_i_32(raw.b)];
   }
 
   @protected
-  List<dynamic> api2wire_struct_with_zero_field(StructWithZeroField raw) {
+  List<dynamic> api2wire_struct_with_two_field_twin_sync(
+      StructWithTwoFieldTwinSync raw) {
+    return [api2wire_i_32(raw.a), api2wire_i_32(raw.b)];
+  }
+
+  @protected
+  List<dynamic> api2wire_struct_with_zero_field_twin_normal(
+      StructWithZeroFieldTwinNormal raw) {
     return [];
   }
 
   @protected
-  List<dynamic> api2wire_tuple_struct_with_one_field(
-      TupleStructWithOneField raw) {
+  List<dynamic> api2wire_struct_with_zero_field_twin_sync(
+      StructWithZeroFieldTwinSync raw) {
+    return [];
+  }
+
+  @protected
+  List<dynamic> api2wire_tuple_struct_with_one_field_twin_normal(
+      TupleStructWithOneFieldTwinNormal raw) {
     return [api2wire_i_32(raw.field0)];
   }
 
   @protected
-  List<dynamic> api2wire_tuple_struct_with_two_field(
-      TupleStructWithTwoField raw) {
+  List<dynamic> api2wire_tuple_struct_with_one_field_twin_sync(
+      TupleStructWithOneFieldTwinSync raw) {
+    return [api2wire_i_32(raw.field0)];
+  }
+
+  @protected
+  List<dynamic> api2wire_tuple_struct_with_two_field_twin_normal(
+      TupleStructWithTwoFieldTwinNormal raw) {
+    return [api2wire_i_32(raw.field0), api2wire_i_32(raw.field1)];
+  }
+
+  @protected
+  List<dynamic> api2wire_tuple_struct_with_two_field_twin_sync(
+      TupleStructWithTwoFieldTwinSync raw) {
     return [api2wire_i_32(raw.field0), api2wire_i_32(raw.field1)];
   }
 

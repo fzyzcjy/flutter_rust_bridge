@@ -3,6 +3,7 @@
 import 'api/comment.dart';
 import 'api/enumeration.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
+import 'api/pseudo_manual/enumeration_twin_sync.dart';
 import 'api/pseudo_manual/optional_primitive.dart';
 import 'api/pseudo_manual/optional_primitive_twin_sync.dart';
 import 'api/pseudo_manual/primitive.dart';
@@ -10,6 +11,7 @@ import 'api/pseudo_manual/primitive_list.dart';
 import 'api/pseudo_manual/primitive_list_twin_sync.dart';
 import 'api/pseudo_manual/primitive_twin_sync.dart';
 import 'api/pseudo_manual/simple_twin_sync.dart';
+import 'api/pseudo_manual/structure_twin_sync.dart';
 import 'api/simple.dart';
 import 'api/structure.dart';
 import 'dart:async';
@@ -36,26 +38,56 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_enum_with_item_mixed>
-      api2wire_box_autoadd_enum_with_item_mixed(EnumWithItemMixed raw) {
-    final ptr = wire.new_box_autoadd_enum_with_item_mixed();
-    _api_fill_to_wire_enum_with_item_mixed(raw, ptr.ref);
+  ffi.Pointer<wire_enum_with_item_mixed_twin_normal>
+      api2wire_box_autoadd_enum_with_item_mixed_twin_normal(
+          EnumWithItemMixedTwinNormal raw) {
+    final ptr = wire.new_box_autoadd_enum_with_item_mixed_twin_normal();
+    _api_fill_to_wire_enum_with_item_mixed_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<wire_enum_with_item_struct>
-      api2wire_box_autoadd_enum_with_item_struct(EnumWithItemStruct raw) {
-    final ptr = wire.new_box_autoadd_enum_with_item_struct();
-    _api_fill_to_wire_enum_with_item_struct(raw, ptr.ref);
+  ffi.Pointer<wire_enum_with_item_mixed_twin_sync>
+      api2wire_box_autoadd_enum_with_item_mixed_twin_sync(
+          EnumWithItemMixedTwinSync raw) {
+    final ptr = wire.new_box_autoadd_enum_with_item_mixed_twin_sync();
+    _api_fill_to_wire_enum_with_item_mixed_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<wire_enum_with_item_tuple>
-      api2wire_box_autoadd_enum_with_item_tuple(EnumWithItemTuple raw) {
-    final ptr = wire.new_box_autoadd_enum_with_item_tuple();
-    _api_fill_to_wire_enum_with_item_tuple(raw, ptr.ref);
+  ffi.Pointer<wire_enum_with_item_struct_twin_normal>
+      api2wire_box_autoadd_enum_with_item_struct_twin_normal(
+          EnumWithItemStructTwinNormal raw) {
+    final ptr = wire.new_box_autoadd_enum_with_item_struct_twin_normal();
+    _api_fill_to_wire_enum_with_item_struct_twin_normal(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_enum_with_item_struct_twin_sync>
+      api2wire_box_autoadd_enum_with_item_struct_twin_sync(
+          EnumWithItemStructTwinSync raw) {
+    final ptr = wire.new_box_autoadd_enum_with_item_struct_twin_sync();
+    _api_fill_to_wire_enum_with_item_struct_twin_sync(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_enum_with_item_tuple_twin_normal>
+      api2wire_box_autoadd_enum_with_item_tuple_twin_normal(
+          EnumWithItemTupleTwinNormal raw) {
+    final ptr = wire.new_box_autoadd_enum_with_item_tuple_twin_normal();
+    _api_fill_to_wire_enum_with_item_tuple_twin_normal(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_enum_with_item_tuple_twin_sync>
+      api2wire_box_autoadd_enum_with_item_tuple_twin_sync(
+          EnumWithItemTupleTwinSync raw) {
+    final ptr = wire.new_box_autoadd_enum_with_item_tuple_twin_sync();
+    _api_fill_to_wire_enum_with_item_tuple_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -108,44 +140,92 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_struct_with_one_field>
-      api2wire_box_autoadd_struct_with_one_field(StructWithOneField raw) {
-    final ptr = wire.new_box_autoadd_struct_with_one_field();
-    _api_fill_to_wire_struct_with_one_field(raw, ptr.ref);
+  ffi.Pointer<wire_struct_with_one_field_twin_normal>
+      api2wire_box_autoadd_struct_with_one_field_twin_normal(
+          StructWithOneFieldTwinNormal raw) {
+    final ptr = wire.new_box_autoadd_struct_with_one_field_twin_normal();
+    _api_fill_to_wire_struct_with_one_field_twin_normal(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<wire_struct_with_two_field>
-      api2wire_box_autoadd_struct_with_two_field(StructWithTwoField raw) {
-    final ptr = wire.new_box_autoadd_struct_with_two_field();
-    _api_fill_to_wire_struct_with_two_field(raw, ptr.ref);
+  ffi.Pointer<wire_struct_with_one_field_twin_sync>
+      api2wire_box_autoadd_struct_with_one_field_twin_sync(
+          StructWithOneFieldTwinSync raw) {
+    final ptr = wire.new_box_autoadd_struct_with_one_field_twin_sync();
+    _api_fill_to_wire_struct_with_one_field_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<wire_struct_with_zero_field>
-      api2wire_box_autoadd_struct_with_zero_field(StructWithZeroField raw) {
-    final ptr = wire.new_box_autoadd_struct_with_zero_field();
+  ffi.Pointer<wire_struct_with_two_field_twin_normal>
+      api2wire_box_autoadd_struct_with_two_field_twin_normal(
+          StructWithTwoFieldTwinNormal raw) {
+    final ptr = wire.new_box_autoadd_struct_with_two_field_twin_normal();
+    _api_fill_to_wire_struct_with_two_field_twin_normal(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_struct_with_two_field_twin_sync>
+      api2wire_box_autoadd_struct_with_two_field_twin_sync(
+          StructWithTwoFieldTwinSync raw) {
+    final ptr = wire.new_box_autoadd_struct_with_two_field_twin_sync();
+    _api_fill_to_wire_struct_with_two_field_twin_sync(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_struct_with_zero_field_twin_normal>
+      api2wire_box_autoadd_struct_with_zero_field_twin_normal(
+          StructWithZeroFieldTwinNormal raw) {
+    final ptr = wire.new_box_autoadd_struct_with_zero_field_twin_normal();
 
     return ptr;
   }
 
   @protected
-  ffi.Pointer<wire_tuple_struct_with_one_field>
-      api2wire_box_autoadd_tuple_struct_with_one_field(
-          TupleStructWithOneField raw) {
-    final ptr = wire.new_box_autoadd_tuple_struct_with_one_field();
-    _api_fill_to_wire_tuple_struct_with_one_field(raw, ptr.ref);
+  ffi.Pointer<wire_struct_with_zero_field_twin_sync>
+      api2wire_box_autoadd_struct_with_zero_field_twin_sync(
+          StructWithZeroFieldTwinSync raw) {
+    final ptr = wire.new_box_autoadd_struct_with_zero_field_twin_sync();
+
     return ptr;
   }
 
   @protected
-  ffi.Pointer<wire_tuple_struct_with_two_field>
-      api2wire_box_autoadd_tuple_struct_with_two_field(
-          TupleStructWithTwoField raw) {
-    final ptr = wire.new_box_autoadd_tuple_struct_with_two_field();
-    _api_fill_to_wire_tuple_struct_with_two_field(raw, ptr.ref);
+  ffi.Pointer<wire_tuple_struct_with_one_field_twin_normal>
+      api2wire_box_autoadd_tuple_struct_with_one_field_twin_normal(
+          TupleStructWithOneFieldTwinNormal raw) {
+    final ptr = wire.new_box_autoadd_tuple_struct_with_one_field_twin_normal();
+    _api_fill_to_wire_tuple_struct_with_one_field_twin_normal(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_tuple_struct_with_one_field_twin_sync>
+      api2wire_box_autoadd_tuple_struct_with_one_field_twin_sync(
+          TupleStructWithOneFieldTwinSync raw) {
+    final ptr = wire.new_box_autoadd_tuple_struct_with_one_field_twin_sync();
+    _api_fill_to_wire_tuple_struct_with_one_field_twin_sync(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_tuple_struct_with_two_field_twin_normal>
+      api2wire_box_autoadd_tuple_struct_with_two_field_twin_normal(
+          TupleStructWithTwoFieldTwinNormal raw) {
+    final ptr = wire.new_box_autoadd_tuple_struct_with_two_field_twin_normal();
+    _api_fill_to_wire_tuple_struct_with_two_field_twin_normal(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_tuple_struct_with_two_field_twin_sync>
+      api2wire_box_autoadd_tuple_struct_with_two_field_twin_sync(
+          TupleStructWithTwoFieldTwinSync raw) {
+    final ptr = wire.new_box_autoadd_tuple_struct_with_two_field_twin_sync();
+    _api_fill_to_wire_tuple_struct_with_two_field_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -313,22 +393,40 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     return raw.toInt();
   }
 
-  void _api_fill_to_wire_box_autoadd_enum_with_item_mixed(
-      EnumWithItemMixed apiObj,
-      ffi.Pointer<wire_enum_with_item_mixed> wireObj) {
-    _api_fill_to_wire_enum_with_item_mixed(apiObj, wireObj.ref);
+  void _api_fill_to_wire_box_autoadd_enum_with_item_mixed_twin_normal(
+      EnumWithItemMixedTwinNormal apiObj,
+      ffi.Pointer<wire_enum_with_item_mixed_twin_normal> wireObj) {
+    _api_fill_to_wire_enum_with_item_mixed_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_enum_with_item_struct(
-      EnumWithItemStruct apiObj,
-      ffi.Pointer<wire_enum_with_item_struct> wireObj) {
-    _api_fill_to_wire_enum_with_item_struct(apiObj, wireObj.ref);
+  void _api_fill_to_wire_box_autoadd_enum_with_item_mixed_twin_sync(
+      EnumWithItemMixedTwinSync apiObj,
+      ffi.Pointer<wire_enum_with_item_mixed_twin_sync> wireObj) {
+    _api_fill_to_wire_enum_with_item_mixed_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_enum_with_item_tuple(
-      EnumWithItemTuple apiObj,
-      ffi.Pointer<wire_enum_with_item_tuple> wireObj) {
-    _api_fill_to_wire_enum_with_item_tuple(apiObj, wireObj.ref);
+  void _api_fill_to_wire_box_autoadd_enum_with_item_struct_twin_normal(
+      EnumWithItemStructTwinNormal apiObj,
+      ffi.Pointer<wire_enum_with_item_struct_twin_normal> wireObj) {
+    _api_fill_to_wire_enum_with_item_struct_twin_normal(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_enum_with_item_struct_twin_sync(
+      EnumWithItemStructTwinSync apiObj,
+      ffi.Pointer<wire_enum_with_item_struct_twin_sync> wireObj) {
+    _api_fill_to_wire_enum_with_item_struct_twin_sync(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_enum_with_item_tuple_twin_normal(
+      EnumWithItemTupleTwinNormal apiObj,
+      ffi.Pointer<wire_enum_with_item_tuple_twin_normal> wireObj) {
+    _api_fill_to_wire_enum_with_item_tuple_twin_normal(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_enum_with_item_tuple_twin_sync(
+      EnumWithItemTupleTwinSync apiObj,
+      ffi.Pointer<wire_enum_with_item_tuple_twin_sync> wireObj) {
+    _api_fill_to_wire_enum_with_item_tuple_twin_sync(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_struct_with_comments_twin_normal(
@@ -343,83 +441,175 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     _api_fill_to_wire_struct_with_comments_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_struct_with_one_field(
-      StructWithOneField apiObj,
-      ffi.Pointer<wire_struct_with_one_field> wireObj) {
-    _api_fill_to_wire_struct_with_one_field(apiObj, wireObj.ref);
+  void _api_fill_to_wire_box_autoadd_struct_with_one_field_twin_normal(
+      StructWithOneFieldTwinNormal apiObj,
+      ffi.Pointer<wire_struct_with_one_field_twin_normal> wireObj) {
+    _api_fill_to_wire_struct_with_one_field_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_struct_with_two_field(
-      StructWithTwoField apiObj,
-      ffi.Pointer<wire_struct_with_two_field> wireObj) {
-    _api_fill_to_wire_struct_with_two_field(apiObj, wireObj.ref);
+  void _api_fill_to_wire_box_autoadd_struct_with_one_field_twin_sync(
+      StructWithOneFieldTwinSync apiObj,
+      ffi.Pointer<wire_struct_with_one_field_twin_sync> wireObj) {
+    _api_fill_to_wire_struct_with_one_field_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_tuple_struct_with_one_field(
-      TupleStructWithOneField apiObj,
-      ffi.Pointer<wire_tuple_struct_with_one_field> wireObj) {
-    _api_fill_to_wire_tuple_struct_with_one_field(apiObj, wireObj.ref);
+  void _api_fill_to_wire_box_autoadd_struct_with_two_field_twin_normal(
+      StructWithTwoFieldTwinNormal apiObj,
+      ffi.Pointer<wire_struct_with_two_field_twin_normal> wireObj) {
+    _api_fill_to_wire_struct_with_two_field_twin_normal(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_tuple_struct_with_two_field(
-      TupleStructWithTwoField apiObj,
-      ffi.Pointer<wire_tuple_struct_with_two_field> wireObj) {
-    _api_fill_to_wire_tuple_struct_with_two_field(apiObj, wireObj.ref);
+  void _api_fill_to_wire_box_autoadd_struct_with_two_field_twin_sync(
+      StructWithTwoFieldTwinSync apiObj,
+      ffi.Pointer<wire_struct_with_two_field_twin_sync> wireObj) {
+    _api_fill_to_wire_struct_with_two_field_twin_sync(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_enum_with_item_mixed(
-      EnumWithItemMixed apiObj, wire_enum_with_item_mixed wireObj) {
-    if (apiObj is EnumWithItemMixed_A) {
+  void _api_fill_to_wire_box_autoadd_tuple_struct_with_one_field_twin_normal(
+      TupleStructWithOneFieldTwinNormal apiObj,
+      ffi.Pointer<wire_tuple_struct_with_one_field_twin_normal> wireObj) {
+    _api_fill_to_wire_tuple_struct_with_one_field_twin_normal(
+        apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_tuple_struct_with_one_field_twin_sync(
+      TupleStructWithOneFieldTwinSync apiObj,
+      ffi.Pointer<wire_tuple_struct_with_one_field_twin_sync> wireObj) {
+    _api_fill_to_wire_tuple_struct_with_one_field_twin_sync(
+        apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_tuple_struct_with_two_field_twin_normal(
+      TupleStructWithTwoFieldTwinNormal apiObj,
+      ffi.Pointer<wire_tuple_struct_with_two_field_twin_normal> wireObj) {
+    _api_fill_to_wire_tuple_struct_with_two_field_twin_normal(
+        apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_tuple_struct_with_two_field_twin_sync(
+      TupleStructWithTwoFieldTwinSync apiObj,
+      ffi.Pointer<wire_tuple_struct_with_two_field_twin_sync> wireObj) {
+    _api_fill_to_wire_tuple_struct_with_two_field_twin_sync(
+        apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_enum_with_item_mixed_twin_normal(
+      EnumWithItemMixedTwinNormal apiObj,
+      wire_enum_with_item_mixed_twin_normal wireObj) {
+    if (apiObj is EnumWithItemMixedTwinNormal_A) {
       wireObj.tag = 0;
       return;
     }
-    if (apiObj is EnumWithItemMixed_B) {
+    if (apiObj is EnumWithItemMixedTwinNormal_B) {
       var pre_field0 = api2wire_list_prim_u_8(apiObj.field0);
       wireObj.tag = 1;
-      wireObj.kind = wire.inflate_EnumWithItemMixed_B();
+      wireObj.kind = wire.inflate_EnumWithItemMixedTwinNormal_B();
       wireObj.kind.ref.B.ref.field0 = pre_field0;
       return;
     }
-    if (apiObj is EnumWithItemMixed_C) {
+    if (apiObj is EnumWithItemMixedTwinNormal_C) {
       var pre_c_field = api2wire_String(apiObj.cField);
       wireObj.tag = 2;
-      wireObj.kind = wire.inflate_EnumWithItemMixed_C();
+      wireObj.kind = wire.inflate_EnumWithItemMixedTwinNormal_C();
       wireObj.kind.ref.C.ref.c_field = pre_c_field;
       return;
     }
   }
 
-  void _api_fill_to_wire_enum_with_item_struct(
-      EnumWithItemStruct apiObj, wire_enum_with_item_struct wireObj) {
-    if (apiObj is EnumWithItemStruct_A) {
+  void _api_fill_to_wire_enum_with_item_mixed_twin_sync(
+      EnumWithItemMixedTwinSync apiObj,
+      wire_enum_with_item_mixed_twin_sync wireObj) {
+    if (apiObj is EnumWithItemMixedTwinSync_A) {
+      wireObj.tag = 0;
+      return;
+    }
+    if (apiObj is EnumWithItemMixedTwinSync_B) {
+      var pre_field0 = api2wire_list_prim_u_8(apiObj.field0);
+      wireObj.tag = 1;
+      wireObj.kind = wire.inflate_EnumWithItemMixedTwinSync_B();
+      wireObj.kind.ref.B.ref.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is EnumWithItemMixedTwinSync_C) {
+      var pre_c_field = api2wire_String(apiObj.cField);
+      wireObj.tag = 2;
+      wireObj.kind = wire.inflate_EnumWithItemMixedTwinSync_C();
+      wireObj.kind.ref.C.ref.c_field = pre_c_field;
+      return;
+    }
+  }
+
+  void _api_fill_to_wire_enum_with_item_struct_twin_normal(
+      EnumWithItemStructTwinNormal apiObj,
+      wire_enum_with_item_struct_twin_normal wireObj) {
+    if (apiObj is EnumWithItemStructTwinNormal_A) {
       var pre_a_field = api2wire_list_prim_u_8(apiObj.aField);
       wireObj.tag = 0;
-      wireObj.kind = wire.inflate_EnumWithItemStruct_A();
+      wireObj.kind = wire.inflate_EnumWithItemStructTwinNormal_A();
       wireObj.kind.ref.A.ref.a_field = pre_a_field;
       return;
     }
-    if (apiObj is EnumWithItemStruct_B) {
+    if (apiObj is EnumWithItemStructTwinNormal_B) {
       var pre_b_field = api2wire_list_prim_i_32(apiObj.bField);
       wireObj.tag = 1;
-      wireObj.kind = wire.inflate_EnumWithItemStruct_B();
+      wireObj.kind = wire.inflate_EnumWithItemStructTwinNormal_B();
       wireObj.kind.ref.B.ref.b_field = pre_b_field;
       return;
     }
   }
 
-  void _api_fill_to_wire_enum_with_item_tuple(
-      EnumWithItemTuple apiObj, wire_enum_with_item_tuple wireObj) {
-    if (apiObj is EnumWithItemTuple_A) {
+  void _api_fill_to_wire_enum_with_item_struct_twin_sync(
+      EnumWithItemStructTwinSync apiObj,
+      wire_enum_with_item_struct_twin_sync wireObj) {
+    if (apiObj is EnumWithItemStructTwinSync_A) {
+      var pre_a_field = api2wire_list_prim_u_8(apiObj.aField);
+      wireObj.tag = 0;
+      wireObj.kind = wire.inflate_EnumWithItemStructTwinSync_A();
+      wireObj.kind.ref.A.ref.a_field = pre_a_field;
+      return;
+    }
+    if (apiObj is EnumWithItemStructTwinSync_B) {
+      var pre_b_field = api2wire_list_prim_i_32(apiObj.bField);
+      wireObj.tag = 1;
+      wireObj.kind = wire.inflate_EnumWithItemStructTwinSync_B();
+      wireObj.kind.ref.B.ref.b_field = pre_b_field;
+      return;
+    }
+  }
+
+  void _api_fill_to_wire_enum_with_item_tuple_twin_normal(
+      EnumWithItemTupleTwinNormal apiObj,
+      wire_enum_with_item_tuple_twin_normal wireObj) {
+    if (apiObj is EnumWithItemTupleTwinNormal_A) {
       var pre_field0 = api2wire_list_prim_u_8(apiObj.field0);
       wireObj.tag = 0;
-      wireObj.kind = wire.inflate_EnumWithItemTuple_A();
+      wireObj.kind = wire.inflate_EnumWithItemTupleTwinNormal_A();
       wireObj.kind.ref.A.ref.field0 = pre_field0;
       return;
     }
-    if (apiObj is EnumWithItemTuple_B) {
+    if (apiObj is EnumWithItemTupleTwinNormal_B) {
       var pre_field0 = api2wire_list_prim_i_32(apiObj.field0);
       wireObj.tag = 1;
-      wireObj.kind = wire.inflate_EnumWithItemTuple_B();
+      wireObj.kind = wire.inflate_EnumWithItemTupleTwinNormal_B();
+      wireObj.kind.ref.B.ref.field0 = pre_field0;
+      return;
+    }
+  }
+
+  void _api_fill_to_wire_enum_with_item_tuple_twin_sync(
+      EnumWithItemTupleTwinSync apiObj,
+      wire_enum_with_item_tuple_twin_sync wireObj) {
+    if (apiObj is EnumWithItemTupleTwinSync_A) {
+      var pre_field0 = api2wire_list_prim_u_8(apiObj.field0);
+      wireObj.tag = 0;
+      wireObj.kind = wire.inflate_EnumWithItemTupleTwinSync_A();
+      wireObj.kind.ref.A.ref.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is EnumWithItemTupleTwinSync_B) {
+      var pre_field0 = api2wire_list_prim_i_32(apiObj.field0);
+      wireObj.tag = 1;
+      wireObj.kind = wire.inflate_EnumWithItemTupleTwinSync_B();
       wireObj.kind.ref.B.ref.field0 = pre_field0;
       return;
     }
@@ -437,28 +627,60 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.field_with_comments = api2wire_i_32(apiObj.fieldWithComments);
   }
 
-  void _api_fill_to_wire_struct_with_one_field(
-      StructWithOneField apiObj, wire_struct_with_one_field wireObj) {
+  void _api_fill_to_wire_struct_with_one_field_twin_normal(
+      StructWithOneFieldTwinNormal apiObj,
+      wire_struct_with_one_field_twin_normal wireObj) {
     wireObj.a = api2wire_i_32(apiObj.a);
   }
 
-  void _api_fill_to_wire_struct_with_two_field(
-      StructWithTwoField apiObj, wire_struct_with_two_field wireObj) {
+  void _api_fill_to_wire_struct_with_one_field_twin_sync(
+      StructWithOneFieldTwinSync apiObj,
+      wire_struct_with_one_field_twin_sync wireObj) {
+    wireObj.a = api2wire_i_32(apiObj.a);
+  }
+
+  void _api_fill_to_wire_struct_with_two_field_twin_normal(
+      StructWithTwoFieldTwinNormal apiObj,
+      wire_struct_with_two_field_twin_normal wireObj) {
     wireObj.a = api2wire_i_32(apiObj.a);
     wireObj.b = api2wire_i_32(apiObj.b);
   }
 
-  void _api_fill_to_wire_struct_with_zero_field(
-      StructWithZeroField apiObj, wire_struct_with_zero_field wireObj) {}
-  void _api_fill_to_wire_tuple_struct_with_one_field(
-      TupleStructWithOneField apiObj,
-      wire_tuple_struct_with_one_field wireObj) {
+  void _api_fill_to_wire_struct_with_two_field_twin_sync(
+      StructWithTwoFieldTwinSync apiObj,
+      wire_struct_with_two_field_twin_sync wireObj) {
+    wireObj.a = api2wire_i_32(apiObj.a);
+    wireObj.b = api2wire_i_32(apiObj.b);
+  }
+
+  void _api_fill_to_wire_struct_with_zero_field_twin_normal(
+      StructWithZeroFieldTwinNormal apiObj,
+      wire_struct_with_zero_field_twin_normal wireObj) {}
+  void _api_fill_to_wire_struct_with_zero_field_twin_sync(
+      StructWithZeroFieldTwinSync apiObj,
+      wire_struct_with_zero_field_twin_sync wireObj) {}
+  void _api_fill_to_wire_tuple_struct_with_one_field_twin_normal(
+      TupleStructWithOneFieldTwinNormal apiObj,
+      wire_tuple_struct_with_one_field_twin_normal wireObj) {
     wireObj.field0 = api2wire_i_32(apiObj.field0);
   }
 
-  void _api_fill_to_wire_tuple_struct_with_two_field(
-      TupleStructWithTwoField apiObj,
-      wire_tuple_struct_with_two_field wireObj) {
+  void _api_fill_to_wire_tuple_struct_with_one_field_twin_sync(
+      TupleStructWithOneFieldTwinSync apiObj,
+      wire_tuple_struct_with_one_field_twin_sync wireObj) {
+    wireObj.field0 = api2wire_i_32(apiObj.field0);
+  }
+
+  void _api_fill_to_wire_tuple_struct_with_two_field_twin_normal(
+      TupleStructWithTwoFieldTwinNormal apiObj,
+      wire_tuple_struct_with_two_field_twin_normal wireObj) {
+    wireObj.field0 = api2wire_i_32(apiObj.field0);
+    wireObj.field1 = api2wire_i_32(apiObj.field1);
+  }
+
+  void _api_fill_to_wire_tuple_struct_with_two_field_twin_sync(
+      TupleStructWithTwoFieldTwinSync apiObj,
+      wire_tuple_struct_with_two_field_twin_sync wireObj) {
     wireObj.field0 = api2wire_i_32(apiObj.field0);
     wireObj.field1 = api2wire_i_32(apiObj.field1);
   }
@@ -589,7 +811,7 @@ class RustLibWire implements BaseWire {
 
   void wire_func_enum_with_item_mixed_twin_normal(
     int port_,
-    ffi.Pointer<wire_enum_with_item_mixed> arg,
+    ffi.Pointer<wire_enum_with_item_mixed_twin_normal> arg,
   ) {
     return _wire_func_enum_with_item_mixed_twin_normal(
       port_,
@@ -599,16 +821,17 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_enum_with_item_mixed_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_enum_with_item_mixed>)>>(
+              ffi.Void Function(ffi.Int64,
+                  ffi.Pointer<wire_enum_with_item_mixed_twin_normal>)>>(
       'wire_func_enum_with_item_mixed_twin_normal');
   late final _wire_func_enum_with_item_mixed_twin_normal =
       _wire_func_enum_with_item_mixed_twin_normalPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_enum_with_item_mixed>)>();
+          void Function(
+              int, ffi.Pointer<wire_enum_with_item_mixed_twin_normal>)>();
 
   void wire_func_enum_with_item_struct_twin_normal(
     int port_,
-    ffi.Pointer<wire_enum_with_item_struct> arg,
+    ffi.Pointer<wire_enum_with_item_struct_twin_normal> arg,
   ) {
     return _wire_func_enum_with_item_struct_twin_normal(
       port_,
@@ -618,16 +841,17 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_enum_with_item_struct_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_enum_with_item_struct>)>>(
+              ffi.Void Function(ffi.Int64,
+                  ffi.Pointer<wire_enum_with_item_struct_twin_normal>)>>(
       'wire_func_enum_with_item_struct_twin_normal');
   late final _wire_func_enum_with_item_struct_twin_normal =
       _wire_func_enum_with_item_struct_twin_normalPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_enum_with_item_struct>)>();
+          void Function(
+              int, ffi.Pointer<wire_enum_with_item_struct_twin_normal>)>();
 
   void wire_func_enum_with_item_tuple_twin_normal(
     int port_,
-    ffi.Pointer<wire_enum_with_item_tuple> arg,
+    ffi.Pointer<wire_enum_with_item_tuple_twin_normal> arg,
   ) {
     return _wire_func_enum_with_item_tuple_twin_normal(
       port_,
@@ -637,12 +861,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_enum_with_item_tuple_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_enum_with_item_tuple>)>>(
+              ffi.Void Function(ffi.Int64,
+                  ffi.Pointer<wire_enum_with_item_tuple_twin_normal>)>>(
       'wire_func_enum_with_item_tuple_twin_normal');
   late final _wire_func_enum_with_item_tuple_twin_normal =
       _wire_func_enum_with_item_tuple_twin_normalPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_enum_with_item_tuple>)>();
+          void Function(
+              int, ffi.Pointer<wire_enum_with_item_tuple_twin_normal>)>();
 
   WireSyncReturn wire_StructWithCommentsTwinSync_instance_method_twin_sync(
     ffi.Pointer<wire_struct_with_comments_twin_sync> that,
@@ -708,6 +933,75 @@ class RustLibWire implements BaseWire {
   late final _wire_function_with_comments_triple_slash_single_line_twin_sync =
       _wire_function_with_comments_triple_slash_single_line_twin_syncPtr
           .asFunction<WireSyncReturn Function()>();
+
+  WireSyncReturn wire_func_enum_simple_twin_sync(
+    int arg,
+  ) {
+    return _wire_func_enum_simple_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_func_enum_simple_twin_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int32)>>(
+          'wire_func_enum_simple_twin_sync');
+  late final _wire_func_enum_simple_twin_sync =
+      _wire_func_enum_simple_twin_syncPtr
+          .asFunction<WireSyncReturn Function(int)>();
+
+  WireSyncReturn wire_func_enum_with_item_mixed_twin_sync(
+    ffi.Pointer<wire_enum_with_item_mixed_twin_sync> arg,
+  ) {
+    return _wire_func_enum_with_item_mixed_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_func_enum_with_item_mixed_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncReturn Function(
+                  ffi.Pointer<wire_enum_with_item_mixed_twin_sync>)>>(
+      'wire_func_enum_with_item_mixed_twin_sync');
+  late final _wire_func_enum_with_item_mixed_twin_sync =
+      _wire_func_enum_with_item_mixed_twin_syncPtr.asFunction<
+          WireSyncReturn Function(
+              ffi.Pointer<wire_enum_with_item_mixed_twin_sync>)>();
+
+  WireSyncReturn wire_func_enum_with_item_struct_twin_sync(
+    ffi.Pointer<wire_enum_with_item_struct_twin_sync> arg,
+  ) {
+    return _wire_func_enum_with_item_struct_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_func_enum_with_item_struct_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncReturn Function(
+                  ffi.Pointer<wire_enum_with_item_struct_twin_sync>)>>(
+      'wire_func_enum_with_item_struct_twin_sync');
+  late final _wire_func_enum_with_item_struct_twin_sync =
+      _wire_func_enum_with_item_struct_twin_syncPtr.asFunction<
+          WireSyncReturn Function(
+              ffi.Pointer<wire_enum_with_item_struct_twin_sync>)>();
+
+  WireSyncReturn wire_func_enum_with_item_tuple_twin_sync(
+    ffi.Pointer<wire_enum_with_item_tuple_twin_sync> arg,
+  ) {
+    return _wire_func_enum_with_item_tuple_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_func_enum_with_item_tuple_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncReturn Function(
+                  ffi.Pointer<wire_enum_with_item_tuple_twin_sync>)>>(
+      'wire_func_enum_with_item_tuple_twin_sync');
+  late final _wire_func_enum_with_item_tuple_twin_sync =
+      _wire_func_enum_with_item_tuple_twin_syncPtr.asFunction<
+          WireSyncReturn Function(
+              ffi.Pointer<wire_enum_with_item_tuple_twin_sync>)>();
 
   void wire_example_optional_primitive_type_bool_twin_normal(
     int port_,
@@ -1815,6 +2109,96 @@ class RustLibWire implements BaseWire {
   late final _wire_simple_adder_twin_sync = _wire_simple_adder_twin_syncPtr
       .asFunction<WireSyncReturn Function(int, int)>();
 
+  WireSyncReturn wire_func_struct_with_one_field_twin_sync(
+    ffi.Pointer<wire_struct_with_one_field_twin_sync> arg,
+  ) {
+    return _wire_func_struct_with_one_field_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_func_struct_with_one_field_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncReturn Function(
+                  ffi.Pointer<wire_struct_with_one_field_twin_sync>)>>(
+      'wire_func_struct_with_one_field_twin_sync');
+  late final _wire_func_struct_with_one_field_twin_sync =
+      _wire_func_struct_with_one_field_twin_syncPtr.asFunction<
+          WireSyncReturn Function(
+              ffi.Pointer<wire_struct_with_one_field_twin_sync>)>();
+
+  WireSyncReturn wire_func_struct_with_two_field_twin_sync(
+    ffi.Pointer<wire_struct_with_two_field_twin_sync> arg,
+  ) {
+    return _wire_func_struct_with_two_field_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_func_struct_with_two_field_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncReturn Function(
+                  ffi.Pointer<wire_struct_with_two_field_twin_sync>)>>(
+      'wire_func_struct_with_two_field_twin_sync');
+  late final _wire_func_struct_with_two_field_twin_sync =
+      _wire_func_struct_with_two_field_twin_syncPtr.asFunction<
+          WireSyncReturn Function(
+              ffi.Pointer<wire_struct_with_two_field_twin_sync>)>();
+
+  WireSyncReturn wire_func_struct_with_zero_field_twin_sync(
+    ffi.Pointer<wire_struct_with_zero_field_twin_sync> arg,
+  ) {
+    return _wire_func_struct_with_zero_field_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_func_struct_with_zero_field_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncReturn Function(
+                  ffi.Pointer<wire_struct_with_zero_field_twin_sync>)>>(
+      'wire_func_struct_with_zero_field_twin_sync');
+  late final _wire_func_struct_with_zero_field_twin_sync =
+      _wire_func_struct_with_zero_field_twin_syncPtr.asFunction<
+          WireSyncReturn Function(
+              ffi.Pointer<wire_struct_with_zero_field_twin_sync>)>();
+
+  WireSyncReturn wire_func_tuple_struct_with_one_field_twin_sync(
+    ffi.Pointer<wire_tuple_struct_with_one_field_twin_sync> arg,
+  ) {
+    return _wire_func_tuple_struct_with_one_field_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_func_tuple_struct_with_one_field_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncReturn Function(
+                  ffi.Pointer<wire_tuple_struct_with_one_field_twin_sync>)>>(
+      'wire_func_tuple_struct_with_one_field_twin_sync');
+  late final _wire_func_tuple_struct_with_one_field_twin_sync =
+      _wire_func_tuple_struct_with_one_field_twin_syncPtr.asFunction<
+          WireSyncReturn Function(
+              ffi.Pointer<wire_tuple_struct_with_one_field_twin_sync>)>();
+
+  WireSyncReturn wire_func_tuple_struct_with_two_field_twin_sync(
+    ffi.Pointer<wire_tuple_struct_with_two_field_twin_sync> arg,
+  ) {
+    return _wire_func_tuple_struct_with_two_field_twin_sync(
+      arg,
+    );
+  }
+
+  late final _wire_func_tuple_struct_with_two_field_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncReturn Function(
+                  ffi.Pointer<wire_tuple_struct_with_two_field_twin_sync>)>>(
+      'wire_func_tuple_struct_with_two_field_twin_sync');
+  late final _wire_func_tuple_struct_with_two_field_twin_sync =
+      _wire_func_tuple_struct_with_two_field_twin_syncPtr.asFunction<
+          WireSyncReturn Function(
+              ffi.Pointer<wire_tuple_struct_with_two_field_twin_sync>)>();
+
   void wire_simple_adder_twin_normal(
     int port_,
     int a,
@@ -1836,7 +2220,7 @@ class RustLibWire implements BaseWire {
 
   void wire_func_struct_with_one_field_twin_normal(
     int port_,
-    ffi.Pointer<wire_struct_with_one_field> arg,
+    ffi.Pointer<wire_struct_with_one_field_twin_normal> arg,
   ) {
     return _wire_func_struct_with_one_field_twin_normal(
       port_,
@@ -1846,16 +2230,17 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_struct_with_one_field_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_struct_with_one_field>)>>(
+              ffi.Void Function(ffi.Int64,
+                  ffi.Pointer<wire_struct_with_one_field_twin_normal>)>>(
       'wire_func_struct_with_one_field_twin_normal');
   late final _wire_func_struct_with_one_field_twin_normal =
       _wire_func_struct_with_one_field_twin_normalPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_struct_with_one_field>)>();
+          void Function(
+              int, ffi.Pointer<wire_struct_with_one_field_twin_normal>)>();
 
   void wire_func_struct_with_two_field_twin_normal(
     int port_,
-    ffi.Pointer<wire_struct_with_two_field> arg,
+    ffi.Pointer<wire_struct_with_two_field_twin_normal> arg,
   ) {
     return _wire_func_struct_with_two_field_twin_normal(
       port_,
@@ -1865,16 +2250,17 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_struct_with_two_field_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_struct_with_two_field>)>>(
+              ffi.Void Function(ffi.Int64,
+                  ffi.Pointer<wire_struct_with_two_field_twin_normal>)>>(
       'wire_func_struct_with_two_field_twin_normal');
   late final _wire_func_struct_with_two_field_twin_normal =
       _wire_func_struct_with_two_field_twin_normalPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_struct_with_two_field>)>();
+          void Function(
+              int, ffi.Pointer<wire_struct_with_two_field_twin_normal>)>();
 
   void wire_func_struct_with_zero_field_twin_normal(
     int port_,
-    ffi.Pointer<wire_struct_with_zero_field> arg,
+    ffi.Pointer<wire_struct_with_zero_field_twin_normal> arg,
   ) {
     return _wire_func_struct_with_zero_field_twin_normal(
       port_,
@@ -1884,16 +2270,17 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_struct_with_zero_field_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_struct_with_zero_field>)>>(
+              ffi.Void Function(ffi.Int64,
+                  ffi.Pointer<wire_struct_with_zero_field_twin_normal>)>>(
       'wire_func_struct_with_zero_field_twin_normal');
   late final _wire_func_struct_with_zero_field_twin_normal =
       _wire_func_struct_with_zero_field_twin_normalPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_struct_with_zero_field>)>();
+          void Function(
+              int, ffi.Pointer<wire_struct_with_zero_field_twin_normal>)>();
 
   void wire_func_tuple_struct_with_one_field_twin_normal(
     int port_,
-    ffi.Pointer<wire_tuple_struct_with_one_field> arg,
+    ffi.Pointer<wire_tuple_struct_with_one_field_twin_normal> arg,
   ) {
     return _wire_func_tuple_struct_with_one_field_twin_normal(
       port_,
@@ -1903,16 +2290,17 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_tuple_struct_with_one_field_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_tuple_struct_with_one_field>)>>(
+              ffi.Void Function(ffi.Int64,
+                  ffi.Pointer<wire_tuple_struct_with_one_field_twin_normal>)>>(
       'wire_func_tuple_struct_with_one_field_twin_normal');
   late final _wire_func_tuple_struct_with_one_field_twin_normal =
       _wire_func_tuple_struct_with_one_field_twin_normalPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_tuple_struct_with_one_field>)>();
+          void Function(int,
+              ffi.Pointer<wire_tuple_struct_with_one_field_twin_normal>)>();
 
   void wire_func_tuple_struct_with_two_field_twin_normal(
     int port_,
-    ffi.Pointer<wire_tuple_struct_with_two_field> arg,
+    ffi.Pointer<wire_tuple_struct_with_two_field_twin_normal> arg,
   ) {
     return _wire_func_tuple_struct_with_two_field_twin_normal(
       port_,
@@ -1922,12 +2310,13 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_tuple_struct_with_two_field_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_tuple_struct_with_two_field>)>>(
+              ffi.Void Function(ffi.Int64,
+                  ffi.Pointer<wire_tuple_struct_with_two_field_twin_normal>)>>(
       'wire_func_tuple_struct_with_two_field_twin_normal');
   late final _wire_func_tuple_struct_with_two_field_twin_normal =
       _wire_func_tuple_struct_with_two_field_twin_normalPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_tuple_struct_with_two_field>)>();
+          void Function(int,
+              ffi.Pointer<wire_tuple_struct_with_two_field_twin_normal>)>();
 
   ffi.Pointer<ffi.Bool> new_box_autoadd_bool(
     bool value,
@@ -1943,44 +2332,83 @@ class RustLibWire implements BaseWire {
   late final _new_box_autoadd_bool = _new_box_autoadd_boolPtr
       .asFunction<ffi.Pointer<ffi.Bool> Function(bool)>();
 
-  ffi.Pointer<wire_enum_with_item_mixed>
-      new_box_autoadd_enum_with_item_mixed() {
-    return _new_box_autoadd_enum_with_item_mixed();
+  ffi.Pointer<wire_enum_with_item_mixed_twin_normal>
+      new_box_autoadd_enum_with_item_mixed_twin_normal() {
+    return _new_box_autoadd_enum_with_item_mixed_twin_normal();
   }
 
-  late final _new_box_autoadd_enum_with_item_mixedPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Pointer<wire_enum_with_item_mixed> Function()>>(
-      'new_box_autoadd_enum_with_item_mixed');
-  late final _new_box_autoadd_enum_with_item_mixed =
-      _new_box_autoadd_enum_with_item_mixedPtr
-          .asFunction<ffi.Pointer<wire_enum_with_item_mixed> Function()>();
+  late final _new_box_autoadd_enum_with_item_mixed_twin_normalPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_enum_with_item_mixed_twin_normal>
+              Function()>>('new_box_autoadd_enum_with_item_mixed_twin_normal');
+  late final _new_box_autoadd_enum_with_item_mixed_twin_normal =
+      _new_box_autoadd_enum_with_item_mixed_twin_normalPtr.asFunction<
+          ffi.Pointer<wire_enum_with_item_mixed_twin_normal> Function()>();
 
-  ffi.Pointer<wire_enum_with_item_struct>
-      new_box_autoadd_enum_with_item_struct() {
-    return _new_box_autoadd_enum_with_item_struct();
+  ffi.Pointer<wire_enum_with_item_mixed_twin_sync>
+      new_box_autoadd_enum_with_item_mixed_twin_sync() {
+    return _new_box_autoadd_enum_with_item_mixed_twin_sync();
   }
 
-  late final _new_box_autoadd_enum_with_item_structPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Pointer<wire_enum_with_item_struct> Function()>>(
-      'new_box_autoadd_enum_with_item_struct');
-  late final _new_box_autoadd_enum_with_item_struct =
-      _new_box_autoadd_enum_with_item_structPtr
-          .asFunction<ffi.Pointer<wire_enum_with_item_struct> Function()>();
+  late final _new_box_autoadd_enum_with_item_mixed_twin_syncPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_enum_with_item_mixed_twin_sync>
+              Function()>>('new_box_autoadd_enum_with_item_mixed_twin_sync');
+  late final _new_box_autoadd_enum_with_item_mixed_twin_sync =
+      _new_box_autoadd_enum_with_item_mixed_twin_syncPtr.asFunction<
+          ffi.Pointer<wire_enum_with_item_mixed_twin_sync> Function()>();
 
-  ffi.Pointer<wire_enum_with_item_tuple>
-      new_box_autoadd_enum_with_item_tuple() {
-    return _new_box_autoadd_enum_with_item_tuple();
+  ffi.Pointer<wire_enum_with_item_struct_twin_normal>
+      new_box_autoadd_enum_with_item_struct_twin_normal() {
+    return _new_box_autoadd_enum_with_item_struct_twin_normal();
   }
 
-  late final _new_box_autoadd_enum_with_item_tuplePtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Pointer<wire_enum_with_item_tuple> Function()>>(
-      'new_box_autoadd_enum_with_item_tuple');
-  late final _new_box_autoadd_enum_with_item_tuple =
-      _new_box_autoadd_enum_with_item_tuplePtr
-          .asFunction<ffi.Pointer<wire_enum_with_item_tuple> Function()>();
+  late final _new_box_autoadd_enum_with_item_struct_twin_normalPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_enum_with_item_struct_twin_normal>
+              Function()>>('new_box_autoadd_enum_with_item_struct_twin_normal');
+  late final _new_box_autoadd_enum_with_item_struct_twin_normal =
+      _new_box_autoadd_enum_with_item_struct_twin_normalPtr.asFunction<
+          ffi.Pointer<wire_enum_with_item_struct_twin_normal> Function()>();
+
+  ffi.Pointer<wire_enum_with_item_struct_twin_sync>
+      new_box_autoadd_enum_with_item_struct_twin_sync() {
+    return _new_box_autoadd_enum_with_item_struct_twin_sync();
+  }
+
+  late final _new_box_autoadd_enum_with_item_struct_twin_syncPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_enum_with_item_struct_twin_sync>
+              Function()>>('new_box_autoadd_enum_with_item_struct_twin_sync');
+  late final _new_box_autoadd_enum_with_item_struct_twin_sync =
+      _new_box_autoadd_enum_with_item_struct_twin_syncPtr.asFunction<
+          ffi.Pointer<wire_enum_with_item_struct_twin_sync> Function()>();
+
+  ffi.Pointer<wire_enum_with_item_tuple_twin_normal>
+      new_box_autoadd_enum_with_item_tuple_twin_normal() {
+    return _new_box_autoadd_enum_with_item_tuple_twin_normal();
+  }
+
+  late final _new_box_autoadd_enum_with_item_tuple_twin_normalPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_enum_with_item_tuple_twin_normal>
+              Function()>>('new_box_autoadd_enum_with_item_tuple_twin_normal');
+  late final _new_box_autoadd_enum_with_item_tuple_twin_normal =
+      _new_box_autoadd_enum_with_item_tuple_twin_normalPtr.asFunction<
+          ffi.Pointer<wire_enum_with_item_tuple_twin_normal> Function()>();
+
+  ffi.Pointer<wire_enum_with_item_tuple_twin_sync>
+      new_box_autoadd_enum_with_item_tuple_twin_sync() {
+    return _new_box_autoadd_enum_with_item_tuple_twin_sync();
+  }
+
+  late final _new_box_autoadd_enum_with_item_tuple_twin_syncPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_enum_with_item_tuple_twin_sync>
+              Function()>>('new_box_autoadd_enum_with_item_tuple_twin_sync');
+  late final _new_box_autoadd_enum_with_item_tuple_twin_sync =
+      _new_box_autoadd_enum_with_item_tuple_twin_syncPtr.asFunction<
+          ffi.Pointer<wire_enum_with_item_tuple_twin_sync> Function()>();
 
   ffi.Pointer<ffi.Float> new_box_autoadd_f_32(
     double value,
@@ -2092,70 +2520,145 @@ class RustLibWire implements BaseWire {
       _new_box_autoadd_struct_with_comments_twin_syncPtr.asFunction<
           ffi.Pointer<wire_struct_with_comments_twin_sync> Function()>();
 
-  ffi.Pointer<wire_struct_with_one_field>
-      new_box_autoadd_struct_with_one_field() {
-    return _new_box_autoadd_struct_with_one_field();
+  ffi.Pointer<wire_struct_with_one_field_twin_normal>
+      new_box_autoadd_struct_with_one_field_twin_normal() {
+    return _new_box_autoadd_struct_with_one_field_twin_normal();
   }
 
-  late final _new_box_autoadd_struct_with_one_fieldPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Pointer<wire_struct_with_one_field> Function()>>(
-      'new_box_autoadd_struct_with_one_field');
-  late final _new_box_autoadd_struct_with_one_field =
-      _new_box_autoadd_struct_with_one_fieldPtr
-          .asFunction<ffi.Pointer<wire_struct_with_one_field> Function()>();
-
-  ffi.Pointer<wire_struct_with_two_field>
-      new_box_autoadd_struct_with_two_field() {
-    return _new_box_autoadd_struct_with_two_field();
-  }
-
-  late final _new_box_autoadd_struct_with_two_fieldPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Pointer<wire_struct_with_two_field> Function()>>(
-      'new_box_autoadd_struct_with_two_field');
-  late final _new_box_autoadd_struct_with_two_field =
-      _new_box_autoadd_struct_with_two_fieldPtr
-          .asFunction<ffi.Pointer<wire_struct_with_two_field> Function()>();
-
-  ffi.Pointer<wire_struct_with_zero_field>
-      new_box_autoadd_struct_with_zero_field() {
-    return _new_box_autoadd_struct_with_zero_field();
-  }
-
-  late final _new_box_autoadd_struct_with_zero_fieldPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Pointer<wire_struct_with_zero_field> Function()>>(
-      'new_box_autoadd_struct_with_zero_field');
-  late final _new_box_autoadd_struct_with_zero_field =
-      _new_box_autoadd_struct_with_zero_fieldPtr
-          .asFunction<ffi.Pointer<wire_struct_with_zero_field> Function()>();
-
-  ffi.Pointer<wire_tuple_struct_with_one_field>
-      new_box_autoadd_tuple_struct_with_one_field() {
-    return _new_box_autoadd_tuple_struct_with_one_field();
-  }
-
-  late final _new_box_autoadd_tuple_struct_with_one_fieldPtr = _lookup<
+  late final _new_box_autoadd_struct_with_one_field_twin_normalPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<wire_tuple_struct_with_one_field>
-              Function()>>('new_box_autoadd_tuple_struct_with_one_field');
-  late final _new_box_autoadd_tuple_struct_with_one_field =
-      _new_box_autoadd_tuple_struct_with_one_fieldPtr.asFunction<
-          ffi.Pointer<wire_tuple_struct_with_one_field> Function()>();
+          ffi.Pointer<wire_struct_with_one_field_twin_normal>
+              Function()>>('new_box_autoadd_struct_with_one_field_twin_normal');
+  late final _new_box_autoadd_struct_with_one_field_twin_normal =
+      _new_box_autoadd_struct_with_one_field_twin_normalPtr.asFunction<
+          ffi.Pointer<wire_struct_with_one_field_twin_normal> Function()>();
 
-  ffi.Pointer<wire_tuple_struct_with_two_field>
-      new_box_autoadd_tuple_struct_with_two_field() {
-    return _new_box_autoadd_tuple_struct_with_two_field();
+  ffi.Pointer<wire_struct_with_one_field_twin_sync>
+      new_box_autoadd_struct_with_one_field_twin_sync() {
+    return _new_box_autoadd_struct_with_one_field_twin_sync();
   }
 
-  late final _new_box_autoadd_tuple_struct_with_two_fieldPtr = _lookup<
+  late final _new_box_autoadd_struct_with_one_field_twin_syncPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<wire_tuple_struct_with_two_field>
-              Function()>>('new_box_autoadd_tuple_struct_with_two_field');
-  late final _new_box_autoadd_tuple_struct_with_two_field =
-      _new_box_autoadd_tuple_struct_with_two_fieldPtr.asFunction<
-          ffi.Pointer<wire_tuple_struct_with_two_field> Function()>();
+          ffi.Pointer<wire_struct_with_one_field_twin_sync>
+              Function()>>('new_box_autoadd_struct_with_one_field_twin_sync');
+  late final _new_box_autoadd_struct_with_one_field_twin_sync =
+      _new_box_autoadd_struct_with_one_field_twin_syncPtr.asFunction<
+          ffi.Pointer<wire_struct_with_one_field_twin_sync> Function()>();
+
+  ffi.Pointer<wire_struct_with_two_field_twin_normal>
+      new_box_autoadd_struct_with_two_field_twin_normal() {
+    return _new_box_autoadd_struct_with_two_field_twin_normal();
+  }
+
+  late final _new_box_autoadd_struct_with_two_field_twin_normalPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_struct_with_two_field_twin_normal>
+              Function()>>('new_box_autoadd_struct_with_two_field_twin_normal');
+  late final _new_box_autoadd_struct_with_two_field_twin_normal =
+      _new_box_autoadd_struct_with_two_field_twin_normalPtr.asFunction<
+          ffi.Pointer<wire_struct_with_two_field_twin_normal> Function()>();
+
+  ffi.Pointer<wire_struct_with_two_field_twin_sync>
+      new_box_autoadd_struct_with_two_field_twin_sync() {
+    return _new_box_autoadd_struct_with_two_field_twin_sync();
+  }
+
+  late final _new_box_autoadd_struct_with_two_field_twin_syncPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_struct_with_two_field_twin_sync>
+              Function()>>('new_box_autoadd_struct_with_two_field_twin_sync');
+  late final _new_box_autoadd_struct_with_two_field_twin_sync =
+      _new_box_autoadd_struct_with_two_field_twin_syncPtr.asFunction<
+          ffi.Pointer<wire_struct_with_two_field_twin_sync> Function()>();
+
+  ffi.Pointer<wire_struct_with_zero_field_twin_normal>
+      new_box_autoadd_struct_with_zero_field_twin_normal() {
+    return _new_box_autoadd_struct_with_zero_field_twin_normal();
+  }
+
+  late final _new_box_autoadd_struct_with_zero_field_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<wire_struct_with_zero_field_twin_normal> Function()>>(
+      'new_box_autoadd_struct_with_zero_field_twin_normal');
+  late final _new_box_autoadd_struct_with_zero_field_twin_normal =
+      _new_box_autoadd_struct_with_zero_field_twin_normalPtr.asFunction<
+          ffi.Pointer<wire_struct_with_zero_field_twin_normal> Function()>();
+
+  ffi.Pointer<wire_struct_with_zero_field_twin_sync>
+      new_box_autoadd_struct_with_zero_field_twin_sync() {
+    return _new_box_autoadd_struct_with_zero_field_twin_sync();
+  }
+
+  late final _new_box_autoadd_struct_with_zero_field_twin_syncPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_struct_with_zero_field_twin_sync>
+              Function()>>('new_box_autoadd_struct_with_zero_field_twin_sync');
+  late final _new_box_autoadd_struct_with_zero_field_twin_sync =
+      _new_box_autoadd_struct_with_zero_field_twin_syncPtr.asFunction<
+          ffi.Pointer<wire_struct_with_zero_field_twin_sync> Function()>();
+
+  ffi.Pointer<wire_tuple_struct_with_one_field_twin_normal>
+      new_box_autoadd_tuple_struct_with_one_field_twin_normal() {
+    return _new_box_autoadd_tuple_struct_with_one_field_twin_normal();
+  }
+
+  late final _new_box_autoadd_tuple_struct_with_one_field_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<wire_tuple_struct_with_one_field_twin_normal>
+                      Function()>>(
+          'new_box_autoadd_tuple_struct_with_one_field_twin_normal');
+  late final _new_box_autoadd_tuple_struct_with_one_field_twin_normal =
+      _new_box_autoadd_tuple_struct_with_one_field_twin_normalPtr.asFunction<
+          ffi.Pointer<wire_tuple_struct_with_one_field_twin_normal>
+              Function()>();
+
+  ffi.Pointer<wire_tuple_struct_with_one_field_twin_sync>
+      new_box_autoadd_tuple_struct_with_one_field_twin_sync() {
+    return _new_box_autoadd_tuple_struct_with_one_field_twin_sync();
+  }
+
+  late final _new_box_autoadd_tuple_struct_with_one_field_twin_syncPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<wire_tuple_struct_with_one_field_twin_sync>
+                      Function()>>(
+          'new_box_autoadd_tuple_struct_with_one_field_twin_sync');
+  late final _new_box_autoadd_tuple_struct_with_one_field_twin_sync =
+      _new_box_autoadd_tuple_struct_with_one_field_twin_syncPtr.asFunction<
+          ffi.Pointer<wire_tuple_struct_with_one_field_twin_sync> Function()>();
+
+  ffi.Pointer<wire_tuple_struct_with_two_field_twin_normal>
+      new_box_autoadd_tuple_struct_with_two_field_twin_normal() {
+    return _new_box_autoadd_tuple_struct_with_two_field_twin_normal();
+  }
+
+  late final _new_box_autoadd_tuple_struct_with_two_field_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<wire_tuple_struct_with_two_field_twin_normal>
+                      Function()>>(
+          'new_box_autoadd_tuple_struct_with_two_field_twin_normal');
+  late final _new_box_autoadd_tuple_struct_with_two_field_twin_normal =
+      _new_box_autoadd_tuple_struct_with_two_field_twin_normalPtr.asFunction<
+          ffi.Pointer<wire_tuple_struct_with_two_field_twin_normal>
+              Function()>();
+
+  ffi.Pointer<wire_tuple_struct_with_two_field_twin_sync>
+      new_box_autoadd_tuple_struct_with_two_field_twin_sync() {
+    return _new_box_autoadd_tuple_struct_with_two_field_twin_sync();
+  }
+
+  late final _new_box_autoadd_tuple_struct_with_two_field_twin_syncPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<wire_tuple_struct_with_two_field_twin_sync>
+                      Function()>>(
+          'new_box_autoadd_tuple_struct_with_two_field_twin_sync');
+  late final _new_box_autoadd_tuple_struct_with_two_field_twin_sync =
+      _new_box_autoadd_tuple_struct_with_two_field_twin_syncPtr.asFunction<
+          ffi.Pointer<wire_tuple_struct_with_two_field_twin_sync> Function()>();
 
   ffi.Pointer<ffi.Uint16> new_box_autoadd_u_16(
     int value,
@@ -2377,65 +2880,161 @@ class RustLibWire implements BaseWire {
   late final _new_list_prim_u_8 = _new_list_prim_u_8Ptr
       .asFunction<ffi.Pointer<wire_list_prim_u_8> Function(int)>();
 
-  ffi.Pointer<EnumWithItemMixedKind> inflate_EnumWithItemMixed_B() {
-    return _inflate_EnumWithItemMixed_B();
+  ffi.Pointer<EnumWithItemMixedTwinNormalKind>
+      inflate_EnumWithItemMixedTwinNormal_B() {
+    return _inflate_EnumWithItemMixedTwinNormal_B();
   }
 
-  late final _inflate_EnumWithItemMixed_BPtr = _lookup<
-          ffi.NativeFunction<ffi.Pointer<EnumWithItemMixedKind> Function()>>(
-      'inflate_EnumWithItemMixed_B');
-  late final _inflate_EnumWithItemMixed_B = _inflate_EnumWithItemMixed_BPtr
-      .asFunction<ffi.Pointer<EnumWithItemMixedKind> Function()>();
+  late final _inflate_EnumWithItemMixedTwinNormal_BPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<EnumWithItemMixedTwinNormalKind>
+              Function()>>('inflate_EnumWithItemMixedTwinNormal_B');
+  late final _inflate_EnumWithItemMixedTwinNormal_B =
+      _inflate_EnumWithItemMixedTwinNormal_BPtr.asFunction<
+          ffi.Pointer<EnumWithItemMixedTwinNormalKind> Function()>();
 
-  ffi.Pointer<EnumWithItemMixedKind> inflate_EnumWithItemMixed_C() {
-    return _inflate_EnumWithItemMixed_C();
+  ffi.Pointer<EnumWithItemMixedTwinNormalKind>
+      inflate_EnumWithItemMixedTwinNormal_C() {
+    return _inflate_EnumWithItemMixedTwinNormal_C();
   }
 
-  late final _inflate_EnumWithItemMixed_CPtr = _lookup<
-          ffi.NativeFunction<ffi.Pointer<EnumWithItemMixedKind> Function()>>(
-      'inflate_EnumWithItemMixed_C');
-  late final _inflate_EnumWithItemMixed_C = _inflate_EnumWithItemMixed_CPtr
-      .asFunction<ffi.Pointer<EnumWithItemMixedKind> Function()>();
+  late final _inflate_EnumWithItemMixedTwinNormal_CPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<EnumWithItemMixedTwinNormalKind>
+              Function()>>('inflate_EnumWithItemMixedTwinNormal_C');
+  late final _inflate_EnumWithItemMixedTwinNormal_C =
+      _inflate_EnumWithItemMixedTwinNormal_CPtr.asFunction<
+          ffi.Pointer<EnumWithItemMixedTwinNormalKind> Function()>();
 
-  ffi.Pointer<EnumWithItemStructKind> inflate_EnumWithItemStruct_A() {
-    return _inflate_EnumWithItemStruct_A();
+  ffi.Pointer<EnumWithItemMixedTwinSyncKind>
+      inflate_EnumWithItemMixedTwinSync_B() {
+    return _inflate_EnumWithItemMixedTwinSync_B();
   }
 
-  late final _inflate_EnumWithItemStruct_APtr = _lookup<
-          ffi.NativeFunction<ffi.Pointer<EnumWithItemStructKind> Function()>>(
-      'inflate_EnumWithItemStruct_A');
-  late final _inflate_EnumWithItemStruct_A = _inflate_EnumWithItemStruct_APtr
-      .asFunction<ffi.Pointer<EnumWithItemStructKind> Function()>();
+  late final _inflate_EnumWithItemMixedTwinSync_BPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<EnumWithItemMixedTwinSyncKind>
+              Function()>>('inflate_EnumWithItemMixedTwinSync_B');
+  late final _inflate_EnumWithItemMixedTwinSync_B =
+      _inflate_EnumWithItemMixedTwinSync_BPtr
+          .asFunction<ffi.Pointer<EnumWithItemMixedTwinSyncKind> Function()>();
 
-  ffi.Pointer<EnumWithItemStructKind> inflate_EnumWithItemStruct_B() {
-    return _inflate_EnumWithItemStruct_B();
+  ffi.Pointer<EnumWithItemMixedTwinSyncKind>
+      inflate_EnumWithItemMixedTwinSync_C() {
+    return _inflate_EnumWithItemMixedTwinSync_C();
   }
 
-  late final _inflate_EnumWithItemStruct_BPtr = _lookup<
-          ffi.NativeFunction<ffi.Pointer<EnumWithItemStructKind> Function()>>(
-      'inflate_EnumWithItemStruct_B');
-  late final _inflate_EnumWithItemStruct_B = _inflate_EnumWithItemStruct_BPtr
-      .asFunction<ffi.Pointer<EnumWithItemStructKind> Function()>();
+  late final _inflate_EnumWithItemMixedTwinSync_CPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<EnumWithItemMixedTwinSyncKind>
+              Function()>>('inflate_EnumWithItemMixedTwinSync_C');
+  late final _inflate_EnumWithItemMixedTwinSync_C =
+      _inflate_EnumWithItemMixedTwinSync_CPtr
+          .asFunction<ffi.Pointer<EnumWithItemMixedTwinSyncKind> Function()>();
 
-  ffi.Pointer<EnumWithItemTupleKind> inflate_EnumWithItemTuple_A() {
-    return _inflate_EnumWithItemTuple_A();
+  ffi.Pointer<EnumWithItemStructTwinNormalKind>
+      inflate_EnumWithItemStructTwinNormal_A() {
+    return _inflate_EnumWithItemStructTwinNormal_A();
   }
 
-  late final _inflate_EnumWithItemTuple_APtr = _lookup<
-          ffi.NativeFunction<ffi.Pointer<EnumWithItemTupleKind> Function()>>(
-      'inflate_EnumWithItemTuple_A');
-  late final _inflate_EnumWithItemTuple_A = _inflate_EnumWithItemTuple_APtr
-      .asFunction<ffi.Pointer<EnumWithItemTupleKind> Function()>();
+  late final _inflate_EnumWithItemStructTwinNormal_APtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<EnumWithItemStructTwinNormalKind>
+              Function()>>('inflate_EnumWithItemStructTwinNormal_A');
+  late final _inflate_EnumWithItemStructTwinNormal_A =
+      _inflate_EnumWithItemStructTwinNormal_APtr.asFunction<
+          ffi.Pointer<EnumWithItemStructTwinNormalKind> Function()>();
 
-  ffi.Pointer<EnumWithItemTupleKind> inflate_EnumWithItemTuple_B() {
-    return _inflate_EnumWithItemTuple_B();
+  ffi.Pointer<EnumWithItemStructTwinNormalKind>
+      inflate_EnumWithItemStructTwinNormal_B() {
+    return _inflate_EnumWithItemStructTwinNormal_B();
   }
 
-  late final _inflate_EnumWithItemTuple_BPtr = _lookup<
-          ffi.NativeFunction<ffi.Pointer<EnumWithItemTupleKind> Function()>>(
-      'inflate_EnumWithItemTuple_B');
-  late final _inflate_EnumWithItemTuple_B = _inflate_EnumWithItemTuple_BPtr
-      .asFunction<ffi.Pointer<EnumWithItemTupleKind> Function()>();
+  late final _inflate_EnumWithItemStructTwinNormal_BPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<EnumWithItemStructTwinNormalKind>
+              Function()>>('inflate_EnumWithItemStructTwinNormal_B');
+  late final _inflate_EnumWithItemStructTwinNormal_B =
+      _inflate_EnumWithItemStructTwinNormal_BPtr.asFunction<
+          ffi.Pointer<EnumWithItemStructTwinNormalKind> Function()>();
+
+  ffi.Pointer<EnumWithItemStructTwinSyncKind>
+      inflate_EnumWithItemStructTwinSync_A() {
+    return _inflate_EnumWithItemStructTwinSync_A();
+  }
+
+  late final _inflate_EnumWithItemStructTwinSync_APtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<EnumWithItemStructTwinSyncKind>
+              Function()>>('inflate_EnumWithItemStructTwinSync_A');
+  late final _inflate_EnumWithItemStructTwinSync_A =
+      _inflate_EnumWithItemStructTwinSync_APtr
+          .asFunction<ffi.Pointer<EnumWithItemStructTwinSyncKind> Function()>();
+
+  ffi.Pointer<EnumWithItemStructTwinSyncKind>
+      inflate_EnumWithItemStructTwinSync_B() {
+    return _inflate_EnumWithItemStructTwinSync_B();
+  }
+
+  late final _inflate_EnumWithItemStructTwinSync_BPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<EnumWithItemStructTwinSyncKind>
+              Function()>>('inflate_EnumWithItemStructTwinSync_B');
+  late final _inflate_EnumWithItemStructTwinSync_B =
+      _inflate_EnumWithItemStructTwinSync_BPtr
+          .asFunction<ffi.Pointer<EnumWithItemStructTwinSyncKind> Function()>();
+
+  ffi.Pointer<EnumWithItemTupleTwinNormalKind>
+      inflate_EnumWithItemTupleTwinNormal_A() {
+    return _inflate_EnumWithItemTupleTwinNormal_A();
+  }
+
+  late final _inflate_EnumWithItemTupleTwinNormal_APtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<EnumWithItemTupleTwinNormalKind>
+              Function()>>('inflate_EnumWithItemTupleTwinNormal_A');
+  late final _inflate_EnumWithItemTupleTwinNormal_A =
+      _inflate_EnumWithItemTupleTwinNormal_APtr.asFunction<
+          ffi.Pointer<EnumWithItemTupleTwinNormalKind> Function()>();
+
+  ffi.Pointer<EnumWithItemTupleTwinNormalKind>
+      inflate_EnumWithItemTupleTwinNormal_B() {
+    return _inflate_EnumWithItemTupleTwinNormal_B();
+  }
+
+  late final _inflate_EnumWithItemTupleTwinNormal_BPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<EnumWithItemTupleTwinNormalKind>
+              Function()>>('inflate_EnumWithItemTupleTwinNormal_B');
+  late final _inflate_EnumWithItemTupleTwinNormal_B =
+      _inflate_EnumWithItemTupleTwinNormal_BPtr.asFunction<
+          ffi.Pointer<EnumWithItemTupleTwinNormalKind> Function()>();
+
+  ffi.Pointer<EnumWithItemTupleTwinSyncKind>
+      inflate_EnumWithItemTupleTwinSync_A() {
+    return _inflate_EnumWithItemTupleTwinSync_A();
+  }
+
+  late final _inflate_EnumWithItemTupleTwinSync_APtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<EnumWithItemTupleTwinSyncKind>
+              Function()>>('inflate_EnumWithItemTupleTwinSync_A');
+  late final _inflate_EnumWithItemTupleTwinSync_A =
+      _inflate_EnumWithItemTupleTwinSync_APtr
+          .asFunction<ffi.Pointer<EnumWithItemTupleTwinSyncKind> Function()>();
+
+  ffi.Pointer<EnumWithItemTupleTwinSyncKind>
+      inflate_EnumWithItemTupleTwinSync_B() {
+    return _inflate_EnumWithItemTupleTwinSync_B();
+  }
+
+  late final _inflate_EnumWithItemTupleTwinSync_BPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<EnumWithItemTupleTwinSyncKind>
+              Function()>>('inflate_EnumWithItemTupleTwinSync_B');
+  late final _inflate_EnumWithItemTupleTwinSync_B =
+      _inflate_EnumWithItemTupleTwinSync_BPtr
+          .asFunction<ffi.Pointer<EnumWithItemTupleTwinSyncKind> Function()>();
 
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();
@@ -2453,7 +3052,7 @@ final class wire_struct_with_comments_twin_normal extends ffi.Struct {
   external int field_with_comments;
 }
 
-final class wire_EnumWithItemMixed_A extends ffi.Opaque {}
+final class wire_EnumWithItemMixedTwinNormal_A extends ffi.Opaque {}
 
 final class wire_list_prim_u_8 extends ffi.Struct {
   external ffi.Pointer<ffi.Uint8> ptr;
@@ -2462,30 +3061,30 @@ final class wire_list_prim_u_8 extends ffi.Struct {
   external int len;
 }
 
-final class wire_EnumWithItemMixed_B extends ffi.Struct {
+final class wire_EnumWithItemMixedTwinNormal_B extends ffi.Struct {
   external ffi.Pointer<wire_list_prim_u_8> field0;
 }
 
-final class wire_EnumWithItemMixed_C extends ffi.Struct {
+final class wire_EnumWithItemMixedTwinNormal_C extends ffi.Struct {
   external ffi.Pointer<wire_list_prim_u_8> c_field;
 }
 
-final class EnumWithItemMixedKind extends ffi.Union {
-  external ffi.Pointer<wire_EnumWithItemMixed_A> A;
+final class EnumWithItemMixedTwinNormalKind extends ffi.Union {
+  external ffi.Pointer<wire_EnumWithItemMixedTwinNormal_A> A;
 
-  external ffi.Pointer<wire_EnumWithItemMixed_B> B;
+  external ffi.Pointer<wire_EnumWithItemMixedTwinNormal_B> B;
 
-  external ffi.Pointer<wire_EnumWithItemMixed_C> C;
+  external ffi.Pointer<wire_EnumWithItemMixedTwinNormal_C> C;
 }
 
-final class wire_enum_with_item_mixed extends ffi.Struct {
+final class wire_enum_with_item_mixed_twin_normal extends ffi.Struct {
   @ffi.Int32()
   external int tag;
 
-  external ffi.Pointer<EnumWithItemMixedKind> kind;
+  external ffi.Pointer<EnumWithItemMixedTwinNormalKind> kind;
 }
 
-final class wire_EnumWithItemStruct_A extends ffi.Struct {
+final class wire_EnumWithItemStructTwinNormal_A extends ffi.Struct {
   external ffi.Pointer<wire_list_prim_u_8> a_field;
 }
 
@@ -2496,47 +3095,114 @@ final class wire_list_prim_i_32 extends ffi.Struct {
   external int len;
 }
 
-final class wire_EnumWithItemStruct_B extends ffi.Struct {
+final class wire_EnumWithItemStructTwinNormal_B extends ffi.Struct {
   external ffi.Pointer<wire_list_prim_i_32> b_field;
 }
 
-final class EnumWithItemStructKind extends ffi.Union {
-  external ffi.Pointer<wire_EnumWithItemStruct_A> A;
+final class EnumWithItemStructTwinNormalKind extends ffi.Union {
+  external ffi.Pointer<wire_EnumWithItemStructTwinNormal_A> A;
 
-  external ffi.Pointer<wire_EnumWithItemStruct_B> B;
+  external ffi.Pointer<wire_EnumWithItemStructTwinNormal_B> B;
 }
 
-final class wire_enum_with_item_struct extends ffi.Struct {
+final class wire_enum_with_item_struct_twin_normal extends ffi.Struct {
   @ffi.Int32()
   external int tag;
 
-  external ffi.Pointer<EnumWithItemStructKind> kind;
+  external ffi.Pointer<EnumWithItemStructTwinNormalKind> kind;
 }
 
-final class wire_EnumWithItemTuple_A extends ffi.Struct {
+final class wire_EnumWithItemTupleTwinNormal_A extends ffi.Struct {
   external ffi.Pointer<wire_list_prim_u_8> field0;
 }
 
-final class wire_EnumWithItemTuple_B extends ffi.Struct {
+final class wire_EnumWithItemTupleTwinNormal_B extends ffi.Struct {
   external ffi.Pointer<wire_list_prim_i_32> field0;
 }
 
-final class EnumWithItemTupleKind extends ffi.Union {
-  external ffi.Pointer<wire_EnumWithItemTuple_A> A;
+final class EnumWithItemTupleTwinNormalKind extends ffi.Union {
+  external ffi.Pointer<wire_EnumWithItemTupleTwinNormal_A> A;
 
-  external ffi.Pointer<wire_EnumWithItemTuple_B> B;
+  external ffi.Pointer<wire_EnumWithItemTupleTwinNormal_B> B;
 }
 
-final class wire_enum_with_item_tuple extends ffi.Struct {
+final class wire_enum_with_item_tuple_twin_normal extends ffi.Struct {
   @ffi.Int32()
   external int tag;
 
-  external ffi.Pointer<EnumWithItemTupleKind> kind;
+  external ffi.Pointer<EnumWithItemTupleTwinNormalKind> kind;
 }
 
 final class wire_struct_with_comments_twin_sync extends ffi.Struct {
   @ffi.Int32()
   external int field_with_comments;
+}
+
+final class wire_EnumWithItemMixedTwinSync_A extends ffi.Opaque {}
+
+final class wire_EnumWithItemMixedTwinSync_B extends ffi.Struct {
+  external ffi.Pointer<wire_list_prim_u_8> field0;
+}
+
+final class wire_EnumWithItemMixedTwinSync_C extends ffi.Struct {
+  external ffi.Pointer<wire_list_prim_u_8> c_field;
+}
+
+final class EnumWithItemMixedTwinSyncKind extends ffi.Union {
+  external ffi.Pointer<wire_EnumWithItemMixedTwinSync_A> A;
+
+  external ffi.Pointer<wire_EnumWithItemMixedTwinSync_B> B;
+
+  external ffi.Pointer<wire_EnumWithItemMixedTwinSync_C> C;
+}
+
+final class wire_enum_with_item_mixed_twin_sync extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<EnumWithItemMixedTwinSyncKind> kind;
+}
+
+final class wire_EnumWithItemStructTwinSync_A extends ffi.Struct {
+  external ffi.Pointer<wire_list_prim_u_8> a_field;
+}
+
+final class wire_EnumWithItemStructTwinSync_B extends ffi.Struct {
+  external ffi.Pointer<wire_list_prim_i_32> b_field;
+}
+
+final class EnumWithItemStructTwinSyncKind extends ffi.Union {
+  external ffi.Pointer<wire_EnumWithItemStructTwinSync_A> A;
+
+  external ffi.Pointer<wire_EnumWithItemStructTwinSync_B> B;
+}
+
+final class wire_enum_with_item_struct_twin_sync extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<EnumWithItemStructTwinSyncKind> kind;
+}
+
+final class wire_EnumWithItemTupleTwinSync_A extends ffi.Struct {
+  external ffi.Pointer<wire_list_prim_u_8> field0;
+}
+
+final class wire_EnumWithItemTupleTwinSync_B extends ffi.Struct {
+  external ffi.Pointer<wire_list_prim_i_32> field0;
+}
+
+final class EnumWithItemTupleTwinSyncKind extends ffi.Union {
+  external ffi.Pointer<wire_EnumWithItemTupleTwinSync_A> A;
+
+  external ffi.Pointer<wire_EnumWithItemTupleTwinSync_B> B;
+}
+
+final class wire_enum_with_item_tuple_twin_sync extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<EnumWithItemTupleTwinSyncKind> kind;
 }
 
 final class wire_list_bool extends ffi.Struct {
@@ -2602,12 +3268,12 @@ final class wire_list_prim_u_64 extends ffi.Struct {
   external int len;
 }
 
-final class wire_struct_with_one_field extends ffi.Struct {
+final class wire_struct_with_one_field_twin_sync extends ffi.Struct {
   @ffi.Int32()
   external int a;
 }
 
-final class wire_struct_with_two_field extends ffi.Struct {
+final class wire_struct_with_two_field_twin_sync extends ffi.Struct {
   @ffi.Int32()
   external int a;
 
@@ -2615,14 +3281,42 @@ final class wire_struct_with_two_field extends ffi.Struct {
   external int b;
 }
 
-final class wire_struct_with_zero_field extends ffi.Opaque {}
+final class wire_struct_with_zero_field_twin_sync extends ffi.Opaque {}
 
-final class wire_tuple_struct_with_one_field extends ffi.Struct {
+final class wire_tuple_struct_with_one_field_twin_sync extends ffi.Struct {
   @ffi.Int32()
   external int field0;
 }
 
-final class wire_tuple_struct_with_two_field extends ffi.Struct {
+final class wire_tuple_struct_with_two_field_twin_sync extends ffi.Struct {
+  @ffi.Int32()
+  external int field0;
+
+  @ffi.Int32()
+  external int field1;
+}
+
+final class wire_struct_with_one_field_twin_normal extends ffi.Struct {
+  @ffi.Int32()
+  external int a;
+}
+
+final class wire_struct_with_two_field_twin_normal extends ffi.Struct {
+  @ffi.Int32()
+  external int a;
+
+  @ffi.Int32()
+  external int b;
+}
+
+final class wire_struct_with_zero_field_twin_normal extends ffi.Opaque {}
+
+final class wire_tuple_struct_with_one_field_twin_normal extends ffi.Struct {
+  @ffi.Int32()
+  external int field0;
+}
+
+final class wire_tuple_struct_with_two_field_twin_normal extends ffi.Struct {
   @ffi.Int32()
   external int field0;
 

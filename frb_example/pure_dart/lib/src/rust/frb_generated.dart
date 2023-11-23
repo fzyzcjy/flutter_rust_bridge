@@ -3,6 +3,7 @@
 import 'api/comment.dart';
 import 'api/enumeration.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
+import 'api/pseudo_manual/enumeration_twin_sync.dart';
 import 'api/pseudo_manual/optional_primitive.dart';
 import 'api/pseudo_manual/optional_primitive_twin_sync.dart';
 import 'api/pseudo_manual/primitive.dart';
@@ -10,6 +11,7 @@ import 'api/pseudo_manual/primitive_list.dart';
 import 'api/pseudo_manual/primitive_list_twin_sync.dart';
 import 'api/pseudo_manual/primitive_twin_sync.dart';
 import 'api/pseudo_manual/simple_twin_sync.dart';
+import 'api/pseudo_manual/structure_twin_sync.dart';
 import 'api/simple.dart';
 import 'api/structure.dart';
 import 'dart:async';
@@ -68,17 +70,17 @@ abstract class RustLibApi extends BaseApi {
   Future<void> functionWithCommentsTripleSlashSingleLineTwinNormal(
       {dynamic hint});
 
-  Future<EnumSimple> funcEnumSimpleTwinNormal(
-      {required EnumSimple arg, dynamic hint});
+  Future<EnumSimpleTwinNormal> funcEnumSimpleTwinNormal(
+      {required EnumSimpleTwinNormal arg, dynamic hint});
 
-  Future<EnumWithItemMixed> funcEnumWithItemMixedTwinNormal(
-      {required EnumWithItemMixed arg, dynamic hint});
+  Future<EnumWithItemMixedTwinNormal> funcEnumWithItemMixedTwinNormal(
+      {required EnumWithItemMixedTwinNormal arg, dynamic hint});
 
-  Future<EnumWithItemStruct> funcEnumWithItemStructTwinNormal(
-      {required EnumWithItemStruct arg, dynamic hint});
+  Future<EnumWithItemStructTwinNormal> funcEnumWithItemStructTwinNormal(
+      {required EnumWithItemStructTwinNormal arg, dynamic hint});
 
-  Future<EnumWithItemTuple> funcEnumWithItemTupleTwinNormal(
-      {required EnumWithItemTuple arg, dynamic hint});
+  Future<EnumWithItemTupleTwinNormal> funcEnumWithItemTupleTwinNormal(
+      {required EnumWithItemTupleTwinNormal arg, dynamic hint});
 
   void structWithCommentsTwinSyncInstanceMethodTwinSync(
       {required StructWithCommentsTwinSync that, dynamic hint});
@@ -90,6 +92,18 @@ abstract class RustLibApi extends BaseApi {
   void functionWithCommentsTripleSlashMultiLineTwinSync({dynamic hint});
 
   void functionWithCommentsTripleSlashSingleLineTwinSync({dynamic hint});
+
+  EnumSimpleTwinSync funcEnumSimpleTwinSync(
+      {required EnumSimpleTwinSync arg, dynamic hint});
+
+  EnumWithItemMixedTwinSync funcEnumWithItemMixedTwinSync(
+      {required EnumWithItemMixedTwinSync arg, dynamic hint});
+
+  EnumWithItemStructTwinSync funcEnumWithItemStructTwinSync(
+      {required EnumWithItemStructTwinSync arg, dynamic hint});
+
+  EnumWithItemTupleTwinSync funcEnumWithItemTupleTwinSync(
+      {required EnumWithItemTupleTwinSync arg, dynamic hint});
 
   Future<bool?> exampleOptionalPrimitiveTypeBoolTwinNormal(
       {bool? arg, dynamic hint});
@@ -269,23 +283,40 @@ abstract class RustLibApi extends BaseApi {
 
   int simpleAdderTwinSync({required int a, required int b, dynamic hint});
 
+  StructWithOneFieldTwinSync funcStructWithOneFieldTwinSync(
+      {required StructWithOneFieldTwinSync arg, dynamic hint});
+
+  StructWithTwoFieldTwinSync funcStructWithTwoFieldTwinSync(
+      {required StructWithTwoFieldTwinSync arg, dynamic hint});
+
+  StructWithZeroFieldTwinSync funcStructWithZeroFieldTwinSync(
+      {required StructWithZeroFieldTwinSync arg, dynamic hint});
+
+  TupleStructWithOneFieldTwinSync funcTupleStructWithOneFieldTwinSync(
+      {required TupleStructWithOneFieldTwinSync arg, dynamic hint});
+
+  TupleStructWithTwoFieldTwinSync funcTupleStructWithTwoFieldTwinSync(
+      {required TupleStructWithTwoFieldTwinSync arg, dynamic hint});
+
   Future<int> simpleAdderTwinNormal(
       {required int a, required int b, dynamic hint});
 
-  Future<StructWithOneField> funcStructWithOneFieldTwinNormal(
-      {required StructWithOneField arg, dynamic hint});
+  Future<StructWithOneFieldTwinNormal> funcStructWithOneFieldTwinNormal(
+      {required StructWithOneFieldTwinNormal arg, dynamic hint});
 
-  Future<StructWithTwoField> funcStructWithTwoFieldTwinNormal(
-      {required StructWithTwoField arg, dynamic hint});
+  Future<StructWithTwoFieldTwinNormal> funcStructWithTwoFieldTwinNormal(
+      {required StructWithTwoFieldTwinNormal arg, dynamic hint});
 
-  Future<StructWithZeroField> funcStructWithZeroFieldTwinNormal(
-      {required StructWithZeroField arg, dynamic hint});
+  Future<StructWithZeroFieldTwinNormal> funcStructWithZeroFieldTwinNormal(
+      {required StructWithZeroFieldTwinNormal arg, dynamic hint});
 
-  Future<TupleStructWithOneField> funcTupleStructWithOneFieldTwinNormal(
-      {required TupleStructWithOneField arg, dynamic hint});
+  Future<TupleStructWithOneFieldTwinNormal>
+      funcTupleStructWithOneFieldTwinNormal(
+          {required TupleStructWithOneFieldTwinNormal arg, dynamic hint});
 
-  Future<TupleStructWithTwoField> funcTupleStructWithTwoFieldTwinNormal(
-      {required TupleStructWithTwoField arg, dynamic hint});
+  Future<TupleStructWithTwoFieldTwinNormal>
+      funcTupleStructWithTwoFieldTwinNormal(
+          {required TupleStructWithTwoFieldTwinNormal arg, dynamic hint});
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -411,12 +442,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Future<EnumSimple> funcEnumSimpleTwinNormal(
-      {required EnumSimple arg, dynamic hint}) {
-    var arg0 = api2wire_enum_simple(arg);
+  Future<EnumSimpleTwinNormal> funcEnumSimpleTwinNormal(
+      {required EnumSimpleTwinNormal arg, dynamic hint}) {
+    var arg0 = api2wire_enum_simple_twin_normal(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_func_enum_simple_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_enum_simple,
+      parseSuccessData: _wire2api_enum_simple_twin_normal,
       parseErrorData: null,
       constMeta: kFuncEnumSimpleTwinNormalConstMeta,
       argValues: [arg],
@@ -431,13 +462,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<EnumWithItemMixed> funcEnumWithItemMixedTwinNormal(
-      {required EnumWithItemMixed arg, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_enum_with_item_mixed(arg);
+  Future<EnumWithItemMixedTwinNormal> funcEnumWithItemMixedTwinNormal(
+      {required EnumWithItemMixedTwinNormal arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_enum_with_item_mixed_twin_normal(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
           wire.wire_func_enum_with_item_mixed_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_enum_with_item_mixed,
+      parseSuccessData: _wire2api_enum_with_item_mixed_twin_normal,
       parseErrorData: null,
       constMeta: kFuncEnumWithItemMixedTwinNormalConstMeta,
       argValues: [arg],
@@ -453,13 +484,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<EnumWithItemStruct> funcEnumWithItemStructTwinNormal(
-      {required EnumWithItemStruct arg, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_enum_with_item_struct(arg);
+  Future<EnumWithItemStructTwinNormal> funcEnumWithItemStructTwinNormal(
+      {required EnumWithItemStructTwinNormal arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_enum_with_item_struct_twin_normal(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
           wire.wire_func_enum_with_item_struct_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_enum_with_item_struct,
+      parseSuccessData: _wire2api_enum_with_item_struct_twin_normal,
       parseErrorData: null,
       constMeta: kFuncEnumWithItemStructTwinNormalConstMeta,
       argValues: [arg],
@@ -475,13 +506,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<EnumWithItemTuple> funcEnumWithItemTupleTwinNormal(
-      {required EnumWithItemTuple arg, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_enum_with_item_tuple(arg);
+  Future<EnumWithItemTupleTwinNormal> funcEnumWithItemTupleTwinNormal(
+      {required EnumWithItemTupleTwinNormal arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_enum_with_item_tuple_twin_normal(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
           wire.wire_func_enum_with_item_tuple_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_enum_with_item_tuple,
+      parseSuccessData: _wire2api_enum_with_item_tuple_twin_normal,
       parseErrorData: null,
       constMeta: kFuncEnumWithItemTupleTwinNormalConstMeta,
       argValues: [arg],
@@ -602,6 +633,89 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 "function_with_comments_triple_slash_single_line_twin_sync",
             argNames: [],
           );
+
+  @override
+  EnumSimpleTwinSync funcEnumSimpleTwinSync(
+      {required EnumSimpleTwinSync arg, dynamic hint}) {
+    var arg0 = api2wire_enum_simple_twin_sync(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_enum_simple_twin_sync(arg0),
+      parseSuccessData: _wire2api_enum_simple_twin_sync,
+      parseErrorData: null,
+      constMeta: kFuncEnumSimpleTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncEnumSimpleTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "func_enum_simple_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  EnumWithItemMixedTwinSync funcEnumWithItemMixedTwinSync(
+      {required EnumWithItemMixedTwinSync arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_enum_with_item_mixed_twin_sync(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_enum_with_item_mixed_twin_sync(arg0),
+      parseSuccessData: _wire2api_enum_with_item_mixed_twin_sync,
+      parseErrorData: null,
+      constMeta: kFuncEnumWithItemMixedTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncEnumWithItemMixedTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_enum_with_item_mixed_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  EnumWithItemStructTwinSync funcEnumWithItemStructTwinSync(
+      {required EnumWithItemStructTwinSync arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_enum_with_item_struct_twin_sync(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_enum_with_item_struct_twin_sync(arg0),
+      parseSuccessData: _wire2api_enum_with_item_struct_twin_sync,
+      parseErrorData: null,
+      constMeta: kFuncEnumWithItemStructTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncEnumWithItemStructTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_enum_with_item_struct_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  EnumWithItemTupleTwinSync funcEnumWithItemTupleTwinSync(
+      {required EnumWithItemTupleTwinSync arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_enum_with_item_tuple_twin_sync(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_enum_with_item_tuple_twin_sync(arg0),
+      parseSuccessData: _wire2api_enum_with_item_tuple_twin_sync,
+      parseErrorData: null,
+      constMeta: kFuncEnumWithItemTupleTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncEnumWithItemTupleTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_enum_with_item_tuple_twin_sync",
+        argNames: ["arg"],
+      );
 
   @override
   Future<bool?> exampleOptionalPrimitiveTypeBoolTwinNormal(
@@ -2032,6 +2146,111 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  StructWithOneFieldTwinSync funcStructWithOneFieldTwinSync(
+      {required StructWithOneFieldTwinSync arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_struct_with_one_field_twin_sync(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_struct_with_one_field_twin_sync(arg0),
+      parseSuccessData: _wire2api_struct_with_one_field_twin_sync,
+      parseErrorData: null,
+      constMeta: kFuncStructWithOneFieldTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncStructWithOneFieldTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_struct_with_one_field_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  StructWithTwoFieldTwinSync funcStructWithTwoFieldTwinSync(
+      {required StructWithTwoFieldTwinSync arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_struct_with_two_field_twin_sync(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_struct_with_two_field_twin_sync(arg0),
+      parseSuccessData: _wire2api_struct_with_two_field_twin_sync,
+      parseErrorData: null,
+      constMeta: kFuncStructWithTwoFieldTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncStructWithTwoFieldTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_struct_with_two_field_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  StructWithZeroFieldTwinSync funcStructWithZeroFieldTwinSync(
+      {required StructWithZeroFieldTwinSync arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_struct_with_zero_field_twin_sync(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_struct_with_zero_field_twin_sync(arg0),
+      parseSuccessData: _wire2api_struct_with_zero_field_twin_sync,
+      parseErrorData: null,
+      constMeta: kFuncStructWithZeroFieldTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncStructWithZeroFieldTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_struct_with_zero_field_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  TupleStructWithOneFieldTwinSync funcTupleStructWithOneFieldTwinSync(
+      {required TupleStructWithOneFieldTwinSync arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_tuple_struct_with_one_field_twin_sync(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_tuple_struct_with_one_field_twin_sync(arg0),
+      parseSuccessData: _wire2api_tuple_struct_with_one_field_twin_sync,
+      parseErrorData: null,
+      constMeta: kFuncTupleStructWithOneFieldTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncTupleStructWithOneFieldTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_tuple_struct_with_one_field_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  TupleStructWithTwoFieldTwinSync funcTupleStructWithTwoFieldTwinSync(
+      {required TupleStructWithTwoFieldTwinSync arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_tuple_struct_with_two_field_twin_sync(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_tuple_struct_with_two_field_twin_sync(arg0),
+      parseSuccessData: _wire2api_tuple_struct_with_two_field_twin_sync,
+      parseErrorData: null,
+      constMeta: kFuncTupleStructWithTwoFieldTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncTupleStructWithTwoFieldTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_tuple_struct_with_two_field_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
   Future<int> simpleAdderTwinNormal(
       {required int a, required int b, dynamic hint}) {
     var arg0 = api2wire_i_32(a);
@@ -2053,13 +2272,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<StructWithOneField> funcStructWithOneFieldTwinNormal(
-      {required StructWithOneField arg, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_struct_with_one_field(arg);
+  Future<StructWithOneFieldTwinNormal> funcStructWithOneFieldTwinNormal(
+      {required StructWithOneFieldTwinNormal arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_struct_with_one_field_twin_normal(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
           wire.wire_func_struct_with_one_field_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_struct_with_one_field,
+      parseSuccessData: _wire2api_struct_with_one_field_twin_normal,
       parseErrorData: null,
       constMeta: kFuncStructWithOneFieldTwinNormalConstMeta,
       argValues: [arg],
@@ -2075,13 +2294,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<StructWithTwoField> funcStructWithTwoFieldTwinNormal(
-      {required StructWithTwoField arg, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_struct_with_two_field(arg);
+  Future<StructWithTwoFieldTwinNormal> funcStructWithTwoFieldTwinNormal(
+      {required StructWithTwoFieldTwinNormal arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_struct_with_two_field_twin_normal(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
           wire.wire_func_struct_with_two_field_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_struct_with_two_field,
+      parseSuccessData: _wire2api_struct_with_two_field_twin_normal,
       parseErrorData: null,
       constMeta: kFuncStructWithTwoFieldTwinNormalConstMeta,
       argValues: [arg],
@@ -2097,13 +2316,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<StructWithZeroField> funcStructWithZeroFieldTwinNormal(
-      {required StructWithZeroField arg, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_struct_with_zero_field(arg);
+  Future<StructWithZeroFieldTwinNormal> funcStructWithZeroFieldTwinNormal(
+      {required StructWithZeroFieldTwinNormal arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_struct_with_zero_field_twin_normal(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
           wire.wire_func_struct_with_zero_field_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_struct_with_zero_field,
+      parseSuccessData: _wire2api_struct_with_zero_field_twin_normal,
       parseErrorData: null,
       constMeta: kFuncStructWithZeroFieldTwinNormalConstMeta,
       argValues: [arg],
@@ -2119,13 +2338,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<TupleStructWithOneField> funcTupleStructWithOneFieldTwinNormal(
-      {required TupleStructWithOneField arg, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_tuple_struct_with_one_field(arg);
+  Future<TupleStructWithOneFieldTwinNormal>
+      funcTupleStructWithOneFieldTwinNormal(
+          {required TupleStructWithOneFieldTwinNormal arg, dynamic hint}) {
+    var arg0 =
+        api2wire_box_autoadd_tuple_struct_with_one_field_twin_normal(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
           wire.wire_func_tuple_struct_with_one_field_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_tuple_struct_with_one_field,
+      parseSuccessData: _wire2api_tuple_struct_with_one_field_twin_normal,
       parseErrorData: null,
       constMeta: kFuncTupleStructWithOneFieldTwinNormalConstMeta,
       argValues: [arg],
@@ -2141,13 +2362,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<TupleStructWithTwoField> funcTupleStructWithTwoFieldTwinNormal(
-      {required TupleStructWithTwoField arg, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_tuple_struct_with_two_field(arg);
+  Future<TupleStructWithTwoFieldTwinNormal>
+      funcTupleStructWithTwoFieldTwinNormal(
+          {required TupleStructWithTwoFieldTwinNormal arg, dynamic hint}) {
+    var arg0 =
+        api2wire_box_autoadd_tuple_struct_with_two_field_twin_normal(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
           wire.wire_func_tuple_struct_with_two_field_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_tuple_struct_with_two_field,
+      parseSuccessData: _wire2api_tuple_struct_with_two_field_twin_normal,
       parseErrorData: null,
       constMeta: kFuncTupleStructWithTwoFieldTwinNormalConstMeta,
       argValues: [arg],
@@ -2217,20 +2440,25 @@ int _wire2api_box_autoadd_u_8(dynamic raw) {
   return raw as int;
 }
 
-EnumSimple _wire2api_enum_simple(dynamic raw) {
-  return EnumSimple.values[raw as int];
+EnumSimpleTwinNormal _wire2api_enum_simple_twin_normal(dynamic raw) {
+  return EnumSimpleTwinNormal.values[raw as int];
 }
 
-EnumWithItemMixed _wire2api_enum_with_item_mixed(dynamic raw) {
+EnumSimpleTwinSync _wire2api_enum_simple_twin_sync(dynamic raw) {
+  return EnumSimpleTwinSync.values[raw as int];
+}
+
+EnumWithItemMixedTwinNormal _wire2api_enum_with_item_mixed_twin_normal(
+    dynamic raw) {
   switch (raw[0]) {
     case 0:
-      return EnumWithItemMixed_A();
+      return EnumWithItemMixedTwinNormal_A();
     case 1:
-      return EnumWithItemMixed_B(
+      return EnumWithItemMixedTwinNormal_B(
         _wire2api_list_prim_u_8(raw[1]),
       );
     case 2:
-      return EnumWithItemMixed_C(
+      return EnumWithItemMixedTwinNormal_C(
         cField: _wire2api_String(raw[1]),
       );
     default:
@@ -2238,14 +2466,33 @@ EnumWithItemMixed _wire2api_enum_with_item_mixed(dynamic raw) {
   }
 }
 
-EnumWithItemStruct _wire2api_enum_with_item_struct(dynamic raw) {
+EnumWithItemMixedTwinSync _wire2api_enum_with_item_mixed_twin_sync(
+    dynamic raw) {
   switch (raw[0]) {
     case 0:
-      return EnumWithItemStruct_A(
+      return EnumWithItemMixedTwinSync_A();
+    case 1:
+      return EnumWithItemMixedTwinSync_B(
+        _wire2api_list_prim_u_8(raw[1]),
+      );
+    case 2:
+      return EnumWithItemMixedTwinSync_C(
+        cField: _wire2api_String(raw[1]),
+      );
+    default:
+      throw Exception("unreachable");
+  }
+}
+
+EnumWithItemStructTwinNormal _wire2api_enum_with_item_struct_twin_normal(
+    dynamic raw) {
+  switch (raw[0]) {
+    case 0:
+      return EnumWithItemStructTwinNormal_A(
         aField: _wire2api_list_prim_u_8(raw[1]),
       );
     case 1:
-      return EnumWithItemStruct_B(
+      return EnumWithItemStructTwinNormal_B(
         bField: _wire2api_list_prim_i_32(raw[1]),
       );
     default:
@@ -2253,14 +2500,47 @@ EnumWithItemStruct _wire2api_enum_with_item_struct(dynamic raw) {
   }
 }
 
-EnumWithItemTuple _wire2api_enum_with_item_tuple(dynamic raw) {
+EnumWithItemStructTwinSync _wire2api_enum_with_item_struct_twin_sync(
+    dynamic raw) {
   switch (raw[0]) {
     case 0:
-      return EnumWithItemTuple_A(
+      return EnumWithItemStructTwinSync_A(
+        aField: _wire2api_list_prim_u_8(raw[1]),
+      );
+    case 1:
+      return EnumWithItemStructTwinSync_B(
+        bField: _wire2api_list_prim_i_32(raw[1]),
+      );
+    default:
+      throw Exception("unreachable");
+  }
+}
+
+EnumWithItemTupleTwinNormal _wire2api_enum_with_item_tuple_twin_normal(
+    dynamic raw) {
+  switch (raw[0]) {
+    case 0:
+      return EnumWithItemTupleTwinNormal_A(
         _wire2api_list_prim_u_8(raw[1]),
       );
     case 1:
-      return EnumWithItemTuple_B(
+      return EnumWithItemTupleTwinNormal_B(
+        _wire2api_list_prim_i_32(raw[1]),
+      );
+    default:
+      throw Exception("unreachable");
+  }
+}
+
+EnumWithItemTupleTwinSync _wire2api_enum_with_item_tuple_twin_sync(
+    dynamic raw) {
+  switch (raw[0]) {
+    case 0:
+      return EnumWithItemTupleTwinSync_A(
+        _wire2api_list_prim_u_8(raw[1]),
+      );
+    case 1:
+      return EnumWithItemTupleTwinSync_B(
         _wire2api_list_prim_i_32(raw[1]),
       );
     default:
@@ -2380,46 +2660,101 @@ int? _wire2api_opt_box_autoadd_u_8(dynamic raw) {
   return raw == null ? null : _wire2api_box_autoadd_u_8(raw);
 }
 
-StructWithOneField _wire2api_struct_with_one_field(dynamic raw) {
+StructWithOneFieldTwinNormal _wire2api_struct_with_one_field_twin_normal(
+    dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 1)
     throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-  return StructWithOneField(
+  return StructWithOneFieldTwinNormal(
     a: _wire2api_i_32(arr[0]),
   );
 }
 
-StructWithTwoField _wire2api_struct_with_two_field(dynamic raw) {
+StructWithOneFieldTwinSync _wire2api_struct_with_one_field_twin_sync(
+    dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return StructWithOneFieldTwinSync(
+    a: _wire2api_i_32(arr[0]),
+  );
+}
+
+StructWithTwoFieldTwinNormal _wire2api_struct_with_two_field_twin_normal(
+    dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 2)
     throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-  return StructWithTwoField(
+  return StructWithTwoFieldTwinNormal(
     a: _wire2api_i_32(arr[0]),
     b: _wire2api_i_32(arr[1]),
   );
 }
 
-StructWithZeroField _wire2api_struct_with_zero_field(dynamic raw) {
+StructWithTwoFieldTwinSync _wire2api_struct_with_two_field_twin_sync(
+    dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2)
+    throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  return StructWithTwoFieldTwinSync(
+    a: _wire2api_i_32(arr[0]),
+    b: _wire2api_i_32(arr[1]),
+  );
+}
+
+StructWithZeroFieldTwinNormal _wire2api_struct_with_zero_field_twin_normal(
+    dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 0)
     throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
-  return StructWithZeroField();
+  return StructWithZeroFieldTwinNormal();
 }
 
-TupleStructWithOneField _wire2api_tuple_struct_with_one_field(dynamic raw) {
+StructWithZeroFieldTwinSync _wire2api_struct_with_zero_field_twin_sync(
+    dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 0)
+    throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
+  return StructWithZeroFieldTwinSync();
+}
+
+TupleStructWithOneFieldTwinNormal
+    _wire2api_tuple_struct_with_one_field_twin_normal(dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 1)
     throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-  return TupleStructWithOneField(
+  return TupleStructWithOneFieldTwinNormal(
     field0: _wire2api_i_32(arr[0]),
   );
 }
 
-TupleStructWithTwoField _wire2api_tuple_struct_with_two_field(dynamic raw) {
+TupleStructWithOneFieldTwinSync _wire2api_tuple_struct_with_one_field_twin_sync(
+    dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return TupleStructWithOneFieldTwinSync(
+    field0: _wire2api_i_32(arr[0]),
+  );
+}
+
+TupleStructWithTwoFieldTwinNormal
+    _wire2api_tuple_struct_with_two_field_twin_normal(dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 2)
     throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-  return TupleStructWithTwoField(
+  return TupleStructWithTwoFieldTwinNormal(
+    field0: _wire2api_i_32(arr[0]),
+    field1: _wire2api_i_32(arr[1]),
+  );
+}
+
+TupleStructWithTwoFieldTwinSync _wire2api_tuple_struct_with_two_field_twin_sync(
+    dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2)
+    throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  return TupleStructWithTwoFieldTwinSync(
     field0: _wire2api_i_32(arr[0]),
     field1: _wire2api_i_32(arr[1]),
   );
@@ -2451,7 +2786,11 @@ bool api2wire_bool(bool raw) {
   return raw;
 }
 
-int api2wire_enum_simple(EnumSimple raw) {
+int api2wire_enum_simple_twin_normal(EnumSimpleTwinNormal raw) {
+  return api2wire_i_32(raw.index);
+}
+
+int api2wire_enum_simple_twin_sync(EnumSimpleTwinSync raw) {
   return api2wire_i_32(raw.index);
 }
 

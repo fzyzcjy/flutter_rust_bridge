@@ -8,78 +8,137 @@ typedef struct wire_struct_with_comments_twin_normal {
   int32_t field_with_comments;
 } wire_struct_with_comments_twin_normal;
 
-typedef struct wire_EnumWithItemMixed_A {
+typedef struct wire_EnumWithItemMixedTwinNormal_A {
 
-} wire_EnumWithItemMixed_A;
+} wire_EnumWithItemMixedTwinNormal_A;
 
 typedef struct wire_list_prim_u_8 {
   uint8_t *ptr;
   int32_t len;
 } wire_list_prim_u_8;
 
-typedef struct wire_EnumWithItemMixed_B {
+typedef struct wire_EnumWithItemMixedTwinNormal_B {
   struct wire_list_prim_u_8 *field0;
-} wire_EnumWithItemMixed_B;
+} wire_EnumWithItemMixedTwinNormal_B;
 
-typedef struct wire_EnumWithItemMixed_C {
+typedef struct wire_EnumWithItemMixedTwinNormal_C {
   struct wire_list_prim_u_8 *c_field;
-} wire_EnumWithItemMixed_C;
+} wire_EnumWithItemMixedTwinNormal_C;
 
-typedef union EnumWithItemMixedKind {
-  struct wire_EnumWithItemMixed_A *A;
-  struct wire_EnumWithItemMixed_B *B;
-  struct wire_EnumWithItemMixed_C *C;
-} EnumWithItemMixedKind;
+typedef union EnumWithItemMixedTwinNormalKind {
+  struct wire_EnumWithItemMixedTwinNormal_A *A;
+  struct wire_EnumWithItemMixedTwinNormal_B *B;
+  struct wire_EnumWithItemMixedTwinNormal_C *C;
+} EnumWithItemMixedTwinNormalKind;
 
-typedef struct wire_enum_with_item_mixed {
+typedef struct wire_enum_with_item_mixed_twin_normal {
   int32_t tag;
-  union EnumWithItemMixedKind *kind;
-} wire_enum_with_item_mixed;
+  union EnumWithItemMixedTwinNormalKind *kind;
+} wire_enum_with_item_mixed_twin_normal;
 
-typedef struct wire_EnumWithItemStruct_A {
+typedef struct wire_EnumWithItemStructTwinNormal_A {
   struct wire_list_prim_u_8 *a_field;
-} wire_EnumWithItemStruct_A;
+} wire_EnumWithItemStructTwinNormal_A;
 
 typedef struct wire_list_prim_i_32 {
   int32_t *ptr;
   int32_t len;
 } wire_list_prim_i_32;
 
-typedef struct wire_EnumWithItemStruct_B {
+typedef struct wire_EnumWithItemStructTwinNormal_B {
   struct wire_list_prim_i_32 *b_field;
-} wire_EnumWithItemStruct_B;
+} wire_EnumWithItemStructTwinNormal_B;
 
-typedef union EnumWithItemStructKind {
-  struct wire_EnumWithItemStruct_A *A;
-  struct wire_EnumWithItemStruct_B *B;
-} EnumWithItemStructKind;
+typedef union EnumWithItemStructTwinNormalKind {
+  struct wire_EnumWithItemStructTwinNormal_A *A;
+  struct wire_EnumWithItemStructTwinNormal_B *B;
+} EnumWithItemStructTwinNormalKind;
 
-typedef struct wire_enum_with_item_struct {
+typedef struct wire_enum_with_item_struct_twin_normal {
   int32_t tag;
-  union EnumWithItemStructKind *kind;
-} wire_enum_with_item_struct;
+  union EnumWithItemStructTwinNormalKind *kind;
+} wire_enum_with_item_struct_twin_normal;
 
-typedef struct wire_EnumWithItemTuple_A {
+typedef struct wire_EnumWithItemTupleTwinNormal_A {
   struct wire_list_prim_u_8 *field0;
-} wire_EnumWithItemTuple_A;
+} wire_EnumWithItemTupleTwinNormal_A;
 
-typedef struct wire_EnumWithItemTuple_B {
+typedef struct wire_EnumWithItemTupleTwinNormal_B {
   struct wire_list_prim_i_32 *field0;
-} wire_EnumWithItemTuple_B;
+} wire_EnumWithItemTupleTwinNormal_B;
 
-typedef union EnumWithItemTupleKind {
-  struct wire_EnumWithItemTuple_A *A;
-  struct wire_EnumWithItemTuple_B *B;
-} EnumWithItemTupleKind;
+typedef union EnumWithItemTupleTwinNormalKind {
+  struct wire_EnumWithItemTupleTwinNormal_A *A;
+  struct wire_EnumWithItemTupleTwinNormal_B *B;
+} EnumWithItemTupleTwinNormalKind;
 
-typedef struct wire_enum_with_item_tuple {
+typedef struct wire_enum_with_item_tuple_twin_normal {
   int32_t tag;
-  union EnumWithItemTupleKind *kind;
-} wire_enum_with_item_tuple;
+  union EnumWithItemTupleTwinNormalKind *kind;
+} wire_enum_with_item_tuple_twin_normal;
 
 typedef struct wire_struct_with_comments_twin_sync {
   int32_t field_with_comments;
 } wire_struct_with_comments_twin_sync;
+
+typedef struct wire_EnumWithItemMixedTwinSync_A {
+
+} wire_EnumWithItemMixedTwinSync_A;
+
+typedef struct wire_EnumWithItemMixedTwinSync_B {
+  struct wire_list_prim_u_8 *field0;
+} wire_EnumWithItemMixedTwinSync_B;
+
+typedef struct wire_EnumWithItemMixedTwinSync_C {
+  struct wire_list_prim_u_8 *c_field;
+} wire_EnumWithItemMixedTwinSync_C;
+
+typedef union EnumWithItemMixedTwinSyncKind {
+  struct wire_EnumWithItemMixedTwinSync_A *A;
+  struct wire_EnumWithItemMixedTwinSync_B *B;
+  struct wire_EnumWithItemMixedTwinSync_C *C;
+} EnumWithItemMixedTwinSyncKind;
+
+typedef struct wire_enum_with_item_mixed_twin_sync {
+  int32_t tag;
+  union EnumWithItemMixedTwinSyncKind *kind;
+} wire_enum_with_item_mixed_twin_sync;
+
+typedef struct wire_EnumWithItemStructTwinSync_A {
+  struct wire_list_prim_u_8 *a_field;
+} wire_EnumWithItemStructTwinSync_A;
+
+typedef struct wire_EnumWithItemStructTwinSync_B {
+  struct wire_list_prim_i_32 *b_field;
+} wire_EnumWithItemStructTwinSync_B;
+
+typedef union EnumWithItemStructTwinSyncKind {
+  struct wire_EnumWithItemStructTwinSync_A *A;
+  struct wire_EnumWithItemStructTwinSync_B *B;
+} EnumWithItemStructTwinSyncKind;
+
+typedef struct wire_enum_with_item_struct_twin_sync {
+  int32_t tag;
+  union EnumWithItemStructTwinSyncKind *kind;
+} wire_enum_with_item_struct_twin_sync;
+
+typedef struct wire_EnumWithItemTupleTwinSync_A {
+  struct wire_list_prim_u_8 *field0;
+} wire_EnumWithItemTupleTwinSync_A;
+
+typedef struct wire_EnumWithItemTupleTwinSync_B {
+  struct wire_list_prim_i_32 *field0;
+} wire_EnumWithItemTupleTwinSync_B;
+
+typedef union EnumWithItemTupleTwinSyncKind {
+  struct wire_EnumWithItemTupleTwinSync_A *A;
+  struct wire_EnumWithItemTupleTwinSync_B *B;
+} EnumWithItemTupleTwinSyncKind;
+
+typedef struct wire_enum_with_item_tuple_twin_sync {
+  int32_t tag;
+  union EnumWithItemTupleTwinSyncKind *kind;
+} wire_enum_with_item_tuple_twin_sync;
 
 typedef struct wire_list_bool {
   bool *ptr;
@@ -126,27 +185,49 @@ typedef struct wire_list_prim_u_64 {
   int32_t len;
 } wire_list_prim_u_64;
 
-typedef struct wire_struct_with_one_field {
+typedef struct wire_struct_with_one_field_twin_sync {
   int32_t a;
-} wire_struct_with_one_field;
+} wire_struct_with_one_field_twin_sync;
 
-typedef struct wire_struct_with_two_field {
+typedef struct wire_struct_with_two_field_twin_sync {
   int32_t a;
   int32_t b;
-} wire_struct_with_two_field;
+} wire_struct_with_two_field_twin_sync;
 
-typedef struct wire_struct_with_zero_field {
+typedef struct wire_struct_with_zero_field_twin_sync {
 
-} wire_struct_with_zero_field;
+} wire_struct_with_zero_field_twin_sync;
 
-typedef struct wire_tuple_struct_with_one_field {
+typedef struct wire_tuple_struct_with_one_field_twin_sync {
   int32_t field0;
-} wire_tuple_struct_with_one_field;
+} wire_tuple_struct_with_one_field_twin_sync;
 
-typedef struct wire_tuple_struct_with_two_field {
+typedef struct wire_tuple_struct_with_two_field_twin_sync {
   int32_t field0;
   int32_t field1;
-} wire_tuple_struct_with_two_field;
+} wire_tuple_struct_with_two_field_twin_sync;
+
+typedef struct wire_struct_with_one_field_twin_normal {
+  int32_t a;
+} wire_struct_with_one_field_twin_normal;
+
+typedef struct wire_struct_with_two_field_twin_normal {
+  int32_t a;
+  int32_t b;
+} wire_struct_with_two_field_twin_normal;
+
+typedef struct wire_struct_with_zero_field_twin_normal {
+
+} wire_struct_with_zero_field_twin_normal;
+
+typedef struct wire_tuple_struct_with_one_field_twin_normal {
+  int32_t field0;
+} wire_tuple_struct_with_one_field_twin_normal;
+
+typedef struct wire_tuple_struct_with_two_field_twin_normal {
+  int32_t field0;
+  int32_t field1;
+} wire_tuple_struct_with_two_field_twin_normal;
 
 void wire_StructWithCommentsTwinNormal_instance_method_twin_normal(int64_t port_,
                                                                    struct wire_struct_with_comments_twin_normal *that);
@@ -162,13 +243,13 @@ void wire_function_with_comments_triple_slash_single_line_twin_normal(int64_t po
 void wire_func_enum_simple_twin_normal(int64_t port_, int32_t arg);
 
 void wire_func_enum_with_item_mixed_twin_normal(int64_t port_,
-                                                struct wire_enum_with_item_mixed *arg);
+                                                struct wire_enum_with_item_mixed_twin_normal *arg);
 
 void wire_func_enum_with_item_struct_twin_normal(int64_t port_,
-                                                 struct wire_enum_with_item_struct *arg);
+                                                 struct wire_enum_with_item_struct_twin_normal *arg);
 
 void wire_func_enum_with_item_tuple_twin_normal(int64_t port_,
-                                                struct wire_enum_with_item_tuple *arg);
+                                                struct wire_enum_with_item_tuple_twin_normal *arg);
 
 WireSyncReturn wire_StructWithCommentsTwinSync_instance_method_twin_sync(struct wire_struct_with_comments_twin_sync *that);
 
@@ -179,6 +260,14 @@ WireSyncReturn wire_function_with_comments_slash_star_star_twin_sync(void);
 WireSyncReturn wire_function_with_comments_triple_slash_multi_line_twin_sync(void);
 
 WireSyncReturn wire_function_with_comments_triple_slash_single_line_twin_sync(void);
+
+WireSyncReturn wire_func_enum_simple_twin_sync(int32_t arg);
+
+WireSyncReturn wire_func_enum_with_item_mixed_twin_sync(struct wire_enum_with_item_mixed_twin_sync *arg);
+
+WireSyncReturn wire_func_enum_with_item_struct_twin_sync(struct wire_enum_with_item_struct_twin_sync *arg);
+
+WireSyncReturn wire_func_enum_with_item_tuple_twin_sync(struct wire_enum_with_item_tuple_twin_sync *arg);
 
 void wire_example_optional_primitive_type_bool_twin_normal(int64_t port_, bool *arg);
 
@@ -322,30 +411,46 @@ WireSyncReturn wire_example_primitive_type_u8_twin_sync(uint8_t arg);
 
 WireSyncReturn wire_simple_adder_twin_sync(int32_t a, int32_t b);
 
+WireSyncReturn wire_func_struct_with_one_field_twin_sync(struct wire_struct_with_one_field_twin_sync *arg);
+
+WireSyncReturn wire_func_struct_with_two_field_twin_sync(struct wire_struct_with_two_field_twin_sync *arg);
+
+WireSyncReturn wire_func_struct_with_zero_field_twin_sync(struct wire_struct_with_zero_field_twin_sync *arg);
+
+WireSyncReturn wire_func_tuple_struct_with_one_field_twin_sync(struct wire_tuple_struct_with_one_field_twin_sync *arg);
+
+WireSyncReturn wire_func_tuple_struct_with_two_field_twin_sync(struct wire_tuple_struct_with_two_field_twin_sync *arg);
+
 void wire_simple_adder_twin_normal(int64_t port_, int32_t a, int32_t b);
 
 void wire_func_struct_with_one_field_twin_normal(int64_t port_,
-                                                 struct wire_struct_with_one_field *arg);
+                                                 struct wire_struct_with_one_field_twin_normal *arg);
 
 void wire_func_struct_with_two_field_twin_normal(int64_t port_,
-                                                 struct wire_struct_with_two_field *arg);
+                                                 struct wire_struct_with_two_field_twin_normal *arg);
 
 void wire_func_struct_with_zero_field_twin_normal(int64_t port_,
-                                                  struct wire_struct_with_zero_field *arg);
+                                                  struct wire_struct_with_zero_field_twin_normal *arg);
 
 void wire_func_tuple_struct_with_one_field_twin_normal(int64_t port_,
-                                                       struct wire_tuple_struct_with_one_field *arg);
+                                                       struct wire_tuple_struct_with_one_field_twin_normal *arg);
 
 void wire_func_tuple_struct_with_two_field_twin_normal(int64_t port_,
-                                                       struct wire_tuple_struct_with_two_field *arg);
+                                                       struct wire_tuple_struct_with_two_field_twin_normal *arg);
 
 bool *new_box_autoadd_bool(bool value);
 
-struct wire_enum_with_item_mixed *new_box_autoadd_enum_with_item_mixed(void);
+struct wire_enum_with_item_mixed_twin_normal *new_box_autoadd_enum_with_item_mixed_twin_normal(void);
 
-struct wire_enum_with_item_struct *new_box_autoadd_enum_with_item_struct(void);
+struct wire_enum_with_item_mixed_twin_sync *new_box_autoadd_enum_with_item_mixed_twin_sync(void);
 
-struct wire_enum_with_item_tuple *new_box_autoadd_enum_with_item_tuple(void);
+struct wire_enum_with_item_struct_twin_normal *new_box_autoadd_enum_with_item_struct_twin_normal(void);
+
+struct wire_enum_with_item_struct_twin_sync *new_box_autoadd_enum_with_item_struct_twin_sync(void);
+
+struct wire_enum_with_item_tuple_twin_normal *new_box_autoadd_enum_with_item_tuple_twin_normal(void);
+
+struct wire_enum_with_item_tuple_twin_sync *new_box_autoadd_enum_with_item_tuple_twin_sync(void);
 
 float *new_box_autoadd_f_32(float value);
 
@@ -363,15 +468,25 @@ struct wire_struct_with_comments_twin_normal *new_box_autoadd_struct_with_commen
 
 struct wire_struct_with_comments_twin_sync *new_box_autoadd_struct_with_comments_twin_sync(void);
 
-struct wire_struct_with_one_field *new_box_autoadd_struct_with_one_field(void);
+struct wire_struct_with_one_field_twin_normal *new_box_autoadd_struct_with_one_field_twin_normal(void);
 
-struct wire_struct_with_two_field *new_box_autoadd_struct_with_two_field(void);
+struct wire_struct_with_one_field_twin_sync *new_box_autoadd_struct_with_one_field_twin_sync(void);
 
-struct wire_struct_with_zero_field *new_box_autoadd_struct_with_zero_field(void);
+struct wire_struct_with_two_field_twin_normal *new_box_autoadd_struct_with_two_field_twin_normal(void);
 
-struct wire_tuple_struct_with_one_field *new_box_autoadd_tuple_struct_with_one_field(void);
+struct wire_struct_with_two_field_twin_sync *new_box_autoadd_struct_with_two_field_twin_sync(void);
 
-struct wire_tuple_struct_with_two_field *new_box_autoadd_tuple_struct_with_two_field(void);
+struct wire_struct_with_zero_field_twin_normal *new_box_autoadd_struct_with_zero_field_twin_normal(void);
+
+struct wire_struct_with_zero_field_twin_sync *new_box_autoadd_struct_with_zero_field_twin_sync(void);
+
+struct wire_tuple_struct_with_one_field_twin_normal *new_box_autoadd_tuple_struct_with_one_field_twin_normal(void);
+
+struct wire_tuple_struct_with_one_field_twin_sync *new_box_autoadd_tuple_struct_with_one_field_twin_sync(void);
+
+struct wire_tuple_struct_with_two_field_twin_normal *new_box_autoadd_tuple_struct_with_two_field_twin_normal(void);
+
+struct wire_tuple_struct_with_two_field_twin_sync *new_box_autoadd_tuple_struct_with_two_field_twin_sync(void);
 
 uint16_t *new_box_autoadd_u_16(uint16_t value);
 
@@ -403,31 +518,52 @@ struct wire_list_prim_u_64 *new_list_prim_u_64(int32_t len);
 
 struct wire_list_prim_u_8 *new_list_prim_u_8(int32_t len);
 
-union EnumWithItemMixedKind *inflate_EnumWithItemMixed_B(void);
+union EnumWithItemMixedTwinNormalKind *inflate_EnumWithItemMixedTwinNormal_B(void);
 
-union EnumWithItemMixedKind *inflate_EnumWithItemMixed_C(void);
+union EnumWithItemMixedTwinNormalKind *inflate_EnumWithItemMixedTwinNormal_C(void);
 
-union EnumWithItemStructKind *inflate_EnumWithItemStruct_A(void);
+union EnumWithItemMixedTwinSyncKind *inflate_EnumWithItemMixedTwinSync_B(void);
 
-union EnumWithItemStructKind *inflate_EnumWithItemStruct_B(void);
+union EnumWithItemMixedTwinSyncKind *inflate_EnumWithItemMixedTwinSync_C(void);
 
-union EnumWithItemTupleKind *inflate_EnumWithItemTuple_A(void);
+union EnumWithItemStructTwinNormalKind *inflate_EnumWithItemStructTwinNormal_A(void);
 
-union EnumWithItemTupleKind *inflate_EnumWithItemTuple_B(void);
+union EnumWithItemStructTwinNormalKind *inflate_EnumWithItemStructTwinNormal_B(void);
+
+union EnumWithItemStructTwinSyncKind *inflate_EnumWithItemStructTwinSync_A(void);
+
+union EnumWithItemStructTwinSyncKind *inflate_EnumWithItemStructTwinSync_B(void);
+
+union EnumWithItemTupleTwinNormalKind *inflate_EnumWithItemTupleTwinNormal_A(void);
+
+union EnumWithItemTupleTwinNormalKind *inflate_EnumWithItemTupleTwinNormal_B(void);
+
+union EnumWithItemTupleTwinSyncKind *inflate_EnumWithItemTupleTwinSync_A(void);
+
+union EnumWithItemTupleTwinSyncKind *inflate_EnumWithItemTupleTwinSync_B(void);
 static int64_t dummy_method_to_enforce_bundling(void) {
     int64_t dummy_var = 0;
     dummy_var ^= ((int64_t) (void*) drop_dart_object);
     dummy_var ^= ((int64_t) (void*) get_dart_object);
-    dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemMixed_B);
-    dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemMixed_C);
-    dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemStruct_A);
-    dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemStruct_B);
-    dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemTuple_A);
-    dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemTuple_B);
+    dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemMixedTwinNormal_B);
+    dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemMixedTwinNormal_C);
+    dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemMixedTwinSync_B);
+    dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemMixedTwinSync_C);
+    dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemStructTwinNormal_A);
+    dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemStructTwinNormal_B);
+    dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemStructTwinSync_A);
+    dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemStructTwinSync_B);
+    dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemTupleTwinNormal_A);
+    dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemTupleTwinNormal_B);
+    dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemTupleTwinSync_A);
+    dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemTupleTwinSync_B);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_bool);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_with_item_mixed);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_with_item_struct);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_with_item_tuple);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_with_item_mixed_twin_normal);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_with_item_mixed_twin_sync);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_with_item_struct_twin_normal);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_with_item_struct_twin_sync);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_with_item_tuple_twin_normal);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_with_item_tuple_twin_sync);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_f_32);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_f_64);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_i_16);
@@ -436,11 +572,16 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_i_8);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_comments_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_comments_twin_sync);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_one_field);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_two_field);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_zero_field);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_tuple_struct_with_one_field);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_tuple_struct_with_two_field);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_one_field_twin_normal);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_one_field_twin_sync);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_two_field_twin_normal);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_two_field_twin_sync);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_zero_field_twin_normal);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_zero_field_twin_sync);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_tuple_struct_with_one_field_twin_normal);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_tuple_struct_with_one_field_twin_sync);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_tuple_struct_with_two_field_twin_normal);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_tuple_struct_with_two_field_twin_sync);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_u_16);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_u_32);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_u_64);
@@ -529,14 +670,23 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u8_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u8_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_simple_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_func_enum_simple_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_mixed_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_mixed_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_struct_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_struct_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_tuple_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_tuple_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_func_struct_with_one_field_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_func_struct_with_one_field_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_func_struct_with_two_field_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_func_struct_with_two_field_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_func_struct_with_zero_field_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_func_struct_with_zero_field_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_func_tuple_struct_with_one_field_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_func_tuple_struct_with_one_field_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_func_tuple_struct_with_two_field_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_func_tuple_struct_with_two_field_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_function_with_comments_slash_star_star_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_function_with_comments_slash_star_star_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_function_with_comments_triple_slash_multi_line_twin_normal);

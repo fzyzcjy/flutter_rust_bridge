@@ -9,146 +9,37 @@
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/optional_primitive_twin_sync.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
+import '../../test_utils.dart';
 
 Future<void> main() async {
   await RustLib.init();
 
   group('optional_primitive', () {
-    test('type=i8 arg=null', () async {
-      expect(await exampleOptionalPrimitiveTypeI8TwinSync(arg: null), null);
-    });
-    test('type=i8 arg=0', () async {
-      expect(await exampleOptionalPrimitiveTypeI8TwinSync(arg: 0), 0);
-    });
-    test('type=i8 arg=-128', () async {
-      expect(await exampleOptionalPrimitiveTypeI8TwinSync(arg: -128), -128);
-    });
-    test('type=i8 arg=127', () async {
-      expect(await exampleOptionalPrimitiveTypeI8TwinSync(arg: 127), 127);
-    });
-    test('type=i16 arg=null', () async {
-      expect(await exampleOptionalPrimitiveTypeI16TwinSync(arg: null), null);
-    });
-    test('type=i16 arg=0', () async {
-      expect(await exampleOptionalPrimitiveTypeI16TwinSync(arg: 0), 0);
-    });
-    test('type=i16 arg=-32768', () async {
-      expect(
-          await exampleOptionalPrimitiveTypeI16TwinSync(arg: -32768), -32768);
-    });
-    test('type=i16 arg=32767', () async {
-      expect(await exampleOptionalPrimitiveTypeI16TwinSync(arg: 32767), 32767);
-    });
-    test('type=i32 arg=null', () async {
-      expect(await exampleOptionalPrimitiveTypeI32TwinSync(arg: null), null);
-    });
-    test('type=i32 arg=0', () async {
-      expect(await exampleOptionalPrimitiveTypeI32TwinSync(arg: 0), 0);
-    });
-    test('type=i32 arg=-2147483648', () async {
-      expect(await exampleOptionalPrimitiveTypeI32TwinSync(arg: -2147483648),
-          -2147483648);
-    });
-    test('type=i32 arg=2147483647', () async {
-      expect(await exampleOptionalPrimitiveTypeI32TwinSync(arg: 2147483647),
-          2147483647);
-    });
-    test('type=i64 arg=null', () async {
-      expect(await exampleOptionalPrimitiveTypeI64TwinSync(arg: null), null);
-    });
-    test('type=i64 arg=BigInt.parse("0")', () async {
-      expect(
-          await exampleOptionalPrimitiveTypeI64TwinSync(arg: BigInt.parse("0")),
-          BigInt.parse("0"));
-    });
-    test('type=i64 arg=BigInt.parse("-9223372036854775808")', () async {
-      expect(
-          await exampleOptionalPrimitiveTypeI64TwinSync(
-              arg: BigInt.parse("-9223372036854775808")),
-          BigInt.parse("-9223372036854775808"));
-    });
-    test('type=i64 arg=BigInt.parse("9223372036854775807")', () async {
-      expect(
-          await exampleOptionalPrimitiveTypeI64TwinSync(
-              arg: BigInt.parse("9223372036854775807")),
-          BigInt.parse("9223372036854775807"));
-    });
-    test('type=u8 arg=null', () async {
-      expect(await exampleOptionalPrimitiveTypeU8TwinSync(arg: null), null);
-    });
-    test('type=u8 arg=0', () async {
-      expect(await exampleOptionalPrimitiveTypeU8TwinSync(arg: 0), 0);
-    });
-    test('type=u8 arg=255', () async {
-      expect(await exampleOptionalPrimitiveTypeU8TwinSync(arg: 255), 255);
-    });
-    test('type=u16 arg=null', () async {
-      expect(await exampleOptionalPrimitiveTypeU16TwinSync(arg: null), null);
-    });
-    test('type=u16 arg=0', () async {
-      expect(await exampleOptionalPrimitiveTypeU16TwinSync(arg: 0), 0);
-    });
-    test('type=u16 arg=65535', () async {
-      expect(await exampleOptionalPrimitiveTypeU16TwinSync(arg: 65535), 65535);
-    });
-    test('type=u32 arg=null', () async {
-      expect(await exampleOptionalPrimitiveTypeU32TwinSync(arg: null), null);
-    });
-    test('type=u32 arg=0', () async {
-      expect(await exampleOptionalPrimitiveTypeU32TwinSync(arg: 0), 0);
-    });
-    test('type=u32 arg=4294967295', () async {
-      expect(await exampleOptionalPrimitiveTypeU32TwinSync(arg: 4294967295),
-          4294967295);
-    });
-    test('type=u64 arg=null', () async {
-      expect(await exampleOptionalPrimitiveTypeU64TwinSync(arg: null), null);
-    });
-    test('type=u64 arg=BigInt.parse("0")', () async {
-      expect(
-          await exampleOptionalPrimitiveTypeU64TwinSync(arg: BigInt.parse("0")),
-          BigInt.parse("0"));
-    });
-    test('type=u64 arg=BigInt.parse("9223372036854775807")', () async {
-      expect(
-          await exampleOptionalPrimitiveTypeU64TwinSync(
-              arg: BigInt.parse("9223372036854775807")),
-          BigInt.parse("9223372036854775807"));
-    });
-    test('type=f32 arg=null', () async {
-      expect(await exampleOptionalPrimitiveTypeF32TwinSync(arg: null), null);
-    });
-    test('type=f32 arg=0', () async {
-      expect(await exampleOptionalPrimitiveTypeF32TwinSync(arg: 0), 0);
-    });
-    test('type=f32 arg=-42.5', () async {
-      expect(await exampleOptionalPrimitiveTypeF32TwinSync(arg: -42.5), -42.5);
-    });
-    test('type=f32 arg=123456', () async {
-      expect(
-          await exampleOptionalPrimitiveTypeF32TwinSync(arg: 123456), 123456);
-    });
-    test('type=f64 arg=null', () async {
-      expect(await exampleOptionalPrimitiveTypeF64TwinSync(arg: null), null);
-    });
-    test('type=f64 arg=0', () async {
-      expect(await exampleOptionalPrimitiveTypeF64TwinSync(arg: 0), 0);
-    });
-    test('type=f64 arg=-42.5', () async {
-      expect(await exampleOptionalPrimitiveTypeF64TwinSync(arg: -42.5), -42.5);
-    });
-    test('type=f64 arg=123456', () async {
-      expect(
-          await exampleOptionalPrimitiveTypeF64TwinSync(arg: 123456), 123456);
-    });
-    test('type=bool arg=null', () async {
-      expect(await exampleOptionalPrimitiveTypeBoolTwinSync(arg: null), null);
-    });
-    test('type=bool arg=false', () async {
-      expect(await exampleOptionalPrimitiveTypeBoolTwinSync(arg: false), false);
-    });
-    test('type=bool arg=true', () async {
-      expect(await exampleOptionalPrimitiveTypeBoolTwinSync(arg: true), true);
-    });
+    addTestsIdentityFunctionCall(
+        exampleOptionalPrimitiveTypeI8TwinSync, [null, 0, -128, 127]);
+    addTestsIdentityFunctionCall(
+        exampleOptionalPrimitiveTypeI16TwinSync, [null, 0, -32768, 32767]);
+    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeI32TwinSync,
+        [null, 0, -2147483648, 2147483647]);
+    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeI64TwinSync, [
+      null,
+      BigInt.parse("0"),
+      BigInt.parse("-9223372036854775808"),
+      BigInt.parse("9223372036854775807")
+    ]);
+    addTestsIdentityFunctionCall(
+        exampleOptionalPrimitiveTypeU8TwinSync, [null, 0, 255]);
+    addTestsIdentityFunctionCall(
+        exampleOptionalPrimitiveTypeU16TwinSync, [null, 0, 65535]);
+    addTestsIdentityFunctionCall(
+        exampleOptionalPrimitiveTypeU32TwinSync, [null, 0, 4294967295]);
+    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeU64TwinSync,
+        [null, BigInt.parse("0"), BigInt.parse("9223372036854775807")]);
+    addTestsIdentityFunctionCall(
+        exampleOptionalPrimitiveTypeF32TwinSync, [null, 0, -42.5, 123456]);
+    addTestsIdentityFunctionCall(
+        exampleOptionalPrimitiveTypeF64TwinSync, [null, 0, -42.5, 123456]);
+    addTestsIdentityFunctionCall(
+        exampleOptionalPrimitiveTypeBoolTwinSync, [null, false, true]);
   });
 }

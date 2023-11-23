@@ -13,22 +13,40 @@ impl Wire2Api<bool> for *mut bool {
         unsafe { *support::box_from_leak_ptr(self) }
     }
 }
-impl Wire2Api<EnumWithItemMixed> for *mut wire_enum_with_item_mixed {
-    fn wire2api(self) -> EnumWithItemMixed {
+impl Wire2Api<EnumWithItemMixedTwinNormal> for *mut wire_enum_with_item_mixed_twin_normal {
+    fn wire2api(self) -> EnumWithItemMixedTwinNormal {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<EnumWithItemMixed>::wire2api(*wrap).into()
+        Wire2Api::<EnumWithItemMixedTwinNormal>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<EnumWithItemStruct> for *mut wire_enum_with_item_struct {
-    fn wire2api(self) -> EnumWithItemStruct {
+impl Wire2Api<EnumWithItemMixedTwinSync> for *mut wire_enum_with_item_mixed_twin_sync {
+    fn wire2api(self) -> EnumWithItemMixedTwinSync {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<EnumWithItemStruct>::wire2api(*wrap).into()
+        Wire2Api::<EnumWithItemMixedTwinSync>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<EnumWithItemTuple> for *mut wire_enum_with_item_tuple {
-    fn wire2api(self) -> EnumWithItemTuple {
+impl Wire2Api<EnumWithItemStructTwinNormal> for *mut wire_enum_with_item_struct_twin_normal {
+    fn wire2api(self) -> EnumWithItemStructTwinNormal {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<EnumWithItemTuple>::wire2api(*wrap).into()
+        Wire2Api::<EnumWithItemStructTwinNormal>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<EnumWithItemStructTwinSync> for *mut wire_enum_with_item_struct_twin_sync {
+    fn wire2api(self) -> EnumWithItemStructTwinSync {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<EnumWithItemStructTwinSync>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<EnumWithItemTupleTwinNormal> for *mut wire_enum_with_item_tuple_twin_normal {
+    fn wire2api(self) -> EnumWithItemTupleTwinNormal {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<EnumWithItemTupleTwinNormal>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<EnumWithItemTupleTwinSync> for *mut wire_enum_with_item_tuple_twin_sync {
+    fn wire2api(self) -> EnumWithItemTupleTwinSync {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<EnumWithItemTupleTwinSync>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<f32> for *mut f32 {
@@ -73,34 +91,68 @@ impl Wire2Api<StructWithCommentsTwinSync> for *mut wire_struct_with_comments_twi
         Wire2Api::<StructWithCommentsTwinSync>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<StructWithOneField> for *mut wire_struct_with_one_field {
-    fn wire2api(self) -> StructWithOneField {
+impl Wire2Api<StructWithOneFieldTwinNormal> for *mut wire_struct_with_one_field_twin_normal {
+    fn wire2api(self) -> StructWithOneFieldTwinNormal {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<StructWithOneField>::wire2api(*wrap).into()
+        Wire2Api::<StructWithOneFieldTwinNormal>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<StructWithTwoField> for *mut wire_struct_with_two_field {
-    fn wire2api(self) -> StructWithTwoField {
+impl Wire2Api<StructWithOneFieldTwinSync> for *mut wire_struct_with_one_field_twin_sync {
+    fn wire2api(self) -> StructWithOneFieldTwinSync {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<StructWithTwoField>::wire2api(*wrap).into()
+        Wire2Api::<StructWithOneFieldTwinSync>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<StructWithZeroField> for *mut wire_struct_with_zero_field {
-    fn wire2api(self) -> StructWithZeroField {
+impl Wire2Api<StructWithTwoFieldTwinNormal> for *mut wire_struct_with_two_field_twin_normal {
+    fn wire2api(self) -> StructWithTwoFieldTwinNormal {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<StructWithZeroField>::wire2api(*wrap).into()
+        Wire2Api::<StructWithTwoFieldTwinNormal>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<TupleStructWithOneField> for *mut wire_tuple_struct_with_one_field {
-    fn wire2api(self) -> TupleStructWithOneField {
+impl Wire2Api<StructWithTwoFieldTwinSync> for *mut wire_struct_with_two_field_twin_sync {
+    fn wire2api(self) -> StructWithTwoFieldTwinSync {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<TupleStructWithOneField>::wire2api(*wrap).into()
+        Wire2Api::<StructWithTwoFieldTwinSync>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<TupleStructWithTwoField> for *mut wire_tuple_struct_with_two_field {
-    fn wire2api(self) -> TupleStructWithTwoField {
+impl Wire2Api<StructWithZeroFieldTwinNormal> for *mut wire_struct_with_zero_field_twin_normal {
+    fn wire2api(self) -> StructWithZeroFieldTwinNormal {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<TupleStructWithTwoField>::wire2api(*wrap).into()
+        Wire2Api::<StructWithZeroFieldTwinNormal>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<StructWithZeroFieldTwinSync> for *mut wire_struct_with_zero_field_twin_sync {
+    fn wire2api(self) -> StructWithZeroFieldTwinSync {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<StructWithZeroFieldTwinSync>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<TupleStructWithOneFieldTwinNormal>
+    for *mut wire_tuple_struct_with_one_field_twin_normal
+{
+    fn wire2api(self) -> TupleStructWithOneFieldTwinNormal {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<TupleStructWithOneFieldTwinNormal>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<TupleStructWithOneFieldTwinSync> for *mut wire_tuple_struct_with_one_field_twin_sync {
+    fn wire2api(self) -> TupleStructWithOneFieldTwinSync {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<TupleStructWithOneFieldTwinSync>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<TupleStructWithTwoFieldTwinNormal>
+    for *mut wire_tuple_struct_with_two_field_twin_normal
+{
+    fn wire2api(self) -> TupleStructWithTwoFieldTwinNormal {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<TupleStructWithTwoFieldTwinNormal>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<TupleStructWithTwoFieldTwinSync> for *mut wire_tuple_struct_with_two_field_twin_sync {
+    fn wire2api(self) -> TupleStructWithTwoFieldTwinSync {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<TupleStructWithTwoFieldTwinSync>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<u16> for *mut u16 {
@@ -123,19 +175,19 @@ impl Wire2Api<u8> for *mut u8 {
         unsafe { *support::box_from_leak_ptr(self) }
     }
 }
-impl Wire2Api<EnumWithItemMixed> for wire_enum_with_item_mixed {
-    fn wire2api(self) -> EnumWithItemMixed {
+impl Wire2Api<EnumWithItemMixedTwinNormal> for wire_enum_with_item_mixed_twin_normal {
+    fn wire2api(self) -> EnumWithItemMixedTwinNormal {
         match self.tag {
-            0 => EnumWithItemMixed::A,
+            0 => EnumWithItemMixedTwinNormal::A,
             1 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.B);
-                EnumWithItemMixed::B(ans.field0.wire2api())
+                EnumWithItemMixedTwinNormal::B(ans.field0.wire2api())
             },
             2 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.C);
-                EnumWithItemMixed::C {
+                EnumWithItemMixedTwinNormal::C {
                     c_field: ans.c_field.wire2api(),
                 }
             },
@@ -143,20 +195,40 @@ impl Wire2Api<EnumWithItemMixed> for wire_enum_with_item_mixed {
         }
     }
 }
-impl Wire2Api<EnumWithItemStruct> for wire_enum_with_item_struct {
-    fn wire2api(self) -> EnumWithItemStruct {
+impl Wire2Api<EnumWithItemMixedTwinSync> for wire_enum_with_item_mixed_twin_sync {
+    fn wire2api(self) -> EnumWithItemMixedTwinSync {
+        match self.tag {
+            0 => EnumWithItemMixedTwinSync::A,
+            1 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.B);
+                EnumWithItemMixedTwinSync::B(ans.field0.wire2api())
+            },
+            2 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.C);
+                EnumWithItemMixedTwinSync::C {
+                    c_field: ans.c_field.wire2api(),
+                }
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<EnumWithItemStructTwinNormal> for wire_enum_with_item_struct_twin_normal {
+    fn wire2api(self) -> EnumWithItemStructTwinNormal {
         match self.tag {
             0 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.A);
-                EnumWithItemStruct::A {
+                EnumWithItemStructTwinNormal::A {
                     a_field: ans.a_field.wire2api(),
                 }
             },
             1 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.B);
-                EnumWithItemStruct::B {
+                EnumWithItemStructTwinNormal::B {
                     b_field: ans.b_field.wire2api(),
                 }
             },
@@ -164,18 +236,56 @@ impl Wire2Api<EnumWithItemStruct> for wire_enum_with_item_struct {
         }
     }
 }
-impl Wire2Api<EnumWithItemTuple> for wire_enum_with_item_tuple {
-    fn wire2api(self) -> EnumWithItemTuple {
+impl Wire2Api<EnumWithItemStructTwinSync> for wire_enum_with_item_struct_twin_sync {
+    fn wire2api(self) -> EnumWithItemStructTwinSync {
         match self.tag {
             0 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.A);
-                EnumWithItemTuple::A(ans.field0.wire2api())
+                EnumWithItemStructTwinSync::A {
+                    a_field: ans.a_field.wire2api(),
+                }
             },
             1 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.B);
-                EnumWithItemTuple::B(ans.field0.wire2api())
+                EnumWithItemStructTwinSync::B {
+                    b_field: ans.b_field.wire2api(),
+                }
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<EnumWithItemTupleTwinNormal> for wire_enum_with_item_tuple_twin_normal {
+    fn wire2api(self) -> EnumWithItemTupleTwinNormal {
+        match self.tag {
+            0 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.A);
+                EnumWithItemTupleTwinNormal::A(ans.field0.wire2api())
+            },
+            1 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.B);
+                EnumWithItemTupleTwinNormal::B(ans.field0.wire2api())
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<EnumWithItemTupleTwinSync> for wire_enum_with_item_tuple_twin_sync {
+    fn wire2api(self) -> EnumWithItemTupleTwinSync {
+        match self.tag {
+            0 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.A);
+                EnumWithItemTupleTwinSync::A(ans.field0.wire2api())
+            },
+            1 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.B);
+                EnumWithItemTupleTwinSync::B(ans.field0.wire2api())
             },
             _ => unreachable!(),
         }
@@ -284,34 +394,64 @@ impl Wire2Api<StructWithCommentsTwinSync> for wire_struct_with_comments_twin_syn
         }
     }
 }
-impl Wire2Api<StructWithOneField> for wire_struct_with_one_field {
-    fn wire2api(self) -> StructWithOneField {
-        StructWithOneField {
+impl Wire2Api<StructWithOneFieldTwinNormal> for wire_struct_with_one_field_twin_normal {
+    fn wire2api(self) -> StructWithOneFieldTwinNormal {
+        StructWithOneFieldTwinNormal {
             a: self.a.wire2api(),
         }
     }
 }
-impl Wire2Api<StructWithTwoField> for wire_struct_with_two_field {
-    fn wire2api(self) -> StructWithTwoField {
-        StructWithTwoField {
+impl Wire2Api<StructWithOneFieldTwinSync> for wire_struct_with_one_field_twin_sync {
+    fn wire2api(self) -> StructWithOneFieldTwinSync {
+        StructWithOneFieldTwinSync {
+            a: self.a.wire2api(),
+        }
+    }
+}
+impl Wire2Api<StructWithTwoFieldTwinNormal> for wire_struct_with_two_field_twin_normal {
+    fn wire2api(self) -> StructWithTwoFieldTwinNormal {
+        StructWithTwoFieldTwinNormal {
             a: self.a.wire2api(),
             b: self.b.wire2api(),
         }
     }
 }
-impl Wire2Api<StructWithZeroField> for wire_struct_with_zero_field {
-    fn wire2api(self) -> StructWithZeroField {
-        StructWithZeroField {}
+impl Wire2Api<StructWithTwoFieldTwinSync> for wire_struct_with_two_field_twin_sync {
+    fn wire2api(self) -> StructWithTwoFieldTwinSync {
+        StructWithTwoFieldTwinSync {
+            a: self.a.wire2api(),
+            b: self.b.wire2api(),
+        }
     }
 }
-impl Wire2Api<TupleStructWithOneField> for wire_tuple_struct_with_one_field {
-    fn wire2api(self) -> TupleStructWithOneField {
-        TupleStructWithOneField(self.field0.wire2api())
+impl Wire2Api<StructWithZeroFieldTwinNormal> for wire_struct_with_zero_field_twin_normal {
+    fn wire2api(self) -> StructWithZeroFieldTwinNormal {
+        StructWithZeroFieldTwinNormal {}
     }
 }
-impl Wire2Api<TupleStructWithTwoField> for wire_tuple_struct_with_two_field {
-    fn wire2api(self) -> TupleStructWithTwoField {
-        TupleStructWithTwoField(self.field0.wire2api(), self.field1.wire2api())
+impl Wire2Api<StructWithZeroFieldTwinSync> for wire_struct_with_zero_field_twin_sync {
+    fn wire2api(self) -> StructWithZeroFieldTwinSync {
+        StructWithZeroFieldTwinSync {}
+    }
+}
+impl Wire2Api<TupleStructWithOneFieldTwinNormal> for wire_tuple_struct_with_one_field_twin_normal {
+    fn wire2api(self) -> TupleStructWithOneFieldTwinNormal {
+        TupleStructWithOneFieldTwinNormal(self.field0.wire2api())
+    }
+}
+impl Wire2Api<TupleStructWithOneFieldTwinSync> for wire_tuple_struct_with_one_field_twin_sync {
+    fn wire2api(self) -> TupleStructWithOneFieldTwinSync {
+        TupleStructWithOneFieldTwinSync(self.field0.wire2api())
+    }
+}
+impl Wire2Api<TupleStructWithTwoFieldTwinNormal> for wire_tuple_struct_with_two_field_twin_normal {
+    fn wire2api(self) -> TupleStructWithTwoFieldTwinNormal {
+        TupleStructWithTwoFieldTwinNormal(self.field0.wire2api(), self.field1.wire2api())
+    }
+}
+impl Wire2Api<TupleStructWithTwoFieldTwinSync> for wire_tuple_struct_with_two_field_twin_sync {
+    fn wire2api(self) -> TupleStructWithTwoFieldTwinSync {
+        TupleStructWithTwoFieldTwinSync(self.field0.wire2api(), self.field1.wire2api())
     }
 }
 
@@ -319,79 +459,156 @@ impl Wire2Api<TupleStructWithTwoField> for wire_tuple_struct_with_two_field {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_enum_with_item_mixed {
+pub struct wire_enum_with_item_mixed_twin_normal {
     tag: i32,
-    kind: *mut EnumWithItemMixedKind,
+    kind: *mut EnumWithItemMixedTwinNormalKind,
 }
 
 #[repr(C)]
-pub union EnumWithItemMixedKind {
-    A: *mut wire_EnumWithItemMixed_A,
-    B: *mut wire_EnumWithItemMixed_B,
-    C: *mut wire_EnumWithItemMixed_C,
+pub union EnumWithItemMixedTwinNormalKind {
+    A: *mut wire_EnumWithItemMixedTwinNormal_A,
+    B: *mut wire_EnumWithItemMixedTwinNormal_B,
+    C: *mut wire_EnumWithItemMixedTwinNormal_C,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_EnumWithItemMixed_A {}
+pub struct wire_EnumWithItemMixedTwinNormal_A {}
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_EnumWithItemMixed_B {
+pub struct wire_EnumWithItemMixedTwinNormal_B {
     field0: *mut wire_list_prim_u_8,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_EnumWithItemMixed_C {
+pub struct wire_EnumWithItemMixedTwinNormal_C {
     c_field: *mut wire_list_prim_u_8,
 }
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_enum_with_item_struct {
+pub struct wire_enum_with_item_mixed_twin_sync {
     tag: i32,
-    kind: *mut EnumWithItemStructKind,
+    kind: *mut EnumWithItemMixedTwinSyncKind,
 }
 
 #[repr(C)]
-pub union EnumWithItemStructKind {
-    A: *mut wire_EnumWithItemStruct_A,
-    B: *mut wire_EnumWithItemStruct_B,
+pub union EnumWithItemMixedTwinSyncKind {
+    A: *mut wire_EnumWithItemMixedTwinSync_A,
+    B: *mut wire_EnumWithItemMixedTwinSync_B,
+    C: *mut wire_EnumWithItemMixedTwinSync_C,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_EnumWithItemStruct_A {
+pub struct wire_EnumWithItemMixedTwinSync_A {}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_EnumWithItemMixedTwinSync_B {
+    field0: *mut wire_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_EnumWithItemMixedTwinSync_C {
+    c_field: *mut wire_list_prim_u_8,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_enum_with_item_struct_twin_normal {
+    tag: i32,
+    kind: *mut EnumWithItemStructTwinNormalKind,
+}
+
+#[repr(C)]
+pub union EnumWithItemStructTwinNormalKind {
+    A: *mut wire_EnumWithItemStructTwinNormal_A,
+    B: *mut wire_EnumWithItemStructTwinNormal_B,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_EnumWithItemStructTwinNormal_A {
     a_field: *mut wire_list_prim_u_8,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_EnumWithItemStruct_B {
+pub struct wire_EnumWithItemStructTwinNormal_B {
     b_field: *mut wire_list_prim_i_32,
 }
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_enum_with_item_tuple {
+pub struct wire_enum_with_item_struct_twin_sync {
     tag: i32,
-    kind: *mut EnumWithItemTupleKind,
+    kind: *mut EnumWithItemStructTwinSyncKind,
 }
 
 #[repr(C)]
-pub union EnumWithItemTupleKind {
-    A: *mut wire_EnumWithItemTuple_A,
-    B: *mut wire_EnumWithItemTuple_B,
+pub union EnumWithItemStructTwinSyncKind {
+    A: *mut wire_EnumWithItemStructTwinSync_A,
+    B: *mut wire_EnumWithItemStructTwinSync_B,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_EnumWithItemTuple_A {
+pub struct wire_EnumWithItemStructTwinSync_A {
+    a_field: *mut wire_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_EnumWithItemStructTwinSync_B {
+    b_field: *mut wire_list_prim_i_32,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_enum_with_item_tuple_twin_normal {
+    tag: i32,
+    kind: *mut EnumWithItemTupleTwinNormalKind,
+}
+
+#[repr(C)]
+pub union EnumWithItemTupleTwinNormalKind {
+    A: *mut wire_EnumWithItemTupleTwinNormal_A,
+    B: *mut wire_EnumWithItemTupleTwinNormal_B,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_EnumWithItemTupleTwinNormal_A {
     field0: *mut wire_list_prim_u_8,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_EnumWithItemTuple_B {
+pub struct wire_EnumWithItemTupleTwinNormal_B {
+    field0: *mut wire_list_prim_i_32,
+}
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_enum_with_item_tuple_twin_sync {
+    tag: i32,
+    kind: *mut EnumWithItemTupleTwinSyncKind,
+}
+
+#[repr(C)]
+pub union EnumWithItemTupleTwinSyncKind {
+    A: *mut wire_EnumWithItemTupleTwinSync_A,
+    B: *mut wire_EnumWithItemTupleTwinSync_B,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_EnumWithItemTupleTwinSync_A {
+    field0: *mut wire_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_EnumWithItemTupleTwinSync_B {
     field0: *mut wire_list_prim_i_32,
 }
 #[repr(C)]
@@ -485,30 +702,60 @@ pub struct wire_struct_with_comments_twin_sync {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_struct_with_one_field {
+pub struct wire_struct_with_one_field_twin_normal {
     a: i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_struct_with_two_field {
+pub struct wire_struct_with_one_field_twin_sync {
+    a: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_struct_with_two_field_twin_normal {
     a: i32,
     b: i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_struct_with_zero_field {}
+pub struct wire_struct_with_two_field_twin_sync {
+    a: i32,
+    b: i32,
+}
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_tuple_struct_with_one_field {
+pub struct wire_struct_with_zero_field_twin_normal {}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_struct_with_zero_field_twin_sync {}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_tuple_struct_with_one_field_twin_normal {
     field0: i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_tuple_struct_with_two_field {
+pub struct wire_tuple_struct_with_one_field_twin_sync {
+    field0: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_tuple_struct_with_two_field_twin_normal {
+    field0: i32,
+    field1: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_tuple_struct_with_two_field_twin_sync {
     field0: i32,
     field1: i32,
 }
@@ -524,7 +771,7 @@ impl<T> NewWithNullPtr for *mut T {
         std::ptr::null_mut()
     }
 }
-impl NewWithNullPtr for wire_enum_with_item_mixed {
+impl NewWithNullPtr for wire_enum_with_item_mixed_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
             tag: -1,
@@ -532,12 +779,12 @@ impl NewWithNullPtr for wire_enum_with_item_mixed {
         }
     }
 }
-impl Default for wire_enum_with_item_mixed {
+impl Default for wire_enum_with_item_mixed_twin_normal {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
-impl NewWithNullPtr for wire_enum_with_item_struct {
+impl NewWithNullPtr for wire_enum_with_item_mixed_twin_sync {
     fn new_with_null_ptr() -> Self {
         Self {
             tag: -1,
@@ -545,12 +792,12 @@ impl NewWithNullPtr for wire_enum_with_item_struct {
         }
     }
 }
-impl Default for wire_enum_with_item_struct {
+impl Default for wire_enum_with_item_mixed_twin_sync {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
-impl NewWithNullPtr for wire_enum_with_item_tuple {
+impl NewWithNullPtr for wire_enum_with_item_struct_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
             tag: -1,
@@ -558,7 +805,46 @@ impl NewWithNullPtr for wire_enum_with_item_tuple {
         }
     }
 }
-impl Default for wire_enum_with_item_tuple {
+impl Default for wire_enum_with_item_struct_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_enum_with_item_struct_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_enum_with_item_struct_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_enum_with_item_tuple_twin_normal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_enum_with_item_tuple_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_enum_with_item_tuple_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_enum_with_item_tuple_twin_sync {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -587,19 +873,31 @@ impl Default for wire_struct_with_comments_twin_sync {
         Self::new_with_null_ptr()
     }
 }
-impl NewWithNullPtr for wire_struct_with_one_field {
+impl NewWithNullPtr for wire_struct_with_one_field_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
             a: Default::default(),
         }
     }
 }
-impl Default for wire_struct_with_one_field {
+impl Default for wire_struct_with_one_field_twin_normal {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
-impl NewWithNullPtr for wire_struct_with_two_field {
+impl NewWithNullPtr for wire_struct_with_one_field_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            a: Default::default(),
+        }
+    }
+}
+impl Default for wire_struct_with_one_field_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_struct_with_two_field_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
             a: Default::default(),
@@ -607,34 +905,69 @@ impl NewWithNullPtr for wire_struct_with_two_field {
         }
     }
 }
-impl Default for wire_struct_with_two_field {
+impl Default for wire_struct_with_two_field_twin_normal {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
-impl NewWithNullPtr for wire_struct_with_zero_field {
+impl NewWithNullPtr for wire_struct_with_two_field_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            a: Default::default(),
+            b: Default::default(),
+        }
+    }
+}
+impl Default for wire_struct_with_two_field_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_struct_with_zero_field_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {}
     }
 }
-impl Default for wire_struct_with_zero_field {
+impl Default for wire_struct_with_zero_field_twin_normal {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
-impl NewWithNullPtr for wire_tuple_struct_with_one_field {
+impl NewWithNullPtr for wire_struct_with_zero_field_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {}
+    }
+}
+impl Default for wire_struct_with_zero_field_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_tuple_struct_with_one_field_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
             field0: Default::default(),
         }
     }
 }
-impl Default for wire_tuple_struct_with_one_field {
+impl Default for wire_tuple_struct_with_one_field_twin_normal {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
-impl NewWithNullPtr for wire_tuple_struct_with_two_field {
+impl NewWithNullPtr for wire_tuple_struct_with_one_field_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            field0: Default::default(),
+        }
+    }
+}
+impl Default for wire_tuple_struct_with_one_field_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_tuple_struct_with_two_field_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
             field0: Default::default(),
@@ -642,7 +975,20 @@ impl NewWithNullPtr for wire_tuple_struct_with_two_field {
         }
     }
 }
-impl Default for wire_tuple_struct_with_two_field {
+impl Default for wire_tuple_struct_with_two_field_twin_normal {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_tuple_struct_with_two_field_twin_sync {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            field0: Default::default(),
+            field1: Default::default(),
+        }
+    }
+}
+impl Default for wire_tuple_struct_with_two_field_twin_sync {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -684,7 +1030,7 @@ pub extern "C" fn wire_func_enum_simple_twin_normal(port_: i64, arg: i32) {
 #[no_mangle]
 pub extern "C" fn wire_func_enum_with_item_mixed_twin_normal(
     port_: i64,
-    arg: *mut wire_enum_with_item_mixed,
+    arg: *mut wire_enum_with_item_mixed_twin_normal,
 ) {
     wire_func_enum_with_item_mixed_twin_normal_impl(port_, arg)
 }
@@ -692,7 +1038,7 @@ pub extern "C" fn wire_func_enum_with_item_mixed_twin_normal(
 #[no_mangle]
 pub extern "C" fn wire_func_enum_with_item_struct_twin_normal(
     port_: i64,
-    arg: *mut wire_enum_with_item_struct,
+    arg: *mut wire_enum_with_item_struct_twin_normal,
 ) {
     wire_func_enum_with_item_struct_twin_normal_impl(port_, arg)
 }
@@ -700,7 +1046,7 @@ pub extern "C" fn wire_func_enum_with_item_struct_twin_normal(
 #[no_mangle]
 pub extern "C" fn wire_func_enum_with_item_tuple_twin_normal(
     port_: i64,
-    arg: *mut wire_enum_with_item_tuple,
+    arg: *mut wire_enum_with_item_tuple_twin_normal,
 ) {
     wire_func_enum_with_item_tuple_twin_normal_impl(port_, arg)
 }
@@ -734,6 +1080,32 @@ pub extern "C" fn wire_function_with_comments_triple_slash_multi_line_twin_sync(
 pub extern "C" fn wire_function_with_comments_triple_slash_single_line_twin_sync(
 ) -> support::WireSyncReturn {
     wire_function_with_comments_triple_slash_single_line_twin_sync_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn wire_func_enum_simple_twin_sync(arg: i32) -> support::WireSyncReturn {
+    wire_func_enum_simple_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_func_enum_with_item_mixed_twin_sync(
+    arg: *mut wire_enum_with_item_mixed_twin_sync,
+) -> support::WireSyncReturn {
+    wire_func_enum_with_item_mixed_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_func_enum_with_item_struct_twin_sync(
+    arg: *mut wire_enum_with_item_struct_twin_sync,
+) -> support::WireSyncReturn {
+    wire_func_enum_with_item_struct_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_func_enum_with_item_tuple_twin_sync(
+    arg: *mut wire_enum_with_item_tuple_twin_sync,
+) -> support::WireSyncReturn {
+    wire_func_enum_with_item_tuple_twin_sync_impl(arg)
 }
 
 #[no_mangle]
@@ -1152,6 +1524,41 @@ pub extern "C" fn wire_simple_adder_twin_sync(a: i32, b: i32) -> support::WireSy
 }
 
 #[no_mangle]
+pub extern "C" fn wire_func_struct_with_one_field_twin_sync(
+    arg: *mut wire_struct_with_one_field_twin_sync,
+) -> support::WireSyncReturn {
+    wire_func_struct_with_one_field_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_func_struct_with_two_field_twin_sync(
+    arg: *mut wire_struct_with_two_field_twin_sync,
+) -> support::WireSyncReturn {
+    wire_func_struct_with_two_field_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_func_struct_with_zero_field_twin_sync(
+    arg: *mut wire_struct_with_zero_field_twin_sync,
+) -> support::WireSyncReturn {
+    wire_func_struct_with_zero_field_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_func_tuple_struct_with_one_field_twin_sync(
+    arg: *mut wire_tuple_struct_with_one_field_twin_sync,
+) -> support::WireSyncReturn {
+    wire_func_tuple_struct_with_one_field_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_func_tuple_struct_with_two_field_twin_sync(
+    arg: *mut wire_tuple_struct_with_two_field_twin_sync,
+) -> support::WireSyncReturn {
+    wire_func_tuple_struct_with_two_field_twin_sync_impl(arg)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_simple_adder_twin_normal(port_: i64, a: i32, b: i32) {
     wire_simple_adder_twin_normal_impl(port_, a, b)
 }
@@ -1159,7 +1566,7 @@ pub extern "C" fn wire_simple_adder_twin_normal(port_: i64, a: i32, b: i32) {
 #[no_mangle]
 pub extern "C" fn wire_func_struct_with_one_field_twin_normal(
     port_: i64,
-    arg: *mut wire_struct_with_one_field,
+    arg: *mut wire_struct_with_one_field_twin_normal,
 ) {
     wire_func_struct_with_one_field_twin_normal_impl(port_, arg)
 }
@@ -1167,7 +1574,7 @@ pub extern "C" fn wire_func_struct_with_one_field_twin_normal(
 #[no_mangle]
 pub extern "C" fn wire_func_struct_with_two_field_twin_normal(
     port_: i64,
-    arg: *mut wire_struct_with_two_field,
+    arg: *mut wire_struct_with_two_field_twin_normal,
 ) {
     wire_func_struct_with_two_field_twin_normal_impl(port_, arg)
 }
@@ -1175,7 +1582,7 @@ pub extern "C" fn wire_func_struct_with_two_field_twin_normal(
 #[no_mangle]
 pub extern "C" fn wire_func_struct_with_zero_field_twin_normal(
     port_: i64,
-    arg: *mut wire_struct_with_zero_field,
+    arg: *mut wire_struct_with_zero_field_twin_normal,
 ) {
     wire_func_struct_with_zero_field_twin_normal_impl(port_, arg)
 }
@@ -1183,7 +1590,7 @@ pub extern "C" fn wire_func_struct_with_zero_field_twin_normal(
 #[no_mangle]
 pub extern "C" fn wire_func_tuple_struct_with_one_field_twin_normal(
     port_: i64,
-    arg: *mut wire_tuple_struct_with_one_field,
+    arg: *mut wire_tuple_struct_with_one_field_twin_normal,
 ) {
     wire_func_tuple_struct_with_one_field_twin_normal_impl(port_, arg)
 }
@@ -1191,7 +1598,7 @@ pub extern "C" fn wire_func_tuple_struct_with_one_field_twin_normal(
 #[no_mangle]
 pub extern "C" fn wire_func_tuple_struct_with_two_field_twin_normal(
     port_: i64,
-    arg: *mut wire_tuple_struct_with_two_field,
+    arg: *mut wire_tuple_struct_with_two_field_twin_normal,
 ) {
     wire_func_tuple_struct_with_two_field_twin_normal_impl(port_, arg)
 }
@@ -1202,18 +1609,39 @@ pub extern "C" fn new_box_autoadd_bool(value: bool) -> *mut bool {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_enum_with_item_mixed() -> *mut wire_enum_with_item_mixed {
-    support::new_leak_box_ptr(wire_enum_with_item_mixed::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_enum_with_item_mixed_twin_normal(
+) -> *mut wire_enum_with_item_mixed_twin_normal {
+    support::new_leak_box_ptr(wire_enum_with_item_mixed_twin_normal::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_enum_with_item_struct() -> *mut wire_enum_with_item_struct {
-    support::new_leak_box_ptr(wire_enum_with_item_struct::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_enum_with_item_mixed_twin_sync(
+) -> *mut wire_enum_with_item_mixed_twin_sync {
+    support::new_leak_box_ptr(wire_enum_with_item_mixed_twin_sync::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_enum_with_item_tuple() -> *mut wire_enum_with_item_tuple {
-    support::new_leak_box_ptr(wire_enum_with_item_tuple::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_enum_with_item_struct_twin_normal(
+) -> *mut wire_enum_with_item_struct_twin_normal {
+    support::new_leak_box_ptr(wire_enum_with_item_struct_twin_normal::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_enum_with_item_struct_twin_sync(
+) -> *mut wire_enum_with_item_struct_twin_sync {
+    support::new_leak_box_ptr(wire_enum_with_item_struct_twin_sync::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_enum_with_item_tuple_twin_normal(
+) -> *mut wire_enum_with_item_tuple_twin_normal {
+    support::new_leak_box_ptr(wire_enum_with_item_tuple_twin_normal::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_enum_with_item_tuple_twin_sync(
+) -> *mut wire_enum_with_item_tuple_twin_sync {
+    support::new_leak_box_ptr(wire_enum_with_item_tuple_twin_sync::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1259,30 +1687,63 @@ pub extern "C" fn new_box_autoadd_struct_with_comments_twin_sync(
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_struct_with_one_field() -> *mut wire_struct_with_one_field {
-    support::new_leak_box_ptr(wire_struct_with_one_field::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_struct_with_one_field_twin_normal(
+) -> *mut wire_struct_with_one_field_twin_normal {
+    support::new_leak_box_ptr(wire_struct_with_one_field_twin_normal::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_struct_with_two_field() -> *mut wire_struct_with_two_field {
-    support::new_leak_box_ptr(wire_struct_with_two_field::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_struct_with_one_field_twin_sync(
+) -> *mut wire_struct_with_one_field_twin_sync {
+    support::new_leak_box_ptr(wire_struct_with_one_field_twin_sync::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_struct_with_zero_field() -> *mut wire_struct_with_zero_field {
-    support::new_leak_box_ptr(wire_struct_with_zero_field::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_struct_with_two_field_twin_normal(
+) -> *mut wire_struct_with_two_field_twin_normal {
+    support::new_leak_box_ptr(wire_struct_with_two_field_twin_normal::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_tuple_struct_with_one_field(
-) -> *mut wire_tuple_struct_with_one_field {
-    support::new_leak_box_ptr(wire_tuple_struct_with_one_field::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_struct_with_two_field_twin_sync(
+) -> *mut wire_struct_with_two_field_twin_sync {
+    support::new_leak_box_ptr(wire_struct_with_two_field_twin_sync::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_tuple_struct_with_two_field(
-) -> *mut wire_tuple_struct_with_two_field {
-    support::new_leak_box_ptr(wire_tuple_struct_with_two_field::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_struct_with_zero_field_twin_normal(
+) -> *mut wire_struct_with_zero_field_twin_normal {
+    support::new_leak_box_ptr(wire_struct_with_zero_field_twin_normal::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_struct_with_zero_field_twin_sync(
+) -> *mut wire_struct_with_zero_field_twin_sync {
+    support::new_leak_box_ptr(wire_struct_with_zero_field_twin_sync::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_tuple_struct_with_one_field_twin_normal(
+) -> *mut wire_tuple_struct_with_one_field_twin_normal {
+    support::new_leak_box_ptr(wire_tuple_struct_with_one_field_twin_normal::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_tuple_struct_with_one_field_twin_sync(
+) -> *mut wire_tuple_struct_with_one_field_twin_sync {
+    support::new_leak_box_ptr(wire_tuple_struct_with_one_field_twin_sync::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_tuple_struct_with_two_field_twin_normal(
+) -> *mut wire_tuple_struct_with_two_field_twin_normal {
+    support::new_leak_box_ptr(wire_tuple_struct_with_two_field_twin_normal::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_tuple_struct_with_two_field_twin_sync(
+) -> *mut wire_tuple_struct_with_two_field_twin_sync {
+    support::new_leak_box_ptr(wire_tuple_struct_with_two_field_twin_sync::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1405,54 +1866,110 @@ pub extern "C" fn new_list_prim_u_8(len: i32) -> *mut wire_list_prim_u_8 {
 }
 
 #[no_mangle]
-pub extern "C" fn inflate_EnumWithItemMixed_B() -> *mut EnumWithItemMixedKind {
-    support::new_leak_box_ptr(EnumWithItemMixedKind {
-        B: support::new_leak_box_ptr(wire_EnumWithItemMixed_B {
+pub extern "C" fn inflate_EnumWithItemMixedTwinNormal_B() -> *mut EnumWithItemMixedTwinNormalKind {
+    support::new_leak_box_ptr(EnumWithItemMixedTwinNormalKind {
+        B: support::new_leak_box_ptr(wire_EnumWithItemMixedTwinNormal_B {
             field0: core::ptr::null_mut(),
         }),
     })
 }
 
 #[no_mangle]
-pub extern "C" fn inflate_EnumWithItemMixed_C() -> *mut EnumWithItemMixedKind {
-    support::new_leak_box_ptr(EnumWithItemMixedKind {
-        C: support::new_leak_box_ptr(wire_EnumWithItemMixed_C {
+pub extern "C" fn inflate_EnumWithItemMixedTwinNormal_C() -> *mut EnumWithItemMixedTwinNormalKind {
+    support::new_leak_box_ptr(EnumWithItemMixedTwinNormalKind {
+        C: support::new_leak_box_ptr(wire_EnumWithItemMixedTwinNormal_C {
             c_field: core::ptr::null_mut(),
         }),
     })
 }
 
 #[no_mangle]
-pub extern "C" fn inflate_EnumWithItemStruct_A() -> *mut EnumWithItemStructKind {
-    support::new_leak_box_ptr(EnumWithItemStructKind {
-        A: support::new_leak_box_ptr(wire_EnumWithItemStruct_A {
-            a_field: core::ptr::null_mut(),
-        }),
-    })
-}
-
-#[no_mangle]
-pub extern "C" fn inflate_EnumWithItemStruct_B() -> *mut EnumWithItemStructKind {
-    support::new_leak_box_ptr(EnumWithItemStructKind {
-        B: support::new_leak_box_ptr(wire_EnumWithItemStruct_B {
-            b_field: core::ptr::null_mut(),
-        }),
-    })
-}
-
-#[no_mangle]
-pub extern "C" fn inflate_EnumWithItemTuple_A() -> *mut EnumWithItemTupleKind {
-    support::new_leak_box_ptr(EnumWithItemTupleKind {
-        A: support::new_leak_box_ptr(wire_EnumWithItemTuple_A {
+pub extern "C" fn inflate_EnumWithItemMixedTwinSync_B() -> *mut EnumWithItemMixedTwinSyncKind {
+    support::new_leak_box_ptr(EnumWithItemMixedTwinSyncKind {
+        B: support::new_leak_box_ptr(wire_EnumWithItemMixedTwinSync_B {
             field0: core::ptr::null_mut(),
         }),
     })
 }
 
 #[no_mangle]
-pub extern "C" fn inflate_EnumWithItemTuple_B() -> *mut EnumWithItemTupleKind {
-    support::new_leak_box_ptr(EnumWithItemTupleKind {
-        B: support::new_leak_box_ptr(wire_EnumWithItemTuple_B {
+pub extern "C" fn inflate_EnumWithItemMixedTwinSync_C() -> *mut EnumWithItemMixedTwinSyncKind {
+    support::new_leak_box_ptr(EnumWithItemMixedTwinSyncKind {
+        C: support::new_leak_box_ptr(wire_EnumWithItemMixedTwinSync_C {
+            c_field: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_EnumWithItemStructTwinNormal_A() -> *mut EnumWithItemStructTwinNormalKind
+{
+    support::new_leak_box_ptr(EnumWithItemStructTwinNormalKind {
+        A: support::new_leak_box_ptr(wire_EnumWithItemStructTwinNormal_A {
+            a_field: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_EnumWithItemStructTwinNormal_B() -> *mut EnumWithItemStructTwinNormalKind
+{
+    support::new_leak_box_ptr(EnumWithItemStructTwinNormalKind {
+        B: support::new_leak_box_ptr(wire_EnumWithItemStructTwinNormal_B {
+            b_field: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_EnumWithItemStructTwinSync_A() -> *mut EnumWithItemStructTwinSyncKind {
+    support::new_leak_box_ptr(EnumWithItemStructTwinSyncKind {
+        A: support::new_leak_box_ptr(wire_EnumWithItemStructTwinSync_A {
+            a_field: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_EnumWithItemStructTwinSync_B() -> *mut EnumWithItemStructTwinSyncKind {
+    support::new_leak_box_ptr(EnumWithItemStructTwinSyncKind {
+        B: support::new_leak_box_ptr(wire_EnumWithItemStructTwinSync_B {
+            b_field: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_EnumWithItemTupleTwinNormal_A() -> *mut EnumWithItemTupleTwinNormalKind {
+    support::new_leak_box_ptr(EnumWithItemTupleTwinNormalKind {
+        A: support::new_leak_box_ptr(wire_EnumWithItemTupleTwinNormal_A {
+            field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_EnumWithItemTupleTwinNormal_B() -> *mut EnumWithItemTupleTwinNormalKind {
+    support::new_leak_box_ptr(EnumWithItemTupleTwinNormalKind {
+        B: support::new_leak_box_ptr(wire_EnumWithItemTupleTwinNormal_B {
+            field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_EnumWithItemTupleTwinSync_A() -> *mut EnumWithItemTupleTwinSyncKind {
+    support::new_leak_box_ptr(EnumWithItemTupleTwinSyncKind {
+        A: support::new_leak_box_ptr(wire_EnumWithItemTupleTwinSync_A {
+            field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_EnumWithItemTupleTwinSync_B() -> *mut EnumWithItemTupleTwinSyncKind {
+    support::new_leak_box_ptr(EnumWithItemTupleTwinSyncKind {
+        B: support::new_leak_box_ptr(wire_EnumWithItemTupleTwinSync_B {
             field0: core::ptr::null_mut(),
         }),
     })

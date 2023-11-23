@@ -3,64 +3,64 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<StructWithOneField> funcStructWithOneFieldTwinNormal(
-        {required StructWithOneField arg, dynamic hint}) =>
+Future<StructWithOneFieldTwinNormal> funcStructWithOneFieldTwinNormal(
+        {required StructWithOneFieldTwinNormal arg, dynamic hint}) =>
     RustLib.instance.api.funcStructWithOneFieldTwinNormal(arg: arg, hint: hint);
 
-Future<StructWithTwoField> funcStructWithTwoFieldTwinNormal(
-        {required StructWithTwoField arg, dynamic hint}) =>
+Future<StructWithTwoFieldTwinNormal> funcStructWithTwoFieldTwinNormal(
+        {required StructWithTwoFieldTwinNormal arg, dynamic hint}) =>
     RustLib.instance.api.funcStructWithTwoFieldTwinNormal(arg: arg, hint: hint);
 
-Future<StructWithZeroField> funcStructWithZeroFieldTwinNormal(
-        {required StructWithZeroField arg, dynamic hint}) =>
+Future<StructWithZeroFieldTwinNormal> funcStructWithZeroFieldTwinNormal(
+        {required StructWithZeroFieldTwinNormal arg, dynamic hint}) =>
     RustLib.instance.api
         .funcStructWithZeroFieldTwinNormal(arg: arg, hint: hint);
 
-Future<TupleStructWithOneField> funcTupleStructWithOneFieldTwinNormal(
-        {required TupleStructWithOneField arg, dynamic hint}) =>
+Future<TupleStructWithOneFieldTwinNormal> funcTupleStructWithOneFieldTwinNormal(
+        {required TupleStructWithOneFieldTwinNormal arg, dynamic hint}) =>
     RustLib.instance.api
         .funcTupleStructWithOneFieldTwinNormal(arg: arg, hint: hint);
 
-Future<TupleStructWithTwoField> funcTupleStructWithTwoFieldTwinNormal(
-        {required TupleStructWithTwoField arg, dynamic hint}) =>
+Future<TupleStructWithTwoFieldTwinNormal> funcTupleStructWithTwoFieldTwinNormal(
+        {required TupleStructWithTwoFieldTwinNormal arg, dynamic hint}) =>
     RustLib.instance.api
         .funcTupleStructWithTwoFieldTwinNormal(arg: arg, hint: hint);
 
-class StructWithOneField {
+class StructWithOneFieldTwinNormal {
   final int a;
 
-  const StructWithOneField({
+  const StructWithOneFieldTwinNormal({
     required this.a,
   });
 }
 
-class StructWithTwoField {
+class StructWithTwoFieldTwinNormal {
   final int a;
   final int b;
 
-  const StructWithTwoField({
+  const StructWithTwoFieldTwinNormal({
     required this.a,
     required this.b,
   });
 }
 
-class StructWithZeroField {
-  const StructWithZeroField();
+class StructWithZeroFieldTwinNormal {
+  const StructWithZeroFieldTwinNormal();
 }
 
-class TupleStructWithOneField {
+class TupleStructWithOneFieldTwinNormal {
   final int field0;
 
-  const TupleStructWithOneField({
+  const TupleStructWithOneFieldTwinNormal({
     required this.field0,
   });
 }
 
-class TupleStructWithTwoField {
+class TupleStructWithTwoFieldTwinNormal {
   final int field0;
   final int field1;
 
-  const TupleStructWithTwoField({
+  const TupleStructWithTwoFieldTwinNormal({
     required this.field0,
     required this.field1,
   });

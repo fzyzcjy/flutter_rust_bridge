@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'enumeration.dart';
+part of 'enumeration_twin_sync.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$EnumWithItemMixedTwinNormal {
+mixin _$EnumWithItemMixedTwinSync {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() a,
@@ -40,42 +40,40 @@ mixin _$EnumWithItemMixedTwinNormal {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnumWithItemMixedTwinNormal_A value) a,
-    required TResult Function(EnumWithItemMixedTwinNormal_B value) b,
-    required TResult Function(EnumWithItemMixedTwinNormal_C value) c,
+    required TResult Function(EnumWithItemMixedTwinSync_A value) a,
+    required TResult Function(EnumWithItemMixedTwinSync_B value) b,
+    required TResult Function(EnumWithItemMixedTwinSync_C value) c,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumWithItemMixedTwinNormal_A value)? a,
-    TResult? Function(EnumWithItemMixedTwinNormal_B value)? b,
-    TResult? Function(EnumWithItemMixedTwinNormal_C value)? c,
+    TResult? Function(EnumWithItemMixedTwinSync_A value)? a,
+    TResult? Function(EnumWithItemMixedTwinSync_B value)? b,
+    TResult? Function(EnumWithItemMixedTwinSync_C value)? c,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumWithItemMixedTwinNormal_A value)? a,
-    TResult Function(EnumWithItemMixedTwinNormal_B value)? b,
-    TResult Function(EnumWithItemMixedTwinNormal_C value)? c,
+    TResult Function(EnumWithItemMixedTwinSync_A value)? a,
+    TResult Function(EnumWithItemMixedTwinSync_B value)? b,
+    TResult Function(EnumWithItemMixedTwinSync_C value)? c,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EnumWithItemMixedTwinNormalCopyWith<$Res> {
-  factory $EnumWithItemMixedTwinNormalCopyWith(
-          EnumWithItemMixedTwinNormal value,
-          $Res Function(EnumWithItemMixedTwinNormal) then) =
-      _$EnumWithItemMixedTwinNormalCopyWithImpl<$Res,
-          EnumWithItemMixedTwinNormal>;
+abstract class $EnumWithItemMixedTwinSyncCopyWith<$Res> {
+  factory $EnumWithItemMixedTwinSyncCopyWith(EnumWithItemMixedTwinSync value,
+          $Res Function(EnumWithItemMixedTwinSync) then) =
+      _$EnumWithItemMixedTwinSyncCopyWithImpl<$Res, EnumWithItemMixedTwinSync>;
 }
 
 /// @nodoc
-class _$EnumWithItemMixedTwinNormalCopyWithImpl<$Res,
-        $Val extends EnumWithItemMixedTwinNormal>
-    implements $EnumWithItemMixedTwinNormalCopyWith<$Res> {
-  _$EnumWithItemMixedTwinNormalCopyWithImpl(this._value, this._then);
+class _$EnumWithItemMixedTwinSyncCopyWithImpl<$Res,
+        $Val extends EnumWithItemMixedTwinSync>
+    implements $EnumWithItemMixedTwinSyncCopyWith<$Res> {
+  _$EnumWithItemMixedTwinSyncCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -84,40 +82,39 @@ class _$EnumWithItemMixedTwinNormalCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$EnumWithItemMixedTwinNormal_AImplCopyWith<$Res> {
-  factory _$$EnumWithItemMixedTwinNormal_AImplCopyWith(
-          _$EnumWithItemMixedTwinNormal_AImpl value,
-          $Res Function(_$EnumWithItemMixedTwinNormal_AImpl) then) =
-      __$$EnumWithItemMixedTwinNormal_AImplCopyWithImpl<$Res>;
+abstract class _$$EnumWithItemMixedTwinSync_AImplCopyWith<$Res> {
+  factory _$$EnumWithItemMixedTwinSync_AImplCopyWith(
+          _$EnumWithItemMixedTwinSync_AImpl value,
+          $Res Function(_$EnumWithItemMixedTwinSync_AImpl) then) =
+      __$$EnumWithItemMixedTwinSync_AImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$EnumWithItemMixedTwinNormal_AImplCopyWithImpl<$Res>
-    extends _$EnumWithItemMixedTwinNormalCopyWithImpl<$Res,
-        _$EnumWithItemMixedTwinNormal_AImpl>
-    implements _$$EnumWithItemMixedTwinNormal_AImplCopyWith<$Res> {
-  __$$EnumWithItemMixedTwinNormal_AImplCopyWithImpl(
-      _$EnumWithItemMixedTwinNormal_AImpl _value,
-      $Res Function(_$EnumWithItemMixedTwinNormal_AImpl) _then)
+class __$$EnumWithItemMixedTwinSync_AImplCopyWithImpl<$Res>
+    extends _$EnumWithItemMixedTwinSyncCopyWithImpl<$Res,
+        _$EnumWithItemMixedTwinSync_AImpl>
+    implements _$$EnumWithItemMixedTwinSync_AImplCopyWith<$Res> {
+  __$$EnumWithItemMixedTwinSync_AImplCopyWithImpl(
+      _$EnumWithItemMixedTwinSync_AImpl _value,
+      $Res Function(_$EnumWithItemMixedTwinSync_AImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$EnumWithItemMixedTwinNormal_AImpl
-    implements EnumWithItemMixedTwinNormal_A {
-  const _$EnumWithItemMixedTwinNormal_AImpl();
+class _$EnumWithItemMixedTwinSync_AImpl implements EnumWithItemMixedTwinSync_A {
+  const _$EnumWithItemMixedTwinSync_AImpl();
 
   @override
   String toString() {
-    return 'EnumWithItemMixedTwinNormal.a()';
+    return 'EnumWithItemMixedTwinSync.a()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumWithItemMixedTwinNormal_AImpl);
+            other is _$EnumWithItemMixedTwinSync_AImpl);
   }
 
   @override
@@ -160,9 +157,9 @@ class _$EnumWithItemMixedTwinNormal_AImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnumWithItemMixedTwinNormal_A value) a,
-    required TResult Function(EnumWithItemMixedTwinNormal_B value) b,
-    required TResult Function(EnumWithItemMixedTwinNormal_C value) c,
+    required TResult Function(EnumWithItemMixedTwinSync_A value) a,
+    required TResult Function(EnumWithItemMixedTwinSync_B value) b,
+    required TResult Function(EnumWithItemMixedTwinSync_C value) c,
   }) {
     return a(this);
   }
@@ -170,9 +167,9 @@ class _$EnumWithItemMixedTwinNormal_AImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumWithItemMixedTwinNormal_A value)? a,
-    TResult? Function(EnumWithItemMixedTwinNormal_B value)? b,
-    TResult? Function(EnumWithItemMixedTwinNormal_C value)? c,
+    TResult? Function(EnumWithItemMixedTwinSync_A value)? a,
+    TResult? Function(EnumWithItemMixedTwinSync_B value)? b,
+    TResult? Function(EnumWithItemMixedTwinSync_C value)? c,
   }) {
     return a?.call(this);
   }
@@ -180,9 +177,9 @@ class _$EnumWithItemMixedTwinNormal_AImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumWithItemMixedTwinNormal_A value)? a,
-    TResult Function(EnumWithItemMixedTwinNormal_B value)? b,
-    TResult Function(EnumWithItemMixedTwinNormal_C value)? c,
+    TResult Function(EnumWithItemMixedTwinSync_A value)? a,
+    TResult Function(EnumWithItemMixedTwinSync_B value)? b,
+    TResult Function(EnumWithItemMixedTwinSync_C value)? c,
     required TResult orElse(),
   }) {
     if (a != null) {
@@ -192,30 +189,30 @@ class _$EnumWithItemMixedTwinNormal_AImpl
   }
 }
 
-abstract class EnumWithItemMixedTwinNormal_A
-    implements EnumWithItemMixedTwinNormal {
-  const factory EnumWithItemMixedTwinNormal_A() =
-      _$EnumWithItemMixedTwinNormal_AImpl;
+abstract class EnumWithItemMixedTwinSync_A
+    implements EnumWithItemMixedTwinSync {
+  const factory EnumWithItemMixedTwinSync_A() =
+      _$EnumWithItemMixedTwinSync_AImpl;
 }
 
 /// @nodoc
-abstract class _$$EnumWithItemMixedTwinNormal_BImplCopyWith<$Res> {
-  factory _$$EnumWithItemMixedTwinNormal_BImplCopyWith(
-          _$EnumWithItemMixedTwinNormal_BImpl value,
-          $Res Function(_$EnumWithItemMixedTwinNormal_BImpl) then) =
-      __$$EnumWithItemMixedTwinNormal_BImplCopyWithImpl<$Res>;
+abstract class _$$EnumWithItemMixedTwinSync_BImplCopyWith<$Res> {
+  factory _$$EnumWithItemMixedTwinSync_BImplCopyWith(
+          _$EnumWithItemMixedTwinSync_BImpl value,
+          $Res Function(_$EnumWithItemMixedTwinSync_BImpl) then) =
+      __$$EnumWithItemMixedTwinSync_BImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Uint8List field0});
 }
 
 /// @nodoc
-class __$$EnumWithItemMixedTwinNormal_BImplCopyWithImpl<$Res>
-    extends _$EnumWithItemMixedTwinNormalCopyWithImpl<$Res,
-        _$EnumWithItemMixedTwinNormal_BImpl>
-    implements _$$EnumWithItemMixedTwinNormal_BImplCopyWith<$Res> {
-  __$$EnumWithItemMixedTwinNormal_BImplCopyWithImpl(
-      _$EnumWithItemMixedTwinNormal_BImpl _value,
-      $Res Function(_$EnumWithItemMixedTwinNormal_BImpl) _then)
+class __$$EnumWithItemMixedTwinSync_BImplCopyWithImpl<$Res>
+    extends _$EnumWithItemMixedTwinSyncCopyWithImpl<$Res,
+        _$EnumWithItemMixedTwinSync_BImpl>
+    implements _$$EnumWithItemMixedTwinSync_BImplCopyWith<$Res> {
+  __$$EnumWithItemMixedTwinSync_BImplCopyWithImpl(
+      _$EnumWithItemMixedTwinSync_BImpl _value,
+      $Res Function(_$EnumWithItemMixedTwinSync_BImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -223,7 +220,7 @@ class __$$EnumWithItemMixedTwinNormal_BImplCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$EnumWithItemMixedTwinNormal_BImpl(
+    return _then(_$EnumWithItemMixedTwinSync_BImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -234,23 +231,22 @@ class __$$EnumWithItemMixedTwinNormal_BImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumWithItemMixedTwinNormal_BImpl
-    implements EnumWithItemMixedTwinNormal_B {
-  const _$EnumWithItemMixedTwinNormal_BImpl(this.field0);
+class _$EnumWithItemMixedTwinSync_BImpl implements EnumWithItemMixedTwinSync_B {
+  const _$EnumWithItemMixedTwinSync_BImpl(this.field0);
 
   @override
   final Uint8List field0;
 
   @override
   String toString() {
-    return 'EnumWithItemMixedTwinNormal.b(field0: $field0)';
+    return 'EnumWithItemMixedTwinSync.b(field0: $field0)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumWithItemMixedTwinNormal_BImpl &&
+            other is _$EnumWithItemMixedTwinSync_BImpl &&
             const DeepCollectionEquality().equals(other.field0, field0));
   }
 
@@ -261,10 +257,9 @@ class _$EnumWithItemMixedTwinNormal_BImpl
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumWithItemMixedTwinNormal_BImplCopyWith<
-          _$EnumWithItemMixedTwinNormal_BImpl>
-      get copyWith => __$$EnumWithItemMixedTwinNormal_BImplCopyWithImpl<
-          _$EnumWithItemMixedTwinNormal_BImpl>(this, _$identity);
+  _$$EnumWithItemMixedTwinSync_BImplCopyWith<_$EnumWithItemMixedTwinSync_BImpl>
+      get copyWith => __$$EnumWithItemMixedTwinSync_BImplCopyWithImpl<
+          _$EnumWithItemMixedTwinSync_BImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -303,9 +298,9 @@ class _$EnumWithItemMixedTwinNormal_BImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnumWithItemMixedTwinNormal_A value) a,
-    required TResult Function(EnumWithItemMixedTwinNormal_B value) b,
-    required TResult Function(EnumWithItemMixedTwinNormal_C value) c,
+    required TResult Function(EnumWithItemMixedTwinSync_A value) a,
+    required TResult Function(EnumWithItemMixedTwinSync_B value) b,
+    required TResult Function(EnumWithItemMixedTwinSync_C value) c,
   }) {
     return b(this);
   }
@@ -313,9 +308,9 @@ class _$EnumWithItemMixedTwinNormal_BImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumWithItemMixedTwinNormal_A value)? a,
-    TResult? Function(EnumWithItemMixedTwinNormal_B value)? b,
-    TResult? Function(EnumWithItemMixedTwinNormal_C value)? c,
+    TResult? Function(EnumWithItemMixedTwinSync_A value)? a,
+    TResult? Function(EnumWithItemMixedTwinSync_B value)? b,
+    TResult? Function(EnumWithItemMixedTwinSync_C value)? c,
   }) {
     return b?.call(this);
   }
@@ -323,9 +318,9 @@ class _$EnumWithItemMixedTwinNormal_BImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumWithItemMixedTwinNormal_A value)? a,
-    TResult Function(EnumWithItemMixedTwinNormal_B value)? b,
-    TResult Function(EnumWithItemMixedTwinNormal_C value)? c,
+    TResult Function(EnumWithItemMixedTwinSync_A value)? a,
+    TResult Function(EnumWithItemMixedTwinSync_B value)? b,
+    TResult Function(EnumWithItemMixedTwinSync_C value)? c,
     required TResult orElse(),
   }) {
     if (b != null) {
@@ -335,36 +330,35 @@ class _$EnumWithItemMixedTwinNormal_BImpl
   }
 }
 
-abstract class EnumWithItemMixedTwinNormal_B
-    implements EnumWithItemMixedTwinNormal {
-  const factory EnumWithItemMixedTwinNormal_B(final Uint8List field0) =
-      _$EnumWithItemMixedTwinNormal_BImpl;
+abstract class EnumWithItemMixedTwinSync_B
+    implements EnumWithItemMixedTwinSync {
+  const factory EnumWithItemMixedTwinSync_B(final Uint8List field0) =
+      _$EnumWithItemMixedTwinSync_BImpl;
 
   Uint8List get field0;
   @JsonKey(ignore: true)
-  _$$EnumWithItemMixedTwinNormal_BImplCopyWith<
-          _$EnumWithItemMixedTwinNormal_BImpl>
+  _$$EnumWithItemMixedTwinSync_BImplCopyWith<_$EnumWithItemMixedTwinSync_BImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EnumWithItemMixedTwinNormal_CImplCopyWith<$Res> {
-  factory _$$EnumWithItemMixedTwinNormal_CImplCopyWith(
-          _$EnumWithItemMixedTwinNormal_CImpl value,
-          $Res Function(_$EnumWithItemMixedTwinNormal_CImpl) then) =
-      __$$EnumWithItemMixedTwinNormal_CImplCopyWithImpl<$Res>;
+abstract class _$$EnumWithItemMixedTwinSync_CImplCopyWith<$Res> {
+  factory _$$EnumWithItemMixedTwinSync_CImplCopyWith(
+          _$EnumWithItemMixedTwinSync_CImpl value,
+          $Res Function(_$EnumWithItemMixedTwinSync_CImpl) then) =
+      __$$EnumWithItemMixedTwinSync_CImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String cField});
 }
 
 /// @nodoc
-class __$$EnumWithItemMixedTwinNormal_CImplCopyWithImpl<$Res>
-    extends _$EnumWithItemMixedTwinNormalCopyWithImpl<$Res,
-        _$EnumWithItemMixedTwinNormal_CImpl>
-    implements _$$EnumWithItemMixedTwinNormal_CImplCopyWith<$Res> {
-  __$$EnumWithItemMixedTwinNormal_CImplCopyWithImpl(
-      _$EnumWithItemMixedTwinNormal_CImpl _value,
-      $Res Function(_$EnumWithItemMixedTwinNormal_CImpl) _then)
+class __$$EnumWithItemMixedTwinSync_CImplCopyWithImpl<$Res>
+    extends _$EnumWithItemMixedTwinSyncCopyWithImpl<$Res,
+        _$EnumWithItemMixedTwinSync_CImpl>
+    implements _$$EnumWithItemMixedTwinSync_CImplCopyWith<$Res> {
+  __$$EnumWithItemMixedTwinSync_CImplCopyWithImpl(
+      _$EnumWithItemMixedTwinSync_CImpl _value,
+      $Res Function(_$EnumWithItemMixedTwinSync_CImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -372,7 +366,7 @@ class __$$EnumWithItemMixedTwinNormal_CImplCopyWithImpl<$Res>
   $Res call({
     Object? cField = null,
   }) {
-    return _then(_$EnumWithItemMixedTwinNormal_CImpl(
+    return _then(_$EnumWithItemMixedTwinSync_CImpl(
       cField: null == cField
           ? _value.cField
           : cField // ignore: cast_nullable_to_non_nullable
@@ -383,23 +377,22 @@ class __$$EnumWithItemMixedTwinNormal_CImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumWithItemMixedTwinNormal_CImpl
-    implements EnumWithItemMixedTwinNormal_C {
-  const _$EnumWithItemMixedTwinNormal_CImpl({required this.cField});
+class _$EnumWithItemMixedTwinSync_CImpl implements EnumWithItemMixedTwinSync_C {
+  const _$EnumWithItemMixedTwinSync_CImpl({required this.cField});
 
   @override
   final String cField;
 
   @override
   String toString() {
-    return 'EnumWithItemMixedTwinNormal.c(cField: $cField)';
+    return 'EnumWithItemMixedTwinSync.c(cField: $cField)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumWithItemMixedTwinNormal_CImpl &&
+            other is _$EnumWithItemMixedTwinSync_CImpl &&
             (identical(other.cField, cField) || other.cField == cField));
   }
 
@@ -409,10 +402,9 @@ class _$EnumWithItemMixedTwinNormal_CImpl
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumWithItemMixedTwinNormal_CImplCopyWith<
-          _$EnumWithItemMixedTwinNormal_CImpl>
-      get copyWith => __$$EnumWithItemMixedTwinNormal_CImplCopyWithImpl<
-          _$EnumWithItemMixedTwinNormal_CImpl>(this, _$identity);
+  _$$EnumWithItemMixedTwinSync_CImplCopyWith<_$EnumWithItemMixedTwinSync_CImpl>
+      get copyWith => __$$EnumWithItemMixedTwinSync_CImplCopyWithImpl<
+          _$EnumWithItemMixedTwinSync_CImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -451,9 +443,9 @@ class _$EnumWithItemMixedTwinNormal_CImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnumWithItemMixedTwinNormal_A value) a,
-    required TResult Function(EnumWithItemMixedTwinNormal_B value) b,
-    required TResult Function(EnumWithItemMixedTwinNormal_C value) c,
+    required TResult Function(EnumWithItemMixedTwinSync_A value) a,
+    required TResult Function(EnumWithItemMixedTwinSync_B value) b,
+    required TResult Function(EnumWithItemMixedTwinSync_C value) c,
   }) {
     return c(this);
   }
@@ -461,9 +453,9 @@ class _$EnumWithItemMixedTwinNormal_CImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumWithItemMixedTwinNormal_A value)? a,
-    TResult? Function(EnumWithItemMixedTwinNormal_B value)? b,
-    TResult? Function(EnumWithItemMixedTwinNormal_C value)? c,
+    TResult? Function(EnumWithItemMixedTwinSync_A value)? a,
+    TResult? Function(EnumWithItemMixedTwinSync_B value)? b,
+    TResult? Function(EnumWithItemMixedTwinSync_C value)? c,
   }) {
     return c?.call(this);
   }
@@ -471,9 +463,9 @@ class _$EnumWithItemMixedTwinNormal_CImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumWithItemMixedTwinNormal_A value)? a,
-    TResult Function(EnumWithItemMixedTwinNormal_B value)? b,
-    TResult Function(EnumWithItemMixedTwinNormal_C value)? c,
+    TResult Function(EnumWithItemMixedTwinSync_A value)? a,
+    TResult Function(EnumWithItemMixedTwinSync_B value)? b,
+    TResult Function(EnumWithItemMixedTwinSync_C value)? c,
     required TResult orElse(),
   }) {
     if (c != null) {
@@ -483,20 +475,19 @@ class _$EnumWithItemMixedTwinNormal_CImpl
   }
 }
 
-abstract class EnumWithItemMixedTwinNormal_C
-    implements EnumWithItemMixedTwinNormal {
-  const factory EnumWithItemMixedTwinNormal_C({required final String cField}) =
-      _$EnumWithItemMixedTwinNormal_CImpl;
+abstract class EnumWithItemMixedTwinSync_C
+    implements EnumWithItemMixedTwinSync {
+  const factory EnumWithItemMixedTwinSync_C({required final String cField}) =
+      _$EnumWithItemMixedTwinSync_CImpl;
 
   String get cField;
   @JsonKey(ignore: true)
-  _$$EnumWithItemMixedTwinNormal_CImplCopyWith<
-          _$EnumWithItemMixedTwinNormal_CImpl>
+  _$$EnumWithItemMixedTwinSync_CImplCopyWith<_$EnumWithItemMixedTwinSync_CImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$EnumWithItemStructTwinNormal {
+mixin _$EnumWithItemStructTwinSync {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Uint8List aField) a,
@@ -518,39 +509,38 @@ mixin _$EnumWithItemStructTwinNormal {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnumWithItemStructTwinNormal_A value) a,
-    required TResult Function(EnumWithItemStructTwinNormal_B value) b,
+    required TResult Function(EnumWithItemStructTwinSync_A value) a,
+    required TResult Function(EnumWithItemStructTwinSync_B value) b,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumWithItemStructTwinNormal_A value)? a,
-    TResult? Function(EnumWithItemStructTwinNormal_B value)? b,
+    TResult? Function(EnumWithItemStructTwinSync_A value)? a,
+    TResult? Function(EnumWithItemStructTwinSync_B value)? b,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumWithItemStructTwinNormal_A value)? a,
-    TResult Function(EnumWithItemStructTwinNormal_B value)? b,
+    TResult Function(EnumWithItemStructTwinSync_A value)? a,
+    TResult Function(EnumWithItemStructTwinSync_B value)? b,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EnumWithItemStructTwinNormalCopyWith<$Res> {
-  factory $EnumWithItemStructTwinNormalCopyWith(
-          EnumWithItemStructTwinNormal value,
-          $Res Function(EnumWithItemStructTwinNormal) then) =
-      _$EnumWithItemStructTwinNormalCopyWithImpl<$Res,
-          EnumWithItemStructTwinNormal>;
+abstract class $EnumWithItemStructTwinSyncCopyWith<$Res> {
+  factory $EnumWithItemStructTwinSyncCopyWith(EnumWithItemStructTwinSync value,
+          $Res Function(EnumWithItemStructTwinSync) then) =
+      _$EnumWithItemStructTwinSyncCopyWithImpl<$Res,
+          EnumWithItemStructTwinSync>;
 }
 
 /// @nodoc
-class _$EnumWithItemStructTwinNormalCopyWithImpl<$Res,
-        $Val extends EnumWithItemStructTwinNormal>
-    implements $EnumWithItemStructTwinNormalCopyWith<$Res> {
-  _$EnumWithItemStructTwinNormalCopyWithImpl(this._value, this._then);
+class _$EnumWithItemStructTwinSyncCopyWithImpl<$Res,
+        $Val extends EnumWithItemStructTwinSync>
+    implements $EnumWithItemStructTwinSyncCopyWith<$Res> {
+  _$EnumWithItemStructTwinSyncCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -559,23 +549,23 @@ class _$EnumWithItemStructTwinNormalCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$EnumWithItemStructTwinNormal_AImplCopyWith<$Res> {
-  factory _$$EnumWithItemStructTwinNormal_AImplCopyWith(
-          _$EnumWithItemStructTwinNormal_AImpl value,
-          $Res Function(_$EnumWithItemStructTwinNormal_AImpl) then) =
-      __$$EnumWithItemStructTwinNormal_AImplCopyWithImpl<$Res>;
+abstract class _$$EnumWithItemStructTwinSync_AImplCopyWith<$Res> {
+  factory _$$EnumWithItemStructTwinSync_AImplCopyWith(
+          _$EnumWithItemStructTwinSync_AImpl value,
+          $Res Function(_$EnumWithItemStructTwinSync_AImpl) then) =
+      __$$EnumWithItemStructTwinSync_AImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Uint8List aField});
 }
 
 /// @nodoc
-class __$$EnumWithItemStructTwinNormal_AImplCopyWithImpl<$Res>
-    extends _$EnumWithItemStructTwinNormalCopyWithImpl<$Res,
-        _$EnumWithItemStructTwinNormal_AImpl>
-    implements _$$EnumWithItemStructTwinNormal_AImplCopyWith<$Res> {
-  __$$EnumWithItemStructTwinNormal_AImplCopyWithImpl(
-      _$EnumWithItemStructTwinNormal_AImpl _value,
-      $Res Function(_$EnumWithItemStructTwinNormal_AImpl) _then)
+class __$$EnumWithItemStructTwinSync_AImplCopyWithImpl<$Res>
+    extends _$EnumWithItemStructTwinSyncCopyWithImpl<$Res,
+        _$EnumWithItemStructTwinSync_AImpl>
+    implements _$$EnumWithItemStructTwinSync_AImplCopyWith<$Res> {
+  __$$EnumWithItemStructTwinSync_AImplCopyWithImpl(
+      _$EnumWithItemStructTwinSync_AImpl _value,
+      $Res Function(_$EnumWithItemStructTwinSync_AImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -583,7 +573,7 @@ class __$$EnumWithItemStructTwinNormal_AImplCopyWithImpl<$Res>
   $Res call({
     Object? aField = null,
   }) {
-    return _then(_$EnumWithItemStructTwinNormal_AImpl(
+    return _then(_$EnumWithItemStructTwinSync_AImpl(
       aField: null == aField
           ? _value.aField
           : aField // ignore: cast_nullable_to_non_nullable
@@ -594,23 +584,23 @@ class __$$EnumWithItemStructTwinNormal_AImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumWithItemStructTwinNormal_AImpl
-    implements EnumWithItemStructTwinNormal_A {
-  const _$EnumWithItemStructTwinNormal_AImpl({required this.aField});
+class _$EnumWithItemStructTwinSync_AImpl
+    implements EnumWithItemStructTwinSync_A {
+  const _$EnumWithItemStructTwinSync_AImpl({required this.aField});
 
   @override
   final Uint8List aField;
 
   @override
   String toString() {
-    return 'EnumWithItemStructTwinNormal.a(aField: $aField)';
+    return 'EnumWithItemStructTwinSync.a(aField: $aField)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumWithItemStructTwinNormal_AImpl &&
+            other is _$EnumWithItemStructTwinSync_AImpl &&
             const DeepCollectionEquality().equals(other.aField, aField));
   }
 
@@ -621,10 +611,10 @@ class _$EnumWithItemStructTwinNormal_AImpl
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumWithItemStructTwinNormal_AImplCopyWith<
-          _$EnumWithItemStructTwinNormal_AImpl>
-      get copyWith => __$$EnumWithItemStructTwinNormal_AImplCopyWithImpl<
-          _$EnumWithItemStructTwinNormal_AImpl>(this, _$identity);
+  _$$EnumWithItemStructTwinSync_AImplCopyWith<
+          _$EnumWithItemStructTwinSync_AImpl>
+      get copyWith => __$$EnumWithItemStructTwinSync_AImplCopyWithImpl<
+          _$EnumWithItemStructTwinSync_AImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -660,8 +650,8 @@ class _$EnumWithItemStructTwinNormal_AImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnumWithItemStructTwinNormal_A value) a,
-    required TResult Function(EnumWithItemStructTwinNormal_B value) b,
+    required TResult Function(EnumWithItemStructTwinSync_A value) a,
+    required TResult Function(EnumWithItemStructTwinSync_B value) b,
   }) {
     return a(this);
   }
@@ -669,8 +659,8 @@ class _$EnumWithItemStructTwinNormal_AImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumWithItemStructTwinNormal_A value)? a,
-    TResult? Function(EnumWithItemStructTwinNormal_B value)? b,
+    TResult? Function(EnumWithItemStructTwinSync_A value)? a,
+    TResult? Function(EnumWithItemStructTwinSync_B value)? b,
   }) {
     return a?.call(this);
   }
@@ -678,8 +668,8 @@ class _$EnumWithItemStructTwinNormal_AImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumWithItemStructTwinNormal_A value)? a,
-    TResult Function(EnumWithItemStructTwinNormal_B value)? b,
+    TResult Function(EnumWithItemStructTwinSync_A value)? a,
+    TResult Function(EnumWithItemStructTwinSync_B value)? b,
     required TResult orElse(),
   }) {
     if (a != null) {
@@ -689,36 +679,36 @@ class _$EnumWithItemStructTwinNormal_AImpl
   }
 }
 
-abstract class EnumWithItemStructTwinNormal_A
-    implements EnumWithItemStructTwinNormal {
-  const factory EnumWithItemStructTwinNormal_A(
-      {required final Uint8List aField}) = _$EnumWithItemStructTwinNormal_AImpl;
+abstract class EnumWithItemStructTwinSync_A
+    implements EnumWithItemStructTwinSync {
+  const factory EnumWithItemStructTwinSync_A(
+      {required final Uint8List aField}) = _$EnumWithItemStructTwinSync_AImpl;
 
   Uint8List get aField;
   @JsonKey(ignore: true)
-  _$$EnumWithItemStructTwinNormal_AImplCopyWith<
-          _$EnumWithItemStructTwinNormal_AImpl>
+  _$$EnumWithItemStructTwinSync_AImplCopyWith<
+          _$EnumWithItemStructTwinSync_AImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EnumWithItemStructTwinNormal_BImplCopyWith<$Res> {
-  factory _$$EnumWithItemStructTwinNormal_BImplCopyWith(
-          _$EnumWithItemStructTwinNormal_BImpl value,
-          $Res Function(_$EnumWithItemStructTwinNormal_BImpl) then) =
-      __$$EnumWithItemStructTwinNormal_BImplCopyWithImpl<$Res>;
+abstract class _$$EnumWithItemStructTwinSync_BImplCopyWith<$Res> {
+  factory _$$EnumWithItemStructTwinSync_BImplCopyWith(
+          _$EnumWithItemStructTwinSync_BImpl value,
+          $Res Function(_$EnumWithItemStructTwinSync_BImpl) then) =
+      __$$EnumWithItemStructTwinSync_BImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Int32List bField});
 }
 
 /// @nodoc
-class __$$EnumWithItemStructTwinNormal_BImplCopyWithImpl<$Res>
-    extends _$EnumWithItemStructTwinNormalCopyWithImpl<$Res,
-        _$EnumWithItemStructTwinNormal_BImpl>
-    implements _$$EnumWithItemStructTwinNormal_BImplCopyWith<$Res> {
-  __$$EnumWithItemStructTwinNormal_BImplCopyWithImpl(
-      _$EnumWithItemStructTwinNormal_BImpl _value,
-      $Res Function(_$EnumWithItemStructTwinNormal_BImpl) _then)
+class __$$EnumWithItemStructTwinSync_BImplCopyWithImpl<$Res>
+    extends _$EnumWithItemStructTwinSyncCopyWithImpl<$Res,
+        _$EnumWithItemStructTwinSync_BImpl>
+    implements _$$EnumWithItemStructTwinSync_BImplCopyWith<$Res> {
+  __$$EnumWithItemStructTwinSync_BImplCopyWithImpl(
+      _$EnumWithItemStructTwinSync_BImpl _value,
+      $Res Function(_$EnumWithItemStructTwinSync_BImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -726,7 +716,7 @@ class __$$EnumWithItemStructTwinNormal_BImplCopyWithImpl<$Res>
   $Res call({
     Object? bField = null,
   }) {
-    return _then(_$EnumWithItemStructTwinNormal_BImpl(
+    return _then(_$EnumWithItemStructTwinSync_BImpl(
       bField: null == bField
           ? _value.bField
           : bField // ignore: cast_nullable_to_non_nullable
@@ -737,23 +727,23 @@ class __$$EnumWithItemStructTwinNormal_BImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumWithItemStructTwinNormal_BImpl
-    implements EnumWithItemStructTwinNormal_B {
-  const _$EnumWithItemStructTwinNormal_BImpl({required this.bField});
+class _$EnumWithItemStructTwinSync_BImpl
+    implements EnumWithItemStructTwinSync_B {
+  const _$EnumWithItemStructTwinSync_BImpl({required this.bField});
 
   @override
   final Int32List bField;
 
   @override
   String toString() {
-    return 'EnumWithItemStructTwinNormal.b(bField: $bField)';
+    return 'EnumWithItemStructTwinSync.b(bField: $bField)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumWithItemStructTwinNormal_BImpl &&
+            other is _$EnumWithItemStructTwinSync_BImpl &&
             const DeepCollectionEquality().equals(other.bField, bField));
   }
 
@@ -764,10 +754,10 @@ class _$EnumWithItemStructTwinNormal_BImpl
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumWithItemStructTwinNormal_BImplCopyWith<
-          _$EnumWithItemStructTwinNormal_BImpl>
-      get copyWith => __$$EnumWithItemStructTwinNormal_BImplCopyWithImpl<
-          _$EnumWithItemStructTwinNormal_BImpl>(this, _$identity);
+  _$$EnumWithItemStructTwinSync_BImplCopyWith<
+          _$EnumWithItemStructTwinSync_BImpl>
+      get copyWith => __$$EnumWithItemStructTwinSync_BImplCopyWithImpl<
+          _$EnumWithItemStructTwinSync_BImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -803,8 +793,8 @@ class _$EnumWithItemStructTwinNormal_BImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnumWithItemStructTwinNormal_A value) a,
-    required TResult Function(EnumWithItemStructTwinNormal_B value) b,
+    required TResult Function(EnumWithItemStructTwinSync_A value) a,
+    required TResult Function(EnumWithItemStructTwinSync_B value) b,
   }) {
     return b(this);
   }
@@ -812,8 +802,8 @@ class _$EnumWithItemStructTwinNormal_BImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumWithItemStructTwinNormal_A value)? a,
-    TResult? Function(EnumWithItemStructTwinNormal_B value)? b,
+    TResult? Function(EnumWithItemStructTwinSync_A value)? a,
+    TResult? Function(EnumWithItemStructTwinSync_B value)? b,
   }) {
     return b?.call(this);
   }
@@ -821,8 +811,8 @@ class _$EnumWithItemStructTwinNormal_BImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumWithItemStructTwinNormal_A value)? a,
-    TResult Function(EnumWithItemStructTwinNormal_B value)? b,
+    TResult Function(EnumWithItemStructTwinSync_A value)? a,
+    TResult Function(EnumWithItemStructTwinSync_B value)? b,
     required TResult orElse(),
   }) {
     if (b != null) {
@@ -832,20 +822,20 @@ class _$EnumWithItemStructTwinNormal_BImpl
   }
 }
 
-abstract class EnumWithItemStructTwinNormal_B
-    implements EnumWithItemStructTwinNormal {
-  const factory EnumWithItemStructTwinNormal_B(
-      {required final Int32List bField}) = _$EnumWithItemStructTwinNormal_BImpl;
+abstract class EnumWithItemStructTwinSync_B
+    implements EnumWithItemStructTwinSync {
+  const factory EnumWithItemStructTwinSync_B(
+      {required final Int32List bField}) = _$EnumWithItemStructTwinSync_BImpl;
 
   Int32List get bField;
   @JsonKey(ignore: true)
-  _$$EnumWithItemStructTwinNormal_BImplCopyWith<
-          _$EnumWithItemStructTwinNormal_BImpl>
+  _$$EnumWithItemStructTwinSync_BImplCopyWith<
+          _$EnumWithItemStructTwinSync_BImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$EnumWithItemTupleTwinNormal {
+mixin _$EnumWithItemTupleTwinSync {
   List<int> get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -868,39 +858,37 @@ mixin _$EnumWithItemTupleTwinNormal {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnumWithItemTupleTwinNormal_A value) a,
-    required TResult Function(EnumWithItemTupleTwinNormal_B value) b,
+    required TResult Function(EnumWithItemTupleTwinSync_A value) a,
+    required TResult Function(EnumWithItemTupleTwinSync_B value) b,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumWithItemTupleTwinNormal_A value)? a,
-    TResult? Function(EnumWithItemTupleTwinNormal_B value)? b,
+    TResult? Function(EnumWithItemTupleTwinSync_A value)? a,
+    TResult? Function(EnumWithItemTupleTwinSync_B value)? b,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumWithItemTupleTwinNormal_A value)? a,
-    TResult Function(EnumWithItemTupleTwinNormal_B value)? b,
+    TResult Function(EnumWithItemTupleTwinSync_A value)? a,
+    TResult Function(EnumWithItemTupleTwinSync_B value)? b,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EnumWithItemTupleTwinNormalCopyWith<$Res> {
-  factory $EnumWithItemTupleTwinNormalCopyWith(
-          EnumWithItemTupleTwinNormal value,
-          $Res Function(EnumWithItemTupleTwinNormal) then) =
-      _$EnumWithItemTupleTwinNormalCopyWithImpl<$Res,
-          EnumWithItemTupleTwinNormal>;
+abstract class $EnumWithItemTupleTwinSyncCopyWith<$Res> {
+  factory $EnumWithItemTupleTwinSyncCopyWith(EnumWithItemTupleTwinSync value,
+          $Res Function(EnumWithItemTupleTwinSync) then) =
+      _$EnumWithItemTupleTwinSyncCopyWithImpl<$Res, EnumWithItemTupleTwinSync>;
 }
 
 /// @nodoc
-class _$EnumWithItemTupleTwinNormalCopyWithImpl<$Res,
-        $Val extends EnumWithItemTupleTwinNormal>
-    implements $EnumWithItemTupleTwinNormalCopyWith<$Res> {
-  _$EnumWithItemTupleTwinNormalCopyWithImpl(this._value, this._then);
+class _$EnumWithItemTupleTwinSyncCopyWithImpl<$Res,
+        $Val extends EnumWithItemTupleTwinSync>
+    implements $EnumWithItemTupleTwinSyncCopyWith<$Res> {
+  _$EnumWithItemTupleTwinSyncCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -909,23 +897,23 @@ class _$EnumWithItemTupleTwinNormalCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$EnumWithItemTupleTwinNormal_AImplCopyWith<$Res> {
-  factory _$$EnumWithItemTupleTwinNormal_AImplCopyWith(
-          _$EnumWithItemTupleTwinNormal_AImpl value,
-          $Res Function(_$EnumWithItemTupleTwinNormal_AImpl) then) =
-      __$$EnumWithItemTupleTwinNormal_AImplCopyWithImpl<$Res>;
+abstract class _$$EnumWithItemTupleTwinSync_AImplCopyWith<$Res> {
+  factory _$$EnumWithItemTupleTwinSync_AImplCopyWith(
+          _$EnumWithItemTupleTwinSync_AImpl value,
+          $Res Function(_$EnumWithItemTupleTwinSync_AImpl) then) =
+      __$$EnumWithItemTupleTwinSync_AImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Uint8List field0});
 }
 
 /// @nodoc
-class __$$EnumWithItemTupleTwinNormal_AImplCopyWithImpl<$Res>
-    extends _$EnumWithItemTupleTwinNormalCopyWithImpl<$Res,
-        _$EnumWithItemTupleTwinNormal_AImpl>
-    implements _$$EnumWithItemTupleTwinNormal_AImplCopyWith<$Res> {
-  __$$EnumWithItemTupleTwinNormal_AImplCopyWithImpl(
-      _$EnumWithItemTupleTwinNormal_AImpl _value,
-      $Res Function(_$EnumWithItemTupleTwinNormal_AImpl) _then)
+class __$$EnumWithItemTupleTwinSync_AImplCopyWithImpl<$Res>
+    extends _$EnumWithItemTupleTwinSyncCopyWithImpl<$Res,
+        _$EnumWithItemTupleTwinSync_AImpl>
+    implements _$$EnumWithItemTupleTwinSync_AImplCopyWith<$Res> {
+  __$$EnumWithItemTupleTwinSync_AImplCopyWithImpl(
+      _$EnumWithItemTupleTwinSync_AImpl _value,
+      $Res Function(_$EnumWithItemTupleTwinSync_AImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -933,7 +921,7 @@ class __$$EnumWithItemTupleTwinNormal_AImplCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$EnumWithItemTupleTwinNormal_AImpl(
+    return _then(_$EnumWithItemTupleTwinSync_AImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -944,23 +932,22 @@ class __$$EnumWithItemTupleTwinNormal_AImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumWithItemTupleTwinNormal_AImpl
-    implements EnumWithItemTupleTwinNormal_A {
-  const _$EnumWithItemTupleTwinNormal_AImpl(this.field0);
+class _$EnumWithItemTupleTwinSync_AImpl implements EnumWithItemTupleTwinSync_A {
+  const _$EnumWithItemTupleTwinSync_AImpl(this.field0);
 
   @override
   final Uint8List field0;
 
   @override
   String toString() {
-    return 'EnumWithItemTupleTwinNormal.a(field0: $field0)';
+    return 'EnumWithItemTupleTwinSync.a(field0: $field0)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumWithItemTupleTwinNormal_AImpl &&
+            other is _$EnumWithItemTupleTwinSync_AImpl &&
             const DeepCollectionEquality().equals(other.field0, field0));
   }
 
@@ -971,10 +958,9 @@ class _$EnumWithItemTupleTwinNormal_AImpl
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumWithItemTupleTwinNormal_AImplCopyWith<
-          _$EnumWithItemTupleTwinNormal_AImpl>
-      get copyWith => __$$EnumWithItemTupleTwinNormal_AImplCopyWithImpl<
-          _$EnumWithItemTupleTwinNormal_AImpl>(this, _$identity);
+  _$$EnumWithItemTupleTwinSync_AImplCopyWith<_$EnumWithItemTupleTwinSync_AImpl>
+      get copyWith => __$$EnumWithItemTupleTwinSync_AImplCopyWithImpl<
+          _$EnumWithItemTupleTwinSync_AImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1010,8 +996,8 @@ class _$EnumWithItemTupleTwinNormal_AImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnumWithItemTupleTwinNormal_A value) a,
-    required TResult Function(EnumWithItemTupleTwinNormal_B value) b,
+    required TResult Function(EnumWithItemTupleTwinSync_A value) a,
+    required TResult Function(EnumWithItemTupleTwinSync_B value) b,
   }) {
     return a(this);
   }
@@ -1019,8 +1005,8 @@ class _$EnumWithItemTupleTwinNormal_AImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumWithItemTupleTwinNormal_A value)? a,
-    TResult? Function(EnumWithItemTupleTwinNormal_B value)? b,
+    TResult? Function(EnumWithItemTupleTwinSync_A value)? a,
+    TResult? Function(EnumWithItemTupleTwinSync_B value)? b,
   }) {
     return a?.call(this);
   }
@@ -1028,8 +1014,8 @@ class _$EnumWithItemTupleTwinNormal_AImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumWithItemTupleTwinNormal_A value)? a,
-    TResult Function(EnumWithItemTupleTwinNormal_B value)? b,
+    TResult Function(EnumWithItemTupleTwinSync_A value)? a,
+    TResult Function(EnumWithItemTupleTwinSync_B value)? b,
     required TResult orElse(),
   }) {
     if (a != null) {
@@ -1039,37 +1025,36 @@ class _$EnumWithItemTupleTwinNormal_AImpl
   }
 }
 
-abstract class EnumWithItemTupleTwinNormal_A
-    implements EnumWithItemTupleTwinNormal {
-  const factory EnumWithItemTupleTwinNormal_A(final Uint8List field0) =
-      _$EnumWithItemTupleTwinNormal_AImpl;
+abstract class EnumWithItemTupleTwinSync_A
+    implements EnumWithItemTupleTwinSync {
+  const factory EnumWithItemTupleTwinSync_A(final Uint8List field0) =
+      _$EnumWithItemTupleTwinSync_AImpl;
 
   @override
   Uint8List get field0;
   @JsonKey(ignore: true)
-  _$$EnumWithItemTupleTwinNormal_AImplCopyWith<
-          _$EnumWithItemTupleTwinNormal_AImpl>
+  _$$EnumWithItemTupleTwinSync_AImplCopyWith<_$EnumWithItemTupleTwinSync_AImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EnumWithItemTupleTwinNormal_BImplCopyWith<$Res> {
-  factory _$$EnumWithItemTupleTwinNormal_BImplCopyWith(
-          _$EnumWithItemTupleTwinNormal_BImpl value,
-          $Res Function(_$EnumWithItemTupleTwinNormal_BImpl) then) =
-      __$$EnumWithItemTupleTwinNormal_BImplCopyWithImpl<$Res>;
+abstract class _$$EnumWithItemTupleTwinSync_BImplCopyWith<$Res> {
+  factory _$$EnumWithItemTupleTwinSync_BImplCopyWith(
+          _$EnumWithItemTupleTwinSync_BImpl value,
+          $Res Function(_$EnumWithItemTupleTwinSync_BImpl) then) =
+      __$$EnumWithItemTupleTwinSync_BImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Int32List field0});
 }
 
 /// @nodoc
-class __$$EnumWithItemTupleTwinNormal_BImplCopyWithImpl<$Res>
-    extends _$EnumWithItemTupleTwinNormalCopyWithImpl<$Res,
-        _$EnumWithItemTupleTwinNormal_BImpl>
-    implements _$$EnumWithItemTupleTwinNormal_BImplCopyWith<$Res> {
-  __$$EnumWithItemTupleTwinNormal_BImplCopyWithImpl(
-      _$EnumWithItemTupleTwinNormal_BImpl _value,
-      $Res Function(_$EnumWithItemTupleTwinNormal_BImpl) _then)
+class __$$EnumWithItemTupleTwinSync_BImplCopyWithImpl<$Res>
+    extends _$EnumWithItemTupleTwinSyncCopyWithImpl<$Res,
+        _$EnumWithItemTupleTwinSync_BImpl>
+    implements _$$EnumWithItemTupleTwinSync_BImplCopyWith<$Res> {
+  __$$EnumWithItemTupleTwinSync_BImplCopyWithImpl(
+      _$EnumWithItemTupleTwinSync_BImpl _value,
+      $Res Function(_$EnumWithItemTupleTwinSync_BImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1077,7 +1062,7 @@ class __$$EnumWithItemTupleTwinNormal_BImplCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$EnumWithItemTupleTwinNormal_BImpl(
+    return _then(_$EnumWithItemTupleTwinSync_BImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -1088,23 +1073,22 @@ class __$$EnumWithItemTupleTwinNormal_BImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumWithItemTupleTwinNormal_BImpl
-    implements EnumWithItemTupleTwinNormal_B {
-  const _$EnumWithItemTupleTwinNormal_BImpl(this.field0);
+class _$EnumWithItemTupleTwinSync_BImpl implements EnumWithItemTupleTwinSync_B {
+  const _$EnumWithItemTupleTwinSync_BImpl(this.field0);
 
   @override
   final Int32List field0;
 
   @override
   String toString() {
-    return 'EnumWithItemTupleTwinNormal.b(field0: $field0)';
+    return 'EnumWithItemTupleTwinSync.b(field0: $field0)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumWithItemTupleTwinNormal_BImpl &&
+            other is _$EnumWithItemTupleTwinSync_BImpl &&
             const DeepCollectionEquality().equals(other.field0, field0));
   }
 
@@ -1115,10 +1099,9 @@ class _$EnumWithItemTupleTwinNormal_BImpl
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumWithItemTupleTwinNormal_BImplCopyWith<
-          _$EnumWithItemTupleTwinNormal_BImpl>
-      get copyWith => __$$EnumWithItemTupleTwinNormal_BImplCopyWithImpl<
-          _$EnumWithItemTupleTwinNormal_BImpl>(this, _$identity);
+  _$$EnumWithItemTupleTwinSync_BImplCopyWith<_$EnumWithItemTupleTwinSync_BImpl>
+      get copyWith => __$$EnumWithItemTupleTwinSync_BImplCopyWithImpl<
+          _$EnumWithItemTupleTwinSync_BImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1154,8 +1137,8 @@ class _$EnumWithItemTupleTwinNormal_BImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnumWithItemTupleTwinNormal_A value) a,
-    required TResult Function(EnumWithItemTupleTwinNormal_B value) b,
+    required TResult Function(EnumWithItemTupleTwinSync_A value) a,
+    required TResult Function(EnumWithItemTupleTwinSync_B value) b,
   }) {
     return b(this);
   }
@@ -1163,8 +1146,8 @@ class _$EnumWithItemTupleTwinNormal_BImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumWithItemTupleTwinNormal_A value)? a,
-    TResult? Function(EnumWithItemTupleTwinNormal_B value)? b,
+    TResult? Function(EnumWithItemTupleTwinSync_A value)? a,
+    TResult? Function(EnumWithItemTupleTwinSync_B value)? b,
   }) {
     return b?.call(this);
   }
@@ -1172,8 +1155,8 @@ class _$EnumWithItemTupleTwinNormal_BImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumWithItemTupleTwinNormal_A value)? a,
-    TResult Function(EnumWithItemTupleTwinNormal_B value)? b,
+    TResult Function(EnumWithItemTupleTwinSync_A value)? a,
+    TResult Function(EnumWithItemTupleTwinSync_B value)? b,
     required TResult orElse(),
   }) {
     if (b != null) {
@@ -1183,15 +1166,14 @@ class _$EnumWithItemTupleTwinNormal_BImpl
   }
 }
 
-abstract class EnumWithItemTupleTwinNormal_B
-    implements EnumWithItemTupleTwinNormal {
-  const factory EnumWithItemTupleTwinNormal_B(final Int32List field0) =
-      _$EnumWithItemTupleTwinNormal_BImpl;
+abstract class EnumWithItemTupleTwinSync_B
+    implements EnumWithItemTupleTwinSync {
+  const factory EnumWithItemTupleTwinSync_B(final Int32List field0) =
+      _$EnumWithItemTupleTwinSync_BImpl;
 
   @override
   Int32List get field0;
   @JsonKey(ignore: true)
-  _$$EnumWithItemTupleTwinNormal_BImplCopyWith<
-          _$EnumWithItemTupleTwinNormal_BImpl>
+  _$$EnumWithItemTupleTwinSync_BImplCopyWith<_$EnumWithItemTupleTwinSync_BImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -5,6 +5,7 @@
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/primitive_list.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
+import '../../test_utils.dart';
 import 'dart:typed_data';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 
@@ -12,231 +13,66 @@ Future<void> main() async {
   await RustLib.init();
 
   group('primitive_list', () {
-    test('type=i8 arg=Int8List.fromList([])', () async {
-      expect(
-          await examplePrimitiveListTypeI8TwinNormal(
-              arg: Int8List.fromList([])),
-          Int8List.fromList([]));
-    });
-    test('type=i8 arg=Int8List.fromList([0])', () async {
-      expect(
-          await examplePrimitiveListTypeI8TwinNormal(
-              arg: Int8List.fromList([0])),
-          Int8List.fromList([0]));
-    });
-    test('type=i8 arg=Int8List.fromList([-128])', () async {
-      expect(
-          await examplePrimitiveListTypeI8TwinNormal(
-              arg: Int8List.fromList([-128])),
-          Int8List.fromList([-128]));
-    });
-    test('type=i8 arg=Int8List.fromList([127])', () async {
-      expect(
-          await examplePrimitiveListTypeI8TwinNormal(
-              arg: Int8List.fromList([127])),
-          Int8List.fromList([127]));
-    });
-    test('type=i16 arg=Int16List.fromList([])', () async {
-      expect(
-          await examplePrimitiveListTypeI16TwinNormal(
-              arg: Int16List.fromList([])),
-          Int16List.fromList([]));
-    });
-    test('type=i16 arg=Int16List.fromList([0])', () async {
-      expect(
-          await examplePrimitiveListTypeI16TwinNormal(
-              arg: Int16List.fromList([0])),
-          Int16List.fromList([0]));
-    });
-    test('type=i16 arg=Int16List.fromList([-32768])', () async {
-      expect(
-          await examplePrimitiveListTypeI16TwinNormal(
-              arg: Int16List.fromList([-32768])),
-          Int16List.fromList([-32768]));
-    });
-    test('type=i16 arg=Int16List.fromList([32767])', () async {
-      expect(
-          await examplePrimitiveListTypeI16TwinNormal(
-              arg: Int16List.fromList([32767])),
-          Int16List.fromList([32767]));
-    });
-    test('type=i32 arg=Int32List.fromList([])', () async {
-      expect(
-          await examplePrimitiveListTypeI32TwinNormal(
-              arg: Int32List.fromList([])),
-          Int32List.fromList([]));
-    });
-    test('type=i32 arg=Int32List.fromList([0])', () async {
-      expect(
-          await examplePrimitiveListTypeI32TwinNormal(
-              arg: Int32List.fromList([0])),
-          Int32List.fromList([0]));
-    });
-    test('type=i32 arg=Int32List.fromList([-2147483648])', () async {
-      expect(
-          await examplePrimitiveListTypeI32TwinNormal(
-              arg: Int32List.fromList([-2147483648])),
-          Int32List.fromList([-2147483648]));
-    });
-    test('type=i32 arg=Int32List.fromList([2147483647])', () async {
-      expect(
-          await examplePrimitiveListTypeI32TwinNormal(
-              arg: Int32List.fromList([2147483647])),
-          Int32List.fromList([2147483647]));
-    });
-    test('type=i64 arg=Int64List.fromList([])', () async {
-      expect(
-          await examplePrimitiveListTypeI64TwinNormal(
-              arg: Int64List.fromList([])),
-          Int64List.fromList([]));
-    });
-    test('type=i64 arg=Int64List.fromList([0])', () async {
-      expect(
-          await examplePrimitiveListTypeI64TwinNormal(
-              arg: Int64List.fromList([0])),
-          Int64List.fromList([0]));
-    });
-    test('type=i64 arg=Int64List.fromList([-9223372036854775808])', () async {
-      expect(
-          await examplePrimitiveListTypeI64TwinNormal(
-              arg: Int64List.fromList([-9223372036854775808])),
-          Int64List.fromList([-9223372036854775808]));
-    });
-    test('type=i64 arg=Int64List.fromList([9223372036854775807])', () async {
-      expect(
-          await examplePrimitiveListTypeI64TwinNormal(
-              arg: Int64List.fromList([9223372036854775807])),
-          Int64List.fromList([9223372036854775807]));
-    });
-    test('type=u8 arg=Uint8List.fromList([])', () async {
-      expect(
-          await examplePrimitiveListTypeU8TwinNormal(
-              arg: Uint8List.fromList([])),
-          Uint8List.fromList([]));
-    });
-    test('type=u8 arg=Uint8List.fromList([0])', () async {
-      expect(
-          await examplePrimitiveListTypeU8TwinNormal(
-              arg: Uint8List.fromList([0])),
-          Uint8List.fromList([0]));
-    });
-    test('type=u8 arg=Uint8List.fromList([255])', () async {
-      expect(
-          await examplePrimitiveListTypeU8TwinNormal(
-              arg: Uint8List.fromList([255])),
-          Uint8List.fromList([255]));
-    });
-    test('type=u16 arg=Uint16List.fromList([])', () async {
-      expect(
-          await examplePrimitiveListTypeU16TwinNormal(
-              arg: Uint16List.fromList([])),
-          Uint16List.fromList([]));
-    });
-    test('type=u16 arg=Uint16List.fromList([0])', () async {
-      expect(
-          await examplePrimitiveListTypeU16TwinNormal(
-              arg: Uint16List.fromList([0])),
-          Uint16List.fromList([0]));
-    });
-    test('type=u16 arg=Uint16List.fromList([65535])', () async {
-      expect(
-          await examplePrimitiveListTypeU16TwinNormal(
-              arg: Uint16List.fromList([65535])),
-          Uint16List.fromList([65535]));
-    });
-    test('type=u32 arg=Uint32List.fromList([])', () async {
-      expect(
-          await examplePrimitiveListTypeU32TwinNormal(
-              arg: Uint32List.fromList([])),
-          Uint32List.fromList([]));
-    });
-    test('type=u32 arg=Uint32List.fromList([0])', () async {
-      expect(
-          await examplePrimitiveListTypeU32TwinNormal(
-              arg: Uint32List.fromList([0])),
-          Uint32List.fromList([0]));
-    });
-    test('type=u32 arg=Uint32List.fromList([4294967295])', () async {
-      expect(
-          await examplePrimitiveListTypeU32TwinNormal(
-              arg: Uint32List.fromList([4294967295])),
-          Uint32List.fromList([4294967295]));
-    });
-    test('type=u64 arg=Uint64List.fromList([])', () async {
-      expect(
-          await examplePrimitiveListTypeU64TwinNormal(
-              arg: Uint64List.fromList([])),
-          Uint64List.fromList([]));
-    });
-    test('type=u64 arg=Uint64List.fromList([0])', () async {
-      expect(
-          await examplePrimitiveListTypeU64TwinNormal(
-              arg: Uint64List.fromList([0])),
-          Uint64List.fromList([0]));
-    });
-    test('type=u64 arg=Uint64List.fromList([9223372036854775807])', () async {
-      expect(
-          await examplePrimitiveListTypeU64TwinNormal(
-              arg: Uint64List.fromList([9223372036854775807])),
-          Uint64List.fromList([9223372036854775807]));
-    });
-    test('type=f32 arg=Float32List.fromList([])', () async {
-      expect(
-          await examplePrimitiveListTypeF32TwinNormal(
-              arg: Float32List.fromList([])),
-          Float32List.fromList([]));
-    });
-    test('type=f32 arg=Float32List.fromList([0])', () async {
-      expect(
-          await examplePrimitiveListTypeF32TwinNormal(
-              arg: Float32List.fromList([0])),
-          Float32List.fromList([0]));
-    });
-    test('type=f32 arg=Float32List.fromList([-42.5])', () async {
-      expect(
-          await examplePrimitiveListTypeF32TwinNormal(
-              arg: Float32List.fromList([-42.5])),
-          Float32List.fromList([-42.5]));
-    });
-    test('type=f32 arg=Float32List.fromList([123456])', () async {
-      expect(
-          await examplePrimitiveListTypeF32TwinNormal(
-              arg: Float32List.fromList([123456])),
-          Float32List.fromList([123456]));
-    });
-    test('type=f64 arg=Float64List.fromList([])', () async {
-      expect(
-          await examplePrimitiveListTypeF64TwinNormal(
-              arg: Float64List.fromList([])),
-          Float64List.fromList([]));
-    });
-    test('type=f64 arg=Float64List.fromList([0])', () async {
-      expect(
-          await examplePrimitiveListTypeF64TwinNormal(
-              arg: Float64List.fromList([0])),
-          Float64List.fromList([0]));
-    });
-    test('type=f64 arg=Float64List.fromList([-42.5])', () async {
-      expect(
-          await examplePrimitiveListTypeF64TwinNormal(
-              arg: Float64List.fromList([-42.5])),
-          Float64List.fromList([-42.5]));
-    });
-    test('type=f64 arg=Float64List.fromList([123456])', () async {
-      expect(
-          await examplePrimitiveListTypeF64TwinNormal(
-              arg: Float64List.fromList([123456])),
-          Float64List.fromList([123456]));
-    });
-    test('type=bool arg=[]', () async {
-      expect(await examplePrimitiveListTypeBoolTwinNormal(arg: []), []);
-    });
-    test('type=bool arg=[false]', () async {
-      expect(
-          await examplePrimitiveListTypeBoolTwinNormal(arg: [false]), [false]);
-    });
-    test('type=bool arg=[true]', () async {
-      expect(await examplePrimitiveListTypeBoolTwinNormal(arg: [true]), [true]);
-    });
+    addTestsIdentityFunctionCall(examplePrimitiveListTypeI8TwinNormal, [
+      Int8List.fromList([]),
+      Int8List.fromList([0]),
+      Int8List.fromList([-128]),
+      Int8List.fromList([127])
+    ]);
+    addTestsIdentityFunctionCall(examplePrimitiveListTypeI16TwinNormal, [
+      Int16List.fromList([]),
+      Int16List.fromList([0]),
+      Int16List.fromList([-32768]),
+      Int16List.fromList([32767])
+    ]);
+    addTestsIdentityFunctionCall(examplePrimitiveListTypeI32TwinNormal, [
+      Int32List.fromList([]),
+      Int32List.fromList([0]),
+      Int32List.fromList([-2147483648]),
+      Int32List.fromList([2147483647])
+    ]);
+    addTestsIdentityFunctionCall(examplePrimitiveListTypeI64TwinNormal, [
+      Int64List.fromList([]),
+      Int64List.fromList([0]),
+      Int64List.fromList([-9223372036854775808]),
+      Int64List.fromList([9223372036854775807])
+    ]);
+    addTestsIdentityFunctionCall(examplePrimitiveListTypeU8TwinNormal, [
+      Uint8List.fromList([]),
+      Uint8List.fromList([0]),
+      Uint8List.fromList([255])
+    ]);
+    addTestsIdentityFunctionCall(examplePrimitiveListTypeU16TwinNormal, [
+      Uint16List.fromList([]),
+      Uint16List.fromList([0]),
+      Uint16List.fromList([65535])
+    ]);
+    addTestsIdentityFunctionCall(examplePrimitiveListTypeU32TwinNormal, [
+      Uint32List.fromList([]),
+      Uint32List.fromList([0]),
+      Uint32List.fromList([4294967295])
+    ]);
+    addTestsIdentityFunctionCall(examplePrimitiveListTypeU64TwinNormal, [
+      Uint64List.fromList([]),
+      Uint64List.fromList([0]),
+      Uint64List.fromList([9223372036854775807])
+    ]);
+    addTestsIdentityFunctionCall(examplePrimitiveListTypeF32TwinNormal, [
+      Float32List.fromList([]),
+      Float32List.fromList([0]),
+      Float32List.fromList([-42.5]),
+      Float32List.fromList([123456])
+    ]);
+    addTestsIdentityFunctionCall(examplePrimitiveListTypeF64TwinNormal, [
+      Float64List.fromList([]),
+      Float64List.fromList([0]),
+      Float64List.fromList([-42.5]),
+      Float64List.fromList([123456])
+    ]);
+    addTestsIdentityFunctionCall(examplePrimitiveListTypeBoolTwinNormal, [
+      [],
+      [false],
+      [true]
+    ]);
   });
 }

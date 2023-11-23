@@ -15,39 +15,76 @@ impl Wire2Api<String> for String {
         self
     }
 }
-impl Wire2Api<EnumWithItemMixed> for JsValue {
-    fn wire2api(self) -> EnumWithItemMixed {
+impl Wire2Api<EnumWithItemMixedTwinNormal> for JsValue {
+    fn wire2api(self) -> EnumWithItemMixedTwinNormal {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
-            0 => EnumWithItemMixed::A,
-            1 => EnumWithItemMixed::B(self_.get(1).wire2api()),
-            2 => EnumWithItemMixed::C {
+            0 => EnumWithItemMixedTwinNormal::A,
+            1 => EnumWithItemMixedTwinNormal::B(self_.get(1).wire2api()),
+            2 => EnumWithItemMixedTwinNormal::C {
                 c_field: self_.get(1).wire2api(),
             },
             _ => unreachable!(),
         }
     }
 }
-impl Wire2Api<EnumWithItemStruct> for JsValue {
-    fn wire2api(self) -> EnumWithItemStruct {
+impl Wire2Api<EnumWithItemMixedTwinSync> for JsValue {
+    fn wire2api(self) -> EnumWithItemMixedTwinSync {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
-            0 => EnumWithItemStruct::A {
+            0 => EnumWithItemMixedTwinSync::A,
+            1 => EnumWithItemMixedTwinSync::B(self_.get(1).wire2api()),
+            2 => EnumWithItemMixedTwinSync::C {
+                c_field: self_.get(1).wire2api(),
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<EnumWithItemStructTwinNormal> for JsValue {
+    fn wire2api(self) -> EnumWithItemStructTwinNormal {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => EnumWithItemStructTwinNormal::A {
                 a_field: self_.get(1).wire2api(),
             },
-            1 => EnumWithItemStruct::B {
+            1 => EnumWithItemStructTwinNormal::B {
                 b_field: self_.get(1).wire2api(),
             },
             _ => unreachable!(),
         }
     }
 }
-impl Wire2Api<EnumWithItemTuple> for JsValue {
-    fn wire2api(self) -> EnumWithItemTuple {
+impl Wire2Api<EnumWithItemStructTwinSync> for JsValue {
+    fn wire2api(self) -> EnumWithItemStructTwinSync {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
-            0 => EnumWithItemTuple::A(self_.get(1).wire2api()),
-            1 => EnumWithItemTuple::B(self_.get(1).wire2api()),
+            0 => EnumWithItemStructTwinSync::A {
+                a_field: self_.get(1).wire2api(),
+            },
+            1 => EnumWithItemStructTwinSync::B {
+                b_field: self_.get(1).wire2api(),
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<EnumWithItemTupleTwinNormal> for JsValue {
+    fn wire2api(self) -> EnumWithItemTupleTwinNormal {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => EnumWithItemTupleTwinNormal::A(self_.get(1).wire2api()),
+            1 => EnumWithItemTupleTwinNormal::B(self_.get(1).wire2api()),
+            _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<EnumWithItemTupleTwinSync> for JsValue {
+    fn wire2api(self) -> EnumWithItemTupleTwinSync {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => EnumWithItemTupleTwinSync::A(self_.get(1).wire2api()),
+            1 => EnumWithItemTupleTwinSync::B(self_.get(1).wire2api()),
             _ => unreachable!(),
         }
     }
@@ -139,8 +176,8 @@ impl Wire2Api<StructWithCommentsTwinSync> for JsValue {
         }
     }
 }
-impl Wire2Api<StructWithOneField> for JsValue {
-    fn wire2api(self) -> StructWithOneField {
+impl Wire2Api<StructWithOneFieldTwinNormal> for JsValue {
+    fn wire2api(self) -> StructWithOneFieldTwinNormal {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -148,13 +185,27 @@ impl Wire2Api<StructWithOneField> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        StructWithOneField {
+        StructWithOneFieldTwinNormal {
             a: self_.get(0).wire2api(),
         }
     }
 }
-impl Wire2Api<StructWithTwoField> for JsValue {
-    fn wire2api(self) -> StructWithTwoField {
+impl Wire2Api<StructWithOneFieldTwinSync> for JsValue {
+    fn wire2api(self) -> StructWithOneFieldTwinSync {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        StructWithOneFieldTwinSync {
+            a: self_.get(0).wire2api(),
+        }
+    }
+}
+impl Wire2Api<StructWithTwoFieldTwinNormal> for JsValue {
+    fn wire2api(self) -> StructWithTwoFieldTwinNormal {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -162,14 +213,29 @@ impl Wire2Api<StructWithTwoField> for JsValue {
             "Expected 2 elements, got {}",
             self_.length()
         );
-        StructWithTwoField {
+        StructWithTwoFieldTwinNormal {
             a: self_.get(0).wire2api(),
             b: self_.get(1).wire2api(),
         }
     }
 }
-impl Wire2Api<StructWithZeroField> for JsValue {
-    fn wire2api(self) -> StructWithZeroField {
+impl Wire2Api<StructWithTwoFieldTwinSync> for JsValue {
+    fn wire2api(self) -> StructWithTwoFieldTwinSync {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        StructWithTwoFieldTwinSync {
+            a: self_.get(0).wire2api(),
+            b: self_.get(1).wire2api(),
+        }
+    }
+}
+impl Wire2Api<StructWithZeroFieldTwinNormal> for JsValue {
+    fn wire2api(self) -> StructWithZeroFieldTwinNormal {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -177,11 +243,23 @@ impl Wire2Api<StructWithZeroField> for JsValue {
             "Expected 0 elements, got {}",
             self_.length()
         );
-        StructWithZeroField {}
+        StructWithZeroFieldTwinNormal {}
     }
 }
-impl Wire2Api<TupleStructWithOneField> for JsValue {
-    fn wire2api(self) -> TupleStructWithOneField {
+impl Wire2Api<StructWithZeroFieldTwinSync> for JsValue {
+    fn wire2api(self) -> StructWithZeroFieldTwinSync {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            0,
+            "Expected 0 elements, got {}",
+            self_.length()
+        );
+        StructWithZeroFieldTwinSync {}
+    }
+}
+impl Wire2Api<TupleStructWithOneFieldTwinNormal> for JsValue {
+    fn wire2api(self) -> TupleStructWithOneFieldTwinNormal {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -189,11 +267,23 @@ impl Wire2Api<TupleStructWithOneField> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        TupleStructWithOneField(self_.get(0).wire2api())
+        TupleStructWithOneFieldTwinNormal(self_.get(0).wire2api())
     }
 }
-impl Wire2Api<TupleStructWithTwoField> for JsValue {
-    fn wire2api(self) -> TupleStructWithTwoField {
+impl Wire2Api<TupleStructWithOneFieldTwinSync> for JsValue {
+    fn wire2api(self) -> TupleStructWithOneFieldTwinSync {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        TupleStructWithOneFieldTwinSync(self_.get(0).wire2api())
+    }
+}
+impl Wire2Api<TupleStructWithTwoFieldTwinNormal> for JsValue {
+    fn wire2api(self) -> TupleStructWithTwoFieldTwinNormal {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -201,7 +291,19 @@ impl Wire2Api<TupleStructWithTwoField> for JsValue {
             "Expected 2 elements, got {}",
             self_.length()
         );
-        TupleStructWithTwoField(self_.get(0).wire2api(), self_.get(1).wire2api())
+        TupleStructWithTwoFieldTwinNormal(self_.get(0).wire2api(), self_.get(1).wire2api())
+    }
+}
+impl Wire2Api<TupleStructWithTwoFieldTwinSync> for JsValue {
+    fn wire2api(self) -> TupleStructWithTwoFieldTwinSync {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        TupleStructWithTwoFieldTwinSync(self_.get(0).wire2api(), self_.get(1).wire2api())
     }
 }
 impl Wire2Api<String> for JsValue {
@@ -214,8 +316,13 @@ impl Wire2Api<bool> for JsValue {
         self.is_truthy()
     }
 }
-impl Wire2Api<EnumSimple> for JsValue {
-    fn wire2api(self) -> EnumSimple {
+impl Wire2Api<EnumSimpleTwinNormal> for JsValue {
+    fn wire2api(self) -> EnumSimpleTwinNormal {
+        (self.unchecked_into_f64() as i32).wire2api()
+    }
+}
+impl Wire2Api<EnumSimpleTwinSync> for JsValue {
+    fn wire2api(self) -> EnumSimpleTwinSync {
         (self.unchecked_into_f64() as i32).wire2api()
     }
 }
@@ -401,6 +508,26 @@ pub fn wire_function_with_comments_triple_slash_multi_line_twin_sync() -> suppor
 #[wasm_bindgen]
 pub fn wire_function_with_comments_triple_slash_single_line_twin_sync() -> support::WireSyncReturn {
     wire_function_with_comments_triple_slash_single_line_twin_sync_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_func_enum_simple_twin_sync(arg: i32) -> support::WireSyncReturn {
+    wire_func_enum_simple_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_enum_with_item_mixed_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+    wire_func_enum_with_item_mixed_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_enum_with_item_struct_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+    wire_func_enum_with_item_struct_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_enum_with_item_tuple_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+    wire_func_enum_with_item_tuple_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
@@ -738,6 +865,31 @@ pub fn wire_example_primitive_type_u8_twin_sync(arg: u8) -> support::WireSyncRet
 #[wasm_bindgen]
 pub fn wire_simple_adder_twin_sync(a: i32, b: i32) -> support::WireSyncReturn {
     wire_simple_adder_twin_sync_impl(a, b)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_struct_with_one_field_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+    wire_func_struct_with_one_field_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_struct_with_two_field_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+    wire_func_struct_with_two_field_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_struct_with_zero_field_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+    wire_func_struct_with_zero_field_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_tuple_struct_with_one_field_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+    wire_func_tuple_struct_with_one_field_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_tuple_struct_with_two_field_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+    wire_func_tuple_struct_with_two_field_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
