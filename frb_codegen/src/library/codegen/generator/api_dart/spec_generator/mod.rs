@@ -4,8 +4,9 @@ use crate::codegen::generator::api_dart::spec_generator::base::{
 };
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
 use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
+use crate::codegen::generator::api_dart::spec_generator::misc::compute_needs_freezed;
 use crate::codegen::ir::func::IrFuncOwnerInfo;
-use crate::codegen::ir::pack::IrPack;
+use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
 use crate::library::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use anyhow::Result;
 use itertools::Itertools;
@@ -21,13 +22,14 @@ pub(crate) mod misc;
 pub(crate) struct ApiDartOutputSpec {
     pub funcs: Vec<ApiDartGeneratedFunction>,
     pub classes: Vec<ApiDartGeneratedClass>,
+    pub needs_freezed: bool,
 }
 
 pub(crate) fn generate(
     ir_pack: &IrPack,
     config: &GeneratorApiDartInternalConfig,
 ) -> Result<ApiDartOutputSpec> {
-    let distinct_types = ir_pack.distinct_types(true, true);
+    let cache = IrPackComputedCache::compute(ir_pack);
     let context = ApiDartGeneratorContext { ir_pack, config };
 
     let funcs = (ir_pack.funcs.iter())
@@ -35,10 +37,17 @@ pub(crate) fn generate(
         .map(|f| function::generate(f, context))
         .collect_vec();
 
-    let classes = distinct_types
+    let classes = cache
+        .distinct_types
         .iter()
         .filter_map(|ty| ApiDartGenerator::new(ty.clone(), context).generate_class())
         .collect_vec();
 
-    Ok(ApiDartOutputSpec { funcs, classes })
+    let needs_freezed = compute_needs_freezed(&cache, context.ir_pack);
+
+    Ok(ApiDartOutputSpec {
+        funcs,
+        classes,
+        needs_freezed,
+    })
 }

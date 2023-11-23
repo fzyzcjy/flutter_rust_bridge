@@ -2,6 +2,9 @@ use crate::codegen::ir::annotation::IrDartAnnotation;
 use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::func::IrFuncMode;
 use crate::codegen::ir::import::IrDartImport;
+use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
+use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
 use itertools::Itertools;
 
 /// A trailing newline is included if comments is not empty.
@@ -47,5 +50,20 @@ pub(crate) fn generate_function_dart_return_type(func_mode: &IrFuncMode, inner: 
         IrFuncMode::Normal => format!("Future<{inner}>"),
         IrFuncMode::Sync => inner.to_string(),
         IrFuncMode::Stream { .. } => format!("Stream<{inner}>"),
+    }
+}
+
+pub(crate) fn compute_needs_freezed(cache: &IrPackComputedCache, ir_pack: &IrPack) -> bool {
+    cache
+        .distinct_types
+        .iter()
+        .any(|ty| compute_needs_freezed_for_type(ty, ir_pack))
+}
+
+fn compute_needs_freezed_for_type(ty: &IrType, ir_pack: &IrPack) -> bool {
+    match ty {
+        EnumRef(_) => true,
+        StructRef(st) => st.get(ir_pack).using_freezed(),
+        _ => false,
     }
 }

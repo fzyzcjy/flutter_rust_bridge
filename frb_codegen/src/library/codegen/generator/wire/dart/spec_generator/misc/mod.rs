@@ -24,7 +24,6 @@ pub(crate) struct WireDartOutputSpecMisc {
     pub(crate) boilerplate: Acc<Vec<WireDartOutputCode>>,
     pub(crate) api_impl_normal_functions: Vec<WireDartOutputCode>,
     pub(crate) api_impl_opaque_getters: Vec<WireDartOutputCode>,
-    pub(crate) needs_freezed: bool,
 }
 
 pub(crate) fn generate(
@@ -48,7 +47,6 @@ pub(crate) fn generate(
         api_impl_opaque_getters: (cache.distinct_types.iter())
             .filter_map(|ty| api_impl_body::generate_api_impl_opaque_getter(ty, context))
             .collect(),
-        needs_freezed: compute_needs_freezed(cache, context.ir_pack),
     })
 }
 
@@ -177,19 +175,4 @@ fn generate_import_dart_api_layer(
         })
         .collect::<anyhow::Result<Vec<_>>>()?
         .join(""))
-}
-
-fn compute_needs_freezed(cache: &IrPackComputedCache, ir_pack: &IrPack) -> bool {
-    cache
-        .distinct_types
-        .iter()
-        .any(|ty| compute_needs_freezed_for_type(ty, ir_pack))
-}
-
-fn compute_needs_freezed_for_type(ty: &IrType, ir_pack: &IrPack) -> bool {
-    match ty {
-        EnumRef(_) => true,
-        StructRef(st) => st.get(ir_pack).using_freezed(),
-        _ => false,
-    }
 }

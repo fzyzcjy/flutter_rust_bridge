@@ -15,7 +15,6 @@ use std::path::PathBuf;
 
 pub(crate) struct GeneratorWireOutput {
     pub output_texts: PathTexts,
-    pub dart_needs_freezed: bool,
 }
 
 pub(crate) fn generate(
@@ -57,6 +56,5 @@ pub(crate) fn generate(
 
     Ok(GeneratorWireOutput {
         output_texts: rust_output.output_texts + c_output.output_texts + dart_output.output_texts,
-        dart_needs_freezed: dart_output.dart_needs_freezed,
     })
 }

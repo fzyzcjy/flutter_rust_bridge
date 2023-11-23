@@ -2,6 +2,7 @@ use crate::codegen::config::internal_config::GeneratorInternalConfig;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::misc::PathTexts;
 use crate::codegen::ir::pack::IrPack;
+use std::os::unix::process::parent_id;
 
 pub(crate) mod acc;
 pub(crate) mod api_dart;
@@ -29,6 +30,6 @@ pub(crate) fn generate(
 
     Ok(GeneratorOutput {
         output_texts: api_dart_output.output_texts + wire_output.output_texts,
-        dart_needs_freezed: wire_output.dart_needs_freezed,
+        dart_needs_freezed: api_dart_output.needs_freezed,
     })
 }

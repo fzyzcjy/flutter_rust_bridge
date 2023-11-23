@@ -10,7 +10,6 @@ mod text_generator;
 
 pub(crate) struct GeneratorWireDartOutput {
     pub output_texts: PathTexts,
-    pub dart_needs_freezed: bool,
 }
 
 pub(crate) fn generate(
@@ -29,6 +28,5 @@ pub(crate) fn generate(
             &context.config.dart_impl_output_path,
             &text.text,
         ),
-        dart_needs_freezed: spec.misc.needs_freezed,
     })
 }

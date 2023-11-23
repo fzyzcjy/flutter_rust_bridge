@@ -9,8 +9,8 @@ pub(super) struct ApiDartOutputText {
     pub(super) namespaced_texts: Vec<(Namespace, String)>,
 }
 
-pub(super) fn generate(spec: ApiDartOutputSpec) -> anyhow::Result<ApiDartOutputText> {
-    let ApiDartOutputSpec { funcs, classes } = spec;
+pub(super) fn generate(spec: &ApiDartOutputSpec) -> anyhow::Result<ApiDartOutputText> {
+    let ApiDartOutputSpec { funcs, classes, .. } = spec;
 
     let grouped_funcs = funcs.iter().into_group_map_by(|x| x.namespace.clone());
     let grouped_classes = classes.iter().into_group_map_by(|x| x.namespace.clone());

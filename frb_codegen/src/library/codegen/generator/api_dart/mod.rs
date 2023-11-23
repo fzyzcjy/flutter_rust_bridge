@@ -15,6 +15,7 @@ use std::path::{Path, PathBuf};
 
 pub(crate) struct GeneratorApiDartOutput {
     pub output_texts: PathTexts,
+    pub needs_freezed: bool,
 }
 
 pub(crate) fn generate(
@@ -24,9 +25,12 @@ pub(crate) fn generate(
 ) -> Result<GeneratorApiDartOutput> {
     let spec = spec_generator::generate(ir_pack, config)?;
     dumper.dump(ConfigDumpContent::Spec, "spec_api_dart.json", &spec)?;
-    let text = text_generator::generate(spec)?;
+    let text = text_generator::generate(&spec)?;
     let output_texts = generate_output_path_texts(config, text);
-    Ok(GeneratorApiDartOutput { output_texts })
+    Ok(GeneratorApiDartOutput {
+        output_texts,
+        needs_freezed: spec.needs_freezed,
+    })
 }
 
 fn generate_output_path_texts(
