@@ -20,7 +20,9 @@ impl<'a> WireRustGeneratorMiscTrait for EnumRefWireRustGenerator<'a> {
             .variants()
             .iter()
             .map(|variant| match &variant.kind {
-                IrVariantKind::Value => format!("{}::{} => {{}}", src.name.name, &variant.name),
+                IrVariantKind::Value => {
+                    format!("{}::{} => {{}}", src.name.rust_style(), &variant.name)
+                }
                 IrVariantKind::Struct(s) => {
                     let pattern = s
                         .fields

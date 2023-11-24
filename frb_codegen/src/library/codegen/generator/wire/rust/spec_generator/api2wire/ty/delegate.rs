@@ -9,9 +9,9 @@ impl<'a> WireRustGeneratorApi2wireTrait for DelegateWireRustGenerator<'a> {
     fn generate_impl_into_dart(&self) -> Option<String> {
         if let IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) = &self.ir {
             let src = ir.get(self.context.ir_pack);
-            let (name, self_path): (&str, &str) = match &src.wrapper_name {
-                Some(wrapper) => (&wrapper.name, &src.name.name),
-                None => (&src.name.name, "Self"),
+            let (name, self_path): (&str, String) = match &src.wrapper_name {
+                Some(wrapper) => (&wrapper.name, src.name.rust_style()),
+                None => (&src.name.name, "Self".into()),
             };
             let self_ref = self.generate_access_object_core("self".to_owned());
             let variants = src

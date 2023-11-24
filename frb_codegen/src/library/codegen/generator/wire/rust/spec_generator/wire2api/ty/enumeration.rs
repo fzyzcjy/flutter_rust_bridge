@@ -223,7 +223,7 @@ fn generate_impl_wire2api_body_variant(
                 .join(",");
 
             let (left, right) = st.brackets_pair();
-            let enum_name = &enu.name.name;
+            let enum_name = &enu.name.rust_style();
             let variant_name = &variant.name;
 
             if target == TargetOrCommon::Wasm {

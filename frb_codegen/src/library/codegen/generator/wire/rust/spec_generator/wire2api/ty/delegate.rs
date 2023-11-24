@@ -69,7 +69,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for DelegateWireRustGenerator<'a> {
                 let enu = ir.get(self.context.ir_pack);
                 let variants =
                     (enu.variants().iter().enumerate())
-                        .map(|(idx, variant)| format!("{} => {}::{},", idx, enu.name.name, variant.name))
+                        .map(|(idx, variant)| format!("{} => {}::{},", idx, enu.name.rust_style(), variant.name))
                         .collect_vec()
                         .join("\n");
                 format!(
@@ -89,7 +89,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for DelegateWireRustGenerator<'a> {
                         ..Default::default()
                     };
                 }
-                let codegen_timestamp = "let Timestamp { s, ns } = flutter_rust_bridge::wire2api_timestamp(self);";
+                let codegen_timestamp = "let flutter_rust_bridge::Timestamp { s, ns } = flutter_rust_bridge::wire2api_timestamp(self);";
                 let codegen_naive =
                     "chrono::NaiveDateTime::from_timestamp_opt(s, ns).expect(\"invalid or out-of-range datetime\")";
                 let codegen_utc = format!("chrono::DateTime::<chrono::Utc>::from_utc({codegen_naive}, chrono::Utc)");
