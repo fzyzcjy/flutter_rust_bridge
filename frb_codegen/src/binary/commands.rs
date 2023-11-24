@@ -73,9 +73,9 @@ pub(crate) struct GenerateCommandArgs {
     #[arg(long)]
     pub dart_format_line_length: Option<u32>,
 
-    /// The generated Dart enums will have their variant names camelCased.
+    /// The generated Dart enums will not have their variant names camelCased.
     #[arg(long)]
-    pub dart_enums_style: bool,
+    pub no_dart_enums_style: bool,
 
     /// Skip automatically adding `mod frb_generated;` to `lib.rs`
     #[arg(long)]

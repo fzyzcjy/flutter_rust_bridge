@@ -72,7 +72,7 @@ impl InternalConfig {
                 .unwrap_or(FALLBACK_DEFAULT_EXTERNAL_LIBRARY_RELATIVE_DIRECTORY.to_owned());
 
         let wasm_enabled = config.wasm.unwrap_or(true);
-        let dart_enums_style = config.dart_enums_style.unwrap_or(false);
+        let dart_enums_style = config.dart_enums_style.unwrap_or(true);
         let dart3 = config.dart3.unwrap_or(true);
 
         let dump_directory = rust_crate_dir.join("target").join("frb_dump");
