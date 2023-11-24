@@ -57,6 +57,34 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.generalizedFrbRustBinding,
   });
 
+  late final OpaqueTypeFinalizer _MutexHideDataFinalizer =
+      OpaqueTypeFinalizer(wire._drop_opaque_MutexHideDataPtr);
+  OpaqueTypeFinalizer get MutexHideDataFinalizer => _MutexHideDataFinalizer;
+  late final OpaqueTypeFinalizer _RwLockHideDataFinalizer =
+      OpaqueTypeFinalizer(wire._drop_opaque_RwLockHideDataPtr);
+  OpaqueTypeFinalizer get RwLockHideDataFinalizer => _RwLockHideDataFinalizer;
+  late final OpaqueTypeFinalizer _BoxDartDebugFinalizer =
+      OpaqueTypeFinalizer(wire._drop_opaque_BoxDartDebugPtr);
+  OpaqueTypeFinalizer get BoxDartDebugFinalizer => _BoxDartDebugFinalizer;
+  late final OpaqueTypeFinalizer _FrbOpaqueReturnFinalizer =
+      OpaqueTypeFinalizer(wire._drop_opaque_FrbOpaqueReturnPtr);
+  OpaqueTypeFinalizer get FrbOpaqueReturnFinalizer => _FrbOpaqueReturnFinalizer;
+  late final OpaqueTypeFinalizer _FrbOpaqueSyncReturnFinalizer =
+      OpaqueTypeFinalizer(wire._drop_opaque_FrbOpaqueSyncReturnPtr);
+  OpaqueTypeFinalizer get FrbOpaqueSyncReturnFinalizer =>
+      _FrbOpaqueSyncReturnFinalizer;
+  late final OpaqueTypeFinalizer _HideDataFinalizer =
+      OpaqueTypeFinalizer(wire._drop_opaque_HideDataPtr);
+  OpaqueTypeFinalizer get HideDataFinalizer => _HideDataFinalizer;
+  late final OpaqueTypeFinalizer _I32Finalizer =
+      OpaqueTypeFinalizer(wire._drop_opaque_I32Ptr);
+  OpaqueTypeFinalizer get I32Finalizer => _I32Finalizer;
+  late final OpaqueTypeFinalizer _NonCloneDataFinalizer =
+      OpaqueTypeFinalizer(wire._drop_opaque_NonCloneDataPtr);
+  OpaqueTypeFinalizer get NonCloneDataFinalizer => _NonCloneDataFinalizer;
+  late final OpaqueTypeFinalizer _NonSendHideDataFinalizer =
+      OpaqueTypeFinalizer(wire._drop_opaque_NonSendHideDataPtr);
+  OpaqueTypeFinalizer get NonSendHideDataFinalizer => _NonSendHideDataFinalizer;
   @protected
   int api2wire_Chrono_Duration(Duration raw) {
     return api2wire_i_64(BigInt.from(raw.inMicroseconds));

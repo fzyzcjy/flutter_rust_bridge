@@ -5744,61 +5744,44 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       wire.drop_opaque_RustOpaque_MutexHideData;
   OpaqueShareFnType get shareOpaqueMutexHideData =>
       wire.share_opaque_RustOpaque_MutexHideData;
-  OpaqueTypeFinalizer get MutexHideDataFinalizer =>
-      wire.RustOpaque_MutexHideDataFinalizer;
 
   OpaqueDropFnType get dropOpaqueRwLockHideData =>
       wire.drop_opaque_RustOpaque_RwLockHideData;
   OpaqueShareFnType get shareOpaqueRwLockHideData =>
       wire.share_opaque_RustOpaque_RwLockHideData;
-  OpaqueTypeFinalizer get RwLockHideDataFinalizer =>
-      wire.RustOpaque_RwLockHideDataFinalizer;
 
   OpaqueDropFnType get dropOpaqueBoxDartDebug =>
       wire.drop_opaque_RustOpaque_box_dynDartDebug;
   OpaqueShareFnType get shareOpaqueBoxDartDebug =>
       wire.share_opaque_RustOpaque_box_dynDartDebug;
-  OpaqueTypeFinalizer get BoxDartDebugFinalizer =>
-      wire.RustOpaque_box_dynDartDebugFinalizer;
 
   OpaqueDropFnType get dropOpaqueFrbOpaqueReturn =>
       wire.drop_opaque_RustOpaque_frb_opaque_return;
   OpaqueShareFnType get shareOpaqueFrbOpaqueReturn =>
       wire.share_opaque_RustOpaque_frb_opaque_return;
-  OpaqueTypeFinalizer get FrbOpaqueReturnFinalizer =>
-      wire.RustOpaque_frb_opaque_returnFinalizer;
 
   OpaqueDropFnType get dropOpaqueFrbOpaqueSyncReturn =>
       wire.drop_opaque_RustOpaque_frb_opaque_sync_return;
   OpaqueShareFnType get shareOpaqueFrbOpaqueSyncReturn =>
       wire.share_opaque_RustOpaque_frb_opaque_sync_return;
-  OpaqueTypeFinalizer get FrbOpaqueSyncReturnFinalizer =>
-      wire.RustOpaque_frb_opaque_sync_returnFinalizer;
 
   OpaqueDropFnType get dropOpaqueHideData =>
       wire.drop_opaque_RustOpaque_hide_data;
   OpaqueShareFnType get shareOpaqueHideData =>
       wire.share_opaque_RustOpaque_hide_data;
-  OpaqueTypeFinalizer get HideDataFinalizer =>
-      wire.RustOpaque_hide_dataFinalizer;
 
   OpaqueDropFnType get dropOpaqueI32 => wire.drop_opaque_RustOpaque_i_32;
   OpaqueShareFnType get shareOpaqueI32 => wire.share_opaque_RustOpaque_i_32;
-  OpaqueTypeFinalizer get I32Finalizer => wire.RustOpaque_i_32Finalizer;
 
   OpaqueDropFnType get dropOpaqueNonCloneData =>
       wire.drop_opaque_RustOpaque_non_clone_data;
   OpaqueShareFnType get shareOpaqueNonCloneData =>
       wire.share_opaque_RustOpaque_non_clone_data;
-  OpaqueTypeFinalizer get NonCloneDataFinalizer =>
-      wire.RustOpaque_non_clone_dataFinalizer;
 
   OpaqueDropFnType get dropOpaqueNonSendHideData =>
       wire.drop_opaque_RustOpaque_non_send_hide_data;
   OpaqueShareFnType get shareOpaqueNonSendHideData =>
       wire.share_opaque_RustOpaque_non_send_hide_data;
-  OpaqueTypeFinalizer get NonSendHideDataFinalizer =>
-      wire.RustOpaque_non_send_hide_dataFinalizer;
 }
 
 // Section: impl_wire2api
