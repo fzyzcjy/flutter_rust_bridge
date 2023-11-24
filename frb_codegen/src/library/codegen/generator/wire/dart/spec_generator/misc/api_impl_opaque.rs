@@ -51,9 +51,11 @@ fn generate_opaque_finalizer(
     let ty_dart_api_type_camel = ty_dart_api_type.to_case(Case::Camel);
 
     let generate_platform_impl = |finalizer_type: &str, finalizer_arg: &str| {
+        let field_name = format!("{ty_dart_api_type_camel}Finalizer");
         WireDartOutputCode {
+            api_body: format!("{finalizer_type} get {field_name};\n\n"),
             api_impl_body: format!(
-                "late final {finalizer_type} {ty_dart_api_type_camel}Finalizer = {finalizer_type}({finalizer_arg});",
+                "late final {finalizer_type} {field_name} = {finalizer_type}({finalizer_arg});\n\n",
             ),
             ..Default::default()
         }
