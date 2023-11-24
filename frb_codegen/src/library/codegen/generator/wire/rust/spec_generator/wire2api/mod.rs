@@ -29,7 +29,7 @@ pub(crate) fn generate(
 ) -> WireRustOutputSpecWire2api {
     WireRustOutputSpecWire2api {
         allocate_funcs: cache
-            .distinct_input_types
+            .distinct_types
             .iter()
             .map(|ty| WireRustGenerator::new(ty.clone(), context).generate_allocate_funcs())
             .collect(),
