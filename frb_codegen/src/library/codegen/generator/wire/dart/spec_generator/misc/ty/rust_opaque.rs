@@ -6,17 +6,23 @@ use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use convert_case::{Case, Casing};
+use itertools::Itertools;
 
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::misc::ty::WireDartGeneratorMiscTrait;
 
 impl<'a> WireDartGeneratorMiscTrait for RustOpaqueWireDartGenerator<'a> {
-    fn generate_extra_functions(&self) -> Option<WireDartOutputCode> {
-        vec![
-            self.generate_share_or_drop_opaque("share"),
-            self.generate_share_or_drop_opaque("drop"),
-            self.generate_opaque_finalizer(),
-        ]
+    fn generate_extra_functions(&self) -> Option<Acc<WireDartOutputCode>> {
+        Some(
+            vec![
+                self.generate_share_or_drop_opaque("share"),
+                self.generate_share_or_drop_opaque("drop"),
+                self.generate_opaque_finalizer(),
+            ]
+            .into_iter()
+            .collect::<Acc<Vec<WireDartOutputCode>>>()
+            .map(|x, _| x.into_iter().fold(Default::default(), |a, b| a + b)),
+        )
     }
 }
 
