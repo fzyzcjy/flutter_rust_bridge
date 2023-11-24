@@ -19,7 +19,11 @@ impl FrbAttributes {
         Ok(Self(
             attrs
                 .iter()
-                .filter(|attr| attr.path().is_ident(METADATA_IDENT))
+                .filter(|attr| {
+                    attr.path().is_ident(METADATA_IDENT)
+                        // exclude the `#[frb]` case
+                        && !matches!(attr.meta, Meta::Path(_))
+                })
                 .map(|attr| {
                     attr.parse_args::<FrbAttribute>()
                         .with_context(|| format!("attr={:?}", quote::quote!(#attr).to_string()))
