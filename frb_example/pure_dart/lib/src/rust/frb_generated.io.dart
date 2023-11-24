@@ -2321,7 +2321,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 }
 
-// Section: c_binding
+// Section: wire_class
 
 // ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names
 // AUTO GENERATED FILE, DO NOT EDIT.
