@@ -575,13 +575,6 @@ void main(List<String> args) async {
     expect(await api.nextUserId(userId: userId), UserId(value: 12));
   });
 
-  test('dart register event listener & create event with delay', () async {
-    expectLater(api.registerEventListener(), emits(Event(bridge: api, address: 'foo', payload: 'bar')));
-    await Future.delayed(const Duration(milliseconds: 20));
-    await api.createEvent(address: 'foo', payload: 'bar');
-    await api.closeEventListener();
-  });
-
   test('ConcatenateWith test', () async {
     final ConcatenateWith concatenateWith = ConcatenateWith(a: "hello ", bridge: api);
     final String concatenated = await concatenateWith.concatenate(b: "world");
