@@ -17,10 +17,11 @@ class FrbOpaqueSyncReturn extends FrbOpaque {
   FrbOpaqueSyncReturn.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
 
   @override
-  DropFnType get dropFn => RustLib.instance.api.dropOpaqueFrbOpaqueSyncReturn;
+  OpaqueDropFnType get dropFn =>
+      RustLib.instance.api.dropOpaqueFrbOpaqueSyncReturn;
 
   @override
-  ShareFnType get shareFn =>
+  OpaqueShareFnType get shareFn =>
       RustLib.instance.api.shareOpaqueFrbOpaqueSyncReturn;
 
   @override

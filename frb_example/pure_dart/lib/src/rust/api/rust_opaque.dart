@@ -62,10 +62,11 @@ class MutexHideData extends FrbOpaque {
   MutexHideData.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
 
   @override
-  DropFnType get dropFn => RustLib.instance.api.dropOpaqueMutexHideData;
+  OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueMutexHideData;
 
   @override
-  ShareFnType get shareFn => RustLib.instance.api.shareOpaqueMutexHideData;
+  OpaqueShareFnType get shareFn =>
+      RustLib.instance.api.shareOpaqueMutexHideData;
 
   @override
   OpaqueTypeFinalizer get staticFinalizer =>
@@ -77,10 +78,11 @@ class RwLockHideData extends FrbOpaque {
   RwLockHideData.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
 
   @override
-  DropFnType get dropFn => RustLib.instance.api.dropOpaqueRwLockHideData;
+  OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueRwLockHideData;
 
   @override
-  ShareFnType get shareFn => RustLib.instance.api.shareOpaqueRwLockHideData;
+  OpaqueShareFnType get shareFn =>
+      RustLib.instance.api.shareOpaqueRwLockHideData;
 
   @override
   OpaqueTypeFinalizer get staticFinalizer =>
@@ -92,10 +94,10 @@ class BoxDartDebug extends FrbOpaque {
   BoxDartDebug.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
 
   @override
-  DropFnType get dropFn => RustLib.instance.api.dropOpaqueBoxDartDebug;
+  OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueBoxDartDebug;
 
   @override
-  ShareFnType get shareFn => RustLib.instance.api.shareOpaqueBoxDartDebug;
+  OpaqueShareFnType get shareFn => RustLib.instance.api.shareOpaqueBoxDartDebug;
 
   @override
   OpaqueTypeFinalizer get staticFinalizer =>
@@ -107,10 +109,11 @@ class FrbOpaqueReturn extends FrbOpaque {
   FrbOpaqueReturn.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
 
   @override
-  DropFnType get dropFn => RustLib.instance.api.dropOpaqueFrbOpaqueReturn;
+  OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueFrbOpaqueReturn;
 
   @override
-  ShareFnType get shareFn => RustLib.instance.api.shareOpaqueFrbOpaqueReturn;
+  OpaqueShareFnType get shareFn =>
+      RustLib.instance.api.shareOpaqueFrbOpaqueReturn;
 
   @override
   OpaqueTypeFinalizer get staticFinalizer =>
@@ -122,10 +125,10 @@ class HideData extends FrbOpaque {
   HideData.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
 
   @override
-  DropFnType get dropFn => RustLib.instance.api.dropOpaqueHideData;
+  OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueHideData;
 
   @override
-  ShareFnType get shareFn => RustLib.instance.api.shareOpaqueHideData;
+  OpaqueShareFnType get shareFn => RustLib.instance.api.shareOpaqueHideData;
 
   @override
   OpaqueTypeFinalizer get staticFinalizer =>
@@ -147,10 +150,10 @@ class I32 extends FrbOpaque {
   I32.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
 
   @override
-  DropFnType get dropFn => RustLib.instance.api.dropOpaqueI32;
+  OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueI32;
 
   @override
-  ShareFnType get shareFn => RustLib.instance.api.shareOpaqueI32;
+  OpaqueShareFnType get shareFn => RustLib.instance.api.shareOpaqueI32;
 
   @override
   OpaqueTypeFinalizer get staticFinalizer => RustLib.instance.api.I32Finalizer;
@@ -161,10 +164,10 @@ class NonCloneData extends FrbOpaque {
   NonCloneData.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
 
   @override
-  DropFnType get dropFn => RustLib.instance.api.dropOpaqueNonCloneData;
+  OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueNonCloneData;
 
   @override
-  ShareFnType get shareFn => RustLib.instance.api.shareOpaqueNonCloneData;
+  OpaqueShareFnType get shareFn => RustLib.instance.api.shareOpaqueNonCloneData;
 
   @override
   OpaqueTypeFinalizer get staticFinalizer =>
@@ -176,10 +179,11 @@ class NonSendHideData extends FrbOpaque {
   NonSendHideData.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
 
   @override
-  DropFnType get dropFn => RustLib.instance.api.dropOpaqueNonSendHideData;
+  OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueNonSendHideData;
 
   @override
-  ShareFnType get shareFn => RustLib.instance.api.shareOpaqueNonSendHideData;
+  OpaqueShareFnType get shareFn =>
+      RustLib.instance.api.shareOpaqueNonSendHideData;
 
   @override
   OpaqueTypeFinalizer get staticFinalizer =>

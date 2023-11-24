@@ -56,40 +56,24 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.generalizedFrbRustBinding,
   });
 
-  late final Finalizer<PlatformPointer> _MutexHideDataFinalizer =
+  late final Finalizer<PlatformPointer> mutexHideDataFinalizer =
       Finalizer<PlatformPointer>(wire.drop_opaque_MutexHideData);
-  Finalizer<PlatformPointer> get MutexHideDataFinalizer =>
-      _MutexHideDataFinalizer;
-  late final Finalizer<PlatformPointer> _RwLockHideDataFinalizer =
+  late final Finalizer<PlatformPointer> rwLockHideDataFinalizer =
       Finalizer<PlatformPointer>(wire.drop_opaque_RwLockHideData);
-  Finalizer<PlatformPointer> get RwLockHideDataFinalizer =>
-      _RwLockHideDataFinalizer;
-  late final Finalizer<PlatformPointer> _BoxDartDebugFinalizer =
+  late final Finalizer<PlatformPointer> boxDartDebugFinalizer =
       Finalizer<PlatformPointer>(wire.drop_opaque_BoxDartDebug);
-  Finalizer<PlatformPointer> get BoxDartDebugFinalizer =>
-      _BoxDartDebugFinalizer;
-  late final Finalizer<PlatformPointer> _FrbOpaqueReturnFinalizer =
+  late final Finalizer<PlatformPointer> frbOpaqueReturnFinalizer =
       Finalizer<PlatformPointer>(wire.drop_opaque_FrbOpaqueReturn);
-  Finalizer<PlatformPointer> get FrbOpaqueReturnFinalizer =>
-      _FrbOpaqueReturnFinalizer;
-  late final Finalizer<PlatformPointer> _FrbOpaqueSyncReturnFinalizer =
+  late final Finalizer<PlatformPointer> frbOpaqueSyncReturnFinalizer =
       Finalizer<PlatformPointer>(wire.drop_opaque_FrbOpaqueSyncReturn);
-  Finalizer<PlatformPointer> get FrbOpaqueSyncReturnFinalizer =>
-      _FrbOpaqueSyncReturnFinalizer;
-  late final Finalizer<PlatformPointer> _HideDataFinalizer =
+  late final Finalizer<PlatformPointer> hideDataFinalizer =
       Finalizer<PlatformPointer>(wire.drop_opaque_HideData);
-  Finalizer<PlatformPointer> get HideDataFinalizer => _HideDataFinalizer;
-  late final Finalizer<PlatformPointer> _I32Finalizer =
+  late final Finalizer<PlatformPointer> i32Finalizer =
       Finalizer<PlatformPointer>(wire.drop_opaque_I32);
-  Finalizer<PlatformPointer> get I32Finalizer => _I32Finalizer;
-  late final Finalizer<PlatformPointer> _NonCloneDataFinalizer =
+  late final Finalizer<PlatformPointer> nonCloneDataFinalizer =
       Finalizer<PlatformPointer>(wire.drop_opaque_NonCloneData);
-  Finalizer<PlatformPointer> get NonCloneDataFinalizer =>
-      _NonCloneDataFinalizer;
-  late final Finalizer<PlatformPointer> _NonSendHideDataFinalizer =
+  late final Finalizer<PlatformPointer> nonSendHideDataFinalizer =
       Finalizer<PlatformPointer>(wire.drop_opaque_NonSendHideData);
-  Finalizer<PlatformPointer> get NonSendHideDataFinalizer =>
-      _NonSendHideDataFinalizer;
   @protected
   Object api2wire_Chrono_Duration(Duration raw) {
     return api2wire_i_64(BigInt.from(raw.inMilliseconds));

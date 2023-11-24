@@ -57,34 +57,24 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.generalizedFrbRustBinding,
   });
 
-  late final OpaqueTypeFinalizer _MutexHideDataFinalizer =
+  late final OpaqueTypeFinalizer mutexHideDataFinalizer =
       OpaqueTypeFinalizer(wire._drop_opaque_MutexHideDataPtr);
-  OpaqueTypeFinalizer get MutexHideDataFinalizer => _MutexHideDataFinalizer;
-  late final OpaqueTypeFinalizer _RwLockHideDataFinalizer =
+  late final OpaqueTypeFinalizer rwLockHideDataFinalizer =
       OpaqueTypeFinalizer(wire._drop_opaque_RwLockHideDataPtr);
-  OpaqueTypeFinalizer get RwLockHideDataFinalizer => _RwLockHideDataFinalizer;
-  late final OpaqueTypeFinalizer _BoxDartDebugFinalizer =
+  late final OpaqueTypeFinalizer boxDartDebugFinalizer =
       OpaqueTypeFinalizer(wire._drop_opaque_BoxDartDebugPtr);
-  OpaqueTypeFinalizer get BoxDartDebugFinalizer => _BoxDartDebugFinalizer;
-  late final OpaqueTypeFinalizer _FrbOpaqueReturnFinalizer =
+  late final OpaqueTypeFinalizer frbOpaqueReturnFinalizer =
       OpaqueTypeFinalizer(wire._drop_opaque_FrbOpaqueReturnPtr);
-  OpaqueTypeFinalizer get FrbOpaqueReturnFinalizer => _FrbOpaqueReturnFinalizer;
-  late final OpaqueTypeFinalizer _FrbOpaqueSyncReturnFinalizer =
+  late final OpaqueTypeFinalizer frbOpaqueSyncReturnFinalizer =
       OpaqueTypeFinalizer(wire._drop_opaque_FrbOpaqueSyncReturnPtr);
-  OpaqueTypeFinalizer get FrbOpaqueSyncReturnFinalizer =>
-      _FrbOpaqueSyncReturnFinalizer;
-  late final OpaqueTypeFinalizer _HideDataFinalizer =
+  late final OpaqueTypeFinalizer hideDataFinalizer =
       OpaqueTypeFinalizer(wire._drop_opaque_HideDataPtr);
-  OpaqueTypeFinalizer get HideDataFinalizer => _HideDataFinalizer;
-  late final OpaqueTypeFinalizer _I32Finalizer =
+  late final OpaqueTypeFinalizer i32Finalizer =
       OpaqueTypeFinalizer(wire._drop_opaque_I32Ptr);
-  OpaqueTypeFinalizer get I32Finalizer => _I32Finalizer;
-  late final OpaqueTypeFinalizer _NonCloneDataFinalizer =
+  late final OpaqueTypeFinalizer nonCloneDataFinalizer =
       OpaqueTypeFinalizer(wire._drop_opaque_NonCloneDataPtr);
-  OpaqueTypeFinalizer get NonCloneDataFinalizer => _NonCloneDataFinalizer;
-  late final OpaqueTypeFinalizer _NonSendHideDataFinalizer =
+  late final OpaqueTypeFinalizer nonSendHideDataFinalizer =
       OpaqueTypeFinalizer(wire._drop_opaque_NonSendHideDataPtr);
-  OpaqueTypeFinalizer get NonSendHideDataFinalizer => _NonSendHideDataFinalizer;
   @protected
   int api2wire_Chrono_Duration(Duration raw) {
     return api2wire_i_64(BigInt.from(raw.inMicroseconds));
