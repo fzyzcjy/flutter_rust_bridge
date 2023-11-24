@@ -4,6 +4,7 @@ use crate::codegen::generator::api_dart::spec_generator::base::{
     ApiDartGenerator, ApiDartGeneratorContext,
 };
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
+use crate::codegen::generator::api_dart::spec_generator::dump::generate_dump_info;
 use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_imports_which_types_and_funcs_use;
 use crate::codegen::ir::func::{IrFunc, IrFuncOwnerInfo};
@@ -50,7 +51,7 @@ pub(crate) fn generate(
     let cache = IrPackComputedCache::compute(ir_pack);
     let context = ApiDartGeneratorContext { ir_pack, config };
 
-    dumper.dump(GeneratorInfo, "generator_infoapi_dart.json", TODO)?;
+    dumper.dump(GeneratorInfo, "api_dart.json", &generate_dump_info())?;
 
     let grouped_funcs = (ir_pack.funcs.iter()).into_group_map_by(|x| x.name.namespace.clone());
     let grouped_namespaced_types = (cache.distinct_types.iter())

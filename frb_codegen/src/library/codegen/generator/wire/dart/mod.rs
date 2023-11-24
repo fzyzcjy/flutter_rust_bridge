@@ -18,7 +18,12 @@ pub(crate) fn generate(
     api_dart_actual_output_paths: &[PathBuf],
     dumper: &Dumper,
 ) -> anyhow::Result<GeneratorWireDartOutput> {
-    let spec = spec_generator::generate(context, c_file_content, api_dart_actual_output_paths)?;
+    let spec = spec_generator::generate(
+        context,
+        c_file_content,
+        api_dart_actual_output_paths,
+        dumper,
+    )?;
     dumper.dump(ConfigDumpContent::GeneratorSpec, "wire_dart.json", &spec)?;
 
     let text = text_generator::generate(&spec, &context.config)?;
