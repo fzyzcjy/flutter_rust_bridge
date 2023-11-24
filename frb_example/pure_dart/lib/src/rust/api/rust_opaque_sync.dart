@@ -26,5 +26,5 @@ class FrbOpaqueSyncReturn extends FrbOpaque {
 
   @override
   OpaqueTypeFinalizer get staticFinalizer =>
-      RustLib.instance.api.FrbOpaqueSyncReturnFinalizer;
+      RustLib.instance.api.frbOpaqueSyncReturnFinalizer;
 }

@@ -70,7 +70,7 @@ class MutexHideData extends FrbOpaque {
 
   @override
   OpaqueTypeFinalizer get staticFinalizer =>
-      RustLib.instance.api.MutexHideDataFinalizer;
+      RustLib.instance.api.mutexHideDataFinalizer;
 }
 
 @sealed
@@ -86,7 +86,7 @@ class RwLockHideData extends FrbOpaque {
 
   @override
   OpaqueTypeFinalizer get staticFinalizer =>
-      RustLib.instance.api.RwLockHideDataFinalizer;
+      RustLib.instance.api.rwLockHideDataFinalizer;
 }
 
 @sealed
@@ -101,7 +101,7 @@ class BoxDartDebug extends FrbOpaque {
 
   @override
   OpaqueTypeFinalizer get staticFinalizer =>
-      RustLib.instance.api.BoxDartDebugFinalizer;
+      RustLib.instance.api.boxDartDebugFinalizer;
 }
 
 @sealed
@@ -117,7 +117,7 @@ class FrbOpaqueReturn extends FrbOpaque {
 
   @override
   OpaqueTypeFinalizer get staticFinalizer =>
-      RustLib.instance.api.FrbOpaqueReturnFinalizer;
+      RustLib.instance.api.frbOpaqueReturnFinalizer;
 }
 
 @sealed
@@ -132,7 +132,7 @@ class HideData extends FrbOpaque {
 
   @override
   OpaqueTypeFinalizer get staticFinalizer =>
-      RustLib.instance.api.HideDataFinalizer;
+      RustLib.instance.api.hideDataFinalizer;
 }
 
 class HideDataArray2 extends NonGrowableListView<HideData> {
@@ -156,7 +156,7 @@ class I32 extends FrbOpaque {
   OpaqueShareFnType get shareFn => RustLib.instance.api.shareOpaqueI32;
 
   @override
-  OpaqueTypeFinalizer get staticFinalizer => RustLib.instance.api.I32Finalizer;
+  OpaqueTypeFinalizer get staticFinalizer => RustLib.instance.api.i32Finalizer;
 }
 
 @sealed
@@ -171,7 +171,7 @@ class NonCloneData extends FrbOpaque {
 
   @override
   OpaqueTypeFinalizer get staticFinalizer =>
-      RustLib.instance.api.NonCloneDataFinalizer;
+      RustLib.instance.api.nonCloneDataFinalizer;
 }
 
 @sealed
@@ -187,7 +187,7 @@ class NonSendHideData extends FrbOpaque {
 
   @override
   OpaqueTypeFinalizer get staticFinalizer =>
-      RustLib.instance.api.NonSendHideDataFinalizer;
+      RustLib.instance.api.nonSendHideDataFinalizer;
 }
 
 @freezed

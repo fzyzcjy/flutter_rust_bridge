@@ -3,6 +3,7 @@ use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGenerated
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
+use convert_case::{Case, Casing};
 use IrType::RustOpaque;
 
 impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
@@ -12,6 +13,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
 
         let dart_api_type =
             ApiDartGenerator::new(RustOpaque(self.ir.clone()), self.context).dart_api_type();
+        let dart_api_type_camel = dart_api_type.to_case(Case::Camel);
 
         Some(ApiDartGeneratedClass {
             namespace: self.ir.namespace.clone(),
@@ -26,7 +28,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
                     OpaqueShareFnType get shareFn => {dart_api_instance}.shareOpaque{dart_api_type};
             
                     @override
-                    OpaqueTypeFinalizer get staticFinalizer => {dart_api_instance}.{dart_api_type}Finalizer;
+                    OpaqueTypeFinalizer get staticFinalizer => {dart_api_instance}.{dart_api_type_camel}Finalizer;
                 }}"
             ),
             needs_freezed: false,
