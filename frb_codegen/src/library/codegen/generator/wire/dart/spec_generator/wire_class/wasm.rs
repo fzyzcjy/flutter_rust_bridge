@@ -1,5 +1,7 @@
 use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
+use crate::codegen::generator::wire::misc::has_port_argument;
+use std::borrow::Cow;
 
 pub(super) fn generate(config: &GeneratorWireDartInternalConfig) -> WireDartOutputCode {
     generate_wire_class(config) + generate_wasm_module_class(config)
@@ -81,12 +83,14 @@ fn generate_wasm_module_class_method(func: &IrFuncDisplay) -> String {
 /// In practice however this is optional as unlike Rust, Dart values are
 /// aware of their own types (via the `runtimeType` property) and can
 /// safely assume the `dynamic` or `Object` type instead.
-fn reconstruct_dart_wire_type_from_raw_repr(ty: &str) -> Cow<str> {
+fn reconstruct_dart_wire_type_from_raw_repr(ty: &str) -> String {
     let ty = ty.trim();
-    if is_rust_pointer(ty) {
-        return format!("int /* {ty} */").into();
-    }
-    format!("dynamic /* {ty} */").into()
+    let real_ty = if is_rust_pointer(ty) {
+        "int"
+    } else {
+        "dynamic"
+    };
+    format!("{real_ty} /* {ty} */")
 }
 
 fn is_rust_pointer(ty: &str) -> bool {
