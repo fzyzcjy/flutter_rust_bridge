@@ -25,10 +25,13 @@ impl FrbAttributes {
                         && !matches!(attr.meta, Meta::Path(_))
                 })
                 .map(|attr| {
-                    attr.parse_args::<FrbAttribute>()
+                    attr.parse_args::<OptionFrbAttribute>()
                         .with_context(|| format!("attr={:?}", quote::quote!(#attr).to_string()))
                 })
-                .collect::<anyhow::Result<Vec<_>>>()?,
+                .collect::<anyhow::Result<Vec<_>>>()?
+                .into_iter()
+                .filter_map(|x| x.0)
+                .collect(),
         ))
     }
 
@@ -96,29 +99,31 @@ enum FrbAttribute {
     Default(FrbAttributeDefaultValue),
 }
 
-impl Parse for FrbAttribute {
+struct OptionFrbAttribute(Option<FrbAttribute>);
+
+impl Parse for OptionFrbAttribute {
     fn parse(input: ParseStream<'_>) -> Result<Self> {
         let lookahead = input.lookahead1();
-        if lookahead.peek(frb_keyword::mirror) {
+        Ok(Self(Some(if lookahead.peek(frb_keyword::mirror) {
             input.parse::<frb_keyword::mirror>()?;
-            input.parse().map(FrbAttribute::Mirror)
+            input.parse().map(FrbAttribute::Mirror)?
         } else if lookahead.peek(frb_keyword::non_final) {
             input
                 .parse::<frb_keyword::non_final>()
-                .map(|_| FrbAttribute::NonFinal)
+                .map(|_| FrbAttribute::NonFinal)?
         } else if lookahead.peek(frb_keyword::sync) {
             input
                 .parse::<frb_keyword::sync>()
-                .map(|_| FrbAttribute::Sync)
+                .map(|_| FrbAttribute::Sync)?
         } else if lookahead.peek(frb_keyword::dart_metadata) {
-            input.parse().map(FrbAttribute::Metadata)
+            input.parse().map(FrbAttribute::Metadata)?
         } else if lookahead.peek(Token![default]) {
             input.parse::<Token![default]>()?;
             input.parse::<Token![=]>()?;
-            input.parse().map(FrbAttribute::Default)
+            input.parse().map(FrbAttribute::Default)?
         } else {
-            Err(lookahead.error())
-        }
+            return Ok(Self(None));
+        })))
     }
 }
 
