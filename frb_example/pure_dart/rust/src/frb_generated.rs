@@ -18,7 +18,7 @@
 
 // Section: imports
 
-use flutter_rust_bridge::Handler;
+use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: wire_funcs
 
@@ -3535,10 +3535,10 @@ const _: fn() = || {
         let _: bool = ApplicationEnvVar_.1;
     }
     match None::<crate::api::mirror::ApplicationMessage>.unwrap() {
-        ApplicationMessage::DisplayMessage(field0) => {
+        crate::api::mirror::ApplicationMessage::DisplayMessage(field0) => {
             let _: String = field0;
         }
-        ApplicationMessage::RenderPixel { x, y } => {
+        crate::api::mirror::ApplicationMessage::RenderPixel { x, y } => {
             let _: i32 = x;
             let _: i32 = y;
         }
@@ -3566,13 +3566,13 @@ const _: fn() = || {
         let _: Vec<i32> = Numbers_.0;
     }
     match None::<crate::api::mirror::RawStringEnumMirrored>.unwrap() {
-        RawStringEnumMirrored::Raw(field0) => {
+        crate::api::mirror::RawStringEnumMirrored::Raw(field0) => {
             let _: crate::api::mirror::RawStringMirrored = field0;
         }
-        RawStringEnumMirrored::Nested(field0) => {
+        crate::api::mirror::RawStringEnumMirrored::Nested(field0) => {
             let _: crate::api::mirror::NestedRawStringMirrored = field0;
         }
-        RawStringEnumMirrored::ListOfNested(field0) => {
+        crate::api::mirror::RawStringEnumMirrored::ListOfNested(field0) => {
             let _: crate::api::mirror::ListOfNestedRawStringMirrored = field0;
         }
     }

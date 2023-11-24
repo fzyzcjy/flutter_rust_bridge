@@ -30,7 +30,7 @@ impl Wire2Api<Vec<chrono::NaiveDateTime>> for Box<[i64]> {
 impl Wire2Api<flutter_rust_bridge::DartOpaque> for JsValue {
     fn wire2api(self) -> flutter_rust_bridge::DartOpaque {
         let arr = self.dyn_into::<JsArray>().unwrap();
-        unsafe { DartOpaque::new(arr.get(0), arr.get(1)) }
+        unsafe { flutter_rust_bridge::DartOpaque::new(arr.get(0), arr.get(1)) }
     }
 }
 impl Wire2Api<String> for String {
