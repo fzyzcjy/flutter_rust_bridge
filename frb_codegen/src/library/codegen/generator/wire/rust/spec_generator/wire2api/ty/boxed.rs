@@ -65,16 +65,12 @@ impl<'a> WireRustGeneratorWire2apiTrait for BoxedWireRustGenerator<'a> {
             Acc {
                 io: ExternFunc {
                     func_name,
-                    params: vec![ExternFuncParam {
-                        name: "value".to_owned(),
-                        rust_type: WireRustGenerator::new(self.ir.inner.clone(), self.context)
-                            .rust_wire_type(Target::Io),
-                        dart_type: WireDartGenerator::new(
-                            *self.ir.inner.clone(),
-                            self.context.as_wire_dart_context(),
-                        )
-                        .dart_wire_type(Target::Io),
-                    }],
+                    params: vec![ExternFuncParam::new(
+                        "value".to_owned(),
+                        Target::Io,
+                        &self.ir.inner,
+                        self.context,
+                    )],
                     return_type: Some(format!(
                         "*mut {}",
                         WireRustGenerator::new(self.ir.inner.clone(), self.context)

@@ -128,18 +128,7 @@ fn generate_params(func: &IrFunc, context: WireRustGeneratorContext) -> Acc<Vec<
                 },
                 TargetOrCommon::Io | TargetOrCommon::Wasm => {
                     let target: Target = target.try_into().unwrap();
-                    let rust_gen = WireRustGenerator::new(field.ty.clone(), context);
-                    let dart_gen =
-                        WireDartGenerator::new(field.ty.clone(), context.as_wire_dart_context());
-                    ExternFuncParam {
-                        name: name.clone(),
-                        rust_type: format!(
-                            "{}{}",
-                            rust_gen.rust_wire_modifier(target),
-                            rust_gen.rust_wire_type(target)
-                        ),
-                        dart_type: dart_gen.dart_wire_type(target),
-                    }
+                    ExternFuncParam::new(name.clone(), target, *field.ty, context)
                 }
             })
         })
