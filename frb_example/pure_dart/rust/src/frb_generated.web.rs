@@ -50,13 +50,13 @@ impl Wire2Api<Vec<String>> for JsValue {
 impl Wire2Api<uuid::Uuid> for Box<[u8]> {
     fn wire2api(self) -> uuid::Uuid {
         let single: Vec<u8> = self.wire2api();
-        wire2api_uuid_ref(single.as_slice())
+        flutter_rust_bridge::wire2api_uuid_ref(single.as_slice())
     }
 }
 impl Wire2Api<Vec<uuid::Uuid>> for Box<[u8]> {
     fn wire2api(self) -> Vec<uuid::Uuid> {
         let multiple: Vec<u8> = self.wire2api();
-        wire2api_uuids(multiple)
+        flutter_rust_bridge::wire2api_uuids(multiple)
     }
 }
 impl Wire2Api<flutter_rust_bridge::ZeroCopyBuffer<Vec<u8>>> for Box<[u8]> {
