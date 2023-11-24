@@ -10,7 +10,7 @@ impl<'a> WireRustGeneratorApi2wireTrait for StructRefWireRustGenerator<'a> {
         let wrapper = self.ir.get(ir_pack).wrapper_name.as_ref();
         wrapper
             .as_ref()
-            .map(|x| x.rust_style())
+            .map(|x| x.name.clone())
             .unwrap_or(self.ir.rust_api_type())
     }
 

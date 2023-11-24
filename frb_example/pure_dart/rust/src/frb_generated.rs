@@ -1399,8 +1399,7 @@ fn wire_app_settings_stream_impl(port_: flutter_rust_bridge::MessagePort) {
         move || {
             move |task_callback| {
                 Result::<_, ()>::Ok(crate::api::mirror::app_settings_stream(
-                    task_callback
-                        .stream_sink::<_, crate::api::mirror::mirror_ApplicationSettings>(),
+                    task_callback.stream_sink::<_, mirror_ApplicationSettings>(),
                 ))
             }
         },
@@ -1416,8 +1415,7 @@ fn wire_app_settings_vec_stream_impl(port_: flutter_rust_bridge::MessagePort) {
         move || {
             move |task_callback| {
                 Result::<_, ()>::Ok(crate::api::mirror::app_settings_vec_stream(
-                    task_callback
-                        .stream_sink::<_, Vec<crate::api::mirror::mirror_ApplicationSettings>>(),
+                    task_callback.stream_sink::<_, Vec<mirror_ApplicationSettings>>(),
                 ))
             }
         },
@@ -1456,7 +1454,7 @@ fn wire_first_sequence_impl(
     )
 }
 fn wire_get_app_settings_impl(port_: flutter_rust_bridge::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::mirror::mirror_ApplicationSettings, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_ApplicationSettings, _>(
         flutter_rust_bridge::WrapInfo {
             debug_name: "get_app_settings",
             port: Some(port_),
@@ -1466,7 +1464,7 @@ fn wire_get_app_settings_impl(port_: flutter_rust_bridge::MessagePort) {
     )
 }
 fn wire_get_fallible_app_settings_impl(port_: flutter_rust_bridge::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::mirror::mirror_ApplicationSettings, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_ApplicationSettings, _>(
         flutter_rust_bridge::WrapInfo {
             debug_name: "get_fallible_app_settings",
             port: Some(port_),
@@ -1476,7 +1474,7 @@ fn wire_get_fallible_app_settings_impl(port_: flutter_rust_bridge::MessagePort) 
     )
 }
 fn wire_get_message_impl(port_: flutter_rust_bridge::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::mirror::mirror_ApplicationMessage, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_ApplicationMessage, _>(
         flutter_rust_bridge::WrapInfo {
             debug_name: "get_message",
             port: Some(port_),
@@ -1520,30 +1518,14 @@ fn wire_mirror_struct_stream_impl(port_: flutter_rust_bridge::MessagePort) {
     )
 }
 fn wire_mirror_tuple_stream_impl(port_: flutter_rust_bridge::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
-        flutter_rust_bridge::WrapInfo {
-            debug_name: "mirror_tuple_stream",
-            port: Some(port_),
-            mode: flutter_rust_bridge::FfiCallMode::Stream,
-        },
-        move || {
-            move |task_callback| {
-                Result::<_, ()>::Ok(crate::api::mirror::mirror_tuple_stream(
-                    task_callback.stream_sink::<_, (
-                        crate::api::mirror::mirror_ApplicationSettings,
-                        crate::api::mirror::mirror_RawStringEnumMirrored,
-                    )>(),
-                ))
-            }
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::WrapInfo{ debug_name: "mirror_tuple_stream", port: Some(port_), mode: flutter_rust_bridge::FfiCallMode::Stream }, move || {  move |task_callback| Result::<_,()>::Ok(crate::api::mirror::mirror_tuple_stream(task_callback.stream_sink::<_,(mirror_ApplicationSettings,mirror_RawStringEnumMirrored,)>())) })
 }
 fn wire_repeat_number_impl(
     port_: flutter_rust_bridge::MessagePort,
     num: impl Wire2Api<i32> + core::panic::UnwindSafe,
     times: impl Wire2Api<usize> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::mirror::mirror_Numbers, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_Numbers, _>(
         flutter_rust_bridge::WrapInfo {
             debug_name: "repeat_number",
             port: Some(port_),
@@ -1563,7 +1545,7 @@ fn wire_repeat_sequence_impl(
     seq: impl Wire2Api<i32> + core::panic::UnwindSafe,
     times: impl Wire2Api<usize> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::mirror::mirror_Sequences, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_Sequences, _>(
         flutter_rust_bridge::WrapInfo {
             debug_name: "repeat_sequence",
             port: Some(port_),
@@ -1593,86 +1575,79 @@ fn wire_test_contains_mirrored_sub_struct_impl(port_: flutter_rust_bridge::Messa
     )
 }
 fn wire_test_fallible_of_raw_string_mirrored_impl(port_: flutter_rust_bridge::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, Vec<crate::api::mirror::mirror_RawStringMirrored>, _>(
-            flutter_rust_bridge::WrapInfo {
-                debug_name: "test_fallible_of_raw_string_mirrored",
-                port: Some(port_),
-                mode: flutter_rust_bridge::FfiCallMode::Normal,
-            },
-            move || move |task_callback| crate::api::mirror::test_fallible_of_raw_string_mirrored(),
-        )
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<mirror_RawStringMirrored>, _>(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "test_fallible_of_raw_string_mirrored",
+            port: Some(port_),
+            mode: flutter_rust_bridge::FfiCallMode::Normal,
+        },
+        move || move |task_callback| crate::api::mirror::test_fallible_of_raw_string_mirrored(),
+    )
 }
 fn wire_test_list_of_nested_enums_mirrored_impl(port_: flutter_rust_bridge::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, Vec<crate::api::mirror::mirror_RawStringEnumMirrored>, _>(
-            flutter_rust_bridge::WrapInfo {
-                debug_name: "test_list_of_nested_enums_mirrored",
-                port: Some(port_),
-                mode: flutter_rust_bridge::FfiCallMode::Normal,
-            },
-            move || {
-                move |task_callback| {
-                    Result::<_, ()>::Ok(crate::api::mirror::test_list_of_nested_enums_mirrored())
-                }
-            },
-        )
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<mirror_RawStringEnumMirrored>, _>(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "test_list_of_nested_enums_mirrored",
+            port: Some(port_),
+            mode: flutter_rust_bridge::FfiCallMode::Normal,
+        },
+        move || {
+            move |task_callback| {
+                Result::<_, ()>::Ok(crate::api::mirror::test_list_of_nested_enums_mirrored())
+            }
+        },
+    )
 }
 fn wire_test_list_of_raw_nested_string_mirrored_impl(port_: flutter_rust_bridge::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, crate::api::mirror::mirror_ListOfNestedRawStringMirrored, _>(
-            flutter_rust_bridge::WrapInfo {
-                debug_name: "test_list_of_raw_nested_string_mirrored",
-                port: Some(port_),
-                mode: flutter_rust_bridge::FfiCallMode::Normal,
-            },
-            move || {
-                move |task_callback| {
-                    Result::<_, ()>::Ok(
-                        crate::api::mirror::test_list_of_raw_nested_string_mirrored(),
-                    )
-                }
-            },
-        )
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_ListOfNestedRawStringMirrored, _>(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "test_list_of_raw_nested_string_mirrored",
+            port: Some(port_),
+            mode: flutter_rust_bridge::FfiCallMode::Normal,
+        },
+        move || {
+            move |task_callback| {
+                Result::<_, ()>::Ok(crate::api::mirror::test_list_of_raw_nested_string_mirrored())
+            }
+        },
+    )
 }
 fn wire_test_nested_raw_string_mirrored_impl(port_: flutter_rust_bridge::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, crate::api::mirror::mirror_NestedRawStringMirrored, _>(
-            flutter_rust_bridge::WrapInfo {
-                debug_name: "test_nested_raw_string_mirrored",
-                port: Some(port_),
-                mode: flutter_rust_bridge::FfiCallMode::Normal,
-            },
-            move || {
-                move |task_callback| {
-                    Result::<_, ()>::Ok(crate::api::mirror::test_nested_raw_string_mirrored())
-                }
-            },
-        )
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_NestedRawStringMirrored, _>(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "test_nested_raw_string_mirrored",
+            port: Some(port_),
+            mode: flutter_rust_bridge::FfiCallMode::Normal,
+        },
+        move || {
+            move |task_callback| {
+                Result::<_, ()>::Ok(crate::api::mirror::test_nested_raw_string_mirrored())
+            }
+        },
+    )
 }
 fn wire_test_raw_string_enum_mirrored_impl(
     port_: flutter_rust_bridge::MessagePort,
     nested: impl Wire2Api<bool> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, crate::api::mirror::mirror_RawStringEnumMirrored, _>(
-            flutter_rust_bridge::WrapInfo {
-                debug_name: "test_raw_string_enum_mirrored",
-                port: Some(port_),
-                mode: flutter_rust_bridge::FfiCallMode::Normal,
-            },
-            move || {
-                let api_nested = nested.wire2api();
-                move |task_callback| {
-                    Result::<_, ()>::Ok(crate::api::mirror::test_raw_string_enum_mirrored(
-                        api_nested,
-                    ))
-                }
-            },
-        )
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_RawStringEnumMirrored, _>(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "test_raw_string_enum_mirrored",
+            port: Some(port_),
+            mode: flutter_rust_bridge::FfiCallMode::Normal,
+        },
+        move || {
+            let api_nested = nested.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(crate::api::mirror::test_raw_string_enum_mirrored(
+                    api_nested,
+                ))
+            }
+        },
+    )
 }
 fn wire_test_raw_string_mirrored_impl(port_: flutter_rust_bridge::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::mirror::mirror_RawStringMirrored, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_RawStringMirrored, _>(
         flutter_rust_bridge::WrapInfo {
             debug_name: "test_raw_string_mirrored",
             port: Some(port_),
