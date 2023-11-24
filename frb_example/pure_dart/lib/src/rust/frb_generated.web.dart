@@ -2428,66 +2428,67 @@ class RustLibWire extends BaseWire {
   void wire_handle_uuids(NativePortType port_, Uint8List ids) =>
       wasmModule.wire_handle_uuids(port_, ids);
 
-  void drop_opaque_RustOpaque_MutexHideData(UNKNOWN ptr) =>
+  void drop_opaque_RustOpaque_MutexHideData(TODO_TheDartType ptr) =>
       wasmModule.drop_opaque_RustOpaque_MutexHideData(ptr);
 
   int /* *const std::ffi::c_void */ share_opaque_RustOpaque_MutexHideData(
-          UNKNOWN ptr) =>
+          TODO_TheDartType ptr) =>
       wasmModule.share_opaque_RustOpaque_MutexHideData(ptr);
 
-  void drop_opaque_RustOpaque_RwLockHideData(UNKNOWN ptr) =>
+  void drop_opaque_RustOpaque_RwLockHideData(TODO_TheDartType ptr) =>
       wasmModule.drop_opaque_RustOpaque_RwLockHideData(ptr);
 
   int /* *const std::ffi::c_void */ share_opaque_RustOpaque_RwLockHideData(
-          UNKNOWN ptr) =>
+          TODO_TheDartType ptr) =>
       wasmModule.share_opaque_RustOpaque_RwLockHideData(ptr);
 
-  void drop_opaque_RustOpaque_box_dynDartDebug(UNKNOWN ptr) =>
+  void drop_opaque_RustOpaque_box_dynDartDebug(TODO_TheDartType ptr) =>
       wasmModule.drop_opaque_RustOpaque_box_dynDartDebug(ptr);
 
   int /* *const std::ffi::c_void */ share_opaque_RustOpaque_box_dynDartDebug(
-          UNKNOWN ptr) =>
+          TODO_TheDartType ptr) =>
       wasmModule.share_opaque_RustOpaque_box_dynDartDebug(ptr);
 
-  void drop_opaque_RustOpaque_frb_opaque_return(UNKNOWN ptr) =>
+  void drop_opaque_RustOpaque_frb_opaque_return(TODO_TheDartType ptr) =>
       wasmModule.drop_opaque_RustOpaque_frb_opaque_return(ptr);
 
   int /* *const std::ffi::c_void */ share_opaque_RustOpaque_frb_opaque_return(
-          UNKNOWN ptr) =>
+          TODO_TheDartType ptr) =>
       wasmModule.share_opaque_RustOpaque_frb_opaque_return(ptr);
 
-  void drop_opaque_RustOpaque_frb_opaque_sync_return(UNKNOWN ptr) =>
+  void drop_opaque_RustOpaque_frb_opaque_sync_return(TODO_TheDartType ptr) =>
       wasmModule.drop_opaque_RustOpaque_frb_opaque_sync_return(ptr);
 
   int /* *const std::ffi::c_void */
-      share_opaque_RustOpaque_frb_opaque_sync_return(UNKNOWN ptr) =>
+      share_opaque_RustOpaque_frb_opaque_sync_return(TODO_TheDartType ptr) =>
           wasmModule.share_opaque_RustOpaque_frb_opaque_sync_return(ptr);
 
-  void drop_opaque_RustOpaque_hide_data(UNKNOWN ptr) =>
+  void drop_opaque_RustOpaque_hide_data(TODO_TheDartType ptr) =>
       wasmModule.drop_opaque_RustOpaque_hide_data(ptr);
 
   int /* *const std::ffi::c_void */ share_opaque_RustOpaque_hide_data(
-          UNKNOWN ptr) =>
+          TODO_TheDartType ptr) =>
       wasmModule.share_opaque_RustOpaque_hide_data(ptr);
 
-  void drop_opaque_RustOpaque_i_32(UNKNOWN ptr) =>
+  void drop_opaque_RustOpaque_i_32(TODO_TheDartType ptr) =>
       wasmModule.drop_opaque_RustOpaque_i_32(ptr);
 
-  int /* *const std::ffi::c_void */ share_opaque_RustOpaque_i_32(UNKNOWN ptr) =>
+  int /* *const std::ffi::c_void */ share_opaque_RustOpaque_i_32(
+          TODO_TheDartType ptr) =>
       wasmModule.share_opaque_RustOpaque_i_32(ptr);
 
-  void drop_opaque_RustOpaque_non_clone_data(UNKNOWN ptr) =>
+  void drop_opaque_RustOpaque_non_clone_data(TODO_TheDartType ptr) =>
       wasmModule.drop_opaque_RustOpaque_non_clone_data(ptr);
 
   int /* *const std::ffi::c_void */ share_opaque_RustOpaque_non_clone_data(
-          UNKNOWN ptr) =>
+          TODO_TheDartType ptr) =>
       wasmModule.share_opaque_RustOpaque_non_clone_data(ptr);
 
-  void drop_opaque_RustOpaque_non_send_hide_data(UNKNOWN ptr) =>
+  void drop_opaque_RustOpaque_non_send_hide_data(TODO_TheDartType ptr) =>
       wasmModule.drop_opaque_RustOpaque_non_send_hide_data(ptr);
 
   int /* *const std::ffi::c_void */ share_opaque_RustOpaque_non_send_hide_data(
-          UNKNOWN ptr) =>
+          TODO_TheDartType ptr) =>
       wasmModule.share_opaque_RustOpaque_non_send_hide_data(ptr);
 }
 
@@ -3168,48 +3169,49 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_handle_uuids(NativePortType port_, Uint8List ids);
 
-  external void drop_opaque_RustOpaque_MutexHideData(UNKNOWN ptr);
+  external void drop_opaque_RustOpaque_MutexHideData(TODO_TheDartType ptr);
 
   external int /* *const std::ffi::c_void */
-      share_opaque_RustOpaque_MutexHideData(UNKNOWN ptr);
+      share_opaque_RustOpaque_MutexHideData(TODO_TheDartType ptr);
 
-  external void drop_opaque_RustOpaque_RwLockHideData(UNKNOWN ptr);
-
-  external int /* *const std::ffi::c_void */
-      share_opaque_RustOpaque_RwLockHideData(UNKNOWN ptr);
-
-  external void drop_opaque_RustOpaque_box_dynDartDebug(UNKNOWN ptr);
+  external void drop_opaque_RustOpaque_RwLockHideData(TODO_TheDartType ptr);
 
   external int /* *const std::ffi::c_void */
-      share_opaque_RustOpaque_box_dynDartDebug(UNKNOWN ptr);
+      share_opaque_RustOpaque_RwLockHideData(TODO_TheDartType ptr);
 
-  external void drop_opaque_RustOpaque_frb_opaque_return(UNKNOWN ptr);
-
-  external int /* *const std::ffi::c_void */
-      share_opaque_RustOpaque_frb_opaque_return(UNKNOWN ptr);
-
-  external void drop_opaque_RustOpaque_frb_opaque_sync_return(UNKNOWN ptr);
+  external void drop_opaque_RustOpaque_box_dynDartDebug(TODO_TheDartType ptr);
 
   external int /* *const std::ffi::c_void */
-      share_opaque_RustOpaque_frb_opaque_sync_return(UNKNOWN ptr);
+      share_opaque_RustOpaque_box_dynDartDebug(TODO_TheDartType ptr);
 
-  external void drop_opaque_RustOpaque_hide_data(UNKNOWN ptr);
+  external void drop_opaque_RustOpaque_frb_opaque_return(TODO_TheDartType ptr);
+
+  external int /* *const std::ffi::c_void */
+      share_opaque_RustOpaque_frb_opaque_return(TODO_TheDartType ptr);
+
+  external void drop_opaque_RustOpaque_frb_opaque_sync_return(
+      TODO_TheDartType ptr);
+
+  external int /* *const std::ffi::c_void */
+      share_opaque_RustOpaque_frb_opaque_sync_return(TODO_TheDartType ptr);
+
+  external void drop_opaque_RustOpaque_hide_data(TODO_TheDartType ptr);
 
   external int /* *const std::ffi::c_void */ share_opaque_RustOpaque_hide_data(
-      UNKNOWN ptr);
+      TODO_TheDartType ptr);
 
-  external void drop_opaque_RustOpaque_i_32(UNKNOWN ptr);
+  external void drop_opaque_RustOpaque_i_32(TODO_TheDartType ptr);
 
   external int /* *const std::ffi::c_void */ share_opaque_RustOpaque_i_32(
-      UNKNOWN ptr);
+      TODO_TheDartType ptr);
 
-  external void drop_opaque_RustOpaque_non_clone_data(UNKNOWN ptr);
-
-  external int /* *const std::ffi::c_void */
-      share_opaque_RustOpaque_non_clone_data(UNKNOWN ptr);
-
-  external void drop_opaque_RustOpaque_non_send_hide_data(UNKNOWN ptr);
+  external void drop_opaque_RustOpaque_non_clone_data(TODO_TheDartType ptr);
 
   external int /* *const std::ffi::c_void */
-      share_opaque_RustOpaque_non_send_hide_data(UNKNOWN ptr);
+      share_opaque_RustOpaque_non_clone_data(TODO_TheDartType ptr);
+
+  external void drop_opaque_RustOpaque_non_send_hide_data(TODO_TheDartType ptr);
+
+  external int /* *const std::ffi::c_void */
+      share_opaque_RustOpaque_non_send_hide_data(TODO_TheDartType ptr);
 }
