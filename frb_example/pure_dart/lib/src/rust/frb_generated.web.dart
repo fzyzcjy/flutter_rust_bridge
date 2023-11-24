@@ -1675,6 +1675,18 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_return_non_droppable_dart_opaque(opaque);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_sync_accept_dart_opaque(Object opaque) =>
+          wasmModule.wire_sync_accept_dart_opaque(opaque);
+
+  dynamic /* flutter_rust_bridge::support::WireSyncReturn */ wire_sync_loopback(
+          Object opaque) =>
+      wasmModule.wire_sync_loopback(opaque);
+
+  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_sync_option_loopback(Object? opaque) =>
+          wasmModule.wire_sync_option_loopback(opaque);
+
+  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_unwrap_dart_opaque(Object opaque) =>
           wasmModule.wire_unwrap_dart_opaque(opaque);
 
@@ -2361,6 +2373,10 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_frb_sync_generator_test(port_);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_sync_create_sync_opaque() =>
+          wasmModule.wire_sync_create_sync_opaque();
+
+  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_sync_run_opaque(Object opaque) =>
           wasmModule.wire_sync_run_opaque(opaque);
 
@@ -2612,6 +2628,15 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_return_non_droppable_dart_opaque(Object opaque);
+
+  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_sync_accept_dart_opaque(Object opaque);
+
+  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_sync_loopback(Object opaque);
+
+  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_sync_option_loopback(Object? opaque);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_unwrap_dart_opaque(Object opaque);
@@ -3115,6 +3140,9 @@ class RustLibWasmModule implements WasmModule {
   external void wire_unwrap_rust_opaque(NativePortType port_, Object opaque);
 
   external void wire_frb_sync_generator_test(NativePortType port_);
+
+  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_sync_create_sync_opaque();
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_sync_run_opaque(Object opaque);

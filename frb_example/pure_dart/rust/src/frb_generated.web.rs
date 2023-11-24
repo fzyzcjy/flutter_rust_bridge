@@ -1922,6 +1922,23 @@ pub fn wire_return_non_droppable_dart_opaque(
 }
 
 #[wasm_bindgen]
+pub fn wire_sync_accept_dart_opaque(
+    opaque: JsValue,
+) -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_sync_accept_dart_opaque_impl(opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_sync_loopback(opaque: JsValue) -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_sync_loopback_impl(opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_sync_option_loopback(opaque: JsValue) -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_sync_option_loopback_impl(opaque)
+}
+
+#[wasm_bindgen]
 pub fn wire_unwrap_dart_opaque(opaque: JsValue) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_unwrap_dart_opaque_impl(opaque)
 }
@@ -3081,6 +3098,11 @@ pub fn wire_unwrap_rust_opaque(port_: flutter_rust_bridge::MessagePort, opaque: 
 #[wasm_bindgen]
 pub fn wire_frb_sync_generator_test(port_: flutter_rust_bridge::MessagePort) {
     wire_frb_sync_generator_test_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_sync_create_sync_opaque() -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_sync_create_sync_opaque_impl()
 }
 
 #[wasm_bindgen]

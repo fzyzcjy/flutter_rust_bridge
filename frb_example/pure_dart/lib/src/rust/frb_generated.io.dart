@@ -3085,6 +3085,49 @@ class RustLibWire implements BaseWire {
       _wire_return_non_droppable_dart_opaquePtr
           .asFunction<WireSyncReturn Function(wire_DartOpaque)>();
 
+  WireSyncReturn wire_sync_accept_dart_opaque(
+    wire_DartOpaque opaque,
+  ) {
+    return _wire_sync_accept_dart_opaque(
+      opaque,
+    );
+  }
+
+  late final _wire_sync_accept_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(wire_DartOpaque)>>(
+          'wire_sync_accept_dart_opaque');
+  late final _wire_sync_accept_dart_opaque = _wire_sync_accept_dart_opaquePtr
+      .asFunction<WireSyncReturn Function(wire_DartOpaque)>();
+
+  WireSyncReturn wire_sync_loopback(
+    wire_DartOpaque opaque,
+  ) {
+    return _wire_sync_loopback(
+      opaque,
+    );
+  }
+
+  late final _wire_sync_loopbackPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(wire_DartOpaque)>>(
+          'wire_sync_loopback');
+  late final _wire_sync_loopback = _wire_sync_loopbackPtr
+      .asFunction<WireSyncReturn Function(wire_DartOpaque)>();
+
+  WireSyncReturn wire_sync_option_loopback(
+    ffi.Pointer<wire_DartOpaque> opaque,
+  ) {
+    return _wire_sync_option_loopback(
+      opaque,
+    );
+  }
+
+  late final _wire_sync_option_loopbackPtr = _lookup<
+      ffi.NativeFunction<
+          WireSyncReturn Function(
+              ffi.Pointer<wire_DartOpaque>)>>('wire_sync_option_loopback');
+  late final _wire_sync_option_loopback = _wire_sync_option_loopbackPtr
+      .asFunction<WireSyncReturn Function(ffi.Pointer<wire_DartOpaque>)>();
+
   WireSyncReturn wire_unwrap_dart_opaque(
     wire_DartOpaque opaque,
   ) {
@@ -6082,6 +6125,16 @@ class RustLibWire implements BaseWire {
           'wire_frb_sync_generator_test');
   late final _wire_frb_sync_generator_test =
       _wire_frb_sync_generator_testPtr.asFunction<void Function(int)>();
+
+  WireSyncReturn wire_sync_create_sync_opaque() {
+    return _wire_sync_create_sync_opaque();
+  }
+
+  late final _wire_sync_create_sync_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+          'wire_sync_create_sync_opaque');
+  late final _wire_sync_create_sync_opaque =
+      _wire_sync_create_sync_opaquePtr.asFunction<WireSyncReturn Function()>();
 
   WireSyncReturn wire_sync_run_opaque(
     wire_RustOpaque_non_send_hide_data opaque,

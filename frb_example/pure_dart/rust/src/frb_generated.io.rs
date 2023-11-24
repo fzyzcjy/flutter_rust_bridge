@@ -3779,6 +3779,27 @@ pub extern "C" fn wire_return_non_droppable_dart_opaque(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_sync_accept_dart_opaque(
+    opaque: wire_DartOpaque,
+) -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_sync_accept_dart_opaque_impl(opaque)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_sync_loopback(
+    opaque: wire_DartOpaque,
+) -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_sync_loopback_impl(opaque)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_sync_option_loopback(
+    opaque: *mut wire_DartOpaque,
+) -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_sync_option_loopback_impl(opaque)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_unwrap_dart_opaque(
     opaque: wire_DartOpaque,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
@@ -4881,6 +4902,11 @@ pub extern "C" fn wire_unwrap_rust_opaque(port_: i64, opaque: wire_RustOpaque_hi
 #[no_mangle]
 pub extern "C" fn wire_frb_sync_generator_test(port_: i64) {
     wire_frb_sync_generator_test_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_sync_create_sync_opaque() -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_sync_create_sync_opaque_impl()
 }
 
 #[no_mangle]

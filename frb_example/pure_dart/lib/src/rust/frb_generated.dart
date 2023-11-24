@@ -191,6 +191,12 @@ abstract class RustLibApi extends BaseApi {
 
   Object returnNonDroppableDartOpaque({required Object opaque, dynamic hint});
 
+  String syncAcceptDartOpaque({required Object opaque, dynamic hint});
+
+  Object syncLoopback({required Object opaque, dynamic hint});
+
+  Object? syncOptionLoopback({Object? opaque, dynamic hint});
+
   String unwrapDartOpaque({required Object opaque, dynamic hint});
 
   Future<EnumSimpleTwinNormal> funcEnumSimpleTwinNormal(
@@ -655,6 +661,8 @@ abstract class RustLibApi extends BaseApi {
   Future<String> unwrapRustOpaque({required HideData opaque, dynamic hint});
 
   Future<FrbOpaqueSyncReturn> frbSyncGeneratorTest({dynamic hint});
+
+  NonSendHideData syncCreateSyncOpaque({dynamic hint});
 
   String syncRunOpaque({required NonSendHideData opaque, dynamic hint});
 
@@ -1653,6 +1661,63 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kReturnNonDroppableDartOpaqueConstMeta =>
       const TaskConstMeta(
         debugName: "return_non_droppable_dart_opaque",
+        argNames: ["opaque"],
+      );
+
+  @override
+  String syncAcceptDartOpaque({required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_sync_accept_dart_opaque(arg0),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kSyncAcceptDartOpaqueConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSyncAcceptDartOpaqueConstMeta => const TaskConstMeta(
+        debugName: "sync_accept_dart_opaque",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Object syncLoopback({required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_sync_loopback(arg0),
+      parseSuccessData: _wire2api_DartOpaque,
+      parseErrorData: null,
+      constMeta: kSyncLoopbackConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSyncLoopbackConstMeta => const TaskConstMeta(
+        debugName: "sync_loopback",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Object? syncOptionLoopback({Object? opaque, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_DartOpaque(opaque);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_sync_option_loopback(arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_DartOpaque,
+      parseErrorData: null,
+      constMeta: kSyncOptionLoopbackConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSyncOptionLoopbackConstMeta => const TaskConstMeta(
+        debugName: "sync_option_loopback",
         argNames: ["opaque"],
       );
 
@@ -5382,6 +5447,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kFrbSyncGeneratorTestConstMeta => const TaskConstMeta(
         debugName: "frb_sync_generator_test",
+        argNames: [],
+      );
+
+  @override
+  NonSendHideData syncCreateSyncOpaque({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_sync_create_sync_opaque(),
+      parseSuccessData: _wire2api_RustOpaque_non_send_hide_data,
+      parseErrorData: null,
+      constMeta: kSyncCreateSyncOpaqueConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSyncCreateSyncOpaqueConstMeta => const TaskConstMeta(
+        debugName: "sync_create_sync_opaque",
         argNames: [],
       );
 

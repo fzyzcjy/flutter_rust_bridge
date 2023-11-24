@@ -813,6 +813,12 @@ void wire_set_static_dart_opaque(int64_t port_, struct wire_DartOpaque opaque);
 
 WireSyncReturn wire_return_non_droppable_dart_opaque(struct wire_DartOpaque opaque);
 
+WireSyncReturn wire_sync_accept_dart_opaque(struct wire_DartOpaque opaque);
+
+WireSyncReturn wire_sync_loopback(struct wire_DartOpaque opaque);
+
+WireSyncReturn wire_sync_option_loopback(struct wire_DartOpaque *opaque);
+
 WireSyncReturn wire_unwrap_dart_opaque(struct wire_DartOpaque opaque);
 
 void wire_func_enum_simple_twin_normal(int64_t port_, int32_t arg);
@@ -1206,6 +1212,8 @@ void wire_run_opaque_with_delay(int64_t port_, struct wire_RustOpaque_hide_data 
 void wire_unwrap_rust_opaque(int64_t port_, struct wire_RustOpaque_hide_data opaque);
 
 void wire_frb_sync_generator_test(int64_t port_);
+
+WireSyncReturn wire_sync_create_sync_opaque(void);
 
 WireSyncReturn wire_sync_run_opaque(struct wire_RustOpaque_non_send_hide_data opaque);
 
@@ -1998,6 +2006,10 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque);
     dummy_var ^= ((int64_t) (void*) wire_simple_adder_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_simple_adder_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_sync_accept_dart_opaque);
+    dummy_var ^= ((int64_t) (void*) wire_sync_create_sync_opaque);
+    dummy_var ^= ((int64_t) (void*) wire_sync_loopback);
+    dummy_var ^= ((int64_t) (void*) wire_sync_option_loopback);
     dummy_var ^= ((int64_t) (void*) wire_sync_run_opaque);
     dummy_var ^= ((int64_t) (void*) wire_test_abc_enum);
     dummy_var ^= ((int64_t) (void*) wire_test_chrono);

@@ -770,6 +770,55 @@ fn wire_return_non_droppable_dart_opaque_impl(
         },
     )
 }
+fn wire_sync_accept_dart_opaque_impl(
+    opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+) -> flutter_rust_bridge::support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "sync_accept_dart_opaque",
+            port: None,
+            mode: flutter_rust_bridge::FfiCallMode::Sync,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            Result::<_, ()>::Ok(crate::api::dart_opaque_sync::sync_accept_dart_opaque(
+                api_opaque,
+            ))
+        },
+    )
+}
+fn wire_sync_loopback_impl(
+    opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+) -> flutter_rust_bridge::support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "sync_loopback",
+            port: None,
+            mode: flutter_rust_bridge::FfiCallMode::Sync,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            Result::<_, ()>::Ok(crate::api::dart_opaque_sync::sync_loopback(api_opaque))
+        },
+    )
+}
+fn wire_sync_option_loopback_impl(
+    opaque: impl Wire2Api<Option<flutter_rust_bridge::DartOpaque>> + core::panic::UnwindSafe,
+) -> flutter_rust_bridge::support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "sync_option_loopback",
+            port: None,
+            mode: flutter_rust_bridge::FfiCallMode::Sync,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            Result::<_, ()>::Ok(crate::api::dart_opaque_sync::sync_option_loopback(
+                api_opaque,
+            ))
+        },
+    )
+}
 fn wire_unwrap_dart_opaque_impl(
     opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
@@ -3111,6 +3160,16 @@ fn wire_frb_sync_generator_test_impl(port_: flutter_rust_bridge::MessagePort) {
                 Result::<_, ()>::Ok(crate::api::rust_opaque_sync::frb_sync_generator_test())
             }
         },
+    )
+}
+fn wire_sync_create_sync_opaque_impl() -> flutter_rust_bridge::support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "sync_create_sync_opaque",
+            port: None,
+            mode: flutter_rust_bridge::FfiCallMode::Sync,
+        },
+        move || Result::<_, ()>::Ok(crate::api::rust_opaque_sync::sync_create_sync_opaque()),
     )
 }
 fn wire_sync_run_opaque_impl(
