@@ -116,7 +116,10 @@ fn generate_params(func: &IrFunc, context: WireRustGeneratorContext) -> Acc<Vec<
             Acc::new(|target| match target {
                 TargetOrCommon::Common => ExternFuncParam {
                     name: name.clone(),
-                    rust_type: format!("impl Wire2Api<{}> + UnwindSafe", field.ty.rust_api_type()),
+                    rust_type: format!(
+                        "impl Wire2Api<{}> + core::panic::UnwindSafe",
+                        field.ty.rust_api_type()
+                    ),
                     dart_type: None,
                 },
                 TargetOrCommon::Io | TargetOrCommon::Wasm => {

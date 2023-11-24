@@ -87,12 +87,12 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
                     func_name: format!("drop_opaque_{}", self.ir.safe_ident()),
                     params: vec![ExternFuncParam {
                         name: "ptr".to_owned(),
-                        rust_type: "*const c_void".to_owned(),
+                        rust_type: "*const std::ffi::c_void".to_owned(),
                         dart_type: None,
                     }],
                     return_type: None,
                     body: format!(
-                        "unsafe {{Arc::<{}>::decrement_strong_count(ptr as _);}}",
+                        "unsafe {{std::sync::Arc::<{}>::decrement_strong_count(ptr as _);}}",
                         self.ir.inner.rust_api_type()
                     ),
                     target,
@@ -101,12 +101,12 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
                     func_name: format!("share_opaque_{}", self.ir.safe_ident()),
                     params: vec![ExternFuncParam {
                         name: "ptr".to_owned(),
-                        rust_type: "*const c_void".to_owned(),
+                        rust_type: "*const std::ffi::c_void".to_owned(),
                         dart_type: None,
                     }],
-                    return_type: Some("*const c_void".to_string()),
+                    return_type: Some("*const std::ffi::c_void".to_string()),
                     body: format!(
-                        "unsafe {{Arc::<{}>::increment_strong_count(ptr as _); ptr}}",
+                        "unsafe {{std::sync::Arc::<{}>::increment_strong_count(ptr as _); ptr}}",
                         self.ir.inner.rust_api_type()
                     ),
                     target,

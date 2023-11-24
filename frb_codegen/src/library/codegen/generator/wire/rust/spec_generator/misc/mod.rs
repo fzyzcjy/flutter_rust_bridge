@@ -108,16 +108,6 @@ fn generate_static_checks(types: &[IrType], context: WireRustGeneratorContext) -
 }
 
 fn generate_imports(types: &[IrType], context: WireRustGeneratorContext) -> anyhow::Result<String> {
-    let imports_misc = format!(
-        r#"
-        use flutter_rust_bridge::*;
-        use core::panic::UnwindSafe;
-        use std::sync::Arc;
-        use std::ffi::c_void;
-        use flutter_rust_bridge::rust2dart::IntoIntoDart;
-        "#
-    );
-
     let imports_for_rust_input = (context.config.rust_input_path_pack.rust_input_paths)
         .iter()
         .map(|rust_input_path| {
@@ -141,7 +131,7 @@ fn generate_imports(types: &[IrType], context: WireRustGeneratorContext) -> anyh
         .into_iter()
         .join("\n");
 
-    Ok(imports_misc + &imports_for_rust_input + &imports_from_types)
+    Ok(imports_for_rust_input + &imports_from_types)
 }
 
 fn generate_executor(ir_pack: &IrPack) -> String {
