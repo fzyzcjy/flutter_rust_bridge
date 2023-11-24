@@ -1318,36 +1318,43 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   void _api_fill_to_wire_RustOpaque_MutexHideData(
       MutexHideData apiObj, wire_RustOpaque_MutexHideData wireObj) {
+    // ignore: invalid_use_of_internal_member
     wireObj.ptr = apiObj.shareOrMove();
   }
 
   void _api_fill_to_wire_RustOpaque_RwLockHideData(
       RwLockHideData apiObj, wire_RustOpaque_RwLockHideData wireObj) {
+    // ignore: invalid_use_of_internal_member
     wireObj.ptr = apiObj.shareOrMove();
   }
 
   void _api_fill_to_wire_RustOpaque_box_dynDartDebug(
       BoxDartDebug apiObj, wire_RustOpaque_box_dynDartDebug wireObj) {
+    // ignore: invalid_use_of_internal_member
     wireObj.ptr = apiObj.shareOrMove();
   }
 
   void _api_fill_to_wire_RustOpaque_hide_data(
       HideData apiObj, wire_RustOpaque_hide_data wireObj) {
+    // ignore: invalid_use_of_internal_member
     wireObj.ptr = apiObj.shareOrMove();
   }
 
   void _api_fill_to_wire_RustOpaque_i_32(
       I32 apiObj, wire_RustOpaque_i_32 wireObj) {
+    // ignore: invalid_use_of_internal_member
     wireObj.ptr = apiObj.shareOrMove();
   }
 
   void _api_fill_to_wire_RustOpaque_non_clone_data(
       NonCloneData apiObj, wire_RustOpaque_non_clone_data wireObj) {
+    // ignore: invalid_use_of_internal_member
     wireObj.ptr = apiObj.shareOrMove();
   }
 
   void _api_fill_to_wire_RustOpaque_non_send_hide_data(
       NonSendHideData apiObj, wire_RustOpaque_non_send_hide_data wireObj) {
+    // ignore: invalid_use_of_internal_member
     wireObj.ptr = apiObj.shareOrMove();
   }
 
