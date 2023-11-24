@@ -33,7 +33,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
             ("DartOpaque", None) => DartOpaque(IrTypeDartOpaque {}),
 
-            ("RustOpaque", Some(Generic([ty]))) => self.parse_rust_opaque(ty),
+            ("RustOpaque", Some(Generic([ty]))) => RustOpaque(IrTypeRustOpaque::new(
+                self.context.initiated_namespace.clone(),
+                ty.clone(),
+            )),
 
             (
                 "ZeroCopyBuffer",
@@ -49,13 +52,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
             _ => return Ok(None),
         }))
-    }
-
-    fn parse_rust_opaque(&mut self, ty: &IrType) -> IrType {
-        RustOpaque(IrTypeRustOpaque::new(
-            self.context.initiated_namespace.clone(),
-            ty.clone(),
-        ))
     }
 }
 
