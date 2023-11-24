@@ -18,12 +18,14 @@ use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use enum_dispatch::enum_dispatch;
+use serde::ser::SerializeStruct;
 use serde::{Serialize, Serializer};
 
 crate::ir! {
 #[no_serde]
 // Remark: "Ty" instead of "Type", since "type" is a reserved word in Rust.
 #[enum_dispatch(IrTypeTrait)]
+#[derive(strum_macros::ToString)]
 pub enum IrType {
     // alphabetical order
     Boxed(boxed::IrTypeBoxed),
@@ -103,21 +105,33 @@ impl Serialize for IrType {
     where
         S: Serializer,
     {
-        match self {
-            IrType::Boxed(inner) => inner.serialize(serializer),
-            IrType::DartOpaque(inner) => inner.serialize(serializer),
-            IrType::Delegate(inner) => inner.serialize(serializer),
-            IrType::Dynamic(inner) => inner.serialize(serializer),
-            IrType::EnumRef(inner) => inner.serialize(serializer),
-            IrType::GeneralList(inner) => inner.serialize(serializer),
-            IrType::Optional(inner) => inner.serialize(serializer),
-            IrType::OptionalList(inner) => inner.serialize(serializer),
-            IrType::Primitive(inner) => inner.serialize(serializer),
-            IrType::PrimitiveList(inner) => inner.serialize(serializer),
-            IrType::Record(inner) => inner.serialize(serializer),
-            IrType::RustOpaque(inner) => inner.serialize(serializer),
-            IrType::StructRef(inner) => inner.serialize(serializer),
-            IrType::Unencodable(inner) => inner.serialize(serializer),
+        let len = 2;
+        let mut state = serializer.serialize_struct("IrType", len)?;
+
+        fn ser<T: ToString>(
+            state: &mut <S as Serializer>::SerializeStruct,
+            data: &T,
+        ) -> Result<S::Ok, S::Error> {
+            state.serialize_field("type", data.to_string())?;
+            state.serialize_field("data", data)
         }
+        match self {
+            IrType::Boxed(inner) => ser(state, inner),
+            IrType::DartOpaque(inner) => ser(state, inner),
+            IrType::Delegate(inner) => ser(state, inner),
+            IrType::Dynamic(inner) => ser(state, inner),
+            IrType::EnumRef(inner) => ser(state, inner),
+            IrType::GeneralList(inner) => ser(state, inner),
+            IrType::Optional(inner) => ser(state, inner),
+            IrType::OptionalList(inner) => ser(state, inner),
+            IrType::Primitive(inner) => ser(state, inner),
+            IrType::PrimitiveList(inner) => ser(state, inner),
+            IrType::Record(inner) => ser(state, inner),
+            IrType::RustOpaque(inner) => ser(state, inner),
+            IrType::StructRef(inner) => ser(state, inner),
+            IrType::Unencodable(inner) => ser(state, inner),
+        }?;
+
+        state.end()
     }
 }
