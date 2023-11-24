@@ -1,14 +1,13 @@
 import 'dart:io';
 
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
-import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
 import 'package:flutter_rust_bridge/src/loader/loader.dart';
 import 'package:flutter_rust_bridge/src/main_components/api.dart';
 import 'package:flutter_rust_bridge/src/main_components/api_impl.dart';
 import 'package:flutter_rust_bridge/src/main_components/handler.dart';
 import 'package:flutter_rust_bridge/src/main_components/wire/wire.dart';
+import 'package:flutter_rust_bridge/src/opaque/opaque.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
-import 'package:flutter_rust_bridge/src/utils/port_generator.dart';
 import 'package:meta/meta.dart';
 
 /// This is the main entrypoint.
@@ -43,10 +42,12 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl, W exten
 
     externalLibrary ??= _loadDefaultExternalLibrary();
     final generalizedFrbRustBinding = GeneralizedFrbRustBinding(externalLibrary);
-    api ??= _createDefaultApi(handler, generalizedFrbRustBinding, externalLibrary);
+    final dropPortManager = DropPortManager(generalizedFrbRustBinding);
+    api ??= _createDefaultApi(handler, generalizedFrbRustBinding, dropPortManager, externalLibrary);
 
     __state = _EntrypointState(
       generalizedFrbRustBinding: generalizedFrbRustBinding,
+      dropPortManager: dropPortManager,
       api: api,
     );
   }
@@ -81,11 +82,13 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl, W exten
   A _createDefaultApi(
     BaseHandler? handler,
     GeneralizedFrbRustBinding generalizedFrbRustBinding,
+    DropPortManager dropPortManager,
     ExternalLibrary externalLibrary,
   ) {
     return apiImplConstructor(
       handler: handler,
       generalizedFrbRustBinding: generalizedFrbRustBinding,
+      dropPortManager: dropPortManager,
       wire: wireConstructor(externalLibrary),
     ) as A;
   }
@@ -93,37 +96,20 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl, W exten
 
 class _EntrypointState<A extends BaseApi> {
   final GeneralizedFrbRustBinding generalizedFrbRustBinding;
+  final DropPortManager dropPortManager;
   final A api;
-  late final dropPortManager = _DropPortManager(generalizedFrbRustBinding);
 
-  _EntrypointState({required this.generalizedFrbRustBinding, required this.api}) {
+  _EntrypointState({
+    required this.generalizedFrbRustBinding,
+    required this.dropPortManager,
+    required this.api,
+  }) {
     _setUpRustToDartCommunication(generalizedFrbRustBinding);
     _initializeApiDlData(generalizedFrbRustBinding);
   }
 
   void dispose() {
     dropPortManager.dispose();
-  }
-}
-
-class _DropPortManager {
-  final GeneralizedFrbRustBinding _generalizedFrbRustBinding;
-
-  _DropPortManager(this._generalizedFrbRustBinding);
-
-  NativePortType get dropPort => _dropPort.sendPort.nativePort;
-  late final _dropPort = _initDropPort();
-
-  ReceivePort _initDropPort() {
-    final port = broadcastPort(DropIdPortGenerator.create());
-    port.listen((message) {
-      _generalizedFrbRustBinding.dropDartObject(message);
-    });
-    return port;
-  }
-
-  void dispose() {
-    _dropPort.close();
   }
 }
 

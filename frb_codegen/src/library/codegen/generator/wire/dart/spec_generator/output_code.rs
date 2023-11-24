@@ -88,6 +88,7 @@ impl WireDartOutputCode {
                     super.handler,
                     required super.wire,
                     required super.generalizedFrbRustBinding,
+                    required super.dropPortManager,
                   }});
 
                   {api_impl_body}
@@ -102,6 +103,7 @@ impl WireDartOutputCode {
                     super.handler,
                     required super.wire,
                     required super.generalizedFrbRustBinding,
+                    required super.dropPortManager,
                   }});
 
                   {api_impl_body}
