@@ -29,11 +29,6 @@ Future<void> main() async {
     expect(syncAcceptDartOpaque(opaque: createLargeList(mb: 200)), 'test');
   });
 
-  test('unwrap', () async {
-    expect(unwrapDartOpaque(opaque: createLargeList(mb: 200)), 'Test');
-    await expectLater(() => panicUnwrapDartOpaque(opaque: createLargeList(mb: 200)), throwsA(isA<PanicException>()));
-  });
-
   test('nested', () async {
     var str = await createNestedDartOpaque(opaque1: f, opaque2: f);
     await getNestedDartOpaque(opaque: str);

@@ -671,17 +671,6 @@ void main(List<String> args) async {
     test('void', () async {
       syncVoid();
     });
-
-    test('unwrapped dart opaque', () async {
-      String f() => "magic";
-      var res = returnNonDroppableDartOpaque(opaque: f);
-      expect(identical(res, f), isTrue);
-    });
-  });
-
-  test('dart call return_dart_dynamic', () async {
-    final data = await returnDartDynamic();
-    expect(data, ['foo']);
   });
 
   test("dart call list_of_primitive_enums", () async {
