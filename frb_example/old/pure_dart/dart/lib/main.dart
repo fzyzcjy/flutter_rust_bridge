@@ -24,30 +24,6 @@ void main(List<String> args) async {
   tearDownAll(() => dispose());
 
   group('extended sync', () {
-    test('create', () {
-      var data = syncCreateOpaque();
-      data.dispose();
-    });
-
-    test('option', () async {
-      var data = syncOption();
-      var data2 = syncOptionNull();
-      var data3 = syncOptionRustOpaque();
-      var data4 = syncOptionDartOpaque(opaque: () => () => 'magic');
-      expect(data, isNotNull);
-      expect(data2, isNull);
-      expect(data3, isNotNull);
-      expect(data4, isNotNull);
-      data3!.dispose();
-    });
-
-    test('nonclone', () async {
-      var data = syncCreateNonClone();
-      var data2 = await runNonClone(clone: data);
-      expect(data2, "content");
-      data.dispose();
-    });
-
     test('void', () async {
       syncVoid();
     });

@@ -1,7 +1,13 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync"]}
 
+use crate::api::rust_opaque::HideData;
 use crate::auxiliary::sample_types::{FrbOpaqueSyncReturn, NonSendHideData};
 use flutter_rust_bridge::{frb, RustOpaque};
+
+#[frb(sync)]
+pub fn sync_create_opaque() -> RustOpaque<HideData> {
+    RustOpaque::new(HideData::new())
+}
 
 #[frb(sync)]
 pub fn sync_create_sync_opaque() -> RustOpaque<NonSendHideData> {
