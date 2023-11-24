@@ -22,11 +22,4 @@ void main(List<String> args) async {
   print('construct api');
   final api = initializeExternalLibrary(dylibPath);
   tearDownAll(() => dispose());
-
-  test("sync return mirror", () {
-    final settings = syncReturnMirror();
-    testAppSettings(settings);
-  });
 }
-
-// vim:expandtab:ts=2:sw=2
