@@ -15,7 +15,12 @@ mod rust_opaque;
 mod structure;
 mod unencodable;
 
+use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
-pub(crate) trait WireDartGeneratorMiscTrait {}
+pub(crate) trait WireDartGeneratorMiscTrait {
+    fn generate_extra_functions(&self) -> Option<WireDartOutputCode> {
+        None
+    }
+}

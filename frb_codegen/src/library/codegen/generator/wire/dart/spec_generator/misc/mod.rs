@@ -2,7 +2,9 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_imports_which_types_and_funcs_use;
 use crate::codegen::generator::misc::target::{TargetOrCommon, TargetOrCommonMap};
 use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNamePack;
-use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
+use crate::codegen::generator::wire::dart::spec_generator::base::{
+    WireDartGenerator, WireDartGeneratorContext,
+};
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
@@ -26,7 +28,7 @@ pub(crate) struct WireDartOutputSpecMisc {
     pub(crate) c_binding: WireDartOutputCode,
     pub(crate) boilerplate: Acc<Vec<WireDartOutputCode>>,
     pub(crate) api_impl_normal_functions: Vec<WireDartOutputCode>,
-    pub(crate) api_impl_opaque_getters: Acc<Vec<WireDartOutputCode>>,
+    pub(crate) extra_functions: Acc<Vec<WireDartOutputCode>>,
 }
 
 pub(crate) fn generate(
@@ -41,8 +43,8 @@ pub(crate) fn generate(
         api_impl_normal_functions: (context.ir_pack.funcs.iter())
             .map(|f| api_impl_body::generate_api_impl_normal_function(f, context))
             .collect::<anyhow::Result<Vec<_>>>()?,
-        api_impl_opaque_getters: (cache.distinct_types.iter())
-            .flat_map(|ty| api_impl_opaque::generate_api_impl_opaque(ty, context))
+        extra_functions: (cache.distinct_types.iter())
+            .flat_map(|ty| WireDartGenerator::new(ty, context).generate_extra_functions())
             .collect(),
     })
 }
