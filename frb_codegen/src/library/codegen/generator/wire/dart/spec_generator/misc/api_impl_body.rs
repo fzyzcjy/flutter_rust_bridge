@@ -197,11 +197,13 @@ pub(crate) fn generate_api_impl_opaque_getter(
     Some(WireDartOutputCode {
         api_impl_body: format!(
             "
-            DropFnType get dropOpaque{ty} => wire.drop_opaque_{ty};
-            ShareFnType get shareOpaque{ty} => wire.share_opaque_{ty};
-            OpaqueTypeFinalizer get {ty}Finalizer => wire.{ty}Finalizer;
+            DropFnType get dropOpaque{ty_dart_api_type} => wire.drop_opaque_{safe_ident};
+            ShareFnType get shareOpaque{ty_dart_api_type} => wire.share_opaque_{safe_ident};
+            OpaqueTypeFinalizer get {ty_dart_api_type}Finalizer => wire.{safe_ident}Finalizer;
             ",
-            ty = ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type()
+            ty_dart_api_type =
+                ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type(),
+            safe_ident = ty.safe_ident(),
         ),
         ..Default::default()
     })
