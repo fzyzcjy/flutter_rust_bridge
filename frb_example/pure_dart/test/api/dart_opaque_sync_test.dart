@@ -9,6 +9,8 @@ import '../test_utils.dart';
 Future<void> main() async {
   await RustLib.init();
 
+  String f() => 'Test_String';
+
   test('loopback', () {
     var syncBack = syncLoopback(opaque: f);
     expect(identical(syncOptionLoopback(opaque: syncBack), f), isTrue);
