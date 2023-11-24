@@ -13,7 +13,7 @@ use crate::codegen::generator::wire::rust::spec_generator::wire2api::ty::WireRus
 use crate::codegen::ir::ty::IrTypeTrait;
 use std::borrow::Cow;
 
-impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueRefWireRustGenerator<'a> {
+impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
     fn generate_wire2api_class(&self) -> Option<String> {
         Some(generate_class_from_fields(
             self.ir.clone(),

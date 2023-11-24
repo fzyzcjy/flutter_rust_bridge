@@ -5,7 +5,7 @@ use crate::codegen::generator::wire::dart::spec_generator::api2wire::ty::WireDar
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::ir::ty::IrTypeTrait;
 
-impl<'a> WireDartGeneratorApi2wireTrait for RustOpaqueRefWireDartGenerator<'a> {
+impl<'a> WireDartGeneratorApi2wireTrait for RustOpaqueWireDartGenerator<'a> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         Acc {
             io: Some(format!(

@@ -6,13 +6,13 @@ use lazy_static::lazy_static;
 use regex::Regex;
 
 crate::ir! {
-pub struct IrTypeRustOpaqueRef {
+pub struct IrTypeRustOpaque {
     pub namespace: Namespace,
     pub inner: Box<IrType>,
 }
 }
 
-impl IrTypeRustOpaqueRef {
+impl IrTypeRustOpaque {
     pub fn new(namespace: Namespace, inner: IrType) -> Self {
         Self {
             namespace,
@@ -21,7 +21,7 @@ impl IrTypeRustOpaqueRef {
     }
 }
 
-impl IrTypeTrait for IrTypeRustOpaqueRef {
+impl IrTypeTrait for IrTypeRustOpaque {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, _f: &mut F, _ir_pack: &IrPack) {}
 
     fn safe_ident(&self) -> String {

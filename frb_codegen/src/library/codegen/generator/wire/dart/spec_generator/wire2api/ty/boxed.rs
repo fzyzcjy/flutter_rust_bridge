@@ -11,7 +11,7 @@ impl<'a> WireDartGeneratorWire2apiTrait for BoxedWireDartGenerator<'a> {
         match &*self.ir.inner {
             StructRef(_)
             | DartOpaque(_)
-            | RustOpaqueRef(_)
+            | RustOpaque(_)
             | EnumRef(_)
             | Primitive(IrTypePrimitive::I64 | IrTypePrimitive::U64 | IrTypePrimitive::Usize)
             | Delegate(IrTypeDelegate::Array(_) | IrTypeDelegate::PrimitiveEnum { .. }) => {

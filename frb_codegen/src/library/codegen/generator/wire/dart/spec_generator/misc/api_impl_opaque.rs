@@ -11,7 +11,7 @@ pub(crate) fn generate_api_impl_opaque(
     ty: &IrType,
     context: WireDartGeneratorContext,
 ) -> Vec<Acc<WireDartOutputCode>> {
-    if !matches!(ty, IrType::RustOpaqueRef(_)) {
+    if !matches!(ty, IrType::RustOpaque(_)) {
         return Default::default();
     }
 

@@ -21,7 +21,7 @@ pub fn is_js_value(ty: &IrType) -> bool {
         | IrType::OptionalList(_)
         | IrType::StructRef(_)
         | IrType::EnumRef(_)
-        | IrType::RustOpaqueRef(_)
+        | IrType::RustOpaque(_)
         | IrType::DartOpaque(_)
         | IrType::Record(_) => true,
         IrType::Boxed(IrTypeBoxed { inner, .. }) => is_js_value(inner),
