@@ -31,8 +31,7 @@ Future<void> main() async {
       () async {
         await for (final _ in funcStreamReturnErrorTwinNormal()) {}
       },
-      throwsA(isA<AnyhowException>()
-          .having((x) => x.message, 'message', 'deliberate error')),
+      throwsA(isA<AnyhowException>().having((x) => x.message, 'message', 'deliberate error')),
     );
   });
 
@@ -41,8 +40,43 @@ Future<void> main() async {
       () async {
         await for (final _ in funcStreamReturnPanicTwinNormal()) {}
       },
-      throwsA(isA<PanicException>()
-          .having((x) => x.message, 'message', 'deliberate panic')),
+      throwsA(isA<PanicException>().having((x) => x.message, 'message', 'deliberate panic')),
     );
+  });
+
+  test('dart call handle_stream', () async {
+    final stream = handleStream(arg: 'hello');
+    var cnt = 0;
+    await for (final value in stream) {
+      print("output from handle_stream's stream: $value");
+      cnt++;
+    }
+    expect(cnt, 10);
+  });
+
+  Future<void> testHandleStream(
+      Stream<Log> Function({dynamic hint, required int key, required int max}) handleStreamFunction) async {
+    final max = 5;
+    final key = 8;
+    final stream = handleStreamFunction(key: key, max: max);
+    var cnt = 0;
+    await for (final value in stream) {
+      print("output from handle_stream_x's stream: $value");
+      expect(value.key, key);
+      cnt++;
+    }
+    expect(cnt, max);
+  }
+
+  test('dart call handle_stream_sink_at_1', () {
+    testHandleStream(handleStreamSinkAt1);
+  });
+
+  test('dart call handle_stream_sink_at_2', () {
+    testHandleStream(handleStreamSinkAt2);
+  });
+
+  test('dart call handle_stream_sink_at_3', () {
+    testHandleStream(handleStreamSinkAt3);
   });
 }

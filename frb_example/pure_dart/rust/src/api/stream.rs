@@ -56,3 +56,26 @@ pub struct MyStreamEntry {
 pub fn handle_stream_of_struct(sink: StreamSink<MyStreamEntry>) {
     // Ok(())
 }
+
+#[derive(Debug, Clone)]
+pub struct Log {
+    pub key: u32,
+    pub value: u32,
+}
+
+pub fn handle_stream_sink_at_1(key: u32, max: u32, sink: StreamSink<Log>) {
+    spawn!(|| {
+        for i in 0..max {
+            let _ = sink.add(Log { key, value: i });
+        }
+        sink.close();
+    });
+}
+
+pub fn handle_stream_sink_at_2(key: u32, sink: StreamSink<Log>, max: u32) {
+    handle_stream_sink_at_1(key, max, sink)
+}
+
+pub fn handle_stream_sink_at_3(sink: StreamSink<Log>, key: u32, max: u32) {
+    handle_stream_sink_at_1(key, max, sink)
+}
