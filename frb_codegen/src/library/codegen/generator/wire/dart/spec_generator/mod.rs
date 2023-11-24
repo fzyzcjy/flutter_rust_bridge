@@ -32,7 +32,11 @@ pub(crate) fn generate(
 ) -> anyhow::Result<WireDartOutputSpec> {
     let cache = IrPackComputedCache::compute(context.ir_pack);
 
-    dumper.dump(GeneratorInfo, "wire_dart.json", &generate_dump_info())?;
+    dumper.dump(
+        GeneratorInfo,
+        "wire_dart.json",
+        &generate_dump_info(cache, context),
+    )?;
 
     Ok(WireDartOutputSpec {
         misc: misc::generate(

@@ -1,7 +1,12 @@
 use crate::codegen::generator::misc::target::Target;
-use crate::codegen::generator::wire::dart::spec_generator::base::WireRustGeneratorContext;
-use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGenerator;
+use crate::codegen::generator::wire::rust::spec_generator::base::{
+    WireRustGenerator, WireRustGeneratorContext,
+};
 use crate::codegen::ir::pack::IrPackComputedCache;
+use crate::library::codegen::generator::wire::rust::spec_generator::api2wire::ty::WireRustGeneratorApi2wireTrait;
+use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
+use crate::library::codegen::generator::wire::rust::spec_generator::wire2api::ty::WireRustGeneratorWire2apiTrait;
+use crate::library::codegen::ir::ty::IrTypeTrait;
 use serde::Serialize;
 use std::collections::HashMap;
 use strum::IntoEnumIterator;
@@ -29,7 +34,7 @@ pub(super) fn generate_dump_info(
             .distinct_types
             .iter()
             .map(|ty| {
-                let gen = WireRustGenerator::new(ty, context);
+                let gen = WireRustGenerator::new(ty.clone(), context);
                 WireRustDumpInfoType {
                     safe_ident: ty.safe_ident(),
                     rust_wire_type: Target::iter()

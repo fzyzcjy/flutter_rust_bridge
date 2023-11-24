@@ -3,6 +3,8 @@ use crate::codegen::generator::wire::dart::spec_generator::base::{
     WireDartGenerator, WireDartGeneratorContext,
 };
 use crate::codegen::ir::pack::IrPackComputedCache;
+use crate::library::codegen::generator::wire::dart::spec_generator::api2wire::ty::WireDartGeneratorApi2wireTrait;
+use crate::library::codegen::ir::ty::IrTypeTrait;
 use serde::Serialize;
 use std::collections::HashMap;
 use strum::IntoEnumIterator;
@@ -27,7 +29,7 @@ pub(super) fn generate_dump_info(
             .distinct_types
             .iter()
             .map(|ty| {
-                let gen = WireDartGenerator::new(ty, context);
+                let gen = WireDartGenerator::new(ty.clone(), context);
                 WireDartDumpInfoType {
                     safe_ident: ty.safe_ident(),
                     dart_wire_type: Target::iter()

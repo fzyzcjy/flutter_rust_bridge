@@ -3,13 +3,13 @@ use anyhow::bail;
 use serde::Serialize;
 use std::convert::{TryFrom, TryInto};
 
-#[derive(Debug, Clone, Copy, Eq, PartialEq, strum_macros::EnumIter, Serialize)]
+#[derive(Debug, Clone, Copy, Eq, PartialEq, strum_macros::EnumIter, Serialize, Hash)]
 pub enum Target {
     Io,
     Wasm,
 }
 
-#[derive(Debug, Clone, Copy, Eq, PartialEq, strum_macros::EnumIter, Serialize)]
+#[derive(Debug, Clone, Copy, Eq, PartialEq, strum_macros::EnumIter, Serialize, Hash)]
 pub enum TargetOrCommon {
     Common,
     Io,

@@ -29,7 +29,11 @@ pub(super) fn generate(
 ) -> anyhow::Result<WireRustOutputSpec> {
     let cache = IrPackComputedCache::compute(context.ir_pack);
 
-    dumper.dump(GeneratorInfo, "wire_rust.json", &generate_dump_info())?;
+    dumper.dump(
+        GeneratorInfo,
+        "wire_rust.json",
+        &generate_dump_info(cache, context),
+    )?;
 
     Ok(WireRustOutputSpec {
         misc: misc::generate(context, &cache)?,
