@@ -15,25 +15,27 @@ pub(crate) fn generate_api_impl_opaque(
         return Default::default();
     }
 
-    generate_share_and_drop_opaque(ty, context) + generate_opaque_finalizer(ty, context)
+    generate_share_or_drop_opaque(ty, context, "share")
+        + generate_share_or_drop_opaque(ty, context, "drop")
+        + generate_opaque_finalizer(ty, context)
 }
 
-fn generate_share_and_drop_opaque(
+fn generate_share_or_drop_opaque(
     ty: &IrType,
     context: WireDartGeneratorContext,
+    op_name: &str,
 ) -> Acc<WireDartOutputCode> {
     let ty_dart_api_type =
         ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type();
+    let op_name_pascal = op_name.to_case(Case::Pascal);
+    let safe_ident = ty.safe_ident();
+
+    let definition = format!("Opaque{op_name_pascal}FnType get {op_name}Opaque{ty_dart_api_type}");
 
     Acc {
         common: WireDartOutputCode {
-            api_impl_body: format!(
-                "
-                OpaqueDropFnType get dropOpaque{ty_dart_api_type} => wire.drop_opaque_{safe_ident};
-                OpaqueShareFnType get shareOpaque{ty_dart_api_type} => wire.share_opaque_{safe_ident};
-                ",
-                safe_ident = ty.safe_ident(),
-            ),
+            api_body: format!("{definition};\n\n"),
+            api_impl_body: format!("{definition} => wire.{op_name}_opaque_{safe_ident};\n\n"),
             ..Default::default()
         },
         ..Default::default()
