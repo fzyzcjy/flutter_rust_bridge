@@ -65,25 +65,25 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       OpaqueTypeFinalizer(wire._drop_opaque_RustOpaque_RwLockHideDataPtr);
 
   late final boxDartDebugFinalizer =
-      OpaqueTypeFinalizer(wire._drop_opaque_RustOpaque_BoxDartDebugPtr);
+      OpaqueTypeFinalizer(wire._drop_opaque_RustOpaque_box_dynDartDebugPtr);
 
   late final frbOpaqueReturnFinalizer =
-      OpaqueTypeFinalizer(wire._drop_opaque_RustOpaque_FrbOpaqueReturnPtr);
+      OpaqueTypeFinalizer(wire._drop_opaque_RustOpaque_frb_opaque_returnPtr);
 
-  late final frbOpaqueSyncReturnFinalizer =
-      OpaqueTypeFinalizer(wire._drop_opaque_RustOpaque_FrbOpaqueSyncReturnPtr);
+  late final frbOpaqueSyncReturnFinalizer = OpaqueTypeFinalizer(
+      wire._drop_opaque_RustOpaque_frb_opaque_sync_returnPtr);
 
   late final hideDataFinalizer =
-      OpaqueTypeFinalizer(wire._drop_opaque_RustOpaque_HideDataPtr);
+      OpaqueTypeFinalizer(wire._drop_opaque_RustOpaque_hide_dataPtr);
 
   late final i32Finalizer =
-      OpaqueTypeFinalizer(wire._drop_opaque_RustOpaque_I32Ptr);
+      OpaqueTypeFinalizer(wire._drop_opaque_RustOpaque_i_32Ptr);
 
   late final nonCloneDataFinalizer =
-      OpaqueTypeFinalizer(wire._drop_opaque_RustOpaque_NonCloneDataPtr);
+      OpaqueTypeFinalizer(wire._drop_opaque_RustOpaque_non_clone_dataPtr);
 
   late final nonSendHideDataFinalizer =
-      OpaqueTypeFinalizer(wire._drop_opaque_RustOpaque_NonSendHideDataPtr);
+      OpaqueTypeFinalizer(wire._drop_opaque_RustOpaque_non_send_hide_dataPtr);
 
   @protected
   int api2wire_Chrono_Duration(Duration raw) {

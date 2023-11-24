@@ -51,6 +51,7 @@ fn generate_opaque_finalizer(
     let ty_dart_api_type =
         ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type();
     let ty_dart_api_type_camel = ty_dart_api_type.to_case(Case::Camel);
+    let ty_safe_ident = ty.safe_ident();
     let field_name = format!("{ty_dart_api_type_camel}Finalizer");
 
     let generate_platform_impl = |finalizer_arg: &str| WireDartOutputCode {
@@ -65,10 +66,8 @@ fn generate_opaque_finalizer(
             api_body: format!("OpaqueTypeFinalizer get {field_name};\n\n"),
             ..Default::default()
         },
-        io: generate_platform_impl(&format!(
-            "wire._drop_opaque_RustOpaque_{ty_dart_api_type}Ptr"
-        )),
-        wasm: generate_platform_impl(&format!("wire.drop_opaque_RustOpaque_{ty_dart_api_type}")),
+        io: generate_platform_impl(&format!("wire._drop_opaque_{ty_safe_ident}Ptr")),
+        wasm: generate_platform_impl(&format!("wire.drop_opaque_{ty_safe_ident}")),
         ..Default::default()
     }
 }
