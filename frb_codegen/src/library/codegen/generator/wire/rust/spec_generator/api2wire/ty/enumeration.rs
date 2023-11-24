@@ -1,6 +1,7 @@
 use crate::codegen::generator::wire::rust::spec_generator::api2wire::misc::generate_impl_into_into_dart;
 use crate::codegen::generator::wire::rust::spec_generator::api2wire::ty::WireRustGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
+use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrVariantKind};
 use crate::codegen::ir::ty::IrTypeTrait;
@@ -16,7 +17,8 @@ impl<'a> WireRustGeneratorApi2wireTrait for EnumRefWireRustGenerator<'a> {
 
     fn generate_impl_into_dart(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_pack);
-        let (name, self_path) = wrapper_name_into_dart_name_and_self_path(src);
+        let (name, self_path) =
+            parse_wrapper_name_into_dart_name_and_self_path(&src.name, &src.wrapper_name);
 
         let self_ref = self.generate_access_object_core("self".to_owned());
         let variants = src
@@ -84,9 +86,12 @@ impl<'a> WireRustGeneratorApi2wireTrait for EnumRefWireRustGenerator<'a> {
     }
 }
 
-pub(super) fn wrapper_name_into_dart_name_and_self_path(src: &IrEnum) -> (String, String) {
-    match &src.wrapper_name {
-        Some(wrapper) => (wrapper.rust_style(), src.name.rust_style()),
-        None => (src.name.rust_style(), "Self".into()),
+pub(super) fn parse_wrapper_name_into_dart_name_and_self_path(
+    name: &NamespacedName,
+    wrapper_name: &Option<NamespacedName>,
+) -> (String, String) {
+    match &wrapper_name {
+        Some(wrapper) => (wrapper.rust_style(), name.rust_style()),
+        None => (name.rust_style(), "Self".into()),
     }
 }

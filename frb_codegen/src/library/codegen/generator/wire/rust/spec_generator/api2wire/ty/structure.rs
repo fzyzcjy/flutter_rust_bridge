@@ -1,4 +1,5 @@
 use crate::codegen::generator::wire::rust::spec_generator::api2wire::misc::generate_impl_into_into_dart;
+use crate::codegen::generator::wire::rust::spec_generator::api2wire::ty::enumeration::parse_wrapper_name_into_dart_name_and_self_path;
 use crate::codegen::generator::wire::rust::spec_generator::api2wire::ty::WireRustGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::ir::pack::IrPack;
@@ -38,10 +39,8 @@ impl<'a> WireRustGeneratorApi2wireTrait for StructRefWireRustGenerator<'a> {
             .collect_vec()
             .join(",\n");
 
-        let name = match &src.wrapper_name {
-            Some(wrapper) => wrapper.rust_style(),
-            None => src.name.rust_style(),
-        };
+        let (name, _) =
+            parse_wrapper_name_into_dart_name_and_self_path(&src.name, &src.wrapper_name);
 
         let vec = if src.is_empty() {
             "Vec::<u8>::new()".to_string()
