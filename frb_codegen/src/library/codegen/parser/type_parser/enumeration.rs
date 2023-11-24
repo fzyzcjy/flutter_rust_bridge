@@ -35,7 +35,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         src_enum: &Enum,
         name: NamespacedName,
-        wrapper_name: Option<NamespacedName>,
+        wrapper_name: Option<String>,
     ) -> anyhow::Result<IrEnum> {
         let comments = parse_comments(&src_enum.0.src.attrs);
         let raw_variants = src_enum
@@ -125,7 +125,7 @@ impl EnumOrStructParser<IrEnumIdent, IrEnum, Enum, ItemEnum>
         &mut self,
         src_object: &Enum,
         name: NamespacedName,
-        wrapper_name: Option<NamespacedName>,
+        wrapper_name: Option<String>,
     ) -> anyhow::Result<Option<IrEnum>> {
         Ok(Some(self.0.parse_enum(src_object, name, wrapper_name)?))
     }

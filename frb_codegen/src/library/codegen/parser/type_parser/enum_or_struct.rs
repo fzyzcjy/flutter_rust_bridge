@@ -60,7 +60,7 @@ where
         &mut self,
         src_object: &SrcObj,
         name: NamespacedName,
-        wrapper_name: Option<NamespacedName>,
+        wrapper_name: Option<String>,
     ) -> anyhow::Result<Option<Obj>>;
 
     fn construct_output(&self, ident: Id) -> anyhow::Result<IrType>;
@@ -94,15 +94,12 @@ fn compute_name_and_wrapper_name(
     namespace: &Namespace,
     ident: &Ident,
     mirror: bool,
-) -> (NamespacedName, Option<NamespacedName>) {
+) -> (NamespacedName, Option<String>) {
     let name = ident.to_string();
     let wrapper_name = if mirror {
         Some(format!("mirror_{name}"))
     } else {
         None
     };
-    (
-        NamespacedName::new(namespace.clone(), name),
-        wrapper_name.map(|x| NamespacedName::new(namespace.clone(), x)),
-    )
+    (NamespacedName::new(namespace.clone(), name), wrapper_name)
 }

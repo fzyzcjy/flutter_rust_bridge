@@ -2,15 +2,15 @@ use crate::codegen::ir::namespace::NamespacedName;
 
 pub(crate) fn generate_impl_into_into_dart(
     name: &NamespacedName,
-    wrapper_name: &Option<NamespacedName>,
+    wrapper_name: &Option<String>,
 ) -> String {
     let body = if let Some(wrapper_name) = wrapper_name {
-        wrapper_name.name.clone()
+        wrapper_name.clone()
     } else {
         "self".to_owned()
     };
 
-    let wrapper_name = (wrapper_name.as_ref().map(|x| x.rust_style())).unwrap_or(name.rust_style());
+    let wrapper_name = wrapper_name.clone().unwrap_or(name.rust_style());
     let name = &name.rust_style();
 
     format!(

@@ -31,7 +31,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         src_struct: &Struct,
         name: NamespacedName,
-        wrapper_name: Option<NamespacedName>,
+        wrapper_name: Option<String>,
     ) -> anyhow::Result<Option<IrStruct>> {
         let (is_fields_named, struct_fields) = match &src_struct.0.src.fields {
             Fields::Named(FieldsNamed { named, .. }) => (true, named),
@@ -87,7 +87,7 @@ impl EnumOrStructParser<IrStructIdent, IrStruct, Struct, ItemStruct>
         &mut self,
         src_object: &Struct,
         name: NamespacedName,
-        wrapper_name: Option<NamespacedName>,
+        wrapper_name: Option<String>,
     ) -> anyhow::Result<Option<IrStruct>> {
         Ok(self.0.parse_struct(src_object, name, wrapper_name)?)
     }

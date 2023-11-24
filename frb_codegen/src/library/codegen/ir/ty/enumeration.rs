@@ -18,7 +18,7 @@ pub struct IrEnumIdent(pub NamespacedName);
 
 pub struct IrEnum {
     pub name: NamespacedName,
-    pub wrapper_name: Option<NamespacedName>,
+    pub wrapper_name: Option<String>,
     pub comments: Vec<IrComment>,
     pub variants: Vec<IrVariant>,
     // TODO old: `is_struct: bool`

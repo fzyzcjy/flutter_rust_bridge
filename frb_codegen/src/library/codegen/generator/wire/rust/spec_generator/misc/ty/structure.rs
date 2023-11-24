@@ -6,7 +6,7 @@ use itertools::Itertools;
 impl<'a> WireRustGeneratorMiscTrait for StructRefWireRustGenerator<'a> {
     fn wrapper_struct_name(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_pack);
-        src.wrapper_name.as_ref().map(|x| x.name.clone()).to_owned()
+        src.wrapper_name.clone()
     }
 
     fn generate_static_checks(&self) -> Option<String> {

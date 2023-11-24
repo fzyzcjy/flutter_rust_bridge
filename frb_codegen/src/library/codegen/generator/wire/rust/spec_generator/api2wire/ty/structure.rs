@@ -8,11 +8,8 @@ use itertools::Itertools;
 
 impl<'a> WireRustGeneratorApi2wireTrait for StructRefWireRustGenerator<'a> {
     fn intodart_type(&self, ir_pack: &IrPack) -> String {
-        let wrapper = self.ir.get(ir_pack).wrapper_name.as_ref();
-        wrapper
-            .as_ref()
-            .map(|x| x.name.clone())
-            .unwrap_or(self.ir.rust_api_type())
+        let wrapper = &self.ir.get(ir_pack).wrapper_name;
+        wrapper.clone().unwrap_or(self.ir.rust_api_type())
     }
 
     fn generate_impl_into_dart(&self) -> Option<String> {
