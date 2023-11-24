@@ -8,7 +8,7 @@ crate-type = ["cdylib"]
 
 [dependencies]
 anyhow = { workspace = true, features = ["backtrace"] }
-flutter_rust_bridge = { workspace = true }
+flutter_rust_bridge = { workspace = true, features = ["chrono", "uuid" ] }
 log = "0.4.19"
 backtrace = "0.3.68"
 chrono = "0.4.26"
