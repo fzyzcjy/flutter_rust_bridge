@@ -2,6 +2,7 @@ use crate::api::misc_example::Weekdays;
 use flutter_rust_bridge::{frb, ZeroCopyBuffer};
 use log::info;
 
+#[frb]
 #[derive(Debug, Clone)]
 pub struct Customized {
     pub final_field: String,
@@ -13,6 +14,7 @@ pub fn handle_customized_struct(val: Customized) {
     info!("{:#?}", val);
 }
 
+#[frb]
 #[derive(Debug)]
 pub enum KitchenSink {
     Empty,
