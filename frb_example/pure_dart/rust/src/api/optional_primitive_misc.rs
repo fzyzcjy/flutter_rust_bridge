@@ -1,3 +1,5 @@
+use log::info;
+
 pub fn primitive_optional_types(
     my_i32: Option<i32>,
     my_i64: Option<i64>,

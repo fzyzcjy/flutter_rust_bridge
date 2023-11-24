@@ -1,4 +1,7 @@
+use crate::auxiliary::sample_types::MySize;
+use flutter_rust_bridge::frb;
 use frb_example_pure_dart_exapmle_external_lib::RawStringMirrored;
+use log::info;
 
 #[derive(Debug, Clone)]
 pub struct MyTreeNode {
@@ -111,6 +114,13 @@ pub fn handle_struct(arg: MySize, boxed: Box<MySize>) -> MySize {
         width: arg.width + boxed.width,
         height: arg.height + boxed.height,
     }
+}
+
+#[frb(dart_metadata = ("freezed"))]
+#[derive(Debug, Clone)]
+pub struct MySizeFreezed {
+    pub width: i32,
+    pub height: i32,
 }
 
 #[frb(sync)]

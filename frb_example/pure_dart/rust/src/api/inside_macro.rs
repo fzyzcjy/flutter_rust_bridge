@@ -1,5 +1,7 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync"]}
 
+use flutter_rust_bridge::frb;
+
 macro_rules! generate_struct {
     ($name:ident) => {
         pub struct $name {

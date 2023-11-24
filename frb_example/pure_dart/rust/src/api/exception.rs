@@ -141,7 +141,7 @@ pub fn return_custom_struct_error() -> Result<(), CustomStructError> {
     })
 }
 
-pub fn sync_return_custom_struct_error() -> Result<SyncReturn<()>, CustomStructError> {
+pub fn sync_return_custom_struct_error() -> Result<(), CustomStructError> {
     Err(CustomStructError {
         message: "error message".to_string(),
     })
