@@ -44,7 +44,7 @@ impl IrTypeTrait for IrTypeStructRef {
     }
 
     fn rust_api_type(&self) -> String {
-        self.ident.0.name.to_string()
+        self.ident.0.rust_style()
     }
 
     fn self_namespace(&self) -> Option<Namespace> {
