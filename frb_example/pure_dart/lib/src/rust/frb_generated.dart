@@ -5749,9 +5749,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   OpaqueTypeFinalizer get RwLockHideDataFinalizer =>
       wire.RwLockHideDataFinalizer;
 
-  DropFnType get dropOpaqueDartDebug => wire.drop_opaque_DartDebug;
-  ShareFnType get shareOpaqueDartDebug => wire.share_opaque_DartDebug;
-  OpaqueTypeFinalizer get DartDebugFinalizer => wire.DartDebugFinalizer;
+  DropFnType get dropOpaqueBoxDartDebug => wire.drop_opaque_BoxDartDebug;
+  ShareFnType get shareOpaqueBoxDartDebug => wire.share_opaque_BoxDartDebug;
+  OpaqueTypeFinalizer get BoxDartDebugFinalizer => wire.BoxDartDebugFinalizer;
 
   DropFnType get dropOpaqueFrbOpaqueReturn => wire.drop_opaque_FrbOpaqueReturn;
   ShareFnType get shareOpaqueFrbOpaqueReturn =>
@@ -5770,9 +5770,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   ShareFnType get shareOpaqueHideData => wire.share_opaque_HideData;
   OpaqueTypeFinalizer get HideDataFinalizer => wire.HideDataFinalizer;
 
-  DropFnType get dropOpaqueint => wire.drop_opaque_int;
-  ShareFnType get shareOpaqueint => wire.share_opaque_int;
-  OpaqueTypeFinalizer get intFinalizer => wire.intFinalizer;
+  DropFnType get dropOpaqueI32 => wire.drop_opaque_I32;
+  ShareFnType get shareOpaqueI32 => wire.share_opaque_I32;
+  OpaqueTypeFinalizer get I32Finalizer => wire.I32Finalizer;
 
   DropFnType get dropOpaqueNonCloneData => wire.drop_opaque_NonCloneData;
   ShareFnType get shareOpaqueNonCloneData => wire.share_opaque_NonCloneData;
@@ -5832,8 +5832,8 @@ RwLockHideData _wire2api_RustOpaque_RwLockHideData(dynamic raw) {
   return RwLockHideData.fromRaw(raw[0], raw[1]);
 }
 
-DartDebug _wire2api_RustOpaque_box_dynDartDebug(dynamic raw) {
-  return DartDebug.fromRaw(raw[0], raw[1]);
+BoxDartDebug _wire2api_RustOpaque_box_dynDartDebug(dynamic raw) {
+  return BoxDartDebug.fromRaw(raw[0], raw[1]);
 }
 
 FrbOpaqueReturn _wire2api_RustOpaque_frb_opaque_return(dynamic raw) {
@@ -5853,8 +5853,8 @@ HideDataArray2 _wire2api_RustOpaque_hide_data_array_2(dynamic raw) {
       (raw as List<dynamic>).map(_wire2api_RustOpaque_hide_data).toList());
 }
 
-int _wire2api_RustOpaque_i_32(dynamic raw) {
-  return int.fromRaw(raw[0], raw[1]);
+I32 _wire2api_RustOpaque_i_32(dynamic raw) {
+  return I32.fromRaw(raw[0], raw[1]);
 }
 
 NonSendHideData _wire2api_RustOpaque_non_send_hide_data(dynamic raw) {

@@ -88,18 +88,18 @@ class RwLockHideData extends FrbOpaque {
 }
 
 @sealed
-class DartDebug extends FrbOpaque {
-  DartDebug.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
+class BoxDartDebug extends FrbOpaque {
+  BoxDartDebug.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
 
   @override
-  DropFnType get dropFn => RustLib.instance.api.dropOpaqueDartDebug;
+  DropFnType get dropFn => RustLib.instance.api.dropOpaqueBoxDartDebug;
 
   @override
-  ShareFnType get shareFn => RustLib.instance.api.shareOpaqueDartDebug;
+  ShareFnType get shareFn => RustLib.instance.api.shareOpaqueBoxDartDebug;
 
   @override
   OpaqueTypeFinalizer get staticFinalizer =>
-      RustLib.instance.api.DartDebugFinalizer;
+      RustLib.instance.api.BoxDartDebugFinalizer;
 }
 
 @sealed
@@ -143,17 +143,17 @@ class HideDataArray2 extends NonGrowableListView<HideData> {
 }
 
 @sealed
-class int extends FrbOpaque {
-  int.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
+class I32 extends FrbOpaque {
+  I32.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
 
   @override
-  DropFnType get dropFn => RustLib.instance.api.dropOpaqueint;
+  DropFnType get dropFn => RustLib.instance.api.dropOpaqueI32;
 
   @override
-  ShareFnType get shareFn => RustLib.instance.api.shareOpaqueint;
+  ShareFnType get shareFn => RustLib.instance.api.shareOpaqueI32;
 
   @override
-  OpaqueTypeFinalizer get staticFinalizer => RustLib.instance.api.intFinalizer;
+  OpaqueTypeFinalizer get staticFinalizer => RustLib.instance.api.I32Finalizer;
 }
 
 @sealed
@@ -192,10 +192,10 @@ sealed class EnumOpaque with _$EnumOpaque {
     HideData field0,
   ) = EnumOpaque_Struct;
   const factory EnumOpaque.primitive(
-    int field0,
+    I32 field0,
   ) = EnumOpaque_Primitive;
   const factory EnumOpaque.traitObj(
-    DartDebug field0,
+    BoxDartDebug field0,
   ) = EnumOpaque_TraitObj;
   const factory EnumOpaque.mutex(
     MutexHideData field0,

@@ -125,7 +125,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   wire_RustOpaque_box_dynDartDebug api2wire_RustOpaque_box_dynDartDebug(
-      DartDebug raw) {
+      BoxDartDebug raw) {
     final ptr = wire.new_RustOpaque_box_dynDartDebug();
     _api_fill_to_wire_RustOpaque_box_dynDartDebug(raw, ptr);
     return ptr;
@@ -145,7 +145,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  wire_RustOpaque_i_32 api2wire_RustOpaque_i_32(int raw) {
+  wire_RustOpaque_i_32 api2wire_RustOpaque_i_32(I32 raw) {
     final ptr = wire.new_RustOpaque_i_32();
     _api_fill_to_wire_RustOpaque_i_32(raw, ptr);
     return ptr;
@@ -1309,7 +1309,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   void _api_fill_to_wire_RustOpaque_box_dynDartDebug(
-      DartDebug apiObj, wire_RustOpaque_box_dynDartDebug wireObj) {
+      BoxDartDebug apiObj, wire_RustOpaque_box_dynDartDebug wireObj) {
     wireObj.ptr = apiObj.shareOrMove();
   }
 
@@ -1319,7 +1319,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   void _api_fill_to_wire_RustOpaque_i_32(
-      int apiObj, wire_RustOpaque_i_32 wireObj) {
+      I32 apiObj, wire_RustOpaque_i_32 wireObj) {
     wireObj.ptr = apiObj.shareOrMove();
   }
 

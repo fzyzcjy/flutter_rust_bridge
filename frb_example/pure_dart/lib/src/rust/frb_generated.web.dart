@@ -112,7 +112,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Object api2wire_RustOpaque_box_dynDartDebug(DartDebug raw) {
+  Object api2wire_RustOpaque_box_dynDartDebug(BoxDartDebug raw) {
     return raw.shareOrMove();
   }
 
@@ -127,7 +127,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Object api2wire_RustOpaque_i_32(int raw) {
+  Object api2wire_RustOpaque_i_32(I32 raw) {
     return raw.shareOrMove();
   }
 

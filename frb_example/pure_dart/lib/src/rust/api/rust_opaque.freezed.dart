@@ -20,8 +20,8 @@ mixin _$EnumOpaque {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(HideData field0) struct,
-    required TResult Function(int field0) primitive,
-    required TResult Function(DartDebug field0) traitObj,
+    required TResult Function(I32 field0) primitive,
+    required TResult Function(BoxDartDebug field0) traitObj,
     required TResult Function(MutexHideData field0) mutex,
     required TResult Function(RwLockHideData field0) rwLock,
   }) =>
@@ -29,8 +29,8 @@ mixin _$EnumOpaque {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(HideData field0)? struct,
-    TResult? Function(int field0)? primitive,
-    TResult? Function(DartDebug field0)? traitObj,
+    TResult? Function(I32 field0)? primitive,
+    TResult? Function(BoxDartDebug field0)? traitObj,
     TResult? Function(MutexHideData field0)? mutex,
     TResult? Function(RwLockHideData field0)? rwLock,
   }) =>
@@ -38,8 +38,8 @@ mixin _$EnumOpaque {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(HideData field0)? struct,
-    TResult Function(int field0)? primitive,
-    TResult Function(DartDebug field0)? traitObj,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebug field0)? traitObj,
     TResult Function(MutexHideData field0)? mutex,
     TResult Function(RwLockHideData field0)? rwLock,
     required TResult orElse(),
@@ -159,8 +159,8 @@ class _$EnumOpaque_StructImpl implements EnumOpaque_Struct {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(HideData field0) struct,
-    required TResult Function(int field0) primitive,
-    required TResult Function(DartDebug field0) traitObj,
+    required TResult Function(I32 field0) primitive,
+    required TResult Function(BoxDartDebug field0) traitObj,
     required TResult Function(MutexHideData field0) mutex,
     required TResult Function(RwLockHideData field0) rwLock,
   }) {
@@ -171,8 +171,8 @@ class _$EnumOpaque_StructImpl implements EnumOpaque_Struct {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(HideData field0)? struct,
-    TResult? Function(int field0)? primitive,
-    TResult? Function(DartDebug field0)? traitObj,
+    TResult? Function(I32 field0)? primitive,
+    TResult? Function(BoxDartDebug field0)? traitObj,
     TResult? Function(MutexHideData field0)? mutex,
     TResult? Function(RwLockHideData field0)? rwLock,
   }) {
@@ -183,8 +183,8 @@ class _$EnumOpaque_StructImpl implements EnumOpaque_Struct {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(HideData field0)? struct,
-    TResult Function(int field0)? primitive,
-    TResult Function(DartDebug field0)? traitObj,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebug field0)? traitObj,
     TResult Function(MutexHideData field0)? mutex,
     TResult Function(RwLockHideData field0)? rwLock,
     required TResult orElse(),
@@ -253,7 +253,7 @@ abstract class _$$EnumOpaque_PrimitiveImplCopyWith<$Res> {
           $Res Function(_$EnumOpaque_PrimitiveImpl) then) =
       __$$EnumOpaque_PrimitiveImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int field0});
+  $Res call({I32 field0});
 }
 
 /// @nodoc
@@ -273,7 +273,7 @@ class __$$EnumOpaque_PrimitiveImplCopyWithImpl<$Res>
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as int,
+              as I32,
     ));
   }
 }
@@ -284,7 +284,7 @@ class _$EnumOpaque_PrimitiveImpl implements EnumOpaque_Primitive {
   const _$EnumOpaque_PrimitiveImpl(this.field0);
 
   @override
-  final int field0;
+  final I32 field0;
 
   @override
   String toString() {
@@ -314,8 +314,8 @@ class _$EnumOpaque_PrimitiveImpl implements EnumOpaque_Primitive {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(HideData field0) struct,
-    required TResult Function(int field0) primitive,
-    required TResult Function(DartDebug field0) traitObj,
+    required TResult Function(I32 field0) primitive,
+    required TResult Function(BoxDartDebug field0) traitObj,
     required TResult Function(MutexHideData field0) mutex,
     required TResult Function(RwLockHideData field0) rwLock,
   }) {
@@ -326,8 +326,8 @@ class _$EnumOpaque_PrimitiveImpl implements EnumOpaque_Primitive {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(HideData field0)? struct,
-    TResult? Function(int field0)? primitive,
-    TResult? Function(DartDebug field0)? traitObj,
+    TResult? Function(I32 field0)? primitive,
+    TResult? Function(BoxDartDebug field0)? traitObj,
     TResult? Function(MutexHideData field0)? mutex,
     TResult? Function(RwLockHideData field0)? rwLock,
   }) {
@@ -338,8 +338,8 @@ class _$EnumOpaque_PrimitiveImpl implements EnumOpaque_Primitive {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(HideData field0)? struct,
-    TResult Function(int field0)? primitive,
-    TResult Function(DartDebug field0)? traitObj,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebug field0)? traitObj,
     TResult Function(MutexHideData field0)? mutex,
     TResult Function(RwLockHideData field0)? rwLock,
     required TResult orElse(),
@@ -392,11 +392,11 @@ class _$EnumOpaque_PrimitiveImpl implements EnumOpaque_Primitive {
 }
 
 abstract class EnumOpaque_Primitive implements EnumOpaque {
-  const factory EnumOpaque_Primitive(final int field0) =
+  const factory EnumOpaque_Primitive(final I32 field0) =
       _$EnumOpaque_PrimitiveImpl;
 
   @override
-  int get field0;
+  I32 get field0;
   @JsonKey(ignore: true)
   _$$EnumOpaque_PrimitiveImplCopyWith<_$EnumOpaque_PrimitiveImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -408,7 +408,7 @@ abstract class _$$EnumOpaque_TraitObjImplCopyWith<$Res> {
           $Res Function(_$EnumOpaque_TraitObjImpl) then) =
       __$$EnumOpaque_TraitObjImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({DartDebug field0});
+  $Res call({BoxDartDebug field0});
 }
 
 /// @nodoc
@@ -428,7 +428,7 @@ class __$$EnumOpaque_TraitObjImplCopyWithImpl<$Res>
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as DartDebug,
+              as BoxDartDebug,
     ));
   }
 }
@@ -439,7 +439,7 @@ class _$EnumOpaque_TraitObjImpl implements EnumOpaque_TraitObj {
   const _$EnumOpaque_TraitObjImpl(this.field0);
 
   @override
-  final DartDebug field0;
+  final BoxDartDebug field0;
 
   @override
   String toString() {
@@ -468,8 +468,8 @@ class _$EnumOpaque_TraitObjImpl implements EnumOpaque_TraitObj {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(HideData field0) struct,
-    required TResult Function(int field0) primitive,
-    required TResult Function(DartDebug field0) traitObj,
+    required TResult Function(I32 field0) primitive,
+    required TResult Function(BoxDartDebug field0) traitObj,
     required TResult Function(MutexHideData field0) mutex,
     required TResult Function(RwLockHideData field0) rwLock,
   }) {
@@ -480,8 +480,8 @@ class _$EnumOpaque_TraitObjImpl implements EnumOpaque_TraitObj {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(HideData field0)? struct,
-    TResult? Function(int field0)? primitive,
-    TResult? Function(DartDebug field0)? traitObj,
+    TResult? Function(I32 field0)? primitive,
+    TResult? Function(BoxDartDebug field0)? traitObj,
     TResult? Function(MutexHideData field0)? mutex,
     TResult? Function(RwLockHideData field0)? rwLock,
   }) {
@@ -492,8 +492,8 @@ class _$EnumOpaque_TraitObjImpl implements EnumOpaque_TraitObj {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(HideData field0)? struct,
-    TResult Function(int field0)? primitive,
-    TResult Function(DartDebug field0)? traitObj,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebug field0)? traitObj,
     TResult Function(MutexHideData field0)? mutex,
     TResult Function(RwLockHideData field0)? rwLock,
     required TResult orElse(),
@@ -546,11 +546,11 @@ class _$EnumOpaque_TraitObjImpl implements EnumOpaque_TraitObj {
 }
 
 abstract class EnumOpaque_TraitObj implements EnumOpaque {
-  const factory EnumOpaque_TraitObj(final DartDebug field0) =
+  const factory EnumOpaque_TraitObj(final BoxDartDebug field0) =
       _$EnumOpaque_TraitObjImpl;
 
   @override
-  DartDebug get field0;
+  BoxDartDebug get field0;
   @JsonKey(ignore: true)
   _$$EnumOpaque_TraitObjImplCopyWith<_$EnumOpaque_TraitObjImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -622,8 +622,8 @@ class _$EnumOpaque_MutexImpl implements EnumOpaque_Mutex {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(HideData field0) struct,
-    required TResult Function(int field0) primitive,
-    required TResult Function(DartDebug field0) traitObj,
+    required TResult Function(I32 field0) primitive,
+    required TResult Function(BoxDartDebug field0) traitObj,
     required TResult Function(MutexHideData field0) mutex,
     required TResult Function(RwLockHideData field0) rwLock,
   }) {
@@ -634,8 +634,8 @@ class _$EnumOpaque_MutexImpl implements EnumOpaque_Mutex {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(HideData field0)? struct,
-    TResult? Function(int field0)? primitive,
-    TResult? Function(DartDebug field0)? traitObj,
+    TResult? Function(I32 field0)? primitive,
+    TResult? Function(BoxDartDebug field0)? traitObj,
     TResult? Function(MutexHideData field0)? mutex,
     TResult? Function(RwLockHideData field0)? rwLock,
   }) {
@@ -646,8 +646,8 @@ class _$EnumOpaque_MutexImpl implements EnumOpaque_Mutex {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(HideData field0)? struct,
-    TResult Function(int field0)? primitive,
-    TResult Function(DartDebug field0)? traitObj,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebug field0)? traitObj,
     TResult Function(MutexHideData field0)? mutex,
     TResult Function(RwLockHideData field0)? rwLock,
     required TResult orElse(),
@@ -776,8 +776,8 @@ class _$EnumOpaque_RwLockImpl implements EnumOpaque_RwLock {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(HideData field0) struct,
-    required TResult Function(int field0) primitive,
-    required TResult Function(DartDebug field0) traitObj,
+    required TResult Function(I32 field0) primitive,
+    required TResult Function(BoxDartDebug field0) traitObj,
     required TResult Function(MutexHideData field0) mutex,
     required TResult Function(RwLockHideData field0) rwLock,
   }) {
@@ -788,8 +788,8 @@ class _$EnumOpaque_RwLockImpl implements EnumOpaque_RwLock {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(HideData field0)? struct,
-    TResult? Function(int field0)? primitive,
-    TResult? Function(DartDebug field0)? traitObj,
+    TResult? Function(I32 field0)? primitive,
+    TResult? Function(BoxDartDebug field0)? traitObj,
     TResult? Function(MutexHideData field0)? mutex,
     TResult? Function(RwLockHideData field0)? rwLock,
   }) {
@@ -800,8 +800,8 @@ class _$EnumOpaque_RwLockImpl implements EnumOpaque_RwLock {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(HideData field0)? struct,
-    TResult Function(int field0)? primitive,
-    TResult Function(DartDebug field0)? traitObj,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebug field0)? traitObj,
     TResult Function(MutexHideData field0)? mutex,
     TResult Function(RwLockHideData field0)? rwLock,
     required TResult orElse(),
