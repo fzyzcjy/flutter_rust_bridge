@@ -18,7 +18,7 @@
 
 // Section: imports
 
-use flutter_rust_bridge::{Handler, IntoIntoDart};
+use flutter_rust_bridge::Handler;
 
 // Section: wire_funcs
 
