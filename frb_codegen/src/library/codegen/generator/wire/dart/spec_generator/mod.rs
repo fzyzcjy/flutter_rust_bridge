@@ -16,6 +16,7 @@ mod function;
 pub(crate) mod misc;
 pub(crate) mod output_code;
 pub mod wire2api;
+pub(super) mod wire_class;
 
 #[derive(Clone, Serialize)]
 pub(crate) struct WireDartOutputSpec {
