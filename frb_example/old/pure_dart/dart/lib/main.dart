@@ -143,45 +143,6 @@ void main(List<String> args) async {
     expect(opt.buffers, nulls);
   });
 
-  test('dart call handleReturnEnum', () async {
-    expect(await handleReturnEnum(input: "Tuesday"), Weekdays.tuesday);
-    expect(await handleReturnEnum(input: "Foreverday"), null);
-  });
-
-  test('dart call handleEnumParameter', () async {
-    expect(await handleEnumParameter(weekday: Weekdays.saturday), Weekdays.saturday);
-  });
-
-  test('dart call handleEnumParameter', () async {
-    expect(handleEnumSyncFreezed(value: MyEnumFreezed.a(1)), MyEnumFreezed.b('hello'));
-  });
-
-  test('dart call handleEnumStruct', () async {
-    expect(await handleEnumStruct(val: KitchenSink_Empty()), KitchenSink_Empty());
-    expect(
-      await handleEnumStruct(
-        val: KitchenSink_Primitives(int32: 0, float64: 1, boolean: false),
-      ),
-      KitchenSink_Primitives(int32: 1, float64: 2, boolean: true),
-    );
-    expect(
-      await handleEnumStruct(val: KitchenSink_Optional(null, 0)),
-      KitchenSink_Optional(null, 1),
-    );
-    expect(
-      await handleEnumStruct(val: KitchenSink_Buffer(Uint8List.fromList([]))),
-      KitchenSink_Buffer(Uint8List.fromList([1])),
-    );
-    expect(
-      await handleEnumStruct(val: KitchenSink_Enums(Weekdays.monday)),
-      KitchenSink_Enums(Weekdays.tuesday),
-    );
-    expect(
-      await handleEnumStruct(val: const KitchenSink.nested(0, KitchenSink.empty())),
-      const KitchenSink.nested(1, KitchenSink.empty()),
-    );
-  });
-
   test('loop and call many times', () async {
     var obj = _createMyTreeNode(arrLen: 5);
     for (var i = 0; i < 500; ++i) {
