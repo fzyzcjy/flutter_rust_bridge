@@ -1,11 +1,12 @@
 use super::*;
 
-pub fn generate_wasm_wire<'a>(
-    funcs: impl IntoIterator<Item = &'a IrFuncDisplay>,
-    dart_wire_class_name: &str,
-    dart_wasm_module_name: &str,
-) -> String {
-}
+// DONE
+// pub fn generate_wasm_wire<'a>(
+//     funcs: impl IntoIterator<Item = &'a IrFuncDisplay>,
+//     dart_wire_class_name: &str,
+//     dart_wasm_module_name: &str,
+// ) -> String {
+// }
 
 pub fn push_wasm_module(
     lines: &mut Acc<Vec<String>>,
@@ -64,22 +65,23 @@ pub fn generate_wasm_wire_func_decl(func: &IrFuncDisplay) -> String {
     )
 }
 
-pub fn generate_wasm_wire_func_method(func: &IrFuncDisplay) -> String {
-    format!(
-        "{out} {name}({}) => wasmModule.{name}({});",
-        func.inputs
-            .iter()
-            .map(|param| format!("{} {}", param.ty, param.name))
-            .join(","),
-        func.inputs
-            .iter()
-            .map(|param| param.name.to_string())
-            .join(","),
-        name = func.name,
-        out = if has_port_argument(func) {
-            "void".into()
-        } else {
-            reconstruct_dart_wire_from_raw_repr(&func.output)
-        },
-    )
-}
+// SKIPPED
+// pub fn generate_wasm_wire_func_method(func: &IrFuncDisplay) -> String {
+//     format!(
+//         "{out} {name}({}) => wasmModule.{name}({});",
+//         func.inputs
+//             .iter()
+//             .map(|param| format!("{} {}", param.ty, param.name))
+//             .join(","),
+//         func.inputs
+//             .iter()
+//             .map(|param| param.name.to_string())
+//             .join(","),
+//         name = func.name,
+//         out = if has_port_argument(func) {
+//             "void".into()
+//         } else {
+//             reconstruct_dart_wire_from_raw_repr(&func.output)
+//         },
+//     )
+// }
