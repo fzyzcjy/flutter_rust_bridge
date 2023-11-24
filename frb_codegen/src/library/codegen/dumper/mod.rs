@@ -4,6 +4,7 @@ use crate::codegen::generator::api_dart::spec_generator::ApiDartOutputSpec;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::Config;
 use crate::utils::file_utils::create_dir_all_and_write;
+use convert_case::{Case, Casing};
 use log::info;
 use serde::Serialize;
 use std::fs;
@@ -36,7 +37,11 @@ impl Dumper<'_> {
             return Ok(());
         }
 
-        let path = self.0.dump_directory.join(name);
+        let path = self
+            .0
+            .dump_directory
+            .join(content.to_string().to_case(Case::Snake))
+            .join(name);
         info!("Dumping {name} into {path:?}");
 
         create_dir_all_and_write(path, str)
