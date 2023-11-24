@@ -217,6 +217,7 @@ fn rust_type_to_dart_type(rust: &str) -> String {
             Regex::new(r"(\bdyn|'static|\bDartSafe|\+ (Send|Sync|UnwindSafe|RefUnwindSafe))\b")
                 .unwrap();
     }
+    let rust = rust.split("::").last().unwrap();
     OPAQUE_FILTER
         .replace_all(rust, "")
         .replace(char_not_alphanumeric, "_")
