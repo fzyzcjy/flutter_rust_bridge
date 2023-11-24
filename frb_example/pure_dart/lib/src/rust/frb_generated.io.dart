@@ -9539,5 +9539,3 @@ final class wire_feature_uuid extends ffi.Struct {
 
   external ffi.Pointer<wire_list_prim_u_8> many;
 }
-
-typedef MessagePort = ffi.Int64;
