@@ -20,10 +20,10 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
                     {dart_api_type}.fromRaw(int ptr, int size): super.unsafe(ptr, size);
 
                     @override
-                    DropFnType get dropFn => {dart_api_instance}.dropOpaque{dart_api_type};
+                    OpaqueDropFnType get dropFn => {dart_api_instance}.dropOpaque{dart_api_type};
             
                     @override
-                    ShareFnType get shareFn => {dart_api_instance}.shareOpaque{dart_api_type};
+                    OpaqueShareFnType get shareFn => {dart_api_instance}.shareOpaque{dart_api_type};
             
                     @override
                     OpaqueTypeFinalizer get staticFinalizer => {dart_api_instance}.{dart_api_type}Finalizer;
