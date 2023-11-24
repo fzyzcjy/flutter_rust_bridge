@@ -1572,225 +1572,245 @@ impl Wire2Api<Weekdays> for JsValue {
 }
 
 #[wasm_bindgen]
-pub fn wire_boxed_blob(port_: MessagePort, blob: Box<[u8]>) {
+pub fn wire_boxed_blob(port_: flutter_rust_bridge::MessagePort, blob: Box<[u8]>) {
     wire_boxed_blob_impl(port_, blob)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_test_id(port_: MessagePort, id: JsValue) {
+pub fn wire_func_test_id(port_: flutter_rust_bridge::MessagePort, id: JsValue) {
     wire_func_test_id_impl(port_, id)
 }
 
 #[wasm_bindgen]
-pub fn wire_get_array(port_: MessagePort) {
+pub fn wire_get_array(port_: flutter_rust_bridge::MessagePort) {
     wire_get_array_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_get_complex_array(port_: MessagePort) {
+pub fn wire_get_complex_array(port_: flutter_rust_bridge::MessagePort) {
     wire_get_complex_array_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_last_number(port_: MessagePort, array: Box<[f64]>) {
+pub fn wire_last_number(port_: flutter_rust_bridge::MessagePort, array: Box<[f64]>) {
     wire_last_number_impl(port_, array)
 }
 
 #[wasm_bindgen]
-pub fn wire_nested_id(port_: MessagePort, id: JsValue) {
+pub fn wire_nested_id(port_: flutter_rust_bridge::MessagePort, id: JsValue) {
     wire_nested_id_impl(port_, id)
 }
 
 #[wasm_bindgen]
-pub fn wire_new_msgid(port_: MessagePort, id: Box<[u8]>) {
+pub fn wire_new_msgid(port_: flutter_rust_bridge::MessagePort, id: Box<[u8]>) {
     wire_new_msgid_impl(port_, id)
 }
 
 #[wasm_bindgen]
-pub fn wire_return_boxed_feed_id(port_: MessagePort, id: Box<[u8]>) {
+pub fn wire_return_boxed_feed_id(port_: flutter_rust_bridge::MessagePort, id: Box<[u8]>) {
     wire_return_boxed_feed_id_impl(port_, id)
 }
 
 #[wasm_bindgen]
-pub fn wire_return_boxed_raw_feed_id(port_: MessagePort, id: JsValue) {
+pub fn wire_return_boxed_raw_feed_id(port_: flutter_rust_bridge::MessagePort, id: JsValue) {
     wire_return_boxed_raw_feed_id_impl(port_, id)
 }
 
 #[wasm_bindgen]
-pub fn wire_use_boxed_blob(port_: MessagePort, blob: JsValue) {
+pub fn wire_use_boxed_blob(port_: flutter_rust_bridge::MessagePort, blob: JsValue) {
     wire_use_boxed_blob_impl(port_, blob)
 }
 
 #[wasm_bindgen]
-pub fn wire_use_msgid(port_: MessagePort, id: JsValue) {
+pub fn wire_use_msgid(port_: flutter_rust_bridge::MessagePort, id: JsValue) {
     wire_use_msgid_impl(port_, id)
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_customized_struct(port_: MessagePort, val: JsValue) {
+pub fn wire_handle_customized_struct(port_: flutter_rust_bridge::MessagePort, val: JsValue) {
     wire_handle_customized_struct_impl(port_, val)
 }
 
 #[wasm_bindgen]
-pub fn wire_next_user_id(port_: MessagePort, user_id: JsValue) {
+pub fn wire_next_user_id(port_: flutter_rust_bridge::MessagePort, user_id: JsValue) {
     wire_next_user_id_impl(port_, user_id)
 }
 
 #[wasm_bindgen]
-pub fn wire_datetime_local(port_: MessagePort, d: i64) {
+pub fn wire_datetime_local(port_: flutter_rust_bridge::MessagePort, d: i64) {
     wire_datetime_local_impl(port_, d)
 }
 
 #[wasm_bindgen]
-pub fn wire_datetime_utc(port_: MessagePort, d: i64) {
+pub fn wire_datetime_utc(port_: flutter_rust_bridge::MessagePort, d: i64) {
     wire_datetime_utc_impl(port_, d)
 }
 
 #[wasm_bindgen]
-pub fn wire_duration(port_: MessagePort, d: i64) {
+pub fn wire_duration(port_: flutter_rust_bridge::MessagePort, d: i64) {
     wire_duration_impl(port_, d)
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_durations(port_: MessagePort, durations: Box<[i64]>, since: i64) {
+pub fn wire_handle_durations(
+    port_: flutter_rust_bridge::MessagePort,
+    durations: Box<[i64]>,
+    since: i64,
+) {
     wire_handle_durations_impl(port_, durations, since)
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_timestamps(port_: MessagePort, timestamps: Box<[i64]>, epoch: i64) {
+pub fn wire_handle_timestamps(
+    port_: flutter_rust_bridge::MessagePort,
+    timestamps: Box<[i64]>,
+    epoch: i64,
+) {
     wire_handle_timestamps_impl(port_, timestamps, epoch)
 }
 
 #[wasm_bindgen]
-pub fn wire_how_long_does_it_take(port_: MessagePort, mine: JsValue) {
+pub fn wire_how_long_does_it_take(port_: flutter_rust_bridge::MessagePort, mine: JsValue) {
     wire_how_long_does_it_take_impl(port_, mine)
 }
 
 #[wasm_bindgen]
-pub fn wire_naivedatetime(port_: MessagePort, d: i64) {
+pub fn wire_naivedatetime(port_: flutter_rust_bridge::MessagePort, d: i64) {
     wire_naivedatetime_impl(port_, d)
 }
 
 #[wasm_bindgen]
-pub fn wire_optional_empty_datetime_utc(port_: MessagePort, d: JsValue) {
+pub fn wire_optional_empty_datetime_utc(port_: flutter_rust_bridge::MessagePort, d: JsValue) {
     wire_optional_empty_datetime_utc_impl(port_, d)
 }
 
 #[wasm_bindgen]
-pub fn wire_test_chrono(port_: MessagePort) {
+pub fn wire_test_chrono(port_: flutter_rust_bridge::MessagePort) {
     wire_test_chrono_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_test_precise_chrono(port_: MessagePort) {
+pub fn wire_test_precise_chrono(port_: flutter_rust_bridge::MessagePort) {
     wire_test_precise_chrono_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire_StructWithCommentsTwinNormal_instance_method_twin_normal(
-    port_: MessagePort,
+    port_: flutter_rust_bridge::MessagePort,
     that: JsValue,
 ) {
     wire_StructWithCommentsTwinNormal_instance_method_twin_normal_impl(port_, that)
 }
 
 #[wasm_bindgen]
-pub fn wire_StructWithCommentsTwinNormal_static_method_twin_normal(port_: MessagePort) {
+pub fn wire_StructWithCommentsTwinNormal_static_method_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+) {
     wire_StructWithCommentsTwinNormal_static_method_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_function_with_comments_slash_star_star_twin_normal(port_: MessagePort) {
+pub fn wire_function_with_comments_slash_star_star_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+) {
     wire_function_with_comments_slash_star_star_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_function_with_comments_triple_slash_multi_line_twin_normal(port_: MessagePort) {
+pub fn wire_function_with_comments_triple_slash_multi_line_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+) {
     wire_function_with_comments_triple_slash_multi_line_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_function_with_comments_triple_slash_single_line_twin_normal(port_: MessagePort) {
+pub fn wire_function_with_comments_triple_slash_single_line_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+) {
     wire_function_with_comments_triple_slash_single_line_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_return_dart_dynamic(port_: MessagePort) {
+pub fn wire_return_dart_dynamic(port_: flutter_rust_bridge::MessagePort) {
     wire_return_dart_dynamic_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_async_accept_dart_opaque(port_: MessagePort, opaque: JsValue) {
+pub fn wire_async_accept_dart_opaque(port_: flutter_rust_bridge::MessagePort, opaque: JsValue) {
     wire_async_accept_dart_opaque_impl(port_, opaque)
 }
 
 #[wasm_bindgen]
-pub fn wire_create_enum_dart_opaque(port_: MessagePort, opaque: JsValue) {
+pub fn wire_create_enum_dart_opaque(port_: flutter_rust_bridge::MessagePort, opaque: JsValue) {
     wire_create_enum_dart_opaque_impl(port_, opaque)
 }
 
 #[wasm_bindgen]
-pub fn wire_create_nested_dart_opaque(port_: MessagePort, opaque1: JsValue, opaque2: JsValue) {
+pub fn wire_create_nested_dart_opaque(
+    port_: flutter_rust_bridge::MessagePort,
+    opaque1: JsValue,
+    opaque2: JsValue,
+) {
     wire_create_nested_dart_opaque_impl(port_, opaque1, opaque2)
 }
 
 #[wasm_bindgen]
-pub fn wire_drop_static_dart_opaque(port_: MessagePort) {
+pub fn wire_drop_static_dart_opaque(port_: flutter_rust_bridge::MessagePort) {
     wire_drop_static_dart_opaque_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_get_enum_dart_opaque(port_: MessagePort, opaque: JsValue) {
+pub fn wire_get_enum_dart_opaque(port_: flutter_rust_bridge::MessagePort, opaque: JsValue) {
     wire_get_enum_dart_opaque_impl(port_, opaque)
 }
 
 #[wasm_bindgen]
-pub fn wire_get_nested_dart_opaque(port_: MessagePort, opaque: JsValue) {
+pub fn wire_get_nested_dart_opaque(port_: flutter_rust_bridge::MessagePort, opaque: JsValue) {
     wire_get_nested_dart_opaque_impl(port_, opaque)
 }
 
 #[wasm_bindgen]
-pub fn wire_loop_back(port_: MessagePort, opaque: JsValue) {
+pub fn wire_loop_back(port_: flutter_rust_bridge::MessagePort, opaque: JsValue) {
     wire_loop_back_impl(port_, opaque)
 }
 
 #[wasm_bindgen]
-pub fn wire_loop_back_array(port_: MessagePort, opaque: JsValue) {
+pub fn wire_loop_back_array(port_: flutter_rust_bridge::MessagePort, opaque: JsValue) {
     wire_loop_back_array_impl(port_, opaque)
 }
 
 #[wasm_bindgen]
-pub fn wire_loop_back_array_get(port_: MessagePort, opaque: JsValue) {
+pub fn wire_loop_back_array_get(port_: flutter_rust_bridge::MessagePort, opaque: JsValue) {
     wire_loop_back_array_get_impl(port_, opaque)
 }
 
 #[wasm_bindgen]
-pub fn wire_loop_back_option(port_: MessagePort, opaque: JsValue) {
+pub fn wire_loop_back_option(port_: flutter_rust_bridge::MessagePort, opaque: JsValue) {
     wire_loop_back_option_impl(port_, opaque)
 }
 
 #[wasm_bindgen]
-pub fn wire_loop_back_option_get(port_: MessagePort, opaque: JsValue) {
+pub fn wire_loop_back_option_get(port_: flutter_rust_bridge::MessagePort, opaque: JsValue) {
     wire_loop_back_option_get_impl(port_, opaque)
 }
 
 #[wasm_bindgen]
-pub fn wire_loop_back_vec(port_: MessagePort, opaque: JsValue) {
+pub fn wire_loop_back_vec(port_: flutter_rust_bridge::MessagePort, opaque: JsValue) {
     wire_loop_back_vec_impl(port_, opaque)
 }
 
 #[wasm_bindgen]
-pub fn wire_loop_back_vec_get(port_: MessagePort, opaque: JsValue) {
+pub fn wire_loop_back_vec_get(port_: flutter_rust_bridge::MessagePort, opaque: JsValue) {
     wire_loop_back_vec_get_impl(port_, opaque)
 }
 
 #[wasm_bindgen]
-pub fn wire_panic_unwrap_dart_opaque(port_: MessagePort, opaque: JsValue) {
+pub fn wire_panic_unwrap_dart_opaque(port_: flutter_rust_bridge::MessagePort, opaque: JsValue) {
     wire_panic_unwrap_dart_opaque_impl(port_, opaque)
 }
 
 #[wasm_bindgen]
-pub fn wire_set_static_dart_opaque(port_: MessagePort, opaque: JsValue) {
+pub fn wire_set_static_dart_opaque(port_: flutter_rust_bridge::MessagePort, opaque: JsValue) {
     wire_set_static_dart_opaque_impl(port_, opaque)
 }
 
@@ -1807,153 +1827,189 @@ pub fn wire_unwrap_dart_opaque(opaque: JsValue) -> flutter_rust_bridge::support:
 }
 
 #[wasm_bindgen]
-pub fn wire_func_enum_simple_twin_normal(port_: MessagePort, arg: i32) {
+pub fn wire_func_enum_simple_twin_normal(port_: flutter_rust_bridge::MessagePort, arg: i32) {
     wire_func_enum_simple_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_enum_with_item_mixed_twin_normal(port_: MessagePort, arg: JsValue) {
+pub fn wire_func_enum_with_item_mixed_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: JsValue,
+) {
     wire_func_enum_with_item_mixed_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_enum_with_item_struct_twin_normal(port_: MessagePort, arg: JsValue) {
+pub fn wire_func_enum_with_item_struct_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: JsValue,
+) {
     wire_func_enum_with_item_struct_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_enum_with_item_tuple_twin_normal(port_: MessagePort, arg: JsValue) {
+pub fn wire_func_enum_with_item_tuple_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: JsValue,
+) {
     wire_func_enum_with_item_tuple_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_enum_parameter(port_: MessagePort, weekday: i32) {
+pub fn wire_handle_enum_parameter(port_: flutter_rust_bridge::MessagePort, weekday: i32) {
     wire_handle_enum_parameter_impl(port_, weekday)
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_return_enum(port_: MessagePort, input: String) {
+pub fn wire_handle_return_enum(port_: flutter_rust_bridge::MessagePort, input: String) {
     wire_handle_return_enum_impl(port_, input)
 }
 
 #[wasm_bindgen]
-pub fn wire_multiply_by_ten(port_: MessagePort, measure: JsValue) {
+pub fn wire_multiply_by_ten(port_: flutter_rust_bridge::MessagePort, measure: JsValue) {
     wire_multiply_by_ten_impl(port_, measure)
 }
 
 #[wasm_bindgen]
-pub fn wire_print_note(port_: MessagePort, note: JsValue) {
+pub fn wire_print_note(port_: flutter_rust_bridge::MessagePort, note: JsValue) {
     wire_print_note_impl(port_, note)
 }
 
 #[wasm_bindgen]
-pub fn wire_Event_as_string(port_: MessagePort, that: JsValue) {
+pub fn wire_Event_as_string(port_: flutter_rust_bridge::MessagePort, that: JsValue) {
     wire_Event_as_string_impl(port_, that)
 }
 
 #[wasm_bindgen]
-pub fn wire_close_event_listener(port_: MessagePort) {
+pub fn wire_close_event_listener(port_: flutter_rust_bridge::MessagePort) {
     wire_close_event_listener_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_create_event(port_: MessagePort, address: String, payload: String) {
+pub fn wire_create_event(
+    port_: flutter_rust_bridge::MessagePort,
+    address: String,
+    payload: String,
+) {
     wire_create_event_impl(port_, address, payload)
 }
 
 #[wasm_bindgen]
-pub fn wire_register_event_listener(port_: MessagePort) {
+pub fn wire_register_event_listener(port_: flutter_rust_bridge::MessagePort) {
     wire_register_event_listener_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_custom_enum_error_panic_twin_normal(port_: MessagePort) {
+pub fn wire_custom_enum_error_panic_twin_normal(port_: flutter_rust_bridge::MessagePort) {
     wire_custom_enum_error_panic_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_custom_enum_error_return_error_twin_normal(port_: MessagePort) {
+pub fn wire_custom_enum_error_return_error_twin_normal(port_: flutter_rust_bridge::MessagePort) {
     wire_custom_enum_error_return_error_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_custom_enum_error_return_ok_twin_normal(port_: MessagePort, arg: u32) {
+pub fn wire_custom_enum_error_return_ok_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: u32,
+) {
     wire_custom_enum_error_return_ok_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_custom_nested_error_return_error_twin_normal(port_: MessagePort, arg: JsValue) {
+pub fn wire_custom_nested_error_return_error_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: JsValue,
+) {
     wire_custom_nested_error_return_error_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_custom_struct_error_return_error_twin_normal(port_: MessagePort, arg: JsValue) {
+pub fn wire_custom_struct_error_return_error_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: JsValue,
+) {
     wire_custom_struct_error_return_error_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_return_error_twin_normal(port_: MessagePort) {
+pub fn wire_func_return_error_twin_normal(port_: flutter_rust_bridge::MessagePort) {
     wire_func_return_error_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_type_fallible_panic_twin_normal(port_: MessagePort) {
+pub fn wire_func_type_fallible_panic_twin_normal(port_: flutter_rust_bridge::MessagePort) {
     wire_func_type_fallible_panic_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_type_infallible_panic_twin_normal(port_: MessagePort) {
+pub fn wire_func_type_infallible_panic_twin_normal(port_: flutter_rust_bridge::MessagePort) {
     wire_func_type_infallible_panic_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_call_new_module_system(port_: MessagePort) {
+pub fn wire_call_new_module_system(port_: flutter_rust_bridge::MessagePort) {
     wire_call_new_module_system_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_call_old_module_system(port_: MessagePort) {
+pub fn wire_call_old_module_system(port_: flutter_rust_bridge::MessagePort) {
     wire_call_old_module_system_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_use_imported_enum(port_: MessagePort, my_enum: i32) {
+pub fn wire_use_imported_enum(port_: flutter_rust_bridge::MessagePort, my_enum: i32) {
     wire_use_imported_enum_impl(port_, my_enum)
 }
 
 #[wasm_bindgen]
-pub fn wire_use_imported_struct(port_: MessagePort, my_struct: JsValue) {
+pub fn wire_use_imported_struct(port_: flutter_rust_bridge::MessagePort, my_struct: JsValue) {
     wire_use_imported_struct_impl(port_, my_struct)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_macro_struct(port_: MessagePort, arg: JsValue) {
+pub fn wire_func_macro_struct(port_: flutter_rust_bridge::MessagePort, arg: JsValue) {
     wire_func_macro_struct_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_ConcatenateWith_concatenate(port_: MessagePort, that: JsValue, b: String) {
+pub fn wire_ConcatenateWith_concatenate(
+    port_: flutter_rust_bridge::MessagePort,
+    that: JsValue,
+    b: String,
+) {
     wire_ConcatenateWith_concatenate_impl(port_, that, b)
 }
 
 #[wasm_bindgen]
-pub fn wire_ConcatenateWith_concatenate_static(port_: MessagePort, a: String, b: String) {
+pub fn wire_ConcatenateWith_concatenate_static(
+    port_: flutter_rust_bridge::MessagePort,
+    a: String,
+    b: String,
+) {
     wire_ConcatenateWith_concatenate_static_impl(port_, a, b)
 }
 
 #[wasm_bindgen]
-pub fn wire_ConcatenateWith_handle_some_static_stream_sink(port_: MessagePort, key: u32, max: u32) {
+pub fn wire_ConcatenateWith_handle_some_static_stream_sink(
+    port_: flutter_rust_bridge::MessagePort,
+    key: u32,
+    max: u32,
+) {
     wire_ConcatenateWith_handle_some_static_stream_sink_impl(port_, key, max)
 }
 
 #[wasm_bindgen]
-pub fn wire_ConcatenateWith_handle_some_static_stream_sink_single_arg(port_: MessagePort) {
+pub fn wire_ConcatenateWith_handle_some_static_stream_sink_single_arg(
+    port_: flutter_rust_bridge::MessagePort,
+) {
     wire_ConcatenateWith_handle_some_static_stream_sink_single_arg_impl(port_)
 }
 
 #[wasm_bindgen]
 pub fn wire_ConcatenateWith_handle_some_stream_sink(
-    port_: MessagePort,
+    port_: flutter_rust_bridge::MessagePort,
     that: JsValue,
     key: u32,
     max: u32,
@@ -1962,188 +2018,191 @@ pub fn wire_ConcatenateWith_handle_some_stream_sink(
 }
 
 #[wasm_bindgen]
-pub fn wire_ConcatenateWith_handle_some_stream_sink_at_1(port_: MessagePort, that: JsValue) {
+pub fn wire_ConcatenateWith_handle_some_stream_sink_at_1(
+    port_: flutter_rust_bridge::MessagePort,
+    that: JsValue,
+) {
     wire_ConcatenateWith_handle_some_stream_sink_at_1_impl(port_, that)
 }
 
 #[wasm_bindgen]
-pub fn wire_ConcatenateWith_new(port_: MessagePort, a: String) {
+pub fn wire_ConcatenateWith_new(port_: flutter_rust_bridge::MessagePort, a: String) {
     wire_ConcatenateWith_new_impl(port_, a)
 }
 
 #[wasm_bindgen]
-pub fn wire_SumWith_sum(port_: MessagePort, that: JsValue, y: u32, z: u32) {
+pub fn wire_SumWith_sum(port_: flutter_rust_bridge::MessagePort, that: JsValue, y: u32, z: u32) {
     wire_SumWith_sum_impl(port_, that, y, z)
 }
 
 #[wasm_bindgen]
-pub fn wire_get_sum_array(port_: MessagePort, a: u32, b: u32, c: u32) {
+pub fn wire_get_sum_array(port_: flutter_rust_bridge::MessagePort, a: u32, b: u32, c: u32) {
     wire_get_sum_array_impl(port_, a, b, c)
 }
 
 #[wasm_bindgen]
-pub fn wire_get_sum_struct(port_: MessagePort) {
+pub fn wire_get_sum_struct(port_: flutter_rust_bridge::MessagePort) {
     wire_get_sum_struct_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_app_settings_stream(port_: MessagePort) {
+pub fn wire_app_settings_stream(port_: flutter_rust_bridge::MessagePort) {
     wire_app_settings_stream_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_app_settings_vec_stream(port_: MessagePort) {
+pub fn wire_app_settings_vec_stream(port_: flutter_rust_bridge::MessagePort) {
     wire_app_settings_vec_stream_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_first_number(port_: MessagePort, nums: JsValue) {
+pub fn wire_first_number(port_: flutter_rust_bridge::MessagePort, nums: JsValue) {
     wire_first_number_impl(port_, nums)
 }
 
 #[wasm_bindgen]
-pub fn wire_first_sequence(port_: MessagePort, seqs: JsValue) {
+pub fn wire_first_sequence(port_: flutter_rust_bridge::MessagePort, seqs: JsValue) {
     wire_first_sequence_impl(port_, seqs)
 }
 
 #[wasm_bindgen]
-pub fn wire_get_app_settings(port_: MessagePort) {
+pub fn wire_get_app_settings(port_: flutter_rust_bridge::MessagePort) {
     wire_get_app_settings_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_get_fallible_app_settings(port_: MessagePort) {
+pub fn wire_get_fallible_app_settings(port_: flutter_rust_bridge::MessagePort) {
     wire_get_fallible_app_settings_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_get_message(port_: MessagePort) {
+pub fn wire_get_message(port_: flutter_rust_bridge::MessagePort) {
     wire_get_message_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_is_app_embedded(port_: MessagePort, app_settings: JsValue) {
+pub fn wire_is_app_embedded(port_: flutter_rust_bridge::MessagePort, app_settings: JsValue) {
     wire_is_app_embedded_impl(port_, app_settings)
 }
 
 #[wasm_bindgen]
-pub fn wire_mirror_struct_stream(port_: MessagePort) {
+pub fn wire_mirror_struct_stream(port_: flutter_rust_bridge::MessagePort) {
     wire_mirror_struct_stream_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_mirror_tuple_stream(port_: MessagePort) {
+pub fn wire_mirror_tuple_stream(port_: flutter_rust_bridge::MessagePort) {
     wire_mirror_tuple_stream_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_repeat_number(port_: MessagePort, num: i32, times: usize) {
+pub fn wire_repeat_number(port_: flutter_rust_bridge::MessagePort, num: i32, times: usize) {
     wire_repeat_number_impl(port_, num, times)
 }
 
 #[wasm_bindgen]
-pub fn wire_repeat_sequence(port_: MessagePort, seq: i32, times: usize) {
+pub fn wire_repeat_sequence(port_: flutter_rust_bridge::MessagePort, seq: i32, times: usize) {
     wire_repeat_sequence_impl(port_, seq, times)
 }
 
 #[wasm_bindgen]
-pub fn wire_test_contains_mirrored_sub_struct(port_: MessagePort) {
+pub fn wire_test_contains_mirrored_sub_struct(port_: flutter_rust_bridge::MessagePort) {
     wire_test_contains_mirrored_sub_struct_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_test_fallible_of_raw_string_mirrored(port_: MessagePort) {
+pub fn wire_test_fallible_of_raw_string_mirrored(port_: flutter_rust_bridge::MessagePort) {
     wire_test_fallible_of_raw_string_mirrored_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_test_list_of_nested_enums_mirrored(port_: MessagePort) {
+pub fn wire_test_list_of_nested_enums_mirrored(port_: flutter_rust_bridge::MessagePort) {
     wire_test_list_of_nested_enums_mirrored_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_test_list_of_raw_nested_string_mirrored(port_: MessagePort) {
+pub fn wire_test_list_of_raw_nested_string_mirrored(port_: flutter_rust_bridge::MessagePort) {
     wire_test_list_of_raw_nested_string_mirrored_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_test_nested_raw_string_mirrored(port_: MessagePort) {
+pub fn wire_test_nested_raw_string_mirrored(port_: flutter_rust_bridge::MessagePort) {
     wire_test_nested_raw_string_mirrored_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_test_raw_string_enum_mirrored(port_: MessagePort, nested: bool) {
+pub fn wire_test_raw_string_enum_mirrored(port_: flutter_rust_bridge::MessagePort, nested: bool) {
     wire_test_raw_string_enum_mirrored_impl(port_, nested)
 }
 
 #[wasm_bindgen]
-pub fn wire_test_raw_string_mirrored(port_: MessagePort) {
+pub fn wire_test_raw_string_mirrored(port_: flutter_rust_bridge::MessagePort) {
     wire_test_raw_string_mirrored_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_big_buffers(port_: MessagePort) {
+pub fn wire_handle_big_buffers(port_: flutter_rust_bridge::MessagePort) {
     wire_handle_big_buffers_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_complex_struct(port_: MessagePort, s: JsValue) {
+pub fn wire_handle_complex_struct(port_: flutter_rust_bridge::MessagePort, s: JsValue) {
     wire_handle_complex_struct_impl(port_, s)
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_nested_struct(port_: MessagePort, s: JsValue) {
+pub fn wire_handle_nested_struct(port_: flutter_rust_bridge::MessagePort, s: JsValue) {
     wire_handle_nested_struct_impl(port_, s)
 }
 
 #[wasm_bindgen]
-pub fn wire_list_of_primitive_enums(port_: MessagePort, weekdays: JsValue) {
+pub fn wire_list_of_primitive_enums(port_: flutter_rust_bridge::MessagePort, weekdays: JsValue) {
     wire_list_of_primitive_enums_impl(port_, weekdays)
 }
 
 #[wasm_bindgen]
-pub fn wire_test_abc_enum(port_: MessagePort, abc: JsValue) {
+pub fn wire_test_abc_enum(port_: flutter_rust_bridge::MessagePort, abc: JsValue) {
     wire_test_abc_enum_impl(port_, abc)
 }
 
 #[wasm_bindgen]
-pub fn wire_test_struct_with_enum(port_: MessagePort, se: JsValue) {
+pub fn wire_test_struct_with_enum(port_: flutter_rust_bridge::MessagePort, se: JsValue) {
     wire_test_struct_with_enum_impl(port_, se)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_return_unit_twin_normal(port_: MessagePort) {
+pub fn wire_func_return_unit_twin_normal(port_: flutter_rust_bridge::MessagePort) {
     wire_func_return_unit_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_string_twin_normal(port_: MessagePort, arg: String) {
+pub fn wire_func_string_twin_normal(port_: flutter_rust_bridge::MessagePort, arg: String) {
     wire_func_string_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_list_of_struct(port_: MessagePort, l: JsValue) {
+pub fn wire_handle_list_of_struct(port_: flutter_rust_bridge::MessagePort, l: JsValue) {
     wire_handle_list_of_struct_impl(port_, l)
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_string_list(port_: MessagePort, names: JsValue) {
+pub fn wire_handle_string_list(port_: flutter_rust_bridge::MessagePort, names: JsValue) {
     wire_handle_string_list_impl(port_, names)
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_newtype(port_: MessagePort, arg: JsValue) {
+pub fn wire_handle_newtype(port_: flutter_rust_bridge::MessagePort, arg: JsValue) {
     wire_handle_newtype_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_increment_boxed_optional(port_: MessagePort, opt: JsValue) {
+pub fn wire_handle_increment_boxed_optional(port_: flutter_rust_bridge::MessagePort, opt: JsValue) {
     wire_handle_increment_boxed_optional_impl(port_, opt)
 }
 
 #[wasm_bindgen]
 pub fn wire_handle_option_box_arguments(
-    port_: MessagePort,
+    port_: flutter_rust_bridge::MessagePort,
     i8box: JsValue,
     u8box: JsValue,
     i32box: JsValue,
@@ -2158,22 +2217,25 @@ pub fn wire_handle_option_box_arguments(
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_optional_increment(port_: MessagePort, opt: JsValue) {
+pub fn wire_handle_optional_increment(port_: flutter_rust_bridge::MessagePort, opt: JsValue) {
     wire_handle_optional_increment_impl(port_, opt)
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_optional_return(port_: MessagePort, left: f64, right: f64) {
+pub fn wire_handle_optional_return(port_: flutter_rust_bridge::MessagePort, left: f64, right: f64) {
     wire_handle_optional_return_impl(port_, left, right)
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_optional_struct(port_: MessagePort, document: Option<String>) {
+pub fn wire_handle_optional_struct(
+    port_: flutter_rust_bridge::MessagePort,
+    document: Option<String>,
+) {
     wire_handle_optional_struct_impl(port_, document)
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_vec_of_opts(port_: MessagePort, opt: JsValue) {
+pub fn wire_handle_vec_of_opts(port_: flutter_rust_bridge::MessagePort, opt: JsValue) {
     wire_handle_vec_of_opts_impl(port_, opt)
 }
 
@@ -2292,57 +2354,90 @@ pub fn wire_func_string_twin_sync(arg: String) -> flutter_rust_bridge::support::
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_bool_twin_normal(port_: MessagePort, arg: JsValue) {
+pub fn wire_example_optional_primitive_type_bool_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: JsValue,
+) {
     wire_example_optional_primitive_type_bool_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_f32_twin_normal(port_: MessagePort, arg: JsValue) {
+pub fn wire_example_optional_primitive_type_f32_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: JsValue,
+) {
     wire_example_optional_primitive_type_f32_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_f64_twin_normal(port_: MessagePort, arg: JsValue) {
+pub fn wire_example_optional_primitive_type_f64_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: JsValue,
+) {
     wire_example_optional_primitive_type_f64_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i16_twin_normal(port_: MessagePort, arg: JsValue) {
+pub fn wire_example_optional_primitive_type_i16_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: JsValue,
+) {
     wire_example_optional_primitive_type_i16_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i32_twin_normal(port_: MessagePort, arg: JsValue) {
+pub fn wire_example_optional_primitive_type_i32_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: JsValue,
+) {
     wire_example_optional_primitive_type_i32_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i64_twin_normal(port_: MessagePort, arg: JsValue) {
+pub fn wire_example_optional_primitive_type_i64_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: JsValue,
+) {
     wire_example_optional_primitive_type_i64_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i8_twin_normal(port_: MessagePort, arg: JsValue) {
+pub fn wire_example_optional_primitive_type_i8_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: JsValue,
+) {
     wire_example_optional_primitive_type_i8_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u16_twin_normal(port_: MessagePort, arg: JsValue) {
+pub fn wire_example_optional_primitive_type_u16_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: JsValue,
+) {
     wire_example_optional_primitive_type_u16_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u32_twin_normal(port_: MessagePort, arg: JsValue) {
+pub fn wire_example_optional_primitive_type_u32_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: JsValue,
+) {
     wire_example_optional_primitive_type_u32_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u64_twin_normal(port_: MessagePort, arg: JsValue) {
+pub fn wire_example_optional_primitive_type_u64_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: JsValue,
+) {
     wire_example_optional_primitive_type_u64_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u8_twin_normal(port_: MessagePort, arg: JsValue) {
+pub fn wire_example_optional_primitive_type_u8_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: JsValue,
+) {
     wire_example_optional_primitive_type_u8_twin_normal_impl(port_, arg)
 }
 
@@ -2424,112 +2519,178 @@ pub fn wire_example_optional_primitive_type_u8_twin_sync(
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_bool_twin_normal(port_: MessagePort, arg: bool) {
+pub fn wire_example_primitive_type_bool_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: bool,
+) {
     wire_example_primitive_type_bool_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_f32_twin_normal(port_: MessagePort, arg: f32) {
+pub fn wire_example_primitive_type_f32_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: f32,
+) {
     wire_example_primitive_type_f32_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_f64_twin_normal(port_: MessagePort, arg: f64) {
+pub fn wire_example_primitive_type_f64_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: f64,
+) {
     wire_example_primitive_type_f64_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_i16_twin_normal(port_: MessagePort, arg: i16) {
+pub fn wire_example_primitive_type_i16_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: i16,
+) {
     wire_example_primitive_type_i16_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_i32_twin_normal(port_: MessagePort, arg: i32) {
+pub fn wire_example_primitive_type_i32_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: i32,
+) {
     wire_example_primitive_type_i32_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_i64_twin_normal(port_: MessagePort, arg: i64) {
+pub fn wire_example_primitive_type_i64_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: i64,
+) {
     wire_example_primitive_type_i64_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_i8_twin_normal(port_: MessagePort, arg: i8) {
+pub fn wire_example_primitive_type_i8_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: i8,
+) {
     wire_example_primitive_type_i8_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_u16_twin_normal(port_: MessagePort, arg: u16) {
+pub fn wire_example_primitive_type_u16_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: u16,
+) {
     wire_example_primitive_type_u16_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_u32_twin_normal(port_: MessagePort, arg: u32) {
+pub fn wire_example_primitive_type_u32_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: u32,
+) {
     wire_example_primitive_type_u32_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_u64_twin_normal(port_: MessagePort, arg: u64) {
+pub fn wire_example_primitive_type_u64_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: u64,
+) {
     wire_example_primitive_type_u64_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_u8_twin_normal(port_: MessagePort, arg: u8) {
+pub fn wire_example_primitive_type_u8_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: u8,
+) {
     wire_example_primitive_type_u8_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_list_type_bool_twin_normal(port_: MessagePort, arg: JsValue) {
+pub fn wire_example_primitive_list_type_bool_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: JsValue,
+) {
     wire_example_primitive_list_type_bool_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_list_type_f32_twin_normal(port_: MessagePort, arg: Box<[f32]>) {
+pub fn wire_example_primitive_list_type_f32_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: Box<[f32]>,
+) {
     wire_example_primitive_list_type_f32_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_list_type_f64_twin_normal(port_: MessagePort, arg: Box<[f64]>) {
+pub fn wire_example_primitive_list_type_f64_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: Box<[f64]>,
+) {
     wire_example_primitive_list_type_f64_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i16_twin_normal(port_: MessagePort, arg: Box<[i16]>) {
+pub fn wire_example_primitive_list_type_i16_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: Box<[i16]>,
+) {
     wire_example_primitive_list_type_i16_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i32_twin_normal(port_: MessagePort, arg: Box<[i32]>) {
+pub fn wire_example_primitive_list_type_i32_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: Box<[i32]>,
+) {
     wire_example_primitive_list_type_i32_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i64_twin_normal(port_: MessagePort, arg: Box<[i64]>) {
+pub fn wire_example_primitive_list_type_i64_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: Box<[i64]>,
+) {
     wire_example_primitive_list_type_i64_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i8_twin_normal(port_: MessagePort, arg: Box<[i8]>) {
+pub fn wire_example_primitive_list_type_i8_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: Box<[i8]>,
+) {
     wire_example_primitive_list_type_i8_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u16_twin_normal(port_: MessagePort, arg: Box<[u16]>) {
+pub fn wire_example_primitive_list_type_u16_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: Box<[u16]>,
+) {
     wire_example_primitive_list_type_u16_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u32_twin_normal(port_: MessagePort, arg: Box<[u32]>) {
+pub fn wire_example_primitive_list_type_u32_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: Box<[u32]>,
+) {
     wire_example_primitive_list_type_u32_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u64_twin_normal(port_: MessagePort, arg: Box<[u64]>) {
+pub fn wire_example_primitive_list_type_u64_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: Box<[u64]>,
+) {
     wire_example_primitive_list_type_u64_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u8_twin_normal(port_: MessagePort, arg: Box<[u8]>) {
+pub fn wire_example_primitive_list_type_u8_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: Box<[u8]>,
+) {
     wire_example_primitive_list_type_u8_twin_normal_impl(port_, arg)
 }
 
@@ -2728,97 +2889,97 @@ pub fn wire_func_tuple_struct_with_two_field_twin_sync(
 }
 
 #[wasm_bindgen]
-pub fn wire_test_more_than_just_one_raw_string_struct(port_: MessagePort) {
+pub fn wire_test_more_than_just_one_raw_string_struct(port_: flutter_rust_bridge::MessagePort) {
     wire_test_more_than_just_one_raw_string_struct_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_test_raw_string_item_struct(port_: MessagePort) {
+pub fn wire_test_raw_string_item_struct(port_: flutter_rust_bridge::MessagePort) {
     wire_test_raw_string_item_struct_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_create_array_opaque_enum(port_: MessagePort) {
+pub fn wire_create_array_opaque_enum(port_: flutter_rust_bridge::MessagePort) {
     wire_create_array_opaque_enum_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_create_nested_opaque(port_: MessagePort) {
+pub fn wire_create_nested_opaque(port_: flutter_rust_bridge::MessagePort) {
     wire_create_nested_opaque_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_create_opaque(port_: MessagePort) {
+pub fn wire_create_opaque(port_: flutter_rust_bridge::MessagePort) {
     wire_create_opaque_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_create_option_opaque(port_: MessagePort, opaque: JsValue) {
+pub fn wire_create_option_opaque(port_: flutter_rust_bridge::MessagePort, opaque: JsValue) {
     wire_create_option_opaque_impl(port_, opaque)
 }
 
 #[wasm_bindgen]
-pub fn wire_create_sync_opaque(port_: MessagePort) {
+pub fn wire_create_sync_opaque(port_: flutter_rust_bridge::MessagePort) {
     wire_create_sync_opaque_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_frb_generator_test(port_: MessagePort) {
+pub fn wire_frb_generator_test(port_: flutter_rust_bridge::MessagePort) {
     wire_frb_generator_test_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_opaque_array(port_: MessagePort) {
+pub fn wire_opaque_array(port_: flutter_rust_bridge::MessagePort) {
     wire_opaque_array_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_opaque_array_run(port_: MessagePort, data: JsValue) {
+pub fn wire_opaque_array_run(port_: flutter_rust_bridge::MessagePort, data: JsValue) {
     wire_opaque_array_run_impl(port_, data)
 }
 
 #[wasm_bindgen]
-pub fn wire_opaque_vec(port_: MessagePort) {
+pub fn wire_opaque_vec(port_: flutter_rust_bridge::MessagePort) {
     wire_opaque_vec_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_opaque_vec_run(port_: MessagePort, data: JsValue) {
+pub fn wire_opaque_vec_run(port_: flutter_rust_bridge::MessagePort, data: JsValue) {
     wire_opaque_vec_run_impl(port_, data)
 }
 
 #[wasm_bindgen]
-pub fn wire_run_enum_opaque(port_: MessagePort, opaque: JsValue) {
+pub fn wire_run_enum_opaque(port_: flutter_rust_bridge::MessagePort, opaque: JsValue) {
     wire_run_enum_opaque_impl(port_, opaque)
 }
 
 #[wasm_bindgen]
-pub fn wire_run_nested_opaque(port_: MessagePort, opaque: JsValue) {
+pub fn wire_run_nested_opaque(port_: flutter_rust_bridge::MessagePort, opaque: JsValue) {
     wire_run_nested_opaque_impl(port_, opaque)
 }
 
 #[wasm_bindgen]
-pub fn wire_run_non_clone(port_: MessagePort, clone: JsValue) {
+pub fn wire_run_non_clone(port_: flutter_rust_bridge::MessagePort, clone: JsValue) {
     wire_run_non_clone_impl(port_, clone)
 }
 
 #[wasm_bindgen]
-pub fn wire_run_opaque(port_: MessagePort, opaque: JsValue) {
+pub fn wire_run_opaque(port_: flutter_rust_bridge::MessagePort, opaque: JsValue) {
     wire_run_opaque_impl(port_, opaque)
 }
 
 #[wasm_bindgen]
-pub fn wire_run_opaque_with_delay(port_: MessagePort, opaque: JsValue) {
+pub fn wire_run_opaque_with_delay(port_: flutter_rust_bridge::MessagePort, opaque: JsValue) {
     wire_run_opaque_with_delay_impl(port_, opaque)
 }
 
 #[wasm_bindgen]
-pub fn wire_unwrap_rust_opaque(port_: MessagePort, opaque: JsValue) {
+pub fn wire_unwrap_rust_opaque(port_: flutter_rust_bridge::MessagePort, opaque: JsValue) {
     wire_unwrap_rust_opaque_impl(port_, opaque)
 }
 
 #[wasm_bindgen]
-pub fn wire_frb_sync_generator_test(port_: MessagePort) {
+pub fn wire_frb_sync_generator_test(port_: flutter_rust_bridge::MessagePort) {
     wire_frb_sync_generator_test_impl(port_)
 }
 
@@ -2828,97 +2989,119 @@ pub fn wire_sync_run_opaque(opaque: JsValue) -> flutter_rust_bridge::support::Wi
 }
 
 #[wasm_bindgen]
-pub fn wire_simple_adder_twin_normal(port_: MessagePort, a: i32, b: i32) {
+pub fn wire_simple_adder_twin_normal(port_: flutter_rust_bridge::MessagePort, a: i32, b: i32) {
     wire_simple_adder_twin_normal_impl(port_, a, b)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_stream_realistic_twin_normal(port_: MessagePort, arg: String) {
+pub fn wire_func_stream_realistic_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: String,
+) {
     wire_func_stream_realistic_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_stream_return_error_twin_normal(port_: MessagePort) {
+pub fn wire_func_stream_return_error_twin_normal(port_: flutter_rust_bridge::MessagePort) {
     wire_func_stream_return_error_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_stream_return_panic_twin_normal(port_: MessagePort) {
+pub fn wire_func_stream_return_panic_twin_normal(port_: flutter_rust_bridge::MessagePort) {
     wire_func_stream_return_panic_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_stream_sink_arg_position_twin_normal(port_: MessagePort, a: u32, b: u32) {
+pub fn wire_func_stream_sink_arg_position_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    a: u32,
+    b: u32,
+) {
     wire_func_stream_sink_arg_position_twin_normal_impl(port_, a, b)
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_stream_of_struct(port_: MessagePort) {
+pub fn wire_handle_stream_of_struct(port_: flutter_rust_bridge::MessagePort) {
     wire_handle_stream_of_struct_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_struct_with_one_field_twin_normal(port_: MessagePort, arg: JsValue) {
+pub fn wire_func_struct_with_one_field_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: JsValue,
+) {
     wire_func_struct_with_one_field_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_struct_with_two_field_twin_normal(port_: MessagePort, arg: JsValue) {
+pub fn wire_func_struct_with_two_field_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: JsValue,
+) {
     wire_func_struct_with_two_field_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_struct_with_zero_field_twin_normal(port_: MessagePort, arg: JsValue) {
+pub fn wire_func_struct_with_zero_field_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: JsValue,
+) {
     wire_func_struct_with_zero_field_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_tuple_struct_with_one_field_twin_normal(port_: MessagePort, arg: JsValue) {
+pub fn wire_func_tuple_struct_with_one_field_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: JsValue,
+) {
     wire_func_tuple_struct_with_one_field_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_tuple_struct_with_two_field_twin_normal(port_: MessagePort, arg: JsValue) {
+pub fn wire_func_tuple_struct_with_two_field_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: JsValue,
+) {
     wire_func_tuple_struct_with_two_field_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_test_tuple(port_: MessagePort, value: JsValue) {
+pub fn wire_test_tuple(port_: flutter_rust_bridge::MessagePort, value: JsValue) {
     wire_test_tuple_impl(port_, value)
 }
 
 #[wasm_bindgen]
-pub fn wire_test_tuple_2(port_: MessagePort, value: JsValue) {
+pub fn wire_test_tuple_2(port_: flutter_rust_bridge::MessagePort, value: JsValue) {
     wire_test_tuple_2_impl(port_, value)
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_type_alias_id(port_: MessagePort, input: u64) {
+pub fn wire_handle_type_alias_id(port_: flutter_rust_bridge::MessagePort, input: u64) {
     wire_handle_type_alias_id_impl(port_, input)
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_type_alias_model(port_: MessagePort, input: u64) {
+pub fn wire_handle_type_alias_model(port_: flutter_rust_bridge::MessagePort, input: u64) {
     wire_handle_type_alias_model_impl(port_, input)
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_type_nest_alias_id(port_: MessagePort, input: u64) {
+pub fn wire_handle_type_nest_alias_id(port_: flutter_rust_bridge::MessagePort, input: u64) {
     wire_handle_type_nest_alias_id_impl(port_, input)
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_nested_uuids(port_: MessagePort, ids: JsValue) {
+pub fn wire_handle_nested_uuids(port_: flutter_rust_bridge::MessagePort, ids: JsValue) {
     wire_handle_nested_uuids_impl(port_, ids)
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_uuid(port_: MessagePort, id: Box<[u8]>) {
+pub fn wire_handle_uuid(port_: flutter_rust_bridge::MessagePort, id: Box<[u8]>) {
     wire_handle_uuid_impl(port_, id)
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_uuids(port_: MessagePort, ids: Box<[u8]>) {
+pub fn wire_handle_uuids(port_: flutter_rust_bridge::MessagePort, ids: Box<[u8]>) {
     wire_handle_uuids_impl(port_, ids)
 }
 
