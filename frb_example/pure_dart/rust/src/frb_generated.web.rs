@@ -64,8 +64,8 @@ impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for Box<[u8]> {
         ZeroCopyBuffer(self.wire2api())
     }
 }
-impl Wire2Api<A> for JsValue {
-    fn wire2api(self) -> A {
+impl Wire2Api<crate::api::misc_example::A> for JsValue {
+    fn wire2api(self) -> crate::api::misc_example::A {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -73,13 +73,13 @@ impl Wire2Api<A> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        A {
+        crate::api::misc_example::A {
             a: self_.get(0).wire2api(),
         }
     }
 }
-impl Wire2Api<Abc> for JsValue {
-    fn wire2api(self) -> Abc {
+impl Wire2Api<crate::api::misc_example::Abc> for JsValue {
+    fn wire2api(self) -> crate::api::misc_example::Abc {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => Abc::A(self_.get(1).wire2api()),
@@ -90,8 +90,8 @@ impl Wire2Api<Abc> for JsValue {
         }
     }
 }
-impl Wire2Api<ApplicationEnv> for JsValue {
-    fn wire2api(self) -> ApplicationEnv {
+impl Wire2Api<crate::api::mirror::ApplicationEnv> for JsValue {
+    fn wire2api(self) -> crate::api::mirror::ApplicationEnv {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -99,13 +99,13 @@ impl Wire2Api<ApplicationEnv> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        ApplicationEnv {
+        crate::api::mirror::ApplicationEnv {
             vars: self_.get(0).wire2api(),
         }
     }
 }
-impl Wire2Api<ApplicationEnvVar> for JsValue {
-    fn wire2api(self) -> ApplicationEnvVar {
+impl Wire2Api<crate::api::mirror::ApplicationEnvVar> for JsValue {
+    fn wire2api(self) -> crate::api::mirror::ApplicationEnvVar {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -113,11 +113,11 @@ impl Wire2Api<ApplicationEnvVar> for JsValue {
             "Expected 2 elements, got {}",
             self_.length()
         );
-        ApplicationEnvVar(self_.get(0).wire2api(), self_.get(1).wire2api())
+        crate::api::mirror::ApplicationEnvVar(self_.get(0).wire2api(), self_.get(1).wire2api())
     }
 }
-impl Wire2Api<ApplicationSettings> for JsValue {
-    fn wire2api(self) -> ApplicationSettings {
+impl Wire2Api<crate::api::mirror::ApplicationSettings> for JsValue {
+    fn wire2api(self) -> crate::api::mirror::ApplicationSettings {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -125,7 +125,7 @@ impl Wire2Api<ApplicationSettings> for JsValue {
             "Expected 5 elements, got {}",
             self_.length()
         );
-        ApplicationSettings {
+        crate::api::mirror::ApplicationSettings {
             name: self_.get(0).wire2api(),
             version: self_.get(1).wire2api(),
             mode: self_.get(2).wire2api(),
@@ -134,8 +134,8 @@ impl Wire2Api<ApplicationSettings> for JsValue {
         }
     }
 }
-impl Wire2Api<Attribute> for JsValue {
-    fn wire2api(self) -> Attribute {
+impl Wire2Api<crate::api::optional::Attribute> for JsValue {
+    fn wire2api(self) -> crate::api::optional::Attribute {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -143,14 +143,14 @@ impl Wire2Api<Attribute> for JsValue {
             "Expected 2 elements, got {}",
             self_.length()
         );
-        Attribute {
+        crate::api::optional::Attribute {
             key: self_.get(0).wire2api(),
             value: self_.get(1).wire2api(),
         }
     }
 }
-impl Wire2Api<B> for JsValue {
-    fn wire2api(self) -> B {
+impl Wire2Api<crate::api::misc_example::B> for JsValue {
+    fn wire2api(self) -> crate::api::misc_example::B {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -158,13 +158,13 @@ impl Wire2Api<B> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        B {
+        crate::api::misc_example::B {
             b: self_.get(0).wire2api(),
         }
     }
 }
-impl Wire2Api<Blob> for JsValue {
-    fn wire2api(self) -> Blob {
+impl Wire2Api<crate::api::array::Blob> for JsValue {
+    fn wire2api(self) -> crate::api::array::Blob {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -172,7 +172,7 @@ impl Wire2Api<Blob> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        Blob(self_.get(0).wire2api())
+        crate::api::array::Blob(self_.get(0).wire2api())
     }
 }
 impl Wire2Api<Box<[u8; 1600]>> for Box<[u8]> {
@@ -180,8 +180,8 @@ impl Wire2Api<Box<[u8; 1600]>> for Box<[u8]> {
         Wire2Api::<[u8; 1600]>::wire2api(self).into()
     }
 }
-impl Wire2Api<C> for JsValue {
-    fn wire2api(self) -> C {
+impl Wire2Api<crate::api::misc_example::C> for JsValue {
+    fn wire2api(self) -> crate::api::misc_example::C {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -189,13 +189,13 @@ impl Wire2Api<C> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        C {
+        crate::api::misc_example::C {
             c: self_.get(0).wire2api(),
         }
     }
 }
-impl Wire2Api<ConcatenateWith> for JsValue {
-    fn wire2api(self) -> ConcatenateWith {
+impl Wire2Api<crate::api::method::ConcatenateWith> for JsValue {
+    fn wire2api(self) -> crate::api::method::ConcatenateWith {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -203,13 +203,13 @@ impl Wire2Api<ConcatenateWith> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        ConcatenateWith {
+        crate::api::method::ConcatenateWith {
             a: self_.get(0).wire2api(),
         }
     }
 }
-impl Wire2Api<CustomNestedErrorInnerTwinNormal> for JsValue {
-    fn wire2api(self) -> CustomNestedErrorInnerTwinNormal {
+impl Wire2Api<crate::api::exception::CustomNestedErrorInnerTwinNormal> for JsValue {
+    fn wire2api(self) -> crate::api::exception::CustomNestedErrorInnerTwinNormal {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => CustomNestedErrorInnerTwinNormal::Three(self_.get(1).wire2api()),
@@ -218,8 +218,12 @@ impl Wire2Api<CustomNestedErrorInnerTwinNormal> for JsValue {
         }
     }
 }
-impl Wire2Api<CustomNestedErrorInnerTwinSync> for JsValue {
-    fn wire2api(self) -> CustomNestedErrorInnerTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync>
+    for JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => CustomNestedErrorInnerTwinSync::Three(self_.get(1).wire2api()),
@@ -228,8 +232,8 @@ impl Wire2Api<CustomNestedErrorInnerTwinSync> for JsValue {
         }
     }
 }
-impl Wire2Api<CustomNestedErrorOuterTwinNormal> for JsValue {
-    fn wire2api(self) -> CustomNestedErrorOuterTwinNormal {
+impl Wire2Api<crate::api::exception::CustomNestedErrorOuterTwinNormal> for JsValue {
+    fn wire2api(self) -> crate::api::exception::CustomNestedErrorOuterTwinNormal {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => CustomNestedErrorOuterTwinNormal::One(self_.get(1).wire2api()),
@@ -238,8 +242,12 @@ impl Wire2Api<CustomNestedErrorOuterTwinNormal> for JsValue {
         }
     }
 }
-impl Wire2Api<CustomNestedErrorOuterTwinSync> for JsValue {
-    fn wire2api(self) -> CustomNestedErrorOuterTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync>
+    for JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => CustomNestedErrorOuterTwinSync::One(self_.get(1).wire2api()),
@@ -248,8 +256,8 @@ impl Wire2Api<CustomNestedErrorOuterTwinSync> for JsValue {
         }
     }
 }
-impl Wire2Api<CustomStructErrorTwinNormal> for JsValue {
-    fn wire2api(self) -> CustomStructErrorTwinNormal {
+impl Wire2Api<crate::api::exception::CustomStructErrorTwinNormal> for JsValue {
+    fn wire2api(self) -> crate::api::exception::CustomStructErrorTwinNormal {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -257,13 +265,15 @@ impl Wire2Api<CustomStructErrorTwinNormal> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        CustomStructErrorTwinNormal {
+        crate::api::exception::CustomStructErrorTwinNormal {
             a: self_.get(0).wire2api(),
         }
     }
 }
-impl Wire2Api<CustomStructErrorTwinSync> for JsValue {
-    fn wire2api(self) -> CustomStructErrorTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorTwinSync>
+    for JsValue
+{
+    fn wire2api(self) -> crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorTwinSync {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -271,13 +281,13 @@ impl Wire2Api<CustomStructErrorTwinSync> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        CustomStructErrorTwinSync {
+        crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorTwinSync {
             a: self_.get(0).wire2api(),
         }
     }
 }
-impl Wire2Api<Customized> for JsValue {
-    fn wire2api(self) -> Customized {
+impl Wire2Api<crate::api::attribute::Customized> for JsValue {
+    fn wire2api(self) -> crate::api::attribute::Customized {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -285,14 +295,14 @@ impl Wire2Api<Customized> for JsValue {
             "Expected 2 elements, got {}",
             self_.length()
         );
-        Customized {
+        crate::api::attribute::Customized {
             final_field: self_.get(0).wire2api(),
             non_final_field: self_.get(1).wire2api(),
         }
     }
 }
-impl Wire2Api<DartOpaqueNested> for JsValue {
-    fn wire2api(self) -> DartOpaqueNested {
+impl Wire2Api<crate::api::dart_opaque::DartOpaqueNested> for JsValue {
+    fn wire2api(self) -> crate::api::dart_opaque::DartOpaqueNested {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -300,14 +310,14 @@ impl Wire2Api<DartOpaqueNested> for JsValue {
             "Expected 2 elements, got {}",
             self_.length()
         );
-        DartOpaqueNested {
+        crate::api::dart_opaque::DartOpaqueNested {
             first: self_.get(0).wire2api(),
             second: self_.get(1).wire2api(),
         }
     }
 }
-impl Wire2Api<Distance> for JsValue {
-    fn wire2api(self) -> Distance {
+impl Wire2Api<crate::api::enumeration::Distance> for JsValue {
+    fn wire2api(self) -> crate::api::enumeration::Distance {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => Distance::Unknown,
@@ -316,8 +326,8 @@ impl Wire2Api<Distance> for JsValue {
         }
     }
 }
-impl Wire2Api<EnumDartOpaque> for JsValue {
-    fn wire2api(self) -> EnumDartOpaque {
+impl Wire2Api<crate::api::dart_opaque::EnumDartOpaque> for JsValue {
+    fn wire2api(self) -> crate::api::dart_opaque::EnumDartOpaque {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => EnumDartOpaque::Primitive(self_.get(1).wire2api()),
@@ -326,8 +336,8 @@ impl Wire2Api<EnumDartOpaque> for JsValue {
         }
     }
 }
-impl Wire2Api<EnumOpaque> for JsValue {
-    fn wire2api(self) -> EnumOpaque {
+impl Wire2Api<crate::api::rust_opaque::EnumOpaque> for JsValue {
+    fn wire2api(self) -> crate::api::rust_opaque::EnumOpaque {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => EnumOpaque::Struct(self_.get(1).wire2api()),
@@ -339,8 +349,8 @@ impl Wire2Api<EnumOpaque> for JsValue {
         }
     }
 }
-impl Wire2Api<EnumWithItemMixedTwinNormal> for JsValue {
-    fn wire2api(self) -> EnumWithItemMixedTwinNormal {
+impl Wire2Api<crate::api::enumeration::EnumWithItemMixedTwinNormal> for JsValue {
+    fn wire2api(self) -> crate::api::enumeration::EnumWithItemMixedTwinNormal {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => EnumWithItemMixedTwinNormal::A,
@@ -352,8 +362,12 @@ impl Wire2Api<EnumWithItemMixedTwinNormal> for JsValue {
         }
     }
 }
-impl Wire2Api<EnumWithItemMixedTwinSync> for JsValue {
-    fn wire2api(self) -> EnumWithItemMixedTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync>
+    for JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => EnumWithItemMixedTwinSync::A,
@@ -365,8 +379,8 @@ impl Wire2Api<EnumWithItemMixedTwinSync> for JsValue {
         }
     }
 }
-impl Wire2Api<EnumWithItemStructTwinNormal> for JsValue {
-    fn wire2api(self) -> EnumWithItemStructTwinNormal {
+impl Wire2Api<crate::api::enumeration::EnumWithItemStructTwinNormal> for JsValue {
+    fn wire2api(self) -> crate::api::enumeration::EnumWithItemStructTwinNormal {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => EnumWithItemStructTwinNormal::A {
@@ -379,8 +393,12 @@ impl Wire2Api<EnumWithItemStructTwinNormal> for JsValue {
         }
     }
 }
-impl Wire2Api<EnumWithItemStructTwinSync> for JsValue {
-    fn wire2api(self) -> EnumWithItemStructTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync>
+    for JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => EnumWithItemStructTwinSync::A {
@@ -393,8 +411,8 @@ impl Wire2Api<EnumWithItemStructTwinSync> for JsValue {
         }
     }
 }
-impl Wire2Api<EnumWithItemTupleTwinNormal> for JsValue {
-    fn wire2api(self) -> EnumWithItemTupleTwinNormal {
+impl Wire2Api<crate::api::enumeration::EnumWithItemTupleTwinNormal> for JsValue {
+    fn wire2api(self) -> crate::api::enumeration::EnumWithItemTupleTwinNormal {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => EnumWithItemTupleTwinNormal::A(self_.get(1).wire2api()),
@@ -403,8 +421,12 @@ impl Wire2Api<EnumWithItemTupleTwinNormal> for JsValue {
         }
     }
 }
-impl Wire2Api<EnumWithItemTupleTwinSync> for JsValue {
-    fn wire2api(self) -> EnumWithItemTupleTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync>
+    for JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => EnumWithItemTupleTwinSync::A(self_.get(1).wire2api()),
@@ -413,8 +435,8 @@ impl Wire2Api<EnumWithItemTupleTwinSync> for JsValue {
         }
     }
 }
-impl Wire2Api<Event> for JsValue {
-    fn wire2api(self) -> Event {
+impl Wire2Api<crate::api::event_listener::Event> for JsValue {
+    fn wire2api(self) -> crate::api::event_listener::Event {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -422,14 +444,14 @@ impl Wire2Api<Event> for JsValue {
             "Expected 2 elements, got {}",
             self_.length()
         );
-        Event {
+        crate::api::event_listener::Event {
             address: self_.get(0).wire2api(),
             payload: self_.get(1).wire2api(),
         }
     }
 }
-impl Wire2Api<ExoticOptionals> for JsValue {
-    fn wire2api(self) -> ExoticOptionals {
+impl Wire2Api<crate::api::optional::ExoticOptionals> for JsValue {
+    fn wire2api(self) -> crate::api::optional::ExoticOptionals {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -437,7 +459,7 @@ impl Wire2Api<ExoticOptionals> for JsValue {
             "Expected 14 elements, got {}",
             self_.length()
         );
-        ExoticOptionals {
+        crate::api::optional::ExoticOptionals {
             int32: self_.get(0).wire2api(),
             int64: self_.get(1).wire2api(),
             float64: self_.get(2).wire2api(),
@@ -461,8 +483,8 @@ impl Wire2Api<[f64; 16]> for Box<[f64]> {
         flutter_rust_bridge::support::from_vec_to_array(vec)
     }
 }
-impl Wire2Api<FeatureChrono> for JsValue {
-    fn wire2api(self) -> FeatureChrono {
+impl Wire2Api<crate::api::chrono_type::FeatureChrono> for JsValue {
+    fn wire2api(self) -> crate::api::chrono_type::FeatureChrono {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -470,7 +492,7 @@ impl Wire2Api<FeatureChrono> for JsValue {
             "Expected 4 elements, got {}",
             self_.length()
         );
-        FeatureChrono {
+        crate::api::chrono_type::FeatureChrono {
             utc: self_.get(0).wire2api(),
             local: self_.get(1).wire2api(),
             duration: self_.get(2).wire2api(),
@@ -478,8 +500,8 @@ impl Wire2Api<FeatureChrono> for JsValue {
         }
     }
 }
-impl Wire2Api<FeatureUuid> for JsValue {
-    fn wire2api(self) -> FeatureUuid {
+impl Wire2Api<crate::api::uuid_type::FeatureUuid> for JsValue {
+    fn wire2api(self) -> crate::api::uuid_type::FeatureUuid {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -487,14 +509,14 @@ impl Wire2Api<FeatureUuid> for JsValue {
             "Expected 2 elements, got {}",
             self_.length()
         );
-        FeatureUuid {
+        crate::api::uuid_type::FeatureUuid {
             one: self_.get(0).wire2api(),
             many: self_.get(1).wire2api(),
         }
     }
 }
-impl Wire2Api<FeedId> for JsValue {
-    fn wire2api(self) -> FeedId {
+impl Wire2Api<crate::api::array::FeedId> for JsValue {
+    fn wire2api(self) -> crate::api::array::FeedId {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -502,7 +524,7 @@ impl Wire2Api<FeedId> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        FeedId(self_.get(0).wire2api())
+        crate::api::array::FeedId(self_.get(0).wire2api())
     }
 }
 impl Wire2Api<[i32; 2]> for Box<[i32]> {
@@ -520,8 +542,8 @@ impl Wire2Api<Vec<DartOpaque>> for JsValue {
             .collect()
     }
 }
-impl Wire2Api<Vec<RustOpaque<HideData>>> for JsValue {
-    fn wire2api(self) -> Vec<RustOpaque<HideData>> {
+impl Wire2Api<Vec<RustOpaque<crate::auxiliary::sample_types::HideData>>> for JsValue {
+    fn wire2api(self) -> Vec<RustOpaque<crate::auxiliary::sample_types::HideData>> {
         self.dyn_into::<JsArray>()
             .unwrap()
             .iter()
@@ -529,8 +551,8 @@ impl Wire2Api<Vec<RustOpaque<HideData>>> for JsValue {
             .collect()
     }
 }
-impl Wire2Api<Vec<ApplicationEnvVar>> for JsValue {
-    fn wire2api(self) -> Vec<ApplicationEnvVar> {
+impl Wire2Api<Vec<crate::api::mirror::ApplicationEnvVar>> for JsValue {
+    fn wire2api(self) -> Vec<crate::api::mirror::ApplicationEnvVar> {
         self.dyn_into::<JsArray>()
             .unwrap()
             .iter()
@@ -538,8 +560,8 @@ impl Wire2Api<Vec<ApplicationEnvVar>> for JsValue {
             .collect()
     }
 }
-impl Wire2Api<Vec<Attribute>> for JsValue {
-    fn wire2api(self) -> Vec<Attribute> {
+impl Wire2Api<Vec<crate::api::optional::Attribute>> for JsValue {
+    fn wire2api(self) -> Vec<crate::api::optional::Attribute> {
         self.dyn_into::<JsArray>()
             .unwrap()
             .iter()
@@ -556,8 +578,8 @@ impl Wire2Api<Vec<bool>> for JsValue {
             .collect()
     }
 }
-impl Wire2Api<Vec<MySize>> for JsValue {
-    fn wire2api(self) -> Vec<MySize> {
+impl Wire2Api<Vec<crate::auxiliary::sample_types::MySize>> for JsValue {
+    fn wire2api(self) -> Vec<crate::auxiliary::sample_types::MySize> {
         self.dyn_into::<JsArray>()
             .unwrap()
             .iter()
@@ -565,8 +587,8 @@ impl Wire2Api<Vec<MySize>> for JsValue {
             .collect()
     }
 }
-impl Wire2Api<Vec<MyTreeNode>> for JsValue {
-    fn wire2api(self) -> Vec<MyTreeNode> {
+impl Wire2Api<Vec<crate::api::misc_example::MyTreeNode>> for JsValue {
+    fn wire2api(self) -> Vec<crate::api::misc_example::MyTreeNode> {
         self.dyn_into::<JsArray>()
             .unwrap()
             .iter()
@@ -583,8 +605,8 @@ impl Wire2Api<Vec<Option<String>>> for JsValue {
             .collect()
     }
 }
-impl Wire2Api<Vec<Option<Attribute>>> for JsValue {
-    fn wire2api(self) -> Vec<Option<Attribute>> {
+impl Wire2Api<Vec<Option<crate::api::optional::Attribute>>> for JsValue {
+    fn wire2api(self) -> Vec<Option<crate::api::optional::Attribute>> {
         self.dyn_into::<JsArray>()
             .unwrap()
             .iter()
@@ -601,8 +623,8 @@ impl Wire2Api<Vec<Option<i32>>> for JsValue {
             .collect()
     }
 }
-impl Wire2Api<Vec<Option<Weekdays>>> for JsValue {
-    fn wire2api(self) -> Vec<Option<Weekdays>> {
+impl Wire2Api<Vec<Option<crate::api::misc_example::Weekdays>>> for JsValue {
+    fn wire2api(self) -> Vec<Option<crate::api::misc_example::Weekdays>> {
         self.dyn_into::<JsArray>()
             .unwrap()
             .iter()
@@ -678,8 +700,8 @@ impl Wire2Api<Vec<(String, i32)>> for JsValue {
             .collect()
     }
 }
-impl Wire2Api<Vec<TestId>> for JsValue {
-    fn wire2api(self) -> Vec<TestId> {
+impl Wire2Api<Vec<crate::api::array::TestId>> for JsValue {
+    fn wire2api(self) -> Vec<crate::api::array::TestId> {
         self.dyn_into::<JsArray>()
             .unwrap()
             .iter()
@@ -687,8 +709,8 @@ impl Wire2Api<Vec<TestId>> for JsValue {
             .collect()
     }
 }
-impl Wire2Api<Vec<Weekdays>> for JsValue {
-    fn wire2api(self) -> Vec<Weekdays> {
+impl Wire2Api<Vec<crate::api::misc_example::Weekdays>> for JsValue {
+    fn wire2api(self) -> Vec<crate::api::misc_example::Weekdays> {
         self.dyn_into::<JsArray>()
             .unwrap()
             .iter()
@@ -696,8 +718,8 @@ impl Wire2Api<Vec<Weekdays>> for JsValue {
             .collect()
     }
 }
-impl Wire2Api<MacroStruct> for JsValue {
-    fn wire2api(self) -> MacroStruct {
+impl Wire2Api<crate::api::inside_macro::MacroStruct> for JsValue {
+    fn wire2api(self) -> crate::api::inside_macro::MacroStruct {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -705,13 +727,13 @@ impl Wire2Api<MacroStruct> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        MacroStruct {
+        crate::api::inside_macro::MacroStruct {
             data: self_.get(0).wire2api(),
         }
     }
 }
-impl Wire2Api<Measure> for JsValue {
-    fn wire2api(self) -> Measure {
+impl Wire2Api<crate::api::enumeration::Measure> for JsValue {
+    fn wire2api(self) -> crate::api::enumeration::Measure {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => Measure::Speed(self_.get(1).wire2api()),
@@ -720,8 +742,8 @@ impl Wire2Api<Measure> for JsValue {
         }
     }
 }
-impl Wire2Api<MessageId> for JsValue {
-    fn wire2api(self) -> MessageId {
+impl Wire2Api<crate::api::array::MessageId> for JsValue {
+    fn wire2api(self) -> crate::api::array::MessageId {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -729,11 +751,11 @@ impl Wire2Api<MessageId> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        MessageId(self_.get(0).wire2api())
+        crate::api::array::MessageId(self_.get(0).wire2api())
     }
 }
-impl Wire2Api<MyNestedStruct> for JsValue {
-    fn wire2api(self) -> MyNestedStruct {
+impl Wire2Api<crate::api::misc_example::MyNestedStruct> for JsValue {
+    fn wire2api(self) -> crate::api::misc_example::MyNestedStruct {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -741,14 +763,14 @@ impl Wire2Api<MyNestedStruct> for JsValue {
             "Expected 2 elements, got {}",
             self_.length()
         );
-        MyNestedStruct {
+        crate::api::misc_example::MyNestedStruct {
             tree_node: self_.get(0).wire2api(),
             weekday: self_.get(1).wire2api(),
         }
     }
 }
-impl Wire2Api<MySize> for JsValue {
-    fn wire2api(self) -> MySize {
+impl Wire2Api<crate::auxiliary::sample_types::MySize> for JsValue {
+    fn wire2api(self) -> crate::auxiliary::sample_types::MySize {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -756,14 +778,14 @@ impl Wire2Api<MySize> for JsValue {
             "Expected 2 elements, got {}",
             self_.length()
         );
-        MySize {
+        crate::auxiliary::sample_types::MySize {
             width: self_.get(0).wire2api(),
             height: self_.get(1).wire2api(),
         }
     }
 }
-impl Wire2Api<MyStruct> for JsValue {
-    fn wire2api(self) -> MyStruct {
+impl Wire2Api<crate::auxiliary::sample_types::MyStruct> for JsValue {
+    fn wire2api(self) -> crate::auxiliary::sample_types::MyStruct {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -771,13 +793,13 @@ impl Wire2Api<MyStruct> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        MyStruct {
+        crate::auxiliary::sample_types::MyStruct {
             content: self_.get(0).wire2api(),
         }
     }
 }
-impl Wire2Api<MyTreeNode> for JsValue {
-    fn wire2api(self) -> MyTreeNode {
+impl Wire2Api<crate::api::misc_example::MyTreeNode> for JsValue {
+    fn wire2api(self) -> crate::api::misc_example::MyTreeNode {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -785,7 +807,7 @@ impl Wire2Api<MyTreeNode> for JsValue {
             "Expected 4 elements, got {}",
             self_.length()
         );
-        MyTreeNode {
+        crate::api::misc_example::MyTreeNode {
             value_i32: self_.get(0).wire2api(),
             value_vec_u8: self_.get(1).wire2api(),
             value_boolean: self_.get(2).wire2api(),
@@ -793,8 +815,8 @@ impl Wire2Api<MyTreeNode> for JsValue {
         }
     }
 }
-impl Wire2Api<NewTypeInt> for JsValue {
-    fn wire2api(self) -> NewTypeInt {
+impl Wire2Api<crate::api::newtype_pattern::NewTypeInt> for JsValue {
+    fn wire2api(self) -> crate::api::newtype_pattern::NewTypeInt {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -802,11 +824,11 @@ impl Wire2Api<NewTypeInt> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        NewTypeInt(self_.get(0).wire2api())
+        crate::api::newtype_pattern::NewTypeInt(self_.get(0).wire2api())
     }
 }
-impl Wire2Api<Note> for JsValue {
-    fn wire2api(self) -> Note {
+impl Wire2Api<crate::api::enumeration::Note> for JsValue {
+    fn wire2api(self) -> crate::api::enumeration::Note {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -814,14 +836,14 @@ impl Wire2Api<Note> for JsValue {
             "Expected 2 elements, got {}",
             self_.length()
         );
-        Note {
+        crate::api::enumeration::Note {
             day: self_.get(0).wire2api(),
             body: self_.get(1).wire2api(),
         }
     }
 }
-impl Wire2Api<Numbers> for JsValue {
-    fn wire2api(self) -> Numbers {
+impl Wire2Api<crate::api::mirror::Numbers> for JsValue {
+    fn wire2api(self) -> crate::api::mirror::Numbers {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -829,11 +851,11 @@ impl Wire2Api<Numbers> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        Numbers(self_.get(0).wire2api())
+        crate::api::mirror::Numbers(self_.get(0).wire2api())
     }
 }
-impl Wire2Api<OpaqueNested> for JsValue {
-    fn wire2api(self) -> OpaqueNested {
+impl Wire2Api<crate::api::rust_opaque::OpaqueNested> for JsValue {
+    fn wire2api(self) -> crate::api::rust_opaque::OpaqueNested {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -841,7 +863,7 @@ impl Wire2Api<OpaqueNested> for JsValue {
             "Expected 2 elements, got {}",
             self_.length()
         );
-        OpaqueNested {
+        crate::api::rust_opaque::OpaqueNested {
             first: self_.get(0).wire2api(),
             second: self_.get(1).wire2api(),
         }
@@ -882,8 +904,8 @@ impl Wire2Api<Option<Vec<u8>>> for Option<Box<[u8]>> {
         self.map(Wire2Api::wire2api)
     }
 }
-impl Wire2Api<OptVecs> for JsValue {
-    fn wire2api(self) -> OptVecs {
+impl Wire2Api<crate::api::optional::OptVecs> for JsValue {
+    fn wire2api(self) -> crate::api::optional::OptVecs {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -891,7 +913,7 @@ impl Wire2Api<OptVecs> for JsValue {
             "Expected 4 elements, got {}",
             self_.length()
         );
-        OptVecs {
+        crate::api::optional::OptVecs {
             i32: self_.get(0).wire2api(),
             enums: self_.get(1).wire2api(),
             strings: self_.get(2).wire2api(),
@@ -911,8 +933,8 @@ impl Wire2Api<(String, i32)> for JsValue {
         (self_.get(0).wire2api(), self_.get(1).wire2api())
     }
 }
-impl Wire2Api<Sequences> for JsValue {
-    fn wire2api(self) -> Sequences {
+impl Wire2Api<crate::api::mirror::Sequences> for JsValue {
+    fn wire2api(self) -> crate::api::mirror::Sequences {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -920,11 +942,11 @@ impl Wire2Api<Sequences> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        Sequences(self_.get(0).wire2api())
+        crate::api::mirror::Sequences(self_.get(0).wire2api())
     }
 }
-impl Wire2Api<Speed> for JsValue {
-    fn wire2api(self) -> Speed {
+impl Wire2Api<crate::api::enumeration::Speed> for JsValue {
+    fn wire2api(self) -> crate::api::enumeration::Speed {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => Speed::Unknown,
@@ -933,8 +955,8 @@ impl Wire2Api<Speed> for JsValue {
         }
     }
 }
-impl Wire2Api<StructWithCommentsTwinNormal> for JsValue {
-    fn wire2api(self) -> StructWithCommentsTwinNormal {
+impl Wire2Api<crate::api::comment::StructWithCommentsTwinNormal> for JsValue {
+    fn wire2api(self) -> crate::api::comment::StructWithCommentsTwinNormal {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -942,13 +964,15 @@ impl Wire2Api<StructWithCommentsTwinNormal> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        StructWithCommentsTwinNormal {
+        crate::api::comment::StructWithCommentsTwinNormal {
             field_with_comments: self_.get(0).wire2api(),
         }
     }
 }
-impl Wire2Api<StructWithCommentsTwinSync> for JsValue {
-    fn wire2api(self) -> StructWithCommentsTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync>
+    for JsValue
+{
+    fn wire2api(self) -> crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -956,13 +980,13 @@ impl Wire2Api<StructWithCommentsTwinSync> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        StructWithCommentsTwinSync {
+        crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync {
             field_with_comments: self_.get(0).wire2api(),
         }
     }
 }
-impl Wire2Api<StructWithEnum> for JsValue {
-    fn wire2api(self) -> StructWithEnum {
+impl Wire2Api<crate::api::misc_example::StructWithEnum> for JsValue {
+    fn wire2api(self) -> crate::api::misc_example::StructWithEnum {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -970,14 +994,14 @@ impl Wire2Api<StructWithEnum> for JsValue {
             "Expected 2 elements, got {}",
             self_.length()
         );
-        StructWithEnum {
+        crate::api::misc_example::StructWithEnum {
             abc1: self_.get(0).wire2api(),
             abc2: self_.get(1).wire2api(),
         }
     }
 }
-impl Wire2Api<StructWithOneFieldTwinNormal> for JsValue {
-    fn wire2api(self) -> StructWithOneFieldTwinNormal {
+impl Wire2Api<crate::api::structure::StructWithOneFieldTwinNormal> for JsValue {
+    fn wire2api(self) -> crate::api::structure::StructWithOneFieldTwinNormal {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -985,13 +1009,17 @@ impl Wire2Api<StructWithOneFieldTwinNormal> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        StructWithOneFieldTwinNormal {
+        crate::api::structure::StructWithOneFieldTwinNormal {
             a: self_.get(0).wire2api(),
         }
     }
 }
-impl Wire2Api<StructWithOneFieldTwinSync> for JsValue {
-    fn wire2api(self) -> StructWithOneFieldTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::structure_twin_sync::StructWithOneFieldTwinSync>
+    for JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::structure_twin_sync::StructWithOneFieldTwinSync {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -999,13 +1027,13 @@ impl Wire2Api<StructWithOneFieldTwinSync> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        StructWithOneFieldTwinSync {
+        crate::api::pseudo_manual::structure_twin_sync::StructWithOneFieldTwinSync {
             a: self_.get(0).wire2api(),
         }
     }
 }
-impl Wire2Api<StructWithTwoFieldTwinNormal> for JsValue {
-    fn wire2api(self) -> StructWithTwoFieldTwinNormal {
+impl Wire2Api<crate::api::structure::StructWithTwoFieldTwinNormal> for JsValue {
+    fn wire2api(self) -> crate::api::structure::StructWithTwoFieldTwinNormal {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -1013,14 +1041,18 @@ impl Wire2Api<StructWithTwoFieldTwinNormal> for JsValue {
             "Expected 2 elements, got {}",
             self_.length()
         );
-        StructWithTwoFieldTwinNormal {
+        crate::api::structure::StructWithTwoFieldTwinNormal {
             a: self_.get(0).wire2api(),
             b: self_.get(1).wire2api(),
         }
     }
 }
-impl Wire2Api<StructWithTwoFieldTwinSync> for JsValue {
-    fn wire2api(self) -> StructWithTwoFieldTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFieldTwinSync>
+    for JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFieldTwinSync {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -1028,14 +1060,14 @@ impl Wire2Api<StructWithTwoFieldTwinSync> for JsValue {
             "Expected 2 elements, got {}",
             self_.length()
         );
-        StructWithTwoFieldTwinSync {
+        crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFieldTwinSync {
             a: self_.get(0).wire2api(),
             b: self_.get(1).wire2api(),
         }
     }
 }
-impl Wire2Api<StructWithZeroFieldTwinNormal> for JsValue {
-    fn wire2api(self) -> StructWithZeroFieldTwinNormal {
+impl Wire2Api<crate::api::structure::StructWithZeroFieldTwinNormal> for JsValue {
+    fn wire2api(self) -> crate::api::structure::StructWithZeroFieldTwinNormal {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -1043,11 +1075,15 @@ impl Wire2Api<StructWithZeroFieldTwinNormal> for JsValue {
             "Expected 0 elements, got {}",
             self_.length()
         );
-        StructWithZeroFieldTwinNormal {}
+        crate::api::structure::StructWithZeroFieldTwinNormal {}
     }
 }
-impl Wire2Api<StructWithZeroFieldTwinSync> for JsValue {
-    fn wire2api(self) -> StructWithZeroFieldTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync>
+    for JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -1055,11 +1091,11 @@ impl Wire2Api<StructWithZeroFieldTwinSync> for JsValue {
             "Expected 0 elements, got {}",
             self_.length()
         );
-        StructWithZeroFieldTwinSync {}
+        crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync {}
     }
 }
-impl Wire2Api<SumWith> for JsValue {
-    fn wire2api(self) -> SumWith {
+impl Wire2Api<crate::api::method::SumWith> for JsValue {
+    fn wire2api(self) -> crate::api::method::SumWith {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -1067,13 +1103,13 @@ impl Wire2Api<SumWith> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        SumWith {
+        crate::api::method::SumWith {
             x: self_.get(0).wire2api(),
         }
     }
 }
-impl Wire2Api<TestId> for JsValue {
-    fn wire2api(self) -> TestId {
+impl Wire2Api<crate::api::array::TestId> for JsValue {
+    fn wire2api(self) -> crate::api::array::TestId {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -1081,11 +1117,11 @@ impl Wire2Api<TestId> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        TestId(self_.get(0).wire2api())
+        crate::api::array::TestId(self_.get(0).wire2api())
     }
 }
-impl Wire2Api<TupleStructWithOneFieldTwinNormal> for JsValue {
-    fn wire2api(self) -> TupleStructWithOneFieldTwinNormal {
+impl Wire2Api<crate::api::structure::TupleStructWithOneFieldTwinNormal> for JsValue {
+    fn wire2api(self) -> crate::api::structure::TupleStructWithOneFieldTwinNormal {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -1093,11 +1129,15 @@ impl Wire2Api<TupleStructWithOneFieldTwinNormal> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        TupleStructWithOneFieldTwinNormal(self_.get(0).wire2api())
+        crate::api::structure::TupleStructWithOneFieldTwinNormal(self_.get(0).wire2api())
     }
 }
-impl Wire2Api<TupleStructWithOneFieldTwinSync> for JsValue {
-    fn wire2api(self) -> TupleStructWithOneFieldTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync>
+    for JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -1105,11 +1145,13 @@ impl Wire2Api<TupleStructWithOneFieldTwinSync> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        TupleStructWithOneFieldTwinSync(self_.get(0).wire2api())
+        crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync(
+            self_.get(0).wire2api(),
+        )
     }
 }
-impl Wire2Api<TupleStructWithTwoFieldTwinNormal> for JsValue {
-    fn wire2api(self) -> TupleStructWithTwoFieldTwinNormal {
+impl Wire2Api<crate::api::structure::TupleStructWithTwoFieldTwinNormal> for JsValue {
+    fn wire2api(self) -> crate::api::structure::TupleStructWithTwoFieldTwinNormal {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -1117,11 +1159,18 @@ impl Wire2Api<TupleStructWithTwoFieldTwinNormal> for JsValue {
             "Expected 2 elements, got {}",
             self_.length()
         );
-        TupleStructWithTwoFieldTwinNormal(self_.get(0).wire2api(), self_.get(1).wire2api())
+        crate::api::structure::TupleStructWithTwoFieldTwinNormal(
+            self_.get(0).wire2api(),
+            self_.get(1).wire2api(),
+        )
     }
 }
-impl Wire2Api<TupleStructWithTwoFieldTwinSync> for JsValue {
-    fn wire2api(self) -> TupleStructWithTwoFieldTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwoFieldTwinSync>
+    for JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwoFieldTwinSync {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -1129,7 +1178,10 @@ impl Wire2Api<TupleStructWithTwoFieldTwinSync> for JsValue {
             "Expected 2 elements, got {}",
             self_.length()
         );
-        TupleStructWithTwoFieldTwinSync(self_.get(0).wire2api(), self_.get(1).wire2api())
+        crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwoFieldTwinSync(
+            self_.get(0).wire2api(),
+            self_.get(1).wire2api(),
+        )
     }
 }
 impl Wire2Api<[u8; 1600]> for Box<[u8]> {
@@ -1150,8 +1202,8 @@ impl Wire2Api<[u8; 8]> for Box<[u8]> {
         flutter_rust_bridge::support::from_vec_to_array(vec)
     }
 }
-impl Wire2Api<UserId> for JsValue {
-    fn wire2api(self) -> UserId {
+impl Wire2Api<crate::api::attribute::UserId> for JsValue {
+    fn wire2api(self) -> crate::api::attribute::UserId {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -1159,7 +1211,7 @@ impl Wire2Api<UserId> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        UserId {
+        crate::api::attribute::UserId {
             value: self_.get(0).wire2api(),
         }
     }
@@ -1244,8 +1296,8 @@ impl Wire2Api<RustOpaque<Box<dyn DartDebug>>> for JsValue {
         }
     }
 }
-impl Wire2Api<RustOpaque<HideData>> for JsValue {
-    fn wire2api(self) -> RustOpaque<HideData> {
+impl Wire2Api<RustOpaque<crate::auxiliary::sample_types::HideData>> for JsValue {
+    fn wire2api(self) -> RustOpaque<crate::auxiliary::sample_types::HideData> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -1256,9 +1308,9 @@ impl Wire2Api<RustOpaque<HideData>> for JsValue {
         }
     }
 }
-impl Wire2Api<[RustOpaque<HideData>; 2]> for JsValue {
-    fn wire2api(self) -> [RustOpaque<HideData>; 2] {
-        let vec: Vec<RustOpaque<HideData>> = self.wire2api();
+impl Wire2Api<[RustOpaque<crate::auxiliary::sample_types::HideData>; 2]> for JsValue {
+    fn wire2api(self) -> [RustOpaque<crate::auxiliary::sample_types::HideData>; 2] {
+        let vec: Vec<RustOpaque<crate::auxiliary::sample_types::HideData>> = self.wire2api();
         flutter_rust_bridge::support::from_vec_to_array(vec)
     }
 }
@@ -1274,8 +1326,8 @@ impl Wire2Api<RustOpaque<i32>> for JsValue {
         }
     }
 }
-impl Wire2Api<RustOpaque<NonCloneData>> for JsValue {
-    fn wire2api(self) -> RustOpaque<NonCloneData> {
+impl Wire2Api<RustOpaque<crate::auxiliary::sample_types::NonCloneData>> for JsValue {
+    fn wire2api(self) -> RustOpaque<crate::auxiliary::sample_types::NonCloneData> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -1286,8 +1338,8 @@ impl Wire2Api<RustOpaque<NonCloneData>> for JsValue {
         }
     }
 }
-impl Wire2Api<RustOpaque<NonSendHideData>> for JsValue {
-    fn wire2api(self) -> RustOpaque<NonSendHideData> {
+impl Wire2Api<RustOpaque<crate::auxiliary::sample_types::NonSendHideData>> for JsValue {
+    fn wire2api(self) -> RustOpaque<crate::auxiliary::sample_types::NonSendHideData> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -1324,8 +1376,8 @@ impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for JsValue {
         ZeroCopyBuffer(self.wire2api())
     }
 }
-impl Wire2Api<ApplicationMode> for JsValue {
-    fn wire2api(self) -> ApplicationMode {
+impl Wire2Api<crate::api::mirror::ApplicationMode> for JsValue {
+    fn wire2api(self) -> crate::api::mirror::ApplicationMode {
         (self.unchecked_into_f64() as i32).wire2api()
     }
 }
@@ -1334,13 +1386,13 @@ impl Wire2Api<bool> for JsValue {
         self.is_truthy()
     }
 }
-impl Wire2Api<Box<ApplicationEnv>> for JsValue {
-    fn wire2api(self) -> Box<ApplicationEnv> {
+impl Wire2Api<Box<crate::api::mirror::ApplicationEnv>> for JsValue {
+    fn wire2api(self) -> Box<crate::api::mirror::ApplicationEnv> {
         Box::new(self.wire2api())
     }
 }
-impl Wire2Api<Box<Blob>> for JsValue {
-    fn wire2api(self) -> Box<Blob> {
+impl Wire2Api<Box<crate::api::array::Blob>> for JsValue {
+    fn wire2api(self) -> Box<crate::api::array::Blob> {
         Box::new(self.wire2api())
     }
 }
@@ -1349,13 +1401,13 @@ impl Wire2Api<Box<bool>> for JsValue {
         Box::new(self.wire2api())
     }
 }
-impl Wire2Api<Box<Distance>> for JsValue {
-    fn wire2api(self) -> Box<Distance> {
+impl Wire2Api<Box<crate::api::enumeration::Distance>> for JsValue {
+    fn wire2api(self) -> Box<crate::api::enumeration::Distance> {
         Box::new(self.wire2api())
     }
 }
-impl Wire2Api<Box<ExoticOptionals>> for JsValue {
-    fn wire2api(self) -> Box<ExoticOptionals> {
+impl Wire2Api<Box<crate::api::optional::ExoticOptionals>> for JsValue {
+    fn wire2api(self) -> Box<crate::api::optional::ExoticOptionals> {
         Box::new(self.wire2api())
     }
 }
@@ -1379,8 +1431,8 @@ impl Wire2Api<Box<i8>> for JsValue {
         Box::new(self.wire2api())
     }
 }
-impl Wire2Api<Box<Speed>> for JsValue {
-    fn wire2api(self) -> Box<Speed> {
+impl Wire2Api<Box<crate::api::enumeration::Speed>> for JsValue {
+    fn wire2api(self) -> Box<crate::api::enumeration::Speed> {
         Box::new(self.wire2api())
     }
 }
@@ -1395,19 +1447,19 @@ impl Wire2Api<Box<[u8; 1600]>> for JsValue {
         Box::new(flutter_rust_bridge::support::from_vec_to_array(vec))
     }
 }
-impl Wire2Api<Box<Weekdays>> for JsValue {
-    fn wire2api(self) -> Box<Weekdays> {
+impl Wire2Api<Box<crate::api::misc_example::Weekdays>> for JsValue {
+    fn wire2api(self) -> Box<crate::api::misc_example::Weekdays> {
         let ptr: Box<i32> = self.wire2api();
         Box::new(ptr.wire2api())
     }
 }
-impl Wire2Api<EnumSimpleTwinNormal> for JsValue {
-    fn wire2api(self) -> EnumSimpleTwinNormal {
+impl Wire2Api<crate::api::enumeration::EnumSimpleTwinNormal> for JsValue {
+    fn wire2api(self) -> crate::api::enumeration::EnumSimpleTwinNormal {
         (self.unchecked_into_f64() as i32).wire2api()
     }
 }
-impl Wire2Api<EnumSimpleTwinSync> for JsValue {
-    fn wire2api(self) -> EnumSimpleTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync> for JsValue {
+    fn wire2api(self) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync {
         (self.unchecked_into_f64() as i32).wire2api()
     }
 }
@@ -1511,14 +1563,14 @@ impl Wire2Api<Vec<u8>> for JsValue {
         self.unchecked_into::<js_sys::Uint8Array>().to_vec().into()
     }
 }
-impl Wire2Api<MyEnum> for JsValue {
-    fn wire2api(self) -> MyEnum {
+impl Wire2Api<crate::auxiliary::sample_types::MyEnum> for JsValue {
+    fn wire2api(self) -> crate::auxiliary::sample_types::MyEnum {
         (self.unchecked_into_f64() as i32).wire2api()
     }
 }
-impl Wire2Api<[TestId; 4]> for JsValue {
-    fn wire2api(self) -> [TestId; 4] {
-        let vec: Vec<TestId> = self.wire2api();
+impl Wire2Api<[crate::api::array::TestId; 4]> for JsValue {
+    fn wire2api(self) -> [crate::api::array::TestId; 4] {
+        let vec: Vec<crate::api::array::TestId> = self.wire2api();
         flutter_rust_bridge::support::from_vec_to_array(vec)
     }
 }
@@ -1565,8 +1617,8 @@ impl Wire2Api<usize> for JsValue {
         self.unchecked_into_f64() as _
     }
 }
-impl Wire2Api<Weekdays> for JsValue {
-    fn wire2api(self) -> Weekdays {
+impl Wire2Api<crate::api::misc_example::Weekdays> for JsValue {
+    fn wire2api(self) -> crate::api::misc_example::Weekdays {
         (self.unchecked_into_f64() as i32).wire2api()
     }
 }
@@ -3159,7 +3211,9 @@ pub fn share_opaque_RustOpaque_box_dynDartDebug(
 #[wasm_bindgen]
 pub fn drop_opaque_RustOpaque_frb_opaque_return(ptr: *const std::ffi::c_void) {
     unsafe {
-        std::sync::Arc::<FrbOpaqueReturn>::decrement_strong_count(ptr as _);
+        std::sync::Arc::<crate::auxiliary::sample_types::FrbOpaqueReturn>::decrement_strong_count(
+            ptr as _,
+        );
     }
 }
 
@@ -3168,7 +3222,9 @@ pub fn share_opaque_RustOpaque_frb_opaque_return(
     ptr: *const std::ffi::c_void,
 ) -> *const std::ffi::c_void {
     unsafe {
-        std::sync::Arc::<FrbOpaqueReturn>::increment_strong_count(ptr as _);
+        std::sync::Arc::<crate::auxiliary::sample_types::FrbOpaqueReturn>::increment_strong_count(
+            ptr as _,
+        );
         ptr
     }
 }
@@ -3176,7 +3232,7 @@ pub fn share_opaque_RustOpaque_frb_opaque_return(
 #[wasm_bindgen]
 pub fn drop_opaque_RustOpaque_frb_opaque_sync_return(ptr: *const std::ffi::c_void) {
     unsafe {
-        std::sync::Arc::<FrbOpaqueSyncReturn>::decrement_strong_count(ptr as _);
+        std::sync::Arc::<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -3185,7 +3241,7 @@ pub fn share_opaque_RustOpaque_frb_opaque_sync_return(
     ptr: *const std::ffi::c_void,
 ) -> *const std::ffi::c_void {
     unsafe {
-        std::sync::Arc::<FrbOpaqueSyncReturn>::increment_strong_count(ptr as _);
+        std::sync::Arc::<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>::increment_strong_count(ptr as _);
         ptr
     }
 }
@@ -3193,14 +3249,18 @@ pub fn share_opaque_RustOpaque_frb_opaque_sync_return(
 #[wasm_bindgen]
 pub fn drop_opaque_RustOpaque_hide_data(ptr: *const std::ffi::c_void) {
     unsafe {
-        std::sync::Arc::<HideData>::decrement_strong_count(ptr as _);
+        std::sync::Arc::<crate::auxiliary::sample_types::HideData>::decrement_strong_count(
+            ptr as _,
+        );
     }
 }
 
 #[wasm_bindgen]
 pub fn share_opaque_RustOpaque_hide_data(ptr: *const std::ffi::c_void) -> *const std::ffi::c_void {
     unsafe {
-        std::sync::Arc::<HideData>::increment_strong_count(ptr as _);
+        std::sync::Arc::<crate::auxiliary::sample_types::HideData>::increment_strong_count(
+            ptr as _,
+        );
         ptr
     }
 }
@@ -3223,7 +3283,9 @@ pub fn share_opaque_RustOpaque_i_32(ptr: *const std::ffi::c_void) -> *const std:
 #[wasm_bindgen]
 pub fn drop_opaque_RustOpaque_non_send_hide_data(ptr: *const std::ffi::c_void) {
     unsafe {
-        std::sync::Arc::<NonSendHideData>::decrement_strong_count(ptr as _);
+        std::sync::Arc::<crate::auxiliary::sample_types::NonSendHideData>::decrement_strong_count(
+            ptr as _,
+        );
     }
 }
 
@@ -3232,7 +3294,9 @@ pub fn share_opaque_RustOpaque_non_send_hide_data(
     ptr: *const std::ffi::c_void,
 ) -> *const std::ffi::c_void {
     unsafe {
-        std::sync::Arc::<NonSendHideData>::increment_strong_count(ptr as _);
+        std::sync::Arc::<crate::auxiliary::sample_types::NonSendHideData>::increment_strong_count(
+            ptr as _,
+        );
         ptr
     }
 }

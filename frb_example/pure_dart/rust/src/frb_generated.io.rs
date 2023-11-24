@@ -45,14 +45,16 @@ impl Wire2Api<RustOpaque<Box<dyn DartDebug>>> for wire_RustOpaque_box_dynDartDeb
         unsafe { flutter_rust_bridge::support::opaque_from_dart(self.ptr as _) }
     }
 }
-impl Wire2Api<RustOpaque<HideData>> for wire_RustOpaque_hide_data {
-    fn wire2api(self) -> RustOpaque<HideData> {
+impl Wire2Api<RustOpaque<crate::auxiliary::sample_types::HideData>> for wire_RustOpaque_hide_data {
+    fn wire2api(self) -> RustOpaque<crate::auxiliary::sample_types::HideData> {
         unsafe { flutter_rust_bridge::support::opaque_from_dart(self.ptr as _) }
     }
 }
-impl Wire2Api<[RustOpaque<HideData>; 2]> for *mut wire_list_RustOpaque_hide_data {
-    fn wire2api(self) -> [RustOpaque<HideData>; 2] {
-        let vec: Vec<RustOpaque<HideData>> = self.wire2api();
+impl Wire2Api<[RustOpaque<crate::auxiliary::sample_types::HideData>; 2]>
+    for *mut wire_list_RustOpaque_hide_data
+{
+    fn wire2api(self) -> [RustOpaque<crate::auxiliary::sample_types::HideData>; 2] {
+        let vec: Vec<RustOpaque<crate::auxiliary::sample_types::HideData>> = self.wire2api();
         flutter_rust_bridge::support::from_vec_to_array(vec)
     }
 }
@@ -61,13 +63,17 @@ impl Wire2Api<RustOpaque<i32>> for wire_RustOpaque_i_32 {
         unsafe { flutter_rust_bridge::support::opaque_from_dart(self.ptr as _) }
     }
 }
-impl Wire2Api<RustOpaque<NonCloneData>> for wire_RustOpaque_non_clone_data {
-    fn wire2api(self) -> RustOpaque<NonCloneData> {
+impl Wire2Api<RustOpaque<crate::auxiliary::sample_types::NonCloneData>>
+    for wire_RustOpaque_non_clone_data
+{
+    fn wire2api(self) -> RustOpaque<crate::auxiliary::sample_types::NonCloneData> {
         unsafe { flutter_rust_bridge::support::opaque_from_dart(self.ptr as _) }
     }
 }
-impl Wire2Api<RustOpaque<NonSendHideData>> for wire_RustOpaque_non_send_hide_data {
-    fn wire2api(self) -> RustOpaque<NonSendHideData> {
+impl Wire2Api<RustOpaque<crate::auxiliary::sample_types::NonSendHideData>>
+    for wire_RustOpaque_non_send_hide_data
+{
+    fn wire2api(self) -> RustOpaque<crate::auxiliary::sample_types::NonSendHideData> {
         unsafe { flutter_rust_bridge::support::opaque_from_dart(self.ptr as _) }
     }
 }
@@ -103,15 +109,15 @@ impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for *mut wire_list_prim_u_8 {
         ZeroCopyBuffer(self.wire2api())
     }
 }
-impl Wire2Api<A> for wire_a {
-    fn wire2api(self) -> A {
-        A {
+impl Wire2Api<crate::api::misc_example::A> for wire_a {
+    fn wire2api(self) -> crate::api::misc_example::A {
+        crate::api::misc_example::A {
             a: self.a.wire2api(),
         }
     }
 }
-impl Wire2Api<Abc> for wire_abc {
-    fn wire2api(self) -> Abc {
+impl Wire2Api<crate::api::misc_example::Abc> for wire_abc {
+    fn wire2api(self) -> crate::api::misc_example::Abc {
         match self.tag {
             0 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
@@ -137,21 +143,21 @@ impl Wire2Api<Abc> for wire_abc {
         }
     }
 }
-impl Wire2Api<ApplicationEnv> for wire_application_env {
-    fn wire2api(self) -> ApplicationEnv {
-        ApplicationEnv {
+impl Wire2Api<crate::api::mirror::ApplicationEnv> for wire_application_env {
+    fn wire2api(self) -> crate::api::mirror::ApplicationEnv {
+        crate::api::mirror::ApplicationEnv {
             vars: self.vars.wire2api(),
         }
     }
 }
-impl Wire2Api<ApplicationEnvVar> for wire_application_env_var {
-    fn wire2api(self) -> ApplicationEnvVar {
-        ApplicationEnvVar(self.field0.wire2api(), self.field1.wire2api())
+impl Wire2Api<crate::api::mirror::ApplicationEnvVar> for wire_application_env_var {
+    fn wire2api(self) -> crate::api::mirror::ApplicationEnvVar {
+        crate::api::mirror::ApplicationEnvVar(self.field0.wire2api(), self.field1.wire2api())
     }
 }
-impl Wire2Api<ApplicationSettings> for wire_application_settings {
-    fn wire2api(self) -> ApplicationSettings {
-        ApplicationSettings {
+impl Wire2Api<crate::api::mirror::ApplicationSettings> for wire_application_settings {
+    fn wire2api(self) -> crate::api::mirror::ApplicationSettings {
+        crate::api::mirror::ApplicationSettings {
             name: self.name.wire2api(),
             version: self.version.wire2api(),
             mode: self.mode.wire2api(),
@@ -160,30 +166,30 @@ impl Wire2Api<ApplicationSettings> for wire_application_settings {
         }
     }
 }
-impl Wire2Api<Attribute> for wire_attribute {
-    fn wire2api(self) -> Attribute {
-        Attribute {
+impl Wire2Api<crate::api::optional::Attribute> for wire_attribute {
+    fn wire2api(self) -> crate::api::optional::Attribute {
+        crate::api::optional::Attribute {
             key: self.key.wire2api(),
             value: self.value.wire2api(),
         }
     }
 }
-impl Wire2Api<B> for wire_b {
-    fn wire2api(self) -> B {
-        B {
+impl Wire2Api<crate::api::misc_example::B> for wire_b {
+    fn wire2api(self) -> crate::api::misc_example::B {
+        crate::api::misc_example::B {
             b: self.b.wire2api(),
         }
     }
 }
-impl Wire2Api<Blob> for wire_blob {
-    fn wire2api(self) -> Blob {
-        Blob(self.field0.wire2api())
+impl Wire2Api<crate::api::array::Blob> for wire_blob {
+    fn wire2api(self) -> crate::api::array::Blob {
+        crate::api::array::Blob(self.field0.wire2api())
     }
 }
-impl Wire2Api<Box<ApplicationEnv>> for *mut wire_application_env {
-    fn wire2api(self) -> Box<ApplicationEnv> {
+impl Wire2Api<Box<crate::api::mirror::ApplicationEnv>> for *mut wire_application_env {
+    fn wire2api(self) -> Box<crate::api::mirror::ApplicationEnv> {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<ApplicationEnv>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::mirror::ApplicationEnv>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<chrono::DateTime<chrono::Utc>> for *mut i64 {
@@ -198,46 +204,48 @@ impl Wire2Api<DartOpaque> for *mut wire_DartOpaque {
         Wire2Api::<DartOpaque>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<RustOpaque<HideData>> for *mut wire_RustOpaque_hide_data {
-    fn wire2api(self) -> RustOpaque<HideData> {
+impl Wire2Api<RustOpaque<crate::auxiliary::sample_types::HideData>>
+    for *mut wire_RustOpaque_hide_data
+{
+    fn wire2api(self) -> RustOpaque<crate::auxiliary::sample_types::HideData> {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<RustOpaque<HideData>>::wire2api(*wrap).into()
+        Wire2Api::<RustOpaque<crate::auxiliary::sample_types::HideData>>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<A> for *mut wire_a {
-    fn wire2api(self) -> A {
+impl Wire2Api<crate::api::misc_example::A> for *mut wire_a {
+    fn wire2api(self) -> crate::api::misc_example::A {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<A>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::misc_example::A>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Abc> for *mut wire_abc {
-    fn wire2api(self) -> Abc {
+impl Wire2Api<crate::api::misc_example::Abc> for *mut wire_abc {
+    fn wire2api(self) -> crate::api::misc_example::Abc {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<Abc>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::misc_example::Abc>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<ApplicationEnv> for *mut wire_application_env {
-    fn wire2api(self) -> ApplicationEnv {
+impl Wire2Api<crate::api::mirror::ApplicationEnv> for *mut wire_application_env {
+    fn wire2api(self) -> crate::api::mirror::ApplicationEnv {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<ApplicationEnv>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::mirror::ApplicationEnv>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<ApplicationSettings> for *mut wire_application_settings {
-    fn wire2api(self) -> ApplicationSettings {
+impl Wire2Api<crate::api::mirror::ApplicationSettings> for *mut wire_application_settings {
+    fn wire2api(self) -> crate::api::mirror::ApplicationSettings {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<ApplicationSettings>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::mirror::ApplicationSettings>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Attribute> for *mut wire_attribute {
-    fn wire2api(self) -> Attribute {
+impl Wire2Api<crate::api::optional::Attribute> for *mut wire_attribute {
+    fn wire2api(self) -> crate::api::optional::Attribute {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<Attribute>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::optional::Attribute>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<B> for *mut wire_b {
-    fn wire2api(self) -> B {
+impl Wire2Api<crate::api::misc_example::B> for *mut wire_b {
+    fn wire2api(self) -> crate::api::misc_example::B {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<B>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::misc_example::B>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<bool> for *mut bool {
@@ -245,128 +253,158 @@ impl Wire2Api<bool> for *mut bool {
         unsafe { *flutter_rust_bridge::support::box_from_leak_ptr(self) }
     }
 }
-impl Wire2Api<C> for *mut wire_c {
-    fn wire2api(self) -> C {
+impl Wire2Api<crate::api::misc_example::C> for *mut wire_c {
+    fn wire2api(self) -> crate::api::misc_example::C {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<C>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::misc_example::C>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<ConcatenateWith> for *mut wire_concatenate_with {
-    fn wire2api(self) -> ConcatenateWith {
+impl Wire2Api<crate::api::method::ConcatenateWith> for *mut wire_concatenate_with {
+    fn wire2api(self) -> crate::api::method::ConcatenateWith {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<ConcatenateWith>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::method::ConcatenateWith>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<CustomNestedErrorInnerTwinNormal>
+impl Wire2Api<crate::api::exception::CustomNestedErrorInnerTwinNormal>
     for *mut wire_custom_nested_error_inner_twin_normal
 {
-    fn wire2api(self) -> CustomNestedErrorInnerTwinNormal {
+    fn wire2api(self) -> crate::api::exception::CustomNestedErrorInnerTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<CustomNestedErrorInnerTwinNormal>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::exception::CustomNestedErrorInnerTwinNormal>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<CustomNestedErrorInnerTwinSync> for *mut wire_custom_nested_error_inner_twin_sync {
-    fn wire2api(self) -> CustomNestedErrorInnerTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync>
+    for *mut wire_custom_nested_error_inner_twin_sync
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<CustomNestedErrorInnerTwinSync>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<CustomNestedErrorOuterTwinNormal>
+impl Wire2Api<crate::api::exception::CustomNestedErrorOuterTwinNormal>
     for *mut wire_custom_nested_error_outer_twin_normal
 {
-    fn wire2api(self) -> CustomNestedErrorOuterTwinNormal {
+    fn wire2api(self) -> crate::api::exception::CustomNestedErrorOuterTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<CustomNestedErrorOuterTwinNormal>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::exception::CustomNestedErrorOuterTwinNormal>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<CustomNestedErrorOuterTwinSync> for *mut wire_custom_nested_error_outer_twin_sync {
-    fn wire2api(self) -> CustomNestedErrorOuterTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync>
+    for *mut wire_custom_nested_error_outer_twin_sync
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<CustomNestedErrorOuterTwinSync>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<CustomStructErrorTwinNormal> for *mut wire_custom_struct_error_twin_normal {
-    fn wire2api(self) -> CustomStructErrorTwinNormal {
+impl Wire2Api<crate::api::exception::CustomStructErrorTwinNormal>
+    for *mut wire_custom_struct_error_twin_normal
+{
+    fn wire2api(self) -> crate::api::exception::CustomStructErrorTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<CustomStructErrorTwinNormal>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::exception::CustomStructErrorTwinNormal>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<CustomStructErrorTwinSync> for *mut wire_custom_struct_error_twin_sync {
-    fn wire2api(self) -> CustomStructErrorTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorTwinSync>
+    for *mut wire_custom_struct_error_twin_sync
+{
+    fn wire2api(self) -> crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorTwinSync {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<CustomStructErrorTwinSync>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorTwinSync>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Customized> for *mut wire_customized {
-    fn wire2api(self) -> Customized {
+impl Wire2Api<crate::api::attribute::Customized> for *mut wire_customized {
+    fn wire2api(self) -> crate::api::attribute::Customized {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<Customized>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::attribute::Customized>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<DartOpaqueNested> for *mut wire_dart_opaque_nested {
-    fn wire2api(self) -> DartOpaqueNested {
+impl Wire2Api<crate::api::dart_opaque::DartOpaqueNested> for *mut wire_dart_opaque_nested {
+    fn wire2api(self) -> crate::api::dart_opaque::DartOpaqueNested {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<DartOpaqueNested>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::dart_opaque::DartOpaqueNested>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<EnumDartOpaque> for *mut wire_enum_dart_opaque {
-    fn wire2api(self) -> EnumDartOpaque {
+impl Wire2Api<crate::api::dart_opaque::EnumDartOpaque> for *mut wire_enum_dart_opaque {
+    fn wire2api(self) -> crate::api::dart_opaque::EnumDartOpaque {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<EnumDartOpaque>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::dart_opaque::EnumDartOpaque>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<EnumOpaque> for *mut wire_enum_opaque {
-    fn wire2api(self) -> EnumOpaque {
+impl Wire2Api<crate::api::rust_opaque::EnumOpaque> for *mut wire_enum_opaque {
+    fn wire2api(self) -> crate::api::rust_opaque::EnumOpaque {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<EnumOpaque>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::rust_opaque::EnumOpaque>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<EnumWithItemMixedTwinNormal> for *mut wire_enum_with_item_mixed_twin_normal {
-    fn wire2api(self) -> EnumWithItemMixedTwinNormal {
+impl Wire2Api<crate::api::enumeration::EnumWithItemMixedTwinNormal>
+    for *mut wire_enum_with_item_mixed_twin_normal
+{
+    fn wire2api(self) -> crate::api::enumeration::EnumWithItemMixedTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<EnumWithItemMixedTwinNormal>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::enumeration::EnumWithItemMixedTwinNormal>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<EnumWithItemMixedTwinSync> for *mut wire_enum_with_item_mixed_twin_sync {
-    fn wire2api(self) -> EnumWithItemMixedTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync>
+    for *mut wire_enum_with_item_mixed_twin_sync
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<EnumWithItemMixedTwinSync>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<EnumWithItemStructTwinNormal> for *mut wire_enum_with_item_struct_twin_normal {
-    fn wire2api(self) -> EnumWithItemStructTwinNormal {
+impl Wire2Api<crate::api::enumeration::EnumWithItemStructTwinNormal>
+    for *mut wire_enum_with_item_struct_twin_normal
+{
+    fn wire2api(self) -> crate::api::enumeration::EnumWithItemStructTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<EnumWithItemStructTwinNormal>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::enumeration::EnumWithItemStructTwinNormal>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<EnumWithItemStructTwinSync> for *mut wire_enum_with_item_struct_twin_sync {
-    fn wire2api(self) -> EnumWithItemStructTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync>
+    for *mut wire_enum_with_item_struct_twin_sync
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<EnumWithItemStructTwinSync>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<EnumWithItemTupleTwinNormal> for *mut wire_enum_with_item_tuple_twin_normal {
-    fn wire2api(self) -> EnumWithItemTupleTwinNormal {
+impl Wire2Api<crate::api::enumeration::EnumWithItemTupleTwinNormal>
+    for *mut wire_enum_with_item_tuple_twin_normal
+{
+    fn wire2api(self) -> crate::api::enumeration::EnumWithItemTupleTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<EnumWithItemTupleTwinNormal>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::enumeration::EnumWithItemTupleTwinNormal>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<EnumWithItemTupleTwinSync> for *mut wire_enum_with_item_tuple_twin_sync {
-    fn wire2api(self) -> EnumWithItemTupleTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync>
+    for *mut wire_enum_with_item_tuple_twin_sync
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<EnumWithItemTupleTwinSync>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Event> for *mut wire_event {
-    fn wire2api(self) -> Event {
+impl Wire2Api<crate::api::event_listener::Event> for *mut wire_event {
+    fn wire2api(self) -> crate::api::event_listener::Event {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<Event>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::event_listener::Event>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<ExoticOptionals> for *mut wire_exotic_optionals {
-    fn wire2api(self) -> ExoticOptionals {
+impl Wire2Api<crate::api::optional::ExoticOptionals> for *mut wire_exotic_optionals {
+    fn wire2api(self) -> crate::api::optional::ExoticOptionals {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<ExoticOptionals>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::optional::ExoticOptionals>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<f32> for *mut f32 {
@@ -379,22 +417,22 @@ impl Wire2Api<f64> for *mut f64 {
         unsafe { *flutter_rust_bridge::support::box_from_leak_ptr(self) }
     }
 }
-impl Wire2Api<FeatureChrono> for *mut wire_feature_chrono {
-    fn wire2api(self) -> FeatureChrono {
+impl Wire2Api<crate::api::chrono_type::FeatureChrono> for *mut wire_feature_chrono {
+    fn wire2api(self) -> crate::api::chrono_type::FeatureChrono {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<FeatureChrono>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::chrono_type::FeatureChrono>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<FeatureUuid> for *mut wire_feature_uuid {
-    fn wire2api(self) -> FeatureUuid {
+impl Wire2Api<crate::api::uuid_type::FeatureUuid> for *mut wire_feature_uuid {
+    fn wire2api(self) -> crate::api::uuid_type::FeatureUuid {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<FeatureUuid>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::uuid_type::FeatureUuid>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<FeedId> for *mut wire_feed_id {
-    fn wire2api(self) -> FeedId {
+impl Wire2Api<crate::api::array::FeedId> for *mut wire_feed_id {
+    fn wire2api(self) -> crate::api::array::FeedId {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<FeedId>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::array::FeedId>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<i16> for *mut i16 {
@@ -417,70 +455,70 @@ impl Wire2Api<i8> for *mut i8 {
         unsafe { *flutter_rust_bridge::support::box_from_leak_ptr(self) }
     }
 }
-impl Wire2Api<MacroStruct> for *mut wire_macro_struct {
-    fn wire2api(self) -> MacroStruct {
+impl Wire2Api<crate::api::inside_macro::MacroStruct> for *mut wire_macro_struct {
+    fn wire2api(self) -> crate::api::inside_macro::MacroStruct {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<MacroStruct>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::inside_macro::MacroStruct>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Measure> for *mut wire_measure {
-    fn wire2api(self) -> Measure {
+impl Wire2Api<crate::api::enumeration::Measure> for *mut wire_measure {
+    fn wire2api(self) -> crate::api::enumeration::Measure {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<Measure>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::enumeration::Measure>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<MessageId> for *mut wire_message_id {
-    fn wire2api(self) -> MessageId {
+impl Wire2Api<crate::api::array::MessageId> for *mut wire_message_id {
+    fn wire2api(self) -> crate::api::array::MessageId {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<MessageId>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::array::MessageId>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<MyNestedStruct> for *mut wire_my_nested_struct {
-    fn wire2api(self) -> MyNestedStruct {
+impl Wire2Api<crate::api::misc_example::MyNestedStruct> for *mut wire_my_nested_struct {
+    fn wire2api(self) -> crate::api::misc_example::MyNestedStruct {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<MyNestedStruct>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::misc_example::MyNestedStruct>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<MyStruct> for *mut wire_my_struct {
-    fn wire2api(self) -> MyStruct {
+impl Wire2Api<crate::auxiliary::sample_types::MyStruct> for *mut wire_my_struct {
+    fn wire2api(self) -> crate::auxiliary::sample_types::MyStruct {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<MyStruct>::wire2api(*wrap).into()
+        Wire2Api::<crate::auxiliary::sample_types::MyStruct>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<MyTreeNode> for *mut wire_my_tree_node {
-    fn wire2api(self) -> MyTreeNode {
+impl Wire2Api<crate::api::misc_example::MyTreeNode> for *mut wire_my_tree_node {
+    fn wire2api(self) -> crate::api::misc_example::MyTreeNode {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<MyTreeNode>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::misc_example::MyTreeNode>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<NewTypeInt> for *mut wire_new_type_int {
-    fn wire2api(self) -> NewTypeInt {
+impl Wire2Api<crate::api::newtype_pattern::NewTypeInt> for *mut wire_new_type_int {
+    fn wire2api(self) -> crate::api::newtype_pattern::NewTypeInt {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<NewTypeInt>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::newtype_pattern::NewTypeInt>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Note> for *mut wire_note {
-    fn wire2api(self) -> Note {
+impl Wire2Api<crate::api::enumeration::Note> for *mut wire_note {
+    fn wire2api(self) -> crate::api::enumeration::Note {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<Note>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::enumeration::Note>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Numbers> for *mut wire_numbers {
-    fn wire2api(self) -> Numbers {
+impl Wire2Api<crate::api::mirror::Numbers> for *mut wire_numbers {
+    fn wire2api(self) -> crate::api::mirror::Numbers {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<Numbers>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::mirror::Numbers>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<OpaqueNested> for *mut wire_opaque_nested {
-    fn wire2api(self) -> OpaqueNested {
+impl Wire2Api<crate::api::rust_opaque::OpaqueNested> for *mut wire_opaque_nested {
+    fn wire2api(self) -> crate::api::rust_opaque::OpaqueNested {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<OpaqueNested>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::rust_opaque::OpaqueNested>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<OptVecs> for *mut wire_opt_vecs {
-    fn wire2api(self) -> OptVecs {
+impl Wire2Api<crate::api::optional::OptVecs> for *mut wire_opt_vecs {
+    fn wire2api(self) -> crate::api::optional::OptVecs {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<OptVecs>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::optional::OptVecs>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<(String, i32)> for *mut wire_record_string_i_32 {
@@ -489,104 +527,134 @@ impl Wire2Api<(String, i32)> for *mut wire_record_string_i_32 {
         Wire2Api::<(String, i32)>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Sequences> for *mut wire_sequences {
-    fn wire2api(self) -> Sequences {
+impl Wire2Api<crate::api::mirror::Sequences> for *mut wire_sequences {
+    fn wire2api(self) -> crate::api::mirror::Sequences {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<Sequences>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::mirror::Sequences>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<StructWithCommentsTwinNormal> for *mut wire_struct_with_comments_twin_normal {
-    fn wire2api(self) -> StructWithCommentsTwinNormal {
+impl Wire2Api<crate::api::comment::StructWithCommentsTwinNormal>
+    for *mut wire_struct_with_comments_twin_normal
+{
+    fn wire2api(self) -> crate::api::comment::StructWithCommentsTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<StructWithCommentsTwinNormal>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::comment::StructWithCommentsTwinNormal>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<StructWithCommentsTwinSync> for *mut wire_struct_with_comments_twin_sync {
-    fn wire2api(self) -> StructWithCommentsTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync>
+    for *mut wire_struct_with_comments_twin_sync
+{
+    fn wire2api(self) -> crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<StructWithCommentsTwinSync>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<StructWithEnum> for *mut wire_struct_with_enum {
-    fn wire2api(self) -> StructWithEnum {
+impl Wire2Api<crate::api::misc_example::StructWithEnum> for *mut wire_struct_with_enum {
+    fn wire2api(self) -> crate::api::misc_example::StructWithEnum {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<StructWithEnum>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::misc_example::StructWithEnum>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<StructWithOneFieldTwinNormal> for *mut wire_struct_with_one_field_twin_normal {
-    fn wire2api(self) -> StructWithOneFieldTwinNormal {
+impl Wire2Api<crate::api::structure::StructWithOneFieldTwinNormal>
+    for *mut wire_struct_with_one_field_twin_normal
+{
+    fn wire2api(self) -> crate::api::structure::StructWithOneFieldTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<StructWithOneFieldTwinNormal>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::structure::StructWithOneFieldTwinNormal>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<StructWithOneFieldTwinSync> for *mut wire_struct_with_one_field_twin_sync {
-    fn wire2api(self) -> StructWithOneFieldTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::structure_twin_sync::StructWithOneFieldTwinSync>
+    for *mut wire_struct_with_one_field_twin_sync
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::structure_twin_sync::StructWithOneFieldTwinSync {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<StructWithOneFieldTwinSync>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::pseudo_manual::structure_twin_sync::StructWithOneFieldTwinSync>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<StructWithTwoFieldTwinNormal> for *mut wire_struct_with_two_field_twin_normal {
-    fn wire2api(self) -> StructWithTwoFieldTwinNormal {
+impl Wire2Api<crate::api::structure::StructWithTwoFieldTwinNormal>
+    for *mut wire_struct_with_two_field_twin_normal
+{
+    fn wire2api(self) -> crate::api::structure::StructWithTwoFieldTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<StructWithTwoFieldTwinNormal>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::structure::StructWithTwoFieldTwinNormal>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<StructWithTwoFieldTwinSync> for *mut wire_struct_with_two_field_twin_sync {
-    fn wire2api(self) -> StructWithTwoFieldTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFieldTwinSync>
+    for *mut wire_struct_with_two_field_twin_sync
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFieldTwinSync {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<StructWithTwoFieldTwinSync>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFieldTwinSync>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<StructWithZeroFieldTwinNormal> for *mut wire_struct_with_zero_field_twin_normal {
-    fn wire2api(self) -> StructWithZeroFieldTwinNormal {
+impl Wire2Api<crate::api::structure::StructWithZeroFieldTwinNormal>
+    for *mut wire_struct_with_zero_field_twin_normal
+{
+    fn wire2api(self) -> crate::api::structure::StructWithZeroFieldTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<StructWithZeroFieldTwinNormal>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::structure::StructWithZeroFieldTwinNormal>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<StructWithZeroFieldTwinSync> for *mut wire_struct_with_zero_field_twin_sync {
-    fn wire2api(self) -> StructWithZeroFieldTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync>
+    for *mut wire_struct_with_zero_field_twin_sync
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<StructWithZeroFieldTwinSync>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<SumWith> for *mut wire_sum_with {
-    fn wire2api(self) -> SumWith {
+impl Wire2Api<crate::api::method::SumWith> for *mut wire_sum_with {
+    fn wire2api(self) -> crate::api::method::SumWith {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<SumWith>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::method::SumWith>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<TestId> for *mut wire_test_id {
-    fn wire2api(self) -> TestId {
+impl Wire2Api<crate::api::array::TestId> for *mut wire_test_id {
+    fn wire2api(self) -> crate::api::array::TestId {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<TestId>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::array::TestId>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<TupleStructWithOneFieldTwinNormal>
+impl Wire2Api<crate::api::structure::TupleStructWithOneFieldTwinNormal>
     for *mut wire_tuple_struct_with_one_field_twin_normal
 {
-    fn wire2api(self) -> TupleStructWithOneFieldTwinNormal {
+    fn wire2api(self) -> crate::api::structure::TupleStructWithOneFieldTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<TupleStructWithOneFieldTwinNormal>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::structure::TupleStructWithOneFieldTwinNormal>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<TupleStructWithOneFieldTwinSync> for *mut wire_tuple_struct_with_one_field_twin_sync {
-    fn wire2api(self) -> TupleStructWithOneFieldTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync>
+    for *mut wire_tuple_struct_with_one_field_twin_sync
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<TupleStructWithOneFieldTwinSync>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<TupleStructWithTwoFieldTwinNormal>
+impl Wire2Api<crate::api::structure::TupleStructWithTwoFieldTwinNormal>
     for *mut wire_tuple_struct_with_two_field_twin_normal
 {
-    fn wire2api(self) -> TupleStructWithTwoFieldTwinNormal {
+    fn wire2api(self) -> crate::api::structure::TupleStructWithTwoFieldTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<TupleStructWithTwoFieldTwinNormal>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::structure::TupleStructWithTwoFieldTwinNormal>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<TupleStructWithTwoFieldTwinSync> for *mut wire_tuple_struct_with_two_field_twin_sync {
-    fn wire2api(self) -> TupleStructWithTwoFieldTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwoFieldTwinSync>
+    for *mut wire_tuple_struct_with_two_field_twin_sync
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwoFieldTwinSync {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<TupleStructWithTwoFieldTwinSync>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwoFieldTwinSync>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<u16> for *mut u16 {
@@ -609,22 +677,22 @@ impl Wire2Api<u8> for *mut u8 {
         unsafe { *flutter_rust_bridge::support::box_from_leak_ptr(self) }
     }
 }
-impl Wire2Api<UserId> for *mut wire_user_id {
-    fn wire2api(self) -> UserId {
+impl Wire2Api<crate::api::attribute::UserId> for *mut wire_user_id {
+    fn wire2api(self) -> crate::api::attribute::UserId {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<UserId>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::attribute::UserId>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Weekdays> for *mut i32 {
-    fn wire2api(self) -> Weekdays {
+impl Wire2Api<crate::api::misc_example::Weekdays> for *mut i32 {
+    fn wire2api(self) -> crate::api::misc_example::Weekdays {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<Weekdays>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::misc_example::Weekdays>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Box<Blob>> for *mut wire_blob {
-    fn wire2api(self) -> Box<Blob> {
+impl Wire2Api<Box<crate::api::array::Blob>> for *mut wire_blob {
+    fn wire2api(self) -> Box<crate::api::array::Blob> {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<Blob>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::array::Blob>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<Box<bool>> for *mut bool {
@@ -632,16 +700,16 @@ impl Wire2Api<Box<bool>> for *mut bool {
         unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) }
     }
 }
-impl Wire2Api<Box<Distance>> for *mut wire_distance {
-    fn wire2api(self) -> Box<Distance> {
+impl Wire2Api<Box<crate::api::enumeration::Distance>> for *mut wire_distance {
+    fn wire2api(self) -> Box<crate::api::enumeration::Distance> {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<Distance>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::enumeration::Distance>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Box<ExoticOptionals>> for *mut wire_exotic_optionals {
-    fn wire2api(self) -> Box<ExoticOptionals> {
+impl Wire2Api<Box<crate::api::optional::ExoticOptionals>> for *mut wire_exotic_optionals {
+    fn wire2api(self) -> Box<crate::api::optional::ExoticOptionals> {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<ExoticOptionals>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::optional::ExoticOptionals>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<Box<f64>> for *mut f64 {
@@ -664,10 +732,10 @@ impl Wire2Api<Box<i8>> for *mut i8 {
         unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) }
     }
 }
-impl Wire2Api<Box<Speed>> for *mut wire_speed {
-    fn wire2api(self) -> Box<Speed> {
+impl Wire2Api<Box<crate::api::enumeration::Speed>> for *mut wire_speed {
+    fn wire2api(self) -> Box<crate::api::enumeration::Speed> {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<Speed>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::enumeration::Speed>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<Box<u8>> for *mut u8 {
@@ -680,28 +748,30 @@ impl Wire2Api<Box<[u8; 1600]>> for *mut wire_list_prim_u_8 {
         Wire2Api::<[u8; 1600]>::wire2api(self).into()
     }
 }
-impl Wire2Api<Box<Weekdays>> for *mut i32 {
-    fn wire2api(self) -> Box<Weekdays> {
+impl Wire2Api<Box<crate::api::misc_example::Weekdays>> for *mut i32 {
+    fn wire2api(self) -> Box<crate::api::misc_example::Weekdays> {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<Weekdays>::wire2api(*wrap).into()
+        Wire2Api::<crate::api::misc_example::Weekdays>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<C> for wire_c {
-    fn wire2api(self) -> C {
-        C {
+impl Wire2Api<crate::api::misc_example::C> for wire_c {
+    fn wire2api(self) -> crate::api::misc_example::C {
+        crate::api::misc_example::C {
             c: self.c.wire2api(),
         }
     }
 }
-impl Wire2Api<ConcatenateWith> for wire_concatenate_with {
-    fn wire2api(self) -> ConcatenateWith {
-        ConcatenateWith {
+impl Wire2Api<crate::api::method::ConcatenateWith> for wire_concatenate_with {
+    fn wire2api(self) -> crate::api::method::ConcatenateWith {
+        crate::api::method::ConcatenateWith {
             a: self.a.wire2api(),
         }
     }
 }
-impl Wire2Api<CustomNestedErrorInnerTwinNormal> for wire_custom_nested_error_inner_twin_normal {
-    fn wire2api(self) -> CustomNestedErrorInnerTwinNormal {
+impl Wire2Api<crate::api::exception::CustomNestedErrorInnerTwinNormal>
+    for wire_custom_nested_error_inner_twin_normal
+{
+    fn wire2api(self) -> crate::api::exception::CustomNestedErrorInnerTwinNormal {
         match self.tag {
             0 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
@@ -717,8 +787,12 @@ impl Wire2Api<CustomNestedErrorInnerTwinNormal> for wire_custom_nested_error_inn
         }
     }
 }
-impl Wire2Api<CustomNestedErrorInnerTwinSync> for wire_custom_nested_error_inner_twin_sync {
-    fn wire2api(self) -> CustomNestedErrorInnerTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync>
+    for wire_custom_nested_error_inner_twin_sync
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync {
         match self.tag {
             0 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
@@ -734,8 +808,10 @@ impl Wire2Api<CustomNestedErrorInnerTwinSync> for wire_custom_nested_error_inner
         }
     }
 }
-impl Wire2Api<CustomNestedErrorOuterTwinNormal> for wire_custom_nested_error_outer_twin_normal {
-    fn wire2api(self) -> CustomNestedErrorOuterTwinNormal {
+impl Wire2Api<crate::api::exception::CustomNestedErrorOuterTwinNormal>
+    for wire_custom_nested_error_outer_twin_normal
+{
+    fn wire2api(self) -> crate::api::exception::CustomNestedErrorOuterTwinNormal {
         match self.tag {
             0 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
@@ -751,8 +827,12 @@ impl Wire2Api<CustomNestedErrorOuterTwinNormal> for wire_custom_nested_error_out
         }
     }
 }
-impl Wire2Api<CustomNestedErrorOuterTwinSync> for wire_custom_nested_error_outer_twin_sync {
-    fn wire2api(self) -> CustomNestedErrorOuterTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync>
+    for wire_custom_nested_error_outer_twin_sync
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync {
         match self.tag {
             0 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
@@ -768,38 +848,42 @@ impl Wire2Api<CustomNestedErrorOuterTwinSync> for wire_custom_nested_error_outer
         }
     }
 }
-impl Wire2Api<CustomStructErrorTwinNormal> for wire_custom_struct_error_twin_normal {
-    fn wire2api(self) -> CustomStructErrorTwinNormal {
-        CustomStructErrorTwinNormal {
+impl Wire2Api<crate::api::exception::CustomStructErrorTwinNormal>
+    for wire_custom_struct_error_twin_normal
+{
+    fn wire2api(self) -> crate::api::exception::CustomStructErrorTwinNormal {
+        crate::api::exception::CustomStructErrorTwinNormal {
             a: self.a.wire2api(),
         }
     }
 }
-impl Wire2Api<CustomStructErrorTwinSync> for wire_custom_struct_error_twin_sync {
-    fn wire2api(self) -> CustomStructErrorTwinSync {
-        CustomStructErrorTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorTwinSync>
+    for wire_custom_struct_error_twin_sync
+{
+    fn wire2api(self) -> crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorTwinSync {
+        crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorTwinSync {
             a: self.a.wire2api(),
         }
     }
 }
-impl Wire2Api<Customized> for wire_customized {
-    fn wire2api(self) -> Customized {
-        Customized {
+impl Wire2Api<crate::api::attribute::Customized> for wire_customized {
+    fn wire2api(self) -> crate::api::attribute::Customized {
+        crate::api::attribute::Customized {
             final_field: self.final_field.wire2api(),
             non_final_field: self.non_final_field.wire2api(),
         }
     }
 }
-impl Wire2Api<DartOpaqueNested> for wire_dart_opaque_nested {
-    fn wire2api(self) -> DartOpaqueNested {
-        DartOpaqueNested {
+impl Wire2Api<crate::api::dart_opaque::DartOpaqueNested> for wire_dart_opaque_nested {
+    fn wire2api(self) -> crate::api::dart_opaque::DartOpaqueNested {
+        crate::api::dart_opaque::DartOpaqueNested {
             first: self.first.wire2api(),
             second: self.second.wire2api(),
         }
     }
 }
-impl Wire2Api<Distance> for wire_distance {
-    fn wire2api(self) -> Distance {
+impl Wire2Api<crate::api::enumeration::Distance> for wire_distance {
+    fn wire2api(self) -> crate::api::enumeration::Distance {
         match self.tag {
             0 => Distance::Unknown,
             1 => unsafe {
@@ -811,8 +895,8 @@ impl Wire2Api<Distance> for wire_distance {
         }
     }
 }
-impl Wire2Api<EnumDartOpaque> for wire_enum_dart_opaque {
-    fn wire2api(self) -> EnumDartOpaque {
+impl Wire2Api<crate::api::dart_opaque::EnumDartOpaque> for wire_enum_dart_opaque {
+    fn wire2api(self) -> crate::api::dart_opaque::EnumDartOpaque {
         match self.tag {
             0 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
@@ -828,8 +912,8 @@ impl Wire2Api<EnumDartOpaque> for wire_enum_dart_opaque {
         }
     }
 }
-impl Wire2Api<EnumOpaque> for wire_enum_opaque {
-    fn wire2api(self) -> EnumOpaque {
+impl Wire2Api<crate::api::rust_opaque::EnumOpaque> for wire_enum_opaque {
+    fn wire2api(self) -> crate::api::rust_opaque::EnumOpaque {
         match self.tag {
             0 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
@@ -860,8 +944,10 @@ impl Wire2Api<EnumOpaque> for wire_enum_opaque {
         }
     }
 }
-impl Wire2Api<EnumWithItemMixedTwinNormal> for wire_enum_with_item_mixed_twin_normal {
-    fn wire2api(self) -> EnumWithItemMixedTwinNormal {
+impl Wire2Api<crate::api::enumeration::EnumWithItemMixedTwinNormal>
+    for wire_enum_with_item_mixed_twin_normal
+{
+    fn wire2api(self) -> crate::api::enumeration::EnumWithItemMixedTwinNormal {
         match self.tag {
             0 => EnumWithItemMixedTwinNormal::A,
             1 => unsafe {
@@ -880,8 +966,12 @@ impl Wire2Api<EnumWithItemMixedTwinNormal> for wire_enum_with_item_mixed_twin_no
         }
     }
 }
-impl Wire2Api<EnumWithItemMixedTwinSync> for wire_enum_with_item_mixed_twin_sync {
-    fn wire2api(self) -> EnumWithItemMixedTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync>
+    for wire_enum_with_item_mixed_twin_sync
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync {
         match self.tag {
             0 => EnumWithItemMixedTwinSync::A,
             1 => unsafe {
@@ -900,8 +990,10 @@ impl Wire2Api<EnumWithItemMixedTwinSync> for wire_enum_with_item_mixed_twin_sync
         }
     }
 }
-impl Wire2Api<EnumWithItemStructTwinNormal> for wire_enum_with_item_struct_twin_normal {
-    fn wire2api(self) -> EnumWithItemStructTwinNormal {
+impl Wire2Api<crate::api::enumeration::EnumWithItemStructTwinNormal>
+    for wire_enum_with_item_struct_twin_normal
+{
+    fn wire2api(self) -> crate::api::enumeration::EnumWithItemStructTwinNormal {
         match self.tag {
             0 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
@@ -921,8 +1013,12 @@ impl Wire2Api<EnumWithItemStructTwinNormal> for wire_enum_with_item_struct_twin_
         }
     }
 }
-impl Wire2Api<EnumWithItemStructTwinSync> for wire_enum_with_item_struct_twin_sync {
-    fn wire2api(self) -> EnumWithItemStructTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync>
+    for wire_enum_with_item_struct_twin_sync
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync {
         match self.tag {
             0 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
@@ -942,8 +1038,10 @@ impl Wire2Api<EnumWithItemStructTwinSync> for wire_enum_with_item_struct_twin_sy
         }
     }
 }
-impl Wire2Api<EnumWithItemTupleTwinNormal> for wire_enum_with_item_tuple_twin_normal {
-    fn wire2api(self) -> EnumWithItemTupleTwinNormal {
+impl Wire2Api<crate::api::enumeration::EnumWithItemTupleTwinNormal>
+    for wire_enum_with_item_tuple_twin_normal
+{
+    fn wire2api(self) -> crate::api::enumeration::EnumWithItemTupleTwinNormal {
         match self.tag {
             0 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
@@ -959,8 +1057,12 @@ impl Wire2Api<EnumWithItemTupleTwinNormal> for wire_enum_with_item_tuple_twin_no
         }
     }
 }
-impl Wire2Api<EnumWithItemTupleTwinSync> for wire_enum_with_item_tuple_twin_sync {
-    fn wire2api(self) -> EnumWithItemTupleTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync>
+    for wire_enum_with_item_tuple_twin_sync
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync {
         match self.tag {
             0 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
@@ -976,17 +1078,17 @@ impl Wire2Api<EnumWithItemTupleTwinSync> for wire_enum_with_item_tuple_twin_sync
         }
     }
 }
-impl Wire2Api<Event> for wire_event {
-    fn wire2api(self) -> Event {
-        Event {
+impl Wire2Api<crate::api::event_listener::Event> for wire_event {
+    fn wire2api(self) -> crate::api::event_listener::Event {
+        crate::api::event_listener::Event {
             address: self.address.wire2api(),
             payload: self.payload.wire2api(),
         }
     }
 }
-impl Wire2Api<ExoticOptionals> for wire_exotic_optionals {
-    fn wire2api(self) -> ExoticOptionals {
-        ExoticOptionals {
+impl Wire2Api<crate::api::optional::ExoticOptionals> for wire_exotic_optionals {
+    fn wire2api(self) -> crate::api::optional::ExoticOptionals {
+        crate::api::optional::ExoticOptionals {
             int32: self.int32.wire2api(),
             int64: self.int64.wire2api(),
             float64: self.float64.wire2api(),
@@ -1010,9 +1112,9 @@ impl Wire2Api<[f64; 16]> for *mut wire_list_prim_f_64 {
         flutter_rust_bridge::support::from_vec_to_array(vec)
     }
 }
-impl Wire2Api<FeatureChrono> for wire_feature_chrono {
-    fn wire2api(self) -> FeatureChrono {
-        FeatureChrono {
+impl Wire2Api<crate::api::chrono_type::FeatureChrono> for wire_feature_chrono {
+    fn wire2api(self) -> crate::api::chrono_type::FeatureChrono {
+        crate::api::chrono_type::FeatureChrono {
             utc: self.utc.wire2api(),
             local: self.local.wire2api(),
             duration: self.duration.wire2api(),
@@ -1020,17 +1122,17 @@ impl Wire2Api<FeatureChrono> for wire_feature_chrono {
         }
     }
 }
-impl Wire2Api<FeatureUuid> for wire_feature_uuid {
-    fn wire2api(self) -> FeatureUuid {
-        FeatureUuid {
+impl Wire2Api<crate::api::uuid_type::FeatureUuid> for wire_feature_uuid {
+    fn wire2api(self) -> crate::api::uuid_type::FeatureUuid {
+        crate::api::uuid_type::FeatureUuid {
             one: self.one.wire2api(),
             many: self.many.wire2api(),
         }
     }
 }
-impl Wire2Api<FeedId> for wire_feed_id {
-    fn wire2api(self) -> FeedId {
-        FeedId(self.field0.wire2api())
+impl Wire2Api<crate::api::array::FeedId> for wire_feed_id {
+    fn wire2api(self) -> crate::api::array::FeedId {
+        crate::api::array::FeedId(self.field0.wire2api())
     }
 }
 impl Wire2Api<[i32; 2]> for *mut wire_list_prim_i_32 {
@@ -1048,8 +1150,10 @@ impl Wire2Api<Vec<DartOpaque>> for *mut wire_list_DartOpaque {
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
-impl Wire2Api<Vec<RustOpaque<HideData>>> for *mut wire_list_RustOpaque_hide_data {
-    fn wire2api(self) -> Vec<RustOpaque<HideData>> {
+impl Wire2Api<Vec<RustOpaque<crate::auxiliary::sample_types::HideData>>>
+    for *mut wire_list_RustOpaque_hide_data
+{
+    fn wire2api(self) -> Vec<RustOpaque<crate::auxiliary::sample_types::HideData>> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::support::box_from_leak_ptr(self);
             flutter_rust_bridge::support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -1057,8 +1161,8 @@ impl Wire2Api<Vec<RustOpaque<HideData>>> for *mut wire_list_RustOpaque_hide_data
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
-impl Wire2Api<Vec<ApplicationEnvVar>> for *mut wire_list_application_env_var {
-    fn wire2api(self) -> Vec<ApplicationEnvVar> {
+impl Wire2Api<Vec<crate::api::mirror::ApplicationEnvVar>> for *mut wire_list_application_env_var {
+    fn wire2api(self) -> Vec<crate::api::mirror::ApplicationEnvVar> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::support::box_from_leak_ptr(self);
             flutter_rust_bridge::support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -1066,8 +1170,8 @@ impl Wire2Api<Vec<ApplicationEnvVar>> for *mut wire_list_application_env_var {
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
-impl Wire2Api<Vec<Attribute>> for *mut wire_list_attribute {
-    fn wire2api(self) -> Vec<Attribute> {
+impl Wire2Api<Vec<crate::api::optional::Attribute>> for *mut wire_list_attribute {
+    fn wire2api(self) -> Vec<crate::api::optional::Attribute> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::support::box_from_leak_ptr(self);
             flutter_rust_bridge::support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -1084,8 +1188,8 @@ impl Wire2Api<Vec<bool>> for *mut wire_list_bool {
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
-impl Wire2Api<Vec<MySize>> for *mut wire_list_my_size {
-    fn wire2api(self) -> Vec<MySize> {
+impl Wire2Api<Vec<crate::auxiliary::sample_types::MySize>> for *mut wire_list_my_size {
+    fn wire2api(self) -> Vec<crate::auxiliary::sample_types::MySize> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::support::box_from_leak_ptr(self);
             flutter_rust_bridge::support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -1093,8 +1197,8 @@ impl Wire2Api<Vec<MySize>> for *mut wire_list_my_size {
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
-impl Wire2Api<Vec<MyTreeNode>> for *mut wire_list_my_tree_node {
-    fn wire2api(self) -> Vec<MyTreeNode> {
+impl Wire2Api<Vec<crate::api::misc_example::MyTreeNode>> for *mut wire_list_my_tree_node {
+    fn wire2api(self) -> Vec<crate::api::misc_example::MyTreeNode> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::support::box_from_leak_ptr(self);
             flutter_rust_bridge::support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -1111,8 +1215,10 @@ impl Wire2Api<Vec<Option<String>>> for *mut wire_list_opt_String {
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
-impl Wire2Api<Vec<Option<Attribute>>> for *mut wire_list_opt_box_autoadd_attribute {
-    fn wire2api(self) -> Vec<Option<Attribute>> {
+impl Wire2Api<Vec<Option<crate::api::optional::Attribute>>>
+    for *mut wire_list_opt_box_autoadd_attribute
+{
+    fn wire2api(self) -> Vec<Option<crate::api::optional::Attribute>> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::support::box_from_leak_ptr(self);
             flutter_rust_bridge::support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -1129,8 +1235,10 @@ impl Wire2Api<Vec<Option<i32>>> for *mut wire_list_opt_box_autoadd_i_32 {
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
-impl Wire2Api<Vec<Option<Weekdays>>> for *mut wire_list_opt_box_autoadd_weekdays {
-    fn wire2api(self) -> Vec<Option<Weekdays>> {
+impl Wire2Api<Vec<Option<crate::api::misc_example::Weekdays>>>
+    for *mut wire_list_opt_box_autoadd_weekdays
+{
+    fn wire2api(self) -> Vec<Option<crate::api::misc_example::Weekdays>> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::support::box_from_leak_ptr(self);
             flutter_rust_bridge::support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -1236,8 +1344,8 @@ impl Wire2Api<Vec<(String, i32)>> for *mut wire_list_record_string_i_32 {
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
-impl Wire2Api<Vec<TestId>> for *mut wire_list_test_id {
-    fn wire2api(self) -> Vec<TestId> {
+impl Wire2Api<Vec<crate::api::array::TestId>> for *mut wire_list_test_id {
+    fn wire2api(self) -> Vec<crate::api::array::TestId> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::support::box_from_leak_ptr(self);
             flutter_rust_bridge::support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -1245,8 +1353,8 @@ impl Wire2Api<Vec<TestId>> for *mut wire_list_test_id {
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
-impl Wire2Api<Vec<Weekdays>> for *mut wire_list_weekdays {
-    fn wire2api(self) -> Vec<Weekdays> {
+impl Wire2Api<Vec<crate::api::misc_example::Weekdays>> for *mut wire_list_weekdays {
+    fn wire2api(self) -> Vec<crate::api::misc_example::Weekdays> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::support::box_from_leak_ptr(self);
             flutter_rust_bridge::support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -1254,15 +1362,15 @@ impl Wire2Api<Vec<Weekdays>> for *mut wire_list_weekdays {
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
-impl Wire2Api<MacroStruct> for wire_macro_struct {
-    fn wire2api(self) -> MacroStruct {
-        MacroStruct {
+impl Wire2Api<crate::api::inside_macro::MacroStruct> for wire_macro_struct {
+    fn wire2api(self) -> crate::api::inside_macro::MacroStruct {
+        crate::api::inside_macro::MacroStruct {
             data: self.data.wire2api(),
         }
     }
 }
-impl Wire2Api<Measure> for wire_measure {
-    fn wire2api(self) -> Measure {
+impl Wire2Api<crate::api::enumeration::Measure> for wire_measure {
+    fn wire2api(self) -> crate::api::enumeration::Measure {
         match self.tag {
             0 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
@@ -1278,37 +1386,37 @@ impl Wire2Api<Measure> for wire_measure {
         }
     }
 }
-impl Wire2Api<MessageId> for wire_message_id {
-    fn wire2api(self) -> MessageId {
-        MessageId(self.field0.wire2api())
+impl Wire2Api<crate::api::array::MessageId> for wire_message_id {
+    fn wire2api(self) -> crate::api::array::MessageId {
+        crate::api::array::MessageId(self.field0.wire2api())
     }
 }
-impl Wire2Api<MyNestedStruct> for wire_my_nested_struct {
-    fn wire2api(self) -> MyNestedStruct {
-        MyNestedStruct {
+impl Wire2Api<crate::api::misc_example::MyNestedStruct> for wire_my_nested_struct {
+    fn wire2api(self) -> crate::api::misc_example::MyNestedStruct {
+        crate::api::misc_example::MyNestedStruct {
             tree_node: self.tree_node.wire2api(),
             weekday: self.weekday.wire2api(),
         }
     }
 }
-impl Wire2Api<MySize> for wire_my_size {
-    fn wire2api(self) -> MySize {
-        MySize {
+impl Wire2Api<crate::auxiliary::sample_types::MySize> for wire_my_size {
+    fn wire2api(self) -> crate::auxiliary::sample_types::MySize {
+        crate::auxiliary::sample_types::MySize {
             width: self.width.wire2api(),
             height: self.height.wire2api(),
         }
     }
 }
-impl Wire2Api<MyStruct> for wire_my_struct {
-    fn wire2api(self) -> MyStruct {
-        MyStruct {
+impl Wire2Api<crate::auxiliary::sample_types::MyStruct> for wire_my_struct {
+    fn wire2api(self) -> crate::auxiliary::sample_types::MyStruct {
+        crate::auxiliary::sample_types::MyStruct {
             content: self.content.wire2api(),
         }
     }
 }
-impl Wire2Api<MyTreeNode> for wire_my_tree_node {
-    fn wire2api(self) -> MyTreeNode {
-        MyTreeNode {
+impl Wire2Api<crate::api::misc_example::MyTreeNode> for wire_my_tree_node {
+    fn wire2api(self) -> crate::api::misc_example::MyTreeNode {
+        crate::api::misc_example::MyTreeNode {
             value_i32: self.value_i32.wire2api(),
             value_vec_u8: self.value_vec_u8.wire2api(),
             value_boolean: self.value_boolean.wire2api(),
@@ -1316,35 +1424,35 @@ impl Wire2Api<MyTreeNode> for wire_my_tree_node {
         }
     }
 }
-impl Wire2Api<NewTypeInt> for wire_new_type_int {
-    fn wire2api(self) -> NewTypeInt {
-        NewTypeInt(self.field0.wire2api())
+impl Wire2Api<crate::api::newtype_pattern::NewTypeInt> for wire_new_type_int {
+    fn wire2api(self) -> crate::api::newtype_pattern::NewTypeInt {
+        crate::api::newtype_pattern::NewTypeInt(self.field0.wire2api())
     }
 }
-impl Wire2Api<Note> for wire_note {
-    fn wire2api(self) -> Note {
-        Note {
+impl Wire2Api<crate::api::enumeration::Note> for wire_note {
+    fn wire2api(self) -> crate::api::enumeration::Note {
+        crate::api::enumeration::Note {
             day: self.day.wire2api(),
             body: self.body.wire2api(),
         }
     }
 }
-impl Wire2Api<Numbers> for wire_numbers {
-    fn wire2api(self) -> Numbers {
-        Numbers(self.field0.wire2api())
+impl Wire2Api<crate::api::mirror::Numbers> for wire_numbers {
+    fn wire2api(self) -> crate::api::mirror::Numbers {
+        crate::api::mirror::Numbers(self.field0.wire2api())
     }
 }
-impl Wire2Api<OpaqueNested> for wire_opaque_nested {
-    fn wire2api(self) -> OpaqueNested {
-        OpaqueNested {
+impl Wire2Api<crate::api::rust_opaque::OpaqueNested> for wire_opaque_nested {
+    fn wire2api(self) -> crate::api::rust_opaque::OpaqueNested {
+        crate::api::rust_opaque::OpaqueNested {
             first: self.first.wire2api(),
             second: self.second.wire2api(),
         }
     }
 }
-impl Wire2Api<OptVecs> for wire_opt_vecs {
-    fn wire2api(self) -> OptVecs {
-        OptVecs {
+impl Wire2Api<crate::api::optional::OptVecs> for wire_opt_vecs {
+    fn wire2api(self) -> crate::api::optional::OptVecs {
+        crate::api::optional::OptVecs {
             i32: self.i32.wire2api(),
             enums: self.enums.wire2api(),
             strings: self.strings.wire2api(),
@@ -1357,13 +1465,13 @@ impl Wire2Api<(String, i32)> for wire_record_string_i_32 {
         (self.field0.wire2api(), self.field1.wire2api())
     }
 }
-impl Wire2Api<Sequences> for wire_sequences {
-    fn wire2api(self) -> Sequences {
-        Sequences(self.field0.wire2api())
+impl Wire2Api<crate::api::mirror::Sequences> for wire_sequences {
+    fn wire2api(self) -> crate::api::mirror::Sequences {
+        crate::api::mirror::Sequences(self.field0.wire2api())
     }
 }
-impl Wire2Api<Speed> for wire_speed {
-    fn wire2api(self) -> Speed {
+impl Wire2Api<crate::api::enumeration::Speed> for wire_speed {
+    fn wire2api(self) -> crate::api::enumeration::Speed {
         match self.tag {
             0 => Speed::Unknown,
             1 => unsafe {
@@ -1375,104 +1483,146 @@ impl Wire2Api<Speed> for wire_speed {
         }
     }
 }
-impl Wire2Api<StructWithCommentsTwinNormal> for wire_struct_with_comments_twin_normal {
-    fn wire2api(self) -> StructWithCommentsTwinNormal {
-        StructWithCommentsTwinNormal {
+impl Wire2Api<crate::api::comment::StructWithCommentsTwinNormal>
+    for wire_struct_with_comments_twin_normal
+{
+    fn wire2api(self) -> crate::api::comment::StructWithCommentsTwinNormal {
+        crate::api::comment::StructWithCommentsTwinNormal {
             field_with_comments: self.field_with_comments.wire2api(),
         }
     }
 }
-impl Wire2Api<StructWithCommentsTwinSync> for wire_struct_with_comments_twin_sync {
-    fn wire2api(self) -> StructWithCommentsTwinSync {
-        StructWithCommentsTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync>
+    for wire_struct_with_comments_twin_sync
+{
+    fn wire2api(self) -> crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync {
+        crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync {
             field_with_comments: self.field_with_comments.wire2api(),
         }
     }
 }
-impl Wire2Api<StructWithEnum> for wire_struct_with_enum {
-    fn wire2api(self) -> StructWithEnum {
-        StructWithEnum {
+impl Wire2Api<crate::api::misc_example::StructWithEnum> for wire_struct_with_enum {
+    fn wire2api(self) -> crate::api::misc_example::StructWithEnum {
+        crate::api::misc_example::StructWithEnum {
             abc1: self.abc1.wire2api(),
             abc2: self.abc2.wire2api(),
         }
     }
 }
-impl Wire2Api<StructWithOneFieldTwinNormal> for wire_struct_with_one_field_twin_normal {
-    fn wire2api(self) -> StructWithOneFieldTwinNormal {
-        StructWithOneFieldTwinNormal {
+impl Wire2Api<crate::api::structure::StructWithOneFieldTwinNormal>
+    for wire_struct_with_one_field_twin_normal
+{
+    fn wire2api(self) -> crate::api::structure::StructWithOneFieldTwinNormal {
+        crate::api::structure::StructWithOneFieldTwinNormal {
             a: self.a.wire2api(),
         }
     }
 }
-impl Wire2Api<StructWithOneFieldTwinSync> for wire_struct_with_one_field_twin_sync {
-    fn wire2api(self) -> StructWithOneFieldTwinSync {
-        StructWithOneFieldTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::structure_twin_sync::StructWithOneFieldTwinSync>
+    for wire_struct_with_one_field_twin_sync
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::structure_twin_sync::StructWithOneFieldTwinSync {
+        crate::api::pseudo_manual::structure_twin_sync::StructWithOneFieldTwinSync {
             a: self.a.wire2api(),
         }
     }
 }
-impl Wire2Api<StructWithTwoFieldTwinNormal> for wire_struct_with_two_field_twin_normal {
-    fn wire2api(self) -> StructWithTwoFieldTwinNormal {
-        StructWithTwoFieldTwinNormal {
+impl Wire2Api<crate::api::structure::StructWithTwoFieldTwinNormal>
+    for wire_struct_with_two_field_twin_normal
+{
+    fn wire2api(self) -> crate::api::structure::StructWithTwoFieldTwinNormal {
+        crate::api::structure::StructWithTwoFieldTwinNormal {
             a: self.a.wire2api(),
             b: self.b.wire2api(),
         }
     }
 }
-impl Wire2Api<StructWithTwoFieldTwinSync> for wire_struct_with_two_field_twin_sync {
-    fn wire2api(self) -> StructWithTwoFieldTwinSync {
-        StructWithTwoFieldTwinSync {
+impl Wire2Api<crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFieldTwinSync>
+    for wire_struct_with_two_field_twin_sync
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFieldTwinSync {
+        crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFieldTwinSync {
             a: self.a.wire2api(),
             b: self.b.wire2api(),
         }
     }
 }
-impl Wire2Api<StructWithZeroFieldTwinNormal> for wire_struct_with_zero_field_twin_normal {
-    fn wire2api(self) -> StructWithZeroFieldTwinNormal {
-        StructWithZeroFieldTwinNormal {}
+impl Wire2Api<crate::api::structure::StructWithZeroFieldTwinNormal>
+    for wire_struct_with_zero_field_twin_normal
+{
+    fn wire2api(self) -> crate::api::structure::StructWithZeroFieldTwinNormal {
+        crate::api::structure::StructWithZeroFieldTwinNormal {}
     }
 }
-impl Wire2Api<StructWithZeroFieldTwinSync> for wire_struct_with_zero_field_twin_sync {
-    fn wire2api(self) -> StructWithZeroFieldTwinSync {
-        StructWithZeroFieldTwinSync {}
+impl Wire2Api<crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync>
+    for wire_struct_with_zero_field_twin_sync
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync {
+        crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync {}
     }
 }
-impl Wire2Api<SumWith> for wire_sum_with {
-    fn wire2api(self) -> SumWith {
-        SumWith {
+impl Wire2Api<crate::api::method::SumWith> for wire_sum_with {
+    fn wire2api(self) -> crate::api::method::SumWith {
+        crate::api::method::SumWith {
             x: self.x.wire2api(),
         }
     }
 }
-impl Wire2Api<TestId> for wire_test_id {
-    fn wire2api(self) -> TestId {
-        TestId(self.field0.wire2api())
+impl Wire2Api<crate::api::array::TestId> for wire_test_id {
+    fn wire2api(self) -> crate::api::array::TestId {
+        crate::api::array::TestId(self.field0.wire2api())
     }
 }
-impl Wire2Api<[TestId; 4]> for *mut wire_list_test_id {
-    fn wire2api(self) -> [TestId; 4] {
-        let vec: Vec<TestId> = self.wire2api();
+impl Wire2Api<[crate::api::array::TestId; 4]> for *mut wire_list_test_id {
+    fn wire2api(self) -> [crate::api::array::TestId; 4] {
+        let vec: Vec<crate::api::array::TestId> = self.wire2api();
         flutter_rust_bridge::support::from_vec_to_array(vec)
     }
 }
-impl Wire2Api<TupleStructWithOneFieldTwinNormal> for wire_tuple_struct_with_one_field_twin_normal {
-    fn wire2api(self) -> TupleStructWithOneFieldTwinNormal {
-        TupleStructWithOneFieldTwinNormal(self.field0.wire2api())
+impl Wire2Api<crate::api::structure::TupleStructWithOneFieldTwinNormal>
+    for wire_tuple_struct_with_one_field_twin_normal
+{
+    fn wire2api(self) -> crate::api::structure::TupleStructWithOneFieldTwinNormal {
+        crate::api::structure::TupleStructWithOneFieldTwinNormal(self.field0.wire2api())
     }
 }
-impl Wire2Api<TupleStructWithOneFieldTwinSync> for wire_tuple_struct_with_one_field_twin_sync {
-    fn wire2api(self) -> TupleStructWithOneFieldTwinSync {
-        TupleStructWithOneFieldTwinSync(self.field0.wire2api())
+impl Wire2Api<crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync>
+    for wire_tuple_struct_with_one_field_twin_sync
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync {
+        crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync(
+            self.field0.wire2api(),
+        )
     }
 }
-impl Wire2Api<TupleStructWithTwoFieldTwinNormal> for wire_tuple_struct_with_two_field_twin_normal {
-    fn wire2api(self) -> TupleStructWithTwoFieldTwinNormal {
-        TupleStructWithTwoFieldTwinNormal(self.field0.wire2api(), self.field1.wire2api())
+impl Wire2Api<crate::api::structure::TupleStructWithTwoFieldTwinNormal>
+    for wire_tuple_struct_with_two_field_twin_normal
+{
+    fn wire2api(self) -> crate::api::structure::TupleStructWithTwoFieldTwinNormal {
+        crate::api::structure::TupleStructWithTwoFieldTwinNormal(
+            self.field0.wire2api(),
+            self.field1.wire2api(),
+        )
     }
 }
-impl Wire2Api<TupleStructWithTwoFieldTwinSync> for wire_tuple_struct_with_two_field_twin_sync {
-    fn wire2api(self) -> TupleStructWithTwoFieldTwinSync {
-        TupleStructWithTwoFieldTwinSync(self.field0.wire2api(), self.field1.wire2api())
+impl Wire2Api<crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwoFieldTwinSync>
+    for wire_tuple_struct_with_two_field_twin_sync
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwoFieldTwinSync {
+        crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwoFieldTwinSync(
+            self.field0.wire2api(),
+            self.field1.wire2api(),
+        )
     }
 }
 impl Wire2Api<[u8; 1600]> for *mut wire_list_prim_u_8 {
@@ -1493,9 +1643,9 @@ impl Wire2Api<[u8; 8]> for *mut wire_list_prim_u_8 {
         flutter_rust_bridge::support::from_vec_to_array(vec)
     }
 }
-impl Wire2Api<UserId> for wire_user_id {
-    fn wire2api(self) -> UserId {
-        UserId {
+impl Wire2Api<crate::api::attribute::UserId> for wire_user_id {
+    fn wire2api(self) -> crate::api::attribute::UserId {
+        crate::api::attribute::UserId {
             value: self.value.wire2api(),
         }
     }
@@ -5670,7 +5820,9 @@ pub extern "C" fn share_opaque_RustOpaque_box_dynDartDebug(
 #[no_mangle]
 pub extern "C" fn drop_opaque_RustOpaque_frb_opaque_return(ptr: *const std::ffi::c_void) {
     unsafe {
-        std::sync::Arc::<FrbOpaqueReturn>::decrement_strong_count(ptr as _);
+        std::sync::Arc::<crate::auxiliary::sample_types::FrbOpaqueReturn>::decrement_strong_count(
+            ptr as _,
+        );
     }
 }
 
@@ -5679,7 +5831,9 @@ pub extern "C" fn share_opaque_RustOpaque_frb_opaque_return(
     ptr: *const std::ffi::c_void,
 ) -> *const std::ffi::c_void {
     unsafe {
-        std::sync::Arc::<FrbOpaqueReturn>::increment_strong_count(ptr as _);
+        std::sync::Arc::<crate::auxiliary::sample_types::FrbOpaqueReturn>::increment_strong_count(
+            ptr as _,
+        );
         ptr
     }
 }
@@ -5687,7 +5841,7 @@ pub extern "C" fn share_opaque_RustOpaque_frb_opaque_return(
 #[no_mangle]
 pub extern "C" fn drop_opaque_RustOpaque_frb_opaque_sync_return(ptr: *const std::ffi::c_void) {
     unsafe {
-        std::sync::Arc::<FrbOpaqueSyncReturn>::decrement_strong_count(ptr as _);
+        std::sync::Arc::<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>::decrement_strong_count(ptr as _);
     }
 }
 
@@ -5696,7 +5850,7 @@ pub extern "C" fn share_opaque_RustOpaque_frb_opaque_sync_return(
     ptr: *const std::ffi::c_void,
 ) -> *const std::ffi::c_void {
     unsafe {
-        std::sync::Arc::<FrbOpaqueSyncReturn>::increment_strong_count(ptr as _);
+        std::sync::Arc::<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>::increment_strong_count(ptr as _);
         ptr
     }
 }
@@ -5704,7 +5858,9 @@ pub extern "C" fn share_opaque_RustOpaque_frb_opaque_sync_return(
 #[no_mangle]
 pub extern "C" fn drop_opaque_RustOpaque_hide_data(ptr: *const std::ffi::c_void) {
     unsafe {
-        std::sync::Arc::<HideData>::decrement_strong_count(ptr as _);
+        std::sync::Arc::<crate::auxiliary::sample_types::HideData>::decrement_strong_count(
+            ptr as _,
+        );
     }
 }
 
@@ -5713,7 +5869,9 @@ pub extern "C" fn share_opaque_RustOpaque_hide_data(
     ptr: *const std::ffi::c_void,
 ) -> *const std::ffi::c_void {
     unsafe {
-        std::sync::Arc::<HideData>::increment_strong_count(ptr as _);
+        std::sync::Arc::<crate::auxiliary::sample_types::HideData>::increment_strong_count(
+            ptr as _,
+        );
         ptr
     }
 }
@@ -5738,7 +5896,9 @@ pub extern "C" fn share_opaque_RustOpaque_i_32(
 #[no_mangle]
 pub extern "C" fn drop_opaque_RustOpaque_non_send_hide_data(ptr: *const std::ffi::c_void) {
     unsafe {
-        std::sync::Arc::<NonSendHideData>::decrement_strong_count(ptr as _);
+        std::sync::Arc::<crate::auxiliary::sample_types::NonSendHideData>::decrement_strong_count(
+            ptr as _,
+        );
     }
 }
 
@@ -5747,7 +5907,9 @@ pub extern "C" fn share_opaque_RustOpaque_non_send_hide_data(
     ptr: *const std::ffi::c_void,
 ) -> *const std::ffi::c_void {
     unsafe {
-        std::sync::Arc::<NonSendHideData>::increment_strong_count(ptr as _);
+        std::sync::Arc::<crate::auxiliary::sample_types::NonSendHideData>::increment_strong_count(
+            ptr as _,
+        );
         ptr
     }
 }
