@@ -81,15 +81,17 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
     }
 
     fn generate_related_funcs(&self) -> Acc<WireRustOutputCode> {
+        let param_ptr = ExternFuncParam {
+            name: "ptr".to_owned(),
+            rust_type: "*const std::ffi::c_void".to_owned(),
+            dart_type: "TODO_TheDartType".into(),
+        };
+
         let generate_impl = |target| -> WireRustOutputCode {
             vec![
                 ExternFunc {
                     func_name: format!("drop_opaque_{}", self.ir.safe_ident()),
-                    params: vec![ExternFuncParam {
-                        name: "ptr".to_owned(),
-                        rust_type: "*const std::ffi::c_void".to_owned(),
-                        dart_type: "TODO_TheDartType".into(),
-                    }],
+                    params: vec![param_ptr.clone()],
                     return_type: None,
                     body: format!(
                         "unsafe {{std::sync::Arc::<{}>::decrement_strong_count(ptr as _);}}",
@@ -99,11 +101,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
                 },
                 ExternFunc {
                     func_name: format!("share_opaque_{}", self.ir.safe_ident()),
-                    params: vec![ExternFuncParam {
-                        name: "ptr".to_owned(),
-                        rust_type: "*const std::ffi::c_void".to_owned(),
-                        dart_type: "TODO_TheDartType".into(),
-                    }],
+                    params: vec![param_ptr.clone()],
                     return_type: Some("*const std::ffi::c_void".to_string()),
                     body: format!(
                         "unsafe {{std::sync::Arc::<{}>::increment_strong_count(ptr as _); ptr}}",
