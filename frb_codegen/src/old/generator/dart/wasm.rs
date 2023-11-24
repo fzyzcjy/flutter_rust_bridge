@@ -5,21 +5,6 @@ pub fn generate_wasm_wire<'a>(
     dart_wire_class_name: &str,
     dart_wasm_module_name: &str,
 ) -> String {
-    format!(
-        "class {cls} extends FlutterRustBridgeWasmWireBase<{wasm}> {{
-            {cls}(FutureOr<WasmModule> module) : super(WasmModule.cast<{wasm}>(module));
-            
-            {}
-        }}
-        ",
-        funcs
-            .into_iter()
-            .map(generate_wasm_wire_func_method)
-            .collect_vec()
-            .join("\n\n"),
-        cls = dart_wire_class_name,
-        wasm = dart_wasm_module_name,
-    )
 }
 
 pub fn push_wasm_module(
