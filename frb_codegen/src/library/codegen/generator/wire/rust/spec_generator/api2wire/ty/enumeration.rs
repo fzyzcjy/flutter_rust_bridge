@@ -1,13 +1,14 @@
 use crate::codegen::generator::wire::rust::spec_generator::api2wire::misc::generate_impl_into_into_dart;
 use crate::codegen::generator::wire::rust::spec_generator::api2wire::ty::WireRustGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
+use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::enumeration::IrVariantKind;
 use crate::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireRustGeneratorApi2wireTrait for EnumRefWireRustGenerator<'a> {
-    fn intodart_type(&self, ir_pack: &IrPack) -> String {
+    fn intodart_type(&self, ir_pack: &IrPack) -> NamespacedName {
         match &self.ir.get(ir_pack).wrapper_name {
             Some(wrapper) => wrapper.name.clone(),
             None => self.ir.rust_api_type(),

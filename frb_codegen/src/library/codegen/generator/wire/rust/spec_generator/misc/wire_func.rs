@@ -204,7 +204,9 @@ fn generate_handler_func_name(
             let output = if matches!(func.mode, IrFuncMode::Stream { .. }) {
                 "()".to_owned()
             } else {
-                WireRustGenerator::new(func.output.clone(), context).intodart_type(ir_pack)
+                WireRustGenerator::new(func.output.clone(), context)
+                    .intodart_type(ir_pack)
+                    .rust_style()
             };
             format!("wrap::<_,_,_,{output},_>")
         }
