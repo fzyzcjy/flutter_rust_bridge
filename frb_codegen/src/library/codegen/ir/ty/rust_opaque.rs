@@ -22,7 +22,9 @@ impl IrTypeRustOpaque {
 }
 
 impl IrTypeTrait for IrTypeRustOpaque {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, _f: &mut F, _ir_pack: &IrPack) {}
+    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_pack: &IrPack) {
+        self.inner.visit_types(f, ir_pack);
+    }
 
     fn safe_ident(&self) -> String {
         format!("RustOpaque_{}", self.inner.safe_ident())
