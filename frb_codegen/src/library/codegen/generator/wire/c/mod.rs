@@ -25,7 +25,7 @@ pub(crate) fn generate(
         extern_struct_names,
         rust_output_texts,
     )?;
-    dumper.dump(ConfigDumpContent::Spec, "spec_wire_c.json", &spec)?;
+    dumper.dump(ConfigDumpContent::Spec, "spec/wire_c.json", &spec)?;
     let text = text_generator::generate(spec)?;
     Ok(GeneratorWireCOutput {
         output_texts: PathTexts(vec![PathText::new(
