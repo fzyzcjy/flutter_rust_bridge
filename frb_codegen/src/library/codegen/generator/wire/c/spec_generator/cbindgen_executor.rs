@@ -24,8 +24,7 @@ pub(crate) fn execute(
         // TODO will try to avoid manually specify exclude_symbols by using `pub(crate)` instead of `pub`
         // exclude_symbols: generated_rust.get_exclude_symbols(all_symbols),
         exclude_symbols: vec![],
-        after_includes: "typedef struct DartCObject *WireSyncReturn;\n".to_owned()
-            + "typedef int64_t MessagePort;\n",
+        after_includes: "typedef struct DartCObject *WireSyncReturn;\n".to_owned(),
     })?;
 
     drop(changed_file_handles); // do not drop too early
