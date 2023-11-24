@@ -6,10 +6,9 @@ use crate::library::commands::ffigen::{
 use crate::utils::path_utils::path_to_string;
 use convert_case::{Case, Casing};
 use log::info;
-use serde_json::json;
 use std::collections::HashMap;
+use std::env;
 use std::path::{Path, PathBuf};
-use std::{env, fs};
 
 pub fn generate() -> anyhow::Result<()> {
     let repo_base_dir = compute_repo_base_dir()?;

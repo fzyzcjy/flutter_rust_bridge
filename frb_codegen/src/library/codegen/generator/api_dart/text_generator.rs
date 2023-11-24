@@ -1,5 +1,4 @@
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
-use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
 use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
 use crate::codegen::generator::api_dart::spec_generator::{
     ApiDartOutputSpec, ApiDartOutputSpecItem,
@@ -8,7 +7,6 @@ use crate::codegen::generator::misc::{PathText, PathTexts};
 use crate::codegen::ir::namespace::Namespace;
 use crate::utils::basic_code::DartBasicHeaderCode;
 use itertools::Itertools;
-use std::collections::HashSet;
 use std::path::{Path, PathBuf};
 
 pub(super) struct ApiDartOutputText {

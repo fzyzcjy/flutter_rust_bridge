@@ -1,4 +1,3 @@
-use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::parser::type_parser::misc::convert_ident_str;
 use std::collections::HashMap;
 use syn::Type;

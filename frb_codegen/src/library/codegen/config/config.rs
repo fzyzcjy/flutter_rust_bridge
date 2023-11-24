@@ -1,5 +1,4 @@
 use crate::codegen::dumper::internal_config::ConfigDumpContent;
-use clap::ValueEnum;
 use serde::{Deserialize, Serialize};
 
 /// Configuration for code generation

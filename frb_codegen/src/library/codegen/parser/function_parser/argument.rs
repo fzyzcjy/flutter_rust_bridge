@@ -12,7 +12,6 @@ use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::TypeParserParsingContext;
 use crate::if_then_some;
 use anyhow::{bail, ensure, Context};
-use syn::punctuated::Punctuated;
 use syn::*;
 
 impl<'a, 'b> FunctionParser<'a, 'b> {

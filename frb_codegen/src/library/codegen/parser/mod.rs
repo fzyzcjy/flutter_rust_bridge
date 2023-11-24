@@ -116,7 +116,6 @@ fn read_files(
 #[cfg(test)]
 mod tests {
     use crate::codegen::config::internal_config::RustInputPathPack;
-    use crate::codegen::dumper::internal_config::DumperInternalConfig;
     use crate::codegen::dumper::Dumper;
     use crate::codegen::parser::internal_config::ParserInternalConfig;
     use crate::codegen::parser::parse;

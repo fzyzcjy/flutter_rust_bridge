@@ -5,7 +5,6 @@ use crate::codegen::parser::source_graph::modules::{
     Enum, Module, ModuleInfo, ModuleScope, ModuleSource, Struct, StructOrEnum, TypeAlias,
     Visibility,
 };
-use crate::codegen::parser::type_parser::misc::convert_ident_str;
 use crate::utils::path_utils::{find_rust_crate_dir, path_to_string};
 use anyhow::Context;
 use itertools::Itertools;

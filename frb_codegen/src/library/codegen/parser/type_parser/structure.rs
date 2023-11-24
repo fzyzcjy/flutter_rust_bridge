@@ -10,12 +10,10 @@ use crate::codegen::parser::type_parser::enum_or_struct::{
     EnumOrStructParser, EnumOrStructParserInfo,
 };
 use crate::codegen::parser::type_parser::misc::parse_comments;
-use crate::codegen::parser::type_parser::unencodable::{
-    parse_path_type_to_unencodable, SplayedSegment,
-};
+use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use std::collections::HashMap;
-use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, Ident, ItemStruct, TypePath};
+use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, ItemStruct, TypePath};
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_struct(

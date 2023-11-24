@@ -1,20 +1,11 @@
-use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::ty::delegate::IrTypeDelegate;
-use crate::codegen::ir::ty::optional::IrTypeOptional;
 use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
 use crate::codegen::ir::ty::IrType;
-use crate::codegen::ir::ty::IrType::{
-    Boxed, DartOpaque, Delegate, Dynamic, EnumRef, GeneralList, Optional, OptionalList, Primitive,
-    PrimitiveList, Record, RustOpaque, StructRef, Unencodable,
-};
+use crate::codegen::ir::ty::IrType::RustOpaque;
 use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::library::codegen::ir::ty::IrTypeTrait;
-use anyhow::bail;
-use quote::ToTokens;
 use std::collections::HashMap;
-use syn::TypePath;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_rust_opaque(

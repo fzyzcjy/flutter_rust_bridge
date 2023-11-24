@@ -5,13 +5,9 @@ mod text_generator;
 use crate::codegen::dumper::internal_config::ConfigDumpContent;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
-use crate::codegen::generator::api_dart::text_generator::ApiDartOutputText;
-use crate::codegen::generator::misc::{PathText, PathTexts};
-use crate::codegen::ir::namespace::Namespace;
+use crate::codegen::generator::misc::PathTexts;
 use crate::codegen::ir::pack::IrPack;
 use anyhow::Result;
-use itertools::Itertools;
-use std::path::{Path, PathBuf};
 
 pub(crate) struct GeneratorApiDartOutput {
     pub output_texts: PathTexts,

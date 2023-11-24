@@ -1,9 +1,6 @@
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
-use convert_case::{Case, Casing};
-use lazy_static::lazy_static;
-use regex::Regex;
 
 crate::ir! {
 pub struct IrTypeRustOpaque {

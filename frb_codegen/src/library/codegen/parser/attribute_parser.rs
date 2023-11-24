@@ -324,7 +324,7 @@ mod tests {
         FrbAttribute, FrbAttributeDefaultValue, FrbAttributeMirror, FrbAttributes, NamedOption,
     };
     use quote::quote;
-    use syn::{Attribute, ItemFn};
+    use syn::ItemFn;
 
     #[test]
     fn test_empty() -> anyhow::Result<()> {

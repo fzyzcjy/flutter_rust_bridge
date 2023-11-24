@@ -14,7 +14,7 @@ pub(crate) mod ty;
 pub(crate) mod unencodable;
 pub(crate) mod vec;
 
-use crate::codegen::ir::namespace::{Namespace, NamespacedName};
+use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::{IrEnumPool, IrStructPool};
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumIdent};
 use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent};
@@ -22,7 +22,7 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::source_graph::modules::{Enum, Struct};
 use crate::codegen::parser::type_parser::enum_or_struct::EnumOrStructParserInfo;
 use crate::codegen::parser::type_parser::rust_opaque::RustOpaqueParserInfo;
-use std::collections::{HashMap, HashSet};
+use std::collections::HashMap;
 use syn::Type;
 
 pub(crate) struct TypeParser<'a> {

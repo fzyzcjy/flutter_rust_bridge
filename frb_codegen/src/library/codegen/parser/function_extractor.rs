@@ -1,5 +1,4 @@
 use crate::if_then_some;
-use anyhow::Context;
 use itertools::Itertools;
 use quote::__private::Span;
 use std::path::PathBuf;

@@ -2,7 +2,6 @@ use crate::codegen::config::internal_config::GeneratorInternalConfig;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::misc::PathTexts;
 use crate::codegen::ir::pack::IrPack;
-use std::os::unix::process::parent_id;
 
 pub(crate) mod acc;
 pub(crate) mod api_dart;

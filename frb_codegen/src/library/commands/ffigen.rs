@@ -5,7 +5,6 @@ use crate::utils::path_utils::path_to_string;
 use anyhow::bail;
 use log::debug;
 use serde::{Deserialize, Serialize};
-use serde_json::json;
 use std::fs;
 use std::io::Write;
 use std::path::{Path, PathBuf};

@@ -1,7 +1,7 @@
 use clap::ValueEnum;
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
-use strum_macros::{Display, EnumIter, ToString};
+use strum_macros::{Display, EnumIter};
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Default)]
 pub(crate) struct DumperInternalConfig {

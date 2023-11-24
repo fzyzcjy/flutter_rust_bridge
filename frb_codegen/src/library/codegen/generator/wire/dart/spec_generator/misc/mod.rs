@@ -7,9 +7,7 @@ use crate::codegen::generator::wire::dart::spec_generator::base::{
 };
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
-use crate::codegen::ir::ty::IrType;
-use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
+use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::library::codegen::generator::wire::dart::spec_generator::misc::ty::WireDartGeneratorMiscTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;
 use crate::utils::path_utils::path_to_string;

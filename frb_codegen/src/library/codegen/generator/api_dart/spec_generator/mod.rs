@@ -9,16 +9,14 @@ use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGenera
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_imports_which_types_and_funcs_use;
 use crate::codegen::ir::func::{IrFunc, IrFuncOwnerInfo};
 use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::pack::{DistinctTypeGatherer, IrPack, IrPackComputedCache};
+use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ConfigDumpContent;
 use crate::library::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;
-use crate::utils::path_utils::path_to_string;
-use anyhow::{Context, Result};
+use anyhow::Result;
 use itertools::Itertools;
-use pathdiff::diff_paths;
 use serde::Serialize;
 use std::collections::{HashMap, HashSet};
 use ConfigDumpContent::GeneratorInfo;

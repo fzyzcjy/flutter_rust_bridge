@@ -1,6 +1,6 @@
 use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::namespace::{Namespace, NamespacedName};
+use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::IrType;
 

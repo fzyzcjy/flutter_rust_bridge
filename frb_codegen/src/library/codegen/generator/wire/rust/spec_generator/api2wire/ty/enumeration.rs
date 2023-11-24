@@ -3,7 +3,7 @@ use crate::codegen::generator::wire::rust::spec_generator::api2wire::ty::WireRus
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::pack::IrPack;
-use crate::codegen::ir::ty::enumeration::{IrEnum, IrVariantKind};
+use crate::codegen::ir::ty::enumeration::IrVariantKind;
 use crate::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 

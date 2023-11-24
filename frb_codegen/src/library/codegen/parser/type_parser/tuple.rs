@@ -1,6 +1,6 @@
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::ident::IrIdent;
-use crate::codegen::ir::namespace::{Namespace, NamespacedName};
+use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::record::IrTypeRecord;
 use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent, IrTypeStructRef};

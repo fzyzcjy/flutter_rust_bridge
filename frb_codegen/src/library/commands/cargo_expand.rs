@@ -3,12 +3,10 @@ use crate::codegen::ConfigDumpContent;
 use crate::library::commands::command_runner::execute_command;
 use anyhow::{bail, Context, Result};
 use itertools::Itertools;
-use lazy_static::lazy_static;
 use log::{info, warn};
 use std::collections::hash_map::Entry::{Occupied, Vacant};
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
-use std::sync::Mutex;
 use std::{env, fs};
 
 #[derive(Default)]

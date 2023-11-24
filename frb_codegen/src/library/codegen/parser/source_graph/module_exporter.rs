@@ -1,4 +1,3 @@
-use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::parser::source_graph::modules::{Enum, Module, Struct};
 use log::warn;
 use std::collections::HashMap;
@@ -41,7 +40,7 @@ impl Module {
                 if let Some(old_value) = ans.get(&key) {
                     warn!("Same key={key} has multiple values: {old_value:?} (thrown away) and {value:?} (used)");
                 }
-                let old_value = ans.insert(key, value);
+                let _old_value = ans.insert(key, value);
             }
         });
         ans

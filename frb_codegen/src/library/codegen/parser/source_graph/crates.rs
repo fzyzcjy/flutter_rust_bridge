@@ -3,7 +3,7 @@ use crate::codegen::parser::reader::CachedRustReader;
 use crate::codegen::parser::source_graph::modules::{Module, ModuleInfo, ModuleSource, Visibility};
 use crate::library::commands::cargo_metadata::execute_cargo_metadata;
 use anyhow::{bail, Context};
-use cargo_metadata::{Metadata, MetadataCommand, Package};
+use cargo_metadata::Package;
 use log::debug;
 use std::fs;
 use std::path::{Path, PathBuf};

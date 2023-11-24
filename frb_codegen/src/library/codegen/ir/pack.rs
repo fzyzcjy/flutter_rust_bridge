@@ -1,7 +1,5 @@
 use crate::codegen::ir::func::IrFunc;
-use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumIdent};
-use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
 use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent};
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::ir::ty::IrTypeTrait;

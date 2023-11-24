@@ -10,7 +10,6 @@ use crate::codegen::generator::api_dart::spec_generator::misc::{
 };
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::pack::IrPack;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;
 use convert_case::{Case, Casing};

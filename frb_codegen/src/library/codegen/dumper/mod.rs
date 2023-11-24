@@ -1,17 +1,12 @@
-use crate::codegen::config::internal_config::InternalConfig;
 use crate::codegen::dumper::internal_config::{ConfigDumpContent, DumperInternalConfig};
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::api_dart::spec_generator::ApiDartOutputSpec;
 use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::misc::PathTexts;
-use crate::codegen::ir::pack::IrPack;
-use crate::codegen::Config;
 use crate::utils::file_utils::create_dir_all_and_write;
 use crate::utils::path_utils::path_to_string;
 use convert_case::{Case, Casing};
 use log::info;
 use serde::Serialize;
-use std::fs;
 use std::path::Path;
 use strum::IntoEnumIterator;
 
