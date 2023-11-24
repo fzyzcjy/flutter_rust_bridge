@@ -1,5 +1,6 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
+use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGenerator;
 use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::generator::wire::rust::spec_generator::base::{
     WireRustGenerator, WireRustGeneratorContext,
@@ -11,6 +12,7 @@ use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRust
 use crate::codegen::ir::func::IrFuncOwnerInfoMethodMode::Instance;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod};
 use crate::codegen::ir::pack::IrPack;
+use crate::library::codegen::generator::wire::dart::spec_generator::api2wire::ty::WireDartGeneratorApi2wireTrait;
 use crate::library::codegen::generator::wire::rust::spec_generator::api2wire::ty::WireRustGeneratorApi2wireTrait;
 use crate::library::codegen::generator::wire::rust::spec_generator::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
@@ -126,15 +128,17 @@ fn generate_params(func: &IrFunc, context: WireRustGeneratorContext) -> Acc<Vec<
                 },
                 TargetOrCommon::Io | TargetOrCommon::Wasm => {
                     let target: Target = target.try_into().unwrap();
-                    let field_generator = WireRustGenerator::new(field.ty.clone(), context);
+                    let rust_gen = WireRustGenerator::new(field.ty.clone(), context);
+                    let dart_gen =
+                        WireDartGenerator::new(field.ty.clone(), context.as_wire_dart_context());
                     ExternFuncParam {
                         name: name.clone(),
                         rust_type: format!(
                             "{}{}",
-                            field_generator.rust_wire_modifier(target),
-                            field_generator.rust_wire_type(target)
+                            rust_gen.rust_wire_modifier(target),
+                            rust_gen.rust_wire_type(target)
                         ),
-                        dart_type: None,
+                        dart_type: Some(dart_gen.dart_wire_type(target)),
                     }
                 }
             })
