@@ -93,14 +93,9 @@ fn generate_inner_func_params(
 fn generate_params(func: &IrFunc, context: WireRustGeneratorContext) -> Acc<Vec<ExternFuncParam>> {
     let mut params = if has_port_argument(func.mode) {
         Acc::new(|target| {
-            let rust_type = match target {
-                TargetOrCommon::Io => "i64",
-                TargetOrCommon::Common | TargetOrCommon::Wasm => "flutter_rust_bridge::MessagePort",
-            }
-            .to_owned();
             vec![ExternFuncParam {
                 name: "port_".to_owned(),
-                rust_type,
+                rust_type: "flutter_rust_bridge::MessagePort".to_owned(),
                 dart_type: None,
             }]
         })
