@@ -19,14 +19,14 @@ impl Wire2Api<Vec<chrono::NaiveDateTime>> for *mut wire_list_prim_i_64 {
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
-impl Wire2Api<DartOpaque> for wire_DartOpaque {
-    fn wire2api(self) -> DartOpaque {
+impl Wire2Api<flutter_rust_bridge::DartOpaque> for wire_DartOpaque {
+    fn wire2api(self) -> flutter_rust_bridge::DartOpaque {
         unsafe { DartOpaque::new(self.handle as _, self.port) }
     }
 }
-impl Wire2Api<[DartOpaque; 1]> for *mut wire_list_DartOpaque {
-    fn wire2api(self) -> [DartOpaque; 1] {
-        let vec: Vec<DartOpaque> = self.wire2api();
+impl Wire2Api<[flutter_rust_bridge::DartOpaque; 1]> for *mut wire_list_DartOpaque {
+    fn wire2api(self) -> [flutter_rust_bridge::DartOpaque; 1] {
+        let vec: Vec<flutter_rust_bridge::DartOpaque> = self.wire2api();
         flutter_rust_bridge::support::from_vec_to_array(vec)
     }
 }
@@ -211,10 +211,10 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for *mut i64 {
         Wire2Api::<chrono::DateTime<chrono::Utc>>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<DartOpaque> for *mut wire_DartOpaque {
-    fn wire2api(self) -> DartOpaque {
+impl Wire2Api<flutter_rust_bridge::DartOpaque> for *mut wire_DartOpaque {
+    fn wire2api(self) -> flutter_rust_bridge::DartOpaque {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<DartOpaque>::wire2api(*wrap).into()
+        Wire2Api::<flutter_rust_bridge::DartOpaque>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
@@ -898,7 +898,7 @@ impl Wire2Api<crate::api::dart_opaque::DartOpaqueNested> for wire_dart_opaque_ne
 impl Wire2Api<crate::api::enumeration::Distance> for wire_distance {
     fn wire2api(self) -> crate::api::enumeration::Distance {
         match self.tag {
-            0 => Distance::Unknown,
+            0 => crate::api::enumeration::Distance::Unknown,
             1 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.Map);
@@ -962,7 +962,7 @@ impl Wire2Api<crate::api::enumeration::EnumWithItemMixedTwinNormal>
 {
     fn wire2api(self) -> crate::api::enumeration::EnumWithItemMixedTwinNormal {
         match self.tag {
-            0 => EnumWithItemMixedTwinNormal::A,
+            0 => crate::api::enumeration::EnumWithItemMixedTwinNormal::A,
             1 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.B);
@@ -986,7 +986,7 @@ impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixe
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync {
         match self.tag {
-            0 => EnumWithItemMixedTwinSync::A,
+            0 => crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync::A,
             1 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.B);
@@ -1154,8 +1154,8 @@ impl Wire2Api<[i32; 2]> for *mut wire_list_prim_i_32 {
         flutter_rust_bridge::support::from_vec_to_array(vec)
     }
 }
-impl Wire2Api<Vec<DartOpaque>> for *mut wire_list_DartOpaque {
-    fn wire2api(self) -> Vec<DartOpaque> {
+impl Wire2Api<Vec<flutter_rust_bridge::DartOpaque>> for *mut wire_list_DartOpaque {
+    fn wire2api(self) -> Vec<flutter_rust_bridge::DartOpaque> {
         let vec = unsafe {
             let wrap = flutter_rust_bridge::support::box_from_leak_ptr(self);
             flutter_rust_bridge::support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -1488,7 +1488,7 @@ impl Wire2Api<crate::api::mirror::Sequences> for wire_sequences {
 impl Wire2Api<crate::api::enumeration::Speed> for wire_speed {
     fn wire2api(self) -> crate::api::enumeration::Speed {
         match self.tag {
-            0 => Speed::Unknown,
+            0 => crate::api::enumeration::Speed::Unknown,
             1 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.GPS);

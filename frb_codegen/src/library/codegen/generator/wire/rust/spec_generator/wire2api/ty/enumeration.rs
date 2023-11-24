@@ -199,7 +199,7 @@ fn generate_impl_wire2api_body_variant(
 ) -> String {
     match &variant.kind {
         IrVariantKind::Value => {
-            format!("{} => {}::{},", idx, enu.name.name, variant.name)
+            format!("{} => {}::{},", idx, enu.name.rust_style(), variant.name)
         }
         IrVariantKind::Struct(st) => {
             let fields = st

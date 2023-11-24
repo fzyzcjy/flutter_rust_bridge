@@ -27,8 +27,8 @@ impl Wire2Api<Vec<chrono::NaiveDateTime>> for Box<[i64]> {
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
-impl Wire2Api<DartOpaque> for JsValue {
-    fn wire2api(self) -> DartOpaque {
+impl Wire2Api<flutter_rust_bridge::DartOpaque> for JsValue {
+    fn wire2api(self) -> flutter_rust_bridge::DartOpaque {
         let arr = self.dyn_into::<JsArray>().unwrap();
         unsafe { DartOpaque::new(arr.get(0), arr.get(1)) }
     }
@@ -320,7 +320,7 @@ impl Wire2Api<crate::api::enumeration::Distance> for JsValue {
     fn wire2api(self) -> crate::api::enumeration::Distance {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
-            0 => Distance::Unknown,
+            0 => crate::api::enumeration::Distance::Unknown,
             1 => Distance::Map(self_.get(1).wire2api()),
             _ => unreachable!(),
         }
@@ -353,7 +353,7 @@ impl Wire2Api<crate::api::enumeration::EnumWithItemMixedTwinNormal> for JsValue 
     fn wire2api(self) -> crate::api::enumeration::EnumWithItemMixedTwinNormal {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
-            0 => EnumWithItemMixedTwinNormal::A,
+            0 => crate::api::enumeration::EnumWithItemMixedTwinNormal::A,
             1 => EnumWithItemMixedTwinNormal::B(self_.get(1).wire2api()),
             2 => EnumWithItemMixedTwinNormal::C {
                 c_field: self_.get(1).wire2api(),
@@ -370,7 +370,7 @@ impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixe
     ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
-            0 => EnumWithItemMixedTwinSync::A,
+            0 => crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync::A,
             1 => EnumWithItemMixedTwinSync::B(self_.get(1).wire2api()),
             2 => EnumWithItemMixedTwinSync::C {
                 c_field: self_.get(1).wire2api(),
@@ -533,8 +533,8 @@ impl Wire2Api<[i32; 2]> for Box<[i32]> {
         flutter_rust_bridge::support::from_vec_to_array(vec)
     }
 }
-impl Wire2Api<Vec<DartOpaque>> for JsValue {
-    fn wire2api(self) -> Vec<DartOpaque> {
+impl Wire2Api<Vec<flutter_rust_bridge::DartOpaque>> for JsValue {
+    fn wire2api(self) -> Vec<flutter_rust_bridge::DartOpaque> {
         self.dyn_into::<JsArray>()
             .unwrap()
             .iter()
@@ -953,7 +953,7 @@ impl Wire2Api<crate::api::enumeration::Speed> for JsValue {
     fn wire2api(self) -> crate::api::enumeration::Speed {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
-            0 => Speed::Unknown,
+            0 => crate::api::enumeration::Speed::Unknown,
             1 => Speed::GPS(self_.get(1).wire2api()),
             _ => unreachable!(),
         }
@@ -1258,9 +1258,9 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for JsValue {
         Wire2Api::<i64>::wire2api(self).wire2api()
     }
 }
-impl Wire2Api<[DartOpaque; 1]> for JsValue {
-    fn wire2api(self) -> [DartOpaque; 1] {
-        let vec: Vec<DartOpaque> = self.wire2api();
+impl Wire2Api<[flutter_rust_bridge::DartOpaque; 1]> for JsValue {
+    fn wire2api(self) -> [flutter_rust_bridge::DartOpaque; 1] {
+        let vec: Vec<flutter_rust_bridge::DartOpaque> = self.wire2api();
         flutter_rust_bridge::support::from_vec_to_array(vec)
     }
 }

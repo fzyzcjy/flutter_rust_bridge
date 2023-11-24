@@ -15,6 +15,6 @@ impl IrTypeTrait for IrTypeDartOpaque {
     }
 
     fn rust_api_type(&self) -> String {
-        "DartOpaque".to_owned()
+        "flutter_rust_bridge::DartOpaque".to_owned()
     }
 }

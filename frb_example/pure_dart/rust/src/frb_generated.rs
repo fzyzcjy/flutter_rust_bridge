@@ -479,7 +479,7 @@ fn wire_return_dart_dynamic_impl(port_: flutter_rust_bridge::MessagePort) {
 }
 fn wire_async_accept_dart_opaque_impl(
     port_: flutter_rust_bridge::MessagePort,
-    opaque: impl Wire2Api<DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
         flutter_rust_bridge::WrapInfo {
@@ -499,7 +499,7 @@ fn wire_async_accept_dart_opaque_impl(
 }
 fn wire_create_enum_dart_opaque_impl(
     port_: flutter_rust_bridge::MessagePort,
-    opaque: impl Wire2Api<DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::dart_opaque::EnumDartOpaque, _>(
         flutter_rust_bridge::WrapInfo {
@@ -517,8 +517,8 @@ fn wire_create_enum_dart_opaque_impl(
 }
 fn wire_create_nested_dart_opaque_impl(
     port_: flutter_rust_bridge::MessagePort,
-    opaque1: impl Wire2Api<DartOpaque> + core::panic::UnwindSafe,
-    opaque2: impl Wire2Api<DartOpaque> + core::panic::UnwindSafe,
+    opaque1: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    opaque2: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::dart_opaque::DartOpaqueNested, _>(
         flutter_rust_bridge::WrapInfo {
@@ -590,9 +590,9 @@ fn wire_get_nested_dart_opaque_impl(
 }
 fn wire_loop_back_impl(
     port_: flutter_rust_bridge::MessagePort,
-    opaque: impl Wire2Api<DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, DartOpaque, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, flutter_rust_bridge::DartOpaque, _>(
         flutter_rust_bridge::WrapInfo {
             debug_name: "loop_back",
             port: Some(port_),
@@ -606,9 +606,9 @@ fn wire_loop_back_impl(
 }
 fn wire_loop_back_array_impl(
     port_: flutter_rust_bridge::MessagePort,
-    opaque: impl Wire2Api<DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [DartOpaque; 1], _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [flutter_rust_bridge::DartOpaque; 1], _>(
         flutter_rust_bridge::WrapInfo {
             debug_name: "loop_back_array",
             port: Some(port_),
@@ -624,7 +624,7 @@ fn wire_loop_back_array_impl(
 }
 fn wire_loop_back_array_get_impl(
     port_: flutter_rust_bridge::MessagePort,
-    opaque: impl Wire2Api<[DartOpaque; 1]> + core::panic::UnwindSafe,
+    opaque: impl Wire2Api<[flutter_rust_bridge::DartOpaque; 1]> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         flutter_rust_bridge::WrapInfo {
@@ -642,9 +642,9 @@ fn wire_loop_back_array_get_impl(
 }
 fn wire_loop_back_option_impl(
     port_: flutter_rust_bridge::MessagePort,
-    opaque: impl Wire2Api<DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<DartOpaque>, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<flutter_rust_bridge::DartOpaque>, _>(
         flutter_rust_bridge::WrapInfo {
             debug_name: "loop_back_option",
             port: Some(port_),
@@ -660,7 +660,7 @@ fn wire_loop_back_option_impl(
 }
 fn wire_loop_back_option_get_impl(
     port_: flutter_rust_bridge::MessagePort,
-    opaque: impl Wire2Api<Option<DartOpaque>> + core::panic::UnwindSafe,
+    opaque: impl Wire2Api<Option<flutter_rust_bridge::DartOpaque>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         flutter_rust_bridge::WrapInfo {
@@ -678,9 +678,9 @@ fn wire_loop_back_option_get_impl(
 }
 fn wire_loop_back_vec_impl(
     port_: flutter_rust_bridge::MessagePort,
-    opaque: impl Wire2Api<DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<DartOpaque>, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<flutter_rust_bridge::DartOpaque>, _>(
         flutter_rust_bridge::WrapInfo {
             debug_name: "loop_back_vec",
             port: Some(port_),
@@ -696,7 +696,7 @@ fn wire_loop_back_vec_impl(
 }
 fn wire_loop_back_vec_get_impl(
     port_: flutter_rust_bridge::MessagePort,
-    opaque: impl Wire2Api<Vec<DartOpaque>> + core::panic::UnwindSafe,
+    opaque: impl Wire2Api<Vec<flutter_rust_bridge::DartOpaque>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         flutter_rust_bridge::WrapInfo {
@@ -714,7 +714,7 @@ fn wire_loop_back_vec_get_impl(
 }
 fn wire_panic_unwrap_dart_opaque_impl(
     port_: flutter_rust_bridge::MessagePort,
-    opaque: impl Wire2Api<DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         flutter_rust_bridge::WrapInfo {
@@ -734,7 +734,7 @@ fn wire_panic_unwrap_dart_opaque_impl(
 }
 fn wire_set_static_dart_opaque_impl(
     port_: flutter_rust_bridge::MessagePort,
-    opaque: impl Wire2Api<DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         flutter_rust_bridge::WrapInfo {
@@ -751,7 +751,7 @@ fn wire_set_static_dart_opaque_impl(
     )
 }
 fn wire_return_non_droppable_dart_opaque_impl(
-    opaque: impl Wire2Api<DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         flutter_rust_bridge::WrapInfo {
@@ -768,7 +768,7 @@ fn wire_return_non_droppable_dart_opaque_impl(
     )
 }
 fn wire_unwrap_dart_opaque_impl(
-    opaque: impl Wire2Api<DartOpaque> + core::panic::UnwindSafe,
+    opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         flutter_rust_bridge::WrapInfo {
