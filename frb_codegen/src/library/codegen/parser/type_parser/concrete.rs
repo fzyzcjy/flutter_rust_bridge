@@ -33,10 +33,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
             ("DartOpaque", None) => DartOpaque(IrTypeDartOpaque {}),
 
-            ("RustOpaque", Some(Generic([Delegate(IrTypeDelegate::Array(array_delegate))]))) => {
-                Delegate(IrTypeDelegate::Array(array_delegate.clone()))
-            }
-
             ("RustOpaque", Some(Generic([ty]))) => RustOpaque(IrTypeRustOpaque::new(
                 self.context.initiated_namespace.clone(),
                 ty.clone(),
