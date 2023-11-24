@@ -18,6 +18,8 @@
 
 // Section: imports
 
+use crate::api::rust_opaque;
+use crate::api::rust_opaque_sync;
 use flutter_rust_bridge::rust2dart::IntoIntoDart;
 use flutter_rust_bridge::Handler;
 
