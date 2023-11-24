@@ -34,7 +34,7 @@ pub(crate) fn generate(
             .map(|ty| WireRustGenerator::new(ty.clone(), context).generate_allocate_funcs())
             .collect(),
         related_funcs: cache
-            .distinct_output_types
+            .distinct_types
             .iter()
             .map(|ty| WireRustGenerator::new(ty.clone(), context).generate_related_funcs())
             .collect(),
