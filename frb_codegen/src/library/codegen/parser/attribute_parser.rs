@@ -329,6 +329,13 @@ mod tests {
     }
 
     #[test]
+    fn test_empty_bracket() -> anyhow::Result<()> {
+        let parsed = parse("#[frb()]")?;
+        assert_eq!(parsed.0, vec![]);
+        Ok(())
+    }
+
+    #[test]
     fn test_mirror() -> anyhow::Result<()> {
         let parsed = parse("#[frb(mirror(Apple, Orange))]")?;
         if let FrbAttribute::Mirror(FrbAttributeMirror(paths)) = &parsed.0[0] {
