@@ -3874,7 +3874,7 @@ impl flutter_rust_bridge::support::IntoDart for mirror_ApplicationSettings {
             self.0.version.into_into_dart().into_dart(),
             self.0.mode.into_into_dart().into_dart(),
             self.0.env.into_into_dart().into_dart(),
-            self.0.env_optional.into_dart(),
+            self.0.env_optional.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
@@ -4237,10 +4237,10 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::enumeration::Dista
 impl flutter_rust_bridge::support::IntoDart for crate::api::optional::Element {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
-            self.tag.into_dart(),
-            self.text.into_dart(),
-            self.attributes.into_dart(),
-            self.children.into_dart(),
+            self.tag.into_into_dart().into_dart(),
+            self.text.into_into_dart().into_dart(),
+            self.attributes.into_into_dart().into_dart(),
+            self.children.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
@@ -4276,11 +4276,11 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::dart_opaque::EnumD
 impl flutter_rust_bridge::support::IntoDart for crate::api::rust_opaque::EnumOpaque {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self {
-            Self::Struct(field0) => vec![0.into_dart(), field0.into_dart()],
-            Self::Primitive(field0) => vec![1.into_dart(), field0.into_dart()],
-            Self::TraitObj(field0) => vec![2.into_dart(), field0.into_dart()],
-            Self::Mutex(field0) => vec![3.into_dart(), field0.into_dart()],
-            Self::RwLock(field0) => vec![4.into_dart(), field0.into_dart()],
+            Self::Struct(field0) => vec![0.into_dart(), field0.into_into_dart().into_dart()],
+            Self::Primitive(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
+            Self::TraitObj(field0) => vec![2.into_dart(), field0.into_into_dart().into_dart()],
+            Self::Mutex(field0) => vec![3.into_dart(), field0.into_into_dart().into_dart()],
+            Self::RwLock(field0) => vec![4.into_dart(), field0.into_into_dart().into_dart()],
         }
         .into_dart()
     }
@@ -4511,20 +4511,20 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::event_listener::Ev
 impl flutter_rust_bridge::support::IntoDart for crate::api::optional::ExoticOptionals {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
-            self.int32.into_dart(),
-            self.int64.into_dart(),
-            self.float64.into_dart(),
-            self.boolean.into_dart(),
-            self.zerocopy.into_dart(),
-            self.int8list.into_dart(),
-            self.uint8list.into_dart(),
-            self.int32list.into_dart(),
-            self.float32list.into_dart(),
-            self.float64list.into_dart(),
-            self.attributes.into_dart(),
+            self.int32.into_into_dart().into_dart(),
+            self.int64.into_into_dart().into_dart(),
+            self.float64.into_into_dart().into_dart(),
+            self.boolean.into_into_dart().into_dart(),
+            self.zerocopy.into_into_dart().into_dart(),
+            self.int8list.into_into_dart().into_dart(),
+            self.uint8list.into_into_dart().into_dart(),
+            self.int32list.into_into_dart().into_dart(),
+            self.float32list.into_into_dart().into_dart(),
+            self.float64list.into_into_dart().into_dart(),
+            self.attributes.into_into_dart().into_dart(),
             self.attributes_nullable.into_into_dart().into_dart(),
-            self.nullable_attributes.into_dart(),
-            self.newtypeint.into_dart(),
+            self.nullable_attributes.into_into_dart().into_dart(),
+            self.newtypeint.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
@@ -4887,7 +4887,11 @@ impl
 }
 impl flutter_rust_bridge::support::IntoDart for crate::api::rust_opaque::OpaqueNested {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
-        vec![self.first.into_dart(), self.second.into_dart()].into_dart()
+        vec![
+            self.first.into_into_dart().into_dart(),
+            self.second.into_into_dart().into_dart(),
+        ]
+        .into_dart()
     }
 }
 impl flutter_rust_bridge::support::IntoDartExceptPrimitive
@@ -5190,9 +5194,9 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::method::SumWith>
 impl flutter_rust_bridge::support::IntoDart for crate::api::chrono_type::TestChrono {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
-            self.dt.into_dart(),
-            self.dt2.into_dart(),
-            self.du.into_dart(),
+            self.dt.into_into_dart().into_dart(),
+            self.dt2.into_into_dart().into_dart(),
+            self.du.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
