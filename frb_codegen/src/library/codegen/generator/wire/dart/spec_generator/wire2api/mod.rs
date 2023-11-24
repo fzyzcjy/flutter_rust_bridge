@@ -34,7 +34,7 @@ pub(crate) fn generate(
 
 fn generate_impl_wire2api(ty: &IrType, context: WireDartGeneratorContext) -> WireDartOutputCode {
     let body = WireDartGenerator::new(ty.clone(), context).generate_impl_wire2api_body();
-    format!(
+    let api_impl_body = format!(
         "{dart_api_type} _wire2api_{safe_ident}(dynamic raw) {{
             {body}
         }}
@@ -42,6 +42,9 @@ fn generate_impl_wire2api(ty: &IrType, context: WireDartGeneratorContext) -> Wir
         dart_api_type =
             ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type(),
         safe_ident = ty.safe_ident(),
-    )
-    .into()
+    );
+    WireDartOutputCode {
+        api_impl_body,
+        ..Default::default()
+    }
 }
