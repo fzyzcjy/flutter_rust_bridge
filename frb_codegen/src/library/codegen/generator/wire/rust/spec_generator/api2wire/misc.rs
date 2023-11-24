@@ -11,7 +11,7 @@ pub(crate) fn generate_impl_into_into_dart(
     };
 
     let wrapper_name = (wrapper_name.as_ref().map(|x| x.name.clone())).unwrap_or(name.name.clone());
-    let name = &name.name;
+    let name = &name.rust_style();
 
     format!(
         "impl flutter_rust_bridge::rust2dart::IntoIntoDart<{wrapper_name}> for {name} {{
