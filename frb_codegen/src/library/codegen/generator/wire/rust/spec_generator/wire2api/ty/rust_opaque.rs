@@ -84,7 +84,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
         let param_ptr = ExternFuncParam {
             name: "ptr".to_owned(),
             rust_type: "*const std::ffi::c_void".to_owned(),
-            dart_type: "TODO_TheDartType".into(),
+            dart_type: "dynamic".into(),
         };
 
         let generate_impl = |target| -> WireRustOutputCode {
