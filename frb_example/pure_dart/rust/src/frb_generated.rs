@@ -3806,7 +3806,7 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationEnv>
     for crate::api::mirror::ApplicationEnv
 {
     fn into_into_dart(self) -> mirror_ApplicationEnv {
-        mirror_ApplicationEnv
+        mirror_ApplicationEnv(self)
     }
 }
 impl flutter_rust_bridge::support::IntoDart for mirror_ApplicationEnvVar {
@@ -3823,7 +3823,7 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationEnvVar>
     for crate::api::mirror::ApplicationEnvVar
 {
     fn into_into_dart(self) -> mirror_ApplicationEnvVar {
-        mirror_ApplicationEnvVar
+        mirror_ApplicationEnvVar(self)
     }
 }
 impl flutter_rust_bridge::support::IntoDart for mirror_ApplicationMessage {
@@ -3847,7 +3847,7 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationMessage>
     for crate::api::mirror::ApplicationMessage
 {
     fn into_into_dart(self) -> mirror_ApplicationMessage {
-        mirror_ApplicationMessage
+        mirror_ApplicationMessage(self)
     }
 }
 impl flutter_rust_bridge::support::IntoDart for mirror_ApplicationMode {
@@ -3864,7 +3864,7 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationMode>
     for crate::api::mirror::ApplicationMode
 {
     fn into_into_dart(self) -> mirror_ApplicationMode {
-        mirror_ApplicationMode
+        mirror_ApplicationMode(self)
     }
 }
 impl flutter_rust_bridge::support::IntoDart for mirror_ApplicationSettings {
@@ -3884,7 +3884,7 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationSettings>
     for crate::api::mirror::ApplicationSettings
 {
     fn into_into_dart(self) -> mirror_ApplicationSettings {
-        mirror_ApplicationSettings
+        mirror_ApplicationSettings(self)
     }
 }
 impl flutter_rust_bridge::support::IntoDart for crate::api::optional::Attribute {
@@ -4583,7 +4583,7 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ListOfNestedRawStringMi
     for crate::api::mirror::ListOfNestedRawStringMirrored
 {
     fn into_into_dart(self) -> mirror_ListOfNestedRawStringMirrored {
-        mirror_ListOfNestedRawStringMirrored
+        mirror_ListOfNestedRawStringMirrored(self)
     }
 }
 impl flutter_rust_bridge::support::IntoDart for crate::api::method::Log2 {
@@ -4815,7 +4815,7 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_NestedRawStringMirrored
     for crate::api::mirror::NestedRawStringMirrored
 {
     fn into_into_dart(self) -> mirror_NestedRawStringMirrored {
-        mirror_NestedRawStringMirrored
+        mirror_NestedRawStringMirrored(self)
     }
 }
 impl flutter_rust_bridge::support::IntoDart
@@ -4862,7 +4862,7 @@ impl flutter_rust_bridge::support::IntoDart for mirror_Numbers {
 impl flutter_rust_bridge::support::IntoDartExceptPrimitive for mirror_Numbers {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_Numbers> for crate::api::mirror::Numbers {
     fn into_into_dart(self) -> mirror_Numbers {
-        mirror_Numbers
+        mirror_Numbers(self)
     }
 }
 impl flutter_rust_bridge::support::IntoDart
@@ -4958,7 +4958,7 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_RawStringEnumMirrored>
     for crate::api::mirror::RawStringEnumMirrored
 {
     fn into_into_dart(self) -> mirror_RawStringEnumMirrored {
-        mirror_RawStringEnumMirrored
+        mirror_RawStringEnumMirrored(self)
     }
 }
 impl flutter_rust_bridge::support::IntoDart for crate::api::raw_string::RawStringItemStruct {
@@ -4987,7 +4987,7 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_RawStringMirrored>
     for crate::api::mirror::RawStringMirrored
 {
     fn into_into_dart(self) -> mirror_RawStringMirrored {
-        mirror_RawStringMirrored
+        mirror_RawStringMirrored(self)
     }
 }
 impl flutter_rust_bridge::support::IntoDart for mirror_Sequences {
@@ -5000,7 +5000,7 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_Sequences>
     for crate::api::mirror::Sequences
 {
     fn into_into_dart(self) -> mirror_Sequences {
-        mirror_Sequences
+        mirror_Sequences(self)
     }
 }
 impl flutter_rust_bridge::support::IntoDart for crate::api::enumeration::Speed {

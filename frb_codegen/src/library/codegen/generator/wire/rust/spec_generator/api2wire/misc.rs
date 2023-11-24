@@ -5,7 +5,7 @@ pub(crate) fn generate_impl_into_into_dart(
     wrapper_name: &Option<String>,
 ) -> String {
     let body = if let Some(wrapper_name) = wrapper_name {
-        wrapper_name.clone()
+        format!("{wrapper_name}(self)")
     } else {
         "self".to_owned()
     };
