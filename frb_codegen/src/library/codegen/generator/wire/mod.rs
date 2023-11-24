@@ -52,6 +52,7 @@ pub(crate) fn generate(
         wire_dart_generator_context,
         &c_output.c_file_content,
         api_dart_actual_output_paths,
+        &rust_output.extern_funcs,
         dumper,
     )?;
 

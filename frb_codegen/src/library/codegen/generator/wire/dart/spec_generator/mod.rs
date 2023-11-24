@@ -4,6 +4,7 @@ use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGenerat
 use crate::codegen::generator::wire::dart::spec_generator::dump::generate_dump_info;
 use crate::codegen::generator::wire::dart::spec_generator::misc::WireDartOutputSpecMisc;
 use crate::codegen::generator::wire::dart::spec_generator::wire2api::WireDartOutputSpecWire2api;
+use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen::ConfigDumpContent::GeneratorInfo;
 use serde::Serialize;
@@ -29,6 +30,7 @@ pub(crate) fn generate(
     context: WireDartGeneratorContext,
     c_file_content: &str,
     api_dart_actual_output_paths: &[PathBuf],
+    rust_extern_funcs: &[ExternFunc],
     dumper: &Dumper,
 ) -> anyhow::Result<WireDartOutputSpec> {
     let cache = IrPackComputedCache::compute(context.ir_pack);
@@ -45,6 +47,7 @@ pub(crate) fn generate(
             &cache,
             c_file_content,
             api_dart_actual_output_paths,
+            rust_extern_funcs,
         )?,
         wire2api: wire2api::generate(context, &cache),
         api2wire: api2wire::generate(context, &cache),

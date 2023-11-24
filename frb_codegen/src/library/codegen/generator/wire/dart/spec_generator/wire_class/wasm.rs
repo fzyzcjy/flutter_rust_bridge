@@ -1,9 +1,13 @@
 use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::misc::has_port_argument;
+use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use std::borrow::Cow;
 
-pub(super) fn generate(config: &GeneratorWireDartInternalConfig) -> WireDartOutputCode {
+pub(super) fn generate(
+    config: &GeneratorWireDartInternalConfig,
+    rust_extern_funcs: &[ExternFunc],
+) -> WireDartOutputCode {
     generate_wire_class(config) + generate_wasm_module_class(config)
 }
 
