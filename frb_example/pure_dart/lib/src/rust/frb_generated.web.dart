@@ -54,6 +54,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     super.handler,
     required super.wire,
     required super.generalizedFrbRustBinding,
+    required super.dropPortManager,
   });
 
   late final mutexHideDataFinalizer =

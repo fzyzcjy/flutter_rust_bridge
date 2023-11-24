@@ -55,6 +55,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     super.handler,
     required super.wire,
     required super.generalizedFrbRustBinding,
+    required super.dropPortManager,
   });
 
   late final mutexHideDataFinalizer =
@@ -1321,8 +1322,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   void _api_fill_to_wire_DartOpaque(Object apiObj, wire_DartOpaque wireObj) {
-    wireObj.handle = wire.new_dart_opaque(apiObj);
-    wireObj.port = dropPort;
+    wireObj.handle = generalizedFrbRustBinding.newDartOpaque(apiObj);
+    wireObj.port = dropPortManager.dropPort;
   }
 
   void _api_fill_to_wire_RustOpaque_MutexHideData(
