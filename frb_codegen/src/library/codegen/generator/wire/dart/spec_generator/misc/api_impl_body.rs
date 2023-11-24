@@ -197,12 +197,15 @@ pub(crate) fn generate_api_impl_opaque_getter(
     }
 
     let api_type = ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type();
+    let api_type_camel = api_type.to_case(Case::Camel);
 
-    let generate_platform_impl = |finalizer_type: &str, finalizer_arg: &str| WireDartOutputCode {
+    let generate_platform_impl = |finalizer_type: &str, finalizer_arg: &str| {
+        WireDartOutputCode {
         api_impl_body: format!(
-            "late final {finalizer_type} {api_type}Finalizer = {finalizer_type}({finalizer_arg});",
+            "late final {finalizer_type} {api_type_camel}Finalizer = {finalizer_type}({finalizer_arg});",
         ),
         ..Default::default()
+    }
     };
 
     Acc {
