@@ -39,8 +39,8 @@ impl<'a> WireRustGeneratorApi2wireTrait for StructRefWireRustGenerator<'a> {
             .join(",\n");
 
         let name = match &src.wrapper_name {
-            Some(wrapper) => &wrapper.name,
-            None => &src.name.name,
+            Some(wrapper) => &wrapper.rust_style(),
+            None => &src.name.rust_style(),
         };
 
         let vec = if src.is_empty() {
