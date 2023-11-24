@@ -14,14 +14,13 @@ mod structure;
 mod unencodable;
 
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorImplTrait;
-use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::pack::IrPack;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
 pub(crate) trait WireRustGeneratorApi2wireTrait: WireRustGeneratorImplTrait {
-    fn intodart_type(&self, _ir_pack: &IrPack) -> NamespacedName {
+    fn intodart_type(&self, _ir_pack: &IrPack) -> String {
         self.ir_type().rust_api_type()
     }
 

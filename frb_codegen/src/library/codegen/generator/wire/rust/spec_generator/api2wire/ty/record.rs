@@ -1,11 +1,10 @@
 use crate::codegen::generator::wire::rust::spec_generator::api2wire::ty::WireRustGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
-use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::pack::IrPack;
 use itertools::Itertools;
 
 impl<'a> WireRustGeneratorApi2wireTrait for RecordWireRustGenerator<'a> {
-    fn intodart_type(&self, ir_pack: &IrPack) -> NamespacedName {
+    fn intodart_type(&self, ir_pack: &IrPack) -> String {
         let values = self
             .ir
             .values
