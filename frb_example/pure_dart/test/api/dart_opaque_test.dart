@@ -15,10 +15,6 @@ Future<void> main() async {
     await loopBackVecGet(opaque: await loopBackVec(opaque: f));
     await loopBackOptionGet(opaque: await loopBackOption(opaque: f));
 
-    var syncBack = syncLoopback(opaque: f);
-    expect(identical(syncOptionLoopback(opaque: syncBack), f), isTrue);
-    expect(syncOptionLoopback(opaque: null), isNull);
-
     var back1 = await loopBack(opaque: f) as String Function();
     expect(back1(), 'Test_String');
     var back2 = await loopBack(opaque: back1) as String Function();
@@ -28,7 +24,6 @@ Future<void> main() async {
 
   test('drop', () async {
     expect(await asyncAcceptDartOpaque(opaque: createLargeList(mb: 200)), 'async test');
-    expect(syncAcceptDartOpaque(opaque: createLargeList(mb: 200)), 'test');
   });
 
   test('nested', () async {

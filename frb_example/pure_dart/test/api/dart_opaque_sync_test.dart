@@ -9,6 +9,16 @@ import '../test_utils.dart';
 Future<void> main() async {
   await RustLib.init();
 
+  test('loopback', () {
+    var syncBack = syncLoopback(opaque: f);
+    expect(identical(syncOptionLoopback(opaque: syncBack), f), isTrue);
+    expect(syncOptionLoopback(opaque: null), isNull);
+  });
+
+  test('drop', () async {
+    expect(syncAcceptDartOpaque(opaque: createLargeList(mb: 200)), 'test');
+  });
+
   test('unwrap', () async {
     expect(unwrapDartOpaque(opaque: createLargeList(mb: 200)), 'Test');
     await expectLater(() => panicUnwrapDartOpaque(opaque: createLargeList(mb: 200)), throwsA(isA<PanicException>()));
@@ -18,5 +28,8 @@ Future<void> main() async {
     String f() => "magic";
     var res = returnNonDroppableDartOpaque(opaque: f);
     expect(identical(res, f), isTrue);
+    var syncBack = syncLoopback(opaque: f);
+    expect(identical(syncOptionLoopback(opaque: syncBack), f), isTrue);
+    expect(syncOptionLoopback(opaque: null), isNull);
   });
 }

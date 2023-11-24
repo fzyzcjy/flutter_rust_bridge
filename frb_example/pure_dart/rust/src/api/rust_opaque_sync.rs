@@ -3,6 +3,11 @@
 use crate::auxiliary::sample_types::{FrbOpaqueSyncReturn, NonSendHideData};
 use flutter_rust_bridge::{frb, RustOpaque};
 
+#[frb(sync)]
+pub fn sync_create_sync_opaque() -> RustOpaque<NonSendHideData> {
+    RustOpaque::new(NonSendHideData::new())
+}
+
 // OpaqueSyncStruct does not implement Send trait.
 //
 // pub fn run_opaque(opaque: Opaque<OpaqueSyncStruct>) -> String {

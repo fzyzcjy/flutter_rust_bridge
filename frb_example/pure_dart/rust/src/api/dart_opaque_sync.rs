@@ -2,6 +2,22 @@
 
 use flutter_rust_bridge::{frb, DartOpaque};
 
+#[frb(sync)]
+pub fn sync_loopback(opaque: DartOpaque) -> DartOpaque {
+    opaque
+}
+
+#[frb(sync)]
+pub fn sync_option_loopback(opaque: Option<DartOpaque>) -> Option<DartOpaque> {
+    opaque
+}
+
+#[frb(sync)]
+pub fn sync_accept_dart_opaque(opaque: DartOpaque) -> String {
+    drop(opaque);
+    "test".to_owned()
+}
+
 /// [DartWrapObject] can be safely retrieved on a dart thread.
 #[frb(sync)]
 pub fn unwrap_dart_opaque(opaque: DartOpaque) -> String {
