@@ -51,7 +51,11 @@ pub(crate) fn generate(
     let cache = IrPackComputedCache::compute(ir_pack);
     let context = ApiDartGeneratorContext { ir_pack, config };
 
-    dumper.dump(GeneratorInfo, "api_dart.json", &generate_dump_info())?;
+    dumper.dump(
+        GeneratorInfo,
+        "api_dart.json",
+        &generate_dump_info(cache, context),
+    )?;
 
     let grouped_funcs = (ir_pack.funcs.iter()).into_group_map_by(|x| x.name.namespace.clone());
     let grouped_namespaced_types = (cache.distinct_types.iter())
