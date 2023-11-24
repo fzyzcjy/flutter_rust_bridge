@@ -64,37 +64,26 @@ struct MethodInfo {
     implementation: String,
 }
 
-fn generate_method(extern_func: &ExternFunc) -> MethodInfo {
-    fn generate_wire_class_method(func: &IrFuncDisplay) -> String {
-        format!(
-            "{out} {name}({}) => wasmModule.{name}({});",
-            func.inputs
-                .iter()
-                .map(|param| format!("{} {}", param.ty, param.name))
-                .join(","),
-            func.inputs
-                .iter()
-                .map(|param| param.name.to_string())
-                .join(","),
-            name = func.name,
-            out = if has_port_argument(func) {
-                "void".into()
-            } else {
-                reconstruct_dart_wire_type_from_raw_repr(&func.output)
-            },
-        )
-    }
+fn generate_method(func: &ExternFunc) -> MethodInfo {
+    let func_name = func.name;
 
-    fn generate_wasm_module_class_method(func: &IrFuncDisplay) -> String {
-        format!(
-            "external {} {name}({});",
-            reconstruct_dart_wire_type_from_raw_repr(&func.output),
-            func.inputs
-                .iter()
-                .map(|param| format!("{} {}", param.ty, param.name))
-                .join(","),
-            name = func.name,
-        )
+    let return_type = reconstruct_dart_wire_type_from_raw_repr(&func.output);
+
+    let input_params = func
+        .inputs
+        .iter()
+        .map(|param| format!("{} {}", param.ty, param.name))
+        .join(",");
+
+    let forward_args = func
+        .inputs
+        .iter()
+        .map(|param| param.name.to_string())
+        .join(",");
+
+    MethodInfo {
+        declaration: format!("{return_type} {func_name}({input_params})"),
+        implementation: format!("wasmModule.{func_name}({forward_args})"),
     }
 }
 
