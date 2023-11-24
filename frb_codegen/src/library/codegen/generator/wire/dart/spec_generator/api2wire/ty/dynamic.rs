@@ -9,6 +9,7 @@ impl<'a> WireDartGeneratorApi2wireTrait for DynamicWireDartGenerator<'a> {
     }
 
     fn dart_wire_type(&self, _target: Target) -> String {
-        panic!("Functions cannot receive dynamic parameters.")
+        // Functions cannot receive dynamic parameters
+        "UNREACHABLE_DART_WIRE_TYPE".into()
     }
 }
