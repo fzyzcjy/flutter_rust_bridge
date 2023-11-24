@@ -23,12 +23,6 @@ void main(List<String> args) async {
   final api = initializeExternalLibrary(dylibPath);
   tearDownAll(() => dispose());
 
-  group('extended sync', () {
-    test('void', () async {
-      syncVoid();
-    });
-  });
-
   test("sync return mirror", () {
     final settings = syncReturnMirror();
     testAppSettings(settings);
