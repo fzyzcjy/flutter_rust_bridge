@@ -1521,8 +1521,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 // Section: wire_class
 
 class RustLibWire extends BaseWire {
-  RustLibWire(FutureOr<WasmModule> module)
-      : super(WasmModule.cast<RustLibWasmModule>(module));
+  // TODO
+  // RustLibWire(FutureOr<WasmModule> module) : super(WasmModule.cast<RustLibWasmModule>(module));
 
   void wire_boxed_blob(NativePortType port_, Uint8List blob) =>
       wasmModule.wire_boxed_blob(port_, blob);

@@ -36,7 +36,8 @@ fn generate_wire_class(
 
     format!(
         "class {wire_class_name} extends BaseWire {{
-            {wire_class_name}(FutureOr<WasmModule> module) : super(WasmModule.cast<{wasm_module_name}>(module));
+            // TODO
+            // {wire_class_name}(FutureOr<WasmModule> module) : super(WasmModule.cast<{wasm_module_name}>(module));
             
             {body}
         }}
