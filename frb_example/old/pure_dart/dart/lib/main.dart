@@ -157,63 +157,6 @@ void main(List<String> args) async {
     expect(structResp.copyWith, isNotNull);
   });
 
-  test('dart call handleNewtype', () async {
-    final newtypeResp = await handleNewtype(arg: NewTypeInt(field0: 42));
-    expect(newtypeResp.field0, 84);
-  });
-  test('dart call handleNewtypeSync', () {
-    final newtypeResp = handleNewtypeSync(arg: NewTypeInt(field0: 42));
-    expect(newtypeResp.field0, 84);
-  });
-
-  test('dart call handleListOfStruct', () async {
-    final listOfStructResp =
-        await handleListOfStruct(l: [MySize(width: 42, height: 100), MySize(width: 420, height: 1000)]);
-    expect(listOfStructResp.length, 4);
-    expect(listOfStructResp[0].width, 42);
-    expect(listOfStructResp[1].width, 420);
-    expect(listOfStructResp[2].width, 42);
-    expect(listOfStructResp[3].width, 420);
-  });
-  test('dart call handleListOfStructSync', () {
-    final listOfStructResp =
-        handleListOfStructSync(l: [MySize(width: 42, height: 100), MySize(width: 420, height: 1000)]);
-    expect(listOfStructResp.length, 4);
-    expect(listOfStructResp[0].width, 42);
-    expect(listOfStructResp[1].width, 420);
-    expect(listOfStructResp[2].width, 42);
-    expect(listOfStructResp[3].width, 420);
-  });
-
-  test('dart call handleStringList', () async {
-    final names = await handleStringList(names: ['Steve', 'Bob', 'Alex']);
-    expect(names, ['Steve', 'Bob', 'Alex']);
-  });
-  test('dart call handleStringListSync', () {
-    final names = handleStringListSync(names: ['Steve', 'Bob', 'Alex']);
-    expect(names, ['Steve', 'Bob', 'Alex']);
-  });
-
-  testComplexStruct(MyTreeNode complexStructResp, {required int arrLen}) {
-    expect(complexStructResp.valueI32, 100);
-    expect(complexStructResp.valueVecU8, List.filled(arrLen, 100));
-    expect(complexStructResp.children[0].valueVecU8, List.filled(arrLen, 110));
-    expect(complexStructResp.children[0].children[0].valueVecU8, List.filled(arrLen, 111));
-    expect(complexStructResp.children[1].valueVecU8, List.filled(arrLen, 120));
-  }
-
-  test('dart call handleComplexStruct', () async {
-    final arrLen = 5;
-    final complexStructResp = await handleComplexStruct(s: _createMyTreeNode(arrLen: arrLen));
-    testComplexStruct(complexStructResp, arrLen: arrLen);
-  });
-
-  test('dart call handleNestedStruct', () async {
-    final r = await handleNestedStruct(s: _createMyNestedStruct());
-    testComplexStruct(r.treeNode, arrLen: 5);
-    expect(r.weekday, Weekdays.friday);
-  });
-
   test('dart call handleComplexStructSync', () {
     final arrLen = 5;
     final complexStructResp = handleComplexStructSync(s: _createMyTreeNode(arrLen: arrLen));
@@ -304,84 +247,6 @@ void main(List<String> args) async {
     }
   });
 
-  test('dart call handleOptionalReturn', () async {
-    expect((await handleOptionalReturn(left: 1, right: 1))!, 1);
-    expect(await handleOptionalReturn(left: 2, right: 0), null);
-  });
-
-  test('dart call handleOptionalStruct', () async {
-    {
-      expect(await handleOptionalStruct(), null);
-    }
-
-    {
-      final message = 'Hello there.';
-      final ret = await handleOptionalStruct(document: message);
-      if (ret == null) {
-        fail('handleOptionalStruct returned null for non-null document');
-      }
-      expect(ret.tag, 'div');
-      expect(ret.text, null);
-      expect(ret.attributes?[0].key, 'id');
-      expect(ret.attributes?[0].value, 'root');
-
-      expect(ret.children?[0].tag, 'p');
-      expect(ret.children?[0].text, null);
-      expect(ret.children?[0].attributes, null);
-      expect(ret.children?[0].children?[0].text, message);
-    }
-  });
-
-  test('dart call handleOptionalIncrement', () async {
-    expect(await handleOptionalIncrement(), null);
-    {
-      var ret = await handleOptionalIncrement(opt: ExoticOptionals(attributesNullable: []));
-      if (ret == null) fail('increment returned null for non-null params');
-      final loopFor = 20;
-      for (var i = 1; i < loopFor; i++) {
-        ret = await handleOptionalIncrement(opt: ret);
-      }
-      if (ret == null) fail('ret nulled after loop');
-      expect(ret.int32, loopFor, reason: 'int32');
-      expect(ret.int64, loopFor, reason: 'int64');
-      expect(ret.float64, loopFor, reason: 'float64');
-      expect(ret.boolean, false);
-      expect(ret.zerocopy?.length, loopFor);
-      expect(ret.int8List?.length, loopFor);
-      expect(ret.uint8List?.length, loopFor);
-      expect(ret.attributesNullable, List.filled(loopFor, null));
-      expect(ret.nullableAttributes, List.filled(loopFor, null));
-      expect(ret.newtypeint?.field0, loopFor, reason: 'NewTypeInt');
-    }
-  });
-
-  test('dart call handleIncrementBoxedOptional', () async {
-    {
-      expect(await handleIncrementBoxedOptional(), 42);
-    }
-
-    {
-      var ret = 0.0;
-      final loopFor = 100;
-      for (var i = 0; i < loopFor; i++) {
-        ret = await handleIncrementBoxedOptional(opt: ret);
-      }
-      expect(ret, loopFor);
-    }
-  });
-
-  test('dart call handleOptionBoxArguments', () async {
-    print(await handleOptionBoxArguments());
-
-    {
-      final optional10 = await handleOptionBoxArguments(
-        boolbox: true,
-        structbox: await handleOptionalIncrement(opt: ExoticOptionals(attributesNullable: [])),
-      );
-      print(optional10);
-    }
-  });
-
   test('dart call handleVecOfOpts', () async {
     const loops = 20;
     var opt = OptVecs(i32: [], enums: [Weekdays.monday], strings: ['foo'], buffers: []);
@@ -467,20 +332,6 @@ void main(List<String> args) async {
     expect(output, isA<Empty>());
   });
 
-  test('test abc', () async {
-    final output1 = await testAbcEnum(abc: Abc.a(A(a: "test")));
-    expect((output1 as Abc_A).field0.a, "test");
-
-    final output2 = await testAbcEnum(abc: Abc.b(B(b: 1)));
-    expect((output2 as Abc_B).field0.b, 1);
-
-    final output3 = await testAbcEnum(abc: Abc.c(C(c: false)));
-    expect((output3 as Abc_C).field0.c, false);
-
-    final output4 = await testAbcEnum(abc: Abc.justInt(1));
-    expect((output4 as Abc_JustInt).field0, 1);
-  });
-
   group('Platform-specific support', () {
     test('Int64List', () {
       final list = Int64List.fromList([-1, -2, -3, -4, -5]);
@@ -498,60 +349,12 @@ void main(List<String> args) async {
       list[1] += BigInt.one;
       expect(list[1], BigInt.from(124));
     });
-    test('Lossless big buffers', () async {
-      final list = await handleBigBuffers();
-      expect(list.int64[0], BigInt.parse('-9223372036854775808'));
-      expect(list.int64[1], BigInt.parse('9223372036854775807'));
-      expect(list.uint64[0], BigInt.parse('0xFFFFFFFFFFFFFFFF'), reason: 'uint64');
-    });
   });
 
   group('extended sync', () {
-    test('check generator', () {
-      expect(frbSyncGeneratorTest().runtimeType == FrbOpaqueSyncReturn, isTrue);
-    });
-
     test('create', () {
       var data = syncCreateOpaque();
       data.dispose();
-    });
-
-    test('double call', () {
-      var data = syncCreateSyncOpaque();
-      expect(
-          syncRunOpaque(opaque: data),
-          "content - Some(PrivateData "
-          "{"
-          " content: \"content nested\", "
-          "primitive: 424242, "
-          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-          "lifetime: \"static str\" "
-          "})");
-      expect(
-          syncRunOpaque(opaque: data),
-          "content - Some(PrivateData "
-          "{"
-          " content: \"content nested\", "
-          "primitive: 424242, "
-          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-          "lifetime: \"static str\" "
-          "})");
-      data.dispose();
-    });
-
-    test('call after drop', () {
-      var data = syncCreateSyncOpaque();
-      expect(
-          syncRunOpaque(opaque: data),
-          "content - Some(PrivateData "
-          "{"
-          " content: \"content nested\", "
-          "primitive: 424242, "
-          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-          "lifetime: \"static str\" "
-          "})");
-      data.dispose();
-      expect(() => syncRunOpaque(opaque: data), throwsA(isA<PanicException>()));
     });
 
     test('option', () async {
@@ -576,22 +379,6 @@ void main(List<String> args) async {
     test('void', () async {
       syncVoid();
     });
-  });
-
-  test("dart call list_of_primitive_enums", () async {
-    List<Weekdays> days = await listOfPrimitiveEnums(weekdays: Weekdays.values);
-    expect(days, Weekdays.values);
-  });
-
-  test("dart call struct_with_enum_member", () async {
-    final result = await testStructWithEnum(se: StructWithEnum(abc1: Abc.a(A(a: "aaa")), abc2: Abc.b(B(b: 999))));
-    expect(result.abc1.whenOrNull(b: (B b) => b.b), 999);
-    expect(result.abc2.whenOrNull(a: (A a) => a.a), "aaa");
-  });
-
-  test("dart call tuples", () async {
-    expect(testTuple(), completion(('John', 0)));
-    expect(testTuple(value: ('Bob', 42)), completion(('Hello Bob', 43)));
   });
 
   test("sync return mirror", () {
