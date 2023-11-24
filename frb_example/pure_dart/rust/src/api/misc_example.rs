@@ -92,3 +92,32 @@ pub fn test_struct_with_enum(se: StructWithEnum) -> StructWithEnum {
         abc2: se.abc1,
     }
 }
+
+pub fn handle_string(s: String) -> String {
+    info!("handle_string({})", &s);
+    let s2 = s.clone();
+    s + &s2
+}
+
+// to check that `Vec<u8>` can be used as return type
+pub fn handle_vec_u8(v: Vec<u8>) -> Vec<u8> {
+    info!("handle_vec_u8(first few elements: {:?})", &v[..5]);
+    v.repeat(2)
+}
+
+pub fn handle_struct(arg: MySize, boxed: Box<MySize>) -> MySize {
+    info!("handle_struct({:?}, {:?})", &arg, &boxed);
+    MySize {
+        width: arg.width + boxed.width,
+        height: arg.height + boxed.height,
+    }
+}
+
+#[frb(sync)]
+pub fn handle_struct_sync_freezed(arg: MySizeFreezed, boxed: Box<MySizeFreezed>) -> MySizeFreezed {
+    info!("handle_struct_sync_freezed({:?}, {:?})", &arg, &boxed);
+    MySizeFreezed {
+        width: arg.width + boxed.width,
+        height: arg.height + boxed.height,
+    }
+}

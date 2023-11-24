@@ -58,6 +58,68 @@ Future<void> main() async {
     expect(result.abc1.whenOrNull(b: (B b) => b.b), 999);
     expect(result.abc2.whenOrNull(a: (A a) => a.a), "aaa");
   });
+
+  test('dart call handleString', () async {
+    expect(await handleString(s: "Hello, world!"), "Hello, world!Hello, world!");
+  });
+  test('dart call handleString with nul-containing string', () async {
+    expect(await handleString(s: "Hello\u0000world!"), isWeb ? "Hello\u0000world!Hello\u0000world!" : "");
+  });
+
+  // TODO rm?
+  // test('dart call handleStringSync', () {
+  //   expect(handleStringSync(s: "Hello, world!"), "Hello, world!Hello, world!");
+  // });
+  // test('dart call handleStringSync with nul-containing string', () {
+  //   expect(handleStringSync(s: "Hello\u0000world!"), isWeb ? "Hello\u0000world!Hello\u0000world!" : "");
+  // });
+
+  test('dart call handleVecU8', () async {
+    final len = 100000;
+    expect(
+        await handleVecU8(v: Uint8List.fromList(List.filled(len, 127))), Uint8List.fromList(List.filled(len * 2, 127)));
+  });
+
+  // TODO rm?
+  // test('dart call handleVecU8Sync', () {
+  //   final len = 100000;
+  //   expect(
+  //       handleVecU8Sync(v: Uint8List.fromList(List.filled(len, 127))), Uint8List.fromList(List.filled(len * 2, 127)));
+  // });
+
+  test('dart call handleStruct', () async {
+    final structResp =
+        await handleStruct(arg: MySize(width: 42, height: 100), boxed: MySize(width: 1000, height: 10000));
+    expect(structResp.width, 42 + 1000);
+    expect(structResp.height, 100 + 10000);
+  });
+
+  // TODO rm?
+  // test('dart call handleStructSync', () {
+  //   final structResp = handleStructSync(arg: MySize(width: 42, height: 100), boxed: MySize(width: 1000, height: 10000));
+  //   expect(structResp.width, 42 + 1000);
+  //   expect(structResp.height, 100 + 10000);
+  // });
+
+  test('dart call handleStructSyncFreezed', () {
+    final structResp = handleStructSyncFreezed(
+        arg: MySizeFreezed(width: 42, height: 100), boxed: MySizeFreezed(width: 1000, height: 10000));
+    expect(structResp.width, 42 + 1000);
+    expect(structResp.height, 100 + 10000);
+    // Only freezed classes have copyWith
+    expect(structResp.copyWith, isNotNull);
+  });
+
+  // TODO rm?
+  // test('dart call handleComplexStructSync', () {
+  //   final arrLen = 5;
+  //   final complexStructResp = handleComplexStructSync(s: _createMyTreeNode(arrLen: arrLen));
+  //   expect(complexStructResp.valueI32, 100);
+  //   expect(complexStructResp.valueVecU8, List.filled(arrLen, 100));
+  //   expect(complexStructResp.children[0].valueVecU8, List.filled(arrLen, 110));
+  //   expect(complexStructResp.children[0].children[0].valueVecU8, List.filled(arrLen, 111));
+  //   expect(complexStructResp.children[1].valueVecU8, List.filled(arrLen, 120));
+  // });
 }
 
 MyTreeNode _createMyTreeNode({required int arrLen}) {
