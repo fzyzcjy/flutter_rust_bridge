@@ -25,7 +25,6 @@ crate::ir! {
 #[no_serde]
 // Remark: "Ty" instead of "Type", since "type" is a reserved word in Rust.
 #[enum_dispatch(IrTypeTrait)]
-#[derive(strum_macros::ToString)]
 pub enum IrType {
     // alphabetical order
     Boxed(boxed::IrTypeBoxed),
@@ -108,28 +107,29 @@ impl Serialize for IrType {
         let len = 2;
         let mut state = serializer.serialize_struct("IrType", len)?;
 
-        fn ser<T: ToString>(
+        fn ser<S: Serializer, T>(
             state: &mut <S as Serializer>::SerializeStruct,
+            ty: &str,
             data: &T,
         ) -> Result<S::Ok, S::Error> {
-            state.serialize_field("type", data.to_string())?;
+            state.serialize_field("type", ty)?;
             state.serialize_field("data", data)
         }
         match self {
-            IrType::Boxed(inner) => ser(state, inner),
-            IrType::DartOpaque(inner) => ser(state, inner),
-            IrType::Delegate(inner) => ser(state, inner),
-            IrType::Dynamic(inner) => ser(state, inner),
-            IrType::EnumRef(inner) => ser(state, inner),
-            IrType::GeneralList(inner) => ser(state, inner),
-            IrType::Optional(inner) => ser(state, inner),
-            IrType::OptionalList(inner) => ser(state, inner),
-            IrType::Primitive(inner) => ser(state, inner),
-            IrType::PrimitiveList(inner) => ser(state, inner),
-            IrType::Record(inner) => ser(state, inner),
-            IrType::RustOpaque(inner) => ser(state, inner),
-            IrType::StructRef(inner) => ser(state, inner),
-            IrType::Unencodable(inner) => ser(state, inner),
+            IrType::Boxed(inner) => ser(&mut state, "Boxed", inner),
+            IrType::DartOpaque(inner) => ser(&mut state, "DartOpaque", inner),
+            IrType::Delegate(inner) => ser(&mut state, "Delegate", inner),
+            IrType::Dynamic(inner) => ser(&mut state, "Dynamic", inner),
+            IrType::EnumRef(inner) => ser(&mut state, "EnumRef", inner),
+            IrType::GeneralList(inner) => ser(&mut state, "GeneralList", inner),
+            IrType::Optional(inner) => ser(&mut state, "Optional", inner),
+            IrType::OptionalList(inner) => ser(&mut state, "OptionalList", inner),
+            IrType::Primitive(inner) => ser(&mut state, "Primitive", inner),
+            IrType::PrimitiveList(inner) => ser(&mut state, "PrimitiveList", inner),
+            IrType::Record(inner) => ser(&mut state, "Record", inner),
+            IrType::RustOpaque(inner) => ser(&mut state, "RustOpaque", inner),
+            IrType::StructRef(inner) => ser(&mut state, "StructRef", inner),
+            IrType::Unencodable(inner) => ser(&mut state, "Unencodable", inner),
         }?;
 
         state.end()
