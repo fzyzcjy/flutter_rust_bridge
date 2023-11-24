@@ -4,6 +4,7 @@ use crate::codegen::generator::wire::rust::spec_generator::wire2api::ty::WireRus
 
 impl<'a> WireRustGeneratorWire2apiTrait for DynamicWireRustGenerator<'a> {
     fn rust_wire_type(&self, _target: Target) -> String {
-        unreachable!("Functions cannot receive dynamic parameters.")
+        // Functions cannot receive dynamic parameters
+        "UNREACHABLE_RUST_WIRE_TYPE".into()
     }
 }
