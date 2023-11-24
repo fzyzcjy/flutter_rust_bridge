@@ -85,7 +85,10 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::String => "String".to_owned(),
             IrTypeDelegate::StringList => "Vec<String>".to_owned(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                format!("ZeroCopyBuffer<{}>", self.get_delegate().rust_api_type())
+                format!(
+                    "flutter_rust_bridge::ZeroCopyBuffer<{}>",
+                    self.get_delegate().rust_api_type()
+                )
             }
             IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) => {
                 ir.rust_api_type()

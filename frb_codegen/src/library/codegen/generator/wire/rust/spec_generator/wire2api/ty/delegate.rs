@@ -62,7 +62,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for DelegateWireRustGenerator<'a> {
                 }
             },
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                Acc::distribute(Some("ZeroCopyBuffer(self.wire2api())".into()))
+                Acc::distribute(Some("flutter_rust_bridge::ZeroCopyBuffer(self.wire2api())".into()))
             },
             IrTypeDelegate::StringList => general_list_impl_wire2api_body(),
             IrTypeDelegate::PrimitiveEnum (IrTypeDelegatePrimitiveEnum{ ir, .. }) => {
@@ -137,7 +137,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for DelegateWireRustGenerator<'a> {
             )
                 .into(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                "ZeroCopyBuffer(self.wire2api())".into()
+                "flutter_rust_bridge::ZeroCopyBuffer(self.wire2api())".into()
             }
             IrTypeDelegate::Time(_) => "Wire2Api::<i64>::wire2api(self).wire2api()".into(),
             IrTypeDelegate::TimeList(_) =>

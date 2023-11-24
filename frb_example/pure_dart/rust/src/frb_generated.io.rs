@@ -117,9 +117,9 @@ impl Wire2Api<Vec<uuid::Uuid>> for *mut wire_list_prim_u_8 {
         wire2api_uuids(multiple)
     }
 }
-impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for *mut wire_list_prim_u_8 {
-    fn wire2api(self) -> ZeroCopyBuffer<Vec<u8>> {
-        ZeroCopyBuffer(self.wire2api())
+impl Wire2Api<flutter_rust_bridge::ZeroCopyBuffer<Vec<u8>>> for *mut wire_list_prim_u_8 {
+    fn wire2api(self) -> flutter_rust_bridge::ZeroCopyBuffer<Vec<u8>> {
+        flutter_rust_bridge::ZeroCopyBuffer(self.wire2api())
     }
 }
 impl Wire2Api<crate::api::misc_example::A> for wire_a {

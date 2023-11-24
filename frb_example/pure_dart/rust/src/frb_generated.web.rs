@@ -59,9 +59,9 @@ impl Wire2Api<Vec<uuid::Uuid>> for Box<[u8]> {
         wire2api_uuids(multiple)
     }
 }
-impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for Box<[u8]> {
-    fn wire2api(self) -> ZeroCopyBuffer<Vec<u8>> {
-        ZeroCopyBuffer(self.wire2api())
+impl Wire2Api<flutter_rust_bridge::ZeroCopyBuffer<Vec<u8>>> for Box<[u8]> {
+    fn wire2api(self) -> flutter_rust_bridge::ZeroCopyBuffer<Vec<u8>> {
+        flutter_rust_bridge::ZeroCopyBuffer(self.wire2api())
     }
 }
 impl Wire2Api<crate::api::misc_example::A> for JsValue {
@@ -878,8 +878,8 @@ impl Wire2Api<Option<String>> for Option<String> {
         self.map(Wire2Api::wire2api)
     }
 }
-impl Wire2Api<Option<ZeroCopyBuffer<Vec<u8>>>> for Option<Box<[u8]>> {
-    fn wire2api(self) -> Option<ZeroCopyBuffer<Vec<u8>>> {
+impl Wire2Api<Option<flutter_rust_bridge::ZeroCopyBuffer<Vec<u8>>>> for Option<Box<[u8]>> {
+    fn wire2api(self) -> Option<flutter_rust_bridge::ZeroCopyBuffer<Vec<u8>>> {
         self.map(Wire2Api::wire2api)
     }
 }
@@ -1390,9 +1390,9 @@ impl Wire2Api<Vec<uuid::Uuid>> for JsValue {
             .wire2api()
     }
 }
-impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for JsValue {
-    fn wire2api(self) -> ZeroCopyBuffer<Vec<u8>> {
-        ZeroCopyBuffer(self.wire2api())
+impl Wire2Api<flutter_rust_bridge::ZeroCopyBuffer<Vec<u8>>> for JsValue {
+    fn wire2api(self) -> flutter_rust_bridge::ZeroCopyBuffer<Vec<u8>> {
+        flutter_rust_bridge::ZeroCopyBuffer(self.wire2api())
     }
 }
 impl Wire2Api<crate::api::mirror::ApplicationMode> for JsValue {

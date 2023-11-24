@@ -923,7 +923,7 @@ fn wire_print_note_impl(
     port_: flutter_rust_bridge::MessagePort,
     note: impl Wire2Api<crate::api::enumeration::Note> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ZeroCopyBuffer<Vec<u8>>, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, flutter_rust_bridge::ZeroCopyBuffer<Vec<u8>>, _>(
         flutter_rust_bridge::WrapInfo {
             debug_name: "print_note",
             port: Some(port_),
