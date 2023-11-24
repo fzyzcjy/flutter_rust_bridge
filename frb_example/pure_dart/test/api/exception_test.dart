@@ -186,10 +186,10 @@ Future<void> main() async {
         } catch (e) {
           final FrbBacktracedException ex = e as FrbBacktracedException;
           print("backtrace: ${ex.backtrace}");
-          assert(ex.backtrace.contains("wire_non_static_return_err_custom_error__method__SomeStruct::"));
+          expect(ex.backtrace, contains("wire_non_static_return_err_custom_error__method__SomeStruct::"));
           didCatch = true;
         }
-        assert(didCatch);
+        expect(didCatch, true);
       });
 
       test('Do not throw CustomError non-static method', () async {
@@ -203,7 +203,7 @@ Future<void> main() async {
         } catch (e) {
           final AnyhowException p = e as AnyhowException;
           print("anyhow error: ${p.message}");
-          assert(p.message.contains("anyhow error"));
+          expect(p.message, contains("anyhow error"));
         }
       });
 
@@ -214,7 +214,7 @@ Future<void> main() async {
         } catch (e) {
           final PanicException p = e as PanicException;
           print("panic error: ${p.message}");
-          assert(p.message.contains("just a panic"));
+          expect(p.message, contains("just a panic"));
         }
       });
 
