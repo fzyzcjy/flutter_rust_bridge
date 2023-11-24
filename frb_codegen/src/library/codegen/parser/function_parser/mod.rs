@@ -134,12 +134,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let syn_ty: Type = parse_str(&enum_or_struct_name)?;
         let ty = self.type_parser.parse_type(&syn_ty, context)?;
 
-        Ok(match ty {
-            IrType::Delegate(_) => Some(TODO),
-            IrType::EnumRef(_) => Some(TODO),
-            IrType::StructRef(_) => Some(TODO),
-            _ => None,
-        })
+        let namespace: Option<Namespace> = ty.self_namespace();
+        Ok(namespace.map(|namespace| NamespacedName::new(namespace, enum_or_struct_name)))
     }
 }
 
