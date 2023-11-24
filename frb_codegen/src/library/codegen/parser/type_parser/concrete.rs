@@ -33,11 +33,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
             ("DartOpaque", None) => DartOpaque(IrTypeDartOpaque {}),
 
-            ("RustOpaque", Some(Generic([ty]))) => RustOpaque(IrTypeRustOpaque::new(
-                self.context.initiated_namespace.clone(),
-                ty.clone(),
-            )),
-
             (
                 "ZeroCopyBuffer",
                 Some(Generic([PrimitiveList(IrTypePrimitiveList { primitive })])),

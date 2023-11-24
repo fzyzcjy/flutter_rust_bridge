@@ -44,6 +44,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             {
                 return Ok(ans);
             }
+            if let Some(ans) = self.parse_type_path_data_rust_opaque(last_segment)? {
+                return Ok(ans);
+            }
             if let Some(ans) = self.parse_type_path_data_concrete(last_segment)? {
                 return Ok(ans);
             }

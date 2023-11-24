@@ -7,6 +7,7 @@ pub(crate) mod optional;
 pub(crate) mod path;
 pub(crate) mod path_data;
 pub(crate) mod primitive;
+mod rust_opaque;
 pub(crate) mod structure;
 pub(crate) mod tuple;
 pub(crate) mod ty;
