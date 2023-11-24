@@ -2862,84 +2862,81 @@ fn wire_create_nested_opaque_impl(port_: flutter_rust_bridge::MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,crate::api::rust_opaque::OpaqueNested,_>(flutter_rust_bridge::WrapInfo{ debug_name: "create_nested_opaque", port: Some(port_), mode: flutter_rust_bridge::FfiCallMode::Normal }, move || {  move |task_callback| Result::<_,()>::Ok(crate::api::rust_opaque::create_nested_opaque()) })
 }
 fn wire_create_opaque_impl(port_: flutter_rust_bridge::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, RustOpaque<crate::auxiliary::sample_types::HideData>, _>(
-            flutter_rust_bridge::WrapInfo {
-                debug_name: "create_opaque",
-                port: Some(port_),
-                mode: flutter_rust_bridge::FfiCallMode::Normal,
-            },
-            move || {
-                move |task_callback| Result::<_, ()>::Ok(crate::api::rust_opaque::create_opaque())
-            },
-        )
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, flutter_rust_bridge::RustOpaque<
+        crate::auxiliary::sample_types::HideData,
+    >, _>(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "create_opaque",
+            port: Some(port_),
+            mode: flutter_rust_bridge::FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(crate::api::rust_opaque::create_opaque()),
+    )
 }
 fn wire_create_option_opaque_impl(
     port_: flutter_rust_bridge::MessagePort,
-    opaque: impl Wire2Api<Option<RustOpaque<crate::auxiliary::sample_types::HideData>>>
+    opaque: impl Wire2Api<Option<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>>
         + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, Option<RustOpaque<crate::auxiliary::sample_types::HideData>>, _>(
-            flutter_rust_bridge::WrapInfo {
-                debug_name: "create_option_opaque",
-                port: Some(port_),
-                mode: flutter_rust_bridge::FfiCallMode::Normal,
-            },
-            move || {
-                let api_opaque = opaque.wire2api();
-                move |task_callback| {
-                    Result::<_, ()>::Ok(crate::api::rust_opaque::create_option_opaque(api_opaque))
-                }
-            },
-        )
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<
+        flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>,
+    >, _>(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "create_option_opaque",
+            port: Some(port_),
+            mode: flutter_rust_bridge::FfiCallMode::Normal,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(crate::api::rust_opaque::create_option_opaque(api_opaque))
+            }
+        },
+    )
 }
 fn wire_create_sync_opaque_impl(port_: flutter_rust_bridge::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, RustOpaque<crate::auxiliary::sample_types::NonSendHideData>, _>(
-            flutter_rust_bridge::WrapInfo {
-                debug_name: "create_sync_opaque",
-                port: Some(port_),
-                mode: flutter_rust_bridge::FfiCallMode::Normal,
-            },
-            move || {
-                move |task_callback| {
-                    Result::<_, ()>::Ok(crate::api::rust_opaque::create_sync_opaque())
-                }
-            },
-        )
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, flutter_rust_bridge::RustOpaque<
+        crate::auxiliary::sample_types::NonSendHideData,
+    >, _>(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "create_sync_opaque",
+            port: Some(port_),
+            mode: flutter_rust_bridge::FfiCallMode::Normal,
+        },
+        move || {
+            move |task_callback| Result::<_, ()>::Ok(crate::api::rust_opaque::create_sync_opaque())
+        },
+    )
 }
 fn wire_frb_generator_test_impl(port_: flutter_rust_bridge::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, RustOpaque<crate::auxiliary::sample_types::FrbOpaqueReturn>, _>(
-            flutter_rust_bridge::WrapInfo {
-                debug_name: "frb_generator_test",
-                port: Some(port_),
-                mode: flutter_rust_bridge::FfiCallMode::Normal,
-            },
-            move || {
-                move |task_callback| {
-                    Result::<_, ()>::Ok(crate::api::rust_opaque::frb_generator_test())
-                }
-            },
-        )
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, flutter_rust_bridge::RustOpaque<
+        crate::auxiliary::sample_types::FrbOpaqueReturn,
+    >, _>(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "frb_generator_test",
+            port: Some(port_),
+            mode: flutter_rust_bridge::FfiCallMode::Normal,
+        },
+        move || {
+            move |task_callback| Result::<_, ()>::Ok(crate::api::rust_opaque::frb_generator_test())
+        },
+    )
 }
 fn wire_opaque_array_impl(port_: flutter_rust_bridge::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, [RustOpaque<crate::auxiliary::sample_types::HideData>; 2], _>(
-            flutter_rust_bridge::WrapInfo {
-                debug_name: "opaque_array",
-                port: Some(port_),
-                mode: flutter_rust_bridge::FfiCallMode::Normal,
-            },
-            move || {
-                move |task_callback| Result::<_, ()>::Ok(crate::api::rust_opaque::opaque_array())
-            },
-        )
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [flutter_rust_bridge::RustOpaque<
+        crate::auxiliary::sample_types::HideData,
+    >; 2], _>(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "opaque_array",
+            port: Some(port_),
+            mode: flutter_rust_bridge::FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(crate::api::rust_opaque::opaque_array()),
+    )
 }
 fn wire_opaque_array_run_impl(
     port_: flutter_rust_bridge::MessagePort,
-    data: impl Wire2Api<[RustOpaque<crate::auxiliary::sample_types::HideData>; 2]>
+    data: impl Wire2Api<[flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>; 2]>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
@@ -2957,19 +2954,20 @@ fn wire_opaque_array_run_impl(
     )
 }
 fn wire_opaque_vec_impl(port_: flutter_rust_bridge::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, Vec<RustOpaque<crate::auxiliary::sample_types::HideData>>, _>(
-            flutter_rust_bridge::WrapInfo {
-                debug_name: "opaque_vec",
-                port: Some(port_),
-                mode: flutter_rust_bridge::FfiCallMode::Normal,
-            },
-            move || move |task_callback| Result::<_, ()>::Ok(crate::api::rust_opaque::opaque_vec()),
-        )
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<
+        flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>,
+    >, _>(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "opaque_vec",
+            port: Some(port_),
+            mode: flutter_rust_bridge::FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(crate::api::rust_opaque::opaque_vec()),
+    )
 }
 fn wire_opaque_vec_run_impl(
     port_: flutter_rust_bridge::MessagePort,
-    data: impl Wire2Api<Vec<RustOpaque<crate::auxiliary::sample_types::HideData>>>
+    data: impl Wire2Api<Vec<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
@@ -3024,7 +3022,7 @@ fn wire_run_nested_opaque_impl(
 }
 fn wire_run_non_clone_impl(
     port_: flutter_rust_bridge::MessagePort,
-    clone: impl Wire2Api<RustOpaque<crate::auxiliary::sample_types::NonCloneData>>
+    clone: impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
@@ -3043,7 +3041,7 @@ fn wire_run_non_clone_impl(
 }
 fn wire_run_opaque_impl(
     port_: flutter_rust_bridge::MessagePort,
-    opaque: impl Wire2Api<RustOpaque<crate::auxiliary::sample_types::HideData>>
+    opaque: impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
@@ -3062,7 +3060,7 @@ fn wire_run_opaque_impl(
 }
 fn wire_run_opaque_with_delay_impl(
     port_: flutter_rust_bridge::MessagePort,
-    opaque: impl Wire2Api<RustOpaque<crate::auxiliary::sample_types::HideData>>
+    opaque: impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
@@ -3081,7 +3079,7 @@ fn wire_run_opaque_with_delay_impl(
 }
 fn wire_unwrap_rust_opaque_impl(
     port_: flutter_rust_bridge::MessagePort,
-    opaque: impl Wire2Api<RustOpaque<crate::auxiliary::sample_types::HideData>>
+    opaque: impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
@@ -3097,22 +3095,23 @@ fn wire_unwrap_rust_opaque_impl(
     )
 }
 fn wire_frb_sync_generator_test_impl(port_: flutter_rust_bridge::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, RustOpaque<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>, _>(
-            flutter_rust_bridge::WrapInfo {
-                debug_name: "frb_sync_generator_test",
-                port: Some(port_),
-                mode: flutter_rust_bridge::FfiCallMode::Normal,
-            },
-            move || {
-                move |task_callback| {
-                    Result::<_, ()>::Ok(crate::api::rust_opaque_sync::frb_sync_generator_test())
-                }
-            },
-        )
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, flutter_rust_bridge::RustOpaque<
+        crate::auxiliary::sample_types::FrbOpaqueSyncReturn,
+    >, _>(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "frb_sync_generator_test",
+            port: Some(port_),
+            mode: flutter_rust_bridge::FfiCallMode::Normal,
+        },
+        move || {
+            move |task_callback| {
+                Result::<_, ()>::Ok(crate::api::rust_opaque_sync::frb_sync_generator_test())
+            }
+        },
+    )
 }
 fn wire_sync_run_opaque_impl(
-    opaque: impl Wire2Api<RustOpaque<crate::auxiliary::sample_types::NonSendHideData>>
+    opaque: impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonSendHideData>>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
