@@ -23,6 +23,7 @@ Future<void> main() async {
     final inner = await useMsgid(id: msgid);
     expect(inner[2], 14);
   });
+
   test('BlobId', () async {
     final inner = U8Array1600.init();
     inner[14] = 99;
@@ -33,6 +34,7 @@ Future<void> main() async {
     expect(unboxed[10], 100);
     expect(unboxed[14], 99);
   });
+
   test('FeedId', () async {
     final inner = U8Array8.init();
     inner[3] = 3;
@@ -43,6 +45,7 @@ Future<void> main() async {
     expect(raw[5], 5);
     expect(raw[3], 3);
   });
+
   test('TestId', () async {
     final inner = I32Array2.init();
     inner[0] = 1;
@@ -51,12 +54,14 @@ Future<void> main() async {
     expect(testId.field0[0], 1);
     expect(testId.field0[1], 2);
   });
+
   test('LastNumber', () async {
     final array = F64Array16.init();
     array[15] = 88.888;
     final result = await lastNumber(array: array);
     expect(result, 88.888);
   });
+
   test('NestedId', () async {
     final id0 = TestId(field0: I32Array2.init());
     id0.field0[1] = 10;

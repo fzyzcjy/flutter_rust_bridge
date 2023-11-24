@@ -467,18 +467,6 @@ void main(List<String> args) async {
     expect(await getUsize(u: 2), 2);
   });
 
-  test('dart check that non-final field is modifiable', () {
-    var customized = Customized(finalField: "finalField", nonFinalField: "nonFinalField");
-    expect(customized.nonFinalField, "nonFinalField");
-    customized.nonFinalField = "changed";
-    expect(customized.nonFinalField, "changed");
-  });
-
-  test('dart call next_user_id to test metadata annotations', () async {
-    UserId userId = UserId(value: 11);
-    expect(await nextUserId(userId: userId), UserId(value: 12));
-  });
-
   test('ConcatenateWith test', () async {
     final ConcatenateWith concatenateWith = ConcatenateWith(a: "hello ");
     final String concatenated = await concatenateWith.concatenate(b: "world");
