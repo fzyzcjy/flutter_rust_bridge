@@ -11,7 +11,7 @@ use std::str::FromStr;
 #[serde(transparent)]
 pub struct Namespace {
     // Represent via this, instead of `Vec<String>`, to avoid extra memory overhead
-    joined_path: String,
+    pub(crate) joined_path: String,
 }
 
 impl Namespace {

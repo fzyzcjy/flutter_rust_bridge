@@ -39,7 +39,7 @@ pub(crate) fn generate(
     Ok(WireRustOutputSpecMisc {
         file_attributes: Acc::new_common(vec![FILE_ATTRIBUTES.to_string().into()]),
         code_header: Acc::new_common(vec![generate_code_header().into()]),
-        imports: Acc::new_common(vec![generate_imports().into()]),
+        imports: Acc::new_common(vec![generate_imports(&cache.distinct_types, context).into()]),
         wire_funcs: context
             .ir_pack
             .funcs
@@ -72,11 +72,20 @@ fn generate_code_header() -> String {
     )
 }
 
-fn generate_imports() -> String {
+fn generate_imports(types: &[IrType], context: WireRustGeneratorContext) -> String {
+    let imports_from_types = types
+        .iter()
+        .flat_map(|ty| WireRustGenerator::new(ty.clone(), context).generate_imports())
+        .flatten()
+        .collect::<HashSet<String>>()
+        .into_iter()
+        .join("\n");
+
     // NOTE Do *not* use imports when possible, instead use fully specified name directly
-    "use flutter_rust_bridge::Handler;
-    use flutter_rust_bridge::rust2dart::IntoIntoDart;"
-        .into()
+    let static_imports = "use flutter_rust_bridge::Handler;
+    use flutter_rust_bridge::rust2dart::IntoIntoDart;";
+
+    imports_from_types + static_imports
 }
 
 fn generate_wrapper_struct(ty: &IrType, context: WireRustGeneratorContext) -> Option<String> {
