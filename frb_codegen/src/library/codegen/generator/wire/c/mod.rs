@@ -26,7 +26,10 @@ pub(crate) fn generate(
         rust_output_texts,
     )?;
     dumper.dump(ConfigDumpContent::GeneratorSpec, "wire_c.json", &spec)?;
+
     let text = text_generator::generate(spec)?;
+    dumper.dump_str(ConfigDumpContent::GeneratorText, "wire_c/content.h", &text)?;
+
     Ok(GeneratorWireCOutput {
         output_texts: PathTexts(vec![PathText::new(
             config.c_output_path.clone(),

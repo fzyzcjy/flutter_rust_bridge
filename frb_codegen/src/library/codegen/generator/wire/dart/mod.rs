@@ -27,6 +27,12 @@ pub(crate) fn generate(
     dumper.dump(ConfigDumpContent::GeneratorSpec, "wire_dart.json", &spec)?;
 
     let text = text_generator::generate(&spec, &context.config)?;
+    dumper.dump_acc(
+        ConfigDumpContent::GeneratorText,
+        "wire_dart",
+        "dart",
+        &text.text,
+    )?;
 
     Ok(GeneratorWireDartOutput {
         output_texts: PathTexts::new_from_targets(

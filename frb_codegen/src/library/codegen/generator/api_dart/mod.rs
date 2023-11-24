@@ -25,7 +25,15 @@ pub(crate) fn generate(
 ) -> Result<GeneratorApiDartOutput> {
     let spec = spec_generator::generate(ir_pack, config, dumper)?;
     dumper.dump(ConfigDumpContent::GeneratorSpec, "api_dart.json", &spec)?;
+
     let text = text_generator::generate(&spec, config)?;
+    dumper.dump_path_texts(
+        ConfigDumpContent::GeneratorText,
+        "api_dart",
+        &text.output_texts,
+        &config.dart_decl_base_output_path,
+    )?;
+
     Ok(GeneratorApiDartOutput {
         output_texts: text.output_texts,
         needs_freezed: spec.namespaced_items.values().any(|x| x.needs_freezed),

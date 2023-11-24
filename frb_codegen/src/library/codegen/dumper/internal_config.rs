@@ -20,4 +20,5 @@ pub enum ConfigDumpContent {
     Ir,
     GeneratorInfo,
     GeneratorSpec,
+    GeneratorText,
 }

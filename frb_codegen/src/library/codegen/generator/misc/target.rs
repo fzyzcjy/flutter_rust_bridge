@@ -2,14 +2,15 @@ use crate::enum_map;
 use anyhow::bail;
 use serde::Serialize;
 use std::convert::{TryFrom, TryInto};
+use strum_macros::{Display, EnumIter};
 
-#[derive(Debug, Clone, Copy, Eq, PartialEq, strum_macros::EnumIter, Serialize, Hash)]
+#[derive(Debug, Clone, Copy, Eq, PartialEq, EnumIter, Display, Serialize, Hash)]
 pub enum Target {
     Io,
     Wasm,
 }
 
-#[derive(Debug, Clone, Copy, Eq, PartialEq, strum_macros::EnumIter, Serialize, Hash)]
+#[derive(Debug, Clone, Copy, Eq, PartialEq, EnumIter, Display, Serialize, Hash)]
 pub enum TargetOrCommon {
     Common,
     Io,
