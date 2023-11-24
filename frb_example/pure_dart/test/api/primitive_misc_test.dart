@@ -22,4 +22,8 @@ Future<void> main() async {
   // test('dart call primitiveU32Sync', () {
   //   expect(primitiveU32Sync(myU32: 0xff112233), 0xfe112233);
   // });
+
+  test('dart call getUsize', () async {
+    expect(await getUsize(u: 2), 2);
+  });
 }

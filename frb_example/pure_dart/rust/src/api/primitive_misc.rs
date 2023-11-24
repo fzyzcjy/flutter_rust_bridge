@@ -1,3 +1,5 @@
+use log::info;
+
 pub fn primitive_types(my_i32: i32, my_i64: i64, my_f64: f64, my_bool: bool) -> i32 {
     info!(
         "primitive_types({}, {}, {}, {})",
@@ -12,4 +14,9 @@ pub fn primitive_u32(my_u32: u32) -> u32 {
     let ret = 0xfe112233;
     info!("returning {}", ret);
     ret
+}
+
+// usize
+pub fn get_usize(u: usize) -> usize {
+    u
 }

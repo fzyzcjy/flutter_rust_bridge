@@ -21,6 +21,13 @@ Future<void> main() async {
     testComplexStruct(complexStructResp, arrLen: arrLen);
   });
 
+  test('loop and call many times', () async {
+    var obj = _createMyTreeNode(arrLen: 5);
+    for (var i = 0; i < 500; ++i) {
+      obj = await handleComplexStruct(s: obj);
+    }
+  });
+
   test("dart call list_of_primitive_enums", () async {
     List<Weekdays> days = await listOfPrimitiveEnums(weekdays: Weekdays.values);
     expect(days, Weekdays.values);

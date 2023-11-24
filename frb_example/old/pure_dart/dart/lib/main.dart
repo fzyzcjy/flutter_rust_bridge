@@ -74,17 +74,6 @@ void main(List<String> args) async {
     expect(opt.buffers, nulls);
   });
 
-  test('loop and call many times', () async {
-    var obj = _createMyTreeNode(arrLen: 5);
-    for (var i = 0; i < 500; ++i) {
-      obj = await handleComplexStruct(s: obj);
-    }
-  });
-
-  test('dart call getUsize', () async {
-    expect(await getUsize(u: 2), 2);
-  });
-
   test('test empty struct', () async {
     final empty = Empty();
     final output = await emptyStruct(empty: empty);

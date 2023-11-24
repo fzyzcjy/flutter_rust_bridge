@@ -715,11 +715,6 @@ pub fn get_complex_array() -> [Point; 2] {
     [Point { x: 1.0, y: 1.0 }, Point { x: 2.0, y: 2.0 }]
 }
 
-// usize
-pub fn get_usize(u: usize) -> usize {
-    u
-}
-
 /// Example for @freezed and @meta.immutable
 #[frb(dart_metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]
 pub struct UserId {
