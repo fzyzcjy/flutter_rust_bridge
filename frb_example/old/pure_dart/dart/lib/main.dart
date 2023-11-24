@@ -689,22 +689,6 @@ void main(List<String> args) async {
       var res = returnNonDroppableDartOpaque(opaque: f);
       expect(identical(res, f), isTrue);
     });
-
-    test('dart call handle_type_id', () async {
-      final id = await handleTypeAliasId(input: 42);
-      expect(id, 42);
-    });
-    test('dart call handle_type_nest_alias_id', () async {
-      final id = await handleTypeNestAliasId(input: 42);
-      expect(id, 42);
-    });
-    test('dart call handle_type_model', () async {
-      final testModel = await handleTypeAliasModel(input: 42);
-      expect(testModel.id, 42);
-      expect(testModel.name, "TestModel");
-      expect(testModel.aliasEnum, MyEnum.False);
-      expect(testModel.aliasStruct.content, true);
-    });
   });
 
   test('dart call return_dart_dynamic', () async {
