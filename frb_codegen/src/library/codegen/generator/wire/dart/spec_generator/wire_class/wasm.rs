@@ -71,15 +71,17 @@ fn generate_method(func: &ExternFunc) -> MethodInfo {
         .map(|x| reconstruct_dart_wire_type_from_raw_repr(x))
         .unwrap_or_else(|| "void".to_owned());
 
-    let input_params = func
-        .inputs
-        .iter()
-        .map(|param| format!("{} {}", param.ty, param.name))
+    let input_params = (func.params.iter())
+        .map(|param| {
+            format!(
+                "{} {}",
+                param.dart_type.as_deref().unwrap_or("UNKNOWN"),
+                param.name
+            )
+        })
         .join(",");
 
-    let forward_args = func
-        .inputs
-        .iter()
+    let forward_args = (func.params.iter())
         .map(|param| param.name.to_string())
         .join(",");
 
