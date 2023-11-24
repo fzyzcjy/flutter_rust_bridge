@@ -4002,19 +4002,16 @@ class RustLibWire implements BaseWire {
   late final _wire_stream_sink_throw_anyhow =
       _wire_stream_sink_throw_anyhowPtr.asFunction<void Function(int)>();
 
-  void wire_sync_return_custom_struct_error(
-    int port_,
-  ) {
-    return _wire_sync_return_custom_struct_error(
-      port_,
-    );
+  WireSyncReturn wire_sync_return_custom_struct_error() {
+    return _wire_sync_return_custom_struct_error();
   }
 
   late final _wire_sync_return_custom_struct_errorPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
           'wire_sync_return_custom_struct_error');
   late final _wire_sync_return_custom_struct_error =
-      _wire_sync_return_custom_struct_errorPtr.asFunction<void Function(int)>();
+      _wire_sync_return_custom_struct_errorPtr
+          .asFunction<WireSyncReturn Function()>();
 
   void wire_throw_anyhow(
     int port_,

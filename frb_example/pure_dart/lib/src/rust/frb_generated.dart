@@ -300,7 +300,7 @@ abstract class RustLibApi extends BaseApi {
 
   Stream<String> streamSinkThrowAnyhow({dynamic hint});
 
-  Future<void> syncReturnCustomStructError({dynamic hint});
+  void syncReturnCustomStructError({dynamic hint});
 
   Future<void> throwAnyhow({dynamic hint});
 
@@ -2678,9 +2678,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> syncReturnCustomStructError({dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_sync_return_custom_struct_error(port_),
+  void syncReturnCustomStructError({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_sync_return_custom_struct_error(),
       parseSuccessData: _wire2api_unit,
       parseErrorData: _wire2api_custom_struct_error,
       constMeta: kSyncReturnCustomStructErrorConstMeta,

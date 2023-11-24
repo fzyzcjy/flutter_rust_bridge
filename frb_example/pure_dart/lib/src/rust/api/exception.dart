@@ -56,7 +56,7 @@ Future<void> returnCustomNestedError2({dynamic hint}) =>
 Future<void> returnCustomStructError({dynamic hint}) =>
     RustLib.instance.api.returnCustomStructError(hint: hint);
 
-Future<void> syncReturnCustomStructError({dynamic hint}) =>
+void syncReturnCustomStructError({dynamic hint}) =>
     RustLib.instance.api.syncReturnCustomStructError(hint: hint);
 
 Future<int> returnCustomStructOk({dynamic hint}) =>

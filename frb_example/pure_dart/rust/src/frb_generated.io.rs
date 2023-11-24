@@ -4309,8 +4309,9 @@ pub extern "C" fn wire_stream_sink_throw_anyhow(port_: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_return_custom_struct_error(port_: i64) {
-    wire_sync_return_custom_struct_error_impl(port_)
+pub extern "C" fn wire_sync_return_custom_struct_error(
+) -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_sync_return_custom_struct_error_impl()
 }
 
 #[no_mangle]

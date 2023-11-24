@@ -1476,14 +1476,14 @@ fn wire_stream_sink_throw_anyhow_impl(port_: flutter_rust_bridge::MessagePort) {
         },
     )
 }
-fn wire_sync_return_custom_struct_error_impl(port_: flutter_rust_bridge::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+fn wire_sync_return_custom_struct_error_impl() -> flutter_rust_bridge::support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         flutter_rust_bridge::WrapInfo {
             debug_name: "sync_return_custom_struct_error",
-            port: Some(port_),
-            mode: flutter_rust_bridge::FfiCallMode::Normal,
+            port: None,
+            mode: flutter_rust_bridge::FfiCallMode::Sync,
         },
-        move || move |task_callback| crate::api::exception::sync_return_custom_struct_error(),
+        move || crate::api::exception::sync_return_custom_struct_error(),
     )
 }
 fn wire_throw_anyhow_impl(port_: flutter_rust_bridge::MessagePort) {

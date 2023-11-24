@@ -173,6 +173,7 @@ pub fn return_custom_struct_error() -> Result<(), CustomStructError> {
     })
 }
 
+#[flutter_rust_bridge::frb(sync)]
 pub fn sync_return_custom_struct_error() -> Result<(), CustomStructError> {
     Err(CustomStructError {
         message: "error message".to_string(),

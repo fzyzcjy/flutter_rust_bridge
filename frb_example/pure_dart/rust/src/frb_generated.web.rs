@@ -2286,8 +2286,8 @@ pub fn wire_stream_sink_throw_anyhow(port_: flutter_rust_bridge::MessagePort) {
 }
 
 #[wasm_bindgen]
-pub fn wire_sync_return_custom_struct_error(port_: flutter_rust_bridge::MessagePort) {
-    wire_sync_return_custom_struct_error_impl(port_)
+pub fn wire_sync_return_custom_struct_error() -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_sync_return_custom_struct_error_impl()
 }
 
 #[wasm_bindgen]

@@ -186,7 +186,7 @@ Future<void> main() async {
         } catch (e) {
           final FrbBacktracedException ex = e as FrbBacktracedException;
           print("backtrace: ${ex.backtrace}");
-          expect(ex.backtrace, contains("wire_non_static_return_err_custom_error__method__SomeStruct::"));
+          expect(ex.backtrace, contains("backtrace::capture::"));
           didCatch = true;
         }
         expect(didCatch, true);

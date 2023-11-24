@@ -1937,8 +1937,9 @@ class RustLibWire extends BaseWire {
   void wire_stream_sink_throw_anyhow(NativePortType port_) =>
       wasmModule.wire_stream_sink_throw_anyhow(port_);
 
-  void wire_sync_return_custom_struct_error(NativePortType port_) =>
-      wasmModule.wire_sync_return_custom_struct_error(port_);
+  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_sync_return_custom_struct_error() =>
+          wasmModule.wire_sync_return_custom_struct_error();
 
   void wire_throw_anyhow(NativePortType port_) =>
       wasmModule.wire_throw_anyhow(port_);
@@ -2997,7 +2998,8 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_stream_sink_throw_anyhow(NativePortType port_);
 
-  external void wire_sync_return_custom_struct_error(NativePortType port_);
+  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_sync_return_custom_struct_error();
 
   external void wire_throw_anyhow(NativePortType port_);
 

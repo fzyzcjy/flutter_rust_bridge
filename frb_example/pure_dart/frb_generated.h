@@ -975,7 +975,7 @@ void wire_return_ok_custom_error(int64_t port_);
 
 void wire_stream_sink_throw_anyhow(int64_t port_);
 
-void wire_sync_return_custom_struct_error(int64_t port_);
+WireSyncReturn wire_sync_return_custom_struct_error(void);
 
 void wire_throw_anyhow(int64_t port_);
 
