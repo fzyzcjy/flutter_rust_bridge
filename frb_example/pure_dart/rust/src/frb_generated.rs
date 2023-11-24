@@ -2449,22 +2449,6 @@ fn wire_handle_zero_copy_vec_of_primitive_impl(
             },
         )
 }
-fn wire_get_usize_impl(
-    port_: flutter_rust_bridge::MessagePort,
-    u: impl Wire2Api<usize> + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, usize, _>(
-        flutter_rust_bridge::WrapInfo {
-            debug_name: "get_usize",
-            port: Some(port_),
-            mode: flutter_rust_bridge::FfiCallMode::Normal,
-        },
-        move || {
-            let api_u = u.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(crate::api::primitive_misc::get_usize(api_u))
-        },
-    )
-}
 fn wire_primitive_types_impl(
     port_: flutter_rust_bridge::MessagePort,
     my_i32: impl Wire2Api<i32> + core::panic::UnwindSafe,

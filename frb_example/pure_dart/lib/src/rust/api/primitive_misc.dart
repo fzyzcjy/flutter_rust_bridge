@@ -14,6 +14,3 @@ Future<int> primitiveTypes(
 
 Future<int> primitiveU32({required int myU32, dynamic hint}) =>
     RustLib.instance.api.primitiveU32(myU32: myU32, hint: hint);
-
-Future<int> getUsize({required int u, dynamic hint}) =>
-    RustLib.instance.api.getUsize(u: u, hint: hint);

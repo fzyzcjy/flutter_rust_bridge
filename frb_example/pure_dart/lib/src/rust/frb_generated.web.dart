@@ -2119,9 +2119,6 @@ class RustLibWire extends BaseWire {
   void wire_handle_zero_copy_vec_of_primitive(NativePortType port_, int n) =>
       wasmModule.wire_handle_zero_copy_vec_of_primitive(port_, n);
 
-  void wire_get_usize(NativePortType port_, int u) =>
-      wasmModule.wire_get_usize(port_, u);
-
   void wire_primitive_types(NativePortType port_, int my_i32, Object my_i64,
           double my_f64, bool my_bool) =>
       wasmModule.wire_primitive_types(port_, my_i32, my_i64, my_f64, my_bool);
@@ -3095,8 +3092,6 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_handle_zero_copy_vec_of_primitive(
       NativePortType port_, int n);
-
-  external void wire_get_usize(NativePortType port_, int u);
 
   external void wire_primitive_types(NativePortType port_, int my_i32,
       Object my_i64, double my_f64, bool my_bool);

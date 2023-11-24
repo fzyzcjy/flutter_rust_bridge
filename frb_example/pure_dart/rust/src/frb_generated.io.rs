@@ -4590,11 +4590,6 @@ pub extern "C" fn wire_handle_zero_copy_vec_of_primitive(port_: i64, n: i32) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_get_usize(port_: i64, u: usize) {
-    wire_get_usize_impl(port_, u)
-}
-
-#[no_mangle]
 pub extern "C" fn wire_primitive_types(
     port_: i64,
     my_i32: i32,

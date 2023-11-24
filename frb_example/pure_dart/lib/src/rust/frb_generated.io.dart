@@ -4968,22 +4968,6 @@ class RustLibWire implements BaseWire {
       _wire_handle_zero_copy_vec_of_primitivePtr
           .asFunction<void Function(int, int)>();
 
-  void wire_get_usize(
-    int port_,
-    int u,
-  ) {
-    return _wire_get_usize(
-      port_,
-      u,
-    );
-  }
-
-  late final _wire_get_usizePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
-          'wire_get_usize');
-  late final _wire_get_usize =
-      _wire_get_usizePtr.asFunction<void Function(int, int)>();
-
   void wire_primitive_types(
     int port_,
     int my_i32,

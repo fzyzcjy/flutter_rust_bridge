@@ -450,8 +450,6 @@ abstract class RustLibApi extends BaseApi {
   Future<ZeroCopyVecOfPrimitivePack> handleZeroCopyVecOfPrimitive(
       {required int n, dynamic hint});
 
-  Future<int> getUsize({required int u, dynamic hint});
-
   Future<int> primitiveTypes(
       {required int myI32,
       required BigInt myI64,
@@ -3794,25 +3792,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(
         debugName: "handle_zero_copy_vec_of_primitive",
         argNames: ["n"],
-      );
-
-  @override
-  Future<int> getUsize({required int u, dynamic hint}) {
-    var arg0 = api2wire_usize(u);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_get_usize(port_, arg0),
-      parseSuccessData: _wire2api_usize,
-      parseErrorData: null,
-      constMeta: kGetUsizeConstMeta,
-      argValues: [u],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kGetUsizeConstMeta => const TaskConstMeta(
-        debugName: "get_usize",
-        argNames: ["u"],
       );
 
   @override
@@ -8438,10 +8417,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return UserId(
       value: _wire2api_u_32(arr[0]),
     );
-  }
-
-  int _wire2api_usize(dynamic raw) {
-    return wire2apiI64OrU64(raw);
   }
 
   VecOfPrimitivePack _wire2api_vec_of_primitive_pack(dynamic raw) {

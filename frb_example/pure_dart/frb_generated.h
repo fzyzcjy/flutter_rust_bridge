@@ -1101,8 +1101,6 @@ void wire_handle_vec_of_primitive(int64_t port_, int32_t n);
 
 void wire_handle_zero_copy_vec_of_primitive(int64_t port_, int32_t n);
 
-void wire_get_usize(int64_t port_, uintptr_t u);
-
 void wire_primitive_types(int64_t port_,
                           int32_t my_i32,
                           int64_t my_i64,
@@ -2122,7 +2120,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_get_nested_dart_opaque);
     dummy_var ^= ((int64_t) (void*) wire_get_sum_array);
     dummy_var ^= ((int64_t) (void*) wire_get_sum_struct);
-    dummy_var ^= ((int64_t) (void*) wire_get_usize);
     dummy_var ^= ((int64_t) (void*) wire_handle_big_buffers);
     dummy_var ^= ((int64_t) (void*) wire_handle_complex_struct);
     dummy_var ^= ((int64_t) (void*) wire_handle_customized_struct);

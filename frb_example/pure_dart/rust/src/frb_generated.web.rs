@@ -2589,11 +2589,6 @@ pub fn wire_handle_zero_copy_vec_of_primitive(port_: flutter_rust_bridge::Messag
 }
 
 #[wasm_bindgen]
-pub fn wire_get_usize(port_: flutter_rust_bridge::MessagePort, u: usize) {
-    wire_get_usize_impl(port_, u)
-}
-
-#[wasm_bindgen]
 pub fn wire_primitive_types(
     port_: flutter_rust_bridge::MessagePort,
     my_i32: i32,
