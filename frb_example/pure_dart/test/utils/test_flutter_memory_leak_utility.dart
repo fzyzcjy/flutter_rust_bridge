@@ -29,7 +29,7 @@ class VmServiceUtil {
   }
 
   Future<void> gc() async {
-    final isolateId = Service.getIsolateID(Isolate.current)!;
+    final isolateId = Service.getIsolateId(Isolate.current)!;
     final profile = await vmService.getAllocationProfile(isolateId, gc: true);
     log('gc triggered (heapUsage=${profile.memoryUsage?.heapUsage})');
   }
