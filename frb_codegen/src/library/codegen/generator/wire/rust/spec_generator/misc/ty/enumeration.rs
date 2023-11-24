@@ -64,7 +64,7 @@ impl<'a> WireRustGeneratorMiscTrait for EnumRefWireRustGenerator<'a> {
 
         Some(format!(
             "match None::<{}>.unwrap() {{ {} }}",
-            src.name.name,
+            src.name.rust_style(),
             branches.join(","),
         ))
     }

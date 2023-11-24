@@ -42,7 +42,7 @@ impl<'a> WireRustGeneratorMiscTrait for StructRefWireRustGenerator<'a> {
 
         Some(format!(
             "{{ let {var} = None::<{src_name}>.unwrap(); {checks} }} ",
-            src_name = src.name.name,
+            src_name = src.name.rust_style(),
         ))
     }
 }
