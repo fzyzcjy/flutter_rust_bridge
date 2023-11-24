@@ -3329,6 +3329,27 @@ pub fn share_opaque_RustOpaque_i_32(ptr: *const std::ffi::c_void) -> *const std:
 }
 
 #[wasm_bindgen]
+pub fn drop_opaque_RustOpaque_non_clone_data(ptr: *const std::ffi::c_void) {
+    unsafe {
+        std::sync::Arc::<crate::auxiliary::sample_types::NonCloneData>::decrement_strong_count(
+            ptr as _,
+        );
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_RustOpaque_non_clone_data(
+    ptr: *const std::ffi::c_void,
+) -> *const std::ffi::c_void {
+    unsafe {
+        std::sync::Arc::<crate::auxiliary::sample_types::NonCloneData>::increment_strong_count(
+            ptr as _,
+        );
+        ptr
+    }
+}
+
+#[wasm_bindgen]
 pub fn drop_opaque_RustOpaque_non_send_hide_data(ptr: *const std::ffi::c_void) {
     unsafe {
         std::sync::Arc::<crate::auxiliary::sample_types::NonSendHideData>::decrement_strong_count(

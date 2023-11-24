@@ -6472,6 +6472,26 @@ class RustLibWire implements BaseWire {
       _new_RustOpaque_box_dynDartDebugPtr
           .asFunction<wire_RustOpaque_box_dynDartDebug Function()>();
 
+  int new_RustOpaque_frb_opaque_return() {
+    return _new_RustOpaque_frb_opaque_return();
+  }
+
+  late final _new_RustOpaque_frb_opaque_returnPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>(
+          'new_RustOpaque_frb_opaque_return');
+  late final _new_RustOpaque_frb_opaque_return =
+      _new_RustOpaque_frb_opaque_returnPtr.asFunction<int Function()>();
+
+  int new_RustOpaque_frb_opaque_sync_return() {
+    return _new_RustOpaque_frb_opaque_sync_return();
+  }
+
+  late final _new_RustOpaque_frb_opaque_sync_returnPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>(
+          'new_RustOpaque_frb_opaque_sync_return');
+  late final _new_RustOpaque_frb_opaque_sync_return =
+      _new_RustOpaque_frb_opaque_sync_returnPtr.asFunction<int Function()>();
+
   wire_RustOpaque_hide_data new_RustOpaque_hide_data() {
     return _new_RustOpaque_hide_data();
   }
@@ -6536,6 +6556,35 @@ class RustLibWire implements BaseWire {
           'new_box_application_env');
   late final _new_box_application_env = _new_box_application_envPtr
       .asFunction<ffi.Pointer<wire_application_env> Function()>();
+
+  ffi.Pointer<ffi.Int64> new_box_autoadd_Chrono_Duration(
+    int value,
+  ) {
+    return _new_box_autoadd_Chrono_Duration(
+      value,
+    );
+  }
+
+  late final _new_box_autoadd_Chrono_DurationPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int64> Function(ffi.Int64)>>(
+          'new_box_autoadd_Chrono_Duration');
+  late final _new_box_autoadd_Chrono_Duration =
+      _new_box_autoadd_Chrono_DurationPtr
+          .asFunction<ffi.Pointer<ffi.Int64> Function(int)>();
+
+  ffi.Pointer<ffi.Int64> new_box_autoadd_Chrono_Naive(
+    int value,
+  ) {
+    return _new_box_autoadd_Chrono_Naive(
+      value,
+    );
+  }
+
+  late final _new_box_autoadd_Chrono_NaivePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int64> Function(ffi.Int64)>>(
+          'new_box_autoadd_Chrono_Naive');
+  late final _new_box_autoadd_Chrono_Naive = _new_box_autoadd_Chrono_NaivePtr
+      .asFunction<ffi.Pointer<ffi.Int64> Function(int)>();
 
   ffi.Pointer<ffi.Int64> new_box_autoadd_Chrono_Utc(
     int value,
@@ -6778,6 +6827,16 @@ class RustLibWire implements BaseWire {
       _new_box_autoadd_dart_opaque_nestedPtr
           .asFunction<ffi.Pointer<wire_dart_opaque_nested> Function()>();
 
+  ffi.Pointer<ffi.Int> new_box_autoadd_element() {
+    return _new_box_autoadd_element();
+  }
+
+  late final _new_box_autoadd_elementPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int> Function()>>(
+          'new_box_autoadd_element');
+  late final _new_box_autoadd_element =
+      _new_box_autoadd_elementPtr.asFunction<ffi.Pointer<ffi.Int> Function()>();
+
   ffi.Pointer<wire_enum_dart_opaque> new_box_autoadd_enum_dart_opaque() {
     return _new_box_autoadd_enum_dart_opaque();
   }
@@ -7013,6 +7072,17 @@ class RustLibWire implements BaseWire {
   late final _new_box_autoadd_i_8 =
       _new_box_autoadd_i_8Ptr.asFunction<ffi.Pointer<ffi.Int8> Function(int)>();
 
+  ffi.Pointer<ffi.Int> new_box_autoadd_list_of_nested_raw_string_mirrored() {
+    return _new_box_autoadd_list_of_nested_raw_string_mirrored();
+  }
+
+  late final _new_box_autoadd_list_of_nested_raw_string_mirroredPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int> Function()>>(
+          'new_box_autoadd_list_of_nested_raw_string_mirrored');
+  late final _new_box_autoadd_list_of_nested_raw_string_mirrored =
+      _new_box_autoadd_list_of_nested_raw_string_mirroredPtr
+          .asFunction<ffi.Pointer<ffi.Int> Function()>();
+
   ffi.Pointer<wire_macro_struct> new_box_autoadd_macro_struct() {
     return _new_box_autoadd_macro_struct();
   }
@@ -7074,6 +7144,17 @@ class RustLibWire implements BaseWire {
   late final _new_box_autoadd_my_tree_node = _new_box_autoadd_my_tree_nodePtr
       .asFunction<ffi.Pointer<wire_my_tree_node> Function()>();
 
+  ffi.Pointer<ffi.Int> new_box_autoadd_nested_raw_string_mirrored() {
+    return _new_box_autoadd_nested_raw_string_mirrored();
+  }
+
+  late final _new_box_autoadd_nested_raw_string_mirroredPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int> Function()>>(
+          'new_box_autoadd_nested_raw_string_mirrored');
+  late final _new_box_autoadd_nested_raw_string_mirrored =
+      _new_box_autoadd_nested_raw_string_mirroredPtr
+          .asFunction<ffi.Pointer<ffi.Int> Function()>();
+
   ffi.Pointer<wire_new_type_int> new_box_autoadd_new_type_int() {
     return _new_box_autoadd_new_type_int();
   }
@@ -7123,6 +7204,17 @@ class RustLibWire implements BaseWire {
           'new_box_autoadd_opt_vecs');
   late final _new_box_autoadd_opt_vecs = _new_box_autoadd_opt_vecsPtr
       .asFunction<ffi.Pointer<wire_opt_vecs> Function()>();
+
+  ffi.Pointer<ffi.Int> new_box_autoadd_raw_string_mirrored() {
+    return _new_box_autoadd_raw_string_mirrored();
+  }
+
+  late final _new_box_autoadd_raw_string_mirroredPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int> Function()>>(
+          'new_box_autoadd_raw_string_mirrored');
+  late final _new_box_autoadd_raw_string_mirrored =
+      _new_box_autoadd_raw_string_mirroredPtr
+          .asFunction<ffi.Pointer<ffi.Int> Function()>();
 
   ffi.Pointer<wire_record_string_i_32> new_box_autoadd_record_string_i_32() {
     return _new_box_autoadd_record_string_i_32();
@@ -7480,6 +7572,16 @@ class RustLibWire implements BaseWire {
   late final _new_box_f_64 =
       _new_box_f_64Ptr.asFunction<ffi.Pointer<ffi.Double> Function(double)>();
 
+  ffi.Pointer<wire_feed_id> new_box_feed_id() {
+    return _new_box_feed_id();
+  }
+
+  late final _new_box_feed_idPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_feed_id> Function()>>(
+          'new_box_feed_id');
+  late final _new_box_feed_id =
+      _new_box_feed_idPtr.asFunction<ffi.Pointer<wire_feed_id> Function()>();
+
   ffi.Pointer<ffi.Int32> new_box_i_32(
     int value,
   ) {
@@ -7605,6 +7707,20 @@ class RustLibWire implements BaseWire {
   late final _new_list_application_env_var = _new_list_application_env_varPtr
       .asFunction<ffi.Pointer<wire_list_application_env_var> Function(int)>();
 
+  ffi.Pointer<ffi.Int> new_list_application_settings(
+    int len,
+  ) {
+    return _new_list_application_settings(
+      len,
+    );
+  }
+
+  late final _new_list_application_settingsPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int> Function(ffi.Int32)>>(
+          'new_list_application_settings');
+  late final _new_list_application_settings = _new_list_application_settingsPtr
+      .asFunction<ffi.Pointer<ffi.Int> Function(int)>();
+
   ffi.Pointer<wire_list_attribute> new_list_attribute(
     int len,
   ) {
@@ -7633,6 +7749,48 @@ class RustLibWire implements BaseWire {
       'new_list_bool');
   late final _new_list_bool =
       _new_list_boolPtr.asFunction<ffi.Pointer<wire_list_bool> Function(int)>();
+
+  ffi.Pointer<ffi.Int> new_list_element(
+    int len,
+  ) {
+    return _new_list_element(
+      len,
+    );
+  }
+
+  late final _new_list_elementPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int> Function(ffi.Int32)>>(
+          'new_list_element');
+  late final _new_list_element =
+      _new_list_elementPtr.asFunction<ffi.Pointer<ffi.Int> Function(int)>();
+
+  ffi.Pointer<ffi.Int> new_list_enum_opaque(
+    int len,
+  ) {
+    return _new_list_enum_opaque(
+      len,
+    );
+  }
+
+  late final _new_list_enum_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int> Function(ffi.Int32)>>(
+          'new_list_enum_opaque');
+  late final _new_list_enum_opaque =
+      _new_list_enum_opaquePtr.asFunction<ffi.Pointer<ffi.Int> Function(int)>();
+
+  ffi.Pointer<ffi.Int> new_list_my_enum(
+    int len,
+  ) {
+    return _new_list_my_enum(
+      len,
+    );
+  }
+
+  late final _new_list_my_enumPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int> Function(ffi.Int32)>>(
+          'new_list_my_enum');
+  late final _new_list_my_enum =
+      _new_list_my_enumPtr.asFunction<ffi.Pointer<ffi.Int> Function(int)>();
 
   ffi.Pointer<wire_list_my_size> new_list_my_size(
     int len,
@@ -7663,6 +7821,21 @@ class RustLibWire implements BaseWire {
               ffi.Int32)>>('new_list_my_tree_node');
   late final _new_list_my_tree_node = _new_list_my_tree_nodePtr
       .asFunction<ffi.Pointer<wire_list_my_tree_node> Function(int)>();
+
+  ffi.Pointer<ffi.Int> new_list_nested_raw_string_mirrored(
+    int len,
+  ) {
+    return _new_list_nested_raw_string_mirrored(
+      len,
+    );
+  }
+
+  late final _new_list_nested_raw_string_mirroredPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int> Function(ffi.Int32)>>(
+          'new_list_nested_raw_string_mirrored');
+  late final _new_list_nested_raw_string_mirrored =
+      _new_list_nested_raw_string_mirroredPtr
+          .asFunction<ffi.Pointer<ffi.Int> Function(int)>();
 
   ffi.Pointer<wire_list_opt_String> new_list_opt_String(
     int len,
@@ -7742,6 +7915,20 @@ class RustLibWire implements BaseWire {
               ffi.Int32)>>('new_list_opt_list_prim_i_32');
   late final _new_list_opt_list_prim_i_32 = _new_list_opt_list_prim_i_32Ptr
       .asFunction<ffi.Pointer<wire_list_opt_list_prim_i_32> Function(int)>();
+
+  ffi.Pointer<ffi.Int> new_list_point(
+    int len,
+  ) {
+    return _new_list_point(
+      len,
+    );
+  }
+
+  late final _new_list_pointPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int> Function(ffi.Int32)>>(
+          'new_list_point');
+  late final _new_list_point =
+      _new_list_pointPtr.asFunction<ffi.Pointer<ffi.Int> Function(int)>();
 
   ffi.Pointer<wire_list_prim_f_32> new_list_prim_f_32(
     int len,
@@ -7893,6 +8080,35 @@ class RustLibWire implements BaseWire {
   late final _new_list_prim_u_8 = _new_list_prim_u_8Ptr
       .asFunction<ffi.Pointer<wire_list_prim_u_8> Function(int)>();
 
+  ffi.Pointer<ffi.Int> new_list_raw_string_enum_mirrored(
+    int len,
+  ) {
+    return _new_list_raw_string_enum_mirrored(
+      len,
+    );
+  }
+
+  late final _new_list_raw_string_enum_mirroredPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int> Function(ffi.Int32)>>(
+          'new_list_raw_string_enum_mirrored');
+  late final _new_list_raw_string_enum_mirrored =
+      _new_list_raw_string_enum_mirroredPtr
+          .asFunction<ffi.Pointer<ffi.Int> Function(int)>();
+
+  ffi.Pointer<ffi.Int> new_list_raw_string_mirrored(
+    int len,
+  ) {
+    return _new_list_raw_string_mirrored(
+      len,
+    );
+  }
+
+  late final _new_list_raw_string_mirroredPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int> Function(ffi.Int32)>>(
+          'new_list_raw_string_mirrored');
+  late final _new_list_raw_string_mirrored = _new_list_raw_string_mirroredPtr
+      .asFunction<ffi.Pointer<ffi.Int> Function(int)>();
+
   ffi.Pointer<wire_list_record_string_i_32> new_list_record_string_i_32(
     int len,
   ) {
@@ -7907,6 +8123,20 @@ class RustLibWire implements BaseWire {
               ffi.Int32)>>('new_list_record_string_i_32');
   late final _new_list_record_string_i_32 = _new_list_record_string_i_32Ptr
       .asFunction<ffi.Pointer<wire_list_record_string_i_32> Function(int)>();
+
+  ffi.Pointer<ffi.Int> new_list_sum_with(
+    int len,
+  ) {
+    return _new_list_sum_with(
+      len,
+    );
+  }
+
+  late final _new_list_sum_withPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int> Function(ffi.Int32)>>(
+          'new_list_sum_with');
+  late final _new_list_sum_with =
+      _new_list_sum_withPtr.asFunction<ffi.Pointer<ffi.Int> Function(int)>();
 
   ffi.Pointer<wire_list_test_id> new_list_test_id(
     int len,
@@ -8152,6 +8382,37 @@ class RustLibWire implements BaseWire {
               ffi.Pointer<ffi.Void>)>>('share_opaque_RustOpaque_i_32');
   late final _share_opaque_RustOpaque_i_32 = _share_opaque_RustOpaque_i_32Ptr
       .asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
+
+  void drop_opaque_RustOpaque_non_clone_data(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _drop_opaque_RustOpaque_non_clone_data(
+      ptr,
+    );
+  }
+
+  late final _drop_opaque_RustOpaque_non_clone_dataPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'drop_opaque_RustOpaque_non_clone_data');
+  late final _drop_opaque_RustOpaque_non_clone_data =
+      _drop_opaque_RustOpaque_non_clone_dataPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  ffi.Pointer<ffi.Void> share_opaque_RustOpaque_non_clone_data(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _share_opaque_RustOpaque_non_clone_data(
+      ptr,
+    );
+  }
+
+  late final _share_opaque_RustOpaque_non_clone_dataPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
+      'share_opaque_RustOpaque_non_clone_data');
+  late final _share_opaque_RustOpaque_non_clone_data =
+      _share_opaque_RustOpaque_non_clone_dataPtr
+          .asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
 
   void drop_opaque_RustOpaque_non_send_hide_data(
     ffi.Pointer<ffi.Void> ptr,
