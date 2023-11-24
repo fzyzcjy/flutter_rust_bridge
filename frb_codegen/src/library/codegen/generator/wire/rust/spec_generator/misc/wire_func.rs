@@ -94,6 +94,8 @@ fn generate_params(func: &IrFunc, context: WireRustGeneratorContext) -> Acc<Vec<
     let mut params = if has_port_argument(func.mode) {
         Acc::new(|target| {
             let rust_type = match target {
+                // NOTE Though in `io`, i64 == our MessagePort, but it will affect the cbindgen
+                // and ffigen and make code tricker, so we manually write down "i64" here.
                 TargetOrCommon::Io => "i64",
                 TargetOrCommon::Common | TargetOrCommon::Wasm => "flutter_rust_bridge::MessagePort",
             }
