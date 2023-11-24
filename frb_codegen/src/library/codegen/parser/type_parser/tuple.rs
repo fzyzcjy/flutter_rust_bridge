@@ -36,7 +36,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             IrStruct {
                 name: NamespacedName::new(namespace.clone(), safe_ident.clone()),
                 wrapper_name: None,
-                path: None,
                 is_fields_named: true,
                 dart_metadata: vec![],
                 comments: vec![],

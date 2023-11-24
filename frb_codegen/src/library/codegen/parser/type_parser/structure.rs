@@ -45,7 +45,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             .map(|(idx, field)| self.parse_struct_field(idx, field))
             .collect::<anyhow::Result<Vec<_>>>()?;
 
-        let path = Some(src_struct.0.path.clone());
         let comments = parse_comments(&src_struct.0.src.attrs);
 
         let attributes = FrbAttributes::parse(&src_struct.0.src.attrs)?;
@@ -54,7 +53,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         Ok(Some(IrStruct {
             name,
             wrapper_name,
-            path,
             fields,
             is_fields_named,
             dart_metadata,

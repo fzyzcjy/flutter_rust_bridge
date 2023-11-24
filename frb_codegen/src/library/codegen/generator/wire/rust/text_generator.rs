@@ -49,7 +49,6 @@ fn generate_merged_code(spec: &WireRustOutputSpec) -> Acc<WireRustOutputCode> {
 
     add("file_attributes", &spec.misc.file_attributes);
     add("code_header", &spec.misc.code_header);
-    add("imports", &spec.misc.imports);
     add("wire_funcs", &spec.misc.wire_funcs);
     add("wrapper_structs", &spec.misc.wrapper_structs);
     add("static_checks", &spec.misc.static_checks);

@@ -26,8 +26,4 @@ pub(crate) trait WireRustGeneratorMiscTrait {
     fn generate_static_checks(&self) -> Option<String> {
         None
     }
-
-    fn generate_imports(&self) -> Option<Vec<String>> {
-        None
-    }
 }

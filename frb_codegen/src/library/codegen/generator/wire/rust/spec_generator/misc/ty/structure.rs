@@ -45,9 +45,4 @@ impl<'a> WireRustGeneratorMiscTrait for StructRefWireRustGenerator<'a> {
             src_name = src.name.name,
         ))
     }
-
-    fn generate_imports(&self) -> Option<Vec<String>> {
-        let api_struct = self.ir.get(self.context.ir_pack);
-        (api_struct.path.as_ref()).map(|path| vec![format!("use {};", path.join("::"))])
-    }
 }

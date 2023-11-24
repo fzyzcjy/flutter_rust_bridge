@@ -24,7 +24,6 @@ pub(crate) mod wire_func;
 pub(crate) struct WireRustOutputSpecMisc {
     pub file_attributes: Acc<Vec<WireRustOutputCode>>,
     pub code_header: Acc<Vec<WireRustOutputCode>>,
-    pub imports: Acc<Vec<WireRustOutputCode>>,
     pub wire_funcs: Acc<Vec<WireRustOutputCode>>,
     pub wrapper_structs: Acc<Vec<WireRustOutputCode>>,
     pub static_checks: Acc<Vec<WireRustOutputCode>>,
@@ -39,9 +38,6 @@ pub(crate) fn generate(
     Ok(WireRustOutputSpecMisc {
         file_attributes: Acc::new_common(vec![FILE_ATTRIBUTES.to_string().into()]),
         code_header: Acc::new_common(vec![generate_code_header().into()]),
-        imports: Acc::new_common(vec![
-            generate_imports(&cache.distinct_types, context)?.into()
-        ]),
         wire_funcs: context
             .ir_pack
             .funcs
@@ -105,33 +101,6 @@ fn generate_static_checks(types: &[IrType], context: WireRustGeneratorContext) -
     lines.extend(raw);
     lines.push("};".to_owned());
     lines.join("\n")
-}
-
-fn generate_imports(types: &[IrType], context: WireRustGeneratorContext) -> anyhow::Result<String> {
-    let imports_for_rust_input = (context.config.rust_input_path_pack.rust_input_paths)
-        .iter()
-        .map(|rust_input_path| {
-            Ok(format!(
-                "use crate::{}::*;\n",
-                compute_mod_from_rust_crate_path(rust_input_path, &context.config.rust_crate_dir,)?
-            ))
-        })
-        .collect::<anyhow::Result<Vec<_>>>()?
-        .join("");
-
-    let imports_from_types = types
-        .iter()
-        .flat_map(|ty| WireRustGenerator::new(ty.clone(), context).generate_imports())
-        .flatten()
-        // TODO do we really need this?
-        // // Don't include imports from the API file
-        // .filter(|import| !import.starts_with(&format!("use crate::{rust_wire_mod}::")))
-        // de-duplicate
-        .collect::<HashSet<String>>()
-        .into_iter()
-        .join("\n");
-
-    Ok(imports_for_rust_input + &imports_from_types)
 }
 
 fn generate_executor(ir_pack: &IrPack) -> String {

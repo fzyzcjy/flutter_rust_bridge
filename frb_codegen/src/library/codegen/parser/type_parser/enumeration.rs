@@ -37,7 +37,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         name: NamespacedName,
         wrapper_name: Option<NamespacedName>,
     ) -> anyhow::Result<IrEnum> {
-        let path = src_enum.0.path.clone();
         let comments = parse_comments(&src_enum.0.src.attrs);
         let raw_variants = src_enum
             .0
@@ -53,7 +52,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         Ok(IrEnum {
             name,
             wrapper_name,
-            path,
             comments,
             variants,
             mode,
@@ -88,7 +86,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         Ok(IrVariantKind::Struct(IrStruct {
             name: NamespacedName::new(namespace, variant_ident),
             wrapper_name: None,
-            path: None,
             is_fields_named: field_ident.is_some(),
             dart_metadata: FrbAttributes::parse(attrs)?.dart_metadata(),
             comments: parse_comments(attrs),
