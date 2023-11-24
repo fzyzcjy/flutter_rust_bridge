@@ -21,3 +21,10 @@ pub fn handle_string_list(names: Vec<String>) -> Vec<String> {
     }
     names
 }
+
+#[derive(Debug, Clone)]
+pub struct Empty {}
+
+pub fn empty_struct(empty: Empty) -> Empty {
+    empty
+}

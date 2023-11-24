@@ -1389,13 +1389,6 @@ pub fn handle_type_alias_model(input: Id) -> TestModel {
     }
 }
 
-#[derive(Debug, Clone)]
-pub struct Empty {}
-
-pub fn empty_struct(empty: Empty) -> Empty {
-    empty
-}
-
 pub fn return_dart_dynamic() -> DartAbi {
     vec!["foo".into_dart()].into_dart()
 }

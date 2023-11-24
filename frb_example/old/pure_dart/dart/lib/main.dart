@@ -23,25 +23,6 @@ void main(List<String> args) async {
   final api = initializeExternalLibrary(dylibPath);
   tearDownAll(() => dispose());
 
-  test('dart call handleVecOfOpts', () async {
-    const loops = 20;
-    var opt = OptVecs(i32: [], enums: [Weekdays.monday], strings: ['foo'], buffers: []);
-    for (var i = 0; i < loops; i++) {
-      opt = await handleVecOfOpts(opt: opt);
-    }
-    final nulls = List.filled(loops, null);
-    expect(opt.i32, nulls);
-    expect(opt.enums, [Weekdays.monday, for (final val in nulls) val]);
-    expect(opt.strings, ['foo', for (final val in nulls) val]);
-    expect(opt.buffers, nulls);
-  });
-
-  test('test empty struct', () async {
-    final empty = Empty();
-    final output = await emptyStruct(empty: empty);
-    expect(output, isA<Empty>());
-  });
-
   group('extended sync', () {
     test('create', () {
       var data = syncCreateOpaque();
