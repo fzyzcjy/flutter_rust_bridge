@@ -39,7 +39,7 @@ pub(crate) fn generate(
     Ok(WireRustOutputSpecMisc {
         file_attributes: Acc::new_common(vec![FILE_ATTRIBUTES.to_string().into()]),
         code_header: Acc::new_common(vec![generate_code_header().into()]),
-        imports: Acc::new_common(vec![generate_imports(&cache.distinct_types, context).into()]),
+        imports: Acc::new(|_| vec![generate_imports(&cache.distinct_types, context).into()]),
         wire_funcs: context
             .ir_pack
             .funcs
