@@ -23,10 +23,10 @@ impl<'a> WireDartGeneratorMiscTrait for RustOpaqueWireDartGenerator<'a> {
 impl<'a> RustOpaqueWireDartGenerator<'a> {
     fn generate_share_or_drop_opaque(&self, op_name: &str) -> Acc<WireDartOutputCode> {
         let ty_dart_api_type =
-            ApiDartGenerator::new(self.ty.clone(), self.context.as_api_dart_context())
+            ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
                 .dart_api_type();
         let op_name_pascal = op_name.to_case(Case::Pascal);
-        let safe_ident = self.ty.safe_ident();
+        let safe_ident = self.ir.safe_ident();
 
         let definition =
             format!("Opaque{op_name_pascal}FnType get {op_name}Opaque{ty_dart_api_type}");
@@ -43,10 +43,10 @@ impl<'a> RustOpaqueWireDartGenerator<'a> {
 
     fn generate_opaque_finalizer(&self) -> Acc<WireDartOutputCode> {
         let ty_dart_api_type =
-            ApiDartGenerator::new(self.ty.clone(), self.context.as_api_dart_context())
+            ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
                 .dart_api_type();
         let ty_dart_api_type_camel = ty_dart_api_type.to_case(Case::Camel);
-        let ty_safe_ident = self.ty.safe_ident();
+        let ty_safe_ident = self.ir.safe_ident();
         let field_name = format!("{ty_dart_api_type_camel}Finalizer");
 
         let generate_platform_impl = |finalizer_arg: &str| WireDartOutputCode {

@@ -10,6 +10,7 @@ use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
+use crate::library::codegen::generator::wire::dart::spec_generator::misc::ty::WireDartGeneratorMiscTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;
 use crate::utils::path_utils::path_to_string;
 use anyhow::Context;
@@ -44,7 +45,7 @@ pub(crate) fn generate(
             .map(|f| api_impl_body::generate_api_impl_normal_function(f, context))
             .collect::<anyhow::Result<Vec<_>>>()?,
         extra_functions: (cache.distinct_types.iter())
-            .flat_map(|ty| WireDartGenerator::new(ty, context).generate_extra_functions())
+            .flat_map(|ty| WireDartGenerator::new(ty.clone(), context).generate_extra_functions())
             .collect(),
     })
 }
