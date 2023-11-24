@@ -23,6 +23,7 @@ pub(crate) struct WireRustDumpInfoType {
     rust_wire_modifier: HashMap<Target, String>,
     intodart_type: String,
     wrapper_struct_name: Option<String>,
+    generate_imports: Option<Vec<String>>,
 }
 
 pub(super) fn generate_dump_info(
@@ -45,6 +46,7 @@ pub(super) fn generate_dump_info(
                         .collect(),
                     intodart_type: gen.intodart_type(context.ir_pack),
                     wrapper_struct_name: gen.wrapper_struct_name(),
+                    generate_imports: gen.generate_imports(),
                 }
             })
             .collect(),
