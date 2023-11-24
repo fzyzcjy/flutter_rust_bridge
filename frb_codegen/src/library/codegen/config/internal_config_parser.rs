@@ -285,6 +285,7 @@ fn compute_dart_output_class_name_pack(config: &Config) -> DartOutputClassNamePa
         api_impl_class_name: with_postfix("ApiImpl"),
         api_impl_platform_class_name: with_postfix("ApiImplPlatform"),
         wire_class_name: with_postfix("Wire"),
+        wasm_module_name: with_postfix("WasmModule"),
     }
 }
 

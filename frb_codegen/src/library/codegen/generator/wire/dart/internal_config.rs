@@ -22,4 +22,5 @@ pub(crate) struct DartOutputClassNamePack {
     pub api_impl_class_name: String,
     pub api_impl_platform_class_name: String,
     pub wire_class_name: String,
+    pub wasm_module_name: String,
 }

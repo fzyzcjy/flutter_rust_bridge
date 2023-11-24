@@ -1,5 +1,7 @@
 use crate::codegen::generator::misc::target::Target;
-use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
+use crate::codegen::generator::wire::dart::internal_config::{
+    DartOutputClassNamePack, GeneratorWireDartInternalConfig,
+};
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
@@ -15,14 +17,18 @@ pub(super) fn generate(
         .filter(|x| x.target == Target::Wasm)
         .map(|x| generate_method(x))
         .collect_vec();
-    generate_wire_class(config, &methods) + generate_wasm_module_class(&methods)
+    generate_wire_class(config, &methods) + generate_wasm_module_class(config, &methods)
 }
 
 fn generate_wire_class(
     config: &GeneratorWireDartInternalConfig,
     methods: &[MethodInfo],
 ) -> WireDartOutputCode {
-    let wire_class_name = &config.dart_output_class_name_pack.wire_class_name;
+    let DartOutputClassNamePack {
+        wire_class_name,
+        wasm_module_name,
+        ..
+    } = &config.dart_output_class_name_pack;
 
     let body = (methods.iter())
         .map(|x| format!("{} => {};", x.declaration, x.implementation))
@@ -30,7 +36,7 @@ fn generate_wire_class(
 
     format!(
         "class {wire_class_name} extends BaseWire {{
-            {wire_class_name}(FutureOr<WasmModule> module) : super(WasmModule.cast<{dart_wasm_module_name}>(module));
+            {wire_class_name}(FutureOr<WasmModule> module) : super(WasmModule.cast<{wasm_module_name}>(module));
             
             {body}
         }}
@@ -39,18 +45,25 @@ fn generate_wire_class(
     .into()
 }
 
-fn generate_wasm_module_class(methods: &[MethodInfo]) -> WireDartOutputCode {
+fn generate_wasm_module_class(
+    config: &GeneratorWireDartInternalConfig,
+    methods: &[MethodInfo],
+) -> WireDartOutputCode {
+    let DartOutputClassNamePack {
+        wasm_module_name, ..
+    } = &config.dart_output_class_name_pack;
+
     let body = (methods.iter())
         .map(|x| format!("external {};", x.declaration))
         .join("\n\n");
 
     format!(
-        "@JS('wasm_bindgen') external {dart_wasm_module_name} get wasmModule;
+        "@JS('wasm_bindgen') external {wasm_module_name} get wasmModule;
 
-        @JS() @anonymous class {dart_wasm_module_name} implements WasmModule {{
+        @JS() @anonymous class {wasm_module_name} implements WasmModule {{
             external Object /* Promise */ call([String? moduleName]);
 
-            external {dart_wasm_module_name} bind(dynamic thisArg, String moduleName);
+            external {wasm_module_name} bind(dynamic thisArg, String moduleName);
 
             {body}
         }}
