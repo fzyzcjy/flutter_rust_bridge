@@ -107,29 +107,30 @@ impl Serialize for IrType {
         let len = 2;
         let mut state = serializer.serialize_struct("IrType", len)?;
 
-        fn ser<S: Serializer, T>(
+        fn ser<S: Serializer, T: Serialize>(
             state: &mut <S as Serializer>::SerializeStruct,
             ty: &str,
             data: &T,
-        ) -> Result<S::Ok, S::Error> {
+        ) -> Result<(), S::Error> {
             state.serialize_field("type", ty)?;
-            state.serialize_field("data", data)
+            state.serialize_field("data", data)?;
+            Ok(())
         }
         match self {
-            IrType::Boxed(inner) => ser(&mut state, "Boxed", inner),
-            IrType::DartOpaque(inner) => ser(&mut state, "DartOpaque", inner),
-            IrType::Delegate(inner) => ser(&mut state, "Delegate", inner),
-            IrType::Dynamic(inner) => ser(&mut state, "Dynamic", inner),
-            IrType::EnumRef(inner) => ser(&mut state, "EnumRef", inner),
-            IrType::GeneralList(inner) => ser(&mut state, "GeneralList", inner),
-            IrType::Optional(inner) => ser(&mut state, "Optional", inner),
-            IrType::OptionalList(inner) => ser(&mut state, "OptionalList", inner),
-            IrType::Primitive(inner) => ser(&mut state, "Primitive", inner),
-            IrType::PrimitiveList(inner) => ser(&mut state, "PrimitiveList", inner),
-            IrType::Record(inner) => ser(&mut state, "Record", inner),
-            IrType::RustOpaque(inner) => ser(&mut state, "RustOpaque", inner),
-            IrType::StructRef(inner) => ser(&mut state, "StructRef", inner),
-            IrType::Unencodable(inner) => ser(&mut state, "Unencodable", inner),
+            IrType::Boxed(inner) => ser::<S, _>(&mut state, "Boxed", inner),
+            IrType::DartOpaque(inner) => ser::<S, _>(&mut state, "DartOpaque", inner),
+            IrType::Delegate(inner) => ser::<S, _>(&mut state, "Delegate", inner),
+            IrType::Dynamic(inner) => ser::<S, _>(&mut state, "Dynamic", inner),
+            IrType::EnumRef(inner) => ser::<S, _>(&mut state, "EnumRef", inner),
+            IrType::GeneralList(inner) => ser::<S, _>(&mut state, "GeneralList", inner),
+            IrType::Optional(inner) => ser::<S, _>(&mut state, "Optional", inner),
+            IrType::OptionalList(inner) => ser::<S, _>(&mut state, "OptionalList", inner),
+            IrType::Primitive(inner) => ser::<S, _>(&mut state, "Primitive", inner),
+            IrType::PrimitiveList(inner) => ser::<S, _>(&mut state, "PrimitiveList", inner),
+            IrType::Record(inner) => ser::<S, _>(&mut state, "Record", inner),
+            IrType::RustOpaque(inner) => ser::<S, _>(&mut state, "RustOpaque", inner),
+            IrType::StructRef(inner) => ser::<S, _>(&mut state, "StructRef", inner),
+            IrType::Unencodable(inner) => ser::<S, _>(&mut state, "Unencodable", inner),
         }?;
 
         state.end()
