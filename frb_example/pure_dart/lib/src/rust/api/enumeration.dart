@@ -44,8 +44,8 @@ sealed class Distance with _$Distance {
 }
 
 enum EnumSimpleTwinNormal {
-  A,
-  B,
+  a,
+  b,
 }
 
 @freezed
@@ -94,7 +94,7 @@ class Note {
   final String body;
 
   const Note({
-    this.day = Weekdays.Sunday,
+    this.day = Weekdays.sunday,
     required this.body,
   });
 

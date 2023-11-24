@@ -22,8 +22,8 @@ EnumWithItemStructTwinSync funcEnumWithItemStructTwinSync(
     RustLib.instance.api.funcEnumWithItemStructTwinSync(arg: arg, hint: hint);
 
 enum EnumSimpleTwinSync {
-  A,
-  B,
+  a,
+  b,
 }
 
 @freezed

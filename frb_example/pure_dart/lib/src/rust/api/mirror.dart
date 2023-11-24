@@ -140,8 +140,8 @@ sealed class ApplicationMessage with _$ApplicationMessage {
 }
 
 enum ApplicationMode {
-  Standalone,
-  Embedded,
+  standalone,
+  embedded,
 }
 
 class ApplicationSettings {
