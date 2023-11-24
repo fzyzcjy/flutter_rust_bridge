@@ -22,7 +22,6 @@ pub enum KitchenSink {
     Primitives {
         #[frb(default = -1)]
         int32: i32,
-        #[frb(unimpl_deprecated)]
         float64: f64,
         boolean: bool,
     },

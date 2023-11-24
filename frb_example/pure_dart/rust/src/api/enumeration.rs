@@ -117,7 +117,6 @@ pub enum KitchenSink {
         /// Dart field comment
         #[frb(default = -1)]
         int32: i32,
-        #[frb(unimpl_deprecated)]
         float64: f64,
         boolean: bool,
     },
@@ -135,7 +134,6 @@ pub enum KitchenSink {
     Enums(#[frb(default = "Weekdays.Sunday")] Weekdays),
 }
 
-#[frb(unimpl_fn_attr)]
 pub fn handle_enum_struct(val: KitchenSink) -> KitchenSink {
     use KitchenSink::*;
     use Weekdays::*;
