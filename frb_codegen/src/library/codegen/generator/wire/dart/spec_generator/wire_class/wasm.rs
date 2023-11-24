@@ -1,20 +1,32 @@
+use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
+use itertools::Itertools;
 use std::borrow::Cow;
 
 pub(super) fn generate(
     config: &GeneratorWireDartInternalConfig,
     rust_extern_funcs: &[ExternFunc],
 ) -> WireDartOutputCode {
-    generate_wire_class(config) + generate_wasm_module_class(config)
+    let methods = rust_extern_funcs
+        .iter()
+        .filter(|x| x.target == Target::Wasm)
+        .map(|x| generate_method(x))
+        .collect_vec();
+    generate_wire_class(config, &methods) + generate_wasm_module_class(&methods)
 }
 
-fn generate_wire_class(config: &GeneratorWireDartInternalConfig) -> WireDartOutputCode {
+fn generate_wire_class(
+    config: &GeneratorWireDartInternalConfig,
+    methods: &[MethodInfo],
+) -> WireDartOutputCode {
     let wire_class_name = &config.dart_output_class_name_pack.wire_class_name;
 
-    let body = (funcs.into_iter().map(generate_wire_class_method)).join("\n\n");
+    let body = (methods.iter())
+        .map(|x| format!("{} => {};", x.declaration, x.implementation))
+        .join("\n\n");
 
     format!(
         "class {wire_class_name} extends BaseWire {{
@@ -27,28 +39,10 @@ fn generate_wire_class(config: &GeneratorWireDartInternalConfig) -> WireDartOutp
     .into()
 }
 
-fn generate_wire_class_method(func: &IrFuncDisplay) -> String {
-    format!(
-        "{out} {name}({}) => wasmModule.{name}({});",
-        func.inputs
-            .iter()
-            .map(|param| format!("{} {}", param.ty, param.name))
-            .join(","),
-        func.inputs
-            .iter()
-            .map(|param| param.name.to_string())
-            .join(","),
-        name = func.name,
-        out = if has_port_argument(func) {
-            "void".into()
-        } else {
-            reconstruct_dart_wire_type_from_raw_repr(&func.output)
-        },
-    )
-}
-
-fn generate_wasm_module_class(config: &GeneratorWireDartInternalConfig) -> WireDartOutputCode {
-    let body = (funcs.into_iter().map(generate_wasm_module_class_method)).join("\n\n");
+fn generate_wasm_module_class(methods: &[MethodInfo]) -> WireDartOutputCode {
+    let body = (methods.iter())
+        .map(|x| format!("external {};", x.declaration))
+        .join("\n\n");
 
     format!(
         "@JS('wasm_bindgen') external {dart_wasm_module_name} get wasmModule;
@@ -65,16 +59,43 @@ fn generate_wasm_module_class(config: &GeneratorWireDartInternalConfig) -> WireD
     .into()
 }
 
-fn generate_wasm_module_class_method(func: &IrFuncDisplay) -> String {
-    format!(
-        "external {} {name}({});",
-        reconstruct_dart_wire_type_from_raw_repr(&func.output),
-        func.inputs
-            .iter()
-            .map(|param| format!("{} {}", param.ty, param.name))
-            .join(","),
-        name = func.name,
-    )
+struct MethodInfo {
+    declaration: String,
+    implementation: String,
+}
+
+fn generate_method(extern_func: &ExternFunc) -> MethodInfo {
+    fn generate_wire_class_method(func: &IrFuncDisplay) -> String {
+        format!(
+            "{out} {name}({}) => wasmModule.{name}({});",
+            func.inputs
+                .iter()
+                .map(|param| format!("{} {}", param.ty, param.name))
+                .join(","),
+            func.inputs
+                .iter()
+                .map(|param| param.name.to_string())
+                .join(","),
+            name = func.name,
+            out = if has_port_argument(func) {
+                "void".into()
+            } else {
+                reconstruct_dart_wire_type_from_raw_repr(&func.output)
+            },
+        )
+    }
+
+    fn generate_wasm_module_class_method(func: &IrFuncDisplay) -> String {
+        format!(
+            "external {} {name}({});",
+            reconstruct_dart_wire_type_from_raw_repr(&func.output),
+            func.inputs
+                .iter()
+                .map(|param| format!("{} {}", param.ty, param.name))
+                .join(","),
+            name = func.name,
+        )
+    }
 }
 
 /// Since there exists no toolchain that can generate Dart bindings
