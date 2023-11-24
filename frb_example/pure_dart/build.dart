@@ -8,8 +8,7 @@ void main(List<String> args) async {
   final buildOutput = BuildOutput();
 
   final rustCrateDir = buildConfig.packageRoot.resolve('rust');
-  _executeProcess('cargo', ['build', '--release'],
-      workingDirectory: rustCrateDir.toFilePath());
+  _executeProcess('cargo', ['build', '--release'], workingDirectory: rustCrateDir.toFilePath());
 
   final dependencies = {
     rustCrateDir,
@@ -23,14 +22,11 @@ void main(List<String> args) async {
   await buildOutput.writeToFile(outDir: buildConfig.outDir);
 }
 
-Future<void> _executeProcess(String executable, List<String> arguments,
-    {String? workingDirectory}) async {
+Future<void> _executeProcess(String executable, List<String> arguments, {String? workingDirectory}) async {
   print('executeProcess: $executable $arguments $workingDirectory');
-  final process = await Process.start(executable, arguments,
-      workingDirectory: workingDirectory);
+  final process = await Process.start(executable, arguments, workingDirectory: workingDirectory);
   process.stdout.listen((e) => print(String.fromCharCodes(e)));
   process.stderr.listen((e) => print('[STDERR] ${String.fromCharCodes(e)}'));
   final exitCode = await process.exitCode;
-  if (exitCode != 0)
-    throw Exception('Process execution failed (exitCode=$exitCode)');
+  if (exitCode != 0) throw Exception('Process execution failed (exitCode=$exitCode)');
 }

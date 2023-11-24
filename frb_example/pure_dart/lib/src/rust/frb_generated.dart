@@ -6295,7 +6295,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   NonCloneData syncCreateNonClone({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () => wire.wire_sync_create_non_clone(),
-      parseSuccessData: _wire2api_non_clone_data,
+      parseSuccessData: _wire2api_RustOpaque_non_clone_data,
       parseErrorData: null,
       constMeta: kSyncCreateNonCloneConstMeta,
       argValues: [],
@@ -6956,6 +6956,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   I32 _wire2api_RustOpaque_i_32(dynamic raw) {
     return I32.fromRaw(raw[0], raw[1]);
+  }
+
+  NonCloneData _wire2api_RustOpaque_non_clone_data(dynamic raw) {
+    return NonCloneData.fromRaw(raw[0], raw[1]);
   }
 
   NonSendHideData _wire2api_RustOpaque_non_send_hide_data(dynamic raw) {
@@ -8162,15 +8166,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return NewTypeInt(
       field0: _wire2api_i_64(arr[0]),
-    );
-  }
-
-  NonCloneData _wire2api_non_clone_data(dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 1)
-      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return NonCloneData(
-      content: _wire2api_String(arr[0]),
     );
   }
 

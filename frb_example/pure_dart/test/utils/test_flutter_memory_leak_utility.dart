@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'dart:io';
 import 'dart:isolate';
 
-import 'package:vm_service/vm_service.dart' hide Isolate, Log;
 import 'package:vm_service/vm_service.dart' as vm_service;
+import 'package:vm_service/vm_service.dart' hide Isolate, Log;
 import 'package:vm_service/vm_service_io.dart';
 
 /// https://stackoverflow.com/questions/63730179/can-we-force-the-dart-garbage-collector

@@ -5784,22 +5784,6 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::newtype_pattern::N
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for crate::auxiliary::sample_types::NonCloneData {
-    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
-        vec![self.content.into_into_dart().into_dart()].into_dart()
-    }
-}
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive
-    for crate::auxiliary::sample_types::NonCloneData
-{
-}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::auxiliary::sample_types::NonCloneData>
-    for crate::auxiliary::sample_types::NonCloneData
-{
-    fn into_into_dart(self) -> crate::auxiliary::sample_types::NonCloneData {
-        self
-    }
-}
 impl flutter_rust_bridge::support::IntoDart for mirror_Numbers {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0 .0.into_into_dart().into_dart()].into_dart()

@@ -21,8 +21,8 @@ pub fn sync_create_sync_opaque() -> RustOpaque<NonSendHideData> {
 }
 
 #[frb(sync)]
-pub fn sync_create_non_clone() -> NonCloneData {
-    NonCloneData::new()
+pub fn sync_create_non_clone() -> RustOpaque<NonCloneData> {
+    RustOpaque::new(NonCloneData::new())
 }
 
 // OpaqueSyncStruct does not implement Send trait.
