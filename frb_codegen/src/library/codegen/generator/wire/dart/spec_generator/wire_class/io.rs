@@ -44,7 +44,6 @@ fn postpare_modify(
         .replace("final class DartCObject extends ffi.Opaque {}", "")
         .replace("final class _Dart_Handle extends ffi.Opaque {}", "")
         .replace("typedef WireSyncReturn = ffi.Pointer<DartCObject>;", "")
-        .replace("typedef MessagePort = ffi.Int64;", "")
 }
 
 fn sanity_check(
