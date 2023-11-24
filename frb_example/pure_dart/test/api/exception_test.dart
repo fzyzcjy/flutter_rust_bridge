@@ -61,7 +61,7 @@ Future<void> main() async {
       try {
         handleSyncReturn(mode: 'RESULT_ERR');
         fail("exception not thrown");
-      } on FrbAnyhowException catch (e) {
+      } on AnyhowException catch (e) {
         print('dart catch anyhow e: $e');
       }
 
@@ -77,7 +77,7 @@ Future<void> main() async {
       try {
         await returnErr();
         fail("exception not thrown");
-      } on FrbAnyhowException catch (e) {
+      } on AnyhowException catch (e) {
         print('dart catch e: $e');
       }
     });
@@ -125,12 +125,12 @@ Future<void> main() async {
       });
 
       test('Throw CustomStructError static method', () async {
-        await expectLater(() async => await CustomStruct.staticReturnCustomStructError(bridge: api),
-            throwsA(isA<CustomStructError>()));
+        await expectLater(
+            () async => await CustomStruct.staticReturnCustomStructError(), throwsA(isA<CustomStructError>()));
       });
 
       test('Do not throw CustomStructError static method', () async {
-        expect(await CustomStruct.staticReturnCustomStructOk(bridge: api), 3);
+        expect(await CustomStruct.staticReturnCustomStructOk(), 3);
       });
 
       test('Throw CustomNestedError1', () async {
@@ -161,17 +161,15 @@ Future<void> main() async {
       });
 
       test('Throw CustomError static method', () async {
-        await expectLater(
-            () async => await SomeStruct.staticReturnErrCustomError(bridge: api), throwsA(isA<CustomError>()));
+        await expectLater(() async => await SomeStruct.staticReturnErrCustomError(), throwsA(isA<CustomError>()));
       });
 
       test('Throw CustomError static method, verifies implements Frb', () async {
-        await expectLater(
-            () async => await SomeStruct.staticReturnErrCustomError(bridge: api), throwsA(isA<FrbException>()));
+        await expectLater(() async => await SomeStruct.staticReturnErrCustomError(), throwsA(isA<FrbException>()));
       });
 
       test('Do not throw CustomError static method', () async {
-        expect(await SomeStruct.staticReturnOkCustomError(bridge: api), 3);
+        expect(await SomeStruct.staticReturnOkCustomError(), 3);
       });
 
       test('Do not throw CustomError', () async {
@@ -202,9 +200,9 @@ Future<void> main() async {
         try {
           await throwAnyhow();
         } catch (e) {
-          final FrbAnyhowException p = e as FrbAnyhowException;
-          print("anyhow error: ${p.anyhow}");
-          assert(p.anyhow.contains("anyhow error"));
+          final AnyhowException p = e as AnyhowException;
+          print("anyhow error: ${p.message}");
+          assert(p.message.contains("anyhow error"));
         }
       });
 
@@ -214,8 +212,8 @@ Future<void> main() async {
           await panicWithCustomResult();
         } catch (e) {
           final PanicException p = e as PanicException;
-          print("panic error: ${p.error}");
-          assert(p.error.contains("just a panic"));
+          print("panic error: ${p.message}");
+          assert(p.message.contains("just a panic"));
         }
       });
 
@@ -224,8 +222,7 @@ Future<void> main() async {
           () async {
             await for (final _ in streamSinkThrowAnyhow()) {}
           },
-          throwsA(
-              isA<FrbAnyhowException>().having((e) => e.toString(), 'toString', 'FrbAnyhowException(anyhow error)')),
+          throwsA(isA<AnyhowException>().having((e) => e.toString(), 'toString', 'AnyhowException(anyhow error)')),
         );
       });
     });
