@@ -1,5 +1,8 @@
+import 'dart:typed_data';
+
 import 'package:frb_example_pure_dart/src/rust/api/mirror.dart';
 import 'package:frb_example_pure_dart/src/rust/api/simple.dart';
+import 'package:frb_example_pure_dart/src/rust/auxiliary/sample_types.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
@@ -129,4 +132,14 @@ Future<void> main() async {
     expect(output.test.value, "test");
     expect(output.test2.a, "test");
   });
+}
+
+int _createGarbage() {
+  print('dart create garbage (thus make it more possible to GC)');
+  var cum = 0;
+  for (var i = 0; i < 1000; ++i) {
+    final l = List.filled(5000, 42);
+    cum += l[42];
+  }
+  return cum;
 }

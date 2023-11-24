@@ -1,5 +1,4 @@
 import 'package:frb_example_pure_dart/src/rust/api/method.dart';
-import 'package:frb_example_pure_dart/src/rust/api/simple.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
@@ -66,7 +65,7 @@ Future<void> main() async {
   });
 
   test('ConcatenateWith static stream sink at 1 test', () async {
-    final stream = ConcatenateWith.handleSomeStaticStreamSinkSingleArg(bridge: api);
+    final stream = ConcatenateWith.handleSomeStaticStreamSinkSingleArg();
     expect(stream.toList(), completion([0, 1, 2, 3, 4]));
   });
 }

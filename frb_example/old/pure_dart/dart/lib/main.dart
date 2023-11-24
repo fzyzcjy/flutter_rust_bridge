@@ -531,49 +531,6 @@ void main(List<String> args) async {
   });
 }
 
-int _createGarbage() {
-  print('dart create garbage (thus make it more possible to GC)');
-  var cum = 0;
-  for (var i = 0; i < 1000; ++i) {
-    final l = List.filled(5000, 42);
-    cum += l[42];
-  }
-  return cum;
-}
-
-MyTreeNode _createMyTreeNode({required int arrLen}) {
-  return MyTreeNode(
-    valueI32: 100,
-    valueVecU8: Uint8List.fromList(List.filled(arrLen, 100)),
-    valueBoolean: true,
-    children: [
-      MyTreeNode(
-        valueI32: 110,
-        valueVecU8: Uint8List.fromList(List.filled(arrLen, 110)),
-        valueBoolean: true,
-        children: [
-          MyTreeNode(
-            valueI32: 111,
-            valueVecU8: Uint8List.fromList(List.filled(arrLen, 111)),
-            valueBoolean: true,
-            children: [],
-          ),
-        ],
-      ),
-      MyTreeNode(
-        valueI32: 120,
-        valueVecU8: Uint8List.fromList(List.filled(arrLen, 120)),
-        valueBoolean: true,
-        children: [],
-      ),
-    ],
-  );
-}
-
-MyNestedStruct _createMyNestedStruct() {
-  return MyNestedStruct(treeNode: _createMyTreeNode(arrLen: 5), weekday: Weekdays.friday);
-}
-
 class MatchBigInt extends CustomMatcher {
   MatchBigInt(matcher) : super("is a numeric", "value", _featureValueOf(matcher));
 
@@ -586,7 +543,5 @@ class MatchBigInt extends CustomMatcher {
     return actual;
   }
 }
-
-Uint8List createLargeList({required int mb}) => Uint8List(1000000 * mb);
 
 // vim:expandtab:ts=2:sw=2

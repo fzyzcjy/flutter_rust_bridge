@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:typed_data';
 
 import 'package:meta/meta.dart';
 import 'package:test/test.dart';
@@ -52,3 +53,5 @@ void debugPrint(String message) {
     return true;
   }());
 }
+
+Uint8List createLargeList({required int mb}) => Uint8List(1000000 * mb);

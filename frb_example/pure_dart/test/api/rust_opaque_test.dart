@@ -1,5 +1,5 @@
+import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:frb_example_pure_dart/src/rust/api/rust_opaque.dart';
-import 'package:frb_example_pure_dart/src/rust/api/simple.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
@@ -234,7 +234,7 @@ Future<void> main() async {
     expect(data.isStale(), isTrue);
 
     var data2 = await createOpaque();
-    await expectLater(() => unwrapRustOpaque(opaque: data2), throwsA(isA<FrbAnyhowException>()));
+    await expectLater(() => unwrapRustOpaque(opaque: data2), throwsA(isA<AnyhowException>()));
     expect(data2.isStale(), isFalse);
   });
 }

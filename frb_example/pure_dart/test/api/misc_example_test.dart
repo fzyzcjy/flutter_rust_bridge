@@ -1,5 +1,6 @@
+import 'dart:typed_data';
+
 import 'package:frb_example_pure_dart/src/rust/api/misc_example.dart';
-import 'package:frb_example_pure_dart/src/rust/api/simple.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
@@ -57,4 +58,37 @@ Future<void> main() async {
     expect(result.abc1.whenOrNull(b: (B b) => b.b), 999);
     expect(result.abc2.whenOrNull(a: (A a) => a.a), "aaa");
   });
+}
+
+MyTreeNode _createMyTreeNode({required int arrLen}) {
+  return MyTreeNode(
+    valueI32: 100,
+    valueVecU8: Uint8List.fromList(List.filled(arrLen, 100)),
+    valueBoolean: true,
+    children: [
+      MyTreeNode(
+        valueI32: 110,
+        valueVecU8: Uint8List.fromList(List.filled(arrLen, 110)),
+        valueBoolean: true,
+        children: [
+          MyTreeNode(
+            valueI32: 111,
+            valueVecU8: Uint8List.fromList(List.filled(arrLen, 111)),
+            valueBoolean: true,
+            children: [],
+          ),
+        ],
+      ),
+      MyTreeNode(
+        valueI32: 120,
+        valueVecU8: Uint8List.fromList(List.filled(arrLen, 120)),
+        valueBoolean: true,
+        children: [],
+      ),
+    ],
+  );
+}
+
+MyNestedStruct _createMyNestedStruct() {
+  return MyNestedStruct(treeNode: _createMyTreeNode(arrLen: 5), weekday: Weekdays.friday);
 }

@@ -6,7 +6,7 @@ Future<void> main() async {
   await RustLib.init();
 
   test('dart call handleNewtype', () async {
-    final newtypeResp = await handleNewtype(arg: NewTypeInt(field0: 42));
+    final newtypeResp = await handleNewtype(arg: NewTypeInt(field0: BigInt.from(42)));
     expect(newtypeResp.field0, 84);
   });
 
