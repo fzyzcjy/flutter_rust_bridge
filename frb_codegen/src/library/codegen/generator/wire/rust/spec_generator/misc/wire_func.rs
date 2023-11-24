@@ -124,7 +124,7 @@ fn generate_params(func: &IrFunc, context: WireRustGeneratorContext) -> Acc<Vec<
                         "impl Wire2Api<{}> + core::panic::UnwindSafe",
                         field.ty.rust_api_type()
                     ),
-                    dart_type: "TODO_Dart_Type".into(),
+                    dart_type: "THIS_TYPE_SHOULD_NOT_BE_USED".into(),
                 },
                 TargetOrCommon::Io | TargetOrCommon::Wasm => {
                     let target: Target = target.try_into().unwrap();
