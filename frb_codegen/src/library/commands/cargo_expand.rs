@@ -100,7 +100,7 @@ fn run_cargo_expand(rust_crate_dir: &Path, dumper: &Dumper) -> Result<String> {
     stdout_lines.next();
     let ans = stdout_lines.join("\n").replace("/// frb_marker: ", "");
 
-    dumper.dump_str(ConfigDumpContent::Source, &format!("cargo_expand.rs"), &ans)?;
+    dumper.dump_str(ConfigDumpContent::Source, "cargo_expand.rs", &ans)?;
 
     Ok(ans)
 }
