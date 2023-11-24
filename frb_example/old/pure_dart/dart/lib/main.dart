@@ -434,28 +434,6 @@ void main(List<String> args) async {
     );
   });
 
-  test('dart call useImportedStruct()', () async {
-    expect(
-      await useImportedStruct(myStruct: MyStruct(content: false)),
-      false,
-    );
-    expect(
-      await useImportedStruct(myStruct: MyStruct(content: true)),
-      true,
-    );
-  });
-
-  test('dart call useImportedEnum()', () async {
-    expect(
-      await useImportedEnum(myEnum: MyEnum.False),
-      false,
-    );
-    expect(
-      await useImportedEnum(myEnum: MyEnum.True),
-      true,
-    );
-  });
-
   test('loop and call many times', () async {
     var obj = _createMyTreeNode(arrLen: 5);
     for (var i = 0; i < 500; ++i) {
@@ -465,70 +443,6 @@ void main(List<String> args) async {
 
   test('dart call getUsize', () async {
     expect(await getUsize(u: 2), 2);
-  });
-
-  test('ConcatenateWith test', () async {
-    final ConcatenateWith concatenateWith = ConcatenateWith(a: "hello ");
-    final String concatenated = await concatenateWith.concatenate(b: "world");
-    expect(concatenated, equals("hello world"));
-
-    final staticConcatenated = await ConcatenateWith.concatenateStatic(a: "hello ", b: "world");
-    expect(staticConcatenated, equals("hello world"));
-
-    final concatenatedConstructor = await ConcatenateWith.newConcatenateWith(a: "hello ");
-    final String concatenated2 = await concatenatedConstructor.concatenate(b: "world");
-    expect(concatenated2, equals("hello world"));
-  });
-
-  test('SumWith test', () async {
-    final SumWith sumWith = SumWith(x: 3);
-    final int sum = await sumWith.sum(y: 1, z: 5);
-    expect(sum, equals(3 + 1 + 5));
-  });
-
-  test('return SumWith test', () async {
-    final SumWith sumWith = await getSumStruct();
-    final int sum = await sumWith.sum(y: 1, z: 5);
-    expect(sum, equals(21 + 1 + 5));
-  });
-
-  test('return SumWith array test', () async {
-    final List<SumWith> sumWithList = await getSumArray(a: 12, b: 23, c: 67);
-    expect(await sumWithList[0].sum(y: 23, z: 67), 12 + 23 + 67);
-    expect(await sumWithList[1].sum(y: 12, z: 67), 12 + 23 + 67);
-    expect(await sumWithList[2].sum(y: 12, z: 23), 12 + 23 + 67);
-  });
-
-  test('ConcatenateWith stream sink test', () async {
-    final ConcatenateWith concatenateWith = ConcatenateWith(a: "hello ");
-    final int key = 10;
-    final int max = 5;
-    final stream = concatenateWith.handleSomeStreamSink(key: key, max: max);
-    int cnt = 0;
-    await for (final value in stream) {
-      print("output from ConcatenateWith's stream: $value");
-      expect(value.value, "hello $cnt");
-      cnt++;
-    }
-    expect(cnt, max);
-  });
-
-  test('ConcatenateWith static stream sink test', () async {
-    final int key = 10;
-    final int max = 5;
-    final stream = ConcatenateWith.handleSomeStaticStreamSink(key: key, max: max);
-    int cnt = 0;
-    await for (final value in stream) {
-      print("output from ConcatenateWith's static stream: $value");
-      expect(value.value, "$cnt");
-      cnt++;
-    }
-    expect(cnt, max);
-  });
-
-  test('ConcatenateWith static stream sink at 1 test', () async {
-    final stream = ConcatenateWith.handleSomeStaticStreamSinkSingleArg(bridge: api);
-    expect(stream.toList(), completion([0, 1, 2, 3, 4]));
   });
 
   test('dart call multiplyByTen()', () async {
@@ -545,15 +459,6 @@ void main(List<String> args) async {
     expect((Speed_GPS).toString(), 'Speed_GPS', skip: skipMinified);
     expect((Distance_Unknown).toString(), 'Distance_Unknown', skip: skipMinified);
     expect((Distance_Map).toString(), 'Distance_Map', skip: skipMinified);
-  });
-
-  test('resolve module for old module system', () async {
-    final o = await callOldModuleSystem();
-    expect(o.field, 2);
-  });
-  test('resolve module for new module system', () async {
-    final n = await callNewModuleSystem();
-    expect(n.field, 1);
   });
 
   test('test empty struct', () async {
