@@ -53,8 +53,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let sig = func.sig();
         let namespace = Namespace::new_from_rust_crate_path(file_path, rust_crate_dir)?;
         let src_lineno = func.span().start().line;
+        let context = TypeParserParsingContext {
+            initiated_namespace: namespace.clone(),
+        };
 
-        let owner = if let Some(owner) = parse_owner(func) {
+        let owner = if let Some(owner) = self.parse_owner(func, &context)? {
             owner
         } else {
             return Ok(None);
@@ -62,9 +65,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let func_name = parse_name(sig, &owner);
         let attributes = FrbAttributes::parse(func.attrs())?;
-        let context = TypeParserParsingContext {
-            initiated_namespace: namespace.clone(),
-        };
 
         let mut info = FunctionPartialInfo::default();
         for (i, sig_input) in sig.inputs.iter().enumerate() {
@@ -84,6 +84,62 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             comments: parse_comments(func.attrs()),
             src_lineno,
         }))
+    }
+
+    fn parse_owner(
+        &self,
+        item_fn: &GeneralizedItemFn,
+        context: &TypeParserParsingContext,
+    ) -> anyhow::Result<Option<IrFuncOwnerInfo>> {
+        Some(match item_fn {
+            GeneralizedItemFn::Function { .. } => IrFuncOwnerInfo::Function,
+            GeneralizedItemFn::Method {
+                item_impl,
+                impl_item_fn,
+            } => {
+                let mode = if matches!(impl_item_fn.sig.inputs.first(), Some(FnArg::Receiver(..))) {
+                    IrFuncOwnerInfoMethodMode::Instance
+                } else {
+                    IrFuncOwnerInfoMethodMode::Static
+                };
+
+                let enum_or_struct_name =
+                    if let Some(x) = self.parse_enum_or_struct_name(item_impl, context)? {
+                        x
+                    } else {
+                        return None;
+                    };
+
+                IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod {
+                    enum_or_struct_name,
+                    actual_method_name: impl_item_fn.sig.ident.to_string(),
+                    mode,
+                })
+            }
+        })
+    }
+
+    fn parse_enum_or_struct_name(
+        &self,
+        item_impl: &ItemImpl,
+        context: &TypeParserParsingContext,
+    ) -> anyhow::Result<Option<NamespacedName>> {
+        let self_ty_path = if let Type::Path(self_ty_path) = item_impl.self_ty.as_ref() {
+            self_ty_path
+        } else {
+            return Ok(None);
+        };
+
+        let enum_or_struct_name = (self_ty_path.path.segments.first().unwrap().ident).to_string();
+        let syn_ty: Type = parse_str(&enum_or_struct_name)?;
+        let ty = self.type_parser.parse_type(&syn_ty, context)?;
+
+        Ok(match ty {
+            IrType::Delegate(_) => Some(TODO),
+            IrType::EnumRef(_) => Some(TODO),
+            IrType::StructRef(_) => Some(TODO),
+            _ => None,
+        })
     }
 }
 
@@ -106,37 +162,6 @@ fn parse_name(sig: &Signature, owner: &IrFuncOwnerInfo) -> String {
             )
         }
     }
-}
-
-fn parse_owner(item_fn: &GeneralizedItemFn) -> Option<IrFuncOwnerInfo> {
-    Some(match item_fn {
-        GeneralizedItemFn::Function { .. } => IrFuncOwnerInfo::Function,
-        GeneralizedItemFn::Method {
-            item_impl,
-            impl_item_fn,
-        } => {
-            let mode = if matches!(impl_item_fn.sig.inputs.first(), Some(FnArg::Receiver(..))) {
-                IrFuncOwnerInfoMethodMode::Instance
-            } else {
-                IrFuncOwnerInfoMethodMode::Static
-            };
-
-            let self_ty_path = if let Type::Path(self_ty_path) = item_impl.self_ty.as_ref() {
-                self_ty_path
-            } else {
-                return None;
-            };
-
-            let enum_or_struct_name =
-                (self_ty_path.path.segments.first().unwrap().ident).to_string();
-
-            IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod {
-                enum_or_struct_name,
-                actual_method_name: impl_item_fn.sig.ident.to_string(),
-                mode,
-            })
-        }
-    })
 }
 
 #[derive(Debug, Default)]
