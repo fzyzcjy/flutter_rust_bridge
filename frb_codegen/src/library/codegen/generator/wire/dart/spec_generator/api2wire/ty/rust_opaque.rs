@@ -14,13 +14,21 @@ impl<'a> WireDartGeneratorApi2wireTrait for RustOpaqueWireDartGenerator<'a> {
                 return ptr;",
                 self.ir.safe_ident(),
             )),
-            wasm: Some("return raw.shareOrMove();".to_owned()),
+            wasm: Some(
+                "// ignore: invalid_use_of_internal_member
+                return raw.shareOrMove();"
+                    .to_owned(),
+            ),
             ..Default::default()
         }
     }
 
     fn api_fill_to_wire_body(&self) -> Option<String> {
-        Some("wireObj.ptr = apiObj.shareOrMove();".into())
+        Some(
+            "// ignore: invalid_use_of_internal_member
+            wireObj.ptr = apiObj.shareOrMove();"
+                .into(),
+        )
     }
 
     fn dart_wire_type(&self, target: Target) -> String {
