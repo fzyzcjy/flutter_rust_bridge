@@ -16,7 +16,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueRefApiDartGenerator<'a> {
         let dart_api_type_camel = dart_api_type.to_case(Case::Camel);
 
         Some(ApiDartGeneratedClass {
-            namespace: self.ir.namespace.clone(),
+            namespace: self.ir.ident.0.namespace.clone(),
             code: format!(
                 "@sealed class {dart_api_type} extends FrbOpaque {{
                     {dart_api_type}.fromRaw(int ptr, int size): super.unsafe(ptr, size);
