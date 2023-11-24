@@ -32,7 +32,7 @@ pub enum IrFuncOwnerInfo {
 }
 
 pub struct IrFuncOwnerInfoMethod {
-    pub(crate) enum_or_struct_name: String,
+    pub(crate) enum_or_struct_name: NamespacedName,
     pub(crate) actual_method_name: String,
     pub(crate) mode: IrFuncOwnerInfoMethodMode,
 }
