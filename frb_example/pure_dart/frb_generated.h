@@ -1260,10 +1260,6 @@ struct wire_RustOpaque_RwLockHideData new_RustOpaque_RwLockHideData(void);
 
 struct wire_RustOpaque_box_dynDartDebug new_RustOpaque_box_dynDartDebug(void);
 
-wire_RustOpaque_frb_opaque_return new_RustOpaque_frb_opaque_return(void);
-
-wire_RustOpaque_frb_opaque_sync_return new_RustOpaque_frb_opaque_sync_return(void);
-
 struct wire_RustOpaque_hide_data new_RustOpaque_hide_data(void);
 
 struct wire_RustOpaque_i_32 new_RustOpaque_i_32(void);
@@ -1275,10 +1271,6 @@ struct wire_RustOpaque_non_send_hide_data new_RustOpaque_non_send_hide_data(void
 struct wire_StringList *new_StringList(int32_t len);
 
 struct wire_application_env *new_box_application_env(void);
-
-int64_t *new_box_autoadd_Chrono_Duration(int64_t value);
-
-int64_t *new_box_autoadd_Chrono_Naive(int64_t value);
 
 int64_t *new_box_autoadd_Chrono_Utc(int64_t value);
 
@@ -1320,8 +1312,6 @@ struct wire_customized *new_box_autoadd_customized(void);
 
 struct wire_dart_opaque_nested *new_box_autoadd_dart_opaque_nested(void);
 
-wire_element *new_box_autoadd_element(void);
-
 struct wire_enum_dart_opaque *new_box_autoadd_enum_dart_opaque(void);
 
 struct wire_enum_opaque *new_box_autoadd_enum_opaque(void);
@@ -1360,8 +1350,6 @@ int64_t *new_box_autoadd_i_64(int64_t value);
 
 int8_t *new_box_autoadd_i_8(int8_t value);
 
-wire_list_of_nested_raw_string_mirrored *new_box_autoadd_list_of_nested_raw_string_mirrored(void);
-
 struct wire_macro_struct *new_box_autoadd_macro_struct(void);
 
 struct wire_measure *new_box_autoadd_measure(void);
@@ -1374,8 +1362,6 @@ struct wire_my_struct *new_box_autoadd_my_struct(void);
 
 struct wire_my_tree_node *new_box_autoadd_my_tree_node(void);
 
-wire_nested_raw_string_mirrored *new_box_autoadd_nested_raw_string_mirrored(void);
-
 struct wire_new_type_int *new_box_autoadd_new_type_int(void);
 
 struct wire_note *new_box_autoadd_note(void);
@@ -1385,8 +1371,6 @@ struct wire_numbers *new_box_autoadd_numbers(void);
 struct wire_opaque_nested *new_box_autoadd_opaque_nested(void);
 
 struct wire_opt_vecs *new_box_autoadd_opt_vecs(void);
-
-wire_raw_string_mirrored *new_box_autoadd_raw_string_mirrored(void);
 
 struct wire_record_string_i_32 *new_box_autoadd_record_string_i_32(void);
 
@@ -1444,8 +1428,6 @@ struct wire_exotic_optionals *new_box_exotic_optionals(void);
 
 double *new_box_f_64(double value);
 
-struct wire_feed_id *new_box_feed_id(void);
-
 int32_t *new_box_i_32(int32_t value);
 
 int64_t *new_box_i_64(int64_t value);
@@ -1464,23 +1446,13 @@ struct wire_list_RustOpaque_hide_data *new_list_RustOpaque_hide_data(int32_t len
 
 struct wire_list_application_env_var *new_list_application_env_var(int32_t len);
 
-wire_list_application_settings *new_list_application_settings(int32_t len);
-
 struct wire_list_attribute *new_list_attribute(int32_t len);
 
 struct wire_list_bool *new_list_bool(int32_t len);
 
-wire_list_element *new_list_element(int32_t len);
-
-wire_list_enum_opaque *new_list_enum_opaque(int32_t len);
-
-wire_list_my_enum *new_list_my_enum(int32_t len);
-
 struct wire_list_my_size *new_list_my_size(int32_t len);
 
 struct wire_list_my_tree_node *new_list_my_tree_node(int32_t len);
-
-wire_list_nested_raw_string_mirrored *new_list_nested_raw_string_mirrored(int32_t len);
 
 struct wire_list_opt_String *new_list_opt_String(int32_t len);
 
@@ -1491,8 +1463,6 @@ struct wire_list_opt_box_autoadd_i_32 *new_list_opt_box_autoadd_i_32(int32_t len
 struct wire_list_opt_box_autoadd_weekdays *new_list_opt_box_autoadd_weekdays(int32_t len);
 
 struct wire_list_opt_list_prim_i_32 *new_list_opt_list_prim_i_32(int32_t len);
-
-wire_list_point *new_list_point(int32_t len);
 
 struct wire_list_prim_f_32 *new_list_prim_f_32(int32_t len);
 
@@ -1514,13 +1484,7 @@ struct wire_list_prim_u_64 *new_list_prim_u_64(int32_t len);
 
 struct wire_list_prim_u_8 *new_list_prim_u_8(int32_t len);
 
-wire_list_raw_string_enum_mirrored *new_list_raw_string_enum_mirrored(int32_t len);
-
-wire_list_raw_string_mirrored *new_list_raw_string_mirrored(int32_t len);
-
 struct wire_list_record_string_i_32 *new_list_record_string_i_32(int32_t len);
-
-wire_list_sum_with *new_list_sum_with(int32_t len);
 
 struct wire_list_test_id *new_list_test_id(int32_t len);
 
@@ -1683,16 +1647,12 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_RustOpaque_MutexHideData);
     dummy_var ^= ((int64_t) (void*) new_RustOpaque_RwLockHideData);
     dummy_var ^= ((int64_t) (void*) new_RustOpaque_box_dynDartDebug);
-    dummy_var ^= ((int64_t) (void*) new_RustOpaque_frb_opaque_return);
-    dummy_var ^= ((int64_t) (void*) new_RustOpaque_frb_opaque_sync_return);
     dummy_var ^= ((int64_t) (void*) new_RustOpaque_hide_data);
     dummy_var ^= ((int64_t) (void*) new_RustOpaque_i_32);
     dummy_var ^= ((int64_t) (void*) new_RustOpaque_non_clone_data);
     dummy_var ^= ((int64_t) (void*) new_RustOpaque_non_send_hide_data);
     dummy_var ^= ((int64_t) (void*) new_StringList);
     dummy_var ^= ((int64_t) (void*) new_box_application_env);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_Chrono_Duration);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_Chrono_Naive);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_Chrono_Utc);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_DartOpaque);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_RustOpaque_hide_data);
@@ -1713,7 +1673,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_custom_struct_error_twin_sync);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_customized);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_dart_opaque_nested);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_element);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_dart_opaque);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_opaque);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_with_item_mixed_twin_normal);
@@ -1733,20 +1692,17 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_i_32);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_i_64);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_i_8);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_list_of_nested_raw_string_mirrored);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_macro_struct);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_measure);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_message_id);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_nested_struct);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_struct);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_tree_node);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_nested_raw_string_mirrored);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_new_type_int);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_note);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_numbers);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_opaque_nested);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_opt_vecs);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_raw_string_mirrored);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_record_string_i_32);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_sequences);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_comments_twin_normal);
@@ -1775,7 +1731,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_distance);
     dummy_var ^= ((int64_t) (void*) new_box_exotic_optionals);
     dummy_var ^= ((int64_t) (void*) new_box_f_64);
-    dummy_var ^= ((int64_t) (void*) new_box_feed_id);
     dummy_var ^= ((int64_t) (void*) new_box_i_32);
     dummy_var ^= ((int64_t) (void*) new_box_i_64);
     dummy_var ^= ((int64_t) (void*) new_box_i_8);
@@ -1786,21 +1741,15 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_list_DartOpaque);
     dummy_var ^= ((int64_t) (void*) new_list_RustOpaque_hide_data);
     dummy_var ^= ((int64_t) (void*) new_list_application_env_var);
-    dummy_var ^= ((int64_t) (void*) new_list_application_settings);
     dummy_var ^= ((int64_t) (void*) new_list_attribute);
     dummy_var ^= ((int64_t) (void*) new_list_bool);
-    dummy_var ^= ((int64_t) (void*) new_list_element);
-    dummy_var ^= ((int64_t) (void*) new_list_enum_opaque);
-    dummy_var ^= ((int64_t) (void*) new_list_my_enum);
     dummy_var ^= ((int64_t) (void*) new_list_my_size);
     dummy_var ^= ((int64_t) (void*) new_list_my_tree_node);
-    dummy_var ^= ((int64_t) (void*) new_list_nested_raw_string_mirrored);
     dummy_var ^= ((int64_t) (void*) new_list_opt_String);
     dummy_var ^= ((int64_t) (void*) new_list_opt_box_autoadd_attribute);
     dummy_var ^= ((int64_t) (void*) new_list_opt_box_autoadd_i_32);
     dummy_var ^= ((int64_t) (void*) new_list_opt_box_autoadd_weekdays);
     dummy_var ^= ((int64_t) (void*) new_list_opt_list_prim_i_32);
-    dummy_var ^= ((int64_t) (void*) new_list_point);
     dummy_var ^= ((int64_t) (void*) new_list_prim_f_32);
     dummy_var ^= ((int64_t) (void*) new_list_prim_f_64);
     dummy_var ^= ((int64_t) (void*) new_list_prim_i_16);
@@ -1811,10 +1760,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_list_prim_u_32);
     dummy_var ^= ((int64_t) (void*) new_list_prim_u_64);
     dummy_var ^= ((int64_t) (void*) new_list_prim_u_8);
-    dummy_var ^= ((int64_t) (void*) new_list_raw_string_enum_mirrored);
-    dummy_var ^= ((int64_t) (void*) new_list_raw_string_mirrored);
     dummy_var ^= ((int64_t) (void*) new_list_record_string_i_32);
-    dummy_var ^= ((int64_t) (void*) new_list_sum_with);
     dummy_var ^= ((int64_t) (void*) new_list_test_id);
     dummy_var ^= ((int64_t) (void*) new_list_weekdays);
     dummy_var ^= ((int64_t) (void*) share_opaque_RustOpaque_MutexHideData);

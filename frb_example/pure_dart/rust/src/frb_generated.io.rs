@@ -5021,17 +5021,6 @@ pub extern "C" fn new_RustOpaque_box_dynDartDebug() -> wire_RustOpaque_box_dynDa
 }
 
 #[no_mangle]
-pub extern "C" fn new_RustOpaque_frb_opaque_return() -> wire_RustOpaque_frb_opaque_return {
-    wire_RustOpaque_frb_opaque_return::new_with_null_ptr()
-}
-
-#[no_mangle]
-pub extern "C" fn new_RustOpaque_frb_opaque_sync_return() -> wire_RustOpaque_frb_opaque_sync_return
-{
-    wire_RustOpaque_frb_opaque_sync_return::new_with_null_ptr()
-}
-
-#[no_mangle]
 pub extern "C" fn new_RustOpaque_hide_data() -> wire_RustOpaque_hide_data {
     wire_RustOpaque_hide_data::new_with_null_ptr()
 }
@@ -5066,16 +5055,6 @@ pub extern "C" fn new_StringList(len: i32) -> *mut wire_StringList {
 #[no_mangle]
 pub extern "C" fn new_box_application_env() -> *mut wire_application_env {
     flutter_rust_bridge::support::new_leak_box_ptr(wire_application_env::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_Chrono_Duration(value: i64) -> *mut i64 {
-    flutter_rust_bridge::support::new_leak_box_ptr(value)
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_Chrono_Naive(value: i64) -> *mut i64 {
-    flutter_rust_bridge::support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
@@ -5197,11 +5176,6 @@ pub extern "C" fn new_box_autoadd_dart_opaque_nested() -> *mut wire_dart_opaque_
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_element() -> *mut wire_element {
-    flutter_rust_bridge::support::new_leak_box_ptr(wire_element::new_with_null_ptr())
-}
-
-#[no_mangle]
 pub extern "C" fn new_box_autoadd_enum_dart_opaque() -> *mut wire_enum_dart_opaque {
     flutter_rust_bridge::support::new_leak_box_ptr(wire_enum_dart_opaque::new_with_null_ptr())
 }
@@ -5315,14 +5289,6 @@ pub extern "C" fn new_box_autoadd_i_8(value: i8) -> *mut i8 {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_list_of_nested_raw_string_mirrored(
-) -> *mut wire_list_of_nested_raw_string_mirrored {
-    flutter_rust_bridge::support::new_leak_box_ptr(
-        wire_list_of_nested_raw_string_mirrored::new_with_null_ptr(),
-    )
-}
-
-#[no_mangle]
 pub extern "C" fn new_box_autoadd_macro_struct() -> *mut wire_macro_struct {
     flutter_rust_bridge::support::new_leak_box_ptr(wire_macro_struct::new_with_null_ptr())
 }
@@ -5353,14 +5319,6 @@ pub extern "C" fn new_box_autoadd_my_tree_node() -> *mut wire_my_tree_node {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_nested_raw_string_mirrored(
-) -> *mut wire_nested_raw_string_mirrored {
-    flutter_rust_bridge::support::new_leak_box_ptr(
-        wire_nested_raw_string_mirrored::new_with_null_ptr(),
-    )
-}
-
-#[no_mangle]
 pub extern "C" fn new_box_autoadd_new_type_int() -> *mut wire_new_type_int {
     flutter_rust_bridge::support::new_leak_box_ptr(wire_new_type_int::new_with_null_ptr())
 }
@@ -5383,11 +5341,6 @@ pub extern "C" fn new_box_autoadd_opaque_nested() -> *mut wire_opaque_nested {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_opt_vecs() -> *mut wire_opt_vecs {
     flutter_rust_bridge::support::new_leak_box_ptr(wire_opt_vecs::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_raw_string_mirrored() -> *mut wire_raw_string_mirrored {
-    flutter_rust_bridge::support::new_leak_box_ptr(wire_raw_string_mirrored::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -5567,11 +5520,6 @@ pub extern "C" fn new_box_f_64(value: f64) -> *mut f64 {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_feed_id() -> *mut wire_feed_id {
-    flutter_rust_bridge::support::new_leak_box_ptr(wire_feed_id::new_with_null_ptr())
-}
-
-#[no_mangle]
 pub extern "C" fn new_box_i_32(value: i32) -> *mut i32 {
     flutter_rust_bridge::support::new_leak_box_ptr(value)
 }
@@ -5638,18 +5586,6 @@ pub extern "C" fn new_list_application_env_var(len: i32) -> *mut wire_list_appli
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_application_settings(len: i32) -> *mut wire_list_application_settings {
-    let wrap = wire_list_application_settings {
-        ptr: flutter_rust_bridge::support::new_leak_vec_ptr(
-            <wire_application_settings>::new_with_null_ptr(),
-            len,
-        ),
-        len,
-    };
-    flutter_rust_bridge::support::new_leak_box_ptr(wrap)
-}
-
-#[no_mangle]
 pub extern "C" fn new_list_attribute(len: i32) -> *mut wire_list_attribute {
     let wrap = wire_list_attribute {
         ptr: flutter_rust_bridge::support::new_leak_vec_ptr(
@@ -5664,39 +5600,6 @@ pub extern "C" fn new_list_attribute(len: i32) -> *mut wire_list_attribute {
 #[no_mangle]
 pub extern "C" fn new_list_bool(len: i32) -> *mut wire_list_bool {
     let wrap = wire_list_bool {
-        ptr: flutter_rust_bridge::support::new_leak_vec_ptr(Default::default(), len),
-        len,
-    };
-    flutter_rust_bridge::support::new_leak_box_ptr(wrap)
-}
-
-#[no_mangle]
-pub extern "C" fn new_list_element(len: i32) -> *mut wire_list_element {
-    let wrap = wire_list_element {
-        ptr: flutter_rust_bridge::support::new_leak_vec_ptr(
-            <wire_element>::new_with_null_ptr(),
-            len,
-        ),
-        len,
-    };
-    flutter_rust_bridge::support::new_leak_box_ptr(wrap)
-}
-
-#[no_mangle]
-pub extern "C" fn new_list_enum_opaque(len: i32) -> *mut wire_list_enum_opaque {
-    let wrap = wire_list_enum_opaque {
-        ptr: flutter_rust_bridge::support::new_leak_vec_ptr(
-            <wire_enum_opaque>::new_with_null_ptr(),
-            len,
-        ),
-        len,
-    };
-    flutter_rust_bridge::support::new_leak_box_ptr(wrap)
-}
-
-#[no_mangle]
-pub extern "C" fn new_list_my_enum(len: i32) -> *mut wire_list_my_enum {
-    let wrap = wire_list_my_enum {
         ptr: flutter_rust_bridge::support::new_leak_vec_ptr(Default::default(), len),
         len,
     };
@@ -5720,20 +5623,6 @@ pub extern "C" fn new_list_my_tree_node(len: i32) -> *mut wire_list_my_tree_node
     let wrap = wire_list_my_tree_node {
         ptr: flutter_rust_bridge::support::new_leak_vec_ptr(
             <wire_my_tree_node>::new_with_null_ptr(),
-            len,
-        ),
-        len,
-    };
-    flutter_rust_bridge::support::new_leak_box_ptr(wrap)
-}
-
-#[no_mangle]
-pub extern "C" fn new_list_nested_raw_string_mirrored(
-    len: i32,
-) -> *mut wire_list_nested_raw_string_mirrored {
-    let wrap = wire_list_nested_raw_string_mirrored {
-        ptr: flutter_rust_bridge::support::new_leak_vec_ptr(
-            <wire_nested_raw_string_mirrored>::new_with_null_ptr(),
             len,
         ),
         len,
@@ -5785,15 +5674,6 @@ pub extern "C" fn new_list_opt_box_autoadd_weekdays(
 pub extern "C" fn new_list_opt_list_prim_i_32(len: i32) -> *mut wire_list_opt_list_prim_i_32 {
     let wrap = wire_list_opt_list_prim_i_32 {
         ptr: flutter_rust_bridge::support::new_leak_vec_ptr(core::ptr::null_mut(), len),
-        len,
-    };
-    flutter_rust_bridge::support::new_leak_box_ptr(wrap)
-}
-
-#[no_mangle]
-pub extern "C" fn new_list_point(len: i32) -> *mut wire_list_point {
-    let wrap = wire_list_point {
-        ptr: flutter_rust_bridge::support::new_leak_vec_ptr(<wire_point>::new_with_null_ptr(), len),
         len,
     };
     flutter_rust_bridge::support::new_leak_box_ptr(wrap)
@@ -5890,48 +5770,10 @@ pub extern "C" fn new_list_prim_u_8(len: i32) -> *mut wire_list_prim_u_8 {
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_raw_string_enum_mirrored(
-    len: i32,
-) -> *mut wire_list_raw_string_enum_mirrored {
-    let wrap = wire_list_raw_string_enum_mirrored {
-        ptr: flutter_rust_bridge::support::new_leak_vec_ptr(
-            <wire_raw_string_enum_mirrored>::new_with_null_ptr(),
-            len,
-        ),
-        len,
-    };
-    flutter_rust_bridge::support::new_leak_box_ptr(wrap)
-}
-
-#[no_mangle]
-pub extern "C" fn new_list_raw_string_mirrored(len: i32) -> *mut wire_list_raw_string_mirrored {
-    let wrap = wire_list_raw_string_mirrored {
-        ptr: flutter_rust_bridge::support::new_leak_vec_ptr(
-            <wire_raw_string_mirrored>::new_with_null_ptr(),
-            len,
-        ),
-        len,
-    };
-    flutter_rust_bridge::support::new_leak_box_ptr(wrap)
-}
-
-#[no_mangle]
 pub extern "C" fn new_list_record_string_i_32(len: i32) -> *mut wire_list_record_string_i_32 {
     let wrap = wire_list_record_string_i_32 {
         ptr: flutter_rust_bridge::support::new_leak_vec_ptr(
             <wire_record_string_i_32>::new_with_null_ptr(),
-            len,
-        ),
-        len,
-    };
-    flutter_rust_bridge::support::new_leak_box_ptr(wrap)
-}
-
-#[no_mangle]
-pub extern "C" fn new_list_sum_with(len: i32) -> *mut wire_list_sum_with {
-    let wrap = wire_list_sum_with {
-        ptr: flutter_rust_bridge::support::new_leak_vec_ptr(
-            <wire_sum_with>::new_with_null_ptr(),
             len,
         ),
         len,
