@@ -222,12 +222,6 @@ void main(List<String> args) async {
     testHandleStream(handleStreamSinkAt3);
   });
 
-  void testAppSettings(ApplicationSettings settings) {
-    expect(settings.version, "1.0.0-rc.1");
-    expect(settings.mode, ApplicationMode.standalone);
-    expect(settings.env.vars[0].field0, "myenv");
-  }
-
   test('dart call returnErr', () async {
     try {
       await returnErr();

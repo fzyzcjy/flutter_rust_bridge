@@ -1,7 +1,6 @@
 import 'dart:typed_data';
 
 import 'package:frb_example_pure_dart/src/rust/api/mirror.dart';
-import 'package:frb_example_pure_dart/src/rust/api/simple.dart';
 import 'package:frb_example_pure_dart/src/rust/auxiliary/sample_types.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
@@ -29,28 +28,28 @@ Future<void> main() async {
 
   test('dart call app_settings_stream', () async {
     final settings = await appSettingsStream().first;
-    testAppSettings(settings);
+    _testAppSettings(settings);
   });
 
   test('dart call app_settings_vec_stream', () async {
     final settings = await appSettingsVecStream().first;
-    testAppSettings(settings[0]);
-    testAppSettings(settings[1]);
+    _testAppSettings(settings[0]);
+    _testAppSettings(settings[1]);
   });
 
   test('dart call mirror_struct_stream', () async {
     final ret = await mirrorStructStream().first;
-    testAppSettings(ret.a);
+    _testAppSettings(ret.a);
     expect(ret.b.content, true);
     expect(ret.c[0], MyEnum.True);
     expect(ret.c[1], MyEnum.False);
-    testAppSettings(ret.d[0]);
-    testAppSettings(ret.d[1]);
+    _testAppSettings(ret.d[0]);
+    _testAppSettings(ret.d[1]);
   });
 
   test('dart call mirror_tuple_stream', () async {
     final (settings, rawStringEnum) = await mirrorTupleStream().first;
-    testAppSettings(settings);
+    _testAppSettings(settings);
     expect(rawStringEnum is RawStringEnumMirrored_Raw, true);
     expect((rawStringEnum as RawStringEnumMirrored_Raw).field0.value, "test");
   });
@@ -142,4 +141,10 @@ int _createGarbage() {
     cum += l[42];
   }
   return cum;
+}
+
+void _testAppSettings(ApplicationSettings settings) {
+  expect(settings.version, "1.0.0-rc.1");
+  expect(settings.mode, ApplicationMode.standalone);
+  expect(settings.env.vars[0].field0, "myenv");
 }

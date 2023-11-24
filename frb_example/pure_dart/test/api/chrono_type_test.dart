@@ -1,7 +1,9 @@
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:frb_example_pure_dart/src/rust/api/chrono_type.dart';
-import 'package:frb_example_pure_dart/src/rust/api/simple.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
+
+import '../test_utils.dart';
 
 Future<void> main() async {
   await RustLib.init();
@@ -50,9 +52,9 @@ Future<void> main() async {
   });
 
   test('Duration', () async {
-    final duration = Duration(hours: 4);
-    final resp = await duration(d: duration);
-    expect(resp.inHours, duration.inHours);
+    final d = Duration(hours: 4);
+    final resp = await duration(d: d);
+    expect(resp.inHours, d.inHours);
   });
 
   test('List<Duration>', () {
@@ -110,6 +112,7 @@ Future<void> main() async {
     final utc = DateTime.now().toUtc();
     final difference =
         await howLongDoesItTake(mine: FeatureChrono(utc: utc, local: local, duration: duration, naive: naive));
-    log('$difference');
+    expect(difference, Duration(seconds: 11111)); // TODO not filled in
+    // log('$difference');
   });
 }

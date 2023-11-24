@@ -50,7 +50,7 @@ Future<void> main() async {
     final inner = I32Array2.init();
     inner[0] = 1;
     inner[1] = 2;
-    final testId = await testId(id: TestId(field0: inner));
+    final testId = await funcTestId(id: TestId(field0: inner));
     expect(testId.field0[0], 1);
     expect(testId.field0[1], 2);
   });
