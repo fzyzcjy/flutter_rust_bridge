@@ -1,3 +1,4 @@
+use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::optional::IrTypeOptional;
 use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
@@ -11,6 +12,7 @@ use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use anyhow::bail;
 use quote::ToTokens;
+use std::collections::HashMap;
 use syn::TypePath;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
@@ -26,7 +28,22 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 
     fn parse_rust_opaque(&mut self, ty: &IrType) -> IrType {
-        let namespace = self.context.initiated_namespace.clone();
-        RustOpaque(IrTypeRustOpaque::new(namespace, ty.clone()))
+        let ty_safe_ident: String = ty.safe_ident();
+
+        // NOTE when meeting the *same* type (same safe_ident), reuse the existing parsed
+        // result. Especially, when the same type is seen in two different files
+        // (thus `namespace`s), this can ensure they both point to one namespace.
+        let ans = (self.inner.rust_opaque_parser_info.parsed_types)
+            .entry(ty_safe_ident)
+            .or_insert_with(|| {
+                IrTypeRustOpaque::new(self.context.initiated_namespace.clone(), ty.clone())
+            });
+
+        RustOpaque(ans.clone())
     }
+}
+
+#[derive(Clone, Debug, Default)]
+pub(super) struct RustOpaqueParserInfo {
+    parsed_types: HashMap<String, IrTypeRustOpaque>,
 }
