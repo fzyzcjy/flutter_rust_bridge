@@ -16,7 +16,7 @@ pub fn primitive_u32(my_u32: u32) -> u32 {
     ret
 }
 
-// usize
-pub fn get_usize(u: usize) -> usize {
-    u
-}
+// TODO how to treat usize (as 32bit or 64bit)
+// pub fn get_usize(u: usize) -> usize {
+//     u
+// }
