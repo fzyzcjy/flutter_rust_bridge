@@ -4,11 +4,11 @@ use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegateTime};
 use crate::codegen::ir::ty::dynamic::IrTypeDynamic;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
-use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
+use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaqueRef;
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{
-    Boxed, DartOpaque, Delegate, Dynamic, Primitive, PrimitiveList, RustOpaque, Unencodable,
+    Boxed, DartOpaque, Delegate, Dynamic, Primitive, PrimitiveList, RustOpaqueRef, Unencodable,
 };
 use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
 use crate::codegen::parser::type_parser::unencodable::{splay_segments, SplayedSegment};
@@ -38,13 +38,13 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             }
 
             ("RustOpaque", Some(Generic([Primitive(IrTypePrimitive::Unit)]))) => {
-                RustOpaque(IrTypeRustOpaque::new(
+                RustOpaqueRef(IrTypeRustOpaqueRef::new(
                     self.context.initiated_namespace.clone(),
                     Primitive(IrTypePrimitive::Unit),
                 ))
             }
 
-            ("RustOpaque", Some(Generic([ty]))) => RustOpaque(IrTypeRustOpaque::new(
+            ("RustOpaque", Some(Generic([ty]))) => RustOpaqueRef(IrTypeRustOpaqueRef::new(
                 self.context.initiated_namespace.clone(),
                 ty.clone(),
             )),
