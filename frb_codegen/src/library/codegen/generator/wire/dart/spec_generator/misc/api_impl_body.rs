@@ -1,3 +1,4 @@
+use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::api_dart;
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
@@ -190,21 +191,41 @@ fn generate_arg_values(func: &IrFunc) -> String {
 pub(crate) fn generate_api_impl_opaque_getter(
     ty: &IrType,
     context: WireDartGeneratorContext,
-) -> Option<WireDartOutputCode> {
+) -> Acc<WireDartOutputCode> {
     if !matches!(ty, IrType::RustOpaque(_)) {
-        return None;
+        return Default::default();
     }
-    Some(WireDartOutputCode {
+
+    let api_type = ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type();
+
+    let generate_platform_impl = |finalizer_type: &str, finalizer_arg: &str| WireDartOutputCode {
         api_impl_body: format!(
-            "
-            OpaqueDropFnType get dropOpaque{ty_dart_api_type} => wire.drop_opaque_{safe_ident};
-            OpaqueShareFnType get shareOpaque{ty_dart_api_type} => wire.share_opaque_{safe_ident};
-            OpaqueTypeFinalizer get {ty_dart_api_type}Finalizer => wire.{safe_ident}Finalizer;
-            ",
-            ty_dart_api_type =
-                ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type(),
-            safe_ident = ty.safe_ident(),
+            "late final {finalizer_type} _{api_type}Finalizer = {finalizer_type}({finalizer_arg});
+            {finalizer_type} get {api_type}Finalizer => _{api_type}Finalizer;",
         ),
         ..Default::default()
-    })
+    };
+
+    Acc {
+        common: WireDartOutputCode {
+            api_impl_body: format!(
+                "
+                OpaqueDropFnType get dropOpaque{ty_dart_api_type} => wire.drop_opaque_{safe_ident};
+                OpaqueShareFnType get shareOpaque{ty_dart_api_type} => wire.share_opaque_{safe_ident};
+                ",
+                ty_dart_api_type = ApiDartGenerator::new(ty.clone(), context.as_api_dart_context())
+                    .dart_api_type(),
+                safe_ident = ty.safe_ident(),
+            ),
+            ..Default::default()
+        },
+        io: generate_platform_impl(
+            "OpaqueTypeFinalizer",
+            &format!("wire._drop_opaque_{api_type}Ptr"),
+        ),
+        wasm: generate_platform_impl(
+            "Finalizer<PlatformPointer>",
+            &format!("wire.drop_opaque_{api_type}"),
+        ),
+    }
 }

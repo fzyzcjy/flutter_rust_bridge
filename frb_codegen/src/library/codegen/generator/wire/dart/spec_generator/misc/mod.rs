@@ -25,7 +25,7 @@ pub(crate) struct WireDartOutputSpecMisc {
     pub(crate) c_binding: WireDartOutputCode,
     pub(crate) boilerplate: Acc<Vec<WireDartOutputCode>>,
     pub(crate) api_impl_normal_functions: Vec<WireDartOutputCode>,
-    pub(crate) api_impl_opaque_getters: Vec<WireDartOutputCode>,
+    pub(crate) api_impl_opaque_getters: Acc<Vec<WireDartOutputCode>>,
 }
 
 pub(crate) fn generate(
@@ -41,7 +41,7 @@ pub(crate) fn generate(
             .map(|f| api_impl_body::generate_api_impl_normal_function(f, context))
             .collect::<anyhow::Result<Vec<_>>>()?,
         api_impl_opaque_getters: (cache.distinct_types.iter())
-            .filter_map(|ty| api_impl_body::generate_api_impl_opaque_getter(ty, context))
+            .map(|ty| api_impl_body::generate_api_impl_opaque_getter(ty, context))
             .collect(),
     })
 }

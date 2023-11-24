@@ -429,25 +429,3 @@ fn generate_file_prelude() -> DartBasicHeaderCode {
         body: "".to_string(),
     }
 }
-
-fn generate_opaque_func(ty: &IrType) -> Acc<String> {
-    let api_type = ty.dart_api_type();
-    let generate_impl = |finalizer_type: &str, finalizer_arg: &str| {
-        format!(
-            "late final {finalizer_type} _{api_type}Finalizer = {finalizer_type}({finalizer_arg});
-            {finalizer_type} get {api_type}Finalizer => _{api_type}Finalizer;",
-        )
-    };
-
-    Acc {
-        io: generate_impl(
-            "OpaqueTypeFinalizer",
-            &format!("inner._drop_opaque_{api_type}Ptr"),
-        ),
-        wasm: generate_impl(
-            "Finalizer<PlatformPointer>",
-            &format!("inner.drop_opaque_{api_type}"),
-        ),
-        ..Default::default()
-    }
-}

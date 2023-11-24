@@ -37,7 +37,7 @@ fn generate_merged_code(spec: &WireDartOutputSpec) -> Acc<WireDartOutputCode> {
     );
     add(
         "api_impl_opaque_getters",
-        &Acc::new_common(spec.misc.api_impl_opaque_getters.clone()),
+        &spec.misc.api_impl_opaque_getters,
     );
     add("c_binding", &Acc::new_io(vec![spec.misc.c_binding.clone()]));
     add("impl_wire2api", &spec.wire2api.impl_wire2api);
