@@ -91,7 +91,7 @@ pub(super) fn parse_wrapper_name_into_dart_name_and_self_path(
     wrapper_name: &Option<NamespacedName>,
 ) -> (String, String) {
     match &wrapper_name {
-        Some(wrapper) => (wrapper.rust_style(), name.rust_style()),
+        Some(wrapper) => (wrapper.name.clone(), name.rust_style()),
         None => (name.rust_style(), "Self".into()),
     }
 }
