@@ -42,6 +42,12 @@ Future<String> handleOptionBoxArguments(
         structbox: structbox,
         hint: hint);
 
+String? syncOption({dynamic hint}) =>
+    RustLib.instance.api.syncOption(hint: hint);
+
+String? syncOptionNull({dynamic hint}) =>
+    RustLib.instance.api.syncOptionNull(hint: hint);
+
 class Attribute {
   final String key;
   final String value;

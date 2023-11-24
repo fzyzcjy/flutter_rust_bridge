@@ -19,3 +19,6 @@ String unwrapDartOpaque({required Object opaque, dynamic hint}) =>
 Object returnNonDroppableDartOpaque({required Object opaque, dynamic hint}) =>
     RustLib.instance.api
         .returnNonDroppableDartOpaque(opaque: opaque, hint: hint);
+
+Object? syncOptionDartOpaque({required Object opaque, dynamic hint}) =>
+    RustLib.instance.api.syncOptionDartOpaque(opaque: opaque, hint: hint);

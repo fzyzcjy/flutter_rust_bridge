@@ -583,6 +583,12 @@ impl Wire2Api<crate::api::mirror::Sequences> for *mut wire_sequences {
         Wire2Api::<crate::api::mirror::Sequences>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<crate::api::exception::SomeStruct> for *mut wire_some_struct {
+    fn wire2api(self) -> crate::api::exception::SomeStruct {
+        let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
+        Wire2Api::<crate::api::exception::SomeStruct>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<crate::api::comment::StructWithCommentsTwinNormal>
     for *mut wire_struct_with_comments_twin_normal
 {
@@ -1615,6 +1621,13 @@ impl Wire2Api<(String, i32)> for wire_record_string_i_32 {
 impl Wire2Api<crate::api::mirror::Sequences> for wire_sequences {
     fn wire2api(self) -> crate::api::mirror::Sequences {
         crate::api::mirror::Sequences(self.field0.wire2api())
+    }
+}
+impl Wire2Api<crate::api::exception::SomeStruct> for wire_some_struct {
+    fn wire2api(self) -> crate::api::exception::SomeStruct {
+        crate::api::exception::SomeStruct {
+            value: self.value.wire2api(),
+        }
     }
 }
 impl Wire2Api<crate::api::enumeration::Speed> for wire_speed {
@@ -2721,6 +2734,12 @@ pub struct wire_record_string_i_32 {
 pub struct wire_sequences {
     field0: *mut wire_list_prim_i_32,
 }
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_some_struct {
+    value: u32,
+}
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_speed {
@@ -3557,6 +3576,18 @@ impl Default for wire_sequences {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_some_struct {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            value: Default::default(),
+        }
+    }
+}
+impl Default for wire_some_struct {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 impl NewWithNullPtr for wire_speed {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -4021,6 +4052,13 @@ pub extern "C" fn wire_sync_loopback(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_sync_option_dart_opaque(
+    opaque: wire_DartOpaque,
+) -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_sync_option_dart_opaque_impl(opaque)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sync_option_loopback(
     opaque: *mut wire_DartOpaque,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
@@ -4141,6 +4179,37 @@ pub extern "C" fn wire_CustomStruct_static_return_custom_struct_error(port_: i64
 #[no_mangle]
 pub extern "C" fn wire_CustomStruct_static_return_custom_struct_ok(port_: i64) {
     wire_CustomStruct_static_return_custom_struct_ok_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_SomeStruct_new(port_: i64, value: u32) {
+    wire_SomeStruct_new_impl(port_, value)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_SomeStruct_non_static_return_err_custom_error(
+    port_: i64,
+    that: *mut wire_some_struct,
+) {
+    wire_SomeStruct_non_static_return_err_custom_error_impl(port_, that)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_SomeStruct_non_static_return_ok_custom_error(
+    port_: i64,
+    that: *mut wire_some_struct,
+) {
+    wire_SomeStruct_non_static_return_ok_custom_error_impl(port_, that)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_SomeStruct_static_return_err_custom_error(port_: i64) {
+    wire_SomeStruct_static_return_err_custom_error_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_SomeStruct_static_return_ok_custom_error(port_: i64) {
+    wire_SomeStruct_static_return_ok_custom_error_impl(port_)
 }
 
 #[no_mangle]
@@ -4566,6 +4635,16 @@ pub extern "C" fn wire_handle_optional_struct(port_: i64, document: *mut wire_li
 #[no_mangle]
 pub extern "C" fn wire_handle_vec_of_opts(port_: i64, opt: *mut wire_opt_vecs) {
     wire_handle_vec_of_opts_impl(port_, opt)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_sync_option() -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_sync_option_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn wire_sync_option_null() -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_sync_option_null_impl()
 }
 
 #[no_mangle]
@@ -5299,6 +5378,11 @@ pub extern "C" fn wire_frb_sync_generator_test() -> flutter_rust_bridge::support
 }
 
 #[no_mangle]
+pub extern "C" fn wire_sync_create_non_clone() -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_sync_create_non_clone_impl()
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sync_create_opaque() -> flutter_rust_bridge::support::WireSyncReturn {
     wire_sync_create_opaque_impl()
 }
@@ -5306,6 +5390,11 @@ pub extern "C" fn wire_sync_create_opaque() -> flutter_rust_bridge::support::Wir
 #[no_mangle]
 pub extern "C" fn wire_sync_create_sync_opaque() -> flutter_rust_bridge::support::WireSyncReturn {
     wire_sync_create_sync_opaque_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn wire_sync_option_rust_opaque() -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_sync_option_rust_opaque_impl()
 }
 
 #[no_mangle]
@@ -5816,6 +5905,11 @@ pub extern "C" fn new_box_autoadd_record_string_i_32() -> *mut wire_record_strin
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_sequences() -> *mut wire_sequences {
     flutter_rust_bridge::support::new_leak_box_ptr(wire_sequences::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_some_struct() -> *mut wire_some_struct {
+    flutter_rust_bridge::support::new_leak_box_ptr(wire_some_struct::new_with_null_ptr())
 }
 
 #[no_mangle]

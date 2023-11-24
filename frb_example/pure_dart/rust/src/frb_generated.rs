@@ -802,6 +802,21 @@ fn wire_sync_loopback_impl(
         },
     )
 }
+fn wire_sync_option_dart_opaque_impl(
+    opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+) -> flutter_rust_bridge::support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "sync_option_dart_opaque",
+            port: None,
+            mode: flutter_rust_bridge::FfiCallMode::Sync,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            crate::api::dart_opaque_sync::sync_option_dart_opaque(api_opaque)
+        },
+    )
+}
 fn wire_sync_option_loopback_impl(
     opaque: impl Wire2Api<Option<flutter_rust_bridge::DartOpaque>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
@@ -1157,6 +1172,84 @@ fn wire_CustomStruct_static_return_custom_struct_ok_impl(port_: flutter_rust_bri
             move |task_callback| {
                 crate::api::exception::CustomStruct::static_return_custom_struct_ok()
             }
+        },
+    )
+}
+fn wire_SomeStruct_new_impl(
+    port_: flutter_rust_bridge::MessagePort,
+    value: impl Wire2Api<u32> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::exception::SomeStruct, _>(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "SomeStruct_new",
+            port: Some(port_),
+            mode: flutter_rust_bridge::FfiCallMode::Normal,
+        },
+        move || {
+            let api_value = value.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(crate::api::exception::SomeStruct::new(api_value))
+            }
+        },
+    )
+}
+fn wire_SomeStruct_non_static_return_err_custom_error_impl(
+    port_: flutter_rust_bridge::MessagePort,
+    that: impl Wire2Api<crate::api::exception::SomeStruct> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32, _>(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "SomeStruct_non_static_return_err_custom_error",
+            port: Some(port_),
+            mode: flutter_rust_bridge::FfiCallMode::Normal,
+        },
+        move || {
+            let api_that = that.wire2api();
+            move |task_callback| {
+                crate::api::exception::SomeStruct::non_static_return_err_custom_error(&api_that)
+            }
+        },
+    )
+}
+fn wire_SomeStruct_non_static_return_ok_custom_error_impl(
+    port_: flutter_rust_bridge::MessagePort,
+    that: impl Wire2Api<crate::api::exception::SomeStruct> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32, _>(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "SomeStruct_non_static_return_ok_custom_error",
+            port: Some(port_),
+            mode: flutter_rust_bridge::FfiCallMode::Normal,
+        },
+        move || {
+            let api_that = that.wire2api();
+            move |task_callback| {
+                crate::api::exception::SomeStruct::non_static_return_ok_custom_error(&api_that)
+            }
+        },
+    )
+}
+fn wire_SomeStruct_static_return_err_custom_error_impl(port_: flutter_rust_bridge::MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32, _>(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "SomeStruct_static_return_err_custom_error",
+            port: Some(port_),
+            mode: flutter_rust_bridge::FfiCallMode::Normal,
+        },
+        move || {
+            move |task_callback| crate::api::exception::SomeStruct::static_return_err_custom_error()
+        },
+    )
+}
+fn wire_SomeStruct_static_return_ok_custom_error_impl(port_: flutter_rust_bridge::MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32, _>(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "SomeStruct_static_return_ok_custom_error",
+            port: Some(port_),
+            mode: flutter_rust_bridge::FfiCallMode::Normal,
+        },
+        move || {
+            move |task_callback| crate::api::exception::SomeStruct::static_return_ok_custom_error()
         },
     )
 }
@@ -2374,6 +2467,26 @@ fn wire_handle_vec_of_opts_impl(
                 Result::<_, ()>::Ok(crate::api::optional::handle_vec_of_opts(api_opt))
             }
         },
+    )
+}
+fn wire_sync_option_impl() -> flutter_rust_bridge::support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "sync_option",
+            port: None,
+            mode: flutter_rust_bridge::FfiCallMode::Sync,
+        },
+        move || crate::api::optional::sync_option(),
+    )
+}
+fn wire_sync_option_null_impl() -> flutter_rust_bridge::support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "sync_option_null",
+            port: None,
+            mode: flutter_rust_bridge::FfiCallMode::Sync,
+        },
+        move || crate::api::optional::sync_option_null(),
     )
 }
 fn wire_primitive_optional_types_impl(
@@ -3611,6 +3724,16 @@ fn wire_frb_sync_generator_test_impl() -> flutter_rust_bridge::support::WireSync
         move || Result::<_, ()>::Ok(crate::api::rust_opaque_sync::frb_sync_generator_test()),
     )
 }
+fn wire_sync_create_non_clone_impl() -> flutter_rust_bridge::support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "sync_create_non_clone",
+            port: None,
+            mode: flutter_rust_bridge::FfiCallMode::Sync,
+        },
+        move || Result::<_, ()>::Ok(crate::api::rust_opaque_sync::sync_create_non_clone()),
+    )
+}
 fn wire_sync_create_opaque_impl() -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         flutter_rust_bridge::WrapInfo {
@@ -3629,6 +3752,16 @@ fn wire_sync_create_sync_opaque_impl() -> flutter_rust_bridge::support::WireSync
             mode: flutter_rust_bridge::FfiCallMode::Sync,
         },
         move || Result::<_, ()>::Ok(crate::api::rust_opaque_sync::sync_create_sync_opaque()),
+    )
+}
+fn wire_sync_option_rust_opaque_impl() -> flutter_rust_bridge::support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "sync_option_rust_opaque",
+            port: None,
+            mode: flutter_rust_bridge::FfiCallMode::Sync,
+        },
+        move || crate::api::rust_opaque_sync::sync_option_rust_opaque(),
     )
 }
 fn wire_sync_run_opaque_impl(
@@ -5651,6 +5784,22 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::newtype_pattern::N
         self
     }
 }
+impl flutter_rust_bridge::support::IntoDart for crate::auxiliary::sample_types::NonCloneData {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
+        vec![self.content.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::auxiliary::sample_types::NonCloneData
+{
+}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::auxiliary::sample_types::NonCloneData>
+    for crate::auxiliary::sample_types::NonCloneData
+{
+    fn into_into_dart(self) -> crate::auxiliary::sample_types::NonCloneData {
+        self
+    }
+}
 impl flutter_rust_bridge::support::IntoDart for mirror_Numbers {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0 .0.into_into_dart().into_dart()].into_dart()
@@ -5802,6 +5951,19 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_Sequences>
 {
     fn into_into_dart(self) -> mirror_Sequences {
         mirror_Sequences(self)
+    }
+}
+impl flutter_rust_bridge::support::IntoDart for crate::api::exception::SomeStruct {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
+        vec![self.value.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for crate::api::exception::SomeStruct {}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::exception::SomeStruct>
+    for crate::api::exception::SomeStruct
+{
+    fn into_into_dart(self) -> crate::api::exception::SomeStruct {
+        self
     }
 }
 impl flutter_rust_bridge::support::IntoDart for crate::api::enumeration::Speed {

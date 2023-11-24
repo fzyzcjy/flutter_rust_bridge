@@ -663,6 +663,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  ffi.Pointer<wire_some_struct> api2wire_box_autoadd_some_struct(
+      SomeStruct raw) {
+    final ptr = wire.new_box_autoadd_some_struct();
+    _api_fill_to_wire_some_struct(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_struct_with_comments_twin_normal>
       api2wire_box_autoadd_struct_with_comments_twin_normal(
           StructWithCommentsTwinNormal raw) {
@@ -1757,6 +1765,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     _api_fill_to_wire_sequences(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_some_struct(
+      SomeStruct apiObj, ffi.Pointer<wire_some_struct> wireObj) {
+    _api_fill_to_wire_some_struct(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_struct_with_comments_twin_normal(
       StructWithCommentsTwinNormal apiObj,
       ffi.Pointer<wire_struct_with_comments_twin_normal> wireObj) {
@@ -2377,6 +2390,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   void _api_fill_to_wire_sequences(Sequences apiObj, wire_sequences wireObj) {
     wireObj.field0 = api2wire_list_prim_i_32(apiObj.field0);
+  }
+
+  void _api_fill_to_wire_some_struct(
+      SomeStruct apiObj, wire_some_struct wireObj) {
+    wireObj.value = api2wire_u_32(apiObj.value);
   }
 
   void _api_fill_to_wire_speed(Speed apiObj, wire_speed wireObj) {
@@ -3274,6 +3292,20 @@ class RustLibWire implements BaseWire {
   late final _wire_sync_loopback = _wire_sync_loopbackPtr
       .asFunction<WireSyncReturn Function(wire_DartOpaque)>();
 
+  WireSyncReturn wire_sync_option_dart_opaque(
+    wire_DartOpaque opaque,
+  ) {
+    return _wire_sync_option_dart_opaque(
+      opaque,
+    );
+  }
+
+  late final _wire_sync_option_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(wire_DartOpaque)>>(
+          'wire_sync_option_dart_opaque');
+  late final _wire_sync_option_dart_opaque = _wire_sync_option_dart_opaquePtr
+      .asFunction<WireSyncReturn Function(wire_DartOpaque)>();
+
   WireSyncReturn wire_sync_option_loopback(
     ffi.Pointer<wire_DartOpaque> opaque,
   ) {
@@ -3612,6 +3644,88 @@ class RustLibWire implements BaseWire {
           'wire_CustomStruct_static_return_custom_struct_ok');
   late final _wire_CustomStruct_static_return_custom_struct_ok =
       _wire_CustomStruct_static_return_custom_struct_okPtr
+          .asFunction<void Function(int)>();
+
+  void wire_SomeStruct_new(
+    int port_,
+    int value,
+  ) {
+    return _wire_SomeStruct_new(
+      port_,
+      value,
+    );
+  }
+
+  late final _wire_SomeStruct_newPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32)>>(
+          'wire_SomeStruct_new');
+  late final _wire_SomeStruct_new =
+      _wire_SomeStruct_newPtr.asFunction<void Function(int, int)>();
+
+  void wire_SomeStruct_non_static_return_err_custom_error(
+    int port_,
+    ffi.Pointer<wire_some_struct> that,
+  ) {
+    return _wire_SomeStruct_non_static_return_err_custom_error(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_SomeStruct_non_static_return_err_custom_errorPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_some_struct>)>>(
+      'wire_SomeStruct_non_static_return_err_custom_error');
+  late final _wire_SomeStruct_non_static_return_err_custom_error =
+      _wire_SomeStruct_non_static_return_err_custom_errorPtr
+          .asFunction<void Function(int, ffi.Pointer<wire_some_struct>)>();
+
+  void wire_SomeStruct_non_static_return_ok_custom_error(
+    int port_,
+    ffi.Pointer<wire_some_struct> that,
+  ) {
+    return _wire_SomeStruct_non_static_return_ok_custom_error(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_SomeStruct_non_static_return_ok_custom_errorPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_some_struct>)>>(
+      'wire_SomeStruct_non_static_return_ok_custom_error');
+  late final _wire_SomeStruct_non_static_return_ok_custom_error =
+      _wire_SomeStruct_non_static_return_ok_custom_errorPtr
+          .asFunction<void Function(int, ffi.Pointer<wire_some_struct>)>();
+
+  void wire_SomeStruct_static_return_err_custom_error(
+    int port_,
+  ) {
+    return _wire_SomeStruct_static_return_err_custom_error(
+      port_,
+    );
+  }
+
+  late final _wire_SomeStruct_static_return_err_custom_errorPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_SomeStruct_static_return_err_custom_error');
+  late final _wire_SomeStruct_static_return_err_custom_error =
+      _wire_SomeStruct_static_return_err_custom_errorPtr
+          .asFunction<void Function(int)>();
+
+  void wire_SomeStruct_static_return_ok_custom_error(
+    int port_,
+  ) {
+    return _wire_SomeStruct_static_return_ok_custom_error(
+      port_,
+    );
+  }
+
+  late final _wire_SomeStruct_static_return_ok_custom_errorPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_SomeStruct_static_return_ok_custom_error');
+  late final _wire_SomeStruct_static_return_ok_custom_error =
+      _wire_SomeStruct_static_return_ok_custom_errorPtr
           .asFunction<void Function(int)>();
 
   void wire_custom_enum_error_panic_twin_normal(
@@ -4905,6 +5019,26 @@ class RustLibWire implements BaseWire {
               ffi.Pointer<wire_opt_vecs>)>>('wire_handle_vec_of_opts');
   late final _wire_handle_vec_of_opts = _wire_handle_vec_of_optsPtr
       .asFunction<void Function(int, ffi.Pointer<wire_opt_vecs>)>();
+
+  WireSyncReturn wire_sync_option() {
+    return _wire_sync_option();
+  }
+
+  late final _wire_sync_optionPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+          'wire_sync_option');
+  late final _wire_sync_option =
+      _wire_sync_optionPtr.asFunction<WireSyncReturn Function()>();
+
+  WireSyncReturn wire_sync_option_null() {
+    return _wire_sync_option_null();
+  }
+
+  late final _wire_sync_option_nullPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+          'wire_sync_option_null');
+  late final _wire_sync_option_null =
+      _wire_sync_option_nullPtr.asFunction<WireSyncReturn Function()>();
 
   void wire_primitive_optional_types(
     int port_,
@@ -6762,6 +6896,16 @@ class RustLibWire implements BaseWire {
   late final _wire_frb_sync_generator_test =
       _wire_frb_sync_generator_testPtr.asFunction<WireSyncReturn Function()>();
 
+  WireSyncReturn wire_sync_create_non_clone() {
+    return _wire_sync_create_non_clone();
+  }
+
+  late final _wire_sync_create_non_clonePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+          'wire_sync_create_non_clone');
+  late final _wire_sync_create_non_clone =
+      _wire_sync_create_non_clonePtr.asFunction<WireSyncReturn Function()>();
+
   WireSyncReturn wire_sync_create_opaque() {
     return _wire_sync_create_opaque();
   }
@@ -6781,6 +6925,16 @@ class RustLibWire implements BaseWire {
           'wire_sync_create_sync_opaque');
   late final _wire_sync_create_sync_opaque =
       _wire_sync_create_sync_opaquePtr.asFunction<WireSyncReturn Function()>();
+
+  WireSyncReturn wire_sync_option_rust_opaque() {
+    return _wire_sync_option_rust_opaque();
+  }
+
+  late final _wire_sync_option_rust_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+          'wire_sync_option_rust_opaque');
+  late final _wire_sync_option_rust_opaque =
+      _wire_sync_option_rust_opaquePtr.asFunction<WireSyncReturn Function()>();
 
   WireSyncReturn wire_sync_run_opaque(
     wire_RustOpaque_non_send_hide_data opaque,
@@ -7951,6 +8105,16 @@ class RustLibWire implements BaseWire {
           'new_box_autoadd_sequences');
   late final _new_box_autoadd_sequences = _new_box_autoadd_sequencesPtr
       .asFunction<ffi.Pointer<wire_sequences> Function()>();
+
+  ffi.Pointer<wire_some_struct> new_box_autoadd_some_struct() {
+    return _new_box_autoadd_some_struct();
+  }
+
+  late final _new_box_autoadd_some_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_some_struct> Function()>>(
+          'new_box_autoadd_some_struct');
+  late final _new_box_autoadd_some_struct = _new_box_autoadd_some_structPtr
+      .asFunction<ffi.Pointer<wire_some_struct> Function()>();
 
   ffi.Pointer<wire_struct_with_comments_twin_normal>
       new_box_autoadd_struct_with_comments_twin_normal() {
@@ -9847,6 +10011,11 @@ final class wire_event extends ffi.Struct {
 
 final class wire_custom_struct extends ffi.Struct {
   external ffi.Pointer<wire_list_prim_u_8> message;
+}
+
+final class wire_some_struct extends ffi.Struct {
+  @ffi.Uint32()
+  external int value;
 }
 
 final class wire_CustomNestedErrorOuterTwinNormal_One extends ffi.Struct {

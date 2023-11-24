@@ -567,6 +567,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_some_struct(SomeStruct raw) {
+    return api2wire_some_struct(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_struct_with_comments_twin_normal(
       StructWithCommentsTwinNormal raw) {
     return api2wire_struct_with_comments_twin_normal(raw);
@@ -1484,6 +1489,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_some_struct(SomeStruct raw) {
+    return [api2wire_u_32(raw.value)];
+  }
+
+  @protected
   List<dynamic> api2wire_speed(Speed raw) {
     if (raw is Speed_Unknown) {
       return [0];
@@ -1778,6 +1788,10 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_sync_loopback(opaque);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_sync_option_dart_opaque(Object opaque) =>
+          wasmModule.wire_sync_option_dart_opaque(opaque);
+
+  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_sync_option_loopback(Object? opaque) =>
           wasmModule.wire_sync_option_loopback(opaque);
 
@@ -1847,6 +1861,24 @@ class RustLibWire extends BaseWire {
 
   void wire_CustomStruct_static_return_custom_struct_ok(NativePortType port_) =>
       wasmModule.wire_CustomStruct_static_return_custom_struct_ok(port_);
+
+  void wire_SomeStruct_new(NativePortType port_, int value) =>
+      wasmModule.wire_SomeStruct_new(port_, value);
+
+  void wire_SomeStruct_non_static_return_err_custom_error(
+          NativePortType port_, List<dynamic> that) =>
+      wasmModule.wire_SomeStruct_non_static_return_err_custom_error(
+          port_, that);
+
+  void wire_SomeStruct_non_static_return_ok_custom_error(
+          NativePortType port_, List<dynamic> that) =>
+      wasmModule.wire_SomeStruct_non_static_return_ok_custom_error(port_, that);
+
+  void wire_SomeStruct_static_return_err_custom_error(NativePortType port_) =>
+      wasmModule.wire_SomeStruct_static_return_err_custom_error(port_);
+
+  void wire_SomeStruct_static_return_ok_custom_error(NativePortType port_) =>
+      wasmModule.wire_SomeStruct_static_return_ok_custom_error(port_);
 
   void wire_custom_enum_error_panic_twin_normal(NativePortType port_) =>
       wasmModule.wire_custom_enum_error_panic_twin_normal(port_);
@@ -2107,6 +2139,12 @@ class RustLibWire extends BaseWire {
 
   void wire_handle_vec_of_opts(NativePortType port_, List<dynamic> opt) =>
       wasmModule.wire_handle_vec_of_opts(port_, opt);
+
+  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_sync_option() => wasmModule.wire_sync_option();
+
+  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_sync_option_null() => wasmModule.wire_sync_option_null();
 
   void wire_primitive_optional_types(NativePortType port_, int? my_i32,
           Object? my_i64, double? my_f64, bool? my_bool) =>
@@ -2566,11 +2604,18 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_frb_sync_generator_test();
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_sync_create_non_clone() => wasmModule.wire_sync_create_non_clone();
+
+  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_sync_create_opaque() => wasmModule.wire_sync_create_opaque();
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_sync_create_sync_opaque() =>
           wasmModule.wire_sync_create_sync_opaque();
+
+  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_sync_option_rust_opaque() =>
+          wasmModule.wire_sync_option_rust_opaque();
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_sync_run_opaque(Object opaque) =>
@@ -2841,6 +2886,9 @@ class RustLibWasmModule implements WasmModule {
       wire_sync_loopback(Object opaque);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_sync_option_dart_opaque(Object opaque);
+
+  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_sync_option_loopback(Object? opaque);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
@@ -2891,6 +2939,20 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_);
 
   external void wire_CustomStruct_static_return_custom_struct_ok(
+      NativePortType port_);
+
+  external void wire_SomeStruct_new(NativePortType port_, int value);
+
+  external void wire_SomeStruct_non_static_return_err_custom_error(
+      NativePortType port_, List<dynamic> that);
+
+  external void wire_SomeStruct_non_static_return_ok_custom_error(
+      NativePortType port_, List<dynamic> that);
+
+  external void wire_SomeStruct_static_return_err_custom_error(
+      NativePortType port_);
+
+  external void wire_SomeStruct_static_return_ok_custom_error(
       NativePortType port_);
 
   external void wire_custom_enum_error_panic_twin_normal(NativePortType port_);
@@ -3084,6 +3146,12 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_handle_vec_of_opts(
       NativePortType port_, List<dynamic> opt);
+
+  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_sync_option();
+
+  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_sync_option_null();
 
   external void wire_primitive_optional_types(NativePortType port_, int? my_i32,
       Object? my_i64, double? my_f64, bool? my_bool);
@@ -3417,10 +3485,16 @@ class RustLibWasmModule implements WasmModule {
       wire_frb_sync_generator_test();
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_sync_create_non_clone();
+
+  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_sync_create_opaque();
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_sync_create_sync_opaque();
+
+  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_sync_option_rust_opaque();
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_sync_run_opaque(Object opaque);

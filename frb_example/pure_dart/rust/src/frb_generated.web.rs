@@ -1043,6 +1043,20 @@ impl Wire2Api<crate::api::mirror::Sequences> for JsValue {
         crate::api::mirror::Sequences(self_.get(0).wire2api())
     }
 }
+impl Wire2Api<crate::api::exception::SomeStruct> for JsValue {
+    fn wire2api(self) -> crate::api::exception::SomeStruct {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::exception::SomeStruct {
+            value: self_.get(0).wire2api(),
+        }
+    }
+}
 impl Wire2Api<crate::api::enumeration::Speed> for JsValue {
     fn wire2api(self) -> crate::api::enumeration::Speed {
         let self_ = self.unchecked_into::<JsArray>();
@@ -2014,6 +2028,13 @@ pub fn wire_sync_loopback(opaque: JsValue) -> flutter_rust_bridge::support::Wire
 }
 
 #[wasm_bindgen]
+pub fn wire_sync_option_dart_opaque(
+    opaque: JsValue,
+) -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_sync_option_dart_opaque_impl(opaque)
+}
+
+#[wasm_bindgen]
 pub fn wire_sync_option_loopback(opaque: JsValue) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_sync_option_loopback_impl(opaque)
 }
@@ -2132,6 +2153,37 @@ pub fn wire_CustomStruct_static_return_custom_struct_error(
 #[wasm_bindgen]
 pub fn wire_CustomStruct_static_return_custom_struct_ok(port_: flutter_rust_bridge::MessagePort) {
     wire_CustomStruct_static_return_custom_struct_ok_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_SomeStruct_new(port_: flutter_rust_bridge::MessagePort, value: u32) {
+    wire_SomeStruct_new_impl(port_, value)
+}
+
+#[wasm_bindgen]
+pub fn wire_SomeStruct_non_static_return_err_custom_error(
+    port_: flutter_rust_bridge::MessagePort,
+    that: JsValue,
+) {
+    wire_SomeStruct_non_static_return_err_custom_error_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_SomeStruct_non_static_return_ok_custom_error(
+    port_: flutter_rust_bridge::MessagePort,
+    that: JsValue,
+) {
+    wire_SomeStruct_non_static_return_ok_custom_error_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_SomeStruct_static_return_err_custom_error(port_: flutter_rust_bridge::MessagePort) {
+    wire_SomeStruct_static_return_err_custom_error_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_SomeStruct_static_return_ok_custom_error(port_: flutter_rust_bridge::MessagePort) {
+    wire_SomeStruct_static_return_ok_custom_error_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -2565,6 +2617,16 @@ pub fn wire_handle_optional_struct(
 #[wasm_bindgen]
 pub fn wire_handle_vec_of_opts(port_: flutter_rust_bridge::MessagePort, opt: JsValue) {
     wire_handle_vec_of_opts_impl(port_, opt)
+}
+
+#[wasm_bindgen]
+pub fn wire_sync_option() -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_sync_option_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_sync_option_null() -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_sync_option_null_impl()
 }
 
 #[wasm_bindgen]
@@ -3349,6 +3411,11 @@ pub fn wire_frb_sync_generator_test() -> flutter_rust_bridge::support::WireSyncR
 }
 
 #[wasm_bindgen]
+pub fn wire_sync_create_non_clone() -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_sync_create_non_clone_impl()
+}
+
+#[wasm_bindgen]
 pub fn wire_sync_create_opaque() -> flutter_rust_bridge::support::WireSyncReturn {
     wire_sync_create_opaque_impl()
 }
@@ -3356,6 +3423,11 @@ pub fn wire_sync_create_opaque() -> flutter_rust_bridge::support::WireSyncReturn
 #[wasm_bindgen]
 pub fn wire_sync_create_sync_opaque() -> flutter_rust_bridge::support::WireSyncReturn {
     wire_sync_create_sync_opaque_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_sync_option_rust_opaque() -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_sync_option_rust_opaque_impl()
 }
 
 #[wasm_bindgen]

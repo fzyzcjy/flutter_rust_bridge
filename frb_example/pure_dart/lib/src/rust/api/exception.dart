@@ -219,3 +219,40 @@ class CustomStructErrorTwinNormal {
           runtimeType == other.runtimeType &&
           a == other.a;
 }
+
+class SomeStruct {
+  final int value;
+
+  const SomeStruct({
+    required this.value,
+  });
+
+  static Future<SomeStruct> newSomeStruct({required int value, dynamic hint}) =>
+      RustLib.instance.api.someStructNew(value: value, hint: hint);
+
+  Future<int> nonStaticReturnErrCustomError({dynamic hint}) =>
+      RustLib.instance.api.someStructNonStaticReturnErrCustomError(
+        that: this,
+      );
+
+  Future<int> nonStaticReturnOkCustomError({dynamic hint}) =>
+      RustLib.instance.api.someStructNonStaticReturnOkCustomError(
+        that: this,
+      );
+
+  static Future<int> staticReturnErrCustomError({dynamic hint}) =>
+      RustLib.instance.api.someStructStaticReturnErrCustomError(hint: hint);
+
+  static Future<int> staticReturnOkCustomError({dynamic hint}) =>
+      RustLib.instance.api.someStructStaticReturnOkCustomError(hint: hint);
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SomeStruct &&
+          runtimeType == other.runtimeType &&
+          value == other.value;
+}

@@ -198,6 +198,8 @@ abstract class RustLibApi extends BaseApi {
 
   Object syncLoopback({required Object opaque, dynamic hint});
 
+  Object? syncOptionDartOpaque({required Object opaque, dynamic hint});
+
   Object? syncOptionLoopback({Object? opaque, dynamic hint});
 
   String unwrapDartOpaque({required Object opaque, dynamic hint});
@@ -246,6 +248,18 @@ abstract class RustLibApi extends BaseApi {
   Future<void> customStructStaticReturnCustomStructError({dynamic hint});
 
   Future<int> customStructStaticReturnCustomStructOk({dynamic hint});
+
+  Future<SomeStruct> someStructNew({required int value, dynamic hint});
+
+  Future<int> someStructNonStaticReturnErrCustomError(
+      {required SomeStruct that, dynamic hint});
+
+  Future<int> someStructNonStaticReturnOkCustomError(
+      {required SomeStruct that, dynamic hint});
+
+  Future<int> someStructStaticReturnErrCustomError({dynamic hint});
+
+  Future<int> someStructStaticReturnOkCustomError({dynamic hint});
 
   Future<void> customEnumErrorPanicTwinNormal({dynamic hint});
 
@@ -440,6 +454,10 @@ abstract class RustLibApi extends BaseApi {
   Future<Element?> handleOptionalStruct({String? document, dynamic hint});
 
   Future<OptVecs> handleVecOfOpts({required OptVecs opt, dynamic hint});
+
+  String? syncOption({dynamic hint});
+
+  String? syncOptionNull({dynamic hint});
 
   Future<int?> primitiveOptionalTypes(
       {int? myI32, BigInt? myI64, double? myF64, bool? myBool, dynamic hint});
@@ -736,9 +754,13 @@ abstract class RustLibApi extends BaseApi {
 
   FrbOpaqueSyncReturn frbSyncGeneratorTest({dynamic hint});
 
+  NonCloneData syncCreateNonClone({dynamic hint});
+
   HideData syncCreateOpaque({dynamic hint});
 
   NonSendHideData syncCreateSyncOpaque({dynamic hint});
+
+  HideData? syncOptionRustOpaque({dynamic hint});
 
   String syncRunOpaque({required NonSendHideData opaque, dynamic hint});
 
@@ -1788,6 +1810,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Object? syncOptionDartOpaque({required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_sync_option_dart_opaque(arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_DartOpaque,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kSyncOptionDartOpaqueConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSyncOptionDartOpaqueConstMeta => const TaskConstMeta(
+        debugName: "sync_option_dart_opaque",
+        argNames: ["opaque"],
+      );
+
+  @override
   Object? syncOptionLoopback({Object? opaque, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_DartOpaque(opaque);
     return handler.executeSync(SyncTask(
@@ -2185,6 +2226,109 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kCustomStructStaticReturnCustomStructOkConstMeta =>
       const TaskConstMeta(
         debugName: "CustomStruct_static_return_custom_struct_ok",
+        argNames: [],
+      );
+
+  @override
+  Future<SomeStruct> someStructNew({required int value, dynamic hint}) {
+    var arg0 = api2wire_u_32(value);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_SomeStruct_new(port_, arg0),
+      parseSuccessData: _wire2api_some_struct,
+      parseErrorData: null,
+      constMeta: kSomeStructNewConstMeta,
+      argValues: [value],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSomeStructNewConstMeta => const TaskConstMeta(
+        debugName: "SomeStruct_new",
+        argNames: ["value"],
+      );
+
+  @override
+  Future<int> someStructNonStaticReturnErrCustomError(
+      {required SomeStruct that, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_some_struct(that);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_SomeStruct_non_static_return_err_custom_error(port_, arg0),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: _wire2api_custom_error,
+      constMeta: kSomeStructNonStaticReturnErrCustomErrorConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSomeStructNonStaticReturnErrCustomErrorConstMeta =>
+      const TaskConstMeta(
+        debugName: "SomeStruct_non_static_return_err_custom_error",
+        argNames: ["that"],
+      );
+
+  @override
+  Future<int> someStructNonStaticReturnOkCustomError(
+      {required SomeStruct that, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_some_struct(that);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_SomeStruct_non_static_return_ok_custom_error(port_, arg0),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: _wire2api_custom_error,
+      constMeta: kSomeStructNonStaticReturnOkCustomErrorConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSomeStructNonStaticReturnOkCustomErrorConstMeta =>
+      const TaskConstMeta(
+        debugName: "SomeStruct_non_static_return_ok_custom_error",
+        argNames: ["that"],
+      );
+
+  @override
+  Future<int> someStructStaticReturnErrCustomError({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_SomeStruct_static_return_err_custom_error(port_),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: _wire2api_custom_error,
+      constMeta: kSomeStructStaticReturnErrCustomErrorConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSomeStructStaticReturnErrCustomErrorConstMeta =>
+      const TaskConstMeta(
+        debugName: "SomeStruct_static_return_err_custom_error",
+        argNames: [],
+      );
+
+  @override
+  Future<int> someStructStaticReturnOkCustomError({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_SomeStruct_static_return_ok_custom_error(port_),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: _wire2api_custom_error,
+      constMeta: kSomeStructStaticReturnOkCustomErrorConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSomeStructStaticReturnOkCustomErrorConstMeta =>
+      const TaskConstMeta(
+        debugName: "SomeStruct_static_return_ok_custom_error",
         argNames: [],
       );
 
@@ -3726,6 +3870,42 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kHandleVecOfOptsConstMeta => const TaskConstMeta(
         debugName: "handle_vec_of_opts",
         argNames: ["opt"],
+      );
+
+  @override
+  String? syncOption({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_sync_option(),
+      parseSuccessData: _wire2api_opt_String,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kSyncOptionConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSyncOptionConstMeta => const TaskConstMeta(
+        debugName: "sync_option",
+        argNames: [],
+      );
+
+  @override
+  String? syncOptionNull({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_sync_option_null(),
+      parseSuccessData: _wire2api_opt_String,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kSyncOptionNullConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSyncOptionNullConstMeta => const TaskConstMeta(
+        debugName: "sync_option_null",
+        argNames: [],
       );
 
   @override
@@ -6112,6 +6292,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  NonCloneData syncCreateNonClone({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_sync_create_non_clone(),
+      parseSuccessData: _wire2api_non_clone_data,
+      parseErrorData: null,
+      constMeta: kSyncCreateNonCloneConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSyncCreateNonCloneConstMeta => const TaskConstMeta(
+        debugName: "sync_create_non_clone",
+        argNames: [],
+      );
+
+  @override
   HideData syncCreateOpaque({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () => wire.wire_sync_create_opaque(),
@@ -6144,6 +6342,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kSyncCreateSyncOpaqueConstMeta => const TaskConstMeta(
         debugName: "sync_create_sync_opaque",
+        argNames: [],
+      );
+
+  @override
+  HideData? syncOptionRustOpaque({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_sync_option_rust_opaque(),
+      parseSuccessData: _wire2api_opt_box_autoadd_RustOpaque_hide_data,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kSyncOptionRustOpaqueConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSyncOptionRustOpaqueConstMeta => const TaskConstMeta(
+        debugName: "sync_option_rust_opaque",
         argNames: [],
       );
 
@@ -7949,6 +8165,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
+  NonCloneData _wire2api_non_clone_data(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return NonCloneData(
+      content: _wire2api_String(arr[0]),
+    );
+  }
+
   Numbers _wire2api_numbers(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
@@ -8198,6 +8423,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return Sequences(
       field0: _wire2api_list_prim_i_32(arr[0]),
+    );
+  }
+
+  SomeStruct _wire2api_some_struct(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return SomeStruct(
+      value: _wire2api_u_32(arr[0]),
     );
   }
 

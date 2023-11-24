@@ -46,3 +46,21 @@ class MyStruct {
           runtimeType == other.runtimeType &&
           content == other.content;
 }
+
+class NonCloneData {
+  final String content;
+
+  const NonCloneData({
+    required this.content,
+  });
+
+  @override
+  int get hashCode => content.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is NonCloneData &&
+          runtimeType == other.runtimeType &&
+          content == other.content;
+}

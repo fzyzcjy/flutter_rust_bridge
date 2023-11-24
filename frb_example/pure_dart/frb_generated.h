@@ -267,6 +267,10 @@ typedef struct wire_custom_struct {
   struct wire_list_prim_u_8 *message;
 } wire_custom_struct;
 
+typedef struct wire_some_struct {
+  uint32_t value;
+} wire_some_struct;
+
 typedef struct wire_CustomNestedErrorOuterTwinNormal_One {
   struct wire_list_prim_u_8 *field0;
 } wire_CustomNestedErrorOuterTwinNormal_One;
@@ -872,6 +876,8 @@ WireSyncReturn wire_sync_accept_dart_opaque(struct wire_DartOpaque opaque);
 
 WireSyncReturn wire_sync_loopback(struct wire_DartOpaque opaque);
 
+WireSyncReturn wire_sync_option_dart_opaque(struct wire_DartOpaque opaque);
+
 WireSyncReturn wire_sync_option_loopback(struct wire_DartOpaque *opaque);
 
 WireSyncReturn wire_unwrap_dart_opaque(struct wire_DartOpaque opaque);
@@ -918,6 +924,18 @@ void wire_CustomStruct_nonstatic_return_custom_struct_ok(int64_t port_,
 void wire_CustomStruct_static_return_custom_struct_error(int64_t port_);
 
 void wire_CustomStruct_static_return_custom_struct_ok(int64_t port_);
+
+void wire_SomeStruct_new(int64_t port_, uint32_t value);
+
+void wire_SomeStruct_non_static_return_err_custom_error(int64_t port_,
+                                                        struct wire_some_struct *that);
+
+void wire_SomeStruct_non_static_return_ok_custom_error(int64_t port_,
+                                                       struct wire_some_struct *that);
+
+void wire_SomeStruct_static_return_err_custom_error(int64_t port_);
+
+void wire_SomeStruct_static_return_ok_custom_error(int64_t port_);
 
 void wire_custom_enum_error_panic_twin_normal(int64_t port_);
 
@@ -1090,6 +1108,10 @@ void wire_handle_optional_return(int64_t port_, double left, double right);
 void wire_handle_optional_struct(int64_t port_, struct wire_list_prim_u_8 *document);
 
 void wire_handle_vec_of_opts(int64_t port_, struct wire_opt_vecs *opt);
+
+WireSyncReturn wire_sync_option(void);
+
+WireSyncReturn wire_sync_option_null(void);
 
 void wire_primitive_optional_types(int64_t port_,
                                    int32_t *my_i32,
@@ -1337,9 +1359,13 @@ void wire_unwrap_rust_opaque(int64_t port_, struct wire_RustOpaque_hide_data opa
 
 WireSyncReturn wire_frb_sync_generator_test(void);
 
+WireSyncReturn wire_sync_create_non_clone(void);
+
 WireSyncReturn wire_sync_create_opaque(void);
 
 WireSyncReturn wire_sync_create_sync_opaque(void);
+
+WireSyncReturn wire_sync_option_rust_opaque(void);
 
 WireSyncReturn wire_sync_run_opaque(struct wire_RustOpaque_non_send_hide_data opaque);
 
@@ -1525,6 +1551,8 @@ struct wire_opt_vecs *new_box_autoadd_opt_vecs(void);
 struct wire_record_string_i_32 *new_box_autoadd_record_string_i_32(void);
 
 struct wire_sequences *new_box_autoadd_sequences(void);
+
+struct wire_some_struct *new_box_autoadd_some_struct(void);
 
 struct wire_struct_with_comments_twin_normal *new_box_autoadd_struct_with_comments_twin_normal(void);
 
@@ -1881,6 +1909,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_opt_vecs);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_record_string_i_32);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_sequences);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_some_struct);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_comments_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_comments_twin_sync);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_enum);
@@ -1965,6 +1994,11 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_CustomStruct_static_return_custom_struct_error);
     dummy_var ^= ((int64_t) (void*) wire_CustomStruct_static_return_custom_struct_ok);
     dummy_var ^= ((int64_t) (void*) wire_Event_as_string);
+    dummy_var ^= ((int64_t) (void*) wire_SomeStruct_new);
+    dummy_var ^= ((int64_t) (void*) wire_SomeStruct_non_static_return_err_custom_error);
+    dummy_var ^= ((int64_t) (void*) wire_SomeStruct_non_static_return_ok_custom_error);
+    dummy_var ^= ((int64_t) (void*) wire_SomeStruct_static_return_err_custom_error);
+    dummy_var ^= ((int64_t) (void*) wire_SomeStruct_static_return_ok_custom_error);
     dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinNormal_instance_method_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinNormal_static_method_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinSync_instance_method_twin_sync);
@@ -2208,10 +2242,15 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_simple_adder_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_stream_sink_throw_anyhow);
     dummy_var ^= ((int64_t) (void*) wire_sync_accept_dart_opaque);
+    dummy_var ^= ((int64_t) (void*) wire_sync_create_non_clone);
     dummy_var ^= ((int64_t) (void*) wire_sync_create_opaque);
     dummy_var ^= ((int64_t) (void*) wire_sync_create_sync_opaque);
     dummy_var ^= ((int64_t) (void*) wire_sync_loopback);
+    dummy_var ^= ((int64_t) (void*) wire_sync_option);
+    dummy_var ^= ((int64_t) (void*) wire_sync_option_dart_opaque);
     dummy_var ^= ((int64_t) (void*) wire_sync_option_loopback);
+    dummy_var ^= ((int64_t) (void*) wire_sync_option_null);
+    dummy_var ^= ((int64_t) (void*) wire_sync_option_rust_opaque);
     dummy_var ^= ((int64_t) (void*) wire_sync_return_custom_struct_error);
     dummy_var ^= ((int64_t) (void*) wire_sync_run_opaque);
     dummy_var ^= ((int64_t) (void*) wire_test_abc_enum);

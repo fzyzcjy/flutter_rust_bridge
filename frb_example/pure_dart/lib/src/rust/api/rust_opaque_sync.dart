@@ -1,14 +1,21 @@
 // ignore_for_file: invalid_use_of_internal_member, unused_import
 
+import '../auxiliary/sample_types.dart';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'rust_opaque.dart';
+
+HideData? syncOptionRustOpaque({dynamic hint}) =>
+    RustLib.instance.api.syncOptionRustOpaque(hint: hint);
 
 HideData syncCreateOpaque({dynamic hint}) =>
     RustLib.instance.api.syncCreateOpaque(hint: hint);
 
 NonSendHideData syncCreateSyncOpaque({dynamic hint}) =>
     RustLib.instance.api.syncCreateSyncOpaque(hint: hint);
+
+NonCloneData syncCreateNonClone({dynamic hint}) =>
+    RustLib.instance.api.syncCreateNonClone(hint: hint);
 
 String syncRunOpaque({required NonSendHideData opaque, dynamic hint}) =>
     RustLib.instance.api.syncRunOpaque(opaque: opaque, hint: hint);
