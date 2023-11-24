@@ -16,6 +16,7 @@ pub mod misc_example;
 pub mod misc_type;
 pub mod newtype_pattern;
 pub mod optional;
+pub mod primitive_misc;
 pub mod pseudo_manual;
 pub mod raw_string;
 pub mod rust_opaque;
