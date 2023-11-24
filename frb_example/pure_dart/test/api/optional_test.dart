@@ -44,7 +44,7 @@ Future<void> main() async {
       }
       if (ret == null) fail('ret nulled after loop');
       expect(ret.int32, loopFor, reason: 'int32');
-      expect(ret.int64.toInt(), loopFor, reason: 'int64');
+      expect(ret.int64?.toInt(), loopFor, reason: 'int64');
       expect(ret.float64, loopFor, reason: 'float64');
       expect(ret.boolean, false);
       expect(ret.zerocopy?.length, loopFor);
@@ -52,7 +52,7 @@ Future<void> main() async {
       expect(ret.uint8List?.length, loopFor);
       expect(ret.attributesNullable, List.filled(loopFor, null));
       expect(ret.nullableAttributes, List.filled(loopFor, null));
-      expect(ret.newtypeint?.field0, loopFor, reason: 'NewTypeInt');
+      expect(ret.newtypeint?.field0.toInt(), loopFor, reason: 'NewTypeInt');
     }
   });
 
