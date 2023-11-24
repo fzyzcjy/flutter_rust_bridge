@@ -59,3 +59,14 @@ Uint8List createLargeList({required int mb}) => Uint8List(1000000 * mb);
 /// borrowed from flutter foundation [kIsWeb](https://api.flutter.dev/flutter/foundation/kIsWeb-constant.html),
 /// but allows for using it in a Dart context alike
 const bool kIsWeb = identical(0, 0.0);
+
+String? skipWeb([String reason = 'unspecified']) => kIsWeb ? 'Skipped on web (reason: $reason)' : null;
+
+bool get releaseMode {
+  var ans = true;
+  assert(() {
+    ans = false;
+    return true;
+  }());
+  return ans;
+}
