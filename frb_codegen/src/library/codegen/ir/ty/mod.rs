@@ -104,15 +104,16 @@ impl Serialize for IrType {
     where
         S: Serializer,
     {
-        let len = 2;
+        let len = 3;
         let mut state = serializer.serialize_struct("IrType", len)?;
 
-        fn ser<S: Serializer, T: Serialize>(
+        fn ser<S: Serializer, T: Serialize + IrTypeTrait>(
             state: &mut <S as Serializer>::SerializeStruct,
             ty: &str,
             data: &T,
         ) -> Result<(), S::Error> {
             state.serialize_field("type", ty)?;
+            state.serialize_field("safe_ident", &data.safe_ident())?;
             state.serialize_field("data", data)?;
             Ok(())
         }
