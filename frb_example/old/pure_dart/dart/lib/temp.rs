@@ -97,16 +97,6 @@ pub fn handle_string_sync(s: String) -> SyncReturn<String> {
     SyncReturn(s + &s2)
 }
 
-#[allow(clippy::unused_unit)]
-pub fn handle_return_unit() -> () {
-    info!("handle_return_unit()");
-}
-
-pub fn handle_return_unit_sync() -> SyncReturn<()> {
-    info!("handle_return_unit_sync()");
-    SyncReturn(())
-}
-
 // to check that `Vec<u8>` can be used as return type
 pub fn handle_vec_u8(v: Vec<u8>) -> Vec<u8> {
     info!("handle_vec_u8(first few elements: {:?})", &v[..5]);

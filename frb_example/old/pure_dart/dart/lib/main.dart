@@ -23,13 +23,6 @@ void main(List<String> args) async {
   final api = initializeExternalLibrary(dylibPath);
   tearDownAll(() => dispose());
 
-  test('dart call handleReturnUnit', () async {
-    await handleReturnUnit();
-  });
-  test('dart call handleReturnUnitSync', () {
-    handleReturnUnit();
-  });
-
   test('dart call handleString', () async {
     expect(await handleString(s: "Hello, world!"), "Hello, world!Hello, world!");
   });
