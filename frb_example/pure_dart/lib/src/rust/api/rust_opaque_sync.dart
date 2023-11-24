@@ -2,6 +2,7 @@
 
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'rust_opaque.dart';
 
 String syncRunOpaque({required NonSendHideData opaque, dynamic hint}) =>
     RustLib.instance.api.syncRunOpaque(opaque: opaque, hint: hint);
