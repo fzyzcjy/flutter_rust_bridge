@@ -65,8 +65,10 @@ fn generate_opaque_finalizer(
             api_body: format!("OpaqueTypeFinalizer get {field_name};\n\n"),
             ..Default::default()
         },
-        io: generate_platform_impl(&format!("wire._drop_opaque_{ty_dart_api_type}Ptr")),
-        wasm: generate_platform_impl(&format!("wire.drop_opaque_{ty_dart_api_type}")),
+        io: generate_platform_impl(&format!(
+            "wire._drop_opaque_RustOpaque_{ty_dart_api_type}Ptr"
+        )),
+        wasm: generate_platform_impl(&format!("wire.drop_opaque_RustOpaque_{ty_dart_api_type}")),
         ..Default::default()
     }
 }
