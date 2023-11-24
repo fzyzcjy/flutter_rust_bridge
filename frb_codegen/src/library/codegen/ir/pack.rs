@@ -2,7 +2,6 @@ use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumIdent};
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
-use crate::codegen::ir::ty::rust_opaque::{IrRustOpaque, IrRustOpaqueIdent};
 use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent};
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::ir::ty::IrTypeTrait;
@@ -11,7 +10,6 @@ use std::collections::{HashMap, HashSet};
 
 pub type IrStructPool = HashMap<IrStructIdent, IrStruct>;
 pub type IrEnumPool = HashMap<IrEnumIdent, IrEnum>;
-pub type IrRustOpaquePool = HashMap<IrRustOpaqueIdent, IrRustOpaque>;
 
 #[derive(Debug, Clone, serde::Serialize)]
 pub struct IrPack {

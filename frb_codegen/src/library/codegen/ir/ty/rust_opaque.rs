@@ -1,4 +1,4 @@
-use crate::codegen::ir::namespace::{Namespace, NamespacedName};
+use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use convert_case::{Case, Casing};
@@ -7,22 +7,25 @@ use regex::Regex;
 
 crate::ir! {
 pub struct IrTypeRustOpaqueRef {
-    pub ident: IrRustOpaqueIdent,
-}
-
-pub struct IrRustOpaqueIdent(pub NamespacedName);
-
-pub struct IrRustOpaque {
-    pub name: NamespacedName,
+    pub namespace: Namespace,
     pub inner: Box<IrType>,
 }
+}
+
+impl IrTypeRustOpaqueRef {
+    pub fn new(namespace: Namespace, inner: IrType) -> Self {
+        Self {
+            namespace,
+            inner: Box::new(inner),
+        }
+    }
 }
 
 impl IrTypeTrait for IrTypeRustOpaqueRef {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, _f: &mut F, _ir_pack: &IrPack) {}
 
     fn safe_ident(&self) -> String {
-        format!("RustOpaque_{}", self.ident.0.name)
+        format!("RustOpaque_{}", self.inner.safe_ident())
     }
 
     fn rust_api_type(&self) -> String {
@@ -33,15 +36,6 @@ impl IrTypeTrait for IrTypeRustOpaqueRef {
     }
 
     fn self_namespace(&self) -> Option<Namespace> {
-        Some(self.ident.0.namespace.clone())
-    }
-}
-
-impl IrRustOpaque {
-    pub fn new(namespace: Namespace, inner: IrType) -> Self {
-        Self {
-            name: NamespacedName::new(namespace, inner.safe_ident()),
-            inner: Box::new(inner),
-        }
+        Some(self.namespace.clone())
     }
 }
