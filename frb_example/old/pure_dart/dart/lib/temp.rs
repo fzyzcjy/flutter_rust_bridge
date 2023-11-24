@@ -43,11 +43,6 @@ pub fn simple_adder_sync(a: i32, b: i32) -> SyncReturn<i32> {
     SyncReturn(a + b)
 }
 
-/**
-Multiline comments are fine,
-but they are not preferred in Rust nor in Dart.
-Newlines are preserved.
- */
 pub fn primitive_types(my_i32: i32, my_i64: i64, my_f64: f64, my_bool: bool) -> i32 {
     info!(
         "primitive_types({}, {}, {}, {})",
@@ -1751,36 +1746,6 @@ macro_rules! generate_struct {
 
 generate_struct!();
 
-pub enum CustomError {
-    Error0 { e: String, backtrace: Backtrace },
-    Error1 { e: u32, backtrace: Backtrace },
-}
-
-pub fn return_err_custom_error() -> Result<u32, CustomError> {
-    Err(CustomError::Error0 {
-        e: "".into(),
-        backtrace: Backtrace::new(),
-    })
-}
-
-pub fn return_ok_custom_error() -> Result<u32, CustomError> {
-    Ok(3)
-}
-
-pub fn return_error_variant(variant: u32) -> Result<u32, CustomError> {
-    match variant {
-        0 => Err(CustomError::Error0 {
-            e: "variant0".to_string(),
-            backtrace: Backtrace::new(),
-        }),
-        1 => Err(CustomError::Error1 {
-            e: 1,
-            backtrace: Backtrace::new(),
-        }),
-        _ => panic!("unsupported variant"),
-    }
-}
-
 pub struct SomeStruct {
     pub value: u32,
 }
@@ -1810,89 +1775,4 @@ impl SomeStruct {
     pub fn non_static_return_ok_custom_error(&self) -> Result<u32, CustomError> {
         Ok(self.value)
     }
-}
-
-pub enum CustomNestedError1 {
-    CustomNested1(String),
-    ErrorNested(CustomNestedError2),
-}
-
-pub enum CustomNestedError2 {
-    CustomNested2(String),
-    CustomNested2Number(u32),
-}
-
-pub fn return_custom_nested_error_1() -> Result<(), CustomNestedError1> {
-    Err(CustomNestedError1::ErrorNested(
-        CustomNestedError2::CustomNested2Number(3),
-    ))
-}
-
-pub fn return_custom_nested_error_1_variant1() -> Result<(), CustomNestedError1> {
-    Err(CustomNestedError1::CustomNested1("custom".to_string()))
-}
-
-pub fn return_custom_nested_error_2() -> Result<(), CustomNestedError2> {
-    Err(CustomNestedError2::CustomNested2("custom".to_string()))
-}
-pub struct CustomStructError {
-    pub message: String,
-}
-
-pub fn return_custom_struct_error() -> Result<(), CustomStructError> {
-    Err(CustomStructError {
-        message: "error message".to_string(),
-    })
-}
-
-pub fn sync_return_custom_struct_error() -> Result<SyncReturn<()>, CustomStructError> {
-    Err(CustomStructError {
-        message: "error message".to_string(),
-    })
-}
-
-pub fn return_custom_struct_ok() -> Result<u32, CustomStructError> {
-    Ok(3)
-}
-
-pub struct CustomStruct {
-    pub message: String,
-}
-
-impl CustomStruct {
-    pub fn new(message: String) -> CustomStruct {
-        CustomStruct { message }
-    }
-
-    pub fn static_return_custom_struct_error() -> Result<(), CustomStructError> {
-        Err(CustomStructError {
-            message: "error message".to_string(),
-        })
-    }
-
-    pub fn static_return_custom_struct_ok() -> Result<u32, CustomStructError> {
-        Ok(3)
-    }
-
-    pub fn nonstatic_return_custom_struct_error(&self) -> Result<(), CustomStructError> {
-        Err(CustomStructError {
-            message: self.message.clone(),
-        })
-    }
-
-    pub fn nonstatic_return_custom_struct_ok(&self) -> Result<u32, CustomStructError> {
-        Ok(3)
-    }
-}
-
-pub fn throw_anyhow() -> Result<(), anyhow::Error> {
-    Err(anyhow!("anyhow error"))
-}
-
-pub fn panic_with_custom_result() -> Result<(), CustomError> {
-    panic!("just a panic");
-}
-
-pub fn stream_sink_throw_anyhow(_sink: StreamSink<String>) -> Result<()> {
-    Err(anyhow!("anyhow error"))
 }
