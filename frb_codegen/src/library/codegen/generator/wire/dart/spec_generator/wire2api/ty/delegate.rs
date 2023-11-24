@@ -28,7 +28,10 @@ impl<'a> WireDartGeneratorWire2apiTrait for DelegateWireDartGenerator<'a> {
             },
 
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(
-                IrTypePrimitive::I64 | IrTypePrimitive::U64,
+                IrTypePrimitive::I64
+                | IrTypePrimitive::U64
+                | IrTypePrimitive::Usize
+                | IrTypePrimitive::Isize,
             ) => {
                 format!(
                     "return _wire2api_{}(raw);",

@@ -25,13 +25,19 @@ impl<'a> WireDartGeneratorApi2wireTrait for PrimitiveListWireDartGenerator<'a> {
                 return ans;",
                 self.ir.safe_ident(),
                 match self.ir.primitive {
-                    IrTypePrimitive::I64 | IrTypePrimitive::U64 => "raw.inner",
+                    IrTypePrimitive::I64
+                    | IrTypePrimitive::U64
+                    | IrTypePrimitive::Usize
+                    | IrTypePrimitive::Isize => "raw.inner",
                     _ => "raw",
                 }
             )),
             wasm: Some(
                 match self.ir.primitive {
-                    IrTypePrimitive::I64 | IrTypePrimitive::U64 => "return raw.inner;",
+                    IrTypePrimitive::I64
+                    | IrTypePrimitive::U64
+                    | IrTypePrimitive::Usize
+                    | IrTypePrimitive::Isize => "return raw.inner;",
                     _ => "return raw;",
                 }
                 .into(),
@@ -46,9 +52,10 @@ impl<'a> WireDartGeneratorApi2wireTrait for PrimitiveListWireDartGenerator<'a> {
                 format!("ffi.Pointer<wire_{}>", self.ir.safe_ident())
             }
             Target::Wasm => match self.ir.primitive {
-                IrTypePrimitive::I64 | IrTypePrimitive::U64 => {
-                    "Object /* BigInt64Array */".to_owned()
-                }
+                IrTypePrimitive::I64
+                | IrTypePrimitive::U64
+                | IrTypePrimitive::Usize
+                | IrTypePrimitive::Isize => "Object /* BigInt64Array */".to_owned(),
                 _ => ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
                     .dart_api_type(),
             },
