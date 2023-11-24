@@ -85,22 +85,6 @@ void main(List<String> args) async {
     expect(await getUsize(u: 2), 2);
   });
 
-  test('dart call multiplyByTen()', () async {
-    expect(
-      await multiplyByTen(measure: Measure.speed(Speed_GPS(10.0))),
-      Measure.speed(Speed_GPS(100.0)),
-    );
-    expect(
-      await multiplyByTen(measure: Measure.speed(Speed_Unknown())),
-      null,
-    );
-    final skipMinified = releaseMode ? skipWeb('Minified names cannot be compared.') : null;
-    expect((Speed_Unknown).toString(), 'Speed_Unknown', skip: skipMinified);
-    expect((Speed_GPS).toString(), 'Speed_GPS', skip: skipMinified);
-    expect((Distance_Unknown).toString(), 'Distance_Unknown', skip: skipMinified);
-    expect((Distance_Map).toString(), 'Distance_Map', skip: skipMinified);
-  });
-
   test('test empty struct', () async {
     final empty = Empty();
     final output = await emptyStruct(empty: empty);
