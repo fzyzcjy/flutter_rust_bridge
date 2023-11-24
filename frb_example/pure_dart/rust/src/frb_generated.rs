@@ -140,15 +140,13 @@ use crate::auxiliary::new_module_system::sub_module::NewSimpleStruct;
 use crate::auxiliary::old_module_system::sub_module::OldSimpleStruct;
 use crate::auxiliary::sample_types::MySize;
 use crate::auxiliary::sample_types::MyStruct;
-use core::panic::UnwindSafe;
-use flutter_rust_bridge::rust2dart::IntoIntoDart;
-use flutter_rust_bridge::*;
-use std::ffi::c_void;
-use std::sync::Arc;
 
 // Section: wire_funcs
 
-fn wire_boxed_blob_impl(port_: MessagePort, blob: impl Wire2Api<Box<[u8; 1600]>> + UnwindSafe) {
+fn wire_boxed_blob_impl(
+    port_: MessagePort,
+    blob: impl Wire2Api<Box<[u8; 1600]>> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Blob, _>(
         WrapInfo {
             debug_name: "boxed_blob",
@@ -161,7 +159,7 @@ fn wire_boxed_blob_impl(port_: MessagePort, blob: impl Wire2Api<Box<[u8; 1600]>>
         },
     )
 }
-fn wire_func_test_id_impl(port_: MessagePort, id: impl Wire2Api<TestId> + UnwindSafe) {
+fn wire_func_test_id_impl(port_: MessagePort, id: impl Wire2Api<TestId> + core::panic::UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, TestId, _>(
         WrapInfo {
             debug_name: "func_test_id",
@@ -194,7 +192,10 @@ fn wire_get_complex_array_impl(port_: MessagePort) {
         move || move |task_callback| Result::<_, ()>::Ok(get_complex_array()),
     )
 }
-fn wire_last_number_impl(port_: MessagePort, array: impl Wire2Api<[f64; 16]> + UnwindSafe) {
+fn wire_last_number_impl(
+    port_: MessagePort,
+    array: impl Wire2Api<[f64; 16]> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, f64, _>(
         WrapInfo {
             debug_name: "last_number",
@@ -207,7 +208,10 @@ fn wire_last_number_impl(port_: MessagePort, array: impl Wire2Api<[f64; 16]> + U
         },
     )
 }
-fn wire_nested_id_impl(port_: MessagePort, id: impl Wire2Api<[TestId; 4]> + UnwindSafe) {
+fn wire_nested_id_impl(
+    port_: MessagePort,
+    id: impl Wire2Api<[TestId; 4]> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [TestId; 2], _>(
         WrapInfo {
             debug_name: "nested_id",
@@ -220,7 +224,7 @@ fn wire_nested_id_impl(port_: MessagePort, id: impl Wire2Api<[TestId; 4]> + Unwi
         },
     )
 }
-fn wire_new_msgid_impl(port_: MessagePort, id: impl Wire2Api<[u8; 32]> + UnwindSafe) {
+fn wire_new_msgid_impl(port_: MessagePort, id: impl Wire2Api<[u8; 32]> + core::panic::UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, MessageId, _>(
         WrapInfo {
             debug_name: "new_msgid",
@@ -233,7 +237,10 @@ fn wire_new_msgid_impl(port_: MessagePort, id: impl Wire2Api<[u8; 32]> + UnwindS
         },
     )
 }
-fn wire_return_boxed_feed_id_impl(port_: MessagePort, id: impl Wire2Api<[u8; 8]> + UnwindSafe) {
+fn wire_return_boxed_feed_id_impl(
+    port_: MessagePort,
+    id: impl Wire2Api<[u8; 8]> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, FeedId, _>(
         WrapInfo {
             debug_name: "return_boxed_feed_id",
@@ -246,7 +253,10 @@ fn wire_return_boxed_feed_id_impl(port_: MessagePort, id: impl Wire2Api<[u8; 8]>
         },
     )
 }
-fn wire_return_boxed_raw_feed_id_impl(port_: MessagePort, id: impl Wire2Api<FeedId> + UnwindSafe) {
+fn wire_return_boxed_raw_feed_id_impl(
+    port_: MessagePort,
+    id: impl Wire2Api<FeedId> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [u8; 8], _>(
         WrapInfo {
             debug_name: "return_boxed_raw_feed_id",
@@ -259,7 +269,10 @@ fn wire_return_boxed_raw_feed_id_impl(port_: MessagePort, id: impl Wire2Api<Feed
         },
     )
 }
-fn wire_use_boxed_blob_impl(port_: MessagePort, blob: impl Wire2Api<Box<Blob>> + UnwindSafe) {
+fn wire_use_boxed_blob_impl(
+    port_: MessagePort,
+    blob: impl Wire2Api<Box<Blob>> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [u8; 1600], _>(
         WrapInfo {
             debug_name: "use_boxed_blob",
@@ -272,7 +285,7 @@ fn wire_use_boxed_blob_impl(port_: MessagePort, blob: impl Wire2Api<Box<Blob>> +
         },
     )
 }
-fn wire_use_msgid_impl(port_: MessagePort, id: impl Wire2Api<MessageId> + UnwindSafe) {
+fn wire_use_msgid_impl(port_: MessagePort, id: impl Wire2Api<MessageId> + core::panic::UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [u8; 32], _>(
         WrapInfo {
             debug_name: "use_msgid",
@@ -287,7 +300,7 @@ fn wire_use_msgid_impl(port_: MessagePort, id: impl Wire2Api<MessageId> + Unwind
 }
 fn wire_handle_customized_struct_impl(
     port_: MessagePort,
-    val: impl Wire2Api<Customized> + UnwindSafe,
+    val: impl Wire2Api<Customized> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
@@ -301,7 +314,10 @@ fn wire_handle_customized_struct_impl(
         },
     )
 }
-fn wire_next_user_id_impl(port_: MessagePort, user_id: impl Wire2Api<UserId> + UnwindSafe) {
+fn wire_next_user_id_impl(
+    port_: MessagePort,
+    user_id: impl Wire2Api<UserId> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, UserId, _>(
         WrapInfo {
             debug_name: "next_user_id",
@@ -316,7 +332,7 @@ fn wire_next_user_id_impl(port_: MessagePort, user_id: impl Wire2Api<UserId> + U
 }
 fn wire_datetime_local_impl(
     port_: MessagePort,
-    d: impl Wire2Api<chrono::DateTime<chrono::Local>> + UnwindSafe,
+    d: impl Wire2Api<chrono::DateTime<chrono::Local>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, chrono::DateTime<chrono::Local>, _>(
         WrapInfo {
@@ -332,7 +348,7 @@ fn wire_datetime_local_impl(
 }
 fn wire_datetime_utc_impl(
     port_: MessagePort,
-    d: impl Wire2Api<chrono::DateTime<chrono::Utc>> + UnwindSafe,
+    d: impl Wire2Api<chrono::DateTime<chrono::Utc>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, chrono::DateTime<chrono::Utc>, _>(
         WrapInfo {
@@ -346,7 +362,10 @@ fn wire_datetime_utc_impl(
         },
     )
 }
-fn wire_duration_impl(port_: MessagePort, d: impl Wire2Api<chrono::Duration> + UnwindSafe) {
+fn wire_duration_impl(
+    port_: MessagePort,
+    d: impl Wire2Api<chrono::Duration> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, chrono::Duration, _>(
         WrapInfo {
             debug_name: "duration",
@@ -361,8 +380,8 @@ fn wire_duration_impl(port_: MessagePort, d: impl Wire2Api<chrono::Duration> + U
 }
 fn wire_handle_durations_impl(
     port_: MessagePort,
-    durations: impl Wire2Api<Vec<chrono::Duration>> + UnwindSafe,
-    since: impl Wire2Api<chrono::DateTime<chrono::Local>> + UnwindSafe,
+    durations: impl Wire2Api<Vec<chrono::Duration>> + core::panic::UnwindSafe,
+    since: impl Wire2Api<chrono::DateTime<chrono::Local>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<chrono::DateTime<chrono::Local>>, _>(
         WrapInfo {
@@ -379,8 +398,8 @@ fn wire_handle_durations_impl(
 }
 fn wire_handle_timestamps_impl(
     port_: MessagePort,
-    timestamps: impl Wire2Api<Vec<chrono::NaiveDateTime>> + UnwindSafe,
-    epoch: impl Wire2Api<chrono::NaiveDateTime> + UnwindSafe,
+    timestamps: impl Wire2Api<Vec<chrono::NaiveDateTime>> + core::panic::UnwindSafe,
+    epoch: impl Wire2Api<chrono::NaiveDateTime> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<chrono::Duration>, _>(
         WrapInfo {
@@ -397,7 +416,7 @@ fn wire_handle_timestamps_impl(
 }
 fn wire_how_long_does_it_take_impl(
     port_: MessagePort,
-    mine: impl Wire2Api<FeatureChrono> + UnwindSafe,
+    mine: impl Wire2Api<FeatureChrono> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, chrono::Duration, _>(
         WrapInfo {
@@ -413,7 +432,7 @@ fn wire_how_long_does_it_take_impl(
 }
 fn wire_naivedatetime_impl(
     port_: MessagePort,
-    d: impl Wire2Api<chrono::NaiveDateTime> + UnwindSafe,
+    d: impl Wire2Api<chrono::NaiveDateTime> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, chrono::NaiveDateTime, _>(
         WrapInfo {
@@ -429,7 +448,7 @@ fn wire_naivedatetime_impl(
 }
 fn wire_optional_empty_datetime_utc_impl(
     port_: MessagePort,
-    d: impl Wire2Api<Option<chrono::DateTime<chrono::Utc>>> + UnwindSafe,
+    d: impl Wire2Api<Option<chrono::DateTime<chrono::Utc>>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<chrono::DateTime<chrono::Utc>>, _>(
         WrapInfo {
@@ -465,7 +484,7 @@ fn wire_test_precise_chrono_impl(port_: MessagePort) {
 }
 fn wire_StructWithCommentsTwinNormal_instance_method_twin_normal_impl(
     port_: MessagePort,
-    that: impl Wire2Api<StructWithCommentsTwinNormal> + UnwindSafe,
+    that: impl Wire2Api<StructWithCommentsTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
@@ -551,7 +570,7 @@ fn wire_return_dart_dynamic_impl(port_: MessagePort) {
 }
 fn wire_async_accept_dart_opaque_impl(
     port_: MessagePort,
-    opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
+    opaque: impl Wire2Api<DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
         WrapInfo {
@@ -567,7 +586,7 @@ fn wire_async_accept_dart_opaque_impl(
 }
 fn wire_create_enum_dart_opaque_impl(
     port_: MessagePort,
-    opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
+    opaque: impl Wire2Api<DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, EnumDartOpaque, _>(
         WrapInfo {
@@ -583,8 +602,8 @@ fn wire_create_enum_dart_opaque_impl(
 }
 fn wire_create_nested_dart_opaque_impl(
     port_: MessagePort,
-    opaque1: impl Wire2Api<DartOpaque> + UnwindSafe,
-    opaque2: impl Wire2Api<DartOpaque> + UnwindSafe,
+    opaque1: impl Wire2Api<DartOpaque> + core::panic::UnwindSafe,
+    opaque2: impl Wire2Api<DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, DartOpaqueNested, _>(
         WrapInfo {
@@ -613,7 +632,7 @@ fn wire_drop_static_dart_opaque_impl(port_: MessagePort) {
 }
 fn wire_get_enum_dart_opaque_impl(
     port_: MessagePort,
-    opaque: impl Wire2Api<EnumDartOpaque> + UnwindSafe,
+    opaque: impl Wire2Api<EnumDartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
@@ -629,7 +648,7 @@ fn wire_get_enum_dart_opaque_impl(
 }
 fn wire_get_nested_dart_opaque_impl(
     port_: MessagePort,
-    opaque: impl Wire2Api<DartOpaqueNested> + UnwindSafe,
+    opaque: impl Wire2Api<DartOpaqueNested> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
@@ -643,7 +662,10 @@ fn wire_get_nested_dart_opaque_impl(
         },
     )
 }
-fn wire_loop_back_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaque> + UnwindSafe) {
+fn wire_loop_back_impl(
+    port_: MessagePort,
+    opaque: impl Wire2Api<DartOpaque> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, DartOpaque, _>(
         WrapInfo {
             debug_name: "loop_back",
@@ -656,7 +678,10 @@ fn wire_loop_back_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaque> + U
         },
     )
 }
-fn wire_loop_back_array_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaque> + UnwindSafe) {
+fn wire_loop_back_array_impl(
+    port_: MessagePort,
+    opaque: impl Wire2Api<DartOpaque> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [DartOpaque; 1], _>(
         WrapInfo {
             debug_name: "loop_back_array",
@@ -671,7 +696,7 @@ fn wire_loop_back_array_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaqu
 }
 fn wire_loop_back_array_get_impl(
     port_: MessagePort,
-    opaque: impl Wire2Api<[DartOpaque; 1]> + UnwindSafe,
+    opaque: impl Wire2Api<[DartOpaque; 1]> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
@@ -685,7 +710,10 @@ fn wire_loop_back_array_get_impl(
         },
     )
 }
-fn wire_loop_back_option_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaque> + UnwindSafe) {
+fn wire_loop_back_option_impl(
+    port_: MessagePort,
+    opaque: impl Wire2Api<DartOpaque> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<DartOpaque>, _>(
         WrapInfo {
             debug_name: "loop_back_option",
@@ -700,7 +728,7 @@ fn wire_loop_back_option_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaq
 }
 fn wire_loop_back_option_get_impl(
     port_: MessagePort,
-    opaque: impl Wire2Api<Option<DartOpaque>> + UnwindSafe,
+    opaque: impl Wire2Api<Option<DartOpaque>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
@@ -714,7 +742,10 @@ fn wire_loop_back_option_get_impl(
         },
     )
 }
-fn wire_loop_back_vec_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaque> + UnwindSafe) {
+fn wire_loop_back_vec_impl(
+    port_: MessagePort,
+    opaque: impl Wire2Api<DartOpaque> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<DartOpaque>, _>(
         WrapInfo {
             debug_name: "loop_back_vec",
@@ -729,7 +760,7 @@ fn wire_loop_back_vec_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaque>
 }
 fn wire_loop_back_vec_get_impl(
     port_: MessagePort,
-    opaque: impl Wire2Api<Vec<DartOpaque>> + UnwindSafe,
+    opaque: impl Wire2Api<Vec<DartOpaque>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
@@ -745,7 +776,7 @@ fn wire_loop_back_vec_get_impl(
 }
 fn wire_panic_unwrap_dart_opaque_impl(
     port_: MessagePort,
-    opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
+    opaque: impl Wire2Api<DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
@@ -761,7 +792,7 @@ fn wire_panic_unwrap_dart_opaque_impl(
 }
 fn wire_set_static_dart_opaque_impl(
     port_: MessagePort,
-    opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
+    opaque: impl Wire2Api<DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
@@ -776,7 +807,7 @@ fn wire_set_static_dart_opaque_impl(
     )
 }
 fn wire_return_non_droppable_dart_opaque_impl(
-    opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
+    opaque: impl Wire2Api<DartOpaque> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -791,7 +822,7 @@ fn wire_return_non_droppable_dart_opaque_impl(
     )
 }
 fn wire_unwrap_dart_opaque_impl(
-    opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
+    opaque: impl Wire2Api<DartOpaque> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -807,7 +838,7 @@ fn wire_unwrap_dart_opaque_impl(
 }
 fn wire_func_enum_simple_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<EnumSimpleTwinNormal> + UnwindSafe,
+    arg: impl Wire2Api<EnumSimpleTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, EnumSimpleTwinNormal, _>(
         WrapInfo {
@@ -823,7 +854,7 @@ fn wire_func_enum_simple_twin_normal_impl(
 }
 fn wire_func_enum_with_item_mixed_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<EnumWithItemMixedTwinNormal> + UnwindSafe,
+    arg: impl Wire2Api<EnumWithItemMixedTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, EnumWithItemMixedTwinNormal, _>(
         WrapInfo {
@@ -839,7 +870,7 @@ fn wire_func_enum_with_item_mixed_twin_normal_impl(
 }
 fn wire_func_enum_with_item_struct_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<EnumWithItemStructTwinNormal> + UnwindSafe,
+    arg: impl Wire2Api<EnumWithItemStructTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, EnumWithItemStructTwinNormal, _>(
         WrapInfo {
@@ -857,7 +888,7 @@ fn wire_func_enum_with_item_struct_twin_normal_impl(
 }
 fn wire_func_enum_with_item_tuple_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<EnumWithItemTupleTwinNormal> + UnwindSafe,
+    arg: impl Wire2Api<EnumWithItemTupleTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, EnumWithItemTupleTwinNormal, _>(
         WrapInfo {
@@ -873,7 +904,7 @@ fn wire_func_enum_with_item_tuple_twin_normal_impl(
 }
 fn wire_handle_enum_parameter_impl(
     port_: MessagePort,
-    weekday: impl Wire2Api<Weekdays> + UnwindSafe,
+    weekday: impl Wire2Api<Weekdays> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Weekdays, _>(
         WrapInfo {
@@ -887,7 +918,10 @@ fn wire_handle_enum_parameter_impl(
         },
     )
 }
-fn wire_handle_return_enum_impl(port_: MessagePort, input: impl Wire2Api<String> + UnwindSafe) {
+fn wire_handle_return_enum_impl(
+    port_: MessagePort,
+    input: impl Wire2Api<String> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<Weekdays>, _>(
         WrapInfo {
             debug_name: "handle_return_enum",
@@ -900,7 +934,10 @@ fn wire_handle_return_enum_impl(port_: MessagePort, input: impl Wire2Api<String>
         },
     )
 }
-fn wire_multiply_by_ten_impl(port_: MessagePort, measure: impl Wire2Api<Measure> + UnwindSafe) {
+fn wire_multiply_by_ten_impl(
+    port_: MessagePort,
+    measure: impl Wire2Api<Measure> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<Measure>, _>(
         WrapInfo {
             debug_name: "multiply_by_ten",
@@ -913,7 +950,7 @@ fn wire_multiply_by_ten_impl(port_: MessagePort, measure: impl Wire2Api<Measure>
         },
     )
 }
-fn wire_print_note_impl(port_: MessagePort, note: impl Wire2Api<Note> + UnwindSafe) {
+fn wire_print_note_impl(port_: MessagePort, note: impl Wire2Api<Note> + core::panic::UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ZeroCopyBuffer<Vec<u8>>, _>(
         WrapInfo {
             debug_name: "print_note",
@@ -926,7 +963,10 @@ fn wire_print_note_impl(port_: MessagePort, note: impl Wire2Api<Note> + UnwindSa
         },
     )
 }
-fn wire_Event_as_string_impl(port_: MessagePort, that: impl Wire2Api<Event> + UnwindSafe) {
+fn wire_Event_as_string_impl(
+    port_: MessagePort,
+    that: impl Wire2Api<Event> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
         WrapInfo {
             debug_name: "Event_as_string",
@@ -951,8 +991,8 @@ fn wire_close_event_listener_impl(port_: MessagePort) {
 }
 fn wire_create_event_impl(
     port_: MessagePort,
-    address: impl Wire2Api<String> + UnwindSafe,
-    payload: impl Wire2Api<String> + UnwindSafe,
+    address: impl Wire2Api<String> + core::panic::UnwindSafe,
+    payload: impl Wire2Api<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
@@ -1001,7 +1041,7 @@ fn wire_custom_enum_error_return_error_twin_normal_impl(port_: MessagePort) {
 }
 fn wire_custom_enum_error_return_ok_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<u32> + UnwindSafe,
+    arg: impl Wire2Api<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32, _>(
         WrapInfo {
@@ -1017,7 +1057,7 @@ fn wire_custom_enum_error_return_ok_twin_normal_impl(
 }
 fn wire_custom_nested_error_return_error_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<CustomNestedErrorOuterTwinNormal> + UnwindSafe,
+    arg: impl Wire2Api<CustomNestedErrorOuterTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
@@ -1033,7 +1073,7 @@ fn wire_custom_nested_error_return_error_twin_normal_impl(
 }
 fn wire_custom_struct_error_return_error_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<CustomStructErrorTwinNormal> + UnwindSafe,
+    arg: impl Wire2Api<CustomStructErrorTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
@@ -1097,7 +1137,10 @@ fn wire_call_old_module_system_impl(port_: MessagePort) {
         move || move |task_callback| Result::<_, ()>::Ok(call_old_module_system()),
     )
 }
-fn wire_use_imported_enum_impl(port_: MessagePort, my_enum: impl Wire2Api<MyEnum> + UnwindSafe) {
+fn wire_use_imported_enum_impl(
+    port_: MessagePort,
+    my_enum: impl Wire2Api<MyEnum> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, bool, _>(
         WrapInfo {
             debug_name: "use_imported_enum",
@@ -1112,7 +1155,7 @@ fn wire_use_imported_enum_impl(port_: MessagePort, my_enum: impl Wire2Api<MyEnum
 }
 fn wire_use_imported_struct_impl(
     port_: MessagePort,
-    my_struct: impl Wire2Api<MyStruct> + UnwindSafe,
+    my_struct: impl Wire2Api<MyStruct> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, bool, _>(
         WrapInfo {
@@ -1126,7 +1169,10 @@ fn wire_use_imported_struct_impl(
         },
     )
 }
-fn wire_func_macro_struct_impl(port_: MessagePort, arg: impl Wire2Api<MacroStruct> + UnwindSafe) {
+fn wire_func_macro_struct_impl(
+    port_: MessagePort,
+    arg: impl Wire2Api<MacroStruct> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, MacroStruct, _>(
         WrapInfo {
             debug_name: "func_macro_struct",
@@ -1141,8 +1187,8 @@ fn wire_func_macro_struct_impl(port_: MessagePort, arg: impl Wire2Api<MacroStruc
 }
 fn wire_ConcatenateWith_concatenate_impl(
     port_: MessagePort,
-    that: impl Wire2Api<ConcatenateWith> + UnwindSafe,
-    b: impl Wire2Api<String> + UnwindSafe,
+    that: impl Wire2Api<ConcatenateWith> + core::panic::UnwindSafe,
+    b: impl Wire2Api<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
         WrapInfo {
@@ -1159,8 +1205,8 @@ fn wire_ConcatenateWith_concatenate_impl(
 }
 fn wire_ConcatenateWith_concatenate_static_impl(
     port_: MessagePort,
-    a: impl Wire2Api<String> + UnwindSafe,
-    b: impl Wire2Api<String> + UnwindSafe,
+    a: impl Wire2Api<String> + core::panic::UnwindSafe,
+    b: impl Wire2Api<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
         WrapInfo {
@@ -1179,8 +1225,8 @@ fn wire_ConcatenateWith_concatenate_static_impl(
 }
 fn wire_ConcatenateWith_handle_some_static_stream_sink_impl(
     port_: MessagePort,
-    key: impl Wire2Api<u32> + UnwindSafe,
-    max: impl Wire2Api<u32> + UnwindSafe,
+    key: impl Wire2Api<u32> + core::panic::UnwindSafe,
+    max: impl Wire2Api<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
@@ -1219,9 +1265,9 @@ fn wire_ConcatenateWith_handle_some_static_stream_sink_single_arg_impl(port_: Me
 }
 fn wire_ConcatenateWith_handle_some_stream_sink_impl(
     port_: MessagePort,
-    that: impl Wire2Api<ConcatenateWith> + UnwindSafe,
-    key: impl Wire2Api<u32> + UnwindSafe,
-    max: impl Wire2Api<u32> + UnwindSafe,
+    that: impl Wire2Api<ConcatenateWith> + core::panic::UnwindSafe,
+    key: impl Wire2Api<u32> + core::panic::UnwindSafe,
+    max: impl Wire2Api<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
@@ -1246,7 +1292,7 @@ fn wire_ConcatenateWith_handle_some_stream_sink_impl(
 }
 fn wire_ConcatenateWith_handle_some_stream_sink_at_1_impl(
     port_: MessagePort,
-    that: impl Wire2Api<ConcatenateWith> + UnwindSafe,
+    that: impl Wire2Api<ConcatenateWith> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
@@ -1265,7 +1311,10 @@ fn wire_ConcatenateWith_handle_some_stream_sink_at_1_impl(
         },
     )
 }
-fn wire_ConcatenateWith_new_impl(port_: MessagePort, a: impl Wire2Api<String> + UnwindSafe) {
+fn wire_ConcatenateWith_new_impl(
+    port_: MessagePort,
+    a: impl Wire2Api<String> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ConcatenateWith, _>(
         WrapInfo {
             debug_name: "ConcatenateWith_new",
@@ -1280,9 +1329,9 @@ fn wire_ConcatenateWith_new_impl(port_: MessagePort, a: impl Wire2Api<String> + 
 }
 fn wire_SumWith_sum_impl(
     port_: MessagePort,
-    that: impl Wire2Api<SumWith> + UnwindSafe,
-    y: impl Wire2Api<u32> + UnwindSafe,
-    z: impl Wire2Api<u32> + UnwindSafe,
+    that: impl Wire2Api<SumWith> + core::panic::UnwindSafe,
+    y: impl Wire2Api<u32> + core::panic::UnwindSafe,
+    z: impl Wire2Api<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32, _>(
         WrapInfo {
@@ -1300,9 +1349,9 @@ fn wire_SumWith_sum_impl(
 }
 fn wire_get_sum_array_impl(
     port_: MessagePort,
-    a: impl Wire2Api<u32> + UnwindSafe,
-    b: impl Wire2Api<u32> + UnwindSafe,
-    c: impl Wire2Api<u32> + UnwindSafe,
+    a: impl Wire2Api<u32> + core::panic::UnwindSafe,
+    b: impl Wire2Api<u32> + core::panic::UnwindSafe,
+    c: impl Wire2Api<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [SumWith; 3], _>(
         WrapInfo {
@@ -1360,7 +1409,10 @@ fn wire_app_settings_vec_stream_impl(port_: MessagePort) {
         },
     )
 }
-fn wire_first_number_impl(port_: MessagePort, nums: impl Wire2Api<Numbers> + UnwindSafe) {
+fn wire_first_number_impl(
+    port_: MessagePort,
+    nums: impl Wire2Api<Numbers> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<i32>, _>(
         WrapInfo {
             debug_name: "first_number",
@@ -1373,7 +1425,10 @@ fn wire_first_number_impl(port_: MessagePort, nums: impl Wire2Api<Numbers> + Unw
         },
     )
 }
-fn wire_first_sequence_impl(port_: MessagePort, seqs: impl Wire2Api<Sequences> + UnwindSafe) {
+fn wire_first_sequence_impl(
+    port_: MessagePort,
+    seqs: impl Wire2Api<Sequences> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<i32>, _>(
         WrapInfo {
             debug_name: "first_sequence",
@@ -1418,7 +1473,7 @@ fn wire_get_message_impl(port_: MessagePort) {
 }
 fn wire_is_app_embedded_impl(
     port_: MessagePort,
-    app_settings: impl Wire2Api<ApplicationSettings> + UnwindSafe,
+    app_settings: impl Wire2Api<ApplicationSettings> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, bool, _>(
         WrapInfo {
@@ -1453,8 +1508,8 @@ fn wire_mirror_tuple_stream_impl(port_: MessagePort) {
 }
 fn wire_repeat_number_impl(
     port_: MessagePort,
-    num: impl Wire2Api<i32> + UnwindSafe,
-    times: impl Wire2Api<usize> + UnwindSafe,
+    num: impl Wire2Api<i32> + core::panic::UnwindSafe,
+    times: impl Wire2Api<usize> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_Numbers, _>(
         WrapInfo {
@@ -1471,8 +1526,8 @@ fn wire_repeat_number_impl(
 }
 fn wire_repeat_sequence_impl(
     port_: MessagePort,
-    seq: impl Wire2Api<i32> + UnwindSafe,
-    times: impl Wire2Api<usize> + UnwindSafe,
+    seq: impl Wire2Api<i32> + core::panic::UnwindSafe,
+    times: impl Wire2Api<usize> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_Sequences, _>(
         WrapInfo {
@@ -1539,7 +1594,7 @@ fn wire_test_nested_raw_string_mirrored_impl(port_: MessagePort) {
 }
 fn wire_test_raw_string_enum_mirrored_impl(
     port_: MessagePort,
-    nested: impl Wire2Api<bool> + UnwindSafe,
+    nested: impl Wire2Api<bool> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_RawStringEnumMirrored, _>(
         WrapInfo {
@@ -1573,7 +1628,10 @@ fn wire_handle_big_buffers_impl(port_: MessagePort) {
         move || move |task_callback| Result::<_, ()>::Ok(handle_big_buffers()),
     )
 }
-fn wire_handle_complex_struct_impl(port_: MessagePort, s: impl Wire2Api<MyTreeNode> + UnwindSafe) {
+fn wire_handle_complex_struct_impl(
+    port_: MessagePort,
+    s: impl Wire2Api<MyTreeNode> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, MyTreeNode, _>(
         WrapInfo {
             debug_name: "handle_complex_struct",
@@ -1588,7 +1646,7 @@ fn wire_handle_complex_struct_impl(port_: MessagePort, s: impl Wire2Api<MyTreeNo
 }
 fn wire_handle_nested_struct_impl(
     port_: MessagePort,
-    s: impl Wire2Api<MyNestedStruct> + UnwindSafe,
+    s: impl Wire2Api<MyNestedStruct> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, MyNestedStruct, _>(
         WrapInfo {
@@ -1604,7 +1662,7 @@ fn wire_handle_nested_struct_impl(
 }
 fn wire_list_of_primitive_enums_impl(
     port_: MessagePort,
-    weekdays: impl Wire2Api<Vec<Weekdays>> + UnwindSafe,
+    weekdays: impl Wire2Api<Vec<Weekdays>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<Weekdays>, _>(
         WrapInfo {
@@ -1618,7 +1676,7 @@ fn wire_list_of_primitive_enums_impl(
         },
     )
 }
-fn wire_test_abc_enum_impl(port_: MessagePort, abc: impl Wire2Api<Abc> + UnwindSafe) {
+fn wire_test_abc_enum_impl(port_: MessagePort, abc: impl Wire2Api<Abc> + core::panic::UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Abc, _>(
         WrapInfo {
             debug_name: "test_abc_enum",
@@ -1633,7 +1691,7 @@ fn wire_test_abc_enum_impl(port_: MessagePort, abc: impl Wire2Api<Abc> + UnwindS
 }
 fn wire_test_struct_with_enum_impl(
     port_: MessagePort,
-    se: impl Wire2Api<StructWithEnum> + UnwindSafe,
+    se: impl Wire2Api<StructWithEnum> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, StructWithEnum, _>(
         WrapInfo {
@@ -1657,7 +1715,10 @@ fn wire_func_return_unit_twin_normal_impl(port_: MessagePort) {
         move || move |task_callback| Result::<_, ()>::Ok(func_return_unit_twin_normal()),
     )
 }
-fn wire_func_string_twin_normal_impl(port_: MessagePort, arg: impl Wire2Api<String> + UnwindSafe) {
+fn wire_func_string_twin_normal_impl(
+    port_: MessagePort,
+    arg: impl Wire2Api<String> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
         WrapInfo {
             debug_name: "func_string_twin_normal",
@@ -1670,7 +1731,10 @@ fn wire_func_string_twin_normal_impl(port_: MessagePort, arg: impl Wire2Api<Stri
         },
     )
 }
-fn wire_handle_list_of_struct_impl(port_: MessagePort, l: impl Wire2Api<Vec<MySize>> + UnwindSafe) {
+fn wire_handle_list_of_struct_impl(
+    port_: MessagePort,
+    l: impl Wire2Api<Vec<MySize>> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<MySize>, _>(
         WrapInfo {
             debug_name: "handle_list_of_struct",
@@ -1685,7 +1749,7 @@ fn wire_handle_list_of_struct_impl(port_: MessagePort, l: impl Wire2Api<Vec<MySi
 }
 fn wire_handle_string_list_impl(
     port_: MessagePort,
-    names: impl Wire2Api<Vec<String>> + UnwindSafe,
+    names: impl Wire2Api<Vec<String>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<String>, _>(
         WrapInfo {
@@ -1699,7 +1763,10 @@ fn wire_handle_string_list_impl(
         },
     )
 }
-fn wire_handle_newtype_impl(port_: MessagePort, arg: impl Wire2Api<NewTypeInt> + UnwindSafe) {
+fn wire_handle_newtype_impl(
+    port_: MessagePort,
+    arg: impl Wire2Api<NewTypeInt> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, NewTypeInt, _>(
         WrapInfo {
             debug_name: "handle_newtype",
@@ -1714,7 +1781,7 @@ fn wire_handle_newtype_impl(port_: MessagePort, arg: impl Wire2Api<NewTypeInt> +
 }
 fn wire_handle_increment_boxed_optional_impl(
     port_: MessagePort,
-    opt: impl Wire2Api<Option<Box<f64>>> + UnwindSafe,
+    opt: impl Wire2Api<Option<Box<f64>>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, f64, _>(
         WrapInfo {
@@ -1730,13 +1797,13 @@ fn wire_handle_increment_boxed_optional_impl(
 }
 fn wire_handle_option_box_arguments_impl(
     port_: MessagePort,
-    i8box: impl Wire2Api<Option<Box<i8>>> + UnwindSafe,
-    u8box: impl Wire2Api<Option<Box<u8>>> + UnwindSafe,
-    i32box: impl Wire2Api<Option<Box<i32>>> + UnwindSafe,
-    i64box: impl Wire2Api<Option<Box<i64>>> + UnwindSafe,
-    f64box: impl Wire2Api<Option<Box<f64>>> + UnwindSafe,
-    boolbox: impl Wire2Api<Option<Box<bool>>> + UnwindSafe,
-    structbox: impl Wire2Api<Option<Box<ExoticOptionals>>> + UnwindSafe,
+    i8box: impl Wire2Api<Option<Box<i8>>> + core::panic::UnwindSafe,
+    u8box: impl Wire2Api<Option<Box<u8>>> + core::panic::UnwindSafe,
+    i32box: impl Wire2Api<Option<Box<i32>>> + core::panic::UnwindSafe,
+    i64box: impl Wire2Api<Option<Box<i64>>> + core::panic::UnwindSafe,
+    f64box: impl Wire2Api<Option<Box<f64>>> + core::panic::UnwindSafe,
+    boolbox: impl Wire2Api<Option<Box<bool>>> + core::panic::UnwindSafe,
+    structbox: impl Wire2Api<Option<Box<ExoticOptionals>>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
         WrapInfo {
@@ -1768,7 +1835,7 @@ fn wire_handle_option_box_arguments_impl(
 }
 fn wire_handle_optional_increment_impl(
     port_: MessagePort,
-    opt: impl Wire2Api<Option<ExoticOptionals>> + UnwindSafe,
+    opt: impl Wire2Api<Option<ExoticOptionals>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<ExoticOptionals>, _>(
         WrapInfo {
@@ -1784,8 +1851,8 @@ fn wire_handle_optional_increment_impl(
 }
 fn wire_handle_optional_return_impl(
     port_: MessagePort,
-    left: impl Wire2Api<f64> + UnwindSafe,
-    right: impl Wire2Api<f64> + UnwindSafe,
+    left: impl Wire2Api<f64> + core::panic::UnwindSafe,
+    right: impl Wire2Api<f64> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<f64>, _>(
         WrapInfo {
@@ -1802,7 +1869,7 @@ fn wire_handle_optional_return_impl(
 }
 fn wire_handle_optional_struct_impl(
     port_: MessagePort,
-    document: impl Wire2Api<Option<String>> + UnwindSafe,
+    document: impl Wire2Api<Option<String>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<Element>, _>(
         WrapInfo {
@@ -1816,7 +1883,10 @@ fn wire_handle_optional_struct_impl(
         },
     )
 }
-fn wire_handle_vec_of_opts_impl(port_: MessagePort, opt: impl Wire2Api<OptVecs> + UnwindSafe) {
+fn wire_handle_vec_of_opts_impl(
+    port_: MessagePort,
+    opt: impl Wire2Api<OptVecs> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, OptVecs, _>(
         WrapInfo {
             debug_name: "handle_vec_of_opts",
@@ -1830,7 +1900,7 @@ fn wire_handle_vec_of_opts_impl(port_: MessagePort, opt: impl Wire2Api<OptVecs> 
     )
 }
 fn wire_StructWithCommentsTwinSync_instance_method_twin_sync_impl(
-    that: impl Wire2Api<StructWithCommentsTwinSync> + UnwindSafe,
+    that: impl Wire2Api<StructWithCommentsTwinSync> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -1888,7 +1958,7 @@ fn wire_function_with_comments_triple_slash_single_line_twin_sync_impl() -> supp
     )
 }
 fn wire_func_enum_simple_twin_sync_impl(
-    arg: impl Wire2Api<EnumSimpleTwinSync> + UnwindSafe,
+    arg: impl Wire2Api<EnumSimpleTwinSync> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -1903,7 +1973,7 @@ fn wire_func_enum_simple_twin_sync_impl(
     )
 }
 fn wire_func_enum_with_item_mixed_twin_sync_impl(
-    arg: impl Wire2Api<EnumWithItemMixedTwinSync> + UnwindSafe,
+    arg: impl Wire2Api<EnumWithItemMixedTwinSync> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -1918,7 +1988,7 @@ fn wire_func_enum_with_item_mixed_twin_sync_impl(
     )
 }
 fn wire_func_enum_with_item_struct_twin_sync_impl(
-    arg: impl Wire2Api<EnumWithItemStructTwinSync> + UnwindSafe,
+    arg: impl Wire2Api<EnumWithItemStructTwinSync> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -1933,7 +2003,7 @@ fn wire_func_enum_with_item_struct_twin_sync_impl(
     )
 }
 fn wire_func_enum_with_item_tuple_twin_sync_impl(
-    arg: impl Wire2Api<EnumWithItemTupleTwinSync> + UnwindSafe,
+    arg: impl Wire2Api<EnumWithItemTupleTwinSync> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -1968,7 +2038,7 @@ fn wire_custom_enum_error_return_error_twin_sync_impl() -> support::WireSyncRetu
     )
 }
 fn wire_custom_enum_error_return_ok_twin_sync_impl(
-    arg: impl Wire2Api<u32> + UnwindSafe,
+    arg: impl Wire2Api<u32> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -1983,7 +2053,7 @@ fn wire_custom_enum_error_return_ok_twin_sync_impl(
     )
 }
 fn wire_custom_nested_error_return_error_twin_sync_impl(
-    arg: impl Wire2Api<CustomNestedErrorOuterTwinSync> + UnwindSafe,
+    arg: impl Wire2Api<CustomNestedErrorOuterTwinSync> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -1998,7 +2068,7 @@ fn wire_custom_nested_error_return_error_twin_sync_impl(
     )
 }
 fn wire_custom_struct_error_return_error_twin_sync_impl(
-    arg: impl Wire2Api<CustomStructErrorTwinSync> + UnwindSafe,
+    arg: impl Wire2Api<CustomStructErrorTwinSync> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -2053,7 +2123,7 @@ fn wire_func_return_unit_twin_sync_impl() -> support::WireSyncReturn {
     )
 }
 fn wire_func_string_twin_sync_impl(
-    arg: impl Wire2Api<String> + UnwindSafe,
+    arg: impl Wire2Api<String> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -2069,7 +2139,7 @@ fn wire_func_string_twin_sync_impl(
 }
 fn wire_example_optional_primitive_type_bool_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<Option<bool>> + UnwindSafe,
+    arg: impl Wire2Api<Option<bool>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<bool>, _>(
         WrapInfo {
@@ -2087,7 +2157,7 @@ fn wire_example_optional_primitive_type_bool_twin_normal_impl(
 }
 fn wire_example_optional_primitive_type_f32_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<Option<f32>> + UnwindSafe,
+    arg: impl Wire2Api<Option<f32>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<f32>, _>(
         WrapInfo {
@@ -2105,7 +2175,7 @@ fn wire_example_optional_primitive_type_f32_twin_normal_impl(
 }
 fn wire_example_optional_primitive_type_f64_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<Option<f64>> + UnwindSafe,
+    arg: impl Wire2Api<Option<f64>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<f64>, _>(
         WrapInfo {
@@ -2123,7 +2193,7 @@ fn wire_example_optional_primitive_type_f64_twin_normal_impl(
 }
 fn wire_example_optional_primitive_type_i16_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<Option<i16>> + UnwindSafe,
+    arg: impl Wire2Api<Option<i16>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<i16>, _>(
         WrapInfo {
@@ -2141,7 +2211,7 @@ fn wire_example_optional_primitive_type_i16_twin_normal_impl(
 }
 fn wire_example_optional_primitive_type_i32_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<Option<i32>> + UnwindSafe,
+    arg: impl Wire2Api<Option<i32>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<i32>, _>(
         WrapInfo {
@@ -2159,7 +2229,7 @@ fn wire_example_optional_primitive_type_i32_twin_normal_impl(
 }
 fn wire_example_optional_primitive_type_i64_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<Option<i64>> + UnwindSafe,
+    arg: impl Wire2Api<Option<i64>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<i64>, _>(
         WrapInfo {
@@ -2177,7 +2247,7 @@ fn wire_example_optional_primitive_type_i64_twin_normal_impl(
 }
 fn wire_example_optional_primitive_type_i8_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<Option<i8>> + UnwindSafe,
+    arg: impl Wire2Api<Option<i8>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<i8>, _>(
         WrapInfo {
@@ -2195,7 +2265,7 @@ fn wire_example_optional_primitive_type_i8_twin_normal_impl(
 }
 fn wire_example_optional_primitive_type_u16_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<Option<u16>> + UnwindSafe,
+    arg: impl Wire2Api<Option<u16>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<u16>, _>(
         WrapInfo {
@@ -2213,7 +2283,7 @@ fn wire_example_optional_primitive_type_u16_twin_normal_impl(
 }
 fn wire_example_optional_primitive_type_u32_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<Option<u32>> + UnwindSafe,
+    arg: impl Wire2Api<Option<u32>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<u32>, _>(
         WrapInfo {
@@ -2231,7 +2301,7 @@ fn wire_example_optional_primitive_type_u32_twin_normal_impl(
 }
 fn wire_example_optional_primitive_type_u64_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<Option<u64>> + UnwindSafe,
+    arg: impl Wire2Api<Option<u64>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<u64>, _>(
         WrapInfo {
@@ -2249,7 +2319,7 @@ fn wire_example_optional_primitive_type_u64_twin_normal_impl(
 }
 fn wire_example_optional_primitive_type_u8_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<Option<u8>> + UnwindSafe,
+    arg: impl Wire2Api<Option<u8>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<u8>, _>(
         WrapInfo {
@@ -2266,7 +2336,7 @@ fn wire_example_optional_primitive_type_u8_twin_normal_impl(
     )
 }
 fn wire_example_optional_primitive_type_bool_twin_sync_impl(
-    arg: impl Wire2Api<Option<bool>> + UnwindSafe,
+    arg: impl Wire2Api<Option<bool>> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -2281,7 +2351,7 @@ fn wire_example_optional_primitive_type_bool_twin_sync_impl(
     )
 }
 fn wire_example_optional_primitive_type_f32_twin_sync_impl(
-    arg: impl Wire2Api<Option<f32>> + UnwindSafe,
+    arg: impl Wire2Api<Option<f32>> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -2296,7 +2366,7 @@ fn wire_example_optional_primitive_type_f32_twin_sync_impl(
     )
 }
 fn wire_example_optional_primitive_type_f64_twin_sync_impl(
-    arg: impl Wire2Api<Option<f64>> + UnwindSafe,
+    arg: impl Wire2Api<Option<f64>> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -2311,7 +2381,7 @@ fn wire_example_optional_primitive_type_f64_twin_sync_impl(
     )
 }
 fn wire_example_optional_primitive_type_i16_twin_sync_impl(
-    arg: impl Wire2Api<Option<i16>> + UnwindSafe,
+    arg: impl Wire2Api<Option<i16>> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -2326,7 +2396,7 @@ fn wire_example_optional_primitive_type_i16_twin_sync_impl(
     )
 }
 fn wire_example_optional_primitive_type_i32_twin_sync_impl(
-    arg: impl Wire2Api<Option<i32>> + UnwindSafe,
+    arg: impl Wire2Api<Option<i32>> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -2341,7 +2411,7 @@ fn wire_example_optional_primitive_type_i32_twin_sync_impl(
     )
 }
 fn wire_example_optional_primitive_type_i64_twin_sync_impl(
-    arg: impl Wire2Api<Option<i64>> + UnwindSafe,
+    arg: impl Wire2Api<Option<i64>> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -2356,7 +2426,7 @@ fn wire_example_optional_primitive_type_i64_twin_sync_impl(
     )
 }
 fn wire_example_optional_primitive_type_i8_twin_sync_impl(
-    arg: impl Wire2Api<Option<i8>> + UnwindSafe,
+    arg: impl Wire2Api<Option<i8>> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -2371,7 +2441,7 @@ fn wire_example_optional_primitive_type_i8_twin_sync_impl(
     )
 }
 fn wire_example_optional_primitive_type_u16_twin_sync_impl(
-    arg: impl Wire2Api<Option<u16>> + UnwindSafe,
+    arg: impl Wire2Api<Option<u16>> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -2386,7 +2456,7 @@ fn wire_example_optional_primitive_type_u16_twin_sync_impl(
     )
 }
 fn wire_example_optional_primitive_type_u32_twin_sync_impl(
-    arg: impl Wire2Api<Option<u32>> + UnwindSafe,
+    arg: impl Wire2Api<Option<u32>> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -2401,7 +2471,7 @@ fn wire_example_optional_primitive_type_u32_twin_sync_impl(
     )
 }
 fn wire_example_optional_primitive_type_u64_twin_sync_impl(
-    arg: impl Wire2Api<Option<u64>> + UnwindSafe,
+    arg: impl Wire2Api<Option<u64>> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -2416,7 +2486,7 @@ fn wire_example_optional_primitive_type_u64_twin_sync_impl(
     )
 }
 fn wire_example_optional_primitive_type_u8_twin_sync_impl(
-    arg: impl Wire2Api<Option<u8>> + UnwindSafe,
+    arg: impl Wire2Api<Option<u8>> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -2432,7 +2502,7 @@ fn wire_example_optional_primitive_type_u8_twin_sync_impl(
 }
 fn wire_example_primitive_type_bool_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<bool> + UnwindSafe,
+    arg: impl Wire2Api<bool> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, bool, _>(
         WrapInfo {
@@ -2450,7 +2520,7 @@ fn wire_example_primitive_type_bool_twin_normal_impl(
 }
 fn wire_example_primitive_type_f32_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<f32> + UnwindSafe,
+    arg: impl Wire2Api<f32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, f32, _>(
         WrapInfo {
@@ -2468,7 +2538,7 @@ fn wire_example_primitive_type_f32_twin_normal_impl(
 }
 fn wire_example_primitive_type_f64_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<f64> + UnwindSafe,
+    arg: impl Wire2Api<f64> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, f64, _>(
         WrapInfo {
@@ -2486,7 +2556,7 @@ fn wire_example_primitive_type_f64_twin_normal_impl(
 }
 fn wire_example_primitive_type_i16_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<i16> + UnwindSafe,
+    arg: impl Wire2Api<i16> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i16, _>(
         WrapInfo {
@@ -2504,7 +2574,7 @@ fn wire_example_primitive_type_i16_twin_normal_impl(
 }
 fn wire_example_primitive_type_i32_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<i32> + UnwindSafe,
+    arg: impl Wire2Api<i32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
         WrapInfo {
@@ -2522,7 +2592,7 @@ fn wire_example_primitive_type_i32_twin_normal_impl(
 }
 fn wire_example_primitive_type_i64_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<i64> + UnwindSafe,
+    arg: impl Wire2Api<i64> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i64, _>(
         WrapInfo {
@@ -2540,7 +2610,7 @@ fn wire_example_primitive_type_i64_twin_normal_impl(
 }
 fn wire_example_primitive_type_i8_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<i8> + UnwindSafe,
+    arg: impl Wire2Api<i8> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i8, _>(
         WrapInfo {
@@ -2556,7 +2626,7 @@ fn wire_example_primitive_type_i8_twin_normal_impl(
 }
 fn wire_example_primitive_type_u16_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<u16> + UnwindSafe,
+    arg: impl Wire2Api<u16> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u16, _>(
         WrapInfo {
@@ -2574,7 +2644,7 @@ fn wire_example_primitive_type_u16_twin_normal_impl(
 }
 fn wire_example_primitive_type_u32_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<u32> + UnwindSafe,
+    arg: impl Wire2Api<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32, _>(
         WrapInfo {
@@ -2592,7 +2662,7 @@ fn wire_example_primitive_type_u32_twin_normal_impl(
 }
 fn wire_example_primitive_type_u64_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<u64> + UnwindSafe,
+    arg: impl Wire2Api<u64> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u64, _>(
         WrapInfo {
@@ -2610,7 +2680,7 @@ fn wire_example_primitive_type_u64_twin_normal_impl(
 }
 fn wire_example_primitive_type_u8_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<u8> + UnwindSafe,
+    arg: impl Wire2Api<u8> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u8, _>(
         WrapInfo {
@@ -2626,7 +2696,7 @@ fn wire_example_primitive_type_u8_twin_normal_impl(
 }
 fn wire_example_primitive_list_type_bool_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<Vec<bool>> + UnwindSafe,
+    arg: impl Wire2Api<Vec<bool>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<bool>, _>(
         WrapInfo {
@@ -2644,7 +2714,7 @@ fn wire_example_primitive_list_type_bool_twin_normal_impl(
 }
 fn wire_example_primitive_list_type_f32_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<Vec<f32>> + UnwindSafe,
+    arg: impl Wire2Api<Vec<f32>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<f32>, _>(
         WrapInfo {
@@ -2662,7 +2732,7 @@ fn wire_example_primitive_list_type_f32_twin_normal_impl(
 }
 fn wire_example_primitive_list_type_f64_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<Vec<f64>> + UnwindSafe,
+    arg: impl Wire2Api<Vec<f64>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<f64>, _>(
         WrapInfo {
@@ -2680,7 +2750,7 @@ fn wire_example_primitive_list_type_f64_twin_normal_impl(
 }
 fn wire_example_primitive_list_type_i16_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<Vec<i16>> + UnwindSafe,
+    arg: impl Wire2Api<Vec<i16>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<i16>, _>(
         WrapInfo {
@@ -2698,7 +2768,7 @@ fn wire_example_primitive_list_type_i16_twin_normal_impl(
 }
 fn wire_example_primitive_list_type_i32_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<Vec<i32>> + UnwindSafe,
+    arg: impl Wire2Api<Vec<i32>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<i32>, _>(
         WrapInfo {
@@ -2716,7 +2786,7 @@ fn wire_example_primitive_list_type_i32_twin_normal_impl(
 }
 fn wire_example_primitive_list_type_i64_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<Vec<i64>> + UnwindSafe,
+    arg: impl Wire2Api<Vec<i64>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<i64>, _>(
         WrapInfo {
@@ -2734,7 +2804,7 @@ fn wire_example_primitive_list_type_i64_twin_normal_impl(
 }
 fn wire_example_primitive_list_type_i8_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<Vec<i8>> + UnwindSafe,
+    arg: impl Wire2Api<Vec<i8>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<i8>, _>(
         WrapInfo {
@@ -2752,7 +2822,7 @@ fn wire_example_primitive_list_type_i8_twin_normal_impl(
 }
 fn wire_example_primitive_list_type_u16_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<Vec<u16>> + UnwindSafe,
+    arg: impl Wire2Api<Vec<u16>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<u16>, _>(
         WrapInfo {
@@ -2770,7 +2840,7 @@ fn wire_example_primitive_list_type_u16_twin_normal_impl(
 }
 fn wire_example_primitive_list_type_u32_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<Vec<u32>> + UnwindSafe,
+    arg: impl Wire2Api<Vec<u32>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<u32>, _>(
         WrapInfo {
@@ -2788,7 +2858,7 @@ fn wire_example_primitive_list_type_u32_twin_normal_impl(
 }
 fn wire_example_primitive_list_type_u64_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<Vec<u64>> + UnwindSafe,
+    arg: impl Wire2Api<Vec<u64>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<u64>, _>(
         WrapInfo {
@@ -2806,7 +2876,7 @@ fn wire_example_primitive_list_type_u64_twin_normal_impl(
 }
 fn wire_example_primitive_list_type_u8_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<Vec<u8>> + UnwindSafe,
+    arg: impl Wire2Api<Vec<u8>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<u8>, _>(
         WrapInfo {
@@ -2823,7 +2893,7 @@ fn wire_example_primitive_list_type_u8_twin_normal_impl(
     )
 }
 fn wire_example_primitive_list_type_bool_twin_sync_impl(
-    arg: impl Wire2Api<Vec<bool>> + UnwindSafe,
+    arg: impl Wire2Api<Vec<bool>> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -2838,7 +2908,7 @@ fn wire_example_primitive_list_type_bool_twin_sync_impl(
     )
 }
 fn wire_example_primitive_list_type_f32_twin_sync_impl(
-    arg: impl Wire2Api<Vec<f32>> + UnwindSafe,
+    arg: impl Wire2Api<Vec<f32>> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -2853,7 +2923,7 @@ fn wire_example_primitive_list_type_f32_twin_sync_impl(
     )
 }
 fn wire_example_primitive_list_type_f64_twin_sync_impl(
-    arg: impl Wire2Api<Vec<f64>> + UnwindSafe,
+    arg: impl Wire2Api<Vec<f64>> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -2868,7 +2938,7 @@ fn wire_example_primitive_list_type_f64_twin_sync_impl(
     )
 }
 fn wire_example_primitive_list_type_i16_twin_sync_impl(
-    arg: impl Wire2Api<Vec<i16>> + UnwindSafe,
+    arg: impl Wire2Api<Vec<i16>> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -2883,7 +2953,7 @@ fn wire_example_primitive_list_type_i16_twin_sync_impl(
     )
 }
 fn wire_example_primitive_list_type_i32_twin_sync_impl(
-    arg: impl Wire2Api<Vec<i32>> + UnwindSafe,
+    arg: impl Wire2Api<Vec<i32>> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -2898,7 +2968,7 @@ fn wire_example_primitive_list_type_i32_twin_sync_impl(
     )
 }
 fn wire_example_primitive_list_type_i64_twin_sync_impl(
-    arg: impl Wire2Api<Vec<i64>> + UnwindSafe,
+    arg: impl Wire2Api<Vec<i64>> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -2913,7 +2983,7 @@ fn wire_example_primitive_list_type_i64_twin_sync_impl(
     )
 }
 fn wire_example_primitive_list_type_i8_twin_sync_impl(
-    arg: impl Wire2Api<Vec<i8>> + UnwindSafe,
+    arg: impl Wire2Api<Vec<i8>> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -2928,7 +2998,7 @@ fn wire_example_primitive_list_type_i8_twin_sync_impl(
     )
 }
 fn wire_example_primitive_list_type_u16_twin_sync_impl(
-    arg: impl Wire2Api<Vec<u16>> + UnwindSafe,
+    arg: impl Wire2Api<Vec<u16>> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -2943,7 +3013,7 @@ fn wire_example_primitive_list_type_u16_twin_sync_impl(
     )
 }
 fn wire_example_primitive_list_type_u32_twin_sync_impl(
-    arg: impl Wire2Api<Vec<u32>> + UnwindSafe,
+    arg: impl Wire2Api<Vec<u32>> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -2958,7 +3028,7 @@ fn wire_example_primitive_list_type_u32_twin_sync_impl(
     )
 }
 fn wire_example_primitive_list_type_u64_twin_sync_impl(
-    arg: impl Wire2Api<Vec<u64>> + UnwindSafe,
+    arg: impl Wire2Api<Vec<u64>> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -2973,7 +3043,7 @@ fn wire_example_primitive_list_type_u64_twin_sync_impl(
     )
 }
 fn wire_example_primitive_list_type_u8_twin_sync_impl(
-    arg: impl Wire2Api<Vec<u8>> + UnwindSafe,
+    arg: impl Wire2Api<Vec<u8>> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -2988,7 +3058,7 @@ fn wire_example_primitive_list_type_u8_twin_sync_impl(
     )
 }
 fn wire_example_primitive_type_bool_twin_sync_impl(
-    arg: impl Wire2Api<bool> + UnwindSafe,
+    arg: impl Wire2Api<bool> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -3003,7 +3073,7 @@ fn wire_example_primitive_type_bool_twin_sync_impl(
     )
 }
 fn wire_example_primitive_type_f32_twin_sync_impl(
-    arg: impl Wire2Api<f32> + UnwindSafe,
+    arg: impl Wire2Api<f32> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -3018,7 +3088,7 @@ fn wire_example_primitive_type_f32_twin_sync_impl(
     )
 }
 fn wire_example_primitive_type_f64_twin_sync_impl(
-    arg: impl Wire2Api<f64> + UnwindSafe,
+    arg: impl Wire2Api<f64> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -3033,7 +3103,7 @@ fn wire_example_primitive_type_f64_twin_sync_impl(
     )
 }
 fn wire_example_primitive_type_i16_twin_sync_impl(
-    arg: impl Wire2Api<i16> + UnwindSafe,
+    arg: impl Wire2Api<i16> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -3048,7 +3118,7 @@ fn wire_example_primitive_type_i16_twin_sync_impl(
     )
 }
 fn wire_example_primitive_type_i32_twin_sync_impl(
-    arg: impl Wire2Api<i32> + UnwindSafe,
+    arg: impl Wire2Api<i32> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -3063,7 +3133,7 @@ fn wire_example_primitive_type_i32_twin_sync_impl(
     )
 }
 fn wire_example_primitive_type_i64_twin_sync_impl(
-    arg: impl Wire2Api<i64> + UnwindSafe,
+    arg: impl Wire2Api<i64> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -3078,7 +3148,7 @@ fn wire_example_primitive_type_i64_twin_sync_impl(
     )
 }
 fn wire_example_primitive_type_i8_twin_sync_impl(
-    arg: impl Wire2Api<i8> + UnwindSafe,
+    arg: impl Wire2Api<i8> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -3093,7 +3163,7 @@ fn wire_example_primitive_type_i8_twin_sync_impl(
     )
 }
 fn wire_example_primitive_type_u16_twin_sync_impl(
-    arg: impl Wire2Api<u16> + UnwindSafe,
+    arg: impl Wire2Api<u16> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -3108,7 +3178,7 @@ fn wire_example_primitive_type_u16_twin_sync_impl(
     )
 }
 fn wire_example_primitive_type_u32_twin_sync_impl(
-    arg: impl Wire2Api<u32> + UnwindSafe,
+    arg: impl Wire2Api<u32> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -3123,7 +3193,7 @@ fn wire_example_primitive_type_u32_twin_sync_impl(
     )
 }
 fn wire_example_primitive_type_u64_twin_sync_impl(
-    arg: impl Wire2Api<u64> + UnwindSafe,
+    arg: impl Wire2Api<u64> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -3138,7 +3208,7 @@ fn wire_example_primitive_type_u64_twin_sync_impl(
     )
 }
 fn wire_example_primitive_type_u8_twin_sync_impl(
-    arg: impl Wire2Api<u8> + UnwindSafe,
+    arg: impl Wire2Api<u8> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -3153,8 +3223,8 @@ fn wire_example_primitive_type_u8_twin_sync_impl(
     )
 }
 fn wire_simple_adder_twin_sync_impl(
-    a: impl Wire2Api<i32> + UnwindSafe,
-    b: impl Wire2Api<i32> + UnwindSafe,
+    a: impl Wire2Api<i32> + core::panic::UnwindSafe,
+    b: impl Wire2Api<i32> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -3170,7 +3240,7 @@ fn wire_simple_adder_twin_sync_impl(
     )
 }
 fn wire_func_struct_with_one_field_twin_sync_impl(
-    arg: impl Wire2Api<StructWithOneFieldTwinSync> + UnwindSafe,
+    arg: impl Wire2Api<StructWithOneFieldTwinSync> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -3185,7 +3255,7 @@ fn wire_func_struct_with_one_field_twin_sync_impl(
     )
 }
 fn wire_func_struct_with_two_field_twin_sync_impl(
-    arg: impl Wire2Api<StructWithTwoFieldTwinSync> + UnwindSafe,
+    arg: impl Wire2Api<StructWithTwoFieldTwinSync> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -3200,7 +3270,7 @@ fn wire_func_struct_with_two_field_twin_sync_impl(
     )
 }
 fn wire_func_struct_with_zero_field_twin_sync_impl(
-    arg: impl Wire2Api<StructWithZeroFieldTwinSync> + UnwindSafe,
+    arg: impl Wire2Api<StructWithZeroFieldTwinSync> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -3215,7 +3285,7 @@ fn wire_func_struct_with_zero_field_twin_sync_impl(
     )
 }
 fn wire_func_tuple_struct_with_one_field_twin_sync_impl(
-    arg: impl Wire2Api<TupleStructWithOneFieldTwinSync> + UnwindSafe,
+    arg: impl Wire2Api<TupleStructWithOneFieldTwinSync> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -3230,7 +3300,7 @@ fn wire_func_tuple_struct_with_one_field_twin_sync_impl(
     )
 }
 fn wire_func_tuple_struct_with_two_field_twin_sync_impl(
-    arg: impl Wire2Api<TupleStructWithTwoFieldTwinSync> + UnwindSafe,
+    arg: impl Wire2Api<TupleStructWithTwoFieldTwinSync> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -3298,7 +3368,7 @@ fn wire_create_opaque_impl(port_: MessagePort) {
 }
 fn wire_create_option_opaque_impl(
     port_: MessagePort,
-    opaque: impl Wire2Api<Option<RustOpaque<HideData>>> + UnwindSafe,
+    opaque: impl Wire2Api<Option<RustOpaque<HideData>>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<RustOpaque<HideData>>, _>(
         WrapInfo {
@@ -3344,7 +3414,7 @@ fn wire_opaque_array_impl(port_: MessagePort) {
 }
 fn wire_opaque_array_run_impl(
     port_: MessagePort,
-    data: impl Wire2Api<[RustOpaque<HideData>; 2]> + UnwindSafe,
+    data: impl Wire2Api<[RustOpaque<HideData>; 2]> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
@@ -3370,7 +3440,7 @@ fn wire_opaque_vec_impl(port_: MessagePort) {
 }
 fn wire_opaque_vec_run_impl(
     port_: MessagePort,
-    data: impl Wire2Api<Vec<RustOpaque<HideData>>> + UnwindSafe,
+    data: impl Wire2Api<Vec<RustOpaque<HideData>>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
@@ -3384,7 +3454,10 @@ fn wire_opaque_vec_run_impl(
         },
     )
 }
-fn wire_run_enum_opaque_impl(port_: MessagePort, opaque: impl Wire2Api<EnumOpaque> + UnwindSafe) {
+fn wire_run_enum_opaque_impl(
+    port_: MessagePort,
+    opaque: impl Wire2Api<EnumOpaque> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
         WrapInfo {
             debug_name: "run_enum_opaque",
@@ -3399,7 +3472,7 @@ fn wire_run_enum_opaque_impl(port_: MessagePort, opaque: impl Wire2Api<EnumOpaqu
 }
 fn wire_run_nested_opaque_impl(
     port_: MessagePort,
-    opaque: impl Wire2Api<OpaqueNested> + UnwindSafe,
+    opaque: impl Wire2Api<OpaqueNested> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
@@ -3415,7 +3488,7 @@ fn wire_run_nested_opaque_impl(
 }
 fn wire_run_non_clone_impl(
     port_: MessagePort,
-    clone: impl Wire2Api<RustOpaque<NonCloneData>> + UnwindSafe,
+    clone: impl Wire2Api<RustOpaque<NonCloneData>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
         WrapInfo {
@@ -3431,7 +3504,7 @@ fn wire_run_non_clone_impl(
 }
 fn wire_run_opaque_impl(
     port_: MessagePort,
-    opaque: impl Wire2Api<RustOpaque<HideData>> + UnwindSafe,
+    opaque: impl Wire2Api<RustOpaque<HideData>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
         WrapInfo {
@@ -3447,7 +3520,7 @@ fn wire_run_opaque_impl(
 }
 fn wire_run_opaque_with_delay_impl(
     port_: MessagePort,
-    opaque: impl Wire2Api<RustOpaque<HideData>> + UnwindSafe,
+    opaque: impl Wire2Api<RustOpaque<HideData>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
         WrapInfo {
@@ -3463,7 +3536,7 @@ fn wire_run_opaque_with_delay_impl(
 }
 fn wire_unwrap_rust_opaque_impl(
     port_: MessagePort,
-    opaque: impl Wire2Api<RustOpaque<HideData>> + UnwindSafe,
+    opaque: impl Wire2Api<RustOpaque<HideData>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
         WrapInfo {
@@ -3488,7 +3561,7 @@ fn wire_frb_sync_generator_test_impl(port_: MessagePort) {
     )
 }
 fn wire_sync_run_opaque_impl(
-    opaque: impl Wire2Api<RustOpaque<NonSendHideData>> + UnwindSafe,
+    opaque: impl Wire2Api<RustOpaque<NonSendHideData>> + core::panic::UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -3504,8 +3577,8 @@ fn wire_sync_run_opaque_impl(
 }
 fn wire_simple_adder_twin_normal_impl(
     port_: MessagePort,
-    a: impl Wire2Api<i32> + UnwindSafe,
-    b: impl Wire2Api<i32> + UnwindSafe,
+    a: impl Wire2Api<i32> + core::panic::UnwindSafe,
+    b: impl Wire2Api<i32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
         WrapInfo {
@@ -3522,7 +3595,7 @@ fn wire_simple_adder_twin_normal_impl(
 }
 fn wire_func_stream_realistic_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<String> + UnwindSafe,
+    arg: impl Wire2Api<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
@@ -3571,8 +3644,8 @@ fn wire_func_stream_return_panic_twin_normal_impl(port_: MessagePort) {
 }
 fn wire_func_stream_sink_arg_position_twin_normal_impl(
     port_: MessagePort,
-    a: impl Wire2Api<u32> + UnwindSafe,
-    b: impl Wire2Api<u32> + UnwindSafe,
+    a: impl Wire2Api<u32> + core::panic::UnwindSafe,
+    b: impl Wire2Api<u32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
@@ -3611,7 +3684,7 @@ fn wire_handle_stream_of_struct_impl(port_: MessagePort) {
 }
 fn wire_func_struct_with_one_field_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<StructWithOneFieldTwinNormal> + UnwindSafe,
+    arg: impl Wire2Api<StructWithOneFieldTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, StructWithOneFieldTwinNormal, _>(
         WrapInfo {
@@ -3629,7 +3702,7 @@ fn wire_func_struct_with_one_field_twin_normal_impl(
 }
 fn wire_func_struct_with_two_field_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<StructWithTwoFieldTwinNormal> + UnwindSafe,
+    arg: impl Wire2Api<StructWithTwoFieldTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, StructWithTwoFieldTwinNormal, _>(
         WrapInfo {
@@ -3647,7 +3720,7 @@ fn wire_func_struct_with_two_field_twin_normal_impl(
 }
 fn wire_func_struct_with_zero_field_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<StructWithZeroFieldTwinNormal> + UnwindSafe,
+    arg: impl Wire2Api<StructWithZeroFieldTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, StructWithZeroFieldTwinNormal, _>(
         WrapInfo {
@@ -3665,7 +3738,7 @@ fn wire_func_struct_with_zero_field_twin_normal_impl(
 }
 fn wire_func_tuple_struct_with_one_field_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<TupleStructWithOneFieldTwinNormal> + UnwindSafe,
+    arg: impl Wire2Api<TupleStructWithOneFieldTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, TupleStructWithOneFieldTwinNormal, _>(
         WrapInfo {
@@ -3683,7 +3756,7 @@ fn wire_func_tuple_struct_with_one_field_twin_normal_impl(
 }
 fn wire_func_tuple_struct_with_two_field_twin_normal_impl(
     port_: MessagePort,
-    arg: impl Wire2Api<TupleStructWithTwoFieldTwinNormal> + UnwindSafe,
+    arg: impl Wire2Api<TupleStructWithTwoFieldTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, TupleStructWithTwoFieldTwinNormal, _>(
         WrapInfo {
@@ -3701,7 +3774,7 @@ fn wire_func_tuple_struct_with_two_field_twin_normal_impl(
 }
 fn wire_test_tuple_impl(
     port_: MessagePort,
-    value: impl Wire2Api<Option<(String, i32)>> + UnwindSafe,
+    value: impl Wire2Api<Option<(String, i32)>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (String, i32), _>(
         WrapInfo {
@@ -3717,7 +3790,7 @@ fn wire_test_tuple_impl(
 }
 fn wire_test_tuple_2_impl(
     port_: MessagePort,
-    value: impl Wire2Api<Vec<(String, i32)>> + UnwindSafe,
+    value: impl Wire2Api<Vec<(String, i32)>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
@@ -3731,7 +3804,10 @@ fn wire_test_tuple_2_impl(
         },
     )
 }
-fn wire_handle_type_alias_id_impl(port_: MessagePort, input: impl Wire2Api<u64> + UnwindSafe) {
+fn wire_handle_type_alias_id_impl(
+    port_: MessagePort,
+    input: impl Wire2Api<u64> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u64, _>(
         WrapInfo {
             debug_name: "handle_type_alias_id",
@@ -3744,7 +3820,10 @@ fn wire_handle_type_alias_id_impl(port_: MessagePort, input: impl Wire2Api<u64> 
         },
     )
 }
-fn wire_handle_type_alias_model_impl(port_: MessagePort, input: impl Wire2Api<u64> + UnwindSafe) {
+fn wire_handle_type_alias_model_impl(
+    port_: MessagePort,
+    input: impl Wire2Api<u64> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, TestModel, _>(
         WrapInfo {
             debug_name: "handle_type_alias_model",
@@ -3757,7 +3836,10 @@ fn wire_handle_type_alias_model_impl(port_: MessagePort, input: impl Wire2Api<u6
         },
     )
 }
-fn wire_handle_type_nest_alias_id_impl(port_: MessagePort, input: impl Wire2Api<u64> + UnwindSafe) {
+fn wire_handle_type_nest_alias_id_impl(
+    port_: MessagePort,
+    input: impl Wire2Api<u64> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u64, _>(
         WrapInfo {
             debug_name: "handle_type_nest_alias_id",
@@ -3770,7 +3852,10 @@ fn wire_handle_type_nest_alias_id_impl(port_: MessagePort, input: impl Wire2Api<
         },
     )
 }
-fn wire_handle_nested_uuids_impl(port_: MessagePort, ids: impl Wire2Api<FeatureUuid> + UnwindSafe) {
+fn wire_handle_nested_uuids_impl(
+    port_: MessagePort,
+    ids: impl Wire2Api<FeatureUuid> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, FeatureUuid, _>(
         WrapInfo {
             debug_name: "handle_nested_uuids",
@@ -3783,7 +3868,10 @@ fn wire_handle_nested_uuids_impl(port_: MessagePort, ids: impl Wire2Api<FeatureU
         },
     )
 }
-fn wire_handle_uuid_impl(port_: MessagePort, id: impl Wire2Api<uuid::Uuid> + UnwindSafe) {
+fn wire_handle_uuid_impl(
+    port_: MessagePort,
+    id: impl Wire2Api<uuid::Uuid> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, uuid::Uuid, _>(
         WrapInfo {
             debug_name: "handle_uuid",
@@ -3796,7 +3884,10 @@ fn wire_handle_uuid_impl(port_: MessagePort, id: impl Wire2Api<uuid::Uuid> + Unw
         },
     )
 }
-fn wire_handle_uuids_impl(port_: MessagePort, ids: impl Wire2Api<Vec<uuid::Uuid>> + UnwindSafe) {
+fn wire_handle_uuids_impl(
+    port_: MessagePort,
+    ids: impl Wire2Api<Vec<uuid::Uuid>> + core::panic::UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<uuid::Uuid>, _>(
         WrapInfo {
             debug_name: "handle_uuids",
@@ -4073,7 +4164,7 @@ impl support::IntoDart for A {
     }
 }
 impl support::IntoDartExceptPrimitive for A {}
-impl rust2dart::IntoIntoDart<A> for A {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<A> for A {
     fn into_into_dart(self) -> A {
         self
     }
@@ -4090,7 +4181,7 @@ impl support::IntoDart for Abc {
     }
 }
 impl support::IntoDartExceptPrimitive for Abc {}
-impl rust2dart::IntoIntoDart<Abc> for Abc {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<Abc> for Abc {
     fn into_into_dart(self) -> Abc {
         self
     }
@@ -4101,7 +4192,7 @@ impl support::IntoDart for Another {
     }
 }
 impl support::IntoDartExceptPrimitive for Another {}
-impl rust2dart::IntoIntoDart<Another> for Another {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<Another> for Another {
     fn into_into_dart(self) -> Another {
         self
     }
@@ -4112,7 +4203,7 @@ impl support::IntoDart for mirror_ApplicationEnv {
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_ApplicationEnv {}
-impl rust2dart::IntoIntoDart<mirror_ApplicationEnv> for ApplicationEnv {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationEnv> for ApplicationEnv {
     fn into_into_dart(self) -> mirror_ApplicationEnv {
         mirror_ApplicationEnv
     }
@@ -4127,7 +4218,7 @@ impl support::IntoDart for mirror_ApplicationEnvVar {
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_ApplicationEnvVar {}
-impl rust2dart::IntoIntoDart<mirror_ApplicationEnvVar> for ApplicationEnvVar {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationEnvVar> for ApplicationEnvVar {
     fn into_into_dart(self) -> mirror_ApplicationEnvVar {
         mirror_ApplicationEnvVar
     }
@@ -4149,7 +4240,9 @@ impl support::IntoDart for mirror_ApplicationMessage {
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_ApplicationMessage {}
-impl rust2dart::IntoIntoDart<mirror_ApplicationMessage> for ApplicationMessage {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationMessage>
+    for ApplicationMessage
+{
     fn into_into_dart(self) -> mirror_ApplicationMessage {
         mirror_ApplicationMessage
     }
@@ -4164,7 +4257,7 @@ impl support::IntoDart for mirror_ApplicationMode {
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_ApplicationMode {}
-impl rust2dart::IntoIntoDart<mirror_ApplicationMode> for ApplicationMode {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationMode> for ApplicationMode {
     fn into_into_dart(self) -> mirror_ApplicationMode {
         mirror_ApplicationMode
     }
@@ -4182,7 +4275,9 @@ impl support::IntoDart for mirror_ApplicationSettings {
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_ApplicationSettings {}
-impl rust2dart::IntoIntoDart<mirror_ApplicationSettings> for ApplicationSettings {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationSettings>
+    for ApplicationSettings
+{
     fn into_into_dart(self) -> mirror_ApplicationSettings {
         mirror_ApplicationSettings
     }
@@ -4197,7 +4292,7 @@ impl support::IntoDart for Attribute {
     }
 }
 impl support::IntoDartExceptPrimitive for Attribute {}
-impl rust2dart::IntoIntoDart<Attribute> for Attribute {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<Attribute> for Attribute {
     fn into_into_dart(self) -> Attribute {
         self
     }
@@ -4208,7 +4303,7 @@ impl support::IntoDart for B {
     }
 }
 impl support::IntoDartExceptPrimitive for B {}
-impl rust2dart::IntoIntoDart<B> for B {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<B> for B {
     fn into_into_dart(self) -> B {
         self
     }
@@ -4223,7 +4318,7 @@ impl support::IntoDart for BigBuffers {
     }
 }
 impl support::IntoDartExceptPrimitive for BigBuffers {}
-impl rust2dart::IntoIntoDart<BigBuffers> for BigBuffers {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<BigBuffers> for BigBuffers {
     fn into_into_dart(self) -> BigBuffers {
         self
     }
@@ -4234,7 +4329,7 @@ impl support::IntoDart for Blob {
     }
 }
 impl support::IntoDartExceptPrimitive for Blob {}
-impl rust2dart::IntoIntoDart<Blob> for Blob {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<Blob> for Blob {
     fn into_into_dart(self) -> Blob {
         self
     }
@@ -4245,7 +4340,7 @@ impl support::IntoDart for C {
     }
 }
 impl support::IntoDartExceptPrimitive for C {}
-impl rust2dart::IntoIntoDart<C> for C {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<C> for C {
     fn into_into_dart(self) -> C {
         self
     }
@@ -4256,7 +4351,7 @@ impl support::IntoDart for ConcatenateWith {
     }
 }
 impl support::IntoDartExceptPrimitive for ConcatenateWith {}
-impl rust2dart::IntoIntoDart<ConcatenateWith> for ConcatenateWith {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<ConcatenateWith> for ConcatenateWith {
     fn into_into_dart(self) -> ConcatenateWith {
         self
     }
@@ -4271,7 +4366,9 @@ impl support::IntoDart for ContainsMirroredSubStruct {
     }
 }
 impl support::IntoDartExceptPrimitive for ContainsMirroredSubStruct {}
-impl rust2dart::IntoIntoDart<ContainsMirroredSubStruct> for ContainsMirroredSubStruct {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<ContainsMirroredSubStruct>
+    for ContainsMirroredSubStruct
+{
     fn into_into_dart(self) -> ContainsMirroredSubStruct {
         self
     }
@@ -4294,7 +4391,9 @@ impl support::IntoDart for CustomEnumErrorTwinNormal {
     }
 }
 impl support::IntoDartExceptPrimitive for CustomEnumErrorTwinNormal {}
-impl rust2dart::IntoIntoDart<CustomEnumErrorTwinNormal> for CustomEnumErrorTwinNormal {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomEnumErrorTwinNormal>
+    for CustomEnumErrorTwinNormal
+{
     fn into_into_dart(self) -> CustomEnumErrorTwinNormal {
         self
     }
@@ -4317,7 +4416,9 @@ impl support::IntoDart for CustomEnumErrorTwinSync {
     }
 }
 impl support::IntoDartExceptPrimitive for CustomEnumErrorTwinSync {}
-impl rust2dart::IntoIntoDart<CustomEnumErrorTwinSync> for CustomEnumErrorTwinSync {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomEnumErrorTwinSync>
+    for CustomEnumErrorTwinSync
+{
     fn into_into_dart(self) -> CustomEnumErrorTwinSync {
         self
     }
@@ -4332,7 +4433,7 @@ impl support::IntoDart for CustomNestedErrorInnerTwinNormal {
     }
 }
 impl support::IntoDartExceptPrimitive for CustomNestedErrorInnerTwinNormal {}
-impl rust2dart::IntoIntoDart<CustomNestedErrorInnerTwinNormal>
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomNestedErrorInnerTwinNormal>
     for CustomNestedErrorInnerTwinNormal
 {
     fn into_into_dart(self) -> CustomNestedErrorInnerTwinNormal {
@@ -4349,7 +4450,9 @@ impl support::IntoDart for CustomNestedErrorInnerTwinSync {
     }
 }
 impl support::IntoDartExceptPrimitive for CustomNestedErrorInnerTwinSync {}
-impl rust2dart::IntoIntoDart<CustomNestedErrorInnerTwinSync> for CustomNestedErrorInnerTwinSync {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomNestedErrorInnerTwinSync>
+    for CustomNestedErrorInnerTwinSync
+{
     fn into_into_dart(self) -> CustomNestedErrorInnerTwinSync {
         self
     }
@@ -4364,7 +4467,7 @@ impl support::IntoDart for CustomNestedErrorOuterTwinNormal {
     }
 }
 impl support::IntoDartExceptPrimitive for CustomNestedErrorOuterTwinNormal {}
-impl rust2dart::IntoIntoDart<CustomNestedErrorOuterTwinNormal>
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomNestedErrorOuterTwinNormal>
     for CustomNestedErrorOuterTwinNormal
 {
     fn into_into_dart(self) -> CustomNestedErrorOuterTwinNormal {
@@ -4381,7 +4484,9 @@ impl support::IntoDart for CustomNestedErrorOuterTwinSync {
     }
 }
 impl support::IntoDartExceptPrimitive for CustomNestedErrorOuterTwinSync {}
-impl rust2dart::IntoIntoDart<CustomNestedErrorOuterTwinSync> for CustomNestedErrorOuterTwinSync {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomNestedErrorOuterTwinSync>
+    for CustomNestedErrorOuterTwinSync
+{
     fn into_into_dart(self) -> CustomNestedErrorOuterTwinSync {
         self
     }
@@ -4392,7 +4497,9 @@ impl support::IntoDart for CustomStructErrorTwinNormal {
     }
 }
 impl support::IntoDartExceptPrimitive for CustomStructErrorTwinNormal {}
-impl rust2dart::IntoIntoDart<CustomStructErrorTwinNormal> for CustomStructErrorTwinNormal {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomStructErrorTwinNormal>
+    for CustomStructErrorTwinNormal
+{
     fn into_into_dart(self) -> CustomStructErrorTwinNormal {
         self
     }
@@ -4403,7 +4510,9 @@ impl support::IntoDart for CustomStructErrorTwinSync {
     }
 }
 impl support::IntoDartExceptPrimitive for CustomStructErrorTwinSync {}
-impl rust2dart::IntoIntoDart<CustomStructErrorTwinSync> for CustomStructErrorTwinSync {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomStructErrorTwinSync>
+    for CustomStructErrorTwinSync
+{
     fn into_into_dart(self) -> CustomStructErrorTwinSync {
         self
     }
@@ -4418,7 +4527,7 @@ impl support::IntoDart for DartOpaqueNested {
     }
 }
 impl support::IntoDartExceptPrimitive for DartOpaqueNested {}
-impl rust2dart::IntoIntoDart<DartOpaqueNested> for DartOpaqueNested {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<DartOpaqueNested> for DartOpaqueNested {
     fn into_into_dart(self) -> DartOpaqueNested {
         self
     }
@@ -4433,7 +4542,7 @@ impl support::IntoDart for Distance {
     }
 }
 impl support::IntoDartExceptPrimitive for Distance {}
-impl rust2dart::IntoIntoDart<Distance> for Distance {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<Distance> for Distance {
     fn into_into_dart(self) -> Distance {
         self
     }
@@ -4450,7 +4559,7 @@ impl support::IntoDart for Element {
     }
 }
 impl support::IntoDartExceptPrimitive for Element {}
-impl rust2dart::IntoIntoDart<Element> for Element {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<Element> for Element {
     fn into_into_dart(self) -> Element {
         self
     }
@@ -4465,7 +4574,7 @@ impl support::IntoDart for EnumDartOpaque {
     }
 }
 impl support::IntoDartExceptPrimitive for EnumDartOpaque {}
-impl rust2dart::IntoIntoDart<EnumDartOpaque> for EnumDartOpaque {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumDartOpaque> for EnumDartOpaque {
     fn into_into_dart(self) -> EnumDartOpaque {
         self
     }
@@ -4483,7 +4592,7 @@ impl support::IntoDart for EnumOpaque {
     }
 }
 impl support::IntoDartExceptPrimitive for EnumOpaque {}
-impl rust2dart::IntoIntoDart<EnumOpaque> for EnumOpaque {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumOpaque> for EnumOpaque {
     fn into_into_dart(self) -> EnumOpaque {
         self
     }
@@ -4498,7 +4607,7 @@ impl support::IntoDart for EnumSimpleTwinNormal {
     }
 }
 impl support::IntoDartExceptPrimitive for EnumSimpleTwinNormal {}
-impl rust2dart::IntoIntoDart<EnumSimpleTwinNormal> for EnumSimpleTwinNormal {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumSimpleTwinNormal> for EnumSimpleTwinNormal {
     fn into_into_dart(self) -> EnumSimpleTwinNormal {
         self
     }
@@ -4513,7 +4622,7 @@ impl support::IntoDart for EnumSimpleTwinSync {
     }
 }
 impl support::IntoDartExceptPrimitive for EnumSimpleTwinSync {}
-impl rust2dart::IntoIntoDart<EnumSimpleTwinSync> for EnumSimpleTwinSync {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumSimpleTwinSync> for EnumSimpleTwinSync {
     fn into_into_dart(self) -> EnumSimpleTwinSync {
         self
     }
@@ -4529,7 +4638,9 @@ impl support::IntoDart for EnumWithItemMixedTwinNormal {
     }
 }
 impl support::IntoDartExceptPrimitive for EnumWithItemMixedTwinNormal {}
-impl rust2dart::IntoIntoDart<EnumWithItemMixedTwinNormal> for EnumWithItemMixedTwinNormal {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumWithItemMixedTwinNormal>
+    for EnumWithItemMixedTwinNormal
+{
     fn into_into_dart(self) -> EnumWithItemMixedTwinNormal {
         self
     }
@@ -4545,7 +4656,9 @@ impl support::IntoDart for EnumWithItemMixedTwinSync {
     }
 }
 impl support::IntoDartExceptPrimitive for EnumWithItemMixedTwinSync {}
-impl rust2dart::IntoIntoDart<EnumWithItemMixedTwinSync> for EnumWithItemMixedTwinSync {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumWithItemMixedTwinSync>
+    for EnumWithItemMixedTwinSync
+{
     fn into_into_dart(self) -> EnumWithItemMixedTwinSync {
         self
     }
@@ -4560,7 +4673,9 @@ impl support::IntoDart for EnumWithItemStructTwinNormal {
     }
 }
 impl support::IntoDartExceptPrimitive for EnumWithItemStructTwinNormal {}
-impl rust2dart::IntoIntoDart<EnumWithItemStructTwinNormal> for EnumWithItemStructTwinNormal {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumWithItemStructTwinNormal>
+    for EnumWithItemStructTwinNormal
+{
     fn into_into_dart(self) -> EnumWithItemStructTwinNormal {
         self
     }
@@ -4575,7 +4690,9 @@ impl support::IntoDart for EnumWithItemStructTwinSync {
     }
 }
 impl support::IntoDartExceptPrimitive for EnumWithItemStructTwinSync {}
-impl rust2dart::IntoIntoDart<EnumWithItemStructTwinSync> for EnumWithItemStructTwinSync {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumWithItemStructTwinSync>
+    for EnumWithItemStructTwinSync
+{
     fn into_into_dart(self) -> EnumWithItemStructTwinSync {
         self
     }
@@ -4590,7 +4707,9 @@ impl support::IntoDart for EnumWithItemTupleTwinNormal {
     }
 }
 impl support::IntoDartExceptPrimitive for EnumWithItemTupleTwinNormal {}
-impl rust2dart::IntoIntoDart<EnumWithItemTupleTwinNormal> for EnumWithItemTupleTwinNormal {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumWithItemTupleTwinNormal>
+    for EnumWithItemTupleTwinNormal
+{
     fn into_into_dart(self) -> EnumWithItemTupleTwinNormal {
         self
     }
@@ -4605,7 +4724,9 @@ impl support::IntoDart for EnumWithItemTupleTwinSync {
     }
 }
 impl support::IntoDartExceptPrimitive for EnumWithItemTupleTwinSync {}
-impl rust2dart::IntoIntoDart<EnumWithItemTupleTwinSync> for EnumWithItemTupleTwinSync {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumWithItemTupleTwinSync>
+    for EnumWithItemTupleTwinSync
+{
     fn into_into_dart(self) -> EnumWithItemTupleTwinSync {
         self
     }
@@ -4620,7 +4741,7 @@ impl support::IntoDart for Event {
     }
 }
 impl support::IntoDartExceptPrimitive for Event {}
-impl rust2dart::IntoIntoDart<Event> for Event {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<Event> for Event {
     fn into_into_dart(self) -> Event {
         self
     }
@@ -4647,7 +4768,7 @@ impl support::IntoDart for ExoticOptionals {
     }
 }
 impl support::IntoDartExceptPrimitive for ExoticOptionals {}
-impl rust2dart::IntoIntoDart<ExoticOptionals> for ExoticOptionals {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<ExoticOptionals> for ExoticOptionals {
     fn into_into_dart(self) -> ExoticOptionals {
         self
     }
@@ -4662,7 +4783,7 @@ impl support::IntoDart for FeatureUuid {
     }
 }
 impl support::IntoDartExceptPrimitive for FeatureUuid {}
-impl rust2dart::IntoIntoDart<FeatureUuid> for FeatureUuid {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<FeatureUuid> for FeatureUuid {
     fn into_into_dart(self) -> FeatureUuid {
         self
     }
@@ -4673,7 +4794,7 @@ impl support::IntoDart for FeedId {
     }
 }
 impl support::IntoDartExceptPrimitive for FeedId {}
-impl rust2dart::IntoIntoDart<FeedId> for FeedId {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<FeedId> for FeedId {
     fn into_into_dart(self) -> FeedId {
         self
     }
@@ -4684,7 +4805,7 @@ impl support::IntoDart for mirror_ListOfNestedRawStringMirrored {
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_ListOfNestedRawStringMirrored {}
-impl rust2dart::IntoIntoDart<mirror_ListOfNestedRawStringMirrored>
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ListOfNestedRawStringMirrored>
     for ListOfNestedRawStringMirrored
 {
     fn into_into_dart(self) -> mirror_ListOfNestedRawStringMirrored {
@@ -4701,7 +4822,7 @@ impl support::IntoDart for Log2 {
     }
 }
 impl support::IntoDartExceptPrimitive for Log2 {}
-impl rust2dart::IntoIntoDart<Log2> for Log2 {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<Log2> for Log2 {
     fn into_into_dart(self) -> Log2 {
         self
     }
@@ -4712,7 +4833,7 @@ impl support::IntoDart for MacroStruct {
     }
 }
 impl support::IntoDartExceptPrimitive for MacroStruct {}
-impl rust2dart::IntoIntoDart<MacroStruct> for MacroStruct {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<MacroStruct> for MacroStruct {
     fn into_into_dart(self) -> MacroStruct {
         self
     }
@@ -4727,7 +4848,7 @@ impl support::IntoDart for Measure {
     }
 }
 impl support::IntoDartExceptPrimitive for Measure {}
-impl rust2dart::IntoIntoDart<Measure> for Measure {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<Measure> for Measure {
     fn into_into_dart(self) -> Measure {
         self
     }
@@ -4738,7 +4859,7 @@ impl support::IntoDart for MessageId {
     }
 }
 impl support::IntoDartExceptPrimitive for MessageId {}
-impl rust2dart::IntoIntoDart<MessageId> for MessageId {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<MessageId> for MessageId {
     fn into_into_dart(self) -> MessageId {
         self
     }
@@ -4755,7 +4876,7 @@ impl support::IntoDart for MirrorStruct {
     }
 }
 impl support::IntoDartExceptPrimitive for MirrorStruct {}
-impl rust2dart::IntoIntoDart<MirrorStruct> for MirrorStruct {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<MirrorStruct> for MirrorStruct {
     fn into_into_dart(self) -> MirrorStruct {
         self
     }
@@ -4772,7 +4893,9 @@ impl support::IntoDart for MoreThanJustOneRawStringStruct {
     }
 }
 impl support::IntoDartExceptPrimitive for MoreThanJustOneRawStringStruct {}
-impl rust2dart::IntoIntoDart<MoreThanJustOneRawStringStruct> for MoreThanJustOneRawStringStruct {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<MoreThanJustOneRawStringStruct>
+    for MoreThanJustOneRawStringStruct
+{
     fn into_into_dart(self) -> MoreThanJustOneRawStringStruct {
         self
     }
@@ -4787,7 +4910,7 @@ impl support::IntoDart for MyEnum {
     }
 }
 impl support::IntoDartExceptPrimitive for MyEnum {}
-impl rust2dart::IntoIntoDart<MyEnum> for MyEnum {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<MyEnum> for MyEnum {
     fn into_into_dart(self) -> MyEnum {
         self
     }
@@ -4802,7 +4925,7 @@ impl support::IntoDart for MyNestedStruct {
     }
 }
 impl support::IntoDartExceptPrimitive for MyNestedStruct {}
-impl rust2dart::IntoIntoDart<MyNestedStruct> for MyNestedStruct {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<MyNestedStruct> for MyNestedStruct {
     fn into_into_dart(self) -> MyNestedStruct {
         self
     }
@@ -4817,7 +4940,7 @@ impl support::IntoDart for MySize {
     }
 }
 impl support::IntoDartExceptPrimitive for MySize {}
-impl rust2dart::IntoIntoDart<MySize> for MySize {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<MySize> for MySize {
     fn into_into_dart(self) -> MySize {
         self
     }
@@ -4828,7 +4951,7 @@ impl support::IntoDart for MyStreamEntry {
     }
 }
 impl support::IntoDartExceptPrimitive for MyStreamEntry {}
-impl rust2dart::IntoIntoDart<MyStreamEntry> for MyStreamEntry {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<MyStreamEntry> for MyStreamEntry {
     fn into_into_dart(self) -> MyStreamEntry {
         self
     }
@@ -4839,7 +4962,7 @@ impl support::IntoDart for MyStruct {
     }
 }
 impl support::IntoDartExceptPrimitive for MyStruct {}
-impl rust2dart::IntoIntoDart<MyStruct> for MyStruct {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<MyStruct> for MyStruct {
     fn into_into_dart(self) -> MyStruct {
         self
     }
@@ -4856,7 +4979,7 @@ impl support::IntoDart for MyTreeNode {
     }
 }
 impl support::IntoDartExceptPrimitive for MyTreeNode {}
-impl rust2dart::IntoIntoDart<MyTreeNode> for MyTreeNode {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<MyTreeNode> for MyTreeNode {
     fn into_into_dart(self) -> MyTreeNode {
         self
     }
@@ -4867,7 +4990,9 @@ impl support::IntoDart for mirror_NestedRawStringMirrored {
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_NestedRawStringMirrored {}
-impl rust2dart::IntoIntoDart<mirror_NestedRawStringMirrored> for NestedRawStringMirrored {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_NestedRawStringMirrored>
+    for NestedRawStringMirrored
+{
     fn into_into_dart(self) -> mirror_NestedRawStringMirrored {
         mirror_NestedRawStringMirrored
     }
@@ -4878,7 +5003,7 @@ impl support::IntoDart for NewSimpleStruct {
     }
 }
 impl support::IntoDartExceptPrimitive for NewSimpleStruct {}
-impl rust2dart::IntoIntoDart<NewSimpleStruct> for NewSimpleStruct {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<NewSimpleStruct> for NewSimpleStruct {
     fn into_into_dart(self) -> NewSimpleStruct {
         self
     }
@@ -4889,7 +5014,7 @@ impl support::IntoDart for NewTypeInt {
     }
 }
 impl support::IntoDartExceptPrimitive for NewTypeInt {}
-impl rust2dart::IntoIntoDart<NewTypeInt> for NewTypeInt {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<NewTypeInt> for NewTypeInt {
     fn into_into_dart(self) -> NewTypeInt {
         self
     }
@@ -4900,7 +5025,7 @@ impl support::IntoDart for mirror_Numbers {
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_Numbers {}
-impl rust2dart::IntoIntoDart<mirror_Numbers> for Numbers {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_Numbers> for Numbers {
     fn into_into_dart(self) -> mirror_Numbers {
         mirror_Numbers
     }
@@ -4911,7 +5036,7 @@ impl support::IntoDart for OldSimpleStruct {
     }
 }
 impl support::IntoDartExceptPrimitive for OldSimpleStruct {}
-impl rust2dart::IntoIntoDart<OldSimpleStruct> for OldSimpleStruct {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<OldSimpleStruct> for OldSimpleStruct {
     fn into_into_dart(self) -> OldSimpleStruct {
         self
     }
@@ -4922,7 +5047,7 @@ impl support::IntoDart for OpaqueNested {
     }
 }
 impl support::IntoDartExceptPrimitive for OpaqueNested {}
-impl rust2dart::IntoIntoDart<OpaqueNested> for OpaqueNested {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<OpaqueNested> for OpaqueNested {
     fn into_into_dart(self) -> OpaqueNested {
         self
     }
@@ -4939,7 +5064,7 @@ impl support::IntoDart for OptVecs {
     }
 }
 impl support::IntoDartExceptPrimitive for OptVecs {}
-impl rust2dart::IntoIntoDart<OptVecs> for OptVecs {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<OptVecs> for OptVecs {
     fn into_into_dart(self) -> OptVecs {
         self
     }
@@ -4954,7 +5079,7 @@ impl support::IntoDart for Point {
     }
 }
 impl support::IntoDartExceptPrimitive for Point {}
-impl rust2dart::IntoIntoDart<Point> for Point {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<Point> for Point {
     fn into_into_dart(self) -> Point {
         self
     }
@@ -4976,7 +5101,9 @@ impl support::IntoDart for mirror_RawStringEnumMirrored {
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_RawStringEnumMirrored {}
-impl rust2dart::IntoIntoDart<mirror_RawStringEnumMirrored> for RawStringEnumMirrored {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_RawStringEnumMirrored>
+    for RawStringEnumMirrored
+{
     fn into_into_dart(self) -> mirror_RawStringEnumMirrored {
         mirror_RawStringEnumMirrored
     }
@@ -4987,7 +5114,7 @@ impl support::IntoDart for RawStringItemStruct {
     }
 }
 impl support::IntoDartExceptPrimitive for RawStringItemStruct {}
-impl rust2dart::IntoIntoDart<RawStringItemStruct> for RawStringItemStruct {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<RawStringItemStruct> for RawStringItemStruct {
     fn into_into_dart(self) -> RawStringItemStruct {
         self
     }
@@ -4998,7 +5125,7 @@ impl support::IntoDart for mirror_RawStringMirrored {
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_RawStringMirrored {}
-impl rust2dart::IntoIntoDart<mirror_RawStringMirrored> for RawStringMirrored {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_RawStringMirrored> for RawStringMirrored {
     fn into_into_dart(self) -> mirror_RawStringMirrored {
         mirror_RawStringMirrored
     }
@@ -5009,7 +5136,7 @@ impl support::IntoDart for mirror_Sequences {
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_Sequences {}
-impl rust2dart::IntoIntoDart<mirror_Sequences> for Sequences {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_Sequences> for Sequences {
     fn into_into_dart(self) -> mirror_Sequences {
         mirror_Sequences
     }
@@ -5024,7 +5151,7 @@ impl support::IntoDart for Speed {
     }
 }
 impl support::IntoDartExceptPrimitive for Speed {}
-impl rust2dart::IntoIntoDart<Speed> for Speed {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<Speed> for Speed {
     fn into_into_dart(self) -> Speed {
         self
     }
@@ -5039,7 +5166,7 @@ impl support::IntoDart for StructWithEnum {
     }
 }
 impl support::IntoDartExceptPrimitive for StructWithEnum {}
-impl rust2dart::IntoIntoDart<StructWithEnum> for StructWithEnum {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithEnum> for StructWithEnum {
     fn into_into_dart(self) -> StructWithEnum {
         self
     }
@@ -5050,7 +5177,9 @@ impl support::IntoDart for StructWithOneFieldTwinNormal {
     }
 }
 impl support::IntoDartExceptPrimitive for StructWithOneFieldTwinNormal {}
-impl rust2dart::IntoIntoDart<StructWithOneFieldTwinNormal> for StructWithOneFieldTwinNormal {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithOneFieldTwinNormal>
+    for StructWithOneFieldTwinNormal
+{
     fn into_into_dart(self) -> StructWithOneFieldTwinNormal {
         self
     }
@@ -5061,7 +5190,9 @@ impl support::IntoDart for StructWithOneFieldTwinSync {
     }
 }
 impl support::IntoDartExceptPrimitive for StructWithOneFieldTwinSync {}
-impl rust2dart::IntoIntoDart<StructWithOneFieldTwinSync> for StructWithOneFieldTwinSync {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithOneFieldTwinSync>
+    for StructWithOneFieldTwinSync
+{
     fn into_into_dart(self) -> StructWithOneFieldTwinSync {
         self
     }
@@ -5076,7 +5207,9 @@ impl support::IntoDart for StructWithTwoFieldTwinNormal {
     }
 }
 impl support::IntoDartExceptPrimitive for StructWithTwoFieldTwinNormal {}
-impl rust2dart::IntoIntoDart<StructWithTwoFieldTwinNormal> for StructWithTwoFieldTwinNormal {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithTwoFieldTwinNormal>
+    for StructWithTwoFieldTwinNormal
+{
     fn into_into_dart(self) -> StructWithTwoFieldTwinNormal {
         self
     }
@@ -5091,7 +5224,9 @@ impl support::IntoDart for StructWithTwoFieldTwinSync {
     }
 }
 impl support::IntoDartExceptPrimitive for StructWithTwoFieldTwinSync {}
-impl rust2dart::IntoIntoDart<StructWithTwoFieldTwinSync> for StructWithTwoFieldTwinSync {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithTwoFieldTwinSync>
+    for StructWithTwoFieldTwinSync
+{
     fn into_into_dart(self) -> StructWithTwoFieldTwinSync {
         self
     }
@@ -5102,7 +5237,9 @@ impl support::IntoDart for StructWithZeroFieldTwinNormal {
     }
 }
 impl support::IntoDartExceptPrimitive for StructWithZeroFieldTwinNormal {}
-impl rust2dart::IntoIntoDart<StructWithZeroFieldTwinNormal> for StructWithZeroFieldTwinNormal {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithZeroFieldTwinNormal>
+    for StructWithZeroFieldTwinNormal
+{
     fn into_into_dart(self) -> StructWithZeroFieldTwinNormal {
         self
     }
@@ -5113,7 +5250,9 @@ impl support::IntoDart for StructWithZeroFieldTwinSync {
     }
 }
 impl support::IntoDartExceptPrimitive for StructWithZeroFieldTwinSync {}
-impl rust2dart::IntoIntoDart<StructWithZeroFieldTwinSync> for StructWithZeroFieldTwinSync {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithZeroFieldTwinSync>
+    for StructWithZeroFieldTwinSync
+{
     fn into_into_dart(self) -> StructWithZeroFieldTwinSync {
         self
     }
@@ -5124,7 +5263,7 @@ impl support::IntoDart for SumWith {
     }
 }
 impl support::IntoDartExceptPrimitive for SumWith {}
-impl rust2dart::IntoIntoDart<SumWith> for SumWith {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<SumWith> for SumWith {
     fn into_into_dart(self) -> SumWith {
         self
     }
@@ -5140,7 +5279,7 @@ impl support::IntoDart for TestChrono {
     }
 }
 impl support::IntoDartExceptPrimitive for TestChrono {}
-impl rust2dart::IntoIntoDart<TestChrono> for TestChrono {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<TestChrono> for TestChrono {
     fn into_into_dart(self) -> TestChrono {
         self
     }
@@ -5151,7 +5290,7 @@ impl support::IntoDart for TestId {
     }
 }
 impl support::IntoDartExceptPrimitive for TestId {}
-impl rust2dart::IntoIntoDart<TestId> for TestId {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<TestId> for TestId {
     fn into_into_dart(self) -> TestId {
         self
     }
@@ -5168,7 +5307,7 @@ impl support::IntoDart for TestModel {
     }
 }
 impl support::IntoDartExceptPrimitive for TestModel {}
-impl rust2dart::IntoIntoDart<TestModel> for TestModel {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<TestModel> for TestModel {
     fn into_into_dart(self) -> TestModel {
         self
     }
@@ -5179,7 +5318,7 @@ impl support::IntoDart for TupleStructWithOneFieldTwinNormal {
     }
 }
 impl support::IntoDartExceptPrimitive for TupleStructWithOneFieldTwinNormal {}
-impl rust2dart::IntoIntoDart<TupleStructWithOneFieldTwinNormal>
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<TupleStructWithOneFieldTwinNormal>
     for TupleStructWithOneFieldTwinNormal
 {
     fn into_into_dart(self) -> TupleStructWithOneFieldTwinNormal {
@@ -5192,7 +5331,9 @@ impl support::IntoDart for TupleStructWithOneFieldTwinSync {
     }
 }
 impl support::IntoDartExceptPrimitive for TupleStructWithOneFieldTwinSync {}
-impl rust2dart::IntoIntoDart<TupleStructWithOneFieldTwinSync> for TupleStructWithOneFieldTwinSync {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<TupleStructWithOneFieldTwinSync>
+    for TupleStructWithOneFieldTwinSync
+{
     fn into_into_dart(self) -> TupleStructWithOneFieldTwinSync {
         self
     }
@@ -5207,7 +5348,7 @@ impl support::IntoDart for TupleStructWithTwoFieldTwinNormal {
     }
 }
 impl support::IntoDartExceptPrimitive for TupleStructWithTwoFieldTwinNormal {}
-impl rust2dart::IntoIntoDart<TupleStructWithTwoFieldTwinNormal>
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<TupleStructWithTwoFieldTwinNormal>
     for TupleStructWithTwoFieldTwinNormal
 {
     fn into_into_dart(self) -> TupleStructWithTwoFieldTwinNormal {
@@ -5224,7 +5365,9 @@ impl support::IntoDart for TupleStructWithTwoFieldTwinSync {
     }
 }
 impl support::IntoDartExceptPrimitive for TupleStructWithTwoFieldTwinSync {}
-impl rust2dart::IntoIntoDart<TupleStructWithTwoFieldTwinSync> for TupleStructWithTwoFieldTwinSync {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<TupleStructWithTwoFieldTwinSync>
+    for TupleStructWithTwoFieldTwinSync
+{
     fn into_into_dart(self) -> TupleStructWithTwoFieldTwinSync {
         self
     }
@@ -5235,7 +5378,7 @@ impl support::IntoDart for UserId {
     }
 }
 impl support::IntoDartExceptPrimitive for UserId {}
-impl rust2dart::IntoIntoDart<UserId> for UserId {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<UserId> for UserId {
     fn into_into_dart(self) -> UserId {
         self
     }
@@ -5255,7 +5398,7 @@ impl support::IntoDart for Weekdays {
     }
 }
 impl support::IntoDartExceptPrimitive for Weekdays {}
-impl rust2dart::IntoIntoDart<Weekdays> for Weekdays {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<Weekdays> for Weekdays {
     fn into_into_dart(self) -> Weekdays {
         self
     }

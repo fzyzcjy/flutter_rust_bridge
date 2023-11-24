@@ -5505,123 +5505,137 @@ pub extern "C" fn new_list_weekdays(len: i32) -> *mut wire_list_weekdays {
 }
 
 #[no_mangle]
-pub extern "C" fn drop_opaque_RustOpaque_MutexHideData(ptr: *const c_void) {
+pub extern "C" fn drop_opaque_RustOpaque_MutexHideData(ptr: *const std::ffi::c_void) {
     unsafe {
-        Arc::<Mutex<HideData>>::decrement_strong_count(ptr as _);
+        std::sync::Arc::<Mutex<HideData>>::decrement_strong_count(ptr as _);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn share_opaque_RustOpaque_MutexHideData(ptr: *const c_void) -> *const c_void {
+pub extern "C" fn share_opaque_RustOpaque_MutexHideData(
+    ptr: *const std::ffi::c_void,
+) -> *const std::ffi::c_void {
     unsafe {
-        Arc::<Mutex<HideData>>::increment_strong_count(ptr as _);
+        std::sync::Arc::<Mutex<HideData>>::increment_strong_count(ptr as _);
         ptr
     }
 }
 
 #[no_mangle]
-pub extern "C" fn drop_opaque_RustOpaque_RwLockHideData(ptr: *const c_void) {
+pub extern "C" fn drop_opaque_RustOpaque_RwLockHideData(ptr: *const std::ffi::c_void) {
     unsafe {
-        Arc::<RwLock<HideData>>::decrement_strong_count(ptr as _);
+        std::sync::Arc::<RwLock<HideData>>::decrement_strong_count(ptr as _);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn share_opaque_RustOpaque_RwLockHideData(ptr: *const c_void) -> *const c_void {
+pub extern "C" fn share_opaque_RustOpaque_RwLockHideData(
+    ptr: *const std::ffi::c_void,
+) -> *const std::ffi::c_void {
     unsafe {
-        Arc::<RwLock<HideData>>::increment_strong_count(ptr as _);
+        std::sync::Arc::<RwLock<HideData>>::increment_strong_count(ptr as _);
         ptr
     }
 }
 
 #[no_mangle]
-pub extern "C" fn drop_opaque_RustOpaque_box_dynDartDebug(ptr: *const c_void) {
+pub extern "C" fn drop_opaque_RustOpaque_box_dynDartDebug(ptr: *const std::ffi::c_void) {
     unsafe {
-        Arc::<Box<dyn DartDebug>>::decrement_strong_count(ptr as _);
+        std::sync::Arc::<Box<dyn DartDebug>>::decrement_strong_count(ptr as _);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn share_opaque_RustOpaque_box_dynDartDebug(ptr: *const c_void) -> *const c_void {
+pub extern "C" fn share_opaque_RustOpaque_box_dynDartDebug(
+    ptr: *const std::ffi::c_void,
+) -> *const std::ffi::c_void {
     unsafe {
-        Arc::<Box<dyn DartDebug>>::increment_strong_count(ptr as _);
+        std::sync::Arc::<Box<dyn DartDebug>>::increment_strong_count(ptr as _);
         ptr
     }
 }
 
 #[no_mangle]
-pub extern "C" fn drop_opaque_RustOpaque_frb_opaque_return(ptr: *const c_void) {
+pub extern "C" fn drop_opaque_RustOpaque_frb_opaque_return(ptr: *const std::ffi::c_void) {
     unsafe {
-        Arc::<FrbOpaqueReturn>::decrement_strong_count(ptr as _);
+        std::sync::Arc::<FrbOpaqueReturn>::decrement_strong_count(ptr as _);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn share_opaque_RustOpaque_frb_opaque_return(ptr: *const c_void) -> *const c_void {
+pub extern "C" fn share_opaque_RustOpaque_frb_opaque_return(
+    ptr: *const std::ffi::c_void,
+) -> *const std::ffi::c_void {
     unsafe {
-        Arc::<FrbOpaqueReturn>::increment_strong_count(ptr as _);
+        std::sync::Arc::<FrbOpaqueReturn>::increment_strong_count(ptr as _);
         ptr
     }
 }
 
 #[no_mangle]
-pub extern "C" fn drop_opaque_RustOpaque_frb_opaque_sync_return(ptr: *const c_void) {
+pub extern "C" fn drop_opaque_RustOpaque_frb_opaque_sync_return(ptr: *const std::ffi::c_void) {
     unsafe {
-        Arc::<FrbOpaqueSyncReturn>::decrement_strong_count(ptr as _);
+        std::sync::Arc::<FrbOpaqueSyncReturn>::decrement_strong_count(ptr as _);
     }
 }
 
 #[no_mangle]
 pub extern "C" fn share_opaque_RustOpaque_frb_opaque_sync_return(
-    ptr: *const c_void,
-) -> *const c_void {
+    ptr: *const std::ffi::c_void,
+) -> *const std::ffi::c_void {
     unsafe {
-        Arc::<FrbOpaqueSyncReturn>::increment_strong_count(ptr as _);
+        std::sync::Arc::<FrbOpaqueSyncReturn>::increment_strong_count(ptr as _);
         ptr
     }
 }
 
 #[no_mangle]
-pub extern "C" fn drop_opaque_RustOpaque_hide_data(ptr: *const c_void) {
+pub extern "C" fn drop_opaque_RustOpaque_hide_data(ptr: *const std::ffi::c_void) {
     unsafe {
-        Arc::<HideData>::decrement_strong_count(ptr as _);
+        std::sync::Arc::<HideData>::decrement_strong_count(ptr as _);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn share_opaque_RustOpaque_hide_data(ptr: *const c_void) -> *const c_void {
+pub extern "C" fn share_opaque_RustOpaque_hide_data(
+    ptr: *const std::ffi::c_void,
+) -> *const std::ffi::c_void {
     unsafe {
-        Arc::<HideData>::increment_strong_count(ptr as _);
+        std::sync::Arc::<HideData>::increment_strong_count(ptr as _);
         ptr
     }
 }
 
 #[no_mangle]
-pub extern "C" fn drop_opaque_RustOpaque_i_32(ptr: *const c_void) {
+pub extern "C" fn drop_opaque_RustOpaque_i_32(ptr: *const std::ffi::c_void) {
     unsafe {
-        Arc::<i32>::decrement_strong_count(ptr as _);
+        std::sync::Arc::<i32>::decrement_strong_count(ptr as _);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn share_opaque_RustOpaque_i_32(ptr: *const c_void) -> *const c_void {
+pub extern "C" fn share_opaque_RustOpaque_i_32(
+    ptr: *const std::ffi::c_void,
+) -> *const std::ffi::c_void {
     unsafe {
-        Arc::<i32>::increment_strong_count(ptr as _);
+        std::sync::Arc::<i32>::increment_strong_count(ptr as _);
         ptr
     }
 }
 
 #[no_mangle]
-pub extern "C" fn drop_opaque_RustOpaque_non_send_hide_data(ptr: *const c_void) {
+pub extern "C" fn drop_opaque_RustOpaque_non_send_hide_data(ptr: *const std::ffi::c_void) {
     unsafe {
-        Arc::<NonSendHideData>::decrement_strong_count(ptr as _);
+        std::sync::Arc::<NonSendHideData>::decrement_strong_count(ptr as _);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn share_opaque_RustOpaque_non_send_hide_data(ptr: *const c_void) -> *const c_void {
+pub extern "C" fn share_opaque_RustOpaque_non_send_hide_data(
+    ptr: *const std::ffi::c_void,
+) -> *const std::ffi::c_void {
     unsafe {
-        Arc::<NonSendHideData>::increment_strong_count(ptr as _);
+        std::sync::Arc::<NonSendHideData>::increment_strong_count(ptr as _);
         ptr
     }
 }
