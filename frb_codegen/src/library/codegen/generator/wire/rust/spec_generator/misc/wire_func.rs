@@ -128,7 +128,7 @@ fn generate_params(func: &IrFunc, context: WireRustGeneratorContext) -> Acc<Vec<
                 },
                 TargetOrCommon::Io | TargetOrCommon::Wasm => {
                     let target: Target = target.try_into().unwrap();
-                    ExternFuncParam::new(name.clone(), target, *field.ty, context)
+                    ExternFuncParam::new(name.clone(), target, &field.ty, context)
                 }
             })
         })
