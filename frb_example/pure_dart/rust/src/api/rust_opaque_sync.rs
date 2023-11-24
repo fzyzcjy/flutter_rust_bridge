@@ -1,7 +1,8 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync"]}
 
 use crate::api::rust_opaque::HideData;
-use crate::auxiliary::sample_types::{FrbOpaqueSyncReturn, NonSendHideData};
+use crate::auxiliary::sample_types::{FrbOpaqueSyncReturn, NonCloneData, NonSendHideData};
+use anyhow::Result;
 use flutter_rust_bridge::{frb, RustOpaque};
 
 #[frb(sync)]
@@ -20,8 +21,8 @@ pub fn sync_create_sync_opaque() -> RustOpaque<NonSendHideData> {
 }
 
 #[frb(sync)]
-pub fn sync_create_non_clone() -> SyncReturn<NonCloneData> {
-    SyncReturn(NonCloneData::new())
+pub fn sync_create_non_clone() -> NonCloneData {
+    NonCloneData::new()
 }
 
 // OpaqueSyncStruct does not implement Send trait.

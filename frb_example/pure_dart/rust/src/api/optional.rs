@@ -1,6 +1,6 @@
 use crate::api::misc_example::Weekdays;
 use crate::api::newtype_pattern::NewTypeInt;
-use flutter_rust_bridge::ZeroCopyBuffer;
+use flutter_rust_bridge::{frb, ZeroCopyBuffer};
 
 pub fn handle_optional_return(left: f64, right: f64) -> Option<f64> {
     if right == 0. {
@@ -153,11 +153,11 @@ pub fn handle_option_box_arguments(
 }
 
 #[frb(sync)]
-pub fn sync_option() -> Result<Option<String>> {
+pub fn sync_option() -> anyhow::Result<Option<String>> {
     Ok(Some("42".to_owned()))
 }
 
 #[frb(sync)]
-pub fn sync_option_null() -> Result<Option<String>> {
+pub fn sync_option_null() -> anyhow::Result<Option<String>> {
     Ok(None)
 }

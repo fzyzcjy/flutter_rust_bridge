@@ -32,6 +32,6 @@ pub fn return_non_droppable_dart_opaque(opaque: DartOpaque) -> DartOpaque {
 }
 
 #[frb(sync)]
-pub fn sync_option_dart_opaque(opaque: DartOpaque) -> Result<Option<DartOpaque>> {
+pub fn sync_option_dart_opaque(opaque: DartOpaque) -> anyhow::Result<Option<DartOpaque>> {
     Ok(Some(opaque))
 }
