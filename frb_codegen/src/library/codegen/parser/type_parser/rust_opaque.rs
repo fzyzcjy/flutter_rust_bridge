@@ -10,6 +10,7 @@ use crate::codegen::ir::ty::IrType::{
 use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
+use crate::library::codegen::ir::ty::IrTypeTrait;
 use anyhow::bail;
 use quote::ToTokens;
 use std::collections::HashMap;
@@ -33,11 +34,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         // NOTE when meeting the *same* type (same safe_ident), reuse the existing parsed
         // result. Especially, when the same type is seen in two different files
         // (thus `namespace`s), this can ensure they both point to one namespace.
+        let new_ir = IrTypeRustOpaque::new(self.context.initiated_namespace.clone(), ty.clone());
         let ans = (self.inner.rust_opaque_parser_info.parsed_types)
             .entry(ty_safe_ident)
-            .or_insert_with(|| {
-                IrTypeRustOpaque::new(self.context.initiated_namespace.clone(), ty.clone())
-            });
+            .or_insert(new_ir);
 
         RustOpaque(ans.clone())
     }
