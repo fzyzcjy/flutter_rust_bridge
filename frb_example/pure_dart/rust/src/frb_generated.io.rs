@@ -135,22 +135,22 @@ impl Wire2Api<crate::api::misc_example::Abc> for wire_abc {
             0 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.A);
-                Abc::A(ans.field0.wire2api())
+                crate::api::misc_example::Abc::A(ans.field0.wire2api())
             },
             1 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.B);
-                Abc::B(ans.field0.wire2api())
+                crate::api::misc_example::Abc::B(ans.field0.wire2api())
             },
             2 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.C);
-                Abc::C(ans.field0.wire2api())
+                crate::api::misc_example::Abc::C(ans.field0.wire2api())
             },
             3 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.JustInt);
-                Abc::JustInt(ans.field0.wire2api())
+                crate::api::misc_example::Abc::JustInt(ans.field0.wire2api())
             },
             _ => unreachable!(),
         }
@@ -789,12 +789,14 @@ impl Wire2Api<crate::api::exception::CustomNestedErrorInnerTwinNormal>
             0 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.Three);
-                CustomNestedErrorInnerTwinNormal::Three(ans.field0.wire2api())
+                crate::api::exception::CustomNestedErrorInnerTwinNormal::Three(
+                    ans.field0.wire2api(),
+                )
             },
             1 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.Four);
-                CustomNestedErrorInnerTwinNormal::Four(ans.field0.wire2api())
+                crate::api::exception::CustomNestedErrorInnerTwinNormal::Four(ans.field0.wire2api())
             },
             _ => unreachable!(),
         }
@@ -810,12 +812,14 @@ impl Wire2Api<crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorI
             0 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.Three);
-                CustomNestedErrorInnerTwinSync::Three(ans.field0.wire2api())
+                crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync::Three( ans.field0.wire2api())
             },
             1 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.Four);
-                CustomNestedErrorInnerTwinSync::Four(ans.field0.wire2api())
+                crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync::Four(
+                    ans.field0.wire2api(),
+                )
             },
             _ => unreachable!(),
         }
@@ -829,12 +833,12 @@ impl Wire2Api<crate::api::exception::CustomNestedErrorOuterTwinNormal>
             0 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.One);
-                CustomNestedErrorOuterTwinNormal::One(ans.field0.wire2api())
+                crate::api::exception::CustomNestedErrorOuterTwinNormal::One(ans.field0.wire2api())
             },
             1 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.Two);
-                CustomNestedErrorOuterTwinNormal::Two(ans.field0.wire2api())
+                crate::api::exception::CustomNestedErrorOuterTwinNormal::Two(ans.field0.wire2api())
             },
             _ => unreachable!(),
         }
@@ -850,12 +854,16 @@ impl Wire2Api<crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorO
             0 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.One);
-                CustomNestedErrorOuterTwinSync::One(ans.field0.wire2api())
+                crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync::One(
+                    ans.field0.wire2api(),
+                )
             },
             1 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.Two);
-                CustomNestedErrorOuterTwinSync::Two(ans.field0.wire2api())
+                crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync::Two(
+                    ans.field0.wire2api(),
+                )
             },
             _ => unreachable!(),
         }
@@ -902,7 +910,7 @@ impl Wire2Api<crate::api::enumeration::Distance> for wire_distance {
             1 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.Map);
-                Distance::Map(ans.field0.wire2api())
+                crate::api::enumeration::Distance::Map(ans.field0.wire2api())
             },
             _ => unreachable!(),
         }
@@ -914,12 +922,12 @@ impl Wire2Api<crate::api::dart_opaque::EnumDartOpaque> for wire_enum_dart_opaque
             0 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.Primitive);
-                EnumDartOpaque::Primitive(ans.field0.wire2api())
+                crate::api::dart_opaque::EnumDartOpaque::Primitive(ans.field0.wire2api())
             },
             1 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.Opaque);
-                EnumDartOpaque::Opaque(ans.field0.wire2api())
+                crate::api::dart_opaque::EnumDartOpaque::Opaque(ans.field0.wire2api())
             },
             _ => unreachable!(),
         }
@@ -931,27 +939,27 @@ impl Wire2Api<crate::api::rust_opaque::EnumOpaque> for wire_enum_opaque {
             0 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.Struct);
-                EnumOpaque::Struct(ans.field0.wire2api())
+                crate::api::rust_opaque::EnumOpaque::Struct(ans.field0.wire2api())
             },
             1 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.Primitive);
-                EnumOpaque::Primitive(ans.field0.wire2api())
+                crate::api::rust_opaque::EnumOpaque::Primitive(ans.field0.wire2api())
             },
             2 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.TraitObj);
-                EnumOpaque::TraitObj(ans.field0.wire2api())
+                crate::api::rust_opaque::EnumOpaque::TraitObj(ans.field0.wire2api())
             },
             3 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.Mutex);
-                EnumOpaque::Mutex(ans.field0.wire2api())
+                crate::api::rust_opaque::EnumOpaque::Mutex(ans.field0.wire2api())
             },
             4 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.RwLock);
-                EnumOpaque::RwLock(ans.field0.wire2api())
+                crate::api::rust_opaque::EnumOpaque::RwLock(ans.field0.wire2api())
             },
             _ => unreachable!(),
         }
@@ -966,12 +974,12 @@ impl Wire2Api<crate::api::enumeration::EnumWithItemMixedTwinNormal>
             1 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.B);
-                EnumWithItemMixedTwinNormal::B(ans.field0.wire2api())
+                crate::api::enumeration::EnumWithItemMixedTwinNormal::B(ans.field0.wire2api())
             },
             2 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.C);
-                EnumWithItemMixedTwinNormal::C {
+                crate::api::enumeration::EnumWithItemMixedTwinNormal::C {
                     c_field: ans.c_field.wire2api(),
                 }
             },
@@ -990,12 +998,14 @@ impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixe
             1 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.B);
-                EnumWithItemMixedTwinSync::B(ans.field0.wire2api())
+                crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync::B(
+                    ans.field0.wire2api(),
+                )
             },
             2 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.C);
-                EnumWithItemMixedTwinSync::C {
+                crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync::C {
                     c_field: ans.c_field.wire2api(),
                 }
             },
@@ -1011,14 +1021,14 @@ impl Wire2Api<crate::api::enumeration::EnumWithItemStructTwinNormal>
             0 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.A);
-                EnumWithItemStructTwinNormal::A {
+                crate::api::enumeration::EnumWithItemStructTwinNormal::A {
                     a_field: ans.a_field.wire2api(),
                 }
             },
             1 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.B);
-                EnumWithItemStructTwinNormal::B {
+                crate::api::enumeration::EnumWithItemStructTwinNormal::B {
                     b_field: ans.b_field.wire2api(),
                 }
             },
@@ -1036,14 +1046,14 @@ impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStru
             0 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.A);
-                EnumWithItemStructTwinSync::A {
+                crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync::A {
                     a_field: ans.a_field.wire2api(),
                 }
             },
             1 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.B);
-                EnumWithItemStructTwinSync::B {
+                crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync::B {
                     b_field: ans.b_field.wire2api(),
                 }
             },
@@ -1059,12 +1069,12 @@ impl Wire2Api<crate::api::enumeration::EnumWithItemTupleTwinNormal>
             0 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.A);
-                EnumWithItemTupleTwinNormal::A(ans.field0.wire2api())
+                crate::api::enumeration::EnumWithItemTupleTwinNormal::A(ans.field0.wire2api())
             },
             1 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.B);
-                EnumWithItemTupleTwinNormal::B(ans.field0.wire2api())
+                crate::api::enumeration::EnumWithItemTupleTwinNormal::B(ans.field0.wire2api())
             },
             _ => unreachable!(),
         }
@@ -1080,12 +1090,16 @@ impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupl
             0 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.A);
-                EnumWithItemTupleTwinSync::A(ans.field0.wire2api())
+                crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync::A(
+                    ans.field0.wire2api(),
+                )
             },
             1 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.B);
-                EnumWithItemTupleTwinSync::B(ans.field0.wire2api())
+                crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync::B(
+                    ans.field0.wire2api(),
+                )
             },
             _ => unreachable!(),
         }
@@ -1390,12 +1404,12 @@ impl Wire2Api<crate::api::enumeration::Measure> for wire_measure {
             0 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.Speed);
-                Measure::Speed(ans.field0.wire2api())
+                crate::api::enumeration::Measure::Speed(ans.field0.wire2api())
             },
             1 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.Distance);
-                Measure::Distance(ans.field0.wire2api())
+                crate::api::enumeration::Measure::Distance(ans.field0.wire2api())
             },
             _ => unreachable!(),
         }
@@ -1492,7 +1506,7 @@ impl Wire2Api<crate::api::enumeration::Speed> for wire_speed {
             1 => unsafe {
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
                 let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.GPS);
-                Speed::GPS(ans.field0.wire2api())
+                crate::api::enumeration::Speed::GPS(ans.field0.wire2api())
             },
             _ => unreachable!(),
         }

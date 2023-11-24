@@ -3542,7 +3542,7 @@ const _: fn() = || {
             let _: i32 = x;
             let _: i32 = y;
         }
-        ApplicationMessage::Exit => {}
+        crate::api::mirror::ApplicationMessage::Exit => {}
     }
     {
         let ApplicationSettings = None::<ApplicationSettings>.unwrap();
@@ -3607,7 +3607,8 @@ where
 }
 impl Wire2Api<chrono::DateTime<chrono::Local>> for i64 {
     fn wire2api(self) -> chrono::DateTime<chrono::Local> {
-        let Timestamp { s, ns } = flutter_rust_bridge::wire2api_timestamp(self);
+        let flutter_rust_bridge::Timestamp { s, ns } =
+            flutter_rust_bridge::wire2api_timestamp(self);
         chrono::DateTime::<chrono::Local>::from(chrono::DateTime::<chrono::Utc>::from_utc(
             chrono::NaiveDateTime::from_timestamp_opt(s, ns)
                 .expect("invalid or out-of-range datetime"),
@@ -3617,13 +3618,15 @@ impl Wire2Api<chrono::DateTime<chrono::Local>> for i64 {
 }
 impl Wire2Api<chrono::NaiveDateTime> for i64 {
     fn wire2api(self) -> chrono::NaiveDateTime {
-        let Timestamp { s, ns } = flutter_rust_bridge::wire2api_timestamp(self);
+        let flutter_rust_bridge::Timestamp { s, ns } =
+            flutter_rust_bridge::wire2api_timestamp(self);
         chrono::NaiveDateTime::from_timestamp_opt(s, ns).expect("invalid or out-of-range datetime")
     }
 }
 impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
     fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
-        let Timestamp { s, ns } = flutter_rust_bridge::wire2api_timestamp(self);
+        let flutter_rust_bridge::Timestamp { s, ns } =
+            flutter_rust_bridge::wire2api_timestamp(self);
         chrono::DateTime::<chrono::Utc>::from_utc(
             chrono::NaiveDateTime::from_timestamp_opt(s, ns)
                 .expect("invalid or out-of-range datetime"),
@@ -3634,8 +3637,8 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
 impl Wire2Api<crate::api::mirror::ApplicationMode> for i32 {
     fn wire2api(self) -> crate::api::mirror::ApplicationMode {
         match self {
-            0 => ApplicationMode::Standalone,
-            1 => ApplicationMode::Embedded,
+            0 => crate::api::mirror::ApplicationMode::Standalone,
+            1 => crate::api::mirror::ApplicationMode::Embedded,
             _ => unreachable!("Invalid variant for ApplicationMode: {}", self),
         }
     }
@@ -3648,8 +3651,8 @@ impl Wire2Api<bool> for bool {
 impl Wire2Api<crate::api::enumeration::EnumSimpleTwinNormal> for i32 {
     fn wire2api(self) -> crate::api::enumeration::EnumSimpleTwinNormal {
         match self {
-            0 => EnumSimpleTwinNormal::A,
-            1 => EnumSimpleTwinNormal::B,
+            0 => crate::api::enumeration::EnumSimpleTwinNormal::A,
+            1 => crate::api::enumeration::EnumSimpleTwinNormal::B,
             _ => unreachable!("Invalid variant for EnumSimpleTwinNormal: {}", self),
         }
     }
@@ -3657,8 +3660,8 @@ impl Wire2Api<crate::api::enumeration::EnumSimpleTwinNormal> for i32 {
 impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync> for i32 {
     fn wire2api(self) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync {
         match self {
-            0 => EnumSimpleTwinSync::A,
-            1 => EnumSimpleTwinSync::B,
+            0 => crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync::A,
+            1 => crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync::B,
             _ => unreachable!("Invalid variant for EnumSimpleTwinSync: {}", self),
         }
     }
@@ -3696,8 +3699,8 @@ impl Wire2Api<i8> for i8 {
 impl Wire2Api<crate::auxiliary::sample_types::MyEnum> for i32 {
     fn wire2api(self) -> crate::auxiliary::sample_types::MyEnum {
         match self {
-            0 => MyEnum::False,
-            1 => MyEnum::True,
+            0 => crate::auxiliary::sample_types::MyEnum::False,
+            1 => crate::auxiliary::sample_types::MyEnum::True,
             _ => unreachable!("Invalid variant for MyEnum: {}", self),
         }
     }
@@ -3730,13 +3733,13 @@ impl Wire2Api<usize> for usize {
 impl Wire2Api<crate::api::misc_example::Weekdays> for i32 {
     fn wire2api(self) -> crate::api::misc_example::Weekdays {
         match self {
-            0 => Weekdays::Monday,
-            1 => Weekdays::Tuesday,
-            2 => Weekdays::Wednesday,
-            3 => Weekdays::Thursday,
-            4 => Weekdays::Friday,
-            5 => Weekdays::Saturday,
-            6 => Weekdays::Sunday,
+            0 => crate::api::misc_example::Weekdays::Monday,
+            1 => crate::api::misc_example::Weekdays::Tuesday,
+            2 => crate::api::misc_example::Weekdays::Wednesday,
+            3 => crate::api::misc_example::Weekdays::Thursday,
+            4 => crate::api::misc_example::Weekdays::Friday,
+            5 => crate::api::misc_example::Weekdays::Saturday,
+            6 => crate::api::misc_example::Weekdays::Sunday,
             _ => unreachable!("Invalid variant for Weekdays: {}", self),
         }
     }
@@ -3744,13 +3747,13 @@ impl Wire2Api<crate::api::misc_example::Weekdays> for i32 {
 
 // Section: impl_into_dart
 
-impl flutter_rust_bridge::support::IntoDart for A {
+impl flutter_rust_bridge::support::IntoDart for crate::api::misc_example::A {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.a.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for A {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<A> for A {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for crate::api::misc_example::A {}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<A> for crate::api::misc_example::A {
     fn into_into_dart(self) -> A {
         self
     }
@@ -3767,34 +3770,39 @@ impl flutter_rust_bridge::support::IntoDart for Abc {
     }
 }
 impl flutter_rust_bridge::support::IntoDartExceptPrimitive for Abc {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<Abc> for Abc {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<Abc> for crate::api::misc_example::Abc {
     fn into_into_dart(self) -> Abc {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for Another {
+impl flutter_rust_bridge::support::IntoDart for crate::api::mirror::Another {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.a.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for Another {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<Another> for Another {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for crate::api::mirror::Another {}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<Another> for crate::api::mirror::Another {
     fn into_into_dart(self) -> Another {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for mirror_ApplicationEnv {
+impl flutter_rust_bridge::support::IntoDart for crate::api::mirror::mirror_ApplicationEnv {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0.vars.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for mirror_ApplicationEnv {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationEnv> for ApplicationEnv {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::mirror::mirror_ApplicationEnv
+{
+}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationEnv>
+    for crate::api::mirror::ApplicationEnv
+{
     fn into_into_dart(self) -> mirror_ApplicationEnv {
         mirror_ApplicationEnv
     }
 }
-impl flutter_rust_bridge::support::IntoDart for mirror_ApplicationEnvVar {
+impl flutter_rust_bridge::support::IntoDart for crate::api::mirror::mirror_ApplicationEnvVar {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.0 .0.into_into_dart().into_dart(),
@@ -3803,8 +3811,13 @@ impl flutter_rust_bridge::support::IntoDart for mirror_ApplicationEnvVar {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for mirror_ApplicationEnvVar {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationEnvVar> for ApplicationEnvVar {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::mirror::mirror_ApplicationEnvVar
+{
+}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationEnvVar>
+    for crate::api::mirror::ApplicationEnvVar
+{
     fn into_into_dart(self) -> mirror_ApplicationEnvVar {
         mirror_ApplicationEnvVar
     }
@@ -3827,28 +3840,33 @@ impl flutter_rust_bridge::support::IntoDart for mirror_ApplicationMessage {
 }
 impl flutter_rust_bridge::support::IntoDartExceptPrimitive for mirror_ApplicationMessage {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationMessage>
-    for ApplicationMessage
+    for crate::api::mirror::ApplicationMessage
 {
     fn into_into_dart(self) -> mirror_ApplicationMessage {
         mirror_ApplicationMessage
     }
 }
-impl flutter_rust_bridge::support::IntoDart for mirror_ApplicationMode {
+impl flutter_rust_bridge::support::IntoDart for crate::api::mirror::mirror_ApplicationMode {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self.0 {
-            ApplicationMode::Standalone => 0,
-            ApplicationMode::Embedded => 1,
+            crate::api::mirror::ApplicationMode::Standalone => 0,
+            crate::api::mirror::ApplicationMode::Embedded => 1,
         }
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for mirror_ApplicationMode {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationMode> for ApplicationMode {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::mirror::mirror_ApplicationMode
+{
+}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationMode>
+    for crate::api::mirror::ApplicationMode
+{
     fn into_into_dart(self) -> mirror_ApplicationMode {
         mirror_ApplicationMode
     }
 }
-impl flutter_rust_bridge::support::IntoDart for mirror_ApplicationSettings {
+impl flutter_rust_bridge::support::IntoDart for crate::api::mirror::mirror_ApplicationSettings {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.0.name.into_into_dart().into_dart(),
@@ -3860,15 +3878,18 @@ impl flutter_rust_bridge::support::IntoDart for mirror_ApplicationSettings {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for mirror_ApplicationSettings {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::mirror::mirror_ApplicationSettings
+{
+}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationSettings>
-    for ApplicationSettings
+    for crate::api::mirror::ApplicationSettings
 {
     fn into_into_dart(self) -> mirror_ApplicationSettings {
         mirror_ApplicationSettings
     }
 }
-impl flutter_rust_bridge::support::IntoDart for Attribute {
+impl flutter_rust_bridge::support::IntoDart for crate::api::optional::Attribute {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.key.into_into_dart().into_dart(),
@@ -3877,24 +3898,24 @@ impl flutter_rust_bridge::support::IntoDart for Attribute {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for Attribute {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<Attribute> for Attribute {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for crate::api::optional::Attribute {}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<Attribute> for crate::api::optional::Attribute {
     fn into_into_dart(self) -> Attribute {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for B {
+impl flutter_rust_bridge::support::IntoDart for crate::api::misc_example::B {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.b.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for B {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<B> for B {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for crate::api::misc_example::B {}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<B> for crate::api::misc_example::B {
     fn into_into_dart(self) -> B {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for BigBuffers {
+impl flutter_rust_bridge::support::IntoDart for crate::api::misc_example::BigBuffers {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.int64.into_into_dart().into_dart(),
@@ -3903,46 +3924,53 @@ impl flutter_rust_bridge::support::IntoDart for BigBuffers {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for BigBuffers {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<BigBuffers> for BigBuffers {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::misc_example::BigBuffers
+{
+}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<BigBuffers>
+    for crate::api::misc_example::BigBuffers
+{
     fn into_into_dart(self) -> BigBuffers {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for Blob {
+impl flutter_rust_bridge::support::IntoDart for crate::api::array::Blob {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for Blob {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<Blob> for Blob {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for crate::api::array::Blob {}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<Blob> for crate::api::array::Blob {
     fn into_into_dart(self) -> Blob {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for C {
+impl flutter_rust_bridge::support::IntoDart for crate::api::misc_example::C {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.c.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for C {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<C> for C {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for crate::api::misc_example::C {}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<C> for crate::api::misc_example::C {
     fn into_into_dart(self) -> C {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for ConcatenateWith {
+impl flutter_rust_bridge::support::IntoDart for crate::api::method::ConcatenateWith {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.a.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for ConcatenateWith {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<ConcatenateWith> for ConcatenateWith {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for crate::api::method::ConcatenateWith {}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<ConcatenateWith>
+    for crate::api::method::ConcatenateWith
+{
     fn into_into_dart(self) -> ConcatenateWith {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for ContainsMirroredSubStruct {
+impl flutter_rust_bridge::support::IntoDart for crate::api::mirror::ContainsMirroredSubStruct {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.test.into_into_dart().into_dart(),
@@ -3951,9 +3979,12 @@ impl flutter_rust_bridge::support::IntoDart for ContainsMirroredSubStruct {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for ContainsMirroredSubStruct {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::mirror::ContainsMirroredSubStruct
+{
+}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<ContainsMirroredSubStruct>
-    for ContainsMirroredSubStruct
+    for crate::api::mirror::ContainsMirroredSubStruct
 {
     fn into_into_dart(self) -> ContainsMirroredSubStruct {
         self
@@ -3978,7 +4009,7 @@ impl flutter_rust_bridge::support::IntoDart for CustomEnumErrorTwinNormal {
 }
 impl flutter_rust_bridge::support::IntoDartExceptPrimitive for CustomEnumErrorTwinNormal {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomEnumErrorTwinNormal>
-    for CustomEnumErrorTwinNormal
+    for crate::api::exception::CustomEnumErrorTwinNormal
 {
     fn into_into_dart(self) -> CustomEnumErrorTwinNormal {
         self
@@ -4003,7 +4034,7 @@ impl flutter_rust_bridge::support::IntoDart for CustomEnumErrorTwinSync {
 }
 impl flutter_rust_bridge::support::IntoDartExceptPrimitive for CustomEnumErrorTwinSync {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomEnumErrorTwinSync>
-    for CustomEnumErrorTwinSync
+    for crate::api::pseudo_manual::exception_twin_sync::CustomEnumErrorTwinSync
 {
     fn into_into_dart(self) -> CustomEnumErrorTwinSync {
         self
@@ -4020,7 +4051,7 @@ impl flutter_rust_bridge::support::IntoDart for CustomNestedErrorInnerTwinNormal
 }
 impl flutter_rust_bridge::support::IntoDartExceptPrimitive for CustomNestedErrorInnerTwinNormal {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomNestedErrorInnerTwinNormal>
-    for CustomNestedErrorInnerTwinNormal
+    for crate::api::exception::CustomNestedErrorInnerTwinNormal
 {
     fn into_into_dart(self) -> CustomNestedErrorInnerTwinNormal {
         self
@@ -4037,7 +4068,7 @@ impl flutter_rust_bridge::support::IntoDart for CustomNestedErrorInnerTwinSync {
 }
 impl flutter_rust_bridge::support::IntoDartExceptPrimitive for CustomNestedErrorInnerTwinSync {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomNestedErrorInnerTwinSync>
-    for CustomNestedErrorInnerTwinSync
+    for crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync
 {
     fn into_into_dart(self) -> CustomNestedErrorInnerTwinSync {
         self
@@ -4054,7 +4085,7 @@ impl flutter_rust_bridge::support::IntoDart for CustomNestedErrorOuterTwinNormal
 }
 impl flutter_rust_bridge::support::IntoDartExceptPrimitive for CustomNestedErrorOuterTwinNormal {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomNestedErrorOuterTwinNormal>
-    for CustomNestedErrorOuterTwinNormal
+    for crate::api::exception::CustomNestedErrorOuterTwinNormal
 {
     fn into_into_dart(self) -> CustomNestedErrorOuterTwinNormal {
         self
@@ -4071,39 +4102,47 @@ impl flutter_rust_bridge::support::IntoDart for CustomNestedErrorOuterTwinSync {
 }
 impl flutter_rust_bridge::support::IntoDartExceptPrimitive for CustomNestedErrorOuterTwinSync {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomNestedErrorOuterTwinSync>
-    for CustomNestedErrorOuterTwinSync
+    for crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync
 {
     fn into_into_dart(self) -> CustomNestedErrorOuterTwinSync {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for CustomStructErrorTwinNormal {
+impl flutter_rust_bridge::support::IntoDart for crate::api::exception::CustomStructErrorTwinNormal {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.a.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for CustomStructErrorTwinNormal {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::exception::CustomStructErrorTwinNormal
+{
+}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomStructErrorTwinNormal>
-    for CustomStructErrorTwinNormal
+    for crate::api::exception::CustomStructErrorTwinNormal
 {
     fn into_into_dart(self) -> CustomStructErrorTwinNormal {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for CustomStructErrorTwinSync {
+impl flutter_rust_bridge::support::IntoDart
+    for crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorTwinSync
+{
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.a.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for CustomStructErrorTwinSync {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorTwinSync
+{
+}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomStructErrorTwinSync>
-    for CustomStructErrorTwinSync
+    for crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorTwinSync
 {
     fn into_into_dart(self) -> CustomStructErrorTwinSync {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for DartOpaqueNested {
+impl flutter_rust_bridge::support::IntoDart for crate::api::dart_opaque::DartOpaqueNested {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.first.into_into_dart().into_dart(),
@@ -4112,8 +4151,13 @@ impl flutter_rust_bridge::support::IntoDart for DartOpaqueNested {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for DartOpaqueNested {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<DartOpaqueNested> for DartOpaqueNested {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::dart_opaque::DartOpaqueNested
+{
+}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<DartOpaqueNested>
+    for crate::api::dart_opaque::DartOpaqueNested
+{
     fn into_into_dart(self) -> DartOpaqueNested {
         self
     }
@@ -4128,12 +4172,12 @@ impl flutter_rust_bridge::support::IntoDart for Distance {
     }
 }
 impl flutter_rust_bridge::support::IntoDartExceptPrimitive for Distance {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<Distance> for Distance {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<Distance> for crate::api::enumeration::Distance {
     fn into_into_dart(self) -> Distance {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for Element {
+impl flutter_rust_bridge::support::IntoDart for crate::api::optional::Element {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.tag.into_dart(),
@@ -4144,8 +4188,8 @@ impl flutter_rust_bridge::support::IntoDart for Element {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for Element {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<Element> for Element {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for crate::api::optional::Element {}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<Element> for crate::api::optional::Element {
     fn into_into_dart(self) -> Element {
         self
     }
@@ -4160,7 +4204,9 @@ impl flutter_rust_bridge::support::IntoDart for EnumDartOpaque {
     }
 }
 impl flutter_rust_bridge::support::IntoDartExceptPrimitive for EnumDartOpaque {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumDartOpaque> for EnumDartOpaque {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumDartOpaque>
+    for crate::api::dart_opaque::EnumDartOpaque
+{
     fn into_into_dart(self) -> EnumDartOpaque {
         self
     }
@@ -4178,12 +4224,14 @@ impl flutter_rust_bridge::support::IntoDart for EnumOpaque {
     }
 }
 impl flutter_rust_bridge::support::IntoDartExceptPrimitive for EnumOpaque {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumOpaque> for EnumOpaque {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumOpaque>
+    for crate::api::rust_opaque::EnumOpaque
+{
     fn into_into_dart(self) -> EnumOpaque {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for EnumSimpleTwinNormal {
+impl flutter_rust_bridge::support::IntoDart for crate::api::enumeration::EnumSimpleTwinNormal {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self {
             Self::A => 0,
@@ -4192,13 +4240,20 @@ impl flutter_rust_bridge::support::IntoDart for EnumSimpleTwinNormal {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for EnumSimpleTwinNormal {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumSimpleTwinNormal> for EnumSimpleTwinNormal {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::enumeration::EnumSimpleTwinNormal
+{
+}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumSimpleTwinNormal>
+    for crate::api::enumeration::EnumSimpleTwinNormal
+{
     fn into_into_dart(self) -> EnumSimpleTwinNormal {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for EnumSimpleTwinSync {
+impl flutter_rust_bridge::support::IntoDart
+    for crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync
+{
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self {
             Self::A => 0,
@@ -4207,8 +4262,13 @@ impl flutter_rust_bridge::support::IntoDart for EnumSimpleTwinSync {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for EnumSimpleTwinSync {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumSimpleTwinSync> for EnumSimpleTwinSync {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync
+{
+}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumSimpleTwinSync>
+    for crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync
+{
     fn into_into_dart(self) -> EnumSimpleTwinSync {
         self
     }
@@ -4225,7 +4285,7 @@ impl flutter_rust_bridge::support::IntoDart for EnumWithItemMixedTwinNormal {
 }
 impl flutter_rust_bridge::support::IntoDartExceptPrimitive for EnumWithItemMixedTwinNormal {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumWithItemMixedTwinNormal>
-    for EnumWithItemMixedTwinNormal
+    for crate::api::enumeration::EnumWithItemMixedTwinNormal
 {
     fn into_into_dart(self) -> EnumWithItemMixedTwinNormal {
         self
@@ -4243,7 +4303,7 @@ impl flutter_rust_bridge::support::IntoDart for EnumWithItemMixedTwinSync {
 }
 impl flutter_rust_bridge::support::IntoDartExceptPrimitive for EnumWithItemMixedTwinSync {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumWithItemMixedTwinSync>
-    for EnumWithItemMixedTwinSync
+    for crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync
 {
     fn into_into_dart(self) -> EnumWithItemMixedTwinSync {
         self
@@ -4260,7 +4320,7 @@ impl flutter_rust_bridge::support::IntoDart for EnumWithItemStructTwinNormal {
 }
 impl flutter_rust_bridge::support::IntoDartExceptPrimitive for EnumWithItemStructTwinNormal {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumWithItemStructTwinNormal>
-    for EnumWithItemStructTwinNormal
+    for crate::api::enumeration::EnumWithItemStructTwinNormal
 {
     fn into_into_dart(self) -> EnumWithItemStructTwinNormal {
         self
@@ -4277,7 +4337,7 @@ impl flutter_rust_bridge::support::IntoDart for EnumWithItemStructTwinSync {
 }
 impl flutter_rust_bridge::support::IntoDartExceptPrimitive for EnumWithItemStructTwinSync {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumWithItemStructTwinSync>
-    for EnumWithItemStructTwinSync
+    for crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync
 {
     fn into_into_dart(self) -> EnumWithItemStructTwinSync {
         self
@@ -4294,7 +4354,7 @@ impl flutter_rust_bridge::support::IntoDart for EnumWithItemTupleTwinNormal {
 }
 impl flutter_rust_bridge::support::IntoDartExceptPrimitive for EnumWithItemTupleTwinNormal {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumWithItemTupleTwinNormal>
-    for EnumWithItemTupleTwinNormal
+    for crate::api::enumeration::EnumWithItemTupleTwinNormal
 {
     fn into_into_dart(self) -> EnumWithItemTupleTwinNormal {
         self
@@ -4311,13 +4371,13 @@ impl flutter_rust_bridge::support::IntoDart for EnumWithItemTupleTwinSync {
 }
 impl flutter_rust_bridge::support::IntoDartExceptPrimitive for EnumWithItemTupleTwinSync {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumWithItemTupleTwinSync>
-    for EnumWithItemTupleTwinSync
+    for crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync
 {
     fn into_into_dart(self) -> EnumWithItemTupleTwinSync {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for Event {
+impl flutter_rust_bridge::support::IntoDart for crate::api::event_listener::Event {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.address.into_into_dart().into_dart(),
@@ -4326,13 +4386,13 @@ impl flutter_rust_bridge::support::IntoDart for Event {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for Event {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<Event> for Event {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for crate::api::event_listener::Event {}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<Event> for crate::api::event_listener::Event {
     fn into_into_dart(self) -> Event {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for ExoticOptionals {
+impl flutter_rust_bridge::support::IntoDart for crate::api::optional::ExoticOptionals {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.int32.into_dart(),
@@ -4353,13 +4413,18 @@ impl flutter_rust_bridge::support::IntoDart for ExoticOptionals {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for ExoticOptionals {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<ExoticOptionals> for ExoticOptionals {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::optional::ExoticOptionals
+{
+}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<ExoticOptionals>
+    for crate::api::optional::ExoticOptionals
+{
     fn into_into_dart(self) -> ExoticOptionals {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for FeatureUuid {
+impl flutter_rust_bridge::support::IntoDart for crate::api::uuid_type::FeatureUuid {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.one.into_into_dart().into_dart(),
@@ -4368,40 +4433,44 @@ impl flutter_rust_bridge::support::IntoDart for FeatureUuid {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for FeatureUuid {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<FeatureUuid> for FeatureUuid {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for crate::api::uuid_type::FeatureUuid {}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<FeatureUuid>
+    for crate::api::uuid_type::FeatureUuid
+{
     fn into_into_dart(self) -> FeatureUuid {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for FeedId {
+impl flutter_rust_bridge::support::IntoDart for crate::api::array::FeedId {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for FeedId {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<FeedId> for FeedId {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for crate::api::array::FeedId {}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<FeedId> for crate::api::array::FeedId {
     fn into_into_dart(self) -> FeedId {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for mirror_ListOfNestedRawStringMirrored {
+impl flutter_rust_bridge::support::IntoDart
+    for crate::api::mirror::mirror_ListOfNestedRawStringMirrored
+{
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0.raw.into_into_dart().into_dart()].into_dart()
     }
 }
 impl flutter_rust_bridge::support::IntoDartExceptPrimitive
-    for mirror_ListOfNestedRawStringMirrored
+    for crate::api::mirror::mirror_ListOfNestedRawStringMirrored
 {
 }
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ListOfNestedRawStringMirrored>
-    for ListOfNestedRawStringMirrored
+    for crate::api::mirror::ListOfNestedRawStringMirrored
 {
     fn into_into_dart(self) -> mirror_ListOfNestedRawStringMirrored {
         mirror_ListOfNestedRawStringMirrored
     }
 }
-impl flutter_rust_bridge::support::IntoDart for Log2 {
+impl flutter_rust_bridge::support::IntoDart for crate::api::method::Log2 {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.key.into_into_dart().into_dart(),
@@ -4410,19 +4479,24 @@ impl flutter_rust_bridge::support::IntoDart for Log2 {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for Log2 {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<Log2> for Log2 {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for crate::api::method::Log2 {}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<Log2> for crate::api::method::Log2 {
     fn into_into_dart(self) -> Log2 {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for MacroStruct {
+impl flutter_rust_bridge::support::IntoDart for crate::api::inside_macro::MacroStruct {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.data.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for MacroStruct {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<MacroStruct> for MacroStruct {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::inside_macro::MacroStruct
+{
+}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<MacroStruct>
+    for crate::api::inside_macro::MacroStruct
+{
     fn into_into_dart(self) -> MacroStruct {
         self
     }
@@ -4437,23 +4511,23 @@ impl flutter_rust_bridge::support::IntoDart for Measure {
     }
 }
 impl flutter_rust_bridge::support::IntoDartExceptPrimitive for Measure {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<Measure> for Measure {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<Measure> for crate::api::enumeration::Measure {
     fn into_into_dart(self) -> Measure {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for MessageId {
+impl flutter_rust_bridge::support::IntoDart for crate::api::array::MessageId {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for MessageId {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<MessageId> for MessageId {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for crate::api::array::MessageId {}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<MessageId> for crate::api::array::MessageId {
     fn into_into_dart(self) -> MessageId {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for MirrorStruct {
+impl flutter_rust_bridge::support::IntoDart for crate::api::mirror::MirrorStruct {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.a.into_into_dart().into_dart(),
@@ -4464,13 +4538,17 @@ impl flutter_rust_bridge::support::IntoDart for MirrorStruct {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for MirrorStruct {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<MirrorStruct> for MirrorStruct {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for crate::api::mirror::MirrorStruct {}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<MirrorStruct>
+    for crate::api::mirror::MirrorStruct
+{
     fn into_into_dart(self) -> MirrorStruct {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for MoreThanJustOneRawStringStruct {
+impl flutter_rust_bridge::support::IntoDart
+    for crate::api::raw_string::MoreThanJustOneRawStringStruct
+{
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.regular.into_into_dart().into_dart(),
@@ -4481,15 +4559,18 @@ impl flutter_rust_bridge::support::IntoDart for MoreThanJustOneRawStringStruct {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for MoreThanJustOneRawStringStruct {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::raw_string::MoreThanJustOneRawStringStruct
+{
+}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<MoreThanJustOneRawStringStruct>
-    for MoreThanJustOneRawStringStruct
+    for crate::api::raw_string::MoreThanJustOneRawStringStruct
 {
     fn into_into_dart(self) -> MoreThanJustOneRawStringStruct {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for MyEnum {
+impl flutter_rust_bridge::support::IntoDart for crate::auxiliary::sample_types::MyEnum {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self {
             Self::False => 0,
@@ -4498,13 +4579,18 @@ impl flutter_rust_bridge::support::IntoDart for MyEnum {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for MyEnum {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<MyEnum> for MyEnum {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::auxiliary::sample_types::MyEnum
+{
+}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<MyEnum>
+    for crate::auxiliary::sample_types::MyEnum
+{
     fn into_into_dart(self) -> MyEnum {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for MyNestedStruct {
+impl flutter_rust_bridge::support::IntoDart for crate::api::misc_example::MyNestedStruct {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.tree_node.into_into_dart().into_dart(),
@@ -4513,13 +4599,18 @@ impl flutter_rust_bridge::support::IntoDart for MyNestedStruct {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for MyNestedStruct {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<MyNestedStruct> for MyNestedStruct {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::misc_example::MyNestedStruct
+{
+}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<MyNestedStruct>
+    for crate::api::misc_example::MyNestedStruct
+{
     fn into_into_dart(self) -> MyNestedStruct {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for MySize {
+impl flutter_rust_bridge::support::IntoDart for crate::auxiliary::sample_types::MySize {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.width.into_into_dart().into_dart(),
@@ -4528,35 +4619,47 @@ impl flutter_rust_bridge::support::IntoDart for MySize {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for MySize {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<MySize> for MySize {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::auxiliary::sample_types::MySize
+{
+}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<MySize>
+    for crate::auxiliary::sample_types::MySize
+{
     fn into_into_dart(self) -> MySize {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for MyStreamEntry {
+impl flutter_rust_bridge::support::IntoDart for crate::api::stream::MyStreamEntry {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.hello.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for MyStreamEntry {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<MyStreamEntry> for MyStreamEntry {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for crate::api::stream::MyStreamEntry {}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<MyStreamEntry>
+    for crate::api::stream::MyStreamEntry
+{
     fn into_into_dart(self) -> MyStreamEntry {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for MyStruct {
+impl flutter_rust_bridge::support::IntoDart for crate::auxiliary::sample_types::MyStruct {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.content.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for MyStruct {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<MyStruct> for MyStruct {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::auxiliary::sample_types::MyStruct
+{
+}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<MyStruct>
+    for crate::auxiliary::sample_types::MyStruct
+{
     fn into_into_dart(self) -> MyStruct {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for MyTreeNode {
+impl flutter_rust_bridge::support::IntoDart for crate::api::misc_example::MyTreeNode {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.value_i32.into_into_dart().into_dart(),
@@ -4567,81 +4670,113 @@ impl flutter_rust_bridge::support::IntoDart for MyTreeNode {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for MyTreeNode {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<MyTreeNode> for MyTreeNode {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::misc_example::MyTreeNode
+{
+}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<MyTreeNode>
+    for crate::api::misc_example::MyTreeNode
+{
     fn into_into_dart(self) -> MyTreeNode {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for mirror_NestedRawStringMirrored {
+impl flutter_rust_bridge::support::IntoDart for crate::api::mirror::mirror_NestedRawStringMirrored {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0.raw.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for mirror_NestedRawStringMirrored {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::mirror::mirror_NestedRawStringMirrored
+{
+}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_NestedRawStringMirrored>
-    for NestedRawStringMirrored
+    for crate::api::mirror::NestedRawStringMirrored
 {
     fn into_into_dart(self) -> mirror_NestedRawStringMirrored {
         mirror_NestedRawStringMirrored
     }
 }
-impl flutter_rust_bridge::support::IntoDart for NewSimpleStruct {
+impl flutter_rust_bridge::support::IntoDart
+    for crate::auxiliary::new_module_system::sub_module::NewSimpleStruct
+{
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.field.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for NewSimpleStruct {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<NewSimpleStruct> for NewSimpleStruct {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::auxiliary::new_module_system::sub_module::NewSimpleStruct
+{
+}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<NewSimpleStruct>
+    for crate::auxiliary::new_module_system::sub_module::NewSimpleStruct
+{
     fn into_into_dart(self) -> NewSimpleStruct {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for NewTypeInt {
+impl flutter_rust_bridge::support::IntoDart for crate::api::newtype_pattern::NewTypeInt {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for NewTypeInt {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<NewTypeInt> for NewTypeInt {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::newtype_pattern::NewTypeInt
+{
+}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<NewTypeInt>
+    for crate::api::newtype_pattern::NewTypeInt
+{
     fn into_into_dart(self) -> NewTypeInt {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for mirror_Numbers {
+impl flutter_rust_bridge::support::IntoDart for crate::api::mirror::mirror_Numbers {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0 .0.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for mirror_Numbers {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_Numbers> for Numbers {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for crate::api::mirror::mirror_Numbers {}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_Numbers> for crate::api::mirror::Numbers {
     fn into_into_dart(self) -> mirror_Numbers {
         mirror_Numbers
     }
 }
-impl flutter_rust_bridge::support::IntoDart for OldSimpleStruct {
+impl flutter_rust_bridge::support::IntoDart
+    for crate::auxiliary::old_module_system::sub_module::OldSimpleStruct
+{
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.field.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for OldSimpleStruct {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<OldSimpleStruct> for OldSimpleStruct {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::auxiliary::old_module_system::sub_module::OldSimpleStruct
+{
+}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<OldSimpleStruct>
+    for crate::auxiliary::old_module_system::sub_module::OldSimpleStruct
+{
     fn into_into_dart(self) -> OldSimpleStruct {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for OpaqueNested {
+impl flutter_rust_bridge::support::IntoDart for crate::api::rust_opaque::OpaqueNested {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.first.into_dart(), self.second.into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for OpaqueNested {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<OpaqueNested> for OpaqueNested {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::rust_opaque::OpaqueNested
+{
+}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<OpaqueNested>
+    for crate::api::rust_opaque::OpaqueNested
+{
     fn into_into_dart(self) -> OpaqueNested {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for OptVecs {
+impl flutter_rust_bridge::support::IntoDart for crate::api::optional::OptVecs {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.i32.into_into_dart().into_dart(),
@@ -4652,13 +4787,13 @@ impl flutter_rust_bridge::support::IntoDart for OptVecs {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for OptVecs {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<OptVecs> for OptVecs {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for crate::api::optional::OptVecs {}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<OptVecs> for crate::api::optional::OptVecs {
     fn into_into_dart(self) -> OptVecs {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for Point {
+impl flutter_rust_bridge::support::IntoDart for crate::api::array::Point {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.x.into_into_dart().into_dart(),
@@ -4667,8 +4802,8 @@ impl flutter_rust_bridge::support::IntoDart for Point {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for Point {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<Point> for Point {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for crate::api::array::Point {}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<Point> for crate::api::array::Point {
     fn into_into_dart(self) -> Point {
         self
     }
@@ -4691,41 +4826,56 @@ impl flutter_rust_bridge::support::IntoDart for mirror_RawStringEnumMirrored {
 }
 impl flutter_rust_bridge::support::IntoDartExceptPrimitive for mirror_RawStringEnumMirrored {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_RawStringEnumMirrored>
-    for RawStringEnumMirrored
+    for crate::api::mirror::RawStringEnumMirrored
 {
     fn into_into_dart(self) -> mirror_RawStringEnumMirrored {
         mirror_RawStringEnumMirrored
     }
 }
-impl flutter_rust_bridge::support::IntoDart for RawStringItemStruct {
+impl flutter_rust_bridge::support::IntoDart for crate::api::raw_string::RawStringItemStruct {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.r#type.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for RawStringItemStruct {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<RawStringItemStruct> for RawStringItemStruct {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::raw_string::RawStringItemStruct
+{
+}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<RawStringItemStruct>
+    for crate::api::raw_string::RawStringItemStruct
+{
     fn into_into_dart(self) -> RawStringItemStruct {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for mirror_RawStringMirrored {
+impl flutter_rust_bridge::support::IntoDart for crate::api::mirror::mirror_RawStringMirrored {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0.value.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for mirror_RawStringMirrored {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_RawStringMirrored> for RawStringMirrored {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::mirror::mirror_RawStringMirrored
+{
+}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_RawStringMirrored>
+    for crate::api::mirror::RawStringMirrored
+{
     fn into_into_dart(self) -> mirror_RawStringMirrored {
         mirror_RawStringMirrored
     }
 }
-impl flutter_rust_bridge::support::IntoDart for mirror_Sequences {
+impl flutter_rust_bridge::support::IntoDart for crate::api::mirror::mirror_Sequences {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0 .0.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for mirror_Sequences {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_Sequences> for Sequences {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::mirror::mirror_Sequences
+{
+}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_Sequences>
+    for crate::api::mirror::Sequences
+{
     fn into_into_dart(self) -> mirror_Sequences {
         mirror_Sequences
     }
@@ -4740,12 +4890,12 @@ impl flutter_rust_bridge::support::IntoDart for Speed {
     }
 }
 impl flutter_rust_bridge::support::IntoDartExceptPrimitive for Speed {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<Speed> for Speed {
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<Speed> for crate::api::enumeration::Speed {
     fn into_into_dart(self) -> Speed {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for StructWithEnum {
+impl flutter_rust_bridge::support::IntoDart for crate::api::misc_example::StructWithEnum {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.abc1.into_into_dart().into_dart(),
@@ -4754,39 +4904,56 @@ impl flutter_rust_bridge::support::IntoDart for StructWithEnum {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for StructWithEnum {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithEnum> for StructWithEnum {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::misc_example::StructWithEnum
+{
+}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithEnum>
+    for crate::api::misc_example::StructWithEnum
+{
     fn into_into_dart(self) -> StructWithEnum {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for StructWithOneFieldTwinNormal {
+impl flutter_rust_bridge::support::IntoDart
+    for crate::api::structure::StructWithOneFieldTwinNormal
+{
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.a.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for StructWithOneFieldTwinNormal {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::structure::StructWithOneFieldTwinNormal
+{
+}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithOneFieldTwinNormal>
-    for StructWithOneFieldTwinNormal
+    for crate::api::structure::StructWithOneFieldTwinNormal
 {
     fn into_into_dart(self) -> StructWithOneFieldTwinNormal {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for StructWithOneFieldTwinSync {
+impl flutter_rust_bridge::support::IntoDart
+    for crate::api::pseudo_manual::structure_twin_sync::StructWithOneFieldTwinSync
+{
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.a.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for StructWithOneFieldTwinSync {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::structure_twin_sync::StructWithOneFieldTwinSync
+{
+}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithOneFieldTwinSync>
-    for StructWithOneFieldTwinSync
+    for crate::api::pseudo_manual::structure_twin_sync::StructWithOneFieldTwinSync
 {
     fn into_into_dart(self) -> StructWithOneFieldTwinSync {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for StructWithTwoFieldTwinNormal {
+impl flutter_rust_bridge::support::IntoDart
+    for crate::api::structure::StructWithTwoFieldTwinNormal
+{
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.a.into_into_dart().into_dart(),
@@ -4795,15 +4962,20 @@ impl flutter_rust_bridge::support::IntoDart for StructWithTwoFieldTwinNormal {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for StructWithTwoFieldTwinNormal {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::structure::StructWithTwoFieldTwinNormal
+{
+}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithTwoFieldTwinNormal>
-    for StructWithTwoFieldTwinNormal
+    for crate::api::structure::StructWithTwoFieldTwinNormal
 {
     fn into_into_dart(self) -> StructWithTwoFieldTwinNormal {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for StructWithTwoFieldTwinSync {
+impl flutter_rust_bridge::support::IntoDart
+    for crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFieldTwinSync
+{
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.a.into_into_dart().into_dart(),
@@ -4812,52 +4984,65 @@ impl flutter_rust_bridge::support::IntoDart for StructWithTwoFieldTwinSync {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for StructWithTwoFieldTwinSync {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFieldTwinSync
+{
+}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithTwoFieldTwinSync>
-    for StructWithTwoFieldTwinSync
+    for crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFieldTwinSync
 {
     fn into_into_dart(self) -> StructWithTwoFieldTwinSync {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for StructWithZeroFieldTwinNormal {
+impl flutter_rust_bridge::support::IntoDart
+    for crate::api::structure::StructWithZeroFieldTwinNormal
+{
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         Vec::<u8>::new().into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for StructWithZeroFieldTwinNormal {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::structure::StructWithZeroFieldTwinNormal
+{
+}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithZeroFieldTwinNormal>
-    for StructWithZeroFieldTwinNormal
+    for crate::api::structure::StructWithZeroFieldTwinNormal
 {
     fn into_into_dart(self) -> StructWithZeroFieldTwinNormal {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for StructWithZeroFieldTwinSync {
+impl flutter_rust_bridge::support::IntoDart
+    for crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync
+{
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         Vec::<u8>::new().into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for StructWithZeroFieldTwinSync {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync
+{
+}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithZeroFieldTwinSync>
-    for StructWithZeroFieldTwinSync
+    for crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync
 {
     fn into_into_dart(self) -> StructWithZeroFieldTwinSync {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for SumWith {
+impl flutter_rust_bridge::support::IntoDart for crate::api::method::SumWith {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.x.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for SumWith {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<SumWith> for SumWith {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for crate::api::method::SumWith {}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<SumWith> for crate::api::method::SumWith {
     fn into_into_dart(self) -> SumWith {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for TestChrono {
+impl flutter_rust_bridge::support::IntoDart for crate::api::chrono_type::TestChrono {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.dt.into_dart(),
@@ -4867,24 +5052,26 @@ impl flutter_rust_bridge::support::IntoDart for TestChrono {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for TestChrono {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<TestChrono> for TestChrono {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for crate::api::chrono_type::TestChrono {}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<TestChrono>
+    for crate::api::chrono_type::TestChrono
+{
     fn into_into_dart(self) -> TestChrono {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for TestId {
+impl flutter_rust_bridge::support::IntoDart for crate::api::array::TestId {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for TestId {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<TestId> for TestId {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for crate::api::array::TestId {}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<TestId> for crate::api::array::TestId {
     fn into_into_dart(self) -> TestId {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for TestModel {
+impl flutter_rust_bridge::support::IntoDart for crate::api::type_alias::TestModel {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.id.into_into_dart().into_dart(),
@@ -4895,39 +5082,51 @@ impl flutter_rust_bridge::support::IntoDart for TestModel {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for TestModel {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<TestModel> for TestModel {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for crate::api::type_alias::TestModel {}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<TestModel> for crate::api::type_alias::TestModel {
     fn into_into_dart(self) -> TestModel {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for TupleStructWithOneFieldTwinNormal {
+impl flutter_rust_bridge::support::IntoDart
+    for crate::api::structure::TupleStructWithOneFieldTwinNormal
+{
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for TupleStructWithOneFieldTwinNormal {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::structure::TupleStructWithOneFieldTwinNormal
+{
+}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<TupleStructWithOneFieldTwinNormal>
-    for TupleStructWithOneFieldTwinNormal
+    for crate::api::structure::TupleStructWithOneFieldTwinNormal
 {
     fn into_into_dart(self) -> TupleStructWithOneFieldTwinNormal {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for TupleStructWithOneFieldTwinSync {
+impl flutter_rust_bridge::support::IntoDart
+    for crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync
+{
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for TupleStructWithOneFieldTwinSync {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync
+{
+}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<TupleStructWithOneFieldTwinSync>
-    for TupleStructWithOneFieldTwinSync
+    for crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync
 {
     fn into_into_dart(self) -> TupleStructWithOneFieldTwinSync {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for TupleStructWithTwoFieldTwinNormal {
+impl flutter_rust_bridge::support::IntoDart
+    for crate::api::structure::TupleStructWithTwoFieldTwinNormal
+{
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.0.into_into_dart().into_dart(),
@@ -4936,15 +5135,20 @@ impl flutter_rust_bridge::support::IntoDart for TupleStructWithTwoFieldTwinNorma
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for TupleStructWithTwoFieldTwinNormal {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::structure::TupleStructWithTwoFieldTwinNormal
+{
+}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<TupleStructWithTwoFieldTwinNormal>
-    for TupleStructWithTwoFieldTwinNormal
+    for crate::api::structure::TupleStructWithTwoFieldTwinNormal
 {
     fn into_into_dart(self) -> TupleStructWithTwoFieldTwinNormal {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for TupleStructWithTwoFieldTwinSync {
+impl flutter_rust_bridge::support::IntoDart
+    for crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwoFieldTwinSync
+{
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.0.into_into_dart().into_dart(),
@@ -4953,26 +5157,29 @@ impl flutter_rust_bridge::support::IntoDart for TupleStructWithTwoFieldTwinSync 
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for TupleStructWithTwoFieldTwinSync {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwoFieldTwinSync
+{
+}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<TupleStructWithTwoFieldTwinSync>
-    for TupleStructWithTwoFieldTwinSync
+    for crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwoFieldTwinSync
 {
     fn into_into_dart(self) -> TupleStructWithTwoFieldTwinSync {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for UserId {
+impl flutter_rust_bridge::support::IntoDart for crate::api::attribute::UserId {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.value.into_into_dart().into_dart()].into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for UserId {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<UserId> for UserId {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for crate::api::attribute::UserId {}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<UserId> for crate::api::attribute::UserId {
     fn into_into_dart(self) -> UserId {
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart for Weekdays {
+impl flutter_rust_bridge::support::IntoDart for crate::api::misc_example::Weekdays {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self {
             Self::Monday => 0,
@@ -4986,8 +5193,8 @@ impl flutter_rust_bridge::support::IntoDart for Weekdays {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive for Weekdays {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<Weekdays> for Weekdays {
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for crate::api::misc_example::Weekdays {}
+impl flutter_rust_bridge::rust2dart::IntoIntoDart<Weekdays> for crate::api::misc_example::Weekdays {
     fn into_into_dart(self) -> Weekdays {
         self
     }

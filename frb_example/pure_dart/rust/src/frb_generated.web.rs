@@ -82,10 +82,10 @@ impl Wire2Api<crate::api::misc_example::Abc> for JsValue {
     fn wire2api(self) -> crate::api::misc_example::Abc {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
-            0 => Abc::A(self_.get(1).wire2api()),
-            1 => Abc::B(self_.get(1).wire2api()),
-            2 => Abc::C(self_.get(1).wire2api()),
-            3 => Abc::JustInt(self_.get(1).wire2api()),
+            0 => crate::api::misc_example::Abc::A(self_.get(1).wire2api()),
+            1 => crate::api::misc_example::Abc::B(self_.get(1).wire2api()),
+            2 => crate::api::misc_example::Abc::C(self_.get(1).wire2api()),
+            3 => crate::api::misc_example::Abc::JustInt(self_.get(1).wire2api()),
             _ => unreachable!(),
         }
     }
@@ -212,8 +212,12 @@ impl Wire2Api<crate::api::exception::CustomNestedErrorInnerTwinNormal> for JsVal
     fn wire2api(self) -> crate::api::exception::CustomNestedErrorInnerTwinNormal {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
-            0 => CustomNestedErrorInnerTwinNormal::Three(self_.get(1).wire2api()),
-            1 => CustomNestedErrorInnerTwinNormal::Four(self_.get(1).wire2api()),
+            0 => crate::api::exception::CustomNestedErrorInnerTwinNormal::Three(
+                self_.get(1).wire2api(),
+            ),
+            1 => crate::api::exception::CustomNestedErrorInnerTwinNormal::Four(
+                self_.get(1).wire2api(),
+            ),
             _ => unreachable!(),
         }
     }
@@ -226,18 +230,22 @@ impl Wire2Api<crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorI
     ) -> crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
-            0 => CustomNestedErrorInnerTwinSync::Three(self_.get(1).wire2api()),
-            1 => CustomNestedErrorInnerTwinSync::Four(self_.get(1).wire2api()),
-            _ => unreachable!(),
-        }
+                    0 => { crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync::Three( self_.get(1).wire2api()) },
+1 => { crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync::Four( self_.get(1).wire2api()) },
+                    _ => unreachable!(),
+                }
     }
 }
 impl Wire2Api<crate::api::exception::CustomNestedErrorOuterTwinNormal> for JsValue {
     fn wire2api(self) -> crate::api::exception::CustomNestedErrorOuterTwinNormal {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
-            0 => CustomNestedErrorOuterTwinNormal::One(self_.get(1).wire2api()),
-            1 => CustomNestedErrorOuterTwinNormal::Two(self_.get(1).wire2api()),
+            0 => crate::api::exception::CustomNestedErrorOuterTwinNormal::One(
+                self_.get(1).wire2api(),
+            ),
+            1 => crate::api::exception::CustomNestedErrorOuterTwinNormal::Two(
+                self_.get(1).wire2api(),
+            ),
             _ => unreachable!(),
         }
     }
@@ -250,8 +258,16 @@ impl Wire2Api<crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorO
     ) -> crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
-            0 => CustomNestedErrorOuterTwinSync::One(self_.get(1).wire2api()),
-            1 => CustomNestedErrorOuterTwinSync::Two(self_.get(1).wire2api()),
+            0 => {
+                crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync::One(
+                    self_.get(1).wire2api(),
+                )
+            }
+            1 => {
+                crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync::Two(
+                    self_.get(1).wire2api(),
+                )
+            }
             _ => unreachable!(),
         }
     }
@@ -321,7 +337,7 @@ impl Wire2Api<crate::api::enumeration::Distance> for JsValue {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => crate::api::enumeration::Distance::Unknown,
-            1 => Distance::Map(self_.get(1).wire2api()),
+            1 => crate::api::enumeration::Distance::Map(self_.get(1).wire2api()),
             _ => unreachable!(),
         }
     }
@@ -330,8 +346,8 @@ impl Wire2Api<crate::api::dart_opaque::EnumDartOpaque> for JsValue {
     fn wire2api(self) -> crate::api::dart_opaque::EnumDartOpaque {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
-            0 => EnumDartOpaque::Primitive(self_.get(1).wire2api()),
-            1 => EnumDartOpaque::Opaque(self_.get(1).wire2api()),
+            0 => crate::api::dart_opaque::EnumDartOpaque::Primitive(self_.get(1).wire2api()),
+            1 => crate::api::dart_opaque::EnumDartOpaque::Opaque(self_.get(1).wire2api()),
             _ => unreachable!(),
         }
     }
@@ -340,11 +356,11 @@ impl Wire2Api<crate::api::rust_opaque::EnumOpaque> for JsValue {
     fn wire2api(self) -> crate::api::rust_opaque::EnumOpaque {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
-            0 => EnumOpaque::Struct(self_.get(1).wire2api()),
-            1 => EnumOpaque::Primitive(self_.get(1).wire2api()),
-            2 => EnumOpaque::TraitObj(self_.get(1).wire2api()),
-            3 => EnumOpaque::Mutex(self_.get(1).wire2api()),
-            4 => EnumOpaque::RwLock(self_.get(1).wire2api()),
+            0 => crate::api::rust_opaque::EnumOpaque::Struct(self_.get(1).wire2api()),
+            1 => crate::api::rust_opaque::EnumOpaque::Primitive(self_.get(1).wire2api()),
+            2 => crate::api::rust_opaque::EnumOpaque::TraitObj(self_.get(1).wire2api()),
+            3 => crate::api::rust_opaque::EnumOpaque::Mutex(self_.get(1).wire2api()),
+            4 => crate::api::rust_opaque::EnumOpaque::RwLock(self_.get(1).wire2api()),
             _ => unreachable!(),
         }
     }
@@ -354,8 +370,8 @@ impl Wire2Api<crate::api::enumeration::EnumWithItemMixedTwinNormal> for JsValue 
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => crate::api::enumeration::EnumWithItemMixedTwinNormal::A,
-            1 => EnumWithItemMixedTwinNormal::B(self_.get(1).wire2api()),
-            2 => EnumWithItemMixedTwinNormal::C {
+            1 => crate::api::enumeration::EnumWithItemMixedTwinNormal::B(self_.get(1).wire2api()),
+            2 => crate::api::enumeration::EnumWithItemMixedTwinNormal::C {
                 c_field: self_.get(1).wire2api(),
             },
             _ => unreachable!(),
@@ -371,8 +387,10 @@ impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixe
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync::A,
-            1 => EnumWithItemMixedTwinSync::B(self_.get(1).wire2api()),
-            2 => EnumWithItemMixedTwinSync::C {
+            1 => crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync::B(
+                self_.get(1).wire2api(),
+            ),
+            2 => crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync::C {
                 c_field: self_.get(1).wire2api(),
             },
             _ => unreachable!(),
@@ -383,10 +401,10 @@ impl Wire2Api<crate::api::enumeration::EnumWithItemStructTwinNormal> for JsValue
     fn wire2api(self) -> crate::api::enumeration::EnumWithItemStructTwinNormal {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
-            0 => EnumWithItemStructTwinNormal::A {
+            0 => crate::api::enumeration::EnumWithItemStructTwinNormal::A {
                 a_field: self_.get(1).wire2api(),
             },
-            1 => EnumWithItemStructTwinNormal::B {
+            1 => crate::api::enumeration::EnumWithItemStructTwinNormal::B {
                 b_field: self_.get(1).wire2api(),
             },
             _ => unreachable!(),
@@ -401,10 +419,10 @@ impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStru
     ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
-            0 => EnumWithItemStructTwinSync::A {
+            0 => crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync::A {
                 a_field: self_.get(1).wire2api(),
             },
-            1 => EnumWithItemStructTwinSync::B {
+            1 => crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync::B {
                 b_field: self_.get(1).wire2api(),
             },
             _ => unreachable!(),
@@ -415,8 +433,8 @@ impl Wire2Api<crate::api::enumeration::EnumWithItemTupleTwinNormal> for JsValue 
     fn wire2api(self) -> crate::api::enumeration::EnumWithItemTupleTwinNormal {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
-            0 => EnumWithItemTupleTwinNormal::A(self_.get(1).wire2api()),
-            1 => EnumWithItemTupleTwinNormal::B(self_.get(1).wire2api()),
+            0 => crate::api::enumeration::EnumWithItemTupleTwinNormal::A(self_.get(1).wire2api()),
+            1 => crate::api::enumeration::EnumWithItemTupleTwinNormal::B(self_.get(1).wire2api()),
             _ => unreachable!(),
         }
     }
@@ -429,8 +447,12 @@ impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupl
     ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
-            0 => EnumWithItemTupleTwinSync::A(self_.get(1).wire2api()),
-            1 => EnumWithItemTupleTwinSync::B(self_.get(1).wire2api()),
+            0 => crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync::A(
+                self_.get(1).wire2api(),
+            ),
+            1 => crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync::B(
+                self_.get(1).wire2api(),
+            ),
             _ => unreachable!(),
         }
     }
@@ -740,8 +762,8 @@ impl Wire2Api<crate::api::enumeration::Measure> for JsValue {
     fn wire2api(self) -> crate::api::enumeration::Measure {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
-            0 => Measure::Speed(self_.get(1).wire2api()),
-            1 => Measure::Distance(self_.get(1).wire2api()),
+            0 => crate::api::enumeration::Measure::Speed(self_.get(1).wire2api()),
+            1 => crate::api::enumeration::Measure::Distance(self_.get(1).wire2api()),
             _ => unreachable!(),
         }
     }
@@ -954,7 +976,7 @@ impl Wire2Api<crate::api::enumeration::Speed> for JsValue {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => crate::api::enumeration::Speed::Unknown,
-            1 => Speed::GPS(self_.get(1).wire2api()),
+            1 => crate::api::enumeration::Speed::GPS(self_.get(1).wire2api()),
             _ => unreachable!(),
         }
     }
