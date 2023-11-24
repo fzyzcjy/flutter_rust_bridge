@@ -4,6 +4,7 @@ use crate::codegen::generator::misc::text_generator_utils::{
     generate_text_respecting_wasm_flag, section_header_comment,
 };
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
+use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::WireRustOutputSpec;
 use itertools::Itertools;
@@ -13,7 +14,7 @@ use strum::IntoEnumIterator;
 // and we want to emphasize we are generating final output text here.
 pub(super) struct WireRustOutputText {
     pub(super) text: Acc<Option<String>>,
-    pub(super) extern_func_names: Vec<String>,
+    pub(super) extern_funcs: Vec<ExternFunc>,
 }
 
 pub(super) fn generate(
@@ -25,18 +26,16 @@ pub(super) fn generate(
         config,
         &merged_code.clone().map(|code, _| code.all_code()),
     )?;
-    let extern_func_names = compute_extern_func_names(merged_code);
+    let extern_funcs = compute_extern_funcs(merged_code);
 
-    Ok(WireRustOutputText {
-        text,
-        extern_func_names,
-    })
+    Ok(WireRustOutputText { text, extern_funcs })
 }
 
-fn compute_extern_func_names(merged_code: Acc<WireRustOutputCode>) -> Vec<String> {
+fn compute_extern_funcs(merged_code: Acc<WireRustOutputCode>) -> Vec<ExternFunc> {
     let extern_funcs_acc = merged_code.map(|code, _| code.extern_funcs);
-    let extern_funcs = TargetOrCommon::iter().flat_map(|target| extern_funcs_acc[target].clone());
-    (extern_funcs.map(|extern_func| extern_func.func_name)).collect_vec()
+    TargetOrCommon::iter()
+        .flat_map(|target| extern_funcs_acc[target].clone())
+        .collect_vec()
 }
 
 fn generate_merged_code(spec: &WireRustOutputSpec) -> Acc<WireRustOutputCode> {

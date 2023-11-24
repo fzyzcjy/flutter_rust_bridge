@@ -11,6 +11,7 @@ use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGenerat
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::ir::pack::IrPack;
 use anyhow::Result;
+use itertools::Itertools;
 use std::path::PathBuf;
 
 pub(crate) struct GeneratorWireOutput {
@@ -41,7 +42,7 @@ pub(crate) fn generate(
 
     let c_output = c::generate(
         &config.c,
-        rust_output.extern_func_names,
+        (rust_output.extern_funcs.iter().map(|x| x.func_name.clone())).collect_vec(),
         rust_output.extern_struct_names,
         &rust_output.output_texts,
         dumper,
