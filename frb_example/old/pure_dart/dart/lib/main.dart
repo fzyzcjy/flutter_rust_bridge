@@ -326,25 +326,6 @@ void main(List<String> args) async {
     expect(output, isA<Empty>());
   });
 
-  group('Platform-specific support', () {
-    test('Int64List', () {
-      final list = Int64List.fromList([-1, -2, -3, -4, -5]);
-      expect(list[0], BigInt.from(-1));
-      expect(list.map((el) => el * el), MatchBigInt([1, 4, 9, 16, 25]));
-      list[1] = -123;
-      expect(list[1], BigInt.from(-123));
-    });
-    test('Uint64List', () {
-      final list = Uint64List.fromList([1, 2, 3, 4, 5]);
-      expect(list[0], BigInt.one);
-      expect(list.map((el) => el * el), MatchBigInt([1, 4, 9, 16, 25]));
-      list[1] = 123;
-      expect(list[1], BigInt.from(123));
-      list[1] += BigInt.one;
-      expect(list[1], BigInt.from(124));
-    });
-  });
-
   group('extended sync', () {
     test('create', () {
       var data = syncCreateOpaque();
@@ -379,19 +360,6 @@ void main(List<String> args) async {
     final settings = syncReturnMirror();
     testAppSettings(settings);
   });
-}
-
-class MatchBigInt extends CustomMatcher {
-  MatchBigInt(matcher) : super("is a numeric", "value", _featureValueOf(matcher));
-
-  @override
-  Object? featureValueOf(actual) => _featureValueOf(actual);
-
-  static Object? _featureValueOf(actual) {
-    if (actual is Iterable) return actual.map(_featureValueOf);
-    if (actual is int) return BigInt.from(actual);
-    return actual;
-  }
 }
 
 // vim:expandtab:ts=2:sw=2
