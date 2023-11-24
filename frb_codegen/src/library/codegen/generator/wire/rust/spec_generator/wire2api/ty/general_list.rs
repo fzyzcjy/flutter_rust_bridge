@@ -76,8 +76,8 @@ pub(crate) fn general_list_impl_wire2api_body() -> Acc<Option<String>> {
 
 const WIRE2API_BODY_IO: &'static str = "
     let vec = unsafe {
-        let wrap = support::box_from_leak_ptr(self);
-        support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        let wrap = flutter_rust_bridge::support::box_from_leak_ptr(self);
+        flutter_rust_bridge::support::vec_from_leak_ptr(wrap.ptr, wrap.len)
     };
     vec.into_iter().map(Wire2Api::wire2api).collect()
 ";
@@ -108,8 +108,8 @@ pub(crate) fn generate_list_generate_allocate_func(
             .concat(),
         ),
         body: format!(
-            "let wrap = {} {{ ptr: support::new_leak_vec_ptr({}, len), len }};
-                support::new_leak_box_ptr(wrap)",
+            "let wrap = {} {{ ptr: flutter_rust_bridge::support::new_leak_vec_ptr({}, len), len }};
+                flutter_rust_bridge::support::new_leak_box_ptr(wrap)",
             list_generator.rust_wire_type(Target::Io),
             if inner.is_primitive() {
                 // A primitive enum list can use a default value since

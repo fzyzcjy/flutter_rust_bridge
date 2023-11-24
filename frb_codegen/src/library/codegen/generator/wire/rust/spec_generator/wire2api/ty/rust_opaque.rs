@@ -26,7 +26,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
         Acc {
             io: Some(
                 "unsafe {
-                support::opaque_from_dart(self.ptr as _)
+                flutter_rust_bridge::support::opaque_from_dart(self.ptr as _)
             }"
                 .into(),
             ),
@@ -43,7 +43,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
             }
     
             unsafe {
-                support::opaque_from_dart((self.as_f64().unwrap() as usize) as _)
+                flutter_rust_bridge::support::opaque_from_dart((self.as_f64().unwrap() as usize) as _)
             }"#
             .into(),
         )

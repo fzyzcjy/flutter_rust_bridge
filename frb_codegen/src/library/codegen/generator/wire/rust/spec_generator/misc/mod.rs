@@ -108,8 +108,8 @@ fn generate_executor(ir_pack: &IrPack) -> String {
         "/* nothing since executor detected */".to_string()
     } else {
         format!(
-            "support::lazy_static! {{
-                pub static ref {HANDLER_NAME}: support::DefaultHandler = Default::default();
+            "flutter_rust_bridge::support::lazy_static! {{
+                pub static ref {HANDLER_NAME}: flutter_rust_bridge::support::DefaultHandler = Default::default();
             }}"
         )
     }

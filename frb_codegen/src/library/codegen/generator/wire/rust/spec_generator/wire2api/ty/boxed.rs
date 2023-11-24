@@ -21,7 +21,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for BoxedWireRustGenerator<'a> {
         let exist_in_real_api = self.ir.exist_in_real_api;
         Acc::new(|target| match (target, self.ir.inner.as_ref()) {
             (Io, IrType::Primitive(_)) => Some(format!(
-                "unsafe {{ {extra}support::box_from_leak_ptr(self) }}",
+                "unsafe {{ {extra} flutter_rust_bridge::support::box_from_leak_ptr(self) }}",
                 extra = if exist_in_real_api { "" } else { "*" }
             )),
             (Io | Wasm, ir) if ir.is_array() => Some(format!(
@@ -29,7 +29,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for BoxedWireRustGenerator<'a> {
                 box_inner.rust_api_type()
             )),
             (Io, _) => Some(format!(
-                "let wrap = unsafe {{ support::box_from_leak_ptr(self) }};
+                "let wrap = unsafe {{ flutter_rust_bridge::support::box_from_leak_ptr(self) }};
                 Wire2Api::<{}>::wire2api(*wrap).into()",
                 box_inner.rust_api_type()
             )),
@@ -48,7 +48,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for BoxedWireRustGenerator<'a> {
             )
             .into(),
             IrType::Delegate(IrTypeDelegate::Array(array)) => format!(
-                "let vec: Vec<{}> = self.wire2api(); Box::new(support::from_vec_to_array(vec))",
+                "let vec: Vec<{}> = self.wire2api(); Box::new(flutter_rust_bridge::support::from_vec_to_array(vec))",
                 array.inner().rust_api_type()
             )
             .into(),
@@ -82,7 +82,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for BoxedWireRustGenerator<'a> {
                         WireRustGenerator::new(self.ir.inner.clone(), self.context)
                             .rust_wire_type(Target::Io)
                     )),
-                    body: "support::new_leak_box_ptr(value)".to_owned(),
+                    body: "flutter_rust_bridge::support::new_leak_box_ptr(value)".to_owned(),
                     target: Target::Io,
                 }
                 .into(),
@@ -101,7 +101,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for BoxedWireRustGenerator<'a> {
                         .concat(),
                     ),
                     body: format!(
-                        "support::new_leak_box_ptr({}::new_with_null_ptr())",
+                        "flutter_rust_bridge::support::new_leak_box_ptr({}::new_with_null_ptr())",
                         WireRustGenerator::new(self.ir.inner.clone(), self.context)
                             .rust_wire_type(Target::Io)
                     ),

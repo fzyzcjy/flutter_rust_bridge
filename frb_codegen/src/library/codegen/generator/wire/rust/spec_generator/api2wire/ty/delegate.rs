@@ -23,14 +23,14 @@ impl<'a> WireRustGeneratorApi2wireTrait for DelegateWireRustGenerator<'a> {
                 .join("\n");
             let into_into_dart = generate_impl_into_into_dart(&src.name, &src.wrapper_name);
             return Some(format!(
-                "impl support::IntoDart for {name} {{
-                    fn into_dart(self) -> support::DartAbi {{
+                "impl flutter_rust_bridge::support::IntoDart for {name} {{
+                    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {{
                         match {self_ref} {{
                             {variants}
                         }}.into_dart()
                     }}
                 }}
-                impl support::IntoDartExceptPrimitive for {name} {{}}
+                impl flutter_rust_bridge::support::IntoDartExceptPrimitive for {name} {{}}
                 {into_into_dart}
                 "
             ));

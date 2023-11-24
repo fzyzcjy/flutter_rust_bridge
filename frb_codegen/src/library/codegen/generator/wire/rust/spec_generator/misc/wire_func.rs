@@ -209,7 +209,7 @@ fn generate_handler_func_name(
 
 fn generate_return_type(func: &IrFunc) -> Option<String> {
     match func.mode {
-        IrFuncMode::Sync => Some("support::WireSyncReturn".to_owned()),
+        IrFuncMode::Sync => Some("flutter_rust_bridge::support::WireSyncReturn".to_owned()),
         IrFuncMode::Normal | IrFuncMode::Stream { .. } => None,
     }
 }

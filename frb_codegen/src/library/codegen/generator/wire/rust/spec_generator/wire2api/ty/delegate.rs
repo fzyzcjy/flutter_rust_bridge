@@ -42,7 +42,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for DelegateWireRustGenerator<'a> {
                 let acc =
                     Some(
                         format!(
-                            "let vec: Vec<{}> = self.wire2api(); support::from_vec_to_array(vec)",
+                            "let vec: Vec<{}> = self.wire2api(); flutter_rust_bridge::support::from_vec_to_array(vec)",
                             array.inner().rust_api_type()
                         ),
                     );
@@ -147,7 +147,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for DelegateWireRustGenerator<'a> {
                     .into()
             }
             IrTypeDelegate::Array(array) => format!(
-                "let vec: Vec<{}> = self.wire2api(); support::from_vec_to_array(vec)",
+                "let vec: Vec<{}> = self.wire2api(); flutter_rust_bridge::support::from_vec_to_array(vec)",
                 array.inner().rust_api_type()
             )
                 .into(),

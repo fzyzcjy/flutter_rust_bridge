@@ -55,12 +55,12 @@ impl<'a> WireRustGeneratorApi2wireTrait for StructRefWireRustGenerator<'a> {
 
         let into_into_dart = generate_impl_into_into_dart(&src.name, &src.wrapper_name);
         Some(format!(
-            "impl support::IntoDart for {name} {{
-                fn into_dart(self) -> support::DartAbi {{
+            "impl flutter_rust_bridge::support::IntoDart for {name} {{
+                fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {{
                     {vec}.into_dart()
                 }}
             }}
-            impl support::IntoDartExceptPrimitive for {name} {{}}
+            impl flutter_rust_bridge::support::IntoDartExceptPrimitive for {name} {{}}
             {into_into_dart}
             "
         ))
