@@ -36,7 +36,7 @@ fn generate_merged_code(spec: &WireDartOutputSpec) -> Acc<WireDartOutputCode> {
         &Acc::new_common(spec.misc.api_impl_normal_functions.clone()),
     );
     add("extra_functions", &spec.misc.extra_functions);
-    add("c_binding", &Acc::new_io(vec![spec.misc.c_binding.clone()]));
+    add("wire_class", &spec.misc.wire_class);
     add("impl_wire2api", &spec.wire2api.impl_wire2api);
     add("api2wire_funcs", &spec.api2wire.api2wire_funcs);
     add(

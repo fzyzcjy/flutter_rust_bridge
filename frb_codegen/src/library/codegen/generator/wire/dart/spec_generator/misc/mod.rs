@@ -19,12 +19,11 @@ use std::path::{Path, PathBuf};
 
 mod api_impl_body;
 mod api_impl_opaque;
-mod c_binding;
 pub(crate) mod ty;
 
 #[derive(Clone, Serialize)]
 pub(crate) struct WireDartOutputSpecMisc {
-    pub(crate) c_binding: WireDartOutputCode,
+    pub(crate) wire_class: Acc<Vec<WireDartOutputCode>>,
     pub(crate) boilerplate: Acc<Vec<WireDartOutputCode>>,
     pub(crate) api_impl_normal_functions: Vec<WireDartOutputCode>,
     pub(crate) extra_functions: Acc<Vec<WireDartOutputCode>>,
@@ -37,7 +36,7 @@ pub(crate) fn generate(
     api_dart_actual_output_paths: &[PathBuf],
 ) -> anyhow::Result<WireDartOutputSpecMisc> {
     Ok(WireDartOutputSpecMisc {
-        c_binding: c_binding::generate(&context.config, c_file_content)?,
+        wire_class: super::wire_class::generate(context.config, c_file_content)?,
         boilerplate: generate_boilerplate(api_dart_actual_output_paths, cache, context)?,
         api_impl_normal_functions: (context.ir_pack.funcs.iter())
             .map(|f| api_impl_body::generate_api_impl_normal_function(f, context))
