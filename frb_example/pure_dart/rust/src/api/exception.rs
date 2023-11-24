@@ -108,6 +108,38 @@ pub fn return_error_variant(variant: u32) -> Result<u32, CustomError> {
     }
 }
 
+pub struct SomeStruct {
+    pub value: u32,
+}
+
+impl SomeStruct {
+    pub fn new(value: u32) -> SomeStruct {
+        SomeStruct { value }
+    }
+
+    pub fn static_return_err_custom_error() -> Result<u32, CustomError> {
+        Err(CustomError::Error1 {
+            e: 3,
+            backtrace: Backtrace::new(),
+        })
+    }
+
+    pub fn static_return_ok_custom_error() -> Result<u32, CustomError> {
+        Ok(3)
+    }
+
+    pub fn non_static_return_err_custom_error(&self) -> Result<u32, CustomError> {
+        Err(CustomError::Error1 {
+            e: self.value,
+            backtrace: Backtrace::new(),
+        })
+    }
+
+    pub fn non_static_return_ok_custom_error(&self) -> Result<u32, CustomError> {
+        Ok(self.value)
+    }
+}
+
 pub enum CustomNestedError1 {
     CustomNested1(String),
     ErrorNested(CustomNestedError2),

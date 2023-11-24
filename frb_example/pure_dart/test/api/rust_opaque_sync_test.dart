@@ -13,15 +13,9 @@ Future<void> main() async {
   });
 
   test('option', () async {
-    var data = syncOption();
-    var data2 = syncOptionNull();
-    var data3 = syncOptionRustOpaque();
-    var data4 = syncOptionDartOpaque(opaque: () => () => 'magic');
-    expect(data, isNotNull);
-    expect(data2, isNull);
-    expect(data3, isNotNull);
-    expect(data4, isNotNull);
-    data3!.dispose();
+    var x = syncOptionRustOpaque();
+    expect(x, isNotNull);
+    x!.dispose();
   });
 
   test('nonclone', () async {

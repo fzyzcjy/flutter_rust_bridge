@@ -151,3 +151,13 @@ pub fn handle_option_box_arguments(
         (i8box, u8box, i32box, i64box, f64box, boolbox, structbox)
     )
 }
+
+#[frb(sync)]
+pub fn sync_option() -> Result<Option<String>> {
+    Ok(Some("42".to_owned()))
+}
+
+#[frb(sync)]
+pub fn sync_option_null() -> Result<Option<String>> {
+    Ok(None)
+}

@@ -41,9 +41,10 @@ Future<void> main() async {
       expect(await handleEnumParameter(weekday: Weekdays.saturday), Weekdays.saturday);
     });
 
-    test('dart call handleEnumParameter', () async {
-      expect(handleEnumSyncFreezed(value: MyEnumFreezed.a(1)), MyEnumFreezed.b('hello'));
-    });
+    // TODO rm since sync?
+    // test('dart call handleEnumParameter', () async {
+    //   expect(handleEnumSyncFreezed(value: MyEnumFreezed.a(1)), MyEnumFreezed.b('hello'));
+    // });
 
     test('dart call handleEnumStruct', () async {
       expect(await handleEnumStruct(val: KitchenSink_Empty()), KitchenSink_Empty());

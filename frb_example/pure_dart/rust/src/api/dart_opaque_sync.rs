@@ -30,3 +30,8 @@ pub fn return_non_droppable_dart_opaque(opaque: DartOpaque) -> DartOpaque {
     let raw = opaque.try_unwrap().unwrap();
     unsafe { DartOpaque::new_non_droppable(raw.into()) }
 }
+
+#[frb(sync)]
+pub fn sync_option_dart_opaque(opaque: DartOpaque) -> Result<Option<DartOpaque>> {
+    Ok(Some(opaque))
+}

@@ -82,4 +82,11 @@ Future<void> main() async {
       print(optional10);
     }
   });
+
+  test('option', () async {
+    var data = syncOption();
+    var data2 = syncOptionNull();
+    expect(data, isNotNull);
+    expect(data2, isNull);
+  });
 }

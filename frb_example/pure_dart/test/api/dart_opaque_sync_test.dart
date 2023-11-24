@@ -17,6 +17,11 @@ Future<void> main() async {
     expect(syncOptionLoopback(opaque: null), isNull);
   });
 
+  test('sync option', () {
+    var data4 = syncOptionDartOpaque(opaque: () => () => 'magic');
+    expect(data4, isNotNull);
+  });
+
   test('drop', () async {
     expect(syncAcceptDartOpaque(opaque: createLargeList(mb: 200)), 'test');
   });
