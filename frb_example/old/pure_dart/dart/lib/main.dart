@@ -576,20 +576,20 @@ void main(List<String> args) async {
   });
 
   test('ConcatenateWith test', () async {
-    final ConcatenateWith concatenateWith = ConcatenateWith(a: "hello ", bridge: api);
+    final ConcatenateWith concatenateWith = ConcatenateWith(a: "hello ");
     final String concatenated = await concatenateWith.concatenate(b: "world");
     expect(concatenated, equals("hello world"));
 
-    final staticConcatenated = await ConcatenateWith.concatenateStatic(bridge: api, a: "hello ", b: "world");
+    final staticConcatenated = await ConcatenateWith.concatenateStatic(a: "hello ", b: "world");
     expect(staticConcatenated, equals("hello world"));
 
-    final concatenatedConstructor = await ConcatenateWith.newConcatenateWith(bridge: api, a: "hello ");
+    final concatenatedConstructor = await ConcatenateWith.newConcatenateWith(a: "hello ");
     final String concatenated2 = await concatenatedConstructor.concatenate(b: "world");
     expect(concatenated2, equals("hello world"));
   });
 
   test('SumWith test', () async {
-    final SumWith sumWith = SumWith(bridge: api, x: 3);
+    final SumWith sumWith = SumWith(x: 3);
     final int sum = await sumWith.sum(y: 1, z: 5);
     expect(sum, equals(3 + 1 + 5));
   });
@@ -608,7 +608,7 @@ void main(List<String> args) async {
   });
 
   test('ConcatenateWith stream sink test', () async {
-    final ConcatenateWith concatenateWith = ConcatenateWith(a: "hello ", bridge: api);
+    final ConcatenateWith concatenateWith = ConcatenateWith(a: "hello ");
     final int key = 10;
     final int max = 5;
     final stream = concatenateWith.handleSomeStreamSink(key: key, max: max);
@@ -624,7 +624,7 @@ void main(List<String> args) async {
   test('ConcatenateWith static stream sink test', () async {
     final int key = 10;
     final int max = 5;
-    final stream = ConcatenateWith.handleSomeStaticStreamSink(bridge: api, key: key, max: max);
+    final stream = ConcatenateWith.handleSomeStaticStreamSink(key: key, max: max);
     int cnt = 0;
     await for (final value in stream) {
       print("output from ConcatenateWith's static stream: $value");
@@ -1377,13 +1377,12 @@ void main(List<String> args) async {
     });
 
     test('Throw CustomStructError non static method', () async {
-      await expectLater(
-          () async => await CustomStruct(bridge: api, message: "hello").nonstaticReturnCustomStructError(),
+      await expectLater(() async => await CustomStruct(message: "hello").nonstaticReturnCustomStructError(),
           throwsA(isA<CustomStructError>()));
     });
 
     test('Do not throw CustomStructError non static method', () async {
-      expect(await CustomStruct(bridge: api, message: "hello").nonstaticReturnCustomStructOk(), 3);
+      expect(await CustomStruct(message: "hello").nonstaticReturnCustomStructOk(), 3);
     });
 
     test('Throw CustomStructError static method', () async {
@@ -1441,11 +1440,11 @@ void main(List<String> args) async {
     });
 
     test('Throw CustomError non-static method', () async {
-      await expectLater(() async => await SomeStruct(bridge: api, value: 7).nonStaticReturnErrCustomError(),
-          throwsA(isA<CustomError>()));
+      await expectLater(
+          () async => await SomeStruct(value: 7).nonStaticReturnErrCustomError(), throwsA(isA<CustomError>()));
       bool didCatch = false;
       try {
-        await SomeStruct(bridge: api, value: 7).nonStaticReturnErrCustomError();
+        await SomeStruct(value: 7).nonStaticReturnErrCustomError();
       } catch (e) {
         final FrbBacktracedException ex = e as FrbBacktracedException;
         print("backtrace: ${ex.backtrace}");
@@ -1456,7 +1455,7 @@ void main(List<String> args) async {
     });
 
     test('Do not throw CustomError non-static method', () async {
-      expect(await SomeStruct(bridge: api, value: 6).nonStaticReturnOkCustomError(), 6);
+      expect(await SomeStruct(value: 6).nonStaticReturnOkCustomError(), 6);
     });
 
     test('Throw anyhow error', () async {
