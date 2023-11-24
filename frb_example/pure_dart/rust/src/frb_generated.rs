@@ -405,9 +405,11 @@ fn wire_StructWithCommentsTwinNormal_instance_method_twin_normal_impl(
         move || {
             let api_that = that.wire2api();
             move |task_callback| {
-                Result::<_, ()>::Ok(StructWithCommentsTwinNormal::instance_method_twin_normal(
-                    &api_that,
-                ))
+                Result::<_, ()>::Ok(
+                    crate::api::comment::StructWithCommentsTwinNormal::instance_method_twin_normal(
+                        &api_that,
+                    ),
+                )
             }
         },
     )
@@ -423,7 +425,9 @@ fn wire_StructWithCommentsTwinNormal_static_method_twin_normal_impl(
         },
         move || {
             move |task_callback| {
-                Result::<_, ()>::Ok(StructWithCommentsTwinNormal::static_method_twin_normal())
+                Result::<_, ()>::Ok(
+                    crate::api::comment::StructWithCommentsTwinNormal::static_method_twin_normal(),
+                )
             }
         },
     )
@@ -943,7 +947,9 @@ fn wire_Event_as_string_impl(
         },
         move || {
             let api_that = that.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(Event::as_string(&api_that))
+            move |task_callback| {
+                Result::<_, ()>::Ok(crate::api::event_listener::Event::as_string(&api_that))
+            }
         },
     )
 }
@@ -1189,7 +1195,11 @@ fn wire_ConcatenateWith_concatenate_impl(
         move || {
             let api_that = that.wire2api();
             let api_b = b.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(ConcatenateWith::concatenate(&api_that, api_b))
+            move |task_callback| {
+                Result::<_, ()>::Ok(crate::api::method::ConcatenateWith::concatenate(
+                    &api_that, api_b,
+                ))
+            }
         },
     )
 }
@@ -1208,7 +1218,9 @@ fn wire_ConcatenateWith_concatenate_static_impl(
             let api_a = a.wire2api();
             let api_b = b.wire2api();
             move |task_callback| {
-                Result::<_, ()>::Ok(ConcatenateWith::concatenate_static(api_a, api_b))
+                Result::<_, ()>::Ok(crate::api::method::ConcatenateWith::concatenate_static(
+                    api_a, api_b,
+                ))
             }
         },
     )
@@ -1228,11 +1240,13 @@ fn wire_ConcatenateWith_handle_some_static_stream_sink_impl(
             let api_key = key.wire2api();
             let api_max = max.wire2api();
             move |task_callback| {
-                Result::<_, ()>::Ok(ConcatenateWith::handle_some_static_stream_sink(
-                    api_key,
-                    api_max,
-                    task_callback.stream_sink::<_, crate::api::method::Log2>(),
-                ))
+                Result::<_, ()>::Ok(
+                    crate::api::method::ConcatenateWith::handle_some_static_stream_sink(
+                        api_key,
+                        api_max,
+                        task_callback.stream_sink::<_, crate::api::method::Log2>(),
+                    ),
+                )
             }
         },
     )
@@ -1248,9 +1262,11 @@ fn wire_ConcatenateWith_handle_some_static_stream_sink_single_arg_impl(
         },
         move || {
             move |task_callback| {
-                Result::<_, ()>::Ok(ConcatenateWith::handle_some_static_stream_sink_single_arg(
-                    task_callback.stream_sink::<_, u32>(),
-                ))
+                Result::<_, ()>::Ok(
+                    crate::api::method::ConcatenateWith::handle_some_static_stream_sink_single_arg(
+                        task_callback.stream_sink::<_, u32>(),
+                    ),
+                )
             }
         },
     )
@@ -1272,12 +1288,14 @@ fn wire_ConcatenateWith_handle_some_stream_sink_impl(
             let api_key = key.wire2api();
             let api_max = max.wire2api();
             move |task_callback| {
-                Result::<_, ()>::Ok(ConcatenateWith::handle_some_stream_sink(
-                    &api_that,
-                    api_key,
-                    api_max,
-                    task_callback.stream_sink::<_, crate::api::method::Log2>(),
-                ))
+                Result::<_, ()>::Ok(
+                    crate::api::method::ConcatenateWith::handle_some_stream_sink(
+                        &api_that,
+                        api_key,
+                        api_max,
+                        task_callback.stream_sink::<_, crate::api::method::Log2>(),
+                    ),
+                )
             }
         },
     )
@@ -1295,10 +1313,12 @@ fn wire_ConcatenateWith_handle_some_stream_sink_at_1_impl(
         move || {
             let api_that = that.wire2api();
             move |task_callback| {
-                Result::<_, ()>::Ok(ConcatenateWith::handle_some_stream_sink_at_1(
-                    &api_that,
-                    task_callback.stream_sink::<_, u32>(),
-                ))
+                Result::<_, ()>::Ok(
+                    crate::api::method::ConcatenateWith::handle_some_stream_sink_at_1(
+                        &api_that,
+                        task_callback.stream_sink::<_, u32>(),
+                    ),
+                )
             }
         },
     )
@@ -1315,7 +1335,9 @@ fn wire_ConcatenateWith_new_impl(
         },
         move || {
             let api_a = a.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(ConcatenateWith::new(api_a))
+            move |task_callback| {
+                Result::<_, ()>::Ok(crate::api::method::ConcatenateWith::new(api_a))
+            }
         },
     )
 }
@@ -1335,7 +1357,9 @@ fn wire_SumWith_sum_impl(
             let api_that = that.wire2api();
             let api_y = y.wire2api();
             let api_z = z.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(SumWith::sum(&api_that, api_y, api_z))
+            move |task_callback| {
+                Result::<_, ()>::Ok(crate::api::method::SumWith::sum(&api_that, api_y, api_z))
+            }
         },
     )
 }
@@ -1969,30 +1993,13 @@ fn wire_StructWithCommentsTwinSync_instance_method_twin_sync_impl(
     that: impl Wire2Api<crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync>
         + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
-        flutter_rust_bridge::WrapInfo {
-            debug_name: "StructWithCommentsTwinSync_instance_method_twin_sync",
-            port: None,
-            mode: flutter_rust_bridge::FfiCallMode::Sync,
-        },
-        move || {
-            let api_that = that.wire2api();
-            Result::<_, ()>::Ok(StructWithCommentsTwinSync::instance_method_twin_sync(
-                &api_that,
-            ))
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(flutter_rust_bridge::WrapInfo{ debug_name: "StructWithCommentsTwinSync_instance_method_twin_sync", port: None, mode: flutter_rust_bridge::FfiCallMode::Sync }, move || { let api_that = that.wire2api();
+                Result::<_,()>::Ok(crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync::instance_method_twin_sync(&api_that)) })
 }
 fn wire_StructWithCommentsTwinSync_static_method_twin_sync_impl(
 ) -> flutter_rust_bridge::support::WireSyncReturn {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
-        flutter_rust_bridge::WrapInfo {
-            debug_name: "StructWithCommentsTwinSync_static_method_twin_sync",
-            port: None,
-            mode: flutter_rust_bridge::FfiCallMode::Sync,
-        },
-        move || Result::<_, ()>::Ok(StructWithCommentsTwinSync::static_method_twin_sync()),
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(flutter_rust_bridge::WrapInfo{ debug_name: "StructWithCommentsTwinSync_static_method_twin_sync", port: None, mode: flutter_rust_bridge::FfiCallMode::Sync }, move || { 
+                Result::<_,()>::Ok(crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync::static_method_twin_sync()) })
 }
 fn wire_function_with_comments_slash_star_star_twin_sync_impl(
 ) -> flutter_rust_bridge::support::WireSyncReturn {

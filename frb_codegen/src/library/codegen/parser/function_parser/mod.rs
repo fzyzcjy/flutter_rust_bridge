@@ -154,8 +154,7 @@ fn parse_name(sig: &Signature, owner: &IrFuncOwnerInfo) -> String {
         IrFuncOwnerInfo::Method(method) => {
             format!(
                 "{}_{}",
-                method.enum_or_struct_name.rust_style(),
-                method.actual_method_name
+                method.enum_or_struct_name.name, method.actual_method_name
             )
         }
     }
