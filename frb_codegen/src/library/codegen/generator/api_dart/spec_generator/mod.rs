@@ -54,7 +54,7 @@ pub(crate) fn generate(
     dumper.dump(
         GeneratorInfo,
         "api_dart.json",
-        &generate_dump_info(cache, context),
+        &generate_dump_info(&cache, context),
     )?;
 
     let grouped_funcs = (ir_pack.funcs.iter()).into_group_map_by(|x| x.name.namespace.clone());

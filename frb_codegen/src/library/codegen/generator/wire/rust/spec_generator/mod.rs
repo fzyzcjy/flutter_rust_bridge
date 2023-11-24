@@ -32,7 +32,7 @@ pub(super) fn generate(
     dumper.dump(
         GeneratorInfo,
         "wire_rust.json",
-        &generate_dump_info(cache, context),
+        &generate_dump_info(&cache, context),
     )?;
 
     Ok(WireRustOutputSpec {

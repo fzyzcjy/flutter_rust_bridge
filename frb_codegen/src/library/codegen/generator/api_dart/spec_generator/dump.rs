@@ -18,7 +18,7 @@ pub(crate) struct ApiDartDumpInfoType {
 }
 
 pub(super) fn generate_dump_info(
-    cache: IrPackComputedCache,
+    cache: &IrPackComputedCache,
     context: ApiDartGeneratorContext,
 ) -> ApiDartDumpInfo {
     ApiDartDumpInfo {

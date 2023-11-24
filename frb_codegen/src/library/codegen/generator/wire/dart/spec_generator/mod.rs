@@ -35,7 +35,7 @@ pub(crate) fn generate(
     dumper.dump(
         GeneratorInfo,
         "wire_dart.json",
-        &generate_dump_info(cache, context),
+        &generate_dump_info(&cache, context),
     )?;
 
     Ok(WireDartOutputSpec {

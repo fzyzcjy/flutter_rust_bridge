@@ -21,7 +21,7 @@ pub(crate) struct WireDartDumpInfoType {
 }
 
 pub(super) fn generate_dump_info(
-    cache: IrPackComputedCache,
+    cache: &IrPackComputedCache,
     context: WireDartGeneratorContext,
 ) -> WireDartDumpInfo {
     WireDartDumpInfo {
