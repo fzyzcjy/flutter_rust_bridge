@@ -1,5 +1,5 @@
 use crate::codegen::generator::wire::rust::spec_generator::api2wire::misc::generate_impl_into_into_dart;
-use crate::codegen::generator::wire::rust::spec_generator::api2wire::ty::enumeration::enum_into_dart_name_and_self_path;
+use crate::codegen::generator::wire::rust::spec_generator::api2wire::ty::enumeration::wrapper_name_into_dart_name_and_self_path;
 use crate::codegen::generator::wire::rust::spec_generator::api2wire::ty::WireRustGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
@@ -10,7 +10,7 @@ impl<'a> WireRustGeneratorApi2wireTrait for DelegateWireRustGenerator<'a> {
     fn generate_impl_into_dart(&self) -> Option<String> {
         if let IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) = &self.ir {
             let src = ir.get(self.context.ir_pack);
-            let (name, self_path) = enum_into_dart_name_and_self_path(src);
+            let (name, self_path) = wrapper_name_into_dart_name_and_self_path(src);
 
             let self_ref = self.generate_access_object_core("self".to_owned());
             let variants = src

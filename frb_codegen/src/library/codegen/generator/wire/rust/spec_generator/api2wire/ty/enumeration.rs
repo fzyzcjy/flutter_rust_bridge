@@ -16,7 +16,7 @@ impl<'a> WireRustGeneratorApi2wireTrait for EnumRefWireRustGenerator<'a> {
 
     fn generate_impl_into_dart(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_pack);
-        let (name, self_path) = enum_into_dart_name_and_self_path(src);
+        let (name, self_path) = wrapper_name_into_dart_name_and_self_path(src);
 
         let self_ref = self.generate_access_object_core("self".to_owned());
         let variants = src
@@ -84,7 +84,7 @@ impl<'a> WireRustGeneratorApi2wireTrait for EnumRefWireRustGenerator<'a> {
     }
 }
 
-pub(super) fn enum_into_dart_name_and_self_path(src: &IrEnum) -> (String, String) {
+pub(super) fn wrapper_name_into_dart_name_and_self_path(src: &IrEnum) -> (String, String) {
     match &src.wrapper_name {
         Some(wrapper) => (wrapper.rust_style(), src.name.rust_style()),
         None => (src.name.rust_style(), "Self".into()),
