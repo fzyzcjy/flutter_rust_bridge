@@ -96,7 +96,7 @@ fn generate_params(func: &IrFunc, context: WireRustGeneratorContext) -> Acc<Vec<
             vec![ExternFuncParam {
                 name: "port_".to_owned(),
                 rust_type: "flutter_rust_bridge::MessagePort".to_owned(),
-                dart_type: None,
+                dart_type: Some("NativePortType".to_owned()),
             }]
         })
     } else {
