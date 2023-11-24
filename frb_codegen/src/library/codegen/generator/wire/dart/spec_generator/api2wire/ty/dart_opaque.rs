@@ -21,8 +21,8 @@ impl<'a> WireDartGeneratorApi2wireTrait for DartOpaqueWireDartGenerator<'a> {
 
     fn api_fill_to_wire_body(&self) -> Option<String> {
         Some(
-            "wireObj.handle = wire.new_dart_opaque(apiObj);
-        wireObj.port = dropPort;"
+            "wireObj.handle = generalizedFrbRustBinding.newDartOpaque(apiObj);
+            wireObj.port = dropPortManager.dropPort;"
                 .to_owned(),
         )
     }
