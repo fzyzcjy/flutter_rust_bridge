@@ -32,14 +32,14 @@ impl<'a> WireRustGeneratorMiscTrait for EnumRefWireRustGenerator<'a> {
                     let pattern = if s.is_fields_named {
                         format!(
                             "{}::{} {{ {} }}",
-                            src.name.name,
+                            src.name.rust_style(),
                             variant.name,
                             pattern.join(",")
                         )
                     } else {
                         format!(
                             "{}::{}({})",
-                            src.name.name,
+                            src.name.rust_style(),
                             &variant.name,
                             pattern.join(",")
                         )

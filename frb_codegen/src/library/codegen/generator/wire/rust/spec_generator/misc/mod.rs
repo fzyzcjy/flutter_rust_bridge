@@ -74,7 +74,7 @@ fn generate_code_header() -> String {
 
 fn generate_imports() -> String {
     // NOTE Do *not* use imports when possible, instead use fully specified name directly
-    "use flutter_rust_bridge::Handler;".into()
+    "use flutter_rust_bridge::{Handler, IntoIntoDart};".into()
 }
 
 fn generate_wrapper_struct(ty: &IrType, context: WireRustGeneratorContext) -> Option<String> {
