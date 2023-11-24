@@ -95,7 +95,7 @@ fn generate_params(func: &IrFunc, context: WireRustGeneratorContext) -> Acc<Vec<
         Acc::new(|target| {
             let rust_type = match target {
                 TargetOrCommon::Io => "i64",
-                TargetOrCommon::Common | TargetOrCommon::Wasm => "MessagePort",
+                TargetOrCommon::Common | TargetOrCommon::Wasm => "flutter_rust_bridge::MessagePort",
             }
             .to_owned();
             vec![ExternFuncParam {
@@ -144,7 +144,7 @@ fn generate_params(func: &IrFunc, context: WireRustGeneratorContext) -> Acc<Vec<
 
 fn generate_wrap_info_obj(func: &IrFunc) -> String {
     format!(
-        "WrapInfo{{ debug_name: \"{name}\", port: {port}, mode: FfiCallMode::{mode} }}",
+        "flutter_rust_bridge::WrapInfo{{ debug_name: \"{name}\", port: {port}, mode: FfiCallMode::{mode} }}",
         name = func.name.name,
         port = if has_port_argument(func.mode) {
             "Some(port_)"
