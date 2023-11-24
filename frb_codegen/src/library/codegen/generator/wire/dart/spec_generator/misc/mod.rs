@@ -42,7 +42,7 @@ pub(crate) fn generate(
             .map(|f| api_impl_body::generate_api_impl_normal_function(f, context))
             .collect::<anyhow::Result<Vec<_>>>()?,
         api_impl_opaque_getters: (cache.distinct_types.iter())
-            .map(|ty| api_impl_opaque::generate_api_impl_opaque(ty, context))
+            .flat_map(|ty| api_impl_opaque::generate_api_impl_opaque(ty, context))
             .collect(),
     })
 }

@@ -10,22 +10,23 @@ use convert_case::{Case, Casing};
 pub(crate) fn generate_api_impl_opaque(
     ty: &IrType,
     context: WireDartGeneratorContext,
-) -> Acc<Vec<WireDartOutputCode>> {
+) -> Vec<Acc<WireDartOutputCode>> {
     if !matches!(ty, IrType::RustOpaque(_)) {
         return Default::default();
     }
 
-    let mut ans = generate_share_or_drop_opaque(ty, context, "share");
-    ans += generate_share_or_drop_opaque(ty, context, "drop");
-    ans += generate_opaque_finalizer(ty, context);
-    ans
+    vec![
+        generate_share_or_drop_opaque(ty, context, "share"),
+        generate_share_or_drop_opaque(ty, context, "drop"),
+        generate_opaque_finalizer(ty, context),
+    ]
 }
 
 fn generate_share_or_drop_opaque(
     ty: &IrType,
     context: WireDartGeneratorContext,
     op_name: &str,
-) -> Acc<Vec<WireDartOutputCode>> {
+) -> Acc<WireDartOutputCode> {
     let ty_dart_api_type =
         ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type();
     let op_name_pascal = op_name.to_case(Case::Pascal);
@@ -34,11 +35,11 @@ fn generate_share_or_drop_opaque(
     let definition = format!("Opaque{op_name_pascal}FnType get {op_name}Opaque{ty_dart_api_type}");
 
     Acc {
-        common: vec![WireDartOutputCode {
+        common: WireDartOutputCode {
             api_body: format!("{definition};\n\n"),
             api_impl_body: format!("{definition} => wire.{op_name}_opaque_{safe_ident};\n\n"),
             ..Default::default()
-        }],
+        },
         ..Default::default()
     }
 }
@@ -46,20 +47,20 @@ fn generate_share_or_drop_opaque(
 fn generate_opaque_finalizer(
     ty: &IrType,
     context: WireDartGeneratorContext,
-) -> Acc<Vec<WireDartOutputCode>> {
+) -> Acc<WireDartOutputCode> {
     let ty_dart_api_type =
         ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type();
     let ty_dart_api_type_camel = ty_dart_api_type.to_case(Case::Camel);
 
     let generate_platform_impl = |finalizer_type: &str, finalizer_arg: &str| {
         let field_name = format!("{ty_dart_api_type_camel}Finalizer");
-        vec![WireDartOutputCode {
+        WireDartOutputCode {
             api_body: format!("{finalizer_type} get {field_name};\n\n"),
             api_impl_body: format!(
                 "late final {finalizer_type} {field_name} = {finalizer_type}({finalizer_arg});\n\n",
             ),
             ..Default::default()
-        }]
+        }
     };
 
     Acc {
