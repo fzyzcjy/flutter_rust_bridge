@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 typedef struct DartCObject *WireSyncReturn;
+typedef int64_t MessagePort;
 typedef struct _Dart_Handle* Dart_Handle;
 
 typedef struct wire_list_prim_u_8 {
@@ -720,249 +721,253 @@ typedef struct wire_feature_uuid {
   struct wire_list_prim_u_8 *many;
 } wire_feature_uuid;
 
-void wire_boxed_blob(int64_t port_, struct wire_list_prim_u_8 *blob);
+void wire_boxed_blob(MessagePort port_, struct wire_list_prim_u_8 *blob);
 
-void wire_func_test_id(int64_t port_, struct wire_test_id *id);
+void wire_func_test_id(MessagePort port_, struct wire_test_id *id);
 
-void wire_get_array(int64_t port_);
+void wire_get_array(MessagePort port_);
 
-void wire_get_complex_array(int64_t port_);
+void wire_get_complex_array(MessagePort port_);
 
-void wire_last_number(int64_t port_, struct wire_list_prim_f_64 *array);
+void wire_last_number(MessagePort port_, struct wire_list_prim_f_64 *array);
 
-void wire_nested_id(int64_t port_, struct wire_list_test_id *id);
+void wire_nested_id(MessagePort port_, struct wire_list_test_id *id);
 
-void wire_new_msgid(int64_t port_, struct wire_list_prim_u_8 *id);
+void wire_new_msgid(MessagePort port_, struct wire_list_prim_u_8 *id);
 
-void wire_return_boxed_feed_id(int64_t port_, struct wire_list_prim_u_8 *id);
+void wire_return_boxed_feed_id(MessagePort port_, struct wire_list_prim_u_8 *id);
 
-void wire_return_boxed_raw_feed_id(int64_t port_, struct wire_feed_id *id);
+void wire_return_boxed_raw_feed_id(MessagePort port_, struct wire_feed_id *id);
 
-void wire_use_boxed_blob(int64_t port_, struct wire_blob *blob);
+void wire_use_boxed_blob(MessagePort port_, struct wire_blob *blob);
 
-void wire_use_msgid(int64_t port_, struct wire_message_id *id);
+void wire_use_msgid(MessagePort port_, struct wire_message_id *id);
 
-void wire_handle_customized_struct(int64_t port_, struct wire_customized *val);
+void wire_handle_customized_struct(MessagePort port_, struct wire_customized *val);
 
-void wire_next_user_id(int64_t port_, struct wire_user_id *user_id);
+void wire_next_user_id(MessagePort port_, struct wire_user_id *user_id);
 
-void wire_datetime_local(int64_t port_, int64_t d);
+void wire_datetime_local(MessagePort port_, int64_t d);
 
-void wire_datetime_utc(int64_t port_, int64_t d);
+void wire_datetime_utc(MessagePort port_, int64_t d);
 
-void wire_duration(int64_t port_, int64_t d);
+void wire_duration(MessagePort port_, int64_t d);
 
-void wire_handle_durations(int64_t port_, struct wire_list_prim_i_64 *durations, int64_t since);
+void wire_handle_durations(MessagePort port_, struct wire_list_prim_i_64 *durations, int64_t since);
 
-void wire_handle_timestamps(int64_t port_, struct wire_list_prim_i_64 *timestamps, int64_t epoch);
+void wire_handle_timestamps(MessagePort port_,
+                            struct wire_list_prim_i_64 *timestamps,
+                            int64_t epoch);
 
-void wire_how_long_does_it_take(int64_t port_, struct wire_feature_chrono *mine);
+void wire_how_long_does_it_take(MessagePort port_, struct wire_feature_chrono *mine);
 
-void wire_naivedatetime(int64_t port_, int64_t d);
+void wire_naivedatetime(MessagePort port_, int64_t d);
 
-void wire_optional_empty_datetime_utc(int64_t port_, int64_t *d);
+void wire_optional_empty_datetime_utc(MessagePort port_, int64_t *d);
 
-void wire_test_chrono(int64_t port_);
+void wire_test_chrono(MessagePort port_);
 
-void wire_test_precise_chrono(int64_t port_);
+void wire_test_precise_chrono(MessagePort port_);
 
-void wire_StructWithCommentsTwinNormal_instance_method_twin_normal(int64_t port_,
+void wire_StructWithCommentsTwinNormal_instance_method_twin_normal(MessagePort port_,
                                                                    struct wire_struct_with_comments_twin_normal *that);
 
-void wire_StructWithCommentsTwinNormal_static_method_twin_normal(int64_t port_);
+void wire_StructWithCommentsTwinNormal_static_method_twin_normal(MessagePort port_);
 
-void wire_function_with_comments_slash_star_star_twin_normal(int64_t port_);
+void wire_function_with_comments_slash_star_star_twin_normal(MessagePort port_);
 
-void wire_function_with_comments_triple_slash_multi_line_twin_normal(int64_t port_);
+void wire_function_with_comments_triple_slash_multi_line_twin_normal(MessagePort port_);
 
-void wire_function_with_comments_triple_slash_single_line_twin_normal(int64_t port_);
+void wire_function_with_comments_triple_slash_single_line_twin_normal(MessagePort port_);
 
-void wire_return_dart_dynamic(int64_t port_);
+void wire_return_dart_dynamic(MessagePort port_);
 
-void wire_async_accept_dart_opaque(int64_t port_, struct wire_DartOpaque opaque);
+void wire_async_accept_dart_opaque(MessagePort port_, struct wire_DartOpaque opaque);
 
-void wire_create_enum_dart_opaque(int64_t port_, struct wire_DartOpaque opaque);
+void wire_create_enum_dart_opaque(MessagePort port_, struct wire_DartOpaque opaque);
 
-void wire_create_nested_dart_opaque(int64_t port_,
+void wire_create_nested_dart_opaque(MessagePort port_,
                                     struct wire_DartOpaque opaque1,
                                     struct wire_DartOpaque opaque2);
 
-void wire_drop_static_dart_opaque(int64_t port_);
+void wire_drop_static_dart_opaque(MessagePort port_);
 
-void wire_get_enum_dart_opaque(int64_t port_, struct wire_enum_dart_opaque *opaque);
+void wire_get_enum_dart_opaque(MessagePort port_, struct wire_enum_dart_opaque *opaque);
 
-void wire_get_nested_dart_opaque(int64_t port_, struct wire_dart_opaque_nested *opaque);
+void wire_get_nested_dart_opaque(MessagePort port_, struct wire_dart_opaque_nested *opaque);
 
-void wire_loop_back(int64_t port_, struct wire_DartOpaque opaque);
+void wire_loop_back(MessagePort port_, struct wire_DartOpaque opaque);
 
-void wire_loop_back_array(int64_t port_, struct wire_DartOpaque opaque);
+void wire_loop_back_array(MessagePort port_, struct wire_DartOpaque opaque);
 
-void wire_loop_back_array_get(int64_t port_, struct wire_list_DartOpaque *opaque);
+void wire_loop_back_array_get(MessagePort port_, struct wire_list_DartOpaque *opaque);
 
-void wire_loop_back_option(int64_t port_, struct wire_DartOpaque opaque);
+void wire_loop_back_option(MessagePort port_, struct wire_DartOpaque opaque);
 
-void wire_loop_back_option_get(int64_t port_, struct wire_DartOpaque *opaque);
+void wire_loop_back_option_get(MessagePort port_, struct wire_DartOpaque *opaque);
 
-void wire_loop_back_vec(int64_t port_, struct wire_DartOpaque opaque);
+void wire_loop_back_vec(MessagePort port_, struct wire_DartOpaque opaque);
 
-void wire_loop_back_vec_get(int64_t port_, struct wire_list_DartOpaque *opaque);
+void wire_loop_back_vec_get(MessagePort port_, struct wire_list_DartOpaque *opaque);
 
-void wire_panic_unwrap_dart_opaque(int64_t port_, struct wire_DartOpaque opaque);
+void wire_panic_unwrap_dart_opaque(MessagePort port_, struct wire_DartOpaque opaque);
 
-void wire_set_static_dart_opaque(int64_t port_, struct wire_DartOpaque opaque);
+void wire_set_static_dart_opaque(MessagePort port_, struct wire_DartOpaque opaque);
 
 WireSyncReturn wire_return_non_droppable_dart_opaque(struct wire_DartOpaque opaque);
 
 WireSyncReturn wire_unwrap_dart_opaque(struct wire_DartOpaque opaque);
 
-void wire_func_enum_simple_twin_normal(int64_t port_, int32_t arg);
+void wire_func_enum_simple_twin_normal(MessagePort port_, int32_t arg);
 
-void wire_func_enum_with_item_mixed_twin_normal(int64_t port_,
+void wire_func_enum_with_item_mixed_twin_normal(MessagePort port_,
                                                 struct wire_enum_with_item_mixed_twin_normal *arg);
 
-void wire_func_enum_with_item_struct_twin_normal(int64_t port_,
+void wire_func_enum_with_item_struct_twin_normal(MessagePort port_,
                                                  struct wire_enum_with_item_struct_twin_normal *arg);
 
-void wire_func_enum_with_item_tuple_twin_normal(int64_t port_,
+void wire_func_enum_with_item_tuple_twin_normal(MessagePort port_,
                                                 struct wire_enum_with_item_tuple_twin_normal *arg);
 
-void wire_handle_enum_parameter(int64_t port_, int32_t weekday);
+void wire_handle_enum_parameter(MessagePort port_, int32_t weekday);
 
-void wire_handle_return_enum(int64_t port_, struct wire_list_prim_u_8 *input);
+void wire_handle_return_enum(MessagePort port_, struct wire_list_prim_u_8 *input);
 
-void wire_multiply_by_ten(int64_t port_, struct wire_measure *measure);
+void wire_multiply_by_ten(MessagePort port_, struct wire_measure *measure);
 
-void wire_print_note(int64_t port_, struct wire_note *note);
+void wire_print_note(MessagePort port_, struct wire_note *note);
 
-void wire_Event_as_string(int64_t port_, struct wire_event *that);
+void wire_Event_as_string(MessagePort port_, struct wire_event *that);
 
-void wire_close_event_listener(int64_t port_);
+void wire_close_event_listener(MessagePort port_);
 
-void wire_create_event(int64_t port_,
+void wire_create_event(MessagePort port_,
                        struct wire_list_prim_u_8 *address,
                        struct wire_list_prim_u_8 *payload);
 
-void wire_register_event_listener(int64_t port_);
+void wire_register_event_listener(MessagePort port_);
 
-void wire_custom_enum_error_panic_twin_normal(int64_t port_);
+void wire_custom_enum_error_panic_twin_normal(MessagePort port_);
 
-void wire_custom_enum_error_return_error_twin_normal(int64_t port_);
+void wire_custom_enum_error_return_error_twin_normal(MessagePort port_);
 
-void wire_custom_enum_error_return_ok_twin_normal(int64_t port_, uint32_t arg);
+void wire_custom_enum_error_return_ok_twin_normal(MessagePort port_, uint32_t arg);
 
-void wire_custom_nested_error_return_error_twin_normal(int64_t port_,
+void wire_custom_nested_error_return_error_twin_normal(MessagePort port_,
                                                        struct wire_custom_nested_error_outer_twin_normal *arg);
 
-void wire_custom_struct_error_return_error_twin_normal(int64_t port_,
+void wire_custom_struct_error_return_error_twin_normal(MessagePort port_,
                                                        struct wire_custom_struct_error_twin_normal *arg);
 
-void wire_func_return_error_twin_normal(int64_t port_);
+void wire_func_return_error_twin_normal(MessagePort port_);
 
-void wire_func_type_fallible_panic_twin_normal(int64_t port_);
+void wire_func_type_fallible_panic_twin_normal(MessagePort port_);
 
-void wire_func_type_infallible_panic_twin_normal(int64_t port_);
+void wire_func_type_infallible_panic_twin_normal(MessagePort port_);
 
-void wire_call_new_module_system(int64_t port_);
+void wire_call_new_module_system(MessagePort port_);
 
-void wire_call_old_module_system(int64_t port_);
+void wire_call_old_module_system(MessagePort port_);
 
-void wire_use_imported_enum(int64_t port_, int32_t my_enum);
+void wire_use_imported_enum(MessagePort port_, int32_t my_enum);
 
-void wire_use_imported_struct(int64_t port_, struct wire_my_struct *my_struct);
+void wire_use_imported_struct(MessagePort port_, struct wire_my_struct *my_struct);
 
-void wire_func_macro_struct(int64_t port_, struct wire_macro_struct *arg);
+void wire_func_macro_struct(MessagePort port_, struct wire_macro_struct *arg);
 
-void wire_ConcatenateWith_concatenate(int64_t port_,
+void wire_ConcatenateWith_concatenate(MessagePort port_,
                                       struct wire_concatenate_with *that,
                                       struct wire_list_prim_u_8 *b);
 
-void wire_ConcatenateWith_concatenate_static(int64_t port_,
+void wire_ConcatenateWith_concatenate_static(MessagePort port_,
                                              struct wire_list_prim_u_8 *a,
                                              struct wire_list_prim_u_8 *b);
 
-void wire_ConcatenateWith_handle_some_static_stream_sink(int64_t port_, uint32_t key, uint32_t max);
+void wire_ConcatenateWith_handle_some_static_stream_sink(MessagePort port_,
+                                                         uint32_t key,
+                                                         uint32_t max);
 
-void wire_ConcatenateWith_handle_some_static_stream_sink_single_arg(int64_t port_);
+void wire_ConcatenateWith_handle_some_static_stream_sink_single_arg(MessagePort port_);
 
-void wire_ConcatenateWith_handle_some_stream_sink(int64_t port_,
+void wire_ConcatenateWith_handle_some_stream_sink(MessagePort port_,
                                                   struct wire_concatenate_with *that,
                                                   uint32_t key,
                                                   uint32_t max);
 
-void wire_ConcatenateWith_handle_some_stream_sink_at_1(int64_t port_,
+void wire_ConcatenateWith_handle_some_stream_sink_at_1(MessagePort port_,
                                                        struct wire_concatenate_with *that);
 
-void wire_ConcatenateWith_new(int64_t port_, struct wire_list_prim_u_8 *a);
+void wire_ConcatenateWith_new(MessagePort port_, struct wire_list_prim_u_8 *a);
 
-void wire_SumWith_sum(int64_t port_, struct wire_sum_with *that, uint32_t y, uint32_t z);
+void wire_SumWith_sum(MessagePort port_, struct wire_sum_with *that, uint32_t y, uint32_t z);
 
-void wire_get_sum_array(int64_t port_, uint32_t a, uint32_t b, uint32_t c);
+void wire_get_sum_array(MessagePort port_, uint32_t a, uint32_t b, uint32_t c);
 
-void wire_get_sum_struct(int64_t port_);
+void wire_get_sum_struct(MessagePort port_);
 
-void wire_app_settings_stream(int64_t port_);
+void wire_app_settings_stream(MessagePort port_);
 
-void wire_app_settings_vec_stream(int64_t port_);
+void wire_app_settings_vec_stream(MessagePort port_);
 
-void wire_first_number(int64_t port_, struct wire_numbers *nums);
+void wire_first_number(MessagePort port_, struct wire_numbers *nums);
 
-void wire_first_sequence(int64_t port_, struct wire_sequences *seqs);
+void wire_first_sequence(MessagePort port_, struct wire_sequences *seqs);
 
-void wire_get_app_settings(int64_t port_);
+void wire_get_app_settings(MessagePort port_);
 
-void wire_get_fallible_app_settings(int64_t port_);
+void wire_get_fallible_app_settings(MessagePort port_);
 
-void wire_get_message(int64_t port_);
+void wire_get_message(MessagePort port_);
 
-void wire_is_app_embedded(int64_t port_, struct wire_application_settings *app_settings);
+void wire_is_app_embedded(MessagePort port_, struct wire_application_settings *app_settings);
 
-void wire_mirror_struct_stream(int64_t port_);
+void wire_mirror_struct_stream(MessagePort port_);
 
-void wire_mirror_tuple_stream(int64_t port_);
+void wire_mirror_tuple_stream(MessagePort port_);
 
-void wire_repeat_number(int64_t port_, int32_t num, uintptr_t times);
+void wire_repeat_number(MessagePort port_, int32_t num, uintptr_t times);
 
-void wire_repeat_sequence(int64_t port_, int32_t seq, uintptr_t times);
+void wire_repeat_sequence(MessagePort port_, int32_t seq, uintptr_t times);
 
-void wire_test_contains_mirrored_sub_struct(int64_t port_);
+void wire_test_contains_mirrored_sub_struct(MessagePort port_);
 
-void wire_test_fallible_of_raw_string_mirrored(int64_t port_);
+void wire_test_fallible_of_raw_string_mirrored(MessagePort port_);
 
-void wire_test_list_of_nested_enums_mirrored(int64_t port_);
+void wire_test_list_of_nested_enums_mirrored(MessagePort port_);
 
-void wire_test_list_of_raw_nested_string_mirrored(int64_t port_);
+void wire_test_list_of_raw_nested_string_mirrored(MessagePort port_);
 
-void wire_test_nested_raw_string_mirrored(int64_t port_);
+void wire_test_nested_raw_string_mirrored(MessagePort port_);
 
-void wire_test_raw_string_enum_mirrored(int64_t port_, bool nested);
+void wire_test_raw_string_enum_mirrored(MessagePort port_, bool nested);
 
-void wire_test_raw_string_mirrored(int64_t port_);
+void wire_test_raw_string_mirrored(MessagePort port_);
 
-void wire_handle_big_buffers(int64_t port_);
+void wire_handle_big_buffers(MessagePort port_);
 
-void wire_handle_complex_struct(int64_t port_, struct wire_my_tree_node *s);
+void wire_handle_complex_struct(MessagePort port_, struct wire_my_tree_node *s);
 
-void wire_handle_nested_struct(int64_t port_, struct wire_my_nested_struct *s);
+void wire_handle_nested_struct(MessagePort port_, struct wire_my_nested_struct *s);
 
-void wire_list_of_primitive_enums(int64_t port_, struct wire_list_weekdays *weekdays);
+void wire_list_of_primitive_enums(MessagePort port_, struct wire_list_weekdays *weekdays);
 
-void wire_test_abc_enum(int64_t port_, struct wire_abc *abc);
+void wire_test_abc_enum(MessagePort port_, struct wire_abc *abc);
 
-void wire_test_struct_with_enum(int64_t port_, struct wire_struct_with_enum *se);
+void wire_test_struct_with_enum(MessagePort port_, struct wire_struct_with_enum *se);
 
-void wire_func_return_unit_twin_normal(int64_t port_);
+void wire_func_return_unit_twin_normal(MessagePort port_);
 
-void wire_func_string_twin_normal(int64_t port_, struct wire_list_prim_u_8 *arg);
+void wire_func_string_twin_normal(MessagePort port_, struct wire_list_prim_u_8 *arg);
 
-void wire_handle_list_of_struct(int64_t port_, struct wire_list_my_size *l);
+void wire_handle_list_of_struct(MessagePort port_, struct wire_list_my_size *l);
 
-void wire_handle_string_list(int64_t port_, struct wire_StringList *names);
+void wire_handle_string_list(MessagePort port_, struct wire_StringList *names);
 
-void wire_handle_newtype(int64_t port_, struct wire_new_type_int *arg);
+void wire_handle_newtype(MessagePort port_, struct wire_new_type_int *arg);
 
-void wire_handle_increment_boxed_optional(int64_t port_, double *opt);
+void wire_handle_increment_boxed_optional(MessagePort port_, double *opt);
 
-void wire_handle_option_box_arguments(int64_t port_,
+void wire_handle_option_box_arguments(MessagePort port_,
                                       int8_t *i8box,
                                       uint8_t *u8box,
                                       int32_t *i32box,
@@ -971,13 +976,13 @@ void wire_handle_option_box_arguments(int64_t port_,
                                       bool *boolbox,
                                       struct wire_exotic_optionals *structbox);
 
-void wire_handle_optional_increment(int64_t port_, struct wire_exotic_optionals *opt);
+void wire_handle_optional_increment(MessagePort port_, struct wire_exotic_optionals *opt);
 
-void wire_handle_optional_return(int64_t port_, double left, double right);
+void wire_handle_optional_return(MessagePort port_, double left, double right);
 
-void wire_handle_optional_struct(int64_t port_, struct wire_list_prim_u_8 *document);
+void wire_handle_optional_struct(MessagePort port_, struct wire_list_prim_u_8 *document);
 
-void wire_handle_vec_of_opts(int64_t port_, struct wire_opt_vecs *opt);
+void wire_handle_vec_of_opts(MessagePort port_, struct wire_opt_vecs *opt);
 
 WireSyncReturn wire_StructWithCommentsTwinSync_instance_method_twin_sync(struct wire_struct_with_comments_twin_sync *that);
 
@@ -1017,27 +1022,27 @@ WireSyncReturn wire_func_return_unit_twin_sync(void);
 
 WireSyncReturn wire_func_string_twin_sync(struct wire_list_prim_u_8 *arg);
 
-void wire_example_optional_primitive_type_bool_twin_normal(int64_t port_, bool *arg);
+void wire_example_optional_primitive_type_bool_twin_normal(MessagePort port_, bool *arg);
 
-void wire_example_optional_primitive_type_f32_twin_normal(int64_t port_, float *arg);
+void wire_example_optional_primitive_type_f32_twin_normal(MessagePort port_, float *arg);
 
-void wire_example_optional_primitive_type_f64_twin_normal(int64_t port_, double *arg);
+void wire_example_optional_primitive_type_f64_twin_normal(MessagePort port_, double *arg);
 
-void wire_example_optional_primitive_type_i16_twin_normal(int64_t port_, int16_t *arg);
+void wire_example_optional_primitive_type_i16_twin_normal(MessagePort port_, int16_t *arg);
 
-void wire_example_optional_primitive_type_i32_twin_normal(int64_t port_, int32_t *arg);
+void wire_example_optional_primitive_type_i32_twin_normal(MessagePort port_, int32_t *arg);
 
-void wire_example_optional_primitive_type_i64_twin_normal(int64_t port_, int64_t *arg);
+void wire_example_optional_primitive_type_i64_twin_normal(MessagePort port_, int64_t *arg);
 
-void wire_example_optional_primitive_type_i8_twin_normal(int64_t port_, int8_t *arg);
+void wire_example_optional_primitive_type_i8_twin_normal(MessagePort port_, int8_t *arg);
 
-void wire_example_optional_primitive_type_u16_twin_normal(int64_t port_, uint16_t *arg);
+void wire_example_optional_primitive_type_u16_twin_normal(MessagePort port_, uint16_t *arg);
 
-void wire_example_optional_primitive_type_u32_twin_normal(int64_t port_, uint32_t *arg);
+void wire_example_optional_primitive_type_u32_twin_normal(MessagePort port_, uint32_t *arg);
 
-void wire_example_optional_primitive_type_u64_twin_normal(int64_t port_, uint64_t *arg);
+void wire_example_optional_primitive_type_u64_twin_normal(MessagePort port_, uint64_t *arg);
 
-void wire_example_optional_primitive_type_u8_twin_normal(int64_t port_, uint8_t *arg);
+void wire_example_optional_primitive_type_u8_twin_normal(MessagePort port_, uint8_t *arg);
 
 WireSyncReturn wire_example_optional_primitive_type_bool_twin_sync(bool *arg);
 
@@ -1061,57 +1066,60 @@ WireSyncReturn wire_example_optional_primitive_type_u64_twin_sync(uint64_t *arg)
 
 WireSyncReturn wire_example_optional_primitive_type_u8_twin_sync(uint8_t *arg);
 
-void wire_example_primitive_type_bool_twin_normal(int64_t port_, bool arg);
+void wire_example_primitive_type_bool_twin_normal(MessagePort port_, bool arg);
 
-void wire_example_primitive_type_f32_twin_normal(int64_t port_, float arg);
+void wire_example_primitive_type_f32_twin_normal(MessagePort port_, float arg);
 
-void wire_example_primitive_type_f64_twin_normal(int64_t port_, double arg);
+void wire_example_primitive_type_f64_twin_normal(MessagePort port_, double arg);
 
-void wire_example_primitive_type_i16_twin_normal(int64_t port_, int16_t arg);
+void wire_example_primitive_type_i16_twin_normal(MessagePort port_, int16_t arg);
 
-void wire_example_primitive_type_i32_twin_normal(int64_t port_, int32_t arg);
+void wire_example_primitive_type_i32_twin_normal(MessagePort port_, int32_t arg);
 
-void wire_example_primitive_type_i64_twin_normal(int64_t port_, int64_t arg);
+void wire_example_primitive_type_i64_twin_normal(MessagePort port_, int64_t arg);
 
-void wire_example_primitive_type_i8_twin_normal(int64_t port_, int8_t arg);
+void wire_example_primitive_type_i8_twin_normal(MessagePort port_, int8_t arg);
 
-void wire_example_primitive_type_u16_twin_normal(int64_t port_, uint16_t arg);
+void wire_example_primitive_type_u16_twin_normal(MessagePort port_, uint16_t arg);
 
-void wire_example_primitive_type_u32_twin_normal(int64_t port_, uint32_t arg);
+void wire_example_primitive_type_u32_twin_normal(MessagePort port_, uint32_t arg);
 
-void wire_example_primitive_type_u64_twin_normal(int64_t port_, uint64_t arg);
+void wire_example_primitive_type_u64_twin_normal(MessagePort port_, uint64_t arg);
 
-void wire_example_primitive_type_u8_twin_normal(int64_t port_, uint8_t arg);
+void wire_example_primitive_type_u8_twin_normal(MessagePort port_, uint8_t arg);
 
-void wire_example_primitive_list_type_bool_twin_normal(int64_t port_, struct wire_list_bool *arg);
+void wire_example_primitive_list_type_bool_twin_normal(MessagePort port_,
+                                                       struct wire_list_bool *arg);
 
-void wire_example_primitive_list_type_f32_twin_normal(int64_t port_,
+void wire_example_primitive_list_type_f32_twin_normal(MessagePort port_,
                                                       struct wire_list_prim_f_32 *arg);
 
-void wire_example_primitive_list_type_f64_twin_normal(int64_t port_,
+void wire_example_primitive_list_type_f64_twin_normal(MessagePort port_,
                                                       struct wire_list_prim_f_64 *arg);
 
-void wire_example_primitive_list_type_i16_twin_normal(int64_t port_,
+void wire_example_primitive_list_type_i16_twin_normal(MessagePort port_,
                                                       struct wire_list_prim_i_16 *arg);
 
-void wire_example_primitive_list_type_i32_twin_normal(int64_t port_,
+void wire_example_primitive_list_type_i32_twin_normal(MessagePort port_,
                                                       struct wire_list_prim_i_32 *arg);
 
-void wire_example_primitive_list_type_i64_twin_normal(int64_t port_,
+void wire_example_primitive_list_type_i64_twin_normal(MessagePort port_,
                                                       struct wire_list_prim_i_64 *arg);
 
-void wire_example_primitive_list_type_i8_twin_normal(int64_t port_, struct wire_list_prim_i_8 *arg);
+void wire_example_primitive_list_type_i8_twin_normal(MessagePort port_,
+                                                     struct wire_list_prim_i_8 *arg);
 
-void wire_example_primitive_list_type_u16_twin_normal(int64_t port_,
+void wire_example_primitive_list_type_u16_twin_normal(MessagePort port_,
                                                       struct wire_list_prim_u_16 *arg);
 
-void wire_example_primitive_list_type_u32_twin_normal(int64_t port_,
+void wire_example_primitive_list_type_u32_twin_normal(MessagePort port_,
                                                       struct wire_list_prim_u_32 *arg);
 
-void wire_example_primitive_list_type_u64_twin_normal(int64_t port_,
+void wire_example_primitive_list_type_u64_twin_normal(MessagePort port_,
                                                       struct wire_list_prim_u_64 *arg);
 
-void wire_example_primitive_list_type_u8_twin_normal(int64_t port_, struct wire_list_prim_u_8 *arg);
+void wire_example_primitive_list_type_u8_twin_normal(MessagePort port_,
+                                                     struct wire_list_prim_u_8 *arg);
 
 WireSyncReturn wire_example_primitive_list_type_bool_twin_sync(struct wire_list_bool *arg);
 
@@ -1169,88 +1177,88 @@ WireSyncReturn wire_func_tuple_struct_with_one_field_twin_sync(struct wire_tuple
 
 WireSyncReturn wire_func_tuple_struct_with_two_field_twin_sync(struct wire_tuple_struct_with_two_field_twin_sync *arg);
 
-void wire_test_more_than_just_one_raw_string_struct(int64_t port_);
+void wire_test_more_than_just_one_raw_string_struct(MessagePort port_);
 
-void wire_test_raw_string_item_struct(int64_t port_);
+void wire_test_raw_string_item_struct(MessagePort port_);
 
-void wire_create_array_opaque_enum(int64_t port_);
+void wire_create_array_opaque_enum(MessagePort port_);
 
-void wire_create_nested_opaque(int64_t port_);
+void wire_create_nested_opaque(MessagePort port_);
 
-void wire_create_opaque(int64_t port_);
+void wire_create_opaque(MessagePort port_);
 
-void wire_create_option_opaque(int64_t port_, struct wire_RustOpaque_hide_data *opaque);
+void wire_create_option_opaque(MessagePort port_, struct wire_RustOpaque_hide_data *opaque);
 
-void wire_create_sync_opaque(int64_t port_);
+void wire_create_sync_opaque(MessagePort port_);
 
-void wire_frb_generator_test(int64_t port_);
+void wire_frb_generator_test(MessagePort port_);
 
-void wire_opaque_array(int64_t port_);
+void wire_opaque_array(MessagePort port_);
 
-void wire_opaque_array_run(int64_t port_, struct wire_list_RustOpaque_hide_data *data);
+void wire_opaque_array_run(MessagePort port_, struct wire_list_RustOpaque_hide_data *data);
 
-void wire_opaque_vec(int64_t port_);
+void wire_opaque_vec(MessagePort port_);
 
-void wire_opaque_vec_run(int64_t port_, struct wire_list_RustOpaque_hide_data *data);
+void wire_opaque_vec_run(MessagePort port_, struct wire_list_RustOpaque_hide_data *data);
 
-void wire_run_enum_opaque(int64_t port_, struct wire_enum_opaque *opaque);
+void wire_run_enum_opaque(MessagePort port_, struct wire_enum_opaque *opaque);
 
-void wire_run_nested_opaque(int64_t port_, struct wire_opaque_nested *opaque);
+void wire_run_nested_opaque(MessagePort port_, struct wire_opaque_nested *opaque);
 
-void wire_run_non_clone(int64_t port_, struct wire_RustOpaque_non_clone_data clone);
+void wire_run_non_clone(MessagePort port_, struct wire_RustOpaque_non_clone_data clone);
 
-void wire_run_opaque(int64_t port_, struct wire_RustOpaque_hide_data opaque);
+void wire_run_opaque(MessagePort port_, struct wire_RustOpaque_hide_data opaque);
 
-void wire_run_opaque_with_delay(int64_t port_, struct wire_RustOpaque_hide_data opaque);
+void wire_run_opaque_with_delay(MessagePort port_, struct wire_RustOpaque_hide_data opaque);
 
-void wire_unwrap_rust_opaque(int64_t port_, struct wire_RustOpaque_hide_data opaque);
+void wire_unwrap_rust_opaque(MessagePort port_, struct wire_RustOpaque_hide_data opaque);
 
-void wire_frb_sync_generator_test(int64_t port_);
+void wire_frb_sync_generator_test(MessagePort port_);
 
 WireSyncReturn wire_sync_run_opaque(struct wire_RustOpaque_non_send_hide_data opaque);
 
-void wire_simple_adder_twin_normal(int64_t port_, int32_t a, int32_t b);
+void wire_simple_adder_twin_normal(MessagePort port_, int32_t a, int32_t b);
 
-void wire_func_stream_realistic_twin_normal(int64_t port_, struct wire_list_prim_u_8 *arg);
+void wire_func_stream_realistic_twin_normal(MessagePort port_, struct wire_list_prim_u_8 *arg);
 
-void wire_func_stream_return_error_twin_normal(int64_t port_);
+void wire_func_stream_return_error_twin_normal(MessagePort port_);
 
-void wire_func_stream_return_panic_twin_normal(int64_t port_);
+void wire_func_stream_return_panic_twin_normal(MessagePort port_);
 
-void wire_func_stream_sink_arg_position_twin_normal(int64_t port_, uint32_t a, uint32_t b);
+void wire_func_stream_sink_arg_position_twin_normal(MessagePort port_, uint32_t a, uint32_t b);
 
-void wire_handle_stream_of_struct(int64_t port_);
+void wire_handle_stream_of_struct(MessagePort port_);
 
-void wire_func_struct_with_one_field_twin_normal(int64_t port_,
+void wire_func_struct_with_one_field_twin_normal(MessagePort port_,
                                                  struct wire_struct_with_one_field_twin_normal *arg);
 
-void wire_func_struct_with_two_field_twin_normal(int64_t port_,
+void wire_func_struct_with_two_field_twin_normal(MessagePort port_,
                                                  struct wire_struct_with_two_field_twin_normal *arg);
 
-void wire_func_struct_with_zero_field_twin_normal(int64_t port_,
+void wire_func_struct_with_zero_field_twin_normal(MessagePort port_,
                                                   struct wire_struct_with_zero_field_twin_normal *arg);
 
-void wire_func_tuple_struct_with_one_field_twin_normal(int64_t port_,
+void wire_func_tuple_struct_with_one_field_twin_normal(MessagePort port_,
                                                        struct wire_tuple_struct_with_one_field_twin_normal *arg);
 
-void wire_func_tuple_struct_with_two_field_twin_normal(int64_t port_,
+void wire_func_tuple_struct_with_two_field_twin_normal(MessagePort port_,
                                                        struct wire_tuple_struct_with_two_field_twin_normal *arg);
 
-void wire_test_tuple(int64_t port_, struct wire_record_string_i_32 *value);
+void wire_test_tuple(MessagePort port_, struct wire_record_string_i_32 *value);
 
-void wire_test_tuple_2(int64_t port_, struct wire_list_record_string_i_32 *value);
+void wire_test_tuple_2(MessagePort port_, struct wire_list_record_string_i_32 *value);
 
-void wire_handle_type_alias_id(int64_t port_, uint64_t input);
+void wire_handle_type_alias_id(MessagePort port_, uint64_t input);
 
-void wire_handle_type_alias_model(int64_t port_, uint64_t input);
+void wire_handle_type_alias_model(MessagePort port_, uint64_t input);
 
-void wire_handle_type_nest_alias_id(int64_t port_, uint64_t input);
+void wire_handle_type_nest_alias_id(MessagePort port_, uint64_t input);
 
-void wire_handle_nested_uuids(int64_t port_, struct wire_feature_uuid *ids);
+void wire_handle_nested_uuids(MessagePort port_, struct wire_feature_uuid *ids);
 
-void wire_handle_uuid(int64_t port_, struct wire_list_prim_u_8 *id);
+void wire_handle_uuid(MessagePort port_, struct wire_list_prim_u_8 *id);
 
-void wire_handle_uuids(int64_t port_, struct wire_list_prim_u_8 *ids);
+void wire_handle_uuids(MessagePort port_, struct wire_list_prim_u_8 *ids);
 
 struct wire_DartOpaque new_DartOpaque(void);
 

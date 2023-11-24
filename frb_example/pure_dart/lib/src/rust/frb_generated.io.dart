@@ -2357,8 +2357,8 @@ class RustLibWire implements BaseWire {
 
   late final _wire_boxed_blobPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Int64, ffi.Pointer<wire_list_prim_u_8>)>>('wire_boxed_blob');
+          ffi.Void Function(MessagePort,
+              ffi.Pointer<wire_list_prim_u_8>)>>('wire_boxed_blob');
   late final _wire_boxed_blob = _wire_boxed_blobPtr
       .asFunction<void Function(int, ffi.Pointer<wire_list_prim_u_8>)>();
 
@@ -2375,7 +2375,7 @@ class RustLibWire implements BaseWire {
   late final _wire_func_test_idPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              ffi.Int64, ffi.Pointer<wire_test_id>)>>('wire_func_test_id');
+              MessagePort, ffi.Pointer<wire_test_id>)>>('wire_func_test_id');
   late final _wire_func_test_id = _wire_func_test_idPtr
       .asFunction<void Function(int, ffi.Pointer<wire_test_id>)>();
 
@@ -2388,7 +2388,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_get_arrayPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_get_array');
   late final _wire_get_array =
       _wire_get_arrayPtr.asFunction<void Function(int)>();
@@ -2402,7 +2402,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_get_complex_arrayPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_get_complex_array');
   late final _wire_get_complex_array =
       _wire_get_complex_arrayPtr.asFunction<void Function(int)>();
@@ -2419,7 +2419,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_last_numberPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               ffi.Pointer<wire_list_prim_f_64>)>>('wire_last_number');
   late final _wire_last_number = _wire_last_numberPtr
       .asFunction<void Function(int, ffi.Pointer<wire_list_prim_f_64>)>();
@@ -2437,7 +2437,7 @@ class RustLibWire implements BaseWire {
   late final _wire_nested_idPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              ffi.Int64, ffi.Pointer<wire_list_test_id>)>>('wire_nested_id');
+              MessagePort, ffi.Pointer<wire_list_test_id>)>>('wire_nested_id');
   late final _wire_nested_id = _wire_nested_idPtr
       .asFunction<void Function(int, ffi.Pointer<wire_list_test_id>)>();
 
@@ -2454,7 +2454,7 @@ class RustLibWire implements BaseWire {
   late final _wire_new_msgidPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              ffi.Int64, ffi.Pointer<wire_list_prim_u_8>)>>('wire_new_msgid');
+              MessagePort, ffi.Pointer<wire_list_prim_u_8>)>>('wire_new_msgid');
   late final _wire_new_msgid = _wire_new_msgidPtr
       .asFunction<void Function(int, ffi.Pointer<wire_list_prim_u_8>)>();
 
@@ -2470,7 +2470,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_return_boxed_feed_idPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               ffi.Pointer<wire_list_prim_u_8>)>>('wire_return_boxed_feed_id');
   late final _wire_return_boxed_feed_id = _wire_return_boxed_feed_idPtr
       .asFunction<void Function(int, ffi.Pointer<wire_list_prim_u_8>)>();
@@ -2487,7 +2487,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_return_boxed_raw_feed_idPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               ffi.Pointer<wire_feed_id>)>>('wire_return_boxed_raw_feed_id');
   late final _wire_return_boxed_raw_feed_id = _wire_return_boxed_raw_feed_idPtr
       .asFunction<void Function(int, ffi.Pointer<wire_feed_id>)>();
@@ -2505,7 +2505,7 @@ class RustLibWire implements BaseWire {
   late final _wire_use_boxed_blobPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              ffi.Int64, ffi.Pointer<wire_blob>)>>('wire_use_boxed_blob');
+              MessagePort, ffi.Pointer<wire_blob>)>>('wire_use_boxed_blob');
   late final _wire_use_boxed_blob = _wire_use_boxed_blobPtr
       .asFunction<void Function(int, ffi.Pointer<wire_blob>)>();
 
@@ -2522,7 +2522,7 @@ class RustLibWire implements BaseWire {
   late final _wire_use_msgidPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              ffi.Int64, ffi.Pointer<wire_message_id>)>>('wire_use_msgid');
+              MessagePort, ffi.Pointer<wire_message_id>)>>('wire_use_msgid');
   late final _wire_use_msgid = _wire_use_msgidPtr
       .asFunction<void Function(int, ffi.Pointer<wire_message_id>)>();
 
@@ -2538,7 +2538,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_customized_structPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               ffi.Pointer<wire_customized>)>>('wire_handle_customized_struct');
   late final _wire_handle_customized_struct = _wire_handle_customized_structPtr
       .asFunction<void Function(int, ffi.Pointer<wire_customized>)>();
@@ -2556,7 +2556,7 @@ class RustLibWire implements BaseWire {
   late final _wire_next_user_idPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              ffi.Int64, ffi.Pointer<wire_user_id>)>>('wire_next_user_id');
+              MessagePort, ffi.Pointer<wire_user_id>)>>('wire_next_user_id');
   late final _wire_next_user_id = _wire_next_user_idPtr
       .asFunction<void Function(int, ffi.Pointer<wire_user_id>)>();
 
@@ -2571,7 +2571,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_datetime_localPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort, ffi.Int64)>>(
           'wire_datetime_local');
   late final _wire_datetime_local =
       _wire_datetime_localPtr.asFunction<void Function(int, int)>();
@@ -2587,7 +2587,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_datetime_utcPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort, ffi.Int64)>>(
           'wire_datetime_utc');
   late final _wire_datetime_utc =
       _wire_datetime_utcPtr.asFunction<void Function(int, int)>();
@@ -2603,7 +2603,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_durationPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort, ffi.Int64)>>(
           'wire_duration');
   late final _wire_duration =
       _wire_durationPtr.asFunction<void Function(int, int)>();
@@ -2622,7 +2622,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_durationsPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_prim_i_64>,
+          ffi.Void Function(MessagePort, ffi.Pointer<wire_list_prim_i_64>,
               ffi.Int64)>>('wire_handle_durations');
   late final _wire_handle_durations = _wire_handle_durationsPtr
       .asFunction<void Function(int, ffi.Pointer<wire_list_prim_i_64>, int)>();
@@ -2641,7 +2641,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_timestampsPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_prim_i_64>,
+          ffi.Void Function(MessagePort, ffi.Pointer<wire_list_prim_i_64>,
               ffi.Int64)>>('wire_handle_timestamps');
   late final _wire_handle_timestamps = _wire_handle_timestampsPtr
       .asFunction<void Function(int, ffi.Pointer<wire_list_prim_i_64>, int)>();
@@ -2658,7 +2658,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_how_long_does_it_takePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               ffi.Pointer<wire_feature_chrono>)>>('wire_how_long_does_it_take');
   late final _wire_how_long_does_it_take = _wire_how_long_does_it_takePtr
       .asFunction<void Function(int, ffi.Pointer<wire_feature_chrono>)>();
@@ -2674,7 +2674,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_naivedatetimePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort, ffi.Int64)>>(
           'wire_naivedatetime');
   late final _wire_naivedatetime =
       _wire_naivedatetimePtr.asFunction<void Function(int, int)>();
@@ -2691,7 +2691,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_optional_empty_datetime_utcPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               ffi.Pointer<ffi.Int64>)>>('wire_optional_empty_datetime_utc');
   late final _wire_optional_empty_datetime_utc =
       _wire_optional_empty_datetime_utcPtr
@@ -2706,7 +2706,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_test_chronoPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_test_chrono');
   late final _wire_test_chrono =
       _wire_test_chronoPtr.asFunction<void Function(int)>();
@@ -2720,7 +2720,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_test_precise_chronoPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_test_precise_chrono');
   late final _wire_test_precise_chrono =
       _wire_test_precise_chronoPtr.asFunction<void Function(int)>();
@@ -2738,7 +2738,7 @@ class RustLibWire implements BaseWire {
   late final _wire_StructWithCommentsTwinNormal_instance_method_twin_normalPtr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64,
+                  ffi.Void Function(MessagePort,
                       ffi.Pointer<wire_struct_with_comments_twin_normal>)>>(
           'wire_StructWithCommentsTwinNormal_instance_method_twin_normal');
   late final _wire_StructWithCommentsTwinNormal_instance_method_twin_normal =
@@ -2756,7 +2756,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_StructWithCommentsTwinNormal_static_method_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_StructWithCommentsTwinNormal_static_method_twin_normal');
   late final _wire_StructWithCommentsTwinNormal_static_method_twin_normal =
       _wire_StructWithCommentsTwinNormal_static_method_twin_normalPtr
@@ -2771,7 +2771,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_function_with_comments_slash_star_star_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_function_with_comments_slash_star_star_twin_normal');
   late final _wire_function_with_comments_slash_star_star_twin_normal =
       _wire_function_with_comments_slash_star_star_twin_normalPtr
@@ -2786,7 +2786,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_function_with_comments_triple_slash_multi_line_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_function_with_comments_triple_slash_multi_line_twin_normal');
   late final _wire_function_with_comments_triple_slash_multi_line_twin_normal =
       _wire_function_with_comments_triple_slash_multi_line_twin_normalPtr
@@ -2801,7 +2801,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_function_with_comments_triple_slash_single_line_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_function_with_comments_triple_slash_single_line_twin_normal');
   late final _wire_function_with_comments_triple_slash_single_line_twin_normal =
       _wire_function_with_comments_triple_slash_single_line_twin_normalPtr
@@ -2816,7 +2816,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_return_dart_dynamicPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_return_dart_dynamic');
   late final _wire_return_dart_dynamic =
       _wire_return_dart_dynamicPtr.asFunction<void Function(int)>();
@@ -2832,7 +2832,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_async_accept_dart_opaquePtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_DartOpaque)>>(
+          ffi.NativeFunction<ffi.Void Function(MessagePort, wire_DartOpaque)>>(
       'wire_async_accept_dart_opaque');
   late final _wire_async_accept_dart_opaque = _wire_async_accept_dart_opaquePtr
       .asFunction<void Function(int, wire_DartOpaque)>();
@@ -2848,7 +2848,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_create_enum_dart_opaquePtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_DartOpaque)>>(
+          ffi.NativeFunction<ffi.Void Function(MessagePort, wire_DartOpaque)>>(
       'wire_create_enum_dart_opaque');
   late final _wire_create_enum_dart_opaque = _wire_create_enum_dart_opaquePtr
       .asFunction<void Function(int, wire_DartOpaque)>();
@@ -2867,7 +2867,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_create_nested_dart_opaquePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, wire_DartOpaque,
+          ffi.Void Function(MessagePort, wire_DartOpaque,
               wire_DartOpaque)>>('wire_create_nested_dart_opaque');
   late final _wire_create_nested_dart_opaque =
       _wire_create_nested_dart_opaquePtr
@@ -2882,7 +2882,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_drop_static_dart_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_drop_static_dart_opaque');
   late final _wire_drop_static_dart_opaque =
       _wire_drop_static_dart_opaquePtr.asFunction<void Function(int)>();
@@ -2900,7 +2900,7 @@ class RustLibWire implements BaseWire {
   late final _wire_get_enum_dart_opaquePtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_enum_dart_opaque>)>>(
+                  MessagePort, ffi.Pointer<wire_enum_dart_opaque>)>>(
       'wire_get_enum_dart_opaque');
   late final _wire_get_enum_dart_opaque = _wire_get_enum_dart_opaquePtr
       .asFunction<void Function(int, ffi.Pointer<wire_enum_dart_opaque>)>();
@@ -2918,7 +2918,7 @@ class RustLibWire implements BaseWire {
   late final _wire_get_nested_dart_opaquePtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_dart_opaque_nested>)>>(
+                  MessagePort, ffi.Pointer<wire_dart_opaque_nested>)>>(
       'wire_get_nested_dart_opaque');
   late final _wire_get_nested_dart_opaque = _wire_get_nested_dart_opaquePtr
       .asFunction<void Function(int, ffi.Pointer<wire_dart_opaque_nested>)>();
@@ -2934,7 +2934,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_loop_backPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_DartOpaque)>>(
+          ffi.NativeFunction<ffi.Void Function(MessagePort, wire_DartOpaque)>>(
       'wire_loop_back');
   late final _wire_loop_back =
       _wire_loop_backPtr.asFunction<void Function(int, wire_DartOpaque)>();
@@ -2950,7 +2950,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_loop_back_arrayPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_DartOpaque)>>(
+          ffi.NativeFunction<ffi.Void Function(MessagePort, wire_DartOpaque)>>(
       'wire_loop_back_array');
   late final _wire_loop_back_array = _wire_loop_back_arrayPtr
       .asFunction<void Function(int, wire_DartOpaque)>();
@@ -2967,7 +2967,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_loop_back_array_getPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               ffi.Pointer<wire_list_DartOpaque>)>>('wire_loop_back_array_get');
   late final _wire_loop_back_array_get = _wire_loop_back_array_getPtr
       .asFunction<void Function(int, ffi.Pointer<wire_list_DartOpaque>)>();
@@ -2983,7 +2983,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_loop_back_optionPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_DartOpaque)>>(
+          ffi.NativeFunction<ffi.Void Function(MessagePort, wire_DartOpaque)>>(
       'wire_loop_back_option');
   late final _wire_loop_back_option = _wire_loop_back_optionPtr
       .asFunction<void Function(int, wire_DartOpaque)>();
@@ -3000,7 +3000,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_loop_back_option_getPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               ffi.Pointer<wire_DartOpaque>)>>('wire_loop_back_option_get');
   late final _wire_loop_back_option_get = _wire_loop_back_option_getPtr
       .asFunction<void Function(int, ffi.Pointer<wire_DartOpaque>)>();
@@ -3016,7 +3016,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_loop_back_vecPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_DartOpaque)>>(
+          ffi.NativeFunction<ffi.Void Function(MessagePort, wire_DartOpaque)>>(
       'wire_loop_back_vec');
   late final _wire_loop_back_vec =
       _wire_loop_back_vecPtr.asFunction<void Function(int, wire_DartOpaque)>();
@@ -3033,7 +3033,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_loop_back_vec_getPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               ffi.Pointer<wire_list_DartOpaque>)>>('wire_loop_back_vec_get');
   late final _wire_loop_back_vec_get = _wire_loop_back_vec_getPtr
       .asFunction<void Function(int, ffi.Pointer<wire_list_DartOpaque>)>();
@@ -3049,7 +3049,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_panic_unwrap_dart_opaquePtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_DartOpaque)>>(
+          ffi.NativeFunction<ffi.Void Function(MessagePort, wire_DartOpaque)>>(
       'wire_panic_unwrap_dart_opaque');
   late final _wire_panic_unwrap_dart_opaque = _wire_panic_unwrap_dart_opaquePtr
       .asFunction<void Function(int, wire_DartOpaque)>();
@@ -3065,7 +3065,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_set_static_dart_opaquePtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_DartOpaque)>>(
+          ffi.NativeFunction<ffi.Void Function(MessagePort, wire_DartOpaque)>>(
       'wire_set_static_dart_opaque');
   late final _wire_set_static_dart_opaque = _wire_set_static_dart_opaquePtr
       .asFunction<void Function(int, wire_DartOpaque)>();
@@ -3110,7 +3110,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_func_enum_simple_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort, ffi.Int32)>>(
           'wire_func_enum_simple_twin_normal');
   late final _wire_func_enum_simple_twin_normal =
       _wire_func_enum_simple_twin_normalPtr
@@ -3128,7 +3128,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_enum_with_item_mixed_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64,
+              ffi.Void Function(MessagePort,
                   ffi.Pointer<wire_enum_with_item_mixed_twin_normal>)>>(
       'wire_func_enum_with_item_mixed_twin_normal');
   late final _wire_func_enum_with_item_mixed_twin_normal =
@@ -3148,7 +3148,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_enum_with_item_struct_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64,
+              ffi.Void Function(MessagePort,
                   ffi.Pointer<wire_enum_with_item_struct_twin_normal>)>>(
       'wire_func_enum_with_item_struct_twin_normal');
   late final _wire_func_enum_with_item_struct_twin_normal =
@@ -3168,7 +3168,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_enum_with_item_tuple_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64,
+              ffi.Void Function(MessagePort,
                   ffi.Pointer<wire_enum_with_item_tuple_twin_normal>)>>(
       'wire_func_enum_with_item_tuple_twin_normal');
   late final _wire_func_enum_with_item_tuple_twin_normal =
@@ -3187,7 +3187,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_handle_enum_parameterPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort, ffi.Int32)>>(
           'wire_handle_enum_parameter');
   late final _wire_handle_enum_parameter =
       _wire_handle_enum_parameterPtr.asFunction<void Function(int, int)>();
@@ -3204,7 +3204,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_return_enumPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               ffi.Pointer<wire_list_prim_u_8>)>>('wire_handle_return_enum');
   late final _wire_handle_return_enum = _wire_handle_return_enumPtr
       .asFunction<void Function(int, ffi.Pointer<wire_list_prim_u_8>)>();
@@ -3222,7 +3222,7 @@ class RustLibWire implements BaseWire {
   late final _wire_multiply_by_tenPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              ffi.Int64, ffi.Pointer<wire_measure>)>>('wire_multiply_by_ten');
+              MessagePort, ffi.Pointer<wire_measure>)>>('wire_multiply_by_ten');
   late final _wire_multiply_by_ten = _wire_multiply_by_tenPtr
       .asFunction<void Function(int, ffi.Pointer<wire_measure>)>();
 
@@ -3239,7 +3239,7 @@ class RustLibWire implements BaseWire {
   late final _wire_print_notePtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              ffi.Int64, ffi.Pointer<wire_note>)>>('wire_print_note');
+              MessagePort, ffi.Pointer<wire_note>)>>('wire_print_note');
   late final _wire_print_note = _wire_print_notePtr
       .asFunction<void Function(int, ffi.Pointer<wire_note>)>();
 
@@ -3256,7 +3256,7 @@ class RustLibWire implements BaseWire {
   late final _wire_Event_as_stringPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              ffi.Int64, ffi.Pointer<wire_event>)>>('wire_Event_as_string');
+              MessagePort, ffi.Pointer<wire_event>)>>('wire_Event_as_string');
   late final _wire_Event_as_string = _wire_Event_as_stringPtr
       .asFunction<void Function(int, ffi.Pointer<wire_event>)>();
 
@@ -3269,7 +3269,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_close_event_listenerPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_close_event_listener');
   late final _wire_close_event_listener =
       _wire_close_event_listenerPtr.asFunction<void Function(int)>();
@@ -3288,7 +3288,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_create_eventPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_prim_u_8>,
+          ffi.Void Function(MessagePort, ffi.Pointer<wire_list_prim_u_8>,
               ffi.Pointer<wire_list_prim_u_8>)>>('wire_create_event');
   late final _wire_create_event = _wire_create_eventPtr.asFunction<
       void Function(int, ffi.Pointer<wire_list_prim_u_8>,
@@ -3303,7 +3303,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_register_event_listenerPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_register_event_listener');
   late final _wire_register_event_listener =
       _wire_register_event_listenerPtr.asFunction<void Function(int)>();
@@ -3317,7 +3317,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_custom_enum_error_panic_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_custom_enum_error_panic_twin_normal');
   late final _wire_custom_enum_error_panic_twin_normal =
       _wire_custom_enum_error_panic_twin_normalPtr
@@ -3332,7 +3332,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_custom_enum_error_return_error_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_custom_enum_error_return_error_twin_normal');
   late final _wire_custom_enum_error_return_error_twin_normal =
       _wire_custom_enum_error_return_error_twin_normalPtr
@@ -3349,7 +3349,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_custom_enum_error_return_ok_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort, ffi.Uint32)>>(
           'wire_custom_enum_error_return_ok_twin_normal');
   late final _wire_custom_enum_error_return_ok_twin_normal =
       _wire_custom_enum_error_return_ok_twin_normalPtr
@@ -3367,7 +3367,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_custom_nested_error_return_error_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64,
+              ffi.Void Function(MessagePort,
                   ffi.Pointer<wire_custom_nested_error_outer_twin_normal>)>>(
       'wire_custom_nested_error_return_error_twin_normal');
   late final _wire_custom_nested_error_return_error_twin_normal =
@@ -3387,7 +3387,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_custom_struct_error_return_error_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64,
+              ffi.Void Function(MessagePort,
                   ffi.Pointer<wire_custom_struct_error_twin_normal>)>>(
       'wire_custom_struct_error_return_error_twin_normal');
   late final _wire_custom_struct_error_return_error_twin_normal =
@@ -3404,7 +3404,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_func_return_error_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_func_return_error_twin_normal');
   late final _wire_func_return_error_twin_normal =
       _wire_func_return_error_twin_normalPtr.asFunction<void Function(int)>();
@@ -3418,7 +3418,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_func_type_fallible_panic_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_func_type_fallible_panic_twin_normal');
   late final _wire_func_type_fallible_panic_twin_normal =
       _wire_func_type_fallible_panic_twin_normalPtr
@@ -3433,7 +3433,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_func_type_infallible_panic_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_func_type_infallible_panic_twin_normal');
   late final _wire_func_type_infallible_panic_twin_normal =
       _wire_func_type_infallible_panic_twin_normalPtr
@@ -3448,7 +3448,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_call_new_module_systemPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_call_new_module_system');
   late final _wire_call_new_module_system =
       _wire_call_new_module_systemPtr.asFunction<void Function(int)>();
@@ -3462,7 +3462,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_call_old_module_systemPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_call_old_module_system');
   late final _wire_call_old_module_system =
       _wire_call_old_module_systemPtr.asFunction<void Function(int)>();
@@ -3478,7 +3478,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_use_imported_enumPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort, ffi.Int32)>>(
           'wire_use_imported_enum');
   late final _wire_use_imported_enum =
       _wire_use_imported_enumPtr.asFunction<void Function(int, int)>();
@@ -3495,7 +3495,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_use_imported_structPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               ffi.Pointer<wire_my_struct>)>>('wire_use_imported_struct');
   late final _wire_use_imported_struct = _wire_use_imported_structPtr
       .asFunction<void Function(int, ffi.Pointer<wire_my_struct>)>();
@@ -3512,7 +3512,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_macro_structPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               ffi.Pointer<wire_macro_struct>)>>('wire_func_macro_struct');
   late final _wire_func_macro_struct = _wire_func_macro_structPtr
       .asFunction<void Function(int, ffi.Pointer<wire_macro_struct>)>();
@@ -3531,7 +3531,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_ConcatenateWith_concatenatePtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_concatenate_with>,
+              ffi.Void Function(MessagePort, ffi.Pointer<wire_concatenate_with>,
                   ffi.Pointer<wire_list_prim_u_8>)>>(
       'wire_ConcatenateWith_concatenate');
   late final _wire_ConcatenateWith_concatenate =
@@ -3553,7 +3553,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_ConcatenateWith_concatenate_staticPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_prim_u_8>,
+              ffi.Void Function(MessagePort, ffi.Pointer<wire_list_prim_u_8>,
                   ffi.Pointer<wire_list_prim_u_8>)>>(
       'wire_ConcatenateWith_concatenate_static');
   late final _wire_ConcatenateWith_concatenate_static =
@@ -3575,7 +3575,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_ConcatenateWith_handle_some_static_stream_sinkPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>(
+              ffi.Void Function(MessagePort, ffi.Uint32, ffi.Uint32)>>(
       'wire_ConcatenateWith_handle_some_static_stream_sink');
   late final _wire_ConcatenateWith_handle_some_static_stream_sink =
       _wire_ConcatenateWith_handle_some_static_stream_sinkPtr
@@ -3590,7 +3590,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_ConcatenateWith_handle_some_static_stream_sink_single_argPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_ConcatenateWith_handle_some_static_stream_sink_single_arg');
   late final _wire_ConcatenateWith_handle_some_static_stream_sink_single_arg =
       _wire_ConcatenateWith_handle_some_static_stream_sink_single_argPtr
@@ -3613,7 +3613,7 @@ class RustLibWire implements BaseWire {
   late final _wire_ConcatenateWith_handle_some_stream_sinkPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              ffi.Int64,
+              MessagePort,
               ffi.Pointer<wire_concatenate_with>,
               ffi.Uint32,
               ffi.Uint32)>>('wire_ConcatenateWith_handle_some_stream_sink');
@@ -3634,7 +3634,7 @@ class RustLibWire implements BaseWire {
   late final _wire_ConcatenateWith_handle_some_stream_sink_at_1Ptr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_concatenate_with>)>>(
+                  MessagePort, ffi.Pointer<wire_concatenate_with>)>>(
       'wire_ConcatenateWith_handle_some_stream_sink_at_1');
   late final _wire_ConcatenateWith_handle_some_stream_sink_at_1 =
       _wire_ConcatenateWith_handle_some_stream_sink_at_1Ptr
@@ -3652,7 +3652,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_ConcatenateWith_newPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               ffi.Pointer<wire_list_prim_u_8>)>>('wire_ConcatenateWith_new');
   late final _wire_ConcatenateWith_new = _wire_ConcatenateWith_newPtr
       .asFunction<void Function(int, ffi.Pointer<wire_list_prim_u_8>)>();
@@ -3673,7 +3673,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_SumWith_sumPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_sum_with>, ffi.Uint32,
+          ffi.Void Function(MessagePort, ffi.Pointer<wire_sum_with>, ffi.Uint32,
               ffi.Uint32)>>('wire_SumWith_sum');
   late final _wire_SumWith_sum = _wire_SumWith_sumPtr
       .asFunction<void Function(int, ffi.Pointer<wire_sum_with>, int, int)>();
@@ -3694,7 +3694,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_get_sum_arrayPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32,
+          ffi.Void Function(MessagePort, ffi.Uint32, ffi.Uint32,
               ffi.Uint32)>>('wire_get_sum_array');
   late final _wire_get_sum_array =
       _wire_get_sum_arrayPtr.asFunction<void Function(int, int, int, int)>();
@@ -3708,7 +3708,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_get_sum_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_get_sum_struct');
   late final _wire_get_sum_struct =
       _wire_get_sum_structPtr.asFunction<void Function(int)>();
@@ -3722,7 +3722,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_app_settings_streamPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_app_settings_stream');
   late final _wire_app_settings_stream =
       _wire_app_settings_streamPtr.asFunction<void Function(int)>();
@@ -3736,7 +3736,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_app_settings_vec_streamPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_app_settings_vec_stream');
   late final _wire_app_settings_vec_stream =
       _wire_app_settings_vec_streamPtr.asFunction<void Function(int)>();
@@ -3754,7 +3754,7 @@ class RustLibWire implements BaseWire {
   late final _wire_first_numberPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              ffi.Int64, ffi.Pointer<wire_numbers>)>>('wire_first_number');
+              MessagePort, ffi.Pointer<wire_numbers>)>>('wire_first_number');
   late final _wire_first_number = _wire_first_numberPtr
       .asFunction<void Function(int, ffi.Pointer<wire_numbers>)>();
 
@@ -3770,8 +3770,8 @@ class RustLibWire implements BaseWire {
 
   late final _wire_first_sequencePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Int64, ffi.Pointer<wire_sequences>)>>('wire_first_sequence');
+          ffi.Void Function(MessagePort,
+              ffi.Pointer<wire_sequences>)>>('wire_first_sequence');
   late final _wire_first_sequence = _wire_first_sequencePtr
       .asFunction<void Function(int, ffi.Pointer<wire_sequences>)>();
 
@@ -3784,7 +3784,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_get_app_settingsPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_get_app_settings');
   late final _wire_get_app_settings =
       _wire_get_app_settingsPtr.asFunction<void Function(int)>();
@@ -3798,7 +3798,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_get_fallible_app_settingsPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_get_fallible_app_settings');
   late final _wire_get_fallible_app_settings =
       _wire_get_fallible_app_settingsPtr.asFunction<void Function(int)>();
@@ -3812,7 +3812,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_get_messagePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_get_message');
   late final _wire_get_message =
       _wire_get_messagePtr.asFunction<void Function(int)>();
@@ -3829,7 +3829,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_is_app_embeddedPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               ffi.Pointer<wire_application_settings>)>>('wire_is_app_embedded');
   late final _wire_is_app_embedded = _wire_is_app_embeddedPtr
       .asFunction<void Function(int, ffi.Pointer<wire_application_settings>)>();
@@ -3843,7 +3843,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_mirror_struct_streamPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_mirror_struct_stream');
   late final _wire_mirror_struct_stream =
       _wire_mirror_struct_streamPtr.asFunction<void Function(int)>();
@@ -3857,7 +3857,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_mirror_tuple_streamPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_mirror_tuple_stream');
   late final _wire_mirror_tuple_stream =
       _wire_mirror_tuple_streamPtr.asFunction<void Function(int)>();
@@ -3877,7 +3877,7 @@ class RustLibWire implements BaseWire {
   late final _wire_repeat_numberPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              ffi.Int64, ffi.Int32, ffi.UintPtr)>>('wire_repeat_number');
+              MessagePort, ffi.Int32, ffi.UintPtr)>>('wire_repeat_number');
   late final _wire_repeat_number =
       _wire_repeat_numberPtr.asFunction<void Function(int, int, int)>();
 
@@ -3896,7 +3896,7 @@ class RustLibWire implements BaseWire {
   late final _wire_repeat_sequencePtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              ffi.Int64, ffi.Int32, ffi.UintPtr)>>('wire_repeat_sequence');
+              MessagePort, ffi.Int32, ffi.UintPtr)>>('wire_repeat_sequence');
   late final _wire_repeat_sequence =
       _wire_repeat_sequencePtr.asFunction<void Function(int, int, int)>();
 
@@ -3909,7 +3909,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_test_contains_mirrored_sub_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_test_contains_mirrored_sub_struct');
   late final _wire_test_contains_mirrored_sub_struct =
       _wire_test_contains_mirrored_sub_structPtr
@@ -3924,7 +3924,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_test_fallible_of_raw_string_mirroredPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_test_fallible_of_raw_string_mirrored');
   late final _wire_test_fallible_of_raw_string_mirrored =
       _wire_test_fallible_of_raw_string_mirroredPtr
@@ -3939,7 +3939,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_test_list_of_nested_enums_mirroredPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_test_list_of_nested_enums_mirrored');
   late final _wire_test_list_of_nested_enums_mirrored =
       _wire_test_list_of_nested_enums_mirroredPtr
@@ -3954,7 +3954,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_test_list_of_raw_nested_string_mirroredPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_test_list_of_raw_nested_string_mirrored');
   late final _wire_test_list_of_raw_nested_string_mirrored =
       _wire_test_list_of_raw_nested_string_mirroredPtr
@@ -3969,7 +3969,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_test_nested_raw_string_mirroredPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_test_nested_raw_string_mirrored');
   late final _wire_test_nested_raw_string_mirrored =
       _wire_test_nested_raw_string_mirroredPtr.asFunction<void Function(int)>();
@@ -3985,7 +3985,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_test_raw_string_enum_mirroredPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Bool)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort, ffi.Bool)>>(
           'wire_test_raw_string_enum_mirrored');
   late final _wire_test_raw_string_enum_mirrored =
       _wire_test_raw_string_enum_mirroredPtr
@@ -4000,7 +4000,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_test_raw_string_mirroredPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_test_raw_string_mirrored');
   late final _wire_test_raw_string_mirrored =
       _wire_test_raw_string_mirroredPtr.asFunction<void Function(int)>();
@@ -4014,7 +4014,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_handle_big_buffersPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_handle_big_buffers');
   late final _wire_handle_big_buffers =
       _wire_handle_big_buffersPtr.asFunction<void Function(int)>();
@@ -4031,7 +4031,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_complex_structPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               ffi.Pointer<wire_my_tree_node>)>>('wire_handle_complex_struct');
   late final _wire_handle_complex_struct = _wire_handle_complex_structPtr
       .asFunction<void Function(int, ffi.Pointer<wire_my_tree_node>)>();
@@ -4049,7 +4049,7 @@ class RustLibWire implements BaseWire {
   late final _wire_handle_nested_structPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_my_nested_struct>)>>(
+                  MessagePort, ffi.Pointer<wire_my_nested_struct>)>>(
       'wire_handle_nested_struct');
   late final _wire_handle_nested_struct = _wire_handle_nested_structPtr
       .asFunction<void Function(int, ffi.Pointer<wire_my_nested_struct>)>();
@@ -4066,7 +4066,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_list_of_primitive_enumsPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_weekdays>)>>(
+              ffi.Void Function(MessagePort, ffi.Pointer<wire_list_weekdays>)>>(
       'wire_list_of_primitive_enums');
   late final _wire_list_of_primitive_enums = _wire_list_of_primitive_enumsPtr
       .asFunction<void Function(int, ffi.Pointer<wire_list_weekdays>)>();
@@ -4082,9 +4082,9 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_test_abc_enumPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_abc>)>>(
-      'wire_test_abc_enum');
+      ffi.NativeFunction<
+          ffi.Void Function(
+              MessagePort, ffi.Pointer<wire_abc>)>>('wire_test_abc_enum');
   late final _wire_test_abc_enum = _wire_test_abc_enumPtr
       .asFunction<void Function(int, ffi.Pointer<wire_abc>)>();
 
@@ -4101,7 +4101,7 @@ class RustLibWire implements BaseWire {
   late final _wire_test_struct_with_enumPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_struct_with_enum>)>>(
+                  MessagePort, ffi.Pointer<wire_struct_with_enum>)>>(
       'wire_test_struct_with_enum');
   late final _wire_test_struct_with_enum = _wire_test_struct_with_enumPtr
       .asFunction<void Function(int, ffi.Pointer<wire_struct_with_enum>)>();
@@ -4115,7 +4115,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_func_return_unit_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_func_return_unit_twin_normal');
   late final _wire_func_return_unit_twin_normal =
       _wire_func_return_unit_twin_normalPtr.asFunction<void Function(int)>();
@@ -4132,7 +4132,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_string_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_prim_u_8>)>>(
+              ffi.Void Function(MessagePort, ffi.Pointer<wire_list_prim_u_8>)>>(
       'wire_func_string_twin_normal');
   late final _wire_func_string_twin_normal = _wire_func_string_twin_normalPtr
       .asFunction<void Function(int, ffi.Pointer<wire_list_prim_u_8>)>();
@@ -4149,7 +4149,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_list_of_structPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               ffi.Pointer<wire_list_my_size>)>>('wire_handle_list_of_struct');
   late final _wire_handle_list_of_struct = _wire_handle_list_of_structPtr
       .asFunction<void Function(int, ffi.Pointer<wire_list_my_size>)>();
@@ -4166,7 +4166,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_string_listPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               ffi.Pointer<wire_StringList>)>>('wire_handle_string_list');
   late final _wire_handle_string_list = _wire_handle_string_listPtr
       .asFunction<void Function(int, ffi.Pointer<wire_StringList>)>();
@@ -4183,7 +4183,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_newtypePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               ffi.Pointer<wire_new_type_int>)>>('wire_handle_newtype');
   late final _wire_handle_newtype = _wire_handle_newtypePtr
       .asFunction<void Function(int, ffi.Pointer<wire_new_type_int>)>();
@@ -4200,7 +4200,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_increment_boxed_optionalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Double>)>>(
+              ffi.Void Function(MessagePort, ffi.Pointer<ffi.Double>)>>(
       'wire_handle_increment_boxed_optional');
   late final _wire_handle_increment_boxed_optional =
       _wire_handle_increment_boxed_optionalPtr
@@ -4231,7 +4231,7 @@ class RustLibWire implements BaseWire {
   late final _wire_handle_option_box_argumentsPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
-                  ffi.Int64,
+                  MessagePort,
                   ffi.Pointer<ffi.Int8>,
                   ffi.Pointer<ffi.Uint8>,
                   ffi.Pointer<ffi.Int32>,
@@ -4265,7 +4265,7 @@ class RustLibWire implements BaseWire {
   late final _wire_handle_optional_incrementPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_exotic_optionals>)>>(
+                  MessagePort, ffi.Pointer<wire_exotic_optionals>)>>(
       'wire_handle_optional_increment');
   late final _wire_handle_optional_increment =
       _wire_handle_optional_incrementPtr
@@ -4285,7 +4285,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_optional_returnPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Double,
+          ffi.Void Function(MessagePort, ffi.Double,
               ffi.Double)>>('wire_handle_optional_return');
   late final _wire_handle_optional_return = _wire_handle_optional_returnPtr
       .asFunction<void Function(int, double, double)>();
@@ -4302,7 +4302,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_optional_structPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               ffi.Pointer<wire_list_prim_u_8>)>>('wire_handle_optional_struct');
   late final _wire_handle_optional_struct = _wire_handle_optional_structPtr
       .asFunction<void Function(int, ffi.Pointer<wire_list_prim_u_8>)>();
@@ -4319,7 +4319,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_vec_of_optsPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               ffi.Pointer<wire_opt_vecs>)>>('wire_handle_vec_of_opts');
   late final _wire_handle_vec_of_opts = _wire_handle_vec_of_optsPtr
       .asFunction<void Function(int, ffi.Pointer<wire_opt_vecs>)>();
@@ -4603,7 +4603,7 @@ class RustLibWire implements BaseWire {
   late final _wire_example_optional_primitive_type_bool_twin_normalPtr =
       _lookup<
               ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Bool>)>>(
+                  ffi.Void Function(MessagePort, ffi.Pointer<ffi.Bool>)>>(
           'wire_example_optional_primitive_type_bool_twin_normal');
   late final _wire_example_optional_primitive_type_bool_twin_normal =
       _wire_example_optional_primitive_type_bool_twin_normalPtr
@@ -4621,7 +4621,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_optional_primitive_type_f32_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Float>)>>(
+              ffi.Void Function(MessagePort, ffi.Pointer<ffi.Float>)>>(
       'wire_example_optional_primitive_type_f32_twin_normal');
   late final _wire_example_optional_primitive_type_f32_twin_normal =
       _wire_example_optional_primitive_type_f32_twin_normalPtr
@@ -4639,7 +4639,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_optional_primitive_type_f64_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Double>)>>(
+              ffi.Void Function(MessagePort, ffi.Pointer<ffi.Double>)>>(
       'wire_example_optional_primitive_type_f64_twin_normal');
   late final _wire_example_optional_primitive_type_f64_twin_normal =
       _wire_example_optional_primitive_type_f64_twin_normalPtr
@@ -4657,7 +4657,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_optional_primitive_type_i16_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Int16>)>>(
+              ffi.Void Function(MessagePort, ffi.Pointer<ffi.Int16>)>>(
       'wire_example_optional_primitive_type_i16_twin_normal');
   late final _wire_example_optional_primitive_type_i16_twin_normal =
       _wire_example_optional_primitive_type_i16_twin_normalPtr
@@ -4675,7 +4675,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_optional_primitive_type_i32_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Int32>)>>(
+              ffi.Void Function(MessagePort, ffi.Pointer<ffi.Int32>)>>(
       'wire_example_optional_primitive_type_i32_twin_normal');
   late final _wire_example_optional_primitive_type_i32_twin_normal =
       _wire_example_optional_primitive_type_i32_twin_normalPtr
@@ -4693,7 +4693,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_optional_primitive_type_i64_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Int64>)>>(
+              ffi.Void Function(MessagePort, ffi.Pointer<ffi.Int64>)>>(
       'wire_example_optional_primitive_type_i64_twin_normal');
   late final _wire_example_optional_primitive_type_i64_twin_normal =
       _wire_example_optional_primitive_type_i64_twin_normalPtr
@@ -4710,8 +4710,8 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_optional_primitive_type_i8_twin_normalPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Int8>)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(MessagePort, ffi.Pointer<ffi.Int8>)>>(
       'wire_example_optional_primitive_type_i8_twin_normal');
   late final _wire_example_optional_primitive_type_i8_twin_normal =
       _wire_example_optional_primitive_type_i8_twin_normalPtr
@@ -4729,7 +4729,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_optional_primitive_type_u16_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint16>)>>(
+              ffi.Void Function(MessagePort, ffi.Pointer<ffi.Uint16>)>>(
       'wire_example_optional_primitive_type_u16_twin_normal');
   late final _wire_example_optional_primitive_type_u16_twin_normal =
       _wire_example_optional_primitive_type_u16_twin_normalPtr
@@ -4747,7 +4747,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_optional_primitive_type_u32_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint32>)>>(
+              ffi.Void Function(MessagePort, ffi.Pointer<ffi.Uint32>)>>(
       'wire_example_optional_primitive_type_u32_twin_normal');
   late final _wire_example_optional_primitive_type_u32_twin_normal =
       _wire_example_optional_primitive_type_u32_twin_normalPtr
@@ -4765,7 +4765,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_optional_primitive_type_u64_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint64>)>>(
+              ffi.Void Function(MessagePort, ffi.Pointer<ffi.Uint64>)>>(
       'wire_example_optional_primitive_type_u64_twin_normal');
   late final _wire_example_optional_primitive_type_u64_twin_normal =
       _wire_example_optional_primitive_type_u64_twin_normalPtr
@@ -4783,7 +4783,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_optional_primitive_type_u8_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>)>>(
+              ffi.Void Function(MessagePort, ffi.Pointer<ffi.Uint8>)>>(
       'wire_example_optional_primitive_type_u8_twin_normal');
   late final _wire_example_optional_primitive_type_u8_twin_normal =
       _wire_example_optional_primitive_type_u8_twin_normalPtr
@@ -4965,7 +4965,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_primitive_type_bool_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Bool)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort, ffi.Bool)>>(
           'wire_example_primitive_type_bool_twin_normal');
   late final _wire_example_primitive_type_bool_twin_normal =
       _wire_example_primitive_type_bool_twin_normalPtr
@@ -4982,7 +4982,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_primitive_type_f32_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Float)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort, ffi.Float)>>(
           'wire_example_primitive_type_f32_twin_normal');
   late final _wire_example_primitive_type_f32_twin_normal =
       _wire_example_primitive_type_f32_twin_normalPtr
@@ -4999,7 +4999,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_primitive_type_f64_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Double)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort, ffi.Double)>>(
           'wire_example_primitive_type_f64_twin_normal');
   late final _wire_example_primitive_type_f64_twin_normal =
       _wire_example_primitive_type_f64_twin_normalPtr
@@ -5016,7 +5016,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_primitive_type_i16_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int16)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort, ffi.Int16)>>(
           'wire_example_primitive_type_i16_twin_normal');
   late final _wire_example_primitive_type_i16_twin_normal =
       _wire_example_primitive_type_i16_twin_normalPtr
@@ -5033,7 +5033,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_primitive_type_i32_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort, ffi.Int32)>>(
           'wire_example_primitive_type_i32_twin_normal');
   late final _wire_example_primitive_type_i32_twin_normal =
       _wire_example_primitive_type_i32_twin_normalPtr
@@ -5050,7 +5050,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_primitive_type_i64_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort, ffi.Int64)>>(
           'wire_example_primitive_type_i64_twin_normal');
   late final _wire_example_primitive_type_i64_twin_normal =
       _wire_example_primitive_type_i64_twin_normalPtr
@@ -5067,7 +5067,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_primitive_type_i8_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int8)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort, ffi.Int8)>>(
           'wire_example_primitive_type_i8_twin_normal');
   late final _wire_example_primitive_type_i8_twin_normal =
       _wire_example_primitive_type_i8_twin_normalPtr
@@ -5084,7 +5084,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_primitive_type_u16_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint16)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort, ffi.Uint16)>>(
           'wire_example_primitive_type_u16_twin_normal');
   late final _wire_example_primitive_type_u16_twin_normal =
       _wire_example_primitive_type_u16_twin_normalPtr
@@ -5101,7 +5101,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_primitive_type_u32_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort, ffi.Uint32)>>(
           'wire_example_primitive_type_u32_twin_normal');
   late final _wire_example_primitive_type_u32_twin_normal =
       _wire_example_primitive_type_u32_twin_normalPtr
@@ -5118,7 +5118,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_primitive_type_u64_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort, ffi.Uint64)>>(
           'wire_example_primitive_type_u64_twin_normal');
   late final _wire_example_primitive_type_u64_twin_normal =
       _wire_example_primitive_type_u64_twin_normalPtr
@@ -5135,7 +5135,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_example_primitive_type_u8_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint8)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort, ffi.Uint8)>>(
           'wire_example_primitive_type_u8_twin_normal');
   late final _wire_example_primitive_type_u8_twin_normal =
       _wire_example_primitive_type_u8_twin_normalPtr
@@ -5153,7 +5153,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_primitive_list_type_bool_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_bool>)>>(
+              ffi.Void Function(MessagePort, ffi.Pointer<wire_list_bool>)>>(
       'wire_example_primitive_list_type_bool_twin_normal');
   late final _wire_example_primitive_list_type_bool_twin_normal =
       _wire_example_primitive_list_type_bool_twin_normalPtr
@@ -5171,7 +5171,8 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_primitive_list_type_f32_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_prim_f_32>)>>(
+              ffi.Void Function(
+                  MessagePort, ffi.Pointer<wire_list_prim_f_32>)>>(
       'wire_example_primitive_list_type_f32_twin_normal');
   late final _wire_example_primitive_list_type_f32_twin_normal =
       _wire_example_primitive_list_type_f32_twin_normalPtr
@@ -5189,7 +5190,8 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_primitive_list_type_f64_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_prim_f_64>)>>(
+              ffi.Void Function(
+                  MessagePort, ffi.Pointer<wire_list_prim_f_64>)>>(
       'wire_example_primitive_list_type_f64_twin_normal');
   late final _wire_example_primitive_list_type_f64_twin_normal =
       _wire_example_primitive_list_type_f64_twin_normalPtr
@@ -5207,7 +5209,8 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_primitive_list_type_i16_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_prim_i_16>)>>(
+              ffi.Void Function(
+                  MessagePort, ffi.Pointer<wire_list_prim_i_16>)>>(
       'wire_example_primitive_list_type_i16_twin_normal');
   late final _wire_example_primitive_list_type_i16_twin_normal =
       _wire_example_primitive_list_type_i16_twin_normalPtr
@@ -5225,7 +5228,8 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_primitive_list_type_i32_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_prim_i_32>)>>(
+              ffi.Void Function(
+                  MessagePort, ffi.Pointer<wire_list_prim_i_32>)>>(
       'wire_example_primitive_list_type_i32_twin_normal');
   late final _wire_example_primitive_list_type_i32_twin_normal =
       _wire_example_primitive_list_type_i32_twin_normalPtr
@@ -5243,7 +5247,8 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_primitive_list_type_i64_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_prim_i_64>)>>(
+              ffi.Void Function(
+                  MessagePort, ffi.Pointer<wire_list_prim_i_64>)>>(
       'wire_example_primitive_list_type_i64_twin_normal');
   late final _wire_example_primitive_list_type_i64_twin_normal =
       _wire_example_primitive_list_type_i64_twin_normalPtr
@@ -5261,7 +5266,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_primitive_list_type_i8_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_prim_i_8>)>>(
+              ffi.Void Function(MessagePort, ffi.Pointer<wire_list_prim_i_8>)>>(
       'wire_example_primitive_list_type_i8_twin_normal');
   late final _wire_example_primitive_list_type_i8_twin_normal =
       _wire_example_primitive_list_type_i8_twin_normalPtr
@@ -5279,7 +5284,8 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_primitive_list_type_u16_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_prim_u_16>)>>(
+              ffi.Void Function(
+                  MessagePort, ffi.Pointer<wire_list_prim_u_16>)>>(
       'wire_example_primitive_list_type_u16_twin_normal');
   late final _wire_example_primitive_list_type_u16_twin_normal =
       _wire_example_primitive_list_type_u16_twin_normalPtr
@@ -5297,7 +5303,8 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_primitive_list_type_u32_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_prim_u_32>)>>(
+              ffi.Void Function(
+                  MessagePort, ffi.Pointer<wire_list_prim_u_32>)>>(
       'wire_example_primitive_list_type_u32_twin_normal');
   late final _wire_example_primitive_list_type_u32_twin_normal =
       _wire_example_primitive_list_type_u32_twin_normalPtr
@@ -5315,7 +5322,8 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_primitive_list_type_u64_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_prim_u_64>)>>(
+              ffi.Void Function(
+                  MessagePort, ffi.Pointer<wire_list_prim_u_64>)>>(
       'wire_example_primitive_list_type_u64_twin_normal');
   late final _wire_example_primitive_list_type_u64_twin_normal =
       _wire_example_primitive_list_type_u64_twin_normalPtr
@@ -5333,7 +5341,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_example_primitive_list_type_u8_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_prim_u_8>)>>(
+              ffi.Void Function(MessagePort, ffi.Pointer<wire_list_prim_u_8>)>>(
       'wire_example_primitive_list_type_u8_twin_normal');
   late final _wire_example_primitive_list_type_u8_twin_normal =
       _wire_example_primitive_list_type_u8_twin_normalPtr
@@ -5795,7 +5803,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_test_more_than_just_one_raw_string_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_test_more_than_just_one_raw_string_struct');
   late final _wire_test_more_than_just_one_raw_string_struct =
       _wire_test_more_than_just_one_raw_string_structPtr
@@ -5810,7 +5818,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_test_raw_string_item_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_test_raw_string_item_struct');
   late final _wire_test_raw_string_item_struct =
       _wire_test_raw_string_item_structPtr.asFunction<void Function(int)>();
@@ -5824,7 +5832,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_create_array_opaque_enumPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_create_array_opaque_enum');
   late final _wire_create_array_opaque_enum =
       _wire_create_array_opaque_enumPtr.asFunction<void Function(int)>();
@@ -5838,7 +5846,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_create_nested_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_create_nested_opaque');
   late final _wire_create_nested_opaque =
       _wire_create_nested_opaquePtr.asFunction<void Function(int)>();
@@ -5852,7 +5860,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_create_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_create_opaque');
   late final _wire_create_opaque =
       _wire_create_opaquePtr.asFunction<void Function(int)>();
@@ -5870,7 +5878,7 @@ class RustLibWire implements BaseWire {
   late final _wire_create_option_opaquePtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_RustOpaque_hide_data>)>>(
+                  MessagePort, ffi.Pointer<wire_RustOpaque_hide_data>)>>(
       'wire_create_option_opaque');
   late final _wire_create_option_opaque = _wire_create_option_opaquePtr
       .asFunction<void Function(int, ffi.Pointer<wire_RustOpaque_hide_data>)>();
@@ -5884,7 +5892,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_create_sync_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_create_sync_opaque');
   late final _wire_create_sync_opaque =
       _wire_create_sync_opaquePtr.asFunction<void Function(int)>();
@@ -5898,7 +5906,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_frb_generator_testPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_frb_generator_test');
   late final _wire_frb_generator_test =
       _wire_frb_generator_testPtr.asFunction<void Function(int)>();
@@ -5912,7 +5920,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_opaque_arrayPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_opaque_array');
   late final _wire_opaque_array =
       _wire_opaque_arrayPtr.asFunction<void Function(int)>();
@@ -5930,7 +5938,7 @@ class RustLibWire implements BaseWire {
   late final _wire_opaque_array_runPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_list_RustOpaque_hide_data>)>>(
+                  MessagePort, ffi.Pointer<wire_list_RustOpaque_hide_data>)>>(
       'wire_opaque_array_run');
   late final _wire_opaque_array_run = _wire_opaque_array_runPtr.asFunction<
       void Function(int, ffi.Pointer<wire_list_RustOpaque_hide_data>)>();
@@ -5944,7 +5952,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_opaque_vecPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_opaque_vec');
   late final _wire_opaque_vec =
       _wire_opaque_vecPtr.asFunction<void Function(int)>();
@@ -5962,7 +5970,7 @@ class RustLibWire implements BaseWire {
   late final _wire_opaque_vec_runPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_list_RustOpaque_hide_data>)>>(
+                  MessagePort, ffi.Pointer<wire_list_RustOpaque_hide_data>)>>(
       'wire_opaque_vec_run');
   late final _wire_opaque_vec_run = _wire_opaque_vec_runPtr.asFunction<
       void Function(int, ffi.Pointer<wire_list_RustOpaque_hide_data>)>();
@@ -5979,7 +5987,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_run_enum_opaquePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               ffi.Pointer<wire_enum_opaque>)>>('wire_run_enum_opaque');
   late final _wire_run_enum_opaque = _wire_run_enum_opaquePtr
       .asFunction<void Function(int, ffi.Pointer<wire_enum_opaque>)>();
@@ -5996,7 +6004,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_run_nested_opaquePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               ffi.Pointer<wire_opaque_nested>)>>('wire_run_nested_opaque');
   late final _wire_run_nested_opaque = _wire_run_nested_opaquePtr
       .asFunction<void Function(int, ffi.Pointer<wire_opaque_nested>)>();
@@ -6013,7 +6021,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_run_non_clonePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               wire_RustOpaque_non_clone_data)>>('wire_run_non_clone');
   late final _wire_run_non_clone = _wire_run_non_clonePtr
       .asFunction<void Function(int, wire_RustOpaque_non_clone_data)>();
@@ -6031,7 +6039,7 @@ class RustLibWire implements BaseWire {
   late final _wire_run_opaquePtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              ffi.Int64, wire_RustOpaque_hide_data)>>('wire_run_opaque');
+              MessagePort, wire_RustOpaque_hide_data)>>('wire_run_opaque');
   late final _wire_run_opaque = _wire_run_opaquePtr
       .asFunction<void Function(int, wire_RustOpaque_hide_data)>();
 
@@ -6047,7 +6055,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_run_opaque_with_delayPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               wire_RustOpaque_hide_data)>>('wire_run_opaque_with_delay');
   late final _wire_run_opaque_with_delay = _wire_run_opaque_with_delayPtr
       .asFunction<void Function(int, wire_RustOpaque_hide_data)>();
@@ -6064,7 +6072,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_unwrap_rust_opaquePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               wire_RustOpaque_hide_data)>>('wire_unwrap_rust_opaque');
   late final _wire_unwrap_rust_opaque = _wire_unwrap_rust_opaquePtr
       .asFunction<void Function(int, wire_RustOpaque_hide_data)>();
@@ -6078,7 +6086,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_frb_sync_generator_testPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_frb_sync_generator_test');
   late final _wire_frb_sync_generator_test =
       _wire_frb_sync_generator_testPtr.asFunction<void Function(int)>();
@@ -6111,9 +6119,9 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_simple_adder_twin_normalPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>(
-      'wire_simple_adder_twin_normal');
+      ffi.NativeFunction<
+          ffi.Void Function(MessagePort, ffi.Int32,
+              ffi.Int32)>>('wire_simple_adder_twin_normal');
   late final _wire_simple_adder_twin_normal = _wire_simple_adder_twin_normalPtr
       .asFunction<void Function(int, int, int)>();
 
@@ -6129,7 +6137,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_stream_realistic_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_prim_u_8>)>>(
+              ffi.Void Function(MessagePort, ffi.Pointer<wire_list_prim_u_8>)>>(
       'wire_func_stream_realistic_twin_normal');
   late final _wire_func_stream_realistic_twin_normal =
       _wire_func_stream_realistic_twin_normalPtr
@@ -6144,7 +6152,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_func_stream_return_error_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_func_stream_return_error_twin_normal');
   late final _wire_func_stream_return_error_twin_normal =
       _wire_func_stream_return_error_twin_normalPtr
@@ -6159,7 +6167,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_func_stream_return_panic_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_func_stream_return_panic_twin_normal');
   late final _wire_func_stream_return_panic_twin_normal =
       _wire_func_stream_return_panic_twin_normalPtr
@@ -6179,7 +6187,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_stream_sink_arg_position_twin_normalPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Uint32,
+          ffi.Void Function(MessagePort, ffi.Uint32,
               ffi.Uint32)>>('wire_func_stream_sink_arg_position_twin_normal');
   late final _wire_func_stream_sink_arg_position_twin_normal =
       _wire_func_stream_sink_arg_position_twin_normalPtr
@@ -6194,7 +6202,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_handle_stream_of_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort)>>(
           'wire_handle_stream_of_struct');
   late final _wire_handle_stream_of_struct =
       _wire_handle_stream_of_structPtr.asFunction<void Function(int)>();
@@ -6211,7 +6219,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_struct_with_one_field_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64,
+              ffi.Void Function(MessagePort,
                   ffi.Pointer<wire_struct_with_one_field_twin_normal>)>>(
       'wire_func_struct_with_one_field_twin_normal');
   late final _wire_func_struct_with_one_field_twin_normal =
@@ -6231,7 +6239,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_struct_with_two_field_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64,
+              ffi.Void Function(MessagePort,
                   ffi.Pointer<wire_struct_with_two_field_twin_normal>)>>(
       'wire_func_struct_with_two_field_twin_normal');
   late final _wire_func_struct_with_two_field_twin_normal =
@@ -6251,7 +6259,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_struct_with_zero_field_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64,
+              ffi.Void Function(MessagePort,
                   ffi.Pointer<wire_struct_with_zero_field_twin_normal>)>>(
       'wire_func_struct_with_zero_field_twin_normal');
   late final _wire_func_struct_with_zero_field_twin_normal =
@@ -6271,7 +6279,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_tuple_struct_with_one_field_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64,
+              ffi.Void Function(MessagePort,
                   ffi.Pointer<wire_tuple_struct_with_one_field_twin_normal>)>>(
       'wire_func_tuple_struct_with_one_field_twin_normal');
   late final _wire_func_tuple_struct_with_one_field_twin_normal =
@@ -6291,7 +6299,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_func_tuple_struct_with_two_field_twin_normalPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64,
+              ffi.Void Function(MessagePort,
                   ffi.Pointer<wire_tuple_struct_with_two_field_twin_normal>)>>(
       'wire_func_tuple_struct_with_two_field_twin_normal');
   late final _wire_func_tuple_struct_with_two_field_twin_normal =
@@ -6311,7 +6319,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_test_tuplePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               ffi.Pointer<wire_record_string_i_32>)>>('wire_test_tuple');
   late final _wire_test_tuple = _wire_test_tuplePtr
       .asFunction<void Function(int, ffi.Pointer<wire_record_string_i_32>)>();
@@ -6328,7 +6336,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_test_tuple_2Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               ffi.Pointer<wire_list_record_string_i_32>)>>('wire_test_tuple_2');
   late final _wire_test_tuple_2 = _wire_test_tuple_2Ptr.asFunction<
       void Function(int, ffi.Pointer<wire_list_record_string_i_32>)>();
@@ -6344,7 +6352,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_handle_type_alias_idPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort, ffi.Uint64)>>(
           'wire_handle_type_alias_id');
   late final _wire_handle_type_alias_id =
       _wire_handle_type_alias_idPtr.asFunction<void Function(int, int)>();
@@ -6360,7 +6368,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_handle_type_alias_modelPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort, ffi.Uint64)>>(
           'wire_handle_type_alias_model');
   late final _wire_handle_type_alias_model =
       _wire_handle_type_alias_modelPtr.asFunction<void Function(int, int)>();
@@ -6376,7 +6384,7 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_handle_type_nest_alias_idPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(MessagePort, ffi.Uint64)>>(
           'wire_handle_type_nest_alias_id');
   late final _wire_handle_type_nest_alias_id =
       _wire_handle_type_nest_alias_idPtr.asFunction<void Function(int, int)>();
@@ -6393,7 +6401,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_nested_uuidsPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               ffi.Pointer<wire_feature_uuid>)>>('wire_handle_nested_uuids');
   late final _wire_handle_nested_uuids = _wire_handle_nested_uuidsPtr
       .asFunction<void Function(int, ffi.Pointer<wire_feature_uuid>)>();
@@ -6410,8 +6418,8 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_uuidPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Int64, ffi.Pointer<wire_list_prim_u_8>)>>('wire_handle_uuid');
+          ffi.Void Function(MessagePort,
+              ffi.Pointer<wire_list_prim_u_8>)>>('wire_handle_uuid');
   late final _wire_handle_uuid = _wire_handle_uuidPtr
       .asFunction<void Function(int, ffi.Pointer<wire_list_prim_u_8>)>();
 
@@ -6427,7 +6435,7 @@ class RustLibWire implements BaseWire {
 
   late final _wire_handle_uuidsPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
+          ffi.Void Function(MessagePort,
               ffi.Pointer<wire_list_prim_u_8>)>>('wire_handle_uuids');
   late final _wire_handle_uuids = _wire_handle_uuidsPtr
       .asFunction<void Function(int, ffi.Pointer<wire_list_prim_u_8>)>();
@@ -9531,3 +9539,5 @@ final class wire_feature_uuid extends ffi.Struct {
 
   external ffi.Pointer<wire_list_prim_u_8> many;
 }
+
+typedef MessagePort = ffi.Int64;
