@@ -12,6 +12,7 @@ use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::function_extractor::GeneralizedItemFn;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::{TypeParser, TypeParserParsingContext};
+use crate::library::codegen::ir::ty::IrTypeTrait;
 use anyhow::{bail, Context};
 use itertools::concat;
 use log::debug;
@@ -87,11 +88,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     }
 
     fn parse_owner(
-        &self,
+        &mut self,
         item_fn: &GeneralizedItemFn,
         context: &TypeParserParsingContext,
     ) -> anyhow::Result<Option<IrFuncOwnerInfo>> {
-        Some(match item_fn {
+        Ok(Some(match item_fn {
             GeneralizedItemFn::Function { .. } => IrFuncOwnerInfo::Function,
             GeneralizedItemFn::Method {
                 item_impl,
@@ -107,7 +108,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     if let Some(x) = self.parse_enum_or_struct_name(item_impl, context)? {
                         x
                     } else {
-                        return None;
+                        return Ok(None);
                     };
 
                 IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod {
@@ -116,11 +117,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     mode,
                 })
             }
-        })
+        }))
     }
 
     fn parse_enum_or_struct_name(
-        &self,
+        &mut self,
         item_impl: &ItemImpl,
         context: &TypeParserParsingContext,
     ) -> anyhow::Result<Option<NamespacedName>> {
