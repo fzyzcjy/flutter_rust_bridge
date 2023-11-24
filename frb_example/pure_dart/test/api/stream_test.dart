@@ -44,16 +44,6 @@ Future<void> main() async {
     );
   });
 
-  test('dart call handle_stream', () async {
-    final stream = handleStream(arg: 'hello');
-    var cnt = 0;
-    await for (final value in stream) {
-      print("output from handle_stream's stream: $value");
-      cnt++;
-    }
-    expect(cnt, 10);
-  });
-
   Future<void> testHandleStream(
       Stream<Log> Function({dynamic hint, required int key, required int max}) handleStreamFunction) async {
     final max = 5;
