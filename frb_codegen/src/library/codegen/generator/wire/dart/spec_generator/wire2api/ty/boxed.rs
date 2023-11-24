@@ -13,12 +13,7 @@ impl<'a> WireDartGeneratorWire2apiTrait for BoxedWireDartGenerator<'a> {
             | DartOpaque(_)
             | RustOpaque(_)
             | EnumRef(_)
-            | Primitive(
-                IrTypePrimitive::I64
-                | IrTypePrimitive::U64
-                | IrTypePrimitive::Usize
-                | IrTypePrimitive::Isize,
-            )
+            | Primitive(IrTypePrimitive::I64 | IrTypePrimitive::U64 | IrTypePrimitive::Usize)
             | Delegate(IrTypeDelegate::Array(_) | IrTypeDelegate::PrimitiveEnum { .. }) => {
                 format!("return _wire2api_{}(raw);", self.ir.inner.safe_ident())
             }

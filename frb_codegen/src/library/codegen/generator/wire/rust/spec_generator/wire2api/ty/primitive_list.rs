@@ -46,10 +46,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for PrimitiveListWireRustGenerator<'a> {
     fn generate_impl_wire2api_jsvalue_body(&self) -> Option<std::borrow::Cow<str>> {
         match self.ir.primitive {
             IrTypePrimitive::Bool | IrTypePrimitive::Unit => Some("todo!()".into()),
-            IrTypePrimitive::I64
-            | IrTypePrimitive::U64
-            | IrTypePrimitive::Usize
-            | IrTypePrimitive::Isize => Some(
+            IrTypePrimitive::I64 | IrTypePrimitive::U64 => Some(
                 format!(
                     "let buf = self.dyn_into::<{}>().unwrap();
                     let buf = js_sys::Uint8Array::new(&buf.buffer());

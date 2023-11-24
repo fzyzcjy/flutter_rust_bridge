@@ -9,10 +9,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartG
 impl<'a> WireDartGeneratorApi2wireTrait for PrimitiveWireDartGenerator<'a> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         match self.ir {
-            IrTypePrimitive::I64
-            | IrTypePrimitive::U64
-            | IrTypePrimitive::Usize
-            | IrTypePrimitive::Isize => Acc {
+            IrTypePrimitive::I64 | IrTypePrimitive::U64 => Acc {
                 io: Some("return raw.toInt();".into()),
                 wasm: Some("return castNativeBigInt(raw);".into()),
                 ..Default::default()
@@ -23,10 +20,7 @@ impl<'a> WireDartGeneratorApi2wireTrait for PrimitiveWireDartGenerator<'a> {
 
     fn dart_wire_type(&self, target: Target) -> String {
         match &self.ir {
-            IrTypePrimitive::I64
-            | IrTypePrimitive::U64
-            | IrTypePrimitive::Usize
-            | IrTypePrimitive::Isize => match target {
+            IrTypePrimitive::I64 | IrTypePrimitive::U64 => match target {
                 Target::Io => "int".into(),
                 Target::Wasm => "Object".into(),
             },
