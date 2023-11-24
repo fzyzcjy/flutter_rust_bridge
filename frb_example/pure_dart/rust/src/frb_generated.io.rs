@@ -4900,8 +4900,8 @@ pub extern "C" fn wire_unwrap_rust_opaque(port_: i64, opaque: wire_RustOpaque_hi
 }
 
 #[no_mangle]
-pub extern "C" fn wire_frb_sync_generator_test(port_: i64) {
-    wire_frb_sync_generator_test_impl(port_)
+pub extern "C" fn wire_frb_sync_generator_test() -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_frb_sync_generator_test_impl()
 }
 
 #[no_mangle]

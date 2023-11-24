@@ -6112,19 +6112,15 @@ class RustLibWire implements BaseWire {
   late final _wire_unwrap_rust_opaque = _wire_unwrap_rust_opaquePtr
       .asFunction<void Function(int, wire_RustOpaque_hide_data)>();
 
-  void wire_frb_sync_generator_test(
-    int port_,
-  ) {
-    return _wire_frb_sync_generator_test(
-      port_,
-    );
+  WireSyncReturn wire_frb_sync_generator_test() {
+    return _wire_frb_sync_generator_test();
   }
 
   late final _wire_frb_sync_generator_testPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
           'wire_frb_sync_generator_test');
   late final _wire_frb_sync_generator_test =
-      _wire_frb_sync_generator_testPtr.asFunction<void Function(int)>();
+      _wire_frb_sync_generator_testPtr.asFunction<WireSyncReturn Function()>();
 
   WireSyncReturn wire_sync_create_sync_opaque() {
     return _wire_sync_create_sync_opaque();

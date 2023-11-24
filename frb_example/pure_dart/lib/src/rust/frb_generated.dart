@@ -660,7 +660,7 @@ abstract class RustLibApi extends BaseApi {
 
   Future<String> unwrapRustOpaque({required HideData opaque, dynamic hint});
 
-  Future<FrbOpaqueSyncReturn> frbSyncGeneratorTest({dynamic hint});
+  FrbOpaqueSyncReturn frbSyncGeneratorTest({dynamic hint});
 
   NonSendHideData syncCreateSyncOpaque({dynamic hint});
 
@@ -5433,9 +5433,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<FrbOpaqueSyncReturn> frbSyncGeneratorTest({dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_frb_sync_generator_test(port_),
+  FrbOpaqueSyncReturn frbSyncGeneratorTest({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_frb_sync_generator_test(),
       parseSuccessData: _wire2api_RustOpaque_frb_opaque_sync_return,
       parseErrorData: null,
       constMeta: kFrbSyncGeneratorTestConstMeta,

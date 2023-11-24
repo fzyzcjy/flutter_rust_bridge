@@ -22,6 +22,7 @@ pub fn sync_run_opaque(opaque: RustOpaque<NonSendHideData>) -> String {
 /// Structure for testing the sync-mode RustOpaque code generator.
 /// FrbOpaqueSyncReturn must be only return type.
 /// FrbOpaqueSyncReturn must be without wrapper like Option<> Vec<> etc.
+#[frb(sync)]
 pub fn frb_sync_generator_test() -> RustOpaque<FrbOpaqueSyncReturn> {
     RustOpaque::new(FrbOpaqueSyncReturn)
 }

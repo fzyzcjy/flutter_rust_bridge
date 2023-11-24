@@ -1211,7 +1211,7 @@ void wire_run_opaque_with_delay(int64_t port_, struct wire_RustOpaque_hide_data 
 
 void wire_unwrap_rust_opaque(int64_t port_, struct wire_RustOpaque_hide_data opaque);
 
-void wire_frb_sync_generator_test(int64_t port_);
+WireSyncReturn wire_frb_sync_generator_test(void);
 
 WireSyncReturn wire_sync_create_sync_opaque(void);
 

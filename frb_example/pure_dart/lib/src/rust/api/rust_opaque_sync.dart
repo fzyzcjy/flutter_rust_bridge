@@ -13,7 +13,7 @@ String syncRunOpaque({required NonSendHideData opaque, dynamic hint}) =>
 /// Structure for testing the sync-mode RustOpaque code generator.
 /// FrbOpaqueSyncReturn must be only return type.
 /// FrbOpaqueSyncReturn must be without wrapper like Option<> Vec<> etc.
-Future<FrbOpaqueSyncReturn> frbSyncGeneratorTest({dynamic hint}) =>
+FrbOpaqueSyncReturn frbSyncGeneratorTest({dynamic hint}) =>
     RustLib.instance.api.frbSyncGeneratorTest(hint: hint);
 
 @sealed

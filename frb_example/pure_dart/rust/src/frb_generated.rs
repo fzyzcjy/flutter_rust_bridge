@@ -3146,20 +3146,14 @@ fn wire_unwrap_rust_opaque_impl(
         },
     )
 }
-fn wire_frb_sync_generator_test_impl(port_: flutter_rust_bridge::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, flutter_rust_bridge::RustOpaque<
-        crate::auxiliary::sample_types::FrbOpaqueSyncReturn,
-    >, _>(
+fn wire_frb_sync_generator_test_impl() -> flutter_rust_bridge::support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         flutter_rust_bridge::WrapInfo {
             debug_name: "frb_sync_generator_test",
-            port: Some(port_),
-            mode: flutter_rust_bridge::FfiCallMode::Normal,
+            port: None,
+            mode: flutter_rust_bridge::FfiCallMode::Sync,
         },
-        move || {
-            move |task_callback| {
-                Result::<_, ()>::Ok(crate::api::rust_opaque_sync::frb_sync_generator_test())
-            }
-        },
+        move || Result::<_, ()>::Ok(crate::api::rust_opaque_sync::frb_sync_generator_test()),
     )
 }
 fn wire_sync_create_sync_opaque_impl() -> flutter_rust_bridge::support::WireSyncReturn {

@@ -3096,8 +3096,8 @@ pub fn wire_unwrap_rust_opaque(port_: flutter_rust_bridge::MessagePort, opaque: 
 }
 
 #[wasm_bindgen]
-pub fn wire_frb_sync_generator_test(port_: flutter_rust_bridge::MessagePort) {
-    wire_frb_sync_generator_test_impl(port_)
+pub fn wire_frb_sync_generator_test() -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_frb_sync_generator_test_impl()
 }
 
 #[wasm_bindgen]

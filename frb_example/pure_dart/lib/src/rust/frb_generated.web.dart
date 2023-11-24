@@ -2369,8 +2369,9 @@ class RustLibWire extends BaseWire {
   void wire_unwrap_rust_opaque(NativePortType port_, Object opaque) =>
       wasmModule.wire_unwrap_rust_opaque(port_, opaque);
 
-  void wire_frb_sync_generator_test(NativePortType port_) =>
-      wasmModule.wire_frb_sync_generator_test(port_);
+  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_frb_sync_generator_test() =>
+          wasmModule.wire_frb_sync_generator_test();
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_sync_create_sync_opaque() =>
@@ -3139,7 +3140,8 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_unwrap_rust_opaque(NativePortType port_, Object opaque);
 
-  external void wire_frb_sync_generator_test(NativePortType port_);
+  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_frb_sync_generator_test();
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_sync_create_sync_opaque();
