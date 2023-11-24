@@ -10,7 +10,7 @@ pub(crate) fn generate_impl_into_into_dart(
         "self".to_owned()
     };
 
-    let wrapper_name = (wrapper_name.as_ref().map(|x| x.name.clone())).unwrap_or(name.name.clone());
+    let wrapper_name = (wrapper_name.as_ref().map(|x| x.rust_style())).unwrap_or(name.rust_style());
     let name = &name.rust_style();
 
     format!(
