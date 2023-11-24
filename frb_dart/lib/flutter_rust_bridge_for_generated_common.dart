@@ -16,5 +16,6 @@ export 'src/main_components/entrypoint.dart';
 export 'src/main_components/handler.dart';
 export 'src/main_components/wire/_common.dart';
 export 'src/manual_impl/_common.dart';
+export 'src/opaque/opaque.dart';
 export 'src/task.dart';
 export 'src/utils/misc_utils.dart';
