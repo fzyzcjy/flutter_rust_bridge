@@ -157,13 +157,6 @@ fn generate_boilerplate(
                     ),
                 ..Default::default()
             },
-            body: format!(
-                r#"
-                class {wire_class_name} extends BaseWire {{
-                  // TODO
-                }}
-                "#
-            ),
             ..Default::default()
         }],
     })
