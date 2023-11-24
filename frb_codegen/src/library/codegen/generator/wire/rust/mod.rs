@@ -19,7 +19,7 @@ pub(crate) fn generate(
     dumper: &Dumper,
 ) -> anyhow::Result<GeneratorWireRustOutput> {
     let spec = spec_generator::generate(context)?;
-    dumper.dump(ConfigDumpContent::Spec, "spec/wire_rust.json", &spec)?;
+    dumper.dump(ConfigDumpContent::GeneratorSpec, "wire_rust.json", &spec)?;
     let text = text_generator::generate(&spec, context.config)?;
 
     Ok(GeneratorWireRustOutput {

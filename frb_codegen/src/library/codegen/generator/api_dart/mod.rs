@@ -24,7 +24,7 @@ pub(crate) fn generate(
     dumper: &Dumper,
 ) -> Result<GeneratorApiDartOutput> {
     let spec = spec_generator::generate(ir_pack, config)?;
-    dumper.dump(ConfigDumpContent::Spec, "spec/api_dart.json", &spec)?;
+    dumper.dump(ConfigDumpContent::GeneratorSpec, "api_dart.json", &spec)?;
     let text = text_generator::generate(&spec, config)?;
     Ok(GeneratorApiDartOutput {
         output_texts: text.output_texts,

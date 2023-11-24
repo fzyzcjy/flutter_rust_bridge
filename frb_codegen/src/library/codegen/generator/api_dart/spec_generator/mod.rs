@@ -1,3 +1,4 @@
+use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::api_dart::spec_generator::base::{
     ApiDartGenerator, ApiDartGeneratorContext,
@@ -9,6 +10,7 @@ use crate::codegen::ir::func::{IrFunc, IrFuncOwnerInfo};
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::{DistinctTypeGatherer, IrPack, IrPackComputedCache};
 use crate::codegen::ir::ty::IrType;
+use crate::codegen::ConfigDumpContent;
 use crate::library::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;
@@ -18,9 +20,11 @@ use itertools::Itertools;
 use pathdiff::diff_paths;
 use serde::Serialize;
 use std::collections::{HashMap, HashSet};
+use ConfigDumpContent::GeneratorInfo;
 
 pub(crate) mod base;
 pub(crate) mod class;
+mod dump;
 pub(crate) mod function;
 pub(crate) mod info;
 pub(crate) mod misc;
@@ -41,9 +45,12 @@ pub(crate) struct ApiDartOutputSpecItem {
 pub(crate) fn generate(
     ir_pack: &IrPack,
     config: &GeneratorApiDartInternalConfig,
+    dumper: &Dumper,
 ) -> Result<ApiDartOutputSpec> {
     let cache = IrPackComputedCache::compute(ir_pack);
     let context = ApiDartGeneratorContext { ir_pack, config };
+
+    dumper.dump(GeneratorInfo, "generator_infoapi_dart.json", TODO)?;
 
     let grouped_funcs = (ir_pack.funcs.iter()).into_group_map_by(|x| x.name.namespace.clone());
     let grouped_namespaced_types = (cache.distinct_types.iter())

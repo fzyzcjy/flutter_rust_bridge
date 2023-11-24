@@ -17,5 +17,5 @@ pub enum ConfigDumpContent {
     SourceGraph,
     Ir,
     GeneratorInfo,
-    Spec,
+    GeneratorSpec,
 }
