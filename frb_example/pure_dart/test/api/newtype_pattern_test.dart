@@ -7,7 +7,7 @@ Future<void> main() async {
 
   test('dart call handleNewtype', () async {
     final newtypeResp = await handleNewtype(arg: NewTypeInt(field0: BigInt.from(42)));
-    expect(newtypeResp.field0, 84);
+    expect(newtypeResp.field0.toInt(), 84);
   });
 
   // TODO rm?

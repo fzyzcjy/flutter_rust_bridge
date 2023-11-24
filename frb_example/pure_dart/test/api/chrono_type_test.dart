@@ -112,7 +112,7 @@ Future<void> main() async {
     final utc = DateTime.now().toUtc();
     final difference =
         await howLongDoesItTake(mine: FeatureChrono(utc: utc, local: local, duration: duration, naive: naive));
-    expect(difference, Duration(seconds: 11111)); // TODO not filled in
-    // log('$difference');
+    debugPrint('$difference');
+    expect(difference, isNot(Duration.zero));
   });
 }
