@@ -35,8 +35,7 @@ impl<'a> WireRustGeneratorApi2wireTrait for EnumRefWireRustGenerator<'a> {
                         let fields = Some(tag)
                             .into_iter()
                             .chain(st.fields.iter().map(|field| {
-                                let gen = WireRustGenerator::new(field.ty.clone(), self.context);
-                                gen.generate_convert_to_dart(field.name.rust_style().to_owned())
+                                format!("{}.into_into_dart().into_dart()", field.name.rust_style())
                             }))
                             .collect_vec();
                         let pattern = st
