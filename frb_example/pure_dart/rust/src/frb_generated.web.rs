@@ -458,7 +458,7 @@ impl Wire2Api<ExoticOptionals> for JsValue {
 impl Wire2Api<[f64; 16]> for Box<[f64]> {
     fn wire2api(self) -> [f64; 16] {
         let vec: Vec<f64> = self.wire2api();
-        support::from_vec_to_array(vec)
+        flutter_rust_bridge::support::from_vec_to_array(vec)
     }
 }
 impl Wire2Api<FeatureChrono> for JsValue {
@@ -508,7 +508,7 @@ impl Wire2Api<FeedId> for JsValue {
 impl Wire2Api<[i32; 2]> for Box<[i32]> {
     fn wire2api(self) -> [i32; 2] {
         let vec: Vec<i32> = self.wire2api();
-        support::from_vec_to_array(vec)
+        flutter_rust_bridge::support::from_vec_to_array(vec)
     }
 }
 impl Wire2Api<Vec<DartOpaque>> for JsValue {
@@ -1135,19 +1135,19 @@ impl Wire2Api<TupleStructWithTwoFieldTwinSync> for JsValue {
 impl Wire2Api<[u8; 1600]> for Box<[u8]> {
     fn wire2api(self) -> [u8; 1600] {
         let vec: Vec<u8> = self.wire2api();
-        support::from_vec_to_array(vec)
+        flutter_rust_bridge::support::from_vec_to_array(vec)
     }
 }
 impl Wire2Api<[u8; 32]> for Box<[u8]> {
     fn wire2api(self) -> [u8; 32] {
         let vec: Vec<u8> = self.wire2api();
-        support::from_vec_to_array(vec)
+        flutter_rust_bridge::support::from_vec_to_array(vec)
     }
 }
 impl Wire2Api<[u8; 8]> for Box<[u8]> {
     fn wire2api(self) -> [u8; 8] {
         let vec: Vec<u8> = self.wire2api();
-        support::from_vec_to_array(vec)
+        flutter_rust_bridge::support::from_vec_to_array(vec)
     }
 }
 impl Wire2Api<UserId> for JsValue {
@@ -1205,7 +1205,7 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for JsValue {
 impl Wire2Api<[DartOpaque; 1]> for JsValue {
     fn wire2api(self) -> [DartOpaque; 1] {
         let vec: Vec<DartOpaque> = self.wire2api();
-        support::from_vec_to_array(vec)
+        flutter_rust_bridge::support::from_vec_to_array(vec)
     }
 }
 impl Wire2Api<RustOpaque<Mutex<HideData>>> for JsValue {
@@ -1215,7 +1215,9 @@ impl Wire2Api<RustOpaque<Mutex<HideData>>> for JsValue {
             compile_error!("64-bit pointers are not supported.");
         }
 
-        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
+        unsafe {
+            flutter_rust_bridge::support::opaque_from_dart((self.as_f64().unwrap() as usize) as _)
+        }
     }
 }
 impl Wire2Api<RustOpaque<RwLock<HideData>>> for JsValue {
@@ -1225,7 +1227,9 @@ impl Wire2Api<RustOpaque<RwLock<HideData>>> for JsValue {
             compile_error!("64-bit pointers are not supported.");
         }
 
-        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
+        unsafe {
+            flutter_rust_bridge::support::opaque_from_dart((self.as_f64().unwrap() as usize) as _)
+        }
     }
 }
 impl Wire2Api<RustOpaque<Box<dyn DartDebug>>> for JsValue {
@@ -1235,7 +1239,9 @@ impl Wire2Api<RustOpaque<Box<dyn DartDebug>>> for JsValue {
             compile_error!("64-bit pointers are not supported.");
         }
 
-        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
+        unsafe {
+            flutter_rust_bridge::support::opaque_from_dart((self.as_f64().unwrap() as usize) as _)
+        }
     }
 }
 impl Wire2Api<RustOpaque<HideData>> for JsValue {
@@ -1245,13 +1251,15 @@ impl Wire2Api<RustOpaque<HideData>> for JsValue {
             compile_error!("64-bit pointers are not supported.");
         }
 
-        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
+        unsafe {
+            flutter_rust_bridge::support::opaque_from_dart((self.as_f64().unwrap() as usize) as _)
+        }
     }
 }
 impl Wire2Api<[RustOpaque<HideData>; 2]> for JsValue {
     fn wire2api(self) -> [RustOpaque<HideData>; 2] {
         let vec: Vec<RustOpaque<HideData>> = self.wire2api();
-        support::from_vec_to_array(vec)
+        flutter_rust_bridge::support::from_vec_to_array(vec)
     }
 }
 impl Wire2Api<RustOpaque<i32>> for JsValue {
@@ -1261,7 +1269,9 @@ impl Wire2Api<RustOpaque<i32>> for JsValue {
             compile_error!("64-bit pointers are not supported.");
         }
 
-        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
+        unsafe {
+            flutter_rust_bridge::support::opaque_from_dart((self.as_f64().unwrap() as usize) as _)
+        }
     }
 }
 impl Wire2Api<RustOpaque<NonCloneData>> for JsValue {
@@ -1271,7 +1281,9 @@ impl Wire2Api<RustOpaque<NonCloneData>> for JsValue {
             compile_error!("64-bit pointers are not supported.");
         }
 
-        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
+        unsafe {
+            flutter_rust_bridge::support::opaque_from_dart((self.as_f64().unwrap() as usize) as _)
+        }
     }
 }
 impl Wire2Api<RustOpaque<NonSendHideData>> for JsValue {
@@ -1281,7 +1293,9 @@ impl Wire2Api<RustOpaque<NonSendHideData>> for JsValue {
             compile_error!("64-bit pointers are not supported.");
         }
 
-        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
+        unsafe {
+            flutter_rust_bridge::support::opaque_from_dart((self.as_f64().unwrap() as usize) as _)
+        }
     }
 }
 impl Wire2Api<String> for JsValue {
@@ -1378,7 +1392,7 @@ impl Wire2Api<Box<u8>> for JsValue {
 impl Wire2Api<Box<[u8; 1600]>> for JsValue {
     fn wire2api(self) -> Box<[u8; 1600]> {
         let vec: Vec<u8> = self.wire2api();
-        Box::new(support::from_vec_to_array(vec))
+        Box::new(flutter_rust_bridge::support::from_vec_to_array(vec))
     }
 }
 impl Wire2Api<Box<Weekdays>> for JsValue {
@@ -1410,7 +1424,7 @@ impl Wire2Api<f64> for JsValue {
 impl Wire2Api<[f64; 16]> for JsValue {
     fn wire2api(self) -> [f64; 16] {
         let vec: Vec<f64> = self.wire2api();
-        support::from_vec_to_array(vec)
+        flutter_rust_bridge::support::from_vec_to_array(vec)
     }
 }
 impl Wire2Api<i16> for JsValue {
@@ -1426,7 +1440,7 @@ impl Wire2Api<i32> for JsValue {
 impl Wire2Api<[i32; 2]> for JsValue {
     fn wire2api(self) -> [i32; 2] {
         let vec: Vec<i32> = self.wire2api();
-        support::from_vec_to_array(vec)
+        flutter_rust_bridge::support::from_vec_to_array(vec)
     }
 }
 impl Wire2Api<i64> for JsValue {
@@ -1467,7 +1481,7 @@ impl Wire2Api<Vec<i64>> for JsValue {
     fn wire2api(self) -> Vec<i64> {
         let buf = self.dyn_into::<js_sys::BigInt64Array>().unwrap();
         let buf = js_sys::Uint8Array::new(&buf.buffer());
-        support::slice_from_byte_buffer(buf.to_vec()).into()
+        flutter_rust_bridge::support::slice_from_byte_buffer(buf.to_vec()).into()
     }
 }
 impl Wire2Api<Vec<i8>> for JsValue {
@@ -1489,7 +1503,7 @@ impl Wire2Api<Vec<u64>> for JsValue {
     fn wire2api(self) -> Vec<u64> {
         let buf = self.dyn_into::<js_sys::BigUint64Array>().unwrap();
         let buf = js_sys::Uint8Array::new(&buf.buffer());
-        support::slice_from_byte_buffer(buf.to_vec()).into()
+        flutter_rust_bridge::support::slice_from_byte_buffer(buf.to_vec()).into()
     }
 }
 impl Wire2Api<Vec<u8>> for JsValue {
@@ -1505,7 +1519,7 @@ impl Wire2Api<MyEnum> for JsValue {
 impl Wire2Api<[TestId; 4]> for JsValue {
     fn wire2api(self) -> [TestId; 4] {
         let vec: Vec<TestId> = self.wire2api();
-        support::from_vec_to_array(vec)
+        flutter_rust_bridge::support::from_vec_to_array(vec)
     }
 }
 impl Wire2Api<u16> for JsValue {
@@ -1531,19 +1545,19 @@ impl Wire2Api<u8> for JsValue {
 impl Wire2Api<[u8; 1600]> for JsValue {
     fn wire2api(self) -> [u8; 1600] {
         let vec: Vec<u8> = self.wire2api();
-        support::from_vec_to_array(vec)
+        flutter_rust_bridge::support::from_vec_to_array(vec)
     }
 }
 impl Wire2Api<[u8; 32]> for JsValue {
     fn wire2api(self) -> [u8; 32] {
         let vec: Vec<u8> = self.wire2api();
-        support::from_vec_to_array(vec)
+        flutter_rust_bridge::support::from_vec_to_array(vec)
     }
 }
 impl Wire2Api<[u8; 8]> for JsValue {
     fn wire2api(self) -> [u8; 8] {
         let vec: Vec<u8> = self.wire2api();
-        support::from_vec_to_array(vec)
+        flutter_rust_bridge::support::from_vec_to_array(vec)
     }
 }
 impl Wire2Api<usize> for JsValue {
@@ -1781,12 +1795,14 @@ pub fn wire_set_static_dart_opaque(port_: MessagePort, opaque: JsValue) {
 }
 
 #[wasm_bindgen]
-pub fn wire_return_non_droppable_dart_opaque(opaque: JsValue) -> support::WireSyncReturn {
+pub fn wire_return_non_droppable_dart_opaque(
+    opaque: JsValue,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_return_non_droppable_dart_opaque_impl(opaque)
 }
 
 #[wasm_bindgen]
-pub fn wire_unwrap_dart_opaque(opaque: JsValue) -> support::WireSyncReturn {
+pub fn wire_unwrap_dart_opaque(opaque: JsValue) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_unwrap_dart_opaque_impl(opaque)
 }
 
@@ -2164,97 +2180,114 @@ pub fn wire_handle_vec_of_opts(port_: MessagePort, opt: JsValue) {
 #[wasm_bindgen]
 pub fn wire_StructWithCommentsTwinSync_instance_method_twin_sync(
     that: JsValue,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_StructWithCommentsTwinSync_instance_method_twin_sync_impl(that)
 }
 
 #[wasm_bindgen]
-pub fn wire_StructWithCommentsTwinSync_static_method_twin_sync() -> support::WireSyncReturn {
+pub fn wire_StructWithCommentsTwinSync_static_method_twin_sync(
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_StructWithCommentsTwinSync_static_method_twin_sync_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_function_with_comments_slash_star_star_twin_sync() -> support::WireSyncReturn {
+pub fn wire_function_with_comments_slash_star_star_twin_sync(
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_function_with_comments_slash_star_star_twin_sync_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_function_with_comments_triple_slash_multi_line_twin_sync() -> support::WireSyncReturn {
+pub fn wire_function_with_comments_triple_slash_multi_line_twin_sync(
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_function_with_comments_triple_slash_multi_line_twin_sync_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_function_with_comments_triple_slash_single_line_twin_sync() -> support::WireSyncReturn {
+pub fn wire_function_with_comments_triple_slash_single_line_twin_sync(
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_function_with_comments_triple_slash_single_line_twin_sync_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_func_enum_simple_twin_sync(arg: i32) -> support::WireSyncReturn {
+pub fn wire_func_enum_simple_twin_sync(arg: i32) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_func_enum_simple_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_enum_with_item_mixed_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+pub fn wire_func_enum_with_item_mixed_twin_sync(
+    arg: JsValue,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_func_enum_with_item_mixed_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_enum_with_item_struct_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+pub fn wire_func_enum_with_item_struct_twin_sync(
+    arg: JsValue,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_func_enum_with_item_struct_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_enum_with_item_tuple_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+pub fn wire_func_enum_with_item_tuple_twin_sync(
+    arg: JsValue,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_func_enum_with_item_tuple_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_custom_enum_error_panic_twin_sync() -> support::WireSyncReturn {
+pub fn wire_custom_enum_error_panic_twin_sync() -> flutter_rust_bridge::support::WireSyncReturn {
     wire_custom_enum_error_panic_twin_sync_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_custom_enum_error_return_error_twin_sync() -> support::WireSyncReturn {
+pub fn wire_custom_enum_error_return_error_twin_sync(
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_custom_enum_error_return_error_twin_sync_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_custom_enum_error_return_ok_twin_sync(arg: u32) -> support::WireSyncReturn {
+pub fn wire_custom_enum_error_return_ok_twin_sync(
+    arg: u32,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_custom_enum_error_return_ok_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_custom_nested_error_return_error_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+pub fn wire_custom_nested_error_return_error_twin_sync(
+    arg: JsValue,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_custom_nested_error_return_error_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_custom_struct_error_return_error_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+pub fn wire_custom_struct_error_return_error_twin_sync(
+    arg: JsValue,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_custom_struct_error_return_error_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_return_error_twin_sync() -> support::WireSyncReturn {
+pub fn wire_func_return_error_twin_sync() -> flutter_rust_bridge::support::WireSyncReturn {
     wire_func_return_error_twin_sync_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_func_type_fallible_panic_twin_sync() -> support::WireSyncReturn {
+pub fn wire_func_type_fallible_panic_twin_sync() -> flutter_rust_bridge::support::WireSyncReturn {
     wire_func_type_fallible_panic_twin_sync_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_func_type_infallible_panic_twin_sync() -> support::WireSyncReturn {
+pub fn wire_func_type_infallible_panic_twin_sync() -> flutter_rust_bridge::support::WireSyncReturn {
     wire_func_type_infallible_panic_twin_sync_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_func_return_unit_twin_sync() -> support::WireSyncReturn {
+pub fn wire_func_return_unit_twin_sync() -> flutter_rust_bridge::support::WireSyncReturn {
     wire_func_return_unit_twin_sync_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_func_string_twin_sync(arg: String) -> support::WireSyncReturn {
+pub fn wire_func_string_twin_sync(arg: String) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_func_string_twin_sync_impl(arg)
 }
 
@@ -2316,57 +2349,77 @@ pub fn wire_example_optional_primitive_type_u8_twin_normal(port_: MessagePort, a
 #[wasm_bindgen]
 pub fn wire_example_optional_primitive_type_bool_twin_sync(
     arg: JsValue,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_optional_primitive_type_bool_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_f32_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+pub fn wire_example_optional_primitive_type_f32_twin_sync(
+    arg: JsValue,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_optional_primitive_type_f32_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_f64_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+pub fn wire_example_optional_primitive_type_f64_twin_sync(
+    arg: JsValue,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_optional_primitive_type_f64_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i16_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+pub fn wire_example_optional_primitive_type_i16_twin_sync(
+    arg: JsValue,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_optional_primitive_type_i16_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i32_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+pub fn wire_example_optional_primitive_type_i32_twin_sync(
+    arg: JsValue,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_optional_primitive_type_i32_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i64_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+pub fn wire_example_optional_primitive_type_i64_twin_sync(
+    arg: JsValue,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_optional_primitive_type_i64_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i8_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+pub fn wire_example_optional_primitive_type_i8_twin_sync(
+    arg: JsValue,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_optional_primitive_type_i8_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u16_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+pub fn wire_example_optional_primitive_type_u16_twin_sync(
+    arg: JsValue,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_optional_primitive_type_u16_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u32_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+pub fn wire_example_optional_primitive_type_u32_twin_sync(
+    arg: JsValue,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_optional_primitive_type_u32_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u64_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+pub fn wire_example_optional_primitive_type_u64_twin_sync(
+    arg: JsValue,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_optional_primitive_type_u64_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u8_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+pub fn wire_example_optional_primitive_type_u8_twin_sync(
+    arg: JsValue,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_optional_primitive_type_u8_twin_sync_impl(arg)
 }
 
@@ -2481,142 +2534,196 @@ pub fn wire_example_primitive_list_type_u8_twin_normal(port_: MessagePort, arg: 
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_list_type_bool_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+pub fn wire_example_primitive_list_type_bool_twin_sync(
+    arg: JsValue,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_primitive_list_type_bool_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_list_type_f32_twin_sync(arg: Box<[f32]>) -> support::WireSyncReturn {
+pub fn wire_example_primitive_list_type_f32_twin_sync(
+    arg: Box<[f32]>,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_primitive_list_type_f32_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_list_type_f64_twin_sync(arg: Box<[f64]>) -> support::WireSyncReturn {
+pub fn wire_example_primitive_list_type_f64_twin_sync(
+    arg: Box<[f64]>,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_primitive_list_type_f64_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i16_twin_sync(arg: Box<[i16]>) -> support::WireSyncReturn {
+pub fn wire_example_primitive_list_type_i16_twin_sync(
+    arg: Box<[i16]>,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_primitive_list_type_i16_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i32_twin_sync(arg: Box<[i32]>) -> support::WireSyncReturn {
+pub fn wire_example_primitive_list_type_i32_twin_sync(
+    arg: Box<[i32]>,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_primitive_list_type_i32_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i64_twin_sync(arg: Box<[i64]>) -> support::WireSyncReturn {
+pub fn wire_example_primitive_list_type_i64_twin_sync(
+    arg: Box<[i64]>,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_primitive_list_type_i64_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_list_type_i8_twin_sync(arg: Box<[i8]>) -> support::WireSyncReturn {
+pub fn wire_example_primitive_list_type_i8_twin_sync(
+    arg: Box<[i8]>,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_primitive_list_type_i8_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u16_twin_sync(arg: Box<[u16]>) -> support::WireSyncReturn {
+pub fn wire_example_primitive_list_type_u16_twin_sync(
+    arg: Box<[u16]>,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_primitive_list_type_u16_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u32_twin_sync(arg: Box<[u32]>) -> support::WireSyncReturn {
+pub fn wire_example_primitive_list_type_u32_twin_sync(
+    arg: Box<[u32]>,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_primitive_list_type_u32_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u64_twin_sync(arg: Box<[u64]>) -> support::WireSyncReturn {
+pub fn wire_example_primitive_list_type_u64_twin_sync(
+    arg: Box<[u64]>,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_primitive_list_type_u64_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_list_type_u8_twin_sync(arg: Box<[u8]>) -> support::WireSyncReturn {
+pub fn wire_example_primitive_list_type_u8_twin_sync(
+    arg: Box<[u8]>,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_primitive_list_type_u8_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_bool_twin_sync(arg: bool) -> support::WireSyncReturn {
+pub fn wire_example_primitive_type_bool_twin_sync(
+    arg: bool,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_primitive_type_bool_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_f32_twin_sync(arg: f32) -> support::WireSyncReturn {
+pub fn wire_example_primitive_type_f32_twin_sync(
+    arg: f32,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_primitive_type_f32_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_f64_twin_sync(arg: f64) -> support::WireSyncReturn {
+pub fn wire_example_primitive_type_f64_twin_sync(
+    arg: f64,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_primitive_type_f64_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_i16_twin_sync(arg: i16) -> support::WireSyncReturn {
+pub fn wire_example_primitive_type_i16_twin_sync(
+    arg: i16,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_primitive_type_i16_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_i32_twin_sync(arg: i32) -> support::WireSyncReturn {
+pub fn wire_example_primitive_type_i32_twin_sync(
+    arg: i32,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_primitive_type_i32_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_i64_twin_sync(arg: i64) -> support::WireSyncReturn {
+pub fn wire_example_primitive_type_i64_twin_sync(
+    arg: i64,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_primitive_type_i64_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_i8_twin_sync(arg: i8) -> support::WireSyncReturn {
+pub fn wire_example_primitive_type_i8_twin_sync(
+    arg: i8,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_primitive_type_i8_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_u16_twin_sync(arg: u16) -> support::WireSyncReturn {
+pub fn wire_example_primitive_type_u16_twin_sync(
+    arg: u16,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_primitive_type_u16_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_u32_twin_sync(arg: u32) -> support::WireSyncReturn {
+pub fn wire_example_primitive_type_u32_twin_sync(
+    arg: u32,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_primitive_type_u32_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_u64_twin_sync(arg: u64) -> support::WireSyncReturn {
+pub fn wire_example_primitive_type_u64_twin_sync(
+    arg: u64,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_primitive_type_u64_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_u8_twin_sync(arg: u8) -> support::WireSyncReturn {
+pub fn wire_example_primitive_type_u8_twin_sync(
+    arg: u8,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_primitive_type_u8_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_simple_adder_twin_sync(a: i32, b: i32) -> support::WireSyncReturn {
+pub fn wire_simple_adder_twin_sync(a: i32, b: i32) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_simple_adder_twin_sync_impl(a, b)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_struct_with_one_field_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+pub fn wire_func_struct_with_one_field_twin_sync(
+    arg: JsValue,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_func_struct_with_one_field_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_struct_with_two_field_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+pub fn wire_func_struct_with_two_field_twin_sync(
+    arg: JsValue,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_func_struct_with_two_field_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_struct_with_zero_field_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+pub fn wire_func_struct_with_zero_field_twin_sync(
+    arg: JsValue,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_func_struct_with_zero_field_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_tuple_struct_with_one_field_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+pub fn wire_func_tuple_struct_with_one_field_twin_sync(
+    arg: JsValue,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_func_tuple_struct_with_one_field_twin_sync_impl(arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_func_tuple_struct_with_two_field_twin_sync(arg: JsValue) -> support::WireSyncReturn {
+pub fn wire_func_tuple_struct_with_two_field_twin_sync(
+    arg: JsValue,
+) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_func_tuple_struct_with_two_field_twin_sync_impl(arg)
 }
 
@@ -2716,7 +2823,7 @@ pub fn wire_frb_sync_generator_test(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
-pub fn wire_sync_run_opaque(opaque: JsValue) -> support::WireSyncReturn {
+pub fn wire_sync_run_opaque(opaque: JsValue) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_sync_run_opaque_impl(opaque)
 }
 

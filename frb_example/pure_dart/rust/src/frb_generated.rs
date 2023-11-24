@@ -683,7 +683,7 @@ fn wire_set_static_dart_opaque_impl(
 }
 fn wire_return_non_droppable_dart_opaque_impl(
     opaque: impl Wire2Api<DartOpaque> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "return_non_droppable_dart_opaque",
@@ -698,7 +698,7 @@ fn wire_return_non_droppable_dart_opaque_impl(
 }
 fn wire_unwrap_dart_opaque_impl(
     opaque: impl Wire2Api<DartOpaque> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "unwrap_dart_opaque",
@@ -1776,7 +1776,7 @@ fn wire_handle_vec_of_opts_impl(
 }
 fn wire_StructWithCommentsTwinSync_instance_method_twin_sync_impl(
     that: impl Wire2Api<StructWithCommentsTwinSync> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "StructWithCommentsTwinSync_instance_method_twin_sync",
@@ -1791,7 +1791,8 @@ fn wire_StructWithCommentsTwinSync_instance_method_twin_sync_impl(
         },
     )
 }
-fn wire_StructWithCommentsTwinSync_static_method_twin_sync_impl() -> support::WireSyncReturn {
+fn wire_StructWithCommentsTwinSync_static_method_twin_sync_impl(
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "StructWithCommentsTwinSync_static_method_twin_sync",
@@ -1801,7 +1802,8 @@ fn wire_StructWithCommentsTwinSync_static_method_twin_sync_impl() -> support::Wi
         move || Result::<_, ()>::Ok(StructWithCommentsTwinSync::static_method_twin_sync()),
     )
 }
-fn wire_function_with_comments_slash_star_star_twin_sync_impl() -> support::WireSyncReturn {
+fn wire_function_with_comments_slash_star_star_twin_sync_impl(
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "function_with_comments_slash_star_star_twin_sync",
@@ -1811,7 +1813,8 @@ fn wire_function_with_comments_slash_star_star_twin_sync_impl() -> support::Wire
         move || Result::<_, ()>::Ok(function_with_comments_slash_star_star_twin_sync()),
     )
 }
-fn wire_function_with_comments_triple_slash_multi_line_twin_sync_impl() -> support::WireSyncReturn {
+fn wire_function_with_comments_triple_slash_multi_line_twin_sync_impl(
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "function_with_comments_triple_slash_multi_line_twin_sync",
@@ -1821,8 +1824,8 @@ fn wire_function_with_comments_triple_slash_multi_line_twin_sync_impl() -> suppo
         move || Result::<_, ()>::Ok(function_with_comments_triple_slash_multi_line_twin_sync()),
     )
 }
-fn wire_function_with_comments_triple_slash_single_line_twin_sync_impl() -> support::WireSyncReturn
-{
+fn wire_function_with_comments_triple_slash_single_line_twin_sync_impl(
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "function_with_comments_triple_slash_single_line_twin_sync",
@@ -1834,7 +1837,7 @@ fn wire_function_with_comments_triple_slash_single_line_twin_sync_impl() -> supp
 }
 fn wire_func_enum_simple_twin_sync_impl(
     arg: impl Wire2Api<EnumSimpleTwinSync> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "func_enum_simple_twin_sync",
@@ -1849,7 +1852,7 @@ fn wire_func_enum_simple_twin_sync_impl(
 }
 fn wire_func_enum_with_item_mixed_twin_sync_impl(
     arg: impl Wire2Api<EnumWithItemMixedTwinSync> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "func_enum_with_item_mixed_twin_sync",
@@ -1864,7 +1867,7 @@ fn wire_func_enum_with_item_mixed_twin_sync_impl(
 }
 fn wire_func_enum_with_item_struct_twin_sync_impl(
     arg: impl Wire2Api<EnumWithItemStructTwinSync> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "func_enum_with_item_struct_twin_sync",
@@ -1879,7 +1882,7 @@ fn wire_func_enum_with_item_struct_twin_sync_impl(
 }
 fn wire_func_enum_with_item_tuple_twin_sync_impl(
     arg: impl Wire2Api<EnumWithItemTupleTwinSync> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "func_enum_with_item_tuple_twin_sync",
@@ -1892,7 +1895,7 @@ fn wire_func_enum_with_item_tuple_twin_sync_impl(
         },
     )
 }
-fn wire_custom_enum_error_panic_twin_sync_impl() -> support::WireSyncReturn {
+fn wire_custom_enum_error_panic_twin_sync_impl() -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "custom_enum_error_panic_twin_sync",
@@ -1902,7 +1905,8 @@ fn wire_custom_enum_error_panic_twin_sync_impl() -> support::WireSyncReturn {
         move || custom_enum_error_panic_twin_sync(),
     )
 }
-fn wire_custom_enum_error_return_error_twin_sync_impl() -> support::WireSyncReturn {
+fn wire_custom_enum_error_return_error_twin_sync_impl(
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "custom_enum_error_return_error_twin_sync",
@@ -1914,7 +1918,7 @@ fn wire_custom_enum_error_return_error_twin_sync_impl() -> support::WireSyncRetu
 }
 fn wire_custom_enum_error_return_ok_twin_sync_impl(
     arg: impl Wire2Api<u32> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "custom_enum_error_return_ok_twin_sync",
@@ -1929,7 +1933,7 @@ fn wire_custom_enum_error_return_ok_twin_sync_impl(
 }
 fn wire_custom_nested_error_return_error_twin_sync_impl(
     arg: impl Wire2Api<CustomNestedErrorOuterTwinSync> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "custom_nested_error_return_error_twin_sync",
@@ -1944,7 +1948,7 @@ fn wire_custom_nested_error_return_error_twin_sync_impl(
 }
 fn wire_custom_struct_error_return_error_twin_sync_impl(
     arg: impl Wire2Api<CustomStructErrorTwinSync> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "custom_struct_error_return_error_twin_sync",
@@ -1957,7 +1961,7 @@ fn wire_custom_struct_error_return_error_twin_sync_impl(
         },
     )
 }
-fn wire_func_return_error_twin_sync_impl() -> support::WireSyncReturn {
+fn wire_func_return_error_twin_sync_impl() -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "func_return_error_twin_sync",
@@ -1967,7 +1971,7 @@ fn wire_func_return_error_twin_sync_impl() -> support::WireSyncReturn {
         move || func_return_error_twin_sync(),
     )
 }
-fn wire_func_type_fallible_panic_twin_sync_impl() -> support::WireSyncReturn {
+fn wire_func_type_fallible_panic_twin_sync_impl() -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "func_type_fallible_panic_twin_sync",
@@ -1977,7 +1981,8 @@ fn wire_func_type_fallible_panic_twin_sync_impl() -> support::WireSyncReturn {
         move || func_type_fallible_panic_twin_sync(),
     )
 }
-fn wire_func_type_infallible_panic_twin_sync_impl() -> support::WireSyncReturn {
+fn wire_func_type_infallible_panic_twin_sync_impl() -> flutter_rust_bridge::support::WireSyncReturn
+{
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "func_type_infallible_panic_twin_sync",
@@ -1987,7 +1992,7 @@ fn wire_func_type_infallible_panic_twin_sync_impl() -> support::WireSyncReturn {
         move || Result::<_, ()>::Ok(func_type_infallible_panic_twin_sync()),
     )
 }
-fn wire_func_return_unit_twin_sync_impl() -> support::WireSyncReturn {
+fn wire_func_return_unit_twin_sync_impl() -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "func_return_unit_twin_sync",
@@ -1999,7 +2004,7 @@ fn wire_func_return_unit_twin_sync_impl() -> support::WireSyncReturn {
 }
 fn wire_func_string_twin_sync_impl(
     arg: impl Wire2Api<String> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "func_string_twin_sync",
@@ -2212,7 +2217,7 @@ fn wire_example_optional_primitive_type_u8_twin_normal_impl(
 }
 fn wire_example_optional_primitive_type_bool_twin_sync_impl(
     arg: impl Wire2Api<Option<bool>> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_optional_primitive_type_bool_twin_sync",
@@ -2227,7 +2232,7 @@ fn wire_example_optional_primitive_type_bool_twin_sync_impl(
 }
 fn wire_example_optional_primitive_type_f32_twin_sync_impl(
     arg: impl Wire2Api<Option<f32>> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_optional_primitive_type_f32_twin_sync",
@@ -2242,7 +2247,7 @@ fn wire_example_optional_primitive_type_f32_twin_sync_impl(
 }
 fn wire_example_optional_primitive_type_f64_twin_sync_impl(
     arg: impl Wire2Api<Option<f64>> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_optional_primitive_type_f64_twin_sync",
@@ -2257,7 +2262,7 @@ fn wire_example_optional_primitive_type_f64_twin_sync_impl(
 }
 fn wire_example_optional_primitive_type_i16_twin_sync_impl(
     arg: impl Wire2Api<Option<i16>> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_optional_primitive_type_i16_twin_sync",
@@ -2272,7 +2277,7 @@ fn wire_example_optional_primitive_type_i16_twin_sync_impl(
 }
 fn wire_example_optional_primitive_type_i32_twin_sync_impl(
     arg: impl Wire2Api<Option<i32>> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_optional_primitive_type_i32_twin_sync",
@@ -2287,7 +2292,7 @@ fn wire_example_optional_primitive_type_i32_twin_sync_impl(
 }
 fn wire_example_optional_primitive_type_i64_twin_sync_impl(
     arg: impl Wire2Api<Option<i64>> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_optional_primitive_type_i64_twin_sync",
@@ -2302,7 +2307,7 @@ fn wire_example_optional_primitive_type_i64_twin_sync_impl(
 }
 fn wire_example_optional_primitive_type_i8_twin_sync_impl(
     arg: impl Wire2Api<Option<i8>> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_optional_primitive_type_i8_twin_sync",
@@ -2317,7 +2322,7 @@ fn wire_example_optional_primitive_type_i8_twin_sync_impl(
 }
 fn wire_example_optional_primitive_type_u16_twin_sync_impl(
     arg: impl Wire2Api<Option<u16>> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_optional_primitive_type_u16_twin_sync",
@@ -2332,7 +2337,7 @@ fn wire_example_optional_primitive_type_u16_twin_sync_impl(
 }
 fn wire_example_optional_primitive_type_u32_twin_sync_impl(
     arg: impl Wire2Api<Option<u32>> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_optional_primitive_type_u32_twin_sync",
@@ -2347,7 +2352,7 @@ fn wire_example_optional_primitive_type_u32_twin_sync_impl(
 }
 fn wire_example_optional_primitive_type_u64_twin_sync_impl(
     arg: impl Wire2Api<Option<u64>> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_optional_primitive_type_u64_twin_sync",
@@ -2362,7 +2367,7 @@ fn wire_example_optional_primitive_type_u64_twin_sync_impl(
 }
 fn wire_example_optional_primitive_type_u8_twin_sync_impl(
     arg: impl Wire2Api<Option<u8>> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_optional_primitive_type_u8_twin_sync",
@@ -2769,7 +2774,7 @@ fn wire_example_primitive_list_type_u8_twin_normal_impl(
 }
 fn wire_example_primitive_list_type_bool_twin_sync_impl(
     arg: impl Wire2Api<Vec<bool>> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_primitive_list_type_bool_twin_sync",
@@ -2784,7 +2789,7 @@ fn wire_example_primitive_list_type_bool_twin_sync_impl(
 }
 fn wire_example_primitive_list_type_f32_twin_sync_impl(
     arg: impl Wire2Api<Vec<f32>> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_primitive_list_type_f32_twin_sync",
@@ -2799,7 +2804,7 @@ fn wire_example_primitive_list_type_f32_twin_sync_impl(
 }
 fn wire_example_primitive_list_type_f64_twin_sync_impl(
     arg: impl Wire2Api<Vec<f64>> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_primitive_list_type_f64_twin_sync",
@@ -2814,7 +2819,7 @@ fn wire_example_primitive_list_type_f64_twin_sync_impl(
 }
 fn wire_example_primitive_list_type_i16_twin_sync_impl(
     arg: impl Wire2Api<Vec<i16>> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_primitive_list_type_i16_twin_sync",
@@ -2829,7 +2834,7 @@ fn wire_example_primitive_list_type_i16_twin_sync_impl(
 }
 fn wire_example_primitive_list_type_i32_twin_sync_impl(
     arg: impl Wire2Api<Vec<i32>> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_primitive_list_type_i32_twin_sync",
@@ -2844,7 +2849,7 @@ fn wire_example_primitive_list_type_i32_twin_sync_impl(
 }
 fn wire_example_primitive_list_type_i64_twin_sync_impl(
     arg: impl Wire2Api<Vec<i64>> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_primitive_list_type_i64_twin_sync",
@@ -2859,7 +2864,7 @@ fn wire_example_primitive_list_type_i64_twin_sync_impl(
 }
 fn wire_example_primitive_list_type_i8_twin_sync_impl(
     arg: impl Wire2Api<Vec<i8>> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_primitive_list_type_i8_twin_sync",
@@ -2874,7 +2879,7 @@ fn wire_example_primitive_list_type_i8_twin_sync_impl(
 }
 fn wire_example_primitive_list_type_u16_twin_sync_impl(
     arg: impl Wire2Api<Vec<u16>> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_primitive_list_type_u16_twin_sync",
@@ -2889,7 +2894,7 @@ fn wire_example_primitive_list_type_u16_twin_sync_impl(
 }
 fn wire_example_primitive_list_type_u32_twin_sync_impl(
     arg: impl Wire2Api<Vec<u32>> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_primitive_list_type_u32_twin_sync",
@@ -2904,7 +2909,7 @@ fn wire_example_primitive_list_type_u32_twin_sync_impl(
 }
 fn wire_example_primitive_list_type_u64_twin_sync_impl(
     arg: impl Wire2Api<Vec<u64>> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_primitive_list_type_u64_twin_sync",
@@ -2919,7 +2924,7 @@ fn wire_example_primitive_list_type_u64_twin_sync_impl(
 }
 fn wire_example_primitive_list_type_u8_twin_sync_impl(
     arg: impl Wire2Api<Vec<u8>> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_primitive_list_type_u8_twin_sync",
@@ -2934,7 +2939,7 @@ fn wire_example_primitive_list_type_u8_twin_sync_impl(
 }
 fn wire_example_primitive_type_bool_twin_sync_impl(
     arg: impl Wire2Api<bool> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_primitive_type_bool_twin_sync",
@@ -2949,7 +2954,7 @@ fn wire_example_primitive_type_bool_twin_sync_impl(
 }
 fn wire_example_primitive_type_f32_twin_sync_impl(
     arg: impl Wire2Api<f32> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_primitive_type_f32_twin_sync",
@@ -2964,7 +2969,7 @@ fn wire_example_primitive_type_f32_twin_sync_impl(
 }
 fn wire_example_primitive_type_f64_twin_sync_impl(
     arg: impl Wire2Api<f64> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_primitive_type_f64_twin_sync",
@@ -2979,7 +2984,7 @@ fn wire_example_primitive_type_f64_twin_sync_impl(
 }
 fn wire_example_primitive_type_i16_twin_sync_impl(
     arg: impl Wire2Api<i16> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_primitive_type_i16_twin_sync",
@@ -2994,7 +2999,7 @@ fn wire_example_primitive_type_i16_twin_sync_impl(
 }
 fn wire_example_primitive_type_i32_twin_sync_impl(
     arg: impl Wire2Api<i32> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_primitive_type_i32_twin_sync",
@@ -3009,7 +3014,7 @@ fn wire_example_primitive_type_i32_twin_sync_impl(
 }
 fn wire_example_primitive_type_i64_twin_sync_impl(
     arg: impl Wire2Api<i64> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_primitive_type_i64_twin_sync",
@@ -3024,7 +3029,7 @@ fn wire_example_primitive_type_i64_twin_sync_impl(
 }
 fn wire_example_primitive_type_i8_twin_sync_impl(
     arg: impl Wire2Api<i8> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_primitive_type_i8_twin_sync",
@@ -3039,7 +3044,7 @@ fn wire_example_primitive_type_i8_twin_sync_impl(
 }
 fn wire_example_primitive_type_u16_twin_sync_impl(
     arg: impl Wire2Api<u16> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_primitive_type_u16_twin_sync",
@@ -3054,7 +3059,7 @@ fn wire_example_primitive_type_u16_twin_sync_impl(
 }
 fn wire_example_primitive_type_u32_twin_sync_impl(
     arg: impl Wire2Api<u32> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_primitive_type_u32_twin_sync",
@@ -3069,7 +3074,7 @@ fn wire_example_primitive_type_u32_twin_sync_impl(
 }
 fn wire_example_primitive_type_u64_twin_sync_impl(
     arg: impl Wire2Api<u64> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_primitive_type_u64_twin_sync",
@@ -3084,7 +3089,7 @@ fn wire_example_primitive_type_u64_twin_sync_impl(
 }
 fn wire_example_primitive_type_u8_twin_sync_impl(
     arg: impl Wire2Api<u8> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "example_primitive_type_u8_twin_sync",
@@ -3100,7 +3105,7 @@ fn wire_example_primitive_type_u8_twin_sync_impl(
 fn wire_simple_adder_twin_sync_impl(
     a: impl Wire2Api<i32> + core::panic::UnwindSafe,
     b: impl Wire2Api<i32> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "simple_adder_twin_sync",
@@ -3116,7 +3121,7 @@ fn wire_simple_adder_twin_sync_impl(
 }
 fn wire_func_struct_with_one_field_twin_sync_impl(
     arg: impl Wire2Api<StructWithOneFieldTwinSync> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "func_struct_with_one_field_twin_sync",
@@ -3131,7 +3136,7 @@ fn wire_func_struct_with_one_field_twin_sync_impl(
 }
 fn wire_func_struct_with_two_field_twin_sync_impl(
     arg: impl Wire2Api<StructWithTwoFieldTwinSync> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "func_struct_with_two_field_twin_sync",
@@ -3146,7 +3151,7 @@ fn wire_func_struct_with_two_field_twin_sync_impl(
 }
 fn wire_func_struct_with_zero_field_twin_sync_impl(
     arg: impl Wire2Api<StructWithZeroFieldTwinSync> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "func_struct_with_zero_field_twin_sync",
@@ -3161,7 +3166,7 @@ fn wire_func_struct_with_zero_field_twin_sync_impl(
 }
 fn wire_func_tuple_struct_with_one_field_twin_sync_impl(
     arg: impl Wire2Api<TupleStructWithOneFieldTwinSync> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "func_tuple_struct_with_one_field_twin_sync",
@@ -3176,7 +3181,7 @@ fn wire_func_tuple_struct_with_one_field_twin_sync_impl(
 }
 fn wire_func_tuple_struct_with_two_field_twin_sync_impl(
     arg: impl Wire2Api<TupleStructWithTwoFieldTwinSync> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "func_tuple_struct_with_two_field_twin_sync",
@@ -3437,7 +3442,7 @@ fn wire_frb_sync_generator_test_impl(port_: MessagePort) {
 }
 fn wire_sync_run_opaque_impl(
     opaque: impl Wire2Api<RustOpaque<NonSendHideData>> + core::panic::UnwindSafe,
-) -> support::WireSyncReturn {
+) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "sync_run_opaque",
@@ -3876,8 +3881,8 @@ const _: fn() = || {
 
 // Section: executor
 
-support::lazy_static! {
-    pub static ref FLUTTER_RUST_BRIDGE_HANDLER: support::DefaultHandler = Default::default();
+flutter_rust_bridge::support::lazy_static! {
+    pub static ref FLUTTER_RUST_BRIDGE_HANDLER: flutter_rust_bridge::support::DefaultHandler = Default::default();
 }
 
 // Section: impl_wire2api
@@ -4033,19 +4038,19 @@ impl Wire2Api<Weekdays> for i32 {
 
 // Section: impl_into_dart
 
-impl support::IntoDart for A {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for A {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.a.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for A {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for A {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<A> for A {
     fn into_into_dart(self) -> A {
         self
     }
 }
-impl support::IntoDart for Abc {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for Abc {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self {
             Self::A(field0) => vec![0.into_dart(), field0.into_into_dart().into_dart()],
             Self::B(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
@@ -4055,36 +4060,36 @@ impl support::IntoDart for Abc {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for Abc {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for Abc {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<Abc> for Abc {
     fn into_into_dart(self) -> Abc {
         self
     }
 }
-impl support::IntoDart for Another {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for Another {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.a.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for Another {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for Another {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<Another> for Another {
     fn into_into_dart(self) -> Another {
         self
     }
 }
-impl support::IntoDart for mirror_ApplicationEnv {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for mirror_ApplicationEnv {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0.vars.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for mirror_ApplicationEnv {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for mirror_ApplicationEnv {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationEnv> for ApplicationEnv {
     fn into_into_dart(self) -> mirror_ApplicationEnv {
         mirror_ApplicationEnv
     }
 }
-impl support::IntoDart for mirror_ApplicationEnvVar {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for mirror_ApplicationEnvVar {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.0 .0.into_into_dart().into_dart(),
             self.0 .1.into_into_dart().into_dart(),
@@ -4092,14 +4097,14 @@ impl support::IntoDart for mirror_ApplicationEnvVar {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for mirror_ApplicationEnvVar {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for mirror_ApplicationEnvVar {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationEnvVar> for ApplicationEnvVar {
     fn into_into_dart(self) -> mirror_ApplicationEnvVar {
         mirror_ApplicationEnvVar
     }
 }
-impl support::IntoDart for mirror_ApplicationMessage {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for mirror_ApplicationMessage {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self.0 {
             ApplicationMessage::DisplayMessage(field0) => {
                 vec![0.into_dart(), field0.into_into_dart().into_dart()]
@@ -4114,7 +4119,7 @@ impl support::IntoDart for mirror_ApplicationMessage {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for mirror_ApplicationMessage {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for mirror_ApplicationMessage {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationMessage>
     for ApplicationMessage
 {
@@ -4122,8 +4127,8 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationMessage>
         mirror_ApplicationMessage
     }
 }
-impl support::IntoDart for mirror_ApplicationMode {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for mirror_ApplicationMode {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self.0 {
             ApplicationMode::Standalone => 0,
             ApplicationMode::Embedded => 1,
@@ -4131,14 +4136,14 @@ impl support::IntoDart for mirror_ApplicationMode {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for mirror_ApplicationMode {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for mirror_ApplicationMode {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationMode> for ApplicationMode {
     fn into_into_dart(self) -> mirror_ApplicationMode {
         mirror_ApplicationMode
     }
 }
-impl support::IntoDart for mirror_ApplicationSettings {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for mirror_ApplicationSettings {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.0.name.into_into_dart().into_dart(),
             self.0.version.into_into_dart().into_dart(),
@@ -4149,7 +4154,7 @@ impl support::IntoDart for mirror_ApplicationSettings {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for mirror_ApplicationSettings {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for mirror_ApplicationSettings {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationSettings>
     for ApplicationSettings
 {
@@ -4157,8 +4162,8 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationSettings>
         mirror_ApplicationSettings
     }
 }
-impl support::IntoDart for Attribute {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for Attribute {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.key.into_into_dart().into_dart(),
             self.value.into_into_dart().into_dart(),
@@ -4166,25 +4171,25 @@ impl support::IntoDart for Attribute {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for Attribute {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for Attribute {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<Attribute> for Attribute {
     fn into_into_dart(self) -> Attribute {
         self
     }
 }
-impl support::IntoDart for B {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for B {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.b.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for B {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for B {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<B> for B {
     fn into_into_dart(self) -> B {
         self
     }
 }
-impl support::IntoDart for BigBuffers {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for BigBuffers {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.int64.into_into_dart().into_dart(),
             self.uint64.into_into_dart().into_dart(),
@@ -4192,47 +4197,47 @@ impl support::IntoDart for BigBuffers {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for BigBuffers {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for BigBuffers {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<BigBuffers> for BigBuffers {
     fn into_into_dart(self) -> BigBuffers {
         self
     }
 }
-impl support::IntoDart for Blob {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for Blob {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for Blob {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for Blob {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<Blob> for Blob {
     fn into_into_dart(self) -> Blob {
         self
     }
 }
-impl support::IntoDart for C {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for C {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.c.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for C {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for C {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<C> for C {
     fn into_into_dart(self) -> C {
         self
     }
 }
-impl support::IntoDart for ConcatenateWith {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for ConcatenateWith {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.a.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for ConcatenateWith {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for ConcatenateWith {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<ConcatenateWith> for ConcatenateWith {
     fn into_into_dart(self) -> ConcatenateWith {
         self
     }
 }
-impl support::IntoDart for ContainsMirroredSubStruct {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for ContainsMirroredSubStruct {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.test.into_into_dart().into_dart(),
             self.test2.into_into_dart().into_dart(),
@@ -4240,7 +4245,7 @@ impl support::IntoDart for ContainsMirroredSubStruct {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for ContainsMirroredSubStruct {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for ContainsMirroredSubStruct {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<ContainsMirroredSubStruct>
     for ContainsMirroredSubStruct
 {
@@ -4248,8 +4253,8 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<ContainsMirroredSubStruct>
         self
     }
 }
-impl support::IntoDart for CustomEnumErrorTwinNormal {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for CustomEnumErrorTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self {
             Self::One { message, backtrace } => vec![
                 0.into_dart(),
@@ -4265,7 +4270,7 @@ impl support::IntoDart for CustomEnumErrorTwinNormal {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for CustomEnumErrorTwinNormal {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for CustomEnumErrorTwinNormal {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomEnumErrorTwinNormal>
     for CustomEnumErrorTwinNormal
 {
@@ -4273,8 +4278,8 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomEnumErrorTwinNormal>
         self
     }
 }
-impl support::IntoDart for CustomEnumErrorTwinSync {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for CustomEnumErrorTwinSync {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self {
             Self::One { message, backtrace } => vec![
                 0.into_dart(),
@@ -4290,7 +4295,7 @@ impl support::IntoDart for CustomEnumErrorTwinSync {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for CustomEnumErrorTwinSync {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for CustomEnumErrorTwinSync {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomEnumErrorTwinSync>
     for CustomEnumErrorTwinSync
 {
@@ -4298,8 +4303,8 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomEnumErrorTwinSync>
         self
     }
 }
-impl support::IntoDart for CustomNestedErrorInnerTwinNormal {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for CustomNestedErrorInnerTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self {
             Self::Three(field0) => vec![0.into_dart(), field0.into_into_dart().into_dart()],
             Self::Four(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
@@ -4307,7 +4312,7 @@ impl support::IntoDart for CustomNestedErrorInnerTwinNormal {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for CustomNestedErrorInnerTwinNormal {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for CustomNestedErrorInnerTwinNormal {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomNestedErrorInnerTwinNormal>
     for CustomNestedErrorInnerTwinNormal
 {
@@ -4315,8 +4320,8 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomNestedErrorInnerTwinNorm
         self
     }
 }
-impl support::IntoDart for CustomNestedErrorInnerTwinSync {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for CustomNestedErrorInnerTwinSync {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self {
             Self::Three(field0) => vec![0.into_dart(), field0.into_into_dart().into_dart()],
             Self::Four(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
@@ -4324,7 +4329,7 @@ impl support::IntoDart for CustomNestedErrorInnerTwinSync {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for CustomNestedErrorInnerTwinSync {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for CustomNestedErrorInnerTwinSync {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomNestedErrorInnerTwinSync>
     for CustomNestedErrorInnerTwinSync
 {
@@ -4332,8 +4337,8 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomNestedErrorInnerTwinSync
         self
     }
 }
-impl support::IntoDart for CustomNestedErrorOuterTwinNormal {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for CustomNestedErrorOuterTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self {
             Self::One(field0) => vec![0.into_dart(), field0.into_into_dart().into_dart()],
             Self::Two(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
@@ -4341,7 +4346,7 @@ impl support::IntoDart for CustomNestedErrorOuterTwinNormal {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for CustomNestedErrorOuterTwinNormal {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for CustomNestedErrorOuterTwinNormal {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomNestedErrorOuterTwinNormal>
     for CustomNestedErrorOuterTwinNormal
 {
@@ -4349,8 +4354,8 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomNestedErrorOuterTwinNorm
         self
     }
 }
-impl support::IntoDart for CustomNestedErrorOuterTwinSync {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for CustomNestedErrorOuterTwinSync {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self {
             Self::One(field0) => vec![0.into_dart(), field0.into_into_dart().into_dart()],
             Self::Two(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
@@ -4358,7 +4363,7 @@ impl support::IntoDart for CustomNestedErrorOuterTwinSync {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for CustomNestedErrorOuterTwinSync {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for CustomNestedErrorOuterTwinSync {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomNestedErrorOuterTwinSync>
     for CustomNestedErrorOuterTwinSync
 {
@@ -4366,12 +4371,12 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomNestedErrorOuterTwinSync
         self
     }
 }
-impl support::IntoDart for CustomStructErrorTwinNormal {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for CustomStructErrorTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.a.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for CustomStructErrorTwinNormal {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for CustomStructErrorTwinNormal {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomStructErrorTwinNormal>
     for CustomStructErrorTwinNormal
 {
@@ -4379,12 +4384,12 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomStructErrorTwinNormal>
         self
     }
 }
-impl support::IntoDart for CustomStructErrorTwinSync {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for CustomStructErrorTwinSync {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.a.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for CustomStructErrorTwinSync {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for CustomStructErrorTwinSync {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomStructErrorTwinSync>
     for CustomStructErrorTwinSync
 {
@@ -4392,8 +4397,8 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<CustomStructErrorTwinSync>
         self
     }
 }
-impl support::IntoDart for DartOpaqueNested {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for DartOpaqueNested {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.first.into_into_dart().into_dart(),
             self.second.into_into_dart().into_dart(),
@@ -4401,14 +4406,14 @@ impl support::IntoDart for DartOpaqueNested {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for DartOpaqueNested {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for DartOpaqueNested {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<DartOpaqueNested> for DartOpaqueNested {
     fn into_into_dart(self) -> DartOpaqueNested {
         self
     }
 }
-impl support::IntoDart for Distance {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for Distance {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self {
             Self::Unknown => vec![0.into_dart()],
             Self::Map(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
@@ -4416,14 +4421,14 @@ impl support::IntoDart for Distance {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for Distance {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for Distance {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<Distance> for Distance {
     fn into_into_dart(self) -> Distance {
         self
     }
 }
-impl support::IntoDart for Element {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for Element {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.tag.into_dart(),
             self.text.into_dart(),
@@ -4433,14 +4438,14 @@ impl support::IntoDart for Element {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for Element {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for Element {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<Element> for Element {
     fn into_into_dart(self) -> Element {
         self
     }
 }
-impl support::IntoDart for EnumDartOpaque {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for EnumDartOpaque {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self {
             Self::Primitive(field0) => vec![0.into_dart(), field0.into_into_dart().into_dart()],
             Self::Opaque(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
@@ -4448,14 +4453,14 @@ impl support::IntoDart for EnumDartOpaque {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for EnumDartOpaque {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for EnumDartOpaque {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumDartOpaque> for EnumDartOpaque {
     fn into_into_dart(self) -> EnumDartOpaque {
         self
     }
 }
-impl support::IntoDart for EnumOpaque {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for EnumOpaque {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self {
             Self::Struct(field0) => vec![0.into_dart(), field0.into_dart()],
             Self::Primitive(field0) => vec![1.into_dart(), field0.into_dart()],
@@ -4466,14 +4471,14 @@ impl support::IntoDart for EnumOpaque {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for EnumOpaque {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for EnumOpaque {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumOpaque> for EnumOpaque {
     fn into_into_dart(self) -> EnumOpaque {
         self
     }
 }
-impl support::IntoDart for EnumSimpleTwinNormal {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for EnumSimpleTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self {
             Self::A => 0,
             Self::B => 1,
@@ -4481,14 +4486,14 @@ impl support::IntoDart for EnumSimpleTwinNormal {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for EnumSimpleTwinNormal {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for EnumSimpleTwinNormal {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumSimpleTwinNormal> for EnumSimpleTwinNormal {
     fn into_into_dart(self) -> EnumSimpleTwinNormal {
         self
     }
 }
-impl support::IntoDart for EnumSimpleTwinSync {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for EnumSimpleTwinSync {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self {
             Self::A => 0,
             Self::B => 1,
@@ -4496,14 +4501,14 @@ impl support::IntoDart for EnumSimpleTwinSync {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for EnumSimpleTwinSync {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for EnumSimpleTwinSync {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumSimpleTwinSync> for EnumSimpleTwinSync {
     fn into_into_dart(self) -> EnumSimpleTwinSync {
         self
     }
 }
-impl support::IntoDart for EnumWithItemMixedTwinNormal {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for EnumWithItemMixedTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self {
             Self::A => vec![0.into_dart()],
             Self::B(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
@@ -4512,7 +4517,7 @@ impl support::IntoDart for EnumWithItemMixedTwinNormal {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for EnumWithItemMixedTwinNormal {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for EnumWithItemMixedTwinNormal {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumWithItemMixedTwinNormal>
     for EnumWithItemMixedTwinNormal
 {
@@ -4520,8 +4525,8 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumWithItemMixedTwinNormal>
         self
     }
 }
-impl support::IntoDart for EnumWithItemMixedTwinSync {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for EnumWithItemMixedTwinSync {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self {
             Self::A => vec![0.into_dart()],
             Self::B(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
@@ -4530,7 +4535,7 @@ impl support::IntoDart for EnumWithItemMixedTwinSync {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for EnumWithItemMixedTwinSync {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for EnumWithItemMixedTwinSync {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumWithItemMixedTwinSync>
     for EnumWithItemMixedTwinSync
 {
@@ -4538,8 +4543,8 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumWithItemMixedTwinSync>
         self
     }
 }
-impl support::IntoDart for EnumWithItemStructTwinNormal {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for EnumWithItemStructTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self {
             Self::A { a_field } => vec![0.into_dart(), a_field.into_into_dart().into_dart()],
             Self::B { b_field } => vec![1.into_dart(), b_field.into_into_dart().into_dart()],
@@ -4547,7 +4552,7 @@ impl support::IntoDart for EnumWithItemStructTwinNormal {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for EnumWithItemStructTwinNormal {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for EnumWithItemStructTwinNormal {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumWithItemStructTwinNormal>
     for EnumWithItemStructTwinNormal
 {
@@ -4555,8 +4560,8 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumWithItemStructTwinNormal>
         self
     }
 }
-impl support::IntoDart for EnumWithItemStructTwinSync {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for EnumWithItemStructTwinSync {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self {
             Self::A { a_field } => vec![0.into_dart(), a_field.into_into_dart().into_dart()],
             Self::B { b_field } => vec![1.into_dart(), b_field.into_into_dart().into_dart()],
@@ -4564,7 +4569,7 @@ impl support::IntoDart for EnumWithItemStructTwinSync {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for EnumWithItemStructTwinSync {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for EnumWithItemStructTwinSync {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumWithItemStructTwinSync>
     for EnumWithItemStructTwinSync
 {
@@ -4572,8 +4577,8 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumWithItemStructTwinSync>
         self
     }
 }
-impl support::IntoDart for EnumWithItemTupleTwinNormal {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for EnumWithItemTupleTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self {
             Self::A(field0) => vec![0.into_dart(), field0.into_into_dart().into_dart()],
             Self::B(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
@@ -4581,7 +4586,7 @@ impl support::IntoDart for EnumWithItemTupleTwinNormal {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for EnumWithItemTupleTwinNormal {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for EnumWithItemTupleTwinNormal {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumWithItemTupleTwinNormal>
     for EnumWithItemTupleTwinNormal
 {
@@ -4589,8 +4594,8 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumWithItemTupleTwinNormal>
         self
     }
 }
-impl support::IntoDart for EnumWithItemTupleTwinSync {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for EnumWithItemTupleTwinSync {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self {
             Self::A(field0) => vec![0.into_dart(), field0.into_into_dart().into_dart()],
             Self::B(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
@@ -4598,7 +4603,7 @@ impl support::IntoDart for EnumWithItemTupleTwinSync {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for EnumWithItemTupleTwinSync {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for EnumWithItemTupleTwinSync {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumWithItemTupleTwinSync>
     for EnumWithItemTupleTwinSync
 {
@@ -4606,8 +4611,8 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<EnumWithItemTupleTwinSync>
         self
     }
 }
-impl support::IntoDart for Event {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for Event {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.address.into_into_dart().into_dart(),
             self.payload.into_into_dart().into_dart(),
@@ -4615,14 +4620,14 @@ impl support::IntoDart for Event {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for Event {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for Event {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<Event> for Event {
     fn into_into_dart(self) -> Event {
         self
     }
 }
-impl support::IntoDart for ExoticOptionals {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for ExoticOptionals {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.int32.into_dart(),
             self.int64.into_dart(),
@@ -4642,14 +4647,14 @@ impl support::IntoDart for ExoticOptionals {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for ExoticOptionals {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for ExoticOptionals {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<ExoticOptionals> for ExoticOptionals {
     fn into_into_dart(self) -> ExoticOptionals {
         self
     }
 }
-impl support::IntoDart for FeatureUuid {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for FeatureUuid {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.one.into_into_dart().into_dart(),
             self.many.into_into_dart().into_dart(),
@@ -4657,29 +4662,32 @@ impl support::IntoDart for FeatureUuid {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for FeatureUuid {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for FeatureUuid {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<FeatureUuid> for FeatureUuid {
     fn into_into_dart(self) -> FeatureUuid {
         self
     }
 }
-impl support::IntoDart for FeedId {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for FeedId {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for FeedId {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for FeedId {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<FeedId> for FeedId {
     fn into_into_dart(self) -> FeedId {
         self
     }
 }
-impl support::IntoDart for mirror_ListOfNestedRawStringMirrored {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for mirror_ListOfNestedRawStringMirrored {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0.raw.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for mirror_ListOfNestedRawStringMirrored {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive
+    for mirror_ListOfNestedRawStringMirrored
+{
+}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ListOfNestedRawStringMirrored>
     for ListOfNestedRawStringMirrored
 {
@@ -4687,8 +4695,8 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ListOfNestedRawStringMi
         mirror_ListOfNestedRawStringMirrored
     }
 }
-impl support::IntoDart for Log2 {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for Log2 {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.key.into_into_dart().into_dart(),
             self.value.into_into_dart().into_dart(),
@@ -4696,25 +4704,25 @@ impl support::IntoDart for Log2 {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for Log2 {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for Log2 {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<Log2> for Log2 {
     fn into_into_dart(self) -> Log2 {
         self
     }
 }
-impl support::IntoDart for MacroStruct {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for MacroStruct {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.data.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for MacroStruct {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for MacroStruct {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<MacroStruct> for MacroStruct {
     fn into_into_dart(self) -> MacroStruct {
         self
     }
 }
-impl support::IntoDart for Measure {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for Measure {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self {
             Self::Speed(field0) => vec![0.into_dart(), field0.into_into_dart().into_dart()],
             Self::Distance(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
@@ -4722,25 +4730,25 @@ impl support::IntoDart for Measure {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for Measure {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for Measure {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<Measure> for Measure {
     fn into_into_dart(self) -> Measure {
         self
     }
 }
-impl support::IntoDart for MessageId {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for MessageId {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for MessageId {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for MessageId {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<MessageId> for MessageId {
     fn into_into_dart(self) -> MessageId {
         self
     }
 }
-impl support::IntoDart for MirrorStruct {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for MirrorStruct {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.a.into_into_dart().into_dart(),
             self.b.into_into_dart().into_dart(),
@@ -4750,14 +4758,14 @@ impl support::IntoDart for MirrorStruct {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for MirrorStruct {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for MirrorStruct {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<MirrorStruct> for MirrorStruct {
     fn into_into_dart(self) -> MirrorStruct {
         self
     }
 }
-impl support::IntoDart for MoreThanJustOneRawStringStruct {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for MoreThanJustOneRawStringStruct {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.regular.into_into_dart().into_dart(),
             self.r#type.into_into_dart().into_dart(),
@@ -4767,7 +4775,7 @@ impl support::IntoDart for MoreThanJustOneRawStringStruct {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for MoreThanJustOneRawStringStruct {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for MoreThanJustOneRawStringStruct {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<MoreThanJustOneRawStringStruct>
     for MoreThanJustOneRawStringStruct
 {
@@ -4775,8 +4783,8 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<MoreThanJustOneRawStringStruct
         self
     }
 }
-impl support::IntoDart for MyEnum {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for MyEnum {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self {
             Self::False => 0,
             Self::True => 1,
@@ -4784,14 +4792,14 @@ impl support::IntoDart for MyEnum {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for MyEnum {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for MyEnum {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<MyEnum> for MyEnum {
     fn into_into_dart(self) -> MyEnum {
         self
     }
 }
-impl support::IntoDart for MyNestedStruct {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for MyNestedStruct {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.tree_node.into_into_dart().into_dart(),
             self.weekday.into_into_dart().into_dart(),
@@ -4799,14 +4807,14 @@ impl support::IntoDart for MyNestedStruct {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for MyNestedStruct {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for MyNestedStruct {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<MyNestedStruct> for MyNestedStruct {
     fn into_into_dart(self) -> MyNestedStruct {
         self
     }
 }
-impl support::IntoDart for MySize {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for MySize {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.width.into_into_dart().into_dart(),
             self.height.into_into_dart().into_dart(),
@@ -4814,36 +4822,36 @@ impl support::IntoDart for MySize {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for MySize {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for MySize {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<MySize> for MySize {
     fn into_into_dart(self) -> MySize {
         self
     }
 }
-impl support::IntoDart for MyStreamEntry {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for MyStreamEntry {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.hello.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for MyStreamEntry {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for MyStreamEntry {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<MyStreamEntry> for MyStreamEntry {
     fn into_into_dart(self) -> MyStreamEntry {
         self
     }
 }
-impl support::IntoDart for MyStruct {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for MyStruct {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.content.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for MyStruct {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for MyStruct {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<MyStruct> for MyStruct {
     fn into_into_dart(self) -> MyStruct {
         self
     }
 }
-impl support::IntoDart for MyTreeNode {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for MyTreeNode {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.value_i32.into_into_dart().into_dart(),
             self.value_vec_u8.into_into_dart().into_dart(),
@@ -4853,18 +4861,18 @@ impl support::IntoDart for MyTreeNode {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for MyTreeNode {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for MyTreeNode {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<MyTreeNode> for MyTreeNode {
     fn into_into_dart(self) -> MyTreeNode {
         self
     }
 }
-impl support::IntoDart for mirror_NestedRawStringMirrored {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for mirror_NestedRawStringMirrored {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0.raw.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for mirror_NestedRawStringMirrored {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for mirror_NestedRawStringMirrored {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_NestedRawStringMirrored>
     for NestedRawStringMirrored
 {
@@ -4872,63 +4880,63 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_NestedRawStringMirrored
         mirror_NestedRawStringMirrored
     }
 }
-impl support::IntoDart for NewSimpleStruct {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for NewSimpleStruct {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.field.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for NewSimpleStruct {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for NewSimpleStruct {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<NewSimpleStruct> for NewSimpleStruct {
     fn into_into_dart(self) -> NewSimpleStruct {
         self
     }
 }
-impl support::IntoDart for NewTypeInt {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for NewTypeInt {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for NewTypeInt {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for NewTypeInt {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<NewTypeInt> for NewTypeInt {
     fn into_into_dart(self) -> NewTypeInt {
         self
     }
 }
-impl support::IntoDart for mirror_Numbers {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for mirror_Numbers {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0 .0.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for mirror_Numbers {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for mirror_Numbers {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_Numbers> for Numbers {
     fn into_into_dart(self) -> mirror_Numbers {
         mirror_Numbers
     }
 }
-impl support::IntoDart for OldSimpleStruct {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for OldSimpleStruct {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.field.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for OldSimpleStruct {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for OldSimpleStruct {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<OldSimpleStruct> for OldSimpleStruct {
     fn into_into_dart(self) -> OldSimpleStruct {
         self
     }
 }
-impl support::IntoDart for OpaqueNested {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for OpaqueNested {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.first.into_dart(), self.second.into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for OpaqueNested {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for OpaqueNested {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<OpaqueNested> for OpaqueNested {
     fn into_into_dart(self) -> OpaqueNested {
         self
     }
 }
-impl support::IntoDart for OptVecs {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for OptVecs {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.i32.into_into_dart().into_dart(),
             self.enums.into_into_dart().into_dart(),
@@ -4938,14 +4946,14 @@ impl support::IntoDart for OptVecs {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for OptVecs {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for OptVecs {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<OptVecs> for OptVecs {
     fn into_into_dart(self) -> OptVecs {
         self
     }
 }
-impl support::IntoDart for Point {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for Point {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.x.into_into_dart().into_dart(),
             self.y.into_into_dart().into_dart(),
@@ -4953,14 +4961,14 @@ impl support::IntoDart for Point {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for Point {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for Point {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<Point> for Point {
     fn into_into_dart(self) -> Point {
         self
     }
 }
-impl support::IntoDart for mirror_RawStringEnumMirrored {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for mirror_RawStringEnumMirrored {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self.0 {
             RawStringEnumMirrored::Raw(field0) => {
                 vec![0.into_dart(), field0.into_into_dart().into_dart()]
@@ -4975,7 +4983,7 @@ impl support::IntoDart for mirror_RawStringEnumMirrored {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for mirror_RawStringEnumMirrored {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for mirror_RawStringEnumMirrored {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_RawStringEnumMirrored>
     for RawStringEnumMirrored
 {
@@ -4983,41 +4991,41 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_RawStringEnumMirrored>
         mirror_RawStringEnumMirrored
     }
 }
-impl support::IntoDart for RawStringItemStruct {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for RawStringItemStruct {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.r#type.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for RawStringItemStruct {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for RawStringItemStruct {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<RawStringItemStruct> for RawStringItemStruct {
     fn into_into_dart(self) -> RawStringItemStruct {
         self
     }
 }
-impl support::IntoDart for mirror_RawStringMirrored {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for mirror_RawStringMirrored {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0.value.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for mirror_RawStringMirrored {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for mirror_RawStringMirrored {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_RawStringMirrored> for RawStringMirrored {
     fn into_into_dart(self) -> mirror_RawStringMirrored {
         mirror_RawStringMirrored
     }
 }
-impl support::IntoDart for mirror_Sequences {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for mirror_Sequences {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0 .0.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for mirror_Sequences {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for mirror_Sequences {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_Sequences> for Sequences {
     fn into_into_dart(self) -> mirror_Sequences {
         mirror_Sequences
     }
 }
-impl support::IntoDart for Speed {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for Speed {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self {
             Self::Unknown => vec![0.into_dart()],
             Self::GPS(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
@@ -5025,14 +5033,14 @@ impl support::IntoDart for Speed {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for Speed {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for Speed {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<Speed> for Speed {
     fn into_into_dart(self) -> Speed {
         self
     }
 }
-impl support::IntoDart for StructWithEnum {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for StructWithEnum {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.abc1.into_into_dart().into_dart(),
             self.abc2.into_into_dart().into_dart(),
@@ -5040,18 +5048,18 @@ impl support::IntoDart for StructWithEnum {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for StructWithEnum {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for StructWithEnum {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithEnum> for StructWithEnum {
     fn into_into_dart(self) -> StructWithEnum {
         self
     }
 }
-impl support::IntoDart for StructWithOneFieldTwinNormal {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for StructWithOneFieldTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.a.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for StructWithOneFieldTwinNormal {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for StructWithOneFieldTwinNormal {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithOneFieldTwinNormal>
     for StructWithOneFieldTwinNormal
 {
@@ -5059,12 +5067,12 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithOneFieldTwinNormal>
         self
     }
 }
-impl support::IntoDart for StructWithOneFieldTwinSync {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for StructWithOneFieldTwinSync {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.a.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for StructWithOneFieldTwinSync {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for StructWithOneFieldTwinSync {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithOneFieldTwinSync>
     for StructWithOneFieldTwinSync
 {
@@ -5072,8 +5080,8 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithOneFieldTwinSync>
         self
     }
 }
-impl support::IntoDart for StructWithTwoFieldTwinNormal {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for StructWithTwoFieldTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.a.into_into_dart().into_dart(),
             self.b.into_into_dart().into_dart(),
@@ -5081,7 +5089,7 @@ impl support::IntoDart for StructWithTwoFieldTwinNormal {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for StructWithTwoFieldTwinNormal {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for StructWithTwoFieldTwinNormal {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithTwoFieldTwinNormal>
     for StructWithTwoFieldTwinNormal
 {
@@ -5089,8 +5097,8 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithTwoFieldTwinNormal>
         self
     }
 }
-impl support::IntoDart for StructWithTwoFieldTwinSync {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for StructWithTwoFieldTwinSync {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.a.into_into_dart().into_dart(),
             self.b.into_into_dart().into_dart(),
@@ -5098,7 +5106,7 @@ impl support::IntoDart for StructWithTwoFieldTwinSync {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for StructWithTwoFieldTwinSync {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for StructWithTwoFieldTwinSync {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithTwoFieldTwinSync>
     for StructWithTwoFieldTwinSync
 {
@@ -5106,12 +5114,12 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithTwoFieldTwinSync>
         self
     }
 }
-impl support::IntoDart for StructWithZeroFieldTwinNormal {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for StructWithZeroFieldTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         Vec::<u8>::new().into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for StructWithZeroFieldTwinNormal {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for StructWithZeroFieldTwinNormal {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithZeroFieldTwinNormal>
     for StructWithZeroFieldTwinNormal
 {
@@ -5119,12 +5127,12 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithZeroFieldTwinNormal>
         self
     }
 }
-impl support::IntoDart for StructWithZeroFieldTwinSync {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for StructWithZeroFieldTwinSync {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         Vec::<u8>::new().into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for StructWithZeroFieldTwinSync {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for StructWithZeroFieldTwinSync {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithZeroFieldTwinSync>
     for StructWithZeroFieldTwinSync
 {
@@ -5132,19 +5140,19 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<StructWithZeroFieldTwinSync>
         self
     }
 }
-impl support::IntoDart for SumWith {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for SumWith {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.x.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for SumWith {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for SumWith {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<SumWith> for SumWith {
     fn into_into_dart(self) -> SumWith {
         self
     }
 }
-impl support::IntoDart for TestChrono {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for TestChrono {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.dt.into_dart(),
             self.dt2.into_dart(),
@@ -5153,25 +5161,25 @@ impl support::IntoDart for TestChrono {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for TestChrono {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for TestChrono {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<TestChrono> for TestChrono {
     fn into_into_dart(self) -> TestChrono {
         self
     }
 }
-impl support::IntoDart for TestId {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for TestId {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for TestId {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for TestId {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<TestId> for TestId {
     fn into_into_dart(self) -> TestId {
         self
     }
 }
-impl support::IntoDart for TestModel {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for TestModel {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.id.into_into_dart().into_dart(),
             self.name.into_into_dart().into_dart(),
@@ -5181,18 +5189,18 @@ impl support::IntoDart for TestModel {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for TestModel {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for TestModel {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<TestModel> for TestModel {
     fn into_into_dart(self) -> TestModel {
         self
     }
 }
-impl support::IntoDart for TupleStructWithOneFieldTwinNormal {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for TupleStructWithOneFieldTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for TupleStructWithOneFieldTwinNormal {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for TupleStructWithOneFieldTwinNormal {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<TupleStructWithOneFieldTwinNormal>
     for TupleStructWithOneFieldTwinNormal
 {
@@ -5200,12 +5208,12 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<TupleStructWithOneFieldTwinNor
         self
     }
 }
-impl support::IntoDart for TupleStructWithOneFieldTwinSync {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for TupleStructWithOneFieldTwinSync {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.0.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for TupleStructWithOneFieldTwinSync {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for TupleStructWithOneFieldTwinSync {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<TupleStructWithOneFieldTwinSync>
     for TupleStructWithOneFieldTwinSync
 {
@@ -5213,8 +5221,8 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<TupleStructWithOneFieldTwinSyn
         self
     }
 }
-impl support::IntoDart for TupleStructWithTwoFieldTwinNormal {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for TupleStructWithTwoFieldTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.0.into_into_dart().into_dart(),
             self.1.into_into_dart().into_dart(),
@@ -5222,7 +5230,7 @@ impl support::IntoDart for TupleStructWithTwoFieldTwinNormal {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for TupleStructWithTwoFieldTwinNormal {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for TupleStructWithTwoFieldTwinNormal {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<TupleStructWithTwoFieldTwinNormal>
     for TupleStructWithTwoFieldTwinNormal
 {
@@ -5230,8 +5238,8 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<TupleStructWithTwoFieldTwinNor
         self
     }
 }
-impl support::IntoDart for TupleStructWithTwoFieldTwinSync {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for TupleStructWithTwoFieldTwinSync {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![
             self.0.into_into_dart().into_dart(),
             self.1.into_into_dart().into_dart(),
@@ -5239,7 +5247,7 @@ impl support::IntoDart for TupleStructWithTwoFieldTwinSync {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for TupleStructWithTwoFieldTwinSync {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for TupleStructWithTwoFieldTwinSync {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<TupleStructWithTwoFieldTwinSync>
     for TupleStructWithTwoFieldTwinSync
 {
@@ -5247,19 +5255,19 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<TupleStructWithTwoFieldTwinSyn
         self
     }
 }
-impl support::IntoDart for UserId {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for UserId {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.value.into_into_dart().into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for UserId {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for UserId {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<UserId> for UserId {
     fn into_into_dart(self) -> UserId {
         self
     }
 }
-impl support::IntoDart for Weekdays {
-    fn into_dart(self) -> support::DartAbi {
+impl flutter_rust_bridge::support::IntoDart for Weekdays {
+    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         match self {
             Self::Monday => 0,
             Self::Tuesday => 1,
@@ -5272,7 +5280,7 @@ impl support::IntoDart for Weekdays {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for Weekdays {}
+impl flutter_rust_bridge::support::IntoDartExceptPrimitive for Weekdays {}
 impl flutter_rust_bridge::rust2dart::IntoIntoDart<Weekdays> for Weekdays {
     fn into_into_dart(self) -> Weekdays {
         self
