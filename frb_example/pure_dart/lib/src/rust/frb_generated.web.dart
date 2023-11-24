@@ -18,6 +18,9 @@ import 'api/misc_example.dart';
 import 'api/misc_type.dart';
 import 'api/newtype_pattern.dart';
 import 'api/optional.dart';
+import 'api/optional_primitive_misc.dart';
+import 'api/primitive_list_misc.dart';
+import 'api/primitive_misc.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/enumeration_twin_sync.dart';
 import 'api/pseudo_manual/exception_twin_sync.dart';
@@ -351,6 +354,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_custom_struct(CustomStruct raw) {
+    return api2wire_custom_struct(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_custom_struct_error_twin_normal(
       CustomStructErrorTwinNormal raw) {
     return api2wire_custom_struct_error_twin_normal(raw);
@@ -370,6 +378,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> api2wire_box_autoadd_dart_opaque_nested(DartOpaqueNested raw) {
     return api2wire_dart_opaque_nested(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_empty(Empty raw) {
+    return api2wire_empty(raw);
   }
 
   @protected
@@ -474,6 +487,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_kitchen_sink(KitchenSink raw) {
+    return api2wire_kitchen_sink(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_macro_struct(MacroStruct raw) {
     return api2wire_macro_struct(raw);
   }
@@ -491,6 +509,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> api2wire_box_autoadd_my_nested_struct(MyNestedStruct raw) {
     return api2wire_my_nested_struct(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_my_size(MySize raw) {
+    return api2wire_my_size(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_my_size_freezed(MySizeFreezed raw) {
+    return api2wire_my_size_freezed(raw);
   }
 
   @protected
@@ -696,6 +724,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_kitchen_sink(KitchenSink raw) {
+    return api2wire_kitchen_sink(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_my_size(MySize raw) {
+    return api2wire_my_size(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_my_size_freezed(MySizeFreezed raw) {
+    return api2wire_my_size_freezed(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_speed(Speed raw) {
     return api2wire_speed(raw);
   }
@@ -784,6 +827,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_custom_struct(CustomStruct raw) {
+    return [api2wire_String(raw.message)];
+  }
+
+  @protected
   List<dynamic> api2wire_custom_struct_error_twin_normal(
       CustomStructErrorTwinNormal raw) {
     return [api2wire_String(raw.a)];
@@ -818,6 +866,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
 
     throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> api2wire_empty(Empty raw) {
+    return [];
   }
 
   @protected
@@ -998,6 +1051,43 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_kitchen_sink(KitchenSink raw) {
+    if (raw is KitchenSink_Empty) {
+      return [0];
+    }
+    if (raw is KitchenSink_Primitives) {
+      return [
+        1,
+        api2wire_i_32(raw.int32),
+        api2wire_f_64(raw.float64),
+        api2wire_bool(raw.boolean)
+      ];
+    }
+    if (raw is KitchenSink_Nested) {
+      return [
+        2,
+        api2wire_i_32(raw.field0),
+        api2wire_box_kitchen_sink(raw.field1)
+      ];
+    }
+    if (raw is KitchenSink_Optional) {
+      return [
+        3,
+        api2wire_opt_box_autoadd_i_32(raw.field0),
+        api2wire_opt_box_autoadd_i_32(raw.field1)
+      ];
+    }
+    if (raw is KitchenSink_Buffer) {
+      return [4, api2wire_ZeroCopyBuffer_list_prim_u_8(raw.field0)];
+    }
+    if (raw is KitchenSink_Enums) {
+      return [5, api2wire_weekdays(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
   List<dynamic> api2wire_list_DartOpaque(List<Object> raw) {
     return raw.map(api2wire_DartOpaque).toList();
   }
@@ -1154,6 +1244,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> api2wire_my_size(MySize raw) {
+    return [api2wire_i_32(raw.width), api2wire_i_32(raw.height)];
+  }
+
+  @protected
+  List<dynamic> api2wire_my_size_freezed(MySizeFreezed raw) {
     return [api2wire_i_32(raw.width), api2wire_i_32(raw.height)];
   }
 
@@ -1708,6 +1803,9 @@ class RustLibWire extends BaseWire {
   void wire_handle_enum_parameter(NativePortType port_, int weekday) =>
       wasmModule.wire_handle_enum_parameter(port_, weekday);
 
+  void wire_handle_enum_struct(NativePortType port_, List<dynamic> val) =>
+      wasmModule.wire_handle_enum_struct(port_, val);
+
   void wire_handle_return_enum(NativePortType port_, String input) =>
       wasmModule.wire_handle_return_enum(port_, input);
 
@@ -1729,6 +1827,26 @@ class RustLibWire extends BaseWire {
 
   void wire_register_event_listener(NativePortType port_) =>
       wasmModule.wire_register_event_listener(port_);
+
+  void wire_CustomStruct_new(NativePortType port_, String message) =>
+      wasmModule.wire_CustomStruct_new(port_, message);
+
+  void wire_CustomStruct_nonstatic_return_custom_struct_error(
+          NativePortType port_, List<dynamic> that) =>
+      wasmModule.wire_CustomStruct_nonstatic_return_custom_struct_error(
+          port_, that);
+
+  void wire_CustomStruct_nonstatic_return_custom_struct_ok(
+          NativePortType port_, List<dynamic> that) =>
+      wasmModule.wire_CustomStruct_nonstatic_return_custom_struct_ok(
+          port_, that);
+
+  void wire_CustomStruct_static_return_custom_struct_error(
+          NativePortType port_) =>
+      wasmModule.wire_CustomStruct_static_return_custom_struct_error(port_);
+
+  void wire_CustomStruct_static_return_custom_struct_ok(NativePortType port_) =>
+      wasmModule.wire_CustomStruct_static_return_custom_struct_ok(port_);
 
   void wire_custom_enum_error_panic_twin_normal(NativePortType port_) =>
       wasmModule.wire_custom_enum_error_panic_twin_normal(port_);
@@ -1757,6 +1875,42 @@ class RustLibWire extends BaseWire {
   void wire_func_type_infallible_panic_twin_normal(NativePortType port_) =>
       wasmModule.wire_func_type_infallible_panic_twin_normal(port_);
 
+  void wire_panic_with_custom_result(NativePortType port_) =>
+      wasmModule.wire_panic_with_custom_result(port_);
+
+  void wire_return_custom_nested_error_1(NativePortType port_) =>
+      wasmModule.wire_return_custom_nested_error_1(port_);
+
+  void wire_return_custom_nested_error_1_variant1(NativePortType port_) =>
+      wasmModule.wire_return_custom_nested_error_1_variant1(port_);
+
+  void wire_return_custom_nested_error_2(NativePortType port_) =>
+      wasmModule.wire_return_custom_nested_error_2(port_);
+
+  void wire_return_custom_struct_error(NativePortType port_) =>
+      wasmModule.wire_return_custom_struct_error(port_);
+
+  void wire_return_custom_struct_ok(NativePortType port_) =>
+      wasmModule.wire_return_custom_struct_ok(port_);
+
+  void wire_return_err_custom_error(NativePortType port_) =>
+      wasmModule.wire_return_err_custom_error(port_);
+
+  void wire_return_error_variant(NativePortType port_, int variant) =>
+      wasmModule.wire_return_error_variant(port_, variant);
+
+  void wire_return_ok_custom_error(NativePortType port_) =>
+      wasmModule.wire_return_ok_custom_error(port_);
+
+  void wire_stream_sink_throw_anyhow(NativePortType port_) =>
+      wasmModule.wire_stream_sink_throw_anyhow(port_);
+
+  void wire_sync_return_custom_struct_error(NativePortType port_) =>
+      wasmModule.wire_sync_return_custom_struct_error(port_);
+
+  void wire_throw_anyhow(NativePortType port_) =>
+      wasmModule.wire_throw_anyhow(port_);
+
   void wire_call_new_module_system(NativePortType port_) =>
       wasmModule.wire_call_new_module_system(port_);
 
@@ -1769,6 +1923,9 @@ class RustLibWire extends BaseWire {
   void wire_use_imported_struct(
           NativePortType port_, List<dynamic> my_struct) =>
       wasmModule.wire_use_imported_struct(port_, my_struct);
+
+  void wire_another_macro_struct(NativePortType port_) =>
+      wasmModule.wire_another_macro_struct(port_);
 
   void wire_func_macro_struct(NativePortType port_, List<dynamic> arg) =>
       wasmModule.wire_func_macro_struct(port_, arg);
@@ -1879,6 +2036,20 @@ class RustLibWire extends BaseWire {
   void wire_handle_nested_struct(NativePortType port_, List<dynamic> s) =>
       wasmModule.wire_handle_nested_struct(port_, s);
 
+  void wire_handle_string(NativePortType port_, String s) =>
+      wasmModule.wire_handle_string(port_, s);
+
+  void wire_handle_struct(
+          NativePortType port_, List<dynamic> arg, List<dynamic> boxed) =>
+      wasmModule.wire_handle_struct(port_, arg, boxed);
+
+  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_handle_struct_sync_freezed(List<dynamic> arg, List<dynamic> boxed) =>
+          wasmModule.wire_handle_struct_sync_freezed(arg, boxed);
+
+  void wire_handle_vec_u8(NativePortType port_, Uint8List v) =>
+      wasmModule.wire_handle_vec_u8(port_, v);
+
   void wire_list_of_primitive_enums(
           NativePortType port_, List<dynamic> weekdays) =>
       wasmModule.wire_list_of_primitive_enums(port_, weekdays);
@@ -1888,6 +2059,9 @@ class RustLibWire extends BaseWire {
 
   void wire_test_struct_with_enum(NativePortType port_, List<dynamic> se) =>
       wasmModule.wire_test_struct_with_enum(port_, se);
+
+  void wire_empty_struct(NativePortType port_, List<dynamic> empty) =>
+      wasmModule.wire_empty_struct(port_, empty);
 
   void wire_func_return_unit_twin_normal(NativePortType port_) =>
       wasmModule.wire_func_return_unit_twin_normal(port_);
@@ -1933,6 +2107,27 @@ class RustLibWire extends BaseWire {
 
   void wire_handle_vec_of_opts(NativePortType port_, List<dynamic> opt) =>
       wasmModule.wire_handle_vec_of_opts(port_, opt);
+
+  void wire_primitive_optional_types(NativePortType port_, int? my_i32,
+          Object? my_i64, double? my_f64, bool? my_bool) =>
+      wasmModule.wire_primitive_optional_types(
+          port_, my_i32, my_i64, my_f64, my_bool);
+
+  void wire_handle_vec_of_primitive(NativePortType port_, int n) =>
+      wasmModule.wire_handle_vec_of_primitive(port_, n);
+
+  void wire_handle_zero_copy_vec_of_primitive(NativePortType port_, int n) =>
+      wasmModule.wire_handle_zero_copy_vec_of_primitive(port_, n);
+
+  void wire_get_usize(NativePortType port_, int u) =>
+      wasmModule.wire_get_usize(port_, u);
+
+  void wire_primitive_types(NativePortType port_, int my_i32, Object my_i64,
+          double my_f64, bool my_bool) =>
+      wasmModule.wire_primitive_types(port_, my_i32, my_i64, my_f64, my_bool);
+
+  void wire_primitive_u32(NativePortType port_, int my_u32) =>
+      wasmModule.wire_primitive_u32(port_, my_u32);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_StructWithCommentsTwinSync_instance_method_twin_sync(
@@ -2374,6 +2569,9 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_frb_sync_generator_test();
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_sync_create_opaque() => wasmModule.wire_sync_create_opaque();
+
+  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_sync_create_sync_opaque() =>
           wasmModule.wire_sync_create_sync_opaque();
 
@@ -2400,6 +2598,15 @@ class RustLibWire extends BaseWire {
 
   void wire_handle_stream_of_struct(NativePortType port_) =>
       wasmModule.wire_handle_stream_of_struct(port_);
+
+  void wire_handle_stream_sink_at_1(NativePortType port_, int key, int max) =>
+      wasmModule.wire_handle_stream_sink_at_1(port_, key, max);
+
+  void wire_handle_stream_sink_at_2(NativePortType port_, int key, int max) =>
+      wasmModule.wire_handle_stream_sink_at_2(port_, key, max);
+
+  void wire_handle_stream_sink_at_3(NativePortType port_, int key, int max) =>
+      wasmModule.wire_handle_stream_sink_at_3(port_, key, max);
 
   void wire_func_struct_with_one_field_twin_normal(
           NativePortType port_, List<dynamic> arg) =>
@@ -2656,6 +2863,9 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_handle_enum_parameter(NativePortType port_, int weekday);
 
+  external void wire_handle_enum_struct(
+      NativePortType port_, List<dynamic> val);
+
   external void wire_handle_return_enum(NativePortType port_, String input);
 
   external void wire_multiply_by_ten(
@@ -2671,6 +2881,20 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, String address, String payload);
 
   external void wire_register_event_listener(NativePortType port_);
+
+  external void wire_CustomStruct_new(NativePortType port_, String message);
+
+  external void wire_CustomStruct_nonstatic_return_custom_struct_error(
+      NativePortType port_, List<dynamic> that);
+
+  external void wire_CustomStruct_nonstatic_return_custom_struct_ok(
+      NativePortType port_, List<dynamic> that);
+
+  external void wire_CustomStruct_static_return_custom_struct_error(
+      NativePortType port_);
+
+  external void wire_CustomStruct_static_return_custom_struct_ok(
+      NativePortType port_);
 
   external void wire_custom_enum_error_panic_twin_normal(NativePortType port_);
 
@@ -2693,6 +2917,31 @@ class RustLibWasmModule implements WasmModule {
   external void wire_func_type_infallible_panic_twin_normal(
       NativePortType port_);
 
+  external void wire_panic_with_custom_result(NativePortType port_);
+
+  external void wire_return_custom_nested_error_1(NativePortType port_);
+
+  external void wire_return_custom_nested_error_1_variant1(
+      NativePortType port_);
+
+  external void wire_return_custom_nested_error_2(NativePortType port_);
+
+  external void wire_return_custom_struct_error(NativePortType port_);
+
+  external void wire_return_custom_struct_ok(NativePortType port_);
+
+  external void wire_return_err_custom_error(NativePortType port_);
+
+  external void wire_return_error_variant(NativePortType port_, int variant);
+
+  external void wire_return_ok_custom_error(NativePortType port_);
+
+  external void wire_stream_sink_throw_anyhow(NativePortType port_);
+
+  external void wire_sync_return_custom_struct_error(NativePortType port_);
+
+  external void wire_throw_anyhow(NativePortType port_);
+
   external void wire_call_new_module_system(NativePortType port_);
 
   external void wire_call_old_module_system(NativePortType port_);
@@ -2701,6 +2950,8 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_use_imported_struct(
       NativePortType port_, List<dynamic> my_struct);
+
+  external void wire_another_macro_struct(NativePortType port_);
 
   external void wire_func_macro_struct(NativePortType port_, List<dynamic> arg);
 
@@ -2780,6 +3031,16 @@ class RustLibWasmModule implements WasmModule {
   external void wire_handle_nested_struct(
       NativePortType port_, List<dynamic> s);
 
+  external void wire_handle_string(NativePortType port_, String s);
+
+  external void wire_handle_struct(
+      NativePortType port_, List<dynamic> arg, List<dynamic> boxed);
+
+  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_handle_struct_sync_freezed(List<dynamic> arg, List<dynamic> boxed);
+
+  external void wire_handle_vec_u8(NativePortType port_, Uint8List v);
+
   external void wire_list_of_primitive_enums(
       NativePortType port_, List<dynamic> weekdays);
 
@@ -2787,6 +3048,8 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_test_struct_with_enum(
       NativePortType port_, List<dynamic> se);
+
+  external void wire_empty_struct(NativePortType port_, List<dynamic> empty);
 
   external void wire_func_return_unit_twin_normal(NativePortType port_);
 
@@ -2824,6 +3087,21 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_handle_vec_of_opts(
       NativePortType port_, List<dynamic> opt);
+
+  external void wire_primitive_optional_types(NativePortType port_, int? my_i32,
+      Object? my_i64, double? my_f64, bool? my_bool);
+
+  external void wire_handle_vec_of_primitive(NativePortType port_, int n);
+
+  external void wire_handle_zero_copy_vec_of_primitive(
+      NativePortType port_, int n);
+
+  external void wire_get_usize(NativePortType port_, int u);
+
+  external void wire_primitive_types(NativePortType port_, int my_i32,
+      Object my_i64, double my_f64, bool my_bool);
+
+  external void wire_primitive_u32(NativePortType port_, int my_u32);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_StructWithCommentsTwinSync_instance_method_twin_sync(
@@ -3144,6 +3422,9 @@ class RustLibWasmModule implements WasmModule {
       wire_frb_sync_generator_test();
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_sync_create_opaque();
+
+  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_sync_create_sync_opaque();
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
@@ -3163,6 +3444,15 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, int a, int b);
 
   external void wire_handle_stream_of_struct(NativePortType port_);
+
+  external void wire_handle_stream_sink_at_1(
+      NativePortType port_, int key, int max);
+
+  external void wire_handle_stream_sink_at_2(
+      NativePortType port_, int key, int max);
+
+  external void wire_handle_stream_sink_at_3(
+      NativePortType port_, int key, int max);
 
   external void wire_func_struct_with_one_field_twin_normal(
       NativePortType port_, List<dynamic> arg);

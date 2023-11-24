@@ -18,6 +18,9 @@ import 'api/misc_example.dart';
 import 'api/misc_type.dart';
 import 'api/newtype_pattern.dart';
 import 'api/optional.dart';
+import 'api/optional_primitive_misc.dart';
+import 'api/primitive_list_misc.dart';
+import 'api/primitive_misc.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/enumeration_twin_sync.dart';
 import 'api/pseudo_manual/exception_twin_sync.dart';
@@ -214,6 +217,9 @@ abstract class RustLibApi extends BaseApi {
   Future<Weekdays> handleEnumParameter(
       {required Weekdays weekday, dynamic hint});
 
+  Future<KitchenSink> handleEnumStruct(
+      {required KitchenSink val, dynamic hint});
+
   Future<Weekdays?> handleReturnEnum({required String input, dynamic hint});
 
   Future<Measure?> multiplyByTen({required Measure measure, dynamic hint});
@@ -228,6 +234,18 @@ abstract class RustLibApi extends BaseApi {
       {required String address, required String payload, dynamic hint});
 
   Stream<Event> registerEventListener({dynamic hint});
+
+  Future<CustomStruct> customStructNew({required String message, dynamic hint});
+
+  Future<void> customStructNonstaticReturnCustomStructError(
+      {required CustomStruct that, dynamic hint});
+
+  Future<int> customStructNonstaticReturnCustomStructOk(
+      {required CustomStruct that, dynamic hint});
+
+  Future<void> customStructStaticReturnCustomStructError({dynamic hint});
+
+  Future<int> customStructStaticReturnCustomStructOk({dynamic hint});
 
   Future<void> customEnumErrorPanicTwinNormal({dynamic hint});
 
@@ -248,6 +266,30 @@ abstract class RustLibApi extends BaseApi {
 
   Future<int> funcTypeInfalliblePanicTwinNormal({dynamic hint});
 
+  Future<void> panicWithCustomResult({dynamic hint});
+
+  Future<void> returnCustomNestedError1({dynamic hint});
+
+  Future<void> returnCustomNestedError1Variant1({dynamic hint});
+
+  Future<void> returnCustomNestedError2({dynamic hint});
+
+  Future<void> returnCustomStructError({dynamic hint});
+
+  Future<int> returnCustomStructOk({dynamic hint});
+
+  Future<int> returnErrCustomError({dynamic hint});
+
+  Future<int> returnErrorVariant({required int variant, dynamic hint});
+
+  Future<int> returnOkCustomError({dynamic hint});
+
+  Stream<String> streamSinkThrowAnyhow({dynamic hint});
+
+  Future<void> syncReturnCustomStructError({dynamic hint});
+
+  Future<void> throwAnyhow({dynamic hint});
+
   Future<NewSimpleStruct> callNewModuleSystem({dynamic hint});
 
   Future<OldSimpleStruct> callOldModuleSystem({dynamic hint});
@@ -255,6 +297,8 @@ abstract class RustLibApi extends BaseApi {
   Future<bool> useImportedEnum({required MyEnum myEnum, dynamic hint});
 
   Future<bool> useImportedStruct({required MyStruct myStruct, dynamic hint});
+
+  Future<AnotherMacroStruct> anotherMacroStruct({dynamic hint});
 
   Future<MacroStruct> funcMacroStruct({required MacroStruct arg, dynamic hint});
 
@@ -343,6 +387,16 @@ abstract class RustLibApi extends BaseApi {
   Future<MyNestedStruct> handleNestedStruct(
       {required MyNestedStruct s, dynamic hint});
 
+  Future<String> handleString({required String s, dynamic hint});
+
+  Future<MySize> handleStruct(
+      {required MySize arg, required MySize boxed, dynamic hint});
+
+  MySizeFreezed handleStructSyncFreezed(
+      {required MySizeFreezed arg, required MySizeFreezed boxed, dynamic hint});
+
+  Future<Uint8List> handleVecU8({required Uint8List v, dynamic hint});
+
   Future<List<Weekdays>> listOfPrimitiveEnums(
       {required List<Weekdays> weekdays, dynamic hint});
 
@@ -350,6 +404,8 @@ abstract class RustLibApi extends BaseApi {
 
   Future<StructWithEnum> testStructWithEnum(
       {required StructWithEnum se, dynamic hint});
+
+  Future<Empty> emptyStruct({required Empty empty, dynamic hint});
 
   Future<void> funcReturnUnitTwinNormal({dynamic hint});
 
@@ -384,6 +440,26 @@ abstract class RustLibApi extends BaseApi {
   Future<Element?> handleOptionalStruct({String? document, dynamic hint});
 
   Future<OptVecs> handleVecOfOpts({required OptVecs opt, dynamic hint});
+
+  Future<int?> primitiveOptionalTypes(
+      {int? myI32, BigInt? myI64, double? myF64, bool? myBool, dynamic hint});
+
+  Future<VecOfPrimitivePack> handleVecOfPrimitive(
+      {required int n, dynamic hint});
+
+  Future<ZeroCopyVecOfPrimitivePack> handleZeroCopyVecOfPrimitive(
+      {required int n, dynamic hint});
+
+  Future<int> getUsize({required int u, dynamic hint});
+
+  Future<int> primitiveTypes(
+      {required int myI32,
+      required BigInt myI64,
+      required double myF64,
+      required bool myBool,
+      dynamic hint});
+
+  Future<int> primitiveU32({required int myU32, dynamic hint});
 
   void structWithCommentsTwinSyncInstanceMethodTwinSync(
       {required StructWithCommentsTwinSync that, dynamic hint});
@@ -662,6 +738,8 @@ abstract class RustLibApi extends BaseApi {
 
   FrbOpaqueSyncReturn frbSyncGeneratorTest({dynamic hint});
 
+  HideData syncCreateOpaque({dynamic hint});
+
   NonSendHideData syncCreateSyncOpaque({dynamic hint});
 
   String syncRunOpaque({required NonSendHideData opaque, dynamic hint});
@@ -680,6 +758,15 @@ abstract class RustLibApi extends BaseApi {
       {required int a, required int b, dynamic hint});
 
   Stream<MyStreamEntry> handleStreamOfStruct({dynamic hint});
+
+  Stream<Log> handleStreamSinkAt1(
+      {required int key, required int max, dynamic hint});
+
+  Stream<Log> handleStreamSinkAt2(
+      {required int key, required int max, dynamic hint});
+
+  Stream<Log> handleStreamSinkAt3(
+      {required int key, required int max, dynamic hint});
 
   Future<StructWithOneFieldTwinNormal> funcStructWithOneFieldTwinNormal(
       {required StructWithOneFieldTwinNormal arg, dynamic hint});
@@ -1847,6 +1934,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<KitchenSink> handleEnumStruct(
+      {required KitchenSink val, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_kitchen_sink(val);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_handle_enum_struct(port_, arg0),
+      parseSuccessData: _wire2api_kitchen_sink,
+      parseErrorData: null,
+      constMeta: kHandleEnumStructConstMeta,
+      argValues: [val],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleEnumStructConstMeta => const TaskConstMeta(
+        debugName: "handle_enum_struct",
+        argNames: ["val"],
+      );
+
+  @override
   Future<Weekdays?> handleReturnEnum({required String input, dynamic hint}) {
     var arg0 = api2wire_String(input);
     return handler.executeNormal(NormalTask(
@@ -1976,6 +2083,110 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kRegisterEventListenerConstMeta => const TaskConstMeta(
         debugName: "register_event_listener",
+        argNames: [],
+      );
+
+  @override
+  Future<CustomStruct> customStructNew(
+      {required String message, dynamic hint}) {
+    var arg0 = api2wire_String(message);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_CustomStruct_new(port_, arg0),
+      parseSuccessData: _wire2api_custom_struct,
+      parseErrorData: null,
+      constMeta: kCustomStructNewConstMeta,
+      argValues: [message],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCustomStructNewConstMeta => const TaskConstMeta(
+        debugName: "CustomStruct_new",
+        argNames: ["message"],
+      );
+
+  @override
+  Future<void> customStructNonstaticReturnCustomStructError(
+      {required CustomStruct that, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_custom_struct(that);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire
+          .wire_CustomStruct_nonstatic_return_custom_struct_error(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_struct_error,
+      constMeta: kCustomStructNonstaticReturnCustomStructErrorConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCustomStructNonstaticReturnCustomStructErrorConstMeta =>
+      const TaskConstMeta(
+        debugName: "CustomStruct_nonstatic_return_custom_struct_error",
+        argNames: ["that"],
+      );
+
+  @override
+  Future<int> customStructNonstaticReturnCustomStructOk(
+      {required CustomStruct that, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_custom_struct(that);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_CustomStruct_nonstatic_return_custom_struct_ok(port_, arg0),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: _wire2api_custom_struct_error,
+      constMeta: kCustomStructNonstaticReturnCustomStructOkConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCustomStructNonstaticReturnCustomStructOkConstMeta =>
+      const TaskConstMeta(
+        debugName: "CustomStruct_nonstatic_return_custom_struct_ok",
+        argNames: ["that"],
+      );
+
+  @override
+  Future<void> customStructStaticReturnCustomStructError({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_CustomStruct_static_return_custom_struct_error(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_struct_error,
+      constMeta: kCustomStructStaticReturnCustomStructErrorConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCustomStructStaticReturnCustomStructErrorConstMeta =>
+      const TaskConstMeta(
+        debugName: "CustomStruct_static_return_custom_struct_error",
+        argNames: [],
+      );
+
+  @override
+  Future<int> customStructStaticReturnCustomStructOk({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_CustomStruct_static_return_custom_struct_ok(port_),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: _wire2api_custom_struct_error,
+      constMeta: kCustomStructStaticReturnCustomStructOkConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCustomStructStaticReturnCustomStructOkConstMeta =>
+      const TaskConstMeta(
+        debugName: "CustomStruct_static_return_custom_struct_ok",
         argNames: [],
       );
 
@@ -2142,6 +2353,226 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<void> panicWithCustomResult({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_panic_with_custom_result(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_error,
+      constMeta: kPanicWithCustomResultConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kPanicWithCustomResultConstMeta => const TaskConstMeta(
+        debugName: "panic_with_custom_result",
+        argNames: [],
+      );
+
+  @override
+  Future<void> returnCustomNestedError1({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_return_custom_nested_error_1(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_nested_error_1,
+      constMeta: kReturnCustomNestedError1ConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kReturnCustomNestedError1ConstMeta => const TaskConstMeta(
+        debugName: "return_custom_nested_error_1",
+        argNames: [],
+      );
+
+  @override
+  Future<void> returnCustomNestedError1Variant1({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_return_custom_nested_error_1_variant1(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_nested_error_1,
+      constMeta: kReturnCustomNestedError1Variant1ConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kReturnCustomNestedError1Variant1ConstMeta =>
+      const TaskConstMeta(
+        debugName: "return_custom_nested_error_1_variant1",
+        argNames: [],
+      );
+
+  @override
+  Future<void> returnCustomNestedError2({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_return_custom_nested_error_2(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_nested_error_2,
+      constMeta: kReturnCustomNestedError2ConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kReturnCustomNestedError2ConstMeta => const TaskConstMeta(
+        debugName: "return_custom_nested_error_2",
+        argNames: [],
+      );
+
+  @override
+  Future<void> returnCustomStructError({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_return_custom_struct_error(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_struct_error,
+      constMeta: kReturnCustomStructErrorConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kReturnCustomStructErrorConstMeta => const TaskConstMeta(
+        debugName: "return_custom_struct_error",
+        argNames: [],
+      );
+
+  @override
+  Future<int> returnCustomStructOk({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_return_custom_struct_ok(port_),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: _wire2api_custom_struct_error,
+      constMeta: kReturnCustomStructOkConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kReturnCustomStructOkConstMeta => const TaskConstMeta(
+        debugName: "return_custom_struct_ok",
+        argNames: [],
+      );
+
+  @override
+  Future<int> returnErrCustomError({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_return_err_custom_error(port_),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: _wire2api_custom_error,
+      constMeta: kReturnErrCustomErrorConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kReturnErrCustomErrorConstMeta => const TaskConstMeta(
+        debugName: "return_err_custom_error",
+        argNames: [],
+      );
+
+  @override
+  Future<int> returnErrorVariant({required int variant, dynamic hint}) {
+    var arg0 = api2wire_u_32(variant);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_return_error_variant(port_, arg0),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: _wire2api_custom_error,
+      constMeta: kReturnErrorVariantConstMeta,
+      argValues: [variant],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kReturnErrorVariantConstMeta => const TaskConstMeta(
+        debugName: "return_error_variant",
+        argNames: ["variant"],
+      );
+
+  @override
+  Future<int> returnOkCustomError({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_return_ok_custom_error(port_),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: _wire2api_custom_error,
+      constMeta: kReturnOkCustomErrorConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kReturnOkCustomErrorConstMeta => const TaskConstMeta(
+        debugName: "return_ok_custom_error",
+        argNames: [],
+      );
+
+  @override
+  Stream<String> streamSinkThrowAnyhow({dynamic hint}) {
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) => wire.wire_stream_sink_throw_anyhow(port_),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kStreamSinkThrowAnyhowConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kStreamSinkThrowAnyhowConstMeta => const TaskConstMeta(
+        debugName: "stream_sink_throw_anyhow",
+        argNames: [],
+      );
+
+  @override
+  Future<void> syncReturnCustomStructError({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_sync_return_custom_struct_error(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_struct_error,
+      constMeta: kSyncReturnCustomStructErrorConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSyncReturnCustomStructErrorConstMeta =>
+      const TaskConstMeta(
+        debugName: "sync_return_custom_struct_error",
+        argNames: [],
+      );
+
+  @override
+  Future<void> throwAnyhow({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_throw_anyhow(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kThrowAnyhowConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kThrowAnyhowConstMeta => const TaskConstMeta(
+        debugName: "throw_anyhow",
+        argNames: [],
+      );
+
+  @override
   Future<NewSimpleStruct> callNewModuleSystem({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_call_new_module_system(port_),
@@ -2213,6 +2644,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kUseImportedStructConstMeta => const TaskConstMeta(
         debugName: "use_imported_struct",
         argNames: ["myStruct"],
+      );
+
+  @override
+  Future<AnotherMacroStruct> anotherMacroStruct({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_another_macro_struct(port_),
+      parseSuccessData: _wire2api_another_macro_struct,
+      parseErrorData: null,
+      constMeta: kAnotherMacroStructConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kAnotherMacroStructConstMeta => const TaskConstMeta(
+        debugName: "another_macro_struct",
+        argNames: [],
       );
 
   @override
@@ -2884,6 +3333,88 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<String> handleString({required String s, dynamic hint}) {
+    var arg0 = api2wire_String(s);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_handle_string(port_, arg0),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kHandleStringConstMeta,
+      argValues: [s],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleStringConstMeta => const TaskConstMeta(
+        debugName: "handle_string",
+        argNames: ["s"],
+      );
+
+  @override
+  Future<MySize> handleStruct(
+      {required MySize arg, required MySize boxed, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_my_size(arg);
+    var arg1 = api2wire_box_my_size(boxed);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_handle_struct(port_, arg0, arg1),
+      parseSuccessData: _wire2api_my_size,
+      parseErrorData: null,
+      constMeta: kHandleStructConstMeta,
+      argValues: [arg, boxed],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleStructConstMeta => const TaskConstMeta(
+        debugName: "handle_struct",
+        argNames: ["arg", "boxed"],
+      );
+
+  @override
+  MySizeFreezed handleStructSyncFreezed(
+      {required MySizeFreezed arg,
+      required MySizeFreezed boxed,
+      dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_my_size_freezed(arg);
+    var arg1 = api2wire_box_my_size_freezed(boxed);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_struct_sync_freezed(arg0, arg1),
+      parseSuccessData: _wire2api_my_size_freezed,
+      parseErrorData: null,
+      constMeta: kHandleStructSyncFreezedConstMeta,
+      argValues: [arg, boxed],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleStructSyncFreezedConstMeta => const TaskConstMeta(
+        debugName: "handle_struct_sync_freezed",
+        argNames: ["arg", "boxed"],
+      );
+
+  @override
+  Future<Uint8List> handleVecU8({required Uint8List v, dynamic hint}) {
+    var arg0 = api2wire_list_prim_u_8(v);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_handle_vec_u8(port_, arg0),
+      parseSuccessData: _wire2api_list_prim_u_8,
+      parseErrorData: null,
+      constMeta: kHandleVecU8ConstMeta,
+      argValues: [v],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleVecU8ConstMeta => const TaskConstMeta(
+        debugName: "handle_vec_u8",
+        argNames: ["v"],
+      );
+
+  @override
   Future<List<Weekdays>> listOfPrimitiveEnums(
       {required List<Weekdays> weekdays, dynamic hint}) {
     var arg0 = api2wire_list_weekdays(weekdays);
@@ -2940,6 +3471,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kTestStructWithEnumConstMeta => const TaskConstMeta(
         debugName: "test_struct_with_enum",
         argNames: ["se"],
+      );
+
+  @override
+  Future<Empty> emptyStruct({required Empty empty, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_empty(empty);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_empty_struct(port_, arg0),
+      parseSuccessData: _wire2api_empty,
+      parseErrorData: null,
+      constMeta: kEmptyStructConstMeta,
+      argValues: [empty],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kEmptyStructConstMeta => const TaskConstMeta(
+        debugName: "empty_struct",
+        argNames: ["empty"],
       );
 
   @override
@@ -3178,6 +3728,138 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kHandleVecOfOptsConstMeta => const TaskConstMeta(
         debugName: "handle_vec_of_opts",
         argNames: ["opt"],
+      );
+
+  @override
+  Future<int?> primitiveOptionalTypes(
+      {int? myI32, BigInt? myI64, double? myF64, bool? myBool, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_i_32(myI32);
+    var arg1 = api2wire_opt_box_autoadd_i_64(myI64);
+    var arg2 = api2wire_opt_box_autoadd_f_64(myF64);
+    var arg3 = api2wire_opt_box_autoadd_bool(myBool);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_primitive_optional_types(port_, arg0, arg1, arg2, arg3),
+      parseSuccessData: _wire2api_opt_box_autoadd_i_32,
+      parseErrorData: null,
+      constMeta: kPrimitiveOptionalTypesConstMeta,
+      argValues: [myI32, myI64, myF64, myBool],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kPrimitiveOptionalTypesConstMeta => const TaskConstMeta(
+        debugName: "primitive_optional_types",
+        argNames: ["myI32", "myI64", "myF64", "myBool"],
+      );
+
+  @override
+  Future<VecOfPrimitivePack> handleVecOfPrimitive(
+      {required int n, dynamic hint}) {
+    var arg0 = api2wire_i_32(n);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_handle_vec_of_primitive(port_, arg0),
+      parseSuccessData: _wire2api_vec_of_primitive_pack,
+      parseErrorData: null,
+      constMeta: kHandleVecOfPrimitiveConstMeta,
+      argValues: [n],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleVecOfPrimitiveConstMeta => const TaskConstMeta(
+        debugName: "handle_vec_of_primitive",
+        argNames: ["n"],
+      );
+
+  @override
+  Future<ZeroCopyVecOfPrimitivePack> handleZeroCopyVecOfPrimitive(
+      {required int n, dynamic hint}) {
+    var arg0 = api2wire_i_32(n);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_handle_zero_copy_vec_of_primitive(port_, arg0),
+      parseSuccessData: _wire2api_zero_copy_vec_of_primitive_pack,
+      parseErrorData: null,
+      constMeta: kHandleZeroCopyVecOfPrimitiveConstMeta,
+      argValues: [n],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleZeroCopyVecOfPrimitiveConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_zero_copy_vec_of_primitive",
+        argNames: ["n"],
+      );
+
+  @override
+  Future<int> getUsize({required int u, dynamic hint}) {
+    var arg0 = api2wire_usize(u);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_get_usize(port_, arg0),
+      parseSuccessData: _wire2api_usize,
+      parseErrorData: null,
+      constMeta: kGetUsizeConstMeta,
+      argValues: [u],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kGetUsizeConstMeta => const TaskConstMeta(
+        debugName: "get_usize",
+        argNames: ["u"],
+      );
+
+  @override
+  Future<int> primitiveTypes(
+      {required int myI32,
+      required BigInt myI64,
+      required double myF64,
+      required bool myBool,
+      dynamic hint}) {
+    var arg0 = api2wire_i_32(myI32);
+    var arg1 = api2wire_i_64(myI64);
+    var arg2 = api2wire_f_64(myF64);
+    var arg3 = api2wire_bool(myBool);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_primitive_types(port_, arg0, arg1, arg2, arg3),
+      parseSuccessData: _wire2api_i_32,
+      parseErrorData: null,
+      constMeta: kPrimitiveTypesConstMeta,
+      argValues: [myI32, myI64, myF64, myBool],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kPrimitiveTypesConstMeta => const TaskConstMeta(
+        debugName: "primitive_types",
+        argNames: ["myI32", "myI64", "myF64", "myBool"],
+      );
+
+  @override
+  Future<int> primitiveU32({required int myU32, dynamic hint}) {
+    var arg0 = api2wire_u_32(myU32);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_primitive_u32(port_, arg0),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: null,
+      constMeta: kPrimitiveU32ConstMeta,
+      argValues: [myU32],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kPrimitiveU32ConstMeta => const TaskConstMeta(
+        debugName: "primitive_u32",
+        argNames: ["myU32"],
       );
 
   @override
@@ -5451,6 +6133,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  HideData syncCreateOpaque({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_sync_create_opaque(),
+      parseSuccessData: _wire2api_RustOpaque_hide_data,
+      parseErrorData: null,
+      constMeta: kSyncCreateOpaqueConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSyncCreateOpaqueConstMeta => const TaskConstMeta(
+        debugName: "sync_create_opaque",
+        argNames: [],
+      );
+
+  @override
   NonSendHideData syncCreateSyncOpaque({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () => wire.wire_sync_create_sync_opaque(),
@@ -5607,6 +6307,69 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kHandleStreamOfStructConstMeta => const TaskConstMeta(
         debugName: "handle_stream_of_struct",
         argNames: [],
+      );
+
+  @override
+  Stream<Log> handleStreamSinkAt1(
+      {required int key, required int max, dynamic hint}) {
+    var arg0 = api2wire_u_32(key);
+    var arg1 = api2wire_u_32(max);
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) => wire.wire_handle_stream_sink_at_1(port_, arg0, arg1),
+      parseSuccessData: _wire2api_log,
+      parseErrorData: null,
+      constMeta: kHandleStreamSinkAt1ConstMeta,
+      argValues: [key, max],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleStreamSinkAt1ConstMeta => const TaskConstMeta(
+        debugName: "handle_stream_sink_at_1",
+        argNames: ["key", "max"],
+      );
+
+  @override
+  Stream<Log> handleStreamSinkAt2(
+      {required int key, required int max, dynamic hint}) {
+    var arg0 = api2wire_u_32(key);
+    var arg1 = api2wire_u_32(max);
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) => wire.wire_handle_stream_sink_at_2(port_, arg0, arg1),
+      parseSuccessData: _wire2api_log,
+      parseErrorData: null,
+      constMeta: kHandleStreamSinkAt2ConstMeta,
+      argValues: [key, max],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleStreamSinkAt2ConstMeta => const TaskConstMeta(
+        debugName: "handle_stream_sink_at_2",
+        argNames: ["key", "max"],
+      );
+
+  @override
+  Stream<Log> handleStreamSinkAt3(
+      {required int key, required int max, dynamic hint}) {
+    var arg0 = api2wire_u_32(key);
+    var arg1 = api2wire_u_32(max);
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) => wire.wire_handle_stream_sink_at_3(port_, arg0, arg1),
+      parseSuccessData: _wire2api_log,
+      parseErrorData: null,
+      constMeta: kHandleStreamSinkAt3ConstMeta,
+      argValues: [key, max],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleStreamSinkAt3ConstMeta => const TaskConstMeta(
+        debugName: "handle_stream_sink_at_3",
+        argNames: ["key", "max"],
       );
 
   @override
@@ -6021,6 +6784,42 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return wire2apiUuids(bytes);
   }
 
+  Float32List _wire2api_ZeroCopyBuffer_list_prim_f_32(dynamic raw) {
+    return raw as Float32List;
+  }
+
+  Float64List _wire2api_ZeroCopyBuffer_list_prim_f_64(dynamic raw) {
+    return raw as Float64List;
+  }
+
+  Int16List _wire2api_ZeroCopyBuffer_list_prim_i_16(dynamic raw) {
+    return raw as Int16List;
+  }
+
+  Int32List _wire2api_ZeroCopyBuffer_list_prim_i_32(dynamic raw) {
+    return raw as Int32List;
+  }
+
+  Int64List _wire2api_ZeroCopyBuffer_list_prim_i_64(dynamic raw) {
+    return _wire2api_list_prim_i_64(raw);
+  }
+
+  Int8List _wire2api_ZeroCopyBuffer_list_prim_i_8(dynamic raw) {
+    return raw as Int8List;
+  }
+
+  Uint16List _wire2api_ZeroCopyBuffer_list_prim_u_16(dynamic raw) {
+    return raw as Uint16List;
+  }
+
+  Uint32List _wire2api_ZeroCopyBuffer_list_prim_u_32(dynamic raw) {
+    return raw as Uint32List;
+  }
+
+  Uint64List _wire2api_ZeroCopyBuffer_list_prim_u_64(dynamic raw) {
+    return _wire2api_list_prim_u_64(raw);
+  }
+
   Uint8List _wire2api_ZeroCopyBuffer_list_prim_u_8(dynamic raw) {
     return raw as Uint8List;
   }
@@ -6063,6 +6862,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return Another(
       a: _wire2api_String(arr[0]),
+    );
+  }
+
+  AnotherMacroStruct _wire2api_another_macro_struct(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return AnotherMacroStruct(
+      data: _wire2api_i_32(arr[0]),
+      nonFinalData: _wire2api_i_32(arr[1]),
     );
   }
 
@@ -6210,6 +7019,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return _wire2api_c(raw);
   }
 
+  CustomNestedError2 _wire2api_box_autoadd_custom_nested_error_2(dynamic raw) {
+    return _wire2api_custom_nested_error_2(raw);
+  }
+
   CustomNestedErrorInnerTwinNormal
       _wire2api_box_autoadd_custom_nested_error_inner_twin_normal(dynamic raw) {
     return _wire2api_custom_nested_error_inner_twin_normal(raw);
@@ -6302,6 +7115,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return _wire2api_feed_id(raw);
   }
 
+  KitchenSink _wire2api_box_kitchen_sink(dynamic raw) {
+    return _wire2api_kitchen_sink(raw);
+  }
+
   Speed _wire2api_box_speed(dynamic raw) {
     return _wire2api_speed(raw);
   }
@@ -6374,6 +7191,53 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
+  CustomError _wire2api_custom_error(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomError_Error0(
+          e: _wire2api_String(raw[1]),
+          backtrace: _wire2api_String(raw[2]),
+        );
+      case 1:
+        return CustomError_Error1(
+          e: _wire2api_u_32(raw[1]),
+          backtrace: _wire2api_String(raw[2]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  CustomNestedError1 _wire2api_custom_nested_error_1(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedError1_CustomNested1(
+          _wire2api_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedError1_ErrorNested(
+          _wire2api_box_autoadd_custom_nested_error_2(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  CustomNestedError2 _wire2api_custom_nested_error_2(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedError2_CustomNested2(
+          _wire2api_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedError2_CustomNested2Number(
+          _wire2api_u_32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
   CustomNestedErrorInnerTwinNormal
       _wire2api_custom_nested_error_inner_twin_normal(dynamic raw) {
     switch (raw[0]) {
@@ -6438,6 +7302,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
+  CustomStruct _wire2api_custom_struct(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CustomStruct(
+      message: _wire2api_String(arr[0]),
+    );
+  }
+
+  CustomStructError _wire2api_custom_struct_error(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CustomStructError(
+      message: _wire2api_String(arr[0]),
+    );
+  }
+
   CustomStructErrorTwinNormal _wire2api_custom_struct_error_twin_normal(
       dynamic raw) {
     final arr = raw as List<dynamic>;
@@ -6495,6 +7377,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       attributes: _wire2api_opt_list_attribute(arr[2]),
       children: _wire2api_opt_list_element(arr[3]),
     );
+  }
+
+  Empty _wire2api_empty(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 0)
+      throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
+    return Empty();
   }
 
   EnumDartOpaque _wire2api_enum_dart_opaque(dynamic raw) {
@@ -6731,6 +7620,39 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw as int;
   }
 
+  KitchenSink _wire2api_kitchen_sink(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return KitchenSink_Empty();
+      case 1:
+        return KitchenSink_Primitives(
+          int32: _wire2api_i_32(raw[1]),
+          float64: _wire2api_f_64(raw[2]),
+          boolean: _wire2api_bool(raw[3]),
+        );
+      case 2:
+        return KitchenSink_Nested(
+          _wire2api_i_32(raw[1]),
+          _wire2api_box_kitchen_sink(raw[2]),
+        );
+      case 3:
+        return KitchenSink_Optional(
+          _wire2api_opt_box_autoadd_i_32(raw[1]),
+          _wire2api_opt_box_autoadd_i_32(raw[2]),
+        );
+      case 4:
+        return KitchenSink_Buffer(
+          _wire2api_ZeroCopyBuffer_list_prim_u_8(raw[1]),
+        );
+      case 5:
+        return KitchenSink_Enums(
+          _wire2api_weekdays(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
   List<Object> _wire2api_list_DartOpaque(dynamic raw) {
     return (raw as List<dynamic>).map(_wire2api_DartOpaque).toList();
   }
@@ -6879,6 +7801,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return (raw as List<dynamic>).map(_wire2api_weekdays).toList();
   }
 
+  Log _wire2api_log(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return Log(
+      key: _wire2api_u_32(arr[0]),
+      value: _wire2api_u_32(arr[1]),
+    );
+  }
+
   Log2 _wire2api_log_2(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2)
@@ -6966,6 +7898,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return MySize(
+      width: _wire2api_i_32(arr[0]),
+      height: _wire2api_i_32(arr[1]),
+    );
+  }
+
+  MySizeFreezed _wire2api_my_size_freezed(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return MySizeFreezed(
       width: _wire2api_i_32(arr[0]),
       height: _wire2api_i_32(arr[1]),
     );
@@ -7498,8 +8440,50 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
+  int _wire2api_usize(dynamic raw) {
+    return wire2apiI64OrU64(raw);
+  }
+
+  VecOfPrimitivePack _wire2api_vec_of_primitive_pack(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 11)
+      throw Exception('unexpected arr length: expect 11 but see ${arr.length}');
+    return VecOfPrimitivePack(
+      int8List: _wire2api_list_prim_i_8(arr[0]),
+      uint8List: _wire2api_list_prim_u_8(arr[1]),
+      int16List: _wire2api_list_prim_i_16(arr[2]),
+      uint16List: _wire2api_list_prim_u_16(arr[3]),
+      uint32List: _wire2api_list_prim_u_32(arr[4]),
+      int32List: _wire2api_list_prim_i_32(arr[5]),
+      uint64List: _wire2api_list_prim_u_64(arr[6]),
+      int64List: _wire2api_list_prim_i_64(arr[7]),
+      float32List: _wire2api_list_prim_f_32(arr[8]),
+      float64List: _wire2api_list_prim_f_64(arr[9]),
+      boolList: _wire2api_list_bool(arr[10]),
+    );
+  }
+
   Weekdays _wire2api_weekdays(dynamic raw) {
     return Weekdays.values[raw as int];
+  }
+
+  ZeroCopyVecOfPrimitivePack _wire2api_zero_copy_vec_of_primitive_pack(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 10)
+      throw Exception('unexpected arr length: expect 10 but see ${arr.length}');
+    return ZeroCopyVecOfPrimitivePack(
+      int8List: _wire2api_ZeroCopyBuffer_list_prim_i_8(arr[0]),
+      uint8List: _wire2api_ZeroCopyBuffer_list_prim_u_8(arr[1]),
+      int16List: _wire2api_ZeroCopyBuffer_list_prim_i_16(arr[2]),
+      uint16List: _wire2api_ZeroCopyBuffer_list_prim_u_16(arr[3]),
+      uint32List: _wire2api_ZeroCopyBuffer_list_prim_u_32(arr[4]),
+      int32List: _wire2api_ZeroCopyBuffer_list_prim_i_32(arr[5]),
+      uint64List: _wire2api_ZeroCopyBuffer_list_prim_u_64(arr[6]),
+      int64List: _wire2api_ZeroCopyBuffer_list_prim_i_64(arr[7]),
+      float32List: _wire2api_ZeroCopyBuffer_list_prim_f_32(arr[8]),
+      float64List: _wire2api_ZeroCopyBuffer_list_prim_f_64(arr[9]),
+    );
   }
 }
 

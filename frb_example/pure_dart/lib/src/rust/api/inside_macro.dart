@@ -6,6 +6,30 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<MacroStruct> funcMacroStruct({required MacroStruct arg, dynamic hint}) =>
     RustLib.instance.api.funcMacroStruct(arg: arg, hint: hint);
 
+Future<AnotherMacroStruct> anotherMacroStruct({dynamic hint}) =>
+    RustLib.instance.api.anotherMacroStruct(hint: hint);
+
+class AnotherMacroStruct {
+  final int data;
+  int nonFinalData;
+
+  AnotherMacroStruct({
+    required this.data,
+    required this.nonFinalData,
+  });
+
+  @override
+  int get hashCode => data.hashCode ^ nonFinalData.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AnotherMacroStruct &&
+          runtimeType == other.runtimeType &&
+          data == other.data &&
+          nonFinalData == other.nonFinalData;
+}
+
 class MacroStruct {
   final int data;
 

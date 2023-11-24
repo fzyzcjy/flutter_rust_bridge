@@ -4,6 +4,9 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'rust_opaque.dart';
 
+HideData syncCreateOpaque({dynamic hint}) =>
+    RustLib.instance.api.syncCreateOpaque(hint: hint);
+
 NonSendHideData syncCreateSyncOpaque({dynamic hint}) =>
     RustLib.instance.api.syncCreateSyncOpaque(hint: hint);
 

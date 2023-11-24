@@ -35,6 +35,10 @@ Future<Weekdays> handleEnumParameter(
 Future<Measure?> multiplyByTen({required Measure measure, dynamic hint}) =>
     RustLib.instance.api.multiplyByTen(measure: measure, hint: hint);
 
+Future<KitchenSink> handleEnumStruct(
+        {required KitchenSink val, dynamic hint}) =>
+    RustLib.instance.api.handleEnumStruct(val: val, hint: hint);
+
 @freezed
 sealed class Distance with _$Distance {
   const factory Distance.unknown() = Distance_Unknown;
@@ -77,6 +81,33 @@ sealed class EnumWithItemTupleTwinNormal with _$EnumWithItemTupleTwinNormal {
   const factory EnumWithItemTupleTwinNormal.b(
     Int32List field0,
   ) = EnumWithItemTupleTwinNormal_B;
+}
+
+@freezed
+sealed class KitchenSink with _$KitchenSink {
+  /// Comment on variant
+  const factory KitchenSink.empty() = KitchenSink_Empty;
+  const factory KitchenSink.primitives({
+    /// Dart field comment
+    @Default(-1) int int32,
+    required double float64,
+    required bool boolean,
+  }) = KitchenSink_Primitives;
+  const factory KitchenSink.nested(
+    int field0, [
+    @Default(KitchenSink.empty()) KitchenSink field1,
+  ]) = KitchenSink_Nested;
+  const factory KitchenSink.optional([
+    /// Comment on anonymous field
+    @Default(-1) int? field0,
+    int? field1,
+  ]) = KitchenSink_Optional;
+  const factory KitchenSink.buffer(
+    Uint8List field0,
+  ) = KitchenSink_Buffer;
+  const factory KitchenSink.enums([
+    @Default(Weekdays.sunday) Weekdays field0,
+  ]) = KitchenSink_Enums;
 }
 
 @freezed

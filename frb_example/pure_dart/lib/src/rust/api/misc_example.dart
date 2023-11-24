@@ -1,5 +1,6 @@
 // ignore_for_file: invalid_use_of_internal_member, unused_import
 
+import '../auxiliary/sample_types.dart';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
@@ -25,6 +26,23 @@ Future<Abc> testAbcEnum({required Abc abc, dynamic hint}) =>
 Future<StructWithEnum> testStructWithEnum(
         {required StructWithEnum se, dynamic hint}) =>
     RustLib.instance.api.testStructWithEnum(se: se, hint: hint);
+
+Future<String> handleString({required String s, dynamic hint}) =>
+    RustLib.instance.api.handleString(s: s, hint: hint);
+
+Future<Uint8List> handleVecU8({required Uint8List v, dynamic hint}) =>
+    RustLib.instance.api.handleVecU8(v: v, hint: hint);
+
+Future<MySize> handleStruct(
+        {required MySize arg, required MySize boxed, dynamic hint}) =>
+    RustLib.instance.api.handleStruct(arg: arg, boxed: boxed, hint: hint);
+
+MySizeFreezed handleStructSyncFreezed(
+        {required MySizeFreezed arg,
+        required MySizeFreezed boxed,
+        dynamic hint}) =>
+    RustLib.instance.api
+        .handleStructSyncFreezed(arg: arg, boxed: boxed, hint: hint);
 
 class A {
   final String a;
@@ -130,6 +148,14 @@ class MyNestedStruct {
           runtimeType == other.runtimeType &&
           treeNode == other.treeNode &&
           weekday == other.weekday;
+}
+
+@freezed
+class MySizeFreezed with _$MySizeFreezed {
+  const factory MySizeFreezed({
+    required int width,
+    required int height,
+  }) = _MySizeFreezed;
 }
 
 class MyTreeNode {

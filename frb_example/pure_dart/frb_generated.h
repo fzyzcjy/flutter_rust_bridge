@@ -157,6 +157,48 @@ typedef struct wire_enum_with_item_tuple_twin_normal {
   union EnumWithItemTupleTwinNormalKind *kind;
 } wire_enum_with_item_tuple_twin_normal;
 
+typedef struct wire_KitchenSink_Empty {
+
+} wire_KitchenSink_Empty;
+
+typedef struct wire_KitchenSink_Primitives {
+  int32_t int32;
+  double float64;
+  bool boolean;
+} wire_KitchenSink_Primitives;
+
+typedef struct wire_KitchenSink_Nested {
+  int32_t field0;
+  struct wire_kitchen_sink *field1;
+} wire_KitchenSink_Nested;
+
+typedef struct wire_KitchenSink_Optional {
+  int32_t *field0;
+  int32_t *field1;
+} wire_KitchenSink_Optional;
+
+typedef struct wire_KitchenSink_Buffer {
+  struct wire_list_prim_u_8 *field0;
+} wire_KitchenSink_Buffer;
+
+typedef struct wire_KitchenSink_Enums {
+  int32_t field0;
+} wire_KitchenSink_Enums;
+
+typedef union KitchenSinkKind {
+  struct wire_KitchenSink_Empty *Empty;
+  struct wire_KitchenSink_Primitives *Primitives;
+  struct wire_KitchenSink_Nested *Nested;
+  struct wire_KitchenSink_Optional *Optional;
+  struct wire_KitchenSink_Buffer *Buffer;
+  struct wire_KitchenSink_Enums *Enums;
+} KitchenSinkKind;
+
+typedef struct wire_kitchen_sink {
+  int32_t tag;
+  union KitchenSinkKind *kind;
+} wire_kitchen_sink;
+
 typedef struct wire_Speed_Unknown {
 
 } wire_Speed_Unknown;
@@ -220,6 +262,10 @@ typedef struct wire_event {
   struct wire_list_prim_u_8 *address;
   struct wire_list_prim_u_8 *payload;
 } wire_event;
+
+typedef struct wire_custom_struct {
+  struct wire_list_prim_u_8 *message;
+} wire_custom_struct;
 
 typedef struct wire_CustomNestedErrorOuterTwinNormal_One {
   struct wire_list_prim_u_8 *field0;
@@ -324,6 +370,16 @@ typedef struct wire_my_nested_struct {
   int32_t weekday;
 } wire_my_nested_struct;
 
+typedef struct wire_my_size {
+  int32_t width;
+  int32_t height;
+} wire_my_size;
+
+typedef struct wire_my_size_freezed {
+  int32_t width;
+  int32_t height;
+} wire_my_size_freezed;
+
 typedef struct wire_list_weekdays {
   int32_t *ptr;
   int32_t len;
@@ -374,10 +430,9 @@ typedef struct wire_struct_with_enum {
   struct wire_abc abc2;
 } wire_struct_with_enum;
 
-typedef struct wire_my_size {
-  int32_t width;
-  int32_t height;
-} wire_my_size;
+typedef struct wire_empty {
+
+} wire_empty;
 
 typedef struct wire_list_my_size {
   struct wire_my_size *ptr;
@@ -834,6 +889,8 @@ void wire_func_enum_with_item_tuple_twin_normal(int64_t port_,
 
 void wire_handle_enum_parameter(int64_t port_, int32_t weekday);
 
+void wire_handle_enum_struct(int64_t port_, struct wire_kitchen_sink *val);
+
 void wire_handle_return_enum(int64_t port_, struct wire_list_prim_u_8 *input);
 
 void wire_multiply_by_ten(int64_t port_, struct wire_measure *measure);
@@ -849,6 +906,18 @@ void wire_create_event(int64_t port_,
                        struct wire_list_prim_u_8 *payload);
 
 void wire_register_event_listener(int64_t port_);
+
+void wire_CustomStruct_new(int64_t port_, struct wire_list_prim_u_8 *message);
+
+void wire_CustomStruct_nonstatic_return_custom_struct_error(int64_t port_,
+                                                            struct wire_custom_struct *that);
+
+void wire_CustomStruct_nonstatic_return_custom_struct_ok(int64_t port_,
+                                                         struct wire_custom_struct *that);
+
+void wire_CustomStruct_static_return_custom_struct_error(int64_t port_);
+
+void wire_CustomStruct_static_return_custom_struct_ok(int64_t port_);
 
 void wire_custom_enum_error_panic_twin_normal(int64_t port_);
 
@@ -868,6 +937,30 @@ void wire_func_type_fallible_panic_twin_normal(int64_t port_);
 
 void wire_func_type_infallible_panic_twin_normal(int64_t port_);
 
+void wire_panic_with_custom_result(int64_t port_);
+
+void wire_return_custom_nested_error_1(int64_t port_);
+
+void wire_return_custom_nested_error_1_variant1(int64_t port_);
+
+void wire_return_custom_nested_error_2(int64_t port_);
+
+void wire_return_custom_struct_error(int64_t port_);
+
+void wire_return_custom_struct_ok(int64_t port_);
+
+void wire_return_err_custom_error(int64_t port_);
+
+void wire_return_error_variant(int64_t port_, uint32_t variant);
+
+void wire_return_ok_custom_error(int64_t port_);
+
+void wire_stream_sink_throw_anyhow(int64_t port_);
+
+void wire_sync_return_custom_struct_error(int64_t port_);
+
+void wire_throw_anyhow(int64_t port_);
+
 void wire_call_new_module_system(int64_t port_);
 
 void wire_call_old_module_system(int64_t port_);
@@ -875,6 +968,8 @@ void wire_call_old_module_system(int64_t port_);
 void wire_use_imported_enum(int64_t port_, int32_t my_enum);
 
 void wire_use_imported_struct(int64_t port_, struct wire_my_struct *my_struct);
+
+void wire_another_macro_struct(int64_t port_);
 
 void wire_func_macro_struct(int64_t port_, struct wire_macro_struct *arg);
 
@@ -950,11 +1045,22 @@ void wire_handle_complex_struct(int64_t port_, struct wire_my_tree_node *s);
 
 void wire_handle_nested_struct(int64_t port_, struct wire_my_nested_struct *s);
 
+void wire_handle_string(int64_t port_, struct wire_list_prim_u_8 *s);
+
+void wire_handle_struct(int64_t port_, struct wire_my_size *arg, struct wire_my_size *boxed);
+
+WireSyncReturn wire_handle_struct_sync_freezed(struct wire_my_size_freezed *arg,
+                                               struct wire_my_size_freezed *boxed);
+
+void wire_handle_vec_u8(int64_t port_, struct wire_list_prim_u_8 *v);
+
 void wire_list_of_primitive_enums(int64_t port_, struct wire_list_weekdays *weekdays);
 
 void wire_test_abc_enum(int64_t port_, struct wire_abc *abc);
 
 void wire_test_struct_with_enum(int64_t port_, struct wire_struct_with_enum *se);
+
+void wire_empty_struct(int64_t port_, struct wire_empty *empty);
 
 void wire_func_return_unit_twin_normal(int64_t port_);
 
@@ -984,6 +1090,26 @@ void wire_handle_optional_return(int64_t port_, double left, double right);
 void wire_handle_optional_struct(int64_t port_, struct wire_list_prim_u_8 *document);
 
 void wire_handle_vec_of_opts(int64_t port_, struct wire_opt_vecs *opt);
+
+void wire_primitive_optional_types(int64_t port_,
+                                   int32_t *my_i32,
+                                   int64_t *my_i64,
+                                   double *my_f64,
+                                   bool *my_bool);
+
+void wire_handle_vec_of_primitive(int64_t port_, int32_t n);
+
+void wire_handle_zero_copy_vec_of_primitive(int64_t port_, int32_t n);
+
+void wire_get_usize(int64_t port_, uintptr_t u);
+
+void wire_primitive_types(int64_t port_,
+                          int32_t my_i32,
+                          int64_t my_i64,
+                          double my_f64,
+                          bool my_bool);
+
+void wire_primitive_u32(int64_t port_, uint32_t my_u32);
 
 WireSyncReturn wire_StructWithCommentsTwinSync_instance_method_twin_sync(struct wire_struct_with_comments_twin_sync *that);
 
@@ -1213,6 +1339,8 @@ void wire_unwrap_rust_opaque(int64_t port_, struct wire_RustOpaque_hide_data opa
 
 WireSyncReturn wire_frb_sync_generator_test(void);
 
+WireSyncReturn wire_sync_create_opaque(void);
+
 WireSyncReturn wire_sync_create_sync_opaque(void);
 
 WireSyncReturn wire_sync_run_opaque(struct wire_RustOpaque_non_send_hide_data opaque);
@@ -1228,6 +1356,12 @@ void wire_func_stream_return_panic_twin_normal(int64_t port_);
 void wire_func_stream_sink_arg_position_twin_normal(int64_t port_, uint32_t a, uint32_t b);
 
 void wire_handle_stream_of_struct(int64_t port_);
+
+void wire_handle_stream_sink_at_1(int64_t port_, uint32_t key, uint32_t max);
+
+void wire_handle_stream_sink_at_2(int64_t port_, uint32_t key, uint32_t max);
+
+void wire_handle_stream_sink_at_3(int64_t port_, uint32_t key, uint32_t max);
 
 void wire_func_struct_with_one_field_twin_normal(int64_t port_,
                                                  struct wire_struct_with_one_field_twin_normal *arg);
@@ -1312,6 +1446,8 @@ struct wire_custom_nested_error_outer_twin_normal *new_box_autoadd_custom_nested
 
 struct wire_custom_nested_error_outer_twin_sync *new_box_autoadd_custom_nested_error_outer_twin_sync(void);
 
+struct wire_custom_struct *new_box_autoadd_custom_struct(void);
+
 struct wire_custom_struct_error_twin_normal *new_box_autoadd_custom_struct_error_twin_normal(void);
 
 struct wire_custom_struct_error_twin_sync *new_box_autoadd_custom_struct_error_twin_sync(void);
@@ -1319,6 +1455,8 @@ struct wire_custom_struct_error_twin_sync *new_box_autoadd_custom_struct_error_t
 struct wire_customized *new_box_autoadd_customized(void);
 
 struct wire_dart_opaque_nested *new_box_autoadd_dart_opaque_nested(void);
+
+struct wire_empty *new_box_autoadd_empty(void);
 
 struct wire_enum_dart_opaque *new_box_autoadd_enum_dart_opaque(void);
 
@@ -1358,6 +1496,8 @@ int64_t *new_box_autoadd_i_64(int64_t value);
 
 int8_t *new_box_autoadd_i_8(int8_t value);
 
+struct wire_kitchen_sink *new_box_autoadd_kitchen_sink(void);
+
 struct wire_macro_struct *new_box_autoadd_macro_struct(void);
 
 struct wire_measure *new_box_autoadd_measure(void);
@@ -1365,6 +1505,10 @@ struct wire_measure *new_box_autoadd_measure(void);
 struct wire_message_id *new_box_autoadd_message_id(void);
 
 struct wire_my_nested_struct *new_box_autoadd_my_nested_struct(void);
+
+struct wire_my_size *new_box_autoadd_my_size(void);
+
+struct wire_my_size_freezed *new_box_autoadd_my_size_freezed(void);
 
 struct wire_my_struct *new_box_autoadd_my_struct(void);
 
@@ -1441,6 +1585,12 @@ int32_t *new_box_i_32(int32_t value);
 int64_t *new_box_i_64(int64_t value);
 
 int8_t *new_box_i_8(int8_t value);
+
+struct wire_kitchen_sink *new_box_kitchen_sink(void);
+
+struct wire_my_size *new_box_my_size(void);
+
+struct wire_my_size_freezed *new_box_my_size_freezed(void);
 
 struct wire_speed *new_box_speed(void);
 
@@ -1598,6 +1748,16 @@ union EnumWithItemTupleTwinSyncKind *inflate_EnumWithItemTupleTwinSync_A(void);
 
 union EnumWithItemTupleTwinSyncKind *inflate_EnumWithItemTupleTwinSync_B(void);
 
+union KitchenSinkKind *inflate_KitchenSink_Primitives(void);
+
+union KitchenSinkKind *inflate_KitchenSink_Nested(void);
+
+union KitchenSinkKind *inflate_KitchenSink_Optional(void);
+
+union KitchenSinkKind *inflate_KitchenSink_Buffer(void);
+
+union KitchenSinkKind *inflate_KitchenSink_Enums(void);
+
 union MeasureKind *inflate_Measure_Speed(void);
 
 union MeasureKind *inflate_Measure_Distance(void);
@@ -1648,6 +1808,11 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemTupleTwinNormal_B);
     dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemTupleTwinSync_A);
     dummy_var ^= ((int64_t) (void*) inflate_EnumWithItemTupleTwinSync_B);
+    dummy_var ^= ((int64_t) (void*) inflate_KitchenSink_Buffer);
+    dummy_var ^= ((int64_t) (void*) inflate_KitchenSink_Enums);
+    dummy_var ^= ((int64_t) (void*) inflate_KitchenSink_Nested);
+    dummy_var ^= ((int64_t) (void*) inflate_KitchenSink_Optional);
+    dummy_var ^= ((int64_t) (void*) inflate_KitchenSink_Primitives);
     dummy_var ^= ((int64_t) (void*) inflate_Measure_Distance);
     dummy_var ^= ((int64_t) (void*) inflate_Measure_Speed);
     dummy_var ^= ((int64_t) (void*) inflate_Speed_GPS);
@@ -1677,10 +1842,12 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_custom_nested_error_inner_twin_sync);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_custom_nested_error_outer_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_custom_nested_error_outer_twin_sync);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_custom_struct);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_custom_struct_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_custom_struct_error_twin_sync);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_customized);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_dart_opaque_nested);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_empty);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_dart_opaque);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_opaque);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_with_item_mixed_twin_normal);
@@ -1700,10 +1867,13 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_i_32);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_i_64);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_i_8);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_kitchen_sink);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_macro_struct);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_measure);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_message_id);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_nested_struct);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_size);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_size_freezed);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_struct);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_tree_node);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_new_type_int);
@@ -1742,6 +1912,9 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_i_32);
     dummy_var ^= ((int64_t) (void*) new_box_i_64);
     dummy_var ^= ((int64_t) (void*) new_box_i_8);
+    dummy_var ^= ((int64_t) (void*) new_box_kitchen_sink);
+    dummy_var ^= ((int64_t) (void*) new_box_my_size);
+    dummy_var ^= ((int64_t) (void*) new_box_my_size_freezed);
     dummy_var ^= ((int64_t) (void*) new_box_speed);
     dummy_var ^= ((int64_t) (void*) new_box_u_8);
     dummy_var ^= ((int64_t) (void*) new_box_weekdays);
@@ -1788,12 +1961,18 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWith_handle_some_stream_sink);
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWith_handle_some_stream_sink_at_1);
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWith_new);
+    dummy_var ^= ((int64_t) (void*) wire_CustomStruct_new);
+    dummy_var ^= ((int64_t) (void*) wire_CustomStruct_nonstatic_return_custom_struct_error);
+    dummy_var ^= ((int64_t) (void*) wire_CustomStruct_nonstatic_return_custom_struct_ok);
+    dummy_var ^= ((int64_t) (void*) wire_CustomStruct_static_return_custom_struct_error);
+    dummy_var ^= ((int64_t) (void*) wire_CustomStruct_static_return_custom_struct_ok);
     dummy_var ^= ((int64_t) (void*) wire_Event_as_string);
     dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinNormal_instance_method_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinNormal_static_method_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinSync_instance_method_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinSync_static_method_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_SumWith_sum);
+    dummy_var ^= ((int64_t) (void*) wire_another_macro_struct);
     dummy_var ^= ((int64_t) (void*) wire_app_settings_stream);
     dummy_var ^= ((int64_t) (void*) wire_app_settings_vec_stream);
     dummy_var ^= ((int64_t) (void*) wire_async_accept_dart_opaque);
@@ -1823,6 +2002,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_datetime_utc);
     dummy_var ^= ((int64_t) (void*) wire_drop_static_dart_opaque);
     dummy_var ^= ((int64_t) (void*) wire_duration);
+    dummy_var ^= ((int64_t) (void*) wire_empty_struct);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_bool_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_bool_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_f32_twin_normal);
@@ -1942,11 +2122,13 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_get_nested_dart_opaque);
     dummy_var ^= ((int64_t) (void*) wire_get_sum_array);
     dummy_var ^= ((int64_t) (void*) wire_get_sum_struct);
+    dummy_var ^= ((int64_t) (void*) wire_get_usize);
     dummy_var ^= ((int64_t) (void*) wire_handle_big_buffers);
     dummy_var ^= ((int64_t) (void*) wire_handle_complex_struct);
     dummy_var ^= ((int64_t) (void*) wire_handle_customized_struct);
     dummy_var ^= ((int64_t) (void*) wire_handle_durations);
     dummy_var ^= ((int64_t) (void*) wire_handle_enum_parameter);
+    dummy_var ^= ((int64_t) (void*) wire_handle_enum_struct);
     dummy_var ^= ((int64_t) (void*) wire_handle_increment_boxed_optional);
     dummy_var ^= ((int64_t) (void*) wire_handle_list_of_struct);
     dummy_var ^= ((int64_t) (void*) wire_handle_nested_struct);
@@ -1958,7 +2140,13 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_handle_optional_struct);
     dummy_var ^= ((int64_t) (void*) wire_handle_return_enum);
     dummy_var ^= ((int64_t) (void*) wire_handle_stream_of_struct);
+    dummy_var ^= ((int64_t) (void*) wire_handle_stream_sink_at_1);
+    dummy_var ^= ((int64_t) (void*) wire_handle_stream_sink_at_2);
+    dummy_var ^= ((int64_t) (void*) wire_handle_stream_sink_at_3);
+    dummy_var ^= ((int64_t) (void*) wire_handle_string);
     dummy_var ^= ((int64_t) (void*) wire_handle_string_list);
+    dummy_var ^= ((int64_t) (void*) wire_handle_struct);
+    dummy_var ^= ((int64_t) (void*) wire_handle_struct_sync_freezed);
     dummy_var ^= ((int64_t) (void*) wire_handle_timestamps);
     dummy_var ^= ((int64_t) (void*) wire_handle_type_alias_id);
     dummy_var ^= ((int64_t) (void*) wire_handle_type_alias_model);
@@ -1966,6 +2154,9 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_handle_uuid);
     dummy_var ^= ((int64_t) (void*) wire_handle_uuids);
     dummy_var ^= ((int64_t) (void*) wire_handle_vec_of_opts);
+    dummy_var ^= ((int64_t) (void*) wire_handle_vec_of_primitive);
+    dummy_var ^= ((int64_t) (void*) wire_handle_vec_u8);
+    dummy_var ^= ((int64_t) (void*) wire_handle_zero_copy_vec_of_primitive);
     dummy_var ^= ((int64_t) (void*) wire_how_long_does_it_take);
     dummy_var ^= ((int64_t) (void*) wire_is_app_embedded);
     dummy_var ^= ((int64_t) (void*) wire_last_number);
@@ -1990,14 +2181,26 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_opaque_vec_run);
     dummy_var ^= ((int64_t) (void*) wire_optional_empty_datetime_utc);
     dummy_var ^= ((int64_t) (void*) wire_panic_unwrap_dart_opaque);
+    dummy_var ^= ((int64_t) (void*) wire_panic_with_custom_result);
+    dummy_var ^= ((int64_t) (void*) wire_primitive_optional_types);
+    dummy_var ^= ((int64_t) (void*) wire_primitive_types);
+    dummy_var ^= ((int64_t) (void*) wire_primitive_u32);
     dummy_var ^= ((int64_t) (void*) wire_print_note);
     dummy_var ^= ((int64_t) (void*) wire_register_event_listener);
     dummy_var ^= ((int64_t) (void*) wire_repeat_number);
     dummy_var ^= ((int64_t) (void*) wire_repeat_sequence);
     dummy_var ^= ((int64_t) (void*) wire_return_boxed_feed_id);
     dummy_var ^= ((int64_t) (void*) wire_return_boxed_raw_feed_id);
+    dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_1);
+    dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_1_variant1);
+    dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_2);
+    dummy_var ^= ((int64_t) (void*) wire_return_custom_struct_error);
+    dummy_var ^= ((int64_t) (void*) wire_return_custom_struct_ok);
     dummy_var ^= ((int64_t) (void*) wire_return_dart_dynamic);
+    dummy_var ^= ((int64_t) (void*) wire_return_err_custom_error);
+    dummy_var ^= ((int64_t) (void*) wire_return_error_variant);
     dummy_var ^= ((int64_t) (void*) wire_return_non_droppable_dart_opaque);
+    dummy_var ^= ((int64_t) (void*) wire_return_ok_custom_error);
     dummy_var ^= ((int64_t) (void*) wire_run_enum_opaque);
     dummy_var ^= ((int64_t) (void*) wire_run_nested_opaque);
     dummy_var ^= ((int64_t) (void*) wire_run_non_clone);
@@ -2006,10 +2209,13 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque);
     dummy_var ^= ((int64_t) (void*) wire_simple_adder_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_simple_adder_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_stream_sink_throw_anyhow);
     dummy_var ^= ((int64_t) (void*) wire_sync_accept_dart_opaque);
+    dummy_var ^= ((int64_t) (void*) wire_sync_create_opaque);
     dummy_var ^= ((int64_t) (void*) wire_sync_create_sync_opaque);
     dummy_var ^= ((int64_t) (void*) wire_sync_loopback);
     dummy_var ^= ((int64_t) (void*) wire_sync_option_loopback);
+    dummy_var ^= ((int64_t) (void*) wire_sync_return_custom_struct_error);
     dummy_var ^= ((int64_t) (void*) wire_sync_run_opaque);
     dummy_var ^= ((int64_t) (void*) wire_test_abc_enum);
     dummy_var ^= ((int64_t) (void*) wire_test_chrono);
@@ -2026,6 +2232,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_test_struct_with_enum);
     dummy_var ^= ((int64_t) (void*) wire_test_tuple);
     dummy_var ^= ((int64_t) (void*) wire_test_tuple_2);
+    dummy_var ^= ((int64_t) (void*) wire_throw_anyhow);
     dummy_var ^= ((int64_t) (void*) wire_unwrap_dart_opaque);
     dummy_var ^= ((int64_t) (void*) wire_unwrap_rust_opaque);
     dummy_var ^= ((int64_t) (void*) wire_use_boxed_blob);

@@ -17,3 +17,18 @@ Future<List<MySize>> handleListOfStruct(
 Future<List<String>> handleStringList(
         {required List<String> names, dynamic hint}) =>
     RustLib.instance.api.handleStringList(names: names, hint: hint);
+
+Future<Empty> emptyStruct({required Empty empty, dynamic hint}) =>
+    RustLib.instance.api.emptyStruct(empty: empty, hint: hint);
+
+class Empty {
+  const Empty();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Empty && runtimeType == other.runtimeType;
+}

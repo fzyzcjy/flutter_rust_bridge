@@ -18,6 +18,9 @@ import 'api/misc_example.dart';
 import 'api/misc_type.dart';
 import 'api/newtype_pattern.dart';
 import 'api/optional.dart';
+import 'api/optional_primitive_misc.dart';
+import 'api/primitive_list_misc.dart';
+import 'api/primitive_misc.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/enumeration_twin_sync.dart';
 import 'api/pseudo_manual/exception_twin_sync.dart';
@@ -354,6 +357,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  ffi.Pointer<wire_custom_struct> api2wire_box_autoadd_custom_struct(
+      CustomStruct raw) {
+    final ptr = wire.new_box_autoadd_custom_struct();
+    _api_fill_to_wire_custom_struct(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_custom_struct_error_twin_normal>
       api2wire_box_autoadd_custom_struct_error_twin_normal(
           CustomStructErrorTwinNormal raw) {
@@ -383,6 +394,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       DartOpaqueNested raw) {
     final ptr = wire.new_box_autoadd_dart_opaque_nested();
     _api_fill_to_wire_dart_opaque_nested(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_empty> api2wire_box_autoadd_empty(Empty raw) {
+    final ptr = wire.new_box_autoadd_empty();
+
     return ptr;
   }
 
@@ -525,6 +543,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  ffi.Pointer<wire_kitchen_sink> api2wire_box_autoadd_kitchen_sink(
+      KitchenSink raw) {
+    final ptr = wire.new_box_autoadd_kitchen_sink();
+    _api_fill_to_wire_kitchen_sink(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_macro_struct> api2wire_box_autoadd_macro_struct(
       MacroStruct raw) {
     final ptr = wire.new_box_autoadd_macro_struct();
@@ -551,6 +577,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       MyNestedStruct raw) {
     final ptr = wire.new_box_autoadd_my_nested_struct();
     _api_fill_to_wire_my_nested_struct(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_my_size> api2wire_box_autoadd_my_size(MySize raw) {
+    final ptr = wire.new_box_autoadd_my_size();
+    _api_fill_to_wire_my_size(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_my_size_freezed> api2wire_box_autoadd_my_size_freezed(
+      MySizeFreezed raw) {
+    final ptr = wire.new_box_autoadd_my_size_freezed();
+    _api_fill_to_wire_my_size_freezed(raw, ptr.ref);
     return ptr;
   }
 
@@ -828,6 +869,28 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   ffi.Pointer<ffi.Int8> api2wire_box_i_8(int raw) {
     return wire.new_box_i_8(api2wire_i_8(raw));
+  }
+
+  @protected
+  ffi.Pointer<wire_kitchen_sink> api2wire_box_kitchen_sink(KitchenSink raw) {
+    final ptr = wire.new_box_kitchen_sink();
+    _api_fill_to_wire_kitchen_sink(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_my_size> api2wire_box_my_size(MySize raw) {
+    final ptr = wire.new_box_my_size();
+    _api_fill_to_wire_my_size(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_my_size_freezed> api2wire_box_my_size_freezed(
+      MySizeFreezed raw) {
+    final ptr = wire.new_box_my_size_freezed();
+    _api_fill_to_wire_my_size_freezed(raw, ptr.ref);
+    return ptr;
   }
 
   @protected
@@ -1516,6 +1579,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     _api_fill_to_wire_custom_nested_error_outer_twin_sync(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_custom_struct(
+      CustomStruct apiObj, ffi.Pointer<wire_custom_struct> wireObj) {
+    _api_fill_to_wire_custom_struct(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_custom_struct_error_twin_normal(
       CustomStructErrorTwinNormal apiObj,
       ffi.Pointer<wire_custom_struct_error_twin_normal> wireObj) {
@@ -1609,6 +1677,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     _api_fill_to_wire_feed_id(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_kitchen_sink(
+      KitchenSink apiObj, ffi.Pointer<wire_kitchen_sink> wireObj) {
+    _api_fill_to_wire_kitchen_sink(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_macro_struct(
       MacroStruct apiObj, ffi.Pointer<wire_macro_struct> wireObj) {
     _api_fill_to_wire_macro_struct(apiObj, wireObj.ref);
@@ -1627,6 +1700,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void _api_fill_to_wire_box_autoadd_my_nested_struct(
       MyNestedStruct apiObj, ffi.Pointer<wire_my_nested_struct> wireObj) {
     _api_fill_to_wire_my_nested_struct(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_my_size(
+      MySize apiObj, ffi.Pointer<wire_my_size> wireObj) {
+    _api_fill_to_wire_my_size(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_my_size_freezed(
+      MySizeFreezed apiObj, ffi.Pointer<wire_my_size_freezed> wireObj) {
+    _api_fill_to_wire_my_size_freezed(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_my_struct(
@@ -1772,6 +1855,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     _api_fill_to_wire_exotic_optionals(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_kitchen_sink(
+      KitchenSink apiObj, ffi.Pointer<wire_kitchen_sink> wireObj) {
+    _api_fill_to_wire_kitchen_sink(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_my_size(
+      MySize apiObj, ffi.Pointer<wire_my_size> wireObj) {
+    _api_fill_to_wire_my_size(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_my_size_freezed(
+      MySizeFreezed apiObj, ffi.Pointer<wire_my_size_freezed> wireObj) {
+    _api_fill_to_wire_my_size_freezed(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_speed(
       Speed apiObj, ffi.Pointer<wire_speed> wireObj) {
     _api_fill_to_wire_speed(apiObj, wireObj.ref);
@@ -1870,6 +1968,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
+  void _api_fill_to_wire_custom_struct(
+      CustomStruct apiObj, wire_custom_struct wireObj) {
+    wireObj.message = api2wire_String(apiObj.message);
+  }
+
   void _api_fill_to_wire_custom_struct_error_twin_normal(
       CustomStructErrorTwinNormal apiObj,
       wire_custom_struct_error_twin_normal wireObj) {
@@ -1908,6 +2011,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
+  void _api_fill_to_wire_empty(Empty apiObj, wire_empty wireObj) {}
   void _api_fill_to_wire_enum_dart_opaque(
       EnumDartOpaque apiObj, wire_enum_dart_opaque wireObj) {
     if (apiObj is EnumDartOpaque_Primitive) {
@@ -2132,6 +2236,57 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.field0 = api2wire_u_8_array_8(apiObj.field0);
   }
 
+  void _api_fill_to_wire_kitchen_sink(
+      KitchenSink apiObj, wire_kitchen_sink wireObj) {
+    if (apiObj is KitchenSink_Empty) {
+      wireObj.tag = 0;
+      return;
+    }
+    if (apiObj is KitchenSink_Primitives) {
+      var pre_int32 = api2wire_i_32(apiObj.int32);
+      var pre_float64 = api2wire_f_64(apiObj.float64);
+      var pre_boolean = api2wire_bool(apiObj.boolean);
+      wireObj.tag = 1;
+      wireObj.kind = wire.inflate_KitchenSink_Primitives();
+      wireObj.kind.ref.Primitives.ref.int32 = pre_int32;
+      wireObj.kind.ref.Primitives.ref.float64 = pre_float64;
+      wireObj.kind.ref.Primitives.ref.boolean = pre_boolean;
+      return;
+    }
+    if (apiObj is KitchenSink_Nested) {
+      var pre_field0 = api2wire_i_32(apiObj.field0);
+      var pre_field1 = api2wire_box_kitchen_sink(apiObj.field1);
+      wireObj.tag = 2;
+      wireObj.kind = wire.inflate_KitchenSink_Nested();
+      wireObj.kind.ref.Nested.ref.field0 = pre_field0;
+      wireObj.kind.ref.Nested.ref.field1 = pre_field1;
+      return;
+    }
+    if (apiObj is KitchenSink_Optional) {
+      var pre_field0 = api2wire_opt_box_autoadd_i_32(apiObj.field0);
+      var pre_field1 = api2wire_opt_box_autoadd_i_32(apiObj.field1);
+      wireObj.tag = 3;
+      wireObj.kind = wire.inflate_KitchenSink_Optional();
+      wireObj.kind.ref.Optional.ref.field0 = pre_field0;
+      wireObj.kind.ref.Optional.ref.field1 = pre_field1;
+      return;
+    }
+    if (apiObj is KitchenSink_Buffer) {
+      var pre_field0 = api2wire_ZeroCopyBuffer_list_prim_u_8(apiObj.field0);
+      wireObj.tag = 4;
+      wireObj.kind = wire.inflate_KitchenSink_Buffer();
+      wireObj.kind.ref.Buffer.ref.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is KitchenSink_Enums) {
+      var pre_field0 = api2wire_weekdays(apiObj.field0);
+      wireObj.tag = 5;
+      wireObj.kind = wire.inflate_KitchenSink_Enums();
+      wireObj.kind.ref.Enums.ref.field0 = pre_field0;
+      return;
+    }
+  }
+
   void _api_fill_to_wire_macro_struct(
       MacroStruct apiObj, wire_macro_struct wireObj) {
     wireObj.data = api2wire_i_32(apiObj.data);
@@ -2165,6 +2320,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   void _api_fill_to_wire_my_size(MySize apiObj, wire_my_size wireObj) {
+    wireObj.width = api2wire_i_32(apiObj.width);
+    wireObj.height = api2wire_i_32(apiObj.height);
+  }
+
+  void _api_fill_to_wire_my_size_freezed(
+      MySizeFreezed apiObj, wire_my_size_freezed wireObj) {
     wireObj.width = api2wire_i_32(apiObj.width);
     wireObj.height = api2wire_i_32(apiObj.height);
   }
@@ -3235,6 +3396,23 @@ class RustLibWire implements BaseWire {
   late final _wire_handle_enum_parameter =
       _wire_handle_enum_parameterPtr.asFunction<void Function(int, int)>();
 
+  void wire_handle_enum_struct(
+    int port_,
+    ffi.Pointer<wire_kitchen_sink> val,
+  ) {
+    return _wire_handle_enum_struct(
+      port_,
+      val,
+    );
+  }
+
+  late final _wire_handle_enum_structPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64,
+              ffi.Pointer<wire_kitchen_sink>)>>('wire_handle_enum_struct');
+  late final _wire_handle_enum_struct = _wire_handle_enum_structPtr
+      .asFunction<void Function(int, ffi.Pointer<wire_kitchen_sink>)>();
+
   void wire_handle_return_enum(
     int port_,
     ffi.Pointer<wire_list_prim_u_8> input,
@@ -3350,6 +3528,91 @@ class RustLibWire implements BaseWire {
           'wire_register_event_listener');
   late final _wire_register_event_listener =
       _wire_register_event_listenerPtr.asFunction<void Function(int)>();
+
+  void wire_CustomStruct_new(
+    int port_,
+    ffi.Pointer<wire_list_prim_u_8> message,
+  ) {
+    return _wire_CustomStruct_new(
+      port_,
+      message,
+    );
+  }
+
+  late final _wire_CustomStruct_newPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64,
+              ffi.Pointer<wire_list_prim_u_8>)>>('wire_CustomStruct_new');
+  late final _wire_CustomStruct_new = _wire_CustomStruct_newPtr
+      .asFunction<void Function(int, ffi.Pointer<wire_list_prim_u_8>)>();
+
+  void wire_CustomStruct_nonstatic_return_custom_struct_error(
+    int port_,
+    ffi.Pointer<wire_custom_struct> that,
+  ) {
+    return _wire_CustomStruct_nonstatic_return_custom_struct_error(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_CustomStruct_nonstatic_return_custom_struct_errorPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(
+                      ffi.Int64, ffi.Pointer<wire_custom_struct>)>>(
+          'wire_CustomStruct_nonstatic_return_custom_struct_error');
+  late final _wire_CustomStruct_nonstatic_return_custom_struct_error =
+      _wire_CustomStruct_nonstatic_return_custom_struct_errorPtr
+          .asFunction<void Function(int, ffi.Pointer<wire_custom_struct>)>();
+
+  void wire_CustomStruct_nonstatic_return_custom_struct_ok(
+    int port_,
+    ffi.Pointer<wire_custom_struct> that,
+  ) {
+    return _wire_CustomStruct_nonstatic_return_custom_struct_ok(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_CustomStruct_nonstatic_return_custom_struct_okPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_custom_struct>)>>(
+      'wire_CustomStruct_nonstatic_return_custom_struct_ok');
+  late final _wire_CustomStruct_nonstatic_return_custom_struct_ok =
+      _wire_CustomStruct_nonstatic_return_custom_struct_okPtr
+          .asFunction<void Function(int, ffi.Pointer<wire_custom_struct>)>();
+
+  void wire_CustomStruct_static_return_custom_struct_error(
+    int port_,
+  ) {
+    return _wire_CustomStruct_static_return_custom_struct_error(
+      port_,
+    );
+  }
+
+  late final _wire_CustomStruct_static_return_custom_struct_errorPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_CustomStruct_static_return_custom_struct_error');
+  late final _wire_CustomStruct_static_return_custom_struct_error =
+      _wire_CustomStruct_static_return_custom_struct_errorPtr
+          .asFunction<void Function(int)>();
+
+  void wire_CustomStruct_static_return_custom_struct_ok(
+    int port_,
+  ) {
+    return _wire_CustomStruct_static_return_custom_struct_ok(
+      port_,
+    );
+  }
+
+  late final _wire_CustomStruct_static_return_custom_struct_okPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_CustomStruct_static_return_custom_struct_ok');
+  late final _wire_CustomStruct_static_return_custom_struct_ok =
+      _wire_CustomStruct_static_return_custom_struct_okPtr
+          .asFunction<void Function(int)>();
 
   void wire_custom_enum_error_panic_twin_normal(
     int port_,
@@ -3482,6 +3745,177 @@ class RustLibWire implements BaseWire {
       _wire_func_type_infallible_panic_twin_normalPtr
           .asFunction<void Function(int)>();
 
+  void wire_panic_with_custom_result(
+    int port_,
+  ) {
+    return _wire_panic_with_custom_result(
+      port_,
+    );
+  }
+
+  late final _wire_panic_with_custom_resultPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_panic_with_custom_result');
+  late final _wire_panic_with_custom_result =
+      _wire_panic_with_custom_resultPtr.asFunction<void Function(int)>();
+
+  void wire_return_custom_nested_error_1(
+    int port_,
+  ) {
+    return _wire_return_custom_nested_error_1(
+      port_,
+    );
+  }
+
+  late final _wire_return_custom_nested_error_1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_return_custom_nested_error_1');
+  late final _wire_return_custom_nested_error_1 =
+      _wire_return_custom_nested_error_1Ptr.asFunction<void Function(int)>();
+
+  void wire_return_custom_nested_error_1_variant1(
+    int port_,
+  ) {
+    return _wire_return_custom_nested_error_1_variant1(
+      port_,
+    );
+  }
+
+  late final _wire_return_custom_nested_error_1_variant1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_return_custom_nested_error_1_variant1');
+  late final _wire_return_custom_nested_error_1_variant1 =
+      _wire_return_custom_nested_error_1_variant1Ptr
+          .asFunction<void Function(int)>();
+
+  void wire_return_custom_nested_error_2(
+    int port_,
+  ) {
+    return _wire_return_custom_nested_error_2(
+      port_,
+    );
+  }
+
+  late final _wire_return_custom_nested_error_2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_return_custom_nested_error_2');
+  late final _wire_return_custom_nested_error_2 =
+      _wire_return_custom_nested_error_2Ptr.asFunction<void Function(int)>();
+
+  void wire_return_custom_struct_error(
+    int port_,
+  ) {
+    return _wire_return_custom_struct_error(
+      port_,
+    );
+  }
+
+  late final _wire_return_custom_struct_errorPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_return_custom_struct_error');
+  late final _wire_return_custom_struct_error =
+      _wire_return_custom_struct_errorPtr.asFunction<void Function(int)>();
+
+  void wire_return_custom_struct_ok(
+    int port_,
+  ) {
+    return _wire_return_custom_struct_ok(
+      port_,
+    );
+  }
+
+  late final _wire_return_custom_struct_okPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_return_custom_struct_ok');
+  late final _wire_return_custom_struct_ok =
+      _wire_return_custom_struct_okPtr.asFunction<void Function(int)>();
+
+  void wire_return_err_custom_error(
+    int port_,
+  ) {
+    return _wire_return_err_custom_error(
+      port_,
+    );
+  }
+
+  late final _wire_return_err_custom_errorPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_return_err_custom_error');
+  late final _wire_return_err_custom_error =
+      _wire_return_err_custom_errorPtr.asFunction<void Function(int)>();
+
+  void wire_return_error_variant(
+    int port_,
+    int variant,
+  ) {
+    return _wire_return_error_variant(
+      port_,
+      variant,
+    );
+  }
+
+  late final _wire_return_error_variantPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32)>>(
+          'wire_return_error_variant');
+  late final _wire_return_error_variant =
+      _wire_return_error_variantPtr.asFunction<void Function(int, int)>();
+
+  void wire_return_ok_custom_error(
+    int port_,
+  ) {
+    return _wire_return_ok_custom_error(
+      port_,
+    );
+  }
+
+  late final _wire_return_ok_custom_errorPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_return_ok_custom_error');
+  late final _wire_return_ok_custom_error =
+      _wire_return_ok_custom_errorPtr.asFunction<void Function(int)>();
+
+  void wire_stream_sink_throw_anyhow(
+    int port_,
+  ) {
+    return _wire_stream_sink_throw_anyhow(
+      port_,
+    );
+  }
+
+  late final _wire_stream_sink_throw_anyhowPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_stream_sink_throw_anyhow');
+  late final _wire_stream_sink_throw_anyhow =
+      _wire_stream_sink_throw_anyhowPtr.asFunction<void Function(int)>();
+
+  void wire_sync_return_custom_struct_error(
+    int port_,
+  ) {
+    return _wire_sync_return_custom_struct_error(
+      port_,
+    );
+  }
+
+  late final _wire_sync_return_custom_struct_errorPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_sync_return_custom_struct_error');
+  late final _wire_sync_return_custom_struct_error =
+      _wire_sync_return_custom_struct_errorPtr.asFunction<void Function(int)>();
+
+  void wire_throw_anyhow(
+    int port_,
+  ) {
+    return _wire_throw_anyhow(
+      port_,
+    );
+  }
+
+  late final _wire_throw_anyhowPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_throw_anyhow');
+  late final _wire_throw_anyhow =
+      _wire_throw_anyhowPtr.asFunction<void Function(int)>();
+
   void wire_call_new_module_system(
     int port_,
   ) {
@@ -3542,6 +3976,20 @@ class RustLibWire implements BaseWire {
               ffi.Pointer<wire_my_struct>)>>('wire_use_imported_struct');
   late final _wire_use_imported_struct = _wire_use_imported_structPtr
       .asFunction<void Function(int, ffi.Pointer<wire_my_struct>)>();
+
+  void wire_another_macro_struct(
+    int port_,
+  ) {
+    return _wire_another_macro_struct(
+      port_,
+    );
+  }
+
+  late final _wire_another_macro_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_another_macro_struct');
+  late final _wire_another_macro_struct =
+      _wire_another_macro_structPtr.asFunction<void Function(int)>();
 
   void wire_func_macro_struct(
     int port_,
@@ -4097,6 +4545,80 @@ class RustLibWire implements BaseWire {
   late final _wire_handle_nested_struct = _wire_handle_nested_structPtr
       .asFunction<void Function(int, ffi.Pointer<wire_my_nested_struct>)>();
 
+  void wire_handle_string(
+    int port_,
+    ffi.Pointer<wire_list_prim_u_8> s,
+  ) {
+    return _wire_handle_string(
+      port_,
+      s,
+    );
+  }
+
+  late final _wire_handle_stringPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64,
+              ffi.Pointer<wire_list_prim_u_8>)>>('wire_handle_string');
+  late final _wire_handle_string = _wire_handle_stringPtr
+      .asFunction<void Function(int, ffi.Pointer<wire_list_prim_u_8>)>();
+
+  void wire_handle_struct(
+    int port_,
+    ffi.Pointer<wire_my_size> arg,
+    ffi.Pointer<wire_my_size> boxed,
+  ) {
+    return _wire_handle_struct(
+      port_,
+      arg,
+      boxed,
+    );
+  }
+
+  late final _wire_handle_structPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_my_size>,
+              ffi.Pointer<wire_my_size>)>>('wire_handle_struct');
+  late final _wire_handle_struct = _wire_handle_structPtr.asFunction<
+      void Function(
+          int, ffi.Pointer<wire_my_size>, ffi.Pointer<wire_my_size>)>();
+
+  WireSyncReturn wire_handle_struct_sync_freezed(
+    ffi.Pointer<wire_my_size_freezed> arg,
+    ffi.Pointer<wire_my_size_freezed> boxed,
+  ) {
+    return _wire_handle_struct_sync_freezed(
+      arg,
+      boxed,
+    );
+  }
+
+  late final _wire_handle_struct_sync_freezedPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncReturn Function(ffi.Pointer<wire_my_size_freezed>,
+                  ffi.Pointer<wire_my_size_freezed>)>>(
+      'wire_handle_struct_sync_freezed');
+  late final _wire_handle_struct_sync_freezed =
+      _wire_handle_struct_sync_freezedPtr.asFunction<
+          WireSyncReturn Function(ffi.Pointer<wire_my_size_freezed>,
+              ffi.Pointer<wire_my_size_freezed>)>();
+
+  void wire_handle_vec_u8(
+    int port_,
+    ffi.Pointer<wire_list_prim_u_8> v,
+  ) {
+    return _wire_handle_vec_u8(
+      port_,
+      v,
+    );
+  }
+
+  late final _wire_handle_vec_u8Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64,
+              ffi.Pointer<wire_list_prim_u_8>)>>('wire_handle_vec_u8');
+  late final _wire_handle_vec_u8 = _wire_handle_vec_u8Ptr
+      .asFunction<void Function(int, ffi.Pointer<wire_list_prim_u_8>)>();
+
   void wire_list_of_primitive_enums(
     int port_,
     ffi.Pointer<wire_list_weekdays> weekdays,
@@ -4148,6 +4670,23 @@ class RustLibWire implements BaseWire {
       'wire_test_struct_with_enum');
   late final _wire_test_struct_with_enum = _wire_test_struct_with_enumPtr
       .asFunction<void Function(int, ffi.Pointer<wire_struct_with_enum>)>();
+
+  void wire_empty_struct(
+    int port_,
+    ffi.Pointer<wire_empty> empty,
+  ) {
+    return _wire_empty_struct(
+      port_,
+      empty,
+    );
+  }
+
+  late final _wire_empty_structPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Int64, ffi.Pointer<wire_empty>)>>('wire_empty_struct');
+  late final _wire_empty_struct = _wire_empty_structPtr
+      .asFunction<void Function(int, ffi.Pointer<wire_empty>)>();
 
   void wire_func_return_unit_twin_normal(
     int port_,
@@ -4366,6 +4905,123 @@ class RustLibWire implements BaseWire {
               ffi.Pointer<wire_opt_vecs>)>>('wire_handle_vec_of_opts');
   late final _wire_handle_vec_of_opts = _wire_handle_vec_of_optsPtr
       .asFunction<void Function(int, ffi.Pointer<wire_opt_vecs>)>();
+
+  void wire_primitive_optional_types(
+    int port_,
+    ffi.Pointer<ffi.Int32> my_i32,
+    ffi.Pointer<ffi.Int64> my_i64,
+    ffi.Pointer<ffi.Double> my_f64,
+    ffi.Pointer<ffi.Bool> my_bool,
+  ) {
+    return _wire_primitive_optional_types(
+      port_,
+      my_i32,
+      my_i64,
+      my_f64,
+      my_bool,
+    );
+  }
+
+  late final _wire_primitive_optional_typesPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Int64,
+              ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int64>,
+              ffi.Pointer<ffi.Double>,
+              ffi.Pointer<ffi.Bool>)>>('wire_primitive_optional_types');
+  late final _wire_primitive_optional_types =
+      _wire_primitive_optional_typesPtr.asFunction<
+          void Function(int, ffi.Pointer<ffi.Int32>, ffi.Pointer<ffi.Int64>,
+              ffi.Pointer<ffi.Double>, ffi.Pointer<ffi.Bool>)>();
+
+  void wire_handle_vec_of_primitive(
+    int port_,
+    int n,
+  ) {
+    return _wire_handle_vec_of_primitive(
+      port_,
+      n,
+    );
+  }
+
+  late final _wire_handle_vec_of_primitivePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_handle_vec_of_primitive');
+  late final _wire_handle_vec_of_primitive =
+      _wire_handle_vec_of_primitivePtr.asFunction<void Function(int, int)>();
+
+  void wire_handle_zero_copy_vec_of_primitive(
+    int port_,
+    int n,
+  ) {
+    return _wire_handle_zero_copy_vec_of_primitive(
+      port_,
+      n,
+    );
+  }
+
+  late final _wire_handle_zero_copy_vec_of_primitivePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_handle_zero_copy_vec_of_primitive');
+  late final _wire_handle_zero_copy_vec_of_primitive =
+      _wire_handle_zero_copy_vec_of_primitivePtr
+          .asFunction<void Function(int, int)>();
+
+  void wire_get_usize(
+    int port_,
+    int u,
+  ) {
+    return _wire_get_usize(
+      port_,
+      u,
+    );
+  }
+
+  late final _wire_get_usizePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>(
+          'wire_get_usize');
+  late final _wire_get_usize =
+      _wire_get_usizePtr.asFunction<void Function(int, int)>();
+
+  void wire_primitive_types(
+    int port_,
+    int my_i32,
+    int my_i64,
+    double my_f64,
+    bool my_bool,
+  ) {
+    return _wire_primitive_types(
+      port_,
+      my_i32,
+      my_i64,
+      my_f64,
+      my_bool,
+    );
+  }
+
+  late final _wire_primitive_typesPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int64, ffi.Double,
+              ffi.Bool)>>('wire_primitive_types');
+  late final _wire_primitive_types = _wire_primitive_typesPtr
+      .asFunction<void Function(int, int, int, double, bool)>();
+
+  void wire_primitive_u32(
+    int port_,
+    int my_u32,
+  ) {
+    return _wire_primitive_u32(
+      port_,
+      my_u32,
+    );
+  }
+
+  late final _wire_primitive_u32Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32)>>(
+          'wire_primitive_u32');
+  late final _wire_primitive_u32 =
+      _wire_primitive_u32Ptr.asFunction<void Function(int, int)>();
 
   WireSyncReturn wire_StructWithCommentsTwinSync_instance_method_twin_sync(
     ffi.Pointer<wire_struct_with_comments_twin_sync> that,
@@ -6122,6 +6778,16 @@ class RustLibWire implements BaseWire {
   late final _wire_frb_sync_generator_test =
       _wire_frb_sync_generator_testPtr.asFunction<WireSyncReturn Function()>();
 
+  WireSyncReturn wire_sync_create_opaque() {
+    return _wire_sync_create_opaque();
+  }
+
+  late final _wire_sync_create_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+          'wire_sync_create_opaque');
+  late final _wire_sync_create_opaque =
+      _wire_sync_create_opaquePtr.asFunction<WireSyncReturn Function()>();
+
   WireSyncReturn wire_sync_create_sync_opaque() {
     return _wire_sync_create_sync_opaque();
   }
@@ -6247,6 +6913,63 @@ class RustLibWire implements BaseWire {
           'wire_handle_stream_of_struct');
   late final _wire_handle_stream_of_struct =
       _wire_handle_stream_of_structPtr.asFunction<void Function(int)>();
+
+  void wire_handle_stream_sink_at_1(
+    int port_,
+    int key,
+    int max,
+  ) {
+    return _wire_handle_stream_sink_at_1(
+      port_,
+      key,
+      max,
+    );
+  }
+
+  late final _wire_handle_stream_sink_at_1Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Uint32,
+              ffi.Uint32)>>('wire_handle_stream_sink_at_1');
+  late final _wire_handle_stream_sink_at_1 = _wire_handle_stream_sink_at_1Ptr
+      .asFunction<void Function(int, int, int)>();
+
+  void wire_handle_stream_sink_at_2(
+    int port_,
+    int key,
+    int max,
+  ) {
+    return _wire_handle_stream_sink_at_2(
+      port_,
+      key,
+      max,
+    );
+  }
+
+  late final _wire_handle_stream_sink_at_2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Uint32,
+              ffi.Uint32)>>('wire_handle_stream_sink_at_2');
+  late final _wire_handle_stream_sink_at_2 = _wire_handle_stream_sink_at_2Ptr
+      .asFunction<void Function(int, int, int)>();
+
+  void wire_handle_stream_sink_at_3(
+    int port_,
+    int key,
+    int max,
+  ) {
+    return _wire_handle_stream_sink_at_3(
+      port_,
+      key,
+      max,
+    );
+  }
+
+  late final _wire_handle_stream_sink_at_3Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Uint32,
+              ffi.Uint32)>>('wire_handle_stream_sink_at_3');
+  late final _wire_handle_stream_sink_at_3 = _wire_handle_stream_sink_at_3Ptr
+      .asFunction<void Function(int, int, int)>();
 
   void wire_func_struct_with_one_field_twin_normal(
     int port_,
@@ -6780,6 +7503,16 @@ class RustLibWire implements BaseWire {
       _new_box_autoadd_custom_nested_error_outer_twin_syncPtr.asFunction<
           ffi.Pointer<wire_custom_nested_error_outer_twin_sync> Function()>();
 
+  ffi.Pointer<wire_custom_struct> new_box_autoadd_custom_struct() {
+    return _new_box_autoadd_custom_struct();
+  }
+
+  late final _new_box_autoadd_custom_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_custom_struct> Function()>>(
+          'new_box_autoadd_custom_struct');
+  late final _new_box_autoadd_custom_struct = _new_box_autoadd_custom_structPtr
+      .asFunction<ffi.Pointer<wire_custom_struct> Function()>();
+
   ffi.Pointer<wire_custom_struct_error_twin_normal>
       new_box_autoadd_custom_struct_error_twin_normal() {
     return _new_box_autoadd_custom_struct_error_twin_normal();
@@ -6826,6 +7559,16 @@ class RustLibWire implements BaseWire {
   late final _new_box_autoadd_dart_opaque_nested =
       _new_box_autoadd_dart_opaque_nestedPtr
           .asFunction<ffi.Pointer<wire_dart_opaque_nested> Function()>();
+
+  ffi.Pointer<wire_empty> new_box_autoadd_empty() {
+    return _new_box_autoadd_empty();
+  }
+
+  late final _new_box_autoadd_emptyPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_empty> Function()>>(
+          'new_box_autoadd_empty');
+  late final _new_box_autoadd_empty = _new_box_autoadd_emptyPtr
+      .asFunction<ffi.Pointer<wire_empty> Function()>();
 
   ffi.Pointer<wire_enum_dart_opaque> new_box_autoadd_enum_dart_opaque() {
     return _new_box_autoadd_enum_dart_opaque();
@@ -7062,6 +7805,16 @@ class RustLibWire implements BaseWire {
   late final _new_box_autoadd_i_8 =
       _new_box_autoadd_i_8Ptr.asFunction<ffi.Pointer<ffi.Int8> Function(int)>();
 
+  ffi.Pointer<wire_kitchen_sink> new_box_autoadd_kitchen_sink() {
+    return _new_box_autoadd_kitchen_sink();
+  }
+
+  late final _new_box_autoadd_kitchen_sinkPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_kitchen_sink> Function()>>(
+          'new_box_autoadd_kitchen_sink');
+  late final _new_box_autoadd_kitchen_sink = _new_box_autoadd_kitchen_sinkPtr
+      .asFunction<ffi.Pointer<wire_kitchen_sink> Function()>();
+
   ffi.Pointer<wire_macro_struct> new_box_autoadd_macro_struct() {
     return _new_box_autoadd_macro_struct();
   }
@@ -7102,6 +7855,27 @@ class RustLibWire implements BaseWire {
   late final _new_box_autoadd_my_nested_struct =
       _new_box_autoadd_my_nested_structPtr
           .asFunction<ffi.Pointer<wire_my_nested_struct> Function()>();
+
+  ffi.Pointer<wire_my_size> new_box_autoadd_my_size() {
+    return _new_box_autoadd_my_size();
+  }
+
+  late final _new_box_autoadd_my_sizePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_my_size> Function()>>(
+          'new_box_autoadd_my_size');
+  late final _new_box_autoadd_my_size = _new_box_autoadd_my_sizePtr
+      .asFunction<ffi.Pointer<wire_my_size> Function()>();
+
+  ffi.Pointer<wire_my_size_freezed> new_box_autoadd_my_size_freezed() {
+    return _new_box_autoadd_my_size_freezed();
+  }
+
+  late final _new_box_autoadd_my_size_freezedPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_my_size_freezed> Function()>>(
+          'new_box_autoadd_my_size_freezed');
+  late final _new_box_autoadd_my_size_freezed =
+      _new_box_autoadd_my_size_freezedPtr
+          .asFunction<ffi.Pointer<wire_my_size_freezed> Function()>();
 
   ffi.Pointer<wire_my_struct> new_box_autoadd_my_struct() {
     return _new_box_autoadd_my_struct();
@@ -7570,6 +8344,36 @@ class RustLibWire implements BaseWire {
           'new_box_i_8');
   late final _new_box_i_8 =
       _new_box_i_8Ptr.asFunction<ffi.Pointer<ffi.Int8> Function(int)>();
+
+  ffi.Pointer<wire_kitchen_sink> new_box_kitchen_sink() {
+    return _new_box_kitchen_sink();
+  }
+
+  late final _new_box_kitchen_sinkPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_kitchen_sink> Function()>>(
+          'new_box_kitchen_sink');
+  late final _new_box_kitchen_sink = _new_box_kitchen_sinkPtr
+      .asFunction<ffi.Pointer<wire_kitchen_sink> Function()>();
+
+  ffi.Pointer<wire_my_size> new_box_my_size() {
+    return _new_box_my_size();
+  }
+
+  late final _new_box_my_sizePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_my_size> Function()>>(
+          'new_box_my_size');
+  late final _new_box_my_size =
+      _new_box_my_sizePtr.asFunction<ffi.Pointer<wire_my_size> Function()>();
+
+  ffi.Pointer<wire_my_size_freezed> new_box_my_size_freezed() {
+    return _new_box_my_size_freezed();
+  }
+
+  late final _new_box_my_size_freezedPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_my_size_freezed> Function()>>(
+          'new_box_my_size_freezed');
+  late final _new_box_my_size_freezed = _new_box_my_size_freezedPtr
+      .asFunction<ffi.Pointer<wire_my_size_freezed> Function()>();
 
   ffi.Pointer<wire_speed> new_box_speed() {
     return _new_box_speed();
@@ -8645,6 +9449,57 @@ class RustLibWire implements BaseWire {
       _inflate_EnumWithItemTupleTwinSync_BPtr
           .asFunction<ffi.Pointer<EnumWithItemTupleTwinSyncKind> Function()>();
 
+  ffi.Pointer<KitchenSinkKind> inflate_KitchenSink_Primitives() {
+    return _inflate_KitchenSink_Primitives();
+  }
+
+  late final _inflate_KitchenSink_PrimitivesPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>(
+          'inflate_KitchenSink_Primitives');
+  late final _inflate_KitchenSink_Primitives =
+      _inflate_KitchenSink_PrimitivesPtr
+          .asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
+
+  ffi.Pointer<KitchenSinkKind> inflate_KitchenSink_Nested() {
+    return _inflate_KitchenSink_Nested();
+  }
+
+  late final _inflate_KitchenSink_NestedPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>(
+          'inflate_KitchenSink_Nested');
+  late final _inflate_KitchenSink_Nested = _inflate_KitchenSink_NestedPtr
+      .asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
+
+  ffi.Pointer<KitchenSinkKind> inflate_KitchenSink_Optional() {
+    return _inflate_KitchenSink_Optional();
+  }
+
+  late final _inflate_KitchenSink_OptionalPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>(
+          'inflate_KitchenSink_Optional');
+  late final _inflate_KitchenSink_Optional = _inflate_KitchenSink_OptionalPtr
+      .asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
+
+  ffi.Pointer<KitchenSinkKind> inflate_KitchenSink_Buffer() {
+    return _inflate_KitchenSink_Buffer();
+  }
+
+  late final _inflate_KitchenSink_BufferPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>(
+          'inflate_KitchenSink_Buffer');
+  late final _inflate_KitchenSink_Buffer = _inflate_KitchenSink_BufferPtr
+      .asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
+
+  ffi.Pointer<KitchenSinkKind> inflate_KitchenSink_Enums() {
+    return _inflate_KitchenSink_Enums();
+  }
+
+  late final _inflate_KitchenSink_EnumsPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<KitchenSinkKind> Function()>>(
+          'inflate_KitchenSink_Enums');
+  late final _inflate_KitchenSink_Enums = _inflate_KitchenSink_EnumsPtr
+      .asFunction<ffi.Pointer<KitchenSinkKind> Function()>();
+
   ffi.Pointer<MeasureKind> inflate_Measure_Speed() {
     return _inflate_Measure_Speed();
   }
@@ -8877,6 +9732,62 @@ final class wire_enum_with_item_tuple_twin_normal extends ffi.Struct {
   external ffi.Pointer<EnumWithItemTupleTwinNormalKind> kind;
 }
 
+final class wire_KitchenSink_Empty extends ffi.Opaque {}
+
+final class wire_KitchenSink_Primitives extends ffi.Struct {
+  @ffi.Int32()
+  external int int32;
+
+  @ffi.Double()
+  external double float64;
+
+  @ffi.Bool()
+  external bool boolean;
+}
+
+final class wire_KitchenSink_Nested extends ffi.Struct {
+  @ffi.Int32()
+  external int field0;
+
+  external ffi.Pointer<wire_kitchen_sink> field1;
+}
+
+final class wire_kitchen_sink extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<KitchenSinkKind> kind;
+}
+
+final class KitchenSinkKind extends ffi.Union {
+  external ffi.Pointer<wire_KitchenSink_Empty> Empty;
+
+  external ffi.Pointer<wire_KitchenSink_Primitives> Primitives;
+
+  external ffi.Pointer<wire_KitchenSink_Nested> Nested;
+
+  external ffi.Pointer<wire_KitchenSink_Optional> Optional;
+
+  external ffi.Pointer<wire_KitchenSink_Buffer> Buffer;
+
+  external ffi.Pointer<wire_KitchenSink_Enums> Enums;
+}
+
+final class wire_KitchenSink_Optional extends ffi.Struct {
+  external ffi.Pointer<ffi.Int32> field0;
+
+  external ffi.Pointer<ffi.Int32> field1;
+}
+
+final class wire_KitchenSink_Buffer extends ffi.Struct {
+  external ffi.Pointer<wire_list_prim_u_8> field0;
+}
+
+final class wire_KitchenSink_Enums extends ffi.Struct {
+  @ffi.Int32()
+  external int field0;
+}
+
 final class wire_Speed_Unknown extends ffi.Opaque {}
 
 final class wire_Speed_GPS extends ffi.Struct {
@@ -8948,6 +9859,10 @@ final class wire_event extends ffi.Struct {
   external ffi.Pointer<wire_list_prim_u_8> address;
 
   external ffi.Pointer<wire_list_prim_u_8> payload;
+}
+
+final class wire_custom_struct extends ffi.Struct {
+  external ffi.Pointer<wire_list_prim_u_8> message;
 }
 
 final class wire_CustomNestedErrorOuterTwinNormal_One extends ffi.Struct {
@@ -9081,6 +9996,22 @@ final class wire_my_nested_struct extends ffi.Struct {
   external int weekday;
 }
 
+final class wire_my_size extends ffi.Struct {
+  @ffi.Int32()
+  external int width;
+
+  @ffi.Int32()
+  external int height;
+}
+
+final class wire_my_size_freezed extends ffi.Struct {
+  @ffi.Int32()
+  external int width;
+
+  @ffi.Int32()
+  external int height;
+}
+
 final class wire_list_weekdays extends ffi.Struct {
   external ffi.Pointer<ffi.Int32> ptr;
 
@@ -9142,13 +10073,7 @@ final class wire_struct_with_enum extends ffi.Struct {
   external wire_abc abc2;
 }
 
-final class wire_my_size extends ffi.Struct {
-  @ffi.Int32()
-  external int width;
-
-  @ffi.Int32()
-  external int height;
-}
+final class wire_empty extends ffi.Opaque {}
 
 final class wire_list_my_size extends ffi.Struct {
   external ffi.Pointer<wire_my_size> ptr;

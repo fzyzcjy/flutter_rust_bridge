@@ -35,6 +35,42 @@ Future<void> customStructErrorReturnErrorTwinNormal(
     RustLib.instance.api
         .customStructErrorReturnErrorTwinNormal(arg: arg, hint: hint);
 
+Future<int> returnErrCustomError({dynamic hint}) =>
+    RustLib.instance.api.returnErrCustomError(hint: hint);
+
+Future<int> returnOkCustomError({dynamic hint}) =>
+    RustLib.instance.api.returnOkCustomError(hint: hint);
+
+Future<int> returnErrorVariant({required int variant, dynamic hint}) =>
+    RustLib.instance.api.returnErrorVariant(variant: variant, hint: hint);
+
+Future<void> returnCustomNestedError1({dynamic hint}) =>
+    RustLib.instance.api.returnCustomNestedError1(hint: hint);
+
+Future<void> returnCustomNestedError1Variant1({dynamic hint}) =>
+    RustLib.instance.api.returnCustomNestedError1Variant1(hint: hint);
+
+Future<void> returnCustomNestedError2({dynamic hint}) =>
+    RustLib.instance.api.returnCustomNestedError2(hint: hint);
+
+Future<void> returnCustomStructError({dynamic hint}) =>
+    RustLib.instance.api.returnCustomStructError(hint: hint);
+
+Future<void> syncReturnCustomStructError({dynamic hint}) =>
+    RustLib.instance.api.syncReturnCustomStructError(hint: hint);
+
+Future<int> returnCustomStructOk({dynamic hint}) =>
+    RustLib.instance.api.returnCustomStructOk(hint: hint);
+
+Future<void> throwAnyhow({dynamic hint}) =>
+    RustLib.instance.api.throwAnyhow(hint: hint);
+
+Future<void> panicWithCustomResult({dynamic hint}) =>
+    RustLib.instance.api.panicWithCustomResult(hint: hint);
+
+Stream<String> streamSinkThrowAnyhow({dynamic hint}) =>
+    RustLib.instance.api.streamSinkThrowAnyhow(hint: hint);
+
 @freezed
 sealed class CustomEnumErrorTwinNormal
     with _$CustomEnumErrorTwinNormal
@@ -49,6 +85,42 @@ sealed class CustomEnumErrorTwinNormal
     required int message,
     required String backtrace,
   }) = CustomEnumErrorTwinNormal_Two;
+}
+
+@freezed
+sealed class CustomError with _$CustomError implements FrbException {
+  @Implements<FrbBacktracedException>()
+  const factory CustomError.error0({
+    required String e,
+    required String backtrace,
+  }) = CustomError_Error0;
+  @Implements<FrbBacktracedException>()
+  const factory CustomError.error1({
+    required int e,
+    required String backtrace,
+  }) = CustomError_Error1;
+}
+
+@freezed
+sealed class CustomNestedError1
+    with _$CustomNestedError1
+    implements FrbException {
+  const factory CustomNestedError1.customNested1(
+    String field0,
+  ) = CustomNestedError1_CustomNested1;
+  const factory CustomNestedError1.errorNested(
+    CustomNestedError2 field0,
+  ) = CustomNestedError1_ErrorNested;
+}
+
+@freezed
+sealed class CustomNestedError2 with _$CustomNestedError2 {
+  const factory CustomNestedError2.customNested2(
+    String field0,
+  ) = CustomNestedError2_CustomNested2;
+  const factory CustomNestedError2.customNested2Number(
+    int field0,
+  ) = CustomNestedError2_CustomNested2Number;
 }
 
 @freezed
@@ -71,6 +143,63 @@ sealed class CustomNestedErrorOuterTwinNormal
   const factory CustomNestedErrorOuterTwinNormal.two(
     CustomNestedErrorInnerTwinNormal field0,
   ) = CustomNestedErrorOuterTwinNormal_Two;
+}
+
+class CustomStruct {
+  final String message;
+
+  const CustomStruct({
+    required this.message,
+  });
+
+  static Future<CustomStruct> newCustomStruct(
+          {required String message, dynamic hint}) =>
+      RustLib.instance.api.customStructNew(message: message, hint: hint);
+
+  Future<void> nonstaticReturnCustomStructError({dynamic hint}) =>
+      RustLib.instance.api.customStructNonstaticReturnCustomStructError(
+        that: this,
+      );
+
+  Future<int> nonstaticReturnCustomStructOk({dynamic hint}) =>
+      RustLib.instance.api.customStructNonstaticReturnCustomStructOk(
+        that: this,
+      );
+
+  static Future<void> staticReturnCustomStructError({dynamic hint}) =>
+      RustLib.instance.api
+          .customStructStaticReturnCustomStructError(hint: hint);
+
+  static Future<int> staticReturnCustomStructOk({dynamic hint}) =>
+      RustLib.instance.api.customStructStaticReturnCustomStructOk(hint: hint);
+
+  @override
+  int get hashCode => message.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomStruct &&
+          runtimeType == other.runtimeType &&
+          message == other.message;
+}
+
+class CustomStructError implements FrbException {
+  final String message;
+
+  const CustomStructError({
+    required this.message,
+  });
+
+  @override
+  int get hashCode => message.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomStructError &&
+          runtimeType == other.runtimeType &&
+          message == other.message;
 }
 
 class CustomStructErrorTwinNormal {

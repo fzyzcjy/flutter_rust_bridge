@@ -321,6 +321,12 @@ impl Wire2Api<crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorO
         Wire2Api::<crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<crate::api::exception::CustomStruct> for *mut wire_custom_struct {
+    fn wire2api(self) -> crate::api::exception::CustomStruct {
+        let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
+        Wire2Api::<crate::api::exception::CustomStruct>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<crate::api::exception::CustomStructErrorTwinNormal>
     for *mut wire_custom_struct_error_twin_normal
 {
@@ -347,6 +353,12 @@ impl Wire2Api<crate::api::dart_opaque::DartOpaqueNested> for *mut wire_dart_opaq
     fn wire2api(self) -> crate::api::dart_opaque::DartOpaqueNested {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
         Wire2Api::<crate::api::dart_opaque::DartOpaqueNested>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<crate::api::misc_type::Empty> for *mut wire_empty {
+    fn wire2api(self) -> crate::api::misc_type::Empty {
+        let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
+        Wire2Api::<crate::api::misc_type::Empty>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<crate::api::dart_opaque::EnumDartOpaque> for *mut wire_enum_dart_opaque {
@@ -475,6 +487,12 @@ impl Wire2Api<i8> for *mut i8 {
         unsafe { *flutter_rust_bridge::support::box_from_leak_ptr(self) }
     }
 }
+impl Wire2Api<crate::api::enumeration::KitchenSink> for *mut wire_kitchen_sink {
+    fn wire2api(self) -> crate::api::enumeration::KitchenSink {
+        let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
+        Wire2Api::<crate::api::enumeration::KitchenSink>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<crate::api::inside_macro::MacroStruct> for *mut wire_macro_struct {
     fn wire2api(self) -> crate::api::inside_macro::MacroStruct {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
@@ -497,6 +515,18 @@ impl Wire2Api<crate::api::misc_example::MyNestedStruct> for *mut wire_my_nested_
     fn wire2api(self) -> crate::api::misc_example::MyNestedStruct {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
         Wire2Api::<crate::api::misc_example::MyNestedStruct>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<crate::auxiliary::sample_types::MySize> for *mut wire_my_size {
+    fn wire2api(self) -> crate::auxiliary::sample_types::MySize {
+        let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
+        Wire2Api::<crate::auxiliary::sample_types::MySize>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<crate::api::misc_example::MySizeFreezed> for *mut wire_my_size_freezed {
+    fn wire2api(self) -> crate::api::misc_example::MySizeFreezed {
+        let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
+        Wire2Api::<crate::api::misc_example::MySizeFreezed>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<crate::auxiliary::sample_types::MyStruct> for *mut wire_my_struct {
@@ -752,6 +782,24 @@ impl Wire2Api<Box<i8>> for *mut i8 {
         unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) }
     }
 }
+impl Wire2Api<Box<crate::api::enumeration::KitchenSink>> for *mut wire_kitchen_sink {
+    fn wire2api(self) -> Box<crate::api::enumeration::KitchenSink> {
+        let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
+        Wire2Api::<crate::api::enumeration::KitchenSink>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<Box<crate::auxiliary::sample_types::MySize>> for *mut wire_my_size {
+    fn wire2api(self) -> Box<crate::auxiliary::sample_types::MySize> {
+        let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
+        Wire2Api::<crate::auxiliary::sample_types::MySize>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<Box<crate::api::misc_example::MySizeFreezed>> for *mut wire_my_size_freezed {
+    fn wire2api(self) -> Box<crate::api::misc_example::MySizeFreezed> {
+        let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
+        Wire2Api::<crate::api::misc_example::MySizeFreezed>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<Box<crate::api::enumeration::Speed>> for *mut wire_speed {
     fn wire2api(self) -> Box<crate::api::enumeration::Speed> {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
@@ -876,6 +924,13 @@ impl Wire2Api<crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorO
         }
     }
 }
+impl Wire2Api<crate::api::exception::CustomStruct> for wire_custom_struct {
+    fn wire2api(self) -> crate::api::exception::CustomStruct {
+        crate::api::exception::CustomStruct {
+            message: self.message.wire2api(),
+        }
+    }
+}
 impl Wire2Api<crate::api::exception::CustomStructErrorTwinNormal>
     for wire_custom_struct_error_twin_normal
 {
@@ -921,6 +976,11 @@ impl Wire2Api<crate::api::enumeration::Distance> for wire_distance {
             },
             _ => unreachable!(),
         }
+    }
+}
+impl Wire2Api<crate::api::misc_type::Empty> for wire_empty {
+    fn wire2api(self) -> crate::api::misc_type::Empty {
+        crate::api::misc_type::Empty {}
     }
 }
 impl Wire2Api<crate::api::dart_opaque::EnumDartOpaque> for wire_enum_dart_opaque {
@@ -1173,6 +1233,49 @@ impl Wire2Api<[i32; 2]> for *mut wire_list_prim_i_32 {
     fn wire2api(self) -> [i32; 2] {
         let vec: Vec<i32> = self.wire2api();
         flutter_rust_bridge::support::from_vec_to_array(vec)
+    }
+}
+impl Wire2Api<crate::api::enumeration::KitchenSink> for wire_kitchen_sink {
+    fn wire2api(self) -> crate::api::enumeration::KitchenSink {
+        match self.tag {
+            0 => crate::api::enumeration::KitchenSink::Empty,
+            1 => unsafe {
+                let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.Primitives);
+                crate::api::enumeration::KitchenSink::Primitives {
+                    int32: ans.int32.wire2api(),
+                    float64: ans.float64.wire2api(),
+                    boolean: ans.boolean.wire2api(),
+                }
+            },
+            2 => unsafe {
+                let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.Nested);
+                crate::api::enumeration::KitchenSink::Nested(
+                    ans.field0.wire2api(),
+                    ans.field1.wire2api(),
+                )
+            },
+            3 => unsafe {
+                let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.Optional);
+                crate::api::enumeration::KitchenSink::Optional(
+                    ans.field0.wire2api(),
+                    ans.field1.wire2api(),
+                )
+            },
+            4 => unsafe {
+                let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.Buffer);
+                crate::api::enumeration::KitchenSink::Buffer(ans.field0.wire2api())
+            },
+            5 => unsafe {
+                let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
+                let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.Enums);
+                crate::api::enumeration::KitchenSink::Enums(ans.field0.wire2api())
+            },
+            _ => unreachable!(),
+        }
     }
 }
 impl Wire2Api<Vec<flutter_rust_bridge::DartOpaque>> for *mut wire_list_DartOpaque {
@@ -1438,6 +1541,14 @@ impl Wire2Api<crate::api::misc_example::MyNestedStruct> for wire_my_nested_struc
 impl Wire2Api<crate::auxiliary::sample_types::MySize> for wire_my_size {
     fn wire2api(self) -> crate::auxiliary::sample_types::MySize {
         crate::auxiliary::sample_types::MySize {
+            width: self.width.wire2api(),
+            height: self.height.wire2api(),
+        }
+    }
+}
+impl Wire2Api<crate::api::misc_example::MySizeFreezed> for wire_my_size_freezed {
+    fn wire2api(self) -> crate::api::misc_example::MySizeFreezed {
+        crate::api::misc_example::MySizeFreezed {
             width: self.width.wire2api(),
             height: self.height.wire2api(),
         }
@@ -1939,6 +2050,12 @@ pub struct wire_CustomNestedErrorOuterTwinSync_Two {
 }
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_custom_struct {
+    message: *mut wire_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_custom_struct_error_twin_normal {
     a: *mut wire_list_prim_u_8,
 }
@@ -1984,6 +2101,9 @@ pub struct wire_Distance_Unknown {}
 pub struct wire_Distance_Map {
     field0: f64,
 }
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_empty {}
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_enum_dart_opaque {
@@ -2254,7 +2374,60 @@ pub struct wire_feature_uuid {
 pub struct wire_feed_id {
     field0: *mut wire_list_prim_u_8,
 }
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_kitchen_sink {
+    tag: i32,
+    kind: *mut KitchenSinkKind,
+}
 
+#[repr(C)]
+pub union KitchenSinkKind {
+    Empty: *mut wire_KitchenSink_Empty,
+    Primitives: *mut wire_KitchenSink_Primitives,
+    Nested: *mut wire_KitchenSink_Nested,
+    Optional: *mut wire_KitchenSink_Optional,
+    Buffer: *mut wire_KitchenSink_Buffer,
+    Enums: *mut wire_KitchenSink_Enums,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_KitchenSink_Empty {}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_KitchenSink_Primitives {
+    int32: i32,
+    float64: f64,
+    boolean: bool,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_KitchenSink_Nested {
+    field0: i32,
+    field1: *mut wire_kitchen_sink,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_KitchenSink_Optional {
+    field0: *mut i32,
+    field1: *mut i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_KitchenSink_Buffer {
+    field0: *mut wire_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_KitchenSink_Enums {
+    field0: i32,
+}
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_list_DartOpaque {
@@ -2475,6 +2648,13 @@ pub struct wire_my_nested_struct {
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_my_size {
+    width: i32,
+    height: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_my_size_freezed {
     width: i32,
     height: i32,
 }
@@ -2904,6 +3084,18 @@ impl Default for wire_custom_nested_error_outer_twin_sync {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_custom_struct {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            message: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_custom_struct {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 impl NewWithNullPtr for wire_custom_struct_error_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -2963,6 +3155,16 @@ impl NewWithNullPtr for wire_distance {
     }
 }
 impl Default for wire_distance {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_empty {
+    fn new_with_null_ptr() -> Self {
+        Self {}
+    }
+}
+impl Default for wire_empty {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -3149,6 +3351,19 @@ impl Default for wire_feed_id {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_kitchen_sink {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_kitchen_sink {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 impl NewWithNullPtr for wire_macro_struct {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -3208,6 +3423,19 @@ impl NewWithNullPtr for wire_my_size {
     }
 }
 impl Default for wire_my_size {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_my_size_freezed {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            width: Default::default(),
+            height: Default::default(),
+        }
+    }
+}
+impl Default for wire_my_size_freezed {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -3841,6 +4069,11 @@ pub extern "C" fn wire_handle_enum_parameter(port_: i64, weekday: i32) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_enum_struct(port_: i64, val: *mut wire_kitchen_sink) {
+    wire_handle_enum_struct_impl(port_, val)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_handle_return_enum(port_: i64, input: *mut wire_list_prim_u_8) {
     wire_handle_return_enum_impl(port_, input)
 }
@@ -3877,6 +4110,37 @@ pub extern "C" fn wire_create_event(
 #[no_mangle]
 pub extern "C" fn wire_register_event_listener(port_: i64) {
     wire_register_event_listener_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_CustomStruct_new(port_: i64, message: *mut wire_list_prim_u_8) {
+    wire_CustomStruct_new_impl(port_, message)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_CustomStruct_nonstatic_return_custom_struct_error(
+    port_: i64,
+    that: *mut wire_custom_struct,
+) {
+    wire_CustomStruct_nonstatic_return_custom_struct_error_impl(port_, that)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_CustomStruct_nonstatic_return_custom_struct_ok(
+    port_: i64,
+    that: *mut wire_custom_struct,
+) {
+    wire_CustomStruct_nonstatic_return_custom_struct_ok_impl(port_, that)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_CustomStruct_static_return_custom_struct_error(port_: i64) {
+    wire_CustomStruct_static_return_custom_struct_error_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_CustomStruct_static_return_custom_struct_ok(port_: i64) {
+    wire_CustomStruct_static_return_custom_struct_ok_impl(port_)
 }
 
 #[no_mangle]
@@ -3926,6 +4190,66 @@ pub extern "C" fn wire_func_type_infallible_panic_twin_normal(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_panic_with_custom_result(port_: i64) {
+    wire_panic_with_custom_result_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_return_custom_nested_error_1(port_: i64) {
+    wire_return_custom_nested_error_1_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_return_custom_nested_error_1_variant1(port_: i64) {
+    wire_return_custom_nested_error_1_variant1_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_return_custom_nested_error_2(port_: i64) {
+    wire_return_custom_nested_error_2_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_return_custom_struct_error(port_: i64) {
+    wire_return_custom_struct_error_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_return_custom_struct_ok(port_: i64) {
+    wire_return_custom_struct_ok_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_return_err_custom_error(port_: i64) {
+    wire_return_err_custom_error_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_return_error_variant(port_: i64, variant: u32) {
+    wire_return_error_variant_impl(port_, variant)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_return_ok_custom_error(port_: i64) {
+    wire_return_ok_custom_error_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_stream_sink_throw_anyhow(port_: i64) {
+    wire_stream_sink_throw_anyhow_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_sync_return_custom_struct_error(port_: i64) {
+    wire_sync_return_custom_struct_error_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_throw_anyhow(port_: i64) {
+    wire_throw_anyhow_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_call_new_module_system(port_: i64) {
     wire_call_new_module_system_impl(port_)
 }
@@ -3943,6 +4267,11 @@ pub extern "C" fn wire_use_imported_enum(port_: i64, my_enum: i32) {
 #[no_mangle]
 pub extern "C" fn wire_use_imported_struct(port_: i64, my_struct: *mut wire_my_struct) {
     wire_use_imported_struct_impl(port_, my_struct)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_another_macro_struct(port_: i64) {
+    wire_another_macro_struct_impl(port_)
 }
 
 #[no_mangle]
@@ -4131,6 +4460,29 @@ pub extern "C" fn wire_handle_nested_struct(port_: i64, s: *mut wire_my_nested_s
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_string(port_: i64, s: *mut wire_list_prim_u_8) {
+    wire_handle_string_impl(port_, s)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_struct(port_: i64, arg: *mut wire_my_size, boxed: *mut wire_my_size) {
+    wire_handle_struct_impl(port_, arg, boxed)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_struct_sync_freezed(
+    arg: *mut wire_my_size_freezed,
+    boxed: *mut wire_my_size_freezed,
+) -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_handle_struct_sync_freezed_impl(arg, boxed)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_vec_u8(port_: i64, v: *mut wire_list_prim_u_8) {
+    wire_handle_vec_u8_impl(port_, v)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_list_of_primitive_enums(port_: i64, weekdays: *mut wire_list_weekdays) {
     wire_list_of_primitive_enums_impl(port_, weekdays)
 }
@@ -4143,6 +4495,11 @@ pub extern "C" fn wire_test_abc_enum(port_: i64, abc: *mut wire_abc) {
 #[no_mangle]
 pub extern "C" fn wire_test_struct_with_enum(port_: i64, se: *mut wire_struct_with_enum) {
     wire_test_struct_with_enum_impl(port_, se)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_empty_struct(port_: i64, empty: *mut wire_empty) {
+    wire_empty_struct_impl(port_, empty)
 }
 
 #[no_mangle]
@@ -4209,6 +4566,48 @@ pub extern "C" fn wire_handle_optional_struct(port_: i64, document: *mut wire_li
 #[no_mangle]
 pub extern "C" fn wire_handle_vec_of_opts(port_: i64, opt: *mut wire_opt_vecs) {
     wire_handle_vec_of_opts_impl(port_, opt)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_primitive_optional_types(
+    port_: i64,
+    my_i32: *mut i32,
+    my_i64: *mut i64,
+    my_f64: *mut f64,
+    my_bool: *mut bool,
+) {
+    wire_primitive_optional_types_impl(port_, my_i32, my_i64, my_f64, my_bool)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_vec_of_primitive(port_: i64, n: i32) {
+    wire_handle_vec_of_primitive_impl(port_, n)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_zero_copy_vec_of_primitive(port_: i64, n: i32) {
+    wire_handle_zero_copy_vec_of_primitive_impl(port_, n)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_get_usize(port_: i64, u: usize) {
+    wire_get_usize_impl(port_, u)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_primitive_types(
+    port_: i64,
+    my_i32: i32,
+    my_i64: i64,
+    my_f64: f64,
+    my_bool: bool,
+) {
+    wire_primitive_types_impl(port_, my_i32, my_i64, my_f64, my_bool)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_primitive_u32(port_: i64, my_u32: u32) {
+    wire_primitive_u32_impl(port_, my_u32)
 }
 
 #[no_mangle]
@@ -4905,6 +5304,11 @@ pub extern "C" fn wire_frb_sync_generator_test() -> flutter_rust_bridge::support
 }
 
 #[no_mangle]
+pub extern "C" fn wire_sync_create_opaque() -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_sync_create_opaque_impl()
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sync_create_sync_opaque() -> flutter_rust_bridge::support::WireSyncReturn {
     wire_sync_create_sync_opaque_impl()
 }
@@ -4944,6 +5348,21 @@ pub extern "C" fn wire_func_stream_sink_arg_position_twin_normal(port_: i64, a: 
 #[no_mangle]
 pub extern "C" fn wire_handle_stream_of_struct(port_: i64) {
     wire_handle_stream_of_struct_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_stream_sink_at_1(port_: i64, key: u32, max: u32) {
+    wire_handle_stream_sink_at_1_impl(port_, key, max)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_stream_sink_at_2(port_: i64, key: u32, max: u32) {
+    wire_handle_stream_sink_at_2_impl(port_, key, max)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_stream_sink_at_3(port_: i64, key: u32, max: u32) {
+    wire_handle_stream_sink_at_3_impl(port_, key, max)
 }
 
 #[no_mangle]
@@ -5176,6 +5595,11 @@ pub extern "C" fn new_box_autoadd_custom_nested_error_outer_twin_sync(
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_custom_struct() -> *mut wire_custom_struct {
+    flutter_rust_bridge::support::new_leak_box_ptr(wire_custom_struct::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_custom_struct_error_twin_normal(
 ) -> *mut wire_custom_struct_error_twin_normal {
     flutter_rust_bridge::support::new_leak_box_ptr(
@@ -5199,6 +5623,11 @@ pub extern "C" fn new_box_autoadd_customized() -> *mut wire_customized {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_dart_opaque_nested() -> *mut wire_dart_opaque_nested {
     flutter_rust_bridge::support::new_leak_box_ptr(wire_dart_opaque_nested::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_empty() -> *mut wire_empty {
+    flutter_rust_bridge::support::new_leak_box_ptr(wire_empty::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -5315,6 +5744,11 @@ pub extern "C" fn new_box_autoadd_i_8(value: i8) -> *mut i8 {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_kitchen_sink() -> *mut wire_kitchen_sink {
+    flutter_rust_bridge::support::new_leak_box_ptr(wire_kitchen_sink::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_macro_struct() -> *mut wire_macro_struct {
     flutter_rust_bridge::support::new_leak_box_ptr(wire_macro_struct::new_with_null_ptr())
 }
@@ -5332,6 +5766,16 @@ pub extern "C" fn new_box_autoadd_message_id() -> *mut wire_message_id {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_my_nested_struct() -> *mut wire_my_nested_struct {
     flutter_rust_bridge::support::new_leak_box_ptr(wire_my_nested_struct::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_my_size() -> *mut wire_my_size {
+    flutter_rust_bridge::support::new_leak_box_ptr(wire_my_size::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_my_size_freezed() -> *mut wire_my_size_freezed {
+    flutter_rust_bridge::support::new_leak_box_ptr(wire_my_size_freezed::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -5558,6 +6002,21 @@ pub extern "C" fn new_box_i_64(value: i64) -> *mut i64 {
 #[no_mangle]
 pub extern "C" fn new_box_i_8(value: i8) -> *mut i8 {
     flutter_rust_bridge::support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_kitchen_sink() -> *mut wire_kitchen_sink {
+    flutter_rust_bridge::support::new_leak_box_ptr(wire_kitchen_sink::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_my_size() -> *mut wire_my_size {
+    flutter_rust_bridge::support::new_leak_box_ptr(wire_my_size::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_my_size_freezed() -> *mut wire_my_size_freezed {
+    flutter_rust_bridge::support::new_leak_box_ptr(wire_my_size_freezed::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -6307,6 +6766,55 @@ pub extern "C" fn inflate_EnumWithItemTupleTwinSync_B() -> *mut EnumWithItemTupl
     flutter_rust_bridge::support::new_leak_box_ptr(EnumWithItemTupleTwinSyncKind {
         B: flutter_rust_bridge::support::new_leak_box_ptr(wire_EnumWithItemTupleTwinSync_B {
             field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_KitchenSink_Primitives() -> *mut KitchenSinkKind {
+    flutter_rust_bridge::support::new_leak_box_ptr(KitchenSinkKind {
+        Primitives: flutter_rust_bridge::support::new_leak_box_ptr(wire_KitchenSink_Primitives {
+            int32: Default::default(),
+            float64: Default::default(),
+            boolean: Default::default(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_KitchenSink_Nested() -> *mut KitchenSinkKind {
+    flutter_rust_bridge::support::new_leak_box_ptr(KitchenSinkKind {
+        Nested: flutter_rust_bridge::support::new_leak_box_ptr(wire_KitchenSink_Nested {
+            field0: Default::default(),
+            field1: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_KitchenSink_Optional() -> *mut KitchenSinkKind {
+    flutter_rust_bridge::support::new_leak_box_ptr(KitchenSinkKind {
+        Optional: flutter_rust_bridge::support::new_leak_box_ptr(wire_KitchenSink_Optional {
+            field0: core::ptr::null_mut(),
+            field1: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_KitchenSink_Buffer() -> *mut KitchenSinkKind {
+    flutter_rust_bridge::support::new_leak_box_ptr(KitchenSinkKind {
+        Buffer: flutter_rust_bridge::support::new_leak_box_ptr(wire_KitchenSink_Buffer {
+            field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_KitchenSink_Enums() -> *mut KitchenSinkKind {
+    flutter_rust_bridge::support::new_leak_box_ptr(KitchenSinkKind {
+        Enums: flutter_rust_bridge::support::new_leak_box_ptr(wire_KitchenSink_Enums {
+            field0: Default::default(),
         }),
     })
 }

@@ -415,6 +415,1108 @@ abstract class CustomEnumErrorTwinNormal_Two
 }
 
 /// @nodoc
+mixin _$CustomError {
+  Object get e => throw _privateConstructorUsedError;
+  String get backtrace => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String e, String backtrace) error0,
+    required TResult Function(int e, String backtrace) error1,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String e, String backtrace)? error0,
+    TResult? Function(int e, String backtrace)? error1,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String e, String backtrace)? error0,
+    TResult Function(int e, String backtrace)? error1,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CustomError_Error0 value) error0,
+    required TResult Function(CustomError_Error1 value) error1,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CustomError_Error0 value)? error0,
+    TResult? Function(CustomError_Error1 value)? error1,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CustomError_Error0 value)? error0,
+    TResult Function(CustomError_Error1 value)? error1,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $CustomErrorCopyWith<CustomError> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CustomErrorCopyWith<$Res> {
+  factory $CustomErrorCopyWith(
+          CustomError value, $Res Function(CustomError) then) =
+      _$CustomErrorCopyWithImpl<$Res, CustomError>;
+  @useResult
+  $Res call({String backtrace});
+}
+
+/// @nodoc
+class _$CustomErrorCopyWithImpl<$Res, $Val extends CustomError>
+    implements $CustomErrorCopyWith<$Res> {
+  _$CustomErrorCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? backtrace = null,
+  }) {
+    return _then(_value.copyWith(
+      backtrace: null == backtrace
+          ? _value.backtrace
+          : backtrace // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$CustomError_Error0ImplCopyWith<$Res>
+    implements $CustomErrorCopyWith<$Res> {
+  factory _$$CustomError_Error0ImplCopyWith(_$CustomError_Error0Impl value,
+          $Res Function(_$CustomError_Error0Impl) then) =
+      __$$CustomError_Error0ImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String e, String backtrace});
+}
+
+/// @nodoc
+class __$$CustomError_Error0ImplCopyWithImpl<$Res>
+    extends _$CustomErrorCopyWithImpl<$Res, _$CustomError_Error0Impl>
+    implements _$$CustomError_Error0ImplCopyWith<$Res> {
+  __$$CustomError_Error0ImplCopyWithImpl(_$CustomError_Error0Impl _value,
+      $Res Function(_$CustomError_Error0Impl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? e = null,
+    Object? backtrace = null,
+  }) {
+    return _then(_$CustomError_Error0Impl(
+      e: null == e
+          ? _value.e
+          : e // ignore: cast_nullable_to_non_nullable
+              as String,
+      backtrace: null == backtrace
+          ? _value.backtrace
+          : backtrace // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CustomError_Error0Impl implements CustomError_Error0 {
+  const _$CustomError_Error0Impl({required this.e, required this.backtrace});
+
+  @override
+  final String e;
+  @override
+  final String backtrace;
+
+  @override
+  String toString() {
+    return 'CustomError.error0(e: $e, backtrace: $backtrace)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CustomError_Error0Impl &&
+            (identical(other.e, e) || other.e == e) &&
+            (identical(other.backtrace, backtrace) ||
+                other.backtrace == backtrace));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, e, backtrace);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CustomError_Error0ImplCopyWith<_$CustomError_Error0Impl> get copyWith =>
+      __$$CustomError_Error0ImplCopyWithImpl<_$CustomError_Error0Impl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String e, String backtrace) error0,
+    required TResult Function(int e, String backtrace) error1,
+  }) {
+    return error0(e, backtrace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String e, String backtrace)? error0,
+    TResult? Function(int e, String backtrace)? error1,
+  }) {
+    return error0?.call(e, backtrace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String e, String backtrace)? error0,
+    TResult Function(int e, String backtrace)? error1,
+    required TResult orElse(),
+  }) {
+    if (error0 != null) {
+      return error0(e, backtrace);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CustomError_Error0 value) error0,
+    required TResult Function(CustomError_Error1 value) error1,
+  }) {
+    return error0(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CustomError_Error0 value)? error0,
+    TResult? Function(CustomError_Error1 value)? error1,
+  }) {
+    return error0?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CustomError_Error0 value)? error0,
+    TResult Function(CustomError_Error1 value)? error1,
+    required TResult orElse(),
+  }) {
+    if (error0 != null) {
+      return error0(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CustomError_Error0
+    implements CustomError, FrbBacktracedException {
+  const factory CustomError_Error0(
+      {required final String e,
+      required final String backtrace}) = _$CustomError_Error0Impl;
+
+  @override
+  String get e;
+  @override
+  String get backtrace;
+  @override
+  @JsonKey(ignore: true)
+  _$$CustomError_Error0ImplCopyWith<_$CustomError_Error0Impl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CustomError_Error1ImplCopyWith<$Res>
+    implements $CustomErrorCopyWith<$Res> {
+  factory _$$CustomError_Error1ImplCopyWith(_$CustomError_Error1Impl value,
+          $Res Function(_$CustomError_Error1Impl) then) =
+      __$$CustomError_Error1ImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int e, String backtrace});
+}
+
+/// @nodoc
+class __$$CustomError_Error1ImplCopyWithImpl<$Res>
+    extends _$CustomErrorCopyWithImpl<$Res, _$CustomError_Error1Impl>
+    implements _$$CustomError_Error1ImplCopyWith<$Res> {
+  __$$CustomError_Error1ImplCopyWithImpl(_$CustomError_Error1Impl _value,
+      $Res Function(_$CustomError_Error1Impl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? e = null,
+    Object? backtrace = null,
+  }) {
+    return _then(_$CustomError_Error1Impl(
+      e: null == e
+          ? _value.e
+          : e // ignore: cast_nullable_to_non_nullable
+              as int,
+      backtrace: null == backtrace
+          ? _value.backtrace
+          : backtrace // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CustomError_Error1Impl implements CustomError_Error1 {
+  const _$CustomError_Error1Impl({required this.e, required this.backtrace});
+
+  @override
+  final int e;
+  @override
+  final String backtrace;
+
+  @override
+  String toString() {
+    return 'CustomError.error1(e: $e, backtrace: $backtrace)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CustomError_Error1Impl &&
+            (identical(other.e, e) || other.e == e) &&
+            (identical(other.backtrace, backtrace) ||
+                other.backtrace == backtrace));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, e, backtrace);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CustomError_Error1ImplCopyWith<_$CustomError_Error1Impl> get copyWith =>
+      __$$CustomError_Error1ImplCopyWithImpl<_$CustomError_Error1Impl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String e, String backtrace) error0,
+    required TResult Function(int e, String backtrace) error1,
+  }) {
+    return error1(e, backtrace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String e, String backtrace)? error0,
+    TResult? Function(int e, String backtrace)? error1,
+  }) {
+    return error1?.call(e, backtrace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String e, String backtrace)? error0,
+    TResult Function(int e, String backtrace)? error1,
+    required TResult orElse(),
+  }) {
+    if (error1 != null) {
+      return error1(e, backtrace);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CustomError_Error0 value) error0,
+    required TResult Function(CustomError_Error1 value) error1,
+  }) {
+    return error1(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CustomError_Error0 value)? error0,
+    TResult? Function(CustomError_Error1 value)? error1,
+  }) {
+    return error1?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CustomError_Error0 value)? error0,
+    TResult Function(CustomError_Error1 value)? error1,
+    required TResult orElse(),
+  }) {
+    if (error1 != null) {
+      return error1(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CustomError_Error1
+    implements CustomError, FrbBacktracedException {
+  const factory CustomError_Error1(
+      {required final int e,
+      required final String backtrace}) = _$CustomError_Error1Impl;
+
+  @override
+  int get e;
+  @override
+  String get backtrace;
+  @override
+  @JsonKey(ignore: true)
+  _$$CustomError_Error1ImplCopyWith<_$CustomError_Error1Impl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$CustomNestedError1 {
+  Object get field0 => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String field0) customNested1,
+    required TResult Function(CustomNestedError2 field0) errorNested,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String field0)? customNested1,
+    TResult? Function(CustomNestedError2 field0)? errorNested,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String field0)? customNested1,
+    TResult Function(CustomNestedError2 field0)? errorNested,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CustomNestedError1_CustomNested1 value)
+        customNested1,
+    required TResult Function(CustomNestedError1_ErrorNested value) errorNested,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CustomNestedError1_CustomNested1 value)? customNested1,
+    TResult? Function(CustomNestedError1_ErrorNested value)? errorNested,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CustomNestedError1_CustomNested1 value)? customNested1,
+    TResult Function(CustomNestedError1_ErrorNested value)? errorNested,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CustomNestedError1CopyWith<$Res> {
+  factory $CustomNestedError1CopyWith(
+          CustomNestedError1 value, $Res Function(CustomNestedError1) then) =
+      _$CustomNestedError1CopyWithImpl<$Res, CustomNestedError1>;
+}
+
+/// @nodoc
+class _$CustomNestedError1CopyWithImpl<$Res, $Val extends CustomNestedError1>
+    implements $CustomNestedError1CopyWith<$Res> {
+  _$CustomNestedError1CopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$CustomNestedError1_CustomNested1ImplCopyWith<$Res> {
+  factory _$$CustomNestedError1_CustomNested1ImplCopyWith(
+          _$CustomNestedError1_CustomNested1Impl value,
+          $Res Function(_$CustomNestedError1_CustomNested1Impl) then) =
+      __$$CustomNestedError1_CustomNested1ImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String field0});
+}
+
+/// @nodoc
+class __$$CustomNestedError1_CustomNested1ImplCopyWithImpl<$Res>
+    extends _$CustomNestedError1CopyWithImpl<$Res,
+        _$CustomNestedError1_CustomNested1Impl>
+    implements _$$CustomNestedError1_CustomNested1ImplCopyWith<$Res> {
+  __$$CustomNestedError1_CustomNested1ImplCopyWithImpl(
+      _$CustomNestedError1_CustomNested1Impl _value,
+      $Res Function(_$CustomNestedError1_CustomNested1Impl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$CustomNestedError1_CustomNested1Impl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CustomNestedError1_CustomNested1Impl
+    implements CustomNestedError1_CustomNested1 {
+  const _$CustomNestedError1_CustomNested1Impl(this.field0);
+
+  @override
+  final String field0;
+
+  @override
+  String toString() {
+    return 'CustomNestedError1.customNested1(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CustomNestedError1_CustomNested1Impl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CustomNestedError1_CustomNested1ImplCopyWith<
+          _$CustomNestedError1_CustomNested1Impl>
+      get copyWith => __$$CustomNestedError1_CustomNested1ImplCopyWithImpl<
+          _$CustomNestedError1_CustomNested1Impl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String field0) customNested1,
+    required TResult Function(CustomNestedError2 field0) errorNested,
+  }) {
+    return customNested1(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String field0)? customNested1,
+    TResult? Function(CustomNestedError2 field0)? errorNested,
+  }) {
+    return customNested1?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String field0)? customNested1,
+    TResult Function(CustomNestedError2 field0)? errorNested,
+    required TResult orElse(),
+  }) {
+    if (customNested1 != null) {
+      return customNested1(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CustomNestedError1_CustomNested1 value)
+        customNested1,
+    required TResult Function(CustomNestedError1_ErrorNested value) errorNested,
+  }) {
+    return customNested1(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CustomNestedError1_CustomNested1 value)? customNested1,
+    TResult? Function(CustomNestedError1_ErrorNested value)? errorNested,
+  }) {
+    return customNested1?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CustomNestedError1_CustomNested1 value)? customNested1,
+    TResult Function(CustomNestedError1_ErrorNested value)? errorNested,
+    required TResult orElse(),
+  }) {
+    if (customNested1 != null) {
+      return customNested1(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CustomNestedError1_CustomNested1 implements CustomNestedError1 {
+  const factory CustomNestedError1_CustomNested1(final String field0) =
+      _$CustomNestedError1_CustomNested1Impl;
+
+  @override
+  String get field0;
+  @JsonKey(ignore: true)
+  _$$CustomNestedError1_CustomNested1ImplCopyWith<
+          _$CustomNestedError1_CustomNested1Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CustomNestedError1_ErrorNestedImplCopyWith<$Res> {
+  factory _$$CustomNestedError1_ErrorNestedImplCopyWith(
+          _$CustomNestedError1_ErrorNestedImpl value,
+          $Res Function(_$CustomNestedError1_ErrorNestedImpl) then) =
+      __$$CustomNestedError1_ErrorNestedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({CustomNestedError2 field0});
+
+  $CustomNestedError2CopyWith<$Res> get field0;
+}
+
+/// @nodoc
+class __$$CustomNestedError1_ErrorNestedImplCopyWithImpl<$Res>
+    extends _$CustomNestedError1CopyWithImpl<$Res,
+        _$CustomNestedError1_ErrorNestedImpl>
+    implements _$$CustomNestedError1_ErrorNestedImplCopyWith<$Res> {
+  __$$CustomNestedError1_ErrorNestedImplCopyWithImpl(
+      _$CustomNestedError1_ErrorNestedImpl _value,
+      $Res Function(_$CustomNestedError1_ErrorNestedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$CustomNestedError1_ErrorNestedImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as CustomNestedError2,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CustomNestedError2CopyWith<$Res> get field0 {
+    return $CustomNestedError2CopyWith<$Res>(_value.field0, (value) {
+      return _then(_value.copyWith(field0: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$CustomNestedError1_ErrorNestedImpl
+    implements CustomNestedError1_ErrorNested {
+  const _$CustomNestedError1_ErrorNestedImpl(this.field0);
+
+  @override
+  final CustomNestedError2 field0;
+
+  @override
+  String toString() {
+    return 'CustomNestedError1.errorNested(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CustomNestedError1_ErrorNestedImpl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CustomNestedError1_ErrorNestedImplCopyWith<
+          _$CustomNestedError1_ErrorNestedImpl>
+      get copyWith => __$$CustomNestedError1_ErrorNestedImplCopyWithImpl<
+          _$CustomNestedError1_ErrorNestedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String field0) customNested1,
+    required TResult Function(CustomNestedError2 field0) errorNested,
+  }) {
+    return errorNested(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String field0)? customNested1,
+    TResult? Function(CustomNestedError2 field0)? errorNested,
+  }) {
+    return errorNested?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String field0)? customNested1,
+    TResult Function(CustomNestedError2 field0)? errorNested,
+    required TResult orElse(),
+  }) {
+    if (errorNested != null) {
+      return errorNested(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CustomNestedError1_CustomNested1 value)
+        customNested1,
+    required TResult Function(CustomNestedError1_ErrorNested value) errorNested,
+  }) {
+    return errorNested(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CustomNestedError1_CustomNested1 value)? customNested1,
+    TResult? Function(CustomNestedError1_ErrorNested value)? errorNested,
+  }) {
+    return errorNested?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CustomNestedError1_CustomNested1 value)? customNested1,
+    TResult Function(CustomNestedError1_ErrorNested value)? errorNested,
+    required TResult orElse(),
+  }) {
+    if (errorNested != null) {
+      return errorNested(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CustomNestedError1_ErrorNested implements CustomNestedError1 {
+  const factory CustomNestedError1_ErrorNested(
+      final CustomNestedError2 field0) = _$CustomNestedError1_ErrorNestedImpl;
+
+  @override
+  CustomNestedError2 get field0;
+  @JsonKey(ignore: true)
+  _$$CustomNestedError1_ErrorNestedImplCopyWith<
+          _$CustomNestedError1_ErrorNestedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$CustomNestedError2 {
+  Object get field0 => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String field0) customNested2,
+    required TResult Function(int field0) customNested2Number,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String field0)? customNested2,
+    TResult? Function(int field0)? customNested2Number,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String field0)? customNested2,
+    TResult Function(int field0)? customNested2Number,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CustomNestedError2_CustomNested2 value)
+        customNested2,
+    required TResult Function(CustomNestedError2_CustomNested2Number value)
+        customNested2Number,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CustomNestedError2_CustomNested2 value)? customNested2,
+    TResult? Function(CustomNestedError2_CustomNested2Number value)?
+        customNested2Number,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CustomNestedError2_CustomNested2 value)? customNested2,
+    TResult Function(CustomNestedError2_CustomNested2Number value)?
+        customNested2Number,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CustomNestedError2CopyWith<$Res> {
+  factory $CustomNestedError2CopyWith(
+          CustomNestedError2 value, $Res Function(CustomNestedError2) then) =
+      _$CustomNestedError2CopyWithImpl<$Res, CustomNestedError2>;
+}
+
+/// @nodoc
+class _$CustomNestedError2CopyWithImpl<$Res, $Val extends CustomNestedError2>
+    implements $CustomNestedError2CopyWith<$Res> {
+  _$CustomNestedError2CopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$CustomNestedError2_CustomNested2ImplCopyWith<$Res> {
+  factory _$$CustomNestedError2_CustomNested2ImplCopyWith(
+          _$CustomNestedError2_CustomNested2Impl value,
+          $Res Function(_$CustomNestedError2_CustomNested2Impl) then) =
+      __$$CustomNestedError2_CustomNested2ImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String field0});
+}
+
+/// @nodoc
+class __$$CustomNestedError2_CustomNested2ImplCopyWithImpl<$Res>
+    extends _$CustomNestedError2CopyWithImpl<$Res,
+        _$CustomNestedError2_CustomNested2Impl>
+    implements _$$CustomNestedError2_CustomNested2ImplCopyWith<$Res> {
+  __$$CustomNestedError2_CustomNested2ImplCopyWithImpl(
+      _$CustomNestedError2_CustomNested2Impl _value,
+      $Res Function(_$CustomNestedError2_CustomNested2Impl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$CustomNestedError2_CustomNested2Impl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CustomNestedError2_CustomNested2Impl
+    implements CustomNestedError2_CustomNested2 {
+  const _$CustomNestedError2_CustomNested2Impl(this.field0);
+
+  @override
+  final String field0;
+
+  @override
+  String toString() {
+    return 'CustomNestedError2.customNested2(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CustomNestedError2_CustomNested2Impl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CustomNestedError2_CustomNested2ImplCopyWith<
+          _$CustomNestedError2_CustomNested2Impl>
+      get copyWith => __$$CustomNestedError2_CustomNested2ImplCopyWithImpl<
+          _$CustomNestedError2_CustomNested2Impl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String field0) customNested2,
+    required TResult Function(int field0) customNested2Number,
+  }) {
+    return customNested2(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String field0)? customNested2,
+    TResult? Function(int field0)? customNested2Number,
+  }) {
+    return customNested2?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String field0)? customNested2,
+    TResult Function(int field0)? customNested2Number,
+    required TResult orElse(),
+  }) {
+    if (customNested2 != null) {
+      return customNested2(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CustomNestedError2_CustomNested2 value)
+        customNested2,
+    required TResult Function(CustomNestedError2_CustomNested2Number value)
+        customNested2Number,
+  }) {
+    return customNested2(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CustomNestedError2_CustomNested2 value)? customNested2,
+    TResult? Function(CustomNestedError2_CustomNested2Number value)?
+        customNested2Number,
+  }) {
+    return customNested2?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CustomNestedError2_CustomNested2 value)? customNested2,
+    TResult Function(CustomNestedError2_CustomNested2Number value)?
+        customNested2Number,
+    required TResult orElse(),
+  }) {
+    if (customNested2 != null) {
+      return customNested2(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CustomNestedError2_CustomNested2 implements CustomNestedError2 {
+  const factory CustomNestedError2_CustomNested2(final String field0) =
+      _$CustomNestedError2_CustomNested2Impl;
+
+  @override
+  String get field0;
+  @JsonKey(ignore: true)
+  _$$CustomNestedError2_CustomNested2ImplCopyWith<
+          _$CustomNestedError2_CustomNested2Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CustomNestedError2_CustomNested2NumberImplCopyWith<$Res> {
+  factory _$$CustomNestedError2_CustomNested2NumberImplCopyWith(
+          _$CustomNestedError2_CustomNested2NumberImpl value,
+          $Res Function(_$CustomNestedError2_CustomNested2NumberImpl) then) =
+      __$$CustomNestedError2_CustomNested2NumberImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int field0});
+}
+
+/// @nodoc
+class __$$CustomNestedError2_CustomNested2NumberImplCopyWithImpl<$Res>
+    extends _$CustomNestedError2CopyWithImpl<$Res,
+        _$CustomNestedError2_CustomNested2NumberImpl>
+    implements _$$CustomNestedError2_CustomNested2NumberImplCopyWith<$Res> {
+  __$$CustomNestedError2_CustomNested2NumberImplCopyWithImpl(
+      _$CustomNestedError2_CustomNested2NumberImpl _value,
+      $Res Function(_$CustomNestedError2_CustomNested2NumberImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$CustomNestedError2_CustomNested2NumberImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CustomNestedError2_CustomNested2NumberImpl
+    implements CustomNestedError2_CustomNested2Number {
+  const _$CustomNestedError2_CustomNested2NumberImpl(this.field0);
+
+  @override
+  final int field0;
+
+  @override
+  String toString() {
+    return 'CustomNestedError2.customNested2Number(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CustomNestedError2_CustomNested2NumberImpl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CustomNestedError2_CustomNested2NumberImplCopyWith<
+          _$CustomNestedError2_CustomNested2NumberImpl>
+      get copyWith =>
+          __$$CustomNestedError2_CustomNested2NumberImplCopyWithImpl<
+              _$CustomNestedError2_CustomNested2NumberImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String field0) customNested2,
+    required TResult Function(int field0) customNested2Number,
+  }) {
+    return customNested2Number(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String field0)? customNested2,
+    TResult? Function(int field0)? customNested2Number,
+  }) {
+    return customNested2Number?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String field0)? customNested2,
+    TResult Function(int field0)? customNested2Number,
+    required TResult orElse(),
+  }) {
+    if (customNested2Number != null) {
+      return customNested2Number(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CustomNestedError2_CustomNested2 value)
+        customNested2,
+    required TResult Function(CustomNestedError2_CustomNested2Number value)
+        customNested2Number,
+  }) {
+    return customNested2Number(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CustomNestedError2_CustomNested2 value)? customNested2,
+    TResult? Function(CustomNestedError2_CustomNested2Number value)?
+        customNested2Number,
+  }) {
+    return customNested2Number?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CustomNestedError2_CustomNested2 value)? customNested2,
+    TResult Function(CustomNestedError2_CustomNested2Number value)?
+        customNested2Number,
+    required TResult orElse(),
+  }) {
+    if (customNested2Number != null) {
+      return customNested2Number(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CustomNestedError2_CustomNested2Number
+    implements CustomNestedError2 {
+  const factory CustomNestedError2_CustomNested2Number(final int field0) =
+      _$CustomNestedError2_CustomNested2NumberImpl;
+
+  @override
+  int get field0;
+  @JsonKey(ignore: true)
+  _$$CustomNestedError2_CustomNested2NumberImplCopyWith<
+          _$CustomNestedError2_CustomNested2NumberImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$CustomNestedErrorInnerTwinNormal {
   Object get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs
