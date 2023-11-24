@@ -670,26 +670,6 @@ void main(List<String> args) async {
     expect(output, isA<Empty>());
   });
 
-  test('test dart raw string in struct', () async {
-    final output = await api.testRawStringItemStruct();
-    expect(output, isA<RawStringItemStruct>());
-    expect(output.type, "test");
-  });
-
-  // test('test dart raw string in struct with raw func', () async {
-  //   final output = await api.testRawStringItemStructWithRawStringInFunc("not a type ;')");
-  //   expect(output.type, "not a type ;')");
-  // });
-
-  test('test dart test more than just one raw string struct', () async {
-    final output = await api.testMoreThanJustOneRawStringStruct();
-    expect(output, isA<MoreThanJustOneRawStringStruct>());
-    expect(output.regular, "regular");
-    expect(output.type, "type");
-    expect(output.async, true);
-    expect(output.another, "another");
-  });
-
   test('test mirrored raw structs', () async {
     final output = await api.testRawStringMirrored();
     expect(output, isA<RawStringMirrored>());
