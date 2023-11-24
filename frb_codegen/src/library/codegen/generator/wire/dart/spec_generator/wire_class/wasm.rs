@@ -85,13 +85,7 @@ fn generate_method(func: &ExternFunc) -> MethodInfo {
         .unwrap_or_else(|| "void".to_owned());
 
     let input_params = (func.params.iter())
-        .map(|param| {
-            format!(
-                "{} {}",
-                param.dart_type.as_deref().unwrap_or("UNKNOWN"),
-                param.name
-            )
-        })
+        .map(|param| format!("{} {}", param.dart_type, param.name))
         .join(",");
 
     let forward_args = (func.params.iter())

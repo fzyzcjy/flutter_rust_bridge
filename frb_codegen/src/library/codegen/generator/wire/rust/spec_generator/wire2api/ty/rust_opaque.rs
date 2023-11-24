@@ -88,7 +88,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
                     params: vec![ExternFuncParam {
                         name: "ptr".to_owned(),
                         rust_type: "*const std::ffi::c_void".to_owned(),
-                        dart_type: None,
+                        dart_type: "TODO_TheDartType".into(),
                     }],
                     return_type: None,
                     body: format!(
@@ -102,7 +102,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
                     params: vec![ExternFuncParam {
                         name: "ptr".to_owned(),
                         rust_type: "*const std::ffi::c_void".to_owned(),
-                        dart_type: None,
+                        dart_type: "TODO_TheDartType".into(),
                     }],
                     return_type: Some("*const std::ffi::c_void".to_string()),
                     body: format!(

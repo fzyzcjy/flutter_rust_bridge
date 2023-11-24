@@ -69,13 +69,11 @@ impl<'a> WireRustGeneratorWire2apiTrait for BoxedWireRustGenerator<'a> {
                         name: "value".to_owned(),
                         rust_type: WireRustGenerator::new(self.ir.inner.clone(), self.context)
                             .rust_wire_type(Target::Io),
-                        dart_type: Some(
-                            WireDartGenerator::new(
-                                *self.ir.inner.clone(),
-                                self.context.as_wire_dart_context(),
-                            )
-                            .dart_wire_type(Target::Io),
-                        ),
+                        dart_type: WireDartGenerator::new(
+                            *self.ir.inner.clone(),
+                            self.context.as_wire_dart_context(),
+                        )
+                        .dart_wire_type(Target::Io),
                     }],
                     return_type: Some(format!(
                         "*mut {}",

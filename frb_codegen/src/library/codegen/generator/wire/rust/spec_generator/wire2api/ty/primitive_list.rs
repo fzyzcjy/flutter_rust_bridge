@@ -72,7 +72,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for PrimitiveListWireRustGenerator<'a> {
                 params: vec![ExternFuncParam {
                     name: "len".to_owned(),
                     rust_type: "i32".to_owned(),
-                    dart_type: Some("int".to_owned()),
+                    dart_type: "int".to_owned(),
                 }],
                 return_type: Some(format!(
                     "{}{}",

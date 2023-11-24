@@ -105,7 +105,7 @@ fn generate_params(func: &IrFunc, context: WireRustGeneratorContext) -> Acc<Vec<
             vec![ExternFuncParam {
                 name: "port_".to_owned(),
                 rust_type,
-                dart_type: Some("NativePortType".to_owned()),
+                dart_type: "NativePortType".to_owned(),
             }]
         })
     } else {
@@ -124,7 +124,7 @@ fn generate_params(func: &IrFunc, context: WireRustGeneratorContext) -> Acc<Vec<
                         "impl Wire2Api<{}> + core::panic::UnwindSafe",
                         field.ty.rust_api_type()
                     ),
-                    dart_type: None,
+                    dart_type: "TODO_Dart_Type".into(),
                 },
                 TargetOrCommon::Io | TargetOrCommon::Wasm => {
                     let target: Target = target.try_into().unwrap();
@@ -138,7 +138,7 @@ fn generate_params(func: &IrFunc, context: WireRustGeneratorContext) -> Acc<Vec<
                             rust_gen.rust_wire_modifier(target),
                             rust_gen.rust_wire_type(target)
                         ),
-                        dart_type: Some(dart_gen.dart_wire_type(target)),
+                        dart_type: dart_gen.dart_wire_type(target),
                     }
                 }
             })

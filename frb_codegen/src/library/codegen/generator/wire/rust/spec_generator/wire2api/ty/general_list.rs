@@ -98,7 +98,7 @@ pub(crate) fn generate_list_generate_allocate_func(
         params: vec![ExternFuncParam {
             name: "len".to_owned(),
             rust_type: "i32".to_owned(),
-            dart_type: Some("int".to_owned()),
+            dart_type: "int".to_owned(),
         }],
         return_type: Some(
             [

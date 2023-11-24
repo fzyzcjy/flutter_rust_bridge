@@ -21,7 +21,7 @@ pub(crate) struct ExternFunc {
 pub(crate) struct ExternFuncParam {
     pub(crate) name: String,
     pub(crate) rust_type: String,
-    pub(crate) dart_type: Option<String>,
+    pub(crate) dart_type: String,
 }
 
 impl ExternFunc {

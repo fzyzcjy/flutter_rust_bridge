@@ -39,7 +39,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for OptionalListWireRustGenerator<'a> {
                 params: vec![ExternFuncParam {
                     name: "len".to_owned(),
                     rust_type: "i32".to_owned(),
-                    dart_type: Some("int".to_owned()),
+                    dart_type: "int".to_owned(),
                 }],
                 return_type:  Some(format!("*mut {}", self.rust_wire_type(Target::Io))),
                 body: format!(
