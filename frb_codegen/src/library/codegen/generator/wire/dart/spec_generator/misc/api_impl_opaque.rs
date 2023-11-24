@@ -51,27 +51,22 @@ fn generate_opaque_finalizer(
     let ty_dart_api_type =
         ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type();
     let ty_dart_api_type_camel = ty_dart_api_type.to_case(Case::Camel);
+    let field_name = format!("{ty_dart_api_type_camel}Finalizer");
 
-    let generate_platform_impl = |finalizer_type: &str, finalizer_arg: &str| {
-        let field_name = format!("{ty_dart_api_type_camel}Finalizer");
-        WireDartOutputCode {
-            api_body: format!("{finalizer_type} get {field_name};\n\n"),
-            api_impl_body: format!(
-                "late final {finalizer_type} {field_name} = {finalizer_type}({finalizer_arg});\n\n",
-            ),
-            ..Default::default()
-        }
+    let generate_platform_impl = |finalizer_arg: &str| WireDartOutputCode {
+        api_impl_body: format!(
+            "late final {field_name} = OpaqueTypeFinalizer({finalizer_arg});\n\n",
+        ),
+        ..Default::default()
     };
 
     Acc {
-        io: generate_platform_impl(
-            "OpaqueTypeFinalizer",
-            &format!("wire._drop_opaque_{ty_dart_api_type}Ptr"),
-        ),
-        wasm: generate_platform_impl(
-            "Finalizer<PlatformPointer>",
-            &format!("wire.drop_opaque_{ty_dart_api_type}"),
-        ),
+        common: WireDartOutputCode {
+            api_body: format!("OpaqueTypeFinalizer get {field_name};\n\n"),
+            ..Default::default()
+        },
+        io: generate_platform_impl(&format!("wire._drop_opaque_{ty_dart_api_type}Ptr")),
+        wasm: generate_platform_impl(&format!("wire.drop_opaque_{ty_dart_api_type}")),
         ..Default::default()
     }
 }
