@@ -200,8 +200,7 @@ pub(crate) fn generate_api_impl_opaque_getter(
 
     let generate_platform_impl = |finalizer_type: &str, finalizer_arg: &str| WireDartOutputCode {
         api_impl_body: format!(
-            "late final {finalizer_type} _{api_type}Finalizer = {finalizer_type}({finalizer_arg});
-            {finalizer_type} get {api_type}Finalizer => _{api_type}Finalizer;",
+            "late final {finalizer_type} {api_type}Finalizer = {finalizer_type}({finalizer_arg});",
         ),
         ..Default::default()
     };
