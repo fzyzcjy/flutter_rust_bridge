@@ -83,6 +83,10 @@ impl NamespacedName {
     pub fn new(namespace: Namespace, name: String) -> Self {
         Self { namespace, name }
     }
+
+    pub fn rust_style(&self) -> String {
+        format!("{}::{}", self.namespace, self.name)
+    }
 }
 
 impl Serialize for NamespacedName {

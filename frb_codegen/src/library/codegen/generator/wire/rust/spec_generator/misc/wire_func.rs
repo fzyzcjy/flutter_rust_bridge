@@ -170,7 +170,11 @@ fn generate_code_wire2api(func: &IrFunc) -> String {
 fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_params: Vec<String>) -> String {
     let code_call_inner_func = match &func.owner {
         IrFuncOwnerInfo::Function => {
-            format!("{}({})", func.name.name, inner_func_params.join(", "))
+            format!(
+                "{}({})",
+                func.name.rust_style(),
+                inner_func_params.join(", ")
+            )
         }
         IrFuncOwnerInfo::Method(method) => {
             format!(
