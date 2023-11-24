@@ -13,8 +13,8 @@ Future<void> main() async {
   await RustLib.init();
 
   addTestsIdentityFunctionCall(funcEnumSimpleTwinSync, [
-    EnumSimpleTwinSync.A,
-    EnumSimpleTwinSync.B,
+    EnumSimpleTwinSync.a,
+    EnumSimpleTwinSync.b,
   ]);
 
   addTestsIdentityFunctionCall(funcEnumWithItemMixedTwinSync, [

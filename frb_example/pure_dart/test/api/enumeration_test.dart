@@ -9,8 +9,8 @@ Future<void> main() async {
   await RustLib.init();
 
   addTestsIdentityFunctionCall(funcEnumSimpleTwinNormal, [
-    EnumSimpleTwinNormal.A,
-    EnumSimpleTwinNormal.B,
+    EnumSimpleTwinNormal.a,
+    EnumSimpleTwinNormal.b,
   ]);
 
   addTestsIdentityFunctionCall(funcEnumWithItemMixedTwinNormal, [
