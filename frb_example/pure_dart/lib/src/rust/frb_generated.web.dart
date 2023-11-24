@@ -56,24 +56,31 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.generalizedFrbRustBinding,
   });
 
-  late final Finalizer<PlatformPointer> mutexHideDataFinalizer =
-      Finalizer<PlatformPointer>(wire.drop_opaque_MutexHideData);
-  late final Finalizer<PlatformPointer> rwLockHideDataFinalizer =
-      Finalizer<PlatformPointer>(wire.drop_opaque_RwLockHideData);
-  late final Finalizer<PlatformPointer> boxDartDebugFinalizer =
-      Finalizer<PlatformPointer>(wire.drop_opaque_BoxDartDebug);
-  late final Finalizer<PlatformPointer> frbOpaqueReturnFinalizer =
-      Finalizer<PlatformPointer>(wire.drop_opaque_FrbOpaqueReturn);
-  late final Finalizer<PlatformPointer> frbOpaqueSyncReturnFinalizer =
-      Finalizer<PlatformPointer>(wire.drop_opaque_FrbOpaqueSyncReturn);
-  late final Finalizer<PlatformPointer> hideDataFinalizer =
-      Finalizer<PlatformPointer>(wire.drop_opaque_HideData);
-  late final Finalizer<PlatformPointer> i32Finalizer =
-      Finalizer<PlatformPointer>(wire.drop_opaque_I32);
-  late final Finalizer<PlatformPointer> nonCloneDataFinalizer =
-      Finalizer<PlatformPointer>(wire.drop_opaque_NonCloneData);
-  late final Finalizer<PlatformPointer> nonSendHideDataFinalizer =
-      Finalizer<PlatformPointer>(wire.drop_opaque_NonSendHideData);
+  late final mutexHideDataFinalizer =
+      OpaqueTypeFinalizer(wire.drop_opaque_MutexHideData);
+
+  late final rwLockHideDataFinalizer =
+      OpaqueTypeFinalizer(wire.drop_opaque_RwLockHideData);
+
+  late final boxDartDebugFinalizer =
+      OpaqueTypeFinalizer(wire.drop_opaque_BoxDartDebug);
+
+  late final frbOpaqueReturnFinalizer =
+      OpaqueTypeFinalizer(wire.drop_opaque_FrbOpaqueReturn);
+
+  late final frbOpaqueSyncReturnFinalizer =
+      OpaqueTypeFinalizer(wire.drop_opaque_FrbOpaqueSyncReturn);
+
+  late final hideDataFinalizer = OpaqueTypeFinalizer(wire.drop_opaque_HideData);
+
+  late final i32Finalizer = OpaqueTypeFinalizer(wire.drop_opaque_I32);
+
+  late final nonCloneDataFinalizer =
+      OpaqueTypeFinalizer(wire.drop_opaque_NonCloneData);
+
+  late final nonSendHideDataFinalizer =
+      OpaqueTypeFinalizer(wire.drop_opaque_NonSendHideData);
+
   @protected
   Object api2wire_Chrono_Duration(Duration raw) {
     return api2wire_i_64(BigInt.from(raw.inMilliseconds));

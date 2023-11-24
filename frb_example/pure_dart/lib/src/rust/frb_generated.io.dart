@@ -57,24 +57,32 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.generalizedFrbRustBinding,
   });
 
-  late final OpaqueTypeFinalizer mutexHideDataFinalizer =
+  late final mutexHideDataFinalizer =
       OpaqueTypeFinalizer(wire._drop_opaque_MutexHideDataPtr);
-  late final OpaqueTypeFinalizer rwLockHideDataFinalizer =
+
+  late final rwLockHideDataFinalizer =
       OpaqueTypeFinalizer(wire._drop_opaque_RwLockHideDataPtr);
-  late final OpaqueTypeFinalizer boxDartDebugFinalizer =
+
+  late final boxDartDebugFinalizer =
       OpaqueTypeFinalizer(wire._drop_opaque_BoxDartDebugPtr);
-  late final OpaqueTypeFinalizer frbOpaqueReturnFinalizer =
+
+  late final frbOpaqueReturnFinalizer =
       OpaqueTypeFinalizer(wire._drop_opaque_FrbOpaqueReturnPtr);
-  late final OpaqueTypeFinalizer frbOpaqueSyncReturnFinalizer =
+
+  late final frbOpaqueSyncReturnFinalizer =
       OpaqueTypeFinalizer(wire._drop_opaque_FrbOpaqueSyncReturnPtr);
-  late final OpaqueTypeFinalizer hideDataFinalizer =
+
+  late final hideDataFinalizer =
       OpaqueTypeFinalizer(wire._drop_opaque_HideDataPtr);
-  late final OpaqueTypeFinalizer i32Finalizer =
-      OpaqueTypeFinalizer(wire._drop_opaque_I32Ptr);
-  late final OpaqueTypeFinalizer nonCloneDataFinalizer =
+
+  late final i32Finalizer = OpaqueTypeFinalizer(wire._drop_opaque_I32Ptr);
+
+  late final nonCloneDataFinalizer =
       OpaqueTypeFinalizer(wire._drop_opaque_NonCloneDataPtr);
-  late final OpaqueTypeFinalizer nonSendHideDataFinalizer =
+
+  late final nonSendHideDataFinalizer =
       OpaqueTypeFinalizer(wire._drop_opaque_NonSendHideDataPtr);
+
   @protected
   int api2wire_Chrono_Duration(Duration raw) {
     return api2wire_i_64(BigInt.from(raw.inMicroseconds));
