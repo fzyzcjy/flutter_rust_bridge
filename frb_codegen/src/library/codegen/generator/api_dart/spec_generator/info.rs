@@ -183,8 +183,7 @@ impl<'a> ApiDartGeneratorInfoTrait for RecordApiDartGenerator<'a> {
 
 impl<'a> ApiDartGeneratorInfoTrait for RustOpaqueApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context);
-        inner.dart_api_type()
+        rust_type_to_dart_type(&self.ir.rust_api_type())
     }
 }
 
@@ -207,7 +206,8 @@ impl<'a> ApiDartGeneratorInfoTrait for StructRefApiDartGenerator<'a> {
 
 impl<'a> ApiDartGeneratorInfoTrait for UnencodableApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        rust_type_to_dart_type(&self.ir.rust_api_type())
+        // Do not throw error, since when dumping we may call this function
+        "NOT_IMPLEMENTED".into()
     }
 }
 
