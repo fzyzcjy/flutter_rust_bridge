@@ -4,6 +4,8 @@ import 'package:frb_example_pure_dart/src/rust/api/misc_example.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
+import '../test_utils.dart';
+
 Future<void> main() async {
   await RustLib.init();
 
@@ -70,7 +72,7 @@ Future<void> main() async {
     expect(await handleString(s: "Hello, world!"), "Hello, world!Hello, world!");
   });
   test('dart call handleString with nul-containing string', () async {
-    expect(await handleString(s: "Hello\u0000world!"), isWeb ? "Hello\u0000world!Hello\u0000world!" : "");
+    expect(await handleString(s: "Hello\u0000world!"), kIsWeb ? "Hello\u0000world!Hello\u0000world!" : "");
   });
 
   // TODO rm?
@@ -78,7 +80,7 @@ Future<void> main() async {
   //   expect(handleStringSync(s: "Hello, world!"), "Hello, world!Hello, world!");
   // });
   // test('dart call handleStringSync with nul-containing string', () {
-  //   expect(handleStringSync(s: "Hello\u0000world!"), isWeb ? "Hello\u0000world!Hello\u0000world!" : "");
+  //   expect(handleStringSync(s: "Hello\u0000world!"), kIsWeb ? "Hello\u0000world!Hello\u0000world!" : "");
   // });
 
   test('dart call handleVecU8', () async {
