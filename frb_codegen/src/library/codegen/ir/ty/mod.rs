@@ -18,8 +18,10 @@ use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use enum_dispatch::enum_dispatch;
+use serde::{Serialize, Serializer};
 
 crate::ir! {
+#[no_serde]
 // Remark: "Ty" instead of "Type", since "type" is a reserved word in Rust.
 #[enum_dispatch(IrTypeTrait)]
 pub enum IrType {
@@ -93,5 +95,29 @@ pub trait IrTypeTrait {
 impl Into<IrType> for Box<IrType> {
     fn into(self) -> IrType {
         *self
+    }
+}
+
+impl Serialize for IrType {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        match self {
+            IrType::Boxed(inner) => inner.serialize(serializer),
+            IrType::DartOpaque(inner) => inner.serialize(serializer),
+            IrType::Delegate(inner) => inner.serialize(serializer),
+            IrType::Dynamic(inner) => inner.serialize(serializer),
+            IrType::EnumRef(inner) => inner.serialize(serializer),
+            IrType::GeneralList(inner) => inner.serialize(serializer),
+            IrType::Optional(inner) => inner.serialize(serializer),
+            IrType::OptionalList(inner) => inner.serialize(serializer),
+            IrType::Primitive(inner) => inner.serialize(serializer),
+            IrType::PrimitiveList(inner) => inner.serialize(serializer),
+            IrType::Record(inner) => inner.serialize(serializer),
+            IrType::RustOpaque(inner) => inner.serialize(serializer),
+            IrType::StructRef(inner) => inner.serialize(serializer),
+            IrType::Unencodable(inner) => inner.serialize(serializer),
+        }
     }
 }
