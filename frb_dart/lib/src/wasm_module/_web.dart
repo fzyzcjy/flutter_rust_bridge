@@ -75,12 +75,13 @@ class _WasmBindgenNoModules extends Modules {
     _ensureCrossOriginIsolated();
     final script = ScriptElement()..src = '$root.js';
     document.head!.append(script);
-   
+
     await script.onLoad.first;
 
     jsEval('window.wasm_bindgen = wasm_bindgen');
     final module_ = module?.call() ?? _noModules!;
-    return module_.bind(null, '${root}_bg.wasm');
+
+    return await promiseToFuture(module_('${root}_bg.wasm'));
   }
 }
 
