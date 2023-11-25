@@ -9,8 +9,9 @@ part of 'config.dart';
 Config _$parseConfigResult(ArgResults result) => Config()
   ..dartRoot = result['dart-root'] as String
   ..rustCrateDir = result['rust-crate-dir'] as String
-  ..output = result['wasm-output'] as String?
+  ..output = result['output'] as String?
   ..release = result['release'] as bool
+  ..verbose = result['verbose'] as bool
   ..wasmPackArgs = result['wasm-pack-args'] as List<String>
   ..wasmBindgenArgs = result['wasm-bindgen-args'] as List<String>
   ..help = result['help'] as bool;
@@ -28,15 +29,20 @@ ArgParser _$populateConfigParser(ArgParser parser) => parser
     defaultsTo: 'rust',
   )
   ..addOption(
-    'wasm-output',
-    abbr: 'w',
-    help: 'WASM output path',
+    'output',
+    abbr: 'o',
+    help: 'Output path',
     valueHelp: 'PKG',
   )
   ..addFlag(
     'release',
     help: 'Compile in release mode',
     negatable: false,
+  )
+  ..addFlag(
+    'verbose',
+    abbr: 'v',
+    help: 'Display more verbose information',
   )
   ..addMultiOption(
     'wasm-pack-args',
