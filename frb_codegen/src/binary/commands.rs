@@ -1,5 +1,6 @@
 use crate::codegen::ConfigDumpContent;
 use clap::{Args, Parser, Subcommand};
+use std::path::PathBuf;
 
 // The name `Cli`, `Commands` come from https://docs.rs/clap/latest/clap/_derive/_tutorial/chapter_0/index.html
 #[derive(Debug, Parser)]
@@ -139,6 +140,10 @@ pub(crate) struct IntegrateCommandArgs {
 #[derive(Debug, Args)]
 #[command(disable_help_flag = true)]
 pub(crate) struct BuildWebCommandArgs {
+    /// Path to root of Dart project, otherwise inferred from current working directory
+    #[arg(long)]
+    pub dart_root: Option<PathBuf>,
+
     // https://stackoverflow.com/questions/72399790/clap-capture-all-remaining-arguments-in-one-field-in-derive-api
     #[arg(trailing_var_arg = true, allow_hyphen_values = true, hide = true)]
     pub(crate) args: Vec<String>,
