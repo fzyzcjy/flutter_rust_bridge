@@ -2,6 +2,8 @@ import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge/src/cli/build_web/executor.dart';
 import 'package:path/path.dart' as p;
 
+part 'config.g.dart';
+
 /// {@template flutter_rust_bridge.cli}
 /// This is mainly used for cli, not for direct function call.
 /// {@endtemplate}
@@ -67,8 +69,8 @@ class Config {
 }
 
 /// {@macro flutter_rust_bridge.cli}
-BuildWebArgs parseConfig(List<String> args) {
-  final Config config = TODO;
+BuildWebArgs parseConfigToArgs(List<String> args) {
+  final Config config = parseConfig(args);
 
   return BuildWebArgs(
     wasmOutput: config.wasmOutput ?? _fallbackWasmOutput(dartRoot: config.dartRoot),
