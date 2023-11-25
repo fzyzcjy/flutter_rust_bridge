@@ -138,7 +138,7 @@ final _externalTypedDataFinalizer = Finalizer<_ExternalTypedDataFinalizerArgs>((
 });
 
 /// {@macro flutter_rust_bridge.internal}
-void Function({required int dataLength})? debugOnExternalTypedDataFinalizer;
+void Function(int dataLength)? debugOnExternalTypedDataFinalizer;
 
 class _TypedData<T> {
   final T view;

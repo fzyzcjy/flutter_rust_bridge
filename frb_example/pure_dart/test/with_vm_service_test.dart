@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:frb_example_pure_dart/src/rust/api/dart_opaque.dart';
 import 'package:frb_example_pure_dart/src/rust/api/dart_opaque_sync.dart';
 import 'package:frb_example_pure_dart/src/rust/api/primitive_list_misc.dart';
@@ -22,15 +23,14 @@ Future<void> main() async {
       const n = 10000;
       int calls = 0;
 
-      // import 'package:flutter_rust_bridge/src/ffi/dart_cobject.dart' as dart_cobject;
-      dart_cobject.testTool!.onExternalTypedDataFinalizer.add(expectAsync1(
-        (length) {
-          expect(length, n);
+      debugOnExternalTypedDataFinalizer = expectAsync1(
+        (dataLength) {
+          expect(dataLength, n);
           calls++;
         },
         count: 10,
         reason: "Finalizer must be called once for each returned packed primitive list",
-      ));
+      );
 
       ZeroCopyVecOfPrimitivePack? primitivePack = handleZeroCopyVecOfPrimitiveSync(n: n);
       await vmService.gc();
