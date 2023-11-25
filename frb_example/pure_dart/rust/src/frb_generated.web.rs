@@ -5,8 +5,9 @@ use super::*;
 use crate::api::rust_opaque::*;
 use crate::api::rust_opaque_sync::*;
 use flutter_rust_bridge::rust2dart::IntoIntoDart;
+use flutter_rust_bridge::wasm_bindgen;
+use flutter_rust_bridge::wasm_bindgen::prelude::*;
 use flutter_rust_bridge::Handler;
-use wasm_bindgen::prelude::*;
 
 // Section: impl_wire2api
 
