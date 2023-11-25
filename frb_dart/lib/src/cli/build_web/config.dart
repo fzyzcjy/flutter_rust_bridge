@@ -1,5 +1,6 @@
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge/src/cli/build_web/executor.dart';
+import 'package:path/path.dart' as p;
 
 /// {@template flutter_rust_bridge.cli}
 /// This is mainly used for cli, not for direct function call.
@@ -70,7 +71,7 @@ BuildWebArgs parseConfig(List<String> args) {
   final Config config = TODO;
 
   return BuildWebArgs(
-    wasmOutput: config.wasmOutput,
+    wasmOutput: config.wasmOutput ?? _fallbackWasmOutput(dartRoot: config.dartRoot),
     release: config.release,
     rustCrateDir: config.rustCrateDir,
     wasmPackArgs: config.wasmPackArgs,
@@ -78,3 +79,5 @@ BuildWebArgs parseConfig(List<String> args) {
     wasmBindgenArgs: config.wasmBindgenArgs,
   );
 }
+
+String _fallbackWasmOutput({required String dartRoot}) => p.join(dartRoot, 'web/pkg');
