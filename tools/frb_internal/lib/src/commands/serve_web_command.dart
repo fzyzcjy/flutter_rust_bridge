@@ -42,22 +42,24 @@ Future<void> _runServer() async {
   final staticFilesHandler = createStaticHandler(config.root, defaultDocument: 'index.html');
   Browser? browser;
 
+  // TODO
   // Test helper.
-  final socketHandler = webSocketHandler((WebSocketChannel channel) async {
-    await for (final mes in channel.stream) {
-      try {
-        final data = jsonDecode(mes);
-        if (data is Map && data.containsKey('__result__')) {
-          await browser?.close();
-          exit(data['__result__'] ? 0 : 1);
-        } else {
-          print(data);
-        }
-      } catch (err, st) {
-        print('$err\nStacktrace:\n$st');
-      }
-    }
-  });
+  // final socketHandler = webSocketHandler((WebSocketChannel channel) async {
+  //   await for (final mes in channel.stream) {
+  //     try {
+  //       final data = jsonDecode(mes);
+  //       if (data is Map && data.containsKey('__result__')) {
+  //         await browser?.close();
+  //         exit(data['__result__'] ? 0 : 1);
+  //       } else {
+  //         print(data);
+  //       }
+  //     } catch (err, st) {
+  //       print('$err\nStacktrace:\n$st');
+  //     }
+  //   }
+  // });
+
   final shouldRelaxCoep = config.cliOpts.shouldRelaxCoep;
   final handler = const Pipeline().addMiddleware((handler) {
     return (req) async {
@@ -67,13 +69,17 @@ Future<void> _runServer() async {
         'Cross-Origin-Embedder-Policy': shouldRelaxCoep ? 'credentialless' : 'require-corp',
       });
     };
-  }).addHandler(Cascade().add(socketHandler).add(staticFilesHandler).handler);
+  }).addHandler(Cascade()
+      // .add(socketHandler) // TODO
+      .add(staticFilesHandler)
+      .handler);
 
   final portEnv = Platform.environment['PORT'];
   final port = portEnv == null ? config.cliOpts.port : int.parse(portEnv);
   final addr = 'http://localhost:$port';
   await serve(handler, ip, port);
   print('🦀 Server listening on $addr 🎯');
+
   if (config.cliOpts.runTests) {
     browser = await puppeteer.launch(
       headless: true,
