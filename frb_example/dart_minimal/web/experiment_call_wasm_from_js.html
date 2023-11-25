@@ -13,11 +13,16 @@ Call Rust WASM from JavaScript.
     ele.src = 'http://localhost:8080/pkg/frb_example_dart_minimal.js';
     document.head.append(ele);
 
-    ele.onload = () => {
+    ele.onload = async () => {
         console.log('ele.onload called');
         window.wasm_bindgen = wasm_bindgen;
 
-        // NOTE: need to call `await wasm_bindgen()`, then can use functions, etc
+        console.log('call and await it');
+        const x = await wasm_bindgen();
+        console.log(x);
+
+        console.log('let us call it (but with WRONG arguments, so it will fail');
+        console.log(x.wire_minimal_adder());
     };
 </script>
 
