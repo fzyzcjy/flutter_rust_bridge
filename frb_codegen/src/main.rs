@@ -40,9 +40,19 @@ mod tests {
 
     #[test]
     #[serial]
+    fn test_execute_generate_on_frb_example_dart_minimal() -> anyhow::Result<()> {
+        body("dart_minimal")
+    }
+
+    #[test]
+    #[serial]
     fn test_execute_generate_on_frb_example_pure_dart() -> anyhow::Result<()> {
+        body("pure_dart")
+    }
+
+    fn body(name: &str) -> anyhow::Result<()> {
         configure_opinionated_test_logging();
-        set_cwd_test_fixture("../../frb_example/pure_dart")?;
+        set_cwd_test_fixture(&format!("../../frb_example/{name}"))?;
         main_given_cli(Cli::parse_from(vec!["", "generate"]))
     }
 }
