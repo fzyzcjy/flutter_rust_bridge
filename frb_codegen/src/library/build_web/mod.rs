@@ -28,19 +28,17 @@ fn parse_dart_root(dart_root: Option<PathBuf>) -> anyhow::Result<PathBuf> {
 fn execute_dart_command(dart_root: &Path, args: &[String]) -> anyhow::Result<()> {
     let repo = DartRepository::from_str(&path_to_string(dart_root)?)?;
 
-    let res = Command::new("dart")
+    let status = Command::new("dart")
         .current_dir(dart_root)
         .args(repo.command_extra_args())
         .arg("run")
         .arg("flutter_rust_bridge:build_web")
         .args(args)
-        .output()?;
+        .status()?;
 
-    if !res.status.success() {
-        bail!(
-            "Fail to execute command: {}",
-            String::from_utf8_lossy(&res.stderr),
-        )
+    if !status.success() {
+        bail!("Fail to execute command, please see logs above for details.")
     }
+
     Ok(())
 }
