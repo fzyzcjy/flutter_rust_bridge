@@ -36,6 +36,8 @@ fn execute_dart_command(dart_root: &Path, args: &[String]) -> anyhow::Result<()>
         .args(repo.command_extra_args())
         .arg("run")
         .arg("flutter_rust_bridge:build_web")
+        .arg("--dart-root")
+        .arg(dart_root)
         .args(args)
         .status()?;
 

@@ -7,6 +7,10 @@ import 'package:flutter_rust_bridge/src/cli/build_web/executor.dart';
 @CliOptions()
 class Config {
   /// {@macro flutter_rust_bridge.cli}
+  @CliOption(help: 'Root of dart package')
+  late String dartRoot;
+
+  /// {@macro flutter_rust_bridge.cli}
   @CliOption(
     abbr: 'c',
     help: 'Directory of the crate',
