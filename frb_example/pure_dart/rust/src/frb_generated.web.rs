@@ -1399,7 +1399,7 @@ impl Wire2Api<chrono::Duration> for flutter_rust_bridge::wasm_bindgen::JsValue {
 }
 impl Wire2Api<Vec<chrono::Duration>> for flutter_rust_bridge::wasm_bindgen::JsValue {
     fn wire2api(self) -> Vec<chrono::Duration> {
-        self.unchecked_into::<flutter_rust_bridge::wasm_bindgen::js_sys::BigInt64Array>()
+        self.unchecked_into::<flutter_rust_bridge::js_sys::BigInt64Array>()
             .to_vec()
             .into_iter()
             .map(Wire2Api::wire2api)
@@ -1418,7 +1418,7 @@ impl Wire2Api<chrono::NaiveDateTime> for flutter_rust_bridge::wasm_bindgen::JsVa
 }
 impl Wire2Api<Vec<chrono::NaiveDateTime>> for flutter_rust_bridge::wasm_bindgen::JsValue {
     fn wire2api(self) -> Vec<chrono::NaiveDateTime> {
-        self.unchecked_into::<flutter_rust_bridge::wasm_bindgen::js_sys::BigInt64Array>()
+        self.unchecked_into::<flutter_rust_bridge::js_sys::BigInt64Array>()
             .to_vec()
             .into_iter()
             .map(Wire2Api::wire2api)
@@ -1554,7 +1554,7 @@ impl Wire2Api<String> for flutter_rust_bridge::wasm_bindgen::JsValue {
 }
 impl Wire2Api<uuid::Uuid> for flutter_rust_bridge::wasm_bindgen::JsValue {
     fn wire2api(self) -> uuid::Uuid {
-        self.unchecked_into::<flutter_rust_bridge::wasm_bindgen::js_sys::Uint8Array>()
+        self.unchecked_into::<flutter_rust_bridge::js_sys::Uint8Array>()
             .to_vec()
             .into_boxed_slice()
             .wire2api()
@@ -1562,7 +1562,7 @@ impl Wire2Api<uuid::Uuid> for flutter_rust_bridge::wasm_bindgen::JsValue {
 }
 impl Wire2Api<Vec<uuid::Uuid>> for flutter_rust_bridge::wasm_bindgen::JsValue {
     fn wire2api(self) -> Vec<uuid::Uuid> {
-        self.unchecked_into::<flutter_rust_bridge::wasm_bindgen::js_sys::Uint8Array>()
+        self.unchecked_into::<flutter_rust_bridge::js_sys::Uint8Array>()
             .to_vec()
             .into_boxed_slice()
             .wire2api()
@@ -1730,7 +1730,7 @@ impl Wire2Api<[i32; 2]> for flutter_rust_bridge::wasm_bindgen::JsValue {
 impl Wire2Api<i64> for flutter_rust_bridge::wasm_bindgen::JsValue {
     fn wire2api(self) -> i64 {
         ::std::convert::TryInto::try_into(
-            self.dyn_into::<flutter_rust_bridge::wasm_bindgen::js_sys::BigInt>()
+            self.dyn_into::<flutter_rust_bridge::js_sys::BigInt>()
                 .unwrap(),
         )
         .unwrap()
@@ -1743,28 +1743,28 @@ impl Wire2Api<i8> for flutter_rust_bridge::wasm_bindgen::JsValue {
 }
 impl Wire2Api<Vec<f32>> for flutter_rust_bridge::wasm_bindgen::JsValue {
     fn wire2api(self) -> Vec<f32> {
-        self.unchecked_into::<flutter_rust_bridge::wasm_bindgen::js_sys::Float32Array>()
+        self.unchecked_into::<flutter_rust_bridge::js_sys::Float32Array>()
             .to_vec()
             .into()
     }
 }
 impl Wire2Api<Vec<f64>> for flutter_rust_bridge::wasm_bindgen::JsValue {
     fn wire2api(self) -> Vec<f64> {
-        self.unchecked_into::<flutter_rust_bridge::wasm_bindgen::js_sys::Float64Array>()
+        self.unchecked_into::<flutter_rust_bridge::js_sys::Float64Array>()
             .to_vec()
             .into()
     }
 }
 impl Wire2Api<Vec<i16>> for flutter_rust_bridge::wasm_bindgen::JsValue {
     fn wire2api(self) -> Vec<i16> {
-        self.unchecked_into::<flutter_rust_bridge::wasm_bindgen::js_sys::Int16Array>()
+        self.unchecked_into::<flutter_rust_bridge::js_sys::Int16Array>()
             .to_vec()
             .into()
     }
 }
 impl Wire2Api<Vec<i32>> for flutter_rust_bridge::wasm_bindgen::JsValue {
     fn wire2api(self) -> Vec<i32> {
-        self.unchecked_into::<flutter_rust_bridge::wasm_bindgen::js_sys::Int32Array>()
+        self.unchecked_into::<flutter_rust_bridge::js_sys::Int32Array>()
             .to_vec()
             .into()
     }
@@ -1772,29 +1772,29 @@ impl Wire2Api<Vec<i32>> for flutter_rust_bridge::wasm_bindgen::JsValue {
 impl Wire2Api<Vec<i64>> for flutter_rust_bridge::wasm_bindgen::JsValue {
     fn wire2api(self) -> Vec<i64> {
         let buf = self
-            .dyn_into::<flutter_rust_bridge::wasm_bindgen::js_sys::BigInt64Array>()
+            .dyn_into::<flutter_rust_bridge::js_sys::BigInt64Array>()
             .unwrap();
-        let buf = flutter_rust_bridge::wasm_bindgen::js_sys::Uint8Array::new(&buf.buffer());
+        let buf = flutter_rust_bridge::js_sys::Uint8Array::new(&buf.buffer());
         flutter_rust_bridge::support::slice_from_byte_buffer(buf.to_vec()).into()
     }
 }
 impl Wire2Api<Vec<i8>> for flutter_rust_bridge::wasm_bindgen::JsValue {
     fn wire2api(self) -> Vec<i8> {
-        self.unchecked_into::<flutter_rust_bridge::wasm_bindgen::js_sys::Int8Array>()
+        self.unchecked_into::<flutter_rust_bridge::js_sys::Int8Array>()
             .to_vec()
             .into()
     }
 }
 impl Wire2Api<Vec<u16>> for flutter_rust_bridge::wasm_bindgen::JsValue {
     fn wire2api(self) -> Vec<u16> {
-        self.unchecked_into::<flutter_rust_bridge::wasm_bindgen::js_sys::Uint16Array>()
+        self.unchecked_into::<flutter_rust_bridge::js_sys::Uint16Array>()
             .to_vec()
             .into()
     }
 }
 impl Wire2Api<Vec<u32>> for flutter_rust_bridge::wasm_bindgen::JsValue {
     fn wire2api(self) -> Vec<u32> {
-        self.unchecked_into::<flutter_rust_bridge::wasm_bindgen::js_sys::Uint32Array>()
+        self.unchecked_into::<flutter_rust_bridge::js_sys::Uint32Array>()
             .to_vec()
             .into()
     }
@@ -1802,15 +1802,15 @@ impl Wire2Api<Vec<u32>> for flutter_rust_bridge::wasm_bindgen::JsValue {
 impl Wire2Api<Vec<u64>> for flutter_rust_bridge::wasm_bindgen::JsValue {
     fn wire2api(self) -> Vec<u64> {
         let buf = self
-            .dyn_into::<flutter_rust_bridge::wasm_bindgen::js_sys::BigUint64Array>()
+            .dyn_into::<flutter_rust_bridge::js_sys::BigUint64Array>()
             .unwrap();
-        let buf = flutter_rust_bridge::wasm_bindgen::js_sys::Uint8Array::new(&buf.buffer());
+        let buf = flutter_rust_bridge::js_sys::Uint8Array::new(&buf.buffer());
         flutter_rust_bridge::support::slice_from_byte_buffer(buf.to_vec()).into()
     }
 }
 impl Wire2Api<Vec<u8>> for flutter_rust_bridge::wasm_bindgen::JsValue {
     fn wire2api(self) -> Vec<u8> {
-        self.unchecked_into::<flutter_rust_bridge::wasm_bindgen::js_sys::Uint8Array>()
+        self.unchecked_into::<flutter_rust_bridge::js_sys::Uint8Array>()
             .to_vec()
             .into()
     }
@@ -1841,7 +1841,7 @@ impl Wire2Api<u32> for flutter_rust_bridge::wasm_bindgen::JsValue {
 impl Wire2Api<u64> for flutter_rust_bridge::wasm_bindgen::JsValue {
     fn wire2api(self) -> u64 {
         ::std::convert::TryInto::try_into(
-            self.dyn_into::<flutter_rust_bridge::wasm_bindgen::js_sys::BigInt>()
+            self.dyn_into::<flutter_rust_bridge::js_sys::BigInt>()
                 .unwrap(),
         )
         .unwrap()

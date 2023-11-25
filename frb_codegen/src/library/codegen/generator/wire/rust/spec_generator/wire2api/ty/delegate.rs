@@ -141,9 +141,9 @@ impl<'a> WireRustGeneratorWire2apiTrait for DelegateWireRustGenerator<'a> {
             }
             IrTypeDelegate::Time(_) => "Wire2Api::<i64>::wire2api(self).wire2api()".into(),
             IrTypeDelegate::TimeList(_) =>
-                "self.unchecked_into::<flutter_rust_bridge::wasm_bindgen::js_sys::BigInt64Array>().to_vec().into_iter().map(Wire2Api::wire2api).collect()".into(),
+                "self.unchecked_into::<flutter_rust_bridge::js_sys::BigInt64Array>().to_vec().into_iter().map(Wire2Api::wire2api).collect()".into(),
             IrTypeDelegate::Uuid | IrTypeDelegate::Uuids => {
-                "self.unchecked_into::<flutter_rust_bridge::wasm_bindgen::js_sys::Uint8Array>().to_vec().into_boxed_slice().wire2api()"
+                "self.unchecked_into::<flutter_rust_bridge::js_sys::Uint8Array>().to_vec().into_boxed_slice().wire2api()"
                     .into()
             }
             IrTypeDelegate::Array(array) => format!(
