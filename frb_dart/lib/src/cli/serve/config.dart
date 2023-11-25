@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 
 part 'config.g.dart';
@@ -117,4 +119,21 @@ extension ExtOpts on Opts {
 
   /// If not set by user, relax COEP on Flutter.
   bool get shouldRelaxCoep => relaxCoep || (!relaxCoepWasParsed && dartInput == null);
+}
+
+void parseConfig(List<String> args) {
+  final config = parseOpts(args);
+  if (config.help) {
+    print("""
+$exec $version
+Develop Rust WASM modules with cross-origin isolation.
+
+USAGE:
+\t$exec [OPTIONS] [..REST]
+\t$exec --dart-input <ENTRY> --root <ROOT> [OPTIONS] [..REST]
+
+OPTIONS:""");
+    print(_$parserForOpts.usage);
+    return;
+  }
 }

@@ -1,19 +1,12 @@
 // ignore_for_file: avoid_print
 
-import 'dart:convert';
 import 'dart:io';
 
-import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:flutter_rust_bridge/src/cli/serve/build_web.dart';
+import 'package:flutter_rust_bridge/src/cli/serve/config.dart';
 import 'package:flutter_rust_bridge/src/cli/serve/run_server.dart';
 import 'package:path/path.dart' as p;
-import 'package:puppeteer/puppeteer.dart';
-import 'package:shelf/shelf.dart';
-import 'package:shelf/shelf_io.dart';
-import 'package:shelf_static/shelf_static.dart';
-import 'package:shelf_web_socket/shelf_web_socket.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:yaml/yaml.dart';
 
 final YamlMap? pubspec = () {
@@ -47,20 +40,7 @@ Never bail([String? message]) {
 /// {@macro flutter_rust_bridge.internal}
 void runCliServe(List<String> args) async {
   const exec = 'flutter_rust_bridge_serve';
-  final config = parseOpts(args);
-  if (config.help) {
-    print("""
-$exec $version
-Develop Rust WASM modules with cross-origin isolation.
-
-USAGE:
-\t$exec [OPTIONS] [..REST]
-\t$exec --dart-input <ENTRY> --root <ROOT> [OPTIONS] [..REST]
-
-OPTIONS:""");
-    print(_$parserForOpts.usage);
-    return;
-  }
+  final config = parseConfig();
 
   await runCommand(_kWhich, ['wasm-pack']).catchError((_) {
     bail(
