@@ -13,7 +13,7 @@ macro_rules! transfer {
 
         #[cfg(target_family = "wasm")]
         {
-            $crate::ffi::TransferClosure::new(vec![], vec![], move |_: &[JsValue]| $block)
+            $crate::ffi::TransferClosure::new(vec![], vec![], move |_: &[wasm_bindgen::JsValue]| $block)
         }
     }};
     (|$($param:ident: $ty:ty),*| $block:block) => {{
