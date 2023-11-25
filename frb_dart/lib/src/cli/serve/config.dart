@@ -129,8 +129,10 @@ void parseConfig(List<String> args) {
 }
 
 Never _printHelpAndExit() {
+  const exec = 'flutter_rust_bridge_serve';
+
   print("""
-$exec $version
+$exec
 Develop Rust WASM modules with cross-origin isolation.
 
 USAGE:
@@ -138,7 +140,7 @@ USAGE:
 \t$exec --dart-input <ENTRY> --root <ROOT> [OPTIONS] [..REST]
 
 OPTIONS:""");
- 
+
   print(_$parserForOpts.usage);
 
   exit(0);

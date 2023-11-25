@@ -7,19 +7,6 @@ import 'package:flutter_rust_bridge/src/cli/serve/build_web.dart';
 import 'package:flutter_rust_bridge/src/cli/serve/config.dart';
 import 'package:flutter_rust_bridge/src/cli/serve/run_server.dart';
 import 'package:path/path.dart' as p;
-import 'package:yaml/yaml.dart';
-
-final YamlMap? pubspec = () {
-  final pubspecPath = Platform.script.resolve('../pubspec.yaml');
-  final pubpsec = File(pubspecPath.toFilePath());
-  try {
-    return loadYaml(pubpsec.readAsStringSync(), sourceUrl: pubspecPath);
-  } catch (err) {
-    eprint('Failed to read pubspec: $err');
-  }
-}();
-
-String get version => pubspec?['version'] ?? '';
 
 final _kWhich = Platform.isWindows ? 'where.exe' : 'which';
 
@@ -39,7 +26,6 @@ Never bail([String? message]) {
 
 /// {@macro flutter_rust_bridge.internal}
 void runCliServe(List<String> args) async {
-  const exec = 'flutter_rust_bridge_serve';
   final config = parseConfig();
 
   await runCommand(_kWhich, ['wasm-pack']).catchError((_) {

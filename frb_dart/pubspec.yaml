@@ -17,7 +17,6 @@ dependencies:
   shelf_web_socket: ^1.0.2
   uuid: ^4.1.0
   web_socket_channel: ^2.2.0
-  yaml: ^3.1.1
   tuple: ^2.0.1
 dev_dependencies:
   build_cli: ^2.2.0
