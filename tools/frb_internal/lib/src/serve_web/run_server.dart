@@ -39,9 +39,7 @@ Future<void> runServer(Config config) async {
       final res = await handler(req);
       print('Response: code=${res.statusCode} mimeType=${res.mimeType}');
       return res.change(headers: {
-        // TODO should NOT be same-origin when our test put JS and WASM in different domain
-        'Cross-Origin-Opener-Policy': 'unsafe-none',
-        // 'Cross-Origin-Opener-Policy': 'same-origin',
+        'Cross-Origin-Opener-Policy': 'same-origin',
         'Cross-Origin-Embedder-Policy': shouldRelaxCoep ? 'credentialless' : 'require-corp',
         // Disable CORS since this server (hosting JS/WASM) is different from
         // the server that `dart test -p chrome` creates.
