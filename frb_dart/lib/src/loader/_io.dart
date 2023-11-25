@@ -8,6 +8,18 @@ import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 /// 2. When running Flutter widget tests.
 /// 3. When `dart test`, `dart run`, `dart compile exe`, etc.
 ExternalLibrary loadExternalLibrary({
+  String? defaultExternalLibraryRelativeDirectory,
+  required String stem,
+}) {
+  return loadExternalLibraryRaw(
+    nativeLibDirWhenNonPackaged: defaultExternalLibraryRelativeDirectory == null
+        ? null
+        : Directory.current.uri.resolve(defaultExternalLibraryRelativeDirectory),
+    stem: stem,
+  );
+}
+
+ExternalLibrary loadExternalLibraryRaw({
   Uri? nativeLibDirWhenNonPackaged,
   required String stem,
 }) {

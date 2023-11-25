@@ -75,7 +75,7 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl, W exten
   String get defaultExternalLibraryRelativeDirectory;
 
   ExternalLibrary _loadDefaultExternalLibrary() => loadExternalLibrary(
-        nativeLibDirWhenNonPackaged: Directory.current.uri.resolve(defaultExternalLibraryRelativeDirectory),
+        defaultExternalLibraryRelativeDirectory: defaultExternalLibraryRelativeDirectory,
         stem: defaultExternalLibraryStem,
       );
 
