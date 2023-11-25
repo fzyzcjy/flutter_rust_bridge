@@ -11,7 +11,13 @@ typedef NativePortType = int;
 typedef PlatformPointer = ffi.Pointer<ffi.Void>;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-typedef ExternalLibrary = ffi.DynamicLibrary;
+typedef DartPostCObject = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-typedef DartPostCObject = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>;
+class ExternalLibrary {
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  final ffi.DynamicLibrary ffiDynamicLibrary;
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  const ExternalLibrary({required this.ffiDynamicLibrary});
+}

@@ -119,7 +119,7 @@ fn generate_boilerplate(
                   ApiImplConstructor<{api_impl_class_name}, {wire_class_name}> get apiImplConstructor => {api_impl_class_name}.new;
 
                   @override
-                  WireConstructor<{wire_class_name}> get wireConstructor => {wire_class_name}.new;
+                  WireConstructor<{wire_class_name}> get wireConstructor => {wire_class_name}.fromExternalLibrary;
 
                   @override
                   ExternalLibraryLoaderConfig get defaultExternalLibraryLoaderConfig => const ExternalLibraryLoaderConfig(

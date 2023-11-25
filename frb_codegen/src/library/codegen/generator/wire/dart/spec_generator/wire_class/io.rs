@@ -39,7 +39,13 @@ fn postpare_modify(
     content_raw
         .replace(
             &format!("class {wire_class_name} {{"),
-            &format!("class {wire_class_name} implements BaseWire {{"),
+            &format!(
+                "class {wire_class_name} implements BaseWire {{
+
+                factory {wire_class_name}.fromExternalLibrary(ExternalLibrary lib) =>
+                  {wire_class_name}(lib.ffiDynamicLibrary);
+                "
+            ),
         )
         .replace("final class DartCObject extends ffi.Opaque {}", "")
         .replace("final class _Dart_Handle extends ffi.Opaque {}", "")

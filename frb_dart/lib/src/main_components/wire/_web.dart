@@ -12,5 +12,5 @@ class BaseWasmWire<T extends WasmModule> extends BaseWire {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   BaseWasmWire(ExternalLibrary externalLibrary)
-      : init = Future.value(externalLibrary).then((module) => promiseToFuture(module()));
+      : init = Future.value(externalLibrary.wasmModule).then((module) => promiseToFuture(module()));
 }

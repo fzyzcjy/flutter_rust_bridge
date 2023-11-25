@@ -8,7 +8,8 @@ class GeneralizedFrbRustBinding {
   final MultiPackageCBinding _binding;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  GeneralizedFrbRustBinding(ExternalLibrary externalLibrary) : _binding = MultiPackageCBinding(externalLibrary);
+  GeneralizedFrbRustBinding(ExternalLibrary externalLibrary)
+      : _binding = MultiPackageCBinding(externalLibrary.ffiDynamicLibrary);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void storeDartPostCObject() {

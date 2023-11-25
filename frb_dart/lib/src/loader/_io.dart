@@ -1,3 +1,4 @@
+import 'dart:ffi' as ffi;
 import 'dart:ffi';
 import 'dart:io';
 
@@ -10,14 +11,16 @@ import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 /// 3. When `dart test`, `dart run`, `dart compile exe`, etc.
 ExternalLibrary loadExternalLibrary(ExternalLibraryLoaderConfig config) {
   final ioDirectory = config.ioDirectory;
-  return loadExternalLibraryRaw(
-    nativeLibDirWhenNonPackaged: ioDirectory == null ? null : Directory.current.uri.resolve(ioDirectory),
-    stem: config.stem,
+  return ExternalLibrary(
+    ffiDynamicLibrary: loadExternalLibraryRaw(
+      nativeLibDirWhenNonPackaged: ioDirectory == null ? null : Directory.current.uri.resolve(ioDirectory),
+      stem: config.stem,
+    ),
   );
 }
 
 /// Please see `loadExternalLibrary` for details
-ExternalLibrary loadExternalLibraryRaw({
+ffi.DynamicLibrary loadExternalLibraryRaw({
   Uri? nativeLibDirWhenNonPackaged,
   required String stem,
 }) {
@@ -25,7 +28,7 @@ ExternalLibrary loadExternalLibraryRaw({
   // * https://flutter.dev/docs/development/platform-integration/c-interop
   // * https://github.com/fzyzcjy/flutter_rust_bridge/pull/898
 
-  ExternalLibrary? tryAssumingNonPackaged(String name) {
+  ffi.DynamicLibrary? tryAssumingNonPackaged(String name) {
     if (nativeLibDirWhenNonPackaged == null) return null;
     final filePath = nativeLibDirWhenNonPackaged.resolve(name).toFilePath();
     if (!File(filePath).existsSync()) return null;

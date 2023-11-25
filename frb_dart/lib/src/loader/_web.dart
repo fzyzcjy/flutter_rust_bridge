@@ -9,5 +9,5 @@ ExternalLibrary loadExternalLibrary(ExternalLibraryLoaderConfig config) {
 
 /// Please see `loadExternalLibrary` for details
 ExternalLibrary loadExternalLibraryRaw({required String moduleRoot}) {
-  return WasmModule.initialize(kind: Modules.noModules(root: moduleRoot));
+  return ExternalLibrary(wasmModule: WasmModule.initialize(kind: Modules.noModules(root: moduleRoot)));
 }
