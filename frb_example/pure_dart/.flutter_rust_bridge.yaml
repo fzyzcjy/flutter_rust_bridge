@@ -1,4 +1,9 @@
 rust_input: rust/src/api/**/*.rs
 dart_output: lib/src/rust
 c_output: frb_generated.h
-dump_all: true # dump debugging information (unneeded for normal users)
+
+# dump debugging information (unneeded for normal users)
+dump_all: true
+
+# Only for pure-Dart projects to find WASM files hosted separately. Flutter projects do not need this.
+default_external_library_loader_web_prefix: http://localhost:8080/pkg/
