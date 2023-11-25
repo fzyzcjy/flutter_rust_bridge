@@ -23,6 +23,7 @@ Future<void> main() async {
       const n = 10000;
       int calls = 0;
 
+      expect(debugOnExternalTypedDataFinalizer, isNull);
       debugOnExternalTypedDataFinalizer = expectAsync1(
         (dataLength) {
           expect(dataLength, n);
@@ -31,6 +32,7 @@ Future<void> main() async {
         count: 10,
         reason: "Finalizer must be called once for each returned packed primitive list",
       );
+      addTearDown(() => debugOnExternalTypedDataFinalizer = null);
 
       ZeroCopyVecOfPrimitivePack? primitivePack = handleZeroCopyVecOfPrimitiveSync(n: n);
       await vmService.gc();
