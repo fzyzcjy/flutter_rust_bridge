@@ -14,7 +14,7 @@ Future<String> runCommand(
   bool silent = false,
 }) async {
   // ignore: avoid_print
-  print('$_kArrow $command ${arguments.join(' ')}');
+  print('$_kArrow $command ${arguments.join(' ')} (env: $env)');
   final process = await Process.start(
     command,
     arguments,
