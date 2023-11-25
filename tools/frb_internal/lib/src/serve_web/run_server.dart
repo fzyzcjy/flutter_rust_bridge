@@ -35,7 +35,9 @@ Future<void> runServer(Config config) async {
 
   final handler = const Pipeline().addMiddleware((handler) {
     return (req) async {
+      print('Request: ${req.method} ${req.requestedUri}');
       final res = await handler(req);
+      print('Response: code=${res.statusCode} mimeType=${res.mimeType}');
       return res.change(headers: {
         'Cross-Origin-Opener-Policy': 'same-origin',
         'Cross-Origin-Embedder-Policy': shouldRelaxCoep ? 'credentialless' : 'require-corp',
