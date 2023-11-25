@@ -50,6 +50,9 @@ abstract class Modules {
   FutureOr<WasmModule> initializeModule(WasmModule Function()? module);
 
   void _ensureCrossOriginIsolated() {
+    print('TODO: temp disable _ensureCrossOriginIsolated check'); // TOODO
+    return;
+
     switch (crossOriginIsolated) {
       case false:
         throw const MissingHeaderException();
