@@ -4,6 +4,9 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:build_cli_annotations/build_cli_annotations.dart';
+import 'package:flutter_rust_bridge/src/cli/build_web.dart';
+import 'package:flutter_rust_bridge/src/cli/run_command.dart';
+import 'package:flutter_rust_bridge/src/cli/run_server.dart';
 import 'package:path/path.dart' as p;
 import 'package:puppeteer/puppeteer.dart';
 import 'package:shelf/shelf.dart';
@@ -107,5 +110,6 @@ OPTIONS:""");
       args: args,
     );
   }
+
   await runServer(config, root: root);
 }
