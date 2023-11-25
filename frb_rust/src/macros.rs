@@ -13,7 +13,7 @@ macro_rules! transfer {
 
         #[cfg(target_family = "wasm")]
         {
-            $crate::ffi::TransferClosure::new(vec![], vec![], move |_: &[flutter_rust_bridge::wasm_bindgen::JsValue]| $block)
+            $crate::ffi::TransferClosure::new(vec![], vec![], move |_: &[$crate::wasm_bindgen::JsValue]| $block)
         }
     }};
     (|$($param:ident: $ty:ty),*| $block:block) => {{
@@ -24,10 +24,9 @@ macro_rules! transfer {
 
         #[cfg(target_family = "wasm")]
         {
-            use flutter_rust_bridge::wasm_bindgen::JsValue;
             use $crate::ffi::Transfer;
             #[allow(unused_variables)]
-            let worker = move |transfer: &[JsValue]| {
+            let worker = move |transfer: &[$crate::wasm_bindgen::JsValue]| {
                 let idx = 0;
                 $(
                     let $param = <$ty>::deserialize(&transfer[idx]);
