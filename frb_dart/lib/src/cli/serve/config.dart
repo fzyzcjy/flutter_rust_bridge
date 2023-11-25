@@ -14,23 +14,6 @@
 // class Opts {
 //   /// {@macro flutter_rust_bridge.cli}
 //   @CliOption(
-//     abbr: 'p',
-//     help: 'HTTP port to listen to',
-//     valueHelp: 'PORT',
-//     defaultsTo: 8080,
-//   )
-//   late int port;
-//
-//   /// {@macro flutter_rust_bridge.cli}
-//   @CliOption(
-//     abbr: 'r',
-//     help: 'Root of the Flutter/Dart output',
-//     valueHelp: 'ROOT',
-//   )
-//   late String? root;
-//
-//   /// {@macro flutter_rust_bridge.cli}
-//   @CliOption(
 //     abbr: 'd',
 //     help: 'Run "dart compile" with the specified input instead of "flutter build"',
 //     valueHelp: 'ENTRY',

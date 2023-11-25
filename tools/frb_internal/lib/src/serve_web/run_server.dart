@@ -1,24 +1,14 @@
 // ignore_for_file: avoid_print
 
-import 'dart:convert';
 import 'dart:io';
 
-import 'package:args/command_runner.dart';
-
-// We can import this internal implementation, since frb_internal itself is only an internal utility
-// ignore: implementation_imports
-import 'package:flutter_rust_bridge/src/cli/run_command.dart';
-import 'package:puppeteer/puppeteer.dart';
+import 'package:flutter_rust_bridge_internal/src/serve_web/config.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
 import 'package:shelf_static/shelf_static.dart';
-import 'package:shelf_web_socket/shelf_web_socket.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
 
 Future<void> runServer(Config config) async {
-  final ip = InternetAddress.anyIPv4;
-
-  final staticFilesHandler = createStaticHandler(config.root, defaultDocument: 'index.html');
+  final staticFilesHandler = createStaticHandler(config.webRoot, defaultDocument: 'index.html');
 
   // TODO these may not be needed, since we use `dart test` now?
   // Browser? browser;
@@ -39,7 +29,10 @@ Future<void> runServer(Config config) async {
   //   }
   // });
 
-  final shouldRelaxCoep = config.cliOpts.shouldRelaxCoep;
+  // TODO
+  // final shouldRelaxCoep = config.shouldRelaxCoep;
+  final shouldRelaxCoep = true;
+
   final handler = const Pipeline().addMiddleware((handler) {
     return (req) async {
       final res = await handler(req);
@@ -53,21 +46,24 @@ Future<void> runServer(Config config) async {
       .add(staticFilesHandler)
       .handler);
 
-  final portEnv = Platform.environment['PORT'];
-  final port = portEnv == null ? config.cliOpts.port : int.parse(portEnv);
+  // TODO
+  // final portEnv = Platform.environment['PORT'];
+  // final port = portEnv == null ? config.port : int.parse(portEnv);
+
+  final port = config.port;
   final addr = 'http://localhost:$port';
-  await serve(handler, ip, port);
+  await serve(handler, InternetAddress.anyIPv4, port);
   print('🦀 Server listening on $addr 🎯');
 
   // TODO these may not be needed, since we use `dart test` now?
-  // if (config.cliOpts.runTests) {
+  // if (config.runTests) {
   //   browser = await puppeteer.launch(
   //     headless: true,
   //     timeout: const Duration(minutes: 5),
   //   );
   //   final page = await browser.newPage();
   //   await page.goto(addr);
-  // } else if (config.cliOpts.open) {
+  // } else if (config.open) {
   //   runCommand(_kOpen, [addr]);
   // }
 }
