@@ -11,7 +11,21 @@ Future<void> executeBuildWeb(List<String> args) async {
 
   await _sanityChecks(config);
 
-  await _buildWebCore(config);
+  final crateDir = config.cliOpts.crate;
+
+  final crateName = await _getCreateName(crateDir);
+
+  await _executeWasmPack(config, crateName, crateDir);
+
+  if (config.cliOpts.shouldRunBindgen) {
+    await _executeWasmBindgen(crateDir, config, crateName);
+  }
+
+  if (config.cliOpts.dartInput != null) {
+    await _executeDartCompile(config);
+  } else {
+    await _executeFlutterBuildWeb(config);
+  }
 }
 
 Future<void> _sanityChecks(Config config) async {
@@ -40,25 +54,6 @@ Future<void> _sanityChecks(Config config) async {
       '$crateDir is not a crate directory.\n'
       'Please specify the crate directory using "--crate <CRATE>".',
     );
-  }
-}
-
-/// {@macro flutter_rust_bridge.internal}
-Future<void> _buildWebCore(Config config) async {
-  final crateDir = config.cliOpts.crate;
-
-  final crateName = await _getCreateName(crateDir);
-
-  await _executeWasmPack(config, crateName, crateDir);
-
-  if (config.cliOpts.shouldRunBindgen) {
-    await _executeWasmBindgen(crateDir, config, crateName);
-  }
-
-  if (config.cliOpts.dartInput != null) {
-    await _executeDartCompile(config);
-  } else {
-    await _executeFlutterBuildWeb(config);
   }
 }
 
