@@ -79,14 +79,15 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
       RustLibApiImpl.new;
 
   @override
-  WireConstructor<RustLibWire> get wireConstructor => RustLibWire.fromExternalLibrary;
+  WireConstructor<RustLibWire> get wireConstructor =>
+      RustLibWire.fromExternalLibrary;
 
   @override
   ExternalLibraryLoaderConfig get defaultExternalLibraryLoaderConfig =>
       const ExternalLibraryLoaderConfig(
         stem: 'frb_example_pure_dart',
         ioDirectory: 'rust/target/release/',
-        webPrefix: 'pkg/',
+        webPrefix: 'http://localhost:8080/pkg/',
       );
 }
 

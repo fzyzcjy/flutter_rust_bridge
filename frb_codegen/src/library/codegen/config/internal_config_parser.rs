@@ -170,7 +170,9 @@ fn compute_default_external_library_loader(
         .unwrap_or(FALLBACK_DEFAULT_EXTERNAL_LIBRARY_RELATIVE_DIRECTORY.to_owned()),
         web_prefix: config
             .default_external_library_loader_web_prefix
-            .unwrap_or("pkg/".into()),
+            .as_deref()
+            .unwrap_or("pkg/")
+            .into(),
     }
 }
 
