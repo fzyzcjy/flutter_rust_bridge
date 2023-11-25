@@ -1,5 +1,5 @@
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::misc::target::Target;
+use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::rust::spec_generator::base::{
     WireRustGenerator, WireRustGeneratorContext,
 };
@@ -38,7 +38,7 @@ pub(crate) fn generate(
     Ok(WireRustOutputSpecMisc {
         file_attributes: Acc::new_common(vec![FILE_ATTRIBUTES.to_string().into()]),
         code_header: Acc::new_common(vec![generate_code_header().into()]),
-        imports: Acc::new(|_| vec![generate_imports(&cache.distinct_types, context).into()]),
+        imports: generate_imports(&cache.distinct_types, context),
         wire_funcs: context
             .ir_pack
             .funcs
@@ -71,7 +71,10 @@ fn generate_code_header() -> String {
     )
 }
 
-fn generate_imports(types: &[IrType], context: WireRustGeneratorContext) -> String {
+fn generate_imports(
+    types: &[IrType],
+    context: WireRustGeneratorContext,
+) -> Acc<Vec<WireRustOutputCode>> {
     let imports_from_types = types
         .iter()
         .flat_map(|ty| WireRustGenerator::new(ty.clone(), context).generate_imports())
@@ -84,7 +87,14 @@ fn generate_imports(types: &[IrType], context: WireRustGeneratorContext) -> Stri
     let static_imports = "use flutter_rust_bridge::Handler;
     use flutter_rust_bridge::rust2dart::IntoIntoDart;";
 
-    imports_from_types + static_imports
+    Acc::new(|target| {
+        let platform_imports = match target {
+            TargetOrCommon::Wasm => "use wasm_bindgen::prelude::*;\n",
+            _ => "",
+        };
+
+        vec![(imports_from_types.clone() + static_imports + platform_imports).into()]
+    })
 }
 
 fn generate_wrapper_struct(ty: &IrType, context: WireRustGeneratorContext) -> Option<String> {
