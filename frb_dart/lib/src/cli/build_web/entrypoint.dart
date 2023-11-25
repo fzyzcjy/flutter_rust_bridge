@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_rust_bridge/src/cli/build_web/config.dart';
@@ -46,6 +47,22 @@ Future<void> _sanityChecks(Config config) async {
 Future<void> _buildWebCore(Config config) async {
   final crateDir = config.cliOpts.crate;
 
+  final crateName = await _getCreateName(crateDir);
+
+  await _executeWasmPack(config, crateName, crateDir);
+
+  if (config.cliOpts.shouldRunBindgen) {
+    await _executeWasmBindgen(crateDir, config, crateName);
+  }
+
+  if (config.cliOpts.dartInput != null) {
+    await _executeDartCompile(config);
+  } else {
+    await _executeFlutterBuildWeb(config);
+  }
+}
+
+Future<String> _getCreateName(crateDir) async {
   final manifest = jsonDecode(await runCommand(
     'cargo',
     ['read-manifest'],
@@ -53,10 +70,14 @@ Future<void> _buildWebCore(Config config) async {
     silent: true,
   ));
 
-  final String crateName =
+  final crateName =
       (manifest['targets'] as List).firstWhere((target) => (target['kind'] as List).contains('cdylib'))['name'];
   if (crateName.isEmpty) bail('Crate name cannot be empty.');
 
+  return crateName;
+}
+
+Future<void> _executeWasmPack(Config config, String crateName, crateDir) async {
   await runCommand('wasm-pack', [
     'build', '-t', 'no-modules', '-d', config.wasmOutput, '--no-typescript',
     '--out-name', crateName,
@@ -70,36 +91,38 @@ Future<void> _buildWebCore(Config config) async {
     'RUSTFLAGS': '-C target-feature=+atomics,+bulk-memory,+mutable-globals',
     if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
   });
+}
 
-  if (config.cliOpts.shouldRunBindgen) {
-    await runCommand('wasm-bindgen', [
-      '$crateDir/target/wasm32-unknown-unknown/${config.cliOpts.release ? 'release' : 'debug'}/$crateName.wasm',
-      '--out-dir',
-      config.wasmOutput,
-      '--no-typescript',
-      '--target',
-      'no-modules',
-      if (config.cliOpts.weakRefs) '--weak-refs',
-      if (config.cliOpts.referenceTypes) '--reference-types',
-    ]);
-  }
+Future<void> _executeWasmBindgen(crateDir, Config config, String crateName) async {
+  await runCommand('wasm-bindgen', [
+    '$crateDir/target/wasm32-unknown-unknown/${config.cliOpts.release ? 'release' : 'debug'}/$crateName.wasm',
+    '--out-dir',
+    config.wasmOutput,
+    '--no-typescript',
+    '--target',
+    'no-modules',
+    if (config.cliOpts.weakRefs) '--weak-refs',
+    if (config.cliOpts.referenceTypes) '--reference-types',
+  ]);
+}
 
-  if (config.cliOpts.dartInput != null) {
-    final output = p.basename(config.cliOpts.dartInput!);
-    await runCommand('dart', [
-      'compile',
-      'js',
-      '-o',
-      '${config.root}/$output.js',
-      if (config.cliOpts.release) '-O2',
-      if (stdout.supportsAnsiEscapes) '--enable-diagnostic-colors',
-      if (config.cliOpts.verbose) '--verbose',
-      config.cliOpts.dartInput!,
-    ]);
-  } else {
-    await runCommand(
-      'flutter',
-      ['build', 'web', if (!config.cliOpts.release) '--profile'] + config.restArgs,
-    );
-  }
+Future<void> _executeDartCompile(Config config) async {
+  final output = p.basename(config.cliOpts.dartInput!);
+  await runCommand('dart', [
+    'compile',
+    'js',
+    '-o',
+    '${config.root}/$output.js',
+    if (config.cliOpts.release) '-O2',
+    if (stdout.supportsAnsiEscapes) '--enable-diagnostic-colors',
+    if (config.cliOpts.verbose) '--verbose',
+    config.cliOpts.dartInput!,
+  ]);
+}
+
+Future<void> _executeFlutterBuildWeb(Config config) async {
+  await runCommand(
+    'flutter',
+    ['build', 'web', if (!config.cliOpts.release) '--profile'] + config.restArgs,
+  );
 }
