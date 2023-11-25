@@ -34,13 +34,6 @@
 //   /// {@macro flutter_rust_bridge.cli}
 //   late bool relaxCoepWasParsed;
 //
-//   /// {@macro flutter_rust_bridge.cli}
-//   @CliOption(help: 'Open the webpage in a browser', defaultsTo: true)
-//   late bool open;
-//
-//   /// {@macro flutter_rust_bridge.cli}
-//   @CliOption(help: 'Run tests in headless Chromium', negatable: false)
-//   late bool runTests;
 //
 //   /// {@macro flutter_rust_bridge.cli}
 //   @CliOption(help: 'Whether to build the library.', defaultsTo: true)

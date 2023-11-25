@@ -22,7 +22,9 @@ Config _$parseConfigResult(ArgResults result) => Config()
         result['port'] as String,
         'int',
         'port',
-      );
+      )
+  ..runTests = result['run-tests'] as bool
+  ..open = result['open'] as bool;
 
 ArgParser _$populateConfigParser(ArgParser parser) => parser
   ..addOption(
@@ -37,6 +39,16 @@ ArgParser _$populateConfigParser(ArgParser parser) => parser
     help: 'HTTP port to listen to',
     valueHelp: 'PORT',
     defaultsTo: '8080',
+  )
+  ..addFlag(
+    'run-tests',
+    help: 'Run tests in headless Chromium',
+    negatable: false,
+  )
+  ..addFlag(
+    'open',
+    help: 'Open the webpage in a browser',
+    defaultsTo: true,
   );
 
 final _$parserForConfig = _$populateConfigParser(ArgParser());

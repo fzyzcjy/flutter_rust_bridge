@@ -33,4 +33,10 @@ class Config {
     defaultsTo: 8080,
   )
   late int port;
+
+  @CliOption(help: 'Run tests in headless Chromium', negatable: false)
+  late bool runTests;
+
+  @CliOption(help: 'Open the webpage in a browser', defaultsTo: true)
+  late bool open;
 }
