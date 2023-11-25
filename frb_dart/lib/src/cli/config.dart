@@ -109,3 +109,12 @@ class Opts {
   /// {@macro flutter_rust_bridge.cli}
   static List<String> rest(List<String> args) => _$parserForOpts.parse(args).rest;
 }
+
+/// {@macro flutter_rust_bridge.internal}
+extension ExtOpts on Opts {
+  /// {@macro flutter_rust_bridge.internal}
+  bool get shouldRunBindgen => weakRefs || referenceTypes;
+
+  /// If not set by user, relax COEP on Flutter.
+  bool get shouldRelaxCoep => relaxCoep || (!relaxCoepWasParsed && dartInput == null);
+}

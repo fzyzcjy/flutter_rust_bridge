@@ -42,52 +42,9 @@ void eprint([Object? msg = 'unspecified']) {
   stderr.writeln('${err('error')}: $msg');
 }
 
-// final arrow = stdout.supportsAnsiEscapes ? Colorize('>').green().bold().toString() : '>'; // #1262
-const arrow = '>';
-
-Future<String> system(
-  String command,
-  List<String> arguments, {
-  String? pwd,
-  Map<String, String>? env,
-  bool shell = true,
-  bool silent = false,
-}) async {
-  print('$arrow $command ${arguments.join(' ')}');
-  final process = await Process.start(
-    command,
-    arguments,
-    runInShell: shell,
-    workingDirectory: pwd,
-    environment: env,
-  );
-  final ret = <String>[];
-  final err = <String>[];
-  process.stdout.transform(utf8.decoder).listen((line) {
-    if (!silent) stdout.write(line);
-    ret.add(line);
-  });
-  process.stderr.transform(utf8.decoder).listen((line) {
-    if (!silent) stderr.write(line);
-    err.add(line);
-  });
-  final exitCode = await process.exitCode;
-  if (exitCode != 0) {
-    throw ProcessException(command, arguments, err.join(''), exitCode);
-  }
-  return ret.join('');
-}
-
 Never bail([String? message]) {
   eprint(message);
   exit(1);
-}
-
-extension on Opts {
-  bool get shouldRunBindgen => weakRefs || referenceTypes;
-
-  /// If not set by user, relax COEP on Flutter.
-  bool get shouldRelaxCoep => relaxCoep || (!relaxCoepWasParsed && dartInput == null);
 }
 
 void main(List<String> args) async {
@@ -107,7 +64,7 @@ OPTIONS:""");
     return;
   }
 
-  await system(which, ['wasm-pack']).catchError((_) {
+  await runCommand(which, ['wasm-pack']).catchError((_) {
     bail(
       'wasm-pack is required, but not found in the path.\n'
       'Please install wasm-pack by following the instructions at https://rustwasm.github.io/wasm-pack/\n'
@@ -116,7 +73,7 @@ OPTIONS:""");
   });
 
   if (config.shouldRunBindgen) {
-    await system(which, ['wasm-bindgen']).catchError((_) {
+    await runCommand(which, ['wasm-bindgen']).catchError((_) {
       bail(
         'wasm-bindgen flags are enabled, but wasm-bindgen could not be found in the path.\n'
         'Please install wasm-bindgen using `cargo install -f wasm-bindgen-cli`.',
@@ -166,7 +123,7 @@ Future<void> build(
   required String root,
   required List<String> args,
 }) async {
-  final manifest = jsonDecode(await system(
+  final manifest = jsonDecode(await runCommand(
     'cargo',
     ['read-manifest'],
     pwd: crateDir,
@@ -175,7 +132,7 @@ Future<void> build(
   final String crateName =
       (manifest['targets'] as List).firstWhere((target) => (target['kind'] as List).contains('cdylib'))['name'];
   if (crateName.isEmpty) bail('Crate name cannot be empty.');
-  await system('wasm-pack', [
+  await runCommand('wasm-pack', [
     'build', '-t', 'no-modules', '-d', wasmOutput, '--no-typescript',
     '--out-name', crateName,
     if (!config.release) '--dev', crateDir,
@@ -189,7 +146,7 @@ Future<void> build(
     if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
   });
   if (config.shouldRunBindgen) {
-    await system('wasm-bindgen', [
+    await runCommand('wasm-bindgen', [
       '$crateDir/target/wasm32-unknown-unknown/${config.release ? 'release' : 'debug'}/$crateName.wasm',
       '--out-dir',
       wasmOutput,
@@ -202,7 +159,7 @@ Future<void> build(
   }
   if (config.dartInput != null) {
     final output = p.basename(config.dartInput!);
-    await system('dart', [
+    await runCommand('dart', [
       'compile',
       'js',
       '-o',
@@ -213,7 +170,7 @@ Future<void> build(
       config.dartInput!,
     ]);
   } else {
-    await system(
+    await runCommand(
       'flutter',
       ['build', 'web', if (!config.release) '--profile'] + Opts.rest(args),
     );
@@ -266,6 +223,6 @@ Future<void> runServer(Opts config, {required String root}) async {
     final page = await browser.newPage();
     await page.goto(addr);
   } else if (config.open) {
-    system(open, [addr]);
+    runCommand(open, [addr]);
   }
 }
