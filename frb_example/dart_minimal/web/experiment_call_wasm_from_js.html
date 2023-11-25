@@ -4,10 +4,13 @@
 Experiment (not directly related to flutter_rust_bridge):
 Call Rust WASM from JavaScript.
 
+<strong>NOTE: Please open this html using *different* origin from where the JS/WASM is hosted to test CORS
+    policy</strong>
+
 <script>
     console.log('Create script element and add to document');
     const ele = document.createElement('script');
-    ele.src = '/pkg/frb_example_dart_minimal.js';
+    ele.src = 'http://localhost:8080/pkg/frb_example_dart_minimal.js';
     document.head.append(ele);
 
     ele.onload = () => {
