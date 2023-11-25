@@ -28,7 +28,7 @@ final YamlMap? pubspec = () {
 
 String get version => pubspec?['version'] ?? '';
 
-final which = Platform.isWindows ? 'where.exe' : 'which';
+final _kWhich = Platform.isWindows ? 'where.exe' : 'which';
 
 String err(String msg) {
   // return stderr.supportsAnsiEscapes ? Colorize(msg).red().bold().toString() : msg; // #1262
@@ -44,6 +44,7 @@ Never bail([String? message]) {
   exit(1);
 }
 
+/// {@macro flutter_rust_bridge.internal}
 void runCliServe(List<String> args) async {
   const exec = 'flutter_rust_bridge_serve';
   final config = parseOpts(args);
@@ -61,7 +62,7 @@ OPTIONS:""");
     return;
   }
 
-  await runCommand(which, ['wasm-pack']).catchError((_) {
+  await runCommand(_kWhich, ['wasm-pack']).catchError((_) {
     bail(
       'wasm-pack is required, but not found in the path.\n'
       'Please install wasm-pack by following the instructions at https://rustwasm.github.io/wasm-pack/\n'
@@ -70,7 +71,7 @@ OPTIONS:""");
   });
 
   if (config.shouldRunBindgen) {
-    await runCommand(which, ['wasm-bindgen']).catchError((_) {
+    await runCommand(_kWhich, ['wasm-bindgen']).catchError((_) {
       bail(
         'wasm-bindgen flags are enabled, but wasm-bindgen could not be found in the path.\n'
         'Please install wasm-bindgen using `cargo install -f wasm-bindgen-cli`.',
