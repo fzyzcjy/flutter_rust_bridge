@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
 import 'package:frb_example_pure_dart/src/rust/api/dart_opaque.dart';
 import 'package:frb_example_pure_dart/src/rust/api/dart_opaque_sync.dart';
@@ -14,74 +12,68 @@ import 'utils/test_flutter_memory_leak_utility.dart';
 Future<void> main() async {
   await RustLib.init();
 
-  final maybeVmService = await VmServiceUtil.create();
-  tearDownAll(() => maybeVmService?.dispose());
+  final vmService = await VmServiceUtil.create();
+  if (vmService == null) {
+    // Related: https://github.com/dart-lang/sdk/issues/54155
+    fail('To run these tests, you should enable VM service like: `dart --enable-vm-service test`.');
+  }
+  tearDownAll(() => vmService.dispose());
 
-  group('tests with vm service',
-      skip: maybeVmService == null ? 'The tests in this file is skipped, because it needs VMService to run.' : null,
-      () {
-    group('sync return', () {
-      test('allocate a lot of zero copy data to check that it is properly freed', () async {
-        final vmService = maybeVmService!;
+  group('sync return', () {
+    test('allocate a lot of zero copy data to check that it is properly freed', () async {
+      const n = 10000;
+      int calls = 0;
 
-        const n = 10000;
-        int calls = 0;
+      expect(debugOnExternalTypedDataFinalizer, isNull);
+      debugOnExternalTypedDataFinalizer = expectAsync1(
+        (dataLength) {
+          expect(dataLength, n);
+          calls++;
+        },
+        count: 10,
+        reason: "Finalizer must be called once for each returned packed primitive list",
+      );
+      addTearDown(() => debugOnExternalTypedDataFinalizer = null);
 
-        expect(debugOnExternalTypedDataFinalizer, isNull);
-        debugOnExternalTypedDataFinalizer = expectAsync1(
-          (dataLength) {
-            expect(dataLength, n);
-            calls++;
-          },
-          count: 10,
-          reason: "Finalizer must be called once for each returned packed primitive list",
-        );
-        addTearDown(() => debugOnExternalTypedDataFinalizer = null);
+      ZeroCopyVecOfPrimitivePack? primitivePack = handleZeroCopyVecOfPrimitiveSync(n: n);
+      await vmService.gc();
+      await Future<void>.delayed(const Duration(milliseconds: 10));
+      expect(primitivePack, isNotNull);
+      expect(calls, 0);
 
-        ZeroCopyVecOfPrimitivePack? primitivePack = handleZeroCopyVecOfPrimitiveSync(n: n);
-        await vmService.gc();
-        await Future<void>.delayed(const Duration(milliseconds: 10));
-        expect(primitivePack, isNotNull);
-        expect(calls, 0);
-
-        primitivePack = null;
-        await vmService.gc();
-        await Future<void>.delayed(const Duration(milliseconds: 10));
-      });
+      primitivePack = null;
+      await vmService.gc();
+      await Future<void>.delayed(const Duration(milliseconds: 10));
     });
+  });
 
-    group('dart opaque type', () {
-      group('GC', () {
-        test('drop', () async {
-          final vmService = maybeVmService!;
+  group('dart opaque type', () {
+    group('GC', () {
+      test('drop', () async {
+        Uint8List? strongRef = createLargeList(mb: 300);
+        final weakRef = WeakReference(strongRef);
+        await setStaticDartOpaque(opaque: strongRef);
+        strongRef = null;
 
-          Uint8List? strongRef = createLargeList(mb: 300);
-          final weakRef = WeakReference(strongRef);
-          await setStaticDartOpaque(opaque: strongRef);
-          strongRef = null;
+        await vmService.gc();
+        await Future<void>.delayed(const Duration(milliseconds: 10));
+        expect(weakRef.target, isNotNull);
 
-          await vmService.gc();
-          await Future<void>.delayed(const Duration(milliseconds: 10));
-          expect(weakRef.target, isNotNull);
+        await dropStaticDartOpaque();
+        await vmService.gc();
+        await Future<void>.delayed(const Duration(milliseconds: 10));
+        expect(weakRef.target, isNull);
+      });
 
-          await dropStaticDartOpaque();
-          await vmService.gc();
-          await Future<void>.delayed(const Duration(milliseconds: 10));
-          expect(weakRef.target, isNull);
-        });
+      test('unwrap', () async {
+        Uint8List? strongRef = createLargeList(mb: 300);
+        final weakRef = WeakReference(strongRef);
+        expect(unwrapDartOpaque(opaque: strongRef), 'Test');
+        strongRef = null;
 
-        test('unwrap', () async {
-          final vmService = maybeVmService!;
-
-          Uint8List? strongRef = createLargeList(mb: 300);
-          final weakRef = WeakReference(strongRef);
-          expect(unwrapDartOpaque(opaque: strongRef), 'Test');
-          strongRef = null;
-
-          await vmService.gc();
-          await Future<void>.delayed(const Duration(milliseconds: 10));
-          expect(weakRef.target, isNull);
-        });
+        await vmService.gc();
+        await Future<void>.delayed(const Duration(milliseconds: 10));
+        expect(weakRef.target, isNull);
       });
     });
   });
