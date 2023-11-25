@@ -1,0 +1,21 @@
+<html>
+<body>
+
+Experiment (not directly related to flutter_rust_bridge):
+Call Rust WASM from JavaScript.
+
+<script>
+    console.log('Create script element and add to document');
+    const ele = new HTMLScriptElement();
+    ele.src = '/pkg/frb_example_dart_minimal.js';
+    document.head.append(ele);
+
+    ele.onload = () => {
+        console.log('ele.onload called');
+        window.wasm_bindgen = wasm_bindgen;
+        // TODO "module_.bind(null, '${root}_bg.wasm')"
+    };
+</script>
+
+</body>
+</html>
