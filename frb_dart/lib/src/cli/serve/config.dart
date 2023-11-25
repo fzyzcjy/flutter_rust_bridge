@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_print
 
+import 'dart:io';
+
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 
 part 'config.g.dart';
@@ -123,8 +125,11 @@ extension ExtOpts on Opts {
 
 void parseConfig(List<String> args) {
   final config = parseOpts(args);
-  if (config.help) {
-    print("""
+  if (config.help) _printHelpAndExit();
+}
+
+Never _printHelpAndExit() {
+  print("""
 $exec $version
 Develop Rust WASM modules with cross-origin isolation.
 
@@ -133,7 +138,8 @@ USAGE:
 \t$exec --dart-input <ENTRY> --root <ROOT> [OPTIONS] [..REST]
 
 OPTIONS:""");
-    print(_$parserForOpts.usage);
-    return;
-  }
+ 
+  print(_$parserForOpts.usage);
+
+  exit(0);
 }
