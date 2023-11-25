@@ -4,10 +4,9 @@ import 'package:flutter_rust_bridge/src/wasm_module/_web.dart';
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 ExternalLibrary loadExternalLibrary({
   String? defaultExternalLibraryRelativeDirectory,
-  String? stem,
+  required String stem,
 }) {
-  const root = 'pkg/frb_example_pure_dart'; // TODO temp hardcode, just to test!
-  print('loadExternalLibrary return dummy thing');
- 
-  return WasmModule.initialize(kind: const Modules.noModules(root: root));
+  // TODO what about `pkg`
+  final root = 'pkg/$stem';
+  return WasmModule.initialize(kind: Modules.noModules(root: root));
 }
