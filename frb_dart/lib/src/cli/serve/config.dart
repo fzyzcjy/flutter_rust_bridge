@@ -131,6 +131,9 @@ void parseConfig(List<String> args) {
 Never _printHelpAndExit() {
   const exec = 'flutter_rust_bridge_serve';
 
+  // Note: The old code reads pubspec.yaml to print current version,
+  // but we avoid this here, since we need to ensure flutter_rust_bridge's dependencies
+  // are minimal.
   print("""
 $exec
 Develop Rust WASM modules with cross-origin isolation.
