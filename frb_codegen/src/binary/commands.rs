@@ -137,6 +137,7 @@ pub(crate) struct IntegrateCommandArgs {
 }
 
 #[derive(Debug, Args)]
+#[command(disable_help_flag = true)]
 pub(crate) struct BuildWebCommandArgs {
     // https://stackoverflow.com/questions/72399790/clap-capture-all-remaining-arguments-in-one-field-in-derive-api
     #[arg(trailing_var_arg = true, allow_hyphen_values = true, hide = true)]
