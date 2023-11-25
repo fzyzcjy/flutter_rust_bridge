@@ -3,6 +3,8 @@
 import 'dart:io';
 
 import 'package:build_cli_annotations/build_cli_annotations.dart';
+import 'package:flutter_rust_bridge/src/cli/cli_utils.dart';
+import 'package:path/path.dart' as p;
 
 part 'config.g.dart';
 
@@ -124,10 +126,54 @@ extension ExtOpts on Opts {
 }
 
 /// {@macro flutter_rust_bridge.internal}
-Opts parseConfig(List<String> args) {
-  final config = parseOpts(args);
-  if (config.help) _printHelpAndExit();
-  return config;
+class Config {
+  /// {@macro flutter_rust_bridge.internal}
+  final Opts cliOpts;
+
+  /// {@macro flutter_rust_bridge.internal}
+  final String root;
+
+  /// {@macro flutter_rust_bridge.internal}
+  final String wasmOutput;
+
+  /// {@macro flutter_rust_bridge.internal}
+  const Config({
+    required this.cliOpts,
+    required this.root,
+    required this.wasmOutput,
+  });
+}
+
+/// {@macro flutter_rust_bridge.internal}
+Config parseConfig(List<String> args) {
+  final opts = parseOpts(args);
+  if (opts.help) _printHelpAndExit();
+
+  final extra = _parseExtra(opts);
+
+  return Config(
+    cliOpts: opts,
+    root: extra.root,
+    wasmOutput: extra.wasmOutput,
+  );
+}
+
+({String root, String wasmOutput}) _parseExtra(Opts opts) {
+  if (opts.dartInput != null) {
+    if (opts.root == null) {
+      bail('The --root option is required when building plain Dart projects.');
+    }
+    final root = p.canonicalize(opts.root!);
+    return (
+      root: root,
+      wasmOutput: p.canonicalize(opts.wasmOutput ?? '$root/pkg'),
+    );
+  } else {
+    return (
+      root: p.canonicalize(opts.root ?? 'build/web'),
+      wasmOutput: p.canonicalize(opts.wasmOutput ?? 'web/pkg'),
+    );
+  }
 }
 
 Never _printHelpAndExit() {
