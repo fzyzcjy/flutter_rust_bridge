@@ -53,7 +53,7 @@ Future<void> runServer(Config config) async {
   final port = config.port;
   final addr = 'http://localhost:$port';
   await serve(handler, InternetAddress.anyIPv4, port);
-  print('🦀 Server listening on $addr 🎯');
+  print('🦀 Server listening on $addr with content from ${config.webRoot} 🎯');
 
   // TODO these may not be needed, since we use `dart test` now?
   // if (config.runTests) {
