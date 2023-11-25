@@ -3,8 +3,8 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:flutter_rust_bridge/src/cli/config.dart';
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
+import 'package:flutter_rust_bridge/src/cli/serve/config.dart';
 import 'package:puppeteer/puppeteer.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
