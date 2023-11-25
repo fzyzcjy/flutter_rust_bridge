@@ -24,6 +24,9 @@ pub(crate) enum Commands {
     /// Integrate Rust into existing Flutter project
     Integrate(IntegrateCommandArgs),
 
+    /// Compile for the Web (WASM)
+    BuildWeb(BuildWebCommandArgs),
+
     /// Generate internally used code
     #[clap(hide = true)]
     InternalGenerate(InternalGenerateCommandArgs),
@@ -131,6 +134,13 @@ pub(crate) struct CreateCommandArgs {
 #[derive(Debug, Args)]
 pub(crate) struct IntegrateCommandArgs {
     // nothing yet
+}
+
+#[derive(Debug, Args)]
+pub(crate) struct BuildWebCommandArgs {
+    // https://stackoverflow.com/questions/72399790/clap-capture-all-remaining-arguments-in-one-field-in-derive-api
+    #[arg(trailing_var_arg = true, allow_hyphen_values = true, hide = true)]
+    args: Vec<String>,
 }
 
 #[derive(Debug, Args)]
