@@ -1,14 +1,19 @@
+[workspace]
+# Use this empty `[workspace]` entry to exclude it from the main workspace.
+# This is to ensure the example mimics how a typical user will use it.
+# For example, the `target` directory is different with and without workspaces.
+
 [package]
 name = "frb_example_pure_dart"
 version = "0.1.0"
-edition.workspace = true
+edition = "2018"
 
 [lib]
 crate-type = ["cdylib"]
 
 [dependencies]
-anyhow = { workspace = true, features = ["backtrace"] }
-flutter_rust_bridge = { workspace = true, features = ["chrono", "uuid" ] }
+anyhow = { version = "1.0.64", features = ["backtrace"] }
+flutter_rust_bridge = { path = "../../../frb_rust", features = ["chrono", "uuid" ] }
 log = "0.4.19"
 backtrace = "0.3.68"
 chrono = "0.4.26"
