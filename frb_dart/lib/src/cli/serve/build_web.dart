@@ -9,15 +9,18 @@ import 'package:path/path.dart' as p;
 /// {@macro flutter_rust_bridge.internal}
 Future<void> buildWeb(Config config) async {
   final crateDir = config.cliOpts.crate;
+
   final manifest = jsonDecode(await runCommand(
     'cargo',
     ['read-manifest'],
     pwd: crateDir,
     silent: true,
   ));
+
   final String crateName =
       (manifest['targets'] as List).firstWhere((target) => (target['kind'] as List).contains('cdylib'))['name'];
   if (crateName.isEmpty) bail('Crate name cannot be empty.');
+
   await runCommand('wasm-pack', [
     'build', '-t', 'no-modules', '-d', config.wasmOutput, '--no-typescript',
     '--out-name', crateName,
@@ -31,6 +34,7 @@ Future<void> buildWeb(Config config) async {
     'RUSTFLAGS': '-C target-feature=+atomics,+bulk-memory,+mutable-globals',
     if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
   });
+
   if (config.cliOpts.shouldRunBindgen) {
     await runCommand('wasm-bindgen', [
       '$crateDir/target/wasm32-unknown-unknown/${config.cliOpts.release ? 'release' : 'debug'}/$crateName.wasm',
@@ -43,6 +47,7 @@ Future<void> buildWeb(Config config) async {
       if (config.cliOpts.referenceTypes) '--reference-types',
     ]);
   }
+ 
   if (config.cliOpts.dartInput != null) {
     final output = p.basename(config.cliOpts.dartInput!);
     await runCommand('dart', [
