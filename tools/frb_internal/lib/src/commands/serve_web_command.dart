@@ -28,21 +28,14 @@ class ServeWebCommand extends Command<void> {
   }
 }
 
-final _kOpen = const {
-      'linux': 'xdg-open',
-      'macos': 'open',
-      'windows': 'start',
-    }[Platform.operatingSystem] ??
-    'open';
-
 /// {@macro flutter_rust_bridge.internal}
 Future<void> _runServer() async {
   final ip = InternetAddress.anyIPv4;
 
   final staticFilesHandler = createStaticHandler(config.root, defaultDocument: 'index.html');
-  Browser? browser;
 
-  // TODO
+  // TODO these may not be needed, since we use `dart test` now?
+  // Browser? browser;
   // Test helper.
   // final socketHandler = webSocketHandler((WebSocketChannel channel) async {
   //   await for (final mes in channel.stream) {
@@ -80,14 +73,24 @@ Future<void> _runServer() async {
   await serve(handler, ip, port);
   print('🦀 Server listening on $addr 🎯');
 
-  if (config.cliOpts.runTests) {
-    browser = await puppeteer.launch(
-      headless: true,
-      timeout: const Duration(minutes: 5),
-    );
-    final page = await browser.newPage();
-    await page.goto(addr);
-  } else if (config.cliOpts.open) {
-    runCommand(_kOpen, [addr]);
-  }
+  // TODO these may not be needed, since we use `dart test` now?
+  // if (config.cliOpts.runTests) {
+  //   browser = await puppeteer.launch(
+  //     headless: true,
+  //     timeout: const Duration(minutes: 5),
+  //   );
+  //   final page = await browser.newPage();
+  //   await page.goto(addr);
+  // } else if (config.cliOpts.open) {
+  //   runCommand(_kOpen, [addr]);
+  // }
 }
+
+// TODO these may not be needed, since we use `dart test` now?
+// final _kOpen = const {
+//   'linux': 'xdg-open',
+//   'macos': 'open',
+//   'windows': 'start',
+// }[Platform.operatingSystem] ??
+//     'open';
+//
