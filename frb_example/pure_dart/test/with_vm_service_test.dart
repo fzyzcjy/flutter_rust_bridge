@@ -2,6 +2,8 @@ import 'dart:typed_data';
 
 import 'package:frb_example_pure_dart/src/rust/api/dart_opaque.dart';
 import 'package:frb_example_pure_dart/src/rust/api/dart_opaque_sync.dart';
+import 'package:frb_example_pure_dart/src/rust/api/primitive_list_misc.dart';
+import 'package:frb_example_pure_dart/src/rust/api/primitive_list_sync_misc.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
@@ -19,7 +21,7 @@ Future<void> main() async {
     test('allocate a lot of zero copy data to check that it is properly freed', () async {
       const n = 10000;
       int calls = 0;
-     
+
       // import 'package:flutter_rust_bridge/src/ffi/dart_cobject.dart' as dart_cobject;
       dart_cobject.testTool!.onExternalTypedDataFinalizer.add(expectAsync1(
         (length) {

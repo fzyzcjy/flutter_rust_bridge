@@ -18,6 +18,7 @@ pub mod newtype_pattern;
 pub mod optional;
 pub mod optional_primitive_misc;
 pub mod primitive_list_misc;
+pub mod primitive_list_sync_misc;
 pub mod primitive_misc;
 pub mod pseudo_manual;
 pub mod raw_string;

@@ -20,6 +20,7 @@ import 'api/newtype_pattern.dart';
 import 'api/optional.dart';
 import 'api/optional_primitive_misc.dart';
 import 'api/primitive_list_misc.dart';
+import 'api/primitive_list_sync_misc.dart';
 import 'api/primitive_misc.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/enumeration_twin_sync.dart';
@@ -5098,6 +5099,21 @@ class RustLibWire implements BaseWire {
   late final _wire_handle_zero_copy_vec_of_primitive =
       _wire_handle_zero_copy_vec_of_primitivePtr
           .asFunction<void Function(int, int)>();
+
+  WireSyncReturn wire_handle_zero_copy_vec_of_primitive_sync(
+    int n,
+  ) {
+    return _wire_handle_zero_copy_vec_of_primitive_sync(
+      n,
+    );
+  }
+
+  late final _wire_handle_zero_copy_vec_of_primitive_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int32)>>(
+          'wire_handle_zero_copy_vec_of_primitive_sync');
+  late final _wire_handle_zero_copy_vec_of_primitive_sync =
+      _wire_handle_zero_copy_vec_of_primitive_syncPtr
+          .asFunction<WireSyncReturn Function(int)>();
 
   void wire_primitive_types(
     int port_,

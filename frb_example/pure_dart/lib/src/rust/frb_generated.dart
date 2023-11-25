@@ -20,6 +20,7 @@ import 'api/newtype_pattern.dart';
 import 'api/optional.dart';
 import 'api/optional_primitive_misc.dart';
 import 'api/primitive_list_misc.dart';
+import 'api/primitive_list_sync_misc.dart';
 import 'api/primitive_misc.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/enumeration_twin_sync.dart';
@@ -466,6 +467,9 @@ abstract class RustLibApi extends BaseApi {
       {required int n, dynamic hint});
 
   Future<ZeroCopyVecOfPrimitivePack> handleZeroCopyVecOfPrimitive(
+      {required int n, dynamic hint});
+
+  ZeroCopyVecOfPrimitivePack handleZeroCopyVecOfPrimitiveSync(
       {required int n, dynamic hint});
 
   Future<int> primitiveTypes(
@@ -3971,6 +3975,27 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kHandleZeroCopyVecOfPrimitiveConstMeta =>
       const TaskConstMeta(
         debugName: "handle_zero_copy_vec_of_primitive",
+        argNames: ["n"],
+      );
+
+  @override
+  ZeroCopyVecOfPrimitivePack handleZeroCopyVecOfPrimitiveSync(
+      {required int n, dynamic hint}) {
+    var arg0 = api2wire_i_32(n);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_zero_copy_vec_of_primitive_sync(arg0),
+      parseSuccessData: _wire2api_zero_copy_vec_of_primitive_pack,
+      parseErrorData: null,
+      constMeta: kHandleZeroCopyVecOfPrimitiveSyncConstMeta,
+      argValues: [n],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleZeroCopyVecOfPrimitiveSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_zero_copy_vec_of_primitive_sync",
         argNames: ["n"],
       );
 

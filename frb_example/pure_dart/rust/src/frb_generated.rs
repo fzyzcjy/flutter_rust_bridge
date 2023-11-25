@@ -2562,6 +2562,23 @@ fn wire_handle_zero_copy_vec_of_primitive_impl(
             },
         )
 }
+fn wire_handle_zero_copy_vec_of_primitive_sync_impl(
+    n: impl Wire2Api<i32> + core::panic::UnwindSafe,
+) -> flutter_rust_bridge::support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "handle_zero_copy_vec_of_primitive_sync",
+            port: None,
+            mode: flutter_rust_bridge::FfiCallMode::Sync,
+        },
+        move || {
+            let api_n = n.wire2api();
+            Result::<_, ()>::Ok(
+                crate::api::primitive_list_sync_misc::handle_zero_copy_vec_of_primitive_sync(api_n),
+            )
+        },
+    )
+}
 fn wire_primitive_types_impl(
     port_: flutter_rust_bridge::MessagePort,
     my_i32: impl Wire2Api<i32> + core::panic::UnwindSafe,

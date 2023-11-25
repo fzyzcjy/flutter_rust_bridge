@@ -2651,6 +2651,13 @@ pub fn wire_handle_zero_copy_vec_of_primitive(port_: flutter_rust_bridge::Messag
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_zero_copy_vec_of_primitive_sync(
+    n: i32,
+) -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_handle_zero_copy_vec_of_primitive_sync_impl(n)
+}
+
+#[wasm_bindgen]
 pub fn wire_primitive_types(
     port_: flutter_rust_bridge::MessagePort,
     my_i32: i32,
