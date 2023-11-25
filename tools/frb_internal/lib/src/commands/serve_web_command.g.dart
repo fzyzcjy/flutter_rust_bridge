@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'config.dart';
+part of 'serve_web_command.dart';
 
 // **************************************************************************
 // CliGenerator
@@ -44,4 +44,12 @@ final _$parserForConfig = _$populateConfigParser(ArgParser());
 Config parseConfig(List<String> args) {
   final result = _$parserForConfig.parse(args);
   return _$parseConfigResult(result);
+}
+
+abstract class _$ConfigCommand<T> extends Command<T> {
+  _$ConfigCommand() {
+    _$populateConfigParser(argParser);
+  }
+
+  late final _options = _$parseConfigResult(argResults!);
 }

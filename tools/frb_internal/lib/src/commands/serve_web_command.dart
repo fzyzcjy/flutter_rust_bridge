@@ -1,8 +1,10 @@
 import 'package:args/command_runner.dart';
-import 'package:flutter_rust_bridge_internal/src/serve_web/config.dart';
+import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge_internal/src/serve_web/run_server.dart';
 
-class ServeWebCommand extends Command<void> {
+part 'serve_web_command.g.dart';
+
+class ServeWebCommand extends _$ConfigCommand<void> {
   @override
   String get name => 'serve-web';
 
@@ -11,6 +13,24 @@ class ServeWebCommand extends Command<void> {
 
   @override
   Future<void> run() async {
-    await runServer(parseConfig());
+    await runServer(_options);
   }
+}
+
+@CliOptions(createCommand: true)
+class Config {
+  @CliOption(
+    abbr: 'r',
+    help: 'Root of the directory to be served',
+    valueHelp: 'ROOT',
+  )
+  late String webRoot;
+
+  @CliOption(
+    abbr: 'p',
+    help: 'HTTP port to listen to',
+    valueHelp: 'PORT',
+    defaultsTo: 8080,
+  )
+  late int port;
 }

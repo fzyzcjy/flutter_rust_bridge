@@ -2,7 +2,7 @@
 
 import 'dart:io';
 
-import 'package:flutter_rust_bridge_internal/src/serve_web/config.dart';
+import 'package:flutter_rust_bridge_internal/src/commands/serve_web_command.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
 import 'package:shelf_static/shelf_static.dart';
