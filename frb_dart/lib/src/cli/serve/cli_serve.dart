@@ -9,7 +9,7 @@ void runCliServe(List<String> args) async {
   final config = parseConfig(args);
 
   if (config.cliOpts.build) {
-    await buildWeb(config);
+    TODO;
   }
 
   await runServer(config);
