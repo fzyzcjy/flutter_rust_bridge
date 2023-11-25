@@ -67,7 +67,7 @@ impl InternalConfig {
             .unwrap_or(find_dart_package_dir(&dart_output_dir)?);
 
         let default_external_library_loader =
-            compute_default_external_library_loader(&rust_crate_dir, &dart_root);
+            compute_default_external_library_loader(&rust_crate_dir, &dart_root, &config);
 
         let wasm_enabled = config.wasm.unwrap_or(true);
         let dart_enums_style = config.dart_enums_style.unwrap_or(true);
@@ -158,6 +158,7 @@ fn parse_dump_contents(config: &Config) -> Vec<ConfigDumpContent> {
 fn compute_default_external_library_loader(
     rust_crate_dir: &Path,
     dart_root: &Path,
+    config: &Config,
 ) -> GeneratorWireDartDefaultExternalLibraryLoaderInternalConfig {
     GeneratorWireDartDefaultExternalLibraryLoaderInternalConfig {
         stem: compute_default_external_library_stem(&rust_crate_dir)
@@ -167,7 +168,9 @@ fn compute_default_external_library_loader(
             &dart_root,
         )
         .unwrap_or(FALLBACK_DEFAULT_EXTERNAL_LIBRARY_RELATIVE_DIRECTORY.to_owned()),
-        web_prefix: "pkg/".into(),
+        web_prefix: config
+            .default_external_library_loader_web_prefix
+            .unwrap_or("pkg/".into()),
     }
 }
 

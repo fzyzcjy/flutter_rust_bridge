@@ -113,6 +113,10 @@ pub(crate) struct GenerateCommandArgs {
     #[arg(long)]
     pub no_deps_check: bool,
 
+    /// The value for defaultExternalLibraryLoader.webPrefix
+    #[arg(long)]
+    pub default_external_library_loader_web_prefix: Option<String>,
+
     /// Disable language features introduced in Dart 3.
     #[arg(long)]
     pub no_dart3: bool,
