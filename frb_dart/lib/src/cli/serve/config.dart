@@ -8,9 +8,7 @@ import 'package:path/path.dart' as p;
 
 part 'config.g.dart';
 
-/// {@template flutter_rust_bridge.cli}
-/// This is mainly used for cli, not for direct function call.
-/// {@endtemplate}
+/// {@macro flutter_rust_bridge.cli}
 @CliOptions()
 class Opts {
   /// {@macro flutter_rust_bridge.cli}
