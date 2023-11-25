@@ -24,3 +24,6 @@ mod wasm_bindgen_src;
 pub trait DartSafe: UnwindSafe + RefUnwindSafe {}
 
 impl<T: UnwindSafe + RefUnwindSafe> DartSafe for T {}
+
+#[cfg(wasm)]
+pub use wasm_bindgen;
