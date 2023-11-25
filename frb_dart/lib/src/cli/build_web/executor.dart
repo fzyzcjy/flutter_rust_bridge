@@ -5,20 +5,46 @@ import 'package:flutter_rust_bridge/src/cli/cli_utils.dart';
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 
 /// {@macro flutter_rust_bridge.cli}
-class BuildWebArgs {}
+class BuildWebArgs {
+  /// {@macro flutter_rust_bridge.cli}
+  final String wasmOutput;
+
+  /// {@macro flutter_rust_bridge.cli}
+  final bool release;
+
+  /// {@macro flutter_rust_bridge.cli}
+  final String rustCrateDir;
+
+  /// {@macro flutter_rust_bridge.cli}
+  final List<String> wasmPackArgs;
+
+  /// {@macro flutter_rust_bridge.cli}
+  final bool enableWasmBindgen;
+
+  /// {@macro flutter_rust_bridge.cli}
+  final List<String> wasmBindgenArgs;
+
+  /// {@macro flutter_rust_bridge.cli}
+  const BuildWebArgs({
+    required this.wasmOutput,
+    required this.release,
+    required this.rustCrateDir,
+    required this.wasmPackArgs,
+    required this.enableWasmBindgen,
+    required this.wasmBindgenArgs,
+  });
+}
 
 /// {@macro flutter_rust_bridge.cli}
-Future<void> executeBuildWeb(List<String> args) async {
-  await _sanityChecks(config);
+Future<void> executeBuildWeb(BuildWebArgs args) async {
+  await _sanityChecks(args);
 
-  final crateDir = config.cliOpts.crate;
+  final rustCrateName = await _getRustCreateName(rustCrateDir: args.rustCrateDir);
 
-  final crateName = await _getCreateName(crateDir);
+  await _executeWasmPack(args, rustCrateName: rustCrateName);
 
-  await _executeWasmPack(config, crateName, crateDir);
-
-  if (config.cliOpts.shouldRunBindgen) {
-    await _executeWasmBindgen(crateDir, config, crateName);
+  if (args.enableWasmBindgen) {
+    await _executeWasmBindgen(args, rustCrateName: rustCrateName);
   }
 
   // TODO
@@ -29,7 +55,7 @@ Future<void> executeBuildWeb(List<String> args) async {
   // }
 }
 
-Future<void> _sanityChecks(Config config) async {
+Future<void> _sanityChecks(BuildWebArgs args) async {
   final which = Platform.isWindows ? 'where.exe' : 'which';
 
   await runCommand(which, ['wasm-pack']).catchError((_) {
@@ -40,7 +66,7 @@ Future<void> _sanityChecks(Config config) async {
     );
   });
 
-  if (config.cliOpts.shouldRunBindgen) {
+  if (args.enableWasmBindgen) {
     await runCommand(which, ['wasm-bindgen']).catchError((_) {
       bail(
         'wasm-bindgen flags are enabled, but wasm-bindgen could not be found in the path.\n'
@@ -49,7 +75,7 @@ Future<void> _sanityChecks(Config config) async {
     });
   }
 
-  final crateDir = config.cliOpts.crate;
+  final crateDir = args.rustCrateDir;
   if (!await File('$crateDir/Cargo.toml').exists()) {
     bail(
       '$crateDir is not a crate directory.\n'
@@ -58,30 +84,33 @@ Future<void> _sanityChecks(Config config) async {
   }
 }
 
-Future<String> _getCreateName(crateDir) async {
+Future<String> _getRustCreateName({required String rustCrateDir}) async {
   final manifest = jsonDecode(await runCommand(
     'cargo',
     ['read-manifest'],
-    pwd: crateDir,
+    pwd: rustCrateDir,
     silent: true,
   ));
 
-  final crateName =
+  final rustCrateName =
       (manifest['targets'] as List).firstWhere((target) => (target['kind'] as List).contains('cdylib'))['name'];
-  if (crateName.isEmpty) bail('Crate name cannot be empty.');
+  if (rustCrateName.isEmpty) bail('Crate name cannot be empty.');
 
-  return crateName;
+  return rustCrateName;
 }
 
-Future<void> _executeWasmPack(Config config, String crateName, crateDir) async {
+Future<void> _executeWasmPack(BuildWebArgs args, {required String rustCrateName}) async {
   await runCommand('wasm-pack', [
-    'build', '-t', 'no-modules', '-d', config.wasmOutput, '--no-typescript',
-    '--out-name', crateName,
-    if (!config.cliOpts.release) '--dev', crateDir,
+    'build', '-t', 'no-modules', '-d', args.wasmOutput, '--no-typescript',
+    '--out-name', rustCrateName,
+    if (!args.release) '--dev',
+    args.rustCrateDir,
     '--', // cargo build args
     '-Z', 'build-std=std,panic_abort',
-    if (config.cliOpts.noDefaultFeatures) '--no-default-features',
-    if (config.cliOpts.features != null) '--features=${config.cliOpts.features}'
+    ...args.wasmPackArgs,
+    // migrate to `wasmPackArgs`
+    // if (config.cliOpts.noDefaultFeatures) '--no-default-features',
+    // if (config.cliOpts.features != null) '--features=${config.cliOpts.features}'
   ], env: {
     'RUSTUP_TOOLCHAIN': 'nightly',
     'RUSTFLAGS': '-C target-feature=+atomics,+bulk-memory,+mutable-globals',
@@ -89,16 +118,18 @@ Future<void> _executeWasmPack(Config config, String crateName, crateDir) async {
   });
 }
 
-Future<void> _executeWasmBindgen(crateDir, Config config, String crateName) async {
+Future<void> _executeWasmBindgen(BuildWebArgs args, {required String rustCrateName}) async {
   await runCommand('wasm-bindgen', [
-    '$crateDir/target/wasm32-unknown-unknown/${config.cliOpts.release ? 'release' : 'debug'}/$crateName.wasm',
+    '${args.rustCrateDir}/target/wasm32-unknown-unknown/${args.release ? 'release' : 'debug'}/$rustCrateName.wasm',
     '--out-dir',
-    config.wasmOutput,
+    args.wasmOutput,
     '--no-typescript',
     '--target',
     'no-modules',
-    if (config.cliOpts.weakRefs) '--weak-refs',
-    if (config.cliOpts.referenceTypes) '--reference-types',
+    ...args.wasmBindgenArgs,
+    // migrate to `wasmPackArgs`
+    // if (config.cliOpts.weakRefs) '--weak-refs',
+    // if (config.cliOpts.referenceTypes) '--reference-types',
   ]);
 }
 
