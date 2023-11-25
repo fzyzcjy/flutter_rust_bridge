@@ -22,7 +22,7 @@ class Config {
     abbr: 'c',
     help: 'Directory of the crate',
     valueHelp: 'CRATE',
-    defaultsTo: 'native',
+    defaultsTo: 'rust',
   )
   late String rustCrateDir;
 

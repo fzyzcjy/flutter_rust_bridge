@@ -25,7 +25,7 @@ ArgParser _$populateConfigParser(ArgParser parser) => parser
     abbr: 'c',
     help: 'Directory of the crate',
     valueHelp: 'CRATE',
-    defaultsTo: 'native',
+    defaultsTo: 'rust',
   )
   ..addOption(
     'wasm-output',
