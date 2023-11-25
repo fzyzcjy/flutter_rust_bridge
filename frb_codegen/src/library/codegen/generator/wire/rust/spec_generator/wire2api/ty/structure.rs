@@ -64,7 +64,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for StructRefWireRustGenerator<'a> {
             )),
             wasm: Some(format!(
                 "
-                let self_ = self.dyn_into::<JsArray>().unwrap();
+                let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
                 assert_eq!(self_.length(), {len}, \"Expected {len} elements, got {{}}\", self_.length());
                 {rust_api_type}{left}{fields}{right}
                 ",

@@ -76,7 +76,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
                     _ => unreachable!(),
                 }}",
                 if wasm {
-                    "let self_ = self.unchecked_into::<JsArray>();"
+                    "let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();"
                 } else {
                     ""
                 },

@@ -82,7 +82,7 @@ const WIRE2API_BODY_IO: &'static str = "
     vec.into_iter().map(Wire2Api::wire2api).collect()
 ";
 const WIRE2API_BODY_WASM: &'static str =
-    "self.dyn_into::<JsArray>().unwrap().iter().map(Wire2Api::wire2api).collect()";
+    "self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap().iter().map(Wire2Api::wire2api).collect()";
 
 pub(crate) fn generate_list_generate_allocate_func(
     safe_ident: &str,
