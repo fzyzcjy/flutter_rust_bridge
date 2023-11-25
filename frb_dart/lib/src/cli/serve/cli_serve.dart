@@ -12,23 +12,18 @@ final _kWhich = Platform.isWindows ? 'where.exe' : 'which';
 
 /// {@macro flutter_rust_bridge.internal}
 void runCliServe(List<String> args) async {
-  final config = parseConfig();
+  final config = parseConfig(args);
 
   await _sanityChecks(config);
 
-  if (config.build) {
-    await buildWeb(
-      config,
-      wasmOutput: wasmOutput,
-      root: root,
-      args: args,
-    );
+  if (config.cliOpts.build) {
+    await buildWeb(config);
   }
 
-  await runServer(config, root: root);
+  await runServer(config);
 }
 
-Future<void> _sanityChecks(Opts config) async {
+Future<void> _sanityChecks(Config config) async {
   await runCommand(_kWhich, ['wasm-pack']).catchError((_) {
     bail(
       'wasm-pack is required, but not found in the path.\n'
@@ -37,7 +32,7 @@ Future<void> _sanityChecks(Opts config) async {
     );
   });
 
-  if (config.shouldRunBindgen) {
+  if (config.cliOpts.shouldRunBindgen) {
     await runCommand(_kWhich, ['wasm-bindgen']).catchError((_) {
       bail(
         'wasm-bindgen flags are enabled, but wasm-bindgen could not be found in the path.\n'
@@ -46,7 +41,7 @@ Future<void> _sanityChecks(Opts config) async {
     });
   }
 
-  final crateDir = config.crate;
+  final crateDir = config.cliOpts.crate;
   if (!await File('$crateDir/Cargo.toml').exists()) {
     bail(
       '$crateDir is not a crate directory.\n'

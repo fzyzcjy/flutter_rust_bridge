@@ -20,10 +20,10 @@ final _kOpen = const {
     'open';
 
 /// {@macro flutter_rust_bridge.internal}
-Future<void> runServer(Opts config, {required String root}) async {
+Future<void> runServer(Config config) async {
   final ip = InternetAddress.anyIPv4;
 
-  final staticFilesHandler = createStaticHandler(root, defaultDocument: 'index.html');
+  final staticFilesHandler = createStaticHandler(config.root, defaultDocument: 'index.html');
   Browser? browser;
 
   // Test helper.
@@ -42,7 +42,7 @@ Future<void> runServer(Opts config, {required String root}) async {
       }
     }
   });
-  final shouldRelaxCoep = config.shouldRelaxCoep;
+  final shouldRelaxCoep = config.cliOpts.shouldRelaxCoep;
   final handler = const Pipeline().addMiddleware((handler) {
     return (req) async {
       final res = await handler(req);
@@ -54,18 +54,18 @@ Future<void> runServer(Opts config, {required String root}) async {
   }).addHandler(Cascade().add(socketHandler).add(staticFilesHandler).handler);
 
   final portEnv = Platform.environment['PORT'];
-  final port = portEnv == null ? config.port : int.parse(portEnv);
+  final port = portEnv == null ? config.cliOpts.port : int.parse(portEnv);
   final addr = 'http://localhost:$port';
   await serve(handler, ip, port);
   print('🦀 Server listening on $addr 🎯');
-  if (config.runTests) {
+  if (config.cliOpts.runTests) {
     browser = await puppeteer.launch(
       headless: true,
       timeout: const Duration(minutes: 5),
     );
     final page = await browser.newPage();
     await page.goto(addr);
-  } else if (config.open) {
+  } else if (config.cliOpts.open) {
     runCommand(_kOpen, [addr]);
   }
 }

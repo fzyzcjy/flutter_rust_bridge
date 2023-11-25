@@ -111,9 +111,6 @@ class Opts {
     negatable: false,
   )
   late bool noDefaultFeatures;
-
-  /// {@macro flutter_rust_bridge.cli}
-  static List<String> rest(List<String> args) => _$parserForOpts.parse(args).rest;
 }
 
 /// {@macro flutter_rust_bridge.internal}
@@ -137,10 +134,14 @@ class Config {
   final String wasmOutput;
 
   /// {@macro flutter_rust_bridge.internal}
+  final List<String> restArgs;
+
+  /// {@macro flutter_rust_bridge.internal}
   const Config({
     required this.cliOpts,
     required this.root,
     required this.wasmOutput,
+    required this.restArgs,
   });
 }
 
@@ -155,6 +156,7 @@ Config parseConfig(List<String> args) {
     cliOpts: opts,
     root: extra.root,
     wasmOutput: extra.wasmOutput,
+    restArgs: _$parserForOpts.parse(args).rest,
   );
 }
 
