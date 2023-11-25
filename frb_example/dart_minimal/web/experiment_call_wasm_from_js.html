@@ -6,7 +6,7 @@ Call Rust WASM from JavaScript.
 
 <script>
     console.log('Create script element and add to document');
-    const ele = new HTMLScriptElement();
+    const ele = document.createElement('script');
     ele.src = '/pkg/frb_example_dart_minimal.js';
     document.head.append(ele);
 
