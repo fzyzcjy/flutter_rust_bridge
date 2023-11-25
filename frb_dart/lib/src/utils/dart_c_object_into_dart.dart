@@ -134,7 +134,7 @@ final _externalTypedDataFinalizer = Finalizer<_ExternalTypedDataFinalizerArgs>((
   final handleFinalizer = externalTypedData.callback.asFunction<_DartExternalTypedDataFinalizer>();
   handleFinalizer(externalTypedData.length, externalTypedData.peer);
 
-  debugOnExternalTypedDataFinalizer?.call(dataLength: externalTypedData.length);
+  debugOnExternalTypedDataFinalizer?.call(externalTypedData.length);
 });
 
 /// {@macro flutter_rust_bridge.internal}
