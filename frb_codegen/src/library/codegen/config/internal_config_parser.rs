@@ -167,6 +167,7 @@ fn compute_default_external_library_loader(
             &dart_root,
         )
         .unwrap_or(FALLBACK_DEFAULT_EXTERNAL_LIBRARY_RELATIVE_DIRECTORY.to_owned()),
+        web_prefix: "pkg/".into(),
     }
 }
 

@@ -125,12 +125,13 @@ fn generate_boilerplate(
                   ExternalLibraryLoaderConfig get defaultExternalLibraryLoaderConfig => const ExternalLibraryLoaderConfig(
                     stem: '{stem}',
                     ioDirectory: '{io_directory}',
-                    webPrefix: 'pkg/',
+                    webPrefix: '{web_prefix}',
                   );
                 }}
                 "#,
                 stem = context.config.default_external_library_loader.stem,
                 io_directory = context.config.default_external_library_loader.io_directory,
+                web_prefix = context.config.default_external_library_loader.web_prefix,
             ),
             ..Default::default()
         }],
