@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
 import 'package:frb_example_pure_dart/src/rust/api/dart_opaque.dart';
 import 'package:frb_example_pure_dart/src/rust/api/dart_opaque_sync.dart';
 import 'package:frb_example_pure_dart/src/rust/api/primitive_list_misc.dart';

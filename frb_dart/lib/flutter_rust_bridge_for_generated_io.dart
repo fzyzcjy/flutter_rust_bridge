@@ -2,6 +2,7 @@
 library;
 
 export 'flutter_rust_bridge_for_generated_common.dart';
+export 'src/dart_c_object_into_dart/_io.dart' show debugOnExternalTypedDataFinalizer;
 export 'src/main_components/wire/_io.dart';
 export 'src/manual_impl/_io.dart';
 export 'src/opaque/_io.dart';

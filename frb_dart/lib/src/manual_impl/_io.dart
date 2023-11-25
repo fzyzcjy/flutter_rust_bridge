@@ -1,7 +1,7 @@
 import 'dart:ffi';
 
-import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
-import 'package:flutter_rust_bridge/src/utils/dart_c_object_into_dart.dart';
+import 'package:flutter_rust_bridge/src/dart_c_object_into_dart/_io.dart';
+import 'package:flutter_rust_bridge/src/platform_types_io.dart';
 
 /// Generates the dynamic Dart object from either an FFI struct or a JS value
 ///
