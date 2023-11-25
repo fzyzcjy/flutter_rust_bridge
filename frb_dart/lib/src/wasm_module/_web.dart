@@ -79,6 +79,7 @@ class _WasmBindgenNoModules extends Modules {
     await script.onLoad.first;
 
     jsEval('window.wasm_bindgen = wasm_bindgen');
+
     final module_ = module?.call() ?? _noModules!;
 
     return await promiseToFuture(module_('${root}_bg.wasm'));
