@@ -39,8 +39,8 @@ class Config {
   late bool verbose;
 
   /// {@macro flutter_rust_bridge.cli}
-  @CliOption(help: 'Arguments passed to wasm-pack')
-  late List<String> wasmPackArgs;
+  @CliOption(help: 'Arguments passed to cargo-build')
+  late List<String> cargoBuildArgs;
 
   /// {@macro flutter_rust_bridge.cli}
   @CliOption(help: 'Arguments passed to wasm-bindgen')
@@ -94,7 +94,7 @@ BuildWebArgs parseConfigToArgs(List<String> args) {
     release: config.release,
     verbose: config.verbose,
     rustCrateDir: config.rustCrateDir,
-    wasmPackArgs: config.wasmPackArgs,
+    cargoBuildArgs: config.cargoBuildArgs,
     enableWasmBindgen: config.wasmBindgenArgs.isNotEmpty,
     wasmBindgenArgs: config.wasmBindgenArgs,
   );

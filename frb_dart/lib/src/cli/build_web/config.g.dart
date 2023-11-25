@@ -12,7 +12,7 @@ Config _$parseConfigResult(ArgResults result) => Config()
   ..output = result['output'] as String?
   ..release = result['release'] as bool
   ..verbose = result['verbose'] as bool
-  ..wasmPackArgs = result['wasm-pack-args'] as List<String>
+  ..cargoBuildArgs = result['cargo-build-args'] as List<String>
   ..wasmBindgenArgs = result['wasm-bindgen-args'] as List<String>
   ..help = result['help'] as bool;
 
@@ -45,8 +45,8 @@ ArgParser _$populateConfigParser(ArgParser parser) => parser
     help: 'Display more verbose information',
   )
   ..addMultiOption(
-    'wasm-pack-args',
-    help: 'Arguments passed to wasm-pack',
+    'cargo-build-args',
+    help: 'Arguments passed to cargo-build',
   )
   ..addMultiOption(
     'wasm-bindgen-args',

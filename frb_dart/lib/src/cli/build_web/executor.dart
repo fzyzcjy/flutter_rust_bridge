@@ -22,7 +22,7 @@ class BuildWebArgs {
   final String rustCrateDir;
 
   /// {@macro flutter_rust_bridge.cli}
-  final List<String> wasmPackArgs;
+  final List<String> cargoBuildArgs;
 
   /// {@macro flutter_rust_bridge.cli}
   final bool enableWasmBindgen;
@@ -37,7 +37,7 @@ class BuildWebArgs {
     required this.release,
     required this.verbose,
     required this.rustCrateDir,
-    required this.wasmPackArgs,
+    required this.cargoBuildArgs,
     required this.enableWasmBindgen,
     required this.wasmBindgenArgs,
   });
@@ -115,8 +115,8 @@ Future<void> _executeWasmPack(BuildWebArgs args, {required String rustCrateName}
     args.rustCrateDir,
     '--', // cargo build args
     '-Z', 'build-std=std,panic_abort',
-    ...args.wasmPackArgs,
-    // migrate to `wasmPackArgs`
+    ...args.cargoBuildArgs,
+    // migrate to `cargoBuildArgs`
     // if (config.cliOpts.noDefaultFeatures) '--no-default-features',
     // if (config.cliOpts.features != null) '--features=${config.cliOpts.features}'
   ], env: {
@@ -135,7 +135,7 @@ Future<void> _executeWasmBindgen(BuildWebArgs args, {required String rustCrateNa
     '--target',
     'no-modules',
     ...args.wasmBindgenArgs,
-    // migrate to `wasmPackArgs`
+    // migrate to `wasmBindgenArgs`
     // if (config.cliOpts.weakRefs) '--weak-refs',
     // if (config.cliOpts.referenceTypes) '--reference-types',
   ]);
