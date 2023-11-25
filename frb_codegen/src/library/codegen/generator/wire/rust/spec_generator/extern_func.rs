@@ -39,7 +39,7 @@ impl ExternFunc {
         };
         let attribute = match self.target {
             Target::Io => "#[no_mangle]",
-            Target::Wasm => "#[wasm_bindgen::wasm_bindgen]",
+            Target::Wasm => "#[flutter_rust_bridge::wasm_bindgen::wasm_bindgen]",
         };
         let ExternFunc {
             func_name, body, ..

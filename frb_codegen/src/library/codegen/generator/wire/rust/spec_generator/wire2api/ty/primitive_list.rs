@@ -49,7 +49,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for PrimitiveListWireRustGenerator<'a> {
             IrTypePrimitive::I64 | IrTypePrimitive::U64 => Some(
                 format!(
                     "let buf = self.dyn_into::<{}>().unwrap();
-                    let buf = wasm_bindgen::js_sys::Uint8Array::new(&buf.buffer());
+                    let buf = flutter_rust_bridge::wasm_bindgen::js_sys::Uint8Array::new(&buf.buffer());
                     flutter_rust_bridge::support::slice_from_byte_buffer(buf.to_vec()).into()",
                     rust_wasm_wire_type(&self.ir)
                 )
@@ -108,16 +108,22 @@ impl<'a> WireRustGeneratorWire2apiTrait for PrimitiveListWireRustGenerator<'a> {
 
 fn rust_wasm_wire_type(ir: &IrTypePrimitiveList) -> &str {
     match &ir.primitive {
-        IrTypePrimitive::U8 => "wasm_bindgen::js_sys::Uint8Array",
-        IrTypePrimitive::I8 => "wasm_bindgen::js_sys::Int8Array",
-        IrTypePrimitive::U16 => "wasm_bindgen::js_sys::Uint16Array",
-        IrTypePrimitive::I16 => "wasm_bindgen::js_sys::Int16Array",
-        IrTypePrimitive::U32 | IrTypePrimitive::Usize => "wasm_bindgen::js_sys::Uint32Array",
-        IrTypePrimitive::I32 | IrTypePrimitive::Isize => "wasm_bindgen::js_sys::Int32Array",
-        IrTypePrimitive::U64 => "wasm_bindgen::js_sys::BigUint64Array",
-        IrTypePrimitive::I64 => "wasm_bindgen::js_sys::BigInt64Array",
-        IrTypePrimitive::F32 => "wasm_bindgen::js_sys::Float32Array",
-        IrTypePrimitive::F64 => "wasm_bindgen::js_sys::Float64Array",
-        IrTypePrimitive::Bool | IrTypePrimitive::Unit => "wasm_bindgen::js_sys::Array",
+        IrTypePrimitive::U8 => "flutter_rust_bridge::wasm_bindgen::js_sys::Uint8Array",
+        IrTypePrimitive::I8 => "flutter_rust_bridge::wasm_bindgen::js_sys::Int8Array",
+        IrTypePrimitive::U16 => "flutter_rust_bridge::wasm_bindgen::js_sys::Uint16Array",
+        IrTypePrimitive::I16 => "flutter_rust_bridge::wasm_bindgen::js_sys::Int16Array",
+        IrTypePrimitive::U32 | IrTypePrimitive::Usize => {
+            "flutter_rust_bridge::wasm_bindgen::js_sys::Uint32Array"
+        }
+        IrTypePrimitive::I32 | IrTypePrimitive::Isize => {
+            "flutter_rust_bridge::wasm_bindgen::js_sys::Int32Array"
+        }
+        IrTypePrimitive::U64 => "flutter_rust_bridge::wasm_bindgen::js_sys::BigUint64Array",
+        IrTypePrimitive::I64 => "flutter_rust_bridge::wasm_bindgen::js_sys::BigInt64Array",
+        IrTypePrimitive::F32 => "flutter_rust_bridge::wasm_bindgen::js_sys::Float32Array",
+        IrTypePrimitive::F64 => "flutter_rust_bridge::wasm_bindgen::js_sys::Float64Array",
+        IrTypePrimitive::Bool | IrTypePrimitive::Unit => {
+            "flutter_rust_bridge::wasm_bindgen::js_sys::Array"
+        }
     }
 }
