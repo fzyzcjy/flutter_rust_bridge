@@ -141,7 +141,7 @@ pub(crate) struct IntegrateCommandArgs {
 pub(crate) struct BuildWebCommandArgs {
     // https://stackoverflow.com/questions/72399790/clap-capture-all-remaining-arguments-in-one-field-in-derive-api
     #[arg(trailing_var_arg = true, allow_hyphen_values = true, hide = true)]
-    args: Vec<String>,
+    pub(crate) args: Vec<String>,
 }
 
 #[derive(Debug, Args)]

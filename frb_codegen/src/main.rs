@@ -22,7 +22,7 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
     match cli.command {
         Commands::Generate(args) => codegen::generate(compute_codegen_config(args)?)?,
         Commands::Create(args) => integration::create(&args.name)?,
-        Commands::BuildWeb(args) => println!("hi {args:?}"),
+        Commands::BuildWeb(args) => build_web::build(args.args),
         Commands::Integrate(_) => integration::integrate()?,
         Commands::InternalGenerate(_args) => internal::generate()?,
     }
