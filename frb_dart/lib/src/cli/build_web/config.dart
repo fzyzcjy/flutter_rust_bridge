@@ -27,12 +27,16 @@ class Config {
   late String rustCrateDir;
 
   /// {@macro flutter_rust_bridge.cli}
-  @CliOption(abbr: 'w', help: 'WASM output path', valueHelp: 'PKG')
-  late String? wasmOutput;
+  @CliOption(abbr: 'o', help: 'Output path', valueHelp: 'PKG')
+  late String? output;
 
   /// {@macro flutter_rust_bridge.cli}
   @CliOption(help: 'Compile in release mode', negatable: false)
   late bool release;
+
+  /// {@macro flutter_rust_bridge.cli}
+  @CliOption(abbr: 'v', help: 'Display more verbose information')
+  late bool verbose;
 
   /// {@macro flutter_rust_bridge.cli}
   @CliOption(help: 'Arguments passed to wasm-pack')
@@ -85,8 +89,10 @@ BuildWebArgs parseConfigToArgs(List<String> args) {
   }
 
   return BuildWebArgs(
-    wasmOutput: config.wasmOutput ?? _fallbackWasmOutput(dartRoot: config.dartRoot),
+    dartRoot: config.dartRoot,
+    output: config.output ?? _fallbackOutput(dartRoot: config.dartRoot),
     release: config.release,
+    verbose: config.verbose,
     rustCrateDir: config.rustCrateDir,
     wasmPackArgs: config.wasmPackArgs,
     enableWasmBindgen: config.wasmBindgenArgs.isNotEmpty,
@@ -94,7 +100,7 @@ BuildWebArgs parseConfigToArgs(List<String> args) {
   );
 }
 
-String _fallbackWasmOutput({required String dartRoot}) => p.join(dartRoot, 'web/pkg');
+String _fallbackOutput({required String dartRoot}) => p.join(dartRoot, 'web/pkg');
 
 Never _printHelpAndExit() {
   print("""

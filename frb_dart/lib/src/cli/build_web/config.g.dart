@@ -9,7 +9,7 @@ part of 'config.dart';
 Config _$parseConfigResult(ArgResults result) => Config()
   ..dartRoot = result['dart-root'] as String
   ..rustCrateDir = result['rust-crate-dir'] as String
-  ..wasmOutput = result['wasm-output'] as String?
+  ..output = result['wasm-output'] as String?
   ..release = result['release'] as bool
   ..wasmPackArgs = result['wasm-pack-args'] as List<String>
   ..wasmBindgenArgs = result['wasm-bindgen-args'] as List<String>

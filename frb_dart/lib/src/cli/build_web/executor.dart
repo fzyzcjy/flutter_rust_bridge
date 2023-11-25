@@ -7,7 +7,10 @@ import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 /// {@macro flutter_rust_bridge.cli}
 class BuildWebArgs {
   /// {@macro flutter_rust_bridge.cli}
-  final String wasmOutput;
+  final String dartRoot;
+
+  /// {@macro flutter_rust_bridge.cli}
+  final String output;
 
   /// {@macro flutter_rust_bridge.cli}
   final bool release;
@@ -29,7 +32,8 @@ class BuildWebArgs {
 
   /// {@macro flutter_rust_bridge.cli}
   const BuildWebArgs({
-    required this.wasmOutput,
+    required this.dartRoot,
+    required this.output,
     required this.release,
     required this.verbose,
     required this.rustCrateDir,
@@ -105,7 +109,7 @@ Future<String> _getRustCreateName({required String rustCrateDir}) async {
 
 Future<void> _executeWasmPack(BuildWebArgs args, {required String rustCrateName}) async {
   await runCommand('wasm-pack', [
-    'build', '-t', 'no-modules', '-d', args.wasmOutput, '--no-typescript',
+    'build', '-t', 'no-modules', '-d', args.output, '--no-typescript',
     '--out-name', rustCrateName,
     if (!args.release) '--dev',
     args.rustCrateDir,
@@ -126,7 +130,7 @@ Future<void> _executeWasmBindgen(BuildWebArgs args, {required String rustCrateNa
   await runCommand('wasm-bindgen', [
     '${args.rustCrateDir}/target/wasm32-unknown-unknown/${args.release ? 'release' : 'debug'}/$rustCrateName.wasm',
     '--out-dir',
-    args.wasmOutput,
+    args.output,
     '--no-typescript',
     '--target',
     'no-modules',
@@ -138,16 +142,18 @@ Future<void> _executeWasmBindgen(BuildWebArgs args, {required String rustCrateNa
 }
 
 Future<void> _executeDartCompile(BuildWebArgs args) async {
-  final output = p.basename(args.dartInput);
+  // TODO this may not be very accurate, since package name != folder name; maybe try to use `app` as name
+  // final output = p.basename(args.dartRoot);
+
   await runCommand('dart', [
     'compile',
     'js',
     '-o',
-    '${args.root}/$output.js',
+    '${args.output}/app.js',
     if (args.release) '-O2',
     if (stdout.supportsAnsiEscapes) '--enable-diagnostic-colors',
     if (args.verbose) '--verbose',
-    args.dartInput!,
+    args.dartRoot,
   ]);
 }
 

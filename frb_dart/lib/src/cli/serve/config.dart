@@ -20,9 +20,6 @@
 //   )
 //   late String? dartInput;
 //
-//   /// {@macro flutter_rust_bridge.cli}
-//   @CliOption(abbr: 'v', help: 'Display more verbose information')
-//   late bool verbose;
 //
 //   /// {@macro flutter_rust_bridge.cli}
 //   @CliOption(
