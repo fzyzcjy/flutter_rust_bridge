@@ -41,6 +41,9 @@ Future<void> runServer(Config config) async {
       return res.change(headers: {
         'Cross-Origin-Opener-Policy': 'same-origin',
         'Cross-Origin-Embedder-Policy': shouldRelaxCoep ? 'credentialless' : 'require-corp',
+        // Disable CORS since this server (hosting JS/WASM) is different from
+        // the server that `dart test -p chrome` creates.
+        'Access-Control-Allow-Origin': '*',
       });
     };
   }).addHandler(Cascade()
