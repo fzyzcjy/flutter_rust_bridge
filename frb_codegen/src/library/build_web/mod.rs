@@ -30,6 +30,9 @@ fn execute_dart_command(dart_root: &Path, args: &[String]) -> anyhow::Result<()>
     let res = command_run!(
         call_shell[Some(dart_root)],
         *repo.toolchain.as_run_command(),
+        *repo.command_extra_args(),
+        "run",
+        "flutter_rust_bridge:build_web",
         *args,
     )?;
 
