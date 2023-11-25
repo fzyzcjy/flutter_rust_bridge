@@ -10,6 +10,9 @@ use std::process::{Command, Stdio};
 use std::str::FromStr;
 use std::{env, fs};
 
+// We make the core build-wasm logic in Dart, and Rust is just a wrapper.
+// This is because, in the future, the build-wasm logic may be packaged with user libraries
+// and invoked in machines without flutter_rust_bridge_codegen binary.
 pub fn build(dart_root: Option<PathBuf>, args: Vec<String>) -> anyhow::Result<()> {
     let dart_root = parse_dart_root(dart_root)?;
     debug!("build dart_root={dart_root:?} args={args:?}");
