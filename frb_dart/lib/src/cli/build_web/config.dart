@@ -1,3 +1,7 @@
+// ignore_for_file: avoid_print
+
+import 'dart:io';
+
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge/src/cli/build_web/executor.dart';
 import 'package:path/path.dart' as p;
@@ -38,6 +42,10 @@ class Config {
   @CliOption(help: 'Arguments passed to wasm-bindgen')
   late List<String> wasmBindgenArgs;
 
+  /// {@macro flutter_rust_bridge.cli}
+  @CliOption(abbr: 'h', help: 'Print this help message', negatable: false)
+  late bool help;
+
 // migrate to `wasmPackArgs`
 // /// {@macro flutter_rust_bridge.cli}
 // @CliOption(
@@ -72,6 +80,10 @@ class Config {
 BuildWebArgs parseConfigToArgs(List<String> args) {
   final Config config = parseConfig(args);
 
+  if (config.help) {
+    _printHelpAndExit();
+  }
+
   return BuildWebArgs(
     wasmOutput: config.wasmOutput ?? _fallbackWasmOutput(dartRoot: config.dartRoot),
     release: config.release,
@@ -83,3 +95,14 @@ BuildWebArgs parseConfigToArgs(List<String> args) {
 }
 
 String _fallbackWasmOutput({required String dartRoot}) => p.join(dartRoot, 'web/pkg');
+
+Never _printHelpAndExit() {
+  print("""
+USAGE:
+\t[OPTIONS]
+
+OPTIONS:""");
+  print(_$parserForConfig.usage);
+
+  exit(0);
+}

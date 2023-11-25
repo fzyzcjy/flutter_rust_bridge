@@ -12,7 +12,8 @@ Config _$parseConfigResult(ArgResults result) => Config()
   ..wasmOutput = result['wasm-output'] as String?
   ..release = result['release'] as bool
   ..wasmPackArgs = result['wasm-pack-args'] as List<String>
-  ..wasmBindgenArgs = result['wasm-bindgen-args'] as List<String>;
+  ..wasmBindgenArgs = result['wasm-bindgen-args'] as List<String>
+  ..help = result['help'] as bool;
 
 ArgParser _$populateConfigParser(ArgParser parser) => parser
   ..addOption(
@@ -44,6 +45,12 @@ ArgParser _$populateConfigParser(ArgParser parser) => parser
   ..addMultiOption(
     'wasm-bindgen-args',
     help: 'Arguments passed to wasm-bindgen',
+  )
+  ..addFlag(
+    'help',
+    abbr: 'h',
+    help: 'Print this help message',
+    negatable: false,
   );
 
 final _$parserForConfig = _$populateConfigParser(ArgParser());

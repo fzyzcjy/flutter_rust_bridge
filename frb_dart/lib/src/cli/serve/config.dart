@@ -60,10 +60,6 @@
 //   late bool runTests;
 //
 //   /// {@macro flutter_rust_bridge.cli}
-//   @CliOption(abbr: 'h', help: 'Print this help message', negatable: false)
-//   late bool help;
-//
-//   /// {@macro flutter_rust_bridge.cli}
 //   @CliOption(help: 'Whether to build the library.', defaultsTo: true)
 //   late bool build;
 // }
@@ -131,25 +127,4 @@
 //       wasmOutput: p.canonicalize(opts.wasmOutput ?? 'web/pkg'),
 //     );
 //   }
-// }
-//
-// Never _printHelpAndExit() {
-//   const exec = 'flutter_rust_bridge_serve';
-//
-//   // Note: The old code reads pubspec.yaml to print current version,
-//   // but we avoid this here, since we need to ensure flutter_rust_bridge's dependencies
-//   // are minimal.
-//   print("""
-// $exec
-// Develop Rust WASM modules with cross-origin isolation.
-//
-// USAGE:
-// \t$exec [OPTIONS] [..REST]
-// \t$exec --dart-input <ENTRY> --root <ROOT> [OPTIONS] [..REST]
-//
-// OPTIONS:""");
-//
-//   print(_$parserForOpts.usage);
-//
-//   exit(0);
 // }
