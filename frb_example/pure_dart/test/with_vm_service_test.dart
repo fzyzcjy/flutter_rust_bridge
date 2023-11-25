@@ -11,12 +11,16 @@ import 'package:test/test.dart';
 import 'test_utils.dart';
 import 'utils/test_flutter_memory_leak_utility.dart';
 
-// TODO handle infra that creates vm service
 Future<void> main() async {
   await RustLib.init();
 
   final vmService = await VmServiceUtil.create();
-  tearDownAll(() => vmService.dispose());
+  tearDownAll(() => vmService?.dispose());
+
+  if (vmService == null) {
+    test('dummy test', () {}, skip: 'The tests in this file is skipped, because it needs VMService to run.');
+    return;
+  }
 
   group('sync return', () {
     test('allocate a lot of zero copy data to check that it is properly freed', () async {

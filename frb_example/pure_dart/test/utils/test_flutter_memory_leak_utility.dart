@@ -13,12 +13,9 @@ class VmServiceUtil {
 
   VmServiceUtil._(this.vmService);
 
-  static Future<VmServiceUtil> create() async {
+  static Future<VmServiceUtil?> create() async {
     final serverUri = (await Service.getInfo()).serverUri;
-    if (serverUri == null) {
-      throw Exception('Cannot find serverUri for VmService. '
-          'Ensure you run like `dart run --enable-vm-service path/to/your/file.dart`');
-    }
+    if (serverUri == null) return null;
 
     final vmService = await vmServiceConnectUri(_toWebSocket(serverUri), log: _Log());
     return VmServiceUtil._(vmService);
