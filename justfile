@@ -80,7 +80,8 @@ dart_test_web_integration features="":
 
 dart_test_vm_service:
     cd frb_example/pure_dart/rust && cargo build --verbose
-    dart run --enable-vm-service --define=ENABLE_FRB_FFI_TEST_TOOL=true \
+    # NOTE: rm `--define=ENABLE_FRB_FFI_TEST_TOOL=true`
+    dart run --enable-vm-service \
       frb_example/pure_dart/dart/lib/main_with_vm_service.dart \
       target/debug/libflutter_rust_bridge_example_pure_dart.so
 

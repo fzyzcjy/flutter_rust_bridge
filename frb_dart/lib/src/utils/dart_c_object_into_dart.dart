@@ -3,13 +3,14 @@ import 'dart:ffi' as ffi;
 import 'dart:ffi';
 import 'dart:typed_data';
 
-import 'package:flutter_rust_bridge/src/consts.dart';
 import 'package:flutter_rust_bridge/src/ffigen_generated/multi_package.dart';
 import 'package:meta/meta.dart';
 
 export 'dart:ffi' show NativePort, DynamicLibrary;
 
-/// {@macro flutter_rust_bridge.internal}
+/// {@template flutter_rust_bridge.internal}
+/// The code is used only internally and is not a public API. The comment exists mainly to satisfy the linter.
+/// {@endtemplate}
 @internal
 dynamic dartCObjectIntoDart(Dart_CObject object) {
   switch (object.type) {
@@ -133,12 +134,11 @@ final _externalTypedDataFinalizer = Finalizer<_ExternalTypedDataFinalizerArgs>((
   final handleFinalizer = externalTypedData.callback.asFunction<_DartExternalTypedDataFinalizer>();
   handleFinalizer(externalTypedData.length, externalTypedData.peer);
 
-  if (kEnableFrbFfiTestTool) {
-    for (var handler in _testTool!.onExternalTypedDataFinalizer) {
-      handler(externalTypedData.length);
-    }
-  }
+  debugOnExternalTypedDataFinalizer?.call(dataLength: externalTypedData.length);
 });
+
+/// {@macro flutter_rust_bridge.internal}
+void Function({required int dataLength})? debugOnExternalTypedDataFinalizer;
 
 class _TypedData<T> {
   final T view;
@@ -163,11 +163,3 @@ class _ExternalTypedDataFinalizerArgs {
 
 typedef _NativeExternalTypedDataFinalizer = ffi.Void Function(ffi.IntPtr, ffi.Pointer<ffi.Void>);
 typedef _DartExternalTypedDataFinalizer = void Function(int, ffi.Pointer<ffi.Void>);
-
-class _TestTool {
-  final Set<void Function(int)> onExternalTypedDataFinalizer = {};
-
-  _TestTool._();
-}
-
-final _testTool = kEnableFrbFfiTestTool ? _TestTool._() : null;
