@@ -13,7 +13,8 @@ Call Rust WASM from JavaScript.
     ele.onload = () => {
         console.log('ele.onload called');
         window.wasm_bindgen = wasm_bindgen;
-        // TODO "module_.bind(null, '${root}_bg.wasm')"
+       
+        // NOTE: need to call `await wasm_bindgen()`, then can use functions, etc
     };
 </script>
 
