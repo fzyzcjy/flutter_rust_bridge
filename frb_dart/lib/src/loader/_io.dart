@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ffi' as ffi;
 import 'dart:ffi';
 import 'dart:io';
@@ -9,7 +10,7 @@ import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 /// 1. When `flutter run`, or when a real app is bundled.
 /// 2. When running Flutter widget tests.
 /// 3. When `dart test`, `dart run`, `dart compile exe`, etc.
-ExternalLibrary loadExternalLibrary(ExternalLibraryLoaderConfig config) {
+FutureOr<ExternalLibrary> loadExternalLibrary(ExternalLibraryLoaderConfig config) async {
   final ioDirectory = config.ioDirectory;
   return ExternalLibrary(
     ffiDynamicLibrary: loadExternalLibraryRaw(

@@ -20,13 +20,14 @@ abstract class WasmModule {
   /// Create a new WASM module initializer that is bound to the specified binary.
   WasmModule bind(dynamic thisArg, String moduleName);
 
-  /// Cast the module into type `T`
-  static Future<T> cast<T extends WasmModule>(FutureOr<WasmModule> module) {
-    return Future.value(module).then((module) => module as T);
-  }
+  // TODO
+  // /// Cast the module into type `T`
+  // static Future<T> cast<T extends WasmModule>(FutureOr<WasmModule> module) {
+  //   return Future.value(module).then((module) => module as T);
+  // }
 
   /// Initialize a [WasmModule] with the specified kind of [Modules].
-  static FutureOr<WasmModule> initialize({required Modules kind, WasmModule Function()? module}) =>
+  static Future<WasmModule> initialize({required Modules kind, WasmModule Function()? module}) =>
       kind.initializeModule(module);
 }
 
@@ -47,12 +48,12 @@ abstract class Modules {
   /// How a WASM module is brought into Dart's scope and initialized.
   ///
   /// Override this method to define custom initialization processes.
-  FutureOr<WasmModule> initializeModule(WasmModule Function()? module);
+  Future<WasmModule> initializeModule(WasmModule Function()? module);
 
   void _ensureCrossOriginIsolated() {
     // TODO temp disable
     return;
-   
+
     switch (crossOriginIsolated) {
       case false:
         throw const MissingHeaderException();
@@ -70,7 +71,7 @@ class _WasmBindgenNoModules extends Modules {
   const _WasmBindgenNoModules({required this.root});
 
   @override
-  FutureOr<WasmModule> initializeModule(WasmModule Function()? module) {
+  Future<WasmModule> initializeModule(WasmModule Function()? module) {
     _ensureCrossOriginIsolated();
     final script = ScriptElement()..src = '$root.js';
     document.head!.append(script);

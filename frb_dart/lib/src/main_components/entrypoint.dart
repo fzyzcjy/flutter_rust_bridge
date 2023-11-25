@@ -39,7 +39,7 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl, W exten
   }) async {
     if (__state != null) throw StateError('Should not initialize flutter_rust_bridge twice');
 
-    externalLibrary ??= _loadDefaultExternalLibrary();
+    externalLibrary ??= await _loadDefaultExternalLibrary();
     final generalizedFrbRustBinding = GeneralizedFrbRustBinding(externalLibrary);
     final dropPortManager = DropPortManager(generalizedFrbRustBinding);
     api ??= _createDefaultApi(handler, generalizedFrbRustBinding, dropPortManager, externalLibrary);
@@ -69,7 +69,8 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl, W exten
   @protected
   ExternalLibraryLoaderConfig get defaultExternalLibraryLoaderConfig;
 
-  ExternalLibrary _loadDefaultExternalLibrary() => loadExternalLibrary(defaultExternalLibraryLoaderConfig);
+  Future<ExternalLibrary> _loadDefaultExternalLibrary() async =>
+      await loadExternalLibrary(defaultExternalLibraryLoaderConfig);
 
   A _createDefaultApi(
     BaseHandler? handler,
