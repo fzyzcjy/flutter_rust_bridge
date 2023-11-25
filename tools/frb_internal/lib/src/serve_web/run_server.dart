@@ -15,7 +15,7 @@ import 'package:shelf_static/shelf_static.dart';
 import 'package:shelf_web_socket/shelf_web_socket.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
-Future<void> runServer() async {
+Future<void> runServer(Config config) async {
   final ip = InternetAddress.anyIPv4;
 
   final staticFilesHandler = createStaticHandler(config.root, defaultDocument: 'index.html');

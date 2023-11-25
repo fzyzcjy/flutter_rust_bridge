@@ -10,6 +10,6 @@ class ServeWebCommand extends Command<void> {
 
   @override
   Future<void> run() async {
-    await runServer();
+    await runServer(parseConfig());
   }
 }
