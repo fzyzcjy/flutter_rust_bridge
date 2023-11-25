@@ -81,7 +81,7 @@ fn generate_imports(types: &[IrType], context: WireRustGeneratorContext) -> Stri
         .join("\n");
 
     // NOTE Do *not* use imports when possible, instead use fully specified name directly
-    let static_imports = "use flutter_rust_bridge::{wasm_bindgen, Handler, JsValue};
+    let static_imports = "use flutter_rust_bridge::Handler;
     use flutter_rust_bridge::rust2dart::IntoIntoDart;";
 
     imports_from_types + static_imports
