@@ -6,7 +6,8 @@ use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartIntern
 use crate::codegen::generator::misc::target::{TargetOrCommon, TargetOrCommonMap};
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use crate::codegen::generator::wire::dart::internal_config::{
-    DartOutputClassNamePack, GeneratorWireDartInternalConfig,
+    DartOutputClassNamePack, GeneratorWireDartDefaultExternalLibraryLoaderInternalConfig,
+    GeneratorWireDartInternalConfig,
 };
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
@@ -65,11 +66,8 @@ impl InternalConfig {
         let dart_root = (config.dart_root.clone().map(PathBuf::from))
             .unwrap_or(find_dart_package_dir(&dart_output_dir)?);
 
-        let default_external_library_stem = compute_default_external_library_stem(&rust_crate_dir)
-            .unwrap_or(FALLBACK_DEFAULT_EXTERNAL_LIBRARY_STEM.to_owned());
-        let default_external_library_relative_directory =
-            compute_default_external_library_relative_directory(&rust_crate_dir, &dart_root)
-                .unwrap_or(FALLBACK_DEFAULT_EXTERNAL_LIBRARY_RELATIVE_DIRECTORY.to_owned());
+        let default_external_library_loader =
+            compute_default_external_library_loader(&rust_crate_dir, &dart_root);
 
         let wasm_enabled = config.wasm.unwrap_or(true);
         let dart_enums_style = config.dart_enums_style.unwrap_or(true);
@@ -113,8 +111,7 @@ impl InternalConfig {
                         extra_headers: config.extra_headers.clone().unwrap_or_else(String::new),
                         dart_impl_output_path: dart_output_path_pack.dart_impl_output_path,
                         dart_output_class_name_pack,
-                        default_external_library_stem,
-                        default_external_library_relative_directory,
+                        default_external_library_loader,
                     },
                     rust: GeneratorWireRustInternalConfig {
                         rust_input_path_pack,
@@ -156,6 +153,21 @@ fn parse_dump_contents(config: &Config) -> Vec<ConfigDumpContent> {
         return dump.to_owned();
     }
     return vec![];
+}
+
+fn compute_default_external_library_loader(
+    rust_crate_dir: &Path,
+    dart_root: &Path,
+) -> GeneratorWireDartDefaultExternalLibraryLoaderInternalConfig {
+    GeneratorWireDartDefaultExternalLibraryLoaderInternalConfig {
+        stem: compute_default_external_library_stem(&rust_crate_dir)
+            .unwrap_or(FALLBACK_DEFAULT_EXTERNAL_LIBRARY_STEM.to_owned()),
+        io_directory: compute_default_external_library_relative_directory(
+            &rust_crate_dir,
+            &dart_root,
+        )
+        .unwrap_or(FALLBACK_DEFAULT_EXTERNAL_LIBRARY_RELATIVE_DIRECTORY.to_owned()),
+    }
 }
 
 fn compute_default_external_library_stem(rust_crate_dir: &Path) -> Result<String> {

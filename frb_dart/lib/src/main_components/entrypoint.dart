@@ -1,6 +1,5 @@
-import 'dart:io';
-
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
+import 'package:flutter_rust_bridge/src/loader/_common.dart';
 import 'package:flutter_rust_bridge/src/loader/loader.dart';
 import 'package:flutter_rust_bridge/src/main_components/api.dart';
 import 'package:flutter_rust_bridge/src/main_components/api_impl.dart';
@@ -68,16 +67,9 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl, W exten
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @protected
-  String get defaultExternalLibraryStem;
+  ExternalLibraryLoaderConfig get defaultExternalLibraryLoaderConfig;
 
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
-  @protected
-  String get defaultExternalLibraryRelativeDirectory;
-
-  ExternalLibrary _loadDefaultExternalLibrary() => loadExternalLibrary(
-        defaultExternalLibraryRelativeDirectory: defaultExternalLibraryRelativeDirectory,
-        stem: defaultExternalLibraryStem,
-      );
+  ExternalLibrary _loadDefaultExternalLibrary() => loadExternalLibrary(defaultExternalLibraryLoaderConfig);
 
   A _createDefaultApi(
     BaseHandler? handler,

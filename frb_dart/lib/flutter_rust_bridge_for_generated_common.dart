@@ -10,6 +10,7 @@ export 'package:meta/meta.dart' show internal, protected, sealed;
 
 export 'flutter_rust_bridge.dart';
 export 'src/exceptions.dart';
+export 'src/loader/_common.dart';
 export 'src/main_components/api.dart';
 export 'src/main_components/api_impl.dart';
 export 'src/main_components/entrypoint.dart';

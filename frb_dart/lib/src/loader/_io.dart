@@ -1,24 +1,22 @@
 import 'dart:ffi';
 import 'dart:io';
 
+import 'package:flutter_rust_bridge/src/loader/_common.dart';
 import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 
 /// Load the [ExternalLibrary], with the following cases in mind:
 /// 1. When `flutter run`, or when a real app is bundled.
 /// 2. When running Flutter widget tests.
 /// 3. When `dart test`, `dart run`, `dart compile exe`, etc.
-ExternalLibrary loadExternalLibrary({
-  String? defaultExternalLibraryRelativeDirectory,
-  required String stem,
-}) {
+ExternalLibrary loadExternalLibrary(ExternalLibraryLoaderConfig config) {
+  final ioDirectory = config.ioDirectory;
   return loadExternalLibraryRaw(
-    nativeLibDirWhenNonPackaged: defaultExternalLibraryRelativeDirectory == null
-        ? null
-        : Directory.current.uri.resolve(defaultExternalLibraryRelativeDirectory),
-    stem: stem,
+    nativeLibDirWhenNonPackaged: ioDirectory == null ? null : Directory.current.uri.resolve(ioDirectory),
+    stem: config.stem,
   );
 }
 
+/// Please see `loadExternalLibrary` for details
 ExternalLibrary loadExternalLibraryRaw({
   Uri? nativeLibDirWhenNonPackaged,
   required String stem,

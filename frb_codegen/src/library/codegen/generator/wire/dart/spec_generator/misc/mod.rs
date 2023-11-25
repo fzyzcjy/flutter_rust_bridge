@@ -122,15 +122,15 @@ fn generate_boilerplate(
                   WireConstructor<{wire_class_name}> get wireConstructor => {wire_class_name}.new;
 
                   @override
-                  String get defaultExternalLibraryStem => '{default_external_library_stem}';
-                  
-                  @override
-                  String get defaultExternalLibraryRelativeDirectory => '{default_external_library_relative_directory}';
+                  ExternalLibraryLoaderConfig get defaultExternalLibraryLoaderConfig => const ExternalLibraryLoaderConfig(
+                    stem: '{stem}',
+                    ioDirectory: '{io_directory}',
+                    webPrefix: 'pkg/',
+                  );
                 }}
                 "#,
-                default_external_library_stem = context.config.default_external_library_stem,
-                default_external_library_relative_directory =
-                    context.config.default_external_library_relative_directory,
+                stem = context.config.default_external_library_loader.stem,
+                io_directory = context.config.default_external_library_loader.io_directory,
             ),
             ..Default::default()
         }],

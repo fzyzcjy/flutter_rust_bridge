@@ -1,12 +1,13 @@
+import 'package:flutter_rust_bridge/src/loader/_common.dart';
 import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
 import 'package:flutter_rust_bridge/src/wasm_module/_web.dart';
 
-/// {@macro flutter_rust_bridge.only_for_generated_code}
-ExternalLibrary loadExternalLibrary({
-  String? defaultExternalLibraryRelativeDirectory,
-  required String stem,
-}) {
-  // TODO what about `pkg`
-  final root = 'pkg/$stem';
-  return WasmModule.initialize(kind: Modules.noModules(root: root));
+/// See `loadExternalLibrary` in the counterpart `_io.dart` for doc
+ExternalLibrary loadExternalLibrary(ExternalLibraryLoaderConfig config) {
+  return loadExternalLibraryRaw(moduleRoot: '${config.webPrefix}${config.stem}');
+}
+
+/// Please see `loadExternalLibrary` for details
+ExternalLibrary loadExternalLibraryRaw({required String moduleRoot}) {
+  return WasmModule.initialize(kind: Modules.noModules(root: moduleRoot));
 }
