@@ -48,8 +48,7 @@ import 'auxiliary/old_module_system/sub_module.dart';
 import 'auxiliary/sample_types.dart';
 import 'dart:async';
 import 'dart:convert';
-import 'frb_generated.io.dart'
-    if (dart.library.html) 'frb_generated.web.dart.dart';
+import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:meta/meta.dart' as meta;
 import 'package:uuid/uuid.dart';

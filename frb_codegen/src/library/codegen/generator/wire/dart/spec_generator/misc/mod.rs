@@ -87,7 +87,7 @@ fn generate_boilerplate(
                     "
                     {universal_imports}
                     import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-                    import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart.dart';
+                    import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart';
                     "
                 ),
                 ..Default::default()
@@ -129,7 +129,8 @@ fn generate_boilerplate(
                 }}
                 "#,
                 default_external_library_stem = context.config.default_external_library_stem,
-                default_external_library_relative_directory = context.config.default_external_library_relative_directory,
+                default_external_library_relative_directory =
+                    context.config.default_external_library_relative_directory,
             ),
             ..Default::default()
         }],
@@ -156,7 +157,7 @@ fn generate_boilerplate(
                     import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
                     import 'frb_generated.dart';
                     "
-                    ),
+                ),
                 ..Default::default()
             },
             ..Default::default()
