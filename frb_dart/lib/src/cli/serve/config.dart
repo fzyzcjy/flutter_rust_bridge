@@ -123,9 +123,11 @@ extension ExtOpts on Opts {
   bool get shouldRelaxCoep => relaxCoep || (!relaxCoepWasParsed && dartInput == null);
 }
 
-void parseConfig(List<String> args) {
+/// {@macro flutter_rust_bridge.internal}
+Opts parseConfig(List<String> args) {
   final config = parseOpts(args);
   if (config.help) _printHelpAndExit();
+  return config;
 }
 
 Never _printHelpAndExit() {

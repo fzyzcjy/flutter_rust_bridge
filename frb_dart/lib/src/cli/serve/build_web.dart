@@ -9,11 +9,11 @@ import 'package:path/path.dart' as p;
 /// {@macro flutter_rust_bridge.internal}
 Future<void> buildWeb(
   Opts config, {
-  required String crateDir,
   required String wasmOutput,
   required String root,
   required List<String> args,
 }) async {
+  final crateDir = config.crate;
   final manifest = jsonDecode(await runCommand(
     'cargo',
     ['read-manifest'],

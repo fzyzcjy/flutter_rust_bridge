@@ -35,7 +35,6 @@ void runCliServe(List<String> args) async {
   if (config.build) {
     await buildWeb(
       config,
-      crateDir: crateDir,
       wasmOutput: wasmOutput,
       root: root,
       args: args,
