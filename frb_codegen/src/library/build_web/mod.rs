@@ -6,6 +6,7 @@ use crate::utils::path_utils::{find_dart_package_dir, path_to_string};
 use anyhow::{bail, Context};
 use log::debug;
 use std::path::{Path, PathBuf};
+use std::process::{Command, Stdio};
 use std::str::FromStr;
 use std::{env, fs};
 
@@ -27,14 +28,13 @@ fn parse_dart_root(dart_root: Option<PathBuf>) -> anyhow::Result<PathBuf> {
 fn execute_dart_command(dart_root: &Path, args: &[String]) -> anyhow::Result<()> {
     let repo = DartRepository::from_str(&path_to_string(dart_root)?)?;
 
-    let res = command_run!(
-        call_shell[Some(dart_root)],
-        *repo.toolchain.as_run_command(),
-        *repo.command_extra_args(),
-        "run",
-        "flutter_rust_bridge:build_web",
-        *args,
-    )?;
+    let res = Command::new("dart")
+        .current_dir(dart_root)
+        .args(repo.command_extra_args())
+        .arg("run")
+        .arg("flutter_rust_bridge:build_web")
+        .args(args)
+        .output()?;
 
     if !res.status.success() {
         bail!(
