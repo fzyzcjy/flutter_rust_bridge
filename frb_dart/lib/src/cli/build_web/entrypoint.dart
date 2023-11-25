@@ -21,11 +21,12 @@ Future<void> executeBuildWeb(List<String> args) async {
     await _executeWasmBindgen(crateDir, config, crateName);
   }
 
-  if (config.cliOpts.dartInput != null) {
-    await _executeDartCompile(config);
-  } else {
-    await _executeFlutterBuildWeb(config);
-  }
+  // TODO
+  // if (config.cliOpts.dartInput != null) {
+  //   await _executeDartCompile(config);
+  // } else {
+  //   await _executeFlutterBuildWeb(config);
+  // }
 }
 
 Future<void> _sanityChecks(Config config) async {
@@ -101,23 +102,24 @@ Future<void> _executeWasmBindgen(crateDir, Config config, String crateName) asyn
   ]);
 }
 
-Future<void> _executeDartCompile(Config config) async {
-  final output = p.basename(config.cliOpts.dartInput!);
-  await runCommand('dart', [
-    'compile',
-    'js',
-    '-o',
-    '${config.root}/$output.js',
-    if (config.cliOpts.release) '-O2',
-    if (stdout.supportsAnsiEscapes) '--enable-diagnostic-colors',
-    if (config.cliOpts.verbose) '--verbose',
-    config.cliOpts.dartInput!,
-  ]);
-}
-
-Future<void> _executeFlutterBuildWeb(Config config) async {
-  await runCommand(
-    'flutter',
-    ['build', 'web', if (!config.cliOpts.release) '--profile'] + config.restArgs,
-  );
-}
+// TODO
+// Future<void> _executeDartCompile(Config config) async {
+//   final output = p.basename(config.cliOpts.dartInput!);
+//   await runCommand('dart', [
+//     'compile',
+//     'js',
+//     '-o',
+//     '${config.root}/$output.js',
+//     if (config.cliOpts.release) '-O2',
+//     if (stdout.supportsAnsiEscapes) '--enable-diagnostic-colors',
+//     if (config.cliOpts.verbose) '--verbose',
+//     config.cliOpts.dartInput!,
+//   ]);
+// }
+//
+// Future<void> _executeFlutterBuildWeb(Config config) async {
+//   await runCommand(
+//     'flutter',
+//     ['build', 'web', if (!config.cliOpts.release) '--profile'] + config.restArgs,
+//   );
+// }
