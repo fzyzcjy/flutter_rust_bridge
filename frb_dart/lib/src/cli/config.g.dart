@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'serve.dart';
+part of 'config.dart';
 
 // **************************************************************************
 // CliGenerator
@@ -63,8 +63,7 @@ ArgParser _$populateOptsParser(ArgParser parser) => parser
   ..addOption(
     'dart-input',
     abbr: 'd',
-    help:
-        'Run "dart compile" with the specified input instead of "flutter build"',
+    help: 'Run "dart compile" with the specified input instead of "flutter build"',
     valueHelp: 'ENTRY',
   )
   ..addOption(
