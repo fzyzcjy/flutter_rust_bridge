@@ -11,10 +11,12 @@ import 'package:shelf_web_socket/shelf_web_socket.dart';
 const kTestResultKey = '__result__';
 
 Future<void> executeTestWeb(TestWebConfig options) async {
+  print('executeTestWeb: compile');
   TODO_compile;
 
   Browser? browser;
 
+  print('executeTestWeb: runServer');
   await runServer(
     ServeWebConfig(
       webRoot: webRoot,
@@ -22,17 +24,20 @@ Future<void> executeTestWeb(TestWebConfig options) async {
       open: false,
     ),
     extraHandler: _createWebSocketHandler(
-      closeBrowser: () async => browser?.close(),
+      closeBrowser: () async {
+        print('executeTestWeb: browser.close');
+        await browser?.close();
+      },
     ),
   );
 
-  print('runTests: puppeteer.launch');
+  print('executeTestWeb: puppeteer.launch');
   browser = await puppeteer.launch(headless: true, timeout: const Duration(minutes: 5));
 
-  print('runTests: browser.newPage');
+  print('executeTestWeb: browser.newPage');
   final page = await browser.newPage();
 
-  print('runTests: page.goto($addr)');
+  print('executeTestWeb: page.goto($addr)');
   await page.goto(addr);
 }
 
