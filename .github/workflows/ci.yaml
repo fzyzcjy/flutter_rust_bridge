@@ -1,1 +1,74 @@
 name: CI
+
+on:
+  push:
+    paths-ignore:
+      - "docs/**"
+      - "**/*.md"
+  pull_request:
+    paths-ignore:
+      - "docs/**"
+      - "**/*.md"
+  workflow_dispatch: {}
+
+env:
+  CARGO_TERM_COLOR: always
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+
+  # ----------------------------------- linter -----------------------------------
+
+  linter_rust:
+    name: Linter :: Rust
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        cargo_toolchain_version:
+          - 1.70.0
+
+    steps:
+      - uses: actions/checkout@v4
+      - id: rust-toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ matrix.cargo_toolchain_version }}
+          components: rustfmt, clippy
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: 3.0.0
+          architecture: x64
+      - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: just install_ffigen_dependency
+      - run: just rust_linter
+
+  linter_dart:
+    name: Linter :: Dart
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: 3.0.0
+          architecture: x64
+      - uses: subosito/flutter-action@v2
+        with:
+          cache: true
+          channel: "stable"
+
+          flutter-version: 3.13.6
+
+      - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: just dart_linter
+
