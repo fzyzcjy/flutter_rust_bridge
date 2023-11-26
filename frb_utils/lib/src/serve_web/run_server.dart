@@ -23,9 +23,9 @@ Future<String> runServer(ServeWebConfig config, {List<Handler>? extraHandlers}) 
 
   final handler = const Pipeline().addMiddleware((handler) {
     return (req) async {
-      print('Request: ${req.method} ${req.requestedUri}');
+      print('runServer.Request: ${req.method} ${req.requestedUri}');
       final res = await handler(req);
-      print('Response: code=${res.statusCode} mimeType=${res.mimeType}');
+      print('runServer.Response: code=${res.statusCode} mimeType=${res.mimeType}');
       return res.change(headers: {
         'Cross-Origin-Opener-Policy': 'same-origin',
         'Cross-Origin-Embedder-Policy': shouldRelaxCoep ? 'credentialless' : 'require-corp',
