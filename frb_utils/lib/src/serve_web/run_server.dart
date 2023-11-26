@@ -13,7 +13,7 @@ import 'package:shelf_static/shelf_static.dart';
 import 'package:shelf_web_socket/shelf_web_socket.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
-Future<void> runServer(ServeWebConfig config) async {
+Future<void> runServer(ServeWebConfig config, {Handler? extraHandler}) async {
   final staticFilesHandler = createStaticHandler(config.webRoot, defaultDocument: 'index.html');
 
   Browser? browser;
@@ -37,6 +37,10 @@ Future<void> runServer(ServeWebConfig config) async {
   // final shouldRelaxCoep = config.shouldRelaxCoep;
   final shouldRelaxCoep = true;
 
+  final innerHandler = Cascade();
+  if (extraHandler != null) innerHandler.add(extraHandler);
+  innerHandler.add(staticFilesHandler);
+
   final handler = const Pipeline().addMiddleware((handler) {
     return (req) async {
       print('Request: ${req.method} ${req.requestedUri}');
@@ -51,7 +55,7 @@ Future<void> runServer(ServeWebConfig config) async {
         // 'Access-Control-Allow-Origin': '*',
       });
     };
-  }).addHandler(Cascade().add(socketHandler).add(staticFilesHandler).handler);
+  }).addHandler(innerHandler.handler);
 
   // TODO
   // final portEnv = Platform.environment['PORT'];
