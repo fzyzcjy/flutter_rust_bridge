@@ -1,4 +1,4 @@
-# To use this file, install Just: `cargo install just`
+# TODO migrate this file
 
 pana := if os() == "windows" {
     "pana.bat"
