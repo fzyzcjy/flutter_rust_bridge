@@ -35,13 +35,14 @@ Future<void> executeTestWeb(TestWebConfig options) async {
     ),
     extraHandler: _createWebSocketHandler(
       closeBrowser: () async {
-        print('executeTestWeb: browser.close');
+        print('executeTestWeb: close browser');
         await browser?.close();
       },
     ),
   );
- 
-  browser = await _browserLaunchAndGoto(addr: addr);
+
+  print('executeTestWeb: launchBrowser');
+  browser = await _launchBrowser(addr: addr);
 }
 
 Handler _createWebSocketHandler({required Future<void> Function() closeBrowser}) {
@@ -62,15 +63,9 @@ Handler _createWebSocketHandler({required Future<void> Function() closeBrowser})
   });
 }
 
-Future<Browser> _browserLaunchAndGoto({required String addr}) async {
-  print('executeTestWeb: puppeteer.launch');
+Future<Browser> _launchBrowser({required String addr}) async {
   final browser = await puppeteer.launch(headless: true, timeout: const Duration(minutes: 5));
-
-  print('executeTestWeb: browser.newPage');
   final page = await browser.newPage();
-
-  print('executeTestWeb: page.goto($addr)');
   await page.goto(addr);
-
   return browser;
 }
