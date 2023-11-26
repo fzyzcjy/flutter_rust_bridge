@@ -14,7 +14,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for PrimitiveWireRustGenerator<'a> {
         use IrTypePrimitive::*;
         Some(match &self.ir {
             Bool => "self.is_truthy()".into(),
-            // I64 | U64 => "::std::convert::TryInto::try_into(self.dyn_into::<flutter_rust_bridge::js_sys::BigInt>().unwrap()).unwrap()".into(),
+            I64 | U64 => "::std::convert::TryInto::try_into(self.dyn_into::<flutter_rust_bridge::js_sys::BigInt>().unwrap()).unwrap()".into(),
             _ => "self.unchecked_into_f64() as _".into(),
         })
     }

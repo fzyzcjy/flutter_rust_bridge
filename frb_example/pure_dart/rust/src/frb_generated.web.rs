@@ -1731,7 +1731,11 @@ impl Wire2Api<[i32; 2]> for flutter_rust_bridge::wasm_bindgen::JsValue {
 }
 impl Wire2Api<i64> for flutter_rust_bridge::wasm_bindgen::JsValue {
     fn wire2api(self) -> i64 {
-        self.unchecked_into_f64() as _
+        ::std::convert::TryInto::try_into(
+            self.dyn_into::<flutter_rust_bridge::js_sys::BigInt>()
+                .unwrap(),
+        )
+        .unwrap()
     }
 }
 impl Wire2Api<i8> for flutter_rust_bridge::wasm_bindgen::JsValue {
@@ -1838,7 +1842,11 @@ impl Wire2Api<u32> for flutter_rust_bridge::wasm_bindgen::JsValue {
 }
 impl Wire2Api<u64> for flutter_rust_bridge::wasm_bindgen::JsValue {
     fn wire2api(self) -> u64 {
-        self.unchecked_into_f64() as _
+        ::std::convert::TryInto::try_into(
+            self.dyn_into::<flutter_rust_bridge::js_sys::BigInt>()
+                .unwrap(),
+        )
+        .unwrap()
     }
 }
 impl Wire2Api<u8> for flutter_rust_bridge::wasm_bindgen::JsValue {
