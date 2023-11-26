@@ -69,10 +69,15 @@ impl<'a> WireDartGeneratorWire2apiTrait for DelegateWireDartGenerator<'a> {
             IrTypeDelegate::Uuid => {
                 "return UuidValue.fromByteList(_wire2api_list_prim_u_8(raw));".to_owned()
             }
-            IrTypeDelegate::Uuids => "
-            final bytes = _wire2api_list_prim_u_8(raw);
-            return wire2apiUuids(bytes);"
-                .to_owned(),
+            IrTypeDelegate::Uuids =>
+                "const kUuidSizeInBytes = 16;
+                final bytes = _wire2api_list_prim_u_8(raw);
+                return List.generate(
+                  bytes.lengthInBytes ~/ kUuidSizeInBytes,
+                  (i) => UuidValue.fromByteList(Uint8List.view(bytes.buffer, i * kUuidSizeInBytes, kUuidSizeInBytes)),
+                  growable: false,
+                );
+                ".to_owned(),
             IrTypeDelegate::Anyhow => "return AnyhowException(raw as String);".to_owned(),
         }
     }

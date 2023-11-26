@@ -7006,8 +7006,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   List<UuidValue> _wire2api_Uuids(dynamic raw) {
+    const kUuidSizeInBytes = 16;
     final bytes = _wire2api_list_prim_u_8(raw);
-    return wire2apiUuids(bytes);
+    return List.generate(
+      bytes.lengthInBytes ~/ kUuidSizeInBytes,
+      (i) => UuidValue.fromByteList(
+          Uint8List.view(bytes.buffer, i * kUuidSizeInBytes, kUuidSizeInBytes)),
+      growable: false,
+    );
   }
 
   Float32List _wire2api_ZeroCopyBuffer_list_prim_f_32(dynamic raw) {

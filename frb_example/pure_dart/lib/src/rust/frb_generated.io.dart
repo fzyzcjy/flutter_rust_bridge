@@ -220,7 +220,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   ffi.Pointer<wire_list_prim_u_8> api2wire_Uuids(List<UuidValue> raw) {
-    return api2wire_list_prim_u_8(api2wireConcatenateBytes(raw));
+    final builder = BytesBuilder();
+    for (final element in raw) {
+      builder.add(element.toBytes());
+    }
+    return api2wire_list_prim_u_8(builder.toBytes());
   }
 
   @protected

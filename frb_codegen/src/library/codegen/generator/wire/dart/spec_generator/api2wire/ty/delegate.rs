@@ -99,7 +99,11 @@ impl<'a> WireDartGeneratorApi2wireTrait for DelegateWireDartGenerator<'a> {
                 uint8list_safe_ident()
             ))),
             IrTypeDelegate::Uuids => Acc::distribute(Some(format!(
-                "return api2wire_{}(api2wireConcatenateBytes(raw));",
+                "final builder = BytesBuilder();
+                for (final element in raw) {{
+                  builder.add(element.toBytes());
+                }}
+                return api2wire_{}(builder.toBytes());",
                 uint8list_safe_ident()
             ))),
             IrTypeDelegate::Backtrace => unimplemented!(),
