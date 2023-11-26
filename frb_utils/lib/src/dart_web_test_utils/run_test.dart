@@ -1,12 +1,13 @@
 import 'dart:convert';
-import 'dart:ffi';
 import 'dart:io';
 
 import 'package:flutter_rust_bridge/src/cli/build_web/executor.dart';
+import 'package:flutter_rust_bridge/src/cli/cli_utils.dart';
 import 'package:flutter_rust_bridge_utils/src/commands/serve_web_command.dart';
 import 'package:flutter_rust_bridge_utils/src/commands/test_web_command.dart';
 import 'package:flutter_rust_bridge_utils/src/dart_web_test_utils/static_content.dart';
 import 'package:flutter_rust_bridge_utils/src/serve_web/run_server.dart';
+import 'package:path/path.dart' as path;
 import 'package:puppeteer/puppeteer.dart' hide Response;
 import 'package:shelf/shelf.dart';
 import 'package:shelf_web_socket/shelf_web_socket.dart';
@@ -14,7 +15,8 @@ import 'package:shelf_web_socket/shelf_web_socket.dart';
 const kTestResultKey = '__result__';
 
 Future<void> executeTestWeb(TestWebConfig config) async {
-  final dartRoot = TODO;
+  final dartRoot = await findDartPackageDirectory(path.dirname(config.entrypoint));
+  print('executeTestWeb: Pick dartRoot=$dartRoot');
 
   print('executeTestWeb: compile');
   await executeBuildWeb(BuildWebArgs(

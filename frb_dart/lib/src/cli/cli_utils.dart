@@ -16,3 +16,17 @@ Never bail([String? message]) {
   eprint(message);
   exit(1);
 }
+
+/// {@macro flutter_rust_bridge.internal}
+Future<String> findDartPackageDirectory(String startingDir) async {
+  var tentativeDir = Directory(startingDir);
+  while (!_isRootDir(tentativeDir)) {
+    if (await File(tentativeDir.uri.resolve('pubspec.yaml').toFilePath()).exists()) {
+      return tentativeDir.path;
+    }
+    tentativeDir = tentativeDir.parent;
+  }
+  throw ArgumentError('Cannot find dart package directory from path $startingDir');
+}
+
+bool _isRootDir(Directory d) => d.parent.path == d.path;
