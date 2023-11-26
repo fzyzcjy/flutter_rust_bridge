@@ -21,4 +21,7 @@ class TestWebCommand extends _$TestWebConfigCommand<void> {
 class TestWebConfig {
   @CliOption(help: 'Dart file to be tested')
   late String entrypoint;
+ 
+  @CliOption(help: 'Make the browser headless')
+  late String headless;
 }

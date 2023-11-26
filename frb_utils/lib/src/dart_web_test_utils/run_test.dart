@@ -52,7 +52,7 @@ Future<void> executeTestWeb(TestWebConfig config) async {
   );
 
   print('executeTestWeb: launchBrowser');
-  browser = await _launchBrowser(addr: addr);
+  browser = await _launchBrowser(addr: addr, headless: config.headless);
 }
 
 Handler _createWebSocketHandler({required Future<void> Function() closeBrowser}) {
@@ -76,10 +76,12 @@ Handler _createWebSocketHandler({required Future<void> Function() closeBrowser})
 Handler _createIndexFileHandler() =>
     (request) => Response.ok(kIndexHtmlContent, headers: {HttpHeaders.contentTypeHeader: 'text/html'});
 
-Future<Browser> _launchBrowser({required String addr}) async {
+Future<Browser> _launchBrowser({
+  required String addr,
+  required bool headless,
+}) async {
   final browser = await puppeteer.launch(
-    // TODO may do headless later
-    headless: false,
+    headless: headless,
     timeout: const Duration(minutes: 5),
   );
   final page = await browser.newPage();
