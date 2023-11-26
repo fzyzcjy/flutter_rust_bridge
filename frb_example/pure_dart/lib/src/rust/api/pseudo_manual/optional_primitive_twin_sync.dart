@@ -15,7 +15,7 @@ int? exampleOptionalPrimitiveTypeI32TwinSync({int? arg, dynamic hint}) =>
     RustLib.instance.api
         .exampleOptionalPrimitiveTypeI32TwinSync(arg: arg, hint: hint);
 
-BigInt? exampleOptionalPrimitiveTypeI64TwinSync({BigInt? arg, dynamic hint}) =>
+int? exampleOptionalPrimitiveTypeI64TwinSync({int? arg, dynamic hint}) =>
     RustLib.instance.api
         .exampleOptionalPrimitiveTypeI64TwinSync(arg: arg, hint: hint);
 
@@ -31,7 +31,7 @@ int? exampleOptionalPrimitiveTypeU32TwinSync({int? arg, dynamic hint}) =>
     RustLib.instance.api
         .exampleOptionalPrimitiveTypeU32TwinSync(arg: arg, hint: hint);
 
-BigInt? exampleOptionalPrimitiveTypeU64TwinSync({BigInt? arg, dynamic hint}) =>
+int? exampleOptionalPrimitiveTypeU64TwinSync({int? arg, dynamic hint}) =>
     RustLib.instance.api
         .exampleOptionalPrimitiveTypeU64TwinSync(arg: arg, hint: hint);
 

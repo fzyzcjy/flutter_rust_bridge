@@ -4,17 +4,17 @@ import '../auxiliary/sample_types.dart';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<BigInt> handleTypeAliasId({required BigInt input, dynamic hint}) =>
+Future<int> handleTypeAliasId({required int input, dynamic hint}) =>
     RustLib.instance.api.handleTypeAliasId(input: input, hint: hint);
 
-Future<BigInt> handleTypeNestAliasId({required BigInt input, dynamic hint}) =>
+Future<int> handleTypeNestAliasId({required int input, dynamic hint}) =>
     RustLib.instance.api.handleTypeNestAliasId(input: input, hint: hint);
 
-Future<TestModel> handleTypeAliasModel({required BigInt input, dynamic hint}) =>
+Future<TestModel> handleTypeAliasModel({required int input, dynamic hint}) =>
     RustLib.instance.api.handleTypeAliasModel(input: input, hint: hint);
 
 class TestModel {
-  final BigInt id;
+  final int id;
   final String name;
   final MyEnum aliasEnum;
   final MyStruct aliasStruct;

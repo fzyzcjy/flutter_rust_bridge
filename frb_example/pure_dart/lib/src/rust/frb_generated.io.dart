@@ -538,7 +538,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<ffi.Int64> api2wire_box_autoadd_i_64(BigInt raw) {
+  ffi.Pointer<ffi.Int64> api2wire_box_autoadd_i_64(int raw) {
     return wire.new_box_autoadd_i_64(api2wire_i_64(raw));
   }
 
@@ -816,7 +816,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<ffi.Uint64> api2wire_box_autoadd_u_64(BigInt raw) {
+  ffi.Pointer<ffi.Uint64> api2wire_box_autoadd_u_64(int raw) {
     return wire.new_box_autoadd_u_64(api2wire_u_64(raw));
   }
 
@@ -875,7 +875,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<ffi.Int64> api2wire_box_i_64(BigInt raw) {
+  ffi.Pointer<ffi.Int64> api2wire_box_i_64(int raw) {
     return wire.new_box_i_64(api2wire_i_64(raw));
   }
 
@@ -940,11 +940,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     final ans = wire.new_list_prim_i_32(2);
     ans.ref.ptr.asTypedList(2).setAll(0, raw);
     return ans;
-  }
-
-  @protected
-  int api2wire_i_64(BigInt raw) {
-    return raw.toInt();
   }
 
   @protected
@@ -1246,7 +1241,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<ffi.Int64> api2wire_opt_box_autoadd_i_64(BigInt? raw) {
+  ffi.Pointer<ffi.Int64> api2wire_opt_box_autoadd_i_64(int? raw) {
     return raw == null ? ffi.nullptr : api2wire_box_autoadd_i_64(raw);
   }
 
@@ -1280,7 +1275,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<ffi.Uint64> api2wire_opt_box_autoadd_u_64(BigInt? raw) {
+  ffi.Pointer<ffi.Uint64> api2wire_opt_box_autoadd_u_64(int? raw) {
     return raw == null ? ffi.nullptr : api2wire_box_autoadd_u_64(raw);
   }
 
@@ -1311,7 +1306,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<ffi.Int64> api2wire_opt_box_i_64(BigInt? raw) {
+  ffi.Pointer<ffi.Int64> api2wire_opt_box_i_64(int? raw) {
     return raw == null ? ffi.nullptr : api2wire_box_i_64(raw);
   }
 
@@ -1369,11 +1364,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   ffi.Pointer<wire_list_test_id> api2wire_test_id_array_4(TestIdArray4 raw) {
     return api2wire_list_test_id(raw);
-  }
-
-  @protected
-  int api2wire_u_64(BigInt raw) {
-    return raw.toInt();
   }
 
   @protected

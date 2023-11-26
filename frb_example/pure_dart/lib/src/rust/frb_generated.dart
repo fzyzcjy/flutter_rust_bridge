@@ -442,7 +442,7 @@ abstract class RustLibApi extends BaseApi {
       {int? i8Box,
       int? u8Box,
       int? i32Box,
-      BigInt? i64Box,
+      int? i64Box,
       double? f64Box,
       bool? boolbox,
       ExoticOptionals? structbox,
@@ -463,7 +463,7 @@ abstract class RustLibApi extends BaseApi {
   String? syncOptionNull({dynamic hint});
 
   Future<int?> primitiveOptionalTypes(
-      {int? myI32, BigInt? myI64, double? myF64, bool? myBool, dynamic hint});
+      {int? myI32, int? myI64, double? myF64, bool? myBool, dynamic hint});
 
   Future<VecOfPrimitivePack> handleVecOfPrimitive(
       {required int n, dynamic hint});
@@ -476,7 +476,7 @@ abstract class RustLibApi extends BaseApi {
 
   Future<int> primitiveTypes(
       {required int myI32,
-      required BigInt myI64,
+      required int myI64,
       required double myF64,
       required bool myBool,
       dynamic hint});
@@ -543,8 +543,8 @@ abstract class RustLibApi extends BaseApi {
   Future<int?> exampleOptionalPrimitiveTypeI32TwinNormal(
       {int? arg, dynamic hint});
 
-  Future<BigInt?> exampleOptionalPrimitiveTypeI64TwinNormal(
-      {BigInt? arg, dynamic hint});
+  Future<int?> exampleOptionalPrimitiveTypeI64TwinNormal(
+      {int? arg, dynamic hint});
 
   Future<int?> exampleOptionalPrimitiveTypeI8TwinNormal(
       {int? arg, dynamic hint});
@@ -555,8 +555,8 @@ abstract class RustLibApi extends BaseApi {
   Future<int?> exampleOptionalPrimitiveTypeU32TwinNormal(
       {int? arg, dynamic hint});
 
-  Future<BigInt?> exampleOptionalPrimitiveTypeU64TwinNormal(
-      {BigInt? arg, dynamic hint});
+  Future<int?> exampleOptionalPrimitiveTypeU64TwinNormal(
+      {int? arg, dynamic hint});
 
   Future<int?> exampleOptionalPrimitiveTypeU8TwinNormal(
       {int? arg, dynamic hint});
@@ -571,7 +571,7 @@ abstract class RustLibApi extends BaseApi {
 
   int? exampleOptionalPrimitiveTypeI32TwinSync({int? arg, dynamic hint});
 
-  BigInt? exampleOptionalPrimitiveTypeI64TwinSync({BigInt? arg, dynamic hint});
+  int? exampleOptionalPrimitiveTypeI64TwinSync({int? arg, dynamic hint});
 
   int? exampleOptionalPrimitiveTypeI8TwinSync({int? arg, dynamic hint});
 
@@ -579,7 +579,7 @@ abstract class RustLibApi extends BaseApi {
 
   int? exampleOptionalPrimitiveTypeU32TwinSync({int? arg, dynamic hint});
 
-  BigInt? exampleOptionalPrimitiveTypeU64TwinSync({BigInt? arg, dynamic hint});
+  int? exampleOptionalPrimitiveTypeU64TwinSync({int? arg, dynamic hint});
 
   int? exampleOptionalPrimitiveTypeU8TwinSync({int? arg, dynamic hint});
 
@@ -598,8 +598,8 @@ abstract class RustLibApi extends BaseApi {
   Future<int> examplePrimitiveTypeI32TwinNormal(
       {required int arg, dynamic hint});
 
-  Future<BigInt> examplePrimitiveTypeI64TwinNormal(
-      {required BigInt arg, dynamic hint});
+  Future<int> examplePrimitiveTypeI64TwinNormal(
+      {required int arg, dynamic hint});
 
   Future<int> examplePrimitiveTypeI8TwinNormal(
       {required int arg, dynamic hint});
@@ -610,8 +610,8 @@ abstract class RustLibApi extends BaseApi {
   Future<int> examplePrimitiveTypeU32TwinNormal(
       {required int arg, dynamic hint});
 
-  Future<BigInt> examplePrimitiveTypeU64TwinNormal(
-      {required BigInt arg, dynamic hint});
+  Future<int> examplePrimitiveTypeU64TwinNormal(
+      {required int arg, dynamic hint});
 
   Future<int> examplePrimitiveTypeU8TwinNormal(
       {required int arg, dynamic hint});
@@ -692,7 +692,7 @@ abstract class RustLibApi extends BaseApi {
 
   int examplePrimitiveTypeI32TwinSync({required int arg, dynamic hint});
 
-  BigInt examplePrimitiveTypeI64TwinSync({required BigInt arg, dynamic hint});
+  int examplePrimitiveTypeI64TwinSync({required int arg, dynamic hint});
 
   int examplePrimitiveTypeI8TwinSync({required int arg, dynamic hint});
 
@@ -700,7 +700,7 @@ abstract class RustLibApi extends BaseApi {
 
   int examplePrimitiveTypeU32TwinSync({required int arg, dynamic hint});
 
-  BigInt examplePrimitiveTypeU64TwinSync({required BigInt arg, dynamic hint});
+  int examplePrimitiveTypeU64TwinSync({required int arg, dynamic hint});
 
   int examplePrimitiveTypeU8TwinSync({required int arg, dynamic hint});
 
@@ -815,11 +815,11 @@ abstract class RustLibApi extends BaseApi {
 
   Future<void> testTuple2({required List<(String, int)> value, dynamic hint});
 
-  Future<BigInt> handleTypeAliasId({required BigInt input, dynamic hint});
+  Future<int> handleTypeAliasId({required int input, dynamic hint});
 
-  Future<TestModel> handleTypeAliasModel({required BigInt input, dynamic hint});
+  Future<TestModel> handleTypeAliasModel({required int input, dynamic hint});
 
-  Future<BigInt> handleTypeNestAliasId({required BigInt input, dynamic hint});
+  Future<int> handleTypeNestAliasId({required int input, dynamic hint});
 
   Future<FeatureUuid> handleNestedUuids(
       {required FeatureUuid ids, dynamic hint});
@@ -3762,7 +3762,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {int? i8Box,
       int? u8Box,
       int? i32Box,
-      BigInt? i64Box,
+      int? i64Box,
       double? f64Box,
       bool? boolbox,
       ExoticOptionals? structbox,
@@ -3916,7 +3916,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<int?> primitiveOptionalTypes(
-      {int? myI32, BigInt? myI64, double? myF64, bool? myBool, dynamic hint}) {
+      {int? myI32, int? myI64, double? myF64, bool? myBool, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_i_32(myI32);
     var arg1 = api2wire_opt_box_autoadd_i_64(myI64);
     var arg2 = api2wire_opt_box_autoadd_f_64(myF64);
@@ -4004,7 +4004,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> primitiveTypes(
       {required int myI32,
-      required BigInt myI64,
+      required int myI64,
       required double myF64,
       required bool myBool,
       dynamic hint}) {
@@ -4542,8 +4542,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<BigInt?> exampleOptionalPrimitiveTypeI64TwinNormal(
-      {BigInt? arg, dynamic hint}) {
+  Future<int?> exampleOptionalPrimitiveTypeI64TwinNormal(
+      {int? arg, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_i_64(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire
@@ -4630,8 +4630,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<BigInt?> exampleOptionalPrimitiveTypeU64TwinNormal(
-      {BigInt? arg, dynamic hint}) {
+  Future<int?> exampleOptionalPrimitiveTypeU64TwinNormal(
+      {int? arg, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_u_64(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire
@@ -4779,7 +4779,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  BigInt? exampleOptionalPrimitiveTypeI64TwinSync({BigInt? arg, dynamic hint}) {
+  int? exampleOptionalPrimitiveTypeI64TwinSync({int? arg, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_i_64(arg);
     return handler.executeSync(SyncTask(
       callFfi: () =>
@@ -4863,7 +4863,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  BigInt? exampleOptionalPrimitiveTypeU64TwinSync({BigInt? arg, dynamic hint}) {
+  int? exampleOptionalPrimitiveTypeU64TwinSync({int? arg, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_u_64(arg);
     return handler.executeSync(SyncTask(
       callFfi: () =>
@@ -5015,8 +5015,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<BigInt> examplePrimitiveTypeI64TwinNormal(
-      {required BigInt arg, dynamic hint}) {
+  Future<int> examplePrimitiveTypeI64TwinNormal(
+      {required int arg, dynamic hint}) {
     var arg0 = api2wire_i_64(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
@@ -5103,8 +5103,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<BigInt> examplePrimitiveTypeU64TwinNormal(
-      {required BigInt arg, dynamic hint}) {
+  Future<int> examplePrimitiveTypeU64TwinNormal(
+      {required int arg, dynamic hint}) {
     var arg0 = api2wire_u_64(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
@@ -5720,7 +5720,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  BigInt examplePrimitiveTypeI64TwinSync({required BigInt arg, dynamic hint}) {
+  int examplePrimitiveTypeI64TwinSync({required int arg, dynamic hint}) {
     var arg0 = api2wire_i_64(arg);
     return handler.executeSync(SyncTask(
       callFfi: () => wire.wire_example_primitive_type_i64_twin_sync(arg0),
@@ -5800,7 +5800,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  BigInt examplePrimitiveTypeU64TwinSync({required BigInt arg, dynamic hint}) {
+  int examplePrimitiveTypeU64TwinSync({required int arg, dynamic hint}) {
     var arg0 = api2wire_u_64(arg);
     return handler.executeSync(SyncTask(
       callFfi: () => wire.wire_example_primitive_type_u64_twin_sync(arg0),
@@ -6747,7 +6747,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<BigInt> handleTypeAliasId({required BigInt input, dynamic hint}) {
+  Future<int> handleTypeAliasId({required int input, dynamic hint}) {
     var arg0 = api2wire_u_64(input);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_handle_type_alias_id(port_, arg0),
@@ -6766,8 +6766,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<TestModel> handleTypeAliasModel(
-      {required BigInt input, dynamic hint}) {
+  Future<TestModel> handleTypeAliasModel({required int input, dynamic hint}) {
     var arg0 = api2wire_u_64(input);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_handle_type_alias_model(port_, arg0),
@@ -6786,7 +6785,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<BigInt> handleTypeNestAliasId({required BigInt input, dynamic hint}) {
+  Future<int> handleTypeNestAliasId({required int input, dynamic hint}) {
     var arg0 = api2wire_u_64(input);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_handle_type_nest_alias_id(port_, arg0),
@@ -7289,8 +7288,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw as int;
   }
 
-  BigInt _wire2api_box_autoadd_i_64(dynamic raw) {
-    return _wire2api_i_64(raw);
+  int _wire2api_box_autoadd_i_64(dynamic raw) {
+    return raw as int;
   }
 
   int _wire2api_box_autoadd_i_8(dynamic raw) {
@@ -7327,8 +7326,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw as int;
   }
 
-  BigInt _wire2api_box_autoadd_u_64(dynamic raw) {
-    return _wire2api_u_64(raw);
+  int _wire2api_box_autoadd_u_64(dynamic raw) {
+    return raw as int;
   }
 
   int _wire2api_box_autoadd_u_8(dynamic raw) {
@@ -7844,8 +7843,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return I32Array2(_wire2api_list_prim_i_32(raw));
   }
 
-  BigInt _wire2api_i_64(dynamic raw) {
-    return wire2apiI64OrU64(raw);
+  int _wire2api_i_64(dynamic raw) {
+    return raw as int;
   }
 
   int _wire2api_i_8(dynamic raw) {
@@ -8290,7 +8289,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw == null ? null : _wire2api_box_autoadd_i_32(raw);
   }
 
-  BigInt? _wire2api_opt_box_autoadd_i_64(dynamic raw) {
+  int? _wire2api_opt_box_autoadd_i_64(dynamic raw) {
     return raw == null ? null : _wire2api_box_autoadd_i_64(raw);
   }
 
@@ -8314,7 +8313,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw == null ? null : _wire2api_box_autoadd_u_32(raw);
   }
 
-  BigInt? _wire2api_opt_box_autoadd_u_64(dynamic raw) {
+  int? _wire2api_opt_box_autoadd_u_64(dynamic raw) {
     return raw == null ? null : _wire2api_box_autoadd_u_64(raw);
   }
 
@@ -8644,8 +8643,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw as int;
   }
 
-  BigInt _wire2api_u_64(dynamic raw) {
-    return wire2apiI64OrU64(raw);
+  int _wire2api_u_64(dynamic raw) {
+    return raw as int;
   }
 
   int _wire2api_u_8(dynamic raw) {
@@ -8758,6 +8757,10 @@ int api2wire_i_32(int raw) {
   return raw;
 }
 
+int api2wire_i_64(int raw) {
+  return raw;
+}
+
 int api2wire_i_8(int raw) {
   return raw;
 }
@@ -8771,6 +8774,10 @@ int api2wire_u_16(int raw) {
 }
 
 int api2wire_u_32(int raw) {
+  return raw;
+}
+
+int api2wire_u_64(int raw) {
   return raw;
 }
 

@@ -7,7 +7,7 @@ Future<NewTypeInt> handleNewtype({required NewTypeInt arg, dynamic hint}) =>
     RustLib.instance.api.handleNewtype(arg: arg, hint: hint);
 
 class NewTypeInt {
-  final BigInt field0;
+  final int field0;
 
   const NewTypeInt({
     required this.field0,

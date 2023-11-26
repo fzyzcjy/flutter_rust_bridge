@@ -17,8 +17,8 @@ Future<int> examplePrimitiveTypeI32TwinNormal(
     RustLib.instance.api
         .examplePrimitiveTypeI32TwinNormal(arg: arg, hint: hint);
 
-Future<BigInt> examplePrimitiveTypeI64TwinNormal(
-        {required BigInt arg, dynamic hint}) =>
+Future<int> examplePrimitiveTypeI64TwinNormal(
+        {required int arg, dynamic hint}) =>
     RustLib.instance.api
         .examplePrimitiveTypeI64TwinNormal(arg: arg, hint: hint);
 
@@ -36,8 +36,8 @@ Future<int> examplePrimitiveTypeU32TwinNormal(
     RustLib.instance.api
         .examplePrimitiveTypeU32TwinNormal(arg: arg, hint: hint);
 
-Future<BigInt> examplePrimitiveTypeU64TwinNormal(
-        {required BigInt arg, dynamic hint}) =>
+Future<int> examplePrimitiveTypeU64TwinNormal(
+        {required int arg, dynamic hint}) =>
     RustLib.instance.api
         .examplePrimitiveTypeU64TwinNormal(arg: arg, hint: hint);
 

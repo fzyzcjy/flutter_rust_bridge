@@ -27,7 +27,7 @@ Future<String> handleOptionBoxArguments(
         {int? i8Box,
         int? u8Box,
         int? i32Box,
-        BigInt? i64Box,
+        int? i64Box,
         double? f64Box,
         bool? boolbox,
         ExoticOptionals? structbox,
@@ -99,7 +99,7 @@ class Element {
 
 class ExoticOptionals {
   final int? int32;
-  final BigInt? int64;
+  final int? int64;
   final double? float64;
   final bool? boolean;
   final Uint8List? zerocopy;

@@ -5,7 +5,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> primitiveTypes(
         {required int myI32,
-        required BigInt myI64,
+        required int myI64,
         required double myF64,
         required bool myBool,
         dynamic hint}) =>
