@@ -53,12 +53,6 @@ void main() {
   dartWebTestEntrypoint(() async {
     await RustLib.init();
 
-    test('call customEnumErrorPanicTwinNormal', () async {
-      await expectLater(
-          () async => customEnumErrorPanicTwinNormal(), throwsAPanicException(messageOnNative: 'deliberate panic'));
-    });
-    return;
-
     await external_type_in_crate_test.main(skipRustLibInit: true);
     await tuple_test.main(skipRustLibInit: true);
     await newtype_pattern_test.main(skipRustLibInit: true);
