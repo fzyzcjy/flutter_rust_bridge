@@ -1,4 +1,4 @@
-const kIndexHtmlContent = r'''
+const kTestEntrypointHtmlContent = r'''
 <!DOCTYPE html>
 <html lang="en">
   <head>

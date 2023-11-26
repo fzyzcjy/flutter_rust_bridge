@@ -35,7 +35,7 @@ Future<void> executeTestWeb(TestWebConfig config) async {
   Browser? browser;
 
   print('executeTestWeb: runServer');
-  final addr = await runServer(
+  final baseAddr = await runServer(
     ServeWebConfig(
       webRoot: webRoot,
       port: ServeWebConfig.kDefaultPort,
@@ -53,7 +53,7 @@ Future<void> executeTestWeb(TestWebConfig config) async {
   );
 
   print('executeTestWeb: launchBrowser');
-  browser = await _launchBrowser(addr: addr, headless: config.headless);
+  browser = await _launchBrowser(baseAddr: baseAddr, headless: config.headless);
 }
 
 Handler _createWebSocketHandler({required Future<void> Function() closeBrowser}) {
@@ -74,11 +74,17 @@ Handler _createWebSocketHandler({required Future<void> Function() closeBrowser})
   });
 }
 
-Handler _createIndexFileHandler() =>
-    (request) => Response.ok(kIndexHtmlContent, headers: {HttpHeaders.contentTypeHeader: 'text/html'});
+const _kTestEntrypointHttpPath = '/test_entrypoint.html';
+
+Handler _createIndexFileHandler() => (request) {
+      if (request.handlerPath == _kTestEntrypointHttpPath) {
+        return Response.ok(kTestEntrypointHtmlContent, headers: {HttpHeaders.contentTypeHeader: 'text/html'});
+      }
+      return Response.notFound(null);
+    };
 
 Future<Browser> _launchBrowser({
-  required String addr,
+  required String baseAddr,
   required bool headless,
 }) async {
   final browser = await puppeteer.launch(
@@ -87,7 +93,7 @@ Future<Browser> _launchBrowser({
   );
   final page = await browser.newPage();
   _configurePageLogging(page);
-  await page.goto(addr);
+  await page.goto('$baseAddr$_kTestEntrypointHttpPath');
   return browser;
 }
 
