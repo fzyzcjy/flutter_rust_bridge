@@ -1,1 +1,1 @@
-export 'src/build_utils/simple_build_utils.dart';
+export 'src/simple_build_utils.dart';
