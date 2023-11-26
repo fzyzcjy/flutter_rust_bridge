@@ -14,12 +14,16 @@ import 'package:shelf_web_socket/shelf_web_socket.dart';
 const kTestResultKey = '__result__';
 
 Future<void> executeTestWeb(TestWebConfig config) async {
+  final dartRoot = TODO;
+
   print('executeTestWeb: compile');
   await executeBuildWeb(BuildWebArgs(
-    output: TODO,
+    output: '$dartRoot/web/pkg',
     release: true,
     verbose: false,
-    rustCrateDir: TODO,
+    // TODO make these configurable later when it is publicly used
+    //      (now it is only used internally)
+    rustCrateDir: '$dartRoot/rust',
     cargoBuildArgs: [],
     wasmBindgenArgs: [],
     dartCompileJsEntrypoint: config.entrypoint,
@@ -30,7 +34,7 @@ Future<void> executeTestWeb(TestWebConfig config) async {
   print('executeTestWeb: runServer');
   final addr = await runServer(
     ServeWebConfig(
-      webRoot: TODO,
+      webRoot: '$dartRoot/web',
       port: ServeWebConfig.kDefaultPort,
       open: false,
     ),
