@@ -85,6 +85,16 @@ Future<Browser> _launchBrowser({
     timeout: const Duration(minutes: 5),
   );
   final page = await browser.newPage();
+  _configurePageLogging(page);
   await page.goto(addr);
   return browser;
+}
+
+void _configurePageLogging(Page page) {
+  // https://stackoverflow.com/questions/47539043/how-to-get-all-console-messages-with-puppeteer-including-errors-csp-violations
+  page.onConsole.listen((e) => print('Page.onConsole $e'));
+  page.onPageCrashed.listen((_) => print('Page.onPageCrashed'));
+  page.onResponse.listen((e) => print('Page.onResponse $e'));
+  page.onRequestFailed.listen((e) => print('Page.onRequestFailed $e'));
+  page.onError.listen((e) => print('Page.onError $e'));
 }
