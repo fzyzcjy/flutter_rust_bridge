@@ -8,12 +8,12 @@ default:
 
 # ----------------------------------- linter -----------------------------------
 
-lint: lint_rust lint_dart
+lint mode="default": (lint_rust mode) (lint_dart mode)
 
 # TODO frb_example packages are separated, are they ok?
-lint_rust: _lint_rust_main _lint_rust_wasm
+lint_rust mode="default": (_lint_rust_main mode) (_lint_rust_wasm mode)
 
-_lint_rust_main:
+_lint_rust_main mode="default":
     cargo fmt \
       {{ if mode == "fix" { "" } else { "--check" } }}
 
@@ -21,9 +21,12 @@ _lint_rust_main:
       {{ if mode == "fix" { "--fix" } else { "" } }} \
       -- -D warnings
 
-_lint_rust_wasm:
+_lint_rust_wasm mode="default":
     rustup target add wasm32-unknown-unknown
-    cd frb_rust && cargo clippy --target wasm32-unknown-unknown -- -D warnings
+    cd frb_rust && \
+      cargo clippy --target wasm32-unknown-unknown \
+      {{ if mode == "fix" { "--fix" } else { "" } }} \
+      -- -D warnings
 
 lint_dart mode="default":
     just dart_pub_get
