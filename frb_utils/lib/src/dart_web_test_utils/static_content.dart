@@ -82,6 +82,6 @@ const kIndexHtmlContent = r'''
       error(...args);
     };
   </script>
-  <script src="main.web.dart.js" async></script>
+  <script src="main.dart.js" async></script>
 </html>
 ''';

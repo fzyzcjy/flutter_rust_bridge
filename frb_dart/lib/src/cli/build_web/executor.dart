@@ -151,7 +151,7 @@ Future<void> _executeDartCompile(BuildWebArgs args) async {
     'compile',
     'js',
     '-o',
-    '${args.output}/main.web.dart.js',
+    '${args.output}/main.dart.js',
     if (args.release) '-O2',
     if (stdout.supportsAnsiEscapes) '--enable-diagnostic-colors',
     if (args.verbose) '--verbose',
