@@ -18,6 +18,7 @@ ArgParser _$populateTestWebConfigParser(ArgParser parser) => parser
   ..addFlag(
     'headless',
     help: 'Make the browser headless',
+    defaultsTo: true,
   );
 
 final _$parserForTestWebConfig = _$populateTestWebConfigParser(ArgParser());

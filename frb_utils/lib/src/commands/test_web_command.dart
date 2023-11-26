@@ -22,6 +22,6 @@ class TestWebConfig {
   @CliOption(help: 'Dart file to be tested')
   late String entrypoint;
 
-  @CliOption(help: 'Make the browser headless')
+  @CliOption(help: 'Make the browser headless', defaultsTo: true)
   late bool headless;
 }

@@ -87,6 +87,11 @@ Future<Browser> _launchBrowser({
   required String baseAddr,
   required bool headless,
 }) async {
+  if (headless) {
+    print('Hint: Running browser in headless mode now. '
+        'There are more logs on the browser console, so you can disable headless mode to debug.');
+  }
+
   final browser = await puppeteer.launch(
     headless: headless,
     timeout: const Duration(minutes: 5),
