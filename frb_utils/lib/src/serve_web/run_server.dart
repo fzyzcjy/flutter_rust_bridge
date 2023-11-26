@@ -5,7 +5,7 @@ import 'dart:io';
 
 // ignore: implementation_imports
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
-import 'package:flutter_rust_bridge_internal/src/commands/serve_web_command.dart';
+import 'package:flutter_rust_bridge_utils/src/commands/serve_web_command.dart';
 import 'package:puppeteer/puppeteer.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
