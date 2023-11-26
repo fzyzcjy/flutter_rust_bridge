@@ -8,6 +8,8 @@ dependencies:
   lints: ^2.0.1
   flutter_rust_bridge:
     path: ../../frb_dart
+  flutter_rust_bridge_utils:
+    path: ../../frb_utils
   ffi: ^2.0.1
   native_assets_cli: ^0.2.0
 dev_dependencies:

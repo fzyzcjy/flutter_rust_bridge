@@ -9,6 +9,8 @@ dependencies:
   lints: ^2.0.1
   flutter_rust_bridge:
     path: ../../frb_dart
+  flutter_rust_bridge_utils:
+    path: ../../frb_utils
   mocktail: ^1.0.1
   vm_service: ^9.0.0
   freezed_annotation: ^2.2.0
