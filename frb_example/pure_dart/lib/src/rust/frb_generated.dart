@@ -7844,7 +7844,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   int _wire2api_i_64(dynamic raw) {
-    return raw as int;
+    return wire2apiI64OrU64(raw);
   }
 
   int _wire2api_i_8(dynamic raw) {
@@ -8644,7 +8644,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   int _wire2api_u_64(dynamic raw) {
-    return raw as int;
+    return wire2apiI64OrU64(raw);
   }
 
   int _wire2api_u_8(dynamic raw) {
