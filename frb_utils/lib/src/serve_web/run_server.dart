@@ -9,7 +9,7 @@ import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
 import 'package:shelf_static/shelf_static.dart';
 
-Future<void> runServer(ServeWebConfig config, {Handler? extraHandler}) async {
+Future<String> runServer(ServeWebConfig config, {Handler? extraHandler}) async {
   final staticFilesHandler = createStaticHandler(config.webRoot, defaultDocument: 'index.html');
 
   // final shouldRelaxCoep = config.shouldRelaxCoep;
@@ -47,6 +47,8 @@ Future<void> runServer(ServeWebConfig config, {Handler? extraHandler}) async {
   if (config.open) {
     runCommand(_kOpen, [addr]);
   }
+
+  return addr;
 }
 
 final _kOpen = const {

@@ -27,7 +27,7 @@ Future<void> executeTestWeb(TestWebConfig options) async {
   Browser? browser;
 
   print('executeTestWeb: runServer');
-  await runServer(
+  final addr = await runServer(
     ServeWebConfig(
       webRoot: TODO,
       port: ServeWebConfig.kDefaultPort,
@@ -40,15 +40,8 @@ Future<void> executeTestWeb(TestWebConfig options) async {
       },
     ),
   );
-
-  print('executeTestWeb: puppeteer.launch');
-  browser = await puppeteer.launch(headless: true, timeout: const Duration(minutes: 5));
-
-  print('executeTestWeb: browser.newPage');
-  final page = await browser.newPage();
-
-  print('executeTestWeb: page.goto($addr)');
-  await page.goto(addr);
+ 
+  browser = await _browserLaunchAndGoto(addr: addr);
 }
 
 Handler _createWebSocketHandler({required Future<void> Function() closeBrowser}) {
@@ -67,4 +60,17 @@ Handler _createWebSocketHandler({required Future<void> Function() closeBrowser})
       }
     }
   });
+}
+
+Future<Browser> _browserLaunchAndGoto({required String addr}) async {
+  print('executeTestWeb: puppeteer.launch');
+  final browser = await puppeteer.launch(headless: true, timeout: const Duration(minutes: 5));
+
+  print('executeTestWeb: browser.newPage');
+  final page = await browser.newPage();
+
+  print('executeTestWeb: page.goto($addr)');
+  await page.goto(addr);
+
+  return browser;
 }
