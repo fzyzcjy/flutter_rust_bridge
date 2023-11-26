@@ -153,7 +153,7 @@ Future<void> _executeDartCompile(BuildWebArgs args) async {
     if (args.release) '-O2',
     if (stdout.supportsAnsiEscapes) '--enable-diagnostic-colors',
     if (args.verbose) '--verbose',
-    TODO,
+    'TODO',
   ]);
 }
 
