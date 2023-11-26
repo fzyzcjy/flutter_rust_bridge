@@ -19,9 +19,6 @@ class TestWebCommand extends _$TestWebConfigCommand<void> {
 
 @CliOptions(createCommand: true)
 class TestWebConfig {
-  @CliOption(
-    abbr: 'd',
-    help: 'Dart file to be tested',
-  )
+  @CliOption(help: 'Dart file to be tested')
   late String entrypoint;
 }
