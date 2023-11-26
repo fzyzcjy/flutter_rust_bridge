@@ -35,7 +35,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     );
   });
 
-  test('call funcStreamReturnPanicTwinNormal', () async {
+  // TODO implement in web
+  test('call funcStreamReturnPanicTwinNormal', skip: kIsWeb, () async {
     await expectLater(
       () async {
         await for (final _ in funcStreamReturnPanicTwinNormal()) {}
