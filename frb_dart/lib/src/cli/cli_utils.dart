@@ -22,7 +22,7 @@ Future<String> findDartPackageDirectory(String startingDir) async {
   var tentativeDir = Directory(startingDir);
   while (!_isRootDir(tentativeDir)) {
     if (await File(tentativeDir.uri.resolve('pubspec.yaml').toFilePath()).exists()) {
-      return tentativeDir.path;
+      return tentativeDir.absolute.path;
     }
     tentativeDir = tentativeDir.parent;
   }
