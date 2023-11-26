@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:html';
 
+import 'package:flutter_rust_bridge_utils/src/dart_web_test_utils/run_test.dart';
 import 'package:js/js.dart';
 import 'package:test_core/src/direct_run.dart';
 import 'package:test_core/src/runner/reporter/expanded.dart';
@@ -31,5 +32,5 @@ Future<void> _sendResult({required bool result}) async {
   final socket = WebSocket(url);
   await socket.onOpen.first;
 
-  socket.send(jsonEncode({'__result__': result}));
+  socket.send(jsonEncode({kTestResultKey: result}));
 }

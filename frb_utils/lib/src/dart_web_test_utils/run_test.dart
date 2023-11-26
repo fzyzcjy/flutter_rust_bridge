@@ -7,6 +7,8 @@ import 'package:flutter_rust_bridge_utils/src/serve_web/run_server.dart';
 import 'package:puppeteer/puppeteer.dart';
 import 'package:shelf_web_socket/shelf_web_socket.dart';
 
+const kTestResultKey = '__result__';
+
 Future<void> executeTestWeb(TestWebConfig options) async {
   Browser? browser;
 
@@ -14,9 +16,9 @@ Future<void> executeTestWeb(TestWebConfig options) async {
     await for (final mes in channel.stream) {
       try {
         final data = jsonDecode(mes);
-        if (data is Map && data.containsKey('__result__')) {
+        if (data is Map && data.containsKey(kTestResultKey)) {
           await browser?.close();
-          exit(data['__result__'] ? 0 : 1);
+          exit(data[kTestResultKey] ? 0 : 1);
         } else {
           print(data);
         }
