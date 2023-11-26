@@ -27,7 +27,7 @@ abstract class WasmModule {
   // }
 
   /// Initialize a [WasmModule] with the specified kind of [Modules].
-  static Future<WasmModule> initialize({required Modules kind, WasmModule Function()? module}) =>
+  static Future<Object> initialize({required Modules kind, WasmModule Function()? module}) =>
       kind.initializeModule(module);
 }
 
@@ -48,7 +48,7 @@ abstract class Modules {
   /// How a WASM module is brought into Dart's scope and initialized.
   ///
   /// Override this method to define custom initialization processes.
-  Future<WasmModule> initializeModule(WasmModule Function()? module);
+  Future<Object> initializeModule(WasmModule Function()? module);
 
   void _ensureCrossOriginIsolated() {
     print('TODO skip _ensureCrossOriginIsolated check'); // TODO
@@ -71,7 +71,7 @@ class _WasmBindgenNoModules extends Modules {
   const _WasmBindgenNoModules({required this.root});
 
   @override
-  Future<WasmModule> initializeModule(WasmModule Function()? module) async {
+  Future<Object> initializeModule(WasmModule Function()? module) async {
     _ensureCrossOriginIsolated();
     final script = ScriptElement()..src = '$root.js';
     document.head!.append(script);
