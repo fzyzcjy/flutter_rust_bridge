@@ -36,11 +36,6 @@ jobs:
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt, clippy
-      - &setup-dart
-        uses: dart-lang/setup-dart@v1
-        with:
-          sdk: 3.0.0
-          architecture: x64
       - &setup-just
         uses: extractions/setup-just@v1
         env:
@@ -55,7 +50,6 @@ jobs:
 
     steps:
       - *checkout
-      - *setup-dart
       - &setup-flutter
         uses: subosito/flutter-action@v2
         with:
