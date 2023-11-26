@@ -33,14 +33,16 @@ Future<void> executeTestWeb(TestWebConfig options) async {
       port: ServeWebConfig.kDefaultPort,
       open: false,
     ),
-    extraHandler: _createWebSocketHandler(
-      closeBrowser: () async {
-        print('executeTestWeb: close browser');
-        await browser?.close();
-      },
-    ),
+    extraHandlers: [
+      _createWebSocketHandler(
+        closeBrowser: () async {
+          print('executeTestWeb: close browser');
+          await browser?.close();
+        },
+      ),
+    ],
   );
- 
+
   TODO_serve_static_content;
 
   print('executeTestWeb: launchBrowser');

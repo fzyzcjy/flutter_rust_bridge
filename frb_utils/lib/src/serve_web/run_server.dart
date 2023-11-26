@@ -9,14 +9,16 @@ import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
 import 'package:shelf_static/shelf_static.dart';
 
-Future<String> runServer(ServeWebConfig config, {Handler? extraHandler}) async {
+Future<String> runServer(ServeWebConfig config, {List<Handler>? extraHandlers}) async {
   final staticFilesHandler = createStaticHandler(config.webRoot, defaultDocument: 'index.html');
 
   // final shouldRelaxCoep = config.shouldRelaxCoep;
   final shouldRelaxCoep = true;
 
   final innerHandler = Cascade();
-  if (extraHandler != null) innerHandler.add(extraHandler);
+  for (final extraHandler in extraHandlers ?? const <Handler>[]) {
+    innerHandler.add(extraHandler);
+  }
   innerHandler.add(staticFilesHandler);
 
   final handler = const Pipeline().addMiddleware((handler) {
