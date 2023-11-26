@@ -16,11 +16,12 @@ const kTestResultKey = '__result__';
 
 Future<void> executeTestWeb(TestWebConfig config) async {
   final dartRoot = await findDartPackageDirectory(path.dirname(config.entrypoint));
+  final webRoot = '$dartRoot/web';
   print('executeTestWeb: Pick dartRoot=$dartRoot');
 
   print('executeTestWeb: compile');
   await executeBuildWeb(BuildWebArgs(
-    output: '$dartRoot/web',
+    output: webRoot,
     release: true,
     verbose: false,
     // TODO make these configurable later when it is publicly used
@@ -36,7 +37,7 @@ Future<void> executeTestWeb(TestWebConfig config) async {
   print('executeTestWeb: runServer');
   final addr = await runServer(
     ServeWebConfig(
-      webRoot: '$dartRoot/web',
+      webRoot: webRoot,
       port: ServeWebConfig.kDefaultPort,
       open: false,
     ),
