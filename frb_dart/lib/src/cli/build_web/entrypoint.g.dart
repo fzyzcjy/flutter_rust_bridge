@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'config.dart';
+part of 'entrypoint.dart';
 
 // **************************************************************************
 // CliGenerator
@@ -13,8 +13,7 @@ Config _$parseConfigResult(ArgResults result) => Config()
   ..release = result['release'] as bool
   ..verbose = result['verbose'] as bool
   ..cargoBuildArgs = result['cargo-build-args'] as List<String>
-  ..wasmBindgenArgs = result['wasm-bindgen-args'] as List<String>
-  ..help = result['help'] as bool;
+  ..wasmBindgenArgs = result['wasm-bindgen-args'] as List<String>;
 
 ArgParser _$populateConfigParser(ArgParser parser) => parser
   ..addOption(
@@ -51,12 +50,6 @@ ArgParser _$populateConfigParser(ArgParser parser) => parser
   ..addMultiOption(
     'wasm-bindgen-args',
     help: 'Arguments passed to wasm-bindgen',
-  )
-  ..addFlag(
-    'help',
-    abbr: 'h',
-    help: 'Print this help message',
-    negatable: false,
   );
 
 final _$parserForConfig = _$populateConfigParser(ArgParser());
@@ -64,4 +57,12 @@ final _$parserForConfig = _$populateConfigParser(ArgParser());
 Config parseConfig(List<String> args) {
   final result = _$parserForConfig.parse(args);
   return _$parseConfigResult(result);
+}
+
+abstract class _$ConfigCommand<T> extends Command<T> {
+  _$ConfigCommand() {
+    _$populateConfigParser(argParser);
+  }
+
+  late final _options = _$parseConfigResult(argResults!);
 }
