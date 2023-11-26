@@ -28,17 +28,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - id: rust-toolchain
+      - &checkout
+        uses: actions/checkout@v4
+      - &setup-rust
+        id: rust-toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt, clippy
-      - uses: dart-lang/setup-dart@v1
+      - &setup-dart
+        uses: dart-lang/setup-dart@v1
         with:
           sdk: 3.0.0
           architecture: x64
-      - uses: extractions/setup-just@v1
+      - &setup-just
+        uses: extractions/setup-just@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -50,21 +54,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: dart-lang/setup-dart@v1
-        with:
-          sdk: 3.0.0
-          architecture: x64
-      - uses: subosito/flutter-action@v2
+      - *checkout
+      - *setup-dart
+      - &setup-flutter
+        uses: subosito/flutter-action@v2
         with:
           cache: true
           channel: "stable"
-
           flutter-version: 3.13.6
-
-      - uses: extractions/setup-just@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - *setup-just
 
       - run: just dart_linter
 
