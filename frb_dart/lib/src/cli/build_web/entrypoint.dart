@@ -57,6 +57,10 @@ class Config {
   @CliOption(help: 'Arguments passed to wasm-bindgen')
   late List<String> wasmBindgenArgs;
 
+  /// {@macro flutter_rust_bridge.cli}
+  @CliOption(help: 'If specified, compile Dart into JavaScript and use this option as entrypoint')
+  late String? dartCompileJsEntrypoint;
+
 // TODO rm
 // /// {@macro flutter_rust_bridge.cli}
 // @CliOption(abbr: 'h', help: 'Print this help message', negatable: false)
@@ -107,6 +111,7 @@ BuildWebArgs _parseConfigToArgs(Config config) {
     cargoBuildArgs: config.cargoBuildArgs,
     enableWasmBindgen: config.wasmBindgenArgs.isNotEmpty,
     wasmBindgenArgs: config.wasmBindgenArgs,
+    dartCompileJsEntrypoint: config.dartCompileJsEntrypoint,
   );
 }
 

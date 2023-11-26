@@ -13,7 +13,8 @@ Config _$parseConfigResult(ArgResults result) => Config()
   ..release = result['release'] as bool
   ..verbose = result['verbose'] as bool
   ..cargoBuildArgs = result['cargo-build-args'] as List<String>
-  ..wasmBindgenArgs = result['wasm-bindgen-args'] as List<String>;
+  ..wasmBindgenArgs = result['wasm-bindgen-args'] as List<String>
+  ..dartCompileJsEntrypoint = result['dart-compile-js-entrypoint'] as String?;
 
 ArgParser _$populateConfigParser(ArgParser parser) => parser
   ..addOption(
@@ -50,6 +51,11 @@ ArgParser _$populateConfigParser(ArgParser parser) => parser
   ..addMultiOption(
     'wasm-bindgen-args',
     help: 'Arguments passed to wasm-bindgen',
+  )
+  ..addOption(
+    'dart-compile-js-entrypoint',
+    help:
+        'If specified, compile Dart into JavaScript and use this option as entrypoint',
   );
 
 final _$parserForConfig = _$populateConfigParser(ArgParser());

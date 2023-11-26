@@ -31,6 +31,9 @@ class BuildWebArgs {
   final List<String> wasmBindgenArgs;
 
   /// {@macro flutter_rust_bridge.cli}
+  final String? dartCompileJsEntrypoint;
+
+  /// {@macro flutter_rust_bridge.cli}
   const BuildWebArgs({
     required this.dartRoot,
     required this.output,
@@ -40,6 +43,7 @@ class BuildWebArgs {
     required this.cargoBuildArgs,
     required this.enableWasmBindgen,
     required this.wasmBindgenArgs,
+    required this.dartCompileJsEntrypoint,
   });
 }
 
@@ -56,7 +60,9 @@ Future<void> executeBuildWeb(BuildWebArgs args) async {
   }
 
   // if (config.cliOpts.dartInput != null) {
-  await _executeDartCompile(args);
+  if (args.dartCompileJsEntrypoint != null) {
+    await _executeDartCompile(args);
+  }
   // TODO
   // } else {
   //   await _executeFlutterBuildWeb(config);
@@ -153,7 +159,7 @@ Future<void> _executeDartCompile(BuildWebArgs args) async {
     if (args.release) '-O2',
     if (stdout.supportsAnsiEscapes) '--enable-diagnostic-colors',
     if (args.verbose) '--verbose',
-    'TODO',
+    args.dartCompileJsEntrypoint!,
   ]);
 }
 
