@@ -26,17 +26,12 @@ jobs:
     name: Linter :: Rust
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        cargo_toolchain_version:
-          - 1.70.0
-
     steps:
       - uses: actions/checkout@v4
       - id: rust-toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: ${{ matrix.cargo_toolchain_version }}
+          toolchain: 1.70.0
           components: rustfmt, clippy
       - uses: dart-lang/setup-dart@v1
         with:
