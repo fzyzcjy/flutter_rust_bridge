@@ -21,10 +21,10 @@ concurrency:
 
 jobs:
 
-  # ----------------------------------- linter -----------------------------------
+  # ----------------------------------- lint -----------------------------------
 
-  linter_rust:
-    name: Linter :: Rust
+  lint_rust:
+    name: Lint :: Rust
     runs-on: ubuntu-latest
 
     steps:
@@ -40,10 +40,10 @@ jobs:
         uses: extractions/setup-just@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: just rust_linter
+      - run: just lint_rust
 
-  linter_dart:
-    name: Linter :: Dart
+  lint_dart:
+    name: Lint :: Dart
     runs-on: ubuntu-latest
 
     steps:
@@ -55,6 +55,4 @@ jobs:
           channel: "stable"
           flutter-version: 3.13.6
       - *setup-just
-
-      - run: just dart_linter
-
+      - run: just lint_dart
