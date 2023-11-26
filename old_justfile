@@ -152,31 +152,6 @@ _generate_bridge_with_flutter:
         --no-use-bridge-in-method \
         --wasm
 
-# ============================ linters ============================
-
-default_line_length := "120"
-
-dart_linter mode="default":
-    just dart_pub_get
-
-    just _dart_linter_single {{mode}} frb_dart dart 80
-    just _dart_linter_single {{mode}} {{dir_example_pure_dart}}/dart dart {{default_line_length}}
-    just _dart_linter_single {{mode}} {{dir_example_pure_dart_multi}}/dart dart {{default_line_length}}
-    just _dart_linter_single {{mode}} {{dir_example_with_flutter}} dart {{default_line_length}}
-
-    just dart_linter_pana
-
-_dart_linter_single mode directory executable line_length:
-    cd {{directory}} && dart format \
-      --line-length {{line_length}} \
-      {{ if mode == "fix" { "--fix" } else { "--output=none --set-exit-if-changed" } }} \
-      .
-    cd {{directory}} && {{executable}} analyze --fatal-infos
-
-dart_linter_pana:
-    flutter pub global activate pana
-    cd frb_dart && {{pana}} --no-warning --line-length 80 --exit-code-threshold 0
-
 dart_check_included_source:
     #!/usr/bin/env bash
     set -euxo pipefail
@@ -188,6 +163,9 @@ dart_check_included_source:
     cp -rf ./sdk/runtime/include/* ./frb_rust/src/dart_api/
     rm -r sdk
     git diff --exit-code
+
+# ============================ linters ============================
+# moved
 
 # ============================ (some of) CI ============================
 
