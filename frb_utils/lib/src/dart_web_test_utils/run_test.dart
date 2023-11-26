@@ -9,22 +9,20 @@ import 'package:flutter_rust_bridge_utils/src/dart_web_test_utils/static_content
 import 'package:flutter_rust_bridge_utils/src/serve_web/run_server.dart';
 import 'package:puppeteer/puppeteer.dart' hide Response;
 import 'package:shelf/shelf.dart';
-import 'package:shelf/src/handler.dart';
 import 'package:shelf_web_socket/shelf_web_socket.dart';
 
 const kTestResultKey = '__result__';
 
-Future<void> executeTestWeb(TestWebConfig options) async {
+Future<void> executeTestWeb(TestWebConfig config) async {
   print('executeTestWeb: compile');
   await executeBuildWeb(BuildWebArgs(
-    dartRoot: TODO,
     output: TODO,
     release: true,
     verbose: false,
     rustCrateDir: TODO,
     cargoBuildArgs: [],
     wasmBindgenArgs: [],
-    dartCompileJsEntrypoint: TODO,
+    dartCompileJsEntrypoint: config.entrypoint,
   ));
 
   Browser? browser;

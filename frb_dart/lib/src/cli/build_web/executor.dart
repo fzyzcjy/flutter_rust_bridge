@@ -7,9 +7,6 @@ import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 /// {@macro flutter_rust_bridge.cli}
 class BuildWebArgs {
   /// {@macro flutter_rust_bridge.cli}
-  final String dartRoot;
-
-  /// {@macro flutter_rust_bridge.cli}
   final String output;
 
   /// {@macro flutter_rust_bridge.cli}
@@ -32,7 +29,6 @@ class BuildWebArgs {
 
   /// {@macro flutter_rust_bridge.cli}
   const BuildWebArgs({
-    required this.dartRoot,
     required this.output,
     required this.release,
     required this.verbose,

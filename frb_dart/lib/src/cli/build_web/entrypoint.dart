@@ -25,10 +25,6 @@ class BuildWebCommand extends _$ConfigCommand<void> {
 @CliOptions(createCommand: true)
 class Config {
   /// {@macro flutter_rust_bridge.cli}
-  @CliOption(help: 'Root of dart package')
-  late String dartRoot;
-
-  /// {@macro flutter_rust_bridge.cli}
   @CliOption(
     abbr: 'c',
     help: 'Directory of the crate',
@@ -103,7 +99,6 @@ BuildWebArgs _parseConfigToArgs(Config config) {
   // }
 
   return BuildWebArgs(
-    dartRoot: config.dartRoot,
     output: config.output ?? _fallbackOutput(dartRoot: config.dartRoot),
     release: config.release,
     verbose: config.verbose,
