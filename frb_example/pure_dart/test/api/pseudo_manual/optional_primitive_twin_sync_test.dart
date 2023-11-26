@@ -9,25 +9,33 @@
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/optional_primitive_twin_sync.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
-
 import '../../test_utils.dart';
 
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   group('optional_primitive', () {
-    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeI8TwinSync, <int?>[null, 0, -128, 127]);
-    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeI16TwinSync, <int?>[null, 0, -32768, 32767]);
-    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeI32TwinSync, <int?>[null, 0, -2147483648, 2147483647]);
+    addTestsIdentityFunctionCall(
+        exampleOptionalPrimitiveTypeI8TwinSync, <int?>[null, 0, -128, 127]);
+    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeI16TwinSync,
+        <int?>[null, 0, -32768, 32767]);
+    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeI32TwinSync,
+        <int?>[null, 0, -2147483648, 2147483647]);
     addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeI64TwinSync,
-        <BigInt?>[null, BigInt.parse("0"), BigInt.parse("-9223372036854775808"), BigInt.parse("9223372036854775807")]);
-    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeU8TwinSync, <int?>[null, 0, 255]);
-    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeU16TwinSync, <int?>[null, 0, 65535]);
-    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeU32TwinSync, <int?>[null, 0, 4294967295]);
+        <int?>[null, 0, -9007199254740992, 9007199254740992]);
+    addTestsIdentityFunctionCall(
+        exampleOptionalPrimitiveTypeU8TwinSync, <int?>[null, 0, 255]);
+    addTestsIdentityFunctionCall(
+        exampleOptionalPrimitiveTypeU16TwinSync, <int?>[null, 0, 65535]);
+    addTestsIdentityFunctionCall(
+        exampleOptionalPrimitiveTypeU32TwinSync, <int?>[null, 0, 4294967295]);
     addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeU64TwinSync,
-        <BigInt?>[null, BigInt.parse("0"), BigInt.parse("9223372036854775807")]);
-    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeF32TwinSync, <double?>[null, 0, -42.5, 123456]);
-    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeF64TwinSync, <double?>[null, 0, -42.5, 123456]);
-    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeBoolTwinSync, <bool?>[null, false, true]);
+        <int?>[null, 0, 9007199254740992]);
+    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeF32TwinSync,
+        <double?>[null, 0, -42.5, 123456]);
+    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeF64TwinSync,
+        <double?>[null, 0, -42.5, 123456]);
+    addTestsIdentityFunctionCall(
+        exampleOptionalPrimitiveTypeBoolTwinSync, <bool?>[null, false, true]);
   });
 }

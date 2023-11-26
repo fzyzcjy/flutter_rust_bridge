@@ -105,7 +105,8 @@ final kPrimitiveTypes = [
   ),
   PrimitiveTypeInfo(
     name: 'i64',
-    dartTypeName: 'BigInt',
+    // dartTypeName: 'BigInt',
+    dartTypeName: 'int',
     primitiveListName: 'Int64List',
     interestRawValues: [
       '0',
@@ -115,7 +116,7 @@ final kPrimitiveTypes = [
       // '-9223372036854775808',
       // '9223372036854775807',
     ],
-    primitiveWrapper: (_, x) => 'BigInt.parse("$x")',
+    // primitiveWrapper: (_, x) => 'BigInt.parse("$x")',
   ),
   PrimitiveTypeInfo(
     name: 'u8',
@@ -137,7 +138,8 @@ final kPrimitiveTypes = [
   ),
   PrimitiveTypeInfo(
     name: 'u64',
-    dartTypeName: 'BigInt',
+    // dartTypeName: 'BigInt',
+    dartTypeName: 'int',
     primitiveListName: 'Uint64List',
     // '18446744073709551615', // not support numbers bigger than max i64 yet (but implementable)
     interestRawValues: [
@@ -146,7 +148,7 @@ final kPrimitiveTypes = [
       // TODO handle >53bit values, in dart web compiler it will error
       // '9223372036854775807',
     ],
-    primitiveWrapper: (_, x) => 'BigInt.parse("$x")',
+    // primitiveWrapper: (_, x) => 'BigInt.parse("$x")',
   ),
   PrimitiveTypeInfo(
     name: 'f32',
