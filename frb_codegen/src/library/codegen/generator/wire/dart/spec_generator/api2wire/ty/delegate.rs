@@ -73,18 +73,14 @@ impl<'a> WireDartGeneratorApi2wireTrait for DelegateWireDartGenerator<'a> {
             IrTypeDelegate::Time(ir) => match ir {
                 IrTypeDelegateTime::Utc | IrTypeDelegateTime::Local | IrTypeDelegateTime::Naive => {
                     Acc {
-                        io: Some(
-                            "return api2wire_i_64(BigInt.from(raw.microsecondsSinceEpoch));".into(),
-                        ),
-                        wasm: Some(
-                            "return api2wire_i_64(BigInt.from(raw.millisecondsSinceEpoch));".into(),
-                        ),
+                        io: Some("return api2wire_i_64(raw.microsecondsSinceEpoch);".into()),
+                        wasm: Some("return api2wire_i_64(raw.millisecondsSinceEpoch);".into()),
                         ..Default::default()
                     }
                 }
                 IrTypeDelegateTime::Duration => Acc {
-                    io: Some("return api2wire_i_64(BigInt.from(raw.inMicroseconds));".into()),
-                    wasm: Some("return api2wire_i_64(BigInt.from(raw.inMilliseconds));".into()),
+                    io: Some("return api2wire_i_64(raw.inMicroseconds);".into()),
+                    wasm: Some("return api2wire_i_64(raw.inMilliseconds);".into()),
                     ..Default::default()
                 },
             },

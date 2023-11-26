@@ -90,7 +90,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   int api2wire_Chrono_Duration(Duration raw) {
-    return api2wire_i_64(BigInt.from(raw.inMilliseconds));
+    return api2wire_i_64(raw.inMilliseconds);
   }
 
   @protected
@@ -103,12 +103,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   int api2wire_Chrono_Local(DateTime raw) {
-    return api2wire_i_64(BigInt.from(raw.millisecondsSinceEpoch));
+    return api2wire_i_64(raw.millisecondsSinceEpoch);
   }
 
   @protected
   int api2wire_Chrono_Naive(DateTime raw) {
-    return api2wire_i_64(BigInt.from(raw.millisecondsSinceEpoch));
+    return api2wire_i_64(raw.millisecondsSinceEpoch);
   }
 
   @protected
@@ -120,7 +120,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   int api2wire_Chrono_Utc(DateTime raw) {
-    return api2wire_i_64(BigInt.from(raw.millisecondsSinceEpoch));
+    return api2wire_i_64(raw.millisecondsSinceEpoch);
   }
 
   @protected
