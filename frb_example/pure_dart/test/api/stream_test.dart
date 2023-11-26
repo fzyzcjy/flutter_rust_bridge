@@ -40,7 +40,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       () async {
         await for (final _ in funcStreamReturnPanicTwinNormal()) {}
       },
-      throwsA(isA<PanicException>().having((x) => x.message, 'message', 'deliberate panic')),
+      throwsAPanicException(messageOnNative: 'deliberate panic'),
     );
   });
 

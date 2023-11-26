@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:typed_data';
 
+import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:meta/meta.dart';
 import 'package:test/test.dart';
 
@@ -69,4 +70,12 @@ bool get releaseMode {
     return true;
   }());
   return ans;
+}
+
+/// Only check message content on non-web, because of a current (2023.11) limitation of Rust WASM:
+/// https://github.com/fzyzcjy/flutter_rust_bridge/blob/68b1a9415d5a47b9a793074974af8b2f8a8bcfc0/book/src/wasm_limitations.md
+Matcher throwsAPanicException({String? messageOnNative}) {
+  var inner = isA<PanicException>();
+  if (!kIsWeb) inner = inner.having((x) => x.message, 'message', messageOnNative);
+  return throwsA(inner);
 }

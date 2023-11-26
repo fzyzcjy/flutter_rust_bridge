@@ -17,18 +17,18 @@ Future<void> main({bool skipRustLibInit = false}) async {
         throwsA(isA<AnyhowException>().having((x) => x.message, 'message', 'deliberate error')));
   });
   test('call funcTypeFalliblePanicTwinSync', () async {
-    await expectLater(() async => funcTypeFalliblePanicTwinSync(),
-        throwsA(isA<PanicException>().having((x) => x.message, 'message', 'deliberate panic')));
+    await expectLater(
+        () async => funcTypeFalliblePanicTwinSync(), throwsAPanicException(messageOnNative: 'deliberate panic'));
   });
   test('call funcTypeInfalliblePanicTwinSync', () async {
-    await expectLater(() async => funcTypeInfalliblePanicTwinSync(),
-        throwsA(isA<PanicException>().having((x) => x.message, 'message', 'deliberate panic')));
+    await expectLater(
+        () async => funcTypeInfalliblePanicTwinSync(), throwsAPanicException(messageOnNative: 'deliberate panic'));
   });
 
   addTestsIdentityFunctionCall(customEnumErrorReturnOkTwinSync, [100]);
   test('call customEnumErrorPanicTwinSync', () async {
-    await expectLater(() async => customEnumErrorPanicTwinSync(),
-        throwsA(isA<PanicException>().having((x) => x.message, 'message', 'deliberate panic')));
+    await expectLater(
+        () async => customEnumErrorPanicTwinSync(), throwsAPanicException(messageOnNative: 'deliberate panic'));
   });
 
   test('call funcReturnErrorTwinSync', () async {
