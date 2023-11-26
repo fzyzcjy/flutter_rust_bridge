@@ -7289,7 +7289,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   int _wire2api_box_autoadd_i_64(dynamic raw) {
-    return raw as int;
+    return _wire2api_i_64(raw);
   }
 
   int _wire2api_box_autoadd_i_8(dynamic raw) {
@@ -7327,7 +7327,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   int _wire2api_box_autoadd_u_64(dynamic raw) {
-    return raw as int;
+    return _wire2api_u_64(raw);
   }
 
   int _wire2api_box_autoadd_u_8(dynamic raw) {
