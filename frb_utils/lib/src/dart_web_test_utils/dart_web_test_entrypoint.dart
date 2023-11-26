@@ -20,8 +20,8 @@ Future<void> dartWebTestEntrypoint(FutureOr<void> Function() testMain) async {
         ExpandedReporter.watch(engine, PrintSink(), color: true, printPlatform: false, printPath: false),
   );
 
-  print('hack: sleep forever...');
-  await Future.delayed(Duration(seconds: 10000000));
+  // print('hack: sleep forever...');
+  // await Future.delayed(Duration(seconds: 10000000));
 
   await _sendResult(result: result);
 
