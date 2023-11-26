@@ -77,7 +77,11 @@ Handler _createIndexFileHandler() =>
     (request) => Response.ok(kIndexHtmlContent, headers: {HttpHeaders.contentTypeHeader: 'text/html'});
 
 Future<Browser> _launchBrowser({required String addr}) async {
-  final browser = await puppeteer.launch(headless: true, timeout: const Duration(minutes: 5));
+  final browser = await puppeteer.launch(
+    // TODO may do headless later
+    headless: false,
+    timeout: const Duration(minutes: 5),
+  );
   final page = await browser.newPage();
   await page.goto(addr);
   return browser;
