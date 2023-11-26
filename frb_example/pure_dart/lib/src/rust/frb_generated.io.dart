@@ -943,6 +943,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  int api2wire_i_64(int raw) {
+    return raw.toInt();
+  }
+
+  @protected
   ffi.Pointer<wire_list_DartOpaque> api2wire_list_DartOpaque(List<Object> raw) {
     final ans = wire.new_list_DartOpaque(raw.length);
     for (var i = 0; i < raw.length; ++i) {
@@ -1364,6 +1369,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   ffi.Pointer<wire_list_test_id> api2wire_test_id_array_4(TestIdArray4 raw) {
     return api2wire_list_test_id(raw);
+  }
+
+  @protected
+  int api2wire_u_64(int raw) {
+    return raw.toInt();
   }
 
   @protected

@@ -8757,10 +8757,6 @@ int api2wire_i_32(int raw) {
   return raw;
 }
 
-int api2wire_i_64(int raw) {
-  return raw;
-}
-
 int api2wire_i_8(int raw) {
   return raw;
 }
@@ -8774,10 +8770,6 @@ int api2wire_u_16(int raw) {
 }
 
 int api2wire_u_32(int raw) {
-  return raw;
-}
-
-int api2wire_u_64(int raw) {
   return raw;
 }
 

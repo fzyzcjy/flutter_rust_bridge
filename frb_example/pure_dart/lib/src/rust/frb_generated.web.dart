@@ -89,7 +89,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       OpaqueTypeFinalizer(wire.drop_opaque_RustOpaque_non_send_hide_data);
 
   @protected
-  int api2wire_Chrono_Duration(Duration raw) {
+  Object api2wire_Chrono_Duration(Duration raw) {
     return api2wire_i_64(raw.inMilliseconds);
   }
 
@@ -102,12 +102,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  int api2wire_Chrono_Local(DateTime raw) {
+  Object api2wire_Chrono_Local(DateTime raw) {
     return api2wire_i_64(raw.millisecondsSinceEpoch);
   }
 
   @protected
-  int api2wire_Chrono_Naive(DateTime raw) {
+  Object api2wire_Chrono_Naive(DateTime raw) {
     return api2wire_i_64(raw.millisecondsSinceEpoch);
   }
 
@@ -119,7 +119,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  int api2wire_Chrono_Utc(DateTime raw) {
+  Object api2wire_Chrono_Utc(DateTime raw) {
     return api2wire_i_64(raw.millisecondsSinceEpoch);
   }
 
@@ -274,7 +274,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  int api2wire_box_autoadd_Chrono_Utc(DateTime raw) {
+  Object api2wire_box_autoadd_Chrono_Utc(DateTime raw) {
     return api2wire_Chrono_Utc(raw);
   }
 
@@ -482,7 +482,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  int api2wire_box_autoadd_i_64(int raw) {
+  Object api2wire_box_autoadd_i_64(int raw) {
     return api2wire_i_64(raw);
   }
 
@@ -674,7 +674,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  int api2wire_box_autoadd_u_64(int raw) {
+  Object api2wire_box_autoadd_u_64(int raw) {
     return api2wire_u_64(raw);
   }
 
@@ -724,7 +724,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  int api2wire_box_i_64(int raw) {
+  Object api2wire_box_i_64(int raw) {
     return api2wire_i_64(raw);
   }
 
@@ -1056,6 +1056,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  Object api2wire_i_64(int raw) {
+    return castNativeBigInt(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_kitchen_sink(KitchenSink raw) {
     if (raw is KitchenSink_Empty) {
       return [0];
@@ -1306,7 +1311,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  int? api2wire_opt_box_autoadd_Chrono_Utc(DateTime? raw) {
+  Object? api2wire_opt_box_autoadd_Chrono_Utc(DateTime? raw) {
     return raw == null ? null : api2wire_box_autoadd_Chrono_Utc(raw);
   }
 
@@ -1357,7 +1362,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  int? api2wire_opt_box_autoadd_i_64(int? raw) {
+  Object? api2wire_opt_box_autoadd_i_64(int? raw) {
     return raw == null ? null : api2wire_box_autoadd_i_64(raw);
   }
 
@@ -1388,7 +1393,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  int? api2wire_opt_box_autoadd_u_64(int? raw) {
+  Object? api2wire_opt_box_autoadd_u_64(int? raw) {
     return raw == null ? null : api2wire_box_autoadd_u_64(raw);
   }
 
@@ -1418,7 +1423,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  int? api2wire_opt_box_i_64(int? raw) {
+  Object? api2wire_opt_box_i_64(int? raw) {
     return raw == null ? null : api2wire_box_i_64(raw);
   }
 
@@ -1598,6 +1603,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  Object api2wire_u_64(int raw) {
+    return castNativeBigInt(raw);
+  }
+
+  @protected
   Uint8List api2wire_u_8_array_1600(U8Array1600 raw) {
     return Uint8List.fromList(raw);
   }
@@ -1663,30 +1673,30 @@ class RustLibWire extends BaseWire {
   void wire_next_user_id(NativePortType port_, List<dynamic> user_id) =>
       wasmModule.wire_next_user_id(port_, user_id);
 
-  void wire_datetime_local(NativePortType port_, int d) =>
+  void wire_datetime_local(NativePortType port_, Object d) =>
       wasmModule.wire_datetime_local(port_, d);
 
-  void wire_datetime_utc(NativePortType port_, int d) =>
+  void wire_datetime_utc(NativePortType port_, Object d) =>
       wasmModule.wire_datetime_utc(port_, d);
 
-  void wire_duration(NativePortType port_, int d) =>
+  void wire_duration(NativePortType port_, Object d) =>
       wasmModule.wire_duration(port_, d);
 
   void wire_handle_durations(NativePortType port_,
-          Object /* BigInt64Array */ durations, int since) =>
+          Object /* BigInt64Array */ durations, Object since) =>
       wasmModule.wire_handle_durations(port_, durations, since);
 
   void wire_handle_timestamps(NativePortType port_,
-          Object /* BigInt64Array */ timestamps, int epoch) =>
+          Object /* BigInt64Array */ timestamps, Object epoch) =>
       wasmModule.wire_handle_timestamps(port_, timestamps, epoch);
 
   void wire_how_long_does_it_take(NativePortType port_, List<dynamic> mine) =>
       wasmModule.wire_how_long_does_it_take(port_, mine);
 
-  void wire_naivedatetime(NativePortType port_, int d) =>
+  void wire_naivedatetime(NativePortType port_, Object d) =>
       wasmModule.wire_naivedatetime(port_, d);
 
-  void wire_optional_empty_datetime_utc(NativePortType port_, int? d) =>
+  void wire_optional_empty_datetime_utc(NativePortType port_, Object? d) =>
       wasmModule.wire_optional_empty_datetime_utc(port_, d);
 
   void wire_test_chrono(NativePortType port_) =>
@@ -2116,7 +2126,7 @@ class RustLibWire extends BaseWire {
           int? i8box,
           int? u8box,
           int? i32box,
-          int? i64box,
+          Object? i64box,
           double? f64box,
           bool? boolbox,
           List<dynamic>? structbox) =>
@@ -2144,7 +2154,7 @@ class RustLibWire extends BaseWire {
       wire_sync_option_null() => wasmModule.wire_sync_option_null();
 
   void wire_primitive_optional_types(NativePortType port_, int? my_i32,
-          int? my_i64, double? my_f64, bool? my_bool) =>
+          Object? my_i64, double? my_f64, bool? my_bool) =>
       wasmModule.wire_primitive_optional_types(
           port_, my_i32, my_i64, my_f64, my_bool);
 
@@ -2158,7 +2168,7 @@ class RustLibWire extends BaseWire {
       wire_handle_zero_copy_vec_of_primitive_sync(int n) =>
           wasmModule.wire_handle_zero_copy_vec_of_primitive_sync(n);
 
-  void wire_primitive_types(NativePortType port_, int my_i32, int my_i64,
+  void wire_primitive_types(NativePortType port_, int my_i32, Object my_i64,
           double my_f64, bool my_bool) =>
       wasmModule.wire_primitive_types(port_, my_i32, my_i64, my_f64, my_bool);
 
@@ -2271,7 +2281,7 @@ class RustLibWire extends BaseWire {
           port_, arg);
 
   void wire_example_optional_primitive_type_i64_twin_normal(
-          NativePortType port_, int? arg) =>
+          NativePortType port_, Object? arg) =>
       wasmModule.wire_example_optional_primitive_type_i64_twin_normal(
           port_, arg);
 
@@ -2291,7 +2301,7 @@ class RustLibWire extends BaseWire {
           port_, arg);
 
   void wire_example_optional_primitive_type_u64_twin_normal(
-          NativePortType port_, int? arg) =>
+          NativePortType port_, Object? arg) =>
       wasmModule.wire_example_optional_primitive_type_u64_twin_normal(
           port_, arg);
 
@@ -2321,7 +2331,7 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_example_optional_primitive_type_i32_twin_sync(arg);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_example_optional_primitive_type_i64_twin_sync(int? arg) =>
+      wire_example_optional_primitive_type_i64_twin_sync(Object? arg) =>
           wasmModule.wire_example_optional_primitive_type_i64_twin_sync(arg);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
@@ -2337,7 +2347,7 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_example_optional_primitive_type_u32_twin_sync(arg);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_example_optional_primitive_type_u64_twin_sync(int? arg) =>
+      wire_example_optional_primitive_type_u64_twin_sync(Object? arg) =>
           wasmModule.wire_example_optional_primitive_type_u64_twin_sync(arg);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
@@ -2365,7 +2375,7 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_example_primitive_type_i32_twin_normal(port_, arg);
 
   void wire_example_primitive_type_i64_twin_normal(
-          NativePortType port_, int arg) =>
+          NativePortType port_, Object arg) =>
       wasmModule.wire_example_primitive_type_i64_twin_normal(port_, arg);
 
   void wire_example_primitive_type_i8_twin_normal(
@@ -2381,7 +2391,7 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_example_primitive_type_u32_twin_normal(port_, arg);
 
   void wire_example_primitive_type_u64_twin_normal(
-          NativePortType port_, int arg) =>
+          NativePortType port_, Object arg) =>
       wasmModule.wire_example_primitive_type_u64_twin_normal(port_, arg);
 
   void wire_example_primitive_type_u8_twin_normal(
@@ -2499,7 +2509,7 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_example_primitive_type_i32_twin_sync(arg);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_example_primitive_type_i64_twin_sync(int arg) =>
+      wire_example_primitive_type_i64_twin_sync(Object arg) =>
           wasmModule.wire_example_primitive_type_i64_twin_sync(arg);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
@@ -2515,7 +2525,7 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_example_primitive_type_u32_twin_sync(arg);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_example_primitive_type_u64_twin_sync(int arg) =>
+      wire_example_primitive_type_u64_twin_sync(Object arg) =>
           wasmModule.wire_example_primitive_type_u64_twin_sync(arg);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
@@ -2677,13 +2687,13 @@ class RustLibWire extends BaseWire {
   void wire_test_tuple_2(NativePortType port_, List<dynamic> value) =>
       wasmModule.wire_test_tuple_2(port_, value);
 
-  void wire_handle_type_alias_id(NativePortType port_, int input) =>
+  void wire_handle_type_alias_id(NativePortType port_, Object input) =>
       wasmModule.wire_handle_type_alias_id(port_, input);
 
-  void wire_handle_type_alias_model(NativePortType port_, int input) =>
+  void wire_handle_type_alias_model(NativePortType port_, Object input) =>
       wasmModule.wire_handle_type_alias_model(port_, input);
 
-  void wire_handle_type_nest_alias_id(NativePortType port_, int input) =>
+  void wire_handle_type_nest_alias_id(NativePortType port_, Object input) =>
       wasmModule.wire_handle_type_nest_alias_id(port_, input);
 
   void wire_handle_nested_uuids(NativePortType port_, List<dynamic> ids) =>
@@ -2796,24 +2806,25 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_next_user_id(NativePortType port_, List<dynamic> user_id);
 
-  external void wire_datetime_local(NativePortType port_, int d);
+  external void wire_datetime_local(NativePortType port_, Object d);
 
-  external void wire_datetime_utc(NativePortType port_, int d);
+  external void wire_datetime_utc(NativePortType port_, Object d);
 
-  external void wire_duration(NativePortType port_, int d);
+  external void wire_duration(NativePortType port_, Object d);
 
   external void wire_handle_durations(
-      NativePortType port_, Object /* BigInt64Array */ durations, int since);
+      NativePortType port_, Object /* BigInt64Array */ durations, Object since);
 
-  external void wire_handle_timestamps(
-      NativePortType port_, Object /* BigInt64Array */ timestamps, int epoch);
+  external void wire_handle_timestamps(NativePortType port_,
+      Object /* BigInt64Array */ timestamps, Object epoch);
 
   external void wire_how_long_does_it_take(
       NativePortType port_, List<dynamic> mine);
 
-  external void wire_naivedatetime(NativePortType port_, int d);
+  external void wire_naivedatetime(NativePortType port_, Object d);
 
-  external void wire_optional_empty_datetime_utc(NativePortType port_, int? d);
+  external void wire_optional_empty_datetime_utc(
+      NativePortType port_, Object? d);
 
   external void wire_test_chrono(NativePortType port_);
 
@@ -3131,7 +3142,7 @@ class RustLibWasmModule implements WasmModule {
       int? i8box,
       int? u8box,
       int? i32box,
-      int? i64box,
+      Object? i64box,
       double? f64box,
       bool? boolbox,
       List<dynamic>? structbox);
@@ -3155,7 +3166,7 @@ class RustLibWasmModule implements WasmModule {
       wire_sync_option_null();
 
   external void wire_primitive_optional_types(NativePortType port_, int? my_i32,
-      int? my_i64, double? my_f64, bool? my_bool);
+      Object? my_i64, double? my_f64, bool? my_bool);
 
   external void wire_handle_vec_of_primitive(NativePortType port_, int n);
 
@@ -3166,7 +3177,7 @@ class RustLibWasmModule implements WasmModule {
       wire_handle_zero_copy_vec_of_primitive_sync(int n);
 
   external void wire_primitive_types(NativePortType port_, int my_i32,
-      int my_i64, double my_f64, bool my_bool);
+      Object my_i64, double my_f64, bool my_bool);
 
   external void wire_primitive_u32(NativePortType port_, int my_u32);
 
@@ -3244,7 +3255,7 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, int? arg);
 
   external void wire_example_optional_primitive_type_i64_twin_normal(
-      NativePortType port_, int? arg);
+      NativePortType port_, Object? arg);
 
   external void wire_example_optional_primitive_type_i8_twin_normal(
       NativePortType port_, int? arg);
@@ -3256,7 +3267,7 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, int? arg);
 
   external void wire_example_optional_primitive_type_u64_twin_normal(
-      NativePortType port_, int? arg);
+      NativePortType port_, Object? arg);
 
   external void wire_example_optional_primitive_type_u8_twin_normal(
       NativePortType port_, int? arg);
@@ -3277,7 +3288,7 @@ class RustLibWasmModule implements WasmModule {
       wire_example_optional_primitive_type_i32_twin_sync(int? arg);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_example_optional_primitive_type_i64_twin_sync(int? arg);
+      wire_example_optional_primitive_type_i64_twin_sync(Object? arg);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_example_optional_primitive_type_i8_twin_sync(int? arg);
@@ -3289,7 +3300,7 @@ class RustLibWasmModule implements WasmModule {
       wire_example_optional_primitive_type_u32_twin_sync(int? arg);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_example_optional_primitive_type_u64_twin_sync(int? arg);
+      wire_example_optional_primitive_type_u64_twin_sync(Object? arg);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_example_optional_primitive_type_u8_twin_sync(int? arg);
@@ -3310,7 +3321,7 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, int arg);
 
   external void wire_example_primitive_type_i64_twin_normal(
-      NativePortType port_, int arg);
+      NativePortType port_, Object arg);
 
   external void wire_example_primitive_type_i8_twin_normal(
       NativePortType port_, int arg);
@@ -3322,7 +3333,7 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, int arg);
 
   external void wire_example_primitive_type_u64_twin_normal(
-      NativePortType port_, int arg);
+      NativePortType port_, Object arg);
 
   external void wire_example_primitive_type_u8_twin_normal(
       NativePortType port_, int arg);
@@ -3411,7 +3422,7 @@ class RustLibWasmModule implements WasmModule {
       wire_example_primitive_type_i32_twin_sync(int arg);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_example_primitive_type_i64_twin_sync(int arg);
+      wire_example_primitive_type_i64_twin_sync(Object arg);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_example_primitive_type_i8_twin_sync(int arg);
@@ -3423,7 +3434,7 @@ class RustLibWasmModule implements WasmModule {
       wire_example_primitive_type_u32_twin_sync(int arg);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_example_primitive_type_u64_twin_sync(int arg);
+      wire_example_primitive_type_u64_twin_sync(Object arg);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_example_primitive_type_u8_twin_sync(int arg);
@@ -3546,11 +3557,13 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_test_tuple_2(NativePortType port_, List<dynamic> value);
 
-  external void wire_handle_type_alias_id(NativePortType port_, int input);
+  external void wire_handle_type_alias_id(NativePortType port_, Object input);
 
-  external void wire_handle_type_alias_model(NativePortType port_, int input);
+  external void wire_handle_type_alias_model(
+      NativePortType port_, Object input);
 
-  external void wire_handle_type_nest_alias_id(NativePortType port_, int input);
+  external void wire_handle_type_nest_alias_id(
+      NativePortType port_, Object input);
 
   external void wire_handle_nested_uuids(
       NativePortType port_, List<dynamic> ids);
