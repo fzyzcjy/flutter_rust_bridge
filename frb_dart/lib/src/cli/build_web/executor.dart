@@ -25,9 +25,6 @@ class BuildWebArgs {
   final List<String> cargoBuildArgs;
 
   /// {@macro flutter_rust_bridge.cli}
-  final bool enableWasmBindgen;
-
-  /// {@macro flutter_rust_bridge.cli}
   final List<String> wasmBindgenArgs;
 
   /// {@macro flutter_rust_bridge.cli}
@@ -41,7 +38,6 @@ class BuildWebArgs {
     required this.verbose,
     required this.rustCrateDir,
     required this.cargoBuildArgs,
-    required this.enableWasmBindgen,
     required this.wasmBindgenArgs,
     required this.dartCompileJsEntrypoint,
   });
@@ -55,7 +51,7 @@ Future<void> executeBuildWeb(BuildWebArgs args) async {
 
   await _executeWasmPack(args, rustCrateName: rustCrateName);
 
-  if (args.enableWasmBindgen) {
+  if (args.wasmBindgenArgs.isNotEmpty) {
     await _executeWasmBindgen(args, rustCrateName: rustCrateName);
   }
 

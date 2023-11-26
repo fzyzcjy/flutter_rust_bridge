@@ -109,7 +109,6 @@ BuildWebArgs _parseConfigToArgs(Config config) {
     verbose: config.verbose,
     rustCrateDir: config.rustCrateDir,
     cargoBuildArgs: config.cargoBuildArgs,
-    enableWasmBindgen: config.wasmBindgenArgs.isNotEmpty,
     wasmBindgenArgs: config.wasmBindgenArgs,
     dartCompileJsEntrypoint: config.dartCompileJsEntrypoint,
   );

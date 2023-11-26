@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter_rust_bridge/src/cli/build_web/executor.dart';
 import 'package:flutter_rust_bridge_utils/src/commands/serve_web_command.dart';
 import 'package:flutter_rust_bridge_utils/src/commands/test_web_command.dart';
 import 'package:flutter_rust_bridge_utils/src/serve_web/run_server.dart';
@@ -12,14 +13,23 @@ const kTestResultKey = '__result__';
 
 Future<void> executeTestWeb(TestWebConfig options) async {
   print('executeTestWeb: compile');
-  TODO_compile;
+  await executeBuildWeb(BuildWebArgs(
+    dartRoot: TODO,
+    output: TODO,
+    release: true,
+    verbose: false,
+    rustCrateDir: TODO,
+    cargoBuildArgs: [],
+    wasmBindgenArgs: [],
+    dartCompileJsEntrypoint: TODO,
+  ));
 
   Browser? browser;
 
   print('executeTestWeb: runServer');
   await runServer(
     ServeWebConfig(
-      webRoot: webRoot,
+      webRoot: TODO,
       port: ServeWebConfig.kDefaultPort,
       open: false,
     ),
