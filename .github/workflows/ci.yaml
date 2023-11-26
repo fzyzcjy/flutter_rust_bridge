@@ -40,8 +40,6 @@ jobs:
         uses: extractions/setup-just@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - run: just install_ffigen_dependency
       - run: just rust_linter
 
   linter_dart:
