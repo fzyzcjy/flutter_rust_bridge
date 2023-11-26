@@ -40,7 +40,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
       const ExternalLibraryLoaderConfig(
         stem: 'frb_example_dart_minimal',
         ioDirectory: 'rust/target/release/',
-        webPrefix: 'http://localhost:8080/pkg/',
+        webPrefix: 'pkg/',
       );
 }
 
