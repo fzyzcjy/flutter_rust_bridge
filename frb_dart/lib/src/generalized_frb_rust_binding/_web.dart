@@ -13,10 +13,10 @@ class GeneralizedFrbRustBinding {
   void initFrbDartApiDl() {}
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  Object getDartObject(int ptr) => getDartObject(ptr);
+  Object getDartObject(int ptr) => _getDartObject(ptr);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  void dropDartObject(int ptr) => dropDartObject(ptr);
+  void dropDartObject(int ptr) => _dropDartObject(ptr);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   int newDartOpaque(Object obj, NativePortType port) => throw UnimplementedError();
@@ -27,8 +27,8 @@ class GeneralizedFrbRustBinding {
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 @JS("wasm_bindgen.get_dart_object")
-external Object getDartObject(int ptr);
+external Object _getDartObject(int ptr);
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 @JS("wasm_bindgen.drop_dart_object")
-external void dropDartObject(int ptr);
+external void _dropDartObject(int ptr);

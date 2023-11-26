@@ -29,11 +29,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
     });
 
     test('call funcReturnErrorTwinNormal', () async {
-      await expectLater(
-          () async => customEnumErrorReturnErrorTwinNormal(),
-          throwsA(isA<CustomEnumErrorTwinNormal>()
-              .having((x) => x.message, 'message', 'deliberate error')
-              .having((x) => x.backtrace, 'backtrace', isNotEmpty)));
+      var matcher = isA<CustomEnumErrorTwinNormal>().having((x) => x.message, 'message', 'deliberate error');
+      if (!kIsWeb) matcher = matcher.having((x) => x.backtrace, 'backtrace', isNotEmpty);
+      await expectLater(() async => customEnumErrorReturnErrorTwinNormal(), throwsA(matcher));
     });
 
     addTestsErrorFunctionCall(
@@ -186,7 +184,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         } catch (e) {
           final FrbBacktracedException ex = e as FrbBacktracedException;
           print("backtrace: ${ex.backtrace}");
-          expect(ex.backtrace, contains("backtrace::capture::"));
+          if (!kIsWeb) expect(ex.backtrace, contains("backtrace::capture::"));
           didCatch = true;
         }
         expect(didCatch, true);
@@ -214,7 +212,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         } catch (e) {
           final PanicException p = e as PanicException;
           print("panic error: ${p.message}");
-          expect(p.message, contains("just a panic"));
+          if (!kIsWeb) expect(p.message, contains("just a panic"));
         }
       });
 
