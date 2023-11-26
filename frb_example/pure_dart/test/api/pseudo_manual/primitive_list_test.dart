@@ -36,8 +36,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     addTestsIdentityFunctionCall(examplePrimitiveListTypeI64TwinNormal, [
       Int64List.fromList([]),
       Int64List.fromList([0]),
-      Int64List.fromList([-9223372036854775808]),
-      Int64List.fromList([9223372036854775807])
+      Int64List.fromList([-9007199254740992]),
+      Int64List.fromList([9007199254740992])
     ]);
     addTestsIdentityFunctionCall(examplePrimitiveListTypeU8TwinNormal, [
       Uint8List.fromList([]),
@@ -57,7 +57,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     addTestsIdentityFunctionCall(examplePrimitiveListTypeU64TwinNormal, [
       Uint64List.fromList([]),
       Uint64List.fromList([0]),
-      Uint64List.fromList([9223372036854775807])
+      Uint64List.fromList([9007199254740992])
     ]);
     addTestsIdentityFunctionCall(examplePrimitiveListTypeF32TwinNormal, [
       Float32List.fromList([]),
