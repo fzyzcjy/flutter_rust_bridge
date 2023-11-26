@@ -9,34 +9,26 @@ import 'package:test/test.dart';
 
 import '../../test_utils.dart';
 
-Future<void> main() async {
-  await RustLib.init();
+Future<void> main({bool skipRustLibInit = false}) async {
+  if (!skipRustLibInit) await RustLib.init();
 
   test('call funcReturnErrorTwinSync', () async {
-    await expectLater(
-        () async => funcReturnErrorTwinSync(),
-        throwsA(isA<AnyhowException>()
-            .having((x) => x.message, 'message', 'deliberate error')));
+    await expectLater(() async => funcReturnErrorTwinSync(),
+        throwsA(isA<AnyhowException>().having((x) => x.message, 'message', 'deliberate error')));
   });
   test('call funcTypeFalliblePanicTwinSync', () async {
-    await expectLater(
-        () async => funcTypeFalliblePanicTwinSync(),
-        throwsA(isA<PanicException>()
-            .having((x) => x.message, 'message', 'deliberate panic')));
+    await expectLater(() async => funcTypeFalliblePanicTwinSync(),
+        throwsA(isA<PanicException>().having((x) => x.message, 'message', 'deliberate panic')));
   });
   test('call funcTypeInfalliblePanicTwinSync', () async {
-    await expectLater(
-        () async => funcTypeInfalliblePanicTwinSync(),
-        throwsA(isA<PanicException>()
-            .having((x) => x.message, 'message', 'deliberate panic')));
+    await expectLater(() async => funcTypeInfalliblePanicTwinSync(),
+        throwsA(isA<PanicException>().having((x) => x.message, 'message', 'deliberate panic')));
   });
 
   addTestsIdentityFunctionCall(customEnumErrorReturnOkTwinSync, [100]);
   test('call customEnumErrorPanicTwinSync', () async {
-    await expectLater(
-        () async => customEnumErrorPanicTwinSync(),
-        throwsA(isA<PanicException>()
-            .having((x) => x.message, 'message', 'deliberate panic')));
+    await expectLater(() async => customEnumErrorPanicTwinSync(),
+        throwsA(isA<PanicException>().having((x) => x.message, 'message', 'deliberate panic')));
   });
 
   test('call funcReturnErrorTwinSync', () async {
@@ -51,10 +43,8 @@ Future<void> main() async {
     customNestedErrorReturnErrorTwinSync,
     [
       const CustomNestedErrorOuterTwinSync.one('hello'),
-      const CustomNestedErrorOuterTwinSync.two(
-          CustomNestedErrorInnerTwinSync.three('hello')),
-      const CustomNestedErrorOuterTwinSync.two(
-          CustomNestedErrorInnerTwinSync.four(42)),
+      const CustomNestedErrorOuterTwinSync.two(CustomNestedErrorInnerTwinSync.three('hello')),
+      const CustomNestedErrorOuterTwinSync.two(CustomNestedErrorInnerTwinSync.four(42)),
     ],
     equals,
   );

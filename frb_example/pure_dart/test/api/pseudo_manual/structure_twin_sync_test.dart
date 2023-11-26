@@ -7,8 +7,8 @@ import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 
 import '../../test_utils.dart';
 
-Future<void> main() async {
-  await RustLib.init();
+Future<void> main({bool skipRustLibInit = false}) async {
+  if (!skipRustLibInit) await RustLib.init();
 
   addTestsIdentityFunctionCall(funcStructWithZeroFieldTwinSync, [StructWithZeroFieldTwinSync()]);
   addTestsIdentityFunctionCall(funcStructWithOneFieldTwinSync, [StructWithOneFieldTwinSync(a: 42)]);

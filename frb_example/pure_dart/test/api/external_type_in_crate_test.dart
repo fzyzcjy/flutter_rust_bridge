@@ -3,8 +3,8 @@ import 'package:frb_example_pure_dart/src/rust/auxiliary/sample_types.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
-Future<void> main() async {
-  await RustLib.init();
+Future<void> main({bool skipRustLibInit = false}) async {
+  if (!skipRustLibInit) await RustLib.init();
 
   test('dart call useImportedStruct()', () async {
     expect(

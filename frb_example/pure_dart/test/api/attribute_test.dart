@@ -2,8 +2,8 @@ import 'package:frb_example_pure_dart/src/rust/api/attribute.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
-Future<void> main() async {
-  await RustLib.init();
+Future<void> main({bool skipRustLibInit = false}) async {
+  if (!skipRustLibInit) await RustLib.init();
 
   test('dart check that non-final field is modifiable', () {
     var customized = Customized(finalField: "finalField", nonFinalField: "nonFinalField");

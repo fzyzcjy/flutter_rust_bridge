@@ -6,8 +6,8 @@ import 'package:test/test.dart';
 
 import '../test_utils.dart';
 
-Future<void> main() async {
-  await RustLib.init();
+Future<void> main({bool skipRustLibInit = false}) async {
+  if (!skipRustLibInit) await RustLib.init();
 
   String f() => 'Test_String';
 

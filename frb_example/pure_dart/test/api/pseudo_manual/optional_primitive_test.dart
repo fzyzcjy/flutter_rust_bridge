@@ -5,42 +5,25 @@
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/optional_primitive.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
+
 import '../../test_utils.dart';
 
-Future<void> main() async {
-  await RustLib.init();
+Future<void> main({bool skipRustLibInit = false}) async {
+  if (!skipRustLibInit) await RustLib.init();
 
   group('optional_primitive', () {
-    addTestsIdentityFunctionCall(
-        exampleOptionalPrimitiveTypeI8TwinNormal, <int?>[null, 0, -128, 127]);
-    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeI16TwinNormal,
-        <int?>[null, 0, -32768, 32767]);
-    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeI32TwinNormal,
-        <int?>[null, 0, -2147483648, 2147483647]);
-    addTestsIdentityFunctionCall(
-        exampleOptionalPrimitiveTypeI64TwinNormal, <BigInt?>[
-      null,
-      BigInt.parse("0"),
-      BigInt.parse("-9223372036854775808"),
-      BigInt.parse("9223372036854775807")
-    ]);
-    addTestsIdentityFunctionCall(
-        exampleOptionalPrimitiveTypeU8TwinNormal, <int?>[null, 0, 255]);
-    addTestsIdentityFunctionCall(
-        exampleOptionalPrimitiveTypeU16TwinNormal, <int?>[null, 0, 65535]);
-    addTestsIdentityFunctionCall(
-        exampleOptionalPrimitiveTypeU32TwinNormal, <int?>[null, 0, 4294967295]);
-    addTestsIdentityFunctionCall(
-        exampleOptionalPrimitiveTypeU64TwinNormal, <BigInt?>[
-      null,
-      BigInt.parse("0"),
-      BigInt.parse("9223372036854775807")
-    ]);
-    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeF32TwinNormal,
-        <double?>[null, 0, -42.5, 123456]);
-    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeF64TwinNormal,
-        <double?>[null, 0, -42.5, 123456]);
-    addTestsIdentityFunctionCall(
-        exampleOptionalPrimitiveTypeBoolTwinNormal, <bool?>[null, false, true]);
+    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeI8TwinNormal, <int?>[null, 0, -128, 127]);
+    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeI16TwinNormal, <int?>[null, 0, -32768, 32767]);
+    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeI32TwinNormal, <int?>[null, 0, -2147483648, 2147483647]);
+    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeI64TwinNormal,
+        <BigInt?>[null, BigInt.parse("0"), BigInt.parse("-9223372036854775808"), BigInt.parse("9223372036854775807")]);
+    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeU8TwinNormal, <int?>[null, 0, 255]);
+    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeU16TwinNormal, <int?>[null, 0, 65535]);
+    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeU32TwinNormal, <int?>[null, 0, 4294967295]);
+    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeU64TwinNormal,
+        <BigInt?>[null, BigInt.parse("0"), BigInt.parse("9223372036854775807")]);
+    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeF32TwinNormal, <double?>[null, 0, -42.5, 123456]);
+    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeF64TwinNormal, <double?>[null, 0, -42.5, 123456]);
+    addTestsIdentityFunctionCall(exampleOptionalPrimitiveTypeBoolTwinNormal, <bool?>[null, false, true]);
   });
 }

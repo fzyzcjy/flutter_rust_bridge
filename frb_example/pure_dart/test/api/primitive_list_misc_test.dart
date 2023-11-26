@@ -5,8 +5,8 @@ import 'package:frb_example_pure_dart/src/rust/api/primitive_list_misc.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
-Future<void> main() async {
-  await RustLib.init();
+Future<void> main({bool skipRustLibInit = false}) async {
+  if (!skipRustLibInit) await RustLib.init();
 
   test('dart call handleVecOfPrimitive', () async {
     final n = 10000;
