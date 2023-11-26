@@ -41,6 +41,10 @@ class BuildWebArgs {
 
 extension on BuildWebArgs {
   bool get enableWasmBindgen => wasmBindgenArgs.isNotEmpty;
+
+  String get outputWasm => '$output/pkg';
+
+  String get outputDart => '$output/main.dart.js';
 }
 
 /// {@macro flutter_rust_bridge.cli}
@@ -111,7 +115,7 @@ Future<String> _getRustCreateName({required String rustCrateDir}) async {
 
 Future<void> _executeWasmPack(BuildWebArgs args, {required String rustCrateName}) async {
   await runCommand('wasm-pack', [
-    'build', '-t', 'no-modules', '-d', args.output, '--no-typescript',
+    'build', '-t', 'no-modules', '-d', args.outputWasm, '--no-typescript',
     '--out-name', rustCrateName,
     if (!args.release) '--dev',
     args.rustCrateDir,
@@ -132,7 +136,7 @@ Future<void> _executeWasmBindgen(BuildWebArgs args, {required String rustCrateNa
   await runCommand('wasm-bindgen', [
     '${args.rustCrateDir}/target/wasm32-unknown-unknown/${args.release ? 'release' : 'debug'}/$rustCrateName.wasm',
     '--out-dir',
-    '${args.output}/pkg',
+    args.outputWasm,
     '--no-typescript',
     '--target',
     'no-modules',
@@ -151,7 +155,7 @@ Future<void> _executeDartCompile(BuildWebArgs args) async {
     'compile',
     'js',
     '-o',
-    '${args.output}/main.dart.js',
+    args.outputDart,
     if (args.release) '-O2',
     if (stdout.supportsAnsiEscapes) '--enable-diagnostic-colors',
     if (args.verbose) '--verbose',
