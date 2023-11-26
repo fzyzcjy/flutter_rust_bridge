@@ -16,7 +16,7 @@ Future<void> generateDartWebTestEntrypoint({required Uri dartRoot}) async {
   ];
   final calls = [
     for (final file in files) //
-      "await ${path.basenameWithoutExtension(file)}.main();\n"
+      "await ${path.basenameWithoutExtension(file)}.main(skipRustLibInit: true);\n"
   ];
 
   final code = '''
@@ -28,6 +28,8 @@ ${imports.join("")}
 
 void main() {
   dartWebTestEntrypoint(() async {
+    await RustLib.init();
+
     ${calls.join("")}
   });
 }
