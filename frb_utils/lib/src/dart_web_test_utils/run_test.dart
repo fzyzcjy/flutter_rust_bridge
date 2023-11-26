@@ -40,6 +40,8 @@ Future<void> executeTestWeb(TestWebConfig options) async {
       },
     ),
   );
+ 
+  TODO_serve_static_content;
 
   print('executeTestWeb: launchBrowser');
   browser = await _launchBrowser(addr: addr);

@@ -1,3 +1,4 @@
+const kIndexHtmlContent = r'''
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -83,3 +84,4 @@
   </script>
   <script src="main.web.dart.js" async></script>
 </html>
+''';
