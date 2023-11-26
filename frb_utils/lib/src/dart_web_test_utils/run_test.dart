@@ -20,7 +20,7 @@ Future<void> executeTestWeb(TestWebConfig config) async {
 
   print('executeTestWeb: compile');
   await executeBuildWeb(BuildWebArgs(
-    output: '$dartRoot/web/pkg',
+    output: '$dartRoot/web',
     release: true,
     verbose: false,
     // TODO make these configurable later when it is publicly used

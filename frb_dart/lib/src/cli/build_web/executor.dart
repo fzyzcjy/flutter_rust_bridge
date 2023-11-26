@@ -132,7 +132,7 @@ Future<void> _executeWasmBindgen(BuildWebArgs args, {required String rustCrateNa
   await runCommand('wasm-bindgen', [
     '${args.rustCrateDir}/target/wasm32-unknown-unknown/${args.release ? 'release' : 'debug'}/$rustCrateName.wasm',
     '--out-dir',
-    args.output,
+    '${args.output}/pkg',
     '--no-typescript',
     '--target',
     'no-modules',

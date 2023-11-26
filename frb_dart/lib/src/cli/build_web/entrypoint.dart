@@ -109,7 +109,7 @@ BuildWebArgs _parseConfigToArgs(Config config) {
   );
 }
 
-String _fallbackOutput({required String dartRoot}) => path.join(dartRoot, 'web/pkg');
+String _fallbackOutput({required String dartRoot}) => path.join(dartRoot, 'web');
 
 // TODO rm
 // Never _printHelpAndExit() {
