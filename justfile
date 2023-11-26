@@ -14,7 +14,8 @@ lint: lint_rust lint_dart
 lint_rust: _lint_rust_main _lint_rust_wasm
 
 _lint_rust_main:
-    cargo fmt
+    cargo fmt \
+      {{ if mode == "fix" { "" } else { "--check" } }}
     cargo clippy -- -D warnings
 
 _lint_rust_wasm:
