@@ -12,6 +12,8 @@ TestWebConfig _$parseTestWebConfigResult(ArgResults result) =>
 ArgParser _$populateTestWebConfigParser(ArgParser parser) => parser
   ..addOption(
     'entrypoint',
+    abbr: 'd',
+    help: 'Dart file to be tested',
   );
 
 final _$parserForTestWebConfig = _$populateTestWebConfigParser(ArgParser());

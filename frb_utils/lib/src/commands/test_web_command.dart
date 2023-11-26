@@ -1,5 +1,6 @@
 import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
+import 'package:flutter_rust_bridge_utils/src/dart_web_test_utils/run_test.dart';
 
 part 'test_web_command.g.dart';
 

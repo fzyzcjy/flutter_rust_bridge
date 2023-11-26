@@ -15,17 +15,16 @@ T _$badNumberFormat<T extends num>(
       'Cannot parse "$source" into `$type` for option "$argName".',
     );
 
-ServeWebConfig _$parseServeWebConfigResult(ArgResults result) =>
-    ServeWebConfig()
-      ..webRoot = result['web-root'] as String
-      ..port = int.tryParse(result['port'] as String) ??
+ServeWebConfig _$parseServeWebConfigResult(ArgResults result) => ServeWebConfig(
+      webRoot: result['web-root'] as String,
+      port: int.tryParse(result['port'] as String) ??
           _$badNumberFormat(
             result['port'] as String,
             'int',
             'port',
-          )
-      ..runTests = result['run-tests'] as bool
-      ..open = result['open'] as bool;
+          ),
+      open: result['open'] as bool,
+    );
 
 ArgParser _$populateServeWebConfigParser(ArgParser parser) => parser
   ..addOption(
@@ -40,11 +39,6 @@ ArgParser _$populateServeWebConfigParser(ArgParser parser) => parser
     help: 'HTTP port to listen to',
     valueHelp: 'PORT',
     defaultsTo: '8080',
-  )
-  ..addFlag(
-    'run-tests',
-    help: 'Run tests in headless Chromium',
-    negatable: false,
   )
   ..addFlag(
     'open',
