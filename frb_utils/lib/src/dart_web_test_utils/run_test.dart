@@ -74,10 +74,10 @@ Handler _createWebSocketHandler({required Future<void> Function() closeBrowser})
   });
 }
 
-const _kTestEntrypointHttpPath = '/test_entrypoint.html';
+const _kTestEntrypointHttpName = 'test_entrypoint.html';
 
 Handler _createIndexFileHandler() => (request) {
-      if (request.handlerPath == _kTestEntrypointHttpPath) {
+      if (request.url.path == _kTestEntrypointHttpName) {
         return Response.ok(kTestEntrypointHtmlContent, headers: {HttpHeaders.contentTypeHeader: 'text/html'});
       }
       return Response.notFound(null);
@@ -93,7 +93,7 @@ Future<Browser> _launchBrowser({
   );
   final page = await browser.newPage();
   _configurePageLogging(page);
-  await page.goto('$baseAddr$_kTestEntrypointHttpPath');
+  await page.goto('$baseAddr/$_kTestEntrypointHttpName');
   return browser;
 }
 
