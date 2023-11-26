@@ -12,7 +12,6 @@ dependencies:
   # required by integration_test
   path: ^1.8.1
   uuid: ^4.1.0
-  tuple: ^2.0.1
 dev_dependencies:
   build_cli: ^2.2.0
   build_runner: ^2.2.0
