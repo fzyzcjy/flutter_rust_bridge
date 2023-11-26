@@ -8,14 +8,14 @@ part of 'test_web_command.dart';
 
 TestWebConfig _$parseTestWebConfigResult(ArgResults result) => TestWebConfig()
   ..entrypoint = result['entrypoint'] as String
-  ..headless = result['headless'] as String;
+  ..headless = result['headless'] as bool;
 
 ArgParser _$populateTestWebConfigParser(ArgParser parser) => parser
   ..addOption(
     'entrypoint',
     help: 'Dart file to be tested',
   )
-  ..addOption(
+  ..addFlag(
     'headless',
     help: 'Make the browser headless',
   );
