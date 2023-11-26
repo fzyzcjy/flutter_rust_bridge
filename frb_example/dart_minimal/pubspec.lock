@@ -352,7 +352,7 @@ packages:
     source: hosted
     version: "1.0.4"
   native_assets_cli:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: native_assets_cli
       sha256: "51d1af3ebc2437f5883ed749f1877cb82d6a569b0712dad02c8370e6e4f2b5e3"

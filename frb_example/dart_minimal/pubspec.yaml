@@ -11,7 +11,6 @@ dependencies:
   flutter_rust_bridge_utils:
     path: ../../frb_utils
   ffi: ^2.0.1
-  native_assets_cli: ^0.2.0
 dev_dependencies:
   test: ^1.21.4
   build_runner: ^2.4.4
