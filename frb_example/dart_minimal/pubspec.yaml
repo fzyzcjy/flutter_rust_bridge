@@ -5,6 +5,10 @@ publish_to: none
 environment:
   sdk: '>=3.2.0 <4.0.0'
 dependencies:
+  flutter:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
   lints: ^2.0.1
   flutter_rust_bridge:
     path: ../../frb_dart
@@ -13,4 +17,4 @@ dependencies:
 dev_dependencies:
   test: ^1.21.4
   build_runner: ^2.4.4
-  ffigen: ^9.0.0
+  ffigen: ^8.0.0
