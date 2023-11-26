@@ -1,6 +1,5 @@
 import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
-import 'package:flutter_rust_bridge_utils/src/serve_web/run_server.dart';
 
 part 'test_web_command.g.dart';
 
@@ -13,7 +12,7 @@ class TestWebCommand extends _$TestWebConfigCommand<void> {
 
   @override
   Future<void> run() async {
-    TODO;
+    executeTestWeb(_options);
   }
 }
 
