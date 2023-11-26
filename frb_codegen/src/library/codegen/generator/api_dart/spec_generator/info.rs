@@ -135,8 +135,9 @@ impl<'a> ApiDartGeneratorInfoTrait for PrimitiveApiDartGenerator<'a> {
             | IrTypePrimitive::U32
             | IrTypePrimitive::I32
             | IrTypePrimitive::Usize
-            | IrTypePrimitive::Isize => "int",
-            IrTypePrimitive::U64 | IrTypePrimitive::I64 => "BigInt",
+            | IrTypePrimitive::Isize
+            | IrTypePrimitive::U64
+            | IrTypePrimitive::I64 => "int",
             IrTypePrimitive::F32 | IrTypePrimitive::F64 => "double",
             IrTypePrimitive::Bool => "bool",
             IrTypePrimitive::Unit => "void",

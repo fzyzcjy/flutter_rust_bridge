@@ -9,21 +9,21 @@ use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartG
 impl<'a> WireDartGeneratorApi2wireTrait for PrimitiveWireDartGenerator<'a> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         match self.ir {
-            IrTypePrimitive::I64 | IrTypePrimitive::U64 => Acc {
-                io: Some("return raw.toInt();".into()),
-                wasm: Some("return castNativeBigInt(raw);".into()),
-                ..Default::default()
-            },
+            // IrTypePrimitive::I64 | IrTypePrimitive::U64 => Acc {
+            //     io: Some("return raw.toInt();".into()),
+            //     wasm: Some("return castNativeBigInt(raw);".into()),
+            //     ..Default::default()
+            // },
             _ => "return raw;".into(),
         }
     }
 
     fn dart_wire_type(&self, target: Target) -> String {
         match &self.ir {
-            IrTypePrimitive::I64 | IrTypePrimitive::U64 => match target {
-                Target::Io => "int".into(),
-                Target::Wasm => "Object".into(),
-            },
+            // IrTypePrimitive::I64 | IrTypePrimitive::U64 => match target {
+            //     Target::Io => "int".into(),
+            //     Target::Wasm => "Object".into(),
+            // },
             _ => ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
                 .dart_api_type(),
         }
