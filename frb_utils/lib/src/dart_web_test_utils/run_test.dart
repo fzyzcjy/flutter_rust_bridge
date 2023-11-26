@@ -10,6 +10,8 @@ import 'package:shelf_web_socket/shelf_web_socket.dart';
 const kTestResultKey = '__result__';
 
 Future<void> executeTestWeb(TestWebConfig options) async {
+  TODO_compile;
+
   Browser? browser;
 
   final socketHandler = webSocketHandler((channel) async {
