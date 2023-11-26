@@ -154,18 +154,6 @@ _generate_bridge_with_flutter:
 
 # ============================ linters ============================
 
-rust_linter:
-    just _rust_linter_main
-    just _rust_linter_wasm
-
-_rust_linter_main:
-    cargo fmt
-    cargo clippy -- -D warnings
-
-_rust_linter_wasm:
-    rustup target add wasm32-unknown-unknown
-    cd frb_rust && cargo clippy --target wasm32-unknown-unknown -- -D warnings
-
 default_line_length := "120"
 
 dart_linter mode="default":

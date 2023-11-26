@@ -8,8 +8,16 @@ default:
 
 lint: lint_rust lint_dart
 
-lint_rust:
-    TODO
+# TODO frb_example packages are separated, are they ok?
+lint_rust: _lint_rust_main _lint_rust_wasm
+
+_lint_rust_main:
+    cargo fmt
+    cargo clippy -- -D warnings
+
+_lint_rust_wasm:
+    rustup target add wasm32-unknown-unknown
+    cd frb_rust && cargo clippy --target wasm32-unknown-unknown -- -D warnings
 
 lint_dart:
     TODO
