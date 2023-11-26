@@ -43,6 +43,10 @@ class BuildWebArgs {
   });
 }
 
+extension on BuildWebArgs {
+  bool get enableWasmBindgen => wasmBindgenArgs.isNotEmpty;
+}
+
 /// {@macro flutter_rust_bridge.cli}
 Future<void> executeBuildWeb(BuildWebArgs args) async {
   await _sanityChecks(args);
@@ -51,7 +55,7 @@ Future<void> executeBuildWeb(BuildWebArgs args) async {
 
   await _executeWasmPack(args, rustCrateName: rustCrateName);
 
-  if (args.wasmBindgenArgs.isNotEmpty) {
+  if (args.enableWasmBindgen) {
     await _executeWasmBindgen(args, rustCrateName: rustCrateName);
   }
 
