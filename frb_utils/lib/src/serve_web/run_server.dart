@@ -13,7 +13,7 @@ import 'package:shelf_static/shelf_static.dart';
 import 'package:shelf_web_socket/shelf_web_socket.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
-Future<void> runServer(Config config) async {
+Future<void> runServer(ServeWebConfig config) async {
   final staticFilesHandler = createStaticHandler(config.webRoot, defaultDocument: 'index.html');
 
   Browser? browser;

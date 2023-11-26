@@ -15,18 +15,19 @@ T _$badNumberFormat<T extends num>(
       'Cannot parse "$source" into `$type` for option "$argName".',
     );
 
-Config _$parseConfigResult(ArgResults result) => Config()
-  ..webRoot = result['web-root'] as String
-  ..port = int.tryParse(result['port'] as String) ??
-      _$badNumberFormat(
-        result['port'] as String,
-        'int',
-        'port',
-      )
-  ..runTests = result['run-tests'] as bool
-  ..open = result['open'] as bool;
+ServeWebConfig _$parseServeWebConfigResult(ArgResults result) =>
+    ServeWebConfig()
+      ..webRoot = result['web-root'] as String
+      ..port = int.tryParse(result['port'] as String) ??
+          _$badNumberFormat(
+            result['port'] as String,
+            'int',
+            'port',
+          )
+      ..runTests = result['run-tests'] as bool
+      ..open = result['open'] as bool;
 
-ArgParser _$populateConfigParser(ArgParser parser) => parser
+ArgParser _$populateServeWebConfigParser(ArgParser parser) => parser
   ..addOption(
     'web-root',
     abbr: 'r',
@@ -51,17 +52,17 @@ ArgParser _$populateConfigParser(ArgParser parser) => parser
     defaultsTo: true,
   );
 
-final _$parserForConfig = _$populateConfigParser(ArgParser());
+final _$parserForServeWebConfig = _$populateServeWebConfigParser(ArgParser());
 
-Config parseConfig(List<String> args) {
-  final result = _$parserForConfig.parse(args);
-  return _$parseConfigResult(result);
+ServeWebConfig parseServeWebConfig(List<String> args) {
+  final result = _$parserForServeWebConfig.parse(args);
+  return _$parseServeWebConfigResult(result);
 }
 
-abstract class _$ConfigCommand<T> extends Command<T> {
-  _$ConfigCommand() {
-    _$populateConfigParser(argParser);
+abstract class _$ServeWebConfigCommand<T> extends Command<T> {
+  _$ServeWebConfigCommand() {
+    _$populateServeWebConfigParser(argParser);
   }
 
-  late final _options = _$parseConfigResult(argResults!);
+  late final _options = _$parseServeWebConfigResult(argResults!);
 }

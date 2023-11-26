@@ -4,7 +4,7 @@ import 'package:flutter_rust_bridge_utils/src/serve_web/run_server.dart';
 
 part 'serve_web_command.g.dart';
 
-class ServeWebCommand extends _$ConfigCommand<void> {
+class ServeWebCommand extends _$ServeWebConfigCommand<void> {
   @override
   String get name => 'serve-web';
 
@@ -18,7 +18,7 @@ class ServeWebCommand extends _$ConfigCommand<void> {
 }
 
 @CliOptions(createCommand: true)
-class Config {
+class ServeWebConfig {
   @CliOption(
     abbr: 'r',
     help: 'Root of the directory to be served',
