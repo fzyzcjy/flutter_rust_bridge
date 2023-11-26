@@ -15,11 +15,11 @@ Future<String> runServer(ServeWebConfig config, {List<Handler>? extraHandlers}) 
   // final shouldRelaxCoep = config.shouldRelaxCoep;
   final shouldRelaxCoep = true;
 
-  final innerHandler = Cascade();
+  var innerHandler = Cascade();
   for (final extraHandler in extraHandlers ?? const <Handler>[]) {
-    innerHandler.add(extraHandler);
+    innerHandler = innerHandler.add(extraHandler);
   }
-  innerHandler.add(staticFilesHandler);
+  innerHandler = innerHandler.add(staticFilesHandler);
 
   final handler = const Pipeline().addMiddleware((handler) {
     return (req) async {
