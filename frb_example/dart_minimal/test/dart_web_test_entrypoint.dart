@@ -1,4 +1,4 @@
-import 'package:flutter_rust_bridge_utils/flutter_rust_bridge_utils.dart';
+import 'package:flutter_rust_bridge_utils/flutter_rust_bridge_utils_web.dart';
 
 import 'minimal_test.dart' as minimal_test;
 
