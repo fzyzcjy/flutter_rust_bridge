@@ -5,10 +5,6 @@ publish_to: none
 environment:
   sdk: '>=3.2.0 <4.0.0'
 dependencies:
-  flutter:
-    sdk: flutter
-  integration_test:
-    sdk: flutter
   lints: ^2.0.1
   flutter_rust_bridge:
     path: ../../frb_dart
