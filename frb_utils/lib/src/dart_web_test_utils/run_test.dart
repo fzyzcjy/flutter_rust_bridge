@@ -22,7 +22,7 @@ Future<void> executeTestWeb(TestWebConfig config) async {
   print('executeTestWeb: compile');
   await executeBuildWeb(BuildWebArgs(
     output: webRoot,
-    release: true,
+    release: false,
     verbose: false,
     // TODO make these configurable later when it is publicly used
     //      (now it is only used internally)
