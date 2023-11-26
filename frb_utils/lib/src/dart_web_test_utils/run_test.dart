@@ -99,7 +99,9 @@ Future<Browser> _launchBrowser({
 
 void _configurePageLogging(Page page) {
   // https://stackoverflow.com/questions/47539043/how-to-get-all-console-messages-with-puppeteer-including-errors-csp-violations
-  page.onConsole.listen((e) => print('puppeteer.Page.onConsole $e'));
+
+  page.onConsole.listen((e) => print('[puppeteer console] [${e.typeName}] ${e.text?.trim()}'));
+
   page.onPageCrashed.listen((_) => print('puppeteer.Page.onPageCrashed'));
   page.onRequestFailed.listen((e) => print('puppeteer.Page.onRequestFailed $e'));
   page.onError.listen((e) => print('puppeteer.Page.onError $e'));
