@@ -16,7 +16,10 @@ lint_rust: _lint_rust_main _lint_rust_wasm
 _lint_rust_main:
     cargo fmt \
       {{ if mode == "fix" { "" } else { "--check" } }}
-    cargo clippy -- -D warnings
+
+    cargo clippy \
+      {{ if mode == "fix" { "--fix" } else { "" } }} \
+      -- -D warnings
 
 _lint_rust_wasm:
     rustup target add wasm32-unknown-unknown
@@ -37,6 +40,7 @@ _lint_dart_single mode directory executable line_length:
       --line-length {{line_length}} \
       {{ if mode == "fix" { "--fix" } else { "--output=none --set-exit-if-changed" } }} \
       .
+
     cd {{directory}} && {{executable}} analyze --fatal-infos
 
 _lint_dart_pana:
