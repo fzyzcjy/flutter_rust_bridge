@@ -44,8 +44,6 @@ Future<void> executeTestWeb(TestWebConfig config) async {
     extraHandlers: [
       _createWebSocketHandler(
         closeBrowser: () async {
-          if (config.keepAlive) return;
-
           print('executeTestWeb: close browser');
           await browser?.close();
         },

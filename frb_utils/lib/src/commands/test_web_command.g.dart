@@ -8,8 +8,7 @@ part of 'test_web_command.dart';
 
 TestWebConfig _$parseTestWebConfigResult(ArgResults result) => TestWebConfig()
   ..entrypoint = result['entrypoint'] as String
-  ..headless = result['headless'] as bool
-  ..keepAlive = result['keep-alive'] as bool;
+  ..headless = result['headless'] as bool;
 
 ArgParser _$populateTestWebConfigParser(ArgParser parser) => parser
   ..addOption(
@@ -19,10 +18,6 @@ ArgParser _$populateTestWebConfigParser(ArgParser parser) => parser
   ..addFlag(
     'headless',
     help: 'Make the browser headless',
-  )
-  ..addFlag(
-    'keep-alive',
-    help: 'Do not close browser even after tests finished',
   );
 
 final _$parserForTestWebConfig = _$populateTestWebConfigParser(ArgParser());

@@ -24,7 +24,4 @@ class TestWebConfig {
 
   @CliOption(help: 'Make the browser headless')
   late bool headless;
-
-  @CliOption(help: 'Do not close browser even after tests finished')
-  late bool keepAlive;
 }
