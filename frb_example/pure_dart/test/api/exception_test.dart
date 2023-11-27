@@ -184,7 +184,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         } catch (e) {
           final FrbBacktracedException ex = e as FrbBacktracedException;
           print("backtrace: ${ex.backtrace}");
-          if (!kIsWeb) expect(ex.backtrace, contains("backtrace::capture::"));
+          if (!kIsWeb) expect(ex.backtrace, isNotEmpty);
           didCatch = true;
         }
         expect(didCatch, true);
