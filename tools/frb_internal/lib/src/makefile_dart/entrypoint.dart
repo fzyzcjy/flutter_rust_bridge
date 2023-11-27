@@ -37,14 +37,14 @@ Future<void> lint(LintConfig config) async {
 
 Future<void> lintRust(LintConfig config) async {
   for (final package in _kRustPackages) {
-    await lintRustMain(config);
+    await lintRustMain(config, package);
   }
   await lintRustWasm(config);
 }
 
-Future<void> lintRustMain(LintConfig config) async {
-  await execute('cargo fmt ${config.fix ? "" : "--check"}');
-  await execute('cargo clippy ${config.fix ? "--fix" : ""} -- -D warnings');
+Future<void> lintRustMain(LintConfig config, String package) async {
+  await execute('cd $package && cargo fmt ${config.fix ? "" : "--check"}');
+  await execute('cd $package && cargo clippy ${config.fix ? "--fix" : ""} -- -D warnings');
 }
 
 Future<void> lintRustWasm(LintConfig config) async {
@@ -56,20 +56,19 @@ Future<void> lintRustWasm(LintConfig config) async {
 Future<void> lintDart(LintConfig config) async {
   await dartPubGet();
   for (final package in _kDartPackages) {
-    await lintDartMain(config);
+    await lintDartMain(config, package);
   }
   await lintDartPana(config);
 }
 
-Future<void> lintDartMain(LintConfig config) async {
-  execute('cd $directory && dart format '
+Future<void> lintDartMain(LintConfig config, String package) async {
+  execute('cd $package && dart format '
       '--line-length $line_length ${config.fix ? "--fix" : "--output=none --set-exit-if-changed"}');
-  execute('cd $directory && $executable analyze --fatal-infos');
+  execute('cd $package && dart analyze --fatal-infos');
 }
 
 Future<void> lintDartPana(LintConfig config) async {
   final pana = Platform.isWindows ? 'pana.bat' : 'pana';
-
   await execute('flutter pub global activate pana');
   await execute('cd frb_dart && $pana --no-warning --line-length 80 --exit-code-threshold 0');
 }
