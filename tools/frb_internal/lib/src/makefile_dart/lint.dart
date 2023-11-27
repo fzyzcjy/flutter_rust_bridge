@@ -38,13 +38,14 @@ Future<void> lintRust(LintConfig config) async {
 }
 
 Future<void> lintRustMain(LintConfig config, String package) async {
-  await exec('cd $package && cargo fmt ${config.fix ? "" : "--check"}');
-  await exec('cd $package && cargo clippy ${config.fix ? "--fix" : ""} -- -D warnings');
+  await exec('cargo fmt ${config.fix ? "" : "--check"}', relativePwd: package);
+  await exec('cargo clippy ${config.fix ? "--fix" : ""} -- -D warnings', relativePwd: package);
 }
 
 Future<void> lintRustWasm(LintConfig config) async {
   await exec('rustup target add wasm32-unknown-unknown');
-  await exec('cd frb_rust && cargo clippy --target wasm32-unknown-unknown ${config.fix ? "--fix" : ""} -- -D warnings');
+  await exec('cargo clippy --target wasm32-unknown-unknown ${config.fix ? "--fix" : ""} -- -D warnings',
+      relativePwd: 'frb_rust');
 }
 
 Future<void> lintDart(LintConfig config) async {
@@ -57,20 +58,20 @@ Future<void> lintDart(LintConfig config) async {
 
 Future<void> lintDartMain(LintConfig config, String package) async {
   final lineLength = package == 'frb_dart' ? 80 : 120;
-  await exec('cd $package && '
-      'dart format --line-length $lineLength ${config.fix ? "--fix" : "--output=none --set-exit-if-changed"} .');
-  await exec('cd $package && dart analyze --fatal-infos');
+  await exec('dart format --line-length $lineLength ${config.fix ? "--fix" : "--output=none --set-exit-if-changed"} .',
+      relativePwd: package);
+  await exec('dart analyze --fatal-infos', relativePwd: package);
 }
 
 Future<void> lintDartPana(LintConfig config) async {
   final pana = Platform.isWindows ? 'pana.bat' : 'pana';
   await exec('flutter pub global activate pana');
-  await exec('cd frb_dart && $pana --no-warning --line-length 80 --exit-code-threshold 0');
+  await exec('$pana --no-warning --line-length 80 --exit-code-threshold 0', relativePwd: 'frb_dart');
 }
 
 Future<void> dartPubGet() async {
   for (final package in kDartPackages) {
     // TODO `with_flutter` is `flutter pub get`
-    await exec('cd $package && dart pub get');
+    await exec('dart pub get', relativePwd: package);
   }
 }

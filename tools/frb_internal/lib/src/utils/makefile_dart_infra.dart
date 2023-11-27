@@ -12,7 +12,7 @@ class SimpleExecutor {
 
   const SimpleExecutor({this.env, this.pwd});
 
-  Future<void> call(String cmd) async {
+  Future<void> call(String cmd, {String? relativePwd}) async {
     final String command;
     final List<String> args;
     if (Platform.isWindows) {
@@ -22,7 +22,7 @@ class SimpleExecutor {
       command = '/bin/sh';
       args = ['-c', cmd];
     }
-    await runCommand(command, args, env: env, pwd: pwd);
+    await runCommand(command, args, env: env, pwd: '$pwd${relativePwd ?? ""}');
   }
 }
 

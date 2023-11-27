@@ -61,7 +61,7 @@ Future<void> generateInternalDartSource(GenerateConfig config) async {
 }
 
 Future<void> generateInternalRust(GenerateConfig config) async {
-  await exec('cd frb_codegen && cargo run -- internal-generate');
+  await exec('cargo run -- internal-generate', relativePwd: 'frb_codegen');
   await _maybeSetExitIfChanged(config);
 }
 
@@ -73,7 +73,7 @@ Future<void> generateInternalBookHelp(GenerateConfig config) async {
     'integrate',
     'build-web',
   ]) {
-    await exec('cd frb_codegen && cargo run -- $cmd --help > book/src/generated/${cmd ?? 'main'}.txt');
+    await exec('cargo run -- $cmd --help > book/src/generated/${cmd ?? 'main'}.txt', relativePwd: 'frb_codegen');
   }
   await _maybeSetExitIfChanged(config);
 }
@@ -81,7 +81,7 @@ Future<void> generateInternalBookHelp(GenerateConfig config) async {
 Future<void> generateInternalBuildRunner(GenerateConfig config) async {
   for (final package in kDartNonExamplePackages) {
     await runDartPubGetIfNotRunYet(package);
-    await exec('cd $package && dart run build_runner build --delete-conflicting-outputs');
+    await exec('dart run build_runner build --delete-conflicting-outputs', relativePwd: package);
   }
   await _maybeSetExitIfChanged(config);
 }
@@ -94,7 +94,7 @@ Future<void> generateRunFrbCodegen(GenerateConfig config) async {
 
 /// Run flutter_rust_bridge_codegen's `generate` subcommand
 Future<void> generateRunFrbCodegenCommandGenerate(GenerateConfig config, String package) async {
-  await exec('cd $package && cargo run --manifest-path ${exec.pwd}/frb_codegen/Cargo.toml -- generate');
+  await exec('cargo run --manifest-path ${exec.pwd}/frb_codegen/Cargo.toml -- generate', relativePwd: package);
   await _maybeSetExitIfChanged(config);
 }
 

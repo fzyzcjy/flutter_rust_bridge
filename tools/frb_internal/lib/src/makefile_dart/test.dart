@@ -33,8 +33,8 @@ Future<void> testRust(TestConfig config) async {
 }
 
 Future<void> testRustPackage(String package) async {
-  await exec('cd $package && cargo build');
-  await exec('cd $package && cargo test');
+  await exec('cargo build', relativePwd: package);
+  await exec('cargo test', relativePwd: package);
 }
 
 Future<void> testDartNative(TestDartConfig config) async {
@@ -50,7 +50,7 @@ Future<void> testDartNative(TestDartConfig config) async {
     extraFlags += '--enable-vm-service ';
   }
 
-  await exec('cd ${config.package} && ${dartMode.name} $extraFlags test');
+  await exec('${dartMode.name} $extraFlags test', relativePwd: config.package);
 }
 
 Future<void> testDartWeb(TestDartConfig config) async {
@@ -58,9 +58,10 @@ Future<void> testDartWeb(TestDartConfig config) async {
 
   final package = config.package;
   if (package == 'frb_dart') {
-    await exec('cd $package && dart test -p chrome');
+    await exec('dart test -p chrome', relativePwd: package);
   } else {
-    await exec('cd frb_utils && '
-        'dart run flutter_rust_bridge_utils test-web --entrypoint ../$package/test/dart_web_test_entrypoint.dart');
+    await exec(
+        'dart run flutter_rust_bridge_utils test-web --entrypoint ../$package/test/dart_web_test_entrypoint.dart',
+        relativePwd: 'frb_utils');
   }
 }

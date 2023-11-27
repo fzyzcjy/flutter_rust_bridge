@@ -50,6 +50,6 @@ final exec = SimpleExecutor(
 /// Temporary workaround before https://github.com/dart-lang/sdk/issues/54160 is fixed.
 Future<void> runDartPubGetIfNotRunYet(String package) async {
   if (!await Directory('${exec.pwd}/$package/.dart_tool').exists()) {
-    await exec('cd $package && dart --enable-experiment=native-assets pub get');
+    await exec('dart --enable-experiment=native-assets pub get', relativePwd: package);
   }
 }
