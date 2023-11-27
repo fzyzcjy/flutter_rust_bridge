@@ -23,6 +23,9 @@ jobs:
 
       - run: just ci_dart_valgrind
 
+  flutter_test_web:
+    TODO
+
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   flutter_test_ios:
     name: Flutter integration test on iOS
