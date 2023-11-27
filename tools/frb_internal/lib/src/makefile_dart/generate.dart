@@ -36,7 +36,7 @@ Future<void> generateInternal(GenerateConfig config) async {
   await generateInternalFrbExamplePureDart(config);
   await generateInternalDartSource(config);
   await generateInternalRust(config);
-  generate_book_help();
+  await generateInternalBookHelp(config);
 }
 
 Future<void> generateInternalFrbExamplePureDart(GenerateConfig config) async {
@@ -61,6 +61,13 @@ Future<void> generateInternalDartSource(GenerateConfig config) async {
 
 Future<void> generateInternalRust(GenerateConfig config) async {
   await exec('cd frb_codegen && cargo run -- internal-generate');
+  await _maybeSetExitIfChanged(config);
+}
+
+Future<void> generateInternalBookHelp(GenerateConfig config) async {
+  TODO;
+  'cargo run --manifest-path frb_codegen/Cargo.toml -- --help > book/src/help.txt';
+  'dart run frb_dart/bin/serve.dart --help > book/src/help.serve.txt';
   await _maybeSetExitIfChanged(config);
 }
 

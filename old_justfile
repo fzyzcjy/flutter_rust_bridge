@@ -94,10 +94,6 @@ flutter_example_with_flutter_integration_test:
 
 # ============================ code generators ============================
 
-generate_book_help:
-    cargo run --manifest-path frb_codegen/Cargo.toml -- --help > book/src/help.txt
-    dart run frb_dart/bin/serve.dart --help > book/src/help.serve.txt
-
 cargo_run_codegen := if env_var_or_default("FRB_TEST_USE_RELEASE_VERSION", "false") == "true" {
     "flutter_rust_bridge_codegen"
 } else {
