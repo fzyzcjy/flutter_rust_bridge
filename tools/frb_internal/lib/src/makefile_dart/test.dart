@@ -56,7 +56,7 @@ Future<void> testDartWeb(TestDartConfig config) async {
   if (package == 'frb_dart') {
     await exec('cd $package && dart test -p chrome');
   } else {
-    await exec('cd tools/frb_internal && '
+    await exec('cd frb_utils && '
         'dart run flutter_rust_bridge_utils test-web --entrypoint ../$package/test/dart_web_test_entrypoint.dart');
   }
 }
