@@ -178,10 +178,6 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        # TODO about this
-        include:
-          - features: []
-          - features: [wasm-start]
         package:
           - frb_dart
           - frb_example/dart_minimal
