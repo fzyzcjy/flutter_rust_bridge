@@ -1,6 +1,6 @@
 import 'package:flutter_rust_bridge_internal/src/utils/execute_process.dart';
 
-/// Similar to `justfile`, but based on Dart
+/// Similar to `makefile`/`justfile`/..., but based on Dart
 /// (Why not directly use justfile: Because want more flexible grammar, such as for loops)
 
 const _kRustPackages = <String>[TODO];
