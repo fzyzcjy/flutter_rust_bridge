@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_rust_bridge_internal/src/utils/execute_process.dart';
+import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 
 /// Similar to `makefile`/`justfile`/..., but based on Dart
 /// (Why not directly use justfile: Because want more flexible grammar, such as for loops)
@@ -62,8 +63,9 @@ Future<void> lintDart(LintConfig config) async {
 }
 
 Future<void> lintDartMain(LintConfig config, String package) async {
-  execute('cd $package && dart format '
-      '--line-length $line_length ${config.fix ? "--fix" : "--output=none --set-exit-if-changed"}');
+  final lineLength = package == 'frb_dart' ? 80 : 120;
+  execute('cd $package && '
+      'dart format --line-length $lineLength ${config.fix ? "--fix" : "--output=none --set-exit-if-changed"}');
   execute('cd $package && dart analyze --fatal-infos');
 }
 
@@ -74,9 +76,5 @@ Future<void> lintDartPana(LintConfig config) async {
 }
 
 Future<void> dartPubGet() async {
-  TODO;
-}
-
-Future<void> execute(String command) async {
   TODO;
 }
