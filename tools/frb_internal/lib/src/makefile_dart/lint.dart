@@ -51,15 +51,19 @@ Future<void> lintRustWasm(LintConfig config) async {
 Future<void> lintDart(LintConfig config) async {
   // await dartPubGet();
   for (final package in kDartPackages) {
-    await lintDartMain(config, package);
+    await lintDartFormat(config, package);
+    await lintDartAnalyze(config, package);
   }
   await lintDartPana(config);
 }
 
-Future<void> lintDartMain(LintConfig config, String package) async {
+Future<void> lintDartFormat(LintConfig config, String package) async {
   final lineLength = package == 'frb_dart' ? 80 : 120;
   await exec('dart format --line-length $lineLength ${config.fix ? "--fix" : "--output=none --set-exit-if-changed"} .',
       relativePwd: package);
+}
+
+Future<void> lintDartAnalyze(LintConfig config, String package) async {
   await exec('dart analyze --fatal-infos', relativePwd: package);
 }
 
