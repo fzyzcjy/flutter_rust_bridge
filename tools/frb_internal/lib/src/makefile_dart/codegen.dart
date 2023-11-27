@@ -4,7 +4,7 @@ import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart'
 
 List<Command<void>> createCommands() {
   return [
-    SimpleCommand('generate-test', generator.generate),
+    SimpleCommand('codegen-internal', generator.generate),
   ];
 }
 
