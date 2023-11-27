@@ -36,8 +36,7 @@ jobs:
         with:
           sdk: ${{ env.FRB_MAIN_DART_VERSION }}
           architecture: x64
-      - id: rust-toolchain
-        uses: dtolnay/rust-toolchain@stable
+      - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt, clippy
@@ -130,8 +129,7 @@ jobs:
     steps:
       # setup
       - uses: actions/checkout@v4
-      - id: rust-toolchain
-        uses: dtolnay/rust-toolchain@stable
+      - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: ${{ matrix.image_and_version.version || env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt
