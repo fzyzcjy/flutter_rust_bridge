@@ -44,18 +44,3 @@ class _Log extends vm_service.Log {
   @override
   void severe(String message) => log('Severe: $message');
 }
-
-Future<void> executeProcess(String executable, List<String> arguments) async {
-  log('executeProcess start `$executable ${arguments.join(" ")}`');
-
-  final process = await Process.start(executable, arguments);
-
-  process.stdout.listen((e) => log(String.fromCharCodes(e)));
-  process.stderr.listen((e) => log('[STDERR] ${String.fromCharCodes(e)}'));
-
-  final exitCode = await process.exitCode;
-  log('executeProcess end exitCode=$exitCode');
-  if (exitCode != 0) {
-    throw Exception('Process execution failed (exitCode=$exitCode)');
-  }
-}
