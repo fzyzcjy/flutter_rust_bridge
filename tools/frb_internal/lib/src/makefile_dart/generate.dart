@@ -89,7 +89,9 @@ Future<void> generateRunFrbCodegenCommandGenerate(GenerateConfig config, String 
   // TODO('just install_ffigen_dependency');
   // TODO('just dart_pub_get');
   // TODO('just install_expand');
-  generate_bridge();
+  _generate_bridge_pure_dart();
+  _generate_bridge_pure_dart_multi();
+  _generate_bridge_with_flutter();
   await _maybeSetExitIfChanged(config);
 }
 

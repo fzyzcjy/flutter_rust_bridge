@@ -100,11 +100,6 @@ cargo_run_codegen := if env_var_or_default("FRB_TEST_USE_RELEASE_VERSION", "fals
     "cargo run --manifest-path frb_codegen/Cargo.toml --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --features 'chrono,uuid' -- "
 }
 
-generate_bridge:
-    just _generate_bridge_pure_dart
-    just _generate_bridge_pure_dart_multi
-    just _generate_bridge_with_flutter
-
 _generate_bridge_pure_dart:
     {{cargo_run_codegen}} frb_example/pure_dart/rust/.flutter_rust_bridge.yml
 
