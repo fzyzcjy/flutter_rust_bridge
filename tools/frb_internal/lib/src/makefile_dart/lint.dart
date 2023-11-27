@@ -41,7 +41,7 @@ Future<void> lintRust(LintConfig config) async {
 
 Future<void> lintRustFormat(LintConfig config) async {
   for (final package in kRustPackages) {
-    await exec('cargo fmt ${config.fix ? "" : "--check"}',
+    await exec('cargo +nightly fmt ${config.fix ? "" : "--check"}',
         relativePwd: package);
   }
 }
