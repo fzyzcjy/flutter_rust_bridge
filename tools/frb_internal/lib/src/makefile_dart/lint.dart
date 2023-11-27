@@ -31,15 +31,21 @@ Future<void> lint(LintConfig config) async {
 }
 
 Future<void> lintRust(LintConfig config) async {
-  for (final package in kRustPackages) {
-    await lintRustMain(config, package);
-  }
+  await lintRustFormat(config);
+  await lintRustClippy(config);
   await lintRustWasm(config);
 }
 
-Future<void> lintRustMain(LintConfig config, String package) async {
-  await exec('cargo fmt ${config.fix ? "" : "--check"}', relativePwd: package);
-  await exec('cargo clippy ${config.fix ? "--fix" : ""} -- -D warnings', relativePwd: package);
+Future<void> lintRustFormat(LintConfig config) async {
+  for (final package in kRustPackages) {
+    await exec('cargo fmt ${config.fix ? "" : "--check"}', relativePwd: package);
+  }
+}
+
+Future<void> lintRustClippy(LintConfig config) async {
+  for (final package in kRustPackages) {
+    await exec('cargo clippy ${config.fix ? "--fix" : ""} -- -D warnings', relativePwd: package);
+  }
 }
 
 Future<void> lintRustWasm(LintConfig config) async {

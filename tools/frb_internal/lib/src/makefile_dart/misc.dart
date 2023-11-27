@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:args/command_runner.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 
 List<Command<void>> createCommands() {
@@ -22,7 +23,7 @@ Future<void> miscNormalizePubspec() async {
 }
 
 Future<void> precommitFast() async {
-  TODO_dart_format;
-  TODO_rust_format;
+  await lintDartFormat(const LintConfig(fix: true));
+  await lintRustFormat(const LintConfig(fix: true));
   await miscNormalizePubspec();
 }
