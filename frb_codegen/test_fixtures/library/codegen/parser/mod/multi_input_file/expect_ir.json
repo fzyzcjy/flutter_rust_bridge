@@ -8,9 +8,12 @@
       "mode": "Normal",
       "name": "crate::api_one/func_one",
       "output": {
-        "Primitive": "Unit"
+        "data": "Unit",
+        "safe_ident": "unit",
+        "type": "Primitive"
       },
-      "owner": "Function"
+      "owner": "Function",
+      "src_lineno": 2
     },
     {
       "comments": [],
@@ -19,9 +22,12 @@
       "mode": "Normal",
       "name": "crate::api_two/func_two",
       "output": {
-        "Primitive": "Unit"
+        "data": "Unit",
+        "safe_ident": "unit",
+        "type": "Primitive"
       },
-      "owner": "Function"
+      "owner": "Function",
+      "src_lineno": 1
     }
   ],
   "has_executor": false,

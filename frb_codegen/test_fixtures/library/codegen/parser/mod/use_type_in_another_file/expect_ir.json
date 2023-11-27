@@ -4,11 +4,6 @@
       "comments": [],
       "mode": "Simple",
       "name": "crate::another_file/EnumInAnotherFile",
-      "path": [
-        "crate",
-        "another_file",
-        "EnumInAnotherFile"
-      ],
       "variants": [
         {
           "comments": [],
@@ -34,15 +29,19 @@
             "is_in_mirrored_enum": false
           },
           "ty": {
-            "Boxed": {
+            "data": {
               "exist_in_real_api": false,
               "inner": {
-                "StructRef": {
+                "data": {
                   "ident": "crate::another_file/StructInAnotherFile",
                   "is_exception": false
-                }
+                },
+                "safe_ident": "struct_in_another_file",
+                "type": "StructRef"
               }
-            }
+            },
+            "safe_ident": "box_autoadd_struct_in_another_file",
+            "type": "Boxed"
           }
         },
         {
@@ -54,7 +53,7 @@
             "is_in_mirrored_enum": false
           },
           "ty": {
-            "Delegate": {
+            "data": {
               "PrimitiveEnum": {
                 "ir": {
                   "ident": "crate::another_file/EnumInAnotherFile",
@@ -62,16 +61,21 @@
                 },
                 "repr": "I32"
               }
-            }
+            },
+            "safe_ident": "enum_in_another_file",
+            "type": "Delegate"
           }
         }
       ],
       "mode": "Normal",
       "name": "crate::api/func_one",
       "output": {
-        "Primitive": "Unit"
+        "data": "Unit",
+        "safe_ident": "unit",
+        "type": "Primitive"
       },
-      "owner": "Function"
+      "owner": "Function",
+      "src_lineno": 3
     }
   ],
   "has_executor": false,
@@ -89,17 +93,14 @@
             "is_in_mirrored_enum": false
           },
           "ty": {
-            "Primitive": "I32"
+            "data": "I32",
+            "safe_ident": "i_32",
+            "type": "Primitive"
           }
         }
       ],
       "is_fields_named": true,
       "name": "crate::another_file/StructInAnotherFile",
-      "path": [
-        "crate",
-        "another_file",
-        "StructInAnotherFile"
-      ],
       "wrapper_name": null
     }
   }

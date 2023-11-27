@@ -14,9 +14,11 @@
             "is_in_mirrored_enum": false
           },
           "ty": {
-            "Delegate": {
+            "data": {
               "Time": "Duration"
-            }
+            },
+            "safe_ident": "Chrono_Duration",
+            "type": "Delegate"
           }
         },
         {
@@ -28,29 +30,39 @@
             "is_in_mirrored_enum": false
           },
           "ty": {
-            "Delegate": "Uuid"
+            "data": "Uuid",
+            "safe_ident": "Uuid",
+            "type": "Delegate"
           }
         }
       ],
       "mode": "Normal",
       "name": "crate::api/func_1",
       "output": {
-        "Primitive": "Unit"
+        "data": "Unit",
+        "safe_ident": "unit",
+        "type": "Primitive"
       },
-      "owner": "Function"
+      "owner": "Function",
+      "src_lineno": 5
     },
     {
       "comments": [],
       "error_output": {
-        "Delegate": "String"
+        "data": "String",
+        "safe_ident": "String",
+        "type": "Delegate"
       },
       "inputs": [],
       "mode": "Normal",
       "name": "crate::api/func_anyhow_result",
       "output": {
-        "Primitive": "I32"
+        "data": "I32",
+        "safe_ident": "i_32",
+        "type": "Primitive"
       },
-      "owner": "Function"
+      "owner": "Function",
+      "src_lineno": 6
     }
   ],
   "has_executor": false,

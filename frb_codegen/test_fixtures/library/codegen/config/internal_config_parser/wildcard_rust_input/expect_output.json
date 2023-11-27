@@ -8,7 +8,7 @@
       "dart3": true,
       "dart_decl_base_output_path": "{the-working-directory}/my_dart_folder",
       "dart_entrypoint_class_name": "RustLib",
-      "dart_enums_style": false
+      "dart_enums_style": true
     },
     "wire": {
       "c": {
@@ -31,11 +31,15 @@
           "api_impl_class_name": "RustLibApiImpl",
           "api_impl_platform_class_name": "RustLibApiImplPlatform",
           "entrypoint_class_name": "RustLib",
+          "wasm_module_name": "RustLibWasmModule",
           "wire_class_name": "RustLibWire"
         },
         "dart_root": "{the-working-directory}",
-        "default_external_library_relative_directory": "target/release/",
-        "default_external_library_stem": "UNKNOWN",
+        "default_external_library_loader": {
+          "io_directory": "target/release/",
+          "stem": "UNKNOWN",
+          "web_prefix": "pkg/"
+        },
         "extra_headers": "",
         "llvm_compiler_opts": "",
         "llvm_path": [

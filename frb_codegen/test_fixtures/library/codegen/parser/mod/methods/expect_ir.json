@@ -4,11 +4,6 @@
       "comments": [],
       "mode": "Simple",
       "name": "crate::api/MyEnum",
-      "path": [
-        "crate",
-        "api",
-        "MyEnum"
-      ],
       "variants": [
         {
           "comments": [],
@@ -40,7 +35,7 @@
             "is_in_mirrored_enum": false
           },
           "ty": {
-            "Delegate": {
+            "data": {
               "PrimitiveEnum": {
                 "ir": {
                   "ident": "crate::api/MyEnum",
@@ -48,22 +43,27 @@
                 },
                 "repr": "I32"
               }
-            }
+            },
+            "safe_ident": "my_enum",
+            "type": "Delegate"
           }
         }
       ],
       "mode": "Normal",
       "name": "crate::api/MyEnum_example_instance_method",
       "output": {
-        "Primitive": "Unit"
+        "data": "Unit",
+        "safe_ident": "unit",
+        "type": "Primitive"
       },
       "owner": {
         "Method": {
           "actual_method_name": "example_instance_method",
-          "enum_or_struct_name": "MyEnum",
+          "enum_or_struct_name": "crate::api/MyEnum",
           "mode": "Instance"
         }
-      }
+      },
+      "src_lineno": 10
     },
     {
       "comments": [],
@@ -72,15 +72,18 @@
       "mode": "Normal",
       "name": "crate::api/MyEnum_example_static_method",
       "output": {
-        "Primitive": "Unit"
+        "data": "Unit",
+        "safe_ident": "unit",
+        "type": "Primitive"
       },
       "owner": {
         "Method": {
           "actual_method_name": "example_static_method",
-          "enum_or_struct_name": "MyEnum",
+          "enum_or_struct_name": "crate::api/MyEnum",
           "mode": "Static"
         }
-      }
+      },
+      "src_lineno": 9
     },
     {
       "comments": [],
@@ -95,47 +98,37 @@
             "is_in_mirrored_enum": false
           },
           "ty": {
-            "Unencodable": {
-              "segments": [
-                {
-                  "args": null,
-                  "ident": "MyStruct"
-                }
-              ],
-              "string": "MyStruct"
-            }
+            "data": {
+              "exist_in_real_api": false,
+              "inner": {
+                "data": {
+                  "ident": "crate::api/MyStruct",
+                  "is_exception": false
+                },
+                "safe_ident": "my_struct",
+                "type": "StructRef"
+              }
+            },
+            "safe_ident": "box_autoadd_my_struct",
+            "type": "Boxed"
           }
         }
       ],
       "mode": "Normal",
       "name": "crate::api/MyStruct_example_instance_method",
       "output": {
-        "Primitive": "Unit"
+        "data": "Unit",
+        "safe_ident": "unit",
+        "type": "Primitive"
       },
       "owner": {
         "Method": {
           "actual_method_name": "example_instance_method",
-          "enum_or_struct_name": "MyStruct",
+          "enum_or_struct_name": "crate::api/MyStruct",
           "mode": "Instance"
         }
-      }
-    },
-    {
-      "comments": [],
-      "error_output": null,
-      "inputs": [],
-      "mode": "Normal",
-      "name": "crate::api/MyStruct_example_static_method",
-      "output": {
-        "Primitive": "Unit"
       },
-      "owner": {
-        "Method": {
-          "actual_method_name": "example_static_method",
-          "enum_or_struct_name": "MyStruct",
-          "mode": "Static"
-        }
-      }
+      "src_lineno": 5
     }
   ],
   "has_executor": false,

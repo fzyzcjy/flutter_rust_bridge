@@ -4,11 +4,6 @@
       "comments": [],
       "mode": "Complex",
       "name": "crate::api/MyGenericEnum",
-      "path": [
-        "crate",
-        "api",
-        "MyGenericEnum"
-      ],
       "variants": [
         {
           "comments": [],
@@ -26,7 +21,7 @@
                     "is_in_mirrored_enum": false
                   },
                   "ty": {
-                    "Unencodable": {
+                    "data": {
                       "segments": [
                         {
                           "args": null,
@@ -34,13 +29,14 @@
                         }
                       ],
                       "string": "A"
-                    }
+                    },
+                    "safe_ident": "A",
+                    "type": "Unencodable"
                   }
                 }
               ],
               "is_fields_named": false,
               "name": "crate::api::MyGenericEnum/One",
-              "path": null,
               "wrapper_name": null
             }
           },
@@ -63,7 +59,7 @@
                     "is_in_mirrored_enum": false
                   },
                   "ty": {
-                    "Unencodable": {
+                    "data": {
                       "segments": [
                         {
                           "args": null,
@@ -71,13 +67,14 @@
                         }
                       ],
                       "string": "B"
-                    }
+                    },
+                    "safe_ident": "B",
+                    "type": "Unencodable"
                   }
                 }
               ],
               "is_fields_named": false,
               "name": "crate::api::MyGenericEnum/Two",
-              "path": null,
               "wrapper_name": null
             }
           },
@@ -102,24 +99,31 @@
             "is_in_mirrored_enum": false
           },
           "ty": {
-            "Boxed": {
+            "data": {
               "exist_in_real_api": false,
               "inner": {
-                "EnumRef": {
+                "data": {
                   "ident": "crate::api/MyGenericEnum",
                   "is_exception": false
-                }
+                },
+                "safe_ident": "my_generic_enum",
+                "type": "EnumRef"
               }
-            }
+            },
+            "safe_ident": "box_autoadd_my_generic_enum",
+            "type": "Boxed"
           }
         }
       ],
       "mode": "Normal",
       "name": "crate::api/func_enum_bool",
       "output": {
-        "Primitive": "Unit"
+        "data": "Unit",
+        "safe_ident": "unit",
+        "type": "Primitive"
       },
-      "owner": "Function"
+      "owner": "Function",
+      "src_lineno": 12
     },
     {
       "comments": [],
@@ -134,24 +138,31 @@
             "is_in_mirrored_enum": false
           },
           "ty": {
-            "Boxed": {
+            "data": {
               "exist_in_real_api": false,
               "inner": {
-                "EnumRef": {
+                "data": {
                   "ident": "crate::api/MyGenericEnum",
                   "is_exception": false
-                }
+                },
+                "safe_ident": "my_generic_enum",
+                "type": "EnumRef"
               }
-            }
+            },
+            "safe_ident": "box_autoadd_my_generic_enum",
+            "type": "Boxed"
           }
         }
       ],
       "mode": "Normal",
       "name": "crate::api/func_enum_string",
       "output": {
-        "Primitive": "Unit"
+        "data": "Unit",
+        "safe_ident": "unit",
+        "type": "Primitive"
       },
-      "owner": "Function"
+      "owner": "Function",
+      "src_lineno": 11
     },
     {
       "comments": [],
@@ -166,24 +177,31 @@
             "is_in_mirrored_enum": false
           },
           "ty": {
-            "Boxed": {
+            "data": {
               "exist_in_real_api": false,
               "inner": {
-                "StructRef": {
+                "data": {
                   "ident": "crate::api/MyGenericStruct",
                   "is_exception": false
-                }
+                },
+                "safe_ident": "my_generic_struct",
+                "type": "StructRef"
               }
-            }
+            },
+            "safe_ident": "box_autoadd_my_generic_struct",
+            "type": "Boxed"
           }
         }
       ],
       "mode": "Normal",
       "name": "crate::api/func_struct_bool",
       "output": {
-        "Primitive": "Unit"
+        "data": "Unit",
+        "safe_ident": "unit",
+        "type": "Primitive"
       },
-      "owner": "Function"
+      "owner": "Function",
+      "src_lineno": 9
     },
     {
       "comments": [],
@@ -198,24 +216,31 @@
             "is_in_mirrored_enum": false
           },
           "ty": {
-            "Boxed": {
+            "data": {
               "exist_in_real_api": false,
               "inner": {
-                "StructRef": {
+                "data": {
                   "ident": "crate::api/MyGenericStruct",
                   "is_exception": false
-                }
+                },
+                "safe_ident": "my_generic_struct",
+                "type": "StructRef"
               }
-            }
+            },
+            "safe_ident": "box_autoadd_my_generic_struct",
+            "type": "Boxed"
           }
         }
       ],
       "mode": "Normal",
       "name": "crate::api/func_struct_string",
       "output": {
-        "Primitive": "Unit"
+        "data": "Unit",
+        "safe_ident": "unit",
+        "type": "Primitive"
       },
-      "owner": "Function"
+      "owner": "Function",
+      "src_lineno": 7
     },
     {
       "comments": [],
@@ -230,24 +255,31 @@
             "is_in_mirrored_enum": false
           },
           "ty": {
-            "Boxed": {
+            "data": {
               "exist_in_real_api": false,
               "inner": {
-                "StructRef": {
+                "data": {
                   "ident": "crate::api/MyGenericStruct",
                   "is_exception": false
-                }
+                },
+                "safe_ident": "my_generic_struct",
+                "type": "StructRef"
               }
-            }
+            },
+            "safe_ident": "box_autoadd_my_generic_struct",
+            "type": "Boxed"
           }
         }
       ],
       "mode": "Normal",
       "name": "crate::api/func_struct_string_repeated",
       "output": {
-        "Primitive": "Unit"
+        "data": "Unit",
+        "safe_ident": "unit",
+        "type": "Primitive"
       },
-      "owner": "Function"
+      "owner": "Function",
+      "src_lineno": 8
     }
   ],
   "has_executor": false,
@@ -265,7 +297,7 @@
             "is_in_mirrored_enum": false
           },
           "ty": {
-            "Unencodable": {
+            "data": {
               "segments": [
                 {
                   "args": null,
@@ -273,7 +305,9 @@
                 }
               ],
               "string": "T"
-            }
+            },
+            "safe_ident": "T",
+            "type": "Unencodable"
           }
         },
         {
@@ -285,10 +319,10 @@
             "is_in_mirrored_enum": false
           },
           "ty": {
-            "Boxed": {
+            "data": {
               "exist_in_real_api": true,
               "inner": {
-                "Unencodable": {
+                "data": {
                   "segments": [
                     {
                       "args": null,
@@ -296,9 +330,13 @@
                     }
                   ],
                   "string": "T"
-                }
+                },
+                "safe_ident": "T",
+                "type": "Unencodable"
               }
-            }
+            },
+            "safe_ident": "box_T",
+            "type": "Boxed"
           }
         },
         {
@@ -310,17 +348,14 @@
             "is_in_mirrored_enum": false
           },
           "ty": {
-            "Primitive": "I32"
+            "data": "I32",
+            "safe_ident": "i_32",
+            "type": "Primitive"
           }
         }
       ],
       "is_fields_named": true,
       "name": "crate::api/MyGenericStruct",
-      "path": [
-        "crate",
-        "api",
-        "MyGenericStruct"
-      ],
       "wrapper_name": null
     }
   }

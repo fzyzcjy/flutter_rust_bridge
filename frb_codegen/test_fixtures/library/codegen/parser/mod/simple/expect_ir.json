@@ -8,9 +8,12 @@
       "mode": "Normal",
       "name": "crate::api/first_function",
       "output": {
-        "Primitive": "Unit"
+        "data": "Unit",
+        "safe_ident": "unit",
+        "type": "Primitive"
       },
-      "owner": "Function"
+      "owner": "Function",
+      "src_lineno": 2
     }
   ],
   "has_executor": false,
