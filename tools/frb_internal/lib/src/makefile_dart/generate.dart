@@ -93,7 +93,7 @@ Future<void> generateRunFrbCodegen(GenerateConfig config) async {
 
 /// Run flutter_rust_bridge_codegen's `generate` subcommand
 Future<void> generateRunFrbCodegenCommandGenerate(GenerateConfig config, String package) async {
-  await exec('cd $package && cargo run --manifest-path ${exec.pwd}/frb_codegen -- generate');
+  await exec('cd $package && cargo run --manifest-path ${exec.pwd}/frb_codegen/Cargo.toml -- generate');
   await _maybeSetExitIfChanged(config);
 }
 
