@@ -86,6 +86,7 @@ jobs:
           architecture: x64
       # execute
       - run: ./frb_internal codegen-main
+      # TODO check no diff
 
   codegen_internal:
     name: 'Codegen :: Internal'
@@ -101,6 +102,7 @@ jobs:
           architecture: x64
       # execute
       - run: ./frb_internal codegen-internal
+      # TODO check no diff
 
   # ----------------------------------- test -----------------------------------
 
