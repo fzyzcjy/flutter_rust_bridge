@@ -154,6 +154,7 @@ jobs:
           - windows-2019
           - ubuntu-20.04
         package:
+          - frb_dart
           - frb_example/dart_minimal
           - frb_example/pure_dart
           # TODO with_flutter
@@ -177,9 +178,15 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
+        # TODO about this
         include:
           - features: []
           - features: [wasm-start]
+        package:
+          - frb_dart
+          - frb_example/dart_minimal
+          - frb_example/pure_dart
+          # TODO with_flutter
 
     steps:
       # setup
@@ -210,15 +217,5 @@ jobs:
         if: steps.test-cache.outputs.cache-hit != 'true'
         run: |
           sh -c "$(curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf)" '' -f
-
-      # TODO
-      - name: Run unit tests
-        run: just dart_test_web_unit
-      # TODO
-      - name: Run integration tests
-        timeout-minutes: 20
-        uses: Wandalen/wretry.action@v1.0.25
-        with:
-          command: just dart_test_web_integration "${{ join(matrix.features, ',') }}"
-          current_path: frb_example/pure_dart/dart
-
+      # execute
+      - run: ./frb_internal test-dart-web --package ${{ matrix.package }}
