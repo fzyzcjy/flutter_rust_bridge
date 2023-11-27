@@ -1,10 +1,14 @@
+/// Similar to `makefile`/`justfile`/..., but based on Dart
+/// (Why not directly use justfile: Because want more flexible grammar, such as for loops)
+library;
+
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
+import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 
-/// Similar to `makefile`/`justfile`/..., but based on Dart
-/// (Why not directly use justfile: Because want more flexible grammar, such as for loops)
+part 'entrypoint.g.dart';
 
 const _kRustPackages = <String>[
   'frb_rust',
@@ -31,6 +35,7 @@ List<Command<void>> createCommands() {
   ];
 }
 
+@CliOptions()
 class LintConfig {
   final bool fix;
 
