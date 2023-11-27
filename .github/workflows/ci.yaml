@@ -61,7 +61,7 @@ jobs:
   # ----------------------------------- codegen -----------------------------------
 
   codegen_main:
-    name: 'Codegen :: Main'
+    name: 'Generate :: Run FRB Codegen'
     runs-on: ${{ matrix.image }}
 
     strategy:
@@ -85,11 +85,11 @@ jobs:
           flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
       # execute
-      - run: ./frb_internal codegen-main
+      - run: ./frb_internal generate-run-frb-codegen
       # TODO check no diff
 
   codegen_internal:
-    name: 'Codegen :: Internal'
+    name: 'Generate :: Internal'
     runs-on: ubuntu-latest
 
     steps:
@@ -101,7 +101,7 @@ jobs:
           flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
       # execute
-      - run: ./frb_internal codegen-internal
+      - run: ./frb_internal generate-internal
       # TODO check no diff
 
   # ----------------------------------- test -----------------------------------
