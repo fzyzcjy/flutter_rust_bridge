@@ -145,10 +145,14 @@ jobs:
 
   test_dart_native:
     name: 'Test :: Dart :: Native'
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.image }}
     strategy:
       fail-fast: false
       matrix:
+        image:
+          - macos-11
+          - windows-2019
+          - ubuntu-20.04
         package:
           - frb_example/dart_minimal
           - frb_example/pure_dart
