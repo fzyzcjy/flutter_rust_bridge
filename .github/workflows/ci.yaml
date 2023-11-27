@@ -28,16 +28,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - &checkout
-        uses: actions/checkout@v4
-      - &setup-rust
-        id: rust-toolchain
+      - uses: actions/checkout@v4
+      - id: rust-toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt, clippy
-      - &setup-just
-        uses: extractions/setup-just@v1
+      - uses: extractions/setup-just@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: just lint_rust
@@ -47,12 +44,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - *checkout
-      - &setup-flutter
-        uses: subosito/flutter-action@v2
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
         with:
           cache: true
           channel: "stable"
           flutter-version: 3.13.6
-      - *setup-just
+      - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: just lint_dart
