@@ -38,7 +38,9 @@ Future<void> testRustPackage(String package) async {
 }
 
 Future<void> testDartNative(TestDartConfig config) async {
-  await exec('cd ${config.package} && ${kDartModeOfPackage[config.package]!.name} test');
+  final dartMode = kDartModeOfPackage[config.package]!;
+  await exec(
+      'cd ${config.package} && ${dartMode.name} ${dartMode == DartMode.dart ? "--enable-experiment=native-assets" : ""} test');
 }
 
 Future<void> testDartWeb(TestDartConfig config) async {
