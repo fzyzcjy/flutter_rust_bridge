@@ -177,9 +177,6 @@ jobs:
         if: steps.test-cache.outputs.cache-hit != 'true'
         run: |
           sh -c "$(curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf)" '' -f
-      - name: Setup Dart dependencies
-        run: dart pub get
-        working-directory: frb_dart
 
       - name: Run unit tests
         run: just dart_test_web_unit
