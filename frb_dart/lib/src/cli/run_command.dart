@@ -38,7 +38,7 @@ Future<String> runCommand(
 
   final exitCode = await process.exitCode;
   if (exitCode != 0) {
-    throw ProcessException(command, arguments, err.join(''), exitCode);
+    throw ProcessException(command, arguments, 'Bad exit code ($exitCode). stderr=${err.join("")}', exitCode);
   }
 
   return ret.join('');
