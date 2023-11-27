@@ -55,6 +55,13 @@ Future<void> generateInternalDartSource(GenerateConfig config) async {
 }
 
 Future<void> generateRunFrbCodegen(GenerateConfig config) async {
+  for (final package in kDartExamplePackages) {
+    await generateRunFrbCodegenCommandGenerate(config, package);
+  }
+}
+
+/// Run flutter_rust_bridge_codegen's `generate` subcommand
+Future<void> generateRunFrbCodegenCommandGenerate(GenerateConfig config, String package) async {
   // TODO should auto do all these
   // TODO('just install_ffigen_dependency');
   // TODO('just dart_pub_get');
