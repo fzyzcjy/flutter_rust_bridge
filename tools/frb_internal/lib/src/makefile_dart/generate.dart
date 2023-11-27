@@ -35,8 +35,24 @@ Future<void> generateInternal(GenerateConfig config) async {
   await generator.generate();
   await _maybeSetExitIfChanged(config);
 
-  TODO('just dart_check_included_source');
+  await generateInternalDartSource(config);
   await _maybeSetExitIfChanged(config);
+}
+
+Future<void> generateInternalDartSource(GenerateConfig config) async {
+  TODO;
+  '''
+    #!/usr/bin/env bash
+    set -euxo pipefail
+
+    git clone --depth 1 --filter=blob:none --sparse --branch stable https://github.com/dart-lang/sdk.git
+    cd sdk
+    git sparse-checkout set runtime/include
+    cd ..
+    cp -rf ./sdk/runtime/include/* ./frb_rust/src/dart_api/
+    rm -r sdk
+    git diff --exit-code
+  ''';
 }
 
 Future<void> generateRunFrbCodegen(GenerateConfig config) async {
