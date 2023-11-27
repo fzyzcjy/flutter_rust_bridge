@@ -76,7 +76,7 @@ jobs:
         with:
           cache: true
           channel: "stable"
-          sdk: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
       - id: cache-deps
         uses: ./.github/actions/setup
@@ -130,7 +130,7 @@ jobs:
         with:
           cache: true
           channel: "stable"
-          sdk: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
       - id: checkout
         uses: dtolnay/rust-toolchain@stable
@@ -212,7 +212,7 @@ jobs:
         with:
           cache: true
           channel: "stable"
-          sdk: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -259,7 +259,7 @@ jobs:
   #         cache: true
   #         # TODO should be 3.7.3 but has a weird bug currently
   #         # https://github.com/fzyzcjy/flutter_rust_bridge/pull/1023#issuecomment-1415852845
-  #         sdk: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+  #         flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
   #         architecture: x64
   #     - uses: dtolnay/rust-toolchain@stable
   #       with:
@@ -282,7 +282,7 @@ jobs:
         with:
           cache: true
           channel: "stable"
-          sdk: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -445,7 +445,7 @@ jobs:
         with:
           cache: true
           channel: "stable"
-          sdk: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
       - uses: extractions/setup-just@v1
         env:
@@ -488,7 +488,7 @@ jobs:
         with:
           cache: true
           channel: "stable"
-          sdk: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
 
       - uses: extractions/setup-just@v1

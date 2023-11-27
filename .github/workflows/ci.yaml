@@ -52,5 +52,5 @@ jobs:
         with:
           cache: true
           channel: "stable"
-          sdk: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
       - run: ./frb_internal lint-dart
