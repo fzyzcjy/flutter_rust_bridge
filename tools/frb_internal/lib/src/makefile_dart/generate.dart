@@ -39,9 +39,11 @@ Future<void> generateInternal(GenerateConfig config) async {
 }
 
 Future<void> generateRunFrbCodegen(GenerateConfig config) async {
-  TODO('just install_ffigen_dependency');
-  TODO('just dart_pub_get');
-  TODO('just install_expand');
+  // TODO should auto do all these
+  // TODO('just install_ffigen_dependency');
+  // TODO('just dart_pub_get');
+  // TODO('just install_expand');
+
   TODO('just generate_all');
 
   await _maybeSetExitIfChanged(config);
