@@ -25,14 +25,6 @@ class LintConfig {
   });
 }
 
-final _exec = SimpleExecutor(
-  env: {
-    'CARGO_TERM_COLOR': 'always',
-  },
-  // Use project root directory
-  pwd: Directory.current.parent.parent.path,
-);
-
 Future<void> lint(LintConfig config) async {
   await lintRust(config);
   await lintDart(config);
@@ -46,14 +38,13 @@ Future<void> lintRust(LintConfig config) async {
 }
 
 Future<void> lintRustMain(LintConfig config, String package) async {
-  await _exec('cd $package && cargo fmt ${config.fix ? "" : "--check"}');
-  await _exec('cd $package && cargo clippy ${config.fix ? "--fix" : ""} -- -D warnings');
+  await exec('cd $package && cargo fmt ${config.fix ? "" : "--check"}');
+  await exec('cd $package && cargo clippy ${config.fix ? "--fix" : ""} -- -D warnings');
 }
 
 Future<void> lintRustWasm(LintConfig config) async {
-  await _exec('rustup target add wasm32-unknown-unknown');
-  await _exec(
-      'cd frb_rust && cargo clippy --target wasm32-unknown-unknown ${config.fix ? "--fix" : ""} -- -D warnings');
+  await exec('rustup target add wasm32-unknown-unknown');
+  await exec('cd frb_rust && cargo clippy --target wasm32-unknown-unknown ${config.fix ? "--fix" : ""} -- -D warnings');
 }
 
 Future<void> lintDart(LintConfig config) async {
@@ -66,20 +57,20 @@ Future<void> lintDart(LintConfig config) async {
 
 Future<void> lintDartMain(LintConfig config, String package) async {
   final lineLength = package == 'frb_dart' ? 80 : 120;
-  await _exec('cd $package && '
+  await exec('cd $package && '
       'dart format --line-length $lineLength ${config.fix ? "--fix" : "--output=none --set-exit-if-changed"} .');
-  await _exec('cd $package && dart analyze --fatal-infos');
+  await exec('cd $package && dart analyze --fatal-infos');
 }
 
 Future<void> lintDartPana(LintConfig config) async {
   final pana = Platform.isWindows ? 'pana.bat' : 'pana';
-  await _exec('flutter pub global activate pana');
-  await _exec('cd frb_dart && $pana --no-warning --line-length 80 --exit-code-threshold 0');
+  await exec('flutter pub global activate pana');
+  await exec('cd frb_dart && $pana --no-warning --line-length 80 --exit-code-threshold 0');
 }
 
 Future<void> dartPubGet() async {
   for (final package in kDartPackages) {
     // TODO `with_flutter` is `flutter pub get`
-    await _exec('cd $package && dart pub get');
+    await exec('cd $package && dart pub get');
   }
 }
