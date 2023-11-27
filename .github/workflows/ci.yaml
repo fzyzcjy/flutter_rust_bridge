@@ -134,3 +134,61 @@ jobs:
           architecture: x64
       # execute
       - run: ./frb_internal test-dart-simple --package ${{ package }}
+
+  test_dart_web:
+    name: 'Test :: Dart :: Web'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - features: []
+          - features: [wasm-start]
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: ${{ env.FRB_MAIN_DART_VERSION }}
+          architecture: x64
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: nightly
+          target: wasm32-unknown-unknown
+          components: rust-src,rustfmt
+      - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: just install_ffigen
+
+      - name: Cache dependencies
+        id: test-cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            frb_codegen/target
+            frb_example/pure_dart/rust/target/
+            frb_example/pure_dart/dart/.local-chromium
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+      - name: Install crates
+        if: steps.test-cache.outputs.cache-hit != 'true'
+        run: |
+          sh -c "$(curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf)" '' -f
+      - name: Setup Dart dependencies
+        run: dart pub get
+        working-directory: frb_dart
+
+      - name: Run unit tests
+        run: just dart_test_web_unit
+
+      - name: Run integration tests
+        timeout-minutes: 20
+        uses: Wandalen/wretry.action@v1.0.25
+        with:
+          command: just dart_test_web_integration "${{ join(matrix.features, ',') }}"
+          current_path: frb_example/pure_dart/dart
+
