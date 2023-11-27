@@ -65,7 +65,15 @@ Future<void> generateInternalRust(GenerateConfig config) async {
 }
 
 Future<void> generateInternalBookHelp(GenerateConfig config) async {
-  await exec('cd frb_codegen && cargo run -- --help > book/src/help.txt');
+  for (final cmd in [
+    null,
+    'generate',
+    'create',
+    'integrate',
+    'build-web',
+  ]) {
+    await exec('cd frb_codegen && cargo run -- $cmd --help > book/src/generated/${cmd ?? 'main'}.txt');
+  }
   await _maybeSetExitIfChanged(config);
 }
 
