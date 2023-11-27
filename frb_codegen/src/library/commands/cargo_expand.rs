@@ -89,7 +89,9 @@ fn run_cargo_expand(rust_crate_dir: &Path, dumper: &Dumper) -> Result<String> {
 
     if stdout.is_empty() {
         if stderr.contains("no such command: `expand`") {
-            bail!("cargo expand is not installed. Please run `cargo install cargo-expand`");
+            info!("Cargo expand is not installed. Automatically install and re-run.");
+            install_cargo_expand()?;
+            return run_cargo_expand(rust_crate_dir, dumper);
         }
         bail!("cargo expand returned empty output");
     }
@@ -101,6 +103,10 @@ fn run_cargo_expand(rust_crate_dir: &Path, dumper: &Dumper) -> Result<String> {
     dumper.dump_str(ConfigDumpContent::Source, "cargo_expand.rs", &ans)?;
 
     Ok(ans)
+}
+
+fn install_cargo_expand() -> Result<()> {
+    TODO
 }
 
 #[cfg(test)]
