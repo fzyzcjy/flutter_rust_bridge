@@ -40,8 +40,7 @@ Future<void> generateInternal(GenerateConfig config) async {
 }
 
 Future<void> generateInternalDartSource(GenerateConfig config) async {
-  TODO;
-  '''
+  await exec('''
     #!/usr/bin/env bash
     set -euxo pipefail
 
@@ -51,8 +50,8 @@ Future<void> generateInternalDartSource(GenerateConfig config) async {
     cd ..
     cp -rf ./sdk/runtime/include/* ./frb_rust/src/dart_api/
     rm -r sdk
-    git diff --exit-code
-  ''';
+  ''');
+  await _maybeSetExitIfChanged(config);
 }
 
 Future<void> generateRunFrbCodegen(GenerateConfig config) async {
