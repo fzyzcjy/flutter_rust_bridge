@@ -137,7 +137,7 @@ jobs:
           sdk: stable
           architecture: x64
       # execute
-      - run: ./frb_internal test-dart-simple --package ${{ package }}
+      - run: ./frb_internal test-dart-simple --package ${{ matrix.package }}
 
   test_dart_web:
     name: 'Test :: Dart :: Web'
