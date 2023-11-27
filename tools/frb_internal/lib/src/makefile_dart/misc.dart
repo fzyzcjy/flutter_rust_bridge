@@ -28,6 +28,14 @@ const kDartPackages = [
   ...kDartExamplePackages,
 ];
 
+enum DartMode { dart, flutter }
+
+const kDartModeOfPackage = {
+  'frb_example/dart_minimal': DartMode.dart,
+  'frb_example/pure_dart': DartMode.dart,
+  // TODO `with_flutter` example
+};
+
 final exec = SimpleExecutor(
   env: {
     'CARGO_TERM_COLOR': 'always',
