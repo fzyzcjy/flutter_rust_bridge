@@ -85,11 +85,6 @@ Future<void> generateRunFrbCodegen(GenerateConfig config) async {
 
 /// Run flutter_rust_bridge_codegen's `generate` subcommand
 Future<void> generateRunFrbCodegenCommandGenerate(GenerateConfig config, String package) async {
-  // TODO should auto do all these
-  // TODO('just install_ffigen_dependency');
-  // TODO('just dart_pub_get');
-  // TODO('just install_expand');
-
   await exec('cd $package && cargo run --manifest-path ${exec.pwd}/frb_codegen -- generate');
   await _maybeSetExitIfChanged(config);
 }
