@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'entrypoint.dart';
+part of 'lint.dart';
 
 // **************************************************************************
 // CliGenerator

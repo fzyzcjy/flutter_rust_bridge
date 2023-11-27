@@ -1,31 +1,11 @@
-/// Similar to `makefile`/`justfile`/..., but based on Dart
-/// (Why not directly use justfile: Because want more flexible grammar, such as for loops)
-library;
-
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 
-part 'entrypoint.g.dart';
-
-const _kRustPackages = <String>[
-  'frb_rust',
-  'frb_codegen',
-  'frb_example/dart_minimal/rust',
-  'frb_example/pure_dart/rust',
-  // TODO `with_flutter` example
-];
-
-const _kDartPackages = <String>[
-  'frb_dart',
-  'frb_example/dart_minimal',
-  'frb_example/pure_dart',
-  // TODO `with_flutter` example
-  'frb_utils',
-  'tools/frb_internal',
-];
+part 'lint.g.dart';
 
 List<Command<void>> createCommands() {
   return [
@@ -59,7 +39,7 @@ Future<void> lint(LintConfig config) async {
 }
 
 Future<void> lintRust(LintConfig config) async {
-  for (final package in _kRustPackages) {
+  for (final package in kRustPackages) {
     await lintRustMain(config, package);
   }
   await lintRustWasm(config);
@@ -78,7 +58,7 @@ Future<void> lintRustWasm(LintConfig config) async {
 
 Future<void> lintDart(LintConfig config) async {
   // await dartPubGet();
-  for (final package in _kDartPackages) {
+  for (final package in kDartPackages) {
     await lintDartMain(config, package);
   }
   await lintDartPana(config);
@@ -98,7 +78,7 @@ Future<void> lintDartPana(LintConfig config) async {
 }
 
 Future<void> dartPubGet() async {
-  for (final package in _kDartPackages) {
+  for (final package in kDartPackages) {
     // TODO `with_flutter` is `flutter pub get`
     await _exec('cd $package && dart pub get');
   }
