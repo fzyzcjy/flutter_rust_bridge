@@ -35,7 +35,7 @@ impl CachedCargoExpand {
 
         let expanded = match self.cache.entry(rust_crate_dir.to_owned()) {
             Occupied(entry) => entry.into_mut(),
-            Vacant(entry) => entry.insert(run_cargo_expand(rust_crate_dir, dumper)?),
+            Vacant(entry) => entry.insert(run_cargo_expand(rust_crate_dir, dumper, true)?),
         };
 
         extract_module(expanded, module)
@@ -73,7 +73,11 @@ fn extract_module(raw_expanded: &str, module: Option<String>) -> Result<String> 
     Ok(raw_expanded.to_owned())
 }
 
-fn run_cargo_expand(rust_crate_dir: &Path, dumper: &Dumper) -> Result<String> {
+fn run_cargo_expand(
+    rust_crate_dir: &Path,
+    dumper: &Dumper,
+    allow_auto_install: bool,
+) -> Result<String> {
     info!("Running cargo expand in '{rust_crate_dir:?}'");
     let args = vec![
         PathBuf::from("expand"),
@@ -91,7 +95,7 @@ fn run_cargo_expand(rust_crate_dir: &Path, dumper: &Dumper) -> Result<String> {
         if stderr.contains("no such command: `expand`") {
             info!("Cargo expand is not installed. Automatically install and re-run.");
             install_cargo_expand()?;
-            return run_cargo_expand(rust_crate_dir, dumper);
+            return run_cargo_expand(rust_crate_dir, dumper, false);
         }
         bail!("cargo expand returned empty output");
     }
