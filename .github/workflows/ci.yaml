@@ -160,9 +160,6 @@ jobs:
           toolchain: nightly
           target: wasm32-unknown-unknown
           components: rust-src,rustfmt
-
-      - run: just install_ffigen
-
       - name: Cache dependencies
         id: test-cache
         uses: actions/cache@v3
