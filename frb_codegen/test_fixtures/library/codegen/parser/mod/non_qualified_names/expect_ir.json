@@ -43,8 +43,7 @@
         "safe_ident": "unit",
         "type": "Primitive"
       },
-      "owner": "Function",
-      "src_lineno": 5
+      "owner": "Function"
     },
     {
       "comments": [],
@@ -61,8 +60,7 @@
         "safe_ident": "i_32",
         "type": "Primitive"
       },
-      "owner": "Function",
-      "src_lineno": 6
+      "owner": "Function"
     }
   ],
   "has_executor": false,

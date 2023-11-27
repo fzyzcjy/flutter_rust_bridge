@@ -122,8 +122,7 @@
         "safe_ident": "unit",
         "type": "Primitive"
       },
-      "owner": "Function",
-      "src_lineno": 12
+      "owner": "Function"
     },
     {
       "comments": [],
@@ -161,8 +160,7 @@
         "safe_ident": "unit",
         "type": "Primitive"
       },
-      "owner": "Function",
-      "src_lineno": 11
+      "owner": "Function"
     },
     {
       "comments": [],
@@ -200,8 +198,7 @@
         "safe_ident": "unit",
         "type": "Primitive"
       },
-      "owner": "Function",
-      "src_lineno": 9
+      "owner": "Function"
     },
     {
       "comments": [],
@@ -239,8 +236,7 @@
         "safe_ident": "unit",
         "type": "Primitive"
       },
-      "owner": "Function",
-      "src_lineno": 7
+      "owner": "Function"
     },
     {
       "comments": [],
@@ -278,8 +274,7 @@
         "safe_ident": "unit",
         "type": "Primitive"
       },
-      "owner": "Function",
-      "src_lineno": 8
+      "owner": "Function"
     }
   ],
   "has_executor": false,

@@ -13,6 +13,8 @@ pub struct IrFunc {
     pub owner: IrFuncOwnerInfo,
     pub mode: IrFuncMode,
     pub comments: Vec<IrComment>,
+    // Currently, we use serde only for tests. Since lineno can be unstable, we skip this field for comparison
+    #[serde(skip_serializing)]
     pub src_lineno: usize,
 }
 
