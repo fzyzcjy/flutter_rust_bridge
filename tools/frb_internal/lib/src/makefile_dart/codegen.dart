@@ -7,7 +7,9 @@ part 'codegen.g.dart';
 
 List<Command<void>> createCommands() {
   return [
+    SimpleConfigCommand('codegen', codegen, _$populateCodegenConfigParser, _$parseCodegenConfigResult),
     SimpleConfigCommand('codegen-internal', codegenInternal, _$populateCodegenConfigParser, _$parseCodegenConfigResult),
+    SimpleConfigCommand('codegen-main', codegenMain, _$populateCodegenConfigParser, _$parseCodegenConfigResult),
   ];
 }
 
@@ -21,9 +23,18 @@ class CodegenConfig {
   });
 }
 
+Future<void> codegen(CodegenConfig config) async {
+  await codegenInternal(config);
+  await codegenMain(config);
+}
+
 Future<void> codegenInternal(CodegenConfig config) async {
   await generator.generate();
   _maybeSetExitIfChanged(config);
+}
+
+Future<void> codegenMain(CodegenConfig config) async {
+  TODO;
 }
 
 void _maybeSetExitIfChanged(CodegenConfig config) {
