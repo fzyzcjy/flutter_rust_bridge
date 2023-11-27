@@ -40,7 +40,7 @@ jobs:
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt, clippy
-      - run: ./frb_internal lint_rust
+      - run: ./frb_internal lint-rust
 
   lint_dart:
     name: 'Lint :: Dart'
@@ -53,4 +53,4 @@ jobs:
           cache: true
           channel: "stable"
           sdk: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
-      - run: ./frb_internal lint_dart
+      - run: ./frb_internal lint-dart
