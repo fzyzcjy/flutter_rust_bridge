@@ -51,13 +51,6 @@ dart_test_web_integration features="":
       -c ../rust --dart-input lib/main.web.dart --root web/ --run-tests \
       --features={{features}}
 
-dart_test_vm_service:
-    cd frb_example/pure_dart/rust && cargo build --verbose
-    # NOTE: rm `--define=ENABLE_FRB_FFI_TEST_TOOL=true`
-    dart run --enable-vm-service \
-      frb_example/pure_dart/dart/lib/main_with_vm_service.dart \
-      target/debug/libflutter_rust_bridge_example_pure_dart.so
-
 dart_test_valgrind name:
     just _dart_test_raw {{name}} "PYTHONUNBUFFERED=1 ./valgrind_util.py"
 
