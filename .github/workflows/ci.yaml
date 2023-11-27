@@ -135,7 +135,7 @@ jobs:
         with:
           toolchain: ${{ matrix.image_and_version.version }}
           components: rustfmt
-      # TODO cache
+      # TODO cache (for rust-toolchain, also for cargo build)
       - uses: dart-lang/setup-dart@v1
         with:
           sdk: ${{ env.FRB_MAIN_DART_VERSION }}
