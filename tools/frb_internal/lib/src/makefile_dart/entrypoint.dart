@@ -6,52 +6,52 @@ import 'package:flutter_rust_bridge_internal/src/utils/execute_process.dart';
 const _kRustPackages = <String>[TODO];
 const _kDartPackages = <String>[TODO];
 
-Future<void> lint() async {
-  await lintRust();
-  await lintDart();
+class LintConfig {
+  final bool fix;
+
+  const LintConfig({
+    required this.fix,
+  });
 }
 
-Future<void> lintRust() async {
+Future<void> lint(LintConfig config) async {
+  await lintRust(config);
+  await lintDart(config);
+}
+
+Future<void> lintRust(LintConfig config) async {
   for (final package in _kRustPackages) {
-    await lintRustMain();
+    await lintRustMain(config);
   }
-  await lintRustWasm();
+  await lintRustWasm(config);
 }
 
-Future<void> lintRustMain() async {
-  await execute('cargo fmt'
-      '{{ if mode == "fix" { "" } else { "--check" } }}');
-  await execute('cargo clippy '
-      '{{ if mode == "fix" { "--fix" } else { "" } }} '
-      '-- -D warnings');
+Future<void> lintRustMain(LintConfig config) async {
+  await execute('cargo fmt ${config.fix ? "" : "--check"}');
+  await execute('cargo clippy ${config.fix ? "--fix" : ""} -- -D warnings');
 }
 
-Future<void> lintRustWasm() async {
+Future<void> lintRustWasm(LintConfig config) async {
   await execute('rustup target add wasm32-unknown-unknown');
-  await execute('cd frb_rust && '
-      'cargo clippy --target wasm32-unknown-unknown '
-      '{{ if mode == "fix" { "--fix" } else { "" } }} '
-      '-- -D warnings');
+  await execute(
+      'cd frb_rust && cargo clippy --target wasm32-unknown-unknown ${config.fix ? "--fix" : ""} -- -D warnings');
 }
 
-Future<void> lintDart() async {
+Future<void> lintDart(LintConfig config) async {
   await dartPubGet();
   for (final package in _kDartPackages) {
-    await lintDartMain();
+    await lintDartMain(config);
   }
-  await lintDartPana();
+  await lintDartPana(config);
 }
 
-Future<void> lintDartMain() async {
+Future<void> lintDartMain(LintConfig config) async {
   execute('cd $directory && dart format '
-      '--line-length $line_length '
-      '{{ if mode == "fix" { "--fix" } else { "--output=none --set-exit-if-changed" } }} '
-      '.');
-
-  execute('cd {{directory}} && {{executable}} analyze --fatal-infos');
+      '--line-length $line_length ${config.fix ? "--fix" : "--output=none --set-exit-if-changed"}');
+  execute('cd $directory && $executable analyze --fatal-infos');
 }
 
-Future<void> lintDartPana() async {
+Future<void> lintDartPana(LintConfig config) async {
   await execute('flutter pub global activate pana');
   await execute('cd frb_dart && $pana --no-warning --line-length 80 --exit-code-threshold 0');
 }
