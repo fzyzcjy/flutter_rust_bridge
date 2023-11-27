@@ -85,8 +85,7 @@ jobs:
           flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
       # execute
-      - run: ./frb_internal generate-run-frb-codegen
-      # TODO check no diff
+      - run: ./frb_internal generate-run-frb-codegen --set-exit-if-changed
 
   codegen_internal:
     name: 'Generate :: Internal'
@@ -101,8 +100,7 @@ jobs:
           flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
       # execute
-      - run: ./frb_internal generate-internal
-      # TODO check no diff
+      - run: ./frb_internal generate-internal --set-exit-if-changed
 
   # ----------------------------------- test -----------------------------------
 
