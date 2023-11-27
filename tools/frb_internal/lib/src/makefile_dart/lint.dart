@@ -25,22 +25,6 @@ class LintConfig {
   });
 }
 
-@CliOptions()
-class LintDartFormatConfig {
-  @CliOption(
-    // To match normal behavior
-    defaultsTo: true,
-  )
-  final bool fix;
-
-  final String package;
-
-  const LintDartFormatConfig({
-    required this.fix,
-    required this.package,
-  });
-}
-
 Future<void> lint(LintConfig config) async {
   await lintRust(config);
   await lintDart(config);
@@ -66,21 +50,23 @@ Future<void> lintRustWasm(LintConfig config) async {
 
 Future<void> lintDart(LintConfig config) async {
   // await dartPubGet();
-  for (final package in kDartPackages) {
-    await lintDartFormat(LintDartFormatConfig(fix: config.fix, package: package));
-    await lintDartAnalyze(config, package);
-  }
+  await lintDartFormat(config);
+  await lintDartAnalyze(config);
   await lintDartPana(config);
 }
 
-Future<void> lintDartFormat(LintDartFormatConfig config) async {
-  final lineLength = config.package == 'frb_dart' ? 80 : 120;
-  await exec('dart format --line-length $lineLength ${config.fix ? "" : "--set-exit-if-changed"} .',
-      relativePwd: config.package);
+Future<void> lintDartFormat(LintConfig config) async {
+  for (final package in kDartPackages) {
+    final lineLength = package == 'frb_dart' ? 80 : 120;
+    await exec('dart format --line-length $lineLength ${config.fix ? "" : "--set-exit-if-changed"} .',
+        relativePwd: package);
+  }
 }
 
-Future<void> lintDartAnalyze(LintConfig config, String package) async {
-  await exec('dart analyze --fatal-infos', relativePwd: package);
+Future<void> lintDartAnalyze(LintConfig config) async {
+  for (final package in kDartPackages) {
+    await exec('dart analyze --fatal-infos', relativePwd: package);
+  }
 }
 
 Future<void> lintDartPana(LintConfig config) async {
