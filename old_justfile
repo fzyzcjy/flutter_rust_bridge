@@ -75,14 +75,6 @@ clean:
     cd {{dir_example_with_flutter}} && flutter clean
     cargo clean
 
-normalize_pubspec_lock:
-    just _normalize_pubspec_lock_one frb_example/pure_dart/dart/pubspec.lock
-    just _normalize_pubspec_lock_one frb_example/pure_dart_multi/dart/pubspec.lock
-    just _normalize_pubspec_lock_one frb_example/with_flutter/pubspec.lock
-
-_normalize_pubspec_lock_one path:
-    {{sed}} -e 's/pub.flutter-io.cn/pub.dev/g' {{path}}
-
 serve *args:
     cd {{invocation_directory()}} && dart run {{justfile_directory()}}/frb_dart/bin/serve.dart {{args}}
 
