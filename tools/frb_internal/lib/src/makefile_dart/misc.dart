@@ -42,7 +42,7 @@ final exec = SimpleExecutor(
     'CARGO_TERM_COLOR': 'always',
   },
   // Use project root directory
-  pwd: Directory.current.parent.parent.path,
+  pwd: Directory.current.parent.parent.uri.toFilePath(),
 );
 
 /// Normally, `dart pub get` will be run automatically when executing `dart test` and so on.
