@@ -4,8 +4,13 @@ import 'package:args/command_runner.dart';
 // ignore: implementation_imports
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 
-Future<void> execute(String command) async {
-  await runCommand('/bin/bash', ['-c', command]);
+class SimpleExecutor {
+  final Map<String, String>? env;
+  final String? pwd;
+
+  const SimpleExecutor({this.env, this.pwd});
+
+  Future<void> call(String command) async => await runCommand('/bin/bash', ['-c', command], env: env, pwd: pwd);
 }
 
 extension ExtCommandRunner<T> on CommandRunner<T> {
