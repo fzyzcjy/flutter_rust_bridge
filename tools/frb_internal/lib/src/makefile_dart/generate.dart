@@ -35,6 +35,8 @@ Future<void> generate(GenerateConfig config) async {
 Future<void> generateInternal(GenerateConfig config) async {
   await generateInternalFrbExamplePureDart(config);
   await generateInternalDartSource(config);
+  generate_ffigen();
+  generate_book_help();
 }
 
 Future<void> generateInternalFrbExamplePureDart(GenerateConfig config) async {
@@ -69,9 +71,7 @@ Future<void> generateRunFrbCodegenCommandGenerate(GenerateConfig config, String 
   // TODO('just install_ffigen_dependency');
   // TODO('just dart_pub_get');
   // TODO('just install_expand');
-  generate_ffigen();
   generate_bridge();
-  generate_book_help();
   await _maybeSetExitIfChanged(config);
 }
 
