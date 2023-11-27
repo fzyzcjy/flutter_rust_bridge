@@ -9,10 +9,10 @@ part 'test.g.dart';
 
 List<Command<void>> createCommands() {
   return [
-    SimpleConfigCommand('test', test, _$populateTestConfigParser, _$parseTestConfigResult),
     SimpleConfigCommand('test-rust', testRust, _$populateTestConfigParser, _$parseTestConfigResult),
-    SimpleConfigCommand('test-dart-native', testDartNative, _$populateTestConfigParser, _$parseTestConfigResult),
-    SimpleConfigCommand('test-dart-web', testDartWeb, _$populateTestConfigParser, _$parseTestConfigResult),
+    SimpleConfigCommand(
+        'test-dart-native', testDartNative, _$populateTestDartConfigParser, _$parseTestDartConfigResult),
+    SimpleConfigCommand('test-dart-web', testDartWeb, _$populateTestDartConfigParser, _$parseTestDartConfigResult),
   ];
 }
 
@@ -21,20 +21,21 @@ class TestConfig {
   const TestConfig();
 }
 
-Future<void> test(TestConfig config) async {
-  await testRust(config);
-  await testDartNative(config);
-  await testDartWeb(config);
+@CliOptions()
+class TestDartConfig {
+  final String package;
+
+  const TestDartConfig({required this.package});
 }
 
 Future<void> testRust(TestConfig config) async {
   TODO;
 }
 
-Future<void> testDartNative(TestConfig config) async {
+Future<void> testDartNative(TestDartConfig config) async {
   TODO;
 }
 
-Future<void> testDartWeb(TestConfig config) async {
+Future<void> testDartWeb(TestDartConfig config) async {
   TODO;
 }

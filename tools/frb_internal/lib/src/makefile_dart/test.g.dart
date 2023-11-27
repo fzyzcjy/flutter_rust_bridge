@@ -16,3 +16,19 @@ TestConfig parseTestConfig(List<String> args) {
   final result = _$parserForTestConfig.parse(args);
   return _$parseTestConfigResult(result);
 }
+
+TestDartConfig _$parseTestDartConfigResult(ArgResults result) => TestDartConfig(
+      package: result['package'] as String,
+    );
+
+ArgParser _$populateTestDartConfigParser(ArgParser parser) => parser
+  ..addOption(
+    'package',
+  );
+
+final _$parserForTestDartConfig = _$populateTestDartConfigParser(ArgParser());
+
+TestDartConfig parseTestDartConfig(List<String> args) {
+  final result = _$parserForTestDartConfig.parse(args);
+  return _$parseTestDartConfigResult(result);
+}
