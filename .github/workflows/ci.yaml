@@ -15,6 +15,7 @@ env:
   CARGO_TERM_COLOR: always
   FRB_MAIN_RUST_VERSION: 1.70.0
   FRB_MAIN_DART_VERSION: 3.2.0
+  FRB_MAIN_FLUTTER_VERSION: 3.17.0
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -51,5 +52,5 @@ jobs:
         with:
           cache: true
           channel: "stable"
-          flutter-version: 3.13.6
+          sdk: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
       - run: ./frb_internal lint_dart
