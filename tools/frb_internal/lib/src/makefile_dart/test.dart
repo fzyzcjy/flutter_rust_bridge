@@ -1,7 +1,5 @@
 import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
-import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/generator.dart'
-    as frb_example_pure_dart_generator;
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 
@@ -44,18 +42,17 @@ Future<void> testDartNative(TestDartConfig config) async {
 }
 
 Future<void> testDartWeb(TestDartConfig config) async {
-  TODO;
-  '''
-  dart_test_web_unit:
-    cd frb_dart && dart test -p chrome test/*.dart
-  ''';
-
-  TODO;
-  '''
+  final package = config.package;
+  if (package == 'frb_dart') {
+    await exec('cd $package && dart test -p chrome');
+  } else {
+    TODO;
+    '''
   dart_test_web_integration features="":
     cd {{dir_example_pure_dart}}/dart && dart run \
       ../../../frb_dart/bin/serve.dart \
       -c ../rust --dart-input lib/main.web.dart --root web/ --run-tests \
       --features={{features}}
   ''';
+  }
 }
