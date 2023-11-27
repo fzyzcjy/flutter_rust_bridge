@@ -29,15 +29,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: 3.0.0
+          architecture: x64
       - id: rust-toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt, clippy
-      - uses: extractions/setup-just@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: just lint_rust
+      - run: ./frb_internal lint_rust
 
   lint_dart:
     name: 'Lint :: Dart'
@@ -50,7 +51,4 @@ jobs:
           cache: true
           channel: "stable"
           flutter-version: 3.13.6
-      - uses: extractions/setup-just@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: just lint_dart
+      - run: ./frb_internal lint_dart
