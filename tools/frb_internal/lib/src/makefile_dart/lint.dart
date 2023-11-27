@@ -25,6 +25,22 @@ class LintConfig {
   });
 }
 
+@CliOptions()
+class LintDartFormatConfig {
+  @CliOption(
+    // To match normal behavior
+    defaultsTo: true,
+  )
+  final bool fix;
+
+  final String package;
+
+  const LintDartFormatConfig({
+    required this.fix,
+    required this.package,
+  });
+}
+
 Future<void> lint(LintConfig config) async {
   await lintRust(config);
   await lintDart(config);
@@ -51,16 +67,16 @@ Future<void> lintRustWasm(LintConfig config) async {
 Future<void> lintDart(LintConfig config) async {
   // await dartPubGet();
   for (final package in kDartPackages) {
-    await lintDartFormat(config, package);
+    await lintDartFormat(LintDartFormatConfig(fix: config.fix, package: package));
     await lintDartAnalyze(config, package);
   }
   await lintDartPana(config);
 }
 
-Future<void> lintDartFormat(LintConfig config, String package) async {
-  final lineLength = package == 'frb_dart' ? 80 : 120;
+Future<void> lintDartFormat(LintDartFormatConfig config) async {
+  final lineLength = config.package == 'frb_dart' ? 80 : 120;
   await exec('dart format --line-length $lineLength ${config.fix ? "" : "--set-exit-if-changed"} .',
-      relativePwd: package);
+      relativePwd: config.package);
 }
 
 Future<void> lintDartAnalyze(LintConfig config, String package) async {

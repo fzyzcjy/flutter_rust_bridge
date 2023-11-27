@@ -21,3 +21,26 @@ LintConfig parseLintConfig(List<String> args) {
   final result = _$parserForLintConfig.parse(args);
   return _$parseLintConfigResult(result);
 }
+
+LintDartFormatConfig _$parseLintDartFormatConfigResult(ArgResults result) =>
+    LintDartFormatConfig(
+      fix: result['fix'] as bool,
+      package: result['package'] as String,
+    );
+
+ArgParser _$populateLintDartFormatConfigParser(ArgParser parser) => parser
+  ..addFlag(
+    'fix',
+    defaultsTo: true,
+  )
+  ..addOption(
+    'package',
+  );
+
+final _$parserForLintDartFormatConfig =
+    _$populateLintDartFormatConfigParser(ArgParser());
+
+LintDartFormatConfig parseLintDartFormatConfig(List<String> args) {
+  final result = _$parserForLintDartFormatConfig.parse(args);
+  return _$parseLintDartFormatConfigResult(result);
+}
