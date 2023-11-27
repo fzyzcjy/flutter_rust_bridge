@@ -13,8 +13,11 @@ List<Command<void>> createCommands() {
         _$parseGenerateConfigResult),
     SimpleConfigCommand('generate-internal', generateInternal,
         _$populateGenerateConfigParser, _$parseGenerateConfigResult),
-    SimpleConfigCommand('generate-run-frb-codegen', generateRunFrbCodegen,
-        _$populateGenerateConfigParser, _$parseGenerateConfigResult),
+    SimpleConfigCommand(
+        'generate-run-frb-codegen',
+        generateRunFrbCodegen,
+        _$populateGeneratePackageConfigParser,
+        _$parseGeneratePackageConfigResult),
   ];
 }
 
@@ -25,6 +28,19 @@ class GenerateConfig {
 
   const GenerateConfig({
     required this.setExitIfChanged,
+  });
+}
+
+@CliOptions()
+class GeneratePackageConfig implements GenerateConfig {
+  @override
+  @CliOption(defaultsTo: false)
+  final bool setExitIfChanged;
+  final String package;
+
+  const GeneratePackageConfig({
+    required this.setExitIfChanged,
+    required this.package,
   });
 }
 
@@ -95,20 +111,12 @@ Future<void> generateInternalBuildRunner(GenerateConfig config) async {
   });
 }
 
-Future<void> generateRunFrbCodegen(GenerateConfig config) async {
-  for (final package in kDartExamplePackages) {
-    await generateRunFrbCodegenCommandGenerate(config, package);
-  }
-}
-
-/// Run flutter_rust_bridge_codegen's `generate` subcommand
-Future<void> generateRunFrbCodegenCommandGenerate(
-    GenerateConfig config, String package) async {
+Future<void> generateRunFrbCodegen(GeneratePackageConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
-    await runDartPubGetIfNotRunYet(package);
+    await runDartPubGetIfNotRunYet(config.package);
     await exec(
         'cargo run --manifest-path ${exec.pwd}/frb_codegen/Cargo.toml -- generate',
-        relativePwd: package);
+        relativePwd: config.package);
   });
 }
 

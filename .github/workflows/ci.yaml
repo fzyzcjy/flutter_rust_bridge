@@ -71,6 +71,10 @@ jobs:
           - macos-11
           - windows-2019
           - ubuntu-20.04
+        package:
+          - frb_example/dart_minimal
+          - frb_example/pure_dart
+          # TODO with_flutter
 
     steps:
       # setup
@@ -85,7 +89,7 @@ jobs:
           flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
       # execute
-      - run: ./frb_internal generate-run-frb-codegen --set-exit-if-changed
+      - run: ./frb_internal generate-run-frb-codegen --set-exit-if-changed --package ${{ package }}
 
   generate_internal:
     name: 'Generate :: Internal'
