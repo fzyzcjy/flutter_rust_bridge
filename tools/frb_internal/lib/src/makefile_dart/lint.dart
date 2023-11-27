@@ -63,9 +63,7 @@ Future<void> lintDart(LintConfig config) async {
 
 Future<void> lintDartFormat(LintConfig config) async {
   for (final package in kDartPackages) {
-    final lineLength = package == 'frb_dart' ? 80 : 120;
-    await exec('dart format --line-length $lineLength ${config.fix ? "" : "--set-exit-if-changed"} .',
-        relativePwd: package);
+    await exec('dart format ${config.fix ? "" : "--set-exit-if-changed"} .', relativePwd: package);
   }
 }
 
