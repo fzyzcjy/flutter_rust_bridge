@@ -143,7 +143,7 @@ jobs:
       # execute
       - run: ./frb_internal test-rust
 
-  test_dart_simple:
+  test_dart_native:
     name: 'Test :: Dart :: Native'
     runs-on: ubuntu-latest
     strategy:
