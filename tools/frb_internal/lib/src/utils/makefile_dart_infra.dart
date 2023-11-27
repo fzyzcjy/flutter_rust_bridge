@@ -10,7 +10,7 @@ class SimpleExecutor {
 
   const SimpleExecutor({this.env, this.pwd});
 
-  Future<void> call(String command) async => await runCommand('/bin/bash', ['-c', command], env: env, pwd: pwd);
+  Future<void> call(String command) async => await runCommand('/bin/sh', ['-c', command], env: env, pwd: pwd);
 }
 
 extension ExtCommandRunner<T> on CommandRunner<T> {
