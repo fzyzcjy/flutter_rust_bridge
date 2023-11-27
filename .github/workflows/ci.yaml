@@ -131,7 +131,7 @@ jobs:
       - run: ./frb_internal test-rust
 
   test_dart_simple:
-    name: 'Test :: Dart :: Simple'
+    name: 'Test :: Dart :: Native'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -152,7 +152,7 @@ jobs:
           sdk: stable
           architecture: x64
       # execute
-      - run: ./frb_internal test-dart-simple --package ${{ matrix.package }}
+      - run: ./frb_internal test-dart-native --package ${{ matrix.package }}
 
   test_dart_web:
     name: 'Test :: Dart :: Web'

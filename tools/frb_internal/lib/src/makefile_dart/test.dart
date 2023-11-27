@@ -10,6 +10,9 @@ part 'test.g.dart';
 List<Command<void>> createCommands() {
   return [
     SimpleConfigCommand('test', test, _$populateTestConfigParser, _$parseTestConfigResult),
+    SimpleConfigCommand('test-rust', testRust, _$populateTestConfigParser, _$parseTestConfigResult),
+    SimpleConfigCommand('test-dart-native', testDartNative, _$populateTestConfigParser, _$parseTestConfigResult),
+    SimpleConfigCommand('test-dart-web', testDartWeb, _$populateTestConfigParser, _$parseTestConfigResult),
   ];
 }
 
@@ -19,5 +22,19 @@ class TestConfig {
 }
 
 Future<void> test(TestConfig config) async {
+  await testRust(config);
+  await testDartNative(config);
+  await testDartWeb(config);
+}
+
+Future<void> testRust(TestConfig config) async {
+  TODO;
+}
+
+Future<void> testDartNative(TestConfig config) async {
+  TODO;
+}
+
+Future<void> testDartWeb(TestConfig config) async {
   TODO;
 }
