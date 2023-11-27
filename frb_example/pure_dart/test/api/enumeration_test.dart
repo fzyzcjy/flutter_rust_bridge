@@ -38,7 +38,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     });
 
     test('dart call handleEnumParameter', () async {
-      expect(await handleEnumParameter(weekday: Weekdays.saturday), Weekdays.saturday);
+      expect(await handleEnumParameter(weekday: Weekdays.saturday),
+          Weekdays.saturday);
     });
 
     // TODO rm since sync?
@@ -47,7 +48,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     // });
 
     test('dart call handleEnumStruct', () async {
-      expect(await handleEnumStruct(val: KitchenSink_Empty()), KitchenSink_Empty());
+      expect(await handleEnumStruct(val: KitchenSink_Empty()),
+          KitchenSink_Empty());
       expect(
         await handleEnumStruct(
           val: KitchenSink_Primitives(int32: 0, float64: 1, boolean: false),
@@ -67,7 +69,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         KitchenSink_Enums(Weekdays.tuesday),
       );
       expect(
-        await handleEnumStruct(val: const KitchenSink.nested(0, KitchenSink.empty())),
+        await handleEnumStruct(
+            val: const KitchenSink.nested(0, KitchenSink.empty())),
         const KitchenSink.nested(1, KitchenSink.empty()),
       );
     });
@@ -81,10 +84,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
         await multiplyByTen(measure: Measure.speed(Speed_Unknown())),
         null,
       );
-      final skipMinified = releaseMode ? skipWeb('Minified names cannot be compared.') : null;
+      final skipMinified =
+          releaseMode ? skipWeb('Minified names cannot be compared.') : null;
       expect((Speed_Unknown).toString(), 'Speed_Unknown', skip: skipMinified);
       expect((Speed_GPS).toString(), 'Speed_GPS', skip: skipMinified);
-      expect((Distance_Unknown).toString(), 'Distance_Unknown', skip: skipMinified);
+      expect((Distance_Unknown).toString(), 'Distance_Unknown',
+          skip: skipMinified);
       expect((Distance_Map).toString(), 'Distance_Map', skip: skipMinified);
     });
   });

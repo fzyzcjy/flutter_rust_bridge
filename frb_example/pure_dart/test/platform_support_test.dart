@@ -24,7 +24,8 @@ void main() {
 }
 
 class MatchBigInt extends CustomMatcher {
-  MatchBigInt(dynamic matcher) : super("is a numeric", "value", _featureValueOf(matcher));
+  MatchBigInt(dynamic matcher)
+      : super("is a numeric", "value", _featureValueOf(matcher));
 
   @override
   Object? featureValueOf(actual) => _featureValueOf(actual);

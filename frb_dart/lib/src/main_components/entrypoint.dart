@@ -15,7 +15,8 @@ import 'package:meta/meta.dart';
 /// This class is like "service locator" (e.g. the get_it package) for all services related to flutter_rust_bridge.
 ///
 /// This should be a singleton per flutter_rust_bridge usage (enforced via generated subclass code).
-abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl, W extends BaseWire> {
+abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
+    W extends BaseWire> {
   /// Whether the system has been initialized.
   bool get initialized => __state != null;
 
@@ -27,7 +28,9 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl, W exten
   @internal
   NativePortType get dropPort => _state.dropPortManager.dropPort;
 
-  _EntrypointState<A> get _state => __state ?? (throw StateError('flutter_rust_bridge has not been initialized'));
+  _EntrypointState<A> get _state =>
+      __state ??
+      (throw StateError('flutter_rust_bridge has not been initialized'));
   _EntrypointState<A>? __state;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
@@ -37,12 +40,15 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl, W exten
     BaseHandler? handler,
     ExternalLibrary? externalLibrary,
   }) async {
-    if (__state != null) throw StateError('Should not initialize flutter_rust_bridge twice');
+    if (__state != null)
+      throw StateError('Should not initialize flutter_rust_bridge twice');
 
     externalLibrary ??= await _loadDefaultExternalLibrary();
-    final generalizedFrbRustBinding = GeneralizedFrbRustBinding(externalLibrary);
+    final generalizedFrbRustBinding =
+        GeneralizedFrbRustBinding(externalLibrary);
     final dropPortManager = DropPortManager(generalizedFrbRustBinding);
-    api ??= _createDefaultApi(handler, generalizedFrbRustBinding, dropPortManager, externalLibrary);
+    api ??= _createDefaultApi(
+        handler, generalizedFrbRustBinding, dropPortManager, externalLibrary);
 
     __state = _EntrypointState(
       generalizedFrbRustBinding: generalizedFrbRustBinding,
@@ -106,7 +112,8 @@ class _EntrypointState<A extends BaseApi> {
   }
 }
 
-void _setUpRustToDartCommunication(GeneralizedFrbRustBinding generalizedFrbRustBinding) {
+void _setUpRustToDartCommunication(
+    GeneralizedFrbRustBinding generalizedFrbRustBinding) {
   generalizedFrbRustBinding.storeDartPostCObject();
 }
 

@@ -29,7 +29,8 @@ abstract class Channel {
   factory Channel.messageChannel() = _MessageChannelWrapper;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  factory Channel.broadcastChannel(String channelName) = _BroadcastChannelWrapper;
+  factory Channel.broadcastChannel(String channelName) =
+      _BroadcastChannelWrapper;
 }
 
 class _MessageChannelWrapper implements Channel {
@@ -45,7 +46,8 @@ class _MessageChannelWrapper implements Channel {
 class _BroadcastChannelWrapper implements Channel {
   final BroadcastChannel channel;
 
-  _BroadcastChannelWrapper(String channelName) : channel = BroadcastChannel(channelName);
+  _BroadcastChannelWrapper(String channelName)
+      : channel = BroadcastChannel(channelName);
 
   @override
   SendPort get sendPort => PortLike.broadcastChannel(channel);
@@ -60,7 +62,8 @@ class RawReceivePort {
   final Channel channel;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  RawReceivePort([Channel? channel]) : channel = channel ?? Channel.messageChannel();
+  RawReceivePort([Channel? channel])
+      : channel = channel ?? Channel.messageChannel();
 
   set handler(Function(dynamic) handler) {
     receivePort.onMessage.listen((event) => handler(event.data));
@@ -109,7 +112,8 @@ class ReceivePort extends Stream<dynamic> {
 }
 
 /// {@macro flutter_rust_bridge.internal}
-ReceivePort broadcastPort(String channelName) => ReceivePort(RawReceivePort(Channel.broadcastChannel(channelName)));
+ReceivePort broadcastPort(String channelName) =>
+    ReceivePort(RawReceivePort(Channel.broadcastChannel(channelName)));
 
 /// [html.MessagePort]'s interface.
 abstract class PortLike extends EventTarget {
@@ -117,7 +121,8 @@ abstract class PortLike extends EventTarget {
   factory PortLike.messagePort(html.MessagePort port) = _MessagePortWrapper;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  factory PortLike.broadcastChannel(BroadcastChannel channel) = _BroadcastPortWrapper;
+  factory PortLike.broadcastChannel(BroadcastChannel channel) =
+      _BroadcastPortWrapper;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void postMessage(Object? value);
@@ -132,11 +137,13 @@ abstract class PortLike extends EventTarget {
 /// Delegates a subset of PortLike methods verbatim.
 abstract class _DelegatedPort implements PortLike {
   @override
-  void addEventListener(String type, html.EventListener? listener, [bool? useCapture]) =>
+  void addEventListener(String type, html.EventListener? listener,
+          [bool? useCapture]) =>
       nativePort.addEventListener(type, listener, useCapture);
 
   @override
-  void removeEventListener(String type, html.EventListener? listener, [bool? useCapture]) =>
+  void removeEventListener(String type, html.EventListener? listener,
+          [bool? useCapture]) =>
       nativePort.removeEventListener(type, listener, useCapture);
 
   @override
@@ -156,7 +163,8 @@ class _MessagePortWrapper extends _DelegatedPort {
   _MessagePortWrapper(this.nativePort);
 
   @override
-  void postMessage(message, [List<Object>? transfer]) => nativePort.postMessage(message, transfer);
+  void postMessage(message, [List<Object>? transfer]) =>
+      nativePort.postMessage(message, transfer);
 }
 
 class _BroadcastPortWrapper extends _DelegatedPort {

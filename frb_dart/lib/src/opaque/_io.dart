@@ -17,6 +17,7 @@ class FrbOpaqueBase implements ffi.Finalizable {
   static bool isStalePtr(PlatformPointer ptr) => ptr.address == 0;
 
   /// {@macro flutter_rust_bridge.internal}
-  static void finalizerAttach(FrbOpaqueBase opaque, PlatformPointer ptr, int size, OpaqueTypeFinalizer finalizer) =>
+  static void finalizerAttach(FrbOpaqueBase opaque, PlatformPointer ptr,
+          int size, OpaqueTypeFinalizer finalizer) =>
       finalizer.attach(opaque, ptr, detach: opaque, externalSize: size);
 }

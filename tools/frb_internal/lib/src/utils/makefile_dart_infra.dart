@@ -12,7 +12,8 @@ class SimpleExecutor {
 
   const SimpleExecutor({this.env, this.pwd});
 
-  Future<void> call(String cmd, {String? relativePwd, Map<String, String>? extraEnv}) async {
+  Future<void> call(String cmd,
+      {String? relativePwd, Map<String, String>? extraEnv}) async {
     final String command;
     final List<String> args;
     if (Platform.isWindows) {

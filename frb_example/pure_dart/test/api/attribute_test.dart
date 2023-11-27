@@ -6,7 +6,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('dart check that non-final field is modifiable', () {
-    var customized = Customized(finalField: "finalField", nonFinalField: "nonFinalField");
+    var customized =
+        Customized(finalField: "finalField", nonFinalField: "nonFinalField");
     expect(customized.nonFinalField, "nonFinalField");
     customized.nonFinalField = "changed";
     expect(customized.nonFinalField, "changed");

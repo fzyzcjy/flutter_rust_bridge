@@ -39,8 +39,10 @@ abstract class BaseTask<S, E extends Object> {
   });
 
   /// Arguments to be passed into the function call, provided in the format of a [Map]
-  Map<String, dynamic> get argMap => Map.fromEntries(
-      [for (var i = 0; i < constMeta.argNames.length; ++i) MapEntry(constMeta.argNames[i], argValues[i])]);
+  Map<String, dynamic> get argMap => Map.fromEntries([
+        for (var i = 0; i < constMeta.argNames.length; ++i)
+          MapEntry(constMeta.argNames[i], argValues[i])
+      ]);
 }
 
 /// A task to call FFI function.
@@ -130,7 +132,8 @@ class TaskConstMeta {
   int get hashCode => debugName.hashCode ^ Object.hashAll(argNames);
 
   @override
-  String toString() => 'TaskConstMeta{debugName: $debugName, argNames: $argNames}';
+  String toString() =>
+      'TaskConstMeta{debugName: $debugName, argNames: $argNames}';
 }
 
 bool _listEquals<T>(List<T>? a, List<T>? b) {

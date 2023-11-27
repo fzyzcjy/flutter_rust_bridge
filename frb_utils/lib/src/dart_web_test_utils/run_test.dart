@@ -15,7 +15,8 @@ import 'package:shelf_web_socket/shelf_web_socket.dart';
 const kTestResultKey = '__result__';
 
 Future<void> executeTestWeb(TestWebConfig config) async {
-  final dartRoot = await findDartPackageDirectory(path.dirname(config.entrypoint));
+  final dartRoot =
+      await findDartPackageDirectory(path.dirname(config.entrypoint));
   final webRoot = '$dartRoot/web';
   print('executeTestWeb: Pick dartRoot=$dartRoot');
 
@@ -56,7 +57,8 @@ Future<void> executeTestWeb(TestWebConfig config) async {
   browser = await _launchBrowser(baseAddr: baseAddr, headless: config.headless);
 }
 
-Handler _createWebSocketHandler({required Future<void> Function() closeBrowser}) {
+Handler _createWebSocketHandler(
+    {required Future<void> Function() closeBrowser}) {
   return webSocketHandler((channel) async {
     await for (final mes in channel.stream) {
       try {
@@ -78,7 +80,8 @@ const _kTestEntrypointHttpName = 'test_entrypoint.html';
 
 Handler _createIndexFileHandler() => (request) {
       if (request.url.path == _kTestEntrypointHttpName) {
-        return Response.ok(kTestEntrypointHtmlContent, headers: {HttpHeaders.contentTypeHeader: 'text/html'});
+        return Response.ok(kTestEntrypointHtmlContent,
+            headers: {HttpHeaders.contentTypeHeader: 'text/html'});
       }
       return Response.notFound(null);
     };
@@ -105,9 +108,11 @@ Future<Browser> _launchBrowser({
 void _configurePageLogging(Page page) {
   // https://stackoverflow.com/questions/47539043/how-to-get-all-console-messages-with-puppeteer-including-errors-csp-violations
 
-  page.onConsole.listen((e) => print('[puppeteer console] [${e.typeName}] ${e.text?.trim()}'));
+  page.onConsole.listen(
+      (e) => print('[puppeteer console] [${e.typeName}] ${e.text?.trim()}'));
 
   page.onPageCrashed.listen((_) => print('puppeteer.Page.onPageCrashed'));
-  page.onRequestFailed.listen((e) => print('puppeteer.Page.onRequestFailed $e'));
+  page.onRequestFailed
+      .listen((e) => print('puppeteer.Page.onRequestFailed $e'));
   page.onError.listen((e) => print('puppeteer.Page.onError $e'));
 }

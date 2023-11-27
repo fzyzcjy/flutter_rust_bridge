@@ -11,7 +11,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     functionWithCommentsSlashStarStarTwinNormal();
     functionWithCommentsTripleSlashMultiLineTwinNormal();
     functionWithCommentsTripleSlashSingleLineTwinNormal();
-    StructWithCommentsTwinNormal(fieldWithComments: 42).instanceMethodTwinNormal();
+    StructWithCommentsTwinNormal(fieldWithComments: 42)
+        .instanceMethodTwinNormal();
     StructWithCommentsTwinNormal.staticMethodTwinNormal();
   });
 }

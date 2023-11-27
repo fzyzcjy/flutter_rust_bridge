@@ -100,8 +100,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     final result = await testPreciseChrono();
 
-    expect(result.dt!.millisecondsSinceEpoch, datetime_1.millisecondsSinceEpoch);
-    expect(result.dt2!.millisecondsSinceEpoch, datetime_2.millisecondsSinceEpoch);
+    expect(
+        result.dt!.millisecondsSinceEpoch, datetime_1.millisecondsSinceEpoch);
+    expect(
+        result.dt2!.millisecondsSinceEpoch, datetime_2.millisecondsSinceEpoch);
     expect(result.du!.inHours, duration.inHours);
   });
 
@@ -110,8 +112,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final naive = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
     final local = DateTime.now();
     final utc = DateTime.now().toUtc();
-    final difference =
-        await howLongDoesItTake(mine: FeatureChrono(utc: utc, local: local, duration: duration, naive: naive));
+    final difference = await howLongDoesItTake(
+        mine: FeatureChrono(
+            utc: utc, local: local, duration: duration, naive: naive));
     debugPrint('$difference');
     expect(difference, isNot(Duration.zero));
   });

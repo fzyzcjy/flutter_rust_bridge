@@ -64,7 +64,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
     data.dispose();
-    await expectLater(() => runOpaque(opaque: data), throwsA(isA<PanicException>()));
+    await expectLater(
+        () => runOpaque(opaque: data), throwsA(isA<PanicException>()));
   });
 
   test('dispose before complete', () async {
@@ -80,7 +81,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
         "lifetime: \"static str\" "
         "})");
-    await expectLater(() => runOpaque(opaque: data), throwsA(isA<PanicException>()));
+    await expectLater(
+        () => runOpaque(opaque: data), throwsA(isA<PanicException>()));
   });
 
   test('create array of opaque type', () async {
@@ -96,7 +98,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
           "lifetime: \"static str\" "
           "})");
       v.dispose();
-      await expectLater(() => runOpaque(opaque: v), throwsA(isA<PanicException>()));
+      await expectLater(
+          () => runOpaque(opaque: v), throwsA(isA<PanicException>()));
     }
   });
 
@@ -141,7 +144,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \\\"static str\\\" "
         "})\"");
     (data[4] as EnumOpaque_RwLock).field0.dispose();
-    await expectLater(() => runEnumOpaque(opaque: data[4]), throwsA(isA<PanicException>()));
+    await expectLater(
+        () => runEnumOpaque(opaque: data[4]), throwsA(isA<PanicException>()));
   });
 
   test('opaque field', () async {
@@ -167,8 +171,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
     data.first.dispose();
-    await expectLater(() => runOpaque(opaque: data.first), throwsA(isA<PanicException>()));
-    await expectLater(() => runNestedOpaque(opaque: data), throwsA(isA<PanicException>()));
+    await expectLater(
+        () => runOpaque(opaque: data.first), throwsA(isA<PanicException>()));
+    await expectLater(
+        () => runNestedOpaque(opaque: data), throwsA(isA<PanicException>()));
     expect(
         await runOpaque(opaque: data.second),
         "content - Some(PrivateData "
@@ -196,7 +202,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
 
-    await expectLater(() => opaqueArrayRun(data: data), throwsA(isA<PanicException>()));
+    await expectLater(
+        () => opaqueArrayRun(data: data), throwsA(isA<PanicException>()));
     data[1].dispose();
   });
 
@@ -215,7 +222,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
 
-    await expectLater(() => opaqueVecRun(data: data), throwsA(isA<PanicException>()));
+    await expectLater(
+        () => opaqueVecRun(data: data), throwsA(isA<PanicException>()));
     data[1].dispose();
   });
 
@@ -234,7 +242,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(data.isStale(), isTrue);
 
     var data2 = await createOpaque();
-    await expectLater(() => unwrapRustOpaque(opaque: data2), throwsA(isA<AnyhowException>()));
+    await expectLater(
+        () => unwrapRustOpaque(opaque: data2), throwsA(isA<AnyhowException>()));
     expect(data2.isStale(), isFalse);
   });
 }

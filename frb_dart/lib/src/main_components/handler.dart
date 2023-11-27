@@ -15,8 +15,8 @@ class BaseHandler {
     final completer = Completer<dynamic>();
     final SendPort sendPort = singleCompletePort(completer);
     task.callFfi(sendPort.nativePort);
-    return completer.future
-        .then((dynamic raw) => _transformRust2DartMessage(raw, task.parseSuccessData, task.parseErrorData));
+    return completer.future.then((dynamic raw) => _transformRust2DartMessage(
+        raw, task.parseSuccessData, task.parseErrorData));
   }
 
   /// Similar to [executeNormal], except that this will return synchronously
@@ -29,7 +29,8 @@ class BaseHandler {
     }
     try {
       final syncReturnAsDartObject = wireSyncReturnIntoDart(syncReturn);
-      return _transformRust2DartMessage(syncReturnAsDartObject, task.parseSuccessData, task.parseErrorData);
+      return _transformRust2DartMessage(
+          syncReturnAsDartObject, task.parseSuccessData, task.parseErrorData);
     } finally {
       task.apiImpl.generalizedFrbRustBinding.freeWireSyncReturn(syncReturn);
     }
@@ -37,14 +38,16 @@ class BaseHandler {
 
   /// Similar to [executeNormal], except that this will return a [Stream] instead of a [Future].
   Stream<S> executeStream<S, E extends Object>(StreamTask<S, E> task) async* {
-    final portName = ExecuteStreamPortGenerator.create(task.constMeta.debugName);
+    final portName =
+        ExecuteStreamPortGenerator.create(task.constMeta.debugName);
     final receivePort = broadcastPort(portName);
 
     task.callFfi(receivePort.sendPort.nativePort);
 
     await for (final raw in receivePort) {
       try {
-        yield _transformRust2DartMessage(raw, task.parseSuccessData, task.parseErrorData);
+        yield _transformRust2DartMessage(
+            raw, task.parseSuccessData, task.parseErrorData);
       } on _CloseStreamException {
         receivePort.close();
         break;
@@ -53,8 +56,8 @@ class BaseHandler {
   }
 }
 
-S _transformRust2DartMessage<S, E extends Object>(
-    List<dynamic> raw, S Function(dynamic) parseSuccessData, E Function(dynamic)? parseErrorData) {
+S _transformRust2DartMessage<S, E extends Object>(List<dynamic> raw,
+    S Function(dynamic) parseSuccessData, E Function(dynamic)? parseErrorData) {
   switch (_Rust2DartAction.values[raw[0]]) {
     case _Rust2DartAction.success:
       assert(raw.length == 2);

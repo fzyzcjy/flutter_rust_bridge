@@ -7,7 +7,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('dart call primitiveTypes', () async {
-    expect(await primitiveTypes(myI32: 123, myI64: 10000000000000, myF64: 12345678901234567890.123, myBool: true), 42);
+    expect(
+        await primitiveTypes(
+            myI32: 123,
+            myI64: 10000000000000,
+            myF64: 12345678901234567890.123,
+            myBool: true),
+        42);
   });
 
   // TODO rm?

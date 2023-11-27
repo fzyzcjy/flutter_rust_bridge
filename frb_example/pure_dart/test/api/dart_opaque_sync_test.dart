@@ -28,7 +28,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('unwrap', () async {
     expect(unwrapDartOpaque(opaque: createLargeList(mb: 200)), 'Test');
-    await expectLater(() => panicUnwrapDartOpaque(opaque: createLargeList(mb: 200)), throwsA(isA<PanicException>()));
+    await expectLater(
+        () => panicUnwrapDartOpaque(opaque: createLargeList(mb: 200)),
+        throwsA(isA<PanicException>()));
   });
 
   test('unwrapped dart opaque', () async {

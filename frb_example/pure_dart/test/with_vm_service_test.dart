@@ -15,12 +15,14 @@ Future<void> main() async {
   final vmService = await VmServiceUtil.create();
   if (vmService == null) {
     // Related: https://github.com/dart-lang/sdk/issues/54155
-    fail('To run these tests, you should enable VM service like: `dart --enable-vm-service test`.');
+    fail(
+        'To run these tests, you should enable VM service like: `dart --enable-vm-service test`.');
   }
   tearDownAll(() => vmService.dispose());
 
   group('sync return', () {
-    test('allocate a lot of zero copy data to check that it is properly freed', () async {
+    test('allocate a lot of zero copy data to check that it is properly freed',
+        () async {
       const n = 10000;
       int calls = 0;
 
@@ -31,11 +33,13 @@ Future<void> main() async {
           calls++;
         },
         count: 10,
-        reason: "Finalizer must be called once for each returned packed primitive list",
+        reason:
+            "Finalizer must be called once for each returned packed primitive list",
       );
       addTearDown(() => debugOnExternalTypedDataFinalizer = null);
 
-      ZeroCopyVecOfPrimitivePack? primitivePack = handleZeroCopyVecOfPrimitiveSync(n: n);
+      ZeroCopyVecOfPrimitivePack? primitivePack =
+          handleZeroCopyVecOfPrimitiveSync(n: n);
       await vmService.gc();
       await Future<void>.delayed(const Duration(milliseconds: 10));
       expect(primitivePack, isNotNull);

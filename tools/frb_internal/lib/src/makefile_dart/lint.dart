@@ -9,9 +9,12 @@ part 'lint.g.dart';
 
 List<Command<void>> createCommands() {
   return [
-    SimpleConfigCommand('lint', lint, _$populateLintConfigParser, _$parseLintConfigResult),
-    SimpleConfigCommand('lint-rust', lintRust, _$populateLintConfigParser, _$parseLintConfigResult),
-    SimpleConfigCommand('lint-dart', lintDart, _$populateLintConfigParser, _$parseLintConfigResult),
+    SimpleConfigCommand(
+        'lint', lint, _$populateLintConfigParser, _$parseLintConfigResult),
+    SimpleConfigCommand('lint-rust', lintRust, _$populateLintConfigParser,
+        _$parseLintConfigResult),
+    SimpleConfigCommand('lint-dart', lintDart, _$populateLintConfigParser,
+        _$parseLintConfigResult),
   ];
 }
 
@@ -38,19 +41,22 @@ Future<void> lintRust(LintConfig config) async {
 
 Future<void> lintRustFormat(LintConfig config) async {
   for (final package in kRustPackages) {
-    await exec('cargo fmt ${config.fix ? "" : "--check"}', relativePwd: package);
+    await exec('cargo fmt ${config.fix ? "" : "--check"}',
+        relativePwd: package);
   }
 }
 
 Future<void> lintRustClippy(LintConfig config) async {
   for (final package in kRustPackages) {
-    await exec('cargo clippy ${config.fix ? "--fix" : ""} -- -D warnings', relativePwd: package);
+    await exec('cargo clippy ${config.fix ? "--fix" : ""} -- -D warnings',
+        relativePwd: package);
   }
 }
 
 Future<void> lintRustWasm(LintConfig config) async {
   await exec('rustup target add wasm32-unknown-unknown');
-  await exec('cargo clippy --target wasm32-unknown-unknown ${config.fix ? "--fix" : ""} -- -D warnings',
+  await exec(
+      'cargo clippy --target wasm32-unknown-unknown ${config.fix ? "--fix" : ""} -- -D warnings',
       relativePwd: 'frb_rust');
 }
 
@@ -63,7 +69,8 @@ Future<void> lintDart(LintConfig config) async {
 
 Future<void> lintDartFormat(LintConfig config) async {
   for (final package in kDartPackages) {
-    await exec('dart format ${config.fix ? "" : "--set-exit-if-changed"} .', relativePwd: package);
+    await exec('dart format ${config.fix ? "" : "--set-exit-if-changed"} .',
+        relativePwd: package);
   }
 }
 
@@ -76,7 +83,8 @@ Future<void> lintDartAnalyze(LintConfig config) async {
 Future<void> lintDartPana(LintConfig config) async {
   final pana = Platform.isWindows ? 'pana.bat' : 'pana';
   await exec('flutter pub global activate pana');
-  await exec('$pana --no-warning --line-length 80 --exit-code-threshold 0', relativePwd: 'frb_dart');
+  await exec('$pana --no-warning --line-length 80 --exit-code-threshold 0',
+      relativePwd: 'frb_dart');
 }
 
 Future<void> dartPubGet() async {

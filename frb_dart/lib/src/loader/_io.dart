@@ -10,11 +10,14 @@ import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 /// 1. When `flutter run`, or when a real app is bundled.
 /// 2. When running Flutter widget tests.
 /// 3. When `dart test`, `dart run`, `dart compile exe`, etc.
-FutureOr<ExternalLibrary> loadExternalLibrary(ExternalLibraryLoaderConfig config) async {
+FutureOr<ExternalLibrary> loadExternalLibrary(
+    ExternalLibraryLoaderConfig config) async {
   final ioDirectory = config.ioDirectory;
   return ExternalLibrary(
     ffiDynamicLibrary: loadExternalLibraryRaw(
-      nativeLibDirWhenNonPackaged: ioDirectory == null ? null : Directory.current.uri.resolve(ioDirectory),
+      nativeLibDirWhenNonPackaged: ioDirectory == null
+          ? null
+          : Directory.current.uri.resolve(ioDirectory),
       stem: config.stem,
     ),
   );
@@ -60,5 +63,6 @@ ffi.DynamicLibrary loadExternalLibraryRaw({
   }
 
   // Feel free to PR to add support for more platforms! (e.g. I do not have a Fuchsia device, so cannot test that)
-  throw Exception('loadExternalLibrary failed: Unknown platform=${Platform.operatingSystem}');
+  throw Exception(
+      'loadExternalLibrary failed: Unknown platform=${Platform.operatingSystem}');
 }

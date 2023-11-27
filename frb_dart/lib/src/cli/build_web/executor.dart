@@ -51,7 +51,8 @@ extension on BuildWebArgs {
 Future<void> executeBuildWeb(BuildWebArgs args) async {
   await _sanityChecks(args);
 
-  final rustCrateName = await _getRustCreateName(rustCrateDir: args.rustCrateDir);
+  final rustCrateName =
+      await _getRustCreateName(rustCrateDir: args.rustCrateDir);
 
   await _executeWasmPack(args, rustCrateName: rustCrateName);
 
@@ -106,14 +107,15 @@ Future<String> _getRustCreateName({required String rustCrateDir}) async {
     silent: true,
   ));
 
-  final rustCrateName =
-      (manifest['targets'] as List).firstWhere((target) => (target['kind'] as List).contains('cdylib'))['name'];
+  final rustCrateName = (manifest['targets'] as List).firstWhere(
+      (target) => (target['kind'] as List).contains('cdylib'))['name'];
   if (rustCrateName.isEmpty) bail('Crate name cannot be empty.');
 
   return rustCrateName;
 }
 
-Future<void> _executeWasmPack(BuildWebArgs args, {required String rustCrateName}) async {
+Future<void> _executeWasmPack(BuildWebArgs args,
+    {required String rustCrateName}) async {
   await runCommand('wasm-pack', [
     'build', '-t', 'no-modules', '-d', args.outputWasm, '--no-typescript',
     '--out-name', rustCrateName,
@@ -132,7 +134,8 @@ Future<void> _executeWasmPack(BuildWebArgs args, {required String rustCrateName}
   });
 }
 
-Future<void> _executeWasmBindgen(BuildWebArgs args, {required String rustCrateName}) async {
+Future<void> _executeWasmBindgen(BuildWebArgs args,
+    {required String rustCrateName}) async {
   await runCommand('wasm-bindgen', [
     '${args.rustCrateDir}/target/wasm32-unknown-unknown/${args.release ? 'release' : 'debug'}/$rustCrateName.wasm',
     '--out-dir',

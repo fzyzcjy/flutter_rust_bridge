@@ -61,7 +61,8 @@ Uint8List createLargeList({required int mb}) => Uint8List(1000000 * mb);
 /// but allows for using it in a Dart context alike
 const bool kIsWeb = identical(0, 0.0);
 
-String? skipWeb([String reason = 'unspecified']) => kIsWeb ? 'Skipped on web (reason: $reason)' : null;
+String? skipWeb([String reason = 'unspecified']) =>
+    kIsWeb ? 'Skipped on web (reason: $reason)' : null;
 
 bool get releaseMode {
   var ans = true;
@@ -76,6 +77,7 @@ bool get releaseMode {
 /// https://github.com/fzyzcjy/flutter_rust_bridge/blob/68b1a9415d5a47b9a793074974af8b2f8a8bcfc0/book/src/wasm_limitations.md
 Matcher throwsAPanicException({String? messageOnNative}) {
   var inner = isA<PanicException>();
-  if (!kIsWeb) inner = inner.having((x) => x.message, 'message', messageOnNative);
+  if (!kIsWeb)
+    inner = inner.having((x) => x.message, 'message', messageOnNative);
   return throwsA(inner);
 }

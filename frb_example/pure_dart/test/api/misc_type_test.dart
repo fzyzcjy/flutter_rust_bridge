@@ -18,8 +18,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('dart call handleListOfStruct', () async {
-    final listOfStructResp =
-        await handleListOfStruct(l: [MySize(width: 42, height: 100), MySize(width: 420, height: 1000)]);
+    final listOfStructResp = await handleListOfStruct(
+        l: [MySize(width: 42, height: 100), MySize(width: 420, height: 1000)]);
     expect(listOfStructResp.length, 4);
     expect(listOfStructResp[0].width, 42);
     expect(listOfStructResp[1].width, 420);
@@ -51,7 +51,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('dart call handleVecOfOpts', () async {
     const loops = 20;
-    var opt = OptVecs(i32: [], enums: [Weekdays.monday], strings: ['foo'], buffers: []);
+    var opt = OptVecs(
+        i32: [], enums: [Weekdays.monday], strings: ['foo'], buffers: []);
     for (var i = 0; i < loops; i++) {
       opt = await handleVecOfOpts(opt: opt);
     }

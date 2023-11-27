@@ -14,13 +14,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(complexStructResp.valueI32, 100);
     expect(complexStructResp.valueVecU8, List.filled(arrLen, 100));
     expect(complexStructResp.children[0].valueVecU8, List.filled(arrLen, 110));
-    expect(complexStructResp.children[0].children[0].valueVecU8, List.filled(arrLen, 111));
+    expect(complexStructResp.children[0].children[0].valueVecU8,
+        List.filled(arrLen, 111));
     expect(complexStructResp.children[1].valueVecU8, List.filled(arrLen, 120));
   }
 
   test('dart call handleComplexStruct', () async {
     final arrLen = 5;
-    final complexStructResp = await handleComplexStruct(s: _createMyTreeNode(arrLen: arrLen));
+    final complexStructResp =
+        await handleComplexStruct(s: _createMyTreeNode(arrLen: arrLen));
     testComplexStruct(complexStructResp, arrLen: arrLen);
   });
 
@@ -46,7 +48,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final list = await handleBigBuffers();
     expect(list.int64[0], BigInt.parse('-9223372036854775808'));
     expect(list.int64[1], BigInt.parse('9223372036854775807'));
-    expect(list.uint64[0], BigInt.parse('0xFFFFFFFFFFFFFFFF'), reason: 'uint64');
+    expect(list.uint64[0], BigInt.parse('0xFFFFFFFFFFFFFFFF'),
+        reason: 'uint64');
   });
 
   test('test abc', () async {
@@ -64,16 +67,19 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test("dart call struct_with_enum_member", () async {
-    final result = await testStructWithEnum(se: StructWithEnum(abc1: Abc.a(A(a: "aaa")), abc2: Abc.b(B(b: 999))));
+    final result = await testStructWithEnum(
+        se: StructWithEnum(abc1: Abc.a(A(a: "aaa")), abc2: Abc.b(B(b: 999))));
     expect(result.abc1.whenOrNull(b: (B b) => b.b), 999);
     expect(result.abc2.whenOrNull(a: (A a) => a.a), "aaa");
   });
 
   test('dart call handleString', () async {
-    expect(await handleString(s: "Hello, world!"), "Hello, world!Hello, world!");
+    expect(
+        await handleString(s: "Hello, world!"), "Hello, world!Hello, world!");
   });
   test('dart call handleString with nul-containing string', () async {
-    expect(await handleString(s: "Hello\u0000world!"), kIsWeb ? "Hello\u0000world!Hello\u0000world!" : "");
+    expect(await handleString(s: "Hello\u0000world!"),
+        kIsWeb ? "Hello\u0000world!Hello\u0000world!" : "");
   });
 
   // TODO rm?
@@ -86,8 +92,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('dart call handleVecU8', () async {
     final len = 100000;
-    expect(
-        await handleVecU8(v: Uint8List.fromList(List.filled(len, 127))), Uint8List.fromList(List.filled(len * 2, 127)));
+    expect(await handleVecU8(v: Uint8List.fromList(List.filled(len, 127))),
+        Uint8List.fromList(List.filled(len * 2, 127)));
   });
 
   // TODO rm?
@@ -98,8 +104,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
   // });
 
   test('dart call handleStruct', () async {
-    final structResp =
-        await handleStruct(arg: MySize(width: 42, height: 100), boxed: MySize(width: 1000, height: 10000));
+    final structResp = await handleStruct(
+        arg: MySize(width: 42, height: 100),
+        boxed: MySize(width: 1000, height: 10000));
     expect(structResp.width, 42 + 1000);
     expect(structResp.height, 100 + 10000);
   });
@@ -113,7 +120,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('dart call handleStructSyncFreezed', () {
     final structResp = handleStructSyncFreezed(
-        arg: MySizeFreezed(width: 42, height: 100), boxed: MySizeFreezed(width: 1000, height: 10000));
+        arg: MySizeFreezed(width: 42, height: 100),
+        boxed: MySizeFreezed(width: 1000, height: 10000));
     expect(structResp.width, 42 + 1000);
     expect(structResp.height, 100 + 10000);
     // Only freezed classes have copyWith
@@ -162,5 +170,6 @@ MyTreeNode _createMyTreeNode({required int arrLen}) {
 }
 
 MyNestedStruct _createMyNestedStruct() {
-  return MyNestedStruct(treeNode: _createMyTreeNode(arrLen: 5), weekday: Weekdays.friday);
+  return MyNestedStruct(
+      treeNode: _createMyTreeNode(arrLen: 5), weekday: Weekdays.friday);
 }

@@ -36,7 +36,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('dart call handleOptionalIncrement', () async {
     expect(await handleOptionalIncrement(), null);
     {
-      var ret = await handleOptionalIncrement(opt: ExoticOptionals(attributesNullable: []));
+      var ret = await handleOptionalIncrement(
+          opt: ExoticOptionals(attributesNullable: []));
       if (ret == null) fail('increment returned null for non-null params');
       final loopFor = 20;
       for (var i = 1; i < loopFor; i++) {
@@ -77,7 +78,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     {
       final optional10 = await handleOptionBoxArguments(
         boolbox: true,
-        structbox: await handleOptionalIncrement(opt: ExoticOptionals(attributesNullable: [])),
+        structbox: await handleOptionalIncrement(
+            opt: ExoticOptionals(attributesNullable: [])),
       );
       print(optional10);
     }

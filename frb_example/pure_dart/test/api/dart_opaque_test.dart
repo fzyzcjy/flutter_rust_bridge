@@ -22,7 +22,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('drop', () async {
-    expect(await asyncAcceptDartOpaque(opaque: createLargeList(mb: 200)), 'async test');
+    expect(await asyncAcceptDartOpaque(opaque: createLargeList(mb: 200)),
+        'async test');
   });
 
   test('nested', () async {

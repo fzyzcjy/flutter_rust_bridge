@@ -9,7 +9,10 @@ import 'package:path/path.dart' as path;
 Future<void> generateDartWebTestEntrypoint({required Uri dartRoot}) async {
   final dirTest = dartRoot.resolve('test/');
   final dirInterest = dirTest.resolve('api/');
-  final files = [for (final file in Glob('${dirInterest.toFilePath()}**.dart').listSync()) file.path];
+  final files = [
+    for (final file in Glob('${dirInterest.toFilePath()}**.dart').listSync())
+      file.path
+  ];
 
   final imports = [
     for (final file in files) //
@@ -37,7 +40,8 @@ void main() {
 }
   ''';
 
-  final pathOutput = dartRoot.resolve('test/dart_web_test_entrypoint.dart').toFilePath();
+  final pathOutput =
+      dartRoot.resolve('test/dart_web_test_entrypoint.dart').toFilePath();
   File(pathOutput).writeAsStringSync(code);
   await runCommand('dart', ['format', pathOutput]);
 }

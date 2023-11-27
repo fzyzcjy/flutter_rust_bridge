@@ -33,11 +33,14 @@ dynamic dartCObjectIntoDart(Dart_CObject object) {
       while (object.value.as_string.elementAt(len).value != 0) {
         len++;
       }
-      return utf8.decode(object.value.as_string.cast<ffi.Uint8>().asTypedList(len));
+      return utf8
+          .decode(object.value.as_string.cast<ffi.Uint8>().asTypedList(len));
 
     case Dart_CObject_Type.Dart_CObject_kArray:
-      return List.generate(object.value.as_array.length,
-          (i) => dartCObjectIntoDart(object.value.as_array.values.elementAt(i).value.ref));
+      return List.generate(
+          object.value.as_array.length,
+          (i) => dartCObjectIntoDart(
+              object.value.as_array.values.elementAt(i).value.ref));
 
     case Dart_CObject_Type.Dart_CObject_kTypedData:
       return _typedDataIntoDart(
@@ -130,8 +133,10 @@ _TypedData _typedDataIntoDart({
   }
 }
 
-final _externalTypedDataFinalizer = Finalizer<_ExternalTypedDataFinalizerArgs>((externalTypedData) {
-  final handleFinalizer = externalTypedData.callback.asFunction<_DartExternalTypedDataFinalizer>();
+final _externalTypedDataFinalizer =
+    Finalizer<_ExternalTypedDataFinalizerArgs>((externalTypedData) {
+  final handleFinalizer =
+      externalTypedData.callback.asFunction<_DartExternalTypedDataFinalizer>();
   handleFinalizer(externalTypedData.length, externalTypedData.peer);
 
   debugOnExternalTypedDataFinalizer?.call(externalTypedData.length);
@@ -152,7 +157,8 @@ class _TypedData<T> {
 class _ExternalTypedDataFinalizerArgs {
   final int length;
   final ffi.Pointer<ffi.Void> peer;
-  final ffi.Pointer<ffi.NativeFunction<_NativeExternalTypedDataFinalizer>> callback;
+  final ffi.Pointer<ffi.NativeFunction<_NativeExternalTypedDataFinalizer>>
+      callback;
 
   _ExternalTypedDataFinalizerArgs({
     required this.length,
@@ -161,5 +167,7 @@ class _ExternalTypedDataFinalizerArgs {
   });
 }
 
-typedef _NativeExternalTypedDataFinalizer = ffi.Void Function(ffi.IntPtr, ffi.Pointer<ffi.Void>);
-typedef _DartExternalTypedDataFinalizer = void Function(int, ffi.Pointer<ffi.Void>);
+typedef _NativeExternalTypedDataFinalizer = ffi.Void Function(
+    ffi.IntPtr, ffi.Pointer<ffi.Void>);
+typedef _DartExternalTypedDataFinalizer = void Function(
+    int, ffi.Pointer<ffi.Void>);

@@ -22,7 +22,8 @@ class GeneralizedFrbRustBinding {
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  void initFrbDartApiDl() => _binding.init_frb_dart_api_dl(ffi.NativeApi.initializeApiDLData);
+  void initFrbDartApiDl() =>
+      _binding.init_frb_dart_api_dl(ffi.NativeApi.initializeApiDLData);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   Object getDartObject(int ptr) => _binding.get_dart_object(ptr);
@@ -34,7 +35,8 @@ class GeneralizedFrbRustBinding {
   int newDartOpaque(Object obj) => _binding.new_dart_opaque(obj);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  void freeWireSyncReturn(WireSyncReturn val) => _binding.free_wire_sync_return(val);
+  void freeWireSyncReturn(WireSyncReturn val) =>
+      _binding.free_wire_sync_return(val);
 }
 
 void _userFriendlyDynamicLibraryErrorReporting(ArgumentError e, StackTrace s) {

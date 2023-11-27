@@ -31,7 +31,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
       () async {
         await for (final _ in funcStreamReturnErrorTwinNormal()) {}
       },
-      throwsA(isA<AnyhowException>().having((x) => x.message, 'message', 'deliberate error')),
+      throwsA(isA<AnyhowException>()
+          .having((x) => x.message, 'message', 'deliberate error')),
     );
   });
 
@@ -46,7 +47,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   Future<void> testHandleStream(
-      Stream<Log> Function({dynamic hint, required int key, required int max}) handleStreamFunction) async {
+      Stream<Log> Function({dynamic hint, required int key, required int max})
+          handleStreamFunction) async {
     final max = 5;
     final key = 8;
     final stream = handleStreamFunction(key: key, max: max);

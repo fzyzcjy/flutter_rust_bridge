@@ -9,8 +9,10 @@ import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
 import 'package:shelf_static/shelf_static.dart';
 
-Future<String> runServer(ServeWebConfig config, {List<Handler>? extraHandlers}) async {
-  final staticFilesHandler = createStaticHandler(config.webRoot, defaultDocument: 'index.html');
+Future<String> runServer(ServeWebConfig config,
+    {List<Handler>? extraHandlers}) async {
+  final staticFilesHandler =
+      createStaticHandler(config.webRoot, defaultDocument: 'index.html');
 
   // final shouldRelaxCoep = config.shouldRelaxCoep;
   final shouldRelaxCoep = true;
@@ -25,10 +27,12 @@ Future<String> runServer(ServeWebConfig config, {List<Handler>? extraHandlers}) 
     return (req) async {
       print('runServer.Request: ${req.method} ${req.requestedUri}');
       final res = await handler(req);
-      print('runServer.Response: code=${res.statusCode} mimeType=${res.mimeType}');
+      print(
+          'runServer.Response: code=${res.statusCode} mimeType=${res.mimeType}');
       return res.change(headers: {
         'Cross-Origin-Opener-Policy': 'same-origin',
-        'Cross-Origin-Embedder-Policy': shouldRelaxCoep ? 'credentialless' : 'require-corp',
+        'Cross-Origin-Embedder-Policy':
+            shouldRelaxCoep ? 'credentialless' : 'require-corp',
         // TODO rm
         // // Disable CORS since this server (hosting JS/WASM) is different from
         // // the server that `dart test -p chrome` creates.

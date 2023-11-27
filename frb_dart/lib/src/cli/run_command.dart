@@ -14,7 +14,8 @@ Future<String> runCommand(
   bool silent = false,
 }) async {
   // ignore: avoid_print
-  print('\x1B[1m> $command ${arguments.join(' ')}\x1B[0m (pwd: $pwd, env: $env)');
+  print(
+      '\x1B[1m> $command ${arguments.join(' ')}\x1B[0m (pwd: $pwd, env: $env)');
 
   final process = await Process.start(
     command,
@@ -39,7 +40,8 @@ Future<String> runCommand(
 
   final exitCode = await process.exitCode;
   if (exitCode != 0) {
-    throw ProcessException(command, arguments, 'Bad exit code ($exitCode). stderr=${err.join("")}', exitCode);
+    throw ProcessException(command, arguments,
+        'Bad exit code ($exitCode). stderr=${err.join("")}', exitCode);
   }
 
   return ret.join('');

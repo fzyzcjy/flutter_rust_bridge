@@ -7,10 +7,12 @@ part 'test.g.dart';
 
 List<Command<void>> createCommands() {
   return [
-    SimpleConfigCommand('test-rust', testRust, _$populateTestConfigParser, _$parseTestConfigResult),
-    SimpleConfigCommand(
-        'test-dart-native', testDartNative, _$populateTestDartConfigParser, _$parseTestDartConfigResult),
-    SimpleConfigCommand('test-dart-web', testDartWeb, _$populateTestDartConfigParser, _$parseTestDartConfigResult),
+    SimpleConfigCommand('test-rust', testRust, _$populateTestConfigParser,
+        _$parseTestConfigResult),
+    SimpleConfigCommand('test-dart-native', testDartNative,
+        _$populateTestDartConfigParser, _$parseTestDartConfigResult),
+    SimpleConfigCommand('test-dart-web', testDartWeb,
+        _$populateTestDartConfigParser, _$parseTestDartConfigResult),
   ];
 }
 

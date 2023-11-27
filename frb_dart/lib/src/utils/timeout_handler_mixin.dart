@@ -14,7 +14,8 @@ mixin TimeoutHandlerMixin on BaseHandler {
     var future = super.executeNormal(task);
     if (timeLimitForExecuteNormal != null) {
       future = future.timeout(timeLimitForExecuteNormal,
-          onTimeout: () => throw FrbTimeoutException(timeLimitForExecuteNormal, task.constMeta.debugName, stackTrace));
+          onTimeout: () => throw FrbTimeoutException(
+              timeLimitForExecuteNormal, task.constMeta.debugName, stackTrace));
     }
 
     return future;
@@ -41,5 +42,6 @@ class FrbTimeoutException {
   const FrbTimeoutException(this.duration, this.debugName, this.stackTrace);
 
   @override
-  String toString() => 'FrbTimeoutException(debugName=$debugName, duration=$duration, stackTrace=$stackTrace)';
+  String toString() =>
+      'FrbTimeoutException(debugName=$debugName, duration=$duration, stackTrace=$stackTrace)';
 }

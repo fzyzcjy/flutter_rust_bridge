@@ -14,7 +14,8 @@ class DartFileBuilder {
   }) {
     if (values.isEmpty) throw ArgumentError();
     final bracketedValueType = valueType == null ? "" : '<$valueType>';
-    body += 'addTestsIdentityFunctionCall($funcName, $bracketedValueType[${values.join(", ")}]);';
+    body +=
+        'addTestsIdentityFunctionCall($funcName, $bracketedValueType[${values.join(", ")}]);';
   }
 
   @override

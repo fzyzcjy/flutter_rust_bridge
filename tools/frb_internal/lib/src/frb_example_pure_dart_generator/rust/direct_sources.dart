@@ -21,7 +21,8 @@ String _generatePrimitive() {
 String _generatePrimitiveList() {
   final builder = RustFileBuilder();
   for (final ty in kPrimitiveTypes) {
-    builder.addIdentityFunction('Vec<${ty.name}>', 'example_primitive_list_type_${ty.name}');
+    builder.addIdentityFunction(
+        'Vec<${ty.name}>', 'example_primitive_list_type_${ty.name}');
   }
   return builder.toString();
 }
@@ -29,7 +30,8 @@ String _generatePrimitiveList() {
 String _generateOptionalPrimitive() {
   final builder = RustFileBuilder();
   for (final ty in kPrimitiveTypes) {
-    builder.addIdentityFunction('Option<${ty.name}>', 'example_optional_primitive_type_${ty.name}');
+    builder.addIdentityFunction(
+        'Option<${ty.name}>', 'example_optional_primitive_type_${ty.name}');
   }
   return builder.toString();
 }
@@ -78,9 +80,12 @@ class PrimitiveTypeInfo {
     this.primitiveListWrapper = _defaultPrimitiveListWrapper,
   });
 
-  static String _defaultPrimitiveWrapper(PrimitiveTypeInfo info, String value) => value;
+  static String _defaultPrimitiveWrapper(
+          PrimitiveTypeInfo info, String value) =>
+      value;
 
-  static String _defaultPrimitiveListWrapper(PrimitiveTypeInfo info, String value) =>
+  static String _defaultPrimitiveListWrapper(
+          PrimitiveTypeInfo info, String value) =>
       '${info.primitiveListName}.fromList([$value])';
 }
 

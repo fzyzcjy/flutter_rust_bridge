@@ -54,7 +54,9 @@ class Config {
   late List<String> wasmBindgenArgs;
 
   /// {@macro flutter_rust_bridge.cli}
-  @CliOption(help: 'If specified, compile Dart into JavaScript and use this option as entrypoint')
+  @CliOption(
+      help:
+          'If specified, compile Dart into JavaScript and use this option as entrypoint')
   late String? dartCompileJsEntrypoint;
 
 // TODO rm
@@ -109,7 +111,8 @@ BuildWebArgs _parseConfigToArgs(Config config) {
   );
 }
 
-String _fallbackOutput({required String dartRoot}) => path.join(dartRoot, 'web');
+String _fallbackOutput({required String dartRoot}) =>
+    path.join(dartRoot, 'web');
 
 // TODO rm
 // Never _printHelpAndExit() {

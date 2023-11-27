@@ -7,7 +7,8 @@ class RustGenerator extends BaseGenerator {
   RustGenerator({required super.packageRootDir, required super.interestDir});
 
   @override
-  Future<void> executeFormat() => executeRustFormat(pwd: packageRootDir.toFilePath());
+  Future<void> executeFormat() =>
+      executeRustFormat(pwd: packageRootDir.toFilePath());
 
   @override
   Set<String> get duplicatorBlacklistNames => {'mod.rs'};
@@ -34,5 +35,6 @@ class RustGenerator extends BaseGenerator {
   }
 
   @override
-  String generateDuplicateFileStem(String inputStem, DuplicatorMode mode) => inputStem + mode.postfix;
+  String generateDuplicateFileStem(String inputStem, DuplicatorMode mode) =>
+      inputStem + mode.postfix;
 }

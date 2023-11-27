@@ -10,11 +10,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final String concatenated = await concatenateWith.concatenate(b: "world");
     expect(concatenated, equals("hello world"));
 
-    final staticConcatenated = await ConcatenateWith.concatenateStatic(a: "hello ", b: "world");
+    final staticConcatenated =
+        await ConcatenateWith.concatenateStatic(a: "hello ", b: "world");
     expect(staticConcatenated, equals("hello world"));
 
-    final concatenatedConstructor = await ConcatenateWith.newConcatenateWith(a: "hello ");
-    final String concatenated2 = await concatenatedConstructor.concatenate(b: "world");
+    final concatenatedConstructor =
+        await ConcatenateWith.newConcatenateWith(a: "hello ");
+    final String concatenated2 =
+        await concatenatedConstructor.concatenate(b: "world");
     expect(concatenated2, equals("hello world"));
   });
 
@@ -54,7 +57,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('ConcatenateWith static stream sink test', () async {
     final int key = 10;
     final int max = 5;
-    final stream = ConcatenateWith.handleSomeStaticStreamSink(key: key, max: max);
+    final stream =
+        ConcatenateWith.handleSomeStaticStreamSink(key: key, max: max);
     int cnt = 0;
     await for (final value in stream) {
       print("output from ConcatenateWith's static stream: $value");

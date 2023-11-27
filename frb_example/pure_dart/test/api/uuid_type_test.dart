@@ -15,7 +15,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('Vec<Uuid>', () async {
     final uuid = Uuid();
-    final ids = List<UuidValue>.from([uuid.v4obj(), uuid.v1obj(), uuid.v4obj()]);
+    final ids =
+        List<UuidValue>.from([uuid.v4obj(), uuid.v1obj(), uuid.v4obj()]);
     final outputs = await handleUuids(ids: ids);
     expect(ids, outputs);
   });
@@ -23,7 +24,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('nested uuid types', () async {
     final uuid = Uuid();
     final id = uuid.v4obj();
-    final ids = List<UuidValue>.from([uuid.v4obj(), uuid.v1obj(), uuid.v4obj()]);
+    final ids =
+        List<UuidValue>.from([uuid.v4obj(), uuid.v1obj(), uuid.v4obj()]);
     final wrapper = FeatureUuid(one: id, many: ids);
     final outputs = await handleNestedUuids(ids: wrapper);
     expect(wrapper.one, outputs.one);

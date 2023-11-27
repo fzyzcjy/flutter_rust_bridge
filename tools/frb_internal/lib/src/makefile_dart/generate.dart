@@ -9,11 +9,12 @@ part 'generate.g.dart';
 
 List<Command<void>> createCommands() {
   return [
-    SimpleConfigCommand('generate', generate, _$populateGenerateConfigParser, _$parseGenerateConfigResult),
-    SimpleConfigCommand(
-        'generate-internal', generateInternal, _$populateGenerateConfigParser, _$parseGenerateConfigResult),
-    SimpleConfigCommand(
-        'generate-run-frb-codegen', generateRunFrbCodegen, _$populateGenerateConfigParser, _$parseGenerateConfigResult),
+    SimpleConfigCommand('generate', generate, _$populateGenerateConfigParser,
+        _$parseGenerateConfigResult),
+    SimpleConfigCommand('generate-internal', generateInternal,
+        _$populateGenerateConfigParser, _$parseGenerateConfigResult),
+    SimpleConfigCommand('generate-run-frb-codegen', generateRunFrbCodegen,
+        _$populateGenerateConfigParser, _$parseGenerateConfigResult),
   ];
 }
 
@@ -77,7 +78,9 @@ Future<void> generateInternalBookHelp(GenerateConfig config) async {
       'integrate',
       'build-web',
     ]) {
-      await exec('cargo run -- $cmd --help > book/src/generated/${cmd ?? 'main'}.txt', relativePwd: 'frb_codegen');
+      await exec(
+          'cargo run -- $cmd --help > book/src/generated/${cmd ?? 'main'}.txt',
+          relativePwd: 'frb_codegen');
     }
   });
 }
@@ -86,7 +89,8 @@ Future<void> generateInternalBuildRunner(GenerateConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
     for (final package in kDartNonExamplePackages) {
       await runDartPubGetIfNotRunYet(package);
-      await exec('dart run build_runner build --delete-conflicting-outputs', relativePwd: package);
+      await exec('dart run build_runner build --delete-conflicting-outputs',
+          relativePwd: package);
     }
   });
 }
@@ -98,14 +102,18 @@ Future<void> generateRunFrbCodegen(GenerateConfig config) async {
 }
 
 /// Run flutter_rust_bridge_codegen's `generate` subcommand
-Future<void> generateRunFrbCodegenCommandGenerate(GenerateConfig config, String package) async {
+Future<void> generateRunFrbCodegenCommandGenerate(
+    GenerateConfig config, String package) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
     await runDartPubGetIfNotRunYet(package);
-    await exec('cargo run --manifest-path ${exec.pwd}/frb_codegen/Cargo.toml -- generate', relativePwd: package);
+    await exec(
+        'cargo run --manifest-path ${exec.pwd}/frb_codegen/Cargo.toml -- generate',
+        relativePwd: package);
   });
 }
 
-Future<void> _wrapMaybeSetExitIfChanged(GenerateConfig config, Future<void> Function() inner) async {
+Future<void> _wrapMaybeSetExitIfChanged(
+    GenerateConfig config, Future<void> Function() inner) async {
   // Before actually executing anything, check whether git repository is already dirty
   await _maybeSetExitIfChanged(config);
   await inner();

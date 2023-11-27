@@ -40,7 +40,8 @@ abstract class BaseGenerator {
 
   void _writeCodeFiles(Map<String, String> textOfPathMap) {
     for (final entry in textOfPathMap.entries) {
-      File(interestDir.resolve(entry.key).toFilePath()).writeAsStringSync(entry.value);
+      File(interestDir.resolve(entry.key).toFilePath())
+          .writeAsStringSync(entry.value);
     }
   }
 }
@@ -58,12 +59,16 @@ class _Duplicator {
   _Duplicator(this.generator);
 
   void _generate() {
-    for (final file in Glob('${generator.interestDir.toFilePath()}/**.${generator.extension}').listSync()) {
+    for (final file in Glob(
+            '${generator.interestDir.toFilePath()}/**.${generator.extension}')
+        .listSync()) {
       final fileName = path.basename(file.path);
       final fileStem = path.basenameWithoutExtension(file.path);
-      if (file is! File || path.extension(file.path) != '.${generator.extension}') continue;
+      if (file is! File ||
+          path.extension(file.path) != '.${generator.extension}') continue;
       if (generator.duplicatorBlacklistNames.contains(fileName)) continue;
-      if (DuplicatorMode.values.any((mode) => fileStem.contains(mode.postfix))) continue;
+      if (DuplicatorMode.values.any((mode) => fileStem.contains(mode.postfix)))
+        continue;
 
       final fileContent = (file as File).readAsStringSync();
       final annotation = _parseAnnotation(fileContent);
@@ -71,11 +76,12 @@ class _Duplicator {
       for (final mode in DuplicatorMode.values) {
         if (annotation.forbiddenDuplicatorModes.contains(mode)) continue;
 
-        final outputText =
-            computeDuplicatorPrelude(' from `$fileName`') + generator.generateDuplicateCode(fileContent, mode);
+        final outputText = computeDuplicatorPrelude(' from `$fileName`') +
+            generator.generateDuplicateCode(fileContent, mode);
         final targetPath = generator.interestDir
             .resolve('pseudo_manual/')
-            .resolve('${generator.generateDuplicateFileStem(fileStem, mode)}.${generator.extension}')
+            .resolve(
+                '${generator.generateDuplicateFileStem(fileStem, mode)}.${generator.extension}')
             .toFilePath();
         File(targetPath).writeAsStringSync(outputText);
       }
@@ -87,10 +93,14 @@ _Annotation _parseAnnotation(String fileContent) {
   const kPrefix = '// FRB_INTERNAL_GENERATOR:';
   if (!fileContent.startsWith(kPrefix)) return const _Annotation();
 
-  final data = jsonDecode(fileContent.substring(kPrefix.length, fileContent.indexOf('\n'))) as Map<String, Object?>;
+  final data = jsonDecode(
+          fileContent.substring(kPrefix.length, fileContent.indexOf('\n')))
+      as Map<String, Object?>;
   return _Annotation(
     forbiddenDuplicatorModes:
-        (data['forbiddenDuplicatorModes'] as List<dynamic>).map((x) => DuplicatorMode.values.byName(x)).toList(),
+        (data['forbiddenDuplicatorModes'] as List<dynamic>)
+            .map((x) => DuplicatorMode.values.byName(x))
+            .toList(),
   );
 }
 

@@ -27,7 +27,8 @@ abstract class WasmModule {
   // }
 
   /// Initialize a [WasmModule] with the specified kind of [Modules].
-  static Future<Object> initialize({required Modules kind, WasmModule Function()? module}) =>
+  static Future<Object> initialize(
+          {required Modules kind, WasmModule Function()? module}) =>
       kind.initializeModule(module);
 }
 
@@ -43,7 +44,8 @@ abstract class Modules {
   ///
   /// The expected output is a file named `$root.js` and the accompanying
   /// WASM binary named `${root}_bg.wasm`.
-  const factory Modules.noModules({required String root}) = _WasmBindgenNoModules;
+  const factory Modules.noModules({required String root}) =
+      _WasmBindgenNoModules;
 
   /// How a WASM module is brought into Dart's scope and initialized.
   ///
@@ -56,7 +58,8 @@ abstract class Modules {
         throw const MissingHeaderException();
       case true:
       case null:
-        jsConsoleWarn('Warning: crossOriginIsolated is null, browser might not support buffer sharing.');
+        jsConsoleWarn(
+            'Warning: crossOriginIsolated is null, browser might not support buffer sharing.');
         return;
     }
   }
