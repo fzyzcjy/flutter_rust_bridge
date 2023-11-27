@@ -39,8 +39,16 @@ Future<void> testRustPackage(String package) async {
 
 Future<void> testDartNative(TestDartConfig config) async {
   final dartMode = kDartModeOfPackage[config.package]!;
-  await exec(
-      'cd ${config.package} && ${dartMode.name} ${dartMode == DartMode.dart ? "--enable-experiment=native-assets" : ""} test');
+
+  var extraFlags = '';
+  if (dartMode == DartMode.dart) {
+    extraFlags += '--enable-experiment=native-assets ';
+  }
+  if (config.package == 'frb_example/pure_dart') {
+    extraFlags += '--enable-vm-service ';
+  }
+
+  await exec('cd ${config.package} && ${dartMode.name} $extraFlags test');
 }
 
 Future<void> testDartWeb(TestDartConfig config) async {
