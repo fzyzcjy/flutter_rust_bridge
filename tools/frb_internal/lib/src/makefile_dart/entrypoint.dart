@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:args/command_runner.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 
 /// Similar to `makefile`/`justfile`/..., but based on Dart
@@ -21,6 +22,14 @@ const _kDartPackages = <String>[
   'frb_utils',
   'tools/frb_internal',
 ];
+
+List<Command<void>> createCommands() {
+  return [
+    SimpleCommand(name: 'lint', executor: () => lint(config)),
+    SimpleCommand(name: 'lint-rust', executor: () => lintRust(config)),
+    SimpleCommand(name: 'lint-dart', executor: () => lintDart(config)),
+  ];
+}
 
 class LintConfig {
   final bool fix;
