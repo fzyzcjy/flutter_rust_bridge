@@ -27,12 +27,12 @@ Future<String> runCommand(
   final err = <String>[];
 
   process.stdout.transform(utf8.decoder).listen((line) {
-    if (!silent) stdout.write(line);
+    if (!silent) stdout.writeAndFlush(line);
     ret.add(line);
   });
 
   process.stderr.transform(utf8.decoder).listen((line) {
-    if (!silent) stderr.write(line);
+    if (!silent) stderr.writeAndFlush(line);
     err.add(line);
   });
 
@@ -42,4 +42,11 @@ Future<String> runCommand(
   }
 
   return ret.join('');
+}
+
+extension on IOSink {
+  void writeAndFlush(String message) {
+    write(message);
+    flush();
+  }
 }
