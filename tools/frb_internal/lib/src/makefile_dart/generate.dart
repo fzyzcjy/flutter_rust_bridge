@@ -33,15 +33,17 @@ Future<void> generate(GenerateConfig config) async {
 
 Future<void> generateInternal(GenerateConfig config) async {
   await generator.generate();
+  TODO('just dart_check_included_source');
+
   await _maybeSetExitIfChanged(config);
 }
 
 Future<void> generateRunFrbCodegen(GenerateConfig config) async {
   TODO('just install_ffigen_dependency');
   TODO('just dart_pub_get');
-  TODO('just dart_check_included_source');
   TODO('just install_expand');
   TODO('just generate_all');
+
   await _maybeSetExitIfChanged(config);
 }
 
