@@ -46,13 +46,7 @@ Future<void> testDartWeb(TestDartConfig config) async {
   if (package == 'frb_dart') {
     await exec('cd $package && dart test -p chrome');
   } else {
-    TODO;
-    '''
-  dart_test_web_integration features="":
-    cd {{dir_example_pure_dart}}/dart && dart run \
-      ../../../frb_dart/bin/serve.dart \
-      -c ../rust --dart-input lib/main.web.dart --root web/ --run-tests \
-      --features={{features}}
-  ''';
+    await exec('cd tools/frb_internal && '
+        'dart run flutter_rust_bridge_utils test-web --entrypoint ../$package/test/dart_web_test_entrypoint.dart');
   }
 }
