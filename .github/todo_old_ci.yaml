@@ -384,37 +384,6 @@ jobs:
       - run: just dart_pub_get dart_only
       - run: just dart_test_vm_service
 
-  rust_build_and_test:
-    name: Rust build and test
-    runs-on: ${{ matrix.image }}
-    strategy:
-      fail-fast: false
-      matrix:
-        image:
-          - macos-11
-          - windows-2019
-          - ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - id: rust-toolchain
-        uses: dtolnay/rust-toolchain@stable
-        with:
-          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
-
-          components: rustfmt
-
-      - uses: dart-lang/setup-dart@v1
-        with:
-          sdk: ${{ env.FRB_MAIN_DART_VERSION }}
-          architecture: x64
-      - uses: extractions/setup-just@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - run: just install_ffigen_dependency
-      - run: just dart_pub_get dart_only
-      - run: just rust_build_and_test
-
   # -------------- MSRV & specific version testing --------------
   msrv:
     name: MSRV & specific version testing
