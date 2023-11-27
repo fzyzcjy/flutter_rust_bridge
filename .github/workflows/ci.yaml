@@ -60,7 +60,7 @@ jobs:
 
   # ----------------------------------- codegen -----------------------------------
 
-  codegen_main:
+  generate_run_frb_codegen:
     name: 'Generate :: Run FRB Codegen'
     runs-on: ${{ matrix.image }}
 
@@ -87,7 +87,7 @@ jobs:
       # execute
       - run: ./frb_internal generate-run-frb-codegen --set-exit-if-changed
 
-  codegen_internal:
+  generate_internal:
     name: 'Generate :: Internal'
     runs-on: ubuntu-latest
 
