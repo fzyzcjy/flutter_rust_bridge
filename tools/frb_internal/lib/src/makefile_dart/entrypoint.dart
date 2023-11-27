@@ -78,9 +78,9 @@ Future<void> lintDart(LintConfig config) async {
 
 Future<void> lintDartMain(LintConfig config, String package) async {
   final lineLength = package == 'frb_dart' ? 80 : 120;
-  execute('cd $package && '
+  await execute('cd $package && '
       'dart format --line-length $lineLength ${config.fix ? "--fix" : "--output=none --set-exit-if-changed"}');
-  execute('cd $package && dart analyze --fatal-infos');
+  await execute('cd $package && dart analyze --fatal-infos');
 }
 
 Future<void> lintDartPana(LintConfig config) async {

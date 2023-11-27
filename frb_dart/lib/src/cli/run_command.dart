@@ -14,7 +14,7 @@ Future<String> runCommand(
   bool silent = false,
 }) async {
   // ignore: avoid_print
-  print('$_kArrow $command ${arguments.join(' ')} (env: $env)');
+  print('$_kArrow $command ${arguments.join(' ')} (pwd: $pwd, env: $env)');
   final process = await Process.start(
     command,
     arguments,
@@ -22,19 +22,24 @@ Future<String> runCommand(
     workingDirectory: pwd,
     environment: env,
   );
+
   final ret = <String>[];
   final err = <String>[];
+
   process.stdout.transform(utf8.decoder).listen((line) {
     if (!silent) stdout.write(line);
     ret.add(line);
   });
+
   process.stderr.transform(utf8.decoder).listen((line) {
     if (!silent) stderr.write(line);
     err.add(line);
   });
+
   final exitCode = await process.exitCode;
   if (exitCode != 0) {
     throw ProcessException(command, arguments, err.join(''), exitCode);
   }
+
   return ret.join('');
 }
