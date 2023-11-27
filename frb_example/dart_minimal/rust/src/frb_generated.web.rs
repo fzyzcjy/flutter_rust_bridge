@@ -1,5 +1,6 @@
-use super::*;
 // Section: imports
+
+use super::*;
 use flutter_rust_bridge::rust2dart::IntoIntoDart;
 use flutter_rust_bridge::wasm_bindgen;
 use flutter_rust_bridge::wasm_bindgen::prelude::*;

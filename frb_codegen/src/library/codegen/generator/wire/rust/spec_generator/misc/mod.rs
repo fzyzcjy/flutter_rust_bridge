@@ -90,9 +90,11 @@ fn generate_imports(
     Acc::new(|target| {
         let platform_imports = match target {
             TargetOrCommon::Wasm => {
-                "use flutter_rust_bridge::wasm_bindgen;
+                "use super::*;
+                use flutter_rust_bridge::wasm_bindgen;
                 use flutter_rust_bridge::wasm_bindgen::prelude::*;\n"
             }
+            TargetOrCommon::Io => "use super::*;",
             _ => "",
         };
 

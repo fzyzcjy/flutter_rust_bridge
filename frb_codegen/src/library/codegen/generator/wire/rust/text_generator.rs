@@ -72,8 +72,8 @@ fn generate_text_from_merged_code(
     Ok(generate_text_respecting_wasm_flag(
         Acc {
             common: generate_text_common(&core_code.common, config)?,
-            io: generate_text_target(&core_code.io),
-            wasm: generate_text_target(&core_code.wasm),
+            io: core_code.io.clone(),
+            wasm: core_code.wasm.clone(),
         },
         config.wasm_enabled,
     ))
@@ -130,8 +130,4 @@ fn generate_text_common_mod_declaration(
         pub use {name}::*;
         "
     ))
-}
-
-fn generate_text_target(core_code_target: &str) -> String {
-    format!("use super::*;\n{core_code_target}")
 }
