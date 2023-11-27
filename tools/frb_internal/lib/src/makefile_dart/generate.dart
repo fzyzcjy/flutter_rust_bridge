@@ -9,8 +9,6 @@ part 'generate.g.dart';
 
 List<Command<void>> createCommands() {
   return [
-    SimpleConfigCommand('generate', generate, _$populateGenerateConfigParser,
-        _$parseGenerateConfigResult),
     SimpleConfigCommand('generate-internal', generateInternal,
         _$populateGenerateConfigParser, _$parseGenerateConfigResult),
     SimpleConfigCommand(
@@ -42,11 +40,6 @@ class GeneratePackageConfig implements GenerateConfig {
     required this.setExitIfChanged,
     required this.package,
   });
-}
-
-Future<void> generate(GenerateConfig config) async {
-  await generateInternal(config);
-  await generateRunFrbCodegen(config);
 }
 
 Future<void> generateInternal(GenerateConfig config) async {
