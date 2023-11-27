@@ -70,7 +70,9 @@ Future<void> generateRunFrbCodegenCommandGenerate(GenerateConfig config, String 
   // TODO('just dart_pub_get');
   // TODO('just install_expand');
 
-  TODO('just generate_all');
+  '''
+  generate_all: generate_ffigen generate_bridge generate_book_help
+  ''';
   await _maybeSetExitIfChanged(config);
 }
 
