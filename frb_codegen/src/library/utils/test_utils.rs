@@ -8,6 +8,8 @@ pub(crate) fn get_test_fixture_dir(fixture_name: &str) -> PathBuf {
     PathBuf::from(env!("CARGO_MANIFEST_DIR"))
         .join("test_fixtures")
         .join(fixture_name)
+        .canonicalize()
+        .unwrap()
 }
 
 /// "golden" means comparison tests
