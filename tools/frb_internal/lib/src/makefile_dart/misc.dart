@@ -9,6 +9,7 @@ import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart'
 List<Command<void>> createCommands() {
   return [
     SimpleCommand('misc-normalize-pubspec', miscNormalizePubspec),
+    SimpleCommand('precommit-fast', precommitFast),
   ];
 }
 
@@ -18,4 +19,10 @@ Future<void> miscNormalizePubspec() async {
     final file = File('${exec.pwd}$package/pubspec.lock');
     file.writeAsStringSync(file.readAsStringSync().replaceAll('pub.flutter-io.cn', 'pub.dev'));
   }
+}
+
+Future<void> precommitFast() async {
+  TODO_dart_format;
+  TODO_rust_format;
+  await miscNormalizePubspec();
 }
