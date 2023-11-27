@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:developer';
-import 'dart:io';
 import 'dart:isolate';
 
 import 'package:vm_service/vm_service.dart' as vm_service;

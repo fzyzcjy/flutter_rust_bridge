@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_print
 
-import 'dart:io';
-
+import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:native_assets_cli/native_assets_cli.dart';
 
 /// Utilities that can be used in `build.dart`.
@@ -13,7 +12,7 @@ void simpleBuild(List<String> args) async {
   final buildOutput = BuildOutput();
 
   final rustCrateDir = buildConfig.packageRoot.resolve('rust');
-  _executeProcess('cargo', ['build', '--release'], workingDirectory: rustCrateDir.toFilePath());
+  await runCommand('cargo', ['build', '--release'], pwd: rustCrateDir.toFilePath(), silent: false);
 
   final dependencies = {
     rustCrateDir,
@@ -23,13 +22,4 @@ void simpleBuild(List<String> args) async {
   buildOutput.dependencies.dependencies.addAll(dependencies);
 
   await buildOutput.writeToFile(outDir: buildConfig.outDir);
-}
-
-Future<void> _executeProcess(String executable, List<String> arguments, {String? workingDirectory}) async {
-  print('executeProcess: $executable $arguments $workingDirectory');
-  final process = await Process.start(executable, arguments, workingDirectory: workingDirectory);
-  process.stdout.listen((e) => print(String.fromCharCodes(e)));
-  process.stderr.listen((e) => print('[STDERR] ${String.fromCharCodes(e)}'));
-  final exitCode = await process.exitCode;
-  if (exitCode != 0) throw Exception('Process execution failed (exitCode=$exitCode)');
 }
