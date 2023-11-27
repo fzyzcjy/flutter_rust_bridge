@@ -29,9 +29,9 @@ const _kDartPackages = <String>[
 
 List<Command<void>> createCommands() {
   return [
-    SimpleCommand(name: 'lint', executor: () => lint(config)),
-    SimpleCommand(name: 'lint-rust', executor: () => lintRust(config)),
-    SimpleCommand(name: 'lint-dart', executor: () => lintDart(config)),
+    SimpleConfigCommand('lint', lint, _$populateLintConfigParser, _$parseLintConfigResult),
+    SimpleConfigCommand('lint-rust', lintRust, _$populateLintConfigParser, _$parseLintConfigResult),
+    SimpleConfigCommand('lint-dart', lintDart, _$populateLintConfigParser, _$parseLintConfigResult),
   ];
 }
 
