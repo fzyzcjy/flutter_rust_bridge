@@ -30,6 +30,21 @@ class TestDartConfig {
 
 Future<void> testRust(TestConfig config) async {
   TODO;
+  '''
+    just install_expand
+    just _test_rust_single frb_codegen --features uuid,chrono
+    just _test_rust_single frb_rust
+    just _test_rust_single frb_macros
+    just _test_rust_single {{dir_example_pure_dart}}/rust
+    just _test_rust_single {{dir_example_with_flutter}}/rust
+    just _test_rust_single {{dir_example_pure_dart_multi}}/rust
+    just _test_rust_single {{dir_example_pure_dart_multi}}/rust --features c-output
+    just _test_rust_single {{dir_example_pure_dart_multi}}/rust --features c-output,extra-c-output-path
+
+_test_rust_single directory *args:
+    cd {{directory}} && cargo build {{args}}
+    cd {{directory}} && cargo test {{args}}
+  ''';
 }
 
 Future<void> testDartNative(TestDartConfig config) async {
