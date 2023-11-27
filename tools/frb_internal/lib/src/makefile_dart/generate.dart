@@ -4,37 +4,39 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 
-part 'codegen.g.dart';
+part 'generate.g.dart';
 
 List<Command<void>> createCommands() {
   return [
-    SimpleConfigCommand('codegen', codegen, _$populateCodegenConfigParser, _$parseCodegenConfigResult),
-    SimpleConfigCommand('codegen-internal', codegenInternal, _$populateCodegenConfigParser, _$parseCodegenConfigResult),
-    SimpleConfigCommand('codegen-main', codegenMain, _$populateCodegenConfigParser, _$parseCodegenConfigResult),
+    SimpleConfigCommand('generate', generate, _$populateGenerateConfigParser, _$parseGenerateConfigResult),
+    SimpleConfigCommand(
+        'generate-internal', generateInternal, _$populateGenerateConfigParser, _$parseGenerateConfigResult),
+    SimpleConfigCommand(
+        'generate-run-frb-codegen', generateRunFrbCodegen, _$populateGenerateConfigParser, _$parseGenerateConfigResult),
   ];
 }
 
 @CliOptions()
-class CodegenConfig {
+class GenerateConfig {
   @CliOption(defaultsTo: false)
   final bool setExitIfChanged;
 
-  const CodegenConfig({
+  const GenerateConfig({
     required this.setExitIfChanged,
   });
 }
 
-Future<void> codegen(CodegenConfig config) async {
-  await codegenInternal(config);
-  await codegenMain(config);
+Future<void> generate(GenerateConfig config) async {
+  await generateInternal(config);
+  await generateRunFrbCodegen(config);
 }
 
-Future<void> codegenInternal(CodegenConfig config) async {
+Future<void> generateInternal(GenerateConfig config) async {
   await generator.generate();
   await _maybeSetExitIfChanged(config);
 }
 
-Future<void> codegenMain(CodegenConfig config) async {
+Future<void> generateRunFrbCodegen(GenerateConfig config) async {
   TODO('just install_ffigen_dependency');
   TODO('just dart_pub_get');
   TODO('just dart_check_included_source');
@@ -43,7 +45,7 @@ Future<void> codegenMain(CodegenConfig config) async {
   await _maybeSetExitIfChanged(config);
 }
 
-Future<void> _maybeSetExitIfChanged(CodegenConfig config) async {
+Future<void> _maybeSetExitIfChanged(GenerateConfig config) async {
   if (config.setExitIfChanged) {
     await exec('git diff --exit-code');
   }
