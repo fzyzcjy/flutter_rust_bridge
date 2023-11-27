@@ -20,9 +20,6 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: "3.x"
-      - uses: extractions/setup-just@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: just ci_dart_valgrind
 
@@ -65,9 +62,6 @@ jobs:
       - name: Add Rust targets
 
         run: rustup target add aarch64-apple-ios x86_64-apple-ios
-      - uses: extractions/setup-just@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install `cargo-lipo`
         run: just install_lipo
@@ -116,9 +110,6 @@ jobs:
 
         with:
           java-version: "11.x" # "betterprogramming.pub" says must be java "8"
-      - uses: extractions/setup-just@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # #499, https://github.com/actions/virtual-environments/issues/5595
       - name: Configure ndk
@@ -192,11 +183,6 @@ jobs:
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
 
-      - uses: extractions/setup-just@v1
-
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Install LLVM and Clang
         uses: KyleMayes/install-llvm-action@v1
         with:
@@ -238,11 +224,6 @@ jobs:
   #       with:
   #         toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
 
-  #     - uses: extractions/setup-just@v1
-
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   #     - run: just flutter_example_with_flutter_integration_test
 
   flutter_test_linux:
@@ -263,9 +244,6 @@ jobs:
       - name: Setup headless display
 
         uses: pyvista/setup-headless-display-action@v1
-      - uses: extractions/setup-just@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: just install_prerequisite_for_integration_test_linux
 
@@ -296,9 +274,6 @@ jobs:
         with:
           sdk: ${{ env.FRB_MAIN_DART_VERSION }}
           architecture: x64
-      - uses: extractions/setup-just@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: just install_ffigen_dependency
       - run: just dart_pub_get dart_only
@@ -340,10 +315,6 @@ jobs:
           cache: true
           flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
-
-      - uses: extractions/setup-just@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: just install_ffigen_dependency
       - run: just dart_pub_get dart_only

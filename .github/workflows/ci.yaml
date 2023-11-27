@@ -160,9 +160,6 @@ jobs:
           toolchain: nightly
           target: wasm32-unknown-unknown
           components: rust-src,rustfmt
-      - uses: extractions/setup-just@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: just install_ffigen
 
