@@ -39,31 +39,8 @@ install_corrosion_linux:
 
 # ============================ build & test ============================
 
-dart_test_web_unit:
-    cd frb_dart && dart pub get
-    cd frb_dart && dart test test/*.dart
-    cd frb_dart && dart test -p chrome test/*.dart
-
-dart_test_web_integration features="":
-    just dart_pub_get dart_only
-    cd {{dir_example_pure_dart}}/dart && dart run \
-      ../../../frb_dart/bin/serve.dart \
-      -c ../rust --dart-input lib/main.web.dart --root web/ --run-tests \
-      --features={{features}}
-
 dart_test_valgrind name:
     just _dart_test_raw {{name}} "PYTHONUNBUFFERED=1 ./valgrind_util.py"
-
-dart_test_simple name:
-    just _dart_test_raw {{name}} ""
-
-_dart_test_raw name script_prefix:
-    cd frb_example/{{name}}/rust && cargo build --verbose
-    # need to be AOT, since prod environment is AOT, and JIT+valgrind will have strange problems
-    cd frb_example/{{name}}/dart && dart compile exe bin/{{name}}.dart -o main.exe
-    cd frb_example/{{name}}/dart && \
-        {{script_prefix}} ./main.exe \
-        "../../../target/debug/libflutter_rust_bridge_example_{{name}}.{{library_file_ext}}" --chain-stack-traces
 
 flutter_example_with_flutter_integration_test:
     flutter config --enable-{{ os() }}-desktop
@@ -88,12 +65,6 @@ ci_dart_valgrind:
     just install_valgrind
     just dart_pub_get dart_only
     just dart_test_valgrind pure_dart
-
-ci_dart_simple:
-    just install_ffigen_dependency
-    just dart_pub_get dart_only
-    just dart_test_simple pure_dart
-    just dart_test_simple pure_dart_multi
 
 # ============================ misc ============================
 
