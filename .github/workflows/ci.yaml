@@ -113,11 +113,11 @@ jobs:
         image_and_version:
           # run on various platforms
           - image: macos-11
-            version: ${{ env.FRB_MAIN_RUST_VERSION }}
+            version: ''
           - image: windows-2019
-            version: ${{ env.FRB_MAIN_RUST_VERSION }}
+            version: ''
           - image: ubuntu-latest
-            version: ${{ env.FRB_MAIN_RUST_VERSION }}
+            version: ''
           # run on various rust versions
           - image: ubuntu-latest
             version: nightly
@@ -133,7 +133,7 @@ jobs:
       - id: rust-toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: ${{ matrix.image_and_version.version }}
+          toolchain: '${{ matrix.image_and_version.version != '' ? matrix.image_and_version.version : env.FRB_MAIN_RUST_VERSION }}'
           components: rustfmt
       # TODO cache (for rust-toolchain, also for cargo build)
       - uses: dart-lang/setup-dart@v1
