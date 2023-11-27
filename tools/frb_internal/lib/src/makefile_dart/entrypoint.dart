@@ -77,7 +77,7 @@ Future<void> lintRustWasm(LintConfig config) async {
 }
 
 Future<void> lintDart(LintConfig config) async {
-  await dartPubGet();
+  // await dartPubGet();
   for (final package in _kDartPackages) {
     await lintDartMain(config, package);
   }
