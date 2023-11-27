@@ -41,12 +41,14 @@ Future<void> generateInternal(GenerateConfig config) async {
 }
 
 Future<void> generateInternalFrbExamplePureDart(GenerateConfig config) async {
-  await frb_example_pure_dart_generator.generate();
-  await _maybeSetExitIfChanged(config);
+  await _wrapMaybeSetExitIfChanged(config, () async {
+    await frb_example_pure_dart_generator.generate();
+  });
 }
 
 Future<void> generateInternalDartSource(GenerateConfig config) async {
-  await exec('''
+  await _wrapMaybeSetExitIfChanged(config, () async {
+    await exec('''
     #!/usr/bin/env bash
     set -euxo pipefail
 
@@ -57,33 +59,36 @@ Future<void> generateInternalDartSource(GenerateConfig config) async {
     cp -rf ./sdk/runtime/include/* ./frb_rust/src/dart_api/
     rm -r sdk
   ''');
-  await _maybeSetExitIfChanged(config);
+  });
 }
 
 Future<void> generateInternalRust(GenerateConfig config) async {
-  await exec('cargo run -- internal-generate', relativePwd: 'frb_codegen');
-  await _maybeSetExitIfChanged(config);
+  await _wrapMaybeSetExitIfChanged(config, () async {
+    await exec('cargo run -- internal-generate', relativePwd: 'frb_codegen');
+  });
 }
 
 Future<void> generateInternalBookHelp(GenerateConfig config) async {
-  for (final cmd in [
-    null,
-    'generate',
-    'create',
-    'integrate',
-    'build-web',
-  ]) {
-    await exec('cargo run -- $cmd --help > book/src/generated/${cmd ?? 'main'}.txt', relativePwd: 'frb_codegen');
-  }
-  await _maybeSetExitIfChanged(config);
+  await _wrapMaybeSetExitIfChanged(config, () async {
+    for (final cmd in [
+      null,
+      'generate',
+      'create',
+      'integrate',
+      'build-web',
+    ]) {
+      await exec('cargo run -- $cmd --help > book/src/generated/${cmd ?? 'main'}.txt', relativePwd: 'frb_codegen');
+    }
+  });
 }
 
 Future<void> generateInternalBuildRunner(GenerateConfig config) async {
-  for (final package in kDartNonExamplePackages) {
-    await runDartPubGetIfNotRunYet(package);
-    await exec('dart run build_runner build --delete-conflicting-outputs', relativePwd: package);
-  }
-  await _maybeSetExitIfChanged(config);
+  await _wrapMaybeSetExitIfChanged(config, () async {
+    for (final package in kDartNonExamplePackages) {
+      await runDartPubGetIfNotRunYet(package);
+      await exec('dart run build_runner build --delete-conflicting-outputs', relativePwd: package);
+    }
+  });
 }
 
 Future<void> generateRunFrbCodegen(GenerateConfig config) async {
@@ -94,8 +99,17 @@ Future<void> generateRunFrbCodegen(GenerateConfig config) async {
 
 /// Run flutter_rust_bridge_codegen's `generate` subcommand
 Future<void> generateRunFrbCodegenCommandGenerate(GenerateConfig config, String package) async {
-  await runDartPubGetIfNotRunYet(package);
-  await exec('cargo run --manifest-path ${exec.pwd}/frb_codegen/Cargo.toml -- generate', relativePwd: package);
+  await _wrapMaybeSetExitIfChanged(config, () async {
+    await runDartPubGetIfNotRunYet(package);
+    await exec('cargo run --manifest-path ${exec.pwd}/frb_codegen/Cargo.toml -- generate', relativePwd: package);
+  });
+}
+
+Future<void> _wrapMaybeSetExitIfChanged(GenerateConfig config, Future<void> Function() inner) async {
+  // Before actually executing anything, check whether git repository is already dirty
+  await _maybeSetExitIfChanged(config);
+  await inner();
+  // The real check
   await _maybeSetExitIfChanged(config);
 }
 
