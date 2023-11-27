@@ -106,7 +106,11 @@ fn run_cargo_expand(rust_crate_dir: &Path, dumper: &Dumper) -> Result<String> {
 }
 
 fn install_cargo_expand() -> Result<()> {
-    execute_command("cargo", &vec!["install".into(), "expand".into()], None)?;
+    execute_command(
+        "cargo",
+        &vec!["install".into(), "cargo-expand".into()],
+        None,
+    )?;
     Ok(())
 }
 
