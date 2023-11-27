@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:args/args.dart';
 import 'package:args/command_runner.dart';
 
@@ -10,7 +12,18 @@ class SimpleExecutor {
 
   const SimpleExecutor({this.env, this.pwd});
 
-  Future<void> call(String command) async => await runCommand('/bin/sh', ['-c', command], env: env, pwd: pwd);
+  Future<void> call(String cmd) async {
+    final String command;
+    final List<String> args;
+    if (Platform.isWindows) {
+      command = 'powershell';
+      args = ['-noprofile', '-command', '& $cmd'];
+    } else {
+      command = '/bin/sh';
+      args = ['-c', cmd];
+    }
+    await runCommand(command, args, env: env, pwd: pwd);
+  }
 }
 
 extension ExtCommandRunner<T> on CommandRunner<T> {
