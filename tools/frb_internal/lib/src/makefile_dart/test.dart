@@ -34,7 +34,10 @@ Future<void> testRust(TestConfig config) async {
 
 Future<void> testRustPackage(String package) async {
   await exec('cargo build', relativePwd: package);
-  await exec('cargo test', relativePwd: package);
+  await exec('cargo test', relativePwd: package, extraEnv: {
+    // Because we have another CI to run the codegen and check outputs
+    'FRB_SKIP_GENERATE_FRB_EXAMPLE_TEST': '1',
+  });
 }
 
 Future<void> testDartNative(TestDartConfig config) async {

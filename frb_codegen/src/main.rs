@@ -37,6 +37,7 @@ mod tests {
     use clap::Parser;
     use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_test_logging;
     use serial_test::serial;
+    use std::env;
 
     #[test]
     #[serial]
@@ -52,6 +53,11 @@ mod tests {
 
     fn body(name: &str) -> anyhow::Result<()> {
         configure_opinionated_test_logging();
+
+        if env::var("FRB_SKIP_GENERATE_FRB_EXAMPLE_TEST").unwrap_or_default() == "1" {
+            return Ok(());
+        }
+
         set_cwd_test_fixture(&format!("../../frb_example/{name}"))?;
         main_given_cli(Cli::parse_from(vec!["", "generate"]))
     }
