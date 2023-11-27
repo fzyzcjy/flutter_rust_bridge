@@ -16,11 +16,15 @@ const kDartExamplePackages = [
   // TODO `with_flutter` example
 ];
 
-const kDartPackages = [
+const kDartNonExamplePackages = [
   'frb_dart',
-  ...kDartExamplePackages,
   'frb_utils',
   'tools/frb_internal',
+];
+
+const kDartPackages = [
+  ...kDartNonExamplePackages,
+  ...kDartExamplePackages,
 ];
 
 final exec = SimpleExecutor(
