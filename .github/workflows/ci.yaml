@@ -128,10 +128,6 @@ jobs:
     steps:
       # setup
       - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@stable
-        with:
-          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
-          components: rustfmt
       - uses: dart-lang/setup-dart@v1
         with:
           sdk: stable
