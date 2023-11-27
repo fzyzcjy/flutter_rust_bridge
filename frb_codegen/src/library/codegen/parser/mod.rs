@@ -197,7 +197,7 @@ mod tests {
             &serde_json::to_value(crate_map)?,
             &rust_crate_dir.join("expect_source_graph.json"),
             &vec![(
-                path_to_string(&test_fixture_dir)?,
+                path_to_string(&test_fixture_dir)?.replace('\\', "\\\\"),
                 "{the-working-directory}".to_owned(),
             )],
         )?;
