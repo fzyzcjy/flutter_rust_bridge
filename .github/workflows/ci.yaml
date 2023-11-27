@@ -117,8 +117,7 @@ jobs:
 
   test_dart_simple:
     name: 'Test :: Dart :: Simple'
-    # since Linux has https://github.com/fzyzcjy/flutter_rust_bridge/issues/1327
-    runs-on: macos-11
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
