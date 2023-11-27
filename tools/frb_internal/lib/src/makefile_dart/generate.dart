@@ -35,7 +35,7 @@ Future<void> generate(GenerateConfig config) async {
 Future<void> generateInternal(GenerateConfig config) async {
   await generateInternalFrbExamplePureDart(config);
   await generateInternalDartSource(config);
-  generate_ffigen();
+  await generateInternalRust(config);
   generate_book_help();
 }
 
@@ -56,6 +56,11 @@ Future<void> generateInternalDartSource(GenerateConfig config) async {
     cp -rf ./sdk/runtime/include/* ./frb_rust/src/dart_api/
     rm -r sdk
   ''');
+  await _maybeSetExitIfChanged(config);
+}
+
+Future<void> generateInternalRust(GenerateConfig config) async {
+  await exec('cd frb_codegen && cargo run -- internal-generate');
   await _maybeSetExitIfChanged(config);
 }
 
