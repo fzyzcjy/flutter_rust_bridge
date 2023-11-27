@@ -60,8 +60,8 @@ jobs:
 
   # ----------------------------------- codegen -----------------------------------
 
-  codegen:
-    name: Codegen
+  codegen_main:
+    name: 'Codegen :: Main'
     runs-on: ${{ matrix.image }}
 
     strategy:
@@ -85,7 +85,7 @@ jobs:
           flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
       # execute
-      - run: ./frb_internal ci-codegen
+      - run: ./frb_internal codegen-main
 
   # ----------------------------------- test -----------------------------------
 
