@@ -65,9 +65,7 @@ Future<void> generateInternalRust(GenerateConfig config) async {
 }
 
 Future<void> generateInternalBookHelp(GenerateConfig config) async {
-  TODO;
-  'cargo run --manifest-path frb_codegen/Cargo.toml -- --help > book/src/help.txt';
-  'dart run frb_dart/bin/serve.dart --help > book/src/help.serve.txt';
+  await exec('cd frb_codegen && cargo run -- --help > book/src/help.txt');
   await _maybeSetExitIfChanged(config);
 }
 
