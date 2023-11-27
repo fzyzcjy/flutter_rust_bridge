@@ -80,6 +80,7 @@ Future<void> generateInternalBookHelp(GenerateConfig config) async {
 
 Future<void> generateInternalBuildRunner(GenerateConfig config) async {
   for (final package in kDartNonExamplePackages) {
+    await runDartPubGetIfNotRunYet(package);
     await exec('cd $package && dart run build_runner build --delete-conflicting-outputs');
   }
   await _maybeSetExitIfChanged(config);

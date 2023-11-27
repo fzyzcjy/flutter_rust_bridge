@@ -44,3 +44,12 @@ final exec = SimpleExecutor(
   // Use project root directory
   pwd: Directory.current.parent.parent.path,
 );
+
+/// Normally, `dart pub get` will be run automatically when executing `dart test` and so on.
+/// But there seems to be a bug currently.
+/// Temporary workaround before https://github.com/dart-lang/sdk/issues/54160 is fixed.
+Future<void> runDartPubGetIfNotRunYet(String package) async {
+  if (!await Directory('${exec.pwd}/$package').exists()) {
+    await exec('cd $package && dart --enable-experiment=native-assets pub get');
+  }
+}

@@ -38,6 +38,8 @@ Future<void> testRustPackage(String package) async {
 }
 
 Future<void> testDartNative(TestDartConfig config) async {
+  await runDartPubGetIfNotRunYet(config.package);
+
   final dartMode = kDartModeOfPackage[config.package]!;
 
   var extraFlags = '';
@@ -52,6 +54,8 @@ Future<void> testDartNative(TestDartConfig config) async {
 }
 
 Future<void> testDartWeb(TestDartConfig config) async {
+  await runDartPubGetIfNotRunYet(config.package);
+
   final package = config.package;
   if (package == 'frb_dart') {
     await exec('cd $package && dart test -p chrome');
