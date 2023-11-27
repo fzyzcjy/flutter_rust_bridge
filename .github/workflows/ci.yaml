@@ -87,6 +87,21 @@ jobs:
       # execute
       - run: ./frb_internal codegen-main
 
+  codegen_internal:
+    name: 'Codegen :: Internal'
+    runs-on: ubuntu-latest
+
+    steps:
+      # setup
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          cache: true
+          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+          architecture: x64
+      # execute
+      - run: ./frb_internal codegen-internal
+
   # ----------------------------------- test -----------------------------------
 
   test_rust:
