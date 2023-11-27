@@ -113,11 +113,11 @@ jobs:
         image_and_version:
           # run on various platforms
           - image: macos-11
-            version: ${{ matrix.rust_version }}}
+            version: ${{ env.FRB_MAIN_RUST_VERSION }}
           - image: windows-2019
-            version: ${{ matrix.rust_version }}}
+            version: ${{ env.FRB_MAIN_RUST_VERSION }}
           - image: ubuntu-latest
-            version: ${{ matrix.rust_version }}}
+            version: ${{ env.FRB_MAIN_RUST_VERSION }}
           # run on various rust versions
           - image: ubuntu-latest
             version: nightly
