@@ -7,7 +7,7 @@ class RustGenerator extends BaseGenerator {
   RustGenerator({required super.packageRootDir, required super.interestDir});
 
   @override
-  Future<void> executeFormat() => executeRustFormat(workingDirectory: packageRootDir.toFilePath());
+  Future<void> executeFormat() => executeRustFormat(pwd: packageRootDir.toFilePath());
 
   @override
   Set<String> get duplicatorBlacklistNames => {'mod.rs'};

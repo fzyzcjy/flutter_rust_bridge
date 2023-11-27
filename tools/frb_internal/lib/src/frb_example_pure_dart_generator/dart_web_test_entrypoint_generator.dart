@@ -1,6 +1,7 @@
 import 'dart:io';
 
-import 'package:flutter_rust_bridge_internal/src/utils/execute_process.dart';
+// ignore: implementation_imports
+import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:glob/glob.dart';
 import 'package:glob/list_local_fs.dart';
 import 'package:path/path.dart' as path;
@@ -38,5 +39,5 @@ void main() {
 
   final pathOutput = dartRoot.resolve('test/dart_web_test_entrypoint.dart').toFilePath();
   File(pathOutput).writeAsStringSync(code);
-  executeProcess('dart', ['format', pathOutput]);
+  await runCommand('dart', ['format', pathOutput]);
 }

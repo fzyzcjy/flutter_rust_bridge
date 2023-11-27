@@ -1,16 +1,6 @@
-import 'dart:io';
+// ignore: implementation_imports
+import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 
-Future<void> executeProcess(String executable, List<String> arguments, {String? workingDirectory}) async {
-  print('executeProcess: $executable $arguments $workingDirectory');
-  final process = await Process.start(executable, arguments, workingDirectory: workingDirectory);
-  process.stdout.listen((e) => print(String.fromCharCodes(e)));
-  process.stderr.listen((e) => print('[STDERR] ${String.fromCharCodes(e)}'));
-  final exitCode = await process.exitCode;
-  if (exitCode != 0) throw Exception('Process execution failed (exitCode=$exitCode)');
-}
+Future<void> executeDartFormat({required String pwd}) async => runCommand('dart', ['format', '.'], pwd: pwd);
 
-Future<void> executeDartFormat({required String workingDirectory}) async =>
-    executeProcess('dart', ['format', '.'], workingDirectory: workingDirectory);
-
-Future<void> executeRustFormat({required String workingDirectory}) async =>
-    executeProcess('cargo', ['+nightly', 'fmt'], workingDirectory: workingDirectory);
+Future<void> executeRustFormat({required String pwd}) async => runCommand('cargo', ['+nightly', 'fmt'], pwd: pwd);

@@ -7,7 +7,7 @@ class DartGenerator extends BaseGenerator {
   DartGenerator({required super.packageRootDir, required super.interestDir});
 
   @override
-  Future<void> executeFormat() => executeDartFormat(workingDirectory: packageRootDir.toFilePath());
+  Future<void> executeFormat() => executeDartFormat(pwd: packageRootDir.toFilePath());
 
   @override
   Set<String> get duplicatorBlacklistNames => {};
