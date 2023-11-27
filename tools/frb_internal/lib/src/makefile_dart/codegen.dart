@@ -34,7 +34,12 @@ Future<void> codegenInternal(CodegenConfig config) async {
 }
 
 Future<void> codegenMain(CodegenConfig config) async {
-  TODO;
+  TODO('just install_ffigen_dependency');
+  TODO('just dart_pub_get');
+  TODO('just dart_check_included_source');
+  TODO('just install_expand');
+  TODO('just generate_all');
+  TODO('just check_no_git_diff');
 }
 
 void _maybeSetExitIfChanged(CodegenConfig config) {

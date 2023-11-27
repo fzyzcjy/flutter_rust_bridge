@@ -169,14 +169,6 @@ ci_dart_simple:
     just dart_test_simple pure_dart
     just dart_test_simple pure_dart_multi
 
-ci_codegen:
-    just install_ffigen_dependency
-    just dart_pub_get
-    just dart_check_included_source
-    just install_expand
-    just generate_all
-    just check_no_git_diff
-
 # ============================ misc ============================
 
 clean:
