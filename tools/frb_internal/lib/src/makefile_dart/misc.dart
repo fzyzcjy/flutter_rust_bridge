@@ -5,6 +5,7 @@ import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart'
 const kRustPackages = [
   'frb_rust',
   'frb_codegen',
+  'frb_macros',
   'frb_example/dart_minimal/rust',
   'frb_example/pure_dart/rust',
   // TODO `with_flutter` example
