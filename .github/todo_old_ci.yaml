@@ -337,6 +337,7 @@ jobs:
           command: just dart_test_web_integration "${{ join(matrix.features, ',') }}"
           current_path: frb_example/pure_dart/dart
 
+  # TODO can rm? since we can directly test w/ vm service
   dart_test_vm_service:
     name: Dart test with vm service
     runs-on: ubuntu-latest
