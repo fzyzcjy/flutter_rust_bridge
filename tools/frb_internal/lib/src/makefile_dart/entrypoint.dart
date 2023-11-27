@@ -37,6 +37,7 @@ List<Command<void>> createCommands() {
 
 @CliOptions()
 class LintConfig {
+  @CliOption(defaultsTo: false)
   final bool fix;
 
   const LintConfig({
