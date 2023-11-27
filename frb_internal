@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+cd tools/frb_internal && exec dart run flutter_rust_bridge_internal "$@"
