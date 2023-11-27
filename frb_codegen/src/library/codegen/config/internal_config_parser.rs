@@ -314,6 +314,7 @@ mod tests {
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::path_utils::path_to_string;
     use crate::utils::test_utils::{get_test_fixture_dir, json_golden_test};
+    use log::info;
     use serde_json::Value;
     use serial_test::serial;
     use std::env;
@@ -335,6 +336,7 @@ mod tests {
         configure_opinionated_test_logging();
         let test_fixture_dir = get_test_fixture_dir(fixture_name);
         env::set_current_dir(&test_fixture_dir)?;
+        info!("test_fixture_dir={test_fixture_dir:?}");
 
         let config = Config::from_files_auto()?;
 

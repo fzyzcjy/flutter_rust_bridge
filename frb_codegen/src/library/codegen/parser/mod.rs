@@ -124,6 +124,7 @@ mod tests {
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::path_utils::path_to_string;
     use crate::utils::test_utils::{get_test_fixture_dir, json_golden_test};
+    use log::info;
     use serial_test::serial;
     use std::path::Path;
 
@@ -185,6 +186,7 @@ mod tests {
         configure_opinionated_test_logging();
         let test_fixture_dir = get_test_fixture_dir(fixture_name);
         let rust_crate_dir = test_fixture_dir.clone();
+        info!("test_fixture_dir={test_fixture_dir:?}");
 
         let crate_map = Crate::parse(
             &rust_crate_dir.join("Cargo.toml"),
