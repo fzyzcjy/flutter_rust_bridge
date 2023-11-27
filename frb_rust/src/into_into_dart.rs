@@ -183,9 +183,8 @@ impl_into_into_dart!(backtrace::Backtrace);
 
 #[cfg(feature = "chrono")]
 mod chrono_impls {
-    use chrono::{Local, Utc};
-
     use super::IntoIntoDart;
+    use chrono::{Local, Utc};
     impl_into_into_dart!(chrono::Duration);
     impl_into_into_dart!(chrono::NaiveDateTime);
     impl_into_into_dart!(chrono::DateTime<Local>);

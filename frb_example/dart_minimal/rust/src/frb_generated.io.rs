@@ -1,7 +1,5 @@
 use super::*;
-
 // Section: imports
-
 use flutter_rust_bridge::rust2dart::IntoIntoDart;
 use flutter_rust_bridge::Handler;
 

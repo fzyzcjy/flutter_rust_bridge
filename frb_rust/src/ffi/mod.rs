@@ -3,13 +3,11 @@ pub type DartAbi = wasm_bindgen::JsValue;
 #[cfg(not(wasm))]
 pub type DartAbi = allo_isolate::ffi::DartCObject;
 #[cfg(not(wasm))]
+pub use allo_isolate::IntoDart;
+#[cfg(not(wasm))]
 use dart_sys::Dart_PersistentHandle;
-
 use log::warn;
 use std::{mem, ops, sync::Arc, thread::ThreadId};
-
-#[cfg(not(wasm))]
-pub use allo_isolate::IntoDart;
 
 #[cfg(wasm)]
 pub type MessagePort = web::PortLike;
@@ -42,10 +40,9 @@ pub type Channel = allo_isolate::Isolate;
 #[cfg(not(wasm))]
 pub mod io;
 
+use crate::DartSafe;
 #[cfg(not(wasm))]
 pub use io::*;
-
-use crate::DartSafe;
 
 /// see [uuid::Bytes](https://docs.rs/uuid/1.1.2/uuid/type.Bytes.html)
 #[cfg(feature = "uuid")]

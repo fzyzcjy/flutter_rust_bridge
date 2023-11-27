@@ -1,14 +1,12 @@
 //! Wrappers and executors for Rust functions.
 
-use std::any::Any;
-use std::panic;
-use std::panic::{RefUnwindSafe, UnwindSafe};
-
 use crate::ffi::{IntoDart, MessagePort};
-
 use crate::rust2dart::{BoxIntoDart, IntoIntoDart, Rust2Dart, Rust2DartAction, TaskCallback};
 use crate::support::WireSyncReturn;
 use crate::{spawn, DartAbi};
+use std::any::Any;
+use std::panic;
+use std::panic::{RefUnwindSafe, UnwindSafe};
 
 /// The types of return values for a particular Rust function.
 #[derive(Copy, Clone)]

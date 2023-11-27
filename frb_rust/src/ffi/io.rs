@@ -1,8 +1,7 @@
-use crate::Channel;
-
 pub use super::DartAbi;
 pub use super::MessagePort;
 use crate::support::{box_from_leak_ptr, WireSyncReturn};
+use crate::Channel;
 pub use allo_isolate::*;
 use dart_sys::Dart_DeletePersistentHandle_DL;
 use dart_sys::Dart_Handle;
