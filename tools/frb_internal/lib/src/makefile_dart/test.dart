@@ -44,12 +44,16 @@ Future<void> testDartNative(TestDartConfig config) async {
 }
 
 Future<void> testDartWeb(TestDartConfig config) async {
+  TODO;
   '''
   dart_test_web_unit:
     cd frb_dart && dart pub get
     cd frb_dart && dart test test/*.dart
     cd frb_dart && dart test -p chrome test/*.dart
+  ''';
 
+  TODO;
+  '''
   dart_test_web_integration features="":
     just dart_pub_get dart_only
     cd {{dir_example_pure_dart}}/dart && dart run \
@@ -57,5 +61,4 @@ Future<void> testDartWeb(TestDartConfig config) async {
       -c ../rust --dart-input lib/main.web.dart --root web/ --run-tests \
       --features={{features}}
   ''';
-  TODO;
 }
