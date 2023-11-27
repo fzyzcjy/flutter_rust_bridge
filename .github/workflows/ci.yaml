@@ -30,6 +30,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # setup
       - uses: actions/checkout@v4
       - uses: dart-lang/setup-dart@v1
         with:
@@ -40,6 +41,7 @@ jobs:
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt, clippy
+      # execute
       - run: ./frb_internal lint-rust
 
   lint_dart:
@@ -47,9 +49,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # setup
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
         with:
           cache: true
           flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+      # execute
       - run: ./frb_internal lint-dart
