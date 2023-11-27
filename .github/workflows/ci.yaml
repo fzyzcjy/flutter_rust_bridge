@@ -169,7 +169,7 @@ jobs:
             ~/.cargo/registry/index/
             ~/.cargo/registry/cache/
             ~/.cargo/git/db/
-            frb_codegen/target
+            target
             frb_example/pure_dart/rust/target/
             frb_example/pure_dart/dart/.local-chromium
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
