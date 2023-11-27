@@ -31,6 +31,7 @@ const kDartPackages = [
 enum DartMode { dart, flutter }
 
 const kDartModeOfPackage = {
+  'frb_dart': DartMode.dart,
   'frb_example/dart_minimal': DartMode.dart,
   'frb_example/pure_dart': DartMode.dart,
   // TODO `with_flutter` example
