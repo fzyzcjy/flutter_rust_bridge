@@ -118,6 +118,12 @@ jobs:
   test_dart_simple:
     name: 'Test :: Dart :: Simple'
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package:
+          - frb_example/dart_minimal
+          - frb_example/pure_dart
 
     steps:
       # setup
@@ -131,4 +137,4 @@ jobs:
           sdk: stable
           architecture: x64
       # execute
-      - run: ./frb_internal test-dart-simple
+      - run: ./frb_internal test-dart-simple --package ${{ package }}
