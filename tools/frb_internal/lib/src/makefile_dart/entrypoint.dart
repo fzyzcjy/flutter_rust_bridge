@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:flutter_rust_bridge_internal/src/utils/execute_process.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 
 /// Similar to `makefile`/`justfile`/..., but based on Dart
@@ -76,5 +75,8 @@ Future<void> lintDartPana(LintConfig config) async {
 }
 
 Future<void> dartPubGet() async {
-  TODO;
+  for (final package in _kDartPackages) {
+    // TODO `with_flutter` is `flutter pub get`
+    await execute('cd $package && dart pub get');
+  }
 }
