@@ -178,9 +178,10 @@ jobs:
         run: |
           sh -c "$(curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf)" '' -f
 
+      # TODO
       - name: Run unit tests
         run: just dart_test_web_unit
-
+      # TODO
       - name: Run integration tests
         timeout-minutes: 20
         uses: Wandalen/wretry.action@v1.0.25
