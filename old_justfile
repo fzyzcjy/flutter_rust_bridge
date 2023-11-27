@@ -100,30 +100,6 @@ cargo_run_codegen := if env_var_or_default("FRB_TEST_USE_RELEASE_VERSION", "fals
     "cargo run --manifest-path frb_codegen/Cargo.toml --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --features 'chrono,uuid' -- "
 }
 
-_generate_bridge_pure_dart:
-    {{cargo_run_codegen}} frb_example/pure_dart/rust/.flutter_rust_bridge.yml
-
-_generate_bridge_pure_dart_multi:
-    {{cargo_run_codegen}} \
-        --rust-input frb_example/pure_dart_multi/rust/src/api_1.rs frb_example/pure_dart_multi/rust/src/api_2.rs \
-        --dart-output frb_example/pure_dart_multi/dart/lib/bridge_generated_api_1.dart frb_example/pure_dart_multi/dart/lib/bridge_generated_api_2.dart \
-        --dart-format-line-length 120 \
-        --dart-enums-style \
-        --rust-output frb_example/pure_dart_multi/rust/src/generated_api_1.rs frb_example/pure_dart_multi/rust/src/generated_api_2.rs \
-        --class-name ApiClass1 ApiClass2 \
-        --wasm
-
-_generate_bridge_with_flutter:
-    {{cargo_run_codegen}} \
-        --rust-input frb_example/with_flutter/rust/src/api.rs \
-        --dart-output frb_example/with_flutter/lib/bridge_generated.dart \
-        --c-output frb_example/with_flutter/ios/Runner/bridge_generated.h \
-        --dart-decl-output frb_example/with_flutter/lib/bridge_definitions.dart \
-        --dart-format-line-length 120 \
-        --dart-enums-style \
-        --no-use-bridge-in-method \
-        --wasm
-
 # ============================ linters ============================
 # moved
 
