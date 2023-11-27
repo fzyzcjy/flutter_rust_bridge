@@ -40,7 +40,7 @@ Future<void> codegenMain(CodegenConfig config) async {
   TODO('just dart_check_included_source');
   TODO('just install_expand');
   TODO('just generate_all');
-  TODO('just check_no_git_diff');
+  await _maybeSetExitIfChanged(config);
 }
 
 Future<void> _maybeSetExitIfChanged(CodegenConfig config) async {
