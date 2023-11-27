@@ -120,6 +120,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # setup
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -129,11 +130,5 @@ jobs:
         with:
           sdk: stable
           architecture: x64
-      - uses: actions/setup-python@v2
-        with:
-          python-version: "3.x"
-      - uses: extractions/setup-just@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - run: just ci_dart_simple
+      # execute
+      - run: ./frb_internal test-dart-simple
