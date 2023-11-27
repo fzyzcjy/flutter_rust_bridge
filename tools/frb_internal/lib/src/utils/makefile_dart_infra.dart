@@ -1,9 +1,11 @@
-// TODO merge with things in frb_util
 import 'package:args/args.dart';
 import 'package:args/command_runner.dart';
 
+// ignore: implementation_imports
+import 'package:flutter_rust_bridge/src/cli/run_command.dart';
+
 Future<void> execute(String command) async {
-  TODO;
+  await runCommand(command, []);
 }
 
 extension ExtCommandRunner<T> on CommandRunner<T> {
