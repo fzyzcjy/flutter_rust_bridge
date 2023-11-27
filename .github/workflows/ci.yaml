@@ -93,6 +93,10 @@ jobs:
     steps:
       # setup
       - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+          components: rustfmt, clippy
       - uses: subosito/flutter-action@v2
         with:
           cache: true
