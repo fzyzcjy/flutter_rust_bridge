@@ -1,11 +1,5 @@
 # TODO migrate this file
 
-pana := if os() == "windows" {
-    "pana.bat"
-} else {
-    "pana"
-}
-
 sed := if os() == "macos" {
     "sed -i ''"
 } else {

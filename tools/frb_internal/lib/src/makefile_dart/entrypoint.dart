@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_rust_bridge_internal/src/utils/execute_process.dart';
 
 /// Similar to `makefile`/`justfile`/..., but based on Dart
@@ -52,6 +54,8 @@ Future<void> lintDartMain(LintConfig config) async {
 }
 
 Future<void> lintDartPana(LintConfig config) async {
+  final pana = Platform.isWindows ? 'pana.bat' : 'pana';
+
   await execute('flutter pub global activate pana');
   await execute('cd frb_dart && $pana --no-warning --line-length 80 --exit-code-threshold 0');
 }
