@@ -177,6 +177,7 @@ jobs:
     name: 'Test :: Dart :: Web'
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         package:
           - frb_dart
