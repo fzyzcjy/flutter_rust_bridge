@@ -51,6 +51,5 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           cache: true
-          channel: "stable"
           flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
       - run: ./frb_internal lint-dart
