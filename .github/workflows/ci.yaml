@@ -89,8 +89,8 @@ jobs:
 
   # ----------------------------------- test -----------------------------------
 
-  rust_build_and_test:
-    name: Rust build and test
+  test_rust:
+    name: 'Test :: Rust'
     runs-on: ${{ matrix.image }}
     strategy:
       fail-fast: false
@@ -118,5 +118,5 @@ jobs:
 
       - run: just install_ffigen_dependency
       - run: just dart_pub_get dart_only
-      - run: just rust_build_and_test
+      - run: just test_rust
 
