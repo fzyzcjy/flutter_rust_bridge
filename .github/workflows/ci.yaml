@@ -24,7 +24,7 @@ jobs:
   # ----------------------------------- lint -----------------------------------
 
   lint_rust:
-    name: Lint :: Rust
+    name: 'Lint :: Rust'
     runs-on: ubuntu-latest
 
     steps:
@@ -43,7 +43,7 @@ jobs:
       - run: just lint_rust
 
   lint_dart:
-    name: Lint :: Dart
+    name: 'Lint :: Dart'
     runs-on: ubuntu-latest
 
     steps:
