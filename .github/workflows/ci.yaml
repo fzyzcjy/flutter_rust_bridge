@@ -106,14 +106,26 @@ jobs:
 
   test_rust:
     name: 'Test :: Rust'
-    runs-on: ${{ matrix.image }}
+    runs-on: ${{ matrix.image_and_version.image }}
     strategy:
       fail-fast: false
       matrix:
-        image:
-          - macos-11
-          - windows-2019
-          - ubuntu-latest
+        image_and_version:
+          # run on various platforms
+          - image: macos-11
+            version: ${{ matrix.rust_version }}}
+          - image: windows-2019
+            version: ${{ matrix.rust_version }}}
+          - image: ubuntu-latest
+            version: ${{ matrix.rust_version }}}
+          # run on various rust versions
+          - image: ubuntu-latest
+            version: nightly
+          - image: ubuntu-latest
+            version: nightly-2023-06-28 # pre https://github.com/rust-lang/rust/issues/113152
+          - image: ubuntu-latest
+            version: nightly-2023-07-26 # post https://github.com/rust-lang/rust/issues/113152
+          # TODO(@fzyzcjy, @gutenfries): add MSRV here, as well as other locked versions as needed
 
     steps:
       # setup
@@ -121,8 +133,9 @@ jobs:
       - id: rust-toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+          toolchain: ${{ matrix.image_and_version.version }}
           components: rustfmt
+      # TODO cache
       - uses: dart-lang/setup-dart@v1
         with:
           sdk: ${{ env.FRB_MAIN_DART_VERSION }}
