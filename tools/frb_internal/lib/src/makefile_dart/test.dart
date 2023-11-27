@@ -41,7 +41,6 @@ Future<void> testRustPackage(String package) async {
 
 Future<void> testDartNative(TestDartConfig config) async {
   '''
-    just install_ffigen_dependency
     just dart_pub_get dart_only
     just dart_test_simple pure_dart
     just dart_test_simple pure_dart_multi
