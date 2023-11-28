@@ -181,7 +181,7 @@ fn generate_import_dart_api_layer(
             let dir_base = (dart_impl_output_path[TargetOrCommon::Common].parent())
                 .context("cannot find parent dir")?;
             let relative_path = diff_paths(path, dir_base).context("cannot find relative path")?;
-            let relative_path = path_to_string(&relative_path)?;
+            let relative_path = path_to_string(&relative_path)?.replace('\\', "/");
             Ok(format!("import '{relative_path}';\n"))
         })
         .collect::<anyhow::Result<Vec<_>>>()?
