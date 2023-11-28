@@ -82,8 +82,7 @@ Future<void> generateInternalDartSource(GenerateConfig config) async {
     cd sdk
     git sparse-checkout set runtime/include
     cd ..
-    cp -rf ./sdk/runtime/include/* ./frb_rust/src/dart_api/
-    rm -r sdk
+    cp -rf ./sdk/runtime/include/* ${exec.pwd}frb_rust/src/dart_api/
   ''');
   });
 }
