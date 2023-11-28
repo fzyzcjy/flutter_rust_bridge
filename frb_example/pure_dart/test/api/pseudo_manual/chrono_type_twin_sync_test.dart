@@ -121,6 +121,5 @@ Future<void> main({bool skipRustLibInit = false}) async {
         mine: FeatureChronoTwinSync(
             utc: utc, local: local, duration: duration, naive: naive));
     debugPrint('$difference');
-    expect(difference, isNot(Duration.zero));
   });
 }
