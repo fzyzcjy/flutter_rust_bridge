@@ -150,7 +150,8 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
     // Use temp dir within the repo. If use system-wide temp directory,
     // may see "OS Error: Cross-device link, errno = 18" and cannot use the
     // cheap "move directory" operation.
-    final dirTemp = path.join(exec.pwd!, 'target', randomTempDirName());
+    final dirTemp = path.join(exec.pwd!, 'target',
+        'GenerateRunFrbCodegenCommandIntegrate', randomTempDirName());
     print('Pick temporary directory: $dirTemp');
     await Directory(dirTemp).create(recursive: true);
 
