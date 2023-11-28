@@ -20,7 +20,6 @@ pub mod optional_twin_sync;
 pub mod primitive;
 pub mod primitive_list;
 pub mod primitive_list_misc_twin_sync;
-pub mod primitive_list_sync_misc_twin_sync;
 pub mod primitive_list_twin_sync;
 pub mod primitive_misc_twin_sync;
 pub mod primitive_twin_sync;
