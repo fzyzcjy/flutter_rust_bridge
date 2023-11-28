@@ -36,7 +36,6 @@ Future<void> lint(LintConfig config) async {
 Future<void> lintRust(LintConfig config) async {
   await lintRustFormat(config);
   await lintRustClippy(config);
-  await lintRustWasm(config);
 }
 
 Future<void> lintRustFormat(LintConfig config) async {
@@ -52,10 +51,7 @@ Future<void> lintRustClippy(LintConfig config) async {
         'cargo clippy ${config.fix ? "--fix --allow-dirty" : ""} -- -D warnings',
         relativePwd: package);
   }
-}
 
-Future<void> lintRustWasm(LintConfig config) async {
-  await exec('rustup target add wasm32-unknown-unknown');
   await exec(
       'cargo clippy --target wasm32-unknown-unknown ${config.fix ? "--fix --allow-dirty" : ""} -- -D warnings',
       relativePwd: 'frb_rust');
