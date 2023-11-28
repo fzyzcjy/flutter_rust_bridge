@@ -2,6 +2,7 @@ import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
+import 'package:meta/meta.dart';
 
 part 'test.g.dart';
 
@@ -92,9 +93,14 @@ Future<void> testDartValgrind(TestDartConfig config) async {
       // Valgrind crashes with the default level (2).
       '--vex-iropt-level=1';
 
-  await exec(
+  final stdoutResult = await exec(
       '$valgrindCommand build/valgrind_test_output/dart_valgrind_test_entrypoint.exe',
       relativePwd: config.package);
 
-  throw Exception('implement the checks');
+  checkValgrindOutput(stdoutResult);
+}
+
+@visibleForTesting
+void checkValgrindOutput(String stdoutResult) {
+  TODO;
 }

@@ -12,7 +12,7 @@ class SimpleExecutor {
 
   const SimpleExecutor({this.env, this.pwd});
 
-  Future<void> call(String cmd,
+  Future<String> call(String cmd,
       {String? relativePwd, Map<String, String>? extraEnv}) async {
     final String command;
     final List<String> args;
@@ -23,7 +23,7 @@ class SimpleExecutor {
       command = '/bin/sh';
       args = ['-c', cmd];
     }
-    await runCommand(
+    return await runCommand(
       command,
       args,
       env: {...?env, ...?extraEnv},
