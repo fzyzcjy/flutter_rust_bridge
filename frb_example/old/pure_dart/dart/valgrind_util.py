@@ -16,14 +16,15 @@ import sys
 
 print('valgrind_util.py start')
 
-VALGRIND_ARGUMENTS = [
-    'valgrind',
-    '--error-exitcode=1',
-    '--leak-check=full',
-    '--trace-children=yes',
-    '--ignore-ranges=0x000-0xFFF',  # Used for implicit null checks.
-    '--vex-iropt-level=1'  # Valgrind crashes with the default level (2).
-]
+# DONE
+# VALGRIND_ARGUMENTS = [
+#     'valgrind',
+#     '--error-exitcode=1',
+#     '--leak-check=full',
+#     '--trace-children=yes',
+#     '--ignore-ranges=0x000-0xFFF',  # Used for implicit null checks.
+#     '--vex-iropt-level=1'  # Valgrind crashes with the default level (2).
+# ]
 
 # Compute the command line.
 command = VALGRIND_ARGUMENTS + sys.argv[1:]

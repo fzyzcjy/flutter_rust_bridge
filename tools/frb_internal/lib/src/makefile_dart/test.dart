@@ -77,11 +77,12 @@ Future<void> testDartValgrind(TestDartConfig config) async {
   await exec('sudo apt install -y valgrind');
   await runDartPubGetIfNotRunYet(config.package);
 
-  '''
-  ci_dart_valgrind:
-    just dart_test_valgrind pure_dart
-   
-  dart_test_valgrind name:
-    just _dart_test_raw {{name}} "PYTHONUNBUFFERED=1 ./valgrind_util.py"
-  ''';
+  // ref https://github.com/dart-lang/sdk/blob/master/runtime/tools/valgrind.py
+  await exec('valgrind '
+      '--error-exitcode=1 '
+      '--leak-check=full '
+      '--trace-children=yes '
+      '--ignore-ranges=0x000-0xFFF ' // Used for implicit null checks.
+      '--vex-iropt-level=1' // Valgrind crashes with the default level (2).
+      );
 }
