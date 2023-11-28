@@ -168,9 +168,10 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
     }
 
     // move back compilation cache to speed up future usage
-    await _renameDirIfExists('$dirTempOriginal/build', '$dirPackage/build');
-    await _renameDirIfExists(
-        '$dirTempOriginal/rust/target', '$dirPackage/rust/target');
+    for (final subPath in ['build', 'rust/target']) {
+      await _renameDirIfExists(
+          path.join(dirTempOriginal, subPath), path.join(dirPackage, subPath));
+    }
   });
 }
 
