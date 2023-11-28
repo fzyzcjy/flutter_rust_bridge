@@ -1,4 +1,4 @@
-use crate::utils::path_utils::path_to_string;
+use crate::utils::path_utils::{normalize_windows_unc_path, path_to_string};
 use log::debug;
 use serde_json::Value;
 use std::fmt::Debug;
@@ -78,7 +78,7 @@ pub(crate) fn create_path_sanitizers(test_fixture_dir: &Path) -> Vec<(String, St
     vec![
         ("\\\\".into(), "/".into()),
         (
-            path_to_string(&test_fixture_dir)?.replace('\\', "/"),
+            normalize_windows_unc_path(&path_to_string(&test_fixture_dir)?).replace('\\', "/"),
             "{the-working-directory}".to_owned(),
         ),
     ]
