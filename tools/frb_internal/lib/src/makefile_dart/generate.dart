@@ -143,7 +143,23 @@ Future<void> generateRunFrbCodegenCommandGenerate(
 
 Future<void> generateRunFrbCodegenCommandIntegrate(
     GeneratePackageConfig config) async {
-  TODO;
+  await _wrapMaybeSetExitIfChanged(config, () async {
+    final cmd = switch (config.package) {
+      'frb_example/flutter_via_create' => 'create',
+      'frb_example/flutter_via_integrate' => 'integrate',
+      _ =>
+        throw Exception('Do not know how to handle package ${config.package}'),
+    };
+
+    TODO_rm_dir;
+    TODO_temp_mv_target_etc;
+
+    await exec(
+      'cargo run --manifest-path ${exec.pwd}/frb_codegen/Cargo.toml -- $cmd',
+      relativePwd: config.package,
+      extraEnv: {'RUST_BACKTRACE': '1'},
+    );
+  });
 }
 
 Future<void> _wrapMaybeSetExitIfChanged(
