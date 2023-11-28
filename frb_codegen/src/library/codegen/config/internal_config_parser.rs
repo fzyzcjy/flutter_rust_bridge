@@ -206,14 +206,18 @@ fn compute_rust_input_path_pack(
 ) -> Result<RustInputPathPack> {
     const BLACKLIST_FILE_NAMES: [&str; 1] = ["mod.rs"];
 
-    let rust_input_paths = glob_path(&base_dir.join(raw_rust_input))?
+    let glob_pattern = base_dir.join(raw_rust_input);
+    let rust_input_paths = glob_path(&glob_pattern)?
         .into_iter()
         .filter(|path| !BLACKLIST_FILE_NAMES.contains(&path.file_name().unwrap().to_str().unwrap()))
         .collect_vec();
 
     let pack = RustInputPathPack { rust_input_paths };
 
-    ensure!(!pack.rust_input_paths.is_empty());
+    ensure!(
+        !pack.rust_input_paths.is_empty(),
+        "Find zero rust input paths. (glob_pattern={glob_pattern:?})"
+    );
     ensure!(
         !pack.rust_input_paths.iter().any(|p| path_to_string(p).unwrap().contains("lib.rs")),
         "Do not use `lib.rs` as a Rust input. Please put code to be generated in something like `api.rs`.",
