@@ -156,7 +156,9 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
 
     // We move instead of delete folder for extra safety of this script
     final dirTempOriginal = path.join(dirTemp, 'original');
-    await Directory(dirPackage).rename(dirTempOriginal);
+    if (await Directory(dirPackage).exists()) {
+      await Directory(dirPackage).rename(dirTempOriginal);
+    }
 
     switch (config.package) {
       case 'frb_example/flutter_via_create':
