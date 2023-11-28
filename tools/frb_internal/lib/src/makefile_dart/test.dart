@@ -13,6 +13,8 @@ List<Command<void>> createCommands() {
         _$populateTestDartConfigParser, _$parseTestDartConfigResult),
     SimpleConfigCommand('test-dart-web', testDartWeb,
         _$populateTestDartConfigParser, _$parseTestDartConfigResult),
+    SimpleConfigCommand('test-dart-valgrind', testDartValgrind,
+        _$populateTestDartConfigParser, _$parseTestDartConfigResult),
   ];
 }
 
@@ -69,4 +71,8 @@ Future<void> testDartWeb(TestDartConfig config) async {
         'dart run flutter_rust_bridge_utils test-web --entrypoint ../$package/test/dart_web_test_entrypoint.dart',
         relativePwd: 'frb_utils');
   }
+}
+
+Future<void> testDartValgrind(TestDartConfig config) async {
+  TODO;
 }
