@@ -7,7 +7,7 @@ part of 'entrypoint.dart';
 // **************************************************************************
 
 Config _$parseConfigResult(ArgResults result) => Config()
-  ..dartRoot = result['dart-root'] as String
+  ..dartRoot = result['dart-root'] as String?
   ..rustCrateDir = result['rust-crate-dir'] as String
   ..output = result['output'] as String?
   ..release = result['release'] as bool
@@ -19,7 +19,7 @@ Config _$parseConfigResult(ArgResults result) => Config()
 ArgParser _$populateConfigParser(ArgParser parser) => parser
   ..addOption(
     'dart-root',
-    help: 'Root of dart package',
+    help: 'Root folder of dart package',
   )
   ..addOption(
     'rust-crate-dir',
