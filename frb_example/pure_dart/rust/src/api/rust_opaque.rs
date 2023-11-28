@@ -54,7 +54,7 @@ pub fn create_array_opaque_enum_twin_normal() -> [EnumOpaqueTwinNormal; 5] {
 
 pub fn run_enum_opaque_twin_normal(opaque: EnumOpaqueTwinNormal) -> String {
     match opaque {
-        EnumOpaqueTwinNormal::Struct(s) => run_opaque_twin_normal(s),
+        EnumOpaqueTwinNormal::Struct(s) => s.hide_data(),
         EnumOpaqueTwinNormal::Primitive(p) => format!("{:?}", p.deref()),
         EnumOpaqueTwinNormal::TraitObj(t) => format!("{:?}", t.deref()),
         EnumOpaqueTwinNormal::Mutex(m) => {

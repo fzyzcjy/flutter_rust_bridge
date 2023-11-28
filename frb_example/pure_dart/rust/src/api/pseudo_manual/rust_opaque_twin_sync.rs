@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `rust_opaque.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -31,11 +31,13 @@ pub struct OpaqueNestedTwinSync {
     pub second: RustOpaque<HideData>,
 }
 
-#[flutter_rust_bridge::frb(sync)] pub fn create_opaque_twin_sync() -> RustOpaque<HideData> {
+#[flutter_rust_bridge::frb(sync)]
+pub fn create_opaque_twin_sync() -> RustOpaque<HideData> {
     RustOpaque::new(HideData::new())
 }
 
-#[flutter_rust_bridge::frb(sync)] pub fn create_option_opaque_twin_sync(
+#[flutter_rust_bridge::frb(sync)]
+pub fn create_option_opaque_twin_sync(
     opaque: Option<RustOpaque<HideData>>,
 ) -> Option<RustOpaque<HideData>> {
     opaque
@@ -46,7 +48,8 @@ pub struct OpaqueNestedTwinSync {
 //     SyncReturn(RustOpaque::new(HideData::new()))
 // }
 
-#[flutter_rust_bridge::frb(sync)] pub fn create_array_opaque_enum_twin_sync() -> [EnumOpaqueTwinSync; 5] {
+#[flutter_rust_bridge::frb(sync)]
+pub fn create_array_opaque_enum_twin_sync() -> [EnumOpaqueTwinSync; 5] {
     [
         EnumOpaqueTwinSync::Struct(RustOpaque::new(HideData::new())),
         EnumOpaqueTwinSync::Primitive(RustOpaque::new(42)),
@@ -56,9 +59,10 @@ pub struct OpaqueNestedTwinSync {
     ]
 }
 
-#[flutter_rust_bridge::frb(sync)] pub fn run_enum_opaque_twin_sync(opaque: EnumOpaqueTwinSync) -> String {
+#[flutter_rust_bridge::frb(sync)]
+pub fn run_enum_opaque_twin_sync(opaque: EnumOpaqueTwinSync) -> String {
     match opaque {
-        EnumOpaqueTwinSync::Struct(s) => run_opaque_twin_normal(s),
+        EnumOpaqueTwinSync::Struct(s) => s.hide_data(),
         EnumOpaqueTwinSync::Primitive(p) => format!("{:?}", p.deref()),
         EnumOpaqueTwinSync::TraitObj(t) => format!("{:?}", t.deref()),
         EnumOpaqueTwinSync::Mutex(m) => {
@@ -70,16 +74,19 @@ pub struct OpaqueNestedTwinSync {
     }
 }
 
-#[flutter_rust_bridge::frb(sync)] pub fn run_opaque_twin_sync(opaque: RustOpaque<HideData>) -> String {
+#[flutter_rust_bridge::frb(sync)]
+pub fn run_opaque_twin_sync(opaque: RustOpaque<HideData>) -> String {
     opaque.hide_data()
 }
 
-#[flutter_rust_bridge::frb(sync)] pub fn run_opaque_with_delay_twin_sync(opaque: RustOpaque<HideData>) -> String {
+#[flutter_rust_bridge::frb(sync)]
+pub fn run_opaque_with_delay_twin_sync(opaque: RustOpaque<HideData>) -> String {
     sleep(Duration::from_millis(1000));
     opaque.hide_data()
 }
 
-#[flutter_rust_bridge::frb(sync)] pub fn opaque_array_twin_sync() -> [RustOpaque<HideData>; 2] {
+#[flutter_rust_bridge::frb(sync)]
+pub fn opaque_array_twin_sync() -> [RustOpaque<HideData>; 2] {
     [
         RustOpaque::new(HideData::new()),
         RustOpaque::new(HideData::new()),
@@ -92,13 +99,15 @@ pub struct OpaqueNestedTwinSync {
 // }
 
 #[allow(clippy::redundant_clone)]
-#[flutter_rust_bridge::frb(sync)] pub fn run_non_clone_twin_sync(clone: RustOpaque<NonCloneData>) -> String {
+#[flutter_rust_bridge::frb(sync)]
+pub fn run_non_clone_twin_sync(clone: RustOpaque<NonCloneData>) -> String {
     // Tests whether `.clone()` works even without the generic type wrapped by it
     // implementing Clone.
     clone.clone().hide_data()
 }
 
-#[flutter_rust_bridge::frb(sync)] pub fn create_sync_opaque_twin_sync() -> RustOpaque<NonSendHideData> {
+#[flutter_rust_bridge::frb(sync)]
+pub fn create_sync_opaque_twin_sync() -> RustOpaque<NonSendHideData> {
     RustOpaque::new(NonSendHideData::new())
 }
 
@@ -107,38 +116,44 @@ pub struct OpaqueNestedTwinSync {
 //     SyncReturn(RustOpaque::new(NonSendHideData::new()))
 // }
 
-#[flutter_rust_bridge::frb(sync)] pub fn opaque_array_run_twin_sync(data: [RustOpaque<HideData>; 2]) {
+#[flutter_rust_bridge::frb(sync)]
+pub fn opaque_array_run_twin_sync(data: [RustOpaque<HideData>; 2]) {
     for i in data {
         i.hide_data();
     }
 }
 
-#[flutter_rust_bridge::frb(sync)] pub fn opaque_vec_twin_sync() -> Vec<RustOpaque<HideData>> {
+#[flutter_rust_bridge::frb(sync)]
+pub fn opaque_vec_twin_sync() -> Vec<RustOpaque<HideData>> {
     vec![
         RustOpaque::new(HideData::new()),
         RustOpaque::new(HideData::new()),
     ]
 }
 
-#[flutter_rust_bridge::frb(sync)] pub fn opaque_vec_run_twin_sync(data: Vec<RustOpaque<HideData>>) {
+#[flutter_rust_bridge::frb(sync)]
+pub fn opaque_vec_run_twin_sync(data: Vec<RustOpaque<HideData>>) {
     for i in data {
         i.hide_data();
     }
 }
 
-#[flutter_rust_bridge::frb(sync)] pub fn create_nested_opaque_twin_sync() -> OpaqueNestedTwinSync {
+#[flutter_rust_bridge::frb(sync)]
+pub fn create_nested_opaque_twin_sync() -> OpaqueNestedTwinSync {
     OpaqueNestedTwinSync {
         first: RustOpaque::new(HideData::new()),
         second: RustOpaque::new(HideData::new()),
     }
 }
 
-#[flutter_rust_bridge::frb(sync)] pub fn run_nested_opaque_twin_sync(opaque: OpaqueNestedTwinSync) {
+#[flutter_rust_bridge::frb(sync)]
+pub fn run_nested_opaque_twin_sync(opaque: OpaqueNestedTwinSync) {
     opaque.first.hide_data();
     opaque.second.hide_data();
 }
 
-#[flutter_rust_bridge::frb(sync)] pub fn unwrap_rust_opaque_twin_sync(opaque: RustOpaque<HideData>) -> Result<String> {
+#[flutter_rust_bridge::frb(sync)]
+pub fn unwrap_rust_opaque_twin_sync(opaque: RustOpaque<HideData>) -> Result<String> {
     let data: HideData = opaque
         .try_unwrap()
         .map_err(|_| anyhow::anyhow!("opaque type is shared"))?;
@@ -148,6 +163,7 @@ pub struct OpaqueNestedTwinSync {
 /// Function to check the code generator.
 /// FrbOpaqueReturn must be only return type.
 /// FrbOpaqueReturn must not be used as an argument.
-#[flutter_rust_bridge::frb(sync)] pub fn frb_generator_test_twin_sync() -> RustOpaque<FrbOpaqueReturn> {
+#[flutter_rust_bridge::frb(sync)]
+pub fn frb_generator_test_twin_sync() -> RustOpaque<FrbOpaqueReturn> {
     panic!("dummy code");
 }
