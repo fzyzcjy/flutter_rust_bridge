@@ -51,13 +51,33 @@ Future<void> _generateDartValgrindTestEntrypoint(
   final code = '''
 $_kPrelude
 
+import 'dart:io';
+
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
+import 'package:test_core/src/direct_run.dart';
+import 'package:test_core/src/runner/reporter/expanded.dart';
+import 'package:test_core/src/util/print_sink.dart';
 
 ${imports.join("")}
 
 Future<void> main() async {
   await RustLib.init();
 
+  final success = await directRunTests(
+    () async => _callFileEntrypoints(),
+    reporterFactory: (engine) => ExpandedReporter.watch(
+      engine,
+      PrintSink(),
+      color: true,
+      printPlatform: false,
+      printPath: false,
+    ),
+  );
+
+  exit(success ? 0 : 1);
+}
+
+Future<void> _callFileEntrypoints() async {
   ${calls.join("")}
 }
   ''';
