@@ -38,6 +38,7 @@ target 'Runner' do
   # TODO start
   # TODO should not modify?
   puts "hi", s
+  what is this
   s.source           = { :path => '.' }
   s.source_files     = 'Classes/**/*'
   s.script_phase = {
