@@ -21,6 +21,10 @@ impl Namespace {
     }
 
     pub fn new_raw(joined_path: String) -> Self {
+        assert!(
+            !joined_path.contains('\\'),
+            "joined_path={joined_path:?} seems weird"
+        );
         Self { joined_path }
     }
 
