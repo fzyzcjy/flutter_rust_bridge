@@ -67,7 +67,7 @@ flutter {
 dependencies {}
 
 // BEGIN_FLUTTER_RUST_BRIDGE_WITH_CARGOKIT
-apply from: "../cargokit/gradle/plugin.gradle"
+apply from: "../../cargokit/gradle/plugin.gradle"
 cargokit {
     manifestDir = "../rust"
     libname = "rust_lib"
