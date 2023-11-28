@@ -22,8 +22,6 @@ import 'api/pseudo_manual/optional_primitive_twin_sync_test.dart'
     as optional_primitive_twin_sync_test;
 import 'api/pseudo_manual/primitive_list_test.dart' as primitive_list_test;
 import 'api/pseudo_manual/array_twin_sync_test.dart' as array_twin_sync_test;
-import 'api/pseudo_manual/rust_opaque_sync_twin_sync_test.dart'
-    as rust_opaque_sync_twin_sync_test;
 import 'api/pseudo_manual/external_type_in_crate_twin_sync_test.dart'
     as external_type_in_crate_twin_sync_test;
 import 'api/pseudo_manual/exception_twin_sync_test.dart'
@@ -34,8 +32,6 @@ import 'api/pseudo_manual/dart_opaque_twin_sync_test.dart'
 import 'api/pseudo_manual/attribute_twin_sync_test.dart'
     as attribute_twin_sync_test;
 import 'api/pseudo_manual/primitive_test.dart' as primitive_test;
-import 'api/pseudo_manual/dart_opaque_sync_twin_sync_test.dart'
-    as dart_opaque_sync_twin_sync_test;
 import 'api/pseudo_manual/optional_primitive_misc_twin_sync_test.dart'
     as optional_primitive_misc_twin_sync_test;
 import 'api/pseudo_manual/structure_twin_sync_test.dart'
@@ -112,14 +108,12 @@ void main() {
     await optional_primitive_twin_sync_test.main(skipRustLibInit: true);
     await primitive_list_test.main(skipRustLibInit: true);
     await array_twin_sync_test.main(skipRustLibInit: true);
-    await rust_opaque_sync_twin_sync_test.main(skipRustLibInit: true);
     await external_type_in_crate_twin_sync_test.main(skipRustLibInit: true);
     await exception_twin_sync_test.main(skipRustLibInit: true);
     await method_twin_sync_test.main(skipRustLibInit: true);
     await dart_opaque_twin_sync_test.main(skipRustLibInit: true);
     await attribute_twin_sync_test.main(skipRustLibInit: true);
     await primitive_test.main(skipRustLibInit: true);
-    await dart_opaque_sync_twin_sync_test.main(skipRustLibInit: true);
     await optional_primitive_misc_twin_sync_test.main(skipRustLibInit: true);
     await structure_twin_sync_test.main(skipRustLibInit: true);
     await misc_example_twin_sync_test.main(skipRustLibInit: true);

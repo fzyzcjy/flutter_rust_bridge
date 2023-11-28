@@ -1,3 +1,5 @@
+// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync"]}
+
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:frb_example_pure_dart/src/rust/api/rust_opaque.dart';
 import 'package:frb_example_pure_dart/src/rust/api/rust_opaque_sync.dart';
