@@ -3,8 +3,8 @@
 import 'package:flutter_rust_bridge_utils/flutter_rust_bridge_utils_web.dart';
 import 'dart_valgrind_test_entrypoint.dart' as dart_valgrind_test_entrypoint;
 
-void main() {
-  dartWebTestEntrypoint(() async {
+Future<void> main() async {
+  await dartWebTestEntrypoint(() async {
     await dart_valgrind_test_entrypoint.main();
   });
 }

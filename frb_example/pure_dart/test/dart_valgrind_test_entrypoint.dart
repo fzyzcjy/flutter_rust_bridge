@@ -88,7 +88,7 @@ import 'api/tuple_test.dart' as tuple_test;
 import 'api/type_alias_test.dart' as type_alias_test;
 import 'api/uuid_type_test.dart' as uuid_type_test;
 
-void main() {
+Future<void> main() async {
   await RustLib.init();
 
   await array_test.main(skipRustLibInit: true);
