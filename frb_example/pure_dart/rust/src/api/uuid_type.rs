@@ -1,5 +1,5 @@
 #[derive(Debug, Clone)]
-pub struct FeatureUuid {
+pub struct FeatureUuidTwinNormal {
     pub one: uuid::Uuid,
     pub many: Vec<uuid::Uuid>,
 }

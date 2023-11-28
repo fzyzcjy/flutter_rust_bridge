@@ -1,7 +1,7 @@
 use log::info;
 
 #[derive(Debug)]
-pub struct NewTypeInt(pub i64);
+pub struct NewTypeIntTwinNormal(pub i64);
 
 pub fn handle_newtype_twin_normal(arg: NewTypeInt) -> NewTypeInt {
     info!("handle_newtype({:?})", &arg);

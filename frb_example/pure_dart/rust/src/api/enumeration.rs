@@ -47,7 +47,7 @@ pub fn func_enum_with_item_struct_twin_normal(
 
 #[frb]
 #[derive(Debug)]
-pub struct Note {
+pub struct NoteTwinNormal {
     #[frb(default = "Weekdays.Sunday")]
     pub day: Box<Weekdays>,
     pub body: String,

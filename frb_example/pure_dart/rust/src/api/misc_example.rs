@@ -3,7 +3,7 @@ use flutter_rust_bridge::frb;
 use log::info;
 
 #[derive(Debug, Clone)]
-pub struct MyTreeNode {
+pub struct MyTreeNodeTwinNormal {
     pub value_i32: i32,
     pub value_vec_u8: Vec<u8>,
     pub value_boolean: bool,
@@ -37,7 +37,7 @@ pub fn list_of_primitive_enums_twin_normal(weekdays: Vec<Weekdays>) -> Vec<Weekd
 }
 
 #[derive(Debug, Clone)]
-pub struct MyNestedStruct {
+pub struct MyNestedStructTwinNormal {
     pub tree_node: MyTreeNode,
     pub weekday: Weekdays,
 }
@@ -48,7 +48,7 @@ pub fn handle_nested_struct_twin_normal(s: MyNestedStruct) -> MyNestedStruct {
     s
 }
 
-pub struct BigBuffers {
+pub struct BigBuffersTwinNormal {
     pub int64: Vec<i64>,
     pub uint64: Vec<u64>,
 }
@@ -60,15 +60,15 @@ pub fn handle_big_buffers_twin_normal() -> BigBuffers {
     }
 }
 
-pub struct A {
+pub struct ATwinNormal {
     pub a: String,
 }
 
-pub struct B {
+pub struct BTwinNormal {
     pub b: i32,
 }
 
-pub struct C {
+pub struct CTwinNormal {
     pub c: bool,
 }
 
@@ -83,7 +83,7 @@ pub fn test_abc_enum_twin_normal(abc: Abc) -> Abc {
     abc
 }
 
-pub struct StructWithEnum {
+pub struct StructWithEnumTwinNormal {
     pub abc1: Abc,
     pub abc2: Abc,
 }
@@ -117,7 +117,7 @@ pub fn handle_struct_twin_normal(arg: MySize, boxed: Box<MySize>) -> MySize {
 
 #[frb(dart_metadata = ("freezed"))]
 #[derive(Debug, Clone)]
-pub struct MySizeFreezed {
+pub struct MySizeFreezedTwinNormal {
     pub width: i32,
     pub height: i32,
 }

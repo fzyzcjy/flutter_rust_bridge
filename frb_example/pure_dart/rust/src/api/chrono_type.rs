@@ -77,7 +77,7 @@ pub fn handle_durations_twin_normal(
     durations.into_iter().map(|dur| since - dur).collect()
 }
 
-pub struct TestChrono {
+pub struct TestChronoTwinNormal {
     pub dt: Option<chrono::DateTime<chrono::Utc>>,
     pub dt2: Option<chrono::NaiveDateTime>,
     pub du: Option<chrono::Duration>,
@@ -106,7 +106,7 @@ pub fn test_precise_chrono_twin_normal() -> TestChrono {
 }
 
 #[derive(Debug, Clone)]
-pub struct FeatureChrono {
+pub struct FeatureChronoTwinNormal {
     pub utc: chrono::DateTime<chrono::Utc>,
     pub local: chrono::DateTime<chrono::Local>,
     pub duration: chrono::Duration,

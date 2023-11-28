@@ -22,7 +22,7 @@ pub enum EnumOpaqueTwinNormal {
 }
 
 /// [`HideData`] has private fields.
-pub struct OpaqueNested {
+pub struct OpaqueNestedTwinNormal {
     pub first: RustOpaque<HideData>,
     pub second: RustOpaque<HideData>,
 }

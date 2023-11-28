@@ -8,7 +8,7 @@ pub fn handle_type_nest_alias_id_twin_normal(input: UserIdAlias) -> Id {
     input
 }
 
-pub struct TestModel {
+pub struct TestModelTwinNormal {
     pub id: Id,
     pub name: String,
     pub alias_enum: EnumAlias,

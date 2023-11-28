@@ -4,7 +4,7 @@ use log::info;
 
 #[frb]
 #[derive(Debug, Clone)]
-pub struct Customized {
+pub struct CustomizedTwinNormal {
     pub final_field: String,
     #[frb(non_final)]
     pub non_final_field: Option<String>,
@@ -36,7 +36,7 @@ pub enum KitchenSinkTwinNormal {
 
 /// Example for @freezed and @meta.immutable
 #[frb(dart_metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]
-pub struct UserId {
+pub struct UserIdTwinNormal {
     #[frb(default = 0)]
     pub value: u32,
 }

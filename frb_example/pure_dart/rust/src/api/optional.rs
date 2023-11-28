@@ -11,7 +11,7 @@ pub fn handle_optional_return_twin_normal(left: f64, right: f64) -> Option<f64> 
 }
 
 #[derive(Default, Debug, Clone)]
-pub struct Element {
+pub struct ElementTwinNormal {
     pub tag: Option<String>,
     pub text: Option<String>,
     pub attributes: Option<Vec<Attribute>>,
@@ -19,7 +19,7 @@ pub struct Element {
 }
 
 #[derive(Debug, Clone)]
-pub struct Attribute {
+pub struct AttributeTwinNormal {
     pub key: String,
     pub value: String,
 }
@@ -44,7 +44,7 @@ pub fn handle_optional_struct_twin_normal(document: Option<String>) -> Option<El
 }
 
 #[derive(Debug)]
-pub struct ExoticOptionals {
+pub struct ExoticOptionalsTwinNormal {
     pub int32: Option<i32>,
     pub int64: Option<i64>,
     pub float64: Option<f64>,
@@ -117,7 +117,7 @@ pub fn handle_increment_boxed_optional_twin_normal(opt: Option<Box<f64>>) -> f64
     }
 }
 
-pub struct OptVecs {
+pub struct OptVecsTwinNormal {
     pub i32: Vec<Option<i32>>,
     pub enums: Vec<Option<Weekdays>>,
     pub strings: Vec<Option<String>>,

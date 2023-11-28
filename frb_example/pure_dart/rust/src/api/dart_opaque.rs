@@ -48,7 +48,7 @@ pub enum EnumDartOpaqueTwinNormal {
     Opaque(DartOpaque),
 }
 
-pub struct DartOpaqueNested {
+pub struct DartOpaqueNestedTwinNormal {
     pub first: DartOpaque,
     pub second: DartOpaque,
 }

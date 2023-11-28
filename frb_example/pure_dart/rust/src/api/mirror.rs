@@ -13,7 +13,7 @@ pub use frb_example_pure_dart_exapmle_external_lib::{
 
 // To mirror an external struct, you need to define a placeholder type with the same definition
 #[frb(mirror(ApplicationSettings))]
-pub struct _ApplicationSettings {
+pub struct _ApplicationSettingsTwinNormal {
     pub name: String,
     pub version: String,
     pub mode: ApplicationMode,
@@ -28,10 +28,10 @@ pub enum _ApplicationModeTwinNormal {
 }
 
 #[frb(mirror(ApplicationEnvVar))]
-pub struct _ApplicationEnvVar(pub String, pub bool);
+pub struct _ApplicationEnvVarTwinNormal(pub String, pub bool);
 
 #[frb(mirror(ApplicationEnv))]
-pub struct _ApplicationEnv {
+pub struct _ApplicationEnvTwinNormal {
     pub vars: Vec<ApplicationEnvVar>,
 }
 
@@ -68,7 +68,7 @@ pub fn app_settings_vec_stream_twin_normal(sink: StreamSink<Vec<ApplicationSetti
     sink.close();
 }
 
-pub struct MirrorStruct {
+pub struct MirrorStructTwinNormal {
     pub a: ApplicationSettings,
     pub b: MyStruct,
     pub c: Vec<MyEnum>,
@@ -116,7 +116,7 @@ pub fn get_message_twin_normal() -> ApplicationMessage {
 }
 
 #[frb(mirror(Numbers, Sequences))]
-pub struct _Numbers(pub Vec<i32>);
+pub struct _NumbersTwinNormal(pub Vec<i32>);
 
 pub fn repeat_number_twin_normal(num: i32, times: usize) -> Numbers {
     frb_example_pure_dart_exapmle_external_lib::repeat_number(num, times)
@@ -135,12 +135,12 @@ pub fn first_sequence_twin_normal(seqs: Sequences) -> Option<i32> {
 }
 
 #[frb(mirror(RawStringMirrored))]
-pub struct _RawStringMirrored {
+pub struct _RawStringMirroredTwinNormal {
     pub r#value: String,
 }
 
 #[frb(mirror(NestedRawStringMirrored))]
-pub struct _NestedRawStringMirrored {
+pub struct _NestedRawStringMirroredTwinNormal {
     pub raw: RawStringMirrored,
 }
 
@@ -152,7 +152,7 @@ pub enum _RawStringEnumMirroredTwinNormal {
 }
 
 #[frb(mirror(ListOfNestedRawStringMirrored))]
-pub struct _ListOfRawNestedStringMirrored {
+pub struct _ListOfRawNestedStringMirroredTwinNormal {
     pub raw: Vec<NestedRawStringMirrored>,
 }
 
@@ -219,11 +219,11 @@ pub fn test_list_of_nested_enums_mirrored_twin_normal() -> Vec<RawStringEnumMirr
 //     SyncReturn(frb_example_pure_dart_exapmle_external_lib::get_app_settings())
 // }
 
-pub struct Another {
+pub struct AnotherTwinNormal {
     pub a: String,
 }
 
-pub struct ContainsMirroredSubStruct {
+pub struct ContainsMirroredSubStructTwinNormal {
     pub test: RawStringMirrored,
     pub test2: Another,
 }

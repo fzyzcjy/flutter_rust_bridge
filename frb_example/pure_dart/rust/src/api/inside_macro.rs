@@ -19,7 +19,7 @@ generate_struct!(MacroStruct);
 macro_rules! generate_another_struct {
     () => {
         #[frb]
-        pub struct AnotherMacroStruct {
+        pub struct AnotherMacroStructTwinNormal {
             pub data: i32,
             #[frb(non_final)]
             pub non_final_data: i32,

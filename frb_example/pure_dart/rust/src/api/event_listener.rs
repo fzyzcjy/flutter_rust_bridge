@@ -11,7 +11,7 @@ lazy_static! {
 
 #[frb(dart_metadata = ("freezed"))]
 #[derive(Clone)]
-pub struct Event {
+pub struct EventTwinNormal {
     pub address: String,
     pub payload: String,
 }

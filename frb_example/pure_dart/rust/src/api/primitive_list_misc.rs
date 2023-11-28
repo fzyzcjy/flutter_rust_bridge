@@ -1,6 +1,6 @@
 use flutter_rust_bridge::ZeroCopyBuffer;
 
-pub struct VecOfPrimitivePack {
+pub struct VecOfPrimitivePackTwinNormal {
     pub int8list: Vec<i8>,
     pub uint8list: Vec<u8>,
     pub int16list: Vec<i16>,
@@ -30,7 +30,7 @@ pub fn handle_vec_of_primitive_twin_normal(n: i32) -> VecOfPrimitivePack {
     }
 }
 
-pub struct ZeroCopyVecOfPrimitivePack {
+pub struct ZeroCopyVecOfPrimitivePackTwinNormal {
     pub int8list: ZeroCopyBuffer<Vec<i8>>,
     pub uint8list: ZeroCopyBuffer<Vec<u8>>,
     pub int16list: ZeroCopyBuffer<Vec<i16>>,

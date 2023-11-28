@@ -47,7 +47,7 @@ pub fn func_stream_return_panic_twin_normal(_sink: StreamSink<String>) -> anyhow
 #[allow(unused_variables)]
 pub fn func_stream_sink_arg_position_twin_normal(a: u32, b: u32, c: StreamSink<u32>) {}
 
-pub struct MyStreamEntry {
+pub struct MyStreamEntryTwinNormal {
     pub hello: String,
 }
 
@@ -58,7 +58,7 @@ pub fn handle_stream_of_struct_twin_normal(_sink: StreamSink<MyStreamEntry>) {
 }
 
 #[derive(Debug, Clone)]
-pub struct Log {
+pub struct LogTwinNormal {
     pub key: u32,
     pub value: u32,
 }

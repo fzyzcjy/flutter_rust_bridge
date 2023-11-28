@@ -1,12 +1,12 @@
 use flutter_rust_bridge::{spawn, StreamSink};
 
 #[derive(Debug, Clone)]
-pub struct Log2 {
+pub struct Log2TwinNormal {
     pub key: u32,
     pub value: String,
 }
 
-pub struct ConcatenateWith {
+pub struct ConcatenateWithTwinNormal {
     pub a: String,
 }
 
@@ -67,7 +67,7 @@ impl ConcatenateWith {
     }
 }
 
-pub struct SumWith {
+pub struct SumWithTwinNormal {
     pub x: u32,
 }
 

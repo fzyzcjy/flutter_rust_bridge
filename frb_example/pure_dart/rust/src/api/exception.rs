@@ -108,7 +108,7 @@ pub fn return_error_variant_twin_normal(variant: u32) -> Result<u32, CustomError
     }
 }
 
-pub struct SomeStruct {
+pub struct SomeStructTwinNormal {
     pub value: u32,
 }
 
@@ -163,7 +163,7 @@ pub fn return_custom_nested_error_1_variant1_twin_normal() -> Result<(), CustomN
 pub fn return_custom_nested_error_2_twin_normal() -> Result<(), CustomNestedError2> {
     Err(CustomNestedError2::CustomNested2("custom".to_string()))
 }
-pub struct CustomStructError {
+pub struct CustomStructErrorTwinNormal {
     pub message: String,
 }
 
@@ -184,7 +184,7 @@ pub fn return_custom_struct_ok_twin_normal() -> Result<u32, CustomStructError> {
     Ok(3)
 }
 
-pub struct CustomStruct {
+pub struct CustomStructTwinNormal {
     pub message: String,
 }
 

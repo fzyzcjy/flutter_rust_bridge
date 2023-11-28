@@ -1,4 +1,4 @@
-pub struct RawStringItemStruct {
+pub struct RawStringItemStructTwinNormal {
     pub r#type: String,
 }
 
@@ -8,7 +8,7 @@ pub fn test_raw_string_item_struct_twin_normal() -> RawStringItemStruct {
     }
 }
 
-pub struct MoreThanJustOneRawStringStruct {
+pub struct MoreThanJustOneRawStringStructTwinNormal {
     pub regular: String,
     pub r#type: String,
     pub r#async: bool,
