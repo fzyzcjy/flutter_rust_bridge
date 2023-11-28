@@ -24,8 +24,10 @@ Future<void> miscNormalizePubspec() async {
   print('Execute miscNormalizePubspec');
   for (final package in kDartPackages) {
     final file = File('${exec.pwd}$package/pubspec.lock');
-    file.writeAsStringSync(
-        file.readAsStringSync().replaceAll('pub.flutter-io.cn', 'pub.dev'));
+    final original = file.readAsStringSync();
+    final modified = original.replaceAll('pub.flutter-io.cn', 'pub.dev');
+    if (modified == original) continue;
+    file.writeAsStringSync(modified);
   }
 }
 
