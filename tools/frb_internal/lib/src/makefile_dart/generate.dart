@@ -134,10 +134,9 @@ Future<void> generateRunFrbCodegenCommandGenerate(
     GeneratePackageConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
     await runDartPubGetIfNotRunYet(config.package);
-    await exec(
-      'cargo run --manifest-path ${exec.pwd}/frb_codegen/Cargo.toml -- generate',
+    await _executeFrbCodegen(
       relativePwd: config.package,
-      extraEnv: {'RUST_BACKTRACE': '1'},
+      cmd: 'generate',
     );
   });
 }
@@ -160,10 +159,9 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
     // We move instead of delete folder for extra safety of this script
     await Directory(dirPackage).rename('$dirTemp/original');
 
-    await exec(
-      'cargo run --manifest-path ${exec.pwd}/frb_codegen/Cargo.toml -- $cmd',
+    await _executeFrbCodegen(
       relativePwd: config.package,
-      extraEnv: {'RUST_BACKTRACE': '1'},
+      cmd: cmd,
     );
 
     // move back compilation cache to speed up future usage
@@ -171,6 +169,17 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
     await _renameDirIfExists(
         '$dirTemp/original/rust/target', '$dirPackage/rust/target');
   });
+}
+
+Future<void> _executeFrbCodegen({
+  required String relativePwd,
+  required String cmd,
+}) async {
+  await exec(
+    'cargo run --manifest-path ${exec.pwd}/frb_codegen/Cargo.toml -- $cmd',
+    relativePwd: relativePwd,
+    extraEnv: {'RUST_BACKTRACE': '1'},
+  );
 }
 
 Future<void> _renameDirIfExists(String src, String dst) async {
