@@ -35,25 +35,33 @@ fn handle_cargokit_dir(dart_root: &Path) -> Result<()> {
     extract_dir_and_modify(
         INTEGRATION_TEMPLATE_DIR.get_dir("cargokit").unwrap(),
         &dart_root,
-        &|p, raw| {
-            if vec![".gitignore"].contains(&file_name(p)) {
-                return raw.to_owned();
+        &|path, raw| {
+            if let Some(comments) = compute_comments(path) {
+                [&comments.as_bytes()[..], &raw[..]].concat()
+            } else {
+                raw.to_owned()
             }
-
-            let comment_leading = match file_extension(p) {
-                "dart" | "md" | "gradle" | "" => "///",
-                "yaml" | "toml" | "sh" => "#",
-                "lock" | "cmake" | "ps1" | ".cmd" => return raw.to_owned(),
-                ext => unreachable!("unexpected file extension for p={:?} ext={}", p, ext),
-            };
-
-            let comments = (CARGOKIT_PRELUDE.iter())
-                .map(|line| format!("{comment_leading} {line}"))
-                .join("\n");
-
-            [&comments.as_bytes()[..], &raw[..]].concat()
         },
         &|p| !vec![".git", ".github", "docs", "test"].contains(&file_name(p)),
+    )
+}
+
+fn compute_comments(path: &Path) -> Option<String> {
+    if vec![".gitignore"].contains(&file_name(path)) {
+        return None;
+    }
+
+    let comment_leading = match file_extension(path) {
+        "dart" | "md" | "gradle" | "" => "///",
+        "yaml" | "toml" | "sh" => "#",
+        "lock" | "cmake" | "ps1" | ".cmd" => return None,
+        ext => unreachable!("unexpected file extension for path={:?} ext={}", path, ext),
+    };
+
+    Some(
+        (CARGOKIT_PRELUDE.iter())
+            .map(|line| format!("{comment_leading} {line}"))
+            .join("\n"),
     )
 }
 
