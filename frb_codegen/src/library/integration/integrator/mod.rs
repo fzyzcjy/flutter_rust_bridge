@@ -57,10 +57,6 @@ fn extract_dir_and_modify(
     Ok(())
 }
 
-fn cargokit_add_prelude(dart_root: &Path, dir_cargokit: &Path) -> Result<()> {
-    todo!()
-}
-
 fn handle_rust_dir(dart_root: &Path) -> Result<()> {
     // TODO the "cdylib + staticlib"
     todo!()
