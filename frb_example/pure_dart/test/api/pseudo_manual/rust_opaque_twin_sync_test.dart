@@ -7,6 +7,8 @@ import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/rust_opaque_twi
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
+import '../../test_utils.dart';
+
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
@@ -154,7 +156,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('opaque field', () async {
     var data = await createNestedOpaqueTwinSync();
-    await runNestedOpaqueTwinSync(opaque: data);
+    await futurizeVoidTwinSync(runNestedOpaqueTwinSync(opaque: data));
 
     expect(
         await runOpaqueTwinSync(opaque: data.first),
@@ -193,7 +195,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('array', () async {
     var data = await opaqueArrayTwinSync();
-    await opaqueArrayRunTwinSync(data: data);
+    await futurizeVoidTwinSync(opaqueArrayRunTwinSync(data: data));
     data[0].dispose();
 
     expect(
@@ -213,7 +215,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('vec', () async {
     var data = await opaqueVecTwinSync();
-    await opaqueVecRunTwinSync(data: data);
+    await futurizeVoidTwinSync(opaqueVecRunTwinSync(data: data));
     data[0].dispose();
 
     expect(

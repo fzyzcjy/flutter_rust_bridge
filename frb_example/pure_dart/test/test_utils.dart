@@ -81,3 +81,8 @@ Matcher throwsAPanicException({String? messageOnNative}) {
     inner = inner.having((x) => x.message, 'message', messageOnNative);
   return throwsA(inner);
 }
+
+/// Hack to make generated pseudo-manual tests be happy about async and sync
+Future<void> futurizeVoidTwinNormal(Future<void> x) async {}
+
+Future<void> futurizeVoidTwinSync(void x) async {}

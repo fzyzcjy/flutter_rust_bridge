@@ -3,6 +3,8 @@ import 'package:frb_example_pure_dart/src/rust/api/rust_opaque.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
+import '../test_utils.dart';
+
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
@@ -150,7 +152,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('opaque field', () async {
     var data = await createNestedOpaqueTwinNormal();
-    await runNestedOpaqueTwinNormal(opaque: data);
+    await futurizeVoidTwinNormal(runNestedOpaqueTwinNormal(opaque: data));
 
     expect(
         await runOpaqueTwinNormal(opaque: data.first),
@@ -189,7 +191,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('array', () async {
     var data = await opaqueArrayTwinNormal();
-    await opaqueArrayRunTwinNormal(data: data);
+    await futurizeVoidTwinNormal(opaqueArrayRunTwinNormal(data: data));
     data[0].dispose();
 
     expect(
@@ -209,7 +211,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('vec', () async {
     var data = await opaqueVecTwinNormal();
-    await opaqueVecRunTwinNormal(data: data);
+    await futurizeVoidTwinNormal(opaqueVecRunTwinNormal(data: data));
     data[0].dispose();
 
     expect(
