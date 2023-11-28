@@ -35,19 +35,44 @@ fn handle_cargokit_dir(dart_root: &Path) -> Result<()> {
     extract_dir_and_modify(
         INTEGRATION_TEMPLATE_DIR.get_dir("cargokit").unwrap(),
         &dart_root,
-        &|raw| [&CARGOKIT_PRELUDE.as_bytes()[..], &raw[..]].concat(),
-        &|p| !vec![".git", ".github", "docs"].contains(&p.file_name().unwrap().to_str().unwrap()),
+        &|p, raw| {
+            let comment_leading = match file_extension(p) {
+                ".dart" | ".md" | ".gradle" | "" => "///",
+                ".yaml" | ".toml" | ".sh" => "#",
+                ".lock" | ".cmake" | ".ps1" | ".gitignore" | ".cmd" => return raw.to_owned(),
+                _ => unreachable!(),
+            };
+
+            let comments = (CARGOKIT_PRELUDE.iter())
+                .map(|line| format!("{comment_leading} {line}"))
+                .join("\n");
+
+            [&comments.as_bytes()[..], &raw[..]].concat()
+        },
+        &|p| !vec![".git", ".github", "docs", "test"].contains(&file_name(p)),
     )
 }
 
-const CARGOKIT_PRELUDE: &str = "/// This is copied from cargokit, [TODO explain]\n\n";
+fn file_name(p: &Path) -> &str {
+    &p.file_name().unwrap().to_str().unwrap()
+}
+
+fn file_extension(p: &Path) -> &str {
+    &p.extension().unwrap_or_default().to_str().unwrap()
+}
+
+const CARGOKIT_PRELUDE: &[&str] = &[
+    "This is copied from cargokit, TODO",
+    "TODO explain more",
+    "\n\n",
+];
 
 fn handle_rust_dir(dart_root: &Path) -> Result<()> {
     fs::create_dir_all(dart_root.join("rust"))?;
     extract_dir_and_modify(
         INTEGRATION_TEMPLATE_DIR.get_dir("rust").unwrap(),
         &dart_root,
-        &|raw| raw.to_owned(),
+        &|_, raw| raw.to_owned(),
         &|p| true,
     )
 }
