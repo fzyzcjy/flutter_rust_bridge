@@ -26,21 +26,6 @@ require File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelpe
 
 flutter_macos_podfile_setup
 
-module MyScriptPhase
-  def self.cargokit
-    {
-      :name => 'Build Rust library',
-      # First argument is relative path to the `rust` folder, second is name of rust library
-      :script => 'sh "$PODS_TARGET_SRCROOT/../cargokit/build_pod.sh" ../rust rust_lib',
-      :execution_position => :before_compile,
-      :input_files => ['${BUILT_PRODUCTS_DIR}/cargokit_phony'],
-      # Let XCode know that the static library referenced in -force_load below is
-      # created by this build step.
-      :output_files => ["${BUILT_PRODUCTS_DIR}/librust_lib.a"],
-    }
-  end
-end
-
 target 'Runner' do
   use_frameworks!
   use_modular_headers!
@@ -50,7 +35,16 @@ target 'Runner' do
     inherit! :search_paths
   end
 
-  script_phase(MyScriptPhase.cargokit)
+  script_phase({
+    :name => 'Build Rust library',
+    # First argument is relative path to the `rust` folder, second is name of rust library
+    :script => 'sh "$PODS_TARGET_SRCROOT/../cargokit/build_pod.sh" ../rust rust_lib',
+    :execution_position => :before_compile,
+    :input_files => ['${BUILT_PRODUCTS_DIR}/cargokit_phony'],
+    # Let XCode know that the static library referenced in -force_load below is
+    # created by this build step.
+    :output_files => ["${BUILT_PRODUCTS_DIR}/librust_lib.a"],
+  })
 end
 
 post_install do |installer|
