@@ -186,7 +186,8 @@ fn compute_default_external_library_relative_directory(
     rust_crate_dir: &Path,
     dart_root: &Path,
 ) -> Result<String> {
-    let diff = diff_paths(rust_crate_dir, dart_root).context("cannot diff path")?;
+    let diff = diff_paths(rust_crate_dir.canonicalize()?, dart_root.canonicalize()?)
+        .context("cannot diff path")?;
     Ok(path_to_string(&diff.join("target").join("release/"))?.replace('\\', "/"))
 }
 
