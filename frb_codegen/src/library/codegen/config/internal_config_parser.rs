@@ -20,7 +20,6 @@ use crate::utils::path_utils::{
 };
 use crate::utils::rust_project_utils::compute_mod_from_rust_crate_path;
 use anyhow::{ensure, Context, Result};
-use convert_case::{Case, Casing};
 use itertools::Itertools;
 use log::debug;
 use pathdiff::diff_paths;

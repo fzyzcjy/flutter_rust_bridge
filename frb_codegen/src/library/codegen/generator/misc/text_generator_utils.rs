@@ -1,8 +1,6 @@
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::misc::target::{TargetOrCommon, TargetOrCommonMap};
+use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::utils::basic_code::BasicCode;
-use crate::utils::file_utils::create_dir_all_and_write;
-use std::path::PathBuf;
 use strum::IntoEnumIterator;
 
 pub(crate) fn section_header_comment<T: BasicCode>(
