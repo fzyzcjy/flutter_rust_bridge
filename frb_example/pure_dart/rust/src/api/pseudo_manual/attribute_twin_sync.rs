@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `attribute.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -14,7 +14,8 @@ pub struct CustomizedTwinSync {
     pub non_final_field: Option<String>,
 }
 
-#[flutter_rust_bridge::frb(sync)] pub fn handle_customized_struct_twin_sync(val: CustomizedTwinSync) {
+#[flutter_rust_bridge::frb(sync)]
+pub fn handle_customized_struct_twin_sync(val: CustomizedTwinSync) {
     info!("{:#?}", val);
 }
 
@@ -45,7 +46,8 @@ pub struct UserIdTwinSync {
     pub value: u32,
 }
 
-#[flutter_rust_bridge::frb(sync)] pub fn next_user_id_twin_sync(user_id: UserIdTwinSync) -> UserIdTwinSync {
+#[flutter_rust_bridge::frb(sync)]
+pub fn next_user_id_twin_sync(user_id: UserIdTwinSync) -> UserIdTwinSync {
     UserIdTwinSync {
         value: user_id.value + 1,
     }

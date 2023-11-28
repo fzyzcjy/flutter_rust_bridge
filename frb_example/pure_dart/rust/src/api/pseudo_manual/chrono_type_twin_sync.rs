@@ -1,8 +1,9 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `chrono_type.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
-#[flutter_rust_bridge::frb(sync)] pub fn datetime_utc_twin_sync(d: chrono::DateTime<chrono::Utc>) -> chrono::DateTime<chrono::Utc> {
+#[flutter_rust_bridge::frb(sync)]
+pub fn datetime_utc_twin_sync(d: chrono::DateTime<chrono::Utc>) -> chrono::DateTime<chrono::Utc> {
     use chrono::Datelike;
     use chrono::Timelike;
     assert_eq!(&d.year(), &2022);
@@ -18,7 +19,8 @@
     d
 }
 
-#[flutter_rust_bridge::frb(sync)] pub fn datetime_local_twin_sync(
+#[flutter_rust_bridge::frb(sync)]
+pub fn datetime_local_twin_sync(
     d: chrono::DateTime<chrono::Local>,
 ) -> chrono::DateTime<chrono::Local> {
     use chrono::Datelike;
@@ -37,7 +39,8 @@
     d
 }
 
-#[flutter_rust_bridge::frb(sync)] pub fn naivedatetime_twin_sync(d: chrono::NaiveDateTime) -> chrono::NaiveDateTime {
+#[flutter_rust_bridge::frb(sync)]
+pub fn naivedatetime_twin_sync(d: chrono::NaiveDateTime) -> chrono::NaiveDateTime {
     use chrono::{Datelike, Timelike};
     assert_eq!(&d.year(), &2022);
     assert_eq!(&d.month(), &9);
@@ -52,19 +55,22 @@
     d
 }
 
-#[flutter_rust_bridge::frb(sync)] pub fn optional_empty_datetime_utc_twin_sync(
+#[flutter_rust_bridge::frb(sync)]
+pub fn optional_empty_datetime_utc_twin_sync(
     d: Option<chrono::DateTime<chrono::Utc>>,
 ) -> Option<chrono::DateTime<chrono::Utc>> {
     assert_eq!(&d, &None);
     d
 }
 
-#[flutter_rust_bridge::frb(sync)] pub fn duration_twin_sync(d: chrono::Duration) -> chrono::Duration {
+#[flutter_rust_bridge::frb(sync)]
+pub fn duration_twin_sync(d: chrono::Duration) -> chrono::Duration {
     assert_eq!(&d.num_hours(), &4);
     d
 }
 
-#[flutter_rust_bridge::frb(sync)] pub fn handle_timestamps_twin_sync(
+#[flutter_rust_bridge::frb(sync)]
+pub fn handle_timestamps_twin_sync(
     timestamps: Vec<chrono::NaiveDateTime>,
     epoch: chrono::NaiveDateTime,
 ) -> Vec<chrono::Duration> {
@@ -74,7 +80,8 @@
         .collect()
 }
 
-#[flutter_rust_bridge::frb(sync)] pub fn handle_durations_twin_sync(
+#[flutter_rust_bridge::frb(sync)]
+pub fn handle_durations_twin_sync(
     durations: Vec<chrono::Duration>,
     since: chrono::DateTime<chrono::Local>,
 ) -> Vec<chrono::DateTime<chrono::Local>> {
@@ -87,7 +94,8 @@ pub struct TestChronoTwinSync {
     pub du: Option<chrono::Duration>,
 }
 
-#[flutter_rust_bridge::frb(sync)] pub fn test_chrono_twin_sync() -> TestChronoTwinSync {
+#[flutter_rust_bridge::frb(sync)]
+pub fn test_chrono_twin_sync() -> TestChronoTwinSync {
     TestChronoTwinSync {
         dt: Some(chrono::DateTime::from_naive_utc_and_offset(
             chrono::NaiveDateTime::from_timestamp_opt(1631297333, 0).unwrap(),
@@ -98,7 +106,8 @@ pub struct TestChronoTwinSync {
     }
 }
 
-#[flutter_rust_bridge::frb(sync)] pub fn test_precise_chrono_twin_sync() -> TestChronoTwinSync {
+#[flutter_rust_bridge::frb(sync)]
+pub fn test_precise_chrono_twin_sync() -> TestChronoTwinSync {
     TestChronoTwinSync {
         dt: Some(chrono::DateTime::from_naive_utc_and_offset(
             chrono::NaiveDateTime::from_timestamp_opt(1014466435, 0).unwrap(),
@@ -117,7 +126,8 @@ pub struct FeatureChronoTwinSync {
     pub naive: chrono::NaiveDateTime,
 }
 
-#[flutter_rust_bridge::frb(sync)] pub fn how_long_does_it_take_twin_sync(
+#[flutter_rust_bridge::frb(sync)]
+pub fn how_long_does_it_take_twin_sync(
     mine: FeatureChronoTwinSync,
 ) -> anyhow::Result<chrono::Duration> {
     use chrono::{Datelike, Timelike};

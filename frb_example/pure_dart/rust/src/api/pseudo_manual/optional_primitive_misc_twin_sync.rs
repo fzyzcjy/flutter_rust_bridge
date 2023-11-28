@@ -1,10 +1,11 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `optional_primitive_misc.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
 use log::info;
 
-#[flutter_rust_bridge::frb(sync)] pub fn primitive_optional_types_twin_sync(
+#[flutter_rust_bridge::frb(sync)]
+pub fn primitive_optional_types_twin_sync(
     my_i32: Option<i32>,
     my_i64: Option<i64>,
     my_f64: Option<f64>,

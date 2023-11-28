@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `event_listener.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -21,12 +21,14 @@ pub struct EventTwinSync {
 }
 
 impl EventTwinSync {
-    #[flutter_rust_bridge::frb(sync)] pub fn as_string_twin_sync(&self) -> String {
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn as_string_twin_sync(&self) -> String {
         format!("{}: {}", self.address, self.payload)
     }
 }
 
-#[flutter_rust_bridge::frb(sync)] pub fn register_event_listener_twin_sync(listener: StreamSink<EventTwinSync>) -> Result<()> {
+#[flutter_rust_bridge::frb(sync)]
+pub fn register_event_listener_twin_sync(listener: StreamSink<EventTwinSync>) -> Result<()> {
     match EVENTS.lock() {
         Ok(mut guard) => {
             *guard = Some(listener);
@@ -36,13 +38,15 @@ impl EventTwinSync {
     }
 }
 
-#[flutter_rust_bridge::frb(sync)] pub fn close_event_listener_twin_sync() {
+#[flutter_rust_bridge::frb(sync)]
+pub fn close_event_listener_twin_sync() {
     if let Ok(Some(sink)) = EVENTS.lock().map(|mut guard| guard.take()) {
         sink.close();
     }
 }
 
-#[flutter_rust_bridge::frb(sync)] pub fn create_event_twin_sync(address: String, payload: String) {
+#[flutter_rust_bridge::frb(sync)]
+pub fn create_event_twin_sync(address: String, payload: String) {
     if let Ok(mut guard) = EVENTS.lock() {
         if let Some(sink) = guard.as_mut() {
             sink.add(EventTwinSync { address, payload });

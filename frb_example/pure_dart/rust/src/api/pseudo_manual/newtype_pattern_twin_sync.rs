@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `newtype_pattern.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -7,7 +7,8 @@ use log::info;
 #[derive(Debug)]
 pub struct NewTypeIntTwinSync(pub i64);
 
-#[flutter_rust_bridge::frb(sync)] pub fn handle_newtype_twin_sync(arg: NewTypeIntTwinSync) -> NewTypeIntTwinSync {
+#[flutter_rust_bridge::frb(sync)]
+pub fn handle_newtype_twin_sync(arg: NewTypeIntTwinSync) -> NewTypeIntTwinSync {
     info!("handle_newtype({:?})", &arg);
     NewTypeIntTwinSync(arg.0 * 2)
 }
