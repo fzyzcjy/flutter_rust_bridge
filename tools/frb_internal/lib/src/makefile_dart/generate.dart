@@ -19,6 +19,11 @@ List<Command<void>> createCommands() {
         generateRunFrbCodegenCommandGenerate,
         _$populateGeneratePackageConfigParser,
         _$parseGeneratePackageConfigResult),
+    SimpleConfigCommand(
+        'generate-run-frb-codegen-command-integrate',
+        generateRunFrbCodegenCommandIntegrate,
+        _$populateGeneratePackageConfigParser,
+        _$parseGeneratePackageConfigResult),
     // more detailed command, can be used to execute just a portion of the main command
     SimpleConfigCommand(
         'generate-internal-frb-example-pure-dart',
@@ -134,6 +139,11 @@ Future<void> generateRunFrbCodegenCommandGenerate(
       extraEnv: {'RUST_BACKTRACE': '1'},
     );
   });
+}
+
+Future<void> generateRunFrbCodegenCommandIntegrate(
+    GeneratePackageConfig config) async {
+  TODO;
 }
 
 Future<void> _wrapMaybeSetExitIfChanged(
