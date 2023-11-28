@@ -22,17 +22,15 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             _ => bail!("Cannot parse array length"),
         };
 
-        Ok(match self.parse_type(&type_array.elem)? {
-            Primitive(primitive) => Delegate(IrTypeDelegate::Array(IrTypeDelegateArray {
-                namespace,
-                length,
-                mode: IrTypeDelegateArrayMode::Primitive(primitive),
-            })),
-            others => Delegate(IrTypeDelegate::Array(IrTypeDelegateArray {
-                namespace,
-                length,
-                mode: IrTypeDelegateArrayMode::General(Box::new(others)),
-            })),
-        })
+        let mode = match self.parse_type(&type_array.elem)? {
+            Primitive(primitive) => IrTypeDelegateArrayMode::Primitive(primitive),
+            others => IrTypeDelegateArrayMode::General(Box::new(others)),
+        };
+
+        Ok(Delegate(IrTypeDelegate::Array(IrTypeDelegateArray {
+            namespace,
+            length,
+            mode,
+        })))
     }
 }
