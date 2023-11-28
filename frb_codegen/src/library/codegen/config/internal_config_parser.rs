@@ -187,7 +187,7 @@ fn compute_default_external_library_relative_directory(
     dart_root: &Path,
 ) -> Result<String> {
     let diff = diff_paths(rust_crate_dir, dart_root).context("cannot diff path")?;
-    path_to_string(&diff.join("target").join("release/"))
+    Ok(path_to_string(&diff.join("target").join("release/"))?.replace('\\', "/"))
 }
 
 const FALLBACK_DEFAULT_EXTERNAL_LIBRARY_STEM: &str = "UNKNOWN";

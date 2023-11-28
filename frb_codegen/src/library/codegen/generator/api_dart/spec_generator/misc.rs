@@ -102,7 +102,10 @@ fn generate_imports_from_ty(
                 (current_file_namespace.to_pseudo_io_path("dart").parent()).unwrap(),
             )
             .context("cannot diff path")?;
-            format!("import '{}';\n", path_to_string(&path_diff).unwrap())
+            format!(
+                "import '{}';\n",
+                path_to_string(&path_diff).unwrap().replace('\\', "/")
+            )
         } else {
             "".to_owned()
         }
