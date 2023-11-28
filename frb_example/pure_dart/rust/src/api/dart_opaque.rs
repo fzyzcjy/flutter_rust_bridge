@@ -1,3 +1,5 @@
+#![allow(unused)]
+
 use flutter_rust_bridge::support::lazy_static;
 use flutter_rust_bridge::DartOpaque;
 use std::sync::Mutex;
@@ -29,11 +31,11 @@ pub fn loop_back_vec(opaque: DartOpaque) -> Vec<DartOpaque> {
     vec![opaque]
 }
 
-pub fn loop_back_option_get(_opaque: Option<DartOpaque>) {}
+pub fn loop_back_option_get(opaque: Option<DartOpaque>) {}
 
-pub fn loop_back_array_get(_opaque: [DartOpaque; 1]) {}
+pub fn loop_back_array_get(opaque: [DartOpaque; 1]) {}
 
-pub fn loop_back_vec_get(_opaque: Vec<DartOpaque>) {}
+pub fn loop_back_vec_get(opaque: Vec<DartOpaque>) {}
 
 /// [DartWrapObject] cannot be obtained
 /// on a thread other than the thread it was created on.
@@ -71,13 +73,13 @@ pub fn create_nested_dart_opaque(opaque1: DartOpaque, opaque2: DartOpaque) -> Da
     }
 }
 
-pub fn get_nested_dart_opaque(_opaque: DartOpaqueNested) {}
+pub fn get_nested_dart_opaque(opaque: DartOpaqueNested) {}
 
 pub fn create_enum_dart_opaque(opaque: DartOpaque) -> EnumDartOpaque {
     EnumDartOpaque::Opaque(opaque)
 }
 
-pub fn get_enum_dart_opaque(_opaque: EnumDartOpaque) {}
+pub fn get_enum_dart_opaque(opaque: EnumDartOpaque) {}
 
 lazy_static! {
     static ref DART_OPAQUE: Mutex<Option<DartOpaque>> = Default::default();
