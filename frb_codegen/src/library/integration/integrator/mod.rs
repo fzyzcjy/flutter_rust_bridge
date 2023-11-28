@@ -20,23 +20,25 @@ pub fn integrate() -> Result<()> {
     handle_ios_or_macos(&dart_root, "macos")?;
     handle_windows_or_linux(&dart_root, "windows")?;
     handle_windows_or_linux(&dart_root, "linux")?;
-    handle_android(dart_root)?;
+    handle_android(&dart_root)?;
 
     Ok(())
 }
 
 fn handle_cargokit_dir(dart_root: &Path) -> Result<()> {
-    copy_cargokit_dir(dart_root)?;
-    cargokit_add_prelude(dart_root)
+    let dir_cargokit = dart_root.join("cargokit");
+    copy_cargokit_dir(dart_root, &dir_cargokit)?;
+    cargokit_add_prelude(dart_root, &dir_cargokit)
 }
 
-fn copy_cargokit_dir(dart_root: &Path) -> Result<()> {
-    let dir_src_cargokit = INTEGRATION_TEMPLATE_DIR.get_dir("cargokit").unwrap();
-    dir_src_cargokit.extract(dart_root.join("cargokit"))?;
-    Ok(())
+fn copy_cargokit_dir(dart_root: &Path, dir_cargokit: &Path) -> Result<()> {
+    Ok(INTEGRATION_TEMPLATE_DIR
+        .get_dir("cargokit")
+        .unwrap()
+        .extract(dir_cargokit)?)
 }
 
-fn cargokit_add_prelude(dart_root: &Path) -> Result<()> {
+fn cargokit_add_prelude(dart_root: &Path, dir_cargokit: &Path) -> Result<()> {
     todo!()
 }
 
