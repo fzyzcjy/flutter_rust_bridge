@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:collection/collection.dart';
+
 // ignore: implementation_imports
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:glob/glob.dart';
@@ -12,7 +14,7 @@ Future<void> generateDartWebTestEntrypoint({required Uri dartRoot}) async {
   final files = [
     for (final file in Glob('${dirInterest.toFilePath()}**.dart').listSync())
       file.path
-  ];
+  ].sorted();
 
   final imports = [
     for (final file in files) //
