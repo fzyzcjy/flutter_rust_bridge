@@ -15,7 +15,7 @@ class BuildWebCommand extends _$ConfigCommand<void> {
 
   @override
   Future<void> run() async {
-    executeBuildWeb(_parseConfigToArgs(_options));
+    await executeBuildWeb(_parseConfigToArgs(_options));
   }
 }
 
