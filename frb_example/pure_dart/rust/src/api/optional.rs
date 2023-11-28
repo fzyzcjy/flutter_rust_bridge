@@ -1,5 +1,5 @@
-use crate::api::misc_example::Weekdays;
-use crate::api::newtype_pattern::NewTypeInt;
+use crate::api::misc_example::WeekdaysTwinNormal;
+use crate::api::newtype_pattern::NewTypeIntTwinNormal;
 use flutter_rust_bridge::{frb, ZeroCopyBuffer};
 
 pub fn handle_optional_return_twin_normal(left: f64, right: f64) -> Option<f64> {
@@ -14,8 +14,8 @@ pub fn handle_optional_return_twin_normal(left: f64, right: f64) -> Option<f64> 
 pub struct ElementTwinNormal {
     pub tag: Option<String>,
     pub text: Option<String>,
-    pub attributes: Option<Vec<Attribute>>,
-    pub children: Option<Vec<Element>>,
+    pub attributes: Option<Vec<AttributeTwinNormal>>,
+    pub children: Option<Vec<ElementTwinNormal>>,
 }
 
 #[derive(Debug, Clone)]
@@ -24,16 +24,16 @@ pub struct AttributeTwinNormal {
     pub value: String,
 }
 
-pub fn handle_optional_struct_twin_normal(document: Option<String>) -> Option<Element> {
-    document.map(|inner| Element {
+pub fn handle_optional_struct_twin_normal(document: Option<String>) -> Option<ElementTwinNormal> {
+    document.map(|inner| ElementTwinNormal {
         tag: Some("div".to_owned()),
-        attributes: Some(vec![Attribute {
+        attributes: Some(vec![AttributeTwinNormal {
             key: "id".to_owned(),
             value: "root".to_owned(),
         }]),
-        children: Some(vec![Element {
+        children: Some(vec![ElementTwinNormal {
             tag: Some("p".to_owned()),
-            children: Some(vec![Element {
+            children: Some(vec![ElementTwinNormal {
                 text: Some(inner),
                 ..Default::default()
             }]),
@@ -55,22 +55,22 @@ pub struct ExoticOptionalsTwinNormal {
     pub int32list: Option<Vec<i32>>,
     pub float32list: Option<Vec<f32>>,
     pub float64list: Option<Vec<f64>>,
-    pub attributes: Option<Vec<Attribute>>,
-    pub attributes_nullable: Vec<Option<Attribute>>,
-    pub nullable_attributes: Option<Vec<Option<Attribute>>>,
-    pub newtypeint: Option<NewTypeInt>,
+    pub attributes: Option<Vec<AttributeTwinNormal>>,
+    pub attributes_nullable: Vec<Option<AttributeTwinNormal>>,
+    pub nullable_attributes: Option<Vec<Option<AttributeTwinNormal>>>,
+    pub newtypeint: Option<NewTypeIntTwinNormal>,
 }
 
 pub fn handle_optional_increment_twin_normal(
-    opt: Option<ExoticOptionals>,
-) -> Option<ExoticOptionals> {
+    opt: Option<ExoticOptionalsTwinNormal>,
+) -> Option<ExoticOptionalsTwinNormal> {
     fn manipulate_list<T>(src: Option<Vec<T>>, push_value: T) -> Option<Vec<T>> {
         let mut list = src.unwrap_or_default();
         list.push(push_value);
         Some(list)
     }
 
-    opt.map(|mut opt| ExoticOptionals {
+    opt.map(|mut opt| ExoticOptionalsTwinNormal {
         int32: Some(opt.int32.unwrap_or(0) + 1),
         int64: Some(opt.int64.unwrap_or(0) + 1),
         float64: Some(opt.float64.unwrap_or(0.) + 1.),
@@ -82,7 +82,7 @@ pub fn handle_optional_increment_twin_normal(
         float64list: manipulate_list(opt.float64list, 0.),
         attributes: Some({
             let mut list = opt.attributes.unwrap_or_default();
-            list.push(Attribute {
+            list.push(AttributeTwinNormal {
                 key: "some-attrib".to_owned(),
                 value: "some-value".to_owned(),
             });
@@ -94,7 +94,7 @@ pub fn handle_optional_increment_twin_normal(
             list
         }),
         newtypeint: Some({
-            let mut val = opt.newtypeint.unwrap_or(NewTypeInt(0));
+            let mut val = opt.newtypeint.unwrap_or(NewTypeIntTwinNormal(0));
             val.0 += 1;
             val
         }),
@@ -119,17 +119,17 @@ pub fn handle_increment_boxed_optional_twin_normal(opt: Option<Box<f64>>) -> f64
 
 pub struct OptVecsTwinNormal {
     pub i32: Vec<Option<i32>>,
-    pub enums: Vec<Option<Weekdays>>,
+    pub enums: Vec<Option<WeekdaysTwinNormal>>,
     pub strings: Vec<Option<String>>,
     pub buffers: Vec<Option<Vec<i32>>>,
 }
 
-pub fn handle_vec_of_opts_twin_normal(opt: OptVecs) -> OptVecs {
+pub fn handle_vec_of_opts_twin_normal(opt: OptVecsTwinNormal) -> OptVecsTwinNormal {
     fn handle<T>(mut opts: Vec<Option<T>>) -> Vec<Option<T>> {
         opts.push(None);
         opts
     }
-    OptVecs {
+    OptVecsTwinNormal {
         i32: handle(opt.i32),
         enums: handle(opt.enums),
         strings: handle(opt.strings),
@@ -146,7 +146,7 @@ pub fn handle_option_box_arguments_twin_normal(
     i64box: Option<Box<i64>>,
     f64box: Option<Box<f64>>,
     boolbox: Option<Box<bool>>,
-    structbox: Option<Box<ExoticOptionals>>,
+    structbox: Option<Box<ExoticOptionalsTwinNormal>>,
 ) -> String {
     format!(
         "handle_option_box_arguments({:?})",

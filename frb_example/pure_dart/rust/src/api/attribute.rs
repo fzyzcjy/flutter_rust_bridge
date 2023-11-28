@@ -1,4 +1,4 @@
-use crate::api::misc_example::Weekdays;
+use crate::api::misc_example::WeekdaysTwinNormal;
 use flutter_rust_bridge::{frb, ZeroCopyBuffer};
 use log::info;
 
@@ -10,7 +10,7 @@ pub struct CustomizedTwinNormal {
     pub non_final_field: Option<String>,
 }
 
-pub fn handle_customized_struct_twin_normal(val: Customized) {
+pub fn handle_customized_struct_twin_normal(val: CustomizedTwinNormal) {
     info!("{:#?}", val);
 }
 
@@ -27,11 +27,11 @@ pub enum KitchenSinkTwinNormal {
     },
     Nested(
         i32,
-        #[frb(default = "KitchenSink.empty()")] Box<KitchenSink>,
+        #[frb(default = "KitchenSinkTwinNormal.empty()")] Box<KitchenSinkTwinNormal>,
     ),
     Optional(#[frb(default = -1)] Option<i32>, Option<i32>),
     Buffer(ZeroCopyBuffer<Vec<u8>>),
-    Enums(#[frb(default = "Weekdays.Sunday")] Weekdays),
+    Enums(#[frb(default = "WeekdaysTwinNormal.Sunday")] WeekdaysTwinNormal),
 }
 
 /// Example for @freezed and @meta.immutable
@@ -41,7 +41,7 @@ pub struct UserIdTwinNormal {
     pub value: u32,
 }
 
-pub fn next_user_id_twin_normal(user_id: UserId) -> UserId {
+pub fn next_user_id_twin_normal(user_id: UserIdTwinNormal) -> UserIdTwinNormal {
     UserId {
         value: user_id.value + 1,
     }

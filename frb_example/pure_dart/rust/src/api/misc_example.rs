@@ -32,14 +32,16 @@ pub enum WeekdaysTwinNormal {
 //     RawStringItemStruct { r#type }
 // }
 
-pub fn list_of_primitive_enums_twin_normal(weekdays: Vec<Weekdays>) -> Vec<Weekdays> {
+pub fn list_of_primitive_enums_twin_normal(
+    weekdays: Vec<WeekdaysTwinNormal>,
+) -> Vec<WeekdaysTwinNormal> {
     weekdays
 }
 
 #[derive(Debug, Clone)]
 pub struct MyNestedStructTwinNormal {
     pub tree_node: MyTreeNode,
-    pub weekday: Weekdays,
+    pub weekday: WeekdaysTwinNormal,
 }
 
 pub fn handle_nested_struct_twin_normal(s: MyNestedStruct) -> MyNestedStruct {

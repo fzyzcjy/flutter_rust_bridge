@@ -1,4 +1,4 @@
-use crate::api::misc_example::Weekdays;
+use crate::api::misc_example::WeekdaysTwinNormal;
 use flutter_rust_bridge::{frb, ZeroCopyBuffer};
 use log::info;
 
@@ -48,30 +48,30 @@ pub fn func_enum_with_item_struct_twin_normal(
 #[frb]
 #[derive(Debug)]
 pub struct NoteTwinNormal {
-    #[frb(default = "Weekdays.Sunday")]
-    pub day: Box<Weekdays>,
+    #[frb(default = "WeekdaysTwinNormal.Sunday")]
+    pub day: Box<WeekdaysTwinNormal>,
     pub body: String,
 }
 
-pub fn print_note_twin_normal(note: Note) -> ZeroCopyBuffer<Vec<u8>> {
+pub fn print_note_twin_normal(note: NoteTwinNormal) -> ZeroCopyBuffer<Vec<u8>> {
     info!("{:#?}", note);
     ZeroCopyBuffer(vec![1, 2, 3])
 }
 
-pub fn handle_return_enum_twin_normal(input: String) -> Option<Weekdays> {
+pub fn handle_return_enum_twin_normal(input: String) -> Option<WeekdaysTwinNormal> {
     match input.as_str() {
-        "Monday" => Some(Weekdays::Monday),
-        "Tuesday" => Some(Weekdays::Tuesday),
-        "Wednesday" => Some(Weekdays::Wednesday),
-        "Thursday" => Some(Weekdays::Thursday),
-        "Friday" => Some(Weekdays::Friday),
-        "Saturday" => Some(Weekdays::Saturday),
-        "Sunday" => Some(Weekdays::Sunday),
+        "Monday" => Some(WeekdaysTwinNormal::Monday),
+        "Tuesday" => Some(WeekdaysTwinNormal::Tuesday),
+        "Wednesday" => Some(WeekdaysTwinNormal::Wednesday),
+        "Thursday" => Some(WeekdaysTwinNormal::Thursday),
+        "Friday" => Some(WeekdaysTwinNormal::Friday),
+        "Saturday" => Some(WeekdaysTwinNormal::Saturday),
+        "Sunday" => Some(WeekdaysTwinNormal::Sunday),
         _ => None,
     }
 }
 
-pub fn handle_enum_parameter_twin_normal(weekday: Weekdays) -> Weekdays {
+pub fn handle_enum_parameter_twin_normal(weekday: WeekdaysTwinNormal) -> WeekdaysTwinNormal {
     info!("The weekday is {:?}", weekday);
     weekday
 }
@@ -90,19 +90,23 @@ pub enum DistanceTwinNormal {
 
 #[derive(Debug, Clone)]
 pub enum MeasureTwinNormal {
-    Speed(Box<Speed>),
-    Distance(Box<Distance>),
+    Speed(Box<SpeedTwinNormal>),
+    Distance(Box<DistanceTwinNormal>),
 }
 
-pub fn multiply_by_ten_twin_normal(measure: Measure) -> Option<Measure> {
+pub fn multiply_by_ten_twin_normal(measure: MeasureTwinNormal) -> Option<MeasureTwinNormal> {
     match measure {
-        Measure::Speed(b) => match *b {
-            Speed::GPS(v) => Some(Measure::Speed(Box::new(Speed::GPS(v * 10.)))),
-            Speed::Unknown => None,
+        MeasureTwinNormal::Speed(b) => match *b {
+            SpeedTwinNormal::GPS(v) => Some(MeasureTwinNormal::Speed(Box::new(
+                SpeedTwinNormal::GPS(v * 10.),
+            ))),
+            SpeedTwinNormal::Unknown => None,
         },
-        Measure::Distance(b) => match *b {
-            Distance::Map(v) => Some(Measure::Distance(Box::new(Distance::Map(v * 10.)))),
-            Distance::Unknown => None,
+        MeasureTwinNormal::Distance(b) => match *b {
+            DistanceTwinNormal::Map(v) => Some(MeasureTwinNormal::Distance(Box::new(
+                DistanceTwinNormal::Map(v * 10.),
+            ))),
+            DistanceTwinNormal::Unknown => None,
         },
     }
 }
@@ -122,7 +126,7 @@ pub enum KitchenSinkTwinNormal {
     },
     Nested(
         i32,
-        #[frb(default = "KitchenSink.empty()")] Box<KitchenSink>,
+        #[frb(default = "KitchenSinkTwinNormal.empty()")] Box<KitchenSinkTwinNormal>,
     ),
     Optional(
         /// Comment on anonymous field
@@ -131,12 +135,12 @@ pub enum KitchenSinkTwinNormal {
         Option<i32>,
     ),
     Buffer(ZeroCopyBuffer<Vec<u8>>),
-    Enums(#[frb(default = "Weekdays.Sunday")] Weekdays),
+    Enums(#[frb(default = "WeekdaysTwinNormal.Sunday")] WeekdaysTwinNormal),
 }
 
-pub fn handle_enum_struct_twin_normal(val: KitchenSink) -> KitchenSink {
-    use KitchenSink::*;
-    use Weekdays::*;
+pub fn handle_enum_struct_twin_normal(val: KitchenSinkTwinNormal) -> KitchenSinkTwinNormal {
+    use KitchenSinkTwinNormal::*;
+    use WeekdaysTwinNormal::*;
     let inc = |x| x + 1;
     match val {
         Primitives {
