@@ -14,11 +14,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
   String f() => 'Test_String';
 
   test('loopback', () async {
-    await loopBackArrayGetTwinSync(
-        opaque: await loopBackArrayTwinSync(opaque: f));
-    await loopBackVecGetTwinSync(opaque: await loopBackVecTwinSync(opaque: f));
-    await loopBackOptionGetTwinSync(
-        opaque: await loopBackOptionTwinSync(opaque: f));
+    await futurizeVoidTwinSync(loopBackArrayGetTwinSync(
+        opaque: await loopBackArrayTwinSync(opaque: f)));
+    await futurizeVoidTwinSync(
+        loopBackVecGetTwinSync(opaque: await loopBackVecTwinSync(opaque: f)));
+    await futurizeVoidTwinSync(loopBackOptionGetTwinSync(
+        opaque: await loopBackOptionTwinSync(opaque: f)));
 
     var back1 = await loopBackTwinSync(opaque: f) as String Function();
     expect(back1(), 'Test_String');
@@ -35,21 +36,21 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('nested', () async {
     var str = await createNestedDartOpaqueTwinSync(opaque1: f, opaque2: f);
-    await getNestedDartOpaqueTwinSync(opaque: str);
+    await futurizeVoidTwinSync(getNestedDartOpaqueTwinSync(opaque: str));
   });
 
   test('enum', () async {
     var en = await createEnumDartOpaqueTwinSync(opaque: f);
-    await getEnumDartOpaqueTwinSync(opaque: en);
+    await futurizeVoidTwinSync(getEnumDartOpaqueTwinSync(opaque: en));
   });
 
   test('nested', () async {
     var str = await createNestedDartOpaqueTwinSync(opaque1: f, opaque2: f);
-    await getNestedDartOpaqueTwinSync(opaque: str);
+    await futurizeVoidTwinSync(getNestedDartOpaqueTwinSync(opaque: str));
   });
 
   test('enum', () async {
     var en = await createEnumDartOpaqueTwinSync(opaque: f);
-    await getEnumDartOpaqueTwinSync(opaque: en);
+    await futurizeVoidTwinSync(getEnumDartOpaqueTwinSync(opaque: en));
   });
 }
