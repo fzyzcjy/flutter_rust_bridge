@@ -46,6 +46,8 @@ Future<void> precommit(PrecommitConfig config) async {
   await miscNormalizePubspec();
 
   if (config.mode == PrecommitMode.slow) {
+    await pubGetAll();
+
     await lintDartAnalyze(const LintConfig(fix: true));
     await lintRustClippy(const LintConfig(fix: true));
 
