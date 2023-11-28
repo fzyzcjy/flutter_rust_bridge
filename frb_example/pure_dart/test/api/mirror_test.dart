@@ -9,7 +9,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('dart call getAppSettings()', () async {
-    var settings = await getAppSettings();
+    var settings = await getAppSettingsTwinNormal();
     expect(settings.version, "1.0.0-rc.1");
     expect(settings.mode, ApplicationMode.standalone);
     expect(settings.env.vars[0].field0, "myenv");
@@ -17,7 +17,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('dart call isAppEmbedded()', () async {
     expect(
-        await isAppEmbedded(
+        await isAppEmbeddedTwinNormal(
             appSettings: ApplicationSettings(
                 name: "from dart",
                 version: "XX",
@@ -29,18 +29,18 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('dart call app_settings_stream', () async {
-    final settings = await appSettingsStream().first;
+    final settings = await appSettingsStreamTwinNormal().first;
     _testAppSettings(settings);
   });
 
   test('dart call app_settings_vec_stream', () async {
-    final settings = await appSettingsVecStream().first;
+    final settings = await appSettingsVecStreamTwinNormal().first;
     _testAppSettings(settings[0]);
     _testAppSettings(settings[1]);
   });
 
   test('dart call mirror_struct_stream', () async {
-    final ret = await mirrorStructStream().first;
+    final ret = await mirrorStructStreamTwinNormal().first;
     _testAppSettings(ret.a);
     expect(ret.b.content, true);
     expect(ret.c[0], MyEnum.True);
@@ -50,14 +50,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('dart call mirror_tuple_stream', () async {
-    final (settings, rawStringEnum) = await mirrorTupleStream().first;
+    final (settings, rawStringEnum) = await mirrorTupleStreamTwinNormal().first;
     _testAppSettings(settings);
     expect(rawStringEnum is RawStringEnumMirrored_Raw, true);
     expect((rawStringEnum as RawStringEnumMirrored_Raw).field0.value, "test");
   });
 
   test('dart call getMessage()', () async {
-    var message = await getMessage();
+    var message = await getMessageTwinNormal();
     expect(message is ApplicationMessage_RenderPixel, true);
     message as ApplicationMessage_RenderPixel;
     expect(message.x, 5);
@@ -70,67 +70,67 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('dart call repeatNumber()', () async {
-    var numbers = await repeatNumber(num: 1, times: 10);
+    var numbers = await repeatNumberTwinNormal(num: 1, times: 10);
     expect(numbers.field0.toList(),
         Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]));
   });
 
   test('dart call repeatSequence()', () async {
-    var sequences = await repeatSequence(seq: 1, times: 10);
+    var sequences = await repeatSequenceTwinNormal(seq: 1, times: 10);
     expect(sequences.field0.toList(),
         Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]));
   });
 
   test('dart call firstNumber()', () async {
     var numbers = Numbers(field0: Int32List.fromList([1]));
-    var first = await firstNumber(nums: numbers);
+    var first = await firstNumberTwinNormal(nums: numbers);
     expect(first, 1);
   });
 
   test('dart call firstSequence()', () async {
     var sequences = Sequences(field0: Int32List.fromList([1]));
-    var first = await firstSequence(seqs: sequences);
+    var first = await firstSequenceTwinNormal(seqs: sequences);
     expect(first, 1);
   });
 
   test('test mirrored raw structs', () async {
-    final output = await testRawStringMirrored();
+    final output = await testRawStringMirroredTwinNormal();
     expect(output, isA<RawStringMirrored>());
     expect(output.value, "test");
   });
 
   test('test nested mirror raw', () async {
-    final output = await testNestedRawStringMirrored();
+    final output = await testNestedRawStringMirroredTwinNormal();
     expect(output, isA<NestedRawStringMirrored>());
     expect(output.raw, isA<RawStringMirrored>());
     expect(output.raw.value, "test");
   });
 
   test('test raw string enum', () async {
-    final output1 = await testRawStringEnumMirrored(nested: true);
+    final output1 = await testRawStringEnumMirroredTwinNormal(nested: true);
     expect(output1 is RawStringEnumMirrored_Nested, true);
     expect((output1 as RawStringEnumMirrored_Nested).field0.raw.value, "test");
 
-    final output2 = await testRawStringEnumMirrored(nested: false);
+    final output2 = await testRawStringEnumMirroredTwinNormal(nested: false);
     expect(output2 is RawStringEnumMirrored_Raw, true);
     expect((output2 as RawStringEnumMirrored_Raw).field0.value, "test");
   });
 
   test('test list of raw nested strings', () async {
-    final output = await testListOfRawNestedStringMirrored();
+    final output = await testListOfRawNestedStringMirroredTwinNormal();
     expect(output.raw.length, 1);
     expect(output.raw[0].raw.value, "test");
   });
 
   test('test fallible vec of raw string', () async {
-    final output = await testFallibleOfRawStringMirrored();
+    final output = await testFallibleOfRawStringMirroredTwinNormal();
     expect(output.length, 1);
     expect(output.first.value, "test");
   });
 
   test('test contains mirrored sub struct', () async {
-    final output = await testContainsMirroredSubStruct();
-    expect(output, isA<ContainsMirroredSubStruct>());
+    final output = await testContainsMirroredSubStructTwinNormal();
+    expect(output, isA<ContainsMirroredSubStructTwinNormal>());
     expect(output.test, isA<RawStringMirrored>());
     expect(output.test.value, "test");
     expect(output.test2.a, "test");

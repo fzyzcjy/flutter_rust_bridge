@@ -12,33 +12,37 @@ Future<void> main({bool skipRustLibInit = false}) async {
   String f() => 'Test_String';
 
   test('loopback', () {
-    var syncBack = syncLoopback(opaque: f);
-    expect(identical(syncOptionLoopback(opaque: syncBack), f), isTrue);
-    expect(syncOptionLoopback(opaque: null), isNull);
+    var syncBack = syncLoopbackTwinNormal(opaque: f);
+    expect(
+        identical(syncOptionLoopbackTwinNormal(opaque: syncBack), f), isTrue);
+    expect(syncOptionLoopbackTwinNormal(opaque: null), isNull);
   });
 
   test('sync option', () {
-    var data4 = syncOptionDartOpaque(opaque: () => () => 'magic');
+    var data4 = syncOptionDartOpaqueTwinNormal(opaque: () => () => 'magic');
     expect(data4, isNotNull);
   });
 
   test('drop', () async {
-    expect(syncAcceptDartOpaque(opaque: createLargeList(mb: 200)), 'test');
+    expect(syncAcceptDartOpaqueTwinNormal(opaque: createLargeList(mb: 200)),
+        'test');
   });
 
   test('unwrap', () async {
-    expect(unwrapDartOpaque(opaque: createLargeList(mb: 200)), 'Test');
+    expect(
+        unwrapDartOpaqueTwinNormal(opaque: createLargeList(mb: 200)), 'Test');
     await expectLater(
-        () => panicUnwrapDartOpaque(opaque: createLargeList(mb: 200)),
+        () => panicUnwrapDartOpaqueTwinNormal(opaque: createLargeList(mb: 200)),
         throwsA(isA<PanicException>()));
   });
 
   test('unwrapped dart opaque', () async {
     String f() => "magic";
-    var res = returnNonDroppableDartOpaque(opaque: f);
+    var res = returnNonDroppableDartOpaqueTwinNormal(opaque: f);
     expect(identical(res, f), isTrue);
-    var syncBack = syncLoopback(opaque: f);
-    expect(identical(syncOptionLoopback(opaque: syncBack), f), isTrue);
-    expect(syncOptionLoopback(opaque: null), isNull);
+    var syncBack = syncLoopbackTwinNormal(opaque: f);
+    expect(
+        identical(syncOptionLoopbackTwinNormal(opaque: syncBack), f), isTrue);
+    expect(syncOptionLoopbackTwinNormal(opaque: null), isNull);
   });
 }

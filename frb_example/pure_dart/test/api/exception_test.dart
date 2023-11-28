@@ -102,110 +102,122 @@ Future<void> main({bool skipRustLibInit = false}) async {
       // The first time a backtrace is created, symbol resolution
       // takes a significant amount of time.
       test('Throw CustomError', timeout: Timeout.factor(5), () {
-        expect(returnErrCustomError(), throwsA(isA<CustomError>()));
+        expect(returnErrCustomErrorTwinNormal(),
+            throwsA(isA<CustomErrorTwinNormal>()));
       });
 
       test('Throw CustomStructError', () async {
-        await expectLater(() async => await returnCustomStructError(),
-            throwsA(isA<CustomStructError>()));
+        await expectLater(() async => await returnCustomStructErrorTwinNormal(),
+            throwsA(isA<CustomStructErrorTwinNormal>()));
       });
 
       test('Throw sync CustomStructError', () {
         try {
-          syncReturnCustomStructError();
-        } on CustomStructError catch (e) {
-          expect(e.message, "error message");
+          syncReturnCustomStructErrorTwinNormal();
+        } on CustomStructErrorTwinNormal catch (e) {
+          expect(e.a, "error message");
         }
       });
 
       test('Do not throw CustomStructError', () async {
-        expect(await returnCustomStructOk(), 3);
+        expect(await returnCustomStructOkTwinNormal(), 3);
       });
 
       test('Throw CustomStructError non static method', () async {
         await expectLater(
-            () async => await CustomStruct(message: "hello")
-                .nonstaticReturnCustomStructError(),
-            throwsA(isA<CustomStructError>()));
+            () async => await CustomStructTwinNormal(message: "hello")
+                .nonstaticReturnCustomStructErrorTwinNormal(),
+            throwsA(isA<CustomStructErrorTwinNormal>()));
       });
 
       test('Do not throw CustomStructError non static method', () async {
         expect(
-            await CustomStruct(message: "hello")
-                .nonstaticReturnCustomStructOk(),
+            await CustomStructTwinNormal(message: "hello")
+                .nonstaticReturnCustomStructOkTwinNormal(),
             3);
       });
 
       test('Throw CustomStructError static method', () async {
         await expectLater(
-            () async => await CustomStruct.staticReturnCustomStructError(),
-            throwsA(isA<CustomStructError>()));
+            () async => await CustomStructTwinNormal
+                .staticReturnCustomStructErrorTwinNormal(),
+            throwsA(isA<CustomStructErrorTwinNormal>()));
       });
 
       test('Do not throw CustomStructError static method', () async {
-        expect(await CustomStruct.staticReturnCustomStructOk(), 3);
+        expect(
+            await CustomStructTwinNormal.staticReturnCustomStructOkTwinNormal(),
+            3);
       });
 
       test('Throw CustomNestedError1', () async {
         await expectLater(
-            () async => await returnCustomNestedError1(),
-            throwsA(CustomNestedError1.errorNested(
-                CustomNestedError2.customNested2Number(3))));
+            () async => await returnCustomNestedError1TwinNormal(),
+            throwsA(CustomNestedError1TwinNormal.errorNested(
+                CustomNestedError2TwinNormal.customNested2Number(3))));
       });
 
       test('Throw CustomNestedError1 variant 1', () async {
-        await expectLater(() async => await returnCustomNestedError1Variant1(),
-            throwsA(CustomNestedError1.customNested1("custom")));
+        await expectLater(
+            () async => await returnCustomNestedError1Variant1TwinNormal(),
+            throwsA(CustomNestedError1TwinNormal.customNested1("custom")));
       });
 
       test('Throw CustomNestedError2', () async {
-        await expectLater(() async => await returnCustomNestedError2(),
-            throwsA(CustomNestedError2.customNested2("custom")));
+        await expectLater(
+            () async => await returnCustomNestedError2TwinNormal(),
+            throwsA(CustomNestedError2TwinNormal.customNested2("custom")));
       });
 
       test('Throw CustomError variant 0', () async {
-        await expectLater(() async => await returnErrorVariant(variant: 0),
-            throwsA(isA<CustomError>()));
+        await expectLater(
+            () async => await returnErrorVariantTwinNormal(variant: 0),
+            throwsA(isA<CustomErrorTwinNormal>()));
       });
 
       test('Throw CustomError variant 1', () async {
-        await expectLater(() async => await returnErrorVariant(variant: 1),
-            throwsA(isA<CustomError>()));
+        await expectLater(
+            () async => await returnErrorVariantTwinNormal(variant: 1),
+            throwsA(isA<CustomErrorTwinNormal>()));
       });
 
       test('Do not throw CustomError', () async {
-        expect(await returnOkCustomError(), 3);
+        expect(await returnOkCustomErrorTwinNormal(), 3);
       });
 
       test('Throw CustomError static method', () async {
         await expectLater(
-            () async => await SomeStruct.staticReturnErrCustomError(),
-            throwsA(isA<CustomError>()));
+            () async => await SomeStructTwinNormal
+                .staticReturnErrCustomErrorTwinNormal(),
+            throwsA(isA<CustomErrorTwinNormal>()));
       });
 
       test('Throw CustomError static method, verifies implements Frb',
           () async {
         await expectLater(
-            () async => await SomeStruct.staticReturnErrCustomError(),
+            () async => await SomeStructTwinNormal
+                .staticReturnErrCustomErrorTwinNormal(),
             throwsA(isA<FrbException>()));
       });
 
       test('Do not throw CustomError static method', () async {
-        expect(await SomeStruct.staticReturnOkCustomError(), 3);
+        expect(await SomeStructTwinNormal.staticReturnOkCustomErrorTwinNormal(),
+            3);
       });
 
       test('Do not throw CustomError', () async {
-        expect(await returnOkCustomError(), 3);
+        expect(await returnOkCustomErrorTwinNormal(), 3);
       });
 
       test('Throw CustomError non-static method', () async {
         await expectLater(
-            () async =>
-                await SomeStruct(value: 7).nonStaticReturnErrCustomError(),
-            throwsA(isA<CustomError>()));
+            () async => await SomeStructTwinNormal(value: 7)
+                .nonStaticReturnErrCustomErrorTwinNormal(),
+            throwsA(isA<CustomErrorTwinNormal>()));
         bool didCatch = false;
         try {
-          await SomeStruct(value: 7).nonStaticReturnErrCustomError();
+          await SomeStructTwinNormal(value: 7)
+              .nonStaticReturnErrCustomErrorTwinNormal();
         } catch (e) {
           final FrbBacktracedException ex = e as FrbBacktracedException;
           print("backtrace: ${ex.backtrace}");
@@ -216,14 +228,17 @@ Future<void> main({bool skipRustLibInit = false}) async {
       });
 
       test('Do not throw CustomError non-static method', () async {
-        expect(await SomeStruct(value: 6).nonStaticReturnOkCustomError(), 6);
+        expect(
+            await SomeStructTwinNormal(value: 6)
+                .nonStaticReturnOkCustomErrorTwinNormal(),
+            6);
       });
 
       test('Throw anyhow error', () async {
-        await expectLater(
-            () async => await throwAnyhow(), throwsA(isA<FrbException>()));
+        await expectLater(() async => await throwAnyhowTwinNormal(),
+            throwsA(isA<FrbException>()));
         try {
-          await throwAnyhow();
+          await throwAnyhowTwinNormal();
         } catch (e) {
           final AnyhowException p = e as AnyhowException;
           print("anyhow error: ${p.message}");
@@ -232,10 +247,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
       });
 
       test('Function with custom result panics', () async {
-        await expectLater(() async => await panicWithCustomResult(),
+        await expectLater(() async => await panicWithCustomResultTwinNormal(),
             throwsA(isA<FrbException>()));
         try {
-          await panicWithCustomResult();
+          await panicWithCustomResultTwinNormal();
         } catch (e) {
           final PanicException p = e as PanicException;
           print("panic error: ${p.message}");
@@ -246,7 +261,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       test('Stream sink throw anyhow error', () async {
         expect(
           () async {
-            await for (final _ in streamSinkThrowAnyhow()) {}
+            await for (final _ in streamSinkThrowAnyhowTwinNormal()) {}
           },
           throwsA(isA<AnyhowException>().having((e) => e.toString(), 'toString',
               'AnyhowException(anyhow error)')),

@@ -10,7 +10,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('DateTime<Utc>', () async {
     final date = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
-    final resp = await datetimeUtc(d: date);
+    final resp = await datetimeUtcTwinNormal(d: date);
     expect(resp.year, date.year);
     expect(resp.month, date.month);
     expect(resp.day, date.day);
@@ -23,7 +23,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('DateTime<Local>', () async {
     final date = DateTime(2022, 09, 10, 20, 48, 53, 123, 456);
-    final resp = await datetimeLocal(d: date);
+    final resp = await datetimeLocalTwinNormal(d: date);
     expect(resp.year, date.year);
     expect(resp.month, date.month);
     expect(resp.day, date.day);
@@ -36,7 +36,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('NaiveDateTime', () async {
     final date = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
-    final resp = await naivedatetime(d: date);
+    final resp = await naivedatetimeTwinNormal(d: date);
     expect(resp.year, date.year);
     expect(resp.month, date.month);
     expect(resp.day, date.day);
@@ -47,13 +47,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
   });
   test('Empty DateTime', () async {
-    final resp = await optionalEmptyDatetimeUtc(d: null);
+    final resp = await optionalEmptyDatetimeUtcTwinNormal(d: null);
     expect(resp, null);
   });
 
   test('Duration', () async {
     final d = Duration(hours: 4);
-    final resp = await duration(d: d);
+    final resp = await durationTwinNormal(d: d);
     expect(resp.inHours, d.inHours);
   });
 
@@ -66,7 +66,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       if (!kIsWeb) Duration(microseconds: 333)
     ];
     final now = DateTime.now();
-    final durations = handleTimestamps(
+    final durations = handleTimestampsTwinNormal(
       timestamps: expected.map(now.subtract).toList(),
       epoch: now,
     );
@@ -82,12 +82,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
       if (!kIsWeb) Duration(microseconds: 400)
     ];
     final now = DateTime.now();
-    final result = handleDurations(durations: expected, since: now);
+    final result = handleDurationsTwinNormal(durations: expected, since: now);
     expect(result, completion(expected.map(now.subtract)));
   });
 
   test('Combined Chrono types', () async {
-    final test = await testChrono();
+    final test = await testChronoTwinNormal();
     expect(castInt(test.dt!.millisecondsSinceEpoch), castInt(1631297333000));
     expect(castInt(test.dt2!.millisecondsSinceEpoch), castInt(1631297333000));
     expect(test.du, Duration(hours: 4));
@@ -98,7 +98,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final datetime_2 = DateTime.utc(1800, 01, 23, 12, 56, 25);
     final duration = Duration(hours: 4);
 
-    final result = await testPreciseChrono();
+    final result = await testPreciseChronoTwinNormal();
 
     expect(
         result.dt!.millisecondsSinceEpoch, datetime_1.millisecondsSinceEpoch);
@@ -112,8 +112,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final naive = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
     final local = DateTime.now();
     final utc = DateTime.now().toUtc();
-    final difference = await howLongDoesItTake(
-        mine: FeatureChrono(
+    final difference = await howLongDoesItTakeTwinNormal(
+        mine: FeatureChronoTwinNormal(
             utc: utc, local: local, duration: duration, naive: naive));
     debugPrint('$difference');
     expect(difference, isNot(Duration.zero));

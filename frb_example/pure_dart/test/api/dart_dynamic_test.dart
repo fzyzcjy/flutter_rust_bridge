@@ -6,7 +6,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('dart call return_dart_dynamic', () async {
-    final data = await returnDartDynamic();
+    final data = await returnDartDynamicTwinNormal();
     expect(data, ['foo']);
   });
 }

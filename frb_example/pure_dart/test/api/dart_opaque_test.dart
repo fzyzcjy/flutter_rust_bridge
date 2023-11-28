@@ -10,39 +10,43 @@ Future<void> main({bool skipRustLibInit = false}) async {
   String f() => 'Test_String';
 
   test('loopback', () async {
-    await loopBackArrayGet(opaque: await loopBackArray(opaque: f));
-    await loopBackVecGet(opaque: await loopBackVec(opaque: f));
-    await loopBackOptionGet(opaque: await loopBackOption(opaque: f));
+    await loopBackArrayGetTwinNormal(
+        opaque: await loopBackArrayTwinNormal(opaque: f));
+    await loopBackVecGetTwinNormal(
+        opaque: await loopBackVecTwinNormal(opaque: f));
+    await loopBackOptionGetTwinNormal(
+        opaque: await loopBackOptionTwinNormal(opaque: f));
 
-    var back1 = await loopBack(opaque: f) as String Function();
+    var back1 = await loopBackTwinNormal(opaque: f) as String Function();
     expect(back1(), 'Test_String');
-    var back2 = await loopBack(opaque: back1) as String Function();
+    var back2 = await loopBackTwinNormal(opaque: back1) as String Function();
     expect(back2(), 'Test_String');
     expect(identical(back2, f), isTrue);
   });
 
   test('drop', () async {
-    expect(await asyncAcceptDartOpaque(opaque: createLargeList(mb: 200)),
+    expect(
+        await asyncAcceptDartOpaqueTwinNormal(opaque: createLargeList(mb: 200)),
         'async test');
   });
 
   test('nested', () async {
-    var str = await createNestedDartOpaque(opaque1: f, opaque2: f);
-    await getNestedDartOpaque(opaque: str);
+    var str = await createNestedDartOpaqueTwinNormal(opaque1: f, opaque2: f);
+    await getNestedDartOpaqueTwinNormal(opaque: str);
   });
 
   test('enum', () async {
-    var en = await createEnumDartOpaque(opaque: f);
-    await getEnumDartOpaque(opaque: en);
+    var en = await createEnumDartOpaqueTwinNormal(opaque: f);
+    await getEnumDartOpaqueTwinNormal(opaque: en);
   });
 
   test('nested', () async {
-    var str = await createNestedDartOpaque(opaque1: f, opaque2: f);
-    await getNestedDartOpaque(opaque: str);
+    var str = await createNestedDartOpaqueTwinNormal(opaque1: f, opaque2: f);
+    await getNestedDartOpaqueTwinNormal(opaque: str);
   });
 
   test('enum', () async {
-    var en = await createEnumDartOpaque(opaque: f);
-    await getEnumDartOpaque(opaque: en);
+    var en = await createEnumDartOpaqueTwinNormal(opaque: f);
+    await getEnumDartOpaqueTwinNormal(opaque: en);
   });
 }
