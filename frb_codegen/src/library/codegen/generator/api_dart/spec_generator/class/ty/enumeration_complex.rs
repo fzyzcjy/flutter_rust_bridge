@@ -19,7 +19,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
         let variants = src
             .variants()
             .iter()
-            .map(|variant| self.generate_mode_complex_variant(&variant))
+            .map(|variant| self.generate_mode_complex_variant(variant))
             .collect_vec()
             .join("\n");
         let name = &self.ir.ident.0.name;

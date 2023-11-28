@@ -3,10 +3,8 @@ use crate::codegen::generator::wire::dart::internal_config::{
     DartOutputClassNamePack, GeneratorWireDartInternalConfig,
 };
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
-use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use itertools::Itertools;
-use std::borrow::Cow;
 
 pub(super) fn generate(
     config: &GeneratorWireDartInternalConfig,
@@ -15,7 +13,7 @@ pub(super) fn generate(
     let methods = rust_extern_funcs
         .iter()
         .filter(|x| x.target == Target::Wasm)
-        .map(|x| generate_method(x))
+        .map(generate_method)
         .collect_vec();
     generate_wire_class(config, &methods) + generate_wasm_module_class(config, &methods)
 }

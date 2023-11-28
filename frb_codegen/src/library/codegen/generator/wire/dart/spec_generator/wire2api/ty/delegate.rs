@@ -63,7 +63,7 @@ impl<'a> WireDartGeneratorWire2apiTrait for DelegateWireDartGenerator<'a> {
             IrTypeDelegate::TimeList(t) => {
                 format!(
                     "return (raw as List<dynamic>).map(_wire2api_{}).toList();",
-                    IrTypeDelegate::Time(t.clone()).safe_ident()
+                    IrTypeDelegate::Time(*t).safe_ident()
                 )
             }
             IrTypeDelegate::Uuid => {

@@ -34,7 +34,7 @@ pub(crate) fn parse(
     trace!("rust_input_paths={:?}", &rust_input_paths);
 
     let file_data_arr = read_files(
-        &rust_input_paths,
+        rust_input_paths,
         &config.rust_crate_dir,
         cached_rust_reader,
         dumper,
@@ -69,7 +69,7 @@ pub(crate) fn parse(
         })
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
-        .filter_map(|x| x)
+        .flatten()
         // to give downstream a stable output
         .sorted_by_cached_key(|func| func.name.clone())
         .collect_vec();
@@ -102,7 +102,7 @@ fn read_files(
         .iter()
         .map(|rust_input_path| {
             let content =
-                cached_rust_reader.read_rust_file(rust_input_path, &rust_crate_dir, dumper)?;
+                cached_rust_reader.read_rust_file(rust_input_path, rust_crate_dir, dumper)?;
             let ast = syn::parse_file(&content)?;
             Ok(FileData {
                 path: (*rust_input_path).clone(),

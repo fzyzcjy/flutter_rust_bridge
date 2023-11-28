@@ -49,7 +49,7 @@ fn extract_module(raw_expanded: &str, module: Option<String>) -> Result<String> 
                 .split("::")
                 .fold((0, raw_expanded), |(spaces, expanded), module| {
                     // empty module scenario
-                    if expanded.find(&format!("mod {module} {{}}")).is_some() {
+                    if expanded.contains(&format!("mod {module} {{}}")) {
                         return (spaces, "");
                     }
 
@@ -76,7 +76,7 @@ fn extract_module(raw_expanded: &str, module: Option<String>) -> Result<String> 
 fn run_cargo_expand(
     rust_crate_dir: &Path,
     dumper: &Dumper,
-    allow_auto_install: bool,
+    _allow_auto_install: bool,
 ) -> Result<String> {
     info!("Running cargo expand in '{rust_crate_dir:?}'");
     let args = vec![

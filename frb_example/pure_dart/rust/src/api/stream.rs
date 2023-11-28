@@ -53,7 +53,7 @@ pub struct MyStreamEntry {
 
 // TODO #11193
 // https://github.com/fzyzcjy/flutter_rust_bridge/issues/398 reports a compile error like this
-pub fn handle_stream_of_struct(sink: StreamSink<MyStreamEntry>) {
+pub fn handle_stream_of_struct(_sink: StreamSink<MyStreamEntry>) {
     // Ok(())
 }
 

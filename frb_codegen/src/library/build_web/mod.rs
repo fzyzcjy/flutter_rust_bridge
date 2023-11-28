@@ -1,12 +1,9 @@
-use crate::command_run;
-use crate::commands::command_runner::call_shell;
-use crate::library::commands::command_runner::execute_command;
 use crate::utils::dart_repository::dart_repo::DartRepository;
 use crate::utils::path_utils::{find_dart_package_dir, path_to_string};
 use anyhow::{bail, Context};
 use log::debug;
 use std::path::{Path, PathBuf};
-use std::process::{Command, Stdio};
+use std::process::Command;
 use std::str::FromStr;
 use std::{env, fs};
 

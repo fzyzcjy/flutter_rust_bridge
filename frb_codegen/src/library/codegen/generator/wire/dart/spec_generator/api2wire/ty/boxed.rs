@@ -54,7 +54,7 @@ impl<'a> WireDartGeneratorApi2wireTrait for BoxedWireDartGenerator<'a> {
     fn dart_wire_type(&self, target: Target) -> String {
         match target {
             Target::Wasm => {
-                if is_js_value(&*self.ir.inner)
+                if is_js_value(&self.ir.inner)
                     || self.ir.inner.is_array()
                     || self.ir.inner.is_primitive()
                 {

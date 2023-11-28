@@ -21,7 +21,7 @@ pub(super) fn generate(
     spec: &WireRustOutputSpec,
     config: &GeneratorWireRustInternalConfig,
 ) -> anyhow::Result<WireRustOutputText> {
-    let merged_code = generate_merged_code(&spec);
+    let merged_code = generate_merged_code(spec);
     let text = generate_text_from_merged_code(
         config,
         &merged_code.clone().map(|code, _| code.all_code()),

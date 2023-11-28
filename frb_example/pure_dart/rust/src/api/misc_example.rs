@@ -1,6 +1,5 @@
 use crate::auxiliary::sample_types::MySize;
 use flutter_rust_bridge::frb;
-use frb_example_pure_dart_exapmle_external_lib::RawStringMirrored;
 use log::info;
 
 #[derive(Debug, Clone)]
@@ -13,7 +12,7 @@ pub struct MyTreeNode {
 
 pub fn handle_complex_struct(s: MyTreeNode) -> MyTreeNode {
     // info!("handle_complex_struct({:?})", &s);
-    let s_cloned = s.clone();
+    let _s_cloned = s.clone();
     s
 }
 
@@ -45,7 +44,7 @@ pub struct MyNestedStruct {
 
 pub fn handle_nested_struct(s: MyNestedStruct) -> MyNestedStruct {
     println!("handle_nested_struct({s:?})");
-    let s_cloned = s.clone();
+    let _s_cloned = s.clone();
     s
 }
 

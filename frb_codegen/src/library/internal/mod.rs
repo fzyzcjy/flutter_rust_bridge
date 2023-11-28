@@ -60,8 +60,7 @@ fn generate_allo_isolate_cbindgen(repo_base_dir: &PathBuf) -> anyhow::Result<()>
 
     let package_name = "allo-isolate";
     let package = (metadata.packages.iter())
-        .filter(|package| package.name == package_name)
-        .next()
+        .find(|package| package.name == package_name)
         .unwrap();
     let rust_crate_dir = package.manifest_path.as_std_path().parent().unwrap();
 
@@ -109,10 +108,10 @@ fn ffigen(repo_base_dir: &Path) -> anyhow::Result<()> {
     ffigen_raw(
         &FfigenCommandConfig {
             output: repo_base_dir.join("frb_dart/lib/src/ffigen_generated/multi_package.dart"),
-            name: format!("MultiPackageCBinding"),
+            name: "MultiPackageCBinding".to_string(),
             headers: FfigenCommandConfigHeaders {
                 entry_points: raw_headers.clone(),
-                include_directives: raw_headers.clone(),
+                include_directives: raw_headers,
             },
             preamble: FFIGEN_PREAMBLE.to_owned(),
             description: FFIGEN_DESCRIPTION.to_owned(),

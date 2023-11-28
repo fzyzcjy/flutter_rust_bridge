@@ -18,7 +18,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
         Some(generate_class_from_fields(
             self.ir.clone(),
             self.context,
-            &vec!["ptr: *const core::ffi::c_void".to_owned()],
+            &["ptr: *const core::ffi::c_void".to_owned()],
         ))
     }
 

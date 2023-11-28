@@ -22,7 +22,7 @@ impl CachedRustReader {
         debug!("read_rust_file rust_file_path={rust_file_path:?} module={module:?}");
         let ans =
             self.cached_cargo_expand
-                .execute(&rust_crate_dir, module, rust_file_path, dumper)?;
+                .execute(rust_crate_dir, module, rust_file_path, dumper)?;
 
         dumper.dump_str(
             ConfigDumpContent::Source,

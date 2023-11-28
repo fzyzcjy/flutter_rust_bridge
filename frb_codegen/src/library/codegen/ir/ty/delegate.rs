@@ -68,8 +68,8 @@ impl IrTypeTrait for IrTypeDelegate {
                 "ZeroCopyBuffer_".to_owned() + &self.get_delegate().safe_ident()
             }
             IrTypeDelegate::PrimitiveEnum(ir) => ir.ir.safe_ident(),
-            IrTypeDelegate::Time(ir) => format!("Chrono_{}", ir.to_string()),
-            IrTypeDelegate::TimeList(ir) => format!("Chrono_{}List", ir.to_string()),
+            IrTypeDelegate::Time(ir) => format!("Chrono_{}", ir),
+            IrTypeDelegate::TimeList(ir) => format!("Chrono_{}List", ir),
             IrTypeDelegate::Uuid => "Uuid".to_owned(),
             IrTypeDelegate::Uuids => "Uuids".to_owned(),
             IrTypeDelegate::Backtrace => "String".to_owned(),
@@ -200,8 +200,8 @@ impl IrTypeDelegateArray {
 macro_rules! forward_delegate_primitive_enum {
     ($self:ident, $func:ident($($tokens:tt)*), $ret:expr) => {
         if let IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum {ir, ..}) = &$self.ir {
-            crate::library::codegen::generator::wire::rust::spec_generator::base::WireRustGenerator::new(
-                crate::library::codegen::ir::ty::IrType::EnumRef(ir.clone()), $self.context)
+            $crate::library::codegen::generator::wire::rust::spec_generator::base::WireRustGenerator::new(
+                $crate::library::codegen::ir::ty::IrType::EnumRef(ir.clone()), $self.context)
             .$func($($tokens)*)
         } else {
             $ret

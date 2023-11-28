@@ -27,7 +27,7 @@ pub(crate) struct TempChangeFile {
 impl Drop for TempChangeFile {
     fn drop(&mut self) {
         if let Some(content_original) = &self.content_original {
-            fs::write(&self.path, &content_original)
+            fs::write(&self.path, content_original)
         } else {
             fs::remove_file(&self.path)
         }

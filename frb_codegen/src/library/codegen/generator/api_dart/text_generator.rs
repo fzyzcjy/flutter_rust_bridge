@@ -22,7 +22,7 @@ pub(super) fn generate(
             .iter()
             .map(|(namespace, item)| {
                 let dart_output_path =
-                    compute_path_from_namespace(&config.dart_decl_base_output_path, &namespace);
+                    compute_path_from_namespace(&config.dart_decl_base_output_path, namespace);
                 let text = generate_end_api_text(namespace, &dart_output_path, item);
                 PathText::new(dart_output_path, text)
             })
@@ -43,7 +43,7 @@ fn generate_end_api_text(
         .funcs
         .iter()
         .sorted_by_key(|f| f.src_lineno)
-        .map(|f| generate_function(f))
+        .map(generate_function)
         .join("\n\n");
     let classes = item.classes.iter().map(|c| c.code.clone()).join("\n\n");
 

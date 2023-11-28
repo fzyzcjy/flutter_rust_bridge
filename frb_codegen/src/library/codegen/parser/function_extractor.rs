@@ -50,8 +50,8 @@ pub(super) fn extract_generalized_functions_from_file(
     path: &std::path::Path,
 ) -> anyhow::Result<Vec<PathAndItemFn>> {
     let item_fns = [
-        extract_fns_from_file(&file),
-        extract_methods_from_file(&file)?,
+        extract_fns_from_file(file),
+        extract_methods_from_file(file)?,
     ]
     .concat();
     let ans = item_fns

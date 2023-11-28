@@ -1,5 +1,3 @@
-use backtrace::Backtrace;
-use flutter_rust_bridge::handler::Error::CustomError;
 use flutter_rust_bridge::{spawn, StreamSink};
 
 #[derive(Debug, Clone)]

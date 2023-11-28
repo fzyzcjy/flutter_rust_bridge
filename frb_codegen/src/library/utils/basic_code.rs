@@ -33,7 +33,7 @@ macro_rules! basic_code_partial_impl {
 #[macro_export]
 macro_rules! basic_code_impl {
     ($name:ident) => {
-        crate::basic_code_partial_impl!($name);
+        $crate::basic_code_partial_impl!($name);
 
         impl From<String> for $name {
             fn from(body: String) -> Self {
@@ -50,7 +50,7 @@ macro_rules! basic_code_impl {
             }
         }
 
-        impl crate::utils::basic_code::BasicCode for $name {
+        impl $crate::utils::basic_code::BasicCode for $name {
             fn body(&self) -> &str {
                 &self.body
             }

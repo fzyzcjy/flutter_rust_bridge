@@ -151,7 +151,7 @@ fn generate_boilerplate(
         }],
         wasm: vec![WireDartOutputCode {
             header: DartBasicHeaderCode {
-                file_top: file_top.clone(),
+                file_top,
                 import: format!(
                     "
                     {universal_imports}

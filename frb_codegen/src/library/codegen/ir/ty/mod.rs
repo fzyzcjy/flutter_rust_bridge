@@ -93,9 +93,9 @@ pub trait IrTypeTrait {
     }
 }
 
-impl Into<IrType> for Box<IrType> {
-    fn into(self) -> IrType {
-        *self
+impl From<Box<IrType>> for IrType {
+    fn from(val: Box<IrType>) -> Self {
+        *val
     }
 }
 

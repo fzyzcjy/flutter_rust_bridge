@@ -44,7 +44,7 @@ impl Dumper<'_> {
                 content,
                 &format!(
                     "{partial_name}/{}",
-                    path_to_string(&path_text.path.strip_prefix(base_dir)?)?
+                    path_to_string(path_text.path.strip_prefix(base_dir)?)?
                 ),
                 &path_text.text,
             )?;

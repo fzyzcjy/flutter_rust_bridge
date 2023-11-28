@@ -29,7 +29,7 @@ pub(crate) fn generate(
     )?;
     dumper.dump(ConfigDumpContent::GeneratorSpec, "wire_dart.json", &spec)?;
 
-    let text = text_generator::generate(&spec, &context.config)?;
+    let text = text_generator::generate(&spec, context.config)?;
     dumper.dump_acc(
         ConfigDumpContent::GeneratorText,
         "wire_dart",

@@ -30,7 +30,7 @@ impl<'a> WireDartGeneratorApi2wireTrait for DelegateWireDartGenerator<'a> {
                     wasm: Some(format!(
                         "return {}.fromList(raw);",
                         ApiDartGenerator::new(
-                            array.get_delegate().clone(),
+                            array.get_delegate(),
                             self.context.as_api_dart_context()
                         )
                         .dart_api_type()
@@ -57,13 +57,14 @@ impl<'a> WireDartGeneratorApi2wireTrait for DelegateWireDartGenerator<'a> {
                 Acc::distribute(Some(body))
             }
             IrTypeDelegate::StringList => Acc {
-                io: Some(format!(
+                io: Some(
                     "final ans = wire.new_StringList(raw.length);
-                    for (var i = 0; i < raw.length; i++){{
+                    for (var i = 0; i < raw.length; i++){
                         ans.ref.ptr[i] = api2wire_String(raw[i]);
-                    }}
-                    return ans;",
-                )),
+                    }
+                    return ans;"
+                        .to_string(),
+                ),
                 wasm: Some("return raw;".into()),
                 ..Default::default()
             },
@@ -88,7 +89,7 @@ impl<'a> WireDartGeneratorApi2wireTrait for DelegateWireDartGenerator<'a> {
                 "final ans = Int64List(raw.length);
                 for (var i=0; i < raw.length; ++i) ans[i] = api2wire_{}(raw[i]);
                 return api2wire_list_prim_i_64(ans);",
-                IrTypeDelegate::Time(t.clone()).safe_ident()
+                IrTypeDelegate::Time(*t).safe_ident()
             ))),
             IrTypeDelegate::Uuid => Acc::distribute(Some(format!(
                 "return api2wire_{}(raw.toBytes());",
@@ -112,8 +113,9 @@ impl<'a> WireDartGeneratorApi2wireTrait for DelegateWireDartGenerator<'a> {
             (IrTypeDelegate::String, Target::Wasm) => "String".into(),
             (IrTypeDelegate::StringList, Target::Wasm) => "List<String>".into(),
             (IrTypeDelegate::StringList, _) => "ffi.Pointer<wire_StringList>".to_owned(),
-            _ => WireDartGenerator::new(self.ir.get_delegate().clone(), self.context)
-                .dart_wire_type(target),
+            _ => {
+                WireDartGenerator::new(self.ir.get_delegate(), self.context).dart_wire_type(target)
+            }
         }
     }
 }

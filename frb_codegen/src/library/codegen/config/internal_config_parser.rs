@@ -42,22 +42,21 @@ impl InternalConfig {
         let dart_output_dir: PathBuf = base_dir.join(&config.dart_output);
         let dart_output_path_pack = compute_dart_output_path_pack(&dart_output_dir);
 
-        let dart_output_class_name_pack = compute_dart_output_class_name_pack(&config);
+        let dart_output_class_name_pack = compute_dart_output_class_name_pack(config);
 
         let c_output_path = base_dir.join(&config.c_output);
-        let duplicated_c_output_path = (&config)
+        let duplicated_c_output_path = config
             .duplicated_c_output
             .clone()
             .unwrap_or_default()
             .into_iter()
-            .map(|p| base_dir.join(&p))
+            .map(|p| base_dir.join(p))
             .collect();
 
-        let rust_crate_dir: PathBuf = ((&config).rust_crate_dir.clone().map(PathBuf::from))
-            .unwrap_or(find_rust_crate_dir(
-                rust_input_path_pack.one_rust_input_path(),
-            )?);
-        let rust_output_path = compute_rust_output_path(&config, &base_dir, &rust_crate_dir);
+        let rust_crate_dir: PathBuf = (config.rust_crate_dir.clone().map(PathBuf::from)).unwrap_or(
+            find_rust_crate_dir(rust_input_path_pack.one_rust_input_path())?,
+        );
+        let rust_output_path = compute_rust_output_path(config, &base_dir, &rust_crate_dir);
         let _rust_wire_mod = compute_mod_from_rust_crate_path(
             &rust_output_path[TargetOrCommon::Common],
             &rust_crate_dir,
@@ -67,7 +66,7 @@ impl InternalConfig {
             .unwrap_or(find_dart_package_dir(&dart_output_dir)?);
 
         let default_external_library_loader =
-            compute_default_external_library_loader(&rust_crate_dir, &dart_root, &config);
+            compute_default_external_library_loader(&rust_crate_dir, &dart_root, config);
 
         let wasm_enabled = config.wasm.unwrap_or(true);
         let dart_enums_style = config.dart_enums_style.unwrap_or(true);
@@ -104,11 +103,8 @@ impl InternalConfig {
                             .into_iter()
                             .map(PathBuf::from)
                             .collect_vec(),
-                        llvm_compiler_opts: config
-                            .llvm_compiler_opts
-                            .clone()
-                            .unwrap_or_else(String::new),
-                        extra_headers: config.extra_headers.clone().unwrap_or_else(String::new),
+                        llvm_compiler_opts: config.llvm_compiler_opts.clone().unwrap_or_default(),
+                        extra_headers: config.extra_headers.clone().unwrap_or_default(),
                         dart_impl_output_path: dart_output_path_pack.dart_impl_output_path,
                         dart_output_class_name_pack,
                         default_external_library_loader,
@@ -138,7 +134,7 @@ impl InternalConfig {
                 c_output_path,
             },
             dumper: DumperInternalConfig {
-                dump_contents: parse_dump_contents(&config),
+                dump_contents: parse_dump_contents(config),
                 dump_directory,
             },
         })
@@ -152,7 +148,7 @@ fn parse_dump_contents(config: &Config) -> Vec<ConfigDumpContent> {
     if let Some(dump) = &config.dump {
         return dump.to_owned();
     }
-    return vec![];
+    vec![]
 }
 
 fn compute_default_external_library_loader(
@@ -161,11 +157,11 @@ fn compute_default_external_library_loader(
     config: &Config,
 ) -> GeneratorWireDartDefaultExternalLibraryLoaderInternalConfig {
     GeneratorWireDartDefaultExternalLibraryLoaderInternalConfig {
-        stem: compute_default_external_library_stem(&rust_crate_dir)
+        stem: compute_default_external_library_stem(rust_crate_dir)
             .unwrap_or(FALLBACK_DEFAULT_EXTERNAL_LIBRARY_STEM.to_owned()),
         io_directory: compute_default_external_library_relative_directory(
-            &rust_crate_dir,
-            &dart_root,
+            rust_crate_dir,
+            dart_root,
         )
         .unwrap_or(FALLBACK_DEFAULT_EXTERNAL_LIBRARY_RELATIVE_DIRECTORY.to_owned()),
         web_prefix: config
@@ -182,8 +178,7 @@ fn compute_default_external_library_stem(rust_crate_dir: &Path) -> Result<String
         .root_package()
         .context("cannot find root package")?;
     let target = (package.targets.iter())
-        .filter(|target| target.kind.iter().any(|kind| kind.contains("lib")))
-        .next()
+        .find(|target| target.kind.iter().any(|kind| kind.contains("lib")))
         .context("cannot find target")?;
     Ok(target.name.clone())
 }
@@ -201,7 +196,7 @@ const FALLBACK_DEFAULT_EXTERNAL_LIBRARY_RELATIVE_DIRECTORY: &str = "UNKNOWN";
 
 impl RustInputPathPack {
     fn one_rust_input_path(&self) -> &Path {
-        self.rust_input_paths.iter().next().unwrap()
+        self.rust_input_paths.first().unwrap()
     }
 }
 
@@ -233,7 +228,7 @@ fn compute_rust_output_path(
     rust_crate_dir: &Path,
 ) -> TargetOrCommonMap<PathBuf> {
     let path_common = base_dir.join(
-        &(config.rust_output.clone().map(PathBuf::from))
+        (config.rust_output.clone().map(PathBuf::from))
             .unwrap_or_else(|| fallback_rust_output_path(rust_crate_dir)),
     );
     compute_path_map(&path_common)
@@ -255,8 +250,8 @@ fn compute_path_map(path_common: &Path) -> TargetOrCommonMap<PathBuf> {
     let extension = path_common.extension().unwrap().to_str().unwrap();
     TargetOrCommonMap {
         common: path_common.to_owned(),
-        io: path_common.with_extension(&format!("io.{extension}")),
-        wasm: path_common.with_extension(&format!("web.{extension}")),
+        io: path_common.with_extension(format!("io.{extension}")),
+        wasm: path_common.with_extension(format!("web.{extension}")),
     }
 }
 
@@ -290,7 +285,7 @@ fn get_file_stem(p: &Path) -> &str {
     p.file_stem().unwrap().to_str().unwrap()
 }
 
-const FALLBACK_DART_ENTRYPOINT_CLASS_NAME: &'static str = "RustLib";
+const FALLBACK_DART_ENTRYPOINT_CLASS_NAME: &str = "RustLib";
 
 fn compute_dart_output_class_name_pack(config: &Config) -> DartOutputClassNamePack {
     let entrypoint_class_name = (config.dart_entrypoint_class_name.clone())

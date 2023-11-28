@@ -15,7 +15,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for DartOpaqueWireRustGenerator<'a> {
         Some(generate_class_from_fields(
             self.ir.clone(),
             self.context,
-            &vec!["port: i64".to_owned(), "handle: usize".to_owned()],
+            &["port: i64".to_owned(), "handle: usize".to_owned()],
         ))
     }
 

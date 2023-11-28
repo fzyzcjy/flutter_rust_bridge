@@ -21,8 +21,8 @@ pub(crate) fn generate_api_impl_normal_function(
     let wire_param_list = generate_wire_param_list(func, stmt_prepare_args.len()).join(", ");
     let execute_func_name = generate_execute_func_name(func);
 
-    let parse_success_data = generate_parse_success_data(&func);
-    let parse_error_data = generate_parse_error_data(&func);
+    let parse_success_data = generate_parse_success_data(func);
+    let parse_error_data = generate_parse_error_data(func);
     let call_ffi_args = generate_call_ffi_args(func);
     let arg_values = generate_arg_values(func);
 

@@ -30,7 +30,7 @@ pub(crate) fn generate_api_method(
 
     let params = generate_params(func, context, is_static_method, skip_count);
     let comments = generate_dart_comments(&func.comments);
-    let signature = generate_signature(&func, ir_struct, context, method_info, params);
+    let signature = generate_signature(func, ir_struct, context, method_info, params);
     let arg_names = generate_arg_names(func, is_static_method, skip_count).concat();
     let implementation = generate_implementation(func, context, is_static_method, arg_names);
 

@@ -66,7 +66,7 @@ mod tests {
 
         let config = run_command_line(vec!["", "generate"]);
         assert_eq!(config.rust_input, "hello.rs".to_string());
-        assert_eq!(config.dart3.unwrap(), false);
+        assert!(!config.dart3.unwrap());
 
         Ok(())
     }
@@ -79,7 +79,7 @@ mod tests {
 
         let config = run_command_line(vec!["", "generate"]);
         assert_eq!(config.rust_input, "hello.rs".to_string());
-        assert_eq!(config.dart3.unwrap(), false);
+        assert!(!config.dart3.unwrap());
 
         Ok(())
     }
@@ -92,7 +92,7 @@ mod tests {
 
         let config = run_command_line(vec!["", "generate", "--config-file", "hello.yaml"]);
         assert_eq!(config.rust_input, "hello.rs".to_string());
-        assert_eq!(config.dart3.unwrap(), false);
+        assert!(!config.dart3.unwrap());
 
         Ok(())
     }

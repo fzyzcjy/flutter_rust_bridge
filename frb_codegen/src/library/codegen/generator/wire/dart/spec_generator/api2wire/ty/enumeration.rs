@@ -12,7 +12,7 @@ impl<'a> WireDartGeneratorApi2wireTrait for EnumRefWireDartGenerator<'a> {
         let variants = (self.ir.get(self.context.ir_pack).variants())
             .iter()
             .enumerate()
-            .map(|(idx, variant)| generate_api2wire_body_variant(idx, &variant))
+            .map(|(idx, variant)| generate_api2wire_body_variant(idx, variant))
             .join("\n");
 
         Acc {

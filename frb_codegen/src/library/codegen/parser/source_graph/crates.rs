@@ -34,7 +34,7 @@ impl Crate {
         let root_src_content = fs::read_to_string(&root_src_file)?;
         let root_src_ast = syn::parse_file(&root_src_content)?;
 
-        let root_module_info = get_root_module_info(root_src_file.clone(), root_src_ast);
+        let root_module_info = get_root_module_info(root_src_file, root_src_ast);
         let root_module = Module::parse(root_module_info, cached_rust_reader, dumper)?;
 
         Ok(Crate {

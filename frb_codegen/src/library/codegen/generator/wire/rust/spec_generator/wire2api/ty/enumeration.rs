@@ -22,7 +22,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
 
         let variant_structs = variants
             .iter()
-            .map(|variant| self.generate_wire2api_class_variant(&variant))
+            .map(|variant| self.generate_wire2api_class_variant(variant))
             .join("\n\n");
 
         let union_fields = variants
@@ -96,7 +96,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
         let inflators = src
             .variants()
             .iter()
-            .filter_map(|variant| self.generate_impl_new_with_nullptr_variant(&variant))
+            .filter_map(|variant| self.generate_impl_new_with_nullptr_variant(variant))
             .collect_vec();
 
         Some(WireRustOutputCode {

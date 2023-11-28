@@ -74,14 +74,14 @@ pub(crate) fn general_list_impl_wire2api_body() -> Acc<Option<String>> {
     }
 }
 
-const WIRE2API_BODY_IO: &'static str = "
+const WIRE2API_BODY_IO: &str = "
     let vec = unsafe {
         let wrap = flutter_rust_bridge::support::box_from_leak_ptr(self);
         flutter_rust_bridge::support::vec_from_leak_ptr(wrap.ptr, wrap.len)
     };
     vec.into_iter().map(Wire2Api::wire2api).collect()
 ";
-const WIRE2API_BODY_WASM: &'static str =
+const WIRE2API_BODY_WASM: &str =
     "self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap().iter().map(Wire2Api::wire2api).collect()";
 
 pub(crate) fn generate_list_generate_allocate_func(

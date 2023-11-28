@@ -58,7 +58,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 // name: safe_ident,
                 // freezed: false,
                 // empty: false,
-                ident: IrStructIdent(NamespacedName::new(namespace.clone(), safe_ident)),
+                ident: IrStructIdent(NamespacedName::new(namespace, safe_ident)),
                 is_exception: false,
             },
             values: values.into_boxed_slice(),

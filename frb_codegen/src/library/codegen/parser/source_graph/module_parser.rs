@@ -37,16 +37,16 @@ impl Module {
 
         let items = match &info.source {
             ModuleSource::File(file) => &file.items,
-            ModuleSource::ModuleInFile(items) => &items,
+            ModuleSource::ModuleInFile(items) => items,
         };
 
         for item in items.iter() {
             match item {
                 syn::Item::Struct(item_struct) => {
-                    scope_structs.extend(parse_syn_item_struct(&info, &item_struct)?);
+                    scope_structs.extend(parse_syn_item_struct(&info, item_struct)?);
                 }
                 syn::Item::Enum(item_enum) => {
-                    scope_enums.extend(parse_syn_item_enum(&info, &item_enum)?);
+                    scope_enums.extend(parse_syn_item_enum(&info, item_enum)?);
                 }
                 syn::Item::Type(item_type) => {
                     scope_types.extend(parse_syn_item_type(item_type));
@@ -54,7 +54,7 @@ impl Module {
                 syn::Item::Mod(item_mod) => {
                     scope_modules.extend(parse_syn_item_mod(
                         &info,
-                        &item_mod,
+                        item_mod,
                         cached_rust_reader,
                         dumper,
                     )?);
@@ -159,8 +159,8 @@ fn parse_syn_item_mod(
             dumper,
         )?,
         None => parse_syn_item_mod_contentless(
-            &info,
-            &item_mod,
+            info,
+            item_mod,
             module_path,
             ident,
             cached_rust_reader,
@@ -212,7 +212,7 @@ fn parse_syn_item_mod_contentless(
     if let Some(file_path) = first_existing_path(&file_path_candidates) {
         let rust_crate_dir_for_file = find_rust_crate_dir(file_path)?;
         let source_rust_content =
-            cached_rust_reader.read_rust_file(&file_path, &rust_crate_dir_for_file, dumper)?;
+            cached_rust_reader.read_rust_file(file_path, &rust_crate_dir_for_file, dumper)?;
         debug!("Trying to parse {:?}", file_path);
         let source = ModuleSource::File(syn::parse_file(&source_rust_content).unwrap());
 

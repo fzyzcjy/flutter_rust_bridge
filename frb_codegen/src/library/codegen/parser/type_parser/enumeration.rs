@@ -43,7 +43,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             .src
             .variants
             .iter()
-            .map(|variant| self.parse_variant(src_enum, &variant))
+            .map(|variant| self.parse_variant(src_enum, variant))
             .collect::<anyhow::Result<Vec<_>>>()?;
 
         let mode = compute_enum_mode(&raw_variants);
@@ -137,7 +137,7 @@ impl EnumOrStructParser<IrEnumIdent, IrEnum, Enum, ItemEnum>
         };
         let enu = self.0.inner.enum_parser_info.object_pool.get(&ident);
 
-        return Ok(
+        Ok(
             if enu.map(|e| e.mode == IrEnumMode::Complex).unwrap_or(true) {
                 EnumRef(enum_ref)
             } else {
@@ -147,7 +147,7 @@ impl EnumOrStructParser<IrEnumIdent, IrEnum, Enum, ItemEnum>
                     repr: IrTypePrimitive::I32,
                 }))
             },
-        );
+        )
     }
 
     fn src_objects(&self) -> &HashMap<String, &Enum> {

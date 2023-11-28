@@ -1,4 +1,4 @@
-use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
+use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGenerator;
 use crate::codegen::generator::wire::rust::spec_generator::base::{
     WireRustGenerator, WireRustGeneratorContext,

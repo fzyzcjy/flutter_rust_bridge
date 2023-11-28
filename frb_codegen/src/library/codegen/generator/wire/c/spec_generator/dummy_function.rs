@@ -30,7 +30,7 @@ fn compute_dummy_var_operations(func_names: &[String]) -> String {
         .join("\n")
 }
 
-const EXTRA_EXTERN_FUNC_NAMES: &'static [&'static str] = &[
+const EXTRA_EXTERN_FUNC_NAMES: &[&str] = &[
     "store_dart_post_cobject",
     "get_dart_object",
     "drop_dart_object",

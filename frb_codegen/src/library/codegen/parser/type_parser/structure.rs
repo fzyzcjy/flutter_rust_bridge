@@ -87,12 +87,12 @@ impl EnumOrStructParser<IrStructIdent, IrStruct, Struct, ItemStruct>
         name: NamespacedName,
         wrapper_name: Option<String>,
     ) -> anyhow::Result<Option<IrStruct>> {
-        Ok(self.0.parse_struct(src_object, name, wrapper_name)?)
+        self.0.parse_struct(src_object, name, wrapper_name)
     }
 
     fn construct_output(&self, ident: IrStructIdent) -> anyhow::Result<IrType> {
         Ok(StructRef(IrTypeStructRef {
-            ident: ident.clone(),
+            ident,
             is_exception: false,
             // TODO rm
             // freezed: self
