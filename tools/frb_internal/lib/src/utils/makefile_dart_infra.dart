@@ -6,6 +6,7 @@ import 'package:args/command_runner.dart';
 
 // ignore: implementation_imports
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
+import 'package:path/path.dart' as path;
 
 class SimpleExecutor {
   final Map<String, String>? env;
@@ -87,11 +88,12 @@ class SimpleConfigCommand<T> extends Command<void> {
   Future<void> run() async => await executor(parseConfigResult(argResults!));
 }
 
-String randomTempDir() {
+String randomTempDirName() {
   final timeStr =
       DateTime.now().toIso8601String().replaceAll(".", "").replaceAll(":", "");
   final randomStr = Random().nextInt(1000000000);
-  return Directory.systemTemp.uri
-      .resolve('${timeStr}_$randomStr/')
-      .toFilePath();
+  return 'temp_${timeStr}_$randomStr';
 }
+
+String randomTempDir() =>
+    path.join(Directory.systemTemp.path, randomTempDirName());

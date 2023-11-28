@@ -146,7 +146,11 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
     GeneratePackageConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
     final dirPackage = path.join(exec.pwd!, config.package);
-    final dirTemp = randomTempDir();
+
+    // Use temp dir within the repo. If use system-wide temp directory,
+    // may see "OS Error: Cross-device link, errno = 18" and cannot use the
+    // cheap "move directory" operation.
+    final dirTemp = path.join(exec.pwd!, 'target', randomTempDirName());
     print('Pick temporary directory: $dirTemp');
     await Directory(dirTemp).create(recursive: true);
 
