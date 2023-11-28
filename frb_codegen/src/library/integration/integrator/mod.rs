@@ -36,10 +36,14 @@ fn handle_cargokit_dir(dart_root: &Path) -> Result<()> {
         INTEGRATION_TEMPLATE_DIR.get_dir("cargokit").unwrap(),
         &dart_root,
         &|p, raw| {
+            if vec![".gitignore"].contains(&file_name(p)) {
+                return raw.to_owned();
+            }
+
             let comment_leading = match file_extension(p) {
-                ".dart" | ".md" | ".gradle" | "" => "///",
-                ".yaml" | ".toml" | ".sh" => "#",
-                ".lock" | ".cmake" | ".ps1" | ".gitignore" | ".cmd" => return raw.to_owned(),
+                "dart" | "md" | "gradle" | "" => "///",
+                "yaml" | "toml" | "sh" => "#",
+                "lock" | "cmake" | "ps1" | ".cmd" => return raw.to_owned(),
                 ext => unreachable!("unexpected file extension for p={:?} ext={}", p, ext),
             };
 
