@@ -46,17 +46,19 @@ target 'Runner' do
     # created by this build step.
     output_files ["${BUILT_PRODUCTS_DIR}/librust_lib.a"]
   }
-  pod_target_xcconfig {
-    'DEFINES_MODULE' => 'YES',
-    # Flutter.framework does not contain a i386 slice.
-    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386',
-    'OTHER_LDFLAGS' => '-force_load ${BUILT_PRODUCTS_DIR}/librust_lib.a',
-  }
   # TODO end
 end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     flutter_additional_macos_build_settings(target)
+
+    # TODO start
+    target.build_configurations.each do |config|
+      config.build_settings['DEFINES_MODULE'] = 'YES'
+      config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'i386'
+      config.build_settings['OTHER_LDFLAGS'] = '-force_load ${BUILT_PRODUCTS_DIR}/librust_lib.a'
+    end
+    # TODO end
   end
 end
