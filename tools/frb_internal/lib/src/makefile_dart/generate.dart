@@ -15,8 +15,8 @@ List<Command<void>> createCommands() {
     SimpleConfigCommand('generate-internal', generateInternal,
         _$populateGenerateConfigParser, _$parseGenerateConfigResult),
     SimpleConfigCommand(
-        'generate-run-frb-codegen',
-        generateRunFrbCodegen,
+        'generate-run-frb-codegen-command-generate',
+        generateRunFrbCodegenCommandGenerate,
         _$populateGeneratePackageConfigParser,
         _$parseGeneratePackageConfigResult),
     // more detailed command, can be used to execute just a portion of the main command
@@ -124,7 +124,8 @@ Future<void> generateInternalBuildRunner(GenerateConfig config) async {
   });
 }
 
-Future<void> generateRunFrbCodegen(GeneratePackageConfig config) async {
+Future<void> generateRunFrbCodegenCommandGenerate(
+    GeneratePackageConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
     await runDartPubGetIfNotRunYet(config.package);
     await exec(
