@@ -151,6 +151,9 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
         throw Exception('Do not know how to handle package ${config.package}'),
     };
 
+    final dirTemp = randomTempDir();
+    await exec('mkdir -p $dirTemp');
+
     TODO_rm_dir;
     TODO_temp_mv_target_etc;
 
