@@ -41,6 +41,15 @@ pub(crate) fn find_rust_crate_dir(rust_file_path: &Path) -> Result<PathBuf> {
     })
 }
 
+pub(crate) fn normalize_windows_unc_path(path: &str) -> &str {
+    // on windows get rid of the UNC path
+    if path.starts_with(r"\\?\") {
+        &path[r"\\?\".len()..]
+    } else {
+        path
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use crate::utils::path_utils::glob_path;

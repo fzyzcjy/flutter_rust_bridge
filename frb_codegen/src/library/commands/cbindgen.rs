@@ -1,3 +1,4 @@
+use crate::utils::path_utils::normalize_windows_unc_path;
 use cbindgen::Error;
 use log::{debug, info};
 use std::fs;
@@ -89,12 +90,5 @@ pub(crate) fn cbindgen_raw(
 
 fn parse_crate_dir(rust_crate_dir: &Path) -> anyhow::Result<String> {
     let canonical_path = Path::new(rust_crate_dir).canonicalize()?;
-    let mut path = canonical_path.to_str().unwrap();
-
-    // on windows get rid of the UNC path
-    if path.starts_with(r"\\?\") {
-        path = &path[r"\\?\".len()..];
-    }
-
-    Ok(path.to_owned())
+    Ok(normalize_windows_unc_path(canonical_path.to_str().unwrap()).to_owned())
 }
