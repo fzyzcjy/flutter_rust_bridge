@@ -74,16 +74,13 @@ Future<void> testDartWeb(TestDartConfig config) async {
 }
 
 Future<void> testDartValgrind(TestDartConfig config) async {
+  await exec('sudo apt install -y valgrind');
+  await runDartPubGetIfNotRunYet(config.package);
+
   '''
   ci_dart_valgrind:
-    just install_ffigen_dependency
-    just install_valgrind
-    just dart_pub_get dart_only
     just dart_test_valgrind pure_dart
    
-  install_valgrind:
-    sudo apt install -y valgrind
-    
   dart_test_valgrind name:
     just _dart_test_raw {{name}} "PYTHONUNBUFFERED=1 ./valgrind_util.py"
   ''';
