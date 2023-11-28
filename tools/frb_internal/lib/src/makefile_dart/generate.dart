@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/generator.dart'
@@ -24,6 +26,11 @@ List<Command<void>> createCommands() {
         _$parseGenerateConfigResult),
     SimpleConfigCommand('generate-internal-rust', generateInternalRust,
         _$populateGenerateConfigParser, _$parseGenerateConfigResult),
+    SimpleConfigCommand(
+        'generate-internal-dart-source',
+        generateInternalDartSource,
+        _$populateGenerateConfigParser,
+        _$parseGenerateConfigResult),
   ];
 }
 
@@ -69,6 +76,7 @@ Future<void> generateInternalDartSource(GenerateConfig config) async {
     await exec('''
     #!/usr/bin/env bash
     set -euxo pipefail
+    cd ${Directory.systemTemp}
 
     git clone --depth 1 --filter=blob:none --sparse --branch stable https://github.com/dart-lang/sdk.git
     cd sdk
