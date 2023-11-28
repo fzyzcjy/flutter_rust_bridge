@@ -1,0 +1,15 @@
+Build for web platform
+
+Usage: flutter_rust_bridge build-web [arguments]
+-h, --help                          Print this usage information.
+    --dart-root                     Root folder of dart package
+-c, --rust-crate-dir=<CRATE>        Directory of the crate
+                                    (defaults to "rust")
+-o, --output=<PKG>                  Output path
+    --release                       Compile in release mode
+-v, --[no-]verbose                  Display more verbose information
+    --cargo-build-args              Arguments passed to cargo-build
+    --wasm-bindgen-args             Arguments passed to wasm-bindgen
+    --dart-compile-js-entrypoint    If specified, compile Dart into JavaScript and use this option as entrypoint
+
+Run "flutter_rust_bridge help" to see global options.
