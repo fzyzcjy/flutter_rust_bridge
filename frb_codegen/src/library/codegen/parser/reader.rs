@@ -40,7 +40,11 @@ impl CachedRustReader {
 }
 
 fn get_rust_mod(rust_file_path: &Path, rust_crate_dir: &Path) -> Result<Option<String>> {
-    let relative_path = rust_file_path.strip_prefix(rust_crate_dir.join("src"))?;
+    let relative_path = rust_file_path
+        .strip_prefix(rust_crate_dir.join("src"))
+        .with_context(|| {
+            format!("rust_file_path={rust_file_path:?} rust_crate_dir={rust_crate_dir:?}")
+        })?;
 
     let mut components = relative_path
         .iter()
