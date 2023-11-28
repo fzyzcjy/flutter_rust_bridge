@@ -1,8 +1,7 @@
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
 import 'package:frb_example_pure_dart/src/rust/api/dart_opaque.dart';
 import 'package:frb_example_pure_dart/src/rust/api/dart_opaque_sync.dart';
-import 'package:frb_example_pure_dart/src/rust/api/primitive_list_misc.dart';
-import 'package:frb_example_pure_dart/src/rust/api/primitive_list_sync_misc.dart';
+import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/primitive_list_misc_twin_sync.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
@@ -38,8 +37,8 @@ Future<void> main() async {
       );
       addTearDown(() => debugOnExternalTypedDataFinalizer = null);
 
-      ZeroCopyVecOfPrimitivePackTwinNormal? primitivePack =
-          handleZeroCopyVecOfPrimitiveSyncTwinNormal(n: n);
+      ZeroCopyVecOfPrimitivePackTwinSync? primitivePack =
+          handleZeroCopyVecOfPrimitiveTwinSync(n: n);
       await vmService.gc();
       await Future<void>.delayed(const Duration(milliseconds: 10));
       expect(primitivePack, isNotNull);
