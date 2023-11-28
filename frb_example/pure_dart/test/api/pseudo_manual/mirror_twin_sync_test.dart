@@ -2,10 +2,11 @@
 // and is auto-generated from `mirror_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
+// FRB_INTERNAL_GENERATOR: {"removeCode": "import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_twin_sync_twin_sync.dart';\n"}
+
 import 'dart:typed_data';
 
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync.dart';
-import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_twin_sync.dart';
 import 'package:frb_example_pure_dart/src/rust/auxiliary/sample_types.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';

@@ -78,9 +78,13 @@ class _Duplicator {
       for (final mode in DuplicatorMode.values) {
         if (annotation.forbiddenDuplicatorModes.contains(mode)) continue;
 
-        final outputText = computeDuplicatorPrelude(' from `$fileName`') +
-            (annotation.extraCode ?? '') +
+        var outputText = computeDuplicatorPrelude(' from `$fileName`') +
+            (annotation.addCode ?? '') +
             generator.generateDuplicateCode(fileContent, mode);
+        if (annotation.removeCode != null) {
+          outputText = outputText.replaceAll(annotation.removeCode!, '');
+        }
+
         final targetPath = generator.interestDir
             .resolve('pseudo_manual/')
             .resolve(
@@ -104,16 +108,19 @@ _Annotation _parseAnnotation(String fileContent) {
         ((data['forbiddenDuplicatorModes'] as List<dynamic>?) ?? [])
             .map((x) => DuplicatorMode.values.byName(x))
             .toList(),
-    extraCode: data['extraCode'] as String?,
+    addCode: data['addCode'] as String?,
+    removeCode: data['removeCode'] as String?,
   );
 }
 
 class _Annotation {
   final List<DuplicatorMode> forbiddenDuplicatorModes;
-  final String? extraCode;
+  final String? addCode;
+  final String? removeCode;
 
   const _Annotation({
     this.forbiddenDuplicatorModes = const [],
-    this.extraCode,
+    this.addCode,
+    this.removeCode,
   });
 }
