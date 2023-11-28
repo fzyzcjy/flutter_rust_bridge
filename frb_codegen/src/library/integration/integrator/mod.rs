@@ -1,6 +1,7 @@
 use crate::utils::path_utils::find_dart_package_dir;
 use anyhow::Result;
 use include_dir::{include_dir, Dir, DirEntry};
+use itertools::Itertools;
 use log::debug;
 use std::path::{Path, PathBuf};
 use std::{env, fs};
@@ -29,9 +30,11 @@ fn handle_cargokit_dir(dart_root: &Path) -> Result<()> {
     extract_dir_and_modify(
         INTEGRATION_TEMPLATE_DIR.get_dir("cargokit").unwrap(),
         &dart_root.join("cargokit"),
-        |raw| todo!(),
+        |raw| [&CARGOKIT_PRELUDE.as_bytes()[..], raw[..]].concat(),
     )
 }
+
+const CARGOKIT_PRELUDE: &str = "/// This is copied from cargokit, [TODO explain]\n\n";
 
 // ref: `Dir::extract`
 fn extract_dir_and_modify(
