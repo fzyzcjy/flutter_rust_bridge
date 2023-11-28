@@ -100,12 +100,13 @@ Future<void> _sanityChecks(BuildWebArgs args) async {
 }
 
 Future<String> _getRustCreateName({required String rustCrateDir}) async {
-  final manifest = jsonDecode(await runCommand(
+  final manifest = jsonDecode((await runCommand(
     'cargo',
     ['read-manifest'],
     pwd: rustCrateDir,
     silent: true,
-  ));
+  ))
+      .stdout);
 
   final rustCrateName = (manifest['targets'] as List).firstWhere(
       (target) => (target['kind'] as List).contains('cdylib'))['name'];
@@ -117,12 +118,20 @@ Future<String> _getRustCreateName({required String rustCrateDir}) async {
 Future<void> _executeWasmPack(BuildWebArgs args,
     {required String rustCrateName}) async {
   await runCommand('wasm-pack', [
-    'build', '-t', 'no-modules', '-d', args.outputWasm, '--no-typescript',
-    '--out-name', rustCrateName,
+    'build',
+    '-t',
+    'no-modules',
+    '-d',
+    args.outputWasm,
+    '--no-typescript',
+    '--out-name',
+    rustCrateName,
     if (!args.release) '--dev',
     args.rustCrateDir,
-    '--', // cargo build args
-    '-Z', 'build-std=std,panic_abort',
+    '--',
+    // cargo build args
+    '-Z',
+    'build-std=std,panic_abort',
     ...args.cargoBuildArgs,
     // migrate to `cargoBuildArgs`
     // if (config.cliOpts.noDefaultFeatures) '--no-default-features',

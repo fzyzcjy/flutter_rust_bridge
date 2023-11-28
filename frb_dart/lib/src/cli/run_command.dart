@@ -2,7 +2,19 @@ import 'dart:convert';
 import 'dart:io';
 
 /// {@macro flutter_rust_bridge.internal}
-Future<String> runCommand(
+class RunCommandOutput {
+  /// {@macro flutter_rust_bridge.internal}
+  final String stdout;
+
+  /// {@macro flutter_rust_bridge.internal}
+  final int exitCode;
+
+  /// {@macro flutter_rust_bridge.internal}
+  const RunCommandOutput({required this.stdout, required this.exitCode});
+}
+
+/// {@macro flutter_rust_bridge.internal}
+Future<RunCommandOutput> runCommand(
   String command,
   List<String> arguments, {
   String? pwd,
@@ -41,7 +53,7 @@ Future<String> runCommand(
         'Bad exit code ($exitCode). stderr=${err.join("")}', exitCode);
   }
 
-  return ret.join('');
+  return RunCommandOutput(stdout: ret.join(''), exitCode: exitCode);
 }
 
 extension on IOSink {
