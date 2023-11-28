@@ -77,6 +77,7 @@ fn enable_update_golden() -> bool {
 pub(crate) fn create_path_sanitizers(test_fixture_dir: &Path) -> Vec<(String, String)> {
     vec![
         ("\\\\".into(), "/".into()),
+        ("//?/".into(), "".into()),
         (
             normalize_windows_unc_path(&path_to_string(&test_fixture_dir).unwrap())
                 .replace('\\', "/"),
