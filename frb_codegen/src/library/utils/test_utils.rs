@@ -1,3 +1,4 @@
+use crate::utils::path_utils::path_to_string;
 use log::debug;
 use serde_json::Value;
 use std::fmt::Debug;
@@ -71,4 +72,14 @@ fn enable_update_golden() -> bool {
         .unwrap_or_default()
         .to_lowercase();
     env_var == "true" || env_var == "1"
+}
+
+pub(crate) fn create_path_sanitizers(test_fixture_dir: &Path) -> Vec<(String, String)> {
+    vec![
+        ("\\\\".into(), "/".into()),
+        (
+            path_to_string(&test_fixture_dir)?.replace('\\', "/"),
+            "{the-working-directory}".to_owned(),
+        ),
+    ]
 }
