@@ -1,3 +1,7 @@
+/// This is copied from cargokit, TODO
+/// TODO explain more
+/// 
+
 import java.nio.file.Paths
 import org.apache.tools.ant.taskdefs.condition.Os
 

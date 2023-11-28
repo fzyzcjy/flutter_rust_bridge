@@ -1,3 +1,7 @@
+/// This is copied from cargokit, TODO
+/// TODO explain more
+/// 
+
 import 'dart:io';
 
 import 'package:ed25519_edwards/ed25519_edwards.dart';
