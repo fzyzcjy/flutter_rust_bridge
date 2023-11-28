@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:args/args.dart';
 import 'package:args/command_runner.dart';
@@ -84,4 +85,13 @@ class SimpleConfigCommand<T> extends Command<void> {
 
   @override
   Future<void> run() async => await executor(parseConfigResult(argResults!));
+}
+
+String randomTempDir() {
+  final timeStr =
+      DateTime.now().toIso8601String().replaceAll(".", "").replaceAll(":", "");
+  final randomStr = Random().nextInt(1000000000);
+  return Directory.systemTemp.uri
+      .resolve('${timeStr}_$randomStr/')
+      .toFilePath();
 }

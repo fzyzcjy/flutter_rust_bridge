@@ -79,7 +79,7 @@ Future<void> generateInternalFrbExamplePureDart(GenerateConfig config) async {
 
 Future<void> generateInternalDartSource(GenerateConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
-    final path = '${Directory.systemTemp.path}/${Random().nextInt(1000000000)}';
+    final path = randomTempDir();
     await exec('''
     #!/usr/bin/env bash
     set -eux
