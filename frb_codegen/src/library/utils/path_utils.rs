@@ -2,7 +2,7 @@ use anyhow::{Context, Result};
 use std::path::{Path, PathBuf};
 
 pub(crate) fn glob_path(pattern: &Path) -> Result<Vec<PathBuf>> {
-    let pattern = pattern.to_str().context("cannot convert to str")?;
+    let pattern = normalize_windows_unc_path(pattern.to_str().context("cannot convert to str")?);
     Ok(glob::glob(pattern)?.filter_map(Result::ok).collect())
 }
 
