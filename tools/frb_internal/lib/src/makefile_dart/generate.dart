@@ -8,6 +8,7 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
     as frb_example_pure_dart_generator;
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
+import 'package:path/path.dart' as path;
 
 part 'generate.g.dart';
 
@@ -150,7 +151,8 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
     await Directory(dirTemp).create(recursive: true);
 
     // We move instead of delete folder for extra safety of this script
-    await Directory(dirPackage).rename('$dirTemp/original');
+    final dirTempOriginal = path.join(dirTemp, 'original');
+    await Directory(dirPackage).rename(dirTempOriginal);
 
     switch (config.package) {
       case 'frb_example/flutter_via_create':
@@ -166,9 +168,9 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
     }
 
     // move back compilation cache to speed up future usage
-    await _renameDirIfExists('$dirTemp/original/build', '$dirPackage/build');
+    await _renameDirIfExists('$dirTempOriginal/build', '$dirPackage/build');
     await _renameDirIfExists(
-        '$dirTemp/original/rust/target', '$dirPackage/rust/target');
+        '$dirTempOriginal/rust/target', '$dirPackage/rust/target');
   });
 }
 
