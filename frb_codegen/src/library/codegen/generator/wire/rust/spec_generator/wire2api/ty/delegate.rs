@@ -92,7 +92,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for DelegateWireRustGenerator<'a> {
                 let codegen_timestamp = "let flutter_rust_bridge::Timestamp { s, ns } = flutter_rust_bridge::wire2api_timestamp(self);";
                 let codegen_naive =
                     "chrono::NaiveDateTime::from_timestamp_opt(s, ns).expect(\"invalid or out-of-range datetime\")";
-                let codegen_utc = format!("chrono::DateTime::<chrono::Utc>::from_utc({codegen_naive}, chrono::Utc)");
+                let codegen_utc = format!("chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset({codegen_naive}, chrono::Utc)");
                 let codegen_local = format!("chrono::DateTime::<chrono::Local>::from({codegen_utc})");
                 let codegen_conversion = match ir {
                     IrTypeDelegateTime::Naive => codegen_naive,

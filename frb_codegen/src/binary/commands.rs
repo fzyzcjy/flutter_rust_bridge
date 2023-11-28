@@ -14,6 +14,7 @@ pub(crate) struct Cli {
     pub(crate) command: Commands,
 }
 
+#[allow(clippy::large_enum_variant)]
 #[derive(Debug, Subcommand)]
 pub(crate) enum Commands {
     /// Execute the main code generator

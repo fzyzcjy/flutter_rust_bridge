@@ -4,6 +4,7 @@ use anyhow::bail;
 use log::debug;
 use std::path::PathBuf;
 
+#[allow(clippy::vec_init_then_push)]
 pub fn format_dart(path: &[PathBuf], line_length: u32) -> anyhow::Result<()> {
     debug!("execute format_dart path={path:?} line_length={line_length}");
     let res = command_run!(

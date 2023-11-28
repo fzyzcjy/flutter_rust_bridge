@@ -341,7 +341,7 @@ mod tests {
             &[
                 ("\\\\".into(), "/".into()),
                 (
-                    path_to_string(&test_fixture_dir)?.replace("\\", "/"),
+                    path_to_string(&test_fixture_dir)?.replace('\\', "/"),
                     "{the-working-directory}".to_owned(),
                 ),
             ],

@@ -1,7 +1,6 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::utils::basic_code::BasicCode;
-use strum::IntoEnumIterator;
 
 pub(crate) fn section_header_comment<T: BasicCode>(
     section_name: &str,

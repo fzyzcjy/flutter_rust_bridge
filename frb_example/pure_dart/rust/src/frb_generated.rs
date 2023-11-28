@@ -4353,11 +4353,13 @@ impl Wire2Api<chrono::DateTime<chrono::Local>> for i64 {
     fn wire2api(self) -> chrono::DateTime<chrono::Local> {
         let flutter_rust_bridge::Timestamp { s, ns } =
             flutter_rust_bridge::wire2api_timestamp(self);
-        chrono::DateTime::<chrono::Local>::from(chrono::DateTime::<chrono::Utc>::from_utc(
-            chrono::NaiveDateTime::from_timestamp_opt(s, ns)
-                .expect("invalid or out-of-range datetime"),
-            chrono::Utc,
-        ))
+        chrono::DateTime::<chrono::Local>::from(
+            chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset(
+                chrono::NaiveDateTime::from_timestamp_opt(s, ns)
+                    .expect("invalid or out-of-range datetime"),
+                chrono::Utc,
+            ),
+        )
     }
 }
 impl Wire2Api<chrono::NaiveDateTime> for i64 {
@@ -4371,7 +4373,7 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
     fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
         let flutter_rust_bridge::Timestamp { s, ns } =
             flutter_rust_bridge::wire2api_timestamp(self);
-        chrono::DateTime::<chrono::Utc>::from_utc(
+        chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset(
             chrono::NaiveDateTime::from_timestamp_opt(s, ns)
                 .expect("invalid or out-of-range datetime"),
             chrono::Utc,

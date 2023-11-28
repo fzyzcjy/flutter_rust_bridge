@@ -29,7 +29,7 @@ fn compute_repo_base_dir() -> anyhow::Result<PathBuf> {
         .to_owned())
 }
 
-fn generate_frb_rust_cbindgen(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
+fn generate_frb_rust_cbindgen(repo_base_dir: &Path) -> anyhow::Result<()> {
     info!("generate_frb_rust_cbindgen");
     let default_config = default_cbindgen_config();
     cbindgen(
@@ -53,7 +53,7 @@ fn generate_frb_rust_cbindgen(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
     )
 }
 
-fn generate_allo_isolate_cbindgen(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
+fn generate_allo_isolate_cbindgen(repo_base_dir: &Path) -> anyhow::Result<()> {
     info!("generate_allo_isolate_cbindgen");
 
     let metadata = execute_cargo_metadata(&repo_base_dir.join("frb_codegen/Cargo.toml"))?;

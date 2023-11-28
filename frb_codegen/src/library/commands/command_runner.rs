@@ -61,13 +61,13 @@ macro_rules! command_args {
         $crate::command_args!(@args $args $($rest)*);
     };
     ($($rest:tt)*) => {{
-        #[allow(clippy::vec_init_then_push)]
         let mut args = Vec::new();
         $crate::command_args!(@args args $($rest)*,);
         args
     }};
 }
 
+#[allow(clippy::vec_init_then_push)]
 pub(crate) fn call_shell(cmd: &[PathBuf], pwd: Option<&Path>) -> anyhow::Result<Output> {
     let cmd = cmd.iter().map(|section| format!("{section:?}")).join(" ");
     #[cfg(windows)]

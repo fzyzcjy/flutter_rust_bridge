@@ -1,4 +1,4 @@
-#![allow(dead_code)]
+#![allow(dead_code, clippy::new_without_default)]
 
 use std::rc::Rc;
 

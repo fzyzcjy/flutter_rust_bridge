@@ -32,6 +32,7 @@ impl DartToolchain {
         "pubspec.lock"
     }
 
+    #[allow(clippy::vec_init_then_push)]
     pub(crate) fn as_run_command(&self) -> Vec<PathBuf> {
         match self {
             DartToolchain::Dart => command_args!("dart"),
@@ -39,6 +40,7 @@ impl DartToolchain {
         }
     }
 
+    #[allow(clippy::vec_init_then_push)]
     pub(crate) fn available(&self) -> bool {
         let toolchain = match self {
             DartToolchain::Dart => "dart",

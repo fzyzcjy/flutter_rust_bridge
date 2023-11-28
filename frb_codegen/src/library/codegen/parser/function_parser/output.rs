@@ -22,6 +22,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         })
     }
 
+    #[allow(clippy::single_match)] // deliberate do so to ensure style consistency
     fn parse_fn_output_type(
         &mut self,
         ty: &Type,
