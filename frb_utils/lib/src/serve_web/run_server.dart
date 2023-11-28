@@ -14,9 +14,6 @@ Future<String> runServer(ServeWebConfig config,
   final staticFilesHandler =
       createStaticHandler(config.webRoot, defaultDocument: 'index.html');
 
-  // final shouldRelaxCoep = config.shouldRelaxCoep;
-  final shouldRelaxCoep = true;
-
   var innerHandler = Cascade();
   for (final extraHandler in extraHandlers ?? const <Handler>[]) {
     innerHandler = innerHandler.add(extraHandler);
@@ -31,8 +28,8 @@ Future<String> runServer(ServeWebConfig config,
           'runServer.Response: code=${res.statusCode} mimeType=${res.mimeType}');
       return res.change(headers: {
         'Cross-Origin-Opener-Policy': 'same-origin',
-        'Cross-Origin-Embedder-Policy':
-            shouldRelaxCoep ? 'credentialless' : 'require-corp',
+        'Cross-Origin-Embedder-Policy': 'credentialless',
+        // shouldRelaxCoep ? 'credentialless' : 'require-corp',
         // TODO rm
         // // Disable CORS since this server (hosting JS/WASM) is different from
         // // the server that `dart test -p chrome` creates.

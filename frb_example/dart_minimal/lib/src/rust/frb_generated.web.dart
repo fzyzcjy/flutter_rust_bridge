@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import, unused_element
+// ignore_for_file: unused_import, unused_element, duplicate_ignore
 
 import 'api/minimal.dart';
 import 'dart:async';

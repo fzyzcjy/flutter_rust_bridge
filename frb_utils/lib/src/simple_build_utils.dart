@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, implementation_imports
 
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:native_assets_cli/native_assets_cli.dart';

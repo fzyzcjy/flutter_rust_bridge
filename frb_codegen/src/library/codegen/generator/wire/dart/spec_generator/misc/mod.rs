@@ -62,7 +62,8 @@ fn generate_boilerplate(
         ..
     } = &context.config.dart_output_class_name_pack;
 
-    let file_top = "// ignore_for_file: unused_import, unused_element\n".to_owned();
+    let file_top =
+        "// ignore_for_file: unused_import, unused_element, duplicate_ignore\n".to_owned();
 
     let mut universal_imports = generate_import_dart_api_layer(
         &context.config.dart_impl_output_path,

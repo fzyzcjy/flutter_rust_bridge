@@ -5,3 +5,4 @@ linter:
     # - package_api_docs # does not report some linter errors, thus have to use public_member_api_docs
     - public_member_api_docs
     - always_use_package_imports
+    - unawaited_futures
