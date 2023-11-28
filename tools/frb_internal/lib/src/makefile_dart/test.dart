@@ -87,7 +87,7 @@ Future<void> testDartValgrind(TestDartConfig config) async {
       // Valgrind crashes with the default level (2).
       '--vex-iropt-level=1';
 
-  await exec('$valgrindCommand $TODO');
+  await exec('$valgrindCommand TODO');
 
   throw Exception('implement the checks');
 }

@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/dart/entrypoint.dart';
-import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/dart_web_test_entrypoint_generator.dart';
+import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/dart_test_entrypoint_generator.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/rust/entrypoint.dart';
 
 Future<void> generate() async {
@@ -16,5 +16,5 @@ Future<void> generate() async {
       .generate();
   await DartGenerator(packageRootDir: dartRoot, interestDir: 'test/api/')
       .generate();
-  await generateDartWebTestEntrypoint(dartRoot: dartRoot);
+  await generateDartTestEntrypoint(dartRoot: dartRoot);
 }

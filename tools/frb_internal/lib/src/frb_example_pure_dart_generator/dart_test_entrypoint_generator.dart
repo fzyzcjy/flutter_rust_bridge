@@ -8,7 +8,7 @@ import 'package:glob/glob.dart';
 import 'package:glob/list_local_fs.dart';
 import 'package:path/path.dart' as path;
 
-Future<void> generateDartWebTestEntrypoint({required Uri dartRoot}) async {
+Future<void> generateDartTestEntrypoint({required Uri dartRoot}) async {
   final dirTest = dartRoot.resolve('test/');
   final dirInterest = dirTest.resolve('api/');
   final files = [
