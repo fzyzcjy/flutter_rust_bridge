@@ -34,7 +34,7 @@ fn handle_cargokit_dir(dart_root: &Path) -> Result<()> {
     extract_dir_and_modify(
         INTEGRATION_TEMPLATE_DIR.get_dir("cargokit").unwrap(),
         &dart_root.join("cargokit"),
-        &|raw| [&CARGOKIT_PRELUDE.as_bytes()[..], raw[..]].concat(),
+        &|raw| [&CARGOKIT_PRELUDE.as_bytes()[..], &raw[..]].concat(),
     )
 }
 
@@ -72,6 +72,6 @@ cargokit {{
 // flutter_rust_bridge + cargokit END
 "#
     );
-    fs::write(&path, fs::read_to_string(path)? + &text)?;
+    fs::write(&path, fs::read_to_string(&path)? + &text)?;
     Ok(())
 }
