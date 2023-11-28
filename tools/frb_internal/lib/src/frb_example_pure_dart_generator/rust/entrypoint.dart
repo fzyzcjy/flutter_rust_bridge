@@ -31,7 +31,12 @@ class RustGenerator extends BaseGenerator {
           (m) => '${prefix}pub fn ${m.group(1)}${mode.postfix}(',
         )
         // struct name, etc
-        .replaceAll('TwinNormal', ReCase(mode.postfix).pascalCase);
+        .replaceAll('TwinNormal', ReCase(mode.postfix).pascalCase)
+        .replaceAllMapped(
+            RegExp(r'use crate::api::([a-zA-Z0-9_]+)::'),
+            (m) =>
+                'use crate::api::pseudo_manual::${m.group(1)}${mode.postfix}::');
+    ;
   }
 
   @override

@@ -2,8 +2,8 @@
 // and is auto-generated from `optional.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
-use crate::api::misc_example::WeekdaysTwinSync;
-use crate::api::newtype_pattern::NewTypeIntTwinSync;
+use crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync;
+use crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntTwinSync;
 use flutter_rust_bridge::{frb, ZeroCopyBuffer};
 
 #[flutter_rust_bridge::frb(sync)]
