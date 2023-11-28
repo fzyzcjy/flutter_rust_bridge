@@ -110,7 +110,7 @@ fn parse_config(args: &FfigenToFileArgs) -> FfigenCommandConfig {
           include_directives: vec![args.c_path.to_owned()],
         },
         comments: Some(false),
-        preamble: "// ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names, unused_element".to_owned(),
+        preamble: "// ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names".to_owned(),
         llvm_path: args.llvm_path.to_owned(),
         compiler_opts: llvm_compiler_opts_list,
     }
