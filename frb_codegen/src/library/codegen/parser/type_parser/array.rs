@@ -14,11 +14,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         type_array: &syn::TypeArray,
     ) -> anyhow::Result<IrType> {
-        let namespace = (self.inner.array_parser_info.namespace_of_parsed_types)
-            .entry(todo)
-            .or_insert(self.context.initiated_namespace.clone())
-            .to_owned();
-
         let length: usize = match &type_array.len {
             Expr::Lit(lit) => match &lit.lit {
                 syn::Lit::Int(x) => x.base10_parse()?,
@@ -32,6 +27,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             others => IrTypeDelegateArrayMode::General(Box::new(others)),
         };
 
+        let namespace = (self.inner.array_parser_info.namespace_of_parsed_types)
+            .entry((mode.clone(), length))
+            .or_insert(self.context.initiated_namespace.clone())
+            .to_owned();
+
         Ok(Delegate(IrTypeDelegate::Array(IrTypeDelegateArray {
             namespace,
             length,
@@ -42,5 +42,5 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
 #[derive(Clone, Debug, Default)]
 pub(super) struct ArrayParserInfo {
-    namespace_of_parsed_types: HashMap<String, Namespace>,
+    namespace_of_parsed_types: HashMap<(IrTypeDelegateArrayMode, usize), Namespace>,
 }
