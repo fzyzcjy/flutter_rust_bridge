@@ -37,7 +37,6 @@ class RustGenerator extends BaseGenerator {
             RegExp(r'use crate::api::([a-zA-Z0-9_]+)::'),
             (m) =>
                 'use crate::api::pseudo_manual::${m.group(1)}${mode.postfix}::');
-    ;
   }
 
   @override
