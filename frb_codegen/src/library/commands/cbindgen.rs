@@ -73,7 +73,7 @@ pub(crate) fn cbindgen_raw(
     debug!("cbindgen parsed_crate_dir={}", parsed_crate_dir);
 
     let bindings = cbindgen::generate_with_config(parsed_crate_dir, config).map_err(|e| {
-        if let Error::ParseSyntaxError { src_path, .. } = e {
+        if let Error::ParseSyntaxError { src_path, .. } = &e {
             let content =
                 fs::read_to_string(src_path).unwrap_or_else(|_| "CANNOT READ FILE".into());
             info!("More information: src_path={src_path:?} content={content}");
