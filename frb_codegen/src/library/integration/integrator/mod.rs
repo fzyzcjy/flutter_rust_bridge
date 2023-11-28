@@ -54,12 +54,14 @@ fn handle_rust_dir(dart_root: &Path, package_name: &str) -> Result<()> {
 }
 
 fn handle_ios_or_macos(dart_root: &Path, dir_name: &str) -> Result<()> {
-    todo!()
+    // TODO
+    Ok(())
 }
 
 fn handle_windows_or_linux(dart_root: &Path, dir_name: &str) -> Result<()> {
-    let path = dart_root.join(dir_name).join("CMakeLists.txt");
-    todo!()
+    // TODO
+    // let path = dart_root.join(dir_name).join("CMakeLists.txt");
+    Ok(())
 }
 
 fn handle_android(dart_root: &Path, package_name: &str) -> Result<()> {
