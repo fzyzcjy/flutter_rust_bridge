@@ -1492,8 +1492,6 @@ void wire_handle_vec_of_primitive_twin_normal(int64_t port_, int32_t n);
 
 void wire_handle_zero_copy_vec_of_primitive_twin_normal(int64_t port_, int32_t n);
 
-WireSyncReturn wire_handle_zero_copy_vec_of_primitive_sync_twin_normal(int32_t n);
-
 void wire_primitive_types_twin_normal(int64_t port_,
                                       int32_t my_i32,
                                       int64_t my_i64,
@@ -1915,8 +1913,6 @@ void wire_example_primitive_list_type_u8_twin_normal(int64_t port_, struct wire_
 WireSyncReturn wire_handle_vec_of_primitive_twin_sync(int32_t n);
 
 WireSyncReturn wire_handle_zero_copy_vec_of_primitive_twin_sync(int32_t n);
-
-WireSyncReturn wire_handle_zero_copy_vec_of_primitive_sync_twin_sync(int32_t n);
 
 WireSyncReturn wire_example_primitive_list_type_bool_twin_sync(struct wire_list_bool *arg);
 
@@ -3179,8 +3175,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_handle_vec_of_primitive_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_handle_vec_u8_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_vec_u8_twin_sync);
-    dummy_var ^= ((int64_t) (void*) wire_handle_zero_copy_vec_of_primitive_sync_twin_normal);
-    dummy_var ^= ((int64_t) (void*) wire_handle_zero_copy_vec_of_primitive_sync_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_handle_zero_copy_vec_of_primitive_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_zero_copy_vec_of_primitive_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_how_long_does_it_take_twin_normal);

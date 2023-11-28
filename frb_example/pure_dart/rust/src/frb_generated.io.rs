@@ -6693,13 +6693,6 @@ pub extern "C" fn wire_handle_zero_copy_vec_of_primitive_twin_normal(port_: i64,
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_zero_copy_vec_of_primitive_sync_twin_normal(
-    n: i32,
-) -> flutter_rust_bridge::support::WireSyncReturn {
-    wire_handle_zero_copy_vec_of_primitive_sync_twin_normal_impl(n)
-}
-
-#[no_mangle]
 pub extern "C" fn wire_primitive_types_twin_normal(
     port_: i64,
     my_i32: i32,
@@ -7986,13 +7979,6 @@ pub extern "C" fn wire_handle_zero_copy_vec_of_primitive_twin_sync(
     n: i32,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_handle_zero_copy_vec_of_primitive_twin_sync_impl(n)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_handle_zero_copy_vec_of_primitive_sync_twin_sync(
-    n: i32,
-) -> flutter_rust_bridge::support::WireSyncReturn {
-    wire_handle_zero_copy_vec_of_primitive_sync_twin_sync_impl(n)
 }
 
 #[no_mangle]

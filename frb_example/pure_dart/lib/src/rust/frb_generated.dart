@@ -20,7 +20,6 @@ import 'api/newtype_pattern.dart';
 import 'api/optional.dart';
 import 'api/optional_primitive_misc.dart';
 import 'api/primitive_list_misc.dart';
-import 'api/primitive_list_sync_misc.dart';
 import 'api/primitive_misc.dart';
 import 'api/pseudo_manual/array_twin_sync.dart';
 import 'api/pseudo_manual/attribute_twin_sync.dart';
@@ -44,7 +43,6 @@ import 'api/pseudo_manual/optional_twin_sync.dart';
 import 'api/pseudo_manual/primitive.dart';
 import 'api/pseudo_manual/primitive_list.dart';
 import 'api/pseudo_manual/primitive_list_misc_twin_sync.dart';
-import 'api/pseudo_manual/primitive_list_sync_misc_twin_sync.dart';
 import 'api/pseudo_manual/primitive_list_twin_sync.dart';
 import 'api/pseudo_manual/primitive_misc_twin_sync.dart';
 import 'api/pseudo_manual/primitive_twin_sync.dart';
@@ -548,10 +546,6 @@ abstract class RustLibApi extends BaseApi {
 
   Future<ZeroCopyVecOfPrimitivePackTwinNormal>
       handleZeroCopyVecOfPrimitiveTwinNormal({required int n, dynamic hint});
-
-  ZeroCopyVecOfPrimitivePackTwinNormal
-      handleZeroCopyVecOfPrimitiveSyncTwinNormal(
-          {required int n, dynamic hint});
 
   Future<int> primitiveTypesTwinNormal(
       {required int myI32,
@@ -1065,9 +1059,6 @@ abstract class RustLibApi extends BaseApi {
       {required int n, dynamic hint});
 
   ZeroCopyVecOfPrimitivePackTwinSync handleZeroCopyVecOfPrimitiveTwinSync(
-      {required int n, dynamic hint});
-
-  ZeroCopyVecOfPrimitivePackTwinSync handleZeroCopyVecOfPrimitiveSyncTwinSync(
       {required int n, dynamic hint});
 
   List<bool> examplePrimitiveListTypeBoolTwinSync(
@@ -4692,29 +4683,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kHandleZeroCopyVecOfPrimitiveTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "handle_zero_copy_vec_of_primitive_twin_normal",
-        argNames: ["n"],
-      );
-
-  @override
-  ZeroCopyVecOfPrimitivePackTwinNormal
-      handleZeroCopyVecOfPrimitiveSyncTwinNormal(
-          {required int n, dynamic hint}) {
-    var arg0 = api2wire_i_32(n);
-    return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_handle_zero_copy_vec_of_primitive_sync_twin_normal(arg0),
-      parseSuccessData: _wire2api_zero_copy_vec_of_primitive_pack_twin_normal,
-      parseErrorData: null,
-      constMeta: kHandleZeroCopyVecOfPrimitiveSyncTwinNormalConstMeta,
-      argValues: [n],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kHandleZeroCopyVecOfPrimitiveSyncTwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "handle_zero_copy_vec_of_primitive_sync_twin_normal",
         argNames: ["n"],
       );
 
@@ -8737,28 +8705,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kHandleZeroCopyVecOfPrimitiveTwinSyncConstMeta =>
       const TaskConstMeta(
         debugName: "handle_zero_copy_vec_of_primitive_twin_sync",
-        argNames: ["n"],
-      );
-
-  @override
-  ZeroCopyVecOfPrimitivePackTwinSync handleZeroCopyVecOfPrimitiveSyncTwinSync(
-      {required int n, dynamic hint}) {
-    var arg0 = api2wire_i_32(n);
-    return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_handle_zero_copy_vec_of_primitive_sync_twin_sync(arg0),
-      parseSuccessData: _wire2api_zero_copy_vec_of_primitive_pack_twin_sync,
-      parseErrorData: null,
-      constMeta: kHandleZeroCopyVecOfPrimitiveSyncTwinSyncConstMeta,
-      argValues: [n],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kHandleZeroCopyVecOfPrimitiveSyncTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "handle_zero_copy_vec_of_primitive_sync_twin_sync",
         argNames: ["n"],
       );
 

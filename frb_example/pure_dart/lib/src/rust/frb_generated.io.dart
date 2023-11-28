@@ -20,7 +20,6 @@ import 'api/newtype_pattern.dart';
 import 'api/optional.dart';
 import 'api/optional_primitive_misc.dart';
 import 'api/primitive_list_misc.dart';
-import 'api/primitive_list_sync_misc.dart';
 import 'api/primitive_misc.dart';
 import 'api/pseudo_manual/array_twin_sync.dart';
 import 'api/pseudo_manual/attribute_twin_sync.dart';
@@ -44,7 +43,6 @@ import 'api/pseudo_manual/optional_twin_sync.dart';
 import 'api/pseudo_manual/primitive.dart';
 import 'api/pseudo_manual/primitive_list.dart';
 import 'api/pseudo_manual/primitive_list_misc_twin_sync.dart';
-import 'api/pseudo_manual/primitive_list_sync_misc_twin_sync.dart';
 import 'api/pseudo_manual/primitive_list_twin_sync.dart';
 import 'api/pseudo_manual/primitive_misc_twin_sync.dart';
 import 'api/pseudo_manual/primitive_twin_sync.dart';
@@ -6377,21 +6375,6 @@ class RustLibWire implements BaseWire {
       _wire_handle_zero_copy_vec_of_primitive_twin_normalPtr
           .asFunction<void Function(int, int)>();
 
-  WireSyncReturn wire_handle_zero_copy_vec_of_primitive_sync_twin_normal(
-    int n,
-  ) {
-    return _wire_handle_zero_copy_vec_of_primitive_sync_twin_normal(
-      n,
-    );
-  }
-
-  late final _wire_handle_zero_copy_vec_of_primitive_sync_twin_normalPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int32)>>(
-          'wire_handle_zero_copy_vec_of_primitive_sync_twin_normal');
-  late final _wire_handle_zero_copy_vec_of_primitive_sync_twin_normal =
-      _wire_handle_zero_copy_vec_of_primitive_sync_twin_normalPtr
-          .asFunction<WireSyncReturn Function(int)>();
-
   void wire_primitive_types_twin_normal(
     int port_,
     int my_i32,
@@ -9402,21 +9385,6 @@ class RustLibWire implements BaseWire {
           'wire_handle_zero_copy_vec_of_primitive_twin_sync');
   late final _wire_handle_zero_copy_vec_of_primitive_twin_sync =
       _wire_handle_zero_copy_vec_of_primitive_twin_syncPtr
-          .asFunction<WireSyncReturn Function(int)>();
-
-  WireSyncReturn wire_handle_zero_copy_vec_of_primitive_sync_twin_sync(
-    int n,
-  ) {
-    return _wire_handle_zero_copy_vec_of_primitive_sync_twin_sync(
-      n,
-    );
-  }
-
-  late final _wire_handle_zero_copy_vec_of_primitive_sync_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int32)>>(
-          'wire_handle_zero_copy_vec_of_primitive_sync_twin_sync');
-  late final _wire_handle_zero_copy_vec_of_primitive_sync_twin_sync =
-      _wire_handle_zero_copy_vec_of_primitive_sync_twin_syncPtr
           .asFunction<WireSyncReturn Function(int)>();
 
   WireSyncReturn wire_example_primitive_list_type_bool_twin_sync(

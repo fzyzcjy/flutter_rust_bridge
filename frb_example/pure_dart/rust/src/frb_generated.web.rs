@@ -3795,13 +3795,6 @@ pub fn wire_handle_zero_copy_vec_of_primitive_twin_normal(
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_zero_copy_vec_of_primitive_sync_twin_normal(
-    n: i32,
-) -> flutter_rust_bridge::support::WireSyncReturn {
-    wire_handle_zero_copy_vec_of_primitive_sync_twin_normal_impl(n)
-}
-
-#[wasm_bindgen]
 pub fn wire_primitive_types_twin_normal(
     port_: flutter_rust_bridge::MessagePort,
     my_i32: i32,
@@ -5111,13 +5104,6 @@ pub fn wire_handle_zero_copy_vec_of_primitive_twin_sync(
     n: i32,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_handle_zero_copy_vec_of_primitive_twin_sync_impl(n)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_zero_copy_vec_of_primitive_sync_twin_sync(
-    n: i32,
-) -> flutter_rust_bridge::support::WireSyncReturn {
-    wire_handle_zero_copy_vec_of_primitive_sync_twin_sync_impl(n)
 }
 
 #[wasm_bindgen]

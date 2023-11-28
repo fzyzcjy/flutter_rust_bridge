@@ -20,7 +20,6 @@ import 'api/newtype_pattern.dart';
 import 'api/optional.dart';
 import 'api/optional_primitive_misc.dart';
 import 'api/primitive_list_misc.dart';
-import 'api/primitive_list_sync_misc.dart';
 import 'api/primitive_misc.dart';
 import 'api/pseudo_manual/array_twin_sync.dart';
 import 'api/pseudo_manual/attribute_twin_sync.dart';
@@ -44,7 +43,6 @@ import 'api/pseudo_manual/optional_twin_sync.dart';
 import 'api/pseudo_manual/primitive.dart';
 import 'api/pseudo_manual/primitive_list.dart';
 import 'api/pseudo_manual/primitive_list_misc_twin_sync.dart';
-import 'api/pseudo_manual/primitive_list_sync_misc_twin_sync.dart';
 import 'api/pseudo_manual/primitive_list_twin_sync.dart';
 import 'api/pseudo_manual/primitive_misc_twin_sync.dart';
 import 'api/pseudo_manual/primitive_twin_sync.dart';
@@ -2926,10 +2924,6 @@ class RustLibWire extends BaseWire {
           NativePortType port_, int n) =>
       wasmModule.wire_handle_zero_copy_vec_of_primitive_twin_normal(port_, n);
 
-  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_handle_zero_copy_vec_of_primitive_sync_twin_normal(int n) =>
-          wasmModule.wire_handle_zero_copy_vec_of_primitive_sync_twin_normal(n);
-
   void wire_primitive_types_twin_normal(NativePortType port_, int my_i32,
           Object my_i64, double my_f64, bool my_bool) =>
       wasmModule.wire_primitive_types_twin_normal(
@@ -3746,10 +3740,6 @@ class RustLibWire extends BaseWire {
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_zero_copy_vec_of_primitive_twin_sync(int n) =>
           wasmModule.wire_handle_zero_copy_vec_of_primitive_twin_sync(n);
-
-  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_handle_zero_copy_vec_of_primitive_sync_twin_sync(int n) =>
-          wasmModule.wire_handle_zero_copy_vec_of_primitive_sync_twin_sync(n);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_example_primitive_list_type_bool_twin_sync(List<dynamic> arg) =>
@@ -4667,9 +4657,6 @@ class RustLibWasmModule implements WasmModule {
   external void wire_handle_zero_copy_vec_of_primitive_twin_normal(
       NativePortType port_, int n);
 
-  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_handle_zero_copy_vec_of_primitive_sync_twin_normal(int n);
-
   external void wire_primitive_types_twin_normal(NativePortType port_,
       int my_i32, Object my_i64, double my_f64, bool my_bool);
 
@@ -5263,9 +5250,6 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_zero_copy_vec_of_primitive_twin_sync(int n);
-
-  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_handle_zero_copy_vec_of_primitive_sync_twin_sync(int n);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_example_primitive_list_type_bool_twin_sync(List<dynamic> arg);

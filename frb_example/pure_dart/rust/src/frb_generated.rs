@@ -2617,12 +2617,6 @@ fn wire_handle_zero_copy_vec_of_primitive_twin_normal_impl(
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,crate::api::primitive_list_misc::ZeroCopyVecOfPrimitivePackTwinNormal,_>(flutter_rust_bridge::WrapInfo{ debug_name: "handle_zero_copy_vec_of_primitive_twin_normal", port: Some(port_), mode: flutter_rust_bridge::FfiCallMode::Normal }, move || { let api_n = n.wire2api(); move |task_callback| Result::<_,()>::Ok(crate::api::primitive_list_misc::handle_zero_copy_vec_of_primitive_twin_normal(api_n)) })
 }
-fn wire_handle_zero_copy_vec_of_primitive_sync_twin_normal_impl(
-    n: impl Wire2Api<i32> + core::panic::UnwindSafe,
-) -> flutter_rust_bridge::support::WireSyncReturn {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(flutter_rust_bridge::WrapInfo{ debug_name: "handle_zero_copy_vec_of_primitive_sync_twin_normal", port: None, mode: flutter_rust_bridge::FfiCallMode::Sync }, move || { let api_n = n.wire2api();
-                Result::<_,()>::Ok(crate::api::primitive_list_sync_misc::handle_zero_copy_vec_of_primitive_sync_twin_normal(api_n)) })
-}
 fn wire_primitive_types_twin_normal_impl(
     port_: flutter_rust_bridge::MessagePort,
     my_i32: impl Wire2Api<i32> + core::panic::UnwindSafe,
@@ -5037,12 +5031,6 @@ fn wire_handle_zero_copy_vec_of_primitive_twin_sync_impl(
 ) -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(flutter_rust_bridge::WrapInfo{ debug_name: "handle_zero_copy_vec_of_primitive_twin_sync", port: None, mode: flutter_rust_bridge::FfiCallMode::Sync }, move || { let api_n = n.wire2api();
                 Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_misc_twin_sync::handle_zero_copy_vec_of_primitive_twin_sync(api_n)) })
-}
-fn wire_handle_zero_copy_vec_of_primitive_sync_twin_sync_impl(
-    n: impl Wire2Api<i32> + core::panic::UnwindSafe,
-) -> flutter_rust_bridge::support::WireSyncReturn {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(flutter_rust_bridge::WrapInfo{ debug_name: "handle_zero_copy_vec_of_primitive_sync_twin_sync", port: None, mode: flutter_rust_bridge::FfiCallMode::Sync }, move || { let api_n = n.wire2api();
-                Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list_sync_misc_twin_sync::handle_zero_copy_vec_of_primitive_sync_twin_sync(api_n)) })
 }
 fn wire_example_primitive_list_type_bool_twin_sync_impl(
     arg: impl Wire2Api<Vec<bool>> + core::panic::UnwindSafe,
