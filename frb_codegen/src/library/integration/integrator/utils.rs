@@ -19,6 +19,7 @@ pub(super) fn extract_dir_and_modify(
 
         match entry {
             DirEntry::Dir(d) => {
+                debug!("Create dir {path:?}");
                 fs::create_dir_all(&path)?;
                 extract_dir_and_modify(d, base_path, modifier, filter)?;
             }
