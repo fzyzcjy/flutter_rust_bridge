@@ -16,5 +16,5 @@ Future<void> generate() async {
       .generate();
   await DartGenerator(packageRootDir: dartRoot, interestDir: 'test/api/')
       .generate();
-  await generateDartTestEntrypoint(dartRoot: dartRoot);
+  await generateDartTestEntrypoints(dartRoot: dartRoot);
 }
