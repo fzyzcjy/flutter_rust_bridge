@@ -44,9 +44,9 @@ class GeneratePackageConfig implements GenerateConfig {
 
 Future<void> generateInternal(GenerateConfig config) async {
   await generateInternalFrbExamplePureDart(config);
-  await generateInternalDartSource(config);
   await generateInternalRust(config);
   await generateInternalBookHelp(config);
+  await generateInternalDartSource(config);
   await generateInternalBuildRunner(config);
 }
 
