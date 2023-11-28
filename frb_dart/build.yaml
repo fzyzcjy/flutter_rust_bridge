@@ -1,0 +1,8 @@
+targets:
+  $default:
+    builders:
+      source_gen|combining_builder:
+        options:
+          # https://github.com/google/json_serializable.dart/issues/557#issuecomment-618260593
+          ignore_for_file:
+            - public_member_api_docs
