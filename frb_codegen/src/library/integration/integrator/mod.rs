@@ -40,7 +40,7 @@ fn handle_cargokit_dir(dart_root: &Path) -> Result<()> {
                 ".dart" | ".md" | ".gradle" | "" => "///",
                 ".yaml" | ".toml" | ".sh" => "#",
                 ".lock" | ".cmake" | ".ps1" | ".gitignore" | ".cmd" => return raw.to_owned(),
-                _ => unreachable!("unexpected file extension for {:?}", p),
+                ext => unreachable!("unexpected file extension for p={:?} ext={}", p, ext),
             };
 
             let comments = (CARGOKIT_PRELUDE.iter())
