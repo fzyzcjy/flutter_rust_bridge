@@ -9,8 +9,6 @@ project 'Runner', {
   'Release' => :release,
 }
 
-hello_world
-
 def flutter_root
   generated_xcode_build_settings_path = File.expand_path(File.join('..', 'Flutter', 'ephemeral', 'Flutter-Generated.xcconfig'), __FILE__)
   unless File.exist?(generated_xcode_build_settings_path)
@@ -38,12 +36,7 @@ target 'Runner' do
   end
 
   # TODO start
-  # TODO should not modify?
-  puts "hi", s
-  what is this
-  s.source           = { :path => '.' }
-  s.source_files     = 'Classes/**/*'
-  s.script_phase = {
+  script_phase {
     :name => 'Build Rust library',
     # First argument is relative path to the `rust` folder, second is name of rust library
     :script => 'sh "$PODS_TARGET_SRCROOT/../cargokit/build_pod.sh" ../rust rust_lib',
@@ -53,7 +46,7 @@ target 'Runner' do
     # created by this build step.
     :output_files => ["${BUILT_PRODUCTS_DIR}/libhello_rust_ffi_plugin.a"],
   }
-  s.pod_target_xcconfig = {
+  pod_target_xcconfig {
     'DEFINES_MODULE' => 'YES',
     # Flutter.framework does not contain a i386 slice.
     'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386',
