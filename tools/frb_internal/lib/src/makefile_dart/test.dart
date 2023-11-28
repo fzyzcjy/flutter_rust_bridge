@@ -73,16 +73,21 @@ Future<void> testDartWeb(TestDartConfig config) async {
   }
 }
 
+/// ref https://github.com/dart-lang/sdk/blob/master/runtime/tools/valgrind.py
 Future<void> testDartValgrind(TestDartConfig config) async {
   await exec('sudo apt install -y valgrind');
   await runDartPubGetIfNotRunYet(config.package);
 
-  // ref https://github.com/dart-lang/sdk/blob/master/runtime/tools/valgrind.py
-  await exec('valgrind '
+  const valgrindCommand = 'valgrind '
       '--error-exitcode=1 '
       '--leak-check=full '
       '--trace-children=yes '
-      '--ignore-ranges=0x000-0xFFF ' // Used for implicit null checks.
-      '--vex-iropt-level=1' // Valgrind crashes with the default level (2).
-      );
+      // Used for implicit null checks.
+      '--ignore-ranges=0x000-0xFFF '
+      // Valgrind crashes with the default level (2).
+      '--vex-iropt-level=1';
+
+  await exec('$valgrindCommand $TODO');
+
+  throw Exception('implement the checks');
 }
