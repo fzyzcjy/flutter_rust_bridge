@@ -26,29 +26,28 @@ pub fn integrate() -> Result<()> {
 }
 
 fn handle_cargokit_dir(dart_root: &Path) -> Result<()> {
-    let dir_cargokit = dart_root.join("cargokit");
-    copy_cargokit_dir(dart_root, &dir_cargokit)?;
-    cargokit_add_prelude(dart_root, &dir_cargokit)
-}
-
-fn copy_cargokit_dir(dart_root: &Path, dir_cargokit: &Path) -> Result<()> {
-    Ok(INTEGRATION_TEMPLATE_DIR
-        .get_dir("cargokit")
-        .unwrap()
-        .extract(dir_cargokit)?)
+    extract_dir_and_modify(
+        INTEGRATION_TEMPLATE_DIR.get_dir("cargokit").unwrap(),
+        &dart_root.join("cargokit"),
+        |raw| todo!(),
+    )
 }
 
 // ref: `Dir::extract`
-fn extract_dir_and_modify(d: &Dir, base_path: &Path) -> Result<()> {
+fn extract_dir_and_modify(
+    d: &Dir,
+    base_path: &Path,
+    modifier: impl Fn(&[u8]) -> Vec<u8>,
+) -> Result<()> {
     for entry in d.entries() {
         let path = base_path.join(entry.path());
         match entry {
             DirEntry::Dir(d) => {
                 fs::create_dir_all(&path)?;
-                d.extract(base_path)?;
+                extract_dir_and_modify(d, base_path)?;
             }
             DirEntry::File(f) => {
-                fs::write(path, f.contents())?;
+                fs::write(path, modifier(f.contents()))?;
             }
         }
     }
