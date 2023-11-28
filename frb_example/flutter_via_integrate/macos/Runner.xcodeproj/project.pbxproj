@@ -397,7 +397,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "sh \"$PODS_TARGET_SRCROOT/../cargokit/build_pod.sh\" ../rust rust_lib";
+			shellScript = "sh \"../cargokit/build_pod.sh\" ../rust rust_lib";
 		};
 		C9E39CFC56A0588913362133 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
