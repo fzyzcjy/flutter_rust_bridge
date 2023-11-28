@@ -43,15 +43,18 @@ class PrecommitConfig {
 }
 
 Future<void> precommit(PrecommitConfig config) async {
+  await lintDartAnalyze(const LintConfig(fix: true));
+  await lintRustClippy(const LintConfig(fix: true));
+
+  // format after clippy, since cargo fix may remove a import line, but leave
+  // the result unformatted
   await lintDartFormat(const LintConfig(fix: true));
   await lintRustFormat(const LintConfig(fix: true));
+
   await miscNormalizePubspec();
 
   if (config.mode == PrecommitMode.slow) {
     await pubGetAll();
-
-    await lintDartAnalyze(const LintConfig(fix: true));
-    await lintRustClippy(const LintConfig(fix: true));
 
     await generateInternal(const GenerateConfig(setExitIfChanged: false));
     for (final package in kDartExamplePackages) {
