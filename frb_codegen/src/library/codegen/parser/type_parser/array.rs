@@ -1,3 +1,4 @@
+use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegateArrayMode,
 };
@@ -5,6 +6,7 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{Delegate, Primitive};
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use anyhow::bail;
+use std::collections::HashMap;
 use syn::Expr;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
@@ -12,7 +14,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         type_array: &syn::TypeArray,
     ) -> anyhow::Result<IrType> {
-        let namespace = self.context.initiated_namespace.clone();
+        let namespace = (self.inner.array_parser_info.namespace_of_parsed_types)
+            .entry(todo)
+            .or_insert(self.context.initiated_namespace.clone())
+            .to_owned();
 
         let length: usize = match &type_array.len {
             Expr::Lit(lit) => match &lit.lit {
@@ -33,4 +38,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             mode,
         })))
     }
+}
+
+#[derive(Clone, Debug, Default)]
+pub(super) struct ArrayParserInfo {
+    namespace_of_parsed_types: HashMap<String, Namespace>,
 }

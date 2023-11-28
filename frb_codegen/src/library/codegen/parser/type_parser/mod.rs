@@ -20,6 +20,7 @@ use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumIdent};
 use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::source_graph::modules::{Enum, Struct};
+use crate::codegen::parser::type_parser::array::ArrayParserInfo;
 use crate::codegen::parser::type_parser::enum_or_struct::EnumOrStructParserInfo;
 use crate::codegen::parser::type_parser::rust_opaque::RustOpaqueParserInfo;
 use std::collections::HashMap;
@@ -32,6 +33,7 @@ pub(crate) struct TypeParser<'a> {
     struct_parser_info: EnumOrStructParserInfo<IrStructIdent, IrStruct>,
     enum_parser_info: EnumOrStructParserInfo<IrEnumIdent, IrEnum>,
     rust_opaque_parser_info: RustOpaqueParserInfo,
+    array_parser_info: ArrayParserInfo,
 }
 
 impl<'a> TypeParser<'a> {
@@ -47,6 +49,7 @@ impl<'a> TypeParser<'a> {
             struct_parser_info: EnumOrStructParserInfo::new(),
             enum_parser_info: EnumOrStructParserInfo::new(),
             rust_opaque_parser_info: RustOpaqueParserInfo::default(),
+            array_parser_info: ArrayParserInfo::default(),
         }
     }
 
