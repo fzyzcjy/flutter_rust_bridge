@@ -21,9 +21,6 @@ install_ffigen_dependency:
 install_ffigen:
     dart pub global activate ffigen
 
-install_valgrind:
-    sudo apt install -y valgrind
-
 install_prerequisite_for_integration_test_linux:
     sudo apt update && sudo apt-get -y install clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev libglu1-mesa
 
@@ -38,9 +35,6 @@ install_corrosion_linux:
     sudo cmake --install build --config Release
 
 # ============================ build & test ============================
-
-dart_test_valgrind name:
-    just _dart_test_raw {{name}} "PYTHONUNBUFFERED=1 ./valgrind_util.py"
 
 flutter_example_with_flutter_integration_test:
     flutter config --enable-{{ os() }}-desktop
@@ -59,12 +53,6 @@ cargo_run_codegen := if env_var_or_default("FRB_TEST_USE_RELEASE_VERSION", "fals
 # moved
 
 # ============================ (some of) CI ============================
-
-ci_dart_valgrind:
-    just install_ffigen_dependency
-    just install_valgrind
-    just dart_pub_get dart_only
-    just dart_test_valgrind pure_dart
 
 # ============================ misc ============================
 
