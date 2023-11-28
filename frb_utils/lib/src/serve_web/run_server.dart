@@ -48,7 +48,7 @@ Future<String> runServer(ServeWebConfig config,
   print('🦀 Server listening on $addr with content from ${config.webRoot} 🎯');
 
   if (config.open) {
-    runCommand(_kOpen, [addr]);
+    await runCommand(_kOpen, [addr]);
   }
 
   return addr;

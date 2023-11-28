@@ -13,7 +13,7 @@ class TestWebCommand extends _$TestWebConfigCommand<void> {
 
   @override
   Future<void> run() async {
-    executeTestWeb(_options);
+    await executeTestWeb(_options);
   }
 }
 
