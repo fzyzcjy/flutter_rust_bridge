@@ -26,7 +26,7 @@ pub fn integrate() -> Result<()> {
     handle_ios_or_macos(&dart_root, "macos")?;
     handle_windows_or_linux(&dart_root, "windows")?;
     handle_windows_or_linux(&dart_root, "linux")?;
-    handle_android(&dart_root)?;
+    handle_android(&dart_root, package_name)?;
 
     Ok(())
 }
@@ -62,7 +62,19 @@ fn handle_windows_or_linux(dart_root: &Path, dir_name: &str) -> Result<()> {
     todo!()
 }
 
-fn handle_android(dart_root: &Path) -> Result<()> {
+fn handle_android(dart_root: &Path, package_name: &str) -> Result<()> {
     let path = dart_root.join("android").join("build.gradle");
-    todo!()
+    let text = format!(
+        r#"
+// flutter_rust_bridge + cargokit BEGIN
+apply from: "../cargokit/gradle/plugin.gradle"
+cargokit {{
+    manifestDir = "../rust"
+    libname = "{package_name}"
+}}
+// flutter_rust_bridge + cargokit END
+"#
+    );
+    fs::write(&path, fs::read_to_string(path)? + &text)?;
+    Ok(())
 }
