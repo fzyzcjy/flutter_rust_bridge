@@ -96,7 +96,7 @@ Future<void> generateInternalBookHelp(GenerateConfig config) async {
       'build-web',
     ]) {
       await exec(
-          'cargo run -- $cmd --help > book/src/generated/${cmd ?? 'main'}.txt',
+          'cargo run -- $cmd --help > ${exec.pwd}book/src/generated/${cmd ?? 'main'}.txt',
           relativePwd: 'frb_codegen');
     }
   });
