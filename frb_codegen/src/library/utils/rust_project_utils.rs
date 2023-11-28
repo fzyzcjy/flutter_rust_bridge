@@ -18,3 +18,28 @@ fn compute_mod_from_path(code_path: &Path, base_dir: &Path) -> anyhow::Result<St
         format!("When compute_mod_from_rust_path(code_path={code_path:?}, base_dir={base_dir:?})",)
     })
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use tempfile::tempdir;
+
+    #[test]
+    pub fn test_compute_mod_from_rust_crate_path() -> anyhow::Result<()> {
+        let temp_dir = tempdir()?;
+
+        assert_eq!(
+            compute_mod_from_rust_crate_path(
+                &temp_dir
+                    .path()
+                    .join("src")
+                    .join("apple")
+                    .join("orange")
+                    .join("hello.rs"),
+                temp_dir.path(),
+            )?,
+            "".to_owned(),
+        );
+        Ok(())
+    }
+}
