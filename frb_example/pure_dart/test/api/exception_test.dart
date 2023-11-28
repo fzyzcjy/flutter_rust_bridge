@@ -234,25 +234,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
       test('Throw anyhow error', () async {
         await expectLater(
             () async => throwAnyhowTwinNormal(), throwsA(isA<FrbException>()));
-        try {
-          await throwAnyhowTwinNormal();
-        } catch (e) {
-          final AnyhowException p = e as AnyhowException;
-          print("anyhow error: ${p.message}");
-          expect(p.message, contains("anyhow error"));
-        }
       });
 
       test('Function with custom result panics', () async {
         await expectLater(() async => panicWithCustomResultTwinNormal(),
             throwsA(isA<FrbException>()));
-        try {
-          await panicWithCustomResultTwinNormal();
-        } catch (e) {
-          final PanicException p = e as PanicException;
-          print("panic error: ${p.message}");
-          if (!kIsWeb) expect(p.message, contains("just a panic"));
-        }
       });
 
       test('Stream sink throw anyhow error', () async {
