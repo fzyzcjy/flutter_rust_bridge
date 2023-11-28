@@ -1,4 +1,5 @@
-use log::debug;
+use cbindgen::Error;
+use log::{debug, info};
 use std::fs;
 use std::path::Path;
 
@@ -71,7 +72,13 @@ pub(crate) fn cbindgen_raw(
     let parsed_crate_dir = parse_crate_dir(rust_crate_dir)?;
     debug!("cbindgen parsed_crate_dir={}", parsed_crate_dir);
 
-    let bindings = cbindgen::generate_with_config(parsed_crate_dir, config)?;
+    let bindings = cbindgen::generate_with_config(parsed_crate_dir, config).map_err(|e| {
+        if let Error::ParseSyntaxError { src_path, .. } = e {
+            let content = fs::read_to_string(src_path).unwrap_or_else(|| "CANNOT READ FILE".into());
+            info!("More information: src_path={src_path:?} content={content}");
+        }
+        e
+    })?;
 
     // no need to worry about return value. false just means content not change
     bindings.write_to_file(c_output_path);
