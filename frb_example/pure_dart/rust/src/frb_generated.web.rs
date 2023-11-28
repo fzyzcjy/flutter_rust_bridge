@@ -2,6 +2,7 @@
 
 use super::*;
 use crate::api::pseudo_manual::rust_opaque_twin_sync::*;
+use crate::api::rust_opaque::*;
 use crate::api::rust_opaque_sync::*;
 use flutter_rust_bridge::rust2dart::IntoIntoDart;
 use flutter_rust_bridge::wasm_bindgen;
@@ -2211,10 +2212,24 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<RwLock<HideData>>>
         }
     }
 }
-impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn DartDebug>>>
+impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinNormal>>>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
-    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebug>> {
+    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinNormal>> {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+
+        unsafe {
+            flutter_rust_bridge::support::opaque_from_dart((self.as_f64().unwrap() as usize) as _)
+        }
+    }
+}
+impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>>>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -5822,18 +5837,35 @@ pub fn share_opaque_RustOpaque_RwLockHideData(
 }
 
 #[wasm_bindgen]
-pub fn drop_opaque_RustOpaque_box_dynDartDebug(ptr: *const std::ffi::c_void) {
+pub fn drop_opaque_RustOpaque_box_dynDartDebugTwinNormal(ptr: *const std::ffi::c_void) {
     unsafe {
-        std::sync::Arc::<Box<dyn DartDebug>>::decrement_strong_count(ptr as _);
+        std::sync::Arc::<Box<dyn DartDebugTwinNormal>>::decrement_strong_count(ptr as _);
     }
 }
 
 #[wasm_bindgen]
-pub fn share_opaque_RustOpaque_box_dynDartDebug(
+pub fn share_opaque_RustOpaque_box_dynDartDebugTwinNormal(
     ptr: *const std::ffi::c_void,
 ) -> *const std::ffi::c_void {
     unsafe {
-        std::sync::Arc::<Box<dyn DartDebug>>::increment_strong_count(ptr as _);
+        std::sync::Arc::<Box<dyn DartDebugTwinNormal>>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[wasm_bindgen]
+pub fn drop_opaque_RustOpaque_box_dynDartDebugTwinSync(ptr: *const std::ffi::c_void) {
+    unsafe {
+        std::sync::Arc::<Box<dyn DartDebugTwinSync>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_RustOpaque_box_dynDartDebugTwinSync(
+    ptr: *const std::ffi::c_void,
+) -> *const std::ffi::c_void {
+    unsafe {
+        std::sync::Arc::<Box<dyn DartDebugTwinSync>>::increment_strong_count(ptr as _);
         ptr
     }
 }

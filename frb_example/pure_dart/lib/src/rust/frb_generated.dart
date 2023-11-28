@@ -1336,11 +1336,17 @@ abstract class RustLibApi extends BaseApi {
 
   OpaqueTypeFinalizer get rwLockHideDataFinalizer;
 
-  OpaqueShareFnType get shareOpaqueBoxDartDebug;
+  OpaqueShareFnType get shareOpaqueBoxDartDebugTwinNormal;
 
-  OpaqueDropFnType get dropOpaqueBoxDartDebug;
+  OpaqueDropFnType get dropOpaqueBoxDartDebugTwinNormal;
 
-  OpaqueTypeFinalizer get boxDartDebugFinalizer;
+  OpaqueTypeFinalizer get boxDartDebugTwinNormalFinalizer;
+
+  OpaqueShareFnType get shareOpaqueBoxDartDebugTwinSync;
+
+  OpaqueDropFnType get dropOpaqueBoxDartDebugTwinSync;
+
+  OpaqueTypeFinalizer get boxDartDebugTwinSyncFinalizer;
 
   OpaqueShareFnType get shareOpaqueFrbOpaqueReturn;
 
@@ -10784,11 +10790,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   OpaqueDropFnType get dropOpaqueRwLockHideData =>
       wire.drop_opaque_RustOpaque_RwLockHideData;
 
-  OpaqueShareFnType get shareOpaqueBoxDartDebug =>
-      wire.share_opaque_RustOpaque_box_dynDartDebug;
+  OpaqueShareFnType get shareOpaqueBoxDartDebugTwinNormal =>
+      wire.share_opaque_RustOpaque_box_dynDartDebugTwinNormal;
 
-  OpaqueDropFnType get dropOpaqueBoxDartDebug =>
-      wire.drop_opaque_RustOpaque_box_dynDartDebug;
+  OpaqueDropFnType get dropOpaqueBoxDartDebugTwinNormal =>
+      wire.drop_opaque_RustOpaque_box_dynDartDebugTwinNormal;
+
+  OpaqueShareFnType get shareOpaqueBoxDartDebugTwinSync =>
+      wire.share_opaque_RustOpaque_box_dynDartDebugTwinSync;
+
+  OpaqueDropFnType get dropOpaqueBoxDartDebugTwinSync =>
+      wire.drop_opaque_RustOpaque_box_dynDartDebugTwinSync;
 
   OpaqueShareFnType get shareOpaqueFrbOpaqueReturn =>
       wire.share_opaque_RustOpaque_frb_opaque_return;
@@ -10869,8 +10881,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return RwLockHideData.fromRaw(raw[0], raw[1]);
   }
 
-  BoxDartDebug _wire2api_RustOpaque_box_dynDartDebug(dynamic raw) {
-    return BoxDartDebug.fromRaw(raw[0], raw[1]);
+  BoxDartDebugTwinNormal _wire2api_RustOpaque_box_dynDartDebugTwinNormal(
+      dynamic raw) {
+    return BoxDartDebugTwinNormal.fromRaw(raw[0], raw[1]);
+  }
+
+  BoxDartDebugTwinSync _wire2api_RustOpaque_box_dynDartDebugTwinSync(
+      dynamic raw) {
+    return BoxDartDebugTwinSync.fromRaw(raw[0], raw[1]);
   }
 
   FrbOpaqueReturn _wire2api_RustOpaque_frb_opaque_return(dynamic raw) {
@@ -11854,7 +11872,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 2:
         return EnumOpaqueTwinNormal_TraitObj(
-          _wire2api_RustOpaque_box_dynDartDebug(raw[1]),
+          _wire2api_RustOpaque_box_dynDartDebugTwinNormal(raw[1]),
         );
       case 3:
         return EnumOpaqueTwinNormal_Mutex(
@@ -11887,7 +11905,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 2:
         return EnumOpaqueTwinSync_TraitObj(
-          _wire2api_RustOpaque_box_dynDartDebug(raw[1]),
+          _wire2api_RustOpaque_box_dynDartDebugTwinSync(raw[1]),
         );
       case 3:
         return EnumOpaqueTwinSync_Mutex(

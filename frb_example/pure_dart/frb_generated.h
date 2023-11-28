@@ -976,12 +976,12 @@ typedef struct wire_EnumOpaqueTwinSync_Primitive {
   struct wire_RustOpaque_i_32 field0;
 } wire_EnumOpaqueTwinSync_Primitive;
 
-typedef struct wire_RustOpaque_box_dynDartDebug {
+typedef struct wire_RustOpaque_box_dynDartDebugTwinSync {
   const void *ptr;
-} wire_RustOpaque_box_dynDartDebug;
+} wire_RustOpaque_box_dynDartDebugTwinSync;
 
 typedef struct wire_EnumOpaqueTwinSync_TraitObj {
-  struct wire_RustOpaque_box_dynDartDebug field0;
+  struct wire_RustOpaque_box_dynDartDebugTwinSync field0;
 } wire_EnumOpaqueTwinSync_TraitObj;
 
 typedef struct wire_RustOpaque_MutexHideData {
@@ -1067,8 +1067,12 @@ typedef struct wire_EnumOpaqueTwinNormal_Primitive {
   struct wire_RustOpaque_i_32 field0;
 } wire_EnumOpaqueTwinNormal_Primitive;
 
+typedef struct wire_RustOpaque_box_dynDartDebugTwinNormal {
+  const void *ptr;
+} wire_RustOpaque_box_dynDartDebugTwinNormal;
+
 typedef struct wire_EnumOpaqueTwinNormal_TraitObj {
-  struct wire_RustOpaque_box_dynDartDebug field0;
+  struct wire_RustOpaque_box_dynDartDebugTwinNormal field0;
 } wire_EnumOpaqueTwinNormal_TraitObj;
 
 typedef struct wire_EnumOpaqueTwinNormal_Mutex {
@@ -2133,7 +2137,9 @@ struct wire_RustOpaque_MutexHideData new_RustOpaque_MutexHideData(void);
 
 struct wire_RustOpaque_RwLockHideData new_RustOpaque_RwLockHideData(void);
 
-struct wire_RustOpaque_box_dynDartDebug new_RustOpaque_box_dynDartDebug(void);
+struct wire_RustOpaque_box_dynDartDebugTwinNormal new_RustOpaque_box_dynDartDebugTwinNormal(void);
+
+struct wire_RustOpaque_box_dynDartDebugTwinSync new_RustOpaque_box_dynDartDebugTwinSync(void);
 
 struct wire_RustOpaque_hide_data new_RustOpaque_hide_data(void);
 
@@ -2483,9 +2489,13 @@ void drop_opaque_RustOpaque_RwLockHideData(const void *ptr);
 
 const void *share_opaque_RustOpaque_RwLockHideData(const void *ptr);
 
-void drop_opaque_RustOpaque_box_dynDartDebug(const void *ptr);
+void drop_opaque_RustOpaque_box_dynDartDebugTwinNormal(const void *ptr);
 
-const void *share_opaque_RustOpaque_box_dynDartDebug(const void *ptr);
+const void *share_opaque_RustOpaque_box_dynDartDebugTwinNormal(const void *ptr);
+
+void drop_opaque_RustOpaque_box_dynDartDebugTwinSync(const void *ptr);
+
+const void *share_opaque_RustOpaque_box_dynDartDebugTwinSync(const void *ptr);
 
 void drop_opaque_RustOpaque_frb_opaque_return(const void *ptr);
 
@@ -2635,7 +2645,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) drop_dart_object);
     dummy_var ^= ((int64_t) (void*) drop_opaque_RustOpaque_MutexHideData);
     dummy_var ^= ((int64_t) (void*) drop_opaque_RustOpaque_RwLockHideData);
-    dummy_var ^= ((int64_t) (void*) drop_opaque_RustOpaque_box_dynDartDebug);
+    dummy_var ^= ((int64_t) (void*) drop_opaque_RustOpaque_box_dynDartDebugTwinNormal);
+    dummy_var ^= ((int64_t) (void*) drop_opaque_RustOpaque_box_dynDartDebugTwinSync);
     dummy_var ^= ((int64_t) (void*) drop_opaque_RustOpaque_frb_opaque_return);
     dummy_var ^= ((int64_t) (void*) drop_opaque_RustOpaque_frb_opaque_sync_return);
     dummy_var ^= ((int64_t) (void*) drop_opaque_RustOpaque_hide_data);
@@ -2706,7 +2717,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_DartOpaque);
     dummy_var ^= ((int64_t) (void*) new_RustOpaque_MutexHideData);
     dummy_var ^= ((int64_t) (void*) new_RustOpaque_RwLockHideData);
-    dummy_var ^= ((int64_t) (void*) new_RustOpaque_box_dynDartDebug);
+    dummy_var ^= ((int64_t) (void*) new_RustOpaque_box_dynDartDebugTwinNormal);
+    dummy_var ^= ((int64_t) (void*) new_RustOpaque_box_dynDartDebugTwinSync);
     dummy_var ^= ((int64_t) (void*) new_RustOpaque_hide_data);
     dummy_var ^= ((int64_t) (void*) new_RustOpaque_i_32);
     dummy_var ^= ((int64_t) (void*) new_RustOpaque_non_clone_data);
@@ -2880,7 +2892,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_list_weekdays_twin_sync);
     dummy_var ^= ((int64_t) (void*) share_opaque_RustOpaque_MutexHideData);
     dummy_var ^= ((int64_t) (void*) share_opaque_RustOpaque_RwLockHideData);
-    dummy_var ^= ((int64_t) (void*) share_opaque_RustOpaque_box_dynDartDebug);
+    dummy_var ^= ((int64_t) (void*) share_opaque_RustOpaque_box_dynDartDebugTwinNormal);
+    dummy_var ^= ((int64_t) (void*) share_opaque_RustOpaque_box_dynDartDebugTwinSync);
     dummy_var ^= ((int64_t) (void*) share_opaque_RustOpaque_frb_opaque_return);
     dummy_var ^= ((int64_t) (void*) share_opaque_RustOpaque_frb_opaque_sync_return);
     dummy_var ^= ((int64_t) (void*) share_opaque_RustOpaque_hide_data);

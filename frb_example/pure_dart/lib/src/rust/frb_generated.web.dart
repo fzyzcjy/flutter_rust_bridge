@@ -86,8 +86,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   late final rwLockHideDataFinalizer =
       OpaqueTypeFinalizer(wire.drop_opaque_RustOpaque_RwLockHideData);
 
-  late final boxDartDebugFinalizer =
-      OpaqueTypeFinalizer(wire.drop_opaque_RustOpaque_box_dynDartDebug);
+  late final boxDartDebugTwinNormalFinalizer = OpaqueTypeFinalizer(
+      wire.drop_opaque_RustOpaque_box_dynDartDebugTwinNormal);
+
+  late final boxDartDebugTwinSyncFinalizer =
+      OpaqueTypeFinalizer(wire.drop_opaque_RustOpaque_box_dynDartDebugTwinSync);
 
   late final frbOpaqueReturnFinalizer =
       OpaqueTypeFinalizer(wire.drop_opaque_RustOpaque_frb_opaque_return);
@@ -165,7 +168,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Object api2wire_RustOpaque_box_dynDartDebug(BoxDartDebug raw) {
+  Object api2wire_RustOpaque_box_dynDartDebugTwinNormal(
+      BoxDartDebugTwinNormal raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.shareOrMove();
+  }
+
+  @protected
+  Object api2wire_RustOpaque_box_dynDartDebugTwinSync(
+      BoxDartDebugTwinSync raw) {
     // ignore: invalid_use_of_internal_member
     return raw.shareOrMove();
   }
@@ -1270,7 +1281,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return [1, api2wire_RustOpaque_i_32(raw.field0)];
     }
     if (raw is EnumOpaqueTwinNormal_TraitObj) {
-      return [2, api2wire_RustOpaque_box_dynDartDebug(raw.field0)];
+      return [2, api2wire_RustOpaque_box_dynDartDebugTwinNormal(raw.field0)];
     }
     if (raw is EnumOpaqueTwinNormal_Mutex) {
       return [3, api2wire_RustOpaque_MutexHideData(raw.field0)];
@@ -1291,7 +1302,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return [1, api2wire_RustOpaque_i_32(raw.field0)];
     }
     if (raw is EnumOpaqueTwinSync_TraitObj) {
-      return [2, api2wire_RustOpaque_box_dynDartDebug(raw.field0)];
+      return [2, api2wire_RustOpaque_box_dynDartDebugTwinSync(raw.field0)];
     }
     if (raw is EnumOpaqueTwinSync_Mutex) {
       return [3, api2wire_RustOpaque_MutexHideData(raw.field0)];
@@ -4150,12 +4161,19 @@ class RustLibWire extends BaseWire {
           dynamic ptr) =>
       wasmModule.share_opaque_RustOpaque_RwLockHideData(ptr);
 
-  void drop_opaque_RustOpaque_box_dynDartDebug(dynamic ptr) =>
-      wasmModule.drop_opaque_RustOpaque_box_dynDartDebug(ptr);
+  void drop_opaque_RustOpaque_box_dynDartDebugTwinNormal(dynamic ptr) =>
+      wasmModule.drop_opaque_RustOpaque_box_dynDartDebugTwinNormal(ptr);
 
-  int /* *const std::ffi::c_void */ share_opaque_RustOpaque_box_dynDartDebug(
-          dynamic ptr) =>
-      wasmModule.share_opaque_RustOpaque_box_dynDartDebug(ptr);
+  int /* *const std::ffi::c_void */
+      share_opaque_RustOpaque_box_dynDartDebugTwinNormal(dynamic ptr) =>
+          wasmModule.share_opaque_RustOpaque_box_dynDartDebugTwinNormal(ptr);
+
+  void drop_opaque_RustOpaque_box_dynDartDebugTwinSync(dynamic ptr) =>
+      wasmModule.drop_opaque_RustOpaque_box_dynDartDebugTwinSync(ptr);
+
+  int /* *const std::ffi::c_void */
+      share_opaque_RustOpaque_box_dynDartDebugTwinSync(dynamic ptr) =>
+          wasmModule.share_opaque_RustOpaque_box_dynDartDebugTwinSync(ptr);
 
   void drop_opaque_RustOpaque_frb_opaque_return(dynamic ptr) =>
       wasmModule.drop_opaque_RustOpaque_frb_opaque_return(ptr);
@@ -5560,10 +5578,15 @@ class RustLibWasmModule implements WasmModule {
   external int /* *const std::ffi::c_void */
       share_opaque_RustOpaque_RwLockHideData(dynamic ptr);
 
-  external void drop_opaque_RustOpaque_box_dynDartDebug(dynamic ptr);
+  external void drop_opaque_RustOpaque_box_dynDartDebugTwinNormal(dynamic ptr);
 
   external int /* *const std::ffi::c_void */
-      share_opaque_RustOpaque_box_dynDartDebug(dynamic ptr);
+      share_opaque_RustOpaque_box_dynDartDebugTwinNormal(dynamic ptr);
+
+  external void drop_opaque_RustOpaque_box_dynDartDebugTwinSync(dynamic ptr);
+
+  external int /* *const std::ffi::c_void */
+      share_opaque_RustOpaque_box_dynDartDebugTwinSync(dynamic ptr);
 
   external void drop_opaque_RustOpaque_frb_opaque_return(dynamic ptr);
 

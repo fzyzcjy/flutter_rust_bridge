@@ -21,7 +21,7 @@ mixin _$EnumOpaqueTwinNormal {
   TResult when<TResult extends Object?>({
     required TResult Function(HideData field0) struct,
     required TResult Function(I32 field0) primitive,
-    required TResult Function(BoxDartDebug field0) traitObj,
+    required TResult Function(BoxDartDebugTwinNormal field0) traitObj,
     required TResult Function(MutexHideData field0) mutex,
     required TResult Function(RwLockHideData field0) rwLock,
   }) =>
@@ -30,7 +30,7 @@ mixin _$EnumOpaqueTwinNormal {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(HideData field0)? struct,
     TResult? Function(I32 field0)? primitive,
-    TResult? Function(BoxDartDebug field0)? traitObj,
+    TResult? Function(BoxDartDebugTwinNormal field0)? traitObj,
     TResult? Function(MutexHideData field0)? mutex,
     TResult? Function(RwLockHideData field0)? rwLock,
   }) =>
@@ -39,7 +39,7 @@ mixin _$EnumOpaqueTwinNormal {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(HideData field0)? struct,
     TResult Function(I32 field0)? primitive,
-    TResult Function(BoxDartDebug field0)? traitObj,
+    TResult Function(BoxDartDebugTwinNormal field0)? traitObj,
     TResult Function(MutexHideData field0)? mutex,
     TResult Function(RwLockHideData field0)? rwLock,
     required TResult orElse(),
@@ -164,7 +164,7 @@ class _$EnumOpaqueTwinNormal_StructImpl implements EnumOpaqueTwinNormal_Struct {
   TResult when<TResult extends Object?>({
     required TResult Function(HideData field0) struct,
     required TResult Function(I32 field0) primitive,
-    required TResult Function(BoxDartDebug field0) traitObj,
+    required TResult Function(BoxDartDebugTwinNormal field0) traitObj,
     required TResult Function(MutexHideData field0) mutex,
     required TResult Function(RwLockHideData field0) rwLock,
   }) {
@@ -176,7 +176,7 @@ class _$EnumOpaqueTwinNormal_StructImpl implements EnumOpaqueTwinNormal_Struct {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(HideData field0)? struct,
     TResult? Function(I32 field0)? primitive,
-    TResult? Function(BoxDartDebug field0)? traitObj,
+    TResult? Function(BoxDartDebugTwinNormal field0)? traitObj,
     TResult? Function(MutexHideData field0)? mutex,
     TResult? Function(RwLockHideData field0)? rwLock,
   }) {
@@ -188,7 +188,7 @@ class _$EnumOpaqueTwinNormal_StructImpl implements EnumOpaqueTwinNormal_Struct {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(HideData field0)? struct,
     TResult Function(I32 field0)? primitive,
-    TResult Function(BoxDartDebug field0)? traitObj,
+    TResult Function(BoxDartDebugTwinNormal field0)? traitObj,
     TResult Function(MutexHideData field0)? mutex,
     TResult Function(RwLockHideData field0)? rwLock,
     required TResult orElse(),
@@ -323,7 +323,7 @@ class _$EnumOpaqueTwinNormal_PrimitiveImpl
   TResult when<TResult extends Object?>({
     required TResult Function(HideData field0) struct,
     required TResult Function(I32 field0) primitive,
-    required TResult Function(BoxDartDebug field0) traitObj,
+    required TResult Function(BoxDartDebugTwinNormal field0) traitObj,
     required TResult Function(MutexHideData field0) mutex,
     required TResult Function(RwLockHideData field0) rwLock,
   }) {
@@ -335,7 +335,7 @@ class _$EnumOpaqueTwinNormal_PrimitiveImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(HideData field0)? struct,
     TResult? Function(I32 field0)? primitive,
-    TResult? Function(BoxDartDebug field0)? traitObj,
+    TResult? Function(BoxDartDebugTwinNormal field0)? traitObj,
     TResult? Function(MutexHideData field0)? mutex,
     TResult? Function(RwLockHideData field0)? rwLock,
   }) {
@@ -347,7 +347,7 @@ class _$EnumOpaqueTwinNormal_PrimitiveImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(HideData field0)? struct,
     TResult Function(I32 field0)? primitive,
-    TResult Function(BoxDartDebug field0)? traitObj,
+    TResult Function(BoxDartDebugTwinNormal field0)? traitObj,
     TResult Function(MutexHideData field0)? mutex,
     TResult Function(RwLockHideData field0)? rwLock,
     required TResult orElse(),
@@ -418,7 +418,7 @@ abstract class _$$EnumOpaqueTwinNormal_TraitObjImplCopyWith<$Res> {
           $Res Function(_$EnumOpaqueTwinNormal_TraitObjImpl) then) =
       __$$EnumOpaqueTwinNormal_TraitObjImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({BoxDartDebug field0});
+  $Res call({BoxDartDebugTwinNormal field0});
 }
 
 /// @nodoc
@@ -440,7 +440,7 @@ class __$$EnumOpaqueTwinNormal_TraitObjImplCopyWithImpl<$Res>
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as BoxDartDebug,
+              as BoxDartDebugTwinNormal,
     ));
   }
 }
@@ -452,7 +452,7 @@ class _$EnumOpaqueTwinNormal_TraitObjImpl
   const _$EnumOpaqueTwinNormal_TraitObjImpl(this.field0);
 
   @override
-  final BoxDartDebug field0;
+  final BoxDartDebugTwinNormal field0;
 
   @override
   String toString() {
@@ -483,7 +483,7 @@ class _$EnumOpaqueTwinNormal_TraitObjImpl
   TResult when<TResult extends Object?>({
     required TResult Function(HideData field0) struct,
     required TResult Function(I32 field0) primitive,
-    required TResult Function(BoxDartDebug field0) traitObj,
+    required TResult Function(BoxDartDebugTwinNormal field0) traitObj,
     required TResult Function(MutexHideData field0) mutex,
     required TResult Function(RwLockHideData field0) rwLock,
   }) {
@@ -495,7 +495,7 @@ class _$EnumOpaqueTwinNormal_TraitObjImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(HideData field0)? struct,
     TResult? Function(I32 field0)? primitive,
-    TResult? Function(BoxDartDebug field0)? traitObj,
+    TResult? Function(BoxDartDebugTwinNormal field0)? traitObj,
     TResult? Function(MutexHideData field0)? mutex,
     TResult? Function(RwLockHideData field0)? rwLock,
   }) {
@@ -507,7 +507,7 @@ class _$EnumOpaqueTwinNormal_TraitObjImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(HideData field0)? struct,
     TResult Function(I32 field0)? primitive,
-    TResult Function(BoxDartDebug field0)? traitObj,
+    TResult Function(BoxDartDebugTwinNormal field0)? traitObj,
     TResult Function(MutexHideData field0)? mutex,
     TResult Function(RwLockHideData field0)? rwLock,
     required TResult orElse(),
@@ -560,11 +560,12 @@ class _$EnumOpaqueTwinNormal_TraitObjImpl
 }
 
 abstract class EnumOpaqueTwinNormal_TraitObj implements EnumOpaqueTwinNormal {
-  const factory EnumOpaqueTwinNormal_TraitObj(final BoxDartDebug field0) =
+  const factory EnumOpaqueTwinNormal_TraitObj(
+          final BoxDartDebugTwinNormal field0) =
       _$EnumOpaqueTwinNormal_TraitObjImpl;
 
   @override
-  BoxDartDebug get field0;
+  BoxDartDebugTwinNormal get field0;
   @JsonKey(ignore: true)
   _$$EnumOpaqueTwinNormal_TraitObjImplCopyWith<
           _$EnumOpaqueTwinNormal_TraitObjImpl>
@@ -641,7 +642,7 @@ class _$EnumOpaqueTwinNormal_MutexImpl implements EnumOpaqueTwinNormal_Mutex {
   TResult when<TResult extends Object?>({
     required TResult Function(HideData field0) struct,
     required TResult Function(I32 field0) primitive,
-    required TResult Function(BoxDartDebug field0) traitObj,
+    required TResult Function(BoxDartDebugTwinNormal field0) traitObj,
     required TResult Function(MutexHideData field0) mutex,
     required TResult Function(RwLockHideData field0) rwLock,
   }) {
@@ -653,7 +654,7 @@ class _$EnumOpaqueTwinNormal_MutexImpl implements EnumOpaqueTwinNormal_Mutex {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(HideData field0)? struct,
     TResult? Function(I32 field0)? primitive,
-    TResult? Function(BoxDartDebug field0)? traitObj,
+    TResult? Function(BoxDartDebugTwinNormal field0)? traitObj,
     TResult? Function(MutexHideData field0)? mutex,
     TResult? Function(RwLockHideData field0)? rwLock,
   }) {
@@ -665,7 +666,7 @@ class _$EnumOpaqueTwinNormal_MutexImpl implements EnumOpaqueTwinNormal_Mutex {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(HideData field0)? struct,
     TResult Function(I32 field0)? primitive,
-    TResult Function(BoxDartDebug field0)? traitObj,
+    TResult Function(BoxDartDebugTwinNormal field0)? traitObj,
     TResult Function(MutexHideData field0)? mutex,
     TResult Function(RwLockHideData field0)? rwLock,
     required TResult orElse(),
@@ -798,7 +799,7 @@ class _$EnumOpaqueTwinNormal_RwLockImpl implements EnumOpaqueTwinNormal_RwLock {
   TResult when<TResult extends Object?>({
     required TResult Function(HideData field0) struct,
     required TResult Function(I32 field0) primitive,
-    required TResult Function(BoxDartDebug field0) traitObj,
+    required TResult Function(BoxDartDebugTwinNormal field0) traitObj,
     required TResult Function(MutexHideData field0) mutex,
     required TResult Function(RwLockHideData field0) rwLock,
   }) {
@@ -810,7 +811,7 @@ class _$EnumOpaqueTwinNormal_RwLockImpl implements EnumOpaqueTwinNormal_RwLock {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(HideData field0)? struct,
     TResult? Function(I32 field0)? primitive,
-    TResult? Function(BoxDartDebug field0)? traitObj,
+    TResult? Function(BoxDartDebugTwinNormal field0)? traitObj,
     TResult? Function(MutexHideData field0)? mutex,
     TResult? Function(RwLockHideData field0)? rwLock,
   }) {
@@ -822,7 +823,7 @@ class _$EnumOpaqueTwinNormal_RwLockImpl implements EnumOpaqueTwinNormal_RwLock {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(HideData field0)? struct,
     TResult Function(I32 field0)? primitive,
-    TResult Function(BoxDartDebug field0)? traitObj,
+    TResult Function(BoxDartDebugTwinNormal field0)? traitObj,
     TResult Function(MutexHideData field0)? mutex,
     TResult Function(RwLockHideData field0)? rwLock,
     required TResult orElse(),

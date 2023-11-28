@@ -2,6 +2,7 @@
 
 use super::*;
 use crate::api::pseudo_manual::rust_opaque_twin_sync::*;
+use crate::api::rust_opaque::*;
 use crate::api::rust_opaque_sync::*;
 use flutter_rust_bridge::rust2dart::IntoIntoDart;
 use flutter_rust_bridge::Handler;
@@ -48,10 +49,17 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<RwLock<HideData>>>
         unsafe { flutter_rust_bridge::support::opaque_from_dart(self.ptr as _) }
     }
 }
-impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn DartDebug>>>
-    for wire_RustOpaque_box_dynDartDebug
+impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinNormal>>>
+    for wire_RustOpaque_box_dynDartDebugTwinNormal
 {
-    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebug>> {
+    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinNormal>> {
+        unsafe { flutter_rust_bridge::support::opaque_from_dart(self.ptr as _) }
+    }
+}
+impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>>>
+    for wire_RustOpaque_box_dynDartDebugTwinSync
+{
+    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>> {
         unsafe { flutter_rust_bridge::support::opaque_from_dart(self.ptr as _) }
     }
 }
@@ -2849,7 +2857,13 @@ pub struct wire_RustOpaque_RwLockHideData {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_RustOpaque_box_dynDartDebug {
+pub struct wire_RustOpaque_box_dynDartDebugTwinNormal {
+    ptr: *const core::ffi::c_void,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_RustOpaque_box_dynDartDebugTwinSync {
     ptr: *const core::ffi::c_void,
 }
 
@@ -3332,7 +3346,7 @@ pub struct wire_EnumOpaqueTwinNormal_Primitive {
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_EnumOpaqueTwinNormal_TraitObj {
-    field0: wire_RustOpaque_box_dynDartDebug,
+    field0: wire_RustOpaque_box_dynDartDebugTwinNormal,
 }
 
 #[repr(C)]
@@ -3377,7 +3391,7 @@ pub struct wire_EnumOpaqueTwinSync_Primitive {
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_EnumOpaqueTwinSync_TraitObj {
-    field0: wire_RustOpaque_box_dynDartDebug,
+    field0: wire_RustOpaque_box_dynDartDebugTwinSync,
 }
 
 #[repr(C)]
@@ -4373,7 +4387,14 @@ impl NewWithNullPtr for wire_RustOpaque_RwLockHideData {
         }
     }
 }
-impl NewWithNullPtr for wire_RustOpaque_box_dynDartDebug {
+impl NewWithNullPtr for wire_RustOpaque_box_dynDartDebugTwinNormal {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            ptr: core::ptr::null(),
+        }
+    }
+}
+impl NewWithNullPtr for wire_RustOpaque_box_dynDartDebugTwinSync {
     fn new_with_null_ptr() -> Self {
         Self {
             ptr: core::ptr::null(),
@@ -8663,8 +8684,15 @@ pub extern "C" fn new_RustOpaque_RwLockHideData() -> wire_RustOpaque_RwLockHideD
 }
 
 #[no_mangle]
-pub extern "C" fn new_RustOpaque_box_dynDartDebug() -> wire_RustOpaque_box_dynDartDebug {
-    wire_RustOpaque_box_dynDartDebug::new_with_null_ptr()
+pub extern "C" fn new_RustOpaque_box_dynDartDebugTwinNormal(
+) -> wire_RustOpaque_box_dynDartDebugTwinNormal {
+    wire_RustOpaque_box_dynDartDebugTwinNormal::new_with_null_ptr()
+}
+
+#[no_mangle]
+pub extern "C" fn new_RustOpaque_box_dynDartDebugTwinSync(
+) -> wire_RustOpaque_box_dynDartDebugTwinSync {
+    wire_RustOpaque_box_dynDartDebugTwinSync::new_with_null_ptr()
 }
 
 #[no_mangle]
@@ -9871,18 +9899,35 @@ pub extern "C" fn share_opaque_RustOpaque_RwLockHideData(
 }
 
 #[no_mangle]
-pub extern "C" fn drop_opaque_RustOpaque_box_dynDartDebug(ptr: *const std::ffi::c_void) {
+pub extern "C" fn drop_opaque_RustOpaque_box_dynDartDebugTwinNormal(ptr: *const std::ffi::c_void) {
     unsafe {
-        std::sync::Arc::<Box<dyn DartDebug>>::decrement_strong_count(ptr as _);
+        std::sync::Arc::<Box<dyn DartDebugTwinNormal>>::decrement_strong_count(ptr as _);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn share_opaque_RustOpaque_box_dynDartDebug(
+pub extern "C" fn share_opaque_RustOpaque_box_dynDartDebugTwinNormal(
     ptr: *const std::ffi::c_void,
 ) -> *const std::ffi::c_void {
     unsafe {
-        std::sync::Arc::<Box<dyn DartDebug>>::increment_strong_count(ptr as _);
+        std::sync::Arc::<Box<dyn DartDebugTwinNormal>>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_opaque_RustOpaque_box_dynDartDebugTwinSync(ptr: *const std::ffi::c_void) {
+    unsafe {
+        std::sync::Arc::<Box<dyn DartDebugTwinSync>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn share_opaque_RustOpaque_box_dynDartDebugTwinSync(
+    ptr: *const std::ffi::c_void,
+) -> *const std::ffi::c_void {
+    unsafe {
+        std::sync::Arc::<Box<dyn DartDebugTwinSync>>::increment_strong_count(ptr as _);
         ptr
     }
 }
@@ -10261,7 +10306,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinNormal_TraitObj() -> *mut EnumOpaqueTwin
     flutter_rust_bridge::support::new_leak_box_ptr(EnumOpaqueTwinNormalKind {
         TraitObj: flutter_rust_bridge::support::new_leak_box_ptr(
             wire_EnumOpaqueTwinNormal_TraitObj {
-                field0: wire_RustOpaque_box_dynDartDebug::new_with_null_ptr(),
+                field0: wire_RustOpaque_box_dynDartDebugTwinNormal::new_with_null_ptr(),
             },
         ),
     })
@@ -10310,7 +10355,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinSync_TraitObj() -> *mut EnumOpaqueTwinSy
     flutter_rust_bridge::support::new_leak_box_ptr(EnumOpaqueTwinSyncKind {
         TraitObj: flutter_rust_bridge::support::new_leak_box_ptr(
             wire_EnumOpaqueTwinSync_TraitObj {
-                field0: wire_RustOpaque_box_dynDartDebug::new_with_null_ptr(),
+                field0: wire_RustOpaque_box_dynDartDebugTwinSync::new_with_null_ptr(),
             },
         ),
     })

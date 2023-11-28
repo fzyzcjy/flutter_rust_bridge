@@ -69,6 +69,23 @@ Future<String> unwrapRustOpaqueTwinNormal(
 Future<FrbOpaqueReturn> frbGeneratorTestTwinNormal({dynamic hint}) =>
     RustLib.instance.api.frbGeneratorTestTwinNormal(hint: hint);
 
+@sealed
+class BoxDartDebugTwinNormal extends FrbOpaque {
+  BoxDartDebugTwinNormal.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
+
+  @override
+  OpaqueDropFnType get dropFn =>
+      RustLib.instance.api.dropOpaqueBoxDartDebugTwinNormal;
+
+  @override
+  OpaqueShareFnType get shareFn =>
+      RustLib.instance.api.shareOpaqueBoxDartDebugTwinNormal;
+
+  @override
+  OpaqueTypeFinalizer get staticFinalizer =>
+      RustLib.instance.api.boxDartDebugTwinNormalFinalizer;
+}
+
 @freezed
 sealed class EnumOpaqueTwinNormal with _$EnumOpaqueTwinNormal {
   const factory EnumOpaqueTwinNormal.struct(
@@ -78,7 +95,7 @@ sealed class EnumOpaqueTwinNormal with _$EnumOpaqueTwinNormal {
     I32 field0,
   ) = EnumOpaqueTwinNormal_Primitive;
   const factory EnumOpaqueTwinNormal.traitObj(
-    BoxDartDebug field0,
+    BoxDartDebugTwinNormal field0,
   ) = EnumOpaqueTwinNormal_TraitObj;
   const factory EnumOpaqueTwinNormal.mutex(
     MutexHideData field0,

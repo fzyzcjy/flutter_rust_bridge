@@ -92,18 +92,20 @@ class RwLockHideData extends FrbOpaque {
 }
 
 @sealed
-class BoxDartDebug extends FrbOpaque {
-  BoxDartDebug.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
+class BoxDartDebugTwinSync extends FrbOpaque {
+  BoxDartDebugTwinSync.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
 
   @override
-  OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueBoxDartDebug;
+  OpaqueDropFnType get dropFn =>
+      RustLib.instance.api.dropOpaqueBoxDartDebugTwinSync;
 
   @override
-  OpaqueShareFnType get shareFn => RustLib.instance.api.shareOpaqueBoxDartDebug;
+  OpaqueShareFnType get shareFn =>
+      RustLib.instance.api.shareOpaqueBoxDartDebugTwinSync;
 
   @override
   OpaqueTypeFinalizer get staticFinalizer =>
-      RustLib.instance.api.boxDartDebugFinalizer;
+      RustLib.instance.api.boxDartDebugTwinSyncFinalizer;
 }
 
 @sealed
@@ -201,7 +203,7 @@ sealed class EnumOpaqueTwinSync with _$EnumOpaqueTwinSync {
     I32 field0,
   ) = EnumOpaqueTwinSync_Primitive;
   const factory EnumOpaqueTwinSync.traitObj(
-    BoxDartDebug field0,
+    BoxDartDebugTwinSync field0,
   ) = EnumOpaqueTwinSync_TraitObj;
   const factory EnumOpaqueTwinSync.mutex(
     MutexHideData field0,
