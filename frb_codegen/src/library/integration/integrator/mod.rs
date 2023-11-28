@@ -16,17 +16,16 @@ static INTEGRATION_TEMPLATE_DIR: Dir<'_> =
 // ref: https://matejknopp.com/post/flutter_plugin_in_rust_with_no_prebuilt_binaries/
 pub fn integrate() -> Result<()> {
     let dart_root = find_dart_package_dir(&env::current_dir()?)?;
-    let package_name = dart_root.file_name().unwrap().to_str().unwrap();
-    debug!("integrate dart_root={dart_root:?} package_name={package_name:?}");
+    debug!("integrate dart_root={dart_root:?}");
 
     handle_cargokit_dir(&dart_root)?;
-    handle_rust_dir(&dart_root, package_name)?;
+    handle_rust_dir(&dart_root)?;
 
     handle_ios_or_macos(&dart_root, "ios")?;
     handle_ios_or_macos(&dart_root, "macos")?;
     handle_windows_or_linux(&dart_root, "windows")?;
     handle_windows_or_linux(&dart_root, "linux")?;
-    handle_android(&dart_root, package_name)?;
+    handle_android(&dart_root)?;
 
     Ok(())
 }
@@ -41,15 +40,11 @@ fn handle_cargokit_dir(dart_root: &Path) -> Result<()> {
 
 const CARGOKIT_PRELUDE: &str = "/// This is copied from cargokit, [TODO explain]\n\n";
 
-fn handle_rust_dir(dart_root: &Path, package_name: &str) -> Result<()> {
+fn handle_rust_dir(dart_root: &Path) -> Result<()> {
     extract_dir_and_modify(
         INTEGRATION_TEMPLATE_DIR.get_dir("rust").unwrap(),
         &dart_root.join("rust"),
-        &|raw| {
-            (String::from_utf8(raw.to_vec()).unwrap())
-                .replace("REPLACE_ME_PACKAGE_NAME", package_name)
-                .into_bytes()
-        },
+        &|raw| raw.to_owned(),
     )
 }
 
@@ -64,7 +59,7 @@ fn handle_windows_or_linux(dart_root: &Path, dir_name: &str) -> Result<()> {
     Ok(())
 }
 
-fn handle_android(dart_root: &Path, package_name: &str) -> Result<()> {
+fn handle_android(dart_root: &Path) -> Result<()> {
     let path = dart_root.join("android").join("build.gradle");
     let text = format!(
         r#"
@@ -72,7 +67,7 @@ fn handle_android(dart_root: &Path, package_name: &str) -> Result<()> {
 apply from: "../cargokit/gradle/plugin.gradle"
 cargokit {{
     manifestDir = "../rust"
-    libname = "{package_name}"
+    libname = "rust_lib"
 }}
 // flutter_rust_bridge + cargokit END
 "#

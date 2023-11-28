@@ -1,5 +1,5 @@
 [package]
-name = "REPLACE_ME_PACKAGE_NAME"
+name = "rust_lib"
 version = "0.1.0"
 edition = "2018"
 
