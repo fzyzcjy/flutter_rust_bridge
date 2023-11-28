@@ -34,7 +34,10 @@ pub(crate) fn json_golden_test(
 }
 
 pub(crate) fn text_golden_test(actual: String, matcher_path: &Path) -> anyhow::Result<()> {
-    raw_golden_test(actual.clone(), &actual, matcher_path, Ok)
+    raw_golden_test(actual.clone(), &actual, matcher_path, |x| {
+        // Otherwise tests in macos/linux passes but fails on windows
+        Ok(x.replace("\r\n", "\n"))
+    })
 }
 
 fn raw_golden_test<T, F>(
