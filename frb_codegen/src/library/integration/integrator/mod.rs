@@ -15,10 +15,11 @@ static INTEGRATION_TEMPLATE_DIR: Dir<'_> =
 /// Integrate Rust into existing Flutter project.
 pub fn integrate() -> Result<()> {
     let dart_root = find_dart_package_dir(&env::current_dir()?)?;
-    debug!("integrate dart_root={dart_root:?}");
+    let package_name = dart_root.file_name().unwrap().to_str().unwrap();
+    debug!("integrate dart_root={dart_root:?} package_name={package_name:?}");
 
     handle_cargokit_dir(&dart_root)?;
-    handle_rust_dir(&dart_root)?;
+    handle_rust_dir(&dart_root, package_name)?;
 
     handle_ios_or_macos(&dart_root, "ios")?;
     handle_ios_or_macos(&dart_root, "macos")?;
@@ -39,9 +40,16 @@ fn handle_cargokit_dir(dart_root: &Path) -> Result<()> {
 
 const CARGOKIT_PRELUDE: &str = "/// This is copied from cargokit, [TODO explain]\n\n";
 
-fn handle_rust_dir(dart_root: &Path) -> Result<()> {
-    // TODO the "cdylib + staticlib"
-    todo!()
+fn handle_rust_dir(dart_root: &Path, package_name: &str) -> Result<()> {
+    extract_dir_and_modify(
+        INTEGRATION_TEMPLATE_DIR.get_dir("rust").unwrap(),
+        &dart_root.join("rust"),
+        &|raw| {
+            (String::from_utf8(raw.to_vec()).unwrap())
+                .replace("REPLACE_ME_PACKAGE_NAME", package_name)
+                .into_bytes()
+        },
+    )
 }
 
 fn handle_ios_or_macos(dart_root: &Path, dir_name: &str) -> Result<()> {
