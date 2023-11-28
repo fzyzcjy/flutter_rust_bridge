@@ -42,16 +42,16 @@ mod tests {
     #[test]
     #[serial]
     fn test_execute_generate_on_frb_example_dart_minimal() -> anyhow::Result<()> {
-        body("dart_minimal")
+        body_execute_generate("dart_minimal")
     }
 
     #[test]
     #[serial]
     fn test_execute_generate_on_frb_example_pure_dart() -> anyhow::Result<()> {
-        body("pure_dart")
+        body_execute_generate("pure_dart")
     }
 
-    fn body(name: &str) -> anyhow::Result<()> {
+    fn body_execute_generate(name: &str) -> anyhow::Result<()> {
         configure_opinionated_test_logging();
 
         if env::var("FRB_SKIP_GENERATE_FRB_EXAMPLE_TEST").unwrap_or_default() == "1" {
