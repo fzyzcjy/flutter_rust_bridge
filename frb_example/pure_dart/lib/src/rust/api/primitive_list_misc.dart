@@ -3,15 +3,16 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<VecOfPrimitivePack> handleVecOfPrimitive(
+Future<VecOfPrimitivePackTwinNormal> handleVecOfPrimitiveTwinNormal(
         {required int n, dynamic hint}) =>
-    RustLib.instance.api.handleVecOfPrimitive(n: n, hint: hint);
+    RustLib.instance.api.handleVecOfPrimitiveTwinNormal(n: n, hint: hint);
 
-Future<ZeroCopyVecOfPrimitivePack> handleZeroCopyVecOfPrimitive(
-        {required int n, dynamic hint}) =>
-    RustLib.instance.api.handleZeroCopyVecOfPrimitive(n: n, hint: hint);
+Future<ZeroCopyVecOfPrimitivePackTwinNormal>
+    handleZeroCopyVecOfPrimitiveTwinNormal({required int n, dynamic hint}) =>
+        RustLib.instance.api
+            .handleZeroCopyVecOfPrimitiveTwinNormal(n: n, hint: hint);
 
-class VecOfPrimitivePack {
+class VecOfPrimitivePackTwinNormal {
   final Int8List int8List;
   final Uint8List uint8List;
   final Int16List int16List;
@@ -24,7 +25,7 @@ class VecOfPrimitivePack {
   final Float64List float64List;
   final List<bool> boolList;
 
-  const VecOfPrimitivePack({
+  const VecOfPrimitivePackTwinNormal({
     required this.int8List,
     required this.uint8List,
     required this.int16List,
@@ -55,7 +56,7 @@ class VecOfPrimitivePack {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is VecOfPrimitivePack &&
+      other is VecOfPrimitivePackTwinNormal &&
           runtimeType == other.runtimeType &&
           int8List == other.int8List &&
           uint8List == other.uint8List &&
@@ -70,7 +71,7 @@ class VecOfPrimitivePack {
           boolList == other.boolList;
 }
 
-class ZeroCopyVecOfPrimitivePack {
+class ZeroCopyVecOfPrimitivePackTwinNormal {
   final Int8List int8List;
   final Uint8List uint8List;
   final Int16List int16List;
@@ -82,7 +83,7 @@ class ZeroCopyVecOfPrimitivePack {
   final Float32List float32List;
   final Float64List float64List;
 
-  const ZeroCopyVecOfPrimitivePack({
+  const ZeroCopyVecOfPrimitivePackTwinNormal({
     required this.int8List,
     required this.uint8List,
     required this.int16List,
@@ -111,7 +112,7 @@ class ZeroCopyVecOfPrimitivePack {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ZeroCopyVecOfPrimitivePack &&
+      other is ZeroCopyVecOfPrimitivePackTwinNormal &&
           runtimeType == other.runtimeType &&
           int8List == other.int8List &&
           uint8List == other.uint8List &&

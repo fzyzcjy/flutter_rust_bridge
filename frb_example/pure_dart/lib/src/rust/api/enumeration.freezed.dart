@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$Distance {
+mixin _$DistanceTwinNormal {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unknown,
@@ -37,35 +37,36 @@ mixin _$Distance {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Distance_Unknown value) unknown,
-    required TResult Function(Distance_Map value) map,
+    required TResult Function(DistanceTwinNormal_Unknown value) unknown,
+    required TResult Function(DistanceTwinNormal_Map value) map,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Distance_Unknown value)? unknown,
-    TResult? Function(Distance_Map value)? map,
+    TResult? Function(DistanceTwinNormal_Unknown value)? unknown,
+    TResult? Function(DistanceTwinNormal_Map value)? map,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Distance_Unknown value)? unknown,
-    TResult Function(Distance_Map value)? map,
+    TResult Function(DistanceTwinNormal_Unknown value)? unknown,
+    TResult Function(DistanceTwinNormal_Map value)? map,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DistanceCopyWith<$Res> {
-  factory $DistanceCopyWith(Distance value, $Res Function(Distance) then) =
-      _$DistanceCopyWithImpl<$Res, Distance>;
+abstract class $DistanceTwinNormalCopyWith<$Res> {
+  factory $DistanceTwinNormalCopyWith(
+          DistanceTwinNormal value, $Res Function(DistanceTwinNormal) then) =
+      _$DistanceTwinNormalCopyWithImpl<$Res, DistanceTwinNormal>;
 }
 
 /// @nodoc
-class _$DistanceCopyWithImpl<$Res, $Val extends Distance>
-    implements $DistanceCopyWith<$Res> {
-  _$DistanceCopyWithImpl(this._value, this._then);
+class _$DistanceTwinNormalCopyWithImpl<$Res, $Val extends DistanceTwinNormal>
+    implements $DistanceTwinNormalCopyWith<$Res> {
+  _$DistanceTwinNormalCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -74,35 +75,39 @@ class _$DistanceCopyWithImpl<$Res, $Val extends Distance>
 }
 
 /// @nodoc
-abstract class _$$Distance_UnknownImplCopyWith<$Res> {
-  factory _$$Distance_UnknownImplCopyWith(_$Distance_UnknownImpl value,
-          $Res Function(_$Distance_UnknownImpl) then) =
-      __$$Distance_UnknownImplCopyWithImpl<$Res>;
+abstract class _$$DistanceTwinNormal_UnknownImplCopyWith<$Res> {
+  factory _$$DistanceTwinNormal_UnknownImplCopyWith(
+          _$DistanceTwinNormal_UnknownImpl value,
+          $Res Function(_$DistanceTwinNormal_UnknownImpl) then) =
+      __$$DistanceTwinNormal_UnknownImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$Distance_UnknownImplCopyWithImpl<$Res>
-    extends _$DistanceCopyWithImpl<$Res, _$Distance_UnknownImpl>
-    implements _$$Distance_UnknownImplCopyWith<$Res> {
-  __$$Distance_UnknownImplCopyWithImpl(_$Distance_UnknownImpl _value,
-      $Res Function(_$Distance_UnknownImpl) _then)
+class __$$DistanceTwinNormal_UnknownImplCopyWithImpl<$Res>
+    extends _$DistanceTwinNormalCopyWithImpl<$Res,
+        _$DistanceTwinNormal_UnknownImpl>
+    implements _$$DistanceTwinNormal_UnknownImplCopyWith<$Res> {
+  __$$DistanceTwinNormal_UnknownImplCopyWithImpl(
+      _$DistanceTwinNormal_UnknownImpl _value,
+      $Res Function(_$DistanceTwinNormal_UnknownImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Distance_UnknownImpl implements Distance_Unknown {
-  const _$Distance_UnknownImpl();
+class _$DistanceTwinNormal_UnknownImpl implements DistanceTwinNormal_Unknown {
+  const _$DistanceTwinNormal_UnknownImpl();
 
   @override
   String toString() {
-    return 'Distance.unknown()';
+    return 'DistanceTwinNormal.unknown()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Distance_UnknownImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$DistanceTwinNormal_UnknownImpl);
   }
 
   @override
@@ -142,8 +147,8 @@ class _$Distance_UnknownImpl implements Distance_Unknown {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Distance_Unknown value) unknown,
-    required TResult Function(Distance_Map value) map,
+    required TResult Function(DistanceTwinNormal_Unknown value) unknown,
+    required TResult Function(DistanceTwinNormal_Map value) map,
   }) {
     return unknown(this);
   }
@@ -151,8 +156,8 @@ class _$Distance_UnknownImpl implements Distance_Unknown {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Distance_Unknown value)? unknown,
-    TResult? Function(Distance_Map value)? map,
+    TResult? Function(DistanceTwinNormal_Unknown value)? unknown,
+    TResult? Function(DistanceTwinNormal_Map value)? map,
   }) {
     return unknown?.call(this);
   }
@@ -160,8 +165,8 @@ class _$Distance_UnknownImpl implements Distance_Unknown {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Distance_Unknown value)? unknown,
-    TResult Function(Distance_Map value)? map,
+    TResult Function(DistanceTwinNormal_Unknown value)? unknown,
+    TResult Function(DistanceTwinNormal_Map value)? map,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -171,25 +176,27 @@ class _$Distance_UnknownImpl implements Distance_Unknown {
   }
 }
 
-abstract class Distance_Unknown implements Distance {
-  const factory Distance_Unknown() = _$Distance_UnknownImpl;
+abstract class DistanceTwinNormal_Unknown implements DistanceTwinNormal {
+  const factory DistanceTwinNormal_Unknown() = _$DistanceTwinNormal_UnknownImpl;
 }
 
 /// @nodoc
-abstract class _$$Distance_MapImplCopyWith<$Res> {
-  factory _$$Distance_MapImplCopyWith(
-          _$Distance_MapImpl value, $Res Function(_$Distance_MapImpl) then) =
-      __$$Distance_MapImplCopyWithImpl<$Res>;
+abstract class _$$DistanceTwinNormal_MapImplCopyWith<$Res> {
+  factory _$$DistanceTwinNormal_MapImplCopyWith(
+          _$DistanceTwinNormal_MapImpl value,
+          $Res Function(_$DistanceTwinNormal_MapImpl) then) =
+      __$$DistanceTwinNormal_MapImplCopyWithImpl<$Res>;
   @useResult
   $Res call({double field0});
 }
 
 /// @nodoc
-class __$$Distance_MapImplCopyWithImpl<$Res>
-    extends _$DistanceCopyWithImpl<$Res, _$Distance_MapImpl>
-    implements _$$Distance_MapImplCopyWith<$Res> {
-  __$$Distance_MapImplCopyWithImpl(
-      _$Distance_MapImpl _value, $Res Function(_$Distance_MapImpl) _then)
+class __$$DistanceTwinNormal_MapImplCopyWithImpl<$Res>
+    extends _$DistanceTwinNormalCopyWithImpl<$Res, _$DistanceTwinNormal_MapImpl>
+    implements _$$DistanceTwinNormal_MapImplCopyWith<$Res> {
+  __$$DistanceTwinNormal_MapImplCopyWithImpl(
+      _$DistanceTwinNormal_MapImpl _value,
+      $Res Function(_$DistanceTwinNormal_MapImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -197,7 +204,7 @@ class __$$Distance_MapImplCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$Distance_MapImpl(
+    return _then(_$DistanceTwinNormal_MapImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -208,22 +215,22 @@ class __$$Distance_MapImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Distance_MapImpl implements Distance_Map {
-  const _$Distance_MapImpl(this.field0);
+class _$DistanceTwinNormal_MapImpl implements DistanceTwinNormal_Map {
+  const _$DistanceTwinNormal_MapImpl(this.field0);
 
   @override
   final double field0;
 
   @override
   String toString() {
-    return 'Distance.map(field0: $field0)';
+    return 'DistanceTwinNormal.map(field0: $field0)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Distance_MapImpl &&
+            other is _$DistanceTwinNormal_MapImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -233,8 +240,9 @@ class _$Distance_MapImpl implements Distance_Map {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$Distance_MapImplCopyWith<_$Distance_MapImpl> get copyWith =>
-      __$$Distance_MapImplCopyWithImpl<_$Distance_MapImpl>(this, _$identity);
+  _$$DistanceTwinNormal_MapImplCopyWith<_$DistanceTwinNormal_MapImpl>
+      get copyWith => __$$DistanceTwinNormal_MapImplCopyWithImpl<
+          _$DistanceTwinNormal_MapImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -270,8 +278,8 @@ class _$Distance_MapImpl implements Distance_Map {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Distance_Unknown value) unknown,
-    required TResult Function(Distance_Map value) map,
+    required TResult Function(DistanceTwinNormal_Unknown value) unknown,
+    required TResult Function(DistanceTwinNormal_Map value) map,
   }) {
     return map(this);
   }
@@ -279,8 +287,8 @@ class _$Distance_MapImpl implements Distance_Map {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Distance_Unknown value)? unknown,
-    TResult? Function(Distance_Map value)? map,
+    TResult? Function(DistanceTwinNormal_Unknown value)? unknown,
+    TResult? Function(DistanceTwinNormal_Map value)? map,
   }) {
     return map?.call(this);
   }
@@ -288,8 +296,8 @@ class _$Distance_MapImpl implements Distance_Map {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Distance_Unknown value)? unknown,
-    TResult Function(Distance_Map value)? map,
+    TResult Function(DistanceTwinNormal_Unknown value)? unknown,
+    TResult Function(DistanceTwinNormal_Map value)? map,
     required TResult orElse(),
   }) {
     if (map != null) {
@@ -299,13 +307,14 @@ class _$Distance_MapImpl implements Distance_Map {
   }
 }
 
-abstract class Distance_Map implements Distance {
-  const factory Distance_Map(final double field0) = _$Distance_MapImpl;
+abstract class DistanceTwinNormal_Map implements DistanceTwinNormal {
+  const factory DistanceTwinNormal_Map(final double field0) =
+      _$DistanceTwinNormal_MapImpl;
 
   double get field0;
   @JsonKey(ignore: true)
-  _$$Distance_MapImplCopyWith<_$Distance_MapImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DistanceTwinNormal_MapImplCopyWith<_$DistanceTwinNormal_MapImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1491,83 +1500,85 @@ abstract class EnumWithItemTupleTwinNormal_B
 }
 
 /// @nodoc
-mixin _$KitchenSink {
+mixin _$KitchenSinkTwinNormal {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean)
         primitives,
-    required TResult Function(int field0, KitchenSink field1) nested,
+    required TResult Function(int field0, KitchenSinkTwinNormal field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
-    required TResult Function(Weekdays field0) enums,
+    required TResult Function(WeekdaysTwinNormal field0) enums,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
     TResult? Function(int int32, double float64, bool boolean)? primitives,
-    TResult? Function(int field0, KitchenSink field1)? nested,
+    TResult? Function(int field0, KitchenSinkTwinNormal field1)? nested,
     TResult? Function(int? field0, int? field1)? optional,
     TResult? Function(Uint8List field0)? buffer,
-    TResult? Function(Weekdays field0)? enums,
+    TResult? Function(WeekdaysTwinNormal field0)? enums,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(int field0, KitchenSink field1)? nested,
+    TResult Function(int field0, KitchenSinkTwinNormal field1)? nested,
     TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
-    TResult Function(Weekdays field0)? enums,
+    TResult Function(WeekdaysTwinNormal field0)? enums,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(KitchenSink_Empty value) empty,
-    required TResult Function(KitchenSink_Primitives value) primitives,
-    required TResult Function(KitchenSink_Nested value) nested,
-    required TResult Function(KitchenSink_Optional value) optional,
-    required TResult Function(KitchenSink_Buffer value) buffer,
-    required TResult Function(KitchenSink_Enums value) enums,
+    required TResult Function(KitchenSinkTwinNormal_Empty value) empty,
+    required TResult Function(KitchenSinkTwinNormal_Primitives value)
+        primitives,
+    required TResult Function(KitchenSinkTwinNormal_Nested value) nested,
+    required TResult Function(KitchenSinkTwinNormal_Optional value) optional,
+    required TResult Function(KitchenSinkTwinNormal_Buffer value) buffer,
+    required TResult Function(KitchenSinkTwinNormal_Enums value) enums,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(KitchenSink_Empty value)? empty,
-    TResult? Function(KitchenSink_Primitives value)? primitives,
-    TResult? Function(KitchenSink_Nested value)? nested,
-    TResult? Function(KitchenSink_Optional value)? optional,
-    TResult? Function(KitchenSink_Buffer value)? buffer,
-    TResult? Function(KitchenSink_Enums value)? enums,
+    TResult? Function(KitchenSinkTwinNormal_Empty value)? empty,
+    TResult? Function(KitchenSinkTwinNormal_Primitives value)? primitives,
+    TResult? Function(KitchenSinkTwinNormal_Nested value)? nested,
+    TResult? Function(KitchenSinkTwinNormal_Optional value)? optional,
+    TResult? Function(KitchenSinkTwinNormal_Buffer value)? buffer,
+    TResult? Function(KitchenSinkTwinNormal_Enums value)? enums,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(KitchenSink_Empty value)? empty,
-    TResult Function(KitchenSink_Primitives value)? primitives,
-    TResult Function(KitchenSink_Nested value)? nested,
-    TResult Function(KitchenSink_Optional value)? optional,
-    TResult Function(KitchenSink_Buffer value)? buffer,
-    TResult Function(KitchenSink_Enums value)? enums,
+    TResult Function(KitchenSinkTwinNormal_Empty value)? empty,
+    TResult Function(KitchenSinkTwinNormal_Primitives value)? primitives,
+    TResult Function(KitchenSinkTwinNormal_Nested value)? nested,
+    TResult Function(KitchenSinkTwinNormal_Optional value)? optional,
+    TResult Function(KitchenSinkTwinNormal_Buffer value)? buffer,
+    TResult Function(KitchenSinkTwinNormal_Enums value)? enums,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $KitchenSinkCopyWith<$Res> {
-  factory $KitchenSinkCopyWith(
-          KitchenSink value, $Res Function(KitchenSink) then) =
-      _$KitchenSinkCopyWithImpl<$Res, KitchenSink>;
+abstract class $KitchenSinkTwinNormalCopyWith<$Res> {
+  factory $KitchenSinkTwinNormalCopyWith(KitchenSinkTwinNormal value,
+          $Res Function(KitchenSinkTwinNormal) then) =
+      _$KitchenSinkTwinNormalCopyWithImpl<$Res, KitchenSinkTwinNormal>;
 }
 
 /// @nodoc
-class _$KitchenSinkCopyWithImpl<$Res, $Val extends KitchenSink>
-    implements $KitchenSinkCopyWith<$Res> {
-  _$KitchenSinkCopyWithImpl(this._value, this._then);
+class _$KitchenSinkTwinNormalCopyWithImpl<$Res,
+        $Val extends KitchenSinkTwinNormal>
+    implements $KitchenSinkTwinNormalCopyWith<$Res> {
+  _$KitchenSinkTwinNormalCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -1576,35 +1587,39 @@ class _$KitchenSinkCopyWithImpl<$Res, $Val extends KitchenSink>
 }
 
 /// @nodoc
-abstract class _$$KitchenSink_EmptyImplCopyWith<$Res> {
-  factory _$$KitchenSink_EmptyImplCopyWith(_$KitchenSink_EmptyImpl value,
-          $Res Function(_$KitchenSink_EmptyImpl) then) =
-      __$$KitchenSink_EmptyImplCopyWithImpl<$Res>;
+abstract class _$$KitchenSinkTwinNormal_EmptyImplCopyWith<$Res> {
+  factory _$$KitchenSinkTwinNormal_EmptyImplCopyWith(
+          _$KitchenSinkTwinNormal_EmptyImpl value,
+          $Res Function(_$KitchenSinkTwinNormal_EmptyImpl) then) =
+      __$$KitchenSinkTwinNormal_EmptyImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$KitchenSink_EmptyImplCopyWithImpl<$Res>
-    extends _$KitchenSinkCopyWithImpl<$Res, _$KitchenSink_EmptyImpl>
-    implements _$$KitchenSink_EmptyImplCopyWith<$Res> {
-  __$$KitchenSink_EmptyImplCopyWithImpl(_$KitchenSink_EmptyImpl _value,
-      $Res Function(_$KitchenSink_EmptyImpl) _then)
+class __$$KitchenSinkTwinNormal_EmptyImplCopyWithImpl<$Res>
+    extends _$KitchenSinkTwinNormalCopyWithImpl<$Res,
+        _$KitchenSinkTwinNormal_EmptyImpl>
+    implements _$$KitchenSinkTwinNormal_EmptyImplCopyWith<$Res> {
+  __$$KitchenSinkTwinNormal_EmptyImplCopyWithImpl(
+      _$KitchenSinkTwinNormal_EmptyImpl _value,
+      $Res Function(_$KitchenSinkTwinNormal_EmptyImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$KitchenSink_EmptyImpl implements KitchenSink_Empty {
-  const _$KitchenSink_EmptyImpl();
+class _$KitchenSinkTwinNormal_EmptyImpl implements KitchenSinkTwinNormal_Empty {
+  const _$KitchenSinkTwinNormal_EmptyImpl();
 
   @override
   String toString() {
-    return 'KitchenSink.empty()';
+    return 'KitchenSinkTwinNormal.empty()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$KitchenSink_EmptyImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$KitchenSinkTwinNormal_EmptyImpl);
   }
 
   @override
@@ -1616,10 +1631,10 @@ class _$KitchenSink_EmptyImpl implements KitchenSink_Empty {
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean)
         primitives,
-    required TResult Function(int field0, KitchenSink field1) nested,
+    required TResult Function(int field0, KitchenSinkTwinNormal field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
-    required TResult Function(Weekdays field0) enums,
+    required TResult Function(WeekdaysTwinNormal field0) enums,
   }) {
     return empty();
   }
@@ -1629,10 +1644,10 @@ class _$KitchenSink_EmptyImpl implements KitchenSink_Empty {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
     TResult? Function(int int32, double float64, bool boolean)? primitives,
-    TResult? Function(int field0, KitchenSink field1)? nested,
+    TResult? Function(int field0, KitchenSinkTwinNormal field1)? nested,
     TResult? Function(int? field0, int? field1)? optional,
     TResult? Function(Uint8List field0)? buffer,
-    TResult? Function(Weekdays field0)? enums,
+    TResult? Function(WeekdaysTwinNormal field0)? enums,
   }) {
     return empty?.call();
   }
@@ -1642,10 +1657,10 @@ class _$KitchenSink_EmptyImpl implements KitchenSink_Empty {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(int field0, KitchenSink field1)? nested,
+    TResult Function(int field0, KitchenSinkTwinNormal field1)? nested,
     TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
-    TResult Function(Weekdays field0)? enums,
+    TResult Function(WeekdaysTwinNormal field0)? enums,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -1657,12 +1672,13 @@ class _$KitchenSink_EmptyImpl implements KitchenSink_Empty {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(KitchenSink_Empty value) empty,
-    required TResult Function(KitchenSink_Primitives value) primitives,
-    required TResult Function(KitchenSink_Nested value) nested,
-    required TResult Function(KitchenSink_Optional value) optional,
-    required TResult Function(KitchenSink_Buffer value) buffer,
-    required TResult Function(KitchenSink_Enums value) enums,
+    required TResult Function(KitchenSinkTwinNormal_Empty value) empty,
+    required TResult Function(KitchenSinkTwinNormal_Primitives value)
+        primitives,
+    required TResult Function(KitchenSinkTwinNormal_Nested value) nested,
+    required TResult Function(KitchenSinkTwinNormal_Optional value) optional,
+    required TResult Function(KitchenSinkTwinNormal_Buffer value) buffer,
+    required TResult Function(KitchenSinkTwinNormal_Enums value) enums,
   }) {
     return empty(this);
   }
@@ -1670,12 +1686,12 @@ class _$KitchenSink_EmptyImpl implements KitchenSink_Empty {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(KitchenSink_Empty value)? empty,
-    TResult? Function(KitchenSink_Primitives value)? primitives,
-    TResult? Function(KitchenSink_Nested value)? nested,
-    TResult? Function(KitchenSink_Optional value)? optional,
-    TResult? Function(KitchenSink_Buffer value)? buffer,
-    TResult? Function(KitchenSink_Enums value)? enums,
+    TResult? Function(KitchenSinkTwinNormal_Empty value)? empty,
+    TResult? Function(KitchenSinkTwinNormal_Primitives value)? primitives,
+    TResult? Function(KitchenSinkTwinNormal_Nested value)? nested,
+    TResult? Function(KitchenSinkTwinNormal_Optional value)? optional,
+    TResult? Function(KitchenSinkTwinNormal_Buffer value)? buffer,
+    TResult? Function(KitchenSinkTwinNormal_Enums value)? enums,
   }) {
     return empty?.call(this);
   }
@@ -1683,12 +1699,12 @@ class _$KitchenSink_EmptyImpl implements KitchenSink_Empty {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(KitchenSink_Empty value)? empty,
-    TResult Function(KitchenSink_Primitives value)? primitives,
-    TResult Function(KitchenSink_Nested value)? nested,
-    TResult Function(KitchenSink_Optional value)? optional,
-    TResult Function(KitchenSink_Buffer value)? buffer,
-    TResult Function(KitchenSink_Enums value)? enums,
+    TResult Function(KitchenSinkTwinNormal_Empty value)? empty,
+    TResult Function(KitchenSinkTwinNormal_Primitives value)? primitives,
+    TResult Function(KitchenSinkTwinNormal_Nested value)? nested,
+    TResult Function(KitchenSinkTwinNormal_Optional value)? optional,
+    TResult Function(KitchenSinkTwinNormal_Buffer value)? buffer,
+    TResult Function(KitchenSinkTwinNormal_Enums value)? enums,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -1698,27 +1714,29 @@ class _$KitchenSink_EmptyImpl implements KitchenSink_Empty {
   }
 }
 
-abstract class KitchenSink_Empty implements KitchenSink {
-  const factory KitchenSink_Empty() = _$KitchenSink_EmptyImpl;
+abstract class KitchenSinkTwinNormal_Empty implements KitchenSinkTwinNormal {
+  const factory KitchenSinkTwinNormal_Empty() =
+      _$KitchenSinkTwinNormal_EmptyImpl;
 }
 
 /// @nodoc
-abstract class _$$KitchenSink_PrimitivesImplCopyWith<$Res> {
-  factory _$$KitchenSink_PrimitivesImplCopyWith(
-          _$KitchenSink_PrimitivesImpl value,
-          $Res Function(_$KitchenSink_PrimitivesImpl) then) =
-      __$$KitchenSink_PrimitivesImplCopyWithImpl<$Res>;
+abstract class _$$KitchenSinkTwinNormal_PrimitivesImplCopyWith<$Res> {
+  factory _$$KitchenSinkTwinNormal_PrimitivesImplCopyWith(
+          _$KitchenSinkTwinNormal_PrimitivesImpl value,
+          $Res Function(_$KitchenSinkTwinNormal_PrimitivesImpl) then) =
+      __$$KitchenSinkTwinNormal_PrimitivesImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int int32, double float64, bool boolean});
 }
 
 /// @nodoc
-class __$$KitchenSink_PrimitivesImplCopyWithImpl<$Res>
-    extends _$KitchenSinkCopyWithImpl<$Res, _$KitchenSink_PrimitivesImpl>
-    implements _$$KitchenSink_PrimitivesImplCopyWith<$Res> {
-  __$$KitchenSink_PrimitivesImplCopyWithImpl(
-      _$KitchenSink_PrimitivesImpl _value,
-      $Res Function(_$KitchenSink_PrimitivesImpl) _then)
+class __$$KitchenSinkTwinNormal_PrimitivesImplCopyWithImpl<$Res>
+    extends _$KitchenSinkTwinNormalCopyWithImpl<$Res,
+        _$KitchenSinkTwinNormal_PrimitivesImpl>
+    implements _$$KitchenSinkTwinNormal_PrimitivesImplCopyWith<$Res> {
+  __$$KitchenSinkTwinNormal_PrimitivesImplCopyWithImpl(
+      _$KitchenSinkTwinNormal_PrimitivesImpl _value,
+      $Res Function(_$KitchenSinkTwinNormal_PrimitivesImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1728,7 +1746,7 @@ class __$$KitchenSink_PrimitivesImplCopyWithImpl<$Res>
     Object? float64 = null,
     Object? boolean = null,
   }) {
-    return _then(_$KitchenSink_PrimitivesImpl(
+    return _then(_$KitchenSinkTwinNormal_PrimitivesImpl(
       int32: null == int32
           ? _value.int32
           : int32 // ignore: cast_nullable_to_non_nullable
@@ -1747,8 +1765,9 @@ class __$$KitchenSink_PrimitivesImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$KitchenSink_PrimitivesImpl implements KitchenSink_Primitives {
-  const _$KitchenSink_PrimitivesImpl(
+class _$KitchenSinkTwinNormal_PrimitivesImpl
+    implements KitchenSinkTwinNormal_Primitives {
+  const _$KitchenSinkTwinNormal_PrimitivesImpl(
       {this.int32 = -1, required this.float64, required this.boolean});
 
   /// Dart field comment
@@ -1762,14 +1781,14 @@ class _$KitchenSink_PrimitivesImpl implements KitchenSink_Primitives {
 
   @override
   String toString() {
-    return 'KitchenSink.primitives(int32: $int32, float64: $float64, boolean: $boolean)';
+    return 'KitchenSinkTwinNormal.primitives(int32: $int32, float64: $float64, boolean: $boolean)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$KitchenSink_PrimitivesImpl &&
+            other is _$KitchenSinkTwinNormal_PrimitivesImpl &&
             (identical(other.int32, int32) || other.int32 == int32) &&
             (identical(other.float64, float64) || other.float64 == float64) &&
             (identical(other.boolean, boolean) || other.boolean == boolean));
@@ -1781,9 +1800,10 @@ class _$KitchenSink_PrimitivesImpl implements KitchenSink_Primitives {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$KitchenSink_PrimitivesImplCopyWith<_$KitchenSink_PrimitivesImpl>
-      get copyWith => __$$KitchenSink_PrimitivesImplCopyWithImpl<
-          _$KitchenSink_PrimitivesImpl>(this, _$identity);
+  _$$KitchenSinkTwinNormal_PrimitivesImplCopyWith<
+          _$KitchenSinkTwinNormal_PrimitivesImpl>
+      get copyWith => __$$KitchenSinkTwinNormal_PrimitivesImplCopyWithImpl<
+          _$KitchenSinkTwinNormal_PrimitivesImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1791,10 +1811,10 @@ class _$KitchenSink_PrimitivesImpl implements KitchenSink_Primitives {
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean)
         primitives,
-    required TResult Function(int field0, KitchenSink field1) nested,
+    required TResult Function(int field0, KitchenSinkTwinNormal field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
-    required TResult Function(Weekdays field0) enums,
+    required TResult Function(WeekdaysTwinNormal field0) enums,
   }) {
     return primitives(int32, float64, boolean);
   }
@@ -1804,10 +1824,10 @@ class _$KitchenSink_PrimitivesImpl implements KitchenSink_Primitives {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
     TResult? Function(int int32, double float64, bool boolean)? primitives,
-    TResult? Function(int field0, KitchenSink field1)? nested,
+    TResult? Function(int field0, KitchenSinkTwinNormal field1)? nested,
     TResult? Function(int? field0, int? field1)? optional,
     TResult? Function(Uint8List field0)? buffer,
-    TResult? Function(Weekdays field0)? enums,
+    TResult? Function(WeekdaysTwinNormal field0)? enums,
   }) {
     return primitives?.call(int32, float64, boolean);
   }
@@ -1817,10 +1837,10 @@ class _$KitchenSink_PrimitivesImpl implements KitchenSink_Primitives {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(int field0, KitchenSink field1)? nested,
+    TResult Function(int field0, KitchenSinkTwinNormal field1)? nested,
     TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
-    TResult Function(Weekdays field0)? enums,
+    TResult Function(WeekdaysTwinNormal field0)? enums,
     required TResult orElse(),
   }) {
     if (primitives != null) {
@@ -1832,12 +1852,13 @@ class _$KitchenSink_PrimitivesImpl implements KitchenSink_Primitives {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(KitchenSink_Empty value) empty,
-    required TResult Function(KitchenSink_Primitives value) primitives,
-    required TResult Function(KitchenSink_Nested value) nested,
-    required TResult Function(KitchenSink_Optional value) optional,
-    required TResult Function(KitchenSink_Buffer value) buffer,
-    required TResult Function(KitchenSink_Enums value) enums,
+    required TResult Function(KitchenSinkTwinNormal_Empty value) empty,
+    required TResult Function(KitchenSinkTwinNormal_Primitives value)
+        primitives,
+    required TResult Function(KitchenSinkTwinNormal_Nested value) nested,
+    required TResult Function(KitchenSinkTwinNormal_Optional value) optional,
+    required TResult Function(KitchenSinkTwinNormal_Buffer value) buffer,
+    required TResult Function(KitchenSinkTwinNormal_Enums value) enums,
   }) {
     return primitives(this);
   }
@@ -1845,12 +1866,12 @@ class _$KitchenSink_PrimitivesImpl implements KitchenSink_Primitives {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(KitchenSink_Empty value)? empty,
-    TResult? Function(KitchenSink_Primitives value)? primitives,
-    TResult? Function(KitchenSink_Nested value)? nested,
-    TResult? Function(KitchenSink_Optional value)? optional,
-    TResult? Function(KitchenSink_Buffer value)? buffer,
-    TResult? Function(KitchenSink_Enums value)? enums,
+    TResult? Function(KitchenSinkTwinNormal_Empty value)? empty,
+    TResult? Function(KitchenSinkTwinNormal_Primitives value)? primitives,
+    TResult? Function(KitchenSinkTwinNormal_Nested value)? nested,
+    TResult? Function(KitchenSinkTwinNormal_Optional value)? optional,
+    TResult? Function(KitchenSinkTwinNormal_Buffer value)? buffer,
+    TResult? Function(KitchenSinkTwinNormal_Enums value)? enums,
   }) {
     return primitives?.call(this);
   }
@@ -1858,12 +1879,12 @@ class _$KitchenSink_PrimitivesImpl implements KitchenSink_Primitives {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(KitchenSink_Empty value)? empty,
-    TResult Function(KitchenSink_Primitives value)? primitives,
-    TResult Function(KitchenSink_Nested value)? nested,
-    TResult Function(KitchenSink_Optional value)? optional,
-    TResult Function(KitchenSink_Buffer value)? buffer,
-    TResult Function(KitchenSink_Enums value)? enums,
+    TResult Function(KitchenSinkTwinNormal_Empty value)? empty,
+    TResult Function(KitchenSinkTwinNormal_Primitives value)? primitives,
+    TResult Function(KitchenSinkTwinNormal_Nested value)? nested,
+    TResult Function(KitchenSinkTwinNormal_Optional value)? optional,
+    TResult Function(KitchenSinkTwinNormal_Buffer value)? buffer,
+    TResult Function(KitchenSinkTwinNormal_Enums value)? enums,
     required TResult orElse(),
   }) {
     if (primitives != null) {
@@ -1873,38 +1894,43 @@ class _$KitchenSink_PrimitivesImpl implements KitchenSink_Primitives {
   }
 }
 
-abstract class KitchenSink_Primitives implements KitchenSink {
-  const factory KitchenSink_Primitives(
+abstract class KitchenSinkTwinNormal_Primitives
+    implements KitchenSinkTwinNormal {
+  const factory KitchenSinkTwinNormal_Primitives(
       {final int int32,
       required final double float64,
-      required final bool boolean}) = _$KitchenSink_PrimitivesImpl;
+      required final bool boolean}) = _$KitchenSinkTwinNormal_PrimitivesImpl;
 
   /// Dart field comment
   int get int32;
   double get float64;
   bool get boolean;
   @JsonKey(ignore: true)
-  _$$KitchenSink_PrimitivesImplCopyWith<_$KitchenSink_PrimitivesImpl>
+  _$$KitchenSinkTwinNormal_PrimitivesImplCopyWith<
+          _$KitchenSinkTwinNormal_PrimitivesImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$KitchenSink_NestedImplCopyWith<$Res> {
-  factory _$$KitchenSink_NestedImplCopyWith(_$KitchenSink_NestedImpl value,
-          $Res Function(_$KitchenSink_NestedImpl) then) =
-      __$$KitchenSink_NestedImplCopyWithImpl<$Res>;
+abstract class _$$KitchenSinkTwinNormal_NestedImplCopyWith<$Res> {
+  factory _$$KitchenSinkTwinNormal_NestedImplCopyWith(
+          _$KitchenSinkTwinNormal_NestedImpl value,
+          $Res Function(_$KitchenSinkTwinNormal_NestedImpl) then) =
+      __$$KitchenSinkTwinNormal_NestedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int field0, KitchenSink field1});
+  $Res call({int field0, KitchenSinkTwinNormal field1});
 
-  $KitchenSinkCopyWith<$Res> get field1;
+  $KitchenSinkTwinNormalCopyWith<$Res> get field1;
 }
 
 /// @nodoc
-class __$$KitchenSink_NestedImplCopyWithImpl<$Res>
-    extends _$KitchenSinkCopyWithImpl<$Res, _$KitchenSink_NestedImpl>
-    implements _$$KitchenSink_NestedImplCopyWith<$Res> {
-  __$$KitchenSink_NestedImplCopyWithImpl(_$KitchenSink_NestedImpl _value,
-      $Res Function(_$KitchenSink_NestedImpl) _then)
+class __$$KitchenSinkTwinNormal_NestedImplCopyWithImpl<$Res>
+    extends _$KitchenSinkTwinNormalCopyWithImpl<$Res,
+        _$KitchenSinkTwinNormal_NestedImpl>
+    implements _$$KitchenSinkTwinNormal_NestedImplCopyWith<$Res> {
+  __$$KitchenSinkTwinNormal_NestedImplCopyWithImpl(
+      _$KitchenSinkTwinNormal_NestedImpl _value,
+      $Res Function(_$KitchenSinkTwinNormal_NestedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1913,7 +1939,7 @@ class __$$KitchenSink_NestedImplCopyWithImpl<$Res>
     Object? field0 = null,
     Object? field1 = null,
   }) {
-    return _then(_$KitchenSink_NestedImpl(
+    return _then(_$KitchenSinkTwinNormal_NestedImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -1921,14 +1947,14 @@ class __$$KitchenSink_NestedImplCopyWithImpl<$Res>
       null == field1
           ? _value.field1
           : field1 // ignore: cast_nullable_to_non_nullable
-              as KitchenSink,
+              as KitchenSinkTwinNormal,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $KitchenSinkCopyWith<$Res> get field1 {
-    return $KitchenSinkCopyWith<$Res>(_value.field1, (value) {
+  $KitchenSinkTwinNormalCopyWith<$Res> get field1 {
+    return $KitchenSinkTwinNormalCopyWith<$Res>(_value.field1, (value) {
       return _then(_value.copyWith(field1: value));
     });
   }
@@ -1936,26 +1962,27 @@ class __$$KitchenSink_NestedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$KitchenSink_NestedImpl implements KitchenSink_Nested {
-  const _$KitchenSink_NestedImpl(this.field0,
-      [this.field1 = const KitchenSink.empty()]);
+class _$KitchenSinkTwinNormal_NestedImpl
+    implements KitchenSinkTwinNormal_Nested {
+  const _$KitchenSinkTwinNormal_NestedImpl(this.field0,
+      [this.field1 = const KitchenSinkTwinNormal.empty()]);
 
   @override
   final int field0;
   @override
   @JsonKey()
-  final KitchenSink field1;
+  final KitchenSinkTwinNormal field1;
 
   @override
   String toString() {
-    return 'KitchenSink.nested(field0: $field0, field1: $field1)';
+    return 'KitchenSinkTwinNormal.nested(field0: $field0, field1: $field1)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$KitchenSink_NestedImpl &&
+            other is _$KitchenSinkTwinNormal_NestedImpl &&
             (identical(other.field0, field0) || other.field0 == field0) &&
             (identical(other.field1, field1) || other.field1 == field1));
   }
@@ -1966,9 +1993,10 @@ class _$KitchenSink_NestedImpl implements KitchenSink_Nested {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$KitchenSink_NestedImplCopyWith<_$KitchenSink_NestedImpl> get copyWith =>
-      __$$KitchenSink_NestedImplCopyWithImpl<_$KitchenSink_NestedImpl>(
-          this, _$identity);
+  _$$KitchenSinkTwinNormal_NestedImplCopyWith<
+          _$KitchenSinkTwinNormal_NestedImpl>
+      get copyWith => __$$KitchenSinkTwinNormal_NestedImplCopyWithImpl<
+          _$KitchenSinkTwinNormal_NestedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1976,10 +2004,10 @@ class _$KitchenSink_NestedImpl implements KitchenSink_Nested {
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean)
         primitives,
-    required TResult Function(int field0, KitchenSink field1) nested,
+    required TResult Function(int field0, KitchenSinkTwinNormal field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
-    required TResult Function(Weekdays field0) enums,
+    required TResult Function(WeekdaysTwinNormal field0) enums,
   }) {
     return nested(field0, field1);
   }
@@ -1989,10 +2017,10 @@ class _$KitchenSink_NestedImpl implements KitchenSink_Nested {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
     TResult? Function(int int32, double float64, bool boolean)? primitives,
-    TResult? Function(int field0, KitchenSink field1)? nested,
+    TResult? Function(int field0, KitchenSinkTwinNormal field1)? nested,
     TResult? Function(int? field0, int? field1)? optional,
     TResult? Function(Uint8List field0)? buffer,
-    TResult? Function(Weekdays field0)? enums,
+    TResult? Function(WeekdaysTwinNormal field0)? enums,
   }) {
     return nested?.call(field0, field1);
   }
@@ -2002,10 +2030,10 @@ class _$KitchenSink_NestedImpl implements KitchenSink_Nested {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(int field0, KitchenSink field1)? nested,
+    TResult Function(int field0, KitchenSinkTwinNormal field1)? nested,
     TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
-    TResult Function(Weekdays field0)? enums,
+    TResult Function(WeekdaysTwinNormal field0)? enums,
     required TResult orElse(),
   }) {
     if (nested != null) {
@@ -2017,12 +2045,13 @@ class _$KitchenSink_NestedImpl implements KitchenSink_Nested {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(KitchenSink_Empty value) empty,
-    required TResult Function(KitchenSink_Primitives value) primitives,
-    required TResult Function(KitchenSink_Nested value) nested,
-    required TResult Function(KitchenSink_Optional value) optional,
-    required TResult Function(KitchenSink_Buffer value) buffer,
-    required TResult Function(KitchenSink_Enums value) enums,
+    required TResult Function(KitchenSinkTwinNormal_Empty value) empty,
+    required TResult Function(KitchenSinkTwinNormal_Primitives value)
+        primitives,
+    required TResult Function(KitchenSinkTwinNormal_Nested value) nested,
+    required TResult Function(KitchenSinkTwinNormal_Optional value) optional,
+    required TResult Function(KitchenSinkTwinNormal_Buffer value) buffer,
+    required TResult Function(KitchenSinkTwinNormal_Enums value) enums,
   }) {
     return nested(this);
   }
@@ -2030,12 +2059,12 @@ class _$KitchenSink_NestedImpl implements KitchenSink_Nested {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(KitchenSink_Empty value)? empty,
-    TResult? Function(KitchenSink_Primitives value)? primitives,
-    TResult? Function(KitchenSink_Nested value)? nested,
-    TResult? Function(KitchenSink_Optional value)? optional,
-    TResult? Function(KitchenSink_Buffer value)? buffer,
-    TResult? Function(KitchenSink_Enums value)? enums,
+    TResult? Function(KitchenSinkTwinNormal_Empty value)? empty,
+    TResult? Function(KitchenSinkTwinNormal_Primitives value)? primitives,
+    TResult? Function(KitchenSinkTwinNormal_Nested value)? nested,
+    TResult? Function(KitchenSinkTwinNormal_Optional value)? optional,
+    TResult? Function(KitchenSinkTwinNormal_Buffer value)? buffer,
+    TResult? Function(KitchenSinkTwinNormal_Enums value)? enums,
   }) {
     return nested?.call(this);
   }
@@ -2043,12 +2072,12 @@ class _$KitchenSink_NestedImpl implements KitchenSink_Nested {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(KitchenSink_Empty value)? empty,
-    TResult Function(KitchenSink_Primitives value)? primitives,
-    TResult Function(KitchenSink_Nested value)? nested,
-    TResult Function(KitchenSink_Optional value)? optional,
-    TResult Function(KitchenSink_Buffer value)? buffer,
-    TResult Function(KitchenSink_Enums value)? enums,
+    TResult Function(KitchenSinkTwinNormal_Empty value)? empty,
+    TResult Function(KitchenSinkTwinNormal_Primitives value)? primitives,
+    TResult Function(KitchenSinkTwinNormal_Nested value)? nested,
+    TResult Function(KitchenSinkTwinNormal_Optional value)? optional,
+    TResult Function(KitchenSinkTwinNormal_Buffer value)? buffer,
+    TResult Function(KitchenSinkTwinNormal_Enums value)? enums,
     required TResult orElse(),
   }) {
     if (nested != null) {
@@ -2058,32 +2087,37 @@ class _$KitchenSink_NestedImpl implements KitchenSink_Nested {
   }
 }
 
-abstract class KitchenSink_Nested implements KitchenSink {
-  const factory KitchenSink_Nested(final int field0,
-      [final KitchenSink field1]) = _$KitchenSink_NestedImpl;
+abstract class KitchenSinkTwinNormal_Nested implements KitchenSinkTwinNormal {
+  const factory KitchenSinkTwinNormal_Nested(final int field0,
+          [final KitchenSinkTwinNormal field1]) =
+      _$KitchenSinkTwinNormal_NestedImpl;
 
   int get field0;
-  KitchenSink get field1;
+  KitchenSinkTwinNormal get field1;
   @JsonKey(ignore: true)
-  _$$KitchenSink_NestedImplCopyWith<_$KitchenSink_NestedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$KitchenSinkTwinNormal_NestedImplCopyWith<
+          _$KitchenSinkTwinNormal_NestedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$KitchenSink_OptionalImplCopyWith<$Res> {
-  factory _$$KitchenSink_OptionalImplCopyWith(_$KitchenSink_OptionalImpl value,
-          $Res Function(_$KitchenSink_OptionalImpl) then) =
-      __$$KitchenSink_OptionalImplCopyWithImpl<$Res>;
+abstract class _$$KitchenSinkTwinNormal_OptionalImplCopyWith<$Res> {
+  factory _$$KitchenSinkTwinNormal_OptionalImplCopyWith(
+          _$KitchenSinkTwinNormal_OptionalImpl value,
+          $Res Function(_$KitchenSinkTwinNormal_OptionalImpl) then) =
+      __$$KitchenSinkTwinNormal_OptionalImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int? field0, int? field1});
 }
 
 /// @nodoc
-class __$$KitchenSink_OptionalImplCopyWithImpl<$Res>
-    extends _$KitchenSinkCopyWithImpl<$Res, _$KitchenSink_OptionalImpl>
-    implements _$$KitchenSink_OptionalImplCopyWith<$Res> {
-  __$$KitchenSink_OptionalImplCopyWithImpl(_$KitchenSink_OptionalImpl _value,
-      $Res Function(_$KitchenSink_OptionalImpl) _then)
+class __$$KitchenSinkTwinNormal_OptionalImplCopyWithImpl<$Res>
+    extends _$KitchenSinkTwinNormalCopyWithImpl<$Res,
+        _$KitchenSinkTwinNormal_OptionalImpl>
+    implements _$$KitchenSinkTwinNormal_OptionalImplCopyWith<$Res> {
+  __$$KitchenSinkTwinNormal_OptionalImplCopyWithImpl(
+      _$KitchenSinkTwinNormal_OptionalImpl _value,
+      $Res Function(_$KitchenSinkTwinNormal_OptionalImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2092,7 +2126,7 @@ class __$$KitchenSink_OptionalImplCopyWithImpl<$Res>
     Object? field0 = freezed,
     Object? field1 = freezed,
   }) {
-    return _then(_$KitchenSink_OptionalImpl(
+    return _then(_$KitchenSinkTwinNormal_OptionalImpl(
       freezed == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -2107,8 +2141,9 @@ class __$$KitchenSink_OptionalImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$KitchenSink_OptionalImpl implements KitchenSink_Optional {
-  const _$KitchenSink_OptionalImpl([this.field0 = -1, this.field1]);
+class _$KitchenSinkTwinNormal_OptionalImpl
+    implements KitchenSinkTwinNormal_Optional {
+  const _$KitchenSinkTwinNormal_OptionalImpl([this.field0 = -1, this.field1]);
 
   /// Comment on anonymous field
   @override
@@ -2119,14 +2154,14 @@ class _$KitchenSink_OptionalImpl implements KitchenSink_Optional {
 
   @override
   String toString() {
-    return 'KitchenSink.optional(field0: $field0, field1: $field1)';
+    return 'KitchenSinkTwinNormal.optional(field0: $field0, field1: $field1)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$KitchenSink_OptionalImpl &&
+            other is _$KitchenSinkTwinNormal_OptionalImpl &&
             (identical(other.field0, field0) || other.field0 == field0) &&
             (identical(other.field1, field1) || other.field1 == field1));
   }
@@ -2137,10 +2172,10 @@ class _$KitchenSink_OptionalImpl implements KitchenSink_Optional {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$KitchenSink_OptionalImplCopyWith<_$KitchenSink_OptionalImpl>
-      get copyWith =>
-          __$$KitchenSink_OptionalImplCopyWithImpl<_$KitchenSink_OptionalImpl>(
-              this, _$identity);
+  _$$KitchenSinkTwinNormal_OptionalImplCopyWith<
+          _$KitchenSinkTwinNormal_OptionalImpl>
+      get copyWith => __$$KitchenSinkTwinNormal_OptionalImplCopyWithImpl<
+          _$KitchenSinkTwinNormal_OptionalImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2148,10 +2183,10 @@ class _$KitchenSink_OptionalImpl implements KitchenSink_Optional {
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean)
         primitives,
-    required TResult Function(int field0, KitchenSink field1) nested,
+    required TResult Function(int field0, KitchenSinkTwinNormal field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
-    required TResult Function(Weekdays field0) enums,
+    required TResult Function(WeekdaysTwinNormal field0) enums,
   }) {
     return optional(field0, field1);
   }
@@ -2161,10 +2196,10 @@ class _$KitchenSink_OptionalImpl implements KitchenSink_Optional {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
     TResult? Function(int int32, double float64, bool boolean)? primitives,
-    TResult? Function(int field0, KitchenSink field1)? nested,
+    TResult? Function(int field0, KitchenSinkTwinNormal field1)? nested,
     TResult? Function(int? field0, int? field1)? optional,
     TResult? Function(Uint8List field0)? buffer,
-    TResult? Function(Weekdays field0)? enums,
+    TResult? Function(WeekdaysTwinNormal field0)? enums,
   }) {
     return optional?.call(field0, field1);
   }
@@ -2174,10 +2209,10 @@ class _$KitchenSink_OptionalImpl implements KitchenSink_Optional {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(int field0, KitchenSink field1)? nested,
+    TResult Function(int field0, KitchenSinkTwinNormal field1)? nested,
     TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
-    TResult Function(Weekdays field0)? enums,
+    TResult Function(WeekdaysTwinNormal field0)? enums,
     required TResult orElse(),
   }) {
     if (optional != null) {
@@ -2189,12 +2224,13 @@ class _$KitchenSink_OptionalImpl implements KitchenSink_Optional {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(KitchenSink_Empty value) empty,
-    required TResult Function(KitchenSink_Primitives value) primitives,
-    required TResult Function(KitchenSink_Nested value) nested,
-    required TResult Function(KitchenSink_Optional value) optional,
-    required TResult Function(KitchenSink_Buffer value) buffer,
-    required TResult Function(KitchenSink_Enums value) enums,
+    required TResult Function(KitchenSinkTwinNormal_Empty value) empty,
+    required TResult Function(KitchenSinkTwinNormal_Primitives value)
+        primitives,
+    required TResult Function(KitchenSinkTwinNormal_Nested value) nested,
+    required TResult Function(KitchenSinkTwinNormal_Optional value) optional,
+    required TResult Function(KitchenSinkTwinNormal_Buffer value) buffer,
+    required TResult Function(KitchenSinkTwinNormal_Enums value) enums,
   }) {
     return optional(this);
   }
@@ -2202,12 +2238,12 @@ class _$KitchenSink_OptionalImpl implements KitchenSink_Optional {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(KitchenSink_Empty value)? empty,
-    TResult? Function(KitchenSink_Primitives value)? primitives,
-    TResult? Function(KitchenSink_Nested value)? nested,
-    TResult? Function(KitchenSink_Optional value)? optional,
-    TResult? Function(KitchenSink_Buffer value)? buffer,
-    TResult? Function(KitchenSink_Enums value)? enums,
+    TResult? Function(KitchenSinkTwinNormal_Empty value)? empty,
+    TResult? Function(KitchenSinkTwinNormal_Primitives value)? primitives,
+    TResult? Function(KitchenSinkTwinNormal_Nested value)? nested,
+    TResult? Function(KitchenSinkTwinNormal_Optional value)? optional,
+    TResult? Function(KitchenSinkTwinNormal_Buffer value)? buffer,
+    TResult? Function(KitchenSinkTwinNormal_Enums value)? enums,
   }) {
     return optional?.call(this);
   }
@@ -2215,12 +2251,12 @@ class _$KitchenSink_OptionalImpl implements KitchenSink_Optional {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(KitchenSink_Empty value)? empty,
-    TResult Function(KitchenSink_Primitives value)? primitives,
-    TResult Function(KitchenSink_Nested value)? nested,
-    TResult Function(KitchenSink_Optional value)? optional,
-    TResult Function(KitchenSink_Buffer value)? buffer,
-    TResult Function(KitchenSink_Enums value)? enums,
+    TResult Function(KitchenSinkTwinNormal_Empty value)? empty,
+    TResult Function(KitchenSinkTwinNormal_Primitives value)? primitives,
+    TResult Function(KitchenSinkTwinNormal_Nested value)? nested,
+    TResult Function(KitchenSinkTwinNormal_Optional value)? optional,
+    TResult Function(KitchenSinkTwinNormal_Buffer value)? buffer,
+    TResult Function(KitchenSinkTwinNormal_Enums value)? enums,
     required TResult orElse(),
   }) {
     if (optional != null) {
@@ -2230,33 +2266,38 @@ class _$KitchenSink_OptionalImpl implements KitchenSink_Optional {
   }
 }
 
-abstract class KitchenSink_Optional implements KitchenSink {
-  const factory KitchenSink_Optional([final int? field0, final int? field1]) =
-      _$KitchenSink_OptionalImpl;
+abstract class KitchenSinkTwinNormal_Optional implements KitchenSinkTwinNormal {
+  const factory KitchenSinkTwinNormal_Optional(
+      [final int? field0,
+      final int? field1]) = _$KitchenSinkTwinNormal_OptionalImpl;
 
   /// Comment on anonymous field
   int? get field0;
   int? get field1;
   @JsonKey(ignore: true)
-  _$$KitchenSink_OptionalImplCopyWith<_$KitchenSink_OptionalImpl>
+  _$$KitchenSinkTwinNormal_OptionalImplCopyWith<
+          _$KitchenSinkTwinNormal_OptionalImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$KitchenSink_BufferImplCopyWith<$Res> {
-  factory _$$KitchenSink_BufferImplCopyWith(_$KitchenSink_BufferImpl value,
-          $Res Function(_$KitchenSink_BufferImpl) then) =
-      __$$KitchenSink_BufferImplCopyWithImpl<$Res>;
+abstract class _$$KitchenSinkTwinNormal_BufferImplCopyWith<$Res> {
+  factory _$$KitchenSinkTwinNormal_BufferImplCopyWith(
+          _$KitchenSinkTwinNormal_BufferImpl value,
+          $Res Function(_$KitchenSinkTwinNormal_BufferImpl) then) =
+      __$$KitchenSinkTwinNormal_BufferImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Uint8List field0});
 }
 
 /// @nodoc
-class __$$KitchenSink_BufferImplCopyWithImpl<$Res>
-    extends _$KitchenSinkCopyWithImpl<$Res, _$KitchenSink_BufferImpl>
-    implements _$$KitchenSink_BufferImplCopyWith<$Res> {
-  __$$KitchenSink_BufferImplCopyWithImpl(_$KitchenSink_BufferImpl _value,
-      $Res Function(_$KitchenSink_BufferImpl) _then)
+class __$$KitchenSinkTwinNormal_BufferImplCopyWithImpl<$Res>
+    extends _$KitchenSinkTwinNormalCopyWithImpl<$Res,
+        _$KitchenSinkTwinNormal_BufferImpl>
+    implements _$$KitchenSinkTwinNormal_BufferImplCopyWith<$Res> {
+  __$$KitchenSinkTwinNormal_BufferImplCopyWithImpl(
+      _$KitchenSinkTwinNormal_BufferImpl _value,
+      $Res Function(_$KitchenSinkTwinNormal_BufferImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2264,7 +2305,7 @@ class __$$KitchenSink_BufferImplCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$KitchenSink_BufferImpl(
+    return _then(_$KitchenSinkTwinNormal_BufferImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -2275,22 +2316,23 @@ class __$$KitchenSink_BufferImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$KitchenSink_BufferImpl implements KitchenSink_Buffer {
-  const _$KitchenSink_BufferImpl(this.field0);
+class _$KitchenSinkTwinNormal_BufferImpl
+    implements KitchenSinkTwinNormal_Buffer {
+  const _$KitchenSinkTwinNormal_BufferImpl(this.field0);
 
   @override
   final Uint8List field0;
 
   @override
   String toString() {
-    return 'KitchenSink.buffer(field0: $field0)';
+    return 'KitchenSinkTwinNormal.buffer(field0: $field0)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$KitchenSink_BufferImpl &&
+            other is _$KitchenSinkTwinNormal_BufferImpl &&
             const DeepCollectionEquality().equals(other.field0, field0));
   }
 
@@ -2301,9 +2343,10 @@ class _$KitchenSink_BufferImpl implements KitchenSink_Buffer {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$KitchenSink_BufferImplCopyWith<_$KitchenSink_BufferImpl> get copyWith =>
-      __$$KitchenSink_BufferImplCopyWithImpl<_$KitchenSink_BufferImpl>(
-          this, _$identity);
+  _$$KitchenSinkTwinNormal_BufferImplCopyWith<
+          _$KitchenSinkTwinNormal_BufferImpl>
+      get copyWith => __$$KitchenSinkTwinNormal_BufferImplCopyWithImpl<
+          _$KitchenSinkTwinNormal_BufferImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2311,10 +2354,10 @@ class _$KitchenSink_BufferImpl implements KitchenSink_Buffer {
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean)
         primitives,
-    required TResult Function(int field0, KitchenSink field1) nested,
+    required TResult Function(int field0, KitchenSinkTwinNormal field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
-    required TResult Function(Weekdays field0) enums,
+    required TResult Function(WeekdaysTwinNormal field0) enums,
   }) {
     return buffer(field0);
   }
@@ -2324,10 +2367,10 @@ class _$KitchenSink_BufferImpl implements KitchenSink_Buffer {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
     TResult? Function(int int32, double float64, bool boolean)? primitives,
-    TResult? Function(int field0, KitchenSink field1)? nested,
+    TResult? Function(int field0, KitchenSinkTwinNormal field1)? nested,
     TResult? Function(int? field0, int? field1)? optional,
     TResult? Function(Uint8List field0)? buffer,
-    TResult? Function(Weekdays field0)? enums,
+    TResult? Function(WeekdaysTwinNormal field0)? enums,
   }) {
     return buffer?.call(field0);
   }
@@ -2337,10 +2380,10 @@ class _$KitchenSink_BufferImpl implements KitchenSink_Buffer {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(int field0, KitchenSink field1)? nested,
+    TResult Function(int field0, KitchenSinkTwinNormal field1)? nested,
     TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
-    TResult Function(Weekdays field0)? enums,
+    TResult Function(WeekdaysTwinNormal field0)? enums,
     required TResult orElse(),
   }) {
     if (buffer != null) {
@@ -2352,12 +2395,13 @@ class _$KitchenSink_BufferImpl implements KitchenSink_Buffer {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(KitchenSink_Empty value) empty,
-    required TResult Function(KitchenSink_Primitives value) primitives,
-    required TResult Function(KitchenSink_Nested value) nested,
-    required TResult Function(KitchenSink_Optional value) optional,
-    required TResult Function(KitchenSink_Buffer value) buffer,
-    required TResult Function(KitchenSink_Enums value) enums,
+    required TResult Function(KitchenSinkTwinNormal_Empty value) empty,
+    required TResult Function(KitchenSinkTwinNormal_Primitives value)
+        primitives,
+    required TResult Function(KitchenSinkTwinNormal_Nested value) nested,
+    required TResult Function(KitchenSinkTwinNormal_Optional value) optional,
+    required TResult Function(KitchenSinkTwinNormal_Buffer value) buffer,
+    required TResult Function(KitchenSinkTwinNormal_Enums value) enums,
   }) {
     return buffer(this);
   }
@@ -2365,12 +2409,12 @@ class _$KitchenSink_BufferImpl implements KitchenSink_Buffer {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(KitchenSink_Empty value)? empty,
-    TResult? Function(KitchenSink_Primitives value)? primitives,
-    TResult? Function(KitchenSink_Nested value)? nested,
-    TResult? Function(KitchenSink_Optional value)? optional,
-    TResult? Function(KitchenSink_Buffer value)? buffer,
-    TResult? Function(KitchenSink_Enums value)? enums,
+    TResult? Function(KitchenSinkTwinNormal_Empty value)? empty,
+    TResult? Function(KitchenSinkTwinNormal_Primitives value)? primitives,
+    TResult? Function(KitchenSinkTwinNormal_Nested value)? nested,
+    TResult? Function(KitchenSinkTwinNormal_Optional value)? optional,
+    TResult? Function(KitchenSinkTwinNormal_Buffer value)? buffer,
+    TResult? Function(KitchenSinkTwinNormal_Enums value)? enums,
   }) {
     return buffer?.call(this);
   }
@@ -2378,12 +2422,12 @@ class _$KitchenSink_BufferImpl implements KitchenSink_Buffer {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(KitchenSink_Empty value)? empty,
-    TResult Function(KitchenSink_Primitives value)? primitives,
-    TResult Function(KitchenSink_Nested value)? nested,
-    TResult Function(KitchenSink_Optional value)? optional,
-    TResult Function(KitchenSink_Buffer value)? buffer,
-    TResult Function(KitchenSink_Enums value)? enums,
+    TResult Function(KitchenSinkTwinNormal_Empty value)? empty,
+    TResult Function(KitchenSinkTwinNormal_Primitives value)? primitives,
+    TResult Function(KitchenSinkTwinNormal_Nested value)? nested,
+    TResult Function(KitchenSinkTwinNormal_Optional value)? optional,
+    TResult Function(KitchenSinkTwinNormal_Buffer value)? buffer,
+    TResult Function(KitchenSinkTwinNormal_Enums value)? enums,
     required TResult orElse(),
   }) {
     if (buffer != null) {
@@ -2393,31 +2437,35 @@ class _$KitchenSink_BufferImpl implements KitchenSink_Buffer {
   }
 }
 
-abstract class KitchenSink_Buffer implements KitchenSink {
-  const factory KitchenSink_Buffer(final Uint8List field0) =
-      _$KitchenSink_BufferImpl;
+abstract class KitchenSinkTwinNormal_Buffer implements KitchenSinkTwinNormal {
+  const factory KitchenSinkTwinNormal_Buffer(final Uint8List field0) =
+      _$KitchenSinkTwinNormal_BufferImpl;
 
   Uint8List get field0;
   @JsonKey(ignore: true)
-  _$$KitchenSink_BufferImplCopyWith<_$KitchenSink_BufferImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$KitchenSinkTwinNormal_BufferImplCopyWith<
+          _$KitchenSinkTwinNormal_BufferImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$KitchenSink_EnumsImplCopyWith<$Res> {
-  factory _$$KitchenSink_EnumsImplCopyWith(_$KitchenSink_EnumsImpl value,
-          $Res Function(_$KitchenSink_EnumsImpl) then) =
-      __$$KitchenSink_EnumsImplCopyWithImpl<$Res>;
+abstract class _$$KitchenSinkTwinNormal_EnumsImplCopyWith<$Res> {
+  factory _$$KitchenSinkTwinNormal_EnumsImplCopyWith(
+          _$KitchenSinkTwinNormal_EnumsImpl value,
+          $Res Function(_$KitchenSinkTwinNormal_EnumsImpl) then) =
+      __$$KitchenSinkTwinNormal_EnumsImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Weekdays field0});
+  $Res call({WeekdaysTwinNormal field0});
 }
 
 /// @nodoc
-class __$$KitchenSink_EnumsImplCopyWithImpl<$Res>
-    extends _$KitchenSinkCopyWithImpl<$Res, _$KitchenSink_EnumsImpl>
-    implements _$$KitchenSink_EnumsImplCopyWith<$Res> {
-  __$$KitchenSink_EnumsImplCopyWithImpl(_$KitchenSink_EnumsImpl _value,
-      $Res Function(_$KitchenSink_EnumsImpl) _then)
+class __$$KitchenSinkTwinNormal_EnumsImplCopyWithImpl<$Res>
+    extends _$KitchenSinkTwinNormalCopyWithImpl<$Res,
+        _$KitchenSinkTwinNormal_EnumsImpl>
+    implements _$$KitchenSinkTwinNormal_EnumsImplCopyWith<$Res> {
+  __$$KitchenSinkTwinNormal_EnumsImplCopyWithImpl(
+      _$KitchenSinkTwinNormal_EnumsImpl _value,
+      $Res Function(_$KitchenSinkTwinNormal_EnumsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2425,34 +2473,35 @@ class __$$KitchenSink_EnumsImplCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$KitchenSink_EnumsImpl(
+    return _then(_$KitchenSinkTwinNormal_EnumsImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as Weekdays,
+              as WeekdaysTwinNormal,
     ));
   }
 }
 
 /// @nodoc
 
-class _$KitchenSink_EnumsImpl implements KitchenSink_Enums {
-  const _$KitchenSink_EnumsImpl([this.field0 = Weekdays.sunday]);
+class _$KitchenSinkTwinNormal_EnumsImpl implements KitchenSinkTwinNormal_Enums {
+  const _$KitchenSinkTwinNormal_EnumsImpl(
+      [this.field0 = WeekdaysTwinNormal.sunday]);
 
   @override
   @JsonKey()
-  final Weekdays field0;
+  final WeekdaysTwinNormal field0;
 
   @override
   String toString() {
-    return 'KitchenSink.enums(field0: $field0)';
+    return 'KitchenSinkTwinNormal.enums(field0: $field0)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$KitchenSink_EnumsImpl &&
+            other is _$KitchenSinkTwinNormal_EnumsImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -2462,9 +2511,9 @@ class _$KitchenSink_EnumsImpl implements KitchenSink_Enums {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$KitchenSink_EnumsImplCopyWith<_$KitchenSink_EnumsImpl> get copyWith =>
-      __$$KitchenSink_EnumsImplCopyWithImpl<_$KitchenSink_EnumsImpl>(
-          this, _$identity);
+  _$$KitchenSinkTwinNormal_EnumsImplCopyWith<_$KitchenSinkTwinNormal_EnumsImpl>
+      get copyWith => __$$KitchenSinkTwinNormal_EnumsImplCopyWithImpl<
+          _$KitchenSinkTwinNormal_EnumsImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2472,10 +2521,10 @@ class _$KitchenSink_EnumsImpl implements KitchenSink_Enums {
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean)
         primitives,
-    required TResult Function(int field0, KitchenSink field1) nested,
+    required TResult Function(int field0, KitchenSinkTwinNormal field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
-    required TResult Function(Weekdays field0) enums,
+    required TResult Function(WeekdaysTwinNormal field0) enums,
   }) {
     return enums(field0);
   }
@@ -2485,10 +2534,10 @@ class _$KitchenSink_EnumsImpl implements KitchenSink_Enums {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
     TResult? Function(int int32, double float64, bool boolean)? primitives,
-    TResult? Function(int field0, KitchenSink field1)? nested,
+    TResult? Function(int field0, KitchenSinkTwinNormal field1)? nested,
     TResult? Function(int? field0, int? field1)? optional,
     TResult? Function(Uint8List field0)? buffer,
-    TResult? Function(Weekdays field0)? enums,
+    TResult? Function(WeekdaysTwinNormal field0)? enums,
   }) {
     return enums?.call(field0);
   }
@@ -2498,10 +2547,10 @@ class _$KitchenSink_EnumsImpl implements KitchenSink_Enums {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function(int int32, double float64, bool boolean)? primitives,
-    TResult Function(int field0, KitchenSink field1)? nested,
+    TResult Function(int field0, KitchenSinkTwinNormal field1)? nested,
     TResult Function(int? field0, int? field1)? optional,
     TResult Function(Uint8List field0)? buffer,
-    TResult Function(Weekdays field0)? enums,
+    TResult Function(WeekdaysTwinNormal field0)? enums,
     required TResult orElse(),
   }) {
     if (enums != null) {
@@ -2513,12 +2562,13 @@ class _$KitchenSink_EnumsImpl implements KitchenSink_Enums {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(KitchenSink_Empty value) empty,
-    required TResult Function(KitchenSink_Primitives value) primitives,
-    required TResult Function(KitchenSink_Nested value) nested,
-    required TResult Function(KitchenSink_Optional value) optional,
-    required TResult Function(KitchenSink_Buffer value) buffer,
-    required TResult Function(KitchenSink_Enums value) enums,
+    required TResult Function(KitchenSinkTwinNormal_Empty value) empty,
+    required TResult Function(KitchenSinkTwinNormal_Primitives value)
+        primitives,
+    required TResult Function(KitchenSinkTwinNormal_Nested value) nested,
+    required TResult Function(KitchenSinkTwinNormal_Optional value) optional,
+    required TResult Function(KitchenSinkTwinNormal_Buffer value) buffer,
+    required TResult Function(KitchenSinkTwinNormal_Enums value) enums,
   }) {
     return enums(this);
   }
@@ -2526,12 +2576,12 @@ class _$KitchenSink_EnumsImpl implements KitchenSink_Enums {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(KitchenSink_Empty value)? empty,
-    TResult? Function(KitchenSink_Primitives value)? primitives,
-    TResult? Function(KitchenSink_Nested value)? nested,
-    TResult? Function(KitchenSink_Optional value)? optional,
-    TResult? Function(KitchenSink_Buffer value)? buffer,
-    TResult? Function(KitchenSink_Enums value)? enums,
+    TResult? Function(KitchenSinkTwinNormal_Empty value)? empty,
+    TResult? Function(KitchenSinkTwinNormal_Primitives value)? primitives,
+    TResult? Function(KitchenSinkTwinNormal_Nested value)? nested,
+    TResult? Function(KitchenSinkTwinNormal_Optional value)? optional,
+    TResult? Function(KitchenSinkTwinNormal_Buffer value)? buffer,
+    TResult? Function(KitchenSinkTwinNormal_Enums value)? enums,
   }) {
     return enums?.call(this);
   }
@@ -2539,12 +2589,12 @@ class _$KitchenSink_EnumsImpl implements KitchenSink_Enums {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(KitchenSink_Empty value)? empty,
-    TResult Function(KitchenSink_Primitives value)? primitives,
-    TResult Function(KitchenSink_Nested value)? nested,
-    TResult Function(KitchenSink_Optional value)? optional,
-    TResult Function(KitchenSink_Buffer value)? buffer,
-    TResult Function(KitchenSink_Enums value)? enums,
+    TResult Function(KitchenSinkTwinNormal_Empty value)? empty,
+    TResult Function(KitchenSinkTwinNormal_Primitives value)? primitives,
+    TResult Function(KitchenSinkTwinNormal_Nested value)? nested,
+    TResult Function(KitchenSinkTwinNormal_Optional value)? optional,
+    TResult Function(KitchenSinkTwinNormal_Buffer value)? buffer,
+    TResult Function(KitchenSinkTwinNormal_Enums value)? enums,
     required TResult orElse(),
   }) {
     if (enums != null) {
@@ -2554,69 +2604,70 @@ class _$KitchenSink_EnumsImpl implements KitchenSink_Enums {
   }
 }
 
-abstract class KitchenSink_Enums implements KitchenSink {
-  const factory KitchenSink_Enums([final Weekdays field0]) =
-      _$KitchenSink_EnumsImpl;
+abstract class KitchenSinkTwinNormal_Enums implements KitchenSinkTwinNormal {
+  const factory KitchenSinkTwinNormal_Enums([final WeekdaysTwinNormal field0]) =
+      _$KitchenSinkTwinNormal_EnumsImpl;
 
-  Weekdays get field0;
+  WeekdaysTwinNormal get field0;
   @JsonKey(ignore: true)
-  _$$KitchenSink_EnumsImplCopyWith<_$KitchenSink_EnumsImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$KitchenSinkTwinNormal_EnumsImplCopyWith<_$KitchenSinkTwinNormal_EnumsImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$Measure {
+mixin _$MeasureTwinNormal {
   Object get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Speed field0) speed,
-    required TResult Function(Distance field0) distance,
+    required TResult Function(SpeedTwinNormal field0) speed,
+    required TResult Function(DistanceTwinNormal field0) distance,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Speed field0)? speed,
-    TResult? Function(Distance field0)? distance,
+    TResult? Function(SpeedTwinNormal field0)? speed,
+    TResult? Function(DistanceTwinNormal field0)? distance,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Speed field0)? speed,
-    TResult Function(Distance field0)? distance,
+    TResult Function(SpeedTwinNormal field0)? speed,
+    TResult Function(DistanceTwinNormal field0)? distance,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Measure_Speed value) speed,
-    required TResult Function(Measure_Distance value) distance,
+    required TResult Function(MeasureTwinNormal_Speed value) speed,
+    required TResult Function(MeasureTwinNormal_Distance value) distance,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Measure_Speed value)? speed,
-    TResult? Function(Measure_Distance value)? distance,
+    TResult? Function(MeasureTwinNormal_Speed value)? speed,
+    TResult? Function(MeasureTwinNormal_Distance value)? distance,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Measure_Speed value)? speed,
-    TResult Function(Measure_Distance value)? distance,
+    TResult Function(MeasureTwinNormal_Speed value)? speed,
+    TResult Function(MeasureTwinNormal_Distance value)? distance,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MeasureCopyWith<$Res> {
-  factory $MeasureCopyWith(Measure value, $Res Function(Measure) then) =
-      _$MeasureCopyWithImpl<$Res, Measure>;
+abstract class $MeasureTwinNormalCopyWith<$Res> {
+  factory $MeasureTwinNormalCopyWith(
+          MeasureTwinNormal value, $Res Function(MeasureTwinNormal) then) =
+      _$MeasureTwinNormalCopyWithImpl<$Res, MeasureTwinNormal>;
 }
 
 /// @nodoc
-class _$MeasureCopyWithImpl<$Res, $Val extends Measure>
-    implements $MeasureCopyWith<$Res> {
-  _$MeasureCopyWithImpl(this._value, this._then);
+class _$MeasureTwinNormalCopyWithImpl<$Res, $Val extends MeasureTwinNormal>
+    implements $MeasureTwinNormalCopyWith<$Res> {
+  _$MeasureTwinNormalCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -2625,22 +2676,24 @@ class _$MeasureCopyWithImpl<$Res, $Val extends Measure>
 }
 
 /// @nodoc
-abstract class _$$Measure_SpeedImplCopyWith<$Res> {
-  factory _$$Measure_SpeedImplCopyWith(
-          _$Measure_SpeedImpl value, $Res Function(_$Measure_SpeedImpl) then) =
-      __$$Measure_SpeedImplCopyWithImpl<$Res>;
+abstract class _$$MeasureTwinNormal_SpeedImplCopyWith<$Res> {
+  factory _$$MeasureTwinNormal_SpeedImplCopyWith(
+          _$MeasureTwinNormal_SpeedImpl value,
+          $Res Function(_$MeasureTwinNormal_SpeedImpl) then) =
+      __$$MeasureTwinNormal_SpeedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Speed field0});
+  $Res call({SpeedTwinNormal field0});
 
-  $SpeedCopyWith<$Res> get field0;
+  $SpeedTwinNormalCopyWith<$Res> get field0;
 }
 
 /// @nodoc
-class __$$Measure_SpeedImplCopyWithImpl<$Res>
-    extends _$MeasureCopyWithImpl<$Res, _$Measure_SpeedImpl>
-    implements _$$Measure_SpeedImplCopyWith<$Res> {
-  __$$Measure_SpeedImplCopyWithImpl(
-      _$Measure_SpeedImpl _value, $Res Function(_$Measure_SpeedImpl) _then)
+class __$$MeasureTwinNormal_SpeedImplCopyWithImpl<$Res>
+    extends _$MeasureTwinNormalCopyWithImpl<$Res, _$MeasureTwinNormal_SpeedImpl>
+    implements _$$MeasureTwinNormal_SpeedImplCopyWith<$Res> {
+  __$$MeasureTwinNormal_SpeedImplCopyWithImpl(
+      _$MeasureTwinNormal_SpeedImpl _value,
+      $Res Function(_$MeasureTwinNormal_SpeedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2648,18 +2701,18 @@ class __$$Measure_SpeedImplCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$Measure_SpeedImpl(
+    return _then(_$MeasureTwinNormal_SpeedImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as Speed,
+              as SpeedTwinNormal,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $SpeedCopyWith<$Res> get field0 {
-    return $SpeedCopyWith<$Res>(_value.field0, (value) {
+  $SpeedTwinNormalCopyWith<$Res> get field0 {
+    return $SpeedTwinNormalCopyWith<$Res>(_value.field0, (value) {
       return _then(_value.copyWith(field0: value));
     });
   }
@@ -2667,22 +2720,22 @@ class __$$Measure_SpeedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Measure_SpeedImpl implements Measure_Speed {
-  const _$Measure_SpeedImpl(this.field0);
+class _$MeasureTwinNormal_SpeedImpl implements MeasureTwinNormal_Speed {
+  const _$MeasureTwinNormal_SpeedImpl(this.field0);
 
   @override
-  final Speed field0;
+  final SpeedTwinNormal field0;
 
   @override
   String toString() {
-    return 'Measure.speed(field0: $field0)';
+    return 'MeasureTwinNormal.speed(field0: $field0)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Measure_SpeedImpl &&
+            other is _$MeasureTwinNormal_SpeedImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -2692,14 +2745,15 @@ class _$Measure_SpeedImpl implements Measure_Speed {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$Measure_SpeedImplCopyWith<_$Measure_SpeedImpl> get copyWith =>
-      __$$Measure_SpeedImplCopyWithImpl<_$Measure_SpeedImpl>(this, _$identity);
+  _$$MeasureTwinNormal_SpeedImplCopyWith<_$MeasureTwinNormal_SpeedImpl>
+      get copyWith => __$$MeasureTwinNormal_SpeedImplCopyWithImpl<
+          _$MeasureTwinNormal_SpeedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Speed field0) speed,
-    required TResult Function(Distance field0) distance,
+    required TResult Function(SpeedTwinNormal field0) speed,
+    required TResult Function(DistanceTwinNormal field0) distance,
   }) {
     return speed(field0);
   }
@@ -2707,8 +2761,8 @@ class _$Measure_SpeedImpl implements Measure_Speed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Speed field0)? speed,
-    TResult? Function(Distance field0)? distance,
+    TResult? Function(SpeedTwinNormal field0)? speed,
+    TResult? Function(DistanceTwinNormal field0)? distance,
   }) {
     return speed?.call(field0);
   }
@@ -2716,8 +2770,8 @@ class _$Measure_SpeedImpl implements Measure_Speed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Speed field0)? speed,
-    TResult Function(Distance field0)? distance,
+    TResult Function(SpeedTwinNormal field0)? speed,
+    TResult Function(DistanceTwinNormal field0)? distance,
     required TResult orElse(),
   }) {
     if (speed != null) {
@@ -2729,8 +2783,8 @@ class _$Measure_SpeedImpl implements Measure_Speed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Measure_Speed value) speed,
-    required TResult Function(Measure_Distance value) distance,
+    required TResult Function(MeasureTwinNormal_Speed value) speed,
+    required TResult Function(MeasureTwinNormal_Distance value) distance,
   }) {
     return speed(this);
   }
@@ -2738,8 +2792,8 @@ class _$Measure_SpeedImpl implements Measure_Speed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Measure_Speed value)? speed,
-    TResult? Function(Measure_Distance value)? distance,
+    TResult? Function(MeasureTwinNormal_Speed value)? speed,
+    TResult? Function(MeasureTwinNormal_Distance value)? distance,
   }) {
     return speed?.call(this);
   }
@@ -2747,8 +2801,8 @@ class _$Measure_SpeedImpl implements Measure_Speed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Measure_Speed value)? speed,
-    TResult Function(Measure_Distance value)? distance,
+    TResult Function(MeasureTwinNormal_Speed value)? speed,
+    TResult Function(MeasureTwinNormal_Distance value)? distance,
     required TResult orElse(),
   }) {
     if (speed != null) {
@@ -2758,33 +2812,37 @@ class _$Measure_SpeedImpl implements Measure_Speed {
   }
 }
 
-abstract class Measure_Speed implements Measure {
-  const factory Measure_Speed(final Speed field0) = _$Measure_SpeedImpl;
+abstract class MeasureTwinNormal_Speed implements MeasureTwinNormal {
+  const factory MeasureTwinNormal_Speed(final SpeedTwinNormal field0) =
+      _$MeasureTwinNormal_SpeedImpl;
 
   @override
-  Speed get field0;
+  SpeedTwinNormal get field0;
   @JsonKey(ignore: true)
-  _$$Measure_SpeedImplCopyWith<_$Measure_SpeedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$MeasureTwinNormal_SpeedImplCopyWith<_$MeasureTwinNormal_SpeedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$Measure_DistanceImplCopyWith<$Res> {
-  factory _$$Measure_DistanceImplCopyWith(_$Measure_DistanceImpl value,
-          $Res Function(_$Measure_DistanceImpl) then) =
-      __$$Measure_DistanceImplCopyWithImpl<$Res>;
+abstract class _$$MeasureTwinNormal_DistanceImplCopyWith<$Res> {
+  factory _$$MeasureTwinNormal_DistanceImplCopyWith(
+          _$MeasureTwinNormal_DistanceImpl value,
+          $Res Function(_$MeasureTwinNormal_DistanceImpl) then) =
+      __$$MeasureTwinNormal_DistanceImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Distance field0});
+  $Res call({DistanceTwinNormal field0});
 
-  $DistanceCopyWith<$Res> get field0;
+  $DistanceTwinNormalCopyWith<$Res> get field0;
 }
 
 /// @nodoc
-class __$$Measure_DistanceImplCopyWithImpl<$Res>
-    extends _$MeasureCopyWithImpl<$Res, _$Measure_DistanceImpl>
-    implements _$$Measure_DistanceImplCopyWith<$Res> {
-  __$$Measure_DistanceImplCopyWithImpl(_$Measure_DistanceImpl _value,
-      $Res Function(_$Measure_DistanceImpl) _then)
+class __$$MeasureTwinNormal_DistanceImplCopyWithImpl<$Res>
+    extends _$MeasureTwinNormalCopyWithImpl<$Res,
+        _$MeasureTwinNormal_DistanceImpl>
+    implements _$$MeasureTwinNormal_DistanceImplCopyWith<$Res> {
+  __$$MeasureTwinNormal_DistanceImplCopyWithImpl(
+      _$MeasureTwinNormal_DistanceImpl _value,
+      $Res Function(_$MeasureTwinNormal_DistanceImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2792,18 +2850,18 @@ class __$$Measure_DistanceImplCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$Measure_DistanceImpl(
+    return _then(_$MeasureTwinNormal_DistanceImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as Distance,
+              as DistanceTwinNormal,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $DistanceCopyWith<$Res> get field0 {
-    return $DistanceCopyWith<$Res>(_value.field0, (value) {
+  $DistanceTwinNormalCopyWith<$Res> get field0 {
+    return $DistanceTwinNormalCopyWith<$Res>(_value.field0, (value) {
       return _then(_value.copyWith(field0: value));
     });
   }
@@ -2811,22 +2869,22 @@ class __$$Measure_DistanceImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Measure_DistanceImpl implements Measure_Distance {
-  const _$Measure_DistanceImpl(this.field0);
+class _$MeasureTwinNormal_DistanceImpl implements MeasureTwinNormal_Distance {
+  const _$MeasureTwinNormal_DistanceImpl(this.field0);
 
   @override
-  final Distance field0;
+  final DistanceTwinNormal field0;
 
   @override
   String toString() {
-    return 'Measure.distance(field0: $field0)';
+    return 'MeasureTwinNormal.distance(field0: $field0)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Measure_DistanceImpl &&
+            other is _$MeasureTwinNormal_DistanceImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -2836,15 +2894,15 @@ class _$Measure_DistanceImpl implements Measure_Distance {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$Measure_DistanceImplCopyWith<_$Measure_DistanceImpl> get copyWith =>
-      __$$Measure_DistanceImplCopyWithImpl<_$Measure_DistanceImpl>(
-          this, _$identity);
+  _$$MeasureTwinNormal_DistanceImplCopyWith<_$MeasureTwinNormal_DistanceImpl>
+      get copyWith => __$$MeasureTwinNormal_DistanceImplCopyWithImpl<
+          _$MeasureTwinNormal_DistanceImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Speed field0) speed,
-    required TResult Function(Distance field0) distance,
+    required TResult Function(SpeedTwinNormal field0) speed,
+    required TResult Function(DistanceTwinNormal field0) distance,
   }) {
     return distance(field0);
   }
@@ -2852,8 +2910,8 @@ class _$Measure_DistanceImpl implements Measure_Distance {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Speed field0)? speed,
-    TResult? Function(Distance field0)? distance,
+    TResult? Function(SpeedTwinNormal field0)? speed,
+    TResult? Function(DistanceTwinNormal field0)? distance,
   }) {
     return distance?.call(field0);
   }
@@ -2861,8 +2919,8 @@ class _$Measure_DistanceImpl implements Measure_Distance {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Speed field0)? speed,
-    TResult Function(Distance field0)? distance,
+    TResult Function(SpeedTwinNormal field0)? speed,
+    TResult Function(DistanceTwinNormal field0)? distance,
     required TResult orElse(),
   }) {
     if (distance != null) {
@@ -2874,8 +2932,8 @@ class _$Measure_DistanceImpl implements Measure_Distance {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Measure_Speed value) speed,
-    required TResult Function(Measure_Distance value) distance,
+    required TResult Function(MeasureTwinNormal_Speed value) speed,
+    required TResult Function(MeasureTwinNormal_Distance value) distance,
   }) {
     return distance(this);
   }
@@ -2883,8 +2941,8 @@ class _$Measure_DistanceImpl implements Measure_Distance {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Measure_Speed value)? speed,
-    TResult? Function(Measure_Distance value)? distance,
+    TResult? Function(MeasureTwinNormal_Speed value)? speed,
+    TResult? Function(MeasureTwinNormal_Distance value)? distance,
   }) {
     return distance?.call(this);
   }
@@ -2892,8 +2950,8 @@ class _$Measure_DistanceImpl implements Measure_Distance {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Measure_Speed value)? speed,
-    TResult Function(Measure_Distance value)? distance,
+    TResult Function(MeasureTwinNormal_Speed value)? speed,
+    TResult Function(MeasureTwinNormal_Distance value)? distance,
     required TResult orElse(),
   }) {
     if (distance != null) {
@@ -2903,19 +2961,19 @@ class _$Measure_DistanceImpl implements Measure_Distance {
   }
 }
 
-abstract class Measure_Distance implements Measure {
-  const factory Measure_Distance(final Distance field0) =
-      _$Measure_DistanceImpl;
+abstract class MeasureTwinNormal_Distance implements MeasureTwinNormal {
+  const factory MeasureTwinNormal_Distance(final DistanceTwinNormal field0) =
+      _$MeasureTwinNormal_DistanceImpl;
 
   @override
-  Distance get field0;
+  DistanceTwinNormal get field0;
   @JsonKey(ignore: true)
-  _$$Measure_DistanceImplCopyWith<_$Measure_DistanceImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$MeasureTwinNormal_DistanceImplCopyWith<_$MeasureTwinNormal_DistanceImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$Speed {
+mixin _$SpeedTwinNormal {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unknown,
@@ -2937,35 +2995,36 @@ mixin _$Speed {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Speed_Unknown value) unknown,
-    required TResult Function(Speed_GPS value) gps,
+    required TResult Function(SpeedTwinNormal_Unknown value) unknown,
+    required TResult Function(SpeedTwinNormal_GPS value) gps,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Speed_Unknown value)? unknown,
-    TResult? Function(Speed_GPS value)? gps,
+    TResult? Function(SpeedTwinNormal_Unknown value)? unknown,
+    TResult? Function(SpeedTwinNormal_GPS value)? gps,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Speed_Unknown value)? unknown,
-    TResult Function(Speed_GPS value)? gps,
+    TResult Function(SpeedTwinNormal_Unknown value)? unknown,
+    TResult Function(SpeedTwinNormal_GPS value)? gps,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SpeedCopyWith<$Res> {
-  factory $SpeedCopyWith(Speed value, $Res Function(Speed) then) =
-      _$SpeedCopyWithImpl<$Res, Speed>;
+abstract class $SpeedTwinNormalCopyWith<$Res> {
+  factory $SpeedTwinNormalCopyWith(
+          SpeedTwinNormal value, $Res Function(SpeedTwinNormal) then) =
+      _$SpeedTwinNormalCopyWithImpl<$Res, SpeedTwinNormal>;
 }
 
 /// @nodoc
-class _$SpeedCopyWithImpl<$Res, $Val extends Speed>
-    implements $SpeedCopyWith<$Res> {
-  _$SpeedCopyWithImpl(this._value, this._then);
+class _$SpeedTwinNormalCopyWithImpl<$Res, $Val extends SpeedTwinNormal>
+    implements $SpeedTwinNormalCopyWith<$Res> {
+  _$SpeedTwinNormalCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -2974,35 +3033,38 @@ class _$SpeedCopyWithImpl<$Res, $Val extends Speed>
 }
 
 /// @nodoc
-abstract class _$$Speed_UnknownImplCopyWith<$Res> {
-  factory _$$Speed_UnknownImplCopyWith(
-          _$Speed_UnknownImpl value, $Res Function(_$Speed_UnknownImpl) then) =
-      __$$Speed_UnknownImplCopyWithImpl<$Res>;
+abstract class _$$SpeedTwinNormal_UnknownImplCopyWith<$Res> {
+  factory _$$SpeedTwinNormal_UnknownImplCopyWith(
+          _$SpeedTwinNormal_UnknownImpl value,
+          $Res Function(_$SpeedTwinNormal_UnknownImpl) then) =
+      __$$SpeedTwinNormal_UnknownImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$Speed_UnknownImplCopyWithImpl<$Res>
-    extends _$SpeedCopyWithImpl<$Res, _$Speed_UnknownImpl>
-    implements _$$Speed_UnknownImplCopyWith<$Res> {
-  __$$Speed_UnknownImplCopyWithImpl(
-      _$Speed_UnknownImpl _value, $Res Function(_$Speed_UnknownImpl) _then)
+class __$$SpeedTwinNormal_UnknownImplCopyWithImpl<$Res>
+    extends _$SpeedTwinNormalCopyWithImpl<$Res, _$SpeedTwinNormal_UnknownImpl>
+    implements _$$SpeedTwinNormal_UnknownImplCopyWith<$Res> {
+  __$$SpeedTwinNormal_UnknownImplCopyWithImpl(
+      _$SpeedTwinNormal_UnknownImpl _value,
+      $Res Function(_$SpeedTwinNormal_UnknownImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Speed_UnknownImpl implements Speed_Unknown {
-  const _$Speed_UnknownImpl();
+class _$SpeedTwinNormal_UnknownImpl implements SpeedTwinNormal_Unknown {
+  const _$SpeedTwinNormal_UnknownImpl();
 
   @override
   String toString() {
-    return 'Speed.unknown()';
+    return 'SpeedTwinNormal.unknown()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Speed_UnknownImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$SpeedTwinNormal_UnknownImpl);
   }
 
   @override
@@ -3042,8 +3104,8 @@ class _$Speed_UnknownImpl implements Speed_Unknown {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Speed_Unknown value) unknown,
-    required TResult Function(Speed_GPS value) gps,
+    required TResult Function(SpeedTwinNormal_Unknown value) unknown,
+    required TResult Function(SpeedTwinNormal_GPS value) gps,
   }) {
     return unknown(this);
   }
@@ -3051,8 +3113,8 @@ class _$Speed_UnknownImpl implements Speed_Unknown {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Speed_Unknown value)? unknown,
-    TResult? Function(Speed_GPS value)? gps,
+    TResult? Function(SpeedTwinNormal_Unknown value)? unknown,
+    TResult? Function(SpeedTwinNormal_GPS value)? gps,
   }) {
     return unknown?.call(this);
   }
@@ -3060,8 +3122,8 @@ class _$Speed_UnknownImpl implements Speed_Unknown {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Speed_Unknown value)? unknown,
-    TResult Function(Speed_GPS value)? gps,
+    TResult Function(SpeedTwinNormal_Unknown value)? unknown,
+    TResult Function(SpeedTwinNormal_GPS value)? gps,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -3071,25 +3133,25 @@ class _$Speed_UnknownImpl implements Speed_Unknown {
   }
 }
 
-abstract class Speed_Unknown implements Speed {
-  const factory Speed_Unknown() = _$Speed_UnknownImpl;
+abstract class SpeedTwinNormal_Unknown implements SpeedTwinNormal {
+  const factory SpeedTwinNormal_Unknown() = _$SpeedTwinNormal_UnknownImpl;
 }
 
 /// @nodoc
-abstract class _$$Speed_GPSImplCopyWith<$Res> {
-  factory _$$Speed_GPSImplCopyWith(
-          _$Speed_GPSImpl value, $Res Function(_$Speed_GPSImpl) then) =
-      __$$Speed_GPSImplCopyWithImpl<$Res>;
+abstract class _$$SpeedTwinNormal_GPSImplCopyWith<$Res> {
+  factory _$$SpeedTwinNormal_GPSImplCopyWith(_$SpeedTwinNormal_GPSImpl value,
+          $Res Function(_$SpeedTwinNormal_GPSImpl) then) =
+      __$$SpeedTwinNormal_GPSImplCopyWithImpl<$Res>;
   @useResult
   $Res call({double field0});
 }
 
 /// @nodoc
-class __$$Speed_GPSImplCopyWithImpl<$Res>
-    extends _$SpeedCopyWithImpl<$Res, _$Speed_GPSImpl>
-    implements _$$Speed_GPSImplCopyWith<$Res> {
-  __$$Speed_GPSImplCopyWithImpl(
-      _$Speed_GPSImpl _value, $Res Function(_$Speed_GPSImpl) _then)
+class __$$SpeedTwinNormal_GPSImplCopyWithImpl<$Res>
+    extends _$SpeedTwinNormalCopyWithImpl<$Res, _$SpeedTwinNormal_GPSImpl>
+    implements _$$SpeedTwinNormal_GPSImplCopyWith<$Res> {
+  __$$SpeedTwinNormal_GPSImplCopyWithImpl(_$SpeedTwinNormal_GPSImpl _value,
+      $Res Function(_$SpeedTwinNormal_GPSImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -3097,7 +3159,7 @@ class __$$Speed_GPSImplCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$Speed_GPSImpl(
+    return _then(_$SpeedTwinNormal_GPSImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -3108,22 +3170,22 @@ class __$$Speed_GPSImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Speed_GPSImpl implements Speed_GPS {
-  const _$Speed_GPSImpl(this.field0);
+class _$SpeedTwinNormal_GPSImpl implements SpeedTwinNormal_GPS {
+  const _$SpeedTwinNormal_GPSImpl(this.field0);
 
   @override
   final double field0;
 
   @override
   String toString() {
-    return 'Speed.gps(field0: $field0)';
+    return 'SpeedTwinNormal.gps(field0: $field0)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Speed_GPSImpl &&
+            other is _$SpeedTwinNormal_GPSImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -3133,8 +3195,9 @@ class _$Speed_GPSImpl implements Speed_GPS {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$Speed_GPSImplCopyWith<_$Speed_GPSImpl> get copyWith =>
-      __$$Speed_GPSImplCopyWithImpl<_$Speed_GPSImpl>(this, _$identity);
+  _$$SpeedTwinNormal_GPSImplCopyWith<_$SpeedTwinNormal_GPSImpl> get copyWith =>
+      __$$SpeedTwinNormal_GPSImplCopyWithImpl<_$SpeedTwinNormal_GPSImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -3170,8 +3233,8 @@ class _$Speed_GPSImpl implements Speed_GPS {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Speed_Unknown value) unknown,
-    required TResult Function(Speed_GPS value) gps,
+    required TResult Function(SpeedTwinNormal_Unknown value) unknown,
+    required TResult Function(SpeedTwinNormal_GPS value) gps,
   }) {
     return gps(this);
   }
@@ -3179,8 +3242,8 @@ class _$Speed_GPSImpl implements Speed_GPS {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Speed_Unknown value)? unknown,
-    TResult? Function(Speed_GPS value)? gps,
+    TResult? Function(SpeedTwinNormal_Unknown value)? unknown,
+    TResult? Function(SpeedTwinNormal_GPS value)? gps,
   }) {
     return gps?.call(this);
   }
@@ -3188,8 +3251,8 @@ class _$Speed_GPSImpl implements Speed_GPS {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Speed_Unknown value)? unknown,
-    TResult Function(Speed_GPS value)? gps,
+    TResult Function(SpeedTwinNormal_Unknown value)? unknown,
+    TResult Function(SpeedTwinNormal_GPS value)? gps,
     required TResult orElse(),
   }) {
     if (gps != null) {
@@ -3199,11 +3262,12 @@ class _$Speed_GPSImpl implements Speed_GPS {
   }
 }
 
-abstract class Speed_GPS implements Speed {
-  const factory Speed_GPS(final double field0) = _$Speed_GPSImpl;
+abstract class SpeedTwinNormal_GPS implements SpeedTwinNormal {
+  const factory SpeedTwinNormal_GPS(final double field0) =
+      _$SpeedTwinNormal_GPSImpl;
 
   double get field0;
   @JsonKey(ignore: true)
-  _$$Speed_GPSImplCopyWith<_$Speed_GPSImpl> get copyWith =>
+  _$$SpeedTwinNormal_GPSImplCopyWith<_$SpeedTwinNormal_GPSImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

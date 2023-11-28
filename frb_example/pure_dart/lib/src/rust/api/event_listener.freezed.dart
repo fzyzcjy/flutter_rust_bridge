@@ -15,26 +15,28 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$Event {
+mixin _$EventTwinNormal {
   String get address => throw _privateConstructorUsedError;
   String get payload => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $EventCopyWith<Event> get copyWith => throw _privateConstructorUsedError;
+  $EventTwinNormalCopyWith<EventTwinNormal> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EventCopyWith<$Res> {
-  factory $EventCopyWith(Event value, $Res Function(Event) then) =
-      _$EventCopyWithImpl<$Res, Event>;
+abstract class $EventTwinNormalCopyWith<$Res> {
+  factory $EventTwinNormalCopyWith(
+          EventTwinNormal value, $Res Function(EventTwinNormal) then) =
+      _$EventTwinNormalCopyWithImpl<$Res, EventTwinNormal>;
   @useResult
   $Res call({String address, String payload});
 }
 
 /// @nodoc
-class _$EventCopyWithImpl<$Res, $Val extends Event>
-    implements $EventCopyWith<$Res> {
-  _$EventCopyWithImpl(this._value, this._then);
+class _$EventTwinNormalCopyWithImpl<$Res, $Val extends EventTwinNormal>
+    implements $EventTwinNormalCopyWith<$Res> {
+  _$EventTwinNormalCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -61,21 +63,22 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
 }
 
 /// @nodoc
-abstract class _$$EventImplCopyWith<$Res> implements $EventCopyWith<$Res> {
-  factory _$$EventImplCopyWith(
-          _$EventImpl value, $Res Function(_$EventImpl) then) =
-      __$$EventImplCopyWithImpl<$Res>;
+abstract class _$$EventTwinNormalImplCopyWith<$Res>
+    implements $EventTwinNormalCopyWith<$Res> {
+  factory _$$EventTwinNormalImplCopyWith(_$EventTwinNormalImpl value,
+          $Res Function(_$EventTwinNormalImpl) then) =
+      __$$EventTwinNormalImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String address, String payload});
 }
 
 /// @nodoc
-class __$$EventImplCopyWithImpl<$Res>
-    extends _$EventCopyWithImpl<$Res, _$EventImpl>
-    implements _$$EventImplCopyWith<$Res> {
-  __$$EventImplCopyWithImpl(
-      _$EventImpl _value, $Res Function(_$EventImpl) _then)
+class __$$EventTwinNormalImplCopyWithImpl<$Res>
+    extends _$EventTwinNormalCopyWithImpl<$Res, _$EventTwinNormalImpl>
+    implements _$$EventTwinNormalImplCopyWith<$Res> {
+  __$$EventTwinNormalImplCopyWithImpl(
+      _$EventTwinNormalImpl _value, $Res Function(_$EventTwinNormalImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -84,7 +87,7 @@ class __$$EventImplCopyWithImpl<$Res>
     Object? address = null,
     Object? payload = null,
   }) {
-    return _then(_$EventImpl(
+    return _then(_$EventTwinNormalImpl(
       address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -99,8 +102,9 @@ class __$$EventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EventImpl extends _Event {
-  const _$EventImpl({required this.address, required this.payload}) : super._();
+class _$EventTwinNormalImpl extends _EventTwinNormal {
+  const _$EventTwinNormalImpl({required this.address, required this.payload})
+      : super._();
 
   @override
   final String address;
@@ -109,14 +113,14 @@ class _$EventImpl extends _Event {
 
   @override
   String toString() {
-    return 'Event(address: $address, payload: $payload)';
+    return 'EventTwinNormal(address: $address, payload: $payload)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EventImpl &&
+            other is _$EventTwinNormalImpl &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.payload, payload) || other.payload == payload));
   }
@@ -127,15 +131,16 @@ class _$EventImpl extends _Event {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EventImplCopyWith<_$EventImpl> get copyWith =>
-      __$$EventImplCopyWithImpl<_$EventImpl>(this, _$identity);
+  _$$EventTwinNormalImplCopyWith<_$EventTwinNormalImpl> get copyWith =>
+      __$$EventTwinNormalImplCopyWithImpl<_$EventTwinNormalImpl>(
+          this, _$identity);
 }
 
-abstract class _Event extends Event {
-  const factory _Event(
+abstract class _EventTwinNormal extends EventTwinNormal {
+  const factory _EventTwinNormal(
       {required final String address,
-      required final String payload}) = _$EventImpl;
-  const _Event._() : super._();
+      required final String payload}) = _$EventTwinNormalImpl;
+  const _EventTwinNormal._() : super._();
 
   @override
   String get address;
@@ -143,6 +148,6 @@ abstract class _Event extends Event {
   String get payload;
   @override
   @JsonKey(ignore: true)
-  _$$EventImplCopyWith<_$EventImpl> get copyWith =>
+  _$$EventTwinNormalImplCopyWith<_$EventTwinNormalImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

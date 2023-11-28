@@ -5,25 +5,26 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'event_listener.freezed.dart';
 
-Stream<Event> registerEventListener({dynamic hint}) =>
-    RustLib.instance.api.registerEventListener(hint: hint);
+Stream<EventTwinNormal> registerEventListenerTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.registerEventListenerTwinNormal(hint: hint);
 
-Future<void> closeEventListener({dynamic hint}) =>
-    RustLib.instance.api.closeEventListener(hint: hint);
+Future<void> closeEventListenerTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.closeEventListenerTwinNormal(hint: hint);
 
-Future<void> createEvent(
+Future<void> createEventTwinNormal(
         {required String address, required String payload, dynamic hint}) =>
     RustLib.instance.api
-        .createEvent(address: address, payload: payload, hint: hint);
+        .createEventTwinNormal(address: address, payload: payload, hint: hint);
 
 @freezed
-class Event with _$Event {
-  const Event._();
-  const factory Event({
+class EventTwinNormal with _$EventTwinNormal {
+  const EventTwinNormal._();
+  const factory EventTwinNormal({
     required String address,
     required String payload,
-  }) = _Event;
-  Future<String> asString({dynamic hint}) => RustLib.instance.api.eventAsString(
+  }) = _EventTwinNormal;
+  Future<String> asStringTwinNormal({dynamic hint}) =>
+      RustLib.instance.api.eventTwinNormalAsStringTwinNormal(
         that: this,
       );
 }

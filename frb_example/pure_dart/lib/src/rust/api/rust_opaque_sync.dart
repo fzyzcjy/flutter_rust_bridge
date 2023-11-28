@@ -4,26 +4,27 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'rust_opaque.dart';
 
-HideData? syncOptionRustOpaque({dynamic hint}) =>
-    RustLib.instance.api.syncOptionRustOpaque(hint: hint);
+HideData? syncOptionRustOpaqueTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.syncOptionRustOpaqueTwinNormal(hint: hint);
 
-HideData syncCreateOpaque({dynamic hint}) =>
-    RustLib.instance.api.syncCreateOpaque(hint: hint);
+HideData syncCreateOpaqueTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.syncCreateOpaqueTwinNormal(hint: hint);
 
-NonSendHideData syncCreateSyncOpaque({dynamic hint}) =>
-    RustLib.instance.api.syncCreateSyncOpaque(hint: hint);
+NonSendHideData syncCreateSyncOpaqueTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.syncCreateSyncOpaqueTwinNormal(hint: hint);
 
-NonCloneData syncCreateNonClone({dynamic hint}) =>
-    RustLib.instance.api.syncCreateNonClone(hint: hint);
+NonCloneData syncCreateNonCloneTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.syncCreateNonCloneTwinNormal(hint: hint);
 
-String syncRunOpaque({required NonSendHideData opaque, dynamic hint}) =>
-    RustLib.instance.api.syncRunOpaque(opaque: opaque, hint: hint);
+String syncRunOpaqueTwinNormal(
+        {required NonSendHideData opaque, dynamic hint}) =>
+    RustLib.instance.api.syncRunOpaqueTwinNormal(opaque: opaque, hint: hint);
 
 /// Structure for testing the sync-mode RustOpaque code generator.
 /// FrbOpaqueSyncReturn must be only return type.
 /// FrbOpaqueSyncReturn must be without wrapper like Option<> Vec<> etc.
-FrbOpaqueSyncReturn frbSyncGeneratorTest({dynamic hint}) =>
-    RustLib.instance.api.frbSyncGeneratorTest(hint: hint);
+FrbOpaqueSyncReturn frbSyncGeneratorTestTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.frbSyncGeneratorTestTwinNormal(hint: hint);
 
 @sealed
 class FrbOpaqueSyncReturn extends FrbOpaque {

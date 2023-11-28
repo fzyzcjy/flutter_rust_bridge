@@ -6,48 +6,52 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'misc_example.freezed.dart';
 
-Future<MyTreeNode> handleComplexStruct({required MyTreeNode s, dynamic hint}) =>
-    RustLib.instance.api.handleComplexStruct(s: s, hint: hint);
+Future<MyTreeNodeTwinNormal> handleComplexStructTwinNormal(
+        {required MyTreeNodeTwinNormal s, dynamic hint}) =>
+    RustLib.instance.api.handleComplexStructTwinNormal(s: s, hint: hint);
 
-Future<List<Weekdays>> listOfPrimitiveEnums(
-        {required List<Weekdays> weekdays, dynamic hint}) =>
-    RustLib.instance.api.listOfPrimitiveEnums(weekdays: weekdays, hint: hint);
+Future<List<WeekdaysTwinNormal>> listOfPrimitiveEnumsTwinNormal(
+        {required List<WeekdaysTwinNormal> weekdays, dynamic hint}) =>
+    RustLib.instance.api
+        .listOfPrimitiveEnumsTwinNormal(weekdays: weekdays, hint: hint);
 
-Future<MyNestedStruct> handleNestedStruct(
-        {required MyNestedStruct s, dynamic hint}) =>
-    RustLib.instance.api.handleNestedStruct(s: s, hint: hint);
+Future<MyNestedStructTwinNormal> handleNestedStructTwinNormal(
+        {required MyNestedStructTwinNormal s, dynamic hint}) =>
+    RustLib.instance.api.handleNestedStructTwinNormal(s: s, hint: hint);
 
-Future<BigBuffers> handleBigBuffers({dynamic hint}) =>
-    RustLib.instance.api.handleBigBuffers(hint: hint);
+Future<BigBuffersTwinNormal> handleBigBuffersTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.handleBigBuffersTwinNormal(hint: hint);
 
-Future<Abc> testAbcEnum({required Abc abc, dynamic hint}) =>
-    RustLib.instance.api.testAbcEnum(abc: abc, hint: hint);
+Future<AbcTwinNormal> testAbcEnumTwinNormal(
+        {required AbcTwinNormal abc, dynamic hint}) =>
+    RustLib.instance.api.testAbcEnumTwinNormal(abc: abc, hint: hint);
 
-Future<StructWithEnum> testStructWithEnum(
-        {required StructWithEnum se, dynamic hint}) =>
-    RustLib.instance.api.testStructWithEnum(se: se, hint: hint);
+Future<StructWithEnumTwinNormal> testStructWithEnumTwinNormal(
+        {required StructWithEnumTwinNormal se, dynamic hint}) =>
+    RustLib.instance.api.testStructWithEnumTwinNormal(se: se, hint: hint);
 
-Future<String> handleString({required String s, dynamic hint}) =>
-    RustLib.instance.api.handleString(s: s, hint: hint);
+Future<String> handleStringTwinNormal({required String s, dynamic hint}) =>
+    RustLib.instance.api.handleStringTwinNormal(s: s, hint: hint);
 
-Future<Uint8List> handleVecU8({required Uint8List v, dynamic hint}) =>
-    RustLib.instance.api.handleVecU8(v: v, hint: hint);
+Future<Uint8List> handleVecU8TwinNormal({required Uint8List v, dynamic hint}) =>
+    RustLib.instance.api.handleVecU8TwinNormal(v: v, hint: hint);
 
-Future<MySize> handleStruct(
+Future<MySize> handleStructTwinNormal(
         {required MySize arg, required MySize boxed, dynamic hint}) =>
-    RustLib.instance.api.handleStruct(arg: arg, boxed: boxed, hint: hint);
+    RustLib.instance.api
+        .handleStructTwinNormal(arg: arg, boxed: boxed, hint: hint);
 
-MySizeFreezed handleStructSyncFreezed(
-        {required MySizeFreezed arg,
-        required MySizeFreezed boxed,
+MySizeFreezedTwinNormal handleStructSyncFreezedTwinNormal(
+        {required MySizeFreezedTwinNormal arg,
+        required MySizeFreezedTwinNormal boxed,
         dynamic hint}) =>
     RustLib.instance.api
-        .handleStructSyncFreezed(arg: arg, boxed: boxed, hint: hint);
+        .handleStructSyncFreezedTwinNormal(arg: arg, boxed: boxed, hint: hint);
 
-class A {
+class ATwinNormal {
   final String a;
 
-  const A({
+  const ATwinNormal({
     required this.a,
   });
 
@@ -57,29 +61,29 @@ class A {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is A && runtimeType == other.runtimeType && a == other.a;
+      other is ATwinNormal && runtimeType == other.runtimeType && a == other.a;
 }
 
 @freezed
-sealed class Abc with _$Abc {
-  const factory Abc.a(
-    A field0,
-  ) = Abc_A;
-  const factory Abc.b(
-    B field0,
-  ) = Abc_B;
-  const factory Abc.c(
-    C field0,
-  ) = Abc_C;
-  const factory Abc.justInt(
+sealed class AbcTwinNormal with _$AbcTwinNormal {
+  const factory AbcTwinNormal.a(
+    ATwinNormal field0,
+  ) = AbcTwinNormal_A;
+  const factory AbcTwinNormal.b(
+    BTwinNormal field0,
+  ) = AbcTwinNormal_B;
+  const factory AbcTwinNormal.c(
+    CTwinNormal field0,
+  ) = AbcTwinNormal_C;
+  const factory AbcTwinNormal.justInt(
     int field0,
-  ) = Abc_JustInt;
+  ) = AbcTwinNormal_JustInt;
 }
 
-class B {
+class BTwinNormal {
   final int b;
 
-  const B({
+  const BTwinNormal({
     required this.b,
   });
 
@@ -89,14 +93,14 @@ class B {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is B && runtimeType == other.runtimeType && b == other.b;
+      other is BTwinNormal && runtimeType == other.runtimeType && b == other.b;
 }
 
-class BigBuffers {
+class BigBuffersTwinNormal {
   final Int64List int64;
   final Uint64List uint64;
 
-  const BigBuffers({
+  const BigBuffersTwinNormal({
     required this.int64,
     required this.uint64,
   });
@@ -107,16 +111,16 @@ class BigBuffers {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is BigBuffers &&
+      other is BigBuffersTwinNormal &&
           runtimeType == other.runtimeType &&
           int64 == other.int64 &&
           uint64 == other.uint64;
 }
 
-class C {
+class CTwinNormal {
   final bool c;
 
-  const C({
+  const CTwinNormal({
     required this.c,
   });
 
@@ -126,14 +130,14 @@ class C {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is C && runtimeType == other.runtimeType && c == other.c;
+      other is CTwinNormal && runtimeType == other.runtimeType && c == other.c;
 }
 
-class MyNestedStruct {
-  final MyTreeNode treeNode;
-  final Weekdays weekday;
+class MyNestedStructTwinNormal {
+  final MyTreeNodeTwinNormal treeNode;
+  final WeekdaysTwinNormal weekday;
 
-  const MyNestedStruct({
+  const MyNestedStructTwinNormal({
     required this.treeNode,
     required this.weekday,
   });
@@ -144,27 +148,27 @@ class MyNestedStruct {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is MyNestedStruct &&
+      other is MyNestedStructTwinNormal &&
           runtimeType == other.runtimeType &&
           treeNode == other.treeNode &&
           weekday == other.weekday;
 }
 
 @freezed
-class MySizeFreezed with _$MySizeFreezed {
-  const factory MySizeFreezed({
+class MySizeFreezedTwinNormal with _$MySizeFreezedTwinNormal {
+  const factory MySizeFreezedTwinNormal({
     required int width,
     required int height,
-  }) = _MySizeFreezed;
+  }) = _MySizeFreezedTwinNormal;
 }
 
-class MyTreeNode {
+class MyTreeNodeTwinNormal {
   final int valueI32;
   final Uint8List valueVecU8;
   final bool valueBoolean;
-  final List<MyTreeNode> children;
+  final List<MyTreeNodeTwinNormal> children;
 
-  const MyTreeNode({
+  const MyTreeNodeTwinNormal({
     required this.valueI32,
     required this.valueVecU8,
     required this.valueBoolean,
@@ -181,7 +185,7 @@ class MyTreeNode {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is MyTreeNode &&
+      other is MyTreeNodeTwinNormal &&
           runtimeType == other.runtimeType &&
           valueI32 == other.valueI32 &&
           valueVecU8 == other.valueVecU8 &&
@@ -189,11 +193,11 @@ class MyTreeNode {
           children == other.children;
 }
 
-class StructWithEnum {
-  final Abc abc1;
-  final Abc abc2;
+class StructWithEnumTwinNormal {
+  final AbcTwinNormal abc1;
+  final AbcTwinNormal abc2;
 
-  const StructWithEnum({
+  const StructWithEnumTwinNormal({
     required this.abc1,
     required this.abc2,
   });
@@ -204,13 +208,13 @@ class StructWithEnum {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is StructWithEnum &&
+      other is StructWithEnumTwinNormal &&
           runtimeType == other.runtimeType &&
           abc1 == other.abc1 &&
           abc2 == other.abc2;
 }
 
-enum Weekdays {
+enum WeekdaysTwinNormal {
   monday,
   tuesday,
   wednesday,

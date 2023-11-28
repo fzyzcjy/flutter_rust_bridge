@@ -15,25 +15,27 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$UserId {
+mixin _$UserIdTwinNormal {
   int get value => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $UserIdCopyWith<UserId> get copyWith => throw _privateConstructorUsedError;
+  $UserIdTwinNormalCopyWith<UserIdTwinNormal> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserIdCopyWith<$Res> {
-  factory $UserIdCopyWith(UserId value, $Res Function(UserId) then) =
-      _$UserIdCopyWithImpl<$Res, UserId>;
+abstract class $UserIdTwinNormalCopyWith<$Res> {
+  factory $UserIdTwinNormalCopyWith(
+          UserIdTwinNormal value, $Res Function(UserIdTwinNormal) then) =
+      _$UserIdTwinNormalCopyWithImpl<$Res, UserIdTwinNormal>;
   @useResult
   $Res call({int value});
 }
 
 /// @nodoc
-class _$UserIdCopyWithImpl<$Res, $Val extends UserId>
-    implements $UserIdCopyWith<$Res> {
-  _$UserIdCopyWithImpl(this._value, this._then);
+class _$UserIdTwinNormalCopyWithImpl<$Res, $Val extends UserIdTwinNormal>
+    implements $UserIdTwinNormalCopyWith<$Res> {
+  _$UserIdTwinNormalCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -55,21 +57,22 @@ class _$UserIdCopyWithImpl<$Res, $Val extends UserId>
 }
 
 /// @nodoc
-abstract class _$$UserIdImplCopyWith<$Res> implements $UserIdCopyWith<$Res> {
-  factory _$$UserIdImplCopyWith(
-          _$UserIdImpl value, $Res Function(_$UserIdImpl) then) =
-      __$$UserIdImplCopyWithImpl<$Res>;
+abstract class _$$UserIdTwinNormalImplCopyWith<$Res>
+    implements $UserIdTwinNormalCopyWith<$Res> {
+  factory _$$UserIdTwinNormalImplCopyWith(_$UserIdTwinNormalImpl value,
+          $Res Function(_$UserIdTwinNormalImpl) then) =
+      __$$UserIdTwinNormalImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int value});
 }
 
 /// @nodoc
-class __$$UserIdImplCopyWithImpl<$Res>
-    extends _$UserIdCopyWithImpl<$Res, _$UserIdImpl>
-    implements _$$UserIdImplCopyWith<$Res> {
-  __$$UserIdImplCopyWithImpl(
-      _$UserIdImpl _value, $Res Function(_$UserIdImpl) _then)
+class __$$UserIdTwinNormalImplCopyWithImpl<$Res>
+    extends _$UserIdTwinNormalCopyWithImpl<$Res, _$UserIdTwinNormalImpl>
+    implements _$$UserIdTwinNormalImplCopyWith<$Res> {
+  __$$UserIdTwinNormalImplCopyWithImpl(_$UserIdTwinNormalImpl _value,
+      $Res Function(_$UserIdTwinNormalImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -77,7 +80,7 @@ class __$$UserIdImplCopyWithImpl<$Res>
   $Res call({
     Object? value = null,
   }) {
-    return _then(_$UserIdImpl(
+    return _then(_$UserIdTwinNormalImpl(
       value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -88,8 +91,8 @@ class __$$UserIdImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$UserIdImpl implements _UserId {
-  const _$UserIdImpl({this.value = 0});
+class _$UserIdTwinNormalImpl implements _UserIdTwinNormal {
+  const _$UserIdTwinNormalImpl({this.value = 0});
 
   @override
   @JsonKey()
@@ -97,14 +100,14 @@ class _$UserIdImpl implements _UserId {
 
   @override
   String toString() {
-    return 'UserId(value: $value)';
+    return 'UserIdTwinNormal(value: $value)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UserIdImpl &&
+            other is _$UserIdTwinNormalImpl &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -114,17 +117,18 @@ class _$UserIdImpl implements _UserId {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$UserIdImplCopyWith<_$UserIdImpl> get copyWith =>
-      __$$UserIdImplCopyWithImpl<_$UserIdImpl>(this, _$identity);
+  _$$UserIdTwinNormalImplCopyWith<_$UserIdTwinNormalImpl> get copyWith =>
+      __$$UserIdTwinNormalImplCopyWithImpl<_$UserIdTwinNormalImpl>(
+          this, _$identity);
 }
 
-abstract class _UserId implements UserId {
-  const factory _UserId({final int value}) = _$UserIdImpl;
+abstract class _UserIdTwinNormal implements UserIdTwinNormal {
+  const factory _UserIdTwinNormal({final int value}) = _$UserIdTwinNormalImpl;
 
   @override
   int get value;
   @override
   @JsonKey(ignore: true)
-  _$$UserIdImplCopyWith<_$UserIdImpl> get copyWith =>
+  _$$UserIdTwinNormalImplCopyWith<_$UserIdTwinNormalImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

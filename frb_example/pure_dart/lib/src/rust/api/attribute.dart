@@ -6,17 +6,19 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'package:meta/meta.dart' as meta;
 part 'attribute.freezed.dart';
 
-Future<void> handleCustomizedStruct({required Customized val, dynamic hint}) =>
-    RustLib.instance.api.handleCustomizedStruct(val: val, hint: hint);
+Future<void> handleCustomizedStructTwinNormal(
+        {required CustomizedTwinNormal val, dynamic hint}) =>
+    RustLib.instance.api.handleCustomizedStructTwinNormal(val: val, hint: hint);
 
-Future<UserId> nextUserId({required UserId userId, dynamic hint}) =>
-    RustLib.instance.api.nextUserId(userId: userId, hint: hint);
+Future<UserIdTwinNormal> nextUserIdTwinNormal(
+        {required UserIdTwinNormal userId, dynamic hint}) =>
+    RustLib.instance.api.nextUserIdTwinNormal(userId: userId, hint: hint);
 
-class Customized {
+class CustomizedTwinNormal {
   final String finalField;
   String? nonFinalField;
 
-  Customized({
+  CustomizedTwinNormal({
     required this.finalField,
     this.nonFinalField,
   });
@@ -27,7 +29,7 @@ class Customized {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Customized &&
+      other is CustomizedTwinNormal &&
           runtimeType == other.runtimeType &&
           finalField == other.finalField &&
           nonFinalField == other.nonFinalField;
@@ -36,8 +38,8 @@ class Customized {
 /// Example for @freezed and @meta.immutable
 @freezed
 @meta.immutable
-class UserId with _$UserId {
-  const factory UserId({
+class UserIdTwinNormal with _$UserIdTwinNormal {
+  const factory UserIdTwinNormal({
     @Default(0) int value,
-  }) = _UserId;
+  }) = _UserIdTwinNormal;
 }

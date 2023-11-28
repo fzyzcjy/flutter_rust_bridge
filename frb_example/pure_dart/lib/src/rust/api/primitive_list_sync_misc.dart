@@ -4,6 +4,7 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'primitive_list_misc.dart';
 
-ZeroCopyVecOfPrimitivePack handleZeroCopyVecOfPrimitiveSync(
+ZeroCopyVecOfPrimitivePackTwinNormal handleZeroCopyVecOfPrimitiveSyncTwinNormal(
         {required int n, dynamic hint}) =>
-    RustLib.instance.api.handleZeroCopyVecOfPrimitiveSync(n: n, hint: hint);
+    RustLib.instance.api
+        .handleZeroCopyVecOfPrimitiveSyncTwinNormal(n: n, hint: hint);

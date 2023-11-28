@@ -6,76 +6,84 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'mirror.freezed.dart';
 
-Future<ApplicationSettings> getAppSettings({dynamic hint}) =>
-    RustLib.instance.api.getAppSettings(hint: hint);
+Future<ApplicationSettings> getAppSettingsTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.getAppSettingsTwinNormal(hint: hint);
 
-Future<ApplicationSettings> getFallibleAppSettings({dynamic hint}) =>
-    RustLib.instance.api.getFallibleAppSettings(hint: hint);
+Future<ApplicationSettings> getFallibleAppSettingsTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.getFallibleAppSettingsTwinNormal(hint: hint);
 
-Future<bool> isAppEmbedded(
+Future<bool> isAppEmbeddedTwinNormal(
         {required ApplicationSettings appSettings, dynamic hint}) =>
-    RustLib.instance.api.isAppEmbedded(appSettings: appSettings, hint: hint);
+    RustLib.instance.api
+        .isAppEmbeddedTwinNormal(appSettings: appSettings, hint: hint);
 
-Stream<ApplicationSettings> appSettingsStream({dynamic hint}) =>
-    RustLib.instance.api.appSettingsStream(hint: hint);
+Stream<ApplicationSettings> appSettingsStreamTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.appSettingsStreamTwinNormal(hint: hint);
 
-Stream<List<ApplicationSettings>> appSettingsVecStream({dynamic hint}) =>
-    RustLib.instance.api.appSettingsVecStream(hint: hint);
-
-Stream<MirrorStruct> mirrorStructStream({dynamic hint}) =>
-    RustLib.instance.api.mirrorStructStream(hint: hint);
-
-Stream<(ApplicationSettings, RawStringEnumMirrored)> mirrorTupleStream(
+Stream<List<ApplicationSettings>> appSettingsVecStreamTwinNormal(
         {dynamic hint}) =>
-    RustLib.instance.api.mirrorTupleStream(hint: hint);
+    RustLib.instance.api.appSettingsVecStreamTwinNormal(hint: hint);
 
-Future<ApplicationMessage> getMessage({dynamic hint}) =>
-    RustLib.instance.api.getMessage(hint: hint);
+Stream<MirrorStructTwinNormal> mirrorStructStreamTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.mirrorStructStreamTwinNormal(hint: hint);
 
-Future<Numbers> repeatNumber(
+Stream<(ApplicationSettings, RawStringEnumMirrored)>
+    mirrorTupleStreamTwinNormal({dynamic hint}) =>
+        RustLib.instance.api.mirrorTupleStreamTwinNormal(hint: hint);
+
+Future<ApplicationMessage> getMessageTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.getMessageTwinNormal(hint: hint);
+
+Future<Numbers> repeatNumberTwinNormal(
         {required int num, required int times, dynamic hint}) =>
-    RustLib.instance.api.repeatNumber(num: num, times: times, hint: hint);
+    RustLib.instance.api
+        .repeatNumberTwinNormal(num: num, times: times, hint: hint);
 
-Future<Sequences> repeatSequence(
+Future<Sequences> repeatSequenceTwinNormal(
         {required int seq, required int times, dynamic hint}) =>
-    RustLib.instance.api.repeatSequence(seq: seq, times: times, hint: hint);
+    RustLib.instance.api
+        .repeatSequenceTwinNormal(seq: seq, times: times, hint: hint);
 
-Future<int?> firstNumber({required Numbers nums, dynamic hint}) =>
-    RustLib.instance.api.firstNumber(nums: nums, hint: hint);
+Future<int?> firstNumberTwinNormal({required Numbers nums, dynamic hint}) =>
+    RustLib.instance.api.firstNumberTwinNormal(nums: nums, hint: hint);
 
-Future<int?> firstSequence({required Sequences seqs, dynamic hint}) =>
-    RustLib.instance.api.firstSequence(seqs: seqs, hint: hint);
+Future<int?> firstSequenceTwinNormal({required Sequences seqs, dynamic hint}) =>
+    RustLib.instance.api.firstSequenceTwinNormal(seqs: seqs, hint: hint);
 
-Future<RawStringMirrored> testRawStringMirrored({dynamic hint}) =>
-    RustLib.instance.api.testRawStringMirrored(hint: hint);
+Future<RawStringMirrored> testRawStringMirroredTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.testRawStringMirroredTwinNormal(hint: hint);
 
-Future<NestedRawStringMirrored> testNestedRawStringMirrored({dynamic hint}) =>
-    RustLib.instance.api.testNestedRawStringMirrored(hint: hint);
+Future<NestedRawStringMirrored> testNestedRawStringMirroredTwinNormal(
+        {dynamic hint}) =>
+    RustLib.instance.api.testNestedRawStringMirroredTwinNormal(hint: hint);
 
-Future<RawStringEnumMirrored> testRawStringEnumMirrored(
+Future<RawStringEnumMirrored> testRawStringEnumMirroredTwinNormal(
         {required bool nested, dynamic hint}) =>
-    RustLib.instance.api.testRawStringEnumMirrored(nested: nested, hint: hint);
+    RustLib.instance.api
+        .testRawStringEnumMirroredTwinNormal(nested: nested, hint: hint);
 
-Future<ListOfNestedRawStringMirrored> testListOfRawNestedStringMirrored(
+Future<ListOfNestedRawStringMirrored>
+    testListOfRawNestedStringMirroredTwinNormal({dynamic hint}) =>
+        RustLib.instance.api
+            .testListOfRawNestedStringMirroredTwinNormal(hint: hint);
+
+Future<List<RawStringMirrored>> testFallibleOfRawStringMirroredTwinNormal(
         {dynamic hint}) =>
-    RustLib.instance.api.testListOfRawNestedStringMirrored(hint: hint);
+    RustLib.instance.api.testFallibleOfRawStringMirroredTwinNormal(hint: hint);
 
-Future<List<RawStringMirrored>> testFallibleOfRawStringMirrored(
+Future<List<RawStringEnumMirrored>> testListOfNestedEnumsMirroredTwinNormal(
         {dynamic hint}) =>
-    RustLib.instance.api.testFallibleOfRawStringMirrored(hint: hint);
+    RustLib.instance.api.testListOfNestedEnumsMirroredTwinNormal(hint: hint);
 
-Future<List<RawStringEnumMirrored>> testListOfNestedEnumsMirrored(
-        {dynamic hint}) =>
-    RustLib.instance.api.testListOfNestedEnumsMirrored(hint: hint);
+Future<ContainsMirroredSubStructTwinNormal>
+    testContainsMirroredSubStructTwinNormal({dynamic hint}) =>
+        RustLib.instance.api
+            .testContainsMirroredSubStructTwinNormal(hint: hint);
 
-Future<ContainsMirroredSubStruct> testContainsMirroredSubStruct(
-        {dynamic hint}) =>
-    RustLib.instance.api.testContainsMirroredSubStruct(hint: hint);
-
-class Another {
+class AnotherTwinNormal {
   final String a;
 
-  const Another({
+  const AnotherTwinNormal({
     required this.a,
   });
 
@@ -85,7 +93,9 @@ class Another {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Another && runtimeType == other.runtimeType && a == other.a;
+      other is AnotherTwinNormal &&
+          runtimeType == other.runtimeType &&
+          a == other.a;
 }
 
 class ApplicationEnv {
@@ -179,11 +189,11 @@ class ApplicationSettings {
           envOptional == other.envOptional;
 }
 
-class ContainsMirroredSubStruct {
+class ContainsMirroredSubStructTwinNormal {
   final RawStringMirrored test;
-  final Another test2;
+  final AnotherTwinNormal test2;
 
-  const ContainsMirroredSubStruct({
+  const ContainsMirroredSubStructTwinNormal({
     required this.test,
     required this.test2,
   });
@@ -194,7 +204,7 @@ class ContainsMirroredSubStruct {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ContainsMirroredSubStruct &&
+      other is ContainsMirroredSubStructTwinNormal &&
           runtimeType == other.runtimeType &&
           test == other.test &&
           test2 == other.test2;
@@ -218,13 +228,13 @@ class ListOfNestedRawStringMirrored {
           raw == other.raw;
 }
 
-class MirrorStruct {
+class MirrorStructTwinNormal {
   final ApplicationSettings a;
   final MyStruct b;
   final List<MyEnum> c;
   final List<ApplicationSettings> d;
 
-  const MirrorStruct({
+  const MirrorStructTwinNormal({
     required this.a,
     required this.b,
     required this.c,
@@ -237,7 +247,7 @@ class MirrorStruct {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is MirrorStruct &&
+      other is MirrorStructTwinNormal &&
           runtimeType == other.runtimeType &&
           a == other.a &&
           b == other.b &&

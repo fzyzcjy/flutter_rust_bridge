@@ -3,22 +3,27 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Object syncLoopback({required Object opaque, dynamic hint}) =>
-    RustLib.instance.api.syncLoopback(opaque: opaque, hint: hint);
+Object syncLoopbackTwinNormal({required Object opaque, dynamic hint}) =>
+    RustLib.instance.api.syncLoopbackTwinNormal(opaque: opaque, hint: hint);
 
-Object? syncOptionLoopback({Object? opaque, dynamic hint}) =>
-    RustLib.instance.api.syncOptionLoopback(opaque: opaque, hint: hint);
+Object? syncOptionLoopbackTwinNormal({Object? opaque, dynamic hint}) =>
+    RustLib.instance.api
+        .syncOptionLoopbackTwinNormal(opaque: opaque, hint: hint);
 
-String syncAcceptDartOpaque({required Object opaque, dynamic hint}) =>
-    RustLib.instance.api.syncAcceptDartOpaque(opaque: opaque, hint: hint);
+String syncAcceptDartOpaqueTwinNormal({required Object opaque, dynamic hint}) =>
+    RustLib.instance.api
+        .syncAcceptDartOpaqueTwinNormal(opaque: opaque, hint: hint);
 
 /// [DartWrapObject] can be safely retrieved on a dart thread.
-String unwrapDartOpaque({required Object opaque, dynamic hint}) =>
-    RustLib.instance.api.unwrapDartOpaque(opaque: opaque, hint: hint);
+String unwrapDartOpaqueTwinNormal({required Object opaque, dynamic hint}) =>
+    RustLib.instance.api.unwrapDartOpaqueTwinNormal(opaque: opaque, hint: hint);
 
-Object returnNonDroppableDartOpaque({required Object opaque, dynamic hint}) =>
+Object returnNonDroppableDartOpaqueTwinNormal(
+        {required Object opaque, dynamic hint}) =>
     RustLib.instance.api
-        .returnNonDroppableDartOpaque(opaque: opaque, hint: hint);
+        .returnNonDroppableDartOpaqueTwinNormal(opaque: opaque, hint: hint);
 
-Object? syncOptionDartOpaque({required Object opaque, dynamic hint}) =>
-    RustLib.instance.api.syncOptionDartOpaque(opaque: opaque, hint: hint);
+Object? syncOptionDartOpaqueTwinNormal(
+        {required Object opaque, dynamic hint}) =>
+    RustLib.instance.api
+        .syncOptionDartOpaqueTwinNormal(opaque: opaque, hint: hint);

@@ -10,19 +10,20 @@ Future<String> funcStringTwinNormal({required String arg, dynamic hint}) =>
 Future<void> funcReturnUnitTwinNormal({dynamic hint}) =>
     RustLib.instance.api.funcReturnUnitTwinNormal(hint: hint);
 
-Future<List<MySize>> handleListOfStruct(
+Future<List<MySize>> handleListOfStructTwinNormal(
         {required List<MySize> l, dynamic hint}) =>
-    RustLib.instance.api.handleListOfStruct(l: l, hint: hint);
+    RustLib.instance.api.handleListOfStructTwinNormal(l: l, hint: hint);
 
-Future<List<String>> handleStringList(
+Future<List<String>> handleStringListTwinNormal(
         {required List<String> names, dynamic hint}) =>
-    RustLib.instance.api.handleStringList(names: names, hint: hint);
+    RustLib.instance.api.handleStringListTwinNormal(names: names, hint: hint);
 
-Future<Empty> emptyStruct({required Empty empty, dynamic hint}) =>
-    RustLib.instance.api.emptyStruct(empty: empty, hint: hint);
+Future<EmptyTwinNormal> emptyStructTwinNormal(
+        {required EmptyTwinNormal empty, dynamic hint}) =>
+    RustLib.instance.api.emptyStructTwinNormal(empty: empty, hint: hint);
 
-class Empty {
-  const Empty();
+class EmptyTwinNormal {
+  const EmptyTwinNormal();
 
   @override
   int get hashCode => 0;
@@ -30,5 +31,5 @@ class Empty {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Empty && runtimeType == other.runtimeType;
+      other is EmptyTwinNormal && runtimeType == other.runtimeType;
 }

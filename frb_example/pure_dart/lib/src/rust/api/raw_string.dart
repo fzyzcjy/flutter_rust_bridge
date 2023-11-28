@@ -3,20 +3,22 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<RawStringItemStruct> testRawStringItemStruct({dynamic hint}) =>
-    RustLib.instance.api.testRawStringItemStruct(hint: hint);
-
-Future<MoreThanJustOneRawStringStruct> testMoreThanJustOneRawStringStruct(
+Future<RawStringItemStructTwinNormal> testRawStringItemStructTwinNormal(
         {dynamic hint}) =>
-    RustLib.instance.api.testMoreThanJustOneRawStringStruct(hint: hint);
+    RustLib.instance.api.testRawStringItemStructTwinNormal(hint: hint);
 
-class MoreThanJustOneRawStringStruct {
+Future<MoreThanJustOneRawStringStructTwinNormal>
+    testMoreThanJustOneRawStringStructTwinNormal({dynamic hint}) =>
+        RustLib.instance.api
+            .testMoreThanJustOneRawStringStructTwinNormal(hint: hint);
+
+class MoreThanJustOneRawStringStructTwinNormal {
   final String regular;
   final String type;
   final bool async;
   final String another;
 
-  const MoreThanJustOneRawStringStruct({
+  const MoreThanJustOneRawStringStructTwinNormal({
     required this.regular,
     required this.type,
     required this.async,
@@ -30,7 +32,7 @@ class MoreThanJustOneRawStringStruct {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is MoreThanJustOneRawStringStruct &&
+      other is MoreThanJustOneRawStringStructTwinNormal &&
           runtimeType == other.runtimeType &&
           regular == other.regular &&
           type == other.type &&
@@ -38,10 +40,10 @@ class MoreThanJustOneRawStringStruct {
           another == other.another;
 }
 
-class RawStringItemStruct {
+class RawStringItemStructTwinNormal {
   final String type;
 
-  const RawStringItemStruct({
+  const RawStringItemStructTwinNormal({
     required this.type,
   });
 
@@ -51,7 +53,7 @@ class RawStringItemStruct {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is RawStringItemStruct &&
+      other is RawStringItemStructTwinNormal &&
           runtimeType == other.runtimeType &&
           type == other.type;
 }

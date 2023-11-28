@@ -3,17 +3,19 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<MacroStruct> funcMacroStruct({required MacroStruct arg, dynamic hint}) =>
-    RustLib.instance.api.funcMacroStruct(arg: arg, hint: hint);
+Future<MacroStruct> funcMacroStructTwinNormal(
+        {required MacroStruct arg, dynamic hint}) =>
+    RustLib.instance.api.funcMacroStructTwinNormal(arg: arg, hint: hint);
 
-Future<AnotherMacroStruct> anotherMacroStruct({dynamic hint}) =>
-    RustLib.instance.api.anotherMacroStruct(hint: hint);
+Future<AnotherMacroStructTwinNormal> anotherMacroStructTwinNormal(
+        {dynamic hint}) =>
+    RustLib.instance.api.anotherMacroStructTwinNormal(hint: hint);
 
-class AnotherMacroStruct {
+class AnotherMacroStructTwinNormal {
   final int data;
   int nonFinalData;
 
-  AnotherMacroStruct({
+  AnotherMacroStructTwinNormal({
     required this.data,
     required this.nonFinalData,
   });
@@ -24,7 +26,7 @@ class AnotherMacroStruct {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is AnotherMacroStruct &&
+      other is AnotherMacroStructTwinNormal &&
           runtimeType == other.runtimeType &&
           data == other.data &&
           nonFinalData == other.nonFinalData;

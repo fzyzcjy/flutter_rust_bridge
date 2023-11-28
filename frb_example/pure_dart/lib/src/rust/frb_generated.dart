@@ -22,18 +22,6 @@ import 'api/optional_primitive_misc.dart';
 import 'api/primitive_list_misc.dart';
 import 'api/primitive_list_sync_misc.dart';
 import 'api/primitive_misc.dart';
-import 'api/pseudo_manual/comment_twin_sync.dart';
-import 'api/pseudo_manual/enumeration_twin_sync.dart';
-import 'api/pseudo_manual/exception_twin_sync.dart';
-import 'api/pseudo_manual/misc_type_twin_sync.dart';
-import 'api/pseudo_manual/optional_primitive.dart';
-import 'api/pseudo_manual/optional_primitive_twin_sync.dart';
-import 'api/pseudo_manual/primitive.dart';
-import 'api/pseudo_manual/primitive_list.dart';
-import 'api/pseudo_manual/primitive_list_twin_sync.dart';
-import 'api/pseudo_manual/primitive_twin_sync.dart';
-import 'api/pseudo_manual/simple_twin_sync.dart';
-import 'api/pseudo_manual/structure_twin_sync.dart';
 import 'api/raw_string.dart';
 import 'api/rust_opaque.dart';
 import 'api/rust_opaque_sync.dart';
@@ -92,58 +80,70 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<Blob> boxedBlob({required U8Array1600 blob, dynamic hint});
+  Future<BlobTwinNormal> boxedBlobTwinNormal(
+      {required U8Array1600 blob, dynamic hint});
 
-  Future<TestId> funcTestId({required TestId id, dynamic hint});
+  Future<TestIdTwinNormal> funcTestIdTwinNormal(
+      {required TestIdTwinNormal id, dynamic hint});
 
-  Future<U8Array5> getArray({dynamic hint});
+  Future<U8Array5> getArrayTwinNormal({dynamic hint});
 
-  Future<PointArray2> getComplexArray({dynamic hint});
+  Future<PointTwinNormalArray2> getComplexArrayTwinNormal({dynamic hint});
 
-  Future<double> lastNumber({required F64Array16 array, dynamic hint});
+  Future<double> lastNumberTwinNormal(
+      {required F64Array16 array, dynamic hint});
 
-  Future<TestIdArray2> nestedId({required TestIdArray4 id, dynamic hint});
+  Future<TestIdTwinNormalArray2> nestedIdTwinNormal(
+      {required TestIdTwinNormalArray4 id, dynamic hint});
 
-  Future<MessageId> newMsgid({required U8Array32 id, dynamic hint});
+  Future<MessageIdTwinNormal> newMsgidTwinNormal(
+      {required U8Array32 id, dynamic hint});
 
-  Future<FeedId> returnBoxedFeedId({required U8Array8 id, dynamic hint});
+  Future<FeedIdTwinNormal> returnBoxedFeedIdTwinNormal(
+      {required U8Array8 id, dynamic hint});
 
-  Future<U8Array8> returnBoxedRawFeedId({required FeedId id, dynamic hint});
+  Future<U8Array8> returnBoxedRawFeedIdTwinNormal(
+      {required FeedIdTwinNormal id, dynamic hint});
 
-  Future<U8Array1600> useBoxedBlob({required Blob blob, dynamic hint});
+  Future<U8Array1600> useBoxedBlobTwinNormal(
+      {required BlobTwinNormal blob, dynamic hint});
 
-  Future<U8Array32> useMsgid({required MessageId id, dynamic hint});
+  Future<U8Array32> useMsgidTwinNormal(
+      {required MessageIdTwinNormal id, dynamic hint});
 
-  Future<void> handleCustomizedStruct({required Customized val, dynamic hint});
+  Future<void> handleCustomizedStructTwinNormal(
+      {required CustomizedTwinNormal val, dynamic hint});
 
-  Future<UserId> nextUserId({required UserId userId, dynamic hint});
+  Future<UserIdTwinNormal> nextUserIdTwinNormal(
+      {required UserIdTwinNormal userId, dynamic hint});
 
-  Future<DateTime> datetimeLocal({required DateTime d, dynamic hint});
+  Future<DateTime> datetimeLocalTwinNormal({required DateTime d, dynamic hint});
 
-  Future<DateTime> datetimeUtc({required DateTime d, dynamic hint});
+  Future<DateTime> datetimeUtcTwinNormal({required DateTime d, dynamic hint});
 
-  Future<Duration> duration({required Duration d, dynamic hint});
+  Future<Duration> durationTwinNormal({required Duration d, dynamic hint});
 
-  Future<List<DateTime>> handleDurations(
+  Future<List<DateTime>> handleDurationsTwinNormal(
       {required List<Duration> durations,
       required DateTime since,
       dynamic hint});
 
-  Future<List<Duration>> handleTimestamps(
+  Future<List<Duration>> handleTimestampsTwinNormal(
       {required List<DateTime> timestamps,
       required DateTime epoch,
       dynamic hint});
 
-  Future<Duration> howLongDoesItTake(
-      {required FeatureChrono mine, dynamic hint});
+  Future<Duration> howLongDoesItTakeTwinNormal(
+      {required FeatureChronoTwinNormal mine, dynamic hint});
 
-  Future<DateTime> naivedatetime({required DateTime d, dynamic hint});
+  Future<DateTime> naivedatetimeTwinNormal({required DateTime d, dynamic hint});
 
-  Future<DateTime?> optionalEmptyDatetimeUtc({DateTime? d, dynamic hint});
+  Future<DateTime?> optionalEmptyDatetimeUtcTwinNormal(
+      {DateTime? d, dynamic hint});
 
-  Future<TestChrono> testChrono({dynamic hint});
+  Future<TestChronoTwinNormal> testChronoTwinNormal({dynamic hint});
 
-  Future<TestChrono> testPreciseChrono({dynamic hint});
+  Future<TestChronoTwinNormal> testPreciseChronoTwinNormal({dynamic hint});
 
   Future<void> structWithCommentsTwinNormalInstanceMethodTwinNormal(
       {required StructWithCommentsTwinNormal that, dynamic hint});
@@ -159,53 +159,63 @@ abstract class RustLibApi extends BaseApi {
   Future<void> functionWithCommentsTripleSlashSingleLineTwinNormal(
       {dynamic hint});
 
-  Future<dynamic> returnDartDynamic({dynamic hint});
+  Future<dynamic> returnDartDynamicTwinNormal({dynamic hint});
 
-  Future<String> asyncAcceptDartOpaque({required Object opaque, dynamic hint});
-
-  Future<EnumDartOpaque> createEnumDartOpaque(
+  Future<String> asyncAcceptDartOpaqueTwinNormal(
       {required Object opaque, dynamic hint});
 
-  Future<DartOpaqueNested> createNestedDartOpaque(
+  Future<EnumDartOpaqueTwinNormal> createEnumDartOpaqueTwinNormal(
+      {required Object opaque, dynamic hint});
+
+  Future<DartOpaqueNestedTwinNormal> createNestedDartOpaqueTwinNormal(
       {required Object opaque1, required Object opaque2, dynamic hint});
 
-  Future<void> dropStaticDartOpaque({dynamic hint});
+  Future<void> dropStaticDartOpaqueTwinNormal({dynamic hint});
 
-  Future<void> getEnumDartOpaque(
-      {required EnumDartOpaque opaque, dynamic hint});
+  Future<void> getEnumDartOpaqueTwinNormal(
+      {required EnumDartOpaqueTwinNormal opaque, dynamic hint});
 
-  Future<void> getNestedDartOpaque(
-      {required DartOpaqueNested opaque, dynamic hint});
+  Future<void> getNestedDartOpaqueTwinNormal(
+      {required DartOpaqueNestedTwinNormal opaque, dynamic hint});
 
-  Future<Object> loopBack({required Object opaque, dynamic hint});
+  Future<void> loopBackArrayGetTwinNormal(
+      {required ObjectArray1 opaque, dynamic hint});
 
-  Future<ObjectArray1> loopBackArray({required Object opaque, dynamic hint});
+  Future<ObjectArray1> loopBackArrayTwinNormal(
+      {required Object opaque, dynamic hint});
 
-  Future<void> loopBackArrayGet({required ObjectArray1 opaque, dynamic hint});
+  Future<void> loopBackOptionGetTwinNormal({Object? opaque, dynamic hint});
 
-  Future<Object?> loopBackOption({required Object opaque, dynamic hint});
+  Future<Object?> loopBackOptionTwinNormal(
+      {required Object opaque, dynamic hint});
 
-  Future<void> loopBackOptionGet({Object? opaque, dynamic hint});
+  Future<Object> loopBackTwinNormal({required Object opaque, dynamic hint});
 
-  Future<List<Object>> loopBackVec({required Object opaque, dynamic hint});
+  Future<void> loopBackVecGetTwinNormal(
+      {required List<Object> opaque, dynamic hint});
 
-  Future<void> loopBackVecGet({required List<Object> opaque, dynamic hint});
+  Future<List<Object>> loopBackVecTwinNormal(
+      {required Object opaque, dynamic hint});
 
-  Future<void> panicUnwrapDartOpaque({required Object opaque, dynamic hint});
+  Future<void> panicUnwrapDartOpaqueTwinNormal(
+      {required Object opaque, dynamic hint});
 
-  Future<void> setStaticDartOpaque({required Object opaque, dynamic hint});
+  Future<void> setStaticDartOpaqueTwinNormal(
+      {required Object opaque, dynamic hint});
 
-  Object returnNonDroppableDartOpaque({required Object opaque, dynamic hint});
+  Object returnNonDroppableDartOpaqueTwinNormal(
+      {required Object opaque, dynamic hint});
 
-  String syncAcceptDartOpaque({required Object opaque, dynamic hint});
+  String syncAcceptDartOpaqueTwinNormal({required Object opaque, dynamic hint});
 
-  Object syncLoopback({required Object opaque, dynamic hint});
+  Object syncLoopbackTwinNormal({required Object opaque, dynamic hint});
 
-  Object? syncOptionDartOpaque({required Object opaque, dynamic hint});
+  Object? syncOptionDartOpaqueTwinNormal(
+      {required Object opaque, dynamic hint});
 
-  Object? syncOptionLoopback({Object? opaque, dynamic hint});
+  Object? syncOptionLoopbackTwinNormal({Object? opaque, dynamic hint});
 
-  String unwrapDartOpaque({required Object opaque, dynamic hint});
+  String unwrapDartOpaqueTwinNormal({required Object opaque, dynamic hint});
 
   Future<EnumSimpleTwinNormal> funcEnumSimpleTwinNormal(
       {required EnumSimpleTwinNormal arg, dynamic hint});
@@ -219,50 +229,60 @@ abstract class RustLibApi extends BaseApi {
   Future<EnumWithItemTupleTwinNormal> funcEnumWithItemTupleTwinNormal(
       {required EnumWithItemTupleTwinNormal arg, dynamic hint});
 
-  Future<Weekdays> handleEnumParameter(
-      {required Weekdays weekday, dynamic hint});
+  Future<WeekdaysTwinNormal> handleEnumParameterTwinNormal(
+      {required WeekdaysTwinNormal weekday, dynamic hint});
 
-  Future<KitchenSink> handleEnumStruct(
-      {required KitchenSink val, dynamic hint});
+  Future<KitchenSinkTwinNormal> handleEnumStructTwinNormal(
+      {required KitchenSinkTwinNormal val, dynamic hint});
 
-  Future<Weekdays?> handleReturnEnum({required String input, dynamic hint});
+  Future<WeekdaysTwinNormal?> handleReturnEnumTwinNormal(
+      {required String input, dynamic hint});
 
-  Future<Measure?> multiplyByTen({required Measure measure, dynamic hint});
+  Future<MeasureTwinNormal?> multiplyByTenTwinNormal(
+      {required MeasureTwinNormal measure, dynamic hint});
 
-  Future<Uint8List> printNote({required Note note, dynamic hint});
+  Future<Uint8List> printNoteTwinNormal(
+      {required NoteTwinNormal note, dynamic hint});
 
-  Future<String> eventAsString({required Event that, dynamic hint});
+  Future<String> eventTwinNormalAsStringTwinNormal(
+      {required EventTwinNormal that, dynamic hint});
 
-  Future<void> closeEventListener({dynamic hint});
+  Future<void> closeEventListenerTwinNormal({dynamic hint});
 
-  Future<void> createEvent(
+  Future<void> createEventTwinNormal(
       {required String address, required String payload, dynamic hint});
 
-  Stream<Event> registerEventListener({dynamic hint});
+  Stream<EventTwinNormal> registerEventListenerTwinNormal({dynamic hint});
 
-  Future<CustomStruct> customStructNew({required String message, dynamic hint});
+  Future<CustomStructTwinNormal> customStructTwinNormalNewTwinNormal(
+      {required String message, dynamic hint});
 
-  Future<void> customStructNonstaticReturnCustomStructError(
-      {required CustomStruct that, dynamic hint});
+  Future<void> customStructTwinNormalNonstaticReturnCustomStructErrorTwinNormal(
+      {required CustomStructTwinNormal that, dynamic hint});
 
-  Future<int> customStructNonstaticReturnCustomStructOk(
-      {required CustomStruct that, dynamic hint});
+  Future<int> customStructTwinNormalNonstaticReturnCustomStructOkTwinNormal(
+      {required CustomStructTwinNormal that, dynamic hint});
 
-  Future<void> customStructStaticReturnCustomStructError({dynamic hint});
+  Future<void> customStructTwinNormalStaticReturnCustomStructErrorTwinNormal(
+      {dynamic hint});
 
-  Future<int> customStructStaticReturnCustomStructOk({dynamic hint});
+  Future<int> customStructTwinNormalStaticReturnCustomStructOkTwinNormal(
+      {dynamic hint});
 
-  Future<SomeStruct> someStructNew({required int value, dynamic hint});
+  Future<SomeStructTwinNormal> someStructTwinNormalNewTwinNormal(
+      {required int value, dynamic hint});
 
-  Future<int> someStructNonStaticReturnErrCustomError(
-      {required SomeStruct that, dynamic hint});
+  Future<int> someStructTwinNormalNonStaticReturnErrCustomErrorTwinNormal(
+      {required SomeStructTwinNormal that, dynamic hint});
 
-  Future<int> someStructNonStaticReturnOkCustomError(
-      {required SomeStruct that, dynamic hint});
+  Future<int> someStructTwinNormalNonStaticReturnOkCustomErrorTwinNormal(
+      {required SomeStructTwinNormal that, dynamic hint});
 
-  Future<int> someStructStaticReturnErrCustomError({dynamic hint});
+  Future<int> someStructTwinNormalStaticReturnErrCustomErrorTwinNormal(
+      {dynamic hint});
 
-  Future<int> someStructStaticReturnOkCustomError({dynamic hint});
+  Future<int> someStructTwinNormalStaticReturnOkCustomErrorTwinNormal(
+      {dynamic hint});
 
   Future<void> customEnumErrorPanicTwinNormal({dynamic hint});
 
@@ -283,492 +303,291 @@ abstract class RustLibApi extends BaseApi {
 
   Future<int> funcTypeInfalliblePanicTwinNormal({dynamic hint});
 
-  Future<void> panicWithCustomResult({dynamic hint});
+  Future<void> panicWithCustomResultTwinNormal({dynamic hint});
 
-  Future<void> returnCustomNestedError1({dynamic hint});
+  Future<void> returnCustomNestedError1TwinNormal({dynamic hint});
 
-  Future<void> returnCustomNestedError1Variant1({dynamic hint});
+  Future<void> returnCustomNestedError1Variant1TwinNormal({dynamic hint});
 
-  Future<void> returnCustomNestedError2({dynamic hint});
+  Future<void> returnCustomNestedError2TwinNormal({dynamic hint});
 
-  Future<void> returnCustomStructError({dynamic hint});
+  Future<void> returnCustomStructErrorTwinNormal({dynamic hint});
 
-  Future<int> returnCustomStructOk({dynamic hint});
+  Future<int> returnCustomStructOkTwinNormal({dynamic hint});
 
-  Future<int> returnErrCustomError({dynamic hint});
+  Future<int> returnErrCustomErrorTwinNormal({dynamic hint});
 
-  Future<int> returnErrorVariant({required int variant, dynamic hint});
+  Future<int> returnErrorVariantTwinNormal(
+      {required int variant, dynamic hint});
 
-  Future<int> returnOkCustomError({dynamic hint});
+  Future<int> returnOkCustomErrorTwinNormal({dynamic hint});
 
-  Stream<String> streamSinkThrowAnyhow({dynamic hint});
+  Stream<String> streamSinkThrowAnyhowTwinNormal({dynamic hint});
 
-  void syncReturnCustomStructError({dynamic hint});
+  void syncReturnCustomStructErrorTwinNormal({dynamic hint});
 
-  Future<void> throwAnyhow({dynamic hint});
+  Future<void> throwAnyhowTwinNormal({dynamic hint});
 
-  Future<NewSimpleStruct> callNewModuleSystem({dynamic hint});
+  Future<NewSimpleStruct> callNewModuleSystemTwinNormal({dynamic hint});
 
-  Future<OldSimpleStruct> callOldModuleSystem({dynamic hint});
+  Future<OldSimpleStruct> callOldModuleSystemTwinNormal({dynamic hint});
 
-  Future<bool> useImportedEnum({required MyEnum myEnum, dynamic hint});
+  Future<bool> useImportedEnumTwinNormal(
+      {required MyEnum myEnum, dynamic hint});
 
-  Future<bool> useImportedStruct({required MyStruct myStruct, dynamic hint});
+  Future<bool> useImportedStructTwinNormal(
+      {required MyStruct myStruct, dynamic hint});
 
-  Future<AnotherMacroStruct> anotherMacroStruct({dynamic hint});
+  Future<AnotherMacroStructTwinNormal> anotherMacroStructTwinNormal(
+      {dynamic hint});
 
-  Future<MacroStruct> funcMacroStruct({required MacroStruct arg, dynamic hint});
+  Future<MacroStruct> funcMacroStructTwinNormal(
+      {required MacroStruct arg, dynamic hint});
 
-  Future<String> concatenateWithConcatenate(
-      {required ConcatenateWith that, required String b, dynamic hint});
-
-  Future<String> concatenateWithConcatenateStatic(
+  Future<String> concatenateWithTwinNormalConcatenateStaticTwinNormal(
       {required String a, required String b, dynamic hint});
 
-  Stream<Log2> concatenateWithHandleSomeStaticStreamSink(
-      {required int key, required int max, dynamic hint});
-
-  Stream<int> concatenateWithHandleSomeStaticStreamSinkSingleArg(
-      {dynamic hint});
-
-  Stream<Log2> concatenateWithHandleSomeStreamSink(
-      {required ConcatenateWith that,
-      required int key,
-      required int max,
+  Future<String> concatenateWithTwinNormalConcatenateTwinNormal(
+      {required ConcatenateWithTwinNormal that,
+      required String b,
       dynamic hint});
 
-  Stream<int> concatenateWithHandleSomeStreamSinkAt1(
-      {required ConcatenateWith that, dynamic hint});
+  Stream<int>
+      concatenateWithTwinNormalHandleSomeStaticStreamSinkSingleArgTwinNormal(
+          {dynamic hint});
 
-  Future<ConcatenateWith> concatenateWithNew({required String a, dynamic hint});
+  Stream<Log2TwinNormal>
+      concatenateWithTwinNormalHandleSomeStaticStreamSinkTwinNormal(
+          {required int key, required int max, dynamic hint});
 
-  Future<int> sumWithSum(
-      {required SumWith that, required int y, required int z, dynamic hint});
+  Stream<int> concatenateWithTwinNormalHandleSomeStreamSinkAt1TwinNormal(
+      {required ConcatenateWithTwinNormal that, dynamic hint});
 
-  Future<SumWithArray3> getSumArray(
+  Stream<Log2TwinNormal>
+      concatenateWithTwinNormalHandleSomeStreamSinkTwinNormal(
+          {required ConcatenateWithTwinNormal that,
+          required int key,
+          required int max,
+          dynamic hint});
+
+  Future<ConcatenateWithTwinNormal> concatenateWithTwinNormalNewTwinNormal(
+      {required String a, dynamic hint});
+
+  Future<int> sumWithTwinNormalSumTwinNormal(
+      {required SumWithTwinNormal that,
+      required int y,
+      required int z,
+      dynamic hint});
+
+  Future<SumWithTwinNormalArray3> getSumArrayTwinNormal(
       {required int a, required int b, required int c, dynamic hint});
 
-  Future<SumWith> getSumStruct({dynamic hint});
+  Future<SumWithTwinNormal> getSumStructTwinNormal({dynamic hint});
 
-  Stream<ApplicationSettings> appSettingsStream({dynamic hint});
+  Stream<ApplicationSettings> appSettingsStreamTwinNormal({dynamic hint});
 
-  Stream<List<ApplicationSettings>> appSettingsVecStream({dynamic hint});
+  Stream<List<ApplicationSettings>> appSettingsVecStreamTwinNormal(
+      {dynamic hint});
 
-  Future<int?> firstNumber({required Numbers nums, dynamic hint});
+  Future<int?> firstNumberTwinNormal({required Numbers nums, dynamic hint});
 
-  Future<int?> firstSequence({required Sequences seqs, dynamic hint});
+  Future<int?> firstSequenceTwinNormal({required Sequences seqs, dynamic hint});
 
-  Future<ApplicationSettings> getAppSettings({dynamic hint});
+  Future<ApplicationSettings> getAppSettingsTwinNormal({dynamic hint});
 
-  Future<ApplicationSettings> getFallibleAppSettings({dynamic hint});
+  Future<ApplicationSettings> getFallibleAppSettingsTwinNormal({dynamic hint});
 
-  Future<ApplicationMessage> getMessage({dynamic hint});
+  Future<ApplicationMessage> getMessageTwinNormal({dynamic hint});
 
-  Future<bool> isAppEmbedded(
+  Future<bool> isAppEmbeddedTwinNormal(
       {required ApplicationSettings appSettings, dynamic hint});
 
-  Stream<MirrorStruct> mirrorStructStream({dynamic hint});
+  Stream<MirrorStructTwinNormal> mirrorStructStreamTwinNormal({dynamic hint});
 
-  Stream<(ApplicationSettings, RawStringEnumMirrored)> mirrorTupleStream(
-      {dynamic hint});
+  Stream<(ApplicationSettings, RawStringEnumMirrored)>
+      mirrorTupleStreamTwinNormal({dynamic hint});
 
-  Future<Numbers> repeatNumber(
+  Future<Numbers> repeatNumberTwinNormal(
       {required int num, required int times, dynamic hint});
 
-  Future<Sequences> repeatSequence(
+  Future<Sequences> repeatSequenceTwinNormal(
       {required int seq, required int times, dynamic hint});
 
-  Future<ContainsMirroredSubStruct> testContainsMirroredSubStruct(
+  Future<ContainsMirroredSubStructTwinNormal>
+      testContainsMirroredSubStructTwinNormal({dynamic hint});
+
+  Future<List<RawStringMirrored>> testFallibleOfRawStringMirroredTwinNormal(
       {dynamic hint});
 
-  Future<List<RawStringMirrored>> testFallibleOfRawStringMirrored(
+  Future<List<RawStringEnumMirrored>> testListOfNestedEnumsMirroredTwinNormal(
       {dynamic hint});
 
-  Future<List<RawStringEnumMirrored>> testListOfNestedEnumsMirrored(
+  Future<ListOfNestedRawStringMirrored>
+      testListOfRawNestedStringMirroredTwinNormal({dynamic hint});
+
+  Future<NestedRawStringMirrored> testNestedRawStringMirroredTwinNormal(
       {dynamic hint});
 
-  Future<ListOfNestedRawStringMirrored> testListOfRawNestedStringMirrored(
-      {dynamic hint});
-
-  Future<NestedRawStringMirrored> testNestedRawStringMirrored({dynamic hint});
-
-  Future<RawStringEnumMirrored> testRawStringEnumMirrored(
+  Future<RawStringEnumMirrored> testRawStringEnumMirroredTwinNormal(
       {required bool nested, dynamic hint});
 
-  Future<RawStringMirrored> testRawStringMirrored({dynamic hint});
+  Future<RawStringMirrored> testRawStringMirroredTwinNormal({dynamic hint});
 
-  Future<BigBuffers> handleBigBuffers({dynamic hint});
+  Future<BigBuffersTwinNormal> handleBigBuffersTwinNormal({dynamic hint});
 
-  Future<MyTreeNode> handleComplexStruct({required MyTreeNode s, dynamic hint});
+  Future<MyTreeNodeTwinNormal> handleComplexStructTwinNormal(
+      {required MyTreeNodeTwinNormal s, dynamic hint});
 
-  Future<MyNestedStruct> handleNestedStruct(
-      {required MyNestedStruct s, dynamic hint});
+  Future<MyNestedStructTwinNormal> handleNestedStructTwinNormal(
+      {required MyNestedStructTwinNormal s, dynamic hint});
 
-  Future<String> handleString({required String s, dynamic hint});
+  Future<String> handleStringTwinNormal({required String s, dynamic hint});
 
-  Future<MySize> handleStruct(
+  MySizeFreezedTwinNormal handleStructSyncFreezedTwinNormal(
+      {required MySizeFreezedTwinNormal arg,
+      required MySizeFreezedTwinNormal boxed,
+      dynamic hint});
+
+  Future<MySize> handleStructTwinNormal(
       {required MySize arg, required MySize boxed, dynamic hint});
 
-  MySizeFreezed handleStructSyncFreezed(
-      {required MySizeFreezed arg, required MySizeFreezed boxed, dynamic hint});
+  Future<Uint8List> handleVecU8TwinNormal({required Uint8List v, dynamic hint});
 
-  Future<Uint8List> handleVecU8({required Uint8List v, dynamic hint});
+  Future<List<WeekdaysTwinNormal>> listOfPrimitiveEnumsTwinNormal(
+      {required List<WeekdaysTwinNormal> weekdays, dynamic hint});
 
-  Future<List<Weekdays>> listOfPrimitiveEnums(
-      {required List<Weekdays> weekdays, dynamic hint});
+  Future<AbcTwinNormal> testAbcEnumTwinNormal(
+      {required AbcTwinNormal abc, dynamic hint});
 
-  Future<Abc> testAbcEnum({required Abc abc, dynamic hint});
+  Future<StructWithEnumTwinNormal> testStructWithEnumTwinNormal(
+      {required StructWithEnumTwinNormal se, dynamic hint});
 
-  Future<StructWithEnum> testStructWithEnum(
-      {required StructWithEnum se, dynamic hint});
-
-  Future<Empty> emptyStruct({required Empty empty, dynamic hint});
+  Future<EmptyTwinNormal> emptyStructTwinNormal(
+      {required EmptyTwinNormal empty, dynamic hint});
 
   Future<void> funcReturnUnitTwinNormal({dynamic hint});
 
   Future<String> funcStringTwinNormal({required String arg, dynamic hint});
 
-  Future<List<MySize>> handleListOfStruct(
+  Future<List<MySize>> handleListOfStructTwinNormal(
       {required List<MySize> l, dynamic hint});
 
-  Future<List<String>> handleStringList(
+  Future<List<String>> handleStringListTwinNormal(
       {required List<String> names, dynamic hint});
 
-  Future<NewTypeInt> handleNewtype({required NewTypeInt arg, dynamic hint});
+  Future<NewTypeIntTwinNormal> handleNewtypeTwinNormal(
+      {required NewTypeIntTwinNormal arg, dynamic hint});
 
-  Future<double> handleIncrementBoxedOptional({double? opt, dynamic hint});
+  Future<double> handleIncrementBoxedOptionalTwinNormal(
+      {double? opt, dynamic hint});
 
-  Future<String> handleOptionBoxArguments(
+  Future<String> handleOptionBoxArgumentsTwinNormal(
       {int? i8Box,
       int? u8Box,
       int? i32Box,
       int? i64Box,
       double? f64Box,
       bool? boolbox,
-      ExoticOptionals? structbox,
+      ExoticOptionalsTwinNormal? structbox,
       dynamic hint});
 
-  Future<ExoticOptionals?> handleOptionalIncrement(
-      {ExoticOptionals? opt, dynamic hint});
+  Future<ExoticOptionalsTwinNormal?> handleOptionalIncrementTwinNormal(
+      {ExoticOptionalsTwinNormal? opt, dynamic hint});
 
-  Future<double?> handleOptionalReturn(
+  Future<double?> handleOptionalReturnTwinNormal(
       {required double left, required double right, dynamic hint});
 
-  Future<Element?> handleOptionalStruct({String? document, dynamic hint});
+  Future<ElementTwinNormal?> handleOptionalStructTwinNormal(
+      {String? document, dynamic hint});
 
-  Future<OptVecs> handleVecOfOpts({required OptVecs opt, dynamic hint});
+  Future<OptVecsTwinNormal> handleVecOfOptsTwinNormal(
+      {required OptVecsTwinNormal opt, dynamic hint});
 
-  String? syncOption({dynamic hint});
+  String? syncOptionNullTwinNormal({dynamic hint});
 
-  String? syncOptionNull({dynamic hint});
+  String? syncOptionTwinNormal({dynamic hint});
 
-  Future<int?> primitiveOptionalTypes(
+  Future<int?> primitiveOptionalTypesTwinNormal(
       {int? myI32, int? myI64, double? myF64, bool? myBool, dynamic hint});
 
-  Future<VecOfPrimitivePack> handleVecOfPrimitive(
+  Future<VecOfPrimitivePackTwinNormal> handleVecOfPrimitiveTwinNormal(
       {required int n, dynamic hint});
 
-  Future<ZeroCopyVecOfPrimitivePack> handleZeroCopyVecOfPrimitive(
-      {required int n, dynamic hint});
+  Future<ZeroCopyVecOfPrimitivePackTwinNormal>
+      handleZeroCopyVecOfPrimitiveTwinNormal({required int n, dynamic hint});
 
-  ZeroCopyVecOfPrimitivePack handleZeroCopyVecOfPrimitiveSync(
-      {required int n, dynamic hint});
+  ZeroCopyVecOfPrimitivePackTwinNormal
+      handleZeroCopyVecOfPrimitiveSyncTwinNormal(
+          {required int n, dynamic hint});
 
-  Future<int> primitiveTypes(
+  Future<int> primitiveTypesTwinNormal(
       {required int myI32,
       required int myI64,
       required double myF64,
       required bool myBool,
       dynamic hint});
 
-  Future<int> primitiveU32({required int myU32, dynamic hint});
+  Future<int> primitiveU32TwinNormal({required int myU32, dynamic hint});
 
-  void structWithCommentsTwinSyncInstanceMethodTwinSync(
-      {required StructWithCommentsTwinSync that, dynamic hint});
+  Future<MoreThanJustOneRawStringStructTwinNormal>
+      testMoreThanJustOneRawStringStructTwinNormal({dynamic hint});
 
-  void structWithCommentsTwinSyncStaticMethodTwinSync({dynamic hint});
-
-  void functionWithCommentsSlashStarStarTwinSync({dynamic hint});
-
-  void functionWithCommentsTripleSlashMultiLineTwinSync({dynamic hint});
-
-  void functionWithCommentsTripleSlashSingleLineTwinSync({dynamic hint});
-
-  EnumSimpleTwinSync funcEnumSimpleTwinSync(
-      {required EnumSimpleTwinSync arg, dynamic hint});
-
-  EnumWithItemMixedTwinSync funcEnumWithItemMixedTwinSync(
-      {required EnumWithItemMixedTwinSync arg, dynamic hint});
-
-  EnumWithItemStructTwinSync funcEnumWithItemStructTwinSync(
-      {required EnumWithItemStructTwinSync arg, dynamic hint});
-
-  EnumWithItemTupleTwinSync funcEnumWithItemTupleTwinSync(
-      {required EnumWithItemTupleTwinSync arg, dynamic hint});
-
-  void customEnumErrorPanicTwinSync({dynamic hint});
-
-  int customEnumErrorReturnErrorTwinSync({dynamic hint});
-
-  int customEnumErrorReturnOkTwinSync({required int arg, dynamic hint});
-
-  void customNestedErrorReturnErrorTwinSync(
-      {required CustomNestedErrorOuterTwinSync arg, dynamic hint});
-
-  void customStructErrorReturnErrorTwinSync(
-      {required CustomStructErrorTwinSync arg, dynamic hint});
-
-  int funcReturnErrorTwinSync({dynamic hint});
-
-  int funcTypeFalliblePanicTwinSync({dynamic hint});
-
-  int funcTypeInfalliblePanicTwinSync({dynamic hint});
-
-  void funcReturnUnitTwinSync({dynamic hint});
-
-  String funcStringTwinSync({required String arg, dynamic hint});
-
-  Future<bool?> exampleOptionalPrimitiveTypeBoolTwinNormal(
-      {bool? arg, dynamic hint});
-
-  Future<double?> exampleOptionalPrimitiveTypeF32TwinNormal(
-      {double? arg, dynamic hint});
-
-  Future<double?> exampleOptionalPrimitiveTypeF64TwinNormal(
-      {double? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeI16TwinNormal(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeI32TwinNormal(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeI64TwinNormal(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeI8TwinNormal(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeU16TwinNormal(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeU32TwinNormal(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeU64TwinNormal(
-      {int? arg, dynamic hint});
-
-  Future<int?> exampleOptionalPrimitiveTypeU8TwinNormal(
-      {int? arg, dynamic hint});
-
-  bool? exampleOptionalPrimitiveTypeBoolTwinSync({bool? arg, dynamic hint});
-
-  double? exampleOptionalPrimitiveTypeF32TwinSync({double? arg, dynamic hint});
-
-  double? exampleOptionalPrimitiveTypeF64TwinSync({double? arg, dynamic hint});
-
-  int? exampleOptionalPrimitiveTypeI16TwinSync({int? arg, dynamic hint});
-
-  int? exampleOptionalPrimitiveTypeI32TwinSync({int? arg, dynamic hint});
-
-  int? exampleOptionalPrimitiveTypeI64TwinSync({int? arg, dynamic hint});
-
-  int? exampleOptionalPrimitiveTypeI8TwinSync({int? arg, dynamic hint});
-
-  int? exampleOptionalPrimitiveTypeU16TwinSync({int? arg, dynamic hint});
-
-  int? exampleOptionalPrimitiveTypeU32TwinSync({int? arg, dynamic hint});
-
-  int? exampleOptionalPrimitiveTypeU64TwinSync({int? arg, dynamic hint});
-
-  int? exampleOptionalPrimitiveTypeU8TwinSync({int? arg, dynamic hint});
-
-  Future<bool> examplePrimitiveTypeBoolTwinNormal(
-      {required bool arg, dynamic hint});
-
-  Future<double> examplePrimitiveTypeF32TwinNormal(
-      {required double arg, dynamic hint});
-
-  Future<double> examplePrimitiveTypeF64TwinNormal(
-      {required double arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeI16TwinNormal(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeI32TwinNormal(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeI64TwinNormal(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeI8TwinNormal(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeU16TwinNormal(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeU32TwinNormal(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeU64TwinNormal(
-      {required int arg, dynamic hint});
-
-  Future<int> examplePrimitiveTypeU8TwinNormal(
-      {required int arg, dynamic hint});
-
-  Future<List<bool>> examplePrimitiveListTypeBoolTwinNormal(
-      {required List<bool> arg, dynamic hint});
-
-  Future<Float32List> examplePrimitiveListTypeF32TwinNormal(
-      {required Float32List arg, dynamic hint});
-
-  Future<Float64List> examplePrimitiveListTypeF64TwinNormal(
-      {required Float64List arg, dynamic hint});
-
-  Future<Int16List> examplePrimitiveListTypeI16TwinNormal(
-      {required Int16List arg, dynamic hint});
-
-  Future<Int32List> examplePrimitiveListTypeI32TwinNormal(
-      {required Int32List arg, dynamic hint});
-
-  Future<Int64List> examplePrimitiveListTypeI64TwinNormal(
-      {required Int64List arg, dynamic hint});
-
-  Future<Int8List> examplePrimitiveListTypeI8TwinNormal(
-      {required Int8List arg, dynamic hint});
-
-  Future<Uint16List> examplePrimitiveListTypeU16TwinNormal(
-      {required Uint16List arg, dynamic hint});
-
-  Future<Uint32List> examplePrimitiveListTypeU32TwinNormal(
-      {required Uint32List arg, dynamic hint});
-
-  Future<Uint64List> examplePrimitiveListTypeU64TwinNormal(
-      {required Uint64List arg, dynamic hint});
-
-  Future<Uint8List> examplePrimitiveListTypeU8TwinNormal(
-      {required Uint8List arg, dynamic hint});
-
-  List<bool> examplePrimitiveListTypeBoolTwinSync(
-      {required List<bool> arg, dynamic hint});
-
-  Float32List examplePrimitiveListTypeF32TwinSync(
-      {required Float32List arg, dynamic hint});
-
-  Float64List examplePrimitiveListTypeF64TwinSync(
-      {required Float64List arg, dynamic hint});
-
-  Int16List examplePrimitiveListTypeI16TwinSync(
-      {required Int16List arg, dynamic hint});
-
-  Int32List examplePrimitiveListTypeI32TwinSync(
-      {required Int32List arg, dynamic hint});
-
-  Int64List examplePrimitiveListTypeI64TwinSync(
-      {required Int64List arg, dynamic hint});
-
-  Int8List examplePrimitiveListTypeI8TwinSync(
-      {required Int8List arg, dynamic hint});
-
-  Uint16List examplePrimitiveListTypeU16TwinSync(
-      {required Uint16List arg, dynamic hint});
-
-  Uint32List examplePrimitiveListTypeU32TwinSync(
-      {required Uint32List arg, dynamic hint});
-
-  Uint64List examplePrimitiveListTypeU64TwinSync(
-      {required Uint64List arg, dynamic hint});
-
-  Uint8List examplePrimitiveListTypeU8TwinSync(
-      {required Uint8List arg, dynamic hint});
-
-  bool examplePrimitiveTypeBoolTwinSync({required bool arg, dynamic hint});
-
-  double examplePrimitiveTypeF32TwinSync({required double arg, dynamic hint});
-
-  double examplePrimitiveTypeF64TwinSync({required double arg, dynamic hint});
-
-  int examplePrimitiveTypeI16TwinSync({required int arg, dynamic hint});
-
-  int examplePrimitiveTypeI32TwinSync({required int arg, dynamic hint});
-
-  int examplePrimitiveTypeI64TwinSync({required int arg, dynamic hint});
-
-  int examplePrimitiveTypeI8TwinSync({required int arg, dynamic hint});
-
-  int examplePrimitiveTypeU16TwinSync({required int arg, dynamic hint});
-
-  int examplePrimitiveTypeU32TwinSync({required int arg, dynamic hint});
-
-  int examplePrimitiveTypeU64TwinSync({required int arg, dynamic hint});
-
-  int examplePrimitiveTypeU8TwinSync({required int arg, dynamic hint});
-
-  int simpleAdderTwinSync({required int a, required int b, dynamic hint});
-
-  StructWithOneFieldTwinSync funcStructWithOneFieldTwinSync(
-      {required StructWithOneFieldTwinSync arg, dynamic hint});
-
-  StructWithTwoFieldTwinSync funcStructWithTwoFieldTwinSync(
-      {required StructWithTwoFieldTwinSync arg, dynamic hint});
-
-  StructWithZeroFieldTwinSync funcStructWithZeroFieldTwinSync(
-      {required StructWithZeroFieldTwinSync arg, dynamic hint});
-
-  TupleStructWithOneFieldTwinSync funcTupleStructWithOneFieldTwinSync(
-      {required TupleStructWithOneFieldTwinSync arg, dynamic hint});
-
-  TupleStructWithTwoFieldTwinSync funcTupleStructWithTwoFieldTwinSync(
-      {required TupleStructWithTwoFieldTwinSync arg, dynamic hint});
-
-  Future<MoreThanJustOneRawStringStruct> testMoreThanJustOneRawStringStruct(
+  Future<RawStringItemStructTwinNormal> testRawStringItemStructTwinNormal(
       {dynamic hint});
 
-  Future<RawStringItemStruct> testRawStringItemStruct({dynamic hint});
+  Future<EnumOpaqueTwinNormalArray5> createArrayOpaqueEnumTwinNormal(
+      {dynamic hint});
 
-  Future<EnumOpaqueArray5> createArrayOpaqueEnum({dynamic hint});
+  Future<OpaqueNestedTwinNormal> createNestedOpaqueTwinNormal({dynamic hint});
 
-  Future<OpaqueNested> createNestedOpaque({dynamic hint});
+  Future<HideData> createOpaqueTwinNormal({dynamic hint});
 
-  Future<HideData> createOpaque({dynamic hint});
+  Future<HideData?> createOptionOpaqueTwinNormal(
+      {HideData? opaque, dynamic hint});
 
-  Future<HideData?> createOptionOpaque({HideData? opaque, dynamic hint});
+  Future<NonSendHideData> createSyncOpaqueTwinNormal({dynamic hint});
 
-  Future<NonSendHideData> createSyncOpaque({dynamic hint});
+  Future<FrbOpaqueReturn> frbGeneratorTestTwinNormal({dynamic hint});
 
-  Future<FrbOpaqueReturn> frbGeneratorTest({dynamic hint});
+  Future<void> opaqueArrayRunTwinNormal(
+      {required HideDataArray2 data, dynamic hint});
 
-  Future<HideDataArray2> opaqueArray({dynamic hint});
+  Future<HideDataArray2> opaqueArrayTwinNormal({dynamic hint});
 
-  Future<void> opaqueArrayRun({required HideDataArray2 data, dynamic hint});
+  Future<void> opaqueVecRunTwinNormal(
+      {required List<HideData> data, dynamic hint});
 
-  Future<List<HideData>> opaqueVec({dynamic hint});
+  Future<List<HideData>> opaqueVecTwinNormal({dynamic hint});
 
-  Future<void> opaqueVecRun({required List<HideData> data, dynamic hint});
+  Future<String> runEnumOpaqueTwinNormal(
+      {required EnumOpaqueTwinNormal opaque, dynamic hint});
 
-  Future<String> runEnumOpaque({required EnumOpaque opaque, dynamic hint});
+  Future<void> runNestedOpaqueTwinNormal(
+      {required OpaqueNestedTwinNormal opaque, dynamic hint});
 
-  Future<void> runNestedOpaque({required OpaqueNested opaque, dynamic hint});
+  Future<String> runNonCloneTwinNormal(
+      {required NonCloneData clone, dynamic hint});
 
-  Future<String> runNonClone({required NonCloneData clone, dynamic hint});
+  Future<String> runOpaqueTwinNormal({required HideData opaque, dynamic hint});
 
-  Future<String> runOpaque({required HideData opaque, dynamic hint});
+  Future<String> runOpaqueWithDelayTwinNormal(
+      {required HideData opaque, dynamic hint});
 
-  Future<String> runOpaqueWithDelay({required HideData opaque, dynamic hint});
+  Future<String> unwrapRustOpaqueTwinNormal(
+      {required HideData opaque, dynamic hint});
 
-  Future<String> unwrapRustOpaque({required HideData opaque, dynamic hint});
+  FrbOpaqueSyncReturn frbSyncGeneratorTestTwinNormal({dynamic hint});
 
-  FrbOpaqueSyncReturn frbSyncGeneratorTest({dynamic hint});
+  NonCloneData syncCreateNonCloneTwinNormal({dynamic hint});
 
-  NonCloneData syncCreateNonClone({dynamic hint});
+  HideData syncCreateOpaqueTwinNormal({dynamic hint});
 
-  HideData syncCreateOpaque({dynamic hint});
+  NonSendHideData syncCreateSyncOpaqueTwinNormal({dynamic hint});
 
-  NonSendHideData syncCreateSyncOpaque({dynamic hint});
+  HideData? syncOptionRustOpaqueTwinNormal({dynamic hint});
 
-  HideData? syncOptionRustOpaque({dynamic hint});
-
-  String syncRunOpaque({required NonSendHideData opaque, dynamic hint});
+  String syncRunOpaqueTwinNormal(
+      {required NonSendHideData opaque, dynamic hint});
 
   Future<int> simpleAdderTwinNormal(
       {required int a, required int b, dynamic hint});
@@ -783,15 +602,16 @@ abstract class RustLibApi extends BaseApi {
   Stream<int> funcStreamSinkArgPositionTwinNormal(
       {required int a, required int b, dynamic hint});
 
-  Stream<MyStreamEntry> handleStreamOfStruct({dynamic hint});
+  Stream<MyStreamEntryTwinNormal> handleStreamOfStructTwinNormal(
+      {dynamic hint});
 
-  Stream<Log> handleStreamSinkAt1(
+  Stream<LogTwinNormal> handleStreamSinkAt1TwinNormal(
       {required int key, required int max, dynamic hint});
 
-  Stream<Log> handleStreamSinkAt2(
+  Stream<LogTwinNormal> handleStreamSinkAt2TwinNormal(
       {required int key, required int max, dynamic hint});
 
-  Stream<Log> handleStreamSinkAt3(
+  Stream<LogTwinNormal> handleStreamSinkAt3TwinNormal(
       {required int key, required int max, dynamic hint});
 
   Future<StructWithOneFieldTwinNormal> funcStructWithOneFieldTwinNormal(
@@ -811,22 +631,26 @@ abstract class RustLibApi extends BaseApi {
       funcTupleStructWithTwoFieldTwinNormal(
           {required TupleStructWithTwoFieldTwinNormal arg, dynamic hint});
 
-  Future<(String, int)> testTuple({(String, int)? value, dynamic hint});
+  Future<void> testTuple2TwinNormal(
+      {required List<(String, int)> value, dynamic hint});
 
-  Future<void> testTuple2({required List<(String, int)> value, dynamic hint});
+  Future<(String, int)> testTupleTwinNormal(
+      {(String, int)? value, dynamic hint});
 
-  Future<int> handleTypeAliasId({required int input, dynamic hint});
+  Future<int> handleTypeAliasIdTwinNormal({required int input, dynamic hint});
 
-  Future<TestModel> handleTypeAliasModel({required int input, dynamic hint});
+  Future<TestModelTwinNormal> handleTypeAliasModelTwinNormal(
+      {required int input, dynamic hint});
 
-  Future<int> handleTypeNestAliasId({required int input, dynamic hint});
+  Future<int> handleTypeNestAliasIdTwinNormal(
+      {required int input, dynamic hint});
 
-  Future<FeatureUuid> handleNestedUuids(
-      {required FeatureUuid ids, dynamic hint});
+  Future<FeatureUuidTwinNormal> handleNestedUuidsTwinNormal(
+      {required FeatureUuidTwinNormal ids, dynamic hint});
 
-  Future<UuidValue> handleUuid({required UuidValue id, dynamic hint});
+  Future<UuidValue> handleUuidTwinNormal({required UuidValue id, dynamic hint});
 
-  Future<List<UuidValue>> handleUuids(
+  Future<List<UuidValue>> handleUuidsTwinNormal(
       {required List<UuidValue> ids, dynamic hint});
 
   OpaqueShareFnType get shareOpaqueMutexHideData;
@@ -893,444 +717,471 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<Blob> boxedBlob({required U8Array1600 blob, dynamic hint}) {
+  Future<BlobTwinNormal> boxedBlobTwinNormal(
+      {required U8Array1600 blob, dynamic hint}) {
     var arg0 = api2wire_box_u_8_array_1600(blob);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_boxed_blob(port_, arg0),
-      parseSuccessData: _wire2api_blob,
+      callFfi: (port_) => wire.wire_boxed_blob_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_blob_twin_normal,
       parseErrorData: null,
-      constMeta: kBoxedBlobConstMeta,
+      constMeta: kBoxedBlobTwinNormalConstMeta,
       argValues: [blob],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kBoxedBlobConstMeta => const TaskConstMeta(
-        debugName: "boxed_blob",
+  TaskConstMeta get kBoxedBlobTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "boxed_blob_twin_normal",
         argNames: ["blob"],
       );
 
   @override
-  Future<TestId> funcTestId({required TestId id, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_test_id(id);
+  Future<TestIdTwinNormal> funcTestIdTwinNormal(
+      {required TestIdTwinNormal id, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_test_id_twin_normal(id);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_func_test_id(port_, arg0),
-      parseSuccessData: _wire2api_test_id,
+      callFfi: (port_) => wire.wire_func_test_id_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_test_id_twin_normal,
       parseErrorData: null,
-      constMeta: kFuncTestIdConstMeta,
+      constMeta: kFuncTestIdTwinNormalConstMeta,
       argValues: [id],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kFuncTestIdConstMeta => const TaskConstMeta(
-        debugName: "func_test_id",
+  TaskConstMeta get kFuncTestIdTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "func_test_id_twin_normal",
         argNames: ["id"],
       );
 
   @override
-  Future<U8Array5> getArray({dynamic hint}) {
+  Future<U8Array5> getArrayTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_get_array(port_),
+      callFfi: (port_) => wire.wire_get_array_twin_normal(port_),
       parseSuccessData: _wire2api_u_8_array_5,
       parseErrorData: null,
-      constMeta: kGetArrayConstMeta,
+      constMeta: kGetArrayTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kGetArrayConstMeta => const TaskConstMeta(
-        debugName: "get_array",
+  TaskConstMeta get kGetArrayTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "get_array_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<PointArray2> getComplexArray({dynamic hint}) {
+  Future<PointTwinNormalArray2> getComplexArrayTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_get_complex_array(port_),
-      parseSuccessData: _wire2api_point_array_2,
+      callFfi: (port_) => wire.wire_get_complex_array_twin_normal(port_),
+      parseSuccessData: _wire2api_point_twin_normal_array_2,
       parseErrorData: null,
-      constMeta: kGetComplexArrayConstMeta,
+      constMeta: kGetComplexArrayTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kGetComplexArrayConstMeta => const TaskConstMeta(
-        debugName: "get_complex_array",
+  TaskConstMeta get kGetComplexArrayTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "get_complex_array_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<double> lastNumber({required F64Array16 array, dynamic hint}) {
+  Future<double> lastNumberTwinNormal(
+      {required F64Array16 array, dynamic hint}) {
     var arg0 = api2wire_f_64_array_16(array);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_last_number(port_, arg0),
+      callFfi: (port_) => wire.wire_last_number_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_f_64,
       parseErrorData: null,
-      constMeta: kLastNumberConstMeta,
+      constMeta: kLastNumberTwinNormalConstMeta,
       argValues: [array],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kLastNumberConstMeta => const TaskConstMeta(
-        debugName: "last_number",
+  TaskConstMeta get kLastNumberTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "last_number_twin_normal",
         argNames: ["array"],
       );
 
   @override
-  Future<TestIdArray2> nestedId({required TestIdArray4 id, dynamic hint}) {
-    var arg0 = api2wire_test_id_array_4(id);
+  Future<TestIdTwinNormalArray2> nestedIdTwinNormal(
+      {required TestIdTwinNormalArray4 id, dynamic hint}) {
+    var arg0 = api2wire_test_id_twin_normal_array_4(id);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_nested_id(port_, arg0),
-      parseSuccessData: _wire2api_test_id_array_2,
+      callFfi: (port_) => wire.wire_nested_id_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_test_id_twin_normal_array_2,
       parseErrorData: null,
-      constMeta: kNestedIdConstMeta,
+      constMeta: kNestedIdTwinNormalConstMeta,
       argValues: [id],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kNestedIdConstMeta => const TaskConstMeta(
-        debugName: "nested_id",
+  TaskConstMeta get kNestedIdTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "nested_id_twin_normal",
         argNames: ["id"],
       );
 
   @override
-  Future<MessageId> newMsgid({required U8Array32 id, dynamic hint}) {
+  Future<MessageIdTwinNormal> newMsgidTwinNormal(
+      {required U8Array32 id, dynamic hint}) {
     var arg0 = api2wire_u_8_array_32(id);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_new_msgid(port_, arg0),
-      parseSuccessData: _wire2api_message_id,
+      callFfi: (port_) => wire.wire_new_msgid_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_message_id_twin_normal,
       parseErrorData: null,
-      constMeta: kNewMsgidConstMeta,
+      constMeta: kNewMsgidTwinNormalConstMeta,
       argValues: [id],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kNewMsgidConstMeta => const TaskConstMeta(
-        debugName: "new_msgid",
+  TaskConstMeta get kNewMsgidTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "new_msgid_twin_normal",
         argNames: ["id"],
       );
 
   @override
-  Future<FeedId> returnBoxedFeedId({required U8Array8 id, dynamic hint}) {
+  Future<FeedIdTwinNormal> returnBoxedFeedIdTwinNormal(
+      {required U8Array8 id, dynamic hint}) {
     var arg0 = api2wire_u_8_array_8(id);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_return_boxed_feed_id(port_, arg0),
-      parseSuccessData: _wire2api_box_feed_id,
+      callFfi: (port_) =>
+          wire.wire_return_boxed_feed_id_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_box_feed_id_twin_normal,
       parseErrorData: null,
-      constMeta: kReturnBoxedFeedIdConstMeta,
+      constMeta: kReturnBoxedFeedIdTwinNormalConstMeta,
       argValues: [id],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kReturnBoxedFeedIdConstMeta => const TaskConstMeta(
-        debugName: "return_boxed_feed_id",
+  TaskConstMeta get kReturnBoxedFeedIdTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "return_boxed_feed_id_twin_normal",
         argNames: ["id"],
       );
 
   @override
-  Future<U8Array8> returnBoxedRawFeedId({required FeedId id, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_feed_id(id);
+  Future<U8Array8> returnBoxedRawFeedIdTwinNormal(
+      {required FeedIdTwinNormal id, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_feed_id_twin_normal(id);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_return_boxed_raw_feed_id(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_return_boxed_raw_feed_id_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_box_u_8_array_8,
       parseErrorData: null,
-      constMeta: kReturnBoxedRawFeedIdConstMeta,
+      constMeta: kReturnBoxedRawFeedIdTwinNormalConstMeta,
       argValues: [id],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kReturnBoxedRawFeedIdConstMeta => const TaskConstMeta(
-        debugName: "return_boxed_raw_feed_id",
+  TaskConstMeta get kReturnBoxedRawFeedIdTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "return_boxed_raw_feed_id_twin_normal",
         argNames: ["id"],
       );
 
   @override
-  Future<U8Array1600> useBoxedBlob({required Blob blob, dynamic hint}) {
-    var arg0 = api2wire_box_blob(blob);
+  Future<U8Array1600> useBoxedBlobTwinNormal(
+      {required BlobTwinNormal blob, dynamic hint}) {
+    var arg0 = api2wire_box_blob_twin_normal(blob);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_use_boxed_blob(port_, arg0),
+      callFfi: (port_) => wire.wire_use_boxed_blob_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_u_8_array_1600,
       parseErrorData: null,
-      constMeta: kUseBoxedBlobConstMeta,
+      constMeta: kUseBoxedBlobTwinNormalConstMeta,
       argValues: [blob],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kUseBoxedBlobConstMeta => const TaskConstMeta(
-        debugName: "use_boxed_blob",
+  TaskConstMeta get kUseBoxedBlobTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "use_boxed_blob_twin_normal",
         argNames: ["blob"],
       );
 
   @override
-  Future<U8Array32> useMsgid({required MessageId id, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_message_id(id);
+  Future<U8Array32> useMsgidTwinNormal(
+      {required MessageIdTwinNormal id, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_message_id_twin_normal(id);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_use_msgid(port_, arg0),
+      callFfi: (port_) => wire.wire_use_msgid_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_u_8_array_32,
       parseErrorData: null,
-      constMeta: kUseMsgidConstMeta,
+      constMeta: kUseMsgidTwinNormalConstMeta,
       argValues: [id],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kUseMsgidConstMeta => const TaskConstMeta(
-        debugName: "use_msgid",
+  TaskConstMeta get kUseMsgidTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "use_msgid_twin_normal",
         argNames: ["id"],
       );
 
   @override
-  Future<void> handleCustomizedStruct({required Customized val, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_customized(val);
+  Future<void> handleCustomizedStructTwinNormal(
+      {required CustomizedTwinNormal val, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_customized_twin_normal(val);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_customized_struct(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_handle_customized_struct_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
-      constMeta: kHandleCustomizedStructConstMeta,
+      constMeta: kHandleCustomizedStructTwinNormalConstMeta,
       argValues: [val],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleCustomizedStructConstMeta => const TaskConstMeta(
-        debugName: "handle_customized_struct",
+  TaskConstMeta get kHandleCustomizedStructTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_customized_struct_twin_normal",
         argNames: ["val"],
       );
 
   @override
-  Future<UserId> nextUserId({required UserId userId, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_user_id(userId);
+  Future<UserIdTwinNormal> nextUserIdTwinNormal(
+      {required UserIdTwinNormal userId, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_user_id_twin_normal(userId);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_next_user_id(port_, arg0),
-      parseSuccessData: _wire2api_user_id,
+      callFfi: (port_) => wire.wire_next_user_id_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_user_id_twin_normal,
       parseErrorData: null,
-      constMeta: kNextUserIdConstMeta,
+      constMeta: kNextUserIdTwinNormalConstMeta,
       argValues: [userId],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kNextUserIdConstMeta => const TaskConstMeta(
-        debugName: "next_user_id",
+  TaskConstMeta get kNextUserIdTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "next_user_id_twin_normal",
         argNames: ["userId"],
       );
 
   @override
-  Future<DateTime> datetimeLocal({required DateTime d, dynamic hint}) {
+  Future<DateTime> datetimeLocalTwinNormal(
+      {required DateTime d, dynamic hint}) {
     var arg0 = api2wire_Chrono_Local(d);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_datetime_local(port_, arg0),
+      callFfi: (port_) => wire.wire_datetime_local_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_Chrono_Local,
       parseErrorData: null,
-      constMeta: kDatetimeLocalConstMeta,
+      constMeta: kDatetimeLocalTwinNormalConstMeta,
       argValues: [d],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kDatetimeLocalConstMeta => const TaskConstMeta(
-        debugName: "datetime_local",
+  TaskConstMeta get kDatetimeLocalTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "datetime_local_twin_normal",
         argNames: ["d"],
       );
 
   @override
-  Future<DateTime> datetimeUtc({required DateTime d, dynamic hint}) {
+  Future<DateTime> datetimeUtcTwinNormal({required DateTime d, dynamic hint}) {
     var arg0 = api2wire_Chrono_Utc(d);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_datetime_utc(port_, arg0),
+      callFfi: (port_) => wire.wire_datetime_utc_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_Chrono_Utc,
       parseErrorData: null,
-      constMeta: kDatetimeUtcConstMeta,
+      constMeta: kDatetimeUtcTwinNormalConstMeta,
       argValues: [d],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kDatetimeUtcConstMeta => const TaskConstMeta(
-        debugName: "datetime_utc",
+  TaskConstMeta get kDatetimeUtcTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "datetime_utc_twin_normal",
         argNames: ["d"],
       );
 
   @override
-  Future<Duration> duration({required Duration d, dynamic hint}) {
+  Future<Duration> durationTwinNormal({required Duration d, dynamic hint}) {
     var arg0 = api2wire_Chrono_Duration(d);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_duration(port_, arg0),
+      callFfi: (port_) => wire.wire_duration_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_Chrono_Duration,
       parseErrorData: null,
-      constMeta: kDurationConstMeta,
+      constMeta: kDurationTwinNormalConstMeta,
       argValues: [d],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kDurationConstMeta => const TaskConstMeta(
-        debugName: "duration",
+  TaskConstMeta get kDurationTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "duration_twin_normal",
         argNames: ["d"],
       );
 
   @override
-  Future<List<DateTime>> handleDurations(
+  Future<List<DateTime>> handleDurationsTwinNormal(
       {required List<Duration> durations,
       required DateTime since,
       dynamic hint}) {
     var arg0 = api2wire_Chrono_DurationList(durations);
     var arg1 = api2wire_Chrono_Local(since);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_durations(port_, arg0, arg1),
+      callFfi: (port_) =>
+          wire.wire_handle_durations_twin_normal(port_, arg0, arg1),
       parseSuccessData: _wire2api_Chrono_LocalList,
       parseErrorData: null,
-      constMeta: kHandleDurationsConstMeta,
+      constMeta: kHandleDurationsTwinNormalConstMeta,
       argValues: [durations, since],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleDurationsConstMeta => const TaskConstMeta(
-        debugName: "handle_durations",
+  TaskConstMeta get kHandleDurationsTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "handle_durations_twin_normal",
         argNames: ["durations", "since"],
       );
 
   @override
-  Future<List<Duration>> handleTimestamps(
+  Future<List<Duration>> handleTimestampsTwinNormal(
       {required List<DateTime> timestamps,
       required DateTime epoch,
       dynamic hint}) {
     var arg0 = api2wire_Chrono_NaiveList(timestamps);
     var arg1 = api2wire_Chrono_Naive(epoch);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_timestamps(port_, arg0, arg1),
+      callFfi: (port_) =>
+          wire.wire_handle_timestamps_twin_normal(port_, arg0, arg1),
       parseSuccessData: _wire2api_Chrono_DurationList,
       parseErrorData: null,
-      constMeta: kHandleTimestampsConstMeta,
+      constMeta: kHandleTimestampsTwinNormalConstMeta,
       argValues: [timestamps, epoch],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleTimestampsConstMeta => const TaskConstMeta(
-        debugName: "handle_timestamps",
+  TaskConstMeta get kHandleTimestampsTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "handle_timestamps_twin_normal",
         argNames: ["timestamps", "epoch"],
       );
 
   @override
-  Future<Duration> howLongDoesItTake(
-      {required FeatureChrono mine, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_feature_chrono(mine);
+  Future<Duration> howLongDoesItTakeTwinNormal(
+      {required FeatureChronoTwinNormal mine, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_feature_chrono_twin_normal(mine);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_how_long_does_it_take(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_how_long_does_it_take_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_Chrono_Duration,
       parseErrorData: _wire2api_AnyhowException,
-      constMeta: kHowLongDoesItTakeConstMeta,
+      constMeta: kHowLongDoesItTakeTwinNormalConstMeta,
       argValues: [mine],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHowLongDoesItTakeConstMeta => const TaskConstMeta(
-        debugName: "how_long_does_it_take",
+  TaskConstMeta get kHowLongDoesItTakeTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "how_long_does_it_take_twin_normal",
         argNames: ["mine"],
       );
 
   @override
-  Future<DateTime> naivedatetime({required DateTime d, dynamic hint}) {
+  Future<DateTime> naivedatetimeTwinNormal(
+      {required DateTime d, dynamic hint}) {
     var arg0 = api2wire_Chrono_Naive(d);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_naivedatetime(port_, arg0),
+      callFfi: (port_) => wire.wire_naivedatetime_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_Chrono_Naive,
       parseErrorData: null,
-      constMeta: kNaivedatetimeConstMeta,
+      constMeta: kNaivedatetimeTwinNormalConstMeta,
       argValues: [d],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kNaivedatetimeConstMeta => const TaskConstMeta(
-        debugName: "naivedatetime",
+  TaskConstMeta get kNaivedatetimeTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "naivedatetime_twin_normal",
         argNames: ["d"],
       );
 
   @override
-  Future<DateTime?> optionalEmptyDatetimeUtc({DateTime? d, dynamic hint}) {
+  Future<DateTime?> optionalEmptyDatetimeUtcTwinNormal(
+      {DateTime? d, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_Chrono_Utc(d);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_optional_empty_datetime_utc(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_optional_empty_datetime_utc_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_Chrono_Utc,
       parseErrorData: null,
-      constMeta: kOptionalEmptyDatetimeUtcConstMeta,
+      constMeta: kOptionalEmptyDatetimeUtcTwinNormalConstMeta,
       argValues: [d],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kOptionalEmptyDatetimeUtcConstMeta => const TaskConstMeta(
-        debugName: "optional_empty_datetime_utc",
+  TaskConstMeta get kOptionalEmptyDatetimeUtcTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "optional_empty_datetime_utc_twin_normal",
         argNames: ["d"],
       );
 
   @override
-  Future<TestChrono> testChrono({dynamic hint}) {
+  Future<TestChronoTwinNormal> testChronoTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_test_chrono(port_),
-      parseSuccessData: _wire2api_test_chrono,
+      callFfi: (port_) => wire.wire_test_chrono_twin_normal(port_),
+      parseSuccessData: _wire2api_test_chrono_twin_normal,
       parseErrorData: null,
-      constMeta: kTestChronoConstMeta,
+      constMeta: kTestChronoTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kTestChronoConstMeta => const TaskConstMeta(
-        debugName: "test_chrono",
+  TaskConstMeta get kTestChronoTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "test_chrono_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<TestChrono> testPreciseChrono({dynamic hint}) {
+  Future<TestChronoTwinNormal> testPreciseChronoTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_test_precise_chrono(port_),
-      parseSuccessData: _wire2api_test_chrono,
+      callFfi: (port_) => wire.wire_test_precise_chrono_twin_normal(port_),
+      parseSuccessData: _wire2api_test_chrono_twin_normal,
       parseErrorData: null,
-      constMeta: kTestPreciseChronoConstMeta,
+      constMeta: kTestPreciseChronoTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kTestPreciseChronoConstMeta => const TaskConstMeta(
-        debugName: "test_precise_chrono",
+  TaskConstMeta get kTestPreciseChronoTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "test_precise_chrono_twin_normal",
         argNames: [],
       );
 
@@ -1450,425 +1301,458 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Future<dynamic> returnDartDynamic({dynamic hint}) {
+  Future<dynamic> returnDartDynamicTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_return_dart_dynamic(port_),
+      callFfi: (port_) => wire.wire_return_dart_dynamic_twin_normal(port_),
       parseSuccessData: _wire2api_dartabi,
       parseErrorData: null,
-      constMeta: kReturnDartDynamicConstMeta,
+      constMeta: kReturnDartDynamicTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kReturnDartDynamicConstMeta => const TaskConstMeta(
-        debugName: "return_dart_dynamic",
+  TaskConstMeta get kReturnDartDynamicTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "return_dart_dynamic_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<String> asyncAcceptDartOpaque({required Object opaque, dynamic hint}) {
-    var arg0 = api2wire_DartOpaque(opaque);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_async_accept_dart_opaque(port_, arg0),
-      parseSuccessData: _wire2api_String,
-      parseErrorData: null,
-      constMeta: kAsyncAcceptDartOpaqueConstMeta,
-      argValues: [opaque],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kAsyncAcceptDartOpaqueConstMeta => const TaskConstMeta(
-        debugName: "async_accept_dart_opaque",
-        argNames: ["opaque"],
-      );
-
-  @override
-  Future<EnumDartOpaque> createEnumDartOpaque(
+  Future<String> asyncAcceptDartOpaqueTwinNormal(
       {required Object opaque, dynamic hint}) {
     var arg0 = api2wire_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_create_enum_dart_opaque(port_, arg0),
-      parseSuccessData: _wire2api_enum_dart_opaque,
+      callFfi: (port_) =>
+          wire.wire_async_accept_dart_opaque_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_String,
       parseErrorData: null,
-      constMeta: kCreateEnumDartOpaqueConstMeta,
+      constMeta: kAsyncAcceptDartOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kCreateEnumDartOpaqueConstMeta => const TaskConstMeta(
-        debugName: "create_enum_dart_opaque",
+  TaskConstMeta get kAsyncAcceptDartOpaqueTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "async_accept_dart_opaque_twin_normal",
         argNames: ["opaque"],
       );
 
   @override
-  Future<DartOpaqueNested> createNestedDartOpaque(
+  Future<EnumDartOpaqueTwinNormal> createEnumDartOpaqueTwinNormal(
+      {required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_create_enum_dart_opaque_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_enum_dart_opaque_twin_normal,
+      parseErrorData: null,
+      constMeta: kCreateEnumDartOpaqueTwinNormalConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateEnumDartOpaqueTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_enum_dart_opaque_twin_normal",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<DartOpaqueNestedTwinNormal> createNestedDartOpaqueTwinNormal(
       {required Object opaque1, required Object opaque2, dynamic hint}) {
     var arg0 = api2wire_DartOpaque(opaque1);
     var arg1 = api2wire_DartOpaque(opaque2);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
-          wire.wire_create_nested_dart_opaque(port_, arg0, arg1),
-      parseSuccessData: _wire2api_dart_opaque_nested,
+          wire.wire_create_nested_dart_opaque_twin_normal(port_, arg0, arg1),
+      parseSuccessData: _wire2api_dart_opaque_nested_twin_normal,
       parseErrorData: null,
-      constMeta: kCreateNestedDartOpaqueConstMeta,
+      constMeta: kCreateNestedDartOpaqueTwinNormalConstMeta,
       argValues: [opaque1, opaque2],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kCreateNestedDartOpaqueConstMeta => const TaskConstMeta(
-        debugName: "create_nested_dart_opaque",
+  TaskConstMeta get kCreateNestedDartOpaqueTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_nested_dart_opaque_twin_normal",
         argNames: ["opaque1", "opaque2"],
       );
 
   @override
-  Future<void> dropStaticDartOpaque({dynamic hint}) {
+  Future<void> dropStaticDartOpaqueTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_drop_static_dart_opaque(port_),
+      callFfi: (port_) => wire.wire_drop_static_dart_opaque_twin_normal(port_),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
-      constMeta: kDropStaticDartOpaqueConstMeta,
+      constMeta: kDropStaticDartOpaqueTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kDropStaticDartOpaqueConstMeta => const TaskConstMeta(
-        debugName: "drop_static_dart_opaque",
+  TaskConstMeta get kDropStaticDartOpaqueTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "drop_static_dart_opaque_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<void> getEnumDartOpaque(
-      {required EnumDartOpaque opaque, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_enum_dart_opaque(opaque);
+  Future<void> getEnumDartOpaqueTwinNormal(
+      {required EnumDartOpaqueTwinNormal opaque, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_enum_dart_opaque_twin_normal(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_get_enum_dart_opaque(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_get_enum_dart_opaque_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
-      constMeta: kGetEnumDartOpaqueConstMeta,
+      constMeta: kGetEnumDartOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kGetEnumDartOpaqueConstMeta => const TaskConstMeta(
-        debugName: "get_enum_dart_opaque",
+  TaskConstMeta get kGetEnumDartOpaqueTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "get_enum_dart_opaque_twin_normal",
         argNames: ["opaque"],
       );
 
   @override
-  Future<void> getNestedDartOpaque(
-      {required DartOpaqueNested opaque, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_dart_opaque_nested(opaque);
+  Future<void> getNestedDartOpaqueTwinNormal(
+      {required DartOpaqueNestedTwinNormal opaque, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_dart_opaque_nested_twin_normal(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_get_nested_dart_opaque(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_get_nested_dart_opaque_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
-      constMeta: kGetNestedDartOpaqueConstMeta,
+      constMeta: kGetNestedDartOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kGetNestedDartOpaqueConstMeta => const TaskConstMeta(
-        debugName: "get_nested_dart_opaque",
+  TaskConstMeta get kGetNestedDartOpaqueTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "get_nested_dart_opaque_twin_normal",
         argNames: ["opaque"],
       );
 
   @override
-  Future<Object> loopBack({required Object opaque, dynamic hint}) {
-    var arg0 = api2wire_DartOpaque(opaque);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_loop_back(port_, arg0),
-      parseSuccessData: _wire2api_DartOpaque,
-      parseErrorData: null,
-      constMeta: kLoopBackConstMeta,
-      argValues: [opaque],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kLoopBackConstMeta => const TaskConstMeta(
-        debugName: "loop_back",
-        argNames: ["opaque"],
-      );
-
-  @override
-  Future<ObjectArray1> loopBackArray({required Object opaque, dynamic hint}) {
-    var arg0 = api2wire_DartOpaque(opaque);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_loop_back_array(port_, arg0),
-      parseSuccessData: _wire2api_DartOpaque_array_1,
-      parseErrorData: null,
-      constMeta: kLoopBackArrayConstMeta,
-      argValues: [opaque],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kLoopBackArrayConstMeta => const TaskConstMeta(
-        debugName: "loop_back_array",
-        argNames: ["opaque"],
-      );
-
-  @override
-  Future<void> loopBackArrayGet({required ObjectArray1 opaque, dynamic hint}) {
+  Future<void> loopBackArrayGetTwinNormal(
+      {required ObjectArray1 opaque, dynamic hint}) {
     var arg0 = api2wire_DartOpaque_array_1(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_loop_back_array_get(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_loop_back_array_get_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
-      constMeta: kLoopBackArrayGetConstMeta,
+      constMeta: kLoopBackArrayGetTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kLoopBackArrayGetConstMeta => const TaskConstMeta(
-        debugName: "loop_back_array_get",
+  TaskConstMeta get kLoopBackArrayGetTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "loop_back_array_get_twin_normal",
         argNames: ["opaque"],
       );
 
   @override
-  Future<Object?> loopBackOption({required Object opaque, dynamic hint}) {
+  Future<ObjectArray1> loopBackArrayTwinNormal(
+      {required Object opaque, dynamic hint}) {
     var arg0 = api2wire_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_loop_back_option(port_, arg0),
-      parseSuccessData: _wire2api_opt_box_autoadd_DartOpaque,
+      callFfi: (port_) => wire.wire_loop_back_array_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_DartOpaque_array_1,
       parseErrorData: null,
-      constMeta: kLoopBackOptionConstMeta,
+      constMeta: kLoopBackArrayTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kLoopBackOptionConstMeta => const TaskConstMeta(
-        debugName: "loop_back_option",
+  TaskConstMeta get kLoopBackArrayTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "loop_back_array_twin_normal",
         argNames: ["opaque"],
       );
 
   @override
-  Future<void> loopBackOptionGet({Object? opaque, dynamic hint}) {
+  Future<void> loopBackOptionGetTwinNormal({Object? opaque, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_loop_back_option_get(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_loop_back_option_get_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
-      constMeta: kLoopBackOptionGetConstMeta,
+      constMeta: kLoopBackOptionGetTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kLoopBackOptionGetConstMeta => const TaskConstMeta(
-        debugName: "loop_back_option_get",
+  TaskConstMeta get kLoopBackOptionGetTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "loop_back_option_get_twin_normal",
         argNames: ["opaque"],
       );
 
   @override
-  Future<List<Object>> loopBackVec({required Object opaque, dynamic hint}) {
+  Future<Object?> loopBackOptionTwinNormal(
+      {required Object opaque, dynamic hint}) {
     var arg0 = api2wire_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_loop_back_vec(port_, arg0),
-      parseSuccessData: _wire2api_list_DartOpaque,
+      callFfi: (port_) => wire.wire_loop_back_option_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_DartOpaque,
       parseErrorData: null,
-      constMeta: kLoopBackVecConstMeta,
+      constMeta: kLoopBackOptionTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kLoopBackVecConstMeta => const TaskConstMeta(
-        debugName: "loop_back_vec",
+  TaskConstMeta get kLoopBackOptionTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "loop_back_option_twin_normal",
         argNames: ["opaque"],
       );
 
   @override
-  Future<void> loopBackVecGet({required List<Object> opaque, dynamic hint}) {
+  Future<Object> loopBackTwinNormal({required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_loop_back_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_DartOpaque,
+      parseErrorData: null,
+      constMeta: kLoopBackTwinNormalConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kLoopBackTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "loop_back_twin_normal",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<void> loopBackVecGetTwinNormal(
+      {required List<Object> opaque, dynamic hint}) {
     var arg0 = api2wire_list_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_loop_back_vec_get(port_, arg0),
+      callFfi: (port_) => wire.wire_loop_back_vec_get_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
-      constMeta: kLoopBackVecGetConstMeta,
+      constMeta: kLoopBackVecGetTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kLoopBackVecGetConstMeta => const TaskConstMeta(
-        debugName: "loop_back_vec_get",
+  TaskConstMeta get kLoopBackVecGetTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "loop_back_vec_get_twin_normal",
         argNames: ["opaque"],
       );
 
   @override
-  Future<void> panicUnwrapDartOpaque({required Object opaque, dynamic hint}) {
+  Future<List<Object>> loopBackVecTwinNormal(
+      {required Object opaque, dynamic hint}) {
     var arg0 = api2wire_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_panic_unwrap_dart_opaque(port_, arg0),
-      parseSuccessData: _wire2api_unit,
+      callFfi: (port_) => wire.wire_loop_back_vec_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_list_DartOpaque,
       parseErrorData: null,
-      constMeta: kPanicUnwrapDartOpaqueConstMeta,
+      constMeta: kLoopBackVecTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kPanicUnwrapDartOpaqueConstMeta => const TaskConstMeta(
-        debugName: "panic_unwrap_dart_opaque",
+  TaskConstMeta get kLoopBackVecTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "loop_back_vec_twin_normal",
         argNames: ["opaque"],
       );
 
   @override
-  Future<void> setStaticDartOpaque({required Object opaque, dynamic hint}) {
+  Future<void> panicUnwrapDartOpaqueTwinNormal(
+      {required Object opaque, dynamic hint}) {
     var arg0 = api2wire_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_set_static_dart_opaque(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_panic_unwrap_dart_opaque_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
-      constMeta: kSetStaticDartOpaqueConstMeta,
+      constMeta: kPanicUnwrapDartOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kSetStaticDartOpaqueConstMeta => const TaskConstMeta(
-        debugName: "set_static_dart_opaque",
+  TaskConstMeta get kPanicUnwrapDartOpaqueTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "panic_unwrap_dart_opaque_twin_normal",
         argNames: ["opaque"],
       );
 
   @override
-  Object returnNonDroppableDartOpaque({required Object opaque, dynamic hint}) {
+  Future<void> setStaticDartOpaqueTwinNormal(
+      {required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_set_static_dart_opaque_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kSetStaticDartOpaqueTwinNormalConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSetStaticDartOpaqueTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "set_static_dart_opaque_twin_normal",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Object returnNonDroppableDartOpaqueTwinNormal(
+      {required Object opaque, dynamic hint}) {
     var arg0 = api2wire_DartOpaque(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_return_non_droppable_dart_opaque(arg0),
+      callFfi: () =>
+          wire.wire_return_non_droppable_dart_opaque_twin_normal(arg0),
       parseSuccessData: _wire2api_DartOpaque,
       parseErrorData: null,
-      constMeta: kReturnNonDroppableDartOpaqueConstMeta,
+      constMeta: kReturnNonDroppableDartOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kReturnNonDroppableDartOpaqueConstMeta =>
+  TaskConstMeta get kReturnNonDroppableDartOpaqueTwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "return_non_droppable_dart_opaque",
+        debugName: "return_non_droppable_dart_opaque_twin_normal",
         argNames: ["opaque"],
       );
 
   @override
-  String syncAcceptDartOpaque({required Object opaque, dynamic hint}) {
+  String syncAcceptDartOpaqueTwinNormal(
+      {required Object opaque, dynamic hint}) {
     var arg0 = api2wire_DartOpaque(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_accept_dart_opaque(arg0),
+      callFfi: () => wire.wire_sync_accept_dart_opaque_twin_normal(arg0),
       parseSuccessData: _wire2api_String,
       parseErrorData: null,
-      constMeta: kSyncAcceptDartOpaqueConstMeta,
+      constMeta: kSyncAcceptDartOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kSyncAcceptDartOpaqueConstMeta => const TaskConstMeta(
-        debugName: "sync_accept_dart_opaque",
+  TaskConstMeta get kSyncAcceptDartOpaqueTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "sync_accept_dart_opaque_twin_normal",
         argNames: ["opaque"],
       );
 
   @override
-  Object syncLoopback({required Object opaque, dynamic hint}) {
+  Object syncLoopbackTwinNormal({required Object opaque, dynamic hint}) {
     var arg0 = api2wire_DartOpaque(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_loopback(arg0),
+      callFfi: () => wire.wire_sync_loopback_twin_normal(arg0),
       parseSuccessData: _wire2api_DartOpaque,
       parseErrorData: null,
-      constMeta: kSyncLoopbackConstMeta,
+      constMeta: kSyncLoopbackTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kSyncLoopbackConstMeta => const TaskConstMeta(
-        debugName: "sync_loopback",
+  TaskConstMeta get kSyncLoopbackTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "sync_loopback_twin_normal",
         argNames: ["opaque"],
       );
 
   @override
-  Object? syncOptionDartOpaque({required Object opaque, dynamic hint}) {
+  Object? syncOptionDartOpaqueTwinNormal(
+      {required Object opaque, dynamic hint}) {
     var arg0 = api2wire_DartOpaque(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_option_dart_opaque(arg0),
+      callFfi: () => wire.wire_sync_option_dart_opaque_twin_normal(arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_DartOpaque,
       parseErrorData: _wire2api_AnyhowException,
-      constMeta: kSyncOptionDartOpaqueConstMeta,
+      constMeta: kSyncOptionDartOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kSyncOptionDartOpaqueConstMeta => const TaskConstMeta(
-        debugName: "sync_option_dart_opaque",
+  TaskConstMeta get kSyncOptionDartOpaqueTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "sync_option_dart_opaque_twin_normal",
         argNames: ["opaque"],
       );
 
   @override
-  Object? syncOptionLoopback({Object? opaque, dynamic hint}) {
+  Object? syncOptionLoopbackTwinNormal({Object? opaque, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_DartOpaque(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_option_loopback(arg0),
+      callFfi: () => wire.wire_sync_option_loopback_twin_normal(arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_DartOpaque,
       parseErrorData: null,
-      constMeta: kSyncOptionLoopbackConstMeta,
+      constMeta: kSyncOptionLoopbackTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kSyncOptionLoopbackConstMeta => const TaskConstMeta(
-        debugName: "sync_option_loopback",
+  TaskConstMeta get kSyncOptionLoopbackTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "sync_option_loopback_twin_normal",
         argNames: ["opaque"],
       );
 
   @override
-  String unwrapDartOpaque({required Object opaque, dynamic hint}) {
+  String unwrapDartOpaqueTwinNormal({required Object opaque, dynamic hint}) {
     var arg0 = api2wire_DartOpaque(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_unwrap_dart_opaque(arg0),
+      callFfi: () => wire.wire_unwrap_dart_opaque_twin_normal(arg0),
       parseSuccessData: _wire2api_String,
       parseErrorData: null,
-      constMeta: kUnwrapDartOpaqueConstMeta,
+      constMeta: kUnwrapDartOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kUnwrapDartOpaqueConstMeta => const TaskConstMeta(
-        debugName: "unwrap_dart_opaque",
+  TaskConstMeta get kUnwrapDartOpaqueTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "unwrap_dart_opaque_twin_normal",
         argNames: ["opaque"],
       );
 
@@ -1959,384 +1843,435 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<Weekdays> handleEnumParameter(
-      {required Weekdays weekday, dynamic hint}) {
-    var arg0 = api2wire_weekdays(weekday);
+  Future<WeekdaysTwinNormal> handleEnumParameterTwinNormal(
+      {required WeekdaysTwinNormal weekday, dynamic hint}) {
+    var arg0 = api2wire_weekdays_twin_normal(weekday);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_enum_parameter(port_, arg0),
-      parseSuccessData: _wire2api_weekdays,
+      callFfi: (port_) =>
+          wire.wire_handle_enum_parameter_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_weekdays_twin_normal,
       parseErrorData: null,
-      constMeta: kHandleEnumParameterConstMeta,
+      constMeta: kHandleEnumParameterTwinNormalConstMeta,
       argValues: [weekday],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleEnumParameterConstMeta => const TaskConstMeta(
-        debugName: "handle_enum_parameter",
+  TaskConstMeta get kHandleEnumParameterTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_enum_parameter_twin_normal",
         argNames: ["weekday"],
       );
 
   @override
-  Future<KitchenSink> handleEnumStruct(
-      {required KitchenSink val, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_kitchen_sink(val);
+  Future<KitchenSinkTwinNormal> handleEnumStructTwinNormal(
+      {required KitchenSinkTwinNormal val, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_kitchen_sink_twin_normal(val);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_enum_struct(port_, arg0),
-      parseSuccessData: _wire2api_kitchen_sink,
+      callFfi: (port_) => wire.wire_handle_enum_struct_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_kitchen_sink_twin_normal,
       parseErrorData: null,
-      constMeta: kHandleEnumStructConstMeta,
+      constMeta: kHandleEnumStructTwinNormalConstMeta,
       argValues: [val],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleEnumStructConstMeta => const TaskConstMeta(
-        debugName: "handle_enum_struct",
+  TaskConstMeta get kHandleEnumStructTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "handle_enum_struct_twin_normal",
         argNames: ["val"],
       );
 
   @override
-  Future<Weekdays?> handleReturnEnum({required String input, dynamic hint}) {
+  Future<WeekdaysTwinNormal?> handleReturnEnumTwinNormal(
+      {required String input, dynamic hint}) {
     var arg0 = api2wire_String(input);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_return_enum(port_, arg0),
-      parseSuccessData: _wire2api_opt_box_autoadd_weekdays,
+      callFfi: (port_) => wire.wire_handle_return_enum_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_weekdays_twin_normal,
       parseErrorData: null,
-      constMeta: kHandleReturnEnumConstMeta,
+      constMeta: kHandleReturnEnumTwinNormalConstMeta,
       argValues: [input],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleReturnEnumConstMeta => const TaskConstMeta(
-        debugName: "handle_return_enum",
+  TaskConstMeta get kHandleReturnEnumTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "handle_return_enum_twin_normal",
         argNames: ["input"],
       );
 
   @override
-  Future<Measure?> multiplyByTen({required Measure measure, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_measure(measure);
+  Future<MeasureTwinNormal?> multiplyByTenTwinNormal(
+      {required MeasureTwinNormal measure, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_measure_twin_normal(measure);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_multiply_by_ten(port_, arg0),
-      parseSuccessData: _wire2api_opt_box_autoadd_measure,
+      callFfi: (port_) => wire.wire_multiply_by_ten_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_measure_twin_normal,
       parseErrorData: null,
-      constMeta: kMultiplyByTenConstMeta,
+      constMeta: kMultiplyByTenTwinNormalConstMeta,
       argValues: [measure],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kMultiplyByTenConstMeta => const TaskConstMeta(
-        debugName: "multiply_by_ten",
+  TaskConstMeta get kMultiplyByTenTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "multiply_by_ten_twin_normal",
         argNames: ["measure"],
       );
 
   @override
-  Future<Uint8List> printNote({required Note note, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_note(note);
+  Future<Uint8List> printNoteTwinNormal(
+      {required NoteTwinNormal note, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_note_twin_normal(note);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_print_note(port_, arg0),
+      callFfi: (port_) => wire.wire_print_note_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_ZeroCopyBuffer_list_prim_u_8,
       parseErrorData: null,
-      constMeta: kPrintNoteConstMeta,
+      constMeta: kPrintNoteTwinNormalConstMeta,
       argValues: [note],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kPrintNoteConstMeta => const TaskConstMeta(
-        debugName: "print_note",
+  TaskConstMeta get kPrintNoteTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "print_note_twin_normal",
         argNames: ["note"],
       );
 
   @override
-  Future<String> eventAsString({required Event that, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_event(that);
+  Future<String> eventTwinNormalAsStringTwinNormal(
+      {required EventTwinNormal that, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_event_twin_normal(that);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_Event_as_string(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_EventTwinNormal_as_string_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_String,
       parseErrorData: null,
-      constMeta: kEventAsStringConstMeta,
+      constMeta: kEventTwinNormalAsStringTwinNormalConstMeta,
       argValues: [that],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kEventAsStringConstMeta => const TaskConstMeta(
-        debugName: "Event_as_string",
+  TaskConstMeta get kEventTwinNormalAsStringTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "EventTwinNormal_as_string_twin_normal",
         argNames: ["that"],
       );
 
   @override
-  Future<void> closeEventListener({dynamic hint}) {
+  Future<void> closeEventListenerTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_close_event_listener(port_),
+      callFfi: (port_) => wire.wire_close_event_listener_twin_normal(port_),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
-      constMeta: kCloseEventListenerConstMeta,
+      constMeta: kCloseEventListenerTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kCloseEventListenerConstMeta => const TaskConstMeta(
-        debugName: "close_event_listener",
+  TaskConstMeta get kCloseEventListenerTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "close_event_listener_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<void> createEvent(
+  Future<void> createEventTwinNormal(
       {required String address, required String payload, dynamic hint}) {
     var arg0 = api2wire_String(address);
     var arg1 = api2wire_String(payload);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_create_event(port_, arg0, arg1),
+      callFfi: (port_) => wire.wire_create_event_twin_normal(port_, arg0, arg1),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
-      constMeta: kCreateEventConstMeta,
+      constMeta: kCreateEventTwinNormalConstMeta,
       argValues: [address, payload],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kCreateEventConstMeta => const TaskConstMeta(
-        debugName: "create_event",
+  TaskConstMeta get kCreateEventTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "create_event_twin_normal",
         argNames: ["address", "payload"],
       );
 
   @override
-  Stream<Event> registerEventListener({dynamic hint}) {
+  Stream<EventTwinNormal> registerEventListenerTwinNormal({dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_register_event_listener(port_),
-      parseSuccessData: _wire2api_event,
+      callFfi: (port_) => wire.wire_register_event_listener_twin_normal(port_),
+      parseSuccessData: _wire2api_event_twin_normal,
       parseErrorData: _wire2api_AnyhowException,
-      constMeta: kRegisterEventListenerConstMeta,
+      constMeta: kRegisterEventListenerTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kRegisterEventListenerConstMeta => const TaskConstMeta(
-        debugName: "register_event_listener",
+  TaskConstMeta get kRegisterEventListenerTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "register_event_listener_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<CustomStruct> customStructNew(
+  Future<CustomStructTwinNormal> customStructTwinNormalNewTwinNormal(
       {required String message, dynamic hint}) {
     var arg0 = api2wire_String(message);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_CustomStruct_new(port_, arg0),
-      parseSuccessData: _wire2api_custom_struct,
+      callFfi: (port_) =>
+          wire.wire_CustomStructTwinNormal_new_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_custom_struct_twin_normal,
       parseErrorData: null,
-      constMeta: kCustomStructNewConstMeta,
+      constMeta: kCustomStructTwinNormalNewTwinNormalConstMeta,
       argValues: [message],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kCustomStructNewConstMeta => const TaskConstMeta(
-        debugName: "CustomStruct_new",
+  TaskConstMeta get kCustomStructTwinNormalNewTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "CustomStructTwinNormal_new_twin_normal",
         argNames: ["message"],
       );
 
   @override
-  Future<void> customStructNonstaticReturnCustomStructError(
-      {required CustomStruct that, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_custom_struct(that);
+  Future<void> customStructTwinNormalNonstaticReturnCustomStructErrorTwinNormal(
+      {required CustomStructTwinNormal that, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_custom_struct_twin_normal(that);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire
-          .wire_CustomStruct_nonstatic_return_custom_struct_error(port_, arg0),
+          .wire_CustomStructTwinNormal_nonstatic_return_custom_struct_error_twin_normal(
+              port_, arg0),
       parseSuccessData: _wire2api_unit,
-      parseErrorData: _wire2api_custom_struct_error,
-      constMeta: kCustomStructNonstaticReturnCustomStructErrorConstMeta,
+      parseErrorData: _wire2api_custom_struct_error_another_twin_normal,
+      constMeta:
+          kCustomStructTwinNormalNonstaticReturnCustomStructErrorTwinNormalConstMeta,
       argValues: [that],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kCustomStructNonstaticReturnCustomStructErrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "CustomStruct_nonstatic_return_custom_struct_error",
-        argNames: ["that"],
-      );
+  TaskConstMeta
+      get kCustomStructTwinNormalNonstaticReturnCustomStructErrorTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "CustomStructTwinNormal_nonstatic_return_custom_struct_error_twin_normal",
+            argNames: ["that"],
+          );
 
   @override
-  Future<int> customStructNonstaticReturnCustomStructOk(
-      {required CustomStruct that, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_custom_struct(that);
+  Future<int> customStructTwinNormalNonstaticReturnCustomStructOkTwinNormal(
+      {required CustomStructTwinNormal that, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_custom_struct_twin_normal(that);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_CustomStruct_nonstatic_return_custom_struct_ok(port_, arg0),
+      callFfi: (port_) => wire
+          .wire_CustomStructTwinNormal_nonstatic_return_custom_struct_ok_twin_normal(
+              port_, arg0),
       parseSuccessData: _wire2api_u_32,
-      parseErrorData: _wire2api_custom_struct_error,
-      constMeta: kCustomStructNonstaticReturnCustomStructOkConstMeta,
+      parseErrorData: _wire2api_custom_struct_error_another_twin_normal,
+      constMeta:
+          kCustomStructTwinNormalNonstaticReturnCustomStructOkTwinNormalConstMeta,
       argValues: [that],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kCustomStructNonstaticReturnCustomStructOkConstMeta =>
-      const TaskConstMeta(
-        debugName: "CustomStruct_nonstatic_return_custom_struct_ok",
-        argNames: ["that"],
-      );
+  TaskConstMeta
+      get kCustomStructTwinNormalNonstaticReturnCustomStructOkTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "CustomStructTwinNormal_nonstatic_return_custom_struct_ok_twin_normal",
+            argNames: ["that"],
+          );
 
   @override
-  Future<void> customStructStaticReturnCustomStructError({dynamic hint}) {
+  Future<void> customStructTwinNormalStaticReturnCustomStructErrorTwinNormal(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_CustomStruct_static_return_custom_struct_error(port_),
+      callFfi: (port_) => wire
+          .wire_CustomStructTwinNormal_static_return_custom_struct_error_twin_normal(
+              port_),
       parseSuccessData: _wire2api_unit,
-      parseErrorData: _wire2api_custom_struct_error,
-      constMeta: kCustomStructStaticReturnCustomStructErrorConstMeta,
+      parseErrorData: _wire2api_custom_struct_error_another_twin_normal,
+      constMeta:
+          kCustomStructTwinNormalStaticReturnCustomStructErrorTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kCustomStructStaticReturnCustomStructErrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "CustomStruct_static_return_custom_struct_error",
-        argNames: [],
-      );
+  TaskConstMeta
+      get kCustomStructTwinNormalStaticReturnCustomStructErrorTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "CustomStructTwinNormal_static_return_custom_struct_error_twin_normal",
+            argNames: [],
+          );
 
   @override
-  Future<int> customStructStaticReturnCustomStructOk({dynamic hint}) {
+  Future<int> customStructTwinNormalStaticReturnCustomStructOkTwinNormal(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_CustomStruct_static_return_custom_struct_ok(port_),
+      callFfi: (port_) => wire
+          .wire_CustomStructTwinNormal_static_return_custom_struct_ok_twin_normal(
+              port_),
       parseSuccessData: _wire2api_u_32,
-      parseErrorData: _wire2api_custom_struct_error,
-      constMeta: kCustomStructStaticReturnCustomStructOkConstMeta,
+      parseErrorData: _wire2api_custom_struct_error_another_twin_normal,
+      constMeta:
+          kCustomStructTwinNormalStaticReturnCustomStructOkTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kCustomStructStaticReturnCustomStructOkConstMeta =>
-      const TaskConstMeta(
-        debugName: "CustomStruct_static_return_custom_struct_ok",
-        argNames: [],
-      );
+  TaskConstMeta
+      get kCustomStructTwinNormalStaticReturnCustomStructOkTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "CustomStructTwinNormal_static_return_custom_struct_ok_twin_normal",
+            argNames: [],
+          );
 
   @override
-  Future<SomeStruct> someStructNew({required int value, dynamic hint}) {
+  Future<SomeStructTwinNormal> someStructTwinNormalNewTwinNormal(
+      {required int value, dynamic hint}) {
     var arg0 = api2wire_u_32(value);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_SomeStruct_new(port_, arg0),
-      parseSuccessData: _wire2api_some_struct,
+      callFfi: (port_) =>
+          wire.wire_SomeStructTwinNormal_new_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_some_struct_twin_normal,
       parseErrorData: null,
-      constMeta: kSomeStructNewConstMeta,
+      constMeta: kSomeStructTwinNormalNewTwinNormalConstMeta,
       argValues: [value],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kSomeStructNewConstMeta => const TaskConstMeta(
-        debugName: "SomeStruct_new",
+  TaskConstMeta get kSomeStructTwinNormalNewTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "SomeStructTwinNormal_new_twin_normal",
         argNames: ["value"],
       );
 
   @override
-  Future<int> someStructNonStaticReturnErrCustomError(
-      {required SomeStruct that, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_some_struct(that);
+  Future<int> someStructTwinNormalNonStaticReturnErrCustomErrorTwinNormal(
+      {required SomeStructTwinNormal that, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_some_struct_twin_normal(that);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_SomeStruct_non_static_return_err_custom_error(port_, arg0),
+      callFfi: (port_) => wire
+          .wire_SomeStructTwinNormal_non_static_return_err_custom_error_twin_normal(
+              port_, arg0),
       parseSuccessData: _wire2api_u_32,
-      parseErrorData: _wire2api_custom_error,
-      constMeta: kSomeStructNonStaticReturnErrCustomErrorConstMeta,
+      parseErrorData: _wire2api_custom_error_twin_normal,
+      constMeta:
+          kSomeStructTwinNormalNonStaticReturnErrCustomErrorTwinNormalConstMeta,
       argValues: [that],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kSomeStructNonStaticReturnErrCustomErrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "SomeStruct_non_static_return_err_custom_error",
-        argNames: ["that"],
-      );
+  TaskConstMeta
+      get kSomeStructTwinNormalNonStaticReturnErrCustomErrorTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "SomeStructTwinNormal_non_static_return_err_custom_error_twin_normal",
+            argNames: ["that"],
+          );
 
   @override
-  Future<int> someStructNonStaticReturnOkCustomError(
-      {required SomeStruct that, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_some_struct(that);
+  Future<int> someStructTwinNormalNonStaticReturnOkCustomErrorTwinNormal(
+      {required SomeStructTwinNormal that, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_some_struct_twin_normal(that);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_SomeStruct_non_static_return_ok_custom_error(port_, arg0),
+      callFfi: (port_) => wire
+          .wire_SomeStructTwinNormal_non_static_return_ok_custom_error_twin_normal(
+              port_, arg0),
       parseSuccessData: _wire2api_u_32,
-      parseErrorData: _wire2api_custom_error,
-      constMeta: kSomeStructNonStaticReturnOkCustomErrorConstMeta,
+      parseErrorData: _wire2api_custom_error_twin_normal,
+      constMeta:
+          kSomeStructTwinNormalNonStaticReturnOkCustomErrorTwinNormalConstMeta,
       argValues: [that],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kSomeStructNonStaticReturnOkCustomErrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "SomeStruct_non_static_return_ok_custom_error",
-        argNames: ["that"],
-      );
+  TaskConstMeta
+      get kSomeStructTwinNormalNonStaticReturnOkCustomErrorTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "SomeStructTwinNormal_non_static_return_ok_custom_error_twin_normal",
+            argNames: ["that"],
+          );
 
   @override
-  Future<int> someStructStaticReturnErrCustomError({dynamic hint}) {
+  Future<int> someStructTwinNormalStaticReturnErrCustomErrorTwinNormal(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_SomeStruct_static_return_err_custom_error(port_),
+      callFfi: (port_) => wire
+          .wire_SomeStructTwinNormal_static_return_err_custom_error_twin_normal(
+              port_),
       parseSuccessData: _wire2api_u_32,
-      parseErrorData: _wire2api_custom_error,
-      constMeta: kSomeStructStaticReturnErrCustomErrorConstMeta,
+      parseErrorData: _wire2api_custom_error_twin_normal,
+      constMeta:
+          kSomeStructTwinNormalStaticReturnErrCustomErrorTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kSomeStructStaticReturnErrCustomErrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "SomeStruct_static_return_err_custom_error",
-        argNames: [],
-      );
+  TaskConstMeta
+      get kSomeStructTwinNormalStaticReturnErrCustomErrorTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "SomeStructTwinNormal_static_return_err_custom_error_twin_normal",
+            argNames: [],
+          );
 
   @override
-  Future<int> someStructStaticReturnOkCustomError({dynamic hint}) {
+  Future<int> someStructTwinNormalStaticReturnOkCustomErrorTwinNormal(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_SomeStruct_static_return_ok_custom_error(port_),
+      callFfi: (port_) => wire
+          .wire_SomeStructTwinNormal_static_return_ok_custom_error_twin_normal(
+              port_),
       parseSuccessData: _wire2api_u_32,
-      parseErrorData: _wire2api_custom_error,
-      constMeta: kSomeStructStaticReturnOkCustomErrorConstMeta,
+      parseErrorData: _wire2api_custom_error_twin_normal,
+      constMeta:
+          kSomeStructTwinNormalStaticReturnOkCustomErrorTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kSomeStructStaticReturnOkCustomErrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "SomeStruct_static_return_ok_custom_error",
-        argNames: [],
-      );
+  TaskConstMeta
+      get kSomeStructTwinNormalStaticReturnOkCustomErrorTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "SomeStructTwinNormal_static_return_ok_custom_error_twin_normal",
+            argNames: [],
+          );
 
   @override
   Future<void> customEnumErrorPanicTwinNormal({dynamic hint}) {
@@ -2501,416 +2436,423 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> panicWithCustomResult({dynamic hint}) {
+  Future<void> panicWithCustomResultTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_panic_with_custom_result(port_),
+      callFfi: (port_) => wire.wire_panic_with_custom_result_twin_normal(port_),
       parseSuccessData: _wire2api_unit,
-      parseErrorData: _wire2api_custom_error,
-      constMeta: kPanicWithCustomResultConstMeta,
+      parseErrorData: _wire2api_custom_error_twin_normal,
+      constMeta: kPanicWithCustomResultTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kPanicWithCustomResultConstMeta => const TaskConstMeta(
-        debugName: "panic_with_custom_result",
+  TaskConstMeta get kPanicWithCustomResultTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "panic_with_custom_result_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<void> returnCustomNestedError1({dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_return_custom_nested_error_1(port_),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: _wire2api_custom_nested_error_1,
-      constMeta: kReturnCustomNestedError1ConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kReturnCustomNestedError1ConstMeta => const TaskConstMeta(
-        debugName: "return_custom_nested_error_1",
-        argNames: [],
-      );
-
-  @override
-  Future<void> returnCustomNestedError1Variant1({dynamic hint}) {
+  Future<void> returnCustomNestedError1TwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
-          wire.wire_return_custom_nested_error_1_variant1(port_),
+          wire.wire_return_custom_nested_error_1_twin_normal(port_),
       parseSuccessData: _wire2api_unit,
-      parseErrorData: _wire2api_custom_nested_error_1,
-      constMeta: kReturnCustomNestedError1Variant1ConstMeta,
+      parseErrorData: _wire2api_custom_nested_error_1_twin_normal,
+      constMeta: kReturnCustomNestedError1TwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kReturnCustomNestedError1Variant1ConstMeta =>
+  TaskConstMeta get kReturnCustomNestedError1TwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "return_custom_nested_error_1_variant1",
+        debugName: "return_custom_nested_error_1_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<void> returnCustomNestedError2({dynamic hint}) {
+  Future<void> returnCustomNestedError1Variant1TwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_return_custom_nested_error_2(port_),
+      callFfi: (port_) =>
+          wire.wire_return_custom_nested_error_1_variant1_twin_normal(port_),
       parseSuccessData: _wire2api_unit,
-      parseErrorData: _wire2api_custom_nested_error_2,
-      constMeta: kReturnCustomNestedError2ConstMeta,
+      parseErrorData: _wire2api_custom_nested_error_1_twin_normal,
+      constMeta: kReturnCustomNestedError1Variant1TwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kReturnCustomNestedError2ConstMeta => const TaskConstMeta(
-        debugName: "return_custom_nested_error_2",
+  TaskConstMeta get kReturnCustomNestedError1Variant1TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "return_custom_nested_error_1_variant1_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<void> returnCustomStructError({dynamic hint}) {
+  Future<void> returnCustomNestedError2TwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_return_custom_struct_error(port_),
+      callFfi: (port_) =>
+          wire.wire_return_custom_nested_error_2_twin_normal(port_),
       parseSuccessData: _wire2api_unit,
-      parseErrorData: _wire2api_custom_struct_error,
-      constMeta: kReturnCustomStructErrorConstMeta,
+      parseErrorData: _wire2api_custom_nested_error_2_twin_normal,
+      constMeta: kReturnCustomNestedError2TwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kReturnCustomStructErrorConstMeta => const TaskConstMeta(
-        debugName: "return_custom_struct_error",
+  TaskConstMeta get kReturnCustomNestedError2TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "return_custom_nested_error_2_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<int> returnCustomStructOk({dynamic hint}) {
+  Future<void> returnCustomStructErrorTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_return_custom_struct_ok(port_),
-      parseSuccessData: _wire2api_u_32,
-      parseErrorData: _wire2api_custom_struct_error,
-      constMeta: kReturnCustomStructOkConstMeta,
+      callFfi: (port_) =>
+          wire.wire_return_custom_struct_error_twin_normal(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_struct_error_another_twin_normal,
+      constMeta: kReturnCustomStructErrorTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kReturnCustomStructOkConstMeta => const TaskConstMeta(
-        debugName: "return_custom_struct_ok",
+  TaskConstMeta get kReturnCustomStructErrorTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "return_custom_struct_error_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<int> returnErrCustomError({dynamic hint}) {
+  Future<int> returnCustomStructOkTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_return_err_custom_error(port_),
+      callFfi: (port_) => wire.wire_return_custom_struct_ok_twin_normal(port_),
       parseSuccessData: _wire2api_u_32,
-      parseErrorData: _wire2api_custom_error,
-      constMeta: kReturnErrCustomErrorConstMeta,
+      parseErrorData: _wire2api_custom_struct_error_another_twin_normal,
+      constMeta: kReturnCustomStructOkTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kReturnErrCustomErrorConstMeta => const TaskConstMeta(
-        debugName: "return_err_custom_error",
+  TaskConstMeta get kReturnCustomStructOkTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "return_custom_struct_ok_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<int> returnErrorVariant({required int variant, dynamic hint}) {
+  Future<int> returnErrCustomErrorTwinNormal({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_return_err_custom_error_twin_normal(port_),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: _wire2api_custom_error_twin_normal,
+      constMeta: kReturnErrCustomErrorTwinNormalConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kReturnErrCustomErrorTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "return_err_custom_error_twin_normal",
+        argNames: [],
+      );
+
+  @override
+  Future<int> returnErrorVariantTwinNormal(
+      {required int variant, dynamic hint}) {
     var arg0 = api2wire_u_32(variant);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_return_error_variant(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_return_error_variant_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_u_32,
-      parseErrorData: _wire2api_custom_error,
-      constMeta: kReturnErrorVariantConstMeta,
+      parseErrorData: _wire2api_custom_error_twin_normal,
+      constMeta: kReturnErrorVariantTwinNormalConstMeta,
       argValues: [variant],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kReturnErrorVariantConstMeta => const TaskConstMeta(
-        debugName: "return_error_variant",
+  TaskConstMeta get kReturnErrorVariantTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "return_error_variant_twin_normal",
         argNames: ["variant"],
       );
 
   @override
-  Future<int> returnOkCustomError({dynamic hint}) {
+  Future<int> returnOkCustomErrorTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_return_ok_custom_error(port_),
+      callFfi: (port_) => wire.wire_return_ok_custom_error_twin_normal(port_),
       parseSuccessData: _wire2api_u_32,
-      parseErrorData: _wire2api_custom_error,
-      constMeta: kReturnOkCustomErrorConstMeta,
+      parseErrorData: _wire2api_custom_error_twin_normal,
+      constMeta: kReturnOkCustomErrorTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kReturnOkCustomErrorConstMeta => const TaskConstMeta(
-        debugName: "return_ok_custom_error",
+  TaskConstMeta get kReturnOkCustomErrorTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "return_ok_custom_error_twin_normal",
         argNames: [],
       );
 
   @override
-  Stream<String> streamSinkThrowAnyhow({dynamic hint}) {
+  Stream<String> streamSinkThrowAnyhowTwinNormal({dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_stream_sink_throw_anyhow(port_),
+      callFfi: (port_) => wire.wire_stream_sink_throw_anyhow_twin_normal(port_),
       parseSuccessData: _wire2api_String,
       parseErrorData: _wire2api_AnyhowException,
-      constMeta: kStreamSinkThrowAnyhowConstMeta,
+      constMeta: kStreamSinkThrowAnyhowTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kStreamSinkThrowAnyhowConstMeta => const TaskConstMeta(
-        debugName: "stream_sink_throw_anyhow",
-        argNames: [],
-      );
-
-  @override
-  void syncReturnCustomStructError({dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_return_custom_struct_error(),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: _wire2api_custom_struct_error,
-      constMeta: kSyncReturnCustomStructErrorConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kSyncReturnCustomStructErrorConstMeta =>
+  TaskConstMeta get kStreamSinkThrowAnyhowTwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "sync_return_custom_struct_error",
+        debugName: "stream_sink_throw_anyhow_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<void> throwAnyhow({dynamic hint}) {
+  void syncReturnCustomStructErrorTwinNormal({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_sync_return_custom_struct_error_twin_normal(),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_struct_error_twin_normal,
+      constMeta: kSyncReturnCustomStructErrorTwinNormalConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSyncReturnCustomStructErrorTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "sync_return_custom_struct_error_twin_normal",
+        argNames: [],
+      );
+
+  @override
+  Future<void> throwAnyhowTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_throw_anyhow(port_),
+      callFfi: (port_) => wire.wire_throw_anyhow_twin_normal(port_),
       parseSuccessData: _wire2api_unit,
       parseErrorData: _wire2api_AnyhowException,
-      constMeta: kThrowAnyhowConstMeta,
+      constMeta: kThrowAnyhowTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kThrowAnyhowConstMeta => const TaskConstMeta(
-        debugName: "throw_anyhow",
+  TaskConstMeta get kThrowAnyhowTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "throw_anyhow_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<NewSimpleStruct> callNewModuleSystem({dynamic hint}) {
+  Future<NewSimpleStruct> callNewModuleSystemTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_call_new_module_system(port_),
+      callFfi: (port_) => wire.wire_call_new_module_system_twin_normal(port_),
       parseSuccessData: _wire2api_new_simple_struct,
       parseErrorData: null,
-      constMeta: kCallNewModuleSystemConstMeta,
+      constMeta: kCallNewModuleSystemTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kCallNewModuleSystemConstMeta => const TaskConstMeta(
-        debugName: "call_new_module_system",
+  TaskConstMeta get kCallNewModuleSystemTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "call_new_module_system_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<OldSimpleStruct> callOldModuleSystem({dynamic hint}) {
+  Future<OldSimpleStruct> callOldModuleSystemTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_call_old_module_system(port_),
+      callFfi: (port_) => wire.wire_call_old_module_system_twin_normal(port_),
       parseSuccessData: _wire2api_old_simple_struct,
       parseErrorData: null,
-      constMeta: kCallOldModuleSystemConstMeta,
+      constMeta: kCallOldModuleSystemTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kCallOldModuleSystemConstMeta => const TaskConstMeta(
-        debugName: "call_old_module_system",
+  TaskConstMeta get kCallOldModuleSystemTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "call_old_module_system_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<bool> useImportedEnum({required MyEnum myEnum, dynamic hint}) {
+  Future<bool> useImportedEnumTwinNormal(
+      {required MyEnum myEnum, dynamic hint}) {
     var arg0 = api2wire_my_enum(myEnum);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_use_imported_enum(port_, arg0),
+      callFfi: (port_) => wire.wire_use_imported_enum_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_bool,
       parseErrorData: null,
-      constMeta: kUseImportedEnumConstMeta,
+      constMeta: kUseImportedEnumTwinNormalConstMeta,
       argValues: [myEnum],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kUseImportedEnumConstMeta => const TaskConstMeta(
-        debugName: "use_imported_enum",
+  TaskConstMeta get kUseImportedEnumTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "use_imported_enum_twin_normal",
         argNames: ["myEnum"],
       );
 
   @override
-  Future<bool> useImportedStruct({required MyStruct myStruct, dynamic hint}) {
+  Future<bool> useImportedStructTwinNormal(
+      {required MyStruct myStruct, dynamic hint}) {
     var arg0 = api2wire_box_autoadd_my_struct(myStruct);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_use_imported_struct(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_use_imported_struct_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_bool,
       parseErrorData: null,
-      constMeta: kUseImportedStructConstMeta,
+      constMeta: kUseImportedStructTwinNormalConstMeta,
       argValues: [myStruct],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kUseImportedStructConstMeta => const TaskConstMeta(
-        debugName: "use_imported_struct",
+  TaskConstMeta get kUseImportedStructTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "use_imported_struct_twin_normal",
         argNames: ["myStruct"],
       );
 
   @override
-  Future<AnotherMacroStruct> anotherMacroStruct({dynamic hint}) {
+  Future<AnotherMacroStructTwinNormal> anotherMacroStructTwinNormal(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_another_macro_struct(port_),
-      parseSuccessData: _wire2api_another_macro_struct,
+      callFfi: (port_) => wire.wire_another_macro_struct_twin_normal(port_),
+      parseSuccessData: _wire2api_another_macro_struct_twin_normal,
       parseErrorData: null,
-      constMeta: kAnotherMacroStructConstMeta,
+      constMeta: kAnotherMacroStructTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kAnotherMacroStructConstMeta => const TaskConstMeta(
-        debugName: "another_macro_struct",
+  TaskConstMeta get kAnotherMacroStructTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "another_macro_struct_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<MacroStruct> funcMacroStruct(
+  Future<MacroStruct> funcMacroStructTwinNormal(
       {required MacroStruct arg, dynamic hint}) {
     var arg0 = api2wire_box_autoadd_macro_struct(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_func_macro_struct(port_, arg0),
+      callFfi: (port_) => wire.wire_func_macro_struct_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_macro_struct,
       parseErrorData: null,
-      constMeta: kFuncMacroStructConstMeta,
+      constMeta: kFuncMacroStructTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kFuncMacroStructConstMeta => const TaskConstMeta(
-        debugName: "func_macro_struct",
+  TaskConstMeta get kFuncMacroStructTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "func_macro_struct_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<String> concatenateWithConcatenate(
-      {required ConcatenateWith that, required String b, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_concatenate_with(that);
-    var arg1 = api2wire_String(b);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_ConcatenateWith_concatenate(port_, arg0, arg1),
-      parseSuccessData: _wire2api_String,
-      parseErrorData: null,
-      constMeta: kConcatenateWithConcatenateConstMeta,
-      argValues: [that, b],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kConcatenateWithConcatenateConstMeta => const TaskConstMeta(
-        debugName: "ConcatenateWith_concatenate",
-        argNames: ["that", "b"],
-      );
-
-  @override
-  Future<String> concatenateWithConcatenateStatic(
+  Future<String> concatenateWithTwinNormalConcatenateStaticTwinNormal(
       {required String a, required String b, dynamic hint}) {
     var arg0 = api2wire_String(a);
     var arg1 = api2wire_String(b);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
-          wire.wire_ConcatenateWith_concatenate_static(port_, arg0, arg1),
+          wire.wire_ConcatenateWithTwinNormal_concatenate_static_twin_normal(
+              port_, arg0, arg1),
       parseSuccessData: _wire2api_String,
       parseErrorData: null,
-      constMeta: kConcatenateWithConcatenateStaticConstMeta,
+      constMeta: kConcatenateWithTwinNormalConcatenateStaticTwinNormalConstMeta,
       argValues: [a, b],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kConcatenateWithConcatenateStaticConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcatenateWith_concatenate_static",
-        argNames: ["a", "b"],
-      );
+  TaskConstMeta
+      get kConcatenateWithTwinNormalConcatenateStaticTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "ConcatenateWithTwinNormal_concatenate_static_twin_normal",
+            argNames: ["a", "b"],
+          );
 
   @override
-  Stream<Log2> concatenateWithHandleSomeStaticStreamSink(
-      {required int key, required int max, dynamic hint}) {
-    var arg0 = api2wire_u_32(key);
-    var arg1 = api2wire_u_32(max);
-    return handler.executeStream(StreamTask(
+  Future<String> concatenateWithTwinNormalConcatenateTwinNormal(
+      {required ConcatenateWithTwinNormal that,
+      required String b,
+      dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_concatenate_with_twin_normal(that);
+    var arg1 = api2wire_String(b);
+    return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
-          wire.wire_ConcatenateWith_handle_some_static_stream_sink(
+          wire.wire_ConcatenateWithTwinNormal_concatenate_twin_normal(
               port_, arg0, arg1),
-      parseSuccessData: _wire2api_log_2,
+      parseSuccessData: _wire2api_String,
       parseErrorData: null,
-      constMeta: kConcatenateWithHandleSomeStaticStreamSinkConstMeta,
-      argValues: [key, max],
+      constMeta: kConcatenateWithTwinNormalConcatenateTwinNormalConstMeta,
+      argValues: [that, b],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kConcatenateWithHandleSomeStaticStreamSinkConstMeta =>
+  TaskConstMeta get kConcatenateWithTwinNormalConcatenateTwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "ConcatenateWith_handle_some_static_stream_sink",
-        argNames: ["key", "max"],
+        debugName: "ConcatenateWithTwinNormal_concatenate_twin_normal",
+        argNames: ["that", "b"],
       );
 
   @override
-  Stream<int> concatenateWithHandleSomeStaticStreamSinkSingleArg(
-      {dynamic hint}) {
+  Stream<int>
+      concatenateWithTwinNormalHandleSomeStaticStreamSinkSingleArgTwinNormal(
+          {dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) =>
-          wire.wire_ConcatenateWith_handle_some_static_stream_sink_single_arg(
+      callFfi: (port_) => wire
+          .wire_ConcatenateWithTwinNormal_handle_some_static_stream_sink_single_arg_twin_normal(
               port_),
       parseSuccessData: _wire2api_u_32,
       parseErrorData: null,
-      constMeta: kConcatenateWithHandleSomeStaticStreamSinkSingleArgConstMeta,
+      constMeta:
+          kConcatenateWithTwinNormalHandleSomeStaticStreamSinkSingleArgTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
@@ -2918,725 +2860,802 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-      get kConcatenateWithHandleSomeStaticStreamSinkSingleArgConstMeta =>
+      get kConcatenateWithTwinNormalHandleSomeStaticStreamSinkSingleArgTwinNormalConstMeta =>
           const TaskConstMeta(
             debugName:
-                "ConcatenateWith_handle_some_static_stream_sink_single_arg",
+                "ConcatenateWithTwinNormal_handle_some_static_stream_sink_single_arg_twin_normal",
             argNames: [],
           );
 
   @override
-  Stream<Log2> concatenateWithHandleSomeStreamSink(
-      {required ConcatenateWith that,
-      required int key,
-      required int max,
-      dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_concatenate_with(that);
-    var arg1 = api2wire_u_32(key);
-    var arg2 = api2wire_u_32(max);
+  Stream<Log2TwinNormal>
+      concatenateWithTwinNormalHandleSomeStaticStreamSinkTwinNormal(
+          {required int key, required int max, dynamic hint}) {
+    var arg0 = api2wire_u_32(key);
+    var arg1 = api2wire_u_32(max);
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_ConcatenateWith_handle_some_stream_sink(
-          port_, arg0, arg1, arg2),
-      parseSuccessData: _wire2api_log_2,
+      callFfi: (port_) => wire
+          .wire_ConcatenateWithTwinNormal_handle_some_static_stream_sink_twin_normal(
+              port_, arg0, arg1),
+      parseSuccessData: _wire2api_log_2_twin_normal,
       parseErrorData: null,
-      constMeta: kConcatenateWithHandleSomeStreamSinkConstMeta,
-      argValues: [that, key, max],
+      constMeta:
+          kConcatenateWithTwinNormalHandleSomeStaticStreamSinkTwinNormalConstMeta,
+      argValues: [key, max],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kConcatenateWithHandleSomeStreamSinkConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcatenateWith_handle_some_stream_sink",
-        argNames: ["that", "key", "max"],
-      );
+  TaskConstMeta
+      get kConcatenateWithTwinNormalHandleSomeStaticStreamSinkTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "ConcatenateWithTwinNormal_handle_some_static_stream_sink_twin_normal",
+            argNames: ["key", "max"],
+          );
 
   @override
-  Stream<int> concatenateWithHandleSomeStreamSinkAt1(
-      {required ConcatenateWith that, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_concatenate_with(that);
+  Stream<int> concatenateWithTwinNormalHandleSomeStreamSinkAt1TwinNormal(
+      {required ConcatenateWithTwinNormal that, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_concatenate_with_twin_normal(that);
     return handler.executeStream(StreamTask(
-      callFfi: (port_) =>
-          wire.wire_ConcatenateWith_handle_some_stream_sink_at_1(port_, arg0),
+      callFfi: (port_) => wire
+          .wire_ConcatenateWithTwinNormal_handle_some_stream_sink_at_1_twin_normal(
+              port_, arg0),
       parseSuccessData: _wire2api_u_32,
       parseErrorData: null,
-      constMeta: kConcatenateWithHandleSomeStreamSinkAt1ConstMeta,
+      constMeta:
+          kConcatenateWithTwinNormalHandleSomeStreamSinkAt1TwinNormalConstMeta,
       argValues: [that],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kConcatenateWithHandleSomeStreamSinkAt1ConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcatenateWith_handle_some_stream_sink_at_1",
-        argNames: ["that"],
-      );
+  TaskConstMeta
+      get kConcatenateWithTwinNormalHandleSomeStreamSinkAt1TwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "ConcatenateWithTwinNormal_handle_some_stream_sink_at_1_twin_normal",
+            argNames: ["that"],
+          );
 
   @override
-  Future<ConcatenateWith> concatenateWithNew(
+  Stream<Log2TwinNormal>
+      concatenateWithTwinNormalHandleSomeStreamSinkTwinNormal(
+          {required ConcatenateWithTwinNormal that,
+          required int key,
+          required int max,
+          dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_concatenate_with_twin_normal(that);
+    var arg1 = api2wire_u_32(key);
+    var arg2 = api2wire_u_32(max);
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) => wire
+          .wire_ConcatenateWithTwinNormal_handle_some_stream_sink_twin_normal(
+              port_, arg0, arg1, arg2),
+      parseSuccessData: _wire2api_log_2_twin_normal,
+      parseErrorData: null,
+      constMeta:
+          kConcatenateWithTwinNormalHandleSomeStreamSinkTwinNormalConstMeta,
+      argValues: [that, key, max],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kConcatenateWithTwinNormalHandleSomeStreamSinkTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "ConcatenateWithTwinNormal_handle_some_stream_sink_twin_normal",
+            argNames: ["that", "key", "max"],
+          );
+
+  @override
+  Future<ConcatenateWithTwinNormal> concatenateWithTwinNormalNewTwinNormal(
       {required String a, dynamic hint}) {
     var arg0 = api2wire_String(a);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_ConcatenateWith_new(port_, arg0),
-      parseSuccessData: _wire2api_concatenate_with,
+      callFfi: (port_) =>
+          wire.wire_ConcatenateWithTwinNormal_new_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_concatenate_with_twin_normal,
       parseErrorData: null,
-      constMeta: kConcatenateWithNewConstMeta,
+      constMeta: kConcatenateWithTwinNormalNewTwinNormalConstMeta,
       argValues: [a],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kConcatenateWithNewConstMeta => const TaskConstMeta(
-        debugName: "ConcatenateWith_new",
+  TaskConstMeta get kConcatenateWithTwinNormalNewTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "ConcatenateWithTwinNormal_new_twin_normal",
         argNames: ["a"],
       );
 
   @override
-  Future<int> sumWithSum(
-      {required SumWith that, required int y, required int z, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_sum_with(that);
+  Future<int> sumWithTwinNormalSumTwinNormal(
+      {required SumWithTwinNormal that,
+      required int y,
+      required int z,
+      dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_sum_with_twin_normal(that);
     var arg1 = api2wire_u_32(y);
     var arg2 = api2wire_u_32(z);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_SumWith_sum(port_, arg0, arg1, arg2),
+      callFfi: (port_) =>
+          wire.wire_SumWithTwinNormal_sum_twin_normal(port_, arg0, arg1, arg2),
       parseSuccessData: _wire2api_u_32,
       parseErrorData: null,
-      constMeta: kSumWithSumConstMeta,
+      constMeta: kSumWithTwinNormalSumTwinNormalConstMeta,
       argValues: [that, y, z],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kSumWithSumConstMeta => const TaskConstMeta(
-        debugName: "SumWith_sum",
+  TaskConstMeta get kSumWithTwinNormalSumTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "SumWithTwinNormal_sum_twin_normal",
         argNames: ["that", "y", "z"],
       );
 
   @override
-  Future<SumWithArray3> getSumArray(
+  Future<SumWithTwinNormalArray3> getSumArrayTwinNormal(
       {required int a, required int b, required int c, dynamic hint}) {
     var arg0 = api2wire_u_32(a);
     var arg1 = api2wire_u_32(b);
     var arg2 = api2wire_u_32(c);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_get_sum_array(port_, arg0, arg1, arg2),
-      parseSuccessData: _wire2api_sum_with_array_3,
+      callFfi: (port_) =>
+          wire.wire_get_sum_array_twin_normal(port_, arg0, arg1, arg2),
+      parseSuccessData: _wire2api_sum_with_twin_normal_array_3,
       parseErrorData: null,
-      constMeta: kGetSumArrayConstMeta,
+      constMeta: kGetSumArrayTwinNormalConstMeta,
       argValues: [a, b, c],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kGetSumArrayConstMeta => const TaskConstMeta(
-        debugName: "get_sum_array",
+  TaskConstMeta get kGetSumArrayTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "get_sum_array_twin_normal",
         argNames: ["a", "b", "c"],
       );
 
   @override
-  Future<SumWith> getSumStruct({dynamic hint}) {
+  Future<SumWithTwinNormal> getSumStructTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_get_sum_struct(port_),
-      parseSuccessData: _wire2api_sum_with,
+      callFfi: (port_) => wire.wire_get_sum_struct_twin_normal(port_),
+      parseSuccessData: _wire2api_sum_with_twin_normal,
       parseErrorData: null,
-      constMeta: kGetSumStructConstMeta,
+      constMeta: kGetSumStructTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kGetSumStructConstMeta => const TaskConstMeta(
-        debugName: "get_sum_struct",
+  TaskConstMeta get kGetSumStructTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "get_sum_struct_twin_normal",
         argNames: [],
       );
 
   @override
-  Stream<ApplicationSettings> appSettingsStream({dynamic hint}) {
+  Stream<ApplicationSettings> appSettingsStreamTwinNormal({dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_app_settings_stream(port_),
+      callFfi: (port_) => wire.wire_app_settings_stream_twin_normal(port_),
       parseSuccessData: _wire2api_application_settings,
       parseErrorData: null,
-      constMeta: kAppSettingsStreamConstMeta,
+      constMeta: kAppSettingsStreamTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kAppSettingsStreamConstMeta => const TaskConstMeta(
-        debugName: "app_settings_stream",
+  TaskConstMeta get kAppSettingsStreamTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "app_settings_stream_twin_normal",
         argNames: [],
       );
 
   @override
-  Stream<List<ApplicationSettings>> appSettingsVecStream({dynamic hint}) {
+  Stream<List<ApplicationSettings>> appSettingsVecStreamTwinNormal(
+      {dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_app_settings_vec_stream(port_),
+      callFfi: (port_) => wire.wire_app_settings_vec_stream_twin_normal(port_),
       parseSuccessData: _wire2api_list_application_settings,
       parseErrorData: null,
-      constMeta: kAppSettingsVecStreamConstMeta,
+      constMeta: kAppSettingsVecStreamTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kAppSettingsVecStreamConstMeta => const TaskConstMeta(
-        debugName: "app_settings_vec_stream",
+  TaskConstMeta get kAppSettingsVecStreamTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "app_settings_vec_stream_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<int?> firstNumber({required Numbers nums, dynamic hint}) {
+  Future<int?> firstNumberTwinNormal({required Numbers nums, dynamic hint}) {
     var arg0 = api2wire_box_autoadd_numbers(nums);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_first_number(port_, arg0),
+      callFfi: (port_) => wire.wire_first_number_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_i_32,
       parseErrorData: null,
-      constMeta: kFirstNumberConstMeta,
+      constMeta: kFirstNumberTwinNormalConstMeta,
       argValues: [nums],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kFirstNumberConstMeta => const TaskConstMeta(
-        debugName: "first_number",
+  TaskConstMeta get kFirstNumberTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "first_number_twin_normal",
         argNames: ["nums"],
       );
 
   @override
-  Future<int?> firstSequence({required Sequences seqs, dynamic hint}) {
+  Future<int?> firstSequenceTwinNormal(
+      {required Sequences seqs, dynamic hint}) {
     var arg0 = api2wire_box_autoadd_sequences(seqs);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_first_sequence(port_, arg0),
+      callFfi: (port_) => wire.wire_first_sequence_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_i_32,
       parseErrorData: null,
-      constMeta: kFirstSequenceConstMeta,
+      constMeta: kFirstSequenceTwinNormalConstMeta,
       argValues: [seqs],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kFirstSequenceConstMeta => const TaskConstMeta(
-        debugName: "first_sequence",
+  TaskConstMeta get kFirstSequenceTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "first_sequence_twin_normal",
         argNames: ["seqs"],
       );
 
   @override
-  Future<ApplicationSettings> getAppSettings({dynamic hint}) {
+  Future<ApplicationSettings> getAppSettingsTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_get_app_settings(port_),
+      callFfi: (port_) => wire.wire_get_app_settings_twin_normal(port_),
       parseSuccessData: _wire2api_application_settings,
       parseErrorData: null,
-      constMeta: kGetAppSettingsConstMeta,
+      constMeta: kGetAppSettingsTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kGetAppSettingsConstMeta => const TaskConstMeta(
-        debugName: "get_app_settings",
+  TaskConstMeta get kGetAppSettingsTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "get_app_settings_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<ApplicationSettings> getFallibleAppSettings({dynamic hint}) {
+  Future<ApplicationSettings> getFallibleAppSettingsTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_get_fallible_app_settings(port_),
+      callFfi: (port_) =>
+          wire.wire_get_fallible_app_settings_twin_normal(port_),
       parseSuccessData: _wire2api_application_settings,
       parseErrorData: _wire2api_AnyhowException,
-      constMeta: kGetFallibleAppSettingsConstMeta,
+      constMeta: kGetFallibleAppSettingsTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kGetFallibleAppSettingsConstMeta => const TaskConstMeta(
-        debugName: "get_fallible_app_settings",
+  TaskConstMeta get kGetFallibleAppSettingsTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "get_fallible_app_settings_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<ApplicationMessage> getMessage({dynamic hint}) {
+  Future<ApplicationMessage> getMessageTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_get_message(port_),
+      callFfi: (port_) => wire.wire_get_message_twin_normal(port_),
       parseSuccessData: _wire2api_application_message,
       parseErrorData: null,
-      constMeta: kGetMessageConstMeta,
+      constMeta: kGetMessageTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kGetMessageConstMeta => const TaskConstMeta(
-        debugName: "get_message",
+  TaskConstMeta get kGetMessageTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "get_message_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<bool> isAppEmbedded(
+  Future<bool> isAppEmbeddedTwinNormal(
       {required ApplicationSettings appSettings, dynamic hint}) {
     var arg0 = api2wire_box_autoadd_application_settings(appSettings);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_is_app_embedded(port_, arg0),
+      callFfi: (port_) => wire.wire_is_app_embedded_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_bool,
       parseErrorData: null,
-      constMeta: kIsAppEmbeddedConstMeta,
+      constMeta: kIsAppEmbeddedTwinNormalConstMeta,
       argValues: [appSettings],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kIsAppEmbeddedConstMeta => const TaskConstMeta(
-        debugName: "is_app_embedded",
+  TaskConstMeta get kIsAppEmbeddedTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "is_app_embedded_twin_normal",
         argNames: ["appSettings"],
       );
 
   @override
-  Stream<MirrorStruct> mirrorStructStream({dynamic hint}) {
+  Stream<MirrorStructTwinNormal> mirrorStructStreamTwinNormal({dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_mirror_struct_stream(port_),
-      parseSuccessData: _wire2api_mirror_struct,
+      callFfi: (port_) => wire.wire_mirror_struct_stream_twin_normal(port_),
+      parseSuccessData: _wire2api_mirror_struct_twin_normal,
       parseErrorData: null,
-      constMeta: kMirrorStructStreamConstMeta,
+      constMeta: kMirrorStructStreamTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kMirrorStructStreamConstMeta => const TaskConstMeta(
-        debugName: "mirror_struct_stream",
+  TaskConstMeta get kMirrorStructStreamTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "mirror_struct_stream_twin_normal",
         argNames: [],
       );
 
   @override
-  Stream<(ApplicationSettings, RawStringEnumMirrored)> mirrorTupleStream(
-      {dynamic hint}) {
+  Stream<(ApplicationSettings, RawStringEnumMirrored)>
+      mirrorTupleStreamTwinNormal({dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_mirror_tuple_stream(port_),
+      callFfi: (port_) => wire.wire_mirror_tuple_stream_twin_normal(port_),
       parseSuccessData:
           _wire2api_record_application_settings_raw_string_enum_mirrored,
       parseErrorData: null,
-      constMeta: kMirrorTupleStreamConstMeta,
+      constMeta: kMirrorTupleStreamTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kMirrorTupleStreamConstMeta => const TaskConstMeta(
-        debugName: "mirror_tuple_stream",
+  TaskConstMeta get kMirrorTupleStreamTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "mirror_tuple_stream_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<Numbers> repeatNumber(
+  Future<Numbers> repeatNumberTwinNormal(
       {required int num, required int times, dynamic hint}) {
     var arg0 = api2wire_i_32(num);
     var arg1 = api2wire_usize(times);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_repeat_number(port_, arg0, arg1),
+      callFfi: (port_) =>
+          wire.wire_repeat_number_twin_normal(port_, arg0, arg1),
       parseSuccessData: _wire2api_numbers,
       parseErrorData: null,
-      constMeta: kRepeatNumberConstMeta,
+      constMeta: kRepeatNumberTwinNormalConstMeta,
       argValues: [num, times],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kRepeatNumberConstMeta => const TaskConstMeta(
-        debugName: "repeat_number",
+  TaskConstMeta get kRepeatNumberTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "repeat_number_twin_normal",
         argNames: ["num", "times"],
       );
 
   @override
-  Future<Sequences> repeatSequence(
+  Future<Sequences> repeatSequenceTwinNormal(
       {required int seq, required int times, dynamic hint}) {
     var arg0 = api2wire_i_32(seq);
     var arg1 = api2wire_usize(times);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_repeat_sequence(port_, arg0, arg1),
+      callFfi: (port_) =>
+          wire.wire_repeat_sequence_twin_normal(port_, arg0, arg1),
       parseSuccessData: _wire2api_sequences,
       parseErrorData: null,
-      constMeta: kRepeatSequenceConstMeta,
+      constMeta: kRepeatSequenceTwinNormalConstMeta,
       argValues: [seq, times],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kRepeatSequenceConstMeta => const TaskConstMeta(
-        debugName: "repeat_sequence",
+  TaskConstMeta get kRepeatSequenceTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "repeat_sequence_twin_normal",
         argNames: ["seq", "times"],
       );
 
   @override
-  Future<ContainsMirroredSubStruct> testContainsMirroredSubStruct(
-      {dynamic hint}) {
+  Future<ContainsMirroredSubStructTwinNormal>
+      testContainsMirroredSubStructTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_test_contains_mirrored_sub_struct(port_),
-      parseSuccessData: _wire2api_contains_mirrored_sub_struct,
+      callFfi: (port_) =>
+          wire.wire_test_contains_mirrored_sub_struct_twin_normal(port_),
+      parseSuccessData: _wire2api_contains_mirrored_sub_struct_twin_normal,
       parseErrorData: null,
-      constMeta: kTestContainsMirroredSubStructConstMeta,
+      constMeta: kTestContainsMirroredSubStructTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kTestContainsMirroredSubStructConstMeta =>
+  TaskConstMeta get kTestContainsMirroredSubStructTwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "test_contains_mirrored_sub_struct",
+        debugName: "test_contains_mirrored_sub_struct_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<List<RawStringMirrored>> testFallibleOfRawStringMirrored(
-      {dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_test_fallible_of_raw_string_mirrored(port_),
-      parseSuccessData: _wire2api_list_raw_string_mirrored,
-      parseErrorData: _wire2api_AnyhowException,
-      constMeta: kTestFallibleOfRawStringMirroredConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kTestFallibleOfRawStringMirroredConstMeta =>
-      const TaskConstMeta(
-        debugName: "test_fallible_of_raw_string_mirrored",
-        argNames: [],
-      );
-
-  @override
-  Future<List<RawStringEnumMirrored>> testListOfNestedEnumsMirrored(
-      {dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_test_list_of_nested_enums_mirrored(port_),
-      parseSuccessData: _wire2api_list_raw_string_enum_mirrored,
-      parseErrorData: null,
-      constMeta: kTestListOfNestedEnumsMirroredConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kTestListOfNestedEnumsMirroredConstMeta =>
-      const TaskConstMeta(
-        debugName: "test_list_of_nested_enums_mirrored",
-        argNames: [],
-      );
-
-  @override
-  Future<ListOfNestedRawStringMirrored> testListOfRawNestedStringMirrored(
+  Future<List<RawStringMirrored>> testFallibleOfRawStringMirroredTwinNormal(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
-          wire.wire_test_list_of_raw_nested_string_mirrored(port_),
+          wire.wire_test_fallible_of_raw_string_mirrored_twin_normal(port_),
+      parseSuccessData: _wire2api_list_raw_string_mirrored,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kTestFallibleOfRawStringMirroredTwinNormalConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestFallibleOfRawStringMirroredTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "test_fallible_of_raw_string_mirrored_twin_normal",
+        argNames: [],
+      );
+
+  @override
+  Future<List<RawStringEnumMirrored>> testListOfNestedEnumsMirroredTwinNormal(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_test_list_of_nested_enums_mirrored_twin_normal(port_),
+      parseSuccessData: _wire2api_list_raw_string_enum_mirrored,
+      parseErrorData: null,
+      constMeta: kTestListOfNestedEnumsMirroredTwinNormalConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestListOfNestedEnumsMirroredTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "test_list_of_nested_enums_mirrored_twin_normal",
+        argNames: [],
+      );
+
+  @override
+  Future<ListOfNestedRawStringMirrored>
+      testListOfRawNestedStringMirroredTwinNormal({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_test_list_of_raw_nested_string_mirrored_twin_normal(port_),
       parseSuccessData: _wire2api_list_of_nested_raw_string_mirrored,
       parseErrorData: null,
-      constMeta: kTestListOfRawNestedStringMirroredConstMeta,
+      constMeta: kTestListOfRawNestedStringMirroredTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kTestListOfRawNestedStringMirroredConstMeta =>
+  TaskConstMeta get kTestListOfRawNestedStringMirroredTwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "test_list_of_raw_nested_string_mirrored",
+        debugName: "test_list_of_raw_nested_string_mirrored_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<NestedRawStringMirrored> testNestedRawStringMirrored({dynamic hint}) {
+  Future<NestedRawStringMirrored> testNestedRawStringMirroredTwinNormal(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_test_nested_raw_string_mirrored(port_),
+      callFfi: (port_) =>
+          wire.wire_test_nested_raw_string_mirrored_twin_normal(port_),
       parseSuccessData: _wire2api_nested_raw_string_mirrored,
       parseErrorData: null,
-      constMeta: kTestNestedRawStringMirroredConstMeta,
+      constMeta: kTestNestedRawStringMirroredTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kTestNestedRawStringMirroredConstMeta =>
+  TaskConstMeta get kTestNestedRawStringMirroredTwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "test_nested_raw_string_mirrored",
+        debugName: "test_nested_raw_string_mirrored_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<RawStringEnumMirrored> testRawStringEnumMirrored(
+  Future<RawStringEnumMirrored> testRawStringEnumMirroredTwinNormal(
       {required bool nested, dynamic hint}) {
     var arg0 = api2wire_bool(nested);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_test_raw_string_enum_mirrored(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_test_raw_string_enum_mirrored_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_raw_string_enum_mirrored,
       parseErrorData: null,
-      constMeta: kTestRawStringEnumMirroredConstMeta,
+      constMeta: kTestRawStringEnumMirroredTwinNormalConstMeta,
       argValues: [nested],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kTestRawStringEnumMirroredConstMeta => const TaskConstMeta(
-        debugName: "test_raw_string_enum_mirrored",
+  TaskConstMeta get kTestRawStringEnumMirroredTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "test_raw_string_enum_mirrored_twin_normal",
         argNames: ["nested"],
       );
 
   @override
-  Future<RawStringMirrored> testRawStringMirrored({dynamic hint}) {
+  Future<RawStringMirrored> testRawStringMirroredTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_test_raw_string_mirrored(port_),
+      callFfi: (port_) => wire.wire_test_raw_string_mirrored_twin_normal(port_),
       parseSuccessData: _wire2api_raw_string_mirrored,
       parseErrorData: null,
-      constMeta: kTestRawStringMirroredConstMeta,
+      constMeta: kTestRawStringMirroredTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kTestRawStringMirroredConstMeta => const TaskConstMeta(
-        debugName: "test_raw_string_mirrored",
+  TaskConstMeta get kTestRawStringMirroredTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "test_raw_string_mirrored_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<BigBuffers> handleBigBuffers({dynamic hint}) {
+  Future<BigBuffersTwinNormal> handleBigBuffersTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_big_buffers(port_),
-      parseSuccessData: _wire2api_big_buffers,
+      callFfi: (port_) => wire.wire_handle_big_buffers_twin_normal(port_),
+      parseSuccessData: _wire2api_big_buffers_twin_normal,
       parseErrorData: null,
-      constMeta: kHandleBigBuffersConstMeta,
+      constMeta: kHandleBigBuffersTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleBigBuffersConstMeta => const TaskConstMeta(
-        debugName: "handle_big_buffers",
+  TaskConstMeta get kHandleBigBuffersTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "handle_big_buffers_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<MyTreeNode> handleComplexStruct(
-      {required MyTreeNode s, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_my_tree_node(s);
+  Future<MyTreeNodeTwinNormal> handleComplexStructTwinNormal(
+      {required MyTreeNodeTwinNormal s, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_my_tree_node_twin_normal(s);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_complex_struct(port_, arg0),
-      parseSuccessData: _wire2api_my_tree_node,
+      callFfi: (port_) =>
+          wire.wire_handle_complex_struct_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_my_tree_node_twin_normal,
       parseErrorData: null,
-      constMeta: kHandleComplexStructConstMeta,
+      constMeta: kHandleComplexStructTwinNormalConstMeta,
       argValues: [s],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleComplexStructConstMeta => const TaskConstMeta(
-        debugName: "handle_complex_struct",
+  TaskConstMeta get kHandleComplexStructTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_complex_struct_twin_normal",
         argNames: ["s"],
       );
 
   @override
-  Future<MyNestedStruct> handleNestedStruct(
-      {required MyNestedStruct s, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_my_nested_struct(s);
+  Future<MyNestedStructTwinNormal> handleNestedStructTwinNormal(
+      {required MyNestedStructTwinNormal s, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_my_nested_struct_twin_normal(s);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_nested_struct(port_, arg0),
-      parseSuccessData: _wire2api_my_nested_struct,
+      callFfi: (port_) =>
+          wire.wire_handle_nested_struct_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_my_nested_struct_twin_normal,
       parseErrorData: null,
-      constMeta: kHandleNestedStructConstMeta,
+      constMeta: kHandleNestedStructTwinNormalConstMeta,
       argValues: [s],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleNestedStructConstMeta => const TaskConstMeta(
-        debugName: "handle_nested_struct",
+  TaskConstMeta get kHandleNestedStructTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_nested_struct_twin_normal",
         argNames: ["s"],
       );
 
   @override
-  Future<String> handleString({required String s, dynamic hint}) {
+  Future<String> handleStringTwinNormal({required String s, dynamic hint}) {
     var arg0 = api2wire_String(s);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_string(port_, arg0),
+      callFfi: (port_) => wire.wire_handle_string_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_String,
       parseErrorData: null,
-      constMeta: kHandleStringConstMeta,
+      constMeta: kHandleStringTwinNormalConstMeta,
       argValues: [s],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleStringConstMeta => const TaskConstMeta(
-        debugName: "handle_string",
+  TaskConstMeta get kHandleStringTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "handle_string_twin_normal",
         argNames: ["s"],
       );
 
   @override
-  Future<MySize> handleStruct(
+  MySizeFreezedTwinNormal handleStructSyncFreezedTwinNormal(
+      {required MySizeFreezedTwinNormal arg,
+      required MySizeFreezedTwinNormal boxed,
+      dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_my_size_freezed_twin_normal(arg);
+    var arg1 = api2wire_box_my_size_freezed_twin_normal(boxed);
+    return handler.executeSync(SyncTask(
+      callFfi: () =>
+          wire.wire_handle_struct_sync_freezed_twin_normal(arg0, arg1),
+      parseSuccessData: _wire2api_my_size_freezed_twin_normal,
+      parseErrorData: null,
+      constMeta: kHandleStructSyncFreezedTwinNormalConstMeta,
+      argValues: [arg, boxed],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleStructSyncFreezedTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_struct_sync_freezed_twin_normal",
+        argNames: ["arg", "boxed"],
+      );
+
+  @override
+  Future<MySize> handleStructTwinNormal(
       {required MySize arg, required MySize boxed, dynamic hint}) {
     var arg0 = api2wire_box_autoadd_my_size(arg);
     var arg1 = api2wire_box_my_size(boxed);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_struct(port_, arg0, arg1),
+      callFfi: (port_) =>
+          wire.wire_handle_struct_twin_normal(port_, arg0, arg1),
       parseSuccessData: _wire2api_my_size,
       parseErrorData: null,
-      constMeta: kHandleStructConstMeta,
+      constMeta: kHandleStructTwinNormalConstMeta,
       argValues: [arg, boxed],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleStructConstMeta => const TaskConstMeta(
-        debugName: "handle_struct",
+  TaskConstMeta get kHandleStructTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "handle_struct_twin_normal",
         argNames: ["arg", "boxed"],
       );
 
   @override
-  MySizeFreezed handleStructSyncFreezed(
-      {required MySizeFreezed arg,
-      required MySizeFreezed boxed,
-      dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_my_size_freezed(arg);
-    var arg1 = api2wire_box_my_size_freezed(boxed);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_struct_sync_freezed(arg0, arg1),
-      parseSuccessData: _wire2api_my_size_freezed,
-      parseErrorData: null,
-      constMeta: kHandleStructSyncFreezedConstMeta,
-      argValues: [arg, boxed],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kHandleStructSyncFreezedConstMeta => const TaskConstMeta(
-        debugName: "handle_struct_sync_freezed",
-        argNames: ["arg", "boxed"],
-      );
-
-  @override
-  Future<Uint8List> handleVecU8({required Uint8List v, dynamic hint}) {
+  Future<Uint8List> handleVecU8TwinNormal(
+      {required Uint8List v, dynamic hint}) {
     var arg0 = api2wire_list_prim_u_8(v);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_vec_u8(port_, arg0),
+      callFfi: (port_) => wire.wire_handle_vec_u8_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_list_prim_u_8,
       parseErrorData: null,
-      constMeta: kHandleVecU8ConstMeta,
+      constMeta: kHandleVecU8TwinNormalConstMeta,
       argValues: [v],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleVecU8ConstMeta => const TaskConstMeta(
-        debugName: "handle_vec_u8",
+  TaskConstMeta get kHandleVecU8TwinNormalConstMeta => const TaskConstMeta(
+        debugName: "handle_vec_u8_twin_normal",
         argNames: ["v"],
       );
 
   @override
-  Future<List<Weekdays>> listOfPrimitiveEnums(
-      {required List<Weekdays> weekdays, dynamic hint}) {
-    var arg0 = api2wire_list_weekdays(weekdays);
+  Future<List<WeekdaysTwinNormal>> listOfPrimitiveEnumsTwinNormal(
+      {required List<WeekdaysTwinNormal> weekdays, dynamic hint}) {
+    var arg0 = api2wire_list_weekdays_twin_normal(weekdays);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_list_of_primitive_enums(port_, arg0),
-      parseSuccessData: _wire2api_list_weekdays,
+      callFfi: (port_) =>
+          wire.wire_list_of_primitive_enums_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_list_weekdays_twin_normal,
       parseErrorData: null,
-      constMeta: kListOfPrimitiveEnumsConstMeta,
+      constMeta: kListOfPrimitiveEnumsTwinNormalConstMeta,
       argValues: [weekdays],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kListOfPrimitiveEnumsConstMeta => const TaskConstMeta(
-        debugName: "list_of_primitive_enums",
+  TaskConstMeta get kListOfPrimitiveEnumsTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "list_of_primitive_enums_twin_normal",
         argNames: ["weekdays"],
       );
 
   @override
-  Future<Abc> testAbcEnum({required Abc abc, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_abc(abc);
+  Future<AbcTwinNormal> testAbcEnumTwinNormal(
+      {required AbcTwinNormal abc, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_abc_twin_normal(abc);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_test_abc_enum(port_, arg0),
-      parseSuccessData: _wire2api_abc,
+      callFfi: (port_) => wire.wire_test_abc_enum_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_abc_twin_normal,
       parseErrorData: null,
-      constMeta: kTestAbcEnumConstMeta,
+      constMeta: kTestAbcEnumTwinNormalConstMeta,
       argValues: [abc],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kTestAbcEnumConstMeta => const TaskConstMeta(
-        debugName: "test_abc_enum",
+  TaskConstMeta get kTestAbcEnumTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "test_abc_enum_twin_normal",
         argNames: ["abc"],
       );
 
   @override
-  Future<StructWithEnum> testStructWithEnum(
-      {required StructWithEnum se, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_struct_with_enum(se);
+  Future<StructWithEnumTwinNormal> testStructWithEnumTwinNormal(
+      {required StructWithEnumTwinNormal se, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_struct_with_enum_twin_normal(se);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_test_struct_with_enum(port_, arg0),
-      parseSuccessData: _wire2api_struct_with_enum,
+      callFfi: (port_) =>
+          wire.wire_test_struct_with_enum_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_struct_with_enum_twin_normal,
       parseErrorData: null,
-      constMeta: kTestStructWithEnumConstMeta,
+      constMeta: kTestStructWithEnumTwinNormalConstMeta,
       argValues: [se],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kTestStructWithEnumConstMeta => const TaskConstMeta(
-        debugName: "test_struct_with_enum",
+  TaskConstMeta get kTestStructWithEnumTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "test_struct_with_enum_twin_normal",
         argNames: ["se"],
       );
 
   @override
-  Future<Empty> emptyStruct({required Empty empty, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_empty(empty);
+  Future<EmptyTwinNormal> emptyStructTwinNormal(
+      {required EmptyTwinNormal empty, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_empty_twin_normal(empty);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_empty_struct(port_, arg0),
-      parseSuccessData: _wire2api_empty,
+      callFfi: (port_) => wire.wire_empty_struct_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_empty_twin_normal,
       parseErrorData: null,
-      constMeta: kEmptyStructConstMeta,
+      constMeta: kEmptyStructTwinNormalConstMeta,
       argValues: [empty],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kEmptyStructConstMeta => const TaskConstMeta(
-        debugName: "empty_struct",
+  TaskConstMeta get kEmptyStructTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "empty_struct_twin_normal",
         argNames: ["empty"],
       );
 
@@ -3678,94 +3697,98 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<List<MySize>> handleListOfStruct(
+  Future<List<MySize>> handleListOfStructTwinNormal(
       {required List<MySize> l, dynamic hint}) {
     var arg0 = api2wire_list_my_size(l);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_list_of_struct(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_handle_list_of_struct_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_list_my_size,
       parseErrorData: null,
-      constMeta: kHandleListOfStructConstMeta,
+      constMeta: kHandleListOfStructTwinNormalConstMeta,
       argValues: [l],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleListOfStructConstMeta => const TaskConstMeta(
-        debugName: "handle_list_of_struct",
+  TaskConstMeta get kHandleListOfStructTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_list_of_struct_twin_normal",
         argNames: ["l"],
       );
 
   @override
-  Future<List<String>> handleStringList(
+  Future<List<String>> handleStringListTwinNormal(
       {required List<String> names, dynamic hint}) {
     var arg0 = api2wire_StringList(names);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_string_list(port_, arg0),
+      callFfi: (port_) => wire.wire_handle_string_list_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_StringList,
       parseErrorData: null,
-      constMeta: kHandleStringListConstMeta,
+      constMeta: kHandleStringListTwinNormalConstMeta,
       argValues: [names],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleStringListConstMeta => const TaskConstMeta(
-        debugName: "handle_string_list",
+  TaskConstMeta get kHandleStringListTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "handle_string_list_twin_normal",
         argNames: ["names"],
       );
 
   @override
-  Future<NewTypeInt> handleNewtype({required NewTypeInt arg, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_new_type_int(arg);
+  Future<NewTypeIntTwinNormal> handleNewtypeTwinNormal(
+      {required NewTypeIntTwinNormal arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_new_type_int_twin_normal(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_newtype(port_, arg0),
-      parseSuccessData: _wire2api_new_type_int,
+      callFfi: (port_) => wire.wire_handle_newtype_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_new_type_int_twin_normal,
       parseErrorData: null,
-      constMeta: kHandleNewtypeConstMeta,
+      constMeta: kHandleNewtypeTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleNewtypeConstMeta => const TaskConstMeta(
-        debugName: "handle_newtype",
+  TaskConstMeta get kHandleNewtypeTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "handle_newtype_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<double> handleIncrementBoxedOptional({double? opt, dynamic hint}) {
+  Future<double> handleIncrementBoxedOptionalTwinNormal(
+      {double? opt, dynamic hint}) {
     var arg0 = api2wire_opt_box_f_64(opt);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
-          wire.wire_handle_increment_boxed_optional(port_, arg0),
+          wire.wire_handle_increment_boxed_optional_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_f_64,
       parseErrorData: null,
-      constMeta: kHandleIncrementBoxedOptionalConstMeta,
+      constMeta: kHandleIncrementBoxedOptionalTwinNormalConstMeta,
       argValues: [opt],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleIncrementBoxedOptionalConstMeta =>
+  TaskConstMeta get kHandleIncrementBoxedOptionalTwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "handle_increment_boxed_optional",
+        debugName: "handle_increment_boxed_optional_twin_normal",
         argNames: ["opt"],
       );
 
   @override
-  Future<String> handleOptionBoxArguments(
+  Future<String> handleOptionBoxArgumentsTwinNormal(
       {int? i8Box,
       int? u8Box,
       int? i32Box,
       int? i64Box,
       double? f64Box,
       bool? boolbox,
-      ExoticOptionals? structbox,
+      ExoticOptionalsTwinNormal? structbox,
       dynamic hint}) {
     var arg0 = api2wire_opt_box_i_8(i8Box);
     var arg1 = api2wire_opt_box_u_8(u8Box);
@@ -3773,21 +3796,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var arg3 = api2wire_opt_box_i_64(i64Box);
     var arg4 = api2wire_opt_box_f_64(f64Box);
     var arg5 = api2wire_opt_box_bool(boolbox);
-    var arg6 = api2wire_opt_box_exotic_optionals(structbox);
+    var arg6 = api2wire_opt_box_exotic_optionals_twin_normal(structbox);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_option_box_arguments(
+      callFfi: (port_) => wire.wire_handle_option_box_arguments_twin_normal(
           port_, arg0, arg1, arg2, arg3, arg4, arg5, arg6),
       parseSuccessData: _wire2api_String,
       parseErrorData: null,
-      constMeta: kHandleOptionBoxArgumentsConstMeta,
+      constMeta: kHandleOptionBoxArgumentsTwinNormalConstMeta,
       argValues: [i8Box, u8Box, i32Box, i64Box, f64Box, boolbox, structbox],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleOptionBoxArgumentsConstMeta => const TaskConstMeta(
-        debugName: "handle_option_box_arguments",
+  TaskConstMeta get kHandleOptionBoxArgumentsTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_option_box_arguments_twin_normal",
         argNames: [
           "i8Box",
           "u8Box",
@@ -3800,209 +3824,222 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<ExoticOptionals?> handleOptionalIncrement(
-      {ExoticOptionals? opt, dynamic hint}) {
-    var arg0 = api2wire_opt_box_autoadd_exotic_optionals(opt);
+  Future<ExoticOptionalsTwinNormal?> handleOptionalIncrementTwinNormal(
+      {ExoticOptionalsTwinNormal? opt, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_exotic_optionals_twin_normal(opt);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_optional_increment(port_, arg0),
-      parseSuccessData: _wire2api_opt_box_autoadd_exotic_optionals,
+      callFfi: (port_) =>
+          wire.wire_handle_optional_increment_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_exotic_optionals_twin_normal,
       parseErrorData: null,
-      constMeta: kHandleOptionalIncrementConstMeta,
+      constMeta: kHandleOptionalIncrementTwinNormalConstMeta,
       argValues: [opt],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleOptionalIncrementConstMeta => const TaskConstMeta(
-        debugName: "handle_optional_increment",
+  TaskConstMeta get kHandleOptionalIncrementTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_optional_increment_twin_normal",
         argNames: ["opt"],
       );
 
   @override
-  Future<double?> handleOptionalReturn(
+  Future<double?> handleOptionalReturnTwinNormal(
       {required double left, required double right, dynamic hint}) {
     var arg0 = api2wire_f_64(left);
     var arg1 = api2wire_f_64(right);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_optional_return(port_, arg0, arg1),
+      callFfi: (port_) =>
+          wire.wire_handle_optional_return_twin_normal(port_, arg0, arg1),
       parseSuccessData: _wire2api_opt_box_autoadd_f_64,
       parseErrorData: null,
-      constMeta: kHandleOptionalReturnConstMeta,
+      constMeta: kHandleOptionalReturnTwinNormalConstMeta,
       argValues: [left, right],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleOptionalReturnConstMeta => const TaskConstMeta(
-        debugName: "handle_optional_return",
+  TaskConstMeta get kHandleOptionalReturnTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_optional_return_twin_normal",
         argNames: ["left", "right"],
       );
 
   @override
-  Future<Element?> handleOptionalStruct({String? document, dynamic hint}) {
+  Future<ElementTwinNormal?> handleOptionalStructTwinNormal(
+      {String? document, dynamic hint}) {
     var arg0 = api2wire_opt_String(document);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_optional_struct(port_, arg0),
-      parseSuccessData: _wire2api_opt_box_autoadd_element,
+      callFfi: (port_) =>
+          wire.wire_handle_optional_struct_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_element_twin_normal,
       parseErrorData: null,
-      constMeta: kHandleOptionalStructConstMeta,
+      constMeta: kHandleOptionalStructTwinNormalConstMeta,
       argValues: [document],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleOptionalStructConstMeta => const TaskConstMeta(
-        debugName: "handle_optional_struct",
+  TaskConstMeta get kHandleOptionalStructTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_optional_struct_twin_normal",
         argNames: ["document"],
       );
 
   @override
-  Future<OptVecs> handleVecOfOpts({required OptVecs opt, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_opt_vecs(opt);
+  Future<OptVecsTwinNormal> handleVecOfOptsTwinNormal(
+      {required OptVecsTwinNormal opt, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_opt_vecs_twin_normal(opt);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_vec_of_opts(port_, arg0),
-      parseSuccessData: _wire2api_opt_vecs,
+      callFfi: (port_) => wire.wire_handle_vec_of_opts_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_opt_vecs_twin_normal,
       parseErrorData: null,
-      constMeta: kHandleVecOfOptsConstMeta,
+      constMeta: kHandleVecOfOptsTwinNormalConstMeta,
       argValues: [opt],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleVecOfOptsConstMeta => const TaskConstMeta(
-        debugName: "handle_vec_of_opts",
+  TaskConstMeta get kHandleVecOfOptsTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "handle_vec_of_opts_twin_normal",
         argNames: ["opt"],
       );
 
   @override
-  String? syncOption({dynamic hint}) {
+  String? syncOptionNullTwinNormal({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_option(),
+      callFfi: () => wire.wire_sync_option_null_twin_normal(),
       parseSuccessData: _wire2api_opt_String,
       parseErrorData: _wire2api_AnyhowException,
-      constMeta: kSyncOptionConstMeta,
+      constMeta: kSyncOptionNullTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kSyncOptionConstMeta => const TaskConstMeta(
-        debugName: "sync_option",
+  TaskConstMeta get kSyncOptionNullTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "sync_option_null_twin_normal",
         argNames: [],
       );
 
   @override
-  String? syncOptionNull({dynamic hint}) {
+  String? syncOptionTwinNormal({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_option_null(),
+      callFfi: () => wire.wire_sync_option_twin_normal(),
       parseSuccessData: _wire2api_opt_String,
       parseErrorData: _wire2api_AnyhowException,
-      constMeta: kSyncOptionNullConstMeta,
+      constMeta: kSyncOptionTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kSyncOptionNullConstMeta => const TaskConstMeta(
-        debugName: "sync_option_null",
+  TaskConstMeta get kSyncOptionTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "sync_option_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<int?> primitiveOptionalTypes(
+  Future<int?> primitiveOptionalTypesTwinNormal(
       {int? myI32, int? myI64, double? myF64, bool? myBool, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_i_32(myI32);
     var arg1 = api2wire_opt_box_autoadd_i_64(myI64);
     var arg2 = api2wire_opt_box_autoadd_f_64(myF64);
     var arg3 = api2wire_opt_box_autoadd_bool(myBool);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_primitive_optional_types(port_, arg0, arg1, arg2, arg3),
+      callFfi: (port_) => wire.wire_primitive_optional_types_twin_normal(
+          port_, arg0, arg1, arg2, arg3),
       parseSuccessData: _wire2api_opt_box_autoadd_i_32,
       parseErrorData: null,
-      constMeta: kPrimitiveOptionalTypesConstMeta,
+      constMeta: kPrimitiveOptionalTypesTwinNormalConstMeta,
       argValues: [myI32, myI64, myF64, myBool],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kPrimitiveOptionalTypesConstMeta => const TaskConstMeta(
-        debugName: "primitive_optional_types",
+  TaskConstMeta get kPrimitiveOptionalTypesTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "primitive_optional_types_twin_normal",
         argNames: ["myI32", "myI64", "myF64", "myBool"],
       );
 
   @override
-  Future<VecOfPrimitivePack> handleVecOfPrimitive(
-      {required int n, dynamic hint}) {
-    var arg0 = api2wire_i_32(n);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_vec_of_primitive(port_, arg0),
-      parseSuccessData: _wire2api_vec_of_primitive_pack,
-      parseErrorData: null,
-      constMeta: kHandleVecOfPrimitiveConstMeta,
-      argValues: [n],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kHandleVecOfPrimitiveConstMeta => const TaskConstMeta(
-        debugName: "handle_vec_of_primitive",
-        argNames: ["n"],
-      );
-
-  @override
-  Future<ZeroCopyVecOfPrimitivePack> handleZeroCopyVecOfPrimitive(
+  Future<VecOfPrimitivePackTwinNormal> handleVecOfPrimitiveTwinNormal(
       {required int n, dynamic hint}) {
     var arg0 = api2wire_i_32(n);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
-          wire.wire_handle_zero_copy_vec_of_primitive(port_, arg0),
-      parseSuccessData: _wire2api_zero_copy_vec_of_primitive_pack,
+          wire.wire_handle_vec_of_primitive_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_vec_of_primitive_pack_twin_normal,
       parseErrorData: null,
-      constMeta: kHandleZeroCopyVecOfPrimitiveConstMeta,
+      constMeta: kHandleVecOfPrimitiveTwinNormalConstMeta,
       argValues: [n],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleZeroCopyVecOfPrimitiveConstMeta =>
+  TaskConstMeta get kHandleVecOfPrimitiveTwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "handle_zero_copy_vec_of_primitive",
+        debugName: "handle_vec_of_primitive_twin_normal",
         argNames: ["n"],
       );
 
   @override
-  ZeroCopyVecOfPrimitivePack handleZeroCopyVecOfPrimitiveSync(
-      {required int n, dynamic hint}) {
+  Future<ZeroCopyVecOfPrimitivePackTwinNormal>
+      handleZeroCopyVecOfPrimitiveTwinNormal({required int n, dynamic hint}) {
+    var arg0 = api2wire_i_32(n);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_handle_zero_copy_vec_of_primitive_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_zero_copy_vec_of_primitive_pack_twin_normal,
+      parseErrorData: null,
+      constMeta: kHandleZeroCopyVecOfPrimitiveTwinNormalConstMeta,
+      argValues: [n],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleZeroCopyVecOfPrimitiveTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_zero_copy_vec_of_primitive_twin_normal",
+        argNames: ["n"],
+      );
+
+  @override
+  ZeroCopyVecOfPrimitivePackTwinNormal
+      handleZeroCopyVecOfPrimitiveSyncTwinNormal(
+          {required int n, dynamic hint}) {
     var arg0 = api2wire_i_32(n);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_zero_copy_vec_of_primitive_sync(arg0),
-      parseSuccessData: _wire2api_zero_copy_vec_of_primitive_pack,
+      callFfi: () =>
+          wire.wire_handle_zero_copy_vec_of_primitive_sync_twin_normal(arg0),
+      parseSuccessData: _wire2api_zero_copy_vec_of_primitive_pack_twin_normal,
       parseErrorData: null,
-      constMeta: kHandleZeroCopyVecOfPrimitiveSyncConstMeta,
+      constMeta: kHandleZeroCopyVecOfPrimitiveSyncTwinNormalConstMeta,
       argValues: [n],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleZeroCopyVecOfPrimitiveSyncConstMeta =>
+  TaskConstMeta get kHandleZeroCopyVecOfPrimitiveSyncTwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "handle_zero_copy_vec_of_primitive_sync",
+        debugName: "handle_zero_copy_vec_of_primitive_sync_twin_normal",
         argNames: ["n"],
       );
 
   @override
-  Future<int> primitiveTypes(
+  Future<int> primitiveTypesTwinNormal(
       {required int myI32,
       required int myI64,
       required double myF64,
@@ -4014,2398 +4051,506 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var arg3 = api2wire_bool(myBool);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
-          wire.wire_primitive_types(port_, arg0, arg1, arg2, arg3),
+          wire.wire_primitive_types_twin_normal(port_, arg0, arg1, arg2, arg3),
       parseSuccessData: _wire2api_i_32,
       parseErrorData: null,
-      constMeta: kPrimitiveTypesConstMeta,
+      constMeta: kPrimitiveTypesTwinNormalConstMeta,
       argValues: [myI32, myI64, myF64, myBool],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kPrimitiveTypesConstMeta => const TaskConstMeta(
-        debugName: "primitive_types",
+  TaskConstMeta get kPrimitiveTypesTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "primitive_types_twin_normal",
         argNames: ["myI32", "myI64", "myF64", "myBool"],
       );
 
   @override
-  Future<int> primitiveU32({required int myU32, dynamic hint}) {
+  Future<int> primitiveU32TwinNormal({required int myU32, dynamic hint}) {
     var arg0 = api2wire_u_32(myU32);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_primitive_u32(port_, arg0),
+      callFfi: (port_) => wire.wire_primitive_u32_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_u_32,
       parseErrorData: null,
-      constMeta: kPrimitiveU32ConstMeta,
+      constMeta: kPrimitiveU32TwinNormalConstMeta,
       argValues: [myU32],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kPrimitiveU32ConstMeta => const TaskConstMeta(
-        debugName: "primitive_u32",
+  TaskConstMeta get kPrimitiveU32TwinNormalConstMeta => const TaskConstMeta(
+        debugName: "primitive_u32_twin_normal",
         argNames: ["myU32"],
       );
 
   @override
-  void structWithCommentsTwinSyncInstanceMethodTwinSync(
-      {required StructWithCommentsTwinSync that, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_struct_with_comments_twin_sync(that);
-    return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_StructWithCommentsTwinSync_instance_method_twin_sync(arg0),
-      parseSuccessData: _wire2api_unit,
+  Future<MoreThanJustOneRawStringStructTwinNormal>
+      testMoreThanJustOneRawStringStructTwinNormal({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire
+          .wire_test_more_than_just_one_raw_string_struct_twin_normal(port_),
+      parseSuccessData:
+          _wire2api_more_than_just_one_raw_string_struct_twin_normal,
       parseErrorData: null,
-      constMeta: kStructWithCommentsTwinSyncInstanceMethodTwinSyncConstMeta,
-      argValues: [that],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kStructWithCommentsTwinSyncInstanceMethodTwinSyncConstMeta =>
-          const TaskConstMeta(
-            debugName: "StructWithCommentsTwinSync_instance_method_twin_sync",
-            argNames: ["that"],
-          );
-
-  @override
-  void structWithCommentsTwinSyncStaticMethodTwinSync({dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_StructWithCommentsTwinSync_static_method_twin_sync(),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta: kStructWithCommentsTwinSyncStaticMethodTwinSyncConstMeta,
+      constMeta: kTestMoreThanJustOneRawStringStructTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kStructWithCommentsTwinSyncStaticMethodTwinSyncConstMeta =>
+  TaskConstMeta get kTestMoreThanJustOneRawStringStructTwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "StructWithCommentsTwinSync_static_method_twin_sync",
+        debugName: "test_more_than_just_one_raw_string_struct_twin_normal",
         argNames: [],
       );
 
   @override
-  void functionWithCommentsSlashStarStarTwinSync({dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_function_with_comments_slash_star_star_twin_sync(),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta: kFunctionWithCommentsSlashStarStarTwinSyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFunctionWithCommentsSlashStarStarTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "function_with_comments_slash_star_star_twin_sync",
-        argNames: [],
-      );
-
-  @override
-  void functionWithCommentsTripleSlashMultiLineTwinSync({dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_function_with_comments_triple_slash_multi_line_twin_sync(),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta: kFunctionWithCommentsTripleSlashMultiLineTwinSyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kFunctionWithCommentsTripleSlashMultiLineTwinSyncConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "function_with_comments_triple_slash_multi_line_twin_sync",
-            argNames: [],
-          );
-
-  @override
-  void functionWithCommentsTripleSlashSingleLineTwinSync({dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_function_with_comments_triple_slash_single_line_twin_sync(),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta: kFunctionWithCommentsTripleSlashSingleLineTwinSyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kFunctionWithCommentsTripleSlashSingleLineTwinSyncConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "function_with_comments_triple_slash_single_line_twin_sync",
-            argNames: [],
-          );
-
-  @override
-  EnumSimpleTwinSync funcEnumSimpleTwinSync(
-      {required EnumSimpleTwinSync arg, dynamic hint}) {
-    var arg0 = api2wire_enum_simple_twin_sync(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_enum_simple_twin_sync(arg0),
-      parseSuccessData: _wire2api_enum_simple_twin_sync,
-      parseErrorData: null,
-      constMeta: kFuncEnumSimpleTwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncEnumSimpleTwinSyncConstMeta => const TaskConstMeta(
-        debugName: "func_enum_simple_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  EnumWithItemMixedTwinSync funcEnumWithItemMixedTwinSync(
-      {required EnumWithItemMixedTwinSync arg, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_enum_with_item_mixed_twin_sync(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_enum_with_item_mixed_twin_sync(arg0),
-      parseSuccessData: _wire2api_enum_with_item_mixed_twin_sync,
-      parseErrorData: null,
-      constMeta: kFuncEnumWithItemMixedTwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncEnumWithItemMixedTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "func_enum_with_item_mixed_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  EnumWithItemStructTwinSync funcEnumWithItemStructTwinSync(
-      {required EnumWithItemStructTwinSync arg, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_enum_with_item_struct_twin_sync(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_enum_with_item_struct_twin_sync(arg0),
-      parseSuccessData: _wire2api_enum_with_item_struct_twin_sync,
-      parseErrorData: null,
-      constMeta: kFuncEnumWithItemStructTwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncEnumWithItemStructTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "func_enum_with_item_struct_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  EnumWithItemTupleTwinSync funcEnumWithItemTupleTwinSync(
-      {required EnumWithItemTupleTwinSync arg, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_enum_with_item_tuple_twin_sync(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_enum_with_item_tuple_twin_sync(arg0),
-      parseSuccessData: _wire2api_enum_with_item_tuple_twin_sync,
-      parseErrorData: null,
-      constMeta: kFuncEnumWithItemTupleTwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncEnumWithItemTupleTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "func_enum_with_item_tuple_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  void customEnumErrorPanicTwinSync({dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_custom_enum_error_panic_twin_sync(),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: _wire2api_custom_enum_error_twin_sync,
-      constMeta: kCustomEnumErrorPanicTwinSyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kCustomEnumErrorPanicTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "custom_enum_error_panic_twin_sync",
-        argNames: [],
-      );
-
-  @override
-  int customEnumErrorReturnErrorTwinSync({dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_custom_enum_error_return_error_twin_sync(),
-      parseSuccessData: _wire2api_u_32,
-      parseErrorData: _wire2api_custom_enum_error_twin_sync,
-      constMeta: kCustomEnumErrorReturnErrorTwinSyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kCustomEnumErrorReturnErrorTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "custom_enum_error_return_error_twin_sync",
-        argNames: [],
-      );
-
-  @override
-  int customEnumErrorReturnOkTwinSync({required int arg, dynamic hint}) {
-    var arg0 = api2wire_u_32(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_custom_enum_error_return_ok_twin_sync(arg0),
-      parseSuccessData: _wire2api_u_32,
-      parseErrorData: _wire2api_custom_enum_error_twin_sync,
-      constMeta: kCustomEnumErrorReturnOkTwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kCustomEnumErrorReturnOkTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "custom_enum_error_return_ok_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  void customNestedErrorReturnErrorTwinSync(
-      {required CustomNestedErrorOuterTwinSync arg, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_custom_nested_error_outer_twin_sync(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_custom_nested_error_return_error_twin_sync(arg0),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: _wire2api_custom_nested_error_outer_twin_sync,
-      constMeta: kCustomNestedErrorReturnErrorTwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kCustomNestedErrorReturnErrorTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "custom_nested_error_return_error_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  void customStructErrorReturnErrorTwinSync(
-      {required CustomStructErrorTwinSync arg, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_custom_struct_error_twin_sync(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_custom_struct_error_return_error_twin_sync(arg0),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: _wire2api_custom_struct_error_twin_sync,
-      constMeta: kCustomStructErrorReturnErrorTwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kCustomStructErrorReturnErrorTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "custom_struct_error_return_error_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int funcReturnErrorTwinSync({dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_return_error_twin_sync(),
-      parseSuccessData: _wire2api_i_32,
-      parseErrorData: _wire2api_AnyhowException,
-      constMeta: kFuncReturnErrorTwinSyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncReturnErrorTwinSyncConstMeta => const TaskConstMeta(
-        debugName: "func_return_error_twin_sync",
-        argNames: [],
-      );
-
-  @override
-  int funcTypeFalliblePanicTwinSync({dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_type_fallible_panic_twin_sync(),
-      parseSuccessData: _wire2api_i_32,
-      parseErrorData: _wire2api_AnyhowException,
-      constMeta: kFuncTypeFalliblePanicTwinSyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncTypeFalliblePanicTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "func_type_fallible_panic_twin_sync",
-        argNames: [],
-      );
-
-  @override
-  int funcTypeInfalliblePanicTwinSync({dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_type_infallible_panic_twin_sync(),
-      parseSuccessData: _wire2api_i_32,
-      parseErrorData: null,
-      constMeta: kFuncTypeInfalliblePanicTwinSyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncTypeInfalliblePanicTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "func_type_infallible_panic_twin_sync",
-        argNames: [],
-      );
-
-  @override
-  void funcReturnUnitTwinSync({dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_return_unit_twin_sync(),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta: kFuncReturnUnitTwinSyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncReturnUnitTwinSyncConstMeta => const TaskConstMeta(
-        debugName: "func_return_unit_twin_sync",
-        argNames: [],
-      );
-
-  @override
-  String funcStringTwinSync({required String arg, dynamic hint}) {
-    var arg0 = api2wire_String(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_string_twin_sync(arg0),
-      parseSuccessData: _wire2api_String,
-      parseErrorData: null,
-      constMeta: kFuncStringTwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncStringTwinSyncConstMeta => const TaskConstMeta(
-        debugName: "func_string_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<bool?> exampleOptionalPrimitiveTypeBoolTwinNormal(
-      {bool? arg, dynamic hint}) {
-    var arg0 = api2wire_opt_box_autoadd_bool(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_optional_primitive_type_bool_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_opt_box_autoadd_bool,
-      parseErrorData: null,
-      constMeta: kExampleOptionalPrimitiveTypeBoolTwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeBoolTwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_bool_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<double?> exampleOptionalPrimitiveTypeF32TwinNormal(
-      {double? arg, dynamic hint}) {
-    var arg0 = api2wire_opt_box_autoadd_f_32(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_optional_primitive_type_f32_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_opt_box_autoadd_f_32,
-      parseErrorData: null,
-      constMeta: kExampleOptionalPrimitiveTypeF32TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeF32TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_f32_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<double?> exampleOptionalPrimitiveTypeF64TwinNormal(
-      {double? arg, dynamic hint}) {
-    var arg0 = api2wire_opt_box_autoadd_f_64(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_optional_primitive_type_f64_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_opt_box_autoadd_f_64,
-      parseErrorData: null,
-      constMeta: kExampleOptionalPrimitiveTypeF64TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeF64TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_f64_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeI16TwinNormal(
-      {int? arg, dynamic hint}) {
-    var arg0 = api2wire_opt_box_autoadd_i_16(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_optional_primitive_type_i16_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_opt_box_autoadd_i_16,
-      parseErrorData: null,
-      constMeta: kExampleOptionalPrimitiveTypeI16TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI16TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i16_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeI32TwinNormal(
-      {int? arg, dynamic hint}) {
-    var arg0 = api2wire_opt_box_autoadd_i_32(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_optional_primitive_type_i32_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_opt_box_autoadd_i_32,
-      parseErrorData: null,
-      constMeta: kExampleOptionalPrimitiveTypeI32TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI32TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i32_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeI64TwinNormal(
-      {int? arg, dynamic hint}) {
-    var arg0 = api2wire_opt_box_autoadd_i_64(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_optional_primitive_type_i64_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_opt_box_autoadd_i_64,
-      parseErrorData: null,
-      constMeta: kExampleOptionalPrimitiveTypeI64TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI64TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i64_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeI8TwinNormal(
-      {int? arg, dynamic hint}) {
-    var arg0 = api2wire_opt_box_autoadd_i_8(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_optional_primitive_type_i8_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_opt_box_autoadd_i_8,
-      parseErrorData: null,
-      constMeta: kExampleOptionalPrimitiveTypeI8TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI8TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i8_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeU16TwinNormal(
-      {int? arg, dynamic hint}) {
-    var arg0 = api2wire_opt_box_autoadd_u_16(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_optional_primitive_type_u16_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_opt_box_autoadd_u_16,
-      parseErrorData: null,
-      constMeta: kExampleOptionalPrimitiveTypeU16TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU16TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u16_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeU32TwinNormal(
-      {int? arg, dynamic hint}) {
-    var arg0 = api2wire_opt_box_autoadd_u_32(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_optional_primitive_type_u32_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_opt_box_autoadd_u_32,
-      parseErrorData: null,
-      constMeta: kExampleOptionalPrimitiveTypeU32TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU32TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u32_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeU64TwinNormal(
-      {int? arg, dynamic hint}) {
-    var arg0 = api2wire_opt_box_autoadd_u_64(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_optional_primitive_type_u64_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_opt_box_autoadd_u_64,
-      parseErrorData: null,
-      constMeta: kExampleOptionalPrimitiveTypeU64TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU64TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u64_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int?> exampleOptionalPrimitiveTypeU8TwinNormal(
-      {int? arg, dynamic hint}) {
-    var arg0 = api2wire_opt_box_autoadd_u_8(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_optional_primitive_type_u8_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_opt_box_autoadd_u_8,
-      parseErrorData: null,
-      constMeta: kExampleOptionalPrimitiveTypeU8TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU8TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u8_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  bool? exampleOptionalPrimitiveTypeBoolTwinSync({bool? arg, dynamic hint}) {
-    var arg0 = api2wire_opt_box_autoadd_bool(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_example_optional_primitive_type_bool_twin_sync(arg0),
-      parseSuccessData: _wire2api_opt_box_autoadd_bool,
-      parseErrorData: null,
-      constMeta: kExampleOptionalPrimitiveTypeBoolTwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeBoolTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_bool_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  double? exampleOptionalPrimitiveTypeF32TwinSync({double? arg, dynamic hint}) {
-    var arg0 = api2wire_opt_box_autoadd_f_32(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_example_optional_primitive_type_f32_twin_sync(arg0),
-      parseSuccessData: _wire2api_opt_box_autoadd_f_32,
-      parseErrorData: null,
-      constMeta: kExampleOptionalPrimitiveTypeF32TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeF32TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_f32_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  double? exampleOptionalPrimitiveTypeF64TwinSync({double? arg, dynamic hint}) {
-    var arg0 = api2wire_opt_box_autoadd_f_64(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_example_optional_primitive_type_f64_twin_sync(arg0),
-      parseSuccessData: _wire2api_opt_box_autoadd_f_64,
-      parseErrorData: null,
-      constMeta: kExampleOptionalPrimitiveTypeF64TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeF64TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_f64_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalPrimitiveTypeI16TwinSync({int? arg, dynamic hint}) {
-    var arg0 = api2wire_opt_box_autoadd_i_16(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_example_optional_primitive_type_i16_twin_sync(arg0),
-      parseSuccessData: _wire2api_opt_box_autoadd_i_16,
-      parseErrorData: null,
-      constMeta: kExampleOptionalPrimitiveTypeI16TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI16TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i16_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalPrimitiveTypeI32TwinSync({int? arg, dynamic hint}) {
-    var arg0 = api2wire_opt_box_autoadd_i_32(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_example_optional_primitive_type_i32_twin_sync(arg0),
-      parseSuccessData: _wire2api_opt_box_autoadd_i_32,
-      parseErrorData: null,
-      constMeta: kExampleOptionalPrimitiveTypeI32TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI32TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i32_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalPrimitiveTypeI64TwinSync({int? arg, dynamic hint}) {
-    var arg0 = api2wire_opt_box_autoadd_i_64(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_example_optional_primitive_type_i64_twin_sync(arg0),
-      parseSuccessData: _wire2api_opt_box_autoadd_i_64,
-      parseErrorData: null,
-      constMeta: kExampleOptionalPrimitiveTypeI64TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI64TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i64_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalPrimitiveTypeI8TwinSync({int? arg, dynamic hint}) {
-    var arg0 = api2wire_opt_box_autoadd_i_8(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_example_optional_primitive_type_i8_twin_sync(arg0),
-      parseSuccessData: _wire2api_opt_box_autoadd_i_8,
-      parseErrorData: null,
-      constMeta: kExampleOptionalPrimitiveTypeI8TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI8TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_i8_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalPrimitiveTypeU16TwinSync({int? arg, dynamic hint}) {
-    var arg0 = api2wire_opt_box_autoadd_u_16(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_example_optional_primitive_type_u16_twin_sync(arg0),
-      parseSuccessData: _wire2api_opt_box_autoadd_u_16,
-      parseErrorData: null,
-      constMeta: kExampleOptionalPrimitiveTypeU16TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU16TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u16_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalPrimitiveTypeU32TwinSync({int? arg, dynamic hint}) {
-    var arg0 = api2wire_opt_box_autoadd_u_32(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_example_optional_primitive_type_u32_twin_sync(arg0),
-      parseSuccessData: _wire2api_opt_box_autoadd_u_32,
-      parseErrorData: null,
-      constMeta: kExampleOptionalPrimitiveTypeU32TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU32TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u32_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalPrimitiveTypeU64TwinSync({int? arg, dynamic hint}) {
-    var arg0 = api2wire_opt_box_autoadd_u_64(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_example_optional_primitive_type_u64_twin_sync(arg0),
-      parseSuccessData: _wire2api_opt_box_autoadd_u_64,
-      parseErrorData: null,
-      constMeta: kExampleOptionalPrimitiveTypeU64TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU64TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u64_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int? exampleOptionalPrimitiveTypeU8TwinSync({int? arg, dynamic hint}) {
-    var arg0 = api2wire_opt_box_autoadd_u_8(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_example_optional_primitive_type_u8_twin_sync(arg0),
-      parseSuccessData: _wire2api_opt_box_autoadd_u_8,
-      parseErrorData: null,
-      constMeta: kExampleOptionalPrimitiveTypeU8TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU8TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_optional_primitive_type_u8_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<bool> examplePrimitiveTypeBoolTwinNormal(
-      {required bool arg, dynamic hint}) {
-    var arg0 = api2wire_bool(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_bool_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_bool,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveTypeBoolTwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeBoolTwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_bool_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<double> examplePrimitiveTypeF32TwinNormal(
-      {required double arg, dynamic hint}) {
-    var arg0 = api2wire_f_32(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_f32_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_f_32,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveTypeF32TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeF32TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_f32_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<double> examplePrimitiveTypeF64TwinNormal(
-      {required double arg, dynamic hint}) {
-    var arg0 = api2wire_f_64(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_f64_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_f_64,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveTypeF64TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeF64TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_f64_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeI16TwinNormal(
-      {required int arg, dynamic hint}) {
-    var arg0 = api2wire_i_16(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_i16_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_i_16,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveTypeI16TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI16TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i16_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeI32TwinNormal(
-      {required int arg, dynamic hint}) {
-    var arg0 = api2wire_i_32(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_i32_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_i_32,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveTypeI32TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI32TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i32_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeI64TwinNormal(
-      {required int arg, dynamic hint}) {
-    var arg0 = api2wire_i_64(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_i64_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_i_64,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveTypeI64TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI64TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i64_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeI8TwinNormal(
-      {required int arg, dynamic hint}) {
-    var arg0 = api2wire_i_8(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_i8_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_i_8,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveTypeI8TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI8TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i8_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeU16TwinNormal(
-      {required int arg, dynamic hint}) {
-    var arg0 = api2wire_u_16(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_u16_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_u_16,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveTypeU16TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU16TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u16_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeU32TwinNormal(
-      {required int arg, dynamic hint}) {
-    var arg0 = api2wire_u_32(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_u32_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_u_32,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveTypeU32TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU32TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u32_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeU64TwinNormal(
-      {required int arg, dynamic hint}) {
-    var arg0 = api2wire_u_64(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_u64_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_u_64,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveTypeU64TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU64TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u64_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<int> examplePrimitiveTypeU8TwinNormal(
-      {required int arg, dynamic hint}) {
-    var arg0 = api2wire_u_8(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_u8_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_u_8,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveTypeU8TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU8TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u8_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<List<bool>> examplePrimitiveListTypeBoolTwinNormal(
-      {required List<bool> arg, dynamic hint}) {
-    var arg0 = api2wire_list_bool(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_list_type_bool_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_list_bool,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveListTypeBoolTwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeBoolTwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_bool_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Float32List> examplePrimitiveListTypeF32TwinNormal(
-      {required Float32List arg, dynamic hint}) {
-    var arg0 = api2wire_list_prim_f_32(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_list_type_f32_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_list_prim_f_32,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveListTypeF32TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeF32TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_f32_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Float64List> examplePrimitiveListTypeF64TwinNormal(
-      {required Float64List arg, dynamic hint}) {
-    var arg0 = api2wire_list_prim_f_64(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_list_type_f64_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_list_prim_f_64,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveListTypeF64TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeF64TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_f64_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Int16List> examplePrimitiveListTypeI16TwinNormal(
-      {required Int16List arg, dynamic hint}) {
-    var arg0 = api2wire_list_prim_i_16(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_list_type_i16_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_list_prim_i_16,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveListTypeI16TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI16TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i16_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Int32List> examplePrimitiveListTypeI32TwinNormal(
-      {required Int32List arg, dynamic hint}) {
-    var arg0 = api2wire_list_prim_i_32(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_list_type_i32_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_list_prim_i_32,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveListTypeI32TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI32TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i32_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Int64List> examplePrimitiveListTypeI64TwinNormal(
-      {required Int64List arg, dynamic hint}) {
-    var arg0 = api2wire_list_prim_i_64(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_list_type_i64_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_list_prim_i_64,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveListTypeI64TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI64TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i64_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Int8List> examplePrimitiveListTypeI8TwinNormal(
-      {required Int8List arg, dynamic hint}) {
-    var arg0 = api2wire_list_prim_i_8(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_list_type_i8_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_list_prim_i_8,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveListTypeI8TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI8TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i8_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Uint16List> examplePrimitiveListTypeU16TwinNormal(
-      {required Uint16List arg, dynamic hint}) {
-    var arg0 = api2wire_list_prim_u_16(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_list_type_u16_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_list_prim_u_16,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveListTypeU16TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU16TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u16_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Uint32List> examplePrimitiveListTypeU32TwinNormal(
-      {required Uint32List arg, dynamic hint}) {
-    var arg0 = api2wire_list_prim_u_32(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_list_type_u32_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_list_prim_u_32,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveListTypeU32TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU32TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u32_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Uint64List> examplePrimitiveListTypeU64TwinNormal(
-      {required Uint64List arg, dynamic hint}) {
-    var arg0 = api2wire_list_prim_u_64(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_list_type_u64_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_list_prim_u_64,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveListTypeU64TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU64TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u64_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<Uint8List> examplePrimitiveListTypeU8TwinNormal(
-      {required Uint8List arg, dynamic hint}) {
-    var arg0 = api2wire_list_prim_u_8(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_list_type_u8_twin_normal(port_, arg0),
-      parseSuccessData: _wire2api_list_prim_u_8,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveListTypeU8TwinNormalConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU8TwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u8_twin_normal",
-        argNames: ["arg"],
-      );
-
-  @override
-  List<bool> examplePrimitiveListTypeBoolTwinSync(
-      {required List<bool> arg, dynamic hint}) {
-    var arg0 = api2wire_list_bool(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_list_type_bool_twin_sync(arg0),
-      parseSuccessData: _wire2api_list_bool,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveListTypeBoolTwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeBoolTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_bool_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  Float32List examplePrimitiveListTypeF32TwinSync(
-      {required Float32List arg, dynamic hint}) {
-    var arg0 = api2wire_list_prim_f_32(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_list_type_f32_twin_sync(arg0),
-      parseSuccessData: _wire2api_list_prim_f_32,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveListTypeF32TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeF32TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_f32_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  Float64List examplePrimitiveListTypeF64TwinSync(
-      {required Float64List arg, dynamic hint}) {
-    var arg0 = api2wire_list_prim_f_64(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_list_type_f64_twin_sync(arg0),
-      parseSuccessData: _wire2api_list_prim_f_64,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveListTypeF64TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeF64TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_f64_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  Int16List examplePrimitiveListTypeI16TwinSync(
-      {required Int16List arg, dynamic hint}) {
-    var arg0 = api2wire_list_prim_i_16(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_list_type_i16_twin_sync(arg0),
-      parseSuccessData: _wire2api_list_prim_i_16,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveListTypeI16TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI16TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i16_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  Int32List examplePrimitiveListTypeI32TwinSync(
-      {required Int32List arg, dynamic hint}) {
-    var arg0 = api2wire_list_prim_i_32(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_list_type_i32_twin_sync(arg0),
-      parseSuccessData: _wire2api_list_prim_i_32,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveListTypeI32TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI32TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i32_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  Int64List examplePrimitiveListTypeI64TwinSync(
-      {required Int64List arg, dynamic hint}) {
-    var arg0 = api2wire_list_prim_i_64(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_list_type_i64_twin_sync(arg0),
-      parseSuccessData: _wire2api_list_prim_i_64,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveListTypeI64TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI64TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i64_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  Int8List examplePrimitiveListTypeI8TwinSync(
-      {required Int8List arg, dynamic hint}) {
-    var arg0 = api2wire_list_prim_i_8(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_list_type_i8_twin_sync(arg0),
-      parseSuccessData: _wire2api_list_prim_i_8,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveListTypeI8TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeI8TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_i8_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  Uint16List examplePrimitiveListTypeU16TwinSync(
-      {required Uint16List arg, dynamic hint}) {
-    var arg0 = api2wire_list_prim_u_16(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_list_type_u16_twin_sync(arg0),
-      parseSuccessData: _wire2api_list_prim_u_16,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveListTypeU16TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU16TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u16_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  Uint32List examplePrimitiveListTypeU32TwinSync(
-      {required Uint32List arg, dynamic hint}) {
-    var arg0 = api2wire_list_prim_u_32(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_list_type_u32_twin_sync(arg0),
-      parseSuccessData: _wire2api_list_prim_u_32,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveListTypeU32TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU32TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u32_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  Uint64List examplePrimitiveListTypeU64TwinSync(
-      {required Uint64List arg, dynamic hint}) {
-    var arg0 = api2wire_list_prim_u_64(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_list_type_u64_twin_sync(arg0),
-      parseSuccessData: _wire2api_list_prim_u_64,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveListTypeU64TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU64TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u64_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  Uint8List examplePrimitiveListTypeU8TwinSync(
-      {required Uint8List arg, dynamic hint}) {
-    var arg0 = api2wire_list_prim_u_8(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_list_type_u8_twin_sync(arg0),
-      parseSuccessData: _wire2api_list_prim_u_8,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveListTypeU8TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveListTypeU8TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_list_type_u8_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  bool examplePrimitiveTypeBoolTwinSync({required bool arg, dynamic hint}) {
-    var arg0 = api2wire_bool(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_type_bool_twin_sync(arg0),
-      parseSuccessData: _wire2api_bool,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveTypeBoolTwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeBoolTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_bool_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  double examplePrimitiveTypeF32TwinSync({required double arg, dynamic hint}) {
-    var arg0 = api2wire_f_32(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_type_f32_twin_sync(arg0),
-      parseSuccessData: _wire2api_f_32,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveTypeF32TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeF32TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_f32_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  double examplePrimitiveTypeF64TwinSync({required double arg, dynamic hint}) {
-    var arg0 = api2wire_f_64(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_type_f64_twin_sync(arg0),
-      parseSuccessData: _wire2api_f_64,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveTypeF64TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeF64TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_f64_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int examplePrimitiveTypeI16TwinSync({required int arg, dynamic hint}) {
-    var arg0 = api2wire_i_16(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_type_i16_twin_sync(arg0),
-      parseSuccessData: _wire2api_i_16,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveTypeI16TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI16TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i16_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int examplePrimitiveTypeI32TwinSync({required int arg, dynamic hint}) {
-    var arg0 = api2wire_i_32(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_type_i32_twin_sync(arg0),
-      parseSuccessData: _wire2api_i_32,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveTypeI32TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI32TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i32_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int examplePrimitiveTypeI64TwinSync({required int arg, dynamic hint}) {
-    var arg0 = api2wire_i_64(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_type_i64_twin_sync(arg0),
-      parseSuccessData: _wire2api_i_64,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveTypeI64TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI64TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i64_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int examplePrimitiveTypeI8TwinSync({required int arg, dynamic hint}) {
-    var arg0 = api2wire_i_8(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_type_i8_twin_sync(arg0),
-      parseSuccessData: _wire2api_i_8,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveTypeI8TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeI8TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_i8_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int examplePrimitiveTypeU16TwinSync({required int arg, dynamic hint}) {
-    var arg0 = api2wire_u_16(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_type_u16_twin_sync(arg0),
-      parseSuccessData: _wire2api_u_16,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveTypeU16TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU16TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u16_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int examplePrimitiveTypeU32TwinSync({required int arg, dynamic hint}) {
-    var arg0 = api2wire_u_32(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_type_u32_twin_sync(arg0),
-      parseSuccessData: _wire2api_u_32,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveTypeU32TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU32TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u32_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int examplePrimitiveTypeU64TwinSync({required int arg, dynamic hint}) {
-    var arg0 = api2wire_u_64(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_type_u64_twin_sync(arg0),
-      parseSuccessData: _wire2api_u_64,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveTypeU64TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU64TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u64_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int examplePrimitiveTypeU8TwinSync({required int arg, dynamic hint}) {
-    var arg0 = api2wire_u_8(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_type_u8_twin_sync(arg0),
-      parseSuccessData: _wire2api_u_8,
-      parseErrorData: null,
-      constMeta: kExamplePrimitiveTypeU8TwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kExamplePrimitiveTypeU8TwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "example_primitive_type_u8_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  int simpleAdderTwinSync({required int a, required int b, dynamic hint}) {
-    var arg0 = api2wire_i_32(a);
-    var arg1 = api2wire_i_32(b);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_simple_adder_twin_sync(arg0, arg1),
-      parseSuccessData: _wire2api_i_32,
-      parseErrorData: null,
-      constMeta: kSimpleAdderTwinSyncConstMeta,
-      argValues: [a, b],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kSimpleAdderTwinSyncConstMeta => const TaskConstMeta(
-        debugName: "simple_adder_twin_sync",
-        argNames: ["a", "b"],
-      );
-
-  @override
-  StructWithOneFieldTwinSync funcStructWithOneFieldTwinSync(
-      {required StructWithOneFieldTwinSync arg, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_struct_with_one_field_twin_sync(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_struct_with_one_field_twin_sync(arg0),
-      parseSuccessData: _wire2api_struct_with_one_field_twin_sync,
-      parseErrorData: null,
-      constMeta: kFuncStructWithOneFieldTwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncStructWithOneFieldTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "func_struct_with_one_field_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  StructWithTwoFieldTwinSync funcStructWithTwoFieldTwinSync(
-      {required StructWithTwoFieldTwinSync arg, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_struct_with_two_field_twin_sync(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_struct_with_two_field_twin_sync(arg0),
-      parseSuccessData: _wire2api_struct_with_two_field_twin_sync,
-      parseErrorData: null,
-      constMeta: kFuncStructWithTwoFieldTwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncStructWithTwoFieldTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "func_struct_with_two_field_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  StructWithZeroFieldTwinSync funcStructWithZeroFieldTwinSync(
-      {required StructWithZeroFieldTwinSync arg, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_struct_with_zero_field_twin_sync(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_struct_with_zero_field_twin_sync(arg0),
-      parseSuccessData: _wire2api_struct_with_zero_field_twin_sync,
-      parseErrorData: null,
-      constMeta: kFuncStructWithZeroFieldTwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncStructWithZeroFieldTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "func_struct_with_zero_field_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  TupleStructWithOneFieldTwinSync funcTupleStructWithOneFieldTwinSync(
-      {required TupleStructWithOneFieldTwinSync arg, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_tuple_struct_with_one_field_twin_sync(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_tuple_struct_with_one_field_twin_sync(arg0),
-      parseSuccessData: _wire2api_tuple_struct_with_one_field_twin_sync,
-      parseErrorData: null,
-      constMeta: kFuncTupleStructWithOneFieldTwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncTupleStructWithOneFieldTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "func_tuple_struct_with_one_field_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  TupleStructWithTwoFieldTwinSync funcTupleStructWithTwoFieldTwinSync(
-      {required TupleStructWithTwoFieldTwinSync arg, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_tuple_struct_with_two_field_twin_sync(arg);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_tuple_struct_with_two_field_twin_sync(arg0),
-      parseSuccessData: _wire2api_tuple_struct_with_two_field_twin_sync,
-      parseErrorData: null,
-      constMeta: kFuncTupleStructWithTwoFieldTwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kFuncTupleStructWithTwoFieldTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "func_tuple_struct_with_two_field_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<MoreThanJustOneRawStringStruct> testMoreThanJustOneRawStringStruct(
+  Future<RawStringItemStructTwinNormal> testRawStringItemStructTwinNormal(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
-          wire.wire_test_more_than_just_one_raw_string_struct(port_),
-      parseSuccessData: _wire2api_more_than_just_one_raw_string_struct,
+          wire.wire_test_raw_string_item_struct_twin_normal(port_),
+      parseSuccessData: _wire2api_raw_string_item_struct_twin_normal,
       parseErrorData: null,
-      constMeta: kTestMoreThanJustOneRawStringStructConstMeta,
+      constMeta: kTestRawStringItemStructTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kTestMoreThanJustOneRawStringStructConstMeta =>
+  TaskConstMeta get kTestRawStringItemStructTwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "test_more_than_just_one_raw_string_struct",
+        debugName: "test_raw_string_item_struct_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<RawStringItemStruct> testRawStringItemStruct({dynamic hint}) {
+  Future<EnumOpaqueTwinNormalArray5> createArrayOpaqueEnumTwinNormal(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_test_raw_string_item_struct(port_),
-      parseSuccessData: _wire2api_raw_string_item_struct,
+      callFfi: (port_) => wire.wire_create_array_opaque_enum_twin_normal(port_),
+      parseSuccessData: _wire2api_enum_opaque_twin_normal_array_5,
       parseErrorData: null,
-      constMeta: kTestRawStringItemStructConstMeta,
+      constMeta: kCreateArrayOpaqueEnumTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kTestRawStringItemStructConstMeta => const TaskConstMeta(
-        debugName: "test_raw_string_item_struct",
+  TaskConstMeta get kCreateArrayOpaqueEnumTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_array_opaque_enum_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<EnumOpaqueArray5> createArrayOpaqueEnum({dynamic hint}) {
+  Future<OpaqueNestedTwinNormal> createNestedOpaqueTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_create_array_opaque_enum(port_),
-      parseSuccessData: _wire2api_enum_opaque_array_5,
+      callFfi: (port_) => wire.wire_create_nested_opaque_twin_normal(port_),
+      parseSuccessData: _wire2api_opaque_nested_twin_normal,
       parseErrorData: null,
-      constMeta: kCreateArrayOpaqueEnumConstMeta,
+      constMeta: kCreateNestedOpaqueTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kCreateArrayOpaqueEnumConstMeta => const TaskConstMeta(
-        debugName: "create_array_opaque_enum",
+  TaskConstMeta get kCreateNestedOpaqueTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_nested_opaque_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<OpaqueNested> createNestedOpaque({dynamic hint}) {
+  Future<HideData> createOpaqueTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_create_nested_opaque(port_),
-      parseSuccessData: _wire2api_opaque_nested,
-      parseErrorData: null,
-      constMeta: kCreateNestedOpaqueConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kCreateNestedOpaqueConstMeta => const TaskConstMeta(
-        debugName: "create_nested_opaque",
-        argNames: [],
-      );
-
-  @override
-  Future<HideData> createOpaque({dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_create_opaque(port_),
+      callFfi: (port_) => wire.wire_create_opaque_twin_normal(port_),
       parseSuccessData: _wire2api_RustOpaque_hide_data,
       parseErrorData: null,
-      constMeta: kCreateOpaqueConstMeta,
+      constMeta: kCreateOpaqueTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kCreateOpaqueConstMeta => const TaskConstMeta(
-        debugName: "create_opaque",
+  TaskConstMeta get kCreateOpaqueTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "create_opaque_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<HideData?> createOptionOpaque({HideData? opaque, dynamic hint}) {
+  Future<HideData?> createOptionOpaqueTwinNormal(
+      {HideData? opaque, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_RustOpaque_hide_data(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_create_option_opaque(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_create_option_opaque_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_RustOpaque_hide_data,
       parseErrorData: null,
-      constMeta: kCreateOptionOpaqueConstMeta,
+      constMeta: kCreateOptionOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kCreateOptionOpaqueConstMeta => const TaskConstMeta(
-        debugName: "create_option_opaque",
+  TaskConstMeta get kCreateOptionOpaqueTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_option_opaque_twin_normal",
         argNames: ["opaque"],
       );
 
   @override
-  Future<NonSendHideData> createSyncOpaque({dynamic hint}) {
+  Future<NonSendHideData> createSyncOpaqueTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_create_sync_opaque(port_),
+      callFfi: (port_) => wire.wire_create_sync_opaque_twin_normal(port_),
       parseSuccessData: _wire2api_RustOpaque_non_send_hide_data,
       parseErrorData: null,
-      constMeta: kCreateSyncOpaqueConstMeta,
+      constMeta: kCreateSyncOpaqueTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kCreateSyncOpaqueConstMeta => const TaskConstMeta(
-        debugName: "create_sync_opaque",
+  TaskConstMeta get kCreateSyncOpaqueTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "create_sync_opaque_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<FrbOpaqueReturn> frbGeneratorTest({dynamic hint}) {
+  Future<FrbOpaqueReturn> frbGeneratorTestTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_frb_generator_test(port_),
+      callFfi: (port_) => wire.wire_frb_generator_test_twin_normal(port_),
       parseSuccessData: _wire2api_RustOpaque_frb_opaque_return,
       parseErrorData: null,
-      constMeta: kFrbGeneratorTestConstMeta,
+      constMeta: kFrbGeneratorTestTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kFrbGeneratorTestConstMeta => const TaskConstMeta(
-        debugName: "frb_generator_test",
+  TaskConstMeta get kFrbGeneratorTestTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "frb_generator_test_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<HideDataArray2> opaqueArray({dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_opaque_array(port_),
-      parseSuccessData: _wire2api_RustOpaque_hide_data_array_2,
-      parseErrorData: null,
-      constMeta: kOpaqueArrayConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kOpaqueArrayConstMeta => const TaskConstMeta(
-        debugName: "opaque_array",
-        argNames: [],
-      );
-
-  @override
-  Future<void> opaqueArrayRun({required HideDataArray2 data, dynamic hint}) {
+  Future<void> opaqueArrayRunTwinNormal(
+      {required HideDataArray2 data, dynamic hint}) {
     var arg0 = api2wire_RustOpaque_hide_data_array_2(data);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_opaque_array_run(port_, arg0),
+      callFfi: (port_) => wire.wire_opaque_array_run_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
-      constMeta: kOpaqueArrayRunConstMeta,
+      constMeta: kOpaqueArrayRunTwinNormalConstMeta,
       argValues: [data],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kOpaqueArrayRunConstMeta => const TaskConstMeta(
-        debugName: "opaque_array_run",
+  TaskConstMeta get kOpaqueArrayRunTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "opaque_array_run_twin_normal",
         argNames: ["data"],
       );
 
   @override
-  Future<List<HideData>> opaqueVec({dynamic hint}) {
+  Future<HideDataArray2> opaqueArrayTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_opaque_vec(port_),
-      parseSuccessData: _wire2api_list_RustOpaque_hide_data,
+      callFfi: (port_) => wire.wire_opaque_array_twin_normal(port_),
+      parseSuccessData: _wire2api_RustOpaque_hide_data_array_2,
       parseErrorData: null,
-      constMeta: kOpaqueVecConstMeta,
+      constMeta: kOpaqueArrayTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kOpaqueVecConstMeta => const TaskConstMeta(
-        debugName: "opaque_vec",
+  TaskConstMeta get kOpaqueArrayTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "opaque_array_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<void> opaqueVecRun({required List<HideData> data, dynamic hint}) {
+  Future<void> opaqueVecRunTwinNormal(
+      {required List<HideData> data, dynamic hint}) {
     var arg0 = api2wire_list_RustOpaque_hide_data(data);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_opaque_vec_run(port_, arg0),
+      callFfi: (port_) => wire.wire_opaque_vec_run_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
-      constMeta: kOpaqueVecRunConstMeta,
+      constMeta: kOpaqueVecRunTwinNormalConstMeta,
       argValues: [data],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kOpaqueVecRunConstMeta => const TaskConstMeta(
-        debugName: "opaque_vec_run",
+  TaskConstMeta get kOpaqueVecRunTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "opaque_vec_run_twin_normal",
         argNames: ["data"],
       );
 
   @override
-  Future<String> runEnumOpaque({required EnumOpaque opaque, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_enum_opaque(opaque);
+  Future<List<HideData>> opaqueVecTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_run_enum_opaque(port_, arg0),
+      callFfi: (port_) => wire.wire_opaque_vec_twin_normal(port_),
+      parseSuccessData: _wire2api_list_RustOpaque_hide_data,
+      parseErrorData: null,
+      constMeta: kOpaqueVecTwinNormalConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueVecTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "opaque_vec_twin_normal",
+        argNames: [],
+      );
+
+  @override
+  Future<String> runEnumOpaqueTwinNormal(
+      {required EnumOpaqueTwinNormal opaque, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_enum_opaque_twin_normal(opaque);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_run_enum_opaque_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_String,
       parseErrorData: null,
-      constMeta: kRunEnumOpaqueConstMeta,
+      constMeta: kRunEnumOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kRunEnumOpaqueConstMeta => const TaskConstMeta(
-        debugName: "run_enum_opaque",
+  TaskConstMeta get kRunEnumOpaqueTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "run_enum_opaque_twin_normal",
         argNames: ["opaque"],
       );
 
   @override
-  Future<void> runNestedOpaque({required OpaqueNested opaque, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_opaque_nested(opaque);
+  Future<void> runNestedOpaqueTwinNormal(
+      {required OpaqueNestedTwinNormal opaque, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_opaque_nested_twin_normal(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_run_nested_opaque(port_, arg0),
+      callFfi: (port_) => wire.wire_run_nested_opaque_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
-      constMeta: kRunNestedOpaqueConstMeta,
+      constMeta: kRunNestedOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kRunNestedOpaqueConstMeta => const TaskConstMeta(
-        debugName: "run_nested_opaque",
+  TaskConstMeta get kRunNestedOpaqueTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "run_nested_opaque_twin_normal",
         argNames: ["opaque"],
       );
 
   @override
-  Future<String> runNonClone({required NonCloneData clone, dynamic hint}) {
+  Future<String> runNonCloneTwinNormal(
+      {required NonCloneData clone, dynamic hint}) {
     var arg0 = api2wire_RustOpaque_non_clone_data(clone);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_run_non_clone(port_, arg0),
+      callFfi: (port_) => wire.wire_run_non_clone_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_String,
       parseErrorData: null,
-      constMeta: kRunNonCloneConstMeta,
+      constMeta: kRunNonCloneTwinNormalConstMeta,
       argValues: [clone],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kRunNonCloneConstMeta => const TaskConstMeta(
-        debugName: "run_non_clone",
+  TaskConstMeta get kRunNonCloneTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "run_non_clone_twin_normal",
         argNames: ["clone"],
       );
 
   @override
-  Future<String> runOpaque({required HideData opaque, dynamic hint}) {
+  Future<String> runOpaqueTwinNormal({required HideData opaque, dynamic hint}) {
     var arg0 = api2wire_RustOpaque_hide_data(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_run_opaque(port_, arg0),
+      callFfi: (port_) => wire.wire_run_opaque_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_String,
       parseErrorData: null,
-      constMeta: kRunOpaqueConstMeta,
+      constMeta: kRunOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kRunOpaqueConstMeta => const TaskConstMeta(
-        debugName: "run_opaque",
+  TaskConstMeta get kRunOpaqueTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "run_opaque_twin_normal",
         argNames: ["opaque"],
       );
 
   @override
-  Future<String> runOpaqueWithDelay({required HideData opaque, dynamic hint}) {
+  Future<String> runOpaqueWithDelayTwinNormal(
+      {required HideData opaque, dynamic hint}) {
     var arg0 = api2wire_RustOpaque_hide_data(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_run_opaque_with_delay(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_run_opaque_with_delay_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_String,
       parseErrorData: null,
-      constMeta: kRunOpaqueWithDelayConstMeta,
+      constMeta: kRunOpaqueWithDelayTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kRunOpaqueWithDelayConstMeta => const TaskConstMeta(
-        debugName: "run_opaque_with_delay",
+  TaskConstMeta get kRunOpaqueWithDelayTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "run_opaque_with_delay_twin_normal",
         argNames: ["opaque"],
       );
 
   @override
-  Future<String> unwrapRustOpaque({required HideData opaque, dynamic hint}) {
+  Future<String> unwrapRustOpaqueTwinNormal(
+      {required HideData opaque, dynamic hint}) {
     var arg0 = api2wire_RustOpaque_hide_data(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_unwrap_rust_opaque(port_, arg0),
+      callFfi: (port_) => wire.wire_unwrap_rust_opaque_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_String,
       parseErrorData: _wire2api_AnyhowException,
-      constMeta: kUnwrapRustOpaqueConstMeta,
+      constMeta: kUnwrapRustOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kUnwrapRustOpaqueConstMeta => const TaskConstMeta(
-        debugName: "unwrap_rust_opaque",
+  TaskConstMeta get kUnwrapRustOpaqueTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "unwrap_rust_opaque_twin_normal",
         argNames: ["opaque"],
       );
 
   @override
-  FrbOpaqueSyncReturn frbSyncGeneratorTest({dynamic hint}) {
+  FrbOpaqueSyncReturn frbSyncGeneratorTestTwinNormal({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_frb_sync_generator_test(),
+      callFfi: () => wire.wire_frb_sync_generator_test_twin_normal(),
       parseSuccessData: _wire2api_RustOpaque_frb_opaque_sync_return,
       parseErrorData: null,
-      constMeta: kFrbSyncGeneratorTestConstMeta,
+      constMeta: kFrbSyncGeneratorTestTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kFrbSyncGeneratorTestConstMeta => const TaskConstMeta(
-        debugName: "frb_sync_generator_test",
+  TaskConstMeta get kFrbSyncGeneratorTestTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "frb_sync_generator_test_twin_normal",
         argNames: [],
       );
 
   @override
-  NonCloneData syncCreateNonClone({dynamic hint}) {
+  NonCloneData syncCreateNonCloneTwinNormal({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_create_non_clone(),
+      callFfi: () => wire.wire_sync_create_non_clone_twin_normal(),
       parseSuccessData: _wire2api_RustOpaque_non_clone_data,
       parseErrorData: null,
-      constMeta: kSyncCreateNonCloneConstMeta,
+      constMeta: kSyncCreateNonCloneTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kSyncCreateNonCloneConstMeta => const TaskConstMeta(
-        debugName: "sync_create_non_clone",
+  TaskConstMeta get kSyncCreateNonCloneTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "sync_create_non_clone_twin_normal",
         argNames: [],
       );
 
   @override
-  HideData syncCreateOpaque({dynamic hint}) {
+  HideData syncCreateOpaqueTwinNormal({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_create_opaque(),
+      callFfi: () => wire.wire_sync_create_opaque_twin_normal(),
       parseSuccessData: _wire2api_RustOpaque_hide_data,
       parseErrorData: null,
-      constMeta: kSyncCreateOpaqueConstMeta,
+      constMeta: kSyncCreateOpaqueTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kSyncCreateOpaqueConstMeta => const TaskConstMeta(
-        debugName: "sync_create_opaque",
+  TaskConstMeta get kSyncCreateOpaqueTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "sync_create_opaque_twin_normal",
         argNames: [],
       );
 
   @override
-  NonSendHideData syncCreateSyncOpaque({dynamic hint}) {
+  NonSendHideData syncCreateSyncOpaqueTwinNormal({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_create_sync_opaque(),
+      callFfi: () => wire.wire_sync_create_sync_opaque_twin_normal(),
       parseSuccessData: _wire2api_RustOpaque_non_send_hide_data,
       parseErrorData: null,
-      constMeta: kSyncCreateSyncOpaqueConstMeta,
+      constMeta: kSyncCreateSyncOpaqueTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kSyncCreateSyncOpaqueConstMeta => const TaskConstMeta(
-        debugName: "sync_create_sync_opaque",
+  TaskConstMeta get kSyncCreateSyncOpaqueTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "sync_create_sync_opaque_twin_normal",
         argNames: [],
       );
 
   @override
-  HideData? syncOptionRustOpaque({dynamic hint}) {
+  HideData? syncOptionRustOpaqueTwinNormal({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_option_rust_opaque(),
+      callFfi: () => wire.wire_sync_option_rust_opaque_twin_normal(),
       parseSuccessData: _wire2api_opt_box_autoadd_RustOpaque_hide_data,
       parseErrorData: _wire2api_AnyhowException,
-      constMeta: kSyncOptionRustOpaqueConstMeta,
+      constMeta: kSyncOptionRustOpaqueTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kSyncOptionRustOpaqueConstMeta => const TaskConstMeta(
-        debugName: "sync_option_rust_opaque",
+  TaskConstMeta get kSyncOptionRustOpaqueTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "sync_option_rust_opaque_twin_normal",
         argNames: [],
       );
 
   @override
-  String syncRunOpaque({required NonSendHideData opaque, dynamic hint}) {
+  String syncRunOpaqueTwinNormal(
+      {required NonSendHideData opaque, dynamic hint}) {
     var arg0 = api2wire_RustOpaque_non_send_hide_data(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_run_opaque(arg0),
+      callFfi: () => wire.wire_sync_run_opaque_twin_normal(arg0),
       parseSuccessData: _wire2api_String,
       parseErrorData: null,
-      constMeta: kSyncRunOpaqueConstMeta,
+      constMeta: kSyncRunOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kSyncRunOpaqueConstMeta => const TaskConstMeta(
-        debugName: "sync_run_opaque",
+  TaskConstMeta get kSyncRunOpaqueTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "sync_run_opaque_twin_normal",
         argNames: ["opaque"],
       );
 
@@ -6514,83 +4659,91 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<MyStreamEntry> handleStreamOfStruct({dynamic hint}) {
+  Stream<MyStreamEntryTwinNormal> handleStreamOfStructTwinNormal(
+      {dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_handle_stream_of_struct(port_),
-      parseSuccessData: _wire2api_my_stream_entry,
+      callFfi: (port_) => wire.wire_handle_stream_of_struct_twin_normal(port_),
+      parseSuccessData: _wire2api_my_stream_entry_twin_normal,
       parseErrorData: null,
-      constMeta: kHandleStreamOfStructConstMeta,
+      constMeta: kHandleStreamOfStructTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleStreamOfStructConstMeta => const TaskConstMeta(
-        debugName: "handle_stream_of_struct",
+  TaskConstMeta get kHandleStreamOfStructTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_stream_of_struct_twin_normal",
         argNames: [],
       );
 
   @override
-  Stream<Log> handleStreamSinkAt1(
+  Stream<LogTwinNormal> handleStreamSinkAt1TwinNormal(
       {required int key, required int max, dynamic hint}) {
     var arg0 = api2wire_u_32(key);
     var arg1 = api2wire_u_32(max);
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_handle_stream_sink_at_1(port_, arg0, arg1),
-      parseSuccessData: _wire2api_log,
+      callFfi: (port_) =>
+          wire.wire_handle_stream_sink_at_1_twin_normal(port_, arg0, arg1),
+      parseSuccessData: _wire2api_log_twin_normal,
       parseErrorData: null,
-      constMeta: kHandleStreamSinkAt1ConstMeta,
+      constMeta: kHandleStreamSinkAt1TwinNormalConstMeta,
       argValues: [key, max],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleStreamSinkAt1ConstMeta => const TaskConstMeta(
-        debugName: "handle_stream_sink_at_1",
+  TaskConstMeta get kHandleStreamSinkAt1TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_stream_sink_at_1_twin_normal",
         argNames: ["key", "max"],
       );
 
   @override
-  Stream<Log> handleStreamSinkAt2(
+  Stream<LogTwinNormal> handleStreamSinkAt2TwinNormal(
       {required int key, required int max, dynamic hint}) {
     var arg0 = api2wire_u_32(key);
     var arg1 = api2wire_u_32(max);
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_handle_stream_sink_at_2(port_, arg0, arg1),
-      parseSuccessData: _wire2api_log,
+      callFfi: (port_) =>
+          wire.wire_handle_stream_sink_at_2_twin_normal(port_, arg0, arg1),
+      parseSuccessData: _wire2api_log_twin_normal,
       parseErrorData: null,
-      constMeta: kHandleStreamSinkAt2ConstMeta,
+      constMeta: kHandleStreamSinkAt2TwinNormalConstMeta,
       argValues: [key, max],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleStreamSinkAt2ConstMeta => const TaskConstMeta(
-        debugName: "handle_stream_sink_at_2",
+  TaskConstMeta get kHandleStreamSinkAt2TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_stream_sink_at_2_twin_normal",
         argNames: ["key", "max"],
       );
 
   @override
-  Stream<Log> handleStreamSinkAt3(
+  Stream<LogTwinNormal> handleStreamSinkAt3TwinNormal(
       {required int key, required int max, dynamic hint}) {
     var arg0 = api2wire_u_32(key);
     var arg1 = api2wire_u_32(max);
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_handle_stream_sink_at_3(port_, arg0, arg1),
-      parseSuccessData: _wire2api_log,
+      callFfi: (port_) =>
+          wire.wire_handle_stream_sink_at_3_twin_normal(port_, arg0, arg1),
+      parseSuccessData: _wire2api_log_twin_normal,
       parseErrorData: null,
-      constMeta: kHandleStreamSinkAt3ConstMeta,
+      constMeta: kHandleStreamSinkAt3TwinNormalConstMeta,
       argValues: [key, max],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleStreamSinkAt3ConstMeta => const TaskConstMeta(
-        debugName: "handle_stream_sink_at_3",
+  TaskConstMeta get kHandleStreamSinkAt3TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_stream_sink_at_3_twin_normal",
         argNames: ["key", "max"],
       );
 
@@ -6709,156 +4862,169 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<(String, int)> testTuple({(String, int)? value, dynamic hint}) {
-    var arg0 = api2wire_opt_box_autoadd_record_string_i_32(value);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_test_tuple(port_, arg0),
-      parseSuccessData: _wire2api_record_string_i_32,
-      parseErrorData: null,
-      constMeta: kTestTupleConstMeta,
-      argValues: [value],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kTestTupleConstMeta => const TaskConstMeta(
-        debugName: "test_tuple",
-        argNames: ["value"],
-      );
-
-  @override
-  Future<void> testTuple2({required List<(String, int)> value, dynamic hint}) {
+  Future<void> testTuple2TwinNormal(
+      {required List<(String, int)> value, dynamic hint}) {
     var arg0 = api2wire_list_record_string_i_32(value);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_test_tuple_2(port_, arg0),
+      callFfi: (port_) => wire.wire_test_tuple_2_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
-      constMeta: kTestTuple2ConstMeta,
+      constMeta: kTestTuple2TwinNormalConstMeta,
       argValues: [value],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kTestTuple2ConstMeta => const TaskConstMeta(
-        debugName: "test_tuple_2",
+  TaskConstMeta get kTestTuple2TwinNormalConstMeta => const TaskConstMeta(
+        debugName: "test_tuple_2_twin_normal",
         argNames: ["value"],
       );
 
   @override
-  Future<int> handleTypeAliasId({required int input, dynamic hint}) {
+  Future<(String, int)> testTupleTwinNormal(
+      {(String, int)? value, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_record_string_i_32(value);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_test_tuple_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_record_string_i_32,
+      parseErrorData: null,
+      constMeta: kTestTupleTwinNormalConstMeta,
+      argValues: [value],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestTupleTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "test_tuple_twin_normal",
+        argNames: ["value"],
+      );
+
+  @override
+  Future<int> handleTypeAliasIdTwinNormal({required int input, dynamic hint}) {
     var arg0 = api2wire_u_64(input);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_type_alias_id(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_handle_type_alias_id_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_u_64,
       parseErrorData: null,
-      constMeta: kHandleTypeAliasIdConstMeta,
+      constMeta: kHandleTypeAliasIdTwinNormalConstMeta,
       argValues: [input],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleTypeAliasIdConstMeta => const TaskConstMeta(
-        debugName: "handle_type_alias_id",
+  TaskConstMeta get kHandleTypeAliasIdTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_type_alias_id_twin_normal",
         argNames: ["input"],
       );
 
   @override
-  Future<TestModel> handleTypeAliasModel({required int input, dynamic hint}) {
+  Future<TestModelTwinNormal> handleTypeAliasModelTwinNormal(
+      {required int input, dynamic hint}) {
     var arg0 = api2wire_u_64(input);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_type_alias_model(port_, arg0),
-      parseSuccessData: _wire2api_test_model,
+      callFfi: (port_) =>
+          wire.wire_handle_type_alias_model_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_test_model_twin_normal,
       parseErrorData: null,
-      constMeta: kHandleTypeAliasModelConstMeta,
+      constMeta: kHandleTypeAliasModelTwinNormalConstMeta,
       argValues: [input],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleTypeAliasModelConstMeta => const TaskConstMeta(
-        debugName: "handle_type_alias_model",
+  TaskConstMeta get kHandleTypeAliasModelTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_type_alias_model_twin_normal",
         argNames: ["input"],
       );
 
   @override
-  Future<int> handleTypeNestAliasId({required int input, dynamic hint}) {
+  Future<int> handleTypeNestAliasIdTwinNormal(
+      {required int input, dynamic hint}) {
     var arg0 = api2wire_u_64(input);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_type_nest_alias_id(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_handle_type_nest_alias_id_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_u_64,
       parseErrorData: null,
-      constMeta: kHandleTypeNestAliasIdConstMeta,
+      constMeta: kHandleTypeNestAliasIdTwinNormalConstMeta,
       argValues: [input],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleTypeNestAliasIdConstMeta => const TaskConstMeta(
-        debugName: "handle_type_nest_alias_id",
+  TaskConstMeta get kHandleTypeNestAliasIdTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_type_nest_alias_id_twin_normal",
         argNames: ["input"],
       );
 
   @override
-  Future<FeatureUuid> handleNestedUuids(
-      {required FeatureUuid ids, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_feature_uuid(ids);
+  Future<FeatureUuidTwinNormal> handleNestedUuidsTwinNormal(
+      {required FeatureUuidTwinNormal ids, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_feature_uuid_twin_normal(ids);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_nested_uuids(port_, arg0),
-      parseSuccessData: _wire2api_feature_uuid,
+      callFfi: (port_) =>
+          wire.wire_handle_nested_uuids_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_feature_uuid_twin_normal,
       parseErrorData: _wire2api_AnyhowException,
-      constMeta: kHandleNestedUuidsConstMeta,
+      constMeta: kHandleNestedUuidsTwinNormalConstMeta,
       argValues: [ids],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleNestedUuidsConstMeta => const TaskConstMeta(
-        debugName: "handle_nested_uuids",
+  TaskConstMeta get kHandleNestedUuidsTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_nested_uuids_twin_normal",
         argNames: ["ids"],
       );
 
   @override
-  Future<UuidValue> handleUuid({required UuidValue id, dynamic hint}) {
+  Future<UuidValue> handleUuidTwinNormal(
+      {required UuidValue id, dynamic hint}) {
     var arg0 = api2wire_Uuid(id);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_uuid(port_, arg0),
+      callFfi: (port_) => wire.wire_handle_uuid_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_Uuid,
       parseErrorData: _wire2api_AnyhowException,
-      constMeta: kHandleUuidConstMeta,
+      constMeta: kHandleUuidTwinNormalConstMeta,
       argValues: [id],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleUuidConstMeta => const TaskConstMeta(
-        debugName: "handle_uuid",
+  TaskConstMeta get kHandleUuidTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "handle_uuid_twin_normal",
         argNames: ["id"],
       );
 
   @override
-  Future<List<UuidValue>> handleUuids(
+  Future<List<UuidValue>> handleUuidsTwinNormal(
       {required List<UuidValue> ids, dynamic hint}) {
     var arg0 = api2wire_Uuids(ids);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_uuids(port_, arg0),
+      callFfi: (port_) => wire.wire_handle_uuids_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_Uuids,
       parseErrorData: _wire2api_AnyhowException,
-      constMeta: kHandleUuidsConstMeta,
+      constMeta: kHandleUuidsTwinNormalConstMeta,
       argValues: [ids],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleUuidsConstMeta => const TaskConstMeta(
-        debugName: "handle_uuids",
+  TaskConstMeta get kHandleUuidsTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "handle_uuids_twin_normal",
         argNames: ["ids"],
       );
 
@@ -7055,31 +5221,31 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw as Uint8List;
   }
 
-  A _wire2api_a(dynamic raw) {
+  ATwinNormal _wire2api_a_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return A(
+    return ATwinNormal(
       a: _wire2api_String(arr[0]),
     );
   }
 
-  Abc _wire2api_abc(dynamic raw) {
+  AbcTwinNormal _wire2api_abc_twin_normal(dynamic raw) {
     switch (raw[0]) {
       case 0:
-        return Abc_A(
-          _wire2api_box_autoadd_a(raw[1]),
+        return AbcTwinNormal_A(
+          _wire2api_box_autoadd_a_twin_normal(raw[1]),
         );
       case 1:
-        return Abc_B(
-          _wire2api_box_autoadd_b(raw[1]),
+        return AbcTwinNormal_B(
+          _wire2api_box_autoadd_b_twin_normal(raw[1]),
         );
       case 2:
-        return Abc_C(
-          _wire2api_box_autoadd_c(raw[1]),
+        return AbcTwinNormal_C(
+          _wire2api_box_autoadd_c_twin_normal(raw[1]),
         );
       case 3:
-        return Abc_JustInt(
+        return AbcTwinNormal_JustInt(
           _wire2api_i_32(raw[1]),
         );
       default:
@@ -7087,22 +5253,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
-  Another _wire2api_another(dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 1)
-      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return Another(
-      a: _wire2api_String(arr[0]),
-    );
-  }
-
-  AnotherMacroStruct _wire2api_another_macro_struct(dynamic raw) {
+  AnotherMacroStructTwinNormal _wire2api_another_macro_struct_twin_normal(
+      dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    return AnotherMacroStruct(
+    return AnotherMacroStructTwinNormal(
       data: _wire2api_i_32(arr[0]),
       nonFinalData: _wire2api_i_32(arr[1]),
+    );
+  }
+
+  AnotherTwinNormal _wire2api_another_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return AnotherTwinNormal(
+      a: _wire2api_String(arr[0]),
     );
   }
 
@@ -7160,40 +5327,40 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
-  Attribute _wire2api_attribute(dynamic raw) {
+  AttributeTwinNormal _wire2api_attribute_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    return Attribute(
+    return AttributeTwinNormal(
       key: _wire2api_String(arr[0]),
       value: _wire2api_String(arr[1]),
     );
   }
 
-  B _wire2api_b(dynamic raw) {
+  BTwinNormal _wire2api_b_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return B(
+    return BTwinNormal(
       b: _wire2api_i_32(arr[0]),
     );
   }
 
-  BigBuffers _wire2api_big_buffers(dynamic raw) {
+  BigBuffersTwinNormal _wire2api_big_buffers_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    return BigBuffers(
+    return BigBuffersTwinNormal(
       int64: _wire2api_list_prim_i_64(arr[0]),
       uint64: _wire2api_list_prim_u_64(arr[1]),
     );
   }
 
-  Blob _wire2api_blob(dynamic raw) {
+  BlobTwinNormal _wire2api_blob_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return Blob(
+    return BlobTwinNormal(
       field0: _wire2api_u_8_array_1600(arr[0]),
     );
   }
@@ -7226,32 +5393,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return _wire2api_RustOpaque_hide_data(raw);
   }
 
-  A _wire2api_box_autoadd_a(dynamic raw) {
-    return _wire2api_a(raw);
+  ATwinNormal _wire2api_box_autoadd_a_twin_normal(dynamic raw) {
+    return _wire2api_a_twin_normal(raw);
   }
 
   ApplicationEnv _wire2api_box_autoadd_application_env(dynamic raw) {
     return _wire2api_application_env(raw);
   }
 
-  Attribute _wire2api_box_autoadd_attribute(dynamic raw) {
-    return _wire2api_attribute(raw);
+  AttributeTwinNormal _wire2api_box_autoadd_attribute_twin_normal(dynamic raw) {
+    return _wire2api_attribute_twin_normal(raw);
   }
 
-  B _wire2api_box_autoadd_b(dynamic raw) {
-    return _wire2api_b(raw);
+  BTwinNormal _wire2api_box_autoadd_b_twin_normal(dynamic raw) {
+    return _wire2api_b_twin_normal(raw);
   }
 
   bool _wire2api_box_autoadd_bool(dynamic raw) {
     return raw as bool;
   }
 
-  C _wire2api_box_autoadd_c(dynamic raw) {
-    return _wire2api_c(raw);
+  CTwinNormal _wire2api_box_autoadd_c_twin_normal(dynamic raw) {
+    return _wire2api_c_twin_normal(raw);
   }
 
-  CustomNestedError2 _wire2api_box_autoadd_custom_nested_error_2(dynamic raw) {
-    return _wire2api_custom_nested_error_2(raw);
+  CustomNestedError2TwinNormal
+      _wire2api_box_autoadd_custom_nested_error_2_twin_normal(dynamic raw) {
+    return _wire2api_custom_nested_error_2_twin_normal(raw);
   }
 
   CustomNestedErrorInnerTwinNormal
@@ -7259,29 +5427,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return _wire2api_custom_nested_error_inner_twin_normal(raw);
   }
 
-  CustomNestedErrorInnerTwinSync
-      _wire2api_box_autoadd_custom_nested_error_inner_twin_sync(dynamic raw) {
-    return _wire2api_custom_nested_error_inner_twin_sync(raw);
+  ElementTwinNormal _wire2api_box_autoadd_element_twin_normal(dynamic raw) {
+    return _wire2api_element_twin_normal(raw);
   }
 
-  Element _wire2api_box_autoadd_element(dynamic raw) {
-    return _wire2api_element(raw);
-  }
-
-  ExoticOptionals _wire2api_box_autoadd_exotic_optionals(dynamic raw) {
-    return _wire2api_exotic_optionals(raw);
-  }
-
-  double _wire2api_box_autoadd_f_32(dynamic raw) {
-    return raw as double;
+  ExoticOptionalsTwinNormal _wire2api_box_autoadd_exotic_optionals_twin_normal(
+      dynamic raw) {
+    return _wire2api_exotic_optionals_twin_normal(raw);
   }
 
   double _wire2api_box_autoadd_f_64(dynamic raw) {
     return raw as double;
-  }
-
-  int _wire2api_box_autoadd_i_16(dynamic raw) {
-    return raw as int;
   }
 
   int _wire2api_box_autoadd_i_32(dynamic raw) {
@@ -7292,17 +5448,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return _wire2api_i_64(raw);
   }
 
-  int _wire2api_box_autoadd_i_8(dynamic raw) {
-    return raw as int;
-  }
-
   ListOfNestedRawStringMirrored
       _wire2api_box_autoadd_list_of_nested_raw_string_mirrored(dynamic raw) {
     return _wire2api_list_of_nested_raw_string_mirrored(raw);
   }
 
-  Measure _wire2api_box_autoadd_measure(dynamic raw) {
-    return _wire2api_measure(raw);
+  MeasureTwinNormal _wire2api_box_autoadd_measure_twin_normal(dynamic raw) {
+    return _wire2api_measure_twin_normal(raw);
   }
 
   NestedRawStringMirrored _wire2api_box_autoadd_nested_raw_string_mirrored(
@@ -7310,80 +5462,66 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return _wire2api_nested_raw_string_mirrored(raw);
   }
 
-  NewTypeInt _wire2api_box_autoadd_new_type_int(dynamic raw) {
-    return _wire2api_new_type_int(raw);
+  NewTypeIntTwinNormal _wire2api_box_autoadd_new_type_int_twin_normal(
+      dynamic raw) {
+    return _wire2api_new_type_int_twin_normal(raw);
   }
 
   RawStringMirrored _wire2api_box_autoadd_raw_string_mirrored(dynamic raw) {
     return _wire2api_raw_string_mirrored(raw);
   }
 
-  int _wire2api_box_autoadd_u_16(dynamic raw) {
-    return raw as int;
+  WeekdaysTwinNormal _wire2api_box_autoadd_weekdays_twin_normal(dynamic raw) {
+    return _wire2api_weekdays_twin_normal(raw);
   }
 
-  int _wire2api_box_autoadd_u_32(dynamic raw) {
-    return raw as int;
+  DistanceTwinNormal _wire2api_box_distance_twin_normal(dynamic raw) {
+    return _wire2api_distance_twin_normal(raw);
   }
 
-  int _wire2api_box_autoadd_u_64(dynamic raw) {
-    return _wire2api_u_64(raw);
+  FeedIdTwinNormal _wire2api_box_feed_id_twin_normal(dynamic raw) {
+    return _wire2api_feed_id_twin_normal(raw);
   }
 
-  int _wire2api_box_autoadd_u_8(dynamic raw) {
-    return raw as int;
+  KitchenSinkTwinNormal _wire2api_box_kitchen_sink_twin_normal(dynamic raw) {
+    return _wire2api_kitchen_sink_twin_normal(raw);
   }
 
-  Weekdays _wire2api_box_autoadd_weekdays(dynamic raw) {
-    return _wire2api_weekdays(raw);
-  }
-
-  Distance _wire2api_box_distance(dynamic raw) {
-    return _wire2api_distance(raw);
-  }
-
-  FeedId _wire2api_box_feed_id(dynamic raw) {
-    return _wire2api_feed_id(raw);
-  }
-
-  KitchenSink _wire2api_box_kitchen_sink(dynamic raw) {
-    return _wire2api_kitchen_sink(raw);
-  }
-
-  Speed _wire2api_box_speed(dynamic raw) {
-    return _wire2api_speed(raw);
+  SpeedTwinNormal _wire2api_box_speed_twin_normal(dynamic raw) {
+    return _wire2api_speed_twin_normal(raw);
   }
 
   U8Array8 _wire2api_box_u_8_array_8(dynamic raw) {
     return _wire2api_u_8_array_8(raw);
   }
 
-  C _wire2api_c(dynamic raw) {
+  CTwinNormal _wire2api_c_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return C(
+    return CTwinNormal(
       c: _wire2api_bool(arr[0]),
     );
   }
 
-  ConcatenateWith _wire2api_concatenate_with(dynamic raw) {
+  ConcatenateWithTwinNormal _wire2api_concatenate_with_twin_normal(
+      dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return ConcatenateWith(
+    return ConcatenateWithTwinNormal(
       a: _wire2api_String(arr[0]),
     );
   }
 
-  ContainsMirroredSubStruct _wire2api_contains_mirrored_sub_struct(
-      dynamic raw) {
+  ContainsMirroredSubStructTwinNormal
+      _wire2api_contains_mirrored_sub_struct_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    return ContainsMirroredSubStruct(
+    return ContainsMirroredSubStructTwinNormal(
       test: _wire2api_raw_string_mirrored(arr[0]),
-      test2: _wire2api_another(arr[1]),
+      test2: _wire2api_another_twin_normal(arr[1]),
     );
   }
 
@@ -7405,32 +5543,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
-  CustomEnumErrorTwinSync _wire2api_custom_enum_error_twin_sync(dynamic raw) {
+  CustomErrorTwinNormal _wire2api_custom_error_twin_normal(dynamic raw) {
     switch (raw[0]) {
       case 0:
-        return CustomEnumErrorTwinSync_One(
-          message: _wire2api_String(raw[1]),
-          backtrace: _wire2api_String(raw[2]),
-        );
-      case 1:
-        return CustomEnumErrorTwinSync_Two(
-          message: _wire2api_u_32(raw[1]),
-          backtrace: _wire2api_String(raw[2]),
-        );
-      default:
-        throw Exception("unreachable");
-    }
-  }
-
-  CustomError _wire2api_custom_error(dynamic raw) {
-    switch (raw[0]) {
-      case 0:
-        return CustomError_Error0(
+        return CustomErrorTwinNormal_Error0(
           e: _wire2api_String(raw[1]),
           backtrace: _wire2api_String(raw[2]),
         );
       case 1:
-        return CustomError_Error1(
+        return CustomErrorTwinNormal_Error1(
           e: _wire2api_u_32(raw[1]),
           backtrace: _wire2api_String(raw[2]),
         );
@@ -7439,29 +5560,31 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
-  CustomNestedError1 _wire2api_custom_nested_error_1(dynamic raw) {
+  CustomNestedError1TwinNormal _wire2api_custom_nested_error_1_twin_normal(
+      dynamic raw) {
     switch (raw[0]) {
       case 0:
-        return CustomNestedError1_CustomNested1(
+        return CustomNestedError1TwinNormal_CustomNested1(
           _wire2api_String(raw[1]),
         );
       case 1:
-        return CustomNestedError1_ErrorNested(
-          _wire2api_box_autoadd_custom_nested_error_2(raw[1]),
+        return CustomNestedError1TwinNormal_ErrorNested(
+          _wire2api_box_autoadd_custom_nested_error_2_twin_normal(raw[1]),
         );
       default:
         throw Exception("unreachable");
     }
   }
 
-  CustomNestedError2 _wire2api_custom_nested_error_2(dynamic raw) {
+  CustomNestedError2TwinNormal _wire2api_custom_nested_error_2_twin_normal(
+      dynamic raw) {
     switch (raw[0]) {
       case 0:
-        return CustomNestedError2_CustomNested2(
+        return CustomNestedError2TwinNormal_CustomNested2(
           _wire2api_String(raw[1]),
         );
       case 1:
-        return CustomNestedError2_CustomNested2Number(
+        return CustomNestedError2TwinNormal_CustomNested2Number(
           _wire2api_u_32(raw[1]),
         );
       default:
@@ -7485,22 +5608,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
-  CustomNestedErrorInnerTwinSync _wire2api_custom_nested_error_inner_twin_sync(
-      dynamic raw) {
-    switch (raw[0]) {
-      case 0:
-        return CustomNestedErrorInnerTwinSync_Three(
-          _wire2api_String(raw[1]),
-        );
-      case 1:
-        return CustomNestedErrorInnerTwinSync_Four(
-          _wire2api_u_32(raw[1]),
-        );
-      default:
-        throw Exception("unreachable");
-    }
-  }
-
   CustomNestedErrorOuterTwinNormal
       _wire2api_custom_nested_error_outer_twin_normal(dynamic raw) {
     switch (raw[0]) {
@@ -7517,36 +5624,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
-  CustomNestedErrorOuterTwinSync _wire2api_custom_nested_error_outer_twin_sync(
-      dynamic raw) {
-    switch (raw[0]) {
-      case 0:
-        return CustomNestedErrorOuterTwinSync_One(
-          _wire2api_String(raw[1]),
-        );
-      case 1:
-        return CustomNestedErrorOuterTwinSync_Two(
-          _wire2api_box_autoadd_custom_nested_error_inner_twin_sync(raw[1]),
-        );
-      default:
-        throw Exception("unreachable");
-    }
-  }
-
-  CustomStruct _wire2api_custom_struct(dynamic raw) {
+  CustomStructErrorAnotherTwinNormal
+      _wire2api_custom_struct_error_another_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return CustomStruct(
-      message: _wire2api_String(arr[0]),
-    );
-  }
-
-  CustomStructError _wire2api_custom_struct_error(dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 1)
-      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return CustomStructError(
+    return CustomStructErrorAnotherTwinNormal(
       message: _wire2api_String(arr[0]),
     );
   }
@@ -7561,21 +5644,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
-  CustomStructErrorTwinSync _wire2api_custom_struct_error_twin_sync(
-      dynamic raw) {
+  CustomStructTwinNormal _wire2api_custom_struct_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return CustomStructErrorTwinSync(
-      a: _wire2api_String(arr[0]),
+    return CustomStructTwinNormal(
+      message: _wire2api_String(arr[0]),
     );
   }
 
-  DartOpaqueNested _wire2api_dart_opaque_nested(dynamic raw) {
+  DartOpaqueNestedTwinNormal _wire2api_dart_opaque_nested_twin_normal(
+      dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    return DartOpaqueNested(
+    return DartOpaqueNestedTwinNormal(
       first: _wire2api_DartOpaque(arr[0]),
       second: _wire2api_DartOpaque(arr[1]),
     );
@@ -7585,12 +5668,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw;
   }
 
-  Distance _wire2api_distance(dynamic raw) {
+  DistanceTwinNormal _wire2api_distance_twin_normal(dynamic raw) {
     switch (raw[0]) {
       case 0:
-        return Distance_Unknown();
+        return DistanceTwinNormal_Unknown();
       case 1:
-        return Distance_Map(
+        return DistanceTwinNormal_Map(
           _wire2api_f_64(raw[1]),
         );
       default:
@@ -7598,33 +5681,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
-  Element _wire2api_element(dynamic raw) {
+  ElementTwinNormal _wire2api_element_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
-    return Element(
+    return ElementTwinNormal(
       tag: _wire2api_opt_String(arr[0]),
       text: _wire2api_opt_String(arr[1]),
-      attributes: _wire2api_opt_list_attribute(arr[2]),
-      children: _wire2api_opt_list_element(arr[3]),
+      attributes: _wire2api_opt_list_attribute_twin_normal(arr[2]),
+      children: _wire2api_opt_list_element_twin_normal(arr[3]),
     );
   }
 
-  Empty _wire2api_empty(dynamic raw) {
+  EmptyTwinNormal _wire2api_empty_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 0)
       throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
-    return Empty();
+    return EmptyTwinNormal();
   }
 
-  EnumDartOpaque _wire2api_enum_dart_opaque(dynamic raw) {
+  EnumDartOpaqueTwinNormal _wire2api_enum_dart_opaque_twin_normal(dynamic raw) {
     switch (raw[0]) {
       case 0:
-        return EnumDartOpaque_Primitive(
+        return EnumDartOpaqueTwinNormal_Primitive(
           _wire2api_i_32(raw[1]),
         );
       case 1:
-        return EnumDartOpaque_Opaque(
+        return EnumDartOpaqueTwinNormal_Opaque(
           _wire2api_DartOpaque(raw[1]),
         );
       default:
@@ -7632,26 +5715,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
-  EnumOpaque _wire2api_enum_opaque(dynamic raw) {
+  EnumOpaqueTwinNormal _wire2api_enum_opaque_twin_normal(dynamic raw) {
     switch (raw[0]) {
       case 0:
-        return EnumOpaque_Struct(
+        return EnumOpaqueTwinNormal_Struct(
           _wire2api_RustOpaque_hide_data(raw[1]),
         );
       case 1:
-        return EnumOpaque_Primitive(
+        return EnumOpaqueTwinNormal_Primitive(
           _wire2api_RustOpaque_i_32(raw[1]),
         );
       case 2:
-        return EnumOpaque_TraitObj(
+        return EnumOpaqueTwinNormal_TraitObj(
           _wire2api_RustOpaque_box_dynDartDebug(raw[1]),
         );
       case 3:
-        return EnumOpaque_Mutex(
+        return EnumOpaqueTwinNormal_Mutex(
           _wire2api_RustOpaque_MutexHideData(raw[1]),
         );
       case 4:
-        return EnumOpaque_RwLock(
+        return EnumOpaqueTwinNormal_RwLock(
           _wire2api_RustOpaque_RwLockHideData(raw[1]),
         );
       default:
@@ -7659,17 +5742,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
-  EnumOpaqueArray5 _wire2api_enum_opaque_array_5(dynamic raw) {
-    return EnumOpaqueArray5(
-        (raw as List<dynamic>).map(_wire2api_enum_opaque).toList());
+  EnumOpaqueTwinNormalArray5 _wire2api_enum_opaque_twin_normal_array_5(
+      dynamic raw) {
+    return EnumOpaqueTwinNormalArray5(
+        (raw as List<dynamic>).map(_wire2api_enum_opaque_twin_normal).toList());
   }
 
   EnumSimpleTwinNormal _wire2api_enum_simple_twin_normal(dynamic raw) {
     return EnumSimpleTwinNormal.values[raw as int];
-  }
-
-  EnumSimpleTwinSync _wire2api_enum_simple_twin_sync(dynamic raw) {
-    return EnumSimpleTwinSync.values[raw as int];
   }
 
   EnumWithItemMixedTwinNormal _wire2api_enum_with_item_mixed_twin_normal(
@@ -7683,24 +5763,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 2:
         return EnumWithItemMixedTwinNormal_C(
-          cField: _wire2api_String(raw[1]),
-        );
-      default:
-        throw Exception("unreachable");
-    }
-  }
-
-  EnumWithItemMixedTwinSync _wire2api_enum_with_item_mixed_twin_sync(
-      dynamic raw) {
-    switch (raw[0]) {
-      case 0:
-        return EnumWithItemMixedTwinSync_A();
-      case 1:
-        return EnumWithItemMixedTwinSync_B(
-          _wire2api_list_prim_u_8(raw[1]),
-        );
-      case 2:
-        return EnumWithItemMixedTwinSync_C(
           cField: _wire2api_String(raw[1]),
         );
       default:
@@ -7724,22 +5786,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
-  EnumWithItemStructTwinSync _wire2api_enum_with_item_struct_twin_sync(
-      dynamic raw) {
-    switch (raw[0]) {
-      case 0:
-        return EnumWithItemStructTwinSync_A(
-          aField: _wire2api_list_prim_u_8(raw[1]),
-        );
-      case 1:
-        return EnumWithItemStructTwinSync_B(
-          bField: _wire2api_list_prim_i_32(raw[1]),
-        );
-      default:
-        throw Exception("unreachable");
-    }
-  }
-
   EnumWithItemTupleTwinNormal _wire2api_enum_with_item_tuple_twin_normal(
       dynamic raw) {
     switch (raw[0]) {
@@ -7756,37 +5802,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
-  EnumWithItemTupleTwinSync _wire2api_enum_with_item_tuple_twin_sync(
-      dynamic raw) {
-    switch (raw[0]) {
-      case 0:
-        return EnumWithItemTupleTwinSync_A(
-          _wire2api_list_prim_u_8(raw[1]),
-        );
-      case 1:
-        return EnumWithItemTupleTwinSync_B(
-          _wire2api_list_prim_i_32(raw[1]),
-        );
-      default:
-        throw Exception("unreachable");
-    }
-  }
-
-  Event _wire2api_event(dynamic raw) {
+  EventTwinNormal _wire2api_event_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    return Event(
+    return EventTwinNormal(
       address: _wire2api_String(arr[0]),
       payload: _wire2api_String(arr[1]),
     );
   }
 
-  ExoticOptionals _wire2api_exotic_optionals(dynamic raw) {
+  ExoticOptionalsTwinNormal _wire2api_exotic_optionals_twin_normal(
+      dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 14)
       throw Exception('unexpected arr length: expect 14 but see ${arr.length}');
-    return ExoticOptionals(
+    return ExoticOptionalsTwinNormal(
       int32: _wire2api_opt_box_autoadd_i_32(arr[0]),
       int64: _wire2api_opt_box_autoadd_i_64(arr[1]),
       float64: _wire2api_opt_box_autoadd_f_64(arr[2]),
@@ -7797,10 +5828,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       int32List: _wire2api_opt_list_prim_i_32(arr[7]),
       float32List: _wire2api_opt_list_prim_f_32(arr[8]),
       float64List: _wire2api_opt_list_prim_f_64(arr[9]),
-      attributes: _wire2api_opt_list_attribute(arr[10]),
-      attributesNullable: _wire2api_list_opt_box_autoadd_attribute(arr[11]),
-      nullableAttributes: _wire2api_opt_list_opt_box_autoadd_attribute(arr[12]),
-      newtypeint: _wire2api_opt_box_autoadd_new_type_int(arr[13]),
+      attributes: _wire2api_opt_list_attribute_twin_normal(arr[10]),
+      attributesNullable:
+          _wire2api_list_opt_box_autoadd_attribute_twin_normal(arr[11]),
+      nullableAttributes:
+          _wire2api_opt_list_opt_box_autoadd_attribute_twin_normal(arr[12]),
+      newtypeint: _wire2api_opt_box_autoadd_new_type_int_twin_normal(arr[13]),
     );
   }
 
@@ -7812,21 +5845,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw as double;
   }
 
-  FeatureUuid _wire2api_feature_uuid(dynamic raw) {
+  FeatureUuidTwinNormal _wire2api_feature_uuid_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    return FeatureUuid(
+    return FeatureUuidTwinNormal(
       one: _wire2api_Uuid(arr[0]),
       many: _wire2api_Uuids(arr[1]),
     );
   }
 
-  FeedId _wire2api_feed_id(dynamic raw) {
+  FeedIdTwinNormal _wire2api_feed_id_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return FeedId(
+    return FeedIdTwinNormal(
       field0: _wire2api_u_8_array_8(arr[0]),
     );
   }
@@ -7851,33 +5884,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw as int;
   }
 
-  KitchenSink _wire2api_kitchen_sink(dynamic raw) {
+  KitchenSinkTwinNormal _wire2api_kitchen_sink_twin_normal(dynamic raw) {
     switch (raw[0]) {
       case 0:
-        return KitchenSink_Empty();
+        return KitchenSinkTwinNormal_Empty();
       case 1:
-        return KitchenSink_Primitives(
+        return KitchenSinkTwinNormal_Primitives(
           int32: _wire2api_i_32(raw[1]),
           float64: _wire2api_f_64(raw[2]),
           boolean: _wire2api_bool(raw[3]),
         );
       case 2:
-        return KitchenSink_Nested(
+        return KitchenSinkTwinNormal_Nested(
           _wire2api_i_32(raw[1]),
-          _wire2api_box_kitchen_sink(raw[2]),
+          _wire2api_box_kitchen_sink_twin_normal(raw[2]),
         );
       case 3:
-        return KitchenSink_Optional(
+        return KitchenSinkTwinNormal_Optional(
           _wire2api_opt_box_autoadd_i_32(raw[1]),
           _wire2api_opt_box_autoadd_i_32(raw[2]),
         );
       case 4:
-        return KitchenSink_Buffer(
+        return KitchenSinkTwinNormal_Buffer(
           _wire2api_ZeroCopyBuffer_list_prim_u_8(raw[1]),
         );
       case 5:
-        return KitchenSink_Enums(
-          _wire2api_weekdays(raw[1]),
+        return KitchenSinkTwinNormal_Enums(
+          _wire2api_weekdays_twin_normal(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -7900,20 +5933,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return (raw as List<dynamic>).map(_wire2api_application_settings).toList();
   }
 
-  List<Attribute> _wire2api_list_attribute(dynamic raw) {
-    return (raw as List<dynamic>).map(_wire2api_attribute).toList();
+  List<AttributeTwinNormal> _wire2api_list_attribute_twin_normal(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_attribute_twin_normal).toList();
   }
 
   List<bool> _wire2api_list_bool(dynamic raw) {
     return (raw as List<dynamic>).map(_wire2api_bool).toList();
   }
 
-  List<Element> _wire2api_list_element(dynamic raw) {
-    return (raw as List<dynamic>).map(_wire2api_element).toList();
+  List<ElementTwinNormal> _wire2api_list_element_twin_normal(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_element_twin_normal).toList();
   }
 
-  List<EnumOpaque> _wire2api_list_enum_opaque(dynamic raw) {
-    return (raw as List<dynamic>).map(_wire2api_enum_opaque).toList();
+  List<EnumOpaqueTwinNormal> _wire2api_list_enum_opaque_twin_normal(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(_wire2api_enum_opaque_twin_normal)
+        .toList();
   }
 
   List<MyEnum> _wire2api_list_my_enum(dynamic raw) {
@@ -7924,8 +5960,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return (raw as List<dynamic>).map(_wire2api_my_size).toList();
   }
 
-  List<MyTreeNode> _wire2api_list_my_tree_node(dynamic raw) {
-    return (raw as List<dynamic>).map(_wire2api_my_tree_node).toList();
+  List<MyTreeNodeTwinNormal> _wire2api_list_my_tree_node_twin_normal(
+      dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(_wire2api_my_tree_node_twin_normal)
+        .toList();
   }
 
   List<NestedRawStringMirrored> _wire2api_list_nested_raw_string_mirrored(
@@ -7949,24 +5988,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return mapNonNull(raw as List<dynamic>, _wire2api_String);
   }
 
-  List<Attribute?> _wire2api_list_opt_box_autoadd_attribute(dynamic raw) {
-    return mapNonNull(raw as List<dynamic>, _wire2api_box_autoadd_attribute);
+  List<AttributeTwinNormal?>
+      _wire2api_list_opt_box_autoadd_attribute_twin_normal(dynamic raw) {
+    return mapNonNull(
+        raw as List<dynamic>, _wire2api_box_autoadd_attribute_twin_normal);
   }
 
   List<int?> _wire2api_list_opt_box_autoadd_i_32(dynamic raw) {
     return mapNonNull(raw as List<dynamic>, _wire2api_box_autoadd_i_32);
   }
 
-  List<Weekdays?> _wire2api_list_opt_box_autoadd_weekdays(dynamic raw) {
-    return mapNonNull(raw as List<dynamic>, _wire2api_box_autoadd_weekdays);
+  List<WeekdaysTwinNormal?> _wire2api_list_opt_box_autoadd_weekdays_twin_normal(
+      dynamic raw) {
+    return mapNonNull(
+        raw as List<dynamic>, _wire2api_box_autoadd_weekdays_twin_normal);
   }
 
   List<Int32List?> _wire2api_list_opt_list_prim_i_32(dynamic raw) {
     return mapNonNull(raw as List<dynamic>, _wire2api_list_prim_i_32);
   }
 
-  List<Point> _wire2api_list_point(dynamic raw) {
-    return (raw as List<dynamic>).map(_wire2api_point).toList();
+  List<PointTwinNormal> _wire2api_list_point_twin_normal(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_point_twin_normal).toList();
   }
 
   Float32List _wire2api_list_prim_f_32(dynamic raw) {
@@ -8020,35 +6063,35 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return (raw as List<dynamic>).map(_wire2api_raw_string_mirrored).toList();
   }
 
-  List<SumWith> _wire2api_list_sum_with(dynamic raw) {
-    return (raw as List<dynamic>).map(_wire2api_sum_with).toList();
+  List<SumWithTwinNormal> _wire2api_list_sum_with_twin_normal(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_sum_with_twin_normal).toList();
   }
 
-  List<TestId> _wire2api_list_test_id(dynamic raw) {
-    return (raw as List<dynamic>).map(_wire2api_test_id).toList();
+  List<TestIdTwinNormal> _wire2api_list_test_id_twin_normal(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_test_id_twin_normal).toList();
   }
 
-  List<Weekdays> _wire2api_list_weekdays(dynamic raw) {
-    return (raw as List<dynamic>).map(_wire2api_weekdays).toList();
+  List<WeekdaysTwinNormal> _wire2api_list_weekdays_twin_normal(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_weekdays_twin_normal).toList();
   }
 
-  Log _wire2api_log(dynamic raw) {
+  Log2TwinNormal _wire2api_log_2_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    return Log(
+    return Log2TwinNormal(
       key: _wire2api_u_32(arr[0]),
-      value: _wire2api_u_32(arr[1]),
+      value: _wire2api_String(arr[1]),
     );
   }
 
-  Log2 _wire2api_log_2(dynamic raw) {
+  LogTwinNormal _wire2api_log_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    return Log2(
+    return LogTwinNormal(
       key: _wire2api_u_32(arr[0]),
-      value: _wire2api_String(arr[1]),
+      value: _wire2api_u_32(arr[1]),
     );
   }
 
@@ -8061,35 +6104,35 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
-  Measure _wire2api_measure(dynamic raw) {
+  MeasureTwinNormal _wire2api_measure_twin_normal(dynamic raw) {
     switch (raw[0]) {
       case 0:
-        return Measure_Speed(
-          _wire2api_box_speed(raw[1]),
+        return MeasureTwinNormal_Speed(
+          _wire2api_box_speed_twin_normal(raw[1]),
         );
       case 1:
-        return Measure_Distance(
-          _wire2api_box_distance(raw[1]),
+        return MeasureTwinNormal_Distance(
+          _wire2api_box_distance_twin_normal(raw[1]),
         );
       default:
         throw Exception("unreachable");
     }
   }
 
-  MessageId _wire2api_message_id(dynamic raw) {
+  MessageIdTwinNormal _wire2api_message_id_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return MessageId(
+    return MessageIdTwinNormal(
       field0: _wire2api_u_8_array_32(arr[0]),
     );
   }
 
-  MirrorStruct _wire2api_mirror_struct(dynamic raw) {
+  MirrorStructTwinNormal _wire2api_mirror_struct_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
-    return MirrorStruct(
+    return MirrorStructTwinNormal(
       a: _wire2api_application_settings(arr[0]),
       b: _wire2api_my_struct(arr[1]),
       c: _wire2api_list_my_enum(arr[2]),
@@ -8097,12 +6140,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
-  MoreThanJustOneRawStringStruct _wire2api_more_than_just_one_raw_string_struct(
-      dynamic raw) {
+  MoreThanJustOneRawStringStructTwinNormal
+      _wire2api_more_than_just_one_raw_string_struct_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
-    return MoreThanJustOneRawStringStruct(
+    return MoreThanJustOneRawStringStructTwinNormal(
       regular: _wire2api_String(arr[0]),
       type: _wire2api_String(arr[1]),
       async: _wire2api_bool(arr[2]),
@@ -8114,13 +6157,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return MyEnum.values[raw as int];
   }
 
-  MyNestedStruct _wire2api_my_nested_struct(dynamic raw) {
+  MyNestedStructTwinNormal _wire2api_my_nested_struct_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    return MyNestedStruct(
-      treeNode: _wire2api_my_tree_node(arr[0]),
-      weekday: _wire2api_weekdays(arr[1]),
+    return MyNestedStructTwinNormal(
+      treeNode: _wire2api_my_tree_node_twin_normal(arr[0]),
+      weekday: _wire2api_weekdays_twin_normal(arr[1]),
     );
   }
 
@@ -8134,21 +6177,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
-  MySizeFreezed _wire2api_my_size_freezed(dynamic raw) {
+  MySizeFreezedTwinNormal _wire2api_my_size_freezed_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    return MySizeFreezed(
+    return MySizeFreezedTwinNormal(
       width: _wire2api_i_32(arr[0]),
       height: _wire2api_i_32(arr[1]),
     );
   }
 
-  MyStreamEntry _wire2api_my_stream_entry(dynamic raw) {
+  MyStreamEntryTwinNormal _wire2api_my_stream_entry_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return MyStreamEntry(
+    return MyStreamEntryTwinNormal(
       hello: _wire2api_String(arr[0]),
     );
   }
@@ -8162,15 +6205,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
-  MyTreeNode _wire2api_my_tree_node(dynamic raw) {
+  MyTreeNodeTwinNormal _wire2api_my_tree_node_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
-    return MyTreeNode(
+    return MyTreeNodeTwinNormal(
       valueI32: _wire2api_i_32(arr[0]),
       valueVecU8: _wire2api_list_prim_u_8(arr[1]),
       valueBoolean: _wire2api_bool(arr[2]),
-      children: _wire2api_list_my_tree_node(arr[3]),
+      children: _wire2api_list_my_tree_node_twin_normal(arr[3]),
     );
   }
 
@@ -8192,11 +6235,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
-  NewTypeInt _wire2api_new_type_int(dynamic raw) {
+  NewTypeIntTwinNormal _wire2api_new_type_int_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return NewTypeInt(
+    return NewTypeIntTwinNormal(
       field0: _wire2api_i_64(arr[0]),
     );
   }
@@ -8219,11 +6262,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
-  OpaqueNested _wire2api_opaque_nested(dynamic raw) {
+  OpaqueNestedTwinNormal _wire2api_opaque_nested_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    return OpaqueNested(
+    return OpaqueNestedTwinNormal(
       first: _wire2api_RustOpaque_hide_data(arr[0]),
       second: _wire2api_RustOpaque_hide_data(arr[1]),
     );
@@ -8265,24 +6308,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw == null ? null : _wire2api_box_autoadd_bool(raw);
   }
 
-  Element? _wire2api_opt_box_autoadd_element(dynamic raw) {
-    return raw == null ? null : _wire2api_box_autoadd_element(raw);
+  ElementTwinNormal? _wire2api_opt_box_autoadd_element_twin_normal(
+      dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_element_twin_normal(raw);
   }
 
-  ExoticOptionals? _wire2api_opt_box_autoadd_exotic_optionals(dynamic raw) {
-    return raw == null ? null : _wire2api_box_autoadd_exotic_optionals(raw);
-  }
-
-  double? _wire2api_opt_box_autoadd_f_32(dynamic raw) {
-    return raw == null ? null : _wire2api_box_autoadd_f_32(raw);
+  ExoticOptionalsTwinNormal?
+      _wire2api_opt_box_autoadd_exotic_optionals_twin_normal(dynamic raw) {
+    return raw == null
+        ? null
+        : _wire2api_box_autoadd_exotic_optionals_twin_normal(raw);
   }
 
   double? _wire2api_opt_box_autoadd_f_64(dynamic raw) {
     return raw == null ? null : _wire2api_box_autoadd_f_64(raw);
-  }
-
-  int? _wire2api_opt_box_autoadd_i_16(dynamic raw) {
-    return raw == null ? null : _wire2api_box_autoadd_i_16(raw);
   }
 
   int? _wire2api_opt_box_autoadd_i_32(dynamic raw) {
@@ -8293,48 +6332,37 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw == null ? null : _wire2api_box_autoadd_i_64(raw);
   }
 
-  int? _wire2api_opt_box_autoadd_i_8(dynamic raw) {
-    return raw == null ? null : _wire2api_box_autoadd_i_8(raw);
+  MeasureTwinNormal? _wire2api_opt_box_autoadd_measure_twin_normal(
+      dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_measure_twin_normal(raw);
   }
 
-  Measure? _wire2api_opt_box_autoadd_measure(dynamic raw) {
-    return raw == null ? null : _wire2api_box_autoadd_measure(raw);
+  NewTypeIntTwinNormal? _wire2api_opt_box_autoadd_new_type_int_twin_normal(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : _wire2api_box_autoadd_new_type_int_twin_normal(raw);
   }
 
-  NewTypeInt? _wire2api_opt_box_autoadd_new_type_int(dynamic raw) {
-    return raw == null ? null : _wire2api_box_autoadd_new_type_int(raw);
+  WeekdaysTwinNormal? _wire2api_opt_box_autoadd_weekdays_twin_normal(
+      dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_weekdays_twin_normal(raw);
   }
 
-  int? _wire2api_opt_box_autoadd_u_16(dynamic raw) {
-    return raw == null ? null : _wire2api_box_autoadd_u_16(raw);
+  List<AttributeTwinNormal>? _wire2api_opt_list_attribute_twin_normal(
+      dynamic raw) {
+    return raw == null ? null : _wire2api_list_attribute_twin_normal(raw);
   }
 
-  int? _wire2api_opt_box_autoadd_u_32(dynamic raw) {
-    return raw == null ? null : _wire2api_box_autoadd_u_32(raw);
+  List<ElementTwinNormal>? _wire2api_opt_list_element_twin_normal(dynamic raw) {
+    return raw == null ? null : _wire2api_list_element_twin_normal(raw);
   }
 
-  int? _wire2api_opt_box_autoadd_u_64(dynamic raw) {
-    return raw == null ? null : _wire2api_box_autoadd_u_64(raw);
-  }
-
-  int? _wire2api_opt_box_autoadd_u_8(dynamic raw) {
-    return raw == null ? null : _wire2api_box_autoadd_u_8(raw);
-  }
-
-  Weekdays? _wire2api_opt_box_autoadd_weekdays(dynamic raw) {
-    return raw == null ? null : _wire2api_box_autoadd_weekdays(raw);
-  }
-
-  List<Attribute>? _wire2api_opt_list_attribute(dynamic raw) {
-    return raw == null ? null : _wire2api_list_attribute(raw);
-  }
-
-  List<Element>? _wire2api_opt_list_element(dynamic raw) {
-    return raw == null ? null : _wire2api_list_element(raw);
-  }
-
-  List<Attribute?>? _wire2api_opt_list_opt_box_autoadd_attribute(dynamic raw) {
-    return raw == null ? null : _wire2api_list_opt_box_autoadd_attribute(raw);
+  List<AttributeTwinNormal?>?
+      _wire2api_opt_list_opt_box_autoadd_attribute_twin_normal(dynamic raw) {
+    return raw == null
+        ? null
+        : _wire2api_list_opt_box_autoadd_attribute_twin_normal(raw);
   }
 
   Float32List? _wire2api_opt_list_prim_f_32(dynamic raw) {
@@ -8357,30 +6385,31 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw == null ? null : _wire2api_list_prim_u_8(raw);
   }
 
-  OptVecs _wire2api_opt_vecs(dynamic raw) {
+  OptVecsTwinNormal _wire2api_opt_vecs_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
-    return OptVecs(
+    return OptVecsTwinNormal(
       i32: _wire2api_list_opt_box_autoadd_i_32(arr[0]),
-      enums: _wire2api_list_opt_box_autoadd_weekdays(arr[1]),
+      enums: _wire2api_list_opt_box_autoadd_weekdays_twin_normal(arr[1]),
       strings: _wire2api_list_opt_String(arr[2]),
       buffers: _wire2api_list_opt_list_prim_i_32(arr[3]),
     );
   }
 
-  Point _wire2api_point(dynamic raw) {
+  PointTwinNormal _wire2api_point_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    return Point(
+    return PointTwinNormal(
       x: _wire2api_f_32(arr[0]),
       y: _wire2api_f_32(arr[1]),
     );
   }
 
-  PointArray2 _wire2api_point_array_2(dynamic raw) {
-    return PointArray2((raw as List<dynamic>).map(_wire2api_point).toList());
+  PointTwinNormalArray2 _wire2api_point_twin_normal_array_2(dynamic raw) {
+    return PointTwinNormalArray2(
+        (raw as List<dynamic>).map(_wire2api_point_twin_normal).toList());
   }
 
   RawStringEnumMirrored _wire2api_raw_string_enum_mirrored(dynamic raw) {
@@ -8402,11 +6431,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
-  RawStringItemStruct _wire2api_raw_string_item_struct(dynamic raw) {
+  RawStringItemStructTwinNormal _wire2api_raw_string_item_struct_twin_normal(
+      dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return RawStringItemStruct(
+    return RawStringItemStructTwinNormal(
       type: _wire2api_String(arr[0]),
     );
   }
@@ -8453,21 +6483,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
-  SomeStruct _wire2api_some_struct(dynamic raw) {
+  SomeStructTwinNormal _wire2api_some_struct_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return SomeStruct(
+    return SomeStructTwinNormal(
       value: _wire2api_u_32(arr[0]),
     );
   }
 
-  Speed _wire2api_speed(dynamic raw) {
+  SpeedTwinNormal _wire2api_speed_twin_normal(dynamic raw) {
     switch (raw[0]) {
       case 0:
-        return Speed_Unknown();
+        return SpeedTwinNormal_Unknown();
       case 1:
-        return Speed_GPS(
+        return SpeedTwinNormal_GPS(
           _wire2api_f_64(raw[1]),
         );
       default:
@@ -8475,13 +6505,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
-  StructWithEnum _wire2api_struct_with_enum(dynamic raw) {
+  StructWithEnumTwinNormal _wire2api_struct_with_enum_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    return StructWithEnum(
-      abc1: _wire2api_abc(arr[0]),
-      abc2: _wire2api_abc(arr[1]),
+    return StructWithEnumTwinNormal(
+      abc1: _wire2api_abc_twin_normal(arr[0]),
+      abc2: _wire2api_abc_twin_normal(arr[1]),
     );
   }
 
@@ -8491,16 +6521,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return StructWithOneFieldTwinNormal(
-      a: _wire2api_i_32(arr[0]),
-    );
-  }
-
-  StructWithOneFieldTwinSync _wire2api_struct_with_one_field_twin_sync(
-      dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 1)
-      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return StructWithOneFieldTwinSync(
       a: _wire2api_i_32(arr[0]),
     );
   }
@@ -8516,17 +6536,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
-  StructWithTwoFieldTwinSync _wire2api_struct_with_two_field_twin_sync(
-      dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 2)
-      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    return StructWithTwoFieldTwinSync(
-      a: _wire2api_i_32(arr[0]),
-      b: _wire2api_i_32(arr[1]),
-    );
-  }
-
   StructWithZeroFieldTwinNormal _wire2api_struct_with_zero_field_twin_normal(
       dynamic raw) {
     final arr = raw as List<dynamic>;
@@ -8535,57 +6544,50 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return StructWithZeroFieldTwinNormal();
   }
 
-  StructWithZeroFieldTwinSync _wire2api_struct_with_zero_field_twin_sync(
-      dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 0)
-      throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
-    return StructWithZeroFieldTwinSync();
-  }
-
-  SumWith _wire2api_sum_with(dynamic raw) {
+  SumWithTwinNormal _wire2api_sum_with_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return SumWith(
+    return SumWithTwinNormal(
       x: _wire2api_u_32(arr[0]),
     );
   }
 
-  SumWithArray3 _wire2api_sum_with_array_3(dynamic raw) {
-    return SumWithArray3(
-        (raw as List<dynamic>).map(_wire2api_sum_with).toList());
+  SumWithTwinNormalArray3 _wire2api_sum_with_twin_normal_array_3(dynamic raw) {
+    return SumWithTwinNormalArray3(
+        (raw as List<dynamic>).map(_wire2api_sum_with_twin_normal).toList());
   }
 
-  TestChrono _wire2api_test_chrono(dynamic raw) {
+  TestChronoTwinNormal _wire2api_test_chrono_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 3)
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
-    return TestChrono(
+    return TestChronoTwinNormal(
       dt: _wire2api_opt_box_autoadd_Chrono_Utc(arr[0]),
       dt2: _wire2api_opt_box_autoadd_Chrono_Naive(arr[1]),
       du: _wire2api_opt_box_autoadd_Chrono_Duration(arr[2]),
     );
   }
 
-  TestId _wire2api_test_id(dynamic raw) {
+  TestIdTwinNormal _wire2api_test_id_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return TestId(
+    return TestIdTwinNormal(
       field0: _wire2api_i_32_array_2(arr[0]),
     );
   }
 
-  TestIdArray2 _wire2api_test_id_array_2(dynamic raw) {
-    return TestIdArray2((raw as List<dynamic>).map(_wire2api_test_id).toList());
+  TestIdTwinNormalArray2 _wire2api_test_id_twin_normal_array_2(dynamic raw) {
+    return TestIdTwinNormalArray2(
+        (raw as List<dynamic>).map(_wire2api_test_id_twin_normal).toList());
   }
 
-  TestModel _wire2api_test_model(dynamic raw) {
+  TestModelTwinNormal _wire2api_test_model_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
-    return TestModel(
+    return TestModelTwinNormal(
       id: _wire2api_u_64(arr[0]),
       name: _wire2api_String(arr[1]),
       aliasEnum: _wire2api_my_enum(arr[2]),
@@ -8603,33 +6605,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
-  TupleStructWithOneFieldTwinSync
-      _wire2api_tuple_struct_with_one_field_twin_sync(dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 1)
-      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return TupleStructWithOneFieldTwinSync(
-      field0: _wire2api_i_32(arr[0]),
-    );
-  }
-
   TupleStructWithTwoFieldTwinNormal
       _wire2api_tuple_struct_with_two_field_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return TupleStructWithTwoFieldTwinNormal(
-      field0: _wire2api_i_32(arr[0]),
-      field1: _wire2api_i_32(arr[1]),
-    );
-  }
-
-  TupleStructWithTwoFieldTwinSync
-      _wire2api_tuple_struct_with_two_field_twin_sync(dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 2)
-      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    return TupleStructWithTwoFieldTwinSync(
       field0: _wire2api_i_32(arr[0]),
       field1: _wire2api_i_32(arr[1]),
     );
@@ -8671,20 +6652,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return;
   }
 
-  UserId _wire2api_user_id(dynamic raw) {
+  UserIdTwinNormal _wire2api_user_id_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return UserId(
+    return UserIdTwinNormal(
       value: _wire2api_u_32(arr[0]),
     );
   }
 
-  VecOfPrimitivePack _wire2api_vec_of_primitive_pack(dynamic raw) {
+  VecOfPrimitivePackTwinNormal _wire2api_vec_of_primitive_pack_twin_normal(
+      dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 11)
       throw Exception('unexpected arr length: expect 11 but see ${arr.length}');
-    return VecOfPrimitivePack(
+    return VecOfPrimitivePackTwinNormal(
       int8List: _wire2api_list_prim_i_8(arr[0]),
       uint8List: _wire2api_list_prim_u_8(arr[1]),
       int16List: _wire2api_list_prim_i_16(arr[2]),
@@ -8699,16 +6681,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
-  Weekdays _wire2api_weekdays(dynamic raw) {
-    return Weekdays.values[raw as int];
+  WeekdaysTwinNormal _wire2api_weekdays_twin_normal(dynamic raw) {
+    return WeekdaysTwinNormal.values[raw as int];
   }
 
-  ZeroCopyVecOfPrimitivePack _wire2api_zero_copy_vec_of_primitive_pack(
-      dynamic raw) {
+  ZeroCopyVecOfPrimitivePackTwinNormal
+      _wire2api_zero_copy_vec_of_primitive_pack_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 10)
       throw Exception('unexpected arr length: expect 10 but see ${arr.length}');
-    return ZeroCopyVecOfPrimitivePack(
+    return ZeroCopyVecOfPrimitivePackTwinNormal(
       int8List: _wire2api_ZeroCopyBuffer_list_prim_i_8(arr[0]),
       uint8List: _wire2api_ZeroCopyBuffer_list_prim_u_8(arr[1]),
       int16List: _wire2api_ZeroCopyBuffer_list_prim_i_16(arr[2]),
@@ -8737,19 +6719,11 @@ int api2wire_enum_simple_twin_normal(EnumSimpleTwinNormal raw) {
   return api2wire_i_32(raw.index);
 }
 
-int api2wire_enum_simple_twin_sync(EnumSimpleTwinSync raw) {
-  return api2wire_i_32(raw.index);
-}
-
 double api2wire_f_32(double raw) {
   return raw;
 }
 
 double api2wire_f_64(double raw) {
-  return raw;
-}
-
-int api2wire_i_16(int raw) {
   return raw;
 }
 
@@ -8765,10 +6739,6 @@ int api2wire_my_enum(MyEnum raw) {
   return api2wire_i_32(raw.index);
 }
 
-int api2wire_u_16(int raw) {
-  return raw;
-}
-
 int api2wire_u_32(int raw) {
   return raw;
 }
@@ -8781,6 +6751,6 @@ int api2wire_usize(int raw) {
   return raw;
 }
 
-int api2wire_weekdays(Weekdays raw) {
+int api2wire_weekdays_twin_normal(WeekdaysTwinNormal raw) {
   return api2wire_i_32(raw.index);
 }

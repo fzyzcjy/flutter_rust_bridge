@@ -5,34 +5,40 @@ import 'misc_example.dart';
 import 'newtype_pattern.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<double?> handleOptionalReturn(
+Future<double?> handleOptionalReturnTwinNormal(
         {required double left, required double right, dynamic hint}) =>
     RustLib.instance.api
-        .handleOptionalReturn(left: left, right: right, hint: hint);
+        .handleOptionalReturnTwinNormal(left: left, right: right, hint: hint);
 
-Future<Element?> handleOptionalStruct({String? document, dynamic hint}) =>
-    RustLib.instance.api.handleOptionalStruct(document: document, hint: hint);
+Future<ElementTwinNormal?> handleOptionalStructTwinNormal(
+        {String? document, dynamic hint}) =>
+    RustLib.instance.api
+        .handleOptionalStructTwinNormal(document: document, hint: hint);
 
-Future<ExoticOptionals?> handleOptionalIncrement(
-        {ExoticOptionals? opt, dynamic hint}) =>
-    RustLib.instance.api.handleOptionalIncrement(opt: opt, hint: hint);
+Future<ExoticOptionalsTwinNormal?> handleOptionalIncrementTwinNormal(
+        {ExoticOptionalsTwinNormal? opt, dynamic hint}) =>
+    RustLib.instance.api
+        .handleOptionalIncrementTwinNormal(opt: opt, hint: hint);
 
-Future<double> handleIncrementBoxedOptional({double? opt, dynamic hint}) =>
-    RustLib.instance.api.handleIncrementBoxedOptional(opt: opt, hint: hint);
+Future<double> handleIncrementBoxedOptionalTwinNormal(
+        {double? opt, dynamic hint}) =>
+    RustLib.instance.api
+        .handleIncrementBoxedOptionalTwinNormal(opt: opt, hint: hint);
 
-Future<OptVecs> handleVecOfOpts({required OptVecs opt, dynamic hint}) =>
-    RustLib.instance.api.handleVecOfOpts(opt: opt, hint: hint);
+Future<OptVecsTwinNormal> handleVecOfOptsTwinNormal(
+        {required OptVecsTwinNormal opt, dynamic hint}) =>
+    RustLib.instance.api.handleVecOfOptsTwinNormal(opt: opt, hint: hint);
 
-Future<String> handleOptionBoxArguments(
+Future<String> handleOptionBoxArgumentsTwinNormal(
         {int? i8Box,
         int? u8Box,
         int? i32Box,
         int? i64Box,
         double? f64Box,
         bool? boolbox,
-        ExoticOptionals? structbox,
+        ExoticOptionalsTwinNormal? structbox,
         dynamic hint}) =>
-    RustLib.instance.api.handleOptionBoxArguments(
+    RustLib.instance.api.handleOptionBoxArgumentsTwinNormal(
         i8Box: i8Box,
         u8Box: u8Box,
         i32Box: i32Box,
@@ -42,17 +48,17 @@ Future<String> handleOptionBoxArguments(
         structbox: structbox,
         hint: hint);
 
-String? syncOption({dynamic hint}) =>
-    RustLib.instance.api.syncOption(hint: hint);
+String? syncOptionTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.syncOptionTwinNormal(hint: hint);
 
-String? syncOptionNull({dynamic hint}) =>
-    RustLib.instance.api.syncOptionNull(hint: hint);
+String? syncOptionNullTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.syncOptionNullTwinNormal(hint: hint);
 
-class Attribute {
+class AttributeTwinNormal {
   final String key;
   final String value;
 
-  const Attribute({
+  const AttributeTwinNormal({
     required this.key,
     required this.value,
   });
@@ -63,19 +69,19 @@ class Attribute {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Attribute &&
+      other is AttributeTwinNormal &&
           runtimeType == other.runtimeType &&
           key == other.key &&
           value == other.value;
 }
 
-class Element {
+class ElementTwinNormal {
   final String? tag;
   final String? text;
-  final List<Attribute>? attributes;
-  final List<Element>? children;
+  final List<AttributeTwinNormal>? attributes;
+  final List<ElementTwinNormal>? children;
 
-  const Element({
+  const ElementTwinNormal({
     this.tag,
     this.text,
     this.attributes,
@@ -89,7 +95,7 @@ class Element {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Element &&
+      other is ElementTwinNormal &&
           runtimeType == other.runtimeType &&
           tag == other.tag &&
           text == other.text &&
@@ -97,7 +103,7 @@ class Element {
           children == other.children;
 }
 
-class ExoticOptionals {
+class ExoticOptionalsTwinNormal {
   final int? int32;
   final int? int64;
   final double? float64;
@@ -108,12 +114,12 @@ class ExoticOptionals {
   final Int32List? int32List;
   final Float32List? float32List;
   final Float64List? float64List;
-  final List<Attribute>? attributes;
-  final List<Attribute?> attributesNullable;
-  final List<Attribute?>? nullableAttributes;
-  final NewTypeInt? newtypeint;
+  final List<AttributeTwinNormal>? attributes;
+  final List<AttributeTwinNormal?> attributesNullable;
+  final List<AttributeTwinNormal?>? nullableAttributes;
+  final NewTypeIntTwinNormal? newtypeint;
 
-  const ExoticOptionals({
+  const ExoticOptionalsTwinNormal({
     this.int32,
     this.int64,
     this.float64,
@@ -150,7 +156,7 @@ class ExoticOptionals {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ExoticOptionals &&
+      other is ExoticOptionalsTwinNormal &&
           runtimeType == other.runtimeType &&
           int32 == other.int32 &&
           int64 == other.int64 &&
@@ -168,13 +174,13 @@ class ExoticOptionals {
           newtypeint == other.newtypeint;
 }
 
-class OptVecs {
+class OptVecsTwinNormal {
   final List<int?> i32;
-  final List<Weekdays?> enums;
+  final List<WeekdaysTwinNormal?> enums;
   final List<String?> strings;
   final List<Int32List?> buffers;
 
-  const OptVecs({
+  const OptVecsTwinNormal({
     required this.i32,
     required this.enums,
     required this.strings,
@@ -188,7 +194,7 @@ class OptVecs {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is OptVecs &&
+      other is OptVecsTwinNormal &&
           runtimeType == other.runtimeType &&
           i32 == other.i32 &&
           enums == other.enums &&

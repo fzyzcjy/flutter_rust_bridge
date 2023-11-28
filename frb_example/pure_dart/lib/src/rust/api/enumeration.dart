@@ -22,29 +22,33 @@ Future<EnumWithItemStructTwinNormal> funcEnumWithItemStructTwinNormal(
         {required EnumWithItemStructTwinNormal arg, dynamic hint}) =>
     RustLib.instance.api.funcEnumWithItemStructTwinNormal(arg: arg, hint: hint);
 
-Future<Uint8List> printNote({required Note note, dynamic hint}) =>
-    RustLib.instance.api.printNote(note: note, hint: hint);
+Future<Uint8List> printNoteTwinNormal(
+        {required NoteTwinNormal note, dynamic hint}) =>
+    RustLib.instance.api.printNoteTwinNormal(note: note, hint: hint);
 
-Future<Weekdays?> handleReturnEnum({required String input, dynamic hint}) =>
-    RustLib.instance.api.handleReturnEnum(input: input, hint: hint);
+Future<WeekdaysTwinNormal?> handleReturnEnumTwinNormal(
+        {required String input, dynamic hint}) =>
+    RustLib.instance.api.handleReturnEnumTwinNormal(input: input, hint: hint);
 
-Future<Weekdays> handleEnumParameter(
-        {required Weekdays weekday, dynamic hint}) =>
-    RustLib.instance.api.handleEnumParameter(weekday: weekday, hint: hint);
+Future<WeekdaysTwinNormal> handleEnumParameterTwinNormal(
+        {required WeekdaysTwinNormal weekday, dynamic hint}) =>
+    RustLib.instance.api
+        .handleEnumParameterTwinNormal(weekday: weekday, hint: hint);
 
-Future<Measure?> multiplyByTen({required Measure measure, dynamic hint}) =>
-    RustLib.instance.api.multiplyByTen(measure: measure, hint: hint);
+Future<MeasureTwinNormal?> multiplyByTenTwinNormal(
+        {required MeasureTwinNormal measure, dynamic hint}) =>
+    RustLib.instance.api.multiplyByTenTwinNormal(measure: measure, hint: hint);
 
-Future<KitchenSink> handleEnumStruct(
-        {required KitchenSink val, dynamic hint}) =>
-    RustLib.instance.api.handleEnumStruct(val: val, hint: hint);
+Future<KitchenSinkTwinNormal> handleEnumStructTwinNormal(
+        {required KitchenSinkTwinNormal val, dynamic hint}) =>
+    RustLib.instance.api.handleEnumStructTwinNormal(val: val, hint: hint);
 
 @freezed
-sealed class Distance with _$Distance {
-  const factory Distance.unknown() = Distance_Unknown;
-  const factory Distance.map(
+sealed class DistanceTwinNormal with _$DistanceTwinNormal {
+  const factory DistanceTwinNormal.unknown() = DistanceTwinNormal_Unknown;
+  const factory DistanceTwinNormal.map(
     double field0,
-  ) = Distance_Map;
+  ) = DistanceTwinNormal_Map;
 }
 
 enum EnumSimpleTwinNormal {
@@ -84,48 +88,48 @@ sealed class EnumWithItemTupleTwinNormal with _$EnumWithItemTupleTwinNormal {
 }
 
 @freezed
-sealed class KitchenSink with _$KitchenSink {
+sealed class KitchenSinkTwinNormal with _$KitchenSinkTwinNormal {
   /// Comment on variant
-  const factory KitchenSink.empty() = KitchenSink_Empty;
-  const factory KitchenSink.primitives({
+  const factory KitchenSinkTwinNormal.empty() = KitchenSinkTwinNormal_Empty;
+  const factory KitchenSinkTwinNormal.primitives({
     /// Dart field comment
     @Default(-1) int int32,
     required double float64,
     required bool boolean,
-  }) = KitchenSink_Primitives;
-  const factory KitchenSink.nested(
+  }) = KitchenSinkTwinNormal_Primitives;
+  const factory KitchenSinkTwinNormal.nested(
     int field0, [
-    @Default(KitchenSink.empty()) KitchenSink field1,
-  ]) = KitchenSink_Nested;
-  const factory KitchenSink.optional([
+    @Default(KitchenSinkTwinNormal.empty()) KitchenSinkTwinNormal field1,
+  ]) = KitchenSinkTwinNormal_Nested;
+  const factory KitchenSinkTwinNormal.optional([
     /// Comment on anonymous field
     @Default(-1) int? field0,
     int? field1,
-  ]) = KitchenSink_Optional;
-  const factory KitchenSink.buffer(
+  ]) = KitchenSinkTwinNormal_Optional;
+  const factory KitchenSinkTwinNormal.buffer(
     Uint8List field0,
-  ) = KitchenSink_Buffer;
-  const factory KitchenSink.enums([
-    @Default(Weekdays.sunday) Weekdays field0,
-  ]) = KitchenSink_Enums;
+  ) = KitchenSinkTwinNormal_Buffer;
+  const factory KitchenSinkTwinNormal.enums([
+    @Default(WeekdaysTwinNormal.sunday) WeekdaysTwinNormal field0,
+  ]) = KitchenSinkTwinNormal_Enums;
 }
 
 @freezed
-sealed class Measure with _$Measure {
-  const factory Measure.speed(
-    Speed field0,
-  ) = Measure_Speed;
-  const factory Measure.distance(
-    Distance field0,
-  ) = Measure_Distance;
+sealed class MeasureTwinNormal with _$MeasureTwinNormal {
+  const factory MeasureTwinNormal.speed(
+    SpeedTwinNormal field0,
+  ) = MeasureTwinNormal_Speed;
+  const factory MeasureTwinNormal.distance(
+    DistanceTwinNormal field0,
+  ) = MeasureTwinNormal_Distance;
 }
 
-class Note {
-  final Weekdays day;
+class NoteTwinNormal {
+  final WeekdaysTwinNormal day;
   final String body;
 
-  const Note({
-    this.day = Weekdays.sunday,
+  const NoteTwinNormal({
+    this.day = WeekdaysTwinNormal.sunday,
     required this.body,
   });
 
@@ -135,16 +139,16 @@ class Note {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Note &&
+      other is NoteTwinNormal &&
           runtimeType == other.runtimeType &&
           day == other.day &&
           body == other.body;
 }
 
 @freezed
-sealed class Speed with _$Speed {
-  const factory Speed.unknown() = Speed_Unknown;
-  const factory Speed.gps(
+sealed class SpeedTwinNormal with _$SpeedTwinNormal {
+  const factory SpeedTwinNormal.unknown() = SpeedTwinNormal_Unknown;
+  const factory SpeedTwinNormal.gps(
     double field0,
-  ) = Speed_GPS;
+  ) = SpeedTwinNormal_GPS;
 }

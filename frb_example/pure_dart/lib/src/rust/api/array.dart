@@ -4,43 +4,52 @@ import '../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<U8Array5> getArray({dynamic hint}) =>
-    RustLib.instance.api.getArray(hint: hint);
+Future<U8Array5> getArrayTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.getArrayTwinNormal(hint: hint);
 
-Future<PointArray2> getComplexArray({dynamic hint}) =>
-    RustLib.instance.api.getComplexArray(hint: hint);
+Future<PointTwinNormalArray2> getComplexArrayTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.getComplexArrayTwinNormal(hint: hint);
 
-Future<MessageId> newMsgid({required U8Array32 id, dynamic hint}) =>
-    RustLib.instance.api.newMsgid(id: id, hint: hint);
+Future<MessageIdTwinNormal> newMsgidTwinNormal(
+        {required U8Array32 id, dynamic hint}) =>
+    RustLib.instance.api.newMsgidTwinNormal(id: id, hint: hint);
 
-Future<U8Array32> useMsgid({required MessageId id, dynamic hint}) =>
-    RustLib.instance.api.useMsgid(id: id, hint: hint);
+Future<U8Array32> useMsgidTwinNormal(
+        {required MessageIdTwinNormal id, dynamic hint}) =>
+    RustLib.instance.api.useMsgidTwinNormal(id: id, hint: hint);
 
-Future<Blob> boxedBlob({required U8Array1600 blob, dynamic hint}) =>
-    RustLib.instance.api.boxedBlob(blob: blob, hint: hint);
+Future<BlobTwinNormal> boxedBlobTwinNormal(
+        {required U8Array1600 blob, dynamic hint}) =>
+    RustLib.instance.api.boxedBlobTwinNormal(blob: blob, hint: hint);
 
-Future<U8Array1600> useBoxedBlob({required Blob blob, dynamic hint}) =>
-    RustLib.instance.api.useBoxedBlob(blob: blob, hint: hint);
+Future<U8Array1600> useBoxedBlobTwinNormal(
+        {required BlobTwinNormal blob, dynamic hint}) =>
+    RustLib.instance.api.useBoxedBlobTwinNormal(blob: blob, hint: hint);
 
-Future<FeedId> returnBoxedFeedId({required U8Array8 id, dynamic hint}) =>
-    RustLib.instance.api.returnBoxedFeedId(id: id, hint: hint);
+Future<FeedIdTwinNormal> returnBoxedFeedIdTwinNormal(
+        {required U8Array8 id, dynamic hint}) =>
+    RustLib.instance.api.returnBoxedFeedIdTwinNormal(id: id, hint: hint);
 
-Future<U8Array8> returnBoxedRawFeedId({required FeedId id, dynamic hint}) =>
-    RustLib.instance.api.returnBoxedRawFeedId(id: id, hint: hint);
+Future<U8Array8> returnBoxedRawFeedIdTwinNormal(
+        {required FeedIdTwinNormal id, dynamic hint}) =>
+    RustLib.instance.api.returnBoxedRawFeedIdTwinNormal(id: id, hint: hint);
 
-Future<TestId> funcTestId({required TestId id, dynamic hint}) =>
-    RustLib.instance.api.funcTestId(id: id, hint: hint);
+Future<TestIdTwinNormal> funcTestIdTwinNormal(
+        {required TestIdTwinNormal id, dynamic hint}) =>
+    RustLib.instance.api.funcTestIdTwinNormal(id: id, hint: hint);
 
-Future<double> lastNumber({required F64Array16 array, dynamic hint}) =>
-    RustLib.instance.api.lastNumber(array: array, hint: hint);
+Future<double> lastNumberTwinNormal(
+        {required F64Array16 array, dynamic hint}) =>
+    RustLib.instance.api.lastNumberTwinNormal(array: array, hint: hint);
 
-Future<TestIdArray2> nestedId({required TestIdArray4 id, dynamic hint}) =>
-    RustLib.instance.api.nestedId(id: id, hint: hint);
+Future<TestIdTwinNormalArray2> nestedIdTwinNormal(
+        {required TestIdTwinNormalArray4 id, dynamic hint}) =>
+    RustLib.instance.api.nestedIdTwinNormal(id: id, hint: hint);
 
-class Blob {
+class BlobTwinNormal {
   final U8Array1600 field0;
 
-  const Blob({
+  const BlobTwinNormal({
     required this.field0,
   });
 
@@ -50,7 +59,7 @@ class Blob {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Blob &&
+      other is BlobTwinNormal &&
           runtimeType == other.runtimeType &&
           field0 == other.field0;
 }
@@ -64,10 +73,10 @@ class F64Array16 extends NonGrowableListView<double> {
   F64Array16.init() : super(Float64List(arraySize));
 }
 
-class FeedId {
+class FeedIdTwinNormal {
   final U8Array8 field0;
 
-  const FeedId({
+  const FeedIdTwinNormal({
     required this.field0,
   });
 
@@ -77,7 +86,7 @@ class FeedId {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is FeedId &&
+      other is FeedIdTwinNormal &&
           runtimeType == other.runtimeType &&
           field0 == other.field0;
 }
@@ -91,10 +100,10 @@ class I32Array2 extends NonGrowableListView<int> {
   I32Array2.init() : super(Int32List(arraySize));
 }
 
-class MessageId {
+class MessageIdTwinNormal {
   final U8Array32 field0;
 
-  const MessageId({
+  const MessageIdTwinNormal({
     required this.field0,
   });
 
@@ -104,16 +113,16 @@ class MessageId {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is MessageId &&
+      other is MessageIdTwinNormal &&
           runtimeType == other.runtimeType &&
           field0 == other.field0;
 }
 
-class Point {
+class PointTwinNormal {
   final double x;
   final double y;
 
-  const Point({
+  const PointTwinNormal({
     required this.x,
     required this.y,
   });
@@ -124,25 +133,26 @@ class Point {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Point &&
+      other is PointTwinNormal &&
           runtimeType == other.runtimeType &&
           x == other.x &&
           y == other.y;
 }
 
-class PointArray2 extends NonGrowableListView<Point> {
+class PointTwinNormalArray2 extends NonGrowableListView<PointTwinNormal> {
   static const arraySize = 2;
-  PointArray2(List<Point> inner)
+  PointTwinNormalArray2(List<PointTwinNormal> inner)
       : assert(inner.length == arraySize),
         super(inner);
-  PointArray2.unchecked(List<Point> inner) : super(inner);
-  PointArray2.init(Point fill) : super(List<Point>.filled(arraySize, fill));
+  PointTwinNormalArray2.unchecked(List<PointTwinNormal> inner) : super(inner);
+  PointTwinNormalArray2.init(PointTwinNormal fill)
+      : super(List<PointTwinNormal>.filled(arraySize, fill));
 }
 
-class TestId {
+class TestIdTwinNormal {
   final I32Array2 field0;
 
-  const TestId({
+  const TestIdTwinNormal({
     required this.field0,
   });
 
@@ -152,27 +162,29 @@ class TestId {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is TestId &&
+      other is TestIdTwinNormal &&
           runtimeType == other.runtimeType &&
           field0 == other.field0;
 }
 
-class TestIdArray2 extends NonGrowableListView<TestId> {
+class TestIdTwinNormalArray2 extends NonGrowableListView<TestIdTwinNormal> {
   static const arraySize = 2;
-  TestIdArray2(List<TestId> inner)
+  TestIdTwinNormalArray2(List<TestIdTwinNormal> inner)
       : assert(inner.length == arraySize),
         super(inner);
-  TestIdArray2.unchecked(List<TestId> inner) : super(inner);
-  TestIdArray2.init(TestId fill) : super(List<TestId>.filled(arraySize, fill));
+  TestIdTwinNormalArray2.unchecked(List<TestIdTwinNormal> inner) : super(inner);
+  TestIdTwinNormalArray2.init(TestIdTwinNormal fill)
+      : super(List<TestIdTwinNormal>.filled(arraySize, fill));
 }
 
-class TestIdArray4 extends NonGrowableListView<TestId> {
+class TestIdTwinNormalArray4 extends NonGrowableListView<TestIdTwinNormal> {
   static const arraySize = 4;
-  TestIdArray4(List<TestId> inner)
+  TestIdTwinNormalArray4(List<TestIdTwinNormal> inner)
       : assert(inner.length == arraySize),
         super(inner);
-  TestIdArray4.unchecked(List<TestId> inner) : super(inner);
-  TestIdArray4.init(TestId fill) : super(List<TestId>.filled(arraySize, fill));
+  TestIdTwinNormalArray4.unchecked(List<TestIdTwinNormal> inner) : super(inner);
+  TestIdTwinNormalArray4.init(TestIdTwinNormal fill)
+      : super(List<TestIdTwinNormal>.filled(arraySize, fill));
 }
 
 class U8Array1600 extends NonGrowableListView<int> {

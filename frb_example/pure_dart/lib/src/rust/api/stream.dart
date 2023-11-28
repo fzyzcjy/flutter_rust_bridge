@@ -18,26 +18,30 @@ Stream<int> funcStreamSinkArgPositionTwinNormal(
     RustLib.instance.api
         .funcStreamSinkArgPositionTwinNormal(a: a, b: b, hint: hint);
 
-Stream<MyStreamEntry> handleStreamOfStruct({dynamic hint}) =>
-    RustLib.instance.api.handleStreamOfStruct(hint: hint);
+Stream<MyStreamEntryTwinNormal> handleStreamOfStructTwinNormal(
+        {dynamic hint}) =>
+    RustLib.instance.api.handleStreamOfStructTwinNormal(hint: hint);
 
-Stream<Log> handleStreamSinkAt1(
+Stream<LogTwinNormal> handleStreamSinkAt1TwinNormal(
         {required int key, required int max, dynamic hint}) =>
-    RustLib.instance.api.handleStreamSinkAt1(key: key, max: max, hint: hint);
+    RustLib.instance.api
+        .handleStreamSinkAt1TwinNormal(key: key, max: max, hint: hint);
 
-Stream<Log> handleStreamSinkAt2(
+Stream<LogTwinNormal> handleStreamSinkAt2TwinNormal(
         {required int key, required int max, dynamic hint}) =>
-    RustLib.instance.api.handleStreamSinkAt2(key: key, max: max, hint: hint);
+    RustLib.instance.api
+        .handleStreamSinkAt2TwinNormal(key: key, max: max, hint: hint);
 
-Stream<Log> handleStreamSinkAt3(
+Stream<LogTwinNormal> handleStreamSinkAt3TwinNormal(
         {required int key, required int max, dynamic hint}) =>
-    RustLib.instance.api.handleStreamSinkAt3(key: key, max: max, hint: hint);
+    RustLib.instance.api
+        .handleStreamSinkAt3TwinNormal(key: key, max: max, hint: hint);
 
-class Log {
+class LogTwinNormal {
   final int key;
   final int value;
 
-  const Log({
+  const LogTwinNormal({
     required this.key,
     required this.value,
   });
@@ -48,16 +52,16 @@ class Log {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Log &&
+      other is LogTwinNormal &&
           runtimeType == other.runtimeType &&
           key == other.key &&
           value == other.value;
 }
 
-class MyStreamEntry {
+class MyStreamEntryTwinNormal {
   final String hello;
 
-  const MyStreamEntry({
+  const MyStreamEntryTwinNormal({
     required this.hello,
   });
 
@@ -67,7 +71,7 @@ class MyStreamEntry {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is MyStreamEntry &&
+      other is MyStreamEntryTwinNormal &&
           runtimeType == other.runtimeType &&
           hello == other.hello;
 }

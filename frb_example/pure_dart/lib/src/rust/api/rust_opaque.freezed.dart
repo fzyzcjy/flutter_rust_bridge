@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$EnumOpaque {
+mixin _$EnumOpaqueTwinNormal {
   FrbOpaque get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -47,45 +47,46 @@ mixin _$EnumOpaque {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnumOpaque_Struct value) struct,
-    required TResult Function(EnumOpaque_Primitive value) primitive,
-    required TResult Function(EnumOpaque_TraitObj value) traitObj,
-    required TResult Function(EnumOpaque_Mutex value) mutex,
-    required TResult Function(EnumOpaque_RwLock value) rwLock,
+    required TResult Function(EnumOpaqueTwinNormal_Struct value) struct,
+    required TResult Function(EnumOpaqueTwinNormal_Primitive value) primitive,
+    required TResult Function(EnumOpaqueTwinNormal_TraitObj value) traitObj,
+    required TResult Function(EnumOpaqueTwinNormal_Mutex value) mutex,
+    required TResult Function(EnumOpaqueTwinNormal_RwLock value) rwLock,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumOpaque_Struct value)? struct,
-    TResult? Function(EnumOpaque_Primitive value)? primitive,
-    TResult? Function(EnumOpaque_TraitObj value)? traitObj,
-    TResult? Function(EnumOpaque_Mutex value)? mutex,
-    TResult? Function(EnumOpaque_RwLock value)? rwLock,
+    TResult? Function(EnumOpaqueTwinNormal_Struct value)? struct,
+    TResult? Function(EnumOpaqueTwinNormal_Primitive value)? primitive,
+    TResult? Function(EnumOpaqueTwinNormal_TraitObj value)? traitObj,
+    TResult? Function(EnumOpaqueTwinNormal_Mutex value)? mutex,
+    TResult? Function(EnumOpaqueTwinNormal_RwLock value)? rwLock,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumOpaque_Struct value)? struct,
-    TResult Function(EnumOpaque_Primitive value)? primitive,
-    TResult Function(EnumOpaque_TraitObj value)? traitObj,
-    TResult Function(EnumOpaque_Mutex value)? mutex,
-    TResult Function(EnumOpaque_RwLock value)? rwLock,
+    TResult Function(EnumOpaqueTwinNormal_Struct value)? struct,
+    TResult Function(EnumOpaqueTwinNormal_Primitive value)? primitive,
+    TResult Function(EnumOpaqueTwinNormal_TraitObj value)? traitObj,
+    TResult Function(EnumOpaqueTwinNormal_Mutex value)? mutex,
+    TResult Function(EnumOpaqueTwinNormal_RwLock value)? rwLock,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EnumOpaqueCopyWith<$Res> {
-  factory $EnumOpaqueCopyWith(
-          EnumOpaque value, $Res Function(EnumOpaque) then) =
-      _$EnumOpaqueCopyWithImpl<$Res, EnumOpaque>;
+abstract class $EnumOpaqueTwinNormalCopyWith<$Res> {
+  factory $EnumOpaqueTwinNormalCopyWith(EnumOpaqueTwinNormal value,
+          $Res Function(EnumOpaqueTwinNormal) then) =
+      _$EnumOpaqueTwinNormalCopyWithImpl<$Res, EnumOpaqueTwinNormal>;
 }
 
 /// @nodoc
-class _$EnumOpaqueCopyWithImpl<$Res, $Val extends EnumOpaque>
-    implements $EnumOpaqueCopyWith<$Res> {
-  _$EnumOpaqueCopyWithImpl(this._value, this._then);
+class _$EnumOpaqueTwinNormalCopyWithImpl<$Res,
+        $Val extends EnumOpaqueTwinNormal>
+    implements $EnumOpaqueTwinNormalCopyWith<$Res> {
+  _$EnumOpaqueTwinNormalCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -94,20 +95,23 @@ class _$EnumOpaqueCopyWithImpl<$Res, $Val extends EnumOpaque>
 }
 
 /// @nodoc
-abstract class _$$EnumOpaque_StructImplCopyWith<$Res> {
-  factory _$$EnumOpaque_StructImplCopyWith(_$EnumOpaque_StructImpl value,
-          $Res Function(_$EnumOpaque_StructImpl) then) =
-      __$$EnumOpaque_StructImplCopyWithImpl<$Res>;
+abstract class _$$EnumOpaqueTwinNormal_StructImplCopyWith<$Res> {
+  factory _$$EnumOpaqueTwinNormal_StructImplCopyWith(
+          _$EnumOpaqueTwinNormal_StructImpl value,
+          $Res Function(_$EnumOpaqueTwinNormal_StructImpl) then) =
+      __$$EnumOpaqueTwinNormal_StructImplCopyWithImpl<$Res>;
   @useResult
   $Res call({HideData field0});
 }
 
 /// @nodoc
-class __$$EnumOpaque_StructImplCopyWithImpl<$Res>
-    extends _$EnumOpaqueCopyWithImpl<$Res, _$EnumOpaque_StructImpl>
-    implements _$$EnumOpaque_StructImplCopyWith<$Res> {
-  __$$EnumOpaque_StructImplCopyWithImpl(_$EnumOpaque_StructImpl _value,
-      $Res Function(_$EnumOpaque_StructImpl) _then)
+class __$$EnumOpaqueTwinNormal_StructImplCopyWithImpl<$Res>
+    extends _$EnumOpaqueTwinNormalCopyWithImpl<$Res,
+        _$EnumOpaqueTwinNormal_StructImpl>
+    implements _$$EnumOpaqueTwinNormal_StructImplCopyWith<$Res> {
+  __$$EnumOpaqueTwinNormal_StructImplCopyWithImpl(
+      _$EnumOpaqueTwinNormal_StructImpl _value,
+      $Res Function(_$EnumOpaqueTwinNormal_StructImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -115,7 +119,7 @@ class __$$EnumOpaque_StructImplCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$EnumOpaque_StructImpl(
+    return _then(_$EnumOpaqueTwinNormal_StructImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -126,22 +130,22 @@ class __$$EnumOpaque_StructImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumOpaque_StructImpl implements EnumOpaque_Struct {
-  const _$EnumOpaque_StructImpl(this.field0);
+class _$EnumOpaqueTwinNormal_StructImpl implements EnumOpaqueTwinNormal_Struct {
+  const _$EnumOpaqueTwinNormal_StructImpl(this.field0);
 
   @override
   final HideData field0;
 
   @override
   String toString() {
-    return 'EnumOpaque.struct(field0: $field0)';
+    return 'EnumOpaqueTwinNormal.struct(field0: $field0)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumOpaque_StructImpl &&
+            other is _$EnumOpaqueTwinNormal_StructImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -151,9 +155,9 @@ class _$EnumOpaque_StructImpl implements EnumOpaque_Struct {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumOpaque_StructImplCopyWith<_$EnumOpaque_StructImpl> get copyWith =>
-      __$$EnumOpaque_StructImplCopyWithImpl<_$EnumOpaque_StructImpl>(
-          this, _$identity);
+  _$$EnumOpaqueTwinNormal_StructImplCopyWith<_$EnumOpaqueTwinNormal_StructImpl>
+      get copyWith => __$$EnumOpaqueTwinNormal_StructImplCopyWithImpl<
+          _$EnumOpaqueTwinNormal_StructImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -198,11 +202,11 @@ class _$EnumOpaque_StructImpl implements EnumOpaque_Struct {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnumOpaque_Struct value) struct,
-    required TResult Function(EnumOpaque_Primitive value) primitive,
-    required TResult Function(EnumOpaque_TraitObj value) traitObj,
-    required TResult Function(EnumOpaque_Mutex value) mutex,
-    required TResult Function(EnumOpaque_RwLock value) rwLock,
+    required TResult Function(EnumOpaqueTwinNormal_Struct value) struct,
+    required TResult Function(EnumOpaqueTwinNormal_Primitive value) primitive,
+    required TResult Function(EnumOpaqueTwinNormal_TraitObj value) traitObj,
+    required TResult Function(EnumOpaqueTwinNormal_Mutex value) mutex,
+    required TResult Function(EnumOpaqueTwinNormal_RwLock value) rwLock,
   }) {
     return struct(this);
   }
@@ -210,11 +214,11 @@ class _$EnumOpaque_StructImpl implements EnumOpaque_Struct {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumOpaque_Struct value)? struct,
-    TResult? Function(EnumOpaque_Primitive value)? primitive,
-    TResult? Function(EnumOpaque_TraitObj value)? traitObj,
-    TResult? Function(EnumOpaque_Mutex value)? mutex,
-    TResult? Function(EnumOpaque_RwLock value)? rwLock,
+    TResult? Function(EnumOpaqueTwinNormal_Struct value)? struct,
+    TResult? Function(EnumOpaqueTwinNormal_Primitive value)? primitive,
+    TResult? Function(EnumOpaqueTwinNormal_TraitObj value)? traitObj,
+    TResult? Function(EnumOpaqueTwinNormal_Mutex value)? mutex,
+    TResult? Function(EnumOpaqueTwinNormal_RwLock value)? rwLock,
   }) {
     return struct?.call(this);
   }
@@ -222,11 +226,11 @@ class _$EnumOpaque_StructImpl implements EnumOpaque_Struct {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumOpaque_Struct value)? struct,
-    TResult Function(EnumOpaque_Primitive value)? primitive,
-    TResult Function(EnumOpaque_TraitObj value)? traitObj,
-    TResult Function(EnumOpaque_Mutex value)? mutex,
-    TResult Function(EnumOpaque_RwLock value)? rwLock,
+    TResult Function(EnumOpaqueTwinNormal_Struct value)? struct,
+    TResult Function(EnumOpaqueTwinNormal_Primitive value)? primitive,
+    TResult Function(EnumOpaqueTwinNormal_TraitObj value)? traitObj,
+    TResult Function(EnumOpaqueTwinNormal_Mutex value)? mutex,
+    TResult Function(EnumOpaqueTwinNormal_RwLock value)? rwLock,
     required TResult orElse(),
   }) {
     if (struct != null) {
@@ -236,32 +240,35 @@ class _$EnumOpaque_StructImpl implements EnumOpaque_Struct {
   }
 }
 
-abstract class EnumOpaque_Struct implements EnumOpaque {
-  const factory EnumOpaque_Struct(final HideData field0) =
-      _$EnumOpaque_StructImpl;
+abstract class EnumOpaqueTwinNormal_Struct implements EnumOpaqueTwinNormal {
+  const factory EnumOpaqueTwinNormal_Struct(final HideData field0) =
+      _$EnumOpaqueTwinNormal_StructImpl;
 
   @override
   HideData get field0;
   @JsonKey(ignore: true)
-  _$$EnumOpaque_StructImplCopyWith<_$EnumOpaque_StructImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$EnumOpaqueTwinNormal_StructImplCopyWith<_$EnumOpaqueTwinNormal_StructImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EnumOpaque_PrimitiveImplCopyWith<$Res> {
-  factory _$$EnumOpaque_PrimitiveImplCopyWith(_$EnumOpaque_PrimitiveImpl value,
-          $Res Function(_$EnumOpaque_PrimitiveImpl) then) =
-      __$$EnumOpaque_PrimitiveImplCopyWithImpl<$Res>;
+abstract class _$$EnumOpaqueTwinNormal_PrimitiveImplCopyWith<$Res> {
+  factory _$$EnumOpaqueTwinNormal_PrimitiveImplCopyWith(
+          _$EnumOpaqueTwinNormal_PrimitiveImpl value,
+          $Res Function(_$EnumOpaqueTwinNormal_PrimitiveImpl) then) =
+      __$$EnumOpaqueTwinNormal_PrimitiveImplCopyWithImpl<$Res>;
   @useResult
   $Res call({I32 field0});
 }
 
 /// @nodoc
-class __$$EnumOpaque_PrimitiveImplCopyWithImpl<$Res>
-    extends _$EnumOpaqueCopyWithImpl<$Res, _$EnumOpaque_PrimitiveImpl>
-    implements _$$EnumOpaque_PrimitiveImplCopyWith<$Res> {
-  __$$EnumOpaque_PrimitiveImplCopyWithImpl(_$EnumOpaque_PrimitiveImpl _value,
-      $Res Function(_$EnumOpaque_PrimitiveImpl) _then)
+class __$$EnumOpaqueTwinNormal_PrimitiveImplCopyWithImpl<$Res>
+    extends _$EnumOpaqueTwinNormalCopyWithImpl<$Res,
+        _$EnumOpaqueTwinNormal_PrimitiveImpl>
+    implements _$$EnumOpaqueTwinNormal_PrimitiveImplCopyWith<$Res> {
+  __$$EnumOpaqueTwinNormal_PrimitiveImplCopyWithImpl(
+      _$EnumOpaqueTwinNormal_PrimitiveImpl _value,
+      $Res Function(_$EnumOpaqueTwinNormal_PrimitiveImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -269,7 +276,7 @@ class __$$EnumOpaque_PrimitiveImplCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$EnumOpaque_PrimitiveImpl(
+    return _then(_$EnumOpaqueTwinNormal_PrimitiveImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -280,22 +287,23 @@ class __$$EnumOpaque_PrimitiveImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumOpaque_PrimitiveImpl implements EnumOpaque_Primitive {
-  const _$EnumOpaque_PrimitiveImpl(this.field0);
+class _$EnumOpaqueTwinNormal_PrimitiveImpl
+    implements EnumOpaqueTwinNormal_Primitive {
+  const _$EnumOpaqueTwinNormal_PrimitiveImpl(this.field0);
 
   @override
   final I32 field0;
 
   @override
   String toString() {
-    return 'EnumOpaque.primitive(field0: $field0)';
+    return 'EnumOpaqueTwinNormal.primitive(field0: $field0)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumOpaque_PrimitiveImpl &&
+            other is _$EnumOpaqueTwinNormal_PrimitiveImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -305,10 +313,10 @@ class _$EnumOpaque_PrimitiveImpl implements EnumOpaque_Primitive {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumOpaque_PrimitiveImplCopyWith<_$EnumOpaque_PrimitiveImpl>
-      get copyWith =>
-          __$$EnumOpaque_PrimitiveImplCopyWithImpl<_$EnumOpaque_PrimitiveImpl>(
-              this, _$identity);
+  _$$EnumOpaqueTwinNormal_PrimitiveImplCopyWith<
+          _$EnumOpaqueTwinNormal_PrimitiveImpl>
+      get copyWith => __$$EnumOpaqueTwinNormal_PrimitiveImplCopyWithImpl<
+          _$EnumOpaqueTwinNormal_PrimitiveImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -353,11 +361,11 @@ class _$EnumOpaque_PrimitiveImpl implements EnumOpaque_Primitive {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnumOpaque_Struct value) struct,
-    required TResult Function(EnumOpaque_Primitive value) primitive,
-    required TResult Function(EnumOpaque_TraitObj value) traitObj,
-    required TResult Function(EnumOpaque_Mutex value) mutex,
-    required TResult Function(EnumOpaque_RwLock value) rwLock,
+    required TResult Function(EnumOpaqueTwinNormal_Struct value) struct,
+    required TResult Function(EnumOpaqueTwinNormal_Primitive value) primitive,
+    required TResult Function(EnumOpaqueTwinNormal_TraitObj value) traitObj,
+    required TResult Function(EnumOpaqueTwinNormal_Mutex value) mutex,
+    required TResult Function(EnumOpaqueTwinNormal_RwLock value) rwLock,
   }) {
     return primitive(this);
   }
@@ -365,11 +373,11 @@ class _$EnumOpaque_PrimitiveImpl implements EnumOpaque_Primitive {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumOpaque_Struct value)? struct,
-    TResult? Function(EnumOpaque_Primitive value)? primitive,
-    TResult? Function(EnumOpaque_TraitObj value)? traitObj,
-    TResult? Function(EnumOpaque_Mutex value)? mutex,
-    TResult? Function(EnumOpaque_RwLock value)? rwLock,
+    TResult? Function(EnumOpaqueTwinNormal_Struct value)? struct,
+    TResult? Function(EnumOpaqueTwinNormal_Primitive value)? primitive,
+    TResult? Function(EnumOpaqueTwinNormal_TraitObj value)? traitObj,
+    TResult? Function(EnumOpaqueTwinNormal_Mutex value)? mutex,
+    TResult? Function(EnumOpaqueTwinNormal_RwLock value)? rwLock,
   }) {
     return primitive?.call(this);
   }
@@ -377,11 +385,11 @@ class _$EnumOpaque_PrimitiveImpl implements EnumOpaque_Primitive {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumOpaque_Struct value)? struct,
-    TResult Function(EnumOpaque_Primitive value)? primitive,
-    TResult Function(EnumOpaque_TraitObj value)? traitObj,
-    TResult Function(EnumOpaque_Mutex value)? mutex,
-    TResult Function(EnumOpaque_RwLock value)? rwLock,
+    TResult Function(EnumOpaqueTwinNormal_Struct value)? struct,
+    TResult Function(EnumOpaqueTwinNormal_Primitive value)? primitive,
+    TResult Function(EnumOpaqueTwinNormal_TraitObj value)? traitObj,
+    TResult Function(EnumOpaqueTwinNormal_Mutex value)? mutex,
+    TResult Function(EnumOpaqueTwinNormal_RwLock value)? rwLock,
     required TResult orElse(),
   }) {
     if (primitive != null) {
@@ -391,32 +399,36 @@ class _$EnumOpaque_PrimitiveImpl implements EnumOpaque_Primitive {
   }
 }
 
-abstract class EnumOpaque_Primitive implements EnumOpaque {
-  const factory EnumOpaque_Primitive(final I32 field0) =
-      _$EnumOpaque_PrimitiveImpl;
+abstract class EnumOpaqueTwinNormal_Primitive implements EnumOpaqueTwinNormal {
+  const factory EnumOpaqueTwinNormal_Primitive(final I32 field0) =
+      _$EnumOpaqueTwinNormal_PrimitiveImpl;
 
   @override
   I32 get field0;
   @JsonKey(ignore: true)
-  _$$EnumOpaque_PrimitiveImplCopyWith<_$EnumOpaque_PrimitiveImpl>
+  _$$EnumOpaqueTwinNormal_PrimitiveImplCopyWith<
+          _$EnumOpaqueTwinNormal_PrimitiveImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EnumOpaque_TraitObjImplCopyWith<$Res> {
-  factory _$$EnumOpaque_TraitObjImplCopyWith(_$EnumOpaque_TraitObjImpl value,
-          $Res Function(_$EnumOpaque_TraitObjImpl) then) =
-      __$$EnumOpaque_TraitObjImplCopyWithImpl<$Res>;
+abstract class _$$EnumOpaqueTwinNormal_TraitObjImplCopyWith<$Res> {
+  factory _$$EnumOpaqueTwinNormal_TraitObjImplCopyWith(
+          _$EnumOpaqueTwinNormal_TraitObjImpl value,
+          $Res Function(_$EnumOpaqueTwinNormal_TraitObjImpl) then) =
+      __$$EnumOpaqueTwinNormal_TraitObjImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BoxDartDebug field0});
 }
 
 /// @nodoc
-class __$$EnumOpaque_TraitObjImplCopyWithImpl<$Res>
-    extends _$EnumOpaqueCopyWithImpl<$Res, _$EnumOpaque_TraitObjImpl>
-    implements _$$EnumOpaque_TraitObjImplCopyWith<$Res> {
-  __$$EnumOpaque_TraitObjImplCopyWithImpl(_$EnumOpaque_TraitObjImpl _value,
-      $Res Function(_$EnumOpaque_TraitObjImpl) _then)
+class __$$EnumOpaqueTwinNormal_TraitObjImplCopyWithImpl<$Res>
+    extends _$EnumOpaqueTwinNormalCopyWithImpl<$Res,
+        _$EnumOpaqueTwinNormal_TraitObjImpl>
+    implements _$$EnumOpaqueTwinNormal_TraitObjImplCopyWith<$Res> {
+  __$$EnumOpaqueTwinNormal_TraitObjImplCopyWithImpl(
+      _$EnumOpaqueTwinNormal_TraitObjImpl _value,
+      $Res Function(_$EnumOpaqueTwinNormal_TraitObjImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -424,7 +436,7 @@ class __$$EnumOpaque_TraitObjImplCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$EnumOpaque_TraitObjImpl(
+    return _then(_$EnumOpaqueTwinNormal_TraitObjImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -435,22 +447,23 @@ class __$$EnumOpaque_TraitObjImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumOpaque_TraitObjImpl implements EnumOpaque_TraitObj {
-  const _$EnumOpaque_TraitObjImpl(this.field0);
+class _$EnumOpaqueTwinNormal_TraitObjImpl
+    implements EnumOpaqueTwinNormal_TraitObj {
+  const _$EnumOpaqueTwinNormal_TraitObjImpl(this.field0);
 
   @override
   final BoxDartDebug field0;
 
   @override
   String toString() {
-    return 'EnumOpaque.traitObj(field0: $field0)';
+    return 'EnumOpaqueTwinNormal.traitObj(field0: $field0)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumOpaque_TraitObjImpl &&
+            other is _$EnumOpaqueTwinNormal_TraitObjImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -460,9 +473,10 @@ class _$EnumOpaque_TraitObjImpl implements EnumOpaque_TraitObj {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumOpaque_TraitObjImplCopyWith<_$EnumOpaque_TraitObjImpl> get copyWith =>
-      __$$EnumOpaque_TraitObjImplCopyWithImpl<_$EnumOpaque_TraitObjImpl>(
-          this, _$identity);
+  _$$EnumOpaqueTwinNormal_TraitObjImplCopyWith<
+          _$EnumOpaqueTwinNormal_TraitObjImpl>
+      get copyWith => __$$EnumOpaqueTwinNormal_TraitObjImplCopyWithImpl<
+          _$EnumOpaqueTwinNormal_TraitObjImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -507,11 +521,11 @@ class _$EnumOpaque_TraitObjImpl implements EnumOpaque_TraitObj {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnumOpaque_Struct value) struct,
-    required TResult Function(EnumOpaque_Primitive value) primitive,
-    required TResult Function(EnumOpaque_TraitObj value) traitObj,
-    required TResult Function(EnumOpaque_Mutex value) mutex,
-    required TResult Function(EnumOpaque_RwLock value) rwLock,
+    required TResult Function(EnumOpaqueTwinNormal_Struct value) struct,
+    required TResult Function(EnumOpaqueTwinNormal_Primitive value) primitive,
+    required TResult Function(EnumOpaqueTwinNormal_TraitObj value) traitObj,
+    required TResult Function(EnumOpaqueTwinNormal_Mutex value) mutex,
+    required TResult Function(EnumOpaqueTwinNormal_RwLock value) rwLock,
   }) {
     return traitObj(this);
   }
@@ -519,11 +533,11 @@ class _$EnumOpaque_TraitObjImpl implements EnumOpaque_TraitObj {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumOpaque_Struct value)? struct,
-    TResult? Function(EnumOpaque_Primitive value)? primitive,
-    TResult? Function(EnumOpaque_TraitObj value)? traitObj,
-    TResult? Function(EnumOpaque_Mutex value)? mutex,
-    TResult? Function(EnumOpaque_RwLock value)? rwLock,
+    TResult? Function(EnumOpaqueTwinNormal_Struct value)? struct,
+    TResult? Function(EnumOpaqueTwinNormal_Primitive value)? primitive,
+    TResult? Function(EnumOpaqueTwinNormal_TraitObj value)? traitObj,
+    TResult? Function(EnumOpaqueTwinNormal_Mutex value)? mutex,
+    TResult? Function(EnumOpaqueTwinNormal_RwLock value)? rwLock,
   }) {
     return traitObj?.call(this);
   }
@@ -531,11 +545,11 @@ class _$EnumOpaque_TraitObjImpl implements EnumOpaque_TraitObj {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumOpaque_Struct value)? struct,
-    TResult Function(EnumOpaque_Primitive value)? primitive,
-    TResult Function(EnumOpaque_TraitObj value)? traitObj,
-    TResult Function(EnumOpaque_Mutex value)? mutex,
-    TResult Function(EnumOpaque_RwLock value)? rwLock,
+    TResult Function(EnumOpaqueTwinNormal_Struct value)? struct,
+    TResult Function(EnumOpaqueTwinNormal_Primitive value)? primitive,
+    TResult Function(EnumOpaqueTwinNormal_TraitObj value)? traitObj,
+    TResult Function(EnumOpaqueTwinNormal_Mutex value)? mutex,
+    TResult Function(EnumOpaqueTwinNormal_RwLock value)? rwLock,
     required TResult orElse(),
   }) {
     if (traitObj != null) {
@@ -545,32 +559,36 @@ class _$EnumOpaque_TraitObjImpl implements EnumOpaque_TraitObj {
   }
 }
 
-abstract class EnumOpaque_TraitObj implements EnumOpaque {
-  const factory EnumOpaque_TraitObj(final BoxDartDebug field0) =
-      _$EnumOpaque_TraitObjImpl;
+abstract class EnumOpaqueTwinNormal_TraitObj implements EnumOpaqueTwinNormal {
+  const factory EnumOpaqueTwinNormal_TraitObj(final BoxDartDebug field0) =
+      _$EnumOpaqueTwinNormal_TraitObjImpl;
 
   @override
   BoxDartDebug get field0;
   @JsonKey(ignore: true)
-  _$$EnumOpaque_TraitObjImplCopyWith<_$EnumOpaque_TraitObjImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$EnumOpaqueTwinNormal_TraitObjImplCopyWith<
+          _$EnumOpaqueTwinNormal_TraitObjImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EnumOpaque_MutexImplCopyWith<$Res> {
-  factory _$$EnumOpaque_MutexImplCopyWith(_$EnumOpaque_MutexImpl value,
-          $Res Function(_$EnumOpaque_MutexImpl) then) =
-      __$$EnumOpaque_MutexImplCopyWithImpl<$Res>;
+abstract class _$$EnumOpaqueTwinNormal_MutexImplCopyWith<$Res> {
+  factory _$$EnumOpaqueTwinNormal_MutexImplCopyWith(
+          _$EnumOpaqueTwinNormal_MutexImpl value,
+          $Res Function(_$EnumOpaqueTwinNormal_MutexImpl) then) =
+      __$$EnumOpaqueTwinNormal_MutexImplCopyWithImpl<$Res>;
   @useResult
   $Res call({MutexHideData field0});
 }
 
 /// @nodoc
-class __$$EnumOpaque_MutexImplCopyWithImpl<$Res>
-    extends _$EnumOpaqueCopyWithImpl<$Res, _$EnumOpaque_MutexImpl>
-    implements _$$EnumOpaque_MutexImplCopyWith<$Res> {
-  __$$EnumOpaque_MutexImplCopyWithImpl(_$EnumOpaque_MutexImpl _value,
-      $Res Function(_$EnumOpaque_MutexImpl) _then)
+class __$$EnumOpaqueTwinNormal_MutexImplCopyWithImpl<$Res>
+    extends _$EnumOpaqueTwinNormalCopyWithImpl<$Res,
+        _$EnumOpaqueTwinNormal_MutexImpl>
+    implements _$$EnumOpaqueTwinNormal_MutexImplCopyWith<$Res> {
+  __$$EnumOpaqueTwinNormal_MutexImplCopyWithImpl(
+      _$EnumOpaqueTwinNormal_MutexImpl _value,
+      $Res Function(_$EnumOpaqueTwinNormal_MutexImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -578,7 +596,7 @@ class __$$EnumOpaque_MutexImplCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$EnumOpaque_MutexImpl(
+    return _then(_$EnumOpaqueTwinNormal_MutexImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -589,22 +607,22 @@ class __$$EnumOpaque_MutexImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumOpaque_MutexImpl implements EnumOpaque_Mutex {
-  const _$EnumOpaque_MutexImpl(this.field0);
+class _$EnumOpaqueTwinNormal_MutexImpl implements EnumOpaqueTwinNormal_Mutex {
+  const _$EnumOpaqueTwinNormal_MutexImpl(this.field0);
 
   @override
   final MutexHideData field0;
 
   @override
   String toString() {
-    return 'EnumOpaque.mutex(field0: $field0)';
+    return 'EnumOpaqueTwinNormal.mutex(field0: $field0)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumOpaque_MutexImpl &&
+            other is _$EnumOpaqueTwinNormal_MutexImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -614,9 +632,9 @@ class _$EnumOpaque_MutexImpl implements EnumOpaque_Mutex {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumOpaque_MutexImplCopyWith<_$EnumOpaque_MutexImpl> get copyWith =>
-      __$$EnumOpaque_MutexImplCopyWithImpl<_$EnumOpaque_MutexImpl>(
-          this, _$identity);
+  _$$EnumOpaqueTwinNormal_MutexImplCopyWith<_$EnumOpaqueTwinNormal_MutexImpl>
+      get copyWith => __$$EnumOpaqueTwinNormal_MutexImplCopyWithImpl<
+          _$EnumOpaqueTwinNormal_MutexImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -661,11 +679,11 @@ class _$EnumOpaque_MutexImpl implements EnumOpaque_Mutex {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnumOpaque_Struct value) struct,
-    required TResult Function(EnumOpaque_Primitive value) primitive,
-    required TResult Function(EnumOpaque_TraitObj value) traitObj,
-    required TResult Function(EnumOpaque_Mutex value) mutex,
-    required TResult Function(EnumOpaque_RwLock value) rwLock,
+    required TResult Function(EnumOpaqueTwinNormal_Struct value) struct,
+    required TResult Function(EnumOpaqueTwinNormal_Primitive value) primitive,
+    required TResult Function(EnumOpaqueTwinNormal_TraitObj value) traitObj,
+    required TResult Function(EnumOpaqueTwinNormal_Mutex value) mutex,
+    required TResult Function(EnumOpaqueTwinNormal_RwLock value) rwLock,
   }) {
     return mutex(this);
   }
@@ -673,11 +691,11 @@ class _$EnumOpaque_MutexImpl implements EnumOpaque_Mutex {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumOpaque_Struct value)? struct,
-    TResult? Function(EnumOpaque_Primitive value)? primitive,
-    TResult? Function(EnumOpaque_TraitObj value)? traitObj,
-    TResult? Function(EnumOpaque_Mutex value)? mutex,
-    TResult? Function(EnumOpaque_RwLock value)? rwLock,
+    TResult? Function(EnumOpaqueTwinNormal_Struct value)? struct,
+    TResult? Function(EnumOpaqueTwinNormal_Primitive value)? primitive,
+    TResult? Function(EnumOpaqueTwinNormal_TraitObj value)? traitObj,
+    TResult? Function(EnumOpaqueTwinNormal_Mutex value)? mutex,
+    TResult? Function(EnumOpaqueTwinNormal_RwLock value)? rwLock,
   }) {
     return mutex?.call(this);
   }
@@ -685,11 +703,11 @@ class _$EnumOpaque_MutexImpl implements EnumOpaque_Mutex {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumOpaque_Struct value)? struct,
-    TResult Function(EnumOpaque_Primitive value)? primitive,
-    TResult Function(EnumOpaque_TraitObj value)? traitObj,
-    TResult Function(EnumOpaque_Mutex value)? mutex,
-    TResult Function(EnumOpaque_RwLock value)? rwLock,
+    TResult Function(EnumOpaqueTwinNormal_Struct value)? struct,
+    TResult Function(EnumOpaqueTwinNormal_Primitive value)? primitive,
+    TResult Function(EnumOpaqueTwinNormal_TraitObj value)? traitObj,
+    TResult Function(EnumOpaqueTwinNormal_Mutex value)? mutex,
+    TResult Function(EnumOpaqueTwinNormal_RwLock value)? rwLock,
     required TResult orElse(),
   }) {
     if (mutex != null) {
@@ -699,32 +717,35 @@ class _$EnumOpaque_MutexImpl implements EnumOpaque_Mutex {
   }
 }
 
-abstract class EnumOpaque_Mutex implements EnumOpaque {
-  const factory EnumOpaque_Mutex(final MutexHideData field0) =
-      _$EnumOpaque_MutexImpl;
+abstract class EnumOpaqueTwinNormal_Mutex implements EnumOpaqueTwinNormal {
+  const factory EnumOpaqueTwinNormal_Mutex(final MutexHideData field0) =
+      _$EnumOpaqueTwinNormal_MutexImpl;
 
   @override
   MutexHideData get field0;
   @JsonKey(ignore: true)
-  _$$EnumOpaque_MutexImplCopyWith<_$EnumOpaque_MutexImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$EnumOpaqueTwinNormal_MutexImplCopyWith<_$EnumOpaqueTwinNormal_MutexImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EnumOpaque_RwLockImplCopyWith<$Res> {
-  factory _$$EnumOpaque_RwLockImplCopyWith(_$EnumOpaque_RwLockImpl value,
-          $Res Function(_$EnumOpaque_RwLockImpl) then) =
-      __$$EnumOpaque_RwLockImplCopyWithImpl<$Res>;
+abstract class _$$EnumOpaqueTwinNormal_RwLockImplCopyWith<$Res> {
+  factory _$$EnumOpaqueTwinNormal_RwLockImplCopyWith(
+          _$EnumOpaqueTwinNormal_RwLockImpl value,
+          $Res Function(_$EnumOpaqueTwinNormal_RwLockImpl) then) =
+      __$$EnumOpaqueTwinNormal_RwLockImplCopyWithImpl<$Res>;
   @useResult
   $Res call({RwLockHideData field0});
 }
 
 /// @nodoc
-class __$$EnumOpaque_RwLockImplCopyWithImpl<$Res>
-    extends _$EnumOpaqueCopyWithImpl<$Res, _$EnumOpaque_RwLockImpl>
-    implements _$$EnumOpaque_RwLockImplCopyWith<$Res> {
-  __$$EnumOpaque_RwLockImplCopyWithImpl(_$EnumOpaque_RwLockImpl _value,
-      $Res Function(_$EnumOpaque_RwLockImpl) _then)
+class __$$EnumOpaqueTwinNormal_RwLockImplCopyWithImpl<$Res>
+    extends _$EnumOpaqueTwinNormalCopyWithImpl<$Res,
+        _$EnumOpaqueTwinNormal_RwLockImpl>
+    implements _$$EnumOpaqueTwinNormal_RwLockImplCopyWith<$Res> {
+  __$$EnumOpaqueTwinNormal_RwLockImplCopyWithImpl(
+      _$EnumOpaqueTwinNormal_RwLockImpl _value,
+      $Res Function(_$EnumOpaqueTwinNormal_RwLockImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -732,7 +753,7 @@ class __$$EnumOpaque_RwLockImplCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$EnumOpaque_RwLockImpl(
+    return _then(_$EnumOpaqueTwinNormal_RwLockImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -743,22 +764,22 @@ class __$$EnumOpaque_RwLockImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumOpaque_RwLockImpl implements EnumOpaque_RwLock {
-  const _$EnumOpaque_RwLockImpl(this.field0);
+class _$EnumOpaqueTwinNormal_RwLockImpl implements EnumOpaqueTwinNormal_RwLock {
+  const _$EnumOpaqueTwinNormal_RwLockImpl(this.field0);
 
   @override
   final RwLockHideData field0;
 
   @override
   String toString() {
-    return 'EnumOpaque.rwLock(field0: $field0)';
+    return 'EnumOpaqueTwinNormal.rwLock(field0: $field0)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumOpaque_RwLockImpl &&
+            other is _$EnumOpaqueTwinNormal_RwLockImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -768,9 +789,9 @@ class _$EnumOpaque_RwLockImpl implements EnumOpaque_RwLock {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumOpaque_RwLockImplCopyWith<_$EnumOpaque_RwLockImpl> get copyWith =>
-      __$$EnumOpaque_RwLockImplCopyWithImpl<_$EnumOpaque_RwLockImpl>(
-          this, _$identity);
+  _$$EnumOpaqueTwinNormal_RwLockImplCopyWith<_$EnumOpaqueTwinNormal_RwLockImpl>
+      get copyWith => __$$EnumOpaqueTwinNormal_RwLockImplCopyWithImpl<
+          _$EnumOpaqueTwinNormal_RwLockImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -815,11 +836,11 @@ class _$EnumOpaque_RwLockImpl implements EnumOpaque_RwLock {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnumOpaque_Struct value) struct,
-    required TResult Function(EnumOpaque_Primitive value) primitive,
-    required TResult Function(EnumOpaque_TraitObj value) traitObj,
-    required TResult Function(EnumOpaque_Mutex value) mutex,
-    required TResult Function(EnumOpaque_RwLock value) rwLock,
+    required TResult Function(EnumOpaqueTwinNormal_Struct value) struct,
+    required TResult Function(EnumOpaqueTwinNormal_Primitive value) primitive,
+    required TResult Function(EnumOpaqueTwinNormal_TraitObj value) traitObj,
+    required TResult Function(EnumOpaqueTwinNormal_Mutex value) mutex,
+    required TResult Function(EnumOpaqueTwinNormal_RwLock value) rwLock,
   }) {
     return rwLock(this);
   }
@@ -827,11 +848,11 @@ class _$EnumOpaque_RwLockImpl implements EnumOpaque_RwLock {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumOpaque_Struct value)? struct,
-    TResult? Function(EnumOpaque_Primitive value)? primitive,
-    TResult? Function(EnumOpaque_TraitObj value)? traitObj,
-    TResult? Function(EnumOpaque_Mutex value)? mutex,
-    TResult? Function(EnumOpaque_RwLock value)? rwLock,
+    TResult? Function(EnumOpaqueTwinNormal_Struct value)? struct,
+    TResult? Function(EnumOpaqueTwinNormal_Primitive value)? primitive,
+    TResult? Function(EnumOpaqueTwinNormal_TraitObj value)? traitObj,
+    TResult? Function(EnumOpaqueTwinNormal_Mutex value)? mutex,
+    TResult? Function(EnumOpaqueTwinNormal_RwLock value)? rwLock,
   }) {
     return rwLock?.call(this);
   }
@@ -839,11 +860,11 @@ class _$EnumOpaque_RwLockImpl implements EnumOpaque_RwLock {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumOpaque_Struct value)? struct,
-    TResult Function(EnumOpaque_Primitive value)? primitive,
-    TResult Function(EnumOpaque_TraitObj value)? traitObj,
-    TResult Function(EnumOpaque_Mutex value)? mutex,
-    TResult Function(EnumOpaque_RwLock value)? rwLock,
+    TResult Function(EnumOpaqueTwinNormal_Struct value)? struct,
+    TResult Function(EnumOpaqueTwinNormal_Primitive value)? primitive,
+    TResult Function(EnumOpaqueTwinNormal_TraitObj value)? traitObj,
+    TResult Function(EnumOpaqueTwinNormal_Mutex value)? mutex,
+    TResult Function(EnumOpaqueTwinNormal_RwLock value)? rwLock,
     required TResult orElse(),
   }) {
     if (rwLock != null) {
@@ -853,13 +874,13 @@ class _$EnumOpaque_RwLockImpl implements EnumOpaque_RwLock {
   }
 }
 
-abstract class EnumOpaque_RwLock implements EnumOpaque {
-  const factory EnumOpaque_RwLock(final RwLockHideData field0) =
-      _$EnumOpaque_RwLockImpl;
+abstract class EnumOpaqueTwinNormal_RwLock implements EnumOpaqueTwinNormal {
+  const factory EnumOpaqueTwinNormal_RwLock(final RwLockHideData field0) =
+      _$EnumOpaqueTwinNormal_RwLockImpl;
 
   @override
   RwLockHideData get field0;
   @JsonKey(ignore: true)
-  _$$EnumOpaque_RwLockImplCopyWith<_$EnumOpaque_RwLockImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$EnumOpaqueTwinNormal_RwLockImplCopyWith<_$EnumOpaqueTwinNormal_RwLockImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

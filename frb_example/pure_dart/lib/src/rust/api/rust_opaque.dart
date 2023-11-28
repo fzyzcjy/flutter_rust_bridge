@@ -6,56 +6,67 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'rust_opaque.freezed.dart';
 
-Future<HideData> createOpaque({dynamic hint}) =>
-    RustLib.instance.api.createOpaque(hint: hint);
+Future<HideData> createOpaqueTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.createOpaqueTwinNormal(hint: hint);
 
-Future<HideData?> createOptionOpaque({HideData? opaque, dynamic hint}) =>
-    RustLib.instance.api.createOptionOpaque(opaque: opaque, hint: hint);
+Future<HideData?> createOptionOpaqueTwinNormal(
+        {HideData? opaque, dynamic hint}) =>
+    RustLib.instance.api
+        .createOptionOpaqueTwinNormal(opaque: opaque, hint: hint);
 
-Future<EnumOpaqueArray5> createArrayOpaqueEnum({dynamic hint}) =>
-    RustLib.instance.api.createArrayOpaqueEnum(hint: hint);
+Future<EnumOpaqueTwinNormalArray5> createArrayOpaqueEnumTwinNormal(
+        {dynamic hint}) =>
+    RustLib.instance.api.createArrayOpaqueEnumTwinNormal(hint: hint);
 
-Future<String> runEnumOpaque({required EnumOpaque opaque, dynamic hint}) =>
-    RustLib.instance.api.runEnumOpaque(opaque: opaque, hint: hint);
+Future<String> runEnumOpaqueTwinNormal(
+        {required EnumOpaqueTwinNormal opaque, dynamic hint}) =>
+    RustLib.instance.api.runEnumOpaqueTwinNormal(opaque: opaque, hint: hint);
 
-Future<String> runOpaque({required HideData opaque, dynamic hint}) =>
-    RustLib.instance.api.runOpaque(opaque: opaque, hint: hint);
+Future<String> runOpaqueTwinNormal({required HideData opaque, dynamic hint}) =>
+    RustLib.instance.api.runOpaqueTwinNormal(opaque: opaque, hint: hint);
 
-Future<String> runOpaqueWithDelay({required HideData opaque, dynamic hint}) =>
-    RustLib.instance.api.runOpaqueWithDelay(opaque: opaque, hint: hint);
+Future<String> runOpaqueWithDelayTwinNormal(
+        {required HideData opaque, dynamic hint}) =>
+    RustLib.instance.api
+        .runOpaqueWithDelayTwinNormal(opaque: opaque, hint: hint);
 
-Future<HideDataArray2> opaqueArray({dynamic hint}) =>
-    RustLib.instance.api.opaqueArray(hint: hint);
+Future<HideDataArray2> opaqueArrayTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.opaqueArrayTwinNormal(hint: hint);
 
-Future<String> runNonClone({required NonCloneData clone, dynamic hint}) =>
-    RustLib.instance.api.runNonClone(clone: clone, hint: hint);
+Future<String> runNonCloneTwinNormal(
+        {required NonCloneData clone, dynamic hint}) =>
+    RustLib.instance.api.runNonCloneTwinNormal(clone: clone, hint: hint);
 
-Future<NonSendHideData> createSyncOpaque({dynamic hint}) =>
-    RustLib.instance.api.createSyncOpaque(hint: hint);
+Future<NonSendHideData> createSyncOpaqueTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.createSyncOpaqueTwinNormal(hint: hint);
 
-Future<void> opaqueArrayRun({required HideDataArray2 data, dynamic hint}) =>
-    RustLib.instance.api.opaqueArrayRun(data: data, hint: hint);
+Future<void> opaqueArrayRunTwinNormal(
+        {required HideDataArray2 data, dynamic hint}) =>
+    RustLib.instance.api.opaqueArrayRunTwinNormal(data: data, hint: hint);
 
-Future<List<HideData>> opaqueVec({dynamic hint}) =>
-    RustLib.instance.api.opaqueVec(hint: hint);
+Future<List<HideData>> opaqueVecTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.opaqueVecTwinNormal(hint: hint);
 
-Future<void> opaqueVecRun({required List<HideData> data, dynamic hint}) =>
-    RustLib.instance.api.opaqueVecRun(data: data, hint: hint);
+Future<void> opaqueVecRunTwinNormal(
+        {required List<HideData> data, dynamic hint}) =>
+    RustLib.instance.api.opaqueVecRunTwinNormal(data: data, hint: hint);
 
-Future<OpaqueNested> createNestedOpaque({dynamic hint}) =>
-    RustLib.instance.api.createNestedOpaque(hint: hint);
+Future<OpaqueNestedTwinNormal> createNestedOpaqueTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.createNestedOpaqueTwinNormal(hint: hint);
 
-Future<void> runNestedOpaque({required OpaqueNested opaque, dynamic hint}) =>
-    RustLib.instance.api.runNestedOpaque(opaque: opaque, hint: hint);
+Future<void> runNestedOpaqueTwinNormal(
+        {required OpaqueNestedTwinNormal opaque, dynamic hint}) =>
+    RustLib.instance.api.runNestedOpaqueTwinNormal(opaque: opaque, hint: hint);
 
-Future<String> unwrapRustOpaque({required HideData opaque, dynamic hint}) =>
-    RustLib.instance.api.unwrapRustOpaque(opaque: opaque, hint: hint);
+Future<String> unwrapRustOpaqueTwinNormal(
+        {required HideData opaque, dynamic hint}) =>
+    RustLib.instance.api.unwrapRustOpaqueTwinNormal(opaque: opaque, hint: hint);
 
 /// Function to check the code generator.
 /// FrbOpaqueReturn must be only return type.
 /// FrbOpaqueReturn must not be used as an argument.
-Future<FrbOpaqueReturn> frbGeneratorTest({dynamic hint}) =>
-    RustLib.instance.api.frbGeneratorTest(hint: hint);
+Future<FrbOpaqueReturn> frbGeneratorTestTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.frbGeneratorTestTwinNormal(hint: hint);
 
 @sealed
 class MutexHideData extends FrbOpaque {
@@ -191,40 +202,42 @@ class NonSendHideData extends FrbOpaque {
 }
 
 @freezed
-sealed class EnumOpaque with _$EnumOpaque {
-  const factory EnumOpaque.struct(
+sealed class EnumOpaqueTwinNormal with _$EnumOpaqueTwinNormal {
+  const factory EnumOpaqueTwinNormal.struct(
     HideData field0,
-  ) = EnumOpaque_Struct;
-  const factory EnumOpaque.primitive(
+  ) = EnumOpaqueTwinNormal_Struct;
+  const factory EnumOpaqueTwinNormal.primitive(
     I32 field0,
-  ) = EnumOpaque_Primitive;
-  const factory EnumOpaque.traitObj(
+  ) = EnumOpaqueTwinNormal_Primitive;
+  const factory EnumOpaqueTwinNormal.traitObj(
     BoxDartDebug field0,
-  ) = EnumOpaque_TraitObj;
-  const factory EnumOpaque.mutex(
+  ) = EnumOpaqueTwinNormal_TraitObj;
+  const factory EnumOpaqueTwinNormal.mutex(
     MutexHideData field0,
-  ) = EnumOpaque_Mutex;
-  const factory EnumOpaque.rwLock(
+  ) = EnumOpaqueTwinNormal_Mutex;
+  const factory EnumOpaqueTwinNormal.rwLock(
     RwLockHideData field0,
-  ) = EnumOpaque_RwLock;
+  ) = EnumOpaqueTwinNormal_RwLock;
 }
 
-class EnumOpaqueArray5 extends NonGrowableListView<EnumOpaque> {
+class EnumOpaqueTwinNormalArray5
+    extends NonGrowableListView<EnumOpaqueTwinNormal> {
   static const arraySize = 5;
-  EnumOpaqueArray5(List<EnumOpaque> inner)
+  EnumOpaqueTwinNormalArray5(List<EnumOpaqueTwinNormal> inner)
       : assert(inner.length == arraySize),
         super(inner);
-  EnumOpaqueArray5.unchecked(List<EnumOpaque> inner) : super(inner);
-  EnumOpaqueArray5.init(EnumOpaque fill)
-      : super(List<EnumOpaque>.filled(arraySize, fill));
+  EnumOpaqueTwinNormalArray5.unchecked(List<EnumOpaqueTwinNormal> inner)
+      : super(inner);
+  EnumOpaqueTwinNormalArray5.init(EnumOpaqueTwinNormal fill)
+      : super(List<EnumOpaqueTwinNormal>.filled(arraySize, fill));
 }
 
 /// [`HideData`] has private fields.
-class OpaqueNested {
+class OpaqueNestedTwinNormal {
   final HideData first;
   final HideData second;
 
-  const OpaqueNested({
+  const OpaqueNestedTwinNormal({
     required this.first,
     required this.second,
   });
@@ -235,7 +248,7 @@ class OpaqueNested {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is OpaqueNested &&
+      other is OpaqueNestedTwinNormal &&
           runtimeType == other.runtimeType &&
           first == other.first &&
           second == other.second;

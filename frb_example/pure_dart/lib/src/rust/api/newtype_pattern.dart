@@ -3,13 +3,14 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<NewTypeInt> handleNewtype({required NewTypeInt arg, dynamic hint}) =>
-    RustLib.instance.api.handleNewtype(arg: arg, hint: hint);
+Future<NewTypeIntTwinNormal> handleNewtypeTwinNormal(
+        {required NewTypeIntTwinNormal arg, dynamic hint}) =>
+    RustLib.instance.api.handleNewtypeTwinNormal(arg: arg, hint: hint);
 
-class NewTypeInt {
+class NewTypeIntTwinNormal {
   final int field0;
 
-  const NewTypeInt({
+  const NewTypeIntTwinNormal({
     required this.field0,
   });
 
@@ -19,7 +20,7 @@ class NewTypeInt {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is NewTypeInt &&
+      other is NewTypeIntTwinNormal &&
           runtimeType == other.runtimeType &&
           field0 == other.field0;
 }

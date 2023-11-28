@@ -15,69 +15,71 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$Abc {
+mixin _$AbcTwinNormal {
   Object get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(A field0) a,
-    required TResult Function(B field0) b,
-    required TResult Function(C field0) c,
+    required TResult Function(ATwinNormal field0) a,
+    required TResult Function(BTwinNormal field0) b,
+    required TResult Function(CTwinNormal field0) c,
     required TResult Function(int field0) justInt,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(A field0)? a,
-    TResult? Function(B field0)? b,
-    TResult? Function(C field0)? c,
+    TResult? Function(ATwinNormal field0)? a,
+    TResult? Function(BTwinNormal field0)? b,
+    TResult? Function(CTwinNormal field0)? c,
     TResult? Function(int field0)? justInt,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(A field0)? a,
-    TResult Function(B field0)? b,
-    TResult Function(C field0)? c,
+    TResult Function(ATwinNormal field0)? a,
+    TResult Function(BTwinNormal field0)? b,
+    TResult Function(CTwinNormal field0)? c,
     TResult Function(int field0)? justInt,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Abc_A value) a,
-    required TResult Function(Abc_B value) b,
-    required TResult Function(Abc_C value) c,
-    required TResult Function(Abc_JustInt value) justInt,
+    required TResult Function(AbcTwinNormal_A value) a,
+    required TResult Function(AbcTwinNormal_B value) b,
+    required TResult Function(AbcTwinNormal_C value) c,
+    required TResult Function(AbcTwinNormal_JustInt value) justInt,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Abc_A value)? a,
-    TResult? Function(Abc_B value)? b,
-    TResult? Function(Abc_C value)? c,
-    TResult? Function(Abc_JustInt value)? justInt,
+    TResult? Function(AbcTwinNormal_A value)? a,
+    TResult? Function(AbcTwinNormal_B value)? b,
+    TResult? Function(AbcTwinNormal_C value)? c,
+    TResult? Function(AbcTwinNormal_JustInt value)? justInt,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Abc_A value)? a,
-    TResult Function(Abc_B value)? b,
-    TResult Function(Abc_C value)? c,
-    TResult Function(Abc_JustInt value)? justInt,
+    TResult Function(AbcTwinNormal_A value)? a,
+    TResult Function(AbcTwinNormal_B value)? b,
+    TResult Function(AbcTwinNormal_C value)? c,
+    TResult Function(AbcTwinNormal_JustInt value)? justInt,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AbcCopyWith<$Res> {
-  factory $AbcCopyWith(Abc value, $Res Function(Abc) then) =
-      _$AbcCopyWithImpl<$Res, Abc>;
+abstract class $AbcTwinNormalCopyWith<$Res> {
+  factory $AbcTwinNormalCopyWith(
+          AbcTwinNormal value, $Res Function(AbcTwinNormal) then) =
+      _$AbcTwinNormalCopyWithImpl<$Res, AbcTwinNormal>;
 }
 
 /// @nodoc
-class _$AbcCopyWithImpl<$Res, $Val extends Abc> implements $AbcCopyWith<$Res> {
-  _$AbcCopyWithImpl(this._value, this._then);
+class _$AbcTwinNormalCopyWithImpl<$Res, $Val extends AbcTwinNormal>
+    implements $AbcTwinNormalCopyWith<$Res> {
+  _$AbcTwinNormalCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -86,20 +88,20 @@ class _$AbcCopyWithImpl<$Res, $Val extends Abc> implements $AbcCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$Abc_AImplCopyWith<$Res> {
-  factory _$$Abc_AImplCopyWith(
-          _$Abc_AImpl value, $Res Function(_$Abc_AImpl) then) =
-      __$$Abc_AImplCopyWithImpl<$Res>;
+abstract class _$$AbcTwinNormal_AImplCopyWith<$Res> {
+  factory _$$AbcTwinNormal_AImplCopyWith(_$AbcTwinNormal_AImpl value,
+          $Res Function(_$AbcTwinNormal_AImpl) then) =
+      __$$AbcTwinNormal_AImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({A field0});
+  $Res call({ATwinNormal field0});
 }
 
 /// @nodoc
-class __$$Abc_AImplCopyWithImpl<$Res>
-    extends _$AbcCopyWithImpl<$Res, _$Abc_AImpl>
-    implements _$$Abc_AImplCopyWith<$Res> {
-  __$$Abc_AImplCopyWithImpl(
-      _$Abc_AImpl _value, $Res Function(_$Abc_AImpl) _then)
+class __$$AbcTwinNormal_AImplCopyWithImpl<$Res>
+    extends _$AbcTwinNormalCopyWithImpl<$Res, _$AbcTwinNormal_AImpl>
+    implements _$$AbcTwinNormal_AImplCopyWith<$Res> {
+  __$$AbcTwinNormal_AImplCopyWithImpl(
+      _$AbcTwinNormal_AImpl _value, $Res Function(_$AbcTwinNormal_AImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -107,33 +109,33 @@ class __$$Abc_AImplCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$Abc_AImpl(
+    return _then(_$AbcTwinNormal_AImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as A,
+              as ATwinNormal,
     ));
   }
 }
 
 /// @nodoc
 
-class _$Abc_AImpl implements Abc_A {
-  const _$Abc_AImpl(this.field0);
+class _$AbcTwinNormal_AImpl implements AbcTwinNormal_A {
+  const _$AbcTwinNormal_AImpl(this.field0);
 
   @override
-  final A field0;
+  final ATwinNormal field0;
 
   @override
   String toString() {
-    return 'Abc.a(field0: $field0)';
+    return 'AbcTwinNormal.a(field0: $field0)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Abc_AImpl &&
+            other is _$AbcTwinNormal_AImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -143,15 +145,16 @@ class _$Abc_AImpl implements Abc_A {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$Abc_AImplCopyWith<_$Abc_AImpl> get copyWith =>
-      __$$Abc_AImplCopyWithImpl<_$Abc_AImpl>(this, _$identity);
+  _$$AbcTwinNormal_AImplCopyWith<_$AbcTwinNormal_AImpl> get copyWith =>
+      __$$AbcTwinNormal_AImplCopyWithImpl<_$AbcTwinNormal_AImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(A field0) a,
-    required TResult Function(B field0) b,
-    required TResult Function(C field0) c,
+    required TResult Function(ATwinNormal field0) a,
+    required TResult Function(BTwinNormal field0) b,
+    required TResult Function(CTwinNormal field0) c,
     required TResult Function(int field0) justInt,
   }) {
     return a(field0);
@@ -160,9 +163,9 @@ class _$Abc_AImpl implements Abc_A {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(A field0)? a,
-    TResult? Function(B field0)? b,
-    TResult? Function(C field0)? c,
+    TResult? Function(ATwinNormal field0)? a,
+    TResult? Function(BTwinNormal field0)? b,
+    TResult? Function(CTwinNormal field0)? c,
     TResult? Function(int field0)? justInt,
   }) {
     return a?.call(field0);
@@ -171,9 +174,9 @@ class _$Abc_AImpl implements Abc_A {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(A field0)? a,
-    TResult Function(B field0)? b,
-    TResult Function(C field0)? c,
+    TResult Function(ATwinNormal field0)? a,
+    TResult Function(BTwinNormal field0)? b,
+    TResult Function(CTwinNormal field0)? c,
     TResult Function(int field0)? justInt,
     required TResult orElse(),
   }) {
@@ -186,10 +189,10 @@ class _$Abc_AImpl implements Abc_A {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Abc_A value) a,
-    required TResult Function(Abc_B value) b,
-    required TResult Function(Abc_C value) c,
-    required TResult Function(Abc_JustInt value) justInt,
+    required TResult Function(AbcTwinNormal_A value) a,
+    required TResult Function(AbcTwinNormal_B value) b,
+    required TResult Function(AbcTwinNormal_C value) c,
+    required TResult Function(AbcTwinNormal_JustInt value) justInt,
   }) {
     return a(this);
   }
@@ -197,10 +200,10 @@ class _$Abc_AImpl implements Abc_A {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Abc_A value)? a,
-    TResult? Function(Abc_B value)? b,
-    TResult? Function(Abc_C value)? c,
-    TResult? Function(Abc_JustInt value)? justInt,
+    TResult? Function(AbcTwinNormal_A value)? a,
+    TResult? Function(AbcTwinNormal_B value)? b,
+    TResult? Function(AbcTwinNormal_C value)? c,
+    TResult? Function(AbcTwinNormal_JustInt value)? justInt,
   }) {
     return a?.call(this);
   }
@@ -208,10 +211,10 @@ class _$Abc_AImpl implements Abc_A {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Abc_A value)? a,
-    TResult Function(Abc_B value)? b,
-    TResult Function(Abc_C value)? c,
-    TResult Function(Abc_JustInt value)? justInt,
+    TResult Function(AbcTwinNormal_A value)? a,
+    TResult Function(AbcTwinNormal_B value)? b,
+    TResult Function(AbcTwinNormal_C value)? c,
+    TResult Function(AbcTwinNormal_JustInt value)? justInt,
     required TResult orElse(),
   }) {
     if (a != null) {
@@ -221,31 +224,32 @@ class _$Abc_AImpl implements Abc_A {
   }
 }
 
-abstract class Abc_A implements Abc {
-  const factory Abc_A(final A field0) = _$Abc_AImpl;
+abstract class AbcTwinNormal_A implements AbcTwinNormal {
+  const factory AbcTwinNormal_A(final ATwinNormal field0) =
+      _$AbcTwinNormal_AImpl;
 
   @override
-  A get field0;
+  ATwinNormal get field0;
   @JsonKey(ignore: true)
-  _$$Abc_AImplCopyWith<_$Abc_AImpl> get copyWith =>
+  _$$AbcTwinNormal_AImplCopyWith<_$AbcTwinNormal_AImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$Abc_BImplCopyWith<$Res> {
-  factory _$$Abc_BImplCopyWith(
-          _$Abc_BImpl value, $Res Function(_$Abc_BImpl) then) =
-      __$$Abc_BImplCopyWithImpl<$Res>;
+abstract class _$$AbcTwinNormal_BImplCopyWith<$Res> {
+  factory _$$AbcTwinNormal_BImplCopyWith(_$AbcTwinNormal_BImpl value,
+          $Res Function(_$AbcTwinNormal_BImpl) then) =
+      __$$AbcTwinNormal_BImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({B field0});
+  $Res call({BTwinNormal field0});
 }
 
 /// @nodoc
-class __$$Abc_BImplCopyWithImpl<$Res>
-    extends _$AbcCopyWithImpl<$Res, _$Abc_BImpl>
-    implements _$$Abc_BImplCopyWith<$Res> {
-  __$$Abc_BImplCopyWithImpl(
-      _$Abc_BImpl _value, $Res Function(_$Abc_BImpl) _then)
+class __$$AbcTwinNormal_BImplCopyWithImpl<$Res>
+    extends _$AbcTwinNormalCopyWithImpl<$Res, _$AbcTwinNormal_BImpl>
+    implements _$$AbcTwinNormal_BImplCopyWith<$Res> {
+  __$$AbcTwinNormal_BImplCopyWithImpl(
+      _$AbcTwinNormal_BImpl _value, $Res Function(_$AbcTwinNormal_BImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -253,33 +257,33 @@ class __$$Abc_BImplCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$Abc_BImpl(
+    return _then(_$AbcTwinNormal_BImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as B,
+              as BTwinNormal,
     ));
   }
 }
 
 /// @nodoc
 
-class _$Abc_BImpl implements Abc_B {
-  const _$Abc_BImpl(this.field0);
+class _$AbcTwinNormal_BImpl implements AbcTwinNormal_B {
+  const _$AbcTwinNormal_BImpl(this.field0);
 
   @override
-  final B field0;
+  final BTwinNormal field0;
 
   @override
   String toString() {
-    return 'Abc.b(field0: $field0)';
+    return 'AbcTwinNormal.b(field0: $field0)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Abc_BImpl &&
+            other is _$AbcTwinNormal_BImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -289,15 +293,16 @@ class _$Abc_BImpl implements Abc_B {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$Abc_BImplCopyWith<_$Abc_BImpl> get copyWith =>
-      __$$Abc_BImplCopyWithImpl<_$Abc_BImpl>(this, _$identity);
+  _$$AbcTwinNormal_BImplCopyWith<_$AbcTwinNormal_BImpl> get copyWith =>
+      __$$AbcTwinNormal_BImplCopyWithImpl<_$AbcTwinNormal_BImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(A field0) a,
-    required TResult Function(B field0) b,
-    required TResult Function(C field0) c,
+    required TResult Function(ATwinNormal field0) a,
+    required TResult Function(BTwinNormal field0) b,
+    required TResult Function(CTwinNormal field0) c,
     required TResult Function(int field0) justInt,
   }) {
     return b(field0);
@@ -306,9 +311,9 @@ class _$Abc_BImpl implements Abc_B {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(A field0)? a,
-    TResult? Function(B field0)? b,
-    TResult? Function(C field0)? c,
+    TResult? Function(ATwinNormal field0)? a,
+    TResult? Function(BTwinNormal field0)? b,
+    TResult? Function(CTwinNormal field0)? c,
     TResult? Function(int field0)? justInt,
   }) {
     return b?.call(field0);
@@ -317,9 +322,9 @@ class _$Abc_BImpl implements Abc_B {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(A field0)? a,
-    TResult Function(B field0)? b,
-    TResult Function(C field0)? c,
+    TResult Function(ATwinNormal field0)? a,
+    TResult Function(BTwinNormal field0)? b,
+    TResult Function(CTwinNormal field0)? c,
     TResult Function(int field0)? justInt,
     required TResult orElse(),
   }) {
@@ -332,10 +337,10 @@ class _$Abc_BImpl implements Abc_B {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Abc_A value) a,
-    required TResult Function(Abc_B value) b,
-    required TResult Function(Abc_C value) c,
-    required TResult Function(Abc_JustInt value) justInt,
+    required TResult Function(AbcTwinNormal_A value) a,
+    required TResult Function(AbcTwinNormal_B value) b,
+    required TResult Function(AbcTwinNormal_C value) c,
+    required TResult Function(AbcTwinNormal_JustInt value) justInt,
   }) {
     return b(this);
   }
@@ -343,10 +348,10 @@ class _$Abc_BImpl implements Abc_B {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Abc_A value)? a,
-    TResult? Function(Abc_B value)? b,
-    TResult? Function(Abc_C value)? c,
-    TResult? Function(Abc_JustInt value)? justInt,
+    TResult? Function(AbcTwinNormal_A value)? a,
+    TResult? Function(AbcTwinNormal_B value)? b,
+    TResult? Function(AbcTwinNormal_C value)? c,
+    TResult? Function(AbcTwinNormal_JustInt value)? justInt,
   }) {
     return b?.call(this);
   }
@@ -354,10 +359,10 @@ class _$Abc_BImpl implements Abc_B {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Abc_A value)? a,
-    TResult Function(Abc_B value)? b,
-    TResult Function(Abc_C value)? c,
-    TResult Function(Abc_JustInt value)? justInt,
+    TResult Function(AbcTwinNormal_A value)? a,
+    TResult Function(AbcTwinNormal_B value)? b,
+    TResult Function(AbcTwinNormal_C value)? c,
+    TResult Function(AbcTwinNormal_JustInt value)? justInt,
     required TResult orElse(),
   }) {
     if (b != null) {
@@ -367,31 +372,32 @@ class _$Abc_BImpl implements Abc_B {
   }
 }
 
-abstract class Abc_B implements Abc {
-  const factory Abc_B(final B field0) = _$Abc_BImpl;
+abstract class AbcTwinNormal_B implements AbcTwinNormal {
+  const factory AbcTwinNormal_B(final BTwinNormal field0) =
+      _$AbcTwinNormal_BImpl;
 
   @override
-  B get field0;
+  BTwinNormal get field0;
   @JsonKey(ignore: true)
-  _$$Abc_BImplCopyWith<_$Abc_BImpl> get copyWith =>
+  _$$AbcTwinNormal_BImplCopyWith<_$AbcTwinNormal_BImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$Abc_CImplCopyWith<$Res> {
-  factory _$$Abc_CImplCopyWith(
-          _$Abc_CImpl value, $Res Function(_$Abc_CImpl) then) =
-      __$$Abc_CImplCopyWithImpl<$Res>;
+abstract class _$$AbcTwinNormal_CImplCopyWith<$Res> {
+  factory _$$AbcTwinNormal_CImplCopyWith(_$AbcTwinNormal_CImpl value,
+          $Res Function(_$AbcTwinNormal_CImpl) then) =
+      __$$AbcTwinNormal_CImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({C field0});
+  $Res call({CTwinNormal field0});
 }
 
 /// @nodoc
-class __$$Abc_CImplCopyWithImpl<$Res>
-    extends _$AbcCopyWithImpl<$Res, _$Abc_CImpl>
-    implements _$$Abc_CImplCopyWith<$Res> {
-  __$$Abc_CImplCopyWithImpl(
-      _$Abc_CImpl _value, $Res Function(_$Abc_CImpl) _then)
+class __$$AbcTwinNormal_CImplCopyWithImpl<$Res>
+    extends _$AbcTwinNormalCopyWithImpl<$Res, _$AbcTwinNormal_CImpl>
+    implements _$$AbcTwinNormal_CImplCopyWith<$Res> {
+  __$$AbcTwinNormal_CImplCopyWithImpl(
+      _$AbcTwinNormal_CImpl _value, $Res Function(_$AbcTwinNormal_CImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -399,33 +405,33 @@ class __$$Abc_CImplCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$Abc_CImpl(
+    return _then(_$AbcTwinNormal_CImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as C,
+              as CTwinNormal,
     ));
   }
 }
 
 /// @nodoc
 
-class _$Abc_CImpl implements Abc_C {
-  const _$Abc_CImpl(this.field0);
+class _$AbcTwinNormal_CImpl implements AbcTwinNormal_C {
+  const _$AbcTwinNormal_CImpl(this.field0);
 
   @override
-  final C field0;
+  final CTwinNormal field0;
 
   @override
   String toString() {
-    return 'Abc.c(field0: $field0)';
+    return 'AbcTwinNormal.c(field0: $field0)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Abc_CImpl &&
+            other is _$AbcTwinNormal_CImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -435,15 +441,16 @@ class _$Abc_CImpl implements Abc_C {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$Abc_CImplCopyWith<_$Abc_CImpl> get copyWith =>
-      __$$Abc_CImplCopyWithImpl<_$Abc_CImpl>(this, _$identity);
+  _$$AbcTwinNormal_CImplCopyWith<_$AbcTwinNormal_CImpl> get copyWith =>
+      __$$AbcTwinNormal_CImplCopyWithImpl<_$AbcTwinNormal_CImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(A field0) a,
-    required TResult Function(B field0) b,
-    required TResult Function(C field0) c,
+    required TResult Function(ATwinNormal field0) a,
+    required TResult Function(BTwinNormal field0) b,
+    required TResult Function(CTwinNormal field0) c,
     required TResult Function(int field0) justInt,
   }) {
     return c(field0);
@@ -452,9 +459,9 @@ class _$Abc_CImpl implements Abc_C {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(A field0)? a,
-    TResult? Function(B field0)? b,
-    TResult? Function(C field0)? c,
+    TResult? Function(ATwinNormal field0)? a,
+    TResult? Function(BTwinNormal field0)? b,
+    TResult? Function(CTwinNormal field0)? c,
     TResult? Function(int field0)? justInt,
   }) {
     return c?.call(field0);
@@ -463,9 +470,9 @@ class _$Abc_CImpl implements Abc_C {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(A field0)? a,
-    TResult Function(B field0)? b,
-    TResult Function(C field0)? c,
+    TResult Function(ATwinNormal field0)? a,
+    TResult Function(BTwinNormal field0)? b,
+    TResult Function(CTwinNormal field0)? c,
     TResult Function(int field0)? justInt,
     required TResult orElse(),
   }) {
@@ -478,10 +485,10 @@ class _$Abc_CImpl implements Abc_C {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Abc_A value) a,
-    required TResult Function(Abc_B value) b,
-    required TResult Function(Abc_C value) c,
-    required TResult Function(Abc_JustInt value) justInt,
+    required TResult Function(AbcTwinNormal_A value) a,
+    required TResult Function(AbcTwinNormal_B value) b,
+    required TResult Function(AbcTwinNormal_C value) c,
+    required TResult Function(AbcTwinNormal_JustInt value) justInt,
   }) {
     return c(this);
   }
@@ -489,10 +496,10 @@ class _$Abc_CImpl implements Abc_C {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Abc_A value)? a,
-    TResult? Function(Abc_B value)? b,
-    TResult? Function(Abc_C value)? c,
-    TResult? Function(Abc_JustInt value)? justInt,
+    TResult? Function(AbcTwinNormal_A value)? a,
+    TResult? Function(AbcTwinNormal_B value)? b,
+    TResult? Function(AbcTwinNormal_C value)? c,
+    TResult? Function(AbcTwinNormal_JustInt value)? justInt,
   }) {
     return c?.call(this);
   }
@@ -500,10 +507,10 @@ class _$Abc_CImpl implements Abc_C {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Abc_A value)? a,
-    TResult Function(Abc_B value)? b,
-    TResult Function(Abc_C value)? c,
-    TResult Function(Abc_JustInt value)? justInt,
+    TResult Function(AbcTwinNormal_A value)? a,
+    TResult Function(AbcTwinNormal_B value)? b,
+    TResult Function(AbcTwinNormal_C value)? c,
+    TResult Function(AbcTwinNormal_JustInt value)? justInt,
     required TResult orElse(),
   }) {
     if (c != null) {
@@ -513,31 +520,33 @@ class _$Abc_CImpl implements Abc_C {
   }
 }
 
-abstract class Abc_C implements Abc {
-  const factory Abc_C(final C field0) = _$Abc_CImpl;
+abstract class AbcTwinNormal_C implements AbcTwinNormal {
+  const factory AbcTwinNormal_C(final CTwinNormal field0) =
+      _$AbcTwinNormal_CImpl;
 
   @override
-  C get field0;
+  CTwinNormal get field0;
   @JsonKey(ignore: true)
-  _$$Abc_CImplCopyWith<_$Abc_CImpl> get copyWith =>
+  _$$AbcTwinNormal_CImplCopyWith<_$AbcTwinNormal_CImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$Abc_JustIntImplCopyWith<$Res> {
-  factory _$$Abc_JustIntImplCopyWith(
-          _$Abc_JustIntImpl value, $Res Function(_$Abc_JustIntImpl) then) =
-      __$$Abc_JustIntImplCopyWithImpl<$Res>;
+abstract class _$$AbcTwinNormal_JustIntImplCopyWith<$Res> {
+  factory _$$AbcTwinNormal_JustIntImplCopyWith(
+          _$AbcTwinNormal_JustIntImpl value,
+          $Res Function(_$AbcTwinNormal_JustIntImpl) then) =
+      __$$AbcTwinNormal_JustIntImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0});
 }
 
 /// @nodoc
-class __$$Abc_JustIntImplCopyWithImpl<$Res>
-    extends _$AbcCopyWithImpl<$Res, _$Abc_JustIntImpl>
-    implements _$$Abc_JustIntImplCopyWith<$Res> {
-  __$$Abc_JustIntImplCopyWithImpl(
-      _$Abc_JustIntImpl _value, $Res Function(_$Abc_JustIntImpl) _then)
+class __$$AbcTwinNormal_JustIntImplCopyWithImpl<$Res>
+    extends _$AbcTwinNormalCopyWithImpl<$Res, _$AbcTwinNormal_JustIntImpl>
+    implements _$$AbcTwinNormal_JustIntImplCopyWith<$Res> {
+  __$$AbcTwinNormal_JustIntImplCopyWithImpl(_$AbcTwinNormal_JustIntImpl _value,
+      $Res Function(_$AbcTwinNormal_JustIntImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -545,7 +554,7 @@ class __$$Abc_JustIntImplCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$Abc_JustIntImpl(
+    return _then(_$AbcTwinNormal_JustIntImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -556,22 +565,22 @@ class __$$Abc_JustIntImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Abc_JustIntImpl implements Abc_JustInt {
-  const _$Abc_JustIntImpl(this.field0);
+class _$AbcTwinNormal_JustIntImpl implements AbcTwinNormal_JustInt {
+  const _$AbcTwinNormal_JustIntImpl(this.field0);
 
   @override
   final int field0;
 
   @override
   String toString() {
-    return 'Abc.justInt(field0: $field0)';
+    return 'AbcTwinNormal.justInt(field0: $field0)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Abc_JustIntImpl &&
+            other is _$AbcTwinNormal_JustIntImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -581,15 +590,16 @@ class _$Abc_JustIntImpl implements Abc_JustInt {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$Abc_JustIntImplCopyWith<_$Abc_JustIntImpl> get copyWith =>
-      __$$Abc_JustIntImplCopyWithImpl<_$Abc_JustIntImpl>(this, _$identity);
+  _$$AbcTwinNormal_JustIntImplCopyWith<_$AbcTwinNormal_JustIntImpl>
+      get copyWith => __$$AbcTwinNormal_JustIntImplCopyWithImpl<
+          _$AbcTwinNormal_JustIntImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(A field0) a,
-    required TResult Function(B field0) b,
-    required TResult Function(C field0) c,
+    required TResult Function(ATwinNormal field0) a,
+    required TResult Function(BTwinNormal field0) b,
+    required TResult Function(CTwinNormal field0) c,
     required TResult Function(int field0) justInt,
   }) {
     return justInt(field0);
@@ -598,9 +608,9 @@ class _$Abc_JustIntImpl implements Abc_JustInt {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(A field0)? a,
-    TResult? Function(B field0)? b,
-    TResult? Function(C field0)? c,
+    TResult? Function(ATwinNormal field0)? a,
+    TResult? Function(BTwinNormal field0)? b,
+    TResult? Function(CTwinNormal field0)? c,
     TResult? Function(int field0)? justInt,
   }) {
     return justInt?.call(field0);
@@ -609,9 +619,9 @@ class _$Abc_JustIntImpl implements Abc_JustInt {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(A field0)? a,
-    TResult Function(B field0)? b,
-    TResult Function(C field0)? c,
+    TResult Function(ATwinNormal field0)? a,
+    TResult Function(BTwinNormal field0)? b,
+    TResult Function(CTwinNormal field0)? c,
     TResult Function(int field0)? justInt,
     required TResult orElse(),
   }) {
@@ -624,10 +634,10 @@ class _$Abc_JustIntImpl implements Abc_JustInt {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Abc_A value) a,
-    required TResult Function(Abc_B value) b,
-    required TResult Function(Abc_C value) c,
-    required TResult Function(Abc_JustInt value) justInt,
+    required TResult Function(AbcTwinNormal_A value) a,
+    required TResult Function(AbcTwinNormal_B value) b,
+    required TResult Function(AbcTwinNormal_C value) c,
+    required TResult Function(AbcTwinNormal_JustInt value) justInt,
   }) {
     return justInt(this);
   }
@@ -635,10 +645,10 @@ class _$Abc_JustIntImpl implements Abc_JustInt {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Abc_A value)? a,
-    TResult? Function(Abc_B value)? b,
-    TResult? Function(Abc_C value)? c,
-    TResult? Function(Abc_JustInt value)? justInt,
+    TResult? Function(AbcTwinNormal_A value)? a,
+    TResult? Function(AbcTwinNormal_B value)? b,
+    TResult? Function(AbcTwinNormal_C value)? c,
+    TResult? Function(AbcTwinNormal_JustInt value)? justInt,
   }) {
     return justInt?.call(this);
   }
@@ -646,10 +656,10 @@ class _$Abc_JustIntImpl implements Abc_JustInt {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Abc_A value)? a,
-    TResult Function(Abc_B value)? b,
-    TResult Function(Abc_C value)? c,
-    TResult Function(Abc_JustInt value)? justInt,
+    TResult Function(AbcTwinNormal_A value)? a,
+    TResult Function(AbcTwinNormal_B value)? b,
+    TResult Function(AbcTwinNormal_C value)? c,
+    TResult Function(AbcTwinNormal_JustInt value)? justInt,
     required TResult orElse(),
   }) {
     if (justInt != null) {
@@ -659,39 +669,41 @@ class _$Abc_JustIntImpl implements Abc_JustInt {
   }
 }
 
-abstract class Abc_JustInt implements Abc {
-  const factory Abc_JustInt(final int field0) = _$Abc_JustIntImpl;
+abstract class AbcTwinNormal_JustInt implements AbcTwinNormal {
+  const factory AbcTwinNormal_JustInt(final int field0) =
+      _$AbcTwinNormal_JustIntImpl;
 
   @override
   int get field0;
   @JsonKey(ignore: true)
-  _$$Abc_JustIntImplCopyWith<_$Abc_JustIntImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AbcTwinNormal_JustIntImplCopyWith<_$AbcTwinNormal_JustIntImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$MySizeFreezed {
+mixin _$MySizeFreezedTwinNormal {
   int get width => throw _privateConstructorUsedError;
   int get height => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $MySizeFreezedCopyWith<MySizeFreezed> get copyWith =>
+  $MySizeFreezedTwinNormalCopyWith<MySizeFreezedTwinNormal> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MySizeFreezedCopyWith<$Res> {
-  factory $MySizeFreezedCopyWith(
-          MySizeFreezed value, $Res Function(MySizeFreezed) then) =
-      _$MySizeFreezedCopyWithImpl<$Res, MySizeFreezed>;
+abstract class $MySizeFreezedTwinNormalCopyWith<$Res> {
+  factory $MySizeFreezedTwinNormalCopyWith(MySizeFreezedTwinNormal value,
+          $Res Function(MySizeFreezedTwinNormal) then) =
+      _$MySizeFreezedTwinNormalCopyWithImpl<$Res, MySizeFreezedTwinNormal>;
   @useResult
   $Res call({int width, int height});
 }
 
 /// @nodoc
-class _$MySizeFreezedCopyWithImpl<$Res, $Val extends MySizeFreezed>
-    implements $MySizeFreezedCopyWith<$Res> {
-  _$MySizeFreezedCopyWithImpl(this._value, this._then);
+class _$MySizeFreezedTwinNormalCopyWithImpl<$Res,
+        $Val extends MySizeFreezedTwinNormal>
+    implements $MySizeFreezedTwinNormalCopyWith<$Res> {
+  _$MySizeFreezedTwinNormalCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -718,22 +730,25 @@ class _$MySizeFreezedCopyWithImpl<$Res, $Val extends MySizeFreezed>
 }
 
 /// @nodoc
-abstract class _$$MySizeFreezedImplCopyWith<$Res>
-    implements $MySizeFreezedCopyWith<$Res> {
-  factory _$$MySizeFreezedImplCopyWith(
-          _$MySizeFreezedImpl value, $Res Function(_$MySizeFreezedImpl) then) =
-      __$$MySizeFreezedImplCopyWithImpl<$Res>;
+abstract class _$$MySizeFreezedTwinNormalImplCopyWith<$Res>
+    implements $MySizeFreezedTwinNormalCopyWith<$Res> {
+  factory _$$MySizeFreezedTwinNormalImplCopyWith(
+          _$MySizeFreezedTwinNormalImpl value,
+          $Res Function(_$MySizeFreezedTwinNormalImpl) then) =
+      __$$MySizeFreezedTwinNormalImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int width, int height});
 }
 
 /// @nodoc
-class __$$MySizeFreezedImplCopyWithImpl<$Res>
-    extends _$MySizeFreezedCopyWithImpl<$Res, _$MySizeFreezedImpl>
-    implements _$$MySizeFreezedImplCopyWith<$Res> {
-  __$$MySizeFreezedImplCopyWithImpl(
-      _$MySizeFreezedImpl _value, $Res Function(_$MySizeFreezedImpl) _then)
+class __$$MySizeFreezedTwinNormalImplCopyWithImpl<$Res>
+    extends _$MySizeFreezedTwinNormalCopyWithImpl<$Res,
+        _$MySizeFreezedTwinNormalImpl>
+    implements _$$MySizeFreezedTwinNormalImplCopyWith<$Res> {
+  __$$MySizeFreezedTwinNormalImplCopyWithImpl(
+      _$MySizeFreezedTwinNormalImpl _value,
+      $Res Function(_$MySizeFreezedTwinNormalImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -742,7 +757,7 @@ class __$$MySizeFreezedImplCopyWithImpl<$Res>
     Object? width = null,
     Object? height = null,
   }) {
-    return _then(_$MySizeFreezedImpl(
+    return _then(_$MySizeFreezedTwinNormalImpl(
       width: null == width
           ? _value.width
           : width // ignore: cast_nullable_to_non_nullable
@@ -757,8 +772,9 @@ class __$$MySizeFreezedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$MySizeFreezedImpl implements _MySizeFreezed {
-  const _$MySizeFreezedImpl({required this.width, required this.height});
+class _$MySizeFreezedTwinNormalImpl implements _MySizeFreezedTwinNormal {
+  const _$MySizeFreezedTwinNormalImpl(
+      {required this.width, required this.height});
 
   @override
   final int width;
@@ -767,14 +783,14 @@ class _$MySizeFreezedImpl implements _MySizeFreezed {
 
   @override
   String toString() {
-    return 'MySizeFreezed(width: $width, height: $height)';
+    return 'MySizeFreezedTwinNormal(width: $width, height: $height)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MySizeFreezedImpl &&
+            other is _$MySizeFreezedTwinNormalImpl &&
             (identical(other.width, width) || other.width == width) &&
             (identical(other.height, height) || other.height == height));
   }
@@ -785,14 +801,15 @@ class _$MySizeFreezedImpl implements _MySizeFreezed {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$MySizeFreezedImplCopyWith<_$MySizeFreezedImpl> get copyWith =>
-      __$$MySizeFreezedImplCopyWithImpl<_$MySizeFreezedImpl>(this, _$identity);
+  _$$MySizeFreezedTwinNormalImplCopyWith<_$MySizeFreezedTwinNormalImpl>
+      get copyWith => __$$MySizeFreezedTwinNormalImplCopyWithImpl<
+          _$MySizeFreezedTwinNormalImpl>(this, _$identity);
 }
 
-abstract class _MySizeFreezed implements MySizeFreezed {
-  const factory _MySizeFreezed(
+abstract class _MySizeFreezedTwinNormal implements MySizeFreezedTwinNormal {
+  const factory _MySizeFreezedTwinNormal(
       {required final int width,
-      required final int height}) = _$MySizeFreezedImpl;
+      required final int height}) = _$MySizeFreezedTwinNormalImpl;
 
   @override
   int get width;
@@ -800,6 +817,6 @@ abstract class _MySizeFreezed implements MySizeFreezed {
   int get height;
   @override
   @JsonKey(ignore: true)
-  _$$MySizeFreezedImplCopyWith<_$MySizeFreezedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$MySizeFreezedTwinNormalImplCopyWith<_$MySizeFreezedTwinNormalImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

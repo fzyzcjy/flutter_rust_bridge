@@ -4,56 +4,62 @@ import '../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<SumWith> getSumStruct({dynamic hint}) =>
-    RustLib.instance.api.getSumStruct(hint: hint);
+Future<SumWithTwinNormal> getSumStructTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.getSumStructTwinNormal(hint: hint);
 
-Future<SumWithArray3> getSumArray(
+Future<SumWithTwinNormalArray3> getSumArrayTwinNormal(
         {required int a, required int b, required int c, dynamic hint}) =>
-    RustLib.instance.api.getSumArray(a: a, b: b, c: c, hint: hint);
+    RustLib.instance.api.getSumArrayTwinNormal(a: a, b: b, c: c, hint: hint);
 
-class ConcatenateWith {
+class ConcatenateWithTwinNormal {
   final String a;
 
-  const ConcatenateWith({
+  const ConcatenateWithTwinNormal({
     required this.a,
   });
 
-  Future<String> concatenate({required String b, dynamic hint}) =>
-      RustLib.instance.api.concatenateWithConcatenate(
+  static Future<String> concatenateStaticTwinNormal(
+          {required String a, required String b, dynamic hint}) =>
+      RustLib.instance.api.concatenateWithTwinNormalConcatenateStaticTwinNormal(
+          a: a, b: b, hint: hint);
+
+  Future<String> concatenateTwinNormal({required String b, dynamic hint}) =>
+      RustLib.instance.api.concatenateWithTwinNormalConcatenateTwinNormal(
         that: this,
         b: b,
       );
 
-  static Future<String> concatenateStatic(
-          {required String a, required String b, dynamic hint}) =>
+  static Stream<int> handleSomeStaticStreamSinkSingleArgTwinNormal(
+          {dynamic hint}) =>
       RustLib.instance.api
-          .concatenateWithConcatenateStatic(a: a, b: b, hint: hint);
+          .concatenateWithTwinNormalHandleSomeStaticStreamSinkSingleArgTwinNormal(
+              hint: hint);
 
-  static Stream<Log2> handleSomeStaticStreamSink(
+  static Stream<Log2TwinNormal> handleSomeStaticStreamSinkTwinNormal(
           {required int key, required int max, dynamic hint}) =>
-      RustLib.instance.api.concatenateWithHandleSomeStaticStreamSink(
-          key: key, max: max, hint: hint);
-
-  static Stream<int> handleSomeStaticStreamSinkSingleArg({dynamic hint}) =>
       RustLib.instance.api
-          .concatenateWithHandleSomeStaticStreamSinkSingleArg(hint: hint);
+          .concatenateWithTwinNormalHandleSomeStaticStreamSinkTwinNormal(
+              key: key, max: max, hint: hint);
 
-  Stream<Log2> handleSomeStreamSink(
+  Stream<int> handleSomeStreamSinkAt1TwinNormal({dynamic hint}) =>
+      RustLib.instance.api
+          .concatenateWithTwinNormalHandleSomeStreamSinkAt1TwinNormal(
+        that: this,
+      );
+
+  Stream<Log2TwinNormal> handleSomeStreamSinkTwinNormal(
           {required int key, required int max, dynamic hint}) =>
-      RustLib.instance.api.concatenateWithHandleSomeStreamSink(
+      RustLib.instance.api
+          .concatenateWithTwinNormalHandleSomeStreamSinkTwinNormal(
         that: this,
         key: key,
         max: max,
       );
 
-  Stream<int> handleSomeStreamSinkAt1({dynamic hint}) =>
-      RustLib.instance.api.concatenateWithHandleSomeStreamSinkAt1(
-        that: this,
-      );
-
-  static Future<ConcatenateWith> newConcatenateWith(
+  static Future<ConcatenateWithTwinNormal> newTwinNormal(
           {required String a, dynamic hint}) =>
-      RustLib.instance.api.concatenateWithNew(a: a, hint: hint);
+      RustLib.instance.api
+          .concatenateWithTwinNormalNewTwinNormal(a: a, hint: hint);
 
   @override
   int get hashCode => a.hashCode;
@@ -61,16 +67,16 @@ class ConcatenateWith {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ConcatenateWith &&
+      other is ConcatenateWithTwinNormal &&
           runtimeType == other.runtimeType &&
           a == other.a;
 }
 
-class Log2 {
+class Log2TwinNormal {
   final int key;
   final String value;
 
-  const Log2({
+  const Log2TwinNormal({
     required this.key,
     required this.value,
   });
@@ -81,21 +87,21 @@ class Log2 {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Log2 &&
+      other is Log2TwinNormal &&
           runtimeType == other.runtimeType &&
           key == other.key &&
           value == other.value;
 }
 
-class SumWith {
+class SumWithTwinNormal {
   final int x;
 
-  const SumWith({
+  const SumWithTwinNormal({
     required this.x,
   });
 
-  Future<int> sum({required int y, required int z, dynamic hint}) =>
-      RustLib.instance.api.sumWithSum(
+  Future<int> sumTwinNormal({required int y, required int z, dynamic hint}) =>
+      RustLib.instance.api.sumWithTwinNormalSumTwinNormal(
         that: this,
         y: y,
         z: z,
@@ -107,15 +113,18 @@ class SumWith {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is SumWith && runtimeType == other.runtimeType && x == other.x;
+      other is SumWithTwinNormal &&
+          runtimeType == other.runtimeType &&
+          x == other.x;
 }
 
-class SumWithArray3 extends NonGrowableListView<SumWith> {
+class SumWithTwinNormalArray3 extends NonGrowableListView<SumWithTwinNormal> {
   static const arraySize = 3;
-  SumWithArray3(List<SumWith> inner)
+  SumWithTwinNormalArray3(List<SumWithTwinNormal> inner)
       : assert(inner.length == arraySize),
         super(inner);
-  SumWithArray3.unchecked(List<SumWith> inner) : super(inner);
-  SumWithArray3.init(SumWith fill)
-      : super(List<SumWith>.filled(arraySize, fill));
+  SumWithTwinNormalArray3.unchecked(List<SumWithTwinNormal> inner)
+      : super(inner);
+  SumWithTwinNormalArray3.init(SumWithTwinNormal fill)
+      : super(List<SumWithTwinNormal>.filled(arraySize, fill));
 }
