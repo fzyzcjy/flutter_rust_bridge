@@ -9,7 +9,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('Uuid', () async {
     final uuid = Uuid();
     final id = uuid.v4obj();
-    final output = await handleUuid(id: id);
+    final output = await handleUuidTwinNormal(id: id);
     expect(id, output);
   });
 
@@ -17,7 +17,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final uuid = Uuid();
     final ids =
         List<UuidValue>.from([uuid.v4obj(), uuid.v1obj(), uuid.v4obj()]);
-    final outputs = await handleUuids(ids: ids);
+    final outputs = await handleUuidsTwinNormal(ids: ids);
     expect(ids, outputs);
   });
 
@@ -26,8 +26,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final id = uuid.v4obj();
     final ids =
         List<UuidValue>.from([uuid.v4obj(), uuid.v1obj(), uuid.v4obj()]);
-    final wrapper = FeatureUuid(one: id, many: ids);
-    final outputs = await handleNestedUuids(ids: wrapper);
+    final wrapper = FeatureUuidTwinNormal(one: id, many: ids);
+    final outputs = await handleNestedUuidsTwinNormal(ids: wrapper);
     expect(wrapper.one, outputs.one);
     expect(wrapper.many, outputs.many);
   });

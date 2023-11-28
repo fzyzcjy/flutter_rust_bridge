@@ -8,7 +8,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('dart call primitiveTypes', () async {
     expect(
-        await primitiveTypes(
+        await primitiveTypesTwinNormal(
             myI32: 123,
             myI64: 10000000000000,
             myF64: 12345678901234567890.123,
@@ -22,7 +22,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   // });
 
   test('dart call primitiveU32', () async {
-    expect(await primitiveU32(myU32: 0xff112233), 0xfe112233);
+    expect(await primitiveU32TwinNormal(myU32: 0xff112233), 0xfe112233);
   });
 
   // TODO rm?

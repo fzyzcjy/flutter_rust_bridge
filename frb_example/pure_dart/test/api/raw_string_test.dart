@@ -6,8 +6,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('test dart raw string in struct', () async {
-    final output = await testRawStringItemStruct();
-    expect(output, isA<RawStringItemStruct>());
+    final output = await testRawStringItemStructTwinNormal();
+    expect(output, isA<RawStringItemStructTwinNormal>());
     expect(output.type, "test");
   });
 
@@ -17,8 +17,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   // });
 
   test('test dart test more than just one raw string struct', () async {
-    final output = await testMoreThanJustOneRawStringStruct();
-    expect(output, isA<MoreThanJustOneRawStringStruct>());
+    final output = await testMoreThanJustOneRawStringStructTwinNormal();
+    expect(output, isA<MoreThanJustOneRawStringStructTwinNormal>());
     expect(output.regular, "regular");
     expect(output.type, "type");
     expect(output.async, true);

@@ -10,7 +10,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('dart call handleVecOfPrimitive', () async {
     final n = 10000;
-    final resp = await handleVecOfPrimitive(n: n);
+    final resp = await handleVecOfPrimitiveTwinNormal(n: n);
     expect(resp.uint8List, Uint8List.fromList(List.filled(n, 42)));
     expect(resp.int8List, Int8List.fromList(List.filled(n, 42)));
     expect(resp.uint16List, Uint16List.fromList(List.filled(n, 42)));
@@ -43,7 +43,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('dart call handleZeroCopyVecOfPrimitive', () async {
     final n = 10000;
-    final resp = await handleZeroCopyVecOfPrimitive(n: n);
+    final resp = await handleZeroCopyVecOfPrimitiveTwinNormal(n: n);
     expect(resp.uint8List, Uint8List.fromList(List.filled(n, 42)));
     expect(resp.int8List, Int8List.fromList(List.filled(n, 42)));
     expect(resp.uint16List, Uint16List.fromList(List.filled(n, 42)));

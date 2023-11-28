@@ -38,8 +38,8 @@ Future<void> main() async {
       );
       addTearDown(() => debugOnExternalTypedDataFinalizer = null);
 
-      ZeroCopyVecOfPrimitivePack? primitivePack =
-          handleZeroCopyVecOfPrimitiveSync(n: n);
+      ZeroCopyVecOfPrimitivePackTwinNormal? primitivePack =
+          handleZeroCopyVecOfPrimitiveSyncTwinNormal(n: n);
       await vmService.gc();
       await Future<void>.delayed(const Duration(milliseconds: 10));
       expect(primitivePack, isNotNull);
@@ -56,14 +56,14 @@ Future<void> main() async {
       test('drop', () async {
         Uint8List? strongRef = createLargeList(mb: 300);
         final weakRef = WeakReference(strongRef);
-        await setStaticDartOpaque(opaque: strongRef);
+        await setStaticDartOpaqueTwinNormal(opaque: strongRef);
         strongRef = null;
 
         await vmService.gc();
         await Future<void>.delayed(const Duration(milliseconds: 10));
         expect(weakRef.target, isNotNull);
 
-        await dropStaticDartOpaque();
+        await dropStaticDartOpaqueTwinNormal();
         await vmService.gc();
         await Future<void>.delayed(const Duration(milliseconds: 10));
         expect(weakRef.target, isNull);
@@ -72,7 +72,7 @@ Future<void> main() async {
       test('unwrap', () async {
         Uint8List? strongRef = createLargeList(mb: 300);
         final weakRef = WeakReference(strongRef);
-        expect(unwrapDartOpaque(opaque: strongRef), 'Test');
+        expect(unwrapDartOpaqueTwinNormal(opaque: strongRef), 'Test');
         strongRef = null;
 
         await vmService.gc();

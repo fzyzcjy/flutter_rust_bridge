@@ -6,18 +6,18 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('dart call handleOptionalReturn', () async {
-    expect((await handleOptionalReturn(left: 1, right: 1))!, 1);
-    expect(await handleOptionalReturn(left: 2, right: 0), null);
+    expect((await handleOptionalReturnTwinNormal(left: 1, right: 1))!, 1);
+    expect(await handleOptionalReturnTwinNormal(left: 2, right: 0), null);
   });
 
   test('dart call handleOptionalStruct', () async {
     {
-      expect(await handleOptionalStruct(), null);
+      expect(await handleOptionalStructTwinNormal(), null);
     }
 
     {
       final message = 'Hello there.';
-      final ret = await handleOptionalStruct(document: message);
+      final ret = await handleOptionalStructTwinNormal(document: message);
       if (ret == null) {
         fail('handleOptionalStruct returned null for non-null document');
       }
@@ -34,14 +34,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('dart call handleOptionalIncrement', () async {
-    expect(await handleOptionalIncrement(), null);
+    expect(await handleOptionalIncrementTwinNormal(), null);
     {
-      var ret = await handleOptionalIncrement(
-          opt: ExoticOptionals(attributesNullable: []));
+      var ret = await handleOptionalIncrementTwinNormal(
+          opt: ExoticOptionalsTwinNormal(attributesNullable: []));
       if (ret == null) fail('increment returned null for non-null params');
       final loopFor = 20;
       for (var i = 1; i < loopFor; i++) {
-        ret = await handleOptionalIncrement(opt: ret);
+        ret = await handleOptionalIncrementTwinNormal(opt: ret);
       }
       if (ret == null) fail('ret nulled after loop');
       expect(ret.int32, loopFor, reason: 'int32');
@@ -59,35 +59,35 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('dart call handleIncrementBoxedOptional', () async {
     {
-      expect(await handleIncrementBoxedOptional(), 42);
+      expect(await handleIncrementBoxedOptionalTwinNormal(), 42);
     }
 
     {
       var ret = 0.0;
       final loopFor = 100;
       for (var i = 0; i < loopFor; i++) {
-        ret = await handleIncrementBoxedOptional(opt: ret);
+        ret = await handleIncrementBoxedOptionalTwinNormal(opt: ret);
       }
       expect(ret, loopFor);
     }
   });
 
   test('dart call handleOptionBoxArguments', () async {
-    print(await handleOptionBoxArguments());
+    print(await handleOptionBoxArgumentsTwinNormal());
 
     {
-      final optional10 = await handleOptionBoxArguments(
+      final optional10 = await handleOptionBoxArgumentsTwinNormal(
         boolbox: true,
-        structbox: await handleOptionalIncrement(
-            opt: ExoticOptionals(attributesNullable: [])),
+        structbox: await handleOptionalIncrementTwinNormal(
+            opt: ExoticOptionalsTwinNormal(attributesNullable: [])),
       );
       print(optional10);
     }
   });
 
   test('option', () async {
-    var data = syncOption();
-    var data2 = syncOptionNull();
+    var data = syncOptionTwinNormal();
+    var data2 = syncOptionNullTwinNormal();
     expect(data, isNotNull);
     expect(data2, isNull);
   });

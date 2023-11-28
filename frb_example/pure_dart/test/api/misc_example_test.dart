@@ -55,19 +55,20 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('test abc', () async {
-    final output1 =
-        await testAbcEnumTwinNormal(abc: AbcTwinNormal.a(A(a: "test")));
-    expect((output1 as Abc_A).field0.a, "test");
+    final output1 = await testAbcEnumTwinNormal(
+        abc: AbcTwinNormal.a(ATwinNormal(a: "test")));
+    expect((output1 as AbcTwinNormal_A).field0.a, "test");
 
-    final output2 = await testAbcEnumTwinNormal(abc: AbcTwinNormal.b(B(b: 1)));
-    expect((output2 as Abc_B).field0.b, 1);
+    final output2 =
+        await testAbcEnumTwinNormal(abc: AbcTwinNormal.b(BTwinNormal(b: 1)));
+    expect((output2 as AbcTwinNormal_B).field0.b, 1);
 
-    final output3 =
-        await testAbcEnumTwinNormal(abc: AbcTwinNormal.c(C(c: false)));
-    expect((output3 as Abc_C).field0.c, false);
+    final output3 = await testAbcEnumTwinNormal(
+        abc: AbcTwinNormal.c(CTwinNormal(c: false)));
+    expect((output3 as AbcTwinNormal_C).field0.c, false);
 
     final output4 = await testAbcEnumTwinNormal(abc: AbcTwinNormal.justInt(1));
-    expect((output4 as Abc_JustInt).field0, 1);
+    expect((output4 as AbcTwinNormal_JustInt).field0, 1);
   });
 
   test("dart call struct_with_enum_member", () async {

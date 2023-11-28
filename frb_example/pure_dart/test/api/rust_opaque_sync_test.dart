@@ -8,27 +8,27 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('create', () {
-    var data = syncCreateOpaque();
+    var data = syncCreateOpaqueTwinNormal();
     data.dispose();
   });
 
   test('option', () async {
-    var x = syncOptionRustOpaque();
+    var x = syncOptionRustOpaqueTwinNormal();
     expect(x, isNotNull);
     x!.dispose();
   });
 
   test('nonclone', () async {
-    var data = syncCreateNonClone();
-    var data2 = await runNonClone(clone: data);
+    var data = syncCreateNonCloneTwinNormal();
+    var data2 = await runNonCloneTwinNormal(clone: data);
     expect(data2, "content");
     data.dispose();
   });
 
   test('double call', () {
-    var data = syncCreateSyncOpaque();
+    var data = syncCreateSyncOpaqueTwinNormal();
     expect(
-        syncRunOpaque(opaque: data),
+        syncRunOpaqueTwinNormal(opaque: data),
         "content - Some(PrivateData "
         "{"
         " content: \"content nested\", "
@@ -37,7 +37,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
     expect(
-        syncRunOpaque(opaque: data),
+        syncRunOpaqueTwinNormal(opaque: data),
         "content - Some(PrivateData "
         "{"
         " content: \"content nested\", "
@@ -49,9 +49,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('call after drop', () {
-    var data = syncCreateSyncOpaque();
+    var data = syncCreateSyncOpaqueTwinNormal();
     expect(
-        syncRunOpaque(opaque: data),
+        syncRunOpaqueTwinNormal(opaque: data),
         "content - Some(PrivateData "
         "{"
         " content: \"content nested\", "
@@ -60,10 +60,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
     data.dispose();
-    expect(() => syncRunOpaque(opaque: data), throwsA(isA<PanicException>()));
+    expect(() => syncRunOpaqueTwinNormal(opaque: data),
+        throwsA(isA<PanicException>()));
   });
 
   test('check generator', () {
-    expect(frbSyncGeneratorTest().runtimeType == FrbOpaqueSyncReturn, isTrue);
+    expect(frbSyncGeneratorTestTwinNormal().runtimeType == FrbOpaqueSyncReturn,
+        isTrue);
   });
 }

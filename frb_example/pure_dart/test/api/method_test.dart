@@ -18,10 +18,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(staticConcatenated, equals("hello world"));
 
     final concatenatedConstructor =
-        await ConcatenateWithTwinNormal.newConcatenateWithTwinNormal(
-            a: "hello ");
+        await ConcatenateWithTwinNormal.newTwinNormal(a: "hello ");
     final String concatenated2 =
-        await concatenatedConstructor.concatenate(b: "world");
+        await concatenatedConstructor.concatenateTwinNormal(b: "world");
     expect(concatenated2, equals("hello world"));
   });
 
