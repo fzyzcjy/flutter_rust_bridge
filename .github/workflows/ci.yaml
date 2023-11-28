@@ -156,27 +156,19 @@ jobs:
 
   test_dart_native:
     name: 'Test :: Dart :: Native'
-    runs-on: ${{ matrix.image_and_package.image }}
+    runs-on: ${{ matrix.image }}
     strategy:
       fail-fast: false
       matrix:
-        image_and_package:
-          - {image: windows-2019, package: frb_dart}
-          - {image: macos-11, package: frb_dart}
-          - {image: ubuntu-latest, package: frb_dart}
-
-          - {image: windows-2019, package: frb_example/dart_minimal}
-          - {image: macos-11, package: frb_example/dart_minimal}
-          - {image: ubuntu-latest, package: frb_example/dart_minimal}
-
-          - {image: windows-2019, package: frb_example/pure_dart}
-          - {image: macos-11, package: frb_example/pure_dart}
-          - {image: ubuntu-latest, package: frb_example/pure_dart}
+        image:
+          - macos-11
+          - windows-2019
+          - ubuntu-20.04
+        package:
+          - frb_dart
+          - frb_example/dart_minimal
+          - frb_example/pure_dart
           # TODO with_flutter
-
-          - {image: ubuntu-latest, package: frb_utils}
-
-          - {image: ubuntu-latest, package: frb_internal}
 
     steps:
       # setup
@@ -190,7 +182,7 @@ jobs:
           sdk: stable
           architecture: x64
       # execute
-      - run: ./frb_internal test-dart-native --package ${{ matrix.image_and_package.package }}
+      - run: ./frb_internal test-dart-native --package ${{ matrix.package }}
 
   test_dart_web:
     name: 'Test :: Dart :: Web'
