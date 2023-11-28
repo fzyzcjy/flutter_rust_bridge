@@ -74,7 +74,8 @@ Future<void> lintDartFormat(LintConfig config) async {
 Future<void> lintDartAnalyze(LintConfig config) async {
   for (final package in kDartPackages) {
     await runDartPubGetIfNotRunYet(package);
-    await exec('dart analyze --fatal-infos', relativePwd: package);
+    await exec('dart ${config.fix ? "fix --apply" : "analyze --fatal-infos"}',
+        relativePwd: package);
   }
 }
 
