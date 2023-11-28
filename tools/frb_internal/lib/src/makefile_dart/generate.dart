@@ -144,13 +144,6 @@ Future<void> generateRunFrbCodegenCommandGenerate(
 Future<void> generateRunFrbCodegenCommandIntegrate(
     GeneratePackageConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
-    final cmd = switch (config.package) {
-      'frb_example/flutter_via_create' => 'create',
-      'frb_example/flutter_via_integrate' => 'integrate',
-      _ =>
-        throw Exception('Do not know how to handle package ${config.package}'),
-    };
-
     final dirPackage = '${exec.pwd}/${config.package}';
     final dirTemp = randomTempDir();
     print('Pick temporary directory: $dirTemp');
@@ -159,10 +152,17 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
     // We move instead of delete folder for extra safety of this script
     await Directory(dirPackage).rename('$dirTemp/original');
 
-    await _executeFrbCodegen(
-      relativePwd: config.package,
-      cmd: cmd,
-    );
+    switch (config.package) {
+      case 'frb_example/flutter_via_create':
+        await _executeFrbCodegen(relativePwd: config.package, cmd: 'create');
+
+      case 'frb_example/flutter_via_integrate':
+        TODO;
+        await _executeFrbCodegen(relativePwd: config.package, cmd: 'integrate');
+
+      default:
+        throw Exception('Do not know how to handle package ${config.package}');
+    }
 
     // move back compilation cache to speed up future usage
     await _renameDirIfExists('$dirTemp/original/build', '$dirPackage/build');
