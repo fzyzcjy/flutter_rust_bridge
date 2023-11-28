@@ -348,10 +348,13 @@ mod tests {
         json_golden_test(
             &actual_json,
             &PathBuf::from("expect_output.json"),
-            &vec![(
-                path_to_string(&test_fixture_dir)?.replace('\\', "\\\\"),
-                "{the-working-directory}".to_owned(),
-            )],
+            &vec![
+                ("\\\\".into(), "/".into()),
+                (
+                    path_to_string(&test_fixture_dir)?,
+                    "{the-working-directory}".to_owned(),
+                ),
+            ],
         )?;
 
         Ok(())
