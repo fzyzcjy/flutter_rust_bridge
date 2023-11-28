@@ -4,6 +4,9 @@ members = [
   "frb_rust",
   "frb_macros",
 ]
+exclude = [
+  "frb_example/flutter_via_integrate/rust",
+]
 
 [workspace.package]
 version = "1.82.4"
