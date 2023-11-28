@@ -47,6 +47,9 @@ Future<void> lintRustFormat(LintConfig config) async {
 
 Future<void> lintRustClippy(LintConfig config) async {
   for (final package in kRustPackages) {
+    if (config.fix) {
+      await exec('cargo fix --allow-dirty', relativePwd: package);
+    }
     await exec(
         'cargo clippy ${config.fix ? "--fix --allow-dirty" : ""} -- -D warnings',
         relativePwd: package);
