@@ -77,7 +77,7 @@ Future<void> generateInternalDartSource(GenerateConfig config) async {
     final path = '${Directory.systemTemp.path}/${Random().nextInt(1000000000)}';
     await exec('''
     #!/usr/bin/env bash
-    set -euxo pipefail
+    set -eux
     mkdir -p $path && cd $path
 
     git clone --depth 1 --filter=blob:none --sparse --branch stable https://github.com/dart-lang/sdk.git
