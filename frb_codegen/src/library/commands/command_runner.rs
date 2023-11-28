@@ -1,3 +1,4 @@
+use crate::utils::path_utils::{normalize_windows_unc_path, path_to_string};
 use anyhow::Context;
 use itertools::Itertools;
 use log::debug;
@@ -90,7 +91,7 @@ pub(crate) fn execute_command<'a>(
     cmd.args(args);
 
     if let Some(current_dir) = current_dir {
-        cmd.current_dir(current_dir);
+        cmd.current_dir(normalize_windows_unc_path(&path_to_string(current_dir)?));
     }
 
     debug!(
