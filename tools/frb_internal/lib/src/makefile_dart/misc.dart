@@ -3,14 +3,19 @@
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
+import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
+
+part 'misc.g.dart';
 
 List<Command<void>> createCommands() {
   return [
     SimpleCommand('misc-normalize-pubspec', miscNormalizePubspec),
-    SimpleCommand('precommit-fast', precommitFast),
+    SimpleConfigCommand('precommit', precommit, _$populatePrecommitConfigParser,
+        _$parsePrecommitConfigResult),
     SimpleCommand('pub-get-all', pubGetAll),
   ];
 }
@@ -24,10 +29,32 @@ Future<void> miscNormalizePubspec() async {
   }
 }
 
-Future<void> precommitFast() async {
+enum PrecommitMode { fast, slow }
+
+@CliOptions()
+class PrecommitConfig {
+  final PrecommitMode mode;
+
+  const PrecommitConfig({
+    required this.mode,
+  });
+}
+
+Future<void> precommit(PrecommitConfig config) async {
   await lintDartFormat(const LintConfig(fix: true));
   await lintRustFormat(const LintConfig(fix: true));
   await miscNormalizePubspec();
+
+  if (config.mode == PrecommitMode.slow) {
+    await lintDartAnalyze(const LintConfig(fix: true));
+    await lintRustClippy(const LintConfig(fix: true));
+
+    await generateInternal(const GenerateConfig(setExitIfChanged: false));
+    for (final package in kDartExamplePackages) {
+      await generateRunFrbCodegen(
+          GeneratePackageConfig(setExitIfChanged: false, package: package));
+    }
+  }
 }
 
 Future<void> pubGetAll() async {
