@@ -18,11 +18,14 @@ Future<void> _generateDartWebTestEntrypoint({required Uri dartRoot}) async {
 $_kPrelude
 
 import 'package:flutter_rust_bridge_utils/flutter_rust_bridge_utils_web.dart';
+import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'dart_valgrind_test_entrypoint.dart' as dart_valgrind_test_entrypoint;
 
 Future<void> main() async {
   await dartWebTestEntrypoint(() async {
-    await dart_valgrind_test_entrypoint.main();
+    await RustLib.init();
+
+    await dart_valgrind_test_entrypoint.callFileEntrypoints();
   });
 }
   ''';
@@ -64,7 +67,7 @@ Future<void> main() async {
   await RustLib.init();
 
   final success = await directRunTests(
-    () async => _callFileEntrypoints(),
+    () async => callFileEntrypoints(),
     reporterFactory: (engine) => ExpandedReporter.watch(
       engine,
       PrintSink(),
@@ -77,7 +80,7 @@ Future<void> main() async {
   exit(success ? 0 : 1);
 }
 
-Future<void> _callFileEntrypoints() async {
+Future<void> callFileEntrypoints() async {
   ${calls.join("")}
 }
   ''';

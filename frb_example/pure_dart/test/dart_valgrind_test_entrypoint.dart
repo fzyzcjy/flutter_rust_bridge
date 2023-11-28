@@ -97,7 +97,7 @@ Future<void> main() async {
   await RustLib.init();
 
   final success = await directRunTests(
-    () async => _callFileEntrypoints(),
+    () async => callFileEntrypoints(),
     reporterFactory: (engine) => ExpandedReporter.watch(
       engine,
       PrintSink(),
@@ -110,7 +110,7 @@ Future<void> main() async {
   exit(success ? 0 : 1);
 }
 
-Future<void> _callFileEntrypoints() async {
+Future<void> callFileEntrypoints() async {
   await array_test.main(skipRustLibInit: true);
   await attribute_test.main(skipRustLibInit: true);
   await chrono_type_test.main(skipRustLibInit: true);
