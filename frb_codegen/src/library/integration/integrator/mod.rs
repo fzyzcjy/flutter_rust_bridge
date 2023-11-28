@@ -104,15 +104,18 @@ fn handle_android(dart_root: &Path) -> Result<()> {
     let path = dart_root.join("android").join("build.gradle");
     let text = format!(
         r#"
-// flutter_rust_bridge + cargokit BEGIN
+// {BEGIN_COMMENT}
 apply from: "../cargokit/gradle/plugin.gradle"
 cargokit {{
     manifestDir = "../rust"
     libname = "rust_lib"
 }}
-// flutter_rust_bridge + cargokit END
+// {END_COMMENT}
 "#
     );
     fs::write(&path, fs::read_to_string(&path)? + &text)?;
     Ok(())
 }
+
+const BEGIN_COMMENT: &str = "BEGIN_FLUTTER_RUST_BRIDGE_WITH_CARGOKIT";
+const END_COMMENT: &str = "END_FLUTTER_RUST_BRIDGE_WITH_CARGOKIT";
