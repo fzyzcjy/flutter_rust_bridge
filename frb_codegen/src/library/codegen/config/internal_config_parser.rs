@@ -16,13 +16,15 @@ use crate::codegen::preparer::internal_config::PreparerInternalConfig;
 use crate::codegen::{Config, ConfigDumpContent};
 use crate::library::commands::cargo_metadata::execute_cargo_metadata;
 use crate::utils::path_utils::{
-    find_dart_package_dir, find_rust_crate_dir, glob_path, path_to_string,
+    canonicalize_with_error_message, find_dart_package_dir, find_rust_crate_dir, glob_path,
+    path_to_string,
 };
 use crate::utils::rust_project_utils::compute_mod_from_rust_crate_path;
 use anyhow::{ensure, Context, Result};
 use itertools::Itertools;
 use log::debug;
 use pathdiff::diff_paths;
+use std::fs::canonicalize;
 use std::path::{Path, PathBuf};
 use strum::IntoEnumIterator;
 
@@ -38,7 +40,7 @@ impl InternalConfig {
 
         let rust_input_path_pack = compute_rust_input_path_pack(&config.rust_input, &base_dir)?;
 
-        let dart_output_dir = base_dir.join(&config.dart_output).canonicalize()?;
+        let dart_output_dir = canonicalize_with_error_message(base_dir.join(&config.dart_output))?;
         let dart_output_path_pack = compute_dart_output_path_pack(&dart_output_dir);
 
         let dart_output_class_name_pack = compute_dart_output_class_name_pack(config);
@@ -52,20 +54,21 @@ impl InternalConfig {
             .map(|p| base_dir.join(p))
             .collect();
 
-        let rust_crate_dir = (config.rust_crate_dir.clone().map(PathBuf::from))
-            .unwrap_or(find_rust_crate_dir(
+        let rust_crate_dir = canonicalize_with_error_message(
+            (config.rust_crate_dir.clone().map(PathBuf::from)).unwrap_or(find_rust_crate_dir(
                 rust_input_path_pack.one_rust_input_path(),
-            )?)
-            .canonicalize()?;
+            )?),
+        )?;
         let rust_output_path = compute_rust_output_path(config, &base_dir, &rust_crate_dir);
         let _rust_wire_mod = compute_mod_from_rust_crate_path(
             &rust_output_path[TargetOrCommon::Common],
             &rust_crate_dir,
         )?;
 
-        let dart_root = (config.dart_root.clone().map(PathBuf::from))
-            .unwrap_or(find_dart_package_dir(&dart_output_dir)?)
-            .canonicalize()?;
+        let dart_root = canonicalize_with_error_message(
+            (config.dart_root.clone().map(PathBuf::from))
+                .unwrap_or(find_dart_package_dir(&dart_output_dir)?),
+        )?;
 
         let default_external_library_loader =
             compute_default_external_library_loader(&rust_crate_dir, &dart_root, config);

@@ -50,6 +50,11 @@ pub(crate) fn normalize_windows_unc_path(path: &str) -> &str {
     }
 }
 
+pub(crate) fn canonicalize_with_error_message(path: &Path) -> Result<PathBuf> {
+    path.canonicalize()
+        .with_context(|| format!("path={path:?}"))
+}
+
 #[cfg(test)]
 mod tests {
     use crate::utils::path_utils::glob_path;
