@@ -76,7 +76,7 @@ Future<void> generateInternalDartSource(GenerateConfig config) async {
     await exec('''
     #!/usr/bin/env bash
     set -euxo pipefail
-    cd ${Directory.systemTemp}
+    cd ${Directory.systemTemp.path}
 
     git clone --depth 1 --filter=blob:none --sparse --branch stable https://github.com/dart-lang/sdk.git
     cd sdk
