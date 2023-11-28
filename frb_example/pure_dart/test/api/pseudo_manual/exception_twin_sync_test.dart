@@ -111,7 +111,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       });
 
       test('Throw CustomStructError', () async {
-        await expectLater(() async => await returnCustomStructErrorTwinSync(),
+        await expectLater(() async => returnCustomStructErrorTwinSync(),
             throwsA(isA<CustomStructErrorTwinSync>()));
       });
 
@@ -129,7 +129,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
       test('Throw CustomStructError non static method', () async {
         await expectLater(
-            () async => await CustomStructTwinSync(message: "hello")
+            () async => CustomStructTwinSync(message: "hello")
                 .nonstaticReturnCustomStructErrorTwinSync(),
             throwsA(isA<CustomStructErrorTwinSync>()));
       });
@@ -143,8 +143,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
       test('Throw CustomStructError static method', () async {
         await expectLater(
-            () async => await CustomStructTwinSync
-                .staticReturnCustomStructErrorTwinSync(),
+            () async =>
+                CustomStructTwinSync.staticReturnCustomStructErrorTwinSync(),
             throwsA(isA<CustomStructErrorTwinSync>()));
       });
 
@@ -155,31 +155,29 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
       test('Throw CustomNestedError1', () async {
         await expectLater(
-            () async => await returnCustomNestedError1TwinSync(),
+            () async => returnCustomNestedError1TwinSync(),
             throwsA(CustomNestedError1TwinSync.errorNested(
                 CustomNestedError2TwinSync.customNested2Number(3))));
       });
 
       test('Throw CustomNestedError1 variant 1', () async {
         await expectLater(
-            () async => await returnCustomNestedError1Variant1TwinSync(),
+            () async => returnCustomNestedError1Variant1TwinSync(),
             throwsA(CustomNestedError1TwinSync.customNested1("custom")));
       });
 
       test('Throw CustomNestedError2', () async {
-        await expectLater(() async => await returnCustomNestedError2TwinSync(),
+        await expectLater(() async => returnCustomNestedError2TwinSync(),
             throwsA(CustomNestedError2TwinSync.customNested2("custom")));
       });
 
       test('Throw CustomError variant 0', () async {
-        await expectLater(
-            () async => await returnErrorVariantTwinSync(variant: 0),
+        await expectLater(() async => returnErrorVariantTwinSync(variant: 0),
             throwsA(isA<CustomErrorTwinSync>()));
       });
 
       test('Throw CustomError variant 1', () async {
-        await expectLater(
-            () async => await returnErrorVariantTwinSync(variant: 1),
+        await expectLater(() async => returnErrorVariantTwinSync(variant: 1),
             throwsA(isA<CustomErrorTwinSync>()));
       });
 
@@ -189,16 +187,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
       test('Throw CustomError static method', () async {
         await expectLater(
-            () async =>
-                await SomeStructTwinSync.staticReturnErrCustomErrorTwinSync(),
+            () async => SomeStructTwinSync.staticReturnErrCustomErrorTwinSync(),
             throwsA(isA<CustomErrorTwinSync>()));
       });
 
       test('Throw CustomError static method, verifies implements Frb',
           () async {
         await expectLater(
-            () async =>
-                await SomeStructTwinSync.staticReturnErrCustomErrorTwinSync(),
+            () async => SomeStructTwinSync.staticReturnErrCustomErrorTwinSync(),
             throwsA(isA<FrbException>()));
       });
 
@@ -212,7 +208,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
       test('Throw CustomError non-static method', () async {
         await expectLater(
-            () async => await SomeStructTwinSync(value: 7)
+            () async => SomeStructTwinSync(value: 7)
                 .nonStaticReturnErrCustomErrorTwinSync(),
             throwsA(isA<CustomErrorTwinSync>()));
         bool didCatch = false;
@@ -236,8 +232,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
       });
 
       test('Throw anyhow error', () async {
-        await expectLater(() async => await throwAnyhowTwinSync(),
-            throwsA(isA<FrbException>()));
+        await expectLater(
+            () async => throwAnyhowTwinSync(), throwsA(isA<FrbException>()));
         try {
           await throwAnyhowTwinSync();
         } catch (e) {
@@ -248,7 +244,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       });
 
       test('Function with custom result panics', () async {
-        await expectLater(() async => await panicWithCustomResultTwinSync(),
+        await expectLater(() async => panicWithCustomResultTwinSync(),
             throwsA(isA<FrbException>()));
         try {
           await panicWithCustomResultTwinSync();

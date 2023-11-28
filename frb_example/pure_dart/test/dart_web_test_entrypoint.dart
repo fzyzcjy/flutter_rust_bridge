@@ -50,8 +50,6 @@ import 'api/pseudo_manual/comment_twin_sync_test.dart'
     as comment_twin_sync_test;
 import 'api/pseudo_manual/optional_primitive_test.dart'
     as optional_primitive_test;
-import 'api/pseudo_manual/event_listener_twin_sync_test.dart'
-    as event_listener_twin_sync_test;
 import 'api/pseudo_manual/primitive_list_twin_sync_test.dart'
     as primitive_list_twin_sync_test;
 import 'api/pseudo_manual/raw_string_twin_sync_test.dart'
@@ -129,7 +127,6 @@ void main() {
     await uuid_type_twin_sync_test.main(skipRustLibInit: true);
     await comment_twin_sync_test.main(skipRustLibInit: true);
     await optional_primitive_test.main(skipRustLibInit: true);
-    await event_listener_twin_sync_test.main(skipRustLibInit: true);
     await primitive_list_twin_sync_test.main(skipRustLibInit: true);
     await raw_string_twin_sync_test.main(skipRustLibInit: true);
     await mirror_twin_sync_test.main(skipRustLibInit: true);
