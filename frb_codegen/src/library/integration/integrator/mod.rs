@@ -33,7 +33,7 @@ pub fn integrate() -> Result<()> {
 fn handle_cargokit_dir(dart_root: &Path) -> Result<()> {
     extract_dir_and_modify(
         INTEGRATION_TEMPLATE_DIR.get_dir("cargokit").unwrap(),
-        &dart_root.join("cargokit"),
+        &dart_root,
         &|raw| [&CARGOKIT_PRELUDE.as_bytes()[..], &raw[..]].concat(),
         &|p| !vec![".git", ".github", "docs"].contains(&p.file_name().unwrap().to_str().unwrap()),
     )
@@ -44,7 +44,7 @@ const CARGOKIT_PRELUDE: &str = "/// This is copied from cargokit, [TODO explain]
 fn handle_rust_dir(dart_root: &Path) -> Result<()> {
     extract_dir_and_modify(
         INTEGRATION_TEMPLATE_DIR.get_dir("rust").unwrap(),
-        &dart_root.join("rust"),
+        &dart_root,
         &|raw| raw.to_owned(),
         &|p| true,
     )
