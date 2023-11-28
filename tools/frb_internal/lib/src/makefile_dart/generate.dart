@@ -184,7 +184,7 @@ Future<void> _executeFrbCodegen({
   required String cmd,
 }) async {
   await exec(
-    'cargo run --manifest-path ${exec.pwd}/frb_codegen/Cargo.toml -- $cmd',
+    'cargo run --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
     relativePwd: relativePwd,
     extraEnv: {'RUST_BACKTRACE': '1'},
   );
