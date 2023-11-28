@@ -31,6 +31,7 @@ pub fn integrate() -> Result<()> {
 }
 
 fn handle_cargokit_dir(dart_root: &Path) -> Result<()> {
+    fs::create_dir_all(dart_root.join("cargokit"))?;
     extract_dir_and_modify(
         INTEGRATION_TEMPLATE_DIR.get_dir("cargokit").unwrap(),
         &dart_root,
@@ -42,6 +43,7 @@ fn handle_cargokit_dir(dart_root: &Path) -> Result<()> {
 const CARGOKIT_PRELUDE: &str = "/// This is copied from cargokit, [TODO explain]\n\n";
 
 fn handle_rust_dir(dart_root: &Path) -> Result<()> {
+    fs::create_dir_all(dart_root.join("rust"))?;
     extract_dir_and_modify(
         INTEGRATION_TEMPLATE_DIR.get_dir("rust").unwrap(),
         &dart_root,
