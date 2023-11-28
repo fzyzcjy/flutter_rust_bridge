@@ -16,6 +16,14 @@ List<Command<void>> createCommands() {
         generateRunFrbCodegen,
         _$populateGeneratePackageConfigParser,
         _$parseGeneratePackageConfigResult),
+    // more detailed command, can be used to execute just a portion of the main command
+    SimpleConfigCommand(
+        'generate-internal-frb-example-pure-dart',
+        generateInternalFrbExamplePureDart,
+        _$populateGenerateConfigParser,
+        _$parseGenerateConfigResult),
+    SimpleConfigCommand('generate-internal-rust', generateInternalRust,
+        _$populateGenerateConfigParser, _$parseGenerateConfigResult),
   ];
 }
 
