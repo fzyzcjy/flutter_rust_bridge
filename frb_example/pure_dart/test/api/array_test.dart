@@ -1,3 +1,5 @@
+// FRB_INTERNAL_GENERATOR: {"extraCode": "import 'package:frb_example_pure_dart/src/rust/api/array.dart';"}
+
 import 'package:frb_example_pure_dart/src/rust/api/array.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
