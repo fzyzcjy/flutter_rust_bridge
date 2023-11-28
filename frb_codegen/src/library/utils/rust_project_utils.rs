@@ -38,7 +38,7 @@ mod tests {
                     .join("hello.rs"),
                 temp_dir.path(),
             )?,
-            "".to_owned(),
+            "apple::orange::hello".to_owned(),
         );
         Ok(())
     }
