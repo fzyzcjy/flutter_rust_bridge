@@ -45,7 +45,7 @@ impl From<Target> for TargetOrCommon {
 }
 
 impl TargetOrCommon {
-    pub(crate) fn to_target_or(&self, when_common: Target) -> Target {
+    pub(crate) fn as_target_or(&self, when_common: Target) -> Target {
         match self {
             TargetOrCommon::Common => when_common,
             TargetOrCommon::Io | TargetOrCommon::Wasm => (*self).try_into().unwrap(),

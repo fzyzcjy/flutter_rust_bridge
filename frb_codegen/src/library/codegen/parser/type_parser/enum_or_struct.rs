@@ -20,36 +20,35 @@ where
         splayed_segments: &[SplayedSegment],
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
-        if let (name, _) = last_segment {
-            if let Some(src_object) = self.src_objects().get(*name) {
-                let src_object = (*src_object).clone();
+        let (name, _) = last_segment;
+        if let Some(src_object) = self.src_objects().get(*name) {
+            let src_object = (*src_object).clone();
 
-                let namespace = Namespace::new(pop_last(src_object.inner().path.clone()));
-                let namespaced_name = NamespacedName::new(namespace, name.to_string());
-                let ident: Id = namespaced_name.clone().into();
+            let namespace = Namespace::new(pop_last(src_object.inner().path.clone()));
+            let namespaced_name = NamespacedName::new(namespace, name.to_string());
+            let ident: Id = namespaced_name.clone().into();
 
-                if (self.parser_info().parsing_or_parsed_objects).insert(namespaced_name.clone()) {
-                    let (name, wrapper_name) = compute_name_and_wrapper_name(
-                        &namespaced_name.namespace,
-                        &src_object.inner().ident,
-                        src_object.inner().mirror,
-                    );
+            if (self.parser_info().parsing_or_parsed_objects).insert(namespaced_name.clone()) {
+                let (name, wrapper_name) = compute_name_and_wrapper_name(
+                    &namespaced_name.namespace,
+                    &src_object.inner().ident,
+                    src_object.inner().mirror,
+                );
 
-                    match self.parse_inner(&src_object, name, wrapper_name)? {
-                        Some(parsed_object) => {
-                            (self.parser_info().object_pool).insert(ident.clone(), parsed_object)
-                        }
-                        None => {
-                            return Ok(Some(parse_path_type_to_unencodable(
-                                type_path,
-                                splayed_segments,
-                            )))
-                        }
-                    };
-                }
-
-                return Ok(Some(self.construct_output(ident)?));
+                match self.parse_inner(&src_object, name, wrapper_name)? {
+                    Some(parsed_object) => {
+                        (self.parser_info().object_pool).insert(ident.clone(), parsed_object)
+                    }
+                    None => {
+                        return Ok(Some(parse_path_type_to_unencodable(
+                            type_path,
+                            splayed_segments,
+                        )))
+                    }
+                };
             }
+
+            return Ok(Some(self.construct_output(ident)?));
         }
 
         Ok(None)

@@ -23,7 +23,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for DelegateWireRustGenerator<'a> {
             ty @ IrTypeDelegate::StringList => Some(generate_class_from_fields(
                 self.ir.clone(),
                 self.context,
-                &vec![
+                &[
                     format!(
                         "ptr: *mut *mut {}",
                         WireRustGenerator::new(ty.get_delegate(), self.context)

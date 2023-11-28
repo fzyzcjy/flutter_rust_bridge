@@ -18,7 +18,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for PrimitiveListWireRustGenerator<'a> {
         Some(generate_class_from_fields(
             self.ir.clone(),
             self.context,
-            &vec![
+            &[
                 format!(
                     "ptr: *mut {}",
                     WireRustGenerator::new(self.ir.primitive.clone(), self.context)

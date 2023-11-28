@@ -82,7 +82,7 @@ mod tests {
         let dir = tempfile::tempdir()?;
         let path = dir.path().join("hello.txt");
 
-        assert_eq!(path.exists(), false);
+        assert!(!path.exists());
 
         let change = temp_change_file(path.to_owned(), |text| {
             assert_eq!(text, None);
@@ -93,7 +93,7 @@ mod tests {
 
         drop(change);
 
-        assert_eq!(path.exists(), false);
+        assert!(!path.exists());
 
         drop(dir);
         Ok(())

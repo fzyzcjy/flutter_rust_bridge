@@ -61,6 +61,7 @@ macro_rules! command_args {
         $crate::command_args!(@args $args $($rest)*);
     };
     ($($rest:tt)*) => {{
+        #[allow(clippy::vec_init_then_push)]
         let mut args = Vec::new();
         $crate::command_args!(@args args $($rest)*,);
         args

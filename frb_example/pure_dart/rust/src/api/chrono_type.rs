@@ -83,7 +83,7 @@ pub struct TestChrono {
 
 pub fn test_chrono() -> TestChrono {
     TestChrono {
-        dt: Some(chrono::DateTime::from_utc(
+        dt: Some(chrono::DateTime::from_naive_utc_and_offset(
             chrono::NaiveDateTime::from_timestamp_opt(1631297333, 0).unwrap(),
             chrono::Utc,
         )),
@@ -94,7 +94,7 @@ pub fn test_chrono() -> TestChrono {
 
 pub fn test_precise_chrono() -> TestChrono {
     TestChrono {
-        dt: Some(chrono::DateTime::from_utc(
+        dt: Some(chrono::DateTime::from_naive_utc_and_offset(
             chrono::NaiveDateTime::from_timestamp_opt(1014466435, 0).unwrap(),
             chrono::Utc,
         )),

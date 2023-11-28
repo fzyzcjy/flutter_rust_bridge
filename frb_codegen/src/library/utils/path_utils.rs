@@ -53,9 +53,9 @@ mod tests {
     #[test]
     fn test_glob_path_simple() -> Result<()> {
         let temp_dir = tempdir()?;
-        fs::write(&temp_dir.path().join("apple.rs"), "")?;
-        fs::write(&temp_dir.path().join("orange.rs"), "")?;
-        fs::write(&temp_dir.path().join("aha.rs"), "")?;
+        fs::write(temp_dir.path().join("apple.rs"), "")?;
+        fs::write(temp_dir.path().join("orange.rs"), "")?;
+        fs::write(temp_dir.path().join("aha.rs"), "")?;
 
         fn extract_names(items: &[PathBuf]) -> HashSet<String> {
             items

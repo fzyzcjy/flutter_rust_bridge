@@ -22,6 +22,7 @@ macro_rules! enum_map {
         }
 
         impl<T> $struct_name<T> {
+            #[allow(dead_code)]
             pub fn get(self, index: $enum_name) -> T {
                 match index {
                     $(

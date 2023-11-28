@@ -27,10 +27,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 self.parse_fn_arg_typed(argument_index, context, pat_type)
             }
             FnArg::Receiver(ref receiver) => self.parse_fn_arg_receiver(owner, context, receiver),
-            _ => bail!(
-                "Unexpected parameter: {}",
-                quote::quote!(#sig_input).to_string()
-            ),
         }
     }
 

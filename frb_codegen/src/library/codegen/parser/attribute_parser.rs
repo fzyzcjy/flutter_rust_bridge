@@ -404,6 +404,6 @@ mod tests {
     fn parse(raw: &str) -> anyhow::Result<FrbAttributes> {
         let code = raw.to_owned() + " fn f() {}";
         let fn_ast: ItemFn = syn::parse_str(&code)?;
-        Ok(FrbAttributes::parse(&fn_ast.attrs)?)
+        FrbAttributes::parse(&fn_ast.attrs)
     }
 }

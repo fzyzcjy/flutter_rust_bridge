@@ -2,7 +2,6 @@ use crate::basic_code_impl;
 use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNamePack;
 use crate::utils::basic_code::DartBasicHeaderCode;
-use itertools::Itertools;
 use serde::Serialize;
 use std::ops::AddAssign;
 

@@ -59,16 +59,6 @@ impl<T> Acc<T> {
         }
     }
 
-    pub fn new_wasm(wasm: T) -> Acc<T>
-    where
-        T: Default,
-    {
-        Acc {
-            wasm,
-            ..Default::default()
-        }
-    }
-
     pub fn new_common(common: T) -> Acc<T>
     where
         T: Default,
@@ -119,45 +109,11 @@ impl<T: ToString> From<T> for Acc<Option<String>> {
 }
 
 impl<T> Acc<Vec<T>> {
-    // TODO explicitly show it is to *common* in *this* function etc
-    /// Push to the common buffer.
-    #[inline]
-    pub fn push(&mut self, common: T) {
-        self.common.push(common)
-    }
-
-    /// Extend to the common buffer.
-    #[inline]
-    pub fn extend(&mut self, common: impl IntoIterator<Item = T>) {
-        self.common.extend(common)
-    }
-
     #[inline]
     pub fn push_acc(&mut self, acc: Acc<T>) {
         let Acc { common, io, wasm } = acc;
         self.common.push(common);
         self.io.push(io);
         self.wasm.push(wasm);
-    }
-
-    #[inline]
-    pub fn push_all(&mut self, item: T)
-    where
-        T: Clone,
-    {
-        self.common.push(item.clone());
-        self.io.push(item.clone());
-        self.wasm.push(item);
-    }
-}
-
-impl Acc<Vec<String>> {
-    #[inline]
-    pub fn join(&self, sep: &str) -> Acc<String> {
-        Acc {
-            common: self.common.join(sep),
-            io: self.io.join(sep),
-            wasm: self.wasm.join(sep),
-        }
     }
 }

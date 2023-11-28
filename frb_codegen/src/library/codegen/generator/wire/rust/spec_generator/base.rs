@@ -21,7 +21,6 @@ use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::*;
 use crate::codegen_generator_structs;
-use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGeneratorContext;
 use enum_dispatch::enum_dispatch;
 use paste::paste;
 
@@ -80,13 +79,6 @@ impl WireRustGeneratorContext<'_> {
             config: self.wire_dart_config,
             wire_rust_config: self.config,
             api_dart_config: self.api_dart_config,
-        }
-    }
-
-    pub(crate) fn as_api_dart_context(&self) -> ApiDartGeneratorContext {
-        ApiDartGeneratorContext {
-            ir_pack: self.ir_pack,
-            config: self.api_dart_config,
         }
     }
 }

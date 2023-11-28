@@ -277,14 +277,6 @@ fn fallback_llvm_path() -> Vec<String> {
     ]
 }
 
-fn compute_dart_api_instance_name(dart_output_stem: &str) -> String {
-    dart_output_stem.to_case(Case::Camel)
-}
-
-fn get_file_stem(p: &Path) -> &str {
-    p.file_stem().unwrap().to_str().unwrap()
-}
-
 const FALLBACK_DART_ENTRYPOINT_CLASS_NAME: &str = "RustLib";
 
 fn compute_dart_output_class_name_pack(config: &Config) -> DartOutputClassNamePack {
@@ -343,7 +335,7 @@ mod tests {
         json_golden_test(
             &actual_json,
             &PathBuf::from("expect_output.json"),
-            &vec![
+            &[
                 ("\\\\".into(), "/".into()),
                 (
                     path_to_string(&test_fixture_dir)?,

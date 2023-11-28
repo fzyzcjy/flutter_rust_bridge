@@ -78,7 +78,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         src_enum: &Enum,
         variant: &Variant,
-        attrs: &Vec<Attribute>,
+        attrs: &[Attribute],
         field_ident: &Option<Ident>,
     ) -> anyhow::Result<IrVariantKind> {
         let variant_ident = variant.ident.to_string();

@@ -65,7 +65,6 @@ impl<'a> RustOpaqueWireDartGenerator<'a> {
             },
             io: generate_platform_impl(&format!("wire._drop_opaque_{ty_safe_ident}Ptr")),
             wasm: generate_platform_impl(&format!("wire.drop_opaque_{ty_safe_ident}")),
-            ..Default::default()
         }
     }
 }

@@ -64,7 +64,7 @@ fn generate_impl_wire2api_for_type(
         body.map(|body| {
             // When target==Common, it means things like `rust_wire_type` should be the same
             // for Io or Wasm, so we can choose any.
-            let target = target.to_target_or(Target::Io);
+            let target = target.as_target_or(Target::Io);
 
             let rust_wire_modifier = generator.rust_wire_modifier(target);
             let rust_wire_type = generator.rust_wire_type(target);

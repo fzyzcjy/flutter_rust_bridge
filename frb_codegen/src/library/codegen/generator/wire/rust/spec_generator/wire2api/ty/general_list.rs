@@ -19,7 +19,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for GeneralListWireRustGenerator<'a> {
         Some(generate_class_from_fields(
             self.ir.clone(),
             self.context,
-            &vec![
+            &[
                 format!(
                     "ptr: *mut {}{}",
                     general_list_maybe_extra_pointer_indirection(&self.ir),

@@ -1,4 +1,5 @@
-///! event listener test
+// event listener test
+
 use anyhow::{anyhow, Result};
 use flutter_rust_bridge::support::lazy_static;
 use flutter_rust_bridge::{frb, StreamSink};

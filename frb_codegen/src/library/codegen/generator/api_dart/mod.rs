@@ -69,7 +69,7 @@ mod tests {
         )?;
         let actual = generate(
             &ir_pack,
-            &internal_config.generator.api_dart.into(),
+            &internal_config.generator.api_dart,
             &Dumper(&Default::default()),
         )?;
 

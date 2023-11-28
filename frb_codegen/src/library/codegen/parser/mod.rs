@@ -20,7 +20,7 @@ use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::ConfigDumpContent;
 use itertools::Itertools;
 use log::trace;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 use syn::File;
 use ConfigDumpContent::SourceGraph;
 
@@ -94,7 +94,7 @@ struct FileData {
 
 fn read_files(
     rust_input_paths: &[PathBuf],
-    rust_crate_dir: &PathBuf,
+    rust_crate_dir: &Path,
     cached_rust_reader: &mut CachedRustReader,
     dumper: &Dumper,
 ) -> anyhow::Result<Vec<FileData>> {
@@ -196,7 +196,7 @@ mod tests {
         json_golden_test(
             &serde_json::to_value(crate_map)?,
             &rust_crate_dir.join("expect_source_graph.json"),
-            &vec![
+            &[
                 ("\\\\".into(), "/".into()),
                 (
                     path_to_string(&test_fixture_dir)?,

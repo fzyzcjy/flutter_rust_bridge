@@ -55,7 +55,7 @@ fn generate_api2wire_func(
                             {raw_body}
                         }}",
                         WireDartGenerator::new(ty.clone(), context)
-                            .dart_wire_type(target.to_target_or(Target::Io)),
+                            .dart_wire_type(target.as_target_or(Target::Io)),
                         ty.safe_ident(),
                         ApiDartGenerator::new(ty.clone(), context.as_api_dart_context())
                             .dart_api_type(),

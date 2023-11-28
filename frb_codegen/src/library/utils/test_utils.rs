@@ -33,7 +33,7 @@ pub(crate) fn json_golden_test(
 }
 
 pub(crate) fn text_golden_test(actual: String, matcher_path: &Path) -> anyhow::Result<()> {
-    raw_golden_test(actual.clone(), &actual, matcher_path, |x| Ok(x))
+    raw_golden_test(actual.clone(), &actual, matcher_path, Ok)
 }
 
 fn raw_golden_test<T, F>(
@@ -68,7 +68,7 @@ fn enable_update_golden() -> bool {
     let env_var = env::var("UPDATE_GOLDEN")
         .ok()
         .or_else(|| env::var("UPDATE_GOLDENS").ok())
-        .unwrap_or_else(|| "".to_string())
+        .unwrap_or_default()
         .to_lowercase();
     env_var == "true" || env_var == "1"
 }

@@ -84,7 +84,7 @@ fn generate_allo_isolate_cbindgen(repo_base_dir: &PathBuf) -> anyhow::Result<()>
 
 fn cbindgen(
     config: cbindgen::Config,
-    repo_base_dir: &PathBuf,
+    repo_base_dir: &Path,
     rust_crate_dir: &Path,
     name: &str,
 ) -> anyhow::Result<()> {

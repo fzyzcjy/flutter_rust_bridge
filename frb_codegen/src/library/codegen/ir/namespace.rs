@@ -1,5 +1,4 @@
 use crate::utils::rust_project_utils::compute_mod_from_rust_crate_path;
-use itertools::Itertools;
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 use std::fmt::{Display, Formatter};
 use std::path::{Path, PathBuf};
