@@ -199,7 +199,7 @@ mod tests {
             &[
                 ("\\\\".into(), "/".into()),
                 (
-                    path_to_string(&test_fixture_dir)?,
+                    path_to_string(&test_fixture_dir)?.replace("\\", "/"),
                     "{the-working-directory}".to_owned(),
                 ),
             ],
