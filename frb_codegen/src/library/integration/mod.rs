@@ -1,11 +1,7 @@
 //! Integrate Flutter with Rust
 
-/// Create a new Flutter + Rust project.
-pub fn create(_name: &str) -> anyhow::Result<()> {
-    todo!("create")
-}
+mod creator;
+mod integrator;
 
-/// Integrate Rust into existing Flutter project.
-pub fn integrate() -> anyhow::Result<()> {
-    todo!("integrate")
-}
+pub use creator::create;
+pub use integrator::integrate;
