@@ -78,8 +78,10 @@ Future<void> testDartValgrind(TestDartConfig config) async {
   await exec('sudo apt install -y valgrind');
   await runDartPubGetIfNotRunYet(config.package);
 
-  await exec('dart --enable-experiment=native-assets build '
-      'test/dart_valgrind_test_entrypoint.dart -o build/valgrind_test_output/');
+  await exec(
+      'dart --enable-experiment=native-assets build '
+      'test/dart_valgrind_test_entrypoint.dart -o build/valgrind_test_output/',
+      relativePwd: config.package);
 
   const valgrindCommand = 'valgrind '
       '--error-exitcode=1 '
@@ -91,7 +93,8 @@ Future<void> testDartValgrind(TestDartConfig config) async {
       '--vex-iropt-level=1';
 
   await exec(
-      '$valgrindCommand build/valgrind_test_output/dart_valgrind_test_entrypoint.exe');
+      '$valgrindCommand build/valgrind_test_output/dart_valgrind_test_entrypoint.exe',
+      relativePwd: config.package);
 
   throw Exception('implement the checks');
 }
