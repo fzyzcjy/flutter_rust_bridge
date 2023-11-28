@@ -108,8 +108,10 @@ Future<void> generateRunFrbCodegen(GeneratePackageConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
     await runDartPubGetIfNotRunYet(config.package);
     await exec(
-        'cargo run --manifest-path ${exec.pwd}/frb_codegen/Cargo.toml -- generate',
-        relativePwd: config.package);
+      'cargo run --manifest-path ${exec.pwd}/frb_codegen/Cargo.toml -- generate',
+      relativePwd: config.package,
+      extraEnv: {'RUST_BACKTRACE': '1'},
+    );
   });
 }
 
