@@ -10,8 +10,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test("dart call tuples", () async {
-    expect(testTupleTwinSync(), completion(('John', 0)));
-    expect(
-        testTupleTwinSync(value: ('Bob', 42)), completion(('Hello Bob', 43)));
+    expect(await testTupleTwinSync(), ('John', 0));
+    expect(await testTupleTwinSync(value: ('Bob', 42)), ('Hello Bob', 43));
   });
 }

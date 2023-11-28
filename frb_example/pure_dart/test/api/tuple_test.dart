@@ -6,8 +6,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test("dart call tuples", () async {
-    expect(testTupleTwinNormal(), completion(('John', 0)));
-    expect(
-        testTupleTwinNormal(value: ('Bob', 42)), completion(('Hello Bob', 43)));
+    expect(await testTupleTwinNormal(), ('John', 0));
+    expect(await testTupleTwinNormal(value: ('Bob', 42)), ('Hello Bob', 43));
   });
 }

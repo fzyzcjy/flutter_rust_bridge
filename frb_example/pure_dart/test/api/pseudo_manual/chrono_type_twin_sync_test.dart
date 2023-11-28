@@ -61,7 +61,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(resp.inHours, d.inHours);
   });
 
-  test('List<Duration>', () {
+  test('List<Duration>', () async {
     final expected = [
       Duration(days: 1),
       Duration(days: 10),
@@ -70,14 +70,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
       if (!kIsWeb) Duration(microseconds: 333)
     ];
     final now = DateTime.now();
-    final durations = handleTimestampsTwinSync(
+    final durations = await handleTimestampsTwinSync(
       timestamps: expected.map(now.subtract).toList(),
       epoch: now,
     );
-    expect(durations, completion(expected));
+    expect(durations, expected);
   });
 
-  test('List<DateTime>', () {
+  test('List<DateTime>', () async {
     final expected = [
       Duration(days: 3),
       Duration(hours: 2),
@@ -86,8 +86,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
       if (!kIsWeb) Duration(microseconds: 400)
     ];
     final now = DateTime.now();
-    final result = handleDurationsTwinSync(durations: expected, since: now);
-    expect(result, completion(expected.map(now.subtract)));
+    final result =
+        await handleDurationsTwinSync(durations: expected, since: now);
+    expect(result, expected.map(now.subtract));
   });
 
   test('Combined Chrono types', () async {

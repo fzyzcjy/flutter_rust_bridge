@@ -99,12 +99,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
       );
       final skipMinified =
           releaseMode ? skipWeb('Minified names cannot be compared.') : null;
-      expect((SpeedTwinSync_Unknown).toString(), 'Speed_Unknown',
+      expect((SpeedTwinSync_Unknown).toString(), 'SpeedTwinSync_Unknown',
           skip: skipMinified);
-      expect((SpeedTwinSync_GPS).toString(), 'Speed_GPS', skip: skipMinified);
-      expect((DistanceTwinSync_Unknown).toString(), 'Distance_Unknown',
+      expect((SpeedTwinSync_GPS).toString(), 'SpeedTwinSync_GPS',
           skip: skipMinified);
-      expect((DistanceTwinSync_Map).toString(), 'Distance_Map',
+      expect((DistanceTwinSync_Unknown).toString(), 'DistanceTwinSync_Unknown',
+          skip: skipMinified);
+      expect((DistanceTwinSync_Map).toString(), 'DistanceTwinSync_Map',
           skip: skipMinified);
     });
   });

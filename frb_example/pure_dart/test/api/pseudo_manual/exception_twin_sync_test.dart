@@ -106,13 +106,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
       // The first time a backtrace is created, symbol resolution
       // takes a significant amount of time.
       test('Throw CustomError', timeout: Timeout.factor(5), () {
-        expect(returnErrCustomErrorTwinSync(),
+        expect(() async => returnErrCustomErrorTwinSync(),
             throwsA(isA<CustomErrorTwinSync>()));
       });
 
       test('Throw CustomStructError', () async {
         await expectLater(() async => returnCustomStructErrorTwinSync(),
-            throwsA(isA<CustomStructErrorTwinSync>()));
+            throwsA(isA<CustomStructErrorAnotherTwinSync>()));
       });
 
       test('Throw sync CustomStructError', () {
@@ -131,7 +131,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         await expectLater(
             () async => CustomStructTwinSync(message: "hello")
                 .nonstaticReturnCustomStructErrorTwinSync(),
-            throwsA(isA<CustomStructErrorTwinSync>()));
+            throwsA(isA<CustomStructErrorAnotherTwinSync>()));
       });
 
       test('Do not throw CustomStructError non static method', () async {
@@ -145,7 +145,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         await expectLater(
             () async =>
                 CustomStructTwinSync.staticReturnCustomStructErrorTwinSync(),
-            throwsA(isA<CustomStructErrorTwinSync>()));
+            throwsA(isA<CustomStructErrorAnotherTwinSync>()));
       });
 
       test('Do not throw CustomStructError static method', () async {
