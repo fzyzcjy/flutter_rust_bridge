@@ -1,9 +1,9 @@
 use crate::utils::path_utils::find_dart_package_dir;
 use anyhow::Result;
-use include_dir::{include_dir, Dir};
+use include_dir::{include_dir, Dir, DirEntry};
 use log::debug;
-use std::env;
 use std::path::{Path, PathBuf};
+use std::{env, fs};
 
 static INTEGRATION_TEMPLATE_DIR: Dir<'_> =
     include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template");
@@ -36,6 +36,23 @@ fn copy_cargokit_dir(dart_root: &Path, dir_cargokit: &Path) -> Result<()> {
         .get_dir("cargokit")
         .unwrap()
         .extract(dir_cargokit)?)
+}
+
+// ref: `Dir::extract`
+fn extract_dir_and_modify(d: &Dir, base_path: &Path) -> Result<()> {
+    for entry in d.entries() {
+        let path = base_path.join(entry.path());
+        match entry {
+            DirEntry::Dir(d) => {
+                fs::create_dir_all(&path)?;
+                d.extract(base_path)?;
+            }
+            DirEntry::File(f) => {
+                fs::write(path, f.contents())?;
+            }
+        }
+    }
+    Ok(())
 }
 
 fn cargokit_add_prelude(dart_root: &Path, dir_cargokit: &Path) -> Result<()> {
