@@ -36,12 +36,14 @@ target 'Runner' do
   end
 
   # TODO start
+  # TODO should not modify?
+  puts "hi", s
   s.source           = { :path => '.' }
   s.source_files     = 'Classes/**/*'
   s.script_phase = {
     :name => 'Build Rust library',
     # First argument is relative path to the `rust` folder, second is name of rust library
-    :script => 'sh "$PODS_TARGET_SRCROOT/../cargokit/build_pod.sh" ../rust hello_rust_ffi_plugin',
+    :script => 'sh "$PODS_TARGET_SRCROOT/../cargokit/build_pod.sh" ../rust rust_lib',
     :execution_position => :before_compile,
     :input_files => ['${BUILT_PRODUCTS_DIR}/cargokit_phony'],
     # Let XCode know that the static library referenced in -force_load below is
