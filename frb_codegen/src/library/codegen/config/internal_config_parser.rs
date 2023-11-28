@@ -40,7 +40,7 @@ impl InternalConfig {
 
         let rust_input_path_pack = compute_rust_input_path_pack(&config.rust_input, &base_dir)?;
 
-        let dart_output_dir = canonicalize_with_error_message(base_dir.join(&config.dart_output))?;
+        let dart_output_dir = canonicalize_with_error_message(&base_dir.join(&config.dart_output))?;
         let dart_output_path_pack = compute_dart_output_path_pack(&dart_output_dir);
 
         let dart_output_class_name_pack = compute_dart_output_class_name_pack(config);
@@ -55,7 +55,7 @@ impl InternalConfig {
             .collect();
 
         let rust_crate_dir = canonicalize_with_error_message(
-            (config.rust_crate_dir.clone().map(PathBuf::from)).unwrap_or(find_rust_crate_dir(
+            &(config.rust_crate_dir.clone().map(PathBuf::from)).unwrap_or(find_rust_crate_dir(
                 rust_input_path_pack.one_rust_input_path(),
             )?),
         )?;
@@ -66,7 +66,7 @@ impl InternalConfig {
         )?;
 
         let dart_root = canonicalize_with_error_message(
-            (config.dart_root.clone().map(PathBuf::from))
+            &(config.dart_root.clone().map(PathBuf::from))
                 .unwrap_or(find_dart_package_dir(&dart_output_dir)?),
         )?;
 
