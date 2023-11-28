@@ -22,6 +22,39 @@ import 'api/optional_primitive_misc.dart';
 import 'api/primitive_list_misc.dart';
 import 'api/primitive_list_sync_misc.dart';
 import 'api/primitive_misc.dart';
+import 'api/pseudo_manual/array_twin_sync.dart';
+import 'api/pseudo_manual/attribute_twin_sync.dart';
+import 'api/pseudo_manual/chrono_type_twin_sync.dart';
+import 'api/pseudo_manual/comment_twin_sync.dart';
+import 'api/pseudo_manual/dart_dynamic_twin_sync.dart';
+import 'api/pseudo_manual/dart_opaque_twin_sync.dart';
+import 'api/pseudo_manual/enumeration_twin_sync.dart';
+import 'api/pseudo_manual/event_listener_twin_sync.dart';
+import 'api/pseudo_manual/exception_twin_sync.dart';
+import 'api/pseudo_manual/external_type_in_crate_twin_sync.dart';
+import 'api/pseudo_manual/method_twin_sync.dart';
+import 'api/pseudo_manual/mirror_twin_sync.dart';
+import 'api/pseudo_manual/misc_example_twin_sync.dart';
+import 'api/pseudo_manual/misc_type_twin_sync.dart';
+import 'api/pseudo_manual/newtype_pattern_twin_sync.dart';
+import 'api/pseudo_manual/optional_primitive.dart';
+import 'api/pseudo_manual/optional_primitive_misc_twin_sync.dart';
+import 'api/pseudo_manual/optional_primitive_twin_sync.dart';
+import 'api/pseudo_manual/optional_twin_sync.dart';
+import 'api/pseudo_manual/primitive.dart';
+import 'api/pseudo_manual/primitive_list.dart';
+import 'api/pseudo_manual/primitive_list_misc_twin_sync.dart';
+import 'api/pseudo_manual/primitive_list_sync_misc_twin_sync.dart';
+import 'api/pseudo_manual/primitive_list_twin_sync.dart';
+import 'api/pseudo_manual/primitive_misc_twin_sync.dart';
+import 'api/pseudo_manual/primitive_twin_sync.dart';
+import 'api/pseudo_manual/raw_string_twin_sync.dart';
+import 'api/pseudo_manual/rust_opaque_twin_sync.dart';
+import 'api/pseudo_manual/simple_twin_sync.dart';
+import 'api/pseudo_manual/structure_twin_sync.dart';
+import 'api/pseudo_manual/tuple_twin_sync.dart';
+import 'api/pseudo_manual/type_alias_twin_sync.dart';
+import 'api/pseudo_manual/uuid_type_twin_sync.dart';
 import 'api/raw_string.dart';
 import 'api/rust_opaque.dart';
 import 'api/rust_opaque_sync.dart';
@@ -528,6 +561,653 @@ abstract class RustLibApi extends BaseApi {
       dynamic hint});
 
   Future<int> primitiveU32TwinNormal({required int myU32, dynamic hint});
+
+  BlobTwinSync boxedBlobTwinSync({required U8Array1600 blob, dynamic hint});
+
+  TestIdTwinSync funcTestIdTwinSync({required TestIdTwinSync id, dynamic hint});
+
+  U8Array5 getArrayTwinSync({dynamic hint});
+
+  PointTwinSyncArray2 getComplexArrayTwinSync({dynamic hint});
+
+  double lastNumberTwinSync({required F64Array16 array, dynamic hint});
+
+  TestIdTwinSyncArray2 nestedIdTwinSync(
+      {required TestIdTwinSyncArray4 id, dynamic hint});
+
+  MessageIdTwinSync newMsgidTwinSync({required U8Array32 id, dynamic hint});
+
+  FeedIdTwinSync returnBoxedFeedIdTwinSync(
+      {required U8Array8 id, dynamic hint});
+
+  U8Array8 returnBoxedRawFeedIdTwinSync(
+      {required FeedIdTwinSync id, dynamic hint});
+
+  U8Array1600 useBoxedBlobTwinSync({required BlobTwinSync blob, dynamic hint});
+
+  U8Array32 useMsgidTwinSync({required MessageIdTwinSync id, dynamic hint});
+
+  void handleCustomizedStructTwinSync(
+      {required CustomizedTwinSync val, dynamic hint});
+
+  UserIdTwinSync nextUserIdTwinSync(
+      {required UserIdTwinSync userId, dynamic hint});
+
+  DateTime datetimeLocalTwinSync({required DateTime d, dynamic hint});
+
+  DateTime datetimeUtcTwinSync({required DateTime d, dynamic hint});
+
+  Duration durationTwinSync({required Duration d, dynamic hint});
+
+  List<DateTime> handleDurationsTwinSync(
+      {required List<Duration> durations,
+      required DateTime since,
+      dynamic hint});
+
+  List<Duration> handleTimestampsTwinSync(
+      {required List<DateTime> timestamps,
+      required DateTime epoch,
+      dynamic hint});
+
+  Duration howLongDoesItTakeTwinSync(
+      {required FeatureChronoTwinSync mine, dynamic hint});
+
+  DateTime naivedatetimeTwinSync({required DateTime d, dynamic hint});
+
+  DateTime? optionalEmptyDatetimeUtcTwinSync({DateTime? d, dynamic hint});
+
+  TestChronoTwinSync testChronoTwinSync({dynamic hint});
+
+  TestChronoTwinSync testPreciseChronoTwinSync({dynamic hint});
+
+  void structWithCommentsTwinSyncInstanceMethodTwinSync(
+      {required StructWithCommentsTwinSync that, dynamic hint});
+
+  void structWithCommentsTwinSyncStaticMethodTwinSync({dynamic hint});
+
+  void functionWithCommentsSlashStarStarTwinSync({dynamic hint});
+
+  void functionWithCommentsTripleSlashMultiLineTwinSync({dynamic hint});
+
+  void functionWithCommentsTripleSlashSingleLineTwinSync({dynamic hint});
+
+  dynamic returnDartDynamicTwinSync({dynamic hint});
+
+  String asyncAcceptDartOpaqueTwinSync({required Object opaque, dynamic hint});
+
+  EnumDartOpaqueTwinSync createEnumDartOpaqueTwinSync(
+      {required Object opaque, dynamic hint});
+
+  DartOpaqueNestedTwinSync createNestedDartOpaqueTwinSync(
+      {required Object opaque1, required Object opaque2, dynamic hint});
+
+  void dropStaticDartOpaqueTwinSync({dynamic hint});
+
+  void getEnumDartOpaqueTwinSync(
+      {required EnumDartOpaqueTwinSync opaque, dynamic hint});
+
+  void getNestedDartOpaqueTwinSync(
+      {required DartOpaqueNestedTwinSync opaque, dynamic hint});
+
+  void loopBackArrayGetTwinSync({required ObjectArray1 opaque, dynamic hint});
+
+  ObjectArray1 loopBackArrayTwinSync({required Object opaque, dynamic hint});
+
+  void loopBackOptionGetTwinSync({Object? opaque, dynamic hint});
+
+  Object? loopBackOptionTwinSync({required Object opaque, dynamic hint});
+
+  Object loopBackTwinSync({required Object opaque, dynamic hint});
+
+  void loopBackVecGetTwinSync({required List<Object> opaque, dynamic hint});
+
+  List<Object> loopBackVecTwinSync({required Object opaque, dynamic hint});
+
+  void panicUnwrapDartOpaqueTwinSync({required Object opaque, dynamic hint});
+
+  void setStaticDartOpaqueTwinSync({required Object opaque, dynamic hint});
+
+  EnumSimpleTwinSync funcEnumSimpleTwinSync(
+      {required EnumSimpleTwinSync arg, dynamic hint});
+
+  EnumWithItemMixedTwinSync funcEnumWithItemMixedTwinSync(
+      {required EnumWithItemMixedTwinSync arg, dynamic hint});
+
+  EnumWithItemStructTwinSync funcEnumWithItemStructTwinSync(
+      {required EnumWithItemStructTwinSync arg, dynamic hint});
+
+  EnumWithItemTupleTwinSync funcEnumWithItemTupleTwinSync(
+      {required EnumWithItemTupleTwinSync arg, dynamic hint});
+
+  WeekdaysTwinSync handleEnumParameterTwinSync(
+      {required WeekdaysTwinSync weekday, dynamic hint});
+
+  KitchenSinkTwinSync handleEnumStructTwinSync(
+      {required KitchenSinkTwinSync val, dynamic hint});
+
+  WeekdaysTwinSync? handleReturnEnumTwinSync(
+      {required String input, dynamic hint});
+
+  MeasureTwinSync? multiplyByTenTwinSync(
+      {required MeasureTwinSync measure, dynamic hint});
+
+  Uint8List printNoteTwinSync({required NoteTwinSync note, dynamic hint});
+
+  String eventTwinSyncAsStringTwinSync(
+      {required EventTwinSync that, dynamic hint});
+
+  void closeEventListenerTwinSync({dynamic hint});
+
+  void createEventTwinSync(
+      {required String address, required String payload, dynamic hint});
+
+  Stream<EventTwinSync> registerEventListenerTwinSync({dynamic hint});
+
+  CustomStructTwinSync customStructTwinSyncNewTwinSync(
+      {required String message, dynamic hint});
+
+  void customStructTwinSyncNonstaticReturnCustomStructErrorTwinSync(
+      {required CustomStructTwinSync that, dynamic hint});
+
+  int customStructTwinSyncNonstaticReturnCustomStructOkTwinSync(
+      {required CustomStructTwinSync that, dynamic hint});
+
+  void customStructTwinSyncStaticReturnCustomStructErrorTwinSync(
+      {dynamic hint});
+
+  int customStructTwinSyncStaticReturnCustomStructOkTwinSync({dynamic hint});
+
+  SomeStructTwinSync someStructTwinSyncNewTwinSync(
+      {required int value, dynamic hint});
+
+  int someStructTwinSyncNonStaticReturnErrCustomErrorTwinSync(
+      {required SomeStructTwinSync that, dynamic hint});
+
+  int someStructTwinSyncNonStaticReturnOkCustomErrorTwinSync(
+      {required SomeStructTwinSync that, dynamic hint});
+
+  int someStructTwinSyncStaticReturnErrCustomErrorTwinSync({dynamic hint});
+
+  int someStructTwinSyncStaticReturnOkCustomErrorTwinSync({dynamic hint});
+
+  void customEnumErrorPanicTwinSync({dynamic hint});
+
+  int customEnumErrorReturnErrorTwinSync({dynamic hint});
+
+  int customEnumErrorReturnOkTwinSync({required int arg, dynamic hint});
+
+  void customNestedErrorReturnErrorTwinSync(
+      {required CustomNestedErrorOuterTwinSync arg, dynamic hint});
+
+  void customStructErrorReturnErrorTwinSync(
+      {required CustomStructErrorTwinSync arg, dynamic hint});
+
+  int funcReturnErrorTwinSync({dynamic hint});
+
+  int funcTypeFalliblePanicTwinSync({dynamic hint});
+
+  int funcTypeInfalliblePanicTwinSync({dynamic hint});
+
+  void panicWithCustomResultTwinSync({dynamic hint});
+
+  void returnCustomNestedError1TwinSync({dynamic hint});
+
+  void returnCustomNestedError1Variant1TwinSync({dynamic hint});
+
+  void returnCustomNestedError2TwinSync({dynamic hint});
+
+  void returnCustomStructErrorTwinSync({dynamic hint});
+
+  int returnCustomStructOkTwinSync({dynamic hint});
+
+  int returnErrCustomErrorTwinSync({dynamic hint});
+
+  int returnErrorVariantTwinSync({required int variant, dynamic hint});
+
+  int returnOkCustomErrorTwinSync({dynamic hint});
+
+  Stream<String> streamSinkThrowAnyhowTwinSync({dynamic hint});
+
+  void syncReturnCustomStructErrorTwinSync({dynamic hint});
+
+  void throwAnyhowTwinSync({dynamic hint});
+
+  NewSimpleStruct callNewModuleSystemTwinSync({dynamic hint});
+
+  OldSimpleStruct callOldModuleSystemTwinSync({dynamic hint});
+
+  bool useImportedEnumTwinSync({required MyEnum myEnum, dynamic hint});
+
+  bool useImportedStructTwinSync({required MyStruct myStruct, dynamic hint});
+
+  String concatenateWithTwinSyncConcatenateStaticTwinSync(
+      {required String a, required String b, dynamic hint});
+
+  String concatenateWithTwinSyncConcatenateTwinSync(
+      {required ConcatenateWithTwinSync that, required String b, dynamic hint});
+
+  Stream<int>
+      concatenateWithTwinSyncHandleSomeStaticStreamSinkSingleArgTwinSync(
+          {dynamic hint});
+
+  Stream<Log2TwinSync>
+      concatenateWithTwinSyncHandleSomeStaticStreamSinkTwinSync(
+          {required int key, required int max, dynamic hint});
+
+  Stream<int> concatenateWithTwinSyncHandleSomeStreamSinkAt1TwinSync(
+      {required ConcatenateWithTwinSync that, dynamic hint});
+
+  Stream<Log2TwinSync> concatenateWithTwinSyncHandleSomeStreamSinkTwinSync(
+      {required ConcatenateWithTwinSync that,
+      required int key,
+      required int max,
+      dynamic hint});
+
+  ConcatenateWithTwinSync concatenateWithTwinSyncNewTwinSync(
+      {required String a, dynamic hint});
+
+  int sumWithTwinSyncSumTwinSync(
+      {required SumWithTwinSync that,
+      required int y,
+      required int z,
+      dynamic hint});
+
+  SumWithTwinSyncArray3 getSumArrayTwinSync(
+      {required int a, required int b, required int c, dynamic hint});
+
+  SumWithTwinSync getSumStructTwinSync({dynamic hint});
+
+  Stream<ApplicationSettings> appSettingsStreamTwinSync({dynamic hint});
+
+  Stream<List<ApplicationSettings>> appSettingsVecStreamTwinSync(
+      {dynamic hint});
+
+  int? firstNumberTwinSync({required Numbers nums, dynamic hint});
+
+  int? firstSequenceTwinSync({required Sequences seqs, dynamic hint});
+
+  ApplicationSettings getAppSettingsTwinSync({dynamic hint});
+
+  ApplicationSettings getFallibleAppSettingsTwinSync({dynamic hint});
+
+  ApplicationMessage getMessageTwinSync({dynamic hint});
+
+  bool isAppEmbeddedTwinSync(
+      {required ApplicationSettings appSettings, dynamic hint});
+
+  Stream<MirrorStructTwinSync> mirrorStructStreamTwinSync({dynamic hint});
+
+  Stream<(ApplicationSettings, RawStringEnumMirrored)>
+      mirrorTupleStreamTwinSync({dynamic hint});
+
+  Numbers repeatNumberTwinSync(
+      {required int num, required int times, dynamic hint});
+
+  Sequences repeatSequenceTwinSync(
+      {required int seq, required int times, dynamic hint});
+
+  ContainsMirroredSubStructTwinSync testContainsMirroredSubStructTwinSync(
+      {dynamic hint});
+
+  List<RawStringMirrored> testFallibleOfRawStringMirroredTwinSync(
+      {dynamic hint});
+
+  List<RawStringEnumMirrored> testListOfNestedEnumsMirroredTwinSync(
+      {dynamic hint});
+
+  ListOfNestedRawStringMirrored testListOfRawNestedStringMirroredTwinSync(
+      {dynamic hint});
+
+  NestedRawStringMirrored testNestedRawStringMirroredTwinSync({dynamic hint});
+
+  RawStringEnumMirrored testRawStringEnumMirroredTwinSync(
+      {required bool nested, dynamic hint});
+
+  RawStringMirrored testRawStringMirroredTwinSync({dynamic hint});
+
+  BigBuffersTwinSync handleBigBuffersTwinSync({dynamic hint});
+
+  MyTreeNodeTwinSync handleComplexStructTwinSync(
+      {required MyTreeNodeTwinSync s, dynamic hint});
+
+  MyNestedStructTwinSync handleNestedStructTwinSync(
+      {required MyNestedStructTwinSync s, dynamic hint});
+
+  String handleStringTwinSync({required String s, dynamic hint});
+
+  MySizeFreezedTwinSync handleStructSyncFreezedTwinSync(
+      {required MySizeFreezedTwinSync arg,
+      required MySizeFreezedTwinSync boxed,
+      dynamic hint});
+
+  MySize handleStructTwinSync(
+      {required MySize arg, required MySize boxed, dynamic hint});
+
+  Uint8List handleVecU8TwinSync({required Uint8List v, dynamic hint});
+
+  List<WeekdaysTwinSync> listOfPrimitiveEnumsTwinSync(
+      {required List<WeekdaysTwinSync> weekdays, dynamic hint});
+
+  AbcTwinSync testAbcEnumTwinSync({required AbcTwinSync abc, dynamic hint});
+
+  StructWithEnumTwinSync testStructWithEnumTwinSync(
+      {required StructWithEnumTwinSync se, dynamic hint});
+
+  EmptyTwinSync emptyStructTwinSync(
+      {required EmptyTwinSync empty, dynamic hint});
+
+  void funcReturnUnitTwinSync({dynamic hint});
+
+  String funcStringTwinSync({required String arg, dynamic hint});
+
+  List<MySize> handleListOfStructTwinSync(
+      {required List<MySize> l, dynamic hint});
+
+  List<String> handleStringListTwinSync(
+      {required List<String> names, dynamic hint});
+
+  NewTypeIntTwinSync handleNewtypeTwinSync(
+      {required NewTypeIntTwinSync arg, dynamic hint});
+
+  Future<bool?> exampleOptionalPrimitiveTypeBoolTwinNormal(
+      {bool? arg, dynamic hint});
+
+  Future<double?> exampleOptionalPrimitiveTypeF32TwinNormal(
+      {double? arg, dynamic hint});
+
+  Future<double?> exampleOptionalPrimitiveTypeF64TwinNormal(
+      {double? arg, dynamic hint});
+
+  Future<int?> exampleOptionalPrimitiveTypeI16TwinNormal(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalPrimitiveTypeI32TwinNormal(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalPrimitiveTypeI64TwinNormal(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalPrimitiveTypeI8TwinNormal(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalPrimitiveTypeU16TwinNormal(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalPrimitiveTypeU32TwinNormal(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalPrimitiveTypeU64TwinNormal(
+      {int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalPrimitiveTypeU8TwinNormal(
+      {int? arg, dynamic hint});
+
+  int? primitiveOptionalTypesTwinSync(
+      {int? myI32, int? myI64, double? myF64, bool? myBool, dynamic hint});
+
+  bool? exampleOptionalPrimitiveTypeBoolTwinSync({bool? arg, dynamic hint});
+
+  double? exampleOptionalPrimitiveTypeF32TwinSync({double? arg, dynamic hint});
+
+  double? exampleOptionalPrimitiveTypeF64TwinSync({double? arg, dynamic hint});
+
+  int? exampleOptionalPrimitiveTypeI16TwinSync({int? arg, dynamic hint});
+
+  int? exampleOptionalPrimitiveTypeI32TwinSync({int? arg, dynamic hint});
+
+  int? exampleOptionalPrimitiveTypeI64TwinSync({int? arg, dynamic hint});
+
+  int? exampleOptionalPrimitiveTypeI8TwinSync({int? arg, dynamic hint});
+
+  int? exampleOptionalPrimitiveTypeU16TwinSync({int? arg, dynamic hint});
+
+  int? exampleOptionalPrimitiveTypeU32TwinSync({int? arg, dynamic hint});
+
+  int? exampleOptionalPrimitiveTypeU64TwinSync({int? arg, dynamic hint});
+
+  int? exampleOptionalPrimitiveTypeU8TwinSync({int? arg, dynamic hint});
+
+  double handleIncrementBoxedOptionalTwinSync({double? opt, dynamic hint});
+
+  String handleOptionBoxArgumentsTwinSync(
+      {int? i8Box,
+      int? u8Box,
+      int? i32Box,
+      int? i64Box,
+      double? f64Box,
+      bool? boolbox,
+      ExoticOptionalsTwinSync? structbox,
+      dynamic hint});
+
+  ExoticOptionalsTwinSync? handleOptionalIncrementTwinSync(
+      {ExoticOptionalsTwinSync? opt, dynamic hint});
+
+  double? handleOptionalReturnTwinSync(
+      {required double left, required double right, dynamic hint});
+
+  ElementTwinSync? handleOptionalStructTwinSync(
+      {String? document, dynamic hint});
+
+  OptVecsTwinSync handleVecOfOptsTwinSync(
+      {required OptVecsTwinSync opt, dynamic hint});
+
+  String? syncOptionNullTwinSync({dynamic hint});
+
+  String? syncOptionTwinSync({dynamic hint});
+
+  Future<bool> examplePrimitiveTypeBoolTwinNormal(
+      {required bool arg, dynamic hint});
+
+  Future<double> examplePrimitiveTypeF32TwinNormal(
+      {required double arg, dynamic hint});
+
+  Future<double> examplePrimitiveTypeF64TwinNormal(
+      {required double arg, dynamic hint});
+
+  Future<int> examplePrimitiveTypeI16TwinNormal(
+      {required int arg, dynamic hint});
+
+  Future<int> examplePrimitiveTypeI32TwinNormal(
+      {required int arg, dynamic hint});
+
+  Future<int> examplePrimitiveTypeI64TwinNormal(
+      {required int arg, dynamic hint});
+
+  Future<int> examplePrimitiveTypeI8TwinNormal(
+      {required int arg, dynamic hint});
+
+  Future<int> examplePrimitiveTypeU16TwinNormal(
+      {required int arg, dynamic hint});
+
+  Future<int> examplePrimitiveTypeU32TwinNormal(
+      {required int arg, dynamic hint});
+
+  Future<int> examplePrimitiveTypeU64TwinNormal(
+      {required int arg, dynamic hint});
+
+  Future<int> examplePrimitiveTypeU8TwinNormal(
+      {required int arg, dynamic hint});
+
+  Future<List<bool>> examplePrimitiveListTypeBoolTwinNormal(
+      {required List<bool> arg, dynamic hint});
+
+  Future<Float32List> examplePrimitiveListTypeF32TwinNormal(
+      {required Float32List arg, dynamic hint});
+
+  Future<Float64List> examplePrimitiveListTypeF64TwinNormal(
+      {required Float64List arg, dynamic hint});
+
+  Future<Int16List> examplePrimitiveListTypeI16TwinNormal(
+      {required Int16List arg, dynamic hint});
+
+  Future<Int32List> examplePrimitiveListTypeI32TwinNormal(
+      {required Int32List arg, dynamic hint});
+
+  Future<Int64List> examplePrimitiveListTypeI64TwinNormal(
+      {required Int64List arg, dynamic hint});
+
+  Future<Int8List> examplePrimitiveListTypeI8TwinNormal(
+      {required Int8List arg, dynamic hint});
+
+  Future<Uint16List> examplePrimitiveListTypeU16TwinNormal(
+      {required Uint16List arg, dynamic hint});
+
+  Future<Uint32List> examplePrimitiveListTypeU32TwinNormal(
+      {required Uint32List arg, dynamic hint});
+
+  Future<Uint64List> examplePrimitiveListTypeU64TwinNormal(
+      {required Uint64List arg, dynamic hint});
+
+  Future<Uint8List> examplePrimitiveListTypeU8TwinNormal(
+      {required Uint8List arg, dynamic hint});
+
+  VecOfPrimitivePackTwinSync handleVecOfPrimitiveTwinSync(
+      {required int n, dynamic hint});
+
+  ZeroCopyVecOfPrimitivePackTwinSync handleZeroCopyVecOfPrimitiveTwinSync(
+      {required int n, dynamic hint});
+
+  ZeroCopyVecOfPrimitivePackTwinSync handleZeroCopyVecOfPrimitiveSyncTwinSync(
+      {required int n, dynamic hint});
+
+  List<bool> examplePrimitiveListTypeBoolTwinSync(
+      {required List<bool> arg, dynamic hint});
+
+  Float32List examplePrimitiveListTypeF32TwinSync(
+      {required Float32List arg, dynamic hint});
+
+  Float64List examplePrimitiveListTypeF64TwinSync(
+      {required Float64List arg, dynamic hint});
+
+  Int16List examplePrimitiveListTypeI16TwinSync(
+      {required Int16List arg, dynamic hint});
+
+  Int32List examplePrimitiveListTypeI32TwinSync(
+      {required Int32List arg, dynamic hint});
+
+  Int64List examplePrimitiveListTypeI64TwinSync(
+      {required Int64List arg, dynamic hint});
+
+  Int8List examplePrimitiveListTypeI8TwinSync(
+      {required Int8List arg, dynamic hint});
+
+  Uint16List examplePrimitiveListTypeU16TwinSync(
+      {required Uint16List arg, dynamic hint});
+
+  Uint32List examplePrimitiveListTypeU32TwinSync(
+      {required Uint32List arg, dynamic hint});
+
+  Uint64List examplePrimitiveListTypeU64TwinSync(
+      {required Uint64List arg, dynamic hint});
+
+  Uint8List examplePrimitiveListTypeU8TwinSync(
+      {required Uint8List arg, dynamic hint});
+
+  int primitiveTypesTwinSync(
+      {required int myI32,
+      required int myI64,
+      required double myF64,
+      required bool myBool,
+      dynamic hint});
+
+  int primitiveU32TwinSync({required int myU32, dynamic hint});
+
+  bool examplePrimitiveTypeBoolTwinSync({required bool arg, dynamic hint});
+
+  double examplePrimitiveTypeF32TwinSync({required double arg, dynamic hint});
+
+  double examplePrimitiveTypeF64TwinSync({required double arg, dynamic hint});
+
+  int examplePrimitiveTypeI16TwinSync({required int arg, dynamic hint});
+
+  int examplePrimitiveTypeI32TwinSync({required int arg, dynamic hint});
+
+  int examplePrimitiveTypeI64TwinSync({required int arg, dynamic hint});
+
+  int examplePrimitiveTypeI8TwinSync({required int arg, dynamic hint});
+
+  int examplePrimitiveTypeU16TwinSync({required int arg, dynamic hint});
+
+  int examplePrimitiveTypeU32TwinSync({required int arg, dynamic hint});
+
+  int examplePrimitiveTypeU64TwinSync({required int arg, dynamic hint});
+
+  int examplePrimitiveTypeU8TwinSync({required int arg, dynamic hint});
+
+  MoreThanJustOneRawStringStructTwinSync
+      testMoreThanJustOneRawStringStructTwinSync({dynamic hint});
+
+  RawStringItemStructTwinSync testRawStringItemStructTwinSync({dynamic hint});
+
+  EnumOpaqueTwinSyncArray5 createArrayOpaqueEnumTwinSync({dynamic hint});
+
+  OpaqueNestedTwinSync createNestedOpaqueTwinSync({dynamic hint});
+
+  HideData createOpaqueTwinSync({dynamic hint});
+
+  HideData? createOptionOpaqueTwinSync({HideData? opaque, dynamic hint});
+
+  NonSendHideData createSyncOpaqueTwinSync({dynamic hint});
+
+  FrbOpaqueReturn frbGeneratorTestTwinSync({dynamic hint});
+
+  void opaqueArrayRunTwinSync({required HideDataArray2 data, dynamic hint});
+
+  HideDataArray2 opaqueArrayTwinSync({dynamic hint});
+
+  void opaqueVecRunTwinSync({required List<HideData> data, dynamic hint});
+
+  List<HideData> opaqueVecTwinSync({dynamic hint});
+
+  String runEnumOpaqueTwinSync(
+      {required EnumOpaqueTwinSync opaque, dynamic hint});
+
+  void runNestedOpaqueTwinSync(
+      {required OpaqueNestedTwinSync opaque, dynamic hint});
+
+  String runNonCloneTwinSync({required NonCloneData clone, dynamic hint});
+
+  String runOpaqueTwinSync({required HideData opaque, dynamic hint});
+
+  String runOpaqueWithDelayTwinSync({required HideData opaque, dynamic hint});
+
+  String unwrapRustOpaqueTwinSync({required HideData opaque, dynamic hint});
+
+  int simpleAdderTwinSync({required int a, required int b, dynamic hint});
+
+  StructWithOneFieldTwinSync funcStructWithOneFieldTwinSync(
+      {required StructWithOneFieldTwinSync arg, dynamic hint});
+
+  StructWithTwoFieldTwinSync funcStructWithTwoFieldTwinSync(
+      {required StructWithTwoFieldTwinSync arg, dynamic hint});
+
+  StructWithZeroFieldTwinSync funcStructWithZeroFieldTwinSync(
+      {required StructWithZeroFieldTwinSync arg, dynamic hint});
+
+  TupleStructWithOneFieldTwinSync funcTupleStructWithOneFieldTwinSync(
+      {required TupleStructWithOneFieldTwinSync arg, dynamic hint});
+
+  TupleStructWithTwoFieldTwinSync funcTupleStructWithTwoFieldTwinSync(
+      {required TupleStructWithTwoFieldTwinSync arg, dynamic hint});
+
+  void testTuple2TwinSync({required List<(String, int)> value, dynamic hint});
+
+  (String, int) testTupleTwinSync({(String, int)? value, dynamic hint});
+
+  int handleTypeAliasIdTwinSync({required int input, dynamic hint});
+
+  TestModelTwinSync handleTypeAliasModelTwinSync(
+      {required int input, dynamic hint});
+
+  int handleTypeNestAliasIdTwinSync({required int input, dynamic hint});
+
+  FeatureUuidTwinSync handleNestedUuidsTwinSync(
+      {required FeatureUuidTwinSync ids, dynamic hint});
+
+  UuidValue handleUuidTwinSync({required UuidValue id, dynamic hint});
+
+  List<UuidValue> handleUuidsTwinSync(
+      {required List<UuidValue> ids, dynamic hint});
 
   Future<MoreThanJustOneRawStringStructTwinNormal>
       testMoreThanJustOneRawStringStructTwinNormal({dynamic hint});
@@ -4086,6 +4766,5124 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  BlobTwinSync boxedBlobTwinSync({required U8Array1600 blob, dynamic hint}) {
+    var arg0 = api2wire_box_u_8_array_1600(blob);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_boxed_blob_twin_sync(arg0),
+      parseSuccessData: _wire2api_blob_twin_sync,
+      parseErrorData: null,
+      constMeta: kBoxedBlobTwinSyncConstMeta,
+      argValues: [blob],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBoxedBlobTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "boxed_blob_twin_sync",
+        argNames: ["blob"],
+      );
+
+  @override
+  TestIdTwinSync funcTestIdTwinSync(
+      {required TestIdTwinSync id, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_test_id_twin_sync(id);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_test_id_twin_sync(arg0),
+      parseSuccessData: _wire2api_test_id_twin_sync,
+      parseErrorData: null,
+      constMeta: kFuncTestIdTwinSyncConstMeta,
+      argValues: [id],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncTestIdTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "func_test_id_twin_sync",
+        argNames: ["id"],
+      );
+
+  @override
+  U8Array5 getArrayTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_get_array_twin_sync(),
+      parseSuccessData: _wire2api_u_8_array_5,
+      parseErrorData: null,
+      constMeta: kGetArrayTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kGetArrayTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "get_array_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  PointTwinSyncArray2 getComplexArrayTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_get_complex_array_twin_sync(),
+      parseSuccessData: _wire2api_point_twin_sync_array_2,
+      parseErrorData: null,
+      constMeta: kGetComplexArrayTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kGetComplexArrayTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "get_complex_array_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  double lastNumberTwinSync({required F64Array16 array, dynamic hint}) {
+    var arg0 = api2wire_f_64_array_16(array);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_last_number_twin_sync(arg0),
+      parseSuccessData: _wire2api_f_64,
+      parseErrorData: null,
+      constMeta: kLastNumberTwinSyncConstMeta,
+      argValues: [array],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kLastNumberTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "last_number_twin_sync",
+        argNames: ["array"],
+      );
+
+  @override
+  TestIdTwinSyncArray2 nestedIdTwinSync(
+      {required TestIdTwinSyncArray4 id, dynamic hint}) {
+    var arg0 = api2wire_test_id_twin_sync_array_4(id);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_nested_id_twin_sync(arg0),
+      parseSuccessData: _wire2api_test_id_twin_sync_array_2,
+      parseErrorData: null,
+      constMeta: kNestedIdTwinSyncConstMeta,
+      argValues: [id],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNestedIdTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "nested_id_twin_sync",
+        argNames: ["id"],
+      );
+
+  @override
+  MessageIdTwinSync newMsgidTwinSync({required U8Array32 id, dynamic hint}) {
+    var arg0 = api2wire_u_8_array_32(id);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_new_msgid_twin_sync(arg0),
+      parseSuccessData: _wire2api_message_id_twin_sync,
+      parseErrorData: null,
+      constMeta: kNewMsgidTwinSyncConstMeta,
+      argValues: [id],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNewMsgidTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "new_msgid_twin_sync",
+        argNames: ["id"],
+      );
+
+  @override
+  FeedIdTwinSync returnBoxedFeedIdTwinSync(
+      {required U8Array8 id, dynamic hint}) {
+    var arg0 = api2wire_u_8_array_8(id);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_return_boxed_feed_id_twin_sync(arg0),
+      parseSuccessData: _wire2api_box_feed_id_twin_sync,
+      parseErrorData: null,
+      constMeta: kReturnBoxedFeedIdTwinSyncConstMeta,
+      argValues: [id],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kReturnBoxedFeedIdTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "return_boxed_feed_id_twin_sync",
+        argNames: ["id"],
+      );
+
+  @override
+  U8Array8 returnBoxedRawFeedIdTwinSync(
+      {required FeedIdTwinSync id, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_feed_id_twin_sync(id);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_return_boxed_raw_feed_id_twin_sync(arg0),
+      parseSuccessData: _wire2api_box_u_8_array_8,
+      parseErrorData: null,
+      constMeta: kReturnBoxedRawFeedIdTwinSyncConstMeta,
+      argValues: [id],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kReturnBoxedRawFeedIdTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "return_boxed_raw_feed_id_twin_sync",
+        argNames: ["id"],
+      );
+
+  @override
+  U8Array1600 useBoxedBlobTwinSync({required BlobTwinSync blob, dynamic hint}) {
+    var arg0 = api2wire_box_blob_twin_sync(blob);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_use_boxed_blob_twin_sync(arg0),
+      parseSuccessData: _wire2api_u_8_array_1600,
+      parseErrorData: null,
+      constMeta: kUseBoxedBlobTwinSyncConstMeta,
+      argValues: [blob],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kUseBoxedBlobTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "use_boxed_blob_twin_sync",
+        argNames: ["blob"],
+      );
+
+  @override
+  U8Array32 useMsgidTwinSync({required MessageIdTwinSync id, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_message_id_twin_sync(id);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_use_msgid_twin_sync(arg0),
+      parseSuccessData: _wire2api_u_8_array_32,
+      parseErrorData: null,
+      constMeta: kUseMsgidTwinSyncConstMeta,
+      argValues: [id],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kUseMsgidTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "use_msgid_twin_sync",
+        argNames: ["id"],
+      );
+
+  @override
+  void handleCustomizedStructTwinSync(
+      {required CustomizedTwinSync val, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_customized_twin_sync(val);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_customized_struct_twin_sync(arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kHandleCustomizedStructTwinSyncConstMeta,
+      argValues: [val],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleCustomizedStructTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_customized_struct_twin_sync",
+        argNames: ["val"],
+      );
+
+  @override
+  UserIdTwinSync nextUserIdTwinSync(
+      {required UserIdTwinSync userId, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_user_id_twin_sync(userId);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_next_user_id_twin_sync(arg0),
+      parseSuccessData: _wire2api_user_id_twin_sync,
+      parseErrorData: null,
+      constMeta: kNextUserIdTwinSyncConstMeta,
+      argValues: [userId],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNextUserIdTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "next_user_id_twin_sync",
+        argNames: ["userId"],
+      );
+
+  @override
+  DateTime datetimeLocalTwinSync({required DateTime d, dynamic hint}) {
+    var arg0 = api2wire_Chrono_Local(d);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_datetime_local_twin_sync(arg0),
+      parseSuccessData: _wire2api_Chrono_Local,
+      parseErrorData: null,
+      constMeta: kDatetimeLocalTwinSyncConstMeta,
+      argValues: [d],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kDatetimeLocalTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "datetime_local_twin_sync",
+        argNames: ["d"],
+      );
+
+  @override
+  DateTime datetimeUtcTwinSync({required DateTime d, dynamic hint}) {
+    var arg0 = api2wire_Chrono_Utc(d);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_datetime_utc_twin_sync(arg0),
+      parseSuccessData: _wire2api_Chrono_Utc,
+      parseErrorData: null,
+      constMeta: kDatetimeUtcTwinSyncConstMeta,
+      argValues: [d],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kDatetimeUtcTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "datetime_utc_twin_sync",
+        argNames: ["d"],
+      );
+
+  @override
+  Duration durationTwinSync({required Duration d, dynamic hint}) {
+    var arg0 = api2wire_Chrono_Duration(d);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_duration_twin_sync(arg0),
+      parseSuccessData: _wire2api_Chrono_Duration,
+      parseErrorData: null,
+      constMeta: kDurationTwinSyncConstMeta,
+      argValues: [d],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kDurationTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "duration_twin_sync",
+        argNames: ["d"],
+      );
+
+  @override
+  List<DateTime> handleDurationsTwinSync(
+      {required List<Duration> durations,
+      required DateTime since,
+      dynamic hint}) {
+    var arg0 = api2wire_Chrono_DurationList(durations);
+    var arg1 = api2wire_Chrono_Local(since);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_durations_twin_sync(arg0, arg1),
+      parseSuccessData: _wire2api_Chrono_LocalList,
+      parseErrorData: null,
+      constMeta: kHandleDurationsTwinSyncConstMeta,
+      argValues: [durations, since],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleDurationsTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "handle_durations_twin_sync",
+        argNames: ["durations", "since"],
+      );
+
+  @override
+  List<Duration> handleTimestampsTwinSync(
+      {required List<DateTime> timestamps,
+      required DateTime epoch,
+      dynamic hint}) {
+    var arg0 = api2wire_Chrono_NaiveList(timestamps);
+    var arg1 = api2wire_Chrono_Naive(epoch);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_timestamps_twin_sync(arg0, arg1),
+      parseSuccessData: _wire2api_Chrono_DurationList,
+      parseErrorData: null,
+      constMeta: kHandleTimestampsTwinSyncConstMeta,
+      argValues: [timestamps, epoch],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleTimestampsTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "handle_timestamps_twin_sync",
+        argNames: ["timestamps", "epoch"],
+      );
+
+  @override
+  Duration howLongDoesItTakeTwinSync(
+      {required FeatureChronoTwinSync mine, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_feature_chrono_twin_sync(mine);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_how_long_does_it_take_twin_sync(arg0),
+      parseSuccessData: _wire2api_Chrono_Duration,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kHowLongDoesItTakeTwinSyncConstMeta,
+      argValues: [mine],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHowLongDoesItTakeTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "how_long_does_it_take_twin_sync",
+        argNames: ["mine"],
+      );
+
+  @override
+  DateTime naivedatetimeTwinSync({required DateTime d, dynamic hint}) {
+    var arg0 = api2wire_Chrono_Naive(d);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_naivedatetime_twin_sync(arg0),
+      parseSuccessData: _wire2api_Chrono_Naive,
+      parseErrorData: null,
+      constMeta: kNaivedatetimeTwinSyncConstMeta,
+      argValues: [d],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNaivedatetimeTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "naivedatetime_twin_sync",
+        argNames: ["d"],
+      );
+
+  @override
+  DateTime? optionalEmptyDatetimeUtcTwinSync({DateTime? d, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_Chrono_Utc(d);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_optional_empty_datetime_utc_twin_sync(arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_Chrono_Utc,
+      parseErrorData: null,
+      constMeta: kOptionalEmptyDatetimeUtcTwinSyncConstMeta,
+      argValues: [d],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOptionalEmptyDatetimeUtcTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "optional_empty_datetime_utc_twin_sync",
+        argNames: ["d"],
+      );
+
+  @override
+  TestChronoTwinSync testChronoTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_test_chrono_twin_sync(),
+      parseSuccessData: _wire2api_test_chrono_twin_sync,
+      parseErrorData: null,
+      constMeta: kTestChronoTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestChronoTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "test_chrono_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  TestChronoTwinSync testPreciseChronoTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_test_precise_chrono_twin_sync(),
+      parseSuccessData: _wire2api_test_chrono_twin_sync,
+      parseErrorData: null,
+      constMeta: kTestPreciseChronoTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestPreciseChronoTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "test_precise_chrono_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  void structWithCommentsTwinSyncInstanceMethodTwinSync(
+      {required StructWithCommentsTwinSync that, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_struct_with_comments_twin_sync(that);
+    return handler.executeSync(SyncTask(
+      callFfi: () =>
+          wire.wire_StructWithCommentsTwinSync_instance_method_twin_sync(arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kStructWithCommentsTwinSyncInstanceMethodTwinSyncConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kStructWithCommentsTwinSyncInstanceMethodTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName: "StructWithCommentsTwinSync_instance_method_twin_sync",
+            argNames: ["that"],
+          );
+
+  @override
+  void structWithCommentsTwinSyncStaticMethodTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () =>
+          wire.wire_StructWithCommentsTwinSync_static_method_twin_sync(),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kStructWithCommentsTwinSyncStaticMethodTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kStructWithCommentsTwinSyncStaticMethodTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "StructWithCommentsTwinSync_static_method_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  void functionWithCommentsSlashStarStarTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () =>
+          wire.wire_function_with_comments_slash_star_star_twin_sync(),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kFunctionWithCommentsSlashStarStarTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFunctionWithCommentsSlashStarStarTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "function_with_comments_slash_star_star_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  void functionWithCommentsTripleSlashMultiLineTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () =>
+          wire.wire_function_with_comments_triple_slash_multi_line_twin_sync(),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kFunctionWithCommentsTripleSlashMultiLineTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kFunctionWithCommentsTripleSlashMultiLineTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "function_with_comments_triple_slash_multi_line_twin_sync",
+            argNames: [],
+          );
+
+  @override
+  void functionWithCommentsTripleSlashSingleLineTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () =>
+          wire.wire_function_with_comments_triple_slash_single_line_twin_sync(),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kFunctionWithCommentsTripleSlashSingleLineTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kFunctionWithCommentsTripleSlashSingleLineTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "function_with_comments_triple_slash_single_line_twin_sync",
+            argNames: [],
+          );
+
+  @override
+  dynamic returnDartDynamicTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_return_dart_dynamic_twin_sync(),
+      parseSuccessData: _wire2api_dartabi,
+      parseErrorData: null,
+      constMeta: kReturnDartDynamicTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kReturnDartDynamicTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "return_dart_dynamic_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  String asyncAcceptDartOpaqueTwinSync({required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_async_accept_dart_opaque_twin_sync(arg0),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kAsyncAcceptDartOpaqueTwinSyncConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kAsyncAcceptDartOpaqueTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "async_accept_dart_opaque_twin_sync",
+        argNames: ["opaque"],
+      );
+
+  @override
+  EnumDartOpaqueTwinSync createEnumDartOpaqueTwinSync(
+      {required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_create_enum_dart_opaque_twin_sync(arg0),
+      parseSuccessData: _wire2api_enum_dart_opaque_twin_sync,
+      parseErrorData: null,
+      constMeta: kCreateEnumDartOpaqueTwinSyncConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateEnumDartOpaqueTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_enum_dart_opaque_twin_sync",
+        argNames: ["opaque"],
+      );
+
+  @override
+  DartOpaqueNestedTwinSync createNestedDartOpaqueTwinSync(
+      {required Object opaque1, required Object opaque2, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque1);
+    var arg1 = api2wire_DartOpaque(opaque2);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_create_nested_dart_opaque_twin_sync(arg0, arg1),
+      parseSuccessData: _wire2api_dart_opaque_nested_twin_sync,
+      parseErrorData: null,
+      constMeta: kCreateNestedDartOpaqueTwinSyncConstMeta,
+      argValues: [opaque1, opaque2],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateNestedDartOpaqueTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_nested_dart_opaque_twin_sync",
+        argNames: ["opaque1", "opaque2"],
+      );
+
+  @override
+  void dropStaticDartOpaqueTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_drop_static_dart_opaque_twin_sync(),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kDropStaticDartOpaqueTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kDropStaticDartOpaqueTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "drop_static_dart_opaque_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  void getEnumDartOpaqueTwinSync(
+      {required EnumDartOpaqueTwinSync opaque, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_enum_dart_opaque_twin_sync(opaque);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_get_enum_dart_opaque_twin_sync(arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kGetEnumDartOpaqueTwinSyncConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kGetEnumDartOpaqueTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "get_enum_dart_opaque_twin_sync",
+        argNames: ["opaque"],
+      );
+
+  @override
+  void getNestedDartOpaqueTwinSync(
+      {required DartOpaqueNestedTwinSync opaque, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_dart_opaque_nested_twin_sync(opaque);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_get_nested_dart_opaque_twin_sync(arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kGetNestedDartOpaqueTwinSyncConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kGetNestedDartOpaqueTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "get_nested_dart_opaque_twin_sync",
+        argNames: ["opaque"],
+      );
+
+  @override
+  void loopBackArrayGetTwinSync({required ObjectArray1 opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque_array_1(opaque);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_loop_back_array_get_twin_sync(arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kLoopBackArrayGetTwinSyncConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kLoopBackArrayGetTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "loop_back_array_get_twin_sync",
+        argNames: ["opaque"],
+      );
+
+  @override
+  ObjectArray1 loopBackArrayTwinSync({required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_loop_back_array_twin_sync(arg0),
+      parseSuccessData: _wire2api_DartOpaque_array_1,
+      parseErrorData: null,
+      constMeta: kLoopBackArrayTwinSyncConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kLoopBackArrayTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "loop_back_array_twin_sync",
+        argNames: ["opaque"],
+      );
+
+  @override
+  void loopBackOptionGetTwinSync({Object? opaque, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_DartOpaque(opaque);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_loop_back_option_get_twin_sync(arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kLoopBackOptionGetTwinSyncConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kLoopBackOptionGetTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "loop_back_option_get_twin_sync",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Object? loopBackOptionTwinSync({required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_loop_back_option_twin_sync(arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_DartOpaque,
+      parseErrorData: null,
+      constMeta: kLoopBackOptionTwinSyncConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kLoopBackOptionTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "loop_back_option_twin_sync",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Object loopBackTwinSync({required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_loop_back_twin_sync(arg0),
+      parseSuccessData: _wire2api_DartOpaque,
+      parseErrorData: null,
+      constMeta: kLoopBackTwinSyncConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kLoopBackTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "loop_back_twin_sync",
+        argNames: ["opaque"],
+      );
+
+  @override
+  void loopBackVecGetTwinSync({required List<Object> opaque, dynamic hint}) {
+    var arg0 = api2wire_list_DartOpaque(opaque);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_loop_back_vec_get_twin_sync(arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kLoopBackVecGetTwinSyncConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kLoopBackVecGetTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "loop_back_vec_get_twin_sync",
+        argNames: ["opaque"],
+      );
+
+  @override
+  List<Object> loopBackVecTwinSync({required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_loop_back_vec_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_DartOpaque,
+      parseErrorData: null,
+      constMeta: kLoopBackVecTwinSyncConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kLoopBackVecTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "loop_back_vec_twin_sync",
+        argNames: ["opaque"],
+      );
+
+  @override
+  void panicUnwrapDartOpaqueTwinSync({required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_panic_unwrap_dart_opaque_twin_sync(arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kPanicUnwrapDartOpaqueTwinSyncConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kPanicUnwrapDartOpaqueTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "panic_unwrap_dart_opaque_twin_sync",
+        argNames: ["opaque"],
+      );
+
+  @override
+  void setStaticDartOpaqueTwinSync({required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_set_static_dart_opaque_twin_sync(arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kSetStaticDartOpaqueTwinSyncConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSetStaticDartOpaqueTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "set_static_dart_opaque_twin_sync",
+        argNames: ["opaque"],
+      );
+
+  @override
+  EnumSimpleTwinSync funcEnumSimpleTwinSync(
+      {required EnumSimpleTwinSync arg, dynamic hint}) {
+    var arg0 = api2wire_enum_simple_twin_sync(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_enum_simple_twin_sync(arg0),
+      parseSuccessData: _wire2api_enum_simple_twin_sync,
+      parseErrorData: null,
+      constMeta: kFuncEnumSimpleTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncEnumSimpleTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "func_enum_simple_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  EnumWithItemMixedTwinSync funcEnumWithItemMixedTwinSync(
+      {required EnumWithItemMixedTwinSync arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_enum_with_item_mixed_twin_sync(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_enum_with_item_mixed_twin_sync(arg0),
+      parseSuccessData: _wire2api_enum_with_item_mixed_twin_sync,
+      parseErrorData: null,
+      constMeta: kFuncEnumWithItemMixedTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncEnumWithItemMixedTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_enum_with_item_mixed_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  EnumWithItemStructTwinSync funcEnumWithItemStructTwinSync(
+      {required EnumWithItemStructTwinSync arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_enum_with_item_struct_twin_sync(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_enum_with_item_struct_twin_sync(arg0),
+      parseSuccessData: _wire2api_enum_with_item_struct_twin_sync,
+      parseErrorData: null,
+      constMeta: kFuncEnumWithItemStructTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncEnumWithItemStructTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_enum_with_item_struct_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  EnumWithItemTupleTwinSync funcEnumWithItemTupleTwinSync(
+      {required EnumWithItemTupleTwinSync arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_enum_with_item_tuple_twin_sync(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_enum_with_item_tuple_twin_sync(arg0),
+      parseSuccessData: _wire2api_enum_with_item_tuple_twin_sync,
+      parseErrorData: null,
+      constMeta: kFuncEnumWithItemTupleTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncEnumWithItemTupleTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_enum_with_item_tuple_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  WeekdaysTwinSync handleEnumParameterTwinSync(
+      {required WeekdaysTwinSync weekday, dynamic hint}) {
+    var arg0 = api2wire_weekdays_twin_sync(weekday);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_enum_parameter_twin_sync(arg0),
+      parseSuccessData: _wire2api_weekdays_twin_sync,
+      parseErrorData: null,
+      constMeta: kHandleEnumParameterTwinSyncConstMeta,
+      argValues: [weekday],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleEnumParameterTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_enum_parameter_twin_sync",
+        argNames: ["weekday"],
+      );
+
+  @override
+  KitchenSinkTwinSync handleEnumStructTwinSync(
+      {required KitchenSinkTwinSync val, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_kitchen_sink_twin_sync(val);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_enum_struct_twin_sync(arg0),
+      parseSuccessData: _wire2api_kitchen_sink_twin_sync,
+      parseErrorData: null,
+      constMeta: kHandleEnumStructTwinSyncConstMeta,
+      argValues: [val],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleEnumStructTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "handle_enum_struct_twin_sync",
+        argNames: ["val"],
+      );
+
+  @override
+  WeekdaysTwinSync? handleReturnEnumTwinSync(
+      {required String input, dynamic hint}) {
+    var arg0 = api2wire_String(input);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_return_enum_twin_sync(arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_weekdays_twin_sync,
+      parseErrorData: null,
+      constMeta: kHandleReturnEnumTwinSyncConstMeta,
+      argValues: [input],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleReturnEnumTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "handle_return_enum_twin_sync",
+        argNames: ["input"],
+      );
+
+  @override
+  MeasureTwinSync? multiplyByTenTwinSync(
+      {required MeasureTwinSync measure, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_measure_twin_sync(measure);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_multiply_by_ten_twin_sync(arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_measure_twin_sync,
+      parseErrorData: null,
+      constMeta: kMultiplyByTenTwinSyncConstMeta,
+      argValues: [measure],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kMultiplyByTenTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "multiply_by_ten_twin_sync",
+        argNames: ["measure"],
+      );
+
+  @override
+  Uint8List printNoteTwinSync({required NoteTwinSync note, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_note_twin_sync(note);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_print_note_twin_sync(arg0),
+      parseSuccessData: _wire2api_ZeroCopyBuffer_list_prim_u_8,
+      parseErrorData: null,
+      constMeta: kPrintNoteTwinSyncConstMeta,
+      argValues: [note],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kPrintNoteTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "print_note_twin_sync",
+        argNames: ["note"],
+      );
+
+  @override
+  String eventTwinSyncAsStringTwinSync(
+      {required EventTwinSync that, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_event_twin_sync(that);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_EventTwinSync_as_string_twin_sync(arg0),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kEventTwinSyncAsStringTwinSyncConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kEventTwinSyncAsStringTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "EventTwinSync_as_string_twin_sync",
+        argNames: ["that"],
+      );
+
+  @override
+  void closeEventListenerTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_close_event_listener_twin_sync(),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kCloseEventListenerTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCloseEventListenerTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "close_event_listener_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  void createEventTwinSync(
+      {required String address, required String payload, dynamic hint}) {
+    var arg0 = api2wire_String(address);
+    var arg1 = api2wire_String(payload);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_create_event_twin_sync(arg0, arg1),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kCreateEventTwinSyncConstMeta,
+      argValues: [address, payload],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateEventTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "create_event_twin_sync",
+        argNames: ["address", "payload"],
+      );
+
+  @override
+  Stream<EventTwinSync> registerEventListenerTwinSync({dynamic hint}) {
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) => wire.wire_register_event_listener_twin_sync(port_),
+      parseSuccessData: _wire2api_event_twin_sync,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kRegisterEventListenerTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRegisterEventListenerTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "register_event_listener_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  CustomStructTwinSync customStructTwinSyncNewTwinSync(
+      {required String message, dynamic hint}) {
+    var arg0 = api2wire_String(message);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_CustomStructTwinSync_new_twin_sync(arg0),
+      parseSuccessData: _wire2api_custom_struct_twin_sync,
+      parseErrorData: null,
+      constMeta: kCustomStructTwinSyncNewTwinSyncConstMeta,
+      argValues: [message],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCustomStructTwinSyncNewTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "CustomStructTwinSync_new_twin_sync",
+        argNames: ["message"],
+      );
+
+  @override
+  void customStructTwinSyncNonstaticReturnCustomStructErrorTwinSync(
+      {required CustomStructTwinSync that, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_custom_struct_twin_sync(that);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire
+          .wire_CustomStructTwinSync_nonstatic_return_custom_struct_error_twin_sync(
+              arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_struct_error_another_twin_sync,
+      constMeta:
+          kCustomStructTwinSyncNonstaticReturnCustomStructErrorTwinSyncConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kCustomStructTwinSyncNonstaticReturnCustomStructErrorTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "CustomStructTwinSync_nonstatic_return_custom_struct_error_twin_sync",
+            argNames: ["that"],
+          );
+
+  @override
+  int customStructTwinSyncNonstaticReturnCustomStructOkTwinSync(
+      {required CustomStructTwinSync that, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_custom_struct_twin_sync(that);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire
+          .wire_CustomStructTwinSync_nonstatic_return_custom_struct_ok_twin_sync(
+              arg0),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: _wire2api_custom_struct_error_another_twin_sync,
+      constMeta:
+          kCustomStructTwinSyncNonstaticReturnCustomStructOkTwinSyncConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kCustomStructTwinSyncNonstaticReturnCustomStructOkTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "CustomStructTwinSync_nonstatic_return_custom_struct_ok_twin_sync",
+            argNames: ["that"],
+          );
+
+  @override
+  void customStructTwinSyncStaticReturnCustomStructErrorTwinSync(
+      {dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire
+          .wire_CustomStructTwinSync_static_return_custom_struct_error_twin_sync(),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_struct_error_another_twin_sync,
+      constMeta:
+          kCustomStructTwinSyncStaticReturnCustomStructErrorTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kCustomStructTwinSyncStaticReturnCustomStructErrorTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "CustomStructTwinSync_static_return_custom_struct_error_twin_sync",
+            argNames: [],
+          );
+
+  @override
+  int customStructTwinSyncStaticReturnCustomStructOkTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire
+          .wire_CustomStructTwinSync_static_return_custom_struct_ok_twin_sync(),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: _wire2api_custom_struct_error_another_twin_sync,
+      constMeta:
+          kCustomStructTwinSyncStaticReturnCustomStructOkTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kCustomStructTwinSyncStaticReturnCustomStructOkTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "CustomStructTwinSync_static_return_custom_struct_ok_twin_sync",
+            argNames: [],
+          );
+
+  @override
+  SomeStructTwinSync someStructTwinSyncNewTwinSync(
+      {required int value, dynamic hint}) {
+    var arg0 = api2wire_u_32(value);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_SomeStructTwinSync_new_twin_sync(arg0),
+      parseSuccessData: _wire2api_some_struct_twin_sync,
+      parseErrorData: null,
+      constMeta: kSomeStructTwinSyncNewTwinSyncConstMeta,
+      argValues: [value],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSomeStructTwinSyncNewTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "SomeStructTwinSync_new_twin_sync",
+        argNames: ["value"],
+      );
+
+  @override
+  int someStructTwinSyncNonStaticReturnErrCustomErrorTwinSync(
+      {required SomeStructTwinSync that, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_some_struct_twin_sync(that);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire
+          .wire_SomeStructTwinSync_non_static_return_err_custom_error_twin_sync(
+              arg0),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: _wire2api_custom_error_twin_sync,
+      constMeta:
+          kSomeStructTwinSyncNonStaticReturnErrCustomErrorTwinSyncConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kSomeStructTwinSyncNonStaticReturnErrCustomErrorTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "SomeStructTwinSync_non_static_return_err_custom_error_twin_sync",
+            argNames: ["that"],
+          );
+
+  @override
+  int someStructTwinSyncNonStaticReturnOkCustomErrorTwinSync(
+      {required SomeStructTwinSync that, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_some_struct_twin_sync(that);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire
+          .wire_SomeStructTwinSync_non_static_return_ok_custom_error_twin_sync(
+              arg0),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: _wire2api_custom_error_twin_sync,
+      constMeta:
+          kSomeStructTwinSyncNonStaticReturnOkCustomErrorTwinSyncConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kSomeStructTwinSyncNonStaticReturnOkCustomErrorTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "SomeStructTwinSync_non_static_return_ok_custom_error_twin_sync",
+            argNames: ["that"],
+          );
+
+  @override
+  int someStructTwinSyncStaticReturnErrCustomErrorTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire
+          .wire_SomeStructTwinSync_static_return_err_custom_error_twin_sync(),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: _wire2api_custom_error_twin_sync,
+      constMeta: kSomeStructTwinSyncStaticReturnErrCustomErrorTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kSomeStructTwinSyncStaticReturnErrCustomErrorTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "SomeStructTwinSync_static_return_err_custom_error_twin_sync",
+            argNames: [],
+          );
+
+  @override
+  int someStructTwinSyncStaticReturnOkCustomErrorTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire
+          .wire_SomeStructTwinSync_static_return_ok_custom_error_twin_sync(),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: _wire2api_custom_error_twin_sync,
+      constMeta: kSomeStructTwinSyncStaticReturnOkCustomErrorTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kSomeStructTwinSyncStaticReturnOkCustomErrorTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "SomeStructTwinSync_static_return_ok_custom_error_twin_sync",
+            argNames: [],
+          );
+
+  @override
+  void customEnumErrorPanicTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_custom_enum_error_panic_twin_sync(),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_enum_error_twin_sync,
+      constMeta: kCustomEnumErrorPanicTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCustomEnumErrorPanicTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "custom_enum_error_panic_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  int customEnumErrorReturnErrorTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_custom_enum_error_return_error_twin_sync(),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: _wire2api_custom_enum_error_twin_sync,
+      constMeta: kCustomEnumErrorReturnErrorTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCustomEnumErrorReturnErrorTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "custom_enum_error_return_error_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  int customEnumErrorReturnOkTwinSync({required int arg, dynamic hint}) {
+    var arg0 = api2wire_u_32(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_custom_enum_error_return_ok_twin_sync(arg0),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: _wire2api_custom_enum_error_twin_sync,
+      constMeta: kCustomEnumErrorReturnOkTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCustomEnumErrorReturnOkTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "custom_enum_error_return_ok_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  void customNestedErrorReturnErrorTwinSync(
+      {required CustomNestedErrorOuterTwinSync arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_custom_nested_error_outer_twin_sync(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_custom_nested_error_return_error_twin_sync(arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_nested_error_outer_twin_sync,
+      constMeta: kCustomNestedErrorReturnErrorTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCustomNestedErrorReturnErrorTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "custom_nested_error_return_error_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  void customStructErrorReturnErrorTwinSync(
+      {required CustomStructErrorTwinSync arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_custom_struct_error_twin_sync(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_custom_struct_error_return_error_twin_sync(arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_struct_error_twin_sync,
+      constMeta: kCustomStructErrorReturnErrorTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCustomStructErrorReturnErrorTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "custom_struct_error_return_error_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int funcReturnErrorTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_return_error_twin_sync(),
+      parseSuccessData: _wire2api_i_32,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kFuncReturnErrorTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncReturnErrorTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "func_return_error_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  int funcTypeFalliblePanicTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_type_fallible_panic_twin_sync(),
+      parseSuccessData: _wire2api_i_32,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kFuncTypeFalliblePanicTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncTypeFalliblePanicTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_type_fallible_panic_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  int funcTypeInfalliblePanicTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_type_infallible_panic_twin_sync(),
+      parseSuccessData: _wire2api_i_32,
+      parseErrorData: null,
+      constMeta: kFuncTypeInfalliblePanicTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncTypeInfalliblePanicTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_type_infallible_panic_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  void panicWithCustomResultTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_panic_with_custom_result_twin_sync(),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_error_twin_sync,
+      constMeta: kPanicWithCustomResultTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kPanicWithCustomResultTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "panic_with_custom_result_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  void returnCustomNestedError1TwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_return_custom_nested_error_1_twin_sync(),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_nested_error_1_twin_sync,
+      constMeta: kReturnCustomNestedError1TwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kReturnCustomNestedError1TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "return_custom_nested_error_1_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  void returnCustomNestedError1Variant1TwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () =>
+          wire.wire_return_custom_nested_error_1_variant1_twin_sync(),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_nested_error_1_twin_sync,
+      constMeta: kReturnCustomNestedError1Variant1TwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kReturnCustomNestedError1Variant1TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "return_custom_nested_error_1_variant1_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  void returnCustomNestedError2TwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_return_custom_nested_error_2_twin_sync(),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_nested_error_2_twin_sync,
+      constMeta: kReturnCustomNestedError2TwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kReturnCustomNestedError2TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "return_custom_nested_error_2_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  void returnCustomStructErrorTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_return_custom_struct_error_twin_sync(),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_struct_error_another_twin_sync,
+      constMeta: kReturnCustomStructErrorTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kReturnCustomStructErrorTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "return_custom_struct_error_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  int returnCustomStructOkTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_return_custom_struct_ok_twin_sync(),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: _wire2api_custom_struct_error_another_twin_sync,
+      constMeta: kReturnCustomStructOkTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kReturnCustomStructOkTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "return_custom_struct_ok_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  int returnErrCustomErrorTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_return_err_custom_error_twin_sync(),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: _wire2api_custom_error_twin_sync,
+      constMeta: kReturnErrCustomErrorTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kReturnErrCustomErrorTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "return_err_custom_error_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  int returnErrorVariantTwinSync({required int variant, dynamic hint}) {
+    var arg0 = api2wire_u_32(variant);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_return_error_variant_twin_sync(arg0),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: _wire2api_custom_error_twin_sync,
+      constMeta: kReturnErrorVariantTwinSyncConstMeta,
+      argValues: [variant],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kReturnErrorVariantTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "return_error_variant_twin_sync",
+        argNames: ["variant"],
+      );
+
+  @override
+  int returnOkCustomErrorTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_return_ok_custom_error_twin_sync(),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: _wire2api_custom_error_twin_sync,
+      constMeta: kReturnOkCustomErrorTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kReturnOkCustomErrorTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "return_ok_custom_error_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  Stream<String> streamSinkThrowAnyhowTwinSync({dynamic hint}) {
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) => wire.wire_stream_sink_throw_anyhow_twin_sync(port_),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kStreamSinkThrowAnyhowTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kStreamSinkThrowAnyhowTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "stream_sink_throw_anyhow_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  void syncReturnCustomStructErrorTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_sync_return_custom_struct_error_twin_sync(),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_struct_error_twin_sync,
+      constMeta: kSyncReturnCustomStructErrorTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSyncReturnCustomStructErrorTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "sync_return_custom_struct_error_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  void throwAnyhowTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_throw_anyhow_twin_sync(),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kThrowAnyhowTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kThrowAnyhowTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "throw_anyhow_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  NewSimpleStruct callNewModuleSystemTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_call_new_module_system_twin_sync(),
+      parseSuccessData: _wire2api_new_simple_struct,
+      parseErrorData: null,
+      constMeta: kCallNewModuleSystemTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCallNewModuleSystemTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "call_new_module_system_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  OldSimpleStruct callOldModuleSystemTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_call_old_module_system_twin_sync(),
+      parseSuccessData: _wire2api_old_simple_struct,
+      parseErrorData: null,
+      constMeta: kCallOldModuleSystemTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCallOldModuleSystemTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "call_old_module_system_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  bool useImportedEnumTwinSync({required MyEnum myEnum, dynamic hint}) {
+    var arg0 = api2wire_my_enum(myEnum);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_use_imported_enum_twin_sync(arg0),
+      parseSuccessData: _wire2api_bool,
+      parseErrorData: null,
+      constMeta: kUseImportedEnumTwinSyncConstMeta,
+      argValues: [myEnum],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kUseImportedEnumTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "use_imported_enum_twin_sync",
+        argNames: ["myEnum"],
+      );
+
+  @override
+  bool useImportedStructTwinSync({required MyStruct myStruct, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_my_struct(myStruct);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_use_imported_struct_twin_sync(arg0),
+      parseSuccessData: _wire2api_bool,
+      parseErrorData: null,
+      constMeta: kUseImportedStructTwinSyncConstMeta,
+      argValues: [myStruct],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kUseImportedStructTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "use_imported_struct_twin_sync",
+        argNames: ["myStruct"],
+      );
+
+  @override
+  String concatenateWithTwinSyncConcatenateStaticTwinSync(
+      {required String a, required String b, dynamic hint}) {
+    var arg0 = api2wire_String(a);
+    var arg1 = api2wire_String(b);
+    return handler.executeSync(SyncTask(
+      callFfi: () =>
+          wire.wire_ConcatenateWithTwinSync_concatenate_static_twin_sync(
+              arg0, arg1),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kConcatenateWithTwinSyncConcatenateStaticTwinSyncConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kConcatenateWithTwinSyncConcatenateStaticTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConcatenateWithTwinSync_concatenate_static_twin_sync",
+            argNames: ["a", "b"],
+          );
+
+  @override
+  String concatenateWithTwinSyncConcatenateTwinSync(
+      {required ConcatenateWithTwinSync that,
+      required String b,
+      dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_concatenate_with_twin_sync(that);
+    var arg1 = api2wire_String(b);
+    return handler.executeSync(SyncTask(
+      callFfi: () =>
+          wire.wire_ConcatenateWithTwinSync_concatenate_twin_sync(arg0, arg1),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kConcatenateWithTwinSyncConcatenateTwinSyncConstMeta,
+      argValues: [that, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kConcatenateWithTwinSyncConcatenateTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "ConcatenateWithTwinSync_concatenate_twin_sync",
+        argNames: ["that", "b"],
+      );
+
+  @override
+  Stream<int>
+      concatenateWithTwinSyncHandleSomeStaticStreamSinkSingleArgTwinSync(
+          {dynamic hint}) {
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) => wire
+          .wire_ConcatenateWithTwinSync_handle_some_static_stream_sink_single_arg_twin_sync(
+              port_),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: null,
+      constMeta:
+          kConcatenateWithTwinSyncHandleSomeStaticStreamSinkSingleArgTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kConcatenateWithTwinSyncHandleSomeStaticStreamSinkSingleArgTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "ConcatenateWithTwinSync_handle_some_static_stream_sink_single_arg_twin_sync",
+            argNames: [],
+          );
+
+  @override
+  Stream<Log2TwinSync>
+      concatenateWithTwinSyncHandleSomeStaticStreamSinkTwinSync(
+          {required int key, required int max, dynamic hint}) {
+    var arg0 = api2wire_u_32(key);
+    var arg1 = api2wire_u_32(max);
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) => wire
+          .wire_ConcatenateWithTwinSync_handle_some_static_stream_sink_twin_sync(
+              port_, arg0, arg1),
+      parseSuccessData: _wire2api_log_2_twin_sync,
+      parseErrorData: null,
+      constMeta:
+          kConcatenateWithTwinSyncHandleSomeStaticStreamSinkTwinSyncConstMeta,
+      argValues: [key, max],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kConcatenateWithTwinSyncHandleSomeStaticStreamSinkTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "ConcatenateWithTwinSync_handle_some_static_stream_sink_twin_sync",
+            argNames: ["key", "max"],
+          );
+
+  @override
+  Stream<int> concatenateWithTwinSyncHandleSomeStreamSinkAt1TwinSync(
+      {required ConcatenateWithTwinSync that, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_concatenate_with_twin_sync(that);
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) => wire
+          .wire_ConcatenateWithTwinSync_handle_some_stream_sink_at_1_twin_sync(
+              port_, arg0),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: null,
+      constMeta:
+          kConcatenateWithTwinSyncHandleSomeStreamSinkAt1TwinSyncConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kConcatenateWithTwinSyncHandleSomeStreamSinkAt1TwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "ConcatenateWithTwinSync_handle_some_stream_sink_at_1_twin_sync",
+            argNames: ["that"],
+          );
+
+  @override
+  Stream<Log2TwinSync> concatenateWithTwinSyncHandleSomeStreamSinkTwinSync(
+      {required ConcatenateWithTwinSync that,
+      required int key,
+      required int max,
+      dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_concatenate_with_twin_sync(that);
+    var arg1 = api2wire_u_32(key);
+    var arg2 = api2wire_u_32(max);
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) =>
+          wire.wire_ConcatenateWithTwinSync_handle_some_stream_sink_twin_sync(
+              port_, arg0, arg1, arg2),
+      parseSuccessData: _wire2api_log_2_twin_sync,
+      parseErrorData: null,
+      constMeta: kConcatenateWithTwinSyncHandleSomeStreamSinkTwinSyncConstMeta,
+      argValues: [that, key, max],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kConcatenateWithTwinSyncHandleSomeStreamSinkTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "ConcatenateWithTwinSync_handle_some_stream_sink_twin_sync",
+            argNames: ["that", "key", "max"],
+          );
+
+  @override
+  ConcatenateWithTwinSync concatenateWithTwinSyncNewTwinSync(
+      {required String a, dynamic hint}) {
+    var arg0 = api2wire_String(a);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_ConcatenateWithTwinSync_new_twin_sync(arg0),
+      parseSuccessData: _wire2api_concatenate_with_twin_sync,
+      parseErrorData: null,
+      constMeta: kConcatenateWithTwinSyncNewTwinSyncConstMeta,
+      argValues: [a],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kConcatenateWithTwinSyncNewTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "ConcatenateWithTwinSync_new_twin_sync",
+        argNames: ["a"],
+      );
+
+  @override
+  int sumWithTwinSyncSumTwinSync(
+      {required SumWithTwinSync that,
+      required int y,
+      required int z,
+      dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_sum_with_twin_sync(that);
+    var arg1 = api2wire_u_32(y);
+    var arg2 = api2wire_u_32(z);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_SumWithTwinSync_sum_twin_sync(arg0, arg1, arg2),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: null,
+      constMeta: kSumWithTwinSyncSumTwinSyncConstMeta,
+      argValues: [that, y, z],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSumWithTwinSyncSumTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "SumWithTwinSync_sum_twin_sync",
+        argNames: ["that", "y", "z"],
+      );
+
+  @override
+  SumWithTwinSyncArray3 getSumArrayTwinSync(
+      {required int a, required int b, required int c, dynamic hint}) {
+    var arg0 = api2wire_u_32(a);
+    var arg1 = api2wire_u_32(b);
+    var arg2 = api2wire_u_32(c);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_get_sum_array_twin_sync(arg0, arg1, arg2),
+      parseSuccessData: _wire2api_sum_with_twin_sync_array_3,
+      parseErrorData: null,
+      constMeta: kGetSumArrayTwinSyncConstMeta,
+      argValues: [a, b, c],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kGetSumArrayTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "get_sum_array_twin_sync",
+        argNames: ["a", "b", "c"],
+      );
+
+  @override
+  SumWithTwinSync getSumStructTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_get_sum_struct_twin_sync(),
+      parseSuccessData: _wire2api_sum_with_twin_sync,
+      parseErrorData: null,
+      constMeta: kGetSumStructTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kGetSumStructTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "get_sum_struct_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  Stream<ApplicationSettings> appSettingsStreamTwinSync({dynamic hint}) {
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) => wire.wire_app_settings_stream_twin_sync(port_),
+      parseSuccessData: _wire2api_application_settings,
+      parseErrorData: null,
+      constMeta: kAppSettingsStreamTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kAppSettingsStreamTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "app_settings_stream_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  Stream<List<ApplicationSettings>> appSettingsVecStreamTwinSync(
+      {dynamic hint}) {
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) => wire.wire_app_settings_vec_stream_twin_sync(port_),
+      parseSuccessData: _wire2api_list_application_settings,
+      parseErrorData: null,
+      constMeta: kAppSettingsVecStreamTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kAppSettingsVecStreamTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "app_settings_vec_stream_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  int? firstNumberTwinSync({required Numbers nums, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_numbers(nums);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_first_number_twin_sync(arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_i_32,
+      parseErrorData: null,
+      constMeta: kFirstNumberTwinSyncConstMeta,
+      argValues: [nums],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFirstNumberTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "first_number_twin_sync",
+        argNames: ["nums"],
+      );
+
+  @override
+  int? firstSequenceTwinSync({required Sequences seqs, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_sequences(seqs);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_first_sequence_twin_sync(arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_i_32,
+      parseErrorData: null,
+      constMeta: kFirstSequenceTwinSyncConstMeta,
+      argValues: [seqs],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFirstSequenceTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "first_sequence_twin_sync",
+        argNames: ["seqs"],
+      );
+
+  @override
+  ApplicationSettings getAppSettingsTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_get_app_settings_twin_sync(),
+      parseSuccessData: _wire2api_application_settings,
+      parseErrorData: null,
+      constMeta: kGetAppSettingsTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kGetAppSettingsTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "get_app_settings_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  ApplicationSettings getFallibleAppSettingsTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_get_fallible_app_settings_twin_sync(),
+      parseSuccessData: _wire2api_application_settings,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kGetFallibleAppSettingsTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kGetFallibleAppSettingsTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "get_fallible_app_settings_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  ApplicationMessage getMessageTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_get_message_twin_sync(),
+      parseSuccessData: _wire2api_application_message,
+      parseErrorData: null,
+      constMeta: kGetMessageTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kGetMessageTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "get_message_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  bool isAppEmbeddedTwinSync(
+      {required ApplicationSettings appSettings, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_application_settings(appSettings);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_is_app_embedded_twin_sync(arg0),
+      parseSuccessData: _wire2api_bool,
+      parseErrorData: null,
+      constMeta: kIsAppEmbeddedTwinSyncConstMeta,
+      argValues: [appSettings],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kIsAppEmbeddedTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "is_app_embedded_twin_sync",
+        argNames: ["appSettings"],
+      );
+
+  @override
+  Stream<MirrorStructTwinSync> mirrorStructStreamTwinSync({dynamic hint}) {
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) => wire.wire_mirror_struct_stream_twin_sync(port_),
+      parseSuccessData: _wire2api_mirror_struct_twin_sync,
+      parseErrorData: null,
+      constMeta: kMirrorStructStreamTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kMirrorStructStreamTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "mirror_struct_stream_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  Stream<(ApplicationSettings, RawStringEnumMirrored)>
+      mirrorTupleStreamTwinSync({dynamic hint}) {
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) => wire.wire_mirror_tuple_stream_twin_sync(port_),
+      parseSuccessData:
+          _wire2api_record_application_settings_raw_string_enum_mirrored,
+      parseErrorData: null,
+      constMeta: kMirrorTupleStreamTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kMirrorTupleStreamTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "mirror_tuple_stream_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  Numbers repeatNumberTwinSync(
+      {required int num, required int times, dynamic hint}) {
+    var arg0 = api2wire_i_32(num);
+    var arg1 = api2wire_usize(times);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_repeat_number_twin_sync(arg0, arg1),
+      parseSuccessData: _wire2api_numbers,
+      parseErrorData: null,
+      constMeta: kRepeatNumberTwinSyncConstMeta,
+      argValues: [num, times],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRepeatNumberTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "repeat_number_twin_sync",
+        argNames: ["num", "times"],
+      );
+
+  @override
+  Sequences repeatSequenceTwinSync(
+      {required int seq, required int times, dynamic hint}) {
+    var arg0 = api2wire_i_32(seq);
+    var arg1 = api2wire_usize(times);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_repeat_sequence_twin_sync(arg0, arg1),
+      parseSuccessData: _wire2api_sequences,
+      parseErrorData: null,
+      constMeta: kRepeatSequenceTwinSyncConstMeta,
+      argValues: [seq, times],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRepeatSequenceTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "repeat_sequence_twin_sync",
+        argNames: ["seq", "times"],
+      );
+
+  @override
+  ContainsMirroredSubStructTwinSync testContainsMirroredSubStructTwinSync(
+      {dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_test_contains_mirrored_sub_struct_twin_sync(),
+      parseSuccessData: _wire2api_contains_mirrored_sub_struct_twin_sync,
+      parseErrorData: null,
+      constMeta: kTestContainsMirroredSubStructTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestContainsMirroredSubStructTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "test_contains_mirrored_sub_struct_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  List<RawStringMirrored> testFallibleOfRawStringMirroredTwinSync(
+      {dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_test_fallible_of_raw_string_mirrored_twin_sync(),
+      parseSuccessData: _wire2api_list_raw_string_mirrored,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kTestFallibleOfRawStringMirroredTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestFallibleOfRawStringMirroredTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "test_fallible_of_raw_string_mirrored_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  List<RawStringEnumMirrored> testListOfNestedEnumsMirroredTwinSync(
+      {dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_test_list_of_nested_enums_mirrored_twin_sync(),
+      parseSuccessData: _wire2api_list_raw_string_enum_mirrored,
+      parseErrorData: null,
+      constMeta: kTestListOfNestedEnumsMirroredTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestListOfNestedEnumsMirroredTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "test_list_of_nested_enums_mirrored_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  ListOfNestedRawStringMirrored testListOfRawNestedStringMirroredTwinSync(
+      {dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () =>
+          wire.wire_test_list_of_raw_nested_string_mirrored_twin_sync(),
+      parseSuccessData: _wire2api_list_of_nested_raw_string_mirrored,
+      parseErrorData: null,
+      constMeta: kTestListOfRawNestedStringMirroredTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestListOfRawNestedStringMirroredTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "test_list_of_raw_nested_string_mirrored_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  NestedRawStringMirrored testNestedRawStringMirroredTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_test_nested_raw_string_mirrored_twin_sync(),
+      parseSuccessData: _wire2api_nested_raw_string_mirrored,
+      parseErrorData: null,
+      constMeta: kTestNestedRawStringMirroredTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestNestedRawStringMirroredTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "test_nested_raw_string_mirrored_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  RawStringEnumMirrored testRawStringEnumMirroredTwinSync(
+      {required bool nested, dynamic hint}) {
+    var arg0 = api2wire_bool(nested);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_test_raw_string_enum_mirrored_twin_sync(arg0),
+      parseSuccessData: _wire2api_raw_string_enum_mirrored,
+      parseErrorData: null,
+      constMeta: kTestRawStringEnumMirroredTwinSyncConstMeta,
+      argValues: [nested],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestRawStringEnumMirroredTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "test_raw_string_enum_mirrored_twin_sync",
+        argNames: ["nested"],
+      );
+
+  @override
+  RawStringMirrored testRawStringMirroredTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_test_raw_string_mirrored_twin_sync(),
+      parseSuccessData: _wire2api_raw_string_mirrored,
+      parseErrorData: null,
+      constMeta: kTestRawStringMirroredTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestRawStringMirroredTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "test_raw_string_mirrored_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  BigBuffersTwinSync handleBigBuffersTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_big_buffers_twin_sync(),
+      parseSuccessData: _wire2api_big_buffers_twin_sync,
+      parseErrorData: null,
+      constMeta: kHandleBigBuffersTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleBigBuffersTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "handle_big_buffers_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  MyTreeNodeTwinSync handleComplexStructTwinSync(
+      {required MyTreeNodeTwinSync s, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_my_tree_node_twin_sync(s);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_complex_struct_twin_sync(arg0),
+      parseSuccessData: _wire2api_my_tree_node_twin_sync,
+      parseErrorData: null,
+      constMeta: kHandleComplexStructTwinSyncConstMeta,
+      argValues: [s],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleComplexStructTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_complex_struct_twin_sync",
+        argNames: ["s"],
+      );
+
+  @override
+  MyNestedStructTwinSync handleNestedStructTwinSync(
+      {required MyNestedStructTwinSync s, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_my_nested_struct_twin_sync(s);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_nested_struct_twin_sync(arg0),
+      parseSuccessData: _wire2api_my_nested_struct_twin_sync,
+      parseErrorData: null,
+      constMeta: kHandleNestedStructTwinSyncConstMeta,
+      argValues: [s],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleNestedStructTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "handle_nested_struct_twin_sync",
+        argNames: ["s"],
+      );
+
+  @override
+  String handleStringTwinSync({required String s, dynamic hint}) {
+    var arg0 = api2wire_String(s);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_string_twin_sync(arg0),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kHandleStringTwinSyncConstMeta,
+      argValues: [s],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleStringTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "handle_string_twin_sync",
+        argNames: ["s"],
+      );
+
+  @override
+  MySizeFreezedTwinSync handleStructSyncFreezedTwinSync(
+      {required MySizeFreezedTwinSync arg,
+      required MySizeFreezedTwinSync boxed,
+      dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_my_size_freezed_twin_sync(arg);
+    var arg1 = api2wire_box_my_size_freezed_twin_sync(boxed);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_struct_sync_freezed_twin_sync(arg0, arg1),
+      parseSuccessData: _wire2api_my_size_freezed_twin_sync,
+      parseErrorData: null,
+      constMeta: kHandleStructSyncFreezedTwinSyncConstMeta,
+      argValues: [arg, boxed],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleStructSyncFreezedTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_struct_sync_freezed_twin_sync",
+        argNames: ["arg", "boxed"],
+      );
+
+  @override
+  MySize handleStructTwinSync(
+      {required MySize arg, required MySize boxed, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_my_size(arg);
+    var arg1 = api2wire_box_my_size(boxed);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_struct_twin_sync(arg0, arg1),
+      parseSuccessData: _wire2api_my_size,
+      parseErrorData: null,
+      constMeta: kHandleStructTwinSyncConstMeta,
+      argValues: [arg, boxed],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleStructTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "handle_struct_twin_sync",
+        argNames: ["arg", "boxed"],
+      );
+
+  @override
+  Uint8List handleVecU8TwinSync({required Uint8List v, dynamic hint}) {
+    var arg0 = api2wire_list_prim_u_8(v);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_vec_u8_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_prim_u_8,
+      parseErrorData: null,
+      constMeta: kHandleVecU8TwinSyncConstMeta,
+      argValues: [v],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleVecU8TwinSyncConstMeta => const TaskConstMeta(
+        debugName: "handle_vec_u8_twin_sync",
+        argNames: ["v"],
+      );
+
+  @override
+  List<WeekdaysTwinSync> listOfPrimitiveEnumsTwinSync(
+      {required List<WeekdaysTwinSync> weekdays, dynamic hint}) {
+    var arg0 = api2wire_list_weekdays_twin_sync(weekdays);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_list_of_primitive_enums_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_weekdays_twin_sync,
+      parseErrorData: null,
+      constMeta: kListOfPrimitiveEnumsTwinSyncConstMeta,
+      argValues: [weekdays],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kListOfPrimitiveEnumsTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "list_of_primitive_enums_twin_sync",
+        argNames: ["weekdays"],
+      );
+
+  @override
+  AbcTwinSync testAbcEnumTwinSync({required AbcTwinSync abc, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_abc_twin_sync(abc);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_test_abc_enum_twin_sync(arg0),
+      parseSuccessData: _wire2api_abc_twin_sync,
+      parseErrorData: null,
+      constMeta: kTestAbcEnumTwinSyncConstMeta,
+      argValues: [abc],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestAbcEnumTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "test_abc_enum_twin_sync",
+        argNames: ["abc"],
+      );
+
+  @override
+  StructWithEnumTwinSync testStructWithEnumTwinSync(
+      {required StructWithEnumTwinSync se, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_struct_with_enum_twin_sync(se);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_test_struct_with_enum_twin_sync(arg0),
+      parseSuccessData: _wire2api_struct_with_enum_twin_sync,
+      parseErrorData: null,
+      constMeta: kTestStructWithEnumTwinSyncConstMeta,
+      argValues: [se],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestStructWithEnumTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "test_struct_with_enum_twin_sync",
+        argNames: ["se"],
+      );
+
+  @override
+  EmptyTwinSync emptyStructTwinSync(
+      {required EmptyTwinSync empty, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_empty_twin_sync(empty);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_empty_struct_twin_sync(arg0),
+      parseSuccessData: _wire2api_empty_twin_sync,
+      parseErrorData: null,
+      constMeta: kEmptyStructTwinSyncConstMeta,
+      argValues: [empty],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kEmptyStructTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "empty_struct_twin_sync",
+        argNames: ["empty"],
+      );
+
+  @override
+  void funcReturnUnitTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_return_unit_twin_sync(),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kFuncReturnUnitTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncReturnUnitTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "func_return_unit_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  String funcStringTwinSync({required String arg, dynamic hint}) {
+    var arg0 = api2wire_String(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_string_twin_sync(arg0),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kFuncStringTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncStringTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "func_string_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  List<MySize> handleListOfStructTwinSync(
+      {required List<MySize> l, dynamic hint}) {
+    var arg0 = api2wire_list_my_size(l);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_list_of_struct_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_my_size,
+      parseErrorData: null,
+      constMeta: kHandleListOfStructTwinSyncConstMeta,
+      argValues: [l],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleListOfStructTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "handle_list_of_struct_twin_sync",
+        argNames: ["l"],
+      );
+
+  @override
+  List<String> handleStringListTwinSync(
+      {required List<String> names, dynamic hint}) {
+    var arg0 = api2wire_StringList(names);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_string_list_twin_sync(arg0),
+      parseSuccessData: _wire2api_StringList,
+      parseErrorData: null,
+      constMeta: kHandleStringListTwinSyncConstMeta,
+      argValues: [names],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleStringListTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "handle_string_list_twin_sync",
+        argNames: ["names"],
+      );
+
+  @override
+  NewTypeIntTwinSync handleNewtypeTwinSync(
+      {required NewTypeIntTwinSync arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_new_type_int_twin_sync(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_newtype_twin_sync(arg0),
+      parseSuccessData: _wire2api_new_type_int_twin_sync,
+      parseErrorData: null,
+      constMeta: kHandleNewtypeTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleNewtypeTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "handle_newtype_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<bool?> exampleOptionalPrimitiveTypeBoolTwinNormal(
+      {bool? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_bool(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire
+          .wire_example_optional_primitive_type_bool_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_bool,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeBoolTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeBoolTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_bool_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double?> exampleOptionalPrimitiveTypeF32TwinNormal(
+      {double? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_f_32(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire
+          .wire_example_optional_primitive_type_f32_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_f_32,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeF32TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeF32TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_f32_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double?> exampleOptionalPrimitiveTypeF64TwinNormal(
+      {double? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_f_64(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire
+          .wire_example_optional_primitive_type_f64_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_f_64,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeF64TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeF64TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_f64_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalPrimitiveTypeI16TwinNormal(
+      {int? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_i_16(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire
+          .wire_example_optional_primitive_type_i16_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_i_16,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeI16TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeI16TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_i16_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalPrimitiveTypeI32TwinNormal(
+      {int? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_i_32(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire
+          .wire_example_optional_primitive_type_i32_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_i_32,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeI32TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeI32TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_i32_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalPrimitiveTypeI64TwinNormal(
+      {int? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_i_64(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire
+          .wire_example_optional_primitive_type_i64_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_i_64,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeI64TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeI64TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_i64_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalPrimitiveTypeI8TwinNormal(
+      {int? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_i_8(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_optional_primitive_type_i8_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_i_8,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeI8TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeI8TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_i8_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalPrimitiveTypeU16TwinNormal(
+      {int? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_u_16(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire
+          .wire_example_optional_primitive_type_u16_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_u_16,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeU16TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeU16TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_u16_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalPrimitiveTypeU32TwinNormal(
+      {int? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_u_32(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire
+          .wire_example_optional_primitive_type_u32_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_u_32,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeU32TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeU32TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_u32_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalPrimitiveTypeU64TwinNormal(
+      {int? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_u_64(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire
+          .wire_example_optional_primitive_type_u64_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_u_64,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeU64TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeU64TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_u64_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalPrimitiveTypeU8TwinNormal(
+      {int? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_u_8(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_optional_primitive_type_u8_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_u_8,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeU8TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeU8TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_u8_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? primitiveOptionalTypesTwinSync(
+      {int? myI32, int? myI64, double? myF64, bool? myBool, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_i_32(myI32);
+    var arg1 = api2wire_opt_box_autoadd_i_64(myI64);
+    var arg2 = api2wire_opt_box_autoadd_f_64(myF64);
+    var arg3 = api2wire_opt_box_autoadd_bool(myBool);
+    return handler.executeSync(SyncTask(
+      callFfi: () =>
+          wire.wire_primitive_optional_types_twin_sync(arg0, arg1, arg2, arg3),
+      parseSuccessData: _wire2api_opt_box_autoadd_i_32,
+      parseErrorData: null,
+      constMeta: kPrimitiveOptionalTypesTwinSyncConstMeta,
+      argValues: [myI32, myI64, myF64, myBool],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kPrimitiveOptionalTypesTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "primitive_optional_types_twin_sync",
+        argNames: ["myI32", "myI64", "myF64", "myBool"],
+      );
+
+  @override
+  bool? exampleOptionalPrimitiveTypeBoolTwinSync({bool? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_bool(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () =>
+          wire.wire_example_optional_primitive_type_bool_twin_sync(arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_bool,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeBoolTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeBoolTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_bool_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  double? exampleOptionalPrimitiveTypeF32TwinSync({double? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_f_32(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () =>
+          wire.wire_example_optional_primitive_type_f32_twin_sync(arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_f_32,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeF32TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeF32TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_f32_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  double? exampleOptionalPrimitiveTypeF64TwinSync({double? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_f_64(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () =>
+          wire.wire_example_optional_primitive_type_f64_twin_sync(arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_f_64,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeF64TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeF64TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_f64_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleOptionalPrimitiveTypeI16TwinSync({int? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_i_16(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () =>
+          wire.wire_example_optional_primitive_type_i16_twin_sync(arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_i_16,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeI16TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeI16TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_i16_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleOptionalPrimitiveTypeI32TwinSync({int? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_i_32(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () =>
+          wire.wire_example_optional_primitive_type_i32_twin_sync(arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_i_32,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeI32TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeI32TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_i32_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleOptionalPrimitiveTypeI64TwinSync({int? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_i_64(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () =>
+          wire.wire_example_optional_primitive_type_i64_twin_sync(arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_i_64,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeI64TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeI64TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_i64_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleOptionalPrimitiveTypeI8TwinSync({int? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_i_8(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () =>
+          wire.wire_example_optional_primitive_type_i8_twin_sync(arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_i_8,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeI8TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeI8TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_i8_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleOptionalPrimitiveTypeU16TwinSync({int? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_u_16(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () =>
+          wire.wire_example_optional_primitive_type_u16_twin_sync(arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_u_16,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeU16TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeU16TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_u16_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleOptionalPrimitiveTypeU32TwinSync({int? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_u_32(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () =>
+          wire.wire_example_optional_primitive_type_u32_twin_sync(arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_u_32,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeU32TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeU32TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_u32_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleOptionalPrimitiveTypeU64TwinSync({int? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_u_64(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () =>
+          wire.wire_example_optional_primitive_type_u64_twin_sync(arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_u_64,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeU64TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeU64TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_u64_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int? exampleOptionalPrimitiveTypeU8TwinSync({int? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_u_8(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () =>
+          wire.wire_example_optional_primitive_type_u8_twin_sync(arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_u_8,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeU8TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeU8TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_u8_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  double handleIncrementBoxedOptionalTwinSync({double? opt, dynamic hint}) {
+    var arg0 = api2wire_opt_box_f_64(opt);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_increment_boxed_optional_twin_sync(arg0),
+      parseSuccessData: _wire2api_f_64,
+      parseErrorData: null,
+      constMeta: kHandleIncrementBoxedOptionalTwinSyncConstMeta,
+      argValues: [opt],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleIncrementBoxedOptionalTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_increment_boxed_optional_twin_sync",
+        argNames: ["opt"],
+      );
+
+  @override
+  String handleOptionBoxArgumentsTwinSync(
+      {int? i8Box,
+      int? u8Box,
+      int? i32Box,
+      int? i64Box,
+      double? f64Box,
+      bool? boolbox,
+      ExoticOptionalsTwinSync? structbox,
+      dynamic hint}) {
+    var arg0 = api2wire_opt_box_i_8(i8Box);
+    var arg1 = api2wire_opt_box_u_8(u8Box);
+    var arg2 = api2wire_opt_box_i_32(i32Box);
+    var arg3 = api2wire_opt_box_i_64(i64Box);
+    var arg4 = api2wire_opt_box_f_64(f64Box);
+    var arg5 = api2wire_opt_box_bool(boolbox);
+    var arg6 = api2wire_opt_box_exotic_optionals_twin_sync(structbox);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_option_box_arguments_twin_sync(
+          arg0, arg1, arg2, arg3, arg4, arg5, arg6),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kHandleOptionBoxArgumentsTwinSyncConstMeta,
+      argValues: [i8Box, u8Box, i32Box, i64Box, f64Box, boolbox, structbox],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleOptionBoxArgumentsTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_option_box_arguments_twin_sync",
+        argNames: [
+          "i8Box",
+          "u8Box",
+          "i32Box",
+          "i64Box",
+          "f64Box",
+          "boolbox",
+          "structbox"
+        ],
+      );
+
+  @override
+  ExoticOptionalsTwinSync? handleOptionalIncrementTwinSync(
+      {ExoticOptionalsTwinSync? opt, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_exotic_optionals_twin_sync(opt);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_optional_increment_twin_sync(arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_exotic_optionals_twin_sync,
+      parseErrorData: null,
+      constMeta: kHandleOptionalIncrementTwinSyncConstMeta,
+      argValues: [opt],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleOptionalIncrementTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_optional_increment_twin_sync",
+        argNames: ["opt"],
+      );
+
+  @override
+  double? handleOptionalReturnTwinSync(
+      {required double left, required double right, dynamic hint}) {
+    var arg0 = api2wire_f_64(left);
+    var arg1 = api2wire_f_64(right);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_optional_return_twin_sync(arg0, arg1),
+      parseSuccessData: _wire2api_opt_box_autoadd_f_64,
+      parseErrorData: null,
+      constMeta: kHandleOptionalReturnTwinSyncConstMeta,
+      argValues: [left, right],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleOptionalReturnTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_optional_return_twin_sync",
+        argNames: ["left", "right"],
+      );
+
+  @override
+  ElementTwinSync? handleOptionalStructTwinSync(
+      {String? document, dynamic hint}) {
+    var arg0 = api2wire_opt_String(document);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_optional_struct_twin_sync(arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_element_twin_sync,
+      parseErrorData: null,
+      constMeta: kHandleOptionalStructTwinSyncConstMeta,
+      argValues: [document],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleOptionalStructTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_optional_struct_twin_sync",
+        argNames: ["document"],
+      );
+
+  @override
+  OptVecsTwinSync handleVecOfOptsTwinSync(
+      {required OptVecsTwinSync opt, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_opt_vecs_twin_sync(opt);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_vec_of_opts_twin_sync(arg0),
+      parseSuccessData: _wire2api_opt_vecs_twin_sync,
+      parseErrorData: null,
+      constMeta: kHandleVecOfOptsTwinSyncConstMeta,
+      argValues: [opt],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleVecOfOptsTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "handle_vec_of_opts_twin_sync",
+        argNames: ["opt"],
+      );
+
+  @override
+  String? syncOptionNullTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_sync_option_null_twin_sync(),
+      parseSuccessData: _wire2api_opt_String,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kSyncOptionNullTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSyncOptionNullTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "sync_option_null_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  String? syncOptionTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_sync_option_twin_sync(),
+      parseSuccessData: _wire2api_opt_String,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kSyncOptionTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSyncOptionTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "sync_option_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  Future<bool> examplePrimitiveTypeBoolTwinNormal(
+      {required bool arg, dynamic hint}) {
+    var arg0 = api2wire_bool(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_type_bool_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_bool,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveTypeBoolTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveTypeBoolTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_type_bool_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double> examplePrimitiveTypeF32TwinNormal(
+      {required double arg, dynamic hint}) {
+    var arg0 = api2wire_f_32(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_type_f32_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_f_32,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveTypeF32TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveTypeF32TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_type_f32_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double> examplePrimitiveTypeF64TwinNormal(
+      {required double arg, dynamic hint}) {
+    var arg0 = api2wire_f_64(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_type_f64_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_f_64,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveTypeF64TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveTypeF64TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_type_f64_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> examplePrimitiveTypeI16TwinNormal(
+      {required int arg, dynamic hint}) {
+    var arg0 = api2wire_i_16(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_type_i16_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_i_16,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveTypeI16TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveTypeI16TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_type_i16_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> examplePrimitiveTypeI32TwinNormal(
+      {required int arg, dynamic hint}) {
+    var arg0 = api2wire_i_32(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_type_i32_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_i_32,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveTypeI32TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveTypeI32TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_type_i32_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> examplePrimitiveTypeI64TwinNormal(
+      {required int arg, dynamic hint}) {
+    var arg0 = api2wire_i_64(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_type_i64_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_i_64,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveTypeI64TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveTypeI64TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_type_i64_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> examplePrimitiveTypeI8TwinNormal(
+      {required int arg, dynamic hint}) {
+    var arg0 = api2wire_i_8(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_type_i8_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_i_8,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveTypeI8TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveTypeI8TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_type_i8_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> examplePrimitiveTypeU16TwinNormal(
+      {required int arg, dynamic hint}) {
+    var arg0 = api2wire_u_16(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_type_u16_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_u_16,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveTypeU16TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveTypeU16TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_type_u16_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> examplePrimitiveTypeU32TwinNormal(
+      {required int arg, dynamic hint}) {
+    var arg0 = api2wire_u_32(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_type_u32_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveTypeU32TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveTypeU32TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_type_u32_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> examplePrimitiveTypeU64TwinNormal(
+      {required int arg, dynamic hint}) {
+    var arg0 = api2wire_u_64(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_type_u64_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_u_64,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveTypeU64TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveTypeU64TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_type_u64_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int> examplePrimitiveTypeU8TwinNormal(
+      {required int arg, dynamic hint}) {
+    var arg0 = api2wire_u_8(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_type_u8_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_u_8,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveTypeU8TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveTypeU8TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_type_u8_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<List<bool>> examplePrimitiveListTypeBoolTwinNormal(
+      {required List<bool> arg, dynamic hint}) {
+    var arg0 = api2wire_list_bool(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_bool_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_list_bool,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeBoolTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeBoolTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_bool_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Float32List> examplePrimitiveListTypeF32TwinNormal(
+      {required Float32List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_f_32(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_f32_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_list_prim_f_32,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeF32TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeF32TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_f32_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Float64List> examplePrimitiveListTypeF64TwinNormal(
+      {required Float64List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_f_64(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_f64_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_list_prim_f_64,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeF64TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeF64TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_f64_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Int16List> examplePrimitiveListTypeI16TwinNormal(
+      {required Int16List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_i_16(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_i16_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_list_prim_i_16,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeI16TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeI16TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_i16_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Int32List> examplePrimitiveListTypeI32TwinNormal(
+      {required Int32List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_i_32(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_i32_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_list_prim_i_32,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeI32TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeI32TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_i32_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Int64List> examplePrimitiveListTypeI64TwinNormal(
+      {required Int64List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_i_64(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_i64_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_list_prim_i_64,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeI64TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeI64TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_i64_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Int8List> examplePrimitiveListTypeI8TwinNormal(
+      {required Int8List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_i_8(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_i8_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_list_prim_i_8,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeI8TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeI8TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_i8_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint16List> examplePrimitiveListTypeU16TwinNormal(
+      {required Uint16List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_u_16(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_u16_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_list_prim_u_16,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeU16TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeU16TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_u16_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint32List> examplePrimitiveListTypeU32TwinNormal(
+      {required Uint32List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_u_32(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_u32_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_list_prim_u_32,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeU32TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeU32TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_u32_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint64List> examplePrimitiveListTypeU64TwinNormal(
+      {required Uint64List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_u_64(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_u64_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_list_prim_u_64,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeU64TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeU64TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_u64_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint8List> examplePrimitiveListTypeU8TwinNormal(
+      {required Uint8List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_u_8(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_u8_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_list_prim_u_8,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeU8TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeU8TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_u8_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  VecOfPrimitivePackTwinSync handleVecOfPrimitiveTwinSync(
+      {required int n, dynamic hint}) {
+    var arg0 = api2wire_i_32(n);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_vec_of_primitive_twin_sync(arg0),
+      parseSuccessData: _wire2api_vec_of_primitive_pack_twin_sync,
+      parseErrorData: null,
+      constMeta: kHandleVecOfPrimitiveTwinSyncConstMeta,
+      argValues: [n],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleVecOfPrimitiveTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_vec_of_primitive_twin_sync",
+        argNames: ["n"],
+      );
+
+  @override
+  ZeroCopyVecOfPrimitivePackTwinSync handleZeroCopyVecOfPrimitiveTwinSync(
+      {required int n, dynamic hint}) {
+    var arg0 = api2wire_i_32(n);
+    return handler.executeSync(SyncTask(
+      callFfi: () =>
+          wire.wire_handle_zero_copy_vec_of_primitive_twin_sync(arg0),
+      parseSuccessData: _wire2api_zero_copy_vec_of_primitive_pack_twin_sync,
+      parseErrorData: null,
+      constMeta: kHandleZeroCopyVecOfPrimitiveTwinSyncConstMeta,
+      argValues: [n],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleZeroCopyVecOfPrimitiveTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_zero_copy_vec_of_primitive_twin_sync",
+        argNames: ["n"],
+      );
+
+  @override
+  ZeroCopyVecOfPrimitivePackTwinSync handleZeroCopyVecOfPrimitiveSyncTwinSync(
+      {required int n, dynamic hint}) {
+    var arg0 = api2wire_i_32(n);
+    return handler.executeSync(SyncTask(
+      callFfi: () =>
+          wire.wire_handle_zero_copy_vec_of_primitive_sync_twin_sync(arg0),
+      parseSuccessData: _wire2api_zero_copy_vec_of_primitive_pack_twin_sync,
+      parseErrorData: null,
+      constMeta: kHandleZeroCopyVecOfPrimitiveSyncTwinSyncConstMeta,
+      argValues: [n],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleZeroCopyVecOfPrimitiveSyncTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_zero_copy_vec_of_primitive_sync_twin_sync",
+        argNames: ["n"],
+      );
+
+  @override
+  List<bool> examplePrimitiveListTypeBoolTwinSync(
+      {required List<bool> arg, dynamic hint}) {
+    var arg0 = api2wire_list_bool(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_list_type_bool_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_bool,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeBoolTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeBoolTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_bool_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Float32List examplePrimitiveListTypeF32TwinSync(
+      {required Float32List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_f_32(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_list_type_f32_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_prim_f_32,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeF32TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeF32TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_f32_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Float64List examplePrimitiveListTypeF64TwinSync(
+      {required Float64List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_f_64(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_list_type_f64_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_prim_f_64,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeF64TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeF64TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_f64_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Int16List examplePrimitiveListTypeI16TwinSync(
+      {required Int16List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_i_16(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_list_type_i16_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_prim_i_16,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeI16TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeI16TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_i16_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Int32List examplePrimitiveListTypeI32TwinSync(
+      {required Int32List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_i_32(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_list_type_i32_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_prim_i_32,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeI32TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeI32TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_i32_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Int64List examplePrimitiveListTypeI64TwinSync(
+      {required Int64List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_i_64(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_list_type_i64_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_prim_i_64,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeI64TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeI64TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_i64_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Int8List examplePrimitiveListTypeI8TwinSync(
+      {required Int8List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_i_8(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_list_type_i8_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_prim_i_8,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeI8TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeI8TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_i8_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Uint16List examplePrimitiveListTypeU16TwinSync(
+      {required Uint16List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_u_16(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_list_type_u16_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_prim_u_16,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeU16TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeU16TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_u16_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Uint32List examplePrimitiveListTypeU32TwinSync(
+      {required Uint32List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_u_32(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_list_type_u32_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_prim_u_32,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeU32TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeU32TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_u32_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Uint64List examplePrimitiveListTypeU64TwinSync(
+      {required Uint64List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_u_64(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_list_type_u64_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_prim_u_64,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeU64TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeU64TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_u64_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Uint8List examplePrimitiveListTypeU8TwinSync(
+      {required Uint8List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_u_8(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_list_type_u8_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_prim_u_8,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeU8TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeU8TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_u8_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int primitiveTypesTwinSync(
+      {required int myI32,
+      required int myI64,
+      required double myF64,
+      required bool myBool,
+      dynamic hint}) {
+    var arg0 = api2wire_i_32(myI32);
+    var arg1 = api2wire_i_64(myI64);
+    var arg2 = api2wire_f_64(myF64);
+    var arg3 = api2wire_bool(myBool);
+    return handler.executeSync(SyncTask(
+      callFfi: () =>
+          wire.wire_primitive_types_twin_sync(arg0, arg1, arg2, arg3),
+      parseSuccessData: _wire2api_i_32,
+      parseErrorData: null,
+      constMeta: kPrimitiveTypesTwinSyncConstMeta,
+      argValues: [myI32, myI64, myF64, myBool],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kPrimitiveTypesTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "primitive_types_twin_sync",
+        argNames: ["myI32", "myI64", "myF64", "myBool"],
+      );
+
+  @override
+  int primitiveU32TwinSync({required int myU32, dynamic hint}) {
+    var arg0 = api2wire_u_32(myU32);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_primitive_u32_twin_sync(arg0),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: null,
+      constMeta: kPrimitiveU32TwinSyncConstMeta,
+      argValues: [myU32],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kPrimitiveU32TwinSyncConstMeta => const TaskConstMeta(
+        debugName: "primitive_u32_twin_sync",
+        argNames: ["myU32"],
+      );
+
+  @override
+  bool examplePrimitiveTypeBoolTwinSync({required bool arg, dynamic hint}) {
+    var arg0 = api2wire_bool(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_type_bool_twin_sync(arg0),
+      parseSuccessData: _wire2api_bool,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveTypeBoolTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveTypeBoolTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_type_bool_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  double examplePrimitiveTypeF32TwinSync({required double arg, dynamic hint}) {
+    var arg0 = api2wire_f_32(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_type_f32_twin_sync(arg0),
+      parseSuccessData: _wire2api_f_32,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveTypeF32TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveTypeF32TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_type_f32_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  double examplePrimitiveTypeF64TwinSync({required double arg, dynamic hint}) {
+    var arg0 = api2wire_f_64(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_type_f64_twin_sync(arg0),
+      parseSuccessData: _wire2api_f_64,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveTypeF64TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveTypeF64TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_type_f64_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int examplePrimitiveTypeI16TwinSync({required int arg, dynamic hint}) {
+    var arg0 = api2wire_i_16(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_type_i16_twin_sync(arg0),
+      parseSuccessData: _wire2api_i_16,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveTypeI16TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveTypeI16TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_type_i16_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int examplePrimitiveTypeI32TwinSync({required int arg, dynamic hint}) {
+    var arg0 = api2wire_i_32(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_type_i32_twin_sync(arg0),
+      parseSuccessData: _wire2api_i_32,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveTypeI32TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveTypeI32TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_type_i32_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int examplePrimitiveTypeI64TwinSync({required int arg, dynamic hint}) {
+    var arg0 = api2wire_i_64(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_type_i64_twin_sync(arg0),
+      parseSuccessData: _wire2api_i_64,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveTypeI64TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveTypeI64TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_type_i64_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int examplePrimitiveTypeI8TwinSync({required int arg, dynamic hint}) {
+    var arg0 = api2wire_i_8(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_type_i8_twin_sync(arg0),
+      parseSuccessData: _wire2api_i_8,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveTypeI8TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveTypeI8TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_type_i8_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int examplePrimitiveTypeU16TwinSync({required int arg, dynamic hint}) {
+    var arg0 = api2wire_u_16(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_type_u16_twin_sync(arg0),
+      parseSuccessData: _wire2api_u_16,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveTypeU16TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveTypeU16TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_type_u16_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int examplePrimitiveTypeU32TwinSync({required int arg, dynamic hint}) {
+    var arg0 = api2wire_u_32(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_type_u32_twin_sync(arg0),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveTypeU32TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveTypeU32TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_type_u32_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int examplePrimitiveTypeU64TwinSync({required int arg, dynamic hint}) {
+    var arg0 = api2wire_u_64(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_type_u64_twin_sync(arg0),
+      parseSuccessData: _wire2api_u_64,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveTypeU64TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveTypeU64TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_type_u64_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  int examplePrimitiveTypeU8TwinSync({required int arg, dynamic hint}) {
+    var arg0 = api2wire_u_8(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_type_u8_twin_sync(arg0),
+      parseSuccessData: _wire2api_u_8,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveTypeU8TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveTypeU8TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_type_u8_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  MoreThanJustOneRawStringStructTwinSync
+      testMoreThanJustOneRawStringStructTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () =>
+          wire.wire_test_more_than_just_one_raw_string_struct_twin_sync(),
+      parseSuccessData:
+          _wire2api_more_than_just_one_raw_string_struct_twin_sync,
+      parseErrorData: null,
+      constMeta: kTestMoreThanJustOneRawStringStructTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestMoreThanJustOneRawStringStructTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "test_more_than_just_one_raw_string_struct_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  RawStringItemStructTwinSync testRawStringItemStructTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_test_raw_string_item_struct_twin_sync(),
+      parseSuccessData: _wire2api_raw_string_item_struct_twin_sync,
+      parseErrorData: null,
+      constMeta: kTestRawStringItemStructTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestRawStringItemStructTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "test_raw_string_item_struct_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  EnumOpaqueTwinSyncArray5 createArrayOpaqueEnumTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_create_array_opaque_enum_twin_sync(),
+      parseSuccessData: _wire2api_enum_opaque_twin_sync_array_5,
+      parseErrorData: null,
+      constMeta: kCreateArrayOpaqueEnumTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateArrayOpaqueEnumTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "create_array_opaque_enum_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  OpaqueNestedTwinSync createNestedOpaqueTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_create_nested_opaque_twin_sync(),
+      parseSuccessData: _wire2api_opaque_nested_twin_sync,
+      parseErrorData: null,
+      constMeta: kCreateNestedOpaqueTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateNestedOpaqueTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "create_nested_opaque_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  HideData createOpaqueTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_create_opaque_twin_sync(),
+      parseSuccessData: _wire2api_RustOpaque_hide_data,
+      parseErrorData: null,
+      constMeta: kCreateOpaqueTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateOpaqueTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "create_opaque_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  HideData? createOptionOpaqueTwinSync({HideData? opaque, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_RustOpaque_hide_data(opaque);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_create_option_opaque_twin_sync(arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_RustOpaque_hide_data,
+      parseErrorData: null,
+      constMeta: kCreateOptionOpaqueTwinSyncConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateOptionOpaqueTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "create_option_opaque_twin_sync",
+        argNames: ["opaque"],
+      );
+
+  @override
+  NonSendHideData createSyncOpaqueTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_create_sync_opaque_twin_sync(),
+      parseSuccessData: _wire2api_RustOpaque_non_send_hide_data,
+      parseErrorData: null,
+      constMeta: kCreateSyncOpaqueTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCreateSyncOpaqueTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "create_sync_opaque_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  FrbOpaqueReturn frbGeneratorTestTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_frb_generator_test_twin_sync(),
+      parseSuccessData: _wire2api_RustOpaque_frb_opaque_return,
+      parseErrorData: null,
+      constMeta: kFrbGeneratorTestTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFrbGeneratorTestTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "frb_generator_test_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  void opaqueArrayRunTwinSync({required HideDataArray2 data, dynamic hint}) {
+    var arg0 = api2wire_RustOpaque_hide_data_array_2(data);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_opaque_array_run_twin_sync(arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kOpaqueArrayRunTwinSyncConstMeta,
+      argValues: [data],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueArrayRunTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "opaque_array_run_twin_sync",
+        argNames: ["data"],
+      );
+
+  @override
+  HideDataArray2 opaqueArrayTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_opaque_array_twin_sync(),
+      parseSuccessData: _wire2api_RustOpaque_hide_data_array_2,
+      parseErrorData: null,
+      constMeta: kOpaqueArrayTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueArrayTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "opaque_array_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  void opaqueVecRunTwinSync({required List<HideData> data, dynamic hint}) {
+    var arg0 = api2wire_list_RustOpaque_hide_data(data);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_opaque_vec_run_twin_sync(arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kOpaqueVecRunTwinSyncConstMeta,
+      argValues: [data],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueVecRunTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "opaque_vec_run_twin_sync",
+        argNames: ["data"],
+      );
+
+  @override
+  List<HideData> opaqueVecTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_opaque_vec_twin_sync(),
+      parseSuccessData: _wire2api_list_RustOpaque_hide_data,
+      parseErrorData: null,
+      constMeta: kOpaqueVecTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOpaqueVecTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "opaque_vec_twin_sync",
+        argNames: [],
+      );
+
+  @override
+  String runEnumOpaqueTwinSync(
+      {required EnumOpaqueTwinSync opaque, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_enum_opaque_twin_sync(opaque);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_run_enum_opaque_twin_sync(arg0),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kRunEnumOpaqueTwinSyncConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunEnumOpaqueTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "run_enum_opaque_twin_sync",
+        argNames: ["opaque"],
+      );
+
+  @override
+  void runNestedOpaqueTwinSync(
+      {required OpaqueNestedTwinSync opaque, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_opaque_nested_twin_sync(opaque);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_run_nested_opaque_twin_sync(arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRunNestedOpaqueTwinSyncConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunNestedOpaqueTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "run_nested_opaque_twin_sync",
+        argNames: ["opaque"],
+      );
+
+  @override
+  String runNonCloneTwinSync({required NonCloneData clone, dynamic hint}) {
+    var arg0 = api2wire_RustOpaque_non_clone_data(clone);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_run_non_clone_twin_sync(arg0),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kRunNonCloneTwinSyncConstMeta,
+      argValues: [clone],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunNonCloneTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "run_non_clone_twin_sync",
+        argNames: ["clone"],
+      );
+
+  @override
+  String runOpaqueTwinSync({required HideData opaque, dynamic hint}) {
+    var arg0 = api2wire_RustOpaque_hide_data(opaque);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_run_opaque_twin_sync(arg0),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kRunOpaqueTwinSyncConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunOpaqueTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "run_opaque_twin_sync",
+        argNames: ["opaque"],
+      );
+
+  @override
+  String runOpaqueWithDelayTwinSync({required HideData opaque, dynamic hint}) {
+    var arg0 = api2wire_RustOpaque_hide_data(opaque);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_run_opaque_with_delay_twin_sync(arg0),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kRunOpaqueWithDelayTwinSyncConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRunOpaqueWithDelayTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "run_opaque_with_delay_twin_sync",
+        argNames: ["opaque"],
+      );
+
+  @override
+  String unwrapRustOpaqueTwinSync({required HideData opaque, dynamic hint}) {
+    var arg0 = api2wire_RustOpaque_hide_data(opaque);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_unwrap_rust_opaque_twin_sync(arg0),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kUnwrapRustOpaqueTwinSyncConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kUnwrapRustOpaqueTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "unwrap_rust_opaque_twin_sync",
+        argNames: ["opaque"],
+      );
+
+  @override
+  int simpleAdderTwinSync({required int a, required int b, dynamic hint}) {
+    var arg0 = api2wire_i_32(a);
+    var arg1 = api2wire_i_32(b);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_simple_adder_twin_sync(arg0, arg1),
+      parseSuccessData: _wire2api_i_32,
+      parseErrorData: null,
+      constMeta: kSimpleAdderTwinSyncConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSimpleAdderTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "simple_adder_twin_sync",
+        argNames: ["a", "b"],
+      );
+
+  @override
+  StructWithOneFieldTwinSync funcStructWithOneFieldTwinSync(
+      {required StructWithOneFieldTwinSync arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_struct_with_one_field_twin_sync(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_struct_with_one_field_twin_sync(arg0),
+      parseSuccessData: _wire2api_struct_with_one_field_twin_sync,
+      parseErrorData: null,
+      constMeta: kFuncStructWithOneFieldTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncStructWithOneFieldTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_struct_with_one_field_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  StructWithTwoFieldTwinSync funcStructWithTwoFieldTwinSync(
+      {required StructWithTwoFieldTwinSync arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_struct_with_two_field_twin_sync(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_struct_with_two_field_twin_sync(arg0),
+      parseSuccessData: _wire2api_struct_with_two_field_twin_sync,
+      parseErrorData: null,
+      constMeta: kFuncStructWithTwoFieldTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncStructWithTwoFieldTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_struct_with_two_field_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  StructWithZeroFieldTwinSync funcStructWithZeroFieldTwinSync(
+      {required StructWithZeroFieldTwinSync arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_struct_with_zero_field_twin_sync(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_struct_with_zero_field_twin_sync(arg0),
+      parseSuccessData: _wire2api_struct_with_zero_field_twin_sync,
+      parseErrorData: null,
+      constMeta: kFuncStructWithZeroFieldTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncStructWithZeroFieldTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_struct_with_zero_field_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  TupleStructWithOneFieldTwinSync funcTupleStructWithOneFieldTwinSync(
+      {required TupleStructWithOneFieldTwinSync arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_tuple_struct_with_one_field_twin_sync(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_tuple_struct_with_one_field_twin_sync(arg0),
+      parseSuccessData: _wire2api_tuple_struct_with_one_field_twin_sync,
+      parseErrorData: null,
+      constMeta: kFuncTupleStructWithOneFieldTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncTupleStructWithOneFieldTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_tuple_struct_with_one_field_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  TupleStructWithTwoFieldTwinSync funcTupleStructWithTwoFieldTwinSync(
+      {required TupleStructWithTwoFieldTwinSync arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_tuple_struct_with_two_field_twin_sync(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_func_tuple_struct_with_two_field_twin_sync(arg0),
+      parseSuccessData: _wire2api_tuple_struct_with_two_field_twin_sync,
+      parseErrorData: null,
+      constMeta: kFuncTupleStructWithTwoFieldTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncTupleStructWithTwoFieldTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_tuple_struct_with_two_field_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  void testTuple2TwinSync({required List<(String, int)> value, dynamic hint}) {
+    var arg0 = api2wire_list_record_string_i_32(value);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_test_tuple_2_twin_sync(arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kTestTuple2TwinSyncConstMeta,
+      argValues: [value],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestTuple2TwinSyncConstMeta => const TaskConstMeta(
+        debugName: "test_tuple_2_twin_sync",
+        argNames: ["value"],
+      );
+
+  @override
+  (String, int) testTupleTwinSync({(String, int)? value, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_record_string_i_32(value);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_test_tuple_twin_sync(arg0),
+      parseSuccessData: _wire2api_record_string_i_32,
+      parseErrorData: null,
+      constMeta: kTestTupleTwinSyncConstMeta,
+      argValues: [value],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestTupleTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "test_tuple_twin_sync",
+        argNames: ["value"],
+      );
+
+  @override
+  int handleTypeAliasIdTwinSync({required int input, dynamic hint}) {
+    var arg0 = api2wire_u_64(input);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_type_alias_id_twin_sync(arg0),
+      parseSuccessData: _wire2api_u_64,
+      parseErrorData: null,
+      constMeta: kHandleTypeAliasIdTwinSyncConstMeta,
+      argValues: [input],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleTypeAliasIdTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "handle_type_alias_id_twin_sync",
+        argNames: ["input"],
+      );
+
+  @override
+  TestModelTwinSync handleTypeAliasModelTwinSync(
+      {required int input, dynamic hint}) {
+    var arg0 = api2wire_u_64(input);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_type_alias_model_twin_sync(arg0),
+      parseSuccessData: _wire2api_test_model_twin_sync,
+      parseErrorData: null,
+      constMeta: kHandleTypeAliasModelTwinSyncConstMeta,
+      argValues: [input],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleTypeAliasModelTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_type_alias_model_twin_sync",
+        argNames: ["input"],
+      );
+
+  @override
+  int handleTypeNestAliasIdTwinSync({required int input, dynamic hint}) {
+    var arg0 = api2wire_u_64(input);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_type_nest_alias_id_twin_sync(arg0),
+      parseSuccessData: _wire2api_u_64,
+      parseErrorData: null,
+      constMeta: kHandleTypeNestAliasIdTwinSyncConstMeta,
+      argValues: [input],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleTypeNestAliasIdTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_type_nest_alias_id_twin_sync",
+        argNames: ["input"],
+      );
+
+  @override
+  FeatureUuidTwinSync handleNestedUuidsTwinSync(
+      {required FeatureUuidTwinSync ids, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_feature_uuid_twin_sync(ids);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_nested_uuids_twin_sync(arg0),
+      parseSuccessData: _wire2api_feature_uuid_twin_sync,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kHandleNestedUuidsTwinSyncConstMeta,
+      argValues: [ids],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleNestedUuidsTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "handle_nested_uuids_twin_sync",
+        argNames: ["ids"],
+      );
+
+  @override
+  UuidValue handleUuidTwinSync({required UuidValue id, dynamic hint}) {
+    var arg0 = api2wire_Uuid(id);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_uuid_twin_sync(arg0),
+      parseSuccessData: _wire2api_Uuid,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kHandleUuidTwinSyncConstMeta,
+      argValues: [id],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleUuidTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "handle_uuid_twin_sync",
+        argNames: ["id"],
+      );
+
+  @override
+  List<UuidValue> handleUuidsTwinSync(
+      {required List<UuidValue> ids, dynamic hint}) {
+    var arg0 = api2wire_Uuids(ids);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_handle_uuids_twin_sync(arg0),
+      parseSuccessData: _wire2api_Uuids,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kHandleUuidsTwinSyncConstMeta,
+      argValues: [ids],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleUuidsTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "handle_uuids_twin_sync",
+        argNames: ["ids"],
+      );
+
+  @override
   Future<MoreThanJustOneRawStringStructTwinNormal>
       testMoreThanJustOneRawStringStructTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -5230,6 +11028,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
+  ATwinSync _wire2api_a_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return ATwinSync(
+      a: _wire2api_String(arr[0]),
+    );
+  }
+
   AbcTwinNormal _wire2api_abc_twin_normal(dynamic raw) {
     switch (raw[0]) {
       case 0:
@@ -5253,6 +11060,29 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
+  AbcTwinSync _wire2api_abc_twin_sync(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return AbcTwinSync_A(
+          _wire2api_box_autoadd_a_twin_sync(raw[1]),
+        );
+      case 1:
+        return AbcTwinSync_B(
+          _wire2api_box_autoadd_b_twin_sync(raw[1]),
+        );
+      case 2:
+        return AbcTwinSync_C(
+          _wire2api_box_autoadd_c_twin_sync(raw[1]),
+        );
+      case 3:
+        return AbcTwinSync_JustInt(
+          _wire2api_i_32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
   AnotherMacroStructTwinNormal _wire2api_another_macro_struct_twin_normal(
       dynamic raw) {
     final arr = raw as List<dynamic>;
@@ -5269,6 +11099,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return AnotherTwinNormal(
+      a: _wire2api_String(arr[0]),
+    );
+  }
+
+  AnotherTwinSync _wire2api_another_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return AnotherTwinSync(
       a: _wire2api_String(arr[0]),
     );
   }
@@ -5337,11 +11176,30 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
+  AttributeTwinSync _wire2api_attribute_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return AttributeTwinSync(
+      key: _wire2api_String(arr[0]),
+      value: _wire2api_String(arr[1]),
+    );
+  }
+
   BTwinNormal _wire2api_b_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return BTwinNormal(
+      b: _wire2api_i_32(arr[0]),
+    );
+  }
+
+  BTwinSync _wire2api_b_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return BTwinSync(
       b: _wire2api_i_32(arr[0]),
     );
   }
@@ -5356,11 +11214,30 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
+  BigBuffersTwinSync _wire2api_big_buffers_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return BigBuffersTwinSync(
+      int64: _wire2api_list_prim_i_64(arr[0]),
+      uint64: _wire2api_list_prim_u_64(arr[1]),
+    );
+  }
+
   BlobTwinNormal _wire2api_blob_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return BlobTwinNormal(
+      field0: _wire2api_u_8_array_1600(arr[0]),
+    );
+  }
+
+  BlobTwinSync _wire2api_blob_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return BlobTwinSync(
       field0: _wire2api_u_8_array_1600(arr[0]),
     );
   }
@@ -5397,6 +11274,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return _wire2api_a_twin_normal(raw);
   }
 
+  ATwinSync _wire2api_box_autoadd_a_twin_sync(dynamic raw) {
+    return _wire2api_a_twin_sync(raw);
+  }
+
   ApplicationEnv _wire2api_box_autoadd_application_env(dynamic raw) {
     return _wire2api_application_env(raw);
   }
@@ -5405,8 +11286,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return _wire2api_attribute_twin_normal(raw);
   }
 
+  AttributeTwinSync _wire2api_box_autoadd_attribute_twin_sync(dynamic raw) {
+    return _wire2api_attribute_twin_sync(raw);
+  }
+
   BTwinNormal _wire2api_box_autoadd_b_twin_normal(dynamic raw) {
     return _wire2api_b_twin_normal(raw);
+  }
+
+  BTwinSync _wire2api_box_autoadd_b_twin_sync(dynamic raw) {
+    return _wire2api_b_twin_sync(raw);
   }
 
   bool _wire2api_box_autoadd_bool(dynamic raw) {
@@ -5417,9 +11306,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return _wire2api_c_twin_normal(raw);
   }
 
+  CTwinSync _wire2api_box_autoadd_c_twin_sync(dynamic raw) {
+    return _wire2api_c_twin_sync(raw);
+  }
+
   CustomNestedError2TwinNormal
       _wire2api_box_autoadd_custom_nested_error_2_twin_normal(dynamic raw) {
     return _wire2api_custom_nested_error_2_twin_normal(raw);
+  }
+
+  CustomNestedError2TwinSync
+      _wire2api_box_autoadd_custom_nested_error_2_twin_sync(dynamic raw) {
+    return _wire2api_custom_nested_error_2_twin_sync(raw);
   }
 
   CustomNestedErrorInnerTwinNormal
@@ -5427,8 +11325,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return _wire2api_custom_nested_error_inner_twin_normal(raw);
   }
 
+  CustomNestedErrorInnerTwinSync
+      _wire2api_box_autoadd_custom_nested_error_inner_twin_sync(dynamic raw) {
+    return _wire2api_custom_nested_error_inner_twin_sync(raw);
+  }
+
   ElementTwinNormal _wire2api_box_autoadd_element_twin_normal(dynamic raw) {
     return _wire2api_element_twin_normal(raw);
+  }
+
+  ElementTwinSync _wire2api_box_autoadd_element_twin_sync(dynamic raw) {
+    return _wire2api_element_twin_sync(raw);
   }
 
   ExoticOptionalsTwinNormal _wire2api_box_autoadd_exotic_optionals_twin_normal(
@@ -5436,8 +11343,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return _wire2api_exotic_optionals_twin_normal(raw);
   }
 
+  ExoticOptionalsTwinSync _wire2api_box_autoadd_exotic_optionals_twin_sync(
+      dynamic raw) {
+    return _wire2api_exotic_optionals_twin_sync(raw);
+  }
+
+  double _wire2api_box_autoadd_f_32(dynamic raw) {
+    return raw as double;
+  }
+
   double _wire2api_box_autoadd_f_64(dynamic raw) {
     return raw as double;
+  }
+
+  int _wire2api_box_autoadd_i_16(dynamic raw) {
+    return raw as int;
   }
 
   int _wire2api_box_autoadd_i_32(dynamic raw) {
@@ -5448,6 +11368,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return _wire2api_i_64(raw);
   }
 
+  int _wire2api_box_autoadd_i_8(dynamic raw) {
+    return raw as int;
+  }
+
   ListOfNestedRawStringMirrored
       _wire2api_box_autoadd_list_of_nested_raw_string_mirrored(dynamic raw) {
     return _wire2api_list_of_nested_raw_string_mirrored(raw);
@@ -5455,6 +11379,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   MeasureTwinNormal _wire2api_box_autoadd_measure_twin_normal(dynamic raw) {
     return _wire2api_measure_twin_normal(raw);
+  }
+
+  MeasureTwinSync _wire2api_box_autoadd_measure_twin_sync(dynamic raw) {
+    return _wire2api_measure_twin_sync(raw);
   }
 
   NestedRawStringMirrored _wire2api_box_autoadd_nested_raw_string_mirrored(
@@ -5467,28 +11395,68 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return _wire2api_new_type_int_twin_normal(raw);
   }
 
+  NewTypeIntTwinSync _wire2api_box_autoadd_new_type_int_twin_sync(dynamic raw) {
+    return _wire2api_new_type_int_twin_sync(raw);
+  }
+
   RawStringMirrored _wire2api_box_autoadd_raw_string_mirrored(dynamic raw) {
     return _wire2api_raw_string_mirrored(raw);
+  }
+
+  int _wire2api_box_autoadd_u_16(dynamic raw) {
+    return raw as int;
+  }
+
+  int _wire2api_box_autoadd_u_32(dynamic raw) {
+    return raw as int;
+  }
+
+  int _wire2api_box_autoadd_u_64(dynamic raw) {
+    return _wire2api_u_64(raw);
+  }
+
+  int _wire2api_box_autoadd_u_8(dynamic raw) {
+    return raw as int;
   }
 
   WeekdaysTwinNormal _wire2api_box_autoadd_weekdays_twin_normal(dynamic raw) {
     return _wire2api_weekdays_twin_normal(raw);
   }
 
+  WeekdaysTwinSync _wire2api_box_autoadd_weekdays_twin_sync(dynamic raw) {
+    return _wire2api_weekdays_twin_sync(raw);
+  }
+
   DistanceTwinNormal _wire2api_box_distance_twin_normal(dynamic raw) {
     return _wire2api_distance_twin_normal(raw);
+  }
+
+  DistanceTwinSync _wire2api_box_distance_twin_sync(dynamic raw) {
+    return _wire2api_distance_twin_sync(raw);
   }
 
   FeedIdTwinNormal _wire2api_box_feed_id_twin_normal(dynamic raw) {
     return _wire2api_feed_id_twin_normal(raw);
   }
 
+  FeedIdTwinSync _wire2api_box_feed_id_twin_sync(dynamic raw) {
+    return _wire2api_feed_id_twin_sync(raw);
+  }
+
   KitchenSinkTwinNormal _wire2api_box_kitchen_sink_twin_normal(dynamic raw) {
     return _wire2api_kitchen_sink_twin_normal(raw);
   }
 
+  KitchenSinkTwinSync _wire2api_box_kitchen_sink_twin_sync(dynamic raw) {
+    return _wire2api_kitchen_sink_twin_sync(raw);
+  }
+
   SpeedTwinNormal _wire2api_box_speed_twin_normal(dynamic raw) {
     return _wire2api_speed_twin_normal(raw);
+  }
+
+  SpeedTwinSync _wire2api_box_speed_twin_sync(dynamic raw) {
+    return _wire2api_speed_twin_sync(raw);
   }
 
   U8Array8 _wire2api_box_u_8_array_8(dynamic raw) {
@@ -5504,12 +11472,30 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
+  CTwinSync _wire2api_c_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CTwinSync(
+      c: _wire2api_bool(arr[0]),
+    );
+  }
+
   ConcatenateWithTwinNormal _wire2api_concatenate_with_twin_normal(
       dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return ConcatenateWithTwinNormal(
+      a: _wire2api_String(arr[0]),
+    );
+  }
+
+  ConcatenateWithTwinSync _wire2api_concatenate_with_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return ConcatenateWithTwinSync(
       a: _wire2api_String(arr[0]),
     );
   }
@@ -5525,6 +11511,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
+  ContainsMirroredSubStructTwinSync
+      _wire2api_contains_mirrored_sub_struct_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return ContainsMirroredSubStructTwinSync(
+      test: _wire2api_raw_string_mirrored(arr[0]),
+      test2: _wire2api_another_twin_sync(arr[1]),
+    );
+  }
+
   CustomEnumErrorTwinNormal _wire2api_custom_enum_error_twin_normal(
       dynamic raw) {
     switch (raw[0]) {
@@ -5535,6 +11532,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 1:
         return CustomEnumErrorTwinNormal_Two(
+          message: _wire2api_u_32(raw[1]),
+          backtrace: _wire2api_String(raw[2]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  CustomEnumErrorTwinSync _wire2api_custom_enum_error_twin_sync(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomEnumErrorTwinSync_One(
+          message: _wire2api_String(raw[1]),
+          backtrace: _wire2api_String(raw[2]),
+        );
+      case 1:
+        return CustomEnumErrorTwinSync_Two(
           message: _wire2api_u_32(raw[1]),
           backtrace: _wire2api_String(raw[2]),
         );
@@ -5560,6 +11574,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
+  CustomErrorTwinSync _wire2api_custom_error_twin_sync(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomErrorTwinSync_Error0(
+          e: _wire2api_String(raw[1]),
+          backtrace: _wire2api_String(raw[2]),
+        );
+      case 1:
+        return CustomErrorTwinSync_Error1(
+          e: _wire2api_u_32(raw[1]),
+          backtrace: _wire2api_String(raw[2]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
   CustomNestedError1TwinNormal _wire2api_custom_nested_error_1_twin_normal(
       dynamic raw) {
     switch (raw[0]) {
@@ -5576,6 +11607,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
+  CustomNestedError1TwinSync _wire2api_custom_nested_error_1_twin_sync(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedError1TwinSync_CustomNested1(
+          _wire2api_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedError1TwinSync_ErrorNested(
+          _wire2api_box_autoadd_custom_nested_error_2_twin_sync(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
   CustomNestedError2TwinNormal _wire2api_custom_nested_error_2_twin_normal(
       dynamic raw) {
     switch (raw[0]) {
@@ -5585,6 +11632,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 1:
         return CustomNestedError2TwinNormal_CustomNested2Number(
+          _wire2api_u_32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  CustomNestedError2TwinSync _wire2api_custom_nested_error_2_twin_sync(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedError2TwinSync_CustomNested2(
+          _wire2api_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedError2TwinSync_CustomNested2Number(
           _wire2api_u_32(raw[1]),
         );
       default:
@@ -5608,6 +11671,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
+  CustomNestedErrorInnerTwinSync _wire2api_custom_nested_error_inner_twin_sync(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedErrorInnerTwinSync_Three(
+          _wire2api_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedErrorInnerTwinSync_Four(
+          _wire2api_u_32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
   CustomNestedErrorOuterTwinNormal
       _wire2api_custom_nested_error_outer_twin_normal(dynamic raw) {
     switch (raw[0]) {
@@ -5624,12 +11703,38 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
+  CustomNestedErrorOuterTwinSync _wire2api_custom_nested_error_outer_twin_sync(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedErrorOuterTwinSync_One(
+          _wire2api_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedErrorOuterTwinSync_Two(
+          _wire2api_box_autoadd_custom_nested_error_inner_twin_sync(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
   CustomStructErrorAnotherTwinNormal
       _wire2api_custom_struct_error_another_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return CustomStructErrorAnotherTwinNormal(
+      message: _wire2api_String(arr[0]),
+    );
+  }
+
+  CustomStructErrorAnotherTwinSync
+      _wire2api_custom_struct_error_another_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CustomStructErrorAnotherTwinSync(
       message: _wire2api_String(arr[0]),
     );
   }
@@ -5644,11 +11749,30 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
+  CustomStructErrorTwinSync _wire2api_custom_struct_error_twin_sync(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CustomStructErrorTwinSync(
+      a: _wire2api_String(arr[0]),
+    );
+  }
+
   CustomStructTwinNormal _wire2api_custom_struct_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return CustomStructTwinNormal(
+      message: _wire2api_String(arr[0]),
+    );
+  }
+
+  CustomStructTwinSync _wire2api_custom_struct_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CustomStructTwinSync(
       message: _wire2api_String(arr[0]),
     );
   }
@@ -5659,6 +11783,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return DartOpaqueNestedTwinNormal(
+      first: _wire2api_DartOpaque(arr[0]),
+      second: _wire2api_DartOpaque(arr[1]),
+    );
+  }
+
+  DartOpaqueNestedTwinSync _wire2api_dart_opaque_nested_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return DartOpaqueNestedTwinSync(
       first: _wire2api_DartOpaque(arr[0]),
       second: _wire2api_DartOpaque(arr[1]),
     );
@@ -5681,6 +11815,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
+  DistanceTwinSync _wire2api_distance_twin_sync(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return DistanceTwinSync_Unknown();
+      case 1:
+        return DistanceTwinSync_Map(
+          _wire2api_f_64(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
   ElementTwinNormal _wire2api_element_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 4)
@@ -5693,11 +11840,30 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
+  ElementTwinSync _wire2api_element_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return ElementTwinSync(
+      tag: _wire2api_opt_String(arr[0]),
+      text: _wire2api_opt_String(arr[1]),
+      attributes: _wire2api_opt_list_attribute_twin_sync(arr[2]),
+      children: _wire2api_opt_list_element_twin_sync(arr[3]),
+    );
+  }
+
   EmptyTwinNormal _wire2api_empty_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 0)
       throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
     return EmptyTwinNormal();
+  }
+
+  EmptyTwinSync _wire2api_empty_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 0)
+      throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
+    return EmptyTwinSync();
   }
 
   EnumDartOpaqueTwinNormal _wire2api_enum_dart_opaque_twin_normal(dynamic raw) {
@@ -5708,6 +11874,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 1:
         return EnumDartOpaqueTwinNormal_Opaque(
+          _wire2api_DartOpaque(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  EnumDartOpaqueTwinSync _wire2api_enum_dart_opaque_twin_sync(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumDartOpaqueTwinSync_Primitive(
+          _wire2api_i_32(raw[1]),
+        );
+      case 1:
+        return EnumDartOpaqueTwinSync_Opaque(
           _wire2api_DartOpaque(raw[1]),
         );
       default:
@@ -5748,8 +11929,45 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         (raw as List<dynamic>).map(_wire2api_enum_opaque_twin_normal).toList());
   }
 
+  EnumOpaqueTwinSync _wire2api_enum_opaque_twin_sync(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumOpaqueTwinSync_Struct(
+          _wire2api_RustOpaque_hide_data(raw[1]),
+        );
+      case 1:
+        return EnumOpaqueTwinSync_Primitive(
+          _wire2api_RustOpaque_i_32(raw[1]),
+        );
+      case 2:
+        return EnumOpaqueTwinSync_TraitObj(
+          _wire2api_RustOpaque_box_dynDartDebug(raw[1]),
+        );
+      case 3:
+        return EnumOpaqueTwinSync_Mutex(
+          _wire2api_RustOpaque_MutexHideData(raw[1]),
+        );
+      case 4:
+        return EnumOpaqueTwinSync_RwLock(
+          _wire2api_RustOpaque_RwLockHideData(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  EnumOpaqueTwinSyncArray5 _wire2api_enum_opaque_twin_sync_array_5(
+      dynamic raw) {
+    return EnumOpaqueTwinSyncArray5(
+        (raw as List<dynamic>).map(_wire2api_enum_opaque_twin_sync).toList());
+  }
+
   EnumSimpleTwinNormal _wire2api_enum_simple_twin_normal(dynamic raw) {
     return EnumSimpleTwinNormal.values[raw as int];
+  }
+
+  EnumSimpleTwinSync _wire2api_enum_simple_twin_sync(dynamic raw) {
+    return EnumSimpleTwinSync.values[raw as int];
   }
 
   EnumWithItemMixedTwinNormal _wire2api_enum_with_item_mixed_twin_normal(
@@ -5763,6 +11981,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 2:
         return EnumWithItemMixedTwinNormal_C(
+          cField: _wire2api_String(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  EnumWithItemMixedTwinSync _wire2api_enum_with_item_mixed_twin_sync(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumWithItemMixedTwinSync_A();
+      case 1:
+        return EnumWithItemMixedTwinSync_B(
+          _wire2api_list_prim_u_8(raw[1]),
+        );
+      case 2:
+        return EnumWithItemMixedTwinSync_C(
           cField: _wire2api_String(raw[1]),
         );
       default:
@@ -5786,6 +12022,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
+  EnumWithItemStructTwinSync _wire2api_enum_with_item_struct_twin_sync(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumWithItemStructTwinSync_A(
+          aField: _wire2api_list_prim_u_8(raw[1]),
+        );
+      case 1:
+        return EnumWithItemStructTwinSync_B(
+          bField: _wire2api_list_prim_i_32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
   EnumWithItemTupleTwinNormal _wire2api_enum_with_item_tuple_twin_normal(
       dynamic raw) {
     switch (raw[0]) {
@@ -5802,11 +12054,37 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
+  EnumWithItemTupleTwinSync _wire2api_enum_with_item_tuple_twin_sync(
+      dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumWithItemTupleTwinSync_A(
+          _wire2api_list_prim_u_8(raw[1]),
+        );
+      case 1:
+        return EnumWithItemTupleTwinSync_B(
+          _wire2api_list_prim_i_32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
   EventTwinNormal _wire2api_event_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return EventTwinNormal(
+      address: _wire2api_String(arr[0]),
+      payload: _wire2api_String(arr[1]),
+    );
+  }
+
+  EventTwinSync _wire2api_event_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return EventTwinSync(
       address: _wire2api_String(arr[0]),
       payload: _wire2api_String(arr[1]),
     );
@@ -5837,6 +12115,30 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
+  ExoticOptionalsTwinSync _wire2api_exotic_optionals_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 14)
+      throw Exception('unexpected arr length: expect 14 but see ${arr.length}');
+    return ExoticOptionalsTwinSync(
+      int32: _wire2api_opt_box_autoadd_i_32(arr[0]),
+      int64: _wire2api_opt_box_autoadd_i_64(arr[1]),
+      float64: _wire2api_opt_box_autoadd_f_64(arr[2]),
+      boolean: _wire2api_opt_box_autoadd_bool(arr[3]),
+      zerocopy: _wire2api_opt_ZeroCopyBuffer_list_prim_u_8(arr[4]),
+      int8List: _wire2api_opt_list_prim_i_8(arr[5]),
+      uint8List: _wire2api_opt_list_prim_u_8(arr[6]),
+      int32List: _wire2api_opt_list_prim_i_32(arr[7]),
+      float32List: _wire2api_opt_list_prim_f_32(arr[8]),
+      float64List: _wire2api_opt_list_prim_f_64(arr[9]),
+      attributes: _wire2api_opt_list_attribute_twin_sync(arr[10]),
+      attributesNullable:
+          _wire2api_list_opt_box_autoadd_attribute_twin_sync(arr[11]),
+      nullableAttributes:
+          _wire2api_opt_list_opt_box_autoadd_attribute_twin_sync(arr[12]),
+      newtypeint: _wire2api_opt_box_autoadd_new_type_int_twin_sync(arr[13]),
+    );
+  }
+
   double _wire2api_f_32(dynamic raw) {
     return raw as double;
   }
@@ -5855,11 +12157,30 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
+  FeatureUuidTwinSync _wire2api_feature_uuid_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return FeatureUuidTwinSync(
+      one: _wire2api_Uuid(arr[0]),
+      many: _wire2api_Uuids(arr[1]),
+    );
+  }
+
   FeedIdTwinNormal _wire2api_feed_id_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return FeedIdTwinNormal(
+      field0: _wire2api_u_8_array_8(arr[0]),
+    );
+  }
+
+  FeedIdTwinSync _wire2api_feed_id_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return FeedIdTwinSync(
       field0: _wire2api_u_8_array_8(arr[0]),
     );
   }
@@ -5917,6 +12238,39 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
+  KitchenSinkTwinSync _wire2api_kitchen_sink_twin_sync(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return KitchenSinkTwinSync_Empty();
+      case 1:
+        return KitchenSinkTwinSync_Primitives(
+          int32: _wire2api_i_32(raw[1]),
+          float64: _wire2api_f_64(raw[2]),
+          boolean: _wire2api_bool(raw[3]),
+        );
+      case 2:
+        return KitchenSinkTwinSync_Nested(
+          _wire2api_i_32(raw[1]),
+          _wire2api_box_kitchen_sink_twin_sync(raw[2]),
+        );
+      case 3:
+        return KitchenSinkTwinSync_Optional(
+          _wire2api_opt_box_autoadd_i_32(raw[1]),
+          _wire2api_opt_box_autoadd_i_32(raw[2]),
+        );
+      case 4:
+        return KitchenSinkTwinSync_Buffer(
+          _wire2api_ZeroCopyBuffer_list_prim_u_8(raw[1]),
+        );
+      case 5:
+        return KitchenSinkTwinSync_Enums(
+          _wire2api_weekdays_twin_sync(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
   List<Object> _wire2api_list_DartOpaque(dynamic raw) {
     return (raw as List<dynamic>).map(_wire2api_DartOpaque).toList();
   }
@@ -5937,6 +12291,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return (raw as List<dynamic>).map(_wire2api_attribute_twin_normal).toList();
   }
 
+  List<AttributeTwinSync> _wire2api_list_attribute_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_attribute_twin_sync).toList();
+  }
+
   List<bool> _wire2api_list_bool(dynamic raw) {
     return (raw as List<dynamic>).map(_wire2api_bool).toList();
   }
@@ -5945,11 +12303,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return (raw as List<dynamic>).map(_wire2api_element_twin_normal).toList();
   }
 
+  List<ElementTwinSync> _wire2api_list_element_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_element_twin_sync).toList();
+  }
+
   List<EnumOpaqueTwinNormal> _wire2api_list_enum_opaque_twin_normal(
       dynamic raw) {
     return (raw as List<dynamic>)
         .map(_wire2api_enum_opaque_twin_normal)
         .toList();
+  }
+
+  List<EnumOpaqueTwinSync> _wire2api_list_enum_opaque_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_enum_opaque_twin_sync).toList();
   }
 
   List<MyEnum> _wire2api_list_my_enum(dynamic raw) {
@@ -5964,6 +12330,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dynamic raw) {
     return (raw as List<dynamic>)
         .map(_wire2api_my_tree_node_twin_normal)
+        .toList();
+  }
+
+  List<MyTreeNodeTwinSync> _wire2api_list_my_tree_node_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>)
+        .map(_wire2api_my_tree_node_twin_sync)
         .toList();
   }
 
@@ -5994,6 +12366,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         raw as List<dynamic>, _wire2api_box_autoadd_attribute_twin_normal);
   }
 
+  List<AttributeTwinSync?> _wire2api_list_opt_box_autoadd_attribute_twin_sync(
+      dynamic raw) {
+    return mapNonNull(
+        raw as List<dynamic>, _wire2api_box_autoadd_attribute_twin_sync);
+  }
+
   List<int?> _wire2api_list_opt_box_autoadd_i_32(dynamic raw) {
     return mapNonNull(raw as List<dynamic>, _wire2api_box_autoadd_i_32);
   }
@@ -6004,12 +12382,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         raw as List<dynamic>, _wire2api_box_autoadd_weekdays_twin_normal);
   }
 
+  List<WeekdaysTwinSync?> _wire2api_list_opt_box_autoadd_weekdays_twin_sync(
+      dynamic raw) {
+    return mapNonNull(
+        raw as List<dynamic>, _wire2api_box_autoadd_weekdays_twin_sync);
+  }
+
   List<Int32List?> _wire2api_list_opt_list_prim_i_32(dynamic raw) {
     return mapNonNull(raw as List<dynamic>, _wire2api_list_prim_i_32);
   }
 
   List<PointTwinNormal> _wire2api_list_point_twin_normal(dynamic raw) {
     return (raw as List<dynamic>).map(_wire2api_point_twin_normal).toList();
+  }
+
+  List<PointTwinSync> _wire2api_list_point_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_point_twin_sync).toList();
   }
 
   Float32List _wire2api_list_prim_f_32(dynamic raw) {
@@ -6067,12 +12455,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return (raw as List<dynamic>).map(_wire2api_sum_with_twin_normal).toList();
   }
 
+  List<SumWithTwinSync> _wire2api_list_sum_with_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_sum_with_twin_sync).toList();
+  }
+
   List<TestIdTwinNormal> _wire2api_list_test_id_twin_normal(dynamic raw) {
     return (raw as List<dynamic>).map(_wire2api_test_id_twin_normal).toList();
   }
 
+  List<TestIdTwinSync> _wire2api_list_test_id_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_test_id_twin_sync).toList();
+  }
+
   List<WeekdaysTwinNormal> _wire2api_list_weekdays_twin_normal(dynamic raw) {
     return (raw as List<dynamic>).map(_wire2api_weekdays_twin_normal).toList();
+  }
+
+  List<WeekdaysTwinSync> _wire2api_list_weekdays_twin_sync(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_weekdays_twin_sync).toList();
   }
 
   Log2TwinNormal _wire2api_log_2_twin_normal(dynamic raw) {
@@ -6080,6 +12480,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return Log2TwinNormal(
+      key: _wire2api_u_32(arr[0]),
+      value: _wire2api_String(arr[1]),
+    );
+  }
+
+  Log2TwinSync _wire2api_log_2_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return Log2TwinSync(
       key: _wire2api_u_32(arr[0]),
       value: _wire2api_String(arr[1]),
     );
@@ -6119,11 +12529,35 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     }
   }
 
+  MeasureTwinSync _wire2api_measure_twin_sync(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return MeasureTwinSync_Speed(
+          _wire2api_box_speed_twin_sync(raw[1]),
+        );
+      case 1:
+        return MeasureTwinSync_Distance(
+          _wire2api_box_distance_twin_sync(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
   MessageIdTwinNormal _wire2api_message_id_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return MessageIdTwinNormal(
+      field0: _wire2api_u_8_array_32(arr[0]),
+    );
+  }
+
+  MessageIdTwinSync _wire2api_message_id_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return MessageIdTwinSync(
       field0: _wire2api_u_8_array_32(arr[0]),
     );
   }
@@ -6140,12 +12574,37 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
+  MirrorStructTwinSync _wire2api_mirror_struct_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MirrorStructTwinSync(
+      a: _wire2api_application_settings(arr[0]),
+      b: _wire2api_my_struct(arr[1]),
+      c: _wire2api_list_my_enum(arr[2]),
+      d: _wire2api_list_application_settings(arr[3]),
+    );
+  }
+
   MoreThanJustOneRawStringStructTwinNormal
       _wire2api_more_than_just_one_raw_string_struct_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return MoreThanJustOneRawStringStructTwinNormal(
+      regular: _wire2api_String(arr[0]),
+      type: _wire2api_String(arr[1]),
+      async: _wire2api_bool(arr[2]),
+      another: _wire2api_String(arr[3]),
+    );
+  }
+
+  MoreThanJustOneRawStringStructTwinSync
+      _wire2api_more_than_just_one_raw_string_struct_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MoreThanJustOneRawStringStructTwinSync(
       regular: _wire2api_String(arr[0]),
       type: _wire2api_String(arr[1]),
       async: _wire2api_bool(arr[2]),
@@ -6167,6 +12626,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
+  MyNestedStructTwinSync _wire2api_my_nested_struct_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return MyNestedStructTwinSync(
+      treeNode: _wire2api_my_tree_node_twin_sync(arr[0]),
+      weekday: _wire2api_weekdays_twin_sync(arr[1]),
+    );
+  }
+
   MySize _wire2api_my_size(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2)
@@ -6182,6 +12651,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return MySizeFreezedTwinNormal(
+      width: _wire2api_i_32(arr[0]),
+      height: _wire2api_i_32(arr[1]),
+    );
+  }
+
+  MySizeFreezedTwinSync _wire2api_my_size_freezed_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return MySizeFreezedTwinSync(
       width: _wire2api_i_32(arr[0]),
       height: _wire2api_i_32(arr[1]),
     );
@@ -6217,6 +12696,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
+  MyTreeNodeTwinSync _wire2api_my_tree_node_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MyTreeNodeTwinSync(
+      valueI32: _wire2api_i_32(arr[0]),
+      valueVecU8: _wire2api_list_prim_u_8(arr[1]),
+      valueBoolean: _wire2api_bool(arr[2]),
+      children: _wire2api_list_my_tree_node_twin_sync(arr[3]),
+    );
+  }
+
   NestedRawStringMirrored _wire2api_nested_raw_string_mirrored(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
@@ -6244,6 +12735,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
+  NewTypeIntTwinSync _wire2api_new_type_int_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return NewTypeIntTwinSync(
+      field0: _wire2api_i_64(arr[0]),
+    );
+  }
+
   Numbers _wire2api_numbers(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
@@ -6267,6 +12767,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return OpaqueNestedTwinNormal(
+      first: _wire2api_RustOpaque_hide_data(arr[0]),
+      second: _wire2api_RustOpaque_hide_data(arr[1]),
+    );
+  }
+
+  OpaqueNestedTwinSync _wire2api_opaque_nested_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return OpaqueNestedTwinSync(
       first: _wire2api_RustOpaque_hide_data(arr[0]),
       second: _wire2api_RustOpaque_hide_data(arr[1]),
     );
@@ -6313,6 +12823,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw == null ? null : _wire2api_box_autoadd_element_twin_normal(raw);
   }
 
+  ElementTwinSync? _wire2api_opt_box_autoadd_element_twin_sync(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_element_twin_sync(raw);
+  }
+
   ExoticOptionalsTwinNormal?
       _wire2api_opt_box_autoadd_exotic_optionals_twin_normal(dynamic raw) {
     return raw == null
@@ -6320,8 +12834,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         : _wire2api_box_autoadd_exotic_optionals_twin_normal(raw);
   }
 
+  ExoticOptionalsTwinSync? _wire2api_opt_box_autoadd_exotic_optionals_twin_sync(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : _wire2api_box_autoadd_exotic_optionals_twin_sync(raw);
+  }
+
+  double? _wire2api_opt_box_autoadd_f_32(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_f_32(raw);
+  }
+
   double? _wire2api_opt_box_autoadd_f_64(dynamic raw) {
     return raw == null ? null : _wire2api_box_autoadd_f_64(raw);
+  }
+
+  int? _wire2api_opt_box_autoadd_i_16(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_i_16(raw);
   }
 
   int? _wire2api_opt_box_autoadd_i_32(dynamic raw) {
@@ -6332,9 +12861,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw == null ? null : _wire2api_box_autoadd_i_64(raw);
   }
 
+  int? _wire2api_opt_box_autoadd_i_8(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_i_8(raw);
+  }
+
   MeasureTwinNormal? _wire2api_opt_box_autoadd_measure_twin_normal(
       dynamic raw) {
     return raw == null ? null : _wire2api_box_autoadd_measure_twin_normal(raw);
+  }
+
+  MeasureTwinSync? _wire2api_opt_box_autoadd_measure_twin_sync(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_measure_twin_sync(raw);
   }
 
   NewTypeIntTwinNormal? _wire2api_opt_box_autoadd_new_type_int_twin_normal(
@@ -6344,9 +12881,36 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         : _wire2api_box_autoadd_new_type_int_twin_normal(raw);
   }
 
+  NewTypeIntTwinSync? _wire2api_opt_box_autoadd_new_type_int_twin_sync(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : _wire2api_box_autoadd_new_type_int_twin_sync(raw);
+  }
+
+  int? _wire2api_opt_box_autoadd_u_16(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_u_16(raw);
+  }
+
+  int? _wire2api_opt_box_autoadd_u_32(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_u_32(raw);
+  }
+
+  int? _wire2api_opt_box_autoadd_u_64(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_u_64(raw);
+  }
+
+  int? _wire2api_opt_box_autoadd_u_8(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_u_8(raw);
+  }
+
   WeekdaysTwinNormal? _wire2api_opt_box_autoadd_weekdays_twin_normal(
       dynamic raw) {
     return raw == null ? null : _wire2api_box_autoadd_weekdays_twin_normal(raw);
+  }
+
+  WeekdaysTwinSync? _wire2api_opt_box_autoadd_weekdays_twin_sync(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_weekdays_twin_sync(raw);
   }
 
   List<AttributeTwinNormal>? _wire2api_opt_list_attribute_twin_normal(
@@ -6354,8 +12918,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw == null ? null : _wire2api_list_attribute_twin_normal(raw);
   }
 
+  List<AttributeTwinSync>? _wire2api_opt_list_attribute_twin_sync(dynamic raw) {
+    return raw == null ? null : _wire2api_list_attribute_twin_sync(raw);
+  }
+
   List<ElementTwinNormal>? _wire2api_opt_list_element_twin_normal(dynamic raw) {
     return raw == null ? null : _wire2api_list_element_twin_normal(raw);
+  }
+
+  List<ElementTwinSync>? _wire2api_opt_list_element_twin_sync(dynamic raw) {
+    return raw == null ? null : _wire2api_list_element_twin_sync(raw);
   }
 
   List<AttributeTwinNormal?>?
@@ -6363,6 +12935,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw == null
         ? null
         : _wire2api_list_opt_box_autoadd_attribute_twin_normal(raw);
+  }
+
+  List<AttributeTwinSync?>?
+      _wire2api_opt_list_opt_box_autoadd_attribute_twin_sync(dynamic raw) {
+    return raw == null
+        ? null
+        : _wire2api_list_opt_box_autoadd_attribute_twin_sync(raw);
   }
 
   Float32List? _wire2api_opt_list_prim_f_32(dynamic raw) {
@@ -6397,6 +12976,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
+  OptVecsTwinSync _wire2api_opt_vecs_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return OptVecsTwinSync(
+      i32: _wire2api_list_opt_box_autoadd_i_32(arr[0]),
+      enums: _wire2api_list_opt_box_autoadd_weekdays_twin_sync(arr[1]),
+      strings: _wire2api_list_opt_String(arr[2]),
+      buffers: _wire2api_list_opt_list_prim_i_32(arr[3]),
+    );
+  }
+
   PointTwinNormal _wire2api_point_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2)
@@ -6410,6 +13001,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   PointTwinNormalArray2 _wire2api_point_twin_normal_array_2(dynamic raw) {
     return PointTwinNormalArray2(
         (raw as List<dynamic>).map(_wire2api_point_twin_normal).toList());
+  }
+
+  PointTwinSync _wire2api_point_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return PointTwinSync(
+      x: _wire2api_f_32(arr[0]),
+      y: _wire2api_f_32(arr[1]),
+    );
+  }
+
+  PointTwinSyncArray2 _wire2api_point_twin_sync_array_2(dynamic raw) {
+    return PointTwinSyncArray2(
+        (raw as List<dynamic>).map(_wire2api_point_twin_sync).toList());
   }
 
   RawStringEnumMirrored _wire2api_raw_string_enum_mirrored(dynamic raw) {
@@ -6437,6 +13043,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return RawStringItemStructTwinNormal(
+      type: _wire2api_String(arr[0]),
+    );
+  }
+
+  RawStringItemStructTwinSync _wire2api_raw_string_item_struct_twin_sync(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return RawStringItemStructTwinSync(
       type: _wire2api_String(arr[0]),
     );
   }
@@ -6492,12 +13108,34 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
+  SomeStructTwinSync _wire2api_some_struct_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return SomeStructTwinSync(
+      value: _wire2api_u_32(arr[0]),
+    );
+  }
+
   SpeedTwinNormal _wire2api_speed_twin_normal(dynamic raw) {
     switch (raw[0]) {
       case 0:
         return SpeedTwinNormal_Unknown();
       case 1:
         return SpeedTwinNormal_GPS(
+          _wire2api_f_64(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  SpeedTwinSync _wire2api_speed_twin_sync(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return SpeedTwinSync_Unknown();
+      case 1:
+        return SpeedTwinSync_GPS(
           _wire2api_f_64(raw[1]),
         );
       default:
@@ -6515,12 +13153,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
+  StructWithEnumTwinSync _wire2api_struct_with_enum_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return StructWithEnumTwinSync(
+      abc1: _wire2api_abc_twin_sync(arr[0]),
+      abc2: _wire2api_abc_twin_sync(arr[1]),
+    );
+  }
+
   StructWithOneFieldTwinNormal _wire2api_struct_with_one_field_twin_normal(
       dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return StructWithOneFieldTwinNormal(
+      a: _wire2api_i_32(arr[0]),
+    );
+  }
+
+  StructWithOneFieldTwinSync _wire2api_struct_with_one_field_twin_sync(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return StructWithOneFieldTwinSync(
       a: _wire2api_i_32(arr[0]),
     );
   }
@@ -6536,12 +13194,31 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
+  StructWithTwoFieldTwinSync _wire2api_struct_with_two_field_twin_sync(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return StructWithTwoFieldTwinSync(
+      a: _wire2api_i_32(arr[0]),
+      b: _wire2api_i_32(arr[1]),
+    );
+  }
+
   StructWithZeroFieldTwinNormal _wire2api_struct_with_zero_field_twin_normal(
       dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 0)
       throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
     return StructWithZeroFieldTwinNormal();
+  }
+
+  StructWithZeroFieldTwinSync _wire2api_struct_with_zero_field_twin_sync(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 0)
+      throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
+    return StructWithZeroFieldTwinSync();
   }
 
   SumWithTwinNormal _wire2api_sum_with_twin_normal(dynamic raw) {
@@ -6558,11 +13235,36 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         (raw as List<dynamic>).map(_wire2api_sum_with_twin_normal).toList());
   }
 
+  SumWithTwinSync _wire2api_sum_with_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return SumWithTwinSync(
+      x: _wire2api_u_32(arr[0]),
+    );
+  }
+
+  SumWithTwinSyncArray3 _wire2api_sum_with_twin_sync_array_3(dynamic raw) {
+    return SumWithTwinSyncArray3(
+        (raw as List<dynamic>).map(_wire2api_sum_with_twin_sync).toList());
+  }
+
   TestChronoTwinNormal _wire2api_test_chrono_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 3)
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return TestChronoTwinNormal(
+      dt: _wire2api_opt_box_autoadd_Chrono_Utc(arr[0]),
+      dt2: _wire2api_opt_box_autoadd_Chrono_Naive(arr[1]),
+      du: _wire2api_opt_box_autoadd_Chrono_Duration(arr[2]),
+    );
+  }
+
+  TestChronoTwinSync _wire2api_test_chrono_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return TestChronoTwinSync(
       dt: _wire2api_opt_box_autoadd_Chrono_Utc(arr[0]),
       dt2: _wire2api_opt_box_autoadd_Chrono_Naive(arr[1]),
       du: _wire2api_opt_box_autoadd_Chrono_Duration(arr[2]),
@@ -6583,11 +13285,37 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         (raw as List<dynamic>).map(_wire2api_test_id_twin_normal).toList());
   }
 
+  TestIdTwinSync _wire2api_test_id_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return TestIdTwinSync(
+      field0: _wire2api_i_32_array_2(arr[0]),
+    );
+  }
+
+  TestIdTwinSyncArray2 _wire2api_test_id_twin_sync_array_2(dynamic raw) {
+    return TestIdTwinSyncArray2(
+        (raw as List<dynamic>).map(_wire2api_test_id_twin_sync).toList());
+  }
+
   TestModelTwinNormal _wire2api_test_model_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 4)
       throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return TestModelTwinNormal(
+      id: _wire2api_u_64(arr[0]),
+      name: _wire2api_String(arr[1]),
+      aliasEnum: _wire2api_my_enum(arr[2]),
+      aliasStruct: _wire2api_my_struct(arr[3]),
+    );
+  }
+
+  TestModelTwinSync _wire2api_test_model_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4)
+      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return TestModelTwinSync(
       id: _wire2api_u_64(arr[0]),
       name: _wire2api_String(arr[1]),
       aliasEnum: _wire2api_my_enum(arr[2]),
@@ -6605,12 +13333,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
+  TupleStructWithOneFieldTwinSync
+      _wire2api_tuple_struct_with_one_field_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return TupleStructWithOneFieldTwinSync(
+      field0: _wire2api_i_32(arr[0]),
+    );
+  }
+
   TupleStructWithTwoFieldTwinNormal
       _wire2api_tuple_struct_with_two_field_twin_normal(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return TupleStructWithTwoFieldTwinNormal(
+      field0: _wire2api_i_32(arr[0]),
+      field1: _wire2api_i_32(arr[1]),
+    );
+  }
+
+  TupleStructWithTwoFieldTwinSync
+      _wire2api_tuple_struct_with_two_field_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return TupleStructWithTwoFieldTwinSync(
       field0: _wire2api_i_32(arr[0]),
       field1: _wire2api_i_32(arr[1]),
     );
@@ -6661,6 +13410,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
+  UserIdTwinSync _wire2api_user_id_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return UserIdTwinSync(
+      value: _wire2api_u_32(arr[0]),
+    );
+  }
+
   VecOfPrimitivePackTwinNormal _wire2api_vec_of_primitive_pack_twin_normal(
       dynamic raw) {
     final arr = raw as List<dynamic>;
@@ -6681,8 +13439,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
+  VecOfPrimitivePackTwinSync _wire2api_vec_of_primitive_pack_twin_sync(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 11)
+      throw Exception('unexpected arr length: expect 11 but see ${arr.length}');
+    return VecOfPrimitivePackTwinSync(
+      int8List: _wire2api_list_prim_i_8(arr[0]),
+      uint8List: _wire2api_list_prim_u_8(arr[1]),
+      int16List: _wire2api_list_prim_i_16(arr[2]),
+      uint16List: _wire2api_list_prim_u_16(arr[3]),
+      uint32List: _wire2api_list_prim_u_32(arr[4]),
+      int32List: _wire2api_list_prim_i_32(arr[5]),
+      uint64List: _wire2api_list_prim_u_64(arr[6]),
+      int64List: _wire2api_list_prim_i_64(arr[7]),
+      float32List: _wire2api_list_prim_f_32(arr[8]),
+      float64List: _wire2api_list_prim_f_64(arr[9]),
+      boolList: _wire2api_list_bool(arr[10]),
+    );
+  }
+
   WeekdaysTwinNormal _wire2api_weekdays_twin_normal(dynamic raw) {
     return WeekdaysTwinNormal.values[raw as int];
+  }
+
+  WeekdaysTwinSync _wire2api_weekdays_twin_sync(dynamic raw) {
+    return WeekdaysTwinSync.values[raw as int];
   }
 
   ZeroCopyVecOfPrimitivePackTwinNormal
@@ -6691,6 +13473,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 10)
       throw Exception('unexpected arr length: expect 10 but see ${arr.length}');
     return ZeroCopyVecOfPrimitivePackTwinNormal(
+      int8List: _wire2api_ZeroCopyBuffer_list_prim_i_8(arr[0]),
+      uint8List: _wire2api_ZeroCopyBuffer_list_prim_u_8(arr[1]),
+      int16List: _wire2api_ZeroCopyBuffer_list_prim_i_16(arr[2]),
+      uint16List: _wire2api_ZeroCopyBuffer_list_prim_u_16(arr[3]),
+      uint32List: _wire2api_ZeroCopyBuffer_list_prim_u_32(arr[4]),
+      int32List: _wire2api_ZeroCopyBuffer_list_prim_i_32(arr[5]),
+      uint64List: _wire2api_ZeroCopyBuffer_list_prim_u_64(arr[6]),
+      int64List: _wire2api_ZeroCopyBuffer_list_prim_i_64(arr[7]),
+      float32List: _wire2api_ZeroCopyBuffer_list_prim_f_32(arr[8]),
+      float64List: _wire2api_ZeroCopyBuffer_list_prim_f_64(arr[9]),
+    );
+  }
+
+  ZeroCopyVecOfPrimitivePackTwinSync
+      _wire2api_zero_copy_vec_of_primitive_pack_twin_sync(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 10)
+      throw Exception('unexpected arr length: expect 10 but see ${arr.length}');
+    return ZeroCopyVecOfPrimitivePackTwinSync(
       int8List: _wire2api_ZeroCopyBuffer_list_prim_i_8(arr[0]),
       uint8List: _wire2api_ZeroCopyBuffer_list_prim_u_8(arr[1]),
       int16List: _wire2api_ZeroCopyBuffer_list_prim_i_16(arr[2]),
@@ -6719,11 +13520,19 @@ int api2wire_enum_simple_twin_normal(EnumSimpleTwinNormal raw) {
   return api2wire_i_32(raw.index);
 }
 
+int api2wire_enum_simple_twin_sync(EnumSimpleTwinSync raw) {
+  return api2wire_i_32(raw.index);
+}
+
 double api2wire_f_32(double raw) {
   return raw;
 }
 
 double api2wire_f_64(double raw) {
+  return raw;
+}
+
+int api2wire_i_16(int raw) {
   return raw;
 }
 
@@ -6739,6 +13548,10 @@ int api2wire_my_enum(MyEnum raw) {
   return api2wire_i_32(raw.index);
 }
 
+int api2wire_u_16(int raw) {
+  return raw;
+}
+
 int api2wire_u_32(int raw) {
   return raw;
 }
@@ -6752,5 +13565,9 @@ int api2wire_usize(int raw) {
 }
 
 int api2wire_weekdays_twin_normal(WeekdaysTwinNormal raw) {
+  return api2wire_i_32(raw.index);
+}
+
+int api2wire_weekdays_twin_sync(WeekdaysTwinSync raw) {
   return api2wire_i_32(raw.index);
 }

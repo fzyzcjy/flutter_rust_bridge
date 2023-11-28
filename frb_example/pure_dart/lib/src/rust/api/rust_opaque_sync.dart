@@ -2,7 +2,7 @@
 
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'rust_opaque.dart';
+import 'pseudo_manual/rust_opaque_twin_sync.dart';
 
 HideData? syncOptionRustOpaqueTwinNormal({dynamic hint}) =>
     RustLib.instance.api.syncOptionRustOpaqueTwinNormal(hint: hint);
