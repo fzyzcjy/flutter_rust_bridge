@@ -48,6 +48,7 @@ glob = "0.3.1"
 derivative = "2.2.0"
 paste = "1.0.14"
 proc-macro2 = { version = "1.0.66", features = ["span-locations"]}
+include_dir = "0.7.3"
 
 [dev-dependencies]
 semver = "1.0.12"
