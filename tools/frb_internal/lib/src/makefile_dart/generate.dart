@@ -90,7 +90,10 @@ Future<void> generateInternalDartSource(GenerateConfig config) async {
 
 Future<void> generateInternalRust(GenerateConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
-    await runDartPubGetIfNotRunYet('frb_dart');
+    for (final package in kDartPackages) {
+      await runDartPubGetIfNotRunYet(package);
+    }
+
     await exec('cargo run -- internal-generate', relativePwd: 'frb_codegen');
   });
 }
