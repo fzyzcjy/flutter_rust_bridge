@@ -11,6 +11,7 @@ List<Command<void>> createCommands() {
   return [
     SimpleCommand('misc-normalize-pubspec', miscNormalizePubspec),
     SimpleCommand('precommit-fast', precommitFast),
+    SimpleCommand('pub-get-all', pubGetAll),
   ];
 }
 
@@ -27,4 +28,11 @@ Future<void> precommitFast() async {
   await lintDartFormat(const LintConfig(fix: true));
   await lintRustFormat(const LintConfig(fix: true));
   await miscNormalizePubspec();
+}
+
+Future<void> pubGetAll() async {
+  for (final package in kDartPackages) {
+    await exec('${kDartModeOfPackage[package]!.name} pub get',
+        relativePwd: package);
+  }
 }
