@@ -42,25 +42,25 @@ pub fn create_option_opaque_twin_normal(
 //     SyncReturn(RustOpaque::new(HideData::new()))
 // }
 
-pub fn create_array_opaque_enum_twin_normal() -> [EnumOpaque; 5] {
+pub fn create_array_opaque_enum_twin_normal() -> [EnumOpaqueTwinNormal; 5] {
     [
-        EnumOpaque::Struct(RustOpaque::new(HideData::new())),
-        EnumOpaque::Primitive(RustOpaque::new(42)),
-        EnumOpaque::TraitObj(opaque_dyn!("String")),
-        EnumOpaque::Mutex(RustOpaque::new(Mutex::new(HideData::new()))),
-        EnumOpaque::RwLock(RustOpaque::new(RwLock::new(HideData::new()))),
+        EnumOpaqueTwinNormal::Struct(RustOpaque::new(HideData::new())),
+        EnumOpaqueTwinNormal::Primitive(RustOpaque::new(42)),
+        EnumOpaqueTwinNormal::TraitObj(opaque_dyn!("String")),
+        EnumOpaqueTwinNormal::Mutex(RustOpaque::new(Mutex::new(HideData::new()))),
+        EnumOpaqueTwinNormal::RwLock(RustOpaque::new(RwLock::new(HideData::new()))),
     ]
 }
 
-pub fn run_enum_opaque_twin_normal(opaque: EnumOpaque) -> String {
+pub fn run_enum_opaque_twin_normal(opaque: EnumOpaqueTwinNormal) -> String {
     match opaque {
-        EnumOpaque::Struct(s) => run_opaque(s),
-        EnumOpaque::Primitive(p) => format!("{:?}", p.deref()),
-        EnumOpaque::TraitObj(t) => format!("{:?}", t.deref()),
-        EnumOpaque::Mutex(m) => {
+        EnumOpaqueTwinNormal::Struct(s) => run_opaque_twin_normal(s),
+        EnumOpaqueTwinNormal::Primitive(p) => format!("{:?}", p.deref()),
+        EnumOpaqueTwinNormal::TraitObj(t) => format!("{:?}", t.deref()),
+        EnumOpaqueTwinNormal::Mutex(m) => {
             format!("{:?}", m.lock().unwrap().hide_data())
         }
-        EnumOpaque::RwLock(r) => {
+        EnumOpaqueTwinNormal::RwLock(r) => {
             format!("{:?}", r.read().unwrap().hide_data())
         }
     }
@@ -122,14 +122,14 @@ pub fn opaque_vec_run_twin_normal(data: Vec<RustOpaque<HideData>>) {
     }
 }
 
-pub fn create_nested_opaque_twin_normal() -> OpaqueNested {
-    OpaqueNested {
+pub fn create_nested_opaque_twin_normal() -> OpaqueNestedTwinNormal {
+    OpaqueNestedTwinNormal {
         first: RustOpaque::new(HideData::new()),
         second: RustOpaque::new(HideData::new()),
     }
 }
 
-pub fn run_nested_opaque_twin_normal(opaque: OpaqueNested) {
+pub fn run_nested_opaque_twin_normal(opaque: OpaqueNestedTwinNormal) {
     opaque.first.hide_data();
     opaque.second.hide_data();
 }

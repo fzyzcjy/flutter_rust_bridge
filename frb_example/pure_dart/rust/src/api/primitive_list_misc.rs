@@ -14,8 +14,8 @@ pub struct VecOfPrimitivePackTwinNormal {
     pub bool_list: Vec<bool>,
 }
 
-pub fn handle_vec_of_primitive_twin_normal(n: i32) -> VecOfPrimitivePack {
-    VecOfPrimitivePack {
+pub fn handle_vec_of_primitive_twin_normal(n: i32) -> VecOfPrimitivePackTwinNormal {
+    VecOfPrimitivePackTwinNormal {
         int8list: vec![42i8; n as usize],
         uint8list: vec![42u8; n as usize],
         int16list: vec![42i16; n as usize],
@@ -43,8 +43,10 @@ pub struct ZeroCopyVecOfPrimitivePackTwinNormal {
     pub float64list: ZeroCopyBuffer<Vec<f64>>,
 }
 
-pub fn handle_zero_copy_vec_of_primitive_twin_normal(n: i32) -> ZeroCopyVecOfPrimitivePack {
-    ZeroCopyVecOfPrimitivePack {
+pub fn handle_zero_copy_vec_of_primitive_twin_normal(
+    n: i32,
+) -> ZeroCopyVecOfPrimitivePackTwinNormal {
+    ZeroCopyVecOfPrimitivePackTwinNormal {
         int8list: ZeroCopyBuffer(vec![42i8; n as usize]),
         uint8list: ZeroCopyBuffer(vec![42u8; n as usize]),
         int16list: ZeroCopyBuffer(vec![42i16; n as usize]),

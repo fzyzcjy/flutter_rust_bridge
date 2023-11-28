@@ -6,7 +6,7 @@ use flutter_rust_bridge::{frb, StreamSink};
 use std::sync::Mutex;
 
 lazy_static! {
-    static ref EVENTS: Mutex<Option<StreamSink<Event>>> = Default::default();
+    static ref EVENTS: Mutex<Option<StreamSink<EventTwinNormal>>> = Default::default();
 }
 
 #[frb(dart_metadata = ("freezed"))]
@@ -16,13 +16,13 @@ pub struct EventTwinNormal {
     pub payload: String,
 }
 
-impl Event {
+impl EventTwinNormal {
     pub fn as_string_twin_normal(&self) -> String {
         format!("{}: {}", self.address, self.payload)
     }
 }
 
-pub fn register_event_listener_twin_normal(listener: StreamSink<Event>) -> Result<()> {
+pub fn register_event_listener_twin_normal(listener: StreamSink<EventTwinNormal>) -> Result<()> {
     match EVENTS.lock() {
         Ok(mut guard) => {
             *guard = Some(listener);
@@ -41,7 +41,7 @@ pub fn close_event_listener_twin_normal() {
 pub fn create_event_twin_normal(address: String, payload: String) {
     if let Ok(mut guard) = EVENTS.lock() {
         if let Some(sink) = guard.as_mut() {
-            sink.add(Event { address, payload });
+            sink.add(EventTwinNormal { address, payload });
         }
     }
 }

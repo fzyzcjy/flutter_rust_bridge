@@ -69,20 +69,20 @@ pub struct DartOpaqueNestedTwinNormal {
 pub fn create_nested_dart_opaque_twin_normal(
     opaque1: DartOpaque,
     opaque2: DartOpaque,
-) -> DartOpaqueNested {
-    DartOpaqueNested {
+) -> DartOpaqueNestedTwinNormal {
+    DartOpaqueNestedTwinNormal {
         first: opaque1,
         second: opaque2,
     }
 }
 
-pub fn get_nested_dart_opaque_twin_normal(opaque: DartOpaqueNested) {}
+pub fn get_nested_dart_opaque_twin_normal(opaque: DartOpaqueNestedTwinNormal) {}
 
-pub fn create_enum_dart_opaque_twin_normal(opaque: DartOpaque) -> EnumDartOpaque {
-    EnumDartOpaque::Opaque(opaque)
+pub fn create_enum_dart_opaque_twin_normal(opaque: DartOpaque) -> EnumDartOpaqueTwinNormal {
+    EnumDartOpaqueTwinNormal::Opaque(opaque)
 }
 
-pub fn get_enum_dart_opaque_twin_normal(opaque: EnumDartOpaque) {}
+pub fn get_enum_dart_opaque_twin_normal(opaque: EnumDartOpaqueTwinNormal) {}
 
 lazy_static! {
     static ref DART_OPAQUE: Mutex<Option<DartOpaque>> = Default::default();

@@ -76,8 +76,8 @@ pub struct MirrorStructTwinNormal {
 }
 
 // use a Struct consisting of mirror types as argument to a Stream
-pub fn mirror_struct_stream_twin_normal(sink: StreamSink<MirrorStruct>) {
-    let val = MirrorStruct {
+pub fn mirror_struct_stream_twin_normal(sink: StreamSink<MirrorStructTwinNormal>) {
+    let val = MirrorStructTwinNormal {
         a: frb_example_pure_dart_exapmle_external_lib::get_app_settings(),
         b: MyStruct { content: true },
         c: vec![MyEnum::True, MyEnum::False],
@@ -225,15 +225,15 @@ pub struct AnotherTwinNormal {
 
 pub struct ContainsMirroredSubStructTwinNormal {
     pub test: RawStringMirrored,
-    pub test2: Another,
+    pub test2: AnotherTwinNormal,
 }
 
-pub fn test_contains_mirrored_sub_struct_twin_normal() -> ContainsMirroredSubStruct {
-    ContainsMirroredSubStruct {
+pub fn test_contains_mirrored_sub_struct_twin_normal() -> ContainsMirroredSubStructTwinNormal {
+    ContainsMirroredSubStructTwinNormal {
         test: RawStringMirrored {
             r#value: "test".to_owned(),
         },
-        test2: Another {
+        test2: AnotherTwinNormal {
             a: "test".to_owned(),
         },
     }

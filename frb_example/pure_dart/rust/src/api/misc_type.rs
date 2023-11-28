@@ -25,6 +25,6 @@ pub fn handle_string_list_twin_normal(names: Vec<String>) -> Vec<String> {
 #[derive(Debug, Clone)]
 pub struct EmptyTwinNormal {}
 
-pub fn empty_struct_twin_normal(empty: Empty) -> Empty {
+pub fn empty_struct_twin_normal(empty: EmptyTwinNormal) -> EmptyTwinNormal {
     empty
 }

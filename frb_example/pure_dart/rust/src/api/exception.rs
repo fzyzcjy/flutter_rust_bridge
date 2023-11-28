@@ -83,24 +83,24 @@ pub enum CustomErrorTwinNormal {
     Error1 { e: u32, backtrace: Backtrace },
 }
 
-pub fn return_err_custom_error_twin_normal() -> Result<u32, CustomError> {
-    Err(CustomError::Error0 {
+pub fn return_err_custom_error_twin_normal() -> Result<u32, CustomErrorTwinNormal> {
+    Err(CustomErrorTwinNormal::Error0 {
         e: "".into(),
         backtrace: Backtrace::new(),
     })
 }
 
-pub fn return_ok_custom_error_twin_normal() -> Result<u32, CustomError> {
+pub fn return_ok_custom_error_twin_normal() -> Result<u32, CustomErrorTwinNormal> {
     Ok(3)
 }
 
-pub fn return_error_variant_twin_normal(variant: u32) -> Result<u32, CustomError> {
+pub fn return_error_variant_twin_normal(variant: u32) -> Result<u32, CustomErrorTwinNormal> {
     match variant {
-        0 => Err(CustomError::Error0 {
+        0 => Err(CustomErrorTwinNormal::Error0 {
             e: "variant0".to_string(),
             backtrace: Backtrace::new(),
         }),
-        1 => Err(CustomError::Error1 {
+        1 => Err(CustomErrorTwinNormal::Error1 {
             e: 1,
             backtrace: Backtrace::new(),
         }),
@@ -112,30 +112,34 @@ pub struct SomeStructTwinNormal {
     pub value: u32,
 }
 
-impl SomeStruct {
-    pub fn new_twin_normal(value: u32) -> SomeStruct {
-        SomeStruct { value }
+impl SomeStructTwinNormal {
+    pub fn new_twin_normal(value: u32) -> SomeStructTwinNormal {
+        SomeStructTwinNormal { value }
     }
 
-    pub fn static_return_err_custom_error_twin_normal() -> Result<u32, CustomError> {
-        Err(CustomError::Error1 {
+    pub fn static_return_err_custom_error_twin_normal() -> Result<u32, CustomErrorTwinNormal> {
+        Err(CustomErrorTwinNormal::Error1 {
             e: 3,
             backtrace: Backtrace::new(),
         })
     }
 
-    pub fn static_return_ok_custom_error_twin_normal() -> Result<u32, CustomError> {
+    pub fn static_return_ok_custom_error_twin_normal() -> Result<u32, CustomErrorTwinNormal> {
         Ok(3)
     }
 
-    pub fn non_static_return_err_custom_error_twin_normal(&self) -> Result<u32, CustomError> {
-        Err(CustomError::Error1 {
+    pub fn non_static_return_err_custom_error_twin_normal(
+        &self,
+    ) -> Result<u32, CustomErrorTwinNormal> {
+        Err(CustomErrorTwinNormal::Error1 {
             e: self.value,
             backtrace: Backtrace::new(),
         })
     }
 
-    pub fn non_static_return_ok_custom_error_twin_normal(&self) -> Result<u32, CustomError> {
+    pub fn non_static_return_ok_custom_error_twin_normal(
+        &self,
+    ) -> Result<u32, CustomErrorTwinNormal> {
         Ok(self.value)
     }
 }
@@ -179,9 +183,9 @@ pub fn return_custom_struct_error_twin_normal() -> Result<(), CustomStructErrorA
 }
 
 #[flutter_rust_bridge::frb(sync)]
-pub fn sync_return_custom_struct_error_twin_normal() -> Result<(), CustomStructError> {
-    Err(CustomStructError {
-        message: "error message".to_string(),
+pub fn sync_return_custom_struct_error_twin_normal() -> Result<(), CustomStructErrorTwinNormal> {
+    Err(CustomStructErrorTwinNormal {
+        a: "error message".to_string(),
     })
 }
 

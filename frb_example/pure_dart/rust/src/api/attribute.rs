@@ -42,7 +42,7 @@ pub struct UserIdTwinNormal {
 }
 
 pub fn next_user_id_twin_normal(user_id: UserIdTwinNormal) -> UserIdTwinNormal {
-    UserId {
+    UserIdTwinNormal {
         value: user_id.value + 1,
     }
 }

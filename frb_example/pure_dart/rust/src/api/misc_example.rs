@@ -7,10 +7,10 @@ pub struct MyTreeNodeTwinNormal {
     pub value_i32: i32,
     pub value_vec_u8: Vec<u8>,
     pub value_boolean: bool,
-    pub children: Vec<MyTreeNode>,
+    pub children: Vec<MyTreeNodeTwinNormal>,
 }
 
-pub fn handle_complex_struct_twin_normal(s: MyTreeNode) -> MyTreeNode {
+pub fn handle_complex_struct_twin_normal(s: MyTreeNodeTwinNormal) -> MyTreeNodeTwinNormal {
     // info!("handle_complex_struct({:?})", &s);
     let _s_cloned = s.clone();
     s
@@ -40,11 +40,11 @@ pub fn list_of_primitive_enums_twin_normal(
 
 #[derive(Debug, Clone)]
 pub struct MyNestedStructTwinNormal {
-    pub tree_node: MyTreeNode,
+    pub tree_node: MyTreeNodeTwinNormal,
     pub weekday: WeekdaysTwinNormal,
 }
 
-pub fn handle_nested_struct_twin_normal(s: MyNestedStruct) -> MyNestedStruct {
+pub fn handle_nested_struct_twin_normal(s: MyNestedStructTwinNormal) -> MyNestedStructTwinNormal {
     println!("handle_nested_struct({s:?})");
     let _s_cloned = s.clone();
     s
@@ -55,8 +55,8 @@ pub struct BigBuffersTwinNormal {
     pub uint64: Vec<u64>,
 }
 
-pub fn handle_big_buffers_twin_normal() -> BigBuffers {
-    BigBuffers {
+pub fn handle_big_buffers_twin_normal() -> BigBuffersTwinNormal {
+    BigBuffersTwinNormal {
         int64: vec![i64::MIN, i64::MAX],
         uint64: vec![u64::MAX],
     }
@@ -75,23 +75,23 @@ pub struct CTwinNormal {
 }
 
 pub enum AbcTwinNormal {
-    A(A),
-    B(B),
-    C(C),
+    A(ATwinNormal),
+    B(BTwinNormal),
+    C(CTwinNormal),
     JustInt(i32),
 }
 
-pub fn test_abc_enum_twin_normal(abc: Abc) -> Abc {
+pub fn test_abc_enum_twin_normal(abc: AbcTwinNormal) -> AbcTwinNormal {
     abc
 }
 
 pub struct StructWithEnumTwinNormal {
-    pub abc1: Abc,
-    pub abc2: Abc,
+    pub abc1: AbcTwinNormal,
+    pub abc2: AbcTwinNormal,
 }
 
-pub fn test_struct_with_enum_twin_normal(se: StructWithEnum) -> StructWithEnum {
-    StructWithEnum {
+pub fn test_struct_with_enum_twin_normal(se: StructWithEnumTwinNormal) -> StructWithEnumTwinNormal {
+    StructWithEnumTwinNormal {
         abc1: se.abc2,
         abc2: se.abc1,
     }
@@ -126,11 +126,11 @@ pub struct MySizeFreezedTwinNormal {
 
 #[frb(sync)]
 pub fn handle_struct_sync_freezed_twin_normal(
-    arg: MySizeFreezed,
-    boxed: Box<MySizeFreezed>,
-) -> MySizeFreezed {
+    arg: MySizeFreezedTwinNormal,
+    boxed: Box<MySizeFreezedTwinNormal>,
+) -> MySizeFreezedTwinNormal {
     info!("handle_struct_sync_freezed({:?}, {:?})", &arg, &boxed);
-    MySizeFreezed {
+    MySizeFreezedTwinNormal {
         width: arg.width + boxed.width,
         height: arg.height + boxed.height,
     }

@@ -15,8 +15,8 @@ pub struct TestModelTwinNormal {
     pub alias_struct: MyStruct,
 }
 
-pub fn handle_type_alias_model_twin_normal(input: Id) -> TestModel {
-    TestModel {
+pub fn handle_type_alias_model_twin_normal(input: Id) -> TestModelTwinNormal {
+    TestModelTwinNormal {
         id: input,
         name: "TestModel".to_owned(),
         alias_enum: EnumAlias::False,

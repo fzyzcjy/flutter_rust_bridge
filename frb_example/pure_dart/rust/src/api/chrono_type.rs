@@ -83,8 +83,8 @@ pub struct TestChronoTwinNormal {
     pub du: Option<chrono::Duration>,
 }
 
-pub fn test_chrono_twin_normal() -> TestChrono {
-    TestChrono {
+pub fn test_chrono_twin_normal() -> TestChronoTwinNormal {
+    TestChronoTwinNormal {
         dt: Some(chrono::DateTime::from_naive_utc_and_offset(
             chrono::NaiveDateTime::from_timestamp_opt(1631297333, 0).unwrap(),
             chrono::Utc,
@@ -94,8 +94,8 @@ pub fn test_chrono_twin_normal() -> TestChrono {
     }
 }
 
-pub fn test_precise_chrono_twin_normal() -> TestChrono {
-    TestChrono {
+pub fn test_precise_chrono_twin_normal() -> TestChronoTwinNormal {
+    TestChronoTwinNormal {
         dt: Some(chrono::DateTime::from_naive_utc_and_offset(
             chrono::NaiveDateTime::from_timestamp_opt(1014466435, 0).unwrap(),
             chrono::Utc,
@@ -113,7 +113,9 @@ pub struct FeatureChronoTwinNormal {
     pub naive: chrono::NaiveDateTime,
 }
 
-pub fn how_long_does_it_take_twin_normal(mine: FeatureChrono) -> anyhow::Result<chrono::Duration> {
+pub fn how_long_does_it_take_twin_normal(
+    mine: FeatureChronoTwinNormal,
+) -> anyhow::Result<chrono::Duration> {
     use chrono::{Datelike, Timelike};
     let difference: chrono::Duration = chrono::Utc::now() - mine.utc;
     assert_eq!(&mine.duration.num_hours(), &4);

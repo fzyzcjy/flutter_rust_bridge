@@ -25,8 +25,8 @@ macro_rules! generate_another_struct {
             pub non_final_data: i32,
         }
         #[allow(unused)]
-        pub fn another_macro_struct_twin_normal() -> AnotherMacroStruct {
-            AnotherMacroStruct {
+        pub fn another_macro_struct_twin_normal() -> AnotherMacroStructTwinNormal {
+            AnotherMacroStructTwinNormal {
                 data: 123,
                 non_final_data: 0,
             }

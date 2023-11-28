@@ -3,9 +3,9 @@ use log::info;
 #[derive(Debug)]
 pub struct NewTypeIntTwinNormal(pub i64);
 
-pub fn handle_newtype_twin_normal(arg: NewTypeInt) -> NewTypeInt {
+pub fn handle_newtype_twin_normal(arg: NewTypeIntTwinNormal) -> NewTypeIntTwinNormal {
     info!("handle_newtype({:?})", &arg);
-    NewTypeInt(arg.0 * 2)
+    NewTypeIntTwinNormal(arg.0 * 2)
 }
 
 // TODO use auto generated sync code instead

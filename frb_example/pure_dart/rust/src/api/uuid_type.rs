@@ -12,6 +12,8 @@ pub fn handle_uuids_twin_normal(ids: Vec<uuid::Uuid>) -> anyhow::Result<Vec<uuid
     Ok(ids)
 }
 
-pub fn handle_nested_uuids_twin_normal(ids: FeatureUuid) -> anyhow::Result<FeatureUuid> {
+pub fn handle_nested_uuids_twin_normal(
+    ids: FeatureUuidTwinNormal,
+) -> anyhow::Result<FeatureUuidTwinNormal> {
     Ok(ids)
 }
