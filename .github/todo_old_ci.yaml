@@ -3,26 +3,6 @@
 jobs:
   # -------------------------- test --------------------------
 
-  dart_test_valgrind:
-    name: Dart test with Valgrind
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@stable
-        with:
-          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
-          components: rustfmt
-      - uses: dart-lang/setup-dart@v1
-        with:
-          sdk: stable
-          architecture: x64
-      - uses: actions/setup-python@v2
-        with:
-          python-version: "3.x"
-
-      - run: just ci_dart_valgrind
-
   flutter_test_web:
     TODO
 

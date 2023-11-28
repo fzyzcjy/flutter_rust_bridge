@@ -227,3 +227,27 @@ jobs:
           sh -c "$(curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf)" '' -f
       # execute
       - run: ./frb_internal test-dart-web --package ${{ matrix.package }}
+
+  test_dart_valgrind:
+    name: 'Test :: Dart :: Valgrind'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package:
+          - frb_example/dart_minimal
+          - frb_example/pure_dart
+
+    steps:
+      # setup
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+          components: rustfmt
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+          architecture: x64
+      # execute
+      - run: ./frb_internal test-dart-valgrind --package ${{ matrix.package }}
