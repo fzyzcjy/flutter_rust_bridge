@@ -13,14 +13,14 @@ pub(super) fn extract_dir_and_modify(
 ) -> Result<()> {
     for entry in d.entries() {
         let path = base_path.join(entry.path());
-        if !filter(path) {
+        if !filter(&path) {
             continue;
         }
 
         match entry {
             DirEntry::Dir(d) => {
                 fs::create_dir_all(&path)?;
-                extract_dir_and_modify(d, base_path, modifier)?;
+                extract_dir_and_modify(d, base_path, modifier, filter)?;
             }
             DirEntry::File(f) => {
                 debug!("Write to {path:?}");
