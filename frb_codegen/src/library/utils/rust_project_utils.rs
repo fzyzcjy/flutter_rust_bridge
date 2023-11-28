@@ -12,7 +12,7 @@ pub(crate) fn compute_mod_from_rust_crate_path(
 fn compute_mod_from_path(code_path: &Path, base_dir: &Path) -> anyhow::Result<String> {
     (|| -> anyhow::Result<String> {
         let p = code_path.strip_prefix(base_dir)?.with_extension("");
-        Ok(path_to_string(&p)?.replace('/', "::").replace('\\', "::"))
+        Ok(path_to_string(&p)?.replace(['/', '\\'], "::"))
     })()
     .with_context(|| {
         format!("When compute_mod_from_rust_path(code_path={code_path:?}, base_dir={base_dir:?})",)
