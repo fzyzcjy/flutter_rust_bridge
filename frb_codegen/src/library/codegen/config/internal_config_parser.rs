@@ -211,7 +211,7 @@ fn compute_rust_input_path_pack(
 ) -> Result<RustInputPathPack> {
     const BLACKLIST_FILE_NAMES: [&str; 1] = ["mod.rs"];
 
-    let glob_pattern = canonicalize_with_error_message(&base_dir.join(raw_rust_input))?;
+    let glob_pattern = base_dir.join(raw_rust_input);
     let rust_input_paths = glob_path(&glob_pattern)?
         .into_iter()
         .filter(|path| !BLACKLIST_FILE_NAMES.contains(&path.file_name().unwrap().to_str().unwrap()))
