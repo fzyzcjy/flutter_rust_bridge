@@ -69,7 +69,7 @@ dependencies {}
 // BEGIN_FLUTTER_RUST_BRIDGE_WITH_CARGOKIT
 apply from: "../../cargokit/gradle/plugin.gradle"
 cargokit {
-    manifestDir = "../rust"
+    manifestDir = "../../rust"
     libname = "rust_lib"
 }
 // END_FLUTTER_RUST_BRIDGE_WITH_CARGOKIT
