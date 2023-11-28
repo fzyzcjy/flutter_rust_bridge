@@ -1,5 +1,6 @@
 use anyhow::Result;
 use include_dir::{Dir, DirEntry};
+use log::debug;
 use std::fs;
 use std::path::Path;
 
@@ -17,6 +18,7 @@ pub(super) fn extract_dir_and_modify(
                 extract_dir_and_modify(d, base_path, modifier)?;
             }
             DirEntry::File(f) => {
+                debug!("Write to {path:?}");
                 fs::write(path, modifier(f.contents()))?;
             }
         }
