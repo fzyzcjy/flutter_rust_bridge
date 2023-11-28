@@ -145,7 +145,7 @@ Future<void> generateRunFrbCodegenCommandGenerate(
 Future<void> generateRunFrbCodegenCommandIntegrate(
     GeneratePackageConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
-    final dirPackage = '${exec.pwd}/${config.package}';
+    final dirPackage = path.join(exec.pwd!, config.package);
     final dirTemp = randomTempDir();
     print('Pick temporary directory: $dirTemp');
     await Directory(dirTemp).create(recursive: true);
