@@ -1,8 +1,5 @@
 import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
-
-// ignore: implementation_imports
-import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:meta/meta.dart';
@@ -102,10 +99,32 @@ Future<void> testDartValgrind(TestDartConfig config) async {
     checkExitCode: false,
   );
 
-  checkValgrindOutput(output);
+  checkValgrindOutput(output.stdout);
 }
 
 @visibleForTesting
-void checkValgrindOutput(RunCommandOutput output) {
-  TODO;
+void checkValgrindOutput(String output) {
+  const kDartAllTestsPassedStr = 'All tests passed!';
+  if (!output.contains(kDartAllTestsPassedStr)) {
+    throw Exception(
+        'valgrind_util does not find "$kDartAllTestsPassedStr", thus dart test seems failed');
+  }
+
+  const re = r'(?:definitely|indirectly) lost: (\d+) bytes';
+  final matches = RegExp(re).allMatches(output).toList();
+  if (![0, 2, 3].contains(matches.length)) {
+    throw Exception('Invalid number of matches for `$re` (matches=$matches)');
+  }
+
+  for (final match in matches) {
+    final lostBytes = int.parse(match.group(1)!);
+    if (lostBytes != 0) {
+      throw Exception(
+        'There are some lost bytes, so the check fails. '
+        'This may or may not be a problem. '
+        'If you can confirm the lost bytes are reasonable, just change the checker script and let the check pass. '
+        'line=${match.group(0)}',
+      );
+    }
+  }
 }
