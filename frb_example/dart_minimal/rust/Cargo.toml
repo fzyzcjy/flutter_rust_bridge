@@ -1,6 +1,3 @@
-[workspace]
-# See comments on `pure_dart` example about why use separate workspace
-
 [package]
 name = "frb_example_dart_minimal"
 version = "0.1.0"

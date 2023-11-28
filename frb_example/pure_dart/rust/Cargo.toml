@@ -1,8 +1,3 @@
-[workspace]
-# Use this empty `[workspace]` entry to exclude it from the main workspace.
-# This is to ensure the example mimics how a typical user will use it.
-# For example, the `target` directory is different with and without workspaces.
-
 [package]
 name = "frb_example_pure_dart"
 version = "0.1.0"
