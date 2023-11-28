@@ -3,10 +3,10 @@ use std::path::{Path, PathBuf};
 
 pub(crate) fn glob_path(pattern: &Path) -> Result<Vec<PathBuf>> {
     let pattern = normalize_windows_unc_path(pattern.to_str().context("cannot convert to str")?);
-    Ok(glob::glob(pattern)?
+    glob::glob(pattern)?
         .filter_map(Result::ok)
         .map(|p| canonicalize_with_error_message(&p))
-        .collect::<Result<Vec<_>>>()?)
+        .collect::<Result<Vec<_>>>()
 }
 
 pub(crate) fn path_to_string(path: &Path) -> Result<String> {
@@ -46,11 +46,7 @@ pub(crate) fn find_rust_crate_dir(rust_file_path: &Path) -> Result<PathBuf> {
 
 pub(crate) fn normalize_windows_unc_path(path: &str) -> &str {
     // on windows get rid of the UNC path
-    if path.starts_with(r"\\?\") {
-        &path[r"\\?\".len()..]
-    } else {
-        path
-    }
+    path.strip_prefix(r"\\?\").unwrap_or(path)
 }
 
 pub(crate) fn canonicalize_with_error_message(path: &Path) -> Result<PathBuf> {

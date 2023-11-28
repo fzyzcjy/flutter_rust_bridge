@@ -122,7 +122,6 @@ mod tests {
     use crate::codegen::parser::reader::CachedRustReader;
     use crate::codegen::parser::source_graph::crates::Crate;
     use crate::utils::logs::configure_opinionated_test_logging;
-    use crate::utils::path_utils::path_to_string;
     use crate::utils::test_utils::{
         create_path_sanitizers, get_test_fixture_dir, json_golden_test,
     };

@@ -24,7 +24,6 @@ use anyhow::{ensure, Context, Result};
 use itertools::Itertools;
 use log::debug;
 use pathdiff::diff_paths;
-use std::fs::canonicalize;
 use std::path::{Path, PathBuf};
 use strum::IntoEnumIterator;
 
@@ -308,7 +307,6 @@ mod tests {
     use crate::codegen::config::internal_config::InternalConfig;
     use crate::codegen::Config;
     use crate::utils::logs::configure_opinionated_test_logging;
-    use crate::utils::path_utils::path_to_string;
     use crate::utils::test_utils::{
         create_path_sanitizers, get_test_fixture_dir, json_golden_test,
     };
