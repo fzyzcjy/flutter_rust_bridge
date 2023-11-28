@@ -54,7 +54,7 @@ fn compute_comments(path: &Path) -> Option<String> {
     let comment_leading = match file_extension(path) {
         "dart" | "md" | "gradle" | "" => "///",
         "yaml" | "toml" | "sh" => "#",
-        "lock" | "cmake" | "ps1" | ".cmd" => return None,
+        "lock" | "cmake" | "ps1" | "cmd" => return None,
         ext => unreachable!("unexpected file extension for path={:?} ext={}", path, ext),
     };
 
