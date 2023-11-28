@@ -10,7 +10,7 @@ pub struct MyTreeNode {
     pub children: Vec<MyTreeNode>,
 }
 
-pub fn handle_complex_struct(s: MyTreeNode) -> MyTreeNode {
+pub fn handle_complex_struct_twin_normal(s: MyTreeNode) -> MyTreeNode {
     // info!("handle_complex_struct({:?})", &s);
     let _s_cloned = s.clone();
     s
@@ -28,11 +28,11 @@ pub enum Weekdays {
 }
 
 //This seems to be a bug in the syn parser (v1), for whoever tries to fix it, after each failed build you need to manually remove all rust generated files (bridge_*)
-// pub fn test_raw_string_item_struct_with_raw_string_in_func(r#type: String) -> RawStringItemStruct {
+// pub fn test_raw_string_item_struct_with_raw_string_in_func_twin_normal(r#type: String) -> RawStringItemStruct {
 //     RawStringItemStruct { r#type }
 // }
 
-pub fn list_of_primitive_enums(weekdays: Vec<Weekdays>) -> Vec<Weekdays> {
+pub fn list_of_primitive_enums_twin_normal(weekdays: Vec<Weekdays>) -> Vec<Weekdays> {
     weekdays
 }
 
@@ -42,7 +42,7 @@ pub struct MyNestedStruct {
     pub weekday: Weekdays,
 }
 
-pub fn handle_nested_struct(s: MyNestedStruct) -> MyNestedStruct {
+pub fn handle_nested_struct_twin_normal(s: MyNestedStruct) -> MyNestedStruct {
     println!("handle_nested_struct({s:?})");
     let _s_cloned = s.clone();
     s
@@ -53,7 +53,7 @@ pub struct BigBuffers {
     pub uint64: Vec<u64>,
 }
 
-pub fn handle_big_buffers() -> BigBuffers {
+pub fn handle_big_buffers_twin_normal() -> BigBuffers {
     BigBuffers {
         int64: vec![i64::MIN, i64::MAX],
         uint64: vec![u64::MAX],
@@ -79,7 +79,7 @@ pub enum Abc {
     JustInt(i32),
 }
 
-pub fn test_abc_enum(abc: Abc) -> Abc {
+pub fn test_abc_enum_twin_normal(abc: Abc) -> Abc {
     abc
 }
 
@@ -88,26 +88,26 @@ pub struct StructWithEnum {
     pub abc2: Abc,
 }
 
-pub fn test_struct_with_enum(se: StructWithEnum) -> StructWithEnum {
+pub fn test_struct_with_enum_twin_normal(se: StructWithEnum) -> StructWithEnum {
     StructWithEnum {
         abc1: se.abc2,
         abc2: se.abc1,
     }
 }
 
-pub fn handle_string(s: String) -> String {
+pub fn handle_string_twin_normal(s: String) -> String {
     info!("handle_string({})", &s);
     let s2 = s.clone();
     s + &s2
 }
 
 // to check that `Vec<u8>` can be used as return type
-pub fn handle_vec_u8(v: Vec<u8>) -> Vec<u8> {
+pub fn handle_vec_u8_twin_normal(v: Vec<u8>) -> Vec<u8> {
     info!("handle_vec_u8(first few elements: {:?})", &v[..5]);
     v.repeat(2)
 }
 
-pub fn handle_struct(arg: MySize, boxed: Box<MySize>) -> MySize {
+pub fn handle_struct_twin_normal(arg: MySize, boxed: Box<MySize>) -> MySize {
     info!("handle_struct({:?}, {:?})", &arg, &boxed);
     MySize {
         width: arg.width + boxed.width,
@@ -123,7 +123,10 @@ pub struct MySizeFreezed {
 }
 
 #[frb(sync)]
-pub fn handle_struct_sync_freezed(arg: MySizeFreezed, boxed: Box<MySizeFreezed>) -> MySizeFreezed {
+pub fn handle_struct_sync_freezed_twin_normal(
+    arg: MySizeFreezed,
+    boxed: Box<MySizeFreezed>,
+) -> MySizeFreezed {
     info!("handle_struct_sync_freezed({:?}, {:?})", &arg, &boxed);
     MySizeFreezed {
         width: arg.width + boxed.width,

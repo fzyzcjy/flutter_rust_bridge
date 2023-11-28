@@ -27,20 +27,22 @@ pub struct OpaqueNested {
     pub second: RustOpaque<HideData>,
 }
 
-pub fn create_opaque() -> RustOpaque<HideData> {
+pub fn create_opaque_twin_normal() -> RustOpaque<HideData> {
     RustOpaque::new(HideData::new())
 }
 
-pub fn create_option_opaque(opaque: Option<RustOpaque<HideData>>) -> Option<RustOpaque<HideData>> {
+pub fn create_option_opaque_twin_normal(
+    opaque: Option<RustOpaque<HideData>>,
+) -> Option<RustOpaque<HideData>> {
     opaque
 }
 
 // TODO about sync
-// pub fn sync_create_opaque() -> SyncReturn<RustOpaque<HideData>> {
+// pub fn sync_create_opaque_twin_normal() -> SyncReturn<RustOpaque<HideData>> {
 //     SyncReturn(RustOpaque::new(HideData::new()))
 // }
 
-pub fn create_array_opaque_enum() -> [EnumOpaque; 5] {
+pub fn create_array_opaque_enum_twin_normal() -> [EnumOpaque; 5] {
     [
         EnumOpaque::Struct(RustOpaque::new(HideData::new())),
         EnumOpaque::Primitive(RustOpaque::new(42)),
@@ -50,7 +52,7 @@ pub fn create_array_opaque_enum() -> [EnumOpaque; 5] {
     ]
 }
 
-pub fn run_enum_opaque(opaque: EnumOpaque) -> String {
+pub fn run_enum_opaque_twin_normal(opaque: EnumOpaque) -> String {
     match opaque {
         EnumOpaque::Struct(s) => run_opaque(s),
         EnumOpaque::Primitive(p) => format!("{:?}", p.deref()),
@@ -64,16 +66,16 @@ pub fn run_enum_opaque(opaque: EnumOpaque) -> String {
     }
 }
 
-pub fn run_opaque(opaque: RustOpaque<HideData>) -> String {
+pub fn run_opaque_twin_normal(opaque: RustOpaque<HideData>) -> String {
     opaque.hide_data()
 }
 
-pub fn run_opaque_with_delay(opaque: RustOpaque<HideData>) -> String {
+pub fn run_opaque_with_delay_twin_normal(opaque: RustOpaque<HideData>) -> String {
     sleep(Duration::from_millis(1000));
     opaque.hide_data()
 }
 
-pub fn opaque_array() -> [RustOpaque<HideData>; 2] {
+pub fn opaque_array_twin_normal() -> [RustOpaque<HideData>; 2] {
     [
         RustOpaque::new(HideData::new()),
         RustOpaque::new(HideData::new()),
@@ -81,58 +83,58 @@ pub fn opaque_array() -> [RustOpaque<HideData>; 2] {
 }
 
 // TODO about sync
-// pub fn sync_create_non_clone() -> SyncReturn<RustOpaque<NonCloneData>> {
+// pub fn sync_create_non_clone_twin_normal() -> SyncReturn<RustOpaque<NonCloneData>> {
 //     SyncReturn(RustOpaque::new(NonCloneData::new()))
 // }
 
 #[allow(clippy::redundant_clone)]
-pub fn run_non_clone(clone: RustOpaque<NonCloneData>) -> String {
+pub fn run_non_clone_twin_normal(clone: RustOpaque<NonCloneData>) -> String {
     // Tests whether `.clone()` works even without the generic type wrapped by it
     // implementing Clone.
     clone.clone().hide_data()
 }
 
-pub fn create_sync_opaque() -> RustOpaque<NonSendHideData> {
+pub fn create_sync_opaque_twin_normal() -> RustOpaque<NonSendHideData> {
     RustOpaque::new(NonSendHideData::new())
 }
 
 // TODO about sync
-// pub fn sync_create_sync_opaque() -> SyncReturn<RustOpaque<NonSendHideData>> {
+// pub fn sync_create_sync_opaque_twin_normal() -> SyncReturn<RustOpaque<NonSendHideData>> {
 //     SyncReturn(RustOpaque::new(NonSendHideData::new()))
 // }
 
-pub fn opaque_array_run(data: [RustOpaque<HideData>; 2]) {
+pub fn opaque_array_run_twin_normal(data: [RustOpaque<HideData>; 2]) {
     for i in data {
         i.hide_data();
     }
 }
 
-pub fn opaque_vec() -> Vec<RustOpaque<HideData>> {
+pub fn opaque_vec_twin_normal() -> Vec<RustOpaque<HideData>> {
     vec![
         RustOpaque::new(HideData::new()),
         RustOpaque::new(HideData::new()),
     ]
 }
 
-pub fn opaque_vec_run(data: Vec<RustOpaque<HideData>>) {
+pub fn opaque_vec_run_twin_normal(data: Vec<RustOpaque<HideData>>) {
     for i in data {
         i.hide_data();
     }
 }
 
-pub fn create_nested_opaque() -> OpaqueNested {
+pub fn create_nested_opaque_twin_normal() -> OpaqueNested {
     OpaqueNested {
         first: RustOpaque::new(HideData::new()),
         second: RustOpaque::new(HideData::new()),
     }
 }
 
-pub fn run_nested_opaque(opaque: OpaqueNested) {
+pub fn run_nested_opaque_twin_normal(opaque: OpaqueNested) {
     opaque.first.hide_data();
     opaque.second.hide_data();
 }
 
-pub fn unwrap_rust_opaque(opaque: RustOpaque<HideData>) -> Result<String> {
+pub fn unwrap_rust_opaque_twin_normal(opaque: RustOpaque<HideData>) -> Result<String> {
     let data: HideData = opaque
         .try_unwrap()
         .map_err(|_| anyhow::anyhow!("opaque type is shared"))?;
@@ -142,6 +144,6 @@ pub fn unwrap_rust_opaque(opaque: RustOpaque<HideData>) -> Result<String> {
 /// Function to check the code generator.
 /// FrbOpaqueReturn must be only return type.
 /// FrbOpaqueReturn must not be used as an argument.
-pub fn frb_generator_test() -> RustOpaque<FrbOpaqueReturn> {
+pub fn frb_generator_test_twin_normal() -> RustOpaque<FrbOpaqueReturn> {
     panic!("dummy code");
 }

@@ -53,7 +53,7 @@ pub struct MyStreamEntry {
 
 // TODO #11193
 // https://github.com/fzyzcjy/flutter_rust_bridge/issues/398 reports a compile error like this
-pub fn handle_stream_of_struct(_sink: StreamSink<MyStreamEntry>) {
+pub fn handle_stream_of_struct_twin_normal(_sink: StreamSink<MyStreamEntry>) {
     // Ok(())
 }
 
@@ -63,7 +63,7 @@ pub struct Log {
     pub value: u32,
 }
 
-pub fn handle_stream_sink_at_1(key: u32, max: u32, sink: StreamSink<Log>) {
+pub fn handle_stream_sink_at_1_twin_normal(key: u32, max: u32, sink: StreamSink<Log>) {
     spawn!(|| {
         for i in 0..max {
             let _ = sink.add(Log { key, value: i });
@@ -72,10 +72,10 @@ pub fn handle_stream_sink_at_1(key: u32, max: u32, sink: StreamSink<Log>) {
     });
 }
 
-pub fn handle_stream_sink_at_2(key: u32, sink: StreamSink<Log>, max: u32) {
+pub fn handle_stream_sink_at_2_twin_normal(key: u32, sink: StreamSink<Log>, max: u32) {
     handle_stream_sink_at_1(key, max, sink)
 }
 
-pub fn handle_stream_sink_at_3(sink: StreamSink<Log>, key: u32, max: u32) {
+pub fn handle_stream_sink_at_3_twin_normal(sink: StreamSink<Log>, key: u32, max: u32) {
     handle_stream_sink_at_1(key, max, sink)
 }

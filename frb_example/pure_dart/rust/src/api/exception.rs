@@ -83,18 +83,18 @@ pub enum CustomError {
     Error1 { e: u32, backtrace: Backtrace },
 }
 
-pub fn return_err_custom_error() -> Result<u32, CustomError> {
+pub fn return_err_custom_error_twin_normal() -> Result<u32, CustomError> {
     Err(CustomError::Error0 {
         e: "".into(),
         backtrace: Backtrace::new(),
     })
 }
 
-pub fn return_ok_custom_error() -> Result<u32, CustomError> {
+pub fn return_ok_custom_error_twin_normal() -> Result<u32, CustomError> {
     Ok(3)
 }
 
-pub fn return_error_variant(variant: u32) -> Result<u32, CustomError> {
+pub fn return_error_variant_twin_normal(variant: u32) -> Result<u32, CustomError> {
     match variant {
         0 => Err(CustomError::Error0 {
             e: "variant0".to_string(),
@@ -113,29 +113,29 @@ pub struct SomeStruct {
 }
 
 impl SomeStruct {
-    pub fn new(value: u32) -> SomeStruct {
+    pub fn new_twin_normal(value: u32) -> SomeStruct {
         SomeStruct { value }
     }
 
-    pub fn static_return_err_custom_error() -> Result<u32, CustomError> {
+    pub fn static_return_err_custom_error_twin_normal() -> Result<u32, CustomError> {
         Err(CustomError::Error1 {
             e: 3,
             backtrace: Backtrace::new(),
         })
     }
 
-    pub fn static_return_ok_custom_error() -> Result<u32, CustomError> {
+    pub fn static_return_ok_custom_error_twin_normal() -> Result<u32, CustomError> {
         Ok(3)
     }
 
-    pub fn non_static_return_err_custom_error(&self) -> Result<u32, CustomError> {
+    pub fn non_static_return_err_custom_error_twin_normal(&self) -> Result<u32, CustomError> {
         Err(CustomError::Error1 {
             e: self.value,
             backtrace: Backtrace::new(),
         })
     }
 
-    pub fn non_static_return_ok_custom_error(&self) -> Result<u32, CustomError> {
+    pub fn non_static_return_ok_custom_error_twin_normal(&self) -> Result<u32, CustomError> {
         Ok(self.value)
     }
 }
@@ -150,37 +150,37 @@ pub enum CustomNestedError2 {
     CustomNested2Number(u32),
 }
 
-pub fn return_custom_nested_error_1() -> Result<(), CustomNestedError1> {
+pub fn return_custom_nested_error_1_twin_normal() -> Result<(), CustomNestedError1> {
     Err(CustomNestedError1::ErrorNested(
         CustomNestedError2::CustomNested2Number(3),
     ))
 }
 
-pub fn return_custom_nested_error_1_variant1() -> Result<(), CustomNestedError1> {
+pub fn return_custom_nested_error_1_variant1_twin_normal() -> Result<(), CustomNestedError1> {
     Err(CustomNestedError1::CustomNested1("custom".to_string()))
 }
 
-pub fn return_custom_nested_error_2() -> Result<(), CustomNestedError2> {
+pub fn return_custom_nested_error_2_twin_normal() -> Result<(), CustomNestedError2> {
     Err(CustomNestedError2::CustomNested2("custom".to_string()))
 }
 pub struct CustomStructError {
     pub message: String,
 }
 
-pub fn return_custom_struct_error() -> Result<(), CustomStructError> {
+pub fn return_custom_struct_error_twin_normal() -> Result<(), CustomStructError> {
     Err(CustomStructError {
         message: "error message".to_string(),
     })
 }
 
 #[flutter_rust_bridge::frb(sync)]
-pub fn sync_return_custom_struct_error() -> Result<(), CustomStructError> {
+pub fn sync_return_custom_struct_error_twin_normal() -> Result<(), CustomStructError> {
     Err(CustomStructError {
         message: "error message".to_string(),
     })
 }
 
-pub fn return_custom_struct_ok() -> Result<u32, CustomStructError> {
+pub fn return_custom_struct_ok_twin_normal() -> Result<u32, CustomStructError> {
     Ok(3)
 }
 
@@ -189,39 +189,41 @@ pub struct CustomStruct {
 }
 
 impl CustomStruct {
-    pub fn new(message: String) -> CustomStruct {
+    pub fn new_twin_normal(message: String) -> CustomStruct {
         CustomStruct { message }
     }
 
-    pub fn static_return_custom_struct_error() -> Result<(), CustomStructError> {
+    pub fn static_return_custom_struct_error_twin_normal() -> Result<(), CustomStructError> {
         Err(CustomStructError {
             message: "error message".to_string(),
         })
     }
 
-    pub fn static_return_custom_struct_ok() -> Result<u32, CustomStructError> {
+    pub fn static_return_custom_struct_ok_twin_normal() -> Result<u32, CustomStructError> {
         Ok(3)
     }
 
-    pub fn nonstatic_return_custom_struct_error(&self) -> Result<(), CustomStructError> {
+    pub fn nonstatic_return_custom_struct_error_twin_normal(
+        &self,
+    ) -> Result<(), CustomStructError> {
         Err(CustomStructError {
             message: self.message.clone(),
         })
     }
 
-    pub fn nonstatic_return_custom_struct_ok(&self) -> Result<u32, CustomStructError> {
+    pub fn nonstatic_return_custom_struct_ok_twin_normal(&self) -> Result<u32, CustomStructError> {
         Ok(3)
     }
 }
 
-pub fn throw_anyhow() -> Result<(), anyhow::Error> {
+pub fn throw_anyhow_twin_normal() -> Result<(), anyhow::Error> {
     Err(anyhow!("anyhow error"))
 }
 
-pub fn panic_with_custom_result() -> Result<(), CustomError> {
+pub fn panic_with_custom_result_twin_normal() -> Result<(), CustomError> {
     panic!("just a panic");
 }
 
-pub fn stream_sink_throw_anyhow(_sink: StreamSink<String>) -> Result<()> {
+pub fn stream_sink_throw_anyhow_twin_normal(_sink: StreamSink<String>) -> Result<()> {
     Err(anyhow!("anyhow error"))
 }

@@ -10,7 +10,7 @@ pub struct Customized {
     pub non_final_field: Option<String>,
 }
 
-pub fn handle_customized_struct(val: Customized) {
+pub fn handle_customized_struct_twin_normal(val: Customized) {
     info!("{:#?}", val);
 }
 
@@ -41,7 +41,7 @@ pub struct UserId {
     pub value: u32,
 }
 
-pub fn next_user_id(user_id: UserId) -> UserId {
+pub fn next_user_id_twin_normal(user_id: UserId) -> UserId {
     UserId {
         value: user_id.value + 1,
     }

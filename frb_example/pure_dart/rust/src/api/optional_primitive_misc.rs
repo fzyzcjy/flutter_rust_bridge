@@ -1,6 +1,6 @@
 use log::info;
 
-pub fn primitive_optional_types(
+pub fn primitive_optional_types_twin_normal(
     my_i32: Option<i32>,
     my_i64: Option<i64>,
     my_f64: Option<f64>,

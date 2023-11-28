@@ -53,12 +53,12 @@ pub struct Note {
     pub body: String,
 }
 
-pub fn print_note(note: Note) -> ZeroCopyBuffer<Vec<u8>> {
+pub fn print_note_twin_normal(note: Note) -> ZeroCopyBuffer<Vec<u8>> {
     info!("{:#?}", note);
     ZeroCopyBuffer(vec![1, 2, 3])
 }
 
-pub fn handle_return_enum(input: String) -> Option<Weekdays> {
+pub fn handle_return_enum_twin_normal(input: String) -> Option<Weekdays> {
     match input.as_str() {
         "Monday" => Some(Weekdays::Monday),
         "Tuesday" => Some(Weekdays::Tuesday),
@@ -71,7 +71,7 @@ pub fn handle_return_enum(input: String) -> Option<Weekdays> {
     }
 }
 
-pub fn handle_enum_parameter(weekday: Weekdays) -> Weekdays {
+pub fn handle_enum_parameter_twin_normal(weekday: Weekdays) -> Weekdays {
     info!("The weekday is {:?}", weekday);
     weekday
 }
@@ -94,7 +94,7 @@ pub enum Measure {
     Distance(Box<Distance>),
 }
 
-pub fn multiply_by_ten(measure: Measure) -> Option<Measure> {
+pub fn multiply_by_ten_twin_normal(measure: Measure) -> Option<Measure> {
     match measure {
         Measure::Speed(b) => match *b {
             Speed::GPS(v) => Some(Measure::Speed(Box::new(Speed::GPS(v * 10.)))),
@@ -134,7 +134,7 @@ pub enum KitchenSink {
     Enums(#[frb(default = "Weekdays.Sunday")] Weekdays),
 }
 
-pub fn handle_enum_struct(val: KitchenSink) -> KitchenSink {
+pub fn handle_enum_struct_twin_normal(val: KitchenSink) -> KitchenSink {
     use KitchenSink::*;
     use Weekdays::*;
     let inc = |x| x + 1;

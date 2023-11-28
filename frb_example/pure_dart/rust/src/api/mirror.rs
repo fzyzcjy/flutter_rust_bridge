@@ -36,30 +36,30 @@ pub struct _ApplicationEnv {
 }
 
 // This function can directly return an object of the external type ApplicationSettings because it has a mirror
-pub fn get_app_settings() -> ApplicationSettings {
+pub fn get_app_settings_twin_normal() -> ApplicationSettings {
     frb_example_pure_dart_exapmle_external_lib::get_app_settings()
 }
 
 // This function can return a Result, that includes an object of the external type ApplicationSettings because it has a mirror
-pub fn get_fallible_app_settings() -> anyhow::Result<ApplicationSettings> {
+pub fn get_fallible_app_settings_twin_normal() -> anyhow::Result<ApplicationSettings> {
     Ok(frb_example_pure_dart_exapmle_external_lib::get_app_settings())
 }
 
 // Similarly, receiving an object from Dart works. Please note that the mirror definition must match entirely and the original struct must have all its fields public.
-pub fn is_app_embedded(app_settings: ApplicationSettings) -> bool {
+pub fn is_app_embedded_twin_normal(app_settings: ApplicationSettings) -> bool {
     // info!("env: {:?}", app_settings.env.vars);
     matches!(app_settings.mode, ApplicationMode::Embedded)
 }
 
 // use a stream of a mirrored type
-pub fn app_settings_stream(sink: StreamSink<ApplicationSettings>) {
+pub fn app_settings_stream_twin_normal(sink: StreamSink<ApplicationSettings>) {
     let app_settings = frb_example_pure_dart_exapmle_external_lib::get_app_settings();
     sink.add(app_settings);
     sink.close();
 }
 
 // use a stream of a vec of mirrored type
-pub fn app_settings_vec_stream(sink: StreamSink<Vec<ApplicationSettings>>) {
+pub fn app_settings_vec_stream_twin_normal(sink: StreamSink<Vec<ApplicationSettings>>) {
     let app_settings = vec![
         frb_example_pure_dart_exapmle_external_lib::get_app_settings(),
         frb_example_pure_dart_exapmle_external_lib::get_app_settings(),
@@ -76,7 +76,7 @@ pub struct MirrorStruct {
 }
 
 // use a Struct consisting of mirror types as argument to a Stream
-pub fn mirror_struct_stream(sink: StreamSink<MirrorStruct>) {
+pub fn mirror_struct_stream_twin_normal(sink: StreamSink<MirrorStruct>) {
     let val = MirrorStruct {
         a: frb_example_pure_dart_exapmle_external_lib::get_app_settings(),
         b: MyStruct { content: true },
@@ -91,7 +91,9 @@ pub fn mirror_struct_stream(sink: StreamSink<MirrorStruct>) {
 }
 
 // usa a tuple of Mirror types for a StreamSink
-pub fn mirror_tuple_stream(sink: StreamSink<(ApplicationSettings, RawStringEnumMirrored)>) {
+pub fn mirror_tuple_stream_twin_normal(
+    sink: StreamSink<(ApplicationSettings, RawStringEnumMirrored)>,
+) {
     let tuple = (
         frb_example_pure_dart_exapmle_external_lib::get_app_settings(),
         RawStringEnumMirrored::Raw(RawStringMirrored {
@@ -109,26 +111,26 @@ pub enum _ApplicationMessage {
     Exit,
 }
 
-pub fn get_message() -> ApplicationMessage {
+pub fn get_message_twin_normal() -> ApplicationMessage {
     frb_example_pure_dart_exapmle_external_lib::poll_messages()[1].clone()
 }
 
 #[frb(mirror(Numbers, Sequences))]
 pub struct _Numbers(pub Vec<i32>);
 
-pub fn repeat_number(num: i32, times: usize) -> Numbers {
+pub fn repeat_number_twin_normal(num: i32, times: usize) -> Numbers {
     frb_example_pure_dart_exapmle_external_lib::repeat_number(num, times)
 }
 
-pub fn repeat_sequence(seq: i32, times: usize) -> Sequences {
+pub fn repeat_sequence_twin_normal(seq: i32, times: usize) -> Sequences {
     frb_example_pure_dart_exapmle_external_lib::repeat_sequences(seq, times)
 }
 
-pub fn first_number(nums: Numbers) -> Option<i32> {
+pub fn first_number_twin_normal(nums: Numbers) -> Option<i32> {
     nums.0.first().copied()
 }
 
-pub fn first_sequence(seqs: Sequences) -> Option<i32> {
+pub fn first_sequence_twin_normal(seqs: Sequences) -> Option<i32> {
     seqs.0.first().copied()
 }
 
@@ -154,13 +156,13 @@ pub struct _ListOfRawNestedStringMirrored {
     pub raw: Vec<NestedRawStringMirrored>,
 }
 
-pub fn test_raw_string_mirrored() -> RawStringMirrored {
+pub fn test_raw_string_mirrored_twin_normal() -> RawStringMirrored {
     RawStringMirrored {
         r#value: "test".to_owned(),
     }
 }
 
-pub fn test_nested_raw_string_mirrored() -> NestedRawStringMirrored {
+pub fn test_nested_raw_string_mirrored_twin_normal() -> NestedRawStringMirrored {
     NestedRawStringMirrored {
         raw: RawStringMirrored {
             r#value: "test".to_owned(),
@@ -168,7 +170,7 @@ pub fn test_nested_raw_string_mirrored() -> NestedRawStringMirrored {
     }
 }
 
-pub fn test_raw_string_enum_mirrored(nested: bool) -> RawStringEnumMirrored {
+pub fn test_raw_string_enum_mirrored_twin_normal(nested: bool) -> RawStringEnumMirrored {
     if nested {
         RawStringEnumMirrored::Nested(NestedRawStringMirrored {
             raw: RawStringMirrored {
@@ -182,7 +184,7 @@ pub fn test_raw_string_enum_mirrored(nested: bool) -> RawStringEnumMirrored {
     }
 }
 
-pub fn test_list_of_raw_nested_string_mirrored() -> ListOfNestedRawStringMirrored {
+pub fn test_list_of_raw_nested_string_mirrored_twin_normal() -> ListOfNestedRawStringMirrored {
     ListOfNestedRawStringMirrored {
         raw: vec![NestedRawStringMirrored {
             raw: RawStringMirrored {
@@ -192,13 +194,14 @@ pub fn test_list_of_raw_nested_string_mirrored() -> ListOfNestedRawStringMirrore
     }
 }
 
-pub fn test_fallible_of_raw_string_mirrored() -> anyhow::Result<Vec<RawStringMirrored>> {
+pub fn test_fallible_of_raw_string_mirrored_twin_normal() -> anyhow::Result<Vec<RawStringMirrored>>
+{
     Ok(vec![RawStringMirrored {
         r#value: "test".to_owned(),
     }])
 }
 
-pub fn test_list_of_nested_enums_mirrored() -> Vec<RawStringEnumMirrored> {
+pub fn test_list_of_nested_enums_mirrored_twin_normal() -> Vec<RawStringEnumMirrored> {
     vec![
         RawStringEnumMirrored::Nested(NestedRawStringMirrored {
             raw: RawStringMirrored {
@@ -212,7 +215,7 @@ pub fn test_list_of_nested_enums_mirrored() -> Vec<RawStringEnumMirrored> {
 }
 
 // TODO rm (use the auto-generated sync code)
-// pub fn sync_return_mirror() -> SyncReturn<ApplicationSettings> {
+// pub fn sync_return_mirror_twin_normal() -> SyncReturn<ApplicationSettings> {
 //     SyncReturn(frb_example_pure_dart_exapmle_external_lib::get_app_settings())
 // }
 
@@ -225,7 +228,7 @@ pub struct ContainsMirroredSubStruct {
     pub test2: Another,
 }
 
-pub fn test_contains_mirrored_sub_struct() -> ContainsMirroredSubStruct {
+pub fn test_contains_mirrored_sub_struct_twin_normal() -> ContainsMirroredSubStruct {
     ContainsMirroredSubStruct {
         test: RawStringMirrored {
             r#value: "test".to_owned(),

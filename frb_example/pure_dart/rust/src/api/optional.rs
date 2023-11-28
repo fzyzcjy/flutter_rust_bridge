@@ -2,7 +2,7 @@ use crate::api::misc_example::Weekdays;
 use crate::api::newtype_pattern::NewTypeInt;
 use flutter_rust_bridge::{frb, ZeroCopyBuffer};
 
-pub fn handle_optional_return(left: f64, right: f64) -> Option<f64> {
+pub fn handle_optional_return_twin_normal(left: f64, right: f64) -> Option<f64> {
     if right == 0. {
         None
     } else {
@@ -24,7 +24,7 @@ pub struct Attribute {
     pub value: String,
 }
 
-pub fn handle_optional_struct(document: Option<String>) -> Option<Element> {
+pub fn handle_optional_struct_twin_normal(document: Option<String>) -> Option<Element> {
     document.map(|inner| Element {
         tag: Some("div".to_owned()),
         attributes: Some(vec![Attribute {
@@ -61,7 +61,9 @@ pub struct ExoticOptionals {
     pub newtypeint: Option<NewTypeInt>,
 }
 
-pub fn handle_optional_increment(opt: Option<ExoticOptionals>) -> Option<ExoticOptionals> {
+pub fn handle_optional_increment_twin_normal(
+    opt: Option<ExoticOptionals>,
+) -> Option<ExoticOptionals> {
     fn manipulate_list<T>(src: Option<Vec<T>>, push_value: T) -> Option<Vec<T>> {
         let mut list = src.unwrap_or_default();
         list.push(push_value);
@@ -108,7 +110,7 @@ pub fn handle_optional_increment(opt: Option<ExoticOptionals>) -> Option<ExoticO
     })
 }
 
-pub fn handle_increment_boxed_optional(opt: Option<Box<f64>>) -> f64 {
+pub fn handle_increment_boxed_optional_twin_normal(opt: Option<Box<f64>>) -> f64 {
     match opt {
         Some(e) => *e + 1.,
         None => 42.,
@@ -122,7 +124,7 @@ pub struct OptVecs {
     pub buffers: Vec<Option<Vec<i32>>>,
 }
 
-pub fn handle_vec_of_opts(opt: OptVecs) -> OptVecs {
+pub fn handle_vec_of_opts_twin_normal(opt: OptVecs) -> OptVecs {
     fn handle<T>(mut opts: Vec<Option<T>>) -> Vec<Option<T>> {
         opts.push(None);
         opts
@@ -137,7 +139,7 @@ pub fn handle_vec_of_opts(opt: OptVecs) -> OptVecs {
 
 // Option<Box<T>> can't be sent to Dart,
 // but instead can be received by Rust.
-pub fn handle_option_box_arguments(
+pub fn handle_option_box_arguments_twin_normal(
     i8box: Option<Box<i8>>,
     u8box: Option<Box<u8>>,
     i32box: Option<Box<i32>>,
@@ -153,11 +155,11 @@ pub fn handle_option_box_arguments(
 }
 
 #[frb(sync)]
-pub fn sync_option() -> anyhow::Result<Option<String>> {
+pub fn sync_option_twin_normal() -> anyhow::Result<Option<String>> {
     Ok(Some("42".to_owned()))
 }
 
 #[frb(sync)]
-pub fn sync_option_null() -> anyhow::Result<Option<String>> {
+pub fn sync_option_null_twin_normal() -> anyhow::Result<Option<String>> {
     Ok(None)
 }

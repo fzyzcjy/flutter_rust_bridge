@@ -8,7 +8,7 @@ macro_rules! generate_struct {
             pub data: i32,
         }
 
-        pub fn func_macro_struct(arg: $name) -> $name {
+        pub fn func_macro_struct_twin_normal(arg: $name) -> $name {
             arg
         }
     };
@@ -25,7 +25,7 @@ macro_rules! generate_another_struct {
             pub non_final_data: i32,
         }
         #[allow(unused)]
-        pub fn another_macro_struct() -> AnotherMacroStruct {
+        pub fn another_macro_struct_twin_normal() -> AnotherMacroStruct {
             AnotherMacroStruct {
                 data: 123,
                 non_final_data: 0,

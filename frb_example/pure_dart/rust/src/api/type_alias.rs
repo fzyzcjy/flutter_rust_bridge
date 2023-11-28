@@ -1,10 +1,10 @@
 use crate::auxiliary::sample_types::{EnumAlias, Id, MyStruct, StructAlias, UserIdAlias};
 
-pub fn handle_type_alias_id(input: Id) -> Id {
+pub fn handle_type_alias_id_twin_normal(input: Id) -> Id {
     input
 }
 
-pub fn handle_type_nest_alias_id(input: UserIdAlias) -> Id {
+pub fn handle_type_nest_alias_id_twin_normal(input: UserIdAlias) -> Id {
     input
 }
 
@@ -15,7 +15,7 @@ pub struct TestModel {
     pub alias_struct: MyStruct,
 }
 
-pub fn handle_type_alias_model(input: Id) -> TestModel {
+pub fn handle_type_alias_model_twin_normal(input: Id) -> TestModel {
     TestModel {
         id: input,
         name: "TestModel".to_owned(),

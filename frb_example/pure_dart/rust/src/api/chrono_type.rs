@@ -1,4 +1,4 @@
-pub fn datetime_utc(d: chrono::DateTime<chrono::Utc>) -> chrono::DateTime<chrono::Utc> {
+pub fn datetime_utc_twin_normal(d: chrono::DateTime<chrono::Utc>) -> chrono::DateTime<chrono::Utc> {
     use chrono::Datelike;
     use chrono::Timelike;
     assert_eq!(&d.year(), &2022);
@@ -14,7 +14,9 @@ pub fn datetime_utc(d: chrono::DateTime<chrono::Utc>) -> chrono::DateTime<chrono
     d
 }
 
-pub fn datetime_local(d: chrono::DateTime<chrono::Local>) -> chrono::DateTime<chrono::Local> {
+pub fn datetime_local_twin_normal(
+    d: chrono::DateTime<chrono::Local>,
+) -> chrono::DateTime<chrono::Local> {
     use chrono::Datelike;
     use chrono::Timelike;
     assert_eq!(&d.year(), &2022);
@@ -31,7 +33,7 @@ pub fn datetime_local(d: chrono::DateTime<chrono::Local>) -> chrono::DateTime<ch
     d
 }
 
-pub fn naivedatetime(d: chrono::NaiveDateTime) -> chrono::NaiveDateTime {
+pub fn naivedatetime_twin_normal(d: chrono::NaiveDateTime) -> chrono::NaiveDateTime {
     use chrono::{Datelike, Timelike};
     assert_eq!(&d.year(), &2022);
     assert_eq!(&d.month(), &9);
@@ -46,19 +48,19 @@ pub fn naivedatetime(d: chrono::NaiveDateTime) -> chrono::NaiveDateTime {
     d
 }
 
-pub fn optional_empty_datetime_utc(
+pub fn optional_empty_datetime_utc_twin_normal(
     d: Option<chrono::DateTime<chrono::Utc>>,
 ) -> Option<chrono::DateTime<chrono::Utc>> {
     assert_eq!(&d, &None);
     d
 }
 
-pub fn duration(d: chrono::Duration) -> chrono::Duration {
+pub fn duration_twin_normal(d: chrono::Duration) -> chrono::Duration {
     assert_eq!(&d.num_hours(), &4);
     d
 }
 
-pub fn handle_timestamps(
+pub fn handle_timestamps_twin_normal(
     timestamps: Vec<chrono::NaiveDateTime>,
     epoch: chrono::NaiveDateTime,
 ) -> Vec<chrono::Duration> {
@@ -68,7 +70,7 @@ pub fn handle_timestamps(
         .collect()
 }
 
-pub fn handle_durations(
+pub fn handle_durations_twin_normal(
     durations: Vec<chrono::Duration>,
     since: chrono::DateTime<chrono::Local>,
 ) -> Vec<chrono::DateTime<chrono::Local>> {
@@ -81,7 +83,7 @@ pub struct TestChrono {
     pub du: Option<chrono::Duration>,
 }
 
-pub fn test_chrono() -> TestChrono {
+pub fn test_chrono_twin_normal() -> TestChrono {
     TestChrono {
         dt: Some(chrono::DateTime::from_naive_utc_and_offset(
             chrono::NaiveDateTime::from_timestamp_opt(1631297333, 0).unwrap(),
@@ -92,7 +94,7 @@ pub fn test_chrono() -> TestChrono {
     }
 }
 
-pub fn test_precise_chrono() -> TestChrono {
+pub fn test_precise_chrono_twin_normal() -> TestChrono {
     TestChrono {
         dt: Some(chrono::DateTime::from_naive_utc_and_offset(
             chrono::NaiveDateTime::from_timestamp_opt(1014466435, 0).unwrap(),
@@ -111,7 +113,7 @@ pub struct FeatureChrono {
     pub naive: chrono::NaiveDateTime,
 }
 
-pub fn how_long_does_it_take(mine: FeatureChrono) -> anyhow::Result<chrono::Duration> {
+pub fn how_long_does_it_take_twin_normal(mine: FeatureChrono) -> anyhow::Result<chrono::Duration> {
     use chrono::{Datelike, Timelike};
     let difference: chrono::Duration = chrono::Utc::now() - mine.utc;
     assert_eq!(&mine.duration.num_hours(), &4);
