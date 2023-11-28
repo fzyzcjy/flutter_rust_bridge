@@ -26,7 +26,7 @@ pub(crate) fn json_golden_test(
         actual_str = actual_str.replace(&sanitizer.0, &sanitizer.1);
     }
     let actual: Value = serde_json::from_str(&actual_str)?;
-    debug!("json_golden_test actual:\n{actual_str}");
+    debug!("json_golden_test sanitizers={sanitizers:?} actual:\n{actual_str}");
 
     raw_golden_test(actual, &actual_str, matcher_path, |x| {
         Ok(serde_json::from_str(&x)?)
