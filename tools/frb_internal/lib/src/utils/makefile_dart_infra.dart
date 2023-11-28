@@ -12,8 +12,12 @@ class SimpleExecutor {
 
   const SimpleExecutor({this.env, this.pwd});
 
-  Future<String> call(String cmd,
-      {String? relativePwd, Map<String, String>? extraEnv}) async {
+  Future<RunCommandOutput> call(
+    String cmd, {
+    String? relativePwd,
+    Map<String, String>? extraEnv,
+    bool? checkExitCode,
+  }) async {
     final String command;
     final List<String> args;
     if (Platform.isWindows) {
@@ -28,6 +32,7 @@ class SimpleExecutor {
       args,
       env: {...?env, ...?extraEnv},
       pwd: '$pwd${relativePwd ?? ""}',
+      checkExitCode: checkExitCode,
     );
   }
 }

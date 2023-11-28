@@ -21,6 +21,7 @@ Future<RunCommandOutput> runCommand(
   Map<String, String>? env,
   bool shell = true,
   bool silent = false,
+  bool? checkExitCode,
 }) async {
   // ignore: avoid_print
   print(
@@ -48,7 +49,7 @@ Future<RunCommandOutput> runCommand(
   });
 
   final exitCode = await process.exitCode;
-  if (exitCode != 0) {
+  if ((checkExitCode ?? true) && (exitCode != 0)) {
     throw ProcessException(command, arguments,
         'Bad exit code ($exitCode). stderr=${err.join("")}', exitCode);
   }
