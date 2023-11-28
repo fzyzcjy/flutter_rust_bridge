@@ -10,13 +10,13 @@ use std::thread::sleep;
 use std::time::Duration;
 
 /// Opaque types
-pub trait DartDebug: DartSafe + Debug + Send + Sync {}
-impl<T: DartSafe + Debug + Send + Sync> DartDebug for T {}
+pub trait DartDebugTwinNormal: DartSafe + Debug + Send + Sync {}
+impl<T: DartSafe + Debug + Send + Sync> DartDebugTwinNormal for T {}
 
 pub enum EnumOpaqueTwinNormal {
     Struct(RustOpaque<HideData>),
     Primitive(RustOpaque<i32>),
-    TraitObj(RustOpaque<Box<dyn DartDebug>>),
+    TraitObj(RustOpaque<Box<dyn DartDebugTwinNormal>>),
     Mutex(RustOpaque<Mutex<HideData>>),
     RwLock(RustOpaque<RwLock<HideData>>),
 }
