@@ -9,9 +9,14 @@ pub(super) fn extract_dir_and_modify(
     d: &Dir,
     base_path: &Path,
     modifier: &impl Fn(&[u8]) -> Vec<u8>,
+    filter: &impl Fn(&Path) -> bool,
 ) -> Result<()> {
     for entry in d.entries() {
         let path = base_path.join(entry.path());
+        if !filter(path) {
+            continue;
+        }
+
         match entry {
             DirEntry::Dir(d) => {
                 fs::create_dir_all(&path)?;

@@ -35,6 +35,7 @@ fn handle_cargokit_dir(dart_root: &Path) -> Result<()> {
         INTEGRATION_TEMPLATE_DIR.get_dir("cargokit").unwrap(),
         &dart_root.join("cargokit"),
         &|raw| [&CARGOKIT_PRELUDE.as_bytes()[..], &raw[..]].concat(),
+        &|p| !vec![".git", ".github", "docs"].contains(&p.file_name().unwrap().to_str().unwrap()),
     )
 }
 
@@ -45,6 +46,7 @@ fn handle_rust_dir(dart_root: &Path) -> Result<()> {
         INTEGRATION_TEMPLATE_DIR.get_dir("rust").unwrap(),
         &dart_root.join("rust"),
         &|raw| raw.to_owned(),
+        &|p| true,
     )
 }
 
