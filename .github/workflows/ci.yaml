@@ -167,7 +167,7 @@ jobs:
         package:
           - frb_dart
           - frb_utils
-          - tools_frb_internal
+          - tools/frb_internal
           - frb_example/dart_minimal
           - frb_example/pure_dart
           # TODO with_flutter
