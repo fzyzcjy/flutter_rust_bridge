@@ -76,7 +76,7 @@ mod tests {
         let output_texts = actual.output_texts;
         assert_eq!(output_texts.0.len(), 1);
         text_golden_test(
-            output_texts.0[0].text.clone(),
+            output_texts.0[0].text.replace('\r', "\n"),
             &test_fixture_dir.join("expect_output.dart"),
         )?;
 
