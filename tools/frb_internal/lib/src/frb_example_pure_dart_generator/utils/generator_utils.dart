@@ -67,8 +67,10 @@ class _Duplicator {
       if (file is! File ||
           path.extension(file.path) != '.${generator.extension}') continue;
       if (generator.duplicatorBlacklistNames.contains(fileName)) continue;
-      if (DuplicatorMode.values.any((mode) => fileStem.contains(mode.postfix)))
+      if (DuplicatorMode.values
+          .any((mode) => fileStem.contains(mode.postfix))) {
         continue;
+      }
 
       final fileContent = (file as File).readAsStringSync();
       final annotation = _parseAnnotation(fileContent);

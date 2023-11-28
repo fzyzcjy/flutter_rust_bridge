@@ -90,25 +90,25 @@ class PrimitiveTypeInfo {
 }
 
 final kPrimitiveTypes = [
-  PrimitiveTypeInfo(
+  const PrimitiveTypeInfo(
     name: 'i8',
     dartTypeName: 'int',
     primitiveListName: 'Int8List',
     interestRawValues: ['0', '-128', '127'],
   ),
-  PrimitiveTypeInfo(
+  const PrimitiveTypeInfo(
     name: 'i16',
     dartTypeName: 'int',
     primitiveListName: 'Int16List',
     interestRawValues: ['0', '-32768', '32767'],
   ),
-  PrimitiveTypeInfo(
+  const PrimitiveTypeInfo(
     name: 'i32',
     dartTypeName: 'int',
     primitiveListName: 'Int32List',
     interestRawValues: ['0', '-2147483648', '2147483647'],
   ),
-  PrimitiveTypeInfo(
+  const PrimitiveTypeInfo(
     name: 'i64',
     // dartTypeName: 'BigInt',
     dartTypeName: 'int',
@@ -123,25 +123,25 @@ final kPrimitiveTypes = [
     ],
     // primitiveWrapper: (_, x) => 'BigInt.parse("$x")',
   ),
-  PrimitiveTypeInfo(
+  const PrimitiveTypeInfo(
     name: 'u8',
     dartTypeName: 'int',
     primitiveListName: 'Uint8List',
     interestRawValues: ['0', '255'],
   ),
-  PrimitiveTypeInfo(
+  const PrimitiveTypeInfo(
     name: 'u16',
     dartTypeName: 'int',
     primitiveListName: 'Uint16List',
     interestRawValues: ['0', '65535'],
   ),
-  PrimitiveTypeInfo(
+  const PrimitiveTypeInfo(
     name: 'u32',
     dartTypeName: 'int',
     primitiveListName: 'Uint32List',
     interestRawValues: ['0', '4294967295'],
   ),
-  PrimitiveTypeInfo(
+  const PrimitiveTypeInfo(
     name: 'u64',
     // dartTypeName: 'BigInt',
     dartTypeName: 'int',
@@ -155,13 +155,13 @@ final kPrimitiveTypes = [
     ],
     // primitiveWrapper: (_, x) => 'BigInt.parse("$x")',
   ),
-  PrimitiveTypeInfo(
+  const PrimitiveTypeInfo(
     name: 'f32',
     dartTypeName: 'double',
     primitiveListName: 'Float32List',
     interestRawValues: ['0', '-42.5', '123456'],
   ),
-  PrimitiveTypeInfo(
+  const PrimitiveTypeInfo(
     name: 'f64',
     dartTypeName: 'double',
     primitiveListName: 'Float64List',

@@ -7,8 +7,9 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
 Future<void> generate() async {
   final dartRoot =
       Directory.current.uri.resolve('../../frb_example/pure_dart/');
-  if (!Directory(dartRoot.toFilePath()).existsSync())
+  if (!Directory(dartRoot.toFilePath()).existsSync()) {
     throw StateError('dartRoot=$dartRoot does not exist');
+  }
 
   await RustGenerator(
           packageRootDir: dartRoot.resolve('rust/'), interestDir: 'src/api/')

@@ -13,6 +13,8 @@ dependencies:
   recase: ^4.0.0
   flutter_rust_bridge:
     path: ../../frb_dart
+  path: ^1.8.1
+  meta: ^1.8.0
 
 dev_dependencies:
   build_runner: ^2.2.0
