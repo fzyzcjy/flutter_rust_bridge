@@ -17,7 +17,7 @@ pub fn handle_complex_struct_twin_normal(s: MyTreeNode) -> MyTreeNode {
 }
 
 #[derive(Debug, Clone, Copy)]
-pub enum Weekdays {
+pub enum WeekdaysTwinNormal {
     Monday,
     Tuesday,
     Wednesday,
@@ -72,7 +72,7 @@ pub struct C {
     pub c: bool,
 }
 
-pub enum Abc {
+pub enum AbcTwinNormal {
     A(A),
     B(B),
     C(C),

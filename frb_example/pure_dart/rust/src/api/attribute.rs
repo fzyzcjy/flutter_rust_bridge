@@ -16,7 +16,7 @@ pub fn handle_customized_struct_twin_normal(val: Customized) {
 
 #[frb]
 #[derive(Debug)]
-pub enum KitchenSink {
+pub enum KitchenSinkTwinNormal {
     Empty,
     #[frb(unimpl_variant_attr)]
     Primitives {

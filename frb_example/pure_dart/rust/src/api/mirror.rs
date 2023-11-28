@@ -22,7 +22,7 @@ pub struct _ApplicationSettings {
 }
 
 #[frb(mirror(ApplicationMode))]
-pub enum _ApplicationMode {
+pub enum _ApplicationModeTwinNormal {
     Standalone,
     Embedded,
 }
@@ -105,7 +105,7 @@ pub fn mirror_tuple_stream_twin_normal(
 }
 
 #[frb(mirror(ApplicationMessage))]
-pub enum _ApplicationMessage {
+pub enum _ApplicationMessageTwinNormal {
     DisplayMessage(String),
     RenderPixel { x: i32, y: i32 },
     Exit,
@@ -145,7 +145,7 @@ pub struct _NestedRawStringMirrored {
 }
 
 #[frb(mirror(RawStringEnumMirrored))]
-pub enum _RawStringEnumMirrored {
+pub enum _RawStringEnumMirroredTwinNormal {
     Raw(RawStringMirrored),
     Nested(NestedRawStringMirrored),
     ListOfNested(ListOfNestedRawStringMirrored),

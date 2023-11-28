@@ -43,7 +43,7 @@ pub fn panic_unwrap_dart_opaque_twin_normal(opaque: DartOpaque) {
     let _handle = opaque.try_unwrap().unwrap();
 }
 
-pub enum EnumDartOpaque {
+pub enum EnumDartOpaqueTwinNormal {
     Primitive(i32),
     Opaque(DartOpaque),
 }

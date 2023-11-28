@@ -78,7 +78,7 @@ pub fn custom_struct_error_return_error_twin_normal(
 
 // ------------------------------ example-based ----------------------------------
 
-pub enum CustomError {
+pub enum CustomErrorTwinNormal {
     Error0 { e: String, backtrace: Backtrace },
     Error1 { e: u32, backtrace: Backtrace },
 }
@@ -140,12 +140,12 @@ impl SomeStruct {
     }
 }
 
-pub enum CustomNestedError1 {
+pub enum CustomNestedError1TwinNormal {
     CustomNested1(String),
     ErrorNested(CustomNestedError2),
 }
 
-pub enum CustomNestedError2 {
+pub enum CustomNestedError2TwinNormal {
     CustomNested2(String),
     CustomNested2Number(u32),
 }

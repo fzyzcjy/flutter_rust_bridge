@@ -13,7 +13,7 @@ use std::time::Duration;
 pub trait DartDebug: DartSafe + Debug + Send + Sync {}
 impl<T: DartSafe + Debug + Send + Sync> DartDebug for T {}
 
-pub enum EnumOpaque {
+pub enum EnumOpaqueTwinNormal {
     Struct(RustOpaque<HideData>),
     Primitive(RustOpaque<i32>),
     TraitObj(RustOpaque<Box<dyn DartDebug>>),

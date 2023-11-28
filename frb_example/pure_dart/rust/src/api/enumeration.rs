@@ -77,19 +77,19 @@ pub fn handle_enum_parameter_twin_normal(weekday: Weekdays) -> Weekdays {
 }
 
 #[derive(Debug, Clone)]
-pub enum Speed {
+pub enum SpeedTwinNormal {
     Unknown,
     GPS(f64),
 }
 
 #[derive(Debug, Clone)]
-pub enum Distance {
+pub enum DistanceTwinNormal {
     Unknown,
     Map(f64),
 }
 
 #[derive(Debug, Clone)]
-pub enum Measure {
+pub enum MeasureTwinNormal {
     Speed(Box<Speed>),
     Distance(Box<Distance>),
 }
@@ -109,7 +109,7 @@ pub fn multiply_by_ten_twin_normal(measure: Measure) -> Option<Measure> {
 
 #[frb]
 #[derive(Debug)]
-pub enum KitchenSink {
+pub enum KitchenSinkTwinNormal {
     /// Comment on variant
     Empty,
     #[frb(unimpl_variant_attr)]
