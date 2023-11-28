@@ -88,15 +88,15 @@ Future<void> generateInternalRust(GenerateConfig config) async {
 
 Future<void> generateInternalBookHelp(GenerateConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
-    for (final cmd in [
-      '',
-      'generate',
-      'create',
-      'integrate',
-      'build-web',
+    for (final (cmd, extraArgs) in [
+      ('', ''),
+      ('generate', ''),
+      ('create', ''),
+      ('integrate', ''),
+      ('build-web', '--dart-root ${exec.pwd}frb_example/pure_dart'),
     ]) {
       await exec(
-          'cargo run -- $cmd --help > ${exec.pwd}book/src/generated/${cmd.isEmpty ? "main" : cmd}.txt',
+          'cargo run -- $cmd $extraArgs --help > ${exec.pwd}book/src/generated/${cmd.isEmpty ? "main" : cmd}.txt',
           relativePwd: 'frb_codegen');
     }
   });
