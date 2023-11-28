@@ -157,7 +157,8 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
         await _executeFrbCodegen(relativePwd: config.package, cmd: 'create');
 
       case 'frb_example/flutter_via_integrate':
-        TODO;
+        await exec('flutter create flutter_via_integrate',
+            relativePwd: 'frb_example');
         await _executeFrbCodegen(relativePwd: config.package, cmd: 'integrate');
 
       default:
