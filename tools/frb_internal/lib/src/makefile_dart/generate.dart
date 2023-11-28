@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
@@ -73,16 +74,16 @@ Future<void> generateInternalFrbExamplePureDart(GenerateConfig config) async {
 
 Future<void> generateInternalDartSource(GenerateConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
+    final path = '${Directory.systemTemp.path}/${Random().nextInt(1000000000)}';
     await exec('''
     #!/usr/bin/env bash
     set -euxo pipefail
-    cd ${Directory.systemTemp.path}
+    mkdir -p $path && cd $path
 
     git clone --depth 1 --filter=blob:none --sparse --branch stable https://github.com/dart-lang/sdk.git
-    cd sdk
-    git sparse-checkout set runtime/include
-    cd ..
+    (cd sdk && git sparse-checkout set runtime/include)
     cp -rf ./sdk/runtime/include/* ${exec.pwd}frb_rust/src/dart_api/
+    rm -rf sdk
   ''');
   });
 }
