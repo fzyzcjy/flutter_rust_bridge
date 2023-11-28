@@ -13,6 +13,7 @@ static INTEGRATION_TEMPLATE_DIR: Dir<'_> =
     include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template");
 
 /// Integrate Rust into existing Flutter project.
+// ref: https://matejknopp.com/post/flutter_plugin_in_rust_with_no_prebuilt_binaries/
 pub fn integrate() -> Result<()> {
     let dart_root = find_dart_package_dir(&env::current_dir()?)?;
     let package_name = dart_root.file_name().unwrap().to_str().unwrap();
@@ -57,9 +58,11 @@ fn handle_ios_or_macos(dart_root: &Path, dir_name: &str) -> Result<()> {
 }
 
 fn handle_windows_or_linux(dart_root: &Path, dir_name: &str) -> Result<()> {
+    let path = dart_root.join(dir_name).join("CMakeLists.txt");
     todo!()
 }
 
 fn handle_android(dart_root: &Path) -> Result<()> {
+    let path = dart_root.join("android").join("build.gradle");
     todo!()
 }
