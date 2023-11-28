@@ -2,7 +2,6 @@ use crate::command_run;
 use crate::commands::command_runner::call_shell;
 use crate::utils::path_utils::{normalize_windows_unc_path, path_to_string};
 use anyhow::bail;
-use itertools::Itertools;
 use log::debug;
 use std::path::PathBuf;
 

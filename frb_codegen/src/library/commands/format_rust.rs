@@ -1,6 +1,5 @@
 use crate::library::commands::command_runner::execute_command;
 use crate::library::commands::format_dart::normalize_windows_unc_paths;
-use crate::utils::path_utils::{normalize_windows_unc_path, path_to_string};
 use anyhow::bail;
 use log::debug;
 use std::path::PathBuf;
