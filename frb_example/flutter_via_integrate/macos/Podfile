@@ -51,12 +51,12 @@ post_install do |installer|
   installer.pods_project.targets.each do |target|
     flutter_additional_macos_build_settings(target)
 
-    # TODO start
-    target.build_configurations.each do |config|
-      config.build_settings['DEFINES_MODULE'] = 'YES'
-      config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'i386'
-      config.build_settings['OTHER_LDFLAGS'] = '-force_load ${BUILT_PRODUCTS_DIR}/librust_lib.a'
+    if target.name == "Pods-Runner" then
+      target.build_configurations.each do |config|
+        config.build_settings['DEFINES_MODULE'] = 'YES'
+        config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'i386'
+        config.build_settings['OTHER_LDFLAGS'] = '-force_load ${BUILT_PRODUCTS_DIR}/librust_lib.a'
+      end
     end
-    # TODO end
   end
 end
