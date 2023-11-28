@@ -1,5 +1,6 @@
+// ignore_for_file: avoid_print
+
 import 'dart:io';
-import 'dart:math';
 
 import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
@@ -151,18 +152,30 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
         throw Exception('Do not know how to handle package ${config.package}'),
     };
 
+    final dirPackage = '${exec.pwd}/${config.package}';
     final dirTemp = randomTempDir();
-    await exec('mkdir -p $dirTemp');
+    print('Pick temporary directory: $dirTemp');
+    await Directory(dirTemp).create(recursive: true);
 
-    TODO_rm_dir;
-    TODO_temp_mv_target_etc;
+    // We move instead of delete folder for extra safety of this script
+    await Directory(dirPackage).rename('$dirTemp/original');
 
     await exec(
       'cargo run --manifest-path ${exec.pwd}/frb_codegen/Cargo.toml -- $cmd',
       relativePwd: config.package,
       extraEnv: {'RUST_BACKTRACE': '1'},
     );
+
+    // move back compilation cache to speed up future usage
+    await _renameDirIfExists('$dirTemp/original/build', '$dirPackage/build');
+    await _renameDirIfExists(
+        '$dirTemp/original/rust/target', '$dirPackage/rust/target');
   });
+}
+
+Future<void> _renameDirIfExists(String src, String dst) async {
+  if (!await Directory(src).exists()) return;
+  await Directory(src).rename(dst);
 }
 
 Future<void> _wrapMaybeSetExitIfChanged(
