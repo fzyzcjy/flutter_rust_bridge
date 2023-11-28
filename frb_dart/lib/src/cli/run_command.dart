@@ -1,9 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 
-// final arrow = stdout.supportsAnsiEscapes ? Colorize('>').green().bold().toString() : '>'; // #1262
-const _kArrow = '>';
-
 /// {@macro flutter_rust_bridge.internal}
 Future<String> runCommand(
   String command,
