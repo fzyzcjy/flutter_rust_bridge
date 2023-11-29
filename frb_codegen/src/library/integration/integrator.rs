@@ -18,10 +18,14 @@ pub fn integrate(enable_integration_test: bool) -> Result<()> {
     let dart_root = find_dart_package_dir(&env::current_dir()?)?;
     debug!("integrate dart_root={dart_root:?}");
 
+    let package_name = TODO;
+
     extract_dir_and_modify(
         &INTEGRATION_TEMPLATE_DIR,
         &dart_root,
-        &modify_file,
+        &|path, src_raw, existing_content| {
+            modify_file(path, src_raw, existing_content, package_name)
+        },
         &|path| filter_file(path, enable_integration_test),
     )?;
 
@@ -30,7 +34,16 @@ pub fn integrate(enable_integration_test: bool) -> Result<()> {
     Ok(())
 }
 
-fn modify_file(path: &Path, src_raw: &[u8], existing_content: Option<Vec<u8>>) -> Option<Vec<u8>> {
+fn modify_file(
+    path: &Path,
+    src_raw: &[u8],
+    existing_content: Option<Vec<u8>>,
+    package_name: &str,
+) -> Option<Vec<u8>> {
+    let src_replaced =
+        String::from_utf8(src_raw.to_owned())?.replace("REPLACE_ME_PACKAGE_NAME", package_name);
+    let src = src_replaced.as_bytes();
+
     if let Some(existing_content) = existing_content {
         if path.file_name() == Some(OsStr::new("main.dart")) {
             let existing_content = String::from_utf8(existing_content);
@@ -42,7 +55,7 @@ fn modify_file(path: &Path, src_raw: &[u8], existing_content: Option<Vec<u8>>) -
                     )
                 })
                 .unwrap_or_default();
-            return Some([src_raw, commented_existing_content.as_bytes()].concat());
+            return Some([src, commented_existing_content.as_bytes()].concat());
         }
 
         warn!(
@@ -54,11 +67,11 @@ fn modify_file(path: &Path, src_raw: &[u8], existing_content: Option<Vec<u8>>) -
 
     if path.iter().contains(&OsStr::new("cargokit")) {
         if let Some(comments) = compute_cargokit_comments(path) {
-            return Some([comments.as_bytes(), src_raw].concat());
+            return Some([comments.as_bytes(), src].concat());
         }
     }
 
-    Some(src_raw.to_owned())
+    Some(src.to_owned())
 }
 
 fn filter_file(path: &Path, enable_integration_test: bool) -> bool {
