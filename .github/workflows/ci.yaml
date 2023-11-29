@@ -301,7 +301,8 @@ jobs:
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
   test_flutter_native_android:
     name: 'Test :: Flutter :: Native:: Android'
-    runs-on: ubuntu-latest
+    # Must use MacOS because of reasons mentioned in `android-emulator-runner`'s readme.
+    runs-on: macos-latest
     strategy:
       fail-fast: false
       matrix:
