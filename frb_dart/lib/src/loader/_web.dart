@@ -15,6 +15,8 @@ FutureOr<ExternalLibrary> loadExternalLibrary(
 Future<ExternalLibrary> loadExternalLibraryRaw(
     {required String moduleRoot}) async {
   return ExternalLibrary(
-      wasmModule: await WasmModule.initialize(
-          kind: Modules.noModules(root: moduleRoot)));
+    wasmModule:
+        await WasmModule.initialize(kind: Modules.noModules(root: moduleRoot)),
+    debugInfo: 'moduleRoot=$moduleRoot',
+  );
 }
