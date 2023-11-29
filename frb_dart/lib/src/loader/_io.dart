@@ -58,9 +58,8 @@ ExternalLibrary loadExternalLibraryRaw({
   }
 
   if (Platform.isMacOS) {
-    final name = 'lib$stem.dylib';
     return tryAssumingNonPackaged(
-        name,
+        'lib$stem.dylib',
         (debugInfo) => ExternalLibrary.open('$stem.framework/$stem',
             debugInfo: debugInfo));
   }
