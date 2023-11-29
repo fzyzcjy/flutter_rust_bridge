@@ -7,7 +7,17 @@ use log::info;
 #[allow(clippy::vec_init_then_push)]
 pub fn flutter_create(name: &str) -> anyhow::Result<()> {
     info!("Execute `flutter create {name}`");
-    let res = command_run!(call_shell[None], "flutter", "create", name)?;
-    check_exit_code(&res)?;
-    Ok(())
+    check_exit_code(&command_run!(call_shell[None], "flutter", "create", name)?)
+}
+
+#[allow(clippy::vec_init_then_push)]
+pub fn flutter_pub_add(items: &[String]) -> anyhow::Result<()> {
+    info!("Execute `flutter pub add`");
+    check_exit_code(&command_run!(
+        call_shell[None],
+        "flutter",
+        "pub",
+        "add",
+        *items
+    )?)
 }
