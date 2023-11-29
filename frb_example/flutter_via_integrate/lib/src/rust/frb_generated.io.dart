@@ -14,6 +14,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.generalizedFrbRustBinding,
     required super.dropPortManager,
   });
+
+  @protected
+  ffi.Pointer<wire_list_prim_u_8> api2wire_String(String raw) {
+    return api2wire_list_prim_u_8(utf8.encoder.convert(raw));
+  }
+
+  @protected
+  ffi.Pointer<wire_list_prim_u_8> api2wire_list_prim_u_8(Uint8List raw) {
+    final ans = wire.new_list_prim_u_8(raw.length);
+    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+    return ans;
+  }
 }
 
 // Section: wire_class
@@ -43,21 +55,35 @@ class RustLibWire implements BaseWire {
           lookup)
       : _lookup = lookup;
 
-  WireSyncReturn wire_add(
-    int left,
-    int right,
+  WireSyncReturn wire_greet(
+    ffi.Pointer<wire_list_prim_u_8> name,
   ) {
-    return _wire_add(
-      left,
-      right,
+    return _wire_greet(
+      name,
     );
   }
 
-  late final _wire_addPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Int32, ffi.Int32)>>(
-      'wire_add');
-  late final _wire_add =
-      _wire_addPtr.asFunction<WireSyncReturn Function(int, int)>();
+  late final _wire_greetPtr = _lookup<
+      ffi.NativeFunction<
+          WireSyncReturn Function(
+              ffi.Pointer<wire_list_prim_u_8>)>>('wire_greet');
+  late final _wire_greet = _wire_greetPtr
+      .asFunction<WireSyncReturn Function(ffi.Pointer<wire_list_prim_u_8>)>();
+
+  ffi.Pointer<wire_list_prim_u_8> new_list_prim_u_8(
+    int len,
+  ) {
+    return _new_list_prim_u_8(
+      len,
+    );
+  }
+
+  late final _new_list_prim_u_8Ptr = _lookup<
+          ffi
+          .NativeFunction<ffi.Pointer<wire_list_prim_u_8> Function(ffi.Int32)>>(
+      'new_list_prim_u_8');
+  late final _new_list_prim_u_8 = _new_list_prim_u_8Ptr
+      .asFunction<ffi.Pointer<wire_list_prim_u_8> Function(int)>();
 
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();
@@ -68,4 +94,11 @@ class RustLibWire implements BaseWire {
           'dummy_method_to_enforce_bundling');
   late final _dummy_method_to_enforce_bundling =
       _dummy_method_to_enforce_bundlingPtr.asFunction<int Function()>();
+}
+
+final class wire_list_prim_u_8 extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint8> ptr;
+
+  @ffi.Int32()
+  external int len;
 }

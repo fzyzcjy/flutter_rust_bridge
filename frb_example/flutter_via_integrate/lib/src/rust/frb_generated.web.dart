@@ -13,6 +13,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.generalizedFrbRustBinding,
     required super.dropPortManager,
   });
+
+  @protected
+  String api2wire_String(String raw) {
+    return raw;
+  }
+
+  @protected
+  Uint8List api2wire_list_prim_u_8(Uint8List raw) {
+    return raw;
+  }
 }
 
 // Section: wire_class
@@ -22,9 +32,9 @@ class RustLibWire extends BaseWire {
   // : super(WasmModule.cast<RustLibWasmModule>(lib.wasmModule));
   RustLibWire.fromExternalLibrary(ExternalLibrary lib) {}
 
-  dynamic /* flutter_rust_bridge::support::WireSyncReturn */ wire_add(
-          int left, int right) =>
-      wasmModule.wire_add(left, right);
+  dynamic /* flutter_rust_bridge::support::WireSyncReturn */ wire_greet(
+          String name) =>
+      wasmModule.wire_greet(name);
 }
 
 @JS('wasm_bindgen')
@@ -37,6 +47,6 @@ class RustLibWasmModule implements WasmModule {
 
   external RustLibWasmModule bind(dynamic thisArg, String moduleName);
 
-  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */ wire_add(
-      int left, int right);
+  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_greet(String name);
 }

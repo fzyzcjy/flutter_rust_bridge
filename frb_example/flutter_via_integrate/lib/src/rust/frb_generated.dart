@@ -45,7 +45,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  int add({required int left, required int right, dynamic hint});
+  String greet({required String name, dynamic hint});
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -57,32 +57,39 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  int add({required int left, required int right, dynamic hint}) {
-    var arg0 = api2wire_i_32(left);
-    var arg1 = api2wire_i_32(right);
+  String greet({required String name, dynamic hint}) {
+    var arg0 = api2wire_String(name);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_add(arg0, arg1),
-      parseSuccessData: _wire2api_i_32,
+      callFfi: () => wire.wire_greet(arg0),
+      parseSuccessData: _wire2api_String,
       parseErrorData: null,
-      constMeta: kAddConstMeta,
-      argValues: [left, right],
+      constMeta: kGreetConstMeta,
+      argValues: [name],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kAddConstMeta => const TaskConstMeta(
-        debugName: "add",
-        argNames: ["left", "right"],
+  TaskConstMeta get kGreetConstMeta => const TaskConstMeta(
+        debugName: "greet",
+        argNames: ["name"],
       );
 
-  int _wire2api_i_32(dynamic raw) {
+  String _wire2api_String(dynamic raw) {
+    return raw as String;
+  }
+
+  Uint8List _wire2api_list_prim_u_8(dynamic raw) {
+    return raw as Uint8List;
+  }
+
+  int _wire2api_u_8(dynamic raw) {
     return raw as int;
   }
 }
 
 // Section: api2wire_funcs
 
-int api2wire_i_32(int raw) {
+int api2wire_u_8(int raw) {
   return raw;
 }
