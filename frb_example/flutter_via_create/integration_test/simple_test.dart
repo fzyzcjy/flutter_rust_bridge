@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_via_integrate/main.dart';
-import 'package:flutter_via_integrate/src/rust/frb_generated.dart';
+import 'package:flutter_via_create/main.dart';
+import 'package:flutter_via_create/src/rust/frb_generated.dart';
 import 'package:integration_test/integration_test.dart';
 
 Future<void> main() async {
