@@ -410,7 +410,7 @@ jobs:
           architecture: x64
 
       # execute
-      - run: ./frb_internal test-flutter --flutter-test-args '--device-id ${{ matrix.image_and_name_and_platform }}' --package ${{ matrix.package }}
+      - run: ./frb_internal test-flutter --flutter-test-args '--device-id ${{ matrix.image_and_name_and_platform.platform }}' --package ${{ matrix.package }}
 
   test_flutter_web:
     name: 'Test :: Flutter :: Web'
