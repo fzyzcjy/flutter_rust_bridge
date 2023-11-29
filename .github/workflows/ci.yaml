@@ -415,6 +415,12 @@ jobs:
   test_flutter_web:
     name: 'Test :: Flutter :: Web'
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package:
+          - frb_example/flutter_via_integrate
+          # TODO other packages
 
     steps:
       - uses: actions/checkout@v4
