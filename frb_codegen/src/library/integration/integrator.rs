@@ -1,4 +1,3 @@
-use crate::command_run;
 use crate::integration::utils::extract_dir_and_modify;
 use crate::library::commands::flutter::flutter_pub_add;
 use crate::utils::path_utils::find_dart_package_dir;

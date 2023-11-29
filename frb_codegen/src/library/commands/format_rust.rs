@@ -1,6 +1,5 @@
 use crate::library::commands::command_runner::{check_exit_code, execute_command};
 use crate::library::commands::format_dart::normalize_windows_unc_paths;
-use anyhow::bail;
 use log::debug;
 use std::path::PathBuf;
 

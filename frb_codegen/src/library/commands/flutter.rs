@@ -1,7 +1,6 @@
 use crate::command_run;
 use crate::commands::command_runner::call_shell;
 use crate::library::commands::command_runner::check_exit_code;
-use anyhow::bail;
 use log::info;
 
 #[allow(clippy::vec_init_then_push)]
