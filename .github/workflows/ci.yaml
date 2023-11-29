@@ -349,6 +349,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        package:
+          - frb_example/flutter_via_integrate
+          # TODO other packages
         device:
           - "iPad (9th generation) Simulator (16.2)"
           - "iPhone 12 Pro Max Simulator (16.2)"
@@ -379,5 +382,4 @@ jobs:
 
       - name: Run Flutter integration tests
         working-directory: ./frb_example/with_flutter
-        run: flutter test integration_test/main.dart --verbose
-
+        run: ./frb_internal test-dart-web --package ${{ matrix.package }}
