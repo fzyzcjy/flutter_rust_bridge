@@ -372,13 +372,6 @@ jobs:
           cache: true
           flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
-      - id: cache-deps
-        uses: ./.github/actions/setup
-        with:
-          cache-key: "$${{ steps.rust-toolchain.outputs.cachekey }}"
-      - uses: dtolnay/rust-toolchain@stable
-        with:
-          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
       # execute
       - working-directory: ./frb_example/with_flutter
         run: ./frb_internal test-dart-web --package ${{ matrix.package }}
