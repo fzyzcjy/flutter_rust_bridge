@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'dart:io';
 
@@ -94,14 +96,31 @@ Future<void> _sanityChecks(BuildWebArgs args) async {
 }
 
 Future<void> _ensureWasmPackInstalled() async {
-  await runCommand(_commandWhich, ['wasm-pack']).catchError((_) {
+  if (await _isWasmPackInstalled()) return;
+
+  print('Try to install wasm-pack');
+  await _installWasmPack();
+
+  if (!await _isWasmPackInstalled()) {
     bail(
       'wasm-pack is required, but not found in the path.\n'
       'Please install wasm-pack by following the instructions at https://rustwasm.github.io/wasm-pack/\n'
       'or running `cargo install wasm-pack`.',
     );
-  });
+  }
 }
+
+Future<bool> _isWasmPackInstalled() async {
+  try {
+    await runCommand(_commandWhich, ['wasm-pack']);
+    return true;
+  } catch (_) {
+    return false;
+  }
+}
+
+Future<void> _installWasmPack() async =>
+    await runCommand('cargo', ['install', 'wasm-pack']);
 
 Future<String> _getRustCreateName({required String rustCrateDir}) async {
   final manifest = jsonDecode((await runCommand(
