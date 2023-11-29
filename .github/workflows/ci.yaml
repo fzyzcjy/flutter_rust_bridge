@@ -317,7 +317,7 @@ jobs:
             ~/.android/avd/*
             ~/.android/adb*
           key: avd-api-level-${{ matrix.api-level }}
-      - name: create AVD and generate snapshot for caching
+      - name: Create AVD and generate snapshot for caching
         if: steps.avd-cache.outputs.cache-hit != 'true'
         uses: reactivecircus/android-emulator-runner@v2
         with:
