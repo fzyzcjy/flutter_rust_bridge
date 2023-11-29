@@ -163,7 +163,7 @@ Future<void> testFlutterWeb(TestDartConfig config) async {
       'flutter drive '
       '--driver=test_driver/integration_test.dart '
       '--target=integration_test/simple_test.dart '
-      '-d chrome --headless '
+      '-d web-server '
       '--verbose',
       relativePwd: config.package);
 }
