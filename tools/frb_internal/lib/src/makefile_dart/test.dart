@@ -143,6 +143,7 @@ void checkValgrindOutput(String output) {
 }
 
 Future<void> testFlutterNative(TestFlutterConfig config) async {
+  await _runFlutterDoctor();
   await runPubGetIfNotRunYet(config.package);
 
   await exec(
@@ -151,6 +152,7 @@ Future<void> testFlutterNative(TestFlutterConfig config) async {
 }
 
 Future<void> testFlutterWeb(TestDartConfig config) async {
+  await _runFlutterDoctor();
   await runPubGetIfNotRunYet(config.package);
 
   await executeFrbCodegen(cmd: 'build-web', relativePwd: config.package);
@@ -164,3 +166,5 @@ Future<void> testFlutterWeb(TestDartConfig config) async {
       '-d chrome',
       relativePwd: config.package);
 }
+
+Future<void> _runFlutterDoctor() async => await exec('flutter doctor -v');
