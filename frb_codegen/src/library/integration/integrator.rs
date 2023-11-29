@@ -108,12 +108,12 @@ const CARGOKIT_PRELUDE: &[&str] = &[
 
 fn pub_add_dependencies(enable_integration_test: bool) -> Result<()> {
     let mut deps = vec![
-        r#"rust_builder:{"path":"./rust_builder"}"#.into(),
-        r#"flutter_rust_bridge:{"path":"../../frb_dart"}"#.into(),
-        r#"dev:ffigen:^8.0.0"#.into(),
+        r#"'rust_builder:{"path":"./rust_builder"}'"#.into(),
+        r#"'flutter_rust_bridge:{"path":"../../frb_dart"}'"#.into(),
+        r#"'dev:ffigen:^8.0.0'"#.into(),
     ];
     if enable_integration_test {
-        deps.push(r#"dev:integration_test:{"sdk":"flutter"}"#.into());
+        deps.push(r#"'dev:integration_test:{"sdk":"flutter"}'"#.into());
     }
 
     flutter_pub_add(&deps)
