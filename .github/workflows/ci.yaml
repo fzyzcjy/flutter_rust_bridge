@@ -430,8 +430,6 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           cache: true
-          # TODO should be 3.7.3 but has a weird bug currently
-          # https://github.com/fzyzcjy/flutter_rust_bridge/pull/1023#issuecomment-1415852845
           flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
 
