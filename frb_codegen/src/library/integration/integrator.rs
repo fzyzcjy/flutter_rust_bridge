@@ -1,4 +1,4 @@
-use crate::integration::integrator::utils::extract_dir_and_modify;
+use crate::integration::utils::extract_dir_and_modify;
 use crate::utils::path_utils::find_dart_package_dir;
 use anyhow::Result;
 use include_dir::{include_dir, Dir};
@@ -6,8 +6,6 @@ use itertools::Itertools;
 use log::debug;
 use std::path::Path;
 use std::{env, fs};
-
-mod utils;
 
 static INTEGRATION_TEMPLATE_DIR: Dir<'_> =
     include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template");
@@ -18,35 +16,30 @@ pub fn integrate() -> Result<()> {
     let dart_root = find_dart_package_dir(&env::current_dir()?)?;
     debug!("integrate dart_root={dart_root:?}");
 
-    handle_cargokit_dir(&dart_root)?;
-    handle_rust_dir(&dart_root)?;
-
-    handle_ios_or_macos(&dart_root, "ios")?;
-    handle_ios_or_macos(&dart_root, "macos")?;
-    handle_windows_or_linux(&dart_root, "windows")?;
-    handle_windows_or_linux(&dart_root, "linux")?;
-    handle_android(&dart_root)?;
+    extract_dir_and_modify(
+        &INTEGRATION_TEMPLATE_DIR,
+        &dart_root,
+        &|path, raw| {
+            if path.iter().contains("cargokit".into()) {
+                if let Some(comments) = compute_cargokit_comments(path) {
+                    return [comments.as_bytes(), raw].concat();
+                }
+            }
+            raw.to_owned()
+        },
+        &|path| {
+            if path.iter().contains("cargokit".into()) {
+                !vec![".git", ".github", "docs", "test"].contains(&file_name(path))
+            } else {
+                true
+            }
+        },
+    )?;
 
     Ok(())
 }
 
-fn handle_cargokit_dir(dart_root: &Path) -> Result<()> {
-    fs::create_dir_all(dart_root.join("cargokit"))?;
-    extract_dir_and_modify(
-        INTEGRATION_TEMPLATE_DIR.get_dir("cargokit").unwrap(),
-        dart_root,
-        &|path, raw| {
-            if let Some(comments) = compute_comments(path) {
-                [comments.as_bytes(), raw].concat()
-            } else {
-                raw.to_owned()
-            }
-        },
-        &|p| !vec![".git", ".github", "docs", "test"].contains(&file_name(p)),
-    )
-}
-
-fn compute_comments(path: &Path) -> Option<String> {
+fn compute_cargokit_comments(path: &Path) -> Option<String> {
     if vec![".gitignore"].contains(&file_name(path)) {
         return None;
     }
