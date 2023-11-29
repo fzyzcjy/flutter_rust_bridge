@@ -16,7 +16,7 @@ pub fn create(name: &str) -> anyhow::Result<()> {
     remove_unnecessary_files(&dart_root)?;
 
     info!("Step: Inject flutter_rust_bridge related code");
-    integrator::integrate()
+    integrator::integrate(true)
 }
 
 fn remove_unnecessary_files(dart_root: &Path) -> anyhow::Result<()> {
