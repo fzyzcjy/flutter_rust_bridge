@@ -317,12 +317,6 @@ jobs:
       - name: Configure ndk
         run: just configure_ndk
 
-      - id: cache-deps
-        uses: ./.github/actions/setup
-        with:
-          cache-key: "${{ steps.rust-toolchain.outputs.cachekey }}"
-          cache-platform: "${{ matrix.device }}"
-
       - name: Build Rust lib
         working-directory: ./frb_example/with_flutter/rust
         # NOTE since run on simulator, need -t to be x86_64. For real devices, of course arm-like ones.
