@@ -10,6 +10,7 @@ List<Command<void>> createCommands() {
 
 Future<void> benchDartNative() async {
   const package = 'frb_example/pure_dart';
+  await runPubGetIfNotRunYet(package);
   await exec(
       'dart --enable-experiment=native-assets build benchmark/simple_benchmark.dart -o build/simple_benchmark/',
       relativePwd: package);
