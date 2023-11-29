@@ -1,18 +1,26 @@
+import 'dart:convert';
+import 'dart:io';
 import 'dart:math';
 
 import 'benchmark_utils.dart';
 
-void main() {
-  const ComputePrimeBenchmark(90000049).report();
-  const ComputePrimeBenchmark(9000000001).report();
-  const ComputePrimeBenchmark(900000000013).report();
+void main(List<String> args) {
+  final emitter = JsonEmitter();
+
+  ComputePrimeBenchmark(90000049, emitter: emitter).report();
+  ComputePrimeBenchmark(9000000001, emitter: emitter).report();
+  ComputePrimeBenchmark(900000000013, emitter: emitter).report();
+
+  final pathOutput = args[1];
+  print('Write reports to $pathOutput');
+  File(pathOutput).writeAsStringSync(jsonEncode(emitter.items));
 }
 
 // For a list of primes: http://compoasso.free.fr/primelistweb/page/prime/liste_online_en.php
 class ComputePrimeBenchmark extends EnhancedBenchmarkBase {
   final int number;
 
-  const ComputePrimeBenchmark(this.number)
+  const ComputePrimeBenchmark(this.number, {super.emitter})
       : super('ComputePrime_Number$number');
 
   @override
