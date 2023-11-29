@@ -116,5 +116,9 @@ fn pub_add_dependencies(enable_integration_test: bool) -> Result<()> {
         deps.push(r#"dev:integration_test:{"sdk":"flutter"}"#.into());
     }
 
+    if cfg!(windows) {
+        deps = deps.into_iter().map(|x| format!("'{x}'")).collect_vec();
+    }
+
     flutter_pub_add(&deps)
 }
