@@ -329,6 +329,7 @@ jobs:
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: false
           script: echo "Generated AVD snapshot for caching."
+      # execute
       - name: Run Flutter integration tests
         timeout-minutes: 20
         uses: Wandalen/wretry.action@v1.0.25
