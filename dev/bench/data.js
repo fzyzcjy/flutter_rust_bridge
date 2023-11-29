@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1701301698865,
+  "lastUpdate": 1701301816271,
   "repoUrl": "https://github.com/fzyzcjy/flutter_rust_bridge",
   "entries": {
     "Flutter Rust Bridge Benchmark": [
@@ -272,6 +272,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "PureDart_ComputePrime_Number900000000013_Ubuntu",
             "value": 2062.971,
+            "unit": "Microseconds"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "ch271828n@outlook.com",
+            "name": "fzyzcjy",
+            "username": "fzyzcjy"
+          },
+          "committer": {
+            "email": "ch271828n@outlook.com",
+            "name": "fzyzcjy",
+            "username": "fzyzcjy"
+          },
+          "distinct": true,
+          "id": "8d636e748c8db8792ce4bbd8b5c2a5203cb991a6",
+          "message": "Revert \"fix: ignore more\"\n\nThis reverts commit 736a7f053c53ebf4e196a6f8503437af8ae27901.",
+          "timestamp": "2023-11-30T07:48:20+08:00",
+          "tree_id": "a6cde278585dea578522c6a8e65b4bca94c13349",
+          "url": "https://github.com/fzyzcjy/flutter_rust_bridge/commit/8d636e748c8db8792ce4bbd8b5c2a5203cb991a6"
+        },
+        "date": 1701301814144,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "PureDart_ComputePrime_Number90000049_Ubuntu",
+            "value": 18.65589358887789,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_ComputePrime_Number9000000001_Ubuntu",
+            "value": 206.2435174746336,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_ComputePrime_Number900000000013_Ubuntu",
+            "value": 2053.951,
             "unit": "Microseconds"
           }
         ]
