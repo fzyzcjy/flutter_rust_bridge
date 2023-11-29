@@ -8,6 +8,7 @@ use log::{debug, warn};
 use serde_yaml::Value;
 use std::ffi::OsStr;
 use std::path::{Path, PathBuf};
+use std::string::FromUtf8Error;
 use std::{env, fs};
 
 static INTEGRATION_TEMPLATE_DIR: Dir<'_> =
@@ -41,9 +42,7 @@ fn modify_file(
     existing_content: Option<Vec<u8>>,
     package_name: &str,
 ) -> Option<Vec<u8>> {
-    let src_replaced =
-        String::from_utf8(src_raw.to_owned())?.replace("REPLACE_ME_PACKAGE_NAME", package_name);
-    let src = src_replaced.as_bytes();
+    let src = replace_file_content(src_raw, package_name);
 
     if let Some(existing_content) = existing_content {
         if path.file_name() == Some(OsStr::new("main.dart")) {
@@ -56,7 +55,7 @@ fn modify_file(
                     )
                 })
                 .unwrap_or_default();
-            return Some([src, commented_existing_content.as_bytes()].concat());
+            return Some([&src, commented_existing_content.as_bytes()].concat());
         }
 
         warn!(
@@ -68,11 +67,20 @@ fn modify_file(
 
     if path.iter().contains(&OsStr::new("cargokit")) {
         if let Some(comments) = compute_cargokit_comments(path) {
-            return Some([comments.as_bytes(), src].concat());
+            return Some([comments.as_bytes(), &src].concat());
         }
     }
 
     Some(src.to_owned())
+}
+
+fn replace_file_content(raw: &[u8], package_name: &str) -> Vec<u8> {
+    match String::from_utf8(raw.to_owned()) {
+        Ok(raw_str) => raw_str
+            .replace("REPLACE_ME_PACKAGE_NAME", package_name)
+            .into_bytes(),
+        Err(e) => e.into_bytes(),
+    }
 }
 
 fn filter_file(path: &Path, enable_integration_test: bool) -> bool {
