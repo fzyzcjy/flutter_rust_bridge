@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:ffi';
 import 'dart:io';
 
 import 'package:flutter_rust_bridge/src/loader/_common.dart';
@@ -32,34 +31,30 @@ ExternalLibrary loadExternalLibraryRaw({
     if (nativeLibDirWhenNonPackaged == null) return null;
     final filePath = nativeLibDirWhenNonPackaged.resolve(name).toFilePath();
     if (!File(filePath).existsSync()) return null;
-    return ExternalLibrary(ffiDynamicLibrary: DynamicLibrary.open(filePath));
+    return ExternalLibrary.open(filePath);
   }
 
   if (Platform.isAndroid) {
-    return ExternalLibrary(
-        ffiDynamicLibrary: DynamicLibrary.open('lib$stem.so'));
+    return ExternalLibrary.open('lib$stem.so');
   }
 
   if (Platform.isIOS) {
-    return ExternalLibrary(ffiDynamicLibrary: DynamicLibrary.process());
+    return ExternalLibrary.process();
   }
 
   if (Platform.isWindows) {
     final name = '$stem.dll';
-    return tryAssumingNonPackaged(name) ??
-        ExternalLibrary(ffiDynamicLibrary: DynamicLibrary.open(name));
+    return tryAssumingNonPackaged(name) ?? ExternalLibrary.open(name);
   }
 
   if (Platform.isMacOS) {
     final name = 'lib$stem.dylib';
-    return tryAssumingNonPackaged(name) ??
-        ExternalLibrary(ffiDynamicLibrary: DynamicLibrary.process());
+    return tryAssumingNonPackaged(name) ?? ExternalLibrary.process();
   }
 
   if (Platform.isLinux) {
     final name = 'lib$stem.so';
-    return tryAssumingNonPackaged(name) ??
-        ExternalLibrary(ffiDynamicLibrary: DynamicLibrary.open(name));
+    return tryAssumingNonPackaged(name) ?? ExternalLibrary.open(name);
   }
 
   // Feel free to PR to add support for more platforms! (e.g. I do not have a Fuchsia device, so cannot test that)
