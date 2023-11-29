@@ -290,8 +290,8 @@ jobs:
       - run: ./frb_internal test-dart-valgrind --package ${{ matrix.package }}
 
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
-  test_dart_android:
-    name: 'Test :: Dart :: Android'
+  test_flutter_android:
+    name: 'Test :: Flutter :: Android'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -343,8 +343,8 @@ jobs:
             script: ./frb_internal test-dart-android --package ${{ matrix.package }}
 
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
-  test_dart_ios:
-    name: 'Test :: Dart :: iOS'
+  test_flutter_ios:
+    name: 'Test :: Flutter :: iOS'
     runs-on: macos-latest
     strategy:
       fail-fast: false
@@ -374,3 +374,99 @@ jobs:
           architecture: x64
       # execute
       - run: ./frb_internal test-dart-ios --package ${{ matrix.package }}
+
+  test_flutter_windows:
+    name: 'Test :: Flutter :: Windows'
+    runs-on: windows-2019
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          cache: true
+          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+          architecture: x64
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+
+      - name: Install LLVM and Clang
+        uses: KyleMayes/install-llvm-action@v1
+        with:
+          version: "10.0"
+          directory: ${{ runner.temp }}/llvm
+
+      - run: just flutter_example_with_flutter_integration_test
+
+      - name: Install Corrosion
+        run: |
+          cd ..
+          git clone --branch v0.4.4 --depth 1 https://github.com/corrosion-rs/corrosion.git
+          cmake -Scorrosion -Bbuild -DCMAKE_BUILD_TYPE=Release
+          cmake --build build --config Release
+          cmake --install build --config Release
+          echo "C:\Program Files (x86)\Corrosion" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
+      - name: Run Flutter integration tests explicitly requiring Corrosion
+        working-directory: ./frb_example/with_flutter
+        run: |
+          mv -Force windows/rust.require.cmake windows/rust.cmake
+          just flutter_example_with_flutter_integration_test
+
+  test_flutter_macos:
+    name: 'Test :: Flutter :: MacOS'
+    runs-on: macos-11
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          cache: true
+          # TODO should be 3.7.3 but has a weird bug currently
+          # https://github.com/fzyzcjy/flutter_rust_bridge/pull/1023#issuecomment-1415852845
+          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+          architecture: x64
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+
+      - run: just flutter_example_with_flutter_integration_test
+
+  test_flutter_linux:
+    name: 'Test :: Flutter :: Linux'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          cache: true
+          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+          architecture: x64
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+
+      - name: Setup headless display
+
+        uses: pyvista/setup-headless-display-action@v1
+
+      - run: just install_prerequisite_for_integration_test_linux
+
+      - run: just flutter_example_with_flutter_integration_test
+
+      - run: just install_corrosion_linux
+      - name: Run Flutter integration tests explicitly requiring Corrosion
+        working-directory: ./frb_example/with_flutter
+        run: |
+          set -euxo pipefail
+          mv linux/rust.require.cmake linux/rust.cmake
+          just flutter_example_with_flutter_integration_test
+
+  test_flutter_web:
+    name: 'Test :: Flutter :: Web'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - run: TODO
