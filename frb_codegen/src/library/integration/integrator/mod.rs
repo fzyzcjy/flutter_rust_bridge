@@ -1,10 +1,10 @@
 use crate::integration::integrator::utils::extract_dir_and_modify;
 use crate::utils::path_utils::find_dart_package_dir;
 use anyhow::Result;
-use include_dir::{include_dir, Dir, DirEntry};
+use include_dir::{include_dir, Dir};
 use itertools::Itertools;
 use log::debug;
-use std::path::{Path, PathBuf};
+use std::path::Path;
 use std::{env, fs};
 
 mod utils;
@@ -34,10 +34,10 @@ fn handle_cargokit_dir(dart_root: &Path) -> Result<()> {
     fs::create_dir_all(dart_root.join("cargokit"))?;
     extract_dir_and_modify(
         INTEGRATION_TEMPLATE_DIR.get_dir("cargokit").unwrap(),
-        &dart_root,
+        dart_root,
         &|path, raw| {
             if let Some(comments) = compute_comments(path) {
-                [&comments.as_bytes()[..], &raw[..]].concat()
+                [comments.as_bytes(), raw].concat()
             } else {
                 raw.to_owned()
             }
@@ -66,11 +66,11 @@ fn compute_comments(path: &Path) -> Option<String> {
 }
 
 fn file_name(p: &Path) -> &str {
-    &p.file_name().unwrap().to_str().unwrap()
+    p.file_name().unwrap().to_str().unwrap()
 }
 
 fn file_extension(p: &Path) -> &str {
-    &p.extension().unwrap_or_default().to_str().unwrap()
+    p.extension().unwrap_or_default().to_str().unwrap()
 }
 
 const CARGOKIT_PRELUDE: &[&str] = &[
@@ -83,18 +83,18 @@ fn handle_rust_dir(dart_root: &Path) -> Result<()> {
     fs::create_dir_all(dart_root.join("rust"))?;
     extract_dir_and_modify(
         INTEGRATION_TEMPLATE_DIR.get_dir("rust").unwrap(),
-        &dart_root,
+        dart_root,
         &|_, raw| raw.to_owned(),
-        &|p| true,
+        &|_p| true,
     )
 }
 
-fn handle_ios_or_macos(dart_root: &Path, dir_name: &str) -> Result<()> {
+fn handle_ios_or_macos(_dart_root: &Path, _dir_name: &str) -> Result<()> {
     // TODO
     Ok(())
 }
 
-fn handle_windows_or_linux(dart_root: &Path, dir_name: &str) -> Result<()> {
+fn handle_windows_or_linux(_dart_root: &Path, _dir_name: &str) -> Result<()> {
     // TODO
     // let path = dart_root.join(dir_name).join("CMakeLists.txt");
     Ok(())
