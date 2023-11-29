@@ -141,7 +141,7 @@ pub(crate) struct CreateCommandArgs {
 pub(crate) struct IntegrateCommandArgs {
     /// Generate code related to integration test
     #[arg(long)]
-    pub(crate) enable_integration_test: bool,
+    pub(crate) no_enable_integration_test: bool,
 }
 
 #[derive(Debug, Args)]
