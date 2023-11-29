@@ -28,10 +28,17 @@ pub fn integrate() -> Result<()> {
 
 fn modify_file(path: &Path, src_raw: &[u8], existing_content: Option<Vec<u8>>) -> Option<Vec<u8>> {
     if let Some(existing_content) = existing_content {
-        if path.iter().contains("main.dart".into()) {
-            let existing_content = fs::read_to_string(path).ok();
-            let commented_existing_content = TODO;
-            return TODO;
+        if path.file_name() == Some("main.dart".into()) {
+            let existing_content = String::from_utf8(existing_content);
+            let commented_existing_content = existing_content
+                .map(|x| {
+                    format!(
+                        "\n\n{}",
+                        x.split('\n').map(|line| format!("// {line}")).join("\n")
+                    )
+                })
+                .unwrap_or_default();
+            return Some([src_raw, commented_existing_content.as_bytes()].concat());
         }
 
         warn!(
