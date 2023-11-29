@@ -84,12 +84,14 @@ Future<void> _sanityChecks(BuildWebArgs args) async {
   );
 
   if (args.enableWasmBindgen) {
-    await runCommand(_commandWhich, ['wasm-bindgen']).catchError((_) {
-      bail(
-        'wasm-bindgen flags are enabled, but wasm-bindgen could not be found in the path.\n'
-        'Please install wasm-bindgen using `cargo install -f wasm-bindgen-cli`.',
-      );
-    });
+    await _ensurePackageInstalled(
+      binaryName: 'wasm-bindgen',
+      install: () async =>
+          await runCommand('cargo', ['install', '-f', 'wasm-bindgen-cli']),
+      hint:
+          'wasm-bindgen flags are enabled, but wasm-bindgen could not be found in the path.\n'
+          'Please install wasm-bindgen using `cargo install -f wasm-bindgen-cli`.',
+    );
   }
 
   final crateDir = args.rustCrateDir;
