@@ -151,7 +151,12 @@ Future<void> testFlutterNative(TestFlutterConfig config) async {
 Future<void> testFlutterWeb(TestDartConfig config) async {
   await executeFrbCodegen(cmd: 'build-web', relativePwd: config.package);
 
+  // TODO `chromedriver --port=4444`
+
   await exec(
-      'flutter test integration_test/simple_test.dart --verbose --device-id chrome',
+      'flutter drive '
+      '--driver=test_driver/integration_test.dart '
+      '--target=integration_test/simple_test.dart '
+      '-d chrome',
       relativePwd: config.package);
 }
