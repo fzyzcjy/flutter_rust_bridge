@@ -433,6 +433,9 @@ jobs:
           cache: true
           flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
 
       # execute
       - run: ./frb_internal test-flutter-web --package ${{ matrix.package }}
