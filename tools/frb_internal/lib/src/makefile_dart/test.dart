@@ -1,6 +1,7 @@
 import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:meta/meta.dart';
 
@@ -148,5 +149,9 @@ Future<void> testFlutterNative(TestFlutterConfig config) async {
 }
 
 Future<void> testFlutterWeb(TestDartConfig config) async {
-  TODO;
+  await executeFrbCodegen(cmd: 'build-web', relativePwd: config.package);
+
+  await exec(
+      'flutter test integration_test/simple_test.dart --verbose --device-id chrome',
+      relativePwd: config.package);
 }

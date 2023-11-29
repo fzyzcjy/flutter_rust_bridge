@@ -135,7 +135,7 @@ Future<void> generateRunFrbCodegenCommandGenerate(
     GeneratePackageConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
     await runDartPubGetIfNotRunYet(config.package);
-    await _executeFrbCodegen(
+    await executeFrbCodegen(
       relativePwd: config.package,
       cmd: 'generate',
     );
@@ -163,13 +163,13 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
 
     switch (config.package) {
       case 'frb_example/flutter_via_create':
-        await _executeFrbCodegen(
+        await executeFrbCodegen(
             relativePwd: 'frb_example', cmd: 'create flutter_via_create');
 
       case 'frb_example/flutter_via_integrate':
         await exec('flutter create flutter_via_integrate',
             relativePwd: 'frb_example');
-        await _executeFrbCodegen(relativePwd: config.package, cmd: 'integrate');
+        await executeFrbCodegen(relativePwd: config.package, cmd: 'integrate');
 
       default:
         throw Exception('Do not know how to handle package ${config.package}');
@@ -183,7 +183,7 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
   });
 }
 
-Future<void> _executeFrbCodegen({
+Future<void> executeFrbCodegen({
   required String relativePwd,
   required String cmd,
 }) async {
