@@ -1,6 +1,4 @@
-use flutter_rust_bridge::frb;
-
-#[frb(sync)]
-pub fn add(left: i32, right: i32) -> i32 {
-    left + right
+#[flutter_rust_bridge::frb(sync)] // Synchronous mode for simplicity of the demo
+pub fn greet(name: String) -> String {
+    format!("Hello, {name}!")
 }
