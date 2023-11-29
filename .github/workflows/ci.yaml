@@ -190,18 +190,16 @@ jobs:
       - run: ./frb_internal bench-dart-native
 
       # store
-      - uses: actions/checkout@v4
-        with:
-          repository: 'fzyzcjy/flutter_rust_bridge_blob'
-          path: 'flutter_rust_bridge_blob'
-      - run: ls -al && ls -al flutter_rust_bridge_blob # TODO only for debug
       - uses: benchmark-action/github-action-benchmark@v1
         with:
+          name: Flutter Rust Bridge Benchmark
           tool: customSmallerIsBetter
           output-file-path: frb_example/pure_dart/build/simple_benchmark/benchmark_result.json
-          external-data-json-path: ./flutter_rust_bridge_blob/benchmark_result.json
-          fail-on-alert: false
-      - run: cd flutter_rust_bridge_blob && git push
+          auto-push: false
+      - name: Push benchmark result
+        # Warn: https://github.com/benchmark-action/github-action-benchmark?tab=readme-ov-file#run-only-on-your-branches
+        if: github.event_name != 'pull_request'
+        run: git push 'https://fzyzcjy:${{ secrets.GITHUB_TOKEN }}@github.com/you/repo-name.git' gh-pages:gh-pages
 
   # ----------------------------------- test -----------------------------------
 
