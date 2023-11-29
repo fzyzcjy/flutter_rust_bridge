@@ -155,6 +155,34 @@ jobs:
       # execute
       - run: ./frb_internal generate-internal --set-exit-if-changed
 
+  # ----------------------------------- bench -----------------------------------
+
+  bench_dart_native:
+    name: 'Bench :: Dart :: Native'
+    runs-on: ${{ matrix.image }}
+    strategy:
+      fail-fast: false
+      matrix:
+        image:
+          - windows-2019
+          - macos-11
+          - ubuntu-20.04
+
+    steps:
+      # setup
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+          components: rustfmt
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+          architecture: x64
+
+      # execute
+      - run: ./frb_internal bench-dart-native
+
   # ----------------------------------- test -----------------------------------
 
   test_rust:
