@@ -391,6 +391,7 @@ jobs:
     runs-on: windows-2019
 
     steps:
+      # setup
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
         with:
@@ -415,6 +416,7 @@ jobs:
           cmake --install build --config Release
           echo "C:\Program Files (x86)\Corrosion" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
 
+      # execute
       - name: Run Flutter integration tests explicitly requiring Corrosion
         working-directory: ./frb_example/with_flutter
         run: |
@@ -426,6 +428,7 @@ jobs:
     runs-on: macos-11
 
     steps:
+      # setup
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
         with:
@@ -433,13 +436,15 @@ jobs:
           flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
 
-      - run: just flutter_example_with_flutter_integration_test
+      # execute
+      - run: ./frb_internal test-dart-macos --package ${{ matrix.package }}
 
   test_flutter_linux:
     name: 'Test :: Flutter :: Linux'
     runs-on: ubuntu-latest
 
     steps:
+      # setup
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
         with:
@@ -451,7 +456,8 @@ jobs:
 
       - run: just install_prerequisite_for_integration_test_linux
 
-      - run: just flutter_example_with_flutter_integration_test
+      # execute
+      - run: ./frb_internal test-dart-linux --package ${{ matrix.package }}
 
   test_flutter_web:
     name: 'Test :: Flutter :: Web'
