@@ -17,7 +17,7 @@ List<Command<void>> createCommands() {
     SimpleConfigCommand('test-dart-valgrind', testDartValgrind,
         _$populateTestDartConfigParser, _$parseTestDartConfigResult),
     SimpleConfigCommand('test-flutter', testFlutter,
-        _$populateTestDartConfigParser, _$parseTestDartConfigResult),
+        _$populateTestFlutterConfigParser, _$parseTestFlutterConfigResult),
   ];
 }
 
