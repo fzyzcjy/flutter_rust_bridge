@@ -47,17 +47,13 @@ ExternalLibrary loadExternalLibraryRaw({
     return ExternalLibrary.open('lib$stem.so');
   }
 
-  if (Platform.isIOS) {
-    return ExternalLibrary.open('$stem.framework/$stem');
-  }
-
   if (Platform.isWindows) {
     final name = '$stem.dll';
     return tryAssumingNonPackaged(
         name, (debugInfo) => ExternalLibrary.open(name, debugInfo: debugInfo));
   }
 
-  if (Platform.isMacOS) {
+  if (Platform.isIOS || Platform.isMacOS) {
     return tryAssumingNonPackaged(
       'lib$stem.dylib',
       (debugInfo) => _tryOpen(
