@@ -6,10 +6,12 @@ import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 class GeneralizedFrbRustBinding {
   final MultiPackageCBinding _binding;
+  final String _externalLibraryDebugInfo;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   GeneralizedFrbRustBinding(ExternalLibrary externalLibrary)
-      : _binding = MultiPackageCBinding(externalLibrary.ffiDynamicLibrary);
+      : _binding = MultiPackageCBinding(externalLibrary.ffiDynamicLibrary),
+        _externalLibraryDebugInfo = externalLibrary.debugInfo;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void storeDartPostCObject() {
@@ -37,15 +39,17 @@ class GeneralizedFrbRustBinding {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void freeWireSyncReturn(WireSyncReturn val) =>
       _binding.free_wire_sync_return(val);
-}
 
-void _userFriendlyDynamicLibraryErrorReporting(ArgumentError e, StackTrace s) {
-  final message = e.message;
-  if (message is String && message.contains('Failed to lookup symbol')) {
-    throw ArgumentError(
-      '$e\n'
-      'This is often because the Rust library is not loaded correctly.\n'
-      'Original stack trace: $s',
-    );
+  void _userFriendlyDynamicLibraryErrorReporting(
+      ArgumentError e, StackTrace s) {
+    final message = e.message;
+    if (message is String && message.contains('Failed to lookup symbol')) {
+      throw ArgumentError(
+        '$e\n'
+        'This is often because the Rust library is not loaded correctly.\n'
+        'Debug information of the external library: $_externalLibraryDebugInfo\n'
+        'Original stack trace: $s',
+      );
+    }
   }
 }
