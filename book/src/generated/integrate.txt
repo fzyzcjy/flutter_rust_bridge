@@ -1,6 +1,7 @@
 Integrate Rust into existing Flutter project
 
-Usage: flutter_rust_bridge_codegen integrate
+Usage: flutter_rust_bridge_codegen integrate [OPTIONS]
 
 Options:
-  -h, --help  Print help
+      --no-enable-integration-test  Generate code related to integration test
+  -h, --help                        Print help
