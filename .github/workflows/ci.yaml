@@ -399,14 +399,6 @@ jobs:
           flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
 
-      - name: Install LLVM and Clang
-        uses: KyleMayes/install-llvm-action@v1
-        with:
-          version: "10.0"
-          directory: ${{ runner.temp }}/llvm
-
-      - run: just flutter_example_with_flutter_integration_test
-
       # execute
       - run: ./frb_internal test-flutter --package ${{ matrix.package }}
 
