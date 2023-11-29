@@ -1,4 +1,5 @@
 import 'package:args/command_runner.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 
 List<Command<void>> createCommands() {
@@ -8,5 +9,10 @@ List<Command<void>> createCommands() {
 }
 
 Future<void> benchDartNative() async {
-  TODO;
+  const package = 'frb_example/pure_dart';
+  await exec(
+      'dart --enable-experiment=native-assets build benchmark/simple_benchmark.dart -o build/simple_benchmark/',
+      relativePwd: package);
+  await exec('build/simple_benchmark/simple_benchmark.exe',
+      relativePwd: package);
 }
