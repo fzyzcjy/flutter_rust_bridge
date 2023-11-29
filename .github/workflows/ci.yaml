@@ -350,7 +350,7 @@ jobs:
             emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
             arch: x86_64
             profile: ${{ matrix.device }}
-            script: ./frb_internal test-dart-android --package ${{ matrix.package }}
+            script: ./frb_internal test-flutter --package ${{ matrix.package }}
 
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   test_flutter_ios:
@@ -384,7 +384,7 @@ jobs:
           architecture: x64
 
       # execute
-      - run: ./frb_internal test-dart-ios --package ${{ matrix.package }}
+      - run: ./frb_internal test-flutter --package ${{ matrix.package }}
 
   test_flutter_windows:
     name: 'Test :: Flutter :: Windows'
@@ -423,6 +423,8 @@ jobs:
           mv -Force windows/rust.require.cmake windows/rust.cmake
           just flutter_example_with_flutter_integration_test
 
+      - run: ./frb_internal test-flutter --package ${{ matrix.package }}
+
   test_flutter_macos:
     name: 'Test :: Flutter :: MacOS'
     runs-on: macos-11
@@ -437,7 +439,7 @@ jobs:
           architecture: x64
 
       # execute
-      - run: ./frb_internal test-dart-macos --package ${{ matrix.package }}
+      - run: ./frb_internal test-flutter --package ${{ matrix.package }}
 
   test_flutter_linux:
     name: 'Test :: Flutter :: Linux'
@@ -457,7 +459,7 @@ jobs:
       - run: just install_prerequisite_for_integration_test_linux
 
       # execute
-      - run: ./frb_internal test-dart-linux --package ${{ matrix.package }}
+      - run: ./frb_internal test-flutter --package ${{ matrix.package }}
 
   test_flutter_web:
     name: 'Test :: Flutter :: Web'
