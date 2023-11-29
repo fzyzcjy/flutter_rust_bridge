@@ -407,22 +407,7 @@ jobs:
 
       - run: just flutter_example_with_flutter_integration_test
 
-      - name: Install Corrosion
-        run: |
-          cd ..
-          git clone --branch v0.4.4 --depth 1 https://github.com/corrosion-rs/corrosion.git
-          cmake -Scorrosion -Bbuild -DCMAKE_BUILD_TYPE=Release
-          cmake --build build --config Release
-          cmake --install build --config Release
-          echo "C:\Program Files (x86)\Corrosion" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-
       # execute
-      - name: Run Flutter integration tests explicitly requiring Corrosion
-        working-directory: ./frb_example/with_flutter
-        run: |
-          mv -Force windows/rust.require.cmake windows/rust.cmake
-          just flutter_example_with_flutter_integration_test
-
       - run: ./frb_internal test-flutter --package ${{ matrix.package }}
 
   test_flutter_macos:
