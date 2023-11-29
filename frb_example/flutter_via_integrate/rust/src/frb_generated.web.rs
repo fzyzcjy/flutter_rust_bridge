@@ -23,6 +23,6 @@ impl Wire2Api<i32> for flutter_rust_bridge::wasm_bindgen::JsValue {
 }
 
 #[wasm_bindgen]
-pub fn wire_add(port_: flutter_rust_bridge::MessagePort, left: i32, right: i32) {
-    wire_add_impl(port_, left, right)
+pub fn wire_add(left: i32, right: i32) -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_add_impl(left, right)
 }

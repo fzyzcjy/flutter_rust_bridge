@@ -3,6 +3,8 @@
 #include <stdlib.h>
 typedef struct DartCObject *WireSyncReturn;
 typedef struct _Dart_Handle* Dart_Handle;
+
+WireSyncReturn wire_add(int32_t left, int32_t right);
 static int64_t dummy_method_to_enforce_bundling(void) {
     int64_t dummy_var = 0;
     dummy_var ^= ((int64_t) (void*) drop_dart_object);

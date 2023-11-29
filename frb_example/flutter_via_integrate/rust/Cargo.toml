@@ -5,3 +5,4 @@ edition = "2018"
 
 [lib]
 crate-type = ["cdylib", "staticlib"]
+flutter_rust_bridge = { path = "../../../frb_rust" }

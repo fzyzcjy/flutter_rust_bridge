@@ -43,6 +43,22 @@ class RustLibWire implements BaseWire {
           lookup)
       : _lookup = lookup;
 
+  WireSyncReturn wire_add(
+    int left,
+    int right,
+  ) {
+    return _wire_add(
+      left,
+      right,
+    );
+  }
+
+  late final _wire_addPtr = _lookup<
+          ffi.NativeFunction<WireSyncReturn Function(ffi.Int32, ffi.Int32)>>(
+      'wire_add');
+  late final _wire_add =
+      _wire_addPtr.asFunction<WireSyncReturn Function(int, int)>();
+
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();
   }

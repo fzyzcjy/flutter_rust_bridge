@@ -45,7 +45,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<int> add({required int left, required int right, dynamic hint});
+  int add({required int left, required int right, dynamic hint});
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -57,11 +57,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<int> add({required int left, required int right, dynamic hint}) {
+  int add({required int left, required int right, dynamic hint}) {
     var arg0 = api2wire_i_32(left);
     var arg1 = api2wire_i_32(right);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_add(port_, arg0, arg1),
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_add(arg0, arg1),
       parseSuccessData: _wire2api_i_32,
       parseErrorData: null,
       constMeta: kAddConstMeta,

@@ -22,8 +22,9 @@ class RustLibWire extends BaseWire {
   // : super(WasmModule.cast<RustLibWasmModule>(lib.wasmModule));
   RustLibWire.fromExternalLibrary(ExternalLibrary lib) {}
 
-  void wire_add(NativePortType port_, int left, int right) =>
-      wasmModule.wire_add(port_, left, right);
+  dynamic /* flutter_rust_bridge::support::WireSyncReturn */ wire_add(
+          int left, int right) =>
+      wasmModule.wire_add(left, right);
 }
 
 @JS('wasm_bindgen')
@@ -36,5 +37,6 @@ class RustLibWasmModule implements WasmModule {
 
   external RustLibWasmModule bind(dynamic thisArg, String moduleName);
 
-  external void wire_add(NativePortType port_, int left, int right);
+  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */ wire_add(
+      int left, int right);
 }

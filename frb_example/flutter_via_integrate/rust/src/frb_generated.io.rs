@@ -17,6 +17,6 @@ impl<T> NewWithNullPtr for *mut T {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_add(port_: i64, left: i32, right: i32) {
-    wire_add_impl(port_, left, right)
+pub extern "C" fn wire_add(left: i32, right: i32) -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_add_impl(left, right)
 }

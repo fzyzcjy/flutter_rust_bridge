@@ -24,20 +24,19 @@ use flutter_rust_bridge::Handler;
 // Section: wire_funcs
 
 fn wire_add_impl(
-    port_: flutter_rust_bridge::MessagePort,
     left: impl Wire2Api<i32> + core::panic::UnwindSafe,
     right: impl Wire2Api<i32> + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
+) -> flutter_rust_bridge::support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         flutter_rust_bridge::WrapInfo {
             debug_name: "add",
-            port: Some(port_),
-            mode: flutter_rust_bridge::FfiCallMode::Normal,
+            port: None,
+            mode: flutter_rust_bridge::FfiCallMode::Sync,
         },
         move || {
             let api_left = left.wire2api();
             let api_right = right.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(crate::api::simple::add(api_left, api_right))
+            Result::<_, ()>::Ok(crate::api::simple::add(api_left, api_right))
         },
     )
 }
