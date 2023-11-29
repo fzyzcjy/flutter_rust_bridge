@@ -55,6 +55,7 @@ class Environment {
     if (res == null) {
       throw Exception("Missing environment variable $key");
     }
+    print('hi _getEnv $key $res'); // TODO temp
     return res;
   }
 
