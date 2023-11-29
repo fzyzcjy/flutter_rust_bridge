@@ -341,3 +341,63 @@ jobs:
             arch: x86_64
             profile: ${{ matrix.device }}
             script: ./frb_internal test-dart-web --package ${{ matrix.package }}
+
+  # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
+  test_dart_ios:
+    name: Flutter integration test on iOS
+    strategy:
+      matrix:
+        device:
+          - "iPad (9th generation) Simulator (16.2)"
+          - "iPhone 12 Pro Max Simulator (16.2)"
+      fail-fast: false
+    runs-on: macos-latest
+
+    steps:
+      - name: "List all simulators"
+        run: "xcrun xctrace list devices"
+      - name: "Start Simulator"
+        run: |
+          # the extra "(" is to avoid matching things like "iPhone 12 Pro Max Simulator (16.2) + Apple Watch Series 5 - 44mm (8.0)"
+          UDID=$(xcrun xctrace list devices | grep '${{ matrix.device }} (' | awk '{print $NF}' | tr -d '()')
+          echo UDID=$UDID
+          xcrun simctl boot "${UDID:?No Simulator with this name found}"
+
+      - uses: actions/checkout@v4
+        id: checkout
+      - uses: subosito/flutter-action@v2
+        with:
+          cache: true
+          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+          architecture: x64
+      - id: cache-deps
+        uses: ./.github/actions/setup
+        with:
+          cache-key: "$${{ steps.rust-toolchain.outputs.cachekey }}"
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+
+      - name: Add Rust targets
+
+        run: rustup target add aarch64-apple-ios x86_64-apple-ios
+
+      - name: Install `cargo-lipo`
+        run: just install_lipo
+
+      - name: Install Flutter dependencies
+        working-directory: ./frb_example/with_flutter
+        run: flutter pub get
+
+      - name: Build Rust lib
+        working-directory: ./frb_example/with_flutter/rust
+        # note the "-i '' -e" is a bug of sed specific to MacOS https://stackoverflow.com/questions/19456518
+        run: |
+          sed -i '' -e 's/"cdylib"/"staticlib"/g' Cargo.toml
+          cargo lipo
+          cp ../../../target/universal/debug/libflutter_rust_bridge_example.a ../ios/Runner
+
+      - name: Run Flutter integration tests
+        working-directory: ./frb_example/with_flutter
+        run: flutter test integration_test/main.dart --verbose
+
