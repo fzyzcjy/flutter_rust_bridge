@@ -70,19 +70,13 @@ Future<void> executeBuildWeb(BuildWebArgs args) async {
   // }
 }
 
-Future<void> _sanityChecks(BuildWebArgs args) async {
-  final which = Platform.isWindows ? 'where.exe' : 'which';
+final _commandWhich = Platform.isWindows ? 'where.exe' : 'which';
 
-  await runCommand(which, ['wasm-pack']).catchError((_) {
-    bail(
-      'wasm-pack is required, but not found in the path.\n'
-      'Please install wasm-pack by following the instructions at https://rustwasm.github.io/wasm-pack/\n'
-      'or running `cargo install wasm-pack`.',
-    );
-  });
+Future<void> _sanityChecks(BuildWebArgs args) async {
+  await _ensureWasmPackInstalled();
 
   if (args.enableWasmBindgen) {
-    await runCommand(which, ['wasm-bindgen']).catchError((_) {
+    await runCommand(_commandWhich, ['wasm-bindgen']).catchError((_) {
       bail(
         'wasm-bindgen flags are enabled, but wasm-bindgen could not be found in the path.\n'
         'Please install wasm-bindgen using `cargo install -f wasm-bindgen-cli`.',
@@ -97,6 +91,16 @@ Future<void> _sanityChecks(BuildWebArgs args) async {
       'Please specify the crate directory using "--crate <CRATE>".',
     );
   }
+}
+
+Future<void> _ensureWasmPackInstalled() async {
+  await runCommand(_commandWhich, ['wasm-pack']).catchError((_) {
+    bail(
+      'wasm-pack is required, but not found in the path.\n'
+      'Please install wasm-pack by following the instructions at https://rustwasm.github.io/wasm-pack/\n'
+      'or running `cargo install wasm-pack`.',
+    );
+  });
 }
 
 Future<String> _getRustCreateName({required String rustCrateDir}) async {
