@@ -7,8 +7,7 @@ use itertools::Itertools;
 use log::{debug, warn};
 use serde_yaml::Value;
 use std::ffi::OsStr;
-use std::path::{Path, PathBuf};
-use std::string::FromUtf8Error;
+use std::path::Path;
 use std::{env, fs};
 
 static INTEGRATION_TEMPLATE_DIR: Dir<'_> =
@@ -71,7 +70,7 @@ fn modify_file(
         }
     }
 
-    Some(src.to_owned())
+    Some(src)
 }
 
 fn replace_file_content(raw: &[u8], package_name: &str) -> Vec<u8> {
