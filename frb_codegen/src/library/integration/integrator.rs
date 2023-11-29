@@ -19,23 +19,27 @@ pub fn integrate() -> Result<()> {
     extract_dir_and_modify(
         &INTEGRATION_TEMPLATE_DIR,
         &dart_root,
-        &|path, raw| {
-            if path.iter().contains("cargokit".into()) {
-                if let Some(comments) = compute_cargokit_comments(path) {
-                    return [comments.as_bytes(), raw].concat();
-                }
-            }
-            raw.to_owned()
-        },
-        &|path| {
-            if path.iter().contains("cargokit".into()) {
-                return !vec![".git", ".github", "docs", "test"].contains(&file_name(path));
-            }
-            true
-        },
+        &modify_file,
+        &filter_file,
     )?;
 
     Ok(())
+}
+
+fn modify_file(path: &Path, raw: &[u8]) -> Vec<u8> {
+    if path.iter().contains("cargokit".into()) {
+        if let Some(comments) = compute_cargokit_comments(path) {
+            return [comments.as_bytes(), raw].concat();
+        }
+    }
+    raw.to_owned()
+}
+
+fn filter_file(path: &Path) -> bool {
+    if path.iter().contains("cargokit".into()) {
+        return !vec![".git", ".github", "docs", "test"].contains(&file_name(path));
+    }
+    true
 }
 
 fn compute_cargokit_comments(path: &Path) -> Option<String> {
