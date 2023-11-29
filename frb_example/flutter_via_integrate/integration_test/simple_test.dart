@@ -5,7 +5,7 @@ import 'package:integration_test/integration_test.dart';
 
 Future<void> main() async {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
-  await RustLib.init();
+  setUpAll(() async => await RustLib.init());
   testWidgets('Can call rust function', (WidgetTester tester) async {
     await tester.pumpWidget(MyApp());
     expect(find.textContaining('Result: `Hello, Tom!`'), findsOneWidget);
