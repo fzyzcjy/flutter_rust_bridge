@@ -59,7 +59,7 @@ Future<void> testRustPackage(String package) async {
 }
 
 Future<void> testDartNative(TestDartConfig config) async {
-  await runDartPubGetIfNotRunYet(config.package);
+  await runPubGetIfNotRunYet(config.package);
 
   final dartMode = kDartModeOfPackage[config.package]!;
 
@@ -75,7 +75,7 @@ Future<void> testDartNative(TestDartConfig config) async {
 }
 
 Future<void> testDartWeb(TestDartConfig config) async {
-  await runDartPubGetIfNotRunYet(config.package);
+  await runPubGetIfNotRunYet(config.package);
 
   final package = config.package;
   if (package == 'frb_dart') {
@@ -90,7 +90,7 @@ Future<void> testDartWeb(TestDartConfig config) async {
 /// ref https://github.com/dart-lang/sdk/blob/master/runtime/tools/valgrind.py
 Future<void> testDartValgrind(TestDartConfig config) async {
   await exec('sudo apt install -y valgrind');
-  await runDartPubGetIfNotRunYet(config.package);
+  await runPubGetIfNotRunYet(config.package);
 
   await exec(
       'dart --enable-experiment=native-assets build '
@@ -143,7 +143,7 @@ void checkValgrindOutput(String output) {
 }
 
 Future<void> testFlutterNative(TestFlutterConfig config) async {
-  await runDartPubGetIfNotRunYet(config.package);
+  await runPubGetIfNotRunYet(config.package);
 
   await exec(
       'flutter test integration_test/simple_test.dart --verbose ${config.flutterTestArgs ?? ""}',
@@ -151,7 +151,7 @@ Future<void> testFlutterNative(TestFlutterConfig config) async {
 }
 
 Future<void> testFlutterWeb(TestDartConfig config) async {
-  await runDartPubGetIfNotRunYet(config.package);
+  await runPubGetIfNotRunYet(config.package);
 
   await executeFrbCodegen(cmd: 'build-web', relativePwd: config.package);
 

@@ -98,7 +98,7 @@ Future<void> generateInternalDartSource(GenerateConfig config) async {
 Future<void> generateInternalRust(GenerateConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
     for (final package in kDartPackages) {
-      await runDartPubGetIfNotRunYet(package);
+      await runPubGetIfNotRunYet(package);
     }
 
     await exec('cargo run -- internal-generate', relativePwd: 'frb_codegen');
@@ -124,7 +124,7 @@ Future<void> generateInternalBookHelp(GenerateConfig config) async {
 Future<void> generateInternalBuildRunner(GenerateConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
     for (final package in kDartNonExamplePackages) {
-      await runDartPubGetIfNotRunYet(package);
+      await runPubGetIfNotRunYet(package);
       await exec('dart run build_runner build --delete-conflicting-outputs',
           relativePwd: package);
     }
@@ -134,7 +134,7 @@ Future<void> generateInternalBuildRunner(GenerateConfig config) async {
 Future<void> generateRunFrbCodegenCommandGenerate(
     GeneratePackageConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
-    await runDartPubGetIfNotRunYet(config.package);
+    await runPubGetIfNotRunYet(config.package);
     await executeFrbCodegen(
       relativePwd: config.package,
       cmd: 'generate',

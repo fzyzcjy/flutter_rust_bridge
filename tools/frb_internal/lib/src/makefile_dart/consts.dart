@@ -36,6 +36,8 @@ const kDartModeOfPackage = {
   'tools/frb_internal': DartMode.dart,
   'frb_example/dart_minimal': DartMode.dart,
   'frb_example/pure_dart': DartMode.dart,
+  'frb_example/flutter_via_create': DartMode.flutter,
+  'frb_example/flutter_via_integrate': DartMode.flutter,
   // TODO `with_flutter` example
 };
 
@@ -50,9 +52,12 @@ final exec = SimpleExecutor(
 /// Normally, `dart pub get` will be run automatically when executing `dart test` and so on.
 /// But there seems to be a bug currently.
 /// Temporary workaround before https://github.com/dart-lang/sdk/issues/54160 is fixed.
-Future<void> runDartPubGetIfNotRunYet(String package) async {
+Future<void> runPubGetIfNotRunYet(String package) async {
   if (!await Directory('${exec.pwd}/$package/.dart_tool').exists()) {
-    await exec('dart --enable-experiment=native-assets pub get',
-        relativePwd: package);
+    final cmd = switch (kDartModeOfPackage[package]!) {
+      DartMode.dart => 'dart --enable-experiment=native-assets',
+      DartMode.flutter => 'flutter',
+    };
+    await exec('$cmd pub get', relativePwd: package);
   }
 }
