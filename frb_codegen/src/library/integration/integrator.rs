@@ -132,7 +132,11 @@ fn pub_add_dependencies(enable_integration_test: bool) -> Result<()> {
     flutter_pub_add(&["flutter_rust_bridge".into(), "--path=../../frb_dart".into()])?;
     flutter_pub_add(&["ffigen:^8.0.0".into(), "--dev".into()])?;
     if enable_integration_test {
-        flutter_pub_add(&["integration_test".into(), "--sdk=flutter".into()])?;
+        flutter_pub_add(&[
+            "integration_test".into(),
+            "--dev".into(),
+            "--sdk=flutter".into(),
+        ])?;
     }
 
     Ok(())
