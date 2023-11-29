@@ -54,6 +54,18 @@ message(HI_1 "$<CONFIG>" "${OUTPUT_LIB}")
     endif()
 
     # Using generators in custom command is only supported in CMake 3.20+
+    if (CMAKE_CONFIGURATION_TYPES AND ${CMAKE_VERSION} VERSION_LESS "3.20.0")
+        foreach(CONFIG IN LISTS CMAKE_CONFIGURATION_TYPES)
+            add_custom_command(
+                OUTPUT
+                "${CMAKE_CURRENT_BINARY_DIR}/${CONFIG}/${CARGOKIT_LIB_FULL_NAME}"
+                "${CMAKE_CURRENT_BINARY_DIR}/_phony_"
+                COMMAND ${CMAKE_COMMAND} -E env ${CARGOKIT_ENV}
+                "${cargokit_cmake_root}/run_build_tool${SCRIPT_EXTENSION}" build-cmake
+                VERBATIM
+            )
+        endforeach()
+    else()
         add_custom_command(
             OUTPUT
             ${OUTPUT_LIB}
@@ -62,6 +74,7 @@ message(HI_1 "$<CONFIG>" "${OUTPUT_LIB}")
             "${cargokit_cmake_root}/run_build_tool${SCRIPT_EXTENSION}" build-cmake
             VERBATIM
         )
+    endif()
 
     set_source_files_properties("${CMAKE_CURRENT_BINARY_DIR}/_phony_" PROPERTIES SYMBOLIC TRUE)
 
