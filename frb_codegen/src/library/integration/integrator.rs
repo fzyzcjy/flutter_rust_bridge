@@ -29,10 +29,9 @@ pub fn integrate() -> Result<()> {
         },
         &|path| {
             if path.iter().contains("cargokit".into()) {
-                !vec![".git", ".github", "docs", "test"].contains(&file_name(path))
-            } else {
-                true
+                return !vec![".git", ".github", "docs", "test"].contains(&file_name(path));
             }
+            true
         },
     )?;
 
