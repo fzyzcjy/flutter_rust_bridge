@@ -143,12 +143,16 @@ void checkValgrindOutput(String output) {
 }
 
 Future<void> testFlutterNative(TestFlutterConfig config) async {
+  await runDartPubGetIfNotRunYet(config.package);
+
   await exec(
       'flutter test integration_test/simple_test.dart --verbose ${config.flutterTestArgs ?? ""}',
       relativePwd: config.package);
 }
 
 Future<void> testFlutterWeb(TestDartConfig config) async {
+  await runDartPubGetIfNotRunYet(config.package);
+
   await executeFrbCodegen(cmd: 'build-web', relativePwd: config.package);
 
   // TODO `chromedriver --port=4444`
