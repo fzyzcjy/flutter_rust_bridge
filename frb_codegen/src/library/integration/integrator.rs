@@ -32,6 +32,13 @@ fn modify_file(path: &Path, raw: &[u8]) -> Vec<u8> {
             return [comments.as_bytes(), raw].concat();
         }
     }
+
+    if path.iter().contains("main.dart".into()) {
+        let existing_content = fs::read_to_string(path).ok();
+        let commented_existing_content = TODO;
+        return TODO;
+    }
+
     raw.to_owned()
 }
 
@@ -39,6 +46,7 @@ fn filter_file(path: &Path) -> bool {
     if path.iter().contains("cargokit".into()) {
         return !vec![".git", ".github", "docs", "test"].contains(&file_name(path));
     }
+
     true
 }
 
