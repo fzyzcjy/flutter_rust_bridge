@@ -31,10 +31,13 @@ pub(crate) fn generate(
     dumper.dump_str(ConfigDumpContent::GeneratorText, "wire_c/content.h", &text)?;
 
     Ok(GeneratorWireCOutput {
-        output_texts: PathTexts(vec![PathText::new(
-            config.c_output_path.clone(),
-            text.clone(),
-        )]),
+        output_texts: PathTexts({
+            let mut ans = vec![];
+            if let Some(c_output_path) = &config.c_output_path {
+                ans.push(PathText::new(c_output_path.clone(), text.clone()))
+            }
+            ans
+        }),
         c_file_content: text,
     })
 }

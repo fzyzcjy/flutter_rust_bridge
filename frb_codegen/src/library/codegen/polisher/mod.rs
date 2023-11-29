@@ -4,7 +4,7 @@ use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::commands::format_rust::format_rust;
 use crate::library::commands::dart_build_runner::dart_build_runner;
 use crate::library::commands::format_dart::format_dart;
-use anyhow::bail;
+use anyhow::{bail, Context};
 use itertools::Itertools;
 use log::warn;
 use std::fs;
@@ -93,7 +93,13 @@ fn execute_try_add_mod_to_lib(config: &PolisherInternalConfig) {
 
 fn execute_duplicate_c_output(config: &PolisherInternalConfig) -> anyhow::Result<()> {
     for path in config.duplicated_c_output_path.iter() {
-        fs::copy(&config.c_output_path, path)?;
+        fs::copy(
+            config
+                .c_output_path
+                .as_ref()
+                .context("When having duplicated_c_output_path, should also have c_output_path")?,
+            path,
+        )?;
     }
     Ok(())
 }

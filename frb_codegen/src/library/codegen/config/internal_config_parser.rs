@@ -44,7 +44,7 @@ impl InternalConfig {
 
         let dart_output_class_name_pack = compute_dart_output_class_name_pack(config);
 
-        let c_output_path = base_dir.join(&config.c_output);
+        let c_output_path = config.c_output.as_ref().map(|x| base_dir.join(x));
         let duplicated_c_output_path = config
             .duplicated_c_output
             .clone()

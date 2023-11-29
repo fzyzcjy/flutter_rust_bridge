@@ -23,7 +23,7 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgs) -> 
         base_dir: None,
         rust_input: args.rust_input.context("rust_input is required")?,
         dart_output: args.dart_output.context("dart_output is required")?,
-        c_output: args.c_output.context("c_output is required")?,
+        c_output: args.c_output,
         duplicated_c_output: args.duplicated_c_output,
         rust_crate_dir: args.rust_crate_dir,
         rust_output: args.rust_output,
