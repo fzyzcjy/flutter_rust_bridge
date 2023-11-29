@@ -25,6 +25,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  build_cli_annotations:
+    dependency: transitive
+    description:
+      name: build_cli_annotations
+      sha256: b59d2769769efd6c9ff6d4c4cede0be115a566afc591705c2040b707534b1172
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
   characters:
     dependency: transitive
     description:
@@ -110,6 +118,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.3"
+  flutter_rust_bridge:
+    dependency: "direct main"
+    description:
+      path: "../../frb_dart"
+      relative: true
+    source: path
+    version: "1.82.4"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -123,6 +138,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
+  js:
+    dependency: transitive
+    description:
+      name: js
+      sha256: f2c445dce49627136094980615a031419f7f3eb393237e4ecd97ac15dea343f3
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.6.7"
   lints:
     dependency: transitive
     description:

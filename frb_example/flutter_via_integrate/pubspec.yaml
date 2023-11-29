@@ -39,6 +39,8 @@ dependencies:
   rust_builder:
     path: ./rust_builder
   ffi: ^2.1.0
+  flutter_rust_bridge:
+    path: ../../frb_dart
 
 dev_dependencies:
   flutter_test:
