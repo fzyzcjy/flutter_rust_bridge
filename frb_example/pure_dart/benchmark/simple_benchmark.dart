@@ -11,7 +11,7 @@ void main(List<String> args) {
   ComputePrimeBenchmark(9000000001, emitter: emitter).report();
   ComputePrimeBenchmark(900000000013, emitter: emitter).report();
 
-  final pathOutput = args[1];
+  final pathOutput = args[0];
   print('Write reports to $pathOutput');
   File(pathOutput).writeAsStringSync(jsonEncode(emitter.items));
 }
