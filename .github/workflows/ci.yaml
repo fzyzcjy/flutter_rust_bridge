@@ -331,6 +331,10 @@ jobs:
           cache: true
           flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
+      # Otherwise it fails and Flutter doctor say "You need Java 11 or higher to build your app with this version of Gradle."
+      - uses: actions/setup-java@v1
+        with:
+          java-version: "11.x"
       - name: AVD cache
         uses: actions/cache@v3
         id: avd-cache
