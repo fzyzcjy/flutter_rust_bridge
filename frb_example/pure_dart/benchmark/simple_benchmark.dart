@@ -6,7 +6,7 @@ import 'benchmark_utils.dart';
 
 void main(List<String> args) {
   final [pathOutput, partialName] = args;
-  final emitter = JsonEmitter(prefix: 'PureDart_${partialName}_');
+  final emitter = JsonEmitter(namer: (x) => 'PureDart_${x}_$partialName');
 
   ComputePrimeBenchmark(90000049, emitter: emitter).report();
   ComputePrimeBenchmark(9000000001, emitter: emitter).report();

@@ -9,16 +9,16 @@ abstract class EnhancedBenchmarkBase extends BenchmarkBase {
 }
 
 class JsonEmitter extends ScoreEmitter {
-  final String prefix;
+  final String Function(String) namer;
   final items = <Map<String, Object?>>[];
 
-  JsonEmitter({required this.prefix});
+  JsonEmitter({required this.namer});
 
   @override
   void emit(String testName, double value) {
     const PrintEmitter().emit(testName, value);
     items.add({
-      'name': '$prefix$testName',
+      'name': namer(testName),
       'unit': "Microseconds",
       'value': value,
     });
