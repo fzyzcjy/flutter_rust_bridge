@@ -312,11 +312,6 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: "11.x" # "betterprogramming.pub" says must be java "8"
-
-      # #499, https://github.com/actions/virtual-environments/issues/5595
-      - name: Configure ndk
-        run: just configure_ndk
-
       - name: Build Rust lib
         working-directory: ./frb_example/with_flutter/rust
         # NOTE since run on simulator, need -t to be x86_64. For real devices, of course arm-like ones.
