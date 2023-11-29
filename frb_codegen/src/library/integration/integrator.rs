@@ -128,20 +128,14 @@ const CARGOKIT_PRELUDE: &[&str] = &[
 ];
 
 fn pub_add_dependencies(enable_integration_test: bool) -> Result<()> {
-    let mut deps = vec![
-        r#"rust_builder:{"path":"./rust_builder"}"#.into(),
-        r#"flutter_rust_bridge:{"path":"../../frb_dart"}"#.into(),
-        r#"dev:ffigen:^8.0.0"#.into(),
-    ];
+    flutter_pub_add(&["rust_builder".into(), "--path=rust_builder".into()])?;
+    flutter_pub_add(&["flutter_rust_bridge".into(), "--path=../../frb_dart".into()])?;
+    flutter_pub_add(&["ffigen:^8.0.0".into(), "--dev".into()])?;
     if enable_integration_test {
-        deps.push(r#"dev:integration_test:{"sdk":"flutter"}"#.into());
+        flutter_pub_add(&["integration_test".into(), "--sdk=flutter".into()])?;
     }
 
-    if cfg!(windows) {
-        deps = deps.into_iter().map(|x| format!("'{x}'")).collect_vec();
-    }
-
-    flutter_pub_add(&deps)
+    Ok(())
 }
 
 fn get_package_name(dart_root: &Path) -> Result<String> {
