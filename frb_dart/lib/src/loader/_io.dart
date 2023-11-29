@@ -59,9 +59,14 @@ ExternalLibrary loadExternalLibraryRaw({
 
   if (Platform.isMacOS) {
     return tryAssumingNonPackaged(
-        'lib$stem.dylib',
-        (debugInfo) => ExternalLibrary.open('$stem.framework/$stem',
-            debugInfo: debugInfo));
+      'lib$stem.dylib',
+      (debugInfo) => _tryOpen(
+        'rust_builder.framework/rust_builder',
+        debugInfo,
+        (debugInfo) =>
+            ExternalLibrary.open('$stem.framework/$stem', debugInfo: debugInfo),
+      ),
+    );
   }
 
   if (Platform.isLinux) {
@@ -73,4 +78,13 @@ ExternalLibrary loadExternalLibraryRaw({
   // Feel free to PR to add support for more platforms! (e.g. I do not have a Fuchsia device, so cannot test that)
   throw Exception(
       'loadExternalLibrary failed: Unknown platform=${Platform.operatingSystem}');
+}
+
+ExternalLibrary _tryOpen(String name, String debugInfo,
+    ExternalLibrary Function(String debugInfo) fallback) {
+  try {
+    return ExternalLibrary.open(name, debugInfo: debugInfo);
+  } catch (e) {
+    return fallback('$debugInfo (after trying $name but has error $e)');
+  }
 }
