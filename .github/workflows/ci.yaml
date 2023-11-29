@@ -424,4 +424,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - run: TODO
+      - uses: subosito/flutter-action@v2
+        with:
+          cache: true
+          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+          architecture: x64
+
+      # execute
+      - run: ./frb_internal test-flutter-web --package ${{ matrix.package }}

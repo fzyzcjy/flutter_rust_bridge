@@ -18,6 +18,8 @@ List<Command<void>> createCommands() {
         _$populateTestDartConfigParser, _$parseTestDartConfigResult),
     SimpleConfigCommand('test-flutter-native', testFlutterNative,
         _$populateTestFlutterConfigParser, _$parseTestFlutterConfigResult),
+    SimpleConfigCommand('test-flutter-web', testFlutterWeb,
+        _$populateTestDartConfigParser, _$parseTestDartConfigResult),
   ];
 }
 
@@ -143,4 +145,8 @@ Future<void> testFlutterNative(TestFlutterConfig config) async {
   await exec(
       'flutter test integration_test/simple_test.dart --verbose ${config.flutterTestArgs ?? ""}',
       relativePwd: config.package);
+}
+
+Future<void> testFlutterWeb(TestDartConfig config) async {
+  TODO;
 }
