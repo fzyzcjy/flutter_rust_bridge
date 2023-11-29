@@ -35,17 +35,13 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-
   rust_builder:
-    path: ./rust_builder
+    path: rust_builder
   flutter_rust_bridge:
     path: ../../frb_dart
 
 dev_dependencies:
   flutter_test:
-    sdk: flutter
-  # Only needed if you want to run (standard) Flutter integration tests
-  integration_test:
     sdk: flutter
 
   # The "flutter_lints" package below contains a set of recommended lints to
@@ -55,6 +51,8 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
   ffigen: ^8.0.0
+  integration_test:
+    sdk: flutter
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
