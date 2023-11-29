@@ -58,6 +58,9 @@ ExternalLibrary loadExternalLibraryRaw({
   }
 
   if (Platform.isMacOS) {
+    // TODO temp
+    return ExternalLibrary.open('rust_builder.framework/rust_builder');
+
     return tryAssumingNonPackaged(
         'lib$stem.dylib',
         (debugInfo) => ExternalLibrary.open('$stem.framework/$stem',
