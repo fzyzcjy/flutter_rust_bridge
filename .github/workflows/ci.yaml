@@ -379,7 +379,6 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
-
-      - name: Run Flutter integration tests
-        working-directory: ./frb_example/with_flutter
+      # execute
+      - working-directory: ./frb_example/with_flutter
         run: ./frb_internal test-dart-web --package ${{ matrix.package }}
