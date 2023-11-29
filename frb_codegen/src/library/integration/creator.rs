@@ -20,7 +20,7 @@ pub fn create(name: &str) -> anyhow::Result<()> {
 }
 
 fn remove_unnecessary_files(dart_root: &Path) -> anyhow::Result<()> {
-    fs::remove_file(dart_root.join("widget_test.dart"))?;
+    fs::remove_file(dart_root.join("test").join("widget_test.dart"))?;
     fs::remove_file(dart_root.join("lib").join("main.dart"))?;
     Ok(())
 }
