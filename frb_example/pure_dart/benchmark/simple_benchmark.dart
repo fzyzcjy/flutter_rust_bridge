@@ -12,8 +12,9 @@ void main(List<String> args) {
   ComputePrimeBenchmark(9000000001, emitter: emitter).report();
   ComputePrimeBenchmark(900000000013, emitter: emitter).report();
 
-  print('Write reports to $pathOutput');
-  File(pathOutput).writeAsStringSync(jsonEncode(emitter.items));
+  final output = jsonEncode(emitter.items);
+  print('Write reports to $pathOutput with output=$output');
+  File(pathOutput).writeAsStringSync(output);
 }
 
 // For a list of primes: http://compoasso.free.fr/primelistweb/page/prime/liste_online_en.php
