@@ -5,13 +5,13 @@ import 'dart:math';
 import 'benchmark_utils.dart';
 
 void main(List<String> args) {
-  final emitter = JsonEmitter();
+  final [pathOutput, partialName] = args;
+  final emitter = JsonEmitter(prefix: 'PureDart_${partialName}_');
 
   ComputePrimeBenchmark(90000049, emitter: emitter).report();
   ComputePrimeBenchmark(9000000001, emitter: emitter).report();
   ComputePrimeBenchmark(900000000013, emitter: emitter).report();
 
-  final pathOutput = args[0];
   print('Write reports to $pathOutput');
   File(pathOutput).writeAsStringSync(jsonEncode(emitter.items));
 }
