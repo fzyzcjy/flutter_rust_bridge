@@ -309,9 +309,6 @@ jobs:
           cache: true
           flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
-      - uses: dtolnay/rust-toolchain@stable
-        with:
-          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
       - uses: actions/setup-java@v1
         with:
           java-version: "11.x" # "betterprogramming.pub" says must be java "8"
@@ -325,12 +322,6 @@ jobs:
         with:
           cache-key: "${{ steps.rust-toolchain.outputs.cachekey }}"
           cache-platform: "${{ matrix.device }}"
-
-      - name: Add Rust targets
-        run: rustup target add x86_64-linux-android
-
-      - name: Install `cargo-ndk`
-        run: just install_ndk
 
       - name: Install Flutter dependencies
         working-directory: ./frb_example/with_flutter
