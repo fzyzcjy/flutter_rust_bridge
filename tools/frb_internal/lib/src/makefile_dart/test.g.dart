@@ -37,7 +37,7 @@ TestDartConfig parseTestDartConfig(List<String> args) {
 
 TestFlutterConfig _$parseTestFlutterConfigResult(ArgResults result) =>
     TestFlutterConfig(
-      flutterTestArgs: result['flutter-test-args'] as String,
+      flutterTestArgs: result['flutter-test-args'] as String?,
       package: result['package'] as String,
     );
 

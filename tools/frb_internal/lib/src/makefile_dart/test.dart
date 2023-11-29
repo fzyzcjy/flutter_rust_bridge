@@ -35,11 +35,10 @@ class TestDartConfig {
 
 @CliOptions()
 class TestFlutterConfig {
-  final String flutterTestArgs;
+  final String? flutterTestArgs;
   final String package;
 
-  const TestFlutterConfig(
-      {required this.flutterTestArgs, required this.package});
+  const TestFlutterConfig({this.flutterTestArgs, required this.package});
 }
 
 Future<void> testRust(TestConfig config) async {
@@ -142,6 +141,6 @@ void checkValgrindOutput(String output) {
 
 Future<void> testFlutter(TestFlutterConfig config) async {
   await exec(
-      'flutter test integration_test/simple_test.dart --verbose ${config.flutterTestArgs}',
+      'flutter test integration_test/simple_test.dart --verbose ${config.flutterTestArgs ?? ""}',
       relativePwd: config.package);
 }
