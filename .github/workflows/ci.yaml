@@ -104,6 +104,8 @@ jobs:
   generate_run_frb_codegen_command_integrate:
     name: 'Generate :: Run FRB Codegen :: Command Integrate'
     runs-on: ${{ matrix.image }}
+    env:
+      RUST_LOG: debug
 
     strategy:
       fail-fast: false
