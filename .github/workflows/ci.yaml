@@ -411,7 +411,7 @@ jobs:
           # TODO other packages
         image_and_name_and_platform:
           - {image: windows-2019, name: Windows, platform: windows}
-          - {image: macos-11, name: MacOS, platform: macos}
+          - {image: macos-13, name: MacOS, platform: macos}
           - {image: ubuntu-latest, name: Linux, platform: linux}
 
     steps:
