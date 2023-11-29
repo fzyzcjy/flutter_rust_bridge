@@ -455,7 +455,15 @@ jobs:
           rustup toolchain install nightly
           rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
       - uses: nanasess/setup-chromedriver@v2
-      - run: chromedriver --port=4444 &
+      # ref https://github.com/dewbambs/flutter_github_actions/blob/dev/.github/workflows/e2e_test.yml
+      - run: |-
+          sleep 15
+          export DISPLAY=:99
+          chromedriver --port=4444 --verbose &
+          sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
+
+          sleep 15
+          lsof -i :4444
 
       # execute
       - run: ./frb_internal test-flutter-web --package ${{ matrix.package }}
