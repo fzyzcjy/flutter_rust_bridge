@@ -144,7 +144,8 @@ Future<void> generateRunFrbCodegenCommandGenerate(
 
 Future<void> generateRunFrbCodegenCommandIntegrate(
     GeneratePackageConfig config) async {
-  await _wrapMaybeSetExitIfChanged(config, () async {
+  await _wrapMaybeSetExitIfChanged(config,
+      extraArgs: "':(exclude)*Podfile' ':(exclude)*.xcconfig'", () async {
     final dirPackage = path.join(exec.pwd!, config.package);
 
     // Use temp dir within the repo. If use system-wide temp directory,
@@ -200,16 +201,18 @@ Future<void> _renameDirIfExists(String src, String dst) async {
 }
 
 Future<void> _wrapMaybeSetExitIfChanged(
-    GenerateConfig config, Future<void> Function() inner) async {
+    GenerateConfig config, Future<void> Function() inner,
+    {String? extraArgs}) async {
   // Before actually executing anything, check whether git repository is already dirty
-  await _maybeSetExitIfChanged(config);
+  await _maybeSetExitIfChanged(config, extraArgs: extraArgs);
   await inner();
   // The real check
-  await _maybeSetExitIfChanged(config);
+  await _maybeSetExitIfChanged(config, extraArgs: extraArgs);
 }
 
-Future<void> _maybeSetExitIfChanged(GenerateConfig config) async {
+Future<void> _maybeSetExitIfChanged(GenerateConfig config,
+    {String? extraArgs}) async {
   if (config.setExitIfChanged) {
-    await exec('git diff --exit-code');
+    await exec('git diff --exit-code ${extraArgs ?? ""}');
   }
 }
