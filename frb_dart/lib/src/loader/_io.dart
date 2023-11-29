@@ -48,7 +48,7 @@ ExternalLibrary loadExternalLibraryRaw({
   }
 
   if (Platform.isIOS) {
-    return ExternalLibrary.process();
+    return ExternalLibrary.open('$stem.framework/$stem');
   }
 
   if (Platform.isWindows) {
@@ -60,7 +60,9 @@ ExternalLibrary loadExternalLibraryRaw({
   if (Platform.isMacOS) {
     final name = 'lib$stem.dylib';
     return tryAssumingNonPackaged(
-        name, (debugInfo) => ExternalLibrary.process(debugInfo: debugInfo));
+        name,
+        (debugInfo) => ExternalLibrary.open('$stem.framework/$stem',
+            debugInfo: debugInfo));
   }
 
   if (Platform.isLinux) {
