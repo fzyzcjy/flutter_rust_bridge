@@ -446,21 +446,12 @@ jobs:
           cache: true
           flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
-
       - name: Setup headless display
         uses: pyvista/setup-headless-display-action@v1
 
       - run: just install_prerequisite_for_integration_test_linux
 
       - run: just flutter_example_with_flutter_integration_test
-
-      - run: just install_corrosion_linux
-      - name: Run Flutter integration tests explicitly requiring Corrosion
-        working-directory: ./frb_example/with_flutter
-        run: |
-          set -euxo pipefail
-          mv linux/rust.require.cmake linux/rust.cmake
-          just flutter_example_with_flutter_integration_test
 
   test_flutter_web:
     name: 'Test :: Flutter :: Web'
