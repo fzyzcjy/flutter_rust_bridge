@@ -26,6 +26,7 @@ ExternalLibrary loadExternalLibraryRaw({
   // ref
   // * https://flutter.dev/docs/development/platform-integration/c-interop
   // * https://github.com/fzyzcjy/flutter_rust_bridge/pull/898
+  // * https://github.com/flutter/flutter/blob/8b6277e63868c2029f1e2327879b7899be44fbe2/packages/flutter_tools/templates/plugin_ffi/lib/projectName.dart.tmpl#L47-L58
 
   ExternalLibrary tryAssumingNonPackaged(
       String name, ExternalLibrary Function(String debugInfo) fallback) {
