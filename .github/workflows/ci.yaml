@@ -296,6 +296,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        package:
+          - frb_example/flutter_via_integrate
+          # TODO other packages
         device:
           - "pixel"
           - "Nexus 6"
@@ -336,5 +339,4 @@ jobs:
             emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
             arch: x86_64
             profile: ${{ matrix.device }}
-            script: cd frb_example/with_flutter && flutter test integration_test/main.dart --verbose
-
+            script: ./frb_internal test-dart-web --package ${{ matrix.package }}
