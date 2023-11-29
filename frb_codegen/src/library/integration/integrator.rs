@@ -1,13 +1,14 @@
 use crate::integration::utils::extract_dir_and_modify;
 use crate::library::commands::flutter::flutter_pub_add;
 use crate::utils::path_utils::find_dart_package_dir;
-use anyhow::Result;
+use anyhow::{Context, Result};
 use include_dir::{include_dir, Dir};
 use itertools::Itertools;
 use log::{debug, warn};
-use std::env;
+use serde_yaml::Value;
 use std::ffi::OsStr;
-use std::path::Path;
+use std::path::{Path, PathBuf};
+use std::{env, fs};
 
 static INTEGRATION_TEMPLATE_DIR: Dir<'_> =
     include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template");
@@ -18,13 +19,13 @@ pub fn integrate(enable_integration_test: bool) -> Result<()> {
     let dart_root = find_dart_package_dir(&env::current_dir()?)?;
     debug!("integrate dart_root={dart_root:?}");
 
-    let package_name = TODO;
+    let package_name = get_package_name(&dart_root)?;
 
     extract_dir_and_modify(
         &INTEGRATION_TEMPLATE_DIR,
         &dart_root,
         &|path, src_raw, existing_content| {
-            modify_file(path, src_raw, existing_content, package_name)
+            modify_file(path, src_raw, existing_content, &package_name)
         },
         &|path| filter_file(path, enable_integration_test),
     )?;
@@ -134,4 +135,14 @@ fn pub_add_dependencies(enable_integration_test: bool) -> Result<()> {
     }
 
     flutter_pub_add(&deps)
+}
+
+fn get_package_name(dart_root: &Path) -> Result<String> {
+    let pubspec_yaml: Value = serde_yaml::from_slice(&fs::read(dart_root.join("pubspec.yaml"))?)?;
+    Ok(pubspec_yaml
+        .get("name")
+        .context("no name field")?
+        .as_str()
+        .context("cannot be str")?
+        .to_owned())
 }
