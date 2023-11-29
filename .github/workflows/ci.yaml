@@ -323,10 +323,6 @@ jobs:
           cache-key: "${{ steps.rust-toolchain.outputs.cachekey }}"
           cache-platform: "${{ matrix.device }}"
 
-      - name: Install Flutter dependencies
-        working-directory: ./frb_example/with_flutter
-        run: flutter pub get
-
       - name: Build Rust lib
         working-directory: ./frb_example/with_flutter/rust
         # NOTE since run on simulator, need -t to be x86_64. For real devices, of course arm-like ones.
