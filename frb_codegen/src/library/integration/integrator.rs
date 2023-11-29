@@ -3,7 +3,7 @@ use crate::utils::path_utils::find_dart_package_dir;
 use anyhow::Result;
 use include_dir::{include_dir, Dir};
 use itertools::Itertools;
-use log::debug;
+use log::{debug, info, warn};
 use std::path::Path;
 use std::{env, fs};
 
@@ -26,20 +26,28 @@ pub fn integrate() -> Result<()> {
     Ok(())
 }
 
-fn modify_file(path: &Path, raw: &[u8]) -> Vec<u8> {
+fn modify_file(path: &Path, src_raw: &[u8], existing_content: Option<Vec<u8>>) -> Option<Vec<u8>> {
+    if let Some(existing_content) = existing_content {
+        if path.iter().contains("main.dart".into()) {
+            let existing_content = fs::read_to_string(path).ok();
+            let commented_existing_content = TODO;
+            return TODO;
+        }
+
+        warn!(
+            "Skip writing to {path:?} because file already exists. \
+            It is suggested to remove that file before running this command to apply the full template."
+        );
+        return None;
+    }
+
     if path.iter().contains("cargokit".into()) {
         if let Some(comments) = compute_cargokit_comments(path) {
-            return [comments.as_bytes(), raw].concat();
+            return Some([comments.as_bytes(), src_raw].concat());
         }
     }
 
-    if path.iter().contains("main.dart".into()) {
-        let existing_content = fs::read_to_string(path).ok();
-        let commented_existing_content = TODO;
-        return TODO;
-    }
-
-    raw.to_owned()
+    Some(src_raw.to_owned())
 }
 
 fn filter_file(path: &Path) -> bool {
