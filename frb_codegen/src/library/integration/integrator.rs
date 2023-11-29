@@ -23,10 +23,10 @@ pub fn integrate(enable_integration_test: bool) -> Result<()> {
         &INTEGRATION_TEMPLATE_DIR,
         &dart_root,
         &modify_file,
-        &filter_file,
+        &|path| filter_file(path, enable_integration_test),
     )?;
 
-    pub_add_dependencies()?;
+    pub_add_dependencies(enable_integration_test)?;
 
     Ok(())
 }
@@ -62,9 +62,13 @@ fn modify_file(path: &Path, src_raw: &[u8], existing_content: Option<Vec<u8>>) -
     Some(src_raw.to_owned())
 }
 
-fn filter_file(path: &Path) -> bool {
+fn filter_file(path: &Path, enable_integration_test: bool) -> bool {
     if path.iter().contains(&OsStr::new("cargokit")) {
         return !vec![".git", ".github", "docs", "test"].contains(&file_name(path));
+    }
+
+    if !enable_integration_test && path.iter().contains(&OsStr::new("integration_test")) {
+        return false;
     }
 
     true
@@ -103,10 +107,15 @@ const CARGOKIT_PRELUDE: &[&str] = &[
     "\n\n",
 ];
 
-fn pub_add_dependencies() -> Result<()> {
-    flutter_pub_add(&[
+fn pub_add_dependencies(enable_integration_test: bool) -> Result<()> {
+    let mut deps = vec![
         r#"rust_builder:{"path":"./rust_builder"}"#.into(),
         r#"flutter_rust_bridge:{"path":"../../frb_dart"}"#.into(),
         r#"dev:ffigen:^8.0.0"#.into(),
-    ])
+    ];
+    if enable_integration_test {
+        deps.push(r#"dev:integration_test:{"sdk":"flutter"}"#.into());
+    }
+
+    flutter_pub_add(&deps)
 }
