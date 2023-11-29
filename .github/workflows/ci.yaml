@@ -433,8 +433,6 @@ jobs:
       - name: Setup headless display
         uses: pyvista/setup-headless-display-action@v1
 
-      - run: just install_prerequisite_for_integration_test_linux
-
       # execute
       - run: ./frb_internal test-flutter --package ${{ matrix.package }}
 
