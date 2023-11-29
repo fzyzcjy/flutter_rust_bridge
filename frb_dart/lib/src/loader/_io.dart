@@ -27,10 +27,18 @@ ExternalLibrary loadExternalLibraryRaw({
   // * https://flutter.dev/docs/development/platform-integration/c-interop
   // * https://github.com/fzyzcjy/flutter_rust_bridge/pull/898
 
-  ExternalLibrary? tryAssumingNonPackaged(String name) {
-    if (nativeLibDirWhenNonPackaged == null) return null;
+  ExternalLibrary tryAssumingNonPackaged(
+      String name, ExternalLibrary Function(String debugInfo) fallback) {
+    if (nativeLibDirWhenNonPackaged == null) {
+      return fallback(
+          '(without trying nativeLibDirWhenNonPackaged since it is null)');
+    }
+
     final filePath = nativeLibDirWhenNonPackaged.resolve(name).toFilePath();
-    if (!File(filePath).existsSync()) return null;
+    if (!File(filePath).existsSync()) {
+      return fallback('(after trying $filePath but it does not exist)');
+    }
+
     return ExternalLibrary.open(filePath);
   }
 
@@ -44,17 +52,20 @@ ExternalLibrary loadExternalLibraryRaw({
 
   if (Platform.isWindows) {
     final name = '$stem.dll';
-    return tryAssumingNonPackaged(name) ?? ExternalLibrary.open(name);
+    return tryAssumingNonPackaged(
+        name, (debugInfo) => ExternalLibrary.open(name, debugInfo: debugInfo));
   }
 
   if (Platform.isMacOS) {
     final name = 'lib$stem.dylib';
-    return tryAssumingNonPackaged(name) ?? ExternalLibrary.process();
+    return tryAssumingNonPackaged(
+        name, (debugInfo) => ExternalLibrary.process(debugInfo: debugInfo));
   }
 
   if (Platform.isLinux) {
     final name = 'lib$stem.so';
-    return tryAssumingNonPackaged(name) ?? ExternalLibrary.open(name);
+    return tryAssumingNonPackaged(
+        name, (debugInfo) => ExternalLibrary.open(name, debugInfo: debugInfo));
   }
 
   // Feel free to PR to add support for more platforms! (e.g. I do not have a Fuchsia device, so cannot test that)

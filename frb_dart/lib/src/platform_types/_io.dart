@@ -27,14 +27,15 @@ class ExternalLibrary extends BaseExternalLibrary {
       {required this.ffiDynamicLibrary, required super.debugInfo});
 
   /// {@macro flutter_rust_bridge.internal}
-  factory ExternalLibrary.open(String path) => ExternalLibrary(
+  factory ExternalLibrary.open(String path, {String debugInfo = ''}) =>
+      ExternalLibrary(
         ffiDynamicLibrary: ffi.DynamicLibrary.open(path),
-        debugInfo: 'by open($path)',
+        debugInfo: 'by open($path)$debugInfo',
       );
 
   /// {@macro flutter_rust_bridge.internal}
-  factory ExternalLibrary.process() => ExternalLibrary(
+  factory ExternalLibrary.process({String debugInfo = ''}) => ExternalLibrary(
         ffiDynamicLibrary: ffi.DynamicLibrary.process(),
-        debugInfo: 'by process()',
+        debugInfo: 'by process()$debugInfo',
       );
 }
