@@ -1,5 +1,6 @@
 use crate::command_run;
 use crate::commands::command_runner::call_shell;
+use crate::library::commands::command_runner::check_exit_code;
 use crate::utils::path_utils::{normalize_windows_unc_path, path_to_string};
 use anyhow::bail;
 use log::debug;
@@ -18,12 +19,7 @@ pub fn format_dart(path: &[PathBuf], line_length: u32) -> anyhow::Result<()> {
         line_length.to_string(),
         *path
     )?;
-    if !res.status.success() {
-        bail!(
-            "Dart formatting failed: {}",
-            String::from_utf8_lossy(&res.stderr),
-        )
-    }
+    check_exit_code(&res)?;
     Ok(())
 }
 

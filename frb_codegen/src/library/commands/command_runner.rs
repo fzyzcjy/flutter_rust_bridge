@@ -1,5 +1,5 @@
 use crate::utils::path_utils::{normalize_windows_unc_path, path_to_string};
-use anyhow::Context;
+use anyhow::{bail, Context};
 use itertools::Itertools;
 use log::debug;
 use log::warn;
@@ -135,4 +135,12 @@ pub(crate) fn execute_command<'a>(
         );
     }
     Ok(result)
+}
+
+pub(crate) fn check_exit_code(res: &Output) -> anyhow::Result<()> {
+    if !res.status.success() {
+        let msg = String::from_utf8_lossy(&res.stderr);
+        bail!("Command execution failed: {msg}");
+    }
+    Ok(())
 }
