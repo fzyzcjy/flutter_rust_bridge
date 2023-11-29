@@ -145,9 +145,7 @@ Future<void> generateRunFrbCodegenCommandGenerate(
 Future<void> generateRunFrbCodegenCommandIntegrate(
     GeneratePackageConfig config) async {
   await _wrapMaybeSetExitIfChanged(config,
-      extraArgs:
-          "':(exclude)*Podfile' ':(exclude)*Podfile.lock' ':(exclude)*.xcconfig' ':(exclude)*.pbxproj'",
-      () async {
+      extraArgs: "':(exclude)*Podfile' ':(exclude)*.xcconfig'", () async {
     final dirPackage = path.join(exec.pwd!, config.package);
 
     // Use temp dir within the repo. If use system-wide temp directory,
