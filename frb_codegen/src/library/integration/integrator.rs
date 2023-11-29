@@ -42,6 +42,7 @@ fn modify_permissions(dart_root: &Path) -> Result<()> {
     let dir_cargokit = dart_root.join("rust_builder").join("cargokit");
     set_permission_executable(&dir_cargokit.join("build_pod.sh"))?;
     set_permission_executable(&dir_cargokit.join("run_build_tool.sh"))?;
+    set_permission_executable(&dir_cargokit.join("run_build_tool.cmd"))?;
     Ok(())
 }
 
