@@ -55,7 +55,6 @@ message(HI_1 "$<CONFIG>" "${OUTPUT_LIB}" "${CMAKE_VERSION}")
 
     # Using generators in custom command is only supported in CMake 3.20+
     if (CMAKE_CONFIGURATION_TYPES AND ${CMAKE_VERSION} VERSION_LESS "3.20.0")
-message(HI_2 ${CMAKE_VERSION})
         foreach(CONFIG IN LISTS CMAKE_CONFIGURATION_TYPES)
             add_custom_command(
                 OUTPUT
@@ -67,7 +66,6 @@ message(HI_2 ${CMAKE_VERSION})
             )
         endforeach()
     else()
-message(HI_3 ${CMAKE_VERSION})
         add_custom_command(
             OUTPUT
             ${OUTPUT_LIB}
