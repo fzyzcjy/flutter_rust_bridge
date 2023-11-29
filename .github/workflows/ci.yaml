@@ -344,27 +344,26 @@ jobs:
 
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   test_dart_ios:
-    name: Flutter integration test on iOS
+    name: 'Test :: Dart :: iOS'
+    runs-on: macos-latest
     strategy:
+      fail-fast: false
       matrix:
         device:
           - "iPad (9th generation) Simulator (16.2)"
           - "iPhone 12 Pro Max Simulator (16.2)"
-      fail-fast: false
-    runs-on: macos-latest
 
     steps:
-      - name: "List all simulators"
-        run: "xcrun xctrace list devices"
+      # setup
+      - uses: actions/checkout@v4
       - name: "Start Simulator"
         run: |
+          # list all devices
+          xcrun xctrace list devices
           # the extra "(" is to avoid matching things like "iPhone 12 Pro Max Simulator (16.2) + Apple Watch Series 5 - 44mm (8.0)"
           UDID=$(xcrun xctrace list devices | grep '${{ matrix.device }} (' | awk '{print $NF}' | tr -d '()')
           echo UDID=$UDID
           xcrun simctl boot "${UDID:?No Simulator with this name found}"
-
-      - uses: actions/checkout@v4
-        id: checkout
       - uses: subosito/flutter-action@v2
         with:
           cache: true
@@ -379,7 +378,6 @@ jobs:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
 
       - name: Add Rust targets
-
         run: rustup target add aarch64-apple-ios x86_64-apple-ios
 
       - name: Install `cargo-lipo`
