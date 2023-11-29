@@ -1,5 +1,6 @@
 use crate::command_run;
 use crate::integration::utils::extract_dir_and_modify;
+use crate::library::commands::flutter::flutter_pub_add;
 use crate::utils::path_utils::find_dart_package_dir;
 use anyhow::Result;
 use include_dir::{include_dir, Dir};
@@ -102,6 +103,10 @@ const CARGOKIT_PRELUDE: &[&str] = &[
     "\n\n",
 ];
 
-fn pub_add_dependencies() -> anyhow::Result<()> {
-    command_run!();
+fn pub_add_dependencies() -> Result<()> {
+    flutter_pub_add(&[
+        r#"rust_builder:{"path":"./rust_builder"}"#.into(),
+        r#"flutter_rust_bridge:{"path":"../../frb_dart"}"#.into(),
+        r#"dev:ffigen:^8.0.0"#.into(),
+    ])
 }
