@@ -50,7 +50,7 @@ mod tests {
     #[test]
     fn guess_flutter_toolchain() {
         guess_toolchain_base(
-            FRB_EXAMPLES_FOLDER.join("with_flutter").as_path(),
+            FRB_EXAMPLES_FOLDER.join("flutter_via_integrate").as_path(),
             DartToolchain::Flutter,
         );
     }
