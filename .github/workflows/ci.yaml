@@ -377,24 +377,6 @@ jobs:
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
 
-      - name: Add Rust targets
-        run: rustup target add aarch64-apple-ios x86_64-apple-ios
-
-      - name: Install `cargo-lipo`
-        run: just install_lipo
-
-      - name: Install Flutter dependencies
-        working-directory: ./frb_example/with_flutter
-        run: flutter pub get
-
-      - name: Build Rust lib
-        working-directory: ./frb_example/with_flutter/rust
-        # note the "-i '' -e" is a bug of sed specific to MacOS https://stackoverflow.com/questions/19456518
-        run: |
-          sed -i '' -e 's/"cdylib"/"staticlib"/g' Cargo.toml
-          cargo lipo
-          cp ../../../target/universal/debug/libflutter_rust_bridge_example.a ../ios/Runner
-
       - name: Run Flutter integration tests
         working-directory: ./frb_example/with_flutter
         run: flutter test integration_test/main.dart --verbose
