@@ -34,3 +34,25 @@ TestDartConfig parseTestDartConfig(List<String> args) {
   final result = _$parserForTestDartConfig.parse(args);
   return _$parseTestDartConfigResult(result);
 }
+
+TestFlutterConfig _$parseTestFlutterConfigResult(ArgResults result) =>
+    TestFlutterConfig(
+      flutterTestArgs: result['flutter-test-args'] as String,
+      package: result['package'] as String,
+    );
+
+ArgParser _$populateTestFlutterConfigParser(ArgParser parser) => parser
+  ..addOption(
+    'flutter-test-args',
+  )
+  ..addOption(
+    'package',
+  );
+
+final _$parserForTestFlutterConfig =
+    _$populateTestFlutterConfigParser(ArgParser());
+
+TestFlutterConfig parseTestFlutterConfig(List<String> args) {
+  final result = _$parserForTestFlutterConfig.parse(args);
+  return _$parseTestFlutterConfigResult(result);
+}

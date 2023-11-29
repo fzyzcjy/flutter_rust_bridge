@@ -387,18 +387,18 @@ jobs:
       - run: ./frb_internal test-flutter --package ${{ matrix.package }}
 
   test_flutter_desktop:
-    name: 'Test :: Flutter :: ${{ matrix.image_and_name.name }}'
-    runs-on: ${{ matrix.image_and_name.image }}
+    name: 'Test :: Flutter :: ${{ matrix.image_and_name_and_platform.name }}'
+    runs-on: ${{ matrix.image_and_name_and_platform.image }}
     strategy:
       fail-fast: false
       matrix:
         package:
           - frb_example/flutter_via_integrate
           # TODO other packages
-        image_and_name:
-          - {image: windows-2019, name: Windows}
-          - {image: macos-11, name: MacOS}
-          - {image: ubuntu-latest, name: Linux}
+        image_and_name_and_platform:
+          - {image: windows-2019, name: Windows, platform: windows}
+          - {image: macos-11, name: MacOS, platform: macos}
+          - {image: ubuntu-latest, name: Linux, platform: linux}
 
     steps:
       # setup
@@ -410,7 +410,7 @@ jobs:
           architecture: x64
 
       # execute
-      - run: ./frb_internal test-flutter --package ${{ matrix.package }}
+      - run: ./frb_internal test-flutter --flutter-test-args '--device-id ${{ matrix.image_and_name_and_platform }}' --package ${{ matrix.package }}
 
   test_flutter_web:
     name: 'Test :: Flutter :: Web'

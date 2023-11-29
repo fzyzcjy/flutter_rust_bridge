@@ -33,6 +33,15 @@ class TestDartConfig {
   const TestDartConfig({required this.package});
 }
 
+@CliOptions()
+class TestFlutterConfig {
+  final String flutterTestArgs;
+  final String package;
+
+  const TestFlutterConfig(
+      {required this.flutterTestArgs, required this.package});
+}
+
 Future<void> testRust(TestConfig config) async {
   for (final package in kRustPackages) {
     await testRustPackage(package);
@@ -131,7 +140,8 @@ void checkValgrindOutput(String output) {
   }
 }
 
-Future<void> testFlutter(TestDartConfig config) async {
-  await exec('flutter test integration_test/simple_test.dart --verbose',
+Future<void> testFlutter(TestFlutterConfig config) async {
+  await exec(
+      'flutter test integration_test/simple_test.dart --verbose ${config.flutterTestArgs}',
       relativePwd: config.package);
 }
