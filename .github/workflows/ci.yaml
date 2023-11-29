@@ -73,13 +73,17 @@ jobs:
       fail-fast: false
       matrix:
         image:
-          - macos-11
           - windows-2019
+          - macos-11
           - ubuntu-20.04
         package:
           - frb_example/dart_minimal
           - frb_example/pure_dart
-          # TODO with_flutter
+          - frb_example/flutter_via_create
+          - frb_example/flutter_via_integrate
+        exclude:
+          - {image: windows-2019, package: frb_example/flutter_via_integrate}
+          - {image: macos-11, package: frb_example/flutter_via_integrate}
 
     steps:
       # setup
@@ -206,7 +210,6 @@ jobs:
           - tools/frb_internal
           - frb_example/dart_minimal
           - frb_example/pure_dart
-          # TODO with_flutter
         exclude:
           - {image: windows-2019, package: frb_utils}
           - {image: macos-11, package: frb_utils}
@@ -238,7 +241,6 @@ jobs:
           - frb_dart
           - frb_example/dart_minimal
           - frb_example/pure_dart
-          # TODO with_flutter
 
     steps:
       # setup
@@ -307,8 +309,8 @@ jobs:
       fail-fast: false
       matrix:
         package:
-          - frb_example/flutter_via_integrate
-          # TODO other packages
+          - frb_example/flutter_via_create
+          # no `frb_example/flutter_via_integrate` since it is similar to `flutter_via_create`
         device:
           - "pixel"
           - "Nexus 6"
@@ -365,8 +367,8 @@ jobs:
       fail-fast: false
       matrix:
         package:
-          - frb_example/flutter_via_integrate
-          # TODO other packages
+          - frb_example/flutter_via_create
+          # no `frb_example/flutter_via_integrate` since it is similar to `flutter_via_create`
         device:
           - "iPad (9th generation) Simulator (16.2)"
           - "iPhone 12 Pro Max Simulator (16.2)"
@@ -392,18 +394,25 @@ jobs:
       - run: ./frb_internal test-flutter-native --package ${{ matrix.package }}
 
   test_flutter_native_desktop:
-    name: 'Test :: Flutter :: Native:: ${{ matrix.image_and_name_and_platform.name }}'
-    runs-on: ${{ matrix.image_and_name_and_platform.image }}
+    name: 'Test :: Flutter :: Native:: ${{ matrix.info.platform }}'
+    runs-on: ${{ matrix.info.image }}
     strategy:
       fail-fast: false
       matrix:
-        package:
-          - frb_example/flutter_via_integrate
-          # TODO other packages
-        image_and_name_and_platform:
-          - {image: windows-2019, name: Windows, platform: windows}
-          - {image: macos-13, name: MacOS, platform: macos}
-          - {image: ubuntu-latest, name: Linux, platform: linux}
+        info:
+          - image: windows-2019
+            platform: windows
+            package: frb_example/flutter_via_create
+          - image: macos-13
+            platform: macos
+            package: frb_example/flutter_via_create
+          - image: ubuntu-latest
+            platform: linux
+            package: frb_example/flutter_via_create
+          # only slightly test `flutter_via_integrate` since quite similar to `flutter_via_create`
+          - image: ubuntu-latest
+            platform: linux
+            package: frb_example/flutter_via_integrate
 
     steps:
       # setup
@@ -420,7 +429,7 @@ jobs:
           architecture: x64
 
       # execute
-      - run: ./frb_internal test-flutter-native --flutter-test-args '--device-id ${{ matrix.image_and_name_and_platform.platform }}' --package ${{ matrix.package }}
+      - run: ./frb_internal test-flutter-native --flutter-test-args '--device-id ${{ matrix.info.platform }}' --package ${{ matrix.info.package }}
 
   test_flutter_web:
     name: 'Test :: Flutter :: Web'
@@ -429,8 +438,8 @@ jobs:
       fail-fast: false
       matrix:
         package:
-          - frb_example/flutter_via_integrate
-          # TODO other packages
+          - frb_example/flutter_via_create
+          # no `frb_example/flutter_via_integrate` since it is similar to `flutter_via_create`
 
     steps:
       - uses: actions/checkout@v4
