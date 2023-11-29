@@ -3,16 +3,21 @@ import 'dart:math';
 import 'benchmark_utils.dart';
 
 void main() {
-  const ComputePrimeBenchmark().report();
+  const ComputePrimeBenchmark(90000049).report();
+  const ComputePrimeBenchmark(9000000001).report();
+  const ComputePrimeBenchmark(900000000013).report();
 }
 
+// For a list of primes: http://compoasso.free.fr/primelistweb/page/prime/liste_online_en.php
 class ComputePrimeBenchmark extends EnhancedBenchmarkBase {
-  const ComputePrimeBenchmark() : super('ComputePrime');
+  final int number;
+
+  const ComputePrimeBenchmark(this.number)
+      : super('ComputePrime_Number$number');
 
   @override
   void run() {
-    // http://compoasso.free.fr/primelistweb/page/prime/liste_online_en.php
-    final ans = isPrime(900000000013);
+    final ans = isPrime(number);
     if (!ans) throw Exception('unexpected');
   }
 
