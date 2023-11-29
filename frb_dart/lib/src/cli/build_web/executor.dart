@@ -75,7 +75,13 @@ Future<void> executeBuildWeb(BuildWebArgs args) async {
 final _commandWhich = Platform.isWindows ? 'where.exe' : 'which';
 
 Future<void> _sanityChecks(BuildWebArgs args) async {
-  await _ensureWasmPackInstalled();
+  await _ensurePackageInstalled(
+    binaryName: 'wasm-pack',
+    install: () async => await runCommand('cargo', ['install', 'wasm-pack']),
+    hint: 'wasm-pack is required, but not found in the path.\n'
+        'Please install wasm-pack by following the instructions at https://rustwasm.github.io/wasm-pack/\n'
+        'or running `cargo install wasm-pack`.',
+  );
 
   if (args.enableWasmBindgen) {
     await runCommand(_commandWhich, ['wasm-bindgen']).catchError((_) {
@@ -95,32 +101,29 @@ Future<void> _sanityChecks(BuildWebArgs args) async {
   }
 }
 
-Future<void> _ensureWasmPackInstalled() async {
-  if (await _isWasmPackInstalled()) return;
+Future<void> _ensurePackageInstalled({
+  required String binaryName,
+  required Future<void> Function() install,
+  required String hint,
+}) async {
+  Future<bool> isBinaryInstalled() async {
+    try {
+      await runCommand(_commandWhich, [binaryName]);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
 
-  print('Try to install wasm-pack');
-  await _installWasmPack();
+  if (await isBinaryInstalled()) return;
 
-  if (!await _isWasmPackInstalled()) {
-    bail(
-      'wasm-pack is required, but not found in the path.\n'
-      'Please install wasm-pack by following the instructions at https://rustwasm.github.io/wasm-pack/\n'
-      'or running `cargo install wasm-pack`.',
-    );
+  print('Try to install `$binaryName`');
+  await install();
+
+  if (!await isBinaryInstalled()) {
+    bail(hint);
   }
 }
-
-Future<bool> _isWasmPackInstalled() async {
-  try {
-    await runCommand(_commandWhich, ['wasm-pack']);
-    return true;
-  } catch (_) {
-    return false;
-  }
-}
-
-Future<void> _installWasmPack() async =>
-    await runCommand('cargo', ['install', 'wasm-pack']);
 
 Future<String> _getRustCreateName({required String rustCrateDir}) async {
   final manifest = jsonDecode((await runCommand(
