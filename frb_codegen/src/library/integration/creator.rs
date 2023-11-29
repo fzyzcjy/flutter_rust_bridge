@@ -1,7 +1,7 @@
 use crate::integration::integrator;
-use crate::library::commands::flutter_create::flutter_create;
+use crate::library::commands::flutter::flutter_create;
 use log::{debug, info};
-use std::path::{Path, PathBuf};
+use std::path::Path;
 use std::{env, fs};
 
 /// Create a new Flutter + Rust project.
