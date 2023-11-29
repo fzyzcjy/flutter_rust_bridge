@@ -25,7 +25,7 @@ pub(super) fn extract_dir_and_modify(
             }
             DirEntry::File(f) => {
                 debug!("Write to {path:?}");
-                if let Some(data) = modifier(&path, f.contents(), fs::read(path).ok()) {
+                if let Some(data) = modifier(&path, f.contents(), fs::read(&path).ok()) {
                     fs::write(&path, data)?;
                 }
             }

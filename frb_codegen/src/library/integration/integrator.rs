@@ -4,7 +4,8 @@ use anyhow::Result;
 use include_dir::{include_dir, Dir};
 use itertools::Itertools;
 use log::{debug, info, warn};
-use std::path::Path;
+use std::ffi::OsStr;
+use std::path::{Path, PathBuf};
 use std::{env, fs};
 
 static INTEGRATION_TEMPLATE_DIR: Dir<'_> =
@@ -28,7 +29,7 @@ pub fn integrate() -> Result<()> {
 
 fn modify_file(path: &Path, src_raw: &[u8], existing_content: Option<Vec<u8>>) -> Option<Vec<u8>> {
     if let Some(existing_content) = existing_content {
-        if path.file_name() == Some("main.dart".into()) {
+        if path.file_name() == Some(OsStr::new("main.dart")) {
             let existing_content = String::from_utf8(existing_content);
             let commented_existing_content = existing_content
                 .map(|x| {
@@ -48,7 +49,7 @@ fn modify_file(path: &Path, src_raw: &[u8], existing_content: Option<Vec<u8>>) -
         return None;
     }
 
-    if path.iter().contains("cargokit".into()) {
+    if path.iter().contains(&OsStr::new("cargokit")) {
         if let Some(comments) = compute_cargokit_comments(path) {
             return Some([comments.as_bytes(), src_raw].concat());
         }
@@ -58,7 +59,7 @@ fn modify_file(path: &Path, src_raw: &[u8], existing_content: Option<Vec<u8>>) -
 }
 
 fn filter_file(path: &Path) -> bool {
-    if path.iter().contains("cargokit".into()) {
+    if path.iter().contains(&OsStr::new("cargokit")) {
         return !vec![".git", ".github", "docs", "test"].contains(&file_name(path));
     }
 
