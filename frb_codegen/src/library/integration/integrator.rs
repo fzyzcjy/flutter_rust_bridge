@@ -22,10 +22,10 @@ pub fn integrate() -> Result<()> {
         &|path, raw| {
             if path.iter().contains("cargokit".into()) {
                 if let Some(comments) = compute_cargokit_comments(path) {
-                    return Some([comments.as_bytes(), raw].concat());
+                    return [comments.as_bytes(), raw].concat();
                 }
             }
-            Some(raw.to_owned())
+            raw.to_owned()
         },
         &|path| {
             if path.iter().contains("cargokit".into()) {
