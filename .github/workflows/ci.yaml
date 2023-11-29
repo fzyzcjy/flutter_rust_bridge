@@ -299,8 +299,8 @@ jobs:
       - run: ./frb_internal test-dart-valgrind --package ${{ matrix.package }}
 
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
-  test_flutter_android:
-    name: 'Test :: Flutter :: Android'
+  test_flutter_native_android:
+    name: 'Test :: Flutter :: Native:: Android'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -350,11 +350,11 @@ jobs:
             emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
             arch: x86_64
             profile: ${{ matrix.device }}
-            script: ./frb_internal test-flutter --package ${{ matrix.package }}
+            script: ./frb_internal test-flutter-native --package ${{ matrix.package }}
 
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
-  test_flutter_ios:
-    name: 'Test :: Flutter :: iOS'
+  test_flutter_native_ios:
+    name: 'Test :: Flutter :: Native:: iOS'
     runs-on: macos-latest
     strategy:
       fail-fast: false
@@ -384,10 +384,10 @@ jobs:
           architecture: x64
 
       # execute
-      - run: ./frb_internal test-flutter --package ${{ matrix.package }}
+      - run: ./frb_internal test-flutter-native --package ${{ matrix.package }}
 
-  test_flutter_desktop:
-    name: 'Test :: Flutter :: ${{ matrix.image_and_name_and_platform.name }}'
+  test_flutter_native_desktop:
+    name: 'Test :: Flutter :: Native:: ${{ matrix.image_and_name_and_platform.name }}'
     runs-on: ${{ matrix.image_and_name_and_platform.image }}
     strategy:
       fail-fast: false
@@ -410,7 +410,7 @@ jobs:
           architecture: x64
 
       # execute
-      - run: ./frb_internal test-flutter --flutter-test-args '--device-id ${{ matrix.image_and_name_and_platform.platform }}' --package ${{ matrix.package }}
+      - run: ./frb_internal test-flutter-native --flutter-test-args '--device-id ${{ matrix.image_and_name_and_platform.platform }}' --package ${{ matrix.package }}
 
   test_flutter_web:
     name: 'Test :: Flutter :: Web'
