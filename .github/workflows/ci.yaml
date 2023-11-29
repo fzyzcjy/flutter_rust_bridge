@@ -340,7 +340,7 @@ jobs:
             emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
             arch: x86_64
             profile: ${{ matrix.device }}
-            script: ./frb_internal test-dart-web --package ${{ matrix.package }}
+            script: ./frb_internal test-dart-android --package ${{ matrix.package }}
 
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   test_dart_ios:
@@ -373,5 +373,4 @@ jobs:
           flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
           architecture: x64
       # execute
-      - working-directory: ./frb_example/with_flutter
-        run: ./frb_internal test-dart-web --package ${{ matrix.package }}
+      - run: ./frb_internal test-dart-ios --package ${{ matrix.package }}
