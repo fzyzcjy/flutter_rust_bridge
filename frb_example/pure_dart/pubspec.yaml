@@ -5,6 +5,7 @@ publish_to: none
 environment:
   sdk: '>=3.2.0 <4.0.0'
 dependencies:
+  benchmark_harness: ^2.2.2
   meta: ^1.8.0
   lints: ^2.0.1
   flutter_rust_bridge:
