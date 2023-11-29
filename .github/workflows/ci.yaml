@@ -199,7 +199,7 @@ jobs:
       - name: Push benchmark result
         # Warn: https://github.com/benchmark-action/github-action-benchmark?tab=readme-ov-file#run-only-on-your-branches
         if: github.event_name != 'pull_request'
-        run: git push 'https://fzyzcjy:${{ secrets.GITHUB_TOKEN }}@github.com/you/repo-name.git' gh-pages:gh-pages
+        run: git push 'https://fzyzcjy:${{ secrets.GITHUB_TOKEN }}@github.com/fzyzcjy/flutter_rust_bridge.git' gh-pages:gh-pages
 
   # ----------------------------------- test -----------------------------------
 
