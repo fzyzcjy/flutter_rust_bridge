@@ -8,7 +8,7 @@ use std::path::Path;
 pub(super) fn extract_dir_and_modify(
     d: &Dir,
     base_path: &Path,
-    modifier: &impl Fn(&Path, &[u8]) -> Vec<u8>,
+    modifier: &impl Fn(&Path, &[u8]) -> Option<Vec<u8>>,
     filter: &impl Fn(&Path) -> bool,
 ) -> Result<()> {
     for entry in d.entries() {
@@ -25,7 +25,9 @@ pub(super) fn extract_dir_and_modify(
             }
             DirEntry::File(f) => {
                 debug!("Write to {path:?}");
-                fs::write(&path, modifier(&path, f.contents()))?;
+                if let Some(modified_contents) = modifier(&path, f.contents()) {
+                    fs::write(&path, modified_contents)?;
+                }
             }
         }
     }
