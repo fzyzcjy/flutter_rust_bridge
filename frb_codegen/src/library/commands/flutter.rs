@@ -11,7 +11,7 @@ pub fn flutter_create(name: &str) -> anyhow::Result<()> {
 
 #[allow(clippy::vec_init_then_push)]
 pub fn flutter_pub_add(items: &[String]) -> anyhow::Result<()> {
-    info!("Execute `flutter pub add`");
+    info!("Execute flutter pub add {items:?}");
     check_exit_code(&command_run!(
         call_shell[None],
         "flutter",
