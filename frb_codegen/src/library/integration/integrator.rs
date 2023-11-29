@@ -1,12 +1,13 @@
+use crate::command_run;
 use crate::integration::utils::extract_dir_and_modify;
 use crate::utils::path_utils::find_dart_package_dir;
 use anyhow::Result;
 use include_dir::{include_dir, Dir};
 use itertools::Itertools;
-use log::{debug, info, warn};
+use log::{debug, warn};
+use std::env;
 use std::ffi::OsStr;
-use std::path::{Path, PathBuf};
-use std::{env, fs};
+use std::path::Path;
 
 static INTEGRATION_TEMPLATE_DIR: Dir<'_> =
     include_dir!("$CARGO_MANIFEST_DIR/assets/integration_template");
@@ -23,6 +24,8 @@ pub fn integrate() -> Result<()> {
         &modify_file,
         &filter_file,
     )?;
+
+    pub_add_dependencies()?;
 
     Ok(())
 }
@@ -98,3 +101,7 @@ const CARGOKIT_PRELUDE: &[&str] = &[
     "TODO explain more",
     "\n\n",
 ];
+
+fn pub_add_dependencies() -> anyhow::Result<()> {
+    command_run!();
+}
