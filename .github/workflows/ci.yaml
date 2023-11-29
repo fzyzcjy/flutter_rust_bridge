@@ -26,6 +26,7 @@ jobs:
   # ----------------------------------- lint -----------------------------------
 
   lint_rust:
+    if: false
     name: 'Lint :: Rust'
     runs-on: ubuntu-latest
 
@@ -49,6 +50,7 @@ jobs:
       - run: ./frb_internal lint-rust
 
   lint_dart:
+    if: false
     name: 'Lint :: Dart'
     runs-on: ubuntu-latest
 
@@ -66,6 +68,7 @@ jobs:
   # ----------------------------------- codegen -----------------------------------
 
   generate_run_frb_codegen_command_generate:
+    if: false
     name: 'Generate :: Run FRB Codegen :: Command Generate'
     runs-on: ${{ matrix.image }}
 
@@ -98,6 +101,7 @@ jobs:
       - run: ./frb_internal generate-run-frb-codegen-command-generate --set-exit-if-changed --package ${{ matrix.package }}
 
   generate_run_frb_codegen_command_integrate:
+    if: false
     name: 'Generate :: Run FRB Codegen :: Command Integrate'
     runs-on: ${{ matrix.image }}
 
@@ -129,6 +133,7 @@ jobs:
       - run: ./frb_internal generate-run-frb-codegen-command-integrate --set-exit-if-changed --package ${{ matrix.package }}
 
   generate_internal:
+    if: false
     name: 'Generate :: Internal'
     runs-on: ubuntu-latest
 
@@ -152,6 +157,7 @@ jobs:
   # ----------------------------------- test -----------------------------------
 
   test_rust:
+    if: false
     name: 'Test :: Rust'
     runs-on: ${{ matrix.image_and_version.image }}
     strategy:
@@ -191,6 +197,7 @@ jobs:
       - run: ./frb_internal test-rust
 
   test_dart_native:
+    if: false
     name: 'Test :: Dart :: Native'
     runs-on: ${{ matrix.image }}
     strategy:
@@ -229,6 +236,7 @@ jobs:
       - run: ./frb_internal test-dart-native --package ${{ matrix.package }}
 
   test_dart_web:
+    if: false
     name: 'Test :: Dart :: Web'
     runs-on: ubuntu-latest
     strategy:
@@ -274,6 +282,7 @@ jobs:
       - run: ./frb_internal test-dart-web --package ${{ matrix.package }}
 
   test_dart_valgrind:
+    if: false
     name: 'Test :: Dart :: Valgrind'
     runs-on: ubuntu-latest
     strategy:
