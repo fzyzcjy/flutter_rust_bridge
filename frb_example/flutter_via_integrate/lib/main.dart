@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_via_integrate/src/rust/api/simple.dart';
 import 'package:flutter_via_integrate/src/rust/frb_generated.dart';
 
 Future<void> main() async {
@@ -13,13 +12,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter Demo'),
-        ),
+        appBar: AppBar(title: const Text('flutter_rust_bridge quickstart')),
         body: Center(
-          child: Text('1 + 2 = ${add(left: 1, right: 2)}'),
+          child: Text('Call Rust greet("Tom") gives:\n${greet(name: "Tom")}'),
         ),
       ),
     );
