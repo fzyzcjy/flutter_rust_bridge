@@ -189,6 +189,20 @@ jobs:
       # execute
       - run: ./frb_internal bench-dart-native
 
+      # store
+      - uses: actions/checkout@v4
+        with:
+          repository: 'fzyzcjy/flutter_rust_bridge_blob'
+          path: 'flutter_rust_bridge_blob'
+      - run: ls -al && ls -al flutter_rust_bridge_blob # TODO only for debug
+      - uses: benchmark-action/github-action-benchmark@v1
+        with:
+          tool: customSmallerIsBetter
+          output-file-path: frb_example/pure_dart/build/simple_benchmark/benchmark_result.json
+          external-data-json-path: ./flutter_rust_bridge_blob/benchmark_result.json
+          fail-on-alert: false
+      - run: cd flutter_rust_bridge_blob && git push
+
   # ----------------------------------- test -----------------------------------
 
   test_rust:
