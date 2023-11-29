@@ -1,3 +1,5 @@
+import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
+
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 typedef NativePortType = dynamic;
 
@@ -11,10 +13,10 @@ typedef PlatformPointer = int;
 typedef DartPostCObject = void;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-class ExternalLibrary {
+class ExternalLibrary extends BaseExternalLibrary {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   final Object wasmModule;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  const ExternalLibrary({required this.wasmModule});
+  const ExternalLibrary({required this.wasmModule, required super.debugInfo});
 }
