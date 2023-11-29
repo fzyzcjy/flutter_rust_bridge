@@ -16,6 +16,8 @@ List<Command<void>> createCommands() {
         _$populateTestDartConfigParser, _$parseTestDartConfigResult),
     SimpleConfigCommand('test-dart-valgrind', testDartValgrind,
         _$populateTestDartConfigParser, _$parseTestDartConfigResult),
+    SimpleConfigCommand('test-dart-android', testDartAndroid,
+        _$populateTestDartConfigParser, _$parseTestDartConfigResult),
   ];
 }
 
@@ -127,4 +129,9 @@ void checkValgrindOutput(String output) {
       );
     }
   }
+}
+
+Future<void> testDartAndroid(TestDartConfig config) async {
+  await exec('flutter test integration_test/simple_test.dart --verbose',
+      relativePwd: config.package);
 }
