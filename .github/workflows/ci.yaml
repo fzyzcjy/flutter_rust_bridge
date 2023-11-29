@@ -404,6 +404,9 @@ jobs:
     steps:
       # setup
       - uses: actions/checkout@v4
+      # https://docs.flutter.dev/get-started/install/linux#linux-prerequisites
+      - if: runner.os == 'Linux'
+        run: sudo apt-get install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
       - uses: subosito/flutter-action@v2
         with:
           cache: true
