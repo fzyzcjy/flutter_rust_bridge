@@ -4,6 +4,7 @@ import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+import 'rust_opaque_twin_rust_async.dart';
 part 'rust_opaque_twin_sync.freezed.dart';
 
 HideData createOpaqueTwinSync({dynamic hint}) =>
@@ -60,38 +61,6 @@ FrbOpaqueReturn frbGeneratorTestTwinSync({dynamic hint}) =>
     RustLib.instance.api.frbGeneratorTestTwinSync(hint: hint);
 
 @sealed
-class MutexHideData extends FrbOpaque {
-  MutexHideData.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
-
-  @override
-  OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueMutexHideData;
-
-  @override
-  OpaqueShareFnType get shareFn =>
-      RustLib.instance.api.shareOpaqueMutexHideData;
-
-  @override
-  OpaqueTypeFinalizer get staticFinalizer =>
-      RustLib.instance.api.mutexHideDataFinalizer;
-}
-
-@sealed
-class RwLockHideData extends FrbOpaque {
-  RwLockHideData.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
-
-  @override
-  OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueRwLockHideData;
-
-  @override
-  OpaqueShareFnType get shareFn =>
-      RustLib.instance.api.shareOpaqueRwLockHideData;
-
-  @override
-  OpaqueTypeFinalizer get staticFinalizer =>
-      RustLib.instance.api.rwLockHideDataFinalizer;
-}
-
-@sealed
 class BoxDartDebugTwinSync extends FrbOpaque {
   BoxDartDebugTwinSync.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
 
@@ -106,92 +75,6 @@ class BoxDartDebugTwinSync extends FrbOpaque {
   @override
   OpaqueTypeFinalizer get staticFinalizer =>
       RustLib.instance.api.boxDartDebugTwinSyncFinalizer;
-}
-
-@sealed
-class FrbOpaqueReturn extends FrbOpaque {
-  FrbOpaqueReturn.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
-
-  @override
-  OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueFrbOpaqueReturn;
-
-  @override
-  OpaqueShareFnType get shareFn =>
-      RustLib.instance.api.shareOpaqueFrbOpaqueReturn;
-
-  @override
-  OpaqueTypeFinalizer get staticFinalizer =>
-      RustLib.instance.api.frbOpaqueReturnFinalizer;
-}
-
-@sealed
-class HideData extends FrbOpaque {
-  HideData.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
-
-  @override
-  OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueHideData;
-
-  @override
-  OpaqueShareFnType get shareFn => RustLib.instance.api.shareOpaqueHideData;
-
-  @override
-  OpaqueTypeFinalizer get staticFinalizer =>
-      RustLib.instance.api.hideDataFinalizer;
-}
-
-class HideDataArray2 extends NonGrowableListView<HideData> {
-  static const arraySize = 2;
-  HideDataArray2(List<HideData> inner)
-      : assert(inner.length == arraySize),
-        super(inner);
-  HideDataArray2.unchecked(List<HideData> inner) : super(inner);
-  HideDataArray2.init(HideData fill)
-      : super(List<HideData>.filled(arraySize, fill));
-}
-
-@sealed
-class I32 extends FrbOpaque {
-  I32.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
-
-  @override
-  OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueI32;
-
-  @override
-  OpaqueShareFnType get shareFn => RustLib.instance.api.shareOpaqueI32;
-
-  @override
-  OpaqueTypeFinalizer get staticFinalizer => RustLib.instance.api.i32Finalizer;
-}
-
-@sealed
-class NonCloneData extends FrbOpaque {
-  NonCloneData.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
-
-  @override
-  OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueNonCloneData;
-
-  @override
-  OpaqueShareFnType get shareFn => RustLib.instance.api.shareOpaqueNonCloneData;
-
-  @override
-  OpaqueTypeFinalizer get staticFinalizer =>
-      RustLib.instance.api.nonCloneDataFinalizer;
-}
-
-@sealed
-class NonSendHideData extends FrbOpaque {
-  NonSendHideData.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
-
-  @override
-  OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueNonSendHideData;
-
-  @override
-  OpaqueShareFnType get shareFn =>
-      RustLib.instance.api.shareOpaqueNonSendHideData;
-
-  @override
-  OpaqueTypeFinalizer get staticFinalizer =>
-      RustLib.instance.api.nonSendHideDataFinalizer;
 }
 
 @freezed

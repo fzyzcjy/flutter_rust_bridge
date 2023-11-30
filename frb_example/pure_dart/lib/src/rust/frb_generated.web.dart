@@ -23,38 +23,68 @@ import 'api/optional.dart';
 import 'api/optional_primitive_misc.dart';
 import 'api/primitive_list_misc.dart';
 import 'api/primitive_misc.dart';
+import 'api/pseudo_manual/array_twin_rust_async.dart';
 import 'api/pseudo_manual/array_twin_sync.dart';
+import 'api/pseudo_manual/attribute_twin_rust_async.dart';
 import 'api/pseudo_manual/attribute_twin_sync.dart';
+import 'api/pseudo_manual/benchmark_api_twin_rust_async.dart';
 import 'api/pseudo_manual/benchmark_api_twin_sync.dart';
+import 'api/pseudo_manual/chrono_type_twin_rust_async.dart';
 import 'api/pseudo_manual/chrono_type_twin_sync.dart';
+import 'api/pseudo_manual/comment_twin_rust_async.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
+import 'api/pseudo_manual/dart_dynamic_twin_rust_async.dart';
 import 'api/pseudo_manual/dart_dynamic_twin_sync.dart';
+import 'api/pseudo_manual/dart_opaque_twin_rust_async.dart';
 import 'api/pseudo_manual/dart_opaque_twin_sync.dart';
+import 'api/pseudo_manual/enumeration_twin_rust_async.dart';
 import 'api/pseudo_manual/enumeration_twin_sync.dart';
+import 'api/pseudo_manual/event_listener_twin_rust_async.dart';
 import 'api/pseudo_manual/event_listener_twin_sync.dart';
+import 'api/pseudo_manual/exception_twin_rust_async.dart';
 import 'api/pseudo_manual/exception_twin_sync.dart';
+import 'api/pseudo_manual/external_type_in_crate_twin_rust_async.dart';
 import 'api/pseudo_manual/external_type_in_crate_twin_sync.dart';
+import 'api/pseudo_manual/method_twin_rust_async.dart';
 import 'api/pseudo_manual/method_twin_sync.dart';
+import 'api/pseudo_manual/mirror_twin_rust_async.dart';
 import 'api/pseudo_manual/mirror_twin_sync.dart';
+import 'api/pseudo_manual/misc_example_twin_rust_async.dart';
 import 'api/pseudo_manual/misc_example_twin_sync.dart';
+import 'api/pseudo_manual/misc_type_twin_rust_async.dart';
 import 'api/pseudo_manual/misc_type_twin_sync.dart';
+import 'api/pseudo_manual/newtype_pattern_twin_rust_async.dart';
 import 'api/pseudo_manual/newtype_pattern_twin_sync.dart';
 import 'api/pseudo_manual/optional_primitive.dart';
+import 'api/pseudo_manual/optional_primitive_misc_twin_rust_async.dart';
 import 'api/pseudo_manual/optional_primitive_misc_twin_sync.dart';
+import 'api/pseudo_manual/optional_primitive_twin_rust_async.dart';
 import 'api/pseudo_manual/optional_primitive_twin_sync.dart';
+import 'api/pseudo_manual/optional_twin_rust_async.dart';
 import 'api/pseudo_manual/optional_twin_sync.dart';
 import 'api/pseudo_manual/primitive.dart';
 import 'api/pseudo_manual/primitive_list.dart';
+import 'api/pseudo_manual/primitive_list_misc_twin_rust_async.dart';
 import 'api/pseudo_manual/primitive_list_misc_twin_sync.dart';
+import 'api/pseudo_manual/primitive_list_twin_rust_async.dart';
 import 'api/pseudo_manual/primitive_list_twin_sync.dart';
+import 'api/pseudo_manual/primitive_misc_twin_rust_async.dart';
 import 'api/pseudo_manual/primitive_misc_twin_sync.dart';
+import 'api/pseudo_manual/primitive_twin_rust_async.dart';
 import 'api/pseudo_manual/primitive_twin_sync.dart';
+import 'api/pseudo_manual/raw_string_twin_rust_async.dart';
 import 'api/pseudo_manual/raw_string_twin_sync.dart';
+import 'api/pseudo_manual/rust_opaque_twin_rust_async.dart';
 import 'api/pseudo_manual/rust_opaque_twin_sync.dart';
+import 'api/pseudo_manual/simple_twin_rust_async.dart';
 import 'api/pseudo_manual/simple_twin_sync.dart';
+import 'api/pseudo_manual/structure_twin_rust_async.dart';
 import 'api/pseudo_manual/structure_twin_sync.dart';
+import 'api/pseudo_manual/tuple_twin_rust_async.dart';
 import 'api/pseudo_manual/tuple_twin_sync.dart';
+import 'api/pseudo_manual/type_alias_twin_rust_async.dart';
 import 'api/pseudo_manual/type_alias_twin_sync.dart';
+import 'api/pseudo_manual/uuid_type_twin_rust_async.dart';
 import 'api/pseudo_manual/uuid_type_twin_sync.dart';
 import 'api/raw_string.dart';
 import 'api/rust_opaque.dart';
@@ -91,6 +121,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   late final boxDartDebugTwinNormalFinalizer = OpaqueTypeFinalizer(
       wire.drop_opaque_RustOpaque_box_dynDartDebugTwinNormal);
+
+  late final boxDartDebugTwinRustAsyncFinalizer = OpaqueTypeFinalizer(
+      wire.drop_opaque_RustOpaque_box_dynDartDebugTwinRustAsync);
 
   late final boxDartDebugTwinSyncFinalizer =
       OpaqueTypeFinalizer(wire.drop_opaque_RustOpaque_box_dynDartDebugTwinSync);
@@ -178,6 +211,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  Object api2wire_RustOpaque_box_dynDartDebugTwinRustAsync(
+      BoxDartDebugTwinRustAsync raw) {
+    // ignore: invalid_use_of_internal_member
+    return raw.shareOrMove();
+  }
+
+  @protected
   Object api2wire_RustOpaque_box_dynDartDebugTwinSync(
       BoxDartDebugTwinSync raw) {
     // ignore: invalid_use_of_internal_member
@@ -248,6 +288,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_a_twin_rust_async(ATwinRustAsync raw) {
+    return [api2wire_String(raw.a)];
+  }
+
+  @protected
   List<dynamic> api2wire_a_twin_sync(ATwinSync raw) {
     return [api2wire_String(raw.a)];
   }
@@ -264,6 +309,24 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return [2, api2wire_box_autoadd_c_twin_normal(raw.field0)];
     }
     if (raw is AbcTwinNormal_JustInt) {
+      return [3, api2wire_i_32(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> api2wire_abc_twin_rust_async(AbcTwinRustAsync raw) {
+    if (raw is AbcTwinRustAsync_A) {
+      return [0, api2wire_box_autoadd_a_twin_rust_async(raw.field0)];
+    }
+    if (raw is AbcTwinRustAsync_B) {
+      return [1, api2wire_box_autoadd_b_twin_rust_async(raw.field0)];
+    }
+    if (raw is AbcTwinRustAsync_C) {
+      return [2, api2wire_box_autoadd_c_twin_rust_async(raw.field0)];
+    }
+    if (raw is AbcTwinRustAsync_JustInt) {
       return [3, api2wire_i_32(raw.field0)];
     }
 
@@ -315,6 +378,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_attribute_twin_rust_async(AttributeTwinRustAsync raw) {
+    return [api2wire_String(raw.key), api2wire_String(raw.value)];
+  }
+
+  @protected
   List<dynamic> api2wire_attribute_twin_sync(AttributeTwinSync raw) {
     return [api2wire_String(raw.key), api2wire_String(raw.value)];
   }
@@ -325,12 +393,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_b_twin_rust_async(BTwinRustAsync raw) {
+    return [api2wire_i_32(raw.b)];
+  }
+
+  @protected
   List<dynamic> api2wire_b_twin_sync(BTwinSync raw) {
     return [api2wire_i_32(raw.b)];
   }
 
   @protected
   List<dynamic> api2wire_blob_twin_normal(BlobTwinNormal raw) {
+    return [api2wire_u_8_array_1600(raw.field0)];
+  }
+
+  @protected
+  List<dynamic> api2wire_blob_twin_rust_async(BlobTwinRustAsync raw) {
     return [api2wire_u_8_array_1600(raw.field0)];
   }
 
@@ -365,6 +443,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_a_twin_rust_async(ATwinRustAsync raw) {
+    return api2wire_a_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_a_twin_sync(ATwinSync raw) {
     return api2wire_a_twin_sync(raw);
   }
@@ -372,6 +455,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> api2wire_box_autoadd_abc_twin_normal(AbcTwinNormal raw) {
     return api2wire_abc_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_abc_twin_rust_async(AbcTwinRustAsync raw) {
+    return api2wire_abc_twin_rust_async(raw);
   }
 
   @protected
@@ -397,6 +485,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_attribute_twin_rust_async(
+      AttributeTwinRustAsync raw) {
+    return api2wire_attribute_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_attribute_twin_sync(
       AttributeTwinSync raw) {
     return api2wire_attribute_twin_sync(raw);
@@ -405,6 +499,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> api2wire_box_autoadd_b_twin_normal(BTwinNormal raw) {
     return api2wire_b_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_b_twin_rust_async(BTwinRustAsync raw) {
+    return api2wire_b_twin_rust_async(raw);
   }
 
   @protected
@@ -423,6 +522,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_c_twin_rust_async(CTwinRustAsync raw) {
+    return api2wire_c_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_c_twin_sync(CTwinSync raw) {
     return api2wire_c_twin_sync(raw);
   }
@@ -431,6 +535,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> api2wire_box_autoadd_concatenate_with_twin_normal(
       ConcatenateWithTwinNormal raw) {
     return api2wire_concatenate_with_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_concatenate_with_twin_rust_async(
+      ConcatenateWithTwinRustAsync raw) {
+    return api2wire_concatenate_with_twin_rust_async(raw);
   }
 
   @protected
@@ -446,6 +556,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_custom_nested_error_inner_twin_rust_async(
+      CustomNestedErrorInnerTwinRustAsync raw) {
+    return api2wire_custom_nested_error_inner_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_custom_nested_error_inner_twin_sync(
       CustomNestedErrorInnerTwinSync raw) {
     return api2wire_custom_nested_error_inner_twin_sync(raw);
@@ -455,6 +571,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> api2wire_box_autoadd_custom_nested_error_outer_twin_normal(
       CustomNestedErrorOuterTwinNormal raw) {
     return api2wire_custom_nested_error_outer_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_custom_nested_error_outer_twin_rust_async(
+      CustomNestedErrorOuterTwinRustAsync raw) {
+    return api2wire_custom_nested_error_outer_twin_rust_async(raw);
   }
 
   @protected
@@ -470,6 +592,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_custom_struct_error_twin_rust_async(
+      CustomStructErrorTwinRustAsync raw) {
+    return api2wire_custom_struct_error_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_custom_struct_error_twin_sync(
       CustomStructErrorTwinSync raw) {
     return api2wire_custom_struct_error_twin_sync(raw);
@@ -479,6 +607,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> api2wire_box_autoadd_custom_struct_twin_normal(
       CustomStructTwinNormal raw) {
     return api2wire_custom_struct_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_custom_struct_twin_rust_async(
+      CustomStructTwinRustAsync raw) {
+    return api2wire_custom_struct_twin_rust_async(raw);
   }
 
   @protected
@@ -494,6 +628,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_customized_twin_rust_async(
+      CustomizedTwinRustAsync raw) {
+    return api2wire_customized_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_customized_twin_sync(
       CustomizedTwinSync raw) {
     return api2wire_customized_twin_sync(raw);
@@ -503,6 +643,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> api2wire_box_autoadd_dart_opaque_nested_twin_normal(
       DartOpaqueNestedTwinNormal raw) {
     return api2wire_dart_opaque_nested_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_dart_opaque_nested_twin_rust_async(
+      DartOpaqueNestedTwinRustAsync raw) {
+    return api2wire_dart_opaque_nested_twin_rust_async(raw);
   }
 
   @protected
@@ -517,6 +663,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_empty_twin_rust_async(
+      EmptyTwinRustAsync raw) {
+    return api2wire_empty_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_empty_twin_sync(EmptyTwinSync raw) {
     return api2wire_empty_twin_sync(raw);
   }
@@ -525,6 +677,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> api2wire_box_autoadd_enum_dart_opaque_twin_normal(
       EnumDartOpaqueTwinNormal raw) {
     return api2wire_enum_dart_opaque_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_enum_dart_opaque_twin_rust_async(
+      EnumDartOpaqueTwinRustAsync raw) {
+    return api2wire_enum_dart_opaque_twin_rust_async(raw);
   }
 
   @protected
@@ -540,6 +698,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_enum_opaque_twin_rust_async(
+      EnumOpaqueTwinRustAsync raw) {
+    return api2wire_enum_opaque_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_enum_opaque_twin_sync(
       EnumOpaqueTwinSync raw) {
     return api2wire_enum_opaque_twin_sync(raw);
@@ -549,6 +713,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> api2wire_box_autoadd_enum_with_item_mixed_twin_normal(
       EnumWithItemMixedTwinNormal raw) {
     return api2wire_enum_with_item_mixed_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_enum_with_item_mixed_twin_rust_async(
+      EnumWithItemMixedTwinRustAsync raw) {
+    return api2wire_enum_with_item_mixed_twin_rust_async(raw);
   }
 
   @protected
@@ -564,6 +734,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_enum_with_item_struct_twin_rust_async(
+      EnumWithItemStructTwinRustAsync raw) {
+    return api2wire_enum_with_item_struct_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_enum_with_item_struct_twin_sync(
       EnumWithItemStructTwinSync raw) {
     return api2wire_enum_with_item_struct_twin_sync(raw);
@@ -573,6 +749,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> api2wire_box_autoadd_enum_with_item_tuple_twin_normal(
       EnumWithItemTupleTwinNormal raw) {
     return api2wire_enum_with_item_tuple_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_enum_with_item_tuple_twin_rust_async(
+      EnumWithItemTupleTwinRustAsync raw) {
+    return api2wire_enum_with_item_tuple_twin_rust_async(raw);
   }
 
   @protected
@@ -587,6 +769,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_event_twin_rust_async(
+      EventTwinRustAsync raw) {
+    return api2wire_event_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_event_twin_sync(EventTwinSync raw) {
     return api2wire_event_twin_sync(raw);
   }
@@ -595,6 +783,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> api2wire_box_autoadd_exotic_optionals_twin_normal(
       ExoticOptionalsTwinNormal raw) {
     return api2wire_exotic_optionals_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_exotic_optionals_twin_rust_async(
+      ExoticOptionalsTwinRustAsync raw) {
+    return api2wire_exotic_optionals_twin_rust_async(raw);
   }
 
   @protected
@@ -620,6 +814,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_feature_chrono_twin_rust_async(
+      FeatureChronoTwinRustAsync raw) {
+    return api2wire_feature_chrono_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_feature_chrono_twin_sync(
       FeatureChronoTwinSync raw) {
     return api2wire_feature_chrono_twin_sync(raw);
@@ -632,6 +832,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_feature_uuid_twin_rust_async(
+      FeatureUuidTwinRustAsync raw) {
+    return api2wire_feature_uuid_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_feature_uuid_twin_sync(
       FeatureUuidTwinSync raw) {
     return api2wire_feature_uuid_twin_sync(raw);
@@ -640,6 +846,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> api2wire_box_autoadd_feed_id_twin_normal(FeedIdTwinNormal raw) {
     return api2wire_feed_id_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_feed_id_twin_rust_async(
+      FeedIdTwinRustAsync raw) {
+    return api2wire_feed_id_twin_rust_async(raw);
   }
 
   @protected
@@ -674,6 +886,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_kitchen_sink_twin_rust_async(
+      KitchenSinkTwinRustAsync raw) {
+    return api2wire_kitchen_sink_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_kitchen_sink_twin_sync(
       KitchenSinkTwinSync raw) {
     return api2wire_kitchen_sink_twin_sync(raw);
@@ -691,6 +909,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_measure_twin_rust_async(
+      MeasureTwinRustAsync raw) {
+    return api2wire_measure_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_measure_twin_sync(MeasureTwinSync raw) {
     return api2wire_measure_twin_sync(raw);
   }
@@ -699,6 +923,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> api2wire_box_autoadd_message_id_twin_normal(
       MessageIdTwinNormal raw) {
     return api2wire_message_id_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_message_id_twin_rust_async(
+      MessageIdTwinRustAsync raw) {
+    return api2wire_message_id_twin_rust_async(raw);
   }
 
   @protected
@@ -711,6 +941,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> api2wire_box_autoadd_my_nested_struct_twin_normal(
       MyNestedStructTwinNormal raw) {
     return api2wire_my_nested_struct_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_my_nested_struct_twin_rust_async(
+      MyNestedStructTwinRustAsync raw) {
+    return api2wire_my_nested_struct_twin_rust_async(raw);
   }
 
   @protected
@@ -731,6 +967,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_my_size_freezed_twin_rust_async(
+      MySizeFreezedTwinRustAsync raw) {
+    return api2wire_my_size_freezed_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_my_size_freezed_twin_sync(
       MySizeFreezedTwinSync raw) {
     return api2wire_my_size_freezed_twin_sync(raw);
@@ -748,6 +990,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_my_tree_node_twin_rust_async(
+      MyTreeNodeTwinRustAsync raw) {
+    return api2wire_my_tree_node_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_my_tree_node_twin_sync(
       MyTreeNodeTwinSync raw) {
     return api2wire_my_tree_node_twin_sync(raw);
@@ -760,6 +1008,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_new_type_int_twin_rust_async(
+      NewTypeIntTwinRustAsync raw) {
+    return api2wire_new_type_int_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_new_type_int_twin_sync(
       NewTypeIntTwinSync raw) {
     return api2wire_new_type_int_twin_sync(raw);
@@ -768,6 +1022,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> api2wire_box_autoadd_note_twin_normal(NoteTwinNormal raw) {
     return api2wire_note_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_note_twin_rust_async(
+      NoteTwinRustAsync raw) {
+    return api2wire_note_twin_rust_async(raw);
   }
 
   @protected
@@ -787,6 +1047,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_opaque_nested_twin_rust_async(
+      OpaqueNestedTwinRustAsync raw) {
+    return api2wire_opaque_nested_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_opaque_nested_twin_sync(
       OpaqueNestedTwinSync raw) {
     return api2wire_opaque_nested_twin_sync(raw);
@@ -796,6 +1062,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> api2wire_box_autoadd_opt_vecs_twin_normal(
       OptVecsTwinNormal raw) {
     return api2wire_opt_vecs_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_opt_vecs_twin_rust_async(
+      OptVecsTwinRustAsync raw) {
+    return api2wire_opt_vecs_twin_rust_async(raw);
   }
 
   @protected
@@ -820,6 +1092,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_some_struct_twin_rust_async(
+      SomeStructTwinRustAsync raw) {
+    return api2wire_some_struct_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_some_struct_twin_sync(
       SomeStructTwinSync raw) {
     return api2wire_some_struct_twin_sync(raw);
@@ -829,6 +1107,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> api2wire_box_autoadd_struct_with_comments_twin_normal(
       StructWithCommentsTwinNormal raw) {
     return api2wire_struct_with_comments_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_struct_with_comments_twin_rust_async(
+      StructWithCommentsTwinRustAsync raw) {
+    return api2wire_struct_with_comments_twin_rust_async(raw);
   }
 
   @protected
@@ -844,6 +1128,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_struct_with_enum_twin_rust_async(
+      StructWithEnumTwinRustAsync raw) {
+    return api2wire_struct_with_enum_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_struct_with_enum_twin_sync(
       StructWithEnumTwinSync raw) {
     return api2wire_struct_with_enum_twin_sync(raw);
@@ -853,6 +1143,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> api2wire_box_autoadd_struct_with_one_field_twin_normal(
       StructWithOneFieldTwinNormal raw) {
     return api2wire_struct_with_one_field_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_struct_with_one_field_twin_rust_async(
+      StructWithOneFieldTwinRustAsync raw) {
+    return api2wire_struct_with_one_field_twin_rust_async(raw);
   }
 
   @protected
@@ -868,6 +1164,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_struct_with_two_field_twin_rust_async(
+      StructWithTwoFieldTwinRustAsync raw) {
+    return api2wire_struct_with_two_field_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_struct_with_two_field_twin_sync(
       StructWithTwoFieldTwinSync raw) {
     return api2wire_struct_with_two_field_twin_sync(raw);
@@ -877,6 +1179,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> api2wire_box_autoadd_struct_with_zero_field_twin_normal(
       StructWithZeroFieldTwinNormal raw) {
     return api2wire_struct_with_zero_field_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_struct_with_zero_field_twin_rust_async(
+      StructWithZeroFieldTwinRustAsync raw) {
+    return api2wire_struct_with_zero_field_twin_rust_async(raw);
   }
 
   @protected
@@ -892,6 +1200,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_sum_with_twin_rust_async(
+      SumWithTwinRustAsync raw) {
+    return api2wire_sum_with_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_sum_with_twin_sync(SumWithTwinSync raw) {
     return api2wire_sum_with_twin_sync(raw);
   }
@@ -899,6 +1213,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> api2wire_box_autoadd_test_id_twin_normal(TestIdTwinNormal raw) {
     return api2wire_test_id_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_test_id_twin_rust_async(
+      TestIdTwinRustAsync raw) {
+    return api2wire_test_id_twin_rust_async(raw);
   }
 
   @protected
@@ -913,6 +1233,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic>
+      api2wire_box_autoadd_tuple_struct_with_one_field_twin_rust_async(
+          TupleStructWithOneFieldTwinRustAsync raw) {
+    return api2wire_tuple_struct_with_one_field_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_tuple_struct_with_one_field_twin_sync(
       TupleStructWithOneFieldTwinSync raw) {
     return api2wire_tuple_struct_with_one_field_twin_sync(raw);
@@ -922,6 +1249,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> api2wire_box_autoadd_tuple_struct_with_two_field_twin_normal(
       TupleStructWithTwoFieldTwinNormal raw) {
     return api2wire_tuple_struct_with_two_field_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic>
+      api2wire_box_autoadd_tuple_struct_with_two_field_twin_rust_async(
+          TupleStructWithTwoFieldTwinRustAsync raw) {
+    return api2wire_tuple_struct_with_two_field_twin_rust_async(raw);
   }
 
   @protected
@@ -956,6 +1290,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_user_id_twin_rust_async(
+      UserIdTwinRustAsync raw) {
+    return api2wire_user_id_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_user_id_twin_sync(UserIdTwinSync raw) {
     return api2wire_user_id_twin_sync(raw);
   }
@@ -966,6 +1306,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  int api2wire_box_autoadd_weekdays_twin_rust_async(WeekdaysTwinRustAsync raw) {
+    return api2wire_weekdays_twin_rust_async(raw);
+  }
+
+  @protected
   int api2wire_box_autoadd_weekdays_twin_sync(WeekdaysTwinSync raw) {
     return api2wire_weekdays_twin_sync(raw);
   }
@@ -973,6 +1318,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> api2wire_box_blob_twin_normal(BlobTwinNormal raw) {
     return api2wire_blob_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_blob_twin_rust_async(BlobTwinRustAsync raw) {
+    return api2wire_blob_twin_rust_async(raw);
   }
 
   @protected
@@ -991,6 +1341,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_distance_twin_rust_async(
+      DistanceTwinRustAsync raw) {
+    return api2wire_distance_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_distance_twin_sync(DistanceTwinSync raw) {
     return api2wire_distance_twin_sync(raw);
   }
@@ -999,6 +1355,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> api2wire_box_exotic_optionals_twin_normal(
       ExoticOptionalsTwinNormal raw) {
     return api2wire_exotic_optionals_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_exotic_optionals_twin_rust_async(
+      ExoticOptionalsTwinRustAsync raw) {
+    return api2wire_exotic_optionals_twin_rust_async(raw);
   }
 
   @protected
@@ -1034,6 +1396,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_kitchen_sink_twin_rust_async(
+      KitchenSinkTwinRustAsync raw) {
+    return api2wire_kitchen_sink_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_kitchen_sink_twin_sync(KitchenSinkTwinSync raw) {
     return api2wire_kitchen_sink_twin_sync(raw);
   }
@@ -1050,6 +1418,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_my_size_freezed_twin_rust_async(
+      MySizeFreezedTwinRustAsync raw) {
+    return api2wire_my_size_freezed_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_my_size_freezed_twin_sync(
       MySizeFreezedTwinSync raw) {
     return api2wire_my_size_freezed_twin_sync(raw);
@@ -1058,6 +1432,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> api2wire_box_speed_twin_normal(SpeedTwinNormal raw) {
     return api2wire_speed_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_speed_twin_rust_async(SpeedTwinRustAsync raw) {
+    return api2wire_speed_twin_rust_async(raw);
   }
 
   @protected
@@ -1081,12 +1460,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  int api2wire_box_weekdays_twin_rust_async(WeekdaysTwinRustAsync raw) {
+    return api2wire_weekdays_twin_rust_async(raw);
+  }
+
+  @protected
   int api2wire_box_weekdays_twin_sync(WeekdaysTwinSync raw) {
     return api2wire_weekdays_twin_sync(raw);
   }
 
   @protected
   List<dynamic> api2wire_c_twin_normal(CTwinNormal raw) {
+    return [api2wire_bool(raw.c)];
+  }
+
+  @protected
+  List<dynamic> api2wire_c_twin_rust_async(CTwinRustAsync raw) {
     return [api2wire_bool(raw.c)];
   }
 
@@ -1098,6 +1487,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> api2wire_concatenate_with_twin_normal(
       ConcatenateWithTwinNormal raw) {
+    return [api2wire_String(raw.a)];
+  }
+
+  @protected
+  List<dynamic> api2wire_concatenate_with_twin_rust_async(
+      ConcatenateWithTwinRustAsync raw) {
     return [api2wire_String(raw.a)];
   }
 
@@ -1114,6 +1509,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return [0, api2wire_String(raw.field0)];
     }
     if (raw is CustomNestedErrorInnerTwinNormal_Four) {
+      return [1, api2wire_u_32(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> api2wire_custom_nested_error_inner_twin_rust_async(
+      CustomNestedErrorInnerTwinRustAsync raw) {
+    if (raw is CustomNestedErrorInnerTwinRustAsync_Three) {
+      return [0, api2wire_String(raw.field0)];
+    }
+    if (raw is CustomNestedErrorInnerTwinRustAsync_Four) {
       return [1, api2wire_u_32(raw.field0)];
     }
 
@@ -1150,6 +1558,23 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_custom_nested_error_outer_twin_rust_async(
+      CustomNestedErrorOuterTwinRustAsync raw) {
+    if (raw is CustomNestedErrorOuterTwinRustAsync_One) {
+      return [0, api2wire_String(raw.field0)];
+    }
+    if (raw is CustomNestedErrorOuterTwinRustAsync_Two) {
+      return [
+        1,
+        api2wire_box_autoadd_custom_nested_error_inner_twin_rust_async(
+            raw.field0)
+      ];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
   List<dynamic> api2wire_custom_nested_error_outer_twin_sync(
       CustomNestedErrorOuterTwinSync raw) {
     if (raw is CustomNestedErrorOuterTwinSync_One) {
@@ -1172,6 +1597,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_custom_struct_error_twin_rust_async(
+      CustomStructErrorTwinRustAsync raw) {
+    return [api2wire_String(raw.a)];
+  }
+
+  @protected
   List<dynamic> api2wire_custom_struct_error_twin_sync(
       CustomStructErrorTwinSync raw) {
     return [api2wire_String(raw.a)];
@@ -1183,12 +1614,27 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_custom_struct_twin_rust_async(
+      CustomStructTwinRustAsync raw) {
+    return [api2wire_String(raw.message)];
+  }
+
+  @protected
   List<dynamic> api2wire_custom_struct_twin_sync(CustomStructTwinSync raw) {
     return [api2wire_String(raw.message)];
   }
 
   @protected
   List<dynamic> api2wire_customized_twin_normal(CustomizedTwinNormal raw) {
+    return [
+      api2wire_String(raw.finalField),
+      api2wire_opt_String(raw.nonFinalField)
+    ];
+  }
+
+  @protected
+  List<dynamic> api2wire_customized_twin_rust_async(
+      CustomizedTwinRustAsync raw) {
     return [
       api2wire_String(raw.finalField),
       api2wire_opt_String(raw.nonFinalField)
@@ -1210,6 +1656,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_dart_opaque_nested_twin_rust_async(
+      DartOpaqueNestedTwinRustAsync raw) {
+    return [api2wire_DartOpaque(raw.first), api2wire_DartOpaque(raw.second)];
+  }
+
+  @protected
   List<dynamic> api2wire_dart_opaque_nested_twin_sync(
       DartOpaqueNestedTwinSync raw) {
     return [api2wire_DartOpaque(raw.first), api2wire_DartOpaque(raw.second)];
@@ -1221,6 +1673,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return [0];
     }
     if (raw is DistanceTwinNormal_Map) {
+      return [1, api2wire_f_64(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> api2wire_distance_twin_rust_async(DistanceTwinRustAsync raw) {
+    if (raw is DistanceTwinRustAsync_Unknown) {
+      return [0];
+    }
+    if (raw is DistanceTwinRustAsync_Map) {
       return [1, api2wire_f_64(raw.field0)];
     }
 
@@ -1245,6 +1709,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_empty_twin_rust_async(EmptyTwinRustAsync raw) {
+    return [];
+  }
+
+  @protected
   List<dynamic> api2wire_empty_twin_sync(EmptyTwinSync raw) {
     return [];
   }
@@ -1256,6 +1725,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return [0, api2wire_i_32(raw.field0)];
     }
     if (raw is EnumDartOpaqueTwinNormal_Opaque) {
+      return [1, api2wire_DartOpaque(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> api2wire_enum_dart_opaque_twin_rust_async(
+      EnumDartOpaqueTwinRustAsync raw) {
+    if (raw is EnumDartOpaqueTwinRustAsync_Primitive) {
+      return [0, api2wire_i_32(raw.field0)];
+    }
+    if (raw is EnumDartOpaqueTwinRustAsync_Opaque) {
       return [1, api2wire_DartOpaque(raw.field0)];
     }
 
@@ -1290,6 +1772,28 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return [3, api2wire_RustOpaque_MutexHideData(raw.field0)];
     }
     if (raw is EnumOpaqueTwinNormal_RwLock) {
+      return [4, api2wire_RustOpaque_RwLockHideData(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> api2wire_enum_opaque_twin_rust_async(
+      EnumOpaqueTwinRustAsync raw) {
+    if (raw is EnumOpaqueTwinRustAsync_Struct) {
+      return [0, api2wire_RustOpaque_hide_data(raw.field0)];
+    }
+    if (raw is EnumOpaqueTwinRustAsync_Primitive) {
+      return [1, api2wire_RustOpaque_i_32(raw.field0)];
+    }
+    if (raw is EnumOpaqueTwinRustAsync_TraitObj) {
+      return [2, api2wire_RustOpaque_box_dynDartDebugTwinRustAsync(raw.field0)];
+    }
+    if (raw is EnumOpaqueTwinRustAsync_Mutex) {
+      return [3, api2wire_RustOpaque_MutexHideData(raw.field0)];
+    }
+    if (raw is EnumOpaqueTwinRustAsync_RwLock) {
       return [4, api2wire_RustOpaque_RwLockHideData(raw.field0)];
     }
 
@@ -1334,6 +1838,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_enum_with_item_mixed_twin_rust_async(
+      EnumWithItemMixedTwinRustAsync raw) {
+    if (raw is EnumWithItemMixedTwinRustAsync_A) {
+      return [0];
+    }
+    if (raw is EnumWithItemMixedTwinRustAsync_B) {
+      return [1, api2wire_list_prim_u_8(raw.field0)];
+    }
+    if (raw is EnumWithItemMixedTwinRustAsync_C) {
+      return [2, api2wire_String(raw.cField)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
   List<dynamic> api2wire_enum_with_item_mixed_twin_sync(
       EnumWithItemMixedTwinSync raw) {
     if (raw is EnumWithItemMixedTwinSync_A) {
@@ -1356,6 +1876,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return [0, api2wire_list_prim_u_8(raw.aField)];
     }
     if (raw is EnumWithItemStructTwinNormal_B) {
+      return [1, api2wire_list_prim_i_32(raw.bField)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> api2wire_enum_with_item_struct_twin_rust_async(
+      EnumWithItemStructTwinRustAsync raw) {
+    if (raw is EnumWithItemStructTwinRustAsync_A) {
+      return [0, api2wire_list_prim_u_8(raw.aField)];
+    }
+    if (raw is EnumWithItemStructTwinRustAsync_B) {
       return [1, api2wire_list_prim_i_32(raw.bField)];
     }
 
@@ -1389,6 +1922,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_enum_with_item_tuple_twin_rust_async(
+      EnumWithItemTupleTwinRustAsync raw) {
+    if (raw is EnumWithItemTupleTwinRustAsync_A) {
+      return [0, api2wire_list_prim_u_8(raw.field0)];
+    }
+    if (raw is EnumWithItemTupleTwinRustAsync_B) {
+      return [1, api2wire_list_prim_i_32(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
   List<dynamic> api2wire_enum_with_item_tuple_twin_sync(
       EnumWithItemTupleTwinSync raw) {
     if (raw is EnumWithItemTupleTwinSync_A) {
@@ -1403,6 +1949,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> api2wire_event_twin_normal(EventTwinNormal raw) {
+    return [api2wire_String(raw.address), api2wire_String(raw.payload)];
+  }
+
+  @protected
+  List<dynamic> api2wire_event_twin_rust_async(EventTwinRustAsync raw) {
     return [api2wire_String(raw.address), api2wire_String(raw.payload)];
   }
 
@@ -1431,6 +1982,29 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       api2wire_opt_list_opt_box_autoadd_attribute_twin_normal(
           raw.nullableAttributes),
       api2wire_opt_box_autoadd_new_type_int_twin_normal(raw.newtypeint)
+    ];
+  }
+
+  @protected
+  List<dynamic> api2wire_exotic_optionals_twin_rust_async(
+      ExoticOptionalsTwinRustAsync raw) {
+    return [
+      api2wire_opt_box_autoadd_i_32(raw.int32),
+      api2wire_opt_box_autoadd_i_64(raw.int64),
+      api2wire_opt_box_autoadd_f_64(raw.float64),
+      api2wire_opt_box_autoadd_bool(raw.boolean),
+      api2wire_opt_ZeroCopyBuffer_list_prim_u_8(raw.zerocopy),
+      api2wire_opt_list_prim_i_8(raw.int8List),
+      api2wire_opt_list_prim_u_8(raw.uint8List),
+      api2wire_opt_list_prim_i_32(raw.int32List),
+      api2wire_opt_list_prim_f_32(raw.float32List),
+      api2wire_opt_list_prim_f_64(raw.float64List),
+      api2wire_opt_list_attribute_twin_rust_async(raw.attributes),
+      api2wire_list_opt_box_autoadd_attribute_twin_rust_async(
+          raw.attributesNullable),
+      api2wire_opt_list_opt_box_autoadd_attribute_twin_rust_async(
+          raw.nullableAttributes),
+      api2wire_opt_box_autoadd_new_type_int_twin_rust_async(raw.newtypeint)
     ];
   }
 
@@ -1473,6 +2047,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_feature_chrono_twin_rust_async(
+      FeatureChronoTwinRustAsync raw) {
+    return [
+      api2wire_Chrono_Utc(raw.utc),
+      api2wire_Chrono_Local(raw.local),
+      api2wire_Chrono_Duration(raw.duration),
+      api2wire_Chrono_Naive(raw.naive)
+    ];
+  }
+
+  @protected
   List<dynamic> api2wire_feature_chrono_twin_sync(FeatureChronoTwinSync raw) {
     return [
       api2wire_Chrono_Utc(raw.utc),
@@ -1488,12 +2073,23 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_feature_uuid_twin_rust_async(
+      FeatureUuidTwinRustAsync raw) {
+    return [api2wire_Uuid(raw.one), api2wire_Uuids(raw.many)];
+  }
+
+  @protected
   List<dynamic> api2wire_feature_uuid_twin_sync(FeatureUuidTwinSync raw) {
     return [api2wire_Uuid(raw.one), api2wire_Uuids(raw.many)];
   }
 
   @protected
   List<dynamic> api2wire_feed_id_twin_normal(FeedIdTwinNormal raw) {
+    return [api2wire_u_8_array_8(raw.field0)];
+  }
+
+  @protected
+  List<dynamic> api2wire_feed_id_twin_rust_async(FeedIdTwinRustAsync raw) {
     return [api2wire_u_8_array_8(raw.field0)];
   }
 
@@ -1544,6 +2140,44 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
     if (raw is KitchenSinkTwinNormal_Enums) {
       return [5, api2wire_weekdays_twin_normal(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> api2wire_kitchen_sink_twin_rust_async(
+      KitchenSinkTwinRustAsync raw) {
+    if (raw is KitchenSinkTwinRustAsync_Empty) {
+      return [0];
+    }
+    if (raw is KitchenSinkTwinRustAsync_Primitives) {
+      return [
+        1,
+        api2wire_i_32(raw.int32),
+        api2wire_f_64(raw.float64),
+        api2wire_bool(raw.boolean)
+      ];
+    }
+    if (raw is KitchenSinkTwinRustAsync_Nested) {
+      return [
+        2,
+        api2wire_i_32(raw.field0),
+        api2wire_box_kitchen_sink_twin_rust_async(raw.field1)
+      ];
+    }
+    if (raw is KitchenSinkTwinRustAsync_Optional) {
+      return [
+        3,
+        api2wire_opt_box_autoadd_i_32(raw.field0),
+        api2wire_opt_box_autoadd_i_32(raw.field1)
+      ];
+    }
+    if (raw is KitchenSinkTwinRustAsync_Buffer) {
+      return [4, api2wire_ZeroCopyBuffer_list_prim_u_8(raw.field0)];
+    }
+    if (raw is KitchenSinkTwinRustAsync_Enums) {
+      return [5, api2wire_weekdays_twin_rust_async(raw.field0)];
     }
 
     throw Exception('unreachable');
@@ -1608,6 +2242,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_list_attribute_twin_rust_async(
+      List<AttributeTwinRustAsync> raw) {
+    return raw.map(api2wire_attribute_twin_rust_async).toList();
+  }
+
+  @protected
   List<dynamic> api2wire_list_attribute_twin_sync(List<AttributeTwinSync> raw) {
     return raw.map(api2wire_attribute_twin_sync).toList();
   }
@@ -1629,6 +2269,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_list_my_tree_node_twin_rust_async(
+      List<MyTreeNodeTwinRustAsync> raw) {
+    return raw.map(api2wire_my_tree_node_twin_rust_async).toList();
+  }
+
+  @protected
   List<dynamic> api2wire_list_my_tree_node_twin_sync(
       List<MyTreeNodeTwinSync> raw) {
     return raw.map(api2wire_my_tree_node_twin_sync).toList();
@@ -1646,6 +2292,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_list_opt_box_autoadd_attribute_twin_rust_async(
+      List<AttributeTwinRustAsync?> raw) {
+    return mapNonNull(raw, api2wire_box_autoadd_attribute_twin_rust_async);
+  }
+
+  @protected
   List<dynamic> api2wire_list_opt_box_autoadd_attribute_twin_sync(
       List<AttributeTwinSync?> raw) {
     return mapNonNull(raw, api2wire_box_autoadd_attribute_twin_sync);
@@ -1660,6 +2312,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> api2wire_list_opt_box_autoadd_weekdays_twin_normal(
       List<WeekdaysTwinNormal?> raw) {
     return mapNonNull(raw, api2wire_box_autoadd_weekdays_twin_normal);
+  }
+
+  @protected
+  List<dynamic> api2wire_list_opt_box_autoadd_weekdays_twin_rust_async(
+      List<WeekdaysTwinRustAsync?> raw) {
+    return mapNonNull(raw, api2wire_box_autoadd_weekdays_twin_rust_async);
   }
 
   @protected
@@ -1734,6 +2392,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_list_test_id_twin_rust_async(
+      List<TestIdTwinRustAsync> raw) {
+    return raw.map(api2wire_test_id_twin_rust_async).toList();
+  }
+
+  @protected
   List<dynamic> api2wire_list_test_id_twin_sync(List<TestIdTwinSync> raw) {
     return raw.map(api2wire_test_id_twin_sync).toList();
   }
@@ -1742,6 +2406,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> api2wire_list_weekdays_twin_normal(
       List<WeekdaysTwinNormal> raw) {
     return raw.map(api2wire_weekdays_twin_normal).toList();
+  }
+
+  @protected
+  List<dynamic> api2wire_list_weekdays_twin_rust_async(
+      List<WeekdaysTwinRustAsync> raw) {
+    return raw.map(api2wire_weekdays_twin_rust_async).toList();
   }
 
   @protected
@@ -1767,6 +2437,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_measure_twin_rust_async(MeasureTwinRustAsync raw) {
+    if (raw is MeasureTwinRustAsync_Speed) {
+      return [0, api2wire_box_speed_twin_rust_async(raw.field0)];
+    }
+    if (raw is MeasureTwinRustAsync_Distance) {
+      return [1, api2wire_box_distance_twin_rust_async(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
   List<dynamic> api2wire_measure_twin_sync(MeasureTwinSync raw) {
     if (raw is MeasureTwinSync_Speed) {
       return [0, api2wire_box_speed_twin_sync(raw.field0)];
@@ -1784,6 +2466,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_message_id_twin_rust_async(
+      MessageIdTwinRustAsync raw) {
+    return [api2wire_u_8_array_32(raw.field0)];
+  }
+
+  @protected
   List<dynamic> api2wire_message_id_twin_sync(MessageIdTwinSync raw) {
     return [api2wire_u_8_array_32(raw.field0)];
   }
@@ -1794,6 +2482,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     return [
       api2wire_my_tree_node_twin_normal(raw.treeNode),
       api2wire_weekdays_twin_normal(raw.weekday)
+    ];
+  }
+
+  @protected
+  List<dynamic> api2wire_my_nested_struct_twin_rust_async(
+      MyNestedStructTwinRustAsync raw) {
+    return [
+      api2wire_my_tree_node_twin_rust_async(raw.treeNode),
+      api2wire_weekdays_twin_rust_async(raw.weekday)
     ];
   }
 
@@ -1818,6 +2515,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_my_size_freezed_twin_rust_async(
+      MySizeFreezedTwinRustAsync raw) {
+    return [api2wire_i_32(raw.width), api2wire_i_32(raw.height)];
+  }
+
+  @protected
   List<dynamic> api2wire_my_size_freezed_twin_sync(MySizeFreezedTwinSync raw) {
     return [api2wire_i_32(raw.width), api2wire_i_32(raw.height)];
   }
@@ -1838,6 +2541,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_my_tree_node_twin_rust_async(
+      MyTreeNodeTwinRustAsync raw) {
+    return [
+      api2wire_i_32(raw.valueI32),
+      api2wire_list_prim_u_8(raw.valueVecU8),
+      api2wire_bool(raw.valueBoolean),
+      api2wire_list_my_tree_node_twin_rust_async(raw.children)
+    ];
+  }
+
+  @protected
   List<dynamic> api2wire_my_tree_node_twin_sync(MyTreeNodeTwinSync raw) {
     return [
       api2wire_i_32(raw.valueI32),
@@ -1853,6 +2567,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_new_type_int_twin_rust_async(
+      NewTypeIntTwinRustAsync raw) {
+    return [api2wire_i_64(raw.field0)];
+  }
+
+  @protected
   List<dynamic> api2wire_new_type_int_twin_sync(NewTypeIntTwinSync raw) {
     return [api2wire_i_64(raw.field0)];
   }
@@ -1861,6 +2581,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> api2wire_note_twin_normal(NoteTwinNormal raw) {
     return [
       api2wire_box_weekdays_twin_normal(raw.day),
+      api2wire_String(raw.body)
+    ];
+  }
+
+  @protected
+  List<dynamic> api2wire_note_twin_rust_async(NoteTwinRustAsync raw) {
+    return [
+      api2wire_box_weekdays_twin_rust_async(raw.day),
       api2wire_String(raw.body)
     ];
   }
@@ -1880,6 +2608,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> api2wire_opaque_nested_twin_normal(OpaqueNestedTwinNormal raw) {
+    return [
+      api2wire_RustOpaque_hide_data(raw.first),
+      api2wire_RustOpaque_hide_data(raw.second)
+    ];
+  }
+
+  @protected
+  List<dynamic> api2wire_opaque_nested_twin_rust_async(
+      OpaqueNestedTwinRustAsync raw) {
     return [
       api2wire_RustOpaque_hide_data(raw.first),
       api2wire_RustOpaque_hide_data(raw.second)
@@ -1938,6 +2675,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic>? api2wire_opt_box_autoadd_exotic_optionals_twin_rust_async(
+      ExoticOptionalsTwinRustAsync? raw) {
+    return raw == null
+        ? null
+        : api2wire_box_autoadd_exotic_optionals_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic>? api2wire_opt_box_autoadd_exotic_optionals_twin_sync(
       ExoticOptionalsTwinSync? raw) {
     return raw == null
@@ -1981,6 +2726,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     return raw == null
         ? null
         : api2wire_box_autoadd_new_type_int_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic>? api2wire_opt_box_autoadd_new_type_int_twin_rust_async(
+      NewTypeIntTwinRustAsync? raw) {
+    return raw == null
+        ? null
+        : api2wire_box_autoadd_new_type_int_twin_rust_async(raw);
   }
 
   @protected
@@ -2029,6 +2782,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic>? api2wire_opt_box_exotic_optionals_twin_rust_async(
+      ExoticOptionalsTwinRustAsync? raw) {
+    return raw == null
+        ? null
+        : api2wire_box_exotic_optionals_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic>? api2wire_opt_box_exotic_optionals_twin_sync(
       ExoticOptionalsTwinSync? raw) {
     return raw == null ? null : api2wire_box_exotic_optionals_twin_sync(raw);
@@ -2066,6 +2827,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic>? api2wire_opt_list_attribute_twin_rust_async(
+      List<AttributeTwinRustAsync>? raw) {
+    return raw == null ? null : api2wire_list_attribute_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic>? api2wire_opt_list_attribute_twin_sync(
       List<AttributeTwinSync>? raw) {
     return raw == null ? null : api2wire_list_attribute_twin_sync(raw);
@@ -2077,6 +2844,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     return raw == null
         ? null
         : api2wire_list_opt_box_autoadd_attribute_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic>? api2wire_opt_list_opt_box_autoadd_attribute_twin_rust_async(
+      List<AttributeTwinRustAsync?>? raw) {
+    return raw == null
+        ? null
+        : api2wire_list_opt_box_autoadd_attribute_twin_rust_async(raw);
   }
 
   @protected
@@ -2123,6 +2898,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_opt_vecs_twin_rust_async(OptVecsTwinRustAsync raw) {
+    return [
+      api2wire_list_opt_box_autoadd_i_32(raw.i32),
+      api2wire_list_opt_box_autoadd_weekdays_twin_rust_async(raw.enums),
+      api2wire_list_opt_String(raw.strings),
+      api2wire_list_opt_list_prim_i_32(raw.buffers)
+    ];
+  }
+
+  @protected
   List<dynamic> api2wire_opt_vecs_twin_sync(OptVecsTwinSync raw) {
     return [
       api2wire_list_opt_box_autoadd_i_32(raw.i32),
@@ -2148,6 +2933,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_some_struct_twin_rust_async(
+      SomeStructTwinRustAsync raw) {
+    return [api2wire_u_32(raw.value)];
+  }
+
+  @protected
   List<dynamic> api2wire_some_struct_twin_sync(SomeStructTwinSync raw) {
     return [api2wire_u_32(raw.value)];
   }
@@ -2158,6 +2949,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return [0];
     }
     if (raw is SpeedTwinNormal_GPS) {
+      return [1, api2wire_f_64(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> api2wire_speed_twin_rust_async(SpeedTwinRustAsync raw) {
+    if (raw is SpeedTwinRustAsync_Unknown) {
+      return [0];
+    }
+    if (raw is SpeedTwinRustAsync_GPS) {
       return [1, api2wire_f_64(raw.field0)];
     }
 
@@ -2183,6 +2986,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_struct_with_comments_twin_rust_async(
+      StructWithCommentsTwinRustAsync raw) {
+    return [api2wire_i_32(raw.fieldWithComments)];
+  }
+
+  @protected
   List<dynamic> api2wire_struct_with_comments_twin_sync(
       StructWithCommentsTwinSync raw) {
     return [api2wire_i_32(raw.fieldWithComments)];
@@ -2194,6 +3003,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     return [
       api2wire_abc_twin_normal(raw.abc1),
       api2wire_abc_twin_normal(raw.abc2)
+    ];
+  }
+
+  @protected
+  List<dynamic> api2wire_struct_with_enum_twin_rust_async(
+      StructWithEnumTwinRustAsync raw) {
+    return [
+      api2wire_abc_twin_rust_async(raw.abc1),
+      api2wire_abc_twin_rust_async(raw.abc2)
     ];
   }
 
@@ -2210,6 +3028,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_struct_with_one_field_twin_rust_async(
+      StructWithOneFieldTwinRustAsync raw) {
+    return [api2wire_i_32(raw.a)];
+  }
+
+  @protected
   List<dynamic> api2wire_struct_with_one_field_twin_sync(
       StructWithOneFieldTwinSync raw) {
     return [api2wire_i_32(raw.a)];
@@ -2218,6 +3042,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> api2wire_struct_with_two_field_twin_normal(
       StructWithTwoFieldTwinNormal raw) {
+    return [api2wire_i_32(raw.a), api2wire_i_32(raw.b)];
+  }
+
+  @protected
+  List<dynamic> api2wire_struct_with_two_field_twin_rust_async(
+      StructWithTwoFieldTwinRustAsync raw) {
     return [api2wire_i_32(raw.a), api2wire_i_32(raw.b)];
   }
 
@@ -2234,6 +3064,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_struct_with_zero_field_twin_rust_async(
+      StructWithZeroFieldTwinRustAsync raw) {
+    return [];
+  }
+
+  @protected
   List<dynamic> api2wire_struct_with_zero_field_twin_sync(
       StructWithZeroFieldTwinSync raw) {
     return [];
@@ -2241,6 +3077,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> api2wire_sum_with_twin_normal(SumWithTwinNormal raw) {
+    return [api2wire_u_32(raw.x)];
+  }
+
+  @protected
+  List<dynamic> api2wire_sum_with_twin_rust_async(SumWithTwinRustAsync raw) {
     return [api2wire_u_32(raw.x)];
   }
 
@@ -2261,6 +3102,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_test_id_twin_rust_async(TestIdTwinRustAsync raw) {
+    return [api2wire_i_32_array_2(raw.field0)];
+  }
+
+  @protected
+  List<dynamic> api2wire_test_id_twin_rust_async_array_4(
+      TestIdTwinRustAsyncArray4 raw) {
+    return api2wire_list_test_id_twin_rust_async(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_test_id_twin_sync(TestIdTwinSync raw) {
     return [api2wire_i_32_array_2(raw.field0)];
   }
@@ -2277,6 +3129,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_tuple_struct_with_one_field_twin_rust_async(
+      TupleStructWithOneFieldTwinRustAsync raw) {
+    return [api2wire_i_32(raw.field0)];
+  }
+
+  @protected
   List<dynamic> api2wire_tuple_struct_with_one_field_twin_sync(
       TupleStructWithOneFieldTwinSync raw) {
     return [api2wire_i_32(raw.field0)];
@@ -2285,6 +3143,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> api2wire_tuple_struct_with_two_field_twin_normal(
       TupleStructWithTwoFieldTwinNormal raw) {
+    return [api2wire_i_32(raw.field0), api2wire_i_32(raw.field1)];
+  }
+
+  @protected
+  List<dynamic> api2wire_tuple_struct_with_two_field_twin_rust_async(
+      TupleStructWithTwoFieldTwinRustAsync raw) {
     return [api2wire_i_32(raw.field0), api2wire_i_32(raw.field1)];
   }
 
@@ -2316,6 +3180,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> api2wire_user_id_twin_normal(UserIdTwinNormal raw) {
+    return [api2wire_u_32(raw.value)];
+  }
+
+  @protected
+  List<dynamic> api2wire_user_id_twin_rust_async(UserIdTwinRustAsync raw) {
     return [api2wire_u_32(raw.value)];
   }
 
@@ -2963,6 +3832,44 @@ class RustLibWire extends BaseWire {
   void wire_primitive_u32_twin_normal(NativePortType port_, int my_u32) =>
       wasmModule.wire_primitive_u32_twin_normal(port_, my_u32);
 
+  void wire_boxed_blob_twin_rust_async(NativePortType port_, Uint8List blob) =>
+      wasmModule.wire_boxed_blob_twin_rust_async(port_, blob);
+
+  void wire_func_test_id_twin_rust_async(
+          NativePortType port_, List<dynamic> id) =>
+      wasmModule.wire_func_test_id_twin_rust_async(port_, id);
+
+  void wire_get_array_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_get_array_twin_rust_async(port_);
+
+  void wire_get_complex_array_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_get_complex_array_twin_rust_async(port_);
+
+  void wire_last_number_twin_rust_async(
+          NativePortType port_, Float64List array) =>
+      wasmModule.wire_last_number_twin_rust_async(port_, array);
+
+  void wire_nested_id_twin_rust_async(NativePortType port_, List<dynamic> id) =>
+      wasmModule.wire_nested_id_twin_rust_async(port_, id);
+
+  void wire_new_msgid_twin_rust_async(NativePortType port_, Uint8List id) =>
+      wasmModule.wire_new_msgid_twin_rust_async(port_, id);
+
+  void wire_return_boxed_feed_id_twin_rust_async(
+          NativePortType port_, Uint8List id) =>
+      wasmModule.wire_return_boxed_feed_id_twin_rust_async(port_, id);
+
+  void wire_return_boxed_raw_feed_id_twin_rust_async(
+          NativePortType port_, List<dynamic> id) =>
+      wasmModule.wire_return_boxed_raw_feed_id_twin_rust_async(port_, id);
+
+  void wire_use_boxed_blob_twin_rust_async(
+          NativePortType port_, List<dynamic> blob) =>
+      wasmModule.wire_use_boxed_blob_twin_rust_async(port_, blob);
+
+  void wire_use_msgid_twin_rust_async(NativePortType port_, List<dynamic> id) =>
+      wasmModule.wire_use_msgid_twin_rust_async(port_, id);
+
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_boxed_blob_twin_sync(Uint8List blob) =>
           wasmModule.wire_boxed_blob_twin_sync(blob);
@@ -3006,6 +3913,14 @@ class RustLibWire extends BaseWire {
       wire_use_msgid_twin_sync(List<dynamic> id) =>
           wasmModule.wire_use_msgid_twin_sync(id);
 
+  void wire_handle_customized_struct_twin_rust_async(
+          NativePortType port_, List<dynamic> val) =>
+      wasmModule.wire_handle_customized_struct_twin_rust_async(port_, val);
+
+  void wire_next_user_id_twin_rust_async(
+          NativePortType port_, List<dynamic> user_id) =>
+      wasmModule.wire_next_user_id_twin_rust_async(port_, user_id);
+
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_customized_struct_twin_sync(List<dynamic> val) =>
           wasmModule.wire_handle_customized_struct_twin_sync(val);
@@ -3013,6 +3928,17 @@ class RustLibWire extends BaseWire {
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_next_user_id_twin_sync(List<dynamic> user_id) =>
           wasmModule.wire_next_user_id_twin_sync(user_id);
+
+  void wire_benchmark_input_bytes_twin_rust_async(
+          NativePortType port_, Uint8List bytes) =>
+      wasmModule.wire_benchmark_input_bytes_twin_rust_async(port_, bytes);
+
+  void wire_benchmark_output_bytes_twin_rust_async(
+          NativePortType port_, int size) =>
+      wasmModule.wire_benchmark_output_bytes_twin_rust_async(port_, size);
+
+  void wire_benchmark_void_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_benchmark_void_twin_rust_async(port_);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_benchmark_input_bytes_twin_sync(Uint8List bytes) =>
@@ -3025,6 +3951,41 @@ class RustLibWire extends BaseWire {
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_benchmark_void_twin_sync() =>
           wasmModule.wire_benchmark_void_twin_sync();
+
+  void wire_datetime_local_twin_rust_async(NativePortType port_, Object d) =>
+      wasmModule.wire_datetime_local_twin_rust_async(port_, d);
+
+  void wire_datetime_utc_twin_rust_async(NativePortType port_, Object d) =>
+      wasmModule.wire_datetime_utc_twin_rust_async(port_, d);
+
+  void wire_duration_twin_rust_async(NativePortType port_, Object d) =>
+      wasmModule.wire_duration_twin_rust_async(port_, d);
+
+  void wire_handle_durations_twin_rust_async(NativePortType port_,
+          Object /* BigInt64Array */ durations, Object since) =>
+      wasmModule.wire_handle_durations_twin_rust_async(port_, durations, since);
+
+  void wire_handle_timestamps_twin_rust_async(NativePortType port_,
+          Object /* BigInt64Array */ timestamps, Object epoch) =>
+      wasmModule.wire_handle_timestamps_twin_rust_async(
+          port_, timestamps, epoch);
+
+  void wire_how_long_does_it_take_twin_rust_async(
+          NativePortType port_, List<dynamic> mine) =>
+      wasmModule.wire_how_long_does_it_take_twin_rust_async(port_, mine);
+
+  void wire_naivedatetime_twin_rust_async(NativePortType port_, Object d) =>
+      wasmModule.wire_naivedatetime_twin_rust_async(port_, d);
+
+  void wire_optional_empty_datetime_utc_twin_rust_async(
+          NativePortType port_, Object? d) =>
+      wasmModule.wire_optional_empty_datetime_utc_twin_rust_async(port_, d);
+
+  void wire_test_chrono_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_test_chrono_twin_rust_async(port_);
+
+  void wire_test_precise_chrono_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_test_precise_chrono_twin_rust_async(port_);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_datetime_local_twin_sync(Object d) =>
@@ -3067,6 +4028,35 @@ class RustLibWire extends BaseWire {
       wire_test_precise_chrono_twin_sync() =>
           wasmModule.wire_test_precise_chrono_twin_sync();
 
+  void wire_StructWithCommentsTwinRustAsync_instance_method_twin_rust_async(
+          NativePortType port_, List<dynamic> that) =>
+      wasmModule
+          .wire_StructWithCommentsTwinRustAsync_instance_method_twin_rust_async(
+              port_, that);
+
+  void wire_StructWithCommentsTwinRustAsync_static_method_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire_StructWithCommentsTwinRustAsync_static_method_twin_rust_async(
+              port_);
+
+  void wire_function_with_comments_slash_star_star_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire_function_with_comments_slash_star_star_twin_rust_async(port_);
+
+  void wire_function_with_comments_triple_slash_multi_line_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire_function_with_comments_triple_slash_multi_line_twin_rust_async(
+              port_);
+
+  void wire_function_with_comments_triple_slash_single_line_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire_function_with_comments_triple_slash_single_line_twin_rust_async(
+              port_);
+
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_StructWithCommentsTwinSync_instance_method_twin_sync(
               List<dynamic> that) =>
@@ -3091,9 +4081,71 @@ class RustLibWire extends BaseWire {
           wasmModule
               .wire_function_with_comments_triple_slash_single_line_twin_sync();
 
+  void wire_return_dart_dynamic_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_return_dart_dynamic_twin_rust_async(port_);
+
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_return_dart_dynamic_twin_sync() =>
           wasmModule.wire_return_dart_dynamic_twin_sync();
+
+  void wire_async_accept_dart_opaque_twin_rust_async(
+          NativePortType port_, Object opaque) =>
+      wasmModule.wire_async_accept_dart_opaque_twin_rust_async(port_, opaque);
+
+  void wire_create_enum_dart_opaque_twin_rust_async(
+          NativePortType port_, Object opaque) =>
+      wasmModule.wire_create_enum_dart_opaque_twin_rust_async(port_, opaque);
+
+  void wire_create_nested_dart_opaque_twin_rust_async(
+          NativePortType port_, Object opaque1, Object opaque2) =>
+      wasmModule.wire_create_nested_dart_opaque_twin_rust_async(
+          port_, opaque1, opaque2);
+
+  void wire_drop_static_dart_opaque_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_drop_static_dart_opaque_twin_rust_async(port_);
+
+  void wire_get_enum_dart_opaque_twin_rust_async(
+          NativePortType port_, List<dynamic> opaque) =>
+      wasmModule.wire_get_enum_dart_opaque_twin_rust_async(port_, opaque);
+
+  void wire_get_nested_dart_opaque_twin_rust_async(
+          NativePortType port_, List<dynamic> opaque) =>
+      wasmModule.wire_get_nested_dart_opaque_twin_rust_async(port_, opaque);
+
+  void wire_loop_back_array_get_twin_rust_async(
+          NativePortType port_, List<dynamic> opaque) =>
+      wasmModule.wire_loop_back_array_get_twin_rust_async(port_, opaque);
+
+  void wire_loop_back_array_twin_rust_async(
+          NativePortType port_, Object opaque) =>
+      wasmModule.wire_loop_back_array_twin_rust_async(port_, opaque);
+
+  void wire_loop_back_option_get_twin_rust_async(
+          NativePortType port_, Object? opaque) =>
+      wasmModule.wire_loop_back_option_get_twin_rust_async(port_, opaque);
+
+  void wire_loop_back_option_twin_rust_async(
+          NativePortType port_, Object opaque) =>
+      wasmModule.wire_loop_back_option_twin_rust_async(port_, opaque);
+
+  void wire_loop_back_twin_rust_async(NativePortType port_, Object opaque) =>
+      wasmModule.wire_loop_back_twin_rust_async(port_, opaque);
+
+  void wire_loop_back_vec_get_twin_rust_async(
+          NativePortType port_, List<dynamic> opaque) =>
+      wasmModule.wire_loop_back_vec_get_twin_rust_async(port_, opaque);
+
+  void wire_loop_back_vec_twin_rust_async(
+          NativePortType port_, Object opaque) =>
+      wasmModule.wire_loop_back_vec_twin_rust_async(port_, opaque);
+
+  void wire_panic_unwrap_dart_opaque_twin_rust_async(
+          NativePortType port_, Object opaque) =>
+      wasmModule.wire_panic_unwrap_dart_opaque_twin_rust_async(port_, opaque);
+
+  void wire_set_static_dart_opaque_twin_rust_async(
+          NativePortType port_, Object opaque) =>
+      wasmModule.wire_set_static_dart_opaque_twin_rust_async(port_, opaque);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_async_accept_dart_opaque_twin_sync(Object opaque) =>
@@ -3156,6 +4208,41 @@ class RustLibWire extends BaseWire {
       wire_set_static_dart_opaque_twin_sync(Object opaque) =>
           wasmModule.wire_set_static_dart_opaque_twin_sync(opaque);
 
+  void wire_func_enum_simple_twin_rust_async(NativePortType port_, int arg) =>
+      wasmModule.wire_func_enum_simple_twin_rust_async(port_, arg);
+
+  void wire_func_enum_with_item_mixed_twin_rust_async(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_func_enum_with_item_mixed_twin_rust_async(port_, arg);
+
+  void wire_func_enum_with_item_struct_twin_rust_async(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_func_enum_with_item_struct_twin_rust_async(port_, arg);
+
+  void wire_func_enum_with_item_tuple_twin_rust_async(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_func_enum_with_item_tuple_twin_rust_async(port_, arg);
+
+  void wire_handle_enum_parameter_twin_rust_async(
+          NativePortType port_, int weekday) =>
+      wasmModule.wire_handle_enum_parameter_twin_rust_async(port_, weekday);
+
+  void wire_handle_enum_struct_twin_rust_async(
+          NativePortType port_, List<dynamic> val) =>
+      wasmModule.wire_handle_enum_struct_twin_rust_async(port_, val);
+
+  void wire_handle_return_enum_twin_rust_async(
+          NativePortType port_, String input) =>
+      wasmModule.wire_handle_return_enum_twin_rust_async(port_, input);
+
+  void wire_multiply_by_ten_twin_rust_async(
+          NativePortType port_, List<dynamic> measure) =>
+      wasmModule.wire_multiply_by_ten_twin_rust_async(port_, measure);
+
+  void wire_print_note_twin_rust_async(
+          NativePortType port_, List<dynamic> note) =>
+      wasmModule.wire_print_note_twin_rust_async(port_, note);
+
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_func_enum_simple_twin_sync(int arg) =>
           wasmModule.wire_func_enum_simple_twin_sync(arg);
@@ -3192,6 +4279,20 @@ class RustLibWire extends BaseWire {
       wire_print_note_twin_sync(List<dynamic> note) =>
           wasmModule.wire_print_note_twin_sync(note);
 
+  void wire_EventTwinRustAsync_as_string_twin_rust_async(
+          NativePortType port_, List<dynamic> that) =>
+      wasmModule.wire_EventTwinRustAsync_as_string_twin_rust_async(port_, that);
+
+  void wire_close_event_listener_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_close_event_listener_twin_rust_async(port_);
+
+  void wire_create_event_twin_rust_async(
+          NativePortType port_, String address, String payload) =>
+      wasmModule.wire_create_event_twin_rust_async(port_, address, payload);
+
+  void wire_register_event_listener_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_register_event_listener_twin_rust_async(port_);
+
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_EventTwinSync_as_string_twin_sync(List<dynamic> that) =>
           wasmModule.wire_EventTwinSync_as_string_twin_sync(that);
@@ -3206,6 +4307,135 @@ class RustLibWire extends BaseWire {
 
   void wire_register_event_listener_twin_sync(NativePortType port_) =>
       wasmModule.wire_register_event_listener_twin_sync(port_);
+
+  void wire_CustomStructTwinRustAsync_new_twin_rust_async(
+          NativePortType port_, String message) =>
+      wasmModule.wire_CustomStructTwinRustAsync_new_twin_rust_async(
+          port_, message);
+
+  void wire_CustomStructTwinRustAsync_nonstatic_return_custom_struct_error_twin_rust_async(
+          NativePortType port_, List<dynamic> that) =>
+      wasmModule
+          .wire_CustomStructTwinRustAsync_nonstatic_return_custom_struct_error_twin_rust_async(
+              port_, that);
+
+  void wire_CustomStructTwinRustAsync_nonstatic_return_custom_struct_ok_twin_rust_async(
+          NativePortType port_, List<dynamic> that) =>
+      wasmModule
+          .wire_CustomStructTwinRustAsync_nonstatic_return_custom_struct_ok_twin_rust_async(
+              port_, that);
+
+  void wire_CustomStructTwinRustAsync_static_return_custom_struct_error_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire_CustomStructTwinRustAsync_static_return_custom_struct_error_twin_rust_async(
+              port_);
+
+  void wire_CustomStructTwinRustAsync_static_return_custom_struct_ok_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire_CustomStructTwinRustAsync_static_return_custom_struct_ok_twin_rust_async(
+              port_);
+
+  void wire_SomeStructTwinRustAsync_new_twin_rust_async(
+          NativePortType port_, int value) =>
+      wasmModule.wire_SomeStructTwinRustAsync_new_twin_rust_async(port_, value);
+
+  void wire_SomeStructTwinRustAsync_non_static_return_err_custom_error_twin_rust_async(
+          NativePortType port_, List<dynamic> that) =>
+      wasmModule
+          .wire_SomeStructTwinRustAsync_non_static_return_err_custom_error_twin_rust_async(
+              port_, that);
+
+  void wire_SomeStructTwinRustAsync_non_static_return_ok_custom_error_twin_rust_async(
+          NativePortType port_, List<dynamic> that) =>
+      wasmModule
+          .wire_SomeStructTwinRustAsync_non_static_return_ok_custom_error_twin_rust_async(
+              port_, that);
+
+  void wire_SomeStructTwinRustAsync_static_return_err_custom_error_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire_SomeStructTwinRustAsync_static_return_err_custom_error_twin_rust_async(
+              port_);
+
+  void wire_SomeStructTwinRustAsync_static_return_ok_custom_error_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire_SomeStructTwinRustAsync_static_return_ok_custom_error_twin_rust_async(
+              port_);
+
+  void wire_custom_enum_error_panic_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_custom_enum_error_panic_twin_rust_async(port_);
+
+  void wire_custom_enum_error_return_error_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule.wire_custom_enum_error_return_error_twin_rust_async(port_);
+
+  void wire_custom_enum_error_return_ok_twin_rust_async(
+          NativePortType port_, int arg) =>
+      wasmModule.wire_custom_enum_error_return_ok_twin_rust_async(port_, arg);
+
+  void wire_custom_nested_error_return_error_twin_rust_async(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_custom_nested_error_return_error_twin_rust_async(
+          port_, arg);
+
+  void wire_custom_struct_error_return_error_twin_rust_async(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_custom_struct_error_return_error_twin_rust_async(
+          port_, arg);
+
+  void wire_func_return_error_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_func_return_error_twin_rust_async(port_);
+
+  void wire_func_type_fallible_panic_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_func_type_fallible_panic_twin_rust_async(port_);
+
+  void wire_func_type_infallible_panic_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_func_type_infallible_panic_twin_rust_async(port_);
+
+  void wire_panic_with_custom_result_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_panic_with_custom_result_twin_rust_async(port_);
+
+  void wire_return_custom_nested_error_1_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule.wire_return_custom_nested_error_1_twin_rust_async(port_);
+
+  void wire_return_custom_nested_error_1_variant1_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire_return_custom_nested_error_1_variant1_twin_rust_async(port_);
+
+  void wire_return_custom_nested_error_2_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule.wire_return_custom_nested_error_2_twin_rust_async(port_);
+
+  void wire_return_custom_struct_error_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_return_custom_struct_error_twin_rust_async(port_);
+
+  void wire_return_custom_struct_ok_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_return_custom_struct_ok_twin_rust_async(port_);
+
+  void wire_return_err_custom_error_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_return_err_custom_error_twin_rust_async(port_);
+
+  void wire_return_error_variant_twin_rust_async(
+          NativePortType port_, int variant) =>
+      wasmModule.wire_return_error_variant_twin_rust_async(port_, variant);
+
+  void wire_return_ok_custom_error_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_return_ok_custom_error_twin_rust_async(port_);
+
+  void wire_stream_sink_throw_anyhow_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_stream_sink_throw_anyhow_twin_rust_async(port_);
+
+  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_sync_return_custom_struct_error_twin_rust_async() =>
+          wasmModule.wire_sync_return_custom_struct_error_twin_rust_async();
+
+  void wire_throw_anyhow_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_throw_anyhow_twin_rust_async(port_);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_CustomStructTwinSync_new_twin_sync(String message) =>
@@ -3341,6 +4571,20 @@ class RustLibWire extends BaseWire {
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_throw_anyhow_twin_sync() => wasmModule.wire_throw_anyhow_twin_sync();
 
+  void wire_call_new_module_system_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_call_new_module_system_twin_rust_async(port_);
+
+  void wire_call_old_module_system_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_call_old_module_system_twin_rust_async(port_);
+
+  void wire_use_imported_enum_twin_rust_async(
+          NativePortType port_, int my_enum) =>
+      wasmModule.wire_use_imported_enum_twin_rust_async(port_, my_enum);
+
+  void wire_use_imported_struct_twin_rust_async(
+          NativePortType port_, List<dynamic> my_struct) =>
+      wasmModule.wire_use_imported_struct_twin_rust_async(port_, my_struct);
+
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_call_new_module_system_twin_sync() =>
           wasmModule.wire_call_new_module_system_twin_sync();
@@ -3356,6 +4600,58 @@ class RustLibWire extends BaseWire {
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_use_imported_struct_twin_sync(List<dynamic> my_struct) =>
           wasmModule.wire_use_imported_struct_twin_sync(my_struct);
+
+  void wire_ConcatenateWithTwinRustAsync_concatenate_static_twin_rust_async(
+          NativePortType port_, String a, String b) =>
+      wasmModule
+          .wire_ConcatenateWithTwinRustAsync_concatenate_static_twin_rust_async(
+              port_, a, b);
+
+  void wire_ConcatenateWithTwinRustAsync_concatenate_twin_rust_async(
+          NativePortType port_, List<dynamic> that, String b) =>
+      wasmModule.wire_ConcatenateWithTwinRustAsync_concatenate_twin_rust_async(
+          port_, that, b);
+
+  void wire_ConcatenateWithTwinRustAsync_handle_some_static_stream_sink_single_arg_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire_ConcatenateWithTwinRustAsync_handle_some_static_stream_sink_single_arg_twin_rust_async(
+              port_);
+
+  void wire_ConcatenateWithTwinRustAsync_handle_some_static_stream_sink_twin_rust_async(
+          NativePortType port_, int key, int max) =>
+      wasmModule
+          .wire_ConcatenateWithTwinRustAsync_handle_some_static_stream_sink_twin_rust_async(
+              port_, key, max);
+
+  void wire_ConcatenateWithTwinRustAsync_handle_some_stream_sink_at_1_twin_rust_async(
+          NativePortType port_, List<dynamic> that) =>
+      wasmModule
+          .wire_ConcatenateWithTwinRustAsync_handle_some_stream_sink_at_1_twin_rust_async(
+              port_, that);
+
+  void wire_ConcatenateWithTwinRustAsync_handle_some_stream_sink_twin_rust_async(
+          NativePortType port_, List<dynamic> that, int key, int max) =>
+      wasmModule
+          .wire_ConcatenateWithTwinRustAsync_handle_some_stream_sink_twin_rust_async(
+              port_, that, key, max);
+
+  void wire_ConcatenateWithTwinRustAsync_new_twin_rust_async(
+          NativePortType port_, String a) =>
+      wasmModule.wire_ConcatenateWithTwinRustAsync_new_twin_rust_async(
+          port_, a);
+
+  void wire_SumWithTwinRustAsync_sum_twin_rust_async(
+          NativePortType port_, List<dynamic> that, int y, int z) =>
+      wasmModule.wire_SumWithTwinRustAsync_sum_twin_rust_async(
+          port_, that, y, z);
+
+  void wire_get_sum_array_twin_rust_async(
+          NativePortType port_, int a, int b, int c) =>
+      wasmModule.wire_get_sum_array_twin_rust_async(port_, a, b, c);
+
+  void wire_get_sum_struct_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_get_sum_struct_twin_rust_async(port_);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_ConcatenateWithTwinSync_concatenate_static_twin_sync(
@@ -3407,6 +4703,77 @@ class RustLibWire extends BaseWire {
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_get_sum_struct_twin_sync() =>
           wasmModule.wire_get_sum_struct_twin_sync();
+
+  void wire_app_settings_stream_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_app_settings_stream_twin_rust_async(port_);
+
+  void wire_app_settings_vec_stream_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_app_settings_vec_stream_twin_rust_async(port_);
+
+  void wire_first_number_twin_rust_async(
+          NativePortType port_, List<dynamic> nums) =>
+      wasmModule.wire_first_number_twin_rust_async(port_, nums);
+
+  void wire_first_sequence_twin_rust_async(
+          NativePortType port_, List<dynamic> seqs) =>
+      wasmModule.wire_first_sequence_twin_rust_async(port_, seqs);
+
+  void wire_get_app_settings_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_get_app_settings_twin_rust_async(port_);
+
+  void wire_get_fallible_app_settings_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_get_fallible_app_settings_twin_rust_async(port_);
+
+  void wire_get_message_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_get_message_twin_rust_async(port_);
+
+  void wire_is_app_embedded_twin_rust_async(
+          NativePortType port_, List<dynamic> app_settings) =>
+      wasmModule.wire_is_app_embedded_twin_rust_async(port_, app_settings);
+
+  void wire_mirror_struct_stream_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_mirror_struct_stream_twin_rust_async(port_);
+
+  void wire_mirror_tuple_stream_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_mirror_tuple_stream_twin_rust_async(port_);
+
+  void wire_repeat_number_twin_rust_async(
+          NativePortType port_, int num, int times) =>
+      wasmModule.wire_repeat_number_twin_rust_async(port_, num, times);
+
+  void wire_repeat_sequence_twin_rust_async(
+          NativePortType port_, int seq, int times) =>
+      wasmModule.wire_repeat_sequence_twin_rust_async(port_, seq, times);
+
+  void wire_test_contains_mirrored_sub_struct_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule.wire_test_contains_mirrored_sub_struct_twin_rust_async(port_);
+
+  void wire_test_fallible_of_raw_string_mirrored_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire_test_fallible_of_raw_string_mirrored_twin_rust_async(port_);
+
+  void wire_test_list_of_nested_enums_mirrored_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule.wire_test_list_of_nested_enums_mirrored_twin_rust_async(port_);
+
+  void wire_test_list_of_raw_nested_string_mirrored_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire_test_list_of_raw_nested_string_mirrored_twin_rust_async(port_);
+
+  void wire_test_nested_raw_string_mirrored_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule.wire_test_nested_raw_string_mirrored_twin_rust_async(port_);
+
+  void wire_test_raw_string_enum_mirrored_twin_rust_async(
+          NativePortType port_, bool nested) =>
+      wasmModule.wire_test_raw_string_enum_mirrored_twin_rust_async(
+          port_, nested);
+
+  void wire_test_raw_string_mirrored_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_test_raw_string_mirrored_twin_rust_async(port_);
 
   void wire_app_settings_stream_twin_sync(NativePortType port_) =>
       wasmModule.wire_app_settings_stream_twin_sync(port_);
@@ -3479,6 +4846,45 @@ class RustLibWire extends BaseWire {
       wire_test_raw_string_mirrored_twin_sync() =>
           wasmModule.wire_test_raw_string_mirrored_twin_sync();
 
+  void wire_handle_big_buffers_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_handle_big_buffers_twin_rust_async(port_);
+
+  void wire_handle_complex_struct_twin_rust_async(
+          NativePortType port_, List<dynamic> s) =>
+      wasmModule.wire_handle_complex_struct_twin_rust_async(port_, s);
+
+  void wire_handle_nested_struct_twin_rust_async(
+          NativePortType port_, List<dynamic> s) =>
+      wasmModule.wire_handle_nested_struct_twin_rust_async(port_, s);
+
+  void wire_handle_string_twin_rust_async(NativePortType port_, String s) =>
+      wasmModule.wire_handle_string_twin_rust_async(port_, s);
+
+  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_handle_struct_sync_freezed_twin_rust_async(
+              List<dynamic> arg, List<dynamic> boxed) =>
+          wasmModule.wire_handle_struct_sync_freezed_twin_rust_async(
+              arg, boxed);
+
+  void wire_handle_struct_twin_rust_async(
+          NativePortType port_, List<dynamic> arg, List<dynamic> boxed) =>
+      wasmModule.wire_handle_struct_twin_rust_async(port_, arg, boxed);
+
+  void wire_handle_vec_u8_twin_rust_async(NativePortType port_, Uint8List v) =>
+      wasmModule.wire_handle_vec_u8_twin_rust_async(port_, v);
+
+  void wire_list_of_primitive_enums_twin_rust_async(
+          NativePortType port_, List<dynamic> weekdays) =>
+      wasmModule.wire_list_of_primitive_enums_twin_rust_async(port_, weekdays);
+
+  void wire_test_abc_enum_twin_rust_async(
+          NativePortType port_, List<dynamic> abc) =>
+      wasmModule.wire_test_abc_enum_twin_rust_async(port_, abc);
+
+  void wire_test_struct_with_enum_twin_rust_async(
+          NativePortType port_, List<dynamic> se) =>
+      wasmModule.wire_test_struct_with_enum_twin_rust_async(port_, se);
+
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_big_buffers_twin_sync() =>
           wasmModule.wire_handle_big_buffers_twin_sync();
@@ -3520,6 +4926,24 @@ class RustLibWire extends BaseWire {
       wire_test_struct_with_enum_twin_sync(List<dynamic> se) =>
           wasmModule.wire_test_struct_with_enum_twin_sync(se);
 
+  void wire_empty_struct_twin_rust_async(
+          NativePortType port_, List<dynamic> empty) =>
+      wasmModule.wire_empty_struct_twin_rust_async(port_, empty);
+
+  void wire_func_return_unit_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_func_return_unit_twin_rust_async(port_);
+
+  void wire_func_string_twin_rust_async(NativePortType port_, String arg) =>
+      wasmModule.wire_func_string_twin_rust_async(port_, arg);
+
+  void wire_handle_list_of_struct_twin_rust_async(
+          NativePortType port_, List<dynamic> l) =>
+      wasmModule.wire_handle_list_of_struct_twin_rust_async(port_, l);
+
+  void wire_handle_string_list_twin_rust_async(
+          NativePortType port_, List<String> names) =>
+      wasmModule.wire_handle_string_list_twin_rust_async(port_, names);
+
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_empty_struct_twin_sync(List<dynamic> empty) =>
           wasmModule.wire_empty_struct_twin_sync(empty);
@@ -3539,6 +4963,10 @@ class RustLibWire extends BaseWire {
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_string_list_twin_sync(List<String> names) =>
           wasmModule.wire_handle_string_list_twin_sync(names);
+
+  void wire_handle_newtype_twin_rust_async(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_handle_newtype_twin_rust_async(port_, arg);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_newtype_twin_sync(List<dynamic> arg) =>
@@ -3599,11 +5027,71 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_example_optional_primitive_type_u8_twin_normal(
           port_, arg);
 
+  void wire_primitive_optional_types_twin_rust_async(NativePortType port_,
+          int? my_i32, Object? my_i64, double? my_f64, bool? my_bool) =>
+      wasmModule.wire_primitive_optional_types_twin_rust_async(
+          port_, my_i32, my_i64, my_f64, my_bool);
+
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_primitive_optional_types_twin_sync(
               int? my_i32, Object? my_i64, double? my_f64, bool? my_bool) =>
           wasmModule.wire_primitive_optional_types_twin_sync(
               my_i32, my_i64, my_f64, my_bool);
+
+  void wire_example_optional_primitive_type_bool_twin_rust_async(
+          NativePortType port_, bool? arg) =>
+      wasmModule.wire_example_optional_primitive_type_bool_twin_rust_async(
+          port_, arg);
+
+  void wire_example_optional_primitive_type_f32_twin_rust_async(
+          NativePortType port_, double? arg) =>
+      wasmModule.wire_example_optional_primitive_type_f32_twin_rust_async(
+          port_, arg);
+
+  void wire_example_optional_primitive_type_f64_twin_rust_async(
+          NativePortType port_, double? arg) =>
+      wasmModule.wire_example_optional_primitive_type_f64_twin_rust_async(
+          port_, arg);
+
+  void wire_example_optional_primitive_type_i16_twin_rust_async(
+          NativePortType port_, int? arg) =>
+      wasmModule.wire_example_optional_primitive_type_i16_twin_rust_async(
+          port_, arg);
+
+  void wire_example_optional_primitive_type_i32_twin_rust_async(
+          NativePortType port_, int? arg) =>
+      wasmModule.wire_example_optional_primitive_type_i32_twin_rust_async(
+          port_, arg);
+
+  void wire_example_optional_primitive_type_i64_twin_rust_async(
+          NativePortType port_, Object? arg) =>
+      wasmModule.wire_example_optional_primitive_type_i64_twin_rust_async(
+          port_, arg);
+
+  void wire_example_optional_primitive_type_i8_twin_rust_async(
+          NativePortType port_, int? arg) =>
+      wasmModule.wire_example_optional_primitive_type_i8_twin_rust_async(
+          port_, arg);
+
+  void wire_example_optional_primitive_type_u16_twin_rust_async(
+          NativePortType port_, int? arg) =>
+      wasmModule.wire_example_optional_primitive_type_u16_twin_rust_async(
+          port_, arg);
+
+  void wire_example_optional_primitive_type_u32_twin_rust_async(
+          NativePortType port_, int? arg) =>
+      wasmModule.wire_example_optional_primitive_type_u32_twin_rust_async(
+          port_, arg);
+
+  void wire_example_optional_primitive_type_u64_twin_rust_async(
+          NativePortType port_, Object? arg) =>
+      wasmModule.wire_example_optional_primitive_type_u64_twin_rust_async(
+          port_, arg);
+
+  void wire_example_optional_primitive_type_u8_twin_rust_async(
+          NativePortType port_, int? arg) =>
+      wasmModule.wire_example_optional_primitive_type_u8_twin_rust_async(
+          port_, arg);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_example_optional_primitive_type_bool_twin_sync(bool? arg) =>
@@ -3648,6 +5136,48 @@ class RustLibWire extends BaseWire {
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_example_optional_primitive_type_u8_twin_sync(int? arg) =>
           wasmModule.wire_example_optional_primitive_type_u8_twin_sync(arg);
+
+  void wire_handle_increment_boxed_optional_twin_rust_async(
+          NativePortType port_, double? opt) =>
+      wasmModule.wire_handle_increment_boxed_optional_twin_rust_async(
+          port_, opt);
+
+  void wire_handle_option_box_arguments_twin_rust_async(
+          NativePortType port_,
+          int? i8box,
+          int? u8box,
+          int? i32box,
+          Object? i64box,
+          double? f64box,
+          bool? boolbox,
+          List<dynamic>? structbox) =>
+      wasmModule.wire_handle_option_box_arguments_twin_rust_async(
+          port_, i8box, u8box, i32box, i64box, f64box, boolbox, structbox);
+
+  void wire_handle_optional_increment_twin_rust_async(
+          NativePortType port_, List<dynamic>? opt) =>
+      wasmModule.wire_handle_optional_increment_twin_rust_async(port_, opt);
+
+  void wire_handle_optional_return_twin_rust_async(
+          NativePortType port_, double left, double right) =>
+      wasmModule.wire_handle_optional_return_twin_rust_async(
+          port_, left, right);
+
+  void wire_handle_optional_struct_twin_rust_async(
+          NativePortType port_, String? document) =>
+      wasmModule.wire_handle_optional_struct_twin_rust_async(port_, document);
+
+  void wire_handle_vec_of_opts_twin_rust_async(
+          NativePortType port_, List<dynamic> opt) =>
+      wasmModule.wire_handle_vec_of_opts_twin_rust_async(port_, opt);
+
+  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_sync_option_null_twin_rust_async() =>
+          wasmModule.wire_sync_option_null_twin_rust_async();
+
+  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_sync_option_twin_rust_async() =>
+          wasmModule.wire_sync_option_twin_rust_async();
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_increment_boxed_optional_twin_sync(double? opt) =>
@@ -3776,6 +5306,15 @@ class RustLibWire extends BaseWire {
           NativePortType port_, Uint8List arg) =>
       wasmModule.wire_example_primitive_list_type_u8_twin_normal(port_, arg);
 
+  void wire_handle_vec_of_primitive_twin_rust_async(
+          NativePortType port_, int n) =>
+      wasmModule.wire_handle_vec_of_primitive_twin_rust_async(port_, n);
+
+  void wire_handle_zero_copy_vec_of_primitive_twin_rust_async(
+          NativePortType port_, int n) =>
+      wasmModule.wire_handle_zero_copy_vec_of_primitive_twin_rust_async(
+          port_, n);
+
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_vec_of_primitive_twin_sync(int n) =>
           wasmModule.wire_handle_vec_of_primitive_twin_sync(n);
@@ -3783,6 +5322,61 @@ class RustLibWire extends BaseWire {
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_zero_copy_vec_of_primitive_twin_sync(int n) =>
           wasmModule.wire_handle_zero_copy_vec_of_primitive_twin_sync(n);
+
+  void wire_example_primitive_list_type_bool_twin_rust_async(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_example_primitive_list_type_bool_twin_rust_async(
+          port_, arg);
+
+  void wire_example_primitive_list_type_f32_twin_rust_async(
+          NativePortType port_, Float32List arg) =>
+      wasmModule.wire_example_primitive_list_type_f32_twin_rust_async(
+          port_, arg);
+
+  void wire_example_primitive_list_type_f64_twin_rust_async(
+          NativePortType port_, Float64List arg) =>
+      wasmModule.wire_example_primitive_list_type_f64_twin_rust_async(
+          port_, arg);
+
+  void wire_example_primitive_list_type_i16_twin_rust_async(
+          NativePortType port_, Int16List arg) =>
+      wasmModule.wire_example_primitive_list_type_i16_twin_rust_async(
+          port_, arg);
+
+  void wire_example_primitive_list_type_i32_twin_rust_async(
+          NativePortType port_, Int32List arg) =>
+      wasmModule.wire_example_primitive_list_type_i32_twin_rust_async(
+          port_, arg);
+
+  void wire_example_primitive_list_type_i64_twin_rust_async(
+          NativePortType port_, Object /* BigInt64Array */ arg) =>
+      wasmModule.wire_example_primitive_list_type_i64_twin_rust_async(
+          port_, arg);
+
+  void wire_example_primitive_list_type_i8_twin_rust_async(
+          NativePortType port_, Int8List arg) =>
+      wasmModule.wire_example_primitive_list_type_i8_twin_rust_async(
+          port_, arg);
+
+  void wire_example_primitive_list_type_u16_twin_rust_async(
+          NativePortType port_, Uint16List arg) =>
+      wasmModule.wire_example_primitive_list_type_u16_twin_rust_async(
+          port_, arg);
+
+  void wire_example_primitive_list_type_u32_twin_rust_async(
+          NativePortType port_, Uint32List arg) =>
+      wasmModule.wire_example_primitive_list_type_u32_twin_rust_async(
+          port_, arg);
+
+  void wire_example_primitive_list_type_u64_twin_rust_async(
+          NativePortType port_, Object /* BigInt64Array */ arg) =>
+      wasmModule.wire_example_primitive_list_type_u64_twin_rust_async(
+          port_, arg);
+
+  void wire_example_primitive_list_type_u8_twin_rust_async(
+          NativePortType port_, Uint8List arg) =>
+      wasmModule.wire_example_primitive_list_type_u8_twin_rust_async(
+          port_, arg);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_example_primitive_list_type_bool_twin_sync(List<dynamic> arg) =>
@@ -3830,6 +5424,14 @@ class RustLibWire extends BaseWire {
       wire_example_primitive_list_type_u8_twin_sync(Uint8List arg) =>
           wasmModule.wire_example_primitive_list_type_u8_twin_sync(arg);
 
+  void wire_primitive_types_twin_rust_async(NativePortType port_, int my_i32,
+          Object my_i64, double my_f64, bool my_bool) =>
+      wasmModule.wire_primitive_types_twin_rust_async(
+          port_, my_i32, my_i64, my_f64, my_bool);
+
+  void wire_primitive_u32_twin_rust_async(NativePortType port_, int my_u32) =>
+      wasmModule.wire_primitive_u32_twin_rust_async(port_, my_u32);
+
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_primitive_types_twin_sync(
               int my_i32, Object my_i64, double my_f64, bool my_bool) =>
@@ -3839,6 +5441,50 @@ class RustLibWire extends BaseWire {
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_primitive_u32_twin_sync(int my_u32) =>
           wasmModule.wire_primitive_u32_twin_sync(my_u32);
+
+  void wire_example_primitive_type_bool_twin_rust_async(
+          NativePortType port_, bool arg) =>
+      wasmModule.wire_example_primitive_type_bool_twin_rust_async(port_, arg);
+
+  void wire_example_primitive_type_f32_twin_rust_async(
+          NativePortType port_, double arg) =>
+      wasmModule.wire_example_primitive_type_f32_twin_rust_async(port_, arg);
+
+  void wire_example_primitive_type_f64_twin_rust_async(
+          NativePortType port_, double arg) =>
+      wasmModule.wire_example_primitive_type_f64_twin_rust_async(port_, arg);
+
+  void wire_example_primitive_type_i16_twin_rust_async(
+          NativePortType port_, int arg) =>
+      wasmModule.wire_example_primitive_type_i16_twin_rust_async(port_, arg);
+
+  void wire_example_primitive_type_i32_twin_rust_async(
+          NativePortType port_, int arg) =>
+      wasmModule.wire_example_primitive_type_i32_twin_rust_async(port_, arg);
+
+  void wire_example_primitive_type_i64_twin_rust_async(
+          NativePortType port_, Object arg) =>
+      wasmModule.wire_example_primitive_type_i64_twin_rust_async(port_, arg);
+
+  void wire_example_primitive_type_i8_twin_rust_async(
+          NativePortType port_, int arg) =>
+      wasmModule.wire_example_primitive_type_i8_twin_rust_async(port_, arg);
+
+  void wire_example_primitive_type_u16_twin_rust_async(
+          NativePortType port_, int arg) =>
+      wasmModule.wire_example_primitive_type_u16_twin_rust_async(port_, arg);
+
+  void wire_example_primitive_type_u32_twin_rust_async(
+          NativePortType port_, int arg) =>
+      wasmModule.wire_example_primitive_type_u32_twin_rust_async(port_, arg);
+
+  void wire_example_primitive_type_u64_twin_rust_async(
+          NativePortType port_, Object arg) =>
+      wasmModule.wire_example_primitive_type_u64_twin_rust_async(port_, arg);
+
+  void wire_example_primitive_type_u8_twin_rust_async(
+          NativePortType port_, int arg) =>
+      wasmModule.wire_example_primitive_type_u8_twin_rust_async(port_, arg);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_example_primitive_type_bool_twin_sync(bool arg) =>
@@ -3884,6 +5530,14 @@ class RustLibWire extends BaseWire {
       wire_example_primitive_type_u8_twin_sync(int arg) =>
           wasmModule.wire_example_primitive_type_u8_twin_sync(arg);
 
+  void wire_test_more_than_just_one_raw_string_struct_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule.wire_test_more_than_just_one_raw_string_struct_twin_rust_async(
+          port_);
+
+  void wire_test_raw_string_item_struct_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_test_raw_string_item_struct_twin_rust_async(port_);
+
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_test_more_than_just_one_raw_string_struct_twin_sync() =>
           wasmModule.wire_test_more_than_just_one_raw_string_struct_twin_sync();
@@ -3891,6 +5545,61 @@ class RustLibWire extends BaseWire {
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_test_raw_string_item_struct_twin_sync() =>
           wasmModule.wire_test_raw_string_item_struct_twin_sync();
+
+  void wire_create_array_opaque_enum_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_create_array_opaque_enum_twin_rust_async(port_);
+
+  void wire_create_nested_opaque_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_create_nested_opaque_twin_rust_async(port_);
+
+  void wire_create_opaque_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_create_opaque_twin_rust_async(port_);
+
+  void wire_create_option_opaque_twin_rust_async(
+          NativePortType port_, Object? opaque) =>
+      wasmModule.wire_create_option_opaque_twin_rust_async(port_, opaque);
+
+  void wire_create_sync_opaque_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_create_sync_opaque_twin_rust_async(port_);
+
+  void wire_frb_generator_test_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_frb_generator_test_twin_rust_async(port_);
+
+  void wire_opaque_array_run_twin_rust_async(
+          NativePortType port_, List<dynamic> data) =>
+      wasmModule.wire_opaque_array_run_twin_rust_async(port_, data);
+
+  void wire_opaque_array_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_opaque_array_twin_rust_async(port_);
+
+  void wire_opaque_vec_run_twin_rust_async(
+          NativePortType port_, List<dynamic> data) =>
+      wasmModule.wire_opaque_vec_run_twin_rust_async(port_, data);
+
+  void wire_opaque_vec_twin_rust_async(NativePortType port_) =>
+      wasmModule.wire_opaque_vec_twin_rust_async(port_);
+
+  void wire_run_enum_opaque_twin_rust_async(
+          NativePortType port_, List<dynamic> opaque) =>
+      wasmModule.wire_run_enum_opaque_twin_rust_async(port_, opaque);
+
+  void wire_run_nested_opaque_twin_rust_async(
+          NativePortType port_, List<dynamic> opaque) =>
+      wasmModule.wire_run_nested_opaque_twin_rust_async(port_, opaque);
+
+  void wire_run_non_clone_twin_rust_async(NativePortType port_, Object clone) =>
+      wasmModule.wire_run_non_clone_twin_rust_async(port_, clone);
+
+  void wire_run_opaque_twin_rust_async(NativePortType port_, Object opaque) =>
+      wasmModule.wire_run_opaque_twin_rust_async(port_, opaque);
+
+  void wire_run_opaque_with_delay_twin_rust_async(
+          NativePortType port_, Object opaque) =>
+      wasmModule.wire_run_opaque_with_delay_twin_rust_async(port_, opaque);
+
+  void wire_unwrap_rust_opaque_twin_rust_async(
+          NativePortType port_, Object opaque) =>
+      wasmModule.wire_unwrap_rust_opaque_twin_rust_async(port_, opaque);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_create_array_opaque_enum_twin_sync() =>
@@ -3954,9 +5663,34 @@ class RustLibWire extends BaseWire {
       wire_unwrap_rust_opaque_twin_sync(Object opaque) =>
           wasmModule.wire_unwrap_rust_opaque_twin_sync(opaque);
 
+  void wire_simple_adder_twin_rust_async(NativePortType port_, int a, int b) =>
+      wasmModule.wire_simple_adder_twin_rust_async(port_, a, b);
+
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_simple_adder_twin_sync(int a, int b) =>
           wasmModule.wire_simple_adder_twin_sync(a, b);
+
+  void wire_func_struct_with_one_field_twin_rust_async(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_func_struct_with_one_field_twin_rust_async(port_, arg);
+
+  void wire_func_struct_with_two_field_twin_rust_async(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_func_struct_with_two_field_twin_rust_async(port_, arg);
+
+  void wire_func_struct_with_zero_field_twin_rust_async(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_func_struct_with_zero_field_twin_rust_async(port_, arg);
+
+  void wire_func_tuple_struct_with_one_field_twin_rust_async(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_func_tuple_struct_with_one_field_twin_rust_async(
+          port_, arg);
+
+  void wire_func_tuple_struct_with_two_field_twin_rust_async(
+          NativePortType port_, List<dynamic> arg) =>
+      wasmModule.wire_func_tuple_struct_with_two_field_twin_rust_async(
+          port_, arg);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_func_struct_with_one_field_twin_sync(List<dynamic> arg) =>
@@ -3978,6 +5712,14 @@ class RustLibWire extends BaseWire {
       wire_func_tuple_struct_with_two_field_twin_sync(List<dynamic> arg) =>
           wasmModule.wire_func_tuple_struct_with_two_field_twin_sync(arg);
 
+  void wire_test_tuple_2_twin_rust_async(
+          NativePortType port_, List<dynamic> value) =>
+      wasmModule.wire_test_tuple_2_twin_rust_async(port_, value);
+
+  void wire_test_tuple_twin_rust_async(
+          NativePortType port_, List<dynamic>? value) =>
+      wasmModule.wire_test_tuple_twin_rust_async(port_, value);
+
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_test_tuple_2_twin_sync(List<dynamic> value) =>
           wasmModule.wire_test_tuple_2_twin_sync(value);
@@ -3985,6 +5727,18 @@ class RustLibWire extends BaseWire {
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_test_tuple_twin_sync(List<dynamic>? value) =>
           wasmModule.wire_test_tuple_twin_sync(value);
+
+  void wire_handle_type_alias_id_twin_rust_async(
+          NativePortType port_, Object input) =>
+      wasmModule.wire_handle_type_alias_id_twin_rust_async(port_, input);
+
+  void wire_handle_type_alias_model_twin_rust_async(
+          NativePortType port_, Object input) =>
+      wasmModule.wire_handle_type_alias_model_twin_rust_async(port_, input);
+
+  void wire_handle_type_nest_alias_id_twin_rust_async(
+          NativePortType port_, Object input) =>
+      wasmModule.wire_handle_type_nest_alias_id_twin_rust_async(port_, input);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_type_alias_id_twin_sync(Object input) =>
@@ -3997,6 +5751,16 @@ class RustLibWire extends BaseWire {
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_type_nest_alias_id_twin_sync(Object input) =>
           wasmModule.wire_handle_type_nest_alias_id_twin_sync(input);
+
+  void wire_handle_nested_uuids_twin_rust_async(
+          NativePortType port_, List<dynamic> ids) =>
+      wasmModule.wire_handle_nested_uuids_twin_rust_async(port_, ids);
+
+  void wire_handle_uuid_twin_rust_async(NativePortType port_, Uint8List id) =>
+      wasmModule.wire_handle_uuid_twin_rust_async(port_, id);
+
+  void wire_handle_uuids_twin_rust_async(NativePortType port_, Uint8List ids) =>
+      wasmModule.wire_handle_uuids_twin_rust_async(port_, ids);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_nested_uuids_twin_sync(List<dynamic> ids) =>
@@ -4199,6 +5963,13 @@ class RustLibWire extends BaseWire {
   int /* *const std::ffi::c_void */
       share_opaque_RustOpaque_box_dynDartDebugTwinNormal(dynamic ptr) =>
           wasmModule.share_opaque_RustOpaque_box_dynDartDebugTwinNormal(ptr);
+
+  void drop_opaque_RustOpaque_box_dynDartDebugTwinRustAsync(dynamic ptr) =>
+      wasmModule.drop_opaque_RustOpaque_box_dynDartDebugTwinRustAsync(ptr);
+
+  int /* *const std::ffi::c_void */
+      share_opaque_RustOpaque_box_dynDartDebugTwinRustAsync(dynamic ptr) =>
+          wasmModule.share_opaque_RustOpaque_box_dynDartDebugTwinRustAsync(ptr);
 
   void drop_opaque_RustOpaque_box_dynDartDebugTwinSync(dynamic ptr) =>
       wasmModule.drop_opaque_RustOpaque_box_dynDartDebugTwinSync(ptr);
@@ -4725,6 +6496,37 @@ class RustLibWasmModule implements WasmModule {
   external void wire_primitive_u32_twin_normal(
       NativePortType port_, int my_u32);
 
+  external void wire_boxed_blob_twin_rust_async(
+      NativePortType port_, Uint8List blob);
+
+  external void wire_func_test_id_twin_rust_async(
+      NativePortType port_, List<dynamic> id);
+
+  external void wire_get_array_twin_rust_async(NativePortType port_);
+
+  external void wire_get_complex_array_twin_rust_async(NativePortType port_);
+
+  external void wire_last_number_twin_rust_async(
+      NativePortType port_, Float64List array);
+
+  external void wire_nested_id_twin_rust_async(
+      NativePortType port_, List<dynamic> id);
+
+  external void wire_new_msgid_twin_rust_async(
+      NativePortType port_, Uint8List id);
+
+  external void wire_return_boxed_feed_id_twin_rust_async(
+      NativePortType port_, Uint8List id);
+
+  external void wire_return_boxed_raw_feed_id_twin_rust_async(
+      NativePortType port_, List<dynamic> id);
+
+  external void wire_use_boxed_blob_twin_rust_async(
+      NativePortType port_, List<dynamic> blob);
+
+  external void wire_use_msgid_twin_rust_async(
+      NativePortType port_, List<dynamic> id);
+
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_boxed_blob_twin_sync(Uint8List blob);
 
@@ -4758,11 +6560,25 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_use_msgid_twin_sync(List<dynamic> id);
 
+  external void wire_handle_customized_struct_twin_rust_async(
+      NativePortType port_, List<dynamic> val);
+
+  external void wire_next_user_id_twin_rust_async(
+      NativePortType port_, List<dynamic> user_id);
+
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_customized_struct_twin_sync(List<dynamic> val);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_next_user_id_twin_sync(List<dynamic> user_id);
+
+  external void wire_benchmark_input_bytes_twin_rust_async(
+      NativePortType port_, Uint8List bytes);
+
+  external void wire_benchmark_output_bytes_twin_rust_async(
+      NativePortType port_, int size);
+
+  external void wire_benchmark_void_twin_rust_async(NativePortType port_);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_benchmark_input_bytes_twin_sync(Uint8List bytes);
@@ -4772,6 +6588,33 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_benchmark_void_twin_sync();
+
+  external void wire_datetime_local_twin_rust_async(
+      NativePortType port_, Object d);
+
+  external void wire_datetime_utc_twin_rust_async(
+      NativePortType port_, Object d);
+
+  external void wire_duration_twin_rust_async(NativePortType port_, Object d);
+
+  external void wire_handle_durations_twin_rust_async(
+      NativePortType port_, Object /* BigInt64Array */ durations, Object since);
+
+  external void wire_handle_timestamps_twin_rust_async(NativePortType port_,
+      Object /* BigInt64Array */ timestamps, Object epoch);
+
+  external void wire_how_long_does_it_take_twin_rust_async(
+      NativePortType port_, List<dynamic> mine);
+
+  external void wire_naivedatetime_twin_rust_async(
+      NativePortType port_, Object d);
+
+  external void wire_optional_empty_datetime_utc_twin_rust_async(
+      NativePortType port_, Object? d);
+
+  external void wire_test_chrono_twin_rust_async(NativePortType port_);
+
+  external void wire_test_precise_chrono_twin_rust_async(NativePortType port_);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_datetime_local_twin_sync(Object d);
@@ -4805,6 +6648,25 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_test_precise_chrono_twin_sync();
 
+  external void
+      wire_StructWithCommentsTwinRustAsync_instance_method_twin_rust_async(
+          NativePortType port_, List<dynamic> that);
+
+  external void
+      wire_StructWithCommentsTwinRustAsync_static_method_twin_rust_async(
+          NativePortType port_);
+
+  external void wire_function_with_comments_slash_star_star_twin_rust_async(
+      NativePortType port_);
+
+  external void
+      wire_function_with_comments_triple_slash_multi_line_twin_rust_async(
+          NativePortType port_);
+
+  external void
+      wire_function_with_comments_triple_slash_single_line_twin_rust_async(
+          NativePortType port_);
+
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_StructWithCommentsTwinSync_instance_method_twin_sync(
           List<dynamic> that);
@@ -4821,8 +6683,55 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_function_with_comments_triple_slash_single_line_twin_sync();
 
+  external void wire_return_dart_dynamic_twin_rust_async(NativePortType port_);
+
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_return_dart_dynamic_twin_sync();
+
+  external void wire_async_accept_dart_opaque_twin_rust_async(
+      NativePortType port_, Object opaque);
+
+  external void wire_create_enum_dart_opaque_twin_rust_async(
+      NativePortType port_, Object opaque);
+
+  external void wire_create_nested_dart_opaque_twin_rust_async(
+      NativePortType port_, Object opaque1, Object opaque2);
+
+  external void wire_drop_static_dart_opaque_twin_rust_async(
+      NativePortType port_);
+
+  external void wire_get_enum_dart_opaque_twin_rust_async(
+      NativePortType port_, List<dynamic> opaque);
+
+  external void wire_get_nested_dart_opaque_twin_rust_async(
+      NativePortType port_, List<dynamic> opaque);
+
+  external void wire_loop_back_array_get_twin_rust_async(
+      NativePortType port_, List<dynamic> opaque);
+
+  external void wire_loop_back_array_twin_rust_async(
+      NativePortType port_, Object opaque);
+
+  external void wire_loop_back_option_get_twin_rust_async(
+      NativePortType port_, Object? opaque);
+
+  external void wire_loop_back_option_twin_rust_async(
+      NativePortType port_, Object opaque);
+
+  external void wire_loop_back_twin_rust_async(
+      NativePortType port_, Object opaque);
+
+  external void wire_loop_back_vec_get_twin_rust_async(
+      NativePortType port_, List<dynamic> opaque);
+
+  external void wire_loop_back_vec_twin_rust_async(
+      NativePortType port_, Object opaque);
+
+  external void wire_panic_unwrap_dart_opaque_twin_rust_async(
+      NativePortType port_, Object opaque);
+
+  external void wire_set_static_dart_opaque_twin_rust_async(
+      NativePortType port_, Object opaque);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_async_accept_dart_opaque_twin_sync(Object opaque);
@@ -4869,6 +6778,33 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_set_static_dart_opaque_twin_sync(Object opaque);
 
+  external void wire_func_enum_simple_twin_rust_async(
+      NativePortType port_, int arg);
+
+  external void wire_func_enum_with_item_mixed_twin_rust_async(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_func_enum_with_item_struct_twin_rust_async(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_func_enum_with_item_tuple_twin_rust_async(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_handle_enum_parameter_twin_rust_async(
+      NativePortType port_, int weekday);
+
+  external void wire_handle_enum_struct_twin_rust_async(
+      NativePortType port_, List<dynamic> val);
+
+  external void wire_handle_return_enum_twin_rust_async(
+      NativePortType port_, String input);
+
+  external void wire_multiply_by_ten_twin_rust_async(
+      NativePortType port_, List<dynamic> measure);
+
+  external void wire_print_note_twin_rust_async(
+      NativePortType port_, List<dynamic> note);
+
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_func_enum_simple_twin_sync(int arg);
 
@@ -4896,6 +6832,17 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_print_note_twin_sync(List<dynamic> note);
 
+  external void wire_EventTwinRustAsync_as_string_twin_rust_async(
+      NativePortType port_, List<dynamic> that);
+
+  external void wire_close_event_listener_twin_rust_async(NativePortType port_);
+
+  external void wire_create_event_twin_rust_async(
+      NativePortType port_, String address, String payload);
+
+  external void wire_register_event_listener_twin_rust_async(
+      NativePortType port_);
+
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_EventTwinSync_as_string_twin_sync(List<dynamic> that);
 
@@ -4906,6 +6853,102 @@ class RustLibWasmModule implements WasmModule {
       wire_create_event_twin_sync(String address, String payload);
 
   external void wire_register_event_listener_twin_sync(NativePortType port_);
+
+  external void wire_CustomStructTwinRustAsync_new_twin_rust_async(
+      NativePortType port_, String message);
+
+  external void
+      wire_CustomStructTwinRustAsync_nonstatic_return_custom_struct_error_twin_rust_async(
+          NativePortType port_, List<dynamic> that);
+
+  external void
+      wire_CustomStructTwinRustAsync_nonstatic_return_custom_struct_ok_twin_rust_async(
+          NativePortType port_, List<dynamic> that);
+
+  external void
+      wire_CustomStructTwinRustAsync_static_return_custom_struct_error_twin_rust_async(
+          NativePortType port_);
+
+  external void
+      wire_CustomStructTwinRustAsync_static_return_custom_struct_ok_twin_rust_async(
+          NativePortType port_);
+
+  external void wire_SomeStructTwinRustAsync_new_twin_rust_async(
+      NativePortType port_, int value);
+
+  external void
+      wire_SomeStructTwinRustAsync_non_static_return_err_custom_error_twin_rust_async(
+          NativePortType port_, List<dynamic> that);
+
+  external void
+      wire_SomeStructTwinRustAsync_non_static_return_ok_custom_error_twin_rust_async(
+          NativePortType port_, List<dynamic> that);
+
+  external void
+      wire_SomeStructTwinRustAsync_static_return_err_custom_error_twin_rust_async(
+          NativePortType port_);
+
+  external void
+      wire_SomeStructTwinRustAsync_static_return_ok_custom_error_twin_rust_async(
+          NativePortType port_);
+
+  external void wire_custom_enum_error_panic_twin_rust_async(
+      NativePortType port_);
+
+  external void wire_custom_enum_error_return_error_twin_rust_async(
+      NativePortType port_);
+
+  external void wire_custom_enum_error_return_ok_twin_rust_async(
+      NativePortType port_, int arg);
+
+  external void wire_custom_nested_error_return_error_twin_rust_async(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_custom_struct_error_return_error_twin_rust_async(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_func_return_error_twin_rust_async(NativePortType port_);
+
+  external void wire_func_type_fallible_panic_twin_rust_async(
+      NativePortType port_);
+
+  external void wire_func_type_infallible_panic_twin_rust_async(
+      NativePortType port_);
+
+  external void wire_panic_with_custom_result_twin_rust_async(
+      NativePortType port_);
+
+  external void wire_return_custom_nested_error_1_twin_rust_async(
+      NativePortType port_);
+
+  external void wire_return_custom_nested_error_1_variant1_twin_rust_async(
+      NativePortType port_);
+
+  external void wire_return_custom_nested_error_2_twin_rust_async(
+      NativePortType port_);
+
+  external void wire_return_custom_struct_error_twin_rust_async(
+      NativePortType port_);
+
+  external void wire_return_custom_struct_ok_twin_rust_async(
+      NativePortType port_);
+
+  external void wire_return_err_custom_error_twin_rust_async(
+      NativePortType port_);
+
+  external void wire_return_error_variant_twin_rust_async(
+      NativePortType port_, int variant);
+
+  external void wire_return_ok_custom_error_twin_rust_async(
+      NativePortType port_);
+
+  external void wire_stream_sink_throw_anyhow_twin_rust_async(
+      NativePortType port_);
+
+  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_sync_return_custom_struct_error_twin_rust_async();
+
+  external void wire_throw_anyhow_twin_rust_async(NativePortType port_);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_CustomStructTwinSync_new_twin_sync(String message);
@@ -5000,6 +7043,18 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_throw_anyhow_twin_sync();
 
+  external void wire_call_new_module_system_twin_rust_async(
+      NativePortType port_);
+
+  external void wire_call_old_module_system_twin_rust_async(
+      NativePortType port_);
+
+  external void wire_use_imported_enum_twin_rust_async(
+      NativePortType port_, int my_enum);
+
+  external void wire_use_imported_struct_twin_rust_async(
+      NativePortType port_, List<dynamic> my_struct);
+
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_call_new_module_system_twin_sync();
 
@@ -5011,6 +7066,40 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_use_imported_struct_twin_sync(List<dynamic> my_struct);
+
+  external void
+      wire_ConcatenateWithTwinRustAsync_concatenate_static_twin_rust_async(
+          NativePortType port_, String a, String b);
+
+  external void wire_ConcatenateWithTwinRustAsync_concatenate_twin_rust_async(
+      NativePortType port_, List<dynamic> that, String b);
+
+  external void
+      wire_ConcatenateWithTwinRustAsync_handle_some_static_stream_sink_single_arg_twin_rust_async(
+          NativePortType port_);
+
+  external void
+      wire_ConcatenateWithTwinRustAsync_handle_some_static_stream_sink_twin_rust_async(
+          NativePortType port_, int key, int max);
+
+  external void
+      wire_ConcatenateWithTwinRustAsync_handle_some_stream_sink_at_1_twin_rust_async(
+          NativePortType port_, List<dynamic> that);
+
+  external void
+      wire_ConcatenateWithTwinRustAsync_handle_some_stream_sink_twin_rust_async(
+          NativePortType port_, List<dynamic> that, int key, int max);
+
+  external void wire_ConcatenateWithTwinRustAsync_new_twin_rust_async(
+      NativePortType port_, String a);
+
+  external void wire_SumWithTwinRustAsync_sum_twin_rust_async(
+      NativePortType port_, List<dynamic> that, int y, int z);
+
+  external void wire_get_sum_array_twin_rust_async(
+      NativePortType port_, int a, int b, int c);
+
+  external void wire_get_sum_struct_twin_rust_async(NativePortType port_);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_ConcatenateWithTwinSync_concatenate_static_twin_sync(
@@ -5046,6 +7135,58 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_get_sum_struct_twin_sync();
+
+  external void wire_app_settings_stream_twin_rust_async(NativePortType port_);
+
+  external void wire_app_settings_vec_stream_twin_rust_async(
+      NativePortType port_);
+
+  external void wire_first_number_twin_rust_async(
+      NativePortType port_, List<dynamic> nums);
+
+  external void wire_first_sequence_twin_rust_async(
+      NativePortType port_, List<dynamic> seqs);
+
+  external void wire_get_app_settings_twin_rust_async(NativePortType port_);
+
+  external void wire_get_fallible_app_settings_twin_rust_async(
+      NativePortType port_);
+
+  external void wire_get_message_twin_rust_async(NativePortType port_);
+
+  external void wire_is_app_embedded_twin_rust_async(
+      NativePortType port_, List<dynamic> app_settings);
+
+  external void wire_mirror_struct_stream_twin_rust_async(NativePortType port_);
+
+  external void wire_mirror_tuple_stream_twin_rust_async(NativePortType port_);
+
+  external void wire_repeat_number_twin_rust_async(
+      NativePortType port_, int num, int times);
+
+  external void wire_repeat_sequence_twin_rust_async(
+      NativePortType port_, int seq, int times);
+
+  external void wire_test_contains_mirrored_sub_struct_twin_rust_async(
+      NativePortType port_);
+
+  external void wire_test_fallible_of_raw_string_mirrored_twin_rust_async(
+      NativePortType port_);
+
+  external void wire_test_list_of_nested_enums_mirrored_twin_rust_async(
+      NativePortType port_);
+
+  external void wire_test_list_of_raw_nested_string_mirrored_twin_rust_async(
+      NativePortType port_);
+
+  external void wire_test_nested_raw_string_mirrored_twin_rust_async(
+      NativePortType port_);
+
+  external void wire_test_raw_string_enum_mirrored_twin_rust_async(
+      NativePortType port_, bool nested);
+
+  external void wire_test_raw_string_mirrored_twin_rust_async(
+      NativePortType port_);
 
   external void wire_app_settings_stream_twin_sync(NativePortType port_);
 
@@ -5100,6 +7241,36 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_test_raw_string_mirrored_twin_sync();
 
+  external void wire_handle_big_buffers_twin_rust_async(NativePortType port_);
+
+  external void wire_handle_complex_struct_twin_rust_async(
+      NativePortType port_, List<dynamic> s);
+
+  external void wire_handle_nested_struct_twin_rust_async(
+      NativePortType port_, List<dynamic> s);
+
+  external void wire_handle_string_twin_rust_async(
+      NativePortType port_, String s);
+
+  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_handle_struct_sync_freezed_twin_rust_async(
+          List<dynamic> arg, List<dynamic> boxed);
+
+  external void wire_handle_struct_twin_rust_async(
+      NativePortType port_, List<dynamic> arg, List<dynamic> boxed);
+
+  external void wire_handle_vec_u8_twin_rust_async(
+      NativePortType port_, Uint8List v);
+
+  external void wire_list_of_primitive_enums_twin_rust_async(
+      NativePortType port_, List<dynamic> weekdays);
+
+  external void wire_test_abc_enum_twin_rust_async(
+      NativePortType port_, List<dynamic> abc);
+
+  external void wire_test_struct_with_enum_twin_rust_async(
+      NativePortType port_, List<dynamic> se);
+
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_big_buffers_twin_sync();
 
@@ -5131,6 +7302,20 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_test_struct_with_enum_twin_sync(List<dynamic> se);
 
+  external void wire_empty_struct_twin_rust_async(
+      NativePortType port_, List<dynamic> empty);
+
+  external void wire_func_return_unit_twin_rust_async(NativePortType port_);
+
+  external void wire_func_string_twin_rust_async(
+      NativePortType port_, String arg);
+
+  external void wire_handle_list_of_struct_twin_rust_async(
+      NativePortType port_, List<dynamic> l);
+
+  external void wire_handle_string_list_twin_rust_async(
+      NativePortType port_, List<String> names);
+
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_empty_struct_twin_sync(List<dynamic> empty);
 
@@ -5145,6 +7330,9 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_string_list_twin_sync(List<String> names);
+
+  external void wire_handle_newtype_twin_rust_async(
+      NativePortType port_, List<dynamic> arg);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_newtype_twin_sync(List<dynamic> arg);
@@ -5182,9 +7370,49 @@ class RustLibWasmModule implements WasmModule {
   external void wire_example_optional_primitive_type_u8_twin_normal(
       NativePortType port_, int? arg);
 
+  external void wire_primitive_optional_types_twin_rust_async(
+      NativePortType port_,
+      int? my_i32,
+      Object? my_i64,
+      double? my_f64,
+      bool? my_bool);
+
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_primitive_optional_types_twin_sync(
           int? my_i32, Object? my_i64, double? my_f64, bool? my_bool);
+
+  external void wire_example_optional_primitive_type_bool_twin_rust_async(
+      NativePortType port_, bool? arg);
+
+  external void wire_example_optional_primitive_type_f32_twin_rust_async(
+      NativePortType port_, double? arg);
+
+  external void wire_example_optional_primitive_type_f64_twin_rust_async(
+      NativePortType port_, double? arg);
+
+  external void wire_example_optional_primitive_type_i16_twin_rust_async(
+      NativePortType port_, int? arg);
+
+  external void wire_example_optional_primitive_type_i32_twin_rust_async(
+      NativePortType port_, int? arg);
+
+  external void wire_example_optional_primitive_type_i64_twin_rust_async(
+      NativePortType port_, Object? arg);
+
+  external void wire_example_optional_primitive_type_i8_twin_rust_async(
+      NativePortType port_, int? arg);
+
+  external void wire_example_optional_primitive_type_u16_twin_rust_async(
+      NativePortType port_, int? arg);
+
+  external void wire_example_optional_primitive_type_u32_twin_rust_async(
+      NativePortType port_, int? arg);
+
+  external void wire_example_optional_primitive_type_u64_twin_rust_async(
+      NativePortType port_, Object? arg);
+
+  external void wire_example_optional_primitive_type_u8_twin_rust_async(
+      NativePortType port_, int? arg);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_example_optional_primitive_type_bool_twin_sync(bool? arg);
@@ -5218,6 +7446,37 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_example_optional_primitive_type_u8_twin_sync(int? arg);
+
+  external void wire_handle_increment_boxed_optional_twin_rust_async(
+      NativePortType port_, double? opt);
+
+  external void wire_handle_option_box_arguments_twin_rust_async(
+      NativePortType port_,
+      int? i8box,
+      int? u8box,
+      int? i32box,
+      Object? i64box,
+      double? f64box,
+      bool? boolbox,
+      List<dynamic>? structbox);
+
+  external void wire_handle_optional_increment_twin_rust_async(
+      NativePortType port_, List<dynamic>? opt);
+
+  external void wire_handle_optional_return_twin_rust_async(
+      NativePortType port_, double left, double right);
+
+  external void wire_handle_optional_struct_twin_rust_async(
+      NativePortType port_, String? document);
+
+  external void wire_handle_vec_of_opts_twin_rust_async(
+      NativePortType port_, List<dynamic> opt);
+
+  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_sync_option_null_twin_rust_async();
+
+  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_sync_option_twin_rust_async();
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_increment_boxed_optional_twin_sync(double? opt);
@@ -5316,11 +7575,50 @@ class RustLibWasmModule implements WasmModule {
   external void wire_example_primitive_list_type_u8_twin_normal(
       NativePortType port_, Uint8List arg);
 
+  external void wire_handle_vec_of_primitive_twin_rust_async(
+      NativePortType port_, int n);
+
+  external void wire_handle_zero_copy_vec_of_primitive_twin_rust_async(
+      NativePortType port_, int n);
+
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_vec_of_primitive_twin_sync(int n);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_zero_copy_vec_of_primitive_twin_sync(int n);
+
+  external void wire_example_primitive_list_type_bool_twin_rust_async(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_example_primitive_list_type_f32_twin_rust_async(
+      NativePortType port_, Float32List arg);
+
+  external void wire_example_primitive_list_type_f64_twin_rust_async(
+      NativePortType port_, Float64List arg);
+
+  external void wire_example_primitive_list_type_i16_twin_rust_async(
+      NativePortType port_, Int16List arg);
+
+  external void wire_example_primitive_list_type_i32_twin_rust_async(
+      NativePortType port_, Int32List arg);
+
+  external void wire_example_primitive_list_type_i64_twin_rust_async(
+      NativePortType port_, Object /* BigInt64Array */ arg);
+
+  external void wire_example_primitive_list_type_i8_twin_rust_async(
+      NativePortType port_, Int8List arg);
+
+  external void wire_example_primitive_list_type_u16_twin_rust_async(
+      NativePortType port_, Uint16List arg);
+
+  external void wire_example_primitive_list_type_u32_twin_rust_async(
+      NativePortType port_, Uint32List arg);
+
+  external void wire_example_primitive_list_type_u64_twin_rust_async(
+      NativePortType port_, Object /* BigInt64Array */ arg);
+
+  external void wire_example_primitive_list_type_u8_twin_rust_async(
+      NativePortType port_, Uint8List arg);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_example_primitive_list_type_bool_twin_sync(List<dynamic> arg);
@@ -5357,12 +7655,51 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_example_primitive_list_type_u8_twin_sync(Uint8List arg);
 
+  external void wire_primitive_types_twin_rust_async(NativePortType port_,
+      int my_i32, Object my_i64, double my_f64, bool my_bool);
+
+  external void wire_primitive_u32_twin_rust_async(
+      NativePortType port_, int my_u32);
+
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_primitive_types_twin_sync(
           int my_i32, Object my_i64, double my_f64, bool my_bool);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_primitive_u32_twin_sync(int my_u32);
+
+  external void wire_example_primitive_type_bool_twin_rust_async(
+      NativePortType port_, bool arg);
+
+  external void wire_example_primitive_type_f32_twin_rust_async(
+      NativePortType port_, double arg);
+
+  external void wire_example_primitive_type_f64_twin_rust_async(
+      NativePortType port_, double arg);
+
+  external void wire_example_primitive_type_i16_twin_rust_async(
+      NativePortType port_, int arg);
+
+  external void wire_example_primitive_type_i32_twin_rust_async(
+      NativePortType port_, int arg);
+
+  external void wire_example_primitive_type_i64_twin_rust_async(
+      NativePortType port_, Object arg);
+
+  external void wire_example_primitive_type_i8_twin_rust_async(
+      NativePortType port_, int arg);
+
+  external void wire_example_primitive_type_u16_twin_rust_async(
+      NativePortType port_, int arg);
+
+  external void wire_example_primitive_type_u32_twin_rust_async(
+      NativePortType port_, int arg);
+
+  external void wire_example_primitive_type_u64_twin_rust_async(
+      NativePortType port_, Object arg);
+
+  external void wire_example_primitive_type_u8_twin_rust_async(
+      NativePortType port_, int arg);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_example_primitive_type_bool_twin_sync(bool arg);
@@ -5397,11 +7734,59 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_example_primitive_type_u8_twin_sync(int arg);
 
+  external void wire_test_more_than_just_one_raw_string_struct_twin_rust_async(
+      NativePortType port_);
+
+  external void wire_test_raw_string_item_struct_twin_rust_async(
+      NativePortType port_);
+
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_test_more_than_just_one_raw_string_struct_twin_sync();
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_test_raw_string_item_struct_twin_sync();
+
+  external void wire_create_array_opaque_enum_twin_rust_async(
+      NativePortType port_);
+
+  external void wire_create_nested_opaque_twin_rust_async(NativePortType port_);
+
+  external void wire_create_opaque_twin_rust_async(NativePortType port_);
+
+  external void wire_create_option_opaque_twin_rust_async(
+      NativePortType port_, Object? opaque);
+
+  external void wire_create_sync_opaque_twin_rust_async(NativePortType port_);
+
+  external void wire_frb_generator_test_twin_rust_async(NativePortType port_);
+
+  external void wire_opaque_array_run_twin_rust_async(
+      NativePortType port_, List<dynamic> data);
+
+  external void wire_opaque_array_twin_rust_async(NativePortType port_);
+
+  external void wire_opaque_vec_run_twin_rust_async(
+      NativePortType port_, List<dynamic> data);
+
+  external void wire_opaque_vec_twin_rust_async(NativePortType port_);
+
+  external void wire_run_enum_opaque_twin_rust_async(
+      NativePortType port_, List<dynamic> opaque);
+
+  external void wire_run_nested_opaque_twin_rust_async(
+      NativePortType port_, List<dynamic> opaque);
+
+  external void wire_run_non_clone_twin_rust_async(
+      NativePortType port_, Object clone);
+
+  external void wire_run_opaque_twin_rust_async(
+      NativePortType port_, Object opaque);
+
+  external void wire_run_opaque_with_delay_twin_rust_async(
+      NativePortType port_, Object opaque);
+
+  external void wire_unwrap_rust_opaque_twin_rust_async(
+      NativePortType port_, Object opaque);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_create_array_opaque_enum_twin_sync();
@@ -5451,8 +7836,26 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_unwrap_rust_opaque_twin_sync(Object opaque);
 
+  external void wire_simple_adder_twin_rust_async(
+      NativePortType port_, int a, int b);
+
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_simple_adder_twin_sync(int a, int b);
+
+  external void wire_func_struct_with_one_field_twin_rust_async(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_func_struct_with_two_field_twin_rust_async(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_func_struct_with_zero_field_twin_rust_async(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_func_tuple_struct_with_one_field_twin_rust_async(
+      NativePortType port_, List<dynamic> arg);
+
+  external void wire_func_tuple_struct_with_two_field_twin_rust_async(
+      NativePortType port_, List<dynamic> arg);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_func_struct_with_one_field_twin_sync(List<dynamic> arg);
@@ -5469,11 +7872,26 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_func_tuple_struct_with_two_field_twin_sync(List<dynamic> arg);
 
+  external void wire_test_tuple_2_twin_rust_async(
+      NativePortType port_, List<dynamic> value);
+
+  external void wire_test_tuple_twin_rust_async(
+      NativePortType port_, List<dynamic>? value);
+
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_test_tuple_2_twin_sync(List<dynamic> value);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_test_tuple_twin_sync(List<dynamic>? value);
+
+  external void wire_handle_type_alias_id_twin_rust_async(
+      NativePortType port_, Object input);
+
+  external void wire_handle_type_alias_model_twin_rust_async(
+      NativePortType port_, Object input);
+
+  external void wire_handle_type_nest_alias_id_twin_rust_async(
+      NativePortType port_, Object input);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_type_alias_id_twin_sync(Object input);
@@ -5483,6 +7901,15 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_type_nest_alias_id_twin_sync(Object input);
+
+  external void wire_handle_nested_uuids_twin_rust_async(
+      NativePortType port_, List<dynamic> ids);
+
+  external void wire_handle_uuid_twin_rust_async(
+      NativePortType port_, Uint8List id);
+
+  external void wire_handle_uuids_twin_rust_async(
+      NativePortType port_, Uint8List ids);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_nested_uuids_twin_sync(List<dynamic> ids);
@@ -5635,6 +8062,12 @@ class RustLibWasmModule implements WasmModule {
 
   external int /* *const std::ffi::c_void */
       share_opaque_RustOpaque_box_dynDartDebugTwinNormal(dynamic ptr);
+
+  external void drop_opaque_RustOpaque_box_dynDartDebugTwinRustAsync(
+      dynamic ptr);
+
+  external int /* *const std::ffi::c_void */
+      share_opaque_RustOpaque_box_dynDartDebugTwinRustAsync(dynamic ptr);
 
   external void drop_opaque_RustOpaque_box_dynDartDebugTwinSync(dynamic ptr);
 

@@ -1,6 +1,7 @@
 // Section: imports
 
 use super::*;
+use crate::api::pseudo_manual::rust_opaque_twin_rust_async::*;
 use crate::api::pseudo_manual::rust_opaque_twin_sync::*;
 use crate::api::rust_opaque::*;
 use crate::api::rust_opaque_sync::*;
@@ -89,6 +90,22 @@ impl Wire2Api<crate::api::misc_example::ATwinNormal>
         }
     }
 }
+impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_rust_async::ATwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> crate::api::pseudo_manual::misc_example_twin_rust_async::ATwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::misc_example_twin_rust_async::ATwinRustAsync {
+            a: self_.get(0).wire2api(),
+        }
+    }
+}
 impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_sync::ATwinSync>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -115,6 +132,30 @@ impl Wire2Api<crate::api::misc_example::AbcTwinNormal>
             1 => crate::api::misc_example::AbcTwinNormal::B(self_.get(1).wire2api()),
             2 => crate::api::misc_example::AbcTwinNormal::C(self_.get(1).wire2api()),
             3 => crate::api::misc_example::AbcTwinNormal::JustInt(self_.get(1).wire2api()),
+            _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync::A(
+                self_.get(1).wire2api(),
+            ),
+            1 => crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync::B(
+                self_.get(1).wire2api(),
+            ),
+            2 => crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync::C(
+                self_.get(1).wire2api(),
+            ),
+            3 => {
+                crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync::JustInt(
+                    self_.get(1).wire2api(),
+                )
+            }
             _ => unreachable!(),
         }
     }
@@ -211,6 +252,25 @@ impl Wire2Api<crate::api::optional::AttributeTwinNormal>
         }
     }
 }
+impl Wire2Api<crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync {
+            key: self_.get(0).wire2api(),
+            value: self_.get(1).wire2api(),
+        }
+    }
+}
 impl Wire2Api<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -244,6 +304,22 @@ impl Wire2Api<crate::api::misc_example::BTwinNormal>
         }
     }
 }
+impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_rust_async::BTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> crate::api::pseudo_manual::misc_example_twin_rust_async::BTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::misc_example_twin_rust_async::BTwinRustAsync {
+            b: self_.get(0).wire2api(),
+        }
+    }
+}
 impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_sync::BTwinSync>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -270,6 +346,20 @@ impl Wire2Api<crate::api::array::BlobTwinNormal> for flutter_rust_bridge::wasm_b
             self_.length()
         );
         crate::api::array::BlobTwinNormal(self_.get(0).wire2api())
+    }
+}
+impl Wire2Api<crate::api::pseudo_manual::array_twin_rust_async::BlobTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> crate::api::pseudo_manual::array_twin_rust_async::BlobTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::array_twin_rust_async::BlobTwinRustAsync(self_.get(0).wire2api())
     }
 }
 impl Wire2Api<crate::api::pseudo_manual::array_twin_sync::BlobTwinSync>
@@ -307,6 +397,22 @@ impl Wire2Api<crate::api::misc_example::CTwinNormal>
         }
     }
 }
+impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_rust_async::CTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> crate::api::pseudo_manual::misc_example_twin_rust_async::CTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::misc_example_twin_rust_async::CTwinRustAsync {
+            c: self_.get(0).wire2api(),
+        }
+    }
+}
 impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_sync::CTwinSync>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -335,6 +441,24 @@ impl Wire2Api<crate::api::method::ConcatenateWithTwinNormal>
             self_.length()
         );
         crate::api::method::ConcatenateWithTwinNormal {
+            a: self_.get(0).wire2api(),
+        }
+    }
+}
+impl Wire2Api<crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync {
             a: self_.get(0).wire2api(),
         }
     }
@@ -371,6 +495,23 @@ impl Wire2Api<crate::api::exception::CustomNestedErrorInnerTwinNormal>
         }
     }
 }
+impl
+    Wire2Api<
+        crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorInnerTwinRustAsync,
+    > for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorInnerTwinRustAsync
+    {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+                    0 => { crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorInnerTwinRustAsync::Three( self_.get(1).wire2api()) },
+1 => { crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorInnerTwinRustAsync::Four( self_.get(1).wire2api()) },
+                    _ => unreachable!(),
+                }
+    }
+}
 impl Wire2Api<crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -399,6 +540,23 @@ impl Wire2Api<crate::api::exception::CustomNestedErrorOuterTwinNormal>
             ),
             _ => unreachable!(),
         }
+    }
+}
+impl
+    Wire2Api<
+        crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorOuterTwinRustAsync,
+    > for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorOuterTwinRustAsync
+    {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+                    0 => { crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorOuterTwinRustAsync::One( self_.get(1).wire2api()) },
+1 => { crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorOuterTwinRustAsync::Two( self_.get(1).wire2api()) },
+                    _ => unreachable!(),
+                }
     }
 }
 impl Wire2Api<crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync>
@@ -439,6 +597,24 @@ impl Wire2Api<crate::api::exception::CustomStructErrorTwinNormal>
         }
     }
 }
+impl Wire2Api<crate::api::pseudo_manual::exception_twin_rust_async::CustomStructErrorTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomStructErrorTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::exception_twin_rust_async::CustomStructErrorTwinRustAsync {
+            a: self_.get(0).wire2api(),
+        }
+    }
+}
 impl Wire2Api<crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorTwinSync>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -471,6 +647,24 @@ impl Wire2Api<crate::api::exception::CustomStructTwinNormal>
         }
     }
 }
+impl Wire2Api<crate::api::pseudo_manual::exception_twin_rust_async::CustomStructTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomStructTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::exception_twin_rust_async::CustomStructTwinRustAsync {
+            message: self_.get(0).wire2api(),
+        }
+    }
+}
 impl Wire2Api<crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinSync>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -499,6 +693,25 @@ impl Wire2Api<crate::api::attribute::CustomizedTwinNormal>
             self_.length()
         );
         crate::api::attribute::CustomizedTwinNormal {
+            final_field: self_.get(0).wire2api(),
+            non_final_field: self_.get(1).wire2api(),
+        }
+    }
+}
+impl Wire2Api<crate::api::pseudo_manual::attribute_twin_rust_async::CustomizedTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::attribute_twin_rust_async::CustomizedTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::attribute_twin_rust_async::CustomizedTwinRustAsync {
             final_field: self_.get(0).wire2api(),
             non_final_field: self_.get(1).wire2api(),
         }
@@ -538,6 +751,25 @@ impl Wire2Api<crate::api::dart_opaque::DartOpaqueNestedTwinNormal>
         }
     }
 }
+impl Wire2Api<crate::api::pseudo_manual::dart_opaque_twin_rust_async::DartOpaqueNestedTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::dart_opaque_twin_rust_async::DartOpaqueNestedTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::dart_opaque_twin_rust_async::DartOpaqueNestedTwinRustAsync {
+            first: self_.get(0).wire2api(),
+            second: self_.get(1).wire2api(),
+        }
+    }
+}
 impl Wire2Api<crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueNestedTwinSync>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -569,6 +801,20 @@ impl Wire2Api<crate::api::enumeration::DistanceTwinNormal>
         }
     }
 }
+impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+                    0 => crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync::Unknown,
+1 => { crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync::Map( self_.get(1).wire2api()) },
+                    _ => unreachable!(),
+                }
+    }
+}
 impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwinSync>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -597,6 +843,20 @@ impl Wire2Api<crate::api::misc_type::EmptyTwinNormal>
         crate::api::misc_type::EmptyTwinNormal {}
     }
 }
+impl Wire2Api<crate::api::pseudo_manual::misc_type_twin_rust_async::EmptyTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> crate::api::pseudo_manual::misc_type_twin_rust_async::EmptyTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            0,
+            "Expected 0 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::misc_type_twin_rust_async::EmptyTwinRustAsync {}
+    }
+}
 impl Wire2Api<crate::api::pseudo_manual::misc_type_twin_sync::EmptyTwinSync>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -623,6 +883,20 @@ impl Wire2Api<crate::api::dart_opaque::EnumDartOpaqueTwinNormal>
             1 => crate::api::dart_opaque::EnumDartOpaqueTwinNormal::Opaque(self_.get(1).wire2api()),
             _ => unreachable!(),
         }
+    }
+}
+impl Wire2Api<crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartOpaqueTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartOpaqueTwinRustAsync {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+                    0 => { crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartOpaqueTwinRustAsync::Primitive( self_.get(1).wire2api()) },
+1 => { crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartOpaqueTwinRustAsync::Opaque( self_.get(1).wire2api()) },
+                    _ => unreachable!(),
+                }
     }
 }
 impl Wire2Api<crate::api::pseudo_manual::dart_opaque_twin_sync::EnumDartOpaqueTwinSync>
@@ -656,6 +930,23 @@ impl Wire2Api<crate::api::rust_opaque::EnumOpaqueTwinNormal>
             4 => crate::api::rust_opaque::EnumOpaqueTwinNormal::RwLock(self_.get(1).wire2api()),
             _ => unreachable!(),
         }
+    }
+}
+impl Wire2Api<crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+                    0 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Struct( self_.get(1).wire2api()) },
+1 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Primitive( self_.get(1).wire2api()) },
+2 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::TraitObj( self_.get(1).wire2api()) },
+3 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Mutex( self_.get(1).wire2api()) },
+4 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::RwLock( self_.get(1).wire2api()) },
+                    _ => unreachable!(),
+                }
     }
 }
 impl Wire2Api<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync>
@@ -698,6 +989,23 @@ impl Wire2Api<crate::api::enumeration::EnumWithItemMixedTwinNormal>
         }
     }
 }
+impl
+    Wire2Api<crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRustAsync
+    {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+                    0 => crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRustAsync::A,
+1 => { crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRustAsync::B( self_.get(1).wire2api()) },
+2 => { crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRustAsync::C{c_field:  self_.get(1).wire2api()} },
+                    _ => unreachable!(),
+                }
+    }
+}
 impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -733,6 +1041,23 @@ impl Wire2Api<crate::api::enumeration::EnumWithItemStructTwinNormal>
         }
     }
 }
+impl
+    Wire2Api<
+        crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemStructTwinRustAsync,
+    > for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemStructTwinRustAsync
+    {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+                    0 => { crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemStructTwinRustAsync::A{a_field:  self_.get(1).wire2api()} },
+1 => { crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemStructTwinRustAsync::B{b_field:  self_.get(1).wire2api()} },
+                    _ => unreachable!(),
+                }
+    }
+}
 impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -761,6 +1086,22 @@ impl Wire2Api<crate::api::enumeration::EnumWithItemTupleTwinNormal>
             1 => crate::api::enumeration::EnumWithItemTupleTwinNormal::B(self_.get(1).wire2api()),
             _ => unreachable!(),
         }
+    }
+}
+impl
+    Wire2Api<crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync
+    {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+                    0 => { crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync::A( self_.get(1).wire2api()) },
+1 => { crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync::B( self_.get(1).wire2api()) },
+                    _ => unreachable!(),
+                }
     }
 }
 impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync>
@@ -798,6 +1139,25 @@ impl Wire2Api<crate::api::event_listener::EventTwinNormal>
         }
     }
 }
+impl Wire2Api<crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync {
+            address: self_.get(0).wire2api(),
+            payload: self_.get(1).wire2api(),
+        }
+    }
+}
 impl Wire2Api<crate::api::pseudo_manual::event_listener_twin_sync::EventTwinSync>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -827,6 +1187,37 @@ impl Wire2Api<crate::api::optional::ExoticOptionalsTwinNormal>
             self_.length()
         );
         crate::api::optional::ExoticOptionalsTwinNormal {
+            int32: self_.get(0).wire2api(),
+            int64: self_.get(1).wire2api(),
+            float64: self_.get(2).wire2api(),
+            boolean: self_.get(3).wire2api(),
+            zerocopy: self_.get(4).wire2api(),
+            int8list: self_.get(5).wire2api(),
+            uint8list: self_.get(6).wire2api(),
+            int32list: self_.get(7).wire2api(),
+            float32list: self_.get(8).wire2api(),
+            float64list: self_.get(9).wire2api(),
+            attributes: self_.get(10).wire2api(),
+            attributes_nullable: self_.get(11).wire2api(),
+            nullable_attributes: self_.get(12).wire2api(),
+            newtypeint: self_.get(13).wire2api(),
+        }
+    }
+}
+impl Wire2Api<crate::api::pseudo_manual::optional_twin_rust_async::ExoticOptionalsTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::optional_twin_rust_async::ExoticOptionalsTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            14,
+            "Expected 14 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::optional_twin_rust_async::ExoticOptionalsTwinRustAsync {
             int32: self_.get(0).wire2api(),
             int64: self_.get(1).wire2api(),
             float64: self_.get(2).wire2api(),
@@ -898,6 +1289,27 @@ impl Wire2Api<crate::api::chrono_type::FeatureChronoTwinNormal>
         }
     }
 }
+impl Wire2Api<crate::api::pseudo_manual::chrono_type_twin_rust_async::FeatureChronoTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::chrono_type_twin_rust_async::FeatureChronoTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::chrono_type_twin_rust_async::FeatureChronoTwinRustAsync {
+            utc: self_.get(0).wire2api(),
+            local: self_.get(1).wire2api(),
+            duration: self_.get(2).wire2api(),
+            naive: self_.get(3).wire2api(),
+        }
+    }
+}
 impl Wire2Api<crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChronoTwinSync>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -934,6 +1346,25 @@ impl Wire2Api<crate::api::uuid_type::FeatureUuidTwinNormal>
         }
     }
 }
+impl Wire2Api<crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuidTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuidTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuidTwinRustAsync {
+            one: self_.get(0).wire2api(),
+            many: self_.get(1).wire2api(),
+        }
+    }
+}
 impl Wire2Api<crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSync>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -961,6 +1392,22 @@ impl Wire2Api<crate::api::array::FeedIdTwinNormal> for flutter_rust_bridge::wasm
             self_.length()
         );
         crate::api::array::FeedIdTwinNormal(self_.get(0).wire2api())
+    }
+}
+impl Wire2Api<crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync(
+            self_.get(0).wire2api(),
+        )
     }
 }
 impl Wire2Api<crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync>
@@ -1007,6 +1454,24 @@ impl Wire2Api<crate::api::enumeration::KitchenSinkTwinNormal>
             5 => crate::api::enumeration::KitchenSinkTwinNormal::Enums(self_.get(1).wire2api()),
             _ => unreachable!(),
         }
+    }
+}
+impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+                    0 => crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync::Empty,
+1 => { crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync::Primitives{int32:  self_.get(1).wire2api(),float64:  self_.get(2).wire2api(),boolean:  self_.get(3).wire2api()} },
+2 => { crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync::Nested( self_.get(1).wire2api(), self_.get(2).wire2api()) },
+3 => { crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync::Optional( self_.get(1).wire2api(), self_.get(2).wire2api()) },
+4 => { crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync::Buffer( self_.get(1).wire2api()) },
+5 => { crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync::Enums( self_.get(1).wire2api()) },
+                    _ => unreachable!(),
+                }
     }
 }
 impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync>
@@ -1085,6 +1550,19 @@ impl Wire2Api<Vec<crate::api::optional::AttributeTwinNormal>>
             .collect()
     }
 }
+impl Wire2Api<Vec<crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync>>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync> {
+        self.dyn_into::<flutter_rust_bridge::JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
 impl Wire2Api<Vec<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync>>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -1127,6 +1605,19 @@ impl Wire2Api<Vec<crate::api::misc_example::MyTreeNodeTwinNormal>>
             .collect()
     }
 }
+impl Wire2Api<Vec<crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync>>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync> {
+        self.dyn_into::<flutter_rust_bridge::JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
 impl Wire2Api<Vec<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinSync>>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -1160,6 +1651,22 @@ impl Wire2Api<Vec<Option<crate::api::optional::AttributeTwinNormal>>>
             .collect()
     }
 }
+impl
+    Wire2Api<
+        Vec<Option<crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync>>,
+    > for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> Vec<Option<crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync>>
+    {
+        self.dyn_into::<flutter_rust_bridge::JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
 impl Wire2Api<Vec<Option<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync>>>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -1186,6 +1693,22 @@ impl Wire2Api<Vec<Option<crate::api::misc_example::WeekdaysTwinNormal>>>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> Vec<Option<crate::api::misc_example::WeekdaysTwinNormal>> {
+        self.dyn_into::<flutter_rust_bridge::JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
+impl
+    Wire2Api<
+        Vec<Option<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>>,
+    > for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> Vec<Option<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>>
+    {
         self.dyn_into::<flutter_rust_bridge::JsArray>()
             .unwrap()
             .iter()
@@ -1285,6 +1808,19 @@ impl Wire2Api<Vec<crate::api::array::TestIdTwinNormal>>
             .collect()
     }
 }
+impl Wire2Api<Vec<crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync>>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync> {
+        self.dyn_into::<flutter_rust_bridge::JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
 impl Wire2Api<Vec<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync>>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -1300,6 +1836,19 @@ impl Wire2Api<Vec<crate::api::misc_example::WeekdaysTwinNormal>>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> Vec<crate::api::misc_example::WeekdaysTwinNormal> {
+        self.dyn_into::<flutter_rust_bridge::JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
+impl Wire2Api<Vec<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> Vec<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync> {
         self.dyn_into::<flutter_rust_bridge::JsArray>()
             .unwrap()
             .iter()
@@ -1346,6 +1895,20 @@ impl Wire2Api<crate::api::enumeration::MeasureTwinNormal>
         }
     }
 }
+impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTwinRustAsync {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+                    0 => { crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTwinRustAsync::Speed( self_.get(1).wire2api()) },
+1 => { crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTwinRustAsync::Distance( self_.get(1).wire2api()) },
+                    _ => unreachable!(),
+                }
+    }
+}
 impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwinSync>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -1376,6 +1939,22 @@ impl Wire2Api<crate::api::array::MessageIdTwinNormal>
         crate::api::array::MessageIdTwinNormal(self_.get(0).wire2api())
     }
 }
+impl Wire2Api<crate::api::pseudo_manual::array_twin_rust_async::MessageIdTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> crate::api::pseudo_manual::array_twin_rust_async::MessageIdTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::array_twin_rust_async::MessageIdTwinRustAsync(
+            self_.get(0).wire2api(),
+        )
+    }
+}
 impl Wire2Api<crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -1402,6 +1981,25 @@ impl Wire2Api<crate::api::misc_example::MyNestedStructTwinNormal>
             self_.length()
         );
         crate::api::misc_example::MyNestedStructTwinNormal {
+            tree_node: self_.get(0).wire2api(),
+            weekday: self_.get(1).wire2api(),
+        }
+    }
+}
+impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_rust_async::MyNestedStructTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::MyNestedStructTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::misc_example_twin_rust_async::MyNestedStructTwinRustAsync {
             tree_node: self_.get(0).wire2api(),
             weekday: self_.get(1).wire2api(),
         }
@@ -1453,6 +2051,25 @@ impl Wire2Api<crate::api::misc_example::MySizeFreezedTwinNormal>
             self_.length()
         );
         crate::api::misc_example::MySizeFreezedTwinNormal {
+            width: self_.get(0).wire2api(),
+            height: self_.get(1).wire2api(),
+        }
+    }
+}
+impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_rust_async::MySizeFreezedTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::MySizeFreezedTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::misc_example_twin_rust_async::MySizeFreezedTwinRustAsync {
             width: self_.get(0).wire2api(),
             height: self_.get(1).wire2api(),
         }
@@ -1510,6 +2127,27 @@ impl Wire2Api<crate::api::misc_example::MyTreeNodeTwinNormal>
         }
     }
 }
+impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync {
+            value_i32: self_.get(0).wire2api(),
+            value_vec_u8: self_.get(1).wire2api(),
+            value_boolean: self_.get(2).wire2api(),
+            children: self_.get(3).wire2api(),
+        }
+    }
+}
 impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinSync>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -1543,6 +2181,24 @@ impl Wire2Api<crate::api::newtype_pattern::NewTypeIntTwinNormal>
         crate::api::newtype_pattern::NewTypeIntTwinNormal(self_.get(0).wire2api())
     }
 }
+impl Wire2Api<crate::api::pseudo_manual::newtype_pattern_twin_rust_async::NewTypeIntTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::newtype_pattern_twin_rust_async::NewTypeIntTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::newtype_pattern_twin_rust_async::NewTypeIntTwinRustAsync(
+            self_.get(0).wire2api(),
+        )
+    }
+}
 impl Wire2Api<crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntTwinSync>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -1571,6 +2227,23 @@ impl Wire2Api<crate::api::enumeration::NoteTwinNormal>
             self_.length()
         );
         crate::api::enumeration::NoteTwinNormal {
+            day: self_.get(0).wire2api(),
+            body: self_.get(1).wire2api(),
+        }
+    }
+}
+impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_rust_async::NoteTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> crate::api::pseudo_manual::enumeration_twin_rust_async::NoteTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::enumeration_twin_rust_async::NoteTwinRustAsync {
             day: self_.get(0).wire2api(),
             body: self_.get(1).wire2api(),
         }
@@ -1619,6 +2292,25 @@ impl Wire2Api<crate::api::rust_opaque::OpaqueNestedTwinNormal>
             self_.length()
         );
         crate::api::rust_opaque::OpaqueNestedTwinNormal {
+            first: self_.get(0).wire2api(),
+            second: self_.get(1).wire2api(),
+        }
+    }
+}
+impl Wire2Api<crate::api::pseudo_manual::rust_opaque_twin_rust_async::OpaqueNestedTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::rust_opaque_twin_rust_async::OpaqueNestedTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::rust_opaque_twin_rust_async::OpaqueNestedTwinRustAsync {
             first: self_.get(0).wire2api(),
             second: self_.get(1).wire2api(),
         }
@@ -1695,6 +2387,25 @@ impl Wire2Api<crate::api::optional::OptVecsTwinNormal>
         }
     }
 }
+impl Wire2Api<crate::api::pseudo_manual::optional_twin_rust_async::OptVecsTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> crate::api::pseudo_manual::optional_twin_rust_async::OptVecsTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::optional_twin_rust_async::OptVecsTwinRustAsync {
+            i32: self_.get(0).wire2api(),
+            enums: self_.get(1).wire2api(),
+            strings: self_.get(2).wire2api(),
+            buffers: self_.get(3).wire2api(),
+        }
+    }
+}
 impl Wire2Api<crate::api::pseudo_manual::optional_twin_sync::OptVecsTwinSync>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -1756,6 +2467,24 @@ impl Wire2Api<crate::api::exception::SomeStructTwinNormal>
         }
     }
 }
+impl Wire2Api<crate::api::pseudo_manual::exception_twin_rust_async::SomeStructTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::exception_twin_rust_async::SomeStructTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::exception_twin_rust_async::SomeStructTwinRustAsync {
+            value: self_.get(0).wire2api(),
+        }
+    }
+}
 impl Wire2Api<crate::api::pseudo_manual::exception_twin_sync::SomeStructTwinSync>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -1780,6 +2509,24 @@ impl Wire2Api<crate::api::enumeration::SpeedTwinNormal>
         match self_.get(0).unchecked_into_f64() as _ {
             0 => crate::api::enumeration::SpeedTwinNormal::Unknown,
             1 => crate::api::enumeration::SpeedTwinNormal::GPS(self_.get(1).wire2api()),
+            _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_rust_async::SpeedTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::SpeedTwinRustAsync {
+        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => {
+                crate::api::pseudo_manual::enumeration_twin_rust_async::SpeedTwinRustAsync::Unknown
+            }
+            1 => crate::api::pseudo_manual::enumeration_twin_rust_async::SpeedTwinRustAsync::GPS(
+                self_.get(1).wire2api(),
+            ),
             _ => unreachable!(),
         }
     }
@@ -1810,6 +2557,24 @@ impl Wire2Api<crate::api::comment::StructWithCommentsTwinNormal>
             self_.length()
         );
         crate::api::comment::StructWithCommentsTwinNormal {
+            field_with_comments: self_.get(0).wire2api(),
+        }
+    }
+}
+impl Wire2Api<crate::api::pseudo_manual::comment_twin_rust_async::StructWithCommentsTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::comment_twin_rust_async::StructWithCommentsTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::comment_twin_rust_async::StructWithCommentsTwinRustAsync {
             field_with_comments: self_.get(0).wire2api(),
         }
     }
@@ -1847,6 +2612,25 @@ impl Wire2Api<crate::api::misc_example::StructWithEnumTwinNormal>
         }
     }
 }
+impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_rust_async::StructWithEnumTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::StructWithEnumTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::misc_example_twin_rust_async::StructWithEnumTwinRustAsync {
+            abc1: self_.get(0).wire2api(),
+            abc2: self_.get(1).wire2api(),
+        }
+    }
+}
 impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnumTwinSync>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -1876,6 +2660,24 @@ impl Wire2Api<crate::api::structure::StructWithOneFieldTwinNormal>
             self_.length()
         );
         crate::api::structure::StructWithOneFieldTwinNormal {
+            a: self_.get(0).wire2api(),
+        }
+    }
+}
+impl Wire2Api<crate::api::pseudo_manual::structure_twin_rust_async::StructWithOneFieldTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::structure_twin_rust_async::StructWithOneFieldTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::structure_twin_rust_async::StructWithOneFieldTwinRustAsync {
             a: self_.get(0).wire2api(),
         }
     }
@@ -1915,6 +2717,25 @@ impl Wire2Api<crate::api::structure::StructWithTwoFieldTwinNormal>
         }
     }
 }
+impl Wire2Api<crate::api::pseudo_manual::structure_twin_rust_async::StructWithTwoFieldTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::structure_twin_rust_async::StructWithTwoFieldTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::structure_twin_rust_async::StructWithTwoFieldTwinRustAsync {
+            a: self_.get(0).wire2api(),
+            b: self_.get(1).wire2api(),
+        }
+    }
+}
 impl Wire2Api<crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFieldTwinSync>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -1946,6 +2767,24 @@ impl Wire2Api<crate::api::structure::StructWithZeroFieldTwinNormal>
             self_.length()
         );
         crate::api::structure::StructWithZeroFieldTwinNormal {}
+    }
+}
+impl
+    Wire2Api<crate::api::pseudo_manual::structure_twin_rust_async::StructWithZeroFieldTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::structure_twin_rust_async::StructWithZeroFieldTwinRustAsync
+    {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            0,
+            "Expected 0 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::structure_twin_rust_async::StructWithZeroFieldTwinRustAsync {}
     }
 }
 impl Wire2Api<crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync>
@@ -1980,6 +2819,22 @@ impl Wire2Api<crate::api::method::SumWithTwinNormal>
         }
     }
 }
+impl Wire2Api<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync {
+            x: self_.get(0).wire2api(),
+        }
+    }
+}
 impl Wire2Api<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -2008,6 +2863,22 @@ impl Wire2Api<crate::api::array::TestIdTwinNormal> for flutter_rust_bridge::wasm
         crate::api::array::TestIdTwinNormal(self_.get(0).wire2api())
     }
 }
+impl Wire2Api<crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync(
+            self_.get(0).wire2api(),
+        )
+    }
+}
 impl Wire2Api<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -2034,6 +2905,27 @@ impl Wire2Api<crate::api::structure::TupleStructWithOneFieldTwinNormal>
             self_.length()
         );
         crate::api::structure::TupleStructWithOneFieldTwinNormal(self_.get(0).wire2api())
+    }
+}
+impl
+    Wire2Api<
+        crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithOneFieldTwinRustAsync,
+    > for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithOneFieldTwinRustAsync
+    {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithOneFieldTwinRustAsync(
+            self_.get(0).wire2api(),
+        )
     }
 }
 impl Wire2Api<crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync>
@@ -2066,6 +2958,28 @@ impl Wire2Api<crate::api::structure::TupleStructWithTwoFieldTwinNormal>
             self_.length()
         );
         crate::api::structure::TupleStructWithTwoFieldTwinNormal(
+            self_.get(0).wire2api(),
+            self_.get(1).wire2api(),
+        )
+    }
+}
+impl
+    Wire2Api<
+        crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithTwoFieldTwinRustAsync,
+    > for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithTwoFieldTwinRustAsync
+    {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithTwoFieldTwinRustAsync(
             self_.get(0).wire2api(),
             self_.get(1).wire2api(),
         )
@@ -2120,6 +3034,22 @@ impl Wire2Api<crate::api::attribute::UserIdTwinNormal>
             self_.length()
         );
         crate::api::attribute::UserIdTwinNormal {
+            value: self_.get(0).wire2api(),
+        }
+    }
+}
+impl Wire2Api<crate::api::pseudo_manual::attribute_twin_rust_async::UserIdTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> crate::api::pseudo_manual::attribute_twin_rust_async::UserIdTwinRustAsync {
+        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::pseudo_manual::attribute_twin_rust_async::UserIdTwinRustAsync {
             value: self_.get(0).wire2api(),
         }
     }
@@ -2216,6 +3146,20 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinNormal>>>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinNormal>> {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+
+        unsafe {
+            flutter_rust_bridge::support::opaque_from_dart((self.as_f64().unwrap() as usize) as _)
+        }
+    }
+}
+impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsync>>>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsync>> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
@@ -2363,6 +3307,13 @@ impl Wire2Api<Box<crate::api::array::BlobTwinNormal>>
         Box::new(self.wire2api())
     }
 }
+impl Wire2Api<Box<crate::api::pseudo_manual::array_twin_rust_async::BlobTwinRustAsync>>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> Box<crate::api::pseudo_manual::array_twin_rust_async::BlobTwinRustAsync> {
+        Box::new(self.wire2api())
+    }
+}
 impl Wire2Api<Box<crate::api::pseudo_manual::array_twin_sync::BlobTwinSync>>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -2382,6 +3333,15 @@ impl Wire2Api<Box<crate::api::enumeration::DistanceTwinNormal>>
         Box::new(self.wire2api())
     }
 }
+impl Wire2Api<Box<crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync>>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> Box<crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync> {
+        Box::new(self.wire2api())
+    }
+}
 impl Wire2Api<Box<crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwinSync>>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -2393,6 +3353,17 @@ impl Wire2Api<Box<crate::api::optional::ExoticOptionalsTwinNormal>>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> Box<crate::api::optional::ExoticOptionalsTwinNormal> {
+        Box::new(self.wire2api())
+    }
+}
+impl
+    Wire2Api<Box<crate::api::pseudo_manual::optional_twin_rust_async::ExoticOptionalsTwinRustAsync>>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> Box<crate::api::pseudo_manual::optional_twin_rust_async::ExoticOptionalsTwinRustAsync>
+    {
         Box::new(self.wire2api())
     }
 }
@@ -2432,6 +3403,15 @@ impl Wire2Api<Box<crate::api::enumeration::KitchenSinkTwinNormal>>
         Box::new(self.wire2api())
     }
 }
+impl Wire2Api<Box<crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync>>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> Box<crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync> {
+        Box::new(self.wire2api())
+    }
+}
 impl Wire2Api<Box<crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync>>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -2455,6 +3435,18 @@ impl Wire2Api<Box<crate::api::misc_example::MySizeFreezedTwinNormal>>
         Box::new(self.wire2api())
     }
 }
+impl
+    Wire2Api<
+        Box<crate::api::pseudo_manual::misc_example_twin_rust_async::MySizeFreezedTwinRustAsync>,
+    > for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> Box<crate::api::pseudo_manual::misc_example_twin_rust_async::MySizeFreezedTwinRustAsync>
+    {
+        Box::new(self.wire2api())
+    }
+}
 impl Wire2Api<Box<crate::api::pseudo_manual::misc_example_twin_sync::MySizeFreezedTwinSync>>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -2468,6 +3460,15 @@ impl Wire2Api<Box<crate::api::enumeration::SpeedTwinNormal>>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> Box<crate::api::enumeration::SpeedTwinNormal> {
+        Box::new(self.wire2api())
+    }
+}
+impl Wire2Api<Box<crate::api::pseudo_manual::enumeration_twin_rust_async::SpeedTwinRustAsync>>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> Box<crate::api::pseudo_manual::enumeration_twin_rust_async::SpeedTwinRustAsync> {
         Box::new(self.wire2api())
     }
 }
@@ -2497,6 +3498,16 @@ impl Wire2Api<Box<crate::api::misc_example::WeekdaysTwinNormal>>
         Box::new(ptr.wire2api())
     }
 }
+impl Wire2Api<Box<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> Box<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync> {
+        let ptr: Box<i32> = self.wire2api();
+        Box::new(ptr.wire2api())
+    }
+}
 impl Wire2Api<Box<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync>>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -2509,6 +3520,15 @@ impl Wire2Api<crate::api::enumeration::EnumSimpleTwinNormal>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::enumeration::EnumSimpleTwinNormal {
+        (self.unchecked_into_f64() as i32).wire2api()
+    }
+}
+impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync {
         (self.unchecked_into_f64() as i32).wire2api()
     }
 }
@@ -2654,6 +3674,17 @@ impl Wire2Api<[crate::api::array::TestIdTwinNormal; 4]>
         flutter_rust_bridge::support::from_vec_to_array(vec)
     }
 }
+impl Wire2Api<[crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync; 4]>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> [crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync; 4] {
+        let vec: Vec<crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync> =
+            self.wire2api();
+        flutter_rust_bridge::support::from_vec_to_array(vec)
+    }
+}
 impl Wire2Api<[crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync; 4]>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -2713,6 +3744,15 @@ impl Wire2Api<crate::api::misc_example::WeekdaysTwinNormal>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::misc_example::WeekdaysTwinNormal {
+        (self.unchecked_into_f64() as i32).wire2api()
+    }
+}
+impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>
+    for flutter_rust_bridge::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync {
         (self.unchecked_into_f64() as i32).wire2api()
     }
 }
@@ -3854,6 +4894,82 @@ pub fn wire_primitive_u32_twin_normal(port_: flutter_rust_bridge::MessagePort, m
 }
 
 #[wasm_bindgen]
+pub fn wire_boxed_blob_twin_rust_async(port_: flutter_rust_bridge::MessagePort, blob: Box<[u8]>) {
+    wire_boxed_blob_twin_rust_async_impl(port_, blob)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_test_id_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    id: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_func_test_id_twin_rust_async_impl(port_, id)
+}
+
+#[wasm_bindgen]
+pub fn wire_get_array_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_get_array_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_get_complex_array_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_get_complex_array_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_last_number_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    array: Box<[f64]>,
+) {
+    wire_last_number_twin_rust_async_impl(port_, array)
+}
+
+#[wasm_bindgen]
+pub fn wire_nested_id_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    id: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_nested_id_twin_rust_async_impl(port_, id)
+}
+
+#[wasm_bindgen]
+pub fn wire_new_msgid_twin_rust_async(port_: flutter_rust_bridge::MessagePort, id: Box<[u8]>) {
+    wire_new_msgid_twin_rust_async_impl(port_, id)
+}
+
+#[wasm_bindgen]
+pub fn wire_return_boxed_feed_id_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    id: Box<[u8]>,
+) {
+    wire_return_boxed_feed_id_twin_rust_async_impl(port_, id)
+}
+
+#[wasm_bindgen]
+pub fn wire_return_boxed_raw_feed_id_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    id: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_return_boxed_raw_feed_id_twin_rust_async_impl(port_, id)
+}
+
+#[wasm_bindgen]
+pub fn wire_use_boxed_blob_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    blob: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_use_boxed_blob_twin_rust_async_impl(port_, blob)
+}
+
+#[wasm_bindgen]
+pub fn wire_use_msgid_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    id: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_use_msgid_twin_rust_async_impl(port_, id)
+}
+
+#[wasm_bindgen]
 pub fn wire_boxed_blob_twin_sync(blob: Box<[u8]>) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_boxed_blob_twin_sync_impl(blob)
 }
@@ -3923,6 +5039,22 @@ pub fn wire_use_msgid_twin_sync(
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_customized_struct_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    val: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_handle_customized_struct_twin_rust_async_impl(port_, val)
+}
+
+#[wasm_bindgen]
+pub fn wire_next_user_id_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    user_id: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_next_user_id_twin_rust_async_impl(port_, user_id)
+}
+
+#[wasm_bindgen]
 pub fn wire_handle_customized_struct_twin_sync(
     val: flutter_rust_bridge::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
@@ -3934,6 +5066,27 @@ pub fn wire_next_user_id_twin_sync(
     user_id: flutter_rust_bridge::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_next_user_id_twin_sync_impl(user_id)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_input_bytes_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    bytes: Box<[u8]>,
+) {
+    wire_benchmark_input_bytes_twin_rust_async_impl(port_, bytes)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_output_bytes_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    size: i32,
+) {
+    wire_benchmark_output_bytes_twin_rust_async_impl(port_, size)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_void_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_benchmark_void_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -3953,6 +5106,70 @@ pub fn wire_benchmark_output_bytes_twin_sync(
 #[wasm_bindgen]
 pub fn wire_benchmark_void_twin_sync() -> flutter_rust_bridge::support::WireSyncReturn {
     wire_benchmark_void_twin_sync_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_datetime_local_twin_rust_async(port_: flutter_rust_bridge::MessagePort, d: i64) {
+    wire_datetime_local_twin_rust_async_impl(port_, d)
+}
+
+#[wasm_bindgen]
+pub fn wire_datetime_utc_twin_rust_async(port_: flutter_rust_bridge::MessagePort, d: i64) {
+    wire_datetime_utc_twin_rust_async_impl(port_, d)
+}
+
+#[wasm_bindgen]
+pub fn wire_duration_twin_rust_async(port_: flutter_rust_bridge::MessagePort, d: i64) {
+    wire_duration_twin_rust_async_impl(port_, d)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_durations_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    durations: Box<[i64]>,
+    since: i64,
+) {
+    wire_handle_durations_twin_rust_async_impl(port_, durations, since)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_timestamps_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    timestamps: Box<[i64]>,
+    epoch: i64,
+) {
+    wire_handle_timestamps_twin_rust_async_impl(port_, timestamps, epoch)
+}
+
+#[wasm_bindgen]
+pub fn wire_how_long_does_it_take_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    mine: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_how_long_does_it_take_twin_rust_async_impl(port_, mine)
+}
+
+#[wasm_bindgen]
+pub fn wire_naivedatetime_twin_rust_async(port_: flutter_rust_bridge::MessagePort, d: i64) {
+    wire_naivedatetime_twin_rust_async_impl(port_, d)
+}
+
+#[wasm_bindgen]
+pub fn wire_optional_empty_datetime_utc_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    d: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_optional_empty_datetime_utc_twin_rust_async_impl(port_, d)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_chrono_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_test_chrono_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_precise_chrono_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_test_precise_chrono_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -4016,6 +5233,42 @@ pub fn wire_test_precise_chrono_twin_sync() -> flutter_rust_bridge::support::Wir
 }
 
 #[wasm_bindgen]
+pub fn wire_StructWithCommentsTwinRustAsync_instance_method_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    that: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_StructWithCommentsTwinRustAsync_instance_method_twin_rust_async_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_StructWithCommentsTwinRustAsync_static_method_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+) {
+    wire_StructWithCommentsTwinRustAsync_static_method_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_function_with_comments_slash_star_star_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+) {
+    wire_function_with_comments_slash_star_star_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_function_with_comments_triple_slash_multi_line_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+) {
+    wire_function_with_comments_triple_slash_multi_line_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_function_with_comments_triple_slash_single_line_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+) {
+    wire_function_with_comments_triple_slash_single_line_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_StructWithCommentsTwinSync_instance_method_twin_sync(
     that: flutter_rust_bridge::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
@@ -4047,8 +5300,131 @@ pub fn wire_function_with_comments_triple_slash_single_line_twin_sync(
 }
 
 #[wasm_bindgen]
+pub fn wire_return_dart_dynamic_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_return_dart_dynamic_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_return_dart_dynamic_twin_sync() -> flutter_rust_bridge::support::WireSyncReturn {
     wire_return_dart_dynamic_twin_sync_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_async_accept_dart_opaque_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    opaque: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_async_accept_dart_opaque_twin_rust_async_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_create_enum_dart_opaque_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    opaque: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_create_enum_dart_opaque_twin_rust_async_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_create_nested_dart_opaque_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    opaque1: flutter_rust_bridge::wasm_bindgen::JsValue,
+    opaque2: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_create_nested_dart_opaque_twin_rust_async_impl(port_, opaque1, opaque2)
+}
+
+#[wasm_bindgen]
+pub fn wire_drop_static_dart_opaque_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_drop_static_dart_opaque_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_get_enum_dart_opaque_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    opaque: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_get_enum_dart_opaque_twin_rust_async_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_get_nested_dart_opaque_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    opaque: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_get_nested_dart_opaque_twin_rust_async_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_loop_back_array_get_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    opaque: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_loop_back_array_get_twin_rust_async_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_loop_back_array_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    opaque: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_loop_back_array_twin_rust_async_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_loop_back_option_get_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    opaque: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_loop_back_option_get_twin_rust_async_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_loop_back_option_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    opaque: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_loop_back_option_twin_rust_async_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_loop_back_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    opaque: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_loop_back_twin_rust_async_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_loop_back_vec_get_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    opaque: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_loop_back_vec_get_twin_rust_async_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_loop_back_vec_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    opaque: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_loop_back_vec_twin_rust_async_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_panic_unwrap_dart_opaque_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    opaque: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_panic_unwrap_dart_opaque_twin_rust_async_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_set_static_dart_opaque_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    opaque: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_set_static_dart_opaque_twin_rust_async_impl(port_, opaque)
 }
 
 #[wasm_bindgen]
@@ -4156,6 +5532,75 @@ pub fn wire_set_static_dart_opaque_twin_sync(
 }
 
 #[wasm_bindgen]
+pub fn wire_func_enum_simple_twin_rust_async(port_: flutter_rust_bridge::MessagePort, arg: i32) {
+    wire_func_enum_simple_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_enum_with_item_mixed_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_func_enum_with_item_mixed_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_enum_with_item_struct_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_func_enum_with_item_struct_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_enum_with_item_tuple_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_func_enum_with_item_tuple_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_enum_parameter_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    weekday: i32,
+) {
+    wire_handle_enum_parameter_twin_rust_async_impl(port_, weekday)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_enum_struct_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    val: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_handle_enum_struct_twin_rust_async_impl(port_, val)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_return_enum_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    input: String,
+) {
+    wire_handle_return_enum_twin_rust_async_impl(port_, input)
+}
+
+#[wasm_bindgen]
+pub fn wire_multiply_by_ten_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    measure: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_multiply_by_ten_twin_rust_async_impl(port_, measure)
+}
+
+#[wasm_bindgen]
+pub fn wire_print_note_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    note: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_print_note_twin_rust_async_impl(port_, note)
+}
+
+#[wasm_bindgen]
 pub fn wire_func_enum_simple_twin_sync(arg: i32) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_func_enum_simple_twin_sync_impl(arg)
 }
@@ -4217,6 +5662,33 @@ pub fn wire_print_note_twin_sync(
 }
 
 #[wasm_bindgen]
+pub fn wire_EventTwinRustAsync_as_string_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    that: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_EventTwinRustAsync_as_string_twin_rust_async_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_close_event_listener_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_close_event_listener_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_create_event_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    address: String,
+    payload: String,
+) {
+    wire_create_event_twin_rust_async_impl(port_, address, payload)
+}
+
+#[wasm_bindgen]
+pub fn wire_register_event_listener_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_register_event_listener_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_EventTwinSync_as_string_twin_sync(
     that: flutter_rust_bridge::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
@@ -4239,6 +5711,205 @@ pub fn wire_create_event_twin_sync(
 #[wasm_bindgen]
 pub fn wire_register_event_listener_twin_sync(port_: flutter_rust_bridge::MessagePort) {
     wire_register_event_listener_twin_sync_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_CustomStructTwinRustAsync_new_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    message: String,
+) {
+    wire_CustomStructTwinRustAsync_new_twin_rust_async_impl(port_, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_CustomStructTwinRustAsync_nonstatic_return_custom_struct_error_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    that: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_CustomStructTwinRustAsync_nonstatic_return_custom_struct_error_twin_rust_async_impl(
+        port_, that,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_CustomStructTwinRustAsync_nonstatic_return_custom_struct_ok_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    that: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_CustomStructTwinRustAsync_nonstatic_return_custom_struct_ok_twin_rust_async_impl(
+        port_, that,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_CustomStructTwinRustAsync_static_return_custom_struct_error_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+) {
+    wire_CustomStructTwinRustAsync_static_return_custom_struct_error_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_CustomStructTwinRustAsync_static_return_custom_struct_ok_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+) {
+    wire_CustomStructTwinRustAsync_static_return_custom_struct_ok_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_SomeStructTwinRustAsync_new_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    value: u32,
+) {
+    wire_SomeStructTwinRustAsync_new_twin_rust_async_impl(port_, value)
+}
+
+#[wasm_bindgen]
+pub fn wire_SomeStructTwinRustAsync_non_static_return_err_custom_error_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    that: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_SomeStructTwinRustAsync_non_static_return_err_custom_error_twin_rust_async_impl(
+        port_, that,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_SomeStructTwinRustAsync_non_static_return_ok_custom_error_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    that: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_SomeStructTwinRustAsync_non_static_return_ok_custom_error_twin_rust_async_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_SomeStructTwinRustAsync_static_return_err_custom_error_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+) {
+    wire_SomeStructTwinRustAsync_static_return_err_custom_error_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_SomeStructTwinRustAsync_static_return_ok_custom_error_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+) {
+    wire_SomeStructTwinRustAsync_static_return_ok_custom_error_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_custom_enum_error_panic_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_custom_enum_error_panic_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_custom_enum_error_return_error_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+) {
+    wire_custom_enum_error_return_error_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_custom_enum_error_return_ok_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: u32,
+) {
+    wire_custom_enum_error_return_ok_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_custom_nested_error_return_error_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_custom_nested_error_return_error_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_custom_struct_error_return_error_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_custom_struct_error_return_error_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_return_error_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_func_return_error_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_type_fallible_panic_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_func_type_fallible_panic_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_type_infallible_panic_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_func_type_infallible_panic_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_panic_with_custom_result_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_panic_with_custom_result_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_return_custom_nested_error_1_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_return_custom_nested_error_1_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_return_custom_nested_error_1_variant1_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+) {
+    wire_return_custom_nested_error_1_variant1_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_return_custom_nested_error_2_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_return_custom_nested_error_2_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_return_custom_struct_error_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_return_custom_struct_error_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_return_custom_struct_ok_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_return_custom_struct_ok_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_return_err_custom_error_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_return_err_custom_error_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_return_error_variant_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    variant: u32,
+) {
+    wire_return_error_variant_twin_rust_async_impl(port_, variant)
+}
+
+#[wasm_bindgen]
+pub fn wire_return_ok_custom_error_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_return_ok_custom_error_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_stream_sink_throw_anyhow_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_stream_sink_throw_anyhow_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_sync_return_custom_struct_error_twin_rust_async(
+) -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_sync_return_custom_struct_error_twin_rust_async_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_throw_anyhow_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_throw_anyhow_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -4421,6 +6092,32 @@ pub fn wire_throw_anyhow_twin_sync() -> flutter_rust_bridge::support::WireSyncRe
 }
 
 #[wasm_bindgen]
+pub fn wire_call_new_module_system_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_call_new_module_system_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_call_old_module_system_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_call_old_module_system_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_use_imported_enum_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    my_enum: i32,
+) {
+    wire_use_imported_enum_twin_rust_async_impl(port_, my_enum)
+}
+
+#[wasm_bindgen]
+pub fn wire_use_imported_struct_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    my_struct: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_use_imported_struct_twin_rust_async_impl(port_, my_struct)
+}
+
+#[wasm_bindgen]
 pub fn wire_call_new_module_system_twin_sync() -> flutter_rust_bridge::support::WireSyncReturn {
     wire_call_new_module_system_twin_sync_impl()
 }
@@ -4442,6 +6139,97 @@ pub fn wire_use_imported_struct_twin_sync(
     my_struct: flutter_rust_bridge::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_use_imported_struct_twin_sync_impl(my_struct)
+}
+
+#[wasm_bindgen]
+pub fn wire_ConcatenateWithTwinRustAsync_concatenate_static_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    a: String,
+    b: String,
+) {
+    wire_ConcatenateWithTwinRustAsync_concatenate_static_twin_rust_async_impl(port_, a, b)
+}
+
+#[wasm_bindgen]
+pub fn wire_ConcatenateWithTwinRustAsync_concatenate_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    that: flutter_rust_bridge::wasm_bindgen::JsValue,
+    b: String,
+) {
+    wire_ConcatenateWithTwinRustAsync_concatenate_twin_rust_async_impl(port_, that, b)
+}
+
+#[wasm_bindgen]
+pub fn wire_ConcatenateWithTwinRustAsync_handle_some_static_stream_sink_single_arg_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+) {
+    wire_ConcatenateWithTwinRustAsync_handle_some_static_stream_sink_single_arg_twin_rust_async_impl(
+        port_,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_ConcatenateWithTwinRustAsync_handle_some_static_stream_sink_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    key: u32,
+    max: u32,
+) {
+    wire_ConcatenateWithTwinRustAsync_handle_some_static_stream_sink_twin_rust_async_impl(
+        port_, key, max,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_ConcatenateWithTwinRustAsync_handle_some_stream_sink_at_1_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    that: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_ConcatenateWithTwinRustAsync_handle_some_stream_sink_at_1_twin_rust_async_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_ConcatenateWithTwinRustAsync_handle_some_stream_sink_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    that: flutter_rust_bridge::wasm_bindgen::JsValue,
+    key: u32,
+    max: u32,
+) {
+    wire_ConcatenateWithTwinRustAsync_handle_some_stream_sink_twin_rust_async_impl(
+        port_, that, key, max,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_ConcatenateWithTwinRustAsync_new_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    a: String,
+) {
+    wire_ConcatenateWithTwinRustAsync_new_twin_rust_async_impl(port_, a)
+}
+
+#[wasm_bindgen]
+pub fn wire_SumWithTwinRustAsync_sum_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    that: flutter_rust_bridge::wasm_bindgen::JsValue,
+    y: u32,
+    z: u32,
+) {
+    wire_SumWithTwinRustAsync_sum_twin_rust_async_impl(port_, that, y, z)
+}
+
+#[wasm_bindgen]
+pub fn wire_get_sum_array_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    a: u32,
+    b: u32,
+    c: u32,
+) {
+    wire_get_sum_array_twin_rust_async_impl(port_, a, b, c)
+}
+
+#[wasm_bindgen]
+pub fn wire_get_sum_struct_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_get_sum_struct_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -4522,6 +6310,131 @@ pub fn wire_get_sum_array_twin_sync(
 #[wasm_bindgen]
 pub fn wire_get_sum_struct_twin_sync() -> flutter_rust_bridge::support::WireSyncReturn {
     wire_get_sum_struct_twin_sync_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_app_settings_stream_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_app_settings_stream_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_app_settings_vec_stream_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_app_settings_vec_stream_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_first_number_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    nums: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_first_number_twin_rust_async_impl(port_, nums)
+}
+
+#[wasm_bindgen]
+pub fn wire_first_sequence_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    seqs: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_first_sequence_twin_rust_async_impl(port_, seqs)
+}
+
+#[wasm_bindgen]
+pub fn wire_get_app_settings_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_get_app_settings_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_get_fallible_app_settings_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_get_fallible_app_settings_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_get_message_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_get_message_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_is_app_embedded_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    app_settings: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_is_app_embedded_twin_rust_async_impl(port_, app_settings)
+}
+
+#[wasm_bindgen]
+pub fn wire_mirror_struct_stream_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_mirror_struct_stream_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_mirror_tuple_stream_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_mirror_tuple_stream_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_repeat_number_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    num: i32,
+    times: usize,
+) {
+    wire_repeat_number_twin_rust_async_impl(port_, num, times)
+}
+
+#[wasm_bindgen]
+pub fn wire_repeat_sequence_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    seq: i32,
+    times: usize,
+) {
+    wire_repeat_sequence_twin_rust_async_impl(port_, seq, times)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_contains_mirrored_sub_struct_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+) {
+    wire_test_contains_mirrored_sub_struct_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_fallible_of_raw_string_mirrored_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+) {
+    wire_test_fallible_of_raw_string_mirrored_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_list_of_nested_enums_mirrored_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+) {
+    wire_test_list_of_nested_enums_mirrored_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_list_of_raw_nested_string_mirrored_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+) {
+    wire_test_list_of_raw_nested_string_mirrored_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_nested_raw_string_mirrored_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+) {
+    wire_test_nested_raw_string_mirrored_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_raw_string_enum_mirrored_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    nested: bool,
+) {
+    wire_test_raw_string_enum_mirrored_twin_rust_async_impl(port_, nested)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_raw_string_mirrored_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_test_raw_string_mirrored_twin_rust_async_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -4639,6 +6552,78 @@ pub fn wire_test_raw_string_mirrored_twin_sync() -> flutter_rust_bridge::support
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_big_buffers_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_handle_big_buffers_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_complex_struct_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    s: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_handle_complex_struct_twin_rust_async_impl(port_, s)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_nested_struct_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    s: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_handle_nested_struct_twin_rust_async_impl(port_, s)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_string_twin_rust_async(port_: flutter_rust_bridge::MessagePort, s: String) {
+    wire_handle_string_twin_rust_async_impl(port_, s)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_struct_sync_freezed_twin_rust_async(
+    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
+    boxed: flutter_rust_bridge::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_handle_struct_sync_freezed_twin_rust_async_impl(arg, boxed)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_struct_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
+    boxed: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_handle_struct_twin_rust_async_impl(port_, arg, boxed)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_vec_u8_twin_rust_async(port_: flutter_rust_bridge::MessagePort, v: Box<[u8]>) {
+    wire_handle_vec_u8_twin_rust_async_impl(port_, v)
+}
+
+#[wasm_bindgen]
+pub fn wire_list_of_primitive_enums_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    weekdays: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_list_of_primitive_enums_twin_rust_async_impl(port_, weekdays)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_abc_enum_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    abc: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_test_abc_enum_twin_rust_async_impl(port_, abc)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_struct_with_enum_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    se: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_test_struct_with_enum_twin_rust_async_impl(port_, se)
+}
+
+#[wasm_bindgen]
 pub fn wire_handle_big_buffers_twin_sync() -> flutter_rust_bridge::support::WireSyncReturn {
     wire_handle_big_buffers_twin_sync_impl()
 }
@@ -4705,6 +6690,40 @@ pub fn wire_test_struct_with_enum_twin_sync(
 }
 
 #[wasm_bindgen]
+pub fn wire_empty_struct_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    empty: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_empty_struct_twin_rust_async_impl(port_, empty)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_return_unit_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_func_return_unit_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_string_twin_rust_async(port_: flutter_rust_bridge::MessagePort, arg: String) {
+    wire_func_string_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_list_of_struct_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    l: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_handle_list_of_struct_twin_rust_async_impl(port_, l)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_string_list_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    names: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_handle_string_list_twin_rust_async_impl(port_, names)
+}
+
+#[wasm_bindgen]
 pub fn wire_empty_struct_twin_sync(
     empty: flutter_rust_bridge::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
@@ -4733,6 +6752,14 @@ pub fn wire_handle_string_list_twin_sync(
     names: flutter_rust_bridge::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_handle_string_list_twin_sync_impl(names)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_newtype_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_handle_newtype_twin_rust_async_impl(port_, arg)
 }
 
 #[wasm_bindgen]
@@ -4831,6 +6858,17 @@ pub fn wire_example_optional_primitive_type_u8_twin_normal(
 }
 
 #[wasm_bindgen]
+pub fn wire_primitive_optional_types_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    my_i32: flutter_rust_bridge::wasm_bindgen::JsValue,
+    my_i64: flutter_rust_bridge::wasm_bindgen::JsValue,
+    my_f64: flutter_rust_bridge::wasm_bindgen::JsValue,
+    my_bool: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_primitive_optional_types_twin_rust_async_impl(port_, my_i32, my_i64, my_f64, my_bool)
+}
+
+#[wasm_bindgen]
 pub fn wire_primitive_optional_types_twin_sync(
     my_i32: flutter_rust_bridge::wasm_bindgen::JsValue,
     my_i64: flutter_rust_bridge::wasm_bindgen::JsValue,
@@ -4838,6 +6876,94 @@ pub fn wire_primitive_optional_types_twin_sync(
     my_bool: flutter_rust_bridge::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_primitive_optional_types_twin_sync_impl(my_i32, my_i64, my_f64, my_bool)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_primitive_type_bool_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_example_optional_primitive_type_bool_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_primitive_type_f32_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_example_optional_primitive_type_f32_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_primitive_type_f64_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_example_optional_primitive_type_f64_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_primitive_type_i16_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_example_optional_primitive_type_i16_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_primitive_type_i32_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_example_optional_primitive_type_i32_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_primitive_type_i64_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_example_optional_primitive_type_i64_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_primitive_type_i8_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_example_optional_primitive_type_i8_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_primitive_type_u16_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_example_optional_primitive_type_u16_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_primitive_type_u32_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_example_optional_primitive_type_u32_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_primitive_type_u64_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_example_optional_primitive_type_u64_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_primitive_type_u8_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_example_optional_primitive_type_u8_twin_rust_async_impl(port_, arg)
 }
 
 #[wasm_bindgen]
@@ -4915,6 +7041,73 @@ pub fn wire_example_optional_primitive_type_u8_twin_sync(
     arg: flutter_rust_bridge::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_example_optional_primitive_type_u8_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_increment_boxed_optional_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    opt: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_handle_increment_boxed_optional_twin_rust_async_impl(port_, opt)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_option_box_arguments_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    i8box: flutter_rust_bridge::wasm_bindgen::JsValue,
+    u8box: flutter_rust_bridge::wasm_bindgen::JsValue,
+    i32box: flutter_rust_bridge::wasm_bindgen::JsValue,
+    i64box: flutter_rust_bridge::wasm_bindgen::JsValue,
+    f64box: flutter_rust_bridge::wasm_bindgen::JsValue,
+    boolbox: flutter_rust_bridge::wasm_bindgen::JsValue,
+    structbox: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_handle_option_box_arguments_twin_rust_async_impl(
+        port_, i8box, u8box, i32box, i64box, f64box, boolbox, structbox,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_optional_increment_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    opt: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_handle_optional_increment_twin_rust_async_impl(port_, opt)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_optional_return_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    left: f64,
+    right: f64,
+) {
+    wire_handle_optional_return_twin_rust_async_impl(port_, left, right)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_optional_struct_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    document: Option<String>,
+) {
+    wire_handle_optional_struct_twin_rust_async_impl(port_, document)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_vec_of_opts_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    opt: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_handle_vec_of_opts_twin_rust_async_impl(port_, opt)
+}
+
+#[wasm_bindgen]
+pub fn wire_sync_option_null_twin_rust_async() -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_sync_option_null_twin_rust_async_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_sync_option_twin_rust_async() -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_sync_option_twin_rust_async_impl()
 }
 
 #[wasm_bindgen]
@@ -5155,6 +7348,22 @@ pub fn wire_example_primitive_list_type_u8_twin_normal(
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_vec_of_primitive_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    n: i32,
+) {
+    wire_handle_vec_of_primitive_twin_rust_async_impl(port_, n)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_zero_copy_vec_of_primitive_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    n: i32,
+) {
+    wire_handle_zero_copy_vec_of_primitive_twin_rust_async_impl(port_, n)
+}
+
+#[wasm_bindgen]
 pub fn wire_handle_vec_of_primitive_twin_sync(
     n: i32,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
@@ -5166,6 +7375,94 @@ pub fn wire_handle_zero_copy_vec_of_primitive_twin_sync(
     n: i32,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_handle_zero_copy_vec_of_primitive_twin_sync_impl(n)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_primitive_list_type_bool_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_example_primitive_list_type_bool_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_primitive_list_type_f32_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: Box<[f32]>,
+) {
+    wire_example_primitive_list_type_f32_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_primitive_list_type_f64_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: Box<[f64]>,
+) {
+    wire_example_primitive_list_type_f64_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_primitive_list_type_i16_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: Box<[i16]>,
+) {
+    wire_example_primitive_list_type_i16_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_primitive_list_type_i32_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: Box<[i32]>,
+) {
+    wire_example_primitive_list_type_i32_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_primitive_list_type_i64_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: Box<[i64]>,
+) {
+    wire_example_primitive_list_type_i64_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_primitive_list_type_i8_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: Box<[i8]>,
+) {
+    wire_example_primitive_list_type_i8_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_primitive_list_type_u16_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: Box<[u16]>,
+) {
+    wire_example_primitive_list_type_u16_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_primitive_list_type_u32_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: Box<[u32]>,
+) {
+    wire_example_primitive_list_type_u32_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_primitive_list_type_u64_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: Box<[u64]>,
+) {
+    wire_example_primitive_list_type_u64_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_primitive_list_type_u8_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: Box<[u8]>,
+) {
+    wire_example_primitive_list_type_u8_twin_rust_async_impl(port_, arg)
 }
 
 #[wasm_bindgen]
@@ -5246,6 +7543,22 @@ pub fn wire_example_primitive_list_type_u8_twin_sync(
 }
 
 #[wasm_bindgen]
+pub fn wire_primitive_types_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    my_i32: i32,
+    my_i64: i64,
+    my_f64: f64,
+    my_bool: bool,
+) {
+    wire_primitive_types_twin_rust_async_impl(port_, my_i32, my_i64, my_f64, my_bool)
+}
+
+#[wasm_bindgen]
+pub fn wire_primitive_u32_twin_rust_async(port_: flutter_rust_bridge::MessagePort, my_u32: u32) {
+    wire_primitive_u32_twin_rust_async_impl(port_, my_u32)
+}
+
+#[wasm_bindgen]
 pub fn wire_primitive_types_twin_sync(
     my_i32: i32,
     my_i64: i64,
@@ -5258,6 +7571,94 @@ pub fn wire_primitive_types_twin_sync(
 #[wasm_bindgen]
 pub fn wire_primitive_u32_twin_sync(my_u32: u32) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_primitive_u32_twin_sync_impl(my_u32)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_primitive_type_bool_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: bool,
+) {
+    wire_example_primitive_type_bool_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_primitive_type_f32_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: f32,
+) {
+    wire_example_primitive_type_f32_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_primitive_type_f64_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: f64,
+) {
+    wire_example_primitive_type_f64_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_primitive_type_i16_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: i16,
+) {
+    wire_example_primitive_type_i16_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_primitive_type_i32_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: i32,
+) {
+    wire_example_primitive_type_i32_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_primitive_type_i64_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: i64,
+) {
+    wire_example_primitive_type_i64_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_primitive_type_i8_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: i8,
+) {
+    wire_example_primitive_type_i8_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_primitive_type_u16_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: u16,
+) {
+    wire_example_primitive_type_u16_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_primitive_type_u32_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: u32,
+) {
+    wire_example_primitive_type_u32_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_primitive_type_u64_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: u64,
+) {
+    wire_example_primitive_type_u64_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_primitive_type_u8_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: u8,
+) {
+    wire_example_primitive_type_u8_twin_rust_async_impl(port_, arg)
 }
 
 #[wasm_bindgen]
@@ -5338,6 +7739,18 @@ pub fn wire_example_primitive_type_u8_twin_sync(
 }
 
 #[wasm_bindgen]
+pub fn wire_test_more_than_just_one_raw_string_struct_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+) {
+    wire_test_more_than_just_one_raw_string_struct_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_raw_string_item_struct_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_test_raw_string_item_struct_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_test_more_than_just_one_raw_string_struct_twin_sync(
 ) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_test_more_than_just_one_raw_string_struct_twin_sync_impl()
@@ -5347,6 +7760,113 @@ pub fn wire_test_more_than_just_one_raw_string_struct_twin_sync(
 pub fn wire_test_raw_string_item_struct_twin_sync() -> flutter_rust_bridge::support::WireSyncReturn
 {
     wire_test_raw_string_item_struct_twin_sync_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_create_array_opaque_enum_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_create_array_opaque_enum_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_create_nested_opaque_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_create_nested_opaque_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_create_opaque_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_create_opaque_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_create_option_opaque_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    opaque: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_create_option_opaque_twin_rust_async_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_create_sync_opaque_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_create_sync_opaque_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_frb_generator_test_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_frb_generator_test_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_opaque_array_run_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    data: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_opaque_array_run_twin_rust_async_impl(port_, data)
+}
+
+#[wasm_bindgen]
+pub fn wire_opaque_array_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_opaque_array_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_opaque_vec_run_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    data: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_opaque_vec_run_twin_rust_async_impl(port_, data)
+}
+
+#[wasm_bindgen]
+pub fn wire_opaque_vec_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_opaque_vec_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_run_enum_opaque_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    opaque: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_run_enum_opaque_twin_rust_async_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_run_nested_opaque_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    opaque: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_run_nested_opaque_twin_rust_async_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_run_non_clone_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    clone: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_run_non_clone_twin_rust_async_impl(port_, clone)
+}
+
+#[wasm_bindgen]
+pub fn wire_run_opaque_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    opaque: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_run_opaque_twin_rust_async_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_run_opaque_with_delay_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    opaque: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_run_opaque_with_delay_twin_rust_async_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_unwrap_rust_opaque_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    opaque: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_unwrap_rust_opaque_twin_rust_async_impl(port_, opaque)
 }
 
 #[wasm_bindgen]
@@ -5448,8 +7968,53 @@ pub fn wire_unwrap_rust_opaque_twin_sync(
 }
 
 #[wasm_bindgen]
+pub fn wire_simple_adder_twin_rust_async(port_: flutter_rust_bridge::MessagePort, a: i32, b: i32) {
+    wire_simple_adder_twin_rust_async_impl(port_, a, b)
+}
+
+#[wasm_bindgen]
 pub fn wire_simple_adder_twin_sync(a: i32, b: i32) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_simple_adder_twin_sync_impl(a, b)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_struct_with_one_field_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_func_struct_with_one_field_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_struct_with_two_field_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_func_struct_with_two_field_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_struct_with_zero_field_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_func_struct_with_zero_field_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_tuple_struct_with_one_field_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_func_tuple_struct_with_one_field_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_tuple_struct_with_two_field_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_func_tuple_struct_with_two_field_twin_rust_async_impl(port_, arg)
 }
 
 #[wasm_bindgen]
@@ -5488,6 +8053,22 @@ pub fn wire_func_tuple_struct_with_two_field_twin_sync(
 }
 
 #[wasm_bindgen]
+pub fn wire_test_tuple_2_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    value: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_test_tuple_2_twin_rust_async_impl(port_, value)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_tuple_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    value: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_test_tuple_twin_rust_async_impl(port_, value)
+}
+
+#[wasm_bindgen]
 pub fn wire_test_tuple_2_twin_sync(
     value: flutter_rust_bridge::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
@@ -5499,6 +8080,30 @@ pub fn wire_test_tuple_twin_sync(
     value: flutter_rust_bridge::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_test_tuple_twin_sync_impl(value)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_type_alias_id_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    input: u64,
+) {
+    wire_handle_type_alias_id_twin_rust_async_impl(port_, input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_type_alias_model_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    input: u64,
+) {
+    wire_handle_type_alias_model_twin_rust_async_impl(port_, input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_type_nest_alias_id_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    input: u64,
+) {
+    wire_handle_type_nest_alias_id_twin_rust_async_impl(port_, input)
 }
 
 #[wasm_bindgen]
@@ -5520,6 +8125,24 @@ pub fn wire_handle_type_nest_alias_id_twin_sync(
     input: u64,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_handle_type_nest_alias_id_twin_sync_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_nested_uuids_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    ids: flutter_rust_bridge::wasm_bindgen::JsValue,
+) {
+    wire_handle_nested_uuids_twin_rust_async_impl(port_, ids)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_uuid_twin_rust_async(port_: flutter_rust_bridge::MessagePort, id: Box<[u8]>) {
+    wire_handle_uuid_twin_rust_async_impl(port_, id)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_uuids_twin_rust_async(port_: flutter_rust_bridge::MessagePort, ids: Box<[u8]>) {
+    wire_handle_uuids_twin_rust_async_impl(port_, ids)
 }
 
 #[wasm_bindgen]
@@ -5896,6 +8519,23 @@ pub fn share_opaque_RustOpaque_box_dynDartDebugTwinNormal(
 ) -> *const std::ffi::c_void {
     unsafe {
         std::sync::Arc::<Box<dyn DartDebugTwinNormal>>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[wasm_bindgen]
+pub fn drop_opaque_RustOpaque_box_dynDartDebugTwinRustAsync(ptr: *const std::ffi::c_void) {
+    unsafe {
+        std::sync::Arc::<Box<dyn DartDebugTwinRustAsync>>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_RustOpaque_box_dynDartDebugTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) -> *const std::ffi::c_void {
+    unsafe {
+        std::sync::Arc::<Box<dyn DartDebugTwinRustAsync>>::increment_strong_count(ptr as _);
         ptr
     }
 }
