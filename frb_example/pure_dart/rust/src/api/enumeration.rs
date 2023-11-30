@@ -1,5 +1,4 @@
 use crate::api::misc_example::WeekdaysTwinNormal;
-use crate::frb_generated::KitchenSinkTwinNormalKind;
 use flutter_rust_bridge::{frb, ZeroCopyBuffer};
 use log::info;
 

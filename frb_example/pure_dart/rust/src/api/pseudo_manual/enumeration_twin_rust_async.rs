@@ -3,7 +3,6 @@
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
 use crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync;
-use crate::frb_generated::KitchenSinkTwinRustAsyncKind;
 use flutter_rust_bridge::{frb, ZeroCopyBuffer};
 use log::info;
 
