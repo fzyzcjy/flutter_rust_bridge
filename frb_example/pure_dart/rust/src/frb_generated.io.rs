@@ -1211,35 +1211,6 @@ impl Wire2Api<crate::auxiliary::sample_types::MySize> for *mut wire_my_size {
         Wire2Api::<crate::auxiliary::sample_types::MySize>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<crate::api::misc_example::MySizeFreezedTwinNormal>
-    for *mut wire_my_size_freezed_twin_normal
-{
-    fn wire2api(self) -> crate::api::misc_example::MySizeFreezedTwinNormal {
-        let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<crate::api::misc_example::MySizeFreezedTwinNormal>::wire2api(*wrap).into()
-    }
-}
-impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_rust_async::MySizeFreezedTwinRustAsync>
-    for *mut wire_my_size_freezed_twin_rust_async
-{
-    fn wire2api(
-        self,
-    ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::MySizeFreezedTwinRustAsync {
-        let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<
-            crate::api::pseudo_manual::misc_example_twin_rust_async::MySizeFreezedTwinRustAsync,
-        >::wire2api(*wrap)
-        .into()
-    }
-}
-impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_sync::MySizeFreezedTwinSync>
-    for *mut wire_my_size_freezed_twin_sync
-{
-    fn wire2api(self) -> crate::api::pseudo_manual::misc_example_twin_sync::MySizeFreezedTwinSync {
-        let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<crate::api::pseudo_manual::misc_example_twin_sync::MySizeFreezedTwinSync>::wire2api(*wrap).into()
-    }
-}
 impl Wire2Api<crate::auxiliary::sample_types::MyStruct> for *mut wire_my_struct {
     fn wire2api(self) -> crate::auxiliary::sample_types::MyStruct {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
@@ -1895,40 +1866,6 @@ impl Wire2Api<Box<crate::auxiliary::sample_types::MySize>> for *mut wire_my_size
     fn wire2api(self) -> Box<crate::auxiliary::sample_types::MySize> {
         let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
         Wire2Api::<crate::auxiliary::sample_types::MySize>::wire2api(*wrap).into()
-    }
-}
-impl Wire2Api<Box<crate::api::misc_example::MySizeFreezedTwinNormal>>
-    for *mut wire_my_size_freezed_twin_normal
-{
-    fn wire2api(self) -> Box<crate::api::misc_example::MySizeFreezedTwinNormal> {
-        let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<crate::api::misc_example::MySizeFreezedTwinNormal>::wire2api(*wrap).into()
-    }
-}
-impl
-    Wire2Api<
-        Box<crate::api::pseudo_manual::misc_example_twin_rust_async::MySizeFreezedTwinRustAsync>,
-    > for *mut wire_my_size_freezed_twin_rust_async
-{
-    fn wire2api(
-        self,
-    ) -> Box<crate::api::pseudo_manual::misc_example_twin_rust_async::MySizeFreezedTwinRustAsync>
-    {
-        let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<
-            crate::api::pseudo_manual::misc_example_twin_rust_async::MySizeFreezedTwinRustAsync,
-        >::wire2api(*wrap)
-        .into()
-    }
-}
-impl Wire2Api<Box<crate::api::pseudo_manual::misc_example_twin_sync::MySizeFreezedTwinSync>>
-    for *mut wire_my_size_freezed_twin_sync
-{
-    fn wire2api(
-        self,
-    ) -> Box<crate::api::pseudo_manual::misc_example_twin_sync::MySizeFreezedTwinSync> {
-        let wrap = unsafe { flutter_rust_bridge::support::box_from_leak_ptr(self) };
-        Wire2Api::<crate::api::pseudo_manual::misc_example_twin_sync::MySizeFreezedTwinSync>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<Box<crate::api::enumeration::SpeedTwinNormal>> for *mut wire_speed_twin_normal {
@@ -3592,38 +3529,6 @@ impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_sync::MyNestedStructT
 impl Wire2Api<crate::auxiliary::sample_types::MySize> for wire_my_size {
     fn wire2api(self) -> crate::auxiliary::sample_types::MySize {
         crate::auxiliary::sample_types::MySize {
-            width: self.width.wire2api(),
-            height: self.height.wire2api(),
-        }
-    }
-}
-impl Wire2Api<crate::api::misc_example::MySizeFreezedTwinNormal>
-    for wire_my_size_freezed_twin_normal
-{
-    fn wire2api(self) -> crate::api::misc_example::MySizeFreezedTwinNormal {
-        crate::api::misc_example::MySizeFreezedTwinNormal {
-            width: self.width.wire2api(),
-            height: self.height.wire2api(),
-        }
-    }
-}
-impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_rust_async::MySizeFreezedTwinRustAsync>
-    for wire_my_size_freezed_twin_rust_async
-{
-    fn wire2api(
-        self,
-    ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::MySizeFreezedTwinRustAsync {
-        crate::api::pseudo_manual::misc_example_twin_rust_async::MySizeFreezedTwinRustAsync {
-            width: self.width.wire2api(),
-            height: self.height.wire2api(),
-        }
-    }
-}
-impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_sync::MySizeFreezedTwinSync>
-    for wire_my_size_freezed_twin_sync
-{
-    fn wire2api(self) -> crate::api::pseudo_manual::misc_example_twin_sync::MySizeFreezedTwinSync {
-        crate::api::pseudo_manual::misc_example_twin_sync::MySizeFreezedTwinSync {
             width: self.width.wire2api(),
             height: self.height.wire2api(),
         }
@@ -5960,27 +5865,6 @@ pub struct wire_my_size {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_my_size_freezed_twin_normal {
-    width: i32,
-    height: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_my_size_freezed_twin_rust_async {
-    width: i32,
-    height: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_my_size_freezed_twin_sync {
-    width: i32,
-    height: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
 pub struct wire_my_struct {
     content: bool,
 }
@@ -7666,45 +7550,6 @@ impl Default for wire_my_size {
         Self::new_with_null_ptr()
     }
 }
-impl NewWithNullPtr for wire_my_size_freezed_twin_normal {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            width: Default::default(),
-            height: Default::default(),
-        }
-    }
-}
-impl Default for wire_my_size_freezed_twin_normal {
-    fn default() -> Self {
-        Self::new_with_null_ptr()
-    }
-}
-impl NewWithNullPtr for wire_my_size_freezed_twin_rust_async {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            width: Default::default(),
-            height: Default::default(),
-        }
-    }
-}
-impl Default for wire_my_size_freezed_twin_rust_async {
-    fn default() -> Self {
-        Self::new_with_null_ptr()
-    }
-}
-impl NewWithNullPtr for wire_my_size_freezed_twin_sync {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            width: Default::default(),
-            height: Default::default(),
-        }
-    }
-}
-impl Default for wire_my_size_freezed_twin_sync {
-    fn default() -> Self {
-        Self::new_with_null_ptr()
-    }
-}
 impl NewWithNullPtr for wire_my_struct {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -8979,12 +8824,6 @@ pub extern "C" fn wire_stream_sink_throw_anyhow_twin_normal(port_: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_return_custom_struct_error_twin_normal(
-) -> flutter_rust_bridge::support::WireSyncReturn {
-    wire_sync_return_custom_struct_error_twin_normal_impl()
-}
-
-#[no_mangle]
 pub extern "C" fn wire_throw_anyhow_twin_normal(port_: i64) {
     wire_throw_anyhow_twin_normal_impl(port_)
 }
@@ -9224,14 +9063,6 @@ pub extern "C" fn wire_handle_string_twin_normal(port_: i64, s: *mut wire_list_p
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_struct_sync_freezed_twin_normal(
-    arg: *mut wire_my_size_freezed_twin_normal,
-    boxed: *mut wire_my_size_freezed_twin_normal,
-) -> flutter_rust_bridge::support::WireSyncReturn {
-    wire_handle_struct_sync_freezed_twin_normal_impl(arg, boxed)
-}
-
-#[no_mangle]
 pub extern "C" fn wire_handle_struct_twin_normal(
     port_: i64,
     arg: *mut wire_my_size,
@@ -9347,17 +9178,6 @@ pub extern "C" fn wire_handle_vec_of_opts_twin_normal(
     opt: *mut wire_opt_vecs_twin_normal,
 ) {
     wire_handle_vec_of_opts_twin_normal_impl(port_, opt)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_sync_option_null_twin_normal() -> flutter_rust_bridge::support::WireSyncReturn
-{
-    wire_sync_option_null_twin_normal_impl()
-}
-
-#[no_mangle]
-pub extern "C" fn wire_sync_option_twin_normal() -> flutter_rust_bridge::support::WireSyncReturn {
-    wire_sync_option_twin_normal_impl()
 }
 
 #[no_mangle]
@@ -10375,12 +10195,6 @@ pub extern "C" fn wire_stream_sink_throw_anyhow_twin_rust_async(port_: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_return_custom_struct_error_twin_rust_async(
-) -> flutter_rust_bridge::support::WireSyncReturn {
-    wire_sync_return_custom_struct_error_twin_rust_async_impl()
-}
-
-#[no_mangle]
 pub extern "C" fn wire_throw_anyhow_twin_rust_async(port_: i64) {
     wire_throw_anyhow_twin_rust_async_impl(port_)
 }
@@ -10560,12 +10374,6 @@ pub extern "C" fn wire_return_ok_custom_error_twin_sync(
 #[no_mangle]
 pub extern "C" fn wire_stream_sink_throw_anyhow_twin_sync(port_: i64) {
     wire_stream_sink_throw_anyhow_twin_sync_impl(port_)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_sync_return_custom_struct_error_twin_sync(
-) -> flutter_rust_bridge::support::WireSyncReturn {
-    wire_sync_return_custom_struct_error_twin_sync_impl()
 }
 
 #[no_mangle]
@@ -11030,14 +10838,6 @@ pub extern "C" fn wire_handle_string_twin_rust_async(port_: i64, s: *mut wire_li
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_struct_sync_freezed_twin_rust_async(
-    arg: *mut wire_my_size_freezed_twin_rust_async,
-    boxed: *mut wire_my_size_freezed_twin_rust_async,
-) -> flutter_rust_bridge::support::WireSyncReturn {
-    wire_handle_struct_sync_freezed_twin_rust_async_impl(arg, boxed)
-}
-
-#[no_mangle]
 pub extern "C" fn wire_handle_struct_twin_rust_async(
     port_: i64,
     arg: *mut wire_my_size,
@@ -11100,14 +10900,6 @@ pub extern "C" fn wire_handle_string_twin_sync(
     s: *mut wire_list_prim_u_8,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_handle_string_twin_sync_impl(s)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_handle_struct_sync_freezed_twin_sync(
-    arg: *mut wire_my_size_freezed_twin_sync,
-    boxed: *mut wire_my_size_freezed_twin_sync,
-) -> flutter_rust_bridge::support::WireSyncReturn {
-    wire_handle_struct_sync_freezed_twin_sync_impl(arg, boxed)
 }
 
 #[no_mangle]
@@ -11521,18 +11313,6 @@ pub extern "C" fn wire_handle_vec_of_opts_twin_rust_async(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_option_null_twin_rust_async(
-) -> flutter_rust_bridge::support::WireSyncReturn {
-    wire_sync_option_null_twin_rust_async_impl()
-}
-
-#[no_mangle]
-pub extern "C" fn wire_sync_option_twin_rust_async() -> flutter_rust_bridge::support::WireSyncReturn
-{
-    wire_sync_option_twin_rust_async_impl()
-}
-
-#[no_mangle]
 pub extern "C" fn wire_handle_increment_boxed_optional_twin_sync(
     opt: *mut f64,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
@@ -11581,17 +11361,6 @@ pub extern "C" fn wire_handle_vec_of_opts_twin_sync(
     opt: *mut wire_opt_vecs_twin_sync,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_handle_vec_of_opts_twin_sync_impl(opt)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_sync_option_null_twin_sync() -> flutter_rust_bridge::support::WireSyncReturn
-{
-    wire_sync_option_null_twin_sync_impl()
-}
-
-#[no_mangle]
-pub extern "C" fn wire_sync_option_twin_sync() -> flutter_rust_bridge::support::WireSyncReturn {
-    wire_sync_option_twin_sync_impl()
 }
 
 #[no_mangle]
@@ -13472,30 +13241,6 @@ pub extern "C" fn new_box_autoadd_my_size() -> *mut wire_my_size {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_my_size_freezed_twin_normal(
-) -> *mut wire_my_size_freezed_twin_normal {
-    flutter_rust_bridge::support::new_leak_box_ptr(
-        wire_my_size_freezed_twin_normal::new_with_null_ptr(),
-    )
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_my_size_freezed_twin_rust_async(
-) -> *mut wire_my_size_freezed_twin_rust_async {
-    flutter_rust_bridge::support::new_leak_box_ptr(
-        wire_my_size_freezed_twin_rust_async::new_with_null_ptr(),
-    )
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_my_size_freezed_twin_sync() -> *mut wire_my_size_freezed_twin_sync
-{
-    flutter_rust_bridge::support::new_leak_box_ptr(
-        wire_my_size_freezed_twin_sync::new_with_null_ptr(),
-    )
-}
-
-#[no_mangle]
 pub extern "C" fn new_box_autoadd_my_struct() -> *mut wire_my_struct {
     flutter_rust_bridge::support::new_leak_box_ptr(wire_my_struct::new_with_null_ptr())
 }
@@ -13977,28 +13722,6 @@ pub extern "C" fn new_box_kitchen_sink_twin_sync() -> *mut wire_kitchen_sink_twi
 #[no_mangle]
 pub extern "C" fn new_box_my_size() -> *mut wire_my_size {
     flutter_rust_bridge::support::new_leak_box_ptr(wire_my_size::new_with_null_ptr())
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_my_size_freezed_twin_normal() -> *mut wire_my_size_freezed_twin_normal {
-    flutter_rust_bridge::support::new_leak_box_ptr(
-        wire_my_size_freezed_twin_normal::new_with_null_ptr(),
-    )
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_my_size_freezed_twin_rust_async(
-) -> *mut wire_my_size_freezed_twin_rust_async {
-    flutter_rust_bridge::support::new_leak_box_ptr(
-        wire_my_size_freezed_twin_rust_async::new_with_null_ptr(),
-    )
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_my_size_freezed_twin_sync() -> *mut wire_my_size_freezed_twin_sync {
-    flutter_rust_bridge::support::new_leak_box_ptr(
-        wire_my_size_freezed_twin_sync::new_with_null_ptr(),
-    )
 }
 
 #[no_mangle]

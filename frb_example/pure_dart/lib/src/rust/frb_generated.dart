@@ -401,8 +401,6 @@ abstract class RustLibApi extends BaseApi {
 
   Stream<String> streamSinkThrowAnyhowTwinNormal({dynamic hint});
 
-  void syncReturnCustomStructErrorTwinNormal({dynamic hint});
-
   Future<void> throwAnyhowTwinNormal({dynamic hint});
 
   Future<NewSimpleStruct> callNewModuleSystemTwinNormal({dynamic hint});
@@ -520,11 +518,6 @@ abstract class RustLibApi extends BaseApi {
 
   Future<String> handleStringTwinNormal({required String s, dynamic hint});
 
-  MySizeFreezedTwinNormal handleStructSyncFreezedTwinNormal(
-      {required MySizeFreezedTwinNormal arg,
-      required MySizeFreezedTwinNormal boxed,
-      dynamic hint});
-
   Future<MySize> handleStructTwinNormal(
       {required MySize arg, required MySize boxed, dynamic hint});
 
@@ -579,10 +572,6 @@ abstract class RustLibApi extends BaseApi {
 
   Future<OptVecsTwinNormal> handleVecOfOptsTwinNormal(
       {required OptVecsTwinNormal opt, dynamic hint});
-
-  String? syncOptionNullTwinNormal({dynamic hint});
-
-  String? syncOptionTwinNormal({dynamic hint});
 
   Future<int?> primitiveOptionalTypesTwinNormal(
       {int? myI32, int? myI64, double? myF64, bool? myBool, dynamic hint});
@@ -994,8 +983,6 @@ abstract class RustLibApi extends BaseApi {
 
   Stream<String> streamSinkThrowAnyhowTwinRustAsync({dynamic hint});
 
-  void syncReturnCustomStructErrorTwinRustAsync({dynamic hint});
-
   Future<void> throwAnyhowTwinRustAsync({dynamic hint});
 
   CustomStructTwinSync customStructTwinSyncNewTwinSync(
@@ -1062,8 +1049,6 @@ abstract class RustLibApi extends BaseApi {
   int returnOkCustomErrorTwinSync({dynamic hint});
 
   Stream<String> streamSinkThrowAnyhowTwinSync({dynamic hint});
-
-  void syncReturnCustomStructErrorTwinSync({dynamic hint});
 
   void throwAnyhowTwinSync({dynamic hint});
 
@@ -1273,11 +1258,6 @@ abstract class RustLibApi extends BaseApi {
 
   Future<String> handleStringTwinRustAsync({required String s, dynamic hint});
 
-  MySizeFreezedTwinRustAsync handleStructSyncFreezedTwinRustAsync(
-      {required MySizeFreezedTwinRustAsync arg,
-      required MySizeFreezedTwinRustAsync boxed,
-      dynamic hint});
-
   Future<MySize> handleStructTwinRustAsync(
       {required MySize arg, required MySize boxed, dynamic hint});
 
@@ -1302,11 +1282,6 @@ abstract class RustLibApi extends BaseApi {
       {required MyNestedStructTwinSync s, dynamic hint});
 
   String handleStringTwinSync({required String s, dynamic hint});
-
-  MySizeFreezedTwinSync handleStructSyncFreezedTwinSync(
-      {required MySizeFreezedTwinSync arg,
-      required MySizeFreezedTwinSync boxed,
-      dynamic hint});
 
   MySize handleStructTwinSync(
       {required MySize arg, required MySize boxed, dynamic hint});
@@ -1472,10 +1447,6 @@ abstract class RustLibApi extends BaseApi {
   Future<OptVecsTwinRustAsync> handleVecOfOptsTwinRustAsync(
       {required OptVecsTwinRustAsync opt, dynamic hint});
 
-  String? syncOptionNullTwinRustAsync({dynamic hint});
-
-  String? syncOptionTwinRustAsync({dynamic hint});
-
   double handleIncrementBoxedOptionalTwinSync({double? opt, dynamic hint});
 
   String handleOptionBoxArgumentsTwinSync(
@@ -1499,10 +1470,6 @@ abstract class RustLibApi extends BaseApi {
 
   OptVecsTwinSync handleVecOfOptsTwinSync(
       {required OptVecsTwinSync opt, dynamic hint});
-
-  String? syncOptionNullTwinSync({dynamic hint});
-
-  String? syncOptionTwinSync({dynamic hint});
 
   Future<bool> examplePrimitiveTypeBoolTwinNormal(
       {required bool arg, dynamic hint});
@@ -4106,25 +4073,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  void syncReturnCustomStructErrorTwinNormal({dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_return_custom_struct_error_twin_normal(),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: _wire2api_custom_struct_error_twin_normal,
-      constMeta: kSyncReturnCustomStructErrorTwinNormalConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kSyncReturnCustomStructErrorTwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "sync_return_custom_struct_error_twin_normal",
-        argNames: [],
-      );
-
-  @override
   Future<void> throwAnyhowTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_throw_anyhow_twin_normal(port_),
@@ -4982,31 +4930,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  MySizeFreezedTwinNormal handleStructSyncFreezedTwinNormal(
-      {required MySizeFreezedTwinNormal arg,
-      required MySizeFreezedTwinNormal boxed,
-      dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_my_size_freezed_twin_normal(arg);
-    var arg1 = api2wire_box_my_size_freezed_twin_normal(boxed);
-    return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_handle_struct_sync_freezed_twin_normal(arg0, arg1),
-      parseSuccessData: _wire2api_my_size_freezed_twin_normal,
-      parseErrorData: null,
-      constMeta: kHandleStructSyncFreezedTwinNormalConstMeta,
-      argValues: [arg, boxed],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kHandleStructSyncFreezedTwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "handle_struct_sync_freezed_twin_normal",
-        argNames: ["arg", "boxed"],
-      );
-
-  @override
   Future<MySize> handleStructTwinNormal(
       {required MySize arg, required MySize boxed, dynamic hint}) {
     var arg0 = api2wire_box_autoadd_my_size(arg);
@@ -5381,42 +5304,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kHandleVecOfOptsTwinNormalConstMeta => const TaskConstMeta(
         debugName: "handle_vec_of_opts_twin_normal",
         argNames: ["opt"],
-      );
-
-  @override
-  String? syncOptionNullTwinNormal({dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_option_null_twin_normal(),
-      parseSuccessData: _wire2api_opt_String,
-      parseErrorData: _wire2api_AnyhowException,
-      constMeta: kSyncOptionNullTwinNormalConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kSyncOptionNullTwinNormalConstMeta => const TaskConstMeta(
-        debugName: "sync_option_null_twin_normal",
-        argNames: [],
-      );
-
-  @override
-  String? syncOptionTwinNormal({dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_option_twin_normal(),
-      parseSuccessData: _wire2api_opt_String,
-      parseErrorData: _wire2api_AnyhowException,
-      constMeta: kSyncOptionTwinNormalConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kSyncOptionTwinNormalConstMeta => const TaskConstMeta(
-        debugName: "sync_option_twin_normal",
-        argNames: [],
       );
 
   @override
@@ -8625,26 +8512,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  void syncReturnCustomStructErrorTwinRustAsync({dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_sync_return_custom_struct_error_twin_rust_async(),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: _wire2api_custom_struct_error_twin_rust_async,
-      constMeta: kSyncReturnCustomStructErrorTwinRustAsyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kSyncReturnCustomStructErrorTwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "sync_return_custom_struct_error_twin_rust_async",
-        argNames: [],
-      );
-
-  @override
   Future<void> throwAnyhowTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_throw_anyhow_twin_rust_async(port_),
@@ -9243,25 +9110,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kStreamSinkThrowAnyhowTwinSyncConstMeta =>
       const TaskConstMeta(
         debugName: "stream_sink_throw_anyhow_twin_sync",
-        argNames: [],
-      );
-
-  @override
-  void syncReturnCustomStructErrorTwinSync({dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_return_custom_struct_error_twin_sync(),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: _wire2api_custom_struct_error_twin_sync,
-      constMeta: kSyncReturnCustomStructErrorTwinSyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kSyncReturnCustomStructErrorTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "sync_return_custom_struct_error_twin_sync",
         argNames: [],
       );
 
@@ -10793,31 +10641,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  MySizeFreezedTwinRustAsync handleStructSyncFreezedTwinRustAsync(
-      {required MySizeFreezedTwinRustAsync arg,
-      required MySizeFreezedTwinRustAsync boxed,
-      dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_my_size_freezed_twin_rust_async(arg);
-    var arg1 = api2wire_box_my_size_freezed_twin_rust_async(boxed);
-    return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_handle_struct_sync_freezed_twin_rust_async(arg0, arg1),
-      parseSuccessData: _wire2api_my_size_freezed_twin_rust_async,
-      parseErrorData: null,
-      constMeta: kHandleStructSyncFreezedTwinRustAsyncConstMeta,
-      argValues: [arg, boxed],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kHandleStructSyncFreezedTwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "handle_struct_sync_freezed_twin_rust_async",
-        argNames: ["arg", "boxed"],
-      );
-
-  @override
   Future<MySize> handleStructTwinRustAsync(
       {required MySize arg, required MySize boxed, dynamic hint}) {
     var arg0 = api2wire_box_autoadd_my_size(arg);
@@ -10999,30 +10822,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kHandleStringTwinSyncConstMeta => const TaskConstMeta(
         debugName: "handle_string_twin_sync",
         argNames: ["s"],
-      );
-
-  @override
-  MySizeFreezedTwinSync handleStructSyncFreezedTwinSync(
-      {required MySizeFreezedTwinSync arg,
-      required MySizeFreezedTwinSync boxed,
-      dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_my_size_freezed_twin_sync(arg);
-    var arg1 = api2wire_box_my_size_freezed_twin_sync(boxed);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_struct_sync_freezed_twin_sync(arg0, arg1),
-      parseSuccessData: _wire2api_my_size_freezed_twin_sync,
-      parseErrorData: null,
-      constMeta: kHandleStructSyncFreezedTwinSyncConstMeta,
-      argValues: [arg, boxed],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kHandleStructSyncFreezedTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "handle_struct_sync_freezed_twin_sync",
-        argNames: ["arg", "boxed"],
       );
 
   @override
@@ -12294,43 +12093,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  String? syncOptionNullTwinRustAsync({dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_option_null_twin_rust_async(),
-      parseSuccessData: _wire2api_opt_String,
-      parseErrorData: _wire2api_AnyhowException,
-      constMeta: kSyncOptionNullTwinRustAsyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kSyncOptionNullTwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "sync_option_null_twin_rust_async",
-        argNames: [],
-      );
-
-  @override
-  String? syncOptionTwinRustAsync({dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_option_twin_rust_async(),
-      parseSuccessData: _wire2api_opt_String,
-      parseErrorData: _wire2api_AnyhowException,
-      constMeta: kSyncOptionTwinRustAsyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kSyncOptionTwinRustAsyncConstMeta => const TaskConstMeta(
-        debugName: "sync_option_twin_rust_async",
-        argNames: [],
-      );
-
-  @override
   double handleIncrementBoxedOptionalTwinSync({double? opt, dynamic hint}) {
     var arg0 = api2wire_opt_box_f_64(opt);
     return handler.executeSync(SyncTask(
@@ -12475,42 +12237,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kHandleVecOfOptsTwinSyncConstMeta => const TaskConstMeta(
         debugName: "handle_vec_of_opts_twin_sync",
         argNames: ["opt"],
-      );
-
-  @override
-  String? syncOptionNullTwinSync({dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_option_null_twin_sync(),
-      parseSuccessData: _wire2api_opt_String,
-      parseErrorData: _wire2api_AnyhowException,
-      constMeta: kSyncOptionNullTwinSyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kSyncOptionNullTwinSyncConstMeta => const TaskConstMeta(
-        debugName: "sync_option_null_twin_sync",
-        argNames: [],
-      );
-
-  @override
-  String? syncOptionTwinSync({dynamic hint}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_option_twin_sync(),
-      parseSuccessData: _wire2api_opt_String,
-      parseErrorData: _wire2api_AnyhowException,
-      constMeta: kSyncOptionTwinSyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kSyncOptionTwinSyncConstMeta => const TaskConstMeta(
-        debugName: "sync_option_twin_sync",
-        argNames: [],
       );
 
   @override
@@ -18873,37 +18599,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2)
       throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return MySize(
-      width: _wire2api_i_32(arr[0]),
-      height: _wire2api_i_32(arr[1]),
-    );
-  }
-
-  MySizeFreezedTwinNormal _wire2api_my_size_freezed_twin_normal(dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 2)
-      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    return MySizeFreezedTwinNormal(
-      width: _wire2api_i_32(arr[0]),
-      height: _wire2api_i_32(arr[1]),
-    );
-  }
-
-  MySizeFreezedTwinRustAsync _wire2api_my_size_freezed_twin_rust_async(
-      dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 2)
-      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    return MySizeFreezedTwinRustAsync(
-      width: _wire2api_i_32(arr[0]),
-      height: _wire2api_i_32(arr[1]),
-    );
-  }
-
-  MySizeFreezedTwinSync _wire2api_my_size_freezed_twin_sync(dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 2)
-      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    return MySizeFreezedTwinSync(
       width: _wire2api_i_32(arr[0]),
       height: _wire2api_i_32(arr[1]),
     );

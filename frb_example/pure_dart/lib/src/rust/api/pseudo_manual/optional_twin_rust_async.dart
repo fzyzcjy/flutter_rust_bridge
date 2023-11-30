@@ -48,12 +48,6 @@ Future<String> handleOptionBoxArgumentsTwinRustAsync(
         structbox: structbox,
         hint: hint);
 
-String? syncOptionTwinRustAsync({dynamic hint}) =>
-    RustLib.instance.api.syncOptionTwinRustAsync(hint: hint);
-
-String? syncOptionNullTwinRustAsync({dynamic hint}) =>
-    RustLib.instance.api.syncOptionNullTwinRustAsync(hint: hint);
-
 class AttributeTwinRustAsync {
   final String key;
   final String value;

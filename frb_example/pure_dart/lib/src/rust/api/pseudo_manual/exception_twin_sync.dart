@@ -55,9 +55,6 @@ void returnCustomNestedError2TwinSync({dynamic hint}) =>
 void returnCustomStructErrorTwinSync({dynamic hint}) =>
     RustLib.instance.api.returnCustomStructErrorTwinSync(hint: hint);
 
-void syncReturnCustomStructErrorTwinSync({dynamic hint}) =>
-    RustLib.instance.api.syncReturnCustomStructErrorTwinSync(hint: hint);
-
 int returnCustomStructOkTwinSync({dynamic hint}) =>
     RustLib.instance.api.returnCustomStructOkTwinSync(hint: hint);
 

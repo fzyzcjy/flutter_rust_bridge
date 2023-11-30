@@ -1594,17 +1594,6 @@ fn wire_stream_sink_throw_anyhow_twin_normal_impl(port_: flutter_rust_bridge::Me
         },
     )
 }
-fn wire_sync_return_custom_struct_error_twin_normal_impl(
-) -> flutter_rust_bridge::support::WireSyncReturn {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
-        flutter_rust_bridge::WrapInfo {
-            debug_name: "sync_return_custom_struct_error_twin_normal",
-            port: None,
-            mode: flutter_rust_bridge::FfiCallMode::Sync,
-        },
-        move || crate::api::exception::sync_return_custom_struct_error_twin_normal(),
-    )
-}
 fn wire_throw_anyhow_twin_normal_impl(port_: flutter_rust_bridge::MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         flutter_rust_bridge::WrapInfo {
@@ -2253,28 +2242,6 @@ fn wire_handle_string_twin_normal_impl(
         },
     )
 }
-fn wire_handle_struct_sync_freezed_twin_normal_impl(
-    arg: impl Wire2Api<crate::api::misc_example::MySizeFreezedTwinNormal> + core::panic::UnwindSafe,
-    boxed: impl Wire2Api<Box<crate::api::misc_example::MySizeFreezedTwinNormal>>
-        + core::panic::UnwindSafe,
-) -> flutter_rust_bridge::support::WireSyncReturn {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
-        flutter_rust_bridge::WrapInfo {
-            debug_name: "handle_struct_sync_freezed_twin_normal",
-            port: None,
-            mode: flutter_rust_bridge::FfiCallMode::Sync,
-        },
-        move || {
-            let api_arg = arg.wire2api();
-            let api_boxed = boxed.wire2api();
-            Result::<_, ()>::Ok(
-                crate::api::misc_example::handle_struct_sync_freezed_twin_normal(
-                    api_arg, api_boxed,
-                ),
-            )
-        },
-    )
-}
 fn wire_handle_struct_twin_normal_impl(
     port_: flutter_rust_bridge::MessagePort,
     arg: impl Wire2Api<crate::auxiliary::sample_types::MySize> + core::panic::UnwindSafe,
@@ -2629,26 +2596,6 @@ fn wire_handle_vec_of_opts_twin_normal_impl(
                 ))
             }
         },
-    )
-}
-fn wire_sync_option_null_twin_normal_impl() -> flutter_rust_bridge::support::WireSyncReturn {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
-        flutter_rust_bridge::WrapInfo {
-            debug_name: "sync_option_null_twin_normal",
-            port: None,
-            mode: flutter_rust_bridge::FfiCallMode::Sync,
-        },
-        move || crate::api::optional::sync_option_null_twin_normal(),
-    )
-}
-fn wire_sync_option_twin_normal_impl() -> flutter_rust_bridge::support::WireSyncReturn {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
-        flutter_rust_bridge::WrapInfo {
-            debug_name: "sync_option_twin_normal",
-            port: None,
-            mode: flutter_rust_bridge::FfiCallMode::Sync,
-        },
-        move || crate::api::optional::sync_option_twin_normal(),
     )
 }
 fn wire_primitive_optional_types_twin_normal_impl(
@@ -4193,11 +4140,6 @@ fn wire_return_ok_custom_error_twin_rust_async_impl(port_: flutter_rust_bridge::
 fn wire_stream_sink_throw_anyhow_twin_rust_async_impl(port_: flutter_rust_bridge::MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_,_,_,_,(),_>(flutter_rust_bridge::WrapInfo{ debug_name: "stream_sink_throw_anyhow_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::FfiCallMode::Stream }, move || {  move |task_callback| async move { crate::api::pseudo_manual::exception_twin_rust_async::stream_sink_throw_anyhow_twin_rust_async(task_callback.stream_sink::<_,String>()).await } })
 }
-fn wire_sync_return_custom_struct_error_twin_rust_async_impl(
-) -> flutter_rust_bridge::support::WireSyncReturn {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(flutter_rust_bridge::WrapInfo{ debug_name: "sync_return_custom_struct_error_twin_rust_async", port: None, mode: flutter_rust_bridge::FfiCallMode::Sync }, move || { 
-                crate::api::pseudo_manual::exception_twin_rust_async::sync_return_custom_struct_error_twin_rust_async().await })
-}
 fn wire_throw_anyhow_twin_rust_async_impl(port_: flutter_rust_bridge::MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_, _, _, _, (), _>(
         flutter_rust_bridge::WrapInfo {
@@ -4490,11 +4432,6 @@ fn wire_stream_sink_throw_anyhow_twin_sync_impl(port_: flutter_rust_bridge::Mess
             }
         },
     )
-}
-fn wire_sync_return_custom_struct_error_twin_sync_impl(
-) -> flutter_rust_bridge::support::WireSyncReturn {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(flutter_rust_bridge::WrapInfo{ debug_name: "sync_return_custom_struct_error_twin_sync", port: None, mode: flutter_rust_bridge::FfiCallMode::Sync }, move || { 
-                crate::api::pseudo_manual::exception_twin_sync::sync_return_custom_struct_error_twin_sync() })
 }
 fn wire_throw_anyhow_twin_sync_impl() -> flutter_rust_bridge::support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
@@ -5086,19 +5023,6 @@ fn wire_handle_string_twin_rust_async_impl(
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_,_,_,_,String,_>(flutter_rust_bridge::WrapInfo{ debug_name: "handle_string_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::FfiCallMode::Normal }, move || { let api_s = s.wire2api(); move |task_callback| async move { Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_rust_async::handle_string_twin_rust_async(api_s).await) } })
 }
-fn wire_handle_struct_sync_freezed_twin_rust_async_impl(
-    arg: impl Wire2Api<
-            crate::api::pseudo_manual::misc_example_twin_rust_async::MySizeFreezedTwinRustAsync,
-        > + core::panic::UnwindSafe,
-    boxed: impl Wire2Api<
-            Box<
-                crate::api::pseudo_manual::misc_example_twin_rust_async::MySizeFreezedTwinRustAsync,
-            >,
-        > + core::panic::UnwindSafe,
-) -> flutter_rust_bridge::support::WireSyncReturn {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(flutter_rust_bridge::WrapInfo{ debug_name: "handle_struct_sync_freezed_twin_rust_async", port: None, mode: flutter_rust_bridge::FfiCallMode::Sync }, move || { let api_arg = arg.wire2api();let api_boxed = boxed.wire2api();
-                Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_rust_async::handle_struct_sync_freezed_twin_rust_async(api_arg, api_boxed).await) })
-}
 fn wire_handle_struct_twin_rust_async_impl(
     port_: flutter_rust_bridge::MessagePort,
     arg: impl Wire2Api<crate::auxiliary::sample_types::MySize> + core::panic::UnwindSafe,
@@ -5205,15 +5129,6 @@ fn wire_handle_string_twin_sync_impl(
             )
         },
     )
-}
-fn wire_handle_struct_sync_freezed_twin_sync_impl(
-    arg: impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_sync::MySizeFreezedTwinSync>
-        + core::panic::UnwindSafe,
-    boxed: impl Wire2Api<Box<crate::api::pseudo_manual::misc_example_twin_sync::MySizeFreezedTwinSync>>
-        + core::panic::UnwindSafe,
-) -> flutter_rust_bridge::support::WireSyncReturn {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(flutter_rust_bridge::WrapInfo{ debug_name: "handle_struct_sync_freezed_twin_sync", port: None, mode: flutter_rust_bridge::FfiCallMode::Sync }, move || { let api_arg = arg.wire2api();let api_boxed = boxed.wire2api();
-                Result::<_,()>::Ok(crate::api::pseudo_manual::misc_example_twin_sync::handle_struct_sync_freezed_twin_sync(api_arg, api_boxed)) })
 }
 fn wire_handle_struct_twin_sync_impl(
     arg: impl Wire2Api<crate::auxiliary::sample_types::MySize> + core::panic::UnwindSafe,
@@ -5705,31 +5620,6 @@ fn wire_handle_vec_of_opts_twin_rust_async_impl(
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_,_,_,_,crate::api::pseudo_manual::optional_twin_rust_async::OptVecsTwinRustAsync,_>(flutter_rust_bridge::WrapInfo{ debug_name: "handle_vec_of_opts_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::FfiCallMode::Normal }, move || { let api_opt = opt.wire2api(); move |task_callback| async move { Result::<_,()>::Ok(crate::api::pseudo_manual::optional_twin_rust_async::handle_vec_of_opts_twin_rust_async(api_opt).await) } })
 }
-fn wire_sync_option_null_twin_rust_async_impl() -> flutter_rust_bridge::support::WireSyncReturn {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
-        flutter_rust_bridge::WrapInfo {
-            debug_name: "sync_option_null_twin_rust_async",
-            port: None,
-            mode: flutter_rust_bridge::FfiCallMode::Sync,
-        },
-        move || {
-            crate::api::pseudo_manual::optional_twin_rust_async::sync_option_null_twin_rust_async()
-                .await
-        },
-    )
-}
-fn wire_sync_option_twin_rust_async_impl() -> flutter_rust_bridge::support::WireSyncReturn {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
-        flutter_rust_bridge::WrapInfo {
-            debug_name: "sync_option_twin_rust_async",
-            port: None,
-            mode: flutter_rust_bridge::FfiCallMode::Sync,
-        },
-        move || {
-            crate::api::pseudo_manual::optional_twin_rust_async::sync_option_twin_rust_async().await
-        },
-    )
-}
 fn wire_handle_increment_boxed_optional_twin_sync_impl(
     opt: impl Wire2Api<Option<Box<f64>>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
@@ -5828,26 +5718,6 @@ fn wire_handle_vec_of_opts_twin_sync_impl(
                 ),
             )
         },
-    )
-}
-fn wire_sync_option_null_twin_sync_impl() -> flutter_rust_bridge::support::WireSyncReturn {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
-        flutter_rust_bridge::WrapInfo {
-            debug_name: "sync_option_null_twin_sync",
-            port: None,
-            mode: flutter_rust_bridge::FfiCallMode::Sync,
-        },
-        move || crate::api::pseudo_manual::optional_twin_sync::sync_option_null_twin_sync(),
-    )
-}
-fn wire_sync_option_twin_sync_impl() -> flutter_rust_bridge::support::WireSyncReturn {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
-        flutter_rust_bridge::WrapInfo {
-            debug_name: "sync_option_twin_sync",
-            port: None,
-            mode: flutter_rust_bridge::FfiCallMode::Sync,
-        },
-        move || crate::api::pseudo_manual::optional_twin_sync::sync_option_twin_sync(),
     )
 }
 fn wire_example_primitive_type_bool_twin_normal_impl(
@@ -11530,78 +11400,6 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::auxiliary::sample_types
     for crate::auxiliary::sample_types::MySize
 {
     fn into_into_dart(self) -> crate::auxiliary::sample_types::MySize {
-        self
-    }
-}
-impl flutter_rust_bridge::support::IntoDart for crate::api::misc_example::MySizeFreezedTwinNormal {
-    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
-        vec![
-            self.width.into_into_dart().into_dart(),
-            self.height.into_into_dart().into_dart(),
-        ]
-        .into_dart()
-    }
-}
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive
-    for crate::api::misc_example::MySizeFreezedTwinNormal
-{
-}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::misc_example::MySizeFreezedTwinNormal>
-    for crate::api::misc_example::MySizeFreezedTwinNormal
-{
-    fn into_into_dart(self) -> crate::api::misc_example::MySizeFreezedTwinNormal {
-        self
-    }
-}
-impl flutter_rust_bridge::support::IntoDart
-    for crate::api::pseudo_manual::misc_example_twin_rust_async::MySizeFreezedTwinRustAsync
-{
-    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
-        vec![
-            self.width.into_into_dart().into_dart(),
-            self.height.into_into_dart().into_dart(),
-        ]
-        .into_dart()
-    }
-}
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive
-    for crate::api::pseudo_manual::misc_example_twin_rust_async::MySizeFreezedTwinRustAsync
-{
-}
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::pseudo_manual::misc_example_twin_rust_async::MySizeFreezedTwinRustAsync,
-    > for crate::api::pseudo_manual::misc_example_twin_rust_async::MySizeFreezedTwinRustAsync
-{
-    fn into_into_dart(
-        self,
-    ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::MySizeFreezedTwinRustAsync {
-        self
-    }
-}
-impl flutter_rust_bridge::support::IntoDart
-    for crate::api::pseudo_manual::misc_example_twin_sync::MySizeFreezedTwinSync
-{
-    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
-        vec![
-            self.width.into_into_dart().into_dart(),
-            self.height.into_into_dart().into_dart(),
-        ]
-        .into_dart()
-    }
-}
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive
-    for crate::api::pseudo_manual::misc_example_twin_sync::MySizeFreezedTwinSync
-{
-}
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::pseudo_manual::misc_example_twin_sync::MySizeFreezedTwinSync,
-    > for crate::api::pseudo_manual::misc_example_twin_sync::MySizeFreezedTwinSync
-{
-    fn into_into_dart(
-        self,
-    ) -> crate::api::pseudo_manual::misc_example_twin_sync::MySizeFreezedTwinSync {
         self
     }
 }

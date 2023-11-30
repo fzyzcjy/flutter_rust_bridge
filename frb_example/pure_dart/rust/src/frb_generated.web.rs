@@ -2039,59 +2039,6 @@ impl Wire2Api<crate::auxiliary::sample_types::MySize>
         }
     }
 }
-impl Wire2Api<crate::api::misc_example::MySizeFreezedTwinNormal>
-    for flutter_rust_bridge::wasm_bindgen::JsValue
-{
-    fn wire2api(self) -> crate::api::misc_example::MySizeFreezedTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::misc_example::MySizeFreezedTwinNormal {
-            width: self_.get(0).wire2api(),
-            height: self_.get(1).wire2api(),
-        }
-    }
-}
-impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_rust_async::MySizeFreezedTwinRustAsync>
-    for flutter_rust_bridge::wasm_bindgen::JsValue
-{
-    fn wire2api(
-        self,
-    ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::MySizeFreezedTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::misc_example_twin_rust_async::MySizeFreezedTwinRustAsync {
-            width: self_.get(0).wire2api(),
-            height: self_.get(1).wire2api(),
-        }
-    }
-}
-impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_sync::MySizeFreezedTwinSync>
-    for flutter_rust_bridge::wasm_bindgen::JsValue
-{
-    fn wire2api(self) -> crate::api::pseudo_manual::misc_example_twin_sync::MySizeFreezedTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::pseudo_manual::misc_example_twin_sync::MySizeFreezedTwinSync {
-            width: self_.get(0).wire2api(),
-            height: self_.get(1).wire2api(),
-        }
-    }
-}
 impl Wire2Api<crate::auxiliary::sample_types::MyStruct>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -3428,34 +3375,6 @@ impl Wire2Api<Box<crate::auxiliary::sample_types::MySize>>
         Box::new(self.wire2api())
     }
 }
-impl Wire2Api<Box<crate::api::misc_example::MySizeFreezedTwinNormal>>
-    for flutter_rust_bridge::wasm_bindgen::JsValue
-{
-    fn wire2api(self) -> Box<crate::api::misc_example::MySizeFreezedTwinNormal> {
-        Box::new(self.wire2api())
-    }
-}
-impl
-    Wire2Api<
-        Box<crate::api::pseudo_manual::misc_example_twin_rust_async::MySizeFreezedTwinRustAsync>,
-    > for flutter_rust_bridge::wasm_bindgen::JsValue
-{
-    fn wire2api(
-        self,
-    ) -> Box<crate::api::pseudo_manual::misc_example_twin_rust_async::MySizeFreezedTwinRustAsync>
-    {
-        Box::new(self.wire2api())
-    }
-}
-impl Wire2Api<Box<crate::api::pseudo_manual::misc_example_twin_sync::MySizeFreezedTwinSync>>
-    for flutter_rust_bridge::wasm_bindgen::JsValue
-{
-    fn wire2api(
-        self,
-    ) -> Box<crate::api::pseudo_manual::misc_example_twin_sync::MySizeFreezedTwinSync> {
-        Box::new(self.wire2api())
-    }
-}
 impl Wire2Api<Box<crate::api::enumeration::SpeedTwinNormal>>
     for flutter_rust_bridge::wasm_bindgen::JsValue
 {
@@ -4420,12 +4339,6 @@ pub fn wire_stream_sink_throw_anyhow_twin_normal(port_: flutter_rust_bridge::Mes
 }
 
 #[wasm_bindgen]
-pub fn wire_sync_return_custom_struct_error_twin_normal(
-) -> flutter_rust_bridge::support::WireSyncReturn {
-    wire_sync_return_custom_struct_error_twin_normal_impl()
-}
-
-#[wasm_bindgen]
 pub fn wire_throw_anyhow_twin_normal(port_: flutter_rust_bridge::MessagePort) {
     wire_throw_anyhow_twin_normal_impl(port_)
 }
@@ -4699,14 +4612,6 @@ pub fn wire_handle_string_twin_normal(port_: flutter_rust_bridge::MessagePort, s
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_struct_sync_freezed_twin_normal(
-    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
-    boxed: flutter_rust_bridge::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::support::WireSyncReturn {
-    wire_handle_struct_sync_freezed_twin_normal_impl(arg, boxed)
-}
-
-#[wasm_bindgen]
 pub fn wire_handle_struct_twin_normal(
     port_: flutter_rust_bridge::MessagePort,
     arg: flutter_rust_bridge::wasm_bindgen::JsValue,
@@ -4841,16 +4746,6 @@ pub fn wire_handle_vec_of_opts_twin_normal(
     opt: flutter_rust_bridge::wasm_bindgen::JsValue,
 ) {
     wire_handle_vec_of_opts_twin_normal_impl(port_, opt)
-}
-
-#[wasm_bindgen]
-pub fn wire_sync_option_null_twin_normal() -> flutter_rust_bridge::support::WireSyncReturn {
-    wire_sync_option_null_twin_normal_impl()
-}
-
-#[wasm_bindgen]
-pub fn wire_sync_option_twin_normal() -> flutter_rust_bridge::support::WireSyncReturn {
-    wire_sync_option_twin_normal_impl()
 }
 
 #[wasm_bindgen]
@@ -5902,12 +5797,6 @@ pub fn wire_stream_sink_throw_anyhow_twin_rust_async(port_: flutter_rust_bridge:
 }
 
 #[wasm_bindgen]
-pub fn wire_sync_return_custom_struct_error_twin_rust_async(
-) -> flutter_rust_bridge::support::WireSyncReturn {
-    wire_sync_return_custom_struct_error_twin_rust_async_impl()
-}
-
-#[wasm_bindgen]
 pub fn wire_throw_anyhow_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
     wire_throw_anyhow_twin_rust_async_impl(port_)
 }
@@ -6078,12 +5967,6 @@ pub fn wire_return_ok_custom_error_twin_sync() -> flutter_rust_bridge::support::
 #[wasm_bindgen]
 pub fn wire_stream_sink_throw_anyhow_twin_sync(port_: flutter_rust_bridge::MessagePort) {
     wire_stream_sink_throw_anyhow_twin_sync_impl(port_)
-}
-
-#[wasm_bindgen]
-pub fn wire_sync_return_custom_struct_error_twin_sync(
-) -> flutter_rust_bridge::support::WireSyncReturn {
-    wire_sync_return_custom_struct_error_twin_sync_impl()
 }
 
 #[wasm_bindgen]
@@ -6578,14 +6461,6 @@ pub fn wire_handle_string_twin_rust_async(port_: flutter_rust_bridge::MessagePor
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_struct_sync_freezed_twin_rust_async(
-    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
-    boxed: flutter_rust_bridge::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::support::WireSyncReturn {
-    wire_handle_struct_sync_freezed_twin_rust_async_impl(arg, boxed)
-}
-
-#[wasm_bindgen]
 pub fn wire_handle_struct_twin_rust_async(
     port_: flutter_rust_bridge::MessagePort,
     arg: flutter_rust_bridge::wasm_bindgen::JsValue,
@@ -6645,14 +6520,6 @@ pub fn wire_handle_nested_struct_twin_sync(
 #[wasm_bindgen]
 pub fn wire_handle_string_twin_sync(s: String) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_handle_string_twin_sync_impl(s)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_struct_sync_freezed_twin_sync(
-    arg: flutter_rust_bridge::wasm_bindgen::JsValue,
-    boxed: flutter_rust_bridge::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::support::WireSyncReturn {
-    wire_handle_struct_sync_freezed_twin_sync_impl(arg, boxed)
 }
 
 #[wasm_bindgen]
@@ -7101,16 +6968,6 @@ pub fn wire_handle_vec_of_opts_twin_rust_async(
 }
 
 #[wasm_bindgen]
-pub fn wire_sync_option_null_twin_rust_async() -> flutter_rust_bridge::support::WireSyncReturn {
-    wire_sync_option_null_twin_rust_async_impl()
-}
-
-#[wasm_bindgen]
-pub fn wire_sync_option_twin_rust_async() -> flutter_rust_bridge::support::WireSyncReturn {
-    wire_sync_option_twin_rust_async_impl()
-}
-
-#[wasm_bindgen]
 pub fn wire_handle_increment_boxed_optional_twin_sync(
     opt: flutter_rust_bridge::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
@@ -7159,16 +7016,6 @@ pub fn wire_handle_vec_of_opts_twin_sync(
     opt: flutter_rust_bridge::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_handle_vec_of_opts_twin_sync_impl(opt)
-}
-
-#[wasm_bindgen]
-pub fn wire_sync_option_null_twin_sync() -> flutter_rust_bridge::support::WireSyncReturn {
-    wire_sync_option_null_twin_sync_impl()
-}
-
-#[wasm_bindgen]
-pub fn wire_sync_option_twin_sync() -> flutter_rust_bridge::support::WireSyncReturn {
-    wire_sync_option_twin_sync_impl()
 }
 
 #[wasm_bindgen]

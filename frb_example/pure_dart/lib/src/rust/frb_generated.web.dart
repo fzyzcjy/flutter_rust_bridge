@@ -961,24 +961,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_my_size_freezed_twin_normal(
-      MySizeFreezedTwinNormal raw) {
-    return api2wire_my_size_freezed_twin_normal(raw);
-  }
-
-  @protected
-  List<dynamic> api2wire_box_autoadd_my_size_freezed_twin_rust_async(
-      MySizeFreezedTwinRustAsync raw) {
-    return api2wire_my_size_freezed_twin_rust_async(raw);
-  }
-
-  @protected
-  List<dynamic> api2wire_box_autoadd_my_size_freezed_twin_sync(
-      MySizeFreezedTwinSync raw) {
-    return api2wire_my_size_freezed_twin_sync(raw);
-  }
-
-  @protected
   List<dynamic> api2wire_box_autoadd_my_struct(MyStruct raw) {
     return api2wire_my_struct(raw);
   }
@@ -1409,24 +1391,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> api2wire_box_my_size(MySize raw) {
     return api2wire_my_size(raw);
-  }
-
-  @protected
-  List<dynamic> api2wire_box_my_size_freezed_twin_normal(
-      MySizeFreezedTwinNormal raw) {
-    return api2wire_my_size_freezed_twin_normal(raw);
-  }
-
-  @protected
-  List<dynamic> api2wire_box_my_size_freezed_twin_rust_async(
-      MySizeFreezedTwinRustAsync raw) {
-    return api2wire_my_size_freezed_twin_rust_async(raw);
-  }
-
-  @protected
-  List<dynamic> api2wire_box_my_size_freezed_twin_sync(
-      MySizeFreezedTwinSync raw) {
-    return api2wire_my_size_freezed_twin_sync(raw);
   }
 
   @protected
@@ -2509,23 +2473,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> api2wire_my_size_freezed_twin_normal(
-      MySizeFreezedTwinNormal raw) {
-    return [api2wire_i_32(raw.width), api2wire_i_32(raw.height)];
-  }
-
-  @protected
-  List<dynamic> api2wire_my_size_freezed_twin_rust_async(
-      MySizeFreezedTwinRustAsync raw) {
-    return [api2wire_i_32(raw.width), api2wire_i_32(raw.height)];
-  }
-
-  @protected
-  List<dynamic> api2wire_my_size_freezed_twin_sync(MySizeFreezedTwinSync raw) {
-    return [api2wire_i_32(raw.width), api2wire_i_32(raw.height)];
-  }
-
-  @protected
   List<dynamic> api2wire_my_struct(MyStruct raw) {
     return [api2wire_bool(raw.content)];
   }
@@ -3568,10 +3515,6 @@ class RustLibWire extends BaseWire {
   void wire_stream_sink_throw_anyhow_twin_normal(NativePortType port_) =>
       wasmModule.wire_stream_sink_throw_anyhow_twin_normal(port_);
 
-  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_sync_return_custom_struct_error_twin_normal() =>
-          wasmModule.wire_sync_return_custom_struct_error_twin_normal();
-
   void wire_throw_anyhow_twin_normal(NativePortType port_) =>
       wasmModule.wire_throw_anyhow_twin_normal(port_);
 
@@ -3726,11 +3669,6 @@ class RustLibWire extends BaseWire {
   void wire_handle_string_twin_normal(NativePortType port_, String s) =>
       wasmModule.wire_handle_string_twin_normal(port_, s);
 
-  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_handle_struct_sync_freezed_twin_normal(
-              List<dynamic> arg, List<dynamic> boxed) =>
-          wasmModule.wire_handle_struct_sync_freezed_twin_normal(arg, boxed);
-
   void wire_handle_struct_twin_normal(
           NativePortType port_, List<dynamic> arg, List<dynamic> boxed) =>
       wasmModule.wire_handle_struct_twin_normal(port_, arg, boxed);
@@ -3803,14 +3741,6 @@ class RustLibWire extends BaseWire {
   void wire_handle_vec_of_opts_twin_normal(
           NativePortType port_, List<dynamic> opt) =>
       wasmModule.wire_handle_vec_of_opts_twin_normal(port_, opt);
-
-  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_sync_option_null_twin_normal() =>
-          wasmModule.wire_sync_option_null_twin_normal();
-
-  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_sync_option_twin_normal() =>
-          wasmModule.wire_sync_option_twin_normal();
 
   void wire_primitive_optional_types_twin_normal(NativePortType port_,
           int? my_i32, Object? my_i64, double? my_f64, bool? my_bool) =>
@@ -4430,10 +4360,6 @@ class RustLibWire extends BaseWire {
   void wire_stream_sink_throw_anyhow_twin_rust_async(NativePortType port_) =>
       wasmModule.wire_stream_sink_throw_anyhow_twin_rust_async(port_);
 
-  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_sync_return_custom_struct_error_twin_rust_async() =>
-          wasmModule.wire_sync_return_custom_struct_error_twin_rust_async();
-
   void wire_throw_anyhow_twin_rust_async(NativePortType port_) =>
       wasmModule.wire_throw_anyhow_twin_rust_async(port_);
 
@@ -4563,10 +4489,6 @@ class RustLibWire extends BaseWire {
 
   void wire_stream_sink_throw_anyhow_twin_sync(NativePortType port_) =>
       wasmModule.wire_stream_sink_throw_anyhow_twin_sync(port_);
-
-  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_sync_return_custom_struct_error_twin_sync() =>
-          wasmModule.wire_sync_return_custom_struct_error_twin_sync();
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_throw_anyhow_twin_sync() => wasmModule.wire_throw_anyhow_twin_sync();
@@ -4860,12 +4782,6 @@ class RustLibWire extends BaseWire {
   void wire_handle_string_twin_rust_async(NativePortType port_, String s) =>
       wasmModule.wire_handle_string_twin_rust_async(port_, s);
 
-  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_handle_struct_sync_freezed_twin_rust_async(
-              List<dynamic> arg, List<dynamic> boxed) =>
-          wasmModule.wire_handle_struct_sync_freezed_twin_rust_async(
-              arg, boxed);
-
   void wire_handle_struct_twin_rust_async(
           NativePortType port_, List<dynamic> arg, List<dynamic> boxed) =>
       wasmModule.wire_handle_struct_twin_rust_async(port_, arg, boxed);
@@ -4900,11 +4816,6 @@ class RustLibWire extends BaseWire {
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_string_twin_sync(String s) =>
           wasmModule.wire_handle_string_twin_sync(s);
-
-  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_handle_struct_sync_freezed_twin_sync(
-              List<dynamic> arg, List<dynamic> boxed) =>
-          wasmModule.wire_handle_struct_sync_freezed_twin_sync(arg, boxed);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_struct_twin_sync(List<dynamic> arg, List<dynamic> boxed) =>
@@ -5172,14 +5083,6 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_handle_vec_of_opts_twin_rust_async(port_, opt);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_sync_option_null_twin_rust_async() =>
-          wasmModule.wire_sync_option_null_twin_rust_async();
-
-  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_sync_option_twin_rust_async() =>
-          wasmModule.wire_sync_option_twin_rust_async();
-
-  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_increment_boxed_optional_twin_sync(double? opt) =>
           wasmModule.wire_handle_increment_boxed_optional_twin_sync(opt);
 
@@ -5210,13 +5113,6 @@ class RustLibWire extends BaseWire {
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_vec_of_opts_twin_sync(List<dynamic> opt) =>
           wasmModule.wire_handle_vec_of_opts_twin_sync(opt);
-
-  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_sync_option_null_twin_sync() =>
-          wasmModule.wire_sync_option_null_twin_sync();
-
-  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_sync_option_twin_sync() => wasmModule.wire_sync_option_twin_sync();
 
   void wire_example_primitive_type_bool_twin_normal(
           NativePortType port_, bool arg) =>
@@ -6302,9 +6198,6 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_stream_sink_throw_anyhow_twin_normal(NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_sync_return_custom_struct_error_twin_normal();
-
   external void wire_throw_anyhow_twin_normal(NativePortType port_);
 
   external void wire_call_new_module_system_twin_normal(NativePortType port_);
@@ -6415,10 +6308,6 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_handle_string_twin_normal(NativePortType port_, String s);
 
-  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_handle_struct_sync_freezed_twin_normal(
-          List<dynamic> arg, List<dynamic> boxed);
-
   external void wire_handle_struct_twin_normal(
       NativePortType port_, List<dynamic> arg, List<dynamic> boxed);
 
@@ -6474,12 +6363,6 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_handle_vec_of_opts_twin_normal(
       NativePortType port_, List<dynamic> opt);
-
-  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_sync_option_null_twin_normal();
-
-  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_sync_option_twin_normal();
 
   external void wire_primitive_optional_types_twin_normal(NativePortType port_,
       int? my_i32, Object? my_i64, double? my_f64, bool? my_bool);
@@ -6945,9 +6828,6 @@ class RustLibWasmModule implements WasmModule {
   external void wire_stream_sink_throw_anyhow_twin_rust_async(
       NativePortType port_);
 
-  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_sync_return_custom_struct_error_twin_rust_async();
-
   external void wire_throw_anyhow_twin_rust_async(NativePortType port_);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
@@ -7036,9 +6916,6 @@ class RustLibWasmModule implements WasmModule {
       wire_return_ok_custom_error_twin_sync();
 
   external void wire_stream_sink_throw_anyhow_twin_sync(NativePortType port_);
-
-  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_sync_return_custom_struct_error_twin_sync();
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_throw_anyhow_twin_sync();
@@ -7252,10 +7129,6 @@ class RustLibWasmModule implements WasmModule {
   external void wire_handle_string_twin_rust_async(
       NativePortType port_, String s);
 
-  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_handle_struct_sync_freezed_twin_rust_async(
-          List<dynamic> arg, List<dynamic> boxed);
-
   external void wire_handle_struct_twin_rust_async(
       NativePortType port_, List<dynamic> arg, List<dynamic> boxed);
 
@@ -7282,10 +7155,6 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_string_twin_sync(String s);
-
-  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_handle_struct_sync_freezed_twin_sync(
-          List<dynamic> arg, List<dynamic> boxed);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_struct_twin_sync(List<dynamic> arg, List<dynamic> boxed);
@@ -7473,12 +7342,6 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, List<dynamic> opt);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_sync_option_null_twin_rust_async();
-
-  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_sync_option_twin_rust_async();
-
-  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_increment_boxed_optional_twin_sync(double? opt);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
@@ -7502,12 +7365,6 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_handle_vec_of_opts_twin_sync(List<dynamic> opt);
-
-  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_sync_option_null_twin_sync();
-
-  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
-      wire_sync_option_twin_sync();
 
   external void wire_example_primitive_type_bool_twin_normal(
       NativePortType port_, bool arg);

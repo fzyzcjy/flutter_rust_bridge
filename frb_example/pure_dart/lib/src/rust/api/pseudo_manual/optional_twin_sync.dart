@@ -46,12 +46,6 @@ String handleOptionBoxArgumentsTwinSync(
         structbox: structbox,
         hint: hint);
 
-String? syncOptionTwinSync({dynamic hint}) =>
-    RustLib.instance.api.syncOptionTwinSync(hint: hint);
-
-String? syncOptionNullTwinSync({dynamic hint}) =>
-    RustLib.instance.api.syncOptionNullTwinSync(hint: hint);
-
 class AttributeTwinSync {
   final String key;
   final String value;

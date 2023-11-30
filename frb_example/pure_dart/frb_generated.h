@@ -379,11 +379,6 @@ typedef struct wire_my_nested_struct_twin_normal {
   int32_t weekday;
 } wire_my_nested_struct_twin_normal;
 
-typedef struct wire_my_size_freezed_twin_normal {
-  int32_t width;
-  int32_t height;
-} wire_my_size_freezed_twin_normal;
-
 typedef struct wire_my_size {
   int32_t width;
   int32_t height;
@@ -1113,11 +1108,6 @@ typedef struct wire_my_nested_struct_twin_rust_async {
   int32_t weekday;
 } wire_my_nested_struct_twin_rust_async;
 
-typedef struct wire_my_size_freezed_twin_rust_async {
-  int32_t width;
-  int32_t height;
-} wire_my_size_freezed_twin_rust_async;
-
 typedef struct wire_list_weekdays_twin_rust_async {
   int32_t *ptr;
   int32_t len;
@@ -1184,11 +1174,6 @@ typedef struct wire_my_nested_struct_twin_sync {
   struct wire_my_tree_node_twin_sync tree_node;
   int32_t weekday;
 } wire_my_nested_struct_twin_sync;
-
-typedef struct wire_my_size_freezed_twin_sync {
-  int32_t width;
-  int32_t height;
-} wire_my_size_freezed_twin_sync;
 
 typedef struct wire_list_weekdays_twin_sync {
   int32_t *ptr;
@@ -1837,8 +1822,6 @@ void wire_return_ok_custom_error_twin_normal(int64_t port_);
 
 void wire_stream_sink_throw_anyhow_twin_normal(int64_t port_);
 
-WireSyncReturn wire_sync_return_custom_struct_error_twin_normal(void);
-
 void wire_throw_anyhow_twin_normal(int64_t port_);
 
 void wire_call_new_module_system_twin_normal(int64_t port_);
@@ -1934,9 +1917,6 @@ void wire_handle_nested_struct_twin_normal(int64_t port_,
 
 void wire_handle_string_twin_normal(int64_t port_, struct wire_list_prim_u_8 *s);
 
-WireSyncReturn wire_handle_struct_sync_freezed_twin_normal(struct wire_my_size_freezed_twin_normal *arg,
-                                                           struct wire_my_size_freezed_twin_normal *boxed);
-
 void wire_handle_struct_twin_normal(int64_t port_,
                                     struct wire_my_size *arg,
                                     struct wire_my_size *boxed);
@@ -1982,10 +1962,6 @@ void wire_handle_optional_return_twin_normal(int64_t port_, double left, double 
 void wire_handle_optional_struct_twin_normal(int64_t port_, struct wire_list_prim_u_8 *document);
 
 void wire_handle_vec_of_opts_twin_normal(int64_t port_, struct wire_opt_vecs_twin_normal *opt);
-
-WireSyncReturn wire_sync_option_null_twin_normal(void);
-
-WireSyncReturn wire_sync_option_twin_normal(void);
 
 void wire_primitive_optional_types_twin_normal(int64_t port_,
                                                int32_t *my_i32,
@@ -2332,8 +2308,6 @@ void wire_return_ok_custom_error_twin_rust_async(int64_t port_);
 
 void wire_stream_sink_throw_anyhow_twin_rust_async(int64_t port_);
 
-WireSyncReturn wire_sync_return_custom_struct_error_twin_rust_async(void);
-
 void wire_throw_anyhow_twin_rust_async(int64_t port_);
 
 WireSyncReturn wire_CustomStructTwinSync_new_twin_sync(struct wire_list_prim_u_8 *message);
@@ -2391,8 +2365,6 @@ WireSyncReturn wire_return_error_variant_twin_sync(uint32_t variant);
 WireSyncReturn wire_return_ok_custom_error_twin_sync(void);
 
 void wire_stream_sink_throw_anyhow_twin_sync(int64_t port_);
-
-WireSyncReturn wire_sync_return_custom_struct_error_twin_sync(void);
 
 WireSyncReturn wire_throw_anyhow_twin_sync(void);
 
@@ -2563,9 +2535,6 @@ void wire_handle_nested_struct_twin_rust_async(int64_t port_,
 
 void wire_handle_string_twin_rust_async(int64_t port_, struct wire_list_prim_u_8 *s);
 
-WireSyncReturn wire_handle_struct_sync_freezed_twin_rust_async(struct wire_my_size_freezed_twin_rust_async *arg,
-                                                               struct wire_my_size_freezed_twin_rust_async *boxed);
-
 void wire_handle_struct_twin_rust_async(int64_t port_,
                                         struct wire_my_size *arg,
                                         struct wire_my_size *boxed);
@@ -2587,9 +2556,6 @@ WireSyncReturn wire_handle_complex_struct_twin_sync(struct wire_my_tree_node_twi
 WireSyncReturn wire_handle_nested_struct_twin_sync(struct wire_my_nested_struct_twin_sync *s);
 
 WireSyncReturn wire_handle_string_twin_sync(struct wire_list_prim_u_8 *s);
-
-WireSyncReturn wire_handle_struct_sync_freezed_twin_sync(struct wire_my_size_freezed_twin_sync *arg,
-                                                         struct wire_my_size_freezed_twin_sync *boxed);
 
 WireSyncReturn wire_handle_struct_twin_sync(struct wire_my_size *arg, struct wire_my_size *boxed);
 
@@ -2725,10 +2691,6 @@ void wire_handle_optional_struct_twin_rust_async(int64_t port_,
 void wire_handle_vec_of_opts_twin_rust_async(int64_t port_,
                                              struct wire_opt_vecs_twin_rust_async *opt);
 
-WireSyncReturn wire_sync_option_null_twin_rust_async(void);
-
-WireSyncReturn wire_sync_option_twin_rust_async(void);
-
 WireSyncReturn wire_handle_increment_boxed_optional_twin_sync(double *opt);
 
 WireSyncReturn wire_handle_option_box_arguments_twin_sync(int8_t *i8box,
@@ -2746,10 +2708,6 @@ WireSyncReturn wire_handle_optional_return_twin_sync(double left, double right);
 WireSyncReturn wire_handle_optional_struct_twin_sync(struct wire_list_prim_u_8 *document);
 
 WireSyncReturn wire_handle_vec_of_opts_twin_sync(struct wire_opt_vecs_twin_sync *opt);
-
-WireSyncReturn wire_sync_option_null_twin_sync(void);
-
-WireSyncReturn wire_sync_option_twin_sync(void);
 
 void wire_example_primitive_type_bool_twin_normal(int64_t port_, bool arg);
 
@@ -3378,12 +3336,6 @@ struct wire_my_nested_struct_twin_sync *new_box_autoadd_my_nested_struct_twin_sy
 
 struct wire_my_size *new_box_autoadd_my_size(void);
 
-struct wire_my_size_freezed_twin_normal *new_box_autoadd_my_size_freezed_twin_normal(void);
-
-struct wire_my_size_freezed_twin_rust_async *new_box_autoadd_my_size_freezed_twin_rust_async(void);
-
-struct wire_my_size_freezed_twin_sync *new_box_autoadd_my_size_freezed_twin_sync(void);
-
 struct wire_my_struct *new_box_autoadd_my_struct(void);
 
 struct wire_my_tree_node_twin_normal *new_box_autoadd_my_tree_node_twin_normal(void);
@@ -3537,12 +3489,6 @@ struct wire_kitchen_sink_twin_rust_async *new_box_kitchen_sink_twin_rust_async(v
 struct wire_kitchen_sink_twin_sync *new_box_kitchen_sink_twin_sync(void);
 
 struct wire_my_size *new_box_my_size(void);
-
-struct wire_my_size_freezed_twin_normal *new_box_my_size_freezed_twin_normal(void);
-
-struct wire_my_size_freezed_twin_rust_async *new_box_my_size_freezed_twin_rust_async(void);
-
-struct wire_my_size_freezed_twin_sync *new_box_my_size_freezed_twin_sync(void);
 
 struct wire_speed_twin_normal *new_box_speed_twin_normal(void);
 
@@ -4067,9 +4013,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_nested_struct_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_nested_struct_twin_sync);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_size);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_size_freezed_twin_normal);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_size_freezed_twin_rust_async);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_size_freezed_twin_sync);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_struct);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_tree_node_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_tree_node_twin_rust_async);
@@ -4147,9 +4090,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_kitchen_sink_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) new_box_kitchen_sink_twin_sync);
     dummy_var ^= ((int64_t) (void*) new_box_my_size);
-    dummy_var ^= ((int64_t) (void*) new_box_my_size_freezed_twin_normal);
-    dummy_var ^= ((int64_t) (void*) new_box_my_size_freezed_twin_rust_async);
-    dummy_var ^= ((int64_t) (void*) new_box_my_size_freezed_twin_sync);
     dummy_var ^= ((int64_t) (void*) new_box_speed_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_speed_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) new_box_speed_twin_sync);
@@ -4610,9 +4550,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_handle_string_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_string_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_handle_string_twin_sync);
-    dummy_var ^= ((int64_t) (void*) wire_handle_struct_sync_freezed_twin_normal);
-    dummy_var ^= ((int64_t) (void*) wire_handle_struct_sync_freezed_twin_rust_async);
-    dummy_var ^= ((int64_t) (void*) wire_handle_struct_sync_freezed_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_handle_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_handle_struct_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_handle_struct_twin_sync);
@@ -4807,16 +4744,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_sync_loopback_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_sync_option_dart_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_sync_option_loopback_twin_normal);
-    dummy_var ^= ((int64_t) (void*) wire_sync_option_null_twin_normal);
-    dummy_var ^= ((int64_t) (void*) wire_sync_option_null_twin_rust_async);
-    dummy_var ^= ((int64_t) (void*) wire_sync_option_null_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_sync_option_rust_opaque_twin_normal);
-    dummy_var ^= ((int64_t) (void*) wire_sync_option_twin_normal);
-    dummy_var ^= ((int64_t) (void*) wire_sync_option_twin_rust_async);
-    dummy_var ^= ((int64_t) (void*) wire_sync_option_twin_sync);
-    dummy_var ^= ((int64_t) (void*) wire_sync_return_custom_struct_error_twin_normal);
-    dummy_var ^= ((int64_t) (void*) wire_sync_return_custom_struct_error_twin_rust_async);
-    dummy_var ^= ((int64_t) (void*) wire_sync_return_custom_struct_error_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_sync_run_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_test_abc_enum_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_test_abc_enum_twin_rust_async);

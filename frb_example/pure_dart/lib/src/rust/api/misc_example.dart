@@ -41,13 +41,6 @@ Future<MySize> handleStructTwinNormal(
     RustLib.instance.api
         .handleStructTwinNormal(arg: arg, boxed: boxed, hint: hint);
 
-MySizeFreezedTwinNormal handleStructSyncFreezedTwinNormal(
-        {required MySizeFreezedTwinNormal arg,
-        required MySizeFreezedTwinNormal boxed,
-        dynamic hint}) =>
-    RustLib.instance.api
-        .handleStructSyncFreezedTwinNormal(arg: arg, boxed: boxed, hint: hint);
-
 class ATwinNormal {
   final String a;
 
@@ -152,14 +145,6 @@ class MyNestedStructTwinNormal {
           runtimeType == other.runtimeType &&
           treeNode == other.treeNode &&
           weekday == other.weekday;
-}
-
-@freezed
-class MySizeFreezedTwinNormal with _$MySizeFreezedTwinNormal {
-  const factory MySizeFreezedTwinNormal({
-    required int width,
-    required int height,
-  }) = _MySizeFreezedTwinNormal;
 }
 
 class MyTreeNodeTwinNormal {

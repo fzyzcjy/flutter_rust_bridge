@@ -134,14 +134,15 @@ pub struct MySizeFreezedTwinRustAsync {
     pub height: i32,
 }
 
-#[frb(sync)]
-pub async fn handle_struct_sync_freezed_twin_rust_async(
-    arg: MySizeFreezedTwinRustAsync,
-    boxed: Box<MySizeFreezedTwinRustAsync>,
-) -> MySizeFreezedTwinRustAsync {
-    info!("handle_struct_sync_freezed({:?}, {:?})", &arg, &boxed);
-    MySizeFreezedTwinRustAsync {
-        width: arg.width + boxed.width,
-        height: arg.height + boxed.height,
-    }
-}
+// TODO move it to a non-auto-generated test
+// #[frb(sync)]
+// pub async fn handle_struct_sync_freezed_twin_rust_async(
+//     arg: MySizeFreezedTwinRustAsync,
+//     boxed: Box<MySizeFreezedTwinRustAsync>,
+// ) -> MySizeFreezedTwinRustAsync {
+//     info!("handle_struct_sync_freezed({:?}, {:?})", &arg, &boxed);
+//     MySizeFreezedTwinRustAsync {
+//         width: arg.width + boxed.width,
+//         height: arg.height + boxed.height,
+//     }
+// }

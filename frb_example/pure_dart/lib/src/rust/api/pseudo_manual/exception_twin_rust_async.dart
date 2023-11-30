@@ -59,9 +59,6 @@ Future<void> returnCustomNestedError2TwinRustAsync({dynamic hint}) =>
 Future<void> returnCustomStructErrorTwinRustAsync({dynamic hint}) =>
     RustLib.instance.api.returnCustomStructErrorTwinRustAsync(hint: hint);
 
-void syncReturnCustomStructErrorTwinRustAsync({dynamic hint}) =>
-    RustLib.instance.api.syncReturnCustomStructErrorTwinRustAsync(hint: hint);
-
 Future<int> returnCustomStructOkTwinRustAsync({dynamic hint}) =>
     RustLib.instance.api.returnCustomStructOkTwinRustAsync(hint: hint);
 

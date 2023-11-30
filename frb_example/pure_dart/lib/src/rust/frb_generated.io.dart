@@ -1097,33 +1097,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_my_size_freezed_twin_normal>
-      api2wire_box_autoadd_my_size_freezed_twin_normal(
-          MySizeFreezedTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_my_size_freezed_twin_normal();
-    _api_fill_to_wire_my_size_freezed_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_my_size_freezed_twin_rust_async>
-      api2wire_box_autoadd_my_size_freezed_twin_rust_async(
-          MySizeFreezedTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_my_size_freezed_twin_rust_async();
-    _api_fill_to_wire_my_size_freezed_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_my_size_freezed_twin_sync>
-      api2wire_box_autoadd_my_size_freezed_twin_sync(
-          MySizeFreezedTwinSync raw) {
-    final ptr = wire.new_box_autoadd_my_size_freezed_twin_sync();
-    _api_fill_to_wire_my_size_freezed_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
   ffi.Pointer<wire_my_struct> api2wire_box_autoadd_my_struct(MyStruct raw) {
     final ptr = wire.new_box_autoadd_my_struct();
     _api_fill_to_wire_my_struct(raw, ptr.ref);
@@ -1731,31 +1704,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_my_size> api2wire_box_my_size(MySize raw) {
     final ptr = wire.new_box_my_size();
     _api_fill_to_wire_my_size(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_my_size_freezed_twin_normal>
-      api2wire_box_my_size_freezed_twin_normal(MySizeFreezedTwinNormal raw) {
-    final ptr = wire.new_box_my_size_freezed_twin_normal();
-    _api_fill_to_wire_my_size_freezed_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_my_size_freezed_twin_rust_async>
-      api2wire_box_my_size_freezed_twin_rust_async(
-          MySizeFreezedTwinRustAsync raw) {
-    final ptr = wire.new_box_my_size_freezed_twin_rust_async();
-    _api_fill_to_wire_my_size_freezed_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_my_size_freezed_twin_sync>
-      api2wire_box_my_size_freezed_twin_sync(MySizeFreezedTwinSync raw) {
-    final ptr = wire.new_box_my_size_freezed_twin_sync();
-    _api_fill_to_wire_my_size_freezed_twin_sync(raw, ptr.ref);
     return ptr;
   }
 
@@ -3260,24 +3208,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     _api_fill_to_wire_my_size(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_my_size_freezed_twin_normal(
-      MySizeFreezedTwinNormal apiObj,
-      ffi.Pointer<wire_my_size_freezed_twin_normal> wireObj) {
-    _api_fill_to_wire_my_size_freezed_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_my_size_freezed_twin_rust_async(
-      MySizeFreezedTwinRustAsync apiObj,
-      ffi.Pointer<wire_my_size_freezed_twin_rust_async> wireObj) {
-    _api_fill_to_wire_my_size_freezed_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_my_size_freezed_twin_sync(
-      MySizeFreezedTwinSync apiObj,
-      ffi.Pointer<wire_my_size_freezed_twin_sync> wireObj) {
-    _api_fill_to_wire_my_size_freezed_twin_sync(apiObj, wireObj.ref);
-  }
-
   void _api_fill_to_wire_box_autoadd_my_struct(
       MyStruct apiObj, ffi.Pointer<wire_my_struct> wireObj) {
     _api_fill_to_wire_my_struct(apiObj, wireObj.ref);
@@ -3641,24 +3571,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void _api_fill_to_wire_box_my_size(
       MySize apiObj, ffi.Pointer<wire_my_size> wireObj) {
     _api_fill_to_wire_my_size(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_my_size_freezed_twin_normal(
-      MySizeFreezedTwinNormal apiObj,
-      ffi.Pointer<wire_my_size_freezed_twin_normal> wireObj) {
-    _api_fill_to_wire_my_size_freezed_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_my_size_freezed_twin_rust_async(
-      MySizeFreezedTwinRustAsync apiObj,
-      ffi.Pointer<wire_my_size_freezed_twin_rust_async> wireObj) {
-    _api_fill_to_wire_my_size_freezed_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_my_size_freezed_twin_sync(
-      MySizeFreezedTwinSync apiObj,
-      ffi.Pointer<wire_my_size_freezed_twin_sync> wireObj) {
-    _api_fill_to_wire_my_size_freezed_twin_sync(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_speed_twin_normal(
@@ -4722,26 +4634,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   void _api_fill_to_wire_my_size(MySize apiObj, wire_my_size wireObj) {
-    wireObj.width = api2wire_i_32(apiObj.width);
-    wireObj.height = api2wire_i_32(apiObj.height);
-  }
-
-  void _api_fill_to_wire_my_size_freezed_twin_normal(
-      MySizeFreezedTwinNormal apiObj,
-      wire_my_size_freezed_twin_normal wireObj) {
-    wireObj.width = api2wire_i_32(apiObj.width);
-    wireObj.height = api2wire_i_32(apiObj.height);
-  }
-
-  void _api_fill_to_wire_my_size_freezed_twin_rust_async(
-      MySizeFreezedTwinRustAsync apiObj,
-      wire_my_size_freezed_twin_rust_async wireObj) {
-    wireObj.width = api2wire_i_32(apiObj.width);
-    wireObj.height = api2wire_i_32(apiObj.height);
-  }
-
-  void _api_fill_to_wire_my_size_freezed_twin_sync(
-      MySizeFreezedTwinSync apiObj, wire_my_size_freezed_twin_sync wireObj) {
     wireObj.width = api2wire_i_32(apiObj.width);
     wireObj.height = api2wire_i_32(apiObj.height);
   }
@@ -6821,17 +6713,6 @@ class RustLibWire implements BaseWire {
       _wire_stream_sink_throw_anyhow_twin_normalPtr
           .asFunction<void Function(int)>();
 
-  WireSyncReturn wire_sync_return_custom_struct_error_twin_normal() {
-    return _wire_sync_return_custom_struct_error_twin_normal();
-  }
-
-  late final _wire_sync_return_custom_struct_error_twin_normalPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
-          'wire_sync_return_custom_struct_error_twin_normal');
-  late final _wire_sync_return_custom_struct_error_twin_normal =
-      _wire_sync_return_custom_struct_error_twin_normalPtr
-          .asFunction<WireSyncReturn Function()>();
-
   void wire_throw_anyhow_twin_normal(
     int port_,
   ) {
@@ -7534,27 +7415,6 @@ class RustLibWire implements BaseWire {
       _wire_handle_string_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<wire_list_prim_u_8>)>();
 
-  WireSyncReturn wire_handle_struct_sync_freezed_twin_normal(
-    ffi.Pointer<wire_my_size_freezed_twin_normal> arg,
-    ffi.Pointer<wire_my_size_freezed_twin_normal> boxed,
-  ) {
-    return _wire_handle_struct_sync_freezed_twin_normal(
-      arg,
-      boxed,
-    );
-  }
-
-  late final _wire_handle_struct_sync_freezed_twin_normalPtr = _lookup<
-          ffi.NativeFunction<
-              WireSyncReturn Function(
-                  ffi.Pointer<wire_my_size_freezed_twin_normal>,
-                  ffi.Pointer<wire_my_size_freezed_twin_normal>)>>(
-      'wire_handle_struct_sync_freezed_twin_normal');
-  late final _wire_handle_struct_sync_freezed_twin_normal =
-      _wire_handle_struct_sync_freezed_twin_normalPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_my_size_freezed_twin_normal>,
-              ffi.Pointer<wire_my_size_freezed_twin_normal>)>();
-
   void wire_handle_struct_twin_normal(
     int port_,
     ffi.Pointer<wire_my_size> arg,
@@ -7893,27 +7753,6 @@ class RustLibWire implements BaseWire {
   late final _wire_handle_vec_of_opts_twin_normal =
       _wire_handle_vec_of_opts_twin_normalPtr.asFunction<
           void Function(int, ffi.Pointer<wire_opt_vecs_twin_normal>)>();
-
-  WireSyncReturn wire_sync_option_null_twin_normal() {
-    return _wire_sync_option_null_twin_normal();
-  }
-
-  late final _wire_sync_option_null_twin_normalPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
-          'wire_sync_option_null_twin_normal');
-  late final _wire_sync_option_null_twin_normal =
-      _wire_sync_option_null_twin_normalPtr
-          .asFunction<WireSyncReturn Function()>();
-
-  WireSyncReturn wire_sync_option_twin_normal() {
-    return _wire_sync_option_twin_normal();
-  }
-
-  late final _wire_sync_option_twin_normalPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
-          'wire_sync_option_twin_normal');
-  late final _wire_sync_option_twin_normal =
-      _wire_sync_option_twin_normalPtr.asFunction<WireSyncReturn Function()>();
 
   void wire_primitive_optional_types_twin_normal(
     int port_,
@@ -10454,17 +10293,6 @@ class RustLibWire implements BaseWire {
       _wire_stream_sink_throw_anyhow_twin_rust_asyncPtr
           .asFunction<void Function(int)>();
 
-  WireSyncReturn wire_sync_return_custom_struct_error_twin_rust_async() {
-    return _wire_sync_return_custom_struct_error_twin_rust_async();
-  }
-
-  late final _wire_sync_return_custom_struct_error_twin_rust_asyncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
-          'wire_sync_return_custom_struct_error_twin_rust_async');
-  late final _wire_sync_return_custom_struct_error_twin_rust_async =
-      _wire_sync_return_custom_struct_error_twin_rust_asyncPtr
-          .asFunction<WireSyncReturn Function()>();
-
   void wire_throw_anyhow_twin_rust_async(
     int port_,
   ) {
@@ -10865,17 +10693,6 @@ class RustLibWire implements BaseWire {
   late final _wire_stream_sink_throw_anyhow_twin_sync =
       _wire_stream_sink_throw_anyhow_twin_syncPtr
           .asFunction<void Function(int)>();
-
-  WireSyncReturn wire_sync_return_custom_struct_error_twin_sync() {
-    return _wire_sync_return_custom_struct_error_twin_sync();
-  }
-
-  late final _wire_sync_return_custom_struct_error_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
-          'wire_sync_return_custom_struct_error_twin_sync');
-  late final _wire_sync_return_custom_struct_error_twin_sync =
-      _wire_sync_return_custom_struct_error_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
 
   WireSyncReturn wire_throw_anyhow_twin_sync() {
     return _wire_throw_anyhow_twin_sync();
@@ -12056,28 +11873,6 @@ class RustLibWire implements BaseWire {
       _wire_handle_string_twin_rust_asyncPtr
           .asFunction<void Function(int, ffi.Pointer<wire_list_prim_u_8>)>();
 
-  WireSyncReturn wire_handle_struct_sync_freezed_twin_rust_async(
-    ffi.Pointer<wire_my_size_freezed_twin_rust_async> arg,
-    ffi.Pointer<wire_my_size_freezed_twin_rust_async> boxed,
-  ) {
-    return _wire_handle_struct_sync_freezed_twin_rust_async(
-      arg,
-      boxed,
-    );
-  }
-
-  late final _wire_handle_struct_sync_freezed_twin_rust_asyncPtr = _lookup<
-          ffi.NativeFunction<
-              WireSyncReturn Function(
-                  ffi.Pointer<wire_my_size_freezed_twin_rust_async>,
-                  ffi.Pointer<wire_my_size_freezed_twin_rust_async>)>>(
-      'wire_handle_struct_sync_freezed_twin_rust_async');
-  late final _wire_handle_struct_sync_freezed_twin_rust_async =
-      _wire_handle_struct_sync_freezed_twin_rust_asyncPtr.asFunction<
-          WireSyncReturn Function(
-              ffi.Pointer<wire_my_size_freezed_twin_rust_async>,
-              ffi.Pointer<wire_my_size_freezed_twin_rust_async>)>();
-
   void wire_handle_struct_twin_rust_async(
     int port_,
     ffi.Pointer<wire_my_size> arg,
@@ -12237,27 +12032,6 @@ class RustLibWire implements BaseWire {
       'wire_handle_string_twin_sync');
   late final _wire_handle_string_twin_sync = _wire_handle_string_twin_syncPtr
       .asFunction<WireSyncReturn Function(ffi.Pointer<wire_list_prim_u_8>)>();
-
-  WireSyncReturn wire_handle_struct_sync_freezed_twin_sync(
-    ffi.Pointer<wire_my_size_freezed_twin_sync> arg,
-    ffi.Pointer<wire_my_size_freezed_twin_sync> boxed,
-  ) {
-    return _wire_handle_struct_sync_freezed_twin_sync(
-      arg,
-      boxed,
-    );
-  }
-
-  late final _wire_handle_struct_sync_freezed_twin_syncPtr = _lookup<
-          ffi.NativeFunction<
-              WireSyncReturn Function(
-                  ffi.Pointer<wire_my_size_freezed_twin_sync>,
-                  ffi.Pointer<wire_my_size_freezed_twin_sync>)>>(
-      'wire_handle_struct_sync_freezed_twin_sync');
-  late final _wire_handle_struct_sync_freezed_twin_sync =
-      _wire_handle_struct_sync_freezed_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_my_size_freezed_twin_sync>,
-              ffi.Pointer<wire_my_size_freezed_twin_sync>)>();
 
   WireSyncReturn wire_handle_struct_twin_sync(
     ffi.Pointer<wire_my_size> arg,
@@ -13314,28 +13088,6 @@ class RustLibWire implements BaseWire {
       _wire_handle_vec_of_opts_twin_rust_asyncPtr.asFunction<
           void Function(int, ffi.Pointer<wire_opt_vecs_twin_rust_async>)>();
 
-  WireSyncReturn wire_sync_option_null_twin_rust_async() {
-    return _wire_sync_option_null_twin_rust_async();
-  }
-
-  late final _wire_sync_option_null_twin_rust_asyncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
-          'wire_sync_option_null_twin_rust_async');
-  late final _wire_sync_option_null_twin_rust_async =
-      _wire_sync_option_null_twin_rust_asyncPtr
-          .asFunction<WireSyncReturn Function()>();
-
-  WireSyncReturn wire_sync_option_twin_rust_async() {
-    return _wire_sync_option_twin_rust_async();
-  }
-
-  late final _wire_sync_option_twin_rust_asyncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
-          'wire_sync_option_twin_rust_async');
-  late final _wire_sync_option_twin_rust_async =
-      _wire_sync_option_twin_rust_asyncPtr
-          .asFunction<WireSyncReturn Function()>();
-
   WireSyncReturn wire_handle_increment_boxed_optional_twin_sync(
     ffi.Pointer<ffi.Double> opt,
   ) {
@@ -13459,27 +13211,6 @@ class RustLibWire implements BaseWire {
   late final _wire_handle_vec_of_opts_twin_sync =
       _wire_handle_vec_of_opts_twin_syncPtr.asFunction<
           WireSyncReturn Function(ffi.Pointer<wire_opt_vecs_twin_sync>)>();
-
-  WireSyncReturn wire_sync_option_null_twin_sync() {
-    return _wire_sync_option_null_twin_sync();
-  }
-
-  late final _wire_sync_option_null_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
-          'wire_sync_option_null_twin_sync');
-  late final _wire_sync_option_null_twin_sync =
-      _wire_sync_option_null_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
-
-  WireSyncReturn wire_sync_option_twin_sync() {
-    return _wire_sync_option_twin_sync();
-  }
-
-  late final _wire_sync_option_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
-          'wire_sync_option_twin_sync');
-  late final _wire_sync_option_twin_sync =
-      _wire_sync_option_twin_syncPtr.asFunction<WireSyncReturn Function()>();
 
   void wire_example_primitive_type_bool_twin_normal(
     int port_,
@@ -17882,45 +17613,6 @@ class RustLibWire implements BaseWire {
   late final _new_box_autoadd_my_size = _new_box_autoadd_my_sizePtr
       .asFunction<ffi.Pointer<wire_my_size> Function()>();
 
-  ffi.Pointer<wire_my_size_freezed_twin_normal>
-      new_box_autoadd_my_size_freezed_twin_normal() {
-    return _new_box_autoadd_my_size_freezed_twin_normal();
-  }
-
-  late final _new_box_autoadd_my_size_freezed_twin_normalPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<wire_my_size_freezed_twin_normal>
-              Function()>>('new_box_autoadd_my_size_freezed_twin_normal');
-  late final _new_box_autoadd_my_size_freezed_twin_normal =
-      _new_box_autoadd_my_size_freezed_twin_normalPtr.asFunction<
-          ffi.Pointer<wire_my_size_freezed_twin_normal> Function()>();
-
-  ffi.Pointer<wire_my_size_freezed_twin_rust_async>
-      new_box_autoadd_my_size_freezed_twin_rust_async() {
-    return _new_box_autoadd_my_size_freezed_twin_rust_async();
-  }
-
-  late final _new_box_autoadd_my_size_freezed_twin_rust_asyncPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<wire_my_size_freezed_twin_rust_async>
-              Function()>>('new_box_autoadd_my_size_freezed_twin_rust_async');
-  late final _new_box_autoadd_my_size_freezed_twin_rust_async =
-      _new_box_autoadd_my_size_freezed_twin_rust_asyncPtr.asFunction<
-          ffi.Pointer<wire_my_size_freezed_twin_rust_async> Function()>();
-
-  ffi.Pointer<wire_my_size_freezed_twin_sync>
-      new_box_autoadd_my_size_freezed_twin_sync() {
-    return _new_box_autoadd_my_size_freezed_twin_sync();
-  }
-
-  late final _new_box_autoadd_my_size_freezed_twin_syncPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<wire_my_size_freezed_twin_sync>
-              Function()>>('new_box_autoadd_my_size_freezed_twin_sync');
-  late final _new_box_autoadd_my_size_freezed_twin_sync =
-      _new_box_autoadd_my_size_freezed_twin_syncPtr
-          .asFunction<ffi.Pointer<wire_my_size_freezed_twin_sync> Function()>();
-
   ffi.Pointer<wire_my_struct> new_box_autoadd_my_struct() {
     return _new_box_autoadd_my_struct();
   }
@@ -18918,45 +18610,6 @@ class RustLibWire implements BaseWire {
           'new_box_my_size');
   late final _new_box_my_size =
       _new_box_my_sizePtr.asFunction<ffi.Pointer<wire_my_size> Function()>();
-
-  ffi.Pointer<wire_my_size_freezed_twin_normal>
-      new_box_my_size_freezed_twin_normal() {
-    return _new_box_my_size_freezed_twin_normal();
-  }
-
-  late final _new_box_my_size_freezed_twin_normalPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<wire_my_size_freezed_twin_normal>
-              Function()>>('new_box_my_size_freezed_twin_normal');
-  late final _new_box_my_size_freezed_twin_normal =
-      _new_box_my_size_freezed_twin_normalPtr.asFunction<
-          ffi.Pointer<wire_my_size_freezed_twin_normal> Function()>();
-
-  ffi.Pointer<wire_my_size_freezed_twin_rust_async>
-      new_box_my_size_freezed_twin_rust_async() {
-    return _new_box_my_size_freezed_twin_rust_async();
-  }
-
-  late final _new_box_my_size_freezed_twin_rust_asyncPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<wire_my_size_freezed_twin_rust_async>
-              Function()>>('new_box_my_size_freezed_twin_rust_async');
-  late final _new_box_my_size_freezed_twin_rust_async =
-      _new_box_my_size_freezed_twin_rust_asyncPtr.asFunction<
-          ffi.Pointer<wire_my_size_freezed_twin_rust_async> Function()>();
-
-  ffi.Pointer<wire_my_size_freezed_twin_sync>
-      new_box_my_size_freezed_twin_sync() {
-    return _new_box_my_size_freezed_twin_sync();
-  }
-
-  late final _new_box_my_size_freezed_twin_syncPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<wire_my_size_freezed_twin_sync>
-              Function()>>('new_box_my_size_freezed_twin_sync');
-  late final _new_box_my_size_freezed_twin_sync =
-      _new_box_my_size_freezed_twin_syncPtr
-          .asFunction<ffi.Pointer<wire_my_size_freezed_twin_sync> Function()>();
 
   ffi.Pointer<wire_speed_twin_normal> new_box_speed_twin_normal() {
     return _new_box_speed_twin_normal();
@@ -21531,14 +21184,6 @@ final class wire_my_nested_struct_twin_normal extends ffi.Struct {
   external int weekday;
 }
 
-final class wire_my_size_freezed_twin_normal extends ffi.Struct {
-  @ffi.Int32()
-  external int width;
-
-  @ffi.Int32()
-  external int height;
-}
-
 final class wire_my_size extends ffi.Struct {
   @ffi.Int32()
   external int width;
@@ -22443,14 +22088,6 @@ final class wire_my_nested_struct_twin_rust_async extends ffi.Struct {
   external int weekday;
 }
 
-final class wire_my_size_freezed_twin_rust_async extends ffi.Struct {
-  @ffi.Int32()
-  external int width;
-
-  @ffi.Int32()
-  external int height;
-}
-
 final class wire_list_weekdays_twin_rust_async extends ffi.Struct {
   external ffi.Pointer<ffi.Int32> ptr;
 
@@ -22536,14 +22173,6 @@ final class wire_my_nested_struct_twin_sync extends ffi.Struct {
 
   @ffi.Int32()
   external int weekday;
-}
-
-final class wire_my_size_freezed_twin_sync extends ffi.Struct {
-  @ffi.Int32()
-  external int width;
-
-  @ffi.Int32()
-  external int height;
 }
 
 final class wire_list_weekdays_twin_sync extends ffi.Struct {

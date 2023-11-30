@@ -160,12 +160,13 @@ pub async fn handle_option_box_arguments_twin_rust_async(
     )
 }
 
-#[frb(sync)]
-pub async fn sync_option_twin_rust_async() -> anyhow::Result<Option<String>> {
-    Ok(Some("42".to_owned()))
-}
-
-#[frb(sync)]
-pub async fn sync_option_null_twin_rust_async() -> anyhow::Result<Option<String>> {
-    Ok(None)
-}
+// TODO move it to a non-auto-generated test
+// #[frb(sync)]
+// pub async fn sync_option_twin_rust_async() -> anyhow::Result<Option<String>> {
+//     Ok(Some("42".to_owned()))
+// }
+//
+// #[frb(sync)]
+// pub async fn sync_option_null_twin_rust_async() -> anyhow::Result<Option<String>> {
+//     Ok(None)
+// }

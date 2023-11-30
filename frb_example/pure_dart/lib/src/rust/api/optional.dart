@@ -48,12 +48,6 @@ Future<String> handleOptionBoxArgumentsTwinNormal(
         structbox: structbox,
         hint: hint);
 
-String? syncOptionTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.syncOptionTwinNormal(hint: hint);
-
-String? syncOptionNullTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.syncOptionNullTwinNormal(hint: hint);
-
 class AttributeTwinNormal {
   final String key;
   final String value;

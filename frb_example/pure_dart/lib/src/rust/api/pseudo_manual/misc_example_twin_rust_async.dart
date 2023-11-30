@@ -42,13 +42,6 @@ Future<MySize> handleStructTwinRustAsync(
     RustLib.instance.api
         .handleStructTwinRustAsync(arg: arg, boxed: boxed, hint: hint);
 
-MySizeFreezedTwinRustAsync handleStructSyncFreezedTwinRustAsync(
-        {required MySizeFreezedTwinRustAsync arg,
-        required MySizeFreezedTwinRustAsync boxed,
-        dynamic hint}) =>
-    RustLib.instance.api.handleStructSyncFreezedTwinRustAsync(
-        arg: arg, boxed: boxed, hint: hint);
-
 class ATwinRustAsync {
   final String a;
 
@@ -159,14 +152,6 @@ class MyNestedStructTwinRustAsync {
           runtimeType == other.runtimeType &&
           treeNode == other.treeNode &&
           weekday == other.weekday;
-}
-
-@freezed
-class MySizeFreezedTwinRustAsync with _$MySizeFreezedTwinRustAsync {
-  const factory MySizeFreezedTwinRustAsync({
-    required int width,
-    required int height,
-  }) = _MySizeFreezedTwinRustAsync;
 }
 
 class MyTreeNodeTwinRustAsync {

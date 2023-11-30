@@ -40,13 +40,6 @@ MySize handleStructTwinSync(
     RustLib.instance.api
         .handleStructTwinSync(arg: arg, boxed: boxed, hint: hint);
 
-MySizeFreezedTwinSync handleStructSyncFreezedTwinSync(
-        {required MySizeFreezedTwinSync arg,
-        required MySizeFreezedTwinSync boxed,
-        dynamic hint}) =>
-    RustLib.instance.api
-        .handleStructSyncFreezedTwinSync(arg: arg, boxed: boxed, hint: hint);
-
 class ATwinSync {
   final String a;
 
@@ -151,14 +144,6 @@ class MyNestedStructTwinSync {
           runtimeType == other.runtimeType &&
           treeNode == other.treeNode &&
           weekday == other.weekday;
-}
-
-@freezed
-class MySizeFreezedTwinSync with _$MySizeFreezedTwinSync {
-  const factory MySizeFreezedTwinSync({
-    required int width,
-    required int height,
-  }) = _MySizeFreezedTwinSync;
 }
 
 class MyTreeNodeTwinSync {
