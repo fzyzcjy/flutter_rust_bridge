@@ -5,6 +5,7 @@ use crate::rust2dart::{BoxIntoDart, IntoIntoDart, Rust2Dart, Rust2DartAction, Ta
 use crate::support::WireSyncReturn;
 use crate::{spawn, DartAbi};
 use std::any::Any;
+use std::future::Future;
 use std::panic;
 use std::panic::{RefUnwindSafe, UnwindSafe};
 
@@ -61,6 +62,21 @@ pub trait Handler {
         TaskRet: IntoIntoDart<D>,
         D: IntoDart,
         Er: IntoDart + 'static;
+
+    fn wrap_async<PrepareFn, TaskFn, TaskRet, TaskRetFut, D, Er>(
+        &self,
+        wrap_info: WrapInfo,
+        prepare: PrepareFn,
+    ) where
+        PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
+        TaskFn: FnOnce(TaskCallback) -> TaskRetFut + Send + UnwindSafe + 'static,
+        TaskRet: IntoIntoDart<D>,
+        TaskRetFut: Future<Output = Result<TaskRet, Er>>,
+        D: IntoDart,
+        Er: IntoDart + 'static,
+    {
+        todo!()
+    }
 }
 
 /// The simple handler uses a simple thread pool to execute tasks.

@@ -212,7 +212,7 @@ fn wire_func_async_simple_add_impl(
     a: impl Wire2Api<i32> + core::panic::UnwindSafe,
     b: impl Wire2Api<i32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_, _, _, i32, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_, _, _, _, i32, _>(
         flutter_rust_bridge::WrapInfo {
             debug_name: "func_async_simple_add",
             port: Some(port_),
@@ -228,7 +228,7 @@ fn wire_func_async_simple_add_impl(
     )
 }
 fn wire_func_async_void_impl(port_: flutter_rust_bridge::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_, _, _, _, (), _>(
         flutter_rust_bridge::WrapInfo {
             debug_name: "func_async_void",
             port: Some(port_),
