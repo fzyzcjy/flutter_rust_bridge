@@ -182,13 +182,6 @@ pub fn return_custom_struct_error_twin_normal() -> Result<(), CustomStructErrorA
     })
 }
 
-#[flutter_rust_bridge::frb(sync)]
-pub fn sync_return_custom_struct_error_twin_normal() -> Result<(), CustomStructErrorTwinNormal> {
-    Err(CustomStructErrorTwinNormal {
-        a: "error message".to_string(),
-    })
-}
-
 pub fn return_custom_struct_ok_twin_normal() -> Result<u32, CustomStructErrorAnotherTwinNormal> {
     Ok(3)
 }

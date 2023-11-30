@@ -202,14 +202,6 @@ pub fn return_custom_struct_error_twin_sync() -> Result<(), CustomStructErrorAno
 }
 
 #[flutter_rust_bridge::frb(sync)]
-#[flutter_rust_bridge::frb(sync)]
-pub fn sync_return_custom_struct_error_twin_sync() -> Result<(), CustomStructErrorTwinSync> {
-    Err(CustomStructErrorTwinSync {
-        a: "error message".to_string(),
-    })
-}
-
-#[flutter_rust_bridge::frb(sync)]
 pub fn return_custom_struct_ok_twin_sync() -> Result<u32, CustomStructErrorAnotherTwinSync> {
     Ok(3)
 }
