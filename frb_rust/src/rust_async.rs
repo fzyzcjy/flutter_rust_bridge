@@ -1,10 +1,9 @@
 // TODO move this file etc
 
+use tokio::runtime::Runtime;
+
 lazy_static! {
-    static ref ASYNC_RUNTIME: Mutex<ThreadPool> = Mutex::new(ThreadPool::with_name(
-        "frb_workerpool".into(),
-        get_worker_count()
-    ));
+    static ref ASYNC_RUNTIME: Mutex<Runtime> = Runtime::new().unwrap();
 }
 
 pub(crate) fn init() {
