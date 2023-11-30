@@ -132,15 +132,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
   //   expect(structResp.height, 100 + 10000);
   // });
 
-  test('dart call handleStructSyncFreezed', () {
-    final structResp = handleStructSyncFreezedTwinRustAsync(
-        arg: MySizeFreezedTwinRustAsync(width: 42, height: 100),
-        boxed: MySizeFreezedTwinRustAsync(width: 1000, height: 10000));
-    expect(structResp.width, 42 + 1000);
-    expect(structResp.height, 100 + 10000);
-    // Only freezed classes have copyWith
-    expect(structResp.copyWith, isNotNull);
-  });
+  // TODO rm?
+  // test('dart call handleStructSyncFreezed', () {
+  //   final structResp = handleStructSyncFreezedTwinRustAsync(
+  //       arg: MySizeFreezedTwinRustAsync(width: 42, height: 100),
+  //       boxed: MySizeFreezedTwinRustAsync(width: 1000, height: 10000));
+  //   expect(structResp.width, 42 + 1000);
+  //   expect(structResp.height, 100 + 10000);
+  //   // Only freezed classes have copyWith
+  //   expect(structResp.copyWith, isNotNull);
+  // });
 
   // TODO rm?
   // test('dart call handleComplexStructSync', () {

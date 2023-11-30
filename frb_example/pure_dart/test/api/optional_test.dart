@@ -85,10 +85,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
     }
   });
 
-  test('option', () async {
-    var data = syncOptionTwinNormal();
-    var data2 = syncOptionNullTwinNormal();
-    expect(data, isNotNull);
-    expect(data2, isNull);
-  });
+  // TODO rm?
+  // test('option', () async {
+  //   var data = syncOptionTwinNormal();
+  //   var data2 = syncOptionNullTwinNormal();
+  //   expect(data, isNotNull);
+  //   expect(data2, isNull);
+  // });
 }

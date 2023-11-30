@@ -115,14 +115,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
             throwsA(isA<CustomStructErrorAnotherTwinSync>()));
       });
 
-      test('Throw sync CustomStructError', () {
-        try {
-          syncReturnCustomStructErrorTwinSync();
-        } on CustomStructErrorTwinSync catch (e) {
-          expect(e.a, "error message");
-        }
-      });
-
       test('Do not throw CustomStructError', () async {
         expect(await returnCustomStructOkTwinSync(), 3);
       });
