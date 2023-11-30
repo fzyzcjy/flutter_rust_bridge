@@ -8,11 +8,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
   // do not care too much about the function results, since we are
   // considering the `code comments` feature here, instead of actual function execution logic.
   test('can call the functions', () async {
-    functionWithCommentsSlashStarStarTwinNormal();
-    functionWithCommentsTripleSlashMultiLineTwinNormal();
-    functionWithCommentsTripleSlashSingleLineTwinNormal();
-    StructWithCommentsTwinNormal(fieldWithComments: 42)
+    await functionWithCommentsSlashStarStarTwinNormal();
+    await functionWithCommentsTripleSlashMultiLineTwinNormal();
+    await functionWithCommentsTripleSlashSingleLineTwinNormal();
+    await StructWithCommentsTwinNormal(fieldWithComments: 42)
         .instanceMethodTwinNormal();
-    StructWithCommentsTwinNormal.staticMethodTwinNormal();
+    await StructWithCommentsTwinNormal.staticMethodTwinNormal();
   });
 }
