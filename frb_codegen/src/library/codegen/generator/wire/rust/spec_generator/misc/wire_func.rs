@@ -192,12 +192,19 @@ fn generate_handler_func_name(
     match func.mode {
         IrFuncMode::Sync => "wrap_sync".to_owned(),
         IrFuncMode::Normal | IrFuncMode::Stream { .. } => {
+            let name = if func.rust_async {
+                "wrap_async"
+            } else {
+                "wrap"
+            };
+
             let output = if matches!(func.mode, IrFuncMode::Stream { .. }) {
                 "()".to_owned()
             } else {
                 WireRustGenerator::new(func.output.clone(), context).intodart_type(ir_pack)
             };
-            format!("wrap::<_,_,_,{output},_>")
+
+            format!("{name}::<_,_,_,{output},_>")
         }
     }
 }
