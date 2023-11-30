@@ -7,7 +7,6 @@ use itertools::Itertools;
 use log::{debug, warn};
 use serde_yaml::Value;
 use std::ffi::OsStr;
-use std::os::unix::fs::PermissionsExt;
 use std::path::Path;
 use std::{env, fs};
 
@@ -40,13 +39,21 @@ pub fn integrate(enable_integration_test: bool) -> Result<()> {
 
 fn modify_permissions(dart_root: &Path) -> Result<()> {
     let dir_cargokit = dart_root.join("rust_builder").join("cargokit");
-    set_permission_executable(&dir_cargokit.join("build_pod.sh"))?;
-    set_permission_executable(&dir_cargokit.join("run_build_tool.sh"))?;
-    set_permission_executable(&dir_cargokit.join("run_build_tool.cmd"))?;
+
+    #[cfg(not(windows))]
+    {
+        set_permission_executable(&dir_cargokit.join("build_pod.sh"))?;
+        set_permission_executable(&dir_cargokit.join("run_build_tool.sh"))?;
+        set_permission_executable(&dir_cargokit.join("run_build_tool.cmd"))?;
+    }
+
     Ok(())
 }
 
+#[cfg(not(windows))]
 fn set_permission_executable(path: &Path) -> Result<()> {
+    use std::os::unix::fs::PermissionsExt;
+
     let mut perms = fs::metadata(path)?.permissions();
     perms.set_mode(0o755);
     fs::set_permissions(path, perms)?;
