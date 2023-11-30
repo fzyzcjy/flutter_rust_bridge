@@ -6,16 +6,22 @@ import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/comment_twin_sy
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
+import '../../test_utils.dart';
+
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   // do not care too much about the function results, since we are
   // considering the `code comments` feature here, instead of actual function execution logic.
   test('can call the functions', () async {
-    functionWithCommentsSlashStarStarTwinSync();
-    functionWithCommentsTripleSlashMultiLineTwinSync();
-    functionWithCommentsTripleSlashSingleLineTwinSync();
-    StructWithCommentsTwinSync(fieldWithComments: 42).instanceMethodTwinSync();
-    StructWithCommentsTwinSync.staticMethodTwinSync();
+    await futurizeVoidTwinSync(functionWithCommentsSlashStarStarTwinSync());
+    await futurizeVoidTwinSync(
+        functionWithCommentsTripleSlashMultiLineTwinSync());
+    await futurizeVoidTwinSync(
+        functionWithCommentsTripleSlashSingleLineTwinSync());
+    await futurizeVoidTwinSync(StructWithCommentsTwinSync(fieldWithComments: 42)
+        .instanceMethodTwinSync());
+    await futurizeVoidTwinSync(
+        StructWithCommentsTwinSync.staticMethodTwinSync());
   });
 }
