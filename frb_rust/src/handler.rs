@@ -179,7 +179,17 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         D: IntoDart,
         Er: IntoDart + 'static,
     {
-        todo!()
+        // TODO temporary copy-and-paste, should merge with case above later
+        let _ = panic::catch_unwind(move || {
+            let wrap_info2 = wrap_info.clone();
+            if let Err(error) = panic::catch_unwind(move || {
+                let task = prepare();
+                self.executor.execute_async(wrap_info2, task);
+            }) {
+                self.error_handler
+                    .handle_error(wrap_info.port.unwrap(), Error::Panic(error));
+            }
+        });
     }
 }
 
@@ -206,6 +216,14 @@ pub trait Executor: RefUnwindSafe {
     where
         SyncTaskFn: FnOnce() -> Result<TaskRet, Er> + UnwindSafe,
         TaskRet: IntoIntoDart<D>,
+        D: IntoDart,
+        Er: IntoDart + 'static;
+
+    fn execute_async<TaskFn, TaskRet, TaskRetFut, D, Er>(&self, wrap_info: WrapInfo, task: TaskFn)
+    where
+        TaskFn: FnOnce(TaskCallback) -> TaskRetFut + Send + UnwindSafe + 'static,
+        TaskRet: IntoIntoDart<D>,
+        TaskRetFut: Future<Output = Result<TaskRet, Er>>,
         D: IntoDart,
         Er: IntoDart + 'static;
 }
@@ -285,6 +303,17 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
         Er: IntoDart,
     {
         sync_task()
+    }
+
+    fn execute_async<TaskFn, TaskRet, TaskRetFut, D, Er>(&self, wrap_info: WrapInfo, task: TaskFn)
+    where
+        TaskFn: FnOnce(TaskCallback) -> TaskRetFut + Send + UnwindSafe + 'static,
+        TaskRet: IntoIntoDart<D>,
+        TaskRetFut: Future<Output = Result<TaskRet, Er>>,
+        D: IntoDart,
+        Er: IntoDart + 'static,
+    {
+        todo!()
     }
 }
 
