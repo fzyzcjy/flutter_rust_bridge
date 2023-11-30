@@ -32,10 +32,6 @@ import 'api/primitive_misc_test.dart' as primitive_misc_test;
 import 'api/pseudo_manual/array_twin_rust_async_test.dart'
     as array_twin_rust_async_test;
 import 'api/pseudo_manual/array_twin_sync_test.dart' as array_twin_sync_test;
-import 'api/pseudo_manual/async_misc_twin_rust_async_test.dart'
-    as async_misc_twin_rust_async_test;
-import 'api/pseudo_manual/async_misc_twin_sync_test.dart'
-    as async_misc_twin_sync_test;
 import 'api/pseudo_manual/attribute_twin_rust_async_test.dart'
     as attribute_twin_rust_async_test;
 import 'api/pseudo_manual/attribute_twin_sync_test.dart'
@@ -52,8 +48,6 @@ import 'api/pseudo_manual/dart_dynamic_twin_rust_async_test.dart'
     as dart_dynamic_twin_rust_async_test;
 import 'api/pseudo_manual/dart_dynamic_twin_sync_test.dart'
     as dart_dynamic_twin_sync_test;
-import 'api/pseudo_manual/dart_opaque_sync_twin_rust_async_test.dart'
-    as dart_opaque_sync_twin_rust_async_test;
 import 'api/pseudo_manual/dart_opaque_twin_rust_async_test.dart'
     as dart_opaque_twin_rust_async_test;
 import 'api/pseudo_manual/dart_opaque_twin_sync_test.dart'
@@ -128,8 +122,6 @@ import 'api/pseudo_manual/raw_string_twin_rust_async_test.dart'
     as raw_string_twin_rust_async_test;
 import 'api/pseudo_manual/raw_string_twin_sync_test.dart'
     as raw_string_twin_sync_test;
-import 'api/pseudo_manual/rust_opaque_sync_twin_rust_async_test.dart'
-    as rust_opaque_sync_twin_rust_async_test;
 import 'api/pseudo_manual/rust_opaque_twin_rust_async_test.dart'
     as rust_opaque_twin_rust_async_test;
 import 'api/pseudo_manual/rust_opaque_twin_sync_test.dart'
@@ -206,8 +198,6 @@ Future<void> callFileEntrypoints() async {
   await primitive_misc_test.main(skipRustLibInit: true);
   await array_twin_rust_async_test.main(skipRustLibInit: true);
   await array_twin_sync_test.main(skipRustLibInit: true);
-  await async_misc_twin_rust_async_test.main(skipRustLibInit: true);
-  await async_misc_twin_sync_test.main(skipRustLibInit: true);
   await attribute_twin_rust_async_test.main(skipRustLibInit: true);
   await attribute_twin_sync_test.main(skipRustLibInit: true);
   await chrono_type_twin_rust_async_test.main(skipRustLibInit: true);
@@ -216,7 +206,6 @@ Future<void> callFileEntrypoints() async {
   await comment_twin_sync_test.main(skipRustLibInit: true);
   await dart_dynamic_twin_rust_async_test.main(skipRustLibInit: true);
   await dart_dynamic_twin_sync_test.main(skipRustLibInit: true);
-  await dart_opaque_sync_twin_rust_async_test.main(skipRustLibInit: true);
   await dart_opaque_twin_rust_async_test.main(skipRustLibInit: true);
   await dart_opaque_twin_sync_test.main(skipRustLibInit: true);
   await enumeration_twin_rust_async_test.main(skipRustLibInit: true);
@@ -257,7 +246,6 @@ Future<void> callFileEntrypoints() async {
   await primitive_twin_sync_test.main(skipRustLibInit: true);
   await raw_string_twin_rust_async_test.main(skipRustLibInit: true);
   await raw_string_twin_sync_test.main(skipRustLibInit: true);
-  await rust_opaque_sync_twin_rust_async_test.main(skipRustLibInit: true);
   await rust_opaque_twin_rust_async_test.main(skipRustLibInit: true);
   await rust_opaque_twin_sync_test.main(skipRustLibInit: true);
   await simple_twin_rust_async_test.main(skipRustLibInit: true);
