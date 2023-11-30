@@ -6,6 +6,8 @@ pub mod comment;
 pub mod dart_dynamic;
 pub mod dart_opaque;
 pub mod dart_opaque_sync;
+// This is *deliberately* not a `pub mod`
+mod deliberately_not_pub;
 pub mod enumeration;
 pub mod event_listener;
 pub mod exception;
