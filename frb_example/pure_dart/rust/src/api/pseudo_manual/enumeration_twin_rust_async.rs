@@ -3,6 +3,7 @@
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
 use crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync;
+use crate::frb_generated::KitchenSinkTwinRustAsyncKind;
 use flutter_rust_bridge::{frb, ZeroCopyBuffer};
 use log::info;
 
@@ -164,10 +165,7 @@ pub async fn handle_enum_struct_twin_rust_async(
             float64: float64 + 1.,
             boolean: !boolean,
         },
-        Nested(val, nested) => Nested(
-            inc(val),
-            Box::new(handle_enum_struct_twin_rust_async(*nested)),
-        ),
+        Nested(val, nested) => Nested(inc(val), Box::new(KitchenSinkTwinRustAsync::Empty)),
         Optional(a, b) => Optional(a.map(inc), b.map(inc)),
         Buffer(ZeroCopyBuffer(mut buf)) => {
             buf.push(1);

@@ -3,6 +3,7 @@
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
 use crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync;
+use crate::frb_generated::KitchenSinkTwinSyncKind;
 use flutter_rust_bridge::{frb, ZeroCopyBuffer};
 use log::info;
 
@@ -165,7 +166,7 @@ pub fn handle_enum_struct_twin_sync(val: KitchenSinkTwinSync) -> KitchenSinkTwin
             float64: float64 + 1.,
             boolean: !boolean,
         },
-        Nested(val, nested) => Nested(inc(val), Box::new(handle_enum_struct_twin_sync(*nested))),
+        Nested(val, nested) => Nested(inc(val), Box::new(KitchenSinkTwinSync::Empty)),
         Optional(a, b) => Optional(a.map(inc), b.map(inc)),
         Buffer(ZeroCopyBuffer(mut buf)) => {
             buf.push(1);
