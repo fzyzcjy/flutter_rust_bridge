@@ -3,10 +3,12 @@
 import 'dart:convert';
 import 'dart:ffi';
 import 'dart:io';
+import 'dart:isolate';
 import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:benchmark_harness/benchmark_harness.dart';
+import 'package:flutter_rust_bridge/src/utils/single_complete_port.dart';
 import 'package:frb_example_pure_dart/src/rust/api/benchmark_api.dart';
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/benchmark_api_twin_sync.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
@@ -30,6 +32,10 @@ void main(List<String> args) {
     InputBytesAsyncBenchmark(len, emitter: emitter).report();
     InputBytesSyncBenchmark(len, emitter: emitter).report();
     InputBytesSyncRawBenchmark(len, emitter: emitter).report();
+
+    OutputBytesAsyncBenchmark(len, emitter: emitter).report();
+    OutputBytesSyncBenchmark(len, emitter: emitter).report();
+    OutputBytesAsyncRawBenchmark(len, emitter: emitter).report();
   }
 
   final output = jsonEncode(emitter.items);
@@ -117,5 +123,44 @@ class InputBytesSyncRawBenchmark extends EnhancedBenchmarkBase {
     raw.ptr.asTypedList(raw.len).setAll(0, bytes);
     final ans = _wire.benchmark_raw_input_bytes(raw);
     if (ans != 0) throw Exception();
+  }
+}
+
+class OutputBytesAsyncBenchmark extends AsyncBenchmarkBase {
+  final int len;
+
+  OutputBytesAsyncBenchmark(this.len, {super.emitter})
+      : super('OutputBytesAsync_Len$len');
+
+  @override
+  Future<void> run() async => benchmarkOutputBytesTwinNormal(size: len);
+}
+
+class OutputBytesSyncBenchmark extends EnhancedBenchmarkBase {
+  final int len;
+
+  OutputBytesSyncBenchmark(this.len, {super.emitter})
+      : super('OutputBytesSync_Len$len');
+
+  @override
+  void run() => benchmarkOutputBytesTwinSync(size: len);
+}
+
+class OutputBytesAsyncRawBenchmark extends AsyncBenchmarkBase {
+  final receivePort = RawReceivePort();
+  late final sendPort = receivePort.sendPort.nativePort;
+  final int len;
+
+  OutputBytesAsyncRawBenchmark(this.len, {super.emitter})
+      : super('OutputBytesAsyncRaw_Len$len') {
+    receivePort.handler = (dynamic response) {
+      TODO;
+    };
+  }
+
+  @override
+  Future<void> run() async {
+    _wire.benchmark_raw_output_bytes(sendPort, len);
+    await TODO;
   }
 }
