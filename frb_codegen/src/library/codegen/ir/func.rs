@@ -12,6 +12,7 @@ pub struct IrFunc {
     pub error_output: Option<IrType>,
     pub owner: IrFuncOwnerInfo,
     pub mode: IrFuncMode,
+    pub rust_async: bool,
     pub comments: Vec<IrComment>,
     // Currently, we use serde only for tests. Since lineno can be unstable, we skip this field for comparison
     #[serde(skip_serializing)]

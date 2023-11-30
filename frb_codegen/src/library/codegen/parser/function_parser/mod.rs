@@ -82,6 +82,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             error_output: info.error_output,
             owner,
             mode,
+            rust_async: sig.asyncness.is_some(),
             comments: parse_comments(func.attrs()),
             src_lineno,
         }))
