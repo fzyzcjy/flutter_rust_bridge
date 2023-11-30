@@ -1,8 +1,6 @@
 #![allow(non_camel_case_types)]
 
-use crate::api::benchmark_api::{
-    benchmark_input_bytes_twin_normal,
-};
+use crate::api::benchmark_api::benchmark_input_bytes_twin_normal;
 use byteorder::{BigEndian, WriteBytesExt};
 use flutter_rust_bridge::support::{new_leak_vec_ptr, vec_from_leak_ptr};
 use flutter_rust_bridge::{Channel, IntoDart, MessagePort, ZeroCopyBuffer};
