@@ -109,7 +109,7 @@ fn replace_file_content(raw: &[u8], package_name: &str) -> Vec<u8> {
 
 fn filter_file(path: &Path, enable_integration_test: bool) -> bool {
     if path.iter().contains(&OsStr::new("cargokit")) {
-        return !vec![".git", ".github", "docs", "test"].contains(&file_name(path));
+        return ![".git", ".github", "docs", "test"].contains(&file_name(path));
     }
 
     if !enable_integration_test && path.iter().contains(&OsStr::new("integration_test")) {
@@ -120,7 +120,7 @@ fn filter_file(path: &Path, enable_integration_test: bool) -> bool {
 }
 
 fn compute_cargokit_comments(path: &Path) -> Option<String> {
-    if vec![".gitignore"].contains(&file_name(path)) {
+    if [".gitignore"].contains(&file_name(path)) {
         return None;
     }
 
