@@ -1,6 +1,14 @@
+// ignore_for_file: invalid_use_of_internal_member, invalid_use_of_protected_member
+
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
+
+import 'package:benchmark_harness/benchmark_harness.dart';
+import 'package:frb_example_pure_dart/src/rust/api/benchmark_api.dart';
+import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/benchmark_api_twin_sync.dart';
+import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
+import 'package:frb_example_pure_dart/src/rust/frb_generated.io.dart';
 
 import 'benchmark_utils.dart';
 
@@ -11,6 +19,10 @@ void main(List<String> args) {
   ComputePrimeBenchmark(90000049, emitter: emitter).report();
   ComputePrimeBenchmark(9000000001, emitter: emitter).report();
   ComputePrimeBenchmark(900000000013, emitter: emitter).report();
+
+  VoidAsyncBenchmark(emitter: emitter).report();
+  VoidSyncBenchmark(emitter: emitter).report();
+  VoidSyncRawBenchmark(emitter: emitter).report();
 
   final output = jsonEncode(emitter.items);
   print('Write reports to $pathOutput with output=$output');
@@ -30,12 +42,6 @@ class ComputePrimeBenchmark extends EnhancedBenchmarkBase {
     if (!ans) throw Exception('unexpected');
   }
 
-  @override
-  void setup() {}
-
-  @override
-  void teardown() {}
-
   bool isPrime(int n) {
     final sqrtN = sqrt(n);
     for (var i = 2; i <= sqrtN; ++i) {
@@ -44,3 +50,26 @@ class ComputePrimeBenchmark extends EnhancedBenchmarkBase {
     return true;
   }
 }
+
+class VoidAsyncBenchmark extends AsyncBenchmarkBase {
+  const VoidAsyncBenchmark({super.emitter}) : super('VoidAsync');
+
+  @override
+  Future<void> run() async => benchmarkVoidTwinNormal();
+}
+
+class VoidSyncBenchmark extends EnhancedBenchmarkBase {
+  const VoidSyncBenchmark({super.emitter}) : super('VoidSync');
+
+  @override
+  void run() => benchmarkVoidTwinSync();
+}
+
+class VoidSyncRawBenchmark extends EnhancedBenchmarkBase {
+  VoidSyncRawBenchmark({super.emitter}) : super('VoidSyncRaw');
+
+  @override
+  void run() => _wire.benchmark_raw_void_sync();
+}
+
+late final RustLibWire _wire = (RustLib.instance.api as RustLibApiImpl).wire;
