@@ -3,7 +3,6 @@
 
 use lazy_static::lazy_static;
 use parking_lot::Mutex;
-use tokio::runtime::Runtime;
 
 lazy_static! {
     // TODO do not be public (but encapsulate)
@@ -14,6 +13,13 @@ pub(crate) fn init() {
     // TODO more customizations
 }
 
+#[cfg(not(wasm))]
 fn create_runtime() -> Runtime {
-    Runtime::new().unwrap()
+    tokio::runtime::Runtime::new().unwrap()
+}
+
+#[cfg(wasm)]
+fn create_runtime() -> Runtime {
+    // TODO create a new thread for this?
+    (tokio::runtime::Builder::new_current_thread().build()).unwrap()
 }
