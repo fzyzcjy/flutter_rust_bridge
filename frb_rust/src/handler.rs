@@ -321,10 +321,9 @@ impl<EH: ErrorHandler + Sync> Executor for ThreadPoolExecutor<EH> {
         let eh = self.error_handler;
         let eh2 = self.error_handler;
 
-        let WrapInfo { port, mode, .. } = wrap_info;
-
         let runtime = crate::rust_async::ASYNC_RUNTIME.lock();
-        runtime.spawn((|| async {
+        runtime.spawn((|| async move {
+            let WrapInfo { port, mode, .. } = wrap_info;
             let port2 = port.as_ref().cloned();
             // TODO handle catch_unwind
             // let thread_result = panic::catch_unwind(move || {
