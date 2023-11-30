@@ -219,6 +219,7 @@ pub trait Executor: RefUnwindSafe {
         D: IntoDart,
         Er: IntoDart + 'static;
 
+    #[cfg(feature = "rust-async")]
     fn execute_async<TaskFn, TaskRet, TaskRetFut, D, Er>(&self, wrap_info: WrapInfo, task: TaskFn)
     where
         TaskFn: FnOnce(TaskCallback) -> TaskRetFut + Send + UnwindSafe + 'static,
@@ -305,6 +306,7 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
         sync_task()
     }
 
+    #[cfg(feature = "rust-async")]
     fn execute_async<TaskFn, TaskRet, TaskRetFut, D, Er>(&self, wrap_info: WrapInfo, task: TaskFn)
     where
         TaskFn: FnOnce(TaskCallback) -> TaskRetFut + Send + UnwindSafe + 'static,
@@ -313,7 +315,9 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
         D: IntoDart,
         Er: IntoDart + 'static,
     {
-        todo!()
+        // TODO avoid lock later
+        let runtime = crate::rust_async::ASYNC_RUNTIME.lock();
+        runtime.spawn(async { todo!() })
     }
 }
 
