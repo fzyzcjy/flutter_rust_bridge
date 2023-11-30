@@ -63,6 +63,7 @@ pub trait Handler {
         D: IntoDart,
         Er: IntoDart + 'static;
 
+    #[cfg(feature = "rust-async")]
     fn wrap_async<PrepareFn, TaskFn, TaskRet, TaskRetFut, D, Er>(
         &self,
         wrap_info: WrapInfo,
@@ -73,10 +74,7 @@ pub trait Handler {
         TaskRet: IntoIntoDart<D>,
         TaskRetFut: Future<Output = Result<TaskRet, Er>>,
         D: IntoDart,
-        Er: IntoDart + 'static,
-    {
-        todo!()
-    }
+        Er: IntoDart + 'static;
 }
 
 /// The simple handler uses a simple thread pool to execute tasks.
@@ -166,6 +164,22 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
                 .unwrap_or_else(|error| self.error_handler.handle_error_sync(Error::Panic(error)))
         })
         .unwrap_or_else(|_| wire_sync_from_data(None::<()>, Rust2DartAction::Panic))
+    }
+
+    #[cfg(feature = "rust-async")]
+    fn wrap_async<PrepareFn, TaskFn, TaskRet, TaskRetFut, D, Er>(
+        &self,
+        wrap_info: WrapInfo,
+        prepare: PrepareFn,
+    ) where
+        PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
+        TaskFn: FnOnce(TaskCallback) -> TaskRetFut + Send + UnwindSafe + 'static,
+        TaskRet: IntoIntoDart<D>,
+        TaskRetFut: Future<Output = Result<TaskRet, Er>>,
+        D: IntoDart,
+        Er: IntoDart + 'static,
+    {
+        todo!()
     }
 }
 
