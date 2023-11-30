@@ -171,7 +171,7 @@ class OutputBytesAsyncRawBenchmark extends AsyncBenchmarkBase {
     final completer = Completer<Uint8List>();
     completers[messageId] = Completer<Uint8List>();
 
-    _wire.benchmark_raw_output_bytes(sendPort, len);
+    _wire.benchmark_raw_output_bytes(sendPort, messageId, len);
     final result = await completer.future;
 
     // sanity check
