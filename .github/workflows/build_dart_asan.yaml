@@ -2,6 +2,7 @@ name: Build Dart ASAN
 
 on:
   workflow_dispatch: {}
+  push: {}
 
 jobs:
   deploy:
