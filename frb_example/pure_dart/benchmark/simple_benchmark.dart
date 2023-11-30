@@ -169,7 +169,7 @@ class OutputBytesAsyncRawBenchmark extends AsyncBenchmarkBase {
   Future<void> run() async {
     final messageId = nextId++;
     final completer = Completer<Uint8List>();
-    completers[messageId] = Completer<Uint8List>();
+    completers[messageId] = completer;
 
     _wire.benchmark_raw_output_bytes(sendPort, messageId, len);
     final result = await completer.future;
