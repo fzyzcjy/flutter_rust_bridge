@@ -3,6 +3,7 @@
 
 use lazy_static::lazy_static;
 use parking_lot::Mutex;
+use tokio::runtime::Runtime;
 
 lazy_static! {
     // TODO do not be public (but encapsulate)
@@ -15,7 +16,7 @@ pub(crate) fn init() {
 
 #[cfg(not(wasm))]
 fn create_runtime() -> Runtime {
-    tokio::runtime::Runtime::new().unwrap()
+    Runtime::new().unwrap()
 }
 
 #[cfg(wasm)]
