@@ -29,6 +29,8 @@ void main(List<String> args) {
   File(pathOutput).writeAsStringSync(output);
 }
 
+late final RustLibWire _wire = (RustLib.instance.api as RustLibApiImpl).wire;
+
 // For a list of primes: http://compoasso.free.fr/primelistweb/page/prime/liste_online_en.php
 class ComputePrimeBenchmark extends EnhancedBenchmarkBase {
   final int number;
@@ -71,5 +73,3 @@ class VoidSyncRawBenchmark extends EnhancedBenchmarkBase {
   @override
   void run() => _wire.benchmark_raw_void_sync();
 }
-
-late final RustLibWire _wire = (RustLib.instance.api as RustLibApiImpl).wire;
