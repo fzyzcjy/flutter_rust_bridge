@@ -7,6 +7,8 @@ jobs:
   deploy:
     runs-on: ubuntu-20.04
     steps:
+      - uses: catchpoint/workflow-telemetry-action@v1
+
       # to avoid wasting github action's time of doing repeated work while we setup everything
       # we should directly connect and firstly try all commands ad-hoc
       - name: Setup tmate session
