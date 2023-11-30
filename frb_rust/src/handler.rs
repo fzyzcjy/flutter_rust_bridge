@@ -324,14 +324,14 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
         let WrapInfo { port, mode, .. } = wrap_info;
 
         let runtime = crate::rust_async::ASYNC_RUNTIME.lock();
-        runtime.spawn(async || {
+        runtime.spawn((|| async {
             let port2 = port.as_ref().cloned();
             let thread_result = panic::catch_unwind(move || {
                 let port2 = port2.expect("(worker) thread");
                 #[allow(clippy::clone_on_copy)]
                 let rust2dart = Rust2Dart::new(port2.clone());
 
-                let ret = task(TaskCallback::new(rust2dart.clone()))
+                let ret = task(TaskCallback::new(rust2dart.clone())).await
                     .map(|e| e.into_into_dart().into_dart());
 
                 match ret {
@@ -357,7 +357,7 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
             if let Err(error) = thread_result {
                 eh.handle_error(port.expect("(worker) eh"), Error::Panic(error));
             }
-        });
+        })());
     }
 }
 
