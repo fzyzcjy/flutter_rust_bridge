@@ -221,8 +221,10 @@ fn wire_func_async_simple_add_impl(
         move || {
             let api_a = a.wire2api();
             let api_b = b.wire2api();
-            move |task_callback| {
-                Result::<_, ()>::Ok(crate::api::async_misc::func_async_simple_add(api_a, api_b))
+            move |task_callback| async {
+                Result::<_, ()>::Ok(
+                    crate::api::async_misc::func_async_simple_add(api_a, api_b).await,
+                )
             }
         },
     )
@@ -234,7 +236,11 @@ fn wire_func_async_void_impl(port_: flutter_rust_bridge::MessagePort) {
             port: Some(port_),
             mode: flutter_rust_bridge::FfiCallMode::Normal,
         },
-        move || move |task_callback| Result::<_, ()>::Ok(crate::api::async_misc::func_async_void()),
+        move || {
+            move |task_callback| async {
+                Result::<_, ()>::Ok(crate::api::async_misc::func_async_void().await)
+            }
+        },
     )
 }
 fn wire_handle_customized_struct_twin_normal_impl(
