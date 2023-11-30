@@ -1,5 +1,6 @@
 // ignore_for_file: invalid_use_of_internal_member, invalid_use_of_protected_member
 
+import 'dart:async';
 import 'dart:convert';
 import 'dart:ffi';
 import 'dart:io';
@@ -8,7 +9,6 @@ import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:benchmark_harness/benchmark_harness.dart';
-import 'package:flutter_rust_bridge/src/utils/single_complete_port.dart';
 import 'package:frb_example_pure_dart/src/rust/api/benchmark_api.dart';
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/benchmark_api_twin_sync.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
@@ -150,17 +150,29 @@ class OutputBytesAsyncRawBenchmark extends AsyncBenchmarkBase {
   final receivePort = RawReceivePort();
   late final sendPort = receivePort.sendPort.nativePort;
   final int len;
+  final completers = <int, Completer<Uint8List>>{};
+  var nextId = 1;
 
   OutputBytesAsyncRawBenchmark(this.len, {super.emitter})
       : super('OutputBytesAsyncRaw_Len$len') {
     receivePort.handler = (dynamic response) {
-      TODO;
+      final bytes = response as Uint8List;
+      final messageId = ByteData.view(bytes.buffer).getInt32(0, Endian.big);
+      // indeed a sublist view of the bytes
+      completers.remove(messageId)!.complete(bytes);
     };
   }
 
   @override
   Future<void> run() async {
+    final messageId = nextId++;
+    final completer = Completer<Uint8List>();
+    completers[messageId] = Completer<Uint8List>();
+
     _wire.benchmark_raw_output_bytes(sendPort, len);
-    await TODO;
+    final result = await completer.future;
+
+    // sanity check
+    if (result.length != len + 4) throw Exception();
   }
 }
