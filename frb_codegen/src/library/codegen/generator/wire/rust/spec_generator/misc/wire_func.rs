@@ -208,7 +208,13 @@ fn generate_handler_func_name(
                 WireRustGenerator::new(func.output.clone(), context).intodart_type(ir_pack)
             };
 
-            format!("{name}::<_,_,_,{output},_>")
+            let generic_args = if func.rust_async {
+                format!("<_,_,_,{output},_>")
+            } else {
+                format!("<_,_,_,_,{output},_>")
+            };
+
+            format!("{name}::{generic_args}")
         }
     }
 }
