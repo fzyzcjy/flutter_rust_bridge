@@ -124,14 +124,15 @@ pub struct MySizeFreezedTwinNormal {
     pub height: i32,
 }
 
-#[frb(sync)]
-pub fn handle_struct_sync_freezed_twin_normal(
-    arg: MySizeFreezedTwinNormal,
-    boxed: Box<MySizeFreezedTwinNormal>,
-) -> MySizeFreezedTwinNormal {
-    info!("handle_struct_sync_freezed({:?}, {:?})", &arg, &boxed);
-    MySizeFreezedTwinNormal {
-        width: arg.width + boxed.width,
-        height: arg.height + boxed.height,
-    }
-}
+// TODO move it to a non-auto-generated test
+// #[frb(sync)]
+// pub fn handle_struct_sync_freezed_twin_normal(
+//     arg: MySizeFreezedTwinNormal,
+//     boxed: Box<MySizeFreezedTwinNormal>,
+// ) -> MySizeFreezedTwinNormal {
+//     info!("handle_struct_sync_freezed({:?}, {:?})", &arg, &boxed);
+//     MySizeFreezedTwinNormal {
+//         width: arg.width + boxed.width,
+//         height: arg.height + boxed.height,
+//     }
+// }
