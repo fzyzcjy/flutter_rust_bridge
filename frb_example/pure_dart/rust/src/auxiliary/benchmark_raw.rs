@@ -3,8 +3,10 @@
 use crate::api::benchmark_api::{
     benchmark_input_bytes_twin_normal, benchmark_output_bytes_twin_normal,
 };
+use byteorder::{BigEndian, WriteBytesExt};
 use flutter_rust_bridge::support::{new_leak_vec_ptr, vec_from_leak_ptr};
 use flutter_rust_bridge::{Channel, IntoDart, MessagePort, ZeroCopyBuffer};
+use std::io::Cursor;
 
 #[no_mangle]
 pub extern "C" fn benchmark_raw_void_sync() {}
@@ -36,7 +38,11 @@ pub unsafe extern "C" fn benchmark_raw_input_bytes(bytes: benchmark_raw_list_pri
 
 #[no_mangle]
 pub extern "C" fn benchmark_raw_output_bytes(port: MessagePort, message_id: i32, size: i32) {
-    let vec = vec![0; size as usize + 4];
-    TODO_set_id;
+    let vec = {
+        let mut cursor = Cursor::new(vec![0; size as usize + 4]);
+        cursor.write_i32::<BigEndian>(message_id).unwrap();
+        cursor.into_inner()
+    };
+
     Channel::new(port).post(ZeroCopyBuffer(vec).into_dart());
 }
