@@ -22,21 +22,21 @@ Future<void> main(List<String> args) async {
   final [pathOutput, partialName] = args;
   final emitter = JsonEmitter(namer: (x) => 'PureDart_${x}_$partialName');
 
-  // ComputePrimeBenchmark(90000049, emitter: emitter).report();
-  // ComputePrimeBenchmark(9000000001, emitter: emitter).report();
-  // ComputePrimeBenchmark(900000000013, emitter: emitter).report();
-  //
-  // await VoidAsyncBenchmark(emitter: emitter).report();
-  // VoidSyncBenchmark(emitter: emitter).report();
-  // VoidSyncRawBenchmark(emitter: emitter).report();
+  ComputePrimeBenchmark(90000049, emitter: emitter).report();
+  ComputePrimeBenchmark(9000000001, emitter: emitter).report();
+  ComputePrimeBenchmark(900000000013, emitter: emitter).report();
+
+  await VoidAsyncBenchmark(emitter: emitter).report();
+  VoidSyncBenchmark(emitter: emitter).report();
+  VoidSyncRawBenchmark(emitter: emitter).report();
 
   for (final len in [0, 10000, 1000000]) {
-    // await InputBytesAsyncBenchmark(len, emitter: emitter).report();
-    // InputBytesSyncBenchmark(len, emitter: emitter).report();
-    // InputBytesSyncRawBenchmark(len, emitter: emitter).report();
+    await InputBytesAsyncBenchmark(len, emitter: emitter).report();
+    InputBytesSyncBenchmark(len, emitter: emitter).report();
+    InputBytesSyncRawBenchmark(len, emitter: emitter).report();
 
-    // await OutputBytesAsyncBenchmark(len, emitter: emitter).report();
-    // OutputBytesSyncBenchmark(len, emitter: emitter).report();
+    await OutputBytesAsyncBenchmark(len, emitter: emitter).report();
+    OutputBytesSyncBenchmark(len, emitter: emitter).report();
     await OutputBytesAsyncRawBenchmark(len, emitter: emitter).report();
   }
 
