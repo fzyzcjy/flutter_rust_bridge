@@ -35,7 +35,8 @@ pub unsafe extern "C" fn benchmark_raw_input_bytes(bytes: benchmark_raw_list_pri
 }
 
 #[no_mangle]
-pub extern "C" fn benchmark_raw_output_bytes(port: MessagePort, size: i32) {
-    let vec = benchmark_output_bytes_twin_normal(size);
+pub extern "C" fn benchmark_raw_output_bytes(port: MessagePort, message_id: i32, size: i32) {
+    let vec = vec![0; size as usize + 4];
+    TODO_set_id;
     Channel::new(port).post(ZeroCopyBuffer(vec).into_dart());
 }
