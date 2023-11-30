@@ -15,6 +15,9 @@ mod into_into_dart;
 pub mod rust2dart;
 pub mod support;
 
+#[cfg(feature = "rust-async")]
+mod rust_async;
+
 #[cfg(wasm)]
 mod wasm_bindgen_src;
 
