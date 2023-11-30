@@ -1,5 +1,6 @@
 pub mod array;
 pub mod attribute;
+pub mod benchmark_api;
 pub mod chrono_type;
 pub mod comment;
 pub mod dart_dynamic;
