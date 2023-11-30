@@ -177,6 +177,10 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_params: Vec<St
         }
     };
 
+    if func.rust_async {
+        ans = format!("{ans}.await");
+    }
+
     if !func.fallible() {
         ans = format!("Result::<_,()>::Ok({ans})");
     }
