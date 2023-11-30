@@ -159,7 +159,7 @@ fn generate_code_wire2api(func: &IrFunc) -> String {
 }
 
 fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_params: Vec<String>) -> String {
-    let code_call_inner_func = match &func.owner {
+    let mut ans = match &func.owner {
         IrFuncOwnerInfo::Function => {
             format!(
                 "{}({})",
@@ -177,11 +177,11 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_params: Vec<St
         }
     };
 
-    if func.fallible() {
-        code_call_inner_func
-    } else {
-        format!("Result::<_,()>::Ok({code_call_inner_func})")
+    if !func.fallible() {
+        ans = format!("Result::<_,()>::Ok({ans})");
     }
+
+    ans
 }
 
 fn generate_handler_func_name(
@@ -227,7 +227,8 @@ fn generate_code_closure(
                 {code_call_inner_func_result}"
         ),
         IrFuncMode::Normal | IrFuncMode::Stream { .. } => {
-            format!("{code_wire2api} move |task_callback| {code_call_inner_func_result}")
+            let maybe_async_move = if func.rust_async { "async move" } else { "" };
+            format!("{code_wire2api} move |task_callback| {maybe_async_move} {code_call_inner_func_result}")
         }
     }
 }
