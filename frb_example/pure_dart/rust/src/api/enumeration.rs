@@ -1,4 +1,5 @@
 use crate::api::misc_example::WeekdaysTwinNormal;
+use crate::frb_generated::KitchenSinkTwinNormalKind;
 use flutter_rust_bridge::{frb, ZeroCopyBuffer};
 use log::info;
 
@@ -152,7 +153,7 @@ pub fn handle_enum_struct_twin_normal(val: KitchenSinkTwinNormal) -> KitchenSink
             float64: float64 + 1.,
             boolean: !boolean,
         },
-        Nested(val, nested) => Nested(inc(val), Box::new(handle_enum_struct_twin_normal(*nested))),
+        Nested(val, nested) => Nested(inc(val), Box::new(KitchenSinkTwinNormal::Empty)),
         Optional(a, b) => Optional(a.map(inc), b.map(inc)),
         Buffer(ZeroCopyBuffer(mut buf)) => {
             buf.push(1);
