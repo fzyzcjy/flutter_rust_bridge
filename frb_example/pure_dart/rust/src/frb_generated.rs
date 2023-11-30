@@ -207,6 +207,36 @@ fn wire_use_msgid_twin_normal_impl(
         },
     )
 }
+fn wire_func_async_simple_add_impl(
+    port_: flutter_rust_bridge::MessagePort,
+    a: impl Wire2Api<i32> + core::panic::UnwindSafe,
+    b: impl Wire2Api<i32> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "func_async_simple_add",
+            port: Some(port_),
+            mode: flutter_rust_bridge::FfiCallMode::Normal,
+        },
+        move || {
+            let api_a = a.wire2api();
+            let api_b = b.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(crate::api::async_misc::func_async_simple_add(api_a, api_b))
+            }
+        },
+    )
+}
+fn wire_func_async_void_impl(port_: flutter_rust_bridge::MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "func_async_void",
+            port: Some(port_),
+            mode: flutter_rust_bridge::FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(crate::api::async_misc::func_async_void()),
+    )
+}
 fn wire_handle_customized_struct_twin_normal_impl(
     port_: flutter_rust_bridge::MessagePort,
     val: impl Wire2Api<crate::api::attribute::CustomizedTwinNormal> + core::panic::UnwindSafe,

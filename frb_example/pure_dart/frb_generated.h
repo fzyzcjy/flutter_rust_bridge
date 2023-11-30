@@ -1167,6 +1167,10 @@ void wire_use_boxed_blob_twin_normal(int64_t port_, struct wire_blob_twin_normal
 
 void wire_use_msgid_twin_normal(int64_t port_, struct wire_message_id_twin_normal *id);
 
+void wire_func_async_simple_add(int64_t port_, int32_t a, int32_t b);
+
+void wire_func_async_void(int64_t port_);
+
 void wire_handle_customized_struct_twin_normal(int64_t port_,
                                                struct wire_customized_twin_normal *val);
 
@@ -3098,6 +3102,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_frb_generator_test_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_frb_generator_test_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_frb_sync_generator_test_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_func_async_simple_add);
+    dummy_var ^= ((int64_t) (void*) wire_func_async_void);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_simple_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_simple_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_func_enum_with_item_mixed_twin_normal);

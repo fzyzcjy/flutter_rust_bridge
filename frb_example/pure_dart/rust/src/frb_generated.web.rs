@@ -2798,6 +2798,16 @@ pub fn wire_use_msgid_twin_normal(
 }
 
 #[wasm_bindgen]
+pub fn wire_func_async_simple_add(port_: flutter_rust_bridge::MessagePort, a: i32, b: i32) {
+    wire_func_async_simple_add_impl(port_, a, b)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_async_void(port_: flutter_rust_bridge::MessagePort) {
+    wire_func_async_void_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_handle_customized_struct_twin_normal(
     port_: flutter_rust_bridge::MessagePort,
     val: flutter_rust_bridge::wasm_bindgen::JsValue,

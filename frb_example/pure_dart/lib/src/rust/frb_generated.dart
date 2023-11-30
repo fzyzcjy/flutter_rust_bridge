@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import, unused_element, duplicate_ignore
 
 import 'api/array.dart';
+import 'api/async_misc.dart';
 import 'api/attribute.dart';
 import 'api/benchmark_api.dart';
 import 'api/chrono_type.dart';
@@ -143,6 +144,11 @@ abstract class RustLibApi extends BaseApi {
 
   Future<U8Array32> useMsgidTwinNormal(
       {required MessageIdTwinNormal id, dynamic hint});
+
+  Future<int> funcAsyncSimpleAdd(
+      {required int a, required int b, dynamic hint});
+
+  Future<void> funcAsyncVoid({dynamic hint});
 
   Future<void> handleCustomizedStructTwinNormal(
       {required CustomizedTwinNormal val, dynamic hint});
@@ -1627,6 +1633,45 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kUseMsgidTwinNormalConstMeta => const TaskConstMeta(
         debugName: "use_msgid_twin_normal",
         argNames: ["id"],
+      );
+
+  @override
+  Future<int> funcAsyncSimpleAdd(
+      {required int a, required int b, dynamic hint}) {
+    var arg0 = api2wire_i_32(a);
+    var arg1 = api2wire_i_32(b);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_func_async_simple_add(port_, arg0, arg1),
+      parseSuccessData: _wire2api_i_32,
+      parseErrorData: null,
+      constMeta: kFuncAsyncSimpleAddConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncAsyncSimpleAddConstMeta => const TaskConstMeta(
+        debugName: "func_async_simple_add",
+        argNames: ["a", "b"],
+      );
+
+  @override
+  Future<void> funcAsyncVoid({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_func_async_void(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kFuncAsyncVoidConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncAsyncVoidConstMeta => const TaskConstMeta(
+        debugName: "func_async_void",
+        argNames: [],
       );
 
   @override

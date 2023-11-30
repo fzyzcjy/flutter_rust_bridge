@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import, unused_element, duplicate_ignore
 
 import 'api/array.dart';
+import 'api/async_misc.dart';
 import 'api/attribute.dart';
 import 'api/benchmark_api.dart';
 import 'api/chrono_type.dart';
@@ -3935,6 +3936,39 @@ class RustLibWire implements BaseWire {
   late final _wire_use_msgid_twin_normal =
       _wire_use_msgid_twin_normalPtr.asFunction<
           void Function(int, ffi.Pointer<wire_message_id_twin_normal>)>();
+
+  void wire_func_async_simple_add(
+    int port_,
+    int a,
+    int b,
+  ) {
+    return _wire_func_async_simple_add(
+      port_,
+      a,
+      b,
+    );
+  }
+
+  late final _wire_func_async_simple_addPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>(
+      'wire_func_async_simple_add');
+  late final _wire_func_async_simple_add =
+      _wire_func_async_simple_addPtr.asFunction<void Function(int, int, int)>();
+
+  void wire_func_async_void(
+    int port_,
+  ) {
+    return _wire_func_async_void(
+      port_,
+    );
+  }
+
+  late final _wire_func_async_voidPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_func_async_void');
+  late final _wire_func_async_void =
+      _wire_func_async_voidPtr.asFunction<void Function(int)>();
 
   void wire_handle_customized_struct_twin_normal(
     int port_,

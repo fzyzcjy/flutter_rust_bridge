@@ -5816,6 +5816,16 @@ pub extern "C" fn wire_use_msgid_twin_normal(port_: i64, id: *mut wire_message_i
 }
 
 #[no_mangle]
+pub extern "C" fn wire_func_async_simple_add(port_: i64, a: i32, b: i32) {
+    wire_func_async_simple_add_impl(port_, a, b)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_func_async_void(port_: i64) {
+    wire_func_async_void_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_handle_customized_struct_twin_normal(
     port_: i64,
     val: *mut wire_customized_twin_normal,

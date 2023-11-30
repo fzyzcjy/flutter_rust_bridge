@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import, unused_element, duplicate_ignore
 
 import 'api/array.dart';
+import 'api/async_misc.dart';
 import 'api/attribute.dart';
 import 'api/benchmark_api.dart';
 import 'api/chrono_type.dart';
@@ -2367,6 +2368,12 @@ class RustLibWire extends BaseWire {
   void wire_use_msgid_twin_normal(NativePortType port_, List<dynamic> id) =>
       wasmModule.wire_use_msgid_twin_normal(port_, id);
 
+  void wire_func_async_simple_add(NativePortType port_, int a, int b) =>
+      wasmModule.wire_func_async_simple_add(port_, a, b);
+
+  void wire_func_async_void(NativePortType port_) =>
+      wasmModule.wire_func_async_void(port_);
+
   void wire_handle_customized_struct_twin_normal(
           NativePortType port_, List<dynamic> val) =>
       wasmModule.wire_handle_customized_struct_twin_normal(port_, val);
@@ -4281,6 +4288,10 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_use_msgid_twin_normal(
       NativePortType port_, List<dynamic> id);
+
+  external void wire_func_async_simple_add(NativePortType port_, int a, int b);
+
+  external void wire_func_async_void(NativePortType port_);
 
   external void wire_handle_customized_struct_twin_normal(
       NativePortType port_, List<dynamic> val);
