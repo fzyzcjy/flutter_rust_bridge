@@ -209,9 +209,9 @@ fn generate_handler_func_name(
             };
 
             let generic_args = if func.rust_async {
-                format!("<_,_,_,{output},_>")
-            } else {
                 format!("<_,_,_,_,{output},_>")
+            } else {
+                format!("<_,_,_,{output},_>")
             };
 
             format!("{name}::{generic_args}")
