@@ -16,7 +16,9 @@ import 'package:frb_example_pure_dart/src/rust/frb_generated.io.dart';
 
 import 'benchmark_utils.dart';
 
-void main(List<String> args) {
+Future<void> main(List<String> args) async {
+  await RustLib.init();
+
   final [pathOutput, partialName] = args;
   final emitter = JsonEmitter(namer: (x) => 'PureDart_${x}_$partialName');
 
@@ -24,18 +26,18 @@ void main(List<String> args) {
   ComputePrimeBenchmark(9000000001, emitter: emitter).report();
   ComputePrimeBenchmark(900000000013, emitter: emitter).report();
 
-  VoidAsyncBenchmark(emitter: emitter).report();
+  await VoidAsyncBenchmark(emitter: emitter).report();
   VoidSyncBenchmark(emitter: emitter).report();
   VoidSyncRawBenchmark(emitter: emitter).report();
 
   for (final len in [0, 10000, 1000000]) {
-    InputBytesAsyncBenchmark(len, emitter: emitter).report();
+    await InputBytesAsyncBenchmark(len, emitter: emitter).report();
     InputBytesSyncBenchmark(len, emitter: emitter).report();
     InputBytesSyncRawBenchmark(len, emitter: emitter).report();
 
-    OutputBytesAsyncBenchmark(len, emitter: emitter).report();
+    await OutputBytesAsyncBenchmark(len, emitter: emitter).report();
     OutputBytesSyncBenchmark(len, emitter: emitter).report();
-    OutputBytesAsyncRawBenchmark(len, emitter: emitter).report();
+    await OutputBytesAsyncRawBenchmark(len, emitter: emitter).report();
   }
 
   final output = jsonEncode(emitter.items);
