@@ -1,6 +1,7 @@
 // ignore_for_file: invalid_use_of_internal_member, invalid_use_of_protected_member
 
 import 'dart:convert';
+import 'dart:ffi';
 import 'dart:io';
 import 'dart:math';
 import 'dart:typed_data';
@@ -25,10 +26,10 @@ void main(List<String> args) {
   VoidSyncBenchmark(emitter: emitter).report();
   VoidSyncRawBenchmark(emitter: emitter).report();
 
-  for (final size in [0, 10000, 1000000]) {
-    InputBytesAsyncBenchmark(size, emitter: emitter).report();
-    InputBytesSyncBenchmark(size, emitter: emitter).report();
-    InputBytesSyncRawBenchmark(size, emitter: emitter).report();
+  for (final len in [0, 10000, 1000000]) {
+    InputBytesAsyncBenchmark(len, emitter: emitter).report();
+    InputBytesSyncBenchmark(len, emitter: emitter).report();
+    InputBytesSyncRawBenchmark(len, emitter: emitter).report();
   }
 
   final output = jsonEncode(emitter.items);
@@ -84,9 +85,9 @@ class VoidSyncRawBenchmark extends EnhancedBenchmarkBase {
 class InputBytesAsyncBenchmark extends AsyncBenchmarkBase {
   final Uint8List bytes;
 
-  InputBytesAsyncBenchmark(int size, {super.emitter})
-      : bytes = Uint8List(size),
-        super('InputBytesAsync_Size$size');
+  InputBytesAsyncBenchmark(int len, {super.emitter})
+      : bytes = Uint8List(len),
+        super('InputBytesAsync_Len$len');
 
   @override
   Future<void> run() async => benchmarkInputBytesTwinNormal(bytes: bytes);
@@ -95,9 +96,9 @@ class InputBytesAsyncBenchmark extends AsyncBenchmarkBase {
 class InputBytesSyncBenchmark extends EnhancedBenchmarkBase {
   final Uint8List bytes;
 
-  InputBytesSyncBenchmark(int size, {super.emitter})
-      : bytes = Uint8List(size),
-        super('InputBytesSync_Size$size');
+  InputBytesSyncBenchmark(int len, {super.emitter})
+      : bytes = Uint8List(len),
+        super('InputBytesSync_Len$len');
 
   @override
   void run() => benchmarkInputBytesTwinSync(bytes: bytes);
@@ -106,10 +107,15 @@ class InputBytesSyncBenchmark extends EnhancedBenchmarkBase {
 class InputBytesSyncRawBenchmark extends EnhancedBenchmarkBase {
   final Uint8List bytes;
 
-  InputBytesSyncRawBenchmark(int size, {super.emitter})
-      : bytes = Uint8List(size),
-        super('InputBytesSyncRaw_Size$size');
+  InputBytesSyncRawBenchmark(int len, {super.emitter})
+      : bytes = Uint8List(len),
+        super('InputBytesSyncRaw_Len$len');
 
   @override
-  void run() => TODO;
+  void run() {
+    final raw = _wire.benchmark_raw_new_list_prim_u_8(bytes.length);
+    raw.ptr.asTypedList(raw.len).setAll(0, bytes);
+    final ans = _wire.benchmark_raw_input_bytes(raw);
+    if (ans != 0) throw Exception();
+  }
 }
