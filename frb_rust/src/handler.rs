@@ -72,7 +72,7 @@ pub trait Handler {
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce(TaskCallback) -> TaskRetFut + Send + UnwindSafe + 'static,
         TaskRet: IntoIntoDart<D>,
-        TaskRetFut: Future<Output = Result<TaskRet, Er>>,
+        TaskRetFut: Future<Output = Result<TaskRet, Er>> + Send,
         D: IntoDart,
         Er: IntoDart + 'static;
 }
@@ -175,7 +175,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce(TaskCallback) -> TaskRetFut + Send + UnwindSafe + 'static,
         TaskRet: IntoIntoDart<D>,
-        TaskRetFut: Future<Output = Result<TaskRet, Er>>,
+        TaskRetFut: Future<Output = Result<TaskRet, Er>> + Send,
         D: IntoDart,
         Er: IntoDart + 'static,
     {
@@ -224,7 +224,7 @@ pub trait Executor: RefUnwindSafe {
     where
         TaskFn: FnOnce(TaskCallback) -> TaskRetFut + Send + UnwindSafe + 'static,
         TaskRet: IntoIntoDart<D>,
-        TaskRetFut: Future<Output = Result<TaskRet, Er>>,
+        TaskRetFut: Future<Output = Result<TaskRet, Er>> + Send,
         D: IntoDart,
         Er: IntoDart + 'static;
 }
@@ -243,7 +243,7 @@ impl<EH: ErrorHandler> ThreadPoolExecutor<EH> {
     }
 }
 
-impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
+impl<EH: ErrorHandler + Sync> Executor for ThreadPoolExecutor<EH> {
     fn execute<TaskFn, TaskRet, D, Er>(&self, wrap_info: WrapInfo, task: TaskFn)
     where
         TaskFn: FnOnce(TaskCallback) -> Result<TaskRet, Er> + Send + UnwindSafe + 'static,
@@ -311,7 +311,7 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
     where
         TaskFn: FnOnce(TaskCallback) -> TaskRetFut + Send + UnwindSafe + 'static,
         TaskRet: IntoIntoDart<D>,
-        TaskRetFut: Future<Output = Result<TaskRet, Er>>,
+        TaskRetFut: Future<Output = Result<TaskRet, Er>> + Send,
         D: IntoDart,
         Er: IntoDart + 'static,
     {
