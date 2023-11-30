@@ -2,6 +2,7 @@
 
 import 'api/array.dart';
 import 'api/attribute.dart';
+import 'api/benchmark_api.dart';
 import 'api/chrono_type.dart';
 import 'api/comment.dart';
 import 'api/dart_dynamic.dart';
@@ -2373,6 +2374,17 @@ class RustLibWire extends BaseWire {
           NativePortType port_, List<dynamic> user_id) =>
       wasmModule.wire_next_user_id_twin_normal(port_, user_id);
 
+  void wire_benchmark_input_bytes_twin_normal(
+          NativePortType port_, Uint8List bytes) =>
+      wasmModule.wire_benchmark_input_bytes_twin_normal(port_, bytes);
+
+  void wire_benchmark_output_bytes_twin_normal(
+          NativePortType port_, int size) =>
+      wasmModule.wire_benchmark_output_bytes_twin_normal(port_, size);
+
+  void wire_benchmark_void_twin_normal(NativePortType port_) =>
+      wasmModule.wire_benchmark_void_twin_normal(port_);
+
   void wire_datetime_local_twin_normal(NativePortType port_, Object d) =>
       wasmModule.wire_datetime_local_twin_normal(port_, d);
 
@@ -4262,6 +4274,14 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_next_user_id_twin_normal(
       NativePortType port_, List<dynamic> user_id);
+
+  external void wire_benchmark_input_bytes_twin_normal(
+      NativePortType port_, Uint8List bytes);
+
+  external void wire_benchmark_output_bytes_twin_normal(
+      NativePortType port_, int size);
+
+  external void wire_benchmark_void_twin_normal(NativePortType port_);
 
   external void wire_datetime_local_twin_normal(NativePortType port_, Object d);
 

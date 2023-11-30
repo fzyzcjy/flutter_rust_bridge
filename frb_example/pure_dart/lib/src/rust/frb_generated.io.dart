@@ -2,6 +2,7 @@
 
 import 'api/array.dart';
 import 'api/attribute.dart';
+import 'api/benchmark_api.dart';
 import 'api/chrono_type.dart';
 import 'api/comment.dart';
 import 'api/dart_dynamic.dart';
@@ -3686,6 +3687,61 @@ class RustLibWire implements BaseWire {
           lookup)
       : _lookup = lookup;
 
+  void benchmark_raw_void_sync() {
+    return _benchmark_raw_void_sync();
+  }
+
+  late final _benchmark_raw_void_syncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>(
+          'benchmark_raw_void_sync');
+  late final _benchmark_raw_void_sync =
+      _benchmark_raw_void_syncPtr.asFunction<void Function()>();
+
+  benchmark_raw_list_prim_u_8 benchmark_raw_new_list_prim_u_8(
+    int len,
+  ) {
+    return _benchmark_raw_new_list_prim_u_8(
+      len,
+    );
+  }
+
+  late final _benchmark_raw_new_list_prim_u_8Ptr = _lookup<
+          ffi.NativeFunction<benchmark_raw_list_prim_u_8 Function(ffi.Int32)>>(
+      'benchmark_raw_new_list_prim_u_8');
+  late final _benchmark_raw_new_list_prim_u_8 =
+      _benchmark_raw_new_list_prim_u_8Ptr
+          .asFunction<benchmark_raw_list_prim_u_8 Function(int)>();
+
+  int benchmark_raw_input_bytes(
+    benchmark_raw_list_prim_u_8 bytes,
+  ) {
+    return _benchmark_raw_input_bytes(
+      bytes,
+    );
+  }
+
+  late final _benchmark_raw_input_bytesPtr = _lookup<
+          ffi.NativeFunction<ffi.Int32 Function(benchmark_raw_list_prim_u_8)>>(
+      'benchmark_raw_input_bytes');
+  late final _benchmark_raw_input_bytes = _benchmark_raw_input_bytesPtr
+      .asFunction<int Function(benchmark_raw_list_prim_u_8)>();
+
+  void benchmark_raw_output_bytes(
+    int port,
+    int size,
+  ) {
+    return _benchmark_raw_output_bytes(
+      port,
+      size,
+    );
+  }
+
+  late final _benchmark_raw_output_bytesPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int, ffi.Int32)>>(
+          'benchmark_raw_output_bytes');
+  late final _benchmark_raw_output_bytes =
+      _benchmark_raw_output_bytesPtr.asFunction<void Function(int, int)>();
+
   void wire_boxed_blob_twin_normal(
     int port_,
     ffi.Pointer<wire_list_prim_u_8> blob,
@@ -3913,6 +3969,55 @@ class RustLibWire implements BaseWire {
       'wire_next_user_id_twin_normal');
   late final _wire_next_user_id_twin_normal = _wire_next_user_id_twin_normalPtr
       .asFunction<void Function(int, ffi.Pointer<wire_user_id_twin_normal>)>();
+
+  void wire_benchmark_input_bytes_twin_normal(
+    int port_,
+    ffi.Pointer<wire_list_prim_u_8> bytes,
+  ) {
+    return _wire_benchmark_input_bytes_twin_normal(
+      port_,
+      bytes,
+    );
+  }
+
+  late final _wire_benchmark_input_bytes_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_prim_u_8>)>>(
+      'wire_benchmark_input_bytes_twin_normal');
+  late final _wire_benchmark_input_bytes_twin_normal =
+      _wire_benchmark_input_bytes_twin_normalPtr
+          .asFunction<void Function(int, ffi.Pointer<wire_list_prim_u_8>)>();
+
+  void wire_benchmark_output_bytes_twin_normal(
+    int port_,
+    int size,
+  ) {
+    return _wire_benchmark_output_bytes_twin_normal(
+      port_,
+      size,
+    );
+  }
+
+  late final _wire_benchmark_output_bytes_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_benchmark_output_bytes_twin_normal');
+  late final _wire_benchmark_output_bytes_twin_normal =
+      _wire_benchmark_output_bytes_twin_normalPtr
+          .asFunction<void Function(int, int)>();
+
+  void wire_benchmark_void_twin_normal(
+    int port_,
+  ) {
+    return _wire_benchmark_void_twin_normal(
+      port_,
+    );
+  }
+
+  late final _wire_benchmark_void_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_benchmark_void_twin_normal');
+  late final _wire_benchmark_void_twin_normal =
+      _wire_benchmark_void_twin_normalPtr.asFunction<void Function(int)>();
 
   void wire_datetime_local_twin_normal(
     int port_,
@@ -14325,6 +14430,13 @@ class RustLibWire implements BaseWire {
           'dummy_method_to_enforce_bundling');
   late final _dummy_method_to_enforce_bundling =
       _dummy_method_to_enforce_bundlingPtr.asFunction<int Function()>();
+}
+
+final class benchmark_raw_list_prim_u_8 extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint8> ptr;
+
+  @ffi.Int32()
+  external int len;
 }
 
 final class wire_list_prim_u_8 extends ffi.Struct {

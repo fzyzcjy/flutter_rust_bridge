@@ -2814,6 +2814,24 @@ pub fn wire_next_user_id_twin_normal(
 }
 
 #[wasm_bindgen]
+pub fn wire_benchmark_input_bytes_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    bytes: Box<[u8]>,
+) {
+    wire_benchmark_input_bytes_twin_normal_impl(port_, bytes)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_output_bytes_twin_normal(port_: flutter_rust_bridge::MessagePort, size: i32) {
+    wire_benchmark_output_bytes_twin_normal_impl(port_, size)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_void_twin_normal(port_: flutter_rust_bridge::MessagePort) {
+    wire_benchmark_void_twin_normal_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_datetime_local_twin_normal(port_: flutter_rust_bridge::MessagePort, d: i64) {
     wire_datetime_local_twin_normal_impl(port_, d)
 }

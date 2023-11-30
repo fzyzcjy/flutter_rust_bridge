@@ -2,6 +2,7 @@
 
 import 'api/array.dart';
 import 'api/attribute.dart';
+import 'api/benchmark_api.dart';
 import 'api/chrono_type.dart';
 import 'api/comment.dart';
 import 'api/dart_dynamic.dart';
@@ -147,6 +148,14 @@ abstract class RustLibApi extends BaseApi {
 
   Future<UserIdTwinNormal> nextUserIdTwinNormal(
       {required UserIdTwinNormal userId, dynamic hint});
+
+  Future<int> benchmarkInputBytesTwinNormal(
+      {required Uint8List bytes, dynamic hint});
+
+  Future<Uint8List> benchmarkOutputBytesTwinNormal(
+      {required int size, dynamic hint});
+
+  Future<void> benchmarkVoidTwinNormal({dynamic hint});
 
   Future<DateTime> datetimeLocalTwinNormal({required DateTime d, dynamic hint});
 
@@ -1653,6 +1662,68 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kNextUserIdTwinNormalConstMeta => const TaskConstMeta(
         debugName: "next_user_id_twin_normal",
         argNames: ["userId"],
+      );
+
+  @override
+  Future<int> benchmarkInputBytesTwinNormal(
+      {required Uint8List bytes, dynamic hint}) {
+    var arg0 = api2wire_list_prim_u_8(bytes);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_benchmark_input_bytes_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_i_32,
+      parseErrorData: null,
+      constMeta: kBenchmarkInputBytesTwinNormalConstMeta,
+      argValues: [bytes],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkInputBytesTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_input_bytes_twin_normal",
+        argNames: ["bytes"],
+      );
+
+  @override
+  Future<Uint8List> benchmarkOutputBytesTwinNormal(
+      {required int size, dynamic hint}) {
+    var arg0 = api2wire_i_32(size);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_benchmark_output_bytes_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_list_prim_u_8,
+      parseErrorData: null,
+      constMeta: kBenchmarkOutputBytesTwinNormalConstMeta,
+      argValues: [size],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkOutputBytesTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_output_bytes_twin_normal",
+        argNames: ["size"],
+      );
+
+  @override
+  Future<void> benchmarkVoidTwinNormal({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_benchmark_void_twin_normal(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kBenchmarkVoidTwinNormalConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkVoidTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "benchmark_void_twin_normal",
+        argNames: [],
       );
 
   @override

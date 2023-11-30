@@ -4,6 +4,11 @@
 typedef struct DartCObject *WireSyncReturn;
 typedef struct _Dart_Handle* Dart_Handle;
 
+typedef struct benchmark_raw_list_prim_u_8 {
+  uint8_t *ptr;
+  int32_t len;
+} benchmark_raw_list_prim_u_8;
+
 typedef struct wire_list_prim_u_8 {
   uint8_t *ptr;
   int32_t len;
@@ -1132,6 +1137,14 @@ typedef struct wire_feature_uuid_twin_normal {
   struct wire_list_prim_u_8 *many;
 } wire_feature_uuid_twin_normal;
 
+void benchmark_raw_void_sync(void);
+
+struct benchmark_raw_list_prim_u_8 benchmark_raw_new_list_prim_u_8(int32_t len);
+
+int32_t benchmark_raw_input_bytes(struct benchmark_raw_list_prim_u_8 bytes);
+
+void benchmark_raw_output_bytes(MessagePort port, int32_t size);
+
 void wire_boxed_blob_twin_normal(int64_t port_, struct wire_list_prim_u_8 *blob);
 
 void wire_func_test_id_twin_normal(int64_t port_, struct wire_test_id_twin_normal *id);
@@ -1158,6 +1171,12 @@ void wire_handle_customized_struct_twin_normal(int64_t port_,
                                                struct wire_customized_twin_normal *val);
 
 void wire_next_user_id_twin_normal(int64_t port_, struct wire_user_id_twin_normal *user_id);
+
+void wire_benchmark_input_bytes_twin_normal(int64_t port_, struct wire_list_prim_u_8 *bytes);
+
+void wire_benchmark_output_bytes_twin_normal(int64_t port_, int32_t size);
+
+void wire_benchmark_void_twin_normal(int64_t port_);
 
 void wire_datetime_local_twin_normal(int64_t port_, int64_t d);
 
@@ -2950,6 +2969,9 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_app_settings_vec_stream_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_async_accept_dart_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_async_accept_dart_opaque_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_input_bytes_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_output_bytes_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_void_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_boxed_blob_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_boxed_blob_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_call_new_module_system_twin_normal);

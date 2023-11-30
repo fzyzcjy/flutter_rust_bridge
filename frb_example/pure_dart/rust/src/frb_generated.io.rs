@@ -5832,6 +5832,24 @@ pub extern "C" fn wire_next_user_id_twin_normal(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_benchmark_input_bytes_twin_normal(
+    port_: i64,
+    bytes: *mut wire_list_prim_u_8,
+) {
+    wire_benchmark_input_bytes_twin_normal_impl(port_, bytes)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_output_bytes_twin_normal(port_: i64, size: i32) {
+    wire_benchmark_output_bytes_twin_normal_impl(port_, size)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_void_twin_normal(port_: i64) {
+    wire_benchmark_void_twin_normal_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_datetime_local_twin_normal(port_: i64, d: i64) {
     wire_datetime_local_twin_normal_impl(port_, d)
 }

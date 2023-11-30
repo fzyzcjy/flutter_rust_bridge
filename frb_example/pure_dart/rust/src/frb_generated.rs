@@ -245,6 +245,60 @@ fn wire_next_user_id_twin_normal_impl(
         },
     )
 }
+fn wire_benchmark_input_bytes_twin_normal_impl(
+    port_: flutter_rust_bridge::MessagePort,
+    bytes: impl Wire2Api<Vec<u8>> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "benchmark_input_bytes_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::FfiCallMode::Normal,
+        },
+        move || {
+            let api_bytes = bytes.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(
+                    crate::api::benchmark_api::benchmark_input_bytes_twin_normal(api_bytes),
+                )
+            }
+        },
+    )
+}
+fn wire_benchmark_output_bytes_twin_normal_impl(
+    port_: flutter_rust_bridge::MessagePort,
+    size: impl Wire2Api<i32> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<u8>, _>(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "benchmark_output_bytes_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::FfiCallMode::Normal,
+        },
+        move || {
+            let api_size = size.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(
+                    crate::api::benchmark_api::benchmark_output_bytes_twin_normal(api_size),
+                )
+            }
+        },
+    )
+}
+fn wire_benchmark_void_twin_normal_impl(port_: flutter_rust_bridge::MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "benchmark_void_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::FfiCallMode::Normal,
+        },
+        move || {
+            move |task_callback| {
+                Result::<_, ()>::Ok(crate::api::benchmark_api::benchmark_void_twin_normal())
+            }
+        },
+    )
+}
 fn wire_datetime_local_twin_normal_impl(
     port_: flutter_rust_bridge::MessagePort,
     d: impl Wire2Api<chrono::DateTime<chrono::Local>> + core::panic::UnwindSafe,
