@@ -318,7 +318,7 @@ impl<EH: ErrorHandler + Sync> Executor for ThreadPoolExecutor<EH> {
         // TODO merge with `execute` case later
         // TODO avoid lock later
 
-        let eh = self.error_handler;
+        // let eh = self.error_handler;
         let eh2 = self.error_handler;
 
         let runtime = crate::rust_async::ASYNC_RUNTIME.lock();
