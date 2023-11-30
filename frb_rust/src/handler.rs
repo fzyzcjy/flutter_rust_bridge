@@ -93,6 +93,7 @@ impl Default for DefaultHandler {
 }
 
 impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
+    // TODO rename all these series (e.g. wrap -> wrap_normal)
     fn wrap<PrepareFn, TaskFn, TaskRet, D, Er>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
     where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
