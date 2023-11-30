@@ -3,6 +3,14 @@ use parking_lot::Mutex;
 use tokio::runtime::Runtime;
 
 lazy_static! {
-    // TODO do not be public (but encapsulate)
-    pub static ref ASYNC_RUNTIME: Mutex<Runtime> = Mutex::new(create_runtime());
+    static ref ASYNC_RUNTIME: Mutex<Runtime> = Mutex::new(create_runtime());
+}
+
+pub(crate) fn spawn<F>(future: F) -> JoinHandle<F::Output>
+where
+    F: Future + Send + 'static,
+    F::Output: Send + 'static,
+{
+    let runtime = ASYNC_RUNTIME.lock();
+    runtime.spawn(future)
 }

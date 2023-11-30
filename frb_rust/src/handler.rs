@@ -2,6 +2,7 @@
 
 use crate::ffi::{IntoDart, MessagePort};
 use crate::rust2dart::{BoxIntoDart, IntoIntoDart, Rust2Dart, Rust2DartAction, TaskCallback};
+use crate::rust_async;
 use crate::support::WireSyncReturn;
 use crate::{spawn, DartAbi};
 use std::any::Any;
@@ -321,8 +322,7 @@ impl<EH: ErrorHandler + Sync> Executor for ThreadPoolExecutor<EH> {
         // let eh = self.error_handler;
         let eh2 = self.error_handler;
 
-        let runtime = crate::rust_async::ASYNC_RUNTIME.lock();
-        runtime.spawn((|| async move {
+        rust_async::spawn((|| async move {
             let WrapInfo { port, mode, .. } = wrap_info;
             let port2 = port.as_ref().cloned();
             // TODO handle catch_unwind
@@ -331,7 +331,8 @@ impl<EH: ErrorHandler + Sync> Executor for ThreadPoolExecutor<EH> {
             #[allow(clippy::clone_on_copy)]
             let rust2dart = Rust2Dart::new(port2.clone());
 
-            let ret = task(TaskCallback::new(rust2dart.clone())).await
+            let ret = task(TaskCallback::new(rust2dart.clone()))
+                .await
                 .map(|e| e.into_into_dart().into_dart());
 
             match ret {
@@ -353,7 +354,7 @@ impl<EH: ErrorHandler + Sync> Executor for ThreadPoolExecutor<EH> {
                 }
             };
             // });
-            // 
+            //
             // if let Err(error) = thread_result {
             //     eh.handle_error(port.expect("(worker) eh"), Error::Panic(error));
             // }
