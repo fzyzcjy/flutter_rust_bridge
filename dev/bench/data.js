@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1701302965678,
+  "lastUpdate": 1701305708815,
   "repoUrl": "https://github.com/fzyzcjy/flutter_rust_bridge",
   "entries": {
     "Flutter Rust Bridge Benchmark": [
@@ -506,6 +506,45 @@ window.BENCHMARK_DATA = {
           {
             "name": "PureDart_ComputePrime_Number900000000013_Macos",
             "value": 10848.356020942409,
+            "unit": "Microseconds"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "ch271828n@outlook.com",
+            "name": "fzyzcjy",
+            "username": "fzyzcjy"
+          },
+          "committer": {
+            "email": "ch271828n@outlook.com",
+            "name": "fzyzcjy",
+            "username": "fzyzcjy"
+          },
+          "distinct": true,
+          "id": "f40381ed6611484dcd65faec944ed96979543864",
+          "message": "feat: output",
+          "timestamp": "2023-11-30T08:53:14+08:00",
+          "tree_id": "47f0b101edb5d033e37571afe46a24f959e7d391",
+          "url": "https://github.com/fzyzcjy/flutter_rust_bridge/commit/f40381ed6611484dcd65faec944ed96979543864"
+        },
+        "date": 1701305706073,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "PureDart_ComputePrime_Number90000049_Ubuntu",
+            "value": 18.681053381309603,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_ComputePrime_Number9000000001_Ubuntu",
+            "value": 205.27513227513228,
+            "unit": "Microseconds"
+          },
+          {
+            "name": "PureDart_ComputePrime_Number900000000013_Ubuntu",
+            "value": 2067.407,
             "unit": "Microseconds"
           }
         ]
