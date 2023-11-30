@@ -22,13 +22,14 @@ class RustGenerator extends BaseGenerator {
   @override
   String generateDuplicateCode(String inputText, DuplicatorMode mode) {
     final prefix = switch (mode) {
-      DuplicatorMode.sync => '#[flutter_rust_bridge::frb(sync)] ',
+      DuplicatorMode.sync => '#[flutter_rust_bridge::frb(sync)] pub fn',
+      DuplicatorMode.rustAsync => 'pub async fn',
     };
 
     return inputText
         .replaceAllMapped(
           RegExp(r'pub fn ([a-zA-Z0-9_-]+?)(_twin_normal)?\('),
-          (m) => '${prefix}pub fn ${m.group(1)}${mode.postfix}(',
+          (m) => '$prefix ${m.group(1)}${mode.postfix}(',
         )
         // struct name, etc
         .replaceAll('TwinNormal', ReCase(mode.postfix).pascalCase)

@@ -6,6 +6,7 @@ import 'package:glob/glob.dart';
 import 'package:glob/list_local_fs.dart';
 import 'package:meta/meta.dart';
 import 'package:path/path.dart' as path;
+import 'package:recase/recase.dart';
 
 abstract class BaseGenerator {
   final Uri packageRootDir;
@@ -50,7 +51,7 @@ enum DuplicatorMode {
   sync,
   rustAsync;
 
-  String get postfix => '_twin_$name';
+  String get postfix => '_twin_${ReCase(name).snakeCase}';
 }
 
 class _Duplicator {
