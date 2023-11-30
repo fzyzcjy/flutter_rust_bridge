@@ -166,6 +166,11 @@ class OutputBytesAsyncRawBenchmark extends AsyncBenchmarkBase {
   }
 
   @override
+  Future<void> teardown() async {
+    receivePort.close();
+  }
+
+  @override
   Future<void> run() async {
     final messageId = nextId++;
     final completer = Completer<Uint8List>();
