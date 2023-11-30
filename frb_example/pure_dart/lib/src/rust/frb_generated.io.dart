@@ -3729,19 +3729,21 @@ class RustLibWire implements BaseWire {
 
   void benchmark_raw_output_bytes(
     int port,
+    int message_id,
     int size,
   ) {
     return _benchmark_raw_output_bytes(
       port,
+      message_id,
       size,
     );
   }
 
-  late final _benchmark_raw_output_bytesPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int, ffi.Int32)>>(
-          'benchmark_raw_output_bytes');
+  late final _benchmark_raw_output_bytesPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int, ffi.Int32, ffi.Int32)>>(
+      'benchmark_raw_output_bytes');
   late final _benchmark_raw_output_bytes =
-      _benchmark_raw_output_bytesPtr.asFunction<void Function(int, int)>();
+      _benchmark_raw_output_bytesPtr.asFunction<void Function(int, int, int)>();
 
   void wire_boxed_blob_twin_normal(
     int port_,

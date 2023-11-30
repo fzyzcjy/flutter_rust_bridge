@@ -1143,7 +1143,7 @@ struct benchmark_raw_list_prim_u_8 benchmark_raw_new_list_prim_u_8(int32_t len);
 
 int32_t benchmark_raw_input_bytes(struct benchmark_raw_list_prim_u_8 bytes);
 
-void benchmark_raw_output_bytes(MessagePort port, int32_t size);
+void benchmark_raw_output_bytes(MessagePort port, int32_t message_id, int32_t size);
 
 void wire_boxed_blob_twin_normal(int64_t port_, struct wire_list_prim_u_8 *blob);
 
