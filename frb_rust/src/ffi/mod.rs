@@ -291,6 +291,7 @@ macro_rules! opaque_dyn {
 
 #[no_mangle]
 pub extern "C" fn initialize_frb_rust() {
-    #[cfg(feature = "rust-async")]
-    crate::rust_async::init();
+    // TODO
+    // #[cfg(feature = "rust-async")]
+    // crate::rust_async::init();
 }
