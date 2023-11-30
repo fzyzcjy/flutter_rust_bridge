@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `dart_opaque.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -82,7 +82,9 @@ pub async fn create_nested_dart_opaque_twin_rust_async(
 
 pub async fn get_nested_dart_opaque_twin_rust_async(opaque: DartOpaqueNestedTwinRustAsync) {}
 
-pub async fn create_enum_dart_opaque_twin_rust_async(opaque: DartOpaque) -> EnumDartOpaqueTwinRustAsync {
+pub async fn create_enum_dart_opaque_twin_rust_async(
+    opaque: DartOpaque,
+) -> EnumDartOpaqueTwinRustAsync {
     EnumDartOpaqueTwinRustAsync::Opaque(opaque)
 }
 

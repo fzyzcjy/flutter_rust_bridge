@@ -19,26 +19,6 @@ pub fn handle_customized_struct_twin_sync(val: CustomizedTwinSync) {
     info!("{:#?}", val);
 }
 
-#[frb]
-#[derive(Debug)]
-pub enum KitchenSinkTwinSync {
-    Empty,
-    #[frb(unimpl_variant_attr)]
-    Primitives {
-        #[frb(default = -1)]
-        int32: i32,
-        float64: f64,
-        boolean: bool,
-    },
-    Nested(
-        i32,
-        #[frb(default = "KitchenSinkTwinSync.empty()")] Box<KitchenSinkTwinSync>,
-    ),
-    Optional(#[frb(default = -1)] Option<i32>, Option<i32>),
-    Buffer(ZeroCopyBuffer<Vec<u8>>),
-    Enums(#[frb(default = "WeekdaysTwinSync.Sunday")] WeekdaysTwinSync),
-}
-
 /// Example for @freezed and @meta.immutable
 #[frb(dart_metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]
 pub struct UserIdTwinSync {
@@ -52,3 +32,6 @@ pub fn next_user_id_twin_sync(user_id: UserIdTwinSync) -> UserIdTwinSync {
         value: user_id.value + 1,
     }
 }
+
+// Note: Some attributes are put on `KitchenSinkTwinSync` currently
+// (but we can add more tests in this file later)

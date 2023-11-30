@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `event_listener.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -26,7 +26,9 @@ impl EventTwinRustAsync {
     }
 }
 
-pub async fn register_event_listener_twin_rust_async(listener: StreamSink<EventTwinRustAsync>) -> Result<()> {
+pub async fn register_event_listener_twin_rust_async(
+    listener: StreamSink<EventTwinRustAsync>,
+) -> Result<()> {
     match EVENTS.lock() {
         Ok(mut guard) => {
             *guard = Some(listener);

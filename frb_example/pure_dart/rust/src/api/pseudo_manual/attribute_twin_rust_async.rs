@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `attribute.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -18,26 +18,6 @@ pub async fn handle_customized_struct_twin_rust_async(val: CustomizedTwinRustAsy
     info!("{:#?}", val);
 }
 
-#[frb]
-#[derive(Debug)]
-pub enum KitchenSinkTwinRustAsync {
-    Empty,
-    #[frb(unimpl_variant_attr)]
-    Primitives {
-        #[frb(default = -1)]
-        int32: i32,
-        float64: f64,
-        boolean: bool,
-    },
-    Nested(
-        i32,
-        #[frb(default = "KitchenSinkTwinRustAsync.empty()")] Box<KitchenSinkTwinRustAsync>,
-    ),
-    Optional(#[frb(default = -1)] Option<i32>, Option<i32>),
-    Buffer(ZeroCopyBuffer<Vec<u8>>),
-    Enums(#[frb(default = "WeekdaysTwinRustAsync.Sunday")] WeekdaysTwinRustAsync),
-}
-
 /// Example for @freezed and @meta.immutable
 #[frb(dart_metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]
 pub struct UserIdTwinRustAsync {
@@ -50,3 +30,6 @@ pub async fn next_user_id_twin_rust_async(user_id: UserIdTwinRustAsync) -> UserI
         value: user_id.value + 1,
     }
 }
+
+// Note: Some attributes are put on `KitchenSinkTwinRustAsync` currently
+// (but we can add more tests in this file later)

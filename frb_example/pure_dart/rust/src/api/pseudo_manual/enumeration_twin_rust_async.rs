@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `enumeration.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -11,7 +11,9 @@ pub enum EnumSimpleTwinRustAsync {
     B,
 }
 
-pub async fn func_enum_simple_twin_rust_async(arg: EnumSimpleTwinRustAsync) -> EnumSimpleTwinRustAsync {
+pub async fn func_enum_simple_twin_rust_async(
+    arg: EnumSimpleTwinRustAsync,
+) -> EnumSimpleTwinRustAsync {
     arg
 }
 
@@ -75,7 +77,9 @@ pub async fn handle_return_enum_twin_rust_async(input: String) -> Option<Weekday
     }
 }
 
-pub async fn handle_enum_parameter_twin_rust_async(weekday: WeekdaysTwinRustAsync) -> WeekdaysTwinRustAsync {
+pub async fn handle_enum_parameter_twin_rust_async(
+    weekday: WeekdaysTwinRustAsync,
+) -> WeekdaysTwinRustAsync {
     info!("The weekday is {:?}", weekday);
     weekday
 }
@@ -98,7 +102,9 @@ pub enum MeasureTwinRustAsync {
     Distance(Box<DistanceTwinRustAsync>),
 }
 
-pub async fn multiply_by_ten_twin_rust_async(measure: MeasureTwinRustAsync) -> Option<MeasureTwinRustAsync> {
+pub async fn multiply_by_ten_twin_rust_async(
+    measure: MeasureTwinRustAsync,
+) -> Option<MeasureTwinRustAsync> {
     match measure {
         MeasureTwinRustAsync::Speed(b) => match *b {
             SpeedTwinRustAsync::GPS(v) => Some(MeasureTwinRustAsync::Speed(Box::new(
@@ -142,7 +148,9 @@ pub enum KitchenSinkTwinRustAsync {
     Enums(#[frb(default = "WeekdaysTwinRustAsync.Sunday")] WeekdaysTwinRustAsync),
 }
 
-pub async fn handle_enum_struct_twin_rust_async(val: KitchenSinkTwinRustAsync) -> KitchenSinkTwinRustAsync {
+pub async fn handle_enum_struct_twin_rust_async(
+    val: KitchenSinkTwinRustAsync,
+) -> KitchenSinkTwinRustAsync {
     use KitchenSinkTwinRustAsync::*;
     use WeekdaysTwinRustAsync::*;
     let inc = |x| x + 1;
@@ -156,7 +164,10 @@ pub async fn handle_enum_struct_twin_rust_async(val: KitchenSinkTwinRustAsync) -
             float64: float64 + 1.,
             boolean: !boolean,
         },
-        Nested(val, nested) => Nested(inc(val), Box::new(handle_enum_struct_twin_rust_async(*nested))),
+        Nested(val, nested) => Nested(
+            inc(val),
+            Box::new(handle_enum_struct_twin_rust_async(*nested)),
+        ),
         Optional(a, b) => Optional(a.map(inc), b.map(inc)),
         Buffer(ZeroCopyBuffer(mut buf)) => {
             buf.push(1);

@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `optional.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -28,7 +28,9 @@ pub struct AttributeTwinRustAsync {
     pub value: String,
 }
 
-pub async fn handle_optional_struct_twin_rust_async(document: Option<String>) -> Option<ElementTwinRustAsync> {
+pub async fn handle_optional_struct_twin_rust_async(
+    document: Option<String>,
+) -> Option<ElementTwinRustAsync> {
     document.map(|inner| ElementTwinRustAsync {
         tag: Some("div".to_owned()),
         attributes: Some(vec![AttributeTwinRustAsync {
