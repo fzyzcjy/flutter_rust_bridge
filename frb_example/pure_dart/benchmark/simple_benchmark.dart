@@ -160,6 +160,7 @@ class OutputBytesAsyncRawBenchmark extends AsyncBenchmarkBase {
     receivePort.handler = (dynamic response) {
       final bytes = response as Uint8List;
       final messageId = ByteData.view(bytes.buffer).getInt32(0, Endian.big);
+      print('hi receive port $messageId');
       // indeed a sublist view of the bytes
       completers.remove(messageId)!.complete(bytes);
     };
@@ -171,8 +172,11 @@ class OutputBytesAsyncRawBenchmark extends AsyncBenchmarkBase {
     final completer = Completer<Uint8List>();
     completers[messageId] = Completer<Uint8List>();
 
+    print('hi call benchmark_raw_output_bytes $messageId');
     _wire.benchmark_raw_output_bytes(sendPort, messageId, len);
+    print('hi before await future');
     final result = await completer.future;
+    print('hi after await future');
 
     // sanity check
     if (result.length != len + 4) throw Exception();
