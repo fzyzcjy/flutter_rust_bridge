@@ -232,7 +232,7 @@ fn generate_code_closure(
         ),
         IrFuncMode::Normal | IrFuncMode::Stream { .. } => {
             let maybe_async_move = if func.rust_async { "async move" } else { "" };
-            format!("{code_wire2api} move |task_callback| {maybe_async_move} {code_call_inner_func_result}")
+            format!("{code_wire2api} move |task_callback| {maybe_async_move} {{ {code_call_inner_func_result} }}")
         }
     }
 }
