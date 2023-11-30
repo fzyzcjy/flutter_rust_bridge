@@ -47,8 +47,8 @@ abstract class BaseGenerator {
 }
 
 enum DuplicatorMode {
-  sync;
-  // TODO rust-async, ...
+  sync,
+  rustAsync;
 
   String get postfix => '_twin_$name';
 }
