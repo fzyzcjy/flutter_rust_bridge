@@ -9,6 +9,8 @@ typedef struct Result_JsValue Result_JsValue;
 
 typedef Dart_CObject *WireSyncReturn;
 
+void initialize_frb_rust(void);
+
 extern void error(const str *msg);
 
 extern struct Result_JsValue post_message(const PortLike *this_, const JsValue *value);

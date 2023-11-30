@@ -219,6 +219,15 @@ class MultiPackageCBinding {
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr
       .asFunction<void Function(DartPostCObjectFnType)>();
 
+  void initialize_frb_rust() {
+    return _initialize_frb_rust();
+  }
+
+  late final _initialize_frb_rustPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('initialize_frb_rust');
+  late final _initialize_frb_rust =
+      _initialize_frb_rustPtr.asFunction<void Function()>();
+
   void error(
     ffi.Pointer<ffi.Int> msg,
   ) {

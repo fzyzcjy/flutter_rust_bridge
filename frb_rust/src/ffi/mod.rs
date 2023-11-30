@@ -286,3 +286,8 @@ macro_rules! opaque_dyn {
         $crate::RustOpaque::new(::std::boxed::Box::new($ex))
     };
 }
+
+#[no_mangle]
+pub extern "C" fn initialize_frb_rust() {
+    todo!()
+}
