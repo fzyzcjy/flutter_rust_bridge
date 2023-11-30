@@ -3927,6 +3927,25 @@ pub fn wire_next_user_id_twin_sync(
 }
 
 #[wasm_bindgen]
+pub fn wire_benchmark_input_bytes_twin_sync(
+    bytes: Box<[u8]>,
+) -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_benchmark_input_bytes_twin_sync_impl(bytes)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_output_bytes_twin_sync(
+    size: i32,
+) -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_benchmark_output_bytes_twin_sync_impl(size)
+}
+
+#[wasm_bindgen]
+pub fn wire_benchmark_void_twin_sync() -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_benchmark_void_twin_sync_impl()
+}
+
+#[wasm_bindgen]
 pub fn wire_datetime_local_twin_sync(d: i64) -> flutter_rust_bridge::support::WireSyncReturn {
     wire_datetime_local_twin_sync_impl(d)
 }

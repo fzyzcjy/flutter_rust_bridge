@@ -2945,6 +2945,45 @@ fn wire_next_user_id_twin_sync_impl(
         },
     )
 }
+fn wire_benchmark_input_bytes_twin_sync_impl(
+    bytes: impl Wire2Api<Vec<u8>> + core::panic::UnwindSafe,
+) -> flutter_rust_bridge::support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "benchmark_input_bytes_twin_sync",
+            port: None,
+            mode: flutter_rust_bridge::FfiCallMode::Sync,
+        },
+        move || {
+            let api_bytes = bytes.wire2api();
+            Result::<_, ()>::Ok(
+                crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_input_bytes_twin_sync(
+                    api_bytes,
+                ),
+            )
+        },
+    )
+}
+fn wire_benchmark_output_bytes_twin_sync_impl(
+    size: impl Wire2Api<i32> + core::panic::UnwindSafe,
+) -> flutter_rust_bridge::support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(flutter_rust_bridge::WrapInfo{ debug_name: "benchmark_output_bytes_twin_sync", port: None, mode: flutter_rust_bridge::FfiCallMode::Sync }, move || { let api_size = size.wire2api();
+                Result::<_,()>::Ok(crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_output_bytes_twin_sync(api_size)) })
+}
+fn wire_benchmark_void_twin_sync_impl() -> flutter_rust_bridge::support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "benchmark_void_twin_sync",
+            port: None,
+            mode: flutter_rust_bridge::FfiCallMode::Sync,
+        },
+        move || {
+            Result::<_, ()>::Ok(
+                crate::api::pseudo_manual::benchmark_api_twin_sync::benchmark_void_twin_sync(),
+            )
+        },
+    )
+}
 fn wire_datetime_local_twin_sync_impl(
     d: impl Wire2Api<chrono::DateTime<chrono::Local>> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::support::WireSyncReturn {

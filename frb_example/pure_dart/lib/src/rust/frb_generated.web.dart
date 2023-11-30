@@ -24,6 +24,7 @@ import 'api/primitive_list_misc.dart';
 import 'api/primitive_misc.dart';
 import 'api/pseudo_manual/array_twin_sync.dart';
 import 'api/pseudo_manual/attribute_twin_sync.dart';
+import 'api/pseudo_manual/benchmark_api_twin_sync.dart';
 import 'api/pseudo_manual/chrono_type_twin_sync.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/dart_dynamic_twin_sync.dart';
@@ -3007,6 +3008,18 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_next_user_id_twin_sync(user_id);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_benchmark_input_bytes_twin_sync(Uint8List bytes) =>
+          wasmModule.wire_benchmark_input_bytes_twin_sync(bytes);
+
+  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_benchmark_output_bytes_twin_sync(int size) =>
+          wasmModule.wire_benchmark_output_bytes_twin_sync(size);
+
+  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_benchmark_void_twin_sync() =>
+          wasmModule.wire_benchmark_void_twin_sync();
+
+  dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_datetime_local_twin_sync(Object d) =>
           wasmModule.wire_datetime_local_twin_sync(d);
 
@@ -4739,6 +4752,15 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_next_user_id_twin_sync(List<dynamic> user_id);
+
+  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_benchmark_input_bytes_twin_sync(Uint8List bytes);
+
+  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_benchmark_output_bytes_twin_sync(int size);
+
+  external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
+      wire_benchmark_void_twin_sync();
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_datetime_local_twin_sync(Object d);

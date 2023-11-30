@@ -1549,6 +1549,12 @@ WireSyncReturn wire_handle_customized_struct_twin_sync(struct wire_customized_tw
 
 WireSyncReturn wire_next_user_id_twin_sync(struct wire_user_id_twin_sync *user_id);
 
+WireSyncReturn wire_benchmark_input_bytes_twin_sync(struct wire_list_prim_u_8 *bytes);
+
+WireSyncReturn wire_benchmark_output_bytes_twin_sync(int32_t size);
+
+WireSyncReturn wire_benchmark_void_twin_sync(void);
+
 WireSyncReturn wire_datetime_local_twin_sync(int64_t d);
 
 WireSyncReturn wire_datetime_utc_twin_sync(int64_t d);
@@ -2970,8 +2976,11 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_async_accept_dart_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_async_accept_dart_opaque_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_benchmark_input_bytes_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_input_bytes_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_benchmark_output_bytes_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_output_bytes_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_benchmark_void_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_benchmark_void_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_boxed_blob_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_boxed_blob_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_call_new_module_system_twin_normal);

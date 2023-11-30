@@ -6836,6 +6836,25 @@ pub extern "C" fn wire_next_user_id_twin_sync(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_benchmark_input_bytes_twin_sync(
+    bytes: *mut wire_list_prim_u_8,
+) -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_benchmark_input_bytes_twin_sync_impl(bytes)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_output_bytes_twin_sync(
+    size: i32,
+) -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_benchmark_output_bytes_twin_sync_impl(size)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_benchmark_void_twin_sync() -> flutter_rust_bridge::support::WireSyncReturn {
+    wire_benchmark_void_twin_sync_impl()
+}
+
+#[no_mangle]
 pub extern "C" fn wire_datetime_local_twin_sync(
     d: i64,
 ) -> flutter_rust_bridge::support::WireSyncReturn {

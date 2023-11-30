@@ -1,5 +1,6 @@
 pub mod array_twin_sync;
 pub mod attribute_twin_sync;
+pub mod benchmark_api_twin_sync;
 pub mod chrono_type_twin_sync;
 pub mod comment_twin_sync;
 pub mod dart_dynamic_twin_sync;

@@ -24,6 +24,7 @@ import 'api/primitive_list_misc.dart';
 import 'api/primitive_misc.dart';
 import 'api/pseudo_manual/array_twin_sync.dart';
 import 'api/pseudo_manual/attribute_twin_sync.dart';
+import 'api/pseudo_manual/benchmark_api_twin_sync.dart';
 import 'api/pseudo_manual/chrono_type_twin_sync.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/dart_dynamic_twin_sync.dart';
@@ -6735,6 +6736,47 @@ class RustLibWire implements BaseWire {
   late final _wire_next_user_id_twin_sync =
       _wire_next_user_id_twin_syncPtr.asFunction<
           WireSyncReturn Function(ffi.Pointer<wire_user_id_twin_sync>)>();
+
+  WireSyncReturn wire_benchmark_input_bytes_twin_sync(
+    ffi.Pointer<wire_list_prim_u_8> bytes,
+  ) {
+    return _wire_benchmark_input_bytes_twin_sync(
+      bytes,
+    );
+  }
+
+  late final _wire_benchmark_input_bytes_twin_syncPtr = _lookup<
+          ffi.NativeFunction<
+              WireSyncReturn Function(ffi.Pointer<wire_list_prim_u_8>)>>(
+      'wire_benchmark_input_bytes_twin_sync');
+  late final _wire_benchmark_input_bytes_twin_sync =
+      _wire_benchmark_input_bytes_twin_syncPtr.asFunction<
+          WireSyncReturn Function(ffi.Pointer<wire_list_prim_u_8>)>();
+
+  WireSyncReturn wire_benchmark_output_bytes_twin_sync(
+    int size,
+  ) {
+    return _wire_benchmark_output_bytes_twin_sync(
+      size,
+    );
+  }
+
+  late final _wire_benchmark_output_bytes_twin_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int32)>>(
+          'wire_benchmark_output_bytes_twin_sync');
+  late final _wire_benchmark_output_bytes_twin_sync =
+      _wire_benchmark_output_bytes_twin_syncPtr
+          .asFunction<WireSyncReturn Function(int)>();
+
+  WireSyncReturn wire_benchmark_void_twin_sync() {
+    return _wire_benchmark_void_twin_sync();
+  }
+
+  late final _wire_benchmark_void_twin_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+          'wire_benchmark_void_twin_sync');
+  late final _wire_benchmark_void_twin_sync =
+      _wire_benchmark_void_twin_syncPtr.asFunction<WireSyncReturn Function()>();
 
   WireSyncReturn wire_datetime_local_twin_sync(
     int d,

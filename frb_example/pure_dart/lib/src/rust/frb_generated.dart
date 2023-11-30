@@ -24,6 +24,7 @@ import 'api/primitive_list_misc.dart';
 import 'api/primitive_misc.dart';
 import 'api/pseudo_manual/array_twin_sync.dart';
 import 'api/pseudo_manual/attribute_twin_sync.dart';
+import 'api/pseudo_manual/benchmark_api_twin_sync.dart';
 import 'api/pseudo_manual/chrono_type_twin_sync.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/dart_dynamic_twin_sync.dart';
@@ -595,6 +596,12 @@ abstract class RustLibApi extends BaseApi {
 
   UserIdTwinSync nextUserIdTwinSync(
       {required UserIdTwinSync userId, dynamic hint});
+
+  int benchmarkInputBytesTwinSync({required Uint8List bytes, dynamic hint});
+
+  Uint8List benchmarkOutputBytesTwinSync({required int size, dynamic hint});
+
+  void benchmarkVoidTwinSync({dynamic hint});
 
   DateTime datetimeLocalTwinSync({required DateTime d, dynamic hint});
 
@@ -5061,6 +5068,64 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kNextUserIdTwinSyncConstMeta => const TaskConstMeta(
         debugName: "next_user_id_twin_sync",
         argNames: ["userId"],
+      );
+
+  @override
+  int benchmarkInputBytesTwinSync({required Uint8List bytes, dynamic hint}) {
+    var arg0 = api2wire_list_prim_u_8(bytes);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_benchmark_input_bytes_twin_sync(arg0),
+      parseSuccessData: _wire2api_i_32,
+      parseErrorData: null,
+      constMeta: kBenchmarkInputBytesTwinSyncConstMeta,
+      argValues: [bytes],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkInputBytesTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_input_bytes_twin_sync",
+        argNames: ["bytes"],
+      );
+
+  @override
+  Uint8List benchmarkOutputBytesTwinSync({required int size, dynamic hint}) {
+    var arg0 = api2wire_i_32(size);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_benchmark_output_bytes_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_prim_u_8,
+      parseErrorData: null,
+      constMeta: kBenchmarkOutputBytesTwinSyncConstMeta,
+      argValues: [size],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkOutputBytesTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "benchmark_output_bytes_twin_sync",
+        argNames: ["size"],
+      );
+
+  @override
+  void benchmarkVoidTwinSync({dynamic hint}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_benchmark_void_twin_sync(),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kBenchmarkVoidTwinSyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBenchmarkVoidTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "benchmark_void_twin_sync",
+        argNames: [],
       );
 
   @override
