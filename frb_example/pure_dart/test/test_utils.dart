@@ -85,4 +85,6 @@ Matcher throwsAPanicException({String? messageOnNative}) {
 /// Hack to make generated pseudo-manual tests be happy about async and sync
 Future<void> futurizeVoidTwinNormal(Future<void> x) async {}
 
+Future<void> futurizeVoidTwinRustAsync(Future<void> x) async {}
+
 Future<void> futurizeVoidTwinSync(void x) async {}
