@@ -1,11 +1,16 @@
 import 'dart:ffi' as ffi;
 
 import 'package:ffi/ffi.dart';
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:frb_example_deliberate_bad/src/rust/api/simple.dart';
 import 'package:frb_example_deliberate_bad/src/rust/frb_generated.dart';
 
 Future<void> main(List<String> args) async {
-  await RustLib.init();
+  await RustLib.init(
+    // because we unconventionally specified the `--target` in cargo build
+    externalLibrary: ExternalLibrary.open(
+        'rust/target/x86_64-unknown-linux-gnu/release/libfrb_example_deliberate_bad.so'),
+  );
 
   switch (args[0]) {
     case 'DartOnly_Good':
