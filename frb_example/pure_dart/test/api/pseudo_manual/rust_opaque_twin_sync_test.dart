@@ -70,8 +70,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
     data.dispose();
-    await expectLater(
-        () => runOpaqueTwinSync(opaque: data), throwsA(isA<PanicException>()));
+    await expectThrowsPanic(() => runOpaqueTwinSync(opaque: data), 'TwinSync');
   });
 
   test('dispose before complete', () async {
@@ -87,8 +86,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
         "lifetime: \"static str\" "
         "})");
-    await expectLater(
-        () => runOpaqueTwinSync(opaque: data), throwsA(isA<PanicException>()));
+    await expectThrowsPanic(() => runOpaqueTwinSync(opaque: data), 'TwinSync');
   });
 
   test('create array of opaque type', () async {
@@ -104,8 +102,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
           "lifetime: \"static str\" "
           "})");
       v.dispose();
-      await expectLater(
-          () => runOpaqueTwinSync(opaque: v), throwsA(isA<PanicException>()));
+      await expectThrowsPanic(() => runOpaqueTwinSync(opaque: v), 'TwinSync');
     }
   });
 
@@ -150,8 +147,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \\\"static str\\\" "
         "})\"");
     (data[4] as EnumOpaqueTwinSync_RwLock).field0.dispose();
-    await expectLater(() => runEnumOpaqueTwinSync(opaque: data[4]),
-        throwsA(isA<PanicException>()));
+    await expectThrowsPanic(
+        () => runEnumOpaqueTwinSync(opaque: data[4]), 'TwinSync');
   });
 
   test('opaque field', () async {
@@ -177,10 +174,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
     data.first.dispose();
-    await expectLater(() => runOpaqueTwinSync(opaque: data.first),
-        throwsA(isA<PanicException>()));
-    await expectLater(() => runNestedOpaqueTwinSync(opaque: data),
-        throwsA(isA<PanicException>()));
+    await expectThrowsPanic(
+        () => runOpaqueTwinSync(opaque: data.first), 'TwinSync');
+    await expectThrowsPanic(
+        () => runNestedOpaqueTwinSync(opaque: data), 'TwinSync');
     expect(
         await runOpaqueTwinSync(opaque: data.second),
         "content - Some(PrivateData "
@@ -208,8 +205,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
 
-    await expectLater(() => opaqueArrayRunTwinSync(data: data),
-        throwsA(isA<PanicException>()));
+    await expectThrowsPanic(
+        () => opaqueArrayRunTwinSync(data: data), 'TwinSync');
     data[1].dispose();
   });
 
@@ -228,8 +225,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
 
-    await expectLater(
-        () => opaqueVecRunTwinSync(data: data), throwsA(isA<PanicException>()));
+    await expectThrowsPanic(() => opaqueVecRunTwinSync(data: data), 'TwinSync');
     data[1].dispose();
   });
 

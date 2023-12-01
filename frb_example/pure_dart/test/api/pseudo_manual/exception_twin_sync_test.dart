@@ -20,18 +20,21 @@ Future<void> main({bool skipRustLibInit = false}) async {
               .having((x) => x.message, 'message', 'deliberate error')));
     });
     test('call funcTypeFalliblePanicTwinSync', () async {
-      await expectLater(() async => funcTypeFalliblePanicTwinSync(),
-          throwsAPanicException(messageOnNative: 'deliberate panic'));
+      await expectThrowsPanic(
+          () async => funcTypeFalliblePanicTwinSync(), 'TwinSync',
+          messageOnNative: 'deliberate panic');
     });
     test('call funcTypeInfalliblePanicTwinSync', () async {
-      await expectLater(() async => funcTypeInfalliblePanicTwinSync(),
-          throwsAPanicException(messageOnNative: 'deliberate panic'));
+      await expectThrowsPanic(
+          () async => funcTypeInfalliblePanicTwinSync(), 'TwinSync',
+          messageOnNative: 'deliberate panic');
     });
 
     addTestsIdentityFunctionCall(customEnumErrorReturnOkTwinSync, [100]);
     test('call customEnumErrorPanicTwinSync', () async {
-      await expectLater(() async => customEnumErrorPanicTwinSync(),
-          throwsAPanicException(messageOnNative: 'deliberate panic'));
+      await expectThrowsPanic(
+          () async => customEnumErrorPanicTwinSync(), 'TwinSync',
+          messageOnNative: 'deliberate panic');
     });
 
     test('call funcReturnErrorTwinSync', () async {

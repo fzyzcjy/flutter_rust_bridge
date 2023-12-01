@@ -20,18 +20,21 @@ Future<void> main({bool skipRustLibInit = false}) async {
               .having((x) => x.message, 'message', 'deliberate error')));
     });
     test('call funcTypeFalliblePanicTwinRustAsync', () async {
-      await expectLater(() async => funcTypeFalliblePanicTwinRustAsync(),
-          throwsAPanicException(messageOnNative: 'deliberate panic'));
+      await expectThrowsPanic(
+          () async => funcTypeFalliblePanicTwinRustAsync(), 'TwinRustAsync',
+          messageOnNative: 'deliberate panic');
     });
     test('call funcTypeInfalliblePanicTwinRustAsync', () async {
-      await expectLater(() async => funcTypeInfalliblePanicTwinRustAsync(),
-          throwsAPanicException(messageOnNative: 'deliberate panic'));
+      await expectThrowsPanic(
+          () async => funcTypeInfalliblePanicTwinRustAsync(), 'TwinRustAsync',
+          messageOnNative: 'deliberate panic');
     });
 
     addTestsIdentityFunctionCall(customEnumErrorReturnOkTwinRustAsync, [100]);
     test('call customEnumErrorPanicTwinRustAsync', () async {
-      await expectLater(() async => customEnumErrorPanicTwinRustAsync(),
-          throwsAPanicException(messageOnNative: 'deliberate panic'));
+      await expectThrowsPanic(
+          () async => customEnumErrorPanicTwinRustAsync(), 'TwinRustAsync',
+          messageOnNative: 'deliberate panic');
     });
 
     test('call funcReturnErrorTwinRustAsync', () async {
