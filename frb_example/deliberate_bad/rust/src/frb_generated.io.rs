@@ -17,6 +17,11 @@ impl<T> NewWithNullPtr for *mut T {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_minimal_adder(port_: i64, a: i32, b: i32) {
-    wire_minimal_adder_impl(port_, a, b)
+pub extern "C" fn wire_make_heap_use_after_free(port_: i64) {
+    wire_make_heap_use_after_free_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_make_stack_buffer_overflow(port_: i64) {
+    wire_make_stack_buffer_overflow_impl(port_)
 }

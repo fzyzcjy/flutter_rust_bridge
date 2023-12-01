@@ -1,6 +1,6 @@
 // ignore_for_file: unused_import, unused_element, duplicate_ignore
 
-import 'api/minimal.dart';
+import 'api/simple.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart';
@@ -38,14 +38,16 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   @override
   ExternalLibraryLoaderConfig get defaultExternalLibraryLoaderConfig =>
       const ExternalLibraryLoaderConfig(
-        stem: 'frb_example_dart_minimal',
+        stem: 'frb_example_deliberate_bad',
         ioDirectory: 'rust/target/release/',
         webPrefix: 'pkg/',
       );
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<int> minimalAdder({required int a, required int b, dynamic hint});
+  Future<void> makeHeapUseAfterFree({dynamic hint});
+
+  Future<void> makeStackBufferOverflow({dynamic hint});
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -57,32 +59,42 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<int> minimalAdder({required int a, required int b, dynamic hint}) {
-    var arg0 = api2wire_i_32(a);
-    var arg1 = api2wire_i_32(b);
+  Future<void> makeHeapUseAfterFree({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_minimal_adder(port_, arg0, arg1),
-      parseSuccessData: _wire2api_i_32,
+      callFfi: (port_) => wire.wire_make_heap_use_after_free(port_),
+      parseSuccessData: _wire2api_unit,
       parseErrorData: null,
-      constMeta: kMinimalAdderConstMeta,
-      argValues: [a, b],
+      constMeta: kMakeHeapUseAfterFreeConstMeta,
+      argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kMinimalAdderConstMeta => const TaskConstMeta(
-        debugName: "minimal_adder",
-        argNames: ["a", "b"],
+  TaskConstMeta get kMakeHeapUseAfterFreeConstMeta => const TaskConstMeta(
+        debugName: "make_heap_use_after_free",
+        argNames: [],
       );
 
-  int _wire2api_i_32(dynamic raw) {
-    return raw as int;
+  @override
+  Future<void> makeStackBufferOverflow({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_make_stack_buffer_overflow(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kMakeStackBufferOverflowConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
   }
-}
 
-// Section: api2wire_funcs
+  TaskConstMeta get kMakeStackBufferOverflowConstMeta => const TaskConstMeta(
+        debugName: "make_stack_buffer_overflow",
+        argNames: [],
+      );
 
-int api2wire_i_32(int raw) {
-  return raw;
+  void _wire2api_unit(dynamic raw) {
+    return;
+  }
 }

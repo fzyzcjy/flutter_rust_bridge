@@ -23,22 +23,28 @@ use flutter_rust_bridge::Handler;
 
 // Section: wire_funcs
 
-fn wire_minimal_adder_impl(
-    port_: flutter_rust_bridge::MessagePort,
-    a: impl Wire2Api<i32> + core::panic::UnwindSafe,
-    b: impl Wire2Api<i32> + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
+fn wire_make_heap_use_after_free_impl(port_: flutter_rust_bridge::MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         flutter_rust_bridge::WrapInfo {
-            debug_name: "minimal_adder",
+            debug_name: "make_heap_use_after_free",
             port: Some(port_),
             mode: flutter_rust_bridge::FfiCallMode::Normal,
         },
         move || {
-            let api_a = a.wire2api();
-            let api_b = b.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(crate::api::simple::make_heap_use_after_free())
+        },
+    )
+}
+fn wire_make_stack_buffer_overflow_impl(port_: flutter_rust_bridge::MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "make_stack_buffer_overflow",
+            port: Some(port_),
+            mode: flutter_rust_bridge::FfiCallMode::Normal,
+        },
+        move || {
             move |task_callback| {
-                Result::<_, ()>::Ok(crate::api::simple::minimal_adder(api_a, api_b))
+                Result::<_, ()>::Ok(crate::api::simple::make_stack_buffer_overflow())
             }
         },
     )
@@ -62,11 +68,6 @@ where
 {
     fn wire2api(self) -> Option<T> {
         (!self.is_null()).then(|| self.wire2api())
-    }
-}
-impl Wire2Api<i32> for i32 {
-    fn wire2api(self) -> i32 {
-        self
     }
 }
 

@@ -16,13 +16,13 @@ where
         (!self.is_null() && !self.is_undefined()).then(|| self.wire2api())
     }
 }
-impl Wire2Api<i32> for flutter_rust_bridge::wasm_bindgen::JsValue {
-    fn wire2api(self) -> i32 {
-        self.unchecked_into_f64() as _
-    }
+
+#[wasm_bindgen]
+pub fn wire_make_heap_use_after_free(port_: flutter_rust_bridge::MessagePort) {
+    wire_make_heap_use_after_free_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_minimal_adder(port_: flutter_rust_bridge::MessagePort, a: i32, b: i32) {
-    wire_minimal_adder_impl(port_, a, b)
+pub fn wire_make_stack_buffer_overflow(port_: flutter_rust_bridge::MessagePort) {
+    wire_make_stack_buffer_overflow_impl(port_)
 }

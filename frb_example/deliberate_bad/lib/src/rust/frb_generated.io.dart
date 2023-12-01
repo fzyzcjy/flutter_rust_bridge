@@ -1,6 +1,6 @@
 // ignore_for_file: unused_import, unused_element, duplicate_ignore
 
-import 'api/minimal.dart';
+import 'api/simple.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'dart:ffi' as ffi;
@@ -43,24 +43,33 @@ class RustLibWire implements BaseWire {
           lookup)
       : _lookup = lookup;
 
-  void wire_minimal_adder(
+  void wire_make_heap_use_after_free(
     int port_,
-    int a,
-    int b,
   ) {
-    return _wire_minimal_adder(
+    return _wire_make_heap_use_after_free(
       port_,
-      a,
-      b,
     );
   }
 
-  late final _wire_minimal_adderPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>(
-      'wire_minimal_adder');
-  late final _wire_minimal_adder =
-      _wire_minimal_adderPtr.asFunction<void Function(int, int, int)>();
+  late final _wire_make_heap_use_after_freePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_make_heap_use_after_free');
+  late final _wire_make_heap_use_after_free =
+      _wire_make_heap_use_after_freePtr.asFunction<void Function(int)>();
+
+  void wire_make_stack_buffer_overflow(
+    int port_,
+  ) {
+    return _wire_make_stack_buffer_overflow(
+      port_,
+    );
+  }
+
+  late final _wire_make_stack_buffer_overflowPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_make_stack_buffer_overflow');
+  late final _wire_make_stack_buffer_overflow =
+      _wire_make_stack_buffer_overflowPtr.asFunction<void Function(int)>();
 
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_import, unused_element, duplicate_ignore
 
-import 'api/minimal.dart';
+import 'api/simple.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'frb_generated.dart';
@@ -22,8 +22,11 @@ class RustLibWire extends BaseWire {
   // : super(WasmModule.cast<RustLibWasmModule>(lib.wasmModule));
   RustLibWire.fromExternalLibrary(ExternalLibrary lib) {}
 
-  void wire_minimal_adder(NativePortType port_, int a, int b) =>
-      wasmModule.wire_minimal_adder(port_, a, b);
+  void wire_make_heap_use_after_free(NativePortType port_) =>
+      wasmModule.wire_make_heap_use_after_free(port_);
+
+  void wire_make_stack_buffer_overflow(NativePortType port_) =>
+      wasmModule.wire_make_stack_buffer_overflow(port_);
 }
 
 @JS('wasm_bindgen')
@@ -36,5 +39,7 @@ class RustLibWasmModule implements WasmModule {
 
   external RustLibWasmModule bind(dynamic thisArg, String moduleName);
 
-  external void wire_minimal_adder(NativePortType port_, int a, int b);
+  external void wire_make_heap_use_after_free(NativePortType port_);
+
+  external void wire_make_stack_buffer_overflow(NativePortType port_);
 }
