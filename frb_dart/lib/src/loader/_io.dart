@@ -30,12 +30,17 @@ ExternalLibrary loadExternalLibraryRaw({
 
   ExternalLibrary tryAssumingNonPackaged(
       String name, ExternalLibrary Function(String debugInfo) fallback) {
-    if (nativeLibDirWhenNonPackaged == null) {
+    final effectiveNativeLibDir = Platform
+            .environment['FRB_DART_LOAD_EXTERNAL_LIBRARY_NATIVE_LIB_DIR']
+            ?.toUriDirectory() ??
+        nativeLibDirWhenNonPackaged;
+
+    if (effectiveNativeLibDir == null) {
       return fallback(
-          '(without trying nativeLibDirWhenNonPackaged since it is null)');
+          '(without trying effectiveNativeLibDir since it is null)');
     }
 
-    final filePath = nativeLibDirWhenNonPackaged.resolve(name).toFilePath();
+    final filePath = effectiveNativeLibDir.resolve(name).toFilePath();
     if (!File(filePath).existsSync()) {
       return fallback('(after trying $filePath but it does not exist)');
     }
@@ -83,4 +88,8 @@ ExternalLibrary _tryOpen(String name, String debugInfo,
   } catch (e) {
     return fallback('$debugInfo (after trying $name but has error $e)');
   }
+}
+
+extension on String {
+  Uri toUriDirectory() => Uri.directory(this);
 }

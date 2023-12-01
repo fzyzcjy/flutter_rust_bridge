@@ -6,11 +6,7 @@ import 'package:frb_example_deliberate_bad/src/rust/api/simple.dart';
 import 'package:frb_example_deliberate_bad/src/rust/frb_generated.dart';
 
 Future<void> main(List<String> args) async {
-  await RustLib.init(
-    // because we unconventionally specified the `--target` in cargo build
-    externalLibrary: ExternalLibrary.open(
-        'rust/target/x86_64-unknown-linux-gnu/release/libfrb_example_deliberate_bad.so'),
-  );
+  await RustLib.init();
 
   switch (args[0]) {
     case 'DartOnly_Good':
