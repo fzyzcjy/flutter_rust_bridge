@@ -9,6 +9,7 @@ void main(List<String> args) async => simpleBuild(
         [
           '+nightly',
           'build',
+          '--lib',
           '--release',
           ...CargoBuildAsanInfo.kExtraArgs,
         ],
