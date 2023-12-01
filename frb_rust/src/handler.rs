@@ -333,7 +333,7 @@ impl<EH: ErrorHandler + Sync> Executor for ThreadPoolExecutor<EH> {
         let eh = self.error_handler;
         let eh2 = self.error_handler;
 
-        rust_async::spawn((|| async move {
+        rust_async::spawn(async move {
             let WrapInfo { port, mode, .. } = wrap_info;
             let port2 = port.as_ref().cloned();
 
@@ -370,7 +370,7 @@ impl<EH: ErrorHandler + Sync> Executor for ThreadPoolExecutor<EH> {
             if let Err(error) = thread_result {
                 eh.handle_error(port.expect("(worker) eh"), Error::Panic(error));
             }
-        })());
+        });
     }
 }
 

@@ -8,7 +8,7 @@ lazy_static! {
     static ref ASYNC_RUNTIME: Mutex<Runtime> = Mutex::new(Runtime::new().unwrap());
 }
 
-pub(crate) fn spawn<F>(future: F) -> JoinHandle<F::Output>
+pub fn spawn<F>(future: F) -> JoinHandle<F::Output>
 where
     F: Future + Send + 'static,
     F::Output: Send + 'static,

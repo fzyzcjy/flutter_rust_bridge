@@ -8021,6 +8021,7 @@ pub struct mirror_Sequences(crate::api::pseudo_manual::mirror_twin_sync::Sequenc
 
 // Section: static_checks
 
+#[allow(clippy::unnecessary_literal_unwrap)]
 const _: fn() = || {
     {
         let ApplicationEnv =

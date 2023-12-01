@@ -129,6 +129,7 @@ fn generate_static_checks(types: &[IrType], context: WireRustGeneratorContext) -
     }
 
     let mut lines = vec![];
+    lines.push("#[allow(clippy::unnecessary_literal_unwrap)]".to_owned());
     lines.push("const _: fn() = || {".to_owned());
     lines.extend(raw);
     lines.push("};".to_owned());
