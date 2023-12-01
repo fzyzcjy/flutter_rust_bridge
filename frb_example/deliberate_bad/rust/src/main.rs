@@ -1,7 +1,7 @@
 use std::env;
 
 fn main() {
-    match &env::args().skip(1).next().unwrap()[..] {
+    match &env::args().nth(1).unwrap()[..] {
         "RustOnly_Good" => println!("This is good code"),
         "RustOnly_StackBufferOverflow" => {
             // example from https://doc.rust-lang.org/beta/unstable-book/compiler-flags/sanitizer.html
