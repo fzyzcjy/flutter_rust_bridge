@@ -7,6 +7,9 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:path/path.dart' as path;
 
+// for rust san also ref
+// * https://doc.rust-lang.org/beta/unstable-book/compiler-flags/sanitizer.html
+// * https://github.com/japaric/rust-san
 Future<void> run(TestDartSanitizerConfig config) async {
   await runPubGetIfNotRunYet(config.package);
 
@@ -19,10 +22,11 @@ Future<void> run(TestDartSanitizerConfig config) async {
 
 Future<void> _runEntrypoint(TestDartSanitizerConfig config) async {
   final sanitizedDart = await _getSanitizedDartBinary(config);
-  await _execAndCheckWithAsanEnvVar(
+  await _execAndCheckWithSanitizerEnvVar(
     '$sanitizedDart --enable-experiment=native-assets run test/dart_valgrind_test_entrypoint.dart',
     const _Info(
         name: 'entrypoint', expectSucceed: true, expectStderrContains: ''),
+    config.sanitizer,
     relativePwd: config.package,
   );
 }
@@ -53,9 +57,10 @@ Future<void> _runPackageDeliberateBadRustOnly(
   ];
 
   for (final info in kInfos) {
-    await _execAndCheckWithAsanEnvVar(
+    await _execAndCheckWithSanitizerEnvVar(
       'cargo +nightly run $_cargoBuildExtraArgs ${info.name}',
       info,
+      config.sanitizer,
       relativePwd: '${config.package}/rust',
     );
   }
@@ -92,10 +97,11 @@ Future<void> _runPackageDeliberateBadWithDart(
 
   final sanitizedDart = await _getSanitizedDartBinary(config);
   for (final info in kInfos) {
-    await _execAndCheckWithAsanEnvVar(
+    await _execAndCheckWithSanitizerEnvVar(
       '$sanitizedDart --enable-experiment=native-assets run '
       'frb_example_deliberate_bad ${info.name}',
       info,
+      config.sanitizer,
       relativePwd: config.package,
     );
   }
@@ -113,18 +119,19 @@ class _Info {
   });
 }
 
-Future<void> _execAndCheckWithAsanEnvVar(
+Future<void> _execAndCheckWithSanitizerEnvVar(
   String cmd,
-  _Info info, {
+  _Info info,
+  Sanitizer sanitizer, {
   required String relativePwd,
 }) async {
-  print('====== execAndCheckWithAsanEnvVar name=${info.name} ======');
+  print('====== execAndCheckWithSanitizerEnvVar name=${info.name} ======');
 
   final output = await exec(
     cmd,
     relativePwd: relativePwd,
     extraEnv: {
-      'RUSTFLAGS': '-Zsanitizer=address',
+      'RUSTFLAGS': '-Zsanitizer=${sanitizer.rustflagValue}',
       'FRB_SIMPLE_BUILD_CARGO_NIGHTLY': '1',
       'FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS': _cargoBuildExtraArgs,
       // because we unconventionally specified the `--target` in cargo build
@@ -149,12 +156,13 @@ Future<void> _execAndCheckWithAsanEnvVar(
 
 Future<String> _getSanitizedDartBinary(TestDartSanitizerConfig config) async {
   if (config.useLocalSanitizedDartBinary) {
-    return '~/dart-sdk/sdk/out/ReleaseASANX64/dart-sdk/bin/dart';
+    return '~/dart-sdk/sdk/out/${config.sanitizer.dartSdkBuildOutDir}/dart-sdk/bin/dart';
   }
 
   const url =
       'https://github.com/fzyzcjy/dart_lang_ci/releases/download/Build_2023.12.01_06-51-09/dart';
-  final pathBin = path.join(Directory.systemTemp.path, 'dart_ReleaseASANX64');
+  final pathBin = path.join(
+      Directory.systemTemp.path, 'dart_${config.sanitizer.dartSdkBuildOutDir}');
   if (await File(pathBin).exists()) {
     print('Skip downloading artifat since $pathBin already exists');
   } else {
@@ -166,3 +174,19 @@ Future<String> _getSanitizedDartBinary(TestDartSanitizerConfig config) async {
 }
 
 const _cargoBuildExtraArgs = '-Zbuild-std --target x86_64-unknown-linux-gnu';
+
+extension on Sanitizer {
+  String get rustflagValue {
+    return switch (this) {
+      Sanitizer.asan => 'address',
+      Sanitizer.lsan => 'leak',
+    };
+  }
+
+  String get dartSdkBuildOutDir {
+    return switch (this) {
+      Sanitizer.asan => 'ReleaseASANX64',
+      Sanitizer.lsan => 'ReleaseLSANX64',
+    };
+  }
+}
