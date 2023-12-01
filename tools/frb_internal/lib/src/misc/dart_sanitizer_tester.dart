@@ -38,18 +38,18 @@ Future<void> _runPackageDeliberateBad(TestDartSanitizerConfig config) async {
 
 Future<void> _runPackageDeliberateBadRustOnly(
     TestDartSanitizerConfig config) async {
-  const kInfos = [
-    _Info(
+  final kInfos = [
+    const _Info(
       name: 'RustOnly_Good',
       expectSucceed: true,
       expectStderrContains: '',
     ),
-    _Info(
+    const _Info(
       name: 'RustOnly_StackBufferOverflow',
       expectSucceed: false,
       expectStderrContains: 'ERROR: AddressSanitizer: stack-buffer-overflow',
     ),
-    _Info(
+    const _Info(
       name: 'RustOnly_HeapUseAfterFree',
       expectSucceed: false,
       expectStderrContains: 'ERROR: AddressSanitizer: heap-use-after-free',
@@ -68,27 +68,27 @@ Future<void> _runPackageDeliberateBadRustOnly(
 
 Future<void> _runPackageDeliberateBadWithDart(
     TestDartSanitizerConfig config) async {
-  const kInfos = [
-    _Info(
+  final kInfos = [
+    const _Info(
       name: 'DartOnly_Good',
       expectSucceed: true,
       expectStderrContains: '',
     ),
     // NOTE ASAN does not report this as buggy...
-    _Info(
+    const _Info(
       name: 'DartOnly_HeapUseAfterFree',
       expectSucceed: true,
       expectStderrContains: '',
     ),
 
     // NOTE It should fail, but ASAN did not realize this case...
-    _Info(
+    const _Info(
       name: 'DartCallRust_StackBufferOverflow',
       expectSucceed: true,
       expectStderrContains: '',
     ),
     // ASAN successfully understand this case
-    _Info(
+    const _Info(
       name: 'DartCallRust_HeapUseAfterFree',
       expectSucceed: false,
       expectStderrContains: 'ERROR: AddressSanitizer: heap-use-after-free',
