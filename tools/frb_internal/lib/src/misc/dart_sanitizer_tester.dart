@@ -66,6 +66,13 @@ Future<void> _runPackageDeliberateBadRustOnly(
             expectStderrContains: 'ERROR: LeakSanitizer: detected memory leaks',
           ),
         ],
+      Sanitizer.tsan => [
+          const _Info(
+            name: 'RustOnly_DataRace',
+            expectSucceed: false,
+            expectStderrContains: 'WARNING: ThreadSanitizer: data race',
+          ),
+        ],
     },
   ];
 
@@ -103,6 +110,9 @@ Future<void> _runPackageDeliberateBadWithDart(
             expectStderrContains: 'ERROR: LeakSanitizer: detected memory leaks',
           ),
         ],
+      Sanitizer.tsan => [
+          // Pure-dart almost cannot have data race
+        ],
     },
   ];
 
@@ -128,6 +138,13 @@ Future<void> _runPackageDeliberateBadWithDart(
             name: 'DartCallRust_MemoryLeak',
             expectSucceed: false,
             expectStderrContains: 'ERROR: LeakSanitizer: detected memory leaks',
+          ),
+        ],
+      Sanitizer.tsan => [
+          const _Info(
+            name: 'DartCallRust_DataRace',
+            expectSucceed: false,
+            expectStderrContains: 'WARNING: ThreadSanitizer: data race',
           ),
         ],
     },
@@ -218,6 +235,7 @@ extension on Sanitizer {
     return switch (this) {
       Sanitizer.asan => 'address',
       Sanitizer.lsan => 'leak',
+      Sanitizer.tsan => 'thread',
     };
   }
 
@@ -225,6 +243,7 @@ extension on Sanitizer {
     return switch (this) {
       Sanitizer.asan => 'ReleaseASANX64',
       Sanitizer.lsan => 'ReleaseLSANX64',
+      Sanitizer.tsan => 'ReleaseTSANX64',
     };
   }
 }

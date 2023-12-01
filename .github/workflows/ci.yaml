@@ -367,6 +367,7 @@ jobs:
         sanitizer:
           - asan
           - lsan
+          - tsan
         package:
           - frb_example/dart_minimal
           - frb_example/pure_dart

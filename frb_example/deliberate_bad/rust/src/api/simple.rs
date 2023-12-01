@@ -21,3 +21,14 @@ pub fn make_memory_leak() {
     println!("xs={xs:?}");
     std::mem::forget(xs);
 }
+
+pub fn make_data_race() {
+    // https://github.com/japaric/rust-san?tab=readme-ov-file#data-race
+    let t1 = std::thread::spawn(|| unsafe { ANSWER = 42 });
+    unsafe {
+        ANSWER = 24;
+    }
+    t1.join().ok();
+}
+
+static mut ANSWER: i32 = 0;

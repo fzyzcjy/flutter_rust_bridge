@@ -24,6 +24,16 @@ fn main() {
             println!("xs={xs:?}");
             std::mem::forget(xs);
         }
+        "RustOnly_DataRace" => {
+            // https://github.com/japaric/rust-san?tab=readme-ov-file#data-race
+            let t1 = std::thread::spawn(|| unsafe { ANSWER = 42 });
+            unsafe {
+                ANSWER = 24;
+            }
+            t1.join().ok();
+        }
         s => panic!("Unknown mode: {}", s),
     }
 }
+
+static mut ANSWER: i32 = 0;

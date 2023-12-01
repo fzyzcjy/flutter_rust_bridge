@@ -53,6 +53,7 @@ class TestDartConfig {
 enum Sanitizer {
   asan,
   lsan,
+  tsan,
   // TODO more
 }
 

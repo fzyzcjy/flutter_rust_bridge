@@ -32,6 +32,9 @@ Future<void> main(List<String> args) async {
     case 'DartCallRust_MemoryLeak':
       await makeMemoryLeak();
 
+    case 'DartCallRust_DataRace':
+      await makeDataRace();
+
     default:
       throw Exception('Unknown args $args');
   }
