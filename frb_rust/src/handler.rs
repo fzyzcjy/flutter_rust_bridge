@@ -333,52 +333,41 @@ impl<EH: ErrorHandler + Sync> Executor for ThreadPoolExecutor<EH> {
         let eh = self.error_handler;
         let eh2 = self.error_handler;
 
-        crate::console_error!("execute_async 1");
         rust_async::spawn((|| async move {
-            crate::console_error!("execute_async 2");
             let WrapInfo { port, mode, .. } = wrap_info;
             let port2 = port.as_ref().cloned();
 
             // TODO rename variable (not "thread" anymore)
             let thread_result = async {
-                crate::console_error!("execute_async 3");
                 let port2 = port2.expect("(worker) thread");
                 #[allow(clippy::clone_on_copy)]
                 let rust2dart = Rust2Dart::new(port2.clone());
 
-                crate::console_error!("execute_async 4");
                 let ret = task(TaskCallback::new(rust2dart.clone()))
                     .await
                     .map(|e| e.into_into_dart().into_dart());
 
-                crate::console_error!("execute_async 5");
                 match ret {
                     Ok(result) => {
                         match mode {
                             FfiCallMode::Normal => {
-                                crate::console_error!("execute_async 6");
                                 rust2dart.success(result);
                             }
                             FfiCallMode::Stream => {
-                                crate::console_error!("execute_async 7");
                                 // nothing - ignore the return value of a Stream-typed function
                             }
                             FfiCallMode::Sync => {
-                                crate::console_error!("execute_async 8");
                                 panic!("FfiCallMode::Sync should not call execute, please call execute_sync instead")
                             }
                         }
                     }
                     Err(error) => {
-                        crate::console_error!("execute_async 9");
                         eh2.handle_error(port2, Error::CustomError(Box::new(error)));
                     }
                 };
             }.catch_unwind().await;
 
-            crate::console_error!("execute_async 10");
             if let Err(error) = thread_result {
-                crate::console_error!("execute_async 10");
                 eh.handle_error(port.expect("(worker) eh"), Error::Panic(error));
             }
         })());

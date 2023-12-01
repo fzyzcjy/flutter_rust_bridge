@@ -38,18 +38,13 @@ class BaseHandler {
 
   /// Similar to [executeNormal], except that this will return a [Stream] instead of a [Future].
   Stream<S> executeStream<S, E extends Object>(StreamTask<S, E> task) async* {
-    print('hi executeStream 1');
     final portName =
         ExecuteStreamPortGenerator.create(task.constMeta.debugName);
     final receivePort = broadcastPort(portName);
 
-    print('hi executeStream 2');
     task.callFfi(receivePort.sendPort.nativePort);
-    print('hi executeStream 3');
 
-    print('hi executeStream 4');
     await for (final raw in receivePort) {
-      print('hi executeStream 5 raw=$raw');
       try {
         yield _transformRust2DartMessage(
             raw, task.parseSuccessData, task.parseErrorData);
@@ -63,7 +58,6 @@ class BaseHandler {
 
 S _transformRust2DartMessage<S, E extends Object>(List<dynamic> raw,
     S Function(dynamic) parseSuccessData, E Function(dynamic)? parseErrorData) {
-  print('hi _transformRust2DartMessage raw=$raw');
   switch (_Rust2DartAction.values[raw[0]]) {
     case _Rust2DartAction.success:
       assert(raw.length == 2);
