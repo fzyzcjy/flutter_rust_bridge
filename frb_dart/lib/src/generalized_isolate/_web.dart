@@ -177,6 +177,7 @@ class _BroadcastPortWrapper extends _DelegatedPort {
   /// i.e. it cannot carry transferables and will unconditionally clone the items.
   @override
   void postMessage(message, [List<Object>? transfer]) {
+    print('hi $runtimeType postMessage $message $transfer');
     if (transfer != null && transfer.isNotEmpty) {
       jsConsoleWarn("Ignoring transferables for BroadcastPort:", transfer);
     }

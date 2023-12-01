@@ -62,8 +62,12 @@ impl Rust2Dart {
 
     /// Send a detailed error back to the specified port.
     pub fn error(&self, e: impl IntoDart) -> bool {
-        self.channel
-            .post(vec![Rust2DartAction::Error.into_dart(), e.into_dart()])
+        crate::console_error!("hi error post start");
+        let ans = self
+            .channel
+            .post(vec![Rust2DartAction::Error.into_dart(), e.into_dart()]);
+        crate::console_error!("hi error post ans={}", ans);
+        ans
     }
 
     /// Close the stream and ignore further messages.
