@@ -84,19 +84,20 @@ bool get releaseMode {
 /// But normal code should *not* rely on panic, so it should be OK.
 Future<void> expectThrowsPanic(Future<void> Function() body, String mode,
     {String? messageOnNative}) async {
-  // TODO to check errors do happen, we can check logs? or other messages?
-  //      or create a "uncaught error handler"? or wait?
-
-  TODO;
+  if (kIsWeb) {
+    if (TODO) {
+      TODO;
+    } else {
+      await expectLater(body, throwsA(isA<PanicException>()));
+    }
+  } else {
+    await expectLater(
+      body,
+      throwsA(isA<PanicException>()
+          .having((x) => x.message, 'message', messageOnNative)),
+    );
+  }
 }
-
-// TODO
-// Matcher throwsAPanicException({String? messageOnNative}) {
-//   var inner = isA<PanicException>();
-//   if (!kIsWeb)
-//     inner = inner.having((x) => x.message, 'message', messageOnNative);
-//   return throwsA(inner);
-// }
 
 /// Hack to make generated pseudo-manual tests be happy about async and sync
 Future<void> futurizeVoidTwinNormal(Future<void> x) async {}
