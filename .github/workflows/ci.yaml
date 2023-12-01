@@ -364,6 +364,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        sanitizer:
+          - asan
+          - lsan
         package:
           - frb_example/dart_minimal
           - frb_example/pure_dart
@@ -383,7 +386,7 @@ jobs:
           architecture: x64
 
       # execute
-      - run: ./frb_internal test-dart-sanitizer --package ${{ matrix.package }}
+      - run: ./frb_internal test-dart-sanitizer --package ${{ matrix.package }} --sanitizer ${{ matrix.sanitizer }}
 
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
   test_flutter_native_android:
