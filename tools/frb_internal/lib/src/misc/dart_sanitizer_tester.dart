@@ -22,17 +22,17 @@ Future<void> _runPackageDeliberateBadRustOnly({required String package}) async {
     _Info(
       name: 'RustOnly_Good',
       expectSucceed: true,
-      expectOutputContains: '',
+      expectStderrContains: '',
     ),
     _Info(
       name: 'RustOnly_StackBufferOverflow',
       expectSucceed: false,
-      expectOutputContains: 'ERROR: AddressSanitizer: stack-buffer-overflow',
+      expectStderrContains: 'ERROR: AddressSanitizer: stack-buffer-overflow',
     ),
     _Info(
       name: 'RustOnly_HeapUseAfterFree',
       expectSucceed: false,
-      expectOutputContains: 'ERROR: AddressSanitizer: heap-use-after-free',
+      expectStderrContains: 'ERROR: AddressSanitizer: heap-use-after-free',
     ),
   ];
 
@@ -51,26 +51,26 @@ Future<void> _runPackageDeliberateBadWithDart({required String package}) async {
     _Info(
       name: 'DartOnly_Good',
       expectSucceed: true,
-      expectOutputContains: '',
+      expectStderrContains: '',
     ),
     // NOTE ASAN does not report this as buggy...
     _Info(
       name: 'DartOnly_HeapUseAfterFree',
       expectSucceed: true,
-      expectOutputContains: '',
+      expectStderrContains: '',
     ),
 
     // NOTE It should fail, but ASAN did not realize this case...
     _Info(
       name: 'DartCallRust_StackBufferOverflow',
       expectSucceed: true,
-      expectOutputContains: '',
+      expectStderrContains: '',
     ),
     // ASAN successfully understand this case
     _Info(
       name: 'DartCallRust_HeapUseAfterFree',
       expectSucceed: false,
-      expectOutputContains: 'ERROR: AddressSanitizer: heap-use-after-free',
+      expectStderrContains: 'ERROR: AddressSanitizer: heap-use-after-free',
     ),
   ];
 
@@ -87,12 +87,12 @@ Future<void> _runPackageDeliberateBadWithDart({required String package}) async {
 class _Info {
   final String name;
   final bool expectSucceed;
-  final String expectOutputContains;
+  final String expectStderrContains;
 
   const _Info({
     required this.name,
     required this.expectSucceed,
-    required this.expectOutputContains,
+    required this.expectStderrContains,
   });
 }
 
@@ -122,9 +122,9 @@ Future<void> _execAndCheckWithAsanEnvVar(
         'Bad exitCode=${output.exitCode}, while expectSucceed=${info.expectSucceed}');
   }
 
-  if (!output.stdout.contains(info.expectOutputContains)) {
+  if (!output.stderr.contains(info.expectStderrContains)) {
     throw Exception(
-        'Bad stdout which does not contain `${info.expectOutputContains}`');
+        'Bad stderr which does not contain `${info.expectStderrContains}`');
   }
 }
 
