@@ -78,6 +78,7 @@ import 'api/pseudo_manual/rust_opaque_twin_rust_async.dart';
 import 'api/pseudo_manual/rust_opaque_twin_sync.dart';
 import 'api/pseudo_manual/simple_twin_rust_async.dart';
 import 'api/pseudo_manual/simple_twin_sync.dart';
+import 'api/pseudo_manual/stream_twin_rust_async.dart';
 import 'api/pseudo_manual/structure_twin_rust_async.dart';
 import 'api/pseudo_manual/structure_twin_sync.dart';
 import 'api/pseudo_manual/tuple_twin_rust_async.dart';
@@ -1780,6 +1781,28 @@ abstract class RustLibApi extends BaseApi {
       {required int a, required int b, dynamic hint});
 
   int simpleAdderTwinSync({required int a, required int b, dynamic hint});
+
+  Stream<String> funcStreamRealisticTwinRustAsync(
+      {required String arg, dynamic hint});
+
+  Stream<String> funcStreamReturnErrorTwinRustAsync({dynamic hint});
+
+  Stream<String> funcStreamReturnPanicTwinRustAsync({dynamic hint});
+
+  Stream<int> funcStreamSinkArgPositionTwinRustAsync(
+      {required int a, required int b, dynamic hint});
+
+  Stream<MyStreamEntryTwinRustAsync> handleStreamOfStructTwinRustAsync(
+      {dynamic hint});
+
+  Stream<LogTwinRustAsync> handleStreamSinkAt1TwinRustAsync(
+      {required int key, required int max, dynamic hint});
+
+  Stream<LogTwinRustAsync> handleStreamSinkAt2TwinRustAsync(
+      {required int key, required int max, dynamic hint});
+
+  Stream<LogTwinRustAsync> handleStreamSinkAt3TwinRustAsync(
+      {required int key, required int max, dynamic hint});
 
   Future<StructWithOneFieldTwinRustAsync> funcStructWithOneFieldTwinRustAsync(
       {required StructWithOneFieldTwinRustAsync arg, dynamic hint});
@@ -14594,6 +14617,182 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Stream<String> funcStreamRealisticTwinRustAsync(
+      {required String arg, dynamic hint}) {
+    var arg0 = api2wire_String(arg);
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) =>
+          wire.wire_func_stream_realistic_twin_rust_async(port_, arg0),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: null,
+      constMeta: kFuncStreamRealisticTwinRustAsyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncStreamRealisticTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_stream_realistic_twin_rust_async",
+        argNames: ["arg"],
+      );
+
+  @override
+  Stream<String> funcStreamReturnErrorTwinRustAsync({dynamic hint}) {
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) =>
+          wire.wire_func_stream_return_error_twin_rust_async(port_),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kFuncStreamReturnErrorTwinRustAsyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncStreamReturnErrorTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_stream_return_error_twin_rust_async",
+        argNames: [],
+      );
+
+  @override
+  Stream<String> funcStreamReturnPanicTwinRustAsync({dynamic hint}) {
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) =>
+          wire.wire_func_stream_return_panic_twin_rust_async(port_),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kFuncStreamReturnPanicTwinRustAsyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncStreamReturnPanicTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_stream_return_panic_twin_rust_async",
+        argNames: [],
+      );
+
+  @override
+  Stream<int> funcStreamSinkArgPositionTwinRustAsync(
+      {required int a, required int b, dynamic hint}) {
+    var arg0 = api2wire_u_32(a);
+    var arg1 = api2wire_u_32(b);
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) =>
+          wire.wire_func_stream_sink_arg_position_twin_rust_async(
+              port_, arg0, arg1),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: null,
+      constMeta: kFuncStreamSinkArgPositionTwinRustAsyncConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncStreamSinkArgPositionTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_stream_sink_arg_position_twin_rust_async",
+        argNames: ["a", "b"],
+      );
+
+  @override
+  Stream<MyStreamEntryTwinRustAsync> handleStreamOfStructTwinRustAsync(
+      {dynamic hint}) {
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) =>
+          wire.wire_handle_stream_of_struct_twin_rust_async(port_),
+      parseSuccessData: _wire2api_my_stream_entry_twin_rust_async,
+      parseErrorData: null,
+      constMeta: kHandleStreamOfStructTwinRustAsyncConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleStreamOfStructTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_stream_of_struct_twin_rust_async",
+        argNames: [],
+      );
+
+  @override
+  Stream<LogTwinRustAsync> handleStreamSinkAt1TwinRustAsync(
+      {required int key, required int max, dynamic hint}) {
+    var arg0 = api2wire_u_32(key);
+    var arg1 = api2wire_u_32(max);
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) =>
+          wire.wire_handle_stream_sink_at_1_twin_rust_async(port_, arg0, arg1),
+      parseSuccessData: _wire2api_log_twin_rust_async,
+      parseErrorData: null,
+      constMeta: kHandleStreamSinkAt1TwinRustAsyncConstMeta,
+      argValues: [key, max],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleStreamSinkAt1TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_stream_sink_at_1_twin_rust_async",
+        argNames: ["key", "max"],
+      );
+
+  @override
+  Stream<LogTwinRustAsync> handleStreamSinkAt2TwinRustAsync(
+      {required int key, required int max, dynamic hint}) {
+    var arg0 = api2wire_u_32(key);
+    var arg1 = api2wire_u_32(max);
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) =>
+          wire.wire_handle_stream_sink_at_2_twin_rust_async(port_, arg0, arg1),
+      parseSuccessData: _wire2api_log_twin_rust_async,
+      parseErrorData: null,
+      constMeta: kHandleStreamSinkAt2TwinRustAsyncConstMeta,
+      argValues: [key, max],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleStreamSinkAt2TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_stream_sink_at_2_twin_rust_async",
+        argNames: ["key", "max"],
+      );
+
+  @override
+  Stream<LogTwinRustAsync> handleStreamSinkAt3TwinRustAsync(
+      {required int key, required int max, dynamic hint}) {
+    var arg0 = api2wire_u_32(key);
+    var arg1 = api2wire_u_32(max);
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) =>
+          wire.wire_handle_stream_sink_at_3_twin_rust_async(port_, arg0, arg1),
+      parseSuccessData: _wire2api_log_twin_rust_async,
+      parseErrorData: null,
+      constMeta: kHandleStreamSinkAt3TwinRustAsyncConstMeta,
+      argValues: [key, max],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleStreamSinkAt3TwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "handle_stream_sink_at_3_twin_rust_async",
+        argNames: ["key", "max"],
+      );
+
+  @override
   Future<StructWithOneFieldTwinRustAsync> funcStructWithOneFieldTwinRustAsync(
       {required StructWithOneFieldTwinRustAsync arg, dynamic hint}) {
     var arg0 = api2wire_box_autoadd_struct_with_one_field_twin_rust_async(arg);
@@ -18401,6 +18600,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
+  LogTwinRustAsync _wire2api_log_twin_rust_async(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return LogTwinRustAsync(
+      key: _wire2api_u_32(arr[0]),
+      value: _wire2api_u_32(arr[1]),
+    );
+  }
+
   MacroStruct _wire2api_macro_struct(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
@@ -18609,6 +18818,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return MyStreamEntryTwinNormal(
+      hello: _wire2api_String(arr[0]),
+    );
+  }
+
+  MyStreamEntryTwinRustAsync _wire2api_my_stream_entry_twin_rust_async(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return MyStreamEntryTwinRustAsync(
       hello: _wire2api_String(arr[0]),
     );
   }

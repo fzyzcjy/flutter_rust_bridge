@@ -78,6 +78,7 @@ import 'api/pseudo_manual/rust_opaque_twin_rust_async.dart';
 import 'api/pseudo_manual/rust_opaque_twin_sync.dart';
 import 'api/pseudo_manual/simple_twin_rust_async.dart';
 import 'api/pseudo_manual/simple_twin_sync.dart';
+import 'api/pseudo_manual/stream_twin_rust_async.dart';
 import 'api/pseudo_manual/structure_twin_rust_async.dart';
 import 'api/pseudo_manual/structure_twin_sync.dart';
 import 'api/pseudo_manual/tuple_twin_rust_async.dart';
@@ -15044,6 +15045,149 @@ class RustLibWire implements BaseWire {
       'wire_simple_adder_twin_sync');
   late final _wire_simple_adder_twin_sync = _wire_simple_adder_twin_syncPtr
       .asFunction<WireSyncReturn Function(int, int)>();
+
+  void wire_func_stream_realistic_twin_rust_async(
+    int port_,
+    ffi.Pointer<wire_list_prim_u_8> arg,
+  ) {
+    return _wire_func_stream_realistic_twin_rust_async(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_stream_realistic_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_prim_u_8>)>>(
+      'wire_func_stream_realistic_twin_rust_async');
+  late final _wire_func_stream_realistic_twin_rust_async =
+      _wire_func_stream_realistic_twin_rust_asyncPtr
+          .asFunction<void Function(int, ffi.Pointer<wire_list_prim_u_8>)>();
+
+  void wire_func_stream_return_error_twin_rust_async(
+    int port_,
+  ) {
+    return _wire_func_stream_return_error_twin_rust_async(
+      port_,
+    );
+  }
+
+  late final _wire_func_stream_return_error_twin_rust_asyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_func_stream_return_error_twin_rust_async');
+  late final _wire_func_stream_return_error_twin_rust_async =
+      _wire_func_stream_return_error_twin_rust_asyncPtr
+          .asFunction<void Function(int)>();
+
+  void wire_func_stream_return_panic_twin_rust_async(
+    int port_,
+  ) {
+    return _wire_func_stream_return_panic_twin_rust_async(
+      port_,
+    );
+  }
+
+  late final _wire_func_stream_return_panic_twin_rust_asyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_func_stream_return_panic_twin_rust_async');
+  late final _wire_func_stream_return_panic_twin_rust_async =
+      _wire_func_stream_return_panic_twin_rust_asyncPtr
+          .asFunction<void Function(int)>();
+
+  void wire_func_stream_sink_arg_position_twin_rust_async(
+    int port_,
+    int a,
+    int b,
+  ) {
+    return _wire_func_stream_sink_arg_position_twin_rust_async(
+      port_,
+      a,
+      b,
+    );
+  }
+
+  late final _wire_func_stream_sink_arg_position_twin_rust_asyncPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>(
+      'wire_func_stream_sink_arg_position_twin_rust_async');
+  late final _wire_func_stream_sink_arg_position_twin_rust_async =
+      _wire_func_stream_sink_arg_position_twin_rust_asyncPtr
+          .asFunction<void Function(int, int, int)>();
+
+  void wire_handle_stream_of_struct_twin_rust_async(
+    int port_,
+  ) {
+    return _wire_handle_stream_of_struct_twin_rust_async(
+      port_,
+    );
+  }
+
+  late final _wire_handle_stream_of_struct_twin_rust_asyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_handle_stream_of_struct_twin_rust_async');
+  late final _wire_handle_stream_of_struct_twin_rust_async =
+      _wire_handle_stream_of_struct_twin_rust_asyncPtr
+          .asFunction<void Function(int)>();
+
+  void wire_handle_stream_sink_at_1_twin_rust_async(
+    int port_,
+    int key,
+    int max,
+  ) {
+    return _wire_handle_stream_sink_at_1_twin_rust_async(
+      port_,
+      key,
+      max,
+    );
+  }
+
+  late final _wire_handle_stream_sink_at_1_twin_rust_asyncPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Uint32,
+              ffi.Uint32)>>('wire_handle_stream_sink_at_1_twin_rust_async');
+  late final _wire_handle_stream_sink_at_1_twin_rust_async =
+      _wire_handle_stream_sink_at_1_twin_rust_asyncPtr
+          .asFunction<void Function(int, int, int)>();
+
+  void wire_handle_stream_sink_at_2_twin_rust_async(
+    int port_,
+    int key,
+    int max,
+  ) {
+    return _wire_handle_stream_sink_at_2_twin_rust_async(
+      port_,
+      key,
+      max,
+    );
+  }
+
+  late final _wire_handle_stream_sink_at_2_twin_rust_asyncPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Uint32,
+              ffi.Uint32)>>('wire_handle_stream_sink_at_2_twin_rust_async');
+  late final _wire_handle_stream_sink_at_2_twin_rust_async =
+      _wire_handle_stream_sink_at_2_twin_rust_asyncPtr
+          .asFunction<void Function(int, int, int)>();
+
+  void wire_handle_stream_sink_at_3_twin_rust_async(
+    int port_,
+    int key,
+    int max,
+  ) {
+    return _wire_handle_stream_sink_at_3_twin_rust_async(
+      port_,
+      key,
+      max,
+    );
+  }
+
+  late final _wire_handle_stream_sink_at_3_twin_rust_asyncPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Uint32,
+              ffi.Uint32)>>('wire_handle_stream_sink_at_3_twin_rust_async');
+  late final _wire_handle_stream_sink_at_3_twin_rust_async =
+      _wire_handle_stream_sink_at_3_twin_rust_asyncPtr
+          .asFunction<void Function(int, int, int)>();
 
   void wire_func_struct_with_one_field_twin_rust_async(
     int port_,

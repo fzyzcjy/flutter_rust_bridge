@@ -7825,6 +7825,65 @@ pub fn wire_simple_adder_twin_sync(a: i32, b: i32) -> flutter_rust_bridge::suppo
 }
 
 #[wasm_bindgen]
+pub fn wire_func_stream_realistic_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: String,
+) {
+    wire_func_stream_realistic_twin_rust_async_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_stream_return_error_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_func_stream_return_error_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_stream_return_panic_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_func_stream_return_panic_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_stream_sink_arg_position_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    a: u32,
+    b: u32,
+) {
+    wire_func_stream_sink_arg_position_twin_rust_async_impl(port_, a, b)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_stream_of_struct_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
+    wire_handle_stream_of_struct_twin_rust_async_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_stream_sink_at_1_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    key: u32,
+    max: u32,
+) {
+    wire_handle_stream_sink_at_1_twin_rust_async_impl(port_, key, max)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_stream_sink_at_2_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    key: u32,
+    max: u32,
+) {
+    wire_handle_stream_sink_at_2_twin_rust_async_impl(port_, key, max)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_stream_sink_at_3_twin_rust_async(
+    port_: flutter_rust_bridge::MessagePort,
+    key: u32,
+    max: u32,
+) {
+    wire_handle_stream_sink_at_3_twin_rust_async_impl(port_, key, max)
+}
+
+#[wasm_bindgen]
 pub fn wire_func_struct_with_one_field_twin_rust_async(
     port_: flutter_rust_bridge::MessagePort,
     arg: flutter_rust_bridge::wasm_bindgen::JsValue,
