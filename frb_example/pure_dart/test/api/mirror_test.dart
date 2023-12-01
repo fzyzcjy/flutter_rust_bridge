@@ -1,4 +1,6 @@
-// FRB_INTERNAL_GENERATOR: {"removeCode": ["import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_twin_sync.dart';\n"]}
+// FRB_INTERNAL_GENERATOR: {"removeCode": ["import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_twin_sync.dart';\n", "import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_twin_rust_async.dart';\n"], "addCode": "import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync.dart';"}
+
+// ignore_for_file: duplicate_import
 
 import 'dart:typed_data';
 
