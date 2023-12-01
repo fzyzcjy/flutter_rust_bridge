@@ -16,6 +16,7 @@ void main() {
       await _execAndCheck(
         'cargo +nightly run -Zbuild-std --target x86_64-unknown-linux-gnu $name',
         extraEnv: {'RUSTFLAGS': '-Zsanitizer=address'},
+        relativePwd: 'rust',
         expectSucceed: expectSucceed,
         expectOutputContains: expectOutputContains,
       );
