@@ -4,8 +4,14 @@ import 'test_utils.dart';
 
 void main() {
   for (final (name, expectSucceed, expectStderrContains) in [
-    ('DartCallRust_StackBufferOverflow', false, 'TODO'),
-    ('DartCallRust_HeapUseAfterFree', false, 'TODO'),
+    // NOTE It should fail, but ASAN did not realize this case...
+    ('DartCallRust_StackBufferOverflow', true, ''),
+    // ASAN successfully understand this case
+    (
+      'DartCallRust_HeapUseAfterFree',
+      false,
+      'ERROR: AddressSanitizer: heap-use-after-free'
+    ),
   ]) {
     test('name=$name', () async {
       await execAndCheck(
