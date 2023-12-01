@@ -1,0 +1,2 @@
+# Because we are running tests related to Dart/Rust compilation
+concurrency: 1
