@@ -10,6 +10,16 @@ use std::future::Future;
 use std::panic;
 use std::panic::{RefUnwindSafe, UnwindSafe};
 
+// TODO move
+#[cfg(not(wasm))]
+pub trait TaskRetFutTrait: Send {}
+#[cfg(not(wasm))]
+impl<T: Send> TaskRetFutTrait for T {}
+#[cfg(wasm)]
+pub trait TaskRetFutTrait {}
+#[cfg(wasm)]
+impl<T> TaskRetFutTrait for T {}
+
 /// The types of return values for a particular Rust function.
 #[derive(Copy, Clone)]
 pub enum FfiCallMode {
@@ -73,7 +83,7 @@ pub trait Handler {
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce(TaskCallback) -> TaskRetFut + Send + UnwindSafe + 'static,
         TaskRet: IntoIntoDart<D>,
-        TaskRetFut: Future<Output = Result<TaskRet, Er>> + Send,
+        TaskRetFut: Future<Output = Result<TaskRet, Er>> + TaskRetFutTrait,
         D: IntoDart,
         Er: IntoDart + 'static;
 }
@@ -176,7 +186,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce(TaskCallback) -> TaskRetFut + Send + UnwindSafe + 'static,
         TaskRet: IntoIntoDart<D>,
-        TaskRetFut: Future<Output = Result<TaskRet, Er>> + Send,
+        TaskRetFut: Future<Output = Result<TaskRet, Er>> + TaskRetFutTrait,
         D: IntoDart,
         Er: IntoDart + 'static,
     {
@@ -225,7 +235,7 @@ pub trait Executor: RefUnwindSafe {
     where
         TaskFn: FnOnce(TaskCallback) -> TaskRetFut + Send + UnwindSafe + 'static,
         TaskRet: IntoIntoDart<D>,
-        TaskRetFut: Future<Output = Result<TaskRet, Er>> + Send,
+        TaskRetFut: Future<Output = Result<TaskRet, Er>> + TaskRetFutTrait,
         D: IntoDart,
         Er: IntoDart + 'static;
 }
@@ -312,7 +322,7 @@ impl<EH: ErrorHandler + Sync> Executor for ThreadPoolExecutor<EH> {
     where
         TaskFn: FnOnce(TaskCallback) -> TaskRetFut + Send + UnwindSafe + 'static,
         TaskRet: IntoIntoDart<D>,
-        TaskRetFut: Future<Output = Result<TaskRet, Er>> + Send,
+        TaskRetFut: Future<Output = Result<TaskRet, Er>> + TaskRetFutTrait,
         D: IntoDart,
         Er: IntoDart + 'static,
     {
