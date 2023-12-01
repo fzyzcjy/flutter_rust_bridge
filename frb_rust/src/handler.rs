@@ -5,6 +5,7 @@ use crate::rust2dart::{BoxIntoDart, IntoIntoDart, Rust2Dart, Rust2DartAction, Ta
 use crate::rust_async;
 use crate::support::WireSyncReturn;
 use crate::{spawn, DartAbi};
+use futures::FutureExt;
 use std::any::Any;
 use std::future::Future;
 use std::panic;
@@ -83,7 +84,7 @@ pub trait Handler {
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce(TaskCallback) -> TaskRetFut + Send + UnwindSafe + 'static,
         TaskRet: IntoIntoDart<D>,
-        TaskRetFut: Future<Output = Result<TaskRet, Er>> + TaskRetFutTrait,
+        TaskRetFut: Future<Output = Result<TaskRet, Er>> + TaskRetFutTrait + UnwindSafe,
         D: IntoDart,
         Er: IntoDart + 'static;
 }
@@ -186,7 +187,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce(TaskCallback) -> TaskRetFut + Send + UnwindSafe + 'static,
         TaskRet: IntoIntoDart<D>,
-        TaskRetFut: Future<Output = Result<TaskRet, Er>> + TaskRetFutTrait,
+        TaskRetFut: Future<Output = Result<TaskRet, Er>> + TaskRetFutTrait + UnwindSafe,
         D: IntoDart,
         Er: IntoDart + 'static,
     {
@@ -235,7 +236,7 @@ pub trait Executor: RefUnwindSafe {
     where
         TaskFn: FnOnce(TaskCallback) -> TaskRetFut + Send + UnwindSafe + 'static,
         TaskRet: IntoIntoDart<D>,
-        TaskRetFut: Future<Output = Result<TaskRet, Er>> + TaskRetFutTrait,
+        TaskRetFut: Future<Output = Result<TaskRet, Er>> + TaskRetFutTrait + UnwindSafe,
         D: IntoDart,
         Er: IntoDart + 'static;
 }
@@ -322,14 +323,14 @@ impl<EH: ErrorHandler + Sync> Executor for ThreadPoolExecutor<EH> {
     where
         TaskFn: FnOnce(TaskCallback) -> TaskRetFut + Send + UnwindSafe + 'static,
         TaskRet: IntoIntoDart<D>,
-        TaskRetFut: Future<Output = Result<TaskRet, Er>> + TaskRetFutTrait,
+        TaskRetFut: Future<Output = Result<TaskRet, Er>> + TaskRetFutTrait + UnwindSafe,
         D: IntoDart,
         Er: IntoDart + 'static,
     {
         // TODO merge with `execute` case later
         // TODO avoid lock later
 
-        // let eh = self.error_handler;
+        let eh = self.error_handler;
         let eh2 = self.error_handler;
 
         rust_async::spawn((|| async move {
