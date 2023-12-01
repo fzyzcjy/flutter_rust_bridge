@@ -33,7 +33,7 @@ class SimpleExecutor {
       command,
       args,
       env: {...?env, ...?extraEnv},
-      pwd: '$pwd${relativePwd ?? ""}',
+      pwd: '${pwd ?? ""}${relativePwd ?? ""}',
       checkExitCode: checkExitCode,
     );
   }
