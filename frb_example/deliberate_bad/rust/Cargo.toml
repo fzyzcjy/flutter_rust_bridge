@@ -1,0 +1,12 @@
+[package]
+name = "frb_example_deliberate_bad"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+anyhow = { version = "1.0.64", features = ["backtrace"] }
+flutter_rust_bridge = { path = "../../../frb_rust" }
+log = "0.4.19"
