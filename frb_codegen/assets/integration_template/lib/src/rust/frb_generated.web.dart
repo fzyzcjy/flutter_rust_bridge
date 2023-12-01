@@ -30,7 +30,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 class RustLibWire extends BaseWire {
   // TODO
   // : super(WasmModule.cast<RustLibWasmModule>(lib.wasmModule));
-  RustLibWire.fromExternalLibrary(ExternalLibrary lib) {}
+  RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */ wire_greet(
           String name) =>
@@ -43,8 +43,10 @@ external RustLibWasmModule get wasmModule;
 @JS()
 @anonymous
 class RustLibWasmModule implements WasmModule {
+  @override
   external Object /* Promise */ call([String? moduleName]);
 
+  @override
   external RustLibWasmModule bind(dynamic thisArg, String moduleName);
 
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */

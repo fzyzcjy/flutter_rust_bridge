@@ -36,7 +36,7 @@ fn generate_wire_class(
         "class {wire_class_name} extends BaseWire {{
             // TODO
             // : super(WasmModule.cast<{wasm_module_name}>(lib.wasmModule));
-            {wire_class_name}.fromExternalLibrary(ExternalLibrary lib) {{}}
+            {wire_class_name}.fromExternalLibrary(ExternalLibrary lib);
 
             {body}
         }}
@@ -61,8 +61,10 @@ fn generate_wasm_module_class(
         "@JS('wasm_bindgen') external {wasm_module_name} get wasmModule;
 
         @JS() @anonymous class {wasm_module_name} implements WasmModule {{
+            @override
             external Object /* Promise */ call([String? moduleName]);
 
+            @override
             external {wasm_module_name} bind(dynamic thisArg, String moduleName);
 
             {body}
