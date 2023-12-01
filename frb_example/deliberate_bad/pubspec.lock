@@ -232,6 +232,13 @@ packages:
       relative: true
     source: path
     version: "1.82.4"
+  flutter_rust_bridge_internal:
+    dependency: "direct main"
+    description:
+      path: "../../tools/frb_internal"
+      relative: true
+    source: path
+    version: "1.0.0"
   flutter_rust_bridge_utils:
     dependency: "direct main"
     description:

@@ -10,6 +10,8 @@ dependencies:
     path: ../../frb_dart
   flutter_rust_bridge_utils:
     path: ../../frb_utils
+  flutter_rust_bridge_internal:
+    path: ../../tools/frb_internal
 dev_dependencies:
   test: ^1.21.4
   build_runner: ^2.4.4
