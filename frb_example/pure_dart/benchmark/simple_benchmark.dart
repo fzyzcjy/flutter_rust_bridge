@@ -12,20 +12,29 @@ import 'src/benchmark_utils.dart';
 Future<void> main(List<String> args) async {
   await RustLib.init();
 
-  final [pathOutput, partialName, ...] = args;
+  final [modeStr, pathOutput, partialName, ...] = args;
+  final mode = _Mode.values.byName(modeStr);
 
-  final filterStr = args.get(2) ?? '.*';
+  final filterStr = args.get(3) ?? '.*';
   final filterRegex = RegExp(filterStr);
 
   final emitter = JsonEmitter(namer: (x) => 'PureDart_${x}_$partialName');
-  final benchmarks = createBenchmarks(emitter: emitter);
+  final allBenchmarks = createBenchmarks(emitter: emitter);
+  final interestBenchmarks = [
+    for (final b in allBenchmarks)
+      if (filterRegex.hasMatch(b.name)) b
+  ];
 
-  for (final benchmark in benchmarks) {
-    if (!filterRegex.hasMatch(benchmark.name)) {
-      print('Skip ${benchmark.name} since not match filter $filterStr');
-      continue;
+  for (final benchmark in interestBenchmarks) {
+    switch (mode) {
+      case _Mode.benchmark:
+        await benchmark.reportMaybeAsync();
+
+      case _Mode.loop:
+        final loopCount = int.parse(args[4]);
+        print('Mode=loop loopCount=$loopCount');
+        await benchmark.loop(loopCount);
     }
-    await benchmark.reportMaybeAsync();
   }
 
   final output = jsonEncode(emitter.items);
@@ -39,3 +48,5 @@ Future<void> main(List<String> args) async {
 extension<T> on List<T> {
   T? get(int index) => index >= 0 && index < length ? this[index] : null;
 }
+
+enum _Mode { benchmark, loop }
