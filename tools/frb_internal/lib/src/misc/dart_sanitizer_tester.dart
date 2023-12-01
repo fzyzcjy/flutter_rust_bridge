@@ -157,7 +157,7 @@ Future<String> _getSanitizedDartBinary(TestDartSanitizerConfig config) async {
       'https://github.com/fzyzcjy/dart_lang_ci/releases/download/Build_2023.12.01_06-51-09/dart';
   final pathBin = path.join(Directory.systemTemp.path, 'dart_ReleaseASANX64');
   if (!await File(pathBin).exists()) {
-    print('Download artifact to $pathBin...');
+    print('Download artifact from $url to $pathBin...');
     await Dio().download(url, pathBin);
   }
   return pathBin;
