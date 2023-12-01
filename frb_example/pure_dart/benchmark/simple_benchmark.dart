@@ -13,14 +13,16 @@ Future<void> main(List<String> args) async {
   await RustLib.init();
 
   final [pathOutput, partialName, ...] = args;
-  final filterRegex = RegExp(args.length >= 3 ? args[2] : '.*');
+
+  final filterStr = args.get(2) ?? '.*';
+  final filterRegex = RegExp(filterStr);
 
   final emitter = JsonEmitter(namer: (x) => 'PureDart_${x}_$partialName');
   final benchmarks = createBenchmarks(emitter: emitter);
 
   for (final benchmark in benchmarks) {
     if (!filterRegex.hasMatch(benchmark.name)) {
-      print('Skip ${benchmark.name} since not match filter $filterRegex');
+      print('Skip ${benchmark.name} since not match filter $filterStr');
       continue;
     }
     await benchmark.reportMaybeAsync();
@@ -32,4 +34,8 @@ Future<void> main(List<String> args) async {
 
   // to avoid hang forever
   exit(0);
+}
+
+extension<T> on List<T> {
+  T? get(int index) => index >= 0 && index < length ? this[index] : null;
 }
