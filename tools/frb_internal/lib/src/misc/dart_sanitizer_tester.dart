@@ -143,7 +143,7 @@ Future<void> _execAndCheckWithAsanEnvVar(
 
 Future<String> _getSanitizedDartBinary() async {
   // TODO do not hardcode
-  return '/home/cs144/dart-sdk/sdk/out/ReleaseASANX64/dart-sdk/bin/dart';
+  return '~/dart-sdk/sdk/out/ReleaseASANX64/dart-sdk/bin/dart';
 }
 
 class _CargoBuildAsanInfo {
