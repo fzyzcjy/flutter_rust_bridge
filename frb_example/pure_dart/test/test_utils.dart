@@ -82,13 +82,13 @@ bool get releaseMode {
 /// again due to limitation of WASM before abort-unwind is usable.
 ///
 /// But normal code should *not* rely on panic, so it should be OK.
-Future<void> expectThrowsPanic(Future<void> Function() body, String mode,
+Future<void> expectThrowsPanic(FutureOr<void> Function() body, String mode,
     {String? messageOnNative}) async {
   if (kIsWeb) {
     if (mode == 'RustAsync') {
       // expect it timeouts (hangs), instead of throws
       var bodyCompleted = false;
-      unawaited(body().whenComplete(() => bodyCompleted = true));
+      unawaited(Future.value(body()).whenComplete(() => bodyCompleted = true));
       await Future.delayed(const Duration(milliseconds: 300));
       expect(bodyCompleted, false);
     } else {
