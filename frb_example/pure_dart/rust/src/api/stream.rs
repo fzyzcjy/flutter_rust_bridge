@@ -64,18 +64,20 @@ pub struct LogTwinNormal {
 }
 
 pub fn handle_stream_sink_at_1_twin_normal(key: u32, max: u32, sink: StreamSink<LogTwinNormal>) {
-    spawn!(|| {
-        for i in 0..max {
-            let _ = sink.add(LogTwinNormal { key, value: i });
-        }
-        sink.close();
-    });
+    spawn!(|| { handle_stream_inner(key, max, sink) });
 }
 
 pub fn handle_stream_sink_at_2_twin_normal(key: u32, sink: StreamSink<LogTwinNormal>, max: u32) {
-    handle_stream_sink_at_1_twin_normal(key, max, sink)
+    spawn!(|| { handle_stream_inner(key, max, sink) });
 }
 
 pub fn handle_stream_sink_at_3_twin_normal(sink: StreamSink<LogTwinNormal>, key: u32, max: u32) {
-    handle_stream_sink_at_1_twin_normal(key, max, sink)
+    spawn!(|| { handle_stream_inner(key, max, sink) });
+}
+
+fn handle_stream_inner(key: u32, max: u32, sink: StreamSink<LogTwinNormal>) {
+    for i in 0..max {
+        let _ = sink.add(LogTwinNormal { key, value: i });
+    }
+    sink.close();
 }

@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `stream.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -40,11 +40,15 @@ pub async fn func_stream_realistic_twin_rust_async(sink: StreamSink<String>, arg
     }
 }
 
-pub async fn func_stream_return_error_twin_rust_async(_sink: StreamSink<String>) -> anyhow::Result<()> {
+pub async fn func_stream_return_error_twin_rust_async(
+    _sink: StreamSink<String>,
+) -> anyhow::Result<()> {
     Err(anyhow!("deliberate error"))
 }
 
-pub async fn func_stream_return_panic_twin_rust_async(_sink: StreamSink<String>) -> anyhow::Result<()> {
+pub async fn func_stream_return_panic_twin_rust_async(
+    _sink: StreamSink<String>,
+) -> anyhow::Result<()> {
     panic!("deliberate panic")
 }
 
@@ -57,7 +61,9 @@ pub struct MyStreamEntryTwinRustAsync {
 
 // TODO #11193
 // https://github.com/fzyzcjy/flutter_rust_bridge/issues/398 reports a compile error like this
-pub async fn handle_stream_of_struct_twin_rust_async(_sink: StreamSink<MyStreamEntryTwinRustAsync>) {
+pub async fn handle_stream_of_struct_twin_rust_async(
+    _sink: StreamSink<MyStreamEntryTwinRustAsync>,
+) {
     // Ok(())
 }
 
@@ -67,19 +73,33 @@ pub struct LogTwinRustAsync {
     pub value: u32,
 }
 
-pub async fn handle_stream_sink_at_1_twin_rust_async(key: u32, max: u32, sink: StreamSink<LogTwinRustAsync>) {
-    spawn!(|| {
-        for i in 0..max {
-            let _ = sink.add(LogTwinRustAsync { key, value: i });
-        }
-        sink.close();
-    });
+pub async fn handle_stream_sink_at_1_twin_rust_async(
+    key: u32,
+    max: u32,
+    sink: StreamSink<LogTwinRustAsync>,
+) {
+    spawn!(|| { handle_stream_inner(key, max, sink) });
 }
 
-pub async fn handle_stream_sink_at_2_twin_rust_async(key: u32, sink: StreamSink<LogTwinRustAsync>, max: u32) {
-    handle_stream_sink_at_1_twin_rust_async(key, max, sink)
+pub async fn handle_stream_sink_at_2_twin_rust_async(
+    key: u32,
+    sink: StreamSink<LogTwinRustAsync>,
+    max: u32,
+) {
+    spawn!(|| { handle_stream_inner(key, max, sink) });
 }
 
-pub async fn handle_stream_sink_at_3_twin_rust_async(sink: StreamSink<LogTwinRustAsync>, key: u32, max: u32) {
-    handle_stream_sink_at_1_twin_rust_async(key, max, sink)
+pub async fn handle_stream_sink_at_3_twin_rust_async(
+    sink: StreamSink<LogTwinRustAsync>,
+    key: u32,
+    max: u32,
+) {
+    spawn!(|| { handle_stream_inner(key, max, sink) });
+}
+
+fn handle_stream_inner(key: u32, max: u32, sink: StreamSink<LogTwinRustAsync>) {
+    for i in 0..max {
+        let _ = sink.add(LogTwinRustAsync { key, value: i });
+    }
+    sink.close();
 }
