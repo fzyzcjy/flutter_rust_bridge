@@ -11,7 +11,12 @@ Future<void> run({required String package}) async {
 }
 
 Future<void> _runEntrypoint({required String package}) async {
-  throw Exception('TODO');
+  await _execAndCheckWithAsanEnvVar(
+    '$sanitizedDart --enable-experiment=native-assets run test/dart_valgrind_test_entrypoint.dart',
+    const _Info(
+        name: 'entrypoint', expectSucceed: true, expectStderrContains: ''),
+    relativePwd: package,
+  );
 }
 
 Future<void> _runPackageDeliberateBad({required String package}) async {
