@@ -38,7 +38,7 @@ Future<void> _runPackageDeliberateBadRustOnly({required String package}) async {
   ];
 
   for (final info in kInfos) {
-    await _execAndCheck(
+    await _execAndCheckWithAsanEnvVar(
       'cargo +nightly run ${_CargoBuildAsanInfo.kExtraArgs.join(" ")} ${info.name}',
       info,
       extraEnv: _CargoBuildAsanInfo.kExtraEnv,
@@ -63,7 +63,7 @@ Future<void> _runPackageDeliberateBadDartOnly({required String package}) async {
   ];
 
   for (final info in kInfos) {
-    await _execAndCheck(
+    await _execAndCheckWithAsanEnvVar(
       '$sanitizedDart --enable-experiment=native-assets run '
       'frb_example_deliberate_bad ${info.name}',
       info,
@@ -90,7 +90,7 @@ Future<void> _runPackageDeliberateBadDartCallRust(
   ];
 
   for (final info in kInfos) {
-    await _execAndCheck(
+    await _execAndCheckWithAsanEnvVar(
       '$sanitizedDart --enable-experiment=native-assets run '
       'frb_example_deliberate_bad ${info.name}',
       info,
@@ -111,7 +111,7 @@ class _Info {
   });
 }
 
-Future<void> _execAndCheck(
+Future<void> _execAndCheckWithAsanEnvVar(
   String cmd,
   _Info info, {
   required String relativePwd,
@@ -120,7 +120,12 @@ Future<void> _execAndCheck(
   final output = await exec(
     cmd,
     relativePwd: relativePwd,
-    extraEnv: extraEnv,
+    extraEnv: {
+      ...?extraEnv,
+      'FRB_SIMPLE_BUILD_CARGO_NIGHTLY': '1',
+      'FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS':
+          _CargoBuildAsanInfo.kExtraArgs.join(' '),
+    },
     checkExitCode: false,
   );
 

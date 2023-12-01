@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_print, implementation_imports
 
+import 'dart:io';
+
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:native_assets_cli/native_assets_cli.dart';
 
@@ -16,7 +18,12 @@ void simpleBuild(List<String> args) async {
     'cargo',
     [
       'build',
+      if (Platform.environment['FRB_SIMPLE_BUILD_CARGO_NIGHTLY'] == '1')
+        '+nightly',
       '--release',
+      ...Platform.environment['FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS']
+              ?.split(' ') ??
+          const <String>[],
     ],
     pwd: rustCrateDir.toFilePath(),
     printCommandInStderr: true,
