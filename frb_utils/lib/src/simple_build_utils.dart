@@ -20,6 +20,7 @@ void simpleBuild(List<String> args) async {
   final cargoExtraArgs =
       Platform.environment['FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS']?.split(' ') ??
           const <String>[];
+  final rustflags = Platform.environment['RUSTFLAGS'];
 
   await runCommand(
     'cargo',
@@ -31,6 +32,11 @@ void simpleBuild(List<String> args) async {
     ],
     pwd: rustCrateDir.toFilePath(),
     printCommandInStderr: true,
+    env: {
+      // Though runCommand auto pass environment variable to commands,
+      // we do this to explicitly show this important flag
+      if (rustflags != null) 'RUSTFLAGS': rustflags,
+    },
   );
 
   final dependencies = {
