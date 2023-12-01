@@ -8,3 +8,6 @@ Future<void> makeStackBufferOverflow({dynamic hint}) =>
 
 Future<void> makeHeapUseAfterFree({dynamic hint}) =>
     RustLib.instance.api.makeHeapUseAfterFree(hint: hint);
+
+Future<void> makeMemoryLeak({dynamic hint}) =>
+    RustLib.instance.api.makeMemoryLeak(hint: hint);

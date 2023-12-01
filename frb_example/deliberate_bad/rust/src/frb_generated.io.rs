@@ -22,6 +22,11 @@ pub extern "C" fn wire_make_heap_use_after_free(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_make_memory_leak(port_: i64) {
+    wire_make_memory_leak_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_make_stack_buffer_overflow(port_: i64) {
     wire_make_stack_buffer_overflow_impl(port_)
 }

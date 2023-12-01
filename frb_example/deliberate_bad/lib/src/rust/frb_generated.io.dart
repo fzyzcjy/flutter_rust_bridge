@@ -57,6 +57,20 @@ class RustLibWire implements BaseWire {
   late final _wire_make_heap_use_after_free =
       _wire_make_heap_use_after_freePtr.asFunction<void Function(int)>();
 
+  void wire_make_memory_leak(
+    int port_,
+  ) {
+    return _wire_make_memory_leak(
+      port_,
+    );
+  }
+
+  late final _wire_make_memory_leakPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_make_memory_leak');
+  late final _wire_make_memory_leak =
+      _wire_make_memory_leakPtr.asFunction<void Function(int)>();
+
   void wire_make_stack_buffer_overflow(
     int port_,
   ) {

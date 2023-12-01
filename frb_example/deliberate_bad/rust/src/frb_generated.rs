@@ -35,6 +35,16 @@ fn wire_make_heap_use_after_free_impl(port_: flutter_rust_bridge::MessagePort) {
         },
     )
 }
+fn wire_make_memory_leak_impl(port_: flutter_rust_bridge::MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "make_memory_leak",
+            port: Some(port_),
+            mode: flutter_rust_bridge::FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(crate::api::simple::make_memory_leak()),
+    )
+}
 fn wire_make_stack_buffer_overflow_impl(port_: flutter_rust_bridge::MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         flutter_rust_bridge::WrapInfo {

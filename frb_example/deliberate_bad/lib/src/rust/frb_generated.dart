@@ -1,12 +1,10 @@
 // ignore_for_file: unused_import, unused_element, duplicate_ignore
 
+import 'api/simple.dart';
 import 'dart:async';
 import 'dart:convert';
-
-import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-
-import 'api/simple.dart';
 import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart';
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 /// Main entrypoint of the Rust API
 class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
@@ -54,6 +52,8 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 abstract class RustLibApi extends BaseApi {
   Future<void> makeHeapUseAfterFree({dynamic hint});
 
+  Future<void> makeMemoryLeak({dynamic hint});
+
   Future<void> makeStackBufferOverflow({dynamic hint});
 }
 
@@ -80,6 +80,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kMakeHeapUseAfterFreeConstMeta => const TaskConstMeta(
         debugName: "make_heap_use_after_free",
+        argNames: [],
+      );
+
+  @override
+  Future<void> makeMemoryLeak({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_make_memory_leak(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kMakeMemoryLeakConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kMakeMemoryLeakConstMeta => const TaskConstMeta(
+        debugName: "make_memory_leak",
         argNames: [],
       );
 
