@@ -73,14 +73,30 @@ bool get releaseMode {
   return ans;
 }
 
-/// Only check message content on non-web, because of a current (2023.11) limitation of Rust WASM:
+/// Temporary relax of the test due to limitation of Rust WASM.
+///
+/// 1. Only check message content on non-web, because of a current (2023.11) limitation of Rust WASM:
 /// https://github.com/fzyzcjy/flutter_rust_bridge/blob/68b1a9415d5a47b9a793074974af8b2f8a8bcfc0/book/src/wasm_limitations.md
-Matcher throwsAPanicException({String? messageOnNative}) {
-  var inner = isA<PanicException>();
-  if (!kIsWeb)
-    inner = inner.having((x) => x.message, 'message', messageOnNative);
-  return throwsA(inner);
+///
+/// 2. When Web (WASM) + rust async mode + panic, expect the function call to hang,
+/// again due to limitation of WASM before abort-unwind is usable.
+///
+/// But normal code should *not* rely on panic, so it should be OK.
+Future<void> expectThrowsPanic(Future<void> Function() body, String mode,
+    {String? messageOnNative}) async {
+  // TODO to check errors do happen, we can check logs? or other messages?
+  //      or create a "uncaught error handler"? or wait?
+
+  TODO;
 }
+
+// TODO
+// Matcher throwsAPanicException({String? messageOnNative}) {
+//   var inner = isA<PanicException>();
+//   if (!kIsWeb)
+//     inner = inner.having((x) => x.message, 'message', messageOnNative);
+//   return throwsA(inner);
+// }
 
 /// Hack to make generated pseudo-manual tests be happy about async and sync
 Future<void> futurizeVoidTwinNormal(Future<void> x) async {}
