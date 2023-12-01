@@ -38,7 +38,7 @@ fn wire_minimal_adder_impl(
             let api_a = a.wire2api();
             let api_b = b.wire2api();
             move |task_callback| {
-                Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(api_a, api_b))
+                Result::<_, ()>::Ok(crate::api::simple::minimal_adder(api_a, api_b))
             }
         },
     )

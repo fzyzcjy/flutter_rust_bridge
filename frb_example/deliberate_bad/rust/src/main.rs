@@ -1,4 +1,4 @@
-use frb_example_deliberate_bad::{make_heap_use_after_free, make_stack_buffer_overflow};
+use frb_example_deliberate_bad::api::simple::*;
 use std::env;
 
 fn main() {

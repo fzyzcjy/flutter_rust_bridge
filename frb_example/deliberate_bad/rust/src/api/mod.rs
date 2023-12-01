@@ -1,1 +1,1 @@
-pub mod minimal;
+pub mod simple;
