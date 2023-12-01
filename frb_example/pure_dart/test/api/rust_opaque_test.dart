@@ -66,8 +66,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
     data.dispose();
-    await expectLater(
-        () => runOpaqueTwinNormal(opaque: data), throwsAPanicException());
+    await expectThrowsPanic(
+        () => runOpaqueTwinNormal(opaque: data), 'TwinNormal');
   });
 
   test('dispose before complete', () async {
@@ -83,8 +83,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
         "lifetime: \"static str\" "
         "})");
-    await expectLater(
-        () => runOpaqueTwinNormal(opaque: data), throwsAPanicException());
+    await expectThrowsPanic(
+        () => runOpaqueTwinNormal(opaque: data), 'TwinNormal');
   });
 
   test('create array of opaque type', () async {
@@ -100,8 +100,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
           "lifetime: \"static str\" "
           "})");
       v.dispose();
-      await expectLater(
-          () => runOpaqueTwinNormal(opaque: v), throwsAPanicException());
+      await expectThrowsPanic(
+          () => runOpaqueTwinNormal(opaque: v), 'TwinNormal');
     }
   });
 
@@ -146,8 +146,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \\\"static str\\\" "
         "})\"");
     (data[4] as EnumOpaqueTwinNormal_RwLock).field0.dispose();
-    await expectLater(() => runEnumOpaqueTwinNormal(opaque: data[4]),
-        throwsAPanicException());
+    await expectThrowsPanic(
+        () => runEnumOpaqueTwinNormal(opaque: data[4]), 'TwinNormal');
   });
 
   test('opaque field', () async {
@@ -173,10 +173,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
     data.first.dispose();
-    await expectLater(
-        () => runOpaqueTwinNormal(opaque: data.first), throwsAPanicException());
-    await expectLater(
-        () => runNestedOpaqueTwinNormal(opaque: data), throwsAPanicException());
+    await expectThrowsPanic(
+        () => runOpaqueTwinNormal(opaque: data.first), 'TwinNormal');
+    await expectThrowsPanic(
+        () => runNestedOpaqueTwinNormal(opaque: data), 'TwinNormal');
     expect(
         await runOpaqueTwinNormal(opaque: data.second),
         "content - Some(PrivateData "
@@ -204,8 +204,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
 
-    await expectLater(
-        () => opaqueArrayRunTwinNormal(data: data), throwsAPanicException());
+    await expectThrowsPanic(
+        () => opaqueArrayRunTwinNormal(data: data), 'TwinNormal');
     data[1].dispose();
   });
 
@@ -224,8 +224,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
 
-    await expectLater(
-        () => opaqueVecRunTwinNormal(data: data), throwsAPanicException());
+    await expectThrowsPanic(
+        () => opaqueVecRunTwinNormal(data: data), 'TwinNormal');
     data[1].dispose();
   });
 

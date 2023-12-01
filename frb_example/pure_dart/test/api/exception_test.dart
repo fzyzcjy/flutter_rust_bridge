@@ -16,18 +16,21 @@ Future<void> main({bool skipRustLibInit = false}) async {
               .having((x) => x.message, 'message', 'deliberate error')));
     });
     test('call funcTypeFalliblePanicTwinNormal', () async {
-      await expectLater(() async => funcTypeFalliblePanicTwinNormal(),
-          throwsAPanicException(messageOnNative: 'deliberate panic'));
+      await expectThrowsPanic(
+          () async => funcTypeFalliblePanicTwinNormal(), 'TwinNormal',
+          messageOnNative: 'deliberate panic');
     });
     test('call funcTypeInfalliblePanicTwinNormal', () async {
-      await expectLater(() async => funcTypeInfalliblePanicTwinNormal(),
-          throwsAPanicException(messageOnNative: 'deliberate panic'));
+      await expectThrowsPanic(
+          () async => funcTypeInfalliblePanicTwinNormal(), 'TwinNormal',
+          messageOnNative: 'deliberate panic');
     });
 
     addTestsIdentityFunctionCall(customEnumErrorReturnOkTwinNormal, [100]);
     test('call customEnumErrorPanicTwinNormal', () async {
-      await expectLater(() async => customEnumErrorPanicTwinNormal(),
-          throwsAPanicException(messageOnNative: 'deliberate panic'));
+      await expectThrowsPanic(
+          () async => customEnumErrorPanicTwinNormal(), 'TwinNormal',
+          messageOnNative: 'deliberate panic');
     });
 
     test('call funcReturnErrorTwinNormal', () async {

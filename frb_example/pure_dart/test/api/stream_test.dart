@@ -38,11 +38,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   // TODO implement in web
   test('call funcStreamReturnPanicTwinNormal', skip: kIsWeb, () async {
-    await expectLater(
+    await expectThrowsPanic(
       () async {
         await for (final _ in funcStreamReturnPanicTwinNormal()) {}
       },
-      throwsAPanicException(messageOnNative: 'deliberate panic'),
+      'TwinNormal',
+      messageOnNative: 'deliberate panic',
     );
   });
 
