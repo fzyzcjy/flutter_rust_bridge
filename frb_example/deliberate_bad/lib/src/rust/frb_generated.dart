@@ -50,11 +50,15 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
+  Future<void> makeDataRace({dynamic hint});
+
   Future<void> makeHeapUseAfterFree({dynamic hint});
 
   Future<void> makeMemoryLeak({dynamic hint});
 
   Future<void> makeStackBufferOverflow({dynamic hint});
+
+  Future<void> makeUseOfUninitializedValue({dynamic hint});
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -64,6 +68,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     required super.generalizedFrbRustBinding,
     required super.dropPortManager,
   });
+
+  @override
+  Future<void> makeDataRace({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_make_data_race(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kMakeDataRaceConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kMakeDataRaceConstMeta => const TaskConstMeta(
+        debugName: "make_data_race",
+        argNames: [],
+      );
 
   @override
   Future<void> makeHeapUseAfterFree({dynamic hint}) {
@@ -116,6 +138,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kMakeStackBufferOverflowConstMeta => const TaskConstMeta(
         debugName: "make_stack_buffer_overflow",
+        argNames: [],
+      );
+
+  @override
+  Future<void> makeUseOfUninitializedValue({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_make_use_of_uninitialized_value(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kMakeUseOfUninitializedValueConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kMakeUseOfUninitializedValueConstMeta =>
+      const TaskConstMeta(
+        debugName: "make_use_of_uninitialized_value",
         argNames: [],
       );
 

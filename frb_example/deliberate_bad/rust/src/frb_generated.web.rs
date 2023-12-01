@@ -18,6 +18,11 @@ where
 }
 
 #[wasm_bindgen]
+pub fn wire_make_data_race(port_: flutter_rust_bridge::MessagePort) {
+    wire_make_data_race_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_make_heap_use_after_free(port_: flutter_rust_bridge::MessagePort) {
     wire_make_heap_use_after_free_impl(port_)
 }
@@ -30,4 +35,9 @@ pub fn wire_make_memory_leak(port_: flutter_rust_bridge::MessagePort) {
 #[wasm_bindgen]
 pub fn wire_make_stack_buffer_overflow(port_: flutter_rust_bridge::MessagePort) {
     wire_make_stack_buffer_overflow_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_make_use_of_uninitialized_value(port_: flutter_rust_bridge::MessagePort) {
+    wire_make_use_of_uninitialized_value_impl(port_)
 }

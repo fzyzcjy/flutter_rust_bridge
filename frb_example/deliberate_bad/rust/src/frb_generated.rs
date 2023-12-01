@@ -23,6 +23,16 @@ use flutter_rust_bridge::Handler;
 
 // Section: wire_funcs
 
+fn wire_make_data_race_impl(port_: flutter_rust_bridge::MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "make_data_race",
+            port: Some(port_),
+            mode: flutter_rust_bridge::FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(crate::api::simple::make_data_race()),
+    )
+}
 fn wire_make_heap_use_after_free_impl(port_: flutter_rust_bridge::MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         flutter_rust_bridge::WrapInfo {
@@ -55,6 +65,20 @@ fn wire_make_stack_buffer_overflow_impl(port_: flutter_rust_bridge::MessagePort)
         move || {
             move |task_callback| {
                 Result::<_, ()>::Ok(crate::api::simple::make_stack_buffer_overflow())
+            }
+        },
+    )
+}
+fn wire_make_use_of_uninitialized_value_impl(port_: flutter_rust_bridge::MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "make_use_of_uninitialized_value",
+            port: Some(port_),
+            mode: flutter_rust_bridge::FfiCallMode::Normal,
+        },
+        move || {
+            move |task_callback| {
+                Result::<_, ()>::Ok(crate::api::simple::make_use_of_uninitialized_value())
             }
         },
     )

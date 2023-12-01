@@ -17,6 +17,11 @@ impl<T> NewWithNullPtr for *mut T {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_make_data_race(port_: i64) {
+    wire_make_data_race_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_make_heap_use_after_free(port_: i64) {
     wire_make_heap_use_after_free_impl(port_)
 }
@@ -29,4 +34,9 @@ pub extern "C" fn wire_make_memory_leak(port_: i64) {
 #[no_mangle]
 pub extern "C" fn wire_make_stack_buffer_overflow(port_: i64) {
     wire_make_stack_buffer_overflow_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_make_use_of_uninitialized_value(port_: i64) {
+    wire_make_use_of_uninitialized_value_impl(port_)
 }

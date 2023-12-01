@@ -22,6 +22,9 @@ class RustLibWire extends BaseWire {
   // : super(WasmModule.cast<RustLibWasmModule>(lib.wasmModule));
   RustLibWire.fromExternalLibrary(ExternalLibrary lib) {}
 
+  void wire_make_data_race(NativePortType port_) =>
+      wasmModule.wire_make_data_race(port_);
+
   void wire_make_heap_use_after_free(NativePortType port_) =>
       wasmModule.wire_make_heap_use_after_free(port_);
 
@@ -30,6 +33,9 @@ class RustLibWire extends BaseWire {
 
   void wire_make_stack_buffer_overflow(NativePortType port_) =>
       wasmModule.wire_make_stack_buffer_overflow(port_);
+
+  void wire_make_use_of_uninitialized_value(NativePortType port_) =>
+      wasmModule.wire_make_use_of_uninitialized_value(port_);
 }
 
 @JS('wasm_bindgen')
@@ -42,9 +48,13 @@ class RustLibWasmModule implements WasmModule {
 
   external RustLibWasmModule bind(dynamic thisArg, String moduleName);
 
+  external void wire_make_data_race(NativePortType port_);
+
   external void wire_make_heap_use_after_free(NativePortType port_);
 
   external void wire_make_memory_leak(NativePortType port_);
 
   external void wire_make_stack_buffer_overflow(NativePortType port_);
+
+  external void wire_make_use_of_uninitialized_value(NativePortType port_);
 }

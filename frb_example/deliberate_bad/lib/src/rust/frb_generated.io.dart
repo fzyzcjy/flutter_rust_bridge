@@ -43,6 +43,20 @@ class RustLibWire implements BaseWire {
           lookup)
       : _lookup = lookup;
 
+  void wire_make_data_race(
+    int port_,
+  ) {
+    return _wire_make_data_race(
+      port_,
+    );
+  }
+
+  late final _wire_make_data_racePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_make_data_race');
+  late final _wire_make_data_race =
+      _wire_make_data_racePtr.asFunction<void Function(int)>();
+
   void wire_make_heap_use_after_free(
     int port_,
   ) {
@@ -84,6 +98,20 @@ class RustLibWire implements BaseWire {
           'wire_make_stack_buffer_overflow');
   late final _wire_make_stack_buffer_overflow =
       _wire_make_stack_buffer_overflowPtr.asFunction<void Function(int)>();
+
+  void wire_make_use_of_uninitialized_value(
+    int port_,
+  ) {
+    return _wire_make_use_of_uninitialized_value(
+      port_,
+    );
+  }
+
+  late final _wire_make_use_of_uninitialized_valuePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_make_use_of_uninitialized_value');
+  late final _wire_make_use_of_uninitialized_value =
+      _wire_make_use_of_uninitialized_valuePtr.asFunction<void Function(int)>();
 
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();
