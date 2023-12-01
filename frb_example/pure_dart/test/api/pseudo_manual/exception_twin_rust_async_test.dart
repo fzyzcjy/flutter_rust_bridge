@@ -247,7 +247,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
             throwsA(isA<FrbException>()));
       });
 
-      test('Stream sink throw anyhow error', () async {
+      test('Stream sink throw anyhow error', skip: 'wait until #11281',
+          () async {
         expect(
           () async {
             await for (final _ in streamSinkThrowAnyhowTwinRustAsync()) {}

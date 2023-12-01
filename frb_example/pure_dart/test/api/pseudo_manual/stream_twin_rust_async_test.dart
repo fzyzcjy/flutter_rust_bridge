@@ -30,7 +30,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     funcStreamSinkArgPositionTwinRustAsync(a: 100, b: 200);
   });
 
-  test('call funcStreamReturnErrorTwinRustAsync', () async {
+  test('call funcStreamReturnErrorTwinRustAsync', skip: 'wait until #11281',
+      () async {
     await expectLater(
       () async {
         await for (final _ in funcStreamReturnErrorTwinRustAsync()) {}
