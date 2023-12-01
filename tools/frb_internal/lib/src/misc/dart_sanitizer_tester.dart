@@ -44,16 +44,25 @@ Future<void> _runPackageDeliberateBadRustOnly(
       expectSucceed: true,
       expectStderrContains: '',
     ),
-    const _Info(
-      name: 'RustOnly_StackBufferOverflow',
-      expectSucceed: false,
-      expectStderrContains: 'ERROR: AddressSanitizer: stack-buffer-overflow',
-    ),
-    const _Info(
-      name: 'RustOnly_HeapUseAfterFree',
-      expectSucceed: false,
-      expectStderrContains: 'ERROR: AddressSanitizer: heap-use-after-free',
-    ),
+    ...switch (config.sanitizer) {
+      Sanitizer.asan => [
+          const _Info(
+            name: 'RustOnly_StackBufferOverflow',
+            expectSucceed: false,
+            expectStderrContains:
+                'ERROR: AddressSanitizer: stack-buffer-overflow',
+          ),
+          const _Info(
+            name: 'RustOnly_HeapUseAfterFree',
+            expectSucceed: false,
+            expectStderrContains:
+                'ERROR: AddressSanitizer: heap-use-after-free',
+          ),
+        ],
+      Sanitizer.lsan => [
+          TODO,
+        ],
+    },
   ];
 
   for (final info in kInfos) {
@@ -68,35 +77,52 @@ Future<void> _runPackageDeliberateBadRustOnly(
 
 Future<void> _runPackageDeliberateBadWithDart(
     TestDartSanitizerConfig config) async {
-  final kInfos = [
+  final kDartOnlyInfos = [
     const _Info(
       name: 'DartOnly_Good',
       expectSucceed: true,
       expectStderrContains: '',
     ),
-    // NOTE ASAN does not report this as buggy...
-    const _Info(
-      name: 'DartOnly_HeapUseAfterFree',
-      expectSucceed: true,
-      expectStderrContains: '',
-    ),
+    ...switch (config.sanitizer) {
+      Sanitizer.asan => [
+          // NOTE ASAN does not report this as buggy...
+          const _Info(
+            name: 'DartOnly_HeapUseAfterFree',
+            expectSucceed: true,
+            expectStderrContains: '',
+          ),
+        ],
+      Sanitizer.lsan => [
+          TODO,
+        ],
+    },
+  ];
 
-    // NOTE It should fail, but ASAN did not realize this case...
-    const _Info(
-      name: 'DartCallRust_StackBufferOverflow',
-      expectSucceed: true,
-      expectStderrContains: '',
-    ),
-    // ASAN successfully understand this case
-    const _Info(
-      name: 'DartCallRust_HeapUseAfterFree',
-      expectSucceed: false,
-      expectStderrContains: 'ERROR: AddressSanitizer: heap-use-after-free',
-    ),
+  final kDartCallRustInfos = [
+    ...switch (config.sanitizer) {
+      Sanitizer.asan => [
+          // NOTE It should fail, but ASAN did not realize this case...
+          const _Info(
+            name: 'DartCallRust_StackBufferOverflow',
+            expectSucceed: true,
+            expectStderrContains: '',
+          ),
+          // ASAN successfully understand this case
+          const _Info(
+            name: 'DartCallRust_HeapUseAfterFree',
+            expectSucceed: false,
+            expectStderrContains:
+                'ERROR: AddressSanitizer: heap-use-after-free',
+          ),
+        ],
+      Sanitizer.lsan => [
+          TODO,
+        ],
+    },
   ];
 
   final sanitizedDart = await _getSanitizedDartBinary(config);
-  for (final info in kInfos) {
+  for (final info in kDartOnlyInfos + kDartCallRustInfos) {
     await _execAndCheckWithSanitizerEnvVar(
       '$sanitizedDart --enable-experiment=native-assets run '
       'frb_example_deliberate_bad ${info.name}',
