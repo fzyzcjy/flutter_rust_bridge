@@ -3,6 +3,8 @@
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 
 Future<void> run({required String package}) async {
+  runPubGetIfNotRunYet(package);
+
   if (package == 'frb_example/deliberate_bad') {
     await _runPackageDeliberateBad(package: package);
   } else {
