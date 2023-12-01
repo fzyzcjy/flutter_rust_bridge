@@ -70,7 +70,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
     data.dispose();
-    await expectThrowsPanic(
+    await expectRustPanic(
         () => runOpaqueTwinRustAsync(opaque: data), 'TwinRustAsync');
   });
 
@@ -87,7 +87,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
         "lifetime: \"static str\" "
         "})");
-    await expectThrowsPanic(
+    await expectRustPanic(
         () => runOpaqueTwinRustAsync(opaque: data), 'TwinRustAsync');
   });
 
@@ -104,7 +104,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
           "lifetime: \"static str\" "
           "})");
       v.dispose();
-      await expectThrowsPanic(
+      await expectRustPanic(
           () => runOpaqueTwinRustAsync(opaque: v), 'TwinRustAsync');
     }
   });
@@ -150,7 +150,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \\\"static str\\\" "
         "})\"");
     (data[4] as EnumOpaqueTwinRustAsync_RwLock).field0.dispose();
-    await expectThrowsPanic(
+    await expectRustPanic(
         () => runEnumOpaqueTwinRustAsync(opaque: data[4]), 'TwinRustAsync');
   });
 
@@ -177,9 +177,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
     data.first.dispose();
-    await expectThrowsPanic(
+    await expectRustPanic(
         () => runOpaqueTwinRustAsync(opaque: data.first), 'TwinRustAsync');
-    await expectThrowsPanic(
+    await expectRustPanic(
         () => runNestedOpaqueTwinRustAsync(opaque: data), 'TwinRustAsync');
     expect(
         await runOpaqueTwinRustAsync(opaque: data.second),
@@ -208,7 +208,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
 
-    await expectThrowsPanic(
+    await expectRustPanic(
         () => opaqueArrayRunTwinRustAsync(data: data), 'TwinRustAsync');
     data[1].dispose();
   });
@@ -228,7 +228,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
 
-    await expectThrowsPanic(
+    await expectRustPanic(
         () => opaqueVecRunTwinRustAsync(data: data), 'TwinRustAsync');
     data[1].dispose();
   });

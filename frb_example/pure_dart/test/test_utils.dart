@@ -82,7 +82,7 @@ bool get releaseMode {
 /// again due to limitation of WASM before abort-unwind is usable.
 ///
 /// But normal code should *not* rely on panic, so it should be OK.
-Future<void> expectThrowsPanic(FutureOr<void> Function() body, String mode,
+Future<void> expectRustPanic(FutureOr<void> Function() body, String mode,
     {String? messageOnNative}) async {
   if (kIsWeb) {
     if (mode == 'RustAsync') {

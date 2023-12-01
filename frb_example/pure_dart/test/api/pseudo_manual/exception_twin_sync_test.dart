@@ -20,19 +20,19 @@ Future<void> main({bool skipRustLibInit = false}) async {
               .having((x) => x.message, 'message', 'deliberate error')));
     });
     test('call funcTypeFalliblePanicTwinSync', () async {
-      await expectThrowsPanic(
+      await expectRustPanic(
           () async => funcTypeFalliblePanicTwinSync(), 'TwinSync',
           messageOnNative: 'deliberate panic');
     });
     test('call funcTypeInfalliblePanicTwinSync', () async {
-      await expectThrowsPanic(
+      await expectRustPanic(
           () async => funcTypeInfalliblePanicTwinSync(), 'TwinSync',
           messageOnNative: 'deliberate panic');
     });
 
     addTestsIdentityFunctionCall(customEnumErrorReturnOkTwinSync, [100]);
     test('call customEnumErrorPanicTwinSync', () async {
-      await expectThrowsPanic(
+      await expectRustPanic(
           () async => customEnumErrorPanicTwinSync(), 'TwinSync',
           messageOnNative: 'deliberate panic');
     });
