@@ -20,7 +20,7 @@ Future<void> main(List<String> args) async {
 
   for (final benchmark in benchmarks) {
     if (!filterRegex.hasMatch(benchmark.name)) {
-      print('Skip ${benchmark.name} since not match filter');
+      print('Skip ${benchmark.name} since not match filter $filterRegex');
       continue;
     }
     await benchmark.reportMaybeAsync();
@@ -29,4 +29,7 @@ Future<void> main(List<String> args) async {
   final output = jsonEncode(emitter.items);
   print('Write reports to $pathOutput with output=$output');
   File(pathOutput).writeAsStringSync(output);
+
+  // to avoid hang forever
+  exit(0);
 }
