@@ -13,7 +13,7 @@ Future<void> main(List<String> args) async {
   await RustLib.init();
 
   final [pathOutput, partialName, ...] = args;
-  final filterRegex = RegExp(args.length >= 3 ? args[2] : '');
+  final filterRegex = RegExp(args.length >= 3 ? args[2] : '.*');
 
   final emitter = JsonEmitter(namer: (x) => 'PureDart_${x}_$partialName');
   final benchmarks = createBenchmarks(emitter: emitter);
