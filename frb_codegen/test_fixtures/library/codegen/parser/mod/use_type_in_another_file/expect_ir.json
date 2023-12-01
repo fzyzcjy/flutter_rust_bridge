@@ -74,7 +74,8 @@
         "safe_ident": "unit",
         "type": "Primitive"
       },
-      "owner": "Function"
+      "owner": "Function",
+      "rust_async": false
     }
   ],
   "has_executor": false,

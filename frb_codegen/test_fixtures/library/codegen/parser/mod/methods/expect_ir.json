@@ -62,7 +62,8 @@
           "enum_or_struct_name": "crate::api/MyEnum",
           "mode": "Instance"
         }
-      }
+      },
+      "rust_async": false
     },
     {
       "comments": [],
@@ -81,7 +82,8 @@
           "enum_or_struct_name": "crate::api/MyEnum",
           "mode": "Static"
         }
-      }
+      },
+      "rust_async": false
     },
     {
       "comments": [],
@@ -125,7 +127,8 @@
           "enum_or_struct_name": "crate::api/MyStruct",
           "mode": "Instance"
         }
-      }
+      },
+      "rust_async": false
     }
   ],
   "has_executor": false,

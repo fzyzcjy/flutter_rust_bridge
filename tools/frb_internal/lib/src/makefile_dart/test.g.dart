@@ -19,6 +19,22 @@ TestConfig parseTestConfig(List<String> args) {
   return _$parseTestConfigResult(result);
 }
 
+TestRustConfig _$parseTestRustConfigResult(ArgResults result) => TestRustConfig(
+      updateGoldens: result['update-goldens'] as bool,
+    );
+
+ArgParser _$populateTestRustConfigParser(ArgParser parser) => parser
+  ..addFlag(
+    'update-goldens',
+  );
+
+final _$parserForTestRustConfig = _$populateTestRustConfigParser(ArgParser());
+
+TestRustConfig parseTestRustConfig(List<String> args) {
+  final result = _$parserForTestRustConfig.parse(args);
+  return _$parseTestRustConfigResult(result);
+}
+
 TestDartConfig _$parseTestDartConfigResult(ArgResults result) => TestDartConfig(
       package: result['package'] as String,
     );

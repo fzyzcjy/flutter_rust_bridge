@@ -9,8 +9,8 @@ part 'test.g.dart';
 
 List<Command<void>> createCommands() {
   return [
-    SimpleConfigCommand('test-rust', testRust, _$populateTestConfigParser,
-        _$parseTestConfigResult),
+    SimpleConfigCommand('test-rust', testRust, _$populateTestRustConfigParser,
+        _$parseTestRustConfigResult),
     SimpleConfigCommand('test-dart-native', testDartNative,
         _$populateTestDartConfigParser, _$parseTestDartConfigResult),
     SimpleConfigCommand('test-dart-web', testDartWeb,
@@ -30,6 +30,13 @@ class TestConfig {
 }
 
 @CliOptions()
+class TestRustConfig {
+  final bool updateGoldens;
+
+  const TestRustConfig({required this.updateGoldens});
+}
+
+@CliOptions()
 class TestDartConfig {
   final String package;
 
@@ -44,17 +51,18 @@ class TestFlutterConfig {
   const TestFlutterConfig({this.flutterTestArgs, required this.package});
 }
 
-Future<void> testRust(TestConfig config) async {
+Future<void> testRust(TestRustConfig config) async {
   for (final package in kRustPackages) {
-    await testRustPackage(package);
+    await testRustPackage(config, package);
   }
 }
 
-Future<void> testRustPackage(String package) async {
+Future<void> testRustPackage(TestRustConfig config, String package) async {
   await exec('cargo build', relativePwd: package);
   await exec('cargo test', relativePwd: package, extraEnv: {
     // Because we have another CI to run the codegen and check outputs
     'FRB_SKIP_GENERATE_FRB_EXAMPLE_TEST': '1',
+    if (config.updateGoldens) 'UPDATE_GOLDENS': '1',
   });
 }
 

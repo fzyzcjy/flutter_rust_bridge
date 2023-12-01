@@ -7,6 +7,7 @@ import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 
 part 'misc.g.dart';
@@ -61,6 +62,8 @@ Future<void> precommit(PrecommitConfig config) async {
       await generateRunFrbCodegenCommandGenerate(
           GeneratePackageConfig(setExitIfChanged: false, package: package));
     }
+
+    await testRust(const TestRustConfig(updateGoldens: true));
   }
 }
 
