@@ -36,6 +36,7 @@ const kDartModeOfPackage = {
   'tools/frb_internal': DartMode.dart,
   'frb_example/dart_minimal': DartMode.dart,
   'frb_example/pure_dart': DartMode.dart,
+  'frb_example/deliberate_bad': DartMode.dart,
   'frb_example/flutter_via_create': DartMode.flutter,
   'frb_example/flutter_via_integrate': DartMode.flutter,
   // TODO `with_flutter` example
