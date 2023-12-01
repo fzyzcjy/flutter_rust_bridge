@@ -236,22 +236,27 @@ Future<String> _getSanitizedDartBinary(TestDartSanitizerConfig config) async {
   const releaseName = 'Build_2023.12.01_09-42-01';
   final baseName = '${config.sanitizer.dartSdkBuildOutDir}_dart-sdk';
   final fileNameTarGz = '$baseName.tar.gz';
-  final pathTarGz = path.join(Directory.systemTemp.path, fileNameTarGz);
-  final pathBin = path.join(Directory.systemTemp.path, baseName, 'bin', 'dart');
 
-  if (await File(pathBin).exists()) {
-    print('Skip downloading artifat since $pathBin already exists');
-  } else {
+  final pathTarGz = path.join(Directory.systemTemp.path, fileNameTarGz);
+  final pathUnzippedDir = path.join(Directory.systemTemp.path, baseName);
+  final pathBin = path.join(
+      pathUnzippedDir, 'dart-sdk/sdk/out/ReleaseLSANX64/dart-sdk/bin/dart');
+
+  if (!await File(pathTarGz).exists()) {
     final url =
         'https://github.com/fzyzcjy/dart_lang_ci/releases/download/$releaseName/$fileNameTarGz';
-
     print('Download artifact from $url to $pathTarGz...');
     await Dio().download(url, pathTarGz);
-
-    await exec('tar -xvzf $pathTarGz -C $baseName');
   }
- 
-  if (!await File(pathBin).exists()) throw Exception();
+
+  if (!await File(pathBin).exists()) {
+    await exec('mkdir $pathUnzippedDir');
+    await exec('tar -xvzf $pathTarGz -C $pathUnzippedDir');
+  }
+
+  if (!await File(pathBin).exists()) {
+    throw Exception('$pathBin still not exist');
+  }
 
   return pathBin;
 }
