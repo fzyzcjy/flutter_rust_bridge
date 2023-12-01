@@ -1,8 +1,9 @@
 import 'dart:ffi' as ffi;
 
 import 'package:ffi/ffi.dart';
+import 'package:frb_example_deliberate_bad/src/rust/api/simple.dart';
 
-void main(List<String> args) {
+Future<void> main(List<String> args) async {
   switch (args[0]) {
     case 'DartOnly_Good':
       print('I am good Dart code');
@@ -14,6 +15,12 @@ void main(List<String> args) {
       print('read p firstly: ${p.value}');
       calloc.free(p);
       print('read p after free: ${p.value}');
+
+    case 'DartCallRust_StackBufferOverflow':
+      await makeStackBufferOverflow();
+
+    case 'DartCallRust_HeapUseAfterFree':
+      await makeHeapUseAfterFree();
 
     default:
       throw Exception('Unknown args $args');
