@@ -2,7 +2,7 @@ import 'package:benchmark_harness/benchmark_harness.dart';
 
 abstract class MaybeAsyncBenchmarkBase {
   String get name;
- 
+
   Future<void> reportMaybeAsync();
 }
 
@@ -20,7 +20,7 @@ abstract class EnhancedBenchmarkBase extends BenchmarkBase
 
 abstract class EnhancedAsyncBenchmarkBase extends AsyncBenchmarkBase
     implements MaybeAsyncBenchmarkBase {
-  EnhancedAsyncBenchmarkBase(super.name, {super.emitter});
+  const EnhancedAsyncBenchmarkBase(super.name, {super.emitter});
 
   @override
   Future<void> reportMaybeAsync() async => report();
