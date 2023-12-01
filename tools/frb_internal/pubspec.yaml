@@ -10,6 +10,7 @@ dependencies:
   args: ^2.1.1
   build_cli_annotations: ^2.1.0
   collection: ^1.15.0
+  dio: ^5.4.0
   glob: ^2.1.2
   recase: ^4.0.0
   flutter_rust_bridge:
