@@ -156,10 +156,13 @@ Future<String> _getSanitizedDartBinary(TestDartSanitizerConfig config) async {
   const url =
       'https://github.com/fzyzcjy/dart_lang_ci/releases/download/Build_2023.12.01_06-51-09/dart';
   final pathBin = path.join(Directory.systemTemp.path, 'dart_ReleaseASANX64');
-  if (!await File(pathBin).exists()) {
+  if (await File(pathBin).exists()) {
+    print('Skip downloading artifat since $pathBin already exists');
+  } else {
     print('Download artifact from $url to $pathBin...');
     await Dio().download(url, pathBin);
   }
+  await exec('chmod +x $pathBin');
   return pathBin;
 }
 
