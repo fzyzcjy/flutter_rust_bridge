@@ -32,8 +32,10 @@ Future<void> main(List<String> args) async {
 
       case _Mode.loop:
         final loopCount = int.parse(args[4]);
-        print('Mode=loop loopCount=$loopCount');
+        final stopwatch = Stopwatch()..start();
+        print('Mode=loop START loopCount=$loopCount');
         await benchmark.loop(loopCount);
+        print('Mode=loop END totalTime(us)=${stopwatch.elapsedMicroseconds}');
     }
   }
 
