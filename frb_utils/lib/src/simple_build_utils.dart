@@ -14,16 +14,20 @@ void simpleBuild(List<String> args) async {
   final buildOutput = BuildOutput();
 
   final rustCrateDir = buildConfig.packageRoot.resolve('rust');
+
+  final cargoNightly =
+      Platform.environment['FRB_SIMPLE_BUILD_CARGO_NIGHTLY'] == '1';
+  final cargoExtraArgs =
+      Platform.environment['FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS']?.split(' ') ??
+          const <String>[];
+
   await runCommand(
     'cargo',
     [
-      if (Platform.environment['FRB_SIMPLE_BUILD_CARGO_NIGHTLY'] == '1')
-        '+nightly',
+      if (cargoNightly) '+nightly',
       'build',
       '--release',
-      ...Platform.environment['FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS']
-              ?.split(' ') ??
-          const <String>[],
+      ...cargoExtraArgs,
     ],
     pwd: rustCrateDir.toFilePath(),
     printCommandInStderr: true,
