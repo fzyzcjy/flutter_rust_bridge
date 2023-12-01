@@ -1,5 +1,6 @@
 use crate::integration::utils::extract_dir_and_modify;
 use crate::library::commands::flutter::flutter_pub_add;
+use crate::library::commands::format_dart::format_dart;
 use crate::utils::path_utils::find_dart_package_dir;
 use anyhow::{Context, Result};
 use include_dir::{include_dir, Dir};
@@ -33,6 +34,8 @@ pub fn integrate(enable_integration_test: bool) -> Result<()> {
     modify_permissions(&dart_root)?;
 
     pub_add_dependencies(enable_integration_test)?;
+
+    format_dart(&[dart_root], 80)?;
 
     Ok(())
 }
