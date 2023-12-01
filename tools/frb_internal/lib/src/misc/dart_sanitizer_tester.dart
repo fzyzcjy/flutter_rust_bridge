@@ -61,6 +61,7 @@ Future<void> _runPackageDeliberateBadDartOnly({required String package}) async {
       expectOutputContains: '',
     ),
   ];
+
   for (final info in kInfos) {
     await _execAndCheck(
       '$sanitizedDart --enable-experiment=native-assets run '
@@ -71,9 +72,31 @@ Future<void> _runPackageDeliberateBadDartOnly({required String package}) async {
   }
 }
 
-Future<void> _runPackageDeliberateBadRustCallDart(
+Future<void> _runPackageDeliberateBadDartCallRust(
     {required String package}) async {
-  TOOD;
+  const kInfos = [
+    // NOTE It should fail, but ASAN did not realize this case...
+    _Info(
+      name: 'DartCallRust_StackBufferOverflow',
+      expectSucceed: true,
+      expectOutputContains: '',
+    ),
+    // ASAN successfully understand this case
+    _Info(
+      name: 'DartCallRust_HeapUseAfterFree',
+      expectSucceed: false,
+      expectOutputContains: 'ERROR: AddressSanitizer: heap-use-after-free',
+    ),
+  ];
+
+  for (final info in kInfos) {
+    await _execAndCheck(
+      '$sanitizedDart --enable-experiment=native-assets run '
+      'frb_example_deliberate_bad ${info.name}',
+      info,
+      relativePwd: package,
+    );
+  }
 }
 
 class _Info {
