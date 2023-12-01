@@ -85,8 +85,12 @@ bool get releaseMode {
 Future<void> expectThrowsPanic(Future<void> Function() body, String mode,
     {String? messageOnNative}) async {
   if (kIsWeb) {
-    if (TODO) {
-      TODO;
+    if (mode == 'RustAsync') {
+      // expect it timeouts (hangs), instead of throws
+      var bodyCompleted = false;
+      unawaited(body().whenComplete(() => bodyCompleted = true));
+      await Future.delayed(const Duration(milliseconds: 300));
+      expect(bodyCompleted, false);
     } else {
       await expectLater(body, throwsA(isA<PanicException>()));
     }
