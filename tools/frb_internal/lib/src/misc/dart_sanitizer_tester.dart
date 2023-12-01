@@ -13,7 +13,9 @@ Future<void> _runEntrypoint({required String package}) async {
 }
 
 Future<void> _runPackageDeliberateBad({required String package}) async {
-  throw Exception('TODO');
+  await _runPackageDeliberateBadRustOnly(package: package);
+  await _runPackageDeliberateBadDartOnly(package: package);
+  await _runPackageDeliberateBadDartCallRust(package: package);
 }
 
 Future<void> _runPackageDeliberateBadRustOnly({required String package}) async {
@@ -37,13 +39,41 @@ Future<void> _runPackageDeliberateBadRustOnly({required String package}) async {
 
   for (final info in kInfos) {
     await _execAndCheck(
-      'cargo +nightly run ${_CargoBuildAsanInfo.kExtraArgs.join(" ")} $name',
+      'cargo +nightly run ${_CargoBuildAsanInfo.kExtraArgs.join(" ")} ${info.name}',
+      info,
       extraEnv: _CargoBuildAsanInfo.kExtraEnv,
-      relativePwd: 'rust',
-      expectSucceed: expectSucceed,
-      expectStderrContains: expectStderrContains,
+      relativePwd: '$package/rust',
     );
   }
+}
+
+Future<void> _runPackageDeliberateBadDartOnly({required String package}) async {
+  const kInfos = [
+    _Info(
+      name: 'DartOnly_Good',
+      expectSucceed: true,
+      expectOutputContains: '',
+    ),
+    // NOTE ASAN does not report this as buggy...
+    _Info(
+      name: 'DartOnly_HeapUseAfterFree',
+      expectSucceed: true,
+      expectOutputContains: '',
+    ),
+  ];
+  for (final info in kInfos) {
+    await _execAndCheck(
+      '$sanitizedDart --enable-experiment=native-assets run '
+      'frb_example_deliberate_bad ${info.name}',
+      info,
+      relativePwd: package,
+    );
+  }
+}
+
+Future<void> _runPackageDeliberateBadRustCallDart(
+    {required String package}) async {
+  TOOD;
 }
 
 class _Info {
