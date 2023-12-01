@@ -81,6 +81,7 @@ fn run_cargo_expand(
     info!("Running cargo expand in '{rust_crate_dir:?}'");
     let args = vec![
         PathBuf::from("expand"),
+        PathBuf::from("--lib"),
         PathBuf::from("--theme=none"),
         PathBuf::from("--ugly"),
     ];
