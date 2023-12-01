@@ -9,7 +9,11 @@ void main() {
 
   for (final (name, expectSucceed, expectStderrContains) in [
     ('DartOnly_Good', true, ''),
-    // TODO
+    (
+      'DartOnly_HeapUseAfterFree',
+      false,
+      'ERROR: AddressSanitizer: heap-use-after-free',
+    ),
   ]) {
     test('name=$name', () async {
       await execAndCheck(
