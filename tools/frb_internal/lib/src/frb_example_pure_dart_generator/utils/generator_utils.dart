@@ -82,8 +82,8 @@ class _Duplicator {
         var outputText = computeDuplicatorPrelude(' from `$fileName`') +
             (annotation.addCode ?? '') +
             generator.generateDuplicateCode(fileContent, mode);
-        if (annotation.removeCode != null) {
-          outputText = outputText.replaceAll(annotation.removeCode!, '');
+        for (final x in annotation.removeCode) {
+          outputText = outputText.replaceAll(x, '');
         }
 
         final targetPath = generator.interestDir
@@ -110,18 +110,20 @@ _Annotation _parseAnnotation(String fileContent) {
             .map((x) => DuplicatorMode.values.byName(x))
             .toList(),
     addCode: data['addCode'] as String?,
-    removeCode: data['removeCode'] as String?,
+    removeCode: ((data['removeCode'] as List<dynamic>?) ?? <String>[])
+        .map((x) => x as String)
+        .toList(),
   );
 }
 
 class _Annotation {
   final List<DuplicatorMode> forbiddenDuplicatorModes;
   final String? addCode;
-  final String? removeCode;
+  final List<String> removeCode;
 
   const _Annotation({
     this.forbiddenDuplicatorModes = const [],
     this.addCode,
-    this.removeCode,
+    this.removeCode = const [],
   });
 }

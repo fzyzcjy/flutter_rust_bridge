@@ -1,4 +1,4 @@
-// FRB_INTERNAL_GENERATOR: {"removeCode": "import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_twin_sync.dart';\n"}
+// FRB_INTERNAL_GENERATOR: {"removeCode": ["import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/mirror_twin_sync_twin_sync.dart';\n"]}
 
 import 'dart:typed_data';
 
