@@ -14,7 +14,7 @@ import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/benchmark_api_t
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.io.dart';
 
-import 'benchmark_utils.dart';
+import 'src/benchmark_utils.dart';
 
 Future<void> main(List<String> args) async {
   await RustLib.init();
