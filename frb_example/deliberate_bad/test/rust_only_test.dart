@@ -10,6 +10,11 @@ void main() {
       false,
       'ERROR: AddressSanitizer: stack-buffer-overflow',
     ),
+    (
+      'UseAfterFree',
+      false,
+      'TODO',
+    ),
   ]) {
     test('name=$name', () async {
       await execAndCheck(
