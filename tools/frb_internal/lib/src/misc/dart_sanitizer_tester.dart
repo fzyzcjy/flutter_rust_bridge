@@ -118,7 +118,11 @@ Future<void> _runPackageDeliberateBadWithDart(
           ),
         ],
       Sanitizer.lsan => [
-          TODO,
+          const _Info(
+            name: 'DartCallRust_MemoryLeak',
+            expectSucceed: false,
+            expectStderrContains: 'ERROR: LeakSanitizer: detected memory leaks',
+          ),
         ],
     },
   ];

@@ -26,6 +26,9 @@ Future<void> main(List<String> args) async {
     case 'DartCallRust_HeapUseAfterFree':
       await makeHeapUseAfterFree();
 
+    case 'DartCallRust_MemoryLeak':
+      await makeMemoryLeak();
+
     default:
       throw Exception('Unknown args $args');
   }

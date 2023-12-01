@@ -14,3 +14,10 @@ pub fn make_heap_use_after_free() {
     let z = unsafe { *y };
     println!("z={z:?}");
 }
+
+pub fn make_memory_leak() {
+    // https://github.com/japaric/rust-san?tab=readme-ov-file#memory-leak
+    let xs = vec![0, 1, 2, 3];
+    println!("xs={xs:?}");
+    std::mem::forget(xs);
+}

@@ -22,7 +22,7 @@ fn main() {
             // https://github.com/japaric/rust-san?tab=readme-ov-file#memory-leak
             let xs = vec![0, 1, 2, 3];
             println!("xs={xs:?}");
-            mem::forget(xs);
+            std::mem::forget(xs);
         }
         s => panic!("Unknown mode: {}", s),
     }
