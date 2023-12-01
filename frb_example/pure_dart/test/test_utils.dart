@@ -84,22 +84,18 @@ bool get releaseMode {
 /// But normal code should *not* rely on panic, so it should be OK.
 Future<void> expectRustPanic(FutureOr<void> Function() body, String mode,
     {String? messageOnNative}) async {
-  if (kIsWeb) {
-    if (mode == 'RustAsync') {
-      // expect it timeouts (hangs), instead of throws
-      var bodyCompleted = false;
-      unawaited(Future.value(body()).whenComplete(() => bodyCompleted = true));
-      await Future.delayed(const Duration(milliseconds: 300));
-      expect(bodyCompleted, false);
-    } else {
-      await expectLater(body, throwsA(isA<PanicException>()));
-    }
+  if (kIsWeb && mode == 'RustAsync') {
+    // expect it timeouts (hangs), instead of throws
+    var bodyCompleted = false;
+    unawaited(Future.value(body()).whenComplete(() => bodyCompleted = true));
+    await Future.delayed(const Duration(milliseconds: 300));
+    expect(bodyCompleted, false);
   } else {
-    await expectLater(
-      body,
-      throwsA(isA<PanicException>()
-          .having((x) => x.message, 'message', messageOnNative)),
-    );
+    var inner = isA<PanicException>();
+    if (!kIsWeb && messageOnNative != null) {
+      inner = inner.having((x) => x.message, 'message', messageOnNative);
+    }
+    await expectLater(body, throwsA(inner));
   }
 }
 
