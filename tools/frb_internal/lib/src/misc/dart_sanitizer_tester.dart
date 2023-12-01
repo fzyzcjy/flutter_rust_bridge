@@ -13,6 +13,7 @@ Future<void> run({required String package}) async {
 }
 
 Future<void> _runEntrypoint({required String package}) async {
+  final sanitizedDart = await _getSanitizedDartBinary();
   await _execAndCheckWithAsanEnvVar(
     '$sanitizedDart --enable-experiment=native-assets run test/dart_valgrind_test_entrypoint.dart',
     const _Info(
@@ -82,6 +83,7 @@ Future<void> _runPackageDeliberateBadWithDart({required String package}) async {
     ),
   ];
 
+  final sanitizedDart = await _getSanitizedDartBinary();
   for (final info in kInfos) {
     await _execAndCheckWithAsanEnvVar(
       '$sanitizedDart --enable-experiment=native-assets run '
@@ -139,9 +141,10 @@ Future<void> _execAndCheckWithAsanEnvVar(
   print('Pass check for ${info.name}');
 }
 
-// TODO do not hardcode
-const sanitizedDart =
-    '/home/cs144/dart-sdk/sdk/out/ReleaseASANX64/dart-sdk/bin/dart';
+Future<String> _getSanitizedDartBinary() async {
+  // TODO do not hardcode
+  return '/home/cs144/dart-sdk/sdk/out/ReleaseASANX64/dart-sdk/bin/dart';
+}
 
 class _CargoBuildAsanInfo {
   static const kExtraArgs = [
