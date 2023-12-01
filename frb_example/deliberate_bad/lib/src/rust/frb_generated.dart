@@ -1,10 +1,12 @@
 // ignore_for_file: unused_import, unused_element, duplicate_ignore
 
-import 'api/simple.dart';
 import 'dart:async';
 import 'dart:convert';
-import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart';
+
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+
+import 'api/simple.dart';
+import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart';
 
 /// Main entrypoint of the Rust API
 class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
@@ -17,8 +19,13 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   static Future<void> init({
     RustLibApi? api,
     BaseHandler? handler,
+    ExternalLibrary? externalLibrary,
   }) async {
-    await instance.initImpl(api: api, handler: handler);
+    await instance.initImpl(
+      api: api,
+      handler: handler,
+      externalLibrary: externalLibrary,
+    );
   }
 
   /// Dispose flutter_rust_bridge

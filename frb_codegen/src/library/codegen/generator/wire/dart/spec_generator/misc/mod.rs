@@ -106,8 +106,13 @@ fn generate_boilerplate(
                   static Future<void> init({{
                     {api_class_name}? api,
                     BaseHandler? handler,
+                    ExternalLibrary? externalLibrary,
                   }}) async {{
-                    await instance.initImpl(api: api, handler: handler);
+                    await instance.initImpl(
+                      api: api,
+                      handler: handler,
+                      externalLibrary: externalLibrary,
+                    );
                   }}
                   
                   /// Dispose flutter_rust_bridge
