@@ -42,7 +42,6 @@ Future<void> _runPackageDeliberateBadRustOnly({required String package}) async {
     await _execAndCheckWithAsanEnvVar(
       'cargo +nightly run ${_CargoBuildAsanInfo.kExtraArgs.join(" ")} ${info.name}',
       info,
-      extraEnv: _CargoBuildAsanInfo.kExtraEnv,
       relativePwd: '$package/rust',
     );
   }
@@ -102,13 +101,12 @@ Future<void> _execAndCheckWithAsanEnvVar(
   String cmd,
   _Info info, {
   required String relativePwd,
-  Map<String, String>? extraEnv,
 }) async {
   final output = await exec(
     cmd,
     relativePwd: relativePwd,
     extraEnv: {
-      ...?extraEnv,
+      ..._CargoBuildAsanInfo.kExtraEnv,
       'FRB_SIMPLE_BUILD_CARGO_NIGHTLY': '1',
       'FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS':
           _CargoBuildAsanInfo.kExtraArgs.join(' '),
@@ -128,7 +126,7 @@ Future<void> _execAndCheckWithAsanEnvVar(
     throw Exception(
         'Bad stderr which does not contain `${info.expectStderrContains}`');
   }
- 
+
   print('Pass check for ${info.name}');
 }
 
