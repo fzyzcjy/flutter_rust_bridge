@@ -2,6 +2,8 @@ import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
+import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester.dart'
+    as dart_sanitizer_tester;
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:meta/meta.dart';
 
@@ -17,6 +19,11 @@ List<Command<void>> createCommands() {
         _$populateTestDartConfigParser, _$parseTestDartConfigResult),
     SimpleConfigCommand('test-dart-valgrind', testDartValgrind,
         _$populateTestDartConfigParser, _$parseTestDartConfigResult),
+    SimpleConfigCommand(
+        'test-dart-sanitizer',
+        testDartSanitizer,
+        _$populateTestDartSanitizerConfigParser,
+        _$parseTestDartSanitizerConfigResult),
     SimpleConfigCommand('test-flutter-native', testFlutterNative,
         _$populateTestFlutterConfigParser, _$parseTestFlutterConfigResult),
     SimpleConfigCommand('test-flutter-web', testFlutterWeb,
@@ -41,6 +48,13 @@ class TestDartConfig {
   final String package;
 
   const TestDartConfig({required this.package});
+}
+
+@CliOptions()
+class TestDartSanitizerConfig {
+  final String name;
+
+  const TestDartSanitizerConfig({required this.name});
 }
 
 @CliOptions()
@@ -149,6 +163,9 @@ void checkValgrindOutput(String output) {
     }
   }
 }
+
+Future<void> testDartSanitizer(TestDartSanitizerConfig config) async =>
+    await dart_sanitizer_tester.run(name: config.name);
 
 Future<void> testFlutterNative(TestFlutterConfig config) async {
   await _runFlutterDoctor();
