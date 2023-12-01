@@ -17,9 +17,9 @@ void simpleBuild(List<String> args) async {
   await runCommand(
     'cargo',
     [
-      'build',
       if (Platform.environment['FRB_SIMPLE_BUILD_CARGO_NIGHTLY'] == '1')
         '+nightly',
+      'build',
       '--release',
       ...Platform.environment['FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS']
               ?.split(' ') ??
