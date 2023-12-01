@@ -335,39 +335,40 @@ impl<EH: ErrorHandler + Sync> Executor for ThreadPoolExecutor<EH> {
         rust_async::spawn((|| async move {
             let WrapInfo { port, mode, .. } = wrap_info;
             let port2 = port.as_ref().cloned();
-            // TODO handle catch_unwind
-            // let thread_result = panic::catch_unwind(move || {
-            let port2 = port2.expect("(worker) thread");
-            #[allow(clippy::clone_on_copy)]
-            let rust2dart = Rust2Dart::new(port2.clone());
 
-            let ret = task(TaskCallback::new(rust2dart.clone()))
-                .await
-                .map(|e| e.into_into_dart().into_dart());
+            // TODO rename variable (not "thread" anymore)
+            let thread_result = async {
+                let port2 = port2.expect("(worker) thread");
+                #[allow(clippy::clone_on_copy)]
+                let rust2dart = Rust2Dart::new(port2.clone());
 
-            match ret {
-                Ok(result) => {
-                    match mode {
-                        FfiCallMode::Normal => {
-                            rust2dart.success(result);
-                        }
-                        FfiCallMode::Stream => {
-                            // nothing - ignore the return value of a Stream-typed function
-                        }
-                        FfiCallMode::Sync => {
-                            panic!("FfiCallMode::Sync should not call execute, please call execute_sync instead")
+                let ret = task(TaskCallback::new(rust2dart.clone()))
+                    .await
+                    .map(|e| e.into_into_dart().into_dart());
+
+                match ret {
+                    Ok(result) => {
+                        match mode {
+                            FfiCallMode::Normal => {
+                                rust2dart.success(result);
+                            }
+                            FfiCallMode::Stream => {
+                                // nothing - ignore the return value of a Stream-typed function
+                            }
+                            FfiCallMode::Sync => {
+                                panic!("FfiCallMode::Sync should not call execute, please call execute_sync instead")
+                            }
                         }
                     }
-                }
-                Err(error) => {
-                    eh2.handle_error(port2, Error::CustomError(Box::new(error)));
-                }
-            };
-            // });
-            //
-            // if let Err(error) = thread_result {
-            //     eh.handle_error(port.expect("(worker) eh"), Error::Panic(error));
-            // }
+                    Err(error) => {
+                        eh2.handle_error(port2, Error::CustomError(Box::new(error)));
+                    }
+                };
+            }.catch_unwind().await;
+
+            if let Err(error) = thread_result {
+                eh.handle_error(port.expect("(worker) eh"), Error::Panic(error));
+            }
         })());
     }
 }
