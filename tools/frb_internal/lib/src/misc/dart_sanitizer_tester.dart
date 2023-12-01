@@ -102,6 +102,8 @@ Future<void> _execAndCheckWithAsanEnvVar(
   _Info info, {
   required String relativePwd,
 }) async {
+  print('====== execAndCheckWithAsanEnvVar name=${info.name} ======');
+
   final output = await exec(
     cmd,
     relativePwd: relativePwd,
