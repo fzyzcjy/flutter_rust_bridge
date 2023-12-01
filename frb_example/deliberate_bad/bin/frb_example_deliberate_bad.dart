@@ -2,8 +2,11 @@ import 'dart:ffi' as ffi;
 
 import 'package:ffi/ffi.dart';
 import 'package:frb_example_deliberate_bad/src/rust/api/simple.dart';
+import 'package:frb_example_deliberate_bad/src/rust/frb_generated.dart';
 
 Future<void> main(List<String> args) async {
+  await RustLib.init();
+
   switch (args[0]) {
     case 'DartOnly_Good':
       print('I am good Dart code');
