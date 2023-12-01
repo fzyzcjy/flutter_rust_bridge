@@ -1,7 +1,6 @@
 import 'dart:ffi' as ffi;
 
 import 'package:ffi/ffi.dart';
-import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:frb_example_deliberate_bad/src/rust/api/simple.dart';
 import 'package:frb_example_deliberate_bad/src/rust/frb_generated.dart';
 
@@ -19,6 +18,10 @@ Future<void> main(List<String> args) async {
       print('read p firstly: ${p.value}');
       calloc.free(p);
       print('read p after free: ${p.value}');
+
+    case 'DartOnly_MemoryLeak':
+      final p = calloc<ffi.Float>();
+      print('read p: ${p.value}');
 
     case 'DartCallRust_StackBufferOverflow':
       await makeStackBufferOverflow();
