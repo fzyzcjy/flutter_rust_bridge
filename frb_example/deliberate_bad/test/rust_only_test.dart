@@ -4,12 +4,8 @@ import 'package:test/scaffolding.dart';
 import 'test_utils.dart';
 
 void main() {
-  for (final (name, expectSucceed, expectOutputContains) in [
-    (
-      'Good',
-      true,
-      'This is good code',
-    ),
+  for (final (name, expectSucceed, expectStderrContains) in [
+    ('Good', true, ''),
     (
       'StackBufferOverflow',
       false,
@@ -22,7 +18,7 @@ void main() {
         extraEnv: {'RUSTFLAGS': '-Zsanitizer=address'},
         relativePwd: 'rust',
         expectSucceed: expectSucceed,
-        expectOutputContains: expectOutputContains,
+        expectStderrContains: expectStderrContains,
       );
     });
   }
@@ -33,7 +29,7 @@ Future<void> _execAndCheck(
   String? relativePwd,
   Map<String, String>? extraEnv,
   required bool expectSucceed,
-  required String expectOutputContains,
+  required String expectStderrContains,
 }) async {
   final output = await exec(
     cmd,
@@ -43,5 +39,5 @@ Future<void> _execAndCheck(
   );
 
   expect(output.exitCode, expectSucceed ? 0 : isNot(0));
-  expect(output.stdout, contains(expectOutputContains));
+  expect(output.stderr, contains(expectStderrContains));
 }
