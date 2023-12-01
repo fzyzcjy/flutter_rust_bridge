@@ -12102,6 +12102,49 @@ pub extern "C" fn wire_simple_adder_twin_sync(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_func_stream_realistic_twin_rust_async(
+    port_: i64,
+    arg: *mut wire_list_prim_u_8,
+) {
+    wire_func_stream_realistic_twin_rust_async_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_func_stream_return_error_twin_rust_async(port_: i64) {
+    wire_func_stream_return_error_twin_rust_async_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_func_stream_return_panic_twin_rust_async(port_: i64) {
+    wire_func_stream_return_panic_twin_rust_async_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_func_stream_sink_arg_position_twin_rust_async(port_: i64, a: u32, b: u32) {
+    wire_func_stream_sink_arg_position_twin_rust_async_impl(port_, a, b)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_stream_of_struct_twin_rust_async(port_: i64) {
+    wire_handle_stream_of_struct_twin_rust_async_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_stream_sink_at_1_twin_rust_async(port_: i64, key: u32, max: u32) {
+    wire_handle_stream_sink_at_1_twin_rust_async_impl(port_, key, max)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_stream_sink_at_2_twin_rust_async(port_: i64, key: u32, max: u32) {
+    wire_handle_stream_sink_at_2_twin_rust_async_impl(port_, key, max)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_stream_sink_at_3_twin_rust_async(port_: i64, key: u32, max: u32) {
+    wire_handle_stream_sink_at_3_twin_rust_async_impl(port_, key, max)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_func_struct_with_one_field_twin_rust_async(
     port_: i64,
     arg: *mut wire_struct_with_one_field_twin_rust_async,
