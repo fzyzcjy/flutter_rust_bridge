@@ -50,14 +50,22 @@ class TestDartConfig {
   const TestDartConfig({required this.package});
 }
 
+enum Sanitizer {
+  asan,
+  lsan,
+  // TODO more
+}
+
 @CliOptions()
 class TestDartSanitizerConfig {
   final String package;
   final bool useLocalSanitizedDartBinary;
+  final Sanitizer sanitizer;
 
   const TestDartSanitizerConfig({
     required this.package,
     required this.useLocalSanitizedDartBinary,
+    required this.sanitizer,
   });
 }
 

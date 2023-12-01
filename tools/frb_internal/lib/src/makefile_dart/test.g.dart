@@ -51,13 +51,33 @@ TestDartConfig parseTestDartConfig(List<String> args) {
   return _$parseTestDartConfigResult(result);
 }
 
+T _$enumValueHelper<T>(Map<T, String> enumValues, String source) =>
+    enumValues.entries
+        .singleWhere(
+          (e) => e.value == source,
+          orElse: () => throw ArgumentError(
+            '`$source` is not one of the supported values: '
+            '${enumValues.values.join(', ')}',
+          ),
+        )
+        .key;
+
 TestDartSanitizerConfig _$parseTestDartSanitizerConfigResult(
         ArgResults result) =>
     TestDartSanitizerConfig(
       package: result['package'] as String,
       useLocalSanitizedDartBinary:
           result['use-local-sanitized-dart-binary'] as bool,
+      sanitizer: _$enumValueHelper(
+        _$SanitizerEnumMapBuildCli,
+        result['sanitizer'] as String,
+      ),
     );
+
+const _$SanitizerEnumMapBuildCli = <Sanitizer, String>{
+  Sanitizer.asan: 'asan',
+  Sanitizer.lsan: 'lsan'
+};
 
 ArgParser _$populateTestDartSanitizerConfigParser(ArgParser parser) => parser
   ..addOption(
@@ -65,6 +85,10 @@ ArgParser _$populateTestDartSanitizerConfigParser(ArgParser parser) => parser
   )
   ..addFlag(
     'use-local-sanitized-dart-binary',
+  )
+  ..addOption(
+    'sanitizer',
+    allowed: ['asan', 'lsan'],
   );
 
 final _$parserForTestDartSanitizerConfig =

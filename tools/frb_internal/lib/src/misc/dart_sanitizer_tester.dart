@@ -54,7 +54,7 @@ Future<void> _runPackageDeliberateBadRustOnly(
 
   for (final info in kInfos) {
     await _execAndCheckWithAsanEnvVar(
-      'cargo +nightly run ${_CargoBuildAsanInfo.kExtraArgs.join(" ")} ${info.name}',
+      'cargo +nightly run $_cargoBuildExtraArgs ${info.name}',
       info,
       relativePwd: '${config.package}/rust',
     );
@@ -124,10 +124,9 @@ Future<void> _execAndCheckWithAsanEnvVar(
     cmd,
     relativePwd: relativePwd,
     extraEnv: {
-      ..._CargoBuildAsanInfo.kExtraEnv,
+      'RUSTFLAGS': '-Zsanitizer=address',
       'FRB_SIMPLE_BUILD_CARGO_NIGHTLY': '1',
-      'FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS':
-          _CargoBuildAsanInfo.kExtraArgs.join(' '),
+      'FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS': _cargoBuildExtraArgs,
       // because we unconventionally specified the `--target` in cargo build
       'FRB_DART_LOAD_EXTERNAL_LIBRARY_NATIVE_LIB_DIR':
           'rust/target/x86_64-unknown-linux-gnu/release/',
@@ -166,14 +165,4 @@ Future<String> _getSanitizedDartBinary(TestDartSanitizerConfig config) async {
   return pathBin;
 }
 
-class _CargoBuildAsanInfo {
-  static const kExtraArgs = [
-    '-Zbuild-std',
-    '--target',
-    'x86_64-unknown-linux-gnu'
-  ];
-
-  static const kExtraEnv = {
-    'RUSTFLAGS': '-Zsanitizer=address',
-  };
-}
+const _cargoBuildExtraArgs = '-Zbuild-std --target x86_64-unknown-linux-gnu';
