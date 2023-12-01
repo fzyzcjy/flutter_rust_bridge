@@ -14,16 +14,6 @@ import '../../test_utils.dart';
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
-  test('dart call funcStreamRealisticTwinRustAsync', () async {
-    final stream = funcStreamRealisticTwinRustAsync(arg: 'hello');
-    var cnt = 0;
-    await for (final value in stream) {
-      debugPrint("output from func_stream's stream: $value");
-      cnt++;
-    }
-    expect(cnt, 10);
-  });
-
   test('dart call funcStreamSinkArgPositionTwinRustAsync', () async {
     // We only care about whether the codegen can understand StreamSink
     // as non-first argument in Rust, thus we do not test the return values.

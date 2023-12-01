@@ -27,6 +27,7 @@ pub mod rust_opaque;
 pub mod rust_opaque_sync;
 pub mod simple;
 pub mod stream;
+pub mod stream_misc;
 pub mod structure;
 pub mod tuple;
 pub mod type_alias;

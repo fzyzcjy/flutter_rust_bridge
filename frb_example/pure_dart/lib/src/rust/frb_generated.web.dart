@@ -92,6 +92,7 @@ import 'api/rust_opaque.dart';
 import 'api/rust_opaque_sync.dart';
 import 'api/simple.dart';
 import 'api/stream.dart';
+import 'api/stream_misc.dart';
 import 'api/structure.dart';
 import 'api/tuple.dart';
 import 'api/type_alias.dart';
@@ -5567,10 +5568,6 @@ class RustLibWire extends BaseWire {
       wire_simple_adder_twin_sync(int a, int b) =>
           wasmModule.wire_simple_adder_twin_sync(a, b);
 
-  void wire_func_stream_realistic_twin_rust_async(
-          NativePortType port_, String arg) =>
-      wasmModule.wire_func_stream_realistic_twin_rust_async(port_, arg);
-
   void wire_func_stream_return_error_twin_rust_async(NativePortType port_) =>
       wasmModule.wire_func_stream_return_error_twin_rust_async(port_);
 
@@ -5791,10 +5788,6 @@ class RustLibWire extends BaseWire {
   void wire_simple_adder_twin_normal(NativePortType port_, int a, int b) =>
       wasmModule.wire_simple_adder_twin_normal(port_, a, b);
 
-  void wire_func_stream_realistic_twin_normal(
-          NativePortType port_, String arg) =>
-      wasmModule.wire_func_stream_realistic_twin_normal(port_, arg);
-
   void wire_func_stream_return_error_twin_normal(NativePortType port_) =>
       wasmModule.wire_func_stream_return_error_twin_normal(port_);
 
@@ -5819,6 +5812,10 @@ class RustLibWire extends BaseWire {
   void wire_handle_stream_sink_at_3_twin_normal(
           NativePortType port_, int key, int max) =>
       wasmModule.wire_handle_stream_sink_at_3_twin_normal(port_, key, max);
+
+  void wire_func_stream_realistic_twin_normal(
+          NativePortType port_, String arg) =>
+      wasmModule.wire_func_stream_realistic_twin_normal(port_, arg);
 
   void wire_func_struct_with_one_field_twin_normal(
           NativePortType port_, List<dynamic> arg) =>
@@ -7730,9 +7727,6 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::support::WireSyncReturn */
       wire_simple_adder_twin_sync(int a, int b);
 
-  external void wire_func_stream_realistic_twin_rust_async(
-      NativePortType port_, String arg);
-
   external void wire_func_stream_return_error_twin_rust_async(
       NativePortType port_);
 
@@ -7900,9 +7894,6 @@ class RustLibWasmModule implements WasmModule {
   external void wire_simple_adder_twin_normal(
       NativePortType port_, int a, int b);
 
-  external void wire_func_stream_realistic_twin_normal(
-      NativePortType port_, String arg);
-
   external void wire_func_stream_return_error_twin_normal(NativePortType port_);
 
   external void wire_func_stream_return_panic_twin_normal(NativePortType port_);
@@ -7920,6 +7911,9 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_handle_stream_sink_at_3_twin_normal(
       NativePortType port_, int key, int max);
+
+  external void wire_func_stream_realistic_twin_normal(
+      NativePortType port_, String arg);
 
   external void wire_func_struct_with_one_field_twin_normal(
       NativePortType port_, List<dynamic> arg);

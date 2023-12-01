@@ -92,6 +92,7 @@ import 'api/rust_opaque.dart';
 import 'api/rust_opaque_sync.dart';
 import 'api/simple.dart';
 import 'api/stream.dart';
+import 'api/stream_misc.dart';
 import 'api/structure.dart';
 import 'api/tuple.dart';
 import 'api/type_alias.dart';
@@ -15046,24 +15047,6 @@ class RustLibWire implements BaseWire {
   late final _wire_simple_adder_twin_sync = _wire_simple_adder_twin_syncPtr
       .asFunction<WireSyncReturn Function(int, int)>();
 
-  void wire_func_stream_realistic_twin_rust_async(
-    int port_,
-    ffi.Pointer<wire_list_prim_u_8> arg,
-  ) {
-    return _wire_func_stream_realistic_twin_rust_async(
-      port_,
-      arg,
-    );
-  }
-
-  late final _wire_func_stream_realistic_twin_rust_asyncPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_prim_u_8>)>>(
-      'wire_func_stream_realistic_twin_rust_async');
-  late final _wire_func_stream_realistic_twin_rust_async =
-      _wire_func_stream_realistic_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_list_prim_u_8>)>();
-
   void wire_func_stream_return_error_twin_rust_async(
     int port_,
   ) {
@@ -16040,24 +16023,6 @@ class RustLibWire implements BaseWire {
   late final _wire_simple_adder_twin_normal = _wire_simple_adder_twin_normalPtr
       .asFunction<void Function(int, int, int)>();
 
-  void wire_func_stream_realistic_twin_normal(
-    int port_,
-    ffi.Pointer<wire_list_prim_u_8> arg,
-  ) {
-    return _wire_func_stream_realistic_twin_normal(
-      port_,
-      arg,
-    );
-  }
-
-  late final _wire_func_stream_realistic_twin_normalPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_prim_u_8>)>>(
-      'wire_func_stream_realistic_twin_normal');
-  late final _wire_func_stream_realistic_twin_normal =
-      _wire_func_stream_realistic_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<wire_list_prim_u_8>)>();
-
   void wire_func_stream_return_error_twin_normal(
     int port_,
   ) {
@@ -16182,6 +16147,24 @@ class RustLibWire implements BaseWire {
   late final _wire_handle_stream_sink_at_3_twin_normal =
       _wire_handle_stream_sink_at_3_twin_normalPtr
           .asFunction<void Function(int, int, int)>();
+
+  void wire_func_stream_realistic_twin_normal(
+    int port_,
+    ffi.Pointer<wire_list_prim_u_8> arg,
+  ) {
+    return _wire_func_stream_realistic_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_stream_realistic_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_prim_u_8>)>>(
+      'wire_func_stream_realistic_twin_normal');
+  late final _wire_func_stream_realistic_twin_normal =
+      _wire_func_stream_realistic_twin_normalPtr
+          .asFunction<void Function(int, ffi.Pointer<wire_list_prim_u_8>)>();
 
   void wire_func_struct_with_one_field_twin_normal(
     int port_,

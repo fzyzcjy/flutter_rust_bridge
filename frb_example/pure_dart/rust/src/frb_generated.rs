@@ -6796,12 +6796,6 @@ fn wire_simple_adder_twin_sync_impl(
         },
     )
 }
-fn wire_func_stream_realistic_twin_rust_async_impl(
-    port_: flutter_rust_bridge::MessagePort,
-    arg: impl Wire2Api<String> + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_,_,_,_,(),_>(flutter_rust_bridge::WrapInfo{ debug_name: "func_stream_realistic_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::FfiCallMode::Stream }, move || { let api_arg = arg.wire2api(); move |task_callback| async move { Result::<_,()>::Ok(crate::api::pseudo_manual::stream_twin_rust_async::func_stream_realistic_twin_rust_async(task_callback.stream_sink::<_,String>(), api_arg).await) } })
-}
 fn wire_func_stream_return_error_twin_rust_async_impl(port_: flutter_rust_bridge::MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_,_,_,_,(),_>(flutter_rust_bridge::WrapInfo{ debug_name: "func_stream_return_error_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::FfiCallMode::Stream }, move || {  move |task_callback| async move { crate::api::pseudo_manual::stream_twin_rust_async::func_stream_return_error_twin_rust_async(task_callback.stream_sink::<_,String>()).await } })
 }
@@ -7557,27 +7551,6 @@ fn wire_simple_adder_twin_normal_impl(
         },
     )
 }
-fn wire_func_stream_realistic_twin_normal_impl(
-    port_: flutter_rust_bridge::MessagePort,
-    arg: impl Wire2Api<String> + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
-        flutter_rust_bridge::WrapInfo {
-            debug_name: "func_stream_realistic_twin_normal",
-            port: Some(port_),
-            mode: flutter_rust_bridge::FfiCallMode::Stream,
-        },
-        move || {
-            let api_arg = arg.wire2api();
-            move |task_callback| {
-                Result::<_, ()>::Ok(crate::api::stream::func_stream_realistic_twin_normal(
-                    task_callback.stream_sink::<_, String>(),
-                    api_arg,
-                ))
-            }
-        },
-    )
-}
 fn wire_func_stream_return_error_twin_normal_impl(port_: flutter_rust_bridge::MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         flutter_rust_bridge::WrapInfo {
@@ -7719,6 +7692,27 @@ fn wire_handle_stream_sink_at_3_twin_normal_impl(
                     task_callback.stream_sink::<_, crate::api::stream::LogTwinNormal>(),
                     api_key,
                     api_max,
+                ))
+            }
+        },
+    )
+}
+fn wire_func_stream_realistic_twin_normal_impl(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: impl Wire2Api<String> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        flutter_rust_bridge::WrapInfo {
+            debug_name: "func_stream_realistic_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::FfiCallMode::Stream,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(crate::api::stream_misc::func_stream_realistic_twin_normal(
+                    task_callback.stream_sink::<_, String>(),
+                    api_arg,
                 ))
             }
         },

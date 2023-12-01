@@ -7825,14 +7825,6 @@ pub fn wire_simple_adder_twin_sync(a: i32, b: i32) -> flutter_rust_bridge::suppo
 }
 
 #[wasm_bindgen]
-pub fn wire_func_stream_realistic_twin_rust_async(
-    port_: flutter_rust_bridge::MessagePort,
-    arg: String,
-) {
-    wire_func_stream_realistic_twin_rust_async_impl(port_, arg)
-}
-
-#[wasm_bindgen]
 pub fn wire_func_stream_return_error_twin_rust_async(port_: flutter_rust_bridge::MessagePort) {
     wire_func_stream_return_error_twin_rust_async_impl(port_)
 }
@@ -8225,14 +8217,6 @@ pub fn wire_simple_adder_twin_normal(port_: flutter_rust_bridge::MessagePort, a:
 }
 
 #[wasm_bindgen]
-pub fn wire_func_stream_realistic_twin_normal(
-    port_: flutter_rust_bridge::MessagePort,
-    arg: String,
-) {
-    wire_func_stream_realistic_twin_normal_impl(port_, arg)
-}
-
-#[wasm_bindgen]
 pub fn wire_func_stream_return_error_twin_normal(port_: flutter_rust_bridge::MessagePort) {
     wire_func_stream_return_error_twin_normal_impl(port_)
 }
@@ -8281,6 +8265,14 @@ pub fn wire_handle_stream_sink_at_3_twin_normal(
     max: u32,
 ) {
     wire_handle_stream_sink_at_3_twin_normal_impl(port_, key, max)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_stream_realistic_twin_normal(
+    port_: flutter_rust_bridge::MessagePort,
+    arg: String,
+) {
+    wire_func_stream_realistic_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]

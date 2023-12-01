@@ -12102,14 +12102,6 @@ pub extern "C" fn wire_simple_adder_twin_sync(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_func_stream_realistic_twin_rust_async(
-    port_: i64,
-    arg: *mut wire_list_prim_u_8,
-) {
-    wire_func_stream_realistic_twin_rust_async_impl(port_, arg)
-}
-
-#[no_mangle]
 pub extern "C" fn wire_func_stream_return_error_twin_rust_async(port_: i64) {
     wire_func_stream_return_error_twin_rust_async_impl(port_)
 }
@@ -12478,11 +12470,6 @@ pub extern "C" fn wire_simple_adder_twin_normal(port_: i64, a: i32, b: i32) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_func_stream_realistic_twin_normal(port_: i64, arg: *mut wire_list_prim_u_8) {
-    wire_func_stream_realistic_twin_normal_impl(port_, arg)
-}
-
-#[no_mangle]
 pub extern "C" fn wire_func_stream_return_error_twin_normal(port_: i64) {
     wire_func_stream_return_error_twin_normal_impl(port_)
 }
@@ -12515,6 +12502,11 @@ pub extern "C" fn wire_handle_stream_sink_at_2_twin_normal(port_: i64, key: u32,
 #[no_mangle]
 pub extern "C" fn wire_handle_stream_sink_at_3_twin_normal(port_: i64, key: u32, max: u32) {
     wire_handle_stream_sink_at_3_twin_normal_impl(port_, key, max)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_func_stream_realistic_twin_normal(port_: i64, arg: *mut wire_list_prim_u_8) {
+    wire_func_stream_realistic_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]

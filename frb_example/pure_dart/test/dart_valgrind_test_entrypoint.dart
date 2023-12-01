@@ -148,6 +148,7 @@ import 'api/raw_string_test.dart' as raw_string_test;
 import 'api/rust_opaque_sync_test.dart' as rust_opaque_sync_test;
 import 'api/rust_opaque_test.dart' as rust_opaque_test;
 import 'api/simple_test.dart' as simple_test;
+import 'api/stream_misc_test.dart' as stream_misc_test;
 import 'api/stream_test.dart' as stream_test;
 import 'api/structure_test.dart' as structure_test;
 import 'api/tuple_test.dart' as tuple_test;
@@ -260,6 +261,7 @@ Future<void> callFileEntrypoints() async {
   await rust_opaque_sync_test.main(skipRustLibInit: true);
   await rust_opaque_test.main(skipRustLibInit: true);
   await simple_test.main(skipRustLibInit: true);
+  await stream_misc_test.main(skipRustLibInit: true);
   await stream_test.main(skipRustLibInit: true);
   await structure_test.main(skipRustLibInit: true);
   await tuple_test.main(skipRustLibInit: true);

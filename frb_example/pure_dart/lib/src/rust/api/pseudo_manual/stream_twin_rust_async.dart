@@ -3,10 +3,6 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Stream<String> funcStreamRealisticTwinRustAsync(
-        {required String arg, dynamic hint}) =>
-    RustLib.instance.api.funcStreamRealisticTwinRustAsync(arg: arg, hint: hint);
-
 Stream<String> funcStreamReturnErrorTwinRustAsync({dynamic hint}) =>
     RustLib.instance.api.funcStreamReturnErrorTwinRustAsync(hint: hint);
 
