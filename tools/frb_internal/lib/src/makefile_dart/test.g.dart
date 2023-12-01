@@ -51,6 +51,30 @@ TestDartConfig parseTestDartConfig(List<String> args) {
   return _$parseTestDartConfigResult(result);
 }
 
+TestDartSanitizerConfig _$parseTestDartSanitizerConfigResult(
+        ArgResults result) =>
+    TestDartSanitizerConfig(
+      package: result['package'] as String,
+      useLocalSanitizedDartBinary:
+          result['use-local-sanitized-dart-binary'] as bool,
+    );
+
+ArgParser _$populateTestDartSanitizerConfigParser(ArgParser parser) => parser
+  ..addOption(
+    'package',
+  )
+  ..addFlag(
+    'use-local-sanitized-dart-binary',
+  );
+
+final _$parserForTestDartSanitizerConfig =
+    _$populateTestDartSanitizerConfigParser(ArgParser());
+
+TestDartSanitizerConfig parseTestDartSanitizerConfig(List<String> args) {
+  final result = _$parserForTestDartSanitizerConfig.parse(args);
+  return _$parseTestDartSanitizerConfigResult(result);
+}
+
 TestFlutterConfig _$parseTestFlutterConfigResult(ArgResults result) =>
     TestFlutterConfig(
       flutterTestArgs: result['flutter-test-args'] as String?,

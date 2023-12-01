@@ -1,33 +1,35 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 
-Future<void> run({required String package}) async {
-  await runPubGetIfNotRunYet(package);
+Future<void> run(TestDartSanitizerConfig config) async {
+  await runPubGetIfNotRunYet(config.package);
 
-  if (package == 'frb_example/deliberate_bad') {
-    await _runPackageDeliberateBad(package: package);
+  if (config.package == 'frb_example/deliberate_bad') {
+    await _runPackageDeliberateBad(config);
   } else {
-    await _runEntrypoint(package: package);
+    await _runEntrypoint(config);
   }
 }
 
-Future<void> _runEntrypoint({required String package}) async {
-  final sanitizedDart = await _getSanitizedDartBinary();
+Future<void> _runEntrypoint(TestDartSanitizerConfig config) async {
+  final sanitizedDart = await _getSanitizedDartBinary(config);
   await _execAndCheckWithAsanEnvVar(
     '$sanitizedDart --enable-experiment=native-assets run test/dart_valgrind_test_entrypoint.dart',
     const _Info(
         name: 'entrypoint', expectSucceed: true, expectStderrContains: ''),
-    relativePwd: package,
+    relativePwd: config.package,
   );
 }
 
-Future<void> _runPackageDeliberateBad({required String package}) async {
-  await _runPackageDeliberateBadRustOnly(package: package);
-  await _runPackageDeliberateBadWithDart(package: package);
+Future<void> _runPackageDeliberateBad(TestDartSanitizerConfig config) async {
+  await _runPackageDeliberateBadRustOnly(config);
+  await _runPackageDeliberateBadWithDart(config);
 }
 
-Future<void> _runPackageDeliberateBadRustOnly({required String package}) async {
+Future<void> _runPackageDeliberateBadRustOnly(
+    TestDartSanitizerConfig config) async {
   const kInfos = [
     _Info(
       name: 'RustOnly_Good',
@@ -50,12 +52,13 @@ Future<void> _runPackageDeliberateBadRustOnly({required String package}) async {
     await _execAndCheckWithAsanEnvVar(
       'cargo +nightly run ${_CargoBuildAsanInfo.kExtraArgs.join(" ")} ${info.name}',
       info,
-      relativePwd: '$package/rust',
+      relativePwd: '${config.package}/rust',
     );
   }
 }
 
-Future<void> _runPackageDeliberateBadWithDart({required String package}) async {
+Future<void> _runPackageDeliberateBadWithDart(
+    TestDartSanitizerConfig config) async {
   const kInfos = [
     _Info(
       name: 'DartOnly_Good',
@@ -83,13 +86,13 @@ Future<void> _runPackageDeliberateBadWithDart({required String package}) async {
     ),
   ];
 
-  final sanitizedDart = await _getSanitizedDartBinary();
+  final sanitizedDart = await _getSanitizedDartBinary(config);
   for (final info in kInfos) {
     await _execAndCheckWithAsanEnvVar(
       '$sanitizedDart --enable-experiment=native-assets run '
       'frb_example_deliberate_bad ${info.name}',
       info,
-      relativePwd: package,
+      relativePwd: config.package,
     );
   }
 }
@@ -141,9 +144,12 @@ Future<void> _execAndCheckWithAsanEnvVar(
   print('Pass check for ${info.name}');
 }
 
-Future<String> _getSanitizedDartBinary() async {
-  // TODO do not hardcode
-  return '~/dart-sdk/sdk/out/ReleaseASANX64/dart-sdk/bin/dart';
+Future<String> _getSanitizedDartBinary(TestDartSanitizerConfig config) async {
+  if (config.useLocalSanitizedDartBinary) {
+    return '~/dart-sdk/sdk/out/ReleaseASANX64/dart-sdk/bin/dart';
+  }
+
+  throw Exception('TODO');
 }
 
 class _CargoBuildAsanInfo {
