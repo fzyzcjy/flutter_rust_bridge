@@ -6796,49 +6796,6 @@ fn wire_simple_adder_twin_sync_impl(
         },
     )
 }
-fn wire_func_stream_realistic_twin_rust_async_impl(
-    port_: flutter_rust_bridge::MessagePort,
-    arg: impl Wire2Api<String> + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_,_,_,_,(),_>(flutter_rust_bridge::WrapInfo{ debug_name: "func_stream_realistic_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::FfiCallMode::Stream }, move || { let api_arg = arg.wire2api(); move |task_callback| async move { Result::<_,()>::Ok(crate::api::pseudo_manual::stream_twin_rust_async::func_stream_realistic_twin_rust_async(task_callback.stream_sink::<_,String>(), api_arg).await) } })
-}
-fn wire_func_stream_return_error_twin_rust_async_impl(port_: flutter_rust_bridge::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_,_,_,_,(),_>(flutter_rust_bridge::WrapInfo{ debug_name: "func_stream_return_error_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::FfiCallMode::Stream }, move || {  move |task_callback| async move { crate::api::pseudo_manual::stream_twin_rust_async::func_stream_return_error_twin_rust_async(task_callback.stream_sink::<_,String>()).await } })
-}
-fn wire_func_stream_return_panic_twin_rust_async_impl(port_: flutter_rust_bridge::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_,_,_,_,(),_>(flutter_rust_bridge::WrapInfo{ debug_name: "func_stream_return_panic_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::FfiCallMode::Stream }, move || {  move |task_callback| async move { crate::api::pseudo_manual::stream_twin_rust_async::func_stream_return_panic_twin_rust_async(task_callback.stream_sink::<_,String>()).await } })
-}
-fn wire_func_stream_sink_arg_position_twin_rust_async_impl(
-    port_: flutter_rust_bridge::MessagePort,
-    a: impl Wire2Api<u32> + core::panic::UnwindSafe,
-    b: impl Wire2Api<u32> + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_,_,_,_,(),_>(flutter_rust_bridge::WrapInfo{ debug_name: "func_stream_sink_arg_position_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::FfiCallMode::Stream }, move || { let api_a = a.wire2api();let api_b = b.wire2api(); move |task_callback| async move { Result::<_,()>::Ok(crate::api::pseudo_manual::stream_twin_rust_async::func_stream_sink_arg_position_twin_rust_async(api_a, api_b, task_callback.stream_sink::<_,u32>()).await) } })
-}
-fn wire_handle_stream_of_struct_twin_rust_async_impl(port_: flutter_rust_bridge::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_,_,_,_,(),_>(flutter_rust_bridge::WrapInfo{ debug_name: "handle_stream_of_struct_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::FfiCallMode::Stream }, move || {  move |task_callback| async move { Result::<_,()>::Ok(crate::api::pseudo_manual::stream_twin_rust_async::handle_stream_of_struct_twin_rust_async(task_callback.stream_sink::<_,crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync>()).await) } })
-}
-fn wire_handle_stream_sink_at_1_twin_rust_async_impl(
-    port_: flutter_rust_bridge::MessagePort,
-    key: impl Wire2Api<u32> + core::panic::UnwindSafe,
-    max: impl Wire2Api<u32> + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_,_,_,_,(),_>(flutter_rust_bridge::WrapInfo{ debug_name: "handle_stream_sink_at_1_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::FfiCallMode::Stream }, move || { let api_key = key.wire2api();let api_max = max.wire2api(); move |task_callback| async move { Result::<_,()>::Ok(crate::api::pseudo_manual::stream_twin_rust_async::handle_stream_sink_at_1_twin_rust_async(api_key, api_max, task_callback.stream_sink::<_,crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync>()).await) } })
-}
-fn wire_handle_stream_sink_at_2_twin_rust_async_impl(
-    port_: flutter_rust_bridge::MessagePort,
-    key: impl Wire2Api<u32> + core::panic::UnwindSafe,
-    max: impl Wire2Api<u32> + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_,_,_,_,(),_>(flutter_rust_bridge::WrapInfo{ debug_name: "handle_stream_sink_at_2_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::FfiCallMode::Stream }, move || { let api_key = key.wire2api();let api_max = max.wire2api(); move |task_callback| async move { Result::<_,()>::Ok(crate::api::pseudo_manual::stream_twin_rust_async::handle_stream_sink_at_2_twin_rust_async(api_key, task_callback.stream_sink::<_,crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync>(), api_max).await) } })
-}
-fn wire_handle_stream_sink_at_3_twin_rust_async_impl(
-    port_: flutter_rust_bridge::MessagePort,
-    key: impl Wire2Api<u32> + core::panic::UnwindSafe,
-    max: impl Wire2Api<u32> + core::panic::UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_,_,_,_,(),_>(flutter_rust_bridge::WrapInfo{ debug_name: "handle_stream_sink_at_3_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::FfiCallMode::Stream }, move || { let api_key = key.wire2api();let api_max = max.wire2api(); move |task_callback| async move { Result::<_,()>::Ok(crate::api::pseudo_manual::stream_twin_rust_async::handle_stream_sink_at_3_twin_rust_async(task_callback.stream_sink::<_,crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync>(), api_key, api_max).await) } })
-}
 fn wire_func_struct_with_one_field_twin_rust_async_impl(
     port_: flutter_rust_bridge::MessagePort,
     arg: impl Wire2Api<
@@ -11042,30 +10999,6 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::stream::LogTwinNor
         self
     }
 }
-impl flutter_rust_bridge::support::IntoDart
-    for crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync
-{
-    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
-        vec![
-            self.key.into_into_dart().into_dart(),
-            self.value.into_into_dart().into_dart(),
-        ]
-        .into_dart()
-    }
-}
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive
-    for crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync
-{
-}
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync,
-    > for crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync
-{
-    fn into_into_dart(self) -> crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync {
-        self
-    }
-}
 impl flutter_rust_bridge::support::IntoDart for crate::api::inside_macro::MacroStruct {
     fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
         vec![self.data.into_into_dart().into_dart()].into_dart()
@@ -11483,28 +11416,6 @@ impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::stream::MyStreamEn
     for crate::api::stream::MyStreamEntryTwinNormal
 {
     fn into_into_dart(self) -> crate::api::stream::MyStreamEntryTwinNormal {
-        self
-    }
-}
-impl flutter_rust_bridge::support::IntoDart
-    for crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync
-{
-    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
-        vec![self.hello.into_into_dart().into_dart()].into_dart()
-    }
-}
-impl flutter_rust_bridge::support::IntoDartExceptPrimitive
-    for crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync
-{
-}
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync,
-    > for crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync
-{
-    fn into_into_dart(
-        self,
-    ) -> crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync {
         self
     }
 }
