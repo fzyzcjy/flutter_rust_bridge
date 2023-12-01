@@ -233,17 +233,26 @@ Future<String> _getSanitizedDartBinary(TestDartSanitizerConfig config) async {
     return '~/dart-sdk/sdk/out/${config.sanitizer.dartSdkBuildOutDir}/dart-sdk/bin/dart';
   }
 
-  const url =
-      'https://github.com/fzyzcjy/dart_lang_ci/releases/download/Build_2023.12.01_06-51-09/dart';
-  final pathBin = path.join(
-      Directory.systemTemp.path, 'dart_${config.sanitizer.dartSdkBuildOutDir}');
+  const releaseName = 'Build_2023.12.01_09-42-01';
+  final baseName = '${config.sanitizer.dartSdkBuildOutDir}_dart-sdk';
+  final fileNameTarGz = '$baseName.tar.gz';
+  final pathTarGz = path.join(Directory.systemTemp.path, fileNameTarGz);
+  final pathBin = path.join(Directory.systemTemp.path, baseName, 'bin', 'dart');
+
   if (await File(pathBin).exists()) {
     print('Skip downloading artifat since $pathBin already exists');
   } else {
-    print('Download artifact from $url to $pathBin...');
-    await Dio().download(url, pathBin);
+    final url =
+        'https://github.com/fzyzcjy/dart_lang_ci/releases/download/$releaseName/$fileNameTarGz';
+
+    print('Download artifact from $url to $pathTarGz...');
+    await Dio().download(url, pathTarGz);
+
+    await exec('tar -xvzf $pathTarGz -C $baseName');
   }
-  await exec('chmod +x $pathBin');
+ 
+  if (!await File(pathBin).exists()) throw Exception();
+
   return pathBin;
 }
 
