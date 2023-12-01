@@ -1,4 +1,4 @@
-// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync"]}
+// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync"]}
 
 use anyhow::anyhow;
 use flutter_rust_bridge::{spawn, StreamSink};

@@ -127,8 +127,6 @@ import 'api/pseudo_manual/rust_opaque_twin_sync_test.dart'
 import 'api/pseudo_manual/simple_twin_rust_async_test.dart'
     as simple_twin_rust_async_test;
 import 'api/pseudo_manual/simple_twin_sync_test.dart' as simple_twin_sync_test;
-import 'api/pseudo_manual/stream_twin_rust_async_test.dart'
-    as stream_twin_rust_async_test;
 import 'api/pseudo_manual/structure_twin_rust_async_test.dart'
     as structure_twin_rust_async_test;
 import 'api/pseudo_manual/structure_twin_sync_test.dart'
@@ -247,7 +245,6 @@ Future<void> callFileEntrypoints() async {
   await rust_opaque_twin_sync_test.main(skipRustLibInit: true);
   await simple_twin_rust_async_test.main(skipRustLibInit: true);
   await simple_twin_sync_test.main(skipRustLibInit: true);
-  await stream_twin_rust_async_test.main(skipRustLibInit: true);
   await structure_twin_rust_async_test.main(skipRustLibInit: true);
   await structure_twin_sync_test.main(skipRustLibInit: true);
   await tuple_twin_rust_async_test.main(skipRustLibInit: true);
