@@ -4,9 +4,8 @@ import 'test_utils.dart';
 
 void main() {
   for (final (name, expectSucceed, expectStderrContains) in [
-    ('DartOnly_Good', true, ''),
-    // NOTE ASAN does not report this as buggy...
-    ('DartOnly_HeapUseAfterFree', true, ''),
+    ('DartCallRust_StackBufferOverflow', false, 'TODO'),
+    ('DartCallRust_HeapUseAfterFree', false, 'TODO'),
   ]) {
     test('name=$name', () async {
       await execAndCheck(

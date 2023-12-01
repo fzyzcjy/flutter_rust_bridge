@@ -20,3 +20,7 @@ Future<void> execAndCheck(
   expect(output.exitCode, expectSucceed ? 0 : isNot(0));
   expect(output.stderr, contains(expectStderrContains));
 }
+
+// TODO do not hardcode
+const sanitizedDart =
+    '/home/cs144/dart-sdk/sdk/out/ReleaseASANX64/dart-sdk/bin/dart';
