@@ -134,7 +134,8 @@ fn compute_cargokit_comments(path: &Path) -> Option<String> {
     Some(
         (CARGOKIT_PRELUDE.iter())
             .map(|line| format!("{comment_leading} {line}"))
-            .join("\n"),
+            .join("\n")
+            + "\n\n",
     )
 }
 
@@ -146,11 +147,7 @@ fn file_extension(p: &Path) -> &str {
     p.extension().unwrap_or_default().to_str().unwrap()
 }
 
-const CARGOKIT_PRELUDE: &[&str] = &[
-    "This is copied from cargokit, TODO",
-    "TODO explain more",
-    "\n\n",
-];
+const CARGOKIT_PRELUDE: &[&str] = &["This is copied from cargokit, TODO", "TODO explain more"];
 
 fn pub_add_dependencies(enable_integration_test: bool) -> Result<()> {
     flutter_pub_add(&["rust_builder".into(), "--path=rust_builder".into()])?;
