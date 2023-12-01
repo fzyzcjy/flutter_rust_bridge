@@ -60,7 +60,11 @@ Future<void> _runPackageDeliberateBadRustOnly(
           ),
         ],
       Sanitizer.lsan => [
-          TODO,
+          const _Info(
+            name: 'RustOnly_MemoryLeak',
+            expectSucceed: false,
+            expectStderrContains: 'ERROR: LeakSanitizer: detected memory leaks',
+          ),
         ],
     },
   ];
@@ -92,9 +96,7 @@ Future<void> _runPackageDeliberateBadWithDart(
             expectStderrContains: '',
           ),
         ],
-      Sanitizer.lsan => [
-          TODO,
-        ],
+      Sanitizer.lsan => [],
     },
   ];
 
