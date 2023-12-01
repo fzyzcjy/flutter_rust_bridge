@@ -1,3 +1,3 @@
-Future<void> run({required String name}) async {
+Future<void> run({required String package}) async {
   TODO;
 }

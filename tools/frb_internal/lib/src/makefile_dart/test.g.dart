@@ -51,25 +51,6 @@ TestDartConfig parseTestDartConfig(List<String> args) {
   return _$parseTestDartConfigResult(result);
 }
 
-TestDartSanitizerConfig _$parseTestDartSanitizerConfigResult(
-        ArgResults result) =>
-    TestDartSanitizerConfig(
-      name: result['name'] as String,
-    );
-
-ArgParser _$populateTestDartSanitizerConfigParser(ArgParser parser) => parser
-  ..addOption(
-    'name',
-  );
-
-final _$parserForTestDartSanitizerConfig =
-    _$populateTestDartSanitizerConfigParser(ArgParser());
-
-TestDartSanitizerConfig parseTestDartSanitizerConfig(List<String> args) {
-  final result = _$parserForTestDartSanitizerConfig.parse(args);
-  return _$parseTestDartSanitizerConfigResult(result);
-}
-
 TestFlutterConfig _$parseTestFlutterConfigResult(ArgResults result) =>
     TestFlutterConfig(
       flutterTestArgs: result['flutter-test-args'] as String?,
