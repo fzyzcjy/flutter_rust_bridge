@@ -53,6 +53,7 @@ pub mod rust_opaque_twin_rust_async;
 pub mod rust_opaque_twin_sync;
 pub mod simple_twin_rust_async;
 pub mod simple_twin_sync;
+pub mod stream_twin_rust_async;
 pub mod structure_twin_rust_async;
 pub mod structure_twin_sync;
 pub mod tuple_twin_rust_async;
