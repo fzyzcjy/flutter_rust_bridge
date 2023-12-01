@@ -11,9 +11,9 @@ void main() {
       'ERROR: AddressSanitizer: stack-buffer-overflow',
     ),
     (
-      'RustOnly_UseAfterFree',
+      'RustOnly_HeapUseAfterFree',
       false,
-      'TODO',
+      'ERROR: AddressSanitizer: heap-use-after-free',
     ),
   ]) {
     test('name=$name', () async {

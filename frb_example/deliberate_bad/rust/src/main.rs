@@ -10,7 +10,7 @@ fn main() {
             let y = unsafe { *xs.as_ptr().offset(4) };
             println!("xs={xs:?} y={y}");
         }
-        "RustOnly_UseAfterFree" => {
+        "RustOnly_HeapUseAfterFree" => {
             // https://github.com/japaric/rust-san?tab=readme-ov-file#use-after-free
             let xs = vec![0, 1, 2, 3];
             let y = xs.as_ptr();
