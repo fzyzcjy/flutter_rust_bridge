@@ -29,10 +29,11 @@ Future<RunCommandOutput> runCommand(
   bool shell = true,
   bool silent = false,
   bool? checkExitCode,
+  bool printCommandInStderr = false,
 }) async {
   // ignore: avoid_print
-  print(
-      '\x1B[1m> $command ${arguments.join(' ')}\x1B[0m (pwd: $pwd, env: $env)');
+  (printCommandInStderr ? stderr : stdout).writeAndFlush(
+      '\x1B[1m> $command ${arguments.join(' ')}\x1B[0m (pwd: $pwd, env: $env)\n');
 
   final process = await Process.start(
     command,

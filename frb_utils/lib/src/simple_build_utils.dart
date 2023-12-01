@@ -14,8 +14,12 @@ void simpleBuild(List<String> args) async {
   final rustCrateDir = buildConfig.packageRoot.resolve('rust');
   await runCommand(
     'cargo',
-    ['build', '--release'],
+    [
+      'build',
+      '--release',
+    ],
     pwd: rustCrateDir.toFilePath(),
+    printCommandInStderr: true,
   );
 
   final dependencies = {
