@@ -18,21 +18,28 @@ pub fn func_stream_realistic_twin_normal(sink: StreamSink<String>, arg: String) 
     let sink2 = sink.clone();
     spawn!(|| {
         for i in 0..5 {
-            let old_cnt = cnt2.fetch_add(1, Ordering::Relaxed);
+            let old_cnt = cnt2.fetch_add(1, Ordering::SeqCst);
             let msg = format!("(thread=child, i={i}, old_cnt={old_cnt})");
             format!("send data to sink msg={msg}");
             let _ = sink2.add(msg);
             sleep(Duration::from_millis(100));
         }
-        sink2.close();
+
+        if cnt2.load(Ordering::SeqCst) == 10 {
+            sink2.close();
+        }
     });
 
     for i in 0..5 {
-        let old_cnt = cnt.fetch_add(1, Ordering::Relaxed);
+        let old_cnt = cnt.fetch_add(1, Ordering::SeqCst);
         let msg = format!("(thread=normal, i={i}, old_cnt={old_cnt})");
         format!("send data to sink msg={msg}");
         let _ = sink.add(msg);
         sleep(Duration::from_millis(50));
+    }
+
+    if cnt.load(Ordering::SeqCst) == 10 {
+        sink.close();
     }
 }
 
