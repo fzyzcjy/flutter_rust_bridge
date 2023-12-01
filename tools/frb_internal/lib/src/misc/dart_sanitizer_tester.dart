@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 
 Future<void> run({required String package}) async {
@@ -126,6 +128,8 @@ Future<void> _execAndCheckWithAsanEnvVar(
     throw Exception(
         'Bad stderr which does not contain `${info.expectStderrContains}`');
   }
+ 
+  print('Pass check for ${info.name}');
 }
 
 // TODO do not hardcode
