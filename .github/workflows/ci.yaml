@@ -358,6 +358,33 @@ jobs:
       # execute
       - run: ./frb_internal test-dart-valgrind --package ${{ matrix.package }}
 
+  test_dart_sanitizer:
+    name: 'Test :: Dart :: Sanitizer'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package:
+          - frb_example/dart_minimal
+          - frb_example/pure_dart
+          - frb_example/deliberate_bad
+
+    steps:
+      # setup
+      - uses: catchpoint/workflow-telemetry-action@v1
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+          components: rustfmt
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+          architecture: x64
+
+      # execute
+      - run: ./frb_internal test-dart-sanitizer --package ${{ matrix.package }}
+
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
   test_flutter_native_android:
     name: 'Test :: Flutter :: Native:: Android'
