@@ -1,3 +1,4 @@
+import 'package:frb_example_deliberate_bad/src/misc.dart';
 import 'package:test/scaffolding.dart';
 
 import 'test_utils.dart';
@@ -18,8 +19,8 @@ void main() {
   ]) {
     test('name=$name', () async {
       await execAndCheck(
-        'cargo +nightly run -Zbuild-std --target x86_64-unknown-linux-gnu $name',
-        extraEnv: {'RUSTFLAGS': '-Zsanitizer=address'},
+        'cargo +nightly run ${CargoBuildAsanInfo.kExtraArgs.join(" ")} $name',
+        extraEnv: CargoBuildAsanInfo.kExtraEnv,
         relativePwd: 'rust',
         expectSucceed: expectSucceed,
         expectStderrContains: expectStderrContains,

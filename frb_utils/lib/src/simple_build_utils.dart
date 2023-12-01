@@ -7,13 +7,15 @@ import 'package:native_assets_cli/native_assets_cli.dart';
 /// Do not export this function for public use yet, since Dart's `build.dart` support
 /// is still experimental.
 // ref: https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/build.dart
-void simpleBuild(List<String> args) async {
+void simpleBuild(
+  List<String> args, {
+  Future<void> Function(String pwd) runCargoBuild = _defaultRunCargoBuild,
+}) async {
   final buildConfig = await BuildConfig.fromArgs(args);
   final buildOutput = BuildOutput();
 
   final rustCrateDir = buildConfig.packageRoot.resolve('rust');
-  await runCommand('cargo', ['build', '--release'],
-      pwd: rustCrateDir.toFilePath(), silent: false);
+  await runCargoBuild(rustCrateDir.toFilePath());
 
   final dependencies = {
     rustCrateDir,
@@ -24,3 +26,6 @@ void simpleBuild(List<String> args) async {
 
   await buildOutput.writeToFile(outDir: buildConfig.outDir);
 }
+
+Future<void> _defaultRunCargoBuild(String pwd) async =>
+    await runCommand('cargo', ['build', '--release'], pwd: pwd);
