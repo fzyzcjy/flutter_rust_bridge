@@ -14,8 +14,7 @@ Future<void> _runEntrypoint({required String package}) async {
 
 Future<void> _runPackageDeliberateBad({required String package}) async {
   await _runPackageDeliberateBadRustOnly(package: package);
-  await _runPackageDeliberateBadDartOnly(package: package);
-  await _runPackageDeliberateBadDartCallRust(package: package);
+  await _runPackageDeliberateBadWithDart(package: package);
 }
 
 Future<void> _runPackageDeliberateBadRustOnly({required String package}) async {
@@ -47,7 +46,7 @@ Future<void> _runPackageDeliberateBadRustOnly({required String package}) async {
   }
 }
 
-Future<void> _runPackageDeliberateBadDartOnly({required String package}) async {
+Future<void> _runPackageDeliberateBadWithDart({required String package}) async {
   const kInfos = [
     _Info(
       name: 'DartOnly_Good',
@@ -60,21 +59,7 @@ Future<void> _runPackageDeliberateBadDartOnly({required String package}) async {
       expectSucceed: true,
       expectOutputContains: '',
     ),
-  ];
 
-  for (final info in kInfos) {
-    await _execAndCheckWithAsanEnvVar(
-      '$sanitizedDart --enable-experiment=native-assets run '
-      'frb_example_deliberate_bad ${info.name}',
-      info,
-      relativePwd: package,
-    );
-  }
-}
-
-Future<void> _runPackageDeliberateBadDartCallRust(
-    {required String package}) async {
-  const kInfos = [
     // NOTE It should fail, but ASAN did not realize this case...
     _Info(
       name: 'DartCallRust_StackBufferOverflow',
