@@ -12,11 +12,17 @@ import 'src/benchmark_utils.dart';
 Future<void> main(List<String> args) async {
   await RustLib.init();
 
-  final [pathOutput, partialName] = args;
+  final [pathOutput, partialName, ...] = args;
+  final filterRegex = RegExp(args.length >= 3 ? args[2] : '');
+
   final emitter = JsonEmitter(namer: (x) => 'PureDart_${x}_$partialName');
   final benchmarks = createBenchmarks(emitter: emitter);
 
   for (final benchmark in benchmarks) {
+    if (!filterRegex.hasMatch(benchmark.name)) {
+      print('Skip ${benchmark.name} since not match filter');
+      continue;
+    }
     await benchmark.reportMaybeAsync();
   }
 

@@ -1,6 +1,8 @@
 import 'package:benchmark_harness/benchmark_harness.dart';
 
 abstract class MaybeAsyncBenchmarkBase {
+  String get name;
+ 
   Future<void> reportMaybeAsync();
 }
 
