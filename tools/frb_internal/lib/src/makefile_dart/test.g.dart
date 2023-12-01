@@ -76,7 +76,9 @@ TestDartSanitizerConfig _$parseTestDartSanitizerConfigResult(
 
 const _$SanitizerEnumMapBuildCli = <Sanitizer, String>{
   Sanitizer.asan: 'asan',
-  Sanitizer.lsan: 'lsan'
+  Sanitizer.msan: 'msan',
+  Sanitizer.lsan: 'lsan',
+  Sanitizer.tsan: 'tsan'
 };
 
 ArgParser _$populateTestDartSanitizerConfigParser(ArgParser parser) => parser
@@ -88,7 +90,7 @@ ArgParser _$populateTestDartSanitizerConfigParser(ArgParser parser) => parser
   )
   ..addOption(
     'sanitizer',
-    allowed: ['asan', 'lsan'],
+    allowed: ['asan', 'msan', 'lsan', 'tsan'],
   );
 
 final _$parserForTestDartSanitizerConfig =
