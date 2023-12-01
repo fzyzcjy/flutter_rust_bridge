@@ -164,7 +164,7 @@ pub async fn handle_enum_struct_twin_rust_async(
             float64: float64 + 1.,
             boolean: !boolean,
         },
-        Nested(val, nested) => Nested(inc(val), Box::new(KitchenSinkTwinRustAsync::Empty)),
+        Nested(val, _nested) => Nested(inc(val), Box::new(KitchenSinkTwinRustAsync::Empty)),
         Optional(a, b) => Optional(a.map(inc), b.map(inc)),
         Buffer(ZeroCopyBuffer(mut buf)) => {
             buf.push(1);

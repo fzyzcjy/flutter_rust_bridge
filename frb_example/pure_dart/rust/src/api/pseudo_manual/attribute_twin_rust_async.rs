@@ -2,8 +2,7 @@
 // and is auto-generated from `attribute.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
-use crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync;
-use flutter_rust_bridge::{frb, ZeroCopyBuffer};
+use flutter_rust_bridge::frb;
 use log::info;
 
 #[frb]

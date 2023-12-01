@@ -4,7 +4,7 @@
 
 use crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync;
 use crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntTwinSync;
-use flutter_rust_bridge::{frb, ZeroCopyBuffer};
+use flutter_rust_bridge::ZeroCopyBuffer;
 
 #[flutter_rust_bridge::frb(sync)]
 pub fn handle_optional_return_twin_sync(left: f64, right: f64) -> Option<f64> {

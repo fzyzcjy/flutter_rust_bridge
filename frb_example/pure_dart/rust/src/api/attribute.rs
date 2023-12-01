@@ -1,5 +1,4 @@
-use crate::api::misc_example::WeekdaysTwinNormal;
-use flutter_rust_bridge::{frb, ZeroCopyBuffer};
+use flutter_rust_bridge::frb;
 use log::info;
 
 #[frb]

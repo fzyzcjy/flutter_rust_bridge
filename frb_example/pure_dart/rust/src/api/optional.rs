@@ -1,6 +1,6 @@
 use crate::api::misc_example::WeekdaysTwinNormal;
 use crate::api::newtype_pattern::NewTypeIntTwinNormal;
-use flutter_rust_bridge::{frb, ZeroCopyBuffer};
+use flutter_rust_bridge::ZeroCopyBuffer;
 
 pub fn handle_optional_return_twin_normal(left: f64, right: f64) -> Option<f64> {
     if right == 0. {

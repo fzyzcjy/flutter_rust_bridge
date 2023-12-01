@@ -4,7 +4,7 @@
 
 use crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync;
 use crate::api::pseudo_manual::newtype_pattern_twin_rust_async::NewTypeIntTwinRustAsync;
-use flutter_rust_bridge::{frb, ZeroCopyBuffer};
+use flutter_rust_bridge::ZeroCopyBuffer;
 
 pub async fn handle_optional_return_twin_rust_async(left: f64, right: f64) -> Option<f64> {
     if right == 0. {
