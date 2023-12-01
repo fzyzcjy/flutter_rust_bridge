@@ -1,6 +1,6 @@
 void main(List<String> args) {
   switch (args[0]) {
-    case 'Good':
+    case 'DartOnly_Good':
       print('I am good Dart code');
 
     default:

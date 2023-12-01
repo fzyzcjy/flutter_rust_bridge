@@ -8,7 +8,7 @@ void main() {
       '/home/cs144/dart-sdk/sdk/out/ReleaseASANX64/dart-sdk/bin/dart';
 
   for (final (name, expectSucceed, expectStderrContains) in [
-    ('Good', true, ''),
+    ('DartOnly_Good', true, ''),
     // TODO
   ]) {
     test('name=$name', () async {

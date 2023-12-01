@@ -4,14 +4,14 @@ import 'test_utils.dart';
 
 void main() {
   for (final (name, expectSucceed, expectStderrContains) in [
-    ('Good', true, ''),
+    ('RustOnly_Good', true, ''),
     (
-      'StackBufferOverflow',
+      'RustOnly_StackBufferOverflow',
       false,
       'ERROR: AddressSanitizer: stack-buffer-overflow',
     ),
     (
-      'UseAfterFree',
+      'RustOnly_UseAfterFree',
       false,
       'TODO',
     ),
