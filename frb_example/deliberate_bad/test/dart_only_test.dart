@@ -13,7 +13,9 @@ void main() {
   ]) {
     test('name=$name', () async {
       await execAndCheck(
-        '$sanitizedDart run frb_example_deliberate_bad $name',
+        '$sanitizedDart --enable-experiment=native-assets run '
+        'frb_example_deliberate_bad $name',
+        relativePwd: '.',
         expectSucceed: expectSucceed,
         expectStderrContains: expectStderrContains,
       );
