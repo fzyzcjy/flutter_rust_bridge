@@ -5,7 +5,11 @@ import 'test_utils.dart';
 
 void main() {
   for (final (name, expectSucceed, expectOutputContains) in [
-    ('Good', true, 'This is good code'),
+    (
+      'Good',
+      true,
+      'This is good code',
+    ),
     (
       'StackBufferOverflow',
       false,
