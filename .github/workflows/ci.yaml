@@ -406,17 +406,13 @@ jobs:
           script: echo "Generated AVD snapshot for caching."
 
       # execute
-      - name: Run Flutter integration tests
-        timeout-minutes: 20
-        uses: Wandalen/wretry.action@v1.0.25
+      - uses: reactivecircus/android-emulator-runner@v2
         with:
-          action: reactivecircus/android-emulator-runner@v2
-          with: |
-            api-level: ${{ matrix.api-level }}
-            emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
-            arch: x86_64
-            profile: ${{ matrix.device }}
-            script: ./frb_internal test-flutter-native --package ${{ matrix.package }}
+          api-level: ${{ matrix.api-level }}
+          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
+          arch: x86_64
+          profile: ${{ matrix.device }}
+          script: ./frb_internal test-flutter-native --package ${{ matrix.package }}
 
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   test_flutter_native_ios:
