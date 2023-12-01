@@ -73,6 +73,15 @@ bool get releaseMode {
   return ans;
 }
 
+Future<void> expectRustPanic(FutureOr<void> Function() body, String mode,
+    {String? messageOnNative}) async {
+  var inner = isA<PanicException>();
+  if (!kIsWeb && messageOnNative != null) {
+    inner = inner.having((x) => x.message, 'message', messageOnNative);
+  }
+  await expectRustPanicRaw(body, mode, throwsA(inner));
+}
+
 /// Temporary relax of the test due to limitation of Rust WASM.
 ///
 /// 1. Only check message content on non-web, because of a current (2023.11) limitation of Rust WASM:
@@ -82,8 +91,8 @@ bool get releaseMode {
 /// again due to limitation of WASM before abort-unwind is usable.
 ///
 /// But normal code should *not* rely on panic, so it should be OK.
-Future<void> expectRustPanic(FutureOr<void> Function() body, String mode,
-    {String? messageOnNative}) async {
+Future<void> expectRustPanicRaw(
+    FutureOr<void> Function() body, String mode, Matcher matcher) async {
   if (kIsWeb && mode == 'TwinRustAsync') {
     // expect it timeouts (hangs), instead of throws
     var bodyCompleted = false;
@@ -91,11 +100,7 @@ Future<void> expectRustPanic(FutureOr<void> Function() body, String mode,
     await Future.delayed(const Duration(milliseconds: 300));
     expect(bodyCompleted, false);
   } else {
-    var inner = isA<PanicException>();
-    if (!kIsWeb && messageOnNative != null) {
-      inner = inner.having((x) => x.message, 'message', messageOnNative);
-    }
-    await expectLater(body, throwsA(inner));
+    await expectLater(body, matcher);
   }
 }
 

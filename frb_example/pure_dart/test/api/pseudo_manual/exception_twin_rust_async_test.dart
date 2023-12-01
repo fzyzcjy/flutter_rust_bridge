@@ -241,7 +241,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
       });
 
       test('Function with custom result panics', () async {
-        await expectLater(() async => panicWithCustomResultTwinRustAsync(),
+        await expectRustPanicRaw(
+            () async => panicWithCustomResultTwinRustAsync(),
+            'TwinRustAsync',
             throwsA(isA<FrbException>()));
       });
 

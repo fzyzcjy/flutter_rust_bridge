@@ -232,8 +232,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
       });
 
       test('Function with custom result panics', () async {
-        await expectLater(() async => panicWithCustomResultTwinSync(),
-            throwsA(isA<FrbException>()));
+        await expectRustPanicRaw(() async => panicWithCustomResultTwinSync(),
+            'TwinSync', throwsA(isA<FrbException>()));
       });
 
       test('Stream sink throw anyhow error', () async {
