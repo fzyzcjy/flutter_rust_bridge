@@ -239,8 +239,8 @@ Future<String> _getSanitizedDartBinary(TestDartSanitizerConfig config) async {
 
   final pathTarGz = path.join(Directory.systemTemp.path, fileNameTarGz);
   final pathUnzippedDir = path.join(Directory.systemTemp.path, baseName);
-  final pathBin = path.join(
-      pathUnzippedDir, 'dart-sdk/sdk/out/ReleaseLSANX64/dart-sdk/bin/dart');
+  final pathBin = path.join(pathUnzippedDir,
+      'dart-sdk/sdk/out/${config.sanitizer.dartSdkBuildOutDir}/dart-sdk/bin/dart');
 
   if (!await File(pathTarGz).exists()) {
     final url =
