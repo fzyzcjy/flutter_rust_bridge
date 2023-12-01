@@ -18,6 +18,13 @@ fn main() {
             let z = unsafe { *y };
             println!("z={z:?}");
         }
+        "RustOnly_UseOfUninitializedValue" => {
+            // https://github.com/japaric/rust-san?tab=readme-ov-file#uninitialized-read
+            #[allow(deprecated)]
+            let xs: [u8; 4] = unsafe { std::mem::uninitialized() };
+            let y = xs[0] + xs[1];
+            println!("y={y}");
+        }
         "RustOnly_MemoryLeak" => {
             // https://github.com/japaric/rust-san?tab=readme-ov-file#memory-leak
             let xs = vec![0, 1, 2, 3];

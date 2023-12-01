@@ -366,6 +366,7 @@ jobs:
       matrix:
         sanitizer:
           - asan
+          - msan
           - lsan
           - tsan
         package:

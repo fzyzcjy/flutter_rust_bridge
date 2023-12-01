@@ -29,6 +29,9 @@ Future<void> main(List<String> args) async {
     case 'DartCallRust_HeapUseAfterFree':
       await makeHeapUseAfterFree();
 
+    case 'DartCallRust_UseOfUninitializedValue':
+      await makeUseOfUninitializedValue();
+
     case 'DartCallRust_MemoryLeak':
       await makeMemoryLeak();
 

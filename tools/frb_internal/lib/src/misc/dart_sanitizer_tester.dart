@@ -59,6 +59,14 @@ Future<void> _runPackageDeliberateBadRustOnly(
                 'ERROR: AddressSanitizer: heap-use-after-free',
           ),
         ],
+      Sanitizer.msan => [
+          const _Info(
+            name: 'RustOnly_UseOfUninitializedValue',
+            expectSucceed: false,
+            expectStderrContains:
+                'WARNING: MemorySanitizer: use-of-uninitialized-value',
+          ),
+        ],
       Sanitizer.lsan => [
           const _Info(
             name: 'RustOnly_MemoryLeak',
@@ -103,6 +111,9 @@ Future<void> _runPackageDeliberateBadWithDart(
             expectStderrContains: '',
           ),
         ],
+      Sanitizer.msan => [
+          // Pure dart almost cannot have this problem
+        ],
       Sanitizer.lsan => [
           const _Info(
             name: 'DartOnly_MemoryLeak',
@@ -131,6 +142,14 @@ Future<void> _runPackageDeliberateBadWithDart(
             expectSucceed: false,
             expectStderrContains:
                 'ERROR: AddressSanitizer: heap-use-after-free',
+          ),
+        ],
+      Sanitizer.msan => [
+          const _Info(
+            name: 'DartCallRust_UseOfUninitializedValue',
+            expectSucceed: false,
+            expectStderrContains:
+                'WARNING: MemorySanitizer: use-of-uninitialized-value',
           ),
         ],
       Sanitizer.lsan => [
@@ -234,6 +253,7 @@ extension on Sanitizer {
   String get rustflagValue {
     return switch (this) {
       Sanitizer.asan => 'address',
+      Sanitizer.msan => 'memory',
       Sanitizer.lsan => 'leak',
       Sanitizer.tsan => 'thread',
     };
@@ -242,6 +262,7 @@ extension on Sanitizer {
   String get dartSdkBuildOutDir {
     return switch (this) {
       Sanitizer.asan => 'ReleaseASANX64',
+      Sanitizer.msan => 'ReleaseMSANX64',
       Sanitizer.lsan => 'ReleaseLSANX64',
       Sanitizer.tsan => 'ReleaseTSANX64',
     };

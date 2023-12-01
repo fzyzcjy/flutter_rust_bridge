@@ -52,9 +52,9 @@ class TestDartConfig {
 
 enum Sanitizer {
   asan,
+  msan,
   lsan,
   tsan,
-  // TODO more
 }
 
 @CliOptions()
