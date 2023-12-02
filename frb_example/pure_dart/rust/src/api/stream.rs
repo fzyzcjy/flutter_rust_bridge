@@ -1,7 +1,8 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync"]}
 
+use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
 use anyhow::anyhow;
-use flutter_rust_bridge::StreamSink;
+use flutter_rust_bridge::{transfer, StreamSink};
 
 pub fn func_stream_return_error_twin_normal(_sink: StreamSink<String>) -> anyhow::Result<()> {
     Err(anyhow!("deliberate error"))
@@ -31,15 +32,18 @@ pub struct LogTwinNormal {
 }
 
 pub fn handle_stream_sink_at_1_twin_normal(key: u32, max: u32, sink: StreamSink<LogTwinNormal>) {
-    std::thread::spawn(move || handle_stream_inner(key, max, sink));
+    (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool())
+        .execute(transfer!(|| { handle_stream_inner(key, max, sink) }));
 }
 
 pub fn handle_stream_sink_at_2_twin_normal(key: u32, sink: StreamSink<LogTwinNormal>, max: u32) {
-    std::thread::spawn(move || handle_stream_inner(key, max, sink));
+    (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool())
+        .execute(transfer!(|| { handle_stream_inner(key, max, sink) }));
 }
 
 pub fn handle_stream_sink_at_3_twin_normal(sink: StreamSink<LogTwinNormal>, key: u32, max: u32) {
-    std::thread::spawn(move || handle_stream_inner(key, max, sink));
+    (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool())
+        .execute(transfer!(|| { handle_stream_inner(key, max, sink) }));
 }
 
 fn handle_stream_inner(key: u32, max: u32, sink: StreamSink<LogTwinNormal>) {

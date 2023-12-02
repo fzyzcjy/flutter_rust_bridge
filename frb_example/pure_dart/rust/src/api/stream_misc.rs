@@ -1,6 +1,7 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync"]}
 
-use flutter_rust_bridge::StreamSink;
+use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
+use flutter_rust_bridge::{transfer, StreamSink};
 use log::info;
 use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::Arc;
@@ -16,7 +17,7 @@ pub fn func_stream_realistic_twin_normal(sink: StreamSink<String>, arg: String) 
     // just to show that, you can send data to sink even in other threads
     let cnt2 = cnt.clone();
     let sink2 = sink.clone();
-    std::thread::spawn(move || {
+    (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
         for i in 0..5 {
             let old_cnt = cnt2.fetch_add(1, Ordering::SeqCst);
             let msg = format!("(thread=child, i={i}, old_cnt={old_cnt})");
@@ -28,7 +29,7 @@ pub fn func_stream_realistic_twin_normal(sink: StreamSink<String>, arg: String) 
         if cnt2.load(Ordering::SeqCst) == 10 {
             sink2.close();
         }
-    });
+    }));
 
     for i in 0..5 {
         let old_cnt = cnt.fetch_add(1, Ordering::SeqCst);
