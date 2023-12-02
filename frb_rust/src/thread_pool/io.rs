@@ -5,3 +5,5 @@ pub trait BaseThreadPool {
     where
         F: FnOnce() + Send + 'static;
 }
+
+impl BaseThreadPool for ThreadPool {}
