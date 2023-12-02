@@ -37,7 +37,7 @@ pub(crate) fn generate(
     cache: &IrPackComputedCache,
 ) -> anyhow::Result<WireRustOutputSpecMisc> {
     Ok(WireRustOutputSpecMisc {
-        code_header: Acc::new(|_| vec![generate_code_header().into()]),
+        code_header: Acc::new(|_| vec![(generate_code_header() + "\n\n").into()]),
         file_attributes: Acc::new_common(vec![FILE_ATTRIBUTES.to_string().into()]),
         imports: generate_imports(&cache.distinct_types, context),
         wire_funcs: context
