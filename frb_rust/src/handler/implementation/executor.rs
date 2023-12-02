@@ -12,7 +12,8 @@ use crate::rust2dart::action::Rust2DartAction;
 use crate::rust2dart::context::TaskRust2DartContext;
 use crate::rust2dart::sender::Rust2DartSender;
 use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
-use crate::rust_async;
+use crate::{rust_async, transfer};
+use std::panic;
 
 /// The default executor used.
 /// It creates an internal thread pool, and each call to a Rust function is

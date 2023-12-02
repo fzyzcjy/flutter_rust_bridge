@@ -9,6 +9,5 @@ pub(crate) mod thread_pool;
 pub(crate) mod rust_async;
 pub(crate) mod dart_opaque;
 pub(crate) mod ffi_binding;
-#[cfg(target_family = "wasm")]
 pub(crate) mod web_transfer;
 pub(crate) mod for_generated;

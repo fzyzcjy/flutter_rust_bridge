@@ -1,10 +1,7 @@
+#[cfg(target_family = "wasm")]
 pub(crate) mod transfer_closure;
+#[cfg(target_family = "wasm")]
 pub(crate) mod transfer;
-
-use crate::ffi::web::*;
-use js_sys::{global, Array};
-use std::iter::FromIterator;
-use web_sys::{DedicatedWorkerGlobalScope, Worker};
 
 /// On WASM, [JsValue][wasm_bindgen::JsValue]s cannot be shared between scopes but instead can be
 /// ["transferred"]. Rust however is not aware of transferables and therefore cannot
