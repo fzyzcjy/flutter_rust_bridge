@@ -8234,12 +8234,12 @@ const _: fn() = || {
 
 // Section: executor
 
-#[cfg(not(wasm))]
+#[cfg(not(target_family = "wasm"))]
 flutter_rust_bridge::for_generated::lazy_static! {
     pub static ref THREAD_POOL: Mutex<flutter_rust_bridge::for_generated::ThreadPool> = Mutex::new(Default::default());
 }
 
-#[cfg(wasm)]
+#[cfg(target_family = "wasm")]
 thread_local! {
     pub static THREAD_POOL: flutter_rust_bridge::for_generated::ThreadPool = Default::default();
 }
