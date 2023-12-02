@@ -8,6 +8,7 @@ use crate::misc::into_into_dart::IntoIntoDart;
 #[derive(Clone)]
 pub struct StreamSink<T> {
     // TODO refactor this `cfg`?
+    // TODO e.g. extract sth like a "Sendable Rust2Dart"
     #[cfg(not(wasm))]
     rust2dart: Rust2Dart,
     #[cfg(wasm)]
