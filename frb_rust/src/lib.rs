@@ -11,4 +11,4 @@ pub(crate) mod dart_opaque;
 pub(crate) mod ffi_binding;
 #[cfg(target_family = "wasm")]
 pub(crate) mod web_transfer;
-mod for_generated;
+pub(crate) mod for_generated;
