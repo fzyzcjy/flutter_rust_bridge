@@ -40,6 +40,7 @@ macro_rules! transfer {
     }};
 }
 
+// TODO more about this
 /// Spawn a task using the internal thread pool.
 /// Interprets the parameters as a list of captured transferables to
 /// send to this thread.
@@ -80,6 +81,7 @@ macro_rules! transfer {
 macro_rules! spawn {
     ($thread_pool:ident, $($tt:tt)*) => {{
         let worker = $crate::transfer!($($tt)*);
+
         #[cfg(not(target_family = "wasm"))]
         {
             $thread_pool.execute(worker)
