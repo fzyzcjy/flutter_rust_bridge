@@ -1,21 +1,21 @@
-use std::future::Future;
-use std::panic::{AssertUnwindSafe, UnwindSafe};
-use crate::generalized_isolate::IntoDart;
-use futures::FutureExt;
-use crate::thread_pool::ThreadPool;
+use crate::generalized_isolate::{Channel, IntoDart};
 use crate::handler::error::Error;
 use crate::handler::error_handler::ErrorHandler;
 use crate::handler::executor::Executor;
-use crate::handler::handler::{FfiCallMode, TaskContext, TaskRetFutTrait, TaskInfo};
+use crate::handler::handler::{FfiCallMode, TaskContext, TaskInfo, TaskRetFutTrait};
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::rust2dart::action::Rust2DartAction;
+use crate::rust2dart::api2wire::Api2wire;
 use crate::rust2dart::context::TaskRust2DartContext;
 use crate::rust2dart::sender::Rust2DartSender;
 use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
+use crate::thread_pool::ThreadPool;
 use crate::{rust_async, transfer};
-use std::panic;
+use futures::FutureExt;
 use parking_lot::Mutex;
-use crate::rust2dart::api2wire::Api2wire;
+use std::future::Future;
+use std::panic;
+use std::panic::{AssertUnwindSafe, UnwindSafe};
 
 /// The default executor used.
 /// It creates an internal thread pool, and each call to a Rust function is
@@ -30,7 +30,10 @@ pub struct SimpleExecutor<EH: ErrorHandler> {
 impl<EH: ErrorHandler> SimpleExecutor<EH> {
     /// Create a new executor backed by a thread pool.
     pub fn new(error_handler: EH, thread_pool: ThreadPool) -> Self {
-        SimpleExecutor { error_handler, thread_pool: AssertUnwindSafe(thread_pool) }
+        SimpleExecutor {
+            error_handler,
+            thread_pool: AssertUnwindSafe(thread_pool),
+        }
     }
 }
 
@@ -52,9 +55,9 @@ impl<EH: ErrorHandler + Sync> Executor for SimpleExecutor<EH> {
             let thread_result = panic::catch_unwind(move || {
                 let port2 = port2.expect("(worker) thread");
                 #[allow(clippy::clone_on_copy)]
-                    let sender = Rust2DartSender::new(port2.clone());
+                    let sender = Rust2DartSender::new(Channel::new(port2.clone()));
 
-                let task_context = TaskContext::new(TaskRust2DartContext::new(sender));
+                let task_context = TaskContext::new(TaskRust2DartContext::new(sender.clone()));
                 let ret = task(task_context)
                     .map(|e| e.into_into_dart().into_dart());
 
@@ -95,13 +98,17 @@ impl<EH: ErrorHandler + Sync> Executor for SimpleExecutor<EH> {
         TaskRetData: IntoDart,
         Er: IntoDart,
     {
-        sync_task()
-            .map(|value| WireSyncReturnSrc::new_from_data(value.into_into_dart(), Rust2DartAction::Success))
+        sync_task().map(|value| {
+            WireSyncReturnSrc::new_from_data(value.into_into_dart(), Rust2DartAction::Success)
+        })
     }
 
     #[cfg(feature = "rust-async")]
-    fn execute_async<TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(&self, task_info: TaskInfo, task: TaskFn)
-    where
+    fn execute_async<TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(
+        &self,
+        task_info: TaskInfo,
+        task: TaskFn,
+    ) where
         TaskFn: FnOnce(TaskContext) -> TaskRetFut + Send + UnwindSafe + 'static,
         TaskRetFut: Future<Output = Result<TaskRetDirect, Er>> + TaskRetFutTrait + UnwindSafe,
         TaskRetDirect: IntoIntoDart<TaskRetData>,
@@ -122,9 +129,9 @@ impl<EH: ErrorHandler + Sync> Executor for SimpleExecutor<EH> {
             let thread_result = async {
                 let port2 = port2.expect("(worker) thread");
                 #[allow(clippy::clone_on_copy)]
-                    let sender = Rust2DartSender::new(port2.clone());
+                    let sender = Rust2DartSender::new(Channel::new(port2.clone()));
 
-                let task_context = TaskContext::new(TaskRust2DartContext::new(sender));
+                let task_context = TaskContext::new(TaskRust2DartContext::new(sender.clone()));
                 let ret = task(task_context)
                     .await
                     .map(|e| e.into_into_dart().into_dart());
