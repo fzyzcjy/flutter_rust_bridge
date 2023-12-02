@@ -14,29 +14,6 @@ pub struct Rust2Dart {
     pub(crate) channel: Channel,
 }
 
-#[derive(Debug)]
-pub enum Rust2DartAction {
-    Success = 0,
-    Error = 1,
-    CloseStream = 2,
-    Panic = 3,
-}
-
-impl From<&crate::handler::Error> for Rust2DartAction {
-    fn from(value: &crate::handler::Error) -> Self {
-        match value {
-            crate::handler::Error::CustomError(_) => Self::Error,
-            crate::handler::Error::Panic(_) => Self::Panic,
-        }
-    }
-}
-
-impl IntoDart for Rust2DartAction {
-    fn into_dart(self) -> DartAbi {
-        (self as i32).into_dart()
-    }
-}
-
 // api signatures is similar to Flutter Android's callback https://api.flutter.dev/javadoc/io/flutter/plugin/common/MethodChannel.Result.html
 impl Rust2Dart {
     /// Create a new wrapper from a raw port.
