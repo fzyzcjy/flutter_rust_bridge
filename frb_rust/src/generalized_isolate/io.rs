@@ -1,4 +1,4 @@
-pub use allo_isolate::IntoDart;
+pub use allo_isolate::{IntoDart, IntoDartExceptPrimitive};
 pub type Channel = allo_isolate::Isolate;
 pub use allo_isolate::ZeroCopyBuffer;
 
