@@ -67,7 +67,7 @@ impl<'a> WireRustGeneratorApi2wireTrait for EnumRefWireRustGenerator<'a> {
                     }}.into_dart()
                 }}
             }}
-            impl flutter_rust_bridge::IntoDartExceptPrimitive for {0} {{}}
+            impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for {0} {{}}
             {into_into_dart}
             ",
             name,
