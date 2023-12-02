@@ -1,4 +1,4 @@
-use crate::{ffi::*, DartSafe};
+use allo_isolate::{IntoDart, ZeroCopyBuffer};
 
 /// Basically the Into trait.
 /// We need this separate trait because we need to implement it for Vec<T> etc.
@@ -146,7 +146,7 @@ impl<A, AD, B, BD, C, CD, D, DD, E, ED> IntoIntoDart<(AD, BD, CD, DD, ED)> for (
 // this is why here are some more specific impls
 
 // Implementations for simple types
-macro_rules! impl_into_into_dart {
+macro_rules! impl_into_into_dart_by_self {
     ($t:ty) => {
         impl IntoIntoDart<$t> for $t {
             fn into_into_dart(self) -> $t {
@@ -158,35 +158,35 @@ macro_rules! impl_into_into_dart {
 
 // Impls for primitive types are taken from the IntoDart trait
 
-impl_into_into_dart!(u8);
-impl_into_into_dart!(i8);
-impl_into_into_dart!(u16);
-impl_into_into_dart!(i16);
-impl_into_into_dart!(u32);
-impl_into_into_dart!(i32);
-impl_into_into_dart!(u64);
-impl_into_into_dart!(i64);
-impl_into_into_dart!(f32);
-impl_into_into_dart!(f64);
-impl_into_into_dart!(bool);
-impl_into_into_dart!(());
-impl_into_into_dart!(usize);
-impl_into_into_dart!(String);
-impl_into_into_dart!(DartOpaque);
+impl_into_into_dart_by_self!(u8);
+impl_into_into_dart_by_self!(i8);
+impl_into_into_dart_by_self!(u16);
+impl_into_into_dart_by_self!(i16);
+impl_into_into_dart_by_self!(u32);
+impl_into_into_dart_by_self!(i32);
+impl_into_into_dart_by_self!(u64);
+impl_into_into_dart_by_self!(i64);
+impl_into_into_dart_by_self!(f32);
+impl_into_into_dart_by_self!(f64);
+impl_into_into_dart_by_self!(bool);
+impl_into_into_dart_by_self!(());
+impl_into_into_dart_by_self!(usize);
+impl_into_into_dart_by_self!(String);
+impl_into_into_dart_by_self!(DartOpaque);
 #[cfg(not(target_family = "wasm"))]
-impl_into_into_dart!(allo_isolate::ffi::DartCObject);
+impl_into_into_dart_by_self!(allo_isolate::ffi::DartCObject);
 #[cfg(target_family = "wasm")]
-impl_into_into_dart!(crate::JsValue);
+impl_into_into_dart_by_self!(crate::JsValue);
 #[cfg(feature = "uuid")]
-impl_into_into_dart!(uuid::Uuid);
-impl_into_into_dart!(backtrace::Backtrace);
+impl_into_into_dart_by_self!(uuid::Uuid);
+impl_into_into_dart_by_self!(backtrace::Backtrace);
 
 #[cfg(feature = "chrono")]
 mod chrono_impls {
     use super::IntoIntoDart;
     use chrono::{Local, Utc};
-    impl_into_into_dart!(chrono::Duration);
-    impl_into_into_dart!(chrono::NaiveDateTime);
-    impl_into_into_dart!(chrono::DateTime<Local>);
-    impl_into_into_dart!(chrono::DateTime<Utc>);
+    impl_into_into_dart_by_self!(chrono::Duration);
+    impl_into_into_dart_by_self!(chrono::NaiveDateTime);
+    impl_into_into_dart_by_self!(chrono::DateTime<Local>);
+    impl_into_into_dart_by_self!(chrono::DateTime<Utc>);
 }
