@@ -56,3 +56,16 @@ impl<T> StreamSink<T> {
         self.rust2dart().close_stream()
     }
 }
+
+
+/// A handle to a [`web_sys::BroadcastChannel`].
+#[derive(Clone)]
+struct ChannelHandle(pub String);
+
+impl ChannelHandle {
+    #[cfg(wasm)]
+    pub fn port(&self) -> MessagePort {
+        PortLike::broadcast(&self.0)
+    }
+}
+
