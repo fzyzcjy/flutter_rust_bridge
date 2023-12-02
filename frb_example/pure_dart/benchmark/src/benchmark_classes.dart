@@ -26,6 +26,7 @@ List<MaybeAsyncBenchmarkBase> createBenchmarks(
     VoidAsyncBenchmark(emitter: emitter),
     VoidSyncBenchmark(emitter: emitter),
     VoidSyncRawBenchmark(emitter: emitter),
+    VoidAsyncRawByIsolateBenchmark(emitter: emitter),
 
     //
     for (final len in [0, 10000, 1000000]) ...[
@@ -85,6 +86,17 @@ class VoidSyncRawBenchmark extends EnhancedBenchmarkBase {
 
   @override
   void run() => _wire.benchmark_raw_void_sync();
+}
+
+// For example:
+// https://github.com/isar/isar/blob/95e1f02c274bb4bb80f98c1a42ddf33f3690a50c/packages/isar/lib/src/impl/isar_impl.dart#L351
+class VoidAsyncRawByIsolateBenchmark extends EnhancedAsyncBenchmarkBase {
+  VoidAsyncRawByIsolateBenchmark({super.emitter})
+      : super('VoidAsyncRawByIsolate');
+
+  @override
+  Future<void> run() async =>
+      await Isolate.run(() => _wire.benchmark_raw_void_sync());
 }
 
 class InputBytesAsyncBenchmark extends EnhancedAsyncBenchmarkBase {
