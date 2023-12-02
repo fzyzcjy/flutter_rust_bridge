@@ -14,6 +14,8 @@ pub struct Rust2Dart {
     pub(crate) channel: Channel,
 }
 
+// TODO rename to "Rust2Dart Sender"?
+// TODO this signature looks reasonable?
 // api signatures is similar to Flutter Android's callback https://api.flutter.dev/javadoc/io/flutter/plugin/common/MethodChannel.Result.html
 impl Rust2Dart {
     /// Create a new wrapper from a raw port.
@@ -51,6 +53,7 @@ impl Rust2Dart {
     }
 }
 
+// TODO change this comment
 /// A callback that receives the return value of Rust functions.
 pub struct TaskContext {
     rust2dart: Rust2Dart,

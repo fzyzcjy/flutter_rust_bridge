@@ -82,3 +82,4 @@ impl<T: Send> TaskRetFutTrait for T {}
 pub trait TaskRetFutTrait {}
 #[cfg(wasm)]
 impl<T> TaskRetFutTrait for T {}
+
