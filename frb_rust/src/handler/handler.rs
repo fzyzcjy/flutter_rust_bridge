@@ -17,7 +17,7 @@ pub trait Handler {
     ///
     /// If a Rust function is marked `sync`, it must be called with
     /// [`wrap_sync`](Handler::wrap_sync) instead.
-    fn wrap<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
+    fn wrap<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(&self, task_info: TaskInfo, prepare: PrepareFn)
     where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce(TaskContext) -> Result<TaskRetDirect, Er> + Send + UnwindSafe + 'static,
@@ -29,7 +29,7 @@ pub trait Handler {
     /// need not implement [Send].
     fn wrap_sync<SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
         &self,
-        wrap_info: WrapInfo,
+        task_info: TaskInfo,
         sync_task: SyncTaskFn,
     ) -> WireSyncReturn
     where
@@ -41,7 +41,7 @@ pub trait Handler {
     #[cfg(feature = "rust-async")]
     fn wrap_async<PrepareFn, TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(
         &self,
-        wrap_info: WrapInfo,
+        task_info: TaskInfo,
         prepare: PrepareFn,
     ) where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
@@ -52,9 +52,9 @@ pub trait Handler {
         Er: IntoDart + 'static;
 }
 
-/// Supporting information to identify a function's operating mode.
+/// Supporting information for a task
 #[derive(Clone)]
-pub struct WrapInfo {
+pub struct TaskInfo {
     /// A Dart `SendPort`. [None] if the mode is [FfiCallMode::Sync].
     pub port: Option<MessagePort>,
     /// Usually the name of the function.

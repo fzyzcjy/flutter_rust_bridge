@@ -135,7 +135,7 @@ fn generate_params(func: &IrFunc, context: WireRustGeneratorContext) -> Acc<Vec<
 
 fn generate_wrap_info_obj(func: &IrFunc) -> String {
     format!(
-        "flutter_rust_bridge::WrapInfo{{ debug_name: \"{name}\", port: {port}, mode: flutter_rust_bridge::FfiCallMode::{mode} }}",
+        "flutter_rust_bridge::TaskInfo{{ debug_name: \"{name}\", port: {port}, mode: flutter_rust_bridge::FfiCallMode::{mode} }}",
         name = func.name.name,
         port = if has_port_argument(func.mode) {
             "Some(port_)"

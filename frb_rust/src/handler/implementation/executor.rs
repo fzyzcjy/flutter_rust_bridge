@@ -5,7 +5,7 @@ use futures::FutureExt;
 use crate::handler::error::Error;
 use crate::handler::error_handler::ErrorHandler;
 use crate::handler::executor::Executor;
-use crate::handler::handler::{FfiCallMode, TaskContext, TaskRetFutTrait, WrapInfo};
+use crate::handler::handler::{FfiCallMode, TaskContext, TaskRetFutTrait, TaskInfo};
 use crate::misc::into_into_dart::IntoIntoDart;
 
 // TODO do not name "ThreadPool", since it has tokio etc
@@ -24,7 +24,7 @@ impl<EH: ErrorHandler> ThreadPoolExecutor<EH> {
 }
 
 impl<EH: ErrorHandler + Sync> Executor for ThreadPoolExecutor<EH> {
-    fn execute<TaskFn, TaskRetDirect, TaskRetData, Er>(&self, wrap_info: WrapInfo, task: TaskFn)
+    fn execute<TaskFn, TaskRetDirect, TaskRetData, Er>(&self, task_info: TaskInfo, task: TaskFn)
     where
         TaskFn: FnOnce(TaskContext) -> Result<TaskRetDirect, Er> + Send + UnwindSafe + 'static,
         TaskRetDirect: IntoIntoDart<TaskRetData>,
@@ -34,7 +34,7 @@ impl<EH: ErrorHandler + Sync> Executor for ThreadPoolExecutor<EH> {
         let eh = self.error_handler;
         let eh2 = self.error_handler;
 
-        let WrapInfo { port, mode, .. } = wrap_info;
+        let TaskInfo { port, mode, .. } = task_info;
 
         spawn!(|port: Option<MessagePort>| {
             let port2 = port.as_ref().cloned();
@@ -74,7 +74,7 @@ impl<EH: ErrorHandler + Sync> Executor for ThreadPoolExecutor<EH> {
 
     fn execute_sync<SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
         &self,
-        _wrap_info: WrapInfo,
+        _task_info: TaskInfo,
         sync_task: SyncTaskFn,
     ) -> Result<TaskRetDirect, Er>
     where
@@ -87,7 +87,7 @@ impl<EH: ErrorHandler + Sync> Executor for ThreadPoolExecutor<EH> {
     }
 
     #[cfg(feature = "rust-async")]
-    fn execute_async<TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(&self, wrap_info: WrapInfo, task: TaskFn)
+    fn execute_async<TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(&self, task_info: TaskInfo, task: TaskFn)
     where
         TaskFn: FnOnce(TaskContext) -> TaskRetFut + Send + UnwindSafe + 'static,
         TaskRetFut: Future<Output = Result<TaskRetDirect, Er>> + TaskRetFutTrait + UnwindSafe,
@@ -102,7 +102,7 @@ impl<EH: ErrorHandler + Sync> Executor for ThreadPoolExecutor<EH> {
         let eh2 = self.error_handler;
 
         rust_async::spawn(async move {
-            let WrapInfo { port, mode, .. } = wrap_info;
+            let TaskInfo { port, mode, .. } = task_info;
             let port2 = port.as_ref().cloned();
 
             // TODO rename variable (not "thread" anymore)

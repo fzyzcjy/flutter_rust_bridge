@@ -5,7 +5,7 @@ use allo_isolate::IntoDart;
 use crate::handler::error::Error;
 use crate::handler::error_handler::ErrorHandler;
 use crate::handler::executor::Executor;
-use crate::handler::handler::{Handler, TaskContext, TaskRetFutTrait, WrapInfo};
+use crate::handler::handler::{Handler, TaskContext, TaskRetFutTrait, TaskInfo};
 use crate::handler::implementation::error_handler::ReportDartErrorHandler;
 use crate::handler::implementation::executor::ThreadPoolExecutor;
 use crate::misc::into_into_dart::IntoIntoDart;
@@ -43,7 +43,7 @@ impl<E: Executor, H: ErrorHandler> SimpleHandler<E, H> {
 
 impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
     // TODO rename all these series (e.g. wrap -> wrap_normal)
-    fn wrap<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
+    fn wrap<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(&self, task_info: TaskInfo, prepare: PrepareFn)
         where
             PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
             TaskFn: FnOnce(TaskContext) -> Result<TaskRetDirect, Er> + Send + UnwindSafe + 'static,
@@ -60,20 +60,20 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         // as well. Then that new panic will go across language boundary and cause UB.
         // ref https://doc.rust-lang.org/nomicon/unwinding.html
         let _ = panic::catch_unwind(move || {
-            let wrap_info2 = wrap_info.clone();
+            let task_info2 = task_info.clone();
             if let Err(error) = panic::catch_unwind(move || {
                 let task = prepare();
-                self.executor.execute(wrap_info2, task);
+                self.executor.execute(task_info2, task);
             }) {
                 self.error_handler
-                    .handle_error(wrap_info.port.unwrap(), Error::Panic(error));
+                    .handle_error(task_info.port.unwrap(), Error::Panic(error));
             }
         });
     }
 
     fn wrap_sync<SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
         &self,
-        wrap_info: WrapInfo,
+        task_info: TaskInfo,
         sync_task: SyncTaskFn,
     ) -> WireSyncReturn
         where
@@ -86,7 +86,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         // For reason, see comments in [wrap]
         panic::catch_unwind(move || {
             let catch_unwind_result = panic::catch_unwind(move || {
-                match self.executor.execute_sync(wrap_info, sync_task) {
+                match self.executor.execute_sync(task_info, sync_task) {
                     Ok(data) => {
                         wire_sync_from_data(data.into_into_dart(), Rust2DartAction::Success)
                     }
@@ -104,7 +104,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
     #[cfg(feature = "rust-async")]
     fn wrap_async<PrepareFn, TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(
         &self,
-        wrap_info: WrapInfo,
+        task_info: TaskInfo,
         prepare: PrepareFn,
     ) where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
@@ -116,13 +116,13 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
     {
         // TODO temporary copy-and-paste, should merge with case above later
         let _ = panic::catch_unwind(move || {
-            let wrap_info2 = wrap_info.clone();
+            let task_info2 = task_info.clone();
             if let Err(error) = panic::catch_unwind(move || {
                 let task = prepare();
-                self.executor.execute_async(wrap_info2, task);
+                self.executor.execute_async(task_info2, task);
             }) {
                 self.error_handler
-                    .handle_error(wrap_info.port.unwrap(), Error::Panic(error));
+                    .handle_error(task_info.port.unwrap(), Error::Panic(error));
             }
         });
     }

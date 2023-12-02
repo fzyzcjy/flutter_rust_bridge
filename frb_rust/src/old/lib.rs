@@ -1,5 +1,5 @@
 pub use flutter_rust_bridge_macros::frb;
-pub use handler::{FfiCallMode, Handler, WrapInfo};
+pub use handler::{FfiCallMode, Handler, TaskInfo};
 pub use rust2dart::StreamSink;
 use std::panic::{RefUnwindSafe, UnwindSafe};
 
