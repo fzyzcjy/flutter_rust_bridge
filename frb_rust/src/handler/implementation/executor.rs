@@ -36,6 +36,10 @@ impl<EH: ErrorHandler, TP: BaseThreadPool> SimpleExecutor<EH, TP> {
             thread_pool: AssertUnwindSafe(thread_pool),
         }
     }
+
+    pub fn thread_pool(&self) -> &TP {
+        &self.thread_pool.0
+    }
 }
 
 impl<EH: ErrorHandler + Sync, TP: BaseThreadPool> Executor for SimpleExecutor<EH, TP> {

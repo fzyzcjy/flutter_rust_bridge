@@ -26,6 +26,10 @@ impl<TP: BaseThreadPool> DefaultHandler<TP> {
             ReportDartErrorHandler,
         )
     }
+
+    pub fn thread_pool(&self) -> &TP {
+        self.executor.thread_pool()
+    }
 }
 
 /// The simple handler uses a simple thread pool to execute tasks.
