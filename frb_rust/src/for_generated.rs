@@ -2,9 +2,6 @@
 //! These functions are *not* meant to be used by humans directly.
 #![doc(hidden)]
 
-pub use crate::ffi::*;
-pub use crate::handler::DefaultHandler;
-pub use lazy_static::lazy_static;
 use std::mem;
 
 // ref https://stackoverflow.com/questions/39224904/how-to-expose-a-rust-vect-to-ffi
