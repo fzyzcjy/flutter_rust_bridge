@@ -9,6 +9,7 @@ use crate::handler::handler::{FfiCallMode, TaskContext, TaskRetFutTrait, TaskInf
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::rust2dart::action::Rust2DartAction;
 use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
+use crate::rust_async;
 
 /// The default executor used.
 /// It creates an internal thread pool, and each call to a Rust function is
