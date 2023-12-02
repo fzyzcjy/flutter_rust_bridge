@@ -49,7 +49,6 @@ pub trait Handler {
         Er: IntoDart + 'static;
 }
 
-
 /// Supporting information to identify a function's operating mode.
 #[derive(Clone)]
 pub struct WrapInfo {
@@ -72,3 +71,12 @@ pub enum FfiCallMode {
     Stream,
 }
 
+#[cfg(not(wasm))]
+pub trait TaskRetFutTrait: Send {}
+#[cfg(not(wasm))]
+impl<T: Send> TaskRetFutTrait for T {}
+
+#[cfg(wasm)]
+pub trait TaskRetFutTrait {}
+#[cfg(wasm)]
+impl<T> TaskRetFutTrait for T {}
