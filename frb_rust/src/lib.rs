@@ -10,6 +10,7 @@ pub(crate) mod dart_opaque;
 pub(crate) mod ffi_binding;
 pub mod for_generated;
 pub(crate) mod rust_async;
+pub(crate) mod rust_opaque;
 pub(crate) mod web_transfer;
 
 pub use crate::dart_opaque::DartOpaque;
@@ -18,7 +19,6 @@ pub use crate::handler::handler::Handler;
 pub use crate::handler::implementation::handler::DefaultHandler;
 pub use crate::misc::dart_dynamic::DartDynamic;
 pub use crate::misc::into_into_dart::IntoIntoDart;
-pub use crate::misc::rust_opaque::DartSafe;
-pub use crate::misc::rust_opaque::RustOpaque;
 pub use crate::rust2dart::stream_sink::StreamSink;
+pub use crate::rust_opaque::{DartSafe, RustOpaque};
 pub use flutter_rust_bridge_macros::frb;
