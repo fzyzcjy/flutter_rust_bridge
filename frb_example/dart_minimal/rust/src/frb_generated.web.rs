@@ -4,14 +4,13 @@
 // Section: imports
 
 use super::*;
-use flutter_rust_bridge::rust2dart::IntoIntoDart;
-use flutter_rust_bridge::wasm_bindgen;
-use flutter_rust_bridge::wasm_bindgen::prelude::*;
-use flutter_rust_bridge::Handler;
+use flutter_rust_bridge::for_generated::wasm_bindgen;
+use flutter_rust_bridge::for_generated::wasm_bindgen::prelude::*;
+use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: impl_wire2api
 
-impl<T> Wire2Api<Option<T>> for flutter_rust_bridge::wasm_bindgen::JsValue
+impl<T> Wire2Api<Option<T>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 where
     JsValue: Wire2Api<T>,
 {
@@ -19,13 +18,13 @@ where
         (!self.is_null() && !self.is_undefined()).then(|| self.wire2api())
     }
 }
-impl Wire2Api<i32> for flutter_rust_bridge::wasm_bindgen::JsValue {
+impl Wire2Api<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn wire2api(self) -> i32 {
         self.unchecked_into_f64() as _
     }
 }
 
 #[wasm_bindgen]
-pub fn wire_minimal_adder(port_: flutter_rust_bridge::MessagePort, a: i32, b: i32) {
+pub fn wire_minimal_adder(port_: flutter_rust_bridge::for_generated::MessagePort, a: i32, b: i32) {
     wire_minimal_adder_impl(port_, a, b)
 }

@@ -14,36 +14,33 @@
 
 // Section: imports
 
-use flutter_rust_bridge::rust2dart::IntoIntoDart;
-use flutter_rust_bridge::Handler;
+use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: wire_funcs
 
 fn wire_minimal_adder_impl(
-    port_: flutter_rust_bridge::MessagePort,
+    port_: flutter_rust_bridge::for_generated::MessagePort,
     a: impl Wire2Api<i32> + core::panic::UnwindSafe,
     b: impl Wire2Api<i32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
-        flutter_rust_bridge::WrapInfo {
+        flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "minimal_adder",
             port: Some(port_),
-            mode: flutter_rust_bridge::FfiCallMode::Normal,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
             let api_a = a.wire2api();
             let api_b = b.wire2api();
-            move |task_callback| {
-                Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(api_a, api_b))
-            }
+            move |context| Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(api_a, api_b))
         },
     )
 }
 
 // Section: executor
 
-flutter_rust_bridge::support::lazy_static! {
-    pub static ref FLUTTER_RUST_BRIDGE_HANDLER: flutter_rust_bridge::support::DefaultHandler = Default::default();
+flutter_rust_bridge::for_generated::lazy_static! {
+    pub static ref FLUTTER_RUST_BRIDGE_HANDLER: flutter_rust_bridge::DefaultHandler = Default::default();
 }
 
 // Section: impl_wire2api

@@ -4,8 +4,7 @@
 // Section: imports
 
 use super::*;
-use flutter_rust_bridge::rust2dart::IntoIntoDart;
-use flutter_rust_bridge::Handler;
+use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: impl_new_with_nullptr
 
