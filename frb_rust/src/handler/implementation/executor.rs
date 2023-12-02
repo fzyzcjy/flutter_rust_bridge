@@ -10,22 +10,21 @@ use crate::misc::into_into_dart::IntoIntoDart;
 use crate::rust2dart::action::Rust2DartAction;
 use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
 
-// TODO do not name "ThreadPool", since it has tokio etc
 /// The default executor used.
 /// It creates an internal thread pool, and each call to a Rust function is
 /// handled by a different thread.
-pub struct ThreadPoolExecutor<EH: ErrorHandler> {
+pub struct SimpleExecutor<EH: ErrorHandler> {
     error_handler: EH,
 }
 
-impl<EH: ErrorHandler> ThreadPoolExecutor<EH> {
+impl<EH: ErrorHandler> SimpleExecutor<EH> {
     /// Create a new executor backed by a thread pool.
     pub fn new(error_handler: EH) -> Self {
-        ThreadPoolExecutor { error_handler }
+        SimpleExecutor { error_handler }
     }
 }
 
-impl<EH: ErrorHandler + Sync> Executor for ThreadPoolExecutor<EH> {
+impl<EH: ErrorHandler + Sync> Executor for SimpleExecutor<EH> {
     fn execute<TaskFn, TaskRetDirect, TaskRetData, Er>(&self, task_info: TaskInfo, task: TaskFn)
     where
         TaskFn: FnOnce(TaskContext) -> Result<TaskRetDirect, Er> + Send + UnwindSafe + 'static,

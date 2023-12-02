@@ -7,7 +7,7 @@ use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
 
 /// An executor model for Rust functions.
 ///
-/// For example, the default model is [ThreadPoolExecutor]
+/// For example, the default model is [SimpleExecutor]
 /// which runs each function in a separate thread.
 pub trait Executor: RefUnwindSafe {
     /// Executes a Rust function and transforms its return value into a Dart-compatible

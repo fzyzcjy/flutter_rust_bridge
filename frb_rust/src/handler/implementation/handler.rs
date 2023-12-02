@@ -7,7 +7,7 @@ use crate::handler::error_handler::ErrorHandler;
 use crate::handler::executor::Executor;
 use crate::handler::handler::{Handler, TaskContext, TaskRetFutTrait, TaskInfo};
 use crate::handler::implementation::error_handler::ReportDartErrorHandler;
-use crate::handler::implementation::executor::ThreadPoolExecutor;
+use crate::handler::implementation::executor::SimpleExecutor;
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::platform_types::WireSyncReturn;
 use crate::rust2dart::action::Rust2DartAction;
@@ -15,12 +15,12 @@ use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
 
 /// The default handler used by the generated code.
 pub type DefaultHandler =
-SimpleHandler<ThreadPoolExecutor<ReportDartErrorHandler>, ReportDartErrorHandler>;
+SimpleHandler<SimpleExecutor<ReportDartErrorHandler>, ReportDartErrorHandler>;
 
 impl Default for DefaultHandler {
     fn default() -> Self {
         Self::new(
-            ThreadPoolExecutor::new(ReportDartErrorHandler),
+            SimpleExecutor::new(ReportDartErrorHandler),
             ReportDartErrorHandler,
         )
     }
