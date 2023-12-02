@@ -5,11 +5,12 @@ use allo_isolate::IntoDart;
 use crate::handler::error::Error;
 use crate::handler::error_handler::ErrorHandler;
 use crate::handler::executor::Executor;
-use crate::handler::handler::{Handler, TaskRetFutTrait, WrapInfo};
+use crate::handler::handler::{Handler, TaskContext, TaskRetFutTrait, WrapInfo};
 use crate::handler::implementation::error_handler::ReportDartErrorHandler;
 use crate::handler::implementation::executor::ThreadPoolExecutor;
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::platform_types::WireSyncReturn;
+use crate::rust2dart::action::Rust2DartAction;
 
 /// The default handler used by the generated code.
 pub type DefaultHandler =

@@ -2,6 +2,7 @@ use allo_isolate::IntoDart;
 use crate::handler::error::Error;
 use crate::handler::error_handler::ErrorHandler;
 use crate::platform_types::{MessagePort, WireSyncReturn};
+use crate::rust2dart::action::Rust2DartAction;
 
 /// The default error handler used by generated code.
 #[derive(Clone, Copy)]
