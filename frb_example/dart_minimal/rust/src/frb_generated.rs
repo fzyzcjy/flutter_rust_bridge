@@ -39,8 +39,23 @@ fn wire_minimal_adder_impl(
 
 // Section: executor
 
+#[cfg(not(target_family = "wasm"))]
 flutter_rust_bridge::for_generated::lazy_static! {
-    pub static ref FLUTTER_RUST_BRIDGE_HANDLER: flutter_rust_bridge::DefaultHandler = Default::default();
+    pub static ref FLUTTER_RUST_BRIDGE_HANDLER:
+    flutter_rust_bridge::DefaultHandler<flutter_rust_bridge::for_generated::ThreadPool>
+    = flutter_rust_bridge::DefaultHandler::new_simple(Default::default());
+}
+
+#[cfg(target_family = "wasm")]
+thread_local! {
+    pub static THREAD_POOL: flutter_rust_bridge::for_generated::ThreadPool = Default::default();
+}
+
+#[cfg(target_family = "wasm")]
+flutter_rust_bridge::for_generated::lazy_static! {
+    pub static ref FLUTTER_RUST_BRIDGE_HANDLER:
+    flutter_rust_bridge::DefaultHandler<&'static std::thread::LocalKey<flutter_rust_bridge::for_generated::ThreadPool>>
+    = flutter_rust_bridge::DefaultHandler::new_simple(&THREAD_POOL);
 }
 
 // Section: impl_wire2api
