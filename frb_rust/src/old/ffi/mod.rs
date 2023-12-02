@@ -1,9 +1,5 @@
 // TODO move all these things into io.rs and wasm.rs for symmetry w.r.t. Dart?
 
-#[cfg(wasm)]
-pub type DartAbi = wasm_bindgen::JsValue;
-#[cfg(not(wasm))]
-pub type DartAbi = allo_isolate::ffi::DartCObject;
 #[cfg(not(wasm))]
 pub use allo_isolate::IntoDart;
 #[cfg(not(wasm))]

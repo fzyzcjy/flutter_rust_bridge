@@ -1,5 +1,7 @@
 use std::any::Any;
 use allo_isolate::IntoDart;
+use crate::misc::box_into_dart::BoxIntoDart;
+use crate::platform_types::DartAbi;
 
 /// Errors that occur from normal code execution.
 pub enum Error {
