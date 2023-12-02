@@ -7,6 +7,8 @@ use crate::handler::error_handler::ErrorHandler;
 use crate::handler::executor::Executor;
 use crate::handler::handler::{FfiCallMode, TaskContext, TaskRetFutTrait, TaskInfo};
 use crate::misc::into_into_dart::IntoIntoDart;
+use crate::rust2dart::action::Rust2DartAction;
+use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
 
 // TODO do not name "ThreadPool", since it has tokio etc
 /// The default executor used.
@@ -76,7 +78,7 @@ impl<EH: ErrorHandler + Sync> Executor for ThreadPoolExecutor<EH> {
         &self,
         _task_info: TaskInfo,
         sync_task: SyncTaskFn,
-    ) -> Result<TaskRetDirect, Er>
+    ) -> Result<WireSyncReturnSrc, Er>
     where
         SyncTaskFn: FnOnce() -> Result<TaskRetDirect, Er> + UnwindSafe,
         TaskRetDirect: IntoIntoDart<TaskRetData>,
@@ -84,6 +86,7 @@ impl<EH: ErrorHandler + Sync> Executor for ThreadPoolExecutor<EH> {
         Er: IntoDart,
     {
         sync_task()
+            .map(|value| WireSyncReturnSrc::new_from_data(value, Rust2DartAction::Success))
     }
 
     #[cfg(feature = "rust-async")]
