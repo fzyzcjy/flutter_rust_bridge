@@ -1,4 +1,4 @@
-// TODO do not hardcode a global thread pool
+// TODO rm most of this file? since we do not have *global* thread pool now
 
 fn get_worker_count() -> usize {
     #[cfg(all(feature = "worker-max", feature = "worker-single"))]
