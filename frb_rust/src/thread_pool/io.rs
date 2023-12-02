@@ -6,4 +6,11 @@ pub trait BaseThreadPool {
         F: FnOnce() + Send + 'static;
 }
 
-impl BaseThreadPool for ThreadPool {}
+impl BaseThreadPool for ThreadPool {
+    fn execute<F>(&self, job: F)
+    where
+        F: FnOnce() + Send + 'static,
+    {
+        self.execute(job)
+    }
+}
