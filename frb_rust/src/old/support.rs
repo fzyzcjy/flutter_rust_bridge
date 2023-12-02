@@ -62,13 +62,3 @@ pub fn slice_from_byte_buffer<T: bytemuck::Pod>(buffer: Vec<u8>) -> Box<[T]> {
         }
     }
 }
-
-#[cfg(not(wasm))]
-use allo_isolate::ffi::DartCObject;
-
-#[cfg(not(wasm))]
-pub type WireSyncReturn = *mut DartCObject;
-
-/// cbindgen:ignore
-#[cfg(wasm)]
-pub type WireSyncReturn = wasm_bindgen::JsValue;
