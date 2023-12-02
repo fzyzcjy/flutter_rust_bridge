@@ -1,8 +1,8 @@
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
-use crate::codegen::generator::wire::rust::spec_generator::rust2dart::ty::WireRustGeneratorApi2wireTrait;
+use crate::codegen::generator::wire::rust::spec_generator::rust2dart::ty::WireRustGeneratorRust2DartTrait;
 use crate::codegen::ir::pack::IrPack;
 
-impl<'a> WireRustGeneratorApi2wireTrait for GeneralListWireRustGenerator<'a> {
+impl<'a> WireRustGeneratorRust2DartTrait for GeneralListWireRustGenerator<'a> {
     fn intodart_type(&self, ir_pack: &IrPack) -> String {
         format!(
             "Vec<{}>",

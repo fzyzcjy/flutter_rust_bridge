@@ -1,12 +1,12 @@
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::rust2dart::misc::gen_wire2api_simple_type_cast;
-use crate::codegen::generator::wire::dart::spec_generator::rust2dart::ty::WireDartGeneratorWire2apiTrait;
+use crate::codegen::generator::wire::dart::spec_generator::rust2dart::ty::WireDartGeneratorRust2DartTrait;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::IrType::*;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
-impl<'a> WireDartGeneratorWire2apiTrait for BoxedWireDartGenerator<'a> {
+impl<'a> WireDartGeneratorRust2DartTrait for BoxedWireDartGenerator<'a> {
     fn generate_impl_wire2api_body(&self) -> String {
         match &*self.ir.inner {
             StructRef(_)

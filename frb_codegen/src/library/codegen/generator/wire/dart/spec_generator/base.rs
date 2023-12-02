@@ -2,7 +2,7 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
-use crate::codegen::generator::wire::dart::spec_generator::dart2rust::ty::WireDartGeneratorApi2wireTrait;
+use crate::codegen::generator::wire::dart::spec_generator::dart2rust::ty::WireDartGeneratorDart2RustTrait;
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::ir::pack::IrPack;
@@ -29,8 +29,8 @@ use paste::paste;
 
 #[enum_dispatch(WireDartGeneratorImplTrait)]
 #[enum_dispatch(WireDartGeneratorMiscTrait)]
-#[enum_dispatch(WireDartGeneratorApi2wireTrait)]
-#[enum_dispatch(WireDartGeneratorWire2apiTrait)]
+#[enum_dispatch(WireDartGeneratorDart2RustTrait)]
+#[enum_dispatch(WireDartGeneratorRust2DartTrait)]
 pub(crate) enum WireDartGenerator<'a> {
     Boxed(BoxedWireDartGenerator<'a>),
     DartOpaque(DartOpaqueWireDartGenerator<'a>),

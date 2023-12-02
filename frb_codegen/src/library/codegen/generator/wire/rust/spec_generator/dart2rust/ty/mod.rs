@@ -22,7 +22,7 @@ use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRust
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
-pub(crate) trait WireRustGeneratorWire2apiTrait {
+pub(crate) trait WireRustGeneratorDart2RustTrait {
     fn generate_wire2api_class(&self) -> Option<String> {
         None
     }

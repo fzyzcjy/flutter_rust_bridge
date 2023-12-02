@@ -1,9 +1,9 @@
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
-use crate::codegen::generator::wire::dart::spec_generator::rust2dart::ty::WireDartGeneratorWire2apiTrait;
+use crate::codegen::generator::wire::dart::spec_generator::rust2dart::ty::WireDartGeneratorRust2DartTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
-impl<'a> WireDartGeneratorWire2apiTrait for RecordWireDartGenerator<'a> {
+impl<'a> WireDartGeneratorRust2DartTrait for RecordWireDartGenerator<'a> {
     fn generate_impl_wire2api_body(&self) -> String {
         let len = self.ir.values.len();
         let values = self

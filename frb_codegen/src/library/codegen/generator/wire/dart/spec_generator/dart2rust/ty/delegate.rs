@@ -1,7 +1,7 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
-use crate::codegen::generator::wire::dart::spec_generator::dart2rust::ty::WireDartGeneratorApi2wireTrait;
+use crate::codegen::generator::wire::dart::spec_generator::dart2rust::ty::WireDartGeneratorDart2RustTrait;
 use crate::codegen::ir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegateArrayMode, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
 };
@@ -11,7 +11,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartG
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
-impl<'a> WireDartGeneratorApi2wireTrait for DelegateWireDartGenerator<'a> {
+impl<'a> WireDartGeneratorDart2RustTrait for DelegateWireDartGenerator<'a> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         match &self.ir {
             IrTypeDelegate::Array(ref array) => match &array.mode {

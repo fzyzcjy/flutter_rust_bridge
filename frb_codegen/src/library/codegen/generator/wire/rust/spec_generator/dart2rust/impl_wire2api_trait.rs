@@ -5,7 +5,7 @@ use crate::codegen::generator::wire::rust::spec_generator::base::{
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::ir::ty::IrType;
-use crate::library::codegen::generator::wire::rust::spec_generator::dart2rust::ty::WireRustGeneratorWire2apiTrait;
+use crate::library::codegen::generator::wire::rust::spec_generator::dart2rust::ty::WireRustGeneratorDart2RustTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
 pub(crate) fn generate_impl_wire2api(

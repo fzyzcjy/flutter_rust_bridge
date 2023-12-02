@@ -1,4 +1,4 @@
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
-use crate::codegen::generator::wire::rust::spec_generator::rust2dart::ty::WireRustGeneratorApi2wireTrait;
+use crate::codegen::generator::wire::rust::spec_generator::rust2dart::ty::WireRustGeneratorRust2DartTrait;
 
-impl<'a> WireRustGeneratorApi2wireTrait for UnencodableWireRustGenerator<'a> {}
+impl<'a> WireRustGeneratorRust2DartTrait for UnencodableWireRustGenerator<'a> {}

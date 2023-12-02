@@ -3,7 +3,7 @@ use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::dart2rust::impl_new_with_nullptr::generate_impl_new_with_nullptr_code_block;
 use crate::codegen::generator::wire::rust::spec_generator::dart2rust::misc::rust_wire_type_add_prefix_or_js_value;
-use crate::codegen::generator::wire::rust::spec_generator::dart2rust::ty::WireRustGeneratorWire2apiTrait;
+use crate::codegen::generator::wire::rust::spec_generator::dart2rust::ty::WireRustGeneratorDart2RustTrait;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::ir::field::IrField;
@@ -11,7 +11,7 @@ use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumMode, IrVariant, IrVaria
 use crate::codegen::ir::ty::IrType;
 use itertools::Itertools;
 
-impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
+impl<'a> WireRustGeneratorDart2RustTrait for EnumRefWireRustGenerator<'a> {
     fn generate_wire2api_class(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_pack);
         if src.mode == IrEnumMode::Simple {

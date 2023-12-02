@@ -5,10 +5,10 @@ use crate::codegen::generator::wire::dart::spec_generator::dart2rust::misc::dart
 use crate::codegen::generator::wire::dart::spec_generator::dart2rust::ty::structure::{
     GeneralizedStructGenerator, GeneralizedStructGeneratorMode,
 };
-use crate::codegen::generator::wire::dart::spec_generator::dart2rust::ty::WireDartGeneratorApi2wireTrait;
+use crate::codegen::generator::wire::dart::spec_generator::dart2rust::ty::WireDartGeneratorDart2RustTrait;
 use GeneralizedStructGeneratorMode::Record;
 
-impl<'a> WireDartGeneratorApi2wireTrait for RecordWireDartGenerator<'a> {
+impl<'a> WireDartGeneratorDart2RustTrait for RecordWireDartGenerator<'a> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         self.new_generalized_generator().api2wire_body()
     }

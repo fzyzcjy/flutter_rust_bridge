@@ -1,12 +1,12 @@
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::rust2dart::misc::generate_impl_into_into_dart;
 use crate::codegen::generator::wire::rust::spec_generator::rust2dart::ty::enumeration::parse_wrapper_name_into_dart_name_and_self_path;
-use crate::codegen::generator::wire::rust::spec_generator::rust2dart::ty::WireRustGeneratorApi2wireTrait;
+use crate::codegen::generator::wire::rust::spec_generator::rust2dart::ty::WireRustGeneratorRust2DartTrait;
 use crate::codegen::ir::pack::IrPack;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
-impl<'a> WireRustGeneratorApi2wireTrait for StructRefWireRustGenerator<'a> {
+impl<'a> WireRustGeneratorRust2DartTrait for StructRefWireRustGenerator<'a> {
     fn intodart_type(&self, ir_pack: &IrPack) -> String {
         let wrapper = &self.ir.get(ir_pack).wrapper_name;
         wrapper.clone().unwrap_or(self.ir.rust_api_type())

@@ -2,7 +2,7 @@ use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartIntern
 use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
-use crate::codegen::generator::wire::rust::spec_generator::rust2dart::ty::WireRustGeneratorApi2wireTrait;
+use crate::codegen::generator::wire::rust::spec_generator::rust2dart::ty::WireRustGeneratorRust2DartTrait;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::dart_opaque::IrTypeDartOpaque;
@@ -25,8 +25,8 @@ use enum_dispatch::enum_dispatch;
 use paste::paste;
 
 #[enum_dispatch(WireRustGeneratorImplTrait)]
-#[enum_dispatch(WireRustGeneratorApi2wireTrait)]
-#[enum_dispatch(WireRustGeneratorWire2apiTrait)]
+#[enum_dispatch(WireRustGeneratorRust2DartTrait)]
+#[enum_dispatch(WireRustGeneratorDart2RustTrait)]
 #[enum_dispatch(WireRustGeneratorMiscTrait)]
 pub(crate) enum WireRustGenerator<'a> {
     Boxed(BoxedWireRustGenerator<'a>),

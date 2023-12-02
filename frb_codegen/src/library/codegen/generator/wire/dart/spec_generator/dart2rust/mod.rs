@@ -9,7 +9,7 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Optional;
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
-use crate::library::codegen::generator::wire::dart::spec_generator::dart2rust::ty::WireDartGeneratorApi2wireTrait;
+use crate::library::codegen::generator::wire::dart::spec_generator::dart2rust::ty::WireDartGeneratorDart2RustTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use serde::Serialize;
 

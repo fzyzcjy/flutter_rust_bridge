@@ -1,7 +1,7 @@
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorImplTrait;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGenerator;
-use crate::library::codegen::generator::wire::rust::spec_generator::dart2rust::ty::WireRustGeneratorWire2apiTrait;
+use crate::library::codegen::generator::wire::rust::spec_generator::dart2rust::ty::WireRustGeneratorDart2RustTrait;
 
 pub(super) fn dart_wire_type_from_rust_wire_type_or_wasm(
     that: &impl WireDartGeneratorImplTrait,

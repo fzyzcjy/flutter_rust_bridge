@@ -3,13 +3,13 @@ use crate::codegen::generator::misc::is_js_value;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::dart2rust::ty::primitive::dart_native_type_of_primitive;
-use crate::codegen::generator::wire::dart::spec_generator::dart2rust::ty::WireDartGeneratorApi2wireTrait;
+use crate::codegen::generator::wire::dart::spec_generator::dart2rust::ty::WireDartGeneratorDart2RustTrait;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGenerator;
 use crate::codegen::ir::ty::IrType::StructRef;
 use crate::codegen::ir::ty::IrTypeTrait;
-use crate::library::codegen::generator::wire::rust::spec_generator::dart2rust::ty::WireRustGeneratorWire2apiTrait;
+use crate::library::codegen::generator::wire::rust::spec_generator::dart2rust::ty::WireRustGeneratorDart2RustTrait;
 
-impl<'a> WireDartGeneratorApi2wireTrait for BoxedWireDartGenerator<'a> {
+impl<'a> WireDartGeneratorDart2RustTrait for BoxedWireDartGenerator<'a> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         let ir_safe_ident = self.ir.safe_ident();
         let inner_safe_ident = self.ir.inner.safe_ident();

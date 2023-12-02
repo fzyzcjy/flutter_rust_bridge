@@ -1,10 +1,10 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
-use crate::codegen::generator::wire::dart::spec_generator::dart2rust::ty::WireDartGeneratorApi2wireTrait;
+use crate::codegen::generator::wire::dart::spec_generator::dart2rust::ty::WireDartGeneratorDart2RustTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
-impl<'a> WireDartGeneratorApi2wireTrait for OptionalWireDartGenerator<'a> {
+impl<'a> WireDartGeneratorDart2RustTrait for OptionalWireDartGenerator<'a> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         Acc::new(|target| match target {
             TargetOrCommon::Io | TargetOrCommon::Wasm => Some(format!(

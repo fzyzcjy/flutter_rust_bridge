@@ -5,7 +5,7 @@ use crate::codegen::generator::wire::rust::spec_generator::dart2rust::impl_new_w
 use crate::codegen::generator::wire::rust::spec_generator::dart2rust::misc::{
     generate_class_from_fields, rust_wire_type_add_prefix_or_js_value,
 };
-use crate::codegen::generator::wire::rust::spec_generator::dart2rust::ty::WireRustGeneratorWire2apiTrait;
+use crate::codegen::generator::wire::rust::spec_generator::dart2rust::ty::WireRustGeneratorDart2RustTrait;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
@@ -13,7 +13,7 @@ use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRust
 use crate::codegen::ir::ty::IrTypeTrait;
 use std::borrow::Cow;
 
-impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
+impl<'a> WireRustGeneratorDart2RustTrait for RustOpaqueWireRustGenerator<'a> {
     fn generate_wire2api_class(&self) -> Option<String> {
         Some(generate_class_from_fields(
             self.ir.clone(),

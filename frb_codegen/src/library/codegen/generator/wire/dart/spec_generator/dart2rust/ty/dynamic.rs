@@ -1,9 +1,9 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
-use crate::codegen::generator::wire::dart::spec_generator::dart2rust::ty::WireDartGeneratorApi2wireTrait;
+use crate::codegen::generator::wire::dart::spec_generator::dart2rust::ty::WireDartGeneratorDart2RustTrait;
 
-impl<'a> WireDartGeneratorApi2wireTrait for DynamicWireDartGenerator<'a> {
+impl<'a> WireDartGeneratorDart2RustTrait for DynamicWireDartGenerator<'a> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         Acc::default()
     }
