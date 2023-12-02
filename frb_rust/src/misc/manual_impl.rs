@@ -1,13 +1,3 @@
-#[cfg(not(wasm))]
-mod io;
-#[cfg(not(wasm))]
-pub use io::*;
-
-#[cfg(wasm)]
-mod web;
-#[cfg(wasm)]
-pub use web::*;
-
 #[cfg(feature = "chrono")]
 #[inline]
 pub fn wire2api_timestamp(ts: i64) -> Timestamp {
