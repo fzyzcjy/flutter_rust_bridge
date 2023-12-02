@@ -33,16 +33,10 @@ impl Channel {
 #[derive(Clone)]
 pub struct SendableChannelHandle(String);
 
-impl From<&Channel> for SendableChannelHandle {
-    fn from(value: &Channel) -> Self {
-        Self(value.broadcast_name().expect("Not a BroadcastChannel"))
-    }
+pub fn channel_to_handle(channel: &Channel) -> SendableChannelHandle {
+    SendableChannelHandle(channel.broadcast_name().expect("Not a BroadcastChannel"))
 }
 
-impl From<&SendableChannelHandle> for Channel {
-    fn from(value: &SendableChannelHandle) -> Self {
-        Channel {
-            port: PortLike::broadcast(&value.0),
-        }
-    }
+pub fn handle_to_channel(handle: &SendableChannelHandle) -> Channel {
+    Channel::new(PortLike::broadcast(&handle.0))
 }

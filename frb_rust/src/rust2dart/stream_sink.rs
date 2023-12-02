@@ -1,4 +1,6 @@
-use crate::generalized_isolate::{IntoDart, SendableChannelHandle};
+use crate::generalized_isolate::{
+    channel_to_handle, handle_to_channel, IntoDart, SendableChannelHandle,
+};
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::rust2dart::api2wire::Api2wire;
 use crate::rust2dart::sender::Rust2DartSender;
@@ -17,13 +19,13 @@ impl<T> StreamSink<T> {
     /// Create a new sink from a port wrapper.
     pub fn new(sender: Rust2DartSender) -> Self {
         Self {
-            sendable_channel_handle: (&sender.channel).into(),
+            sendable_channel_handle: channel_to_handle(&sender.channel),
             _phantom_data: PhantomData,
         }
     }
 
     fn sender(&self) -> Rust2DartSender {
-        Rust2DartSender::new((&self.sendable_channel_handle).into())
+        Rust2DartSender::new(handle_to_channel(&self.sendable_channel_handle))
     }
 
     /// Add data to the stream. Returns false when data could not be sent,
