@@ -1,4 +1,5 @@
 use allo_isolate::IntoDart;
+use crate::handler::error::Error;
 use crate::handler::error_handler::ErrorHandler;
 
 /// The default error handler used by generated code.

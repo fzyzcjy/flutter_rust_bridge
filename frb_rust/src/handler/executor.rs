@@ -1,7 +1,8 @@
 use std::future::Future;
 use std::panic::{RefUnwindSafe, UnwindSafe};
 use allo_isolate::IntoDart;
-use crate::handler::handler::TaskRetFutTrait;
+use crate::handler::handler::{TaskRetFutTrait, WrapInfo};
+use crate::misc::into_into_dart::IntoIntoDart;
 
 /// An executor model for Rust functions.
 ///

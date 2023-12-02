@@ -4,9 +4,10 @@ use std::panic::UnwindSafe;
 use allo_isolate::IntoDart;
 use crate::handler::error_handler::ErrorHandler;
 use crate::handler::executor::Executor;
-use crate::handler::handler::{Handler, TaskRetFutTrait};
+use crate::handler::handler::{Handler, TaskRetFutTrait, WrapInfo};
 use crate::handler::implementation::error_handler::ReportDartErrorHandler;
 use crate::handler::implementation::executor::ThreadPoolExecutor;
+use crate::misc::into_into_dart::IntoIntoDart;
 
 /// The default handler used by the generated code.
 pub type DefaultHandler =
