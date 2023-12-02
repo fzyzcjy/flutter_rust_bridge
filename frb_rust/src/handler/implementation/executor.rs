@@ -14,6 +14,8 @@ use crate::rust2dart::sender::Rust2DartSender;
 use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
 use crate::{rust_async, transfer};
 use std::panic;
+use parking_lot::Mutex;
+use crate::rust2dart::api2wire::Api2wire;
 
 /// The default executor used.
 /// It creates an internal thread pool, and each call to a Rust function is
@@ -27,8 +29,8 @@ pub struct SimpleExecutor<EH: ErrorHandler> {
 
 impl<EH: ErrorHandler> SimpleExecutor<EH> {
     /// Create a new executor backed by a thread pool.
-    pub fn new(error_handler: EH) -> Self {
-        SimpleExecutor { error_handler }
+    pub fn new(error_handler: EH, thread_pool: ThreadPool) -> Self {
+        SimpleExecutor { error_handler, thread_pool: AssertUnwindSafe(thread_pool) }
     }
 }
 
@@ -60,7 +62,7 @@ impl<EH: ErrorHandler + Sync> Executor for SimpleExecutor<EH> {
                     Ok(result) => {
                         match mode {
                             FfiCallMode::Normal => {
-                                sender.success(result);
+                                sender.send(Api2wire::success(result));
                             }
                             FfiCallMode::Stream => {
                                 // nothing - ignore the return value of a Stream-typed function
@@ -94,7 +96,7 @@ impl<EH: ErrorHandler + Sync> Executor for SimpleExecutor<EH> {
         Er: IntoDart,
     {
         sync_task()
-            .map(|value| WireSyncReturnSrc::new_from_data(value, Rust2DartAction::Success))
+            .map(|value| WireSyncReturnSrc::new_from_data(value.into_into_dart(), Rust2DartAction::Success))
     }
 
     #[cfg(feature = "rust-async")]
@@ -131,7 +133,7 @@ impl<EH: ErrorHandler + Sync> Executor for SimpleExecutor<EH> {
                     Ok(result) => {
                         match mode {
                             FfiCallMode::Normal => {
-                                sender.success(result);
+                                sender.send(Api2wire::success(result));
                             }
                             FfiCallMode::Stream => {
                                 // nothing - ignore the return value of a Stream-typed function

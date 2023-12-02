@@ -20,7 +20,7 @@ SimpleHandler<SimpleExecutor<ReportDartErrorHandler>, ReportDartErrorHandler>;
 impl Default for DefaultHandler {
     fn default() -> Self {
         Self::new(
-            SimpleExecutor::new(ReportDartErrorHandler),
+            SimpleExecutor::new(ReportDartErrorHandler, Default::default()),
             ReportDartErrorHandler,
         )
     }
