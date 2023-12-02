@@ -25,12 +25,12 @@ pub struct SimpleExecutor<EH: ErrorHandler> {
     error_handler: EH,
     // TODO remove `AssertUnwindSafe` after the Rust bug is fixed:
     // https://github.com/rust-lang/rust/issues/118009
-    thread_pool: AssertUnwindSafe<ThreadPool>,
+    thread_pool: AssertUnwindSafe<&'static ThreadPool>,
 }
 
 impl<EH: ErrorHandler> SimpleExecutor<EH> {
     /// Create a new executor backed by a thread pool.
-    pub fn new(error_handler: EH, thread_pool: ThreadPool) -> Self {
+    pub fn new(error_handler: EH, thread_pool: &'static ThreadPool) -> Self {
         SimpleExecutor {
             error_handler,
             thread_pool: AssertUnwindSafe(thread_pool),

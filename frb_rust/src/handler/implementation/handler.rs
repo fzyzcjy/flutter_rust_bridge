@@ -1,26 +1,28 @@
-use std::future::Future;
-use std::panic;
-use std::panic::UnwindSafe;
 use crate::generalized_isolate::IntoDart;
 use crate::handler::error::Error;
 use crate::handler::error_handler::ErrorHandler;
 use crate::handler::executor::Executor;
-use crate::handler::handler::{Handler, TaskContext, TaskRetFutTrait, TaskInfo};
+use crate::handler::handler::{Handler, TaskContext, TaskInfo, TaskRetFutTrait};
 use crate::handler::implementation::error_handler::ReportDartErrorHandler;
 use crate::handler::implementation::executor::SimpleExecutor;
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::platform_types::WireSyncReturn;
 use crate::rust2dart::action::Rust2DartAction;
 use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
+use crate::thread_pool::ThreadPool;
+use std::future::Future;
+use std::panic;
+use std::panic::UnwindSafe;
 
+// TODO the name: DefaultHandler vs SimpleHandler?
 /// The default handler used by the generated code.
 pub type DefaultHandler =
-SimpleHandler<SimpleExecutor<ReportDartErrorHandler>, ReportDartErrorHandler>;
+    SimpleHandler<SimpleExecutor<ReportDartErrorHandler>, ReportDartErrorHandler>;
 
-impl Default for DefaultHandler {
-    fn default() -> Self {
+impl DefaultHandler {
+    pub fn new_simple(thread_pool: &'static ThreadPool) -> Self {
         Self::new(
-            SimpleExecutor::new(ReportDartErrorHandler, Default::default()),
+            SimpleExecutor::new(ReportDartErrorHandler, thread_pool),
             ReportDartErrorHandler,
         )
     }
@@ -44,13 +46,16 @@ impl<E: Executor, H: ErrorHandler> SimpleHandler<E, H> {
 
 impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
     // TODO rename all these series (e.g. wrap -> wrap_normal)
-    fn wrap<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(&self, task_info: TaskInfo, prepare: PrepareFn)
-        where
-            PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
-            TaskFn: FnOnce(TaskContext) -> Result<TaskRetDirect, Er> + Send + UnwindSafe + 'static,
-            TaskRetDirect: IntoIntoDart<TaskRetData>,
-            TaskRetData: IntoDart,
-            Er: IntoDart + 'static
+    fn wrap<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(
+        &self,
+        task_info: TaskInfo,
+        prepare: PrepareFn,
+    ) where
+        PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
+        TaskFn: FnOnce(TaskContext) -> Result<TaskRetDirect, Er> + Send + UnwindSafe + 'static,
+        TaskRetDirect: IntoIntoDart<TaskRetData>,
+        TaskRetData: IntoDart,
+        Er: IntoDart + 'static,
     {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
         // Why do this: As nomicon says, unwind across languages is undefined behavior (UB).
@@ -77,11 +82,11 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         task_info: TaskInfo,
         sync_task: SyncTaskFn,
     ) -> WireSyncReturn
-        where
-            SyncTaskFn: FnOnce() -> Result<TaskRetDirect, Er> + UnwindSafe,
-            TaskRetDirect: IntoIntoDart<TaskRetData>,
-            TaskRetData: IntoDart,
-            Er: IntoDart + 'static
+    where
+        SyncTaskFn: FnOnce() -> Result<TaskRetDirect, Er> + UnwindSafe,
+        TaskRetDirect: IntoIntoDart<TaskRetData>,
+        TaskRetData: IntoDart,
+        Er: IntoDart + 'static,
     {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
         // For reason, see comments in [wrap]
@@ -98,10 +103,10 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
                 .unwrap_or_else(|error| self.error_handler.handle_error_sync(Error::Panic(error)))
                 .leak()
         })
-            // Deliberately construct simplest possible WireSyncReturn object
-            // instead of more realistic things like `WireSyncReturnSrc::new(Panic, ...)`.
-            // See comments in [wrap] for why.
-            .unwrap_or_else(|_| WireSyncReturnSrc::new_raw(().into_dart()).leak())
+        // Deliberately construct simplest possible WireSyncReturn object
+        // instead of more realistic things like `WireSyncReturnSrc::new(Panic, ...)`.
+        // See comments in [wrap] for why.
+        .unwrap_or_else(|_| WireSyncReturnSrc::new_raw(().into_dart()).leak())
     }
 
     #[cfg(feature = "rust-async")]
@@ -112,10 +117,10 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
     ) where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce(TaskContext) -> TaskRetFut + Send + UnwindSafe + 'static,
-        TaskRetFut: Future<Output=Result<TaskRetDirect, Er>> + TaskRetFutTrait + UnwindSafe,
+        TaskRetFut: Future<Output = Result<TaskRetDirect, Er>> + TaskRetFutTrait + UnwindSafe,
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
-        Er: IntoDart + 'static
+        Er: IntoDart + 'static,
     {
         // TODO temporary copy-and-paste, should merge with case above later
         let _ = panic::catch_unwind(move || {
