@@ -7,6 +7,7 @@ import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:benchmark_harness/benchmark_harness.dart';
+import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:frb_example_pure_dart/src/rust/api/benchmark_api.dart';
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/benchmark_api_twin_sync.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
@@ -95,8 +96,12 @@ class VoidAsyncRawByIsolateBenchmark extends EnhancedAsyncBenchmarkBase {
       : super('VoidAsyncRawByIsolate');
 
   @override
-  Future<void> run() async =>
-      await Isolate.run(() => _wire.benchmark_raw_void_sync());
+  Future<void> run() async => await Isolate.run(() async {
+        // This library loading may not be optimal, just a rough test
+        final wire = RustLibWire.fromExternalLibrary(await loadExternalLibrary(
+            RustLib.kDefaultExternalLibraryLoaderConfig));
+        wire.benchmark_raw_void_sync();
+      });
 }
 
 class InputBytesAsyncBenchmark extends EnhancedAsyncBenchmarkBase {
