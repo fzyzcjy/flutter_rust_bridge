@@ -14,7 +14,7 @@ pub(crate) fn generate_impl_into_into_dart(
     let name = &name.rust_style();
 
     format!(
-        "impl flutter_rust_bridge::rust2dart::IntoIntoDart<{wrapper_name}> for {name} {{
+        "impl flutter_rust_bridge::IntoIntoDart<{wrapper_name}> for {name} {{
             fn into_into_dart(self) -> {wrapper_name} {{
                 {body}
             }}

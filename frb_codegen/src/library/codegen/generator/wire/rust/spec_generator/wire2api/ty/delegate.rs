@@ -114,12 +114,12 @@ impl<'a> WireRustGeneratorWire2apiTrait for DelegateWireRustGenerator<'a> {
             }
             IrTypeDelegate::Uuid => Acc::distribute(
                 Some(
-                    "let single: Vec<u8> = self.wire2api(); flutter_rust_bridge::wire2api_uuid_ref(single.as_slice())".into(),
+                    "let single: Vec<u8> = self.wire2api(); flutter_rust_bridge::for_generated::wire2api_uuid_ref(single.as_slice())".into(),
                 ),
             ),
             IrTypeDelegate::Uuids => Acc::distribute(
                 Some(
-                    "let multiple: Vec<u8> = self.wire2api(); flutter_rust_bridge::wire2api_uuids(multiple)".into(),
+                    "let multiple: Vec<u8> = self.wire2api(); flutter_rust_bridge::for_generated::wire2api_uuids(multiple)".into(),
                 ),
             ),
             IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "self.wire2api()".into(),
