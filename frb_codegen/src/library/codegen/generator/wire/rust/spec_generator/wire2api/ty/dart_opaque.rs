@@ -26,7 +26,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for DartOpaqueWireRustGenerator<'a> {
                     .to_owned(),
             ),
             wasm: Some(
-                "let arr = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+                "let arr = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
                 unsafe{ flutter_rust_bridge::DartOpaque::new(arr.get(0), arr.get(1)) }"
                     .to_owned(),
             ),

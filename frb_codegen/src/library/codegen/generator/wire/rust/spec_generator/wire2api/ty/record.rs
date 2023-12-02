@@ -26,7 +26,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for RecordWireRustGenerator<'a> {
         Acc {
             io: Some(format!("({},)", values.io.join(","))),
             wasm: Some(format!(
-                "let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+                "let self_ = self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap();
                 assert_eq!(self_.length(), {len}, \"Expected {len} elements, got {{}}\", self_.length());
                 ({},)",
                 values.wasm.join(",")
