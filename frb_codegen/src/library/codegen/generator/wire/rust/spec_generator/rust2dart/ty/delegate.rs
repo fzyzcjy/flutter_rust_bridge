@@ -24,7 +24,7 @@ impl<'a> WireRustGeneratorRust2DartTrait for DelegateWireRustGenerator<'a> {
             let into_into_dart = generate_impl_into_into_dart(&src.name, &src.wrapper_name);
             return Some(format!(
                 "impl flutter_rust_bridge::IntoDart for {name} {{
-                    fn into_dart(self) -> flutter_rust_bridge::DartAbi {{
+                    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {{
                         match {self_ref} {{
                             {variants}
                         }}.into_dart()
