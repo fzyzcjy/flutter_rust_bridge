@@ -8240,7 +8240,9 @@ thread_local! {
 }
 
 flutter_rust_bridge::for_generated::lazy_static! {
-    pub static ref FLUTTER_RUST_BRIDGE_HANDLER: flutter_rust_bridge::DefaultHandler = flutter_rust_bridge::DefaultHandler::new_simple({
+    pub static ref FLUTTER_RUST_BRIDGE_HANDLER:
+    flutter_rust_bridge::DefaultHandler<&'static std::thread::LocalKey<flutter_rust_bridge::for_generated::ThreadPool>>
+    = flutter_rust_bridge::DefaultHandler::new_simple({
         #[cfg(not(target_family = "wasm"))]
         { Default::default() }
         #[cfg(target_family = "wasm")]
