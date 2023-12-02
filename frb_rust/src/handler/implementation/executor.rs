@@ -26,7 +26,7 @@ impl<EH: ErrorHandler> ThreadPoolExecutor<EH> {
 impl<EH: ErrorHandler + Sync> Executor for ThreadPoolExecutor<EH> {
     fn execute<TaskFn, TaskRetDirect, TaskRetData, Er>(&self, wrap_info: WrapInfo, task: TaskFn)
     where
-        TaskFn: FnOnce(TaskCallback) -> Result<TaskRetDirect, Er> + Send + UnwindSafe + 'static,
+        TaskFn: FnOnce(TaskContext) -> Result<TaskRetDirect, Er> + Send + UnwindSafe + 'static,
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
         Er: IntoDart + 'static,
@@ -43,7 +43,7 @@ impl<EH: ErrorHandler + Sync> Executor for ThreadPoolExecutor<EH> {
                 #[allow(clippy::clone_on_copy)]
                 let rust2dart = Rust2Dart::new(port2.clone());
 
-                let ret = task(TaskCallback::new(rust2dart.clone()))
+                let ret = task(TaskContext::new(rust2dart.clone()))
                     .map(|e| e.into_into_dart().into_dart());
 
                 match ret {
@@ -89,7 +89,7 @@ impl<EH: ErrorHandler + Sync> Executor for ThreadPoolExecutor<EH> {
     #[cfg(feature = "rust-async")]
     fn execute_async<TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(&self, wrap_info: WrapInfo, task: TaskFn)
     where
-        TaskFn: FnOnce(TaskCallback) -> TaskRetFut + Send + UnwindSafe + 'static,
+        TaskFn: FnOnce(TaskContext) -> TaskRetFut + Send + UnwindSafe + 'static,
         TaskRetFut: Future<Output = Result<TaskRetDirect, Er>> + TaskRetFutTrait + UnwindSafe,
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
@@ -111,7 +111,7 @@ impl<EH: ErrorHandler + Sync> Executor for ThreadPoolExecutor<EH> {
                 #[allow(clippy::clone_on_copy)]
                     let rust2dart = Rust2Dart::new(port2.clone());
 
-                let ret = task(TaskCallback::new(rust2dart.clone()))
+                let ret = task(TaskContext::new(rust2dart.clone()))
                     .await
                     .map(|e| e.into_into_dart().into_dart());
 

@@ -52,11 +52,11 @@ impl Rust2Dart {
 }
 
 /// A callback that receives the return value of Rust functions.
-pub struct TaskCallback {
+pub struct TaskContext {
     rust2dart: Rust2Dart,
 }
 
-impl TaskCallback {
+impl TaskContext {
     /// Create a new callback from a port wrapper.
     pub fn new(rust2dart: Rust2Dart) -> Self {
         Self { rust2dart }

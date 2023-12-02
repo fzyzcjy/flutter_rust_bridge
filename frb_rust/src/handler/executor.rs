@@ -13,7 +13,7 @@ pub trait Executor: RefUnwindSafe {
     /// value, i.e. types that implement [`IntoDart`].
     fn execute<TaskFn, TaskRetDirect, TaskRetData, Er>(&self, wrap_info: WrapInfo, task: TaskFn)
     where
-        TaskFn: FnOnce(TaskCallback) -> Result<TaskRetDirect, Er> + Send + UnwindSafe + 'static,
+        TaskFn: FnOnce(TaskContext) -> Result<TaskRetDirect, Er> + Send + UnwindSafe + 'static,
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
         Er: IntoDart + 'static;
@@ -33,7 +33,7 @@ pub trait Executor: RefUnwindSafe {
     #[cfg(feature = "rust-async")]
     fn execute_async<TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(&self, wrap_info: WrapInfo, task: TaskFn)
     where
-        TaskFn: FnOnce(TaskCallback) -> TaskRetFut + Send + UnwindSafe + 'static,
+        TaskFn: FnOnce(TaskContext) -> TaskRetFut + Send + UnwindSafe + 'static,
         TaskRetFut: Future<Output = Result<TaskRetDirect, Er>> + TaskRetFutTrait + UnwindSafe,
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,

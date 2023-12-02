@@ -45,7 +45,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
     fn wrap<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
         where
             PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
-            TaskFn: FnOnce(TaskCallback) -> Result<TaskRetDirect, Er> + Send + UnwindSafe + 'static,
+            TaskFn: FnOnce(TaskContext) -> Result<TaskRetDirect, Er> + Send + UnwindSafe + 'static,
             TaskRetDirect: IntoIntoDart<TaskRetData>,
             TaskRetData: IntoDart,
             Er: IntoDart + 'static
@@ -107,7 +107,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         prepare: PrepareFn,
     ) where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
-        TaskFn: FnOnce(TaskCallback) -> TaskRetFut + Send + UnwindSafe + 'static,
+        TaskFn: FnOnce(TaskContext) -> TaskRetFut + Send + UnwindSafe + 'static,
         TaskRetFut: Future<Output = Result<TaskRetDirect, Er>> + TaskRetFutTrait + UnwindSafe,
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
