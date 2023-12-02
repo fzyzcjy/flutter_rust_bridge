@@ -9,18 +9,18 @@ use crate::misc::into_into_dart::IntoIntoDart;
 use crate::platform_types::WireSyncReturn;
 use crate::rust2dart::action::Rust2DartAction;
 use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
-use crate::thread_pool::ThreadPool;
+use crate::thread_pool::{BaseThreadPool, ThreadPool};
 use std::future::Future;
 use std::panic;
 use std::panic::UnwindSafe;
 
 // TODO the name: DefaultHandler vs SimpleHandler?
 /// The default handler used by the generated code.
-pub type DefaultHandler =
-    SimpleHandler<SimpleExecutor<ReportDartErrorHandler>, ReportDartErrorHandler>;
+pub type DefaultHandler<TP: BaseThreadPool> =
+    SimpleHandler<SimpleExecutor<ReportDartErrorHandler, TP>, ReportDartErrorHandler>;
 
-impl DefaultHandler {
-    pub fn new_simple(thread_pool: &'static std::thread::LocalKey<ThreadPool>) -> Self {
+impl<TP: BaseThreadPool> DefaultHandler<TP> {
+    pub fn new_simple(thread_pool: TP) -> Self {
         Self::new(
             SimpleExecutor::new(ReportDartErrorHandler, thread_pool),
             ReportDartErrorHandler,

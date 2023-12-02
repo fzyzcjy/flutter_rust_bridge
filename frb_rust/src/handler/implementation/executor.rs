@@ -10,7 +10,7 @@ use crate::rust2dart::api2wire::Api2wire;
 use crate::rust2dart::context::TaskRust2DartContext;
 use crate::rust2dart::sender::Rust2DartSender;
 use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
-use crate::thread_pool::ThreadPool;
+use crate::thread_pool::{BaseThreadPool, ThreadPool};
 use crate::{rust_async, transfer};
 use futures::FutureExt;
 use parking_lot::Mutex;
@@ -21,16 +21,16 @@ use std::panic::{AssertUnwindSafe, UnwindSafe};
 /// The default executor used.
 /// It creates an internal thread pool, and each call to a Rust function is
 /// handled by a different thread.
-pub struct SimpleExecutor<EH: ErrorHandler> {
+pub struct SimpleExecutor<EH: ErrorHandler, TP: BaseThreadPool> {
     error_handler: EH,
     // TODO remove `AssertUnwindSafe` after the Rust bug is fixed:
     // https://github.com/rust-lang/rust/issues/118009
-    thread_pool: AssertUnwindSafe<&'static std::thread::LocalKey<ThreadPool>>,
+    thread_pool: AssertUnwindSafe<TP>,
 }
 
-impl<EH: ErrorHandler> SimpleExecutor<EH> {
+impl<EH: ErrorHandler, TP: BaseThreadPool> SimpleExecutor<EH, TP> {
     /// Create a new executor backed by a thread pool.
-    pub fn new(error_handler: EH, thread_pool: &'static std::thread::LocalKey<ThreadPool>) -> Self {
+    pub fn new(error_handler: EH, thread_pool: TP) -> Self {
         SimpleExecutor {
             error_handler,
             thread_pool: AssertUnwindSafe(thread_pool),
@@ -38,7 +38,7 @@ impl<EH: ErrorHandler> SimpleExecutor<EH> {
     }
 }
 
-impl<EH: ErrorHandler + Sync> Executor for SimpleExecutor<EH> {
+impl<EH: ErrorHandler + Sync, TP: BaseThreadPool> Executor for SimpleExecutor<EH, TP> {
     fn execute<TaskFn, TaskRetDirect, TaskRetData, Er>(&self, task_info: TaskInfo, task: TaskFn)
     where
         TaskFn: FnOnce(TaskContext) -> Result<TaskRetDirect, Er> + Send + UnwindSafe + 'static,
@@ -51,7 +51,7 @@ impl<EH: ErrorHandler + Sync> Executor for SimpleExecutor<EH> {
 
         let TaskInfo { port, mode, .. } = task_info;
 
-        self.thread_pool.0.with(|thread_pool| thread_pool.execute(transfer!(|port: Option<MessagePort>| {
+        self.thread_pool.execute(transfer!(|port: Option<MessagePort>| {
             let port2 = port.as_ref().cloned();
             let thread_result = panic::catch_unwind(move || {
                 let port2 = port2.expect("(worker) thread");
@@ -85,7 +85,7 @@ impl<EH: ErrorHandler + Sync> Executor for SimpleExecutor<EH> {
             if let Err(error) = thread_result {
                 eh.handle_error(port.expect("(worker) eh"), Error::Panic(error));
             }
-        })));
+        }));
     }
 
     fn execute_sync<SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
