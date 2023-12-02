@@ -2,7 +2,7 @@ use std::future::Future;
 use std::panic::UnwindSafe;
 use allo_isolate::IntoDart;
 use crate::misc::into_into_dart::IntoIntoDart;
-use crate::misc::platform_types::WireSyncReturn;
+use crate::platform_types::{MessagePort, WireSyncReturn};
 
 /// Provide your own handler to customize how to execute your function calls, etc.
 pub trait Handler {

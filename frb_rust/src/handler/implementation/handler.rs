@@ -9,7 +9,7 @@ use crate::handler::handler::{Handler, TaskRetFutTrait, WrapInfo};
 use crate::handler::implementation::error_handler::ReportDartErrorHandler;
 use crate::handler::implementation::executor::ThreadPoolExecutor;
 use crate::misc::into_into_dart::IntoIntoDart;
-use crate::misc::platform_types::WireSyncReturn;
+use crate::platform_types::WireSyncReturn;
 
 /// The default handler used by the generated code.
 pub type DefaultHandler =

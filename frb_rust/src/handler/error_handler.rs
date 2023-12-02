@@ -1,5 +1,6 @@
 use std::panic::{RefUnwindSafe, UnwindSafe};
 use crate::handler::error::Error;
+use crate::platform_types::{MessagePort, WireSyncReturn};
 
 /// A handler model that sends back the error to a Dart `SendPort`.
 ///
