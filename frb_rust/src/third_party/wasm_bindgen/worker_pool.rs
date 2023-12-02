@@ -5,9 +5,9 @@
 use crate::misc::web_utils::script_path;
 use crate::web_transfer::transfer_closure::TransferClosure;
 use js_sys::Array;
-use std::cell::RefCell;
 use std::iter::FromIterator;
 use std::sync::Arc;
+use std::sync::Mutex;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen::JsCast;
 use web_sys::BlobPropertyBag;
@@ -25,7 +25,8 @@ pub struct WorkerPool {
 }
 
 struct PoolState {
-    workers: RefCell<Vec<Worker>>,
+    // Note: RefCell->Mutex for same reason
+    workers: Mutex<Vec<Worker>>,
     callback: Closure<dyn FnMut(Event)>,
 }
 
@@ -46,7 +47,7 @@ impl WorkerPool {
         let pool = WorkerPool {
             script_src,
             state: Arc::new(PoolState {
-                workers: RefCell::new(Vec::with_capacity(initial)),
+                workers: Mutex::new(Vec::with_capacity(initial)),
                 callback: Closure::new(|event: Event| {
                     if let Some(event) = event.dyn_ref::<MessageEvent>() {
                         crate::console_error!("Dropped data:: {:?}", event.data());
@@ -129,7 +130,7 @@ impl WorkerPool {
     /// Returns any error that may happen while a JS web worker is created and a
     /// message is sent to it.
     fn worker(&self) -> Result<Worker, JsValue> {
-        match self.state.workers.borrow_mut().pop() {
+        match self.state.workers.lock().unwrap().pop() {
             Some(worker) => Ok(worker),
             None => self.spawn(),
         }
@@ -165,16 +166,16 @@ impl WorkerPool {
     fn reclaim_on_message(&self, worker: &Worker) {
         let state = Arc::downgrade(&self.state);
         let worker2 = worker.clone();
-        let reclaim_slot = Arc::new(RefCell::new(None));
+        let reclaim_slot = Arc::new(Mutex::new(None));
         let slot2 = reclaim_slot.clone();
         let reclaim = Closure::<dyn FnMut(_)>::new(move |_: MessageEvent| {
             if let Some(state) = state.upgrade() {
                 state.push(worker2.clone());
             }
-            *slot2.borrow_mut() = None;
+            *slot2.lock().unwrap() = None;
         });
         worker.set_onmessage(Some(reclaim.as_ref().unchecked_ref()));
-        *reclaim_slot.borrow_mut() = Some(reclaim);
+        *reclaim_slot.lock().unwrap() = Some(reclaim);
     }
 }
 
@@ -215,7 +216,7 @@ impl PoolState {
     fn push(&self, worker: Worker) {
         worker.set_onmessage(Some(self.callback.as_ref().unchecked_ref()));
         worker.set_onerror(Some(self.callback.as_ref().unchecked_ref()));
-        let mut workers = self.workers.borrow_mut();
+        let mut workers = self.workers.lock().unwrap();
         for prev in workers.iter() {
             let prev: &JsValue = prev;
             let worker: &JsValue = &worker;
