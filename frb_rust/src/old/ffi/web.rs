@@ -15,30 +15,6 @@ pub use wasm_bindgen::prelude::*;
 pub use wasm_bindgen::JsCast;
 use web_sys::BroadcastChannel;
 
-#[derive(Clone)]
-pub struct Channel {
-    port: MessagePort,
-}
-
-impl Channel {
-    pub fn new(port: MessagePort) -> Self {
-        Self { port }
-    }
-    pub fn post(&self, msg: impl IntoDart) -> bool {
-        self.port
-            .post_message(&msg.into_dart())
-            .map_err(|err| {
-                crate::console_error!("post: {:?}", err);
-            })
-            .is_ok()
-    }
-    pub(crate) fn broadcast_name(&self) -> Option<String> {
-        self.port
-            .dyn_ref::<BroadcastChannel>()
-            .map(|channel| channel.name())
-    }
-}
-
 #[wasm_bindgen]
 extern "C" {
     #[wasm_bindgen(js_namespace = console, js_name = "error")]

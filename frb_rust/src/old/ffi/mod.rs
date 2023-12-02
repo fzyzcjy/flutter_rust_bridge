@@ -17,9 +17,6 @@ pub mod io;
 #[cfg(not(wasm))]
 pub use io::*;
 
-#[cfg(not(wasm))]
-pub type Channel = allo_isolate::Isolate;
-
 use crate::DartSafe;
 
 /// see [uuid::Bytes](https://docs.rs/uuid/1.1.2/uuid/type.Bytes.html)
