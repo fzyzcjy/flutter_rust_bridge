@@ -2,56 +2,7 @@
 
 pub use crate::ffi::*;
 pub use crate::into_into_dart::IntoIntoDart;
-/// The representation of a Dart object outside of the Dart heap.
-///
-/// Its implementation lies with the Dart language and therefore should not be
-/// depended on to be stable.
 use std::marker::PhantomData;
-
-/// A wrapper around a Dart [`Isolate`].
-#[derive(Clone)]
-pub struct Rust2Dart {
-    pub(crate) channel: Channel,
-}
-
-// TODO rename to "Rust2Dart Sender"?
-// TODO this signature looks reasonable?
-// api signatures is similar to Flutter Android's callback https://api.flutter.dev/javadoc/io/flutter/plugin/common/MethodChannel.Result.html
-impl Rust2Dart {
-    /// Create a new wrapper from a raw port.
-    pub fn new(port: MessagePort) -> Self {
-        Rust2Dart {
-            channel: Channel::new(port),
-        }
-    }
-
-    // TODO should we decouple this: (1) assemble real data (2) post the data
-    /// Send a success message back to the specified port.
-    pub fn success(&self, result: impl IntoDart) -> bool {
-        self.channel.post(vec![
-            Rust2DartAction::Success.into_dart(),
-            result.into_dart(),
-        ])
-    }
-
-    /// Send a panic back to the specified port.
-    pub fn panic(&self, e: impl IntoDart) -> bool {
-        self.channel
-            .post(vec![Rust2DartAction::Panic.into_dart(), e.into_dart()])
-    }
-
-    /// Send a detailed error back to the specified port.
-    pub fn error(&self, e: impl IntoDart) -> bool {
-        self.channel
-            .post(vec![Rust2DartAction::Error.into_dart(), e.into_dart()])
-    }
-
-    /// Close the stream and ignore further messages.
-    pub fn close_stream(&self) -> bool {
-        self.channel
-            .post(vec![Rust2DartAction::CloseStream.into_dart()])
-    }
-}
 
 /// A handle to a [`web_sys::BroadcastChannel`].
 #[derive(Clone)]
