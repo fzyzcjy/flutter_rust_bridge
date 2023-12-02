@@ -13,6 +13,7 @@ mod io;
 #[cfg(not(wasm))]
 pub use io::*;
 
+/// Arbitrary Dart object, whose type can be even non-encodable and non-transferable.
 #[derive(Debug)]
 pub struct DartOpaque {
     /// Dart object
