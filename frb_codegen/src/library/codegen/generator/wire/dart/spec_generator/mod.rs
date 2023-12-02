@@ -1,22 +1,22 @@
 use crate::codegen::dumper::Dumper;
-use crate::codegen::generator::wire::dart::spec_generator::api2wire::WireDartOutputSpecApi2wire;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
+use crate::codegen::generator::wire::dart::spec_generator::dart2rust::WireDartOutputSpecApi2wire;
 use crate::codegen::generator::wire::dart::spec_generator::dump::generate_dump_info;
 use crate::codegen::generator::wire::dart::spec_generator::misc::WireDartOutputSpecMisc;
-use crate::codegen::generator::wire::dart::spec_generator::wire2api::WireDartOutputSpecWire2api;
+use crate::codegen::generator::wire::dart::spec_generator::rust2dart::WireDartOutputSpecWire2api;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen::ConfigDumpContent::GeneratorInfo;
 use serde::Serialize;
 use std::path::PathBuf;
 
-pub mod api2wire;
 pub(crate) mod base;
+pub mod dart2rust;
 mod dump;
 mod function;
 pub(crate) mod misc;
 pub(crate) mod output_code;
-pub mod wire2api;
+pub mod rust2dart;
 pub(super) mod wire_class;
 
 #[derive(Clone, Serialize)]
@@ -49,7 +49,7 @@ pub(crate) fn generate(
             api_dart_actual_output_paths,
             rust_extern_funcs,
         )?,
-        wire2api: wire2api::generate(context, &cache),
-        api2wire: api2wire::generate(context, &cache),
+        wire2api: rust2dart::generate(context, &cache),
+        api2wire: dart2rust::generate(context, &cache),
     })
 }
