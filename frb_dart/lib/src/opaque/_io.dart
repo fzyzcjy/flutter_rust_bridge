@@ -6,7 +6,7 @@ import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 typedef OpaqueTypeFinalizer = ffi.NativeFinalizer;
 
 /// {@macro flutter_rust_bridge.internal}
-class FrbOpaqueBase implements ffi.Finalizable {
+class RustOpaqueBase implements ffi.Finalizable {
   /// {@macro flutter_rust_bridge.internal}
   static PlatformPointer initPtr(int ptr) => ffi.Pointer.fromAddress(ptr);
 
@@ -17,7 +17,7 @@ class FrbOpaqueBase implements ffi.Finalizable {
   static bool isStalePtr(PlatformPointer ptr) => ptr.address == 0;
 
   /// {@macro flutter_rust_bridge.internal}
-  static void finalizerAttach(FrbOpaqueBase opaque, PlatformPointer ptr,
+  static void finalizerAttach(RustOpaqueBase opaque, PlatformPointer ptr,
           int size, OpaqueTypeFinalizer finalizer) =>
       finalizer.attach(opaque, ptr, detach: opaque, externalSize: size);
 }

@@ -6,16 +6,16 @@ import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:flutter_rust_bridge/src/utils/port_generator.dart';
 import 'package:meta/meta.dart';
 
-/// The type of [FrbOpaque] drop function
+/// The type of [RustOpaque] drop function
 typedef OpaqueDropFnType = void Function(PlatformPointer);
 
-/// The type of [FrbOpaque] share function
+/// The type of [RustOpaque] share function
 typedef OpaqueShareFnType = PlatformPointer Function(PlatformPointer);
 
 /// An opaque pointer to a native C or Rust type.
 /// Recipients of this type should call [dispose] at least once during runtime.
 /// If passed to a native function after being [dispose]d, an exception will be thrown.
-abstract class FrbOpaque extends FrbOpaqueBase {
+abstract class RustOpaque extends RustOpaqueBase {
   /// Pointer to this opaque Rust type.
   PlatformPointer _ptr;
 
@@ -40,9 +40,9 @@ abstract class FrbOpaque extends FrbOpaqueBase {
 
   /// This constructor should never be called manually.
   @internal
-  FrbOpaque.unsafe(int ptr, int size) : _ptr = FrbOpaqueBase.initPtr(ptr) {
+  RustOpaque.unsafe(int ptr, int size) : _ptr = RustOpaqueBase.initPtr(ptr) {
     if (ptr != 0) {
-      FrbOpaqueBase.finalizerAttach(this, _ptr, size, staticFinalizer);
+      RustOpaqueBase.finalizerAttach(this, _ptr, size, staticFinalizer);
     }
   }
 
@@ -57,7 +57,7 @@ abstract class FrbOpaque extends FrbOpaqueBase {
   void dispose() {
     if (!isStale()) {
       var ptr = _ptr;
-      _ptr = FrbOpaqueBase.nullPtr();
+      _ptr = RustOpaqueBase.nullPtr();
 
       staticFinalizer.detach(this);
       dropFn(ptr);
@@ -77,14 +77,14 @@ abstract class FrbOpaque extends FrbOpaqueBase {
       }
       return ptr;
     } else {
-      return FrbOpaqueBase.nullPtr();
+      return RustOpaqueBase.nullPtr();
     }
   }
 
   /// Checks whether [dispose] has been called at any point during the lifetime
   /// of this pointer. This does not guarantee that the backing memory has
   /// actually been reclaimed.
-  bool isStale() => FrbOpaqueBase.isStalePtr(_ptr);
+  bool isStale() => RustOpaqueBase.isStalePtr(_ptr);
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
