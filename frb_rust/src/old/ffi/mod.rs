@@ -8,21 +8,6 @@ use log::warn;
 use std::{mem, ops, sync::Arc, thread::ThreadId};
 
 #[cfg(wasm)]
-pub type OpaqueMessagePort = wasm_bindgen::JsValue;
-#[cfg(not(wasm))]
-pub type OpaqueMessagePort = i64;
-
-#[cfg(wasm)]
-pub type DartWrapObject = wasm_bindgen::JsValue;
-#[cfg(not(wasm))]
-pub type DartWrapObject = DartHandleWrap;
-
-#[cfg(wasm)]
-pub type DartObject = wasm_bindgen::JsValue;
-#[cfg(not(wasm))]
-pub type DartObject = Dart_PersistentHandle;
-
-#[cfg(wasm)]
 pub mod web;
 #[cfg(wasm)]
 pub use web::*;

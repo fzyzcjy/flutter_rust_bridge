@@ -1,6 +1,10 @@
 use dart_sys::Dart_PersistentHandle;
 use crate::platform_types::MessagePort;
 
+pub type OpaqueMessagePort = i64;
+pub type DartWrapObject = DartHandleWrap;
+pub type DartObject = Dart_PersistentHandle;
+
 #[derive(Debug)]
 pub struct DartOpaqueBase {
     inner: DartHandleWrap,

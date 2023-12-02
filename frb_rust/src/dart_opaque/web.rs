@@ -1,3 +1,7 @@
+pub type OpaqueMessagePort = wasm_bindgen::JsValue;
+pub type DartWrapObject = wasm_bindgen::JsValue;
+pub type DartObject = wasm_bindgen::JsValue;
+
 #[derive(Debug)]
 pub struct DartOpaqueBase {
     inner: Box<JsValue>,
