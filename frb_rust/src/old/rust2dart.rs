@@ -23,6 +23,7 @@ impl Rust2Dart {
         }
     }
 
+    // TODO should we decouple this: (1) assemble real data (2) post the data
     /// Send a success message back to the specified port.
     pub fn success(&self, result: impl IntoDart) -> bool {
         self.channel.post(vec![
