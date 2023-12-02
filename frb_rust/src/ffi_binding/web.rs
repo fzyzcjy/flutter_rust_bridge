@@ -17,3 +17,9 @@ pub unsafe fn get_dart_object(ptr: usize) -> JsValue {
 pub unsafe fn drop_dart_object(ptr: usize) {
     drop(box_from_leak_ptr::<JsValue>(ptr as _));
 }
+
+#[cfg(feature = "wasm-start")]
+#[wasm_bindgen(start)]
+pub fn wasm_start_callback() {
+    console_error_panic_hook::set_once();
+}
