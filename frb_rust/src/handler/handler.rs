@@ -14,38 +14,38 @@ pub trait Handler {
     ///
     /// If a Rust function is marked `sync`, it must be called with
     /// [`wrap_sync`](Handler::wrap_sync) instead.
-    fn wrap<PrepareFn, TaskFn, TaskRet, D, Er>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
+    fn wrap<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
     where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
-        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet, Er> + Send + UnwindSafe + 'static,
-        TaskRet: IntoIntoDart<D>,
-        D: IntoDart,
+        TaskFn: FnOnce(TaskCallback) -> Result<TaskRetDirect, Er> + Send + UnwindSafe + 'static,
+        TaskRetDirect: IntoIntoDart<TaskRetData>,
+        TaskRetData: IntoDart,
         Er: IntoDart + 'static;
 
     /// Same as [`wrap`][Handler::wrap], but the Rust function will be called synchronously and
     /// need not implement [Send].
-    fn wrap_sync<SyncTaskFn, TaskRet, D, Er>(
+    fn wrap_sync<SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
         &self,
         wrap_info: WrapInfo,
         sync_task: SyncTaskFn,
     ) -> WireSyncReturn
     where
-        SyncTaskFn: FnOnce() -> Result<TaskRet, Er> + UnwindSafe,
-        TaskRet: IntoIntoDart<D>,
-        D: IntoDart,
+        SyncTaskFn: FnOnce() -> Result<TaskRetDirect, Er> + UnwindSafe,
+        TaskRetDirect: IntoIntoDart<TaskRetData>,
+        TaskRetData: IntoDart,
         Er: IntoDart + 'static;
 
     #[cfg(feature = "rust-async")]
-    fn wrap_async<PrepareFn, TaskFn, TaskRet, TaskRetFut, D, Er>(
+    fn wrap_async<PrepareFn, TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(
         &self,
         wrap_info: WrapInfo,
         prepare: PrepareFn,
     ) where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce(TaskCallback) -> TaskRetFut + Send + UnwindSafe + 'static,
-        TaskRet: IntoIntoDart<D>,
-        TaskRetFut: Future<Output = Result<TaskRet, Er>> + TaskRetFutTrait + UnwindSafe,
-        D: IntoDart,
+        TaskRetFut: Future<Output = Result<TaskRetDirect, Er>> + TaskRetFutTrait + UnwindSafe,
+        TaskRetDirect: IntoIntoDart<TaskRetData>,
+        TaskRetData: IntoDart,
         Er: IntoDart + 'static;
 }
 

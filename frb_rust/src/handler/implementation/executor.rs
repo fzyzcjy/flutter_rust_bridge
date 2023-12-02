@@ -20,11 +20,11 @@ impl<EH: ErrorHandler> ThreadPoolExecutor<EH> {
 }
 
 impl<EH: ErrorHandler + Sync> Executor for ThreadPoolExecutor<EH> {
-    fn execute<TaskFn, TaskRet, D, Er>(&self, wrap_info: WrapInfo, task: TaskFn)
+    fn execute<TaskFn, TaskRetDirect, TaskRetData, Er>(&self, wrap_info: WrapInfo, task: TaskFn)
     where
-        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet, Er> + Send + UnwindSafe + 'static,
-        TaskRet: IntoIntoDart<D>,
-        D: IntoDart,
+        TaskFn: FnOnce(TaskCallback) -> Result<TaskRetDirect, Er> + Send + UnwindSafe + 'static,
+        TaskRetDirect: IntoIntoDart<TaskRetData>,
+        TaskRetData: IntoDart,
         Er: IntoDart + 'static,
     {
         let eh = self.error_handler;
@@ -68,27 +68,27 @@ impl<EH: ErrorHandler + Sync> Executor for ThreadPoolExecutor<EH> {
         });
     }
 
-    fn execute_sync<SyncTaskFn, TaskRet, D, Er>(
+    fn execute_sync<SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
         &self,
         _wrap_info: WrapInfo,
         sync_task: SyncTaskFn,
-    ) -> Result<TaskRet, Er>
+    ) -> Result<TaskRetDirect, Er>
     where
-        SyncTaskFn: FnOnce() -> Result<TaskRet, Er> + UnwindSafe,
-        TaskRet: IntoIntoDart<D>,
-        D: IntoDart,
+        SyncTaskFn: FnOnce() -> Result<TaskRetDirect, Er> + UnwindSafe,
+        TaskRetDirect: IntoIntoDart<TaskRetData>,
+        TaskRetData: IntoDart,
         Er: IntoDart,
     {
         sync_task()
     }
 
     #[cfg(feature = "rust-async")]
-    fn execute_async<TaskFn, TaskRet, TaskRetFut, D, Er>(&self, wrap_info: WrapInfo, task: TaskFn)
+    fn execute_async<TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(&self, wrap_info: WrapInfo, task: TaskFn)
     where
         TaskFn: FnOnce(TaskCallback) -> TaskRetFut + Send + UnwindSafe + 'static,
-        TaskRet: IntoIntoDart<D>,
-        TaskRetFut: Future<Output = Result<TaskRet, Er>> + TaskRetFutTrait + UnwindSafe,
-        D: IntoDart,
+        TaskRetFut: Future<Output = Result<TaskRetDirect, Er>> + TaskRetFutTrait + UnwindSafe,
+        TaskRetDirect: IntoIntoDart<TaskRetData>,
+        TaskRetData: IntoDart,
         Er: IntoDart + 'static,
     {
         // TODO merge with `execute` case later

@@ -9,7 +9,7 @@ use crate::handler::implementation::executor::ThreadPoolExecutor;
 
 /// The default handler used by the generated code.
 pub type DefaultHandler =
-    SimpleHandler<ThreadPoolExecutor<ReportDartErrorHandler>, ReportDartErrorHandler>;
+SimpleHandler<ThreadPoolExecutor<ReportDartErrorHandler>, ReportDartErrorHandler>;
 
 impl Default for DefaultHandler {
     fn default() -> Self {
@@ -38,13 +38,13 @@ impl<E: Executor, H: ErrorHandler> SimpleHandler<E, H> {
 
 impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
     // TODO rename all these series (e.g. wrap -> wrap_normal)
-    fn wrap<PrepareFn, TaskFn, TaskRet, D, Er>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
-    where
-        PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
-        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet, Er> + Send + UnwindSafe + 'static,
-        TaskRet: IntoIntoDart<D>,
-        D: IntoDart,
-        Er: IntoDart + 'static,
+    fn wrap<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
+        where
+            PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
+            TaskFn: FnOnce(TaskCallback) -> Result<TaskRetDirect, Er> + Send + UnwindSafe + 'static,
+            TaskRetDirect: IntoIntoDart<TaskRetData>,
+            TaskRetData: IntoDart,
+            Er: IntoDart + 'static
     {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
         // Why do this: As nomicon says, unwind across languages is undefined behavior (UB).
@@ -66,16 +66,16 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         });
     }
 
-    fn wrap_sync<SyncTaskFn, TaskRet, D, Er>(
+    fn wrap_sync<SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
         &self,
         wrap_info: WrapInfo,
         sync_task: SyncTaskFn,
     ) -> WireSyncReturn
-    where
-        TaskRet: IntoIntoDart<D>,
-        D: IntoDart,
-        SyncTaskFn: FnOnce() -> Result<TaskRet, Er> + UnwindSafe,
-        Er: IntoDart + 'static,
+        where
+            SyncTaskFn: FnOnce() -> Result<TaskRetDirect, Er> + UnwindSafe,
+            TaskRetDirect: IntoIntoDart<TaskRetData>,
+            TaskRetData: IntoDart,
+            Er: IntoDart + 'static
     {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
         // For reason, see comments in [wrap]
@@ -93,21 +93,21 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
             catch_unwind_result
                 .unwrap_or_else(|error| self.error_handler.handle_error_sync(Error::Panic(error)))
         })
-        .unwrap_or_else(|_| wire_sync_from_data(None::<()>, Rust2DartAction::Panic))
+            .unwrap_or_else(|_| wire_sync_from_data(None::<()>, Rust2DartAction::Panic))
     }
 
     #[cfg(feature = "rust-async")]
-    fn wrap_async<PrepareFn, TaskFn, TaskRet, TaskRetFut, D, Er>(
+    fn wrap_async<PrepareFn, TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(
         &self,
         wrap_info: WrapInfo,
         prepare: PrepareFn,
     ) where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce(TaskCallback) -> TaskRetFut + Send + UnwindSafe + 'static,
-        TaskRet: IntoIntoDart<D>,
-        TaskRetFut: Future<Output = Result<TaskRet, Er>> + TaskRetFutTrait + UnwindSafe,
-        D: IntoDart,
-        Er: IntoDart + 'static,
+        TaskRetFut: Future<Output = Result<TaskRetDirect, Er>> + TaskRetFutTrait + UnwindSafe,
+        TaskRetDirect: IntoIntoDart<TaskRetData>,
+        TaskRetData: IntoDart,
+        Er: IntoDart + 'static
     {
         // TODO temporary copy-and-paste, should merge with case above later
         let _ = panic::catch_unwind(move || {
