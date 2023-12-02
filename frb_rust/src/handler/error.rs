@@ -1,5 +1,5 @@
 use std::any::Any;
-use allo_isolate::IntoDart;
+use crate::generalized_isolate::IntoDart;
 use crate::misc::box_into_dart::BoxIntoDart;
 use crate::platform_types::DartAbi;
 

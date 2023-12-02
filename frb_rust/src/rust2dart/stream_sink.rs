@@ -1,5 +1,5 @@
 use std::marker::PhantomData;
-use allo_isolate::IntoDart;
+use crate::generalized_isolate::IntoDart;
 use crate::misc::into_into_dart::IntoIntoDart;
 
 /// A sink to send asynchronous data back to Dart.

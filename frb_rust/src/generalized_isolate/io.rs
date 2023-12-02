@@ -1,0 +1,1 @@
+pub use allo_isolate::IntoDart;

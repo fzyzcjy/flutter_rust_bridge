@@ -1,4 +1,4 @@
-use allo_isolate::IntoDart;
+use crate::generalized_isolate::IntoDart;
 use crate::platform_types::DartAbi;
 
 // IntoDart consumes `self` so we need a trait for the `Box` case

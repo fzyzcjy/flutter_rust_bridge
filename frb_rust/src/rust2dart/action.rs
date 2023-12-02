@@ -1,4 +1,4 @@
-use allo_isolate::IntoDart;
+use crate::generalized_isolate::IntoDart;
 use crate::handler::error_handler::Error;
 use crate::platform_types::DartAbi;
 

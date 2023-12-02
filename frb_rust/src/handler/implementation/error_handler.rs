@@ -1,4 +1,4 @@
-use allo_isolate::IntoDart;
+use crate::generalized_isolate::IntoDart;
 use crate::handler::error::Error;
 use crate::handler::error_handler::ErrorHandler;
 use crate::platform_types::{MessagePort, WireSyncReturn};

@@ -1,4 +1,4 @@
-use allo_isolate::IntoDart;
+use crate::generalized_isolate::IntoDart;
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::rust2dart::stream_sink::StreamSink;
 

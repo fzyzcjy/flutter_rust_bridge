@@ -1,6 +1,6 @@
 use std::future::Future;
 use std::panic::{RefUnwindSafe, UnwindSafe};
-use allo_isolate::IntoDart;
+use crate::generalized_isolate::IntoDart;
 use crate::handler::handler::{TaskContext, TaskRetFutTrait, TaskInfo};
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;

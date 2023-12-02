@@ -1,4 +1,4 @@
-use allo_isolate::IntoDart;
+use crate::generalized_isolate::IntoDart;
 use crate::platform_types::{DartAbi, WireSyncReturn};
 use crate::rust2dart::action::Rust2DartAction;
 
