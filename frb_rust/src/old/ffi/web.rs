@@ -15,12 +15,6 @@ pub use wasm_bindgen::prelude::*;
 pub use wasm_bindgen::JsCast;
 use web_sys::BroadcastChannel;
 
-#[wasm_bindgen]
-extern "C" {
-    #[wasm_bindgen(js_namespace = console, js_name = "error")]
-    pub fn error(msg: &str);
-}
-
 #[derive(Debug)]
 pub struct ZeroCopyBuffer<T>(pub T);
 

@@ -4,3 +4,5 @@ mod rust_opaque;
 #[cfg(target_family = "wasm")]
 pub(crate) mod web_transfer;
 pub(crate) mod manual_impl;
+#[cfg(target_family = "wasm")]
+mod web_utils;

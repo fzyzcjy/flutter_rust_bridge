@@ -62,12 +62,3 @@ macro_rules! spawn {
     }};
 }
 
-#[macro_export]
-macro_rules! console_error {
-    ($lit:literal) => {
-        $crate::error($lit)
-    };
-    ($($tt:tt)*) => {
-        $crate::error(&format!($($tt)*))
-    };
-}
