@@ -43,7 +43,9 @@ impl Wire2Api<flutter_rust_bridge::DartOpaque>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> flutter_rust_bridge::DartOpaque {
-        let arr = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let arr = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         unsafe { flutter_rust_bridge::DartOpaque::new(arr.get(0), arr.get(1)) }
     }
 }
@@ -54,7 +56,7 @@ impl Wire2Api<String> for String {
 }
 impl Wire2Api<Vec<String>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn wire2api(self) -> Vec<String> {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -82,7 +84,9 @@ impl Wire2Api<crate::api::misc_example::ATwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::misc_example::ATwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -98,7 +102,9 @@ impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_rust_async::ATwinRust
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::misc_example_twin_rust_async::ATwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -114,7 +120,9 @@ impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_sync::ATwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::misc_example_twin_sync::ATwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -130,7 +138,7 @@ impl Wire2Api<crate::api::misc_example::AbcTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::misc_example::AbcTwinNormal {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => crate::api::misc_example::AbcTwinNormal::A(self_.get(1).wire2api()),
             1 => crate::api::misc_example::AbcTwinNormal::B(self_.get(1).wire2api()),
@@ -144,7 +152,7 @@ impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRu
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync::A(
                 self_.get(1).wire2api(),
@@ -168,7 +176,7 @@ impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSync {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSync::A(
                 self_.get(1).wire2api(),
@@ -190,7 +198,9 @@ impl Wire2Api<crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnv>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnv {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -206,7 +216,9 @@ impl Wire2Api<crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnvVar>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnvVar {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -223,7 +235,9 @@ impl Wire2Api<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             5,
@@ -243,7 +257,9 @@ impl Wire2Api<crate::api::optional::AttributeTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::optional::AttributeTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -262,7 +278,9 @@ impl Wire2Api<crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwin
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -279,7 +297,9 @@ impl Wire2Api<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -296,7 +316,9 @@ impl Wire2Api<crate::api::misc_example::BTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::misc_example::BTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -312,7 +334,9 @@ impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_rust_async::BTwinRust
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::misc_example_twin_rust_async::BTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -328,7 +352,9 @@ impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_sync::BTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::misc_example_twin_sync::BTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -344,7 +370,9 @@ impl Wire2Api<crate::api::array::BlobTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::array::BlobTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -358,7 +386,9 @@ impl Wire2Api<crate::api::pseudo_manual::array_twin_rust_async::BlobTwinRustAsyn
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::array_twin_rust_async::BlobTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -372,7 +402,9 @@ impl Wire2Api<crate::api::pseudo_manual::array_twin_sync::BlobTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::array_twin_sync::BlobTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -391,7 +423,9 @@ impl Wire2Api<crate::api::misc_example::CTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::misc_example::CTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -407,7 +441,9 @@ impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_rust_async::CTwinRust
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::misc_example_twin_rust_async::CTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -423,7 +459,9 @@ impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_sync::CTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::misc_example_twin_sync::CTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -439,7 +477,9 @@ impl Wire2Api<crate::api::method::ConcatenateWithTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::method::ConcatenateWithTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -457,7 +497,9 @@ impl Wire2Api<crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWith
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -473,7 +515,9 @@ impl Wire2Api<crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSy
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -489,7 +533,7 @@ impl Wire2Api<crate::api::exception::CustomNestedErrorInnerTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::exception::CustomNestedErrorInnerTwinNormal {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => crate::api::exception::CustomNestedErrorInnerTwinNormal::Three(
                 self_.get(1).wire2api(),
@@ -510,7 +554,7 @@ impl
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorInnerTwinRustAsync
     {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
                     0 => { crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorInnerTwinRustAsync::Three( self_.get(1).wire2api()) },
 1 => { crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorInnerTwinRustAsync::Four( self_.get(1).wire2api()) },
@@ -524,7 +568,7 @@ impl Wire2Api<crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorI
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
                     0 => { crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync::Three( self_.get(1).wire2api()) },
 1 => { crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync::Four( self_.get(1).wire2api()) },
@@ -536,7 +580,7 @@ impl Wire2Api<crate::api::exception::CustomNestedErrorOuterTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::exception::CustomNestedErrorOuterTwinNormal {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => crate::api::exception::CustomNestedErrorOuterTwinNormal::One(
                 self_.get(1).wire2api(),
@@ -557,7 +601,7 @@ impl
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorOuterTwinRustAsync
     {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
                     0 => { crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorOuterTwinRustAsync::One( self_.get(1).wire2api()) },
 1 => { crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorOuterTwinRustAsync::Two( self_.get(1).wire2api()) },
@@ -571,7 +615,7 @@ impl Wire2Api<crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorO
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => {
                 crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync::One(
@@ -591,7 +635,9 @@ impl Wire2Api<crate::api::exception::CustomStructErrorTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::exception::CustomStructErrorTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -609,7 +655,9 @@ impl Wire2Api<crate::api::pseudo_manual::exception_twin_rust_async::CustomStruct
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomStructErrorTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -625,7 +673,9 @@ impl Wire2Api<crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorT
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -641,7 +691,9 @@ impl Wire2Api<crate::api::exception::CustomStructTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::exception::CustomStructTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -659,7 +711,9 @@ impl Wire2Api<crate::api::pseudo_manual::exception_twin_rust_async::CustomStruct
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::CustomStructTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -675,7 +729,9 @@ impl Wire2Api<crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinSy
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -691,7 +747,9 @@ impl Wire2Api<crate::api::attribute::CustomizedTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::attribute::CustomizedTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -710,7 +768,9 @@ impl Wire2Api<crate::api::pseudo_manual::attribute_twin_rust_async::CustomizedTw
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::attribute_twin_rust_async::CustomizedTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -727,7 +787,9 @@ impl Wire2Api<crate::api::pseudo_manual::attribute_twin_sync::CustomizedTwinSync
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::attribute_twin_sync::CustomizedTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -744,7 +806,9 @@ impl Wire2Api<crate::api::dart_opaque::DartOpaqueNestedTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::dart_opaque::DartOpaqueNestedTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -763,7 +827,9 @@ impl Wire2Api<crate::api::pseudo_manual::dart_opaque_twin_rust_async::DartOpaque
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::dart_opaque_twin_rust_async::DartOpaqueNestedTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -782,7 +848,9 @@ impl Wire2Api<crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueNested
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueNestedTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -799,7 +867,7 @@ impl Wire2Api<crate::api::enumeration::DistanceTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::enumeration::DistanceTwinNormal {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => crate::api::enumeration::DistanceTwinNormal::Unknown,
             1 => crate::api::enumeration::DistanceTwinNormal::Map(self_.get(1).wire2api()),
@@ -813,7 +881,7 @@ impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTw
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
                     0 => crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync::Unknown,
 1 => { crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync::Map( self_.get(1).wire2api()) },
@@ -825,7 +893,7 @@ impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwinSync
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwinSync {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwinSync::Unknown,
             1 => crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwinSync::Map(
@@ -839,7 +907,9 @@ impl Wire2Api<crate::api::misc_type::EmptyTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::misc_type::EmptyTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             0,
@@ -853,7 +923,9 @@ impl Wire2Api<crate::api::pseudo_manual::misc_type_twin_rust_async::EmptyTwinRus
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::misc_type_twin_rust_async::EmptyTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             0,
@@ -867,7 +939,9 @@ impl Wire2Api<crate::api::pseudo_manual::misc_type_twin_sync::EmptyTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::misc_type_twin_sync::EmptyTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             0,
@@ -881,7 +955,7 @@ impl Wire2Api<crate::api::dart_opaque::EnumDartOpaqueTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::dart_opaque::EnumDartOpaqueTwinNormal {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => crate::api::dart_opaque::EnumDartOpaqueTwinNormal::Primitive(
                 self_.get(1).wire2api(),
@@ -897,7 +971,7 @@ impl Wire2Api<crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartOp
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartOpaqueTwinRustAsync {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
                     0 => { crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartOpaqueTwinRustAsync::Primitive( self_.get(1).wire2api()) },
 1 => { crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartOpaqueTwinRustAsync::Opaque( self_.get(1).wire2api()) },
@@ -909,7 +983,7 @@ impl Wire2Api<crate::api::pseudo_manual::dart_opaque_twin_sync::EnumDartOpaqueTw
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::dart_opaque_twin_sync::EnumDartOpaqueTwinSync {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => {
                 crate::api::pseudo_manual::dart_opaque_twin_sync::EnumDartOpaqueTwinSync::Primitive(
@@ -927,7 +1001,7 @@ impl Wire2Api<crate::api::rust_opaque::EnumOpaqueTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::rust_opaque::EnumOpaqueTwinNormal {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => crate::api::rust_opaque::EnumOpaqueTwinNormal::Struct(self_.get(1).wire2api()),
             1 => crate::api::rust_opaque::EnumOpaqueTwinNormal::Primitive(self_.get(1).wire2api()),
@@ -944,7 +1018,7 @@ impl Wire2Api<crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaque
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
                     0 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Struct( self_.get(1).wire2api()) },
 1 => { crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Primitive( self_.get(1).wire2api()) },
@@ -959,7 +1033,7 @@ impl Wire2Api<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSy
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync::Struct(
                 self_.get(1).wire2api(),
@@ -984,7 +1058,7 @@ impl Wire2Api<crate::api::enumeration::EnumWithItemMixedTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::enumeration::EnumWithItemMixedTwinNormal {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => crate::api::enumeration::EnumWithItemMixedTwinNormal::A,
             1 => crate::api::enumeration::EnumWithItemMixedTwinNormal::B(self_.get(1).wire2api()),
@@ -1003,7 +1077,7 @@ impl
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRustAsync
     {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
                     0 => crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRustAsync::A,
 1 => { crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRustAsync::B( self_.get(1).wire2api()) },
@@ -1018,7 +1092,7 @@ impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixe
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync::A,
             1 => crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync::B(
@@ -1035,7 +1109,7 @@ impl Wire2Api<crate::api::enumeration::EnumWithItemStructTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::enumeration::EnumWithItemStructTwinNormal {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => crate::api::enumeration::EnumWithItemStructTwinNormal::A {
                 a_field: self_.get(1).wire2api(),
@@ -1056,7 +1130,7 @@ impl
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemStructTwinRustAsync
     {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
                     0 => { crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemStructTwinRustAsync::A{a_field:  self_.get(1).wire2api()} },
 1 => { crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemStructTwinRustAsync::B{b_field:  self_.get(1).wire2api()} },
@@ -1070,7 +1144,7 @@ impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStru
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync::A {
                 a_field: self_.get(1).wire2api(),
@@ -1086,7 +1160,7 @@ impl Wire2Api<crate::api::enumeration::EnumWithItemTupleTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::enumeration::EnumWithItemTupleTwinNormal {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => crate::api::enumeration::EnumWithItemTupleTwinNormal::A(self_.get(1).wire2api()),
             1 => crate::api::enumeration::EnumWithItemTupleTwinNormal::B(self_.get(1).wire2api()),
@@ -1102,7 +1176,7 @@ impl
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync
     {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
                     0 => { crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync::A( self_.get(1).wire2api()) },
 1 => { crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync::B( self_.get(1).wire2api()) },
@@ -1116,7 +1190,7 @@ impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupl
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync::A(
                 self_.get(1).wire2api(),
@@ -1132,7 +1206,9 @@ impl Wire2Api<crate::api::event_listener::EventTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::event_listener::EventTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -1151,7 +1227,9 @@ impl Wire2Api<crate::api::pseudo_manual::event_listener_twin_rust_async::EventTw
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -1168,7 +1246,9 @@ impl Wire2Api<crate::api::pseudo_manual::event_listener_twin_sync::EventTwinSync
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::event_listener_twin_sync::EventTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -1185,7 +1265,9 @@ impl Wire2Api<crate::api::optional::ExoticOptionalsTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::optional::ExoticOptionalsTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             14,
@@ -1216,7 +1298,9 @@ impl Wire2Api<crate::api::pseudo_manual::optional_twin_rust_async::ExoticOptiona
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::optional_twin_rust_async::ExoticOptionalsTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             14,
@@ -1245,7 +1329,9 @@ impl Wire2Api<crate::api::pseudo_manual::optional_twin_sync::ExoticOptionalsTwin
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::optional_twin_sync::ExoticOptionalsTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             14,
@@ -1280,7 +1366,9 @@ impl Wire2Api<crate::api::chrono_type::FeatureChronoTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::chrono_type::FeatureChronoTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             4,
@@ -1301,7 +1389,9 @@ impl Wire2Api<crate::api::pseudo_manual::chrono_type_twin_rust_async::FeatureChr
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::chrono_type_twin_rust_async::FeatureChronoTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             4,
@@ -1320,7 +1410,9 @@ impl Wire2Api<crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChronoTwi
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChronoTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             4,
@@ -1339,7 +1431,9 @@ impl Wire2Api<crate::api::uuid_type::FeatureUuidTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::uuid_type::FeatureUuidTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -1358,7 +1452,9 @@ impl Wire2Api<crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuidT
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuidTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -1375,7 +1471,9 @@ impl Wire2Api<crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSyn
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -1392,7 +1490,9 @@ impl Wire2Api<crate::api::array::FeedIdTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::array::FeedIdTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -1406,7 +1506,9 @@ impl Wire2Api<crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAs
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -1422,7 +1524,9 @@ impl Wire2Api<crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -1442,7 +1546,7 @@ impl Wire2Api<crate::api::enumeration::KitchenSinkTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::enumeration::KitchenSinkTwinNormal {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => crate::api::enumeration::KitchenSinkTwinNormal::Empty,
             1 => crate::api::enumeration::KitchenSinkTwinNormal::Primitives {
@@ -1470,7 +1574,7 @@ impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSin
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
                     0 => crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync::Empty,
 1 => { crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync::Primitives{int32:  self_.get(1).wire2api(),float64:  self_.get(2).wire2api(),boolean:  self_.get(3).wire2api()} },
@@ -1486,7 +1590,7 @@ impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinS
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync::Empty,
             1 => {
@@ -1518,7 +1622,7 @@ impl Wire2Api<Vec<flutter_rust_bridge::DartOpaque>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> Vec<flutter_rust_bridge::DartOpaque> {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -1531,7 +1635,7 @@ impl Wire2Api<Vec<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types
     fn wire2api(
         self,
     ) -> Vec<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>> {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -1542,7 +1646,7 @@ impl Wire2Api<Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnvVar
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> Vec<crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnvVar> {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -1553,7 +1657,7 @@ impl Wire2Api<Vec<crate::api::optional::AttributeTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> Vec<crate::api::optional::AttributeTwinNormal> {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -1566,7 +1670,7 @@ impl Wire2Api<Vec<crate::api::pseudo_manual::optional_twin_rust_async::Attribute
     fn wire2api(
         self,
     ) -> Vec<crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync> {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -1577,7 +1681,7 @@ impl Wire2Api<Vec<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSy
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> Vec<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync> {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -1586,7 +1690,7 @@ impl Wire2Api<Vec<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSy
 }
 impl Wire2Api<Vec<bool>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn wire2api(self) -> Vec<bool> {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -1597,7 +1701,7 @@ impl Wire2Api<Vec<crate::auxiliary::sample_types::MySize>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> Vec<crate::auxiliary::sample_types::MySize> {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -1608,7 +1712,7 @@ impl Wire2Api<Vec<crate::api::misc_example::MyTreeNodeTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> Vec<crate::api::misc_example::MyTreeNodeTwinNormal> {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -1621,7 +1725,7 @@ impl Wire2Api<Vec<crate::api::pseudo_manual::misc_example_twin_rust_async::MyTre
     fn wire2api(
         self,
     ) -> Vec<crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync> {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -1634,7 +1738,7 @@ impl Wire2Api<Vec<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeT
     fn wire2api(
         self,
     ) -> Vec<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinSync> {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -1643,7 +1747,7 @@ impl Wire2Api<Vec<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeT
 }
 impl Wire2Api<Vec<Option<String>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn wire2api(self) -> Vec<Option<String>> {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -1654,7 +1758,7 @@ impl Wire2Api<Vec<Option<crate::api::optional::AttributeTwinNormal>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> Vec<Option<crate::api::optional::AttributeTwinNormal>> {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -1670,7 +1774,7 @@ impl
         self,
     ) -> Vec<Option<crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync>>
     {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -1683,7 +1787,7 @@ impl Wire2Api<Vec<Option<crate::api::pseudo_manual::optional_twin_sync::Attribut
     fn wire2api(
         self,
     ) -> Vec<Option<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync>> {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -1692,7 +1796,7 @@ impl Wire2Api<Vec<Option<crate::api::pseudo_manual::optional_twin_sync::Attribut
 }
 impl Wire2Api<Vec<Option<i32>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn wire2api(self) -> Vec<Option<i32>> {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -1703,7 +1807,7 @@ impl Wire2Api<Vec<Option<crate::api::misc_example::WeekdaysTwinNormal>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> Vec<Option<crate::api::misc_example::WeekdaysTwinNormal>> {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -1719,7 +1823,7 @@ impl
         self,
     ) -> Vec<Option<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>>
     {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -1732,7 +1836,7 @@ impl Wire2Api<Vec<Option<crate::api::pseudo_manual::misc_example_twin_sync::Week
     fn wire2api(
         self,
     ) -> Vec<Option<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync>> {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -1741,7 +1845,7 @@ impl Wire2Api<Vec<Option<crate::api::pseudo_manual::misc_example_twin_sync::Week
 }
 impl Wire2Api<Vec<Option<Vec<i32>>>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn wire2api(self) -> Vec<Option<Vec<i32>>> {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -1800,7 +1904,7 @@ impl Wire2Api<Vec<u8>> for Box<[u8]> {
 }
 impl Wire2Api<Vec<(String, i32)>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn wire2api(self) -> Vec<(String, i32)> {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -1811,7 +1915,7 @@ impl Wire2Api<Vec<crate::api::array::TestIdTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> Vec<crate::api::array::TestIdTwinNormal> {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -1824,7 +1928,7 @@ impl Wire2Api<Vec<crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRu
     fn wire2api(
         self,
     ) -> Vec<crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync> {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -1835,7 +1939,7 @@ impl Wire2Api<Vec<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> Vec<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync> {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -1846,7 +1950,7 @@ impl Wire2Api<Vec<crate::api::misc_example::WeekdaysTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> Vec<crate::api::misc_example::WeekdaysTwinNormal> {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -1859,7 +1963,7 @@ impl Wire2Api<Vec<crate::api::pseudo_manual::misc_example_twin_rust_async::Weekd
     fn wire2api(
         self,
     ) -> Vec<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync> {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -1870,7 +1974,7 @@ impl Wire2Api<Vec<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwi
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> Vec<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync> {
-        self.dyn_into::<flutter_rust_bridge::JsArray>()
+        self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
             .unwrap()
             .iter()
             .map(Wire2Api::wire2api)
@@ -1881,7 +1985,9 @@ impl Wire2Api<crate::api::inside_macro::MacroStruct>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::inside_macro::MacroStruct {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -1897,7 +2003,7 @@ impl Wire2Api<crate::api::enumeration::MeasureTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::enumeration::MeasureTwinNormal {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => crate::api::enumeration::MeasureTwinNormal::Speed(self_.get(1).wire2api()),
             1 => crate::api::enumeration::MeasureTwinNormal::Distance(self_.get(1).wire2api()),
@@ -1911,7 +2017,7 @@ impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTwi
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTwinRustAsync {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
                     0 => { crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTwinRustAsync::Speed( self_.get(1).wire2api()) },
 1 => { crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTwinRustAsync::Distance( self_.get(1).wire2api()) },
@@ -1923,7 +2029,7 @@ impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwinSync {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwinSync::Speed(
                 self_.get(1).wire2api(),
@@ -1939,7 +2045,9 @@ impl Wire2Api<crate::api::array::MessageIdTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::array::MessageIdTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -1953,7 +2061,9 @@ impl Wire2Api<crate::api::pseudo_manual::array_twin_rust_async::MessageIdTwinRus
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::array_twin_rust_async::MessageIdTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -1969,7 +2079,9 @@ impl Wire2Api<crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -1983,7 +2095,9 @@ impl Wire2Api<crate::api::misc_example::MyNestedStructTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::misc_example::MyNestedStructTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -2002,7 +2116,9 @@ impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_rust_async::MyNestedS
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::MyNestedStructTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -2019,7 +2135,9 @@ impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_sync::MyNestedStructT
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::misc_example_twin_sync::MyNestedStructTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -2036,7 +2154,9 @@ impl Wire2Api<crate::auxiliary::sample_types::MySize>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::auxiliary::sample_types::MySize {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -2053,7 +2173,9 @@ impl Wire2Api<crate::auxiliary::sample_types::MyStruct>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::auxiliary::sample_types::MyStruct {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -2069,7 +2191,9 @@ impl Wire2Api<crate::api::misc_example::MyTreeNodeTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::misc_example::MyTreeNodeTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             4,
@@ -2090,7 +2214,9 @@ impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNod
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             4,
@@ -2109,7 +2235,9 @@ impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinS
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             4,
@@ -2128,7 +2256,9 @@ impl Wire2Api<crate::api::newtype_pattern::NewTypeIntTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::newtype_pattern::NewTypeIntTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -2144,7 +2274,9 @@ impl Wire2Api<crate::api::pseudo_manual::newtype_pattern_twin_rust_async::NewTyp
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::newtype_pattern_twin_rust_async::NewTypeIntTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -2160,7 +2292,9 @@ impl Wire2Api<crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntTw
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -2176,7 +2310,9 @@ impl Wire2Api<crate::api::enumeration::NoteTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::enumeration::NoteTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -2193,7 +2329,9 @@ impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_rust_async::NoteTwinRu
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::enumeration_twin_rust_async::NoteTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -2210,7 +2348,9 @@ impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::NoteTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::enumeration_twin_sync::NoteTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -2227,7 +2367,9 @@ impl Wire2Api<crate::api::pseudo_manual::mirror_twin_sync::Numbers>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::mirror_twin_sync::Numbers {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -2241,7 +2383,9 @@ impl Wire2Api<crate::api::rust_opaque::OpaqueNestedTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::rust_opaque::OpaqueNestedTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -2260,7 +2404,9 @@ impl Wire2Api<crate::api::pseudo_manual::rust_opaque_twin_rust_async::OpaqueNest
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::rust_opaque_twin_rust_async::OpaqueNestedTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -2277,7 +2423,9 @@ impl Wire2Api<crate::api::pseudo_manual::rust_opaque_twin_sync::OpaqueNestedTwin
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::rust_opaque_twin_sync::OpaqueNestedTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -2329,7 +2477,9 @@ impl Wire2Api<crate::api::optional::OptVecsTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::optional::OptVecsTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             4,
@@ -2348,7 +2498,9 @@ impl Wire2Api<crate::api::pseudo_manual::optional_twin_rust_async::OptVecsTwinRu
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::optional_twin_rust_async::OptVecsTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             4,
@@ -2367,7 +2519,9 @@ impl Wire2Api<crate::api::pseudo_manual::optional_twin_sync::OptVecsTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::optional_twin_sync::OptVecsTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             4,
@@ -2384,7 +2538,9 @@ impl Wire2Api<crate::api::pseudo_manual::optional_twin_sync::OptVecsTwinSync>
 }
 impl Wire2Api<(String, i32)> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn wire2api(self) -> (String, i32) {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -2398,7 +2554,9 @@ impl Wire2Api<crate::api::pseudo_manual::mirror_twin_sync::Sequences>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::mirror_twin_sync::Sequences {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -2412,7 +2570,9 @@ impl Wire2Api<crate::api::exception::SomeStructTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::exception::SomeStructTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -2430,7 +2590,9 @@ impl Wire2Api<crate::api::pseudo_manual::exception_twin_rust_async::SomeStructTw
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::exception_twin_rust_async::SomeStructTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -2446,7 +2608,9 @@ impl Wire2Api<crate::api::pseudo_manual::exception_twin_sync::SomeStructTwinSync
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::exception_twin_sync::SomeStructTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -2462,7 +2626,7 @@ impl Wire2Api<crate::api::enumeration::SpeedTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::enumeration::SpeedTwinNormal {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => crate::api::enumeration::SpeedTwinNormal::Unknown,
             1 => crate::api::enumeration::SpeedTwinNormal::GPS(self_.get(1).wire2api()),
@@ -2476,7 +2640,7 @@ impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_rust_async::SpeedTwinR
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::SpeedTwinRustAsync {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => {
                 crate::api::pseudo_manual::enumeration_twin_rust_async::SpeedTwinRustAsync::Unknown
@@ -2492,7 +2656,7 @@ impl Wire2Api<crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSync {
-        let self_ = self.unchecked_into::<flutter_rust_bridge::JsArray>();
+        let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
         match self_.get(0).unchecked_into_f64() as _ {
             0 => crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSync::Unknown,
             1 => crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSync::GPS(
@@ -2506,7 +2670,9 @@ impl Wire2Api<crate::api::comment::StructWithCommentsTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::comment::StructWithCommentsTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -2524,7 +2690,9 @@ impl Wire2Api<crate::api::pseudo_manual::comment_twin_rust_async::StructWithComm
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::comment_twin_rust_async::StructWithCommentsTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -2540,7 +2708,9 @@ impl Wire2Api<crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTw
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -2556,7 +2726,9 @@ impl Wire2Api<crate::api::misc_example::StructWithEnumTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::misc_example::StructWithEnumTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -2575,7 +2747,9 @@ impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_rust_async::StructWit
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::misc_example_twin_rust_async::StructWithEnumTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -2592,7 +2766,9 @@ impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnumT
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnumTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -2609,7 +2785,9 @@ impl Wire2Api<crate::api::structure::StructWithOneFieldTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::structure::StructWithOneFieldTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -2627,7 +2805,9 @@ impl Wire2Api<crate::api::pseudo_manual::structure_twin_rust_async::StructWithOn
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_rust_async::StructWithOneFieldTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -2645,7 +2825,9 @@ impl Wire2Api<crate::api::pseudo_manual::structure_twin_sync::StructWithOneField
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_sync::StructWithOneFieldTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -2661,7 +2843,9 @@ impl Wire2Api<crate::api::structure::StructWithTwoFieldTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::structure::StructWithTwoFieldTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -2680,7 +2864,9 @@ impl Wire2Api<crate::api::pseudo_manual::structure_twin_rust_async::StructWithTw
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_rust_async::StructWithTwoFieldTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -2699,7 +2885,9 @@ impl Wire2Api<crate::api::pseudo_manual::structure_twin_sync::StructWithTwoField
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFieldTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -2716,7 +2904,9 @@ impl Wire2Api<crate::api::structure::StructWithZeroFieldTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::structure::StructWithZeroFieldTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             0,
@@ -2734,7 +2924,9 @@ impl
         self,
     ) -> crate::api::pseudo_manual::structure_twin_rust_async::StructWithZeroFieldTwinRustAsync
     {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             0,
@@ -2750,7 +2942,9 @@ impl Wire2Api<crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFiel
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             0,
@@ -2764,7 +2958,9 @@ impl Wire2Api<crate::api::method::SumWithTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::method::SumWithTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -2780,7 +2976,9 @@ impl Wire2Api<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRust
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -2796,7 +2994,9 @@ impl Wire2Api<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -2812,7 +3012,9 @@ impl Wire2Api<crate::api::array::TestIdTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::array::TestIdTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -2826,7 +3028,9 @@ impl Wire2Api<crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAs
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -2842,7 +3046,9 @@ impl Wire2Api<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -2856,7 +3062,9 @@ impl Wire2Api<crate::api::structure::TupleStructWithOneFieldTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::structure::TupleStructWithOneFieldTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -2875,7 +3083,9 @@ impl
         self,
     ) -> crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithOneFieldTwinRustAsync
     {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -2893,7 +3103,9 @@ impl Wire2Api<crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOne
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -2909,7 +3121,9 @@ impl Wire2Api<crate::api::structure::TupleStructWithTwoFieldTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::structure::TupleStructWithTwoFieldTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -2931,7 +3145,9 @@ impl
         self,
     ) -> crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithTwoFieldTwinRustAsync
     {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -2950,7 +3166,9 @@ impl Wire2Api<crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwo
     fn wire2api(
         self,
     ) -> crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwoFieldTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             2,
@@ -2985,7 +3203,9 @@ impl Wire2Api<crate::api::attribute::UserIdTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::attribute::UserIdTwinNormal {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -3001,7 +3221,9 @@ impl Wire2Api<crate::api::pseudo_manual::attribute_twin_rust_async::UserIdTwinRu
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::attribute_twin_rust_async::UserIdTwinRustAsync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
@@ -3017,7 +3239,9 @@ impl Wire2Api<crate::api::pseudo_manual::attribute_twin_sync::UserIdTwinSync>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> crate::api::pseudo_manual::attribute_twin_sync::UserIdTwinSync {
-        let self_ = self.dyn_into::<flutter_rust_bridge::JsArray>().unwrap();
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
         assert_eq!(
             self_.length(),
             1,
