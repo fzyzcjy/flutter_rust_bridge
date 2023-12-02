@@ -1,3 +1,5 @@
+// TODO do not hardcode a global thread pool
+
 fn get_worker_count() -> usize {
     #[cfg(all(feature = "worker-max", feature = "worker-single"))]
     {
