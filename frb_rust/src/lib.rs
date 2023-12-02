@@ -8,4 +8,4 @@ pub(crate) mod thread_pool;
 
 pub(crate) mod rust_async;
 pub(crate) mod dart_opaque;
-pub(crate) mod rust_opaque;
+pub(crate) mod manual_impl;
