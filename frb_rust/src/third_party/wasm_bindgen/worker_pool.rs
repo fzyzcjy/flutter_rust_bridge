@@ -7,7 +7,7 @@ use crate::web_transfer::transfer_closure::TransferClosure;
 use js_sys::Array;
 use std::cell::RefCell;
 use std::iter::FromIterator;
-use std::sync::Arc;
+use std::rc::Rc;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen::JsCast;
 use web_sys::BlobPropertyBag;
@@ -18,9 +18,7 @@ use web_sys::{Event, Worker};
 
 #[wasm_bindgen]
 pub struct WorkerPool {
-    // Note: Rc->Arc for multi thread currently
-    // (if further optimize to single thread, can revert this)
-    state: Arc<PoolState>,
+    state: Rc<PoolState>,
     script_src: String,
 }
 
@@ -45,7 +43,7 @@ impl WorkerPool {
     pub fn new(initial: usize, script_src: String) -> Result<WorkerPool, JsValue> {
         let pool = WorkerPool {
             script_src,
-            state: Arc::new(PoolState {
+            state: Rc::new(PoolState {
                 workers: RefCell::new(Vec::with_capacity(initial)),
                 callback: Closure::new(|event: Event| {
                     if let Some(event) = event.dyn_ref::<MessageEvent>() {
@@ -163,9 +161,9 @@ impl WorkerPool {
     /// used for all spawned workers to ensure that when the work is finished
     /// the worker is reclaimed back into this pool.
     fn reclaim_on_message(&self, worker: &Worker) {
-        let state = Arc::downgrade(&self.state);
+        let state = Rc::downgrade(&self.state);
         let worker2 = worker.clone();
-        let reclaim_slot = Arc::new(RefCell::new(None));
+        let reclaim_slot = Rc::new(RefCell::new(None));
         let slot2 = reclaim_slot.clone();
         let reclaim = Closure::<dyn FnMut(_)>::new(move |_: MessageEvent| {
             if let Some(state) = state.upgrade() {
