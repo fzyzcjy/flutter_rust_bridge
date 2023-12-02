@@ -20,7 +20,7 @@ pub type DefaultHandler =
     SimpleHandler<SimpleExecutor<ReportDartErrorHandler>, ReportDartErrorHandler>;
 
 impl DefaultHandler {
-    pub fn new_simple(thread_pool: &'static ThreadPool) -> Self {
+    pub fn new_simple(thread_pool: &'static std::thread::LocalKey<ThreadPool>) -> Self {
         Self::new(
             SimpleExecutor::new(ReportDartErrorHandler, thread_pool),
             ReportDartErrorHandler,

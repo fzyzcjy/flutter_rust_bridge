@@ -25,12 +25,12 @@ pub struct SimpleExecutor<EH: ErrorHandler> {
     error_handler: EH,
     // TODO remove `AssertUnwindSafe` after the Rust bug is fixed:
     // https://github.com/rust-lang/rust/issues/118009
-    thread_pool: AssertUnwindSafe<&'static ThreadPool>,
+    thread_pool: AssertUnwindSafe<&'static std::thread::LocalKey<ThreadPool>>,
 }
 
 impl<EH: ErrorHandler> SimpleExecutor<EH> {
     /// Create a new executor backed by a thread pool.
-    pub fn new(error_handler: EH, thread_pool: &'static ThreadPool) -> Self {
+    pub fn new(error_handler: EH, thread_pool: &'static std::thread::LocalKey<ThreadPool>) -> Self {
         SimpleExecutor {
             error_handler,
             thread_pool: AssertUnwindSafe(thread_pool),
@@ -51,7 +51,7 @@ impl<EH: ErrorHandler + Sync> Executor for SimpleExecutor<EH> {
 
         let TaskInfo { port, mode, .. } = task_info;
 
-        self.thread_pool.0.execute(transfer!(|port: Option<MessagePort>| {
+        self.thread_pool.0.with(|thread_pool| thread_pool.execute(transfer!(|port: Option<MessagePort>| {
             let port2 = port.as_ref().cloned();
             let thread_result = panic::catch_unwind(move || {
                 let port2 = port2.expect("(worker) thread");
@@ -85,7 +85,7 @@ impl<EH: ErrorHandler + Sync> Executor for SimpleExecutor<EH> {
             if let Err(error) = thread_result {
                 eh.handle_error(port.expect("(worker) eh"), Error::Panic(error));
             }
-        }));
+        })));
     }
 
     fn execute_sync<SyncTaskFn, TaskRetDirect, TaskRetData, Er>(

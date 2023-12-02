@@ -8246,7 +8246,7 @@ thread_local! {
 
 flutter_rust_bridge::for_generated::lazy_static! {
     pub static ref FLUTTER_RUST_BRIDGE_HANDLER: flutter_rust_bridge::DefaultHandler =
-        flutter_rust_bridge::DefaultHandler::new_simple(THREAD_POOL);
+        flutter_rust_bridge::DefaultHandler::new_simple(&THREAD_POOL);
 }
 
 // Section: impl_wire2api
