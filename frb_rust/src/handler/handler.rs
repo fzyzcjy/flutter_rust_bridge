@@ -3,6 +3,7 @@ use std::panic::UnwindSafe;
 use allo_isolate::IntoDart;
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::platform_types::{MessagePort, WireSyncReturn};
+use crate::rust2dart::context::TaskRust2DartContext;
 
 /// Provide your own handler to customize how to execute your function calls, etc.
 pub trait Handler {
@@ -83,3 +84,7 @@ pub trait TaskRetFutTrait {}
 #[cfg(wasm)]
 impl<T> TaskRetFutTrait for T {}
 
+/// A context for task execution
+pub struct TaskContext {
+    pub(crate) rust2dart_context: TaskRust2DartContext,
+}

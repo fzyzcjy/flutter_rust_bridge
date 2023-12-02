@@ -53,28 +53,6 @@ impl Rust2Dart {
     }
 }
 
-// TODO change this comment
-/// A callback that receives the return value of Rust functions.
-pub struct TaskContext {
-    rust2dart: Rust2Dart,
-}
-
-impl TaskContext {
-    /// Create a new callback from a port wrapper.
-    pub fn new(rust2dart: Rust2Dart) -> Self {
-        Self { rust2dart }
-    }
-
-    /// Create a new [StreamSink] of the specified type.
-    pub fn stream_sink<T, D>(&self) -> StreamSink<T>
-    where
-        T: IntoIntoDart<D>,
-        D: IntoDart,
-    {
-        StreamSink::new(self.rust2dart.clone())
-    }
-}
-
 /// A handle to a [`web_sys::BroadcastChannel`].
 #[derive(Clone)]
 pub struct ChannelHandle(pub String);

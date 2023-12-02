@@ -74,7 +74,7 @@ fn generate_inner_func_params(
         ans.insert(
             argument_index,
             format!(
-                "context.stream_sink::<_,{}>()",
+                "context.rust2dart_context.stream_sink::<_,{}>()",
                 WireRustGenerator::new(func.output.clone(), context).intodart_type(ir_pack)
             ),
         );
