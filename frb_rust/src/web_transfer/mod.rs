@@ -5,9 +5,9 @@ pub(crate) mod transfer;
 #[cfg(target_family = "wasm")]
 pub(crate) mod transfer_closure;
 
-/// On WASM, [JsValue][wasm_bindgen::JsValue]s cannot be shared between scopes but instead can be
+/// On WASM, `JsValue`s cannot be shared between scopes but instead can be
 /// ["transferred"]. Rust however is not aware of transferables and therefore cannot
-/// capture these values. This macro wraps a closure and returns a [TransferClosure][crate::ffi::TransferClosure] on WASM platforms
+/// capture these values. This macro wraps a closure and returns a `TransferClosure` on WASM platforms
 /// which will capture these special values, or a normal [FnOnce] on other platforms.
 /// Note that the parameter names must match available variables/bindings from the outer scope.
 ///
