@@ -1,9 +1,8 @@
 //! Functions that support auto-generated Rust code.
-//! These functions are *not* meant to be used by humans directly.
-#![doc(hidden)]
+//! These functions are usually *not* meant to be used by humans directly.
 
-mod pointer;
 mod cast;
+mod pointer;
 
-pub use pointer::*;
 pub use cast::*;
+pub use pointer::*;

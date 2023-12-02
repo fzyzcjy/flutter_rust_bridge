@@ -8,7 +8,7 @@ pub(crate) mod thread_pool;
 
 pub(crate) mod dart_opaque;
 pub(crate) mod ffi_binding;
-pub(crate) mod for_generated;
+pub mod for_generated;
 pub(crate) mod rust_async;
 pub(crate) mod web_transfer;
 
