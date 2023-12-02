@@ -64,6 +64,16 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
     __state!.dispose();
   }
 
+  /// {@macro flutter_rust_bridge.internal}
+  @internal
+  @visibleForTesting
+  void resetState() {
+    // ignore: avoid_print
+    print(
+        'WARN: resetState() (should only be used in internal tests, never be used by normal users)');
+    __state = null;
+  }
+
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @protected
   ApiImplConstructor<AI, W> get apiImplConstructor;
