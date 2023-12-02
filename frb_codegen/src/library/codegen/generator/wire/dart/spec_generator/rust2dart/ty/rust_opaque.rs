@@ -6,7 +6,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartG
 impl<'a> WireDartGeneratorRust2DartTrait for RustOpaqueWireDartGenerator<'a> {
     fn generate_impl_wire2api_body(&self) -> String {
         format!(
-            "return {0}.fromRaw(raw[0], raw[1]);",
+            "return {0}.fromWire(raw);",
             ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
                 .dart_api_type()
         )
