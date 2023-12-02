@@ -7,6 +7,7 @@ use crate::misc::into_into_dart::IntoIntoDart;
 /// [`Stream`](https://api.dart.dev/stable/dart-async/Stream-class.html).
 #[derive(Clone)]
 pub struct StreamSink<T> {
+    // TODO refactor this `cfg`?
     #[cfg(not(wasm))]
     rust2dart: Rust2Dart,
     #[cfg(wasm)]
