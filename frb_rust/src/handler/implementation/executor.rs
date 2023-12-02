@@ -6,7 +6,7 @@ use crate::handler::handler::{FfiCallMode, TaskContext, TaskInfo, TaskRetFutTrai
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::platform_types::MessagePort;
 use crate::rust2dart::action::Rust2DartAction;
-use crate::rust2dart::api2wire::Api2wire;
+use crate::rust2dart::api2wire::Api2Wire;
 use crate::rust2dart::context::TaskRust2DartContext;
 use crate::rust2dart::sender::Rust2DartSender;
 use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
@@ -70,7 +70,7 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool> Executor for SimpleExecutor<EH
                     Ok(result) => {
                         match mode {
                             FfiCallMode::Normal => {
-                                sender.send(Api2wire::success(result));
+                                sender.send(Api2Wire::success(result));
                             }
                             FfiCallMode::Stream => {
                                 // nothing - ignore the return value of a Stream-typed function
@@ -145,7 +145,7 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool> Executor for SimpleExecutor<EH
                     Ok(result) => {
                         match mode {
                             FfiCallMode::Normal => {
-                                sender.send(Api2wire::success(result));
+                                sender.send(Api2Wire::success(result));
                             }
                             FfiCallMode::Stream => {
                                 // nothing - ignore the return value of a Stream-typed function

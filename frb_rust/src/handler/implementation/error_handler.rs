@@ -3,7 +3,7 @@ use crate::handler::error::Error;
 use crate::handler::error_handler::ErrorHandler;
 use crate::platform_types::{MessagePort, WireSyncReturn};
 use crate::rust2dart::action::Rust2DartAction;
-use crate::rust2dart::api2wire::Api2wire;
+use crate::rust2dart::api2wire::Api2Wire;
 use crate::rust2dart::sender::Rust2DartSender;
 use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
 
@@ -14,8 +14,8 @@ pub struct ReportDartErrorHandler;
 impl ErrorHandler for ReportDartErrorHandler {
     fn handle_error(&self, port: MessagePort, error: Error) {
         let msg = match error {
-            e @ Error::CustomError(_) => Api2wire::error(e),
-            e @ Error::Panic(_) => Api2wire::panic(e),
+            e @ Error::CustomError(_) => Api2Wire::error(e),
+            e @ Error::Panic(_) => Api2Wire::panic(e),
         };
         Rust2DartSender::new(Channel::new(port)).send(msg);
     }
