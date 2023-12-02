@@ -28,6 +28,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             ("Backtrace", None) => Delegate(IrTypeDelegate::Backtrace),
 
             ("DartAbi", None) => Dynamic(IrTypeDynamic),
+            ("DartDynamic", None) => Dynamic(IrTypeDynamic),
 
             ("DartOpaque", None) => DartOpaque(IrTypeDartOpaque {}),
 
