@@ -1,6 +1,5 @@
 use crate::for_generated::wasm_bindgen::JsValue;
 use crate::web_transfer::transfer_closure::TransferClosure;
-use parking_lot::Mutex;
 
 pub use crate::third_party::wasm_bindgen::worker_pool::WorkerPool as ThreadPool;
 
@@ -8,7 +7,7 @@ pub use crate::third_party::wasm_bindgen::worker_pool::WorkerPool as ThreadPool;
 // because our Executor only access the thread pool from one thread - the Dart main thread.
 // But for simplicity, here we use Mutex before this is measured to be a bottleneck.
 #[derive(Default)]
-pub struct ThreadPoolWrapped(Mutex<ThreadPool>);
+pub struct ThreadPoolWrapped(std::sync::Mutex<ThreadPool>);
 
 impl ThreadPoolWrapped {
     pub fn execute(&self, closure: TransferClosure<JsValue>) -> Result<(), JsValue> {
