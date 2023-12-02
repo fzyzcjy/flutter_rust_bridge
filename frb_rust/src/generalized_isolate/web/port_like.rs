@@ -1,20 +1,3 @@
-use super::DartAbi;
-use super::MessagePort;
-use crate::support;
-pub use crate::wasm_bindgen_src::transfer::*;
-pub use crate::wasm_bindgen_src::transfer::*;
-use crate::DartSafe;
-use crate::RustOpaque;
-pub use js_sys;
-pub use js_sys::Array as JsArray;
-use js_sys::*;
-use std::iter::FromIterator;
-pub use wasm_bindgen;
-pub use wasm_bindgen::closure::Closure;
-pub use wasm_bindgen::prelude::*;
-pub use wasm_bindgen::JsCast;
-use web_sys::BroadcastChannel;
-
 #[wasm_bindgen]
 extern "C" {
     /// Objects implementing the interface of [`web_sys::MessagePort`].

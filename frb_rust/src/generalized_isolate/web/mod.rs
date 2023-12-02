@@ -1,6 +1,8 @@
 mod into_dart;
+mod port_like;
 
 pub use into_dart::*;
+pub use port_like::*;
 
 #[derive(Clone)]
 pub struct Channel {
