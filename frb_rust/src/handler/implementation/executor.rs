@@ -9,6 +9,8 @@ use crate::handler::executor::Executor;
 use crate::handler::handler::{FfiCallMode, TaskContext, TaskRetFutTrait, TaskInfo};
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::rust2dart::action::Rust2DartAction;
+use crate::rust2dart::context::TaskRust2DartContext;
+use crate::rust2dart::sender::Rust2DartSender;
 use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
 use crate::rust_async;
 
@@ -45,16 +47,17 @@ impl<EH: ErrorHandler + Sync> Executor for SimpleExecutor<EH> {
             let thread_result = panic::catch_unwind(move || {
                 let port2 = port2.expect("(worker) thread");
                 #[allow(clippy::clone_on_copy)]
-                let rust2dart = Rust2Dart::new(port2.clone());
+                    let sender = Rust2DartSender::new(port2.clone());
 
-                let ret = task(TaskContext::new(rust2dart.clone()))
+                let task_context = TaskContext::new(TaskRust2DartContext::new(sender));
+                let ret = task(task_context)
                     .map(|e| e.into_into_dart().into_dart());
 
                 match ret {
                     Ok(result) => {
                         match mode {
                             FfiCallMode::Normal => {
-                                rust2dart.success(result);
+                                sender.success(result);
                             }
                             FfiCallMode::Stream => {
                                 // nothing - ignore the return value of a Stream-typed function
@@ -114,9 +117,10 @@ impl<EH: ErrorHandler + Sync> Executor for SimpleExecutor<EH> {
             let thread_result = async {
                 let port2 = port2.expect("(worker) thread");
                 #[allow(clippy::clone_on_copy)]
-                    let rust2dart = Rust2Dart::new(port2.clone());
+                    let sender = Rust2DartSender::new(port2.clone());
 
-                let ret = task(TaskContext::new(rust2dart.clone()))
+                let task_context = TaskContext::new(TaskRust2DartContext::new(sender));
+                let ret = task(task_context)
                     .await
                     .map(|e| e.into_into_dart().into_dart());
 
@@ -124,7 +128,7 @@ impl<EH: ErrorHandler + Sync> Executor for SimpleExecutor<EH> {
                     Ok(result) => {
                         match mode {
                             FfiCallMode::Normal => {
-                                rust2dart.success(result);
+                                sender.success(result);
                             }
                             FfiCallMode::Stream => {
                                 // nothing - ignore the return value of a Stream-typed function

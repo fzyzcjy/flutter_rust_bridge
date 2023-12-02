@@ -88,3 +88,9 @@ impl<T> TaskRetFutTrait for T {}
 pub struct TaskContext {
     pub(crate) rust2dart_context: TaskRust2DartContext,
 }
+
+impl TaskContext {
+    pub fn new(rust2dart_context: TaskRust2DartContext) -> Self {
+        Self { rust2dart_context }
+    }
+}
