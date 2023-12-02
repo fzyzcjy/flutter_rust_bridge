@@ -3,6 +3,7 @@ use crate::handler::error::Error;
 use crate::handler::error_handler::ErrorHandler;
 use crate::platform_types::{MessagePort, WireSyncReturn};
 use crate::rust2dart::action::Rust2DartAction;
+use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
 
 /// The default error handler used by generated code.
 #[derive(Clone, Copy)]
@@ -16,8 +17,8 @@ impl ErrorHandler for ReportDartErrorHandler {
         };
     }
 
-    fn handle_error_sync(&self, error: Error) -> WireSyncReturn {
+    fn handle_error_sync(&self, error: Error) -> WireSyncReturnSrc {
         let result_code = (&error).into();
-        wire_sync_from_data(error.into_dart(), result_code)
+        WireSyncReturnSrc::new_from_data(error.into_dart(), result_code)
     }
 }

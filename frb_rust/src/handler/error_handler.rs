@@ -1,6 +1,7 @@
 use std::panic::{RefUnwindSafe, UnwindSafe};
 use crate::handler::error::Error;
 use crate::platform_types::{MessagePort, WireSyncReturn};
+use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
 
 /// A handler model that sends back the error to a Dart `SendPort`.
 ///
@@ -12,5 +13,5 @@ pub(crate) trait ErrorHandler: UnwindSafe + RefUnwindSafe + Copy + Send + 'stati
     fn handle_error(&self, port: MessagePort, error: Error);
 
     /// Special handler only used for synchronous code.
-    fn handle_error_sync(&self, error: Error) -> WireSyncReturn;
+    fn handle_error_sync(&self, error: Error) -> WireSyncReturnSrc;
 }

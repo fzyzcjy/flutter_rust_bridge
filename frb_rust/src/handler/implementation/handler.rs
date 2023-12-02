@@ -87,16 +87,15 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         panic::catch_unwind(move || {
             let catch_unwind_result = panic::catch_unwind(move || {
                 match self.executor.execute_sync(task_info, sync_task) {
-                    Ok(data) => {
-                        wire_sync_from_data(data.into_into_dart(), Rust2DartAction::Success)
-                    }
+                    Ok(data) => data.leak(),
                     Err(err) => self
                         .error_handler
-                        .handle_error_sync(Error::CustomError(Box::new(err))),
+                        .handle_error_sync(Error::CustomError(Box::new(err)))
+                        .leak(),
                 }
             });
             catch_unwind_result
-                .unwrap_or_else(|error| self.error_handler.handle_error_sync(Error::Panic(error)))
+                .unwrap_or_else(|error| self.error_handler.handle_error_sync(Error::Panic(error)).leak())
         })
             .unwrap_or_else(|_| wire_sync_from_data(None::<()>, Rust2DartAction::Panic))
     }
@@ -109,7 +108,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
     ) where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce(TaskContext) -> TaskRetFut + Send + UnwindSafe + 'static,
-        TaskRetFut: Future<Output = Result<TaskRetDirect, Er>> + TaskRetFutTrait + UnwindSafe,
+        TaskRetFut: Future<Output=Result<TaskRetDirect, Er>> + TaskRetFutTrait + UnwindSafe,
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
         Er: IntoDart + 'static
