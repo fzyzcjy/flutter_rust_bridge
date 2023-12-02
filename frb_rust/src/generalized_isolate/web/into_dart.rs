@@ -1,5 +1,10 @@
-use allo_isolate::ZeroCopyBuffer;
+use crate::dart_opaque::DartOpaque;
+use crate::generalized_isolate::PortLike;
+use crate::generalized_isolate::ZeroCopyBuffer;
+use crate::misc::rust_opaque::{DartSafe, RustOpaque};
 use crate::platform_types::DartAbi;
+use js_sys::{Array, BigInt64Array, BigUint64Array, Int32Array};
+use wasm_bindgen::JsValue;
 
 pub trait IntoDart {
     fn into_dart(self) -> DartAbi;

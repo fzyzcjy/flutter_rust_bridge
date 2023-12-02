@@ -1,3 +1,6 @@
+use wasm_bindgen::prelude::*;
+use web_sys::BroadcastChannel;
+
 #[wasm_bindgen]
 extern "C" {
     /// Objects implementing the interface of [`web_sys::MessagePort`].

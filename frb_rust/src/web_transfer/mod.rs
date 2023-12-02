@@ -1,7 +1,9 @@
-#[cfg(target_family = "wasm")]
-pub(crate) mod transfer_closure;
+use crate::platform_types::MessagePort;
+
 #[cfg(target_family = "wasm")]
 pub(crate) mod transfer;
+#[cfg(target_family = "wasm")]
+pub(crate) mod transfer_closure;
 
 /// On WASM, [JsValue][wasm_bindgen::JsValue]s cannot be shared between scopes but instead can be
 /// ["transferred"]. Rust however is not aware of transferables and therefore cannot
@@ -29,7 +31,7 @@ macro_rules! transfer {
 
         #[cfg(target_family = "wasm")]
         {
-            use $crate::ffi::Transfer;
+            use $crate::web_transfer::transfer::Transfer;
             #[allow(unused_variables)]
             let worker = move |transfer: &[wasm_bindgen::JsValue]| {
                 let idx = 0;
@@ -40,7 +42,7 @@ macro_rules! transfer {
                 $block
             };
             let transferables = [$($param.transferables()),*].concat();
-            $crate::ffi::TransferClosure::new(vec![$($param.serialize()),*], transferables, worker)
+            $crate::web_transfer::transfer_closure::TransferClosure::new(vec![$($param.serialize()),*], transferables, worker)
         }
     }};
 }

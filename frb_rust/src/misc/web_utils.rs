@@ -1,10 +1,13 @@
+use crate::platform_types::MessagePort;
+use wasm_bindgen::prelude::*;
+
 #[macro_export]
 macro_rules! console_error {
     ($lit:literal) => {
-        $crate::js_console_error($lit)
+        $crate::misc::web_utils::js_console_error($lit)
     };
     ($($tt:tt)*) => {
-        $crate::js_console_error(&format!($($tt)*))
+        $crate::misc::web_utils::js_console_error(&format!($($tt)*))
     };
 }
 
@@ -28,6 +31,6 @@ pub(crate) fn script_path() -> Option<String> {
     }
 })()",
     )
-        .ok()?
-        .as_string()
+    .ok()?
+    .as_string()
 }

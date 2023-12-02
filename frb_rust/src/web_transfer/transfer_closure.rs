@@ -1,8 +1,7 @@
-use crate::ffi::web::*;
 use js_sys::{global, Array};
 use std::iter::FromIterator;
+use wasm_bindgen::prelude::*;
 use web_sys::{DedicatedWorkerGlobalScope, Worker};
-
 
 type RawClosure<T> = Box<dyn FnOnce(&[T]) + Send + 'static>;
 

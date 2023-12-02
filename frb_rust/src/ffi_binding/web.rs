@@ -1,9 +1,13 @@
+use crate::for_generated::box_from_leak_ptr;
+use wasm_bindgen::prelude::*;
+use wasm_bindgen::JsValue;
+
 /// # Safety
 ///
 /// TODO: need doc
 #[wasm_bindgen]
 pub unsafe fn get_dart_object(ptr: usize) -> JsValue {
-    *support::box_from_leak_ptr(ptr as _)
+    *box_from_leak_ptr(ptr as _)
 }
 
 /// # Safety
@@ -11,6 +15,5 @@ pub unsafe fn get_dart_object(ptr: usize) -> JsValue {
 /// TODO: need doc
 #[wasm_bindgen]
 pub unsafe fn drop_dart_object(ptr: usize) {
-    drop(support::box_from_leak_ptr::<JsValue>(ptr as _));
+    drop(box_from_leak_ptr::<JsValue>(ptr as _));
 }
-

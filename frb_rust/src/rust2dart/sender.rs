@@ -1,6 +1,6 @@
 use crate::generalized_isolate::Channel;
+use crate::generalized_isolate::IntoDart;
 use crate::platform_types::MessagePort;
-use allo_isolate::IntoDart;
 
 #[derive(Clone)]
 pub struct Rust2DartSender {

@@ -1,7 +1,7 @@
-use std::thread::ThreadId;
-use allo_isolate::IntoDart;
-use log::warn;
+use crate::generalized_isolate::IntoDart;
 use crate::platform_types::DartAbi;
+use log::warn;
+use std::thread::ThreadId;
 
 #[cfg(wasm)]
 mod web;

@@ -4,6 +4,7 @@ use crate::handler::error_handler::ErrorHandler;
 use crate::handler::executor::Executor;
 use crate::handler::handler::{FfiCallMode, TaskContext, TaskInfo, TaskRetFutTrait};
 use crate::misc::into_into_dart::IntoIntoDart;
+use crate::platform_types::MessagePort;
 use crate::rust2dart::action::Rust2DartAction;
 use crate::rust2dart::api2wire::Api2wire;
 use crate::rust2dart::context::TaskRust2DartContext;

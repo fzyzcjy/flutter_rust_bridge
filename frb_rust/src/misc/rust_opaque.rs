@@ -1,8 +1,8 @@
-use std::{mem, ops};
+use crate::generalized_isolate::IntoDart;
+use crate::platform_types::DartAbi;
 use std::panic::{RefUnwindSafe, UnwindSafe};
 use std::sync::Arc;
-use allo_isolate::IntoDart;
-use crate::platform_types::DartAbi;
+use std::{mem, ops};
 
 /// Macro helper to instantiate an `RustOpaque<dyn Trait>`, as Rust does not
 /// support custom DSTs on stable.

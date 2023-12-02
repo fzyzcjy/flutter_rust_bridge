@@ -2,7 +2,7 @@
 //!
 //! File: https://github.com/rustwasm/wasm-bindgen/blob/main/examples/raytrace-parallel/src/pool.rs
 
-use crate::TransferClosure;
+use crate::web_transfer::transfer_closure::TransferClosure;
 use js_sys::Array;
 use std::cell::RefCell;
 use std::iter::FromIterator;

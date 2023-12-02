@@ -1,3 +1,9 @@
+use crate::generalized_isolate::IntoDart;
+use crate::generalized_isolate::PortLike;
+use crate::platform_types::MessagePort;
+use wasm_bindgen::JsCast;
+use web_sys::BroadcastChannel;
+
 #[derive(Clone)]
 pub struct Channel {
     port: MessagePort,
@@ -35,6 +41,8 @@ impl From<&Channel> for SendableChannelHandle {
 
 impl From<&SendableChannelHandle> for Channel {
     fn from(value: &SendableChannelHandle) -> Self {
-        PortLike::broadcast(&value.0)
+        Channel {
+            port: PortLike::broadcast(&value.0),
+        }
     }
 }

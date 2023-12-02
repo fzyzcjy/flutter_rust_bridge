@@ -9,7 +9,7 @@ use crate::rust2dart::action::Rust2DartAction;
 pub struct WireSyncReturnSrc(DartAbi);
 
 impl WireSyncReturnSrc {
-    pub fn new_from_data<T: IntoDart>(data: T, result_code: Rust2DartAction)  -> Self {
+    pub fn new_from_data<T: IntoDart>(data: T, result_code: Rust2DartAction) -> Self {
         Self::new_raw(vec![result_code.into_dart(), data.into_dart()].into_dart())
     }
 
@@ -22,6 +22,6 @@ impl WireSyncReturnSrc {
         return new_leak_box_ptr(self.0);
 
         #[cfg(wasm)]
-        return self;
+        return self.0;
     }
 }

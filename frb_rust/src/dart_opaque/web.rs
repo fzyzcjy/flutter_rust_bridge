@@ -1,3 +1,9 @@
+use crate::generalized_isolate::Channel;
+use crate::generalized_isolate::PortLike;
+use wasm_bindgen::JsCast;
+use wasm_bindgen::JsValue;
+use web_sys::BroadcastChannel;
+
 pub type OpaqueMessagePort = wasm_bindgen::JsValue;
 pub type DartWrapObject = wasm_bindgen::JsValue;
 pub type DartObject = wasm_bindgen::JsValue;
