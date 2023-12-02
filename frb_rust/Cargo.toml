@@ -45,7 +45,6 @@ web-sys = { version = "0.3.58", features = [
   "Url",
   "BroadcastChannel",
 ] }
-thread_local = "1.1.7"
 
 [build-dependencies]
 cc = "1.0"
