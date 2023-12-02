@@ -1,3 +1,7 @@
+use std::future::Future;
+use std::panic::UnwindSafe;
+use allo_isolate::IntoDart;
+
 /// Provide your own handler to customize how to execute your function calls, etc.
 pub trait Handler {
     /// Prepares the arguments, executes a Rust function and sets up its return value.

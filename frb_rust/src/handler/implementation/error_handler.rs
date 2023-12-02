@@ -1,3 +1,6 @@
+use allo_isolate::IntoDart;
+use crate::handler::error_handler::ErrorHandler;
+
 /// The default error handler used by generated code.
 #[derive(Clone, Copy)]
 pub struct ReportDartErrorHandler;

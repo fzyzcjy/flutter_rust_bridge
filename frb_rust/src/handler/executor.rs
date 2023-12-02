@@ -1,3 +1,7 @@
+use std::future::Future;
+use std::panic::{RefUnwindSafe, UnwindSafe};
+use allo_isolate::IntoDart;
+
 /// An executor model for Rust functions.
 ///
 /// For example, the default model is [ThreadPoolExecutor]
