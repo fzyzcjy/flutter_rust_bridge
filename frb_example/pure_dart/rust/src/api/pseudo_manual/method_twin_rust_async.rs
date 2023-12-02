@@ -2,7 +2,7 @@
 // and is auto-generated from `method.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
-use flutter_rust_bridge::{spawn, StreamSink};
+use flutter_rust_bridge::StreamSink;
 
 #[derive(Debug, Clone)]
 pub struct Log2TwinRustAsync {
@@ -34,7 +34,7 @@ impl ConcatenateWithTwinRustAsync {
         sink: StreamSink<Log2TwinRustAsync>,
     ) {
         let a = self.a.clone();
-        spawn!(|| {
+        std::thread::spawn(move || {
             for i in 0..max {
                 sink.add(Log2TwinRustAsync {
                     key,
@@ -46,7 +46,7 @@ impl ConcatenateWithTwinRustAsync {
     }
 
     pub async fn handle_some_stream_sink_at_1_twin_rust_async(&self, sink: StreamSink<u32>) {
-        spawn!(|| {
+        std::thread::spawn(move || {
             for i in 0..5 {
                 sink.add(i);
             }
@@ -59,7 +59,7 @@ impl ConcatenateWithTwinRustAsync {
         max: u32,
         sink: StreamSink<Log2TwinRustAsync>,
     ) {
-        spawn!(|| {
+        std::thread::spawn(move || {
             for i in 0..max {
                 sink.add(Log2TwinRustAsync {
                     key,
@@ -71,7 +71,7 @@ impl ConcatenateWithTwinRustAsync {
     }
 
     pub async fn handle_some_static_stream_sink_single_arg_twin_rust_async(sink: StreamSink<u32>) {
-        spawn!(|| {
+        std::thread::spawn(move || {
             for i in 0..5 {
                 sink.add(i);
             }

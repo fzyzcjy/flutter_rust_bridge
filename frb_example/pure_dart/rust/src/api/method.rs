@@ -1,4 +1,4 @@
-use flutter_rust_bridge::{spawn, StreamSink};
+use flutter_rust_bridge::StreamSink;
 
 #[derive(Debug, Clone)]
 pub struct Log2TwinNormal {
@@ -30,7 +30,7 @@ impl ConcatenateWithTwinNormal {
         sink: StreamSink<Log2TwinNormal>,
     ) {
         let a = self.a.clone();
-        spawn!(|| {
+        std::thread::spawn(move || {
             for i in 0..max {
                 sink.add(Log2TwinNormal {
                     key,
@@ -42,7 +42,7 @@ impl ConcatenateWithTwinNormal {
     }
 
     pub fn handle_some_stream_sink_at_1_twin_normal(&self, sink: StreamSink<u32>) {
-        spawn!(|| {
+        std::thread::spawn(move || {
             for i in 0..5 {
                 sink.add(i);
             }
@@ -55,7 +55,7 @@ impl ConcatenateWithTwinNormal {
         max: u32,
         sink: StreamSink<Log2TwinNormal>,
     ) {
-        spawn!(|| {
+        std::thread::spawn(move || {
             for i in 0..max {
                 sink.add(Log2TwinNormal {
                     key,
@@ -67,7 +67,7 @@ impl ConcatenateWithTwinNormal {
     }
 
     pub fn handle_some_static_stream_sink_single_arg_twin_normal(sink: StreamSink<u32>) {
-        spawn!(|| {
+        std::thread::spawn(move || {
             for i in 0..5 {
                 sink.add(i);
             }
