@@ -3,7 +3,7 @@ use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGenera
 use crate::codegen::generator::api_dart::spec_generator::{
     ApiDartOutputSpec, ApiDartOutputSpecItem,
 };
-use crate::codegen::generator::misc::{PathText, PathTexts};
+use crate::codegen::generator::misc::{generate_code_header, PathText, PathTexts};
 use crate::codegen::ir::namespace::Namespace;
 use crate::utils::basic_code::DartBasicHeaderCode;
 use itertools::Itertools;
@@ -51,7 +51,8 @@ fn generate_end_api_text(
     let path_frb_generated = "../".repeat(namespace.path().len() - 2) + "frb_generated.dart";
 
     let mut header = DartBasicHeaderCode {
-        file_top: "// ignore_for_file: invalid_use_of_internal_member, unused_import\n".to_string(),
+        file_top: generate_code_header()
+            + "\n\n// ignore_for_file: invalid_use_of_internal_member, unused_import\n",
         import: format!(
             "
             import '{path_frb_generated}';

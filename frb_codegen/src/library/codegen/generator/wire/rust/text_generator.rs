@@ -41,12 +41,14 @@ fn compute_extern_funcs(merged_code: Acc<WireRustOutputCode>) -> Vec<ExternFunc>
 fn generate_merged_code(spec: &WireRustOutputSpec) -> Acc<WireRustOutputCode> {
     let mut merged_code = Acc::<Vec<WireRustOutputCode>>::default();
     let mut add = |section_name: &str, item: &Acc<Vec<WireRustOutputCode>>| {
-        merged_code += section_header_comment(section_name, item);
+        if !section_name.is_empty() {
+            merged_code += section_header_comment(section_name, item);
+        }
         merged_code += item.clone();
     };
 
-    add("file_attributes", &spec.misc.file_attributes);
-    add("code_header", &spec.misc.code_header);
+    add("", &spec.misc.code_header);
+    add("", &spec.misc.file_attributes);
     add("imports", &spec.misc.imports);
     add("wire_funcs", &spec.misc.wire_funcs);
     add("wrapper_structs", &spec.misc.wrapper_structs);

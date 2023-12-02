@@ -1,5 +1,6 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_imports_which_types_and_funcs_use;
+use crate::codegen::generator::misc::generate_code_header;
 use crate::codegen::generator::misc::target::{TargetOrCommon, TargetOrCommonMap};
 use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNamePack;
 use crate::codegen::generator::wire::dart::spec_generator::base::{
@@ -62,8 +63,8 @@ fn generate_boilerplate(
         ..
     } = &context.config.dart_output_class_name_pack;
 
-    let file_top =
-        "// ignore_for_file: unused_import, unused_element, duplicate_ignore\n".to_owned();
+    let file_top = generate_code_header()
+        + "\n\n// ignore_for_file: unused_import, unused_element, duplicate_ignore\n";
 
     let mut universal_imports = generate_import_dart_api_layer(
         &context.config.dart_impl_output_path,
