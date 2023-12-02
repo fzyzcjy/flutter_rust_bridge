@@ -1,5 +1,5 @@
 use std::future::Future;
-use std::panic::UnwindSafe;
+use std::panic::{AssertUnwindSafe, UnwindSafe};
 use crate::generalized_isolate::IntoDart;
 use futures::FutureExt;
 use crate::thread_pool::ThreadPool;
@@ -20,7 +20,9 @@ use std::panic;
 /// handled by a different thread.
 pub struct SimpleExecutor<EH: ErrorHandler> {
     error_handler: EH,
-    thread_pool: ThreadPool,
+    // TODO remove `AssertUnwindSafe` after the Rust bug is fixed:
+    // https://github.com/rust-lang/rust/issues/118009
+    thread_pool: AssertUnwindSafe<ThreadPool>,
 }
 
 impl<EH: ErrorHandler> SimpleExecutor<EH> {
@@ -43,7 +45,7 @@ impl<EH: ErrorHandler + Sync> Executor for SimpleExecutor<EH> {
 
         let TaskInfo { port, mode, .. } = task_info;
 
-        self.thread_pool.execute(transfer!(|port: Option<MessagePort>| {
+        self.thread_pool.0.execute(transfer!(|port: Option<MessagePort>| {
             let port2 = port.as_ref().cloned();
             let thread_result = panic::catch_unwind(move || {
                 let port2 = port2.expect("(worker) thread");
