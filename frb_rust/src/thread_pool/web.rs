@@ -11,6 +11,6 @@ pub struct ThreadPoolWrapped(std::sync::Mutex<ThreadPool>);
 
 impl ThreadPoolWrapped {
     pub fn execute(&self, closure: TransferClosure<JsValue>) -> Result<(), JsValue> {
-        self.0.lock().unwrap().execute(closure)
+        self.0.execute(closure)
     }
 }
