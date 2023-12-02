@@ -1,4 +1,5 @@
 use std::{mem, ops};
+use std::panic::{RefUnwindSafe, UnwindSafe};
 use std::sync::Arc;
 use allo_isolate::IntoDart;
 use crate::platform_types::DartAbi;
@@ -138,3 +139,9 @@ impl<T: DartSafe> From<RustOpaque<T>> for DartAbi {
         vec![ptr.into_dart(), size.into_dart()].into_dart()
     }
 }
+
+/// Marker trait for types that are safe to share with Dart and can be dropped
+/// safely in case of a panic.
+pub trait DartSafe: UnwindSafe + RefUnwindSafe {}
+
+impl<T: UnwindSafe + RefUnwindSafe> DartSafe for T {}

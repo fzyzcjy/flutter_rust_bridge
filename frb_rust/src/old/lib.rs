@@ -21,11 +21,5 @@ mod rust_async;
 #[cfg(wasm)]
 mod wasm_bindgen_src;
 
-/// Marker trait for types that are safe to share with Dart and can be dropped
-/// safely in case of a panic.
-pub trait DartSafe: UnwindSafe + RefUnwindSafe {}
-
-impl<T: UnwindSafe + RefUnwindSafe> DartSafe for T {}
-
 #[cfg(wasm)]
 pub use wasm_bindgen;
