@@ -8450,7 +8450,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::misc_example::ATwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::misc_example::ATwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::misc_example::ATwinNormal>
     for crate::api::misc_example::ATwinNormal
 {
     fn into_into_dart(self) -> crate::api::misc_example::ATwinNormal {
@@ -8469,7 +8469,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::misc_example_twin_rust_async::ATwinRustAsync,
     > for crate::api::pseudo_manual::misc_example_twin_rust_async::ATwinRustAsync
 {
@@ -8490,10 +8490,8 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::misc_example_twin_sync::ATwinSync
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::pseudo_manual::misc_example_twin_sync::ATwinSync,
-    > for crate::api::pseudo_manual::misc_example_twin_sync::ATwinSync
+impl flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::misc_example_twin_sync::ATwinSync>
+    for crate::api::pseudo_manual::misc_example_twin_sync::ATwinSync
 {
     fn into_into_dart(self) -> crate::api::pseudo_manual::misc_example_twin_sync::ATwinSync {
         self
@@ -8510,8 +8508,11 @@ impl flutter_rust_bridge::IntoDart for crate::api::misc_example::AbcTwinNormal {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive for crate::api::misc_example::AbcTwinNormal {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::misc_example::AbcTwinNormal>
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::misc_example::AbcTwinNormal
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::misc_example::AbcTwinNormal>
     for crate::api::misc_example::AbcTwinNormal
 {
     fn into_into_dart(self) -> crate::api::misc_example::AbcTwinNormal {
@@ -8531,12 +8532,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync,
     > for crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync
 {
@@ -8559,12 +8560,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSync,
     > for crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSync
 {
@@ -8585,10 +8586,8 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::inside_macro::AnotherMacroStructTwinNormal
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::inside_macro::AnotherMacroStructTwinNormal,
-    > for crate::api::inside_macro::AnotherMacroStructTwinNormal
+impl flutter_rust_bridge::IntoIntoDart<crate::api::inside_macro::AnotherMacroStructTwinNormal>
+    for crate::api::inside_macro::AnotherMacroStructTwinNormal
 {
     fn into_into_dart(self) -> crate::api::inside_macro::AnotherMacroStructTwinNormal {
         self
@@ -8603,7 +8602,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::mirror::AnotherTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::mirror::AnotherTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::mirror::AnotherTwinNormal>
     for crate::api::mirror::AnotherTwinNormal
 {
     fn into_into_dart(self) -> crate::api::mirror::AnotherTwinNormal {
@@ -8622,7 +8621,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::mirror_twin_rust_async::AnotherTwinRustAsync,
     > for crate::api::pseudo_manual::mirror_twin_rust_async::AnotherTwinRustAsync
 {
@@ -8643,10 +8642,8 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::mirror_twin_sync::AnotherTwinSync
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::pseudo_manual::mirror_twin_sync::AnotherTwinSync,
-    > for crate::api::pseudo_manual::mirror_twin_sync::AnotherTwinSync
+impl flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::mirror_twin_sync::AnotherTwinSync>
+    for crate::api::pseudo_manual::mirror_twin_sync::AnotherTwinSync
 {
     fn into_into_dart(self) -> crate::api::pseudo_manual::mirror_twin_sync::AnotherTwinSync {
         self
@@ -8658,7 +8655,7 @@ impl flutter_rust_bridge::IntoDart for mirror_ApplicationEnv {
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for mirror_ApplicationEnv {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationEnv>
+impl flutter_rust_bridge::IntoIntoDart<mirror_ApplicationEnv>
     for crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnv
 {
     fn into_into_dart(self) -> mirror_ApplicationEnv {
@@ -8675,7 +8672,7 @@ impl flutter_rust_bridge::IntoDart for mirror_ApplicationEnvVar {
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for mirror_ApplicationEnvVar {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationEnvVar>
+impl flutter_rust_bridge::IntoIntoDart<mirror_ApplicationEnvVar>
     for crate::api::pseudo_manual::mirror_twin_sync::ApplicationEnvVar
 {
     fn into_into_dart(self) -> mirror_ApplicationEnvVar {
@@ -8703,8 +8700,8 @@ impl flutter_rust_bridge::IntoDart for mirror_ApplicationMessage {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive for mirror_ApplicationMessage {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationMessage>
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for mirror_ApplicationMessage {}
+impl flutter_rust_bridge::IntoIntoDart<mirror_ApplicationMessage>
     for crate::api::pseudo_manual::mirror_twin_sync::ApplicationMessage
 {
     fn into_into_dart(self) -> mirror_ApplicationMessage {
@@ -8721,7 +8718,7 @@ impl flutter_rust_bridge::IntoDart for mirror_ApplicationMode {
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for mirror_ApplicationMode {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationMode>
+impl flutter_rust_bridge::IntoIntoDart<mirror_ApplicationMode>
     for crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode
 {
     fn into_into_dart(self) -> mirror_ApplicationMode {
@@ -8741,7 +8738,7 @@ impl flutter_rust_bridge::IntoDart for mirror_ApplicationSettings {
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for mirror_ApplicationSettings {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ApplicationSettings>
+impl flutter_rust_bridge::IntoIntoDart<mirror_ApplicationSettings>
     for crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings
 {
     fn into_into_dart(self) -> mirror_ApplicationSettings {
@@ -8761,7 +8758,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::optional::AttributeTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::optional::AttributeTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::optional::AttributeTwinNormal>
     for crate::api::optional::AttributeTwinNormal
 {
     fn into_into_dart(self) -> crate::api::optional::AttributeTwinNormal {
@@ -8784,7 +8781,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync,
     > for crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync
 {
@@ -8810,7 +8807,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync,
     > for crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync
 {
@@ -8827,7 +8824,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::misc_example::BTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::misc_example::BTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::misc_example::BTwinNormal>
     for crate::api::misc_example::BTwinNormal
 {
     fn into_into_dart(self) -> crate::api::misc_example::BTwinNormal {
@@ -8846,7 +8843,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::misc_example_twin_rust_async::BTwinRustAsync,
     > for crate::api::pseudo_manual::misc_example_twin_rust_async::BTwinRustAsync
 {
@@ -8867,10 +8864,8 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::misc_example_twin_sync::BTwinSync
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::pseudo_manual::misc_example_twin_sync::BTwinSync,
-    > for crate::api::pseudo_manual::misc_example_twin_sync::BTwinSync
+impl flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::misc_example_twin_sync::BTwinSync>
+    for crate::api::pseudo_manual::misc_example_twin_sync::BTwinSync
 {
     fn into_into_dart(self) -> crate::api::pseudo_manual::misc_example_twin_sync::BTwinSync {
         self
@@ -8889,7 +8884,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::misc_example::BigBuffersTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::misc_example::BigBuffersTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::misc_example::BigBuffersTwinNormal>
     for crate::api::misc_example::BigBuffersTwinNormal
 {
     fn into_into_dart(self) -> crate::api::misc_example::BigBuffersTwinNormal {
@@ -8912,7 +8907,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::misc_example_twin_rust_async::BigBuffersTwinRustAsync,
     > for crate::api::pseudo_manual::misc_example_twin_rust_async::BigBuffersTwinRustAsync
 {
@@ -8938,7 +8933,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::misc_example_twin_sync::BigBuffersTwinSync,
     > for crate::api::pseudo_manual::misc_example_twin_sync::BigBuffersTwinSync
 {
@@ -8957,7 +8952,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::array::BlobTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::array::BlobTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::array::BlobTwinNormal>
     for crate::api::array::BlobTwinNormal
 {
     fn into_into_dart(self) -> crate::api::array::BlobTwinNormal {
@@ -8976,7 +8971,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::array_twin_rust_async::BlobTwinRustAsync,
     > for crate::api::pseudo_manual::array_twin_rust_async::BlobTwinRustAsync
 {
@@ -8993,10 +8988,8 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::array_twin_sync::BlobTwinSync
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::pseudo_manual::array_twin_sync::BlobTwinSync,
-    > for crate::api::pseudo_manual::array_twin_sync::BlobTwinSync
+impl flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::array_twin_sync::BlobTwinSync>
+    for crate::api::pseudo_manual::array_twin_sync::BlobTwinSync
 {
     fn into_into_dart(self) -> crate::api::pseudo_manual::array_twin_sync::BlobTwinSync {
         self
@@ -9011,7 +9004,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::misc_example::CTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::misc_example::CTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::misc_example::CTwinNormal>
     for crate::api::misc_example::CTwinNormal
 {
     fn into_into_dart(self) -> crate::api::misc_example::CTwinNormal {
@@ -9030,7 +9023,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::misc_example_twin_rust_async::CTwinRustAsync,
     > for crate::api::pseudo_manual::misc_example_twin_rust_async::CTwinRustAsync
 {
@@ -9051,10 +9044,8 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::misc_example_twin_sync::CTwinSync
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::pseudo_manual::misc_example_twin_sync::CTwinSync,
-    > for crate::api::pseudo_manual::misc_example_twin_sync::CTwinSync
+impl flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::misc_example_twin_sync::CTwinSync>
+    for crate::api::pseudo_manual::misc_example_twin_sync::CTwinSync
 {
     fn into_into_dart(self) -> crate::api::pseudo_manual::misc_example_twin_sync::CTwinSync {
         self
@@ -9069,7 +9060,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::method::ConcatenateWithTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::method::ConcatenateWithTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::method::ConcatenateWithTwinNormal>
     for crate::api::method::ConcatenateWithTwinNormal
 {
     fn into_into_dart(self) -> crate::api::method::ConcatenateWithTwinNormal {
@@ -9088,7 +9079,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync,
     > for crate::api::pseudo_manual::method_twin_rust_async::ConcatenateWithTwinRustAsync
 {
@@ -9110,7 +9101,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync,
     > for crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync
 {
@@ -9133,10 +9124,8 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::mirror::ContainsMirroredSubStructTwinNormal
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::mirror::ContainsMirroredSubStructTwinNormal,
-    > for crate::api::mirror::ContainsMirroredSubStructTwinNormal
+impl flutter_rust_bridge::IntoIntoDart<crate::api::mirror::ContainsMirroredSubStructTwinNormal>
+    for crate::api::mirror::ContainsMirroredSubStructTwinNormal
 {
     fn into_into_dart(self) -> crate::api::mirror::ContainsMirroredSubStructTwinNormal {
         self
@@ -9158,7 +9147,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::mirror_twin_rust_async::ContainsMirroredSubStructTwinRustAsync,
     >
     for crate::api::pseudo_manual::mirror_twin_rust_async::ContainsMirroredSubStructTwinRustAsync
@@ -9186,7 +9175,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::mirror_twin_sync::ContainsMirroredSubStructTwinSync,
     > for crate::api::pseudo_manual::mirror_twin_sync::ContainsMirroredSubStructTwinSync
 {
@@ -9213,11 +9202,11 @@ impl flutter_rust_bridge::IntoDart for crate::api::exception::CustomEnumErrorTwi
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::exception::CustomEnumErrorTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::exception::CustomEnumErrorTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::exception::CustomEnumErrorTwinNormal>
     for crate::api::exception::CustomEnumErrorTwinNormal
 {
     fn into_into_dart(self) -> crate::api::exception::CustomEnumErrorTwinNormal {
@@ -9243,12 +9232,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::exception_twin_rust_async::CustomEnumErrorTwinRustAsync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::exception_twin_rust_async::CustomEnumErrorTwinRustAsync,
     > for crate::api::pseudo_manual::exception_twin_rust_async::CustomEnumErrorTwinRustAsync
 {
@@ -9277,12 +9266,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::exception_twin_sync::CustomEnumErrorTwinSync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::exception_twin_sync::CustomEnumErrorTwinSync,
     > for crate::api::pseudo_manual::exception_twin_sync::CustomEnumErrorTwinSync
 {
@@ -9309,8 +9298,11 @@ impl flutter_rust_bridge::IntoDart for crate::api::exception::CustomErrorTwinNor
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive for crate::api::exception::CustomErrorTwinNormal {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::exception::CustomErrorTwinNormal>
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::exception::CustomErrorTwinNormal
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::exception::CustomErrorTwinNormal>
     for crate::api::exception::CustomErrorTwinNormal
 {
     fn into_into_dart(self) -> crate::api::exception::CustomErrorTwinNormal {
@@ -9336,12 +9328,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::exception_twin_rust_async::CustomErrorTwinRustAsync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::exception_twin_rust_async::CustomErrorTwinRustAsync,
     > for crate::api::pseudo_manual::exception_twin_rust_async::CustomErrorTwinRustAsync
 {
@@ -9370,12 +9362,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::exception_twin_sync::CustomErrorTwinSync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::exception_twin_sync::CustomErrorTwinSync,
     > for crate::api::pseudo_manual::exception_twin_sync::CustomErrorTwinSync
 {
@@ -9392,14 +9384,12 @@ impl flutter_rust_bridge::IntoDart for crate::api::exception::CustomNestedError1
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::exception::CustomNestedError1TwinNormal
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::exception::CustomNestedError1TwinNormal,
-    > for crate::api::exception::CustomNestedError1TwinNormal
+impl flutter_rust_bridge::IntoIntoDart<crate::api::exception::CustomNestedError1TwinNormal>
+    for crate::api::exception::CustomNestedError1TwinNormal
 {
     fn into_into_dart(self) -> crate::api::exception::CustomNestedError1TwinNormal {
         self
@@ -9416,12 +9406,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError1TwinRustAsync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError1TwinRustAsync,
     > for crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError1TwinRustAsync
 {
@@ -9442,12 +9432,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::exception_twin_sync::CustomNestedError1TwinSync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::exception_twin_sync::CustomNestedError1TwinSync,
     > for crate::api::pseudo_manual::exception_twin_sync::CustomNestedError1TwinSync
 {
@@ -9468,14 +9458,12 @@ impl flutter_rust_bridge::IntoDart for crate::api::exception::CustomNestedError2
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::exception::CustomNestedError2TwinNormal
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::exception::CustomNestedError2TwinNormal,
-    > for crate::api::exception::CustomNestedError2TwinNormal
+impl flutter_rust_bridge::IntoIntoDart<crate::api::exception::CustomNestedError2TwinNormal>
+    for crate::api::exception::CustomNestedError2TwinNormal
 {
     fn into_into_dart(self) -> crate::api::exception::CustomNestedError2TwinNormal {
         self
@@ -9494,12 +9482,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError2TwinRustAsync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError2TwinRustAsync,
     > for crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError2TwinRustAsync
 {
@@ -9522,12 +9510,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::exception_twin_sync::CustomNestedError2TwinSync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::exception_twin_sync::CustomNestedError2TwinSync,
     > for crate::api::pseudo_manual::exception_twin_sync::CustomNestedError2TwinSync
 {
@@ -9546,14 +9534,12 @@ impl flutter_rust_bridge::IntoDart for crate::api::exception::CustomNestedErrorI
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::exception::CustomNestedErrorInnerTwinNormal
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::exception::CustomNestedErrorInnerTwinNormal,
-    > for crate::api::exception::CustomNestedErrorInnerTwinNormal
+impl flutter_rust_bridge::IntoIntoDart<crate::api::exception::CustomNestedErrorInnerTwinNormal>
+    for crate::api::exception::CustomNestedErrorInnerTwinNormal
 {
     fn into_into_dart(self) -> crate::api::exception::CustomNestedErrorInnerTwinNormal {
         self
@@ -9570,12 +9556,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorInnerTwinRustAsync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorInnerTwinRustAsync,
     >
     for crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorInnerTwinRustAsync
@@ -9598,12 +9584,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync,
     > for crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync
 {
@@ -9622,14 +9608,12 @@ impl flutter_rust_bridge::IntoDart for crate::api::exception::CustomNestedErrorO
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::exception::CustomNestedErrorOuterTwinNormal
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::exception::CustomNestedErrorOuterTwinNormal,
-    > for crate::api::exception::CustomNestedErrorOuterTwinNormal
+impl flutter_rust_bridge::IntoIntoDart<crate::api::exception::CustomNestedErrorOuterTwinNormal>
+    for crate::api::exception::CustomNestedErrorOuterTwinNormal
 {
     fn into_into_dart(self) -> crate::api::exception::CustomNestedErrorOuterTwinNormal {
         self
@@ -9646,12 +9630,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorOuterTwinRustAsync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorOuterTwinRustAsync,
     >
     for crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorOuterTwinRustAsync
@@ -9674,12 +9658,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync,
     > for crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync
 {
@@ -9698,10 +9682,8 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::exception::CustomStructErrorAnotherTwinNormal
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::exception::CustomStructErrorAnotherTwinNormal,
-    > for crate::api::exception::CustomStructErrorAnotherTwinNormal
+impl flutter_rust_bridge::IntoIntoDart<crate::api::exception::CustomStructErrorAnotherTwinNormal>
+    for crate::api::exception::CustomStructErrorAnotherTwinNormal
 {
     fn into_into_dart(self) -> crate::api::exception::CustomStructErrorAnotherTwinNormal {
         self
@@ -9719,7 +9701,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::exception_twin_rust_async::CustomStructErrorAnotherTwinRustAsync,
     >
     for crate::api::pseudo_manual::exception_twin_rust_async::CustomStructErrorAnotherTwinRustAsync
@@ -9743,7 +9725,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorAnotherTwinSync,
     > for crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorAnotherTwinSync
 {
@@ -9762,8 +9744,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::exception::CustomStructErrorTwinNormal
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::exception::CustomStructErrorTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::exception::CustomStructErrorTwinNormal>
     for crate::api::exception::CustomStructErrorTwinNormal
 {
     fn into_into_dart(self) -> crate::api::exception::CustomStructErrorTwinNormal {
@@ -9782,7 +9763,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::exception_twin_rust_async::CustomStructErrorTwinRustAsync,
     > for crate::api::pseudo_manual::exception_twin_rust_async::CustomStructErrorTwinRustAsync
 {
@@ -9804,7 +9785,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorTwinSync,
     > for crate::api::pseudo_manual::exception_twin_sync::CustomStructErrorTwinSync
 {
@@ -9823,7 +9804,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::exception::CustomStructTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::exception::CustomStructTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::exception::CustomStructTwinNormal>
     for crate::api::exception::CustomStructTwinNormal
 {
     fn into_into_dart(self) -> crate::api::exception::CustomStructTwinNormal {
@@ -9842,7 +9823,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::exception_twin_rust_async::CustomStructTwinRustAsync,
     > for crate::api::pseudo_manual::exception_twin_rust_async::CustomStructTwinRustAsync
 {
@@ -9864,7 +9845,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinSync,
     > for crate::api::pseudo_manual::exception_twin_sync::CustomStructTwinSync
 {
@@ -9887,10 +9868,8 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::dart_opaque::DartOpaqueNestedTwinNormal
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::dart_opaque::DartOpaqueNestedTwinNormal,
-    > for crate::api::dart_opaque::DartOpaqueNestedTwinNormal
+impl flutter_rust_bridge::IntoIntoDart<crate::api::dart_opaque::DartOpaqueNestedTwinNormal>
+    for crate::api::dart_opaque::DartOpaqueNestedTwinNormal
 {
     fn into_into_dart(self) -> crate::api::dart_opaque::DartOpaqueNestedTwinNormal {
         self
@@ -9912,7 +9891,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::dart_opaque_twin_rust_async::DartOpaqueNestedTwinRustAsync,
     > for crate::api::pseudo_manual::dart_opaque_twin_rust_async::DartOpaqueNestedTwinRustAsync
 {
@@ -9938,7 +9917,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueNestedTwinSync,
     > for crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueNestedTwinSync
 {
@@ -9957,8 +9936,11 @@ impl flutter_rust_bridge::IntoDart for crate::api::enumeration::DistanceTwinNorm
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive for crate::api::enumeration::DistanceTwinNormal {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::enumeration::DistanceTwinNormal>
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::enumeration::DistanceTwinNormal
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::enumeration::DistanceTwinNormal>
     for crate::api::enumeration::DistanceTwinNormal
 {
     fn into_into_dart(self) -> crate::api::enumeration::DistanceTwinNormal {
@@ -9976,12 +9958,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync,
     > for crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync
 {
@@ -10002,12 +9984,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwinSync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwinSync,
     > for crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwinSync
 {
@@ -10030,7 +10012,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::optional::ElementTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::optional::ElementTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::optional::ElementTwinNormal>
     for crate::api::optional::ElementTwinNormal
 {
     fn into_into_dart(self) -> crate::api::optional::ElementTwinNormal {
@@ -10055,7 +10037,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync,
     > for crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync
 {
@@ -10083,7 +10065,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync,
     > for crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync
 {
@@ -10100,7 +10082,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::misc_type::EmptyTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::misc_type::EmptyTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::misc_type::EmptyTwinNormal>
     for crate::api::misc_type::EmptyTwinNormal
 {
     fn into_into_dart(self) -> crate::api::misc_type::EmptyTwinNormal {
@@ -10119,7 +10101,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::misc_type_twin_rust_async::EmptyTwinRustAsync,
     > for crate::api::pseudo_manual::misc_type_twin_rust_async::EmptyTwinRustAsync
 {
@@ -10141,9 +10123,8 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::pseudo_manual::misc_type_twin_sync::EmptyTwinSync,
-    > for crate::api::pseudo_manual::misc_type_twin_sync::EmptyTwinSync
+    flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::misc_type_twin_sync::EmptyTwinSync>
+    for crate::api::pseudo_manual::misc_type_twin_sync::EmptyTwinSync
 {
     fn into_into_dart(self) -> crate::api::pseudo_manual::misc_type_twin_sync::EmptyTwinSync {
         self
@@ -10158,11 +10139,11 @@ impl flutter_rust_bridge::IntoDart for crate::api::dart_opaque::EnumDartOpaqueTw
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::dart_opaque::EnumDartOpaqueTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::dart_opaque::EnumDartOpaqueTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::dart_opaque::EnumDartOpaqueTwinNormal>
     for crate::api::dart_opaque::EnumDartOpaqueTwinNormal
 {
     fn into_into_dart(self) -> crate::api::dart_opaque::EnumDartOpaqueTwinNormal {
@@ -10180,12 +10161,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartOpaqueTwinRustAsync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartOpaqueTwinRustAsync,
     > for crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartOpaqueTwinRustAsync
 {
@@ -10206,12 +10187,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::dart_opaque_twin_sync::EnumDartOpaqueTwinSync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::dart_opaque_twin_sync::EnumDartOpaqueTwinSync,
     > for crate::api::pseudo_manual::dart_opaque_twin_sync::EnumDartOpaqueTwinSync
 {
@@ -10233,11 +10214,11 @@ impl flutter_rust_bridge::IntoDart for crate::api::rust_opaque::EnumOpaqueTwinNo
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::rust_opaque::EnumOpaqueTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::rust_opaque::EnumOpaqueTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::rust_opaque::EnumOpaqueTwinNormal>
     for crate::api::rust_opaque::EnumOpaqueTwinNormal
 {
     fn into_into_dart(self) -> crate::api::rust_opaque::EnumOpaqueTwinNormal {
@@ -10258,12 +10239,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync,
     > for crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync
 {
@@ -10287,12 +10268,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync,
     > for crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync
 {
@@ -10315,7 +10296,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::enumeration::EnumSimpleTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::enumeration::EnumSimpleTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::enumeration::EnumSimpleTwinNormal>
     for crate::api::enumeration::EnumSimpleTwinNormal
 {
     fn into_into_dart(self) -> crate::api::enumeration::EnumSimpleTwinNormal {
@@ -10338,7 +10319,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync,
     > for crate::api::pseudo_manual::enumeration_twin_rust_async::EnumSimpleTwinRustAsync
 {
@@ -10364,7 +10345,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync,
     > for crate::api::pseudo_manual::enumeration_twin_sync::EnumSimpleTwinSync
 {
@@ -10384,14 +10365,12 @@ impl flutter_rust_bridge::IntoDart for crate::api::enumeration::EnumWithItemMixe
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::enumeration::EnumWithItemMixedTwinNormal
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::enumeration::EnumWithItemMixedTwinNormal,
-    > for crate::api::enumeration::EnumWithItemMixedTwinNormal
+impl flutter_rust_bridge::IntoIntoDart<crate::api::enumeration::EnumWithItemMixedTwinNormal>
+    for crate::api::enumeration::EnumWithItemMixedTwinNormal
 {
     fn into_into_dart(self) -> crate::api::enumeration::EnumWithItemMixedTwinNormal {
         self
@@ -10409,12 +10388,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRustAsync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRustAsync,
     > for crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRustAsync
 {
@@ -10437,12 +10416,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync,
     > for crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync
 {
@@ -10461,14 +10440,12 @@ impl flutter_rust_bridge::IntoDart for crate::api::enumeration::EnumWithItemStru
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::enumeration::EnumWithItemStructTwinNormal
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::enumeration::EnumWithItemStructTwinNormal,
-    > for crate::api::enumeration::EnumWithItemStructTwinNormal
+impl flutter_rust_bridge::IntoIntoDart<crate::api::enumeration::EnumWithItemStructTwinNormal>
+    for crate::api::enumeration::EnumWithItemStructTwinNormal
 {
     fn into_into_dart(self) -> crate::api::enumeration::EnumWithItemStructTwinNormal {
         self
@@ -10485,12 +10462,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemStructTwinRustAsync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemStructTwinRustAsync,
     > for crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemStructTwinRustAsync
 {
@@ -10512,12 +10489,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync,
     > for crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync
 {
@@ -10536,14 +10513,12 @@ impl flutter_rust_bridge::IntoDart for crate::api::enumeration::EnumWithItemTupl
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::enumeration::EnumWithItemTupleTwinNormal
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::enumeration::EnumWithItemTupleTwinNormal,
-    > for crate::api::enumeration::EnumWithItemTupleTwinNormal
+impl flutter_rust_bridge::IntoIntoDart<crate::api::enumeration::EnumWithItemTupleTwinNormal>
+    for crate::api::enumeration::EnumWithItemTupleTwinNormal
 {
     fn into_into_dart(self) -> crate::api::enumeration::EnumWithItemTupleTwinNormal {
         self
@@ -10560,12 +10535,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync,
     > for crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync
 {
@@ -10587,12 +10562,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync,
     > for crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync
 {
@@ -10615,7 +10590,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::event_listener::EventTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::event_listener::EventTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::event_listener::EventTwinNormal>
     for crate::api::event_listener::EventTwinNormal
 {
     fn into_into_dart(self) -> crate::api::event_listener::EventTwinNormal {
@@ -10638,7 +10613,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync,
     > for crate::api::pseudo_manual::event_listener_twin_rust_async::EventTwinRustAsync
 {
@@ -10664,7 +10639,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::event_listener_twin_sync::EventTwinSync,
     > for crate::api::pseudo_manual::event_listener_twin_sync::EventTwinSync
 {
@@ -10697,7 +10672,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::optional::ExoticOptionalsTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::optional::ExoticOptionalsTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::optional::ExoticOptionalsTwinNormal>
     for crate::api::optional::ExoticOptionalsTwinNormal
 {
     fn into_into_dart(self) -> crate::api::optional::ExoticOptionalsTwinNormal {
@@ -10732,7 +10707,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::optional_twin_rust_async::ExoticOptionalsTwinRustAsync,
     > for crate::api::pseudo_manual::optional_twin_rust_async::ExoticOptionalsTwinRustAsync
 {
@@ -10770,7 +10745,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::optional_twin_sync::ExoticOptionalsTwinSync,
     > for crate::api::pseudo_manual::optional_twin_sync::ExoticOptionalsTwinSync
 {
@@ -10793,7 +10768,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::uuid_type::FeatureUuidTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::uuid_type::FeatureUuidTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::uuid_type::FeatureUuidTwinNormal>
     for crate::api::uuid_type::FeatureUuidTwinNormal
 {
     fn into_into_dart(self) -> crate::api::uuid_type::FeatureUuidTwinNormal {
@@ -10816,7 +10791,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuidTwinRustAsync,
     > for crate::api::pseudo_manual::uuid_type_twin_rust_async::FeatureUuidTwinRustAsync
 {
@@ -10842,7 +10817,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSync,
     > for crate::api::pseudo_manual::uuid_type_twin_sync::FeatureUuidTwinSync
 {
@@ -10859,7 +10834,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::array::FeedIdTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::array::FeedIdTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::array::FeedIdTwinNormal>
     for crate::api::array::FeedIdTwinNormal
 {
     fn into_into_dart(self) -> crate::api::array::FeedIdTwinNormal {
@@ -10878,7 +10853,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync,
     > for crate::api::pseudo_manual::array_twin_rust_async::FeedIdTwinRustAsync
 {
@@ -10897,10 +10872,8 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync,
-    > for crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync
+impl flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync>
+    for crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync
 {
     fn into_into_dart(self) -> crate::api::pseudo_manual::array_twin_sync::FeedIdTwinSync {
         self
@@ -10936,11 +10909,11 @@ impl flutter_rust_bridge::IntoDart for crate::api::enumeration::KitchenSinkTwinN
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::enumeration::KitchenSinkTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::enumeration::KitchenSinkTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::enumeration::KitchenSinkTwinNormal>
     for crate::api::enumeration::KitchenSinkTwinNormal
 {
     fn into_into_dart(self) -> crate::api::enumeration::KitchenSinkTwinNormal {
@@ -10979,12 +10952,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync,
     > for crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync
 {
@@ -11026,12 +10999,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync,
     > for crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync
 {
@@ -11050,7 +11023,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for mirror_ListOfNestedRawStringMirrored
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_ListOfNestedRawStringMirrored>
+impl flutter_rust_bridge::IntoIntoDart<mirror_ListOfNestedRawStringMirrored>
     for crate::api::pseudo_manual::mirror_twin_sync::ListOfNestedRawStringMirrored
 {
     fn into_into_dart(self) -> mirror_ListOfNestedRawStringMirrored {
@@ -11070,7 +11043,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::method::Log2TwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::method::Log2TwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::method::Log2TwinNormal>
     for crate::api::method::Log2TwinNormal
 {
     fn into_into_dart(self) -> crate::api::method::Log2TwinNormal {
@@ -11093,7 +11066,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync,
     > for crate::api::pseudo_manual::method_twin_rust_async::Log2TwinRustAsync
 {
@@ -11116,10 +11089,8 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::method_twin_sync::Log2TwinSync
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::pseudo_manual::method_twin_sync::Log2TwinSync,
-    > for crate::api::pseudo_manual::method_twin_sync::Log2TwinSync
+impl flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::method_twin_sync::Log2TwinSync>
+    for crate::api::pseudo_manual::method_twin_sync::Log2TwinSync
 {
     fn into_into_dart(self) -> crate::api::pseudo_manual::method_twin_sync::Log2TwinSync {
         self
@@ -11138,7 +11109,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::stream::LogTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::stream::LogTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::stream::LogTwinNormal>
     for crate::api::stream::LogTwinNormal
 {
     fn into_into_dart(self) -> crate::api::stream::LogTwinNormal {
@@ -11161,7 +11132,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync,
     > for crate::api::pseudo_manual::stream_twin_rust_async::LogTwinRustAsync
 {
@@ -11178,7 +11149,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::inside_macro::MacroStruct
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::inside_macro::MacroStruct>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::inside_macro::MacroStruct>
     for crate::api::inside_macro::MacroStruct
 {
     fn into_into_dart(self) -> crate::api::inside_macro::MacroStruct {
@@ -11194,8 +11165,11 @@ impl flutter_rust_bridge::IntoDart for crate::api::enumeration::MeasureTwinNorma
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive for crate::api::enumeration::MeasureTwinNormal {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::enumeration::MeasureTwinNormal>
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::enumeration::MeasureTwinNormal
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::enumeration::MeasureTwinNormal>
     for crate::api::enumeration::MeasureTwinNormal
 {
     fn into_into_dart(self) -> crate::api::enumeration::MeasureTwinNormal {
@@ -11213,12 +11187,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTwinRustAsync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTwinRustAsync,
     > for crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTwinRustAsync
 {
@@ -11239,12 +11213,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwinSync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwinSync,
     > for crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwinSync
 {
@@ -11261,7 +11235,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::array::MessageIdTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::array::MessageIdTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::array::MessageIdTwinNormal>
     for crate::api::array::MessageIdTwinNormal
 {
     fn into_into_dart(self) -> crate::api::array::MessageIdTwinNormal {
@@ -11280,7 +11254,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::array_twin_rust_async::MessageIdTwinRustAsync,
     > for crate::api::pseudo_manual::array_twin_rust_async::MessageIdTwinRustAsync
 {
@@ -11302,9 +11276,8 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync,
-    > for crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync
+    flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync>
+    for crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync
 {
     fn into_into_dart(self) -> crate::api::pseudo_manual::array_twin_sync::MessageIdTwinSync {
         self
@@ -11325,7 +11298,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::mirror::MirrorStructTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::mirror::MirrorStructTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::mirror::MirrorStructTwinNormal>
     for crate::api::mirror::MirrorStructTwinNormal
 {
     fn into_into_dart(self) -> crate::api::mirror::MirrorStructTwinNormal {
@@ -11350,7 +11323,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync,
     > for crate::api::pseudo_manual::mirror_twin_rust_async::MirrorStructTwinRustAsync
 {
@@ -11378,7 +11351,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync,
     > for crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync
 {
@@ -11404,7 +11377,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::raw_string::MoreThanJustOneRawStringStructTwinNormal,
     > for crate::api::raw_string::MoreThanJustOneRawStringStructTwinNormal
 {
@@ -11423,7 +11396,7 @@ self.another.into_into_dart().into_dart()
                 }
             }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::pseudo_manual::raw_string_twin_rust_async::MoreThanJustOneRawStringStructTwinRustAsync {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::pseudo_manual::raw_string_twin_rust_async::MoreThanJustOneRawStringStructTwinRustAsync> for crate::api::pseudo_manual::raw_string_twin_rust_async::MoreThanJustOneRawStringStructTwinRustAsync {
+impl flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::raw_string_twin_rust_async::MoreThanJustOneRawStringStructTwinRustAsync> for crate::api::pseudo_manual::raw_string_twin_rust_async::MoreThanJustOneRawStringStructTwinRustAsync {
             fn into_into_dart(self) -> crate::api::pseudo_manual::raw_string_twin_rust_async::MoreThanJustOneRawStringStructTwinRustAsync {
                 self
             }
@@ -11446,7 +11419,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::raw_string_twin_sync::MoreThanJustOneRawStringStructTwinSync,
     > for crate::api::pseudo_manual::raw_string_twin_sync::MoreThanJustOneRawStringStructTwinSync
 {
@@ -11470,7 +11443,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::auxiliary::sample_types::MyEnum
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::auxiliary::sample_types::MyEnum>
+impl flutter_rust_bridge::IntoIntoDart<crate::auxiliary::sample_types::MyEnum>
     for crate::auxiliary::sample_types::MyEnum
 {
     fn into_into_dart(self) -> crate::auxiliary::sample_types::MyEnum {
@@ -11490,8 +11463,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::misc_example::MyNestedStructTwinNormal
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::misc_example::MyNestedStructTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::misc_example::MyNestedStructTwinNormal>
     for crate::api::misc_example::MyNestedStructTwinNormal
 {
     fn into_into_dart(self) -> crate::api::misc_example::MyNestedStructTwinNormal {
@@ -11514,7 +11486,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::misc_example_twin_rust_async::MyNestedStructTwinRustAsync,
     > for crate::api::pseudo_manual::misc_example_twin_rust_async::MyNestedStructTwinRustAsync
 {
@@ -11540,7 +11512,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::misc_example_twin_sync::MyNestedStructTwinSync,
     > for crate::api::pseudo_manual::misc_example_twin_sync::MyNestedStructTwinSync
 {
@@ -11563,7 +11535,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::auxiliary::sample_types::MySize
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::auxiliary::sample_types::MySize>
+impl flutter_rust_bridge::IntoIntoDart<crate::auxiliary::sample_types::MySize>
     for crate::auxiliary::sample_types::MySize
 {
     fn into_into_dart(self) -> crate::auxiliary::sample_types::MySize {
@@ -11579,7 +11551,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::stream::MyStreamEntryTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::stream::MyStreamEntryTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::stream::MyStreamEntryTwinNormal>
     for crate::api::stream::MyStreamEntryTwinNormal
 {
     fn into_into_dart(self) -> crate::api::stream::MyStreamEntryTwinNormal {
@@ -11598,7 +11570,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync,
     > for crate::api::pseudo_manual::stream_twin_rust_async::MyStreamEntryTwinRustAsync
 {
@@ -11617,7 +11589,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::auxiliary::sample_types::MyStruct
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::auxiliary::sample_types::MyStruct>
+impl flutter_rust_bridge::IntoIntoDart<crate::auxiliary::sample_types::MyStruct>
     for crate::auxiliary::sample_types::MyStruct
 {
     fn into_into_dart(self) -> crate::auxiliary::sample_types::MyStruct {
@@ -11639,7 +11611,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::misc_example::MyTreeNodeTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::misc_example::MyTreeNodeTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::misc_example::MyTreeNodeTwinNormal>
     for crate::api::misc_example::MyTreeNodeTwinNormal
 {
     fn into_into_dart(self) -> crate::api::misc_example::MyTreeNodeTwinNormal {
@@ -11664,7 +11636,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync,
     > for crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync
 {
@@ -11692,7 +11664,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinSync,
     > for crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinSync
 {
@@ -11711,7 +11683,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for mirror_NestedRawStringMirrored
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_NestedRawStringMirrored>
+impl flutter_rust_bridge::IntoIntoDart<mirror_NestedRawStringMirrored>
     for crate::api::pseudo_manual::mirror_twin_sync::NestedRawStringMirrored
 {
     fn into_into_dart(self) -> mirror_NestedRawStringMirrored {
@@ -11730,7 +11702,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::auxiliary::new_module_system::sub_module::NewSimpleStruct,
     > for crate::auxiliary::new_module_system::sub_module::NewSimpleStruct
 {
@@ -11747,7 +11719,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::newtype_pattern::NewTypeIntTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::newtype_pattern::NewTypeIntTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::newtype_pattern::NewTypeIntTwinNormal>
     for crate::api::newtype_pattern::NewTypeIntTwinNormal
 {
     fn into_into_dart(self) -> crate::api::newtype_pattern::NewTypeIntTwinNormal {
@@ -11766,7 +11738,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::newtype_pattern_twin_rust_async::NewTypeIntTwinRustAsync,
     > for crate::api::pseudo_manual::newtype_pattern_twin_rust_async::NewTypeIntTwinRustAsync
 {
@@ -11788,7 +11760,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntTwinSync,
     > for crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntTwinSync
 {
@@ -11804,7 +11776,7 @@ impl flutter_rust_bridge::IntoDart for mirror_Numbers {
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for mirror_Numbers {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_Numbers>
+impl flutter_rust_bridge::IntoIntoDart<mirror_Numbers>
     for crate::api::pseudo_manual::mirror_twin_sync::Numbers
 {
     fn into_into_dart(self) -> mirror_Numbers {
@@ -11823,7 +11795,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::auxiliary::old_module_system::sub_module::OldSimpleStruct,
     > for crate::auxiliary::old_module_system::sub_module::OldSimpleStruct
 {
@@ -11844,7 +11816,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::rust_opaque::OpaqueNestedTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::rust_opaque::OpaqueNestedTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::rust_opaque::OpaqueNestedTwinNormal>
     for crate::api::rust_opaque::OpaqueNestedTwinNormal
 {
     fn into_into_dart(self) -> crate::api::rust_opaque::OpaqueNestedTwinNormal {
@@ -11867,7 +11839,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::rust_opaque_twin_rust_async::OpaqueNestedTwinRustAsync,
     > for crate::api::pseudo_manual::rust_opaque_twin_rust_async::OpaqueNestedTwinRustAsync
 {
@@ -11893,7 +11865,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::rust_opaque_twin_sync::OpaqueNestedTwinSync,
     > for crate::api::pseudo_manual::rust_opaque_twin_sync::OpaqueNestedTwinSync
 {
@@ -11918,7 +11890,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::optional::OptVecsTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::optional::OptVecsTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::optional::OptVecsTwinNormal>
     for crate::api::optional::OptVecsTwinNormal
 {
     fn into_into_dart(self) -> crate::api::optional::OptVecsTwinNormal {
@@ -11943,7 +11915,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::optional_twin_rust_async::OptVecsTwinRustAsync,
     > for crate::api::pseudo_manual::optional_twin_rust_async::OptVecsTwinRustAsync
 {
@@ -11971,7 +11943,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::optional_twin_sync::OptVecsTwinSync,
     > for crate::api::pseudo_manual::optional_twin_sync::OptVecsTwinSync
 {
@@ -11992,7 +11964,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::array::PointTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::array::PointTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::array::PointTwinNormal>
     for crate::api::array::PointTwinNormal
 {
     fn into_into_dart(self) -> crate::api::array::PointTwinNormal {
@@ -12015,7 +11987,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync,
     > for crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync
 {
@@ -12038,10 +12010,8 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::array_twin_sync::PointTwinSync
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::pseudo_manual::array_twin_sync::PointTwinSync,
-    > for crate::api::pseudo_manual::array_twin_sync::PointTwinSync
+impl flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::array_twin_sync::PointTwinSync>
+    for crate::api::pseudo_manual::array_twin_sync::PointTwinSync
 {
     fn into_into_dart(self) -> crate::api::pseudo_manual::array_twin_sync::PointTwinSync {
         self
@@ -12063,8 +12033,8 @@ impl flutter_rust_bridge::IntoDart for mirror_RawStringEnumMirrored {
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive for mirror_RawStringEnumMirrored {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_RawStringEnumMirrored>
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for mirror_RawStringEnumMirrored {}
+impl flutter_rust_bridge::IntoIntoDart<mirror_RawStringEnumMirrored>
     for crate::api::pseudo_manual::mirror_twin_sync::RawStringEnumMirrored
 {
     fn into_into_dart(self) -> mirror_RawStringEnumMirrored {
@@ -12080,10 +12050,8 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::raw_string::RawStringItemStructTwinNormal
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::raw_string::RawStringItemStructTwinNormal,
-    > for crate::api::raw_string::RawStringItemStructTwinNormal
+impl flutter_rust_bridge::IntoIntoDart<crate::api::raw_string::RawStringItemStructTwinNormal>
+    for crate::api::raw_string::RawStringItemStructTwinNormal
 {
     fn into_into_dart(self) -> crate::api::raw_string::RawStringItemStructTwinNormal {
         self
@@ -12101,7 +12069,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::raw_string_twin_rust_async::RawStringItemStructTwinRustAsync,
     > for crate::api::pseudo_manual::raw_string_twin_rust_async::RawStringItemStructTwinRustAsync
 {
@@ -12124,7 +12092,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::raw_string_twin_sync::RawStringItemStructTwinSync,
     > for crate::api::pseudo_manual::raw_string_twin_sync::RawStringItemStructTwinSync
 {
@@ -12140,7 +12108,7 @@ impl flutter_rust_bridge::IntoDart for mirror_RawStringMirrored {
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for mirror_RawStringMirrored {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_RawStringMirrored>
+impl flutter_rust_bridge::IntoIntoDart<mirror_RawStringMirrored>
     for crate::api::pseudo_manual::mirror_twin_sync::RawStringMirrored
 {
     fn into_into_dart(self) -> mirror_RawStringMirrored {
@@ -12153,7 +12121,7 @@ impl flutter_rust_bridge::IntoDart for mirror_Sequences {
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for mirror_Sequences {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<mirror_Sequences>
+impl flutter_rust_bridge::IntoIntoDart<mirror_Sequences>
     for crate::api::pseudo_manual::mirror_twin_sync::Sequences
 {
     fn into_into_dart(self) -> mirror_Sequences {
@@ -12169,7 +12137,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::exception::SomeStructTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::exception::SomeStructTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::exception::SomeStructTwinNormal>
     for crate::api::exception::SomeStructTwinNormal
 {
     fn into_into_dart(self) -> crate::api::exception::SomeStructTwinNormal {
@@ -12188,7 +12156,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::exception_twin_rust_async::SomeStructTwinRustAsync,
     > for crate::api::pseudo_manual::exception_twin_rust_async::SomeStructTwinRustAsync
 {
@@ -12210,7 +12178,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::exception_twin_sync::SomeStructTwinSync,
     > for crate::api::pseudo_manual::exception_twin_sync::SomeStructTwinSync
 {
@@ -12227,8 +12195,11 @@ impl flutter_rust_bridge::IntoDart for crate::api::enumeration::SpeedTwinNormal 
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive for crate::api::enumeration::SpeedTwinNormal {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::enumeration::SpeedTwinNormal>
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::enumeration::SpeedTwinNormal
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::enumeration::SpeedTwinNormal>
     for crate::api::enumeration::SpeedTwinNormal
 {
     fn into_into_dart(self) -> crate::api::enumeration::SpeedTwinNormal {
@@ -12246,12 +12217,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::enumeration_twin_rust_async::SpeedTwinRustAsync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::enumeration_twin_rust_async::SpeedTwinRustAsync,
     > for crate::api::pseudo_manual::enumeration_twin_rust_async::SpeedTwinRustAsync
 {
@@ -12272,12 +12243,12 @@ impl flutter_rust_bridge::IntoDart
         .into_dart()
     }
 }
-impl flutter_rust_bridge::IntoDartExceptPrimitive
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSync
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSync,
     > for crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSync
 {
@@ -12298,8 +12269,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::misc_example::StructWithEnumTwinNormal
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::misc_example::StructWithEnumTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::misc_example::StructWithEnumTwinNormal>
     for crate::api::misc_example::StructWithEnumTwinNormal
 {
     fn into_into_dart(self) -> crate::api::misc_example::StructWithEnumTwinNormal {
@@ -12322,7 +12292,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::misc_example_twin_rust_async::StructWithEnumTwinRustAsync,
     > for crate::api::pseudo_manual::misc_example_twin_rust_async::StructWithEnumTwinRustAsync
 {
@@ -12348,7 +12318,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnumTwinSync,
     > for crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnumTwinSync
 {
@@ -12367,10 +12337,8 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::structure::StructWithOneFieldTwinNormal
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::structure::StructWithOneFieldTwinNormal,
-    > for crate::api::structure::StructWithOneFieldTwinNormal
+impl flutter_rust_bridge::IntoIntoDart<crate::api::structure::StructWithOneFieldTwinNormal>
+    for crate::api::structure::StructWithOneFieldTwinNormal
 {
     fn into_into_dart(self) -> crate::api::structure::StructWithOneFieldTwinNormal {
         self
@@ -12388,7 +12356,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::structure_twin_rust_async::StructWithOneFieldTwinRustAsync,
     > for crate::api::pseudo_manual::structure_twin_rust_async::StructWithOneFieldTwinRustAsync
 {
@@ -12410,7 +12378,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::structure_twin_sync::StructWithOneFieldTwinSync,
     > for crate::api::pseudo_manual::structure_twin_sync::StructWithOneFieldTwinSync
 {
@@ -12433,10 +12401,8 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::structure::StructWithTwoFieldTwinNormal
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::structure::StructWithTwoFieldTwinNormal,
-    > for crate::api::structure::StructWithTwoFieldTwinNormal
+impl flutter_rust_bridge::IntoIntoDart<crate::api::structure::StructWithTwoFieldTwinNormal>
+    for crate::api::structure::StructWithTwoFieldTwinNormal
 {
     fn into_into_dart(self) -> crate::api::structure::StructWithTwoFieldTwinNormal {
         self
@@ -12458,7 +12424,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::structure_twin_rust_async::StructWithTwoFieldTwinRustAsync,
     > for crate::api::pseudo_manual::structure_twin_rust_async::StructWithTwoFieldTwinRustAsync
 {
@@ -12484,7 +12450,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFieldTwinSync,
     > for crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFieldTwinSync
 {
@@ -12503,10 +12469,8 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::structure::StructWithZeroFieldTwinNormal
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::structure::StructWithZeroFieldTwinNormal,
-    > for crate::api::structure::StructWithZeroFieldTwinNormal
+impl flutter_rust_bridge::IntoIntoDart<crate::api::structure::StructWithZeroFieldTwinNormal>
+    for crate::api::structure::StructWithZeroFieldTwinNormal
 {
     fn into_into_dart(self) -> crate::api::structure::StructWithZeroFieldTwinNormal {
         self
@@ -12524,7 +12488,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::structure_twin_rust_async::StructWithZeroFieldTwinRustAsync,
     > for crate::api::pseudo_manual::structure_twin_rust_async::StructWithZeroFieldTwinRustAsync
 {
@@ -12547,7 +12511,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync,
     > for crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync
 {
@@ -12566,7 +12530,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::method::SumWithTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::method::SumWithTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::method::SumWithTwinNormal>
     for crate::api::method::SumWithTwinNormal
 {
     fn into_into_dart(self) -> crate::api::method::SumWithTwinNormal {
@@ -12585,7 +12549,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync,
     > for crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync
 {
@@ -12606,10 +12570,8 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync,
-    > for crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync
+impl flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync>
+    for crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync
 {
     fn into_into_dart(self) -> crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync {
         self
@@ -12629,7 +12591,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::chrono_type::TestChronoTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::chrono_type::TestChronoTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::chrono_type::TestChronoTwinNormal>
     for crate::api::chrono_type::TestChronoTwinNormal
 {
     fn into_into_dart(self) -> crate::api::chrono_type::TestChronoTwinNormal {
@@ -12653,7 +12615,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::chrono_type_twin_rust_async::TestChronoTwinRustAsync,
     > for crate::api::pseudo_manual::chrono_type_twin_rust_async::TestChronoTwinRustAsync
 {
@@ -12680,7 +12642,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::chrono_type_twin_sync::TestChronoTwinSync,
     > for crate::api::pseudo_manual::chrono_type_twin_sync::TestChronoTwinSync
 {
@@ -12699,7 +12661,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::array::TestIdTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::array::TestIdTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::array::TestIdTwinNormal>
     for crate::api::array::TestIdTwinNormal
 {
     fn into_into_dart(self) -> crate::api::array::TestIdTwinNormal {
@@ -12718,7 +12680,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync,
     > for crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync
 {
@@ -12737,10 +12699,8 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync,
-    > for crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync
+impl flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync>
+    for crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync
 {
     fn into_into_dart(self) -> crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync {
         self
@@ -12761,7 +12721,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::type_alias::TestModelTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::type_alias::TestModelTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::type_alias::TestModelTwinNormal>
     for crate::api::type_alias::TestModelTwinNormal
 {
     fn into_into_dart(self) -> crate::api::type_alias::TestModelTwinNormal {
@@ -12786,7 +12746,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::type_alias_twin_rust_async::TestModelTwinRustAsync,
     > for crate::api::pseudo_manual::type_alias_twin_rust_async::TestModelTwinRustAsync
 {
@@ -12814,7 +12774,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::type_alias_twin_sync::TestModelTwinSync,
     > for crate::api::pseudo_manual::type_alias_twin_sync::TestModelTwinSync
 {
@@ -12831,10 +12791,8 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::structure::TupleStructWithOneFieldTwinNormal
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::structure::TupleStructWithOneFieldTwinNormal,
-    > for crate::api::structure::TupleStructWithOneFieldTwinNormal
+impl flutter_rust_bridge::IntoIntoDart<crate::api::structure::TupleStructWithOneFieldTwinNormal>
+    for crate::api::structure::TupleStructWithOneFieldTwinNormal
 {
     fn into_into_dart(self) -> crate::api::structure::TupleStructWithOneFieldTwinNormal {
         self
@@ -12852,7 +12810,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithOneFieldTwinRustAsync,
     >
     for crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithOneFieldTwinRustAsync
@@ -12876,7 +12834,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync,
     > for crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync
 {
@@ -12899,10 +12857,8 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::structure::TupleStructWithTwoFieldTwinNormal
 {
 }
-impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::structure::TupleStructWithTwoFieldTwinNormal,
-    > for crate::api::structure::TupleStructWithTwoFieldTwinNormal
+impl flutter_rust_bridge::IntoIntoDart<crate::api::structure::TupleStructWithTwoFieldTwinNormal>
+    for crate::api::structure::TupleStructWithTwoFieldTwinNormal
 {
     fn into_into_dart(self) -> crate::api::structure::TupleStructWithTwoFieldTwinNormal {
         self
@@ -12924,7 +12880,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithTwoFieldTwinRustAsync,
     >
     for crate::api::pseudo_manual::structure_twin_rust_async::TupleStructWithTwoFieldTwinRustAsync
@@ -12952,7 +12908,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwoFieldTwinSync,
     > for crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwoFieldTwinSync
 {
@@ -12971,7 +12927,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::attribute::UserIdTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::attribute::UserIdTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::attribute::UserIdTwinNormal>
     for crate::api::attribute::UserIdTwinNormal
 {
     fn into_into_dart(self) -> crate::api::attribute::UserIdTwinNormal {
@@ -12990,7 +12946,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::attribute_twin_rust_async::UserIdTwinRustAsync,
     > for crate::api::pseudo_manual::attribute_twin_rust_async::UserIdTwinRustAsync
 {
@@ -13012,7 +12968,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::attribute_twin_sync::UserIdTwinSync,
     > for crate::api::pseudo_manual::attribute_twin_sync::UserIdTwinSync
 {
@@ -13045,9 +13001,8 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
-        crate::api::primitive_list_misc::VecOfPrimitivePackTwinNormal,
-    > for crate::api::primitive_list_misc::VecOfPrimitivePackTwinNormal
+    flutter_rust_bridge::IntoIntoDart<crate::api::primitive_list_misc::VecOfPrimitivePackTwinNormal>
+    for crate::api::primitive_list_misc::VecOfPrimitivePackTwinNormal
 {
     fn into_into_dart(self) -> crate::api::primitive_list_misc::VecOfPrimitivePackTwinNormal {
         self
@@ -13071,7 +13026,7 @@ self.bool_list.into_into_dart().into_dart()
                 }
             }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::VecOfPrimitivePackTwinRustAsync {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::VecOfPrimitivePackTwinRustAsync> for crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::VecOfPrimitivePackTwinRustAsync {
+impl flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::VecOfPrimitivePackTwinRustAsync> for crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::VecOfPrimitivePackTwinRustAsync {
             fn into_into_dart(self) -> crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::VecOfPrimitivePackTwinRustAsync {
                 self
             }
@@ -13101,7 +13056,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::primitive_list_misc_twin_sync::VecOfPrimitivePackTwinSync,
     > for crate::api::pseudo_manual::primitive_list_misc_twin_sync::VecOfPrimitivePackTwinSync
 {
@@ -13129,7 +13084,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::misc_example::WeekdaysTwinNormal
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::misc_example::WeekdaysTwinNormal>
+impl flutter_rust_bridge::IntoIntoDart<crate::api::misc_example::WeekdaysTwinNormal>
     for crate::api::misc_example::WeekdaysTwinNormal
 {
     fn into_into_dart(self) -> crate::api::misc_example::WeekdaysTwinNormal {
@@ -13157,7 +13112,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync,
     > for crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync
 {
@@ -13188,7 +13143,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync,
     > for crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync
 {
@@ -13220,7 +13175,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
 {
 }
 impl
-    flutter_rust_bridge::rust2dart::IntoIntoDart<
+    flutter_rust_bridge::IntoIntoDart<
         crate::api::primitive_list_misc::ZeroCopyVecOfPrimitivePackTwinNormal,
     > for crate::api::primitive_list_misc::ZeroCopyVecOfPrimitivePackTwinNormal
 {
@@ -13247,7 +13202,7 @@ self.float64list.into_into_dart().into_dart()
                 }
             }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::ZeroCopyVecOfPrimitivePackTwinRustAsync {}
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::ZeroCopyVecOfPrimitivePackTwinRustAsync> for crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::ZeroCopyVecOfPrimitivePackTwinRustAsync {
+impl flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::ZeroCopyVecOfPrimitivePackTwinRustAsync> for crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::ZeroCopyVecOfPrimitivePackTwinRustAsync {
             fn into_into_dart(self) -> crate::api::pseudo_manual::primitive_list_misc_twin_rust_async::ZeroCopyVecOfPrimitivePackTwinRustAsync {
                 self
             }
@@ -13275,7 +13230,7 @@ impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
     for crate::api::pseudo_manual::primitive_list_misc_twin_sync::ZeroCopyVecOfPrimitivePackTwinSync
 {
 }
-impl flutter_rust_bridge::rust2dart::IntoIntoDart<crate::api::pseudo_manual::primitive_list_misc_twin_sync::ZeroCopyVecOfPrimitivePackTwinSync> for crate::api::pseudo_manual::primitive_list_misc_twin_sync::ZeroCopyVecOfPrimitivePackTwinSync {
+impl flutter_rust_bridge::IntoIntoDart<crate::api::pseudo_manual::primitive_list_misc_twin_sync::ZeroCopyVecOfPrimitivePackTwinSync> for crate::api::pseudo_manual::primitive_list_misc_twin_sync::ZeroCopyVecOfPrimitivePackTwinSync {
             fn into_into_dart(self) -> crate::api::pseudo_manual::primitive_list_misc_twin_sync::ZeroCopyVecOfPrimitivePackTwinSync {
                 self
             }

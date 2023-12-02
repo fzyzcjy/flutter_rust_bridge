@@ -132,13 +132,13 @@ impl Wire2Api<Vec<String>> for *mut wire_StringList {
 impl Wire2Api<uuid::Uuid> for *mut wire_list_prim_u_8 {
     fn wire2api(self) -> uuid::Uuid {
         let single: Vec<u8> = self.wire2api();
-        flutter_rust_bridge::wire2api_uuid_ref(single.as_slice())
+        flutter_rust_bridge::for_generated::wire2api_uuid_ref(single.as_slice())
     }
 }
 impl Wire2Api<Vec<uuid::Uuid>> for *mut wire_list_prim_u_8 {
     fn wire2api(self) -> Vec<uuid::Uuid> {
         let multiple: Vec<u8> = self.wire2api();
-        flutter_rust_bridge::wire2api_uuids(multiple)
+        flutter_rust_bridge::for_generated::wire2api_uuids(multiple)
     }
 }
 impl Wire2Api<flutter_rust_bridge::ZeroCopyBuffer<Vec<u8>>> for *mut wire_list_prim_u_8 {
