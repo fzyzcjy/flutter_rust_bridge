@@ -2,6 +2,7 @@ use std::future::Future;
 use std::panic;
 use std::panic::UnwindSafe;
 use allo_isolate::IntoDart;
+use crate::handler::error::Error;
 use crate::handler::error_handler::ErrorHandler;
 use crate::handler::executor::Executor;
 use crate::handler::handler::{Handler, TaskRetFutTrait, WrapInfo};
