@@ -1,4 +1,5 @@
 pub(crate) mod transfer_closure;
+pub(crate) mod transfer;
 
 use crate::ffi::web::*;
 use js_sys::{global, Array};
