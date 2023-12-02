@@ -45,33 +45,6 @@ extern "C" {
     pub fn error(msg: &str);
 }
 
-type RawClosure<T> = Box<dyn FnOnce(&[T]) + Send + 'static>;
-
-pub struct TransferClosure<T> {
-    pub(crate) data: Vec<T>,
-    pub(crate) transfer: Vec<T>,
-    pub(crate) closure: RawClosure<T>,
-}
-
-pub struct TransferClosurePayload<T> {
-    pub(crate) func: RawClosure<T>,
-}
-
-impl TransferClosure<JsValue> {
-    pub fn new(
-        data: Vec<JsValue>,
-        transfer: Vec<JsValue>,
-        closure: impl FnOnce(&[JsValue]) + Send + 'static,
-    ) -> Self {
-        let closure = Box::new(closure);
-        Self {
-            data,
-            transfer,
-            closure,
-        }
-    }
-}
-
 #[derive(Debug)]
 pub struct ZeroCopyBuffer<T>(pub T);
 
