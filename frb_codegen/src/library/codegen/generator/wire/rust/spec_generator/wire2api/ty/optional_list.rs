@@ -43,8 +43,8 @@ impl<'a> WireRustGeneratorWire2apiTrait for OptionalListWireRustGenerator<'a> {
                 }],
                 return_type:  Some(format!("*mut {}", self.rust_wire_type(Target::Io))),
                 body: format!(
-                    "let wrap = {} {{ ptr: flutter_rust_bridge::support::new_leak_vec_ptr(core::ptr::null_mut(), len), len }};
-                    flutter_rust_bridge::support::new_leak_box_ptr(wrap)",
+                    "let wrap = {} {{ ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(core::ptr::null_mut(), len), len }};
+                    flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)",
                     self.rust_wire_type(Target::Io)
                 ),
                 target: Target::Io,

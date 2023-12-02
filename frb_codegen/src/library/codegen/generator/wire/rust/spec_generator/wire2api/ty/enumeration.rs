@@ -159,8 +159,8 @@ impl<'a> EnumRefWireRustGenerator<'a> {
             params: vec![],
             return_type: Some(format!("*mut {}Kind", self.ir.ident.0.name)),
             body: format!(
-                "flutter_rust_bridge::support::new_leak_box_ptr({}Kind {{
-                    {}: flutter_rust_bridge::support::new_leak_box_ptr({} {{
+                "flutter_rust_bridge::for_generated::new_leak_box_ptr({}Kind {{
+                    {}: flutter_rust_bridge::for_generated::new_leak_box_ptr({} {{
                         {}
                     }})
                 }})",
@@ -231,8 +231,8 @@ fn generate_impl_wire2api_body_variant(
             } else {
                 format!(
                     "{idx} => unsafe {{
-                        let ans = flutter_rust_bridge::support::box_from_leak_ptr(self.kind);
-                        let ans = flutter_rust_bridge::support::box_from_leak_ptr(ans.{variant_name});
+                        let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(self.kind);
+                        let ans = flutter_rust_bridge::for_generated::box_from_leak_ptr(ans.{variant_name});
                         {enum_name}::{variant_name}{left}{fields}{right}
                     }}",
                 )

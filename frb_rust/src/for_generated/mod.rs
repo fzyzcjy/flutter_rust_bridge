@@ -4,5 +4,8 @@
 mod cast;
 mod pointer;
 
+pub use crate::handler::handler::FfiCallMode;
+pub use crate::handler::handler::TaskInfo;
+pub use crate::platform_types::MessagePort;
 pub use cast::*;
 pub use pointer::*;

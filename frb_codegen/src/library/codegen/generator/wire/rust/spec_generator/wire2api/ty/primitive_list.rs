@@ -34,8 +34,8 @@ impl<'a> WireRustGeneratorWire2apiTrait for PrimitiveListWireRustGenerator<'a> {
             wasm: Some("self.into_vec()".into()),
             io: Some(
                 "unsafe {
-                    let wrap = flutter_rust_bridge::support::box_from_leak_ptr(self);
-                    flutter_rust_bridge::support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+                    let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
+                    flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
                 }"
                 .into(),
             ),
@@ -50,7 +50,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for PrimitiveListWireRustGenerator<'a> {
                 format!(
                     "let buf = self.dyn_into::<{}>().unwrap();
                     let buf = flutter_rust_bridge::js_sys::Uint8Array::new(&buf.buffer());
-                    flutter_rust_bridge::support::slice_from_byte_buffer(buf.to_vec()).into()",
+                    flutter_rust_bridge::for_generated::slice_from_byte_buffer(buf.to_vec()).into()",
                     rust_wasm_wire_type(&self.ir)
                 )
                 .into(),
@@ -80,8 +80,8 @@ impl<'a> WireRustGeneratorWire2apiTrait for PrimitiveListWireRustGenerator<'a> {
                     self.rust_wire_type(Target::Io)
                 )),
                 body: format!(
-                    "let ans = {} {{ ptr: flutter_rust_bridge::support::new_leak_vec_ptr(Default::default(), len), len }};
-                    flutter_rust_bridge::support::new_leak_box_ptr(ans)",
+                    "let ans = {} {{ ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len), len }};
+                    flutter_rust_bridge::for_generated::new_leak_box_ptr(ans)",
                     self.rust_wire_type(Target::Io),
                 ),
                 target: Target::Io,

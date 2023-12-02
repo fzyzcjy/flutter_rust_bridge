@@ -60,14 +60,14 @@ impl<'a> WireRustGeneratorApi2wireTrait for EnumRefWireRustGenerator<'a> {
 
         let into_into_dart = generate_impl_into_into_dart(&src.name, &src.wrapper_name);
         Some(format!(
-            "impl flutter_rust_bridge::support::IntoDart for {} {{
-                fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {{
+            "impl flutter_rust_bridge::IntoDart for {} {{
+                fn into_dart(self) -> flutter_rust_bridge::DartAbi {{
                     match {} {{
                         {}
                     }}.into_dart()
                 }}
             }}
-            impl flutter_rust_bridge::support::IntoDartExceptPrimitive for {0} {{}}
+            impl flutter_rust_bridge::IntoDartExceptPrimitive for {0} {{}}
             {into_into_dart}
             ",
             name,

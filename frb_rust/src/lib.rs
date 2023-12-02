@@ -15,6 +15,7 @@ pub(crate) mod web_transfer;
 pub use crate::dart_opaque::DartOpaque;
 pub use crate::generalized_isolate::{IntoDart, ZeroCopyBuffer};
 pub use crate::handler::handler::Handler;
+pub use crate::handler::implementation::handler::DefaultHandler;
 pub use crate::misc::into_into_dart::IntoIntoDart;
 pub use crate::misc::rust_opaque::DartSafe;
 pub use crate::misc::rust_opaque::RustOpaque;
