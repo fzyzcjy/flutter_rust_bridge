@@ -17,7 +17,7 @@ mod misc;
 pub(crate) mod ty;
 
 #[derive(Clone, Serialize)]
-pub(crate) struct WireDartOutputSpecApi2wire {
+pub(crate) struct WireDartOutputSpecDart2Rust {
     pub(crate) api2wire_funcs: Acc<Vec<WireDartOutputCode>>,
     pub(crate) api_fill_to_wire_funcs: Acc<Vec<WireDartOutputCode>>,
 }
@@ -25,8 +25,8 @@ pub(crate) struct WireDartOutputSpecApi2wire {
 pub(crate) fn generate(
     context: WireDartGeneratorContext,
     cache: &IrPackComputedCache,
-) -> WireDartOutputSpecApi2wire {
-    WireDartOutputSpecApi2wire {
+) -> WireDartOutputSpecDart2Rust {
+    WireDartOutputSpecDart2Rust {
         api2wire_funcs: cache
             .distinct_input_types
             .iter()

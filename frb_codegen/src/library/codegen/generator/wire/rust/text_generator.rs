@@ -54,15 +54,15 @@ fn generate_merged_code(spec: &WireRustOutputSpec) -> Acc<WireRustOutputCode> {
     add("wrapper_structs", &spec.misc.wrapper_structs);
     add("static_checks", &spec.misc.static_checks);
     add("executor", &spec.misc.executor);
-    add("allocate_funcs", &spec.wire2api.allocate_funcs);
-    add("related_funcs", &spec.wire2api.related_funcs);
-    add("impl_wire2api", &spec.wire2api.impl_wire2api);
-    add("wire2api_class", &spec.wire2api.wire2api_class);
+    add("allocate_funcs", &spec.dart2rust.allocate_funcs);
+    add("related_funcs", &spec.dart2rust.related_funcs);
+    add("impl_wire2api", &spec.dart2rust.impl_wire2api);
+    add("wire2api_class", &spec.dart2rust.wire2api_class);
     add(
         "impl_new_with_nullptr",
-        &spec.wire2api.impl_new_with_nullptr,
+        &spec.dart2rust.impl_new_with_nullptr,
     );
-    add("impl_into_dart", &spec.api2wire.impl_into_dart);
+    add("impl_into_dart", &spec.rust2dart.impl_into_dart);
 
     merged_code.map(|code, _| code.into_iter().fold(Default::default(), |a, b| a + b))
 }

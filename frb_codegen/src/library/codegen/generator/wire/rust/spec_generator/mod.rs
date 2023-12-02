@@ -1,9 +1,9 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
-use crate::codegen::generator::wire::rust::spec_generator::dart2rust::WireRustOutputSpecWire2api;
+use crate::codegen::generator::wire::rust::spec_generator::dart2rust::WireRustOutputSpecDart2Rust;
 use crate::codegen::generator::wire::rust::spec_generator::dump::generate_dump_info;
 use crate::codegen::generator::wire::rust::spec_generator::misc::WireRustOutputSpecMisc;
-use crate::codegen::generator::wire::rust::spec_generator::rust2dart::WireRustOutputSpecApi2wire;
+use crate::codegen::generator::wire::rust::spec_generator::rust2dart::WireRustOutputSpecRust2Dart;
 use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen::ConfigDumpContent::GeneratorInfo;
 use serde::Serialize;
@@ -19,8 +19,8 @@ pub(crate) mod rust2dart;
 #[derive(Serialize)]
 pub(super) struct WireRustOutputSpec {
     pub(super) misc: WireRustOutputSpecMisc,
-    pub(super) wire2api: WireRustOutputSpecWire2api,
-    pub(super) api2wire: WireRustOutputSpecApi2wire,
+    pub(super) dart2rust: WireRustOutputSpecDart2Rust,
+    pub(super) rust2dart: WireRustOutputSpecRust2Dart,
 }
 
 pub(super) fn generate(
@@ -37,7 +37,7 @@ pub(super) fn generate(
 
     Ok(WireRustOutputSpec {
         misc: misc::generate(context, &cache)?,
-        wire2api: dart2rust::generate(context, &cache),
-        api2wire: rust2dart::generate(context, &cache),
+        dart2rust: dart2rust::generate(context, &cache),
+        rust2dart: rust2dart::generate(context, &cache),
     })
 }

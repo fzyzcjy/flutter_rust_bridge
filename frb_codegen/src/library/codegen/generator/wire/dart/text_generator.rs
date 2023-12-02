@@ -36,11 +36,11 @@ fn generate_merged_code(spec: &WireDartOutputSpec) -> Acc<WireDartOutputCode> {
     );
     add("extra_functions", &spec.misc.extra_functions);
     add("wire_class", &spec.misc.wire_class);
-    add("impl_wire2api", &spec.wire2api.impl_wire2api);
-    add("api2wire_funcs", &spec.api2wire.api2wire_funcs);
+    add("impl_wire2api", &spec.rust2dart.impl_wire2api);
+    add("api2wire_funcs", &spec.dart2rust.api2wire_funcs);
     add(
         "api_fill_to_wire_funcs",
-        &spec.api2wire.api_fill_to_wire_funcs,
+        &spec.dart2rust.api_fill_to_wire_funcs,
     );
 
     merged_code.map(|code, _| code.into_iter().fold(Default::default(), |a, b| a + b))
