@@ -78,17 +78,17 @@ macro_rules! transfer {
 /// ```
 #[macro_export]
 macro_rules! spawn {
-    ($($tt:tt)*) => {{
+    ($thread_pool:ident, $($tt:tt)*) => {{
         let worker = $crate::transfer!($($tt)*);
         #[cfg(not(target_family = "wasm"))]
         {
-            $crate::thread::THREAD_POOL.lock().execute(worker)
+            $thread_pool.execute(worker)
         }
 
         #[cfg(target_family = "wasm")]
         {
             use anyhow::anyhow;
-            let res = $crate::thread::WORKER_POOL.with(|pool| {
+            let res = $thread_pool.with(|pool| {
                 if let Some(pool) = pool.as_ref() {
                     pool.run(worker).map_err(|err| anyhow!("worker error: {:?}", err))
                 } else {

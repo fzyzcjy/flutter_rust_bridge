@@ -2,6 +2,7 @@ use std::future::Future;
 use std::panic::UnwindSafe;
 use crate::generalized_isolate::IntoDart;
 use futures::FutureExt;
+use crate::thread_pool::ThreadPool;
 use crate::handler::error::Error;
 use crate::handler::error_handler::ErrorHandler;
 use crate::handler::executor::Executor;
@@ -16,6 +17,7 @@ use crate::rust_async;
 /// handled by a different thread.
 pub struct SimpleExecutor<EH: ErrorHandler> {
     error_handler: EH,
+    thread_pool: ThreadPool,
 }
 
 impl<EH: ErrorHandler> SimpleExecutor<EH> {
@@ -38,7 +40,7 @@ impl<EH: ErrorHandler + Sync> Executor for SimpleExecutor<EH> {
 
         let TaskInfo { port, mode, .. } = task_info;
 
-        spawn!(|port: Option<MessagePort>| {
+        spawn!(self.thread_pool, |port: Option<MessagePort>| {
             let port2 = port.as_ref().cloned();
             let thread_result = panic::catch_unwind(move || {
                 let port2 = port2.expect("(worker) thread");
