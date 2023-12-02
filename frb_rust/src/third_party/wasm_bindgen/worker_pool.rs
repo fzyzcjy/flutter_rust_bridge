@@ -2,6 +2,7 @@
 //!
 //! File: https://github.com/rustwasm/wasm-bindgen/blob/main/examples/raytrace-parallel/src/pool.rs
 
+use crate::misc::web_utils::script_path;
 use crate::web_transfer::transfer_closure::TransferClosure;
 use js_sys::Array;
 use std::cell::RefCell;
@@ -226,4 +227,25 @@ impl PoolState {
 #[wasm_bindgen(start)]
 pub fn run_hooks() {
     console_error_panic_hook::set_once();
+}
+
+impl Default for WorkerPool {
+    fn default() -> Self {
+        Self::new(
+            get_wasm_hardware_concurrency(),
+            script_path().expect("fail to get script path"),
+        )
+        .expect("fail to create WorkerPool")
+    }
+}
+
+fn get_wasm_hardware_concurrency() -> usize {
+    let mut key;
+    let global_object = js_sys::global();
+    let global = global_object.as_ref();
+    key = wasm_bindgen::JsValue::from_str("navigator");
+    let navigator = js_sys::Reflect::get(&global, &key).unwrap();
+    key = wasm_bindgen::JsValue::from_str("hardwareConcurrency");
+    let hardware_concurrency = js_sys::Reflect::get(&navigator, &key).unwrap();
+    hardware_concurrency.as_f64().unwrap() as usize
 }

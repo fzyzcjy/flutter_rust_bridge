@@ -27,17 +27,6 @@ fn get_worker_count() -> usize {
 }
 
 #[cfg(wasm)]
-fn get_wasm_hardware_concurrency() -> usize {
-    let mut key;
-    let global_object = js_sys::global();
-    let global = global_object.as_ref();
-    key = wasm_bindgen::JsValue::from_str("navigator");
-    let navigator = js_sys::Reflect::get(&global, &key).unwrap();
-    key = wasm_bindgen::JsValue::from_str("hardwareConcurrency");
-    let hardware_concurrency = js_sys::Reflect::get(&navigator, &key).unwrap();
-    hardware_concurrency.as_f64().unwrap() as usize
-}
-
 #[cfg(not(wasm))]
 mod io {
     use super::*;
