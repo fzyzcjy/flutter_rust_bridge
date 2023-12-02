@@ -37,3 +37,20 @@ impl<T> ZeroCopyBuffer<Vec<T>> {
         self.0.as_slice()
     }
 }
+
+// TODO the name should reflect "broadcast" channel?
+/// A handle to a [`web_sys::BroadcastChannel`] that implements `Send`.
+#[derive(Clone)]
+pub struct SendableChannelHandle(String);
+
+impl From<&Channel> for SendableChannelHandle {
+    fn from(value: &Channel) -> Self {
+        Self(value.broadcast_name().expect("Not a BroadcastChannel"))
+    }
+}
+
+impl From<&SendableChannelHandle> for Channel {
+    fn from(value: &SendableChannelHandle) -> Self {
+        PortLike::broadcast(&value.0)
+    }
+}
