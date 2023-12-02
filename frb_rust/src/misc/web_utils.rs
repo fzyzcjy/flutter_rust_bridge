@@ -13,3 +13,21 @@ extern "C" {
     #[wasm_bindgen(js_namespace = console, js_name = "error")]
     pub fn js_console_error(msg: &str);
 }
+
+/// Copied from https://github.com/chemicstry/wasm_thread/blob/main/src/script_path.js
+/// Extracts current script file path from artificially generated stack trace
+pub(crate) fn script_path() -> Option<String> {
+    js_sys::eval(
+        r"
+(() => {
+    try {
+        throw new Error();
+    } catch (e) {
+        let parts = e.stack.match(/(?:\(|@)(\S+):\d+:\d+/);
+        return parts[1];
+    }
+})()",
+    )
+        .ok()?
+        .as_string()
+}
