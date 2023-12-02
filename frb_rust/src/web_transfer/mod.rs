@@ -20,7 +20,7 @@ macro_rules! transfer {
 
         #[cfg(target_family = "wasm")]
         {
-            $crate::ffi::TransferClosure::new(vec![], vec![], move |_: &[wasm_bindgen::JsValue]| $block)
+            $crate::for_generated::TransferClosure::new(vec![], vec![], move |_: &[wasm_bindgen::JsValue]| $block)
         }
     }};
     (|$($param:ident: $ty:ty),*| $block:block) => {{
@@ -42,7 +42,7 @@ macro_rules! transfer {
                 $block
             };
             let transferables = [$($param.transferables()),*].concat();
-            $crate::web_transfer::transfer_closure::TransferClosure::new(vec![$($param.serialize()),*], transferables, worker)
+            $crate::for_generated::TransferClosure::new(vec![$($param.serialize()),*], transferables, worker)
         }
     }};
 }

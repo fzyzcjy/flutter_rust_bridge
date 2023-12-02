@@ -1,4 +1,5 @@
 use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
+use flutter_rust_bridge::for_generated::BaseThreadPool;
 use flutter_rust_bridge::{transfer, StreamSink};
 
 #[derive(Debug, Clone)]
