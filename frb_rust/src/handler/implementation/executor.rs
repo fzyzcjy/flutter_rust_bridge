@@ -10,7 +10,7 @@ use crate::rust2dart::api2wire::Api2wire;
 use crate::rust2dart::context::TaskRust2DartContext;
 use crate::rust2dart::sender::Rust2DartSender;
 use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
-use crate::thread_pool::ThreadPool;
+use crate::thread_pool::{ThreadPool, ThreadPoolWrapped};
 use crate::{rust_async, transfer};
 use futures::FutureExt;
 use parking_lot::Mutex;
@@ -23,9 +23,7 @@ use std::panic::{AssertUnwindSafe, UnwindSafe};
 /// handled by a different thread.
 pub struct SimpleExecutor<EH: ErrorHandler> {
     error_handler: EH,
-    // TODO remove `AssertUnwindSafe` after the Rust bug is fixed:
-    // https://github.com/rust-lang/rust/issues/118009
-    thread_pool: AssertUnwindSafe<ThreadPool>,
+    thread_pool: ThreadPoolWrapped,
 }
 
 impl<EH: ErrorHandler> SimpleExecutor<EH> {
