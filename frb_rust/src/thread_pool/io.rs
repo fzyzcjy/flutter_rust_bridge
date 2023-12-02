@@ -1,13 +1,13 @@
 pub use threadpool::ThreadPool;
 
 pub trait BaseThreadPool {
-    fn execute_raw<F>(&self, job: F)
+    fn execute<F>(&self, job: F)
     where
         F: FnOnce() + Send + 'static;
 }
 
 impl BaseThreadPool for ThreadPool {
-    fn execute_raw<F>(&self, job: F)
+    fn execute<F>(&self, job: F)
     where
         F: FnOnce() + Send + 'static,
     {

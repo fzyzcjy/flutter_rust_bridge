@@ -51,7 +51,7 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool> Executor for SimpleExecutor<EH
 
         let TaskInfo { port, mode, .. } = task_info;
 
-        self.thread_pool.execute_raw(transfer!(|port: Option<MessagePort>| {
+        self.thread_pool.execute(transfer!(|port: Option<MessagePort>| {
             let port2 = port.as_ref().cloned();
             let thread_result = panic::catch_unwind(move || {
                 let port2 = port2.expect("(worker) thread");
