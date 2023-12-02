@@ -12,5 +12,9 @@ pub use crate::platform_types::{MessagePort, WireSyncReturn};
 #[cfg(not(wasm))]
 pub use allo_isolate::IntoDartExceptPrimitive;
 pub use cast::*;
+#[cfg(wasm)]
+pub use js_sys;
 pub use lazy_static::lazy_static;
 pub use pointer::*;
+#[cfg(wasm)]
+pub use wasm_bindgen;

@@ -44,7 +44,7 @@ fn generate_impl_wire2api_misc() -> Acc<WireRustOutputCode> {
         .into(),
         io: "".into(),
         wasm: r#"
-            impl<T> Wire2Api<Option<T>> for flutter_rust_bridge::wasm_bindgen::JsValue where JsValue: Wire2Api<T> {
+            impl<T> Wire2Api<Option<T>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue where JsValue: Wire2Api<T> {
                 fn wire2api(self) -> Option<T> {
                     (!self.is_null() && !self.is_undefined()).then(|| self.wire2api())
                 }
@@ -90,7 +90,7 @@ fn generate_impl_wire2api_jsvalue_for_type(
         .map(|body| Acc {
             wasm: generate_impl_wire2api_code_block(
                 &ty.rust_api_type(),
-                "flutter_rust_bridge::wasm_bindgen::JsValue",
+                "flutter_rust_bridge::for_generated::wasm_bindgen::JsValue",
                 body.as_ref(),
             )
             .into(),

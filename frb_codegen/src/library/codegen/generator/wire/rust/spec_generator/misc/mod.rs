@@ -83,8 +83,8 @@ fn generate_imports(
         let platform_imports = match target {
             TargetOrCommon::Wasm => {
                 "use super::*;
-                use flutter_rust_bridge::wasm_bindgen;
-                use flutter_rust_bridge::wasm_bindgen::prelude::*;\n"
+                use flutter_rust_bridge::for_generated::wasm_bindgen;
+                use flutter_rust_bridge::for_generated::wasm_bindgen::prelude::*;\n"
             }
             TargetOrCommon::Io => "use super::*;",
             _ => "",
