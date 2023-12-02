@@ -1,4 +1,5 @@
 use dart_sys::{Dart_DeletePersistentHandle_DL, Dart_PersistentHandle};
+use crate::generalized_isolate::Channel;
 use crate::platform_types::MessagePort;
 
 pub type OpaqueMessagePort = i64;

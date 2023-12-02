@@ -1,3 +1,4 @@
+use crate::for_generated::new_leak_box_ptr;
 use crate::generalized_isolate::IntoDart;
 use crate::platform_types::{DartAbi, WireSyncReturn};
 use crate::rust2dart::action::Rust2DartAction;
@@ -18,7 +19,7 @@ impl WireSyncReturnSrc {
 
     pub fn leak(self) -> WireSyncReturn {
         #[cfg(not(wasm))]
-        return crate::support::new_leak_box_ptr(self);
+        return new_leak_box_ptr(self.0);
 
         #[cfg(wasm)]
         return self;

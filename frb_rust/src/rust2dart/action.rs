@@ -1,5 +1,5 @@
 use crate::generalized_isolate::IntoDart;
-use crate::handler::error_handler::Error;
+use crate::handler::error::Error;
 use crate::platform_types::DartAbi;
 
 #[derive(Debug)]

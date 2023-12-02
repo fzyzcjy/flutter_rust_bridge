@@ -6,6 +6,7 @@ use dart_sys::Dart_InitializeApiDL;
 use dart_sys::Dart_NewPersistentHandle_DL;
 use dart_sys::Dart_PersistentHandle;
 use libc::c_void;
+use crate::for_generated::box_from_leak_ptr;
 use crate::platform_types::WireSyncReturn;
 
 /// # Safety
