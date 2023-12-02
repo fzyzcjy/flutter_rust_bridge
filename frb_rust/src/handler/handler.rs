@@ -48,3 +48,27 @@ pub trait Handler {
         D: IntoDart,
         Er: IntoDart + 'static;
 }
+
+
+/// Supporting information to identify a function's operating mode.
+#[derive(Clone)]
+pub struct WrapInfo {
+    /// A Dart `SendPort`. [None] if the mode is [FfiCallMode::Sync].
+    pub port: Option<MessagePort>,
+    /// Usually the name of the function.
+    pub debug_name: &'static str,
+    /// The call mode of this function.
+    pub mode: FfiCallMode,
+}
+
+/// The types of return values for a particular Rust function.
+#[derive(Copy, Clone)]
+pub enum FfiCallMode {
+    /// The default mode, returns a Dart `Future<T>`.
+    Normal,
+    /// Used by `SyncReturn<T>` to skip spawning workers.
+    Sync,
+    /// Returns a Dart `Stream<T>`.
+    Stream,
+}
+
