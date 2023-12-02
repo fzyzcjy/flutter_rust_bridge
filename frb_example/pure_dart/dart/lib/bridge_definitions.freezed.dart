@@ -85,22 +85,23 @@ class _$AbcCopyWithImpl<$Res, $Val extends Abc> implements $AbcCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$Abc_ACopyWith<$Res> {
-  factory _$$Abc_ACopyWith(_$Abc_A value, $Res Function(_$Abc_A) then) = __$$Abc_ACopyWithImpl<$Res>;
+abstract class _$$Abc_AImplCopyWith<$Res> {
+  factory _$$Abc_AImplCopyWith(_$Abc_AImpl value, $Res Function(_$Abc_AImpl) then) = __$$Abc_AImplCopyWithImpl<$Res>;
   @useResult
   $Res call({A field0});
 }
 
 /// @nodoc
-class __$$Abc_ACopyWithImpl<$Res> extends _$AbcCopyWithImpl<$Res, _$Abc_A> implements _$$Abc_ACopyWith<$Res> {
-  __$$Abc_ACopyWithImpl(_$Abc_A _value, $Res Function(_$Abc_A) _then) : super(_value, _then);
+class __$$Abc_AImplCopyWithImpl<$Res> extends _$AbcCopyWithImpl<$Res, _$Abc_AImpl>
+    implements _$$Abc_AImplCopyWith<$Res> {
+  __$$Abc_AImplCopyWithImpl(_$Abc_AImpl _value, $Res Function(_$Abc_AImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$Abc_A(
+    return _then(_$Abc_AImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -111,8 +112,8 @@ class __$$Abc_ACopyWithImpl<$Res> extends _$AbcCopyWithImpl<$Res, _$Abc_A> imple
 
 /// @nodoc
 
-class _$Abc_A implements Abc_A {
-  const _$Abc_A(this.field0);
+class _$Abc_AImpl implements Abc_A {
+  const _$Abc_AImpl(this.field0);
 
   @override
   final A field0;
@@ -126,7 +127,7 @@ class _$Abc_A implements Abc_A {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Abc_A &&
+            other is _$Abc_AImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -136,7 +137,7 @@ class _$Abc_A implements Abc_A {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$Abc_ACopyWith<_$Abc_A> get copyWith => __$$Abc_ACopyWithImpl<_$Abc_A>(this, _$identity);
+  _$$Abc_AImplCopyWith<_$Abc_AImpl> get copyWith => __$$Abc_AImplCopyWithImpl<_$Abc_AImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -214,31 +215,32 @@ class _$Abc_A implements Abc_A {
 }
 
 abstract class Abc_A implements Abc {
-  const factory Abc_A(final A field0) = _$Abc_A;
+  const factory Abc_A(final A field0) = _$Abc_AImpl;
 
   @override
   A get field0;
   @JsonKey(ignore: true)
-  _$$Abc_ACopyWith<_$Abc_A> get copyWith => throw _privateConstructorUsedError;
+  _$$Abc_AImplCopyWith<_$Abc_AImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$Abc_BCopyWith<$Res> {
-  factory _$$Abc_BCopyWith(_$Abc_B value, $Res Function(_$Abc_B) then) = __$$Abc_BCopyWithImpl<$Res>;
+abstract class _$$Abc_BImplCopyWith<$Res> {
+  factory _$$Abc_BImplCopyWith(_$Abc_BImpl value, $Res Function(_$Abc_BImpl) then) = __$$Abc_BImplCopyWithImpl<$Res>;
   @useResult
   $Res call({B field0});
 }
 
 /// @nodoc
-class __$$Abc_BCopyWithImpl<$Res> extends _$AbcCopyWithImpl<$Res, _$Abc_B> implements _$$Abc_BCopyWith<$Res> {
-  __$$Abc_BCopyWithImpl(_$Abc_B _value, $Res Function(_$Abc_B) _then) : super(_value, _then);
+class __$$Abc_BImplCopyWithImpl<$Res> extends _$AbcCopyWithImpl<$Res, _$Abc_BImpl>
+    implements _$$Abc_BImplCopyWith<$Res> {
+  __$$Abc_BImplCopyWithImpl(_$Abc_BImpl _value, $Res Function(_$Abc_BImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$Abc_B(
+    return _then(_$Abc_BImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -249,8 +251,8 @@ class __$$Abc_BCopyWithImpl<$Res> extends _$AbcCopyWithImpl<$Res, _$Abc_B> imple
 
 /// @nodoc
 
-class _$Abc_B implements Abc_B {
-  const _$Abc_B(this.field0);
+class _$Abc_BImpl implements Abc_B {
+  const _$Abc_BImpl(this.field0);
 
   @override
   final B field0;
@@ -264,7 +266,7 @@ class _$Abc_B implements Abc_B {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Abc_B &&
+            other is _$Abc_BImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -274,7 +276,7 @@ class _$Abc_B implements Abc_B {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$Abc_BCopyWith<_$Abc_B> get copyWith => __$$Abc_BCopyWithImpl<_$Abc_B>(this, _$identity);
+  _$$Abc_BImplCopyWith<_$Abc_BImpl> get copyWith => __$$Abc_BImplCopyWithImpl<_$Abc_BImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -352,31 +354,32 @@ class _$Abc_B implements Abc_B {
 }
 
 abstract class Abc_B implements Abc {
-  const factory Abc_B(final B field0) = _$Abc_B;
+  const factory Abc_B(final B field0) = _$Abc_BImpl;
 
   @override
   B get field0;
   @JsonKey(ignore: true)
-  _$$Abc_BCopyWith<_$Abc_B> get copyWith => throw _privateConstructorUsedError;
+  _$$Abc_BImplCopyWith<_$Abc_BImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$Abc_CCopyWith<$Res> {
-  factory _$$Abc_CCopyWith(_$Abc_C value, $Res Function(_$Abc_C) then) = __$$Abc_CCopyWithImpl<$Res>;
+abstract class _$$Abc_CImplCopyWith<$Res> {
+  factory _$$Abc_CImplCopyWith(_$Abc_CImpl value, $Res Function(_$Abc_CImpl) then) = __$$Abc_CImplCopyWithImpl<$Res>;
   @useResult
   $Res call({C field0});
 }
 
 /// @nodoc
-class __$$Abc_CCopyWithImpl<$Res> extends _$AbcCopyWithImpl<$Res, _$Abc_C> implements _$$Abc_CCopyWith<$Res> {
-  __$$Abc_CCopyWithImpl(_$Abc_C _value, $Res Function(_$Abc_C) _then) : super(_value, _then);
+class __$$Abc_CImplCopyWithImpl<$Res> extends _$AbcCopyWithImpl<$Res, _$Abc_CImpl>
+    implements _$$Abc_CImplCopyWith<$Res> {
+  __$$Abc_CImplCopyWithImpl(_$Abc_CImpl _value, $Res Function(_$Abc_CImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$Abc_C(
+    return _then(_$Abc_CImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -387,8 +390,8 @@ class __$$Abc_CCopyWithImpl<$Res> extends _$AbcCopyWithImpl<$Res, _$Abc_C> imple
 
 /// @nodoc
 
-class _$Abc_C implements Abc_C {
-  const _$Abc_C(this.field0);
+class _$Abc_CImpl implements Abc_C {
+  const _$Abc_CImpl(this.field0);
 
   @override
   final C field0;
@@ -402,7 +405,7 @@ class _$Abc_C implements Abc_C {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Abc_C &&
+            other is _$Abc_CImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -412,7 +415,7 @@ class _$Abc_C implements Abc_C {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$Abc_CCopyWith<_$Abc_C> get copyWith => __$$Abc_CCopyWithImpl<_$Abc_C>(this, _$identity);
+  _$$Abc_CImplCopyWith<_$Abc_CImpl> get copyWith => __$$Abc_CImplCopyWithImpl<_$Abc_CImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -490,33 +493,34 @@ class _$Abc_C implements Abc_C {
 }
 
 abstract class Abc_C implements Abc {
-  const factory Abc_C(final C field0) = _$Abc_C;
+  const factory Abc_C(final C field0) = _$Abc_CImpl;
 
   @override
   C get field0;
   @JsonKey(ignore: true)
-  _$$Abc_CCopyWith<_$Abc_C> get copyWith => throw _privateConstructorUsedError;
+  _$$Abc_CImplCopyWith<_$Abc_CImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$Abc_JustIntCopyWith<$Res> {
-  factory _$$Abc_JustIntCopyWith(_$Abc_JustInt value, $Res Function(_$Abc_JustInt) then) =
-      __$$Abc_JustIntCopyWithImpl<$Res>;
+abstract class _$$Abc_JustIntImplCopyWith<$Res> {
+  factory _$$Abc_JustIntImplCopyWith(_$Abc_JustIntImpl value, $Res Function(_$Abc_JustIntImpl) then) =
+      __$$Abc_JustIntImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0});
 }
 
 /// @nodoc
-class __$$Abc_JustIntCopyWithImpl<$Res> extends _$AbcCopyWithImpl<$Res, _$Abc_JustInt>
-    implements _$$Abc_JustIntCopyWith<$Res> {
-  __$$Abc_JustIntCopyWithImpl(_$Abc_JustInt _value, $Res Function(_$Abc_JustInt) _then) : super(_value, _then);
+class __$$Abc_JustIntImplCopyWithImpl<$Res> extends _$AbcCopyWithImpl<$Res, _$Abc_JustIntImpl>
+    implements _$$Abc_JustIntImplCopyWith<$Res> {
+  __$$Abc_JustIntImplCopyWithImpl(_$Abc_JustIntImpl _value, $Res Function(_$Abc_JustIntImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$Abc_JustInt(
+    return _then(_$Abc_JustIntImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -527,8 +531,8 @@ class __$$Abc_JustIntCopyWithImpl<$Res> extends _$AbcCopyWithImpl<$Res, _$Abc_Ju
 
 /// @nodoc
 
-class _$Abc_JustInt implements Abc_JustInt {
-  const _$Abc_JustInt(this.field0);
+class _$Abc_JustIntImpl implements Abc_JustInt {
+  const _$Abc_JustIntImpl(this.field0);
 
   @override
   final int field0;
@@ -542,7 +546,7 @@ class _$Abc_JustInt implements Abc_JustInt {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Abc_JustInt &&
+            other is _$Abc_JustIntImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -552,7 +556,8 @@ class _$Abc_JustInt implements Abc_JustInt {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$Abc_JustIntCopyWith<_$Abc_JustInt> get copyWith => __$$Abc_JustIntCopyWithImpl<_$Abc_JustInt>(this, _$identity);
+  _$$Abc_JustIntImplCopyWith<_$Abc_JustIntImpl> get copyWith =>
+      __$$Abc_JustIntImplCopyWithImpl<_$Abc_JustIntImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -630,12 +635,12 @@ class _$Abc_JustInt implements Abc_JustInt {
 }
 
 abstract class Abc_JustInt implements Abc {
-  const factory Abc_JustInt(final int field0) = _$Abc_JustInt;
+  const factory Abc_JustInt(final int field0) = _$Abc_JustIntImpl;
 
   @override
   int get field0;
   @JsonKey(ignore: true)
-  _$$Abc_JustIntCopyWith<_$Abc_JustInt> get copyWith => throw _privateConstructorUsedError;
+  _$$Abc_JustIntImplCopyWith<_$Abc_JustIntImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -704,20 +709,20 @@ class _$ApplicationMessageCopyWithImpl<$Res, $Val extends ApplicationMessage>
 }
 
 /// @nodoc
-abstract class _$$ApplicationMessage_DisplayMessageCopyWith<$Res> {
-  factory _$$ApplicationMessage_DisplayMessageCopyWith(
-          _$ApplicationMessage_DisplayMessage value, $Res Function(_$ApplicationMessage_DisplayMessage) then) =
-      __$$ApplicationMessage_DisplayMessageCopyWithImpl<$Res>;
+abstract class _$$ApplicationMessage_DisplayMessageImplCopyWith<$Res> {
+  factory _$$ApplicationMessage_DisplayMessageImplCopyWith(
+          _$ApplicationMessage_DisplayMessageImpl value, $Res Function(_$ApplicationMessage_DisplayMessageImpl) then) =
+      __$$ApplicationMessage_DisplayMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String field0});
 }
 
 /// @nodoc
-class __$$ApplicationMessage_DisplayMessageCopyWithImpl<$Res>
-    extends _$ApplicationMessageCopyWithImpl<$Res, _$ApplicationMessage_DisplayMessage>
-    implements _$$ApplicationMessage_DisplayMessageCopyWith<$Res> {
-  __$$ApplicationMessage_DisplayMessageCopyWithImpl(
-      _$ApplicationMessage_DisplayMessage _value, $Res Function(_$ApplicationMessage_DisplayMessage) _then)
+class __$$ApplicationMessage_DisplayMessageImplCopyWithImpl<$Res>
+    extends _$ApplicationMessageCopyWithImpl<$Res, _$ApplicationMessage_DisplayMessageImpl>
+    implements _$$ApplicationMessage_DisplayMessageImplCopyWith<$Res> {
+  __$$ApplicationMessage_DisplayMessageImplCopyWithImpl(
+      _$ApplicationMessage_DisplayMessageImpl _value, $Res Function(_$ApplicationMessage_DisplayMessageImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -725,7 +730,7 @@ class __$$ApplicationMessage_DisplayMessageCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$ApplicationMessage_DisplayMessage(
+    return _then(_$ApplicationMessage_DisplayMessageImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -736,8 +741,8 @@ class __$$ApplicationMessage_DisplayMessageCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ApplicationMessage_DisplayMessage implements ApplicationMessage_DisplayMessage {
-  const _$ApplicationMessage_DisplayMessage(this.field0);
+class _$ApplicationMessage_DisplayMessageImpl implements ApplicationMessage_DisplayMessage {
+  const _$ApplicationMessage_DisplayMessageImpl(this.field0);
 
   @override
   final String field0;
@@ -751,7 +756,7 @@ class _$ApplicationMessage_DisplayMessage implements ApplicationMessage_DisplayM
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ApplicationMessage_DisplayMessage &&
+            other is _$ApplicationMessage_DisplayMessageImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -761,8 +766,8 @@ class _$ApplicationMessage_DisplayMessage implements ApplicationMessage_DisplayM
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ApplicationMessage_DisplayMessageCopyWith<_$ApplicationMessage_DisplayMessage> get copyWith =>
-      __$$ApplicationMessage_DisplayMessageCopyWithImpl<_$ApplicationMessage_DisplayMessage>(this, _$identity);
+  _$$ApplicationMessage_DisplayMessageImplCopyWith<_$ApplicationMessage_DisplayMessageImpl> get copyWith =>
+      __$$ApplicationMessage_DisplayMessageImplCopyWithImpl<_$ApplicationMessage_DisplayMessageImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -834,29 +839,29 @@ class _$ApplicationMessage_DisplayMessage implements ApplicationMessage_DisplayM
 }
 
 abstract class ApplicationMessage_DisplayMessage implements ApplicationMessage {
-  const factory ApplicationMessage_DisplayMessage(final String field0) = _$ApplicationMessage_DisplayMessage;
+  const factory ApplicationMessage_DisplayMessage(final String field0) = _$ApplicationMessage_DisplayMessageImpl;
 
   String get field0;
   @JsonKey(ignore: true)
-  _$$ApplicationMessage_DisplayMessageCopyWith<_$ApplicationMessage_DisplayMessage> get copyWith =>
+  _$$ApplicationMessage_DisplayMessageImplCopyWith<_$ApplicationMessage_DisplayMessageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ApplicationMessage_RenderPixelCopyWith<$Res> {
-  factory _$$ApplicationMessage_RenderPixelCopyWith(
-          _$ApplicationMessage_RenderPixel value, $Res Function(_$ApplicationMessage_RenderPixel) then) =
-      __$$ApplicationMessage_RenderPixelCopyWithImpl<$Res>;
+abstract class _$$ApplicationMessage_RenderPixelImplCopyWith<$Res> {
+  factory _$$ApplicationMessage_RenderPixelImplCopyWith(
+          _$ApplicationMessage_RenderPixelImpl value, $Res Function(_$ApplicationMessage_RenderPixelImpl) then) =
+      __$$ApplicationMessage_RenderPixelImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int x, int y});
 }
 
 /// @nodoc
-class __$$ApplicationMessage_RenderPixelCopyWithImpl<$Res>
-    extends _$ApplicationMessageCopyWithImpl<$Res, _$ApplicationMessage_RenderPixel>
-    implements _$$ApplicationMessage_RenderPixelCopyWith<$Res> {
-  __$$ApplicationMessage_RenderPixelCopyWithImpl(
-      _$ApplicationMessage_RenderPixel _value, $Res Function(_$ApplicationMessage_RenderPixel) _then)
+class __$$ApplicationMessage_RenderPixelImplCopyWithImpl<$Res>
+    extends _$ApplicationMessageCopyWithImpl<$Res, _$ApplicationMessage_RenderPixelImpl>
+    implements _$$ApplicationMessage_RenderPixelImplCopyWith<$Res> {
+  __$$ApplicationMessage_RenderPixelImplCopyWithImpl(
+      _$ApplicationMessage_RenderPixelImpl _value, $Res Function(_$ApplicationMessage_RenderPixelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -865,7 +870,7 @@ class __$$ApplicationMessage_RenderPixelCopyWithImpl<$Res>
     Object? x = null,
     Object? y = null,
   }) {
-    return _then(_$ApplicationMessage_RenderPixel(
+    return _then(_$ApplicationMessage_RenderPixelImpl(
       x: null == x
           ? _value.x
           : x // ignore: cast_nullable_to_non_nullable
@@ -880,8 +885,8 @@ class __$$ApplicationMessage_RenderPixelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ApplicationMessage_RenderPixel implements ApplicationMessage_RenderPixel {
-  const _$ApplicationMessage_RenderPixel({required this.x, required this.y});
+class _$ApplicationMessage_RenderPixelImpl implements ApplicationMessage_RenderPixel {
+  const _$ApplicationMessage_RenderPixelImpl({required this.x, required this.y});
 
   @override
   final int x;
@@ -897,7 +902,7 @@ class _$ApplicationMessage_RenderPixel implements ApplicationMessage_RenderPixel
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ApplicationMessage_RenderPixel &&
+            other is _$ApplicationMessage_RenderPixelImpl &&
             (identical(other.x, x) || other.x == x) &&
             (identical(other.y, y) || other.y == y));
   }
@@ -908,8 +913,8 @@ class _$ApplicationMessage_RenderPixel implements ApplicationMessage_RenderPixel
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ApplicationMessage_RenderPixelCopyWith<_$ApplicationMessage_RenderPixel> get copyWith =>
-      __$$ApplicationMessage_RenderPixelCopyWithImpl<_$ApplicationMessage_RenderPixel>(this, _$identity);
+  _$$ApplicationMessage_RenderPixelImplCopyWith<_$ApplicationMessage_RenderPixelImpl> get copyWith =>
+      __$$ApplicationMessage_RenderPixelImplCopyWithImpl<_$ApplicationMessage_RenderPixelImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -982,35 +987,35 @@ class _$ApplicationMessage_RenderPixel implements ApplicationMessage_RenderPixel
 
 abstract class ApplicationMessage_RenderPixel implements ApplicationMessage {
   const factory ApplicationMessage_RenderPixel({required final int x, required final int y}) =
-      _$ApplicationMessage_RenderPixel;
+      _$ApplicationMessage_RenderPixelImpl;
 
   int get x;
   int get y;
   @JsonKey(ignore: true)
-  _$$ApplicationMessage_RenderPixelCopyWith<_$ApplicationMessage_RenderPixel> get copyWith =>
+  _$$ApplicationMessage_RenderPixelImplCopyWith<_$ApplicationMessage_RenderPixelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ApplicationMessage_ExitCopyWith<$Res> {
-  factory _$$ApplicationMessage_ExitCopyWith(
-          _$ApplicationMessage_Exit value, $Res Function(_$ApplicationMessage_Exit) then) =
-      __$$ApplicationMessage_ExitCopyWithImpl<$Res>;
+abstract class _$$ApplicationMessage_ExitImplCopyWith<$Res> {
+  factory _$$ApplicationMessage_ExitImplCopyWith(
+          _$ApplicationMessage_ExitImpl value, $Res Function(_$ApplicationMessage_ExitImpl) then) =
+      __$$ApplicationMessage_ExitImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ApplicationMessage_ExitCopyWithImpl<$Res>
-    extends _$ApplicationMessageCopyWithImpl<$Res, _$ApplicationMessage_Exit>
-    implements _$$ApplicationMessage_ExitCopyWith<$Res> {
-  __$$ApplicationMessage_ExitCopyWithImpl(
-      _$ApplicationMessage_Exit _value, $Res Function(_$ApplicationMessage_Exit) _then)
+class __$$ApplicationMessage_ExitImplCopyWithImpl<$Res>
+    extends _$ApplicationMessageCopyWithImpl<$Res, _$ApplicationMessage_ExitImpl>
+    implements _$$ApplicationMessage_ExitImplCopyWith<$Res> {
+  __$$ApplicationMessage_ExitImplCopyWithImpl(
+      _$ApplicationMessage_ExitImpl _value, $Res Function(_$ApplicationMessage_ExitImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$ApplicationMessage_Exit implements ApplicationMessage_Exit {
-  const _$ApplicationMessage_Exit();
+class _$ApplicationMessage_ExitImpl implements ApplicationMessage_Exit {
+  const _$ApplicationMessage_ExitImpl();
 
   @override
   String toString() {
@@ -1019,7 +1024,7 @@ class _$ApplicationMessage_Exit implements ApplicationMessage_Exit {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$ApplicationMessage_Exit);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$ApplicationMessage_ExitImpl);
   }
 
   @override
@@ -1095,7 +1100,7 @@ class _$ApplicationMessage_Exit implements ApplicationMessage_Exit {
 }
 
 abstract class ApplicationMessage_Exit implements ApplicationMessage {
-  const factory ApplicationMessage_Exit() = _$ApplicationMessage_Exit;
+  const factory ApplicationMessage_Exit() = _$ApplicationMessage_ExitImpl;
 }
 
 /// @nodoc
@@ -1177,18 +1182,19 @@ class _$CustomErrorCopyWithImpl<$Res, $Val extends CustomError> implements $Cust
 }
 
 /// @nodoc
-abstract class _$$CustomError_Error0CopyWith<$Res> implements $CustomErrorCopyWith<$Res> {
-  factory _$$CustomError_Error0CopyWith(_$CustomError_Error0 value, $Res Function(_$CustomError_Error0) then) =
-      __$$CustomError_Error0CopyWithImpl<$Res>;
+abstract class _$$CustomError_Error0ImplCopyWith<$Res> implements $CustomErrorCopyWith<$Res> {
+  factory _$$CustomError_Error0ImplCopyWith(
+          _$CustomError_Error0Impl value, $Res Function(_$CustomError_Error0Impl) then) =
+      __$$CustomError_Error0ImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String e, String backtrace});
 }
 
 /// @nodoc
-class __$$CustomError_Error0CopyWithImpl<$Res> extends _$CustomErrorCopyWithImpl<$Res, _$CustomError_Error0>
-    implements _$$CustomError_Error0CopyWith<$Res> {
-  __$$CustomError_Error0CopyWithImpl(_$CustomError_Error0 _value, $Res Function(_$CustomError_Error0) _then)
+class __$$CustomError_Error0ImplCopyWithImpl<$Res> extends _$CustomErrorCopyWithImpl<$Res, _$CustomError_Error0Impl>
+    implements _$$CustomError_Error0ImplCopyWith<$Res> {
+  __$$CustomError_Error0ImplCopyWithImpl(_$CustomError_Error0Impl _value, $Res Function(_$CustomError_Error0Impl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1197,7 +1203,7 @@ class __$$CustomError_Error0CopyWithImpl<$Res> extends _$CustomErrorCopyWithImpl
     Object? e = null,
     Object? backtrace = null,
   }) {
-    return _then(_$CustomError_Error0(
+    return _then(_$CustomError_Error0Impl(
       e: null == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
@@ -1212,8 +1218,8 @@ class __$$CustomError_Error0CopyWithImpl<$Res> extends _$CustomErrorCopyWithImpl
 
 /// @nodoc
 
-class _$CustomError_Error0 implements CustomError_Error0 {
-  const _$CustomError_Error0({required this.e, required this.backtrace});
+class _$CustomError_Error0Impl implements CustomError_Error0 {
+  const _$CustomError_Error0Impl({required this.e, required this.backtrace});
 
   @override
   final String e;
@@ -1229,7 +1235,7 @@ class _$CustomError_Error0 implements CustomError_Error0 {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CustomError_Error0 &&
+            other is _$CustomError_Error0Impl &&
             (identical(other.e, e) || other.e == e) &&
             (identical(other.backtrace, backtrace) || other.backtrace == backtrace));
   }
@@ -1240,8 +1246,8 @@ class _$CustomError_Error0 implements CustomError_Error0 {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CustomError_Error0CopyWith<_$CustomError_Error0> get copyWith =>
-      __$$CustomError_Error0CopyWithImpl<_$CustomError_Error0>(this, _$identity);
+  _$$CustomError_Error0ImplCopyWith<_$CustomError_Error0Impl> get copyWith =>
+      __$$CustomError_Error0ImplCopyWithImpl<_$CustomError_Error0Impl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1307,7 +1313,8 @@ class _$CustomError_Error0 implements CustomError_Error0 {
 }
 
 abstract class CustomError_Error0 implements CustomError, FrbBacktracedException {
-  const factory CustomError_Error0({required final String e, required final String backtrace}) = _$CustomError_Error0;
+  const factory CustomError_Error0({required final String e, required final String backtrace}) =
+      _$CustomError_Error0Impl;
 
   @override
   String get e;
@@ -1315,22 +1322,23 @@ abstract class CustomError_Error0 implements CustomError, FrbBacktracedException
   String get backtrace;
   @override
   @JsonKey(ignore: true)
-  _$$CustomError_Error0CopyWith<_$CustomError_Error0> get copyWith => throw _privateConstructorUsedError;
+  _$$CustomError_Error0ImplCopyWith<_$CustomError_Error0Impl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$CustomError_Error1CopyWith<$Res> implements $CustomErrorCopyWith<$Res> {
-  factory _$$CustomError_Error1CopyWith(_$CustomError_Error1 value, $Res Function(_$CustomError_Error1) then) =
-      __$$CustomError_Error1CopyWithImpl<$Res>;
+abstract class _$$CustomError_Error1ImplCopyWith<$Res> implements $CustomErrorCopyWith<$Res> {
+  factory _$$CustomError_Error1ImplCopyWith(
+          _$CustomError_Error1Impl value, $Res Function(_$CustomError_Error1Impl) then) =
+      __$$CustomError_Error1ImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int e, String backtrace});
 }
 
 /// @nodoc
-class __$$CustomError_Error1CopyWithImpl<$Res> extends _$CustomErrorCopyWithImpl<$Res, _$CustomError_Error1>
-    implements _$$CustomError_Error1CopyWith<$Res> {
-  __$$CustomError_Error1CopyWithImpl(_$CustomError_Error1 _value, $Res Function(_$CustomError_Error1) _then)
+class __$$CustomError_Error1ImplCopyWithImpl<$Res> extends _$CustomErrorCopyWithImpl<$Res, _$CustomError_Error1Impl>
+    implements _$$CustomError_Error1ImplCopyWith<$Res> {
+  __$$CustomError_Error1ImplCopyWithImpl(_$CustomError_Error1Impl _value, $Res Function(_$CustomError_Error1Impl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1339,7 +1347,7 @@ class __$$CustomError_Error1CopyWithImpl<$Res> extends _$CustomErrorCopyWithImpl
     Object? e = null,
     Object? backtrace = null,
   }) {
-    return _then(_$CustomError_Error1(
+    return _then(_$CustomError_Error1Impl(
       e: null == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
@@ -1354,8 +1362,8 @@ class __$$CustomError_Error1CopyWithImpl<$Res> extends _$CustomErrorCopyWithImpl
 
 /// @nodoc
 
-class _$CustomError_Error1 implements CustomError_Error1 {
-  const _$CustomError_Error1({required this.e, required this.backtrace});
+class _$CustomError_Error1Impl implements CustomError_Error1 {
+  const _$CustomError_Error1Impl({required this.e, required this.backtrace});
 
   @override
   final int e;
@@ -1371,7 +1379,7 @@ class _$CustomError_Error1 implements CustomError_Error1 {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CustomError_Error1 &&
+            other is _$CustomError_Error1Impl &&
             (identical(other.e, e) || other.e == e) &&
             (identical(other.backtrace, backtrace) || other.backtrace == backtrace));
   }
@@ -1382,8 +1390,8 @@ class _$CustomError_Error1 implements CustomError_Error1 {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CustomError_Error1CopyWith<_$CustomError_Error1> get copyWith =>
-      __$$CustomError_Error1CopyWithImpl<_$CustomError_Error1>(this, _$identity);
+  _$$CustomError_Error1ImplCopyWith<_$CustomError_Error1Impl> get copyWith =>
+      __$$CustomError_Error1ImplCopyWithImpl<_$CustomError_Error1Impl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1449,7 +1457,7 @@ class _$CustomError_Error1 implements CustomError_Error1 {
 }
 
 abstract class CustomError_Error1 implements CustomError, FrbBacktracedException {
-  const factory CustomError_Error1({required final int e, required final String backtrace}) = _$CustomError_Error1;
+  const factory CustomError_Error1({required final int e, required final String backtrace}) = _$CustomError_Error1Impl;
 
   @override
   int get e;
@@ -1457,7 +1465,7 @@ abstract class CustomError_Error1 implements CustomError, FrbBacktracedException
   String get backtrace;
   @override
   @JsonKey(ignore: true)
-  _$$CustomError_Error1CopyWith<_$CustomError_Error1> get copyWith => throw _privateConstructorUsedError;
+  _$$CustomError_Error1ImplCopyWith<_$CustomError_Error1Impl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1521,20 +1529,20 @@ class _$CustomNestedError1CopyWithImpl<$Res, $Val extends CustomNestedError1>
 }
 
 /// @nodoc
-abstract class _$$CustomNestedError1_CustomNested1CopyWith<$Res> {
-  factory _$$CustomNestedError1_CustomNested1CopyWith(
-          _$CustomNestedError1_CustomNested1 value, $Res Function(_$CustomNestedError1_CustomNested1) then) =
-      __$$CustomNestedError1_CustomNested1CopyWithImpl<$Res>;
+abstract class _$$CustomNestedError1_CustomNested1ImplCopyWith<$Res> {
+  factory _$$CustomNestedError1_CustomNested1ImplCopyWith(
+          _$CustomNestedError1_CustomNested1Impl value, $Res Function(_$CustomNestedError1_CustomNested1Impl) then) =
+      __$$CustomNestedError1_CustomNested1ImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String field0});
 }
 
 /// @nodoc
-class __$$CustomNestedError1_CustomNested1CopyWithImpl<$Res>
-    extends _$CustomNestedError1CopyWithImpl<$Res, _$CustomNestedError1_CustomNested1>
-    implements _$$CustomNestedError1_CustomNested1CopyWith<$Res> {
-  __$$CustomNestedError1_CustomNested1CopyWithImpl(
-      _$CustomNestedError1_CustomNested1 _value, $Res Function(_$CustomNestedError1_CustomNested1) _then)
+class __$$CustomNestedError1_CustomNested1ImplCopyWithImpl<$Res>
+    extends _$CustomNestedError1CopyWithImpl<$Res, _$CustomNestedError1_CustomNested1Impl>
+    implements _$$CustomNestedError1_CustomNested1ImplCopyWith<$Res> {
+  __$$CustomNestedError1_CustomNested1ImplCopyWithImpl(
+      _$CustomNestedError1_CustomNested1Impl _value, $Res Function(_$CustomNestedError1_CustomNested1Impl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1542,7 +1550,7 @@ class __$$CustomNestedError1_CustomNested1CopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$CustomNestedError1_CustomNested1(
+    return _then(_$CustomNestedError1_CustomNested1Impl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -1553,8 +1561,8 @@ class __$$CustomNestedError1_CustomNested1CopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CustomNestedError1_CustomNested1 implements CustomNestedError1_CustomNested1 {
-  const _$CustomNestedError1_CustomNested1(this.field0);
+class _$CustomNestedError1_CustomNested1Impl implements CustomNestedError1_CustomNested1 {
+  const _$CustomNestedError1_CustomNested1Impl(this.field0);
 
   @override
   final String field0;
@@ -1568,7 +1576,7 @@ class _$CustomNestedError1_CustomNested1 implements CustomNestedError1_CustomNes
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CustomNestedError1_CustomNested1 &&
+            other is _$CustomNestedError1_CustomNested1Impl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -1578,8 +1586,8 @@ class _$CustomNestedError1_CustomNested1 implements CustomNestedError1_CustomNes
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CustomNestedError1_CustomNested1CopyWith<_$CustomNestedError1_CustomNested1> get copyWith =>
-      __$$CustomNestedError1_CustomNested1CopyWithImpl<_$CustomNestedError1_CustomNested1>(this, _$identity);
+  _$$CustomNestedError1_CustomNested1ImplCopyWith<_$CustomNestedError1_CustomNested1Impl> get copyWith =>
+      __$$CustomNestedError1_CustomNested1ImplCopyWithImpl<_$CustomNestedError1_CustomNested1Impl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1645,20 +1653,20 @@ class _$CustomNestedError1_CustomNested1 implements CustomNestedError1_CustomNes
 }
 
 abstract class CustomNestedError1_CustomNested1 implements CustomNestedError1 {
-  const factory CustomNestedError1_CustomNested1(final String field0) = _$CustomNestedError1_CustomNested1;
+  const factory CustomNestedError1_CustomNested1(final String field0) = _$CustomNestedError1_CustomNested1Impl;
 
   @override
   String get field0;
   @JsonKey(ignore: true)
-  _$$CustomNestedError1_CustomNested1CopyWith<_$CustomNestedError1_CustomNested1> get copyWith =>
+  _$$CustomNestedError1_CustomNested1ImplCopyWith<_$CustomNestedError1_CustomNested1Impl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$CustomNestedError1_ErrorNestedCopyWith<$Res> {
-  factory _$$CustomNestedError1_ErrorNestedCopyWith(
-          _$CustomNestedError1_ErrorNested value, $Res Function(_$CustomNestedError1_ErrorNested) then) =
-      __$$CustomNestedError1_ErrorNestedCopyWithImpl<$Res>;
+abstract class _$$CustomNestedError1_ErrorNestedImplCopyWith<$Res> {
+  factory _$$CustomNestedError1_ErrorNestedImplCopyWith(
+          _$CustomNestedError1_ErrorNestedImpl value, $Res Function(_$CustomNestedError1_ErrorNestedImpl) then) =
+      __$$CustomNestedError1_ErrorNestedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({CustomNestedError2 field0});
 
@@ -1666,11 +1674,11 @@ abstract class _$$CustomNestedError1_ErrorNestedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$CustomNestedError1_ErrorNestedCopyWithImpl<$Res>
-    extends _$CustomNestedError1CopyWithImpl<$Res, _$CustomNestedError1_ErrorNested>
-    implements _$$CustomNestedError1_ErrorNestedCopyWith<$Res> {
-  __$$CustomNestedError1_ErrorNestedCopyWithImpl(
-      _$CustomNestedError1_ErrorNested _value, $Res Function(_$CustomNestedError1_ErrorNested) _then)
+class __$$CustomNestedError1_ErrorNestedImplCopyWithImpl<$Res>
+    extends _$CustomNestedError1CopyWithImpl<$Res, _$CustomNestedError1_ErrorNestedImpl>
+    implements _$$CustomNestedError1_ErrorNestedImplCopyWith<$Res> {
+  __$$CustomNestedError1_ErrorNestedImplCopyWithImpl(
+      _$CustomNestedError1_ErrorNestedImpl _value, $Res Function(_$CustomNestedError1_ErrorNestedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1678,7 +1686,7 @@ class __$$CustomNestedError1_ErrorNestedCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$CustomNestedError1_ErrorNested(
+    return _then(_$CustomNestedError1_ErrorNestedImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -1697,8 +1705,8 @@ class __$$CustomNestedError1_ErrorNestedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CustomNestedError1_ErrorNested implements CustomNestedError1_ErrorNested {
-  const _$CustomNestedError1_ErrorNested(this.field0);
+class _$CustomNestedError1_ErrorNestedImpl implements CustomNestedError1_ErrorNested {
+  const _$CustomNestedError1_ErrorNestedImpl(this.field0);
 
   @override
   final CustomNestedError2 field0;
@@ -1712,7 +1720,7 @@ class _$CustomNestedError1_ErrorNested implements CustomNestedError1_ErrorNested
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CustomNestedError1_ErrorNested &&
+            other is _$CustomNestedError1_ErrorNestedImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -1722,8 +1730,8 @@ class _$CustomNestedError1_ErrorNested implements CustomNestedError1_ErrorNested
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CustomNestedError1_ErrorNestedCopyWith<_$CustomNestedError1_ErrorNested> get copyWith =>
-      __$$CustomNestedError1_ErrorNestedCopyWithImpl<_$CustomNestedError1_ErrorNested>(this, _$identity);
+  _$$CustomNestedError1_ErrorNestedImplCopyWith<_$CustomNestedError1_ErrorNestedImpl> get copyWith =>
+      __$$CustomNestedError1_ErrorNestedImplCopyWithImpl<_$CustomNestedError1_ErrorNestedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1789,12 +1797,12 @@ class _$CustomNestedError1_ErrorNested implements CustomNestedError1_ErrorNested
 }
 
 abstract class CustomNestedError1_ErrorNested implements CustomNestedError1 {
-  const factory CustomNestedError1_ErrorNested(final CustomNestedError2 field0) = _$CustomNestedError1_ErrorNested;
+  const factory CustomNestedError1_ErrorNested(final CustomNestedError2 field0) = _$CustomNestedError1_ErrorNestedImpl;
 
   @override
   CustomNestedError2 get field0;
   @JsonKey(ignore: true)
-  _$$CustomNestedError1_ErrorNestedCopyWith<_$CustomNestedError1_ErrorNested> get copyWith =>
+  _$$CustomNestedError1_ErrorNestedImplCopyWith<_$CustomNestedError1_ErrorNestedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1859,20 +1867,20 @@ class _$CustomNestedError2CopyWithImpl<$Res, $Val extends CustomNestedError2>
 }
 
 /// @nodoc
-abstract class _$$CustomNestedError2_CustomNested2CopyWith<$Res> {
-  factory _$$CustomNestedError2_CustomNested2CopyWith(
-          _$CustomNestedError2_CustomNested2 value, $Res Function(_$CustomNestedError2_CustomNested2) then) =
-      __$$CustomNestedError2_CustomNested2CopyWithImpl<$Res>;
+abstract class _$$CustomNestedError2_CustomNested2ImplCopyWith<$Res> {
+  factory _$$CustomNestedError2_CustomNested2ImplCopyWith(
+          _$CustomNestedError2_CustomNested2Impl value, $Res Function(_$CustomNestedError2_CustomNested2Impl) then) =
+      __$$CustomNestedError2_CustomNested2ImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String field0});
 }
 
 /// @nodoc
-class __$$CustomNestedError2_CustomNested2CopyWithImpl<$Res>
-    extends _$CustomNestedError2CopyWithImpl<$Res, _$CustomNestedError2_CustomNested2>
-    implements _$$CustomNestedError2_CustomNested2CopyWith<$Res> {
-  __$$CustomNestedError2_CustomNested2CopyWithImpl(
-      _$CustomNestedError2_CustomNested2 _value, $Res Function(_$CustomNestedError2_CustomNested2) _then)
+class __$$CustomNestedError2_CustomNested2ImplCopyWithImpl<$Res>
+    extends _$CustomNestedError2CopyWithImpl<$Res, _$CustomNestedError2_CustomNested2Impl>
+    implements _$$CustomNestedError2_CustomNested2ImplCopyWith<$Res> {
+  __$$CustomNestedError2_CustomNested2ImplCopyWithImpl(
+      _$CustomNestedError2_CustomNested2Impl _value, $Res Function(_$CustomNestedError2_CustomNested2Impl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1880,7 +1888,7 @@ class __$$CustomNestedError2_CustomNested2CopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$CustomNestedError2_CustomNested2(
+    return _then(_$CustomNestedError2_CustomNested2Impl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -1891,8 +1899,8 @@ class __$$CustomNestedError2_CustomNested2CopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CustomNestedError2_CustomNested2 implements CustomNestedError2_CustomNested2 {
-  const _$CustomNestedError2_CustomNested2(this.field0);
+class _$CustomNestedError2_CustomNested2Impl implements CustomNestedError2_CustomNested2 {
+  const _$CustomNestedError2_CustomNested2Impl(this.field0);
 
   @override
   final String field0;
@@ -1906,7 +1914,7 @@ class _$CustomNestedError2_CustomNested2 implements CustomNestedError2_CustomNes
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CustomNestedError2_CustomNested2 &&
+            other is _$CustomNestedError2_CustomNested2Impl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -1916,8 +1924,8 @@ class _$CustomNestedError2_CustomNested2 implements CustomNestedError2_CustomNes
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CustomNestedError2_CustomNested2CopyWith<_$CustomNestedError2_CustomNested2> get copyWith =>
-      __$$CustomNestedError2_CustomNested2CopyWithImpl<_$CustomNestedError2_CustomNested2>(this, _$identity);
+  _$$CustomNestedError2_CustomNested2ImplCopyWith<_$CustomNestedError2_CustomNested2Impl> get copyWith =>
+      __$$CustomNestedError2_CustomNested2ImplCopyWithImpl<_$CustomNestedError2_CustomNested2Impl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1983,30 +1991,30 @@ class _$CustomNestedError2_CustomNested2 implements CustomNestedError2_CustomNes
 }
 
 abstract class CustomNestedError2_CustomNested2 implements CustomNestedError2 {
-  const factory CustomNestedError2_CustomNested2(final String field0) = _$CustomNestedError2_CustomNested2;
+  const factory CustomNestedError2_CustomNested2(final String field0) = _$CustomNestedError2_CustomNested2Impl;
 
   @override
   String get field0;
   @JsonKey(ignore: true)
-  _$$CustomNestedError2_CustomNested2CopyWith<_$CustomNestedError2_CustomNested2> get copyWith =>
+  _$$CustomNestedError2_CustomNested2ImplCopyWith<_$CustomNestedError2_CustomNested2Impl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$CustomNestedError2_CustomNested2NumberCopyWith<$Res> {
-  factory _$$CustomNestedError2_CustomNested2NumberCopyWith(_$CustomNestedError2_CustomNested2Number value,
-          $Res Function(_$CustomNestedError2_CustomNested2Number) then) =
-      __$$CustomNestedError2_CustomNested2NumberCopyWithImpl<$Res>;
+abstract class _$$CustomNestedError2_CustomNested2NumberImplCopyWith<$Res> {
+  factory _$$CustomNestedError2_CustomNested2NumberImplCopyWith(_$CustomNestedError2_CustomNested2NumberImpl value,
+          $Res Function(_$CustomNestedError2_CustomNested2NumberImpl) then) =
+      __$$CustomNestedError2_CustomNested2NumberImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0});
 }
 
 /// @nodoc
-class __$$CustomNestedError2_CustomNested2NumberCopyWithImpl<$Res>
-    extends _$CustomNestedError2CopyWithImpl<$Res, _$CustomNestedError2_CustomNested2Number>
-    implements _$$CustomNestedError2_CustomNested2NumberCopyWith<$Res> {
-  __$$CustomNestedError2_CustomNested2NumberCopyWithImpl(
-      _$CustomNestedError2_CustomNested2Number _value, $Res Function(_$CustomNestedError2_CustomNested2Number) _then)
+class __$$CustomNestedError2_CustomNested2NumberImplCopyWithImpl<$Res>
+    extends _$CustomNestedError2CopyWithImpl<$Res, _$CustomNestedError2_CustomNested2NumberImpl>
+    implements _$$CustomNestedError2_CustomNested2NumberImplCopyWith<$Res> {
+  __$$CustomNestedError2_CustomNested2NumberImplCopyWithImpl(_$CustomNestedError2_CustomNested2NumberImpl _value,
+      $Res Function(_$CustomNestedError2_CustomNested2NumberImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2014,7 +2022,7 @@ class __$$CustomNestedError2_CustomNested2NumberCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$CustomNestedError2_CustomNested2Number(
+    return _then(_$CustomNestedError2_CustomNested2NumberImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -2025,8 +2033,8 @@ class __$$CustomNestedError2_CustomNested2NumberCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CustomNestedError2_CustomNested2Number implements CustomNestedError2_CustomNested2Number {
-  const _$CustomNestedError2_CustomNested2Number(this.field0);
+class _$CustomNestedError2_CustomNested2NumberImpl implements CustomNestedError2_CustomNested2Number {
+  const _$CustomNestedError2_CustomNested2NumberImpl(this.field0);
 
   @override
   final int field0;
@@ -2040,7 +2048,7 @@ class _$CustomNestedError2_CustomNested2Number implements CustomNestedError2_Cus
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CustomNestedError2_CustomNested2Number &&
+            other is _$CustomNestedError2_CustomNested2NumberImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -2050,8 +2058,8 @@ class _$CustomNestedError2_CustomNested2Number implements CustomNestedError2_Cus
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CustomNestedError2_CustomNested2NumberCopyWith<_$CustomNestedError2_CustomNested2Number> get copyWith =>
-      __$$CustomNestedError2_CustomNested2NumberCopyWithImpl<_$CustomNestedError2_CustomNested2Number>(
+  _$$CustomNestedError2_CustomNested2NumberImplCopyWith<_$CustomNestedError2_CustomNested2NumberImpl> get copyWith =>
+      __$$CustomNestedError2_CustomNested2NumberImplCopyWithImpl<_$CustomNestedError2_CustomNested2NumberImpl>(
           this, _$identity);
 
   @override
@@ -2118,12 +2126,12 @@ class _$CustomNestedError2_CustomNested2Number implements CustomNestedError2_Cus
 }
 
 abstract class CustomNestedError2_CustomNested2Number implements CustomNestedError2 {
-  const factory CustomNestedError2_CustomNested2Number(final int field0) = _$CustomNestedError2_CustomNested2Number;
+  const factory CustomNestedError2_CustomNested2Number(final int field0) = _$CustomNestedError2_CustomNested2NumberImpl;
 
   @override
   int get field0;
   @JsonKey(ignore: true)
-  _$$CustomNestedError2_CustomNested2NumberCopyWith<_$CustomNestedError2_CustomNested2Number> get copyWith =>
+  _$$CustomNestedError2_CustomNested2NumberImplCopyWith<_$CustomNestedError2_CustomNested2NumberImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2185,22 +2193,22 @@ class _$DistanceCopyWithImpl<$Res, $Val extends Distance> implements $DistanceCo
 }
 
 /// @nodoc
-abstract class _$$Distance_UnknownCopyWith<$Res> {
-  factory _$$Distance_UnknownCopyWith(_$Distance_Unknown value, $Res Function(_$Distance_Unknown) then) =
-      __$$Distance_UnknownCopyWithImpl<$Res>;
+abstract class _$$Distance_UnknownImplCopyWith<$Res> {
+  factory _$$Distance_UnknownImplCopyWith(_$Distance_UnknownImpl value, $Res Function(_$Distance_UnknownImpl) then) =
+      __$$Distance_UnknownImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$Distance_UnknownCopyWithImpl<$Res> extends _$DistanceCopyWithImpl<$Res, _$Distance_Unknown>
-    implements _$$Distance_UnknownCopyWith<$Res> {
-  __$$Distance_UnknownCopyWithImpl(_$Distance_Unknown _value, $Res Function(_$Distance_Unknown) _then)
+class __$$Distance_UnknownImplCopyWithImpl<$Res> extends _$DistanceCopyWithImpl<$Res, _$Distance_UnknownImpl>
+    implements _$$Distance_UnknownImplCopyWith<$Res> {
+  __$$Distance_UnknownImplCopyWithImpl(_$Distance_UnknownImpl _value, $Res Function(_$Distance_UnknownImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Distance_Unknown implements Distance_Unknown {
-  const _$Distance_Unknown();
+class _$Distance_UnknownImpl implements Distance_Unknown {
+  const _$Distance_UnknownImpl();
 
   @override
   String toString() {
@@ -2209,7 +2217,7 @@ class _$Distance_Unknown implements Distance_Unknown {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$Distance_Unknown);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$Distance_UnknownImpl);
   }
 
   @override
@@ -2279,28 +2287,29 @@ class _$Distance_Unknown implements Distance_Unknown {
 }
 
 abstract class Distance_Unknown implements Distance {
-  const factory Distance_Unknown() = _$Distance_Unknown;
+  const factory Distance_Unknown() = _$Distance_UnknownImpl;
 }
 
 /// @nodoc
-abstract class _$$Distance_MapCopyWith<$Res> {
-  factory _$$Distance_MapCopyWith(_$Distance_Map value, $Res Function(_$Distance_Map) then) =
-      __$$Distance_MapCopyWithImpl<$Res>;
+abstract class _$$Distance_MapImplCopyWith<$Res> {
+  factory _$$Distance_MapImplCopyWith(_$Distance_MapImpl value, $Res Function(_$Distance_MapImpl) then) =
+      __$$Distance_MapImplCopyWithImpl<$Res>;
   @useResult
   $Res call({double field0});
 }
 
 /// @nodoc
-class __$$Distance_MapCopyWithImpl<$Res> extends _$DistanceCopyWithImpl<$Res, _$Distance_Map>
-    implements _$$Distance_MapCopyWith<$Res> {
-  __$$Distance_MapCopyWithImpl(_$Distance_Map _value, $Res Function(_$Distance_Map) _then) : super(_value, _then);
+class __$$Distance_MapImplCopyWithImpl<$Res> extends _$DistanceCopyWithImpl<$Res, _$Distance_MapImpl>
+    implements _$$Distance_MapImplCopyWith<$Res> {
+  __$$Distance_MapImplCopyWithImpl(_$Distance_MapImpl _value, $Res Function(_$Distance_MapImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$Distance_Map(
+    return _then(_$Distance_MapImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -2311,8 +2320,8 @@ class __$$Distance_MapCopyWithImpl<$Res> extends _$DistanceCopyWithImpl<$Res, _$
 
 /// @nodoc
 
-class _$Distance_Map implements Distance_Map {
-  const _$Distance_Map(this.field0);
+class _$Distance_MapImpl implements Distance_Map {
+  const _$Distance_MapImpl(this.field0);
 
   @override
   final double field0;
@@ -2326,7 +2335,7 @@ class _$Distance_Map implements Distance_Map {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Distance_Map &&
+            other is _$Distance_MapImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -2336,8 +2345,8 @@ class _$Distance_Map implements Distance_Map {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$Distance_MapCopyWith<_$Distance_Map> get copyWith =>
-      __$$Distance_MapCopyWithImpl<_$Distance_Map>(this, _$identity);
+  _$$Distance_MapImplCopyWith<_$Distance_MapImpl> get copyWith =>
+      __$$Distance_MapImplCopyWithImpl<_$Distance_MapImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2403,11 +2412,11 @@ class _$Distance_Map implements Distance_Map {
 }
 
 abstract class Distance_Map implements Distance {
-  const factory Distance_Map(final double field0) = _$Distance_Map;
+  const factory Distance_Map(final double field0) = _$Distance_MapImpl;
 
   double get field0;
   @JsonKey(ignore: true)
-  _$$Distance_MapCopyWith<_$Distance_Map> get copyWith => throw _privateConstructorUsedError;
+  _$$Distance_MapImplCopyWith<_$Distance_MapImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2470,20 +2479,20 @@ class _$EnumDartOpaqueCopyWithImpl<$Res, $Val extends EnumDartOpaque> implements
 }
 
 /// @nodoc
-abstract class _$$EnumDartOpaque_PrimitiveCopyWith<$Res> {
-  factory _$$EnumDartOpaque_PrimitiveCopyWith(
-          _$EnumDartOpaque_Primitive value, $Res Function(_$EnumDartOpaque_Primitive) then) =
-      __$$EnumDartOpaque_PrimitiveCopyWithImpl<$Res>;
+abstract class _$$EnumDartOpaque_PrimitiveImplCopyWith<$Res> {
+  factory _$$EnumDartOpaque_PrimitiveImplCopyWith(
+          _$EnumDartOpaque_PrimitiveImpl value, $Res Function(_$EnumDartOpaque_PrimitiveImpl) then) =
+      __$$EnumDartOpaque_PrimitiveImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0});
 }
 
 /// @nodoc
-class __$$EnumDartOpaque_PrimitiveCopyWithImpl<$Res>
-    extends _$EnumDartOpaqueCopyWithImpl<$Res, _$EnumDartOpaque_Primitive>
-    implements _$$EnumDartOpaque_PrimitiveCopyWith<$Res> {
-  __$$EnumDartOpaque_PrimitiveCopyWithImpl(
-      _$EnumDartOpaque_Primitive _value, $Res Function(_$EnumDartOpaque_Primitive) _then)
+class __$$EnumDartOpaque_PrimitiveImplCopyWithImpl<$Res>
+    extends _$EnumDartOpaqueCopyWithImpl<$Res, _$EnumDartOpaque_PrimitiveImpl>
+    implements _$$EnumDartOpaque_PrimitiveImplCopyWith<$Res> {
+  __$$EnumDartOpaque_PrimitiveImplCopyWithImpl(
+      _$EnumDartOpaque_PrimitiveImpl _value, $Res Function(_$EnumDartOpaque_PrimitiveImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2491,7 +2500,7 @@ class __$$EnumDartOpaque_PrimitiveCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$EnumDartOpaque_Primitive(
+    return _then(_$EnumDartOpaque_PrimitiveImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -2502,8 +2511,8 @@ class __$$EnumDartOpaque_PrimitiveCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumDartOpaque_Primitive implements EnumDartOpaque_Primitive {
-  const _$EnumDartOpaque_Primitive(this.field0);
+class _$EnumDartOpaque_PrimitiveImpl implements EnumDartOpaque_Primitive {
+  const _$EnumDartOpaque_PrimitiveImpl(this.field0);
 
   @override
   final int field0;
@@ -2517,7 +2526,7 @@ class _$EnumDartOpaque_Primitive implements EnumDartOpaque_Primitive {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumDartOpaque_Primitive &&
+            other is _$EnumDartOpaque_PrimitiveImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -2527,8 +2536,8 @@ class _$EnumDartOpaque_Primitive implements EnumDartOpaque_Primitive {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumDartOpaque_PrimitiveCopyWith<_$EnumDartOpaque_Primitive> get copyWith =>
-      __$$EnumDartOpaque_PrimitiveCopyWithImpl<_$EnumDartOpaque_Primitive>(this, _$identity);
+  _$$EnumDartOpaque_PrimitiveImplCopyWith<_$EnumDartOpaque_PrimitiveImpl> get copyWith =>
+      __$$EnumDartOpaque_PrimitiveImplCopyWithImpl<_$EnumDartOpaque_PrimitiveImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2594,26 +2603,30 @@ class _$EnumDartOpaque_Primitive implements EnumDartOpaque_Primitive {
 }
 
 abstract class EnumDartOpaque_Primitive implements EnumDartOpaque {
-  const factory EnumDartOpaque_Primitive(final int field0) = _$EnumDartOpaque_Primitive;
+  const factory EnumDartOpaque_Primitive(final int field0) = _$EnumDartOpaque_PrimitiveImpl;
 
   @override
   int get field0;
   @JsonKey(ignore: true)
-  _$$EnumDartOpaque_PrimitiveCopyWith<_$EnumDartOpaque_Primitive> get copyWith => throw _privateConstructorUsedError;
+  _$$EnumDartOpaque_PrimitiveImplCopyWith<_$EnumDartOpaque_PrimitiveImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EnumDartOpaque_OpaqueCopyWith<$Res> {
-  factory _$$EnumDartOpaque_OpaqueCopyWith(_$EnumDartOpaque_Opaque value, $Res Function(_$EnumDartOpaque_Opaque) then) =
-      __$$EnumDartOpaque_OpaqueCopyWithImpl<$Res>;
+abstract class _$$EnumDartOpaque_OpaqueImplCopyWith<$Res> {
+  factory _$$EnumDartOpaque_OpaqueImplCopyWith(
+          _$EnumDartOpaque_OpaqueImpl value, $Res Function(_$EnumDartOpaque_OpaqueImpl) then) =
+      __$$EnumDartOpaque_OpaqueImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Object field0});
 }
 
 /// @nodoc
-class __$$EnumDartOpaque_OpaqueCopyWithImpl<$Res> extends _$EnumDartOpaqueCopyWithImpl<$Res, _$EnumDartOpaque_Opaque>
-    implements _$$EnumDartOpaque_OpaqueCopyWith<$Res> {
-  __$$EnumDartOpaque_OpaqueCopyWithImpl(_$EnumDartOpaque_Opaque _value, $Res Function(_$EnumDartOpaque_Opaque) _then)
+class __$$EnumDartOpaque_OpaqueImplCopyWithImpl<$Res>
+    extends _$EnumDartOpaqueCopyWithImpl<$Res, _$EnumDartOpaque_OpaqueImpl>
+    implements _$$EnumDartOpaque_OpaqueImplCopyWith<$Res> {
+  __$$EnumDartOpaque_OpaqueImplCopyWithImpl(
+      _$EnumDartOpaque_OpaqueImpl _value, $Res Function(_$EnumDartOpaque_OpaqueImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2621,7 +2634,7 @@ class __$$EnumDartOpaque_OpaqueCopyWithImpl<$Res> extends _$EnumDartOpaqueCopyWi
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$EnumDartOpaque_Opaque(
+    return _then(_$EnumDartOpaque_OpaqueImpl(
       null == field0 ? _value.field0 : field0,
     ));
   }
@@ -2629,8 +2642,8 @@ class __$$EnumDartOpaque_OpaqueCopyWithImpl<$Res> extends _$EnumDartOpaqueCopyWi
 
 /// @nodoc
 
-class _$EnumDartOpaque_Opaque implements EnumDartOpaque_Opaque {
-  const _$EnumDartOpaque_Opaque(this.field0);
+class _$EnumDartOpaque_OpaqueImpl implements EnumDartOpaque_Opaque {
+  const _$EnumDartOpaque_OpaqueImpl(this.field0);
 
   @override
   final Object field0;
@@ -2644,7 +2657,7 @@ class _$EnumDartOpaque_Opaque implements EnumDartOpaque_Opaque {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumDartOpaque_Opaque &&
+            other is _$EnumDartOpaque_OpaqueImpl &&
             const DeepCollectionEquality().equals(other.field0, field0));
   }
 
@@ -2654,8 +2667,8 @@ class _$EnumDartOpaque_Opaque implements EnumDartOpaque_Opaque {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumDartOpaque_OpaqueCopyWith<_$EnumDartOpaque_Opaque> get copyWith =>
-      __$$EnumDartOpaque_OpaqueCopyWithImpl<_$EnumDartOpaque_Opaque>(this, _$identity);
+  _$$EnumDartOpaque_OpaqueImplCopyWith<_$EnumDartOpaque_OpaqueImpl> get copyWith =>
+      __$$EnumDartOpaque_OpaqueImplCopyWithImpl<_$EnumDartOpaque_OpaqueImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2721,12 +2734,12 @@ class _$EnumDartOpaque_Opaque implements EnumDartOpaque_Opaque {
 }
 
 abstract class EnumDartOpaque_Opaque implements EnumDartOpaque {
-  const factory EnumDartOpaque_Opaque(final Object field0) = _$EnumDartOpaque_Opaque;
+  const factory EnumDartOpaque_Opaque(final Object field0) = _$EnumDartOpaque_OpaqueImpl;
 
   @override
   Object get field0;
   @JsonKey(ignore: true)
-  _$$EnumDartOpaque_OpaqueCopyWith<_$EnumDartOpaque_Opaque> get copyWith => throw _privateConstructorUsedError;
+  _$$EnumDartOpaque_OpaqueImplCopyWith<_$EnumDartOpaque_OpaqueImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2807,17 +2820,17 @@ class _$EnumOpaqueCopyWithImpl<$Res, $Val extends EnumOpaque> implements $EnumOp
 }
 
 /// @nodoc
-abstract class _$$EnumOpaque_StructCopyWith<$Res> {
-  factory _$$EnumOpaque_StructCopyWith(_$EnumOpaque_Struct value, $Res Function(_$EnumOpaque_Struct) then) =
-      __$$EnumOpaque_StructCopyWithImpl<$Res>;
+abstract class _$$EnumOpaque_StructImplCopyWith<$Res> {
+  factory _$$EnumOpaque_StructImplCopyWith(_$EnumOpaque_StructImpl value, $Res Function(_$EnumOpaque_StructImpl) then) =
+      __$$EnumOpaque_StructImplCopyWithImpl<$Res>;
   @useResult
   $Res call({HideData field0});
 }
 
 /// @nodoc
-class __$$EnumOpaque_StructCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res, _$EnumOpaque_Struct>
-    implements _$$EnumOpaque_StructCopyWith<$Res> {
-  __$$EnumOpaque_StructCopyWithImpl(_$EnumOpaque_Struct _value, $Res Function(_$EnumOpaque_Struct) _then)
+class __$$EnumOpaque_StructImplCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res, _$EnumOpaque_StructImpl>
+    implements _$$EnumOpaque_StructImplCopyWith<$Res> {
+  __$$EnumOpaque_StructImplCopyWithImpl(_$EnumOpaque_StructImpl _value, $Res Function(_$EnumOpaque_StructImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2825,7 +2838,7 @@ class __$$EnumOpaque_StructCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$EnumOpaque_Struct(
+    return _then(_$EnumOpaque_StructImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -2836,8 +2849,8 @@ class __$$EnumOpaque_StructCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$
 
 /// @nodoc
 
-class _$EnumOpaque_Struct implements EnumOpaque_Struct {
-  const _$EnumOpaque_Struct(this.field0);
+class _$EnumOpaque_StructImpl implements EnumOpaque_Struct {
+  const _$EnumOpaque_StructImpl(this.field0);
 
   @override
   final HideData field0;
@@ -2851,7 +2864,7 @@ class _$EnumOpaque_Struct implements EnumOpaque_Struct {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumOpaque_Struct &&
+            other is _$EnumOpaque_StructImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -2861,8 +2874,8 @@ class _$EnumOpaque_Struct implements EnumOpaque_Struct {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumOpaque_StructCopyWith<_$EnumOpaque_Struct> get copyWith =>
-      __$$EnumOpaque_StructCopyWithImpl<_$EnumOpaque_Struct>(this, _$identity);
+  _$$EnumOpaque_StructImplCopyWith<_$EnumOpaque_StructImpl> get copyWith =>
+      __$$EnumOpaque_StructImplCopyWithImpl<_$EnumOpaque_StructImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2946,26 +2959,28 @@ class _$EnumOpaque_Struct implements EnumOpaque_Struct {
 }
 
 abstract class EnumOpaque_Struct implements EnumOpaque {
-  const factory EnumOpaque_Struct(final HideData field0) = _$EnumOpaque_Struct;
+  const factory EnumOpaque_Struct(final HideData field0) = _$EnumOpaque_StructImpl;
 
   @override
   HideData get field0;
   @JsonKey(ignore: true)
-  _$$EnumOpaque_StructCopyWith<_$EnumOpaque_Struct> get copyWith => throw _privateConstructorUsedError;
+  _$$EnumOpaque_StructImplCopyWith<_$EnumOpaque_StructImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EnumOpaque_PrimitiveCopyWith<$Res> {
-  factory _$$EnumOpaque_PrimitiveCopyWith(_$EnumOpaque_Primitive value, $Res Function(_$EnumOpaque_Primitive) then) =
-      __$$EnumOpaque_PrimitiveCopyWithImpl<$Res>;
+abstract class _$$EnumOpaque_PrimitiveImplCopyWith<$Res> {
+  factory _$$EnumOpaque_PrimitiveImplCopyWith(
+          _$EnumOpaque_PrimitiveImpl value, $Res Function(_$EnumOpaque_PrimitiveImpl) then) =
+      __$$EnumOpaque_PrimitiveImplCopyWithImpl<$Res>;
   @useResult
   $Res call({I32 field0});
 }
 
 /// @nodoc
-class __$$EnumOpaque_PrimitiveCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res, _$EnumOpaque_Primitive>
-    implements _$$EnumOpaque_PrimitiveCopyWith<$Res> {
-  __$$EnumOpaque_PrimitiveCopyWithImpl(_$EnumOpaque_Primitive _value, $Res Function(_$EnumOpaque_Primitive) _then)
+class __$$EnumOpaque_PrimitiveImplCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res, _$EnumOpaque_PrimitiveImpl>
+    implements _$$EnumOpaque_PrimitiveImplCopyWith<$Res> {
+  __$$EnumOpaque_PrimitiveImplCopyWithImpl(
+      _$EnumOpaque_PrimitiveImpl _value, $Res Function(_$EnumOpaque_PrimitiveImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2973,7 +2988,7 @@ class __$$EnumOpaque_PrimitiveCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImp
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$EnumOpaque_Primitive(
+    return _then(_$EnumOpaque_PrimitiveImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -2984,8 +2999,8 @@ class __$$EnumOpaque_PrimitiveCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImp
 
 /// @nodoc
 
-class _$EnumOpaque_Primitive implements EnumOpaque_Primitive {
-  const _$EnumOpaque_Primitive(this.field0);
+class _$EnumOpaque_PrimitiveImpl implements EnumOpaque_Primitive {
+  const _$EnumOpaque_PrimitiveImpl(this.field0);
 
   @override
   final I32 field0;
@@ -2999,7 +3014,7 @@ class _$EnumOpaque_Primitive implements EnumOpaque_Primitive {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumOpaque_Primitive &&
+            other is _$EnumOpaque_PrimitiveImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -3009,8 +3024,8 @@ class _$EnumOpaque_Primitive implements EnumOpaque_Primitive {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumOpaque_PrimitiveCopyWith<_$EnumOpaque_Primitive> get copyWith =>
-      __$$EnumOpaque_PrimitiveCopyWithImpl<_$EnumOpaque_Primitive>(this, _$identity);
+  _$$EnumOpaque_PrimitiveImplCopyWith<_$EnumOpaque_PrimitiveImpl> get copyWith =>
+      __$$EnumOpaque_PrimitiveImplCopyWithImpl<_$EnumOpaque_PrimitiveImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -3094,26 +3109,28 @@ class _$EnumOpaque_Primitive implements EnumOpaque_Primitive {
 }
 
 abstract class EnumOpaque_Primitive implements EnumOpaque {
-  const factory EnumOpaque_Primitive(final I32 field0) = _$EnumOpaque_Primitive;
+  const factory EnumOpaque_Primitive(final I32 field0) = _$EnumOpaque_PrimitiveImpl;
 
   @override
   I32 get field0;
   @JsonKey(ignore: true)
-  _$$EnumOpaque_PrimitiveCopyWith<_$EnumOpaque_Primitive> get copyWith => throw _privateConstructorUsedError;
+  _$$EnumOpaque_PrimitiveImplCopyWith<_$EnumOpaque_PrimitiveImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EnumOpaque_TraitObjCopyWith<$Res> {
-  factory _$$EnumOpaque_TraitObjCopyWith(_$EnumOpaque_TraitObj value, $Res Function(_$EnumOpaque_TraitObj) then) =
-      __$$EnumOpaque_TraitObjCopyWithImpl<$Res>;
+abstract class _$$EnumOpaque_TraitObjImplCopyWith<$Res> {
+  factory _$$EnumOpaque_TraitObjImplCopyWith(
+          _$EnumOpaque_TraitObjImpl value, $Res Function(_$EnumOpaque_TraitObjImpl) then) =
+      __$$EnumOpaque_TraitObjImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BoxDartDebug field0});
 }
 
 /// @nodoc
-class __$$EnumOpaque_TraitObjCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res, _$EnumOpaque_TraitObj>
-    implements _$$EnumOpaque_TraitObjCopyWith<$Res> {
-  __$$EnumOpaque_TraitObjCopyWithImpl(_$EnumOpaque_TraitObj _value, $Res Function(_$EnumOpaque_TraitObj) _then)
+class __$$EnumOpaque_TraitObjImplCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res, _$EnumOpaque_TraitObjImpl>
+    implements _$$EnumOpaque_TraitObjImplCopyWith<$Res> {
+  __$$EnumOpaque_TraitObjImplCopyWithImpl(
+      _$EnumOpaque_TraitObjImpl _value, $Res Function(_$EnumOpaque_TraitObjImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -3121,7 +3138,7 @@ class __$$EnumOpaque_TraitObjCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$EnumOpaque_TraitObj(
+    return _then(_$EnumOpaque_TraitObjImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -3132,8 +3149,8 @@ class __$$EnumOpaque_TraitObjCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl
 
 /// @nodoc
 
-class _$EnumOpaque_TraitObj implements EnumOpaque_TraitObj {
-  const _$EnumOpaque_TraitObj(this.field0);
+class _$EnumOpaque_TraitObjImpl implements EnumOpaque_TraitObj {
+  const _$EnumOpaque_TraitObjImpl(this.field0);
 
   @override
   final BoxDartDebug field0;
@@ -3147,7 +3164,7 @@ class _$EnumOpaque_TraitObj implements EnumOpaque_TraitObj {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumOpaque_TraitObj &&
+            other is _$EnumOpaque_TraitObjImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -3157,8 +3174,8 @@ class _$EnumOpaque_TraitObj implements EnumOpaque_TraitObj {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumOpaque_TraitObjCopyWith<_$EnumOpaque_TraitObj> get copyWith =>
-      __$$EnumOpaque_TraitObjCopyWithImpl<_$EnumOpaque_TraitObj>(this, _$identity);
+  _$$EnumOpaque_TraitObjImplCopyWith<_$EnumOpaque_TraitObjImpl> get copyWith =>
+      __$$EnumOpaque_TraitObjImplCopyWithImpl<_$EnumOpaque_TraitObjImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -3242,26 +3259,26 @@ class _$EnumOpaque_TraitObj implements EnumOpaque_TraitObj {
 }
 
 abstract class EnumOpaque_TraitObj implements EnumOpaque {
-  const factory EnumOpaque_TraitObj(final BoxDartDebug field0) = _$EnumOpaque_TraitObj;
+  const factory EnumOpaque_TraitObj(final BoxDartDebug field0) = _$EnumOpaque_TraitObjImpl;
 
   @override
   BoxDartDebug get field0;
   @JsonKey(ignore: true)
-  _$$EnumOpaque_TraitObjCopyWith<_$EnumOpaque_TraitObj> get copyWith => throw _privateConstructorUsedError;
+  _$$EnumOpaque_TraitObjImplCopyWith<_$EnumOpaque_TraitObjImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EnumOpaque_MutexCopyWith<$Res> {
-  factory _$$EnumOpaque_MutexCopyWith(_$EnumOpaque_Mutex value, $Res Function(_$EnumOpaque_Mutex) then) =
-      __$$EnumOpaque_MutexCopyWithImpl<$Res>;
+abstract class _$$EnumOpaque_MutexImplCopyWith<$Res> {
+  factory _$$EnumOpaque_MutexImplCopyWith(_$EnumOpaque_MutexImpl value, $Res Function(_$EnumOpaque_MutexImpl) then) =
+      __$$EnumOpaque_MutexImplCopyWithImpl<$Res>;
   @useResult
   $Res call({MutexHideData field0});
 }
 
 /// @nodoc
-class __$$EnumOpaque_MutexCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res, _$EnumOpaque_Mutex>
-    implements _$$EnumOpaque_MutexCopyWith<$Res> {
-  __$$EnumOpaque_MutexCopyWithImpl(_$EnumOpaque_Mutex _value, $Res Function(_$EnumOpaque_Mutex) _then)
+class __$$EnumOpaque_MutexImplCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res, _$EnumOpaque_MutexImpl>
+    implements _$$EnumOpaque_MutexImplCopyWith<$Res> {
+  __$$EnumOpaque_MutexImplCopyWithImpl(_$EnumOpaque_MutexImpl _value, $Res Function(_$EnumOpaque_MutexImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -3269,7 +3286,7 @@ class __$$EnumOpaque_MutexCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$R
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$EnumOpaque_Mutex(
+    return _then(_$EnumOpaque_MutexImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -3280,8 +3297,8 @@ class __$$EnumOpaque_MutexCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$R
 
 /// @nodoc
 
-class _$EnumOpaque_Mutex implements EnumOpaque_Mutex {
-  const _$EnumOpaque_Mutex(this.field0);
+class _$EnumOpaque_MutexImpl implements EnumOpaque_Mutex {
+  const _$EnumOpaque_MutexImpl(this.field0);
 
   @override
   final MutexHideData field0;
@@ -3295,7 +3312,7 @@ class _$EnumOpaque_Mutex implements EnumOpaque_Mutex {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumOpaque_Mutex &&
+            other is _$EnumOpaque_MutexImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -3305,8 +3322,8 @@ class _$EnumOpaque_Mutex implements EnumOpaque_Mutex {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumOpaque_MutexCopyWith<_$EnumOpaque_Mutex> get copyWith =>
-      __$$EnumOpaque_MutexCopyWithImpl<_$EnumOpaque_Mutex>(this, _$identity);
+  _$$EnumOpaque_MutexImplCopyWith<_$EnumOpaque_MutexImpl> get copyWith =>
+      __$$EnumOpaque_MutexImplCopyWithImpl<_$EnumOpaque_MutexImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -3390,26 +3407,26 @@ class _$EnumOpaque_Mutex implements EnumOpaque_Mutex {
 }
 
 abstract class EnumOpaque_Mutex implements EnumOpaque {
-  const factory EnumOpaque_Mutex(final MutexHideData field0) = _$EnumOpaque_Mutex;
+  const factory EnumOpaque_Mutex(final MutexHideData field0) = _$EnumOpaque_MutexImpl;
 
   @override
   MutexHideData get field0;
   @JsonKey(ignore: true)
-  _$$EnumOpaque_MutexCopyWith<_$EnumOpaque_Mutex> get copyWith => throw _privateConstructorUsedError;
+  _$$EnumOpaque_MutexImplCopyWith<_$EnumOpaque_MutexImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EnumOpaque_RwLockCopyWith<$Res> {
-  factory _$$EnumOpaque_RwLockCopyWith(_$EnumOpaque_RwLock value, $Res Function(_$EnumOpaque_RwLock) then) =
-      __$$EnumOpaque_RwLockCopyWithImpl<$Res>;
+abstract class _$$EnumOpaque_RwLockImplCopyWith<$Res> {
+  factory _$$EnumOpaque_RwLockImplCopyWith(_$EnumOpaque_RwLockImpl value, $Res Function(_$EnumOpaque_RwLockImpl) then) =
+      __$$EnumOpaque_RwLockImplCopyWithImpl<$Res>;
   @useResult
   $Res call({RwLockHideData field0});
 }
 
 /// @nodoc
-class __$$EnumOpaque_RwLockCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res, _$EnumOpaque_RwLock>
-    implements _$$EnumOpaque_RwLockCopyWith<$Res> {
-  __$$EnumOpaque_RwLockCopyWithImpl(_$EnumOpaque_RwLock _value, $Res Function(_$EnumOpaque_RwLock) _then)
+class __$$EnumOpaque_RwLockImplCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$Res, _$EnumOpaque_RwLockImpl>
+    implements _$$EnumOpaque_RwLockImplCopyWith<$Res> {
+  __$$EnumOpaque_RwLockImplCopyWithImpl(_$EnumOpaque_RwLockImpl _value, $Res Function(_$EnumOpaque_RwLockImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -3417,7 +3434,7 @@ class __$$EnumOpaque_RwLockCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$EnumOpaque_RwLock(
+    return _then(_$EnumOpaque_RwLockImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -3428,8 +3445,8 @@ class __$$EnumOpaque_RwLockCopyWithImpl<$Res> extends _$EnumOpaqueCopyWithImpl<$
 
 /// @nodoc
 
-class _$EnumOpaque_RwLock implements EnumOpaque_RwLock {
-  const _$EnumOpaque_RwLock(this.field0);
+class _$EnumOpaque_RwLockImpl implements EnumOpaque_RwLock {
+  const _$EnumOpaque_RwLockImpl(this.field0);
 
   @override
   final RwLockHideData field0;
@@ -3443,7 +3460,7 @@ class _$EnumOpaque_RwLock implements EnumOpaque_RwLock {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumOpaque_RwLock &&
+            other is _$EnumOpaque_RwLockImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -3453,8 +3470,8 @@ class _$EnumOpaque_RwLock implements EnumOpaque_RwLock {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumOpaque_RwLockCopyWith<_$EnumOpaque_RwLock> get copyWith =>
-      __$$EnumOpaque_RwLockCopyWithImpl<_$EnumOpaque_RwLock>(this, _$identity);
+  _$$EnumOpaque_RwLockImplCopyWith<_$EnumOpaque_RwLockImpl> get copyWith =>
+      __$$EnumOpaque_RwLockImplCopyWithImpl<_$EnumOpaque_RwLockImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -3538,12 +3555,12 @@ class _$EnumOpaque_RwLock implements EnumOpaque_RwLock {
 }
 
 abstract class EnumOpaque_RwLock implements EnumOpaque {
-  const factory EnumOpaque_RwLock(final RwLockHideData field0) = _$EnumOpaque_RwLock;
+  const factory EnumOpaque_RwLock(final RwLockHideData field0) = _$EnumOpaque_RwLockImpl;
 
   @override
   RwLockHideData get field0;
   @JsonKey(ignore: true)
-  _$$EnumOpaque_RwLockCopyWith<_$EnumOpaque_RwLock> get copyWith => throw _privateConstructorUsedError;
+  _$$EnumOpaque_RwLockImplCopyWith<_$EnumOpaque_RwLockImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -3597,16 +3614,17 @@ class _$EventCopyWithImpl<$Res, $Val extends Event> implements $EventCopyWith<$R
 }
 
 /// @nodoc
-abstract class _$$_EventCopyWith<$Res> implements $EventCopyWith<$Res> {
-  factory _$$_EventCopyWith(_$_Event value, $Res Function(_$_Event) then) = __$$_EventCopyWithImpl<$Res>;
+abstract class _$$EventImplCopyWith<$Res> implements $EventCopyWith<$Res> {
+  factory _$$EventImplCopyWith(_$EventImpl value, $Res Function(_$EventImpl) then) = __$$EventImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({FlutterRustBridgeExampleSingleBlockTest bridge, String address, String payload});
 }
 
 /// @nodoc
-class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event> implements _$$_EventCopyWith<$Res> {
-  __$$_EventCopyWithImpl(_$_Event _value, $Res Function(_$_Event) _then) : super(_value, _then);
+class __$$EventImplCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$EventImpl>
+    implements _$$EventImplCopyWith<$Res> {
+  __$$EventImplCopyWithImpl(_$EventImpl _value, $Res Function(_$EventImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -3615,7 +3633,7 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event> i
     Object? address = null,
     Object? payload = null,
   }) {
-    return _then(_$_Event(
+    return _then(_$EventImpl(
       bridge: null == bridge
           ? _value.bridge
           : bridge // ignore: cast_nullable_to_non_nullable
@@ -3634,8 +3652,8 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event> i
 
 /// @nodoc
 
-class _$_Event extends _Event {
-  const _$_Event({required this.bridge, required this.address, required this.payload}) : super._();
+class _$EventImpl extends _Event {
+  const _$EventImpl({required this.bridge, required this.address, required this.payload}) : super._();
 
   @override
   final FlutterRustBridgeExampleSingleBlockTest bridge;
@@ -3653,7 +3671,7 @@ class _$_Event extends _Event {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Event &&
+            other is _$EventImpl &&
             (identical(other.bridge, bridge) || other.bridge == bridge) &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.payload, payload) || other.payload == payload));
@@ -3665,14 +3683,14 @@ class _$_Event extends _Event {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EventCopyWith<_$_Event> get copyWith => __$$_EventCopyWithImpl<_$_Event>(this, _$identity);
+  _$$EventImplCopyWith<_$EventImpl> get copyWith => __$$EventImplCopyWithImpl<_$EventImpl>(this, _$identity);
 }
 
 abstract class _Event extends Event {
   const factory _Event(
       {required final FlutterRustBridgeExampleSingleBlockTest bridge,
       required final String address,
-      required final String payload}) = _$_Event;
+      required final String payload}) = _$EventImpl;
   const _Event._() : super._();
 
   @override
@@ -3683,7 +3701,7 @@ abstract class _Event extends Event {
   String get payload;
   @override
   @JsonKey(ignore: true)
-  _$$_EventCopyWith<_$_Event> get copyWith => throw _privateConstructorUsedError;
+  _$$EventImplCopyWith<_$EventImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -3769,22 +3787,22 @@ class _$KitchenSinkCopyWithImpl<$Res, $Val extends KitchenSink> implements $Kitc
 }
 
 /// @nodoc
-abstract class _$$KitchenSink_EmptyCopyWith<$Res> {
-  factory _$$KitchenSink_EmptyCopyWith(_$KitchenSink_Empty value, $Res Function(_$KitchenSink_Empty) then) =
-      __$$KitchenSink_EmptyCopyWithImpl<$Res>;
+abstract class _$$KitchenSink_EmptyImplCopyWith<$Res> {
+  factory _$$KitchenSink_EmptyImplCopyWith(_$KitchenSink_EmptyImpl value, $Res Function(_$KitchenSink_EmptyImpl) then) =
+      __$$KitchenSink_EmptyImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$KitchenSink_EmptyCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res, _$KitchenSink_Empty>
-    implements _$$KitchenSink_EmptyCopyWith<$Res> {
-  __$$KitchenSink_EmptyCopyWithImpl(_$KitchenSink_Empty _value, $Res Function(_$KitchenSink_Empty) _then)
+class __$$KitchenSink_EmptyImplCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res, _$KitchenSink_EmptyImpl>
+    implements _$$KitchenSink_EmptyImplCopyWith<$Res> {
+  __$$KitchenSink_EmptyImplCopyWithImpl(_$KitchenSink_EmptyImpl _value, $Res Function(_$KitchenSink_EmptyImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$KitchenSink_Empty implements KitchenSink_Empty {
-  const _$KitchenSink_Empty();
+class _$KitchenSink_EmptyImpl implements KitchenSink_Empty {
+  const _$KitchenSink_EmptyImpl();
 
   @override
   String toString() {
@@ -3793,7 +3811,7 @@ class _$KitchenSink_Empty implements KitchenSink_Empty {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$KitchenSink_Empty);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$KitchenSink_EmptyImpl);
   }
 
   @override
@@ -3887,22 +3905,24 @@ class _$KitchenSink_Empty implements KitchenSink_Empty {
 }
 
 abstract class KitchenSink_Empty implements KitchenSink {
-  const factory KitchenSink_Empty() = _$KitchenSink_Empty;
+  const factory KitchenSink_Empty() = _$KitchenSink_EmptyImpl;
 }
 
 /// @nodoc
-abstract class _$$KitchenSink_PrimitivesCopyWith<$Res> {
-  factory _$$KitchenSink_PrimitivesCopyWith(
-          _$KitchenSink_Primitives value, $Res Function(_$KitchenSink_Primitives) then) =
-      __$$KitchenSink_PrimitivesCopyWithImpl<$Res>;
+abstract class _$$KitchenSink_PrimitivesImplCopyWith<$Res> {
+  factory _$$KitchenSink_PrimitivesImplCopyWith(
+          _$KitchenSink_PrimitivesImpl value, $Res Function(_$KitchenSink_PrimitivesImpl) then) =
+      __$$KitchenSink_PrimitivesImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int int32, double float64, bool boolean});
 }
 
 /// @nodoc
-class __$$KitchenSink_PrimitivesCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res, _$KitchenSink_Primitives>
-    implements _$$KitchenSink_PrimitivesCopyWith<$Res> {
-  __$$KitchenSink_PrimitivesCopyWithImpl(_$KitchenSink_Primitives _value, $Res Function(_$KitchenSink_Primitives) _then)
+class __$$KitchenSink_PrimitivesImplCopyWithImpl<$Res>
+    extends _$KitchenSinkCopyWithImpl<$Res, _$KitchenSink_PrimitivesImpl>
+    implements _$$KitchenSink_PrimitivesImplCopyWith<$Res> {
+  __$$KitchenSink_PrimitivesImplCopyWithImpl(
+      _$KitchenSink_PrimitivesImpl _value, $Res Function(_$KitchenSink_PrimitivesImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -3912,7 +3932,7 @@ class __$$KitchenSink_PrimitivesCopyWithImpl<$Res> extends _$KitchenSinkCopyWith
     Object? float64 = null,
     Object? boolean = null,
   }) {
-    return _then(_$KitchenSink_Primitives(
+    return _then(_$KitchenSink_PrimitivesImpl(
       int32: null == int32
           ? _value.int32
           : int32 // ignore: cast_nullable_to_non_nullable
@@ -3931,8 +3951,8 @@ class __$$KitchenSink_PrimitivesCopyWithImpl<$Res> extends _$KitchenSinkCopyWith
 
 /// @nodoc
 
-class _$KitchenSink_Primitives implements KitchenSink_Primitives {
-  const _$KitchenSink_Primitives({this.int32 = -1, required this.float64, required this.boolean});
+class _$KitchenSink_PrimitivesImpl implements KitchenSink_Primitives {
+  const _$KitchenSink_PrimitivesImpl({this.int32 = -1, required this.float64, required this.boolean});
 
   /// Dart field comment
   @override
@@ -3952,7 +3972,7 @@ class _$KitchenSink_Primitives implements KitchenSink_Primitives {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$KitchenSink_Primitives &&
+            other is _$KitchenSink_PrimitivesImpl &&
             (identical(other.int32, int32) || other.int32 == int32) &&
             (identical(other.float64, float64) || other.float64 == float64) &&
             (identical(other.boolean, boolean) || other.boolean == boolean));
@@ -3964,8 +3984,8 @@ class _$KitchenSink_Primitives implements KitchenSink_Primitives {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$KitchenSink_PrimitivesCopyWith<_$KitchenSink_Primitives> get copyWith =>
-      __$$KitchenSink_PrimitivesCopyWithImpl<_$KitchenSink_Primitives>(this, _$identity);
+  _$$KitchenSink_PrimitivesImplCopyWith<_$KitchenSink_PrimitivesImpl> get copyWith =>
+      __$$KitchenSink_PrimitivesImplCopyWithImpl<_$KitchenSink_PrimitivesImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -4056,20 +4076,22 @@ class _$KitchenSink_Primitives implements KitchenSink_Primitives {
 
 abstract class KitchenSink_Primitives implements KitchenSink {
   const factory KitchenSink_Primitives({final int int32, required final double float64, required final bool boolean}) =
-      _$KitchenSink_Primitives;
+      _$KitchenSink_PrimitivesImpl;
 
   /// Dart field comment
   int get int32;
   double get float64;
   bool get boolean;
   @JsonKey(ignore: true)
-  _$$KitchenSink_PrimitivesCopyWith<_$KitchenSink_Primitives> get copyWith => throw _privateConstructorUsedError;
+  _$$KitchenSink_PrimitivesImplCopyWith<_$KitchenSink_PrimitivesImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$KitchenSink_NestedCopyWith<$Res> {
-  factory _$$KitchenSink_NestedCopyWith(_$KitchenSink_Nested value, $Res Function(_$KitchenSink_Nested) then) =
-      __$$KitchenSink_NestedCopyWithImpl<$Res>;
+abstract class _$$KitchenSink_NestedImplCopyWith<$Res> {
+  factory _$$KitchenSink_NestedImplCopyWith(
+          _$KitchenSink_NestedImpl value, $Res Function(_$KitchenSink_NestedImpl) then) =
+      __$$KitchenSink_NestedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0, KitchenSink field1});
 
@@ -4077,9 +4099,9 @@ abstract class _$$KitchenSink_NestedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$KitchenSink_NestedCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res, _$KitchenSink_Nested>
-    implements _$$KitchenSink_NestedCopyWith<$Res> {
-  __$$KitchenSink_NestedCopyWithImpl(_$KitchenSink_Nested _value, $Res Function(_$KitchenSink_Nested) _then)
+class __$$KitchenSink_NestedImplCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res, _$KitchenSink_NestedImpl>
+    implements _$$KitchenSink_NestedImplCopyWith<$Res> {
+  __$$KitchenSink_NestedImplCopyWithImpl(_$KitchenSink_NestedImpl _value, $Res Function(_$KitchenSink_NestedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -4088,7 +4110,7 @@ class __$$KitchenSink_NestedCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl
     Object? field0 = null,
     Object? field1 = null,
   }) {
-    return _then(_$KitchenSink_Nested(
+    return _then(_$KitchenSink_NestedImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -4111,8 +4133,8 @@ class __$$KitchenSink_NestedCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl
 
 /// @nodoc
 
-class _$KitchenSink_Nested implements KitchenSink_Nested {
-  const _$KitchenSink_Nested(this.field0, [this.field1 = const KitchenSink.empty()]);
+class _$KitchenSink_NestedImpl implements KitchenSink_Nested {
+  const _$KitchenSink_NestedImpl(this.field0, [this.field1 = const KitchenSink.empty()]);
 
   @override
   final int field0;
@@ -4129,7 +4151,7 @@ class _$KitchenSink_Nested implements KitchenSink_Nested {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$KitchenSink_Nested &&
+            other is _$KitchenSink_NestedImpl &&
             (identical(other.field0, field0) || other.field0 == field0) &&
             (identical(other.field1, field1) || other.field1 == field1));
   }
@@ -4140,8 +4162,8 @@ class _$KitchenSink_Nested implements KitchenSink_Nested {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$KitchenSink_NestedCopyWith<_$KitchenSink_Nested> get copyWith =>
-      __$$KitchenSink_NestedCopyWithImpl<_$KitchenSink_Nested>(this, _$identity);
+  _$$KitchenSink_NestedImplCopyWith<_$KitchenSink_NestedImpl> get copyWith =>
+      __$$KitchenSink_NestedImplCopyWithImpl<_$KitchenSink_NestedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -4231,26 +4253,28 @@ class _$KitchenSink_Nested implements KitchenSink_Nested {
 }
 
 abstract class KitchenSink_Nested implements KitchenSink {
-  const factory KitchenSink_Nested(final int field0, [final KitchenSink field1]) = _$KitchenSink_Nested;
+  const factory KitchenSink_Nested(final int field0, [final KitchenSink field1]) = _$KitchenSink_NestedImpl;
 
   int get field0;
   KitchenSink get field1;
   @JsonKey(ignore: true)
-  _$$KitchenSink_NestedCopyWith<_$KitchenSink_Nested> get copyWith => throw _privateConstructorUsedError;
+  _$$KitchenSink_NestedImplCopyWith<_$KitchenSink_NestedImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$KitchenSink_OptionalCopyWith<$Res> {
-  factory _$$KitchenSink_OptionalCopyWith(_$KitchenSink_Optional value, $Res Function(_$KitchenSink_Optional) then) =
-      __$$KitchenSink_OptionalCopyWithImpl<$Res>;
+abstract class _$$KitchenSink_OptionalImplCopyWith<$Res> {
+  factory _$$KitchenSink_OptionalImplCopyWith(
+          _$KitchenSink_OptionalImpl value, $Res Function(_$KitchenSink_OptionalImpl) then) =
+      __$$KitchenSink_OptionalImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int? field0, int? field1});
 }
 
 /// @nodoc
-class __$$KitchenSink_OptionalCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res, _$KitchenSink_Optional>
-    implements _$$KitchenSink_OptionalCopyWith<$Res> {
-  __$$KitchenSink_OptionalCopyWithImpl(_$KitchenSink_Optional _value, $Res Function(_$KitchenSink_Optional) _then)
+class __$$KitchenSink_OptionalImplCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res, _$KitchenSink_OptionalImpl>
+    implements _$$KitchenSink_OptionalImplCopyWith<$Res> {
+  __$$KitchenSink_OptionalImplCopyWithImpl(
+      _$KitchenSink_OptionalImpl _value, $Res Function(_$KitchenSink_OptionalImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -4259,7 +4283,7 @@ class __$$KitchenSink_OptionalCopyWithImpl<$Res> extends _$KitchenSinkCopyWithIm
     Object? field0 = freezed,
     Object? field1 = freezed,
   }) {
-    return _then(_$KitchenSink_Optional(
+    return _then(_$KitchenSink_OptionalImpl(
       freezed == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -4274,8 +4298,8 @@ class __$$KitchenSink_OptionalCopyWithImpl<$Res> extends _$KitchenSinkCopyWithIm
 
 /// @nodoc
 
-class _$KitchenSink_Optional implements KitchenSink_Optional {
-  const _$KitchenSink_Optional([this.field0 = -1, this.field1]);
+class _$KitchenSink_OptionalImpl implements KitchenSink_Optional {
+  const _$KitchenSink_OptionalImpl([this.field0 = -1, this.field1]);
 
   /// Comment on anonymous field
   @override
@@ -4293,7 +4317,7 @@ class _$KitchenSink_Optional implements KitchenSink_Optional {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$KitchenSink_Optional &&
+            other is _$KitchenSink_OptionalImpl &&
             (identical(other.field0, field0) || other.field0 == field0) &&
             (identical(other.field1, field1) || other.field1 == field1));
   }
@@ -4304,8 +4328,8 @@ class _$KitchenSink_Optional implements KitchenSink_Optional {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$KitchenSink_OptionalCopyWith<_$KitchenSink_Optional> get copyWith =>
-      __$$KitchenSink_OptionalCopyWithImpl<_$KitchenSink_Optional>(this, _$identity);
+  _$$KitchenSink_OptionalImplCopyWith<_$KitchenSink_OptionalImpl> get copyWith =>
+      __$$KitchenSink_OptionalImplCopyWithImpl<_$KitchenSink_OptionalImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -4395,27 +4419,28 @@ class _$KitchenSink_Optional implements KitchenSink_Optional {
 }
 
 abstract class KitchenSink_Optional implements KitchenSink {
-  const factory KitchenSink_Optional([final int? field0, final int? field1]) = _$KitchenSink_Optional;
+  const factory KitchenSink_Optional([final int? field0, final int? field1]) = _$KitchenSink_OptionalImpl;
 
   /// Comment on anonymous field
   int? get field0;
   int? get field1;
   @JsonKey(ignore: true)
-  _$$KitchenSink_OptionalCopyWith<_$KitchenSink_Optional> get copyWith => throw _privateConstructorUsedError;
+  _$$KitchenSink_OptionalImplCopyWith<_$KitchenSink_OptionalImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$KitchenSink_BufferCopyWith<$Res> {
-  factory _$$KitchenSink_BufferCopyWith(_$KitchenSink_Buffer value, $Res Function(_$KitchenSink_Buffer) then) =
-      __$$KitchenSink_BufferCopyWithImpl<$Res>;
+abstract class _$$KitchenSink_BufferImplCopyWith<$Res> {
+  factory _$$KitchenSink_BufferImplCopyWith(
+          _$KitchenSink_BufferImpl value, $Res Function(_$KitchenSink_BufferImpl) then) =
+      __$$KitchenSink_BufferImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Uint8List field0});
 }
 
 /// @nodoc
-class __$$KitchenSink_BufferCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res, _$KitchenSink_Buffer>
-    implements _$$KitchenSink_BufferCopyWith<$Res> {
-  __$$KitchenSink_BufferCopyWithImpl(_$KitchenSink_Buffer _value, $Res Function(_$KitchenSink_Buffer) _then)
+class __$$KitchenSink_BufferImplCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res, _$KitchenSink_BufferImpl>
+    implements _$$KitchenSink_BufferImplCopyWith<$Res> {
+  __$$KitchenSink_BufferImplCopyWithImpl(_$KitchenSink_BufferImpl _value, $Res Function(_$KitchenSink_BufferImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -4423,7 +4448,7 @@ class __$$KitchenSink_BufferCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$KitchenSink_Buffer(
+    return _then(_$KitchenSink_BufferImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -4434,8 +4459,8 @@ class __$$KitchenSink_BufferCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl
 
 /// @nodoc
 
-class _$KitchenSink_Buffer implements KitchenSink_Buffer {
-  const _$KitchenSink_Buffer(this.field0);
+class _$KitchenSink_BufferImpl implements KitchenSink_Buffer {
+  const _$KitchenSink_BufferImpl(this.field0);
 
   @override
   final Uint8List field0;
@@ -4449,7 +4474,7 @@ class _$KitchenSink_Buffer implements KitchenSink_Buffer {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$KitchenSink_Buffer &&
+            other is _$KitchenSink_BufferImpl &&
             const DeepCollectionEquality().equals(other.field0, field0));
   }
 
@@ -4459,8 +4484,8 @@ class _$KitchenSink_Buffer implements KitchenSink_Buffer {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$KitchenSink_BufferCopyWith<_$KitchenSink_Buffer> get copyWith =>
-      __$$KitchenSink_BufferCopyWithImpl<_$KitchenSink_Buffer>(this, _$identity);
+  _$$KitchenSink_BufferImplCopyWith<_$KitchenSink_BufferImpl> get copyWith =>
+      __$$KitchenSink_BufferImplCopyWithImpl<_$KitchenSink_BufferImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -4550,25 +4575,25 @@ class _$KitchenSink_Buffer implements KitchenSink_Buffer {
 }
 
 abstract class KitchenSink_Buffer implements KitchenSink {
-  const factory KitchenSink_Buffer(final Uint8List field0) = _$KitchenSink_Buffer;
+  const factory KitchenSink_Buffer(final Uint8List field0) = _$KitchenSink_BufferImpl;
 
   Uint8List get field0;
   @JsonKey(ignore: true)
-  _$$KitchenSink_BufferCopyWith<_$KitchenSink_Buffer> get copyWith => throw _privateConstructorUsedError;
+  _$$KitchenSink_BufferImplCopyWith<_$KitchenSink_BufferImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$KitchenSink_EnumsCopyWith<$Res> {
-  factory _$$KitchenSink_EnumsCopyWith(_$KitchenSink_Enums value, $Res Function(_$KitchenSink_Enums) then) =
-      __$$KitchenSink_EnumsCopyWithImpl<$Res>;
+abstract class _$$KitchenSink_EnumsImplCopyWith<$Res> {
+  factory _$$KitchenSink_EnumsImplCopyWith(_$KitchenSink_EnumsImpl value, $Res Function(_$KitchenSink_EnumsImpl) then) =
+      __$$KitchenSink_EnumsImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Weekdays field0});
 }
 
 /// @nodoc
-class __$$KitchenSink_EnumsCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res, _$KitchenSink_Enums>
-    implements _$$KitchenSink_EnumsCopyWith<$Res> {
-  __$$KitchenSink_EnumsCopyWithImpl(_$KitchenSink_Enums _value, $Res Function(_$KitchenSink_Enums) _then)
+class __$$KitchenSink_EnumsImplCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<$Res, _$KitchenSink_EnumsImpl>
+    implements _$$KitchenSink_EnumsImplCopyWith<$Res> {
+  __$$KitchenSink_EnumsImplCopyWithImpl(_$KitchenSink_EnumsImpl _value, $Res Function(_$KitchenSink_EnumsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -4576,7 +4601,7 @@ class __$$KitchenSink_EnumsCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$KitchenSink_Enums(
+    return _then(_$KitchenSink_EnumsImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -4587,8 +4612,8 @@ class __$$KitchenSink_EnumsCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<
 
 /// @nodoc
 
-class _$KitchenSink_Enums implements KitchenSink_Enums {
-  const _$KitchenSink_Enums([this.field0 = Weekdays.sunday]);
+class _$KitchenSink_EnumsImpl implements KitchenSink_Enums {
+  const _$KitchenSink_EnumsImpl([this.field0 = Weekdays.sunday]);
 
   @override
   @JsonKey()
@@ -4603,7 +4628,7 @@ class _$KitchenSink_Enums implements KitchenSink_Enums {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$KitchenSink_Enums &&
+            other is _$KitchenSink_EnumsImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -4613,8 +4638,8 @@ class _$KitchenSink_Enums implements KitchenSink_Enums {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$KitchenSink_EnumsCopyWith<_$KitchenSink_Enums> get copyWith =>
-      __$$KitchenSink_EnumsCopyWithImpl<_$KitchenSink_Enums>(this, _$identity);
+  _$$KitchenSink_EnumsImplCopyWith<_$KitchenSink_EnumsImpl> get copyWith =>
+      __$$KitchenSink_EnumsImplCopyWithImpl<_$KitchenSink_EnumsImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -4704,11 +4729,11 @@ class _$KitchenSink_Enums implements KitchenSink_Enums {
 }
 
 abstract class KitchenSink_Enums implements KitchenSink {
-  const factory KitchenSink_Enums([final Weekdays field0]) = _$KitchenSink_Enums;
+  const factory KitchenSink_Enums([final Weekdays field0]) = _$KitchenSink_EnumsImpl;
 
   Weekdays get field0;
   @JsonKey(ignore: true)
-  _$$KitchenSink_EnumsCopyWith<_$KitchenSink_Enums> get copyWith => throw _privateConstructorUsedError;
+  _$$KitchenSink_EnumsImplCopyWith<_$KitchenSink_EnumsImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -4770,9 +4795,9 @@ class _$MeasureCopyWithImpl<$Res, $Val extends Measure> implements $MeasureCopyW
 }
 
 /// @nodoc
-abstract class _$$Measure_SpeedCopyWith<$Res> {
-  factory _$$Measure_SpeedCopyWith(_$Measure_Speed value, $Res Function(_$Measure_Speed) then) =
-      __$$Measure_SpeedCopyWithImpl<$Res>;
+abstract class _$$Measure_SpeedImplCopyWith<$Res> {
+  factory _$$Measure_SpeedImplCopyWith(_$Measure_SpeedImpl value, $Res Function(_$Measure_SpeedImpl) then) =
+      __$$Measure_SpeedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Speed field0});
 
@@ -4780,16 +4805,17 @@ abstract class _$$Measure_SpeedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$Measure_SpeedCopyWithImpl<$Res> extends _$MeasureCopyWithImpl<$Res, _$Measure_Speed>
-    implements _$$Measure_SpeedCopyWith<$Res> {
-  __$$Measure_SpeedCopyWithImpl(_$Measure_Speed _value, $Res Function(_$Measure_Speed) _then) : super(_value, _then);
+class __$$Measure_SpeedImplCopyWithImpl<$Res> extends _$MeasureCopyWithImpl<$Res, _$Measure_SpeedImpl>
+    implements _$$Measure_SpeedImplCopyWith<$Res> {
+  __$$Measure_SpeedImplCopyWithImpl(_$Measure_SpeedImpl _value, $Res Function(_$Measure_SpeedImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$Measure_Speed(
+    return _then(_$Measure_SpeedImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -4808,8 +4834,8 @@ class __$$Measure_SpeedCopyWithImpl<$Res> extends _$MeasureCopyWithImpl<$Res, _$
 
 /// @nodoc
 
-class _$Measure_Speed implements Measure_Speed {
-  const _$Measure_Speed(this.field0);
+class _$Measure_SpeedImpl implements Measure_Speed {
+  const _$Measure_SpeedImpl(this.field0);
 
   @override
   final Speed field0;
@@ -4823,7 +4849,7 @@ class _$Measure_Speed implements Measure_Speed {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Measure_Speed &&
+            other is _$Measure_SpeedImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -4833,8 +4859,8 @@ class _$Measure_Speed implements Measure_Speed {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$Measure_SpeedCopyWith<_$Measure_Speed> get copyWith =>
-      __$$Measure_SpeedCopyWithImpl<_$Measure_Speed>(this, _$identity);
+  _$$Measure_SpeedImplCopyWith<_$Measure_SpeedImpl> get copyWith =>
+      __$$Measure_SpeedImplCopyWithImpl<_$Measure_SpeedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -4900,18 +4926,18 @@ class _$Measure_Speed implements Measure_Speed {
 }
 
 abstract class Measure_Speed implements Measure {
-  const factory Measure_Speed(final Speed field0) = _$Measure_Speed;
+  const factory Measure_Speed(final Speed field0) = _$Measure_SpeedImpl;
 
   @override
   Speed get field0;
   @JsonKey(ignore: true)
-  _$$Measure_SpeedCopyWith<_$Measure_Speed> get copyWith => throw _privateConstructorUsedError;
+  _$$Measure_SpeedImplCopyWith<_$Measure_SpeedImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$Measure_DistanceCopyWith<$Res> {
-  factory _$$Measure_DistanceCopyWith(_$Measure_Distance value, $Res Function(_$Measure_Distance) then) =
-      __$$Measure_DistanceCopyWithImpl<$Res>;
+abstract class _$$Measure_DistanceImplCopyWith<$Res> {
+  factory _$$Measure_DistanceImplCopyWith(_$Measure_DistanceImpl value, $Res Function(_$Measure_DistanceImpl) then) =
+      __$$Measure_DistanceImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Distance field0});
 
@@ -4919,9 +4945,9 @@ abstract class _$$Measure_DistanceCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$Measure_DistanceCopyWithImpl<$Res> extends _$MeasureCopyWithImpl<$Res, _$Measure_Distance>
-    implements _$$Measure_DistanceCopyWith<$Res> {
-  __$$Measure_DistanceCopyWithImpl(_$Measure_Distance _value, $Res Function(_$Measure_Distance) _then)
+class __$$Measure_DistanceImplCopyWithImpl<$Res> extends _$MeasureCopyWithImpl<$Res, _$Measure_DistanceImpl>
+    implements _$$Measure_DistanceImplCopyWith<$Res> {
+  __$$Measure_DistanceImplCopyWithImpl(_$Measure_DistanceImpl _value, $Res Function(_$Measure_DistanceImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -4929,7 +4955,7 @@ class __$$Measure_DistanceCopyWithImpl<$Res> extends _$MeasureCopyWithImpl<$Res,
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$Measure_Distance(
+    return _then(_$Measure_DistanceImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -4948,8 +4974,8 @@ class __$$Measure_DistanceCopyWithImpl<$Res> extends _$MeasureCopyWithImpl<$Res,
 
 /// @nodoc
 
-class _$Measure_Distance implements Measure_Distance {
-  const _$Measure_Distance(this.field0);
+class _$Measure_DistanceImpl implements Measure_Distance {
+  const _$Measure_DistanceImpl(this.field0);
 
   @override
   final Distance field0;
@@ -4963,7 +4989,7 @@ class _$Measure_Distance implements Measure_Distance {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Measure_Distance &&
+            other is _$Measure_DistanceImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -4973,8 +4999,8 @@ class _$Measure_Distance implements Measure_Distance {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$Measure_DistanceCopyWith<_$Measure_Distance> get copyWith =>
-      __$$Measure_DistanceCopyWithImpl<_$Measure_Distance>(this, _$identity);
+  _$$Measure_DistanceImplCopyWith<_$Measure_DistanceImpl> get copyWith =>
+      __$$Measure_DistanceImplCopyWithImpl<_$Measure_DistanceImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -5040,12 +5066,12 @@ class _$Measure_Distance implements Measure_Distance {
 }
 
 abstract class Measure_Distance implements Measure {
-  const factory Measure_Distance(final Distance field0) = _$Measure_Distance;
+  const factory Measure_Distance(final Distance field0) = _$Measure_DistanceImpl;
 
   @override
   Distance get field0;
   @JsonKey(ignore: true)
-  _$$Measure_DistanceCopyWith<_$Measure_Distance> get copyWith => throw _privateConstructorUsedError;
+  _$$Measure_DistanceImplCopyWith<_$Measure_DistanceImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -5108,17 +5134,17 @@ class _$MyEnumFreezedCopyWithImpl<$Res, $Val extends MyEnumFreezed> implements $
 }
 
 /// @nodoc
-abstract class _$$MyEnumFreezed_ACopyWith<$Res> {
-  factory _$$MyEnumFreezed_ACopyWith(_$MyEnumFreezed_A value, $Res Function(_$MyEnumFreezed_A) then) =
-      __$$MyEnumFreezed_ACopyWithImpl<$Res>;
+abstract class _$$MyEnumFreezed_AImplCopyWith<$Res> {
+  factory _$$MyEnumFreezed_AImplCopyWith(_$MyEnumFreezed_AImpl value, $Res Function(_$MyEnumFreezed_AImpl) then) =
+      __$$MyEnumFreezed_AImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0});
 }
 
 /// @nodoc
-class __$$MyEnumFreezed_ACopyWithImpl<$Res> extends _$MyEnumFreezedCopyWithImpl<$Res, _$MyEnumFreezed_A>
-    implements _$$MyEnumFreezed_ACopyWith<$Res> {
-  __$$MyEnumFreezed_ACopyWithImpl(_$MyEnumFreezed_A _value, $Res Function(_$MyEnumFreezed_A) _then)
+class __$$MyEnumFreezed_AImplCopyWithImpl<$Res> extends _$MyEnumFreezedCopyWithImpl<$Res, _$MyEnumFreezed_AImpl>
+    implements _$$MyEnumFreezed_AImplCopyWith<$Res> {
+  __$$MyEnumFreezed_AImplCopyWithImpl(_$MyEnumFreezed_AImpl _value, $Res Function(_$MyEnumFreezed_AImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -5126,7 +5152,7 @@ class __$$MyEnumFreezed_ACopyWithImpl<$Res> extends _$MyEnumFreezedCopyWithImpl<
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$MyEnumFreezed_A(
+    return _then(_$MyEnumFreezed_AImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -5137,8 +5163,8 @@ class __$$MyEnumFreezed_ACopyWithImpl<$Res> extends _$MyEnumFreezedCopyWithImpl<
 
 /// @nodoc
 
-class _$MyEnumFreezed_A implements MyEnumFreezed_A {
-  const _$MyEnumFreezed_A(this.field0);
+class _$MyEnumFreezed_AImpl implements MyEnumFreezed_A {
+  const _$MyEnumFreezed_AImpl(this.field0);
 
   @override
   final int field0;
@@ -5152,7 +5178,7 @@ class _$MyEnumFreezed_A implements MyEnumFreezed_A {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MyEnumFreezed_A &&
+            other is _$MyEnumFreezed_AImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -5162,8 +5188,8 @@ class _$MyEnumFreezed_A implements MyEnumFreezed_A {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$MyEnumFreezed_ACopyWith<_$MyEnumFreezed_A> get copyWith =>
-      __$$MyEnumFreezed_ACopyWithImpl<_$MyEnumFreezed_A>(this, _$identity);
+  _$$MyEnumFreezed_AImplCopyWith<_$MyEnumFreezed_AImpl> get copyWith =>
+      __$$MyEnumFreezed_AImplCopyWithImpl<_$MyEnumFreezed_AImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -5229,26 +5255,26 @@ class _$MyEnumFreezed_A implements MyEnumFreezed_A {
 }
 
 abstract class MyEnumFreezed_A implements MyEnumFreezed {
-  const factory MyEnumFreezed_A(final int field0) = _$MyEnumFreezed_A;
+  const factory MyEnumFreezed_A(final int field0) = _$MyEnumFreezed_AImpl;
 
   @override
   int get field0;
   @JsonKey(ignore: true)
-  _$$MyEnumFreezed_ACopyWith<_$MyEnumFreezed_A> get copyWith => throw _privateConstructorUsedError;
+  _$$MyEnumFreezed_AImplCopyWith<_$MyEnumFreezed_AImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$MyEnumFreezed_BCopyWith<$Res> {
-  factory _$$MyEnumFreezed_BCopyWith(_$MyEnumFreezed_B value, $Res Function(_$MyEnumFreezed_B) then) =
-      __$$MyEnumFreezed_BCopyWithImpl<$Res>;
+abstract class _$$MyEnumFreezed_BImplCopyWith<$Res> {
+  factory _$$MyEnumFreezed_BImplCopyWith(_$MyEnumFreezed_BImpl value, $Res Function(_$MyEnumFreezed_BImpl) then) =
+      __$$MyEnumFreezed_BImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String field0});
 }
 
 /// @nodoc
-class __$$MyEnumFreezed_BCopyWithImpl<$Res> extends _$MyEnumFreezedCopyWithImpl<$Res, _$MyEnumFreezed_B>
-    implements _$$MyEnumFreezed_BCopyWith<$Res> {
-  __$$MyEnumFreezed_BCopyWithImpl(_$MyEnumFreezed_B _value, $Res Function(_$MyEnumFreezed_B) _then)
+class __$$MyEnumFreezed_BImplCopyWithImpl<$Res> extends _$MyEnumFreezedCopyWithImpl<$Res, _$MyEnumFreezed_BImpl>
+    implements _$$MyEnumFreezed_BImplCopyWith<$Res> {
+  __$$MyEnumFreezed_BImplCopyWithImpl(_$MyEnumFreezed_BImpl _value, $Res Function(_$MyEnumFreezed_BImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -5256,7 +5282,7 @@ class __$$MyEnumFreezed_BCopyWithImpl<$Res> extends _$MyEnumFreezedCopyWithImpl<
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$MyEnumFreezed_B(
+    return _then(_$MyEnumFreezed_BImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -5267,8 +5293,8 @@ class __$$MyEnumFreezed_BCopyWithImpl<$Res> extends _$MyEnumFreezedCopyWithImpl<
 
 /// @nodoc
 
-class _$MyEnumFreezed_B implements MyEnumFreezed_B {
-  const _$MyEnumFreezed_B(this.field0);
+class _$MyEnumFreezed_BImpl implements MyEnumFreezed_B {
+  const _$MyEnumFreezed_BImpl(this.field0);
 
   @override
   final String field0;
@@ -5282,7 +5308,7 @@ class _$MyEnumFreezed_B implements MyEnumFreezed_B {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MyEnumFreezed_B &&
+            other is _$MyEnumFreezed_BImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -5292,8 +5318,8 @@ class _$MyEnumFreezed_B implements MyEnumFreezed_B {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$MyEnumFreezed_BCopyWith<_$MyEnumFreezed_B> get copyWith =>
-      __$$MyEnumFreezed_BCopyWithImpl<_$MyEnumFreezed_B>(this, _$identity);
+  _$$MyEnumFreezed_BImplCopyWith<_$MyEnumFreezed_BImpl> get copyWith =>
+      __$$MyEnumFreezed_BImplCopyWithImpl<_$MyEnumFreezed_BImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -5359,12 +5385,12 @@ class _$MyEnumFreezed_B implements MyEnumFreezed_B {
 }
 
 abstract class MyEnumFreezed_B implements MyEnumFreezed {
-  const factory MyEnumFreezed_B(final String field0) = _$MyEnumFreezed_B;
+  const factory MyEnumFreezed_B(final String field0) = _$MyEnumFreezed_BImpl;
 
   @override
   String get field0;
   @JsonKey(ignore: true)
-  _$$MyEnumFreezed_BCopyWith<_$MyEnumFreezed_B> get copyWith => throw _privateConstructorUsedError;
+  _$$MyEnumFreezed_BImplCopyWith<_$MyEnumFreezed_BImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -5413,18 +5439,19 @@ class _$MySizeFreezedCopyWithImpl<$Res, $Val extends MySizeFreezed> implements $
 }
 
 /// @nodoc
-abstract class _$$_MySizeFreezedCopyWith<$Res> implements $MySizeFreezedCopyWith<$Res> {
-  factory _$$_MySizeFreezedCopyWith(_$_MySizeFreezed value, $Res Function(_$_MySizeFreezed) then) =
-      __$$_MySizeFreezedCopyWithImpl<$Res>;
+abstract class _$$MySizeFreezedImplCopyWith<$Res> implements $MySizeFreezedCopyWith<$Res> {
+  factory _$$MySizeFreezedImplCopyWith(_$MySizeFreezedImpl value, $Res Function(_$MySizeFreezedImpl) then) =
+      __$$MySizeFreezedImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int width, int height});
 }
 
 /// @nodoc
-class __$$_MySizeFreezedCopyWithImpl<$Res> extends _$MySizeFreezedCopyWithImpl<$Res, _$_MySizeFreezed>
-    implements _$$_MySizeFreezedCopyWith<$Res> {
-  __$$_MySizeFreezedCopyWithImpl(_$_MySizeFreezed _value, $Res Function(_$_MySizeFreezed) _then) : super(_value, _then);
+class __$$MySizeFreezedImplCopyWithImpl<$Res> extends _$MySizeFreezedCopyWithImpl<$Res, _$MySizeFreezedImpl>
+    implements _$$MySizeFreezedImplCopyWith<$Res> {
+  __$$MySizeFreezedImplCopyWithImpl(_$MySizeFreezedImpl _value, $Res Function(_$MySizeFreezedImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -5432,7 +5459,7 @@ class __$$_MySizeFreezedCopyWithImpl<$Res> extends _$MySizeFreezedCopyWithImpl<$
     Object? width = null,
     Object? height = null,
   }) {
-    return _then(_$_MySizeFreezed(
+    return _then(_$MySizeFreezedImpl(
       width: null == width
           ? _value.width
           : width // ignore: cast_nullable_to_non_nullable
@@ -5447,8 +5474,8 @@ class __$$_MySizeFreezedCopyWithImpl<$Res> extends _$MySizeFreezedCopyWithImpl<$
 
 /// @nodoc
 
-class _$_MySizeFreezed implements _MySizeFreezed {
-  const _$_MySizeFreezed({required this.width, required this.height});
+class _$MySizeFreezedImpl implements _MySizeFreezed {
+  const _$MySizeFreezedImpl({required this.width, required this.height});
 
   @override
   final int width;
@@ -5464,7 +5491,7 @@ class _$_MySizeFreezed implements _MySizeFreezed {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MySizeFreezed &&
+            other is _$MySizeFreezedImpl &&
             (identical(other.width, width) || other.width == width) &&
             (identical(other.height, height) || other.height == height));
   }
@@ -5475,12 +5502,12 @@ class _$_MySizeFreezed implements _MySizeFreezed {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MySizeFreezedCopyWith<_$_MySizeFreezed> get copyWith =>
-      __$$_MySizeFreezedCopyWithImpl<_$_MySizeFreezed>(this, _$identity);
+  _$$MySizeFreezedImplCopyWith<_$MySizeFreezedImpl> get copyWith =>
+      __$$MySizeFreezedImplCopyWithImpl<_$MySizeFreezedImpl>(this, _$identity);
 }
 
 abstract class _MySizeFreezed implements MySizeFreezed {
-  const factory _MySizeFreezed({required final int width, required final int height}) = _$_MySizeFreezed;
+  const factory _MySizeFreezed({required final int width, required final int height}) = _$MySizeFreezedImpl;
 
   @override
   int get width;
@@ -5488,7 +5515,7 @@ abstract class _MySizeFreezed implements MySizeFreezed {
   int get height;
   @override
   @JsonKey(ignore: true)
-  _$$_MySizeFreezedCopyWith<_$_MySizeFreezed> get copyWith => throw _privateConstructorUsedError;
+  _$$MySizeFreezedImplCopyWith<_$MySizeFreezedImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -5558,20 +5585,20 @@ class _$RawStringEnumMirroredCopyWithImpl<$Res, $Val extends RawStringEnumMirror
 }
 
 /// @nodoc
-abstract class _$$RawStringEnumMirrored_RawCopyWith<$Res> {
-  factory _$$RawStringEnumMirrored_RawCopyWith(
-          _$RawStringEnumMirrored_Raw value, $Res Function(_$RawStringEnumMirrored_Raw) then) =
-      __$$RawStringEnumMirrored_RawCopyWithImpl<$Res>;
+abstract class _$$RawStringEnumMirrored_RawImplCopyWith<$Res> {
+  factory _$$RawStringEnumMirrored_RawImplCopyWith(
+          _$RawStringEnumMirrored_RawImpl value, $Res Function(_$RawStringEnumMirrored_RawImpl) then) =
+      __$$RawStringEnumMirrored_RawImplCopyWithImpl<$Res>;
   @useResult
   $Res call({RawStringMirrored field0});
 }
 
 /// @nodoc
-class __$$RawStringEnumMirrored_RawCopyWithImpl<$Res>
-    extends _$RawStringEnumMirroredCopyWithImpl<$Res, _$RawStringEnumMirrored_Raw>
-    implements _$$RawStringEnumMirrored_RawCopyWith<$Res> {
-  __$$RawStringEnumMirrored_RawCopyWithImpl(
-      _$RawStringEnumMirrored_Raw _value, $Res Function(_$RawStringEnumMirrored_Raw) _then)
+class __$$RawStringEnumMirrored_RawImplCopyWithImpl<$Res>
+    extends _$RawStringEnumMirroredCopyWithImpl<$Res, _$RawStringEnumMirrored_RawImpl>
+    implements _$$RawStringEnumMirrored_RawImplCopyWith<$Res> {
+  __$$RawStringEnumMirrored_RawImplCopyWithImpl(
+      _$RawStringEnumMirrored_RawImpl _value, $Res Function(_$RawStringEnumMirrored_RawImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -5579,7 +5606,7 @@ class __$$RawStringEnumMirrored_RawCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$RawStringEnumMirrored_Raw(
+    return _then(_$RawStringEnumMirrored_RawImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -5590,8 +5617,8 @@ class __$$RawStringEnumMirrored_RawCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RawStringEnumMirrored_Raw implements RawStringEnumMirrored_Raw {
-  const _$RawStringEnumMirrored_Raw(this.field0);
+class _$RawStringEnumMirrored_RawImpl implements RawStringEnumMirrored_Raw {
+  const _$RawStringEnumMirrored_RawImpl(this.field0);
 
   @override
   final RawStringMirrored field0;
@@ -5605,7 +5632,7 @@ class _$RawStringEnumMirrored_Raw implements RawStringEnumMirrored_Raw {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RawStringEnumMirrored_Raw &&
+            other is _$RawStringEnumMirrored_RawImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -5615,8 +5642,8 @@ class _$RawStringEnumMirrored_Raw implements RawStringEnumMirrored_Raw {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RawStringEnumMirrored_RawCopyWith<_$RawStringEnumMirrored_Raw> get copyWith =>
-      __$$RawStringEnumMirrored_RawCopyWithImpl<_$RawStringEnumMirrored_Raw>(this, _$identity);
+  _$$RawStringEnumMirrored_RawImplCopyWith<_$RawStringEnumMirrored_RawImpl> get copyWith =>
+      __$$RawStringEnumMirrored_RawImplCopyWithImpl<_$RawStringEnumMirrored_RawImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -5688,29 +5715,30 @@ class _$RawStringEnumMirrored_Raw implements RawStringEnumMirrored_Raw {
 }
 
 abstract class RawStringEnumMirrored_Raw implements RawStringEnumMirrored {
-  const factory RawStringEnumMirrored_Raw(final RawStringMirrored field0) = _$RawStringEnumMirrored_Raw;
+  const factory RawStringEnumMirrored_Raw(final RawStringMirrored field0) = _$RawStringEnumMirrored_RawImpl;
 
   @override
   RawStringMirrored get field0;
   @JsonKey(ignore: true)
-  _$$RawStringEnumMirrored_RawCopyWith<_$RawStringEnumMirrored_Raw> get copyWith => throw _privateConstructorUsedError;
+  _$$RawStringEnumMirrored_RawImplCopyWith<_$RawStringEnumMirrored_RawImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$RawStringEnumMirrored_NestedCopyWith<$Res> {
-  factory _$$RawStringEnumMirrored_NestedCopyWith(
-          _$RawStringEnumMirrored_Nested value, $Res Function(_$RawStringEnumMirrored_Nested) then) =
-      __$$RawStringEnumMirrored_NestedCopyWithImpl<$Res>;
+abstract class _$$RawStringEnumMirrored_NestedImplCopyWith<$Res> {
+  factory _$$RawStringEnumMirrored_NestedImplCopyWith(
+          _$RawStringEnumMirrored_NestedImpl value, $Res Function(_$RawStringEnumMirrored_NestedImpl) then) =
+      __$$RawStringEnumMirrored_NestedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({NestedRawStringMirrored field0});
 }
 
 /// @nodoc
-class __$$RawStringEnumMirrored_NestedCopyWithImpl<$Res>
-    extends _$RawStringEnumMirroredCopyWithImpl<$Res, _$RawStringEnumMirrored_Nested>
-    implements _$$RawStringEnumMirrored_NestedCopyWith<$Res> {
-  __$$RawStringEnumMirrored_NestedCopyWithImpl(
-      _$RawStringEnumMirrored_Nested _value, $Res Function(_$RawStringEnumMirrored_Nested) _then)
+class __$$RawStringEnumMirrored_NestedImplCopyWithImpl<$Res>
+    extends _$RawStringEnumMirroredCopyWithImpl<$Res, _$RawStringEnumMirrored_NestedImpl>
+    implements _$$RawStringEnumMirrored_NestedImplCopyWith<$Res> {
+  __$$RawStringEnumMirrored_NestedImplCopyWithImpl(
+      _$RawStringEnumMirrored_NestedImpl _value, $Res Function(_$RawStringEnumMirrored_NestedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -5718,7 +5746,7 @@ class __$$RawStringEnumMirrored_NestedCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$RawStringEnumMirrored_Nested(
+    return _then(_$RawStringEnumMirrored_NestedImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -5729,8 +5757,8 @@ class __$$RawStringEnumMirrored_NestedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RawStringEnumMirrored_Nested implements RawStringEnumMirrored_Nested {
-  const _$RawStringEnumMirrored_Nested(this.field0);
+class _$RawStringEnumMirrored_NestedImpl implements RawStringEnumMirrored_Nested {
+  const _$RawStringEnumMirrored_NestedImpl(this.field0);
 
   @override
   final NestedRawStringMirrored field0;
@@ -5744,7 +5772,7 @@ class _$RawStringEnumMirrored_Nested implements RawStringEnumMirrored_Nested {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RawStringEnumMirrored_Nested &&
+            other is _$RawStringEnumMirrored_NestedImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -5754,8 +5782,8 @@ class _$RawStringEnumMirrored_Nested implements RawStringEnumMirrored_Nested {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RawStringEnumMirrored_NestedCopyWith<_$RawStringEnumMirrored_Nested> get copyWith =>
-      __$$RawStringEnumMirrored_NestedCopyWithImpl<_$RawStringEnumMirrored_Nested>(this, _$identity);
+  _$$RawStringEnumMirrored_NestedImplCopyWith<_$RawStringEnumMirrored_NestedImpl> get copyWith =>
+      __$$RawStringEnumMirrored_NestedImplCopyWithImpl<_$RawStringEnumMirrored_NestedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -5827,30 +5855,30 @@ class _$RawStringEnumMirrored_Nested implements RawStringEnumMirrored_Nested {
 }
 
 abstract class RawStringEnumMirrored_Nested implements RawStringEnumMirrored {
-  const factory RawStringEnumMirrored_Nested(final NestedRawStringMirrored field0) = _$RawStringEnumMirrored_Nested;
+  const factory RawStringEnumMirrored_Nested(final NestedRawStringMirrored field0) = _$RawStringEnumMirrored_NestedImpl;
 
   @override
   NestedRawStringMirrored get field0;
   @JsonKey(ignore: true)
-  _$$RawStringEnumMirrored_NestedCopyWith<_$RawStringEnumMirrored_Nested> get copyWith =>
+  _$$RawStringEnumMirrored_NestedImplCopyWith<_$RawStringEnumMirrored_NestedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$RawStringEnumMirrored_ListOfNestedCopyWith<$Res> {
-  factory _$$RawStringEnumMirrored_ListOfNestedCopyWith(
-          _$RawStringEnumMirrored_ListOfNested value, $Res Function(_$RawStringEnumMirrored_ListOfNested) then) =
-      __$$RawStringEnumMirrored_ListOfNestedCopyWithImpl<$Res>;
+abstract class _$$RawStringEnumMirrored_ListOfNestedImplCopyWith<$Res> {
+  factory _$$RawStringEnumMirrored_ListOfNestedImplCopyWith(_$RawStringEnumMirrored_ListOfNestedImpl value,
+          $Res Function(_$RawStringEnumMirrored_ListOfNestedImpl) then) =
+      __$$RawStringEnumMirrored_ListOfNestedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ListOfNestedRawStringMirrored field0});
 }
 
 /// @nodoc
-class __$$RawStringEnumMirrored_ListOfNestedCopyWithImpl<$Res>
-    extends _$RawStringEnumMirroredCopyWithImpl<$Res, _$RawStringEnumMirrored_ListOfNested>
-    implements _$$RawStringEnumMirrored_ListOfNestedCopyWith<$Res> {
-  __$$RawStringEnumMirrored_ListOfNestedCopyWithImpl(
-      _$RawStringEnumMirrored_ListOfNested _value, $Res Function(_$RawStringEnumMirrored_ListOfNested) _then)
+class __$$RawStringEnumMirrored_ListOfNestedImplCopyWithImpl<$Res>
+    extends _$RawStringEnumMirroredCopyWithImpl<$Res, _$RawStringEnumMirrored_ListOfNestedImpl>
+    implements _$$RawStringEnumMirrored_ListOfNestedImplCopyWith<$Res> {
+  __$$RawStringEnumMirrored_ListOfNestedImplCopyWithImpl(
+      _$RawStringEnumMirrored_ListOfNestedImpl _value, $Res Function(_$RawStringEnumMirrored_ListOfNestedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -5858,7 +5886,7 @@ class __$$RawStringEnumMirrored_ListOfNestedCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$RawStringEnumMirrored_ListOfNested(
+    return _then(_$RawStringEnumMirrored_ListOfNestedImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -5869,8 +5897,8 @@ class __$$RawStringEnumMirrored_ListOfNestedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RawStringEnumMirrored_ListOfNested implements RawStringEnumMirrored_ListOfNested {
-  const _$RawStringEnumMirrored_ListOfNested(this.field0);
+class _$RawStringEnumMirrored_ListOfNestedImpl implements RawStringEnumMirrored_ListOfNested {
+  const _$RawStringEnumMirrored_ListOfNestedImpl(this.field0);
 
   @override
   final ListOfNestedRawStringMirrored field0;
@@ -5884,7 +5912,7 @@ class _$RawStringEnumMirrored_ListOfNested implements RawStringEnumMirrored_List
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RawStringEnumMirrored_ListOfNested &&
+            other is _$RawStringEnumMirrored_ListOfNestedImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -5894,8 +5922,9 @@ class _$RawStringEnumMirrored_ListOfNested implements RawStringEnumMirrored_List
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RawStringEnumMirrored_ListOfNestedCopyWith<_$RawStringEnumMirrored_ListOfNested> get copyWith =>
-      __$$RawStringEnumMirrored_ListOfNestedCopyWithImpl<_$RawStringEnumMirrored_ListOfNested>(this, _$identity);
+  _$$RawStringEnumMirrored_ListOfNestedImplCopyWith<_$RawStringEnumMirrored_ListOfNestedImpl> get copyWith =>
+      __$$RawStringEnumMirrored_ListOfNestedImplCopyWithImpl<_$RawStringEnumMirrored_ListOfNestedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -5968,12 +5997,12 @@ class _$RawStringEnumMirrored_ListOfNested implements RawStringEnumMirrored_List
 
 abstract class RawStringEnumMirrored_ListOfNested implements RawStringEnumMirrored {
   const factory RawStringEnumMirrored_ListOfNested(final ListOfNestedRawStringMirrored field0) =
-      _$RawStringEnumMirrored_ListOfNested;
+      _$RawStringEnumMirrored_ListOfNestedImpl;
 
   @override
   ListOfNestedRawStringMirrored get field0;
   @JsonKey(ignore: true)
-  _$$RawStringEnumMirrored_ListOfNestedCopyWith<_$RawStringEnumMirrored_ListOfNested> get copyWith =>
+  _$$RawStringEnumMirrored_ListOfNestedImplCopyWith<_$RawStringEnumMirrored_ListOfNestedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -6035,21 +6064,22 @@ class _$SpeedCopyWithImpl<$Res, $Val extends Speed> implements $SpeedCopyWith<$R
 }
 
 /// @nodoc
-abstract class _$$Speed_UnknownCopyWith<$Res> {
-  factory _$$Speed_UnknownCopyWith(_$Speed_Unknown value, $Res Function(_$Speed_Unknown) then) =
-      __$$Speed_UnknownCopyWithImpl<$Res>;
+abstract class _$$Speed_UnknownImplCopyWith<$Res> {
+  factory _$$Speed_UnknownImplCopyWith(_$Speed_UnknownImpl value, $Res Function(_$Speed_UnknownImpl) then) =
+      __$$Speed_UnknownImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$Speed_UnknownCopyWithImpl<$Res> extends _$SpeedCopyWithImpl<$Res, _$Speed_Unknown>
-    implements _$$Speed_UnknownCopyWith<$Res> {
-  __$$Speed_UnknownCopyWithImpl(_$Speed_Unknown _value, $Res Function(_$Speed_Unknown) _then) : super(_value, _then);
+class __$$Speed_UnknownImplCopyWithImpl<$Res> extends _$SpeedCopyWithImpl<$Res, _$Speed_UnknownImpl>
+    implements _$$Speed_UnknownImplCopyWith<$Res> {
+  __$$Speed_UnknownImplCopyWithImpl(_$Speed_UnknownImpl _value, $Res Function(_$Speed_UnknownImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Speed_Unknown implements Speed_Unknown {
-  const _$Speed_Unknown();
+class _$Speed_UnknownImpl implements Speed_Unknown {
+  const _$Speed_UnknownImpl();
 
   @override
   String toString() {
@@ -6058,7 +6088,7 @@ class _$Speed_Unknown implements Speed_Unknown {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$Speed_Unknown);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$Speed_UnknownImpl);
   }
 
   @override
@@ -6128,27 +6158,28 @@ class _$Speed_Unknown implements Speed_Unknown {
 }
 
 abstract class Speed_Unknown implements Speed {
-  const factory Speed_Unknown() = _$Speed_Unknown;
+  const factory Speed_Unknown() = _$Speed_UnknownImpl;
 }
 
 /// @nodoc
-abstract class _$$Speed_GPSCopyWith<$Res> {
-  factory _$$Speed_GPSCopyWith(_$Speed_GPS value, $Res Function(_$Speed_GPS) then) = __$$Speed_GPSCopyWithImpl<$Res>;
+abstract class _$$Speed_GPSImplCopyWith<$Res> {
+  factory _$$Speed_GPSImplCopyWith(_$Speed_GPSImpl value, $Res Function(_$Speed_GPSImpl) then) =
+      __$$Speed_GPSImplCopyWithImpl<$Res>;
   @useResult
   $Res call({double field0});
 }
 
 /// @nodoc
-class __$$Speed_GPSCopyWithImpl<$Res> extends _$SpeedCopyWithImpl<$Res, _$Speed_GPS>
-    implements _$$Speed_GPSCopyWith<$Res> {
-  __$$Speed_GPSCopyWithImpl(_$Speed_GPS _value, $Res Function(_$Speed_GPS) _then) : super(_value, _then);
+class __$$Speed_GPSImplCopyWithImpl<$Res> extends _$SpeedCopyWithImpl<$Res, _$Speed_GPSImpl>
+    implements _$$Speed_GPSImplCopyWith<$Res> {
+  __$$Speed_GPSImplCopyWithImpl(_$Speed_GPSImpl _value, $Res Function(_$Speed_GPSImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$Speed_GPS(
+    return _then(_$Speed_GPSImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -6159,8 +6190,8 @@ class __$$Speed_GPSCopyWithImpl<$Res> extends _$SpeedCopyWithImpl<$Res, _$Speed_
 
 /// @nodoc
 
-class _$Speed_GPS implements Speed_GPS {
-  const _$Speed_GPS(this.field0);
+class _$Speed_GPSImpl implements Speed_GPS {
+  const _$Speed_GPSImpl(this.field0);
 
   @override
   final double field0;
@@ -6174,7 +6205,7 @@ class _$Speed_GPS implements Speed_GPS {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Speed_GPS &&
+            other is _$Speed_GPSImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -6184,7 +6215,8 @@ class _$Speed_GPS implements Speed_GPS {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$Speed_GPSCopyWith<_$Speed_GPS> get copyWith => __$$Speed_GPSCopyWithImpl<_$Speed_GPS>(this, _$identity);
+  _$$Speed_GPSImplCopyWith<_$Speed_GPSImpl> get copyWith =>
+      __$$Speed_GPSImplCopyWithImpl<_$Speed_GPSImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -6250,11 +6282,11 @@ class _$Speed_GPS implements Speed_GPS {
 }
 
 abstract class Speed_GPS implements Speed {
-  const factory Speed_GPS(final double field0) = _$Speed_GPS;
+  const factory Speed_GPS(final double field0) = _$Speed_GPSImpl;
 
   double get field0;
   @JsonKey(ignore: true)
-  _$$Speed_GPSCopyWith<_$Speed_GPS> get copyWith => throw _privateConstructorUsedError;
+  _$$Speed_GPSImplCopyWith<_$Speed_GPSImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -6296,23 +6328,25 @@ class _$UserIdCopyWithImpl<$Res, $Val extends UserId> implements $UserIdCopyWith
 }
 
 /// @nodoc
-abstract class _$$_UserIdCopyWith<$Res> implements $UserIdCopyWith<$Res> {
-  factory _$$_UserIdCopyWith(_$_UserId value, $Res Function(_$_UserId) then) = __$$_UserIdCopyWithImpl<$Res>;
+abstract class _$$UserIdImplCopyWith<$Res> implements $UserIdCopyWith<$Res> {
+  factory _$$UserIdImplCopyWith(_$UserIdImpl value, $Res Function(_$UserIdImpl) then) =
+      __$$UserIdImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int value});
 }
 
 /// @nodoc
-class __$$_UserIdCopyWithImpl<$Res> extends _$UserIdCopyWithImpl<$Res, _$_UserId> implements _$$_UserIdCopyWith<$Res> {
-  __$$_UserIdCopyWithImpl(_$_UserId _value, $Res Function(_$_UserId) _then) : super(_value, _then);
+class __$$UserIdImplCopyWithImpl<$Res> extends _$UserIdCopyWithImpl<$Res, _$UserIdImpl>
+    implements _$$UserIdImplCopyWith<$Res> {
+  __$$UserIdImplCopyWithImpl(_$UserIdImpl _value, $Res Function(_$UserIdImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? value = null,
   }) {
-    return _then(_$_UserId(
+    return _then(_$UserIdImpl(
       value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -6323,8 +6357,8 @@ class __$$_UserIdCopyWithImpl<$Res> extends _$UserIdCopyWithImpl<$Res, _$_UserId
 
 /// @nodoc
 
-class _$_UserId implements _UserId {
-  const _$_UserId({this.value = 0});
+class _$UserIdImpl implements _UserId {
+  const _$UserIdImpl({this.value = 0});
 
   @override
   @JsonKey()
@@ -6339,7 +6373,7 @@ class _$_UserId implements _UserId {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserId &&
+            other is _$UserIdImpl &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -6349,15 +6383,15 @@ class _$_UserId implements _UserId {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserIdCopyWith<_$_UserId> get copyWith => __$$_UserIdCopyWithImpl<_$_UserId>(this, _$identity);
+  _$$UserIdImplCopyWith<_$UserIdImpl> get copyWith => __$$UserIdImplCopyWithImpl<_$UserIdImpl>(this, _$identity);
 }
 
 abstract class _UserId implements UserId {
-  const factory _UserId({final int value}) = _$_UserId;
+  const factory _UserId({final int value}) = _$UserIdImpl;
 
   @override
   int get value;
   @override
   @JsonKey(ignore: true)
-  _$$_UserIdCopyWith<_$_UserId> get copyWith => throw _privateConstructorUsedError;
+  _$$UserIdImplCopyWith<_$UserIdImpl> get copyWith => throw _privateConstructorUsedError;
 }

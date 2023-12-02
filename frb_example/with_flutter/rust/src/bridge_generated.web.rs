@@ -213,6 +213,14 @@ impl Wire2Api<UserId> for JsValue {
 }
 // Section: impl Wire2Api for JsValue
 
+impl<T> Wire2Api<Option<T>> for JsValue
+where
+    JsValue: Wire2Api<T>,
+{
+    fn wire2api(self) -> Option<T> {
+        (!self.is_null() && !self.is_undefined()).then(|| self.wire2api())
+    }
+}
 impl Wire2Api<String> for JsValue {
     fn wire2api(self) -> String {
         self.as_string().expect("non-UTF-8 string, or not a string")

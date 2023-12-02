@@ -114,6 +114,33 @@ typedef struct wire_ExoticOptionals {
   struct wire_NewTypeInt *newtypeint;
 } wire_ExoticOptionals;
 
+typedef struct wire_list_opt_box_autoadd_i32 {
+  int32_t **ptr;
+  int32_t len;
+} wire_list_opt_box_autoadd_i32;
+
+typedef struct wire_list_opt_box_autoadd_weekdays {
+  int32_t **ptr;
+  int32_t len;
+} wire_list_opt_box_autoadd_weekdays;
+
+typedef struct wire_list_opt_String {
+  struct wire_uint_8_list **ptr;
+  int32_t len;
+} wire_list_opt_String;
+
+typedef struct wire_list_opt_int_32_list {
+  struct wire_int_32_list **ptr;
+  int32_t len;
+} wire_list_opt_int_32_list;
+
+typedef struct wire_OptVecs {
+  struct wire_list_opt_box_autoadd_i32 *i32;
+  struct wire_list_opt_box_autoadd_weekdays *enums;
+  struct wire_list_opt_String *strings;
+  struct wire_list_opt_int_32_list *buffers;
+} wire_OptVecs;
+
 typedef struct wire_Note {
   int32_t *day;
   struct wire_uint_8_list *body;
@@ -601,6 +628,8 @@ void wire_handle_optional_increment(int64_t port_, struct wire_ExoticOptionals *
 
 void wire_handle_increment_boxed_optional(int64_t port_, double *opt);
 
+void wire_handle_vec_of_opts(int64_t port_, struct wire_OptVecs *opt);
+
 void wire_handle_option_box_arguments(int64_t port_,
                                       int8_t *i8box,
                                       uint8_t *u8box,
@@ -876,11 +905,15 @@ void wire_return_custom_nested_error_2(int64_t port_);
 
 void wire_return_custom_struct_error(int64_t port_);
 
+WireSyncReturn wire_sync_return_custom_struct_error(void);
+
 void wire_return_custom_struct_ok(int64_t port_);
 
 void wire_throw_anyhow(int64_t port_);
 
 void wire_panic_with_custom_result(int64_t port_);
+
+void wire_stream_sink_throw_anyhow(int64_t port_);
 
 void wire_as_string__method__Event(int64_t port_, struct wire_Event *that);
 
@@ -1034,7 +1067,9 @@ struct wire_Numbers *new_box_autoadd_numbers(void);
 
 struct wire_OpaqueNested *new_box_autoadd_opaque_nested(void);
 
-struct wire_Sequences *new_box_autoadd_sequences(void);
+struct wire_OptVecs *new_box_autoadd_opt_vecs_0(void);
+
+struct wire_Sequences *new_box_autoadd_sequences_0(void);
 
 struct wire_SomeStruct *new_box_autoadd_some_struct(void);
 
@@ -1046,7 +1081,9 @@ struct wire_TestId *new_box_autoadd_test_id(void);
 
 struct wire_UserId *new_box_autoadd_user_id(void);
 
-struct wire_Blob *new_box_blob(void);
+int32_t *new_box_autoadd_weekdays_0(int32_t value);
+
+struct wire_Blob *new_box_blob_0(void);
 
 bool *new_box_bool(bool value);
 
@@ -1098,9 +1135,17 @@ struct wire_list_my_size *new_list_my_size(int32_t len);
 
 struct wire_list_my_tree_node *new_list_my_tree_node(int32_t len);
 
-struct wire_list_opt_box_autoadd_attribute *new_list_opt_box_autoadd_attribute(int32_t len);
+struct wire_list_opt_String *new_list_opt_String_0(int32_t len);
 
-struct wire_list_test_id *new_list_test_id(int32_t len);
+struct wire_list_opt_box_autoadd_attribute *new_list_opt_box_autoadd_attribute_0(int32_t len);
+
+struct wire_list_opt_box_autoadd_i32 *new_list_opt_box_autoadd_i32_0(int32_t len);
+
+struct wire_list_opt_box_autoadd_weekdays *new_list_opt_box_autoadd_weekdays_0(int32_t len);
+
+struct wire_list_opt_int_32_list *new_list_opt_int_32_list_0(int32_t len);
+
+struct wire_list_test_id *new_list_test_id_0(int32_t len);
 
 struct wire_list_weekdays *new_list_weekdays(int32_t len);
 
@@ -1228,6 +1273,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_handle_optional_struct);
     dummy_var ^= ((int64_t) (void*) wire_handle_optional_increment);
     dummy_var ^= ((int64_t) (void*) wire_handle_increment_boxed_optional);
+    dummy_var ^= ((int64_t) (void*) wire_handle_vec_of_opts);
     dummy_var ^= ((int64_t) (void*) wire_handle_option_box_arguments);
     dummy_var ^= ((int64_t) (void*) wire_print_note);
     dummy_var ^= ((int64_t) (void*) wire_handle_return_enum);
@@ -1360,9 +1406,11 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_1_variant1);
     dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_2);
     dummy_var ^= ((int64_t) (void*) wire_return_custom_struct_error);
+    dummy_var ^= ((int64_t) (void*) wire_sync_return_custom_struct_error);
     dummy_var ^= ((int64_t) (void*) wire_return_custom_struct_ok);
     dummy_var ^= ((int64_t) (void*) wire_throw_anyhow);
     dummy_var ^= ((int64_t) (void*) wire_panic_with_custom_result);
+    dummy_var ^= ((int64_t) (void*) wire_stream_sink_throw_anyhow);
     dummy_var ^= ((int64_t) (void*) wire_as_string__method__Event);
     dummy_var ^= ((int64_t) (void*) wire_sum__method__SumWith);
     dummy_var ^= ((int64_t) (void*) wire_new__static_method__ConcatenateWith);
@@ -1390,84 +1438,90 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_NonCloneData);
     dummy_var ^= ((int64_t) (void*) new_NonSendHideData);
     dummy_var ^= ((int64_t) (void*) new_RwLockHideData);
-    dummy_var ^= ((int64_t) (void*) new_StringList);
-    dummy_var ^= ((int64_t) (void*) new_box_application_env);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_Chrono_Utc);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_DartOpaque);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_HideData);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd___record__String_i32);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_a);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_abc);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_application_env);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_application_settings);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_attribute);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_b);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_bool);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_c);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_concatenate_with);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_custom_struct);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_customized);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_dart_opaque_nested);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_empty);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_dart_opaque);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_opaque);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_event);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_exotic_optionals);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_f64);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_feature_chrono);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_feature_uuid);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_feed_id);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_i32);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_i64);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_kitchen_sink);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_measure);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_message_id);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_enum_freezed);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_nested_struct);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_size);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_size_freezed);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_struct);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_tree_node);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_new_type_int);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_note);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_numbers);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_opaque_nested);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_sequences);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_some_struct);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_enum);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_sum_with);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_test_id);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_user_id);
-    dummy_var ^= ((int64_t) (void*) new_box_blob);
-    dummy_var ^= ((int64_t) (void*) new_box_bool);
-    dummy_var ^= ((int64_t) (void*) new_box_distance);
-    dummy_var ^= ((int64_t) (void*) new_box_exotic_optionals);
-    dummy_var ^= ((int64_t) (void*) new_box_f64);
-    dummy_var ^= ((int64_t) (void*) new_box_i32);
-    dummy_var ^= ((int64_t) (void*) new_box_i64);
-    dummy_var ^= ((int64_t) (void*) new_box_i8);
-    dummy_var ^= ((int64_t) (void*) new_box_kitchen_sink);
-    dummy_var ^= ((int64_t) (void*) new_box_my_size);
-    dummy_var ^= ((int64_t) (void*) new_box_my_size_freezed);
-    dummy_var ^= ((int64_t) (void*) new_box_speed);
-    dummy_var ^= ((int64_t) (void*) new_box_u8);
-    dummy_var ^= ((int64_t) (void*) new_box_weekdays);
-    dummy_var ^= ((int64_t) (void*) new_float_32_list);
-    dummy_var ^= ((int64_t) (void*) new_float_64_list);
-    dummy_var ^= ((int64_t) (void*) new_int_32_list);
-    dummy_var ^= ((int64_t) (void*) new_int_64_list);
-    dummy_var ^= ((int64_t) (void*) new_int_8_list);
-    dummy_var ^= ((int64_t) (void*) new_list_DartOpaque);
-    dummy_var ^= ((int64_t) (void*) new_list_HideData);
-    dummy_var ^= ((int64_t) (void*) new_list___record__String_i32);
-    dummy_var ^= ((int64_t) (void*) new_list_application_env_var);
-    dummy_var ^= ((int64_t) (void*) new_list_attribute);
-    dummy_var ^= ((int64_t) (void*) new_list_my_size);
-    dummy_var ^= ((int64_t) (void*) new_list_my_tree_node);
-    dummy_var ^= ((int64_t) (void*) new_list_opt_box_autoadd_attribute);
-    dummy_var ^= ((int64_t) (void*) new_list_test_id);
-    dummy_var ^= ((int64_t) (void*) new_list_weekdays);
-    dummy_var ^= ((int64_t) (void*) new_uint_8_list);
+    dummy_var ^= ((int64_t) (void*) new_StringList_0);
+    dummy_var ^= ((int64_t) (void*) new_box_application_env_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_Chrono_Utc_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_DartOpaque_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_HideData_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd___record__String_i32_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_a_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_abc_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_application_env_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_application_settings_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_attribute_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_b_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_bool_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_c_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_concatenate_with_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_custom_struct_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_customized_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_dart_opaque_nested_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_empty_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_dart_opaque_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_opaque_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_event_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_exotic_optionals_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_f64_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_feature_chrono_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_feature_uuid_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_feed_id_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_i32_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_i64_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_kitchen_sink_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_measure_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_message_id_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_enum_freezed_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_nested_struct_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_size_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_size_freezed_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_struct_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_tree_node_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_new_type_int_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_note_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_numbers_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_opaque_nested_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_opt_vecs_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_sequences_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_some_struct_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_enum_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_sum_with_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_test_id_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_user_id_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_weekdays_0);
+    dummy_var ^= ((int64_t) (void*) new_box_blob_0);
+    dummy_var ^= ((int64_t) (void*) new_box_bool_0);
+    dummy_var ^= ((int64_t) (void*) new_box_distance_0);
+    dummy_var ^= ((int64_t) (void*) new_box_exotic_optionals_0);
+    dummy_var ^= ((int64_t) (void*) new_box_f64_0);
+    dummy_var ^= ((int64_t) (void*) new_box_i32_0);
+    dummy_var ^= ((int64_t) (void*) new_box_i64_0);
+    dummy_var ^= ((int64_t) (void*) new_box_i8_0);
+    dummy_var ^= ((int64_t) (void*) new_box_kitchen_sink_0);
+    dummy_var ^= ((int64_t) (void*) new_box_my_size_0);
+    dummy_var ^= ((int64_t) (void*) new_box_my_size_freezed_0);
+    dummy_var ^= ((int64_t) (void*) new_box_speed_0);
+    dummy_var ^= ((int64_t) (void*) new_box_u8_0);
+    dummy_var ^= ((int64_t) (void*) new_box_weekdays_0);
+    dummy_var ^= ((int64_t) (void*) new_float_32_list_0);
+    dummy_var ^= ((int64_t) (void*) new_float_64_list_0);
+    dummy_var ^= ((int64_t) (void*) new_int_32_list_0);
+    dummy_var ^= ((int64_t) (void*) new_int_64_list_0);
+    dummy_var ^= ((int64_t) (void*) new_int_8_list_0);
+    dummy_var ^= ((int64_t) (void*) new_list_DartOpaque_0);
+    dummy_var ^= ((int64_t) (void*) new_list_HideData_0);
+    dummy_var ^= ((int64_t) (void*) new_list___record__String_i32_0);
+    dummy_var ^= ((int64_t) (void*) new_list_application_env_var_0);
+    dummy_var ^= ((int64_t) (void*) new_list_attribute_0);
+    dummy_var ^= ((int64_t) (void*) new_list_my_size_0);
+    dummy_var ^= ((int64_t) (void*) new_list_my_tree_node_0);
+    dummy_var ^= ((int64_t) (void*) new_list_opt_String_0);
+    dummy_var ^= ((int64_t) (void*) new_list_opt_box_autoadd_attribute_0);
+    dummy_var ^= ((int64_t) (void*) new_list_opt_box_autoadd_i32_0);
+    dummy_var ^= ((int64_t) (void*) new_list_opt_box_autoadd_weekdays_0);
+    dummy_var ^= ((int64_t) (void*) new_list_opt_int_32_list_0);
+    dummy_var ^= ((int64_t) (void*) new_list_test_id_0);
+    dummy_var ^= ((int64_t) (void*) new_list_weekdays_0);
+    dummy_var ^= ((int64_t) (void*) new_uint_8_list_0);
     dummy_var ^= ((int64_t) (void*) drop_opaque_BoxDartDebug);
     dummy_var ^= ((int64_t) (void*) share_opaque_BoxDartDebug);
     dummy_var ^= ((int64_t) (void*) drop_opaque_FrbOpaqueReturn);

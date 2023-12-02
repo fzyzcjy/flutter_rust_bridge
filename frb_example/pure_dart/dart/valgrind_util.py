@@ -81,16 +81,13 @@ if not any(DART_ALL_TESTS_PASSED_STR in line for line in output):
 # Look through the leak details and make sure that we don't have
 # any definitely or indirectly lost bytes. We allow possibly lost
 # bytes to lower the risk of false positives.
-LEAK_RE = r"(?:definitely|indirectly) lost:"
-LEAK_LINE_MATCHER = re.compile(LEAK_RE)
-# NOTE The `definitely lost` 8 bytes looks reasonable, thus let's allow it.
-# see https://github.com/fzyzcjy/flutter_rust_bridge/pull/1213#issuecomment-1554319326 for more details.
-LEAK_OKAY_MATCHER = re.compile(r"indirectly lost: 0 bytes in 0 blocks|definitely lost: 8 bytes in 1 blocks")
+LEAK_RE = re.compile(r'(?:definitely|indirectly) lost: (\d+) bytes')
+
 leaks = []
 for line in errors:
-    if LEAK_LINE_MATCHER.search(line):
+    if match := LEAK_RE.match(line):
         leaks.append(line)
-        if not LEAK_OKAY_MATCHER.search(line):
+        if int(match[1]) > 0:
             # NOTE XXX edited by me
             print('error: valgrind_util.py find a bad line. This may or may not be a problem. '
                   'For example, if you can confirm the lost bytes are reasonable, just change the script. '
@@ -99,7 +96,7 @@ for line in errors:
             sys.exit(1)
 
 # Make sure we found the right number of leak lines.
-if not len(leaks) in [0, 2, 3]:
+if len(leaks) not in [0, 2, 3]:
     # sys.stderr.writelines(errors) # NOTE XXX edited by me
     print('error: #### Malformed Valgrind output.\n#### Exiting.')
     sys.exit(1)

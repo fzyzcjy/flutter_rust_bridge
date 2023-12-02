@@ -49,7 +49,7 @@ jobs:
             name: flutter_rust_bridge_codegen-x86_64-unknown-freebsd-${{ github.ref_name }}.tgz
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup Rust toolchain
         uses: dtolnay/rust-toolchain@stable
         with:

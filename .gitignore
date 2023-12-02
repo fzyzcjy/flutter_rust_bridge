@@ -4,6 +4,7 @@
 target
 launch.json
 .local-chromium
+.local-chrome
 Makefile
 *.log
 .vscode

@@ -242,16 +242,6 @@ impl Wire2Api<Option<String>> for Option<String> {
     }
 }
 
-impl Wire2Api<Option<SharedStructInAllBlocks>> for JsValue {
-    fn wire2api(self) -> Option<SharedStructInAllBlocks> {
-        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
-    }
-}
-impl Wire2Api<Option<Vec<SharedComplexEnumInAllBlocks>>> for JsValue {
-    fn wire2api(self) -> Option<Vec<SharedComplexEnumInAllBlocks>> {
-        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
-    }
-}
 impl Wire2Api<Option<Vec<u8>>> for Option<Box<[u8]>> {
     fn wire2api(self) -> Option<Vec<u8>> {
         self.map(Wire2Api::wire2api)
@@ -357,6 +347,14 @@ impl Wire2Api<Vec<u8>> for Box<[u8]> {
 }
 // Section: impl Wire2Api for JsValue
 
+impl<T> Wire2Api<Option<T>> for JsValue
+where
+    JsValue: Wire2Api<T>,
+{
+    fn wire2api(self) -> Option<T> {
+        (!self.is_null() && !self.is_undefined()).then(|| self.wire2api())
+    }
+}
 impl Wire2Api<String> for JsValue {
     fn wire2api(self) -> String {
         self.as_string().expect("non-UTF-8 string, or not a string")
@@ -402,26 +400,6 @@ impl Wire2Api<i32> for JsValue {
 impl Wire2Api<Vec<i32>> for JsValue {
     fn wire2api(self) -> Vec<i32> {
         self.unchecked_into::<js_sys::Int32Array>().to_vec().into()
-    }
-}
-impl Wire2Api<Option<String>> for JsValue {
-    fn wire2api(self) -> Option<String> {
-        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
-    }
-}
-impl Wire2Api<Option<f64>> for JsValue {
-    fn wire2api(self) -> Option<f64> {
-        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
-    }
-}
-impl Wire2Api<Option<i32>> for JsValue {
-    fn wire2api(self) -> Option<i32> {
-        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
-    }
-}
-impl Wire2Api<Option<Vec<u8>>> for JsValue {
-    fn wire2api(self) -> Option<Vec<u8>> {
-        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
     }
 }
 impl Wire2Api<SharedWeekdaysEnumInAllBlocks> for JsValue {

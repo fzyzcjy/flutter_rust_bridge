@@ -12,6 +12,7 @@ pub enum IrType {
     Delegate(IrTypeDelegate),
     PrimitiveList(IrTypePrimitiveList),
     Optional(IrTypeOptional),
+    OptionalList(IrTypeOptionalList),
     GeneralList(IrTypeGeneralList),
     StructRef(IrTypeStructRef),
     Boxed(IrTypeBoxed),
@@ -174,18 +175,22 @@ impl IrType {
     }
 
     /// In WASM, these types belong to the JS scope-local heap, **NOT** the Rust heap and
-    /// therefore do not implement [Send].
-    #[inline]
+    /// therefore do not implement [Send]. More specifically, these are types wasm-bindgen
+    /// can't handle yet.
     pub fn is_js_value(&self) -> bool {
         match self {
             Self::GeneralList(_)
+            | Self::OptionalList(_)
             | Self::StructRef(_)
             | Self::EnumRef(_)
             | Self::RustOpaque(_)
             | Self::DartOpaque(_)
             | Self::Record(_) => true,
             Self::Boxed(IrTypeBoxed { inner, .. }) => inner.is_js_value(),
-            _ => false,
+            Self::Delegate(inner) => inner.get_delegate().is_js_value(),
+            Self::Optional(inner) => inner.inner.is_js_value(),
+            Self::Primitive(_) | Self::PrimitiveList(_) => false,
+            Self::SyncReturn(_) | Self::Dynamic(_) | Self::Unencodable(_) => unreachable!(),
         }
     }
 

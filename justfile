@@ -72,7 +72,7 @@ dart_test_web_unit:
     cd frb_dart && dart test test/*.dart
     cd frb_dart && dart test -p chrome test/*.dart
 
-dart_test_web_integration features:
+dart_test_web_integration features="":
     just dart_pub_get dart_only
     cd {{dir_example_pure_dart}}/dart && dart run \
       ../../../frb_dart/bin/serve.dart \

@@ -224,6 +224,14 @@ impl Wire2Api<StructOnlyForBlock2> for JsValue {
 }
 // Section: impl Wire2Api for JsValue
 
+impl<T> Wire2Api<Option<T>> for JsValue
+where
+    JsValue: Wire2Api<T>,
+{
+    fn wire2api(self) -> Option<T> {
+        (!self.is_null() && !self.is_undefined()).then(|| self.wire2api())
+    }
+}
 impl Wire2Api<i16> for JsValue {
     fn wire2api(self) -> i16 {
         self.unchecked_into_f64() as _

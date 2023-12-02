@@ -1,3 +1,19 @@
+## Unreleased
+
+* Fix `rustfmt::skip` #1420 (thanks @rogurotus)
+
+## 1.82.4
+
+* Fix `Result<SyncReturn(T), E>` #1407 (thanks @rogurotus)
+
+## 1.82.3
+
+* Fix Rust error string not displayed in Dart #1390 (thanks @OfficialBoyfriend)
+
+## 1.82.2
+
+* Refactor `Vec<Option<_>>` #1388 (thanks @Desdaemon)
+
 ## 1.82.1
 
 * Fix cargo expand missing code #1372 (thanks @erikas-taroza)

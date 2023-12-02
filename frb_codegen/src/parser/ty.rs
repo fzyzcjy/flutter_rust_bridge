@@ -389,6 +389,18 @@ impl<'a> TypeParser<'a> {
                         Ok(Delegate(IrTypeDelegate::Uuids))
                     }
 
+                    [("Vec", Some(Generic([Optional(opt)])))] => {
+                        if matches!(opt.inner.as_ref(), IrType::Optional(_)) {
+                            Err(format!(
+                                "Nested optionals without indirection are not allowed. {}",
+                                type_path.to_token_stream()
+                            ))?
+                        }
+                        Ok(OptionalList(IrTypeOptionalList {
+                            inner: opt.inner.clone(),
+                        }))
+                    }
+
                     [("Vec", Some(Generic([Primitive(primitive)])))] => {
                         // Since Dart doesn't have a boolean primitive list like `Uint8List`,
                         // we need to convert `Vec<bool>` to a boolean general list in order to achieve the binding.
@@ -466,6 +478,11 @@ impl<'a> TypeParser<'a> {
                         type_path.to_token_stream()
                     )),
 
+                    [("Option", Some(Generic([SyncReturn(_)])))] => Err(format!(
+                        "Option<SyncReturn<_>> has no effect. Consider SyncReturn<Option<_>> instead. {}",
+                        type_path.to_token_stream()
+                    )),
+
                     [("Option", Some(Generic([inner])))] => Ok(Optional(match inner {
                         StructRef(..)
                         | EnumRef(..)
@@ -476,13 +493,14 @@ impl<'a> TypeParser<'a> {
                         | Delegate(IrTypeDelegate::PrimitiveEnum { .. }) => {
                             IrTypeOptional::new_boxed(inner.clone())
                         }
-
                         #[cfg(feature = "chrono")]
                         Delegate(IrTypeDelegate::Time(..)) => {
                             IrTypeOptional::new_boxed(inner.clone())
                         }
-
-                        _ => IrTypeOptional::new(inner.clone()),
+                        OptionalList(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) | Dynamic(_) | Unencodable(_) | Delegate(_) => {
+                            IrTypeOptional::new(inner.clone())
+                        }
+                        Optional(_) | SyncReturn(_) => unreachable!(),
                     })),
 
                     #[cfg(all(feature = "chrono", feature = "qualified_names"))]

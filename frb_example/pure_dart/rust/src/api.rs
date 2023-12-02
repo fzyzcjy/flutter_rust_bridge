@@ -512,6 +512,26 @@ pub fn handle_increment_boxed_optional(opt: Option<Box<f64>>) -> f64 {
     }
 }
 
+pub struct OptVecs {
+    pub i32: Vec<Option<i32>>,
+    pub enums: Vec<Option<Weekdays>>,
+    pub strings: Vec<Option<String>>,
+    pub buffers: Vec<Option<Vec<i32>>>,
+}
+
+pub fn handle_vec_of_opts(opt: OptVecs) -> OptVecs {
+    fn handle<T>(mut opts: Vec<Option<T>>) -> Vec<Option<T>> {
+        opts.push(None);
+        opts
+    }
+    OptVecs {
+        i32: handle(opt.i32),
+        enums: handle(opt.enums),
+        strings: handle(opt.strings),
+        buffers: handle(opt.buffers),
+    }
+}
+
 // Option<Box<T>> can't be sent to Dart,
 // but instead can be received by Rust.
 pub fn handle_option_box_arguments(
@@ -1825,6 +1845,12 @@ pub fn return_custom_struct_error() -> Result<(), CustomStructError> {
     })
 }
 
+pub fn sync_return_custom_struct_error() -> Result<SyncReturn<()>, CustomStructError> {
+    Err(CustomStructError {
+        message: "error message".to_string(),
+    })
+}
+
 pub fn return_custom_struct_ok() -> Result<u32, CustomStructError> {
     Ok(3)
 }
@@ -1865,4 +1891,8 @@ pub fn throw_anyhow() -> Result<(), anyhow::Error> {
 
 pub fn panic_with_custom_result() -> Result<(), CustomError> {
     panic!("just a panic");
+}
+
+pub fn stream_sink_throw_anyhow(_sink: StreamSink<String>) -> Result<()> {
+    Err(anyhow!("anyhow error"))
 }

@@ -105,25 +105,25 @@ class _$SharedComplexEnumInAllBlocksCopyWithImpl<$Res, $Val extends SharedComple
 }
 
 /// @nodoc
-abstract class _$$SharedComplexEnumInAllBlocks_EmptyCopyWith<$Res> {
-  factory _$$SharedComplexEnumInAllBlocks_EmptyCopyWith(
-          _$SharedComplexEnumInAllBlocks_Empty value, $Res Function(_$SharedComplexEnumInAllBlocks_Empty) then) =
-      __$$SharedComplexEnumInAllBlocks_EmptyCopyWithImpl<$Res>;
+abstract class _$$SharedComplexEnumInAllBlocks_EmptyImplCopyWith<$Res> {
+  factory _$$SharedComplexEnumInAllBlocks_EmptyImplCopyWith(_$SharedComplexEnumInAllBlocks_EmptyImpl value,
+          $Res Function(_$SharedComplexEnumInAllBlocks_EmptyImpl) then) =
+      __$$SharedComplexEnumInAllBlocks_EmptyImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$SharedComplexEnumInAllBlocks_EmptyCopyWithImpl<$Res>
-    extends _$SharedComplexEnumInAllBlocksCopyWithImpl<$Res, _$SharedComplexEnumInAllBlocks_Empty>
-    implements _$$SharedComplexEnumInAllBlocks_EmptyCopyWith<$Res> {
-  __$$SharedComplexEnumInAllBlocks_EmptyCopyWithImpl(
-      _$SharedComplexEnumInAllBlocks_Empty _value, $Res Function(_$SharedComplexEnumInAllBlocks_Empty) _then)
+class __$$SharedComplexEnumInAllBlocks_EmptyImplCopyWithImpl<$Res>
+    extends _$SharedComplexEnumInAllBlocksCopyWithImpl<$Res, _$SharedComplexEnumInAllBlocks_EmptyImpl>
+    implements _$$SharedComplexEnumInAllBlocks_EmptyImplCopyWith<$Res> {
+  __$$SharedComplexEnumInAllBlocks_EmptyImplCopyWithImpl(
+      _$SharedComplexEnumInAllBlocks_EmptyImpl _value, $Res Function(_$SharedComplexEnumInAllBlocks_EmptyImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$SharedComplexEnumInAllBlocks_Empty implements SharedComplexEnumInAllBlocks_Empty {
-  const _$SharedComplexEnumInAllBlocks_Empty();
+class _$SharedComplexEnumInAllBlocks_EmptyImpl implements SharedComplexEnumInAllBlocks_Empty {
+  const _$SharedComplexEnumInAllBlocks_EmptyImpl();
 
   @override
   String toString() {
@@ -133,7 +133,7 @@ class _$SharedComplexEnumInAllBlocks_Empty implements SharedComplexEnumInAllBloc
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SharedComplexEnumInAllBlocks_Empty);
+        (other.runtimeType == runtimeType && other is _$SharedComplexEnumInAllBlocks_EmptyImpl);
   }
 
   @override
@@ -233,24 +233,24 @@ class _$SharedComplexEnumInAllBlocks_Empty implements SharedComplexEnumInAllBloc
 }
 
 abstract class SharedComplexEnumInAllBlocks_Empty implements SharedComplexEnumInAllBlocks {
-  const factory SharedComplexEnumInAllBlocks_Empty() = _$SharedComplexEnumInAllBlocks_Empty;
+  const factory SharedComplexEnumInAllBlocks_Empty() = _$SharedComplexEnumInAllBlocks_EmptyImpl;
 }
 
 /// @nodoc
-abstract class _$$SharedComplexEnumInAllBlocks_PrimitivesCopyWith<$Res> {
-  factory _$$SharedComplexEnumInAllBlocks_PrimitivesCopyWith(_$SharedComplexEnumInAllBlocks_Primitives value,
-          $Res Function(_$SharedComplexEnumInAllBlocks_Primitives) then) =
-      __$$SharedComplexEnumInAllBlocks_PrimitivesCopyWithImpl<$Res>;
+abstract class _$$SharedComplexEnumInAllBlocks_PrimitivesImplCopyWith<$Res> {
+  factory _$$SharedComplexEnumInAllBlocks_PrimitivesImplCopyWith(_$SharedComplexEnumInAllBlocks_PrimitivesImpl value,
+          $Res Function(_$SharedComplexEnumInAllBlocks_PrimitivesImpl) then) =
+      __$$SharedComplexEnumInAllBlocks_PrimitivesImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int int32, double float64, bool boolean});
 }
 
 /// @nodoc
-class __$$SharedComplexEnumInAllBlocks_PrimitivesCopyWithImpl<$Res>
-    extends _$SharedComplexEnumInAllBlocksCopyWithImpl<$Res, _$SharedComplexEnumInAllBlocks_Primitives>
-    implements _$$SharedComplexEnumInAllBlocks_PrimitivesCopyWith<$Res> {
-  __$$SharedComplexEnumInAllBlocks_PrimitivesCopyWithImpl(
-      _$SharedComplexEnumInAllBlocks_Primitives _value, $Res Function(_$SharedComplexEnumInAllBlocks_Primitives) _then)
+class __$$SharedComplexEnumInAllBlocks_PrimitivesImplCopyWithImpl<$Res>
+    extends _$SharedComplexEnumInAllBlocksCopyWithImpl<$Res, _$SharedComplexEnumInAllBlocks_PrimitivesImpl>
+    implements _$$SharedComplexEnumInAllBlocks_PrimitivesImplCopyWith<$Res> {
+  __$$SharedComplexEnumInAllBlocks_PrimitivesImplCopyWithImpl(_$SharedComplexEnumInAllBlocks_PrimitivesImpl _value,
+      $Res Function(_$SharedComplexEnumInAllBlocks_PrimitivesImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -260,7 +260,7 @@ class __$$SharedComplexEnumInAllBlocks_PrimitivesCopyWithImpl<$Res>
     Object? float64 = null,
     Object? boolean = null,
   }) {
-    return _then(_$SharedComplexEnumInAllBlocks_Primitives(
+    return _then(_$SharedComplexEnumInAllBlocks_PrimitivesImpl(
       int32: null == int32
           ? _value.int32
           : int32 // ignore: cast_nullable_to_non_nullable
@@ -279,8 +279,9 @@ class __$$SharedComplexEnumInAllBlocks_PrimitivesCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SharedComplexEnumInAllBlocks_Primitives implements SharedComplexEnumInAllBlocks_Primitives {
-  const _$SharedComplexEnumInAllBlocks_Primitives({required this.int32, required this.float64, required this.boolean});
+class _$SharedComplexEnumInAllBlocks_PrimitivesImpl implements SharedComplexEnumInAllBlocks_Primitives {
+  const _$SharedComplexEnumInAllBlocks_PrimitivesImpl(
+      {required this.int32, required this.float64, required this.boolean});
 
   /// Dart field comment
   @override
@@ -299,7 +300,7 @@ class _$SharedComplexEnumInAllBlocks_Primitives implements SharedComplexEnumInAl
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SharedComplexEnumInAllBlocks_Primitives &&
+            other is _$SharedComplexEnumInAllBlocks_PrimitivesImpl &&
             (identical(other.int32, int32) || other.int32 == int32) &&
             (identical(other.float64, float64) || other.float64 == float64) &&
             (identical(other.boolean, boolean) || other.boolean == boolean));
@@ -311,8 +312,8 @@ class _$SharedComplexEnumInAllBlocks_Primitives implements SharedComplexEnumInAl
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SharedComplexEnumInAllBlocks_PrimitivesCopyWith<_$SharedComplexEnumInAllBlocks_Primitives> get copyWith =>
-      __$$SharedComplexEnumInAllBlocks_PrimitivesCopyWithImpl<_$SharedComplexEnumInAllBlocks_Primitives>(
+  _$$SharedComplexEnumInAllBlocks_PrimitivesImplCopyWith<_$SharedComplexEnumInAllBlocks_PrimitivesImpl> get copyWith =>
+      __$$SharedComplexEnumInAllBlocks_PrimitivesImplCopyWithImpl<_$SharedComplexEnumInAllBlocks_PrimitivesImpl>(
           this, _$identity);
 
   @override
@@ -412,22 +413,22 @@ abstract class SharedComplexEnumInAllBlocks_Primitives implements SharedComplexE
   const factory SharedComplexEnumInAllBlocks_Primitives(
       {required final int int32,
       required final double float64,
-      required final bool boolean}) = _$SharedComplexEnumInAllBlocks_Primitives;
+      required final bool boolean}) = _$SharedComplexEnumInAllBlocks_PrimitivesImpl;
 
   /// Dart field comment
   int get int32;
   double get float64;
   bool get boolean;
   @JsonKey(ignore: true)
-  _$$SharedComplexEnumInAllBlocks_PrimitivesCopyWith<_$SharedComplexEnumInAllBlocks_Primitives> get copyWith =>
+  _$$SharedComplexEnumInAllBlocks_PrimitivesImplCopyWith<_$SharedComplexEnumInAllBlocks_PrimitivesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SharedComplexEnumInAllBlocks_NestedCopyWith<$Res> {
-  factory _$$SharedComplexEnumInAllBlocks_NestedCopyWith(
-          _$SharedComplexEnumInAllBlocks_Nested value, $Res Function(_$SharedComplexEnumInAllBlocks_Nested) then) =
-      __$$SharedComplexEnumInAllBlocks_NestedCopyWithImpl<$Res>;
+abstract class _$$SharedComplexEnumInAllBlocks_NestedImplCopyWith<$Res> {
+  factory _$$SharedComplexEnumInAllBlocks_NestedImplCopyWith(_$SharedComplexEnumInAllBlocks_NestedImpl value,
+          $Res Function(_$SharedComplexEnumInAllBlocks_NestedImpl) then) =
+      __$$SharedComplexEnumInAllBlocks_NestedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SharedComplexEnumInAllBlocks field0});
 
@@ -435,11 +436,11 @@ abstract class _$$SharedComplexEnumInAllBlocks_NestedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$SharedComplexEnumInAllBlocks_NestedCopyWithImpl<$Res>
-    extends _$SharedComplexEnumInAllBlocksCopyWithImpl<$Res, _$SharedComplexEnumInAllBlocks_Nested>
-    implements _$$SharedComplexEnumInAllBlocks_NestedCopyWith<$Res> {
-  __$$SharedComplexEnumInAllBlocks_NestedCopyWithImpl(
-      _$SharedComplexEnumInAllBlocks_Nested _value, $Res Function(_$SharedComplexEnumInAllBlocks_Nested) _then)
+class __$$SharedComplexEnumInAllBlocks_NestedImplCopyWithImpl<$Res>
+    extends _$SharedComplexEnumInAllBlocksCopyWithImpl<$Res, _$SharedComplexEnumInAllBlocks_NestedImpl>
+    implements _$$SharedComplexEnumInAllBlocks_NestedImplCopyWith<$Res> {
+  __$$SharedComplexEnumInAllBlocks_NestedImplCopyWithImpl(
+      _$SharedComplexEnumInAllBlocks_NestedImpl _value, $Res Function(_$SharedComplexEnumInAllBlocks_NestedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -447,7 +448,7 @@ class __$$SharedComplexEnumInAllBlocks_NestedCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$SharedComplexEnumInAllBlocks_Nested(
+    return _then(_$SharedComplexEnumInAllBlocks_NestedImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -466,8 +467,8 @@ class __$$SharedComplexEnumInAllBlocks_NestedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SharedComplexEnumInAllBlocks_Nested implements SharedComplexEnumInAllBlocks_Nested {
-  const _$SharedComplexEnumInAllBlocks_Nested(this.field0);
+class _$SharedComplexEnumInAllBlocks_NestedImpl implements SharedComplexEnumInAllBlocks_Nested {
+  const _$SharedComplexEnumInAllBlocks_NestedImpl(this.field0);
 
   @override
   final SharedComplexEnumInAllBlocks field0;
@@ -481,7 +482,7 @@ class _$SharedComplexEnumInAllBlocks_Nested implements SharedComplexEnumInAllBlo
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SharedComplexEnumInAllBlocks_Nested &&
+            other is _$SharedComplexEnumInAllBlocks_NestedImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -491,8 +492,9 @@ class _$SharedComplexEnumInAllBlocks_Nested implements SharedComplexEnumInAllBlo
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SharedComplexEnumInAllBlocks_NestedCopyWith<_$SharedComplexEnumInAllBlocks_Nested> get copyWith =>
-      __$$SharedComplexEnumInAllBlocks_NestedCopyWithImpl<_$SharedComplexEnumInAllBlocks_Nested>(this, _$identity);
+  _$$SharedComplexEnumInAllBlocks_NestedImplCopyWith<_$SharedComplexEnumInAllBlocks_NestedImpl> get copyWith =>
+      __$$SharedComplexEnumInAllBlocks_NestedImplCopyWithImpl<_$SharedComplexEnumInAllBlocks_NestedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -589,29 +591,29 @@ class _$SharedComplexEnumInAllBlocks_Nested implements SharedComplexEnumInAllBlo
 
 abstract class SharedComplexEnumInAllBlocks_Nested implements SharedComplexEnumInAllBlocks {
   const factory SharedComplexEnumInAllBlocks_Nested(final SharedComplexEnumInAllBlocks field0) =
-      _$SharedComplexEnumInAllBlocks_Nested;
+      _$SharedComplexEnumInAllBlocks_NestedImpl;
 
   SharedComplexEnumInAllBlocks get field0;
   @JsonKey(ignore: true)
-  _$$SharedComplexEnumInAllBlocks_NestedCopyWith<_$SharedComplexEnumInAllBlocks_Nested> get copyWith =>
+  _$$SharedComplexEnumInAllBlocks_NestedImplCopyWith<_$SharedComplexEnumInAllBlocks_NestedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SharedComplexEnumInAllBlocks_OptionalCopyWith<$Res> {
-  factory _$$SharedComplexEnumInAllBlocks_OptionalCopyWith(
-          _$SharedComplexEnumInAllBlocks_Optional value, $Res Function(_$SharedComplexEnumInAllBlocks_Optional) then) =
-      __$$SharedComplexEnumInAllBlocks_OptionalCopyWithImpl<$Res>;
+abstract class _$$SharedComplexEnumInAllBlocks_OptionalImplCopyWith<$Res> {
+  factory _$$SharedComplexEnumInAllBlocks_OptionalImplCopyWith(_$SharedComplexEnumInAllBlocks_OptionalImpl value,
+          $Res Function(_$SharedComplexEnumInAllBlocks_OptionalImpl) then) =
+      __$$SharedComplexEnumInAllBlocks_OptionalImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int? field0, Uint8List? field1});
 }
 
 /// @nodoc
-class __$$SharedComplexEnumInAllBlocks_OptionalCopyWithImpl<$Res>
-    extends _$SharedComplexEnumInAllBlocksCopyWithImpl<$Res, _$SharedComplexEnumInAllBlocks_Optional>
-    implements _$$SharedComplexEnumInAllBlocks_OptionalCopyWith<$Res> {
-  __$$SharedComplexEnumInAllBlocks_OptionalCopyWithImpl(
-      _$SharedComplexEnumInAllBlocks_Optional _value, $Res Function(_$SharedComplexEnumInAllBlocks_Optional) _then)
+class __$$SharedComplexEnumInAllBlocks_OptionalImplCopyWithImpl<$Res>
+    extends _$SharedComplexEnumInAllBlocksCopyWithImpl<$Res, _$SharedComplexEnumInAllBlocks_OptionalImpl>
+    implements _$$SharedComplexEnumInAllBlocks_OptionalImplCopyWith<$Res> {
+  __$$SharedComplexEnumInAllBlocks_OptionalImplCopyWithImpl(_$SharedComplexEnumInAllBlocks_OptionalImpl _value,
+      $Res Function(_$SharedComplexEnumInAllBlocks_OptionalImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -620,7 +622,7 @@ class __$$SharedComplexEnumInAllBlocks_OptionalCopyWithImpl<$Res>
     Object? field0 = freezed,
     Object? field1 = freezed,
   }) {
-    return _then(_$SharedComplexEnumInAllBlocks_Optional(
+    return _then(_$SharedComplexEnumInAllBlocks_OptionalImpl(
       freezed == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -635,8 +637,8 @@ class __$$SharedComplexEnumInAllBlocks_OptionalCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SharedComplexEnumInAllBlocks_Optional implements SharedComplexEnumInAllBlocks_Optional {
-  const _$SharedComplexEnumInAllBlocks_Optional([this.field0, this.field1]);
+class _$SharedComplexEnumInAllBlocks_OptionalImpl implements SharedComplexEnumInAllBlocks_Optional {
+  const _$SharedComplexEnumInAllBlocks_OptionalImpl([this.field0, this.field1]);
 
   /// Comment on anonymous field
   @override
@@ -653,7 +655,7 @@ class _$SharedComplexEnumInAllBlocks_Optional implements SharedComplexEnumInAllB
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SharedComplexEnumInAllBlocks_Optional &&
+            other is _$SharedComplexEnumInAllBlocks_OptionalImpl &&
             (identical(other.field0, field0) || other.field0 == field0) &&
             const DeepCollectionEquality().equals(other.field1, field1));
   }
@@ -664,8 +666,9 @@ class _$SharedComplexEnumInAllBlocks_Optional implements SharedComplexEnumInAllB
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SharedComplexEnumInAllBlocks_OptionalCopyWith<_$SharedComplexEnumInAllBlocks_Optional> get copyWith =>
-      __$$SharedComplexEnumInAllBlocks_OptionalCopyWithImpl<_$SharedComplexEnumInAllBlocks_Optional>(this, _$identity);
+  _$$SharedComplexEnumInAllBlocks_OptionalImplCopyWith<_$SharedComplexEnumInAllBlocks_OptionalImpl> get copyWith =>
+      __$$SharedComplexEnumInAllBlocks_OptionalImplCopyWithImpl<_$SharedComplexEnumInAllBlocks_OptionalImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -762,31 +765,31 @@ class _$SharedComplexEnumInAllBlocks_Optional implements SharedComplexEnumInAllB
 
 abstract class SharedComplexEnumInAllBlocks_Optional implements SharedComplexEnumInAllBlocks {
   const factory SharedComplexEnumInAllBlocks_Optional([final int? field0, final Uint8List? field1]) =
-      _$SharedComplexEnumInAllBlocks_Optional;
+      _$SharedComplexEnumInAllBlocks_OptionalImpl;
 
   /// Comment on anonymous field
   int? get field0;
   Uint8List? get field1;
   @JsonKey(ignore: true)
-  _$$SharedComplexEnumInAllBlocks_OptionalCopyWith<_$SharedComplexEnumInAllBlocks_Optional> get copyWith =>
+  _$$SharedComplexEnumInAllBlocks_OptionalImplCopyWith<_$SharedComplexEnumInAllBlocks_OptionalImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SharedComplexEnumInAllBlocks_BufferCopyWith<$Res> {
-  factory _$$SharedComplexEnumInAllBlocks_BufferCopyWith(
-          _$SharedComplexEnumInAllBlocks_Buffer value, $Res Function(_$SharedComplexEnumInAllBlocks_Buffer) then) =
-      __$$SharedComplexEnumInAllBlocks_BufferCopyWithImpl<$Res>;
+abstract class _$$SharedComplexEnumInAllBlocks_BufferImplCopyWith<$Res> {
+  factory _$$SharedComplexEnumInAllBlocks_BufferImplCopyWith(_$SharedComplexEnumInAllBlocks_BufferImpl value,
+          $Res Function(_$SharedComplexEnumInAllBlocks_BufferImpl) then) =
+      __$$SharedComplexEnumInAllBlocks_BufferImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Float32List field0});
 }
 
 /// @nodoc
-class __$$SharedComplexEnumInAllBlocks_BufferCopyWithImpl<$Res>
-    extends _$SharedComplexEnumInAllBlocksCopyWithImpl<$Res, _$SharedComplexEnumInAllBlocks_Buffer>
-    implements _$$SharedComplexEnumInAllBlocks_BufferCopyWith<$Res> {
-  __$$SharedComplexEnumInAllBlocks_BufferCopyWithImpl(
-      _$SharedComplexEnumInAllBlocks_Buffer _value, $Res Function(_$SharedComplexEnumInAllBlocks_Buffer) _then)
+class __$$SharedComplexEnumInAllBlocks_BufferImplCopyWithImpl<$Res>
+    extends _$SharedComplexEnumInAllBlocksCopyWithImpl<$Res, _$SharedComplexEnumInAllBlocks_BufferImpl>
+    implements _$$SharedComplexEnumInAllBlocks_BufferImplCopyWith<$Res> {
+  __$$SharedComplexEnumInAllBlocks_BufferImplCopyWithImpl(
+      _$SharedComplexEnumInAllBlocks_BufferImpl _value, $Res Function(_$SharedComplexEnumInAllBlocks_BufferImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -794,7 +797,7 @@ class __$$SharedComplexEnumInAllBlocks_BufferCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$SharedComplexEnumInAllBlocks_Buffer(
+    return _then(_$SharedComplexEnumInAllBlocks_BufferImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -805,8 +808,8 @@ class __$$SharedComplexEnumInAllBlocks_BufferCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SharedComplexEnumInAllBlocks_Buffer implements SharedComplexEnumInAllBlocks_Buffer {
-  const _$SharedComplexEnumInAllBlocks_Buffer(this.field0);
+class _$SharedComplexEnumInAllBlocks_BufferImpl implements SharedComplexEnumInAllBlocks_Buffer {
+  const _$SharedComplexEnumInAllBlocks_BufferImpl(this.field0);
 
   @override
   final Float32List field0;
@@ -820,7 +823,7 @@ class _$SharedComplexEnumInAllBlocks_Buffer implements SharedComplexEnumInAllBlo
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SharedComplexEnumInAllBlocks_Buffer &&
+            other is _$SharedComplexEnumInAllBlocks_BufferImpl &&
             const DeepCollectionEquality().equals(other.field0, field0));
   }
 
@@ -830,8 +833,9 @@ class _$SharedComplexEnumInAllBlocks_Buffer implements SharedComplexEnumInAllBlo
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SharedComplexEnumInAllBlocks_BufferCopyWith<_$SharedComplexEnumInAllBlocks_Buffer> get copyWith =>
-      __$$SharedComplexEnumInAllBlocks_BufferCopyWithImpl<_$SharedComplexEnumInAllBlocks_Buffer>(this, _$identity);
+  _$$SharedComplexEnumInAllBlocks_BufferImplCopyWith<_$SharedComplexEnumInAllBlocks_BufferImpl> get copyWith =>
+      __$$SharedComplexEnumInAllBlocks_BufferImplCopyWithImpl<_$SharedComplexEnumInAllBlocks_BufferImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -927,29 +931,30 @@ class _$SharedComplexEnumInAllBlocks_Buffer implements SharedComplexEnumInAllBlo
 }
 
 abstract class SharedComplexEnumInAllBlocks_Buffer implements SharedComplexEnumInAllBlocks {
-  const factory SharedComplexEnumInAllBlocks_Buffer(final Float32List field0) = _$SharedComplexEnumInAllBlocks_Buffer;
+  const factory SharedComplexEnumInAllBlocks_Buffer(final Float32List field0) =
+      _$SharedComplexEnumInAllBlocks_BufferImpl;
 
   Float32List get field0;
   @JsonKey(ignore: true)
-  _$$SharedComplexEnumInAllBlocks_BufferCopyWith<_$SharedComplexEnumInAllBlocks_Buffer> get copyWith =>
+  _$$SharedComplexEnumInAllBlocks_BufferImplCopyWith<_$SharedComplexEnumInAllBlocks_BufferImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SharedComplexEnumInAllBlocks_EnumsCopyWith<$Res> {
-  factory _$$SharedComplexEnumInAllBlocks_EnumsCopyWith(
-          _$SharedComplexEnumInAllBlocks_Enums value, $Res Function(_$SharedComplexEnumInAllBlocks_Enums) then) =
-      __$$SharedComplexEnumInAllBlocks_EnumsCopyWithImpl<$Res>;
+abstract class _$$SharedComplexEnumInAllBlocks_EnumsImplCopyWith<$Res> {
+  factory _$$SharedComplexEnumInAllBlocks_EnumsImplCopyWith(_$SharedComplexEnumInAllBlocks_EnumsImpl value,
+          $Res Function(_$SharedComplexEnumInAllBlocks_EnumsImpl) then) =
+      __$$SharedComplexEnumInAllBlocks_EnumsImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SharedWeekdaysEnumInAllBlocks field0});
 }
 
 /// @nodoc
-class __$$SharedComplexEnumInAllBlocks_EnumsCopyWithImpl<$Res>
-    extends _$SharedComplexEnumInAllBlocksCopyWithImpl<$Res, _$SharedComplexEnumInAllBlocks_Enums>
-    implements _$$SharedComplexEnumInAllBlocks_EnumsCopyWith<$Res> {
-  __$$SharedComplexEnumInAllBlocks_EnumsCopyWithImpl(
-      _$SharedComplexEnumInAllBlocks_Enums _value, $Res Function(_$SharedComplexEnumInAllBlocks_Enums) _then)
+class __$$SharedComplexEnumInAllBlocks_EnumsImplCopyWithImpl<$Res>
+    extends _$SharedComplexEnumInAllBlocksCopyWithImpl<$Res, _$SharedComplexEnumInAllBlocks_EnumsImpl>
+    implements _$$SharedComplexEnumInAllBlocks_EnumsImplCopyWith<$Res> {
+  __$$SharedComplexEnumInAllBlocks_EnumsImplCopyWithImpl(
+      _$SharedComplexEnumInAllBlocks_EnumsImpl _value, $Res Function(_$SharedComplexEnumInAllBlocks_EnumsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -957,7 +962,7 @@ class __$$SharedComplexEnumInAllBlocks_EnumsCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$SharedComplexEnumInAllBlocks_Enums(
+    return _then(_$SharedComplexEnumInAllBlocks_EnumsImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -968,8 +973,8 @@ class __$$SharedComplexEnumInAllBlocks_EnumsCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SharedComplexEnumInAllBlocks_Enums implements SharedComplexEnumInAllBlocks_Enums {
-  const _$SharedComplexEnumInAllBlocks_Enums(this.field0);
+class _$SharedComplexEnumInAllBlocks_EnumsImpl implements SharedComplexEnumInAllBlocks_Enums {
+  const _$SharedComplexEnumInAllBlocks_EnumsImpl(this.field0);
 
   @override
   final SharedWeekdaysEnumInAllBlocks field0;
@@ -983,7 +988,7 @@ class _$SharedComplexEnumInAllBlocks_Enums implements SharedComplexEnumInAllBloc
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SharedComplexEnumInAllBlocks_Enums &&
+            other is _$SharedComplexEnumInAllBlocks_EnumsImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -993,8 +998,9 @@ class _$SharedComplexEnumInAllBlocks_Enums implements SharedComplexEnumInAllBloc
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SharedComplexEnumInAllBlocks_EnumsCopyWith<_$SharedComplexEnumInAllBlocks_Enums> get copyWith =>
-      __$$SharedComplexEnumInAllBlocks_EnumsCopyWithImpl<_$SharedComplexEnumInAllBlocks_Enums>(this, _$identity);
+  _$$SharedComplexEnumInAllBlocks_EnumsImplCopyWith<_$SharedComplexEnumInAllBlocks_EnumsImpl> get copyWith =>
+      __$$SharedComplexEnumInAllBlocks_EnumsImplCopyWithImpl<_$SharedComplexEnumInAllBlocks_EnumsImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1091,29 +1097,29 @@ class _$SharedComplexEnumInAllBlocks_Enums implements SharedComplexEnumInAllBloc
 
 abstract class SharedComplexEnumInAllBlocks_Enums implements SharedComplexEnumInAllBlocks {
   const factory SharedComplexEnumInAllBlocks_Enums(final SharedWeekdaysEnumInAllBlocks field0) =
-      _$SharedComplexEnumInAllBlocks_Enums;
+      _$SharedComplexEnumInAllBlocks_EnumsImpl;
 
   SharedWeekdaysEnumInAllBlocks get field0;
   @JsonKey(ignore: true)
-  _$$SharedComplexEnumInAllBlocks_EnumsCopyWith<_$SharedComplexEnumInAllBlocks_Enums> get copyWith =>
+  _$$SharedComplexEnumInAllBlocks_EnumsImplCopyWith<_$SharedComplexEnumInAllBlocks_EnumsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SharedComplexEnumInAllBlocks_BytesArrayCopyWith<$Res> {
-  factory _$$SharedComplexEnumInAllBlocks_BytesArrayCopyWith(_$SharedComplexEnumInAllBlocks_BytesArray value,
-          $Res Function(_$SharedComplexEnumInAllBlocks_BytesArray) then) =
-      __$$SharedComplexEnumInAllBlocks_BytesArrayCopyWithImpl<$Res>;
+abstract class _$$SharedComplexEnumInAllBlocks_BytesArrayImplCopyWith<$Res> {
+  factory _$$SharedComplexEnumInAllBlocks_BytesArrayImplCopyWith(_$SharedComplexEnumInAllBlocks_BytesArrayImpl value,
+          $Res Function(_$SharedComplexEnumInAllBlocks_BytesArrayImpl) then) =
+      __$$SharedComplexEnumInAllBlocks_BytesArrayImplCopyWithImpl<$Res>;
   @useResult
   $Res call({U8Array3 field0});
 }
 
 /// @nodoc
-class __$$SharedComplexEnumInAllBlocks_BytesArrayCopyWithImpl<$Res>
-    extends _$SharedComplexEnumInAllBlocksCopyWithImpl<$Res, _$SharedComplexEnumInAllBlocks_BytesArray>
-    implements _$$SharedComplexEnumInAllBlocks_BytesArrayCopyWith<$Res> {
-  __$$SharedComplexEnumInAllBlocks_BytesArrayCopyWithImpl(
-      _$SharedComplexEnumInAllBlocks_BytesArray _value, $Res Function(_$SharedComplexEnumInAllBlocks_BytesArray) _then)
+class __$$SharedComplexEnumInAllBlocks_BytesArrayImplCopyWithImpl<$Res>
+    extends _$SharedComplexEnumInAllBlocksCopyWithImpl<$Res, _$SharedComplexEnumInAllBlocks_BytesArrayImpl>
+    implements _$$SharedComplexEnumInAllBlocks_BytesArrayImplCopyWith<$Res> {
+  __$$SharedComplexEnumInAllBlocks_BytesArrayImplCopyWithImpl(_$SharedComplexEnumInAllBlocks_BytesArrayImpl _value,
+      $Res Function(_$SharedComplexEnumInAllBlocks_BytesArrayImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1121,7 +1127,7 @@ class __$$SharedComplexEnumInAllBlocks_BytesArrayCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$SharedComplexEnumInAllBlocks_BytesArray(
+    return _then(_$SharedComplexEnumInAllBlocks_BytesArrayImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -1132,8 +1138,8 @@ class __$$SharedComplexEnumInAllBlocks_BytesArrayCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SharedComplexEnumInAllBlocks_BytesArray implements SharedComplexEnumInAllBlocks_BytesArray {
-  const _$SharedComplexEnumInAllBlocks_BytesArray(this.field0);
+class _$SharedComplexEnumInAllBlocks_BytesArrayImpl implements SharedComplexEnumInAllBlocks_BytesArray {
+  const _$SharedComplexEnumInAllBlocks_BytesArrayImpl(this.field0);
 
   @override
   final U8Array3 field0;
@@ -1147,7 +1153,7 @@ class _$SharedComplexEnumInAllBlocks_BytesArray implements SharedComplexEnumInAl
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SharedComplexEnumInAllBlocks_BytesArray &&
+            other is _$SharedComplexEnumInAllBlocks_BytesArrayImpl &&
             const DeepCollectionEquality().equals(other.field0, field0));
   }
 
@@ -1157,8 +1163,8 @@ class _$SharedComplexEnumInAllBlocks_BytesArray implements SharedComplexEnumInAl
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SharedComplexEnumInAllBlocks_BytesArrayCopyWith<_$SharedComplexEnumInAllBlocks_BytesArray> get copyWith =>
-      __$$SharedComplexEnumInAllBlocks_BytesArrayCopyWithImpl<_$SharedComplexEnumInAllBlocks_BytesArray>(
+  _$$SharedComplexEnumInAllBlocks_BytesArrayImplCopyWith<_$SharedComplexEnumInAllBlocks_BytesArrayImpl> get copyWith =>
+      __$$SharedComplexEnumInAllBlocks_BytesArrayImplCopyWithImpl<_$SharedComplexEnumInAllBlocks_BytesArrayImpl>(
           this, _$identity);
 
   @override
@@ -1256,11 +1262,11 @@ class _$SharedComplexEnumInAllBlocks_BytesArray implements SharedComplexEnumInAl
 
 abstract class SharedComplexEnumInAllBlocks_BytesArray implements SharedComplexEnumInAllBlocks {
   const factory SharedComplexEnumInAllBlocks_BytesArray(final U8Array3 field0) =
-      _$SharedComplexEnumInAllBlocks_BytesArray;
+      _$SharedComplexEnumInAllBlocks_BytesArrayImpl;
 
   U8Array3 get field0;
   @JsonKey(ignore: true)
-  _$$SharedComplexEnumInAllBlocks_BytesArrayCopyWith<_$SharedComplexEnumInAllBlocks_BytesArray> get copyWith =>
+  _$$SharedComplexEnumInAllBlocks_BytesArrayImplCopyWith<_$SharedComplexEnumInAllBlocks_BytesArrayImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1336,25 +1342,25 @@ class _$EnumDefinedInBlock1CopyWithImpl<$Res, $Val extends EnumDefinedInBlock1>
 }
 
 /// @nodoc
-abstract class _$$EnumDefinedInBlock1_QuitCopyWith<$Res> {
-  factory _$$EnumDefinedInBlock1_QuitCopyWith(
-          _$EnumDefinedInBlock1_Quit value, $Res Function(_$EnumDefinedInBlock1_Quit) then) =
-      __$$EnumDefinedInBlock1_QuitCopyWithImpl<$Res>;
+abstract class _$$EnumDefinedInBlock1_QuitImplCopyWith<$Res> {
+  factory _$$EnumDefinedInBlock1_QuitImplCopyWith(
+          _$EnumDefinedInBlock1_QuitImpl value, $Res Function(_$EnumDefinedInBlock1_QuitImpl) then) =
+      __$$EnumDefinedInBlock1_QuitImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$EnumDefinedInBlock1_QuitCopyWithImpl<$Res>
-    extends _$EnumDefinedInBlock1CopyWithImpl<$Res, _$EnumDefinedInBlock1_Quit>
-    implements _$$EnumDefinedInBlock1_QuitCopyWith<$Res> {
-  __$$EnumDefinedInBlock1_QuitCopyWithImpl(
-      _$EnumDefinedInBlock1_Quit _value, $Res Function(_$EnumDefinedInBlock1_Quit) _then)
+class __$$EnumDefinedInBlock1_QuitImplCopyWithImpl<$Res>
+    extends _$EnumDefinedInBlock1CopyWithImpl<$Res, _$EnumDefinedInBlock1_QuitImpl>
+    implements _$$EnumDefinedInBlock1_QuitImplCopyWith<$Res> {
+  __$$EnumDefinedInBlock1_QuitImplCopyWithImpl(
+      _$EnumDefinedInBlock1_QuitImpl _value, $Res Function(_$EnumDefinedInBlock1_QuitImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$EnumDefinedInBlock1_Quit implements EnumDefinedInBlock1_Quit {
-  const _$EnumDefinedInBlock1_Quit();
+class _$EnumDefinedInBlock1_QuitImpl implements EnumDefinedInBlock1_Quit {
+  const _$EnumDefinedInBlock1_QuitImpl();
 
   @override
   String toString() {
@@ -1363,7 +1369,7 @@ class _$EnumDefinedInBlock1_Quit implements EnumDefinedInBlock1_Quit {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$EnumDefinedInBlock1_Quit);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$EnumDefinedInBlock1_QuitImpl);
   }
 
   @override
@@ -1445,24 +1451,24 @@ class _$EnumDefinedInBlock1_Quit implements EnumDefinedInBlock1_Quit {
 }
 
 abstract class EnumDefinedInBlock1_Quit implements EnumDefinedInBlock1 {
-  const factory EnumDefinedInBlock1_Quit() = _$EnumDefinedInBlock1_Quit;
+  const factory EnumDefinedInBlock1_Quit() = _$EnumDefinedInBlock1_QuitImpl;
 }
 
 /// @nodoc
-abstract class _$$EnumDefinedInBlock1_MoveCopyWith<$Res> {
-  factory _$$EnumDefinedInBlock1_MoveCopyWith(
-          _$EnumDefinedInBlock1_Move value, $Res Function(_$EnumDefinedInBlock1_Move) then) =
-      __$$EnumDefinedInBlock1_MoveCopyWithImpl<$Res>;
+abstract class _$$EnumDefinedInBlock1_MoveImplCopyWith<$Res> {
+  factory _$$EnumDefinedInBlock1_MoveImplCopyWith(
+          _$EnumDefinedInBlock1_MoveImpl value, $Res Function(_$EnumDefinedInBlock1_MoveImpl) then) =
+      __$$EnumDefinedInBlock1_MoveImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int x, int y});
 }
 
 /// @nodoc
-class __$$EnumDefinedInBlock1_MoveCopyWithImpl<$Res>
-    extends _$EnumDefinedInBlock1CopyWithImpl<$Res, _$EnumDefinedInBlock1_Move>
-    implements _$$EnumDefinedInBlock1_MoveCopyWith<$Res> {
-  __$$EnumDefinedInBlock1_MoveCopyWithImpl(
-      _$EnumDefinedInBlock1_Move _value, $Res Function(_$EnumDefinedInBlock1_Move) _then)
+class __$$EnumDefinedInBlock1_MoveImplCopyWithImpl<$Res>
+    extends _$EnumDefinedInBlock1CopyWithImpl<$Res, _$EnumDefinedInBlock1_MoveImpl>
+    implements _$$EnumDefinedInBlock1_MoveImplCopyWith<$Res> {
+  __$$EnumDefinedInBlock1_MoveImplCopyWithImpl(
+      _$EnumDefinedInBlock1_MoveImpl _value, $Res Function(_$EnumDefinedInBlock1_MoveImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1471,7 +1477,7 @@ class __$$EnumDefinedInBlock1_MoveCopyWithImpl<$Res>
     Object? x = null,
     Object? y = null,
   }) {
-    return _then(_$EnumDefinedInBlock1_Move(
+    return _then(_$EnumDefinedInBlock1_MoveImpl(
       x: null == x
           ? _value.x
           : x // ignore: cast_nullable_to_non_nullable
@@ -1486,8 +1492,8 @@ class __$$EnumDefinedInBlock1_MoveCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumDefinedInBlock1_Move implements EnumDefinedInBlock1_Move {
-  const _$EnumDefinedInBlock1_Move({required this.x, required this.y});
+class _$EnumDefinedInBlock1_MoveImpl implements EnumDefinedInBlock1_Move {
+  const _$EnumDefinedInBlock1_MoveImpl({required this.x, required this.y});
 
   @override
   final int x;
@@ -1503,7 +1509,7 @@ class _$EnumDefinedInBlock1_Move implements EnumDefinedInBlock1_Move {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumDefinedInBlock1_Move &&
+            other is _$EnumDefinedInBlock1_MoveImpl &&
             (identical(other.x, x) || other.x == x) &&
             (identical(other.y, y) || other.y == y));
   }
@@ -1514,8 +1520,8 @@ class _$EnumDefinedInBlock1_Move implements EnumDefinedInBlock1_Move {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumDefinedInBlock1_MoveCopyWith<_$EnumDefinedInBlock1_Move> get copyWith =>
-      __$$EnumDefinedInBlock1_MoveCopyWithImpl<_$EnumDefinedInBlock1_Move>(this, _$identity);
+  _$$EnumDefinedInBlock1_MoveImplCopyWith<_$EnumDefinedInBlock1_MoveImpl> get copyWith =>
+      __$$EnumDefinedInBlock1_MoveImplCopyWithImpl<_$EnumDefinedInBlock1_MoveImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1593,29 +1599,30 @@ class _$EnumDefinedInBlock1_Move implements EnumDefinedInBlock1_Move {
 }
 
 abstract class EnumDefinedInBlock1_Move implements EnumDefinedInBlock1 {
-  const factory EnumDefinedInBlock1_Move({required final int x, required final int y}) = _$EnumDefinedInBlock1_Move;
+  const factory EnumDefinedInBlock1_Move({required final int x, required final int y}) = _$EnumDefinedInBlock1_MoveImpl;
 
   int get x;
   int get y;
   @JsonKey(ignore: true)
-  _$$EnumDefinedInBlock1_MoveCopyWith<_$EnumDefinedInBlock1_Move> get copyWith => throw _privateConstructorUsedError;
+  _$$EnumDefinedInBlock1_MoveImplCopyWith<_$EnumDefinedInBlock1_MoveImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EnumDefinedInBlock1_WriteCopyWith<$Res> {
-  factory _$$EnumDefinedInBlock1_WriteCopyWith(
-          _$EnumDefinedInBlock1_Write value, $Res Function(_$EnumDefinedInBlock1_Write) then) =
-      __$$EnumDefinedInBlock1_WriteCopyWithImpl<$Res>;
+abstract class _$$EnumDefinedInBlock1_WriteImplCopyWith<$Res> {
+  factory _$$EnumDefinedInBlock1_WriteImplCopyWith(
+          _$EnumDefinedInBlock1_WriteImpl value, $Res Function(_$EnumDefinedInBlock1_WriteImpl) then) =
+      __$$EnumDefinedInBlock1_WriteImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String field0});
 }
 
 /// @nodoc
-class __$$EnumDefinedInBlock1_WriteCopyWithImpl<$Res>
-    extends _$EnumDefinedInBlock1CopyWithImpl<$Res, _$EnumDefinedInBlock1_Write>
-    implements _$$EnumDefinedInBlock1_WriteCopyWith<$Res> {
-  __$$EnumDefinedInBlock1_WriteCopyWithImpl(
-      _$EnumDefinedInBlock1_Write _value, $Res Function(_$EnumDefinedInBlock1_Write) _then)
+class __$$EnumDefinedInBlock1_WriteImplCopyWithImpl<$Res>
+    extends _$EnumDefinedInBlock1CopyWithImpl<$Res, _$EnumDefinedInBlock1_WriteImpl>
+    implements _$$EnumDefinedInBlock1_WriteImplCopyWith<$Res> {
+  __$$EnumDefinedInBlock1_WriteImplCopyWithImpl(
+      _$EnumDefinedInBlock1_WriteImpl _value, $Res Function(_$EnumDefinedInBlock1_WriteImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1623,7 +1630,7 @@ class __$$EnumDefinedInBlock1_WriteCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$EnumDefinedInBlock1_Write(
+    return _then(_$EnumDefinedInBlock1_WriteImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -1634,8 +1641,8 @@ class __$$EnumDefinedInBlock1_WriteCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumDefinedInBlock1_Write implements EnumDefinedInBlock1_Write {
-  const _$EnumDefinedInBlock1_Write(this.field0);
+class _$EnumDefinedInBlock1_WriteImpl implements EnumDefinedInBlock1_Write {
+  const _$EnumDefinedInBlock1_WriteImpl(this.field0);
 
   @override
   final String field0;
@@ -1649,7 +1656,7 @@ class _$EnumDefinedInBlock1_Write implements EnumDefinedInBlock1_Write {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumDefinedInBlock1_Write &&
+            other is _$EnumDefinedInBlock1_WriteImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -1659,8 +1666,8 @@ class _$EnumDefinedInBlock1_Write implements EnumDefinedInBlock1_Write {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumDefinedInBlock1_WriteCopyWith<_$EnumDefinedInBlock1_Write> get copyWith =>
-      __$$EnumDefinedInBlock1_WriteCopyWithImpl<_$EnumDefinedInBlock1_Write>(this, _$identity);
+  _$$EnumDefinedInBlock1_WriteImplCopyWith<_$EnumDefinedInBlock1_WriteImpl> get copyWith =>
+      __$$EnumDefinedInBlock1_WriteImplCopyWithImpl<_$EnumDefinedInBlock1_WriteImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1738,28 +1745,29 @@ class _$EnumDefinedInBlock1_Write implements EnumDefinedInBlock1_Write {
 }
 
 abstract class EnumDefinedInBlock1_Write implements EnumDefinedInBlock1 {
-  const factory EnumDefinedInBlock1_Write(final String field0) = _$EnumDefinedInBlock1_Write;
+  const factory EnumDefinedInBlock1_Write(final String field0) = _$EnumDefinedInBlock1_WriteImpl;
 
   String get field0;
   @JsonKey(ignore: true)
-  _$$EnumDefinedInBlock1_WriteCopyWith<_$EnumDefinedInBlock1_Write> get copyWith => throw _privateConstructorUsedError;
+  _$$EnumDefinedInBlock1_WriteImplCopyWith<_$EnumDefinedInBlock1_WriteImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EnumDefinedInBlock1_ChangeColorCopyWith<$Res> {
-  factory _$$EnumDefinedInBlock1_ChangeColorCopyWith(
-          _$EnumDefinedInBlock1_ChangeColor value, $Res Function(_$EnumDefinedInBlock1_ChangeColor) then) =
-      __$$EnumDefinedInBlock1_ChangeColorCopyWithImpl<$Res>;
+abstract class _$$EnumDefinedInBlock1_ChangeColorImplCopyWith<$Res> {
+  factory _$$EnumDefinedInBlock1_ChangeColorImplCopyWith(
+          _$EnumDefinedInBlock1_ChangeColorImpl value, $Res Function(_$EnumDefinedInBlock1_ChangeColorImpl) then) =
+      __$$EnumDefinedInBlock1_ChangeColorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0, int field1, int field2});
 }
 
 /// @nodoc
-class __$$EnumDefinedInBlock1_ChangeColorCopyWithImpl<$Res>
-    extends _$EnumDefinedInBlock1CopyWithImpl<$Res, _$EnumDefinedInBlock1_ChangeColor>
-    implements _$$EnumDefinedInBlock1_ChangeColorCopyWith<$Res> {
-  __$$EnumDefinedInBlock1_ChangeColorCopyWithImpl(
-      _$EnumDefinedInBlock1_ChangeColor _value, $Res Function(_$EnumDefinedInBlock1_ChangeColor) _then)
+class __$$EnumDefinedInBlock1_ChangeColorImplCopyWithImpl<$Res>
+    extends _$EnumDefinedInBlock1CopyWithImpl<$Res, _$EnumDefinedInBlock1_ChangeColorImpl>
+    implements _$$EnumDefinedInBlock1_ChangeColorImplCopyWith<$Res> {
+  __$$EnumDefinedInBlock1_ChangeColorImplCopyWithImpl(
+      _$EnumDefinedInBlock1_ChangeColorImpl _value, $Res Function(_$EnumDefinedInBlock1_ChangeColorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1769,7 +1777,7 @@ class __$$EnumDefinedInBlock1_ChangeColorCopyWithImpl<$Res>
     Object? field1 = null,
     Object? field2 = null,
   }) {
-    return _then(_$EnumDefinedInBlock1_ChangeColor(
+    return _then(_$EnumDefinedInBlock1_ChangeColorImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -1788,8 +1796,8 @@ class __$$EnumDefinedInBlock1_ChangeColorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumDefinedInBlock1_ChangeColor implements EnumDefinedInBlock1_ChangeColor {
-  const _$EnumDefinedInBlock1_ChangeColor(this.field0, this.field1, this.field2);
+class _$EnumDefinedInBlock1_ChangeColorImpl implements EnumDefinedInBlock1_ChangeColor {
+  const _$EnumDefinedInBlock1_ChangeColorImpl(this.field0, this.field1, this.field2);
 
   @override
   final int field0;
@@ -1807,7 +1815,7 @@ class _$EnumDefinedInBlock1_ChangeColor implements EnumDefinedInBlock1_ChangeCol
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumDefinedInBlock1_ChangeColor &&
+            other is _$EnumDefinedInBlock1_ChangeColorImpl &&
             (identical(other.field0, field0) || other.field0 == field0) &&
             (identical(other.field1, field1) || other.field1 == field1) &&
             (identical(other.field2, field2) || other.field2 == field2));
@@ -1819,8 +1827,8 @@ class _$EnumDefinedInBlock1_ChangeColor implements EnumDefinedInBlock1_ChangeCol
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumDefinedInBlock1_ChangeColorCopyWith<_$EnumDefinedInBlock1_ChangeColor> get copyWith =>
-      __$$EnumDefinedInBlock1_ChangeColorCopyWithImpl<_$EnumDefinedInBlock1_ChangeColor>(this, _$identity);
+  _$$EnumDefinedInBlock1_ChangeColorImplCopyWith<_$EnumDefinedInBlock1_ChangeColorImpl> get copyWith =>
+      __$$EnumDefinedInBlock1_ChangeColorImplCopyWithImpl<_$EnumDefinedInBlock1_ChangeColorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1899,13 +1907,13 @@ class _$EnumDefinedInBlock1_ChangeColor implements EnumDefinedInBlock1_ChangeCol
 
 abstract class EnumDefinedInBlock1_ChangeColor implements EnumDefinedInBlock1 {
   const factory EnumDefinedInBlock1_ChangeColor(final int field0, final int field1, final int field2) =
-      _$EnumDefinedInBlock1_ChangeColor;
+      _$EnumDefinedInBlock1_ChangeColorImpl;
 
   int get field0;
   int get field1;
   int get field2;
   @JsonKey(ignore: true)
-  _$$EnumDefinedInBlock1_ChangeColorCopyWith<_$EnumDefinedInBlock1_ChangeColor> get copyWith =>
+  _$$EnumDefinedInBlock1_ChangeColorImplCopyWith<_$EnumDefinedInBlock1_ChangeColorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1981,25 +1989,25 @@ class _$EnumDefinedInBlock2CopyWithImpl<$Res, $Val extends EnumDefinedInBlock2>
 }
 
 /// @nodoc
-abstract class _$$EnumDefinedInBlock2_QuitCopyWith<$Res> {
-  factory _$$EnumDefinedInBlock2_QuitCopyWith(
-          _$EnumDefinedInBlock2_Quit value, $Res Function(_$EnumDefinedInBlock2_Quit) then) =
-      __$$EnumDefinedInBlock2_QuitCopyWithImpl<$Res>;
+abstract class _$$EnumDefinedInBlock2_QuitImplCopyWith<$Res> {
+  factory _$$EnumDefinedInBlock2_QuitImplCopyWith(
+          _$EnumDefinedInBlock2_QuitImpl value, $Res Function(_$EnumDefinedInBlock2_QuitImpl) then) =
+      __$$EnumDefinedInBlock2_QuitImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$EnumDefinedInBlock2_QuitCopyWithImpl<$Res>
-    extends _$EnumDefinedInBlock2CopyWithImpl<$Res, _$EnumDefinedInBlock2_Quit>
-    implements _$$EnumDefinedInBlock2_QuitCopyWith<$Res> {
-  __$$EnumDefinedInBlock2_QuitCopyWithImpl(
-      _$EnumDefinedInBlock2_Quit _value, $Res Function(_$EnumDefinedInBlock2_Quit) _then)
+class __$$EnumDefinedInBlock2_QuitImplCopyWithImpl<$Res>
+    extends _$EnumDefinedInBlock2CopyWithImpl<$Res, _$EnumDefinedInBlock2_QuitImpl>
+    implements _$$EnumDefinedInBlock2_QuitImplCopyWith<$Res> {
+  __$$EnumDefinedInBlock2_QuitImplCopyWithImpl(
+      _$EnumDefinedInBlock2_QuitImpl _value, $Res Function(_$EnumDefinedInBlock2_QuitImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$EnumDefinedInBlock2_Quit implements EnumDefinedInBlock2_Quit {
-  const _$EnumDefinedInBlock2_Quit();
+class _$EnumDefinedInBlock2_QuitImpl implements EnumDefinedInBlock2_Quit {
+  const _$EnumDefinedInBlock2_QuitImpl();
 
   @override
   String toString() {
@@ -2008,7 +2016,7 @@ class _$EnumDefinedInBlock2_Quit implements EnumDefinedInBlock2_Quit {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$EnumDefinedInBlock2_Quit);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$EnumDefinedInBlock2_QuitImpl);
   }
 
   @override
@@ -2090,24 +2098,24 @@ class _$EnumDefinedInBlock2_Quit implements EnumDefinedInBlock2_Quit {
 }
 
 abstract class EnumDefinedInBlock2_Quit implements EnumDefinedInBlock2 {
-  const factory EnumDefinedInBlock2_Quit() = _$EnumDefinedInBlock2_Quit;
+  const factory EnumDefinedInBlock2_Quit() = _$EnumDefinedInBlock2_QuitImpl;
 }
 
 /// @nodoc
-abstract class _$$EnumDefinedInBlock2_MoveCopyWith<$Res> {
-  factory _$$EnumDefinedInBlock2_MoveCopyWith(
-          _$EnumDefinedInBlock2_Move value, $Res Function(_$EnumDefinedInBlock2_Move) then) =
-      __$$EnumDefinedInBlock2_MoveCopyWithImpl<$Res>;
+abstract class _$$EnumDefinedInBlock2_MoveImplCopyWith<$Res> {
+  factory _$$EnumDefinedInBlock2_MoveImplCopyWith(
+          _$EnumDefinedInBlock2_MoveImpl value, $Res Function(_$EnumDefinedInBlock2_MoveImpl) then) =
+      __$$EnumDefinedInBlock2_MoveImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int x, int y});
 }
 
 /// @nodoc
-class __$$EnumDefinedInBlock2_MoveCopyWithImpl<$Res>
-    extends _$EnumDefinedInBlock2CopyWithImpl<$Res, _$EnumDefinedInBlock2_Move>
-    implements _$$EnumDefinedInBlock2_MoveCopyWith<$Res> {
-  __$$EnumDefinedInBlock2_MoveCopyWithImpl(
-      _$EnumDefinedInBlock2_Move _value, $Res Function(_$EnumDefinedInBlock2_Move) _then)
+class __$$EnumDefinedInBlock2_MoveImplCopyWithImpl<$Res>
+    extends _$EnumDefinedInBlock2CopyWithImpl<$Res, _$EnumDefinedInBlock2_MoveImpl>
+    implements _$$EnumDefinedInBlock2_MoveImplCopyWith<$Res> {
+  __$$EnumDefinedInBlock2_MoveImplCopyWithImpl(
+      _$EnumDefinedInBlock2_MoveImpl _value, $Res Function(_$EnumDefinedInBlock2_MoveImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2116,7 +2124,7 @@ class __$$EnumDefinedInBlock2_MoveCopyWithImpl<$Res>
     Object? x = null,
     Object? y = null,
   }) {
-    return _then(_$EnumDefinedInBlock2_Move(
+    return _then(_$EnumDefinedInBlock2_MoveImpl(
       x: null == x
           ? _value.x
           : x // ignore: cast_nullable_to_non_nullable
@@ -2131,8 +2139,8 @@ class __$$EnumDefinedInBlock2_MoveCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumDefinedInBlock2_Move implements EnumDefinedInBlock2_Move {
-  const _$EnumDefinedInBlock2_Move({required this.x, required this.y});
+class _$EnumDefinedInBlock2_MoveImpl implements EnumDefinedInBlock2_Move {
+  const _$EnumDefinedInBlock2_MoveImpl({required this.x, required this.y});
 
   @override
   final int x;
@@ -2148,7 +2156,7 @@ class _$EnumDefinedInBlock2_Move implements EnumDefinedInBlock2_Move {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumDefinedInBlock2_Move &&
+            other is _$EnumDefinedInBlock2_MoveImpl &&
             (identical(other.x, x) || other.x == x) &&
             (identical(other.y, y) || other.y == y));
   }
@@ -2159,8 +2167,8 @@ class _$EnumDefinedInBlock2_Move implements EnumDefinedInBlock2_Move {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumDefinedInBlock2_MoveCopyWith<_$EnumDefinedInBlock2_Move> get copyWith =>
-      __$$EnumDefinedInBlock2_MoveCopyWithImpl<_$EnumDefinedInBlock2_Move>(this, _$identity);
+  _$$EnumDefinedInBlock2_MoveImplCopyWith<_$EnumDefinedInBlock2_MoveImpl> get copyWith =>
+      __$$EnumDefinedInBlock2_MoveImplCopyWithImpl<_$EnumDefinedInBlock2_MoveImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2238,29 +2246,30 @@ class _$EnumDefinedInBlock2_Move implements EnumDefinedInBlock2_Move {
 }
 
 abstract class EnumDefinedInBlock2_Move implements EnumDefinedInBlock2 {
-  const factory EnumDefinedInBlock2_Move({required final int x, required final int y}) = _$EnumDefinedInBlock2_Move;
+  const factory EnumDefinedInBlock2_Move({required final int x, required final int y}) = _$EnumDefinedInBlock2_MoveImpl;
 
   int get x;
   int get y;
   @JsonKey(ignore: true)
-  _$$EnumDefinedInBlock2_MoveCopyWith<_$EnumDefinedInBlock2_Move> get copyWith => throw _privateConstructorUsedError;
+  _$$EnumDefinedInBlock2_MoveImplCopyWith<_$EnumDefinedInBlock2_MoveImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EnumDefinedInBlock2_WriteCopyWith<$Res> {
-  factory _$$EnumDefinedInBlock2_WriteCopyWith(
-          _$EnumDefinedInBlock2_Write value, $Res Function(_$EnumDefinedInBlock2_Write) then) =
-      __$$EnumDefinedInBlock2_WriteCopyWithImpl<$Res>;
+abstract class _$$EnumDefinedInBlock2_WriteImplCopyWith<$Res> {
+  factory _$$EnumDefinedInBlock2_WriteImplCopyWith(
+          _$EnumDefinedInBlock2_WriteImpl value, $Res Function(_$EnumDefinedInBlock2_WriteImpl) then) =
+      __$$EnumDefinedInBlock2_WriteImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String field0});
 }
 
 /// @nodoc
-class __$$EnumDefinedInBlock2_WriteCopyWithImpl<$Res>
-    extends _$EnumDefinedInBlock2CopyWithImpl<$Res, _$EnumDefinedInBlock2_Write>
-    implements _$$EnumDefinedInBlock2_WriteCopyWith<$Res> {
-  __$$EnumDefinedInBlock2_WriteCopyWithImpl(
-      _$EnumDefinedInBlock2_Write _value, $Res Function(_$EnumDefinedInBlock2_Write) _then)
+class __$$EnumDefinedInBlock2_WriteImplCopyWithImpl<$Res>
+    extends _$EnumDefinedInBlock2CopyWithImpl<$Res, _$EnumDefinedInBlock2_WriteImpl>
+    implements _$$EnumDefinedInBlock2_WriteImplCopyWith<$Res> {
+  __$$EnumDefinedInBlock2_WriteImplCopyWithImpl(
+      _$EnumDefinedInBlock2_WriteImpl _value, $Res Function(_$EnumDefinedInBlock2_WriteImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2268,7 +2277,7 @@ class __$$EnumDefinedInBlock2_WriteCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$EnumDefinedInBlock2_Write(
+    return _then(_$EnumDefinedInBlock2_WriteImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -2279,8 +2288,8 @@ class __$$EnumDefinedInBlock2_WriteCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumDefinedInBlock2_Write implements EnumDefinedInBlock2_Write {
-  const _$EnumDefinedInBlock2_Write(this.field0);
+class _$EnumDefinedInBlock2_WriteImpl implements EnumDefinedInBlock2_Write {
+  const _$EnumDefinedInBlock2_WriteImpl(this.field0);
 
   @override
   final String field0;
@@ -2294,7 +2303,7 @@ class _$EnumDefinedInBlock2_Write implements EnumDefinedInBlock2_Write {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumDefinedInBlock2_Write &&
+            other is _$EnumDefinedInBlock2_WriteImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -2304,8 +2313,8 @@ class _$EnumDefinedInBlock2_Write implements EnumDefinedInBlock2_Write {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumDefinedInBlock2_WriteCopyWith<_$EnumDefinedInBlock2_Write> get copyWith =>
-      __$$EnumDefinedInBlock2_WriteCopyWithImpl<_$EnumDefinedInBlock2_Write>(this, _$identity);
+  _$$EnumDefinedInBlock2_WriteImplCopyWith<_$EnumDefinedInBlock2_WriteImpl> get copyWith =>
+      __$$EnumDefinedInBlock2_WriteImplCopyWithImpl<_$EnumDefinedInBlock2_WriteImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2383,28 +2392,29 @@ class _$EnumDefinedInBlock2_Write implements EnumDefinedInBlock2_Write {
 }
 
 abstract class EnumDefinedInBlock2_Write implements EnumDefinedInBlock2 {
-  const factory EnumDefinedInBlock2_Write(final String field0) = _$EnumDefinedInBlock2_Write;
+  const factory EnumDefinedInBlock2_Write(final String field0) = _$EnumDefinedInBlock2_WriteImpl;
 
   String get field0;
   @JsonKey(ignore: true)
-  _$$EnumDefinedInBlock2_WriteCopyWith<_$EnumDefinedInBlock2_Write> get copyWith => throw _privateConstructorUsedError;
+  _$$EnumDefinedInBlock2_WriteImplCopyWith<_$EnumDefinedInBlock2_WriteImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EnumDefinedInBlock2_ChangeColorCopyWith<$Res> {
-  factory _$$EnumDefinedInBlock2_ChangeColorCopyWith(
-          _$EnumDefinedInBlock2_ChangeColor value, $Res Function(_$EnumDefinedInBlock2_ChangeColor) then) =
-      __$$EnumDefinedInBlock2_ChangeColorCopyWithImpl<$Res>;
+abstract class _$$EnumDefinedInBlock2_ChangeColorImplCopyWith<$Res> {
+  factory _$$EnumDefinedInBlock2_ChangeColorImplCopyWith(
+          _$EnumDefinedInBlock2_ChangeColorImpl value, $Res Function(_$EnumDefinedInBlock2_ChangeColorImpl) then) =
+      __$$EnumDefinedInBlock2_ChangeColorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0, int field1, int field2});
 }
 
 /// @nodoc
-class __$$EnumDefinedInBlock2_ChangeColorCopyWithImpl<$Res>
-    extends _$EnumDefinedInBlock2CopyWithImpl<$Res, _$EnumDefinedInBlock2_ChangeColor>
-    implements _$$EnumDefinedInBlock2_ChangeColorCopyWith<$Res> {
-  __$$EnumDefinedInBlock2_ChangeColorCopyWithImpl(
-      _$EnumDefinedInBlock2_ChangeColor _value, $Res Function(_$EnumDefinedInBlock2_ChangeColor) _then)
+class __$$EnumDefinedInBlock2_ChangeColorImplCopyWithImpl<$Res>
+    extends _$EnumDefinedInBlock2CopyWithImpl<$Res, _$EnumDefinedInBlock2_ChangeColorImpl>
+    implements _$$EnumDefinedInBlock2_ChangeColorImplCopyWith<$Res> {
+  __$$EnumDefinedInBlock2_ChangeColorImplCopyWithImpl(
+      _$EnumDefinedInBlock2_ChangeColorImpl _value, $Res Function(_$EnumDefinedInBlock2_ChangeColorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2414,7 +2424,7 @@ class __$$EnumDefinedInBlock2_ChangeColorCopyWithImpl<$Res>
     Object? field1 = null,
     Object? field2 = null,
   }) {
-    return _then(_$EnumDefinedInBlock2_ChangeColor(
+    return _then(_$EnumDefinedInBlock2_ChangeColorImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -2433,8 +2443,8 @@ class __$$EnumDefinedInBlock2_ChangeColorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumDefinedInBlock2_ChangeColor implements EnumDefinedInBlock2_ChangeColor {
-  const _$EnumDefinedInBlock2_ChangeColor(this.field0, this.field1, this.field2);
+class _$EnumDefinedInBlock2_ChangeColorImpl implements EnumDefinedInBlock2_ChangeColor {
+  const _$EnumDefinedInBlock2_ChangeColorImpl(this.field0, this.field1, this.field2);
 
   @override
   final int field0;
@@ -2452,7 +2462,7 @@ class _$EnumDefinedInBlock2_ChangeColor implements EnumDefinedInBlock2_ChangeCol
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumDefinedInBlock2_ChangeColor &&
+            other is _$EnumDefinedInBlock2_ChangeColorImpl &&
             (identical(other.field0, field0) || other.field0 == field0) &&
             (identical(other.field1, field1) || other.field1 == field1) &&
             (identical(other.field2, field2) || other.field2 == field2));
@@ -2464,8 +2474,8 @@ class _$EnumDefinedInBlock2_ChangeColor implements EnumDefinedInBlock2_ChangeCol
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumDefinedInBlock2_ChangeColorCopyWith<_$EnumDefinedInBlock2_ChangeColor> get copyWith =>
-      __$$EnumDefinedInBlock2_ChangeColorCopyWithImpl<_$EnumDefinedInBlock2_ChangeColor>(this, _$identity);
+  _$$EnumDefinedInBlock2_ChangeColorImplCopyWith<_$EnumDefinedInBlock2_ChangeColorImpl> get copyWith =>
+      __$$EnumDefinedInBlock2_ChangeColorImplCopyWithImpl<_$EnumDefinedInBlock2_ChangeColorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2544,13 +2554,13 @@ class _$EnumDefinedInBlock2_ChangeColor implements EnumDefinedInBlock2_ChangeCol
 
 abstract class EnumDefinedInBlock2_ChangeColor implements EnumDefinedInBlock2 {
   const factory EnumDefinedInBlock2_ChangeColor(final int field0, final int field1, final int field2) =
-      _$EnumDefinedInBlock2_ChangeColor;
+      _$EnumDefinedInBlock2_ChangeColorImpl;
 
   int get field0;
   int get field1;
   int get field2;
   @JsonKey(ignore: true)
-  _$$EnumDefinedInBlock2_ChangeColorCopyWith<_$EnumDefinedInBlock2_ChangeColor> get copyWith =>
+  _$$EnumDefinedInBlock2_ChangeColorImplCopyWith<_$EnumDefinedInBlock2_ChangeColorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2626,25 +2636,25 @@ class _$EnumDefinedInBlock3CopyWithImpl<$Res, $Val extends EnumDefinedInBlock3>
 }
 
 /// @nodoc
-abstract class _$$EnumDefinedInBlock3_QuitCopyWith<$Res> {
-  factory _$$EnumDefinedInBlock3_QuitCopyWith(
-          _$EnumDefinedInBlock3_Quit value, $Res Function(_$EnumDefinedInBlock3_Quit) then) =
-      __$$EnumDefinedInBlock3_QuitCopyWithImpl<$Res>;
+abstract class _$$EnumDefinedInBlock3_QuitImplCopyWith<$Res> {
+  factory _$$EnumDefinedInBlock3_QuitImplCopyWith(
+          _$EnumDefinedInBlock3_QuitImpl value, $Res Function(_$EnumDefinedInBlock3_QuitImpl) then) =
+      __$$EnumDefinedInBlock3_QuitImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$EnumDefinedInBlock3_QuitCopyWithImpl<$Res>
-    extends _$EnumDefinedInBlock3CopyWithImpl<$Res, _$EnumDefinedInBlock3_Quit>
-    implements _$$EnumDefinedInBlock3_QuitCopyWith<$Res> {
-  __$$EnumDefinedInBlock3_QuitCopyWithImpl(
-      _$EnumDefinedInBlock3_Quit _value, $Res Function(_$EnumDefinedInBlock3_Quit) _then)
+class __$$EnumDefinedInBlock3_QuitImplCopyWithImpl<$Res>
+    extends _$EnumDefinedInBlock3CopyWithImpl<$Res, _$EnumDefinedInBlock3_QuitImpl>
+    implements _$$EnumDefinedInBlock3_QuitImplCopyWith<$Res> {
+  __$$EnumDefinedInBlock3_QuitImplCopyWithImpl(
+      _$EnumDefinedInBlock3_QuitImpl _value, $Res Function(_$EnumDefinedInBlock3_QuitImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$EnumDefinedInBlock3_Quit implements EnumDefinedInBlock3_Quit {
-  const _$EnumDefinedInBlock3_Quit();
+class _$EnumDefinedInBlock3_QuitImpl implements EnumDefinedInBlock3_Quit {
+  const _$EnumDefinedInBlock3_QuitImpl();
 
   @override
   String toString() {
@@ -2653,7 +2663,7 @@ class _$EnumDefinedInBlock3_Quit implements EnumDefinedInBlock3_Quit {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$EnumDefinedInBlock3_Quit);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$EnumDefinedInBlock3_QuitImpl);
   }
 
   @override
@@ -2735,24 +2745,24 @@ class _$EnumDefinedInBlock3_Quit implements EnumDefinedInBlock3_Quit {
 }
 
 abstract class EnumDefinedInBlock3_Quit implements EnumDefinedInBlock3 {
-  const factory EnumDefinedInBlock3_Quit() = _$EnumDefinedInBlock3_Quit;
+  const factory EnumDefinedInBlock3_Quit() = _$EnumDefinedInBlock3_QuitImpl;
 }
 
 /// @nodoc
-abstract class _$$EnumDefinedInBlock3_MoveCopyWith<$Res> {
-  factory _$$EnumDefinedInBlock3_MoveCopyWith(
-          _$EnumDefinedInBlock3_Move value, $Res Function(_$EnumDefinedInBlock3_Move) then) =
-      __$$EnumDefinedInBlock3_MoveCopyWithImpl<$Res>;
+abstract class _$$EnumDefinedInBlock3_MoveImplCopyWith<$Res> {
+  factory _$$EnumDefinedInBlock3_MoveImplCopyWith(
+          _$EnumDefinedInBlock3_MoveImpl value, $Res Function(_$EnumDefinedInBlock3_MoveImpl) then) =
+      __$$EnumDefinedInBlock3_MoveImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int x, int y});
 }
 
 /// @nodoc
-class __$$EnumDefinedInBlock3_MoveCopyWithImpl<$Res>
-    extends _$EnumDefinedInBlock3CopyWithImpl<$Res, _$EnumDefinedInBlock3_Move>
-    implements _$$EnumDefinedInBlock3_MoveCopyWith<$Res> {
-  __$$EnumDefinedInBlock3_MoveCopyWithImpl(
-      _$EnumDefinedInBlock3_Move _value, $Res Function(_$EnumDefinedInBlock3_Move) _then)
+class __$$EnumDefinedInBlock3_MoveImplCopyWithImpl<$Res>
+    extends _$EnumDefinedInBlock3CopyWithImpl<$Res, _$EnumDefinedInBlock3_MoveImpl>
+    implements _$$EnumDefinedInBlock3_MoveImplCopyWith<$Res> {
+  __$$EnumDefinedInBlock3_MoveImplCopyWithImpl(
+      _$EnumDefinedInBlock3_MoveImpl _value, $Res Function(_$EnumDefinedInBlock3_MoveImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2761,7 +2771,7 @@ class __$$EnumDefinedInBlock3_MoveCopyWithImpl<$Res>
     Object? x = null,
     Object? y = null,
   }) {
-    return _then(_$EnumDefinedInBlock3_Move(
+    return _then(_$EnumDefinedInBlock3_MoveImpl(
       x: null == x
           ? _value.x
           : x // ignore: cast_nullable_to_non_nullable
@@ -2776,8 +2786,8 @@ class __$$EnumDefinedInBlock3_MoveCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumDefinedInBlock3_Move implements EnumDefinedInBlock3_Move {
-  const _$EnumDefinedInBlock3_Move({required this.x, required this.y});
+class _$EnumDefinedInBlock3_MoveImpl implements EnumDefinedInBlock3_Move {
+  const _$EnumDefinedInBlock3_MoveImpl({required this.x, required this.y});
 
   @override
   final int x;
@@ -2793,7 +2803,7 @@ class _$EnumDefinedInBlock3_Move implements EnumDefinedInBlock3_Move {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumDefinedInBlock3_Move &&
+            other is _$EnumDefinedInBlock3_MoveImpl &&
             (identical(other.x, x) || other.x == x) &&
             (identical(other.y, y) || other.y == y));
   }
@@ -2804,8 +2814,8 @@ class _$EnumDefinedInBlock3_Move implements EnumDefinedInBlock3_Move {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumDefinedInBlock3_MoveCopyWith<_$EnumDefinedInBlock3_Move> get copyWith =>
-      __$$EnumDefinedInBlock3_MoveCopyWithImpl<_$EnumDefinedInBlock3_Move>(this, _$identity);
+  _$$EnumDefinedInBlock3_MoveImplCopyWith<_$EnumDefinedInBlock3_MoveImpl> get copyWith =>
+      __$$EnumDefinedInBlock3_MoveImplCopyWithImpl<_$EnumDefinedInBlock3_MoveImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2883,29 +2893,30 @@ class _$EnumDefinedInBlock3_Move implements EnumDefinedInBlock3_Move {
 }
 
 abstract class EnumDefinedInBlock3_Move implements EnumDefinedInBlock3 {
-  const factory EnumDefinedInBlock3_Move({required final int x, required final int y}) = _$EnumDefinedInBlock3_Move;
+  const factory EnumDefinedInBlock3_Move({required final int x, required final int y}) = _$EnumDefinedInBlock3_MoveImpl;
 
   int get x;
   int get y;
   @JsonKey(ignore: true)
-  _$$EnumDefinedInBlock3_MoveCopyWith<_$EnumDefinedInBlock3_Move> get copyWith => throw _privateConstructorUsedError;
+  _$$EnumDefinedInBlock3_MoveImplCopyWith<_$EnumDefinedInBlock3_MoveImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EnumDefinedInBlock3_WriteCopyWith<$Res> {
-  factory _$$EnumDefinedInBlock3_WriteCopyWith(
-          _$EnumDefinedInBlock3_Write value, $Res Function(_$EnumDefinedInBlock3_Write) then) =
-      __$$EnumDefinedInBlock3_WriteCopyWithImpl<$Res>;
+abstract class _$$EnumDefinedInBlock3_WriteImplCopyWith<$Res> {
+  factory _$$EnumDefinedInBlock3_WriteImplCopyWith(
+          _$EnumDefinedInBlock3_WriteImpl value, $Res Function(_$EnumDefinedInBlock3_WriteImpl) then) =
+      __$$EnumDefinedInBlock3_WriteImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String field0});
 }
 
 /// @nodoc
-class __$$EnumDefinedInBlock3_WriteCopyWithImpl<$Res>
-    extends _$EnumDefinedInBlock3CopyWithImpl<$Res, _$EnumDefinedInBlock3_Write>
-    implements _$$EnumDefinedInBlock3_WriteCopyWith<$Res> {
-  __$$EnumDefinedInBlock3_WriteCopyWithImpl(
-      _$EnumDefinedInBlock3_Write _value, $Res Function(_$EnumDefinedInBlock3_Write) _then)
+class __$$EnumDefinedInBlock3_WriteImplCopyWithImpl<$Res>
+    extends _$EnumDefinedInBlock3CopyWithImpl<$Res, _$EnumDefinedInBlock3_WriteImpl>
+    implements _$$EnumDefinedInBlock3_WriteImplCopyWith<$Res> {
+  __$$EnumDefinedInBlock3_WriteImplCopyWithImpl(
+      _$EnumDefinedInBlock3_WriteImpl _value, $Res Function(_$EnumDefinedInBlock3_WriteImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2913,7 +2924,7 @@ class __$$EnumDefinedInBlock3_WriteCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$EnumDefinedInBlock3_Write(
+    return _then(_$EnumDefinedInBlock3_WriteImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -2924,8 +2935,8 @@ class __$$EnumDefinedInBlock3_WriteCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumDefinedInBlock3_Write implements EnumDefinedInBlock3_Write {
-  const _$EnumDefinedInBlock3_Write(this.field0);
+class _$EnumDefinedInBlock3_WriteImpl implements EnumDefinedInBlock3_Write {
+  const _$EnumDefinedInBlock3_WriteImpl(this.field0);
 
   @override
   final String field0;
@@ -2939,7 +2950,7 @@ class _$EnumDefinedInBlock3_Write implements EnumDefinedInBlock3_Write {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumDefinedInBlock3_Write &&
+            other is _$EnumDefinedInBlock3_WriteImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -2949,8 +2960,8 @@ class _$EnumDefinedInBlock3_Write implements EnumDefinedInBlock3_Write {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumDefinedInBlock3_WriteCopyWith<_$EnumDefinedInBlock3_Write> get copyWith =>
-      __$$EnumDefinedInBlock3_WriteCopyWithImpl<_$EnumDefinedInBlock3_Write>(this, _$identity);
+  _$$EnumDefinedInBlock3_WriteImplCopyWith<_$EnumDefinedInBlock3_WriteImpl> get copyWith =>
+      __$$EnumDefinedInBlock3_WriteImplCopyWithImpl<_$EnumDefinedInBlock3_WriteImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -3028,28 +3039,29 @@ class _$EnumDefinedInBlock3_Write implements EnumDefinedInBlock3_Write {
 }
 
 abstract class EnumDefinedInBlock3_Write implements EnumDefinedInBlock3 {
-  const factory EnumDefinedInBlock3_Write(final String field0) = _$EnumDefinedInBlock3_Write;
+  const factory EnumDefinedInBlock3_Write(final String field0) = _$EnumDefinedInBlock3_WriteImpl;
 
   String get field0;
   @JsonKey(ignore: true)
-  _$$EnumDefinedInBlock3_WriteCopyWith<_$EnumDefinedInBlock3_Write> get copyWith => throw _privateConstructorUsedError;
+  _$$EnumDefinedInBlock3_WriteImplCopyWith<_$EnumDefinedInBlock3_WriteImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EnumDefinedInBlock3_ChangeColorCopyWith<$Res> {
-  factory _$$EnumDefinedInBlock3_ChangeColorCopyWith(
-          _$EnumDefinedInBlock3_ChangeColor value, $Res Function(_$EnumDefinedInBlock3_ChangeColor) then) =
-      __$$EnumDefinedInBlock3_ChangeColorCopyWithImpl<$Res>;
+abstract class _$$EnumDefinedInBlock3_ChangeColorImplCopyWith<$Res> {
+  factory _$$EnumDefinedInBlock3_ChangeColorImplCopyWith(
+          _$EnumDefinedInBlock3_ChangeColorImpl value, $Res Function(_$EnumDefinedInBlock3_ChangeColorImpl) then) =
+      __$$EnumDefinedInBlock3_ChangeColorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0, int field1, int field2});
 }
 
 /// @nodoc
-class __$$EnumDefinedInBlock3_ChangeColorCopyWithImpl<$Res>
-    extends _$EnumDefinedInBlock3CopyWithImpl<$Res, _$EnumDefinedInBlock3_ChangeColor>
-    implements _$$EnumDefinedInBlock3_ChangeColorCopyWith<$Res> {
-  __$$EnumDefinedInBlock3_ChangeColorCopyWithImpl(
-      _$EnumDefinedInBlock3_ChangeColor _value, $Res Function(_$EnumDefinedInBlock3_ChangeColor) _then)
+class __$$EnumDefinedInBlock3_ChangeColorImplCopyWithImpl<$Res>
+    extends _$EnumDefinedInBlock3CopyWithImpl<$Res, _$EnumDefinedInBlock3_ChangeColorImpl>
+    implements _$$EnumDefinedInBlock3_ChangeColorImplCopyWith<$Res> {
+  __$$EnumDefinedInBlock3_ChangeColorImplCopyWithImpl(
+      _$EnumDefinedInBlock3_ChangeColorImpl _value, $Res Function(_$EnumDefinedInBlock3_ChangeColorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -3059,7 +3071,7 @@ class __$$EnumDefinedInBlock3_ChangeColorCopyWithImpl<$Res>
     Object? field1 = null,
     Object? field2 = null,
   }) {
-    return _then(_$EnumDefinedInBlock3_ChangeColor(
+    return _then(_$EnumDefinedInBlock3_ChangeColorImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -3078,8 +3090,8 @@ class __$$EnumDefinedInBlock3_ChangeColorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumDefinedInBlock3_ChangeColor implements EnumDefinedInBlock3_ChangeColor {
-  const _$EnumDefinedInBlock3_ChangeColor(this.field0, this.field1, this.field2);
+class _$EnumDefinedInBlock3_ChangeColorImpl implements EnumDefinedInBlock3_ChangeColor {
+  const _$EnumDefinedInBlock3_ChangeColorImpl(this.field0, this.field1, this.field2);
 
   @override
   final int field0;
@@ -3097,7 +3109,7 @@ class _$EnumDefinedInBlock3_ChangeColor implements EnumDefinedInBlock3_ChangeCol
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumDefinedInBlock3_ChangeColor &&
+            other is _$EnumDefinedInBlock3_ChangeColorImpl &&
             (identical(other.field0, field0) || other.field0 == field0) &&
             (identical(other.field1, field1) || other.field1 == field1) &&
             (identical(other.field2, field2) || other.field2 == field2));
@@ -3109,8 +3121,8 @@ class _$EnumDefinedInBlock3_ChangeColor implements EnumDefinedInBlock3_ChangeCol
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumDefinedInBlock3_ChangeColorCopyWith<_$EnumDefinedInBlock3_ChangeColor> get copyWith =>
-      __$$EnumDefinedInBlock3_ChangeColorCopyWithImpl<_$EnumDefinedInBlock3_ChangeColor>(this, _$identity);
+  _$$EnumDefinedInBlock3_ChangeColorImplCopyWith<_$EnumDefinedInBlock3_ChangeColorImpl> get copyWith =>
+      __$$EnumDefinedInBlock3_ChangeColorImplCopyWithImpl<_$EnumDefinedInBlock3_ChangeColorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -3189,12 +3201,12 @@ class _$EnumDefinedInBlock3_ChangeColor implements EnumDefinedInBlock3_ChangeCol
 
 abstract class EnumDefinedInBlock3_ChangeColor implements EnumDefinedInBlock3 {
   const factory EnumDefinedInBlock3_ChangeColor(final int field0, final int field1, final int field2) =
-      _$EnumDefinedInBlock3_ChangeColor;
+      _$EnumDefinedInBlock3_ChangeColorImpl;
 
   int get field0;
   int get field1;
   int get field2;
   @JsonKey(ignore: true)
-  _$$EnumDefinedInBlock3_ChangeColorCopyWith<_$EnumDefinedInBlock3_ChangeColor> get copyWith =>
+  _$$EnumDefinedInBlock3_ChangeColorImplCopyWith<_$EnumDefinedInBlock3_ChangeColorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

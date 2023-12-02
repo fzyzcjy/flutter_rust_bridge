@@ -70,26 +70,19 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
 
   /// Similar to [executeNormal], except that this will return synchronously
   @protected
-  S executeSync<S>(FlutterRustBridgeSyncTask task) {
+  S executeSync<S, E extends Object>(FlutterRustBridgeSyncTask<S, E> task) {
     final WireSyncReturn syncReturn;
     try {
       syncReturn = task.callFfi();
     } catch (err, st) {
-      throw FfiException('EXECUTE_SYNC_ABORT', '$err', st);
+      throw PanicException('EXECUTE_SYNC_ABORT $err $st');
     }
     try {
       final syncReturnAsDartObject = wireSyncReturnIntoDart(syncReturn);
-      assert(syncReturnAsDartObject.length == 2);
-      final rawReturn = syncReturnAsDartObject[0];
-      final isSuccess = syncReturnAsDartObject[1];
-      if (isSuccess) {
-        return task.parseSuccessData(rawReturn);
-      } else {
-        throw FfiException('EXECUTE_SYNC', rawReturn as String, null);
-      }
-    } catch (err, st) {
-      if (err is FfiException) rethrow;
-      throw FfiException('EXECUTE_SYNC_ABORT', '$err', st);
+      return _transformRust2DartMessage(syncReturnAsDartObject,
+          task.parseSuccessData, task.parseErrorData, wire2apiPanicError);
+    } catch (err) {
+      rethrow;
     } finally {
       inner.free_WireSyncReturn(syncReturn);
     }
@@ -189,7 +182,8 @@ class FlutterRustBridgeTask<S, E extends Object>
 
 /// A task to call FFI function, but it is synchronous.
 @immutable
-class FlutterRustBridgeSyncTask<S, E> extends FlutterRustBridgeBaseTask {
+class FlutterRustBridgeSyncTask<S, E extends Object>
+    extends FlutterRustBridgeBaseTask {
   /// The underlying function to call FFI function, usually the generated wire function
   final WireSyncReturn Function() callFfi;
 
@@ -231,6 +225,9 @@ class FrbAnyhowException implements FrbException {
   final String anyhow;
 
   FrbAnyhowException(this.anyhow);
+
+  @override
+  String toString() => 'FrbAnyhowException($anyhow)';
 }
 
 abstract class FrbBacktracedException extends FrbException {
