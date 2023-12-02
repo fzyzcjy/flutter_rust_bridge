@@ -1,9 +1,9 @@
-use std::future::Future;
-use std::panic::UnwindSafe;
 use crate::generalized_isolate::IntoDart;
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::platform_types::{MessagePort, WireSyncReturn};
 use crate::rust2dart::context::TaskRust2DartContext;
+use std::future::Future;
+use std::panic::UnwindSafe;
 
 /// Provide your own handler to customize how to execute your function calls, etc.
 pub trait Handler {
@@ -17,8 +17,11 @@ pub trait Handler {
     ///
     /// If a Rust function is marked `sync`, it must be called with
     /// [`wrap_sync`](Handler::wrap_sync) instead.
-    fn wrap<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(&self, task_info: TaskInfo, prepare: PrepareFn)
-    where
+    fn wrap<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(
+        &self,
+        task_info: TaskInfo,
+        prepare: PrepareFn,
+    ) where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce(TaskContext) -> Result<TaskRetDirect, Er> + Send + UnwindSafe + 'static,
         TaskRetDirect: IntoIntoDart<TaskRetData>,
@@ -86,11 +89,15 @@ impl<T> TaskRetFutTrait for T {}
 
 /// A context for task execution
 pub struct TaskContext {
-    pub(crate) rust2dart_context: TaskRust2DartContext,
+    rust2dart_context: TaskRust2DartContext,
 }
 
 impl TaskContext {
     pub fn new(rust2dart_context: TaskRust2DartContext) -> Self {
         Self { rust2dart_context }
+    }
+
+    pub fn rust2dart_context(&self) -> &TaskRust2DartContext {
+        &self.rust2dart_context
     }
 }
