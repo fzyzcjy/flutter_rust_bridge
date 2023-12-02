@@ -1,1 +1,1 @@
-mod worker_pool;
+pub(crate) mod worker_pool;

@@ -3,5 +3,5 @@ mod misc;
 mod platform_types;
 mod rust2dart;
 mod generalized_isolate;
-mod third_party;
-mod thread_pool;
+pub(crate) mod third_party;
+pub(crate) mod thread_pool;
