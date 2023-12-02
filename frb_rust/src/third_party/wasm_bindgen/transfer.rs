@@ -1,3 +1,7 @@
+//! Copied and modified from the wasm_bindgen raytrace-parallel example
+//!
+//! File: https://github.com/rustwasm/wasm-bindgen/blob/main/examples/raytrace-parallel/src/pool.rs
+
 use crate::ffi::web::*;
 use js_sys::{global, Array};
 use std::iter::FromIterator;

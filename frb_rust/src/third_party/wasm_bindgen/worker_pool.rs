@@ -1,4 +1,4 @@
-//! Original: wasm_bindgen raytrace-parallel example
+//! Copied and modified from the wasm_bindgen raytrace-parallel example
 //!
 //! File: https://github.com/rustwasm/wasm-bindgen/blob/main/examples/raytrace-parallel/src/pool.rs
 
