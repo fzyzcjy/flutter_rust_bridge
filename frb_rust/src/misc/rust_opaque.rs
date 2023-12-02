@@ -1,16 +1,6 @@
-#[cfg(wasm)]
-mod web;
-
 use std::{mem, ops};
 use std::sync::Arc;
 use allo_isolate::IntoDart;
-#[cfg(wasm)]
-pub use web::*;
-
-#[cfg(not(wasm))]
-mod io;
-#[cfg(not(wasm))]
-pub use io::*;
 use crate::platform_types::DartAbi;
 
 /// Macro helper to instantiate an `RustOpaque<dyn Trait>`, as Rust does not
