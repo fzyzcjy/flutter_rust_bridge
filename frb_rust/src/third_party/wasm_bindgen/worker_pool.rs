@@ -144,7 +144,8 @@ impl WorkerPool {
     ///
     /// Returns any error that may happen while a JS web worker is created and a
     /// message is sent to it.
-    fn execute(&self, closure: TransferClosure<JsValue>) -> Result<Worker, JsValue> {
+    // NOTE: It is originally named `execute`, but rename to align with crate `threadpool`
+    fn execute_raw(&self, closure: TransferClosure<JsValue>) -> Result<Worker, JsValue> {
         let worker = self.worker()?;
         closure.apply(&worker).map(|_| worker)
     }
@@ -199,8 +200,9 @@ impl WorkerPool {
     /// Certain types in [js_sys] and [web_sys] are transferrable, for which [Send]
     /// can be unsafely implemented **only if** they are passed to the transferrables of
     /// a `post_message`. Examples are `Buffer`s, `MessagePort`s, etc...
-    pub fn run(&self, closure: TransferClosure<JsValue>) -> Result<(), JsValue> {
-        let worker = self.execute(closure)?;
+    // NOTE: It is originally named `run`, but rename to align with crate `threadpool`
+    pub fn execute(&self, closure: TransferClosure<JsValue>) -> Result<(), JsValue> {
+        let worker = self.execute_raw(closure)?;
         self.reclaim_on_message(&worker);
         Ok(())
     }
