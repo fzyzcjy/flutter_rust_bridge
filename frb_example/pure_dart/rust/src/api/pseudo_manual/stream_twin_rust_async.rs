@@ -4,8 +4,9 @@
 
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync"]}
 
+use crate::frb_generated::FLUTTER_RUST_BRIDGE_HANDLER;
 use anyhow::anyhow;
-use flutter_rust_bridge::StreamSink;
+use flutter_rust_bridge::{transfer, StreamSink};
 
 pub async fn func_stream_return_error_twin_rust_async(
     _sink: StreamSink<String>,
@@ -45,7 +46,8 @@ pub async fn handle_stream_sink_at_1_twin_rust_async(
     max: u32,
     sink: StreamSink<LogTwinRustAsync>,
 ) {
-    std::thread::spawn(move || handle_stream_inner(key, max, sink));
+    (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool())
+        .execute(transfer!(|| { handle_stream_inner(key, max, sink) }));
 }
 
 pub async fn handle_stream_sink_at_2_twin_rust_async(
@@ -53,7 +55,8 @@ pub async fn handle_stream_sink_at_2_twin_rust_async(
     sink: StreamSink<LogTwinRustAsync>,
     max: u32,
 ) {
-    std::thread::spawn(move || handle_stream_inner(key, max, sink));
+    (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool())
+        .execute(transfer!(|| { handle_stream_inner(key, max, sink) }));
 }
 
 pub async fn handle_stream_sink_at_3_twin_rust_async(
@@ -61,7 +64,8 @@ pub async fn handle_stream_sink_at_3_twin_rust_async(
     key: u32,
     max: u32,
 ) {
-    std::thread::spawn(move || handle_stream_inner(key, max, sink));
+    (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool())
+        .execute(transfer!(|| { handle_stream_inner(key, max, sink) }));
 }
 
 fn handle_stream_inner(key: u32, max: u32, sink: StreamSink<LogTwinRustAsync>) {
