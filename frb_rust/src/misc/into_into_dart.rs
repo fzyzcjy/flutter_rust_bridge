@@ -10,10 +10,10 @@ pub trait IntoIntoDart<D: IntoDart> {
 }
 
 impl<T, D> IntoIntoDart<Vec<D>> for Vec<T>
-where
-    T: IntoIntoDart<D>,
-    Vec<D>: IntoDart,
-    D: IntoDart,
+    where
+        T: IntoIntoDart<D>,
+        Vec<D>: IntoDart,
+        D: IntoDart,
 {
     fn into_into_dart(self) -> Vec<D> {
         self.into_iter().map(|e| e.into_into_dart()).collect()
@@ -21,9 +21,9 @@ where
 }
 
 impl<T, D> IntoIntoDart<Option<D>> for Option<T>
-where
-    T: IntoIntoDart<D>,
-    D: IntoDart,
+    where
+        T: IntoIntoDart<D>,
+        D: IntoDart,
 {
     fn into_into_dart(self) -> Option<D> {
         self.map(|e| e.into_into_dart())
@@ -31,8 +31,8 @@ where
 }
 
 impl<T> IntoIntoDart<RustOpaque<T>> for RustOpaque<T>
-where
-    T: DartSafe,
+    where
+        T: DartSafe,
 {
     fn into_into_dart(self) -> RustOpaque<T> {
         self
@@ -40,10 +40,10 @@ where
 }
 
 impl<T, D> IntoIntoDart<ZeroCopyBuffer<D>> for ZeroCopyBuffer<T>
-where
-    T: IntoIntoDart<D>,
-    D: IntoDart,
-    ZeroCopyBuffer<D>: IntoDart,
+    where
+        T: IntoIntoDart<D>,
+        D: IntoDart,
+        ZeroCopyBuffer<D>: IntoDart,
 {
     fn into_into_dart(self) -> ZeroCopyBuffer<D> {
         ZeroCopyBuffer(self.0.into_into_dart())
@@ -51,9 +51,9 @@ where
 }
 
 impl<T, const C: usize> IntoIntoDart<[T; C]> for [T; C]
-where
-    T: IntoDart,
-    [T; C]: IntoDart,
+    where
+        T: IntoDart,
+        [T; C]: IntoDart,
 {
     fn into_into_dart(self) -> [T; C] {
         self
@@ -61,8 +61,8 @@ where
 }
 
 impl<T> IntoIntoDart<T> for Box<T>
-where
-    T: IntoDart,
+    where
+        T: IntoDart,
 {
     fn into_into_dart(self) -> T {
         *self
@@ -71,24 +71,24 @@ where
 
 // These tuple impls should probably be a macro, but that is not easily possible with macro_rules because of the field access
 impl<A, AD, B, BD> IntoIntoDart<(AD, BD)> for (A, B)
-where
-    A: IntoIntoDart<AD>,
-    AD: IntoDart,
-    B: IntoIntoDart<BD>,
-    BD: IntoDart,
+    where
+        A: IntoIntoDart<AD>,
+        AD: IntoDart,
+        B: IntoIntoDart<BD>,
+        BD: IntoDart,
 {
     fn into_into_dart(self) -> (AD, BD) {
         (self.0.into_into_dart(), self.1.into_into_dart())
     }
 }
 impl<A, AD, B, BD, C, CD> IntoIntoDart<(AD, BD, CD)> for (A, B, C)
-where
-    A: IntoIntoDart<AD>,
-    AD: IntoDart,
-    B: IntoIntoDart<BD>,
-    BD: IntoDart,
-    C: IntoIntoDart<CD>,
-    CD: IntoDart,
+    where
+        A: IntoIntoDart<AD>,
+        AD: IntoDart,
+        B: IntoIntoDart<BD>,
+        BD: IntoDart,
+        C: IntoIntoDart<CD>,
+        CD: IntoDart,
 {
     fn into_into_dart(self) -> (AD, BD, CD) {
         (
@@ -99,15 +99,15 @@ where
     }
 }
 impl<A, AD, B, BD, C, CD, D, DD> IntoIntoDart<(AD, BD, CD, DD)> for (A, B, C, D)
-where
-    A: IntoIntoDart<AD>,
-    AD: IntoDart,
-    B: IntoIntoDart<BD>,
-    BD: IntoDart,
-    C: IntoIntoDart<CD>,
-    CD: IntoDart,
-    D: IntoIntoDart<DD>,
-    DD: IntoDart,
+    where
+        A: IntoIntoDart<AD>,
+        AD: IntoDart,
+        B: IntoIntoDart<BD>,
+        BD: IntoDart,
+        C: IntoIntoDart<CD>,
+        CD: IntoDart,
+        D: IntoIntoDart<DD>,
+        DD: IntoDart,
 {
     fn into_into_dart(self) -> (AD, BD, CD, DD) {
         (
@@ -119,17 +119,17 @@ where
     }
 }
 impl<A, AD, B, BD, C, CD, D, DD, E, ED> IntoIntoDart<(AD, BD, CD, DD, ED)> for (A, B, C, D, E)
-where
-    A: IntoIntoDart<AD>,
-    AD: IntoDart,
-    B: IntoIntoDart<BD>,
-    BD: IntoDart,
-    C: IntoIntoDart<CD>,
-    CD: IntoDart,
-    D: IntoIntoDart<DD>,
-    DD: IntoDart,
-    E: IntoIntoDart<ED>,
-    ED: IntoDart,
+    where
+        A: IntoIntoDart<AD>,
+        AD: IntoDart,
+        B: IntoIntoDart<BD>,
+        BD: IntoDart,
+        C: IntoIntoDart<CD>,
+        CD: IntoDart,
+        D: IntoIntoDart<DD>,
+        DD: IntoDart,
+        E: IntoIntoDart<ED>,
+        ED: IntoDart,
 {
     fn into_into_dart(self) -> (AD, BD, CD, DD, ED) {
         (
