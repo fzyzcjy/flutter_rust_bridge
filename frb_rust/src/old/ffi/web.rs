@@ -3,7 +3,6 @@ use super::MessagePort;
 use crate::support;
 pub use crate::wasm_bindgen_src::transfer::*;
 pub use crate::wasm_bindgen_src::transfer::*;
-use crate::DartOpaque;
 use crate::DartSafe;
 use crate::RustOpaque;
 pub use js_sys;
@@ -228,29 +227,3 @@ pub unsafe fn drop_dart_object(ptr: usize) {
     drop(support::box_from_leak_ptr::<JsValue>(ptr as _));
 }
 
-#[derive(Debug)]
-pub struct DartOpaqueBase {
-    inner: Box<JsValue>,
-    drop_port: Option<String>,
-}
-
-impl DartOpaqueBase {
-    pub fn new(handle: JsValue, port: Option<JsValue>) -> Self {
-        Self {
-            inner: Box::new(handle),
-            drop_port: port.map(|p| p.dyn_ref::<BroadcastChannel>().unwrap().name()),
-        }
-    }
-
-    pub fn unwrap(self) -> JsValue {
-        *self.inner
-    }
-
-    pub fn into_raw(self) -> *mut JsValue {
-        Box::into_raw(self.inner)
-    }
-
-    pub fn channel(&self) -> Option<Channel> {
-        Some(Channel::new(PortLike::broadcast(self.drop_port.as_ref()?)))
-    }
-}
