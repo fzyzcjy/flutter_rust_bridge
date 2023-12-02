@@ -1,4 +1,4 @@
-use dart_sys::Dart_PersistentHandle;
+use dart_sys::{Dart_DeletePersistentHandle_DL, Dart_PersistentHandle};
 use crate::platform_types::MessagePort;
 
 pub type OpaqueMessagePort = i64;
@@ -31,3 +31,34 @@ impl DartOpaqueBase {
         Some(Channel::new(self.drop_port?))
     }
 }
+
+#[derive(Debug)]
+/// Option for correct drop.
+pub struct DartHandleWrap(Option<Dart_PersistentHandle>);
+
+impl DartHandleWrap {
+    pub fn from_raw(ptr: Dart_PersistentHandle) -> Self {
+        Self(Some(ptr))
+    }
+
+    pub fn into_raw(mut self) -> Dart_PersistentHandle {
+        self.0.take().unwrap()
+    }
+}
+
+impl From<DartHandleWrap> for Dart_PersistentHandle {
+    fn from(warp: DartHandleWrap) -> Self {
+        warp.into_raw()
+    }
+}
+
+impl Drop for DartHandleWrap {
+    fn drop(&mut self) {
+        if let Some(inner) = self.0 {
+            unsafe {
+                Dart_DeletePersistentHandle_DL.expect("dart_api_dl has not been initialized")(inner)
+            }
+        }
+    }
+}
+

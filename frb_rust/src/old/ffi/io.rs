@@ -83,34 +83,3 @@ pub unsafe extern "C" fn init_frb_dart_api_dl(data: *mut c_void) -> isize {
 pub unsafe extern "C" fn free_wire_sync_return(ptr: WireSyncReturn) {
     let _ = box_from_leak_ptr(ptr);
 }
-
-#[derive(Debug)]
-/// Option for correct drop.
-pub struct DartHandleWrap(Option<Dart_PersistentHandle>);
-
-impl DartHandleWrap {
-    pub fn from_raw(ptr: Dart_PersistentHandle) -> Self {
-        Self(Some(ptr))
-    }
-
-    pub fn into_raw(mut self) -> Dart_PersistentHandle {
-        self.0.take().unwrap()
-    }
-}
-
-impl From<DartHandleWrap> for Dart_PersistentHandle {
-    fn from(warp: DartHandleWrap) -> Self {
-        warp.into_raw()
-    }
-}
-
-impl Drop for DartHandleWrap {
-    fn drop(&mut self) {
-        if let Some(inner) = self.0 {
-            unsafe {
-                Dart_DeletePersistentHandle_DL.expect("dart_api_dl has not been initialized")(inner)
-            }
-        }
-    }
-}
-
