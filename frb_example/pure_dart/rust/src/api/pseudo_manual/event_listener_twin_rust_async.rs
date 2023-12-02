@@ -5,8 +5,8 @@
 // event listener test
 
 use anyhow::{anyhow, Result};
-use flutter_rust_bridge::support::lazy_static;
 use flutter_rust_bridge::{frb, StreamSink};
+use lazy_static::lazy_static;
 use std::sync::Mutex;
 
 lazy_static! {

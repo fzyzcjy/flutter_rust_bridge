@@ -207,6 +207,7 @@ dependencies = [
  "chrono",
  "flutter_rust_bridge",
  "frb_example_pure_dart_exapmle_external_lib",
+ "lazy_static",
  "log",
  "uuid",
  "wasm-bindgen",

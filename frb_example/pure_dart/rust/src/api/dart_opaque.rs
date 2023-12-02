@@ -1,7 +1,7 @@
 #![allow(unused)]
 
-use flutter_rust_bridge::support::lazy_static;
 use flutter_rust_bridge::DartOpaque;
+use lazy_static::lazy_static;
 use std::sync::Mutex;
 
 // TODO about sync

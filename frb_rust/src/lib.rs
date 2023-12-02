@@ -12,6 +12,12 @@ pub(crate) mod for_generated;
 pub(crate) mod rust_async;
 pub(crate) mod web_transfer;
 
+pub use crate::dart_opaque::DartOpaque;
+pub use crate::generalized_isolate::{IntoDart, ZeroCopyBuffer};
+pub use crate::handler::handler::Handler;
 pub use crate::misc::into_into_dart::IntoIntoDart;
+pub use crate::misc::rust_opaque::DartSafe;
+pub use crate::misc::rust_opaque::RustOpaque;
 pub use crate::platform_types::DartAbi;
+pub use crate::rust2dart::stream_sink::StreamSink;
 pub use flutter_rust_bridge_macros::frb;
