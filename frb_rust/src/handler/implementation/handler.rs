@@ -11,6 +11,7 @@ use crate::handler::implementation::executor::ThreadPoolExecutor;
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::platform_types::WireSyncReturn;
 use crate::rust2dart::action::Rust2DartAction;
+use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
 
 /// The default handler used by the generated code.
 pub type DefaultHandler =
@@ -97,7 +98,10 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
             catch_unwind_result
                 .unwrap_or_else(|error| self.error_handler.handle_error_sync(Error::Panic(error)).leak())
         })
-            .unwrap_or_else(|_| wire_sync_from_data(None::<()>, Rust2DartAction::Panic))
+            // Deliberately construct simplest possible WireSyncReturn object
+            // instead of more realistic things like `WireSyncReturnSrc::new(Panic, ...)`.
+            // See comments in [wrap] for why.
+            .unwrap_or_else(|_| WireSyncReturnSrc::new_raw(().into_dart()).leak())
     }
 
     #[cfg(feature = "rust-async")]
