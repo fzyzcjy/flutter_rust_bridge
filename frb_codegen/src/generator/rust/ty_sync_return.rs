@@ -18,8 +18,8 @@ impl<'a> TypeSyncReturnGenerator<'a> {
         TypeSyncReturnGenerator {
             inner: Box::new(TypeRustGenerator::new(
                 ir.into_inner(),
-                context.ir_file,
                 context.config,
+                context.all_configs,
             )),
         }
     }

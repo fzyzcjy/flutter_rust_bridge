@@ -8,22 +8,22 @@ use super::func::{get_api2wire_prefix, get_api_to_fill_wire_prefix};
 type_dart_generator_struct!(TypeGeneralListGenerator, IrTypeGeneralList);
 
 impl TypeDartGeneratorTrait for TypeGeneralListGenerator<'_> {
-    fn api2wire_body(
-        &self,
-        shared_dart_api2wire_funcs: &Option<Acc<String>>,
-    ) -> Acc<Option<String>> {
+    fn api2wire_body(&self) -> Acc<Option<String>> {
         // NOTE the memory strategy is same as PrimitiveList, see comments there.
         let ident = self.ir.safe_ident();
         let inner = self.ir.inner.safe_ident();
         let api2wire_prefix = get_api2wire_prefix(
             &format!("api2wire_{}", inner),
-            shared_dart_api2wire_funcs,
-            self.context.ir_file,
+            self.context.config,
             &self.ir.inner,
             false,
+            self.get_context().all_configs,
         );
-        let api_fill_to_wire_prefix =
-            get_api_to_fill_wire_prefix(self.context.ir_file, &self.ir.inner);
+        let api_fill_to_wire_prefix = get_api_to_fill_wire_prefix(
+            self.context.config,
+            &self.ir.inner,
+            self.get_context().all_configs,
+        );
         Acc {
             io: Some(format!(
                 "final ans = inner.new_{ident}(raw.length);

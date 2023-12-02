@@ -14,15 +14,6 @@ typedef int64_t DartPort;
 
 typedef bool (*DartPostCObjectFnType)(DartPort port_id, void *message);
 
-typedef struct wire_uint_8_list {
-  uint8_t *ptr;
-  int32_t len;
-} wire_uint_8_list;
-
-typedef struct wire_CrossSharedStructInBlock1And2 {
-  struct wire_uint_8_list *name;
-} wire_CrossSharedStructInBlock1And2;
-
 typedef struct wire_SharedComplexEnumInAllBlocks_Empty {
 
 } wire_SharedComplexEnumInAllBlocks_Empty;
@@ -36,6 +27,11 @@ typedef struct wire_SharedComplexEnumInAllBlocks_Primitives {
 typedef struct wire_SharedComplexEnumInAllBlocks_Nested {
   struct wire_SharedComplexEnumInAllBlocks *field0;
 } wire_SharedComplexEnumInAllBlocks_Nested;
+
+typedef struct wire_uint_8_list {
+  uint8_t *ptr;
+  int32_t len;
+} wire_uint_8_list;
 
 typedef struct wire_SharedComplexEnumInAllBlocks_Optional {
   int32_t *field0;
@@ -74,6 +70,14 @@ typedef struct wire_SharedComplexEnumInAllBlocks {
   union SharedComplexEnumInAllBlocksKind *kind;
 } wire_SharedComplexEnumInAllBlocks;
 
+typedef struct wire_CrossSharedStructInBlock1And2 {
+  struct wire_uint_8_list *name;
+} wire_CrossSharedStructInBlock1And2;
+
+typedef struct wire_CrossSharedStructInBlock2And3 {
+  struct wire_uint_8_list *name;
+} wire_CrossSharedStructInBlock2And3;
+
 typedef struct wire_list_shared_complex_enum_in_all_blocks {
   struct wire_SharedComplexEnumInAllBlocks *ptr;
   int32_t len;
@@ -92,20 +96,16 @@ typedef struct wire_SharedStructInBlock1And2 {
   struct wire_uint_8_list *name;
 } wire_SharedStructInBlock1And2;
 
-typedef struct wire_SharedStructOnlyForSyncTest {
-  struct wire_uint_8_list *name;
-  double score;
-} wire_SharedStructOnlyForSyncTest;
-
-typedef struct wire_CrossSharedStructInBlock2And3 {
-  struct wire_uint_8_list *name;
-} wire_CrossSharedStructInBlock2And3;
-
 typedef struct wire_SharedStructInBlock2And3 {
   int32_t id;
   double num;
   struct wire_uint_8_list *name;
 } wire_SharedStructInBlock2And3;
+
+typedef struct wire_SharedStructOnlyForSyncTest {
+  struct wire_uint_8_list *name;
+  double score;
+} wire_SharedStructOnlyForSyncTest;
 
 typedef struct wire_StringList {
   struct wire_uint_8_list **ptr;
@@ -139,64 +139,64 @@ uintptr_t new_dart_opaque(Dart_Handle handle);
 
 intptr_t init_frb_dart_api_dl(void *obj);
 
-void wire_test_method__method__CrossSharedStructInBlock1And2(int64_t port_,
-                                                             struct wire_CrossSharedStructInBlock1And2 *that,
-                                                             struct wire_uint_8_list *message);
-
-void wire_test_static_method__static_method__CrossSharedStructInBlock1And2(int64_t port_,
-                                                                           struct wire_uint_8_list *message);
+void wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks(int64_t port_, int32_t that);
 
 void wire_test_enum_method__method__SharedComplexEnumInAllBlocks(int64_t port_,
                                                                  struct wire_SharedComplexEnumInAllBlocks *that,
                                                                  struct wire_uint_8_list *message);
 
-void wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks(int64_t port_,
-                                                                               struct wire_uint_8_list *message);
+void wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks(int64_t port_,
+                                                                  int32_t that,
+                                                                  struct wire_uint_8_list *message);
+
+void wire_test_method__method__CrossSharedStructInBlock1And2(int64_t port_,
+                                                             struct wire_CrossSharedStructInBlock1And2 *that,
+                                                             struct wire_uint_8_list *message);
+
+void wire_test_method__method__CrossSharedStructInBlock2And3(int64_t port_,
+                                                             struct wire_CrossSharedStructInBlock2And3 *that,
+                                                             struct wire_uint_8_list *message);
 
 void wire_test_method__method__SharedStructInAllBlocks(int64_t port_,
                                                        struct wire_SharedStructInAllBlocks *that,
                                                        struct wire_uint_8_list *message,
                                                        uint32_t num);
 
-void wire_test_static_method__static_method__SharedStructInAllBlocks(int64_t port_,
-                                                                     struct wire_uint_8_list *message);
-
 void wire_test_method__method__SharedStructInBlock1And2(int64_t port_,
                                                         struct wire_SharedStructInBlock1And2 *that,
                                                         struct wire_uint_8_list *message);
-
-void wire_test_static_method__static_method__SharedStructInBlock1And2(int64_t port_,
-                                                                      struct wire_uint_8_list *message);
-
-void wire_test_method__method__SharedStructOnlyForSyncTest(int64_t port_,
-                                                           struct wire_SharedStructOnlyForSyncTest *that,
-                                                           struct wire_uint_8_list *message);
-
-void wire_test_static_method__static_method__SharedStructOnlyForSyncTest(int64_t port_,
-                                                                         struct wire_uint_8_list *message);
-
-void wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks(int64_t port_,
-                                                                  int32_t that,
-                                                                  struct wire_uint_8_list *message);
-
-void wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks(int64_t port_,
-                                                                                struct wire_uint_8_list *message);
-
-void wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks(int64_t port_, int32_t that);
-
-void wire_test_method__method__CrossSharedStructInBlock2And3(int64_t port_,
-                                                             struct wire_CrossSharedStructInBlock2And3 *that,
-                                                             struct wire_uint_8_list *message);
-
-void wire_test_static_method__static_method__CrossSharedStructInBlock2And3(int64_t port_,
-                                                                           struct wire_uint_8_list *message);
 
 void wire_test_method__method__SharedStructInBlock2And3(int64_t port_,
                                                         struct wire_SharedStructInBlock2And3 *that,
                                                         struct wire_uint_8_list *message);
 
+void wire_test_method__method__SharedStructOnlyForSyncTest(int64_t port_,
+                                                           struct wire_SharedStructOnlyForSyncTest *that,
+                                                           struct wire_uint_8_list *message);
+
+void wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks(int64_t port_,
+                                                                               struct wire_uint_8_list *message);
+
+void wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks(int64_t port_,
+                                                                                struct wire_uint_8_list *message);
+
+void wire_test_static_method__static_method__CrossSharedStructInBlock1And2(int64_t port_,
+                                                                           struct wire_uint_8_list *message);
+
+void wire_test_static_method__static_method__CrossSharedStructInBlock2And3(int64_t port_,
+                                                                           struct wire_uint_8_list *message);
+
+void wire_test_static_method__static_method__SharedStructInAllBlocks(int64_t port_,
+                                                                     struct wire_uint_8_list *message);
+
+void wire_test_static_method__static_method__SharedStructInBlock1And2(int64_t port_,
+                                                                      struct wire_uint_8_list *message);
+
 void wire_test_static_method__static_method__SharedStructInBlock2And3(int64_t port_,
                                                                       struct wire_uint_8_list *message);
+
+void wire_test_static_method__static_method__SharedStructOnlyForSyncTest(int64_t port_,
+                                                                         struct wire_uint_8_list *message);
 
 struct wire_StringList *new_StringList(int32_t len);
 
@@ -248,23 +248,23 @@ void free_WireSyncReturn(WireSyncReturn ptr);
 
 static int64_t dummy_method_to_enforce_bundling_BridgeGeneratedShared(void) {
     int64_t dummy_var = 0;
-    dummy_var ^= ((int64_t) (void*) wire_test_method__method__CrossSharedStructInBlock1And2);
-    dummy_var ^= ((int64_t) (void*) wire_test_static_method__static_method__CrossSharedStructInBlock1And2);
-    dummy_var ^= ((int64_t) (void*) wire_test_enum_method__method__SharedComplexEnumInAllBlocks);
-    dummy_var ^= ((int64_t) (void*) wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks);
-    dummy_var ^= ((int64_t) (void*) wire_test_method__method__SharedStructInAllBlocks);
-    dummy_var ^= ((int64_t) (void*) wire_test_static_method__static_method__SharedStructInAllBlocks);
-    dummy_var ^= ((int64_t) (void*) wire_test_method__method__SharedStructInBlock1And2);
-    dummy_var ^= ((int64_t) (void*) wire_test_static_method__static_method__SharedStructInBlock1And2);
-    dummy_var ^= ((int64_t) (void*) wire_test_method__method__SharedStructOnlyForSyncTest);
-    dummy_var ^= ((int64_t) (void*) wire_test_static_method__static_method__SharedStructOnlyForSyncTest);
-    dummy_var ^= ((int64_t) (void*) wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks);
-    dummy_var ^= ((int64_t) (void*) wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks);
     dummy_var ^= ((int64_t) (void*) wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks);
+    dummy_var ^= ((int64_t) (void*) wire_test_enum_method__method__SharedComplexEnumInAllBlocks);
+    dummy_var ^= ((int64_t) (void*) wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks);
+    dummy_var ^= ((int64_t) (void*) wire_test_method__method__CrossSharedStructInBlock1And2);
     dummy_var ^= ((int64_t) (void*) wire_test_method__method__CrossSharedStructInBlock2And3);
-    dummy_var ^= ((int64_t) (void*) wire_test_static_method__static_method__CrossSharedStructInBlock2And3);
+    dummy_var ^= ((int64_t) (void*) wire_test_method__method__SharedStructInAllBlocks);
+    dummy_var ^= ((int64_t) (void*) wire_test_method__method__SharedStructInBlock1And2);
     dummy_var ^= ((int64_t) (void*) wire_test_method__method__SharedStructInBlock2And3);
+    dummy_var ^= ((int64_t) (void*) wire_test_method__method__SharedStructOnlyForSyncTest);
+    dummy_var ^= ((int64_t) (void*) wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks);
+    dummy_var ^= ((int64_t) (void*) wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks);
+    dummy_var ^= ((int64_t) (void*) wire_test_static_method__static_method__CrossSharedStructInBlock1And2);
+    dummy_var ^= ((int64_t) (void*) wire_test_static_method__static_method__CrossSharedStructInBlock2And3);
+    dummy_var ^= ((int64_t) (void*) wire_test_static_method__static_method__SharedStructInAllBlocks);
+    dummy_var ^= ((int64_t) (void*) wire_test_static_method__static_method__SharedStructInBlock1And2);
     dummy_var ^= ((int64_t) (void*) wire_test_static_method__static_method__SharedStructInBlock2And3);
+    dummy_var ^= ((int64_t) (void*) wire_test_static_method__static_method__SharedStructOnlyForSyncTest);
     dummy_var ^= ((int64_t) (void*) new_StringList);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_cross_shared_struct_in_block_1_and_2);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_cross_shared_struct_in_block_2_and_3);
@@ -301,9 +301,9 @@ static int64_t dummy_method_to_enforce_bundling_BridgeGeneratedShared(void) {
 #include "c_output_3.h"
 static int64_t dummy_method_to_enforce_bundling(void) {
     int64_t dummy_var = 0;
+    dummy_var ^= ((int64_t) (void*) dummy_method_to_enforce_bundling_BridgeGeneratedShared);
     dummy_var ^= ((int64_t) (void*) dummy_method_to_enforce_bundling_ApiBlock1Class);
     dummy_var ^= ((int64_t) (void*) dummy_method_to_enforce_bundling_ApiBlock2Class);
     dummy_var ^= ((int64_t) (void*) dummy_method_to_enforce_bundling_ApiBlock3Class);
-    dummy_var ^= ((int64_t) (void*) dummy_method_to_enforce_bundling_BridgeGeneratedShared);
     return dummy_var;
 }

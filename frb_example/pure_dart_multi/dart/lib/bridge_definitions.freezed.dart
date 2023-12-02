@@ -1265,7 +1265,7 @@ abstract class SharedComplexEnumInAllBlocks_BytesArray implements SharedComplexE
 }
 
 /// @nodoc
-mixin _$EnumDefinedInBlock3 {
+mixin _$EnumDefinedInBlock1 {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() quit,
@@ -1293,41 +1293,41 @@ mixin _$EnumDefinedInBlock3 {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnumDefinedInBlock3_Quit value) quit,
-    required TResult Function(EnumDefinedInBlock3_Move value) move,
-    required TResult Function(EnumDefinedInBlock3_Write value) write,
-    required TResult Function(EnumDefinedInBlock3_ChangeColor value) changeColor,
+    required TResult Function(EnumDefinedInBlock1_Quit value) quit,
+    required TResult Function(EnumDefinedInBlock1_Move value) move,
+    required TResult Function(EnumDefinedInBlock1_Write value) write,
+    required TResult Function(EnumDefinedInBlock1_ChangeColor value) changeColor,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumDefinedInBlock3_Quit value)? quit,
-    TResult? Function(EnumDefinedInBlock3_Move value)? move,
-    TResult? Function(EnumDefinedInBlock3_Write value)? write,
-    TResult? Function(EnumDefinedInBlock3_ChangeColor value)? changeColor,
+    TResult? Function(EnumDefinedInBlock1_Quit value)? quit,
+    TResult? Function(EnumDefinedInBlock1_Move value)? move,
+    TResult? Function(EnumDefinedInBlock1_Write value)? write,
+    TResult? Function(EnumDefinedInBlock1_ChangeColor value)? changeColor,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumDefinedInBlock3_Quit value)? quit,
-    TResult Function(EnumDefinedInBlock3_Move value)? move,
-    TResult Function(EnumDefinedInBlock3_Write value)? write,
-    TResult Function(EnumDefinedInBlock3_ChangeColor value)? changeColor,
+    TResult Function(EnumDefinedInBlock1_Quit value)? quit,
+    TResult Function(EnumDefinedInBlock1_Move value)? move,
+    TResult Function(EnumDefinedInBlock1_Write value)? write,
+    TResult Function(EnumDefinedInBlock1_ChangeColor value)? changeColor,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EnumDefinedInBlock3CopyWith<$Res> {
-  factory $EnumDefinedInBlock3CopyWith(EnumDefinedInBlock3 value, $Res Function(EnumDefinedInBlock3) then) =
-      _$EnumDefinedInBlock3CopyWithImpl<$Res, EnumDefinedInBlock3>;
+abstract class $EnumDefinedInBlock1CopyWith<$Res> {
+  factory $EnumDefinedInBlock1CopyWith(EnumDefinedInBlock1 value, $Res Function(EnumDefinedInBlock1) then) =
+      _$EnumDefinedInBlock1CopyWithImpl<$Res, EnumDefinedInBlock1>;
 }
 
 /// @nodoc
-class _$EnumDefinedInBlock3CopyWithImpl<$Res, $Val extends EnumDefinedInBlock3>
-    implements $EnumDefinedInBlock3CopyWith<$Res> {
-  _$EnumDefinedInBlock3CopyWithImpl(this._value, this._then);
+class _$EnumDefinedInBlock1CopyWithImpl<$Res, $Val extends EnumDefinedInBlock1>
+    implements $EnumDefinedInBlock1CopyWith<$Res> {
+  _$EnumDefinedInBlock1CopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -1336,34 +1336,34 @@ class _$EnumDefinedInBlock3CopyWithImpl<$Res, $Val extends EnumDefinedInBlock3>
 }
 
 /// @nodoc
-abstract class _$$EnumDefinedInBlock3_QuitCopyWith<$Res> {
-  factory _$$EnumDefinedInBlock3_QuitCopyWith(
-          _$EnumDefinedInBlock3_Quit value, $Res Function(_$EnumDefinedInBlock3_Quit) then) =
-      __$$EnumDefinedInBlock3_QuitCopyWithImpl<$Res>;
+abstract class _$$EnumDefinedInBlock1_QuitCopyWith<$Res> {
+  factory _$$EnumDefinedInBlock1_QuitCopyWith(
+          _$EnumDefinedInBlock1_Quit value, $Res Function(_$EnumDefinedInBlock1_Quit) then) =
+      __$$EnumDefinedInBlock1_QuitCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$EnumDefinedInBlock3_QuitCopyWithImpl<$Res>
-    extends _$EnumDefinedInBlock3CopyWithImpl<$Res, _$EnumDefinedInBlock3_Quit>
-    implements _$$EnumDefinedInBlock3_QuitCopyWith<$Res> {
-  __$$EnumDefinedInBlock3_QuitCopyWithImpl(
-      _$EnumDefinedInBlock3_Quit _value, $Res Function(_$EnumDefinedInBlock3_Quit) _then)
+class __$$EnumDefinedInBlock1_QuitCopyWithImpl<$Res>
+    extends _$EnumDefinedInBlock1CopyWithImpl<$Res, _$EnumDefinedInBlock1_Quit>
+    implements _$$EnumDefinedInBlock1_QuitCopyWith<$Res> {
+  __$$EnumDefinedInBlock1_QuitCopyWithImpl(
+      _$EnumDefinedInBlock1_Quit _value, $Res Function(_$EnumDefinedInBlock1_Quit) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$EnumDefinedInBlock3_Quit implements EnumDefinedInBlock3_Quit {
-  const _$EnumDefinedInBlock3_Quit();
+class _$EnumDefinedInBlock1_Quit implements EnumDefinedInBlock1_Quit {
+  const _$EnumDefinedInBlock1_Quit();
 
   @override
   String toString() {
-    return 'EnumDefinedInBlock3.quit()';
+    return 'EnumDefinedInBlock1.quit()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$EnumDefinedInBlock3_Quit);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$EnumDefinedInBlock1_Quit);
   }
 
   @override
@@ -1409,10 +1409,10 @@ class _$EnumDefinedInBlock3_Quit implements EnumDefinedInBlock3_Quit {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnumDefinedInBlock3_Quit value) quit,
-    required TResult Function(EnumDefinedInBlock3_Move value) move,
-    required TResult Function(EnumDefinedInBlock3_Write value) write,
-    required TResult Function(EnumDefinedInBlock3_ChangeColor value) changeColor,
+    required TResult Function(EnumDefinedInBlock1_Quit value) quit,
+    required TResult Function(EnumDefinedInBlock1_Move value) move,
+    required TResult Function(EnumDefinedInBlock1_Write value) write,
+    required TResult Function(EnumDefinedInBlock1_ChangeColor value) changeColor,
   }) {
     return quit(this);
   }
@@ -1420,10 +1420,10 @@ class _$EnumDefinedInBlock3_Quit implements EnumDefinedInBlock3_Quit {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumDefinedInBlock3_Quit value)? quit,
-    TResult? Function(EnumDefinedInBlock3_Move value)? move,
-    TResult? Function(EnumDefinedInBlock3_Write value)? write,
-    TResult? Function(EnumDefinedInBlock3_ChangeColor value)? changeColor,
+    TResult? Function(EnumDefinedInBlock1_Quit value)? quit,
+    TResult? Function(EnumDefinedInBlock1_Move value)? move,
+    TResult? Function(EnumDefinedInBlock1_Write value)? write,
+    TResult? Function(EnumDefinedInBlock1_ChangeColor value)? changeColor,
   }) {
     return quit?.call(this);
   }
@@ -1431,10 +1431,10 @@ class _$EnumDefinedInBlock3_Quit implements EnumDefinedInBlock3_Quit {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumDefinedInBlock3_Quit value)? quit,
-    TResult Function(EnumDefinedInBlock3_Move value)? move,
-    TResult Function(EnumDefinedInBlock3_Write value)? write,
-    TResult Function(EnumDefinedInBlock3_ChangeColor value)? changeColor,
+    TResult Function(EnumDefinedInBlock1_Quit value)? quit,
+    TResult Function(EnumDefinedInBlock1_Move value)? move,
+    TResult Function(EnumDefinedInBlock1_Write value)? write,
+    TResult Function(EnumDefinedInBlock1_ChangeColor value)? changeColor,
     required TResult orElse(),
   }) {
     if (quit != null) {
@@ -1444,25 +1444,25 @@ class _$EnumDefinedInBlock3_Quit implements EnumDefinedInBlock3_Quit {
   }
 }
 
-abstract class EnumDefinedInBlock3_Quit implements EnumDefinedInBlock3 {
-  const factory EnumDefinedInBlock3_Quit() = _$EnumDefinedInBlock3_Quit;
+abstract class EnumDefinedInBlock1_Quit implements EnumDefinedInBlock1 {
+  const factory EnumDefinedInBlock1_Quit() = _$EnumDefinedInBlock1_Quit;
 }
 
 /// @nodoc
-abstract class _$$EnumDefinedInBlock3_MoveCopyWith<$Res> {
-  factory _$$EnumDefinedInBlock3_MoveCopyWith(
-          _$EnumDefinedInBlock3_Move value, $Res Function(_$EnumDefinedInBlock3_Move) then) =
-      __$$EnumDefinedInBlock3_MoveCopyWithImpl<$Res>;
+abstract class _$$EnumDefinedInBlock1_MoveCopyWith<$Res> {
+  factory _$$EnumDefinedInBlock1_MoveCopyWith(
+          _$EnumDefinedInBlock1_Move value, $Res Function(_$EnumDefinedInBlock1_Move) then) =
+      __$$EnumDefinedInBlock1_MoveCopyWithImpl<$Res>;
   @useResult
   $Res call({int x, int y});
 }
 
 /// @nodoc
-class __$$EnumDefinedInBlock3_MoveCopyWithImpl<$Res>
-    extends _$EnumDefinedInBlock3CopyWithImpl<$Res, _$EnumDefinedInBlock3_Move>
-    implements _$$EnumDefinedInBlock3_MoveCopyWith<$Res> {
-  __$$EnumDefinedInBlock3_MoveCopyWithImpl(
-      _$EnumDefinedInBlock3_Move _value, $Res Function(_$EnumDefinedInBlock3_Move) _then)
+class __$$EnumDefinedInBlock1_MoveCopyWithImpl<$Res>
+    extends _$EnumDefinedInBlock1CopyWithImpl<$Res, _$EnumDefinedInBlock1_Move>
+    implements _$$EnumDefinedInBlock1_MoveCopyWith<$Res> {
+  __$$EnumDefinedInBlock1_MoveCopyWithImpl(
+      _$EnumDefinedInBlock1_Move _value, $Res Function(_$EnumDefinedInBlock1_Move) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1471,7 +1471,7 @@ class __$$EnumDefinedInBlock3_MoveCopyWithImpl<$Res>
     Object? x = null,
     Object? y = null,
   }) {
-    return _then(_$EnumDefinedInBlock3_Move(
+    return _then(_$EnumDefinedInBlock1_Move(
       x: null == x
           ? _value.x
           : x // ignore: cast_nullable_to_non_nullable
@@ -1486,8 +1486,8 @@ class __$$EnumDefinedInBlock3_MoveCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumDefinedInBlock3_Move implements EnumDefinedInBlock3_Move {
-  const _$EnumDefinedInBlock3_Move({required this.x, required this.y});
+class _$EnumDefinedInBlock1_Move implements EnumDefinedInBlock1_Move {
+  const _$EnumDefinedInBlock1_Move({required this.x, required this.y});
 
   @override
   final int x;
@@ -1496,14 +1496,14 @@ class _$EnumDefinedInBlock3_Move implements EnumDefinedInBlock3_Move {
 
   @override
   String toString() {
-    return 'EnumDefinedInBlock3.move(x: $x, y: $y)';
+    return 'EnumDefinedInBlock1.move(x: $x, y: $y)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumDefinedInBlock3_Move &&
+            other is _$EnumDefinedInBlock1_Move &&
             (identical(other.x, x) || other.x == x) &&
             (identical(other.y, y) || other.y == y));
   }
@@ -1514,8 +1514,8 @@ class _$EnumDefinedInBlock3_Move implements EnumDefinedInBlock3_Move {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumDefinedInBlock3_MoveCopyWith<_$EnumDefinedInBlock3_Move> get copyWith =>
-      __$$EnumDefinedInBlock3_MoveCopyWithImpl<_$EnumDefinedInBlock3_Move>(this, _$identity);
+  _$$EnumDefinedInBlock1_MoveCopyWith<_$EnumDefinedInBlock1_Move> get copyWith =>
+      __$$EnumDefinedInBlock1_MoveCopyWithImpl<_$EnumDefinedInBlock1_Move>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1557,10 +1557,10 @@ class _$EnumDefinedInBlock3_Move implements EnumDefinedInBlock3_Move {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnumDefinedInBlock3_Quit value) quit,
-    required TResult Function(EnumDefinedInBlock3_Move value) move,
-    required TResult Function(EnumDefinedInBlock3_Write value) write,
-    required TResult Function(EnumDefinedInBlock3_ChangeColor value) changeColor,
+    required TResult Function(EnumDefinedInBlock1_Quit value) quit,
+    required TResult Function(EnumDefinedInBlock1_Move value) move,
+    required TResult Function(EnumDefinedInBlock1_Write value) write,
+    required TResult Function(EnumDefinedInBlock1_ChangeColor value) changeColor,
   }) {
     return move(this);
   }
@@ -1568,10 +1568,10 @@ class _$EnumDefinedInBlock3_Move implements EnumDefinedInBlock3_Move {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumDefinedInBlock3_Quit value)? quit,
-    TResult? Function(EnumDefinedInBlock3_Move value)? move,
-    TResult? Function(EnumDefinedInBlock3_Write value)? write,
-    TResult? Function(EnumDefinedInBlock3_ChangeColor value)? changeColor,
+    TResult? Function(EnumDefinedInBlock1_Quit value)? quit,
+    TResult? Function(EnumDefinedInBlock1_Move value)? move,
+    TResult? Function(EnumDefinedInBlock1_Write value)? write,
+    TResult? Function(EnumDefinedInBlock1_ChangeColor value)? changeColor,
   }) {
     return move?.call(this);
   }
@@ -1579,10 +1579,10 @@ class _$EnumDefinedInBlock3_Move implements EnumDefinedInBlock3_Move {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumDefinedInBlock3_Quit value)? quit,
-    TResult Function(EnumDefinedInBlock3_Move value)? move,
-    TResult Function(EnumDefinedInBlock3_Write value)? write,
-    TResult Function(EnumDefinedInBlock3_ChangeColor value)? changeColor,
+    TResult Function(EnumDefinedInBlock1_Quit value)? quit,
+    TResult Function(EnumDefinedInBlock1_Move value)? move,
+    TResult Function(EnumDefinedInBlock1_Write value)? write,
+    TResult Function(EnumDefinedInBlock1_ChangeColor value)? changeColor,
     required TResult orElse(),
   }) {
     if (move != null) {
@@ -1592,30 +1592,30 @@ class _$EnumDefinedInBlock3_Move implements EnumDefinedInBlock3_Move {
   }
 }
 
-abstract class EnumDefinedInBlock3_Move implements EnumDefinedInBlock3 {
-  const factory EnumDefinedInBlock3_Move({required final int x, required final int y}) = _$EnumDefinedInBlock3_Move;
+abstract class EnumDefinedInBlock1_Move implements EnumDefinedInBlock1 {
+  const factory EnumDefinedInBlock1_Move({required final int x, required final int y}) = _$EnumDefinedInBlock1_Move;
 
   int get x;
   int get y;
   @JsonKey(ignore: true)
-  _$$EnumDefinedInBlock3_MoveCopyWith<_$EnumDefinedInBlock3_Move> get copyWith => throw _privateConstructorUsedError;
+  _$$EnumDefinedInBlock1_MoveCopyWith<_$EnumDefinedInBlock1_Move> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EnumDefinedInBlock3_WriteCopyWith<$Res> {
-  factory _$$EnumDefinedInBlock3_WriteCopyWith(
-          _$EnumDefinedInBlock3_Write value, $Res Function(_$EnumDefinedInBlock3_Write) then) =
-      __$$EnumDefinedInBlock3_WriteCopyWithImpl<$Res>;
+abstract class _$$EnumDefinedInBlock1_WriteCopyWith<$Res> {
+  factory _$$EnumDefinedInBlock1_WriteCopyWith(
+          _$EnumDefinedInBlock1_Write value, $Res Function(_$EnumDefinedInBlock1_Write) then) =
+      __$$EnumDefinedInBlock1_WriteCopyWithImpl<$Res>;
   @useResult
   $Res call({String field0});
 }
 
 /// @nodoc
-class __$$EnumDefinedInBlock3_WriteCopyWithImpl<$Res>
-    extends _$EnumDefinedInBlock3CopyWithImpl<$Res, _$EnumDefinedInBlock3_Write>
-    implements _$$EnumDefinedInBlock3_WriteCopyWith<$Res> {
-  __$$EnumDefinedInBlock3_WriteCopyWithImpl(
-      _$EnumDefinedInBlock3_Write _value, $Res Function(_$EnumDefinedInBlock3_Write) _then)
+class __$$EnumDefinedInBlock1_WriteCopyWithImpl<$Res>
+    extends _$EnumDefinedInBlock1CopyWithImpl<$Res, _$EnumDefinedInBlock1_Write>
+    implements _$$EnumDefinedInBlock1_WriteCopyWith<$Res> {
+  __$$EnumDefinedInBlock1_WriteCopyWithImpl(
+      _$EnumDefinedInBlock1_Write _value, $Res Function(_$EnumDefinedInBlock1_Write) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1623,7 +1623,7 @@ class __$$EnumDefinedInBlock3_WriteCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$EnumDefinedInBlock3_Write(
+    return _then(_$EnumDefinedInBlock1_Write(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -1634,22 +1634,22 @@ class __$$EnumDefinedInBlock3_WriteCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumDefinedInBlock3_Write implements EnumDefinedInBlock3_Write {
-  const _$EnumDefinedInBlock3_Write(this.field0);
+class _$EnumDefinedInBlock1_Write implements EnumDefinedInBlock1_Write {
+  const _$EnumDefinedInBlock1_Write(this.field0);
 
   @override
   final String field0;
 
   @override
   String toString() {
-    return 'EnumDefinedInBlock3.write(field0: $field0)';
+    return 'EnumDefinedInBlock1.write(field0: $field0)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumDefinedInBlock3_Write &&
+            other is _$EnumDefinedInBlock1_Write &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -1659,8 +1659,8 @@ class _$EnumDefinedInBlock3_Write implements EnumDefinedInBlock3_Write {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumDefinedInBlock3_WriteCopyWith<_$EnumDefinedInBlock3_Write> get copyWith =>
-      __$$EnumDefinedInBlock3_WriteCopyWithImpl<_$EnumDefinedInBlock3_Write>(this, _$identity);
+  _$$EnumDefinedInBlock1_WriteCopyWith<_$EnumDefinedInBlock1_Write> get copyWith =>
+      __$$EnumDefinedInBlock1_WriteCopyWithImpl<_$EnumDefinedInBlock1_Write>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1702,10 +1702,10 @@ class _$EnumDefinedInBlock3_Write implements EnumDefinedInBlock3_Write {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnumDefinedInBlock3_Quit value) quit,
-    required TResult Function(EnumDefinedInBlock3_Move value) move,
-    required TResult Function(EnumDefinedInBlock3_Write value) write,
-    required TResult Function(EnumDefinedInBlock3_ChangeColor value) changeColor,
+    required TResult Function(EnumDefinedInBlock1_Quit value) quit,
+    required TResult Function(EnumDefinedInBlock1_Move value) move,
+    required TResult Function(EnumDefinedInBlock1_Write value) write,
+    required TResult Function(EnumDefinedInBlock1_ChangeColor value) changeColor,
   }) {
     return write(this);
   }
@@ -1713,10 +1713,10 @@ class _$EnumDefinedInBlock3_Write implements EnumDefinedInBlock3_Write {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumDefinedInBlock3_Quit value)? quit,
-    TResult? Function(EnumDefinedInBlock3_Move value)? move,
-    TResult? Function(EnumDefinedInBlock3_Write value)? write,
-    TResult? Function(EnumDefinedInBlock3_ChangeColor value)? changeColor,
+    TResult? Function(EnumDefinedInBlock1_Quit value)? quit,
+    TResult? Function(EnumDefinedInBlock1_Move value)? move,
+    TResult? Function(EnumDefinedInBlock1_Write value)? write,
+    TResult? Function(EnumDefinedInBlock1_ChangeColor value)? changeColor,
   }) {
     return write?.call(this);
   }
@@ -1724,10 +1724,10 @@ class _$EnumDefinedInBlock3_Write implements EnumDefinedInBlock3_Write {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumDefinedInBlock3_Quit value)? quit,
-    TResult Function(EnumDefinedInBlock3_Move value)? move,
-    TResult Function(EnumDefinedInBlock3_Write value)? write,
-    TResult Function(EnumDefinedInBlock3_ChangeColor value)? changeColor,
+    TResult Function(EnumDefinedInBlock1_Quit value)? quit,
+    TResult Function(EnumDefinedInBlock1_Move value)? move,
+    TResult Function(EnumDefinedInBlock1_Write value)? write,
+    TResult Function(EnumDefinedInBlock1_ChangeColor value)? changeColor,
     required TResult orElse(),
   }) {
     if (write != null) {
@@ -1737,29 +1737,29 @@ class _$EnumDefinedInBlock3_Write implements EnumDefinedInBlock3_Write {
   }
 }
 
-abstract class EnumDefinedInBlock3_Write implements EnumDefinedInBlock3 {
-  const factory EnumDefinedInBlock3_Write(final String field0) = _$EnumDefinedInBlock3_Write;
+abstract class EnumDefinedInBlock1_Write implements EnumDefinedInBlock1 {
+  const factory EnumDefinedInBlock1_Write(final String field0) = _$EnumDefinedInBlock1_Write;
 
   String get field0;
   @JsonKey(ignore: true)
-  _$$EnumDefinedInBlock3_WriteCopyWith<_$EnumDefinedInBlock3_Write> get copyWith => throw _privateConstructorUsedError;
+  _$$EnumDefinedInBlock1_WriteCopyWith<_$EnumDefinedInBlock1_Write> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EnumDefinedInBlock3_ChangeColorCopyWith<$Res> {
-  factory _$$EnumDefinedInBlock3_ChangeColorCopyWith(
-          _$EnumDefinedInBlock3_ChangeColor value, $Res Function(_$EnumDefinedInBlock3_ChangeColor) then) =
-      __$$EnumDefinedInBlock3_ChangeColorCopyWithImpl<$Res>;
+abstract class _$$EnumDefinedInBlock1_ChangeColorCopyWith<$Res> {
+  factory _$$EnumDefinedInBlock1_ChangeColorCopyWith(
+          _$EnumDefinedInBlock1_ChangeColor value, $Res Function(_$EnumDefinedInBlock1_ChangeColor) then) =
+      __$$EnumDefinedInBlock1_ChangeColorCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0, int field1, int field2});
 }
 
 /// @nodoc
-class __$$EnumDefinedInBlock3_ChangeColorCopyWithImpl<$Res>
-    extends _$EnumDefinedInBlock3CopyWithImpl<$Res, _$EnumDefinedInBlock3_ChangeColor>
-    implements _$$EnumDefinedInBlock3_ChangeColorCopyWith<$Res> {
-  __$$EnumDefinedInBlock3_ChangeColorCopyWithImpl(
-      _$EnumDefinedInBlock3_ChangeColor _value, $Res Function(_$EnumDefinedInBlock3_ChangeColor) _then)
+class __$$EnumDefinedInBlock1_ChangeColorCopyWithImpl<$Res>
+    extends _$EnumDefinedInBlock1CopyWithImpl<$Res, _$EnumDefinedInBlock1_ChangeColor>
+    implements _$$EnumDefinedInBlock1_ChangeColorCopyWith<$Res> {
+  __$$EnumDefinedInBlock1_ChangeColorCopyWithImpl(
+      _$EnumDefinedInBlock1_ChangeColor _value, $Res Function(_$EnumDefinedInBlock1_ChangeColor) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1769,7 +1769,7 @@ class __$$EnumDefinedInBlock3_ChangeColorCopyWithImpl<$Res>
     Object? field1 = null,
     Object? field2 = null,
   }) {
-    return _then(_$EnumDefinedInBlock3_ChangeColor(
+    return _then(_$EnumDefinedInBlock1_ChangeColor(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -1788,8 +1788,8 @@ class __$$EnumDefinedInBlock3_ChangeColorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumDefinedInBlock3_ChangeColor implements EnumDefinedInBlock3_ChangeColor {
-  const _$EnumDefinedInBlock3_ChangeColor(this.field0, this.field1, this.field2);
+class _$EnumDefinedInBlock1_ChangeColor implements EnumDefinedInBlock1_ChangeColor {
+  const _$EnumDefinedInBlock1_ChangeColor(this.field0, this.field1, this.field2);
 
   @override
   final int field0;
@@ -1800,14 +1800,14 @@ class _$EnumDefinedInBlock3_ChangeColor implements EnumDefinedInBlock3_ChangeCol
 
   @override
   String toString() {
-    return 'EnumDefinedInBlock3.changeColor(field0: $field0, field1: $field1, field2: $field2)';
+    return 'EnumDefinedInBlock1.changeColor(field0: $field0, field1: $field1, field2: $field2)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumDefinedInBlock3_ChangeColor &&
+            other is _$EnumDefinedInBlock1_ChangeColor &&
             (identical(other.field0, field0) || other.field0 == field0) &&
             (identical(other.field1, field1) || other.field1 == field1) &&
             (identical(other.field2, field2) || other.field2 == field2));
@@ -1819,8 +1819,8 @@ class _$EnumDefinedInBlock3_ChangeColor implements EnumDefinedInBlock3_ChangeCol
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumDefinedInBlock3_ChangeColorCopyWith<_$EnumDefinedInBlock3_ChangeColor> get copyWith =>
-      __$$EnumDefinedInBlock3_ChangeColorCopyWithImpl<_$EnumDefinedInBlock3_ChangeColor>(this, _$identity);
+  _$$EnumDefinedInBlock1_ChangeColorCopyWith<_$EnumDefinedInBlock1_ChangeColor> get copyWith =>
+      __$$EnumDefinedInBlock1_ChangeColorCopyWithImpl<_$EnumDefinedInBlock1_ChangeColor>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1862,10 +1862,10 @@ class _$EnumDefinedInBlock3_ChangeColor implements EnumDefinedInBlock3_ChangeCol
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnumDefinedInBlock3_Quit value) quit,
-    required TResult Function(EnumDefinedInBlock3_Move value) move,
-    required TResult Function(EnumDefinedInBlock3_Write value) write,
-    required TResult Function(EnumDefinedInBlock3_ChangeColor value) changeColor,
+    required TResult Function(EnumDefinedInBlock1_Quit value) quit,
+    required TResult Function(EnumDefinedInBlock1_Move value) move,
+    required TResult Function(EnumDefinedInBlock1_Write value) write,
+    required TResult Function(EnumDefinedInBlock1_ChangeColor value) changeColor,
   }) {
     return changeColor(this);
   }
@@ -1873,10 +1873,10 @@ class _$EnumDefinedInBlock3_ChangeColor implements EnumDefinedInBlock3_ChangeCol
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumDefinedInBlock3_Quit value)? quit,
-    TResult? Function(EnumDefinedInBlock3_Move value)? move,
-    TResult? Function(EnumDefinedInBlock3_Write value)? write,
-    TResult? Function(EnumDefinedInBlock3_ChangeColor value)? changeColor,
+    TResult? Function(EnumDefinedInBlock1_Quit value)? quit,
+    TResult? Function(EnumDefinedInBlock1_Move value)? move,
+    TResult? Function(EnumDefinedInBlock1_Write value)? write,
+    TResult? Function(EnumDefinedInBlock1_ChangeColor value)? changeColor,
   }) {
     return changeColor?.call(this);
   }
@@ -1884,10 +1884,10 @@ class _$EnumDefinedInBlock3_ChangeColor implements EnumDefinedInBlock3_ChangeCol
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumDefinedInBlock3_Quit value)? quit,
-    TResult Function(EnumDefinedInBlock3_Move value)? move,
-    TResult Function(EnumDefinedInBlock3_Write value)? write,
-    TResult Function(EnumDefinedInBlock3_ChangeColor value)? changeColor,
+    TResult Function(EnumDefinedInBlock1_Quit value)? quit,
+    TResult Function(EnumDefinedInBlock1_Move value)? move,
+    TResult Function(EnumDefinedInBlock1_Write value)? write,
+    TResult Function(EnumDefinedInBlock1_ChangeColor value)? changeColor,
     required TResult orElse(),
   }) {
     if (changeColor != null) {
@@ -1897,15 +1897,15 @@ class _$EnumDefinedInBlock3_ChangeColor implements EnumDefinedInBlock3_ChangeCol
   }
 }
 
-abstract class EnumDefinedInBlock3_ChangeColor implements EnumDefinedInBlock3 {
-  const factory EnumDefinedInBlock3_ChangeColor(final int field0, final int field1, final int field2) =
-      _$EnumDefinedInBlock3_ChangeColor;
+abstract class EnumDefinedInBlock1_ChangeColor implements EnumDefinedInBlock1 {
+  const factory EnumDefinedInBlock1_ChangeColor(final int field0, final int field1, final int field2) =
+      _$EnumDefinedInBlock1_ChangeColor;
 
   int get field0;
   int get field1;
   int get field2;
   @JsonKey(ignore: true)
-  _$$EnumDefinedInBlock3_ChangeColorCopyWith<_$EnumDefinedInBlock3_ChangeColor> get copyWith =>
+  _$$EnumDefinedInBlock1_ChangeColorCopyWith<_$EnumDefinedInBlock1_ChangeColor> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2555,7 +2555,7 @@ abstract class EnumDefinedInBlock2_ChangeColor implements EnumDefinedInBlock2 {
 }
 
 /// @nodoc
-mixin _$EnumDefinedInBlock1 {
+mixin _$EnumDefinedInBlock3 {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() quit,
@@ -2583,41 +2583,41 @@ mixin _$EnumDefinedInBlock1 {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnumDefinedInBlock1_Quit value) quit,
-    required TResult Function(EnumDefinedInBlock1_Move value) move,
-    required TResult Function(EnumDefinedInBlock1_Write value) write,
-    required TResult Function(EnumDefinedInBlock1_ChangeColor value) changeColor,
+    required TResult Function(EnumDefinedInBlock3_Quit value) quit,
+    required TResult Function(EnumDefinedInBlock3_Move value) move,
+    required TResult Function(EnumDefinedInBlock3_Write value) write,
+    required TResult Function(EnumDefinedInBlock3_ChangeColor value) changeColor,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumDefinedInBlock1_Quit value)? quit,
-    TResult? Function(EnumDefinedInBlock1_Move value)? move,
-    TResult? Function(EnumDefinedInBlock1_Write value)? write,
-    TResult? Function(EnumDefinedInBlock1_ChangeColor value)? changeColor,
+    TResult? Function(EnumDefinedInBlock3_Quit value)? quit,
+    TResult? Function(EnumDefinedInBlock3_Move value)? move,
+    TResult? Function(EnumDefinedInBlock3_Write value)? write,
+    TResult? Function(EnumDefinedInBlock3_ChangeColor value)? changeColor,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumDefinedInBlock1_Quit value)? quit,
-    TResult Function(EnumDefinedInBlock1_Move value)? move,
-    TResult Function(EnumDefinedInBlock1_Write value)? write,
-    TResult Function(EnumDefinedInBlock1_ChangeColor value)? changeColor,
+    TResult Function(EnumDefinedInBlock3_Quit value)? quit,
+    TResult Function(EnumDefinedInBlock3_Move value)? move,
+    TResult Function(EnumDefinedInBlock3_Write value)? write,
+    TResult Function(EnumDefinedInBlock3_ChangeColor value)? changeColor,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EnumDefinedInBlock1CopyWith<$Res> {
-  factory $EnumDefinedInBlock1CopyWith(EnumDefinedInBlock1 value, $Res Function(EnumDefinedInBlock1) then) =
-      _$EnumDefinedInBlock1CopyWithImpl<$Res, EnumDefinedInBlock1>;
+abstract class $EnumDefinedInBlock3CopyWith<$Res> {
+  factory $EnumDefinedInBlock3CopyWith(EnumDefinedInBlock3 value, $Res Function(EnumDefinedInBlock3) then) =
+      _$EnumDefinedInBlock3CopyWithImpl<$Res, EnumDefinedInBlock3>;
 }
 
 /// @nodoc
-class _$EnumDefinedInBlock1CopyWithImpl<$Res, $Val extends EnumDefinedInBlock1>
-    implements $EnumDefinedInBlock1CopyWith<$Res> {
-  _$EnumDefinedInBlock1CopyWithImpl(this._value, this._then);
+class _$EnumDefinedInBlock3CopyWithImpl<$Res, $Val extends EnumDefinedInBlock3>
+    implements $EnumDefinedInBlock3CopyWith<$Res> {
+  _$EnumDefinedInBlock3CopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -2626,34 +2626,34 @@ class _$EnumDefinedInBlock1CopyWithImpl<$Res, $Val extends EnumDefinedInBlock1>
 }
 
 /// @nodoc
-abstract class _$$EnumDefinedInBlock1_QuitCopyWith<$Res> {
-  factory _$$EnumDefinedInBlock1_QuitCopyWith(
-          _$EnumDefinedInBlock1_Quit value, $Res Function(_$EnumDefinedInBlock1_Quit) then) =
-      __$$EnumDefinedInBlock1_QuitCopyWithImpl<$Res>;
+abstract class _$$EnumDefinedInBlock3_QuitCopyWith<$Res> {
+  factory _$$EnumDefinedInBlock3_QuitCopyWith(
+          _$EnumDefinedInBlock3_Quit value, $Res Function(_$EnumDefinedInBlock3_Quit) then) =
+      __$$EnumDefinedInBlock3_QuitCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$EnumDefinedInBlock1_QuitCopyWithImpl<$Res>
-    extends _$EnumDefinedInBlock1CopyWithImpl<$Res, _$EnumDefinedInBlock1_Quit>
-    implements _$$EnumDefinedInBlock1_QuitCopyWith<$Res> {
-  __$$EnumDefinedInBlock1_QuitCopyWithImpl(
-      _$EnumDefinedInBlock1_Quit _value, $Res Function(_$EnumDefinedInBlock1_Quit) _then)
+class __$$EnumDefinedInBlock3_QuitCopyWithImpl<$Res>
+    extends _$EnumDefinedInBlock3CopyWithImpl<$Res, _$EnumDefinedInBlock3_Quit>
+    implements _$$EnumDefinedInBlock3_QuitCopyWith<$Res> {
+  __$$EnumDefinedInBlock3_QuitCopyWithImpl(
+      _$EnumDefinedInBlock3_Quit _value, $Res Function(_$EnumDefinedInBlock3_Quit) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$EnumDefinedInBlock1_Quit implements EnumDefinedInBlock1_Quit {
-  const _$EnumDefinedInBlock1_Quit();
+class _$EnumDefinedInBlock3_Quit implements EnumDefinedInBlock3_Quit {
+  const _$EnumDefinedInBlock3_Quit();
 
   @override
   String toString() {
-    return 'EnumDefinedInBlock1.quit()';
+    return 'EnumDefinedInBlock3.quit()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$EnumDefinedInBlock1_Quit);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$EnumDefinedInBlock3_Quit);
   }
 
   @override
@@ -2699,10 +2699,10 @@ class _$EnumDefinedInBlock1_Quit implements EnumDefinedInBlock1_Quit {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnumDefinedInBlock1_Quit value) quit,
-    required TResult Function(EnumDefinedInBlock1_Move value) move,
-    required TResult Function(EnumDefinedInBlock1_Write value) write,
-    required TResult Function(EnumDefinedInBlock1_ChangeColor value) changeColor,
+    required TResult Function(EnumDefinedInBlock3_Quit value) quit,
+    required TResult Function(EnumDefinedInBlock3_Move value) move,
+    required TResult Function(EnumDefinedInBlock3_Write value) write,
+    required TResult Function(EnumDefinedInBlock3_ChangeColor value) changeColor,
   }) {
     return quit(this);
   }
@@ -2710,10 +2710,10 @@ class _$EnumDefinedInBlock1_Quit implements EnumDefinedInBlock1_Quit {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumDefinedInBlock1_Quit value)? quit,
-    TResult? Function(EnumDefinedInBlock1_Move value)? move,
-    TResult? Function(EnumDefinedInBlock1_Write value)? write,
-    TResult? Function(EnumDefinedInBlock1_ChangeColor value)? changeColor,
+    TResult? Function(EnumDefinedInBlock3_Quit value)? quit,
+    TResult? Function(EnumDefinedInBlock3_Move value)? move,
+    TResult? Function(EnumDefinedInBlock3_Write value)? write,
+    TResult? Function(EnumDefinedInBlock3_ChangeColor value)? changeColor,
   }) {
     return quit?.call(this);
   }
@@ -2721,10 +2721,10 @@ class _$EnumDefinedInBlock1_Quit implements EnumDefinedInBlock1_Quit {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumDefinedInBlock1_Quit value)? quit,
-    TResult Function(EnumDefinedInBlock1_Move value)? move,
-    TResult Function(EnumDefinedInBlock1_Write value)? write,
-    TResult Function(EnumDefinedInBlock1_ChangeColor value)? changeColor,
+    TResult Function(EnumDefinedInBlock3_Quit value)? quit,
+    TResult Function(EnumDefinedInBlock3_Move value)? move,
+    TResult Function(EnumDefinedInBlock3_Write value)? write,
+    TResult Function(EnumDefinedInBlock3_ChangeColor value)? changeColor,
     required TResult orElse(),
   }) {
     if (quit != null) {
@@ -2734,25 +2734,25 @@ class _$EnumDefinedInBlock1_Quit implements EnumDefinedInBlock1_Quit {
   }
 }
 
-abstract class EnumDefinedInBlock1_Quit implements EnumDefinedInBlock1 {
-  const factory EnumDefinedInBlock1_Quit() = _$EnumDefinedInBlock1_Quit;
+abstract class EnumDefinedInBlock3_Quit implements EnumDefinedInBlock3 {
+  const factory EnumDefinedInBlock3_Quit() = _$EnumDefinedInBlock3_Quit;
 }
 
 /// @nodoc
-abstract class _$$EnumDefinedInBlock1_MoveCopyWith<$Res> {
-  factory _$$EnumDefinedInBlock1_MoveCopyWith(
-          _$EnumDefinedInBlock1_Move value, $Res Function(_$EnumDefinedInBlock1_Move) then) =
-      __$$EnumDefinedInBlock1_MoveCopyWithImpl<$Res>;
+abstract class _$$EnumDefinedInBlock3_MoveCopyWith<$Res> {
+  factory _$$EnumDefinedInBlock3_MoveCopyWith(
+          _$EnumDefinedInBlock3_Move value, $Res Function(_$EnumDefinedInBlock3_Move) then) =
+      __$$EnumDefinedInBlock3_MoveCopyWithImpl<$Res>;
   @useResult
   $Res call({int x, int y});
 }
 
 /// @nodoc
-class __$$EnumDefinedInBlock1_MoveCopyWithImpl<$Res>
-    extends _$EnumDefinedInBlock1CopyWithImpl<$Res, _$EnumDefinedInBlock1_Move>
-    implements _$$EnumDefinedInBlock1_MoveCopyWith<$Res> {
-  __$$EnumDefinedInBlock1_MoveCopyWithImpl(
-      _$EnumDefinedInBlock1_Move _value, $Res Function(_$EnumDefinedInBlock1_Move) _then)
+class __$$EnumDefinedInBlock3_MoveCopyWithImpl<$Res>
+    extends _$EnumDefinedInBlock3CopyWithImpl<$Res, _$EnumDefinedInBlock3_Move>
+    implements _$$EnumDefinedInBlock3_MoveCopyWith<$Res> {
+  __$$EnumDefinedInBlock3_MoveCopyWithImpl(
+      _$EnumDefinedInBlock3_Move _value, $Res Function(_$EnumDefinedInBlock3_Move) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2761,7 +2761,7 @@ class __$$EnumDefinedInBlock1_MoveCopyWithImpl<$Res>
     Object? x = null,
     Object? y = null,
   }) {
-    return _then(_$EnumDefinedInBlock1_Move(
+    return _then(_$EnumDefinedInBlock3_Move(
       x: null == x
           ? _value.x
           : x // ignore: cast_nullable_to_non_nullable
@@ -2776,8 +2776,8 @@ class __$$EnumDefinedInBlock1_MoveCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumDefinedInBlock1_Move implements EnumDefinedInBlock1_Move {
-  const _$EnumDefinedInBlock1_Move({required this.x, required this.y});
+class _$EnumDefinedInBlock3_Move implements EnumDefinedInBlock3_Move {
+  const _$EnumDefinedInBlock3_Move({required this.x, required this.y});
 
   @override
   final int x;
@@ -2786,14 +2786,14 @@ class _$EnumDefinedInBlock1_Move implements EnumDefinedInBlock1_Move {
 
   @override
   String toString() {
-    return 'EnumDefinedInBlock1.move(x: $x, y: $y)';
+    return 'EnumDefinedInBlock3.move(x: $x, y: $y)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumDefinedInBlock1_Move &&
+            other is _$EnumDefinedInBlock3_Move &&
             (identical(other.x, x) || other.x == x) &&
             (identical(other.y, y) || other.y == y));
   }
@@ -2804,8 +2804,8 @@ class _$EnumDefinedInBlock1_Move implements EnumDefinedInBlock1_Move {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumDefinedInBlock1_MoveCopyWith<_$EnumDefinedInBlock1_Move> get copyWith =>
-      __$$EnumDefinedInBlock1_MoveCopyWithImpl<_$EnumDefinedInBlock1_Move>(this, _$identity);
+  _$$EnumDefinedInBlock3_MoveCopyWith<_$EnumDefinedInBlock3_Move> get copyWith =>
+      __$$EnumDefinedInBlock3_MoveCopyWithImpl<_$EnumDefinedInBlock3_Move>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2847,10 +2847,10 @@ class _$EnumDefinedInBlock1_Move implements EnumDefinedInBlock1_Move {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnumDefinedInBlock1_Quit value) quit,
-    required TResult Function(EnumDefinedInBlock1_Move value) move,
-    required TResult Function(EnumDefinedInBlock1_Write value) write,
-    required TResult Function(EnumDefinedInBlock1_ChangeColor value) changeColor,
+    required TResult Function(EnumDefinedInBlock3_Quit value) quit,
+    required TResult Function(EnumDefinedInBlock3_Move value) move,
+    required TResult Function(EnumDefinedInBlock3_Write value) write,
+    required TResult Function(EnumDefinedInBlock3_ChangeColor value) changeColor,
   }) {
     return move(this);
   }
@@ -2858,10 +2858,10 @@ class _$EnumDefinedInBlock1_Move implements EnumDefinedInBlock1_Move {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumDefinedInBlock1_Quit value)? quit,
-    TResult? Function(EnumDefinedInBlock1_Move value)? move,
-    TResult? Function(EnumDefinedInBlock1_Write value)? write,
-    TResult? Function(EnumDefinedInBlock1_ChangeColor value)? changeColor,
+    TResult? Function(EnumDefinedInBlock3_Quit value)? quit,
+    TResult? Function(EnumDefinedInBlock3_Move value)? move,
+    TResult? Function(EnumDefinedInBlock3_Write value)? write,
+    TResult? Function(EnumDefinedInBlock3_ChangeColor value)? changeColor,
   }) {
     return move?.call(this);
   }
@@ -2869,10 +2869,10 @@ class _$EnumDefinedInBlock1_Move implements EnumDefinedInBlock1_Move {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumDefinedInBlock1_Quit value)? quit,
-    TResult Function(EnumDefinedInBlock1_Move value)? move,
-    TResult Function(EnumDefinedInBlock1_Write value)? write,
-    TResult Function(EnumDefinedInBlock1_ChangeColor value)? changeColor,
+    TResult Function(EnumDefinedInBlock3_Quit value)? quit,
+    TResult Function(EnumDefinedInBlock3_Move value)? move,
+    TResult Function(EnumDefinedInBlock3_Write value)? write,
+    TResult Function(EnumDefinedInBlock3_ChangeColor value)? changeColor,
     required TResult orElse(),
   }) {
     if (move != null) {
@@ -2882,30 +2882,30 @@ class _$EnumDefinedInBlock1_Move implements EnumDefinedInBlock1_Move {
   }
 }
 
-abstract class EnumDefinedInBlock1_Move implements EnumDefinedInBlock1 {
-  const factory EnumDefinedInBlock1_Move({required final int x, required final int y}) = _$EnumDefinedInBlock1_Move;
+abstract class EnumDefinedInBlock3_Move implements EnumDefinedInBlock3 {
+  const factory EnumDefinedInBlock3_Move({required final int x, required final int y}) = _$EnumDefinedInBlock3_Move;
 
   int get x;
   int get y;
   @JsonKey(ignore: true)
-  _$$EnumDefinedInBlock1_MoveCopyWith<_$EnumDefinedInBlock1_Move> get copyWith => throw _privateConstructorUsedError;
+  _$$EnumDefinedInBlock3_MoveCopyWith<_$EnumDefinedInBlock3_Move> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EnumDefinedInBlock1_WriteCopyWith<$Res> {
-  factory _$$EnumDefinedInBlock1_WriteCopyWith(
-          _$EnumDefinedInBlock1_Write value, $Res Function(_$EnumDefinedInBlock1_Write) then) =
-      __$$EnumDefinedInBlock1_WriteCopyWithImpl<$Res>;
+abstract class _$$EnumDefinedInBlock3_WriteCopyWith<$Res> {
+  factory _$$EnumDefinedInBlock3_WriteCopyWith(
+          _$EnumDefinedInBlock3_Write value, $Res Function(_$EnumDefinedInBlock3_Write) then) =
+      __$$EnumDefinedInBlock3_WriteCopyWithImpl<$Res>;
   @useResult
   $Res call({String field0});
 }
 
 /// @nodoc
-class __$$EnumDefinedInBlock1_WriteCopyWithImpl<$Res>
-    extends _$EnumDefinedInBlock1CopyWithImpl<$Res, _$EnumDefinedInBlock1_Write>
-    implements _$$EnumDefinedInBlock1_WriteCopyWith<$Res> {
-  __$$EnumDefinedInBlock1_WriteCopyWithImpl(
-      _$EnumDefinedInBlock1_Write _value, $Res Function(_$EnumDefinedInBlock1_Write) _then)
+class __$$EnumDefinedInBlock3_WriteCopyWithImpl<$Res>
+    extends _$EnumDefinedInBlock3CopyWithImpl<$Res, _$EnumDefinedInBlock3_Write>
+    implements _$$EnumDefinedInBlock3_WriteCopyWith<$Res> {
+  __$$EnumDefinedInBlock3_WriteCopyWithImpl(
+      _$EnumDefinedInBlock3_Write _value, $Res Function(_$EnumDefinedInBlock3_Write) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2913,7 +2913,7 @@ class __$$EnumDefinedInBlock1_WriteCopyWithImpl<$Res>
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$EnumDefinedInBlock1_Write(
+    return _then(_$EnumDefinedInBlock3_Write(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -2924,22 +2924,22 @@ class __$$EnumDefinedInBlock1_WriteCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumDefinedInBlock1_Write implements EnumDefinedInBlock1_Write {
-  const _$EnumDefinedInBlock1_Write(this.field0);
+class _$EnumDefinedInBlock3_Write implements EnumDefinedInBlock3_Write {
+  const _$EnumDefinedInBlock3_Write(this.field0);
 
   @override
   final String field0;
 
   @override
   String toString() {
-    return 'EnumDefinedInBlock1.write(field0: $field0)';
+    return 'EnumDefinedInBlock3.write(field0: $field0)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumDefinedInBlock1_Write &&
+            other is _$EnumDefinedInBlock3_Write &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -2949,8 +2949,8 @@ class _$EnumDefinedInBlock1_Write implements EnumDefinedInBlock1_Write {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumDefinedInBlock1_WriteCopyWith<_$EnumDefinedInBlock1_Write> get copyWith =>
-      __$$EnumDefinedInBlock1_WriteCopyWithImpl<_$EnumDefinedInBlock1_Write>(this, _$identity);
+  _$$EnumDefinedInBlock3_WriteCopyWith<_$EnumDefinedInBlock3_Write> get copyWith =>
+      __$$EnumDefinedInBlock3_WriteCopyWithImpl<_$EnumDefinedInBlock3_Write>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2992,10 +2992,10 @@ class _$EnumDefinedInBlock1_Write implements EnumDefinedInBlock1_Write {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnumDefinedInBlock1_Quit value) quit,
-    required TResult Function(EnumDefinedInBlock1_Move value) move,
-    required TResult Function(EnumDefinedInBlock1_Write value) write,
-    required TResult Function(EnumDefinedInBlock1_ChangeColor value) changeColor,
+    required TResult Function(EnumDefinedInBlock3_Quit value) quit,
+    required TResult Function(EnumDefinedInBlock3_Move value) move,
+    required TResult Function(EnumDefinedInBlock3_Write value) write,
+    required TResult Function(EnumDefinedInBlock3_ChangeColor value) changeColor,
   }) {
     return write(this);
   }
@@ -3003,10 +3003,10 @@ class _$EnumDefinedInBlock1_Write implements EnumDefinedInBlock1_Write {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumDefinedInBlock1_Quit value)? quit,
-    TResult? Function(EnumDefinedInBlock1_Move value)? move,
-    TResult? Function(EnumDefinedInBlock1_Write value)? write,
-    TResult? Function(EnumDefinedInBlock1_ChangeColor value)? changeColor,
+    TResult? Function(EnumDefinedInBlock3_Quit value)? quit,
+    TResult? Function(EnumDefinedInBlock3_Move value)? move,
+    TResult? Function(EnumDefinedInBlock3_Write value)? write,
+    TResult? Function(EnumDefinedInBlock3_ChangeColor value)? changeColor,
   }) {
     return write?.call(this);
   }
@@ -3014,10 +3014,10 @@ class _$EnumDefinedInBlock1_Write implements EnumDefinedInBlock1_Write {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumDefinedInBlock1_Quit value)? quit,
-    TResult Function(EnumDefinedInBlock1_Move value)? move,
-    TResult Function(EnumDefinedInBlock1_Write value)? write,
-    TResult Function(EnumDefinedInBlock1_ChangeColor value)? changeColor,
+    TResult Function(EnumDefinedInBlock3_Quit value)? quit,
+    TResult Function(EnumDefinedInBlock3_Move value)? move,
+    TResult Function(EnumDefinedInBlock3_Write value)? write,
+    TResult Function(EnumDefinedInBlock3_ChangeColor value)? changeColor,
     required TResult orElse(),
   }) {
     if (write != null) {
@@ -3027,29 +3027,29 @@ class _$EnumDefinedInBlock1_Write implements EnumDefinedInBlock1_Write {
   }
 }
 
-abstract class EnumDefinedInBlock1_Write implements EnumDefinedInBlock1 {
-  const factory EnumDefinedInBlock1_Write(final String field0) = _$EnumDefinedInBlock1_Write;
+abstract class EnumDefinedInBlock3_Write implements EnumDefinedInBlock3 {
+  const factory EnumDefinedInBlock3_Write(final String field0) = _$EnumDefinedInBlock3_Write;
 
   String get field0;
   @JsonKey(ignore: true)
-  _$$EnumDefinedInBlock1_WriteCopyWith<_$EnumDefinedInBlock1_Write> get copyWith => throw _privateConstructorUsedError;
+  _$$EnumDefinedInBlock3_WriteCopyWith<_$EnumDefinedInBlock3_Write> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EnumDefinedInBlock1_ChangeColorCopyWith<$Res> {
-  factory _$$EnumDefinedInBlock1_ChangeColorCopyWith(
-          _$EnumDefinedInBlock1_ChangeColor value, $Res Function(_$EnumDefinedInBlock1_ChangeColor) then) =
-      __$$EnumDefinedInBlock1_ChangeColorCopyWithImpl<$Res>;
+abstract class _$$EnumDefinedInBlock3_ChangeColorCopyWith<$Res> {
+  factory _$$EnumDefinedInBlock3_ChangeColorCopyWith(
+          _$EnumDefinedInBlock3_ChangeColor value, $Res Function(_$EnumDefinedInBlock3_ChangeColor) then) =
+      __$$EnumDefinedInBlock3_ChangeColorCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0, int field1, int field2});
 }
 
 /// @nodoc
-class __$$EnumDefinedInBlock1_ChangeColorCopyWithImpl<$Res>
-    extends _$EnumDefinedInBlock1CopyWithImpl<$Res, _$EnumDefinedInBlock1_ChangeColor>
-    implements _$$EnumDefinedInBlock1_ChangeColorCopyWith<$Res> {
-  __$$EnumDefinedInBlock1_ChangeColorCopyWithImpl(
-      _$EnumDefinedInBlock1_ChangeColor _value, $Res Function(_$EnumDefinedInBlock1_ChangeColor) _then)
+class __$$EnumDefinedInBlock3_ChangeColorCopyWithImpl<$Res>
+    extends _$EnumDefinedInBlock3CopyWithImpl<$Res, _$EnumDefinedInBlock3_ChangeColor>
+    implements _$$EnumDefinedInBlock3_ChangeColorCopyWith<$Res> {
+  __$$EnumDefinedInBlock3_ChangeColorCopyWithImpl(
+      _$EnumDefinedInBlock3_ChangeColor _value, $Res Function(_$EnumDefinedInBlock3_ChangeColor) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -3059,7 +3059,7 @@ class __$$EnumDefinedInBlock1_ChangeColorCopyWithImpl<$Res>
     Object? field1 = null,
     Object? field2 = null,
   }) {
-    return _then(_$EnumDefinedInBlock1_ChangeColor(
+    return _then(_$EnumDefinedInBlock3_ChangeColor(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -3078,8 +3078,8 @@ class __$$EnumDefinedInBlock1_ChangeColorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumDefinedInBlock1_ChangeColor implements EnumDefinedInBlock1_ChangeColor {
-  const _$EnumDefinedInBlock1_ChangeColor(this.field0, this.field1, this.field2);
+class _$EnumDefinedInBlock3_ChangeColor implements EnumDefinedInBlock3_ChangeColor {
+  const _$EnumDefinedInBlock3_ChangeColor(this.field0, this.field1, this.field2);
 
   @override
   final int field0;
@@ -3090,14 +3090,14 @@ class _$EnumDefinedInBlock1_ChangeColor implements EnumDefinedInBlock1_ChangeCol
 
   @override
   String toString() {
-    return 'EnumDefinedInBlock1.changeColor(field0: $field0, field1: $field1, field2: $field2)';
+    return 'EnumDefinedInBlock3.changeColor(field0: $field0, field1: $field1, field2: $field2)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumDefinedInBlock1_ChangeColor &&
+            other is _$EnumDefinedInBlock3_ChangeColor &&
             (identical(other.field0, field0) || other.field0 == field0) &&
             (identical(other.field1, field1) || other.field1 == field1) &&
             (identical(other.field2, field2) || other.field2 == field2));
@@ -3109,8 +3109,8 @@ class _$EnumDefinedInBlock1_ChangeColor implements EnumDefinedInBlock1_ChangeCol
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EnumDefinedInBlock1_ChangeColorCopyWith<_$EnumDefinedInBlock1_ChangeColor> get copyWith =>
-      __$$EnumDefinedInBlock1_ChangeColorCopyWithImpl<_$EnumDefinedInBlock1_ChangeColor>(this, _$identity);
+  _$$EnumDefinedInBlock3_ChangeColorCopyWith<_$EnumDefinedInBlock3_ChangeColor> get copyWith =>
+      __$$EnumDefinedInBlock3_ChangeColorCopyWithImpl<_$EnumDefinedInBlock3_ChangeColor>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -3152,10 +3152,10 @@ class _$EnumDefinedInBlock1_ChangeColor implements EnumDefinedInBlock1_ChangeCol
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnumDefinedInBlock1_Quit value) quit,
-    required TResult Function(EnumDefinedInBlock1_Move value) move,
-    required TResult Function(EnumDefinedInBlock1_Write value) write,
-    required TResult Function(EnumDefinedInBlock1_ChangeColor value) changeColor,
+    required TResult Function(EnumDefinedInBlock3_Quit value) quit,
+    required TResult Function(EnumDefinedInBlock3_Move value) move,
+    required TResult Function(EnumDefinedInBlock3_Write value) write,
+    required TResult Function(EnumDefinedInBlock3_ChangeColor value) changeColor,
   }) {
     return changeColor(this);
   }
@@ -3163,10 +3163,10 @@ class _$EnumDefinedInBlock1_ChangeColor implements EnumDefinedInBlock1_ChangeCol
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumDefinedInBlock1_Quit value)? quit,
-    TResult? Function(EnumDefinedInBlock1_Move value)? move,
-    TResult? Function(EnumDefinedInBlock1_Write value)? write,
-    TResult? Function(EnumDefinedInBlock1_ChangeColor value)? changeColor,
+    TResult? Function(EnumDefinedInBlock3_Quit value)? quit,
+    TResult? Function(EnumDefinedInBlock3_Move value)? move,
+    TResult? Function(EnumDefinedInBlock3_Write value)? write,
+    TResult? Function(EnumDefinedInBlock3_ChangeColor value)? changeColor,
   }) {
     return changeColor?.call(this);
   }
@@ -3174,10 +3174,10 @@ class _$EnumDefinedInBlock1_ChangeColor implements EnumDefinedInBlock1_ChangeCol
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumDefinedInBlock1_Quit value)? quit,
-    TResult Function(EnumDefinedInBlock1_Move value)? move,
-    TResult Function(EnumDefinedInBlock1_Write value)? write,
-    TResult Function(EnumDefinedInBlock1_ChangeColor value)? changeColor,
+    TResult Function(EnumDefinedInBlock3_Quit value)? quit,
+    TResult Function(EnumDefinedInBlock3_Move value)? move,
+    TResult Function(EnumDefinedInBlock3_Write value)? write,
+    TResult Function(EnumDefinedInBlock3_ChangeColor value)? changeColor,
     required TResult orElse(),
   }) {
     if (changeColor != null) {
@@ -3187,14 +3187,14 @@ class _$EnumDefinedInBlock1_ChangeColor implements EnumDefinedInBlock1_ChangeCol
   }
 }
 
-abstract class EnumDefinedInBlock1_ChangeColor implements EnumDefinedInBlock1 {
-  const factory EnumDefinedInBlock1_ChangeColor(final int field0, final int field1, final int field2) =
-      _$EnumDefinedInBlock1_ChangeColor;
+abstract class EnumDefinedInBlock3_ChangeColor implements EnumDefinedInBlock3 {
+  const factory EnumDefinedInBlock3_ChangeColor(final int field0, final int field1, final int field2) =
+      _$EnumDefinedInBlock3_ChangeColor;
 
   int get field0;
   int get field1;
   int get field2;
   @JsonKey(ignore: true)
-  _$$EnumDefinedInBlock1_ChangeColorCopyWith<_$EnumDefinedInBlock1_ChangeColor> get copyWith =>
+  _$$EnumDefinedInBlock3_ChangeColorCopyWith<_$EnumDefinedInBlock3_ChangeColor> get copyWith =>
       throw _privateConstructorUsedError;
 }

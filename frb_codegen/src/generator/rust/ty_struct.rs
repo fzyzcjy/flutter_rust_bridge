@@ -23,7 +23,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                     String::new()
                 };
 
-                let shared_mod_name = self.get_shared_module_of_a_type(&field.ty);
+                let shared_mod_name = self.get_type_share_module(&field.ty);
                 Acc {
                     io: if !self.context.config.shared && shared_mod_name.is_some() {
                         format!(
@@ -136,8 +136,8 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                 };
                 let gen = TypeRustGenerator::new(
                     field.ty.clone(),
-                    self.context.ir_file,
                     self.context.config,
+                    self.context.all_configs,
                 );
 
                 gen.convert_to_dart(format!("self{unwrap}.{field_ref}"))

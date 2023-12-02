@@ -1,593 +1,246 @@
-use convert_case::{Case, Casing};
-
-use crate::target::Target;
-use crate::utils::misc::{is_multi_blocks_case, mod_from_rust_path, BlockIndex, ShareMode};
-use crate::{generator, ir::*, Opts};
-use std::collections::{HashMap, HashSet};
-use std::thread;
-
-use crate::utils::misc::ExtraTraitForVec;
+use crate::utils::misc::{get_rust_module_by_path, BlockIndex, ExtraTraitForVec, IrTypeUseRange};
+use crate::{ir::*, parser};
+use std::collections::{BTreeMap, HashMap, HashSet};
 
 pub type IrStructPool = HashMap<String, IrStruct>;
 pub type IrEnumPool = HashMap<String, IrEnum>;
 
-use std::cell::RefCell;
-
-// this variable should be `none` for single block case, and not none for multi-blocks case.
-thread_local!(pub static SHARED_MODULE: RefCell<Option<String>> = RefCell::new(None));
-
-// shared types among all regular API blocks, in context of function paramters
-thread_local!(pub static SHARED_TYPES_INPUT: RefCell<HashSet<IrType>> = RefCell::new(HashSet::new()));
-thread_local!(static FETCHED_FOR_SHARED_TYPES_INPUT: RefCell<bool> = RefCell::new(false));
-
-// shared types among all regular API blocks in context of function outputs
-thread_local!(static SHARED_TYPES_OUTPUT: RefCell<HashSet<IrType>> = RefCell::new(HashSet::new()));
-thread_local!(static FETCHED_FOR_SHARED_TYPES_OUTPUT: RefCell<bool> = RefCell::new(false));
-
-// shared types among all regular API blocks
-thread_local!(static SHARED_TYPES_ALL: RefCell<HashSet<IrType>> = RefCell::new(HashSet::new()));
-thread_local!(static FETCHED_FOR_SHARED_TYPES_ALL: RefCell<bool> = RefCell::new(false));
-
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize))]
 pub struct IrFile {
-    /// for a regular API block: this field contains APIs defined in this block and
-    /// all methods of types(struct/enum) used ONLY in this block
-    /// ---NOTE: for shared types used in this block, their methods are also included here;
-    /// for a shared block: it ONLY contains methods from ALL shared types.
-    funcs: Vec<IrFunc>,
+    manifest_path: String,  // the full path to the Rust Cargo.toml file
+    path: String,           // the full path to the Rust file defining this IrFile
+    pub funcs: Vec<IrFunc>, // IrFuncs used in this IrFile
+    pub types: Vec<IrType>, // IrTypes used in this IrFile
     pub struct_pool: IrStructPool,
     pub enum_pool: IrEnumPool,
     pub has_executor: bool,
-    pub block_index: BlockIndex,
-    pub shared: bool, // `true`: if it is an auto-generated block for shared stuff; `false`: regular API block
+    pub types_use_range_map: HashMap<IrType, HashSet<IrTypeUseRange>>,
+    pub block_index: BlockIndex, // Regular blocks takes index starting from 0 with `Some`. For the shared block, this field should be `None`.
 }
 
 impl IrFile {
-    pub fn funcs(&self, exclude_shared_method: bool) -> Vec<IrFunc> {
-        if !self.shared && exclude_shared_method {
-            self.funcs
-                .iter()
-                .filter(|each| each.share_mode == ShareMode::Unique)
-                .cloned()
-                .collect()
+    pub fn new(
+        manifest_path: &str,
+        rust_file_path: &str,
+        funcs: Vec<IrFunc>,
+        shared_types_map: Option<HashMap<IrType, HashSet<IrTypeUseRange>>>,
+        struct_pool: IrStructPool,
+        enum_pool: IrEnumPool,
+        has_executor: bool,
+        block_index: BlockIndex,
+    ) -> IrFile {
+        // raw ir file
+        let mut ir_file = IrFile {
+            manifest_path: manifest_path.to_string(),
+            path: rust_file_path.to_string(),
+            funcs,
+            types: vec![],
+            struct_pool,
+            enum_pool,
+            has_executor,
+            block_index,
+            types_use_range_map: HashMap::new(),
+        };
+        // refine fields
+        ir_file.funcs.iter_mut().for_each(|f| f.refine());
+        ir_file.refine_types(shared_types_map);
+        // return
+        ir_file
+    }
+
+    /// It returns `true` if it is for an auto-generated block
+    /// for shared stuff(`shared block` for short); Otherwise it would return `false`.
+    pub fn is_shared(&self) -> bool {
+        self.block_index.is_shared()
+    }
+
+    fn refine_types(&mut self, shared_types_map: Option<HashMap<IrType, HashSet<IrTypeUseRange>>>) {
+        if let Some(types_map) = shared_types_map {
+            assert!(self.is_shared());
+            assert!(self.types_use_range_map.is_empty());
+            self.types = types_map.keys().cloned().collect();
+            self.types_use_range_map = types_map;
         } else {
-            self.funcs.clone()
+            assert!(!self.is_shared());
+            // collect inputs and outputs into self.types_use_range_map
+            let inputs = self
+                .funcs
+                .iter()
+                .flat_map(|f| f.get_types_used(true, false, false, self))
+                .collect::<Vec<_>>()
+                .find_uniques_in_order(false);
+            let outputs = self
+                .funcs
+                .iter()
+                .flat_map(|f| f.get_types_used(false, true, false, self))
+                .collect::<Vec<_>>()
+                .find_uniques_in_order(false);
+
+            assert!(self.types_use_range_map.is_empty());
+            for ir_type in &inputs {
+                self.types_use_range_map
+                    .insert(ir_type.clone(), HashSet::from([IrTypeUseRange::Input]));
+            }
+            for ir_type in outputs {
+                self.types_use_range_map
+                    .entry(ir_type)
+                    .and_modify(|value| {
+                        value.insert(IrTypeUseRange::Output);
+                    })
+                    .or_insert(HashSet::from([IrTypeUseRange::Output]));
+            }
         }
+
+        log::debug!(
+            "for block:{}, types_use_range_map:\n{:#?}",
+            self.block_index,
+            self.types_use_range_map
+        ); // TODO: delete
+
+        // refine types_use_range_map
+        // if the key is a boxed type, then make sure its value has no output,
+        // if the key is a syncReturn type, then make sure its value has no input.
+        for (ir_type, type_use_range) in self.types_use_range_map.iter_mut() {
+            assert!(
+                !type_use_range.is_empty(),
+                "the type `{:?}` with safe_ident `{}` is empty before refinement",
+                ir_type,
+                ir_type.safe_ident()
+            );
+            if let IrType::Boxed(_) = ir_type {
+                type_use_range.remove(&IrTypeUseRange::Output);
+            }
+            if let IrType::SyncReturn(_) = ir_type {
+                type_use_range.remove(&IrTypeUseRange::Input);
+            }
+            assert!(
+                !type_use_range.is_empty(),
+                "the type `{:?}` with safe_ident `{}` is empty after refinement",
+                ir_type,
+                ir_type.safe_ident()
+            );
+        }
+
+        // collect self.types
+        self.types = self.types_use_range_map.keys().cloned().collect();
     }
 
     pub fn set_funcs(&mut self, dst_funcs: Vec<IrFunc>) {
         self.funcs = dst_funcs;
     }
 
-    pub fn append_funcs(&mut self, dst_funcs: Vec<IrFunc>) {
-        self.funcs.extend(dst_funcs);
+    pub fn add_func(&mut self, dst_func: IrFunc) {
+        self.funcs.push(dst_func);
     }
 
-    /// Returns a vector of all shared methods in the file.
-    /// For a regular API block, this method returns all methods of shared types used in this block.
-    /// For a shared block, it returns all methods from all shared types.
-    pub fn get_shared_methods(&self) -> Vec<IrFunc> {
-        if self.shared {
-            assert!(self.funcs.iter().all(|x| x.share_mode == ShareMode::Shared));
-            self.funcs.clone()
-        } else {
-            self.funcs
-                .iter()
-                .cloned()
-                .filter(|each| each.share_mode == ShareMode::Shared)
-                .collect::<Vec<_>>()
-        }
+    pub fn set_shared_types(&mut self, types: Vec<IrType>) {
+        assert!(self.block_index.is_shared());
+        self.types = types;
     }
 
-    pub fn new(
-        funcs: Vec<IrFunc>,
-        struct_pool: IrStructPool,
-        enum_pool: IrEnumPool,
-        has_executor: bool,
-        block_index: BlockIndex,
-        all_configs: &[Opts],
-        share: bool,
-    ) -> IrFile {
-        let ir_fie = IrFile {
-            funcs,
-            struct_pool,
-            enum_pool,
-            has_executor,
-            block_index,
-            shared: share,
-        };
-
-        // Get shared types in advance here, because these types will be used multiple times later for multi-blocks case.
-        ir_fie.fetch_shared_types_if_needed(all_configs);
-
-        ir_fie
-    }
-
-    /// [f] returns [true] if it wants to stop going to the *children* of this subtree
-    pub fn visit_types<F: FnMut(&IrType) -> bool>(
-        &self,
-        f: &mut F,
-        include_func_inputs: bool,
-        include_func_output: bool,
+    /// This method would parse all types and Apis(functions and methods) used but not defined in the original regular Api file.
+    /// In detail, it would update `self.types` and the `self.funcs` for the IrFile instance.
+    pub fn parse_types_and_methods_in_extra_files_for_regular_block(
+        &mut self,
+        avoid_file_paths: &[&String],
     ) {
-        for func in &self.funcs(false) {
-            if include_func_inputs {
-                for field in &func.inputs {
-                    field.ty.visit_types(f, self);
-                }
-            }
-            if include_func_output {
-                func.output.visit_types(f, self);
-                if let Some(error_output) = &func.error_output {
-                    error_output.visit_types(f, self);
-                }
-            }
-        }
-    }
-
-    pub fn get_c_struct_names(&self, all_configs: &[Opts]) -> Vec<String> {
-        let c_struct_names = self
-            .distinct_types(true, true, all_configs)
-            .iter()
-            .filter_map(|ty| {
-                if let IrType::StructRef(_) = ty {
-                    Some(ty.rust_wire_type(Target::Io))
-                } else {
-                    None
-                }
-            })
-            .collect();
-        c_struct_names
-    }
-
-    /// get distinct types for this IrFile instance
-    /// for either a regular or an auto-generated shared API block.
-    /// NOTE: in multi-blocks case, the output would NOT include shared types for a regular block IrFile;
-    /// and it would ONLY contain shared types for a shared block IrFile.
-    pub fn distinct_types(
-        &self,
-        include_func_inputs: bool,
-        include_func_output: bool,
-        all_configs: &[Opts],
-    ) -> Vec<IrType> {
-        let shared_types = self.get_shared_distinct_types_for_all_blocks(
-            include_func_inputs,
-            include_func_output,
-            all_configs,
-        );
-        let types = if self.shared {
-            shared_types
-        } else {
-            let raw_distinct_types =
-                self.get_regular_distinct_types(include_func_inputs, include_func_output);
-
-            // NOTE: for `raw_distinct_types`, don't distinguished by hash, but by safe_ident(),
-            // since some types have different hashes, but the same safe_ident().
-            raw_distinct_types
-                .into_iter()
-                .filter(|item| {
-                    !shared_types.iter().any(|other_item| {
-                        let cond1 =
-                            format!("box_autoadd_{}", other_item.safe_ident()) == item.safe_ident();
-                        let cond2 =
-                            format!("box_autoadd_{}", item.safe_ident()) == other_item.safe_ident();
-                        let cond3 = item.safe_ident() == other_item.safe_ident();
-
-                        match (include_func_inputs, include_func_output) {
-                            (true, true) => cond1 || cond2 || cond3,
-                            (true, false) => cond1 || cond3,
-                            (false, true) => cond2 || cond3,
-                            (false, false) => unreachable!(),
-                        }
-                    })
-                })
-                .collect::<HashSet<_>>()
-        };
-
-        let mut types = types.into_iter().collect::<Vec<_>>();
-        types.sort_by_key(|ty| ty.safe_ident());
-        types
-    }
-
-    /// Get dinstinct types only for a regular API block(the current IrFile instance).
-    /// NOTE: in multi-blocks case, the returned items would include shared types
-    /// usded in the specific regular block.
-    fn get_regular_distinct_types(
-        &self,
-        include_func_inputs: bool,
-        include_func_output: bool,
-    ) -> HashSet<IrType> {
-        assert!(include_func_inputs || include_func_output);
-        assert!(!self.shared);
-        let mut seen_idents = HashSet::new();
-        let mut ans = Vec::new();
-        self.visit_types(
-            &mut |ty| {
-                let ident = ty.safe_ident();
-                let contains = seen_idents.contains(&ident);
-                if !contains {
-                    seen_idents.insert(ident);
-                    ans.push(ty.clone());
-                }
-                contains
-            },
-            include_func_inputs,
-            include_func_output,
+        assert!(!self.is_shared());
+        log::info!(
+            "Phase: Refine Api and Types defined in extra rust files for regular block: {}",
+            self.block_index
         );
 
-        ans.into_iter().collect::<HashSet<_>>()
-    }
+        // 1. define type_pool_map from `struct_pool` and `enum_pool` in an ordered map
+        let mut file_type_map = BTreeMap::new();
+        for value in self.struct_pool.values() {
+            let struct_paths = value.path.clone().unwrap();
+            let raw_path = format!("{}.rs", struct_paths[..struct_paths.len() - 1].join("/"));
+            let type_name = struct_paths.last().unwrap();
 
-    /// Get shared types in context of both function inputs and outputs.
-    /// for a regular IrFile, only shared types used in this block would be returned.
-    /// for a shared IrFile, all shared types would be returned.
-    fn get_shared_distinct_types_for_current_block(&self) -> HashSet<IrType> {
-        let global_shared = self.get_shared_distinct_types_for_all_blocks(true, true, &[]);
-        if self.shared {
-            global_shared
-        } else {
-            self.get_regular_distinct_types(true, true)
-                .intersection(&global_shared)
-                .map(|s| s.to_owned())
-                .collect()
+            file_type_map
+                .entry(raw_path.clone())
+                .and_modify(|v: &mut Vec<String>| v.push(type_name.to_string().clone()))
+                .or_insert(vec![type_name.to_string()]);
         }
-    }
-
-    /// Whatever this IrFile instance represents for, this method would get shared types through `all_configs`,
-    /// which refers to a list may or may not include the shared config at the last index.
-    /// For single-block case, it should return empty.
-    /// For multi-block case, it should return ALL shared types among ALL regular
-    /// blocks, which means that some of the shared types may not be used in all regular blocks.
-    /// Also note `include_func_inputs` and `include_func_output` are essential for getting
-    /// shared types for different context.
-    fn get_shared_distinct_types_for_all_blocks(
-        &self,
-        include_func_inputs: bool,
-        include_func_output: bool,
-        all_configs: &[Opts],
-    ) -> HashSet<IrType> {
-        let fetch_func =
-            |global_shared_types: &'static thread::LocalKey<RefCell<HashSet<IrType>>>,
-             global_fetched: &'static thread::LocalKey<RefCell<bool>>| {
-                global_fetched.with(|has_fetched| {
-                    global_shared_types.with(|shared| {
-                        let mut shares = shared.borrow_mut();
-
-                        if all_configs.len() <= 1 {
-                            // CASE 1: it is single block case;
-                            // CASE 2: it is multi-blocks case, but `all_configs` is not available;
-                            return shares.clone();
-                        }
-
-                        // For multi-blocks case, directly return it if it is fetched before.
-                        let mut fetched: std::cell::RefMut<bool> = has_fetched.borrow_mut();
-                        if *fetched {
-                            return shares.clone();
-                        }
-
-                        // If not fetched before, do it from scracth.
-
-                        *shares = self.get_shared_types_for_all_blocks_from_scratch(
-                            include_func_inputs,
-                            include_func_output,
-                            all_configs,
-                        );
-
-                        *fetched = true;
-                        shares.clone()
-                    })
-                })
-            };
-
-        match (include_func_inputs, include_func_output) {
-            (true, true) => fetch_func(&SHARED_TYPES_ALL, &FETCHED_FOR_SHARED_TYPES_ALL),
-            (true, false) => fetch_func(&SHARED_TYPES_INPUT, &FETCHED_FOR_SHARED_TYPES_INPUT),
-            (false, true) => fetch_func(&SHARED_TYPES_OUTPUT, &FETCHED_FOR_SHARED_TYPES_OUTPUT),
-            (false, false) => panic!("either input or output should be true"),
-        }
-    }
-    /// Whatever the last config is shared or not,
-    /// this method would get shared types through `all_configs`,
-    fn get_shared_types_for_all_blocks_from_scratch(
-        &self,
-        include_func_inputs: bool,
-        include_func_output: bool,
-        all_configs: &[Opts],
-    ) -> HashSet<IrType> {
-        let regular_configs = if all_configs.last().unwrap().shared {
-            &all_configs[0..all_configs.len() - 1]
-        } else {
-            all_configs
-        };
-        assert!(regular_configs.iter().all(|c| !c.shared));
-        let mut regular_block_uniques = Vec::new();
-        let mut all_regular_types = Vec::new();
-        let mut regular_ir_files = Vec::new();
-        for config in regular_configs.iter() {
-            let ir_file = config.get_ir_file(&[]).unwrap(); // all_configs` is empty, no need to care about other configs here
-            let distinct_types =
-                ir_file.get_regular_distinct_types(include_func_inputs, include_func_output);
-            regular_ir_files.push(ir_file.clone());
-            all_regular_types.extend(distinct_types.clone());
-
-            regular_block_uniques.push(distinct_types);
+        for value in self.enum_pool.values() {
+            let enum_paths = value.path.clone();
+            let raw_path = format!("{}.rs", enum_paths[..enum_paths.len() - 1].join("/"));
+            let type_name: &String = enum_paths.last().unwrap();
+            file_type_map
+                .entry(raw_path.clone())
+                .and_modify(|v: &mut Vec<String>| v.push(type_name.to_string().clone()))
+                .or_insert(vec![type_name.to_string()]);
         }
 
-        // pick out the raw shared types
-        let mut shares = all_regular_types
-            .find_duplicates_in_order(true)
-            .into_iter()
-            .collect::<HashSet<_>>();
-        //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓for cross shared types↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-        if self.shared {
-            unreachable!(
-                "when dealing cross shared types for a shared IrFile,
-                 there should have been some shared types got
-                 when dealing with regular IrFile before."
-            )
-        } else {
-            for (i, each_block_set) in regular_block_uniques.iter().enumerate() {
-                for suspected_shared_type in each_block_set {
-                    self.add_cross_shared_types(
-                        suspected_shared_type,
-                        BlockIndex(i),
-                        &mut shares,
-                        &regular_ir_files,
-                        include_func_inputs,
-                        include_func_output,
-                    );
-                }
-            }
+        if self.block_index == Some(0) {
+            log::debug!(
+                "the block 0 map len is:{:?}, they are:\n{file_type_map:?}",
+                file_type_map.len()
+            ); // TODO: delete
         }
-        //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑for cross shared types↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
-
-        //↓↓↓↓↓↓↓↓↓↓↓↓for types with same idents but different hashes↓↓↓↓↓↓↓↓↓↓↓↓
-        // Suppose there is a type `String`, it is used as output for a function defined in a
-        // regular block and used as output type of `SyncReturn` version in anthoer function of
-        // another regular block, then the above logic would not treat `String` and the `SyncReturn`
-        // version of it as shared types, which both should be.
-        for (i, set) in regular_block_uniques.iter().enumerate() {
-            for item in set {
-                // if item.safe_ident().contains("SharedStructOnlyForSyncTest"){
-                if shares.contains(item) {
+        // 2. add extra methods and types defined in extra rust files
+        for (type_def_path, types_names) in &file_type_map {
+            for each_type_name in types_names {
+                // 2.1 parse the extra rust file with the specific type
+                assert!(type_def_path.contains("crate/"));
+                let extra_rust_file_path = type_def_path
+                    .replace("crate/", &self.manifest_path.replace("Cargo.toml", "src/"));
+                if get_rust_module_by_path(&extra_rust_file_path).is_none() {
                     continue;
                 }
-                for (_, other_set) in regular_block_uniques.iter().enumerate().skip(i + 1) {
-                    // Note: There is no need to check `item` with that in `shares` additionally.
-                    // With cross types got above, the below logic is enough
-                    // to cover all other cases.
-                    for other_item in other_set {
-                        let cond1 = item.safe_ident() == other_item.safe_ident();
-                        let cond2 =
-                            format!("box_autoadd_{}", item.safe_ident()) == other_item.safe_ident();
-                        let cond3 =
-                            format!("box_autoadd_{}", other_item.safe_ident()) == item.safe_ident();
-                        if cond1 || cond2 || cond3 {
-                            shares.insert(item.clone());
-                            shares.insert(other_item.clone());
-                        }
-                    }
+                if avoid_file_paths.contains(&&extra_rust_file_path) {
+                    continue;
                 }
+                // 2.2 parse the extra rust file for the specific type
+                let extra_type_ir_file = parser::parse_a_rust_file(
+                    &self.manifest_path,
+                    &extra_rust_file_path,
+                    self.block_index,
+                    Some(&[each_type_name]),
+                )
+                .unwrap();
+                // 2.3 combine the extra ir file into the original ir file
+                self.combine(extra_type_ir_file);
             }
         }
-        //↑↑↑↑↑↑↑↑↑↑↑↑for types with same idents but different hashes↑↑↑↑↑↑↑↑↑↑↑↑
-
-        shares
     }
 
-    /// For a CROSS shared type which is shared as an input parameter ONLY ONCE in one block
-    /// and shared as an output value in ANOTHER/OTHER block(s) or vice versa,
-    /// the current logic of `get_regular_distinct_types(..)` would not pick it out,
-    /// even both `include_func_inputs` and `include_func_output` are set true.
-    /// because the signatures for the same raw type(e.g. `bool`) are different when it is used as input and output of a function.
-    /// But indeed, this special kind of type should be treated as shared type within
-    /// either input or output context or both.
-    /// Thus, here comes an extra manipulation to pick it out.
-    fn add_cross_shared_types(
-        &self,
-        suspected_shared_type: &IrType,
-        block_index: BlockIndex,
-        shares: &mut HashSet<IrType>,
-        regular_ir_files: &[IrFile],
-        include_func_inputs: bool,
-        include_func_output: bool,
-    ) {
-        match (include_func_inputs, include_func_output) {
-            (true, true) => {
-                for ir_file in regular_ir_files.iter() {
-                    if ir_file.block_index != block_index {
-                        let oppo_distinct_types = ir_file.get_regular_distinct_types(true, true);
-                        let found = oppo_distinct_types.iter().find(|each| {
-                            let cond1 = format!("box_autoadd_{}", each.safe_ident())
-                                == suspected_shared_type.safe_ident();
-                            let cond2 =
-                                format!("box_autoadd_{}", suspected_shared_type.safe_ident())
-                                    == each.safe_ident();
-                            let cond3 = suspected_shared_type.safe_ident() == each.safe_ident();
-                            cond1 || cond2 || cond3
-                        });
-                        if found.is_some() {
-                            shares.insert(suspected_shared_type.clone());
-                            break;
-                        }
-                    }
-                }
-            }
-            (true, false) => {
-                for each_ir_file in regular_ir_files.iter() {
-                    if each_ir_file.block_index != block_index {
-                        let oppo_distinct_types = each_ir_file
-                            .get_regular_distinct_types(!include_func_inputs, !include_func_output);
-                        let found = oppo_distinct_types.iter().find(|each| {
-                            format!("box_autoadd_{}", each.safe_ident())
-                                == suspected_shared_type.safe_ident()
-                                || suspected_shared_type.safe_ident() == each.safe_ident()
-                        });
-                        if found.is_some() {
-                            shares.insert(suspected_shared_type.clone());
-                            break;
-                        }
-                    }
-                }
-            }
-            (false, true) => {
-                for ir_file in regular_ir_files.iter() {
-                    if ir_file.block_index != block_index {
-                        let oppo_distinct_types = ir_file
-                            .get_regular_distinct_types(!include_func_inputs, !include_func_output);
-                        let found = oppo_distinct_types.iter().find(|each| {
-                            format!("box_autoadd_{}", suspected_shared_type.safe_ident())
-                                == each.safe_ident()
-                                || suspected_shared_type.safe_ident() == each.safe_ident()
-                        });
-                        if found.is_some() {
-                            shares.insert(suspected_shared_type.clone());
-                            break;
-                        }
-                    }
-                }
-            }
-            (false, false) => unreachable!(),
+    /// Combine `extra_ir_file` into `self`.
+    /// A minor issue: if a type defined in `extra_ir_file` is already in `self.types`,
+    /// it would be removed. While logically, even with the same type definition,
+    /// as long as they are defined in different files, they should be treated as distinct types.
+    /// This "issue" is ignored, since defining types with the same name but in different files
+    /// is not a good practice.
+    fn combine(&mut self, extra_ir_file: Self) {
+        // refine funcs
+        self.funcs.extend(extra_ir_file.funcs.clone());
+        self.funcs = self.funcs.find_uniques_in_order(false);
+        // refine types
+        self.types.extend(extra_ir_file.types.clone());
+        self.types = self.types.find_uniques_in_order(false);
+        // extend `extra_ir_file.struct_pool` using loop to avoid duplication
+        for (key, value) in extra_ir_file.struct_pool {
+            self.struct_pool.entry(key).or_insert(value);
+        }
+        // extend `extra_ir_file.enum_pool` using loop to avoid duplication
+        for (key, value) in extra_ir_file.enum_pool {
+            self.enum_pool.entry(key).or_insert(value);
+        }
+        // extend `type_use_range_map` using loop to avoid duplication
+        for (key, value) in extra_ir_file.types_use_range_map {
+            self.types_use_range_map
+                .entry(key)
+                .and_modify(|v| v.extend(value.clone()))
+                .or_insert(value);
         }
     }
-
-    pub fn generate_rust(&self, config: &Opts, all_configs: &[Opts]) -> generator::rust::Output {
-        let regular_mod = mod_from_rust_path(config, false).unwrap();
-        let shared_mod = if is_multi_blocks_case(None) {
-            SHARED_MODULE.with(|text| {
-                let mut x = text.borrow_mut();
-                if x.is_none() {
-                    *x = mod_from_rust_path(config, true);
-                }
-                x.clone()
-            })
-        } else {
-            None
-        };
-
-        generator::rust::generate(
-            self,
-            &regular_mod,
-            shared_mod.as_deref(),
-            config,
-            all_configs,
-        )
-    }
-
-    pub fn generate_dart(
-        &self,
-        config: &Opts,
-        all_configs: &[Opts],
-        wasm_funcs: &[IrFuncDisplay],
-    ) -> generator::dart::Output {
-        generator::dart::generate(self, config, all_configs, wasm_funcs)
-    }
-
-    /// Get all symbols(function names) defined explicitly or implictily.
-    /// It is ok to just parse 1 config, whatever it is for single or multi-blocks case,
-    /// since only symbols related to the specific config is needed.
-    pub fn get_all_symbols(&self, config: &Opts) -> Vec<String> {
-        self.generate_rust(config, &[config.clone()])
-            .extern_func_names
-    }
-
-    /// check if `ty` is sharely used in current block
-    pub fn is_type_shared_by_safe_ident(&self, ty: &IrType) -> ShareMode {
-        let get_shared_distinct_types_for_current_block =
-            &self.get_shared_distinct_types_for_current_block();
-        let found_op = get_shared_distinct_types_for_current_block
-            .iter()
-            .find(|each| each.safe_ident() == ty.safe_ident());
-        if found_op.is_some() {
-            return ShareMode::Shared;
-        }
-        ShareMode::Unique
-    }
-
-    /// if `only_for_this_block` is `true`,
-    /// then it returns shared types used in current IrFile block(for shared IrFile，it returns all shared types);
-    /// otherwise, it returns shared types used in all blocks，whatever the IrFile represents for.
-    pub fn get_shared_type_names(
-        &self,
-        only_for_this_block: bool,
-        filter_func: Option<impl Fn(&IrType) -> bool>,
-    ) -> Vec<String> {
-        let shared_types = match only_for_this_block {
-            true => self.get_shared_distinct_types_for_current_block(),
-            false => self.get_shared_distinct_types_for_all_blocks(true, true, &[]),
-        };
-
-        let shared_types = match filter_func {
-            Some(f) => shared_types.into_iter().filter(|ty| f(ty)).collect(),
-            None => shared_types,
-        };
-
-        let mut f = shared_types
-            .iter()
-            .map(|ty| {
-                let safe_ident = ty.safe_ident();
-                if !ty.is_list(true) {
-                    safe_ident.to_case(Case::Pascal)
-                } else {
-                    safe_ident
-                }
-            })
-            .collect::<Vec<_>>();
-
-        // deduplicated
-        f.sort_by_key(|ty| ty.to_owned());
-        f.dedup();
-
-        f
-    }
-
-    pub fn fetched_all_shared_types(&self) -> bool {
-        FETCHED_FOR_SHARED_TYPES_INPUT.with(|fetched_input| {
-            FETCHED_FOR_SHARED_TYPES_OUTPUT.with(|fetched_output| {
-                FETCHED_FOR_SHARED_TYPES_ALL.with(|fetched_all| {
-                    *fetched_input.borrow() && *fetched_output.borrow() && *fetched_all.borrow()
-                })
-            })
-        })
-    }
-
-    pub fn fetch_shared_types_if_needed(&self, all_configs: &[Opts]) {
-        if all_configs.len() > 1 && !self.fetched_all_shared_types() {
-            self.get_shared_distinct_types_for_all_blocks(true, true, all_configs);
-
-            self.get_shared_distinct_types_for_all_blocks(true, false, all_configs);
-
-            self.get_shared_distinct_types_for_all_blocks(false, true, all_configs);
-        }
-    }
-
-    pub fn fetch_shared_types_forcely(&self, all_configs: &[Opts]) {
-        SHARED_TYPES_ALL.with(|shared| {
-            let mut shares = shared.borrow_mut();
-
-            *shares = self.get_shared_types_for_all_blocks_from_scratch(true, true, all_configs);
-        });
-        FETCHED_FOR_SHARED_TYPES_ALL.with(|has_fetched| {
-            *has_fetched.borrow_mut() = true;
-        });
-
-        SHARED_TYPES_INPUT.with(|shared| {
-            let mut shares = shared.borrow_mut();
-
-            *shares = self.get_shared_types_for_all_blocks_from_scratch(true, false, all_configs);
-        });
-        FETCHED_FOR_SHARED_TYPES_INPUT.with(|has_fetched| {
-            *has_fetched.borrow_mut() = true;
-        });
-
-        SHARED_TYPES_OUTPUT.with(|shared| {
-            let mut shares = shared.borrow_mut();
-
-            *shares = self.get_shared_types_for_all_blocks_from_scratch(false, true, all_configs);
-        });
-        FETCHED_FOR_SHARED_TYPES_OUTPUT.with(|has_fetched| {
-            *has_fetched.borrow_mut() = true;
-        });
+    /// Get the type use range for the specific type.
+    /// And the type must be defined in the current ir_file,
+    /// otherwise it would panic.
+    pub(crate) fn get_type_use_range(&self, ir_type: &IrType) -> HashSet<IrTypeUseRange> {
+        let v = self.types_use_range_map.get(ir_type).cloned().unwrap();
+        assert!(!v.is_empty(), "the type:{:?} is empty", ir_type);
+        v
     }
 }

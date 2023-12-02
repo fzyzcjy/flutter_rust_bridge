@@ -159,6 +159,40 @@ class ApiBlock2ClassWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_StringList> Function(ffi.Int32)>>('new_StringList');
   late final _new_StringList = _new_StringListPtr.asFunction<ffi.Pointer<wire_StringList> Function(int)>();
 
+  ffi.Pointer<wire_CrossSharedStructInBlock1And2> new_box_autoadd_cross_shared_struct_in_block_1_and_2() {
+    return _new_box_autoadd_cross_shared_struct_in_block_1_and_2();
+  }
+
+  late final _new_box_autoadd_cross_shared_struct_in_block_1_and_2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_CrossSharedStructInBlock1And2> Function()>>(
+          'new_box_autoadd_cross_shared_struct_in_block_1_and_2');
+  late final _new_box_autoadd_cross_shared_struct_in_block_1_and_2 =
+      _new_box_autoadd_cross_shared_struct_in_block_1_and_2Ptr
+          .asFunction<ffi.Pointer<wire_CrossSharedStructInBlock1And2> Function()>();
+
+  ffi.Pointer<wire_CrossSharedStructInBlock2And3> new_box_autoadd_cross_shared_struct_in_block_2_and_3() {
+    return _new_box_autoadd_cross_shared_struct_in_block_2_and_3();
+  }
+
+  late final _new_box_autoadd_cross_shared_struct_in_block_2_and_3Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_CrossSharedStructInBlock2And3> Function()>>(
+          'new_box_autoadd_cross_shared_struct_in_block_2_and_3');
+  late final _new_box_autoadd_cross_shared_struct_in_block_2_and_3 =
+      _new_box_autoadd_cross_shared_struct_in_block_2_and_3Ptr
+          .asFunction<ffi.Pointer<wire_CrossSharedStructInBlock2And3> Function()>();
+
+  ffi.Pointer<ffi.Double> new_box_autoadd_f64(
+    double value,
+  ) {
+    return _new_box_autoadd_f64(
+      value,
+    );
+  }
+
+  late final _new_box_autoadd_f64Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Double> Function(ffi.Double)>>('new_box_autoadd_f64');
+  late final _new_box_autoadd_f64 = _new_box_autoadd_f64Ptr.asFunction<ffi.Pointer<ffi.Double> Function(double)>();
+
   ffi.Pointer<ffi.Int32> new_box_autoadd_i32(
     int value,
   ) {
@@ -210,6 +244,16 @@ class ApiBlock2ClassWire implements FlutterRustBridgeWireBase {
           'new_box_autoadd_shared_struct_in_block_2_and_3');
   late final _new_box_autoadd_shared_struct_in_block_2_and_3 = _new_box_autoadd_shared_struct_in_block_2_and_3Ptr
       .asFunction<ffi.Pointer<wire_SharedStructInBlock2And3> Function()>();
+
+  ffi.Pointer<wire_SharedStructOnlyForSyncTest> new_box_autoadd_shared_struct_only_for_sync_test() {
+    return _new_box_autoadd_shared_struct_only_for_sync_test();
+  }
+
+  late final _new_box_autoadd_shared_struct_only_for_sync_testPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_SharedStructOnlyForSyncTest> Function()>>(
+          'new_box_autoadd_shared_struct_only_for_sync_test');
+  late final _new_box_autoadd_shared_struct_only_for_sync_test = _new_box_autoadd_shared_struct_only_for_sync_testPtr
+      .asFunction<ffi.Pointer<wire_SharedStructOnlyForSyncTest> Function()>();
 
   ffi.Pointer<wire_SharedComplexEnumInAllBlocks> new_box_shared_complex_enum_in_all_blocks() {
     return _new_box_shared_complex_enum_in_all_blocks();
@@ -428,42 +472,6 @@ class ApiBlock2ClassWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>)>>('init_frb_dart_api_dl');
   late final _init_frb_dart_api_dl = _init_frb_dart_api_dlPtr.asFunction<int Function(ffi.Pointer<ffi.Void>)>();
 
-  void wire_test_inbuilt_type_in_block_2(
-    int port_,
-    int a,
-    double b,
-  ) {
-    return _wire_test_inbuilt_type_in_block_2(
-      port_,
-      a,
-      b,
-    );
-  }
-
-  late final _wire_test_inbuilt_type_in_block_2Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Float)>>(
-          'wire_test_inbuilt_type_in_block_2');
-  late final _wire_test_inbuilt_type_in_block_2 =
-      _wire_test_inbuilt_type_in_block_2Ptr.asFunction<void Function(int, int, double)>();
-
-  void wire_test_string_in_block_2(
-    int port_,
-    ffi.Pointer<wire_uint_8_list> s,
-    int i,
-  ) {
-    return _wire_test_string_in_block_2(
-      port_,
-      s,
-      i,
-    );
-  }
-
-  late final _wire_test_string_in_block_2Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>, ffi.Uint64)>>(
-          'wire_test_string_in_block_2');
-  late final _wire_test_string_in_block_2 =
-      _wire_test_string_in_block_2Ptr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>, int)>();
-
   void wire_test_all_shared_struct_in_block_2(
     int port_,
     ffi.Pointer<wire_SharedStructInAllBlocks> custom,
@@ -505,27 +513,6 @@ class ApiBlock2ClassWire implements FlutterRustBridgeWireBase {
       _wire_test_all_shared_struct_in_sync_in_block_2Ptr.asFunction<
           WireSyncReturn Function(ffi.Pointer<wire_SharedStructInAllBlocks>, ffi.Pointer<wire_uint_8_list>, int)>();
 
-  void wire_test_shared_struct_in_block_2_for_1_and_2(
-    int port_,
-    ffi.Pointer<wire_SharedStructInBlock1And2> custom,
-    ffi.Pointer<wire_uint_8_list> s,
-    int i,
-  ) {
-    return _wire_test_shared_struct_in_block_2_for_1_and_2(
-      port_,
-      custom,
-      s,
-      i,
-    );
-  }
-
-  late final _wire_test_shared_struct_in_block_2_for_1_and_2Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_SharedStructInBlock1And2>, ffi.Pointer<wire_uint_8_list>,
-              ffi.Int32)>>('wire_test_shared_struct_in_block_2_for_1_and_2');
-  late final _wire_test_shared_struct_in_block_2_for_1_and_2 = _wire_test_shared_struct_in_block_2_for_1_and_2Ptr
-      .asFunction<void Function(int, ffi.Pointer<wire_SharedStructInBlock1And2>, ffi.Pointer<wire_uint_8_list>, int)>();
-
   void wire_test_cross_shared_struct_in_block_2_for_1_and_2(
     int port_,
     ffi.Pointer<wire_uint_8_list> name,
@@ -542,27 +529,6 @@ class ApiBlock2ClassWire implements FlutterRustBridgeWireBase {
   late final _wire_test_cross_shared_struct_in_block_2_for_1_and_2 =
       _wire_test_cross_shared_struct_in_block_2_for_1_and_2Ptr
           .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
-
-  void wire_test_shared_struct_in_block_2_for_2_and_3(
-    int port_,
-    ffi.Pointer<wire_SharedStructInBlock2And3> custom,
-    ffi.Pointer<wire_uint_8_list> s,
-    int i,
-  ) {
-    return _wire_test_shared_struct_in_block_2_for_2_and_3(
-      port_,
-      custom,
-      s,
-      i,
-    );
-  }
-
-  late final _wire_test_shared_struct_in_block_2_for_2_and_3Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_SharedStructInBlock2And3>, ffi.Pointer<wire_uint_8_list>,
-              ffi.Int32)>>('wire_test_shared_struct_in_block_2_for_2_and_3');
-  late final _wire_test_shared_struct_in_block_2_for_2_and_3 = _wire_test_shared_struct_in_block_2_for_2_and_3Ptr
-      .asFunction<void Function(int, ffi.Pointer<wire_SharedStructInBlock2And3>, ffi.Pointer<wire_uint_8_list>, int)>();
 
   void wire_test_cross_shared_struct_in_block_2_for_2_and_3(
     int port_,
@@ -581,43 +547,6 @@ class ApiBlock2ClassWire implements FlutterRustBridgeWireBase {
       _wire_test_cross_shared_struct_in_block_2_for_2_and_3Ptr
           .asFunction<void Function(int, ffi.Pointer<wire_CrossSharedStructInBlock2And3>)>();
 
-  void wire_test_unique_struct_2(
-    int port_,
-    ffi.Pointer<wire_StructOnlyForBlock2> custom,
-    ffi.Pointer<wire_uint_8_list> s,
-    int i,
-  ) {
-    return _wire_test_unique_struct_2(
-      port_,
-      custom,
-      s,
-      i,
-    );
-  }
-
-  late final _wire_test_unique_struct_2Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_StructOnlyForBlock2>, ffi.Pointer<wire_uint_8_list>,
-              ffi.Int16)>>('wire_test_unique_struct_2');
-  late final _wire_test_unique_struct_2 = _wire_test_unique_struct_2Ptr
-      .asFunction<void Function(int, ffi.Pointer<wire_StructOnlyForBlock2>, ffi.Pointer<wire_uint_8_list>, int)>();
-
-  void wire_test_struct_defined_in_block_2(
-    int port_,
-    ffi.Pointer<wire_StructDefinedInBlock2> custom,
-  ) {
-    return _wire_test_struct_defined_in_block_2(
-      port_,
-      custom,
-    );
-  }
-
-  late final _wire_test_struct_defined_in_block_2Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_StructDefinedInBlock2>)>>(
-          'wire_test_struct_defined_in_block_2');
-  late final _wire_test_struct_defined_in_block_2 =
-      _wire_test_struct_defined_in_block_2Ptr.asFunction<void Function(int, ffi.Pointer<wire_StructDefinedInBlock2>)>();
-
   void wire_test_enum_defined_in_block_2(
     int port_,
     ffi.Pointer<wire_EnumDefinedInBlock2> custom,
@@ -633,6 +562,24 @@ class ApiBlock2ClassWire implements FlutterRustBridgeWireBase {
           'wire_test_enum_defined_in_block_2');
   late final _wire_test_enum_defined_in_block_2 =
       _wire_test_enum_defined_in_block_2Ptr.asFunction<void Function(int, ffi.Pointer<wire_EnumDefinedInBlock2>)>();
+
+  void wire_test_inbuilt_type_in_block_2(
+    int port_,
+    int a,
+    double b,
+  ) {
+    return _wire_test_inbuilt_type_in_block_2(
+      port_,
+      a,
+      b,
+    );
+  }
+
+  late final _wire_test_inbuilt_type_in_block_2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Float)>>(
+          'wire_test_inbuilt_type_in_block_2');
+  late final _wire_test_inbuilt_type_in_block_2 =
+      _wire_test_inbuilt_type_in_block_2Ptr.asFunction<void Function(int, int, double)>();
 
   void wire_test_list_in_block_2(
     int port_,
@@ -693,23 +640,6 @@ class ApiBlock2ClassWire implements FlutterRustBridgeWireBase {
   late final _wire_test_method__method__EnumDefinedInBlock2 = _wire_test_method__method__EnumDefinedInBlock2Ptr
       .asFunction<void Function(int, ffi.Pointer<wire_EnumDefinedInBlock2>, ffi.Pointer<wire_uint_8_list>)>();
 
-  void wire_test_static_method__static_method__EnumDefinedInBlock2(
-    int port_,
-    ffi.Pointer<wire_uint_8_list> message,
-  ) {
-    return _wire_test_static_method__static_method__EnumDefinedInBlock2(
-      port_,
-      message,
-    );
-  }
-
-  late final _wire_test_static_method__static_method__EnumDefinedInBlock2Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
-          'wire_test_static_method__static_method__EnumDefinedInBlock2');
-  late final _wire_test_static_method__static_method__EnumDefinedInBlock2 =
-      _wire_test_static_method__static_method__EnumDefinedInBlock2Ptr
-          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
-
   void wire_test_method__method__StructDefinedInBlock2(
     int port_,
     ffi.Pointer<wire_StructDefinedInBlock2> that,
@@ -728,23 +658,6 @@ class ApiBlock2ClassWire implements FlutterRustBridgeWireBase {
               ffi.Pointer<wire_uint_8_list>)>>('wire_test_method__method__StructDefinedInBlock2');
   late final _wire_test_method__method__StructDefinedInBlock2 = _wire_test_method__method__StructDefinedInBlock2Ptr
       .asFunction<void Function(int, ffi.Pointer<wire_StructDefinedInBlock2>, ffi.Pointer<wire_uint_8_list>)>();
-
-  void wire_test_static_method__static_method__StructDefinedInBlock2(
-    int port_,
-    ffi.Pointer<wire_uint_8_list> message,
-  ) {
-    return _wire_test_static_method__static_method__StructDefinedInBlock2(
-      port_,
-      message,
-    );
-  }
-
-  late final _wire_test_static_method__static_method__StructDefinedInBlock2Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
-          'wire_test_static_method__static_method__StructDefinedInBlock2');
-  late final _wire_test_static_method__static_method__StructDefinedInBlock2 =
-      _wire_test_static_method__static_method__StructDefinedInBlock2Ptr
-          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_test_method__method__StructOnlyForBlock2(
     int port_,
@@ -767,6 +680,82 @@ class ApiBlock2ClassWire implements FlutterRustBridgeWireBase {
   late final _wire_test_method__method__StructOnlyForBlock2 = _wire_test_method__method__StructOnlyForBlock2Ptr
       .asFunction<void Function(int, ffi.Pointer<wire_StructOnlyForBlock2>, ffi.Pointer<wire_uint_8_list>, int)>();
 
+  void wire_test_shared_struct_in_block_2_for_1_and_2(
+    int port_,
+    ffi.Pointer<wire_SharedStructInBlock1And2> custom,
+    ffi.Pointer<wire_uint_8_list> s,
+    int i,
+  ) {
+    return _wire_test_shared_struct_in_block_2_for_1_and_2(
+      port_,
+      custom,
+      s,
+      i,
+    );
+  }
+
+  late final _wire_test_shared_struct_in_block_2_for_1_and_2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_SharedStructInBlock1And2>, ffi.Pointer<wire_uint_8_list>,
+              ffi.Int32)>>('wire_test_shared_struct_in_block_2_for_1_and_2');
+  late final _wire_test_shared_struct_in_block_2_for_1_and_2 = _wire_test_shared_struct_in_block_2_for_1_and_2Ptr
+      .asFunction<void Function(int, ffi.Pointer<wire_SharedStructInBlock1And2>, ffi.Pointer<wire_uint_8_list>, int)>();
+
+  void wire_test_shared_struct_in_block_2_for_2_and_3(
+    int port_,
+    ffi.Pointer<wire_SharedStructInBlock2And3> custom,
+    ffi.Pointer<wire_uint_8_list> s,
+    int i,
+  ) {
+    return _wire_test_shared_struct_in_block_2_for_2_and_3(
+      port_,
+      custom,
+      s,
+      i,
+    );
+  }
+
+  late final _wire_test_shared_struct_in_block_2_for_2_and_3Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_SharedStructInBlock2And3>, ffi.Pointer<wire_uint_8_list>,
+              ffi.Int32)>>('wire_test_shared_struct_in_block_2_for_2_and_3');
+  late final _wire_test_shared_struct_in_block_2_for_2_and_3 = _wire_test_shared_struct_in_block_2_for_2_and_3Ptr
+      .asFunction<void Function(int, ffi.Pointer<wire_SharedStructInBlock2And3>, ffi.Pointer<wire_uint_8_list>, int)>();
+
+  void wire_test_static_method__static_method__EnumDefinedInBlock2(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> message,
+  ) {
+    return _wire_test_static_method__static_method__EnumDefinedInBlock2(
+      port_,
+      message,
+    );
+  }
+
+  late final _wire_test_static_method__static_method__EnumDefinedInBlock2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_test_static_method__static_method__EnumDefinedInBlock2');
+  late final _wire_test_static_method__static_method__EnumDefinedInBlock2 =
+      _wire_test_static_method__static_method__EnumDefinedInBlock2Ptr
+          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_test_static_method__static_method__StructDefinedInBlock2(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> message,
+  ) {
+    return _wire_test_static_method__static_method__StructDefinedInBlock2(
+      port_,
+      message,
+    );
+  }
+
+  late final _wire_test_static_method__static_method__StructDefinedInBlock2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_test_static_method__static_method__StructDefinedInBlock2');
+  late final _wire_test_static_method__static_method__StructDefinedInBlock2 =
+      _wire_test_static_method__static_method__StructDefinedInBlock2Ptr
+          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
   void wire_test_static_method__static_method__StructOnlyForBlock2(
     int port_,
     ffi.Pointer<wire_uint_8_list> message,
@@ -783,6 +772,61 @@ class ApiBlock2ClassWire implements FlutterRustBridgeWireBase {
   late final _wire_test_static_method__static_method__StructOnlyForBlock2 =
       _wire_test_static_method__static_method__StructOnlyForBlock2Ptr
           .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_test_string_in_block_2(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> s,
+    int i,
+  ) {
+    return _wire_test_string_in_block_2(
+      port_,
+      s,
+      i,
+    );
+  }
+
+  late final _wire_test_string_in_block_2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>, ffi.Uint64)>>(
+          'wire_test_string_in_block_2');
+  late final _wire_test_string_in_block_2 =
+      _wire_test_string_in_block_2Ptr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>, int)>();
+
+  void wire_test_struct_defined_in_block_2(
+    int port_,
+    ffi.Pointer<wire_StructDefinedInBlock2> custom,
+  ) {
+    return _wire_test_struct_defined_in_block_2(
+      port_,
+      custom,
+    );
+  }
+
+  late final _wire_test_struct_defined_in_block_2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_StructDefinedInBlock2>)>>(
+          'wire_test_struct_defined_in_block_2');
+  late final _wire_test_struct_defined_in_block_2 =
+      _wire_test_struct_defined_in_block_2Ptr.asFunction<void Function(int, ffi.Pointer<wire_StructDefinedInBlock2>)>();
+
+  void wire_test_unique_struct_2(
+    int port_,
+    ffi.Pointer<wire_StructOnlyForBlock2> custom,
+    ffi.Pointer<wire_uint_8_list> s,
+    int i,
+  ) {
+    return _wire_test_unique_struct_2(
+      port_,
+      custom,
+      s,
+      i,
+    );
+  }
+
+  late final _wire_test_unique_struct_2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_StructOnlyForBlock2>, ffi.Pointer<wire_uint_8_list>,
+              ffi.Int16)>>('wire_test_unique_struct_2');
+  late final _wire_test_unique_struct_2 = _wire_test_unique_struct_2Ptr
+      .asFunction<void Function(int, ffi.Pointer<wire_StructOnlyForBlock2>, ffi.Pointer<wire_uint_8_list>, int)>();
 
   ffi.Pointer<wire_EnumDefinedInBlock2> new_box_autoadd_enum_defined_in_block_2() {
     return _new_box_autoadd_enum_defined_in_block_2();
@@ -871,7 +915,21 @@ class ApiBlock2ClassWire implements FlutterRustBridgeWireBase {
       _inflate_EnumDefinedInBlock2_ChangeColorPtr.asFunction<ffi.Pointer<EnumDefinedInBlock2Kind> Function()>();
 }
 
-final class _Dart_Handle extends ffi.Opaque {}
+final class SharedComplexEnumInAllBlocksKind extends ffi.Union {
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Empty> Empty;
+
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Primitives> Primitives;
+
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Nested> Nested;
+
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Optional> Optional;
+
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Buffer> Buffer;
+
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Enums> Enums;
+
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_BytesArray> BytesArray;
+}
 
 final class wire_SharedComplexEnumInAllBlocks_Empty extends ffi.Opaque {}
 
@@ -909,34 +967,13 @@ final class wire_SharedComplexEnumInAllBlocks_BytesArray extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> field0;
 }
 
-final class SharedComplexEnumInAllBlocksKind extends ffi.Union {
-  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Empty> Empty;
+final class _Dart_Handle extends ffi.Opaque {}
 
-  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Primitives> Primitives;
-
-  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Nested> Nested;
-
-  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Optional> Optional;
-
-  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Buffer> Buffer;
-
-  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Enums> Enums;
-
-  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_BytesArray> BytesArray;
-}
-
-final class wire_StructOnlyForBlock2 extends ffi.Struct {
-  @ffi.Int16()
-  external int id;
+final class wire_SharedStructOnlyForSyncTest extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> name;
 
   @ffi.Double()
-  external double num;
-
-  external ffi.Pointer<wire_uint_8_list> name;
-}
-
-final class wire_StructDefinedInBlock2 extends ffi.Struct {
-  external ffi.Pointer<wire_uint_8_list> name;
+  external double score;
 }
 
 final class wire_EnumDefinedInBlock2_Quit extends ffi.Opaque {}
@@ -981,6 +1018,10 @@ final class wire_EnumDefinedInBlock2 extends ffi.Struct {
   external ffi.Pointer<EnumDefinedInBlock2Kind> kind;
 }
 
+final class wire_StructDefinedInBlock2 extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> name;
+}
+
 final class wire_list_struct_defined_in_block_2 extends ffi.Struct {
   external ffi.Pointer<wire_StructDefinedInBlock2> ptr;
 
@@ -993,6 +1034,16 @@ final class wire_list_enum_defined_in_block_2 extends ffi.Struct {
 
   @ffi.Int32()
   external int len;
+}
+
+final class wire_StructOnlyForBlock2 extends ffi.Struct {
+  @ffi.Int16()
+  external int id;
+
+  @ffi.Double()
+  external double num;
+
+  external ffi.Pointer<wire_uint_8_list> name;
 }
 
 typedef DartPostCObjectFnType

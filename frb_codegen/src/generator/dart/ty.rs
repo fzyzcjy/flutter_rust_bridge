@@ -3,15 +3,9 @@ use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
 pub trait TypeDartGeneratorTrait {
-    fn api2wire_body(
-        &self,
-        shared_dart_api2wire_funcs: &Option<Acc<String>>,
-    ) -> Acc<Option<String>>;
+    fn api2wire_body(&self) -> Acc<Option<String>>;
 
-    fn api_fill_to_wire_body(
-        &self,
-        _shared_dart_api2wire_funcs: &Option<Acc<String>>,
-    ) -> Option<String> {
+    fn api_fill_to_wire_body(&self) -> Option<String> {
         None
     }
 
@@ -28,6 +22,7 @@ pub trait TypeDartGeneratorTrait {
 pub struct TypeGeneratorContext<'a> {
     pub ir_file: &'a IrFile,
     pub config: &'a Opts,
+    pub all_configs: &'a AllConfigs,
 }
 
 #[macro_export]
@@ -45,13 +40,8 @@ macro_rules! type_dart_generator_struct {
                 &self.context
             }
             #[allow(unused)]
-            /// this method only cares if a specifc type is shared or not, but not
-            /// care about the type of the shared mode.
-            fn is_type_shared(&self, ty: &$crate::ir::IrType) -> bool {
-                match self.get_context().ir_file.is_type_shared_by_safe_ident(ty) {
-                    $crate::utils::misc::ShareMode::Unique => false,
-                    $crate::utils::misc::ShareMode::Shared => true,
-                }
+            fn is_type_shared_by_safe_ident(&self, ty: &$crate::ir::IrType) -> bool {
+                self.get_context().all_configs.is_type_shared(ty, true)
             }
             #[allow(unused)]
             fn get_private_prefix(&self) -> String {
@@ -85,8 +75,13 @@ pub enum TypeDartGenerator<'a> {
 }
 
 impl<'a> TypeDartGenerator<'a> {
-    pub fn new(ty: IrType, ir_file: &'a IrFile, config: &'a Opts) -> Self {
-        let context = TypeGeneratorContext { ir_file, config };
+    pub fn new(ty: IrType, config: &'a Opts, all_configs: &'a AllConfigs) -> Self {
+        let ir_file = all_configs.get_ir_file(config.block_index).unwrap();
+        let context = TypeGeneratorContext {
+            ir_file,
+            config,
+            all_configs,
+        };
         match ty {
             Primitive(ir) => TypePrimitiveGenerator { ir, context }.into(),
             Delegate(ir) => TypeDelegateGenerator { ir, context }.into(),

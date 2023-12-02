@@ -1,12 +1,13 @@
 use crate::commands::BindgenRustToDartArg;
 
+use crate::config::all_configs::AllConfigs;
 use crate::ir::IrTypeTrait;
 use crate::others::{
     extract_dart_wire_content, modify_dart_wire_content, sanity_check, DartBasicCode,
     DUMMY_WIRE_CODE_FOR_BINDGEN, EXTRA_EXTERN_FUNC_NAMES,
 };
-use crate::utils::misc::{is_multi_blocks_case, with_changed_file, ExtraTraitForVec};
-use crate::{command_run, commands, ensure_tools_available, generator, ir, Opts};
+use crate::utils::misc::{with_changed_file, ExtraTraitForVec};
+use crate::{command_run, commands, ensure_tools_available, generator, Opts};
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 use log::info;
@@ -17,55 +18,84 @@ use std::path::Path;
 
 pub(crate) fn generate_dart_code(
     config: &Opts,
-    all_configs: &[Opts],
-    ir_file: &ir::IrFile,
+    all_configs: &AllConfigs,
     generated_rust: generator::rust::Output,
     all_symbols: &[String],
 ) -> crate::Result {
+    info!("Phase: Generating Dart bindings for Rust");
+
     let dart_root = config.dart_root_or_default();
     ensure_tools_available(&dart_root, config.skip_deps_check)?;
 
-    info!("Phase: Generating Dart bindings for Rust");
     // phase-step1: generate (temporary) c file(s)
     let temp_dart_wire_file = tempfile::NamedTempFile::new()?;
     let temp_bindgen_c_output_file = tempfile::Builder::new().suffix(".h").tempfile()?;
-    let mut exclude_symbols = generated_rust.get_exclude_symbols(all_symbols, ir_file);
+    // TODO: does `get_exclude_symbols` needed since Struct `AllConfig` introduced?
+    let mut exclude_symbols = generated_rust.get_exclude_symbols(all_symbols, config, all_configs);
     let mut extra_forward_declarations = Vec::new();
-    //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓refine exclude_symbols↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-    if ir_file.shared {
-        for c in all_configs {
-            if c.shared {
-                continue;
-            }
+    // extra refinement for multi-blocks case
+    if config.shared {
+        // refine `exclude_symbols`
+        for c in all_configs.get_regular_configs().iter() {
             let (wire_types, wire_funcs) = get_wire_types_funcs_for_c_file(c, all_configs);
             exclude_symbols.extend(wire_types);
             exclude_symbols.extend(wire_funcs);
         }
-    } else {
-        // 1. refine `exclude_symbols`
-        for c in all_configs {
-            if c.block_index == config.block_index {
+    } else if all_configs.is_multi_blocks_case() {
+        // refine `exclude_symbols`
+        for regular_config in all_configs.get_regular_configs().iter() {
+            if regular_config.block_index == regular_config.block_index {
                 continue;
             }
-            let (wire_types, wire_funcs) = get_wire_types_funcs_for_c_file(c, all_configs);
+            let (wire_types, wire_funcs) =
+                get_wire_types_funcs_for_c_file(regular_config, all_configs);
             exclude_symbols.extend(wire_types);
             exclude_symbols.extend(wire_funcs);
         }
+        // refine `extra_forward_declarations`
+        let types_used_in_the_block =
+            &all_configs.get_types(config.block_index, false, true, true, true);
+        let types_only_used_in_the_block =
+            &all_configs.get_types(config.block_index, true, true, true, true);
+        let shared_type_in_the_block = types_used_in_the_block
+            .iter()
+            .filter(|each| !types_only_used_in_the_block.contains(each))
+            .collect::<Vec<_>>();
 
-        // 2. refine `extra_forward_declarations`
-        let x = ir_file.get_shared_type_names(
-            true,
-            Some(|each: &ir::IrType| each.is_struct() || each.is_list(false)),
-        );
-        let extra_forward_declaration = x
+        let shared_type_names = shared_type_in_the_block
+            .iter()
+            .filter(|each| each.is_struct_ref_or_enum_ref_or_record() || each.is_list(false))
+            .map(|each| each.get_rust_name())
+            .collect::<Vec<_>>();
+        let extra_forward_declaration = shared_type_names
             .iter()
             .map(|each| format!("typedef struct wire_{each} wire_{each}"))
             .collect::<Vec<_>>();
 
         extra_forward_declarations.extend(extra_forward_declaration);
     }
-    //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑refine exclude_symbols↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
-    let c_struct_names = ir_file.get_c_struct_names(all_configs);
+    // parse and the specific c code: `temp_bindgen_c_output_file`
+    let c_struct_names = all_configs.get_c_struct_names(config.block_index);
+    log::debug!(
+        "for block:{}, extra_forward_declarations:\n{:#?}",
+        config.block_index,
+        extra_forward_declarations,
+    ); // TODO: delete
+    log::debug!(
+        "for block:{}, c_struct_names:\n{:#?}",
+        config.block_index,
+        c_struct_names,
+    ); // TODO: delete
+    log::debug!(
+        "for block:{}, config.dart_wire_class_name():\n{:#?}",
+        config.block_index,
+        config.dart_wire_class_name(),
+    ); // TODO: delete
+    log::debug!(
+        "for block:{}, exclude_symbols:\n{:#?}",
+        config.block_index,
+        exclude_symbols,
+    ); // TODO: delete
     with_changed_file(
         &config.rust_output_path,
         DUMMY_WIRE_CODE_FOR_BINDGEN,
@@ -91,13 +121,18 @@ pub(crate) fn generate_dart_code(
             .map_err(Into::into)
         },
     )?;
-
-    let effective_func_names = [
-        generated_rust.extern_func_names,
-        EXTRA_EXTERN_FUNC_NAMES.to_vec(),
-    ]
-    .concat();
-
+    // refine the funcs used in dummy function
+    let effective_func_names = if !all_configs.is_multi_blocks_case() || config.shared {
+        [
+            generated_rust.extern_func_names,
+            EXTRA_EXTERN_FUNC_NAMES.to_vec(),
+        ]
+        .concat()
+    } else {
+        // TODO: check if `EXTRA_EXTERN_FUNC_NAMES` needed for regular one in multi case?
+        generated_rust.extern_func_names
+    };
+    // write all c code into files for each `c_output_path`
     for (i, each_path) in config.c_output_paths.iter().enumerate() {
         let c_dummy_code =
             generator::c::generate_dummy(config, all_configs, &effective_func_names, i);
@@ -108,17 +143,17 @@ pub(crate) fn generate_dart_code(
         )?;
     }
 
-    // phase-step2: generate raw dart code instance from the c file
+    // phase-step2: generate raw dart code instance from the generated c file(s)
     let generated_dart_wire_code_raw = fs::read_to_string(temp_dart_wire_file)?;
     let generated_dart_wire = extract_dart_wire_content(&modify_dart_wire_content(
         &generated_dart_wire_code_raw,
-        &config.dart_wire_class_name(),
-        ir_file,
+        config,
+        all_configs,
     ));
     sanity_check(&generated_dart_wire.body, &config.dart_wire_class_name())?;
 
     // phase-step3: compose dart codes and write to file
-    let generated_dart = ir_file.generate_dart(config, all_configs, &generated_rust.wasm_exports);
+    let generated_dart = all_configs.generate_dart(config, &generated_rust.wasm_exports);
     let generated_dart_decl_all = &generated_dart.decl_code;
     let generated_dart_impl_io_wire = &generated_dart.impl_code.io + &generated_dart_wire;
 
@@ -129,6 +164,7 @@ pub(crate) fn generate_dart_code(
     if let Some(dart_decl_output_path) = &config.dart_decl_output_path {
         write_dart_decls(
             config,
+            all_configs,
             dart_decl_output_path,
             dart_output_dir,
             &generated_dart,
@@ -190,10 +226,9 @@ pub(crate) fn generate_dart_code(
 
 fn get_wire_types_funcs_for_c_file(
     config: &Opts,
-    all_configs: &[Opts],
+    all_configs: &AllConfigs,
 ) -> (Vec<String>, Vec<String>) {
-    let ir_file = config.get_ir_file(all_configs).unwrap();
-    let types = ir_file.distinct_types(true, true, all_configs);
+    let types = all_configs.get_types(config.block_index, true, true, true, true);
 
     // 1. wire_types
     let wire_types = types
@@ -206,9 +241,12 @@ fn get_wire_types_funcs_for_c_file(
             }
         })
         .collect::<Vec<_>>();
-    let funcs = ir_file.funcs(true).into_iter().collect::<Vec<_>>();
 
     // 2. wire_funcs
+    let funcs = all_configs
+        .get_funcs(config.block_index, true)
+        .into_iter()
+        .collect::<Vec<_>>();
     let wire_funcs = funcs
         .iter()
         .map(|each| format!("wire_{}", each.name))
@@ -222,13 +260,15 @@ thread_local!(static HAS_GENERATED_DART_DECL_FILE: RefCell<bool> = RefCell::new(
 
 fn write_dart_decls(
     config: &Opts,
+    all_configs: &AllConfigs,
     dart_decl_output_path: &str,
     dart_output_dir: &Path,
     generated_dart: &crate::generator::dart::Output,
     generated_dart_decl_all: &DartBasicCode,
     generated_dart_impl_io_wire: &DartBasicCode,
 ) -> crate::Result {
-    // be it single or multi block(s) case, remove the definition file at first
+    // Be it single or multi block(s) case,and whatever the flag `dart-decl-output` is set or not within frb command,
+    // just remove the dart declaration file at very first when generating files.
     HAS_GENERATED_DART_DECL_FILE.with(|data| {
         let mut flag = data.borrow_mut();
         if !(*flag) {
@@ -275,7 +315,7 @@ fn write_dart_decls(
     // erase duplicated lines for multi-blocks case, like the redundant import statements and class definitions
     // NOTE: since dart file with syntax error would make the whole generation stuck,
     // the refinement MUST be done at the end after EACH dart block generation.
-    if is_multi_blocks_case(None) {
+    if all_configs.is_multi_blocks_case() {
         let mut contents =
             std::fs::read_to_string(dart_decl_output_path).expect("Unable to read file");
         remove_dupilicated_prehead_and_imports(&mut contents);

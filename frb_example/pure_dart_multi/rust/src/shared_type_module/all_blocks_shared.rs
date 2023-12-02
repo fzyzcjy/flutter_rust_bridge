@@ -76,8 +76,9 @@ pub struct SharedStructInAllBlocks {
     pub enum_list: Option<Vec<SharedComplexEnumInAllBlocks>>,
 }
 impl SharedStructInAllBlocks {
-    /// the parameter type `u32 for `num` is only used here,
-    /// for testing shared type(`u32`) within a shared struct method
+    /// The parameter type `u32 for `num` is ONLY used in this method for this testing project.
+    /// It is for testing type `u32` within a shared struct,
+    /// which means that the `u32` should be treated as a shared type, too.
     pub fn test_method(&self, message: String, num: u32) -> String {
         format!("{}_{}", message, num)
     }

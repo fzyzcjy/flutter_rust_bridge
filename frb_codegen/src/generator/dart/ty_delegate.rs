@@ -9,10 +9,7 @@ use super::func::get_api2wire_prefix;
 type_dart_generator_struct!(TypeDelegateGenerator, IrTypeDelegate);
 
 impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
-    fn api2wire_body(
-        &self,
-        shared_dart_api2wire_funcs: &Option<Acc<String>>,
-    ) -> Acc<Option<String>> {
+    fn api2wire_body(&self) -> Acc<Option<String>> {
         match &self.ir {
             IrTypeDelegate::Array(ref array) => match array {
                 IrTypeDelegateArray::GeneralArray { .. } => Acc::distribute(Some(format!(
@@ -57,10 +54,10 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                     return ans;",
                     prefix = get_api2wire_prefix(
                         "api2wire_String",
-                        shared_dart_api2wire_funcs,
-                        self.context.ir_file,
+                        self.context.config,
                         &IrType::Delegate(IrTypeDelegate::String),
                         false,
+                        self.get_context().all_configs
                     )
                 )),
                 wasm: Some("return raw;".into()),
@@ -114,7 +111,7 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                     let delegated_type = array.get_delegate();
                     let prefix = if self.context.config.shared {
                         ""
-                    } else if !self.is_type_shared(&delegated_type) {
+                    } else if !self.is_type_shared_by_safe_ident(&delegated_type) {
                         "_"
                     } else {
                         "_sharedImpl."

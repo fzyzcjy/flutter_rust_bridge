@@ -23,12 +23,10 @@ fn main() -> anyhow::Result<()> {
         return dump::dump_multi(&all_configs, dump).context("Failed to dump config");
     }
 
-    // If in multi-blocks case, the shared block MUST be generated at first.
-    // Otherwise, the generated dart code for regular blocks would be problematic, since when they are being generated,
-    // the shared rust module they depend on has not yet been generated.
+    // parse config(s)
     let mut errors = vec![];
-    for (config_index, config) in (all_configs.iter().enumerate()).rev() {
-        if let Err(err) = frb_codegen_multi(&all_configs, config_index, &all_symbols) {
+    for config in all_configs.iter_all() {
+        if let Err(err) = frb_codegen_multi(config, &all_configs, &all_symbols) {
             if config.keep_going {
                 errors.push((&config.rust_input_path, err));
                 continue;
@@ -58,6 +56,7 @@ mod tests {
     use lib_flutter_rust_bridge_codegen::{
         frb_codegen, frb_codegen_multi, init_logger, parse_configs_and_symbols, RawOpts,
     };
+    use log::error;
 
     lazy_static! {
         static ref LOGGER: () = init_logger(".", true).unwrap();
@@ -197,7 +196,7 @@ mod tests {
         let (all_configs, all_symbols) = parse_configs_and_symbols(raw_opts).unwrap();
 
         // generation of rust api for ffi (single block)
-        assert_eq!(all_configs.len(), 1);
+        assert!(!all_configs.is_multi_blocks_case());
         frb_codegen(&all_configs[0], &all_symbols).unwrap();
 
         let _status = run_cargo_test_command(test_case);
@@ -242,12 +241,17 @@ mod tests {
         // get opts from raw opts
         let (all_configs, all_symbols) = parse_configs_and_symbols(raw_opts).unwrap();
 
-        // generation of rust api for ffi (multi-blocks)
-        // In multi-blocks case, the shared block MUST be generated at first.
-        // Otherwise, the generated dart code for regular blocks would be problematic, since when
-        // the shared rust module has not yet been generated.
-        for config_index in (0..all_configs.len()).rev() {
-            frb_codegen_multi(&all_configs, config_index, &all_symbols).unwrap()
+        // parse config(s)
+        let mut errors = vec![];
+        for config in all_configs.iter_all() {
+            if let Err(err) = frb_codegen_multi(config, &all_configs, &all_symbols) {
+                if config.keep_going {
+                    errors.push((&config.rust_input_path, err));
+                    continue;
+                }
+                error!("Fatal error encountered. Rerun with RUST_BACKTRACE=1 or RUST_BACKTRACE=full for more details.");
+                panic!()
+            }
         }
 
         let _status = run_cargo_test_command(test_case);

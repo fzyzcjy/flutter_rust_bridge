@@ -7,10 +7,7 @@ use crate::type_dart_generator_struct;
 type_dart_generator_struct!(TypePrimitiveListGenerator, IrTypePrimitiveList);
 
 impl TypeDartGeneratorTrait for TypePrimitiveListGenerator<'_> {
-    fn api2wire_body(
-        &self,
-        _shared_dart_api2wire_funcs: &Option<Acc<String>>,
-    ) -> Acc<Option<String>> {
+    fn api2wire_body(&self) -> Acc<Option<String>> {
         Acc {
             // NOTE Dart code *only* allocates memory. It never *release* memory by itself.
             // Instead, Rust receives that pointer and now it is in control of Rust.

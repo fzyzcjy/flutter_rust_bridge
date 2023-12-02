@@ -1,9 +1,9 @@
 use flutter_rust_bridge::SyncReturn;
 
 use crate::block_specific_module::StructOnlyForBlock1;
-use crate::bridge_generated_shared::SharedWeekdaysEnumInAllBlocks;
 #[allow(unused)]
 use crate::fake_module::{self}; // this statement is used to test special import of the module when frb is generating.
+use crate::shared_type_module::SharedWeekdaysEnumInAllBlocks;
 use crate::shared_type_module::{
     CrossSharedStructInBlock1And2, SharedStructInAllBlocks, SharedStructInBlock1And2,
     SharedStructOnlyForSyncTest,
@@ -30,6 +30,8 @@ impl EnumDefinedInBlock1 {
 #[derive(Debug)]
 pub struct StructDefinedInBlock1 {
     pub name: String,
+    // TODO: delete?
+    // pub sub_type: SubTypeForStructDefinedInBlock1,
 }
 impl StructDefinedInBlock1 {
     pub fn test_method(&self, message: String) -> String {

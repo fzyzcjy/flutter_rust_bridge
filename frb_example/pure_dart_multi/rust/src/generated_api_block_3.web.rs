@@ -2,38 +2,6 @@ use super::*;
 // Section: wire functions
 
 #[wasm_bindgen]
-pub fn wire_test_inbuilt_type_in_block_3(port_: MessagePort, a: i32, b: f32) {
-    wire_test_inbuilt_type_in_block_3_impl(port_, a, b)
-}
-
-#[wasm_bindgen]
-pub fn wire_test_string_in_block_3(port_: MessagePort, s: String, i: u64) {
-    wire_test_string_in_block_3_impl(port_, s, i)
-}
-
-#[wasm_bindgen]
-pub fn wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3(
-    port_: MessagePort,
-    name: String,
-    score: f64,
-) {
-    wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3_impl(port_, name, score)
-}
-
-#[wasm_bindgen]
-pub fn wire_test_shared_struct_only_for_sync_as_input_with_no_sync_return_in_block_3(
-    port_: MessagePort,
-    obj: JsValue,
-    default_score: f64,
-) {
-    wire_test_shared_struct_only_for_sync_as_input_with_no_sync_return_in_block_3_impl(
-        port_,
-        obj,
-        default_score,
-    )
-}
-
-#[wasm_bindgen]
 pub fn wire_test_all_shared_struct_in_block_3(
     port_: MessagePort,
     custom: JsValue,
@@ -41,16 +9,6 @@ pub fn wire_test_all_shared_struct_in_block_3(
     i: i32,
 ) {
     wire_test_all_shared_struct_in_block_3_impl(port_, custom, s, i)
-}
-
-#[wasm_bindgen]
-pub fn wire_test_shared_struct_in_block_3_for_2_and_3(
-    port_: MessagePort,
-    custom: JsValue,
-    s: String,
-    i: i32,
-) {
-    wire_test_shared_struct_in_block_3_for_2_and_3_impl(port_, custom, s, i)
 }
 
 #[wasm_bindgen]
@@ -66,18 +24,13 @@ pub fn wire_test_cross_shared_struct_in_sync_in_block_3_for_2_and_3(
 }
 
 #[wasm_bindgen]
-pub fn wire_test_unique_struct_3(port_: MessagePort, custom: JsValue, s: String, i: i64) {
-    wire_test_unique_struct_3_impl(port_, custom, s, i)
-}
-
-#[wasm_bindgen]
-pub fn wire_test_struct_defined_in_block_3(port_: MessagePort, custom: JsValue) {
-    wire_test_struct_defined_in_block_3_impl(port_, custom)
-}
-
-#[wasm_bindgen]
 pub fn wire_test_enum_defined_in_block_3(port_: MessagePort, custom: JsValue) {
     wire_test_enum_defined_in_block_3_impl(port_, custom)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_inbuilt_type_in_block_3(port_: MessagePort, a: i32, b: f32) {
+    wire_test_inbuilt_type_in_block_3_impl(port_, a, b)
 }
 
 #[wasm_bindgen]
@@ -111,28 +64,12 @@ pub fn wire_test_method__method__EnumDefinedInBlock3(
 }
 
 #[wasm_bindgen]
-pub fn wire_test_static_method__static_method__EnumDefinedInBlock3(
-    port_: MessagePort,
-    message: String,
-) {
-    wire_test_static_method__static_method__EnumDefinedInBlock3_impl(port_, message)
-}
-
-#[wasm_bindgen]
 pub fn wire_test_method__method__StructDefinedInBlock3(
     port_: MessagePort,
     that: JsValue,
     message: String,
 ) {
     wire_test_method__method__StructDefinedInBlock3_impl(port_, that, message)
-}
-
-#[wasm_bindgen]
-pub fn wire_test_static_method__static_method__StructDefinedInBlock3(
-    port_: MessagePort,
-    message: String,
-) {
-    wire_test_static_method__static_method__StructDefinedInBlock3_impl(port_, message)
 }
 
 #[wasm_bindgen]
@@ -146,11 +83,74 @@ pub fn wire_test_method__method__StructOnlyForBlock3(
 }
 
 #[wasm_bindgen]
+pub fn wire_test_shared_struct_in_block_3_for_2_and_3(
+    port_: MessagePort,
+    custom: JsValue,
+    s: String,
+    i: i32,
+) {
+    wire_test_shared_struct_in_block_3_for_2_and_3_impl(port_, custom, s, i)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_shared_struct_only_for_sync_as_input_with_no_sync_return_in_block_3(
+    port_: MessagePort,
+    obj: JsValue,
+    default_score: f64,
+) {
+    wire_test_shared_struct_only_for_sync_as_input_with_no_sync_return_in_block_3_impl(
+        port_,
+        obj,
+        default_score,
+    )
+}
+
+#[wasm_bindgen]
+pub fn wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3(
+    port_: MessagePort,
+    name: String,
+    score: f64,
+) {
+    wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3_impl(port_, name, score)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_static_method__static_method__EnumDefinedInBlock3(
+    port_: MessagePort,
+    message: String,
+) {
+    wire_test_static_method__static_method__EnumDefinedInBlock3_impl(port_, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_static_method__static_method__StructDefinedInBlock3(
+    port_: MessagePort,
+    message: String,
+) {
+    wire_test_static_method__static_method__StructDefinedInBlock3_impl(port_, message)
+}
+
+#[wasm_bindgen]
 pub fn wire_test_static_method__static_method__StructOnlyForBlock3(
     port_: MessagePort,
     message: String,
 ) {
     wire_test_static_method__static_method__StructOnlyForBlock3_impl(port_, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_string_in_block_3(port_: MessagePort, s: String, i: u64) {
+    wire_test_string_in_block_3_impl(port_, s, i)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_struct_defined_in_block_3(port_: MessagePort, custom: JsValue) {
+    wire_test_struct_defined_in_block_3_impl(port_, custom)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_unique_struct_3(port_: MessagePort, custom: JsValue, s: String, i: i64) {
+    wire_test_unique_struct_3_impl(port_, custom, s, i)
 }
 
 // Section: allocate functions
@@ -195,11 +195,6 @@ impl Wire2Api<Vec<StructDefinedInBlock3>> for JsValue {
             .iter()
             .map(Wire2Api::wire2api)
             .collect()
-    }
-}
-impl Wire2Api<Option<SharedStructInAllBlocks>> for JsValue {
-    fn wire2api(self) -> Option<SharedStructInAllBlocks> {
-        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
     }
 }
 impl Wire2Api<StructDefinedInBlock3> for JsValue {

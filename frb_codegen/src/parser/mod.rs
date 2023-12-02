@@ -5,6 +5,7 @@ pub(crate) mod ty;
 use std::borrow::Cow;
 use std::collections::HashMap;
 use std::default::Default as _;
+
 use std::string::String;
 
 use anyhow::Context;
@@ -16,8 +17,8 @@ use syn::token::{Colon, Comma};
 use syn::*;
 use topological_sort::TopologicalSort;
 
-use crate::utils::misc::{BlockIndex, ShareMode};
-use crate::{ir::*, Opts};
+use crate::ir::*;
+use crate::utils::misc::{filter_type_content, read_rust_file, BlockIndex};
 
 use crate::generator::rust::HANDLER_NAME;
 use crate::parser::source_graph::Crate;
@@ -100,28 +101,37 @@ pub(crate) fn topo_resolve(src: HashMap<String, Type>) -> HashMap<String, Type> 
     ret
 }
 
-pub fn parse(
-    source_rust_content: &str,
-    file: File,
+/// Read a single rust file, and parse it into an IrFile.
+pub fn parse_a_rust_file(
     manifest_path: &str,
+    rust_file_path: &str,
     block_index: BlockIndex,
-    share: bool,
-    all_configs: &[Opts],
+    only_parse_these_types_names: Option<&[&str]>,
 ) -> ParserResult<IrFile> {
-    let mut src_fns = extract_fns_from_file(&file);
-    src_fns.extend(extract_methods_from_file(&file)?);
+    log::debug!("the rust path is:{rust_file_path}"); // TODO: delete
+    let mut source_rust_content = read_rust_file(rust_file_path);
+    if let Some(types_names) = only_parse_these_types_names {
+        source_rust_content = filter_type_content(&source_rust_content, types_names);
+    };
+    let file_ast = syn::parse_file(&source_rust_content).unwrap();
+
+    let mut src_fns = extract_fns_from_file(&file_ast);
+    src_fns.extend(extract_methods_from_file(&file_ast)?);
     let crate_map = Crate::new(manifest_path)?;
     let src_structs = crate_map.root_module.collect_structs_to_vec();
     let src_enums = crate_map.root_module.collect_enums_to_vec();
     let src_types = crate_map.root_module.collect_types_to_pool();
     let src_types = topo_resolve(src_types);
+
+    // TODO: what is inside `src_types`,
+    // TODO: what if directly use `src_enums` and `src_structs` inside `parser.parse`,
     let parser = Parser::new(TypeParser::new(src_structs, src_enums, src_types));
     parser.parse(
-        source_rust_content,
+        manifest_path,
+        rust_file_path,
+        &source_rust_content,
         src_fns,
         block_index,
-        share,
-        all_configs,
     )
 }
 
@@ -138,32 +148,30 @@ impl<'a> Parser<'a> {
 impl<'a> Parser<'a> {
     fn parse(
         mut self,
+        manifest_path: &str,
+        rust_file_path: &str,
         source_rust_content: &str,
         src_fns: Vec<ItemFn>,
         block_index: BlockIndex,
-        share: bool,
-        all_configs: &[Opts],
     ) -> ParserResult<IrFile> {
         let funcs = src_fns
             .iter()
             .map(|f| self.parse_function(f))
             .collect::<ParserResult<Vec<_>>>()?;
-
         let has_executor = source_rust_content.contains(HANDLER_NAME);
-
-        let (struct_pool, enum_pool) = self.type_parser.consume();
-
-        let ir_file = IrFile::new(
+        // TODO: does the 2 contains fields of struct/enum? if fields are also struct/enum, should we add them?
+        // TODO: what if also `consume` type_parser.types?
+        let (struct_pool, enum_pool) = self.type_parser.consume(); // TODO: delete
+        Ok(IrFile::new(
+            manifest_path,
+            rust_file_path,
             funcs,
+            None,
             struct_pool,
             enum_pool,
             has_executor,
             block_index,
-            all_configs,
-            share,
-        );
-
-        Ok(ir_file)
+        ))
     }
 
     /// Attempts to parse the type from the return part of a function signature. There is a special
@@ -358,7 +366,6 @@ impl<'a> Parser<'a> {
             fallible,
             mode: mode.context("Missing mode")?,
             comments: extract_comments(&func.attrs),
-            share_mode: ShareMode::Unique, // set not shared as default
             error_output: error,
         })
     }

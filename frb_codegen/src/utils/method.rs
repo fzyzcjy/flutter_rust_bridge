@@ -1,4 +1,6 @@
-use crate::ir::IrFile;
+use crate::config::all_configs::AllConfigs;
+
+use crate::Opts;
 
 const STATIC_METHOD_MARKER: &str = "__static_method__";
 const METHOD_MARKER: &str = "__method__";
@@ -45,11 +47,14 @@ impl MethodNamingUtil {
     }
 
     /// Does `ir_file` has any methods directed for `struct_name`?
-    pub fn has_methods(struct_name: &str, ir_file: &IrFile) -> bool {
-        ir_file.funcs(true).iter().any(|f| {
-            let f = FunctionName::deserialize(&f.name);
-            f.is_method_for_struct(struct_name) || f.is_static_method_for_struct(struct_name)
-        })
+    pub fn has_methods(struct_name: &str, config: &Opts, all_configs: &AllConfigs) -> bool {
+        all_configs
+            .get_funcs(config.block_index, true)
+            .iter()
+            .any(|f| {
+                let f = FunctionName::deserialize(&f.name);
+                f.is_method_for_struct(struct_name) || f.is_static_method_for_struct(struct_name)
+            })
     }
 }
 

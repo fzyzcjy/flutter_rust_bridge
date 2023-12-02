@@ -28,10 +28,10 @@ pub use ty_rust_opaque::*;
 pub use ty_struct::*;
 pub use ty_sync_return::*;
 
-use std::cell::RefCell;
 use std::collections::HashSet;
 use std::fmt::Display;
 
+use crate::config::all_configs::AllConfigs;
 use crate::ir::IrType::*;
 use crate::others::*;
 use crate::target::Acc;
@@ -39,7 +39,7 @@ use crate::target::Target;
 use crate::target::Target::*;
 use crate::utils::method::FunctionName;
 
-use crate::utils::misc::{get_deduplicate_type, is_multi_blocks_case};
+use crate::utils::misc::ExtraTraitForVec;
 use crate::{ir::*, Opts};
 use itertools::Itertools;
 
@@ -51,61 +51,43 @@ pub struct Output {
     pub wasm_exports: Vec<IrFuncDisplay>,
 }
 
-thread_local!(static SHARED_METHODS_WIRE_NAMES: RefCell<Vec<String>> = RefCell::new(Vec::new()));
-thread_local!(static FETCHED_FOR_SHARED_METHODS_WIRE_NAMES: RefCell<bool> = RefCell::new(false));
-
 impl Output {
-    pub fn get_exclude_symbols(&self, all_symbols: &[String], ir_file: &IrFile) -> Vec<String> {
+    pub fn get_exclude_symbols(
+        &self,
+        all_symbols: &[String],
+        config: &Opts,
+        all_configs: &AllConfigs,
+    ) -> Vec<String> {
         let mut exclude_symbols = all_symbols
             .iter()
             .filter(|s| !self.extern_func_names.contains(s))
             .map(|s| (*s).clone())
             .collect::<Vec<_>>();
 
-        if !is_multi_blocks_case(None) {
+        log::debug!(
+            "for block:{}, the raw exclude_symbols:{exclude_symbols:#?}",
+            config.block_index
+        ); // TODO: delete
+        if !all_configs.is_multi_blocks_case() {
             return exclude_symbols;
         }
 
-        // the below is only for multi-blocks case
-        if ir_file.shared {
-            // for shared blocks, push the wire names of all shared methods to global variable
-            let all_shared_methods_wire_names = ir_file
-                .get_shared_methods()
-                .iter()
-                .map(|method| format!("wire_{}", method.name))
-                .collect::<Vec<_>>();
-
-            SHARED_METHODS_WIRE_NAMES.with(|data| {
-                let mut vec = data.borrow_mut();
-                *vec = all_shared_methods_wire_names;
-            });
-
-            FETCHED_FOR_SHARED_METHODS_WIRE_NAMES.with(|has_fetched| {
-                *has_fetched.borrow_mut() = true;
-            });
-        } else {
-            // for regular blocks, push those methods from shared types in
-            FETCHED_FOR_SHARED_METHODS_WIRE_NAMES.with(|has_fetched| {
-                assert!(*has_fetched.borrow());
-                let shared_method_names =
-                    SHARED_METHODS_WIRE_NAMES.with(|data| data.borrow().clone());
-                exclude_symbols.extend(shared_method_names);
-            });
+        if !config.shared {
+            exclude_symbols.extend(all_configs.get_shared_methods_wire_names());
         }
+
+        log::debug!(
+            "for block:{}, the final exclude_symbols:{exclude_symbols:#?}",
+            config.block_index
+        ); // TODO: delete
+
         exclude_symbols
     }
 }
 
-pub fn generate(
-    ir_file: &IrFile,
-    rust_wire_mod: &str,
-    shared_rust_wire_mod: Option<&str>,
-    config: &Opts,
-    all_configs: &[Opts],
-) -> Output {
+pub fn generate(config: &Opts, all_configs: &AllConfigs) -> Output {
     let mut generator = Generator::new(config);
-
-    let code = generator.generate(ir_file, rust_wire_mod, shared_rust_wire_mod, all_configs);
+    let code = generator.generate(config, all_configs);
     Output {
         code,
         extern_func_names: generator.extern_func_collector.names,
@@ -126,17 +108,13 @@ impl<'a> Generator<'a> {
         }
     }
 
-    fn generate(
-        &mut self,
-        ir_file: &IrFile,
-        rust_wire_mod: &str,
-        shared_rust_wire_mod: Option<&str>,
-        all_configs: &[Opts],
-    ) -> Acc<String> {
+    fn generate(&mut self, config: &Opts, all_configs: &AllConfigs) -> Acc<String> {
         let mut lines = Acc::<Vec<_>>::default();
 
-        let distinct_input_types = ir_file.distinct_types(true, false, all_configs);
-        let distinct_output_types = ir_file.distinct_types(false, true, all_configs);
+        let distinct_input_types =
+            all_configs.get_types(config.block_index, true, true, true, false);
+        let distinct_output_types =
+            all_configs.get_types(config.block_index, true, true, false, true);
 
         lines.push(r#"#![allow(non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion, clippy::unit_arg, clippy::double_parens, non_snake_case, clippy::too_many_arguments)]"#.to_string());
         lines.push(code_header());
@@ -144,8 +122,19 @@ impl<'a> Generator<'a> {
         lines.push(String::new());
         lines.push("use flutter_rust_bridge::*;".to_owned());
         lines.push("use core::panic::UnwindSafe;".to_owned());
-        if !ir_file.shared {
-            lines.push(format!("use crate::{rust_wire_mod}::*;"));
+
+        let (base_module, shared_module) = if config.shared {
+            let module = all_configs.get_rust_module_name(Some(config)).unwrap();
+            (module.clone(), Some(module))
+        } else {
+            (
+                all_configs.get_rust_module_name(Some(config)).unwrap(),
+                all_configs.get_rust_module_name(None),
+            )
+        };
+
+        if !config.shared {
+            lines.push(format!("use crate::{base_module}::*;"));
             lines.push("use std::sync::Arc;".to_owned());
             lines.push("use std::ffi::c_void;".to_owned());
         }
@@ -153,32 +142,32 @@ impl<'a> Generator<'a> {
         lines.push(String::new());
         lines.push(self.section_header_comment("imports"));
         lines.extend(self.generate_imports(
-            ir_file,
-            rust_wire_mod,
-            shared_rust_wire_mod,
+            config,
+            all_configs,
+            &base_module,
+            shared_module.as_deref(),
             &distinct_input_types,
             &distinct_output_types,
         ));
         lines.push(String::new());
 
         lines.push_all(self.section_header_comment("wire functions"));
-        lines += ir_file
-            .funcs(true)
+        let funcs = &all_configs.get_funcs(config.block_index, true);
+        lines += funcs
             .iter()
-            .filter(|f| f.share_mode.is_shared() == ir_file.shared)
-            .map(|f| self.generate_wire_func(f, ir_file, shared_rust_wire_mod, all_configs))
+            .map(|f| self.generate_wire_func(f, config, shared_module.as_deref(), all_configs))
             .collect();
 
         lines.push(self.section_header_comment("wrapper structs"));
         lines.extend(
             distinct_output_types
                 .iter()
-                .filter_map(|ty| self.generate_wrapper_struct(ty, ir_file)),
+                .filter_map(|ty| self.generate_wrapper_struct(ty, config, all_configs)),
         );
         lines.push(self.section_header_comment("static checks"));
         let static_checks: Vec<_> = distinct_output_types
             .iter()
-            .filter_map(|ty| self.generate_static_checks(ty, ir_file))
+            .filter_map(|ty| self.generate_static_checks(ty, config, all_configs))
             .collect();
         if !static_checks.is_empty() {
             lines.push("const _: fn() = || {".to_owned());
@@ -189,35 +178,35 @@ impl<'a> Generator<'a> {
         lines.push_all(self.section_header_comment("allocate functions"));
         lines += distinct_input_types
             .iter()
-            .map(|f| self.generate_allocate_funcs(f, ir_file))
+            .map(|f| self.generate_allocate_funcs(f, all_configs))
             .collect();
 
         lines.push_all(self.section_header_comment("related functions"));
         lines += distinct_output_types
             .iter()
-            .map(|f| self.generate_related_funcs(f, ir_file))
+            .map(|f| self.generate_related_funcs(f, all_configs))
             .collect();
 
         lines.push_all(self.section_header_comment("impl Wire2Api"));
         lines.push(self.generate_wire2api_misc().to_string());
         lines += distinct_input_types
             .iter()
-            .map(|ty| self.generate_wire2api_func(ty, ir_file))
+            .map(|ty| self.generate_wire2api_func(ty, all_configs))
             .collect();
 
         lines.push(self.section_header_comment("impl IntoDart"));
         lines.extend(
-            get_deduplicate_type(&distinct_output_types)
+            distinct_output_types
                 .iter()
-                .map(|ty| self.generate_impl_intodart(ty, ir_file)),
+                .filter(|ty| !ty.is_sync_return() && !ty.is_boxed())
+                .map(|ty| self.generate_impl_intodart(ty, all_configs)),
         );
 
         lines.push(self.section_header_comment("executor"));
-        lines.push(self.generate_executor(ir_file));
+        lines.push(self.generate_executor(all_configs));
 
-        self.generate_io_part(&mut lines, &distinct_input_types, ir_file, all_configs);
-
-        self.generate_wasm_part(&mut lines, &distinct_input_types, ir_file);
+        self.generate_io_part(&mut lines, &distinct_input_types, all_configs);
+        self.generate_wasm_part(&mut lines, &distinct_input_types, all_configs);
 
         lines.join("\n")
     }
@@ -226,36 +215,41 @@ impl<'a> Generator<'a> {
         &mut self,
         lines: &mut Acc<Vec<String>>,
         distinct_input_types: &[IrType],
-        ir_file: &IrFile,
-        all_configs: &[Opts],
+        all_configs: &AllConfigs,
     ) {
+        let core_input_types = distinct_input_types
+            .iter()
+            .map(|each| each.get_core_type().clone())
+            .collect::<Vec<_>>()
+            .find_uniques_in_order(false);
         lines.io.push(self.section_header_comment("wire structs"));
         lines.io.extend(
-            distinct_input_types
+            core_input_types
                 .iter()
-                .map(|ty| self.generate_wire_struct(ty, ir_file)),
+                .map(|ty| self.generate_wire_struct(ty, all_configs)),
         );
         lines.io.extend(
             distinct_input_types
                 .iter()
-                .map(|ty| TypeRustGenerator::new(ty.clone(), ir_file, self.config).structs()),
+                .map(|ty| TypeRustGenerator::new(ty.clone(), self.config, all_configs).structs()),
         );
+
         (lines.io).push(self.section_header_comment("impl NewWithNullPtr"));
-        assert!(!all_configs.is_empty());
-        if !is_multi_blocks_case(None) || ir_file.shared {
+        if !all_configs.is_multi_blocks_case() || self.config.shared {
             (lines.io).push(self.generate_new_with_nullptr_misc().to_string());
         }
-        lines.io.extend(
-            distinct_input_types
+
+        lines.io.extend({
+            core_input_types
                 .iter()
-                .map(|ty| self.generate_new_with_nullptr_func(ty, ir_file)),
-        );
+                .map(|ty| self.generate_new_with_nullptr_func(ty, all_configs))
+        });
 
         (lines.io).push(self.section_header_comment("sync execution mode utility"));
 
         // add `free_WireSyncReturn` only for single-block case or the share block in multi-blocks case
-        let is_multi_blocks = is_multi_blocks_case(None);
-        if (!is_multi_blocks && !ir_file.shared) || (is_multi_blocks && ir_file.shared) {
+        let is_multi_blocks = all_configs.is_multi_blocks_case();
+        if (!is_multi_blocks && !self.config.shared) || (is_multi_blocks && self.config.shared) {
             lines.io.push(self.generate_sync_execution_mode_utility());
         }
     }
@@ -264,13 +258,14 @@ impl<'a> Generator<'a> {
         &mut self,
         lines: &mut Acc<Vec<String>>,
         distinct_input_types: &[IrType],
-        ir_file: &IrFile,
+        all_configs: &AllConfigs,
     ) {
+        let _ir_file = all_configs.get_ir_file(self.config.block_index).unwrap();
         (lines.wasm).push(self.section_header_comment("impl Wire2Api for JsValue"));
         lines.wasm.extend(
             distinct_input_types
                 .iter()
-                .filter_map(|ty| self.generate_wasm2api_func(ty, ir_file)),
+                .filter_map(|ty| self.generate_wasm2api_func(ty, all_configs)),
         );
     }
 
@@ -280,37 +275,36 @@ impl<'a> Generator<'a> {
 
     fn generate_imports(
         &self,
-        ir_file: &IrFile,
+        config: &Opts,
+        all_configs: &AllConfigs,
         rust_wire_mod: &str,
         shared_rust_wire_mod: Option<&str>,
         distinct_input_types: &[IrType],
         distinct_output_types: &[IrType],
     ) -> impl Iterator<Item = String> {
-        let input_type_imports = distinct_input_types
+        let input_types_import_statements = distinct_input_types
             .iter()
-            .map(|api_type| generate_import(api_type, ir_file, self.config))
+            .map(|api_type| generate_import(api_type, self.config, all_configs))
+            .collect::<Vec<_>>();
+        let output_types_import_statements = distinct_output_types
+            .iter()
+            .map(|api_type| generate_import(api_type, self.config, all_configs))
             .collect::<Vec<_>>();
 
-        let output_type_imports = distinct_output_types
-            .iter()
-            .map(|api_type| generate_import(api_type, ir_file, self.config))
-            .collect::<Vec<_>>();
-
-        //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓orig code↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-        let mut import_crates = input_type_imports
+        let mut import_crates = input_types_import_statements
             .into_iter()
-            .chain(output_type_imports)
+            .chain(output_types_import_statements)
             // Filter out `None` and unwrap
             .flatten()
             // Don't include imports from the API file
             .filter(|import| !import.starts_with(&format!("use crate::{rust_wire_mod}::")))
             // de-duplicate
             .collect::<HashSet<String>>();
-        //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑orig code↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
-        if ir_file.shared {
+
+        if config.shared {
             import_crates = import_crates.iter().map(|s| format!("pub {}", s)).collect()
         } else {
-            // import shared-block module, if essential
+            // import shared-block module for regular block, if essential
             if let Some(shared_rust_wire_mod) = shared_rust_wire_mod {
                 let shared_crate_str = format!("use crate::{shared_rust_wire_mod}");
                 import_crates.extend(vec![
@@ -319,10 +313,12 @@ impl<'a> Generator<'a> {
                 ])
             }
         }
+
         import_crates.into_iter()
     }
 
-    fn generate_executor(&mut self, ir_file: &IrFile) -> String {
+    fn generate_executor(&mut self, all_configs: &AllConfigs) -> String {
+        let ir_file = all_configs.get_ir_file(self.config.block_index).unwrap();
         if ir_file.has_executor {
             "/* nothing since executor detected */".to_string()
         } else {
@@ -347,9 +343,9 @@ impl<'a> Generator<'a> {
     fn generate_wire_func(
         &mut self,
         func: &IrFunc,
-        ir_file: &IrFile,
+        config: &Opts,
         shared_rust_wire_mod: Option<&str>,
-        all_configs: &[Opts],
+        all_configs: &AllConfigs,
     ) -> Acc<String> {
         let f = FunctionName::deserialize(&func.name);
         let struct_name = f.struct_name();
@@ -363,22 +359,20 @@ impl<'a> Generator<'a> {
             Acc::default()
         };
 
-        let distinct_input_types_in_shared_block = if ir_file.shared || all_configs.is_empty() {
+        let distinct_input_types_in_shared_block = if config.shared {
             vec![]
+        } else if let Some(shared_config) = all_configs.get_shared_config() {
+            all_configs.get_types(shared_config.block_index, false, true, true, false)
         } else {
-            let last_config = all_configs.last().unwrap();
-            if last_config.shared {
-                let shared_ir_file = last_config.get_ir_file(all_configs).unwrap();
-                shared_ir_file.distinct_types(true, false, all_configs)
-            } else {
-                vec![]
-            }
+            vec![]
         };
+
         params += (func.inputs)
             .iter()
             .map(|field| {
                 let rust_api_type = field.ty.rust_api_type();
                 let name = field.name.rust_style();
+
                 let is_field_shared = |field: &IrField| {
                     if let Optional(ir) = &field.ty {
                         distinct_input_types_in_shared_block.contains(&ir.inner)
@@ -392,7 +386,7 @@ impl<'a> Generator<'a> {
                         format!(
                             "{}: impl {}Wire2Api<{}> + UnwindSafe",
                             name,
-                            if !ir_file.shared && is_field_shared(field) {
+                            if !config.shared && is_field_shared(field) {
                                 format!("{}::", shared_rust_wire_mod.unwrap())
                             } else {
                                 "".into()
@@ -418,6 +412,7 @@ impl<'a> Generator<'a> {
                 .collect::<Vec<_>>(),
         ]
         .concat();
+        let ir_file = all_configs.get_ir_file(config.block_index).unwrap();
         if let IrFuncMode::Stream { argument_index } = func.mode {
             inner_func_params.insert(
                 argument_index,
@@ -531,9 +526,9 @@ impl<'a> Generator<'a> {
         })
     }
 
-    fn generate_wire_struct(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
+    fn generate_wire_struct(&mut self, ty: &IrType, all_configs: &AllConfigs) -> String {
         if let Some(fields) =
-            TypeRustGenerator::new(ty.clone(), ir_file, self.config).wire_struct_fields()
+            TypeRustGenerator::new(ty.clone(), self.config, all_configs).wire_struct_fields()
         {
             format!(
                 r###"
@@ -551,14 +546,14 @@ impl<'a> Generator<'a> {
         }
     }
 
-    fn generate_allocate_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
-        TypeRustGenerator::new(ty.clone(), ir_file, self.config)
+    fn generate_allocate_funcs(&mut self, ty: &IrType, all_configs: &AllConfigs) -> Acc<String> {
+        TypeRustGenerator::new(ty.clone(), self.config, all_configs)
             .allocate_funcs(&mut self.extern_func_collector)
             .map(|func, _| func.unwrap_or_default())
     }
 
-    fn generate_related_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
-        TypeRustGenerator::new(ty.clone(), ir_file, self.config)
+    fn generate_related_funcs(&mut self, ty: &IrType, all_configs: &AllConfigs) -> Acc<String> {
+        TypeRustGenerator::new(ty.clone(), self.config, all_configs)
             .related_funcs(&mut self.extern_func_collector)
             .map(|func, _| func.unwrap_or_default())
     }
@@ -578,8 +573,8 @@ impl<'a> Generator<'a> {
         }"#
     }
 
-    fn generate_wire2api_func(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
-        TypeRustGenerator::new(ty.clone(), ir_file, self.config)
+    fn generate_wire2api_func(&mut self, ty: &IrType, all_configs: &AllConfigs) -> Acc<String> {
+        TypeRustGenerator::new(ty.clone(), self.config, all_configs)
             .wire2api_body()
             .map(|body, target| {
                 body.map(|body| {
@@ -599,17 +594,28 @@ impl<'a> Generator<'a> {
             })
     }
 
-    fn generate_static_checks(&mut self, ty: &IrType, ir_file: &IrFile) -> Option<String> {
-        TypeRustGenerator::new(ty.clone(), ir_file, self.config).static_checks()
+    fn generate_static_checks(
+        &mut self,
+        ty: &IrType,
+        config: &Opts,
+        all_configs: &AllConfigs,
+    ) -> Option<String> {
+        let _ir_file = all_configs.get_ir_file(config.block_index).unwrap();
+        TypeRustGenerator::new(ty.clone(), self.config, all_configs).static_checks()
     }
 
-    fn generate_wrapper_struct(&mut self, ty: &IrType, ir_file: &IrFile) -> Option<String> {
+    fn generate_wrapper_struct(
+        &mut self,
+        ty: &IrType,
+        _config: &Opts,
+        all_configs: &AllConfigs,
+    ) -> Option<String> {
         // the generated wrapper structs need to be public for the StreamSinkTrait impl to work
         match ty {
             IrType::StructRef(_)
             | IrType::EnumRef(_)
             | IrType::Delegate(IrTypeDelegate::PrimitiveEnum { .. }) => {
-                TypeRustGenerator::new(ty.clone(), ir_file, self.config)
+                TypeRustGenerator::new(ty.clone(), self.config, all_configs)
                     .wrapper_struct()
                     .map(|wrapper| {
                         format!(
@@ -639,17 +645,17 @@ impl<'a> Generator<'a> {
         "
     }
 
-    fn generate_new_with_nullptr_func(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
-        TypeRustGenerator::new(ty.clone(), ir_file, self.config)
+    fn generate_new_with_nullptr_func(&mut self, ty: &IrType, all_configs: &AllConfigs) -> String {
+        TypeRustGenerator::new(ty.clone(), self.config, all_configs)
             .new_with_nullptr(&mut self.extern_func_collector)
     }
 
-    fn generate_impl_intodart(&mut self, ty: &IrType, ir_file: &IrFile) -> String {
-        TypeRustGenerator::new(ty.clone(), ir_file, self.config).impl_intodart()
+    fn generate_impl_intodart(&mut self, ty: &IrType, all_configs: &AllConfigs) -> String {
+        TypeRustGenerator::new(ty.clone(), self.config, all_configs).impl_intodart()
     }
 
-    fn generate_wasm2api_func(&self, ty: &IrType, ir_file: &IrFile) -> Option<String> {
-        TypeRustGenerator::new(ty.clone(), ir_file, self.config)
+    fn generate_wasm2api_func(&self, ty: &IrType, all_configs: &AllConfigs) -> Option<String> {
+        TypeRustGenerator::new(ty.clone(), self.config, all_configs)
             .wire2api_jsvalue()
             .map(|body| {
                 format!(
@@ -665,8 +671,12 @@ impl<'a> Generator<'a> {
     }
 }
 
-pub fn generate_import(api_type: &IrType, ir_file: &IrFile, config: &Opts) -> Option<String> {
-    TypeRustGenerator::new(api_type.clone(), ir_file, config).imports()
+pub fn generate_import(
+    api_type: &IrType,
+    config: &Opts,
+    all_configs: &AllConfigs,
+) -> Option<String> {
+    TypeRustGenerator::new(api_type.clone(), config, all_configs).imports()
 }
 
 pub fn generate_list_allocate_func(

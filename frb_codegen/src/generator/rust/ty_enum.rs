@@ -37,8 +37,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                                 };
 
                                 if !target.is_wasm() {
-                                    let shared_mod_name: Option<String> =
-                                        self.get_shared_module_of_a_type(&field.ty);
+                                    let shared_mod_name = self.get_type_share_module(&field.ty);
                                     if !self.context.config.shared && shared_mod_name.is_some() {
                                         format!(
                                             "{field_} {}::Wire2Api::wire2api(ans.{field_name})",
@@ -232,8 +231,8 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                             .chain(st.fields.iter().map(|field| {
                                 let gen = TypeRustGenerator::new(
                                     field.ty.clone(),
-                                    self.context.ir_file,
                                     self.context.config,
+                                    self.context.all_configs,
                                 );
 
                                 gen.convert_to_dart(field.name.rust_style().to_owned())

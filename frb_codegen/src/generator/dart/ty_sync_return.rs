@@ -15,8 +15,8 @@ impl<'a> TypeSyncReturnGenerator<'a> {
         TypeSyncReturnGenerator {
             inner: Box::new(TypeDartGenerator::new(
                 ir.into_inner(),
-                context.ir_file,
                 context.config,
+                context.all_configs,
             )),
         }
     }
@@ -24,16 +24,8 @@ impl<'a> TypeSyncReturnGenerator<'a> {
 
 #[delegate(self.inner)]
 impl<'a> TypeDartGeneratorTrait for TypeSyncReturnGenerator<'a> {
-    fn api2wire_body(
-        &self,
-        shared_dart_api2wire_funcs: &Option<Acc<String>>,
-    ) -> Acc<Option<String>> {
-    }
-    fn api_fill_to_wire_body(
-        &self,
-        shared_dart_api2wire_funcs: &Option<Acc<String>>,
-    ) -> Option<String> {
-    }
+    fn api2wire_body(&self) -> Acc<Option<String>> {}
+    fn api_fill_to_wire_body(&self) -> Option<String> {}
     fn wire2api_body(&self) -> String {}
     fn structs(&self) -> String {}
 }

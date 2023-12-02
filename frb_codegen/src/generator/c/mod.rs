@@ -1,25 +1,26 @@
 use std::path::Path;
 
+use crate::config::all_configs::AllConfigs;
 use crate::config::opts::Opts;
-use crate::utils::misc::{is_multi_blocks_case, BlockIndex, PathExt};
+use crate::utils::misc::PathExt;
 
 pub fn generate_dummy(
     config: &Opts,
-    all_configs: &[Opts],
+    all_configs: &AllConfigs,
     func_names: &[String],
     c_path_index: usize,
 ) -> String {
-    if is_multi_blocks_case(None) {
+    if all_configs.is_multi_blocks_case() {
         let basic_dummy_func = get_dummy_func(&config.class_name, func_names);
-        if config.block_index == BlockIndex(all_configs.len() - 1) {
+        if config.shared {
             let func_names = all_configs
-                .iter()
+                .iter_all()
                 .map(|e| get_dummy_signature(&e.class_name))
                 .collect::<Vec<_>>();
 
             let regular_block_headers = all_configs
+                .get_regular_configs()
                 .iter()
-                .filter(|e| !e.shared)
                 .map(|e| {
                     // get directory only from paths
                     let src_p = Path::new(&config.c_output_paths[c_path_index]);

@@ -2,20 +2,8 @@ use super::*;
 // Section: wire functions
 
 #[no_mangle]
-pub extern "C" fn wire_test_method__method__CrossSharedStructInBlock1And2(
-    port_: i64,
-    that: *mut wire_CrossSharedStructInBlock1And2,
-    message: *mut wire_uint_8_list,
-) {
-    wire_test_method__method__CrossSharedStructInBlock1And2_impl(port_, that, message)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_test_static_method__static_method__CrossSharedStructInBlock1And2(
-    port_: i64,
-    message: *mut wire_uint_8_list,
-) {
-    wire_test_static_method__static_method__CrossSharedStructInBlock1And2_impl(port_, message)
+pub extern "C" fn wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks(port_: i64, that: i32) {
+    wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks_impl(port_, that)
 }
 
 #[no_mangle]
@@ -28,11 +16,30 @@ pub extern "C" fn wire_test_enum_method__method__SharedComplexEnumInAllBlocks(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks(
+pub extern "C" fn wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks(
     port_: i64,
+    that: i32,
     message: *mut wire_uint_8_list,
 ) {
-    wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks_impl(port_, message)
+    wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks_impl(port_, that, message)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_method__method__CrossSharedStructInBlock1And2(
+    port_: i64,
+    that: *mut wire_CrossSharedStructInBlock1And2,
+    message: *mut wire_uint_8_list,
+) {
+    wire_test_method__method__CrossSharedStructInBlock1And2_impl(port_, that, message)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_method__method__CrossSharedStructInBlock2And3(
+    port_: i64,
+    that: *mut wire_CrossSharedStructInBlock2And3,
+    message: *mut wire_uint_8_list,
+) {
+    wire_test_method__method__CrossSharedStructInBlock2And3_impl(port_, that, message)
 }
 
 #[no_mangle]
@@ -46,84 +53,12 @@ pub extern "C" fn wire_test_method__method__SharedStructInAllBlocks(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_static_method__static_method__SharedStructInAllBlocks(
-    port_: i64,
-    message: *mut wire_uint_8_list,
-) {
-    wire_test_static_method__static_method__SharedStructInAllBlocks_impl(port_, message)
-}
-
-#[no_mangle]
 pub extern "C" fn wire_test_method__method__SharedStructInBlock1And2(
     port_: i64,
     that: *mut wire_SharedStructInBlock1And2,
     message: *mut wire_uint_8_list,
 ) {
     wire_test_method__method__SharedStructInBlock1And2_impl(port_, that, message)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_test_static_method__static_method__SharedStructInBlock1And2(
-    port_: i64,
-    message: *mut wire_uint_8_list,
-) {
-    wire_test_static_method__static_method__SharedStructInBlock1And2_impl(port_, message)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_test_method__method__SharedStructOnlyForSyncTest(
-    port_: i64,
-    that: *mut wire_SharedStructOnlyForSyncTest,
-    message: *mut wire_uint_8_list,
-) {
-    wire_test_method__method__SharedStructOnlyForSyncTest_impl(port_, that, message)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_test_static_method__static_method__SharedStructOnlyForSyncTest(
-    port_: i64,
-    message: *mut wire_uint_8_list,
-) {
-    wire_test_static_method__static_method__SharedStructOnlyForSyncTest_impl(port_, message)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks(
-    port_: i64,
-    that: i32,
-    message: *mut wire_uint_8_list,
-) {
-    wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks_impl(port_, that, message)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks(
-    port_: i64,
-    message: *mut wire_uint_8_list,
-) {
-    wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks_impl(port_, message)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks(port_: i64, that: i32) {
-    wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks_impl(port_, that)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_test_method__method__CrossSharedStructInBlock2And3(
-    port_: i64,
-    that: *mut wire_CrossSharedStructInBlock2And3,
-    message: *mut wire_uint_8_list,
-) {
-    wire_test_method__method__CrossSharedStructInBlock2And3_impl(port_, that, message)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_test_static_method__static_method__CrossSharedStructInBlock2And3(
-    port_: i64,
-    message: *mut wire_uint_8_list,
-) {
-    wire_test_static_method__static_method__CrossSharedStructInBlock2And3_impl(port_, message)
 }
 
 #[no_mangle]
@@ -136,11 +71,76 @@ pub extern "C" fn wire_test_method__method__SharedStructInBlock2And3(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_test_method__method__SharedStructOnlyForSyncTest(
+    port_: i64,
+    that: *mut wire_SharedStructOnlyForSyncTest,
+    message: *mut wire_uint_8_list,
+) {
+    wire_test_method__method__SharedStructOnlyForSyncTest_impl(port_, that, message)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks(
+    port_: i64,
+    message: *mut wire_uint_8_list,
+) {
+    wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks_impl(port_, message)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks(
+    port_: i64,
+    message: *mut wire_uint_8_list,
+) {
+    wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks_impl(port_, message)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_static_method__static_method__CrossSharedStructInBlock1And2(
+    port_: i64,
+    message: *mut wire_uint_8_list,
+) {
+    wire_test_static_method__static_method__CrossSharedStructInBlock1And2_impl(port_, message)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_static_method__static_method__CrossSharedStructInBlock2And3(
+    port_: i64,
+    message: *mut wire_uint_8_list,
+) {
+    wire_test_static_method__static_method__CrossSharedStructInBlock2And3_impl(port_, message)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_static_method__static_method__SharedStructInAllBlocks(
+    port_: i64,
+    message: *mut wire_uint_8_list,
+) {
+    wire_test_static_method__static_method__SharedStructInAllBlocks_impl(port_, message)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_static_method__static_method__SharedStructInBlock1And2(
+    port_: i64,
+    message: *mut wire_uint_8_list,
+) {
+    wire_test_static_method__static_method__SharedStructInBlock1And2_impl(port_, message)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_test_static_method__static_method__SharedStructInBlock2And3(
     port_: i64,
     message: *mut wire_uint_8_list,
 ) {
     wire_test_static_method__static_method__SharedStructInBlock2And3_impl(port_, message)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_static_method__static_method__SharedStructOnlyForSyncTest(
+    port_: i64,
+    message: *mut wire_uint_8_list,
+) {
+    wire_test_static_method__static_method__SharedStructOnlyForSyncTest_impl(port_, message)
 }
 
 // Section: allocate functions
@@ -538,6 +538,38 @@ pub struct wire_CrossSharedStructInBlock2And3 {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_SharedStructInAllBlocks {
+    id: i32,
+    num: f64,
+    name: *mut wire_uint_8_list,
+    enum_list: *mut wire_list_shared_complex_enum_in_all_blocks,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_SharedStructInBlock1And2 {
+    id: i32,
+    num: f64,
+    name: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_SharedStructInBlock2And3 {
+    id: i32,
+    num: f64,
+    name: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_SharedStructOnlyForSyncTest {
+    name: *mut wire_uint_8_list,
+    score: f64,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_float_32_list {
     ptr: *mut f32,
     len: i32,
@@ -569,38 +601,6 @@ pub struct wire_list_shared_struct_in_all_blocks {
 pub struct wire_list_shared_weekdays_enum_in_all_blocks {
     ptr: *mut i32,
     len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_SharedStructInAllBlocks {
-    id: i32,
-    num: f64,
-    name: *mut wire_uint_8_list,
-    enum_list: *mut wire_list_shared_complex_enum_in_all_blocks,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_SharedStructInBlock1And2 {
-    id: i32,
-    num: f64,
-    name: *mut wire_uint_8_list,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_SharedStructInBlock2And3 {
-    id: i32,
-    num: f64,
-    name: *mut wire_uint_8_list,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_SharedStructOnlyForSyncTest {
-    name: *mut wire_uint_8_list,
-    score: f64,
 }
 
 #[repr(C)]

@@ -28,45 +28,20 @@ pub use crate::shared_type_module::cross_shared::CrossSharedStructInBlock2And3;
 
 // Section: wire functions
 
-fn wire_test_method__method__CrossSharedStructInBlock1And2_impl(
+fn wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks_impl(
     port_: MessagePort,
-    that: impl Wire2Api<CrossSharedStructInBlock1And2> + UnwindSafe,
-    message: impl Wire2Api<String> + UnwindSafe,
+    that: impl Wire2Api<SharedWeekdaysEnumInAllBlocks> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
         WrapInfo {
-            debug_name: "test_method__method__CrossSharedStructInBlock1And2",
+            debug_name: "print_weekday__method__SharedWeekdaysEnumInAllBlocks",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_that = that.wire2api();
-            let api_message = message.wire2api();
             move |task_callback| {
-                Result::<_, ()>::Ok(CrossSharedStructInBlock1And2::test_method(
-                    &api_that,
-                    api_message,
-                ))
-            }
-        },
-    )
-}
-fn wire_test_static_method__static_method__CrossSharedStructInBlock1And2_impl(
-    port_: MessagePort,
-    message: impl Wire2Api<String> + UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
-        WrapInfo {
-            debug_name: "test_static_method__static_method__CrossSharedStructInBlock1And2",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_message = message.wire2api();
-            move |task_callback| {
-                Result::<_, ()>::Ok(CrossSharedStructInBlock1And2::test_static_method(
-                    api_message,
-                ))
+                Result::<_, ()>::Ok(SharedWeekdaysEnumInAllBlocks::print_weekday(&api_that))
             }
         },
     )
@@ -94,20 +69,69 @@ fn wire_test_enum_method__method__SharedComplexEnumInAllBlocks_impl(
         },
     )
 }
-fn wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks_impl(
+fn wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks_impl(
     port_: MessagePort,
+    that: impl Wire2Api<SharedWeekdaysEnumInAllBlocks> + UnwindSafe,
     message: impl Wire2Api<String> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
         WrapInfo {
-            debug_name: "test_static_enum_method__static_method__SharedComplexEnumInAllBlocks",
+            debug_name: "test_enum_method__method__SharedWeekdaysEnumInAllBlocks",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
+            let api_that = that.wire2api();
             let api_message = message.wire2api();
             move |task_callback| {
-                Result::<_, ()>::Ok(SharedComplexEnumInAllBlocks::test_static_enum_method(
+                Result::<_, ()>::Ok(SharedWeekdaysEnumInAllBlocks::test_enum_method(
+                    &api_that,
+                    api_message,
+                ))
+            }
+        },
+    )
+}
+fn wire_test_method__method__CrossSharedStructInBlock1And2_impl(
+    port_: MessagePort,
+    that: impl Wire2Api<CrossSharedStructInBlock1And2> + UnwindSafe,
+    message: impl Wire2Api<String> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+        WrapInfo {
+            debug_name: "test_method__method__CrossSharedStructInBlock1And2",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_that = that.wire2api();
+            let api_message = message.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(CrossSharedStructInBlock1And2::test_method(
+                    &api_that,
+                    api_message,
+                ))
+            }
+        },
+    )
+}
+fn wire_test_method__method__CrossSharedStructInBlock2And3_impl(
+    port_: MessagePort,
+    that: impl Wire2Api<CrossSharedStructInBlock2And3> + UnwindSafe,
+    message: impl Wire2Api<String> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+        WrapInfo {
+            debug_name: "test_method__method__CrossSharedStructInBlock2And3",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_that = that.wire2api();
+            let api_message = message.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(CrossSharedStructInBlock2And3::test_method(
+                    &api_that,
                     api_message,
                 ))
             }
@@ -140,24 +164,6 @@ fn wire_test_method__method__SharedStructInAllBlocks_impl(
         },
     )
 }
-fn wire_test_static_method__static_method__SharedStructInAllBlocks_impl(
-    port_: MessagePort,
-    message: impl Wire2Api<String> + UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
-        WrapInfo {
-            debug_name: "test_static_method__static_method__SharedStructInAllBlocks",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_message = message.wire2api();
-            move |task_callback| {
-                Result::<_, ()>::Ok(SharedStructInAllBlocks::test_static_method(api_message))
-            }
-        },
-    )
-}
 fn wire_test_method__method__SharedStructInBlock1And2_impl(
     port_: MessagePort,
     that: impl Wire2Api<SharedStructInBlock1And2> + UnwindSafe,
@@ -175,169 +181,6 @@ fn wire_test_method__method__SharedStructInBlock1And2_impl(
             move |task_callback| {
                 Result::<_, ()>::Ok(SharedStructInBlock1And2::test_method(
                     &api_that,
-                    api_message,
-                ))
-            }
-        },
-    )
-}
-fn wire_test_static_method__static_method__SharedStructInBlock1And2_impl(
-    port_: MessagePort,
-    message: impl Wire2Api<String> + UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
-        WrapInfo {
-            debug_name: "test_static_method__static_method__SharedStructInBlock1And2",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_message = message.wire2api();
-            move |task_callback| {
-                Result::<_, ()>::Ok(SharedStructInBlock1And2::test_static_method(api_message))
-            }
-        },
-    )
-}
-fn wire_test_method__method__SharedStructOnlyForSyncTest_impl(
-    port_: MessagePort,
-    that: impl Wire2Api<SharedStructOnlyForSyncTest> + UnwindSafe,
-    message: impl Wire2Api<String> + UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
-        WrapInfo {
-            debug_name: "test_method__method__SharedStructOnlyForSyncTest",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_that = that.wire2api();
-            let api_message = message.wire2api();
-            move |task_callback| {
-                Result::<_, ()>::Ok(SharedStructOnlyForSyncTest::test_method(
-                    &api_that,
-                    api_message,
-                ))
-            }
-        },
-    )
-}
-fn wire_test_static_method__static_method__SharedStructOnlyForSyncTest_impl(
-    port_: MessagePort,
-    message: impl Wire2Api<String> + UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
-        WrapInfo {
-            debug_name: "test_static_method__static_method__SharedStructOnlyForSyncTest",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_message = message.wire2api();
-            move |task_callback| {
-                Result::<_, ()>::Ok(SharedStructOnlyForSyncTest::test_static_method(api_message))
-            }
-        },
-    )
-}
-fn wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks_impl(
-    port_: MessagePort,
-    that: impl Wire2Api<SharedWeekdaysEnumInAllBlocks> + UnwindSafe,
-    message: impl Wire2Api<String> + UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
-        WrapInfo {
-            debug_name: "test_enum_method__method__SharedWeekdaysEnumInAllBlocks",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_that = that.wire2api();
-            let api_message = message.wire2api();
-            move |task_callback| {
-                Result::<_, ()>::Ok(SharedWeekdaysEnumInAllBlocks::test_enum_method(
-                    &api_that,
-                    api_message,
-                ))
-            }
-        },
-    )
-}
-fn wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks_impl(
-    port_: MessagePort,
-    message: impl Wire2Api<String> + UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
-        WrapInfo {
-            debug_name: "test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_message = message.wire2api();
-            move |task_callback| {
-                Result::<_, ()>::Ok(SharedWeekdaysEnumInAllBlocks::test_static_enum_method(
-                    api_message,
-                ))
-            }
-        },
-    )
-}
-fn wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks_impl(
-    port_: MessagePort,
-    that: impl Wire2Api<SharedWeekdaysEnumInAllBlocks> + UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
-        WrapInfo {
-            debug_name: "print_weekday__method__SharedWeekdaysEnumInAllBlocks",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_that = that.wire2api();
-            move |task_callback| {
-                Result::<_, ()>::Ok(SharedWeekdaysEnumInAllBlocks::print_weekday(&api_that))
-            }
-        },
-    )
-}
-fn wire_test_method__method__CrossSharedStructInBlock2And3_impl(
-    port_: MessagePort,
-    that: impl Wire2Api<CrossSharedStructInBlock2And3> + UnwindSafe,
-    message: impl Wire2Api<String> + UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
-        WrapInfo {
-            debug_name: "test_method__method__CrossSharedStructInBlock2And3",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_that = that.wire2api();
-            let api_message = message.wire2api();
-            move |task_callback| {
-                Result::<_, ()>::Ok(CrossSharedStructInBlock2And3::test_method(
-                    &api_that,
-                    api_message,
-                ))
-            }
-        },
-    )
-}
-fn wire_test_static_method__static_method__CrossSharedStructInBlock2And3_impl(
-    port_: MessagePort,
-    message: impl Wire2Api<String> + UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
-        WrapInfo {
-            debug_name: "test_static_method__static_method__CrossSharedStructInBlock2And3",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_message = message.wire2api();
-            move |task_callback| {
-                Result::<_, ()>::Ok(CrossSharedStructInBlock2And3::test_static_method(
                     api_message,
                 ))
             }
@@ -367,6 +210,145 @@ fn wire_test_method__method__SharedStructInBlock2And3_impl(
         },
     )
 }
+fn wire_test_method__method__SharedStructOnlyForSyncTest_impl(
+    port_: MessagePort,
+    that: impl Wire2Api<SharedStructOnlyForSyncTest> + UnwindSafe,
+    message: impl Wire2Api<String> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+        WrapInfo {
+            debug_name: "test_method__method__SharedStructOnlyForSyncTest",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_that = that.wire2api();
+            let api_message = message.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(SharedStructOnlyForSyncTest::test_method(
+                    &api_that,
+                    api_message,
+                ))
+            }
+        },
+    )
+}
+fn wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks_impl(
+    port_: MessagePort,
+    message: impl Wire2Api<String> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+        WrapInfo {
+            debug_name: "test_static_enum_method__static_method__SharedComplexEnumInAllBlocks",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_message = message.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(SharedComplexEnumInAllBlocks::test_static_enum_method(
+                    api_message,
+                ))
+            }
+        },
+    )
+}
+fn wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks_impl(
+    port_: MessagePort,
+    message: impl Wire2Api<String> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+        WrapInfo {
+            debug_name: "test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_message = message.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(SharedWeekdaysEnumInAllBlocks::test_static_enum_method(
+                    api_message,
+                ))
+            }
+        },
+    )
+}
+fn wire_test_static_method__static_method__CrossSharedStructInBlock1And2_impl(
+    port_: MessagePort,
+    message: impl Wire2Api<String> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+        WrapInfo {
+            debug_name: "test_static_method__static_method__CrossSharedStructInBlock1And2",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_message = message.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(CrossSharedStructInBlock1And2::test_static_method(
+                    api_message,
+                ))
+            }
+        },
+    )
+}
+fn wire_test_static_method__static_method__CrossSharedStructInBlock2And3_impl(
+    port_: MessagePort,
+    message: impl Wire2Api<String> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+        WrapInfo {
+            debug_name: "test_static_method__static_method__CrossSharedStructInBlock2And3",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_message = message.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(CrossSharedStructInBlock2And3::test_static_method(
+                    api_message,
+                ))
+            }
+        },
+    )
+}
+fn wire_test_static_method__static_method__SharedStructInAllBlocks_impl(
+    port_: MessagePort,
+    message: impl Wire2Api<String> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+        WrapInfo {
+            debug_name: "test_static_method__static_method__SharedStructInAllBlocks",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_message = message.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(SharedStructInAllBlocks::test_static_method(api_message))
+            }
+        },
+    )
+}
+fn wire_test_static_method__static_method__SharedStructInBlock1And2_impl(
+    port_: MessagePort,
+    message: impl Wire2Api<String> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+        WrapInfo {
+            debug_name: "test_static_method__static_method__SharedStructInBlock1And2",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_message = message.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(SharedStructInBlock1And2::test_static_method(api_message))
+            }
+        },
+    )
+}
 fn wire_test_static_method__static_method__SharedStructInBlock2And3_impl(
     port_: MessagePort,
     message: impl Wire2Api<String> + UnwindSafe,
@@ -381,6 +363,24 @@ fn wire_test_static_method__static_method__SharedStructInBlock2And3_impl(
             let api_message = message.wire2api();
             move |task_callback| {
                 Result::<_, ()>::Ok(SharedStructInBlock2And3::test_static_method(api_message))
+            }
+        },
+    )
+}
+fn wire_test_static_method__static_method__SharedStructOnlyForSyncTest_impl(
+    port_: MessagePort,
+    message: impl Wire2Api<String> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+        WrapInfo {
+            debug_name: "test_static_method__static_method__SharedStructOnlyForSyncTest",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_message = message.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(SharedStructOnlyForSyncTest::test_static_method(api_message))
             }
         },
     )

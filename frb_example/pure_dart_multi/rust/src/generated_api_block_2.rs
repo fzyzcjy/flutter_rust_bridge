@@ -26,42 +26,6 @@ use crate::bridge_generated_shared::*;
 
 // Section: wire functions
 
-fn wire_test_inbuilt_type_in_block_2_impl(
-    port_: MessagePort,
-    a: impl bridge_generated_shared::Wire2Api<i32> + UnwindSafe,
-    b: impl bridge_generated_shared::Wire2Api<f32> + UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, f32, _>(
-        WrapInfo {
-            debug_name: "test_inbuilt_type_in_block_2",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_a = a.wire2api();
-            let api_b = b.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(test_inbuilt_type_in_block_2(api_a, api_b))
-        },
-    )
-}
-fn wire_test_string_in_block_2_impl(
-    port_: MessagePort,
-    s: impl bridge_generated_shared::Wire2Api<String> + UnwindSafe,
-    i: impl bridge_generated_shared::Wire2Api<u64> + UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
-        WrapInfo {
-            debug_name: "test_string_in_block_2",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_s = s.wire2api();
-            let api_i = i.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(test_string_in_block_2(api_s, api_i))
-        },
-    )
-}
 fn wire_test_all_shared_struct_in_block_2_impl(
     port_: MessagePort,
     custom: impl bridge_generated_shared::Wire2Api<SharedStructInAllBlocks> + UnwindSafe,
@@ -105,30 +69,6 @@ fn wire_test_all_shared_struct_in_sync_in_block_2_impl(
         },
     )
 }
-fn wire_test_shared_struct_in_block_2_for_1_and_2_impl(
-    port_: MessagePort,
-    custom: impl bridge_generated_shared::Wire2Api<SharedStructInBlock1And2> + UnwindSafe,
-    s: impl bridge_generated_shared::Wire2Api<String> + UnwindSafe,
-    i: impl bridge_generated_shared::Wire2Api<i32> + UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, SharedStructInBlock1And2, _>(
-        WrapInfo {
-            debug_name: "test_shared_struct_in_block_2_for_1_and_2",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_custom = custom.wire2api();
-            let api_s = s.wire2api();
-            let api_i = i.wire2api();
-            move |task_callback| {
-                Result::<_, ()>::Ok(test_shared_struct_in_block_2_for_1_and_2(
-                    api_custom, api_s, api_i,
-                ))
-            }
-        },
-    )
-}
 fn wire_test_cross_shared_struct_in_block_2_for_1_and_2_impl(
     port_: MessagePort,
     name: impl bridge_generated_shared::Wire2Api<String> + UnwindSafe,
@@ -143,30 +83,6 @@ fn wire_test_cross_shared_struct_in_block_2_for_1_and_2_impl(
             let api_name = name.wire2api();
             move |task_callback| {
                 Result::<_, ()>::Ok(test_cross_shared_struct_in_block_2_for_1_and_2(api_name))
-            }
-        },
-    )
-}
-fn wire_test_shared_struct_in_block_2_for_2_and_3_impl(
-    port_: MessagePort,
-    custom: impl bridge_generated_shared::Wire2Api<SharedStructInBlock2And3> + UnwindSafe,
-    s: impl bridge_generated_shared::Wire2Api<String> + UnwindSafe,
-    i: impl bridge_generated_shared::Wire2Api<i32> + UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, SharedStructInBlock2And3, _>(
-        WrapInfo {
-            debug_name: "test_shared_struct_in_block_2_for_2_and_3",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_custom = custom.wire2api();
-            let api_s = s.wire2api();
-            let api_i = i.wire2api();
-            move |task_callback| {
-                Result::<_, ()>::Ok(test_shared_struct_in_block_2_for_2_and_3(
-                    api_custom, api_s, api_i,
-                ))
             }
         },
     )
@@ -189,42 +105,6 @@ fn wire_test_cross_shared_struct_in_block_2_for_2_and_3_impl(
         },
     )
 }
-fn wire_test_unique_struct_2_impl(
-    port_: MessagePort,
-    custom: impl Wire2Api<StructOnlyForBlock2> + UnwindSafe,
-    s: impl bridge_generated_shared::Wire2Api<String> + UnwindSafe,
-    i: impl Wire2Api<i16> + UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, StructOnlyForBlock2, _>(
-        WrapInfo {
-            debug_name: "test_unique_struct_2",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_custom = custom.wire2api();
-            let api_s = s.wire2api();
-            let api_i = i.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(test_unique_struct_2(api_custom, api_s, api_i))
-        },
-    )
-}
-fn wire_test_struct_defined_in_block_2_impl(
-    port_: MessagePort,
-    custom: impl Wire2Api<StructDefinedInBlock2> + UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
-        WrapInfo {
-            debug_name: "test_struct_defined_in_block_2",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_custom = custom.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(test_struct_defined_in_block_2(api_custom))
-        },
-    )
-}
 fn wire_test_enum_defined_in_block_2_impl(
     port_: MessagePort,
     custom: impl Wire2Api<EnumDefinedInBlock2> + UnwindSafe,
@@ -238,6 +118,24 @@ fn wire_test_enum_defined_in_block_2_impl(
         move || {
             let api_custom = custom.wire2api();
             move |task_callback| Result::<_, ()>::Ok(test_enum_defined_in_block_2(api_custom))
+        },
+    )
+}
+fn wire_test_inbuilt_type_in_block_2_impl(
+    port_: MessagePort,
+    a: impl bridge_generated_shared::Wire2Api<i32> + UnwindSafe,
+    b: impl bridge_generated_shared::Wire2Api<f32> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, f32, _>(
+        WrapInfo {
+            debug_name: "test_inbuilt_type_in_block_2",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_a = a.wire2api();
+            let api_b = b.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(test_inbuilt_type_in_block_2(api_a, api_b))
         },
     )
 }
@@ -296,24 +194,6 @@ fn wire_test_method__method__EnumDefinedInBlock2_impl(
         },
     )
 }
-fn wire_test_static_method__static_method__EnumDefinedInBlock2_impl(
-    port_: MessagePort,
-    message: impl bridge_generated_shared::Wire2Api<String> + UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
-        WrapInfo {
-            debug_name: "test_static_method__static_method__EnumDefinedInBlock2",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_message = message.wire2api();
-            move |task_callback| {
-                Result::<_, ()>::Ok(EnumDefinedInBlock2::test_static_method(api_message))
-            }
-        },
-    )
-}
 fn wire_test_method__method__StructDefinedInBlock2_impl(
     port_: MessagePort,
     that: impl Wire2Api<StructDefinedInBlock2> + UnwindSafe,
@@ -330,24 +210,6 @@ fn wire_test_method__method__StructDefinedInBlock2_impl(
             let api_message = message.wire2api();
             move |task_callback| {
                 Result::<_, ()>::Ok(StructDefinedInBlock2::test_method(&api_that, api_message))
-            }
-        },
-    )
-}
-fn wire_test_static_method__static_method__StructDefinedInBlock2_impl(
-    port_: MessagePort,
-    message: impl bridge_generated_shared::Wire2Api<String> + UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
-        WrapInfo {
-            debug_name: "test_static_method__static_method__StructDefinedInBlock2",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_message = message.wire2api();
-            move |task_callback| {
-                Result::<_, ()>::Ok(StructDefinedInBlock2::test_static_method(api_message))
             }
         },
     )
@@ -378,6 +240,90 @@ fn wire_test_method__method__StructOnlyForBlock2_impl(
         },
     )
 }
+fn wire_test_shared_struct_in_block_2_for_1_and_2_impl(
+    port_: MessagePort,
+    custom: impl bridge_generated_shared::Wire2Api<SharedStructInBlock1And2> + UnwindSafe,
+    s: impl bridge_generated_shared::Wire2Api<String> + UnwindSafe,
+    i: impl bridge_generated_shared::Wire2Api<i32> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, SharedStructInBlock1And2, _>(
+        WrapInfo {
+            debug_name: "test_shared_struct_in_block_2_for_1_and_2",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_custom = custom.wire2api();
+            let api_s = s.wire2api();
+            let api_i = i.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(test_shared_struct_in_block_2_for_1_and_2(
+                    api_custom, api_s, api_i,
+                ))
+            }
+        },
+    )
+}
+fn wire_test_shared_struct_in_block_2_for_2_and_3_impl(
+    port_: MessagePort,
+    custom: impl bridge_generated_shared::Wire2Api<SharedStructInBlock2And3> + UnwindSafe,
+    s: impl bridge_generated_shared::Wire2Api<String> + UnwindSafe,
+    i: impl bridge_generated_shared::Wire2Api<i32> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, SharedStructInBlock2And3, _>(
+        WrapInfo {
+            debug_name: "test_shared_struct_in_block_2_for_2_and_3",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_custom = custom.wire2api();
+            let api_s = s.wire2api();
+            let api_i = i.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(test_shared_struct_in_block_2_for_2_and_3(
+                    api_custom, api_s, api_i,
+                ))
+            }
+        },
+    )
+}
+fn wire_test_static_method__static_method__EnumDefinedInBlock2_impl(
+    port_: MessagePort,
+    message: impl bridge_generated_shared::Wire2Api<String> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+        WrapInfo {
+            debug_name: "test_static_method__static_method__EnumDefinedInBlock2",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_message = message.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(EnumDefinedInBlock2::test_static_method(api_message))
+            }
+        },
+    )
+}
+fn wire_test_static_method__static_method__StructDefinedInBlock2_impl(
+    port_: MessagePort,
+    message: impl bridge_generated_shared::Wire2Api<String> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+        WrapInfo {
+            debug_name: "test_static_method__static_method__StructDefinedInBlock2",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_message = message.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(StructDefinedInBlock2::test_static_method(api_message))
+            }
+        },
+    )
+}
 fn wire_test_static_method__static_method__StructOnlyForBlock2_impl(
     port_: MessagePort,
     message: impl bridge_generated_shared::Wire2Api<String> + UnwindSafe,
@@ -393,6 +339,60 @@ fn wire_test_static_method__static_method__StructOnlyForBlock2_impl(
             move |task_callback| {
                 Result::<_, ()>::Ok(StructOnlyForBlock2::test_static_method(api_message))
             }
+        },
+    )
+}
+fn wire_test_string_in_block_2_impl(
+    port_: MessagePort,
+    s: impl bridge_generated_shared::Wire2Api<String> + UnwindSafe,
+    i: impl bridge_generated_shared::Wire2Api<u64> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+        WrapInfo {
+            debug_name: "test_string_in_block_2",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_s = s.wire2api();
+            let api_i = i.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(test_string_in_block_2(api_s, api_i))
+        },
+    )
+}
+fn wire_test_struct_defined_in_block_2_impl(
+    port_: MessagePort,
+    custom: impl Wire2Api<StructDefinedInBlock2> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+        WrapInfo {
+            debug_name: "test_struct_defined_in_block_2",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_custom = custom.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(test_struct_defined_in_block_2(api_custom))
+        },
+    )
+}
+fn wire_test_unique_struct_2_impl(
+    port_: MessagePort,
+    custom: impl Wire2Api<StructOnlyForBlock2> + UnwindSafe,
+    s: impl bridge_generated_shared::Wire2Api<String> + UnwindSafe,
+    i: impl Wire2Api<i16> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, StructOnlyForBlock2, _>(
+        WrapInfo {
+            debug_name: "test_unique_struct_2",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_custom = custom.wire2api();
+            let api_s = s.wire2api();
+            let api_i = i.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(test_unique_struct_2(api_custom, api_s, api_i))
         },
     )
 }

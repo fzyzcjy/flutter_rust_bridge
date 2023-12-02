@@ -6,10 +6,7 @@ use crate::type_dart_generator_struct;
 type_dart_generator_struct!(TypeRustOpaqueGenerator, IrTypeRustOpaque);
 
 impl TypeDartGeneratorTrait for TypeRustOpaqueGenerator<'_> {
-    fn api2wire_body(
-        &self,
-        _shared_dart_api2wire_funcs: &Option<Acc<String>>,
-    ) -> Acc<Option<String>> {
+    fn api2wire_body(&self) -> Acc<Option<String>> {
         Acc {
             io: Some(format!(
                 "final ptr = inner.new_{0}();
@@ -22,10 +19,7 @@ impl TypeDartGeneratorTrait for TypeRustOpaqueGenerator<'_> {
         }
     }
 
-    fn api_fill_to_wire_body(
-        &self,
-        _shared_dart_api2wire_funcs: &Option<Acc<String>>,
-    ) -> Option<String> {
+    fn api_fill_to_wire_body(&self) -> Option<String> {
         Some("wireObj.ptr = apiObj.shareOrMove();".into())
     }
 

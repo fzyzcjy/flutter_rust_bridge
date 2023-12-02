@@ -1,9 +1,9 @@
-use std::cell::RefCell;
-
 use std::fmt::Display;
 use std::fs;
 
+use quote::ToTokens;
 use std::path::Path;
+use syn::{parse_file, Item, Type};
 
 use crate::commands::cargo_expand;
 use crate::ir::{IrType, IrTypeTrait};
@@ -15,81 +15,45 @@ use pathdiff::diff_paths;
 
 use extend::ext;
 
-/// get the raw or shared API module name
-pub fn mod_from_rust_path(config: &crate::Opts, get_shared_mod: bool) -> Option<String> {
-    fn get_module_name(code_path: &str, crate_path: &str) -> String {
-        Path::new(code_path)
-            .strip_prefix(Path::new(crate_path).join("src"))
-            .unwrap()
-            .with_extension("")
-            .into_os_string()
-            .into_string()
-            .unwrap()
-            .replace('/', "::")
-    }
+/// TODO: need?Given a path to a Rust code file and the path to the crate directory, returns the Rust module name of the file.
+///
+/// # Arguments
+///
+/// * `code_path` - A string slice that holds the path to the Rust code file.
+/// * `crate_path` - A string slice that holds the path to the Rust crate directory.
+///
+/// # Panics
+///
+/// If the combined path of `crate_path` and `code_path` is not a valid Rust file, the function will panic.
+///
+/// # Returns
+///
+/// A string that holds the Rust module name of the file.
+// pub fn get_rust_module_name(code_path: &str, crate_path: &str) -> String {
+//     let src_path = Path::new(crate_path).join("src");
+//     let full_path = Path::new(code_path);
 
-    let output = if config.shared {
-        get_module_name(
-            &config.shared_rust_output_path.clone().unwrap(),
-            &config.rust_crate_dir,
-        )
-    } else if !get_shared_mod {
-        get_module_name(&config.rust_input_path, &config.rust_crate_dir)
-    } else {
-        // get the shared module in the regular block
-        if is_multi_blocks_case(None) {
-            get_module_name(
-                &config.shared_rust_output_path.clone().unwrap(),
-                &config.rust_crate_dir,
-            )
-        } else {
-            "".into()
-        }
-    };
+//     let relative_path = diff_paths(full_path, &src_path)
+//         .unwrap_or_else(|| panic!("Failed to get relative path for code file: {}", code_path));
 
-    if output.is_empty() {
-        None
-    } else {
-        Some(output)
-    }
-}
+//     relative_path
+//         .with_extension("")
+//         .to_string_lossy()
+//         .replace("/", "::")
+// }
 
-thread_local!(pub static IS_MULTI_BLOCKS_CASE: RefCell<Option<bool>> = RefCell::new(None));
-
-pub fn is_multi_blocks_case(all_configs: Option<&[crate::Opts]>) -> bool {
-    // if already fetched, get it directly from `IS_MULTI_BLOCKS_CASE`
-    if all_configs.is_none() {
-        return IS_MULTI_BLOCKS_CASE.with(|data| {
-            let v = *data.borrow();
-            assert!(v.is_some());
-            v.unwrap()
-        });
-    }
-
-    // fetch from scratch
-    let all_configs = all_configs.unwrap();
-    let r = match all_configs.len() {
-        0 => panic!("there should be at least 1 config"),
-        1 => {
-            assert!(!all_configs[0].shared); // single item must not be shared
-            false
-        }
-        _ => {
-            for (i, config) in all_configs.iter().enumerate().take(all_configs.len() - 1) {
-                if config.shared {
-                    log::error!("Config {i} is shared, but should not be");
-                }
-            }
-            assert!(all_configs[all_configs.len() - 1].shared); // last item must be shared
-            true
-        }
-    };
-
-    IS_MULTI_BLOCKS_CASE.with(|data| {
-        *data.borrow_mut() = Some(r);
-    });
-
-    r
+/// TODO: delete? Can the code filter out empty path?
+/// Get the rust module name from the given code path.
+/// If the combined path of `crate_path` and `code_path` is not avalid rust file, panic.
+pub fn get_rust_module_name(crate_path: &str, code_path: &str) -> String {
+    Path::new(code_path)
+        .strip_prefix(Path::new(crate_path).join("src"))
+        .unwrap_or_else(|_| panic!("`strip_prefix` went wrong with the path:{:?}", code_path))
+        .with_extension("")
+        .into_os_string()
+        .into_string()
+        .unwrap()
+        .replace('/', "::")
 }
 
 pub fn with_changed_file<F: FnOnce() -> crate::Result<()>>(
@@ -103,61 +67,13 @@ pub fn with_changed_file<F: FnOnce() -> crate::Result<()>>(
     Ok(fs::write(path, content_original)?)
 }
 
-fn check_for_keywords(v: &[String]) -> anyhow::Result<()> {
-    if let Some(s) = v.iter().find(|s| DART_KEYWORDS.contains(&s.as_str())) {
-        let err_msg = format!("Api name cannot be a dart keyword: {}", s);
+pub fn check_func_dart_keywords(func_name: &str) -> anyhow::Result<()> {
+    if DART_KEYWORDS.contains(&func_name) {
+        let err_msg = format!("Api name cannot be a dart keyword: {func_name}");
         log::warn!("{}", err_msg);
         return Err(anyhow!(err_msg));
     };
     Ok(())
-}
-
-/// check duplication among regular defined API block(s), and return symbols in tuple of
-/// format `(all_no_shared_symbols, all_shared_symbols)`
-/// for `all_no_shared_symbols`: if there is duplication among EXPLICITLY defined APIs, it would panic;
-/// for `all_shared_symbols`: it would be extended if there is duplication among IMPLICITLY defined API,
-/// which should not exist in `all_no_shared_symbols`. While it is not empty, it means
-/// there are at least one API(symbol) is shared among regualr defined API blocks
-pub fn get_symbols_if_no_duplicates(
-    regular_configs: &[crate::Opts],
-) -> Result<(Vec<String>, Vec<String>), anyhow::Error> {
-    let mut explicit_raw_symbols = Vec::new();
-    let mut all_symbols = Vec::new();
-    for config in regular_configs.iter() {
-        let ir_file = config.get_ir_file(&[])?; // all_configs` is empty, no need to care about other configs here
-
-        // for checking explicit API duplication
-        let iter = ir_file.funcs(true).into_iter().map(|f| f.name);
-        explicit_raw_symbols.extend(iter);
-        // for checking implicit API duplication
-        let iter = ir_file.get_all_symbols(config);
-        all_symbols.extend(iter);
-    }
-    // check duplication among explicitly defined API
-    let duplicates = explicit_raw_symbols.find_duplicates_in_order(true);
-    if !duplicates.is_empty() {
-        let duplicated_symbols = duplicates.join(",");
-
-        let (symbol_str, verb_str) = if duplicates.len() == 1 {
-            ("symbol", "has")
-        } else {
-            ("symbols", "have")
-        };
-        return Err(anyhow!(
-            "{} [{}] {} already been defined",
-            symbol_str,
-            duplicated_symbols,
-            verb_str
-        ));
-    }
-
-    check_for_keywords(&all_symbols)?;
-
-    // check duplication among implicitly defined API
-    let (regular_symbols, shared_symbols) =
-        all_symbols.find_uniques_and_duplicates_in_order(true, true);
-
-    Ok((regular_symbols, shared_symbols))
 }
 
 /// If the given string is a Dart keyword, then
@@ -165,7 +81,7 @@ pub fn get_symbols_if_no_duplicates(
 /// If the string is not a keyword, then the original
 /// is returned.
 pub fn make_string_keyword_safe(input: String) -> String {
-    if check_for_keywords(&[input.clone()]).is_err() {
+    if check_func_dart_keywords(&input).is_err() {
         input.to_case(Case::Pascal)
     } else {
         input
@@ -181,31 +97,98 @@ pub fn is_same_directory(paths: &[String]) -> bool {
     paths.iter().all(|item| item == &paths[0])
 }
 
+/// This struct is used to store the index for a block---A single IrFIle/Opt instance can be treated as a block
+/// Specifically, for a regualr block,it is indexed started from 0;
+/// While for a shared block, it is indexed with `None`.
 #[derive(PartialEq, Eq, Debug, Clone, Copy, Hash, serde::Serialize)]
-pub struct BlockIndex(pub usize);
-
+pub struct BlockIndex(pub Option<usize>);
 impl BlockIndex {
-    pub const PRIMARY: BlockIndex = BlockIndex(0);
-}
+    pub const PRIMARY: BlockIndex = BlockIndex(Some(0));
 
+    pub(crate) fn new_shared() -> BlockIndex {
+        BlockIndex(None)
+    }
+
+    pub(crate) fn shared() -> BlockIndex {
+        BlockIndex(None)
+    }
+}
+impl BlockIndex {
+    pub fn unwrap(&self) -> usize {
+        self.0.unwrap()
+    }
+
+    pub fn is_shared(&self) -> bool {
+        self.0.is_none()
+    }
+}
+impl PartialEq<usize> for BlockIndex {
+    fn eq(&self, other: &usize) -> bool {
+        if self.0.is_none() {
+            return false;
+        }
+        self.0 == Some(*other)
+    }
+}
+impl PartialEq<Option<usize>> for BlockIndex {
+    fn eq(&self, other: &Option<usize>) -> bool {
+        self.0 == *other
+    }
+}
+impl PartialEq<BlockIndex> for Option<usize> {
+    fn eq(&self, other: &BlockIndex) -> bool {
+        *self == *other
+    }
+}
 impl Display for BlockIndex {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}", self.0)
+        write!(f, "{:?}", self.0)
     }
 }
 
 #[derive(PartialEq, Eq, Copy, Clone, Debug, serde::Serialize, Hash)]
-pub enum ShareMode {
-    Unique, // for types/funcs NOT shared among regular Api blocks
-    Shared, // for types/funcs shared among regular Api blocks
-            // TODO: may need other item to distinguish shared by if it is shared by safe_ident or not
+pub enum IrTypeUseRange {
+    // TODO: delete
+    //     UniqueBlockAsInput, // for types used ONLY in one regular Api block, and ONLY in context of function inputs
+    //     UniqueBlockAsOutput, // for types used ONLY in one regular Api block, and ONLY in context of function outputs
+    //     UniqueBlockAll, // for types used ONLY in one regular Api block, and in context of both function inputs and outputs
+    //     SharedBlockAsInput, // for types sharely used among regular Api blocks ONLY in context of function inputs
+    //     SharedBlockAsOutput, // for types sharely used among regular Api blocks ONLY in context of function outputs
+    //     SharedBlockAll, // for types sharely used among regular Api blocks in context of both function inputs and outputs
+    Input,
+    Output,
 }
-impl ShareMode {
-    pub fn is_shared(&self) -> bool {
-        match self {
-            ShareMode::Unique => false,
-            ShareMode::Shared => true,
-        }
+impl IrTypeUseRange {
+    // TODO: delete
+    // pub(crate) fn is_shared(&self) -> bool {
+    //     match self {
+    //         IrTypeUseRange::SharedBlockAsInput
+    //         | IrTypeUseRange::SharedBlockAsOutput
+    //         | IrTypeUseRange::SharedBlockAll => true,
+    //         _ => false,
+    //     }
+    // }
+    pub(crate) fn is_input(&self) -> bool {
+        self == &IrTypeUseRange::Input
+        // TODO: delete
+        // match self {
+        //     IrTypeUseRange::UniqueBlockAsInput
+        //     | IrTypeUseRange::UniqueBlockAll
+        //     | IrTypeUseRange::SharedBlockAsInput
+        //     | IrTypeUseRange::SharedBlockAll => true,
+        //     _ => false,
+        // }
+    }
+    pub(crate) fn is_output(&self) -> bool {
+        self == &IrTypeUseRange::Output
+        // TODO: delete
+        // match self {
+        //     IrTypeUseRange::UniqueBlockAsOutput
+        //     | IrTypeUseRange::UniqueBlockAll
+        //     | IrTypeUseRange::SharedBlockAsOutput
+        //     | IrTypeUseRange::SharedBlockAll => true,
+        //     _ => false,
+        // }
     }
 }
 
@@ -247,8 +230,8 @@ pub(crate) impl<T: Clone + Eq + std::hash::Hash> Vec<T> {
     ///
     /// # Arguments
     ///
-    /// * `exclude_duplicates_in_uniques` - A boolean that indicates whether to exclude duplicate elements in the returned unique_list.
-    /// * `exclude_duplicates_in_duplicates` - A boolean that indicates whether to exclude duplicate elements in the returned duplicate_list.
+    /// * `exclude_duplicates_in_uniques` - A boolean that indicates whether to exclude duplicate elements from the original list for the returned unique list.
+    /// * `exclude_duplicates_in_duplicates` - A boolean that indicates whether to exclude duplicate elements in the returned duplicate list.
     ///
     /// # Examples
     ///
@@ -301,7 +284,7 @@ pub(crate) impl<T: Clone + Eq + std::hash::Hash> Vec<T> {
 
     /// This function finds unique elements in a vector within original order.
     /// # Arguments
-    /// * `exclude_duplicates` - A boolean that indicates whether to exclude duplicate elements in the returned unique_list.
+    /// * `exclude_duplicates` - A boolean that indicates whether to exclude duplicate elements from the original list for the returned unique list.
     ///
     /// # Examples
     ///
@@ -344,7 +327,7 @@ pub(crate) impl<T: Clone + Eq + std::hash::Hash> Vec<T> {
     }
 }
 
-/// ouput `IrType`s with no duplicated safe_ident
+/// TODO: need? ouput `IrType`s with no duplicated safe_ident
 pub fn get_deduplicate_type(types: &[IrType]) -> Vec<IrType> {
     let mut types_clone = types.to_vec();
     types_clone.sort_by_key(|ty| ty.safe_ident());
@@ -392,16 +375,38 @@ macro_rules! ir {
     }
 }
 
-pub fn read_rust_file(path: &Path) -> String {
-    let path = path.to_str().unwrap();
-    let (dir, module) = get_dir_and_mod(path);
-    cargo_expand(&dir, module, path)
+pub fn read_rust_file(path: impl AsRef<Path>) -> String {
+    let path_str = path.as_ref().to_str().unwrap();
+    let (dir, module) = get_dir_and_mod(path_str);
+    cargo_expand(&dir, module, path_str)
+}
+
+/// return the corresponding rust module/file full path if the input is a valid rust file
+/// or rust module folder
+pub fn get_rust_module_by_path(path: &str) -> Option<String> {
+    let path = Path::new(path);
+    if !path.exists() {
+        return None;
+    }
+    if path.is_file() {
+        if let Some(ext) = path.extension() {
+            if ext == "rs" {
+                return Some(path.to_string_lossy().to_string());
+            }
+        }
+    } else if path.is_dir() {
+        let mod_rs_path = path.join("mod.rs");
+        if mod_rs_path.exists() {
+            return Some(mod_rs_path.to_string_lossy().to_string());
+        }
+    }
+    None
 }
 
 fn get_dir_and_mod(path: &str) -> (String, Option<String>) {
     const SRC: &str = "/src/";
     #[cfg(windows)]
-    let path = &path.replace('\\', "/");
+    let path = path.replace('\\', "/");
     let src_index = path.rfind(SRC).expect("src dir must exist in rust project");
     let dir = &path[..src_index];
     #[cfg(windows)]
@@ -430,6 +435,41 @@ pub fn dart_maybe_implements_exception(is_exception: bool) -> &'static str {
     } else {
         ""
     }
+}
+
+/// Filter the content of the given rust file by the given types.
+/// Specifically, only the given types and their impls will be returned.
+pub fn filter_type_content(raw_rust_file: &str, types_names: &[&str]) -> String {
+    let syntax = parse_file(raw_rust_file).unwrap();
+    let mut final_result = String::new();
+    for type_name in types_names {
+        let mut result = String::new();
+        let target_type: Type = syn::parse_str(type_name).unwrap();
+
+        for item in syntax.clone().items {
+            match item {
+                Item::Struct(item_struct) if item_struct.ident == type_name => {
+                    result.push_str(&item_struct.into_token_stream().to_string());
+                    result.push('\n');
+                }
+                Item::Enum(item_enum) if item_enum.ident == type_name => {
+                    result.push_str(&item_enum.into_token_stream().to_string());
+                    result.push('\n');
+                }
+                Item::Impl(item_impl)
+                    if item_impl.self_ty.to_token_stream().to_string()
+                        == target_type.to_token_stream().to_string() =>
+                {
+                    result.push_str(&item_impl.into_token_stream().to_string());
+                    result.push('\n');
+                }
+                _ => {}
+            }
+        }
+        final_result.push_str(&result);
+    }
+
+    final_result
 }
 
 #[cfg(test)]

@@ -2,20 +2,8 @@ use super::*;
 // Section: wire functions
 
 #[wasm_bindgen]
-pub fn wire_test_method__method__CrossSharedStructInBlock1And2(
-    port_: MessagePort,
-    that: JsValue,
-    message: String,
-) {
-    wire_test_method__method__CrossSharedStructInBlock1And2_impl(port_, that, message)
-}
-
-#[wasm_bindgen]
-pub fn wire_test_static_method__static_method__CrossSharedStructInBlock1And2(
-    port_: MessagePort,
-    message: String,
-) {
-    wire_test_static_method__static_method__CrossSharedStructInBlock1And2_impl(port_, message)
+pub fn wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks(port_: MessagePort, that: i32) {
+    wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks_impl(port_, that)
 }
 
 #[wasm_bindgen]
@@ -28,11 +16,30 @@ pub fn wire_test_enum_method__method__SharedComplexEnumInAllBlocks(
 }
 
 #[wasm_bindgen]
-pub fn wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks(
+pub fn wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks(
     port_: MessagePort,
+    that: i32,
     message: String,
 ) {
-    wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks_impl(port_, message)
+    wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks_impl(port_, that, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_method__method__CrossSharedStructInBlock1And2(
+    port_: MessagePort,
+    that: JsValue,
+    message: String,
+) {
+    wire_test_method__method__CrossSharedStructInBlock1And2_impl(port_, that, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_method__method__CrossSharedStructInBlock2And3(
+    port_: MessagePort,
+    that: JsValue,
+    message: String,
+) {
+    wire_test_method__method__CrossSharedStructInBlock2And3_impl(port_, that, message)
 }
 
 #[wasm_bindgen]
@@ -46,84 +53,12 @@ pub fn wire_test_method__method__SharedStructInAllBlocks(
 }
 
 #[wasm_bindgen]
-pub fn wire_test_static_method__static_method__SharedStructInAllBlocks(
-    port_: MessagePort,
-    message: String,
-) {
-    wire_test_static_method__static_method__SharedStructInAllBlocks_impl(port_, message)
-}
-
-#[wasm_bindgen]
 pub fn wire_test_method__method__SharedStructInBlock1And2(
     port_: MessagePort,
     that: JsValue,
     message: String,
 ) {
     wire_test_method__method__SharedStructInBlock1And2_impl(port_, that, message)
-}
-
-#[wasm_bindgen]
-pub fn wire_test_static_method__static_method__SharedStructInBlock1And2(
-    port_: MessagePort,
-    message: String,
-) {
-    wire_test_static_method__static_method__SharedStructInBlock1And2_impl(port_, message)
-}
-
-#[wasm_bindgen]
-pub fn wire_test_method__method__SharedStructOnlyForSyncTest(
-    port_: MessagePort,
-    that: JsValue,
-    message: String,
-) {
-    wire_test_method__method__SharedStructOnlyForSyncTest_impl(port_, that, message)
-}
-
-#[wasm_bindgen]
-pub fn wire_test_static_method__static_method__SharedStructOnlyForSyncTest(
-    port_: MessagePort,
-    message: String,
-) {
-    wire_test_static_method__static_method__SharedStructOnlyForSyncTest_impl(port_, message)
-}
-
-#[wasm_bindgen]
-pub fn wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks(
-    port_: MessagePort,
-    that: i32,
-    message: String,
-) {
-    wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks_impl(port_, that, message)
-}
-
-#[wasm_bindgen]
-pub fn wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks(
-    port_: MessagePort,
-    message: String,
-) {
-    wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks_impl(port_, message)
-}
-
-#[wasm_bindgen]
-pub fn wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks(port_: MessagePort, that: i32) {
-    wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks_impl(port_, that)
-}
-
-#[wasm_bindgen]
-pub fn wire_test_method__method__CrossSharedStructInBlock2And3(
-    port_: MessagePort,
-    that: JsValue,
-    message: String,
-) {
-    wire_test_method__method__CrossSharedStructInBlock2And3_impl(port_, that, message)
-}
-
-#[wasm_bindgen]
-pub fn wire_test_static_method__static_method__CrossSharedStructInBlock2And3(
-    port_: MessagePort,
-    message: String,
-) {
-    wire_test_static_method__static_method__CrossSharedStructInBlock2And3_impl(port_, message)
 }
 
 #[wasm_bindgen]
@@ -136,11 +71,76 @@ pub fn wire_test_method__method__SharedStructInBlock2And3(
 }
 
 #[wasm_bindgen]
+pub fn wire_test_method__method__SharedStructOnlyForSyncTest(
+    port_: MessagePort,
+    that: JsValue,
+    message: String,
+) {
+    wire_test_method__method__SharedStructOnlyForSyncTest_impl(port_, that, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks(
+    port_: MessagePort,
+    message: String,
+) {
+    wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks_impl(port_, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks(
+    port_: MessagePort,
+    message: String,
+) {
+    wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks_impl(port_, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_static_method__static_method__CrossSharedStructInBlock1And2(
+    port_: MessagePort,
+    message: String,
+) {
+    wire_test_static_method__static_method__CrossSharedStructInBlock1And2_impl(port_, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_static_method__static_method__CrossSharedStructInBlock2And3(
+    port_: MessagePort,
+    message: String,
+) {
+    wire_test_static_method__static_method__CrossSharedStructInBlock2And3_impl(port_, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_static_method__static_method__SharedStructInAllBlocks(
+    port_: MessagePort,
+    message: String,
+) {
+    wire_test_static_method__static_method__SharedStructInAllBlocks_impl(port_, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_static_method__static_method__SharedStructInBlock1And2(
+    port_: MessagePort,
+    message: String,
+) {
+    wire_test_static_method__static_method__SharedStructInBlock1And2_impl(port_, message)
+}
+
+#[wasm_bindgen]
 pub fn wire_test_static_method__static_method__SharedStructInBlock2And3(
     port_: MessagePort,
     message: String,
 ) {
     wire_test_static_method__static_method__SharedStructInBlock2And3_impl(port_, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_static_method__static_method__SharedStructOnlyForSyncTest(
+    port_: MessagePort,
+    message: String,
+) {
+    wire_test_static_method__static_method__SharedStructOnlyForSyncTest_impl(port_, message)
 }
 
 // Section: allocate functions
@@ -236,7 +236,17 @@ impl Wire2Api<Vec<SharedWeekdaysEnumInAllBlocks>> for JsValue {
             .collect()
     }
 }
+impl Wire2Api<Option<String>> for Option<String> {
+    fn wire2api(self) -> Option<String> {
+        self.map(Wire2Api::wire2api)
+    }
+}
 
+impl Wire2Api<Option<SharedStructInAllBlocks>> for JsValue {
+    fn wire2api(self) -> Option<SharedStructInAllBlocks> {
+        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+    }
+}
 impl Wire2Api<Option<Vec<SharedComplexEnumInAllBlocks>>> for JsValue {
     fn wire2api(self) -> Option<Vec<SharedComplexEnumInAllBlocks>> {
         (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
@@ -392,6 +402,16 @@ impl Wire2Api<i32> for JsValue {
 impl Wire2Api<Vec<i32>> for JsValue {
     fn wire2api(self) -> Vec<i32> {
         self.unchecked_into::<js_sys::Int32Array>().to_vec().into()
+    }
+}
+impl Wire2Api<Option<String>> for JsValue {
+    fn wire2api(self) -> Option<String> {
+        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+    }
+}
+impl Wire2Api<Option<f64>> for JsValue {
+    fn wire2api(self) -> Option<f64> {
+        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
     }
 }
 impl Wire2Api<Option<i32>> for JsValue {

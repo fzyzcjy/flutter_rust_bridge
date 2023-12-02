@@ -8,7 +8,9 @@ use log::{info, warn};
 use pathdiff::diff_paths;
 use regex::Regex;
 
-use crate::ir::{self, IrType};
+use crate::config::all_configs::AllConfigs;
+
+use crate::Opts;
 
 // NOTE [DartPostCObjectFnType] was originally [*mut DartCObject] but I changed it to [*mut c_void]
 // because cannot automatically generate things related to [DartCObject]. Anyway this works fine.
@@ -50,9 +52,10 @@ pub fn code_header() -> String {
 
 pub fn modify_dart_wire_content(
     content_raw: &str,
-    dart_wire_class_name: &str,
-    ir_file: &ir::IrFile,
+    config: &Opts,
+    all_configs: &AllConfigs,
 ) -> String {
+    let dart_wire_class_name = config.dart_wire_class_name();
     let mut content = content_raw.replace(
         &format!("class {dart_wire_class_name} {{",),
         &format!(
@@ -70,17 +73,22 @@ pub fn modify_dart_wire_content(
         )*/
         .replace("typedef WireSyncReturn = ffi.Pointer<DartCObject>;", "");
 
-    if ir_file.shared {
+    if config.shared {
         content
     } else {
-        // For ONLY regular configs: erase class block code which are shared.
+        // For ONLY regular configs: remove class block code which are shared.
         // The redundant classes are due to the forward declaration in c header file for regular block.
-        // I (@dbsxdbsx) didn't find a way to let it not generated in dart, so here remove it after dart code generated.
-        let v = ir_file.get_shared_type_names(true, Option::<Box<dyn Fn(&IrType) -> bool>>::None);
-        for class_name in v {
-            let my_r =
-                &format!(r"final class wire_{class_name} extends ffi\.Opaque \{{(?s)(.*?)\}}");
-            let re = Regex::new(my_r).unwrap();
+        // I (@dbsxdbsx) didn't find a way to let it not be generated in dart, so here remove it after dart code generated.
+        for class_name in all_configs
+            .get_types(config.block_index, false, true, true, true)
+            .iter()
+            .filter(|t| all_configs.is_type_shared(t, true))
+            .map(|each| each.get_rust_name())
+        {
+            let re = Regex::new(&format!(
+                r"final class wire_{class_name} extends ffi\.Struct \{{(?s)(.*?)\}}"
+            ))
+            .unwrap();
             content = re.replace_all(&content, "").to_string();
         }
         content

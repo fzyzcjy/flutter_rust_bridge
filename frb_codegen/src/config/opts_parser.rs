@@ -1,10 +1,7 @@
 use crate::config::opts::Opts;
 use crate::config::raw_opts::RawOpts;
 use crate::config::refine_c_output::get_refined_c_output;
-use crate::utils::misc::{
-    get_symbols_if_no_duplicates, is_multi_blocks_case, is_same_directory, BlockIndex,
-    ExtraTraitForVec, PathExt,
-};
+use crate::utils::misc::{is_same_directory, BlockIndex, ExtraTraitForVec, PathExt};
 use anyhow::*;
 use clap::CommandFactory;
 use convert_case::{Case, Casing};
@@ -18,6 +15,8 @@ use std::str::FromStr;
 use std::{env, fs};
 use toml::Value;
 
+use super::all_configs::AllConfigs;
+
 // the default shared file/type name, for both the generated Rust, Dart and C header file
 const BRIDGE_GENERATED_SHARED: &str = "bridge_generated_shared";
 
@@ -25,15 +24,17 @@ const BRIDGE_GENERATED_SHARED: &str = "bridge_generated_shared";
 /// and returns a tuple containing a vector of `Opts` structs
 /// and a vector of unique symbol name(s)/Api(s).
 /// Both the 2 are essential for code generation.
-pub fn parse_configs_and_symbols(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
+pub fn parse_configs_and_symbols(mut raw: RawOpts) -> Result<(AllConfigs, Vec<String>)> {
     if let Some(config) = raw.config_file {
         raw = parse_yaml(&config);
     }
 
     use clap::error::ErrorKind;
     // rust input path(s)
+    log::debug!("the raw rust_input_paths are:{:?}", raw.rust_input); // TODO: delete
     let rust_input_paths = get_valid_canon_paths(&raw.rust_input);
     assert!(!rust_input_paths.is_empty());
+    log::debug!("the rust_input_paths are:{:?}", rust_input_paths); // TODO: delete
     for rust_input in rust_input_paths.iter() {
         if rust_input.contains("lib.rs") {
             log::warn!("Do not use `lib.rs` as a Rust input. Please put code to be generated in an `api.rs` or similar.");
@@ -233,14 +234,12 @@ pub fn parse_configs_and_symbols(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<Str
                 manifest_path: manifest_paths[i].clone(),
                 dart_root: dart_roots[i].clone(),
                 build_runner, //same for all rust api blocks
-                block_index: BlockIndex(i),
+                block_index: BlockIndex(Some(i)),
                 skip_deps_check,
                 wasm_enabled: wasm,
                 dart3,
                 inline_rust,
                 shared: false,
-                shared_rust_output_path: shared_rust_output_path.clone(),
-                shared_dart_output_path: shared_dart_output_path.clone(),
                 bridge_in_method,
                 keep_going,
                 extra_headers: extra_headers.clone(),
@@ -251,18 +250,18 @@ pub fn parse_configs_and_symbols(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<Str
     // if shared API-block(config) is essential, generate and add it to vec
     assert!(!regular_configs.is_empty());
     let all_configs = if regular_configs.len() == 1 {
-        regular_configs.clone()
+        regular_configs
     } else {
         // NOTE: since there would be at least 1 shared API called `free_WireSyncReturn` for multi-blocks,
         // the extra shared config is essential.
         let shared_config = Opts {
             rust_input_path: "".into(), // this field is meangingless for shared block, so it's empty.
-            rust_output_path: shared_rust_output_path.clone().unwrap(),
+            rust_output_path: shared_rust_output_path.unwrap(),
             dart_output_path: shared_dart_output_path.clone().unwrap(),
             dart_decl_output_path,
             rust_crate_dir: regular_configs[0].rust_crate_dir.clone(),
             c_output_paths: refined_c_outputs.last().unwrap().clone(),
-            class_name: Path::new(&shared_dart_output_path.clone().unwrap())
+            class_name: Path::new(&shared_dart_output_path.unwrap())
                 .file_name_str()
                 .unwrap()
                 .replace(".rs", "")
@@ -275,29 +274,23 @@ pub fn parse_configs_and_symbols(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<Str
             manifest_path: manifest_paths[0].clone(),
             dart_root: dart_roots[0].clone(),
             build_runner,
-            block_index: BlockIndex(regular_configs.len()),
+            block_index: BlockIndex(None),
             skip_deps_check: true,
             wasm_enabled: wasm,
             inline_rust,
             shared: true,
-            shared_rust_output_path,
-            shared_dart_output_path,
             dart_enums_style,
             bridge_in_method, //TODO: check for shared Opt
             extra_headers,    //TODO: check for shared Opt
             dart3,
             keep_going,
         };
-        [regular_configs.clone(), vec![shared_config]].concat()
+        [regular_configs, vec![shared_config]].concat()
     };
 
-    // set it here, so that no need to manually check afterwards with param `all_configs`
-    let _ = is_multi_blocks_case(Some(&all_configs));
-
-    Ok((
-        all_configs,
-        get_symbols_if_no_duplicates(&regular_configs)?.0,
-    ))
+    let all_configs = AllConfigs::new(all_configs);
+    let all_symbols = all_configs.get_all_symbols();
+    Ok((all_configs, all_symbols))
 }
 
 #[inline(never)]

@@ -85,6 +85,6 @@ impl IrTypeTrait for IrTypeOptional {
     }
 
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_file: &IrFile) {
-        self.inner.visit_types(f, ir_file);
+        self.inner.visit_self_types_recursively(f, ir_file);
     }
 }

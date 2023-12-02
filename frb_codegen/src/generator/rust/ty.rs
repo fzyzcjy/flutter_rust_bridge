@@ -61,8 +61,9 @@ pub trait TypeRustGeneratorTrait {
 #[derive(Debug, Clone)]
 pub struct TypeGeneratorContext<'a> {
     pub type_name: String,
-    pub ir_file: &'a IrFile,
     pub config: &'a Opts,
+    pub ir_file: &'a IrFile,
+    pub all_configs: &'a AllConfigs,
 }
 
 #[macro_export]
@@ -80,29 +81,26 @@ macro_rules! type_rust_generator_struct {
                 &self.context
             }
             #[allow(unused)]
-            fn get_shared_module_of_a_type(&self, ir_type: &$crate::ir::IrType) -> Option<String> {
-                let ty = match ir_type {
-                    $crate::ir::IrType::Optional(inner_type) => &inner_type.inner,
-                    _ => ir_type,
-                };
-
-                match self.get_context().ir_file.is_type_shared_by_safe_ident(ty) {
-                    $crate::utils::misc::ShareMode::Unique => None,
-                    $crate::utils::misc::ShareMode::Shared =>  $crate::ir::SHARED_MODULE.with(|data| {
-                        let cloned = data.borrow().clone();
-                        if cloned.is_none() {
-                            panic!("in instance in charge of `{}`: checking shared for type \"{:?}\", it is shared indeed, but the shared module name is None",
-                                self.get_context().type_name, ty
-                            );
-                        }
-                        cloned
-                    }),
+            /// Get the shared module name if the input type is defined there.
+            /// Thus, if the type is NOT defined in a shared block, the method returns None.
+            fn get_type_share_module(&self, ir_type: &$crate::ir::IrType) -> Option<String> {
+                if self.context.all_configs.is_type_shared(ir_type, true){
+                    let shared_module = self.context.all_configs.get_rust_module_name(None);
+                    if shared_module.is_none() {
+                        panic!("For instance in charge of `{}`: when checking shared module for type \"{:?}\", the type is shared indeed, but the shared module name is None",
+                            self.get_context().type_name, ir_type
+                        );
+                    }
+                    shared_module
+                }else{
+                    None
                 }
+
+
             }
             #[allow(unused)]
             fn get_wire2api_prefix(&self, ir_type: &$crate::ir::IrType) -> String {
-                let shared_mod_name = self.get_shared_module_of_a_type(ir_type);
-
+                let shared_mod_name = self.get_type_share_module(ir_type);
                 if !self.get_context().config.shared && shared_mod_name.is_some() {
                     format!("{}::Wire2Api", shared_mod_name.unwrap())
                 } else {
@@ -132,11 +130,15 @@ pub enum TypeRustGenerator<'a> {
 }
 
 impl<'a> TypeRustGenerator<'a> {
-    pub fn new(ty: IrType, ir_file: &'a IrFile, config: &'a Opts) -> Self {
+    pub fn new(ty: IrType, config: &'a Opts, all_configs: &'a AllConfigs) -> Self {
         let context = TypeGeneratorContext {
             type_name: format!("{ty:?}"),
-            ir_file,
             config,
+            ir_file: all_configs
+                .get_ir_file(config.block_index)
+                .as_ref()
+                .unwrap(),
+            all_configs,
         };
         match ty {
             Primitive(ir) => TypePrimitiveGenerator { ir, context }.into(),

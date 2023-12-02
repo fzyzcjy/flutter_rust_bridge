@@ -30,7 +30,7 @@ lazy_static! {
 pub fn ensure_tools_available(dart_root: &str, skip_deps_check: bool) -> Result<(), Error> {
     let repo = DartRepository::from_str(dart_root)?;
     if !repo.toolchain_available() {
-        return Err(Error::MissingExe(repo.toolchain.to_string()))?;
+        Err(Error::MissingExe(repo.toolchain.to_string()))?;
     }
 
     if !skip_deps_check {
@@ -95,7 +95,7 @@ fn cbindgen(
         "execute cbindgen rust_crate_dir={} c_output_path={}",
         rust_crate_dir, c_output_path
     );
-    let config = cbindgen::Config {
+    let cbindgen_config = cbindgen::Config {
         language: cbindgen::Language::C,
         header: Some("#pragma once\n".to_owned()),
         sys_includes: vec![
@@ -116,7 +116,7 @@ fn cbindgen(
         ..Default::default()
     };
 
-    debug!("cbindgen config: {:#?}", config);
+    debug!("cbindgen config: {:#?}", cbindgen_config);
 
     let canonical = Path::new(rust_crate_dir).canonicalize()?;
     let mut path = canonical.to_str().unwrap();
@@ -125,7 +125,7 @@ fn cbindgen(
     if path.starts_with(r"\\?\") {
         path = &path[r"\\?\".len()..];
     }
-    if cbindgen::generate_with_config(path, config)?.write_to_file(c_output_path) {
+    if cbindgen::generate_with_config(path, cbindgen_config)?.write_to_file(c_output_path) {
         Ok(())
     } else {
         Err(anyhow::anyhow!("cbindgen failed writing file"))?

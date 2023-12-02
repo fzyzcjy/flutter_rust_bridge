@@ -1,4 +1,4 @@
-use crate::utils::misc::ShareMode;
+use crate::utils::misc::BlockIndex;
 
 use super::*;
 
@@ -11,8 +11,8 @@ pub(crate) struct GeneratedApiMethod {
 
 pub(crate) fn generate_api_func(
     func: &IrFunc,
-    ir_file: &IrFile,
-    shared_dart_api2wire_funcs: &Option<Acc<String>>,
+    config: &Opts,
+    all_configs: &AllConfigs,
 ) -> GeneratedApiFunc {
     let raw_func_param_list = func
         .inputs
@@ -28,7 +28,6 @@ pub(crate) fn generate_api_func(
         })
         .collect::<Vec<_>>();
     let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_owned()]].concat();
-
     let prepare_args = func
         .inputs
         .iter()
@@ -39,13 +38,7 @@ pub(crate) fn generate_api_func(
                 format!("var arg{index} = {};", input.name.dart_style())
             } else {
                 let func = format!("api2wire_{}", input.ty.safe_ident());
-                let prefix = get_api2wire_prefix(
-                    &func,
-                    shared_dart_api2wire_funcs,
-                    ir_file,
-                    &input.ty,
-                    true,
-                );
+                let prefix = get_api2wire_prefix(&func, config, &input.ty, true, all_configs);
                 format!(
                     "var arg{index} = {prefix}{func}({});",
                     &input.name.dart_style()
@@ -120,10 +113,10 @@ pub(crate) fn generate_api_func(
             }
         })
         // If struct has a method with first element `input0`
-        || (input_0_struct_name.is_some() && MethodNamingUtil::has_methods(input_0_struct_name.unwrap(), ir_file))
+        || (input_0_struct_name.is_some() && MethodNamingUtil::has_methods(input_0_struct_name.unwrap(), config,all_configs))
         //If output is a struct with methods
         || (func_output_struct_name.is_some()
-            && MethodNamingUtil::has_methods(func_output_struct_name.unwrap(), ir_file))
+            && MethodNamingUtil::has_methods(func_output_struct_name.unwrap(), config,all_configs))
     {
         format!("(d) => _wire2api_{}(d)", func.output.safe_ident())
     } else {
@@ -136,10 +129,10 @@ pub(crate) fn generate_api_func(
         "null".to_string()
     };
 
-    if ir_file.shared {
+    if config.shared {
         parse_success_data = parse_success_data.replace("_wire2api_", "wire2api_");
         parse_error_data = parse_error_data.replace("_wire2api_", "wire2api_");
-    } else if ir_file.is_type_shared_by_safe_ident(&func.output) == ShareMode::Shared {
+    } else if all_configs.is_type_shared(&func.output, true) {
         parse_success_data = parse_success_data.replace("_wire2api_", "_sharedImpl.wire2api_");
         parse_error_data = parse_error_data.replace("_wire2api_", "_sharedImpl.wire2api_");
     }
@@ -199,54 +192,47 @@ pub(crate) fn generate_api_func(
 
 pub(crate) fn get_api2wire_prefix(
     api2wire_func: &str,
-    shared_dart_api2wire_funcs: &Option<Acc<String>>,
-    ir_file: &IrFile,
+    config: &Opts,
     ir_type: &IrType,
     for_dart_common_file: bool,
+    all_configs: &AllConfigs,
 ) -> String {
-    if is_multi_blocks_case(None) && !ir_file.shared {
-        // NOTE: For multi-blocks case, `COMMON_API2WIRE` should have been fetched by
-        // `DartApiSpec::from()` according to the whole frb generation routine.
-        FETCHED_FOR_COMMON_API2WIRE.with(|data| {
-            assert!(*data.borrow_mut(), "COMMON_API2WIRE not fetched before");
-        });
-    }
-    let common_api2wire_body = COMMON_API2WIRE.with(|data| data.borrow_mut().clone());
+    let dart_api2wire_funcs = all_configs.get_dart_api2wire_funcs(config.block_index);
+    let common_api2wire_body = if let Some(dart_api2wire_funcs) = dart_api2wire_funcs {
+        dart_api2wire_funcs.common.clone()
+    } else {
+        "".into()
+    };
+    let shared_dart_api2wire_funcs = all_configs.get_dart_api2wire_funcs(BlockIndex::new_shared());
+
     let prefix = if common_api2wire_body.contains(api2wire_func) {
         ""
     } else {
         match shared_dart_api2wire_funcs {
-            // multi-blocks case
+            // multi-blocks case with `shared_dart_api2wire_funcs` initialized
             Some(shared_dart_api2wire_funcs) => {
-                if ir_file.shared {
+                if config.shared {
                     if for_dart_common_file {
                         "_platform."
                     } else {
                         ""
                     }
-                } else {
-                    match ir_file.is_type_shared_by_safe_ident(ir_type) {
-                        ShareMode::Unique => {
-                            if common_api2wire_body.contains(api2wire_func) {
-                                ""
-                            } else if for_dart_common_file {
-                                "_platform."
-                            } else {
-                                ""
-                            }
-                        }
-                        ShareMode::Shared => {
-                            let shared_common_api2wire_body = &shared_dart_api2wire_funcs.common;
-                            if shared_common_api2wire_body.contains(api2wire_func) {
-                                ""
-                            } else {
-                                "_sharedPlatform."
-                            }
-                        }
+                } else if all_configs.is_type_shared(ir_type, true) {
+                    let shared_common_api2wire_body = &shared_dart_api2wire_funcs.common;
+                    if shared_common_api2wire_body.contains(api2wire_func) {
+                        ""
+                    } else {
+                        "_sharedPlatform."
                     }
+                } else if common_api2wire_body.contains(api2wire_func) {
+                    ""
+                } else if for_dart_common_file {
+                    "_platform."
+                } else {
+                    ""
                 }
             }
-            // single block case
+            // single block case, or multi-blocks case with `shared_dart_api2wire_funcs` NOT initilaized yet
             _ => {
                 if for_dart_common_file {
                     "_platform."
@@ -260,14 +246,17 @@ pub(crate) fn get_api2wire_prefix(
     prefix.into()
 }
 
-pub(crate) fn get_api_to_fill_wire_prefix(ir_file: &IrFile, ir_type: &IrType) -> String {
-    if ir_file.shared {
+pub(crate) fn get_api_to_fill_wire_prefix(
+    config: &Opts,
+    ir_type: &IrType,
+    all_configs: &AllConfigs,
+) -> String {
+    if config.shared {
         ""
+    } else if all_configs.is_type_shared(ir_type, true) {
+        "_sharedPlatform"
     } else {
-        match ir_file.is_type_shared_by_safe_ident(ir_type) {
-            ShareMode::Unique => "_",
-            ShareMode::Shared => "_sharedPlatform",
-        }
+        "_"
     }
     .into()
 }

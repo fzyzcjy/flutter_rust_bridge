@@ -10,16 +10,17 @@ pub struct IrTypeStructRef {
     pub is_exception: bool,
 }
 }
+
 impl IrTypeStructRef {
-    pub fn get<'a>(&self, f: &'a IrFile) -> &'a IrStruct {
-        &f.struct_pool[&self.name]
+    pub fn get<'a>(&self, ir_file: &'a IrFile) -> &'a IrStruct {
+        &ir_file.struct_pool[&self.name]
     }
 }
 
 impl IrTypeTrait for IrTypeStructRef {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_file: &IrFile) {
         for field in &self.get(ir_file).fields {
-            field.ty.visit_types(f, ir_file);
+            field.ty.visit_self_types_recursively(f, ir_file);
         }
     }
 

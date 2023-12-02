@@ -2,16 +2,6 @@ use super::*;
 // Section: wire functions
 
 #[wasm_bindgen]
-pub fn wire_test_inbuilt_type_in_block_2(port_: MessagePort, a: i32, b: f32) {
-    wire_test_inbuilt_type_in_block_2_impl(port_, a, b)
-}
-
-#[wasm_bindgen]
-pub fn wire_test_string_in_block_2(port_: MessagePort, s: String, i: u64) {
-    wire_test_string_in_block_2_impl(port_, s, i)
-}
-
-#[wasm_bindgen]
 pub fn wire_test_all_shared_struct_in_block_2(
     port_: MessagePort,
     custom: JsValue,
@@ -31,28 +21,8 @@ pub fn wire_test_all_shared_struct_in_sync_in_block_2(
 }
 
 #[wasm_bindgen]
-pub fn wire_test_shared_struct_in_block_2_for_1_and_2(
-    port_: MessagePort,
-    custom: JsValue,
-    s: String,
-    i: i32,
-) {
-    wire_test_shared_struct_in_block_2_for_1_and_2_impl(port_, custom, s, i)
-}
-
-#[wasm_bindgen]
 pub fn wire_test_cross_shared_struct_in_block_2_for_1_and_2(port_: MessagePort, name: String) {
     wire_test_cross_shared_struct_in_block_2_for_1_and_2_impl(port_, name)
-}
-
-#[wasm_bindgen]
-pub fn wire_test_shared_struct_in_block_2_for_2_and_3(
-    port_: MessagePort,
-    custom: JsValue,
-    s: String,
-    i: i32,
-) {
-    wire_test_shared_struct_in_block_2_for_2_and_3_impl(port_, custom, s, i)
 }
 
 #[wasm_bindgen]
@@ -61,18 +31,13 @@ pub fn wire_test_cross_shared_struct_in_block_2_for_2_and_3(port_: MessagePort, 
 }
 
 #[wasm_bindgen]
-pub fn wire_test_unique_struct_2(port_: MessagePort, custom: JsValue, s: String, i: i16) {
-    wire_test_unique_struct_2_impl(port_, custom, s, i)
-}
-
-#[wasm_bindgen]
-pub fn wire_test_struct_defined_in_block_2(port_: MessagePort, custom: JsValue) {
-    wire_test_struct_defined_in_block_2_impl(port_, custom)
-}
-
-#[wasm_bindgen]
 pub fn wire_test_enum_defined_in_block_2(port_: MessagePort, custom: JsValue) {
     wire_test_enum_defined_in_block_2_impl(port_, custom)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_inbuilt_type_in_block_2(port_: MessagePort, a: i32, b: f32) {
+    wire_test_inbuilt_type_in_block_2_impl(port_, a, b)
 }
 
 #[wasm_bindgen]
@@ -106,28 +71,12 @@ pub fn wire_test_method__method__EnumDefinedInBlock2(
 }
 
 #[wasm_bindgen]
-pub fn wire_test_static_method__static_method__EnumDefinedInBlock2(
-    port_: MessagePort,
-    message: String,
-) {
-    wire_test_static_method__static_method__EnumDefinedInBlock2_impl(port_, message)
-}
-
-#[wasm_bindgen]
 pub fn wire_test_method__method__StructDefinedInBlock2(
     port_: MessagePort,
     that: JsValue,
     message: String,
 ) {
     wire_test_method__method__StructDefinedInBlock2_impl(port_, that, message)
-}
-
-#[wasm_bindgen]
-pub fn wire_test_static_method__static_method__StructDefinedInBlock2(
-    port_: MessagePort,
-    message: String,
-) {
-    wire_test_static_method__static_method__StructDefinedInBlock2_impl(port_, message)
 }
 
 #[wasm_bindgen]
@@ -141,11 +90,62 @@ pub fn wire_test_method__method__StructOnlyForBlock2(
 }
 
 #[wasm_bindgen]
+pub fn wire_test_shared_struct_in_block_2_for_1_and_2(
+    port_: MessagePort,
+    custom: JsValue,
+    s: String,
+    i: i32,
+) {
+    wire_test_shared_struct_in_block_2_for_1_and_2_impl(port_, custom, s, i)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_shared_struct_in_block_2_for_2_and_3(
+    port_: MessagePort,
+    custom: JsValue,
+    s: String,
+    i: i32,
+) {
+    wire_test_shared_struct_in_block_2_for_2_and_3_impl(port_, custom, s, i)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_static_method__static_method__EnumDefinedInBlock2(
+    port_: MessagePort,
+    message: String,
+) {
+    wire_test_static_method__static_method__EnumDefinedInBlock2_impl(port_, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_static_method__static_method__StructDefinedInBlock2(
+    port_: MessagePort,
+    message: String,
+) {
+    wire_test_static_method__static_method__StructDefinedInBlock2_impl(port_, message)
+}
+
+#[wasm_bindgen]
 pub fn wire_test_static_method__static_method__StructOnlyForBlock2(
     port_: MessagePort,
     message: String,
 ) {
     wire_test_static_method__static_method__StructOnlyForBlock2_impl(port_, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_string_in_block_2(port_: MessagePort, s: String, i: u64) {
+    wire_test_string_in_block_2_impl(port_, s, i)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_struct_defined_in_block_2(port_: MessagePort, custom: JsValue) {
+    wire_test_struct_defined_in_block_2_impl(port_, custom)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_unique_struct_2(port_: MessagePort, custom: JsValue, s: String, i: i16) {
+    wire_test_unique_struct_2_impl(port_, custom, s, i)
 }
 
 // Section: allocate functions

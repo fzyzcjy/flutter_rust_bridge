@@ -2,21 +2,16 @@ use crate::generator::dart::ty::*;
 use crate::ir::*;
 use crate::target::{Acc, Target};
 use crate::type_dart_generator_struct;
-use crate::utils::misc::ShareMode;
 
 type_dart_generator_struct!(TypeOptionalGenerator, IrTypeOptional);
 
 impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
-    fn api2wire_body(
-        &self,
-        _shared_dart_api2wire_funcs: &Option<Acc<String>>,
-    ) -> Acc<Option<String>> {
-        let prefix = if !self.context.ir_file.shared
+    fn api2wire_body(&self) -> Acc<Option<String>> {
+        let prefix = if !self.context.config.shared
             && self
-                .context
-                .ir_file
-                .is_type_shared_by_safe_ident(&self.ir.inner)
-                == ShareMode::Shared
+                .get_context()
+                .all_configs
+                .is_type_shared(&self.ir.inner, true)
         {
             "_sharedPlatform.api2wire"
         } else {
@@ -36,25 +31,21 @@ impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
         })
     }
 
-    fn api_fill_to_wire_body(
-        &self,
-        _shared_dart_api2wire_funcs: &Option<Acc<String>>,
-    ) -> Option<String> {
+    fn api_fill_to_wire_body(&self) -> Option<String> {
         if !self.ir.needs_initialization() || self.ir.is_list() || self.ir.is_boxed_primitive() {
             return None;
         }
 
         let prefix = if self.context.config.shared {
             ""
+        } else if self
+            .get_context()
+            .all_configs
+            .is_type_shared(&self.ir.inner, true)
+        {
+            "_sharedPlatform."
         } else {
-            match self
-                .context
-                .ir_file
-                .is_type_shared_by_safe_ident(&self.ir.inner)
-            {
-                ShareMode::Unique => "_",
-                ShareMode::Shared => "_sharedPlatform.",
-            }
+            "_"
         };
 
         Some(format!(
@@ -65,12 +56,11 @@ impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
     }
 
     fn wire2api_body(&self) -> String {
-        let use_shared_instance = !self.context.ir_file.shared
+        let use_shared_instance = !self.context.config.shared
             && self
-                .context
-                .ir_file
-                .is_type_shared_by_safe_ident(&self.ir.inner)
-                == ShareMode::Shared;
+                .get_context()
+                .all_configs
+                .is_type_shared(&self.ir.inner, true);
 
         if use_shared_instance {
             format!(

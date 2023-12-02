@@ -3,7 +3,7 @@ use crate::generator::dart::{dart_comments, dart_metadata, GeneratedApiMethod};
 use crate::target::Acc;
 use crate::type_dart_generator_struct;
 use crate::utils::method::FunctionName;
-use crate::utils::misc::dart_maybe_implements_exception;
+use crate::utils::misc::{dart_maybe_implements_exception, BlockIndex};
 
 use crate::{ir::*, Opts};
 use convert_case::{Case, Casing};
@@ -11,10 +11,7 @@ use convert_case::{Case, Casing};
 type_dart_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 
 impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
-    fn api2wire_body(
-        &self,
-        shared_dart_api2wire_funcs: &Option<Acc<String>>,
-    ) -> Acc<Option<String>> {
+    fn api2wire_body(&self) -> Acc<Option<String>> {
         Acc {
             wasm: self.context.config.wasm_enabled.then(|| {
                 format!(
@@ -25,18 +22,23 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                         .iter()
                         .map(|field| {
                             let api2wire_func_name = format!("api2wire_{}", field.ty.safe_ident());
-                            let prefix =
-                                if self.context.config.shared || !self.is_type_shared(&field.ty) {
+                            let prefix = if self.context.config.shared
+                                || !self.is_type_shared_by_safe_ident(&field.ty)
+                            {
+                                ""
+                            } else {
+                                let shared_dart_api2wire_funcs = self
+                                    .context
+                                    .all_configs
+                                    .get_dart_api2wire_funcs(BlockIndex::new_shared());
+                                let shared_acc = shared_dart_api2wire_funcs.as_ref().unwrap();
+                                // NOTE: search in `common`, not in `wasm`, even this method is in used for .web.dart
+                                if (shared_acc.common).contains(&api2wire_func_name) {
                                     ""
                                 } else {
-                                    let shared_acc = shared_dart_api2wire_funcs.as_ref().unwrap();
-                                    // NOTE: search in `common`, not in `wasm`, even this method is in used for .web.dart
-                                    if (shared_acc.common).contains(&api2wire_func_name) {
-                                        ""
-                                    } else {
-                                        "_sharedPlatform."
-                                    }
-                                };
+                                    "_sharedPlatform."
+                                }
+                            };
                             format!(
                                 "{prefix}{api2wire_func_name}(raw.{})",
                                 field.name.dart_style()
@@ -50,10 +52,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         }
     }
 
-    fn api_fill_to_wire_body(
-        &self,
-        shared_dart_api2wire_funcs: &Option<Acc<String>>,
-    ) -> Option<String> {
+    fn api_fill_to_wire_body(&self) -> Option<String> {
         let s = self.ir.get(self.context.ir_file);
         Some(
             s.fields
@@ -63,10 +62,12 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                         &field.ty.safe_ident(),
                         &field.name.dart_style(),
                         field.name.rust_style(),
-                        field.ty.is_struct(),
-                        self.context.ir_file.shared,
-                        self.is_type_shared(&field.ty),
-                        shared_dart_api2wire_funcs,
+                        field.ty.is_struct_ref_or_enum_ref_or_record(),
+                        self.context.config.shared,
+                        self.is_type_shared_by_safe_ident(&field.ty),
+                        self.context
+                            .all_configs
+                            .get_dart_api2wire_funcs(BlockIndex::new_shared()),
                     )
                 })
                 .collect::<Vec<_>>()
@@ -78,10 +79,15 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         let src = self.ir.get(self.context.ir_file);
         let s = self.ir.get(self.context.ir_file);
 
-        let mut methods = self.context.ir_file.funcs(true).into_iter().filter(|f| {
-            let f = FunctionName::deserialize(&f.name);
-            f.is_method_for_struct(&src.name) || f.is_static_method_for_struct(&src.name)
-        });
+        let mut methods = self
+            .get_context()
+            .all_configs
+            .get_funcs(self.context.config.block_index, true)
+            .into_iter()
+            .filter(|f| {
+                let f = FunctionName::deserialize(&f.name);
+                f.is_method_for_struct(&src.name) || f.is_static_method_for_struct(&src.name)
+            });
         let has_methods = methods.next().is_some();
 
         let mut inner = s
@@ -89,9 +95,9 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             .iter()
             .enumerate()
             .map(|(idx, field)| {
-                let prefix = if self.context.ir_file.shared {
+                let prefix = if self.context.config.shared {
                     ""
-                } else if !self.is_type_shared(&field.ty) {
+                } else if !self.is_type_shared_by_safe_ident(&field.ty) {
                     "_"
                 } else {
                     "_sharedImpl."
@@ -125,9 +131,10 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         let comments = dart_comments(&src.comments);
         let metadata = dart_metadata(&src.dart_metadata);
 
-        let ir_file = self.context.ir_file;
-        let methods = ir_file
-            .funcs(true)
+        let methods = self
+            .context
+            .all_configs
+            .get_funcs(self.context.config.block_index, true)
             .into_iter()
             .filter(|f| {
                 let f = FunctionName::deserialize(&f.name);
@@ -291,7 +298,7 @@ pub(crate) fn api_fill_for_field(
     is_struct: bool,
     ir_file_shared: bool,
     is_type_shared: bool,
-    shared_dart_api2wire_funcs: &Option<Acc<String>>,
+    shared_dart_api2wire_funcs: Option<&Acc<String>>,
 ) -> String {
     if is_struct {
         format!(

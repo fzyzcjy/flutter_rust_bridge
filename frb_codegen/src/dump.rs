@@ -2,18 +2,19 @@
 
 use std::collections::HashMap;
 
-use crate::config::opts::Opts;
+use crate::config::all_configs::AllConfigs;
 use crate::config::raw_opts::Dump;
 use crate::parser::ParserResult;
 use enum_iterator::all;
 
-pub fn dump_multi(all_configs: &[Opts], dump: Vec<Dump>) -> anyhow::Result<()> {
+pub fn dump_multi(all_configs: &AllConfigs, dump: Vec<Dump>) -> anyhow::Result<()> {
     let dump = if dump.is_empty() {
         all().collect()
     } else {
         dump
     };
     let data = all_configs
+        .get_regular_configs()
         .iter()
         .map(|config| {
             let mut data = HashMap::new();
@@ -22,8 +23,8 @@ pub fn dump_multi(all_configs: &[Opts], dump: Vec<Dump>) -> anyhow::Result<()> {
                     Dump::Config => data.insert("config", serde_yaml::to_value(config)?),
                     Dump::Ir => data.insert(
                         "ir",
-                        config
-                            .get_ir_file(all_configs)
+                        all_configs
+                            .get_ir_file(config.block_index)
                             .map(serde_yaml::to_value)??,
                     ),
                 };

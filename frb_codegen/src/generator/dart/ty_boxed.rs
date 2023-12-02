@@ -20,10 +20,7 @@ fn is_empty_struct(ty: &TypeBoxedGenerator) -> bool {
 }
 
 impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
-    fn api2wire_body(
-        &self,
-        _shared_dart_api2wire_funcs: &Option<Acc<String>>,
-    ) -> Acc<Option<String>> {
+    fn api2wire_body(&self) -> Acc<Option<String>> {
         let as_primitive = self.ir.inner.is_primitive().then(|| {
             format!(
                 "return inner.new_{}(api2wire_{}(raw));",
@@ -60,10 +57,7 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
         }
     }
 
-    fn api_fill_to_wire_body(
-        &self,
-        _shared_dart_api2wire_funcs: &Option<Acc<String>>,
-    ) -> Option<String> {
+    fn api_fill_to_wire_body(&self) -> Option<String> {
         if self.ir.inner.is_array() {
             return Some(format!(
                 "wireObj = api2wire_{}(apiObj);",

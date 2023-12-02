@@ -2,10 +2,9 @@ use flutter_rust_bridge::SyncReturn;
 
 use crate::block_specific_module::StructOnlyForBlock3;
 
-use crate::bridge_generated_shared::SharedWeekdaysEnumInAllBlocks;
 use crate::shared_type_module::{
     CrossSharedStructInBlock2And3, SharedStructInAllBlocks, SharedStructInBlock2And3,
-    SharedStructOnlyForSyncTest,
+    SharedStructOnlyForSyncTest, SharedWeekdaysEnumInAllBlocks,
 };
 
 #[derive(PartialEq, Debug)]

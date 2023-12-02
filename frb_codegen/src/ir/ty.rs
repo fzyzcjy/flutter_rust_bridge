@@ -1,4 +1,5 @@
 use crate::{ir::*, target::Target};
+use convert_case::{Case, Casing};
 use enum_dispatch::enum_dispatch;
 use std::collections::HashSet;
 use IrType::*;
@@ -25,25 +26,63 @@ pub enum IrType {
 }
 
 impl IrType {
-    pub fn visit_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_file: &IrFile) {
+    pub fn get_rust_name(&self) -> String {
+        let type_raw_name = self.safe_ident();
+        if !self.is_list(true) {
+            type_raw_name.to_case(Case::Pascal)
+        } else {
+            type_raw_name
+        }
+    }
+
+    pub fn visit_self_types_recursively<F: FnMut(&IrType) -> bool>(
+        &self,
+        f: &mut F,
+        ir_file: &IrFile,
+    ) {
         if f(self) {
             return;
         }
         self.visit_children_types(f, ir_file);
     }
 
-    pub fn distinct_types(&self, ir_file: &IrFile) -> Vec<IrType> {
+    pub fn get_core_type(&self) -> &IrType {
+        match self {
+            IrType::Boxed(s) => s.inner.get_core_type(),
+            IrType::Optional(s) => s.inner.get_core_type(),
+            IrType::SyncReturn(s) => s.inner().get_core_type(),
+            _ => self,
+        }
+    }
+
+    // TODO: combine with `visit_types_recursively_used_in_the_func`?
+    // Return all types(fields) used in this type, including itself.
+    pub fn get_all_distinct_types(
+        &self,
+        diff_by_safe_ident: bool,
+        ir_file: &IrFile,
+    ) -> Vec<IrType> {
+        let mut seen = HashSet::new();
         let mut seen_idents = HashSet::new();
         let mut ans = Vec::new();
-        self.visit_types(
+        self.visit_self_types_recursively(
             &mut |ty| {
-                let ident = ty.safe_ident();
-                let contains = seen_idents.contains(&ident);
-                if !contains {
-                    seen_idents.insert(ident);
-                    ans.push(ty.clone());
+                if diff_by_safe_ident {
+                    let ident = ty.safe_ident();
+                    let contains = seen_idents.contains(&ident);
+                    if !contains {
+                        seen_idents.insert(ident);
+                        ans.push(ty.clone());
+                    }
+                    contains
+                } else {
+                    let contains = seen.contains(ty);
+                    if !contains {
+                        seen.insert(ty.clone());
+                        ans.push(ty.clone());
+                    }
+                    contains
                 }
-                contains
             },
             ir_file,
         );
@@ -102,8 +141,18 @@ impl IrType {
     }
 
     #[inline]
-    pub fn is_struct(&self) -> bool {
+    pub fn is_struct_ref_or_enum_ref_or_record(&self) -> bool {
         matches!(self, StructRef(_) | EnumRef(_) | Record(_))
+    }
+
+    #[inline]
+    pub fn is_struct_ref(&self) -> bool {
+        matches!(self, StructRef(_))
+    }
+
+    #[inline]
+    pub fn is_enum_ref(&self) -> bool {
+        matches!(self, EnumRef(_))
     }
 
     #[inline]
@@ -138,6 +187,16 @@ impl IrType {
             Self::Boxed(IrTypeBoxed { inner, .. }) => inner.is_js_value(),
             _ => false,
         }
+    }
+
+    #[inline]
+    pub fn is_sync_return(&self) -> bool {
+        matches!(self, IrType::SyncReturn(_))
+    }
+
+    #[inline]
+    pub fn is_boxed(&self) -> bool {
+        matches!(self, IrType::Boxed(_))
     }
 
     pub fn mirrored_nested(&self) -> Option<String> {

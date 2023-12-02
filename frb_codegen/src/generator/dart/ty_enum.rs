@@ -13,10 +13,7 @@ const BACKTRACE_IDENT: &str = "backtrace";
 type_dart_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
 
 impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
-    fn api2wire_body(
-        &self,
-        shared_dart_api2wire_funcs: &Option<Acc<String>>,
-    ) -> Acc<Option<String>> {
+    fn api2wire_body(&self) -> Acc<Option<String>> {
         let variants = (self.ir.get(self.context.ir_file).variants())
             .iter()
             .enumerate()
@@ -29,10 +26,10 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                             let api2wire_func = format!("api2wire_{}", field.ty.safe_ident());
                             let prefix = get_api2wire_prefix(
                                 &api2wire_func,
-                                shared_dart_api2wire_funcs,
-                                self.context.ir_file,
+                                self.context.config,
                                 &field.ty,
                                 false,
+                                self.get_context().all_configs,
                             );
                             format!(
                                 ",{}api2wire_{}(raw.{})",
@@ -65,10 +62,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
         }
     }
 
-    fn api_fill_to_wire_body(
-        &self,
-        shared_dart_api2wire_funcs: &Option<Acc<String>>,
-    ) -> Option<String> {
+    fn api_fill_to_wire_body(&self) -> Option<String> {
         Some(
             self.ir
                 .get(self.context.ir_file)
@@ -91,10 +85,10 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                                         format!("api2wire_{}", field.ty.safe_ident());
                                     let prefix = get_api2wire_prefix(
                                         &api2wire_func,
-                                        shared_dart_api2wire_funcs,
-                                        self.context.ir_file,
+                                        self.context.config,
                                         &field.ty,
                                         false,
+                                        self.get_context().all_configs,
                                     );
                                     format!(
                                         "var pre_{} = {}api2wire_{}(apiObj.{});",

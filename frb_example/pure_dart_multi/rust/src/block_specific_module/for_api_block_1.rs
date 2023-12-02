@@ -16,3 +16,7 @@ impl StructOnlyForBlock1 {
         message
     }
 }
+
+// TODO: delete? refine?
+// #[derive(Debug)]
+// pub struct SubTypeForStructDefinedInBlock1 {}

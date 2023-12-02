@@ -2,49 +2,6 @@ use super::*;
 // Section: wire functions
 
 #[no_mangle]
-pub extern "C" fn wire_test_inbuilt_type_in_block_1(port_: i64, a: i32, b: f32) {
-    wire_test_inbuilt_type_in_block_1_impl(port_, a, b)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_test_string_in_block_1(port_: i64, s: *mut wire_uint_8_list, i: u64) {
-    wire_test_string_in_block_1_impl(port_, s, i)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_test_string_in_sync_in_block_1(
-    s: *mut wire_uint_8_list,
-    i: u64,
-) -> support::WireSyncReturn {
-    wire_test_string_in_sync_in_block_1_impl(s, i)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_test_optional_string_in_block_1(
-    port_: i64,
-    s: *mut wire_uint_8_list,
-    i: i32,
-) {
-    wire_test_optional_string_in_block_1_impl(port_, s, i)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_test_optional_string_in_sync_in_block_1(
-    s: *mut wire_uint_8_list,
-    i: i32,
-) -> support::WireSyncReturn {
-    wire_test_optional_string_in_sync_in_block_1_impl(s, i)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1(
-    name: *mut wire_uint_8_list,
-    score: f64,
-) -> support::WireSyncReturn {
-    wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1_impl(name, score)
-}
-
-#[no_mangle]
 pub extern "C" fn wire_test_all_shared_struct_in_block_1(
     port_: i64,
     custom: *mut wire_SharedStructInAllBlocks,
@@ -52,16 +9,6 @@ pub extern "C" fn wire_test_all_shared_struct_in_block_1(
     i: i32,
 ) {
     wire_test_all_shared_struct_in_block_1_impl(port_, custom, s, i)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_test_shared_struct_in_block_1_for_1_and_2(
-    port_: i64,
-    custom: *mut wire_SharedStructInBlock1And2,
-    s: *mut wire_uint_8_list,
-    i: i32,
-) {
-    wire_test_shared_struct_in_block_1_for_1_and_2_impl(port_, custom, s, i)
 }
 
 #[no_mangle]
@@ -73,29 +20,16 @@ pub extern "C" fn wire_test_cross_shared_struct_in_block_1_for_1_and_2(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_unique_struct_1(
-    port_: i64,
-    custom: *mut wire_StructOnlyForBlock1,
-    s: *mut wire_uint_8_list,
-    i: i8,
-) {
-    wire_test_unique_struct_1_impl(port_, custom, s, i)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_test_struct_defined_in_block_1(
-    port_: i64,
-    custom: *mut wire_StructDefinedInBlock1,
-) {
-    wire_test_struct_defined_in_block_1_impl(port_, custom)
-}
-
-#[no_mangle]
 pub extern "C" fn wire_test_enum_defined_in_block_1(
     port_: i64,
     custom: *mut wire_EnumDefinedInBlock1,
 ) {
     wire_test_enum_defined_in_block_1_impl(port_, custom)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_inbuilt_type_in_block_1(port_: i64, a: i32, b: f32) {
+    wire_test_inbuilt_type_in_block_1_impl(port_, a, b)
 }
 
 #[no_mangle]
@@ -129,28 +63,12 @@ pub extern "C" fn wire_test_method__method__EnumDefinedInBlock1(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_static_method__static_method__EnumDefinedInBlock1(
-    port_: i64,
-    message: *mut wire_uint_8_list,
-) {
-    wire_test_static_method__static_method__EnumDefinedInBlock1_impl(port_, message)
-}
-
-#[no_mangle]
 pub extern "C" fn wire_test_method__method__StructDefinedInBlock1(
     port_: i64,
     that: *mut wire_StructDefinedInBlock1,
     message: *mut wire_uint_8_list,
 ) {
     wire_test_method__method__StructDefinedInBlock1_impl(port_, that, message)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_test_static_method__static_method__StructDefinedInBlock1(
-    port_: i64,
-    message: *mut wire_uint_8_list,
-) {
-    wire_test_static_method__static_method__StructDefinedInBlock1_impl(port_, message)
 }
 
 #[no_mangle]
@@ -164,11 +82,93 @@ pub extern "C" fn wire_test_method__method__StructOnlyForBlock1(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_test_optional_string_in_block_1(
+    port_: i64,
+    s: *mut wire_uint_8_list,
+    i: i32,
+) {
+    wire_test_optional_string_in_block_1_impl(port_, s, i)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_optional_string_in_sync_in_block_1(
+    s: *mut wire_uint_8_list,
+    i: i32,
+) -> support::WireSyncReturn {
+    wire_test_optional_string_in_sync_in_block_1_impl(s, i)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_shared_struct_in_block_1_for_1_and_2(
+    port_: i64,
+    custom: *mut wire_SharedStructInBlock1And2,
+    s: *mut wire_uint_8_list,
+    i: i32,
+) {
+    wire_test_shared_struct_in_block_1_for_1_and_2_impl(port_, custom, s, i)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1(
+    name: *mut wire_uint_8_list,
+    score: f64,
+) -> support::WireSyncReturn {
+    wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1_impl(name, score)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_static_method__static_method__EnumDefinedInBlock1(
+    port_: i64,
+    message: *mut wire_uint_8_list,
+) {
+    wire_test_static_method__static_method__EnumDefinedInBlock1_impl(port_, message)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_static_method__static_method__StructDefinedInBlock1(
+    port_: i64,
+    message: *mut wire_uint_8_list,
+) {
+    wire_test_static_method__static_method__StructDefinedInBlock1_impl(port_, message)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_test_static_method__static_method__StructOnlyForBlock1(
     port_: i64,
     message: *mut wire_uint_8_list,
 ) {
     wire_test_static_method__static_method__StructOnlyForBlock1_impl(port_, message)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_string_in_block_1(port_: i64, s: *mut wire_uint_8_list, i: u64) {
+    wire_test_string_in_block_1_impl(port_, s, i)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_string_in_sync_in_block_1(
+    s: *mut wire_uint_8_list,
+    i: u64,
+) -> support::WireSyncReturn {
+    wire_test_string_in_sync_in_block_1_impl(s, i)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_struct_defined_in_block_1(
+    port_: i64,
+    custom: *mut wire_StructDefinedInBlock1,
+) {
+    wire_test_struct_defined_in_block_1_impl(port_, custom)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_unique_struct_1(
+    port_: i64,
+    custom: *mut wire_StructOnlyForBlock1,
+    s: *mut wire_uint_8_list,
+    i: i8,
+) {
+    wire_test_unique_struct_1_impl(port_, custom, s, i)
 }
 
 // Section: allocate functions
@@ -312,20 +312,6 @@ impl Wire2Api<StructOnlyForBlock1> for wire_StructOnlyForBlock1 {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_list_enum_defined_in_block_1 {
-    ptr: *mut wire_EnumDefinedInBlock1,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_list_struct_defined_in_block_1 {
-    ptr: *mut wire_StructDefinedInBlock1,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
 pub struct wire_StructDefinedInBlock1 {
     name: *mut wire_uint_8_list,
 }
@@ -336,6 +322,20 @@ pub struct wire_StructOnlyForBlock1 {
     id: *mut i8,
     num: *mut f64,
     name: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_enum_defined_in_block_1 {
+    ptr: *mut wire_EnumDefinedInBlock1,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_struct_defined_in_block_1 {
+    ptr: *mut wire_StructDefinedInBlock1,
+    len: i32,
 }
 
 #[repr(C)]
