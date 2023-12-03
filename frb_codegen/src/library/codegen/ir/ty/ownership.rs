@@ -4,15 +4,14 @@ use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 use serde::Serialize;
 
 crate::ir! {
-pub struct IrTypeModifier {
-    pub mode: IrTypeModifierMode,
+pub struct IrTypeOwnership {
+    pub mode: IrTypeOwnershipMode,
     pub inner: Box<IrType>,
 }
 }
 
-// TODO better name? Ownership?
 #[derive(Debug, Clone, Hash, Eq, PartialEq, Serialize)]
-pub enum IrTypeModifierMode {
+pub enum IrTypeOwnershipMode {
     /// "T"
     Owned,
     /// "&T"
@@ -21,7 +20,7 @@ pub enum IrTypeModifierMode {
     RefMut,
 }
 
-impl IrTypeTrait for IrTypeModifier {
+impl IrTypeTrait for IrTypeOwnership {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(
         &self,
         f: &mut F,

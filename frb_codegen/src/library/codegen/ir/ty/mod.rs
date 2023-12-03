@@ -4,9 +4,9 @@ pub(crate) mod delegate;
 pub(crate) mod dynamic;
 pub(crate) mod enumeration;
 pub(crate) mod general_list;
-mod modifier;
 pub(crate) mod optional;
 pub(crate) mod optional_list;
+mod ownership;
 pub(crate) mod primitive;
 pub(crate) mod primitive_list;
 pub(crate) mod record;
@@ -35,9 +35,9 @@ pub enum IrType {
     Dynamic(dynamic::IrTypeDynamic),
     EnumRef(enumeration::IrTypeEnumRef),
     GeneralList(general_list::IrTypeGeneralList),
-    Modifier(optional::IrTypeModifier),
     Optional(optional::IrTypeOptional),
     OptionalList(optional_list::IrTypeOptionalList),
+    Ownership(optional::IrTypeOwnership),
     Primitive(primitive::IrTypePrimitive),
     PrimitiveList(primitive_list::IrTypePrimitiveList),
     Record(record::IrTypeRecord),
@@ -132,9 +132,9 @@ impl Serialize for IrType {
             IrType::Dynamic(inner) => ser::<S, _>(&mut state, "Dynamic", inner),
             IrType::EnumRef(inner) => ser::<S, _>(&mut state, "EnumRef", inner),
             IrType::GeneralList(inner) => ser::<S, _>(&mut state, "GeneralList", inner),
-            IrType::Modifier(inner) => ser::<S, _>(&mut state, "Modifier", inner),
             IrType::Optional(inner) => ser::<S, _>(&mut state, "Optional", inner),
             IrType::OptionalList(inner) => ser::<S, _>(&mut state, "OptionalList", inner),
+            IrType::Ownership(inner) => ser::<S, _>(&mut state, "Ownership", inner),
             IrType::Primitive(inner) => ser::<S, _>(&mut state, "Primitive", inner),
             IrType::PrimitiveList(inner) => ser::<S, _>(&mut state, "PrimitiveList", inner),
             IrType::Record(inner) => ser::<S, _>(&mut state, "Record", inner),
