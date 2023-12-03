@@ -67,17 +67,14 @@ FrbOpaqueReturn frbGeneratorTestTwinSync({dynamic hint}) =>
 class BoxDartDebugTwinSync extends RustOpaque {
   BoxDartDebugTwinSync.fromWire(dynamic wire) : super.fromWire(wire);
 
-  @override
-  OpaqueDropFnType get dropFn =>
-      RustLib.instance.api.dropOpaqueBoxDartDebugTwinSync;
-
-  @override
-  OpaqueShareFnType get shareFn =>
-      RustLib.instance.api.shareOpaqueBoxDartDebugTwinSync;
-
-  @override
-  OpaqueTypeFinalizer get staticFinalizer =>
-      RustLib.instance.api.boxDartDebugTwinSyncFinalizer;
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_BoxDartDebugTwinSync,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxDartDebugTwinSync,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxDartDebugTwinSyncPtr,
+  );
 }
 
 @freezed

@@ -33,15 +33,12 @@ FrbOpaqueSyncReturn frbSyncGeneratorTestTwinNormal({dynamic hint}) =>
 class FrbOpaqueSyncReturn extends RustOpaque {
   FrbOpaqueSyncReturn.fromWire(dynamic wire) : super.fromWire(wire);
 
-  @override
-  OpaqueDropFnType get dropFn =>
-      RustLib.instance.api.dropOpaqueFrbOpaqueSyncReturn;
-
-  @override
-  OpaqueShareFnType get shareFn =>
-      RustLib.instance.api.shareOpaqueFrbOpaqueSyncReturn;
-
-  @override
-  OpaqueTypeFinalizer get staticFinalizer =>
-      RustLib.instance.api.frbOpaqueSyncReturnFinalizer;
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_FrbOpaqueSyncReturn,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_FrbOpaqueSyncReturn,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_FrbOpaqueSyncReturnPtr,
+  );
 }

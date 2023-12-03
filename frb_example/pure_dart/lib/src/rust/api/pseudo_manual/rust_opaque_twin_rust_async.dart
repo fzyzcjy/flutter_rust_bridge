@@ -79,80 +79,70 @@ Future<FrbOpaqueReturn> frbGeneratorTestTwinRustAsync({dynamic hint}) =>
 class MutexHideData extends RustOpaque {
   MutexHideData.fromWire(dynamic wire) : super.fromWire(wire);
 
-  @override
-  OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueMutexHideData;
-
-  @override
-  OpaqueShareFnType get shareFn =>
-      RustLib.instance.api.shareOpaqueMutexHideData;
-
-  @override
-  OpaqueTypeFinalizer get staticFinalizer =>
-      RustLib.instance.api.mutexHideDataFinalizer;
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_MutexHideData,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_MutexHideData,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_MutexHideDataPtr,
+  );
 }
 
 @sealed
 class RwLockHideData extends RustOpaque {
   RwLockHideData.fromWire(dynamic wire) : super.fromWire(wire);
 
-  @override
-  OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueRwLockHideData;
-
-  @override
-  OpaqueShareFnType get shareFn =>
-      RustLib.instance.api.shareOpaqueRwLockHideData;
-
-  @override
-  OpaqueTypeFinalizer get staticFinalizer =>
-      RustLib.instance.api.rwLockHideDataFinalizer;
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_RwLockHideData,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_RwLockHideData,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_RwLockHideDataPtr,
+  );
 }
 
 @sealed
 class BoxDartDebugTwinRustAsync extends RustOpaque {
   BoxDartDebugTwinRustAsync.fromWire(dynamic wire) : super.fromWire(wire);
 
-  @override
-  OpaqueDropFnType get dropFn =>
-      RustLib.instance.api.dropOpaqueBoxDartDebugTwinRustAsync;
-
-  @override
-  OpaqueShareFnType get shareFn =>
-      RustLib.instance.api.shareOpaqueBoxDartDebugTwinRustAsync;
-
-  @override
-  OpaqueTypeFinalizer get staticFinalizer =>
-      RustLib.instance.api.boxDartDebugTwinRustAsyncFinalizer;
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_BoxDartDebugTwinRustAsync,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxDartDebugTwinRustAsync,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_BoxDartDebugTwinRustAsyncPtr,
+  );
 }
 
 @sealed
 class FrbOpaqueReturn extends RustOpaque {
   FrbOpaqueReturn.fromWire(dynamic wire) : super.fromWire(wire);
 
-  @override
-  OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueFrbOpaqueReturn;
-
-  @override
-  OpaqueShareFnType get shareFn =>
-      RustLib.instance.api.shareOpaqueFrbOpaqueReturn;
-
-  @override
-  OpaqueTypeFinalizer get staticFinalizer =>
-      RustLib.instance.api.frbOpaqueReturnFinalizer;
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_FrbOpaqueReturn,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_FrbOpaqueReturn,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_FrbOpaqueReturnPtr,
+  );
 }
 
 @sealed
 class HideData extends RustOpaque {
   HideData.fromWire(dynamic wire) : super.fromWire(wire);
 
-  @override
-  OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueHideData;
-
-  @override
-  OpaqueShareFnType get shareFn => RustLib.instance.api.shareOpaqueHideData;
-
-  @override
-  OpaqueTypeFinalizer get staticFinalizer =>
-      RustLib.instance.api.hideDataFinalizer;
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_HideData,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_HideData,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_HideDataPtr,
+  );
 }
 
 class HideDataArray2 extends NonGrowableListView<HideData> {
@@ -169,45 +159,42 @@ class HideDataArray2 extends NonGrowableListView<HideData> {
 class I32 extends RustOpaque {
   I32.fromWire(dynamic wire) : super.fromWire(wire);
 
-  @override
-  OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueI32;
-
-  @override
-  OpaqueShareFnType get shareFn => RustLib.instance.api.shareOpaqueI32;
-
-  @override
-  OpaqueTypeFinalizer get staticFinalizer => RustLib.instance.api.i32Finalizer;
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_I32,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_I32,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_I32Ptr,
+  );
 }
 
 @sealed
 class NonCloneData extends RustOpaque {
   NonCloneData.fromWire(dynamic wire) : super.fromWire(wire);
 
-  @override
-  OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueNonCloneData;
-
-  @override
-  OpaqueShareFnType get shareFn => RustLib.instance.api.shareOpaqueNonCloneData;
-
-  @override
-  OpaqueTypeFinalizer get staticFinalizer =>
-      RustLib.instance.api.nonCloneDataFinalizer;
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_NonCloneData,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_NonCloneData,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_NonCloneDataPtr,
+  );
 }
 
 @sealed
 class NonSendHideData extends RustOpaque {
   NonSendHideData.fromWire(dynamic wire) : super.fromWire(wire);
 
-  @override
-  OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueNonSendHideData;
-
-  @override
-  OpaqueShareFnType get shareFn =>
-      RustLib.instance.api.shareOpaqueNonSendHideData;
-
-  @override
-  OpaqueTypeFinalizer get staticFinalizer =>
-      RustLib.instance.api.nonSendHideDataFinalizer;
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_NonSendHideData,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_NonSendHideData,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_NonSendHideDataPtr,
+  );
 }
 
 @freezed

@@ -119,38 +119,47 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.dropPortManager,
   });
 
-  late final mutexHideDataFinalizer =
-      OpaqueTypeFinalizer(wire._drop_opaque_RustOpaque_MutexHideDataPtr);
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_MutexHideDataPtr =>
+          wire._rust_arc_decrement_strong_count_RustOpaque_MutexHideDataPtr;
 
-  late final rwLockHideDataFinalizer =
-      OpaqueTypeFinalizer(wire._drop_opaque_RustOpaque_RwLockHideDataPtr);
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockHideDataPtr =>
+          wire._rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataPtr;
 
-  late final boxDartDebugTwinNormalFinalizer = OpaqueTypeFinalizer(
-      wire._drop_opaque_RustOpaque_box_dynDartDebugTwinNormalPtr);
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxDartDebugTwinNormalPtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormalPtr;
 
-  late final boxDartDebugTwinRustAsyncFinalizer = OpaqueTypeFinalizer(
-      wire._drop_opaque_RustOpaque_box_dynDartDebugTwinRustAsyncPtr);
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxDartDebugTwinRustAsyncPtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsyncPtr;
 
-  late final boxDartDebugTwinSyncFinalizer = OpaqueTypeFinalizer(
-      wire._drop_opaque_RustOpaque_box_dynDartDebugTwinSyncPtr);
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxDartDebugTwinSyncPtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSyncPtr;
 
-  late final frbOpaqueReturnFinalizer =
-      OpaqueTypeFinalizer(wire._drop_opaque_RustOpaque_frb_opaque_returnPtr);
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnPtr =>
+          wire._rust_arc_decrement_strong_count_RustOpaque_frb_opaque_returnPtr;
 
-  late final frbOpaqueSyncReturnFinalizer = OpaqueTypeFinalizer(
-      wire._drop_opaque_RustOpaque_frb_opaque_sync_returnPtr);
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_FrbOpaqueSyncReturnPtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_returnPtr;
 
-  late final hideDataFinalizer =
-      OpaqueTypeFinalizer(wire._drop_opaque_RustOpaque_hide_dataPtr);
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_HideDataPtr =>
+      wire._rust_arc_decrement_strong_count_RustOpaque_hide_dataPtr;
 
-  late final i32Finalizer =
-      OpaqueTypeFinalizer(wire._drop_opaque_RustOpaque_i_32Ptr);
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_I32Ptr =>
+      wire._rust_arc_decrement_strong_count_RustOpaque_i_32Ptr;
 
-  late final nonCloneDataFinalizer =
-      OpaqueTypeFinalizer(wire._drop_opaque_RustOpaque_non_clone_dataPtr);
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneDataPtr =>
+          wire._rust_arc_decrement_strong_count_RustOpaque_non_clone_dataPtr;
 
-  late final nonSendHideDataFinalizer =
-      OpaqueTypeFinalizer(wire._drop_opaque_RustOpaque_non_send_hide_dataPtr);
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonSendHideDataPtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_non_send_hide_dataPtr;
 
   @protected
   int api2wire_Chrono_Duration(Duration raw) {

@@ -2009,71 +2009,99 @@ abstract class RustLibApi extends BaseApi {
   Future<List<UuidValue>> handleUuidsTwinNormal(
       {required List<UuidValue> ids, dynamic hint});
 
-  OpaqueShareFnType get shareOpaqueMutexHideData;
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MutexHideData;
 
-  OpaqueDropFnType get dropOpaqueMutexHideData;
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MutexHideData;
 
-  OpaqueTypeFinalizer get mutexHideDataFinalizer;
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_MutexHideDataPtr;
 
-  OpaqueShareFnType get shareOpaqueRwLockHideData;
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockHideData;
 
-  OpaqueDropFnType get dropOpaqueRwLockHideData;
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockHideData;
 
-  OpaqueTypeFinalizer get rwLockHideDataFinalizer;
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockHideDataPtr;
 
-  OpaqueShareFnType get shareOpaqueBoxDartDebugTwinNormal;
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxDartDebugTwinNormal;
 
-  OpaqueDropFnType get dropOpaqueBoxDartDebugTwinNormal;
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxDartDebugTwinNormal;
 
-  OpaqueTypeFinalizer get boxDartDebugTwinNormalFinalizer;
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxDartDebugTwinNormalPtr;
 
-  OpaqueShareFnType get shareOpaqueBoxDartDebugTwinRustAsync;
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxDartDebugTwinRustAsync;
 
-  OpaqueDropFnType get dropOpaqueBoxDartDebugTwinRustAsync;
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxDartDebugTwinRustAsync;
 
-  OpaqueTypeFinalizer get boxDartDebugTwinRustAsyncFinalizer;
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxDartDebugTwinRustAsyncPtr;
 
-  OpaqueShareFnType get shareOpaqueBoxDartDebugTwinSync;
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxDartDebugTwinSync;
 
-  OpaqueDropFnType get dropOpaqueBoxDartDebugTwinSync;
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxDartDebugTwinSync;
 
-  OpaqueTypeFinalizer get boxDartDebugTwinSyncFinalizer;
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxDartDebugTwinSyncPtr;
 
-  OpaqueShareFnType get shareOpaqueFrbOpaqueReturn;
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_FrbOpaqueReturn;
 
-  OpaqueDropFnType get dropOpaqueFrbOpaqueReturn;
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_FrbOpaqueReturn;
 
-  OpaqueTypeFinalizer get frbOpaqueReturnFinalizer;
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_FrbOpaqueReturnPtr;
 
-  OpaqueShareFnType get shareOpaqueFrbOpaqueSyncReturn;
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_FrbOpaqueSyncReturn;
 
-  OpaqueDropFnType get dropOpaqueFrbOpaqueSyncReturn;
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_FrbOpaqueSyncReturn;
 
-  OpaqueTypeFinalizer get frbOpaqueSyncReturnFinalizer;
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_FrbOpaqueSyncReturnPtr;
 
-  OpaqueShareFnType get shareOpaqueHideData;
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideData;
 
-  OpaqueDropFnType get dropOpaqueHideData;
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideData;
 
-  OpaqueTypeFinalizer get hideDataFinalizer;
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_HideDataPtr;
 
-  OpaqueShareFnType get shareOpaqueI32;
+  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_I32;
 
-  OpaqueDropFnType get dropOpaqueI32;
+  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_I32;
 
-  OpaqueTypeFinalizer get i32Finalizer;
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_I32Ptr;
 
-  OpaqueShareFnType get shareOpaqueNonCloneData;
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneData;
 
-  OpaqueDropFnType get dropOpaqueNonCloneData;
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneData;
 
-  OpaqueTypeFinalizer get nonCloneDataFinalizer;
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_NonCloneDataPtr;
 
-  OpaqueShareFnType get shareOpaqueNonSendHideData;
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideData;
 
-  OpaqueDropFnType get dropOpaqueNonSendHideData;
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideData;
 
-  OpaqueTypeFinalizer get nonSendHideDataFinalizer;
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonSendHideDataPtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -16263,69 +16291,91 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["ids"],
       );
 
-  OpaqueShareFnType get shareOpaqueMutexHideData =>
-      wire.share_opaque_RustOpaque_MutexHideData;
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MutexHideData =>
+          wire.rust_arc_increment_strong_count_RustOpaque_MutexHideData;
 
-  OpaqueDropFnType get dropOpaqueMutexHideData =>
-      wire.drop_opaque_RustOpaque_MutexHideData;
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MutexHideData =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_MutexHideData;
 
-  OpaqueShareFnType get shareOpaqueRwLockHideData =>
-      wire.share_opaque_RustOpaque_RwLockHideData;
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockHideData =>
+          wire.rust_arc_increment_strong_count_RustOpaque_RwLockHideData;
 
-  OpaqueDropFnType get dropOpaqueRwLockHideData =>
-      wire.drop_opaque_RustOpaque_RwLockHideData;
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockHideData =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_RwLockHideData;
 
-  OpaqueShareFnType get shareOpaqueBoxDartDebugTwinNormal =>
-      wire.share_opaque_RustOpaque_box_dynDartDebugTwinNormal;
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxDartDebugTwinNormal => wire
+          .rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal;
 
-  OpaqueDropFnType get dropOpaqueBoxDartDebugTwinNormal =>
-      wire.drop_opaque_RustOpaque_box_dynDartDebugTwinNormal;
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxDartDebugTwinNormal => wire
+          .rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormal;
 
-  OpaqueShareFnType get shareOpaqueBoxDartDebugTwinRustAsync =>
-      wire.share_opaque_RustOpaque_box_dynDartDebugTwinRustAsync;
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxDartDebugTwinRustAsync => wire
+          .rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync;
 
-  OpaqueDropFnType get dropOpaqueBoxDartDebugTwinRustAsync =>
-      wire.drop_opaque_RustOpaque_box_dynDartDebugTwinRustAsync;
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxDartDebugTwinRustAsync => wire
+          .rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync;
 
-  OpaqueShareFnType get shareOpaqueBoxDartDebugTwinSync =>
-      wire.share_opaque_RustOpaque_box_dynDartDebugTwinSync;
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxDartDebugTwinSync => wire
+          .rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSync;
 
-  OpaqueDropFnType get dropOpaqueBoxDartDebugTwinSync =>
-      wire.drop_opaque_RustOpaque_box_dynDartDebugTwinSync;
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxDartDebugTwinSync => wire
+          .rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync;
 
-  OpaqueShareFnType get shareOpaqueFrbOpaqueReturn =>
-      wire.share_opaque_RustOpaque_frb_opaque_return;
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_FrbOpaqueReturn =>
+          wire.rust_arc_increment_strong_count_RustOpaque_frb_opaque_return;
 
-  OpaqueDropFnType get dropOpaqueFrbOpaqueReturn =>
-      wire.drop_opaque_RustOpaque_frb_opaque_return;
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_FrbOpaqueReturn =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return;
 
-  OpaqueShareFnType get shareOpaqueFrbOpaqueSyncReturn =>
-      wire.share_opaque_RustOpaque_frb_opaque_sync_return;
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_FrbOpaqueSyncReturn => wire
+          .rust_arc_increment_strong_count_RustOpaque_frb_opaque_sync_return;
 
-  OpaqueDropFnType get dropOpaqueFrbOpaqueSyncReturn =>
-      wire.drop_opaque_RustOpaque_frb_opaque_sync_return;
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_FrbOpaqueSyncReturn => wire
+          .rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_return;
 
-  OpaqueShareFnType get shareOpaqueHideData =>
-      wire.share_opaque_RustOpaque_hide_data;
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_HideData =>
+          wire.rust_arc_increment_strong_count_RustOpaque_hide_data;
 
-  OpaqueDropFnType get dropOpaqueHideData =>
-      wire.drop_opaque_RustOpaque_hide_data;
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_HideData =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_hide_data;
 
-  OpaqueShareFnType get shareOpaqueI32 => wire.share_opaque_RustOpaque_i_32;
+  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_I32 =>
+      wire.rust_arc_increment_strong_count_RustOpaque_i_32;
 
-  OpaqueDropFnType get dropOpaqueI32 => wire.drop_opaque_RustOpaque_i_32;
+  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_I32 =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_i_32;
 
-  OpaqueShareFnType get shareOpaqueNonCloneData =>
-      wire.share_opaque_RustOpaque_non_clone_data;
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneData =>
+          wire.rust_arc_increment_strong_count_RustOpaque_non_clone_data;
 
-  OpaqueDropFnType get dropOpaqueNonCloneData =>
-      wire.drop_opaque_RustOpaque_non_clone_data;
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneData =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_non_clone_data;
 
-  OpaqueShareFnType get shareOpaqueNonSendHideData =>
-      wire.share_opaque_RustOpaque_non_send_hide_data;
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonSendHideData =>
+          wire.rust_arc_increment_strong_count_RustOpaque_non_send_hide_data;
 
-  OpaqueDropFnType get dropOpaqueNonSendHideData =>
-      wire.drop_opaque_RustOpaque_non_send_hide_data;
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonSendHideData =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data;
 
   AnyhowException _wire2api_AnyhowException(dynamic raw) {
     return AnyhowException(raw as String);
