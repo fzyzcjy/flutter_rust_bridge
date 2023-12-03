@@ -3,8 +3,11 @@ import 'package:flutter_rust_bridge/src/rust_arc/_io.dart'
     if (dart.library.html) '_web.dart';
 import 'package:meta/meta.dart';
 
-/// Handles the release of the [_resource]. It will be:
-/// 1. Either, released when this object is garbaged collected, via Dart finalizer.
+/// Handles the release of the [_resource].
+/// It mimics Rust's `Drop`, but also allow users to manually call `dispose`.
+///
+/// The [_resource] will be released via `dropFn` (or `dropFnPtr`) in one of the two ways:
+/// 1. Either, released when this object is garbage collected, via Dart finalizer.
 /// 2. Or, released when the [dispose] is called.
 abstract class _Droppable<T extends Object> implements DroppableBase {
   T? get _resource => __resource;
