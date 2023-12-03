@@ -13,7 +13,7 @@ typedef ArcTypeFinalizerArg = ffi.Pointer<ffi.NativeFinalizerFunction>;
 /// {@macro flutter_rust_bridge.internal}
 class RustArcBase implements ffi.Finalizable {
   /// {@macro flutter_rust_bridge.internal}
-  static void finalizerAttach(RustArcBase opaque, PlatformPointer ptr, int size,
+  static void finalizerAttach(RustArcBase object, PlatformPointer ptr, int size,
           ArcTypeFinalizer finalizer) =>
-      finalizer.attach(opaque, ptr, detach: opaque, externalSize: size);
+      finalizer.attach(object, ptr, detach: object, externalSize: size);
 }

@@ -9,7 +9,7 @@ typedef ArcTypeFinalizerArg = void Function(PlatformPointer);
 /// {@macro flutter_rust_bridge.internal}
 class RustArcBase {
   /// {@macro flutter_rust_bridge.internal}
-  static void finalizerAttach(RustArcBase opaque, PlatformPointer ptr, int _,
+  static void finalizerAttach(RustArcBase object, PlatformPointer ptr, int _,
           ArcTypeFinalizer finalizer) =>
-      finalizer.attach(opaque, ptr, detach: opaque);
+      finalizer.attach(object, ptr, detach: object);
 }
