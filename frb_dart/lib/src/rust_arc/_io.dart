@@ -1,10 +1,10 @@
 import 'dart:ffi' as ffi;
 
-// TODO rename to RustArc.*
+// TODO rename to CrossPlatformFinalizer
 /// {@macro flutter_rust_bridge.internal}
 typedef ArcTypeFinalizer = ffi.NativeFinalizer;
 
-// TODO rename to RustArc.*
+// TODO rename to CrossPlatformFinalizerArg
 /// {@macro flutter_rust_bridge.internal}
 typedef ArcTypeFinalizerArg = ffi.Pointer<ffi.NativeFinalizerFunction>;
 
