@@ -74,7 +74,8 @@ Future<FrbOpaqueReturn> frbGeneratorTestTwinNormal({dynamic hint}) =>
 
 @sealed
 class BoxDartDebugTwinNormal extends RustOpaque {
-  BoxDartDebugTwinNormal.fromWire(dynamic wire) : super.fromWire(wire);
+  BoxDartDebugTwinNormal.fromWire(dynamic wire)
+      : super.fromWire(wire, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib

@@ -65,7 +65,8 @@ FrbOpaqueReturn frbGeneratorTestTwinSync({dynamic hint}) =>
 
 @sealed
 class BoxDartDebugTwinSync extends RustOpaque {
-  BoxDartDebugTwinSync.fromWire(dynamic wire) : super.fromWire(wire);
+  BoxDartDebugTwinSync.fromWire(dynamic wire)
+      : super.fromWire(wire, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib

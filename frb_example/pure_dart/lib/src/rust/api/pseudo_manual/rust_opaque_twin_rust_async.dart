@@ -77,7 +77,7 @@ Future<FrbOpaqueReturn> frbGeneratorTestTwinRustAsync({dynamic hint}) =>
 
 @sealed
 class MutexHideData extends RustOpaque {
-  MutexHideData.fromWire(dynamic wire) : super.fromWire(wire);
+  MutexHideData.fromWire(dynamic wire) : super.fromWire(wire, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -91,7 +91,7 @@ class MutexHideData extends RustOpaque {
 
 @sealed
 class RwLockHideData extends RustOpaque {
-  RwLockHideData.fromWire(dynamic wire) : super.fromWire(wire);
+  RwLockHideData.fromWire(dynamic wire) : super.fromWire(wire, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -105,7 +105,8 @@ class RwLockHideData extends RustOpaque {
 
 @sealed
 class BoxDartDebugTwinRustAsync extends RustOpaque {
-  BoxDartDebugTwinRustAsync.fromWire(dynamic wire) : super.fromWire(wire);
+  BoxDartDebugTwinRustAsync.fromWire(dynamic wire)
+      : super.fromWire(wire, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib
@@ -119,7 +120,7 @@ class BoxDartDebugTwinRustAsync extends RustOpaque {
 
 @sealed
 class FrbOpaqueReturn extends RustOpaque {
-  FrbOpaqueReturn.fromWire(dynamic wire) : super.fromWire(wire);
+  FrbOpaqueReturn.fromWire(dynamic wire) : super.fromWire(wire, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -133,7 +134,7 @@ class FrbOpaqueReturn extends RustOpaque {
 
 @sealed
 class HideData extends RustOpaque {
-  HideData.fromWire(dynamic wire) : super.fromWire(wire);
+  HideData.fromWire(dynamic wire) : super.fromWire(wire, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -157,7 +158,7 @@ class HideDataArray2 extends NonGrowableListView<HideData> {
 
 @sealed
 class I32 extends RustOpaque {
-  I32.fromWire(dynamic wire) : super.fromWire(wire);
+  I32.fromWire(dynamic wire) : super.fromWire(wire, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -171,7 +172,7 @@ class I32 extends RustOpaque {
 
 @sealed
 class NonCloneData extends RustOpaque {
-  NonCloneData.fromWire(dynamic wire) : super.fromWire(wire);
+  NonCloneData.fromWire(dynamic wire) : super.fromWire(wire, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -185,7 +186,7 @@ class NonCloneData extends RustOpaque {
 
 @sealed
 class NonSendHideData extends RustOpaque {
-  NonSendHideData.fromWire(dynamic wire) : super.fromWire(wire);
+  NonSendHideData.fromWire(dynamic wire) : super.fromWire(wire, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:

@@ -31,7 +31,8 @@ FrbOpaqueSyncReturn frbSyncGeneratorTestTwinNormal({dynamic hint}) =>
 
 @sealed
 class FrbOpaqueSyncReturn extends RustOpaque {
-  FrbOpaqueSyncReturn.fromWire(dynamic wire) : super.fromWire(wire);
+  FrbOpaqueSyncReturn.fromWire(dynamic wire)
+      : super.fromWire(wire, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib
