@@ -16,13 +16,16 @@ impl<'a> EnumRefApiDartGenerator<'a> {
             .collect_vec()
             .join("\n");
 
+        let enum_name = &self.ir.ident.0.name;
+
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),
+            class_name: enum_name.clone(),
             code: format!(
                 "{}enum {} {{
                     {}
                 }}",
-                comments, self.ir.ident.0.name, variants
+                comments, enum_name, variants
             ),
             needs_freezed: false,
             ..Default::default()

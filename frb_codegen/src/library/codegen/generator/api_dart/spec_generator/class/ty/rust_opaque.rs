@@ -33,6 +33,7 @@ pub(super) fn generalized_rust_opaque_generate_class(
 
     ApiDartGeneratedClass {
         namespace,
+        class_name: dart_api_type.clone(),
         code: format!(
             "
             // Rust type: {rust_api_type}
