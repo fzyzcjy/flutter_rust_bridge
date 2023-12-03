@@ -4,6 +4,7 @@ pub(crate) mod delegate;
 pub(crate) mod dynamic;
 pub(crate) mod enumeration;
 pub(crate) mod general_list;
+mod modifier;
 pub(crate) mod optional;
 pub(crate) mod optional_list;
 pub(crate) mod primitive;
@@ -34,6 +35,7 @@ pub enum IrType {
     Dynamic(dynamic::IrTypeDynamic),
     EnumRef(enumeration::IrTypeEnumRef),
     GeneralList(general_list::IrTypeGeneralList),
+    Modifier(optional::IrTypeModifier),
     Optional(optional::IrTypeOptional),
     OptionalList(optional_list::IrTypeOptionalList),
     Primitive(primitive::IrTypePrimitive),
@@ -130,6 +132,7 @@ impl Serialize for IrType {
             IrType::Dynamic(inner) => ser::<S, _>(&mut state, "Dynamic", inner),
             IrType::EnumRef(inner) => ser::<S, _>(&mut state, "EnumRef", inner),
             IrType::GeneralList(inner) => ser::<S, _>(&mut state, "GeneralList", inner),
+            IrType::Modifier(inner) => ser::<S, _>(&mut state, "Modifier", inner),
             IrType::Optional(inner) => ser::<S, _>(&mut state, "Optional", inner),
             IrType::OptionalList(inner) => ser::<S, _>(&mut state, "OptionalList", inner),
             IrType::Primitive(inner) => ser::<S, _>(&mut state, "Primitive", inner),
@@ -159,14 +162,4 @@ impl IrContext for IrPack {
     fn enum_pool(&self) -> &IrEnumPool {
         &self.enum_pool
     }
-}
-
-#[derive(Debug, Clone, Hash, Eq, PartialEq, Serialize)]
-pub enum IrTypeModifier {
-    /// "T"
-    Owned,
-    /// "&T"
-    Ref,
-    /// "&mut T"
-    RefMut,
 }
