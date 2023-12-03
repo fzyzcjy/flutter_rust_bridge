@@ -39,3 +39,15 @@ class ExternalLibrary extends BaseExternalLibrary {
         debugInfo: 'by process()$debugInfo',
       );
 }
+
+/// {@macro flutter_rust_bridge.internal}
+class PlatformPointerUtil {
+  /// {@macro flutter_rust_bridge.internal}
+  static PlatformPointer ptrFromInt(int ptr) => ffi.Pointer.fromAddress(ptr);
+
+  /// {@macro flutter_rust_bridge.internal}
+  static PlatformPointer nullPtr() => ffi.Pointer.fromAddress(0);
+
+  /// {@macro flutter_rust_bridge.internal}
+  static bool isNullPtr(PlatformPointer ptr) => ptr.address == 0;
+}

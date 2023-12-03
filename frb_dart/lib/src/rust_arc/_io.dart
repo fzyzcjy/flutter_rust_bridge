@@ -12,15 +12,3 @@ class RustArcBase implements ffi.Finalizable {
           ArcTypeFinalizer finalizer) =>
       finalizer.attach(opaque, ptr, detach: opaque, externalSize: size);
 }
-
-/// {@macro flutter_rust_bridge.internal}
-class PlatformPointerUtil {
-  /// {@macro flutter_rust_bridge.internal}
-  static PlatformPointer ptrFromInt(int ptr) => ffi.Pointer.fromAddress(ptr);
-
-  /// {@macro flutter_rust_bridge.internal}
-  static PlatformPointer nullPtr() => ffi.Pointer.fromAddress(0);
-
-  /// {@macro flutter_rust_bridge.internal}
-  static bool isNullPtr(PlatformPointer ptr) => ptr.address == 0;
-}
