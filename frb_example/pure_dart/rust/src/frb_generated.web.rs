@@ -3309,42 +3309,42 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<Mutex<HideData>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Mutex<HideData>> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<RwLock<HideData>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<RwLock<HideData>> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinNormal>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinNormal>> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsync>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsync>> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
 impl Wire2Api<[flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>; 2]>
@@ -3362,7 +3362,7 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<i32>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<i32> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData>>
@@ -3371,7 +3371,7 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::No
     fn wire2api(
         self,
     ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonSendHideData>>
@@ -3380,7 +3380,7 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::No
     fn wire2api(
         self,
     ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonSendHideData> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
 impl Wire2Api<String> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {

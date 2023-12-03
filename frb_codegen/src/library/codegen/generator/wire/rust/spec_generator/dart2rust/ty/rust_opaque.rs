@@ -25,14 +25,15 @@ impl<'a> WireRustGeneratorDart2RustTrait for RustOpaqueWireRustGenerator<'a> {
     fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
         Acc {
             io: Some(
-                "unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self.ptr) }".into(),
+                "unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self.ptr) }"
+                    .into(),
             ),
             ..Default::default()
         }
     }
 
     fn generate_impl_wire2api_jsvalue_body(&self) -> Option<Cow<str>> {
-        Some(r#"unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self) }"#.into())
+        Some(r#"unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }"#.into())
     }
 
     fn generate_impl_new_with_nullptr(&self) -> Option<WireRustOutputCode> {
