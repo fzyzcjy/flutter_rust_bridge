@@ -1,5 +1,5 @@
 use flutter_rust_bridge::{frb, DartSafe};
-use std::panic::AssertUnwindSafe;
+pub use std::panic::AssertUnwindSafe;
 
 // TODO auto determine it is opaque or not later
 #[frb(opaque)]
