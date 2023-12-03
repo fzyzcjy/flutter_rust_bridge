@@ -86,6 +86,7 @@ mod frb_keyword {
     syn::custom_keyword!(mirror);
     syn::custom_keyword!(non_final);
     syn::custom_keyword!(sync);
+    syn::custom_keyword!(opaque);
     syn::custom_keyword!(dart_metadata);
     syn::custom_keyword!(import);
 }
@@ -95,6 +96,7 @@ enum FrbAttribute {
     Mirror(FrbAttributeMirror),
     NonFinal,
     Sync,
+    Opaque,
     Metadata(NamedOption<frb_keyword::dart_metadata, FrbAttributeDartMetadata>),
     Default(FrbAttributeDefaultValue),
 }
@@ -115,6 +117,10 @@ impl Parse for OptionFrbAttribute {
             input
                 .parse::<frb_keyword::sync>()
                 .map(|_| FrbAttribute::Sync)?
+        } else if lookahead.peek(frb_keyword::opaque) {
+            input
+                .parse::<frb_keyword::opaque>()
+                .map(|_| FrbAttribute::Opaque)?
         } else if lookahead.peek(frb_keyword::dart_metadata) {
             input.parse().map(FrbAttribute::Metadata)?
         } else if lookahead.peek(Token![default]) {
