@@ -120,6 +120,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxFnStringStringPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString;
+
+  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_MutexHideDataPtr =>
           wire.rust_arc_decrement_strong_count_RustOpaque_MutexHideData;
 
@@ -146,10 +150,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxDartDebugTwinSyncPtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_BoxFnStringStringPtr =>
-          wire.rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringString;
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr => wire
@@ -5925,6 +5925,18 @@ class RustLibWire extends BaseWire {
   void wire_handle_uuids_twin_normal(NativePortType port_, Uint8List ids) =>
       wasmModule.wire_handle_uuids_twin_normal(port_, ids);
 
+  void rust_arc_increment_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(
+              ptr);
+
   void rust_arc_increment_strong_count_RustOpaque_MutexHideData(dynamic ptr) =>
       wasmModule.rust_arc_increment_strong_count_RustOpaque_MutexHideData(ptr);
 
@@ -5995,18 +6007,6 @@ class RustLibWire extends BaseWire {
           dynamic ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_box_dynFnStringString(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_box_dynFnStringString(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringString(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringString(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(
@@ -8155,6 +8155,14 @@ class RustLibWasmModule implements WasmModule {
   external void wire_handle_uuids_twin_normal(
       NativePortType port_, Uint8List ids);
 
+  external void
+      rust_arc_increment_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(
+          dynamic ptr);
+
   external void rust_arc_increment_strong_count_RustOpaque_MutexHideData(
       dynamic ptr);
 
@@ -8205,14 +8213,6 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_box_dynFnStringString(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringString(
           dynamic ptr);
 
   external void

@@ -41,6 +41,15 @@ impl Wire2Api<[flutter_rust_bridge::DartOpaque; 1]> for *mut wire_list_DartOpaqu
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
+impl Wire2Api<flutter_rust_bridge::RustOpaque<AssertUnwindSafe<Box<dyn Fn(String) -> String>>>>
+    for *const std::ffi::c_void
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<AssertUnwindSafe<Box<dyn Fn(String) -> String>>> {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
 impl Wire2Api<flutter_rust_bridge::RustOpaque<Mutex<HideData>>> for *const std::ffi::c_void {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Mutex<HideData>> {
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
@@ -83,13 +92,6 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>>>
     for *const std::ffi::c_void
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
-impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn Fn(String) -> String>>>
-    for *const std::ffi::c_void
-{
-    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn Fn(String) -> String>> {
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
@@ -14275,6 +14277,28 @@ pub extern "C" fn new_list_weekdays_twin_sync(len: i32) -> *mut wire_list_weekda
 }
 
 #[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            AssertUnwindSafe<Box<dyn Fn(String) -> String>>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            AssertUnwindSafe<Box<dyn Fn(String) -> String>>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
 pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_MutexHideData(
     ptr: *const std::ffi::c_void,
 ) {
@@ -14420,28 +14444,6 @@ pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwi
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
             Box<dyn DartDebugTwinSync>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_box_dynFnStringString(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            Box<dyn Fn(String) -> String>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringString(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            Box<dyn Fn(String) -> String>,
         >(ptr);
     }
 }

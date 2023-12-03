@@ -121,6 +121,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxFnStringStringPtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringStringPtr;
+
+  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_MutexHideDataPtr =>
           wire._rust_arc_decrement_strong_count_RustOpaque_MutexHideDataPtr;
 
@@ -147,10 +151,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxDartDebugTwinSyncPtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSyncPtr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_BoxFnStringStringPtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringStringPtr;
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr => wire
@@ -19569,6 +19569,38 @@ class RustLibWire implements BaseWire {
   late final _new_list_weekdays_twin_sync = _new_list_weekdays_twin_syncPtr
       .asFunction<ffi.Pointer<wire_list_weekdays_twin_sync> Function(int)>();
 
+  void
+      rust_arc_increment_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringStringPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_increment_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString');
+  late final _rust_arc_increment_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString =
+      _rust_arc_increment_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringStringPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringStringPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_decrement_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString');
+  late final _rust_arc_decrement_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString =
+      _rust_arc_decrement_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringStringPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
   void rust_arc_increment_strong_count_RustOpaque_MutexHideData(
     ffi.Pointer<ffi.Void> ptr,
   ) {
@@ -19779,36 +19811,6 @@ class RustLibWire implements BaseWire {
           'rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync');
   late final _rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync =
       _rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSyncPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void rust_arc_increment_strong_count_RustOpaque_box_dynFnStringString(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustOpaque_box_dynFnStringString(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustOpaque_box_dynFnStringStringPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_increment_strong_count_RustOpaque_box_dynFnStringString');
-  late final _rust_arc_increment_strong_count_RustOpaque_box_dynFnStringString =
-      _rust_arc_increment_strong_count_RustOpaque_box_dynFnStringStringPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringString(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringString(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringStringPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringString');
-  late final _rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringString =
-      _rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringStringPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void rust_arc_increment_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(

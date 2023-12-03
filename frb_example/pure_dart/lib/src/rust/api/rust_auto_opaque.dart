@@ -102,6 +102,21 @@ Future<StructWithGoodAndOpaqueFieldTwinNormal>
         RustLib.instance.api
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwn(hint: hint);
 
+// Rust type: flutter_rust_bridge::RustOpaque<AssertUnwindSafe < Box < dyn Fn (String) -> String > >>
+@sealed
+class BoxFnStringString extends RustOpaque {
+  BoxFnStringString.fromWire(dynamic wire) : super.fromWire(wire, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_BoxFnStringString,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_BoxFnStringString,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxFnStringStringPtr,
+  );
+}
+
 // Rust type: flutter_rust_bridge::RustOpaque<NonCloneSimpleTwinNormal>
 @sealed
 class NonCloneSimpleTwinNormal extends RustOpaque {
@@ -131,21 +146,6 @@ class StructWithGoodAndOpaqueFieldTwinNormal extends RustOpaque {
         .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormal,
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormalPtr,
-  );
-}
-
-// Rust type: flutter_rust_bridge::RustOpaque<Box<dyn Fn (String) -> String>>
-@sealed
-class BoxFnStringString extends RustOpaque {
-  BoxFnStringString.fromWire(dynamic wire) : super.fromWire(wire, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_BoxFnStringString,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_BoxFnStringString,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxFnStringStringPtr,
   );
 }
 

@@ -3306,6 +3306,15 @@ impl Wire2Api<[flutter_rust_bridge::DartOpaque; 1]>
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
+impl Wire2Api<flutter_rust_bridge::RustOpaque<AssertUnwindSafe<Box<dyn Fn(String) -> String>>>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<AssertUnwindSafe<Box<dyn Fn(String) -> String>>> {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
 impl Wire2Api<flutter_rust_bridge::RustOpaque<Mutex<HideData>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -3352,13 +3361,6 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
-impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn Fn(String) -> String>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn Fn(String) -> String>> {
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
@@ -9039,6 +9041,28 @@ pub fn wire_handle_uuids_twin_normal(
 }
 
 #[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            AssertUnwindSafe<Box<dyn Fn(String) -> String>>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            AssertUnwindSafe<Box<dyn Fn(String) -> String>>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_MutexHideData(ptr: *const std::ffi::c_void) {
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<Mutex<HideData>>(ptr);
@@ -9176,28 +9200,6 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync(
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
             Box<dyn DartDebugTwinSync>,
-        >(ptr);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_box_dynFnStringString(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            Box<dyn Fn(String) -> String>,
-        >(ptr);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringString(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            Box<dyn Fn(String) -> String>,
         >(ptr);
     }
 }

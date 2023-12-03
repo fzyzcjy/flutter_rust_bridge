@@ -7367,7 +7367,7 @@ fn wire_rust_auto_opaque_arg_own_and_return_own_impl(
 }
 fn wire_rust_auto_opaque_callable_arg_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn Fn(String) -> String>>>
+    arg: impl Wire2Api<flutter_rust_bridge::RustOpaque<AssertUnwindSafe<Box<dyn Fn(String) -> String>>>>
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
@@ -7389,21 +7389,22 @@ fn wire_rust_auto_opaque_callable_arg_impl(
 fn wire_rust_auto_opaque_callable_return_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, flutter_rust_bridge::RustOpaque<Box<dyn Fn(String) -> String>>, _>(
-            flutter_rust_bridge::for_generated::TaskInfo {
-                debug_name: "rust_auto_opaque_callable_return",
-                port: Some(port_),
-                mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-            },
-            move || {
-                move |context| {
-                    Result::<_, ()>::Ok(
-                        crate::api::rust_auto_opaque::rust_auto_opaque_callable_return(),
-                    )
-                }
-            },
-        )
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, flutter_rust_bridge::RustOpaque<
+        AssertUnwindSafe<Box<dyn Fn(String) -> String>>,
+    >, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "rust_auto_opaque_callable_return",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            move |context| {
+                Result::<_, ()>::Ok(
+                    crate::api::rust_auto_opaque::rust_auto_opaque_callable_return(),
+                )
+            }
+        },
+    )
 }
 fn wire_rust_auto_opaque_normal_and_opaque_arg_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
