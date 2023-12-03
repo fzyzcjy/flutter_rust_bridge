@@ -65,7 +65,7 @@ macro_rules! basic_code_impl {
     };
 }
 
-#[derive(Default, Clone, Debug, Serialize, Hash, PartialEq, Eq)]
+#[derive(Default, Clone, Debug, Serialize)]
 pub(crate) struct DartBasicHeaderCode {
     pub file_top: String,
     pub import: String,

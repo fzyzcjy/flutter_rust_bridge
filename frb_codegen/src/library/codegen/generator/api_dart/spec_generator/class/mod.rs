@@ -5,7 +5,7 @@ use serde::Serialize;
 pub(crate) mod field;
 pub(crate) mod ty;
 
-#[derive(Debug, Serialize, Default, Hash, PartialEq, Eq, Clone)]
+#[derive(Debug, Serialize, Default)]
 pub(crate) struct ApiDartGeneratedClass {
     pub(crate) header: DartBasicHeaderCode,
     pub(crate) namespace: Namespace,

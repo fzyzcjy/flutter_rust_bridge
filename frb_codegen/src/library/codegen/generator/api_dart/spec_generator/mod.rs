@@ -114,8 +114,6 @@ fn generate_item(
             classes
                 .iter()
                 .filter_map(|&ty| ApiDartGenerator::new(ty.clone(), context).generate_class())
-                // Remove the exactly same things (e.g. by RustAutoOpaque)
-                .unique()
                 .collect_vec()
         })
         .unwrap_or_default();
