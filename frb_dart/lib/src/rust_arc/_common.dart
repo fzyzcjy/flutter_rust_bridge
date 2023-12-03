@@ -103,7 +103,7 @@ abstract class RustArc extends _Droppable<PlatformPointer> {
 /// For example, all `std::sync::Arc<Apple>` objects should use one
 /// `RustArcTypeInfo` object, while all `std::sync::Arc<Orange>`
 /// objects should use another.
-class RustArcPerTypeData {
+class RustArcPerTypeData extends _DroppablePerTypeData<PlatformPointer> {
   // TODO rename: shareFn -> rust_arc_increment_strong_count
   // TODO comments
   /// Directly calls `std::sync::Arc::increment_strong_count(ptr)`
