@@ -1499,15 +1499,6 @@ typedef struct wire_feature_uuid_twin_sync {
   struct wire_list_prim_u_8 *many;
 } wire_feature_uuid_twin_sync;
 
-typedef struct wire_non_clone_simple_twin_normal {
-  int32_t inner;
-} wire_non_clone_simple_twin_normal;
-
-typedef struct wire_struct_with_good_and_opaque_field_twin_normal {
-  struct wire_list_prim_u_8 *good;
-  struct wire_non_clone_simple_twin_normal opaque;
-} wire_struct_with_good_and_opaque_field_twin_normal;
-
 typedef struct wire_EnumOpaqueTwinNormal_Struct {
   const void *field0;
 } wire_EnumOpaqueTwinNormal_Struct;
@@ -3012,46 +3003,20 @@ void wire_test_more_than_just_one_raw_string_struct_twin_normal(int64_t port_);
 
 void wire_test_raw_string_item_struct_twin_normal(int64_t port_);
 
-void wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow(int64_t port_,
-                                                              struct wire_non_clone_simple_twin_normal *that);
-
-void wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow(int64_t port_,
-                                                                  struct wire_non_clone_simple_twin_normal *that);
-
-void wire_NonCloneSimpleTwinNormal_instance_method_arg_own(int64_t port_,
-                                                           struct wire_non_clone_simple_twin_normal *that);
-
-void wire_NonCloneSimpleTwinNormal_instance_method_return_own(int64_t port_,
-                                                              struct wire_non_clone_simple_twin_normal *that);
-
-void wire_NonCloneSimpleTwinNormal_new(int64_t port_);
-
-void wire_NonCloneSimpleTwinNormal_new_custom_name(int64_t port_);
-
-void wire_NonCloneSimpleTwinNormal_static_method_arg_borrow(int64_t port_, const void *arg);
-
-void wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow(int64_t port_, const void *arg);
-
-void wire_NonCloneSimpleTwinNormal_static_method_arg_own(int64_t port_,
-                                                         struct wire_non_clone_simple_twin_normal *arg);
-
-void wire_NonCloneSimpleTwinNormal_static_method_return_own(int64_t port_);
-
 void wire_rust_auto_opaque_arg_borrow(int64_t port_, const void *arg);
 
 void wire_rust_auto_opaque_arg_mut_borrow(int64_t port_, const void *arg);
 
-void wire_rust_auto_opaque_arg_own(int64_t port_, struct wire_non_clone_simple_twin_normal *arg);
+void wire_rust_auto_opaque_arg_own(int64_t port_, const void *arg);
 
-void wire_rust_auto_opaque_arg_own_and_return_own(int64_t port_,
-                                                  struct wire_non_clone_simple_twin_normal *arg);
+void wire_rust_auto_opaque_arg_own_and_return_own(int64_t port_, const void *arg);
 
 void wire_rust_auto_opaque_callable_arg(int64_t port_, const void *arg);
 
 void wire_rust_auto_opaque_callable_return(int64_t port_);
 
 void wire_rust_auto_opaque_normal_and_opaque_arg(int64_t port_,
-                                                 struct wire_non_clone_simple_twin_normal *a,
+                                                 const void *a,
                                                  struct wire_list_prim_u_8 *b);
 
 void wire_rust_auto_opaque_plus_sign_arg(int64_t port_, const void *arg);
@@ -3067,7 +3032,7 @@ void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(int6
                                                                             const void *arg);
 
 void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(int64_t port_,
-                                                                     struct wire_struct_with_good_and_opaque_field_twin_normal *arg);
+                                                                     const void *arg);
 
 void wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own(int64_t port_);
 
@@ -3087,9 +3052,7 @@ void wire_rust_auto_opaque_trait_object_return_own_one(int64_t port_);
 
 void wire_rust_auto_opaque_trait_object_return_own_two(int64_t port_);
 
-void wire_rust_auto_opaque_two_args(int64_t port_,
-                                    struct wire_non_clone_simple_twin_normal *a,
-                                    struct wire_non_clone_simple_twin_normal *b);
+void wire_rust_auto_opaque_two_args(int64_t port_, const void *a, const void *b);
 
 void wire_create_array_opaque_enum_twin_normal(int64_t port_);
 
@@ -3395,8 +3358,6 @@ struct wire_new_type_int_twin_rust_async *new_box_autoadd_new_type_int_twin_rust
 
 struct wire_new_type_int_twin_sync *new_box_autoadd_new_type_int_twin_sync(void);
 
-struct wire_non_clone_simple_twin_normal *new_box_autoadd_non_clone_simple_twin_normal(void);
-
 struct wire_note_twin_normal *new_box_autoadd_note_twin_normal(void);
 
 struct wire_note_twin_rust_async *new_box_autoadd_note_twin_rust_async(void);
@@ -3438,8 +3399,6 @@ struct wire_struct_with_enum_twin_normal *new_box_autoadd_struct_with_enum_twin_
 struct wire_struct_with_enum_twin_rust_async *new_box_autoadd_struct_with_enum_twin_rust_async(void);
 
 struct wire_struct_with_enum_twin_sync *new_box_autoadd_struct_with_enum_twin_sync(void);
-
-struct wire_struct_with_good_and_opaque_field_twin_normal *new_box_autoadd_struct_with_good_and_opaque_field_twin_normal(void);
 
 struct wire_struct_with_one_field_twin_normal *new_box_autoadd_struct_with_one_field_twin_normal(void);
 
@@ -4073,7 +4032,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_new_type_int_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_new_type_int_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_new_type_int_twin_sync);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_non_clone_simple_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_note_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_note_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_note_twin_sync);
@@ -4095,7 +4053,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_enum_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_enum_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_enum_twin_sync);
-    dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_good_and_opaque_field_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_one_field_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_one_field_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_one_field_twin_sync);
@@ -4264,16 +4221,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_EventTwinNormal_as_string_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_EventTwinRustAsync_as_string_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_EventTwinSync_as_string_twin_sync);
-    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow);
-    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow);
-    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_instance_method_arg_own);
-    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_instance_method_return_own);
-    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_new);
-    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_new_custom_name);
-    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_static_method_arg_borrow);
-    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow);
-    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_static_method_arg_own);
-    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_static_method_return_own);
     dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinNormal_new_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinNormal_non_static_return_err_custom_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinNormal_non_static_return_ok_custom_error_twin_normal);

@@ -1306,14 +1306,6 @@ impl Wire2Api<crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntTw
         Wire2Api::<crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntTwinSync>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal>
-    for *mut wire_non_clone_simple_twin_normal
-{
-    fn wire2api(self) -> crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal {
-        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-        Wire2Api::<crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal>::wire2api(*wrap).into()
-    }
-}
 impl Wire2Api<crate::api::enumeration::NoteTwinNormal> for *mut wire_note_twin_normal {
     fn wire2api(self) -> crate::api::enumeration::NoteTwinNormal {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
@@ -1487,17 +1479,6 @@ impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnumT
     fn wire2api(self) -> crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnumTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         Wire2Api::<crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnumTwinSync>::wire2api(*wrap).into()
-    }
-}
-impl Wire2Api<crate::api::rust_auto_opaque::StructWithGoodAndOpaqueFieldTwinNormal>
-    for *mut wire_struct_with_good_and_opaque_field_twin_normal
-{
-    fn wire2api(self) -> crate::api::rust_auto_opaque::StructWithGoodAndOpaqueFieldTwinNormal {
-        let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-        Wire2Api::<crate::api::rust_auto_opaque::StructWithGoodAndOpaqueFieldTwinNormal>::wire2api(
-            *wrap,
-        )
-        .into()
     }
 }
 impl Wire2Api<crate::api::structure::StructWithOneFieldTwinNormal>
@@ -3652,15 +3633,6 @@ impl Wire2Api<crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntTw
         )
     }
 }
-impl Wire2Api<crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal>
-    for wire_non_clone_simple_twin_normal
-{
-    fn wire2api(self) -> crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal {
-        crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal {
-            inner: self.inner.wire2api(),
-        }
-    }
-}
 impl Wire2Api<crate::api::enumeration::NoteTwinNormal> for wire_note_twin_normal {
     fn wire2api(self) -> crate::api::enumeration::NoteTwinNormal {
         crate::api::enumeration::NoteTwinNormal {
@@ -3904,16 +3876,6 @@ impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnumT
         crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnumTwinSync {
             abc1: self.abc1.wire2api(),
             abc2: self.abc2.wire2api(),
-        }
-    }
-}
-impl Wire2Api<crate::api::rust_auto_opaque::StructWithGoodAndOpaqueFieldTwinNormal>
-    for wire_struct_with_good_and_opaque_field_twin_normal
-{
-    fn wire2api(self) -> crate::api::rust_auto_opaque::StructWithGoodAndOpaqueFieldTwinNormal {
-        crate::api::rust_auto_opaque::StructWithGoodAndOpaqueFieldTwinNormal {
-            good: self.good.wire2api(),
-            opaque: self.opaque.wire2api(),
         }
     }
 }
@@ -5931,12 +5893,6 @@ pub struct wire_new_type_int_twin_sync {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_non_clone_simple_twin_normal {
-    inner: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
 pub struct wire_note_twin_normal {
     day: *mut i32,
     body: *mut wire_list_prim_u_8,
@@ -6143,13 +6099,6 @@ pub struct wire_struct_with_enum_twin_rust_async {
 pub struct wire_struct_with_enum_twin_sync {
     abc1: wire_abc_twin_sync,
     abc2: wire_abc_twin_sync,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_struct_with_good_and_opaque_field_twin_normal {
-    good: *mut wire_list_prim_u_8,
-    opaque: wire_non_clone_simple_twin_normal,
 }
 
 #[repr(C)]
@@ -7608,18 +7557,6 @@ impl Default for wire_new_type_int_twin_sync {
         Self::new_with_null_ptr()
     }
 }
-impl NewWithNullPtr for wire_non_clone_simple_twin_normal {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            inner: Default::default(),
-        }
-    }
-}
-impl Default for wire_non_clone_simple_twin_normal {
-    fn default() -> Self {
-        Self::new_with_null_ptr()
-    }
-}
 impl NewWithNullPtr for wire_note_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -7926,19 +7863,6 @@ impl NewWithNullPtr for wire_struct_with_enum_twin_sync {
     }
 }
 impl Default for wire_struct_with_enum_twin_sync {
-    fn default() -> Self {
-        Self::new_with_null_ptr()
-    }
-}
-impl NewWithNullPtr for wire_struct_with_good_and_opaque_field_twin_normal {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            good: core::ptr::null_mut(),
-            opaque: Default::default(),
-        }
-    }
-}
-impl Default for wire_struct_with_good_and_opaque_field_twin_normal {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -12321,77 +12245,6 @@ pub extern "C" fn wire_test_raw_string_item_struct_twin_normal(port_: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow(
-    port_: i64,
-    that: *mut wire_non_clone_simple_twin_normal,
-) {
-    wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_impl(port_, that)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow(
-    port_: i64,
-    that: *mut wire_non_clone_simple_twin_normal,
-) {
-    wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_impl(port_, that)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_NonCloneSimpleTwinNormal_instance_method_arg_own(
-    port_: i64,
-    that: *mut wire_non_clone_simple_twin_normal,
-) {
-    wire_NonCloneSimpleTwinNormal_instance_method_arg_own_impl(port_, that)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_NonCloneSimpleTwinNormal_instance_method_return_own(
-    port_: i64,
-    that: *mut wire_non_clone_simple_twin_normal,
-) {
-    wire_NonCloneSimpleTwinNormal_instance_method_return_own_impl(port_, that)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_NonCloneSimpleTwinNormal_new(port_: i64) {
-    wire_NonCloneSimpleTwinNormal_new_impl(port_)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_NonCloneSimpleTwinNormal_new_custom_name(port_: i64) {
-    wire_NonCloneSimpleTwinNormal_new_custom_name_impl(port_)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_NonCloneSimpleTwinNormal_static_method_arg_borrow(
-    port_: i64,
-    arg: *const std::ffi::c_void,
-) {
-    wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_impl(port_, arg)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow(
-    port_: i64,
-    arg: *const std::ffi::c_void,
-) {
-    wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_impl(port_, arg)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_NonCloneSimpleTwinNormal_static_method_arg_own(
-    port_: i64,
-    arg: *mut wire_non_clone_simple_twin_normal,
-) {
-    wire_NonCloneSimpleTwinNormal_static_method_arg_own_impl(port_, arg)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_NonCloneSimpleTwinNormal_static_method_return_own(port_: i64) {
-    wire_NonCloneSimpleTwinNormal_static_method_return_own_impl(port_)
-}
-
-#[no_mangle]
 pub extern "C" fn wire_rust_auto_opaque_arg_borrow(port_: i64, arg: *const std::ffi::c_void) {
     wire_rust_auto_opaque_arg_borrow_impl(port_, arg)
 }
@@ -12402,17 +12255,14 @@ pub extern "C" fn wire_rust_auto_opaque_arg_mut_borrow(port_: i64, arg: *const s
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_auto_opaque_arg_own(
-    port_: i64,
-    arg: *mut wire_non_clone_simple_twin_normal,
-) {
+pub extern "C" fn wire_rust_auto_opaque_arg_own(port_: i64, arg: *const std::ffi::c_void) {
     wire_rust_auto_opaque_arg_own_impl(port_, arg)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_auto_opaque_arg_own_and_return_own(
     port_: i64,
-    arg: *mut wire_non_clone_simple_twin_normal,
+    arg: *const std::ffi::c_void,
 ) {
     wire_rust_auto_opaque_arg_own_and_return_own_impl(port_, arg)
 }
@@ -12430,7 +12280,7 @@ pub extern "C" fn wire_rust_auto_opaque_callable_return(port_: i64) {
 #[no_mangle]
 pub extern "C" fn wire_rust_auto_opaque_normal_and_opaque_arg(
     port_: i64,
-    a: *mut wire_non_clone_simple_twin_normal,
+    a: *const std::ffi::c_void,
     b: *mut wire_list_prim_u_8,
 ) {
     wire_rust_auto_opaque_normal_and_opaque_arg_impl(port_, a, b)
@@ -12470,7 +12320,7 @@ pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mu
 #[no_mangle]
 pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
     port_: i64,
-    arg: *mut wire_struct_with_good_and_opaque_field_twin_normal,
+    arg: *const std::ffi::c_void,
 ) {
     wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_impl(port_, arg)
 }
@@ -12520,8 +12370,8 @@ pub extern "C" fn wire_rust_auto_opaque_trait_object_return_own_two(port_: i64) 
 #[no_mangle]
 pub extern "C" fn wire_rust_auto_opaque_two_args(
     port_: i64,
-    a: *mut wire_non_clone_simple_twin_normal,
-    b: *mut wire_non_clone_simple_twin_normal,
+    a: *const std::ffi::c_void,
+    b: *const std::ffi::c_void,
 ) {
     wire_rust_auto_opaque_two_args_impl(port_, a, b)
 }
@@ -13514,14 +13364,6 @@ pub extern "C" fn new_box_autoadd_new_type_int_twin_sync() -> *mut wire_new_type
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_non_clone_simple_twin_normal(
-) -> *mut wire_non_clone_simple_twin_normal {
-    flutter_rust_bridge::for_generated::new_leak_box_ptr(
-        wire_non_clone_simple_twin_normal::new_with_null_ptr(),
-    )
-}
-
-#[no_mangle]
 pub extern "C" fn new_box_autoadd_note_twin_normal() -> *mut wire_note_twin_normal {
     flutter_rust_bridge::for_generated::new_leak_box_ptr(wire_note_twin_normal::new_with_null_ptr())
 }
@@ -13666,14 +13508,6 @@ pub extern "C" fn new_box_autoadd_struct_with_enum_twin_sync(
 ) -> *mut wire_struct_with_enum_twin_sync {
     flutter_rust_bridge::for_generated::new_leak_box_ptr(
         wire_struct_with_enum_twin_sync::new_with_null_ptr(),
-    )
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_autoadd_struct_with_good_and_opaque_field_twin_normal(
-) -> *mut wire_struct_with_good_and_opaque_field_twin_normal {
-    flutter_rust_bridge::for_generated::new_leak_box_ptr(
-        wire_struct_with_good_and_opaque_field_twin_normal::new_with_null_ptr(),
     )
 }
 

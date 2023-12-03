@@ -2307,24 +2307,6 @@ impl Wire2Api<crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntTw
         )
     }
 }
-impl Wire2Api<crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn wire2api(self) -> crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            1,
-            "Expected 1 elements, got {}",
-            self_.length()
-        );
-        crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal {
-            inner: self_.get(0).wire2api(),
-        }
-    }
-}
 impl Wire2Api<crate::api::enumeration::NoteTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -2797,25 +2779,6 @@ impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnumT
         crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnumTwinSync {
             abc1: self_.get(0).wire2api(),
             abc2: self_.get(1).wire2api(),
-        }
-    }
-}
-impl Wire2Api<crate::api::rust_auto_opaque::StructWithGoodAndOpaqueFieldTwinNormal>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn wire2api(self) -> crate::api::rust_auto_opaque::StructWithGoodAndOpaqueFieldTwinNormal {
-        let self_ = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        assert_eq!(
-            self_.length(),
-            2,
-            "Expected 2 elements, got {}",
-            self_.length()
-        );
-        crate::api::rust_auto_opaque::StructWithGoodAndOpaqueFieldTwinNormal {
-            good: self_.get(0).wire2api(),
-            opaque: self_.get(1).wire2api(),
         }
     }
 }
@@ -8598,81 +8561,6 @@ pub fn wire_test_raw_string_item_struct_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire_test_raw_string_item_struct_twin_normal_impl(port_)
-}
-
-#[wasm_bindgen]
-pub fn wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_impl(port_, that)
-}
-
-#[wasm_bindgen]
-pub fn wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_impl(port_, that)
-}
-
-#[wasm_bindgen]
-pub fn wire_NonCloneSimpleTwinNormal_instance_method_arg_own(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_NonCloneSimpleTwinNormal_instance_method_arg_own_impl(port_, that)
-}
-
-#[wasm_bindgen]
-pub fn wire_NonCloneSimpleTwinNormal_instance_method_return_own(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_NonCloneSimpleTwinNormal_instance_method_return_own_impl(port_, that)
-}
-
-#[wasm_bindgen]
-pub fn wire_NonCloneSimpleTwinNormal_new(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    wire_NonCloneSimpleTwinNormal_new_impl(port_)
-}
-
-#[wasm_bindgen]
-pub fn wire_NonCloneSimpleTwinNormal_new_custom_name(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-) {
-    wire_NonCloneSimpleTwinNormal_new_custom_name_impl(port_)
-}
-
-#[wasm_bindgen]
-pub fn wire_NonCloneSimpleTwinNormal_static_method_arg_borrow(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_NonCloneSimpleTwinNormal_static_method_arg_own(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_NonCloneSimpleTwinNormal_static_method_arg_own_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_NonCloneSimpleTwinNormal_static_method_return_own(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-) {
-    wire_NonCloneSimpleTwinNormal_static_method_return_own_impl(port_)
 }
 
 #[wasm_bindgen]

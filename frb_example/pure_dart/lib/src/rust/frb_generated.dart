@@ -1895,36 +1895,6 @@ abstract class RustLibApi extends BaseApi {
   Future<RawStringItemStructTwinNormal> testRawStringItemStructTwinNormal(
       {dynamic hint});
 
-  Future<void> nonCloneSimpleTwinNormalInstanceMethodArgBorrow(
-      {required NonCloneSimpleTwinNormal that, dynamic hint});
-
-  Future<void> nonCloneSimpleTwinNormalInstanceMethodArgMutBorrow(
-      {required NonCloneSimpleTwinNormal that, dynamic hint});
-
-  Future<void> nonCloneSimpleTwinNormalInstanceMethodArgOwn(
-      {required NonCloneSimpleTwinNormal that, dynamic hint});
-
-  Future<NonCloneSimpleTwinNormal>
-      nonCloneSimpleTwinNormalInstanceMethodReturnOwn(
-          {required NonCloneSimpleTwinNormal that, dynamic hint});
-
-  Future<NonCloneSimpleTwinNormal> nonCloneSimpleTwinNormalNew({dynamic hint});
-
-  Future<NonCloneSimpleTwinNormal> nonCloneSimpleTwinNormalNewCustomName(
-      {dynamic hint});
-
-  Future<void> nonCloneSimpleTwinNormalStaticMethodArgBorrow(
-      {required NonCloneSimpleTwinNormal arg, dynamic hint});
-
-  Future<void> nonCloneSimpleTwinNormalStaticMethodArgMutBorrow(
-      {required NonCloneSimpleTwinNormal arg, dynamic hint});
-
-  Future<void> nonCloneSimpleTwinNormalStaticMethodArgOwn(
-      {required NonCloneSimpleTwinNormal arg, dynamic hint});
-
-  Future<NonCloneSimpleTwinNormal>
-      nonCloneSimpleTwinNormalStaticMethodReturnOwn({dynamic hint});
-
   Future<void> rustAutoOpaqueArgBorrow(
       {required NonCloneSimpleTwinNormal arg, dynamic hint});
 
@@ -15545,229 +15515,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> nonCloneSimpleTwinNormalInstanceMethodArgBorrow(
-      {required NonCloneSimpleTwinNormal that, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_non_clone_simple_twin_normal(that);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow(
-              port_, arg0),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta: kNonCloneSimpleTwinNormalInstanceMethodArgBorrowConstMeta,
-      argValues: [that],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kNonCloneSimpleTwinNormalInstanceMethodArgBorrowConstMeta =>
-      const TaskConstMeta(
-        debugName: "NonCloneSimpleTwinNormal_instance_method_arg_borrow",
-        argNames: ["that"],
-      );
-
-  @override
-  Future<void> nonCloneSimpleTwinNormalInstanceMethodArgMutBorrow(
-      {required NonCloneSimpleTwinNormal that, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_non_clone_simple_twin_normal(that);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow(
-              port_, arg0),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta: kNonCloneSimpleTwinNormalInstanceMethodArgMutBorrowConstMeta,
-      argValues: [that],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kNonCloneSimpleTwinNormalInstanceMethodArgMutBorrowConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow",
-            argNames: ["that"],
-          );
-
-  @override
-  Future<void> nonCloneSimpleTwinNormalInstanceMethodArgOwn(
-      {required NonCloneSimpleTwinNormal that, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_non_clone_simple_twin_normal(that);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_NonCloneSimpleTwinNormal_instance_method_arg_own(port_, arg0),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta: kNonCloneSimpleTwinNormalInstanceMethodArgOwnConstMeta,
-      argValues: [that],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kNonCloneSimpleTwinNormalInstanceMethodArgOwnConstMeta =>
-      const TaskConstMeta(
-        debugName: "NonCloneSimpleTwinNormal_instance_method_arg_own",
-        argNames: ["that"],
-      );
-
-  @override
-  Future<NonCloneSimpleTwinNormal>
-      nonCloneSimpleTwinNormalInstanceMethodReturnOwn(
-          {required NonCloneSimpleTwinNormal that, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_non_clone_simple_twin_normal(that);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_NonCloneSimpleTwinNormal_instance_method_return_own(
-              port_, arg0),
-      parseSuccessData: _wire2api_non_clone_simple_twin_normal,
-      parseErrorData: null,
-      constMeta: kNonCloneSimpleTwinNormalInstanceMethodReturnOwnConstMeta,
-      argValues: [that],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kNonCloneSimpleTwinNormalInstanceMethodReturnOwnConstMeta =>
-      const TaskConstMeta(
-        debugName: "NonCloneSimpleTwinNormal_instance_method_return_own",
-        argNames: ["that"],
-      );
-
-  @override
-  Future<NonCloneSimpleTwinNormal> nonCloneSimpleTwinNormalNew({dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_NonCloneSimpleTwinNormal_new(port_),
-      parseSuccessData: _wire2api_non_clone_simple_twin_normal,
-      parseErrorData: null,
-      constMeta: kNonCloneSimpleTwinNormalNewConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kNonCloneSimpleTwinNormalNewConstMeta =>
-      const TaskConstMeta(
-        debugName: "NonCloneSimpleTwinNormal_new",
-        argNames: [],
-      );
-
-  @override
-  Future<NonCloneSimpleTwinNormal> nonCloneSimpleTwinNormalNewCustomName(
-      {dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_NonCloneSimpleTwinNormal_new_custom_name(port_),
-      parseSuccessData: _wire2api_non_clone_simple_twin_normal,
-      parseErrorData: null,
-      constMeta: kNonCloneSimpleTwinNormalNewCustomNameConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kNonCloneSimpleTwinNormalNewCustomNameConstMeta =>
-      const TaskConstMeta(
-        debugName: "NonCloneSimpleTwinNormal_new_custom_name",
-        argNames: [],
-      );
-
-  @override
-  Future<void> nonCloneSimpleTwinNormalStaticMethodArgBorrow(
-      {required NonCloneSimpleTwinNormal arg, dynamic hint}) {
-    var arg0 = api2wire_RustAutoOpaque_NonCloneSimpleTwinNormal(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_NonCloneSimpleTwinNormal_static_method_arg_borrow(port_, arg0),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta: kNonCloneSimpleTwinNormalStaticMethodArgBorrowConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kNonCloneSimpleTwinNormalStaticMethodArgBorrowConstMeta =>
-      const TaskConstMeta(
-        debugName: "NonCloneSimpleTwinNormal_static_method_arg_borrow",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<void> nonCloneSimpleTwinNormalStaticMethodArgMutBorrow(
-      {required NonCloneSimpleTwinNormal arg, dynamic hint}) {
-    var arg0 = api2wire_RustAutoOpaque_NonCloneSimpleTwinNormal(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow(
-              port_, arg0),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta: kNonCloneSimpleTwinNormalStaticMethodArgMutBorrowConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kNonCloneSimpleTwinNormalStaticMethodArgMutBorrowConstMeta =>
-          const TaskConstMeta(
-            debugName: "NonCloneSimpleTwinNormal_static_method_arg_mut_borrow",
-            argNames: ["arg"],
-          );
-
-  @override
-  Future<void> nonCloneSimpleTwinNormalStaticMethodArgOwn(
-      {required NonCloneSimpleTwinNormal arg, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_non_clone_simple_twin_normal(arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_NonCloneSimpleTwinNormal_static_method_arg_own(port_, arg0),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta: kNonCloneSimpleTwinNormalStaticMethodArgOwnConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kNonCloneSimpleTwinNormalStaticMethodArgOwnConstMeta =>
-      const TaskConstMeta(
-        debugName: "NonCloneSimpleTwinNormal_static_method_arg_own",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<NonCloneSimpleTwinNormal>
-      nonCloneSimpleTwinNormalStaticMethodReturnOwn({dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_NonCloneSimpleTwinNormal_static_method_return_own(port_),
-      parseSuccessData: _wire2api_non_clone_simple_twin_normal,
-      parseErrorData: null,
-      constMeta: kNonCloneSimpleTwinNormalStaticMethodReturnOwnConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kNonCloneSimpleTwinNormalStaticMethodReturnOwnConstMeta =>
-      const TaskConstMeta(
-        debugName: "NonCloneSimpleTwinNormal_static_method_return_own",
-        argNames: [],
-      );
-
-  @override
   Future<void> rustAutoOpaqueArgBorrow(
       {required NonCloneSimpleTwinNormal arg, dynamic hint}) {
     var arg0 = api2wire_RustAutoOpaque_NonCloneSimpleTwinNormal(arg);
@@ -15811,7 +15558,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> rustAutoOpaqueArgOwn(
       {required NonCloneSimpleTwinNormal arg, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_non_clone_simple_twin_normal(arg);
+    var arg0 = api2wire_RustAutoOpaque_NonCloneSimpleTwinNormal(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_rust_auto_opaque_arg_own(port_, arg0),
       parseSuccessData: _wire2api_unit,
@@ -15831,11 +15578,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<NonCloneSimpleTwinNormal> rustAutoOpaqueArgOwnAndReturnOwn(
       {required NonCloneSimpleTwinNormal arg, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_non_clone_simple_twin_normal(arg);
+    var arg0 = api2wire_RustAutoOpaque_NonCloneSimpleTwinNormal(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
           wire.wire_rust_auto_opaque_arg_own_and_return_own(port_, arg0),
-      parseSuccessData: _wire2api_non_clone_simple_twin_normal,
+      parseSuccessData: _wire2api_RustAutoOpaque_NonCloneSimpleTwinNormal,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueArgOwnAndReturnOwnConstMeta,
       argValues: [arg],
@@ -15892,7 +15639,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> rustAutoOpaqueNormalAndOpaqueArg(
       {required NonCloneSimpleTwinNormal a, required String b, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_non_clone_simple_twin_normal(a);
+    var arg0 = api2wire_RustAutoOpaque_NonCloneSimpleTwinNormal(a);
     var arg1 = api2wire_String(b);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
@@ -15956,7 +15703,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<NonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwn({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_rust_auto_opaque_return_own(port_),
-      parseSuccessData: _wire2api_non_clone_simple_twin_normal,
+      parseSuccessData: _wire2api_RustAutoOpaque_NonCloneSimpleTwinNormal,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueReturnOwnConstMeta,
       argValues: [],
@@ -16027,7 +15774,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwn(
       {required StructWithGoodAndOpaqueFieldTwinNormal arg, dynamic hint}) {
     var arg0 =
-        api2wire_box_autoadd_struct_with_good_and_opaque_field_twin_normal(arg);
+        api2wire_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
           wire.wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
@@ -16056,7 +15803,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) => wire
           .wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own(
               port_),
-      parseSuccessData: _wire2api_struct_with_good_and_opaque_field_twin_normal,
+      parseSuccessData:
+          _wire2api_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnConstMeta,
       argValues: [],
@@ -16195,8 +15943,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required NonCloneSimpleTwinNormal a,
       required NonCloneSimpleTwinNormal b,
       dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_non_clone_simple_twin_normal(a);
-    var arg1 = api2wire_box_autoadd_non_clone_simple_twin_normal(b);
+    var arg0 = api2wire_RustAutoOpaque_NonCloneSimpleTwinNormal(a);
+    var arg1 = api2wire_RustAutoOpaque_NonCloneSimpleTwinNormal(b);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
           wire.wire_rust_auto_opaque_two_args(port_, arg0, arg1),
@@ -17283,6 +17031,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   ObjectArray1 _wire2api_DartOpaque_array_1(dynamic raw) {
     return ObjectArray1(
         (raw as List<dynamic>).map(_wire2api_DartOpaque).toList());
+  }
+
+  NonCloneSimpleTwinNormal _wire2api_RustAutoOpaque_NonCloneSimpleTwinNormal(
+      dynamic raw) {
+    return NonCloneSimpleTwinNormal.fromWire(raw);
+  }
+
+  StructWithGoodAndOpaqueFieldTwinNormal
+      _wire2api_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinNormal.fromWire(raw);
   }
 
   BoxFnStringString _wire2api_RustAutoOpaque_box_dynFnStringString(
@@ -19842,15 +19601,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
-  NonCloneSimpleTwinNormal _wire2api_non_clone_simple_twin_normal(dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 1)
-      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return NonCloneSimpleTwinNormal(
-      inner: _wire2api_i_32(arr[0]),
-    );
-  }
-
   Numbers _wire2api_numbers(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
@@ -20402,17 +20152,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return StructWithEnumTwinSync(
       abc1: _wire2api_abc_twin_sync(arr[0]),
       abc2: _wire2api_abc_twin_sync(arr[1]),
-    );
-  }
-
-  StructWithGoodAndOpaqueFieldTwinNormal
-      _wire2api_struct_with_good_and_opaque_field_twin_normal(dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 2)
-      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    return StructWithGoodAndOpaqueFieldTwinNormal(
-      good: _wire2api_String(arr[0]),
-      opaque: _wire2api_non_clone_simple_twin_normal(arr[1]),
     );
   }
 
