@@ -61,11 +61,6 @@ impl Wire2Api<Box<dyn Fn(String) -> String>> for *const std::ffi::c_void {
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
-impl Wire2Api<Box<dyn HelloTraitTwinNormal>> for *const std::ffi::c_void {
-    fn wire2api(self) -> Box<dyn HelloTraitTwinNormal> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
 impl Wire2Api<Box<dyn MyTraitTwinNormal + Send + Sync>> for *const std::ffi::c_void {
     fn wire2api(self) -> Box<dyn MyTraitTwinNormal + Send + Sync> {
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
