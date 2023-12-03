@@ -2,7 +2,7 @@ import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized
 import 'package:flutter_rust_bridge/src/main_components/api.dart';
 import 'package:flutter_rust_bridge/src/main_components/handler.dart';
 import 'package:flutter_rust_bridge/src/main_components/wire/wire.dart';
-import 'package:flutter_rust_bridge/src/opaque/opaque.dart';
+import 'package:flutter_rust_bridge/src/opaque/dart_opaque.dart';
 import 'package:meta/meta.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}

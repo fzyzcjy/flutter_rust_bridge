@@ -5,7 +5,7 @@ import 'package:flutter_rust_bridge/src/main_components/api.dart';
 import 'package:flutter_rust_bridge/src/main_components/api_impl.dart';
 import 'package:flutter_rust_bridge/src/main_components/handler.dart';
 import 'package:flutter_rust_bridge/src/main_components/wire/wire.dart';
-import 'package:flutter_rust_bridge/src/opaque/opaque.dart';
+import 'package:flutter_rust_bridge/src/opaque/dart_opaque.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:meta/meta.dart';
 
