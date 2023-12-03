@@ -47,8 +47,8 @@ abstract class RustArc extends RustArcBase {
       var ptr = _ptr;
       _ptr = PlatformPointerUtil.nullPtr();
 
-      staticFinalizer.detach(this);
-      dropFn(ptr);
+      typeInfo.finalizer.detach(this);
+      typeInfo.rustArcDecrementStrongCount(ptr);
     }
   }
 
