@@ -18,17 +18,6 @@ use itertools::Itertools;
 use std::borrow::Cow;
 
 impl<'a> WireRustGeneratorDart2RustTrait for RustAutoOpaqueWireRustGenerator<'a> {
-    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
-        Acc {
-            io: Some(generalized_rust_opaque_generate_impl_wire2api_body().into()),
-            ..Default::default()
-        }
-    }
-
-    fn generate_impl_wire2api_jsvalue_body(&self) -> Option<Cow<str>> {
-        Some(generalized_rust_opaque_generate_impl_wire2api_body().into())
-    }
-
     fn rust_wire_type(&self, target: Target) -> String {
         generalized_rust_opaque_rust_wire_type(target)
     }
