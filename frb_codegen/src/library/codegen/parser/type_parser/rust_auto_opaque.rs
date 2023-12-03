@@ -23,7 +23,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                     // skip subtrees inside RustOpaque
                     matches!(ty, IrType::RustOpaque(_))
                 },
-                self.type_parser,
+                self,
             );
             gatherer.gather()
         };
