@@ -21,6 +21,8 @@ abstract class Droppable implements DroppableBase {
   @protected
   PlatformPointer dangerousReadInternalPtr() =>
       _ptr ?? (throw DroppableDisposedException('$runtimeType'));
+
+  /// null := already disposed
   PlatformPointer? _ptr;
 
   /// {@macro flutter_rust_bridge.internal}
