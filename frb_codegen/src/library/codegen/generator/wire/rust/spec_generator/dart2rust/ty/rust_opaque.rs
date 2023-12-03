@@ -11,6 +11,7 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::ir::ty::IrTypeTrait;
+use itertools::Itertools;
 use std::borrow::Cow;
 
 impl<'a> WireRustGeneratorDart2RustTrait for RustOpaqueWireRustGenerator<'a> {
@@ -41,30 +42,23 @@ impl<'a> WireRustGeneratorDart2RustTrait for RustOpaqueWireRustGenerator<'a> {
         };
 
         let generate_impl = |target| -> WireRustOutputCode {
-            vec![
-                ExternFunc {
-                    func_name: format!("drop_opaque_{}", self.ir.safe_ident()),
-                    params: vec![param_ptr.clone()],
-                    return_type: None,
-                    body: format!(
-                        "unsafe {{ flutter_rust_bridge::for_generated::rust_opaque_arc_decr_count::<{}>(ptr); }}",
-                        self.ir.inner.rust_api_type()
-                    ),
-                    target,
-                },
-                ExternFunc {
-                    func_name: format!("share_opaque_{}", self.ir.safe_ident()),
-                    params: vec![param_ptr.clone()],
-                    return_type: Some("*const std::ffi::c_void".to_string()),
-                    body: format!(
-                        "unsafe {{ flutter_rust_bridge::for_generated::rust_opaque_arc_incr_count::<{}>(ptr) }}",
-                        self.ir.inner.rust_api_type()
-                    ),
-                    target,
-                },
-            ]
-            .into()
+            ["increment", "decrement"].into_iter()
+                .map(|op|
+                     ExternFunc {
+                         func_name: format!("rust_arc_{op}_strong_count_{}", self.ir.safe_ident()),
+                         params: vec![param_ptr.clone()],
+                         return_type: None,
+                         body: format!(
+                             "unsafe {{ flutter_rust_bridge::for_generated::rust_arc_{op}_strong_count::<{}>(ptr); }}",
+                             self.ir.inner.rust_api_type()
+                         ),
+                         target,
+                     },
+                )
+                .collect_vec()
+                .into()
         };
+
         Acc {
             io: generate_impl(Target::Io),
             wasm: generate_impl(Target::Wasm),
