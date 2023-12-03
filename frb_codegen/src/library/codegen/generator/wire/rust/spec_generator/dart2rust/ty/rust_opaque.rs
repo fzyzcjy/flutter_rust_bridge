@@ -3,7 +3,7 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::dart2rust::impl_new_with_nullptr::generate_impl_new_with_nullptr_code_block;
 use crate::codegen::generator::wire::rust::spec_generator::dart2rust::misc::{
-    generate_class_from_fields, rust_wire_type_add_prefix_or_js_value,
+    generate_class_from_fields, rust_wire_type_add_prefix_or_js_value, JS_VALUE,
 };
 use crate::codegen::generator::wire::rust::spec_generator::dart2rust::ty::WireRustGeneratorDart2RustTrait;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
@@ -24,47 +24,13 @@ impl<'a> WireRustGeneratorDart2RustTrait for RustOpaqueWireRustGenerator<'a> {
 
     fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
         Acc {
-            io: Some(
-                "unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self.ptr) }"
-                    .into(),
-            ),
+            io: Some(generate_impl_wire2api_body().into()),
             ..Default::default()
         }
     }
 
     fn generate_impl_wire2api_jsvalue_body(&self) -> Option<Cow<str>> {
-        Some(r#"unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }"#.into())
-    }
-
-    fn generate_impl_new_with_nullptr(&self) -> Option<WireRustOutputCode> {
-        Some(
-            generate_impl_new_with_nullptr_code_block(
-                self.ir.clone(),
-                self.context,
-                "Self { ptr: core::ptr::null() }",
-                false,
-            )
-            .into(),
-        )
-    }
-
-    fn generate_allocate_funcs(&self) -> Acc<WireRustOutputCode> {
-        let rust_wire = self.rust_wire_type(Target::Io);
-
-        Acc {
-            io: ExternFunc {
-                func_name: format!("new_{}", self.ir.safe_ident()),
-                params: vec![],
-                return_type: Some(format!(
-                    "{}{rust_wire}",
-                    self.rust_wire_modifier(Target::Io),
-                )),
-                body: format!("{rust_wire}::new_with_null_ptr()"),
-                target: Target::Io,
-            }
-            .into(),
-            ..Default::default()
-        }
+        Some(generate_impl_wire2api_body().into())
     }
 
     fn generate_related_funcs(&self) -> Acc<WireRustOutputCode> {
@@ -107,6 +73,14 @@ impl<'a> WireRustGeneratorDart2RustTrait for RustOpaqueWireRustGenerator<'a> {
     }
 
     fn rust_wire_type(&self, target: Target) -> String {
-        rust_wire_type_add_prefix_or_js_value(&self.ir, target)
+        match target {
+            Target::Io => "*const std::ffi::c_void",
+            Target::Wasm => JS_VALUE,
+        }
+        .into()
     }
+}
+
+fn generate_impl_wire2api_body() -> &'static str {
+    r#"unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }"#
 }
