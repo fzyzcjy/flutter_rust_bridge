@@ -2,7 +2,8 @@ import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:meta/meta.dart';
 
 // TODO this should be Finalizable as well?
-/// An opaque pointer to a native C or Rust type.
+// TODO comments
+/// An opaque pointer to a native Rust type.
 /// Recipients of this type should call [dispose] at least once during runtime.
 /// If passed to a native function after being [dispose]d, an exception will be thrown.
 abstract class RustOpaque extends RustOpaqueBase {
