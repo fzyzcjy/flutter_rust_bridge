@@ -9,7 +9,9 @@ use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::library::codegen::ir::ty::IrTypeTrait;
+use quote::ToTokens;
 use std::collections::HashMap;
+use syn::Type;
 use IrType::RustAutoOpaque;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
@@ -50,8 +52,21 @@ pub(super) type RustAutoOpaqueParserInfo = SimpleParsedTypesParserInfo<IrTypeRus
 
 fn parse_ir_type_modifier(ty: &IrType) -> (IrTypeModifier, IrType) {
     if let IrType::Unencodable(IrTypeUnencodable { string, .. }) = ty {
-        let ast: syn::Type = syn::parse_str(string).unwrap();
-        (TODO, TODO)
+        let ast: Type = syn::parse_str(string).unwrap();
+        if let Type::Reference(r) = &ast {
+            let modifier = if r.mutability.is_some() {
+                IrTypeModifier::RefMut
+            } else {
+                IrTypeModifier::Ref
+            };
+
+            let ty_without_modifier = IrType::Unencodable(IrTypeUnencodable {
+                string: r.elem.to_token_stream().to_string(),
+                segments: vec![],
+            });
+
+            return (modifier, ty_without_modifier);
+        }
     }
 
     (IrTypeModifier::Owned, ty.clone())
