@@ -1,7 +1,5 @@
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
-import 'package:flutter_rust_bridge/src/opaque/_io.dart'
-    if (dart.library.html) '_web.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:flutter_rust_bridge/src/utils/port_generator.dart';
 import 'package:meta/meta.dart';
