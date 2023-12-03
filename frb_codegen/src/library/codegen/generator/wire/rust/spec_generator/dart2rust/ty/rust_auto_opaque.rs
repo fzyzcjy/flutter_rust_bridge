@@ -31,7 +31,7 @@ impl<'a> WireRustGeneratorDart2RustTrait for RustAutoOpaqueWireRustGenerator<'a>
     }
 
     fn generate_related_funcs(&self) -> Acc<WireRustOutputCode> {
-        generate_rust_arc_functions(self.ir.clone().into())
+        generate_rust_arc_functions(self.ir.clone().into(), &*self.ir.inner)
     }
 
     fn rust_wire_type(&self, target: Target) -> String {

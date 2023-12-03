@@ -6,6 +6,9 @@ use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDart
 
 impl<'a> WireDartGeneratorMiscTrait for RustAutoOpaqueWireDartGenerator<'a> {
     fn generate_extra_functions(&self) -> Option<Acc<WireDartOutputCode>> {
-        Some(generate_rust_arc_functions(self.ir.into(), self.context))
+        Some(generate_rust_arc_functions(
+            self.ir.clone().into(),
+            self.context,
+        ))
     }
 }

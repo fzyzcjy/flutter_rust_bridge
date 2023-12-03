@@ -11,18 +11,21 @@ use convert_case::{Case, Casing};
 
 impl<'a> WireDartGeneratorMiscTrait for RustOpaqueWireDartGenerator<'a> {
     fn generate_extra_functions(&self) -> Option<Acc<WireDartOutputCode>> {
-        Some(generate_rust_arc_functions(self.ir.into(), self.context))
+        Some(generate_rust_arc_functions(
+            self.ir.clone().into(),
+            self.context,
+        ))
     }
 }
 
 pub(super) fn generate_rust_arc_functions(
-    ir: &IrType,
+    ir: IrType,
     context: WireDartGeneratorContext,
 ) -> Acc<WireDartOutputCode> {
     vec![
-        generate_rust_arc_modify_strong_count("increment", ir, context),
-        generate_rust_arc_modify_strong_count("decrement", ir, context),
-        generate_rust_arc_function_pointer(ir, context),
+        generate_rust_arc_modify_strong_count("increment", &ir, context),
+        generate_rust_arc_modify_strong_count("decrement", &ir, context),
+        generate_rust_arc_function_pointer(&ir, context),
     ]
     .into_iter()
     .collect::<Acc<Vec<WireDartOutputCode>>>()

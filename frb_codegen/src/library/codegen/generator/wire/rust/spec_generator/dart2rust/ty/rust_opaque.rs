@@ -27,7 +27,7 @@ impl<'a> WireRustGeneratorDart2RustTrait for RustOpaqueWireRustGenerator<'a> {
     }
 
     fn generate_related_funcs(&self) -> Acc<WireRustOutputCode> {
-        generate_rust_arc_functions(self.ir.clone().into())
+        generate_rust_arc_functions(self.ir.clone().into(), &*self.ir.inner)
     }
 
     fn rust_wire_type(&self, target: Target) -> String {
@@ -47,7 +47,7 @@ pub(super) fn generalized_rust_opaque_rust_wire_type(target: Target) -> String {
     .into()
 }
 
-pub(super) fn generate_rust_arc_functions(ir: IrType) -> Acc<WireRustOutputCode> {
+pub(super) fn generate_rust_arc_functions(ir: IrType, inner: &IrType) -> Acc<WireRustOutputCode> {
     let generate_impl = |target| -> WireRustOutputCode {
         ["increment", "decrement"].into_iter()
             .map(|op|
@@ -61,7 +61,7 @@ pub(super) fn generate_rust_arc_functions(ir: IrType) -> Acc<WireRustOutputCode>
                          return_type: None,
                          body: format!(
                              "unsafe {{ flutter_rust_bridge::for_generated::rust_arc_{op}_strong_count::<{}>(ptr); }}",
-                             ir.inner.rust_api_type()
+                             inner.rust_api_type()
                          ),
                          target,
                      },
