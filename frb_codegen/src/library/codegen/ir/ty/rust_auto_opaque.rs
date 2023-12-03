@@ -16,7 +16,7 @@ impl IrTypeTrait for IrTypeRustAutoOpaque {
         f: &mut F,
         ir_context: &impl IrContext,
     ) {
-        self.inner.visit_types(f, ir_context)
+        IrType::RustOpaque(self.inner.clone()).visit_types(f, ir_context)
     }
 
     fn safe_ident(&self) -> String {
