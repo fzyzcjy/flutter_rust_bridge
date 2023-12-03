@@ -1,3 +1,4 @@
+use crate::codegen::generator::api_dart::spec_generator::class::ty::rust_opaque::generalized_rust_opaque_generate_class;
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
 use crate::codegen::ir::ty::IrType::RustAutoOpaque;
@@ -6,19 +7,10 @@ use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartG
 
 impl<'a> ApiDartGeneratorClassTrait for RustAutoOpaqueApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
-        let dart_api_type =
-            ApiDartGenerator::new(RustAutoOpaque(self.ir.clone()), self.context).dart_api_type();
-
-        Some(ApiDartGeneratedClass {
-            namespace: self.ir.namespace.clone(),
-            code: format!(
-                "@sealed class {dart_api_type} extends RustAutoOpaque {{
-                    {dart_api_type}.fromWire(dynamic wire): super.fromWire(wire, _kStaticData);
-                    // TODO
-                }}"
-            ),
-            needs_freezed: false,
-            ..Default::default()
-        })
+        Some(generalized_rust_opaque_generate_class(
+            self.ir.clone().into(),
+            self.ir.namespace.clone(),
+            self.context,
+        ))
     }
 }
