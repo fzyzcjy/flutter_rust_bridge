@@ -1,21 +1,22 @@
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::IrPack;
+use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeModifier, IrTypeTrait};
 
 crate::ir! {
 pub struct IrTypeRustAutoOpaque {
-    pub namespace: Namespace,
     pub modifier: IrTypeModifier,
-    pub inner: Box<IrType>,
+    pub inner: IrTypeRustOpaque,
 }
 }
 
 impl IrTypeTrait for IrTypeRustAutoOpaque {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(
         &self,
-        _f: &mut F,
-        _ir_context: &impl IrContext,
+        f: &mut F,
+        ir_context: &impl IrContext,
     ) {
+        self.inner.visit_types(f, ir_context)
     }
 
     fn safe_ident(&self) -> String {
@@ -27,6 +28,6 @@ impl IrTypeTrait for IrTypeRustAutoOpaque {
     }
 
     fn self_namespace(&self) -> Option<Namespace> {
-        Some(self.namespace.clone())
+        Some(self.inner.namespace.clone())
     }
 }
