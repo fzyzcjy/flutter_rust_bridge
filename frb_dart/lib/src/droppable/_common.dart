@@ -65,14 +65,14 @@ class DroppablePerTypeData<T> {
   final void Function(T) _releaseFn;
 
   /// The function pointer for [_rustArcDecrementStrongCount] on native platform.
-  final ArcTypeFinalizerArg _releaseFnPtr;
+  final CrossPlatformFinalizerArg _releaseFnPtr;
 
-  late final _finalizer = ArcTypeFinalizer(_releaseFnPtr);
+  late final _finalizer = CrossPlatformFinalizer(_releaseFnPtr);
 
   /// Constructs the data
   DroppablePerTypeData({
     required void Function(T) releaseFn,
-    required ArcTypeFinalizerArg releaseFnPtr,
+    required CrossPlatformFinalizerArg releaseFnPtr,
   })  : _releaseFn = releaseFn,
         _releaseFnPtr = releaseFnPtr;
 }
