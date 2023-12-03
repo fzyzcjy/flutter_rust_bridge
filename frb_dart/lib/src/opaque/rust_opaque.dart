@@ -16,7 +16,7 @@ abstract class RustOpaque {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @internal
-  RustOpaque.fromWire(List<dynamic> wire)
+  RustOpaque.fromWire(List<dynamic> wire, RustArcStaticData staticData)
       : _arc = RustArc.fromRaw(
           ptr: wire[0],
           externalSizeOnNative: wire[1],
@@ -35,11 +35,7 @@ abstract class RustOpaque {
     final target = _move ? _arc : _arc.clone();
     return target.intoRaw() ?? PlatformPointerUtil.nullPtr();
   }
- 
+
   /// Dispose the underlying `Arc`.
   void dispose() => _arc.dispose();
-
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
-  @protected
-  RustArcStaticData get staticData;
 }

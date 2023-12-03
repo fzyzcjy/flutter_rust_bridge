@@ -18,7 +18,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
             namespace: self.ir.namespace.clone(),
             code: format!(
                 "@sealed class {dart_api_type} extends RustOpaque {{
-                    {dart_api_type}.fromWire(dynamic wire): super.fromWire(wire);
+                    {dart_api_type}.fromWire(dynamic wire): super.fromWire(wire, _kStaticData);
 
                     static final _kStaticData = RustArcStaticData(
                         rustArcIncrementStrongCount: {dart_api_instance}.rust_arc_increment_strong_count_{dart_api_type},
