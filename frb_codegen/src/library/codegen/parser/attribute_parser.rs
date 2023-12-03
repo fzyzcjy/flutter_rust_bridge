@@ -57,6 +57,10 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::Sync)
     }
 
+    pub(crate) fn opaque(&self) -> bool {
+        self.any_eq(&FrbAttribute::Opaque)
+    }
+
     fn any_eq(&self, target: &FrbAttribute) -> bool {
         self.0.iter().any(|item| item == target)
     }

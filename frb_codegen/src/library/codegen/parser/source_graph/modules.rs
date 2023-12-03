@@ -2,7 +2,7 @@ use derivative::Derivative;
 use quote::ToTokens;
 use serde::{Serialize, Serializer};
 use std::path::PathBuf;
-use syn::{Ident, ItemEnum, ItemStruct, Type};
+use syn::{Attribute, Ident, ItemEnum, ItemStruct, Type};
 
 #[derive(Clone, Debug, Serialize)]
 pub struct Module {
@@ -63,6 +63,8 @@ pub struct Enum(pub StructOrEnum<ItemEnum>);
 
 pub trait StructOrEnumWrapper<Item> {
     fn inner(&self) -> &StructOrEnum<Item>;
+
+    fn attrs(&self) -> &[Attribute];
 }
 
 macro_rules! struct_or_enum_wrapper {
@@ -70,6 +72,10 @@ macro_rules! struct_or_enum_wrapper {
         impl StructOrEnumWrapper<$item> for $name {
             fn inner(&self) -> &StructOrEnum<$item> {
                 &self.0
+            }
+
+            fn attrs(&self) -> &[Attribute] {
+                self.0.attrs
             }
         }
     };
