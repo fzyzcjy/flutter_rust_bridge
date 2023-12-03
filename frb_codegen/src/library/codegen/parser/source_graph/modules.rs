@@ -75,7 +75,7 @@ macro_rules! struct_or_enum_wrapper {
             }
 
             fn attrs(&self) -> &[Attribute] {
-                self.0.attrs
+                &self.0.src.attrs
             }
         }
     };
