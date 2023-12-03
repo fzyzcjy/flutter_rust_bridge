@@ -24,6 +24,7 @@ abstract class RustOpaque {
           staticData: staticData,
         );
 
+  // TODO change this semantics?
   /// Increments inner reference counter and returns pointer to the underlying
   /// Rust object.
   ///
@@ -32,15 +33,8 @@ abstract class RustOpaque {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @internal
   PlatformPointer shareOrMove() {
-    if (!isDisposed()) {
-      var ptr = shareFn(_ptr);
-      if (_move) {
-        dispose();
-      }
-      return ptr;
-    } else {
-      return PlatformPointerUtil.nullPtr();
-    }
+    final target = _move ? _arc : _arc.clone();
+    return target.intoRaw() ?? PlatformPointerUtil.nullPtr();
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
