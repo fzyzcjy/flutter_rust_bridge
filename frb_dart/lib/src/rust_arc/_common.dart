@@ -1,6 +1,5 @@
 import 'package:flutter_rust_bridge/src/droppable/droppable.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
-import 'package:meta/meta.dart';
 
 // ----- TODO this comment is originally at `dispose()`,
 //  but since `dispose` is in `Droppable`, the comments no longer apply there
@@ -21,29 +20,42 @@ import 'package:meta/meta.dart';
 /// The Rust `std::sync::Arc` on the Dart side.
 // Note: Use `extends`, instead of making the `_Droppable` a field,
 // in order to ensure the `ffi.Finalizable` works well.
-abstract class RustArc<T extends RustArc<T>> extends Droppable {
+class RustArc extends Droppable {
   /// The pointer that `std::sync::Arc::into_raw` gives.
   ///
   /// In other words, it is very similar to `std::sync::Arc.ptr`,
   /// but only with a small constant offset.
   PlatformPointer? get _ptr => super.dangerousReadInternalPtr();
 
+  /// See comments in [RustArcStaticData] for details.
+  final RustArcStaticData _staticData;
+
   /// Mimic `std::sync::Arc::from_raw`
-  RustArc.fromRaw({required int ptr, required super.externalSizeOnNative})
-      : super(ptr: ptrOrNullFromInt(ptr));
+  RustArc.fromRaw({
+    required int ptr,
+    required super.externalSizeOnNative,
+    required RustArcStaticData staticData,
+  })  : _staticData = staticData,
+        super(ptr: ptrOrNullFromInt(ptr));
 
   /// Mimic `std::sync::Arc::clone`
-  T clone() {
+  RustArc clone() {
     final ptr = _ptr;
     if (ptr == null) {
-      return selfConstructorFromRaw(
-          ptr: 0, externalSizeOnNative: externalSizeOnNative);
+      return RustArc.fromRaw(
+        ptr: 0,
+        externalSizeOnNative: externalSizeOnNative,
+        staticData: _staticData,
+      );
     }
 
-    staticData._rustArcIncrementStrongCount(ptr);
-    return selfConstructorFromRaw(
-        ptr: PlatformPointerUtil.ptrToInt(ptr),
-        externalSizeOnNative: externalSizeOnNative);
+    _staticData._rustArcIncrementStrongCount(ptr);
+
+    return RustArc.fromRaw(
+      ptr: PlatformPointerUtil.ptrToInt(ptr),
+      externalSizeOnNative: externalSizeOnNative,
+      staticData: _staticData,
+    );
   }
 
   /// Mimic `std::sync::Arc::into_raw`
@@ -54,15 +66,8 @@ abstract class RustArc<T extends RustArc<T>> extends Droppable {
     return ptr;
   }
 
-  /// See comments in [RustArcStaticData] for details.
   @override
-  @protected
-  RustArcStaticData get staticData;
-
-  /// Nothing but `RustArc.fromRaw`, but creates the concrete subtype.
-  @protected
-  T selfConstructorFromRaw(
-      {required int ptr, required int externalSizeOnNative});
+  DroppableStaticData get staticData => _staticData;
 }
 
 /// Should have exactly *one* instance per *type*.
