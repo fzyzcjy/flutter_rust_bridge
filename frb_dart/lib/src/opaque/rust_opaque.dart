@@ -31,4 +31,7 @@ abstract class RustOpaque {
 
   /// Dispose the underlying `Arc`.
   void dispose() => _arc.dispose();
+
+  /// Whether the underlying `Arc` is disposed.
+  bool get isDisposed => _arc.isDisposed;
 }

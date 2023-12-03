@@ -245,11 +245,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
         "lifetime: \"static str\" "
         "})");
-    expect(data.isStale(), isTrue);
+    expect(data.isDisposed, isTrue);
 
     var data2 = await createOpaqueTwinRustAsync();
     await expectLater(() => unwrapRustOpaqueTwinRustAsync(opaque: data2),
         throwsA(isA<AnyhowException>()));
-    expect(data2.isStale(), isFalse);
+    expect(data2.isDisposed, isFalse);
   });
 }
