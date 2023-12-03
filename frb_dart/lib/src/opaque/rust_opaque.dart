@@ -2,14 +2,13 @@ import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:flutter_rust_bridge/src/rust_arc/_common.dart';
 import 'package:meta/meta.dart';
 
-// TODO comments
-/// An opaque pointer to a native Rust type.
-/// Recipients of this type should call [dispose] at least once during runtime.
-/// If passed to a native function after being [dispose]d, an exception will be thrown.
+/// An opaque pointer to a native arbitrary Rust type.
+/// TODO: link to the doc talking about "dispose"/GC semantics
 abstract class RustOpaque {
   final RustArc _arc;
 
-  /// Displays the need to release ownership when sending to rust.
+  /// If true, when sending this object to Rust, the ownership of this object
+  /// will be released, mimicking the "move" semantics in Rust.
   bool _move = false;
 
   set move(bool move) => _move = move;

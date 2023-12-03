@@ -20013,50 +20013,50 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
 PlatformPointer api2wire_RustOpaque_MutexHideData(MutexHideData raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.shareOrMove();
+  return raw.api2wire();
 }
 
 PlatformPointer api2wire_RustOpaque_RwLockHideData(RwLockHideData raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.shareOrMove();
+  return raw.api2wire();
 }
 
 PlatformPointer api2wire_RustOpaque_box_dynDartDebugTwinNormal(
     BoxDartDebugTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.shareOrMove();
+  return raw.api2wire();
 }
 
 PlatformPointer api2wire_RustOpaque_box_dynDartDebugTwinRustAsync(
     BoxDartDebugTwinRustAsync raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.shareOrMove();
+  return raw.api2wire();
 }
 
 PlatformPointer api2wire_RustOpaque_box_dynDartDebugTwinSync(
     BoxDartDebugTwinSync raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.shareOrMove();
+  return raw.api2wire();
 }
 
 PlatformPointer api2wire_RustOpaque_hide_data(HideData raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.shareOrMove();
+  return raw.api2wire();
 }
 
 PlatformPointer api2wire_RustOpaque_i_32(I32 raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.shareOrMove();
+  return raw.api2wire();
 }
 
 PlatformPointer api2wire_RustOpaque_non_clone_data(NonCloneData raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.shareOrMove();
+  return raw.api2wire();
 }
 
 PlatformPointer api2wire_RustOpaque_non_send_hide_data(NonSendHideData raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.shareOrMove();
+  return raw.api2wire();
 }
 
 int api2wire_application_mode(ApplicationMode raw) {
