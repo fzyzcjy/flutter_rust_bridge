@@ -1904,12 +1904,14 @@ abstract class RustLibApi extends BaseApi {
   Future<void> nonCloneSimpleTwinNormalInstanceMethodArgOwn(
       {required NonCloneSimpleTwinNormal that, dynamic hint});
 
-  Future<Self> nonCloneSimpleTwinNormalInstanceMethodReturnOwn(
-      {required NonCloneSimpleTwinNormal that, dynamic hint});
+  Future<NonCloneSimpleTwinNormal>
+      nonCloneSimpleTwinNormalInstanceMethodReturnOwn(
+          {required NonCloneSimpleTwinNormal that, dynamic hint});
 
-  Future<Self> nonCloneSimpleTwinNormalNew({dynamic hint});
+  Future<NonCloneSimpleTwinNormal> nonCloneSimpleTwinNormalNew({dynamic hint});
 
-  Future<Self> nonCloneSimpleTwinNormalNewCustomName({dynamic hint});
+  Future<NonCloneSimpleTwinNormal> nonCloneSimpleTwinNormalNewCustomName(
+      {dynamic hint});
 
   Future<void> nonCloneSimpleTwinNormalStaticMethodArgBorrow(
       {required NonCloneSimpleTwinNormal arg, dynamic hint});
@@ -2123,12 +2125,6 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_NonCloneSimpleTwinNormalPtr;
-
-  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_Self;
-
-  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_Self;
-
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_SelfPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinNormal;
@@ -15646,14 +15642,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<Self> nonCloneSimpleTwinNormalInstanceMethodReturnOwn(
-      {required NonCloneSimpleTwinNormal that, dynamic hint}) {
+  Future<NonCloneSimpleTwinNormal>
+      nonCloneSimpleTwinNormalInstanceMethodReturnOwn(
+          {required NonCloneSimpleTwinNormal that, dynamic hint}) {
     var arg0 = api2wire_box_autoadd_non_clone_simple_twin_normal(that);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
           wire.wire_NonCloneSimpleTwinNormal_instance_method_return_own(
               port_, arg0),
-      parseSuccessData: _wire2api_RustAutoOpaque_Self,
+      parseSuccessData: _wire2api_non_clone_simple_twin_normal,
       parseErrorData: null,
       constMeta: kNonCloneSimpleTwinNormalInstanceMethodReturnOwnConstMeta,
       argValues: [that],
@@ -15669,10 +15666,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<Self> nonCloneSimpleTwinNormalNew({dynamic hint}) {
+  Future<NonCloneSimpleTwinNormal> nonCloneSimpleTwinNormalNew({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_NonCloneSimpleTwinNormal_new(port_),
-      parseSuccessData: _wire2api_RustAutoOpaque_Self,
+      parseSuccessData: _wire2api_non_clone_simple_twin_normal,
       parseErrorData: null,
       constMeta: kNonCloneSimpleTwinNormalNewConstMeta,
       argValues: [],
@@ -15688,11 +15685,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<Self> nonCloneSimpleTwinNormalNewCustomName({dynamic hint}) {
+  Future<NonCloneSimpleTwinNormal> nonCloneSimpleTwinNormalNewCustomName(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
           wire.wire_NonCloneSimpleTwinNormal_new_custom_name(port_),
-      parseSuccessData: _wire2api_RustAutoOpaque_Self,
+      parseSuccessData: _wire2api_non_clone_simple_twin_normal,
       parseErrorData: null,
       constMeta: kNonCloneSimpleTwinNormalNewCustomNameConstMeta,
       argValues: [],
@@ -17159,12 +17157,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get rust_arc_decrement_strong_count_NonCloneSimpleTwinNormal => wire
           .rust_arc_decrement_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal;
 
-  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_Self =>
-      wire.rust_arc_increment_strong_count_RustAutoOpaque_Self;
-
-  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_Self =>
-      wire.rust_arc_decrement_strong_count_RustAutoOpaque_Self;
-
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinNormal =>
           wire.rust_arc_increment_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal;
@@ -17342,10 +17334,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   ObjectArray1 _wire2api_DartOpaque_array_1(dynamic raw) {
     return ObjectArray1(
         (raw as List<dynamic>).map(_wire2api_DartOpaque).toList());
-  }
-
-  Self _wire2api_RustAutoOpaque_Self(dynamic raw) {
-    return Self.fromWire(raw);
   }
 
   BoxFnStringString _wire2api_RustAutoOpaque_box_dynFnStringString(

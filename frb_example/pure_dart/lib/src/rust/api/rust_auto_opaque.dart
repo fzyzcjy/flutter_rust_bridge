@@ -134,20 +134,6 @@ class NonCloneSimpleTwinNormal extends RustOpaque {
 }
 
 @sealed
-class Self extends RustOpaque {
-  Self.fromWire(dynamic wire) : super.fromWire(wire, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_Self,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_Self,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_SelfPtr,
-  );
-}
-
-@sealed
 class StructWithGoodAndOpaqueFieldTwinNormal extends RustOpaque {
   StructWithGoodAndOpaqueFieldTwinNormal.fromWire(dynamic wire)
       : super.fromWire(wire, _kStaticData);
@@ -273,17 +259,18 @@ class NonCloneSimpleTwinNormal {
         that: this,
       );
 
-  Future<Self> instanceMethodReturnOwn({dynamic hint}) =>
+  Future<NonCloneSimpleTwinNormal> instanceMethodReturnOwn({dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinNormalInstanceMethodReturnOwn(
         that: this,
       );
 
   /// unnamed constructor
-  static Future<Self> newNonCloneSimpleTwinNormal({dynamic hint}) =>
+  static Future<NonCloneSimpleTwinNormal> newNonCloneSimpleTwinNormal(
+          {dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinNormalNew(hint: hint);
 
   /// named constructor
-  static Future<Self> newCustomName({dynamic hint}) =>
+  static Future<NonCloneSimpleTwinNormal> newCustomName({dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinNormalNewCustomName(hint: hint);
 
   static Future<void> staticMethodArgBorrow(

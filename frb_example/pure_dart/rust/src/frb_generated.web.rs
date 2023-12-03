@@ -9223,20 +9223,6 @@ pub fn rust_arc_decrement_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal(
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustAutoOpaque_Self(ptr: *const std::ffi::c_void) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<Self>(ptr);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustAutoOpaque_Self(ptr: *const std::ffi::c_void) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<Self>(ptr);
-    }
-}
-
-#[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
     ptr: *const std::ffi::c_void,
 ) {

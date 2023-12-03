@@ -128,9 +128,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       get rust_arc_decrement_strong_count_NonCloneSimpleTwinNormalPtr => wire
           ._rust_arc_decrement_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormalPtr;
 
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_SelfPtr =>
-      wire._rust_arc_decrement_strong_count_RustAutoOpaque_SelfPtr;
-
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormalPtr =>
           wire._rust_arc_decrement_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormalPtr;
@@ -19927,36 +19924,6 @@ class RustLibWire implements BaseWire {
           'rust_arc_decrement_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal');
   late final _rust_arc_decrement_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal =
       _rust_arc_decrement_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormalPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void rust_arc_increment_strong_count_RustAutoOpaque_Self(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustAutoOpaque_Self(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustAutoOpaque_SelfPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_increment_strong_count_RustAutoOpaque_Self');
-  late final _rust_arc_increment_strong_count_RustAutoOpaque_Self =
-      _rust_arc_increment_strong_count_RustAutoOpaque_SelfPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void rust_arc_decrement_strong_count_RustAutoOpaque_Self(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustAutoOpaque_Self(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustAutoOpaque_SelfPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_decrement_strong_count_RustAutoOpaque_Self');
-  late final _rust_arc_decrement_strong_count_RustAutoOpaque_Self =
-      _rust_arc_decrement_strong_count_RustAutoOpaque_SelfPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void

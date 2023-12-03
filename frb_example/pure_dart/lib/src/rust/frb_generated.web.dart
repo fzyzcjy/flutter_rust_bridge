@@ -127,9 +127,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       get rust_arc_decrement_strong_count_NonCloneSimpleTwinNormalPtr => wire
           .rust_arc_decrement_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal;
 
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_SelfPtr =>
-      wire.rust_arc_decrement_strong_count_RustAutoOpaque_Self;
-
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormalPtr =>
           wire.rust_arc_decrement_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal;
@@ -6041,12 +6038,6 @@ class RustLibWire extends BaseWire {
           .rust_arc_decrement_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal(
               ptr);
 
-  void rust_arc_increment_strong_count_RustAutoOpaque_Self(dynamic ptr) =>
-      wasmModule.rust_arc_increment_strong_count_RustAutoOpaque_Self(ptr);
-
-  void rust_arc_decrement_strong_count_RustAutoOpaque_Self(dynamic ptr) =>
-      wasmModule.rust_arc_decrement_strong_count_RustAutoOpaque_Self(ptr);
-
   void rust_arc_increment_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
           dynamic ptr) =>
       wasmModule
@@ -8346,12 +8337,6 @@ class RustLibWasmModule implements WasmModule {
   external void
       rust_arc_decrement_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal(
           dynamic ptr);
-
-  external void rust_arc_increment_strong_count_RustAutoOpaque_Self(
-      dynamic ptr);
-
-  external void rust_arc_decrement_strong_count_RustAutoOpaque_Self(
-      dynamic ptr);
 
   external void
       rust_arc_increment_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(

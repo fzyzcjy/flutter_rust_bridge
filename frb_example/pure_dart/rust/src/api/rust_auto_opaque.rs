@@ -148,12 +148,12 @@ impl NonCloneSimpleTwinNormal {
 
 impl NonCloneSimpleTwinNormal {
     /// unnamed constructor
-    pub fn new() -> Self {
+    pub fn new() -> NonCloneSimpleTwinNormal {
         Self { inner: 42 }
     }
 
     /// named constructor
-    pub fn new_custom_name() -> Self {
+    pub fn new_custom_name() -> NonCloneSimpleTwinNormal {
         Self { inner: 42 }
     }
 
@@ -170,7 +170,7 @@ impl NonCloneSimpleTwinNormal {
         self.inner += 1;
     }
 
-    pub fn instance_method_return_own(&self) -> Self {
+    pub fn instance_method_return_own(&self) -> NonCloneSimpleTwinNormal {
         Self { inner: 42 }
     }
 }
