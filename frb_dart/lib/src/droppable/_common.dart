@@ -1,29 +1,32 @@
 import 'package:flutter_rust_bridge/src/droppable/_io.dart'
     if (dart.library.html) '_web.dart';
+import 'package:meta/meta.dart';
 
-/// Encapsulates the [_resource] release logic.
+/// Encapsulates the [resource] release logic.
 ///
 /// In Rust, it is simple to release some resource: Just implement `Drop` trait.
 /// However, there are two possible chances to release resource in Dart:
 /// 1. When the object is garbage collected, the Dart finalizer will call a callback you choose.
 /// 2. When the user explicitly calls `dispose()` function, you can do releasing job.
 ///
-/// But we want to release the [_resource] *once and exactly once*.
+/// But we want to release the [resource] *once and exactly once*.
 /// That's what this class does.
 ///
 /// You just implement the `releaseFn` (and `releaseFnPtr`), and this class
 /// ensures it is called exactly once.
 abstract class Droppable<T extends Object> implements DroppableBase {
-  T? get _resource => __resource;
-  T? __resource;
+  /// {@macro flutter_rust_bridge.internal}
+  @protected
+  T? get resource => _resource;
+  T? _resource;
 
   /// {@macro flutter_rust_bridge.internal}
-  Droppable(this.__resource, {required int size}) {
-    if (__resource != null) {
+  Droppable(this._resource, {required int size}) {
+    if (_resource != null) {
       // Note: The finalizer attaches to the `_ptr` at *current* time,
       // thus even if we assign `RustArc._ptr = something-new`, this finalizer
       // attachment will not be changed.
-      perTypeData._finalizer.attachCrossPlatform(this, __resource,
+      perTypeData._finalizer.attachCrossPlatform(this, _resource,
           detach: this, externalSizeOnNative: size);
     }
   }
@@ -39,8 +42,8 @@ abstract class Droppable<T extends Object> implements DroppableBase {
   /// ownership is fully transferred to Rust else this pointer is cleared.
   void dispose() {
     if (!isDisposed()) {
-      final resource = __resource;
-      __resource = null;
+      final resource = _resource;
+      _resource = null;
       assert(isDisposed());
 
       perTypeData._finalizer.detach(this);
@@ -52,9 +55,10 @@ abstract class Droppable<T extends Object> implements DroppableBase {
   /// Checks whether [dispose] has been called at any point during the lifetime
   /// of this pointer. This does not guarantee that the backing memory has
   /// actually been reclaimed.
-  bool isDisposed() => __resource == null;
+  bool isDisposed() => _resource == null;
 
   // TODO mention this should be static
+  @protected
   DroppablePerTypeData get perTypeData;
 }
 
