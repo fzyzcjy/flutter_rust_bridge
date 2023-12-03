@@ -18,7 +18,7 @@ impl<'a> WireDartGeneratorDart2RustTrait for GeneralListWireDartGenerator<'a> {
                 }}
                 return ans;
                 ",
-                if self.ir.inner.is_primitive() {
+                if self.ir.inner.is_primitive() || matches!(*self.ir.inner, IrType::RustOpaque(_)) {
                     // Handle primitive enums list.
                     // This is similar to `StringList` in
                     // `frb_codegen/src/generator/dart/ty_delegate.rs`

@@ -17,22 +17,24 @@ impl<'a> WireDartGeneratorDart2RustTrait for BoxedWireDartGenerator<'a> {
         let empty_struct = is_empty_struct(self);
 
         Acc {
-            io: Some(if self.ir.inner.is_primitive() {
-                format!("return wire.new_{ir_safe_ident}(api2wire_{inner_safe_ident}(raw));")
-            } else if self.ir.inner.is_array() {
-                format!("return api2wire_{inner_safe_ident}(raw);")
-            } else {
-                format!(
-                    "final ptr = wire.new_{ir_safe_ident}();
+            io: Some(
+                if self.ir.inner.is_primitive() || matches!(*self.ir.inner, IrType::RustOpaque(_)) {
+                    format!("return wire.new_{ir_safe_ident}(api2wire_{inner_safe_ident}(raw));")
+                } else if self.ir.inner.is_array() {
+                    format!("return api2wire_{inner_safe_ident}(raw);")
+                } else {
+                    format!(
+                        "final ptr = wire.new_{ir_safe_ident}();
                     {}
                     return ptr;",
-                    if empty_struct {
-                        "".to_owned()
-                    } else {
-                        format!("_api_fill_to_wire_{inner_safe_ident}(raw, ptr.ref);")
-                    }
-                )
-            }),
+                        if empty_struct {
+                            "".to_owned()
+                        } else {
+                            format!("_api_fill_to_wire_{inner_safe_ident}(raw, ptr.ref);")
+                        }
+                    )
+                },
+            ),
             wasm: Some(format!("return api2wire_{inner_safe_ident}(raw);")),
             ..Default::default()
         }
