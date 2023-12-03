@@ -14691,7 +14691,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinNormal_Struct() -> *mut EnumOpaqueTwinNo
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinNormalKind {
         Struct: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinNormal_Struct {
-                field0: Default::default(),
+                field0: core::ptr::null_mut(),
             },
         ),
     })
@@ -14702,7 +14702,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinNormal_Primitive() -> *mut EnumOpaqueTwi
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinNormalKind {
         Primitive: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinNormal_Primitive {
-                field0: Default::default(),
+                field0: core::ptr::null_mut(),
             },
         ),
     })
@@ -14713,7 +14713,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinNormal_TraitObj() -> *mut EnumOpaqueTwin
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinNormalKind {
         TraitObj: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinNormal_TraitObj {
-                field0: Default::default(),
+                field0: core::ptr::null_mut(),
             },
         ),
     })
@@ -14724,7 +14724,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinNormal_Mutex() -> *mut EnumOpaqueTwinNor
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinNormalKind {
         Mutex: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinNormal_Mutex {
-                field0: Default::default(),
+                field0: core::ptr::null_mut(),
             },
         ),
     })
@@ -14735,7 +14735,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinNormal_RwLock() -> *mut EnumOpaqueTwinNo
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinNormalKind {
         RwLock: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinNormal_RwLock {
-                field0: Default::default(),
+                field0: core::ptr::null_mut(),
             },
         ),
     })
@@ -14746,7 +14746,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinRustAsync_Struct() -> *mut EnumOpaqueTwi
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinRustAsyncKind {
         Struct: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinRustAsync_Struct {
-                field0: Default::default(),
+                field0: core::ptr::null_mut(),
             },
         ),
     })
@@ -14757,7 +14757,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinRustAsync_Primitive() -> *mut EnumOpaque
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinRustAsyncKind {
         Primitive: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinRustAsync_Primitive {
-                field0: Default::default(),
+                field0: core::ptr::null_mut(),
             },
         ),
     })
@@ -14768,7 +14768,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinRustAsync_TraitObj() -> *mut EnumOpaqueT
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinRustAsyncKind {
         TraitObj: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinRustAsync_TraitObj {
-                field0: Default::default(),
+                field0: core::ptr::null_mut(),
             },
         ),
     })
@@ -14779,7 +14779,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinRustAsync_Mutex() -> *mut EnumOpaqueTwin
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinRustAsyncKind {
         Mutex: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinRustAsync_Mutex {
-                field0: Default::default(),
+                field0: core::ptr::null_mut(),
             },
         ),
     })
@@ -14790,7 +14790,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinRustAsync_RwLock() -> *mut EnumOpaqueTwi
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinRustAsyncKind {
         RwLock: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinRustAsync_RwLock {
-                field0: Default::default(),
+                field0: core::ptr::null_mut(),
             },
         ),
     })
@@ -14801,7 +14801,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinSync_Struct() -> *mut EnumOpaqueTwinSync
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinSyncKind {
         Struct: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinSync_Struct {
-                field0: Default::default(),
+                field0: core::ptr::null_mut(),
             },
         ),
     })
@@ -14812,7 +14812,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinSync_Primitive() -> *mut EnumOpaqueTwinS
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinSyncKind {
         Primitive: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinSync_Primitive {
-                field0: Default::default(),
+                field0: core::ptr::null_mut(),
             },
         ),
     })
@@ -14823,7 +14823,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinSync_TraitObj() -> *mut EnumOpaqueTwinSy
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinSyncKind {
         TraitObj: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinSync_TraitObj {
-                field0: Default::default(),
+                field0: core::ptr::null_mut(),
             },
         ),
     })
@@ -14834,7 +14834,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinSync_Mutex() -> *mut EnumOpaqueTwinSyncK
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinSyncKind {
         Mutex: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinSync_Mutex {
-                field0: Default::default(),
+                field0: core::ptr::null_mut(),
             },
         ),
     })
@@ -14845,7 +14845,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinSync_RwLock() -> *mut EnumOpaqueTwinSync
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinSyncKind {
         RwLock: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinSync_RwLock {
-                field0: Default::default(),
+                field0: core::ptr::null_mut(),
             },
         ),
     })
