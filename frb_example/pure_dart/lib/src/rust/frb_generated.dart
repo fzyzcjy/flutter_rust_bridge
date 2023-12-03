@@ -146,14 +146,11 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 
   @override
   ExternalLibraryLoaderConfig get defaultExternalLibraryLoaderConfig =>
-      kDefaultExternalLibraryLoaderConfig;
-
-  static const kDefaultExternalLibraryLoaderConfig =
-      ExternalLibraryLoaderConfig(
-    stem: 'frb_example_pure_dart',
-    ioDirectory: 'rust/target/release/',
-    webPrefix: 'pkg/',
-  );
+      const ExternalLibraryLoaderConfig(
+        stem: 'frb_example_pure_dart',
+        ioDirectory: 'rust/target/release/',
+        webPrefix: 'pkg/',
+      );
 }
 
 abstract class RustLibApi extends BaseApi {
@@ -16368,38 +16365,38 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   MutexHideData _wire2api_RustOpaque_MutexHideData(dynamic raw) {
-    return MutexHideData.fromRaw(raw[0], raw[1]);
+    return MutexHideData.fromWire(raw);
   }
 
   RwLockHideData _wire2api_RustOpaque_RwLockHideData(dynamic raw) {
-    return RwLockHideData.fromRaw(raw[0], raw[1]);
+    return RwLockHideData.fromWire(raw);
   }
 
   BoxDartDebugTwinNormal _wire2api_RustOpaque_box_dynDartDebugTwinNormal(
       dynamic raw) {
-    return BoxDartDebugTwinNormal.fromRaw(raw[0], raw[1]);
+    return BoxDartDebugTwinNormal.fromWire(raw);
   }
 
   BoxDartDebugTwinRustAsync _wire2api_RustOpaque_box_dynDartDebugTwinRustAsync(
       dynamic raw) {
-    return BoxDartDebugTwinRustAsync.fromRaw(raw[0], raw[1]);
+    return BoxDartDebugTwinRustAsync.fromWire(raw);
   }
 
   BoxDartDebugTwinSync _wire2api_RustOpaque_box_dynDartDebugTwinSync(
       dynamic raw) {
-    return BoxDartDebugTwinSync.fromRaw(raw[0], raw[1]);
+    return BoxDartDebugTwinSync.fromWire(raw);
   }
 
   FrbOpaqueReturn _wire2api_RustOpaque_frb_opaque_return(dynamic raw) {
-    return FrbOpaqueReturn.fromRaw(raw[0], raw[1]);
+    return FrbOpaqueReturn.fromWire(raw);
   }
 
   FrbOpaqueSyncReturn _wire2api_RustOpaque_frb_opaque_sync_return(dynamic raw) {
-    return FrbOpaqueSyncReturn.fromRaw(raw[0], raw[1]);
+    return FrbOpaqueSyncReturn.fromWire(raw);
   }
 
   HideData _wire2api_RustOpaque_hide_data(dynamic raw) {
-    return HideData.fromRaw(raw[0], raw[1]);
+    return HideData.fromWire(raw);
   }
 
   HideDataArray2 _wire2api_RustOpaque_hide_data_array_2(dynamic raw) {
@@ -16408,15 +16405,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   I32 _wire2api_RustOpaque_i_32(dynamic raw) {
-    return I32.fromRaw(raw[0], raw[1]);
+    return I32.fromWire(raw);
   }
 
   NonCloneData _wire2api_RustOpaque_non_clone_data(dynamic raw) {
-    return NonCloneData.fromRaw(raw[0], raw[1]);
+    return NonCloneData.fromWire(raw);
   }
 
   NonSendHideData _wire2api_RustOpaque_non_send_hide_data(dynamic raw) {
-    return NonSendHideData.fromRaw(raw[0], raw[1]);
+    return NonSendHideData.fromWire(raw);
   }
 
   String _wire2api_String(dynamic raw) {

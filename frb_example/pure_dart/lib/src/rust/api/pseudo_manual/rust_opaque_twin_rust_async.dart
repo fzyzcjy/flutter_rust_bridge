@@ -76,8 +76,10 @@ Future<FrbOpaqueReturn> frbGeneratorTestTwinRustAsync({dynamic hint}) =>
     RustLib.instance.api.frbGeneratorTestTwinRustAsync(hint: hint);
 
 @sealed
-class MutexHideData extends FrbOpaque {
-  MutexHideData.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
+class MutexHideData extends RustOpaque {
+  MutexHideData.fromWire(dynamic wire) : this._fromRaw(wire[0], wire[1]);
+
+  MutexHideData._fromRaw(int ptr, int size) : super.unsafe(ptr, size);
 
   @override
   OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueMutexHideData;
@@ -92,8 +94,10 @@ class MutexHideData extends FrbOpaque {
 }
 
 @sealed
-class RwLockHideData extends FrbOpaque {
-  RwLockHideData.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
+class RwLockHideData extends RustOpaque {
+  RwLockHideData.fromWire(dynamic wire) : this._fromRaw(wire[0], wire[1]);
+
+  RwLockHideData._fromRaw(int ptr, int size) : super.unsafe(ptr, size);
 
   @override
   OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueRwLockHideData;
@@ -108,8 +112,11 @@ class RwLockHideData extends FrbOpaque {
 }
 
 @sealed
-class BoxDartDebugTwinRustAsync extends FrbOpaque {
-  BoxDartDebugTwinRustAsync.fromRaw(int ptr, int size)
+class BoxDartDebugTwinRustAsync extends RustOpaque {
+  BoxDartDebugTwinRustAsync.fromWire(dynamic wire)
+      : this._fromRaw(wire[0], wire[1]);
+
+  BoxDartDebugTwinRustAsync._fromRaw(int ptr, int size)
       : super.unsafe(ptr, size);
 
   @override
@@ -126,8 +133,10 @@ class BoxDartDebugTwinRustAsync extends FrbOpaque {
 }
 
 @sealed
-class FrbOpaqueReturn extends FrbOpaque {
-  FrbOpaqueReturn.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
+class FrbOpaqueReturn extends RustOpaque {
+  FrbOpaqueReturn.fromWire(dynamic wire) : this._fromRaw(wire[0], wire[1]);
+
+  FrbOpaqueReturn._fromRaw(int ptr, int size) : super.unsafe(ptr, size);
 
   @override
   OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueFrbOpaqueReturn;
@@ -142,8 +151,10 @@ class FrbOpaqueReturn extends FrbOpaque {
 }
 
 @sealed
-class HideData extends FrbOpaque {
-  HideData.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
+class HideData extends RustOpaque {
+  HideData.fromWire(dynamic wire) : this._fromRaw(wire[0], wire[1]);
+
+  HideData._fromRaw(int ptr, int size) : super.unsafe(ptr, size);
 
   @override
   OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueHideData;
@@ -167,8 +178,10 @@ class HideDataArray2 extends NonGrowableListView<HideData> {
 }
 
 @sealed
-class I32 extends FrbOpaque {
-  I32.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
+class I32 extends RustOpaque {
+  I32.fromWire(dynamic wire) : this._fromRaw(wire[0], wire[1]);
+
+  I32._fromRaw(int ptr, int size) : super.unsafe(ptr, size);
 
   @override
   OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueI32;
@@ -181,8 +194,10 @@ class I32 extends FrbOpaque {
 }
 
 @sealed
-class NonCloneData extends FrbOpaque {
-  NonCloneData.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
+class NonCloneData extends RustOpaque {
+  NonCloneData.fromWire(dynamic wire) : this._fromRaw(wire[0], wire[1]);
+
+  NonCloneData._fromRaw(int ptr, int size) : super.unsafe(ptr, size);
 
   @override
   OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueNonCloneData;
@@ -196,8 +211,10 @@ class NonCloneData extends FrbOpaque {
 }
 
 @sealed
-class NonSendHideData extends FrbOpaque {
-  NonSendHideData.fromRaw(int ptr, int size) : super.unsafe(ptr, size);
+class NonSendHideData extends RustOpaque {
+  NonSendHideData.fromWire(dynamic wire) : this._fromRaw(wire[0], wire[1]);
+
+  NonSendHideData._fromRaw(int ptr, int size) : super.unsafe(ptr, size);
 
   @override
   OpaqueDropFnType get dropFn => RustLib.instance.api.dropOpaqueNonSendHideData;
