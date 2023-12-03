@@ -4,6 +4,7 @@ library;
 export 'package:js/js.dart';
 
 export 'flutter_rust_bridge_for_generated_common.dart';
+export 'src/droppable/_web.dart' show CrossPlatformFinalizerArg;
 export 'src/main_components/wire/_web.dart';
 export 'src/manual_impl/_web.dart';
 export 'src/platform_types/_web.dart';
