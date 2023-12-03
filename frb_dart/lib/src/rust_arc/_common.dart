@@ -3,6 +3,22 @@ import 'package:flutter_rust_bridge/src/rust_arc/_io.dart'
     if (dart.library.html) '_web.dart';
 import 'package:meta/meta.dart';
 
+// ----- TODO this comment is originally at `dispose()`,
+//  but since `dispose` is in `Droppable`, the comments no longer apply there
+/// Call Rust destructors on the backing memory of this pointer.
+///
+/// This function should be run at least once during the lifetime of the
+/// program, and can be run many times.
+///
+/// When passed into a Rust function, Rust enacts *shared ownership*,
+/// if this pointer is shared with Rust when [dispose] is called,
+/// ownership is fully transferred to Rust else this pointer is cleared.
+// ----- TODO this is for `isDisposed`
+/// Checks whether [dispose] has been called at any point during the lifetime
+/// of this pointer. This does not guarantee that the backing memory has
+/// actually been reclaimed.
+// -----
+
 /// The Rust `std::sync::Arc` on the Dart side.
 // Note: Use `extends`, instead of making the `_Droppable` a field,
 // in order to ensure the `ffi.Finalizable` works well.
