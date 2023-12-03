@@ -16,6 +16,9 @@ abstract class RustArc extends RustArcBase {
   RustArc.fromRaw({required int ptr, required int size})
       : _ptr = PlatformPointerUtil.ptrFromInt(ptr) {
     if (!PlatformPointerUtil.isNullPtr(_ptr)) {
+      // Note: The finalizer attaches to the `_ptr` at *current* time,
+      // thus even if we assign `RustArc._ptr = something-new`, this finalizer
+      // attachment will not be changed.
       typeInfo._finalizerByArcDecrCount.attachCrossPlatform(this, _ptr,
           detach: this, externalSizeOnNative: size);
     }
