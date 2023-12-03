@@ -203,81 +203,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  wire_RustOpaque_MutexHideData api2wire_RustOpaque_MutexHideData(
-      MutexHideData raw) {
-    final ptr = wire.new_RustOpaque_MutexHideData();
-    _api_fill_to_wire_RustOpaque_MutexHideData(raw, ptr);
-    return ptr;
-  }
-
-  @protected
-  wire_RustOpaque_RwLockHideData api2wire_RustOpaque_RwLockHideData(
-      RwLockHideData raw) {
-    final ptr = wire.new_RustOpaque_RwLockHideData();
-    _api_fill_to_wire_RustOpaque_RwLockHideData(raw, ptr);
-    return ptr;
-  }
-
-  @protected
-  wire_RustOpaque_box_dynDartDebugTwinNormal
-      api2wire_RustOpaque_box_dynDartDebugTwinNormal(
-          BoxDartDebugTwinNormal raw) {
-    final ptr = wire.new_RustOpaque_box_dynDartDebugTwinNormal();
-    _api_fill_to_wire_RustOpaque_box_dynDartDebugTwinNormal(raw, ptr);
-    return ptr;
-  }
-
-  @protected
-  wire_RustOpaque_box_dynDartDebugTwinRustAsync
-      api2wire_RustOpaque_box_dynDartDebugTwinRustAsync(
-          BoxDartDebugTwinRustAsync raw) {
-    final ptr = wire.new_RustOpaque_box_dynDartDebugTwinRustAsync();
-    _api_fill_to_wire_RustOpaque_box_dynDartDebugTwinRustAsync(raw, ptr);
-    return ptr;
-  }
-
-  @protected
-  wire_RustOpaque_box_dynDartDebugTwinSync
-      api2wire_RustOpaque_box_dynDartDebugTwinSync(BoxDartDebugTwinSync raw) {
-    final ptr = wire.new_RustOpaque_box_dynDartDebugTwinSync();
-    _api_fill_to_wire_RustOpaque_box_dynDartDebugTwinSync(raw, ptr);
-    return ptr;
-  }
-
-  @protected
-  wire_RustOpaque_hide_data api2wire_RustOpaque_hide_data(HideData raw) {
-    final ptr = wire.new_RustOpaque_hide_data();
-    _api_fill_to_wire_RustOpaque_hide_data(raw, ptr);
-    return ptr;
-  }
-
-  @protected
   ffi.Pointer<wire_list_RustOpaque_hide_data>
       api2wire_RustOpaque_hide_data_array_2(HideDataArray2 raw) {
     return api2wire_list_RustOpaque_hide_data(raw);
-  }
-
-  @protected
-  wire_RustOpaque_i_32 api2wire_RustOpaque_i_32(I32 raw) {
-    final ptr = wire.new_RustOpaque_i_32();
-    _api_fill_to_wire_RustOpaque_i_32(raw, ptr);
-    return ptr;
-  }
-
-  @protected
-  wire_RustOpaque_non_clone_data api2wire_RustOpaque_non_clone_data(
-      NonCloneData raw) {
-    final ptr = wire.new_RustOpaque_non_clone_data();
-    _api_fill_to_wire_RustOpaque_non_clone_data(raw, ptr);
-    return ptr;
-  }
-
-  @protected
-  wire_RustOpaque_non_send_hide_data api2wire_RustOpaque_non_send_hide_data(
-      NonSendHideData raw) {
-    final ptr = wire.new_RustOpaque_non_send_hide_data();
-    _api_fill_to_wire_RustOpaque_non_send_hide_data(raw, ptr);
-    return ptr;
   }
 
   @protected
@@ -335,8 +263,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_RustOpaque_hide_data>
-      api2wire_box_autoadd_RustOpaque_hide_data(HideData raw) {
+  ffi.Pointer<ffi.Pointer<ffi.Void>> api2wire_box_autoadd_RustOpaque_hide_data(
+      HideData raw) {
     final ptr = wire.new_box_autoadd_RustOpaque_hide_data();
     _api_fill_to_wire_RustOpaque_hide_data(raw, ptr.ref);
     return ptr;
@@ -2174,7 +2102,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_RustOpaque_hide_data>
+  ffi.Pointer<ffi.Pointer<ffi.Void>>
       api2wire_opt_box_autoadd_RustOpaque_hide_data(HideData? raw) {
     return raw == null
         ? ffi.nullptr
@@ -2486,63 +2414,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.port = dropPortManager.dropPort;
   }
 
-  void _api_fill_to_wire_RustOpaque_MutexHideData(
-      MutexHideData apiObj, wire_RustOpaque_MutexHideData wireObj) {
-    // ignore: invalid_use_of_internal_member
-    wireObj.ptr = apiObj.shareOrMove();
-  }
-
-  void _api_fill_to_wire_RustOpaque_RwLockHideData(
-      RwLockHideData apiObj, wire_RustOpaque_RwLockHideData wireObj) {
-    // ignore: invalid_use_of_internal_member
-    wireObj.ptr = apiObj.shareOrMove();
-  }
-
-  void _api_fill_to_wire_RustOpaque_box_dynDartDebugTwinNormal(
-      BoxDartDebugTwinNormal apiObj,
-      wire_RustOpaque_box_dynDartDebugTwinNormal wireObj) {
-    // ignore: invalid_use_of_internal_member
-    wireObj.ptr = apiObj.shareOrMove();
-  }
-
-  void _api_fill_to_wire_RustOpaque_box_dynDartDebugTwinRustAsync(
-      BoxDartDebugTwinRustAsync apiObj,
-      wire_RustOpaque_box_dynDartDebugTwinRustAsync wireObj) {
-    // ignore: invalid_use_of_internal_member
-    wireObj.ptr = apiObj.shareOrMove();
-  }
-
-  void _api_fill_to_wire_RustOpaque_box_dynDartDebugTwinSync(
-      BoxDartDebugTwinSync apiObj,
-      wire_RustOpaque_box_dynDartDebugTwinSync wireObj) {
-    // ignore: invalid_use_of_internal_member
-    wireObj.ptr = apiObj.shareOrMove();
-  }
-
-  void _api_fill_to_wire_RustOpaque_hide_data(
-      HideData apiObj, wire_RustOpaque_hide_data wireObj) {
-    // ignore: invalid_use_of_internal_member
-    wireObj.ptr = apiObj.shareOrMove();
-  }
-
-  void _api_fill_to_wire_RustOpaque_i_32(
-      I32 apiObj, wire_RustOpaque_i_32 wireObj) {
-    // ignore: invalid_use_of_internal_member
-    wireObj.ptr = apiObj.shareOrMove();
-  }
-
-  void _api_fill_to_wire_RustOpaque_non_clone_data(
-      NonCloneData apiObj, wire_RustOpaque_non_clone_data wireObj) {
-    // ignore: invalid_use_of_internal_member
-    wireObj.ptr = apiObj.shareOrMove();
-  }
-
-  void _api_fill_to_wire_RustOpaque_non_send_hide_data(
-      NonSendHideData apiObj, wire_RustOpaque_non_send_hide_data wireObj) {
-    // ignore: invalid_use_of_internal_member
-    wireObj.ptr = apiObj.shareOrMove();
-  }
-
   void _api_fill_to_wire_a_twin_normal(
       ATwinNormal apiObj, wire_a_twin_normal wireObj) {
     wireObj.a = api2wire_String(apiObj.a);
@@ -2734,7 +2605,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   void _api_fill_to_wire_box_autoadd_RustOpaque_hide_data(
-      HideData apiObj, ffi.Pointer<wire_RustOpaque_hide_data> wireObj) {
+      HideData apiObj, ffi.Pointer<ffi.Pointer<ffi.Void>> wireObj) {
     _api_fill_to_wire_RustOpaque_hide_data(apiObj, wireObj.ref);
   }
 
@@ -14568,7 +14439,7 @@ class RustLibWire implements BaseWire {
 
   void wire_create_option_opaque_twin_rust_async(
     int port_,
-    ffi.Pointer<wire_RustOpaque_hide_data> opaque,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> opaque,
   ) {
     return _wire_create_option_opaque_twin_rust_async(
       port_,
@@ -14579,11 +14450,11 @@ class RustLibWire implements BaseWire {
   late final _wire_create_option_opaque_twin_rust_asyncPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_RustOpaque_hide_data>)>>(
+                  ffi.Int64, ffi.Pointer<ffi.Pointer<ffi.Void>>)>>(
       'wire_create_option_opaque_twin_rust_async');
   late final _wire_create_option_opaque_twin_rust_async =
-      _wire_create_option_opaque_twin_rust_asyncPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_RustOpaque_hide_data>)>();
+      _wire_create_option_opaque_twin_rust_asyncPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
 
   void wire_create_sync_opaque_twin_rust_async(
     int port_,
@@ -14722,7 +14593,7 @@ class RustLibWire implements BaseWire {
 
   void wire_run_non_clone_twin_rust_async(
     int port_,
-    wire_RustOpaque_non_clone_data clone,
+    ffi.Pointer<ffi.Void> clone,
   ) {
     return _wire_run_non_clone_twin_rust_async(
       port_,
@@ -14731,16 +14602,16 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_run_non_clone_twin_rust_asyncPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, wire_RustOpaque_non_clone_data)>>(
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
       'wire_run_non_clone_twin_rust_async');
   late final _wire_run_non_clone_twin_rust_async =
       _wire_run_non_clone_twin_rust_asyncPtr
-          .asFunction<void Function(int, wire_RustOpaque_non_clone_data)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
   void wire_run_opaque_twin_rust_async(
     int port_,
-    wire_RustOpaque_hide_data opaque,
+    ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_run_opaque_twin_rust_async(
       port_,
@@ -14749,16 +14620,16 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_run_opaque_twin_rust_asyncPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
-              wire_RustOpaque_hide_data)>>('wire_run_opaque_twin_rust_async');
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_run_opaque_twin_rust_async');
   late final _wire_run_opaque_twin_rust_async =
       _wire_run_opaque_twin_rust_asyncPtr
-          .asFunction<void Function(int, wire_RustOpaque_hide_data)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
   void wire_run_opaque_with_delay_twin_rust_async(
     int port_,
-    wire_RustOpaque_hide_data opaque,
+    ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_run_opaque_with_delay_twin_rust_async(
       port_,
@@ -14767,16 +14638,16 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_run_opaque_with_delay_twin_rust_asyncPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, wire_RustOpaque_hide_data)>>(
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
       'wire_run_opaque_with_delay_twin_rust_async');
   late final _wire_run_opaque_with_delay_twin_rust_async =
       _wire_run_opaque_with_delay_twin_rust_asyncPtr
-          .asFunction<void Function(int, wire_RustOpaque_hide_data)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
   void wire_unwrap_rust_opaque_twin_rust_async(
     int port_,
-    wire_RustOpaque_hide_data opaque,
+    ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_unwrap_rust_opaque_twin_rust_async(
       port_,
@@ -14785,12 +14656,12 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_unwrap_rust_opaque_twin_rust_asyncPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, wire_RustOpaque_hide_data)>>(
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
       'wire_unwrap_rust_opaque_twin_rust_async');
   late final _wire_unwrap_rust_opaque_twin_rust_async =
       _wire_unwrap_rust_opaque_twin_rust_asyncPtr
-          .asFunction<void Function(int, wire_RustOpaque_hide_data)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
   WireSyncReturn wire_create_array_opaque_enum_twin_sync() {
     return _wire_create_array_opaque_enum_twin_sync();
@@ -14825,7 +14696,7 @@ class RustLibWire implements BaseWire {
       _wire_create_opaque_twin_syncPtr.asFunction<WireSyncReturn Function()>();
 
   WireSyncReturn wire_create_option_opaque_twin_sync(
-    ffi.Pointer<wire_RustOpaque_hide_data> opaque,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> opaque,
   ) {
     return _wire_create_option_opaque_twin_sync(
       opaque,
@@ -14834,11 +14705,11 @@ class RustLibWire implements BaseWire {
 
   late final _wire_create_option_opaque_twin_syncPtr = _lookup<
           ffi.NativeFunction<
-              WireSyncReturn Function(ffi.Pointer<wire_RustOpaque_hide_data>)>>(
+              WireSyncReturn Function(ffi.Pointer<ffi.Pointer<ffi.Void>>)>>(
       'wire_create_option_opaque_twin_sync');
   late final _wire_create_option_opaque_twin_sync =
       _wire_create_option_opaque_twin_syncPtr.asFunction<
-          WireSyncReturn Function(ffi.Pointer<wire_RustOpaque_hide_data>)>();
+          WireSyncReturn Function(ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
 
   WireSyncReturn wire_create_sync_opaque_twin_sync() {
     return _wire_create_sync_opaque_twin_sync();
@@ -14953,7 +14824,7 @@ class RustLibWire implements BaseWire {
           WireSyncReturn Function(ffi.Pointer<wire_opaque_nested_twin_sync>)>();
 
   WireSyncReturn wire_run_non_clone_twin_sync(
-    wire_RustOpaque_non_clone_data clone,
+    ffi.Pointer<ffi.Void> clone,
   ) {
     return _wire_run_non_clone_twin_sync(
       clone,
@@ -14961,14 +14832,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_run_non_clone_twin_syncPtr = _lookup<
-      ffi.NativeFunction<
-          WireSyncReturn Function(
-              wire_RustOpaque_non_clone_data)>>('wire_run_non_clone_twin_sync');
+          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+      'wire_run_non_clone_twin_sync');
   late final _wire_run_non_clone_twin_sync = _wire_run_non_clone_twin_syncPtr
-      .asFunction<WireSyncReturn Function(wire_RustOpaque_non_clone_data)>();
+      .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
 
   WireSyncReturn wire_run_opaque_twin_sync(
-    wire_RustOpaque_hide_data opaque,
+    ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_run_opaque_twin_sync(
       opaque,
@@ -14976,14 +14846,13 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_run_opaque_twin_syncPtr = _lookup<
-          ffi
-          .NativeFunction<WireSyncReturn Function(wire_RustOpaque_hide_data)>>(
+          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
       'wire_run_opaque_twin_sync');
   late final _wire_run_opaque_twin_sync = _wire_run_opaque_twin_syncPtr
-      .asFunction<WireSyncReturn Function(wire_RustOpaque_hide_data)>();
+      .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
 
   WireSyncReturn wire_run_opaque_with_delay_twin_sync(
-    wire_RustOpaque_hide_data opaque,
+    ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_run_opaque_with_delay_twin_sync(
       opaque,
@@ -14991,15 +14860,14 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_run_opaque_with_delay_twin_syncPtr = _lookup<
-          ffi
-          .NativeFunction<WireSyncReturn Function(wire_RustOpaque_hide_data)>>(
+          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
       'wire_run_opaque_with_delay_twin_sync');
   late final _wire_run_opaque_with_delay_twin_sync =
       _wire_run_opaque_with_delay_twin_syncPtr
-          .asFunction<WireSyncReturn Function(wire_RustOpaque_hide_data)>();
+          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
 
   WireSyncReturn wire_unwrap_rust_opaque_twin_sync(
-    wire_RustOpaque_hide_data opaque,
+    ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_unwrap_rust_opaque_twin_sync(
       opaque,
@@ -15007,12 +14875,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_unwrap_rust_opaque_twin_syncPtr = _lookup<
-          ffi
-          .NativeFunction<WireSyncReturn Function(wire_RustOpaque_hide_data)>>(
+          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
       'wire_unwrap_rust_opaque_twin_sync');
   late final _wire_unwrap_rust_opaque_twin_sync =
       _wire_unwrap_rust_opaque_twin_syncPtr
-          .asFunction<WireSyncReturn Function(wire_RustOpaque_hide_data)>();
+          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
 
   void wire_simple_adder_twin_rust_async(
     int port_,
@@ -15716,7 +15583,7 @@ class RustLibWire implements BaseWire {
 
   void wire_create_option_opaque_twin_normal(
     int port_,
-    ffi.Pointer<wire_RustOpaque_hide_data> opaque,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> opaque,
   ) {
     return _wire_create_option_opaque_twin_normal(
       port_,
@@ -15727,11 +15594,11 @@ class RustLibWire implements BaseWire {
   late final _wire_create_option_opaque_twin_normalPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<wire_RustOpaque_hide_data>)>>(
+                  ffi.Int64, ffi.Pointer<ffi.Pointer<ffi.Void>>)>>(
       'wire_create_option_opaque_twin_normal');
   late final _wire_create_option_opaque_twin_normal =
-      _wire_create_option_opaque_twin_normalPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_RustOpaque_hide_data>)>();
+      _wire_create_option_opaque_twin_normalPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
 
   void wire_create_sync_opaque_twin_normal(
     int port_,
@@ -15867,7 +15734,7 @@ class RustLibWire implements BaseWire {
 
   void wire_run_non_clone_twin_normal(
     int port_,
-    wire_RustOpaque_non_clone_data clone,
+    ffi.Pointer<ffi.Void> clone,
   ) {
     return _wire_run_non_clone_twin_normal(
       port_,
@@ -15876,16 +15743,16 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_run_non_clone_twin_normalPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, wire_RustOpaque_non_clone_data)>>(
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
       'wire_run_non_clone_twin_normal');
   late final _wire_run_non_clone_twin_normal =
       _wire_run_non_clone_twin_normalPtr
-          .asFunction<void Function(int, wire_RustOpaque_non_clone_data)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
   void wire_run_opaque_twin_normal(
     int port_,
-    wire_RustOpaque_hide_data opaque,
+    ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_run_opaque_twin_normal(
       port_,
@@ -15894,15 +15761,15 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_run_opaque_twin_normalPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64,
-              wire_RustOpaque_hide_data)>>('wire_run_opaque_twin_normal');
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_run_opaque_twin_normal');
   late final _wire_run_opaque_twin_normal = _wire_run_opaque_twin_normalPtr
-      .asFunction<void Function(int, wire_RustOpaque_hide_data)>();
+      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
   void wire_run_opaque_with_delay_twin_normal(
     int port_,
-    wire_RustOpaque_hide_data opaque,
+    ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_run_opaque_with_delay_twin_normal(
       port_,
@@ -15911,16 +15778,16 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_run_opaque_with_delay_twin_normalPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, wire_RustOpaque_hide_data)>>(
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
       'wire_run_opaque_with_delay_twin_normal');
   late final _wire_run_opaque_with_delay_twin_normal =
       _wire_run_opaque_with_delay_twin_normalPtr
-          .asFunction<void Function(int, wire_RustOpaque_hide_data)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
   void wire_unwrap_rust_opaque_twin_normal(
     int port_,
-    wire_RustOpaque_hide_data opaque,
+    ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_unwrap_rust_opaque_twin_normal(
       port_,
@@ -15929,12 +15796,12 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_unwrap_rust_opaque_twin_normalPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, wire_RustOpaque_hide_data)>>(
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
       'wire_unwrap_rust_opaque_twin_normal');
   late final _wire_unwrap_rust_opaque_twin_normal =
       _wire_unwrap_rust_opaque_twin_normalPtr
-          .asFunction<void Function(int, wire_RustOpaque_hide_data)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
   WireSyncReturn wire_frb_sync_generator_test_twin_normal() {
     return _wire_frb_sync_generator_test_twin_normal();
@@ -15992,7 +15859,7 @@ class RustLibWire implements BaseWire {
           .asFunction<WireSyncReturn Function()>();
 
   WireSyncReturn wire_sync_run_opaque_twin_normal(
-    wire_RustOpaque_non_send_hide_data opaque,
+    ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_sync_run_opaque_twin_normal(
       opaque,
@@ -16000,12 +15867,11 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_sync_run_opaque_twin_normalPtr = _lookup<
-          ffi.NativeFunction<
-              WireSyncReturn Function(wire_RustOpaque_non_send_hide_data)>>(
+          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
       'wire_sync_run_opaque_twin_normal');
   late final _wire_sync_run_opaque_twin_normal =
-      _wire_sync_run_opaque_twin_normalPtr.asFunction<
-          WireSyncReturn Function(wire_RustOpaque_non_send_hide_data)>();
+      _wire_sync_run_opaque_twin_normalPtr
+          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
 
   void wire_simple_adder_twin_normal(
     int port_,
@@ -16419,106 +16285,6 @@ class RustLibWire implements BaseWire {
   late final _new_DartOpaque =
       _new_DartOpaquePtr.asFunction<wire_DartOpaque Function()>();
 
-  wire_RustOpaque_MutexHideData new_RustOpaque_MutexHideData() {
-    return _new_RustOpaque_MutexHideData();
-  }
-
-  late final _new_RustOpaque_MutexHideDataPtr =
-      _lookup<ffi.NativeFunction<wire_RustOpaque_MutexHideData Function()>>(
-          'new_RustOpaque_MutexHideData');
-  late final _new_RustOpaque_MutexHideData = _new_RustOpaque_MutexHideDataPtr
-      .asFunction<wire_RustOpaque_MutexHideData Function()>();
-
-  wire_RustOpaque_RwLockHideData new_RustOpaque_RwLockHideData() {
-    return _new_RustOpaque_RwLockHideData();
-  }
-
-  late final _new_RustOpaque_RwLockHideDataPtr =
-      _lookup<ffi.NativeFunction<wire_RustOpaque_RwLockHideData Function()>>(
-          'new_RustOpaque_RwLockHideData');
-  late final _new_RustOpaque_RwLockHideData = _new_RustOpaque_RwLockHideDataPtr
-      .asFunction<wire_RustOpaque_RwLockHideData Function()>();
-
-  wire_RustOpaque_box_dynDartDebugTwinNormal
-      new_RustOpaque_box_dynDartDebugTwinNormal() {
-    return _new_RustOpaque_box_dynDartDebugTwinNormal();
-  }
-
-  late final _new_RustOpaque_box_dynDartDebugTwinNormalPtr = _lookup<
-      ffi.NativeFunction<
-          wire_RustOpaque_box_dynDartDebugTwinNormal
-              Function()>>('new_RustOpaque_box_dynDartDebugTwinNormal');
-  late final _new_RustOpaque_box_dynDartDebugTwinNormal =
-      _new_RustOpaque_box_dynDartDebugTwinNormalPtr
-          .asFunction<wire_RustOpaque_box_dynDartDebugTwinNormal Function()>();
-
-  wire_RustOpaque_box_dynDartDebugTwinRustAsync
-      new_RustOpaque_box_dynDartDebugTwinRustAsync() {
-    return _new_RustOpaque_box_dynDartDebugTwinRustAsync();
-  }
-
-  late final _new_RustOpaque_box_dynDartDebugTwinRustAsyncPtr = _lookup<
-      ffi.NativeFunction<
-          wire_RustOpaque_box_dynDartDebugTwinRustAsync
-              Function()>>('new_RustOpaque_box_dynDartDebugTwinRustAsync');
-  late final _new_RustOpaque_box_dynDartDebugTwinRustAsync =
-      _new_RustOpaque_box_dynDartDebugTwinRustAsyncPtr.asFunction<
-          wire_RustOpaque_box_dynDartDebugTwinRustAsync Function()>();
-
-  wire_RustOpaque_box_dynDartDebugTwinSync
-      new_RustOpaque_box_dynDartDebugTwinSync() {
-    return _new_RustOpaque_box_dynDartDebugTwinSync();
-  }
-
-  late final _new_RustOpaque_box_dynDartDebugTwinSyncPtr = _lookup<
-          ffi
-          .NativeFunction<wire_RustOpaque_box_dynDartDebugTwinSync Function()>>(
-      'new_RustOpaque_box_dynDartDebugTwinSync');
-  late final _new_RustOpaque_box_dynDartDebugTwinSync =
-      _new_RustOpaque_box_dynDartDebugTwinSyncPtr
-          .asFunction<wire_RustOpaque_box_dynDartDebugTwinSync Function()>();
-
-  wire_RustOpaque_hide_data new_RustOpaque_hide_data() {
-    return _new_RustOpaque_hide_data();
-  }
-
-  late final _new_RustOpaque_hide_dataPtr =
-      _lookup<ffi.NativeFunction<wire_RustOpaque_hide_data Function()>>(
-          'new_RustOpaque_hide_data');
-  late final _new_RustOpaque_hide_data = _new_RustOpaque_hide_dataPtr
-      .asFunction<wire_RustOpaque_hide_data Function()>();
-
-  wire_RustOpaque_i_32 new_RustOpaque_i_32() {
-    return _new_RustOpaque_i_32();
-  }
-
-  late final _new_RustOpaque_i_32Ptr =
-      _lookup<ffi.NativeFunction<wire_RustOpaque_i_32 Function()>>(
-          'new_RustOpaque_i_32');
-  late final _new_RustOpaque_i_32 =
-      _new_RustOpaque_i_32Ptr.asFunction<wire_RustOpaque_i_32 Function()>();
-
-  wire_RustOpaque_non_clone_data new_RustOpaque_non_clone_data() {
-    return _new_RustOpaque_non_clone_data();
-  }
-
-  late final _new_RustOpaque_non_clone_dataPtr =
-      _lookup<ffi.NativeFunction<wire_RustOpaque_non_clone_data Function()>>(
-          'new_RustOpaque_non_clone_data');
-  late final _new_RustOpaque_non_clone_data = _new_RustOpaque_non_clone_dataPtr
-      .asFunction<wire_RustOpaque_non_clone_data Function()>();
-
-  wire_RustOpaque_non_send_hide_data new_RustOpaque_non_send_hide_data() {
-    return _new_RustOpaque_non_send_hide_data();
-  }
-
-  late final _new_RustOpaque_non_send_hide_dataPtr = _lookup<
-          ffi.NativeFunction<wire_RustOpaque_non_send_hide_data Function()>>(
-      'new_RustOpaque_non_send_hide_data');
-  late final _new_RustOpaque_non_send_hide_data =
-      _new_RustOpaque_non_send_hide_dataPtr
-          .asFunction<wire_RustOpaque_non_send_hide_data Function()>();
-
   ffi.Pointer<wire_StringList> new_StringList(
     int len,
   ) {
@@ -16567,18 +16333,21 @@ class RustLibWire implements BaseWire {
   late final _new_box_autoadd_DartOpaque = _new_box_autoadd_DartOpaquePtr
       .asFunction<ffi.Pointer<wire_DartOpaque> Function()>();
 
-  ffi.Pointer<wire_RustOpaque_hide_data>
-      new_box_autoadd_RustOpaque_hide_data() {
-    return _new_box_autoadd_RustOpaque_hide_data();
+  ffi.Pointer<ffi.Pointer<ffi.Void>> new_box_autoadd_RustOpaque_hide_data(
+    ffi.Pointer<ffi.Void> value,
+  ) {
+    return _new_box_autoadd_RustOpaque_hide_data(
+      value,
+    );
   }
 
   late final _new_box_autoadd_RustOpaque_hide_dataPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Pointer<wire_RustOpaque_hide_data> Function()>>(
-      'new_box_autoadd_RustOpaque_hide_data');
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Pointer<ffi.Void>> Function(
+              ffi.Pointer<ffi.Void>)>>('new_box_autoadd_RustOpaque_hide_data');
   late final _new_box_autoadd_RustOpaque_hide_data =
-      _new_box_autoadd_RustOpaque_hide_dataPtr
-          .asFunction<ffi.Pointer<wire_RustOpaque_hide_data> Function()>();
+      _new_box_autoadd_RustOpaque_hide_dataPtr.asFunction<
+          ffi.Pointer<ffi.Pointer<ffi.Void>> Function(ffi.Pointer<ffi.Void>)>();
 
   ffi.Pointer<wire_a_twin_normal> new_box_autoadd_a_twin_normal() {
     return _new_box_autoadd_a_twin_normal();
@@ -19415,345 +19184,335 @@ class RustLibWire implements BaseWire {
   late final _new_list_weekdays_twin_sync = _new_list_weekdays_twin_syncPtr
       .asFunction<ffi.Pointer<wire_list_weekdays_twin_sync> Function(int)>();
 
-  void drop_opaque_RustOpaque_MutexHideData(
+  void rust_arc_increment_strong_count_RustOpaque_MutexHideData(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _drop_opaque_RustOpaque_MutexHideData(
+    return _rust_arc_increment_strong_count_RustOpaque_MutexHideData(
       ptr,
     );
   }
 
-  late final _drop_opaque_RustOpaque_MutexHideDataPtr =
+  late final _rust_arc_increment_strong_count_RustOpaque_MutexHideDataPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'drop_opaque_RustOpaque_MutexHideData');
-  late final _drop_opaque_RustOpaque_MutexHideData =
-      _drop_opaque_RustOpaque_MutexHideDataPtr
+          'rust_arc_increment_strong_count_RustOpaque_MutexHideData');
+  late final _rust_arc_increment_strong_count_RustOpaque_MutexHideData =
+      _rust_arc_increment_strong_count_RustOpaque_MutexHideDataPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
-  ffi.Pointer<ffi.Void> share_opaque_RustOpaque_MutexHideData(
+  void rust_arc_decrement_strong_count_RustOpaque_MutexHideData(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _share_opaque_RustOpaque_MutexHideData(
+    return _rust_arc_decrement_strong_count_RustOpaque_MutexHideData(
       ptr,
     );
   }
 
-  late final _share_opaque_RustOpaque_MutexHideDataPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Void> Function(
-              ffi.Pointer<ffi.Void>)>>('share_opaque_RustOpaque_MutexHideData');
-  late final _share_opaque_RustOpaque_MutexHideData =
-      _share_opaque_RustOpaque_MutexHideDataPtr
-          .asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
-
-  void drop_opaque_RustOpaque_RwLockHideData(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _drop_opaque_RustOpaque_RwLockHideData(
-      ptr,
-    );
-  }
-
-  late final _drop_opaque_RustOpaque_RwLockHideDataPtr =
+  late final _rust_arc_decrement_strong_count_RustOpaque_MutexHideDataPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'drop_opaque_RustOpaque_RwLockHideData');
-  late final _drop_opaque_RustOpaque_RwLockHideData =
-      _drop_opaque_RustOpaque_RwLockHideDataPtr
+          'rust_arc_decrement_strong_count_RustOpaque_MutexHideData');
+  late final _rust_arc_decrement_strong_count_RustOpaque_MutexHideData =
+      _rust_arc_decrement_strong_count_RustOpaque_MutexHideDataPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
-  ffi.Pointer<ffi.Void> share_opaque_RustOpaque_RwLockHideData(
+  void rust_arc_increment_strong_count_RustOpaque_RwLockHideData(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _share_opaque_RustOpaque_RwLockHideData(
+    return _rust_arc_increment_strong_count_RustOpaque_RwLockHideData(
       ptr,
     );
   }
 
-  late final _share_opaque_RustOpaque_RwLockHideDataPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-      'share_opaque_RustOpaque_RwLockHideData');
-  late final _share_opaque_RustOpaque_RwLockHideData =
-      _share_opaque_RustOpaque_RwLockHideDataPtr
-          .asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
-
-  void drop_opaque_RustOpaque_box_dynDartDebugTwinNormal(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _drop_opaque_RustOpaque_box_dynDartDebugTwinNormal(
-      ptr,
-    );
-  }
-
-  late final _drop_opaque_RustOpaque_box_dynDartDebugTwinNormalPtr =
+  late final _rust_arc_increment_strong_count_RustOpaque_RwLockHideDataPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'drop_opaque_RustOpaque_box_dynDartDebugTwinNormal');
-  late final _drop_opaque_RustOpaque_box_dynDartDebugTwinNormal =
-      _drop_opaque_RustOpaque_box_dynDartDebugTwinNormalPtr
+          'rust_arc_increment_strong_count_RustOpaque_RwLockHideData');
+  late final _rust_arc_increment_strong_count_RustOpaque_RwLockHideData =
+      _rust_arc_increment_strong_count_RustOpaque_RwLockHideDataPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
-  ffi.Pointer<ffi.Void> share_opaque_RustOpaque_box_dynDartDebugTwinNormal(
+  void rust_arc_decrement_strong_count_RustOpaque_RwLockHideData(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _share_opaque_RustOpaque_box_dynDartDebugTwinNormal(
+    return _rust_arc_decrement_strong_count_RustOpaque_RwLockHideData(
       ptr,
     );
   }
 
-  late final _share_opaque_RustOpaque_box_dynDartDebugTwinNormalPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-      'share_opaque_RustOpaque_box_dynDartDebugTwinNormal');
-  late final _share_opaque_RustOpaque_box_dynDartDebugTwinNormal =
-      _share_opaque_RustOpaque_box_dynDartDebugTwinNormalPtr
-          .asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
-
-  void drop_opaque_RustOpaque_box_dynDartDebugTwinRustAsync(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _drop_opaque_RustOpaque_box_dynDartDebugTwinRustAsync(
-      ptr,
-    );
-  }
-
-  late final _drop_opaque_RustOpaque_box_dynDartDebugTwinRustAsyncPtr =
+  late final _rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'drop_opaque_RustOpaque_box_dynDartDebugTwinRustAsync');
-  late final _drop_opaque_RustOpaque_box_dynDartDebugTwinRustAsync =
-      _drop_opaque_RustOpaque_box_dynDartDebugTwinRustAsyncPtr
+          'rust_arc_decrement_strong_count_RustOpaque_RwLockHideData');
+  late final _rust_arc_decrement_strong_count_RustOpaque_RwLockHideData =
+      _rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
-  ffi.Pointer<ffi.Void> share_opaque_RustOpaque_box_dynDartDebugTwinRustAsync(
+  void rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _share_opaque_RustOpaque_box_dynDartDebugTwinRustAsync(
+    return _rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal(
       ptr,
     );
   }
 
-  late final _share_opaque_RustOpaque_box_dynDartDebugTwinRustAsyncPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-          'share_opaque_RustOpaque_box_dynDartDebugTwinRustAsync');
-  late final _share_opaque_RustOpaque_box_dynDartDebugTwinRustAsync =
-      _share_opaque_RustOpaque_box_dynDartDebugTwinRustAsyncPtr
-          .asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
-
-  void drop_opaque_RustOpaque_box_dynDartDebugTwinSync(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _drop_opaque_RustOpaque_box_dynDartDebugTwinSync(
-      ptr,
-    );
-  }
-
-  late final _drop_opaque_RustOpaque_box_dynDartDebugTwinSyncPtr =
+  late final _rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'drop_opaque_RustOpaque_box_dynDartDebugTwinSync');
-  late final _drop_opaque_RustOpaque_box_dynDartDebugTwinSync =
-      _drop_opaque_RustOpaque_box_dynDartDebugTwinSyncPtr
+          'rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal');
+  late final _rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal =
+      _rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormalPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
-  ffi.Pointer<ffi.Void> share_opaque_RustOpaque_box_dynDartDebugTwinSync(
+  void rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormal(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _share_opaque_RustOpaque_box_dynDartDebugTwinSync(
+    return _rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormal(
       ptr,
     );
   }
 
-  late final _share_opaque_RustOpaque_box_dynDartDebugTwinSyncPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-      'share_opaque_RustOpaque_box_dynDartDebugTwinSync');
-  late final _share_opaque_RustOpaque_box_dynDartDebugTwinSync =
-      _share_opaque_RustOpaque_box_dynDartDebugTwinSyncPtr
-          .asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
-
-  void drop_opaque_RustOpaque_frb_opaque_return(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _drop_opaque_RustOpaque_frb_opaque_return(
-      ptr,
-    );
-  }
-
-  late final _drop_opaque_RustOpaque_frb_opaque_returnPtr =
+  late final _rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'drop_opaque_RustOpaque_frb_opaque_return');
-  late final _drop_opaque_RustOpaque_frb_opaque_return =
-      _drop_opaque_RustOpaque_frb_opaque_returnPtr
+          'rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormal');
+  late final _rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormal =
+      _rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormalPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
-  ffi.Pointer<ffi.Void> share_opaque_RustOpaque_frb_opaque_return(
+  void rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _share_opaque_RustOpaque_frb_opaque_return(
+    return _rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync(
       ptr,
     );
   }
 
-  late final _share_opaque_RustOpaque_frb_opaque_returnPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-      'share_opaque_RustOpaque_frb_opaque_return');
-  late final _share_opaque_RustOpaque_frb_opaque_return =
-      _share_opaque_RustOpaque_frb_opaque_returnPtr
-          .asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
-
-  void drop_opaque_RustOpaque_frb_opaque_sync_return(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _drop_opaque_RustOpaque_frb_opaque_sync_return(
-      ptr,
-    );
-  }
-
-  late final _drop_opaque_RustOpaque_frb_opaque_sync_returnPtr =
+  late final _rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsyncPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'drop_opaque_RustOpaque_frb_opaque_sync_return');
-  late final _drop_opaque_RustOpaque_frb_opaque_sync_return =
-      _drop_opaque_RustOpaque_frb_opaque_sync_returnPtr
+          'rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync');
+  late final _rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync =
+      _rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsyncPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
-  ffi.Pointer<ffi.Void> share_opaque_RustOpaque_frb_opaque_sync_return(
+  void rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _share_opaque_RustOpaque_frb_opaque_sync_return(
+    return _rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync(
       ptr,
     );
   }
 
-  late final _share_opaque_RustOpaque_frb_opaque_sync_returnPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-      'share_opaque_RustOpaque_frb_opaque_sync_return');
-  late final _share_opaque_RustOpaque_frb_opaque_sync_return =
-      _share_opaque_RustOpaque_frb_opaque_sync_returnPtr
-          .asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
-
-  void drop_opaque_RustOpaque_hide_data(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _drop_opaque_RustOpaque_hide_data(
-      ptr,
-    );
-  }
-
-  late final _drop_opaque_RustOpaque_hide_dataPtr =
+  late final _rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsyncPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'drop_opaque_RustOpaque_hide_data');
-  late final _drop_opaque_RustOpaque_hide_data =
-      _drop_opaque_RustOpaque_hide_dataPtr
+          'rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync');
+  late final _rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync =
+      _rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsyncPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
-  ffi.Pointer<ffi.Void> share_opaque_RustOpaque_hide_data(
+  void rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSync(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _share_opaque_RustOpaque_hide_data(
+    return _rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSync(
       ptr,
     );
   }
 
-  late final _share_opaque_RustOpaque_hide_dataPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Void> Function(
-              ffi.Pointer<ffi.Void>)>>('share_opaque_RustOpaque_hide_data');
-  late final _share_opaque_RustOpaque_hide_data =
-      _share_opaque_RustOpaque_hide_dataPtr
-          .asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
-
-  void drop_opaque_RustOpaque_i_32(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _drop_opaque_RustOpaque_i_32(
-      ptr,
-    );
-  }
-
-  late final _drop_opaque_RustOpaque_i_32Ptr =
+  late final _rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSyncPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'drop_opaque_RustOpaque_i_32');
-  late final _drop_opaque_RustOpaque_i_32 = _drop_opaque_RustOpaque_i_32Ptr
-      .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  ffi.Pointer<ffi.Void> share_opaque_RustOpaque_i_32(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _share_opaque_RustOpaque_i_32(
-      ptr,
-    );
-  }
-
-  late final _share_opaque_RustOpaque_i_32Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Void> Function(
-              ffi.Pointer<ffi.Void>)>>('share_opaque_RustOpaque_i_32');
-  late final _share_opaque_RustOpaque_i_32 = _share_opaque_RustOpaque_i_32Ptr
-      .asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
-
-  void drop_opaque_RustOpaque_non_clone_data(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _drop_opaque_RustOpaque_non_clone_data(
-      ptr,
-    );
-  }
-
-  late final _drop_opaque_RustOpaque_non_clone_dataPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'drop_opaque_RustOpaque_non_clone_data');
-  late final _drop_opaque_RustOpaque_non_clone_data =
-      _drop_opaque_RustOpaque_non_clone_dataPtr
+          'rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSync');
+  late final _rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSync =
+      _rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSyncPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
-  ffi.Pointer<ffi.Void> share_opaque_RustOpaque_non_clone_data(
+  void rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _share_opaque_RustOpaque_non_clone_data(
+    return _rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync(
       ptr,
     );
   }
 
-  late final _share_opaque_RustOpaque_non_clone_dataPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-      'share_opaque_RustOpaque_non_clone_data');
-  late final _share_opaque_RustOpaque_non_clone_data =
-      _share_opaque_RustOpaque_non_clone_dataPtr
-          .asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
-
-  void drop_opaque_RustOpaque_non_send_hide_data(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _drop_opaque_RustOpaque_non_send_hide_data(
-      ptr,
-    );
-  }
-
-  late final _drop_opaque_RustOpaque_non_send_hide_dataPtr =
+  late final _rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSyncPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'drop_opaque_RustOpaque_non_send_hide_data');
-  late final _drop_opaque_RustOpaque_non_send_hide_data =
-      _drop_opaque_RustOpaque_non_send_hide_dataPtr
+          'rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync');
+  late final _rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync =
+      _rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSyncPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
-  ffi.Pointer<ffi.Void> share_opaque_RustOpaque_non_send_hide_data(
+  void rust_arc_increment_strong_count_RustOpaque_frb_opaque_return(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _share_opaque_RustOpaque_non_send_hide_data(
+    return _rust_arc_increment_strong_count_RustOpaque_frb_opaque_return(
       ptr,
     );
   }
 
-  late final _share_opaque_RustOpaque_non_send_hide_dataPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-      'share_opaque_RustOpaque_non_send_hide_data');
-  late final _share_opaque_RustOpaque_non_send_hide_data =
-      _share_opaque_RustOpaque_non_send_hide_dataPtr
-          .asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
+  late final _rust_arc_increment_strong_count_RustOpaque_frb_opaque_returnPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_increment_strong_count_RustOpaque_frb_opaque_return');
+  late final _rust_arc_increment_strong_count_RustOpaque_frb_opaque_return =
+      _rust_arc_increment_strong_count_RustOpaque_frb_opaque_returnPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_frb_opaque_returnPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return');
+  late final _rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return =
+      _rust_arc_decrement_strong_count_RustOpaque_frb_opaque_returnPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_increment_strong_count_RustOpaque_frb_opaque_sync_return(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_frb_opaque_sync_return(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_frb_opaque_sync_returnPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_increment_strong_count_RustOpaque_frb_opaque_sync_return');
+  late final _rust_arc_increment_strong_count_RustOpaque_frb_opaque_sync_return =
+      _rust_arc_increment_strong_count_RustOpaque_frb_opaque_sync_returnPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_return(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_return(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_returnPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_return');
+  late final _rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_return =
+      _rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_returnPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_increment_strong_count_RustOpaque_hide_data(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_hide_data(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_hide_dataPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_increment_strong_count_RustOpaque_hide_data');
+  late final _rust_arc_increment_strong_count_RustOpaque_hide_data =
+      _rust_arc_increment_strong_count_RustOpaque_hide_dataPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_decrement_strong_count_RustOpaque_hide_data(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_hide_data(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_hide_dataPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_decrement_strong_count_RustOpaque_hide_data');
+  late final _rust_arc_decrement_strong_count_RustOpaque_hide_data =
+      _rust_arc_decrement_strong_count_RustOpaque_hide_dataPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_increment_strong_count_RustOpaque_i_32(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_i_32(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_i_32Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_increment_strong_count_RustOpaque_i_32');
+  late final _rust_arc_increment_strong_count_RustOpaque_i_32 =
+      _rust_arc_increment_strong_count_RustOpaque_i_32Ptr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_decrement_strong_count_RustOpaque_i_32(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_i_32(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_i_32Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_decrement_strong_count_RustOpaque_i_32');
+  late final _rust_arc_decrement_strong_count_RustOpaque_i_32 =
+      _rust_arc_decrement_strong_count_RustOpaque_i_32Ptr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_increment_strong_count_RustOpaque_non_clone_data(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_non_clone_data(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_non_clone_dataPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_increment_strong_count_RustOpaque_non_clone_data');
+  late final _rust_arc_increment_strong_count_RustOpaque_non_clone_data =
+      _rust_arc_increment_strong_count_RustOpaque_non_clone_dataPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_decrement_strong_count_RustOpaque_non_clone_data(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_non_clone_data(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_non_clone_dataPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_decrement_strong_count_RustOpaque_non_clone_data');
+  late final _rust_arc_decrement_strong_count_RustOpaque_non_clone_data =
+      _rust_arc_decrement_strong_count_RustOpaque_non_clone_dataPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_increment_strong_count_RustOpaque_non_send_hide_data(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_non_send_hide_data(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_non_send_hide_dataPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_increment_strong_count_RustOpaque_non_send_hide_data');
+  late final _rust_arc_increment_strong_count_RustOpaque_non_send_hide_data =
+      _rust_arc_increment_strong_count_RustOpaque_non_send_hide_dataPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_non_send_hide_dataPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data');
+  late final _rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data =
+      _rust_arc_decrement_strong_count_RustOpaque_non_send_hide_dataPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   ffi.Pointer<AbcTwinNormalKind> inflate_AbcTwinNormal_A() {
     return _inflate_AbcTwinNormal_A();
@@ -22556,51 +22315,31 @@ final class wire_list_prim_u_64 extends ffi.Struct {
   external int len;
 }
 
-final class wire_RustOpaque_hide_data extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> ptr;
-}
-
 final class wire_list_RustOpaque_hide_data extends ffi.Struct {
-  external ffi.Pointer<wire_RustOpaque_hide_data> ptr;
+  external ffi.Pointer<ffi.Pointer<ffi.Void>> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
 final class wire_EnumOpaqueTwinRustAsync_Struct extends ffi.Struct {
-  external wire_RustOpaque_hide_data field0;
-}
-
-final class wire_RustOpaque_i_32 extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> ptr;
+  external ffi.Pointer<ffi.Void> field0;
 }
 
 final class wire_EnumOpaqueTwinRustAsync_Primitive extends ffi.Struct {
-  external wire_RustOpaque_i_32 field0;
-}
-
-final class wire_RustOpaque_box_dynDartDebugTwinRustAsync extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> ptr;
+  external ffi.Pointer<ffi.Void> field0;
 }
 
 final class wire_EnumOpaqueTwinRustAsync_TraitObj extends ffi.Struct {
-  external wire_RustOpaque_box_dynDartDebugTwinRustAsync field0;
-}
-
-final class wire_RustOpaque_MutexHideData extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> ptr;
+  external ffi.Pointer<ffi.Void> field0;
 }
 
 final class wire_EnumOpaqueTwinRustAsync_Mutex extends ffi.Struct {
-  external wire_RustOpaque_MutexHideData field0;
-}
-
-final class wire_RustOpaque_RwLockHideData extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> ptr;
+  external ffi.Pointer<ffi.Void> field0;
 }
 
 final class wire_EnumOpaqueTwinRustAsync_RwLock extends ffi.Struct {
-  external wire_RustOpaque_RwLockHideData field0;
+  external ffi.Pointer<ffi.Void> field0;
 }
 
 final class EnumOpaqueTwinRustAsyncKind extends ffi.Union {
@@ -22623,37 +22362,29 @@ final class wire_enum_opaque_twin_rust_async extends ffi.Struct {
 }
 
 final class wire_opaque_nested_twin_rust_async extends ffi.Struct {
-  external wire_RustOpaque_hide_data first;
+  external ffi.Pointer<ffi.Void> first;
 
-  external wire_RustOpaque_hide_data second;
-}
-
-final class wire_RustOpaque_non_clone_data extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> ptr;
+  external ffi.Pointer<ffi.Void> second;
 }
 
 final class wire_EnumOpaqueTwinSync_Struct extends ffi.Struct {
-  external wire_RustOpaque_hide_data field0;
+  external ffi.Pointer<ffi.Void> field0;
 }
 
 final class wire_EnumOpaqueTwinSync_Primitive extends ffi.Struct {
-  external wire_RustOpaque_i_32 field0;
-}
-
-final class wire_RustOpaque_box_dynDartDebugTwinSync extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> ptr;
+  external ffi.Pointer<ffi.Void> field0;
 }
 
 final class wire_EnumOpaqueTwinSync_TraitObj extends ffi.Struct {
-  external wire_RustOpaque_box_dynDartDebugTwinSync field0;
+  external ffi.Pointer<ffi.Void> field0;
 }
 
 final class wire_EnumOpaqueTwinSync_Mutex extends ffi.Struct {
-  external wire_RustOpaque_MutexHideData field0;
+  external ffi.Pointer<ffi.Void> field0;
 }
 
 final class wire_EnumOpaqueTwinSync_RwLock extends ffi.Struct {
-  external wire_RustOpaque_RwLockHideData field0;
+  external ffi.Pointer<ffi.Void> field0;
 }
 
 final class EnumOpaqueTwinSyncKind extends ffi.Union {
@@ -22676,9 +22407,9 @@ final class wire_enum_opaque_twin_sync extends ffi.Struct {
 }
 
 final class wire_opaque_nested_twin_sync extends ffi.Struct {
-  external wire_RustOpaque_hide_data first;
+  external ffi.Pointer<ffi.Void> first;
 
-  external wire_RustOpaque_hide_data second;
+  external ffi.Pointer<ffi.Void> second;
 }
 
 final class wire_struct_with_one_field_twin_rust_async extends ffi.Struct {
@@ -22766,27 +22497,23 @@ final class wire_feature_uuid_twin_sync extends ffi.Struct {
 }
 
 final class wire_EnumOpaqueTwinNormal_Struct extends ffi.Struct {
-  external wire_RustOpaque_hide_data field0;
+  external ffi.Pointer<ffi.Void> field0;
 }
 
 final class wire_EnumOpaqueTwinNormal_Primitive extends ffi.Struct {
-  external wire_RustOpaque_i_32 field0;
-}
-
-final class wire_RustOpaque_box_dynDartDebugTwinNormal extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> ptr;
+  external ffi.Pointer<ffi.Void> field0;
 }
 
 final class wire_EnumOpaqueTwinNormal_TraitObj extends ffi.Struct {
-  external wire_RustOpaque_box_dynDartDebugTwinNormal field0;
+  external ffi.Pointer<ffi.Void> field0;
 }
 
 final class wire_EnumOpaqueTwinNormal_Mutex extends ffi.Struct {
-  external wire_RustOpaque_MutexHideData field0;
+  external ffi.Pointer<ffi.Void> field0;
 }
 
 final class wire_EnumOpaqueTwinNormal_RwLock extends ffi.Struct {
-  external wire_RustOpaque_RwLockHideData field0;
+  external ffi.Pointer<ffi.Void> field0;
 }
 
 final class EnumOpaqueTwinNormalKind extends ffi.Union {
@@ -22809,13 +22536,9 @@ final class wire_enum_opaque_twin_normal extends ffi.Struct {
 }
 
 final class wire_opaque_nested_twin_normal extends ffi.Struct {
-  external wire_RustOpaque_hide_data first;
+  external ffi.Pointer<ffi.Void> first;
 
-  external wire_RustOpaque_hide_data second;
-}
-
-final class wire_RustOpaque_non_send_hide_data extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> ptr;
+  external ffi.Pointer<ffi.Void> second;
 }
 
 final class wire_struct_with_one_field_twin_normal extends ffi.Struct {

@@ -197,65 +197,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  Object api2wire_RustOpaque_MutexHideData(MutexHideData raw) {
-    // ignore: invalid_use_of_internal_member
-    return raw.shareOrMove();
-  }
-
-  @protected
-  Object api2wire_RustOpaque_RwLockHideData(RwLockHideData raw) {
-    // ignore: invalid_use_of_internal_member
-    return raw.shareOrMove();
-  }
-
-  @protected
-  Object api2wire_RustOpaque_box_dynDartDebugTwinNormal(
-      BoxDartDebugTwinNormal raw) {
-    // ignore: invalid_use_of_internal_member
-    return raw.shareOrMove();
-  }
-
-  @protected
-  Object api2wire_RustOpaque_box_dynDartDebugTwinRustAsync(
-      BoxDartDebugTwinRustAsync raw) {
-    // ignore: invalid_use_of_internal_member
-    return raw.shareOrMove();
-  }
-
-  @protected
-  Object api2wire_RustOpaque_box_dynDartDebugTwinSync(
-      BoxDartDebugTwinSync raw) {
-    // ignore: invalid_use_of_internal_member
-    return raw.shareOrMove();
-  }
-
-  @protected
-  Object api2wire_RustOpaque_hide_data(HideData raw) {
-    // ignore: invalid_use_of_internal_member
-    return raw.shareOrMove();
-  }
-
-  @protected
   List<dynamic> api2wire_RustOpaque_hide_data_array_2(HideDataArray2 raw) {
     return api2wire_list_RustOpaque_hide_data(raw);
-  }
-
-  @protected
-  Object api2wire_RustOpaque_i_32(I32 raw) {
-    // ignore: invalid_use_of_internal_member
-    return raw.shareOrMove();
-  }
-
-  @protected
-  Object api2wire_RustOpaque_non_clone_data(NonCloneData raw) {
-    // ignore: invalid_use_of_internal_member
-    return raw.shareOrMove();
-  }
-
-  @protected
-  Object api2wire_RustOpaque_non_send_hide_data(NonSendHideData raw) {
-    // ignore: invalid_use_of_internal_member
-    return raw.shareOrMove();
   }
 
   @protected
@@ -5870,81 +5813,103 @@ class RustLibWire extends BaseWire {
   void wire_handle_uuids_twin_normal(NativePortType port_, Uint8List ids) =>
       wasmModule.wire_handle_uuids_twin_normal(port_, ids);
 
-  void drop_opaque_RustOpaque_MutexHideData(dynamic ptr) =>
-      wasmModule.drop_opaque_RustOpaque_MutexHideData(ptr);
+  void rust_arc_increment_strong_count_RustOpaque_MutexHideData(dynamic ptr) =>
+      wasmModule.rust_arc_increment_strong_count_RustOpaque_MutexHideData(ptr);
 
-  int /* *const std::ffi::c_void */ share_opaque_RustOpaque_MutexHideData(
+  void rust_arc_decrement_strong_count_RustOpaque_MutexHideData(dynamic ptr) =>
+      wasmModule.rust_arc_decrement_strong_count_RustOpaque_MutexHideData(ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_RwLockHideData(dynamic ptr) =>
+      wasmModule.rust_arc_increment_strong_count_RustOpaque_RwLockHideData(ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_RwLockHideData(dynamic ptr) =>
+      wasmModule.rust_arc_decrement_strong_count_RustOpaque_RwLockHideData(ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal(
           dynamic ptr) =>
-      wasmModule.share_opaque_RustOpaque_MutexHideData(ptr);
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal(
+              ptr);
 
-  void drop_opaque_RustOpaque_RwLockHideData(dynamic ptr) =>
-      wasmModule.drop_opaque_RustOpaque_RwLockHideData(ptr);
-
-  int /* *const std::ffi::c_void */ share_opaque_RustOpaque_RwLockHideData(
+  void rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormal(
           dynamic ptr) =>
-      wasmModule.share_opaque_RustOpaque_RwLockHideData(ptr);
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormal(
+              ptr);
 
-  void drop_opaque_RustOpaque_box_dynDartDebugTwinNormal(dynamic ptr) =>
-      wasmModule.drop_opaque_RustOpaque_box_dynDartDebugTwinNormal(ptr);
-
-  int /* *const std::ffi::c_void */
-      share_opaque_RustOpaque_box_dynDartDebugTwinNormal(dynamic ptr) =>
-          wasmModule.share_opaque_RustOpaque_box_dynDartDebugTwinNormal(ptr);
-
-  void drop_opaque_RustOpaque_box_dynDartDebugTwinRustAsync(dynamic ptr) =>
-      wasmModule.drop_opaque_RustOpaque_box_dynDartDebugTwinRustAsync(ptr);
-
-  int /* *const std::ffi::c_void */
-      share_opaque_RustOpaque_box_dynDartDebugTwinRustAsync(dynamic ptr) =>
-          wasmModule.share_opaque_RustOpaque_box_dynDartDebugTwinRustAsync(ptr);
-
-  void drop_opaque_RustOpaque_box_dynDartDebugTwinSync(dynamic ptr) =>
-      wasmModule.drop_opaque_RustOpaque_box_dynDartDebugTwinSync(ptr);
-
-  int /* *const std::ffi::c_void */
-      share_opaque_RustOpaque_box_dynDartDebugTwinSync(dynamic ptr) =>
-          wasmModule.share_opaque_RustOpaque_box_dynDartDebugTwinSync(ptr);
-
-  void drop_opaque_RustOpaque_frb_opaque_return(dynamic ptr) =>
-      wasmModule.drop_opaque_RustOpaque_frb_opaque_return(ptr);
-
-  int /* *const std::ffi::c_void */ share_opaque_RustOpaque_frb_opaque_return(
+  void rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync(
           dynamic ptr) =>
-      wasmModule.share_opaque_RustOpaque_frb_opaque_return(ptr);
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync(
+              ptr);
 
-  void drop_opaque_RustOpaque_frb_opaque_sync_return(dynamic ptr) =>
-      wasmModule.drop_opaque_RustOpaque_frb_opaque_sync_return(ptr);
-
-  int /* *const std::ffi::c_void */
-      share_opaque_RustOpaque_frb_opaque_sync_return(dynamic ptr) =>
-          wasmModule.share_opaque_RustOpaque_frb_opaque_sync_return(ptr);
-
-  void drop_opaque_RustOpaque_hide_data(dynamic ptr) =>
-      wasmModule.drop_opaque_RustOpaque_hide_data(ptr);
-
-  int /* *const std::ffi::c_void */ share_opaque_RustOpaque_hide_data(
+  void rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync(
           dynamic ptr) =>
-      wasmModule.share_opaque_RustOpaque_hide_data(ptr);
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync(
+              ptr);
 
-  void drop_opaque_RustOpaque_i_32(dynamic ptr) =>
-      wasmModule.drop_opaque_RustOpaque_i_32(ptr);
-
-  int /* *const std::ffi::c_void */ share_opaque_RustOpaque_i_32(dynamic ptr) =>
-      wasmModule.share_opaque_RustOpaque_i_32(ptr);
-
-  void drop_opaque_RustOpaque_non_clone_data(dynamic ptr) =>
-      wasmModule.drop_opaque_RustOpaque_non_clone_data(ptr);
-
-  int /* *const std::ffi::c_void */ share_opaque_RustOpaque_non_clone_data(
+  void rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSync(
           dynamic ptr) =>
-      wasmModule.share_opaque_RustOpaque_non_clone_data(ptr);
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSync(
+              ptr);
 
-  void drop_opaque_RustOpaque_non_send_hide_data(dynamic ptr) =>
-      wasmModule.drop_opaque_RustOpaque_non_send_hide_data(ptr);
-
-  int /* *const std::ffi::c_void */ share_opaque_RustOpaque_non_send_hide_data(
+  void rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync(
           dynamic ptr) =>
-      wasmModule.share_opaque_RustOpaque_non_send_hide_data(ptr);
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_frb_opaque_return(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_frb_opaque_return(ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return(ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_frb_opaque_sync_return(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_frb_opaque_sync_return(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_return(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_return(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_hide_data(dynamic ptr) =>
+      wasmModule.rust_arc_increment_strong_count_RustOpaque_hide_data(ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_hide_data(dynamic ptr) =>
+      wasmModule.rust_arc_decrement_strong_count_RustOpaque_hide_data(ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_i_32(dynamic ptr) =>
+      wasmModule.rust_arc_increment_strong_count_RustOpaque_i_32(ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_i_32(dynamic ptr) =>
+      wasmModule.rust_arc_decrement_strong_count_RustOpaque_i_32(ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_non_clone_data(dynamic ptr) =>
+      wasmModule.rust_arc_increment_strong_count_RustOpaque_non_clone_data(ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_non_clone_data(dynamic ptr) =>
+      wasmModule.rust_arc_decrement_strong_count_RustOpaque_non_clone_data(ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_non_send_hide_data(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_non_send_hide_data(ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data(ptr);
 }
 
 @JS('wasm_bindgen')
@@ -7959,59 +7924,75 @@ class RustLibWasmModule implements WasmModule {
   external void wire_handle_uuids_twin_normal(
       NativePortType port_, Uint8List ids);
 
-  external void drop_opaque_RustOpaque_MutexHideData(dynamic ptr);
-
-  external int /* *const std::ffi::c_void */
-      share_opaque_RustOpaque_MutexHideData(dynamic ptr);
-
-  external void drop_opaque_RustOpaque_RwLockHideData(dynamic ptr);
-
-  external int /* *const std::ffi::c_void */
-      share_opaque_RustOpaque_RwLockHideData(dynamic ptr);
-
-  external void drop_opaque_RustOpaque_box_dynDartDebugTwinNormal(dynamic ptr);
-
-  external int /* *const std::ffi::c_void */
-      share_opaque_RustOpaque_box_dynDartDebugTwinNormal(dynamic ptr);
-
-  external void drop_opaque_RustOpaque_box_dynDartDebugTwinRustAsync(
+  external void rust_arc_increment_strong_count_RustOpaque_MutexHideData(
       dynamic ptr);
 
-  external int /* *const std::ffi::c_void */
-      share_opaque_RustOpaque_box_dynDartDebugTwinRustAsync(dynamic ptr);
-
-  external void drop_opaque_RustOpaque_box_dynDartDebugTwinSync(dynamic ptr);
-
-  external int /* *const std::ffi::c_void */
-      share_opaque_RustOpaque_box_dynDartDebugTwinSync(dynamic ptr);
-
-  external void drop_opaque_RustOpaque_frb_opaque_return(dynamic ptr);
-
-  external int /* *const std::ffi::c_void */
-      share_opaque_RustOpaque_frb_opaque_return(dynamic ptr);
-
-  external void drop_opaque_RustOpaque_frb_opaque_sync_return(dynamic ptr);
-
-  external int /* *const std::ffi::c_void */
-      share_opaque_RustOpaque_frb_opaque_sync_return(dynamic ptr);
-
-  external void drop_opaque_RustOpaque_hide_data(dynamic ptr);
-
-  external int /* *const std::ffi::c_void */ share_opaque_RustOpaque_hide_data(
+  external void rust_arc_decrement_strong_count_RustOpaque_MutexHideData(
       dynamic ptr);
 
-  external void drop_opaque_RustOpaque_i_32(dynamic ptr);
-
-  external int /* *const std::ffi::c_void */ share_opaque_RustOpaque_i_32(
+  external void rust_arc_increment_strong_count_RustOpaque_RwLockHideData(
       dynamic ptr);
 
-  external void drop_opaque_RustOpaque_non_clone_data(dynamic ptr);
+  external void rust_arc_decrement_strong_count_RustOpaque_RwLockHideData(
+      dynamic ptr);
 
-  external int /* *const std::ffi::c_void */
-      share_opaque_RustOpaque_non_clone_data(dynamic ptr);
+  external void
+      rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal(
+          dynamic ptr);
 
-  external void drop_opaque_RustOpaque_non_send_hide_data(dynamic ptr);
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormal(
+          dynamic ptr);
 
-  external int /* *const std::ffi::c_void */
-      share_opaque_RustOpaque_non_send_hide_data(dynamic ptr);
+  external void
+      rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync(
+          dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSync(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync(
+          dynamic ptr);
+
+  external void rust_arc_increment_strong_count_RustOpaque_frb_opaque_return(
+      dynamic ptr);
+
+  external void rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return(
+      dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_frb_opaque_sync_return(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_return(
+          dynamic ptr);
+
+  external void rust_arc_increment_strong_count_RustOpaque_hide_data(
+      dynamic ptr);
+
+  external void rust_arc_decrement_strong_count_RustOpaque_hide_data(
+      dynamic ptr);
+
+  external void rust_arc_increment_strong_count_RustOpaque_i_32(dynamic ptr);
+
+  external void rust_arc_decrement_strong_count_RustOpaque_i_32(dynamic ptr);
+
+  external void rust_arc_increment_strong_count_RustOpaque_non_clone_data(
+      dynamic ptr);
+
+  external void rust_arc_decrement_strong_count_RustOpaque_non_clone_data(
+      dynamic ptr);
+
+  external void rust_arc_increment_strong_count_RustOpaque_non_send_hide_data(
+      dynamic ptr);
+
+  external void rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data(
+      dynamic ptr);
 }

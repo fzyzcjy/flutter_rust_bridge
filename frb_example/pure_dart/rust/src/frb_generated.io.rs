@@ -40,44 +40,42 @@ impl Wire2Api<[flutter_rust_bridge::DartOpaque; 1]> for *mut wire_list_DartOpaqu
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
-impl Wire2Api<flutter_rust_bridge::RustOpaque<Mutex<HideData>>> for wire_RustOpaque_MutexHideData {
+impl Wire2Api<flutter_rust_bridge::RustOpaque<Mutex<HideData>>> for *const std::ffi::c_void {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Mutex<HideData>> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self.ptr) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
-impl Wire2Api<flutter_rust_bridge::RustOpaque<RwLock<HideData>>>
-    for wire_RustOpaque_RwLockHideData
-{
+impl Wire2Api<flutter_rust_bridge::RustOpaque<RwLock<HideData>>> for *const std::ffi::c_void {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<RwLock<HideData>> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self.ptr) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinNormal>>>
-    for wire_RustOpaque_box_dynDartDebugTwinNormal
+    for *const std::ffi::c_void
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinNormal>> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self.ptr) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsync>>>
-    for wire_RustOpaque_box_dynDartDebugTwinRustAsync
+    for *const std::ffi::c_void
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsync>> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self.ptr) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>>>
-    for wire_RustOpaque_box_dynDartDebugTwinSync
+    for *const std::ffi::c_void
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self.ptr) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
-    for wire_RustOpaque_hide_data
+    for *const std::ffi::c_void
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self.ptr) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
 impl Wire2Api<[flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>; 2]>
@@ -91,27 +89,27 @@ impl Wire2Api<[flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::H
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
-impl Wire2Api<flutter_rust_bridge::RustOpaque<i32>> for wire_RustOpaque_i_32 {
+impl Wire2Api<flutter_rust_bridge::RustOpaque<i32>> for *const std::ffi::c_void {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<i32> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self.ptr) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData>>
-    for wire_RustOpaque_non_clone_data
+    for *const std::ffi::c_void
 {
     fn wire2api(
         self,
     ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self.ptr) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonSendHideData>>
-    for wire_RustOpaque_non_send_hide_data
+    for *const std::ffi::c_void
 {
     fn wire2api(
         self,
     ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonSendHideData> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self.ptr) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
 impl Wire2Api<String> for *mut wire_list_prim_u_8 {
@@ -394,7 +392,7 @@ impl Wire2Api<flutter_rust_bridge::DartOpaque> for *mut wire_DartOpaque {
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
-    for *mut wire_RustOpaque_hide_data
+    for *mut *const std::ffi::c_void
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData> {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
@@ -4137,60 +4135,6 @@ pub struct wire_DartOpaque {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_RustOpaque_MutexHideData {
-    ptr: *const core::ffi::c_void,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_RustOpaque_RwLockHideData {
-    ptr: *const core::ffi::c_void,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_RustOpaque_box_dynDartDebugTwinNormal {
-    ptr: *const core::ffi::c_void,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_RustOpaque_box_dynDartDebugTwinRustAsync {
-    ptr: *const core::ffi::c_void,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_RustOpaque_box_dynDartDebugTwinSync {
-    ptr: *const core::ffi::c_void,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_RustOpaque_hide_data {
-    ptr: *const core::ffi::c_void,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_RustOpaque_i_32 {
-    ptr: *const core::ffi::c_void,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_RustOpaque_non_clone_data {
-    ptr: *const core::ffi::c_void,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_RustOpaque_non_send_hide_data {
-    ptr: *const core::ffi::c_void,
-}
-
-#[repr(C)]
-#[derive(Clone)]
 pub struct wire_StringList {
     ptr: *mut *mut wire_list_prim_u_8,
     len: i32,
@@ -4831,31 +4775,31 @@ pub union EnumOpaqueTwinNormalKind {
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_EnumOpaqueTwinNormal_Struct {
-    field0: wire_RustOpaque_hide_data,
+    field0: *const std::ffi::c_void,
 }
 
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_EnumOpaqueTwinNormal_Primitive {
-    field0: wire_RustOpaque_i_32,
+    field0: *const std::ffi::c_void,
 }
 
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_EnumOpaqueTwinNormal_TraitObj {
-    field0: wire_RustOpaque_box_dynDartDebugTwinNormal,
+    field0: *const std::ffi::c_void,
 }
 
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_EnumOpaqueTwinNormal_Mutex {
-    field0: wire_RustOpaque_MutexHideData,
+    field0: *const std::ffi::c_void,
 }
 
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_EnumOpaqueTwinNormal_RwLock {
-    field0: wire_RustOpaque_RwLockHideData,
+    field0: *const std::ffi::c_void,
 }
 #[repr(C)]
 #[derive(Clone)]
@@ -4876,31 +4820,31 @@ pub union EnumOpaqueTwinRustAsyncKind {
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_EnumOpaqueTwinRustAsync_Struct {
-    field0: wire_RustOpaque_hide_data,
+    field0: *const std::ffi::c_void,
 }
 
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_EnumOpaqueTwinRustAsync_Primitive {
-    field0: wire_RustOpaque_i_32,
+    field0: *const std::ffi::c_void,
 }
 
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_EnumOpaqueTwinRustAsync_TraitObj {
-    field0: wire_RustOpaque_box_dynDartDebugTwinRustAsync,
+    field0: *const std::ffi::c_void,
 }
 
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_EnumOpaqueTwinRustAsync_Mutex {
-    field0: wire_RustOpaque_MutexHideData,
+    field0: *const std::ffi::c_void,
 }
 
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_EnumOpaqueTwinRustAsync_RwLock {
-    field0: wire_RustOpaque_RwLockHideData,
+    field0: *const std::ffi::c_void,
 }
 #[repr(C)]
 #[derive(Clone)]
@@ -4921,31 +4865,31 @@ pub union EnumOpaqueTwinSyncKind {
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_EnumOpaqueTwinSync_Struct {
-    field0: wire_RustOpaque_hide_data,
+    field0: *const std::ffi::c_void,
 }
 
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_EnumOpaqueTwinSync_Primitive {
-    field0: wire_RustOpaque_i_32,
+    field0: *const std::ffi::c_void,
 }
 
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_EnumOpaqueTwinSync_TraitObj {
-    field0: wire_RustOpaque_box_dynDartDebugTwinSync,
+    field0: *const std::ffi::c_void,
 }
 
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_EnumOpaqueTwinSync_Mutex {
-    field0: wire_RustOpaque_MutexHideData,
+    field0: *const std::ffi::c_void,
 }
 
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_EnumOpaqueTwinSync_RwLock {
-    field0: wire_RustOpaque_RwLockHideData,
+    field0: *const std::ffi::c_void,
 }
 #[repr(C)]
 #[derive(Clone)]
@@ -5493,7 +5437,7 @@ pub struct wire_list_DartOpaque {
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_list_RustOpaque_hide_data {
-    ptr: *mut wire_RustOpaque_hide_data,
+    ptr: *mut *const std::ffi::c_void,
     len: i32,
 }
 
@@ -5946,22 +5890,22 @@ pub struct wire_numbers {
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_opaque_nested_twin_normal {
-    first: wire_RustOpaque_hide_data,
-    second: wire_RustOpaque_hide_data,
+    first: *const std::ffi::c_void,
+    second: *const std::ffi::c_void,
 }
 
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_opaque_nested_twin_rust_async {
-    first: wire_RustOpaque_hide_data,
-    second: wire_RustOpaque_hide_data,
+    first: *const std::ffi::c_void,
+    second: *const std::ffi::c_void,
 }
 
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_opaque_nested_twin_sync {
-    first: wire_RustOpaque_hide_data,
-    second: wire_RustOpaque_hide_data,
+    first: *const std::ffi::c_void,
+    second: *const std::ffi::c_void,
 }
 
 #[repr(C)]
@@ -6284,69 +6228,6 @@ impl<T> NewWithNullPtr for *mut T {
 impl NewWithNullPtr for wire_DartOpaque {
     fn new_with_null_ptr() -> Self {
         Self { port: 0, handle: 0 }
-    }
-}
-impl NewWithNullPtr for wire_RustOpaque_MutexHideData {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            ptr: core::ptr::null(),
-        }
-    }
-}
-impl NewWithNullPtr for wire_RustOpaque_RwLockHideData {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            ptr: core::ptr::null(),
-        }
-    }
-}
-impl NewWithNullPtr for wire_RustOpaque_box_dynDartDebugTwinNormal {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            ptr: core::ptr::null(),
-        }
-    }
-}
-impl NewWithNullPtr for wire_RustOpaque_box_dynDartDebugTwinRustAsync {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            ptr: core::ptr::null(),
-        }
-    }
-}
-impl NewWithNullPtr for wire_RustOpaque_box_dynDartDebugTwinSync {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            ptr: core::ptr::null(),
-        }
-    }
-}
-impl NewWithNullPtr for wire_RustOpaque_hide_data {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            ptr: core::ptr::null(),
-        }
-    }
-}
-impl NewWithNullPtr for wire_RustOpaque_i_32 {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            ptr: core::ptr::null(),
-        }
-    }
-}
-impl NewWithNullPtr for wire_RustOpaque_non_clone_data {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            ptr: core::ptr::null(),
-        }
-    }
-}
-impl NewWithNullPtr for wire_RustOpaque_non_send_hide_data {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            ptr: core::ptr::null(),
-        }
     }
 }
 impl NewWithNullPtr for wire_a_twin_normal {
@@ -7699,8 +7580,8 @@ impl Default for wire_numbers {
 impl NewWithNullPtr for wire_opaque_nested_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
-            first: wire_RustOpaque_hide_data::new_with_null_ptr(),
-            second: wire_RustOpaque_hide_data::new_with_null_ptr(),
+            first: Default::default(),
+            second: Default::default(),
         }
     }
 }
@@ -7712,8 +7593,8 @@ impl Default for wire_opaque_nested_twin_normal {
 impl NewWithNullPtr for wire_opaque_nested_twin_rust_async {
     fn new_with_null_ptr() -> Self {
         Self {
-            first: wire_RustOpaque_hide_data::new_with_null_ptr(),
-            second: wire_RustOpaque_hide_data::new_with_null_ptr(),
+            first: Default::default(),
+            second: Default::default(),
         }
     }
 }
@@ -7725,8 +7606,8 @@ impl Default for wire_opaque_nested_twin_rust_async {
 impl NewWithNullPtr for wire_opaque_nested_twin_sync {
     fn new_with_null_ptr() -> Self {
         Self {
-            first: wire_RustOpaque_hide_data::new_with_null_ptr(),
-            second: wire_RustOpaque_hide_data::new_with_null_ptr(),
+            first: Default::default(),
+            second: Default::default(),
         }
     }
 }
@@ -11909,7 +11790,7 @@ pub extern "C" fn wire_create_opaque_twin_rust_async(port_: i64) {
 #[no_mangle]
 pub extern "C" fn wire_create_option_opaque_twin_rust_async(
     port_: i64,
-    opaque: *mut wire_RustOpaque_hide_data,
+    opaque: *mut *const std::ffi::c_void,
 ) {
     wire_create_option_opaque_twin_rust_async_impl(port_, opaque)
 }
@@ -11967,22 +11848,19 @@ pub extern "C" fn wire_run_nested_opaque_twin_rust_async(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_run_non_clone_twin_rust_async(
-    port_: i64,
-    clone: wire_RustOpaque_non_clone_data,
-) {
+pub extern "C" fn wire_run_non_clone_twin_rust_async(port_: i64, clone: *const std::ffi::c_void) {
     wire_run_non_clone_twin_rust_async_impl(port_, clone)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_run_opaque_twin_rust_async(port_: i64, opaque: wire_RustOpaque_hide_data) {
+pub extern "C" fn wire_run_opaque_twin_rust_async(port_: i64, opaque: *const std::ffi::c_void) {
     wire_run_opaque_twin_rust_async_impl(port_, opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_run_opaque_with_delay_twin_rust_async(
     port_: i64,
-    opaque: wire_RustOpaque_hide_data,
+    opaque: *const std::ffi::c_void,
 ) {
     wire_run_opaque_with_delay_twin_rust_async_impl(port_, opaque)
 }
@@ -11990,7 +11868,7 @@ pub extern "C" fn wire_run_opaque_with_delay_twin_rust_async(
 #[no_mangle]
 pub extern "C" fn wire_unwrap_rust_opaque_twin_rust_async(
     port_: i64,
-    opaque: wire_RustOpaque_hide_data,
+    opaque: *const std::ffi::c_void,
 ) {
     wire_unwrap_rust_opaque_twin_rust_async_impl(port_, opaque)
 }
@@ -12015,7 +11893,7 @@ pub extern "C" fn wire_create_opaque_twin_sync(
 
 #[no_mangle]
 pub extern "C" fn wire_create_option_opaque_twin_sync(
-    opaque: *mut wire_RustOpaque_hide_data,
+    opaque: *mut *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     wire_create_option_opaque_twin_sync_impl(opaque)
 }
@@ -12074,28 +11952,28 @@ pub extern "C" fn wire_run_nested_opaque_twin_sync(
 
 #[no_mangle]
 pub extern "C" fn wire_run_non_clone_twin_sync(
-    clone: wire_RustOpaque_non_clone_data,
+    clone: *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     wire_run_non_clone_twin_sync_impl(clone)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_run_opaque_twin_sync(
-    opaque: wire_RustOpaque_hide_data,
+    opaque: *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     wire_run_opaque_twin_sync_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_run_opaque_with_delay_twin_sync(
-    opaque: wire_RustOpaque_hide_data,
+    opaque: *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     wire_run_opaque_with_delay_twin_sync_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_unwrap_rust_opaque_twin_sync(
-    opaque: wire_RustOpaque_hide_data,
+    opaque: *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     wire_unwrap_rust_opaque_twin_sync_impl(opaque)
 }
@@ -12353,7 +12231,7 @@ pub extern "C" fn wire_create_opaque_twin_normal(port_: i64) {
 #[no_mangle]
 pub extern "C" fn wire_create_option_opaque_twin_normal(
     port_: i64,
-    opaque: *mut wire_RustOpaque_hide_data,
+    opaque: *mut *const std::ffi::c_void,
 ) {
     wire_create_option_opaque_twin_normal_impl(port_, opaque)
 }
@@ -12411,31 +12289,25 @@ pub extern "C" fn wire_run_nested_opaque_twin_normal(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_run_non_clone_twin_normal(
-    port_: i64,
-    clone: wire_RustOpaque_non_clone_data,
-) {
+pub extern "C" fn wire_run_non_clone_twin_normal(port_: i64, clone: *const std::ffi::c_void) {
     wire_run_non_clone_twin_normal_impl(port_, clone)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_run_opaque_twin_normal(port_: i64, opaque: wire_RustOpaque_hide_data) {
+pub extern "C" fn wire_run_opaque_twin_normal(port_: i64, opaque: *const std::ffi::c_void) {
     wire_run_opaque_twin_normal_impl(port_, opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_run_opaque_with_delay_twin_normal(
     port_: i64,
-    opaque: wire_RustOpaque_hide_data,
+    opaque: *const std::ffi::c_void,
 ) {
     wire_run_opaque_with_delay_twin_normal_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_unwrap_rust_opaque_twin_normal(
-    port_: i64,
-    opaque: wire_RustOpaque_hide_data,
-) {
+pub extern "C" fn wire_unwrap_rust_opaque_twin_normal(port_: i64, opaque: *const std::ffi::c_void) {
     wire_unwrap_rust_opaque_twin_normal_impl(port_, opaque)
 }
 
@@ -12471,7 +12343,7 @@ pub extern "C" fn wire_sync_option_rust_opaque_twin_normal(
 
 #[no_mangle]
 pub extern "C" fn wire_sync_run_opaque_twin_normal(
-    opaque: wire_RustOpaque_non_send_hide_data,
+    opaque: *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     wire_sync_run_opaque_twin_normal_impl(opaque)
 }
@@ -12613,54 +12485,6 @@ pub extern "C" fn new_DartOpaque() -> wire_DartOpaque {
 }
 
 #[no_mangle]
-pub extern "C" fn new_RustOpaque_MutexHideData() -> wire_RustOpaque_MutexHideData {
-    wire_RustOpaque_MutexHideData::new_with_null_ptr()
-}
-
-#[no_mangle]
-pub extern "C" fn new_RustOpaque_RwLockHideData() -> wire_RustOpaque_RwLockHideData {
-    wire_RustOpaque_RwLockHideData::new_with_null_ptr()
-}
-
-#[no_mangle]
-pub extern "C" fn new_RustOpaque_box_dynDartDebugTwinNormal(
-) -> wire_RustOpaque_box_dynDartDebugTwinNormal {
-    wire_RustOpaque_box_dynDartDebugTwinNormal::new_with_null_ptr()
-}
-
-#[no_mangle]
-pub extern "C" fn new_RustOpaque_box_dynDartDebugTwinRustAsync(
-) -> wire_RustOpaque_box_dynDartDebugTwinRustAsync {
-    wire_RustOpaque_box_dynDartDebugTwinRustAsync::new_with_null_ptr()
-}
-
-#[no_mangle]
-pub extern "C" fn new_RustOpaque_box_dynDartDebugTwinSync(
-) -> wire_RustOpaque_box_dynDartDebugTwinSync {
-    wire_RustOpaque_box_dynDartDebugTwinSync::new_with_null_ptr()
-}
-
-#[no_mangle]
-pub extern "C" fn new_RustOpaque_hide_data() -> wire_RustOpaque_hide_data {
-    wire_RustOpaque_hide_data::new_with_null_ptr()
-}
-
-#[no_mangle]
-pub extern "C" fn new_RustOpaque_i_32() -> wire_RustOpaque_i_32 {
-    wire_RustOpaque_i_32::new_with_null_ptr()
-}
-
-#[no_mangle]
-pub extern "C" fn new_RustOpaque_non_clone_data() -> wire_RustOpaque_non_clone_data {
-    wire_RustOpaque_non_clone_data::new_with_null_ptr()
-}
-
-#[no_mangle]
-pub extern "C" fn new_RustOpaque_non_send_hide_data() -> wire_RustOpaque_non_send_hide_data {
-    wire_RustOpaque_non_send_hide_data::new_with_null_ptr()
-}
-
-#[no_mangle]
 pub extern "C" fn new_StringList(len: i32) -> *mut wire_StringList {
     let wrap = wire_StringList {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
@@ -12688,10 +12512,10 @@ pub extern "C" fn new_box_autoadd_DartOpaque() -> *mut wire_DartOpaque {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_RustOpaque_hide_data() -> *mut wire_RustOpaque_hide_data {
-    flutter_rust_bridge::for_generated::new_leak_box_ptr(
-        wire_RustOpaque_hide_data::new_with_null_ptr(),
-    )
+pub extern "C" fn new_box_autoadd_RustOpaque_hide_data(
+    value: *const std::ffi::c_void,
+) -> *mut *const std::ffi::c_void {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
@@ -13902,7 +13726,7 @@ pub extern "C" fn new_list_DartOpaque(len: i32) -> *mut wire_list_DartOpaque {
 pub extern "C" fn new_list_RustOpaque_hide_data(len: i32) -> *mut wire_list_RustOpaque_hide_data {
     let wrap = wire_list_RustOpaque_hide_data {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
-            <wire_RustOpaque_hide_data>::new_with_null_ptr(),
+            <*const std::ffi::c_void>::new_with_null_ptr(),
             len,
         ),
         len,
@@ -14286,210 +14110,232 @@ pub extern "C" fn new_list_weekdays_twin_sync(len: i32) -> *mut wire_list_weekda
 }
 
 #[no_mangle]
-pub extern "C" fn drop_opaque_RustOpaque_MutexHideData(ptr: *const std::ffi::c_void) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_opaque_arc_decr_count::<Mutex<HideData>>(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn share_opaque_RustOpaque_MutexHideData(
-    ptr: *const std::ffi::c_void,
-) -> *const std::ffi::c_void {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_opaque_arc_incr_count::<Mutex<HideData>>(ptr)
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_opaque_RustOpaque_RwLockHideData(ptr: *const std::ffi::c_void) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_opaque_arc_decr_count::<RwLock<HideData>>(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn share_opaque_RustOpaque_RwLockHideData(
-    ptr: *const std::ffi::c_void,
-) -> *const std::ffi::c_void {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_opaque_arc_incr_count::<RwLock<HideData>>(ptr)
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_opaque_RustOpaque_box_dynDartDebugTwinNormal(ptr: *const std::ffi::c_void) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_opaque_arc_decr_count::<
-            Box<dyn DartDebugTwinNormal>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn share_opaque_RustOpaque_box_dynDartDebugTwinNormal(
-    ptr: *const std::ffi::c_void,
-) -> *const std::ffi::c_void {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_opaque_arc_incr_count::<Box<dyn DartDebugTwinNormal>>(
-            ptr,
-        )
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_opaque_RustOpaque_box_dynDartDebugTwinRustAsync(
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_MutexHideData(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
-        flutter_rust_bridge::for_generated::rust_opaque_arc_decr_count::<
-            Box<dyn DartDebugTwinRustAsync>,
-        >(ptr);
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<Mutex<HideData>>(ptr);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn share_opaque_RustOpaque_box_dynDartDebugTwinRustAsync(
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_MutexHideData(
     ptr: *const std::ffi::c_void,
-) -> *const std::ffi::c_void {
+) {
     unsafe {
-        flutter_rust_bridge::for_generated::rust_opaque_arc_incr_count::<
-            Box<dyn DartDebugTwinRustAsync>,
-        >(ptr)
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<Mutex<HideData>>(ptr);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn drop_opaque_RustOpaque_box_dynDartDebugTwinSync(ptr: *const std::ffi::c_void) {
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_RwLockHideData(
+    ptr: *const std::ffi::c_void,
+) {
     unsafe {
-        flutter_rust_bridge::for_generated::rust_opaque_arc_decr_count::<Box<dyn DartDebugTwinSync>>(
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<RwLock<HideData>>(
             ptr,
         );
     }
 }
 
 #[no_mangle]
-pub extern "C" fn share_opaque_RustOpaque_box_dynDartDebugTwinSync(
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_RwLockHideData(
     ptr: *const std::ffi::c_void,
-) -> *const std::ffi::c_void {
+) {
     unsafe {
-        flutter_rust_bridge::for_generated::rust_opaque_arc_incr_count::<Box<dyn DartDebugTwinSync>>(
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<RwLock<HideData>>(
             ptr,
-        )
+        );
     }
 }
 
 #[no_mangle]
-pub extern "C" fn drop_opaque_RustOpaque_frb_opaque_return(ptr: *const std::ffi::c_void) {
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
     unsafe {
-        flutter_rust_bridge::for_generated::rust_opaque_arc_decr_count::<
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            Box<dyn DartDebugTwinNormal>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            Box<dyn DartDebugTwinNormal>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            Box<dyn DartDebugTwinRustAsync>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            Box<dyn DartDebugTwinRustAsync>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            Box<dyn DartDebugTwinSync>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            Box<dyn DartDebugTwinSync>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_frb_opaque_return(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
             crate::auxiliary::sample_types::FrbOpaqueReturn,
         >(ptr);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn share_opaque_RustOpaque_frb_opaque_return(
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return(
     ptr: *const std::ffi::c_void,
-) -> *const std::ffi::c_void {
+) {
     unsafe {
-        flutter_rust_bridge::for_generated::rust_opaque_arc_incr_count::<
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
             crate::auxiliary::sample_types::FrbOpaqueReturn,
-        >(ptr)
+        >(ptr);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn drop_opaque_RustOpaque_frb_opaque_sync_return(ptr: *const std::ffi::c_void) {
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_frb_opaque_sync_return(
+    ptr: *const std::ffi::c_void,
+) {
     unsafe {
-        flutter_rust_bridge::for_generated::rust_opaque_arc_decr_count::<
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
             crate::auxiliary::sample_types::FrbOpaqueSyncReturn,
         >(ptr);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn share_opaque_RustOpaque_frb_opaque_sync_return(
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_return(
     ptr: *const std::ffi::c_void,
-) -> *const std::ffi::c_void {
+) {
     unsafe {
-        flutter_rust_bridge::for_generated::rust_opaque_arc_incr_count::<
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
             crate::auxiliary::sample_types::FrbOpaqueSyncReturn,
-        >(ptr)
+        >(ptr);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn drop_opaque_RustOpaque_hide_data(ptr: *const std::ffi::c_void) {
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_hide_data(
+    ptr: *const std::ffi::c_void,
+) {
     unsafe {
-        flutter_rust_bridge::for_generated::rust_opaque_arc_decr_count::<
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
             crate::auxiliary::sample_types::HideData,
         >(ptr);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn share_opaque_RustOpaque_hide_data(
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_hide_data(
     ptr: *const std::ffi::c_void,
-) -> *const std::ffi::c_void {
+) {
     unsafe {
-        flutter_rust_bridge::for_generated::rust_opaque_arc_incr_count::<
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
             crate::auxiliary::sample_types::HideData,
-        >(ptr)
+        >(ptr);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn drop_opaque_RustOpaque_i_32(ptr: *const std::ffi::c_void) {
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_i_32(ptr: *const std::ffi::c_void) {
     unsafe {
-        flutter_rust_bridge::for_generated::rust_opaque_arc_decr_count::<i32>(ptr);
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<i32>(ptr);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn share_opaque_RustOpaque_i_32(
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_i_32(ptr: *const std::ffi::c_void) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<i32>(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_non_clone_data(
     ptr: *const std::ffi::c_void,
-) -> *const std::ffi::c_void {
-    unsafe { flutter_rust_bridge::for_generated::rust_opaque_arc_incr_count::<i32>(ptr) }
-}
-
-#[no_mangle]
-pub extern "C" fn drop_opaque_RustOpaque_non_clone_data(ptr: *const std::ffi::c_void) {
+) {
     unsafe {
-        flutter_rust_bridge::for_generated::rust_opaque_arc_decr_count::<
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
             crate::auxiliary::sample_types::NonCloneData,
         >(ptr);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn share_opaque_RustOpaque_non_clone_data(
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_non_clone_data(
     ptr: *const std::ffi::c_void,
-) -> *const std::ffi::c_void {
+) {
     unsafe {
-        flutter_rust_bridge::for_generated::rust_opaque_arc_incr_count::<
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
             crate::auxiliary::sample_types::NonCloneData,
-        >(ptr)
+        >(ptr);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn drop_opaque_RustOpaque_non_send_hide_data(ptr: *const std::ffi::c_void) {
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_non_send_hide_data(
+    ptr: *const std::ffi::c_void,
+) {
     unsafe {
-        flutter_rust_bridge::for_generated::rust_opaque_arc_decr_count::<
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
             crate::auxiliary::sample_types::NonSendHideData,
         >(ptr);
     }
 }
 
 #[no_mangle]
-pub extern "C" fn share_opaque_RustOpaque_non_send_hide_data(
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data(
     ptr: *const std::ffi::c_void,
-) -> *const std::ffi::c_void {
+) {
     unsafe {
-        flutter_rust_bridge::for_generated::rust_opaque_arc_incr_count::<
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
             crate::auxiliary::sample_types::NonSendHideData,
-        >(ptr)
+        >(ptr);
     }
 }
 
@@ -14848,7 +14694,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinNormal_Struct() -> *mut EnumOpaqueTwinNo
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinNormalKind {
         Struct: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinNormal_Struct {
-                field0: wire_RustOpaque_hide_data::new_with_null_ptr(),
+                field0: Default::default(),
             },
         ),
     })
@@ -14859,7 +14705,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinNormal_Primitive() -> *mut EnumOpaqueTwi
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinNormalKind {
         Primitive: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinNormal_Primitive {
-                field0: wire_RustOpaque_i_32::new_with_null_ptr(),
+                field0: Default::default(),
             },
         ),
     })
@@ -14870,7 +14716,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinNormal_TraitObj() -> *mut EnumOpaqueTwin
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinNormalKind {
         TraitObj: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinNormal_TraitObj {
-                field0: wire_RustOpaque_box_dynDartDebugTwinNormal::new_with_null_ptr(),
+                field0: Default::default(),
             },
         ),
     })
@@ -14881,7 +14727,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinNormal_Mutex() -> *mut EnumOpaqueTwinNor
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinNormalKind {
         Mutex: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinNormal_Mutex {
-                field0: wire_RustOpaque_MutexHideData::new_with_null_ptr(),
+                field0: Default::default(),
             },
         ),
     })
@@ -14892,7 +14738,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinNormal_RwLock() -> *mut EnumOpaqueTwinNo
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinNormalKind {
         RwLock: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinNormal_RwLock {
-                field0: wire_RustOpaque_RwLockHideData::new_with_null_ptr(),
+                field0: Default::default(),
             },
         ),
     })
@@ -14903,7 +14749,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinRustAsync_Struct() -> *mut EnumOpaqueTwi
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinRustAsyncKind {
         Struct: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinRustAsync_Struct {
-                field0: wire_RustOpaque_hide_data::new_with_null_ptr(),
+                field0: Default::default(),
             },
         ),
     })
@@ -14914,7 +14760,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinRustAsync_Primitive() -> *mut EnumOpaque
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinRustAsyncKind {
         Primitive: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinRustAsync_Primitive {
-                field0: wire_RustOpaque_i_32::new_with_null_ptr(),
+                field0: Default::default(),
             },
         ),
     })
@@ -14925,7 +14771,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinRustAsync_TraitObj() -> *mut EnumOpaqueT
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinRustAsyncKind {
         TraitObj: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinRustAsync_TraitObj {
-                field0: wire_RustOpaque_box_dynDartDebugTwinRustAsync::new_with_null_ptr(),
+                field0: Default::default(),
             },
         ),
     })
@@ -14936,7 +14782,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinRustAsync_Mutex() -> *mut EnumOpaqueTwin
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinRustAsyncKind {
         Mutex: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinRustAsync_Mutex {
-                field0: wire_RustOpaque_MutexHideData::new_with_null_ptr(),
+                field0: Default::default(),
             },
         ),
     })
@@ -14947,7 +14793,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinRustAsync_RwLock() -> *mut EnumOpaqueTwi
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinRustAsyncKind {
         RwLock: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinRustAsync_RwLock {
-                field0: wire_RustOpaque_RwLockHideData::new_with_null_ptr(),
+                field0: Default::default(),
             },
         ),
     })
@@ -14958,7 +14804,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinSync_Struct() -> *mut EnumOpaqueTwinSync
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinSyncKind {
         Struct: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinSync_Struct {
-                field0: wire_RustOpaque_hide_data::new_with_null_ptr(),
+                field0: Default::default(),
             },
         ),
     })
@@ -14969,7 +14815,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinSync_Primitive() -> *mut EnumOpaqueTwinS
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinSyncKind {
         Primitive: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinSync_Primitive {
-                field0: wire_RustOpaque_i_32::new_with_null_ptr(),
+                field0: Default::default(),
             },
         ),
     })
@@ -14980,7 +14826,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinSync_TraitObj() -> *mut EnumOpaqueTwinSy
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinSyncKind {
         TraitObj: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinSync_TraitObj {
-                field0: wire_RustOpaque_box_dynDartDebugTwinSync::new_with_null_ptr(),
+                field0: Default::default(),
             },
         ),
     })
@@ -14991,7 +14837,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinSync_Mutex() -> *mut EnumOpaqueTwinSyncK
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinSyncKind {
         Mutex: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinSync_Mutex {
-                field0: wire_RustOpaque_MutexHideData::new_with_null_ptr(),
+                field0: Default::default(),
             },
         ),
     })
@@ -15002,7 +14848,7 @@ pub extern "C" fn inflate_EnumOpaqueTwinSync_RwLock() -> *mut EnumOpaqueTwinSync
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumOpaqueTwinSyncKind {
         RwLock: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumOpaqueTwinSync_RwLock {
-                field0: wire_RustOpaque_RwLockHideData::new_with_null_ptr(),
+                field0: Default::default(),
             },
         ),
     })
