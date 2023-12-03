@@ -71,6 +71,8 @@ class _DroppablePerTypeData<T> {
 }
 
 /// The Rust `std::sync::Arc` on the Dart side.
+// Note: Use `extends`, instead of making the `_Droppable` a field,
+// in order to ensure the `ffi.Finalizable` works well.
 abstract class RustArc extends _Droppable<PlatformPointer> {
   /// Either the pointer that `std::sync::Arc::into_raw` gives,
   /// or a null pointer.
