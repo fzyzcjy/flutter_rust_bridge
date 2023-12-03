@@ -35,6 +35,9 @@ abstract class RustOpaque {
     final target = _move ? _arc : _arc.clone();
     return target.intoRaw() ?? PlatformPointerUtil.nullPtr();
   }
+ 
+  /// Dispose the underlying `Arc`.
+  void dispose() => _arc.dispose();
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @protected
