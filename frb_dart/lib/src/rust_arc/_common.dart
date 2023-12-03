@@ -34,6 +34,7 @@ abstract class RustArc extends RustArcBase {
   /// actually been reclaimed.
   bool isDisposed() => PlatformPointerUtil.isNullPtr(_ptr);
 
+  // TODO comments
   /// Call Rust destructors on the backing memory of this pointer.
   ///
   /// This function should be run at least once during the lifetime of the
