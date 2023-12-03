@@ -27,11 +27,9 @@ abstract class RustOpaque {
   /// Increments inner reference counter and returns pointer to the underlying
   /// Rust object.
   ///
-  /// Throws a [StateError] if called after [dispose].
-  ///
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @internal
-  PlatformPointer shareOrMove() {
+  PlatformPointer api2wire() {
     final target = _move ? _arc : _arc.clone();
     return target.intoRaw() ?? PlatformPointerUtil.nullPtr();
   }
