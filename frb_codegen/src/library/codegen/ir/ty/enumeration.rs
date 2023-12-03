@@ -5,7 +5,7 @@ use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::structure::IrStruct;
-use crate::codegen::ir::ty::{IrType, IrTypeTrait};
+use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 use convert_case::{Case, Casing};
 
 crate::ir! {
@@ -52,13 +52,17 @@ impl IrTypeEnumRef {
 }
 
 impl IrTypeTrait for IrTypeEnumRef {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_pack: &IrPack) {
-        let enu = self.get(ir_pack);
+    fn visit_children_types<F: FnMut(&IrType) -> bool>(
+        &self,
+        f: &mut F,
+        ir_context: &impl IrContext,
+    ) {
+        let enu = self.get(ir_context);
         for variant in enu.variants() {
             if let IrVariantKind::Struct(st) = &variant.kind {
                 st.fields
                     .iter()
-                    .for_each(|field| field.ty.visit_types(f, ir_pack));
+                    .for_each(|field| field.ty.visit_types(f, ir_context));
             }
         }
     }

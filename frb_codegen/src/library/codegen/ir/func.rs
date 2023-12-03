@@ -2,7 +2,7 @@ use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::pack::IrPack;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::ty::{IrContext, IrType};
 
 crate::ir! {
 pub struct IrFunc {
@@ -56,17 +56,17 @@ impl IrFunc {
         f: &mut F,
         include_inputs: bool,
         include_output: bool,
-        ir_pack: &IrPack,
+        ir_context: &impl IrContext,
     ) {
         if include_inputs {
             for field in &self.inputs {
-                field.ty.visit_types(f, ir_pack);
+                field.ty.visit_types(f, ir_context);
             }
         }
         if include_output {
-            self.output.visit_types(f, ir_pack);
+            self.output.visit_types(f, ir_context);
             if let Some(error_output) = &self.error_output {
-                error_output.visit_types(f, ir_pack);
+                error_output.visit_types(f, ir_context);
             }
         }
     }

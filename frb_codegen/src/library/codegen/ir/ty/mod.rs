@@ -47,11 +47,11 @@ pub enum IrType {
 }
 
 impl IrType {
-    pub fn visit_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_pack: &IrPack) {
+    pub fn visit_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_context: &impl IrContext) {
         if f(self) {
             return;
         }
-        self.visit_children_types(f, ir_pack);
+        self.visit_children_types(f, ir_context);
     }
 
     #[inline]
@@ -75,7 +75,11 @@ impl IrType {
 
 #[enum_dispatch]
 pub trait IrTypeTrait {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_pack: &IrPack);
+    fn visit_children_types<F: FnMut(&IrType) -> bool>(
+        &self,
+        f: &mut F,
+        ir_context: &impl IrContext,
+    );
 
     /// A string that can be used as an identifier safely, i.e. without any special characters inside
     fn safe_ident(&self) -> String;
@@ -140,3 +144,7 @@ impl Serialize for IrType {
         state.end()
     }
 }
+
+pub(crate) trait IrContext {}
+
+impl IrContext for IrPack {}

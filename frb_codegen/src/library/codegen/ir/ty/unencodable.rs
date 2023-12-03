@@ -1,5 +1,5 @@
 use crate::codegen::ir::pack::IrPack;
-use crate::codegen::ir::ty::{IrType, IrTypeTrait};
+use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 use lazy_static::lazy_static;
 use regex::Regex;
 
@@ -22,7 +22,12 @@ pub enum Args {
 }
 
 impl IrTypeTrait for IrTypeUnencodable {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, _f: &mut F, _ir_pack: &IrPack) {}
+    fn visit_children_types<F: FnMut(&IrType) -> bool>(
+        &self,
+        _f: &mut F,
+        _ir_context: &impl IrContext,
+    ) {
+    }
 
     fn safe_ident(&self) -> String {
         lazy_static! {

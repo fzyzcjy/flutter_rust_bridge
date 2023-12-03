@@ -1,6 +1,6 @@
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::structure::IrTypeStructRef;
-use crate::codegen::ir::ty::{IrType, IrTypeTrait};
+use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 use itertools::Itertools;
 
 crate::ir! {
@@ -12,9 +12,13 @@ pub struct IrTypeRecord {
 }
 
 impl IrTypeTrait for IrTypeRecord {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_pack: &IrPack) {
+    fn visit_children_types<F: FnMut(&IrType) -> bool>(
+        &self,
+        f: &mut F,
+        ir_context: &impl IrContext,
+    ) {
         for ty in self.values.iter() {
-            ty.visit_types(f, ir_pack)
+            ty.visit_types(f, ir_context)
         }
     }
 

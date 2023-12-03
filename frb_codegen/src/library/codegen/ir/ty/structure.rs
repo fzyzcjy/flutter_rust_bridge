@@ -5,7 +5,7 @@ use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::pack::IrPack;
-use crate::codegen::ir::ty::{IrType, IrTypeTrait};
+use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 use convert_case::{Case, Casing};
 
 crate::ir! {
@@ -33,9 +33,13 @@ impl IrTypeStructRef {
 }
 
 impl IrTypeTrait for IrTypeStructRef {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_pack: &IrPack) {
-        for field in &self.get(ir_pack).fields {
-            field.ty.visit_types(f, ir_pack);
+    fn visit_children_types<F: FnMut(&IrType) -> bool>(
+        &self,
+        f: &mut F,
+        _ir_context: &impl IrContext,
+    ) {
+        for field in &self.get(_ir_context).fields {
+            field.ty.visit_types(f, _ir_context);
         }
     }
 

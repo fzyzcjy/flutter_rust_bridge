@@ -1,5 +1,5 @@
 use crate::codegen::ir::pack::IrPack;
-use crate::codegen::ir::ty::{IrType, IrTypeTrait};
+use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 use convert_case::{Case, Casing};
 
 crate::ir! {
@@ -23,7 +23,12 @@ pub enum IrTypePrimitive {
 }
 
 impl IrTypeTrait for IrTypePrimitive {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, _f: &mut F, _ir_pack: &IrPack) {}
+    fn visit_children_types<F: FnMut(&IrType) -> bool>(
+        &self,
+        _f: &mut F,
+        _ir_context: &impl IrContext,
+    ) {
+    }
 
     fn safe_ident(&self) -> String {
         self.to_string().to_case(Case::Snake)

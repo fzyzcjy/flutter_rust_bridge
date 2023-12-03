@@ -4,7 +4,7 @@ use crate::codegen::ir::ty::enumeration::IrTypeEnumRef;
 use crate::codegen::ir::ty::general_list::IrTypeGeneralList;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
-use crate::codegen::ir::ty::{IrType, IrTypeTrait};
+use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 
 crate::ir! {
 /// types that delegate to another type
@@ -49,13 +49,17 @@ pub enum IrTypeDelegateTime {
 }
 
 impl IrTypeTrait for IrTypeDelegate {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_pack: &IrPack) {
-        self.get_delegate().visit_types(f, ir_pack);
+    fn visit_children_types<F: FnMut(&IrType) -> bool>(
+        &self,
+        f: &mut F,
+        ir_context: &impl IrContext,
+    ) {
+        self.get_delegate().visit_types(f, ir_context);
 
         // TODO avoid this hack
         // extras
         if let Self::TimeList(ir) = self {
-            IrType::Delegate(IrTypeDelegate::Time(*ir)).visit_types(f, ir_pack);
+            IrType::Delegate(IrTypeDelegate::Time(*ir)).visit_types(f, ir_context);
         }
     }
 
