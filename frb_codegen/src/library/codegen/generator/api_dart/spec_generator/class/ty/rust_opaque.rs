@@ -13,7 +13,6 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
         Some(generalized_rust_opaque_generate_class(
             self.ir.clone().into(),
             self.ir.namespace.clone(),
-            None,
             self.context,
             "RustOpaque",
         ))
@@ -23,7 +22,6 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
 pub(super) fn generalized_rust_opaque_generate_class(
     ir: IrType,
     namespace: Namespace,
-    deduplicate_key: Option<String>,
     context: ApiDartGeneratorContext,
     base_class: &str,
 ) -> ApiDartGeneratedClass {
@@ -35,7 +33,6 @@ pub(super) fn generalized_rust_opaque_generate_class(
 
     ApiDartGeneratedClass {
         namespace,
-        deduplicate_key,
         code: format!(
             "
             // Rust type: {rust_api_type}
