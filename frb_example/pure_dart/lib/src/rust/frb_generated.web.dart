@@ -121,35 +121,23 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr => wire
-          .rust_arc_decrement_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormal;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonCloneSimpleTwinNormalPtr => wire
-          .rust_arc_decrement_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormalPtr =>
-          wire.rust_arc_decrement_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_BoxFnStringStringPtr => wire
-          .rust_arc_decrement_strong_count_RustAutoOpaque_box_dynFnStringString;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr => wire
-          .rust_arc_decrement_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_BoxMyTraitTwinNormalPtr => wire
-          .rust_arc_decrement_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync;
+          .rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal;
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_MutexHideDataPtr =>
           wire.rust_arc_decrement_strong_count_RustOpaque_MutexHideData;
 
   CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinNormalPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormal;
+
+  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_RwLockHideDataPtr =>
           wire.rust_arc_decrement_strong_count_RustOpaque_RwLockHideData;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormalPtr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal;
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxDartDebugTwinNormalPtr => wire
@@ -162,6 +150,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxDartDebugTwinSyncPtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxFnStringStringPtr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringString;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinNormalPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync;
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_FrbOpaqueReturnPtr =>
@@ -5929,76 +5929,16 @@ class RustLibWire extends BaseWire {
   void wire_handle_uuids_twin_normal(NativePortType port_, Uint8List ids) =>
       wasmModule.wire_handle_uuids_twin_normal(port_, ids);
 
-  void rust_arc_increment_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormal(
+  void rust_arc_increment_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(
           dynamic ptr) =>
       wasmModule
-          .rust_arc_increment_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormal(
+          .rust_arc_increment_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(
               ptr);
 
-  void rust_arc_decrement_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormal(
+  void rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(
           dynamic ptr) =>
       wasmModule
-          .rust_arc_decrement_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormal(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustAutoOpaque_box_dynFnStringString(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustAutoOpaque_box_dynFnStringString(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustAutoOpaque_box_dynFnStringString(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustAutoOpaque_box_dynFnStringString(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync(
+          .rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_MutexHideData(dynamic ptr) =>
@@ -6007,11 +5947,35 @@ class RustLibWire extends BaseWire {
   void rust_arc_decrement_strong_count_RustOpaque_MutexHideData(dynamic ptr) =>
       wasmModule.rust_arc_decrement_strong_count_RustOpaque_MutexHideData(ptr);
 
+  void rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormal(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormal(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormal(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormal(
+              ptr);
+
   void rust_arc_increment_strong_count_RustOpaque_RwLockHideData(dynamic ptr) =>
       wasmModule.rust_arc_increment_strong_count_RustOpaque_RwLockHideData(ptr);
 
   void rust_arc_decrement_strong_count_RustOpaque_RwLockHideData(dynamic ptr) =>
       wasmModule.rust_arc_decrement_strong_count_RustOpaque_RwLockHideData(ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
+              ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal(
           dynamic ptr) =>
@@ -6047,6 +6011,42 @@ class RustLibWire extends BaseWire {
           dynamic ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_box_dynFnStringString(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_box_dynFnStringString(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringString(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringString(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_frb_opaque_return(
@@ -8172,51 +8172,11 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, Uint8List ids);
 
   external void
-      rust_arc_increment_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormal(
+      rust_arc_increment_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(
           dynamic ptr);
 
   external void
-      rust_arc_decrement_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormal(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustAutoOpaque_box_dynFnStringString(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustAutoOpaque_box_dynFnStringString(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync(
+      rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(
           dynamic ptr);
 
   external void rust_arc_increment_strong_count_RustOpaque_MutexHideData(
@@ -8225,11 +8185,27 @@ class RustLibWasmModule implements WasmModule {
   external void rust_arc_decrement_strong_count_RustOpaque_MutexHideData(
       dynamic ptr);
 
+  external void
+      rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormal(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormal(
+          dynamic ptr);
+
   external void rust_arc_increment_strong_count_RustOpaque_RwLockHideData(
       dynamic ptr);
 
   external void rust_arc_decrement_strong_count_RustOpaque_RwLockHideData(
       dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
+          dynamic ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal(
@@ -8253,6 +8229,30 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync(
+          dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_box_dynFnStringString(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringString(
+          dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(
+          dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(
           dynamic ptr);
 
   external void rust_arc_increment_strong_count_RustOpaque_frb_opaque_return(

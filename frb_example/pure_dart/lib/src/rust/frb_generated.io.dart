@@ -122,35 +122,23 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr => wire
-          ._rust_arc_decrement_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormalPtr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonCloneSimpleTwinNormalPtr => wire
-          ._rust_arc_decrement_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormalPtr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormalPtr =>
-          wire._rust_arc_decrement_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormalPtr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_BoxFnStringStringPtr => wire
-          ._rust_arc_decrement_strong_count_RustAutoOpaque_box_dynFnStringStringPtr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr => wire
-          ._rust_arc_decrement_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormalPtr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_BoxMyTraitTwinNormalPtr => wire
-          ._rust_arc_decrement_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSyncPtr;
+          ._rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormalPtr;
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_MutexHideDataPtr =>
           wire._rust_arc_decrement_strong_count_RustOpaque_MutexHideDataPtr;
 
   CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinNormalPtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormalPtr;
+
+  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_RwLockHideDataPtr =>
           wire._rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataPtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormalPtr =>
+          wire._rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormalPtr;
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxDartDebugTwinNormalPtr => wire
@@ -163,6 +151,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxDartDebugTwinSyncPtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSyncPtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxFnStringStringPtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringStringPtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormalPtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinNormalPtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSyncPtr;
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_FrbOpaqueReturnPtr =>
@@ -19573,192 +19573,34 @@ class RustLibWire implements BaseWire {
   late final _new_list_weekdays_twin_sync = _new_list_weekdays_twin_syncPtr
       .asFunction<ffi.Pointer<wire_list_weekdays_twin_sync> Function(int)>();
 
-  void
-      rust_arc_increment_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormal(
+  void rust_arc_increment_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _rust_arc_increment_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormal(
+    return _rust_arc_increment_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(
       ptr,
     );
   }
 
-  late final _rust_arc_increment_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormalPtr =
+  late final _rust_arc_increment_strong_count_RustOpaque_BoxdynHelloTraitTwinNormalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_increment_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormal');
-  late final _rust_arc_increment_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormal =
-      _rust_arc_increment_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormalPtr
+          'rust_arc_increment_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal');
+  late final _rust_arc_increment_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal =
+      _rust_arc_increment_strong_count_RustOpaque_BoxdynHelloTraitTwinNormalPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
-  void
-      rust_arc_decrement_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormal(
+  void rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _rust_arc_decrement_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormal(
+    return _rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(
       ptr,
     );
   }
 
-  late final _rust_arc_decrement_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormalPtr =
+  late final _rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_decrement_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormal');
-  late final _rust_arc_decrement_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormal =
-      _rust_arc_decrement_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormalPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void rust_arc_increment_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_increment_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal');
-  late final _rust_arc_increment_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal =
-      _rust_arc_increment_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormalPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void rust_arc_decrement_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_decrement_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal');
-  late final _rust_arc_decrement_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal =
-      _rust_arc_decrement_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormalPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_increment_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_increment_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal');
-  late final _rust_arc_increment_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal =
-      _rust_arc_increment_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormalPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_decrement_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_decrement_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal');
-  late final _rust_arc_decrement_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal =
-      _rust_arc_decrement_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormalPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void rust_arc_increment_strong_count_RustAutoOpaque_box_dynFnStringString(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustAutoOpaque_box_dynFnStringString(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustAutoOpaque_box_dynFnStringStringPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_increment_strong_count_RustAutoOpaque_box_dynFnStringString');
-  late final _rust_arc_increment_strong_count_RustAutoOpaque_box_dynFnStringString =
-      _rust_arc_increment_strong_count_RustAutoOpaque_box_dynFnStringStringPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void rust_arc_decrement_strong_count_RustAutoOpaque_box_dynFnStringString(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustAutoOpaque_box_dynFnStringString(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustAutoOpaque_box_dynFnStringStringPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_decrement_strong_count_RustAutoOpaque_box_dynFnStringString');
-  late final _rust_arc_decrement_strong_count_RustAutoOpaque_box_dynFnStringString =
-      _rust_arc_decrement_strong_count_RustAutoOpaque_box_dynFnStringStringPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_increment_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_increment_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal');
-  late final _rust_arc_increment_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal =
-      _rust_arc_increment_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormalPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_decrement_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_decrement_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal');
-  late final _rust_arc_decrement_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal =
-      _rust_arc_decrement_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormalPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_increment_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSyncPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_increment_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync');
-  late final _rust_arc_increment_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync =
-      _rust_arc_increment_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSyncPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_decrement_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSyncPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_decrement_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync');
-  late final _rust_arc_decrement_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync =
-      _rust_arc_decrement_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSyncPtr
+          'rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal');
+  late final _rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal =
+      _rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormalPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void rust_arc_increment_strong_count_RustOpaque_MutexHideData(
@@ -19791,6 +19633,36 @@ class RustLibWire implements BaseWire {
       _rust_arc_decrement_strong_count_RustOpaque_MutexHideDataPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
+  void rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormal');
+  late final _rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormal =
+      _rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormalPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormal');
+  late final _rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormal =
+      _rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormalPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
   void rust_arc_increment_strong_count_RustOpaque_RwLockHideData(
     ffi.Pointer<ffi.Void> ptr,
   ) {
@@ -19819,6 +19691,38 @@ class RustLibWire implements BaseWire {
           'rust_arc_decrement_strong_count_RustOpaque_RwLockHideData');
   late final _rust_arc_decrement_strong_count_RustOpaque_RwLockHideData =
       _rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_increment_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal');
+  late final _rust_arc_increment_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal =
+      _rust_arc_increment_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormalPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal');
+  late final _rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal =
+      _rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormalPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal(
@@ -19909,6 +19813,98 @@ class RustLibWire implements BaseWire {
           'rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync');
   late final _rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync =
       _rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSyncPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_increment_strong_count_RustOpaque_box_dynFnStringString(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_box_dynFnStringString(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_box_dynFnStringStringPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_increment_strong_count_RustOpaque_box_dynFnStringString');
+  late final _rust_arc_increment_strong_count_RustOpaque_box_dynFnStringString =
+      _rust_arc_increment_strong_count_RustOpaque_box_dynFnStringStringPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringString(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringString(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringStringPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringString');
+  late final _rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringString =
+      _rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringStringPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_increment_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_box_dynHelloTraitTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_increment_strong_count_RustOpaque_box_dynHelloTraitTwinNormal');
+  late final _rust_arc_increment_strong_count_RustOpaque_box_dynHelloTraitTwinNormal =
+      _rust_arc_increment_strong_count_RustOpaque_box_dynHelloTraitTwinNormalPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormal');
+  late final _rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormal =
+      _rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormalPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_increment_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync');
+  late final _rust_arc_increment_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync =
+      _rust_arc_increment_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSyncPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync');
+  late final _rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync =
+      _rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSyncPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void rust_arc_increment_strong_count_RustOpaque_frb_opaque_return(

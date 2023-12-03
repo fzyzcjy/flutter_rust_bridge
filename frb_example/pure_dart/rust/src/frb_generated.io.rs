@@ -13,6 +13,48 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: impl_wire2api
 
+impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn HelloTraitTwinNormal>>>
+    for *const std::ffi::c_void
+{
+    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn HelloTraitTwinNormal>> {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl Wire2Api<flutter_rust_bridge::RustOpaque<NonCloneSimpleTwinNormal>>
+    for *const std::ffi::c_void
+{
+    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<NonCloneSimpleTwinNormal> {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl Wire2Api<flutter_rust_bridge::RustOpaque<StructWithGoodAndOpaqueFieldTwinNormal>>
+    for *const std::ffi::c_void
+{
+    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<StructWithGoodAndOpaqueFieldTwinNormal> {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn Fn(String) -> String>>>
+    for *const std::ffi::c_void
+{
+    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn Fn(String) -> String>> {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn HelloTraitTwinNormal>>>
+    for *const std::ffi::c_void
+{
+    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn HelloTraitTwinNormal>> {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn MyTraitTwinNormal + Send + Sync>>>
+    for *const std::ffi::c_void
+{
+    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn MyTraitTwinNormal + Send + Sync>> {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
 impl Wire2Api<chrono::Duration> for i64 {
     fn wire2api(self) -> chrono::Duration {
         chrono::Duration::microseconds(self)
@@ -41,28 +83,10 @@ impl Wire2Api<[flutter_rust_bridge::DartOpaque; 1]> for *mut wire_list_DartOpaqu
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
-impl Wire2Api<Box<dyn HelloTraitTwinNormal>> for *const std::ffi::c_void {
-    fn wire2api(self) -> Box<dyn HelloTraitTwinNormal> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
-impl Wire2Api<NonCloneSimpleTwinNormal> for *const std::ffi::c_void {
-    fn wire2api(self) -> NonCloneSimpleTwinNormal {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
-impl Wire2Api<StructWithGoodAndOpaqueFieldTwinNormal> for *const std::ffi::c_void {
-    fn wire2api(self) -> StructWithGoodAndOpaqueFieldTwinNormal {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
-impl Wire2Api<Box<dyn Fn(String) -> String>> for *const std::ffi::c_void {
-    fn wire2api(self) -> Box<dyn Fn(String) -> String> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
-impl Wire2Api<Box<dyn MyTraitTwinNormal + Send + Sync>> for *const std::ffi::c_void {
-    fn wire2api(self) -> Box<dyn MyTraitTwinNormal + Send + Sync> {
+impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn HelloTraitTwinNormal>>>
+    for *const std::ffi::c_void
+{
+    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn HelloTraitTwinNormal>> {
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
@@ -71,8 +95,22 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<Mutex<HideData>>> for *const std::
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
+impl Wire2Api<flutter_rust_bridge::RustOpaque<NonCloneSimpleTwinNormal>>
+    for *const std::ffi::c_void
+{
+    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<NonCloneSimpleTwinNormal> {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
 impl Wire2Api<flutter_rust_bridge::RustOpaque<RwLock<HideData>>> for *const std::ffi::c_void {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<RwLock<HideData>> {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl Wire2Api<flutter_rust_bridge::RustOpaque<StructWithGoodAndOpaqueFieldTwinNormal>>
+    for *const std::ffi::c_void
+{
+    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<StructWithGoodAndOpaqueFieldTwinNormal> {
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
@@ -94,6 +132,27 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>>>
     for *const std::ffi::c_void
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>> {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn Fn(String) -> String>>>
+    for *const std::ffi::c_void
+{
+    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn Fn(String) -> String>> {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn HelloTraitTwinNormal>>>
+    for *const std::ffi::c_void
+{
+    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn HelloTraitTwinNormal>> {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn MyTraitTwinNormal + Send + Sync>>>
+    for *const std::ffi::c_void
+{
+    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn MyTraitTwinNormal + Send + Sync>> {
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
@@ -14265,7 +14324,7 @@ pub extern "C" fn new_list_weekdays_twin_sync(len: i32) -> *mut wire_list_weekda
 }
 
 #[no_mangle]
-pub extern "C" fn rust_arc_increment_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormal(
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
@@ -14276,122 +14335,12 @@ pub extern "C" fn rust_arc_increment_strong_count_RustAutoOpaque_BoxdynHelloTrai
 }
 
 #[no_mangle]
-pub extern "C" fn rust_arc_decrement_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormal(
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
             Box<dyn HelloTraitTwinNormal>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_increment_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            NonCloneSimpleTwinNormal,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_decrement_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            NonCloneSimpleTwinNormal,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_increment_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            StructWithGoodAndOpaqueFieldTwinNormal,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_decrement_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            StructWithGoodAndOpaqueFieldTwinNormal,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_increment_strong_count_RustAutoOpaque_box_dynFnStringString(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            Box<dyn Fn(String) -> String>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_decrement_strong_count_RustAutoOpaque_box_dynFnStringString(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            Box<dyn Fn(String) -> String>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_increment_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            Box<dyn HelloTraitTwinNormal>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_decrement_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            Box<dyn HelloTraitTwinNormal>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_increment_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            Box<dyn MyTraitTwinNormal + Send + Sync>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_decrement_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            Box<dyn MyTraitTwinNormal + Send + Sync>,
         >(ptr);
     }
 }
@@ -14415,6 +14364,28 @@ pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_MutexHideData(
 }
 
 #[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            NonCloneSimpleTwinNormal,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            NonCloneSimpleTwinNormal,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
 pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_RwLockHideData(
     ptr: *const std::ffi::c_void,
 ) {
@@ -14433,6 +14404,28 @@ pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_RwLockHideData(
         flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<RwLock<HideData>>(
             ptr,
         );
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            StructWithGoodAndOpaqueFieldTwinNormal,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            StructWithGoodAndOpaqueFieldTwinNormal,
+        >(ptr);
     }
 }
 
@@ -14498,6 +14491,72 @@ pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwi
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
             Box<dyn DartDebugTwinSync>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_box_dynFnStringString(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            Box<dyn Fn(String) -> String>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringString(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            Box<dyn Fn(String) -> String>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            Box<dyn HelloTraitTwinNormal>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            Box<dyn HelloTraitTwinNormal>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            Box<dyn MyTraitTwinNormal + Send + Sync>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            Box<dyn MyTraitTwinNormal + Send + Sync>,
         >(ptr);
     }
 }

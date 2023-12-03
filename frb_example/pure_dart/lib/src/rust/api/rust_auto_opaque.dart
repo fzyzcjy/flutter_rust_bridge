@@ -102,9 +102,9 @@ Future<StructWithGoodAndOpaqueFieldTwinNormal>
         RustLib.instance.api
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwn(hint: hint);
 
-// Rust type: Box < dyn HelloTraitTwinNormal >
+// Rust type: flutter_rust_bridge::RustOpaque<Box < dyn HelloTraitTwinNormal >>
 @sealed
-class BoxHelloTraitTwinNormal extends RustAutoOpaque {
+class BoxHelloTraitTwinNormal extends RustOpaque {
   BoxHelloTraitTwinNormal.fromWire(dynamic wire)
       : super.fromWire(wire, _kStaticData);
 
@@ -118,9 +118,9 @@ class BoxHelloTraitTwinNormal extends RustAutoOpaque {
   );
 }
 
-// Rust type: NonCloneSimpleTwinNormal
+// Rust type: flutter_rust_bridge::RustOpaque<NonCloneSimpleTwinNormal>
 @sealed
-class NonCloneSimpleTwinNormal extends RustAutoOpaque {
+class NonCloneSimpleTwinNormal extends RustOpaque {
   NonCloneSimpleTwinNormal.fromWire(dynamic wire)
       : super.fromWire(wire, _kStaticData);
 
@@ -134,9 +134,9 @@ class NonCloneSimpleTwinNormal extends RustAutoOpaque {
   );
 }
 
-// Rust type: StructWithGoodAndOpaqueFieldTwinNormal
+// Rust type: flutter_rust_bridge::RustOpaque<StructWithGoodAndOpaqueFieldTwinNormal>
 @sealed
-class StructWithGoodAndOpaqueFieldTwinNormal extends RustAutoOpaque {
+class StructWithGoodAndOpaqueFieldTwinNormal extends RustOpaque {
   StructWithGoodAndOpaqueFieldTwinNormal.fromWire(dynamic wire)
       : super.fromWire(wire, _kStaticData);
 
@@ -150,9 +150,9 @@ class StructWithGoodAndOpaqueFieldTwinNormal extends RustAutoOpaque {
   );
 }
 
-// Rust type: Box<dyn Fn (String) -> String>
+// Rust type: flutter_rust_bridge::RustOpaque<Box<dyn Fn (String) -> String>>
 @sealed
-class BoxFnStringString extends RustAutoOpaque {
+class BoxFnStringString extends RustOpaque {
   BoxFnStringString.fromWire(dynamic wire) : super.fromWire(wire, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -165,9 +165,9 @@ class BoxFnStringString extends RustAutoOpaque {
   );
 }
 
-// Rust type: Box<dyn HelloTraitTwinNormal>
+// Rust type: flutter_rust_bridge::RustOpaque<Box<dyn HelloTraitTwinNormal>>
 @sealed
-class BoxHelloTraitTwinNormal extends RustAutoOpaque {
+class BoxHelloTraitTwinNormal extends RustOpaque {
   BoxHelloTraitTwinNormal.fromWire(dynamic wire)
       : super.fromWire(wire, _kStaticData);
 
@@ -181,9 +181,9 @@ class BoxHelloTraitTwinNormal extends RustAutoOpaque {
   );
 }
 
-// Rust type: Box<dyn MyTraitTwinNormal + Send + Sync>
+// Rust type: flutter_rust_bridge::RustOpaque<Box<dyn MyTraitTwinNormal + Send + Sync>>
 @sealed
-class BoxMyTraitTwinNormal extends RustAutoOpaque {
+class BoxMyTraitTwinNormal extends RustOpaque {
   BoxMyTraitTwinNormal.fromWire(dynamic wire)
       : super.fromWire(wire, _kStaticData);
 

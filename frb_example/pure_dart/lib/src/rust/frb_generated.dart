@@ -2088,51 +2088,6 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_NonCloneSimpleTwinNormal;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_NonCloneSimpleTwinNormal;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonCloneSimpleTwinNormalPtr;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinNormal;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormal;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormalPtr;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_BoxFnStringString;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_BoxFnStringString;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_BoxFnStringStringPtr;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_BoxHelloTraitTwinNormal;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormal;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_BoxMyTraitTwinNormal;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_BoxMyTraitTwinNormal;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_BoxMyTraitTwinNormalPtr;
-
-  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_MutexHideData;
 
   RustArcDecrementStrongCountFnType
@@ -2142,6 +2097,15 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_MutexHideDataPtr;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneSimpleTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_RwLockHideData;
 
   RustArcDecrementStrongCountFnType
@@ -2149,6 +2113,15 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_RwLockHideDataPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormalPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxDartDebugTwinNormal;
@@ -2176,6 +2149,33 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxDartDebugTwinSyncPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxFnStringString;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxFnStringString;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxFnStringStringPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxMyTraitTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinNormalPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_FrbOpaqueReturn;
@@ -15517,7 +15517,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> rustAutoOpaqueArgBorrow(
       {required NonCloneSimpleTwinNormal arg, dynamic hint}) {
-    var arg0 = api2wire_RustAutoOpaque_NonCloneSimpleTwinNormal(arg);
+    var arg0 = api2wire_Auto_RustOpaque_NonCloneSimpleTwinNormal(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_rust_auto_opaque_arg_borrow(port_, arg0),
       parseSuccessData: _wire2api_unit,
@@ -15537,7 +15537,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> rustAutoOpaqueArgMutBorrow(
       {required NonCloneSimpleTwinNormal arg, dynamic hint}) {
-    var arg0 = api2wire_RustAutoOpaque_NonCloneSimpleTwinNormal(arg);
+    var arg0 = api2wire_Auto_RustOpaque_NonCloneSimpleTwinNormal(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
           wire.wire_rust_auto_opaque_arg_mut_borrow(port_, arg0),
@@ -15558,7 +15558,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> rustAutoOpaqueArgOwn(
       {required NonCloneSimpleTwinNormal arg, dynamic hint}) {
-    var arg0 = api2wire_RustAutoOpaque_NonCloneSimpleTwinNormal(arg);
+    var arg0 = api2wire_Auto_RustOpaque_NonCloneSimpleTwinNormal(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_rust_auto_opaque_arg_own(port_, arg0),
       parseSuccessData: _wire2api_unit,
@@ -15578,11 +15578,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<NonCloneSimpleTwinNormal> rustAutoOpaqueArgOwnAndReturnOwn(
       {required NonCloneSimpleTwinNormal arg, dynamic hint}) {
-    var arg0 = api2wire_RustAutoOpaque_NonCloneSimpleTwinNormal(arg);
+    var arg0 = api2wire_Auto_RustOpaque_NonCloneSimpleTwinNormal(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
           wire.wire_rust_auto_opaque_arg_own_and_return_own(port_, arg0),
-      parseSuccessData: _wire2api_RustAutoOpaque_NonCloneSimpleTwinNormal,
+      parseSuccessData: _wire2api_Auto_RustOpaque_NonCloneSimpleTwinNormal,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueArgOwnAndReturnOwnConstMeta,
       argValues: [arg],
@@ -15600,7 +15600,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> rustAutoOpaqueCallableArg(
       {required BoxFnStringString arg, dynamic hint}) {
-    var arg0 = api2wire_RustAutoOpaque_box_dynFnStringString(arg);
+    var arg0 = api2wire_Auto_RustOpaque_box_dynFnStringString(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_rust_auto_opaque_callable_arg(port_, arg0),
       parseSuccessData: _wire2api_unit,
@@ -15621,7 +15621,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<BoxFnStringString> rustAutoOpaqueCallableReturn({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_rust_auto_opaque_callable_return(port_),
-      parseSuccessData: _wire2api_RustAutoOpaque_box_dynFnStringString,
+      parseSuccessData: _wire2api_Auto_RustOpaque_box_dynFnStringString,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueCallableReturnConstMeta,
       argValues: [],
@@ -15639,7 +15639,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> rustAutoOpaqueNormalAndOpaqueArg(
       {required NonCloneSimpleTwinNormal a, required String b, dynamic hint}) {
-    var arg0 = api2wire_RustAutoOpaque_NonCloneSimpleTwinNormal(a);
+    var arg0 = api2wire_Auto_RustOpaque_NonCloneSimpleTwinNormal(a);
     var arg1 = api2wire_String(b);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
@@ -15662,7 +15662,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> rustAutoOpaquePlusSignArg(
       {required BoxMyTraitTwinNormal arg, dynamic hint}) {
-    var arg0 = api2wire_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync(arg);
+    var arg0 = api2wire_Auto_RustOpaque_box_dynMyTraitTwinNormalSendSync(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_rust_auto_opaque_plus_sign_arg(port_, arg0),
       parseSuccessData: _wire2api_unit,
@@ -15684,7 +15684,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_rust_auto_opaque_plus_sign_return(port_),
       parseSuccessData:
-          _wire2api_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync,
+          _wire2api_Auto_RustOpaque_box_dynMyTraitTwinNormalSendSync,
       parseErrorData: null,
       constMeta: kRustAutoOpaquePlusSignReturnConstMeta,
       argValues: [],
@@ -15703,7 +15703,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<NonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwn({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_rust_auto_opaque_return_own(port_),
-      parseSuccessData: _wire2api_RustAutoOpaque_NonCloneSimpleTwinNormal,
+      parseSuccessData: _wire2api_Auto_RustOpaque_NonCloneSimpleTwinNormal,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueReturnOwnConstMeta,
       argValues: [],
@@ -15721,7 +15721,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrow(
       {required StructWithGoodAndOpaqueFieldTwinNormal arg, dynamic hint}) {
     var arg0 =
-        api2wire_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(arg);
+        api2wire_Auto_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire
           .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(
@@ -15747,7 +15747,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrow(
       {required StructWithGoodAndOpaqueFieldTwinNormal arg, dynamic hint}) {
     var arg0 =
-        api2wire_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(arg);
+        api2wire_Auto_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire
           .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(
@@ -15774,7 +15774,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwn(
       {required StructWithGoodAndOpaqueFieldTwinNormal arg, dynamic hint}) {
     var arg0 =
-        api2wire_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(arg);
+        api2wire_Auto_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
           wire.wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
@@ -15804,7 +15804,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own(
               port_),
       parseSuccessData:
-          _wire2api_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal,
+          _wire2api_Auto_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnConstMeta,
       argValues: [],
@@ -15826,7 +15826,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required BoxHelloTraitTwinNormal arg,
       required String expect,
       dynamic hint}) {
-    var arg0 = api2wire_RustAutoOpaque_BoxdynHelloTraitTwinNormal(arg);
+    var arg0 = api2wire_Auto_RustOpaque_BoxdynHelloTraitTwinNormal(arg);
     var arg1 = api2wire_String(expect);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
@@ -15851,7 +15851,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required BoxHelloTraitTwinNormal arg,
       required String expect,
       dynamic hint}) {
-    var arg0 = api2wire_RustAutoOpaque_BoxdynHelloTraitTwinNormal(arg);
+    var arg0 = api2wire_Auto_RustOpaque_BoxdynHelloTraitTwinNormal(arg);
     var arg1 = api2wire_String(expect);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire
@@ -15876,7 +15876,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required BoxHelloTraitTwinNormal arg,
       required String expect,
       dynamic hint}) {
-    var arg0 = api2wire_RustAutoOpaque_box_dynHelloTraitTwinNormal(arg);
+    var arg0 = api2wire_Auto_RustOpaque_box_dynHelloTraitTwinNormal(arg);
     var arg1 = api2wire_String(expect);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
@@ -15902,7 +15902,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
           wire.wire_rust_auto_opaque_trait_object_return_own_one(port_),
-      parseSuccessData: _wire2api_RustAutoOpaque_box_dynHelloTraitTwinNormal,
+      parseSuccessData: _wire2api_Auto_RustOpaque_box_dynHelloTraitTwinNormal,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueTraitObjectReturnOwnOneConstMeta,
       argValues: [],
@@ -15923,7 +15923,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
           wire.wire_rust_auto_opaque_trait_object_return_own_two(port_),
-      parseSuccessData: _wire2api_RustAutoOpaque_box_dynHelloTraitTwinNormal,
+      parseSuccessData: _wire2api_Auto_RustOpaque_box_dynHelloTraitTwinNormal,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueTraitObjectReturnOwnTwoConstMeta,
       argValues: [],
@@ -15943,8 +15943,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required NonCloneSimpleTwinNormal a,
       required NonCloneSimpleTwinNormal b,
       dynamic hint}) {
-    var arg0 = api2wire_RustAutoOpaque_NonCloneSimpleTwinNormal(a);
-    var arg1 = api2wire_RustAutoOpaque_NonCloneSimpleTwinNormal(b);
+    var arg0 = api2wire_Auto_RustOpaque_NonCloneSimpleTwinNormal(a);
+    var arg1 = api2wire_Auto_RustOpaque_NonCloneSimpleTwinNormal(b);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
           wire.wire_rust_auto_opaque_two_args(port_, arg0, arg1),
@@ -16864,51 +16864,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxHelloTraitTwinNormal => wire
-          .rust_arc_increment_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormal;
+          .rust_arc_increment_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal;
 
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormal => wire
-          .rust_arc_decrement_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormal;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_NonCloneSimpleTwinNormal => wire
-          .rust_arc_increment_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_NonCloneSimpleTwinNormal => wire
-          .rust_arc_decrement_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinNormal =>
-          wire.rust_arc_increment_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormal =>
-          wire.rust_arc_decrement_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_BoxFnStringString => wire
-          .rust_arc_increment_strong_count_RustAutoOpaque_box_dynFnStringString;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_BoxFnStringString => wire
-          .rust_arc_decrement_strong_count_RustAutoOpaque_box_dynFnStringString;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_BoxHelloTraitTwinNormal => wire
-          .rust_arc_increment_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormal => wire
-          .rust_arc_decrement_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_BoxMyTraitTwinNormal => wire
-          .rust_arc_increment_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_BoxMyTraitTwinNormal => wire
-          .rust_arc_decrement_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync;
+          .rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_MutexHideData =>
@@ -16919,12 +16879,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           wire.rust_arc_decrement_strong_count_RustOpaque_MutexHideData;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneSimpleTwinNormal => wire
+          .rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinNormal => wire
+          .rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormal;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_RwLockHideData =>
           wire.rust_arc_increment_strong_count_RustOpaque_RwLockHideData;
 
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_RwLockHideData =>
           wire.rust_arc_decrement_strong_count_RustOpaque_RwLockHideData;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinNormal =>
+          wire.rust_arc_increment_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormal =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BoxDartDebugTwinNormal => wire
@@ -16949,6 +16925,30 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_BoxDartDebugTwinSync => wire
           .rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxFnStringString =>
+          wire.rust_arc_increment_strong_count_RustOpaque_box_dynFnStringString;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxFnStringString =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringString;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinNormal => wire
+          .rust_arc_increment_strong_count_RustOpaque_box_dynHelloTraitTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormal => wire
+          .rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormal;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxMyTraitTwinNormal => wire
+          .rust_arc_increment_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinNormal => wire
+          .rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_FrbOpaqueReturn =>
@@ -17000,6 +17000,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return AnyhowException(raw as String);
   }
 
+  NonCloneSimpleTwinNormal _wire2api_Auto_RustOpaque_NonCloneSimpleTwinNormal(
+      dynamic raw) {
+    return NonCloneSimpleTwinNormal.fromWire(raw);
+  }
+
+  StructWithGoodAndOpaqueFieldTwinNormal
+      _wire2api_Auto_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
+          dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinNormal.fromWire(raw);
+  }
+
+  BoxFnStringString _wire2api_Auto_RustOpaque_box_dynFnStringString(
+      dynamic raw) {
+    return BoxFnStringString.fromWire(raw);
+  }
+
+  BoxHelloTraitTwinNormal _wire2api_Auto_RustOpaque_box_dynHelloTraitTwinNormal(
+      dynamic raw) {
+    return BoxHelloTraitTwinNormal.fromWire(raw);
+  }
+
+  BoxMyTraitTwinNormal
+      _wire2api_Auto_RustOpaque_box_dynMyTraitTwinNormalSendSync(dynamic raw) {
+    return BoxMyTraitTwinNormal.fromWire(raw);
+  }
+
   Duration _wire2api_Chrono_Duration(dynamic raw) {
     return wire2apiDuration(_wire2api_i_64(raw).toInt());
   }
@@ -17033,38 +17059,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         (raw as List<dynamic>).map(_wire2api_DartOpaque).toList());
   }
 
-  NonCloneSimpleTwinNormal _wire2api_RustAutoOpaque_NonCloneSimpleTwinNormal(
-      dynamic raw) {
-    return NonCloneSimpleTwinNormal.fromWire(raw);
-  }
-
-  StructWithGoodAndOpaqueFieldTwinNormal
-      _wire2api_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
-          dynamic raw) {
-    return StructWithGoodAndOpaqueFieldTwinNormal.fromWire(raw);
-  }
-
-  BoxFnStringString _wire2api_RustAutoOpaque_box_dynFnStringString(
-      dynamic raw) {
-    return BoxFnStringString.fromWire(raw);
-  }
-
-  BoxHelloTraitTwinNormal _wire2api_RustAutoOpaque_box_dynHelloTraitTwinNormal(
-      dynamic raw) {
-    return BoxHelloTraitTwinNormal.fromWire(raw);
-  }
-
-  BoxMyTraitTwinNormal
-      _wire2api_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync(dynamic raw) {
-    return BoxMyTraitTwinNormal.fromWire(raw);
-  }
-
   MutexHideData _wire2api_RustOpaque_MutexHideData(dynamic raw) {
     return MutexHideData.fromWire(raw);
   }
 
+  NonCloneSimpleTwinNormal _wire2api_RustOpaque_NonCloneSimpleTwinNormal(
+      dynamic raw) {
+    return NonCloneSimpleTwinNormal.fromWire(raw);
+  }
+
   RwLockHideData _wire2api_RustOpaque_RwLockHideData(dynamic raw) {
     return RwLockHideData.fromWire(raw);
+  }
+
+  StructWithGoodAndOpaqueFieldTwinNormal
+      _wire2api_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(dynamic raw) {
+    return StructWithGoodAndOpaqueFieldTwinNormal.fromWire(raw);
   }
 
   BoxDartDebugTwinNormal _wire2api_RustOpaque_box_dynDartDebugTwinNormal(
@@ -17080,6 +17090,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   BoxDartDebugTwinSync _wire2api_RustOpaque_box_dynDartDebugTwinSync(
       dynamic raw) {
     return BoxDartDebugTwinSync.fromWire(raw);
+  }
+
+  BoxFnStringString _wire2api_RustOpaque_box_dynFnStringString(dynamic raw) {
+    return BoxFnStringString.fromWire(raw);
+  }
+
+  BoxHelloTraitTwinNormal _wire2api_RustOpaque_box_dynHelloTraitTwinNormal(
+      dynamic raw) {
+    return BoxHelloTraitTwinNormal.fromWire(raw);
+  }
+
+  BoxMyTraitTwinNormal _wire2api_RustOpaque_box_dynMyTraitTwinNormalSendSync(
+      dynamic raw) {
+    return BoxMyTraitTwinNormal.fromWire(raw);
   }
 
   FrbOpaqueReturn _wire2api_RustOpaque_frb_opaque_return(dynamic raw) {
@@ -20656,38 +20680,44 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
 // Section: api2wire_funcs
 
-PlatformPointer api2wire_RustAutoOpaque_BoxdynHelloTraitTwinNormal(
+PlatformPointer api2wire_Auto_RustOpaque_BoxdynHelloTraitTwinNormal(
     BoxHelloTraitTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire();
 }
 
-PlatformPointer api2wire_RustAutoOpaque_NonCloneSimpleTwinNormal(
+PlatformPointer api2wire_Auto_RustOpaque_NonCloneSimpleTwinNormal(
     NonCloneSimpleTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire();
 }
 
-PlatformPointer api2wire_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
+PlatformPointer api2wire_Auto_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
     StructWithGoodAndOpaqueFieldTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire();
 }
 
-PlatformPointer api2wire_RustAutoOpaque_box_dynFnStringString(
+PlatformPointer api2wire_Auto_RustOpaque_box_dynFnStringString(
     BoxFnStringString raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire();
 }
 
-PlatformPointer api2wire_RustAutoOpaque_box_dynHelloTraitTwinNormal(
+PlatformPointer api2wire_Auto_RustOpaque_box_dynHelloTraitTwinNormal(
     BoxHelloTraitTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire();
 }
 
-PlatformPointer api2wire_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync(
+PlatformPointer api2wire_Auto_RustOpaque_box_dynMyTraitTwinNormalSendSync(
     BoxMyTraitTwinNormal raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.api2wire();
+}
+
+PlatformPointer api2wire_RustOpaque_BoxdynHelloTraitTwinNormal(
+    BoxHelloTraitTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire();
 }
@@ -20697,7 +20727,19 @@ PlatformPointer api2wire_RustOpaque_MutexHideData(MutexHideData raw) {
   return raw.api2wire();
 }
 
+PlatformPointer api2wire_RustOpaque_NonCloneSimpleTwinNormal(
+    NonCloneSimpleTwinNormal raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.api2wire();
+}
+
 PlatformPointer api2wire_RustOpaque_RwLockHideData(RwLockHideData raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.api2wire();
+}
+
+PlatformPointer api2wire_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
+    StructWithGoodAndOpaqueFieldTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire();
 }
@@ -20716,6 +20758,24 @@ PlatformPointer api2wire_RustOpaque_box_dynDartDebugTwinRustAsync(
 
 PlatformPointer api2wire_RustOpaque_box_dynDartDebugTwinSync(
     BoxDartDebugTwinSync raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.api2wire();
+}
+
+PlatformPointer api2wire_RustOpaque_box_dynFnStringString(
+    BoxFnStringString raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.api2wire();
+}
+
+PlatformPointer api2wire_RustOpaque_box_dynHelloTraitTwinNormal(
+    BoxHelloTraitTwinNormal raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.api2wire();
+}
+
+PlatformPointer api2wire_RustOpaque_box_dynMyTraitTwinNormalSendSync(
+    BoxMyTraitTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire();
 }

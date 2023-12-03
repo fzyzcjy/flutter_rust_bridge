@@ -3586,37 +3586,25 @@ struct wire_list_weekdays_twin_rust_async *new_list_weekdays_twin_rust_async(int
 
 struct wire_list_weekdays_twin_sync *new_list_weekdays_twin_sync(int32_t len);
 
-void rust_arc_increment_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormal(const void *ptr);
+void rust_arc_increment_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(const void *ptr);
 
-void rust_arc_decrement_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormal(const void *ptr);
-
-void rust_arc_increment_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal(const void *ptr);
-
-void rust_arc_increment_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(const void *ptr);
-
-void rust_arc_increment_strong_count_RustAutoOpaque_box_dynFnStringString(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustAutoOpaque_box_dynFnStringString(const void *ptr);
-
-void rust_arc_increment_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal(const void *ptr);
-
-void rust_arc_increment_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync(const void *ptr);
+void rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(const void *ptr);
 
 void rust_arc_increment_strong_count_RustOpaque_MutexHideData(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_MutexHideData(const void *ptr);
 
+void rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormal(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormal(const void *ptr);
+
 void rust_arc_increment_strong_count_RustOpaque_RwLockHideData(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_RwLockHideData(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(const void *ptr);
 
 void rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal(const void *ptr);
 
@@ -3629,6 +3617,18 @@ void rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync(co
 void rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSync(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_box_dynFnStringString(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringString(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(const void *ptr);
 
 void rust_arc_increment_strong_count_RustOpaque_frb_opaque_return(const void *ptr);
 
@@ -4147,34 +4147,34 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_list_weekdays_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_list_weekdays_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) new_list_weekdays_twin_sync);
-    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormal);
-    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal);
-    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal);
-    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustAutoOpaque_box_dynFnStringString);
-    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal);
-    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_MutexHideData);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_RwLockHideData);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_box_dynFnStringString);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormal);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_return);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_hide_data);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_i_32);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_non_clone_data);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data);
-    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormal);
-    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal);
-    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal);
-    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustAutoOpaque_box_dynFnStringString);
-    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal);
-    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_MutexHideData);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_RwLockHideData);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_box_dynFnStringString);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_box_dynHelloTraitTwinNormal);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_frb_opaque_return);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_frb_opaque_sync_return);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_hide_data);
