@@ -9,9 +9,6 @@ typedef ArcTypeFinalizer = ffi.NativeFinalizer;
 typedef ArcTypeFinalizerArg = ffi.Pointer<ffi.NativeFinalizerFunction>;
 
 /// {@macro flutter_rust_bridge.internal}
-class DroppableBase implements ffi.Finalizable {}
-
-/// {@macro flutter_rust_bridge.internal}
 extension ExtFinalizer on ffi.NativeFinalizer {
   /// {@macro flutter_rust_bridge.internal}
   void attachCrossPlatform(
