@@ -28,14 +28,14 @@ macro_rules! opaque_dyn {
 
 impl<T: ?Sized + DartSafe> From<Arc<T>> for RustOpaque<T> {
     fn from(ptr: Arc<T>) -> Self {
-        Self { ptr: Some(ptr) }
+        Self { ptr }
     }
 }
 
 impl<T: DartSafe> RustOpaque<T> {
     pub fn new(value: T) -> Self {
         Self {
-            ptr: Some(Arc::new(value)),
+            ptr: Arc::new(value),
         }
     }
 }
@@ -44,21 +44,13 @@ impl<T: ?Sized + DartSafe> ops::Deref for RustOpaque<T> {
     type Target = T;
 
     fn deref(&self) -> &Self::Target {
-        if let Some(ptr) = &self.ptr {
-            ptr.as_ref()
-        } else {
-            panic!("Use after free.")
-        }
+        self.ptr.as_ref()
     }
 }
 
 impl<T: DartSafe> RustOpaque<T> {
     pub fn try_unwrap(self) -> Result<T, Self> {
-        if let Some(ptr) = self.ptr {
-            Arc::try_unwrap(ptr).map_err(RustOpaque::from)
-        } else {
-            panic!("Use after free.")
-        }
+        Arc::try_unwrap(self.ptr).map_err(RustOpaque::from)
     }
 }
 

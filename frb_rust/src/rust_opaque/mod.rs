@@ -50,7 +50,7 @@ use std::{mem, ops};
 #[repr(transparent)]
 #[derive(Debug)]
 pub struct RustOpaque<T: ?Sized + DartSafe> {
-    ptr: Option<Arc<T>>,
+    ptr: Arc<T>,
 }
 
 /// Marker trait for types that are safe to share with Dart and can be dropped
