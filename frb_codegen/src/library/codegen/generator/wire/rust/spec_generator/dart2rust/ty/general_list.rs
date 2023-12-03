@@ -111,7 +111,7 @@ pub(crate) fn generate_list_generate_allocate_func(
             "let wrap = {} {{ ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr({}, len), len }};
                 flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)",
             list_generator.rust_wire_type(Target::Io),
-            if inner.is_primitive() {
+            if inner.is_primitive() || matches!(inner, IrType::RustOpaque(_)){
                 // A primitive enum list can use a default value since
                 // `<i32>::new_with_null_ptr()` isn't implemented.
                 "Default::default()".to_string()
