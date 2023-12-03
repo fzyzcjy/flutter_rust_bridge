@@ -20,7 +20,7 @@ abstract class RustArc extends RustArcBase {
 
   /// Mimic `std::sync::Arc::from_raw`
   RustArc.fromRaw({required int ptr, required int size})
-      : _ptr = RustArcBase.initPtr(ptr) {
+      : _ptr = RustArcBase.ptrFromInt(ptr) {
     if (ptr != 0) {
       RustArcBase.finalizerAttach(this, _ptr, size, staticFinalizer);
     }

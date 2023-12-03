@@ -8,7 +8,7 @@ typedef ArcTypeFinalizer = ffi.NativeFinalizer;
 /// {@macro flutter_rust_bridge.internal}
 class RustArcBase implements ffi.Finalizable {
   /// {@macro flutter_rust_bridge.internal}
-  static PlatformPointer initPtr(int ptr) => ffi.Pointer.fromAddress(ptr);
+  static PlatformPointer ptrFromInt(int ptr) => ffi.Pointer.fromAddress(ptr);
 
   /// {@macro flutter_rust_bridge.internal}
   static PlatformPointer nullPtr() => ffi.Pointer.fromAddress(0);

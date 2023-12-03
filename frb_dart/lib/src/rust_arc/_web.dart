@@ -6,7 +6,7 @@ typedef ArcTypeFinalizer = Finalizer<PlatformPointer>;
 /// {@macro flutter_rust_bridge.internal}
 class RustArcBase {
   /// {@macro flutter_rust_bridge.internal}
-  static PlatformPointer initPtr(int ptr) => ptr;
+  static PlatformPointer ptrFromInt(int ptr) => ptr;
 
   /// {@macro flutter_rust_bridge.internal}
   static PlatformPointer nullPtr() => 0;
