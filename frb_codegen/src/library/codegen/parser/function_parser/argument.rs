@@ -53,11 +53,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         context: &TypeParserParsingContext,
         receiver: &Receiver,
     ) -> anyhow::Result<FunctionPartialInfo> {
-        ensure!(
-            receiver.mutability.is_none(),
-            "mutable self is not supported yet"
-        );
-
         let method = if_then_some!(let IrFuncOwnerInfo::Method(method) = owner, method)
             .context("`self` must happen within methods")?;
 
