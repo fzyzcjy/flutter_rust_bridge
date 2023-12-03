@@ -3254,13 +3254,6 @@ impl Wire2Api<crate::api::pseudo_manual::attribute_twin_sync::UserIdTwinSync>
         }
     }
 }
-impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn HelloTraitTwinNormal>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn HelloTraitTwinNormal>> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
 impl Wire2Api<flutter_rust_bridge::RustOpaque<NonCloneSimpleTwinNormal>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -3346,13 +3339,6 @@ impl Wire2Api<[flutter_rust_bridge::DartOpaque; 1]>
     fn wire2api(self) -> [flutter_rust_bridge::DartOpaque; 1] {
         let vec: Vec<flutter_rust_bridge::DartOpaque> = self.wire2api();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
-    }
-}
-impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn HelloTraitTwinNormal>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn HelloTraitTwinNormal>> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<Mutex<HideData>>>
@@ -9085,28 +9071,6 @@ pub fn wire_handle_uuids_twin_normal(
     ids: Box<[u8]>,
 ) {
     wire_handle_uuids_twin_normal_impl(port_, ids)
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            Box<dyn HelloTraitTwinNormal>,
-        >(ptr);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            Box<dyn HelloTraitTwinNormal>,
-        >(ptr);
-    }
 }
 
 #[wasm_bindgen]

@@ -121,10 +121,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormalPtr;
-
-  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_MutexHideDataPtr =>
           wire._rust_arc_decrement_strong_count_RustOpaque_MutexHideDataPtr;
 
@@ -19572,36 +19568,6 @@ class RustLibWire implements BaseWire {
               ffi.Int32)>>('new_list_weekdays_twin_sync');
   late final _new_list_weekdays_twin_sync = _new_list_weekdays_twin_syncPtr
       .asFunction<ffi.Pointer<wire_list_weekdays_twin_sync> Function(int)>();
-
-  void rust_arc_increment_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustOpaque_BoxdynHelloTraitTwinNormalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_increment_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal');
-  late final _rust_arc_increment_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal =
-      _rust_arc_increment_strong_count_RustOpaque_BoxdynHelloTraitTwinNormalPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal');
-  late final _rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal =
-      _rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormalPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void rust_arc_increment_strong_count_RustOpaque_MutexHideData(
     ffi.Pointer<ffi.Void> ptr,

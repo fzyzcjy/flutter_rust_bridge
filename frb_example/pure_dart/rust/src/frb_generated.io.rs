@@ -13,13 +13,6 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: impl_wire2api
 
-impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn HelloTraitTwinNormal>>>
-    for *const std::ffi::c_void
-{
-    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn HelloTraitTwinNormal>> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
 impl Wire2Api<flutter_rust_bridge::RustOpaque<NonCloneSimpleTwinNormal>>
     for *const std::ffi::c_void
 {
@@ -81,13 +74,6 @@ impl Wire2Api<[flutter_rust_bridge::DartOpaque; 1]> for *mut wire_list_DartOpaqu
     fn wire2api(self) -> [flutter_rust_bridge::DartOpaque; 1] {
         let vec: Vec<flutter_rust_bridge::DartOpaque> = self.wire2api();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
-    }
-}
-impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn HelloTraitTwinNormal>>>
-    for *const std::ffi::c_void
-{
-    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn HelloTraitTwinNormal>> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<Mutex<HideData>>> for *const std::ffi::c_void {
@@ -14321,28 +14307,6 @@ pub extern "C" fn new_list_weekdays_twin_sync(len: i32) -> *mut wire_list_weekda
         len,
     };
     flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            Box<dyn HelloTraitTwinNormal>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            Box<dyn HelloTraitTwinNormal>,
-        >(ptr);
-    }
 }
 
 #[no_mangle]

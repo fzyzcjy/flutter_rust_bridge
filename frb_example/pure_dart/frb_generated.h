@@ -3586,10 +3586,6 @@ struct wire_list_weekdays_twin_rust_async *new_list_weekdays_twin_rust_async(int
 
 struct wire_list_weekdays_twin_sync *new_list_weekdays_twin_sync(int32_t len);
 
-void rust_arc_increment_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(const void *ptr);
-
 void rust_arc_increment_strong_count_RustOpaque_MutexHideData(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_MutexHideData(const void *ptr);
@@ -4147,7 +4143,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_list_weekdays_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_list_weekdays_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) new_list_weekdays_twin_sync);
-    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_MutexHideData);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_RwLockHideData);
@@ -4164,7 +4159,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_i_32);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_non_clone_data);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data);
-    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_MutexHideData);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_RwLockHideData);

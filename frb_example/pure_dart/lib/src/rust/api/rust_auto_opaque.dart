@@ -102,22 +102,6 @@ Future<StructWithGoodAndOpaqueFieldTwinNormal>
         RustLib.instance.api
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwn(hint: hint);
 
-// Rust type: flutter_rust_bridge::RustOpaque<Box < dyn HelloTraitTwinNormal >>
-@sealed
-class BoxHelloTraitTwinNormal extends RustOpaque {
-  BoxHelloTraitTwinNormal.fromWire(dynamic wire)
-      : super.fromWire(wire, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_BoxHelloTraitTwinNormal,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxHelloTraitTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr,
-  );
-}
-
 // Rust type: flutter_rust_bridge::RustOpaque<NonCloneSimpleTwinNormal>
 @sealed
 class NonCloneSimpleTwinNormal extends RustOpaque {

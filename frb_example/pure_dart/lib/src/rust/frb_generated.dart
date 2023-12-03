@@ -2079,15 +2079,6 @@ abstract class RustLibApi extends BaseApi {
       {required List<UuidValue> ids, dynamic hint});
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_BoxHelloTraitTwinNormal;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormal;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr;
-
-  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_MutexHideData;
 
   RustArcDecrementStrongCountFnType
@@ -15826,7 +15817,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required BoxHelloTraitTwinNormal arg,
       required String expect,
       dynamic hint}) {
-    var arg0 = api2wire_Auto_RustOpaque_BoxdynHelloTraitTwinNormal(arg);
+    var arg0 = api2wire_Auto_RustOpaque_box_dynHelloTraitTwinNormal(arg);
     var arg1 = api2wire_String(expect);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
@@ -15851,7 +15842,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required BoxHelloTraitTwinNormal arg,
       required String expect,
       dynamic hint}) {
-    var arg0 = api2wire_Auto_RustOpaque_BoxdynHelloTraitTwinNormal(arg);
+    var arg0 = api2wire_Auto_RustOpaque_box_dynHelloTraitTwinNormal(arg);
     var arg1 = api2wire_String(expect);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire
@@ -16861,14 +16852,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         debugName: "handle_uuids_twin_normal",
         argNames: ["ids"],
       );
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_BoxHelloTraitTwinNormal => wire
-          .rust_arc_increment_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormal => wire
-          .rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_MutexHideData =>
@@ -20680,12 +20663,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
 // Section: api2wire_funcs
 
-PlatformPointer api2wire_Auto_RustOpaque_BoxdynHelloTraitTwinNormal(
-    BoxHelloTraitTwinNormal raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.api2wire();
-}
-
 PlatformPointer api2wire_Auto_RustOpaque_NonCloneSimpleTwinNormal(
     NonCloneSimpleTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
@@ -20712,12 +20689,6 @@ PlatformPointer api2wire_Auto_RustOpaque_box_dynHelloTraitTwinNormal(
 
 PlatformPointer api2wire_Auto_RustOpaque_box_dynMyTraitTwinNormalSendSync(
     BoxMyTraitTwinNormal raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.api2wire();
-}
-
-PlatformPointer api2wire_RustOpaque_BoxdynHelloTraitTwinNormal(
-    BoxHelloTraitTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire();
 }

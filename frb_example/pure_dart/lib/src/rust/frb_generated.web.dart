@@ -120,10 +120,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal;
-
-  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_MutexHideDataPtr =>
           wire.rust_arc_decrement_strong_count_RustOpaque_MutexHideData;
 
@@ -5929,18 +5925,6 @@ class RustLibWire extends BaseWire {
   void wire_handle_uuids_twin_normal(NativePortType port_, Uint8List ids) =>
       wasmModule.wire_handle_uuids_twin_normal(port_, ids);
 
-  void rust_arc_increment_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(
-              ptr);
-
   void rust_arc_increment_strong_count_RustOpaque_MutexHideData(dynamic ptr) =>
       wasmModule.rust_arc_increment_strong_count_RustOpaque_MutexHideData(ptr);
 
@@ -8170,14 +8154,6 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_handle_uuids_twin_normal(
       NativePortType port_, Uint8List ids);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_BoxdynHelloTraitTwinNormal(
-          dynamic ptr);
 
   external void rust_arc_increment_strong_count_RustOpaque_MutexHideData(
       dynamic ptr);
