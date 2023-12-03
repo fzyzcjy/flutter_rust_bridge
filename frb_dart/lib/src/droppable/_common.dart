@@ -28,7 +28,8 @@ abstract class Droppable implements DroppableBase {
 
   /// {@macro flutter_rust_bridge.internal}
   Droppable({required PlatformPointer? ptr, required this.externalSizeOnNative})
-      : _ptr = ptr {
+      : assert(ptr == null || !PlatformPointerUtil.isNullPtr(ptr)),
+        _ptr = ptr {
     if (_ptr != null) {
       // Note: The finalizer attaches to the `_ptr` at *current* time,
       // thus even if we assign `RustArc._ptr = something-new`, this finalizer
