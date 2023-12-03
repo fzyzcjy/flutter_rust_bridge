@@ -2,6 +2,7 @@ import 'dart:ffi' as ffi;
 
 import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 
+// TODO rename to RustArc.*
 /// {@macro flutter_rust_bridge.internal}
 typedef ArcTypeFinalizer = ffi.NativeFinalizer;
 

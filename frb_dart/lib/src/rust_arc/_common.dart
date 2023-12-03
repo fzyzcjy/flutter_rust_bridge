@@ -48,7 +48,7 @@ abstract class RustArc extends RustArcBase {
       var ptr = _ptr;
       _ptr = PlatformPointerUtil.nullPtr();
 
-      typeInfo.finalizer.detach(this);
+      typeInfo._finalizer.detach(this);
       typeInfo.rustArcDecrementStrongCount(ptr);
     }
   }
@@ -64,13 +64,7 @@ abstract class RustArc extends RustArcBase {
 /// `RustArcTypeInfo` object, while all `std::sync::Arc<Orange>`
 /// objects should use another.
 abstract class RustArcPerTypeData {
-  // TODO refactor?
-  // TODO comments
-  /// Finalizer for the subtype.
-  // TODO can we ensure this static?
-  /// It should be static for each subtype.
-  @protected
-  ArcTypeFinalizer get finalizer;
+  late final _finalizer = ArcTypeFinalizer(rustArcDecrementStrongCount);
 
   // TODO rename: dropFn -> rust_arc_decrement_strong_count
   // TODO comments
