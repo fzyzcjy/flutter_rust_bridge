@@ -10,6 +10,7 @@ pub struct IrTypeModifier {
 }
 }
 
+// TODO better name? Ownership?
 #[derive(Debug, Clone, Hash, Eq, PartialEq, Serialize)]
 pub enum IrTypeModifierMode {
     /// "T"
