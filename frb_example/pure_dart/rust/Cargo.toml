@@ -17,3 +17,4 @@ frb_example_pure_dart_exapmle_external_lib = { path = "./example_external_lib" }
 wasm-bindgen = "0.2.88" # TODO temp experiment
 byteorder = "1.5.0"
 lazy_static = "1.4.0"
+tempfile = "3.8.1"
