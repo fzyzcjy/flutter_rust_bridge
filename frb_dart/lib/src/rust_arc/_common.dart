@@ -4,7 +4,7 @@ import 'package:flutter_rust_bridge/src/rust_arc/_io.dart'
 import 'package:meta/meta.dart';
 
 /// The Rust `std::sync::Arc` on the Dart side.
-abstract class RustArc implements RustArcBaseClass {
+abstract class RustArc extends RustArcBase {
   /// Either the pointer that `std::sync::Arc::into_raw` gives,
   /// or a null pointer.
   ///

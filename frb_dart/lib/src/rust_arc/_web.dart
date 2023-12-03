@@ -7,7 +7,7 @@ typedef ArcTypeFinalizer = Finalizer<PlatformPointer>;
 typedef ArcTypeFinalizerArg = void Function(PlatformPointer);
 
 /// {@macro flutter_rust_bridge.internal}
-typedef RustArcBaseClass = Object;
+class RustArcBase {}
 
 /// {@macro flutter_rust_bridge.internal}
 extension ExtFinalizer on Finalizer<PlatformPointer> {
