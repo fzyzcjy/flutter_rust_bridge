@@ -28,6 +28,11 @@ abstract class RustArc extends RustArcBase {
     }
   }
 
+  /// Checks whether [dispose] has been called at any point during the lifetime
+  /// of this pointer. This does not guarantee that the backing memory has
+  /// actually been reclaimed.
+  bool isDisposed() => PlatformPointerUtil.isNullPtr(_ptr);
+
   /// See comments in [RustArcPerTypeData] for details.
   @protected
   RustArcPerTypeData get typeInfo;

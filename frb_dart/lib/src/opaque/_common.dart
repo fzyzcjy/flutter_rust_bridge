@@ -26,7 +26,7 @@ abstract class RustOpaque extends RustOpaqueBase {
   /// if this pointer is shared with Rust when [dispose] is called,
   /// ownership is fully transferred to Rust else this pointer is cleared.
   void dispose() {
-    if (!isStale()) {
+    if (!isDisposed()) {
       var ptr = _ptr;
       _ptr = PlatformPointerUtil.nullPtr();
 
@@ -41,7 +41,7 @@ abstract class RustOpaque extends RustOpaqueBase {
   /// Throws a [StateError] if called after [dispose].
   @internal
   PlatformPointer shareOrMove() {
-    if (!isStale()) {
+    if (!isDisposed()) {
       var ptr = shareFn(_ptr);
       if (_move) {
         dispose();
@@ -51,11 +51,6 @@ abstract class RustOpaque extends RustOpaqueBase {
       return PlatformPointerUtil.nullPtr();
     }
   }
-
-  /// Checks whether [dispose] has been called at any point during the lifetime
-  /// of this pointer. This does not guarantee that the backing memory has
-  /// actually been reclaimed.
-  bool isStale() => PlatformPointerUtil.isNullPtr(_ptr);
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
