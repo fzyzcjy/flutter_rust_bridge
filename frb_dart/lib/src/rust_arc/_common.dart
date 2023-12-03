@@ -90,8 +90,8 @@ abstract class RustArc extends _Droppable<PlatformPointer> {
   PlatformPointer? get _resource => super._resource;
 
   /// Mimic `std::sync::Arc::from_raw`
-  RustArc.fromRaw({required int ptr, required int size})
-      : super(ptrOrNullFromInt(ptr), size: size);
+  RustArc.fromRaw({required int ptr, required super.size})
+      : super(ptrOrNullFromInt(ptr));
 
   /// See comments in [RustArcPerTypeData] for details.
   @protected
