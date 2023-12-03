@@ -35,10 +35,3 @@ abstract class RustOpaque {
   /// Whether the underlying `Arc` is disposed.
   bool get isDisposed => _arc.isDisposed;
 }
-
-// TODO impl and move
-/// {@macro flutter_rust_bridge.only_for_generated_code}
-abstract class RustAutoOpaque extends RustOpaque {
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
-  RustAutoOpaque.fromWire(super.wire, super.staticData) : super.fromWire();
-}
