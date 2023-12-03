@@ -114,13 +114,9 @@ fn generate_item(
             classes
                 .iter()
                 .filter_map(|&ty| ApiDartGenerator::new(ty.clone(), context).generate_class())
-                .map(|c| {
-                    c.sanity_check()?;
-                    Ok(c)
-                })
-                .collect::<Result<Vec<_>>>()
+                .collect_vec()
         })
-        .unwrap_or(Ok(vec![]))?;
+        .unwrap_or_default();
 
     let needs_freezed = classes.iter().any(|class| class.needs_freezed);
 
