@@ -6,6 +6,7 @@ use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use std::collections::HashMap;
+use std::fmt::Debug;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_rust_opaque(
@@ -34,7 +35,17 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 }
 
+pub(super) type RustOpaqueParserInfo = SimpleParsedTypesParserInfo<IrTypeRustOpaque>;
+
 #[derive(Clone, Debug, Default)]
-pub(super) struct RustOpaqueParserInfo {
-    parsed_types: HashMap<String, IrTypeRustOpaque>,
+pub(super) struct SimpleParsedTypesParserInfo<T: Clone + Debug> {
+    parsed_types: HashMap<String, T>,
+}
+
+impl<T: Clone + Debug> SimpleParsedTypesParserInfo<T> {
+    pub fn new() -> Self {
+        Self {
+            parsed_types: HashMap::new(),
+        }
+    }
 }

@@ -3,6 +3,7 @@ use crate::codegen::ir::ty::rust_auto_opaque::IrTypeRustAutoOpaque;
 use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::RustOpaque;
+use crate::codegen::parser::type_parser::rust_opaque::SimpleParsedTypesParserInfo;
 use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
@@ -23,7 +24,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                     // skip subtrees inside RustOpaque
                     matches!(ty, IrType::RustOpaque(_))
                 },
-                self,
+                self.inner,
             );
             gatherer.gather()
         };
@@ -40,7 +41,4 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 }
 
-#[derive(Clone, Debug, Default)]
-pub(super) struct RustAutoOpaqueParserInfo {
-    parsed_types: HashMap<String, IrTypeRustAutoOpaque>,
-}
+pub(super) type RustAutoOpaqueParserInfo = SimpleParsedTypesParserInfo<IrTypeRustAutoOpaque>;

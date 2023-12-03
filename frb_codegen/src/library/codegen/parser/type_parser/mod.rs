@@ -51,8 +51,8 @@ impl<'a> TypeParser<'a> {
             src_types,
             struct_parser_info: EnumOrStructParserInfo::new(),
             enum_parser_info: EnumOrStructParserInfo::new(),
-            rust_opaque_parser_info: Default::default(),
-            rust_auto_opaque_parser_info: Default::default(),
+            rust_opaque_parser_info: RustOpaqueParserInfo::new(),
+            rust_auto_opaque_parser_info: RustAutoOpaqueParserInfo::new(),
             array_parser_info: Default::default(),
         }
     }
