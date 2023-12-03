@@ -4,7 +4,7 @@ import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
 typedef OpaqueTypeFinalizer = Finalizer<PlatformPointer>;
 
 /// {@macro flutter_rust_bridge.internal}
-class FrbOpaqueBase {
+class RustOpaqueBase {
   /// {@macro flutter_rust_bridge.internal}
   static PlatformPointer initPtr(int ptr) => ptr;
 
@@ -15,7 +15,7 @@ class FrbOpaqueBase {
   static bool isStalePtr(PlatformPointer ptr) => ptr == 0;
 
   /// {@macro flutter_rust_bridge.internal}
-  static void finalizerAttach(FrbOpaqueBase opaque, PlatformPointer ptr, int _,
+  static void finalizerAttach(RustOpaqueBase opaque, PlatformPointer ptr, int _,
           OpaqueTypeFinalizer finalizer) =>
       finalizer.attach(opaque, ptr, detach: opaque);
 }
