@@ -4,6 +4,22 @@ import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:flutter_rust_bridge/src/utils/port_generator.dart';
 import 'package:meta/meta.dart';
 
+// ----- TODO this comment is originally at `dispose()`,
+//  but since `dispose` is in `Droppable`, the comments no longer apply there
+/// Call Rust destructors on the backing memory of this pointer.
+///
+/// This function should be run at least once during the lifetime of the
+/// program, and can be run many times.
+///
+/// When passed into a Rust function, Rust enacts *shared ownership*,
+/// if this pointer is shared with Rust when [dispose] is called,
+/// ownership is fully transferred to Rust else this pointer is cleared.
+// ----- TODO this is for `isDisposed`
+/// Checks whether [dispose] has been called at any point during the lifetime
+/// of this pointer. This does not guarantee that the backing memory has
+/// actually been reclaimed.
+// -----
+
 /// An opaque pointer to a native C or Rust type.
 /// Recipients of this type should call [dispose] at least once during runtime.
 /// If passed to a native function after being [dispose]d, an exception will be thrown.

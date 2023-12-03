@@ -32,15 +32,7 @@ abstract class Droppable implements DroppableBase {
     }
   }
 
-  // TODO comments
-  /// Call Rust destructors on the backing memory of this pointer.
-  ///
-  /// This function should be run at least once during the lifetime of the
-  /// program, and can be run many times.
-  ///
-  /// When passed into a Rust function, Rust enacts *shared ownership*,
-  /// if this pointer is shared with Rust when [dispose] is called,
-  /// ownership is fully transferred to Rust else this pointer is cleared.
+  /// Disposes the resource.
   void dispose() {
     if (!isDisposed) {
       final resource = _resource!;
@@ -52,13 +44,10 @@ abstract class Droppable implements DroppableBase {
     }
   }
 
-  // TODO comments
-  /// Checks whether [dispose] has been called at any point during the lifetime
-  /// of this pointer. This does not guarantee that the backing memory has
-  /// actually been reclaimed.
+  /// Check whether the resource is disposed.
   bool get isDisposed => _resource == null;
 
-  /// See comments in [DroppableStaticData].
+  /// See comments in [DroppableStaticData] for requirements.
   @protected
   DroppableStaticData get staticData;
 }
@@ -68,7 +57,7 @@ abstract class Droppable implements DroppableBase {
 ///
 /// This is because the [_finalizer] should be static.
 class DroppableStaticData {
-  // TODO rename type etc
+  /// The function to release the resource
   final void Function(PlatformPointer) _releaseFn;
 
   /// The function pointer for [_rustArcDecrementStrongCount] on native platform.
