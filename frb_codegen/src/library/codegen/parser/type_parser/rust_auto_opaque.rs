@@ -34,8 +34,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 
     fn parse_rust_auto_opaque(&mut self, ty: &IrType) -> IrType {
-        let new_ir =
-            IrTypeRustAutoOpaque::new(self.context.initiated_namespace.clone(), ty.clone());
+        let new_ir = IrTypeRustAutoOpaque {
+            namespace: self.context.initiated_namespace.clone(),
+            modifier: TODO,
+            inner: Box::new(ty.clone()),
+        };
+
         RustAutoOpaque((self.inner.rust_auto_opaque_parser_info).get_or_insert(ty, new_ir))
     }
 }

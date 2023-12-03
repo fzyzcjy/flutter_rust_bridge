@@ -5,17 +5,18 @@ use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 crate::ir! {
 pub struct IrTypeRustAutoOpaque {
     pub namespace: Namespace,
+    pub modifier: IrTypeModifier,
     pub inner: Box<IrType>,
 }
-}
 
-impl IrTypeRustAutoOpaque {
-    pub fn new(namespace: Namespace, inner: IrType) -> Self {
-        Self {
-            namespace,
-            inner: Box::new(inner),
-        }
-    }
+pub enum IrTypeModifier {
+    /// "T"
+    Owned,
+    /// "&T"
+    Ref,
+    /// "&mut T"
+    RefMut,
+}
 }
 
 impl IrTypeTrait for IrTypeRustAutoOpaque {
