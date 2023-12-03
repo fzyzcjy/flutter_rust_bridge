@@ -14,10 +14,14 @@ impl<'a> WireDartGeneratorDart2RustTrait for RustOpaqueWireDartGenerator<'a> {
     }
 
     fn dart_wire_type(&self, target: Target) -> String {
-        match target {
-            Target::Io => "PlatformPointer",
-            Target::Wasm => "Object",
-        }
-        .into()
+        generalized_rust_opaque_dart_wire_type(target)
     }
+}
+
+pub(super) fn generalized_rust_opaque_dart_wire_type(target: Target) -> String {
+    match target {
+        Target::Io => "PlatformPointer",
+        Target::Wasm => "Object",
+    }
+    .into()
 }
