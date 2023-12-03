@@ -24,13 +24,19 @@ abstract class RustArc extends RustArcBase {
   RustArc.fromRaw({required int ptr, required int size})
       : _ptr = PlatformPointerUtil.ptrFromInt(ptr) {
     if (!PlatformPointerUtil.isNullPtr(_ptr)) {
-      RustArcBase.finalizerAttach(this, _ptr, size, staticFinalizer);
+      RustArcBase.finalizerAttach(this, _ptr, size, typeInfo.finalizer);
     }
   }
+
+  /// See comments in [RustArcTypeInfo] for details.
+  @protected
+  RustArcTypeInfo get typeInfo;
 }
 
-/// Information per type. For example, all `std::sync::Arc<Apple>` objects
-/// should use one `RustArcTypeInfo` object, while all `std::sync::Arc<Orange>`
+/// Should have exactly *one* instance per *type*.
+///
+/// For example, all `std::sync::Arc<Apple>` objects should use one
+/// `RustArcTypeInfo` object, while all `std::sync::Arc<Orange>`
 /// objects should use another.
 abstract class RustArcTypeInfo {
   // TODO refactor?
