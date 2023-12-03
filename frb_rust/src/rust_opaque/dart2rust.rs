@@ -26,8 +26,6 @@ pub unsafe fn wire2api_rust_opaque<T: DartSafe>(raw: wasm_bindgen::JsValue) -> R
 }
 
 unsafe fn wire2api_rust_opaque_inner<T: DartSafe>(ptr: *const T) -> RustOpaque<T> {
-    // The raw pointer is the same one created from Arc::into_raw,
-    // owned and artificially incremented by Dart.
     assert!(!ptr.is_null());
     RustOpaque {
         ptr: Arc::from_raw(ptr),
