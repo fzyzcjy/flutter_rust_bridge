@@ -1,6 +1,7 @@
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:flutter_rust_bridge/src/rust_arc/_io.dart'
     if (dart.library.html) '_web.dart';
+import 'package:meta/meta.dart';
 
 // TODO
 /// The type of [RustArc] drop function
@@ -31,6 +32,7 @@ abstract class RustArc extends RustArcBase {
   // TODO comments
   /// A native finalizer rust opaque type.
   /// It should be *static* for each subtype.
+  @protected
   ArcTypeFinalizer get staticFinalizer;
 
   // TODO rename
@@ -38,6 +40,7 @@ abstract class RustArc extends RustArcBase {
   /// Rust type specific drop function.
   ///
   /// This function should never be called manually.
+  @protected
   ArcDropFnType get dropFn;
 
   // TODO rename
@@ -45,5 +48,6 @@ abstract class RustArc extends RustArcBase {
   /// Rust type specific share function.
   ///
   /// This function should never be called manually.
+  @protected
   ArcShareFnType get shareFn;
 }
