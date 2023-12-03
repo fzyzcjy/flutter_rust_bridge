@@ -58,7 +58,7 @@ impl<'a> WireRustGeneratorDart2RustTrait for RustOpaqueWireRustGenerator<'a> {
 
     fn rust_wire_type(&self, target: Target) -> String {
         match target {
-            Target::Io => "*const std::ffi::c_void",
+            Target::Io => "std::ffi::c_void",
             Target::Wasm => JS_VALUE,
         }
         .into()
