@@ -1,8 +1,8 @@
 use crate::codegen::ir::pack::DistinctTypeGatherer;
 use crate::codegen::ir::ty::rust_auto_opaque::IrTypeRustAutoOpaque;
 use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
-use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::RustOpaque;
+use crate::codegen::ir::ty::{IrType, IrTypeModifier};
 use crate::codegen::parser::type_parser::rust_opaque::SimpleParsedTypesParserInfo;
 use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
@@ -34,10 +34,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 
     fn parse_rust_auto_opaque(&mut self, ty: &IrType) -> IrType {
+        let (modifier, inner) = parse_ir_type_modifier(ty);
         let new_ir = IrTypeRustAutoOpaque {
             namespace: self.context.initiated_namespace.clone(),
-            modifier: TODO,
-            inner: Box::new(ty.clone()),
+            modifier,
+            inner: Box::new(inner),
         };
 
         RustAutoOpaque((self.inner.rust_auto_opaque_parser_info).get_or_insert(ty, new_ir))
@@ -45,3 +46,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 }
 
 pub(super) type RustAutoOpaqueParserInfo = SimpleParsedTypesParserInfo<IrTypeRustAutoOpaque>;
+
+fn parse_ir_type_modifier(ty: &IrType) -> (IrTypeModifier, IrType) {
+    todo!()
+}
