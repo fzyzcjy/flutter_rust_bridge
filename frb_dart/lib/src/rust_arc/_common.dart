@@ -37,9 +37,10 @@ abstract class RustArc extends Droppable {
   RustArc.fromRaw({required int ptr, required super.externalSizeOnNative})
       : super(ptrOrNullFromInt(ptr));
 
-  /// See comments in [RustArcPerTypeData] for details.
+  /// See comments in [RustArcStaticData] for details.
+  @override
   @protected
-  RustArcPerTypeData get perTypeData;
+  RustArcStaticData get staticData;
 }
 
 /// Should have exactly *one* instance per *type*.
@@ -47,7 +48,7 @@ abstract class RustArc extends Droppable {
 /// For example, all `std::sync::Arc<Apple>` objects should use one
 /// `RustArcTypeInfo` object, while all `std::sync::Arc<Orange>`
 /// objects should use another.
-class RustArcPerTypeData extends _DroppablePerTypeData<PlatformPointer> {
+class RustArcStaticData extends DroppableStaticData {
   // TODO rename: shareFn -> rust_arc_increment_strong_count
   // TODO comments
   /// Directly calls `std::sync::Arc::increment_strong_count(ptr)`
@@ -65,7 +66,7 @@ class RustArcPerTypeData extends _DroppablePerTypeData<PlatformPointer> {
       ArcTypeFinalizer(_rustArcDecrementStrongCountPtr);
 
   /// Constructs the data
-  RustArcPerTypeData({
+  RustArcStaticData({
     required RustArcIncrementStrongCountFnType rustArcIncrementStrongCount,
     required RustArcDecrementStrongCountFnType rustArcDecrementStrongCount,
     required ArcTypeFinalizerArg rustArcDecrementStrongCountPtr,
@@ -74,8 +75,8 @@ class RustArcPerTypeData extends _DroppablePerTypeData<PlatformPointer> {
         _rustArcDecrementStrongCountPtr = rustArcDecrementStrongCountPtr;
 }
 
-/// The type of [RustArcPerTypeData._rustArcIncrementStrongCount]
+/// The type of [RustArcStaticData._rustArcIncrementStrongCount]
 typedef RustArcIncrementStrongCountFnType = void Function(PlatformPointer);
 
-/// The type of [RustArcPerTypeData._rustArcDecrementStrongCount]
+/// The type of [RustArcStaticData._rustArcDecrementStrongCount]
 typedef RustArcDecrementStrongCountFnType = void Function(PlatformPointer);
