@@ -131,6 +131,7 @@ impl Serialize for IrType {
             IrType::Primitive(inner) => ser::<S, _>(&mut state, "Primitive", inner),
             IrType::PrimitiveList(inner) => ser::<S, _>(&mut state, "PrimitiveList", inner),
             IrType::Record(inner) => ser::<S, _>(&mut state, "Record", inner),
+            IrType::RustAutoOpaque(inner) => ser::<S, _>(&mut state, "RustAutoOpaque", inner),
             IrType::RustOpaque(inner) => ser::<S, _>(&mut state, "RustOpaque", inner),
             IrType::StructRef(inner) => ser::<S, _>(&mut state, "StructRef", inner),
             IrType::Unencodable(inner) => ser::<S, _>(&mut state, "Unencodable", inner),

@@ -17,6 +17,7 @@ use crate::codegen::ir::ty::optional_list::IrTypeOptionalList;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
 use crate::codegen::ir::ty::record::IrTypeRecord;
+use crate::codegen::ir::ty::rust_auto_opaque::IrTypeRustAutoOpaque;
 use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
 use crate::codegen::ir::ty::structure::IrTypeStructRef;
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
@@ -43,6 +44,7 @@ pub(crate) enum WireDartGenerator<'a> {
     Primitive(PrimitiveWireDartGenerator<'a>),
     PrimitiveList(PrimitiveListWireDartGenerator<'a>),
     Record(RecordWireDartGenerator<'a>),
+    RustAutoOpaque(RustAutoOpaqueWireDartGenerator<'a>),
     RustOpaque(RustOpaqueWireDartGenerator<'a>),
     StructRef(StructRefWireDartGenerator<'a>),
     Unencodable(UnencodableWireDartGenerator<'a>),
@@ -62,6 +64,7 @@ codegen_generator_structs!(
     Primitive,
     PrimitiveList,
     Record,
+    RustAutoOpaque,
     RustOpaque,
     StructRef,
     Unencodable,
