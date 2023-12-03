@@ -104,7 +104,7 @@ Future<StructWithGoodAndOpaqueFieldTwinNormal>
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwn(hint: hint);
 
 @sealed
-class BoxHelloTraitTwinNormal extends RustOpaque {
+class BoxHelloTraitTwinNormal extends RustAutoOpaque {
   BoxHelloTraitTwinNormal.fromWire(dynamic wire)
       : super.fromWire(wire, _kStaticData);
 
@@ -119,7 +119,7 @@ class BoxHelloTraitTwinNormal extends RustOpaque {
 }
 
 @sealed
-class NonCloneSimpleTwinNormal extends RustOpaque {
+class NonCloneSimpleTwinNormal extends RustAutoOpaque {
   NonCloneSimpleTwinNormal.fromWire(dynamic wire)
       : super.fromWire(wire, _kStaticData);
 
@@ -134,7 +134,7 @@ class NonCloneSimpleTwinNormal extends RustOpaque {
 }
 
 @sealed
-class StructWithGoodAndOpaqueFieldTwinNormal extends RustOpaque {
+class StructWithGoodAndOpaqueFieldTwinNormal extends RustAutoOpaque {
   StructWithGoodAndOpaqueFieldTwinNormal.fromWire(dynamic wire)
       : super.fromWire(wire, _kStaticData);
 
@@ -149,7 +149,7 @@ class StructWithGoodAndOpaqueFieldTwinNormal extends RustOpaque {
 }
 
 @sealed
-class BoxFnStringString extends RustOpaque {
+class BoxFnStringString extends RustAutoOpaque {
   BoxFnStringString.fromWire(dynamic wire) : super.fromWire(wire, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
@@ -163,7 +163,7 @@ class BoxFnStringString extends RustOpaque {
 }
 
 @sealed
-class BoxHelloTraitTwinNormal extends RustOpaque {
+class BoxHelloTraitTwinNormal extends RustAutoOpaque {
   BoxHelloTraitTwinNormal.fromWire(dynamic wire)
       : super.fromWire(wire, _kStaticData);
 
@@ -178,7 +178,7 @@ class BoxHelloTraitTwinNormal extends RustOpaque {
 }
 
 @sealed
-class BoxMyTraitTwinNormal extends RustOpaque {
+class BoxMyTraitTwinNormal extends RustAutoOpaque {
   BoxMyTraitTwinNormal.fromWire(dynamic wire)
       : super.fromWire(wire, _kStaticData);
 
@@ -193,7 +193,7 @@ class BoxMyTraitTwinNormal extends RustOpaque {
 }
 
 @sealed
-class MutBoxHelloTraitTwinNormal extends RustOpaque {
+class MutBoxHelloTraitTwinNormal extends RustAutoOpaque {
   MutBoxHelloTraitTwinNormal.fromWire(dynamic wire)
       : super.fromWire(wire, _kStaticData);
 
@@ -208,7 +208,7 @@ class MutBoxHelloTraitTwinNormal extends RustOpaque {
 }
 
 @sealed
-class MutNonCloneSimpleTwinNormal extends RustOpaque {
+class MutNonCloneSimpleTwinNormal extends RustAutoOpaque {
   MutNonCloneSimpleTwinNormal.fromWire(dynamic wire)
       : super.fromWire(wire, _kStaticData);
 
@@ -223,7 +223,7 @@ class MutNonCloneSimpleTwinNormal extends RustOpaque {
 }
 
 @sealed
-class MutStructWithGoodAndOpaqueFieldTwinNormal extends RustOpaque {
+class MutStructWithGoodAndOpaqueFieldTwinNormal extends RustAutoOpaque {
   MutStructWithGoodAndOpaqueFieldTwinNormal.fromWire(dynamic wire)
       : super.fromWire(wire, _kStaticData);
 

@@ -13,6 +13,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
             self.ir.clone().into(),
             self.ir.namespace.clone(),
             self.context,
+            "RustOpaque",
         ))
     }
 }
@@ -21,6 +22,7 @@ pub(super) fn generalized_rust_opaque_generate_class(
     ir: IrType,
     namespace: Namespace,
     context: ApiDartGeneratorContext,
+    base_class: &str,
 ) -> ApiDartGeneratedClass {
     let dart_entrypoint_class_name = &context.config.dart_entrypoint_class_name;
     let dart_api_instance = format!("{dart_entrypoint_class_name}.instance.api");
@@ -30,7 +32,7 @@ pub(super) fn generalized_rust_opaque_generate_class(
     ApiDartGeneratedClass {
         namespace,
         code: format!(
-            "@sealed class {dart_api_type} extends RustOpaque {{
+            "@sealed class {dart_api_type} extends {base_class} {{
                     {dart_api_type}.fromWire(dynamic wire): super.fromWire(wire, _kStaticData);
 
                     static final _kStaticData = RustArcStaticData(

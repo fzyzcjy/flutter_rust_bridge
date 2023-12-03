@@ -11,6 +11,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustAutoOpaqueApiDartGenerator<'a> {
             self.ir.clone().into(),
             self.ir.namespace.clone(),
             self.context,
+            "RustAutoOpaque",
         ))
     }
 }
