@@ -11,9 +11,9 @@ impl<'a> WireDartGeneratorMiscTrait for RustOpaqueWireDartGenerator<'a> {
     fn generate_extra_functions(&self) -> Option<Acc<WireDartOutputCode>> {
         Some(
             vec![
-                self.generate_share_or_drop_opaque("share"),
-                self.generate_share_or_drop_opaque("drop"),
-                self.generate_opaque_finalizer(),
+                self.generate_rust_arc_modify_strong_count("increment"),
+                self.generate_rust_arc_modify_strong_count("decrement"),
+                self.generate_function_pointer(),
             ]
             .into_iter()
             .collect::<Acc<Vec<WireDartOutputCode>>>()
@@ -23,48 +23,54 @@ impl<'a> WireDartGeneratorMiscTrait for RustOpaqueWireDartGenerator<'a> {
 }
 
 impl<'a> RustOpaqueWireDartGenerator<'a> {
-    fn generate_share_or_drop_opaque(&self, op_name: &str) -> Acc<WireDartOutputCode> {
+    fn generate_rust_arc_modify_strong_count(&self, op_name: &str) -> Acc<WireDartOutputCode> {
         let ty_dart_api_type =
             ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
                 .dart_api_type();
         let op_name_pascal = op_name.to_case(Case::Pascal);
         let safe_ident = self.ir.safe_ident();
 
-        let definition =
-            format!("Opaque{op_name_pascal}FnType get {op_name}Opaque{ty_dart_api_type}");
+        let definition = format!(
+            "RustArc{op_name_pascal}StrongCountFnType get rust_arc_{op_name}_strong_count_{ty_dart_api_type}"
+        );
 
         Acc {
             common: WireDartOutputCode {
                 api_body: format!("{definition};\n\n"),
-                api_impl_body: format!("{definition} => wire.{op_name}_opaque_{safe_ident};\n\n"),
+                api_impl_body: format!(
+                    "{definition} => wire.rust_arc_{op_name}_strong_count_{safe_ident};\n\n"
+                ),
                 ..Default::default()
             },
             ..Default::default()
         }
     }
 
-    fn generate_opaque_finalizer(&self) -> Acc<WireDartOutputCode> {
+    fn generate_function_pointer(&self) -> Acc<WireDartOutputCode> {
         let ty_dart_api_type =
             ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
                 .dart_api_type();
-        let ty_dart_api_type_camel = ty_dart_api_type.to_case(Case::Camel);
         let ty_safe_ident = self.ir.safe_ident();
-        let field_name = format!("{ty_dart_api_type_camel}Finalizer");
+        let getter_name = format!("rust_arc_decrement_strong_count_{ty_dart_api_type}Ptr");
 
-        let generate_platform_impl = |finalizer_arg: &str| WireDartOutputCode {
+        let generate_platform_impl = |ptr_name: &str| WireDartOutputCode {
             api_impl_body: format!(
-                "late final {field_name} = OpaqueTypeFinalizer({finalizer_arg});\n\n",
+                "CrossPlatformFinalizerArg get {getter_name} => {ptr_name};\n\n",
             ),
             ..Default::default()
         };
 
         Acc {
             common: WireDartOutputCode {
-                api_body: format!("OpaqueTypeFinalizer get {field_name};\n\n"),
+                api_body: format!("CrossPlatformFinalizerArg get {getter_name};\n\n"),
                 ..Default::default()
             },
-            io: generate_platform_impl(&format!("wire._drop_opaque_{ty_safe_ident}Ptr")),
-            wasm: generate_platform_impl(&format!("wire.drop_opaque_{ty_safe_ident}")),
+            io: generate_platform_impl(&format!(
+                "wire._rust_arc_decrement_strong_count_{ty_safe_ident}Ptr"
+            )),
+            wasm: generate_platform_impl(&format!(
+                "wire.rust_arc_decrement_strong_count_{ty_safe_ident}"
+            )),
         }
     }
 }

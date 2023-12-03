@@ -13,7 +13,6 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
 
         let dart_api_type =
             ApiDartGenerator::new(RustOpaque(self.ir.clone()), self.context).dart_api_type();
-        let dart_api_type_camel = dart_api_type.to_case(Case::Camel);
 
         Some(ApiDartGeneratedClass {
             namespace: self.ir.namespace.clone(),
@@ -21,14 +20,11 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
                 "@sealed class {dart_api_type} extends RustOpaque {{
                     {dart_api_type}.fromWire(dynamic wire): super.fromWire(wire);
 
-                    @override
-                    OpaqueDropFnType get dropFn => {dart_api_instance}.dropOpaque{dart_api_type};
-            
-                    @override
-                    OpaqueShareFnType get shareFn => {dart_api_instance}.shareOpaque{dart_api_type};
-            
-                    @override
-                    OpaqueTypeFinalizer get staticFinalizer => {dart_api_instance}.{dart_api_type_camel}Finalizer;
+                    static final _kStaticData = RustArcStaticData(
+                        rustArcIncrementStrongCount: {dart_api_instance}.rust_arc_increment_strong_count_{dart_api_type},
+                        rustArcDecrementStrongCount: {dart_api_instance}.rust_arc_decrement_strong_count_{dart_api_type},
+                        rustArcDecrementStrongCountPtr: {dart_api_instance}.rust_arc_decrement_strong_count_{dart_api_type}Ptr,
+                    );
                 }}"
             ),
             needs_freezed: false,
