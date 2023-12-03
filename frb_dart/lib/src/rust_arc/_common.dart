@@ -59,12 +59,6 @@ class RustArcStaticData extends DroppableStaticData {
   /// Directly calls `std::sync::Arc::decrement_strong_count(ptr)`
   final RustArcDecrementStrongCountFnType _rustArcDecrementStrongCount;
 
-  /// The function pointer for [_rustArcDecrementStrongCount] on native platform.
-  final ArcTypeFinalizerArg _rustArcDecrementStrongCountPtr;
-
-  late final _finalizerByArcDecrCount =
-      ArcTypeFinalizer(_rustArcDecrementStrongCountPtr);
-
   /// Constructs the data
   RustArcStaticData({
     required RustArcIncrementStrongCountFnType rustArcIncrementStrongCount,
@@ -72,7 +66,10 @@ class RustArcStaticData extends DroppableStaticData {
     required ArcTypeFinalizerArg rustArcDecrementStrongCountPtr,
   })  : _rustArcDecrementStrongCount = rustArcDecrementStrongCount,
         _rustArcIncrementStrongCount = rustArcIncrementStrongCount,
-        _rustArcDecrementStrongCountPtr = rustArcDecrementStrongCountPtr;
+        super(
+          releaseFn: TODO,
+          releaseFnPtr: TODO,
+        );
 }
 
 /// The type of [RustArcStaticData._rustArcIncrementStrongCount]
