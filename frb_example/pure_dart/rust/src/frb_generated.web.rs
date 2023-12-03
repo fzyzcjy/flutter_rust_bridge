@@ -8848,7 +8848,7 @@ pub fn wire_handle_uuids_twin_normal(
 #[wasm_bindgen]
 pub fn drop_opaque_RustOpaque_MutexHideData(ptr: *const std::ffi::c_void) {
     unsafe {
-        std::sync::Arc::<Mutex<HideData>>::decrement_strong_count(ptr as _);
+        flutter_rust_bridge::for_generated::rust_opaque_arc_decr_count::<Mutex<HideData>>(ptr);
     }
 }
 
@@ -8857,15 +8857,14 @@ pub fn share_opaque_RustOpaque_MutexHideData(
     ptr: *const std::ffi::c_void,
 ) -> *const std::ffi::c_void {
     unsafe {
-        std::sync::Arc::<Mutex<HideData>>::increment_strong_count(ptr as _);
-        ptr
+        flutter_rust_bridge::for_generated::rust_opaque_arc_incr_count::<Mutex<HideData>>(ptr)
     }
 }
 
 #[wasm_bindgen]
 pub fn drop_opaque_RustOpaque_RwLockHideData(ptr: *const std::ffi::c_void) {
     unsafe {
-        std::sync::Arc::<RwLock<HideData>>::decrement_strong_count(ptr as _);
+        flutter_rust_bridge::for_generated::rust_opaque_arc_decr_count::<RwLock<HideData>>(ptr);
     }
 }
 
@@ -8874,15 +8873,16 @@ pub fn share_opaque_RustOpaque_RwLockHideData(
     ptr: *const std::ffi::c_void,
 ) -> *const std::ffi::c_void {
     unsafe {
-        std::sync::Arc::<RwLock<HideData>>::increment_strong_count(ptr as _);
-        ptr
+        flutter_rust_bridge::for_generated::rust_opaque_arc_incr_count::<RwLock<HideData>>(ptr)
     }
 }
 
 #[wasm_bindgen]
 pub fn drop_opaque_RustOpaque_box_dynDartDebugTwinNormal(ptr: *const std::ffi::c_void) {
     unsafe {
-        std::sync::Arc::<Box<dyn DartDebugTwinNormal>>::decrement_strong_count(ptr as _);
+        flutter_rust_bridge::for_generated::rust_opaque_arc_decr_count::<
+            Box<dyn DartDebugTwinNormal>,
+        >(ptr);
     }
 }
 
@@ -8891,15 +8891,18 @@ pub fn share_opaque_RustOpaque_box_dynDartDebugTwinNormal(
     ptr: *const std::ffi::c_void,
 ) -> *const std::ffi::c_void {
     unsafe {
-        std::sync::Arc::<Box<dyn DartDebugTwinNormal>>::increment_strong_count(ptr as _);
-        ptr
+        flutter_rust_bridge::for_generated::rust_opaque_arc_incr_count::<Box<dyn DartDebugTwinNormal>>(
+            ptr,
+        )
     }
 }
 
 #[wasm_bindgen]
 pub fn drop_opaque_RustOpaque_box_dynDartDebugTwinRustAsync(ptr: *const std::ffi::c_void) {
     unsafe {
-        std::sync::Arc::<Box<dyn DartDebugTwinRustAsync>>::decrement_strong_count(ptr as _);
+        flutter_rust_bridge::for_generated::rust_opaque_arc_decr_count::<
+            Box<dyn DartDebugTwinRustAsync>,
+        >(ptr);
     }
 }
 
@@ -8908,15 +8911,18 @@ pub fn share_opaque_RustOpaque_box_dynDartDebugTwinRustAsync(
     ptr: *const std::ffi::c_void,
 ) -> *const std::ffi::c_void {
     unsafe {
-        std::sync::Arc::<Box<dyn DartDebugTwinRustAsync>>::increment_strong_count(ptr as _);
-        ptr
+        flutter_rust_bridge::for_generated::rust_opaque_arc_incr_count::<
+            Box<dyn DartDebugTwinRustAsync>,
+        >(ptr)
     }
 }
 
 #[wasm_bindgen]
 pub fn drop_opaque_RustOpaque_box_dynDartDebugTwinSync(ptr: *const std::ffi::c_void) {
     unsafe {
-        std::sync::Arc::<Box<dyn DartDebugTwinSync>>::decrement_strong_count(ptr as _);
+        flutter_rust_bridge::for_generated::rust_opaque_arc_decr_count::<Box<dyn DartDebugTwinSync>>(
+            ptr,
+        );
     }
 }
 
@@ -8925,17 +8931,18 @@ pub fn share_opaque_RustOpaque_box_dynDartDebugTwinSync(
     ptr: *const std::ffi::c_void,
 ) -> *const std::ffi::c_void {
     unsafe {
-        std::sync::Arc::<Box<dyn DartDebugTwinSync>>::increment_strong_count(ptr as _);
-        ptr
+        flutter_rust_bridge::for_generated::rust_opaque_arc_incr_count::<Box<dyn DartDebugTwinSync>>(
+            ptr,
+        )
     }
 }
 
 #[wasm_bindgen]
 pub fn drop_opaque_RustOpaque_frb_opaque_return(ptr: *const std::ffi::c_void) {
     unsafe {
-        std::sync::Arc::<crate::auxiliary::sample_types::FrbOpaqueReturn>::decrement_strong_count(
-            ptr as _,
-        );
+        flutter_rust_bridge::for_generated::rust_opaque_arc_decr_count::<
+            crate::auxiliary::sample_types::FrbOpaqueReturn,
+        >(ptr);
     }
 }
 
@@ -8944,17 +8951,18 @@ pub fn share_opaque_RustOpaque_frb_opaque_return(
     ptr: *const std::ffi::c_void,
 ) -> *const std::ffi::c_void {
     unsafe {
-        std::sync::Arc::<crate::auxiliary::sample_types::FrbOpaqueReturn>::increment_strong_count(
-            ptr as _,
-        );
-        ptr
+        flutter_rust_bridge::for_generated::rust_opaque_arc_incr_count::<
+            crate::auxiliary::sample_types::FrbOpaqueReturn,
+        >(ptr)
     }
 }
 
 #[wasm_bindgen]
 pub fn drop_opaque_RustOpaque_frb_opaque_sync_return(ptr: *const std::ffi::c_void) {
     unsafe {
-        std::sync::Arc::<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>::decrement_strong_count(ptr as _);
+        flutter_rust_bridge::for_generated::rust_opaque_arc_decr_count::<
+            crate::auxiliary::sample_types::FrbOpaqueSyncReturn,
+        >(ptr);
     }
 }
 
@@ -8963,51 +8971,48 @@ pub fn share_opaque_RustOpaque_frb_opaque_sync_return(
     ptr: *const std::ffi::c_void,
 ) -> *const std::ffi::c_void {
     unsafe {
-        std::sync::Arc::<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>::increment_strong_count(ptr as _);
-        ptr
+        flutter_rust_bridge::for_generated::rust_opaque_arc_incr_count::<
+            crate::auxiliary::sample_types::FrbOpaqueSyncReturn,
+        >(ptr)
     }
 }
 
 #[wasm_bindgen]
 pub fn drop_opaque_RustOpaque_hide_data(ptr: *const std::ffi::c_void) {
     unsafe {
-        std::sync::Arc::<crate::auxiliary::sample_types::HideData>::decrement_strong_count(
-            ptr as _,
-        );
+        flutter_rust_bridge::for_generated::rust_opaque_arc_decr_count::<
+            crate::auxiliary::sample_types::HideData,
+        >(ptr);
     }
 }
 
 #[wasm_bindgen]
 pub fn share_opaque_RustOpaque_hide_data(ptr: *const std::ffi::c_void) -> *const std::ffi::c_void {
     unsafe {
-        std::sync::Arc::<crate::auxiliary::sample_types::HideData>::increment_strong_count(
-            ptr as _,
-        );
-        ptr
+        flutter_rust_bridge::for_generated::rust_opaque_arc_incr_count::<
+            crate::auxiliary::sample_types::HideData,
+        >(ptr)
     }
 }
 
 #[wasm_bindgen]
 pub fn drop_opaque_RustOpaque_i_32(ptr: *const std::ffi::c_void) {
     unsafe {
-        std::sync::Arc::<i32>::decrement_strong_count(ptr as _);
+        flutter_rust_bridge::for_generated::rust_opaque_arc_decr_count::<i32>(ptr);
     }
 }
 
 #[wasm_bindgen]
 pub fn share_opaque_RustOpaque_i_32(ptr: *const std::ffi::c_void) -> *const std::ffi::c_void {
-    unsafe {
-        std::sync::Arc::<i32>::increment_strong_count(ptr as _);
-        ptr
-    }
+    unsafe { flutter_rust_bridge::for_generated::rust_opaque_arc_incr_count::<i32>(ptr) }
 }
 
 #[wasm_bindgen]
 pub fn drop_opaque_RustOpaque_non_clone_data(ptr: *const std::ffi::c_void) {
     unsafe {
-        std::sync::Arc::<crate::auxiliary::sample_types::NonCloneData>::decrement_strong_count(
-            ptr as _,
-        );
+        flutter_rust_bridge::for_generated::rust_opaque_arc_decr_count::<
+            crate::auxiliary::sample_types::NonCloneData,
+        >(ptr);
     }
 }
 
@@ -9016,19 +9021,18 @@ pub fn share_opaque_RustOpaque_non_clone_data(
     ptr: *const std::ffi::c_void,
 ) -> *const std::ffi::c_void {
     unsafe {
-        std::sync::Arc::<crate::auxiliary::sample_types::NonCloneData>::increment_strong_count(
-            ptr as _,
-        );
-        ptr
+        flutter_rust_bridge::for_generated::rust_opaque_arc_incr_count::<
+            crate::auxiliary::sample_types::NonCloneData,
+        >(ptr)
     }
 }
 
 #[wasm_bindgen]
 pub fn drop_opaque_RustOpaque_non_send_hide_data(ptr: *const std::ffi::c_void) {
     unsafe {
-        std::sync::Arc::<crate::auxiliary::sample_types::NonSendHideData>::decrement_strong_count(
-            ptr as _,
-        );
+        flutter_rust_bridge::for_generated::rust_opaque_arc_decr_count::<
+            crate::auxiliary::sample_types::NonSendHideData,
+        >(ptr);
     }
 }
 
@@ -9037,9 +9041,8 @@ pub fn share_opaque_RustOpaque_non_send_hide_data(
     ptr: *const std::ffi::c_void,
 ) -> *const std::ffi::c_void {
     unsafe {
-        std::sync::Arc::<crate::auxiliary::sample_types::NonSendHideData>::increment_strong_count(
-            ptr as _,
-        );
-        ptr
+        flutter_rust_bridge::for_generated::rust_opaque_arc_incr_count::<
+            crate::auxiliary::sample_types::NonSendHideData,
+        >(ptr)
     }
 }
