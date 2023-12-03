@@ -44,9 +44,10 @@ abstract class RustArc extends RustArcBase {
   RustArc.fromRaw({required int ptr, required int size})
       : _ptr = PlatformPointerUtil.ptrFromInt(ptr) {
     if (ptr != 0) {
-      RustArcBase.finalizerAttach(this, _ptr, size, staticFinalizer);
+      RustArcBase.finalizerAttach(this, _ptr, size, typeInfo.staticFinalizer);
     }
   }
 
+  // TODO stronger type system
   RustArcTypeInfo get typeInfo;
 }
