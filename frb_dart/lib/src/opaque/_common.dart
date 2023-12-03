@@ -40,7 +40,9 @@ abstract class RustOpaque extends RustOpaqueBase {
 
   /// This constructor should never be called manually.
   @internal
-  RustOpaque.unsafe(int ptr, int size) : _ptr = RustOpaqueBase.initPtr(ptr) {
+  RustOpaque.fromWire(dynamic wire) : this._raw(wire[0], wire[1]);
+
+  RustOpaque._raw(int ptr, int size) : _ptr = RustOpaqueBase.initPtr(ptr) {
     if (ptr != 0) {
       RustOpaqueBase.finalizerAttach(this, _ptr, size, staticFinalizer);
     }
