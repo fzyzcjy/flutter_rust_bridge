@@ -16,7 +16,8 @@ abstract class RustArc extends RustArcBase {
   RustArc.fromRaw({required int ptr, required int size})
       : _ptr = PlatformPointerUtil.ptrFromInt(ptr) {
     if (!PlatformPointerUtil.isNullPtr(_ptr)) {
-      RustArcBase.finalizerAttach(this, _ptr, size, typeInfo._finalizer);
+      RustArcBase.finalizerAttach(
+          this, _ptr, size, typeInfo._finalizerByArcDecrCount);
     }
   }
 
@@ -40,7 +41,7 @@ abstract class RustArc extends RustArcBase {
       var ptr = _ptr;
       _ptr = PlatformPointerUtil.nullPtr();
 
-      typeInfo._finalizer.detach(this);
+      typeInfo._finalizerByArcDecrCount.detach(this);
       typeInfo._rustArcDecrementStrongCount(ptr);
     }
   }
@@ -69,7 +70,8 @@ class RustArcPerTypeData {
   /// The function pointer for [_rustArcDecrementStrongCount] on native platform.
   final ArcTypeFinalizerArg _rustArcDecrementStrongCountPtr;
 
-  late final _finalizer = ArcTypeFinalizer(_rustArcDecrementStrongCountPtr);
+  late final _finalizerByArcDecrCount =
+      ArcTypeFinalizer(_rustArcDecrementStrongCountPtr);
 
   /// Constructs the data
   RustArcPerTypeData({
