@@ -10,7 +10,7 @@ impl<'a> WireDartGeneratorDart2RustTrait for RustOpaqueWireDartGenerator<'a> {
         Acc {
             io: Some(format!(
                 "final ptr = wire.new_{0}();
-                _api_fill_to_wire_{0}(raw, ptr);
+                ptr.ptr = raw.shareOrMove();
                 return ptr;",
                 self.ir.safe_ident(),
             )),
@@ -21,14 +21,6 @@ impl<'a> WireDartGeneratorDart2RustTrait for RustOpaqueWireDartGenerator<'a> {
             ),
             ..Default::default()
         }
-    }
-
-    fn api_fill_to_wire_body(&self) -> Option<String> {
-        Some(
-            "// ignore: invalid_use_of_internal_member
-            wireObj.ptr = apiObj.shareOrMove();"
-                .into(),
-        )
     }
 
     fn dart_wire_type(&self, target: Target) -> String {
