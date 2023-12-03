@@ -160,3 +160,13 @@ impl IrContext for IrPack {
         &self.enum_pool
     }
 }
+
+#[derive(Debug, Clone, Hash, Eq, PartialEq, Serialize)]
+pub enum IrTypeModifier {
+    /// "T"
+    Owned,
+    /// "&T"
+    Ref,
+    /// "&mut T"
+    RefMut,
+}

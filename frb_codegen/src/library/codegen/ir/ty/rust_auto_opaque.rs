@@ -1,21 +1,12 @@
 use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::IrPack;
-use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
+use crate::codegen::ir::ty::{IrContext, IrType, IrTypeModifier, IrTypeTrait};
 
 crate::ir! {
 pub struct IrTypeRustAutoOpaque {
     pub namespace: Namespace,
     pub modifier: IrTypeModifier,
     pub inner: Box<IrType>,
-}
-
-pub enum IrTypeModifier {
-    /// "T"
-    Owned,
-    /// "&T"
-    Ref,
-    /// "&mut T"
-    RefMut,
 }
 }
 
