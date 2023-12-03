@@ -10,7 +10,22 @@ use std::{mem, ops};
 /// This function should never be called manually.
 /// Retrieving an opaque pointer from Dart is an implementation detail, so this
 /// function is not guaranteed to be API-stable.
-pub unsafe fn opaque_from_dart<T: DartSafe>(ptr: *const T) -> RustOpaque<T> {
+#[cfg(not(wasm))]
+pub unsafe fn wire2api_opaque<T: DartSafe>(ptr: *const core::ffi::c_void) -> RustOpaque<T> {
+    wire2api_opaque_inner(ptr as _)
+}
+
+#[cfg(wasm)]
+pub unsafe fn wire2api_opaque<T: DartSafe>(raw: JsValue) -> RustOpaque<T> {
+    #[cfg(target_pointer_width = "64")]
+    {
+        compile_error!("64-bit pointers are not supported.");
+    }
+
+    wire2api_opaque_inner((raw.as_f64().unwrap() as usize) as _)
+}
+
+unsafe fn wire2api_opaque_inner<T: DartSafe>(ptr: *const T) -> RustOpaque<T> {
     // The raw pointer is the same one created from Arc::into_raw,
     // owned and artificially incremented by Dart.
     RustOpaque {
