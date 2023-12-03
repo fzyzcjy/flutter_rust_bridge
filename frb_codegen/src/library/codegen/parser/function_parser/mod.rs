@@ -1,5 +1,6 @@
 pub(crate) mod argument;
 pub(crate) mod output;
+mod transformer;
 
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::func::{
@@ -10,6 +11,7 @@ use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::function_extractor::GeneralizedItemFn;
+use crate::codegen::parser::function_parser::transformer::transform_fn_info;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::{TypeParser, TypeParserParsingContext};
 use crate::library::codegen::ir::ty::IrTypeTrait;
@@ -72,6 +74,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             info = info.merge(self.parse_fn_arg(i, sig_input, &owner, &context)?)?;
         }
         info = info.merge(self.parse_fn_output(sig, &context)?)?;
+        info = transform_fn_info(info);
 
         let mode = compute_func_mode(attributes, &info);
 

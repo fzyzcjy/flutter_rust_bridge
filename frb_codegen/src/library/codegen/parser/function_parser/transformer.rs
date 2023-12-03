@@ -1,0 +1,22 @@
+use crate::codegen::ir::field::IrField;
+use crate::codegen::ir::ty::IrType;
+use crate::codegen::parser::function_parser::FunctionPartialInfo;
+use itertools::Itertools;
+
+pub(super) fn transform_fn_info(info: FunctionPartialInfo) -> FunctionPartialInfo {
+    FunctionPartialInfo {
+        inputs: (info.inputs.into_iter())
+            .map(|x| IrField {
+                ty: transform_fn_arg_or_output_type(x.ty),
+                ..x
+            })
+            .collect_vec(),
+        ok_output: info.ok_output.map(transform_fn_arg_or_output_type),
+        error_output: info.error_output.map(transform_fn_arg_or_output_type),
+        mode: info.mode,
+    }
+}
+
+fn transform_fn_arg_or_output_type(ty: IrType) -> IrType {
+    todo!()
+}
