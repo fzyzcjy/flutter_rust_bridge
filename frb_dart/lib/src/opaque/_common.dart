@@ -4,6 +4,7 @@ import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:flutter_rust_bridge/src/utils/port_generator.dart';
 import 'package:meta/meta.dart';
 
+// TODO this should be Finalizable as well?
 /// An opaque pointer to a native C or Rust type.
 /// Recipients of this type should call [dispose] at least once during runtime.
 /// If passed to a native function after being [dispose]d, an exception will be thrown.
