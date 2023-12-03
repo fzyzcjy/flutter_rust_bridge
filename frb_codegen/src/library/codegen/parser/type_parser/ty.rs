@@ -13,6 +13,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             Type::Path(path) => self.parse_type_path(&path).unwrap(),
             Type::Array(type_array) => self.parse_type_array(&type_array)?,
             Type::Tuple(type_tuple) => self.parse_type_tuple(&type_tuple)?,
+            Type::Reference(type_reference) => self.parse_type_reference(&type_reference)?,
             _ => IrType::Unencodable(IrTypeUnencodable {
                 string: resolve_ty.to_token_stream().to_string(),
                 segments: vec![],
