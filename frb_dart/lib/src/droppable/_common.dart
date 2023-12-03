@@ -42,10 +42,10 @@ abstract class Droppable implements DroppableBase {
   /// if this pointer is shared with Rust when [dispose] is called,
   /// ownership is fully transferred to Rust else this pointer is cleared.
   void dispose() {
-    if (!isDisposed()) {
+    if (!isDisposed) {
       final resource = _resource!;
       _resource = null;
-      assert(isDisposed());
+      assert(isDisposed);
 
       staticData._finalizer.detach(this);
       staticData._releaseFn(resource);
@@ -56,7 +56,7 @@ abstract class Droppable implements DroppableBase {
   /// Checks whether [dispose] has been called at any point during the lifetime
   /// of this pointer. This does not guarantee that the backing memory has
   /// actually been reclaimed.
-  bool isDisposed() => _resource == null;
+  bool get isDisposed => _resource == null;
 
   /// See comments in [DroppableStaticData].
   @protected
