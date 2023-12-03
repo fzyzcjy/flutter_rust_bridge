@@ -35,11 +35,18 @@ abstract class Droppable implements DroppableBase {
   /// Disposes the resource.
   void dispose() {
     if (!isDisposed) {
+      // Set resource=null before calling `releaseFn`.
+      // If the contrary, when something bad happens in between,
+      // the data will be released at least twice - one by calling releaseFn,
+      // another by future call to `dispose` or the auto invocation of `finalizer`.
       final resource = _resource!;
       _resource = null;
       assert(isDisposed);
 
+      // Similar to above, `detach` finalizer before calling `releaseFn`
+      // to avoid double release.
       staticData._finalizer.detach(this);
+
       staticData._releaseFn(resource);
     }
   }
