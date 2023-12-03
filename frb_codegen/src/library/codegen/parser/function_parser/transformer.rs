@@ -10,17 +10,19 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         FunctionPartialInfo {
             inputs: (info.inputs.into_iter())
                 .map(|x| IrField {
-                    ty: self.transform_fn_arg_or_output_type(x.ty),
+                    ty: self.transform_fn_arg_or_output_type_to_rust_auto_opaque(x.ty),
                     ..x
                 })
                 .collect_vec(),
-            ok_output: (info.ok_output).map(|x| self.transform_fn_arg_or_output_type(x)),
-            error_output: (info.error_output).map(|x| self.transform_fn_arg_or_output_type(x)),
+            ok_output: (info.ok_output)
+                .map(|x| self.transform_fn_arg_or_output_type_to_rust_auto_opaque(x)),
+            error_output: (info.error_output)
+                .map(|x| self.transform_fn_arg_or_output_type_to_rust_auto_opaque(x)),
             mode: info.mode,
         }
     }
 
-    fn transform_fn_arg_or_output_type(&mut self, ty: IrType) -> IrType {
+    fn transform_fn_arg_or_output_type_to_rust_auto_opaque(&mut self, ty: IrType) -> IrType {
         let subtree_types_except_rust_opaque = {
             let mut gatherer = DistinctTypeGatherer::new();
             ty.visit_types(
