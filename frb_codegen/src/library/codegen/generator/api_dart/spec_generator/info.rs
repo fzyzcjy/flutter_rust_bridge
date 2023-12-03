@@ -125,6 +125,12 @@ impl<'a> ApiDartGeneratorInfoTrait for OptionalListApiDartGenerator<'a> {
     }
 }
 
+impl<'a> ApiDartGeneratorInfoTrait for OwnershipApiDartGenerator<'a> {
+    fn dart_api_type(&self) -> String {
+        unreachable!()
+    }
+}
+
 impl<'a> ApiDartGeneratorInfoTrait for PrimitiveApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         match &self.ir {
