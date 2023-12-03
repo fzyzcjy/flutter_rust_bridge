@@ -104,71 +104,151 @@ Future<StructWithGoodAndOpaqueFieldTwinNormal>
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwn(hint: hint);
 
 @sealed
-class BoxHelloTraitTwinNormal extends RustAutoOpaque {
+class BoxHelloTraitTwinNormal extends RustOpaque {
   BoxHelloTraitTwinNormal.fromWire(dynamic wire)
       : super.fromWire(wire, _kStaticData);
-  // TODO
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_BoxHelloTraitTwinNormal,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxHelloTraitTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr,
+  );
 }
 
 @sealed
-class NonCloneSimpleTwinNormal extends RustAutoOpaque {
+class NonCloneSimpleTwinNormal extends RustOpaque {
   NonCloneSimpleTwinNormal.fromWire(dynamic wire)
       : super.fromWire(wire, _kStaticData);
-  // TODO
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_NonCloneSimpleTwinNormal,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_NonCloneSimpleTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_NonCloneSimpleTwinNormalPtr,
+  );
 }
 
 @sealed
-class Self extends RustAutoOpaque {
+class Self extends RustOpaque {
   Self.fromWire(dynamic wire) : super.fromWire(wire, _kStaticData);
-  // TODO
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_Self,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_Self,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_SelfPtr,
+  );
 }
 
 @sealed
-class StructWithGoodAndOpaqueFieldTwinNormal extends RustAutoOpaque {
+class StructWithGoodAndOpaqueFieldTwinNormal extends RustOpaque {
   StructWithGoodAndOpaqueFieldTwinNormal.fromWire(dynamic wire)
       : super.fromWire(wire, _kStaticData);
-  // TODO
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormalPtr,
+  );
 }
 
 @sealed
-class BoxFnStringString extends RustAutoOpaque {
+class BoxFnStringString extends RustOpaque {
   BoxFnStringString.fromWire(dynamic wire) : super.fromWire(wire, _kStaticData);
-  // TODO
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_BoxFnStringString,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_BoxFnStringString,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxFnStringStringPtr,
+  );
 }
 
 @sealed
-class BoxHelloTraitTwinNormal extends RustAutoOpaque {
+class BoxHelloTraitTwinNormal extends RustOpaque {
   BoxHelloTraitTwinNormal.fromWire(dynamic wire)
       : super.fromWire(wire, _kStaticData);
-  // TODO
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_BoxHelloTraitTwinNormal,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxHelloTraitTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr,
+  );
 }
 
 @sealed
-class BoxMyTraitTwinNormal extends RustAutoOpaque {
+class BoxMyTraitTwinNormal extends RustOpaque {
   BoxMyTraitTwinNormal.fromWire(dynamic wire)
       : super.fromWire(wire, _kStaticData);
-  // TODO
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib
+        .instance.api.rust_arc_increment_strong_count_BoxMyTraitTwinNormal,
+    rustArcDecrementStrongCount: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxMyTraitTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_BoxMyTraitTwinNormalPtr,
+  );
 }
 
 @sealed
-class MutBoxHelloTraitTwinNormal extends RustAutoOpaque {
+class MutBoxHelloTraitTwinNormal extends RustOpaque {
   MutBoxHelloTraitTwinNormal.fromWire(dynamic wire)
       : super.fromWire(wire, _kStaticData);
-  // TODO
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_MutBoxHelloTraitTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_MutBoxHelloTraitTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_MutBoxHelloTraitTwinNormalPtr,
+  );
 }
 
 @sealed
-class MutNonCloneSimpleTwinNormal extends RustAutoOpaque {
+class MutNonCloneSimpleTwinNormal extends RustOpaque {
   MutNonCloneSimpleTwinNormal.fromWire(dynamic wire)
       : super.fromWire(wire, _kStaticData);
-  // TODO
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_MutNonCloneSimpleTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_MutNonCloneSimpleTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_MutNonCloneSimpleTwinNormalPtr,
+  );
 }
 
 @sealed
-class MutStructWithGoodAndOpaqueFieldTwinNormal extends RustAutoOpaque {
+class MutStructWithGoodAndOpaqueFieldTwinNormal extends RustOpaque {
   MutStructWithGoodAndOpaqueFieldTwinNormal.fromWire(dynamic wire)
       : super.fromWire(wire, _kStaticData);
-  // TODO
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_MutStructWithGoodAndOpaqueFieldTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_MutStructWithGoodAndOpaqueFieldTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_MutStructWithGoodAndOpaqueFieldTwinNormalPtr,
+  );
 }
 
 class NonCloneSimpleTwinNormal {
