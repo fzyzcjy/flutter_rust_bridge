@@ -18,6 +18,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
 
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),
+            deduplicate_key: TODO,
             code: format!(
                 "{}enum {} {{
                     {}

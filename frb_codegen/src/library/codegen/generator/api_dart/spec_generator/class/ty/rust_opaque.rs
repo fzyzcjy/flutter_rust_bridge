@@ -33,6 +33,7 @@ pub(super) fn generalized_rust_opaque_generate_class(
 
     ApiDartGeneratedClass {
         namespace,
+        deduplicate_key: TODO,
         code: format!(
             "
             // Rust type: {rust_api_type}
