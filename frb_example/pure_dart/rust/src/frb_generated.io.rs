@@ -42,42 +42,42 @@ impl Wire2Api<[flutter_rust_bridge::DartOpaque; 1]> for *mut wire_list_DartOpaqu
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<Mutex<HideData>>> for wire_RustOpaque_MutexHideData {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Mutex<HideData>> {
-        unsafe { flutter_rust_bridge::for_generated::opaque_from_dart(self.ptr as _) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self.ptr) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<RwLock<HideData>>>
     for wire_RustOpaque_RwLockHideData
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<RwLock<HideData>> {
-        unsafe { flutter_rust_bridge::for_generated::opaque_from_dart(self.ptr as _) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self.ptr) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinNormal>>>
     for wire_RustOpaque_box_dynDartDebugTwinNormal
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinNormal>> {
-        unsafe { flutter_rust_bridge::for_generated::opaque_from_dart(self.ptr as _) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self.ptr) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsync>>>
     for wire_RustOpaque_box_dynDartDebugTwinRustAsync
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsync>> {
-        unsafe { flutter_rust_bridge::for_generated::opaque_from_dart(self.ptr as _) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self.ptr) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>>>
     for wire_RustOpaque_box_dynDartDebugTwinSync
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>> {
-        unsafe { flutter_rust_bridge::for_generated::opaque_from_dart(self.ptr as _) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self.ptr) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
     for wire_RustOpaque_hide_data
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData> {
-        unsafe { flutter_rust_bridge::for_generated::opaque_from_dart(self.ptr as _) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self.ptr) }
     }
 }
 impl Wire2Api<[flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>; 2]>
@@ -93,7 +93,7 @@ impl Wire2Api<[flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::H
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<i32>> for wire_RustOpaque_i_32 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<i32> {
-        unsafe { flutter_rust_bridge::for_generated::opaque_from_dart(self.ptr as _) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self.ptr) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData>>
@@ -102,7 +102,7 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::No
     fn wire2api(
         self,
     ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData> {
-        unsafe { flutter_rust_bridge::for_generated::opaque_from_dart(self.ptr as _) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self.ptr) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonSendHideData>>
@@ -111,7 +111,7 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::No
     fn wire2api(
         self,
     ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonSendHideData> {
-        unsafe { flutter_rust_bridge::for_generated::opaque_from_dart(self.ptr as _) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self.ptr) }
     }
 }
 impl Wire2Api<String> for *mut wire_list_prim_u_8 {

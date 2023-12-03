@@ -3309,96 +3309,42 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<Mutex<HideData>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Mutex<HideData>> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-
-        unsafe {
-            flutter_rust_bridge::for_generated::opaque_from_dart(
-                (self.as_f64().unwrap() as usize) as _,
-            )
-        }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<RwLock<HideData>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<RwLock<HideData>> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-
-        unsafe {
-            flutter_rust_bridge::for_generated::opaque_from_dart(
-                (self.as_f64().unwrap() as usize) as _,
-            )
-        }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinNormal>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinNormal>> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-
-        unsafe {
-            flutter_rust_bridge::for_generated::opaque_from_dart(
-                (self.as_f64().unwrap() as usize) as _,
-            )
-        }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsync>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsync>> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-
-        unsafe {
-            flutter_rust_bridge::for_generated::opaque_from_dart(
-                (self.as_f64().unwrap() as usize) as _,
-            )
-        }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-
-        unsafe {
-            flutter_rust_bridge::for_generated::opaque_from_dart(
-                (self.as_f64().unwrap() as usize) as _,
-            )
-        }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-
-        unsafe {
-            flutter_rust_bridge::for_generated::opaque_from_dart(
-                (self.as_f64().unwrap() as usize) as _,
-            )
-        }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self) }
     }
 }
 impl Wire2Api<[flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>; 2]>
@@ -3416,16 +3362,7 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<i32>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<i32> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-
-        unsafe {
-            flutter_rust_bridge::for_generated::opaque_from_dart(
-                (self.as_f64().unwrap() as usize) as _,
-            )
-        }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData>>
@@ -3434,16 +3371,7 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::No
     fn wire2api(
         self,
     ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-
-        unsafe {
-            flutter_rust_bridge::for_generated::opaque_from_dart(
-                (self.as_f64().unwrap() as usize) as _,
-            )
-        }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonSendHideData>>
@@ -3452,16 +3380,7 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::No
     fn wire2api(
         self,
     ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonSendHideData> {
-        #[cfg(target_pointer_width = "64")]
-        {
-            compile_error!("64-bit pointers are not supported.");
-        }
-
-        unsafe {
-            flutter_rust_bridge::for_generated::opaque_from_dart(
-                (self.as_f64().unwrap() as usize) as _,
-            )
-        }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_opaque(self) }
     }
 }
 impl Wire2Api<String> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
