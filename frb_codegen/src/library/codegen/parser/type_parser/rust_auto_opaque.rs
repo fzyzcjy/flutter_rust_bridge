@@ -17,10 +17,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             let mut gatherer = DistinctTypeGatherer::new();
             ty_raw.visit_types(
                 &mut |ty| {
-                    gatherer.add(ty);
-
-                    // skip subtrees inside RustOpaque
-                    matches!(ty, IrType::RustOpaque(_))
+                    gatherer.add(ty) ||
+                        // skip subtrees inside RustOpaque
+                        matches!(ty, IrType::RustOpaque(_))
                 },
                 self.inner,
             );
