@@ -36,11 +36,12 @@ abstract class RustArc<T extends RustArc<T>> extends Droppable {
   T clone() {
     final ptr = _ptr;
     if (ptr == null) {
-      return constructor(ptr: 0, externalSizeOnNative: externalSizeOnNative);
+      return selfConstructorFromRaw(
+          ptr: 0, externalSizeOnNative: externalSizeOnNative);
     }
 
     staticData._rustArcIncrementStrongCount(ptr);
-    return constructor(
+    return selfConstructorFromRaw(
         ptr: PlatformPointerUtil.ptrToInt(ptr),
         externalSizeOnNative: externalSizeOnNative);
   }
@@ -58,9 +59,10 @@ abstract class RustArc<T extends RustArc<T>> extends Droppable {
   @protected
   RustArcStaticData get staticData;
 
-  /// {@macro flutter_rust_bridge.internal}
+  /// Nothing but `RustArc.fromRaw`, but creates the concrete subtype.
   @protected
-  T constructor({required int ptr, required int externalSizeOnNative});
+  T selfConstructorFromRaw(
+      {required int ptr, required int externalSizeOnNative});
 }
 
 /// Should have exactly *one* instance per *type*.
