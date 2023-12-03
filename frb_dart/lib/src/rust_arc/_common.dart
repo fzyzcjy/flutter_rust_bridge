@@ -30,7 +30,7 @@ abstract class RustArc<T extends RustArc<T>> extends Droppable {
 
   /// Mimic `std::sync::Arc::from_raw`
   RustArc.fromRaw({required int ptr, required super.externalSizeOnNative})
-      : super(ptrOrNullFromInt(ptr));
+      : super(ptr: ptrOrNullFromInt(ptr));
 
   /// Mimic `std::sync::Arc::clone`
   T clone() {
