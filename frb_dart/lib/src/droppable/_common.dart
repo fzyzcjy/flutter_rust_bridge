@@ -16,18 +16,19 @@ import 'package:meta/meta.dart';
 /// You just implement the `releaseFn` (and `releaseFnPtr`), and this class
 /// ensures it is called exactly once.
 abstract class Droppable implements DroppableBase {
-  /// {@macro flutter_rust_bridge.internal}
+  /// NEVER read it directly outside subclasses,
+  /// otherwise all encapsulation breaks down.
   @protected
-  PlatformPointer? get internalResource => _internalResource;
-  PlatformPointer? _internalResource;
+  PlatformPointer? dangerousReadInternalPtr() => _ptr;
+  PlatformPointer? _ptr;
 
   /// {@macro flutter_rust_bridge.internal}
-  Droppable(this._internalResource, {required int externalSizeOnNative}) {
-    if (_internalResource != null) {
+  Droppable(this._ptr, {required int externalSizeOnNative}) {
+    if (_ptr != null) {
       // Note: The finalizer attaches to the `_ptr` at *current* time,
       // thus even if we assign `RustArc._ptr = something-new`, this finalizer
       // attachment will not be changed.
-      staticData._finalizer.attachCrossPlatform(this, _internalResource!,
+      staticData._finalizer.attachCrossPlatform(this, _ptr!,
           detach: this, externalSizeOnNative: externalSizeOnNative);
     }
   }
@@ -39,8 +40,8 @@ abstract class Droppable implements DroppableBase {
       // If the contrary, when something bad happens in between,
       // the data will be released at least twice - one by calling releaseFn,
       // another by future call to `dispose` or the auto invocation of `finalizer`.
-      final resource = _internalResource!;
-      _internalResource = null;
+      final resource = _ptr!;
+      _ptr = null;
       assert(isDisposed);
 
       // Similar to above, `detach` finalizer before calling `releaseFn`
@@ -52,7 +53,7 @@ abstract class Droppable implements DroppableBase {
   }
 
   /// Check whether the resource is disposed.
-  bool get isDisposed => _internalResource == null;
+  bool get isDisposed => _ptr == null;
 
   /// See comments in [DroppableStaticData] for requirements.
   @protected

@@ -22,15 +22,11 @@ import 'package:meta/meta.dart';
 // Note: Use `extends`, instead of making the `_Droppable` a field,
 // in order to ensure the `ffi.Finalizable` works well.
 abstract class RustArc extends Droppable {
-  // TODO this should not be exposed at all...
   /// The pointer that `std::sync::Arc::into_raw` gives.
   ///
   /// In other words, it is very similar to `std::sync::Arc.ptr`,
   /// but only with a small constant offset.
-  // We do this no-op override merely to provide documentations.
-  @override
-  @protected
-  PlatformPointer? get internalResource => super.internalResource;
+  PlatformPointer? get _ptr => super.dangerousReadInternalPtr();
 
   /// Mimic `std::sync::Arc::from_raw`
   RustArc.fromRaw({required int ptr, required super.externalSizeOnNative})
