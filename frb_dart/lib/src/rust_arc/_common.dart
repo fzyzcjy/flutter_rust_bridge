@@ -9,9 +9,7 @@ class RustArc<T> extends Droppable {
   ///
   /// In other words, it is very similar to `std::sync::Arc.ptr`,
   /// but only with a small constant offset.
-  PlatformPointer get _ptr =>
-      super.dangerousReadInternalPtr() ??
-      (throw const RustArcDisposedException());
+  PlatformPointer get _ptr => super.dangerousReadInternalPtr();
 
   /// See comments in [RustArcStaticData] for details.
   final RustArcStaticData<T> _staticData;
@@ -47,16 +45,6 @@ class RustArc<T> extends Droppable {
 
   @override
   DroppableStaticData get staticData => _staticData;
-}
-
-/// Thrown when use after dispose
-class RustArcDisposedException {
-  /// Thrown when use after dispose
-  const RustArcDisposedException();
-
-  @override
-  String toString() => 'RustArcDisposedException: '
-      'Try to use RustArc after it has been disposed';
 }
 
 /// Should have exactly *one* instance per *type*.
