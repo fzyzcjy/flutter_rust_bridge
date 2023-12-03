@@ -19,7 +19,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
             namespace: self.ir.namespace.clone(),
             code: format!(
                 "@sealed class {dart_api_type} extends RustOpaque {{
-                    {dart_api_type}.fromWire(dynamic wire): : this._fromRaw(wire[0], wire[1]);
+                    {dart_api_type}.fromWire(dynamic wire): this._fromRaw(wire[0], wire[1]);
 
                     {dart_api_type}._fromRaw(int ptr, int size): super.unsafe(ptr, size);
 
