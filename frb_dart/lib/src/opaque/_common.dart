@@ -28,7 +28,7 @@ abstract class RustOpaque extends RustOpaqueBase {
   void dispose() {
     if (!isStale()) {
       var ptr = _ptr;
-      _ptr = RustOpaqueBase.nullPtr();
+      _ptr = PlatformPointerUtil.nullPtr();
 
       staticFinalizer.detach(this);
       dropFn(ptr);
@@ -48,14 +48,14 @@ abstract class RustOpaque extends RustOpaqueBase {
       }
       return ptr;
     } else {
-      return RustOpaqueBase.nullPtr();
+      return PlatformPointerUtil.nullPtr();
     }
   }
 
   /// Checks whether [dispose] has been called at any point during the lifetime
   /// of this pointer. This does not guarantee that the backing memory has
   /// actually been reclaimed.
-  bool isStale() => RustOpaqueBase.isNullPtr(_ptr);
+  bool isStale() => PlatformPointerUtil.isNullPtr(_ptr);
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
