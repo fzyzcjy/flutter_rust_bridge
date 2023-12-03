@@ -155,4 +155,3 @@ impl NonCloneSimpleTwinNormal {
 
 // TODO complex type signature
 // TODO opaque *inside* other objects, especially ref/mutref ---- as long as a part is unencodable, then make whole obj opaque
-// TODO return borrow ---- hard?
