@@ -3,10 +3,10 @@ import 'package:flutter_rust_bridge/src/rust_arc/_io.dart'
     if (dart.library.html) '_web.dart';
 import 'package:meta/meta.dart';
 
-/// Handles the release of the [_resource].
+/// Encapsulates the release of the [_resource].
 /// It mimics Rust's `Drop`, but also allow users to manually call `dispose`.
 ///
-/// The [_resource] will be released via `dropFn` (or `dropFnPtr`) in one of the two ways:
+/// The [_resource] will be released via `releaseFn` (or `releaseFnPtr`) in one of the two ways:
 /// 1. Either, released when this object is garbage collected, via Dart finalizer.
 /// 2. Or, released when the [dispose] is called.
 abstract class _Droppable<T extends Object> implements DroppableBase {
@@ -39,7 +39,7 @@ abstract class _Droppable<T extends Object> implements DroppableBase {
       assert(isDisposed());
 
       perTypeData._finalizer.detach(this);
-      perTypeData._dropFn(resource);
+      perTypeData._releaseFn(resource);
     }
   }
 
@@ -55,19 +55,19 @@ abstract class _Droppable<T extends Object> implements DroppableBase {
 
 class _DroppablePerTypeData<T> {
   // TODO rename type etc
-  final void Function(T) _dropFn;
+  final void Function(T) _releaseFn;
 
   /// The function pointer for [_rustArcDecrementStrongCount] on native platform.
-  final ArcTypeFinalizerArg _dropFnPtr;
+  final ArcTypeFinalizerArg _releaseFnPtr;
 
-  late final _finalizer = ArcTypeFinalizer(_dropFnPtr);
+  late final _finalizer = ArcTypeFinalizer(_releaseFnPtr);
 
   /// Constructs the data
   _DroppablePerTypeData({
-    required void Function(T) dropFn,
-    required ArcTypeFinalizerArg dropFnPtr,
-  })  : _dropFn = dropFn,
-        _dropFnPtr = dropFnPtr;
+    required void Function(T) releaseFn,
+    required ArcTypeFinalizerArg releaseFnPtr,
+  })  : _releaseFn = releaseFn,
+        _releaseFnPtr = releaseFnPtr;
 }
 
 /// The Rust `std::sync::Arc` on the Dart side.
@@ -103,7 +103,7 @@ class RustArcPerTypeData {
   /// Directly calls `std::sync::Arc::increment_strong_count(ptr)`
   final RustArcIncrementStrongCountFnType _rustArcIncrementStrongCount;
 
-  // TODO rename: dropFn -> rust_arc_decrement_strong_count
+  // TODO rename: releaseFn -> rust_arc_decrement_strong_count
   // TODO comments
   /// Directly calls `std::sync::Arc::decrement_strong_count(ptr)`
   final RustArcDecrementStrongCountFnType _rustArcDecrementStrongCount;
