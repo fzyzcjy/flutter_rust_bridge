@@ -18,7 +18,7 @@ use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::{IrEnumPool, IrStructPool};
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumIdent};
 use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent};
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::ty::{IrContext, IrType};
 use crate::codegen::parser::source_graph::modules::{Enum, Struct};
 use crate::codegen::parser::type_parser::array::ArrayParserInfo;
 use crate::codegen::parser::type_parser::enum_or_struct::EnumOrStructParserInfo;
@@ -80,4 +80,14 @@ pub(crate) struct TypeParserWithContext<'a, 'b, 'c> {
 
 pub(crate) struct TypeParserParsingContext {
     pub(crate) initiated_namespace: Namespace,
+}
+
+impl IrContext for TypeParser<'_> {
+    fn struct_pool(&self) -> &IrStructPool {
+        &self.struct_parser_info.object_pool
+    }
+
+    fn enum_pool(&self) -> &IrEnumPool {
+        &self.enum_parser_info.object_pool
+    }
 }
