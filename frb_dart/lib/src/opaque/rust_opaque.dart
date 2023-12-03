@@ -1,4 +1,5 @@
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
+import 'package:flutter_rust_bridge/src/rust_arc/_common.dart';
 import 'package:meta/meta.dart';
 
 // TODO this should be Finalizable as well?
@@ -7,19 +8,28 @@ import 'package:meta/meta.dart';
 /// Recipients of this type should call [dispose] at least once during runtime.
 /// If passed to a native function after being [dispose]d, an exception will be thrown.
 abstract class RustOpaque {
+  final RustArc _arc;
+
   /// Displays the need to release ownership when sending to rust.
   bool _move = false;
 
   set move(bool move) => _move = move;
 
-  /// This constructor should never be called manually.
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   @internal
-  RustOpaque.fromWire(dynamic wire) : this._raw(wire[0], wire[1]);
+  RustOpaque.fromWire(List<dynamic> wire)
+      : _arc = RustArc.fromRaw(
+          ptr: wire[0],
+          externalSizeOnNative: wire[1],
+          staticData: staticData,
+        );
 
   /// Increments inner reference counter and returns pointer to the underlying
   /// Rust object.
   ///
   /// Throws a [StateError] if called after [dispose].
+  ///
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   @internal
   PlatformPointer shareOrMove() {
     if (!isDisposed()) {
@@ -32,4 +42,8 @@ abstract class RustOpaque {
       return PlatformPointerUtil.nullPtr();
     }
   }
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  @protected
+  RustArcStaticData get staticData;
 }
