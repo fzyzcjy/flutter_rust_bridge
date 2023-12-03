@@ -28,6 +28,6 @@ pub unsafe fn wire2api_rust_opaque<T: DartSafe>(raw: wasm_bindgen::JsValue) -> R
 unsafe fn wire2api_rust_opaque_inner<T: DartSafe>(ptr: *const T) -> RustOpaque<T> {
     assert!(!ptr.is_null());
     RustOpaque {
-        ptr: Arc::from_raw(ptr),
+        arc: Arc::from_raw(ptr),
     }
 }
