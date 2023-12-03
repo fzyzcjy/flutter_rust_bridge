@@ -1,7 +1,5 @@
-import 'package:flutter_rust_bridge/src/droppable/_common.dart';
+import 'package:flutter_rust_bridge/src/droppable/droppable.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
-import 'package:flutter_rust_bridge/src/rust_arc/_io.dart'
-    if (dart.library.html) '_web.dart';
 import 'package:meta/meta.dart';
 
 // ----- TODO this comment is originally at `dispose()`,
@@ -49,26 +47,22 @@ abstract class RustArc extends Droppable {
 /// `RustArcTypeInfo` object, while all `std::sync::Arc<Orange>`
 /// objects should use another.
 class RustArcStaticData extends DroppableStaticData {
-  // TODO rename: shareFn -> rust_arc_increment_strong_count
-  // TODO comments
-  /// Directly calls `std::sync::Arc::increment_strong_count(ptr)`
   final RustArcIncrementStrongCountFnType _rustArcIncrementStrongCount;
-
-  // TODO rename: releaseFn -> rust_arc_decrement_strong_count
-  // TODO comments
-  /// Directly calls `std::sync::Arc::decrement_strong_count(ptr)`
-  final RustArcDecrementStrongCountFnType _rustArcDecrementStrongCount;
 
   /// Constructs the data
   RustArcStaticData({
+    /// Directly calls `std::sync::Arc::increment_strong_count(ptr)`
     required RustArcIncrementStrongCountFnType rustArcIncrementStrongCount,
+
+    /// Directly calls `std::sync::Arc::decrement_strong_count(ptr)`
     required RustArcDecrementStrongCountFnType rustArcDecrementStrongCount,
-    required ArcTypeFinalizerArg rustArcDecrementStrongCountPtr,
-  })  : _rustArcDecrementStrongCount = rustArcDecrementStrongCount,
-        _rustArcIncrementStrongCount = rustArcIncrementStrongCount,
+
+    /// The function pointer to `rustArcDecrementStrongCount`
+    required CrossPlatformFinalizerArg rustArcDecrementStrongCountPtr,
+  })  : _rustArcIncrementStrongCount = rustArcIncrementStrongCount,
         super(
-          releaseFn: TODO,
-          releaseFnPtr: TODO,
+          releaseFn: rustArcDecrementStrongCount,
+          releaseFnPtr: rustArcDecrementStrongCountPtr,
         );
 }
 
