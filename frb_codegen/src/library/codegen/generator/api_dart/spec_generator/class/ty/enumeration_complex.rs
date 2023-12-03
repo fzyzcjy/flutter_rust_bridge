@@ -33,7 +33,6 @@ impl<'a> EnumRefApiDartGenerator<'a> {
 
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),
-            class_name: name.clone(),
             code: format!(
                 "@freezed
                 {sealed} class {name} with _${name} {maybe_implements_exception} {{

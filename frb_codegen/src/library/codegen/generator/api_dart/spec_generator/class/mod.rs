@@ -9,7 +9,6 @@ pub(crate) mod ty;
 pub(crate) struct ApiDartGeneratedClass {
     pub(crate) header: DartBasicHeaderCode,
     pub(crate) namespace: Namespace,
-    pub(crate) class_name: String,
     pub(crate) code: String,
     pub(crate) needs_freezed: bool,
 }

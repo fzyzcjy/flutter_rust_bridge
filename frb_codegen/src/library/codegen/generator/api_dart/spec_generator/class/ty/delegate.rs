@@ -45,7 +45,6 @@ fn generate_array(
             ..Default::default()
         },
         namespace: array.namespace.clone(),
-        class_name: self_dart_api_type.clone(),
         code: format!(
             "
             class {self_dart_api_type} extends NonGrowableListView<{inner_dart_api_type}> {{
