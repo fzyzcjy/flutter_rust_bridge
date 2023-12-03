@@ -3,12 +3,18 @@ import 'package:flutter_rust_bridge/src/rust_arc/_io.dart'
     if (dart.library.html) '_web.dart';
 import 'package:meta/meta.dart';
 
-/// Encapsulates the release of the [_resource].
-/// It mimics Rust's `Drop`, but also allow users to manually call `dispose`.
+/// Encapsulates the [_resource] release logic.
 ///
-/// The [_resource] will be released via `releaseFn` (or `releaseFnPtr`) in one of the two ways:
-/// 1. Either, released when this object is garbage collected, via Dart finalizer.
-/// 2. Or, released when the [dispose] is called.
+/// In Rust, it is simple to release some resource: Just implement `Drop` trait.
+/// However, there are two possible chances to release resource in Dart:
+/// 1. When the object is garbage collected, the Dart finalizer will call a callback you choose.
+/// 2. When the user explicitly calls `dispose()` function, you can do releasing job.
+///
+/// But we want to release the [_resource] *once and exactly once*.
+/// That's what this class does.
+///
+/// You just implement the `releaseFn` (and `releaseFnPtr`), and this class
+/// ensures it is called exactly once.
 abstract class _Droppable<T extends Object> implements DroppableBase {
   T? get _resource => __resource;
   T? __resource;
