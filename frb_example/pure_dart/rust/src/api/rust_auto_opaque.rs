@@ -153,5 +153,42 @@ impl NonCloneSimpleTwinNormal {
     }
 }
 
+// ================ types with both encodable and opaque fields ===================
+
+pub struct StructWithGoodAndOpaqueFieldTwinNormal {
+    pub good: String,
+    pub opaque: NonCloneSimpleTwinNormal,
+}
+
+pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
+    arg: StructWithGoodAndOpaqueFieldTwinNormal,
+) {
+    assert_eq!(&arg.good, "hello");
+    assert_eq!(arg.opaque.inner, 42);
+}
+
+pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(
+    arg: &StructWithGoodAndOpaqueFieldTwinNormal,
+) {
+    assert_eq!(&arg.good, "hello");
+    assert_eq!(arg.opaque.inner, 42);
+}
+
+pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(
+    arg: &mut StructWithGoodAndOpaqueFieldTwinNormal,
+) {
+    assert_eq!(&arg.good, "hello");
+    assert_eq!(arg.opaque.inner, 42);
+    arg.good += "world";
+    arg.opaque.inner += 1;
+}
+
+pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own(
+) -> StructWithGoodAndOpaqueFieldTwinNormal {
+    StructWithGoodAndOpaqueFieldTwinNormal {
+        good: "hello".to_string(),
+        opaque: NonCloneSimpleTwinNormal { inner: 42 },
+    }
+}
+
 // TODO complex type signature
-// TODO opaque *inside* other objects, especially ref/mutref ---- as long as a part is unencodable, then make whole obj opaque
