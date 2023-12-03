@@ -22,13 +22,13 @@ abstract class Droppable implements DroppableBase {
   PlatformPointer? _resource;
 
   /// {@macro flutter_rust_bridge.internal}
-  Droppable(this._resource, {required int size}) {
+  Droppable(this._resource, {required int externalSizeOnNative}) {
     if (_resource != null) {
       // Note: The finalizer attaches to the `_ptr` at *current* time,
       // thus even if we assign `RustArc._ptr = something-new`, this finalizer
       // attachment will not be changed.
       staticData._finalizer.attachCrossPlatform(this, _resource!,
-          detach: this, externalSizeOnNative: size);
+          detach: this, externalSizeOnNative: externalSizeOnNative);
     }
   }
 
