@@ -9,6 +9,7 @@ pub(crate) mod optional_list;
 pub(crate) mod primitive;
 pub(crate) mod primitive_list;
 pub(crate) mod record;
+pub(crate) mod rust_auto_opaque;
 pub(crate) mod rust_opaque;
 pub(crate) mod structure;
 pub(crate) mod unencodable;
@@ -38,6 +39,7 @@ pub enum IrType {
     Primitive(primitive::IrTypePrimitive),
     PrimitiveList(primitive_list::IrTypePrimitiveList),
     Record(record::IrTypeRecord),
+    RustAutoOpaque(rust_auto_opaque::IrTypeRustAutoOpaque),
     RustOpaque(rust_opaque::IrTypeRustOpaque),
     StructRef(structure::IrTypeStructRef),
     Unencodable(unencodable::IrTypeUnencodable),
