@@ -184,7 +184,8 @@ impl<'a> ApiDartGeneratorInfoTrait for RecordApiDartGenerator<'a> {
 
 impl<'a> ApiDartGeneratorInfoTrait for RustAutoOpaqueApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        rust_type_to_dart_type(&self.ir.inner.rust_api_type())
+        let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context);
+        inner.dart_api_type()
     }
 }
 
