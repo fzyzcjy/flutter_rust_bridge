@@ -1,8 +1,8 @@
 use crate::dart_opaque::DartOpaque;
 use crate::generalized_isolate::PortLike;
 use crate::generalized_isolate::ZeroCopyBuffer;
-use crate::misc::rust_opaque::{DartSafe, RustOpaque};
 use crate::platform_types::DartAbi;
+use crate::rust_opaque::{DartSafe, RustOpaque};
 use js_sys::{Array, BigInt64Array, BigUint64Array, Int32Array, Uint8Array};
 use wasm_bindgen::JsValue;
 
