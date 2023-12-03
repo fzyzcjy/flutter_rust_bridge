@@ -4,6 +4,7 @@ use crate::platform_types::DartAbi;
 use std::panic::{RefUnwindSafe, UnwindSafe};
 use std::sync::Arc;
 use std::{mem, ops};
+use wasm_bindgen::JsValue;
 
 /// # Safety
 ///
