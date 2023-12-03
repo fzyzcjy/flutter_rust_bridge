@@ -1,9 +1,11 @@
+use crate::codegen::ir::func::IrFuncOwnerInfoMethod;
 use crate::codegen::ir::pack::DistinctTypeGatherer;
+use crate::codegen::ir::ty::ownership::IrTypeOwnershipMode;
 use crate::codegen::ir::ty::rust_auto_opaque::IrTypeRustAutoOpaque;
 use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
+use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::RustOpaque;
-use crate::codegen::ir::ty::{IrType, IrTypeModifier};
 use crate::codegen::parser::type_parser::rust_opaque::SimpleParsedTypesParserInfo;
 use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
@@ -37,9 +39,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 
     fn parse_rust_auto_opaque(&mut self, ty: &IrType) -> IrType {
-        let (modifier, inner) = parse_ir_type_modifier(ty);
+        let (ownership_mode, inner) = parse_ir_type_modifier(ty);
         let new_ir = IrTypeRustAutoOpaque {
-            modifier,
+            ownership_mode,
             inner: IrTypeRustOpaque {
                 namespace: self.context.initiated_namespace.clone(),
                 inner: Box::new(inner),
@@ -52,24 +54,26 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
 pub(super) type RustAutoOpaqueParserInfo = SimpleParsedTypesParserInfo<IrTypeRustAutoOpaque>;
 
-fn parse_ir_type_modifier(ty: &IrType) -> (IrTypeModifier, IrType) {
-    if let IrType::Unencodable(IrTypeUnencodable { string, .. }) = ty {
-        let ast: Type = syn::parse_str(string).unwrap();
-        if let Type::Reference(r) = &ast {
-            let modifier = if r.mutability.is_some() {
-                IrTypeModifier::RefMut
-            } else {
-                IrTypeModifier::Ref
-            };
-
-            let ty_without_modifier = IrType::Unencodable(IrTypeUnencodable {
-                string: r.elem.to_token_stream().to_string(),
-                segments: vec![],
-            });
-
-            return (modifier, ty_without_modifier);
-        }
-    }
-
-    (IrTypeModifier::Owned, ty.clone())
+fn parse_ir_type_modifier(ty: &IrType) -> (IrTypeOwnershipMode, IrType) {
+    todo!()
+    // TDOO refactor, no need to parse like this
+    //     if let IrType::Unencodable(IrTypeUnencodable { string, .. }) = ty {
+    //         let ast: Type = syn::parse_str(string).unwrap();
+    //         if let Type::Reference(r) = &ast {
+    //             let modifier = if r.mutability.is_some() {
+    //                 IrTypeOwnershipMode::RefMut
+    //             } else {
+    //                 IrTypeOwnershipMode::Ref
+    //             };
+    //
+    //             let ty_without_modifier = IrType::Unencodable(IrTypeUnencodable {
+    //                 string: r.elem.to_token_stream().to_string(),
+    //                 segments: vec![],
+    //             });
+    //
+    //             return (modifier, ty_without_modifier);
+    //         }
+    //     }
+    //
+    //     (IrTypeOwnershipMode::Owned, ty.clone())
 }
