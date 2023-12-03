@@ -33,6 +33,7 @@ abstract class _Droppable<T extends Object> {
     if (!isDisposed()) {
       final resource = __resource;
       __resource = null;
+      assert(isDisposed());
 
       perTypeData._finalizer.detach(this);
       perTypeData._dropFn(resource);
