@@ -45,8 +45,24 @@ pub fn rust_auto_opaque_normal_and_opaque_arg(a: NonCloneSimpleTwinNormal, b: St
 
 // ==================================== complex type signatures =======================================
 
-pub fn rust_auto_opaque_complex_signature_one() {
-    todo!()
+pub trait MyTraitTwinNormal: DartSafe + Eq {}
+impl<T: DartSafe + Eq + Send + Sync> MyTraitTwinNormal for T {}
+
+/// "+" inside the type signature
+pub fn rust_auto_opaque_plus_sign_arg(arg: Box<dyn MyTraitTwinNormal + Send + Sync>) {
+    assert_eq!(arg, Box::new("hello".to_owned()));
+}
+
+pub fn rust_auto_opaque_plus_sign_return() -> Box<dyn MyTraitTwinNormal + Send + Sync> {
+    Box::new("hello".to_owned())
+}
+
+pub fn rust_auto_opaque_callable_arg(arg: Box<dyn Fn(String) -> String>) {
+    assert_eq!(&arg("hello".into()), "hellohello");
+}
+
+pub fn rust_auto_opaque_callable_return() -> Box<dyn Fn(String) -> String> {
+    Box::new(|x| x.repeat(2))
 }
 
 // ==================================== trait object =======================================
