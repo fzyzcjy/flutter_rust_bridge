@@ -3,7 +3,6 @@ import 'package:flutter_rust_bridge/src/rust_arc/_io.dart'
     if (dart.library.html) '_web.dart';
 import 'package:meta/meta.dart';
 
-// TODO mv to dropable/* folder
 /// Handles the release of the [_resource].
 /// It mimics Rust's `Drop`, but also allow users to manually call `dispose`.
 ///
