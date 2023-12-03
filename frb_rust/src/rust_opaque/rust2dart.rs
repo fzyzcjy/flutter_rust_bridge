@@ -1,4 +1,4 @@
-use super::definition::{DartSafe, RustOpaque};
+use super::{DartSafe, RustOpaque};
 use crate::generalized_isolate::IntoDart;
 use crate::platform_types::DartAbi;
 use std::panic::{RefUnwindSafe, UnwindSafe};
