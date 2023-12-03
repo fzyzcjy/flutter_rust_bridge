@@ -23,23 +23,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     }
 
     fn transform_fn_arg_or_output_type_to_rust_auto_opaque(&mut self, ty: IrType) -> IrType {
-        let subtree_types_except_rust_opaque = {
-            let mut gatherer = DistinctTypeGatherer::new();
-            ty.visit_types(
-                &mut |ty| {
-                    gatherer.add(ty);
-
-                    // skip subtrees inside RustOpaque
-                    matches!(ty, IrType::RustOpaque(_))
-                },
-                self.type_parser,
-            );
-            gatherer.gather()
-        };
-
-        if (subtree_types_except_rust_opaque.iter()).any(|x| matches!(x, IrType::Unencodable(_))) {
-            return IrType::RustAutoOpaque(IrTypeRustAutoOpaque::new(todo!(), ty));
-        }
-        ty
+        self.type_parser.transform_type_rust_auto_opaque(ty)
     }
 }
