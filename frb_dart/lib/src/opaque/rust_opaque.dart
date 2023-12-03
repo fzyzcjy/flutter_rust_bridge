@@ -26,7 +26,7 @@ abstract class RustOpaque {
   @internal
   PlatformPointer api2wire() {
     final target = _move ? _arc : _arc.clone();
-    return target.intoRaw() ?? PlatformPointerUtil.nullPtr();
+    return target.intoRaw();
   }
 
   /// Dispose the underlying `Arc`.

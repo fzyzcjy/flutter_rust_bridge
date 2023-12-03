@@ -43,11 +43,11 @@ class RustArc<T> extends Droppable {
   }
 
   /// Mimic `std::sync::Arc::into_raw`
-  PlatformPointer? intoRaw() {
+  PlatformPointer intoRaw() {
     // Almost 1:1 implementation to `std::sync::Arc::into_raw` impl.
     final ptr = _ptr;
     forget();
-    return ptr;
+    return ptr ?? (throw StateError('Try to use RustArc after it is disposed'));
   }
 
   @override
