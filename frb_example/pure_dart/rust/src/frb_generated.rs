@@ -7278,6 +7278,27 @@ fn wire_test_raw_string_item_struct_twin_normal_impl(
             },
         )
 }
+fn wire_rust_auto_opaque_arg_borrow_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: impl Wire2Api<flutter_rust_bridge::RustOpaque<NonCloneSimpleTwinNormal>>
+        + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "rust_auto_opaque_arg_borrow",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |context| {
+                Result::<_, ()>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_arg_borrow(
+                    api_arg,
+                ))
+            }
+        },
+    )
+}
 fn wire_rust_auto_opaque_return_own_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap::<_, _, _, flutter_rust_bridge::RustOpaque<NonCloneSimpleTwinNormal>, _>(

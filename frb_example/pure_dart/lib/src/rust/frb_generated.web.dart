@@ -5666,6 +5666,9 @@ class RustLibWire extends BaseWire {
   void wire_test_raw_string_item_struct_twin_normal(NativePortType port_) =>
       wasmModule.wire_test_raw_string_item_struct_twin_normal(port_);
 
+  void wire_rust_auto_opaque_arg_borrow(NativePortType port_, Object arg) =>
+      wasmModule.wire_rust_auto_opaque_arg_borrow(port_, arg);
+
   void wire_rust_auto_opaque_return_own(NativePortType port_) =>
       wasmModule.wire_rust_auto_opaque_return_own(port_);
 
@@ -7830,6 +7833,9 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_test_raw_string_item_struct_twin_normal(
       NativePortType port_);
+
+  external void wire_rust_auto_opaque_arg_borrow(
+      NativePortType port_, Object arg);
 
   external void wire_rust_auto_opaque_return_own(NativePortType port_);
 
