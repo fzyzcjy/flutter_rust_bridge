@@ -178,7 +178,7 @@ impl<'a> EnumRefWireRustGenerator<'a> {
 
         let init = if ty_generator.rust_wire_is_pointer(Target::Io) {
             "core::ptr::null_mut()".to_owned()
-        } else if matches!(field.ty, IrType::RustOpaque(_) | IrType::DartOpaque(_)) {
+        } else if matches!(field.ty, IrType::DartOpaque(_)) {
             format!(
                 "{}::new_with_null_ptr()",
                 ty_generator.rust_wire_type(Target::Io)
