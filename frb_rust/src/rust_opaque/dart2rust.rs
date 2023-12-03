@@ -4,7 +4,6 @@ use crate::platform_types::DartAbi;
 use std::panic::{RefUnwindSafe, UnwindSafe};
 use std::sync::Arc;
 use std::{mem, ops};
-use wasm_bindgen::JsValue;
 
 /// # Safety
 ///
@@ -17,7 +16,7 @@ pub unsafe fn wire2api_opaque<T: DartSafe>(ptr: *const core::ffi::c_void) -> Rus
 }
 
 #[cfg(wasm)]
-pub unsafe fn wire2api_opaque<T: DartSafe>(raw: JsValue) -> RustOpaque<T> {
+pub unsafe fn wire2api_opaque<T: DartSafe>(raw: wasm_bindgen::JsValue) -> RustOpaque<T> {
     #[cfg(target_pointer_width = "64")]
     {
         compile_error!("64-bit pointers are not supported.");
