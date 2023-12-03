@@ -10,7 +10,7 @@ pub struct IrTypeOwnership {
 }
 }
 
-#[derive(Debug, Clone, Hash, Eq, PartialEq, Serialize)]
+#[derive(Debug, Clone, Hash, Eq, PartialEq, Serialize, strum_macros::Display)]
 pub enum IrTypeOwnershipMode {
     /// "T"
     Owned,
@@ -30,7 +30,11 @@ impl IrTypeTrait for IrTypeOwnership {
     }
 
     fn safe_ident(&self) -> String {
-        unreachable!()
+        format!(
+            "Ownership{}_{}",
+            self.mode.to_string(),
+            self.inner.safe_ident()
+        )
     }
 
     fn rust_api_type(&self) -> String {
