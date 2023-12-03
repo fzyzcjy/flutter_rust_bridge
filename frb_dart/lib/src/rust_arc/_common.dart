@@ -3,14 +3,6 @@ import 'package:flutter_rust_bridge/src/rust_arc/_io.dart'
     if (dart.library.html) '_web.dart';
 import 'package:meta/meta.dart';
 
-// TODO
-/// The type of [RustArc] drop function
-typedef ArcDropFnType = void Function(PlatformPointer);
-
-// TODO
-/// The type of [RustArc] share function
-typedef ArcShareFnType = PlatformPointer Function(PlatformPointer);
-
 /// The Rust `std::sync::Arc` on the Dart side.
 abstract class RustArc extends RustArcBase {
   /// Either the pointer that `std::sync::Arc::into_raw` gives,
@@ -24,7 +16,7 @@ abstract class RustArc extends RustArcBase {
   RustArc.fromRaw({required int ptr, required int size})
       : _ptr = PlatformPointerUtil.ptrFromInt(ptr) {
     if (!PlatformPointerUtil.isNullPtr(_ptr)) {
-      RustArcBase.finalizerAttach(this, _ptr, size, typeInfo.finalizer);
+      RustArcBase.finalizerAttach(this, _ptr, size, typeInfo._finalizer);
     }
   }
 
@@ -49,7 +41,7 @@ abstract class RustArc extends RustArcBase {
       _ptr = PlatformPointerUtil.nullPtr();
 
       typeInfo._finalizer.detach(this);
-      typeInfo.rustArcDecrementStrongCount(ptr);
+      typeInfo._rustArcDecrementStrongCount(ptr);
     }
   }
 
@@ -63,18 +55,34 @@ abstract class RustArc extends RustArcBase {
 /// For example, all `std::sync::Arc<Apple>` objects should use one
 /// `RustArcTypeInfo` object, while all `std::sync::Arc<Orange>`
 /// objects should use another.
-abstract class RustArcPerTypeData {
-  late final _finalizer = ArcTypeFinalizer(rustArcDecrementStrongCount);
+class RustArcPerTypeData {
+  // TODO rename: shareFn -> rust_arc_increment_strong_count
+  // TODO comments
+  /// Directly calls `std::sync::Arc::increment_strong_count(ptr)`
+  final RustArcIncrementStrongCountFnType _rustArcIncrementStrongCount;
 
   // TODO rename: dropFn -> rust_arc_decrement_strong_count
   // TODO comments
   /// Directly calls `std::sync::Arc::decrement_strong_count(ptr)`
-  @protected
-  void rustArcDecrementStrongCount(PlatformPointer ptr);
+  final RustArcDecrementStrongCountFnType _rustArcDecrementStrongCount;
 
-  // TODO rename: shareFn -> rust_arc_increment_strong_count
-  // TODO comments
-  /// Directly calls `std::sync::Arc::increment_strong_count(ptr)`
-  @protected
-  void rustArcIncrementStrongCount(PlatformPointer ptr);
+  /// The function pointer for [_rustArcDecrementStrongCount] on native platform.
+  final ArcTypeFinalizerArg _rustArcDecrementStrongCountPtr;
+
+  late final _finalizer = ArcTypeFinalizer(_rustArcDecrementStrongCountPtr);
+
+  /// Constructs the data
+  RustArcPerTypeData({
+    required RustArcIncrementStrongCountFnType rustArcIncrementStrongCount,
+    required RustArcDecrementStrongCountFnType rustArcDecrementStrongCount,
+    required ArcTypeFinalizerArg rustArcDecrementStrongCountPtr,
+  })  : _rustArcDecrementStrongCount = rustArcDecrementStrongCount,
+        _rustArcIncrementStrongCount = rustArcIncrementStrongCount,
+        _rustArcDecrementStrongCountPtr = rustArcDecrementStrongCountPtr;
 }
+
+/// The type of [RustArcPerTypeData._rustArcIncrementStrongCount]
+typedef RustArcIncrementStrongCountFnType = void Function(PlatformPointer);
+
+/// The type of [RustArcPerTypeData._rustArcDecrementStrongCount]
+typedef RustArcDecrementStrongCountFnType = void Function(PlatformPointer);

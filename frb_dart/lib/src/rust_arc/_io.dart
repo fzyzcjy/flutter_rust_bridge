@@ -6,6 +6,10 @@ import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 /// {@macro flutter_rust_bridge.internal}
 typedef ArcTypeFinalizer = ffi.NativeFinalizer;
 
+// TODO rename to RustArc.*
+/// {@macro flutter_rust_bridge.internal}
+typedef ArcTypeFinalizerArg = ffi.Pointer<ffi.NativeFinalizerFunction>;
+
 /// {@macro flutter_rust_bridge.internal}
 class RustArcBase implements ffi.Finalizable {
   /// {@macro flutter_rust_bridge.internal}

@@ -4,6 +4,9 @@ import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
 typedef ArcTypeFinalizer = Finalizer<PlatformPointer>;
 
 /// {@macro flutter_rust_bridge.internal}
+typedef ArcTypeFinalizerArg = void Function(PlatformPointer);
+
+/// {@macro flutter_rust_bridge.internal}
 class RustArcBase {
   /// {@macro flutter_rust_bridge.internal}
   static void finalizerAttach(RustArcBase opaque, PlatformPointer ptr, int _,
