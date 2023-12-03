@@ -74,10 +74,7 @@ Future<FrbOpaqueReturn> frbGeneratorTestTwinNormal({dynamic hint}) =>
 
 @sealed
 class BoxDartDebugTwinNormal extends RustOpaque {
-  BoxDartDebugTwinNormal.fromWire(dynamic wire)
-      : this._fromRaw(wire[0], wire[1]);
-
-  BoxDartDebugTwinNormal._fromRaw(int ptr, int size) : super.unsafe(ptr, size);
+  BoxDartDebugTwinNormal.fromWire(dynamic wire) : super.fromWire(wire);
 
   @override
   OpaqueDropFnType get dropFn =>

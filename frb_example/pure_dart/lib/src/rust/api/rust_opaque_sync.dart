@@ -31,9 +31,7 @@ FrbOpaqueSyncReturn frbSyncGeneratorTestTwinNormal({dynamic hint}) =>
 
 @sealed
 class FrbOpaqueSyncReturn extends RustOpaque {
-  FrbOpaqueSyncReturn.fromWire(dynamic wire) : this._fromRaw(wire[0], wire[1]);
-
-  FrbOpaqueSyncReturn._fromRaw(int ptr, int size) : super.unsafe(ptr, size);
+  FrbOpaqueSyncReturn.fromWire(dynamic wire) : super.fromWire(wire);
 
   @override
   OpaqueDropFnType get dropFn =>

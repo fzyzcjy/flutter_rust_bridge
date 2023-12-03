@@ -65,9 +65,7 @@ FrbOpaqueReturn frbGeneratorTestTwinSync({dynamic hint}) =>
 
 @sealed
 class BoxDartDebugTwinSync extends RustOpaque {
-  BoxDartDebugTwinSync.fromWire(dynamic wire) : this._fromRaw(wire[0], wire[1]);
-
-  BoxDartDebugTwinSync._fromRaw(int ptr, int size) : super.unsafe(ptr, size);
+  BoxDartDebugTwinSync.fromWire(dynamic wire) : super.fromWire(wire);
 
   @override
   OpaqueDropFnType get dropFn =>
