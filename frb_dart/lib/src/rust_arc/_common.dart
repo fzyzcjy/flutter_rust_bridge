@@ -20,7 +20,7 @@ import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 /// The Rust `std::sync::Arc` on the Dart side.
 // Note: Use `extends`, instead of making the `_Droppable` a field,
 // in order to ensure the `ffi.Finalizable` works well.
-class RustArc extends Droppable {
+class RustArc<T> extends Droppable {
   /// The pointer that `std::sync::Arc::into_raw` gives.
   ///
   /// In other words, it is very similar to `std::sync::Arc.ptr`,
@@ -28,18 +28,18 @@ class RustArc extends Droppable {
   PlatformPointer? get _ptr => super.dangerousReadInternalPtr();
 
   /// See comments in [RustArcStaticData] for details.
-  final RustArcStaticData _staticData;
+  final RustArcStaticData<T> _staticData;
 
   /// Mimic `std::sync::Arc::from_raw`
   RustArc.fromRaw({
     required int ptr,
     required super.externalSizeOnNative,
-    required RustArcStaticData staticData,
+    required RustArcStaticData<T> staticData,
   })  : _staticData = staticData,
         super(ptr: ptrOrNullFromInt(ptr));
 
   /// Mimic `std::sync::Arc::clone`
-  RustArc clone() {
+  RustArc<T> clone() {
     final ptr = _ptr;
     if (ptr == null) {
       return RustArc.fromRaw(
@@ -75,7 +75,9 @@ class RustArc extends Droppable {
 /// For example, all `std::sync::Arc<Apple>` objects should use one
 /// `RustArcTypeInfo` object, while all `std::sync::Arc<Orange>`
 /// objects should use another.
-class RustArcStaticData extends DroppableStaticData {
+///
+/// The [T] is just a marker type to remind the content type and has no use.
+class RustArcStaticData<T> extends DroppableStaticData {
   final RustArcIncrementStrongCountFnType _rustArcIncrementStrongCount;
 
   /// Constructs the data
