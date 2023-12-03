@@ -55,7 +55,7 @@ abstract class RustOpaque extends RustOpaqueBase {
   /// Checks whether [dispose] has been called at any point during the lifetime
   /// of this pointer. This does not guarantee that the backing memory has
   /// actually been reclaimed.
-  bool isStale() => RustOpaqueBase.isStalePtr(_ptr);
+  bool isStale() => RustOpaqueBase.isNullPtr(_ptr);
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}

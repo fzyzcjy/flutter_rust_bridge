@@ -20,5 +20,5 @@ class PlatformPointerUtil {
   static PlatformPointer nullPtr() => 0;
 
   /// {@macro flutter_rust_bridge.internal}
-  static bool isStalePtr(PlatformPointer ptr) => ptr == 0;
+  static bool isNullPtr(PlatformPointer ptr) => ptr == 0;
 }
