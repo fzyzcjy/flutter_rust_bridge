@@ -111,17 +111,14 @@ fn generate_item(
 
     let classes = namespaced_types
         .map(|classes| {
-            Ok(classes
+            classes
                 .iter()
                 .filter_map(|&ty| ApiDartGenerator::new(ty.clone(), context).generate_class())
                 .map(|c| {
                     c.sanity_check()?;
                     Ok(c)
                 })
-                .collect::<Result<Vec<_>>>()?
-                .into_iter()
-                .unique_by(|c| (c.namespace.clone(), c.class_name.clone()))
-                .collect_vec())
+                .collect::<Result<Vec<_>>>()
         })
         .unwrap_or(Ok(vec![]))?;
 
