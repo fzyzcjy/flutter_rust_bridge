@@ -43,6 +43,12 @@ pub fn rust_auto_opaque_normal_and_opaque_arg(a: NonCloneSimpleTwinNormal, b: St
     assert_eq!(b, "hello");
 }
 
+// ==================================== complex type signatures =======================================
+
+pub fn rust_auto_opaque_complex_signature_one() {
+    todo!()
+}
+
 // ==================================== trait object =======================================
 
 pub trait HelloTraitTwinNormal: DartSafe + Send + Sync {
@@ -190,5 +196,3 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own(
         opaque: NonCloneSimpleTwinNormal { inner: 42 },
     }
 }
-
-// TODO complex type signature
