@@ -165,22 +165,6 @@ class BoxFnStringString extends RustAutoOpaque {
   );
 }
 
-// Rust type: Box<dyn HelloTraitTwinNormal>
-@sealed
-class BoxHelloTraitTwinNormal extends RustAutoOpaque {
-  BoxHelloTraitTwinNormal.fromWire(dynamic wire)
-      : super.fromWire(wire, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_BoxHelloTraitTwinNormal,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_BoxHelloTraitTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr,
-  );
-}
-
 // Rust type: Box<dyn MyTraitTwinNormal + Send + Sync>
 @sealed
 class BoxMyTraitTwinNormal extends RustAutoOpaque {
