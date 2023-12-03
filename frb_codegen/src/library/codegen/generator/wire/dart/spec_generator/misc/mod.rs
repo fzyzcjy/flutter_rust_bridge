@@ -129,7 +129,9 @@ fn generate_boilerplate(
                   WireConstructor<{wire_class_name}> get wireConstructor => {wire_class_name}.fromExternalLibrary;
 
                   @override
-                  ExternalLibraryLoaderConfig get defaultExternalLibraryLoaderConfig => const ExternalLibraryLoaderConfig(
+                  ExternalLibraryLoaderConfig get defaultExternalLibraryLoaderConfig => kDefaultExternalLibraryLoaderConfig;
+                  
+                  static const kDefaultExternalLibraryLoaderConfig = ExternalLibraryLoaderConfig(
                     stem: '{stem}',
                     ioDirectory: '{io_directory}',
                     webPrefix: '{web_prefix}',
