@@ -12,12 +12,11 @@ typedef ArcShareFnType = PlatformPointer Function(PlatformPointer);
 
 /// The Rust `std::sync::Arc` on the Dart side.
 abstract class RustArc extends RustArcBase {
-  /// The pointer that `std::sync::Arc::into_raw` gives.
+  /// Either the pointer that `std::sync::Arc::into_raw` gives,
+  /// or a null pointer.
   ///
-  /// In other words, it is very similar to `std::sync::Arc.ptr`, but only
-  /// with a small constant offset.
-  ///
-  /// It can be a null pointer.
+  /// In other words, when non-null, it is very similar to `std::sync::Arc.ptr`,
+  /// but only with a small constant offset.
   PlatformPointer _ptr;
 
   /// Mimic `std::sync::Arc::from_raw`
@@ -31,7 +30,7 @@ abstract class RustArc extends RustArcBase {
   // TODO refactor?
   // TODO comments
   /// A native finalizer rust opaque type.
-  /// It is static for each frb api class instance.
+  /// It should be *static* for each subtype.
   ArcTypeFinalizer get staticFinalizer;
 
   // TODO rename
