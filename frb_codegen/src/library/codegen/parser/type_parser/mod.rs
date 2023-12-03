@@ -23,6 +23,7 @@ use crate::codegen::ir::ty::{IrContext, IrType};
 use crate::codegen::parser::source_graph::modules::{Enum, Struct};
 use crate::codegen::parser::type_parser::array::ArrayParserInfo;
 use crate::codegen::parser::type_parser::enum_or_struct::EnumOrStructParserInfo;
+use crate::codegen::parser::type_parser::rust_auto_opaque::RustAutoOpaqueParserInfo;
 use crate::codegen::parser::type_parser::rust_opaque::RustOpaqueParserInfo;
 use std::collections::HashMap;
 use syn::Type;
@@ -34,6 +35,7 @@ pub(crate) struct TypeParser<'a> {
     struct_parser_info: EnumOrStructParserInfo<IrStructIdent, IrStruct>,
     enum_parser_info: EnumOrStructParserInfo<IrEnumIdent, IrEnum>,
     rust_opaque_parser_info: RustOpaqueParserInfo,
+    rust_auto_opaque_parser_info: RustAutoOpaqueParserInfo,
     array_parser_info: ArrayParserInfo,
 }
 
@@ -49,8 +51,9 @@ impl<'a> TypeParser<'a> {
             src_types,
             struct_parser_info: EnumOrStructParserInfo::new(),
             enum_parser_info: EnumOrStructParserInfo::new(),
-            rust_opaque_parser_info: RustOpaqueParserInfo::default(),
-            array_parser_info: ArrayParserInfo::default(),
+            rust_opaque_parser_info: Default::default(),
+            rust_auto_opaque_parser_info: Default::default(),
+            array_parser_info: Default::default(),
         }
     }
 
