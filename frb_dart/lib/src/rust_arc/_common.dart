@@ -27,24 +27,29 @@ abstract class RustArc extends RustArcBase {
       RustArcBase.finalizerAttach(this, _ptr, size, staticFinalizer);
     }
   }
+}
 
+/// Information per type. For example, all `std::sync::Arc<Apple>` objects
+/// should use one `RustArcTypeInfo` object, while all `std::sync::Arc<Orange>`
+/// objects should use another.
+abstract class RustArcTypeInfo {
   // TODO refactor?
   // TODO comments
   /// Finalizer for the subtype.
   // TODO can we ensure this static?
   /// It should be static for each subtype.
   @protected
-  ArcTypeFinalizer get staticFinalizer;
+  ArcTypeFinalizer get finalizer;
 
   // TODO rename: dropFn -> rust_arc_decrement_strong_count
   // TODO comments
   /// Directly calls `std::sync::Arc::decrement_strong_count(ptr)`
   @protected
-  void staticRustArcDecrementStrongCount(PlatformPointer ptr);
+  void rustArcDecrementStrongCount(PlatformPointer ptr);
 
   // TODO rename: shareFn -> rust_arc_increment_strong_count
   // TODO comments
   /// Directly calls `std::sync::Arc::increment_strong_count(ptr)`
   @protected
-  void staticRustArcIncrementStrongCount(PlatformPointer ptr);
+  void rustArcIncrementStrongCount(PlatformPointer ptr);
 }
