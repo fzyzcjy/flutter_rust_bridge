@@ -6,6 +6,7 @@
 use super::*;
 use crate::api::pseudo_manual::rust_opaque_twin_rust_async::*;
 use crate::api::pseudo_manual::rust_opaque_twin_sync::*;
+use crate::api::rust_auto_opaque::*;
 use crate::api::rust_opaque::*;
 use crate::api::rust_opaque_sync::*;
 use flutter_rust_bridge::for_generated::wasm_bindgen;
@@ -2306,6 +2307,24 @@ impl Wire2Api<crate::api::pseudo_manual::newtype_pattern_twin_sync::NewTypeIntTw
         )
     }
 }
+impl Wire2Api<crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal {
+            inner: self_.get(0).wire2api(),
+        }
+    }
+}
 impl Wire2Api<crate::api::enumeration::NoteTwinNormal>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -2778,6 +2797,25 @@ impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnumT
         crate::api::pseudo_manual::misc_example_twin_sync::StructWithEnumTwinSync {
             abc1: self_.get(0).wire2api(),
             abc2: self_.get(1).wire2api(),
+        }
+    }
+}
+impl Wire2Api<crate::api::rust_auto_opaque::StructWithGoodAndOpaqueFieldTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> crate::api::rust_auto_opaque::StructWithGoodAndOpaqueFieldTwinNormal {
+        let self_ = self
+            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+            .unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        crate::api::rust_auto_opaque::StructWithGoodAndOpaqueFieldTwinNormal {
+            good: self_.get(0).wire2api(),
+            opaque: self_.get(1).wire2api(),
         }
     }
 }
@@ -3303,6 +3341,69 @@ impl Wire2Api<[flutter_rust_bridge::DartOpaque; 1]>
     fn wire2api(self) -> [flutter_rust_bridge::DartOpaque; 1] {
         let vec: Vec<flutter_rust_bridge::DartOpaque> = self.wire2api();
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
+    }
+}
+impl Wire2Api<&Box<dyn HelloTraitTwinNormal>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> &Box<dyn HelloTraitTwinNormal> {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl Wire2Api<&NonCloneSimpleTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> &NonCloneSimpleTwinNormal {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl Wire2Api<&StructWithGoodAndOpaqueFieldTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> &StructWithGoodAndOpaqueFieldTwinNormal {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl Wire2Api<Box<dyn Fn(String) -> String>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> Box<dyn Fn(String) -> String> {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl Wire2Api<Box<dyn HelloTraitTwinNormal>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> Box<dyn HelloTraitTwinNormal> {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl Wire2Api<Box<dyn MyTraitTwinNormal + Send + Sync>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> Box<dyn MyTraitTwinNormal + Send + Sync> {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl Wire2Api<&mut Box<dyn HelloTraitTwinNormal>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> &mut Box<dyn HelloTraitTwinNormal> {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl Wire2Api<&mut NonCloneSimpleTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> &mut NonCloneSimpleTwinNormal {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl Wire2Api<&mut StructWithGoodAndOpaqueFieldTwinNormal>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> &mut StructWithGoodAndOpaqueFieldTwinNormal {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
 impl Wire2Api<flutter_rust_bridge::RustOpaque<Mutex<HideData>>>
@@ -8521,6 +8622,238 @@ pub fn wire_test_raw_string_item_struct_twin_normal(
 }
 
 #[wasm_bindgen]
+pub fn wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_NonCloneSimpleTwinNormal_instance_method_arg_own(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_NonCloneSimpleTwinNormal_instance_method_arg_own_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_NonCloneSimpleTwinNormal_instance_method_return_own(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_NonCloneSimpleTwinNormal_instance_method_return_own_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_NonCloneSimpleTwinNormal_new(port_: flutter_rust_bridge::for_generated::MessagePort) {
+    wire_NonCloneSimpleTwinNormal_new_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_NonCloneSimpleTwinNormal_new_custom_name(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_NonCloneSimpleTwinNormal_new_custom_name_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_NonCloneSimpleTwinNormal_static_method_arg_borrow(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_NonCloneSimpleTwinNormal_static_method_arg_own(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_NonCloneSimpleTwinNormal_static_method_arg_own_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_NonCloneSimpleTwinNormal_static_method_return_own(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_NonCloneSimpleTwinNormal_static_method_return_own_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_arg_borrow(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_auto_opaque_arg_borrow_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_arg_mut_borrow(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_auto_opaque_arg_mut_borrow_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_arg_own(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_auto_opaque_arg_own_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_arg_own_and_return_own(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_auto_opaque_arg_own_and_return_own_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_callable_arg(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_auto_opaque_callable_arg_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_callable_return(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_rust_auto_opaque_callable_return_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_normal_and_opaque_arg(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    b: String,
+) {
+    wire_rust_auto_opaque_normal_and_opaque_arg_impl(port_, a, b)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_plus_sign_arg(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_auto_opaque_plus_sign_arg_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_plus_sign_return(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_rust_auto_opaque_plus_sign_return_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_return_own(port_: flutter_rust_bridge::for_generated::MessagePort) {
+    wire_rust_auto_opaque_return_own_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_trait_object_arg_borrow(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: String,
+) {
+    wire_rust_auto_opaque_trait_object_arg_borrow_impl(port_, arg, expect)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_trait_object_arg_mut_borrow(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: String,
+) {
+    wire_rust_auto_opaque_trait_object_arg_mut_borrow_impl(port_, arg, expect)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_trait_object_arg_own(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: String,
+) {
+    wire_rust_auto_opaque_trait_object_arg_own_impl(port_, arg, expect)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_trait_object_return_own_one(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_rust_auto_opaque_trait_object_return_own_one_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_trait_object_return_own_two(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_rust_auto_opaque_trait_object_return_own_two_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_two_args(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_auto_opaque_two_args_impl(port_, a, b)
+}
+
+#[wasm_bindgen]
 pub fn wire_create_array_opaque_enum_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
@@ -8843,6 +9176,218 @@ pub fn wire_handle_uuids_twin_normal(
     ids: Box<[u8]>,
 ) {
     wire_handle_uuids_twin_normal_impl(port_, ids)
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            &Box<dyn HelloTraitTwinNormal>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            &Box<dyn HelloTraitTwinNormal>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            &NonCloneSimpleTwinNormal,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            &NonCloneSimpleTwinNormal,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustAutoOpaque_Self(ptr: *const std::ffi::c_void) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<Self>(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustAutoOpaque_Self(ptr: *const std::ffi::c_void) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<Self>(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            &StructWithGoodAndOpaqueFieldTwinNormal,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            &StructWithGoodAndOpaqueFieldTwinNormal,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustAutoOpaque_box_dynFnStringString(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            Box<dyn Fn(String) -> String>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustAutoOpaque_box_dynFnStringString(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            Box<dyn Fn(String) -> String>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            Box<dyn HelloTraitTwinNormal>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            Box<dyn HelloTraitTwinNormal>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            Box<dyn MyTraitTwinNormal + Send + Sync>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            Box<dyn MyTraitTwinNormal + Send + Sync>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustAutoOpaque_mutBoxdynHelloTraitTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            &mut Box<dyn HelloTraitTwinNormal>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustAutoOpaque_mutBoxdynHelloTraitTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            &mut Box<dyn HelloTraitTwinNormal>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustAutoOpaque_mutNonCloneSimpleTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            &mut NonCloneSimpleTwinNormal,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustAutoOpaque_mutNonCloneSimpleTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            &mut NonCloneSimpleTwinNormal,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustAutoOpaque_mutStructWithGoodAndOpaqueFieldTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            &mut StructWithGoodAndOpaqueFieldTwinNormal,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustAutoOpaque_mutStructWithGoodAndOpaqueFieldTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            &mut StructWithGoodAndOpaqueFieldTwinNormal,
+        >(ptr);
+    }
 }
 
 #[wasm_bindgen]

@@ -91,6 +91,7 @@ import 'api/pseudo_manual/type_alias_twin_sync.dart';
 import 'api/pseudo_manual/uuid_type_twin_rust_async.dart';
 import 'api/pseudo_manual/uuid_type_twin_sync.dart';
 import 'api/raw_string.dart';
+import 'api/rust_auto_opaque.dart';
 import 'api/rust_opaque.dart';
 import 'api/rust_opaque_sync.dart';
 import 'api/simple.dart';
@@ -1894,6 +1895,99 @@ abstract class RustLibApi extends BaseApi {
   Future<RawStringItemStructTwinNormal> testRawStringItemStructTwinNormal(
       {dynamic hint});
 
+  Future<void> nonCloneSimpleTwinNormalInstanceMethodArgBorrow(
+      {required NonCloneSimpleTwinNormal that, dynamic hint});
+
+  Future<void> nonCloneSimpleTwinNormalInstanceMethodArgMutBorrow(
+      {required NonCloneSimpleTwinNormal that, dynamic hint});
+
+  Future<void> nonCloneSimpleTwinNormalInstanceMethodArgOwn(
+      {required NonCloneSimpleTwinNormal that, dynamic hint});
+
+  Future<Self> nonCloneSimpleTwinNormalInstanceMethodReturnOwn(
+      {required NonCloneSimpleTwinNormal that, dynamic hint});
+
+  Future<Self> nonCloneSimpleTwinNormalNew({dynamic hint});
+
+  Future<Self> nonCloneSimpleTwinNormalNewCustomName({dynamic hint});
+
+  Future<void> nonCloneSimpleTwinNormalStaticMethodArgBorrow(
+      {required NonCloneSimpleTwinNormal arg, dynamic hint});
+
+  Future<void> nonCloneSimpleTwinNormalStaticMethodArgMutBorrow(
+      {required MutNonCloneSimpleTwinNormal arg, dynamic hint});
+
+  Future<void> nonCloneSimpleTwinNormalStaticMethodArgOwn(
+      {required NonCloneSimpleTwinNormal arg, dynamic hint});
+
+  Future<NonCloneSimpleTwinNormal>
+      nonCloneSimpleTwinNormalStaticMethodReturnOwn({dynamic hint});
+
+  Future<void> rustAutoOpaqueArgBorrow(
+      {required NonCloneSimpleTwinNormal arg, dynamic hint});
+
+  Future<void> rustAutoOpaqueArgMutBorrow(
+      {required MutNonCloneSimpleTwinNormal arg, dynamic hint});
+
+  Future<void> rustAutoOpaqueArgOwn(
+      {required NonCloneSimpleTwinNormal arg, dynamic hint});
+
+  Future<NonCloneSimpleTwinNormal> rustAutoOpaqueArgOwnAndReturnOwn(
+      {required NonCloneSimpleTwinNormal arg, dynamic hint});
+
+  Future<void> rustAutoOpaqueCallableArg(
+      {required BoxFnStringString arg, dynamic hint});
+
+  Future<BoxFnStringString> rustAutoOpaqueCallableReturn({dynamic hint});
+
+  Future<void> rustAutoOpaqueNormalAndOpaqueArg(
+      {required NonCloneSimpleTwinNormal a, required String b, dynamic hint});
+
+  Future<void> rustAutoOpaquePlusSignArg(
+      {required BoxMyTraitTwinNormal arg, dynamic hint});
+
+  Future<BoxMyTraitTwinNormal> rustAutoOpaquePlusSignReturn({dynamic hint});
+
+  Future<NonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwn({dynamic hint});
+
+  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrow(
+      {required StructWithGoodAndOpaqueFieldTwinNormal arg, dynamic hint});
+
+  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrow(
+      {required MutStructWithGoodAndOpaqueFieldTwinNormal arg, dynamic hint});
+
+  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwn(
+      {required StructWithGoodAndOpaqueFieldTwinNormal arg, dynamic hint});
+
+  Future<StructWithGoodAndOpaqueFieldTwinNormal>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwn({dynamic hint});
+
+  Future<void> rustAutoOpaqueTraitObjectArgBorrow(
+      {required BoxHelloTraitTwinNormal arg,
+      required String expect,
+      dynamic hint});
+
+  Future<void> rustAutoOpaqueTraitObjectArgMutBorrow(
+      {required MutBoxHelloTraitTwinNormal arg,
+      required String expect,
+      dynamic hint});
+
+  Future<void> rustAutoOpaqueTraitObjectArgOwn(
+      {required BoxHelloTraitTwinNormal arg,
+      required String expect,
+      dynamic hint});
+
+  Future<BoxHelloTraitTwinNormal> rustAutoOpaqueTraitObjectReturnOwnOne(
+      {dynamic hint});
+
+  Future<BoxHelloTraitTwinNormal> rustAutoOpaqueTraitObjectReturnOwnTwo(
+      {dynamic hint});
+
+  Future<void> rustAutoOpaqueTwoArgs(
+      {required NonCloneSimpleTwinNormal a,
+      required NonCloneSimpleTwinNormal b,
+      dynamic hint});
+
   Future<EnumOpaqueTwinNormalArray5> createArrayOpaqueEnumTwinNormal(
       {dynamic hint});
 
@@ -2011,6 +2105,93 @@ abstract class RustLibApi extends BaseApi {
 
   Future<List<UuidValue>> handleUuidsTwinNormal(
       {required List<UuidValue> ids, dynamic hint});
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneSimpleTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_Self;
+
+  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_Self;
+
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_SelfPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxFnStringString;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxFnStringString;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxFnStringStringPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxMyTraitTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MutBoxHelloTraitTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MutBoxHelloTraitTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_MutBoxHelloTraitTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MutNonCloneSimpleTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MutNonCloneSimpleTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_MutNonCloneSimpleTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MutStructWithGoodAndOpaqueFieldTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MutStructWithGoodAndOpaqueFieldTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_MutStructWithGoodAndOpaqueFieldTwinNormalPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_MutexHideData;
@@ -15395,6 +15576,674 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<void> nonCloneSimpleTwinNormalInstanceMethodArgBorrow(
+      {required NonCloneSimpleTwinNormal that, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_non_clone_simple_twin_normal(that);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow(
+              port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kNonCloneSimpleTwinNormalInstanceMethodArgBorrowConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNonCloneSimpleTwinNormalInstanceMethodArgBorrowConstMeta =>
+      const TaskConstMeta(
+        debugName: "NonCloneSimpleTwinNormal_instance_method_arg_borrow",
+        argNames: ["that"],
+      );
+
+  @override
+  Future<void> nonCloneSimpleTwinNormalInstanceMethodArgMutBorrow(
+      {required NonCloneSimpleTwinNormal that, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_non_clone_simple_twin_normal(that);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow(
+              port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kNonCloneSimpleTwinNormalInstanceMethodArgMutBorrowConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinNormalInstanceMethodArgMutBorrowConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<void> nonCloneSimpleTwinNormalInstanceMethodArgOwn(
+      {required NonCloneSimpleTwinNormal that, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_non_clone_simple_twin_normal(that);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire
+          .wire_NonCloneSimpleTwinNormal_instance_method_arg_own(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kNonCloneSimpleTwinNormalInstanceMethodArgOwnConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNonCloneSimpleTwinNormalInstanceMethodArgOwnConstMeta =>
+      const TaskConstMeta(
+        debugName: "NonCloneSimpleTwinNormal_instance_method_arg_own",
+        argNames: ["that"],
+      );
+
+  @override
+  Future<Self> nonCloneSimpleTwinNormalInstanceMethodReturnOwn(
+      {required NonCloneSimpleTwinNormal that, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_non_clone_simple_twin_normal(that);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_NonCloneSimpleTwinNormal_instance_method_return_own(
+              port_, arg0),
+      parseSuccessData: _wire2api_RustAutoOpaque_Self,
+      parseErrorData: null,
+      constMeta: kNonCloneSimpleTwinNormalInstanceMethodReturnOwnConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNonCloneSimpleTwinNormalInstanceMethodReturnOwnConstMeta =>
+      const TaskConstMeta(
+        debugName: "NonCloneSimpleTwinNormal_instance_method_return_own",
+        argNames: ["that"],
+      );
+
+  @override
+  Future<Self> nonCloneSimpleTwinNormalNew({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_NonCloneSimpleTwinNormal_new(port_),
+      parseSuccessData: _wire2api_RustAutoOpaque_Self,
+      parseErrorData: null,
+      constMeta: kNonCloneSimpleTwinNormalNewConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNonCloneSimpleTwinNormalNewConstMeta =>
+      const TaskConstMeta(
+        debugName: "NonCloneSimpleTwinNormal_new",
+        argNames: [],
+      );
+
+  @override
+  Future<Self> nonCloneSimpleTwinNormalNewCustomName({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_NonCloneSimpleTwinNormal_new_custom_name(port_),
+      parseSuccessData: _wire2api_RustAutoOpaque_Self,
+      parseErrorData: null,
+      constMeta: kNonCloneSimpleTwinNormalNewCustomNameConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNonCloneSimpleTwinNormalNewCustomNameConstMeta =>
+      const TaskConstMeta(
+        debugName: "NonCloneSimpleTwinNormal_new_custom_name",
+        argNames: [],
+      );
+
+  @override
+  Future<void> nonCloneSimpleTwinNormalStaticMethodArgBorrow(
+      {required NonCloneSimpleTwinNormal arg, dynamic hint}) {
+    var arg0 = api2wire_RustAutoOpaque_NonCloneSimpleTwinNormal(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire
+          .wire_NonCloneSimpleTwinNormal_static_method_arg_borrow(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kNonCloneSimpleTwinNormalStaticMethodArgBorrowConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNonCloneSimpleTwinNormalStaticMethodArgBorrowConstMeta =>
+      const TaskConstMeta(
+        debugName: "NonCloneSimpleTwinNormal_static_method_arg_borrow",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<void> nonCloneSimpleTwinNormalStaticMethodArgMutBorrow(
+      {required MutNonCloneSimpleTwinNormal arg, dynamic hint}) {
+    var arg0 = api2wire_RustAutoOpaque_mutNonCloneSimpleTwinNormal(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow(
+              port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kNonCloneSimpleTwinNormalStaticMethodArgMutBorrowConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinNormalStaticMethodArgMutBorrowConstMeta =>
+          const TaskConstMeta(
+            debugName: "NonCloneSimpleTwinNormal_static_method_arg_mut_borrow",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void> nonCloneSimpleTwinNormalStaticMethodArgOwn(
+      {required NonCloneSimpleTwinNormal arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_non_clone_simple_twin_normal(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_NonCloneSimpleTwinNormal_static_method_arg_own(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kNonCloneSimpleTwinNormalStaticMethodArgOwnConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNonCloneSimpleTwinNormalStaticMethodArgOwnConstMeta =>
+      const TaskConstMeta(
+        debugName: "NonCloneSimpleTwinNormal_static_method_arg_own",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<NonCloneSimpleTwinNormal>
+      nonCloneSimpleTwinNormalStaticMethodReturnOwn({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_NonCloneSimpleTwinNormal_static_method_return_own(port_),
+      parseSuccessData: _wire2api_non_clone_simple_twin_normal,
+      parseErrorData: null,
+      constMeta: kNonCloneSimpleTwinNormalStaticMethodReturnOwnConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNonCloneSimpleTwinNormalStaticMethodReturnOwnConstMeta =>
+      const TaskConstMeta(
+        debugName: "NonCloneSimpleTwinNormal_static_method_return_own",
+        argNames: [],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueArgBorrow(
+      {required NonCloneSimpleTwinNormal arg, dynamic hint}) {
+    var arg0 = api2wire_RustAutoOpaque_NonCloneSimpleTwinNormal(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_rust_auto_opaque_arg_borrow(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueArgBorrowConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgBorrowConstMeta => const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_borrow",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueArgMutBorrow(
+      {required MutNonCloneSimpleTwinNormal arg, dynamic hint}) {
+    var arg0 = api2wire_RustAutoOpaque_mutNonCloneSimpleTwinNormal(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_rust_auto_opaque_arg_mut_borrow(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueArgMutBorrowConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgMutBorrowConstMeta => const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_mut_borrow",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueArgOwn(
+      {required NonCloneSimpleTwinNormal arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_non_clone_simple_twin_normal(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_rust_auto_opaque_arg_own(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueArgOwnConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgOwnConstMeta => const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_own",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<NonCloneSimpleTwinNormal> rustAutoOpaqueArgOwnAndReturnOwn(
+      {required NonCloneSimpleTwinNormal arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_non_clone_simple_twin_normal(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_rust_auto_opaque_arg_own_and_return_own(port_, arg0),
+      parseSuccessData: _wire2api_non_clone_simple_twin_normal,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueArgOwnAndReturnOwnConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgOwnAndReturnOwnConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_own_and_return_own",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueCallableArg(
+      {required BoxFnStringString arg, dynamic hint}) {
+    var arg0 = api2wire_RustAutoOpaque_box_dynFnStringString(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_rust_auto_opaque_callable_arg(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueCallableArgConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueCallableArgConstMeta => const TaskConstMeta(
+        debugName: "rust_auto_opaque_callable_arg",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<BoxFnStringString> rustAutoOpaqueCallableReturn({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_rust_auto_opaque_callable_return(port_),
+      parseSuccessData: _wire2api_RustAutoOpaque_box_dynFnStringString,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueCallableReturnConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueCallableReturnConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_callable_return",
+        argNames: [],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueNormalAndOpaqueArg(
+      {required NonCloneSimpleTwinNormal a, required String b, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_non_clone_simple_twin_normal(a);
+    var arg1 = api2wire_String(b);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_rust_auto_opaque_normal_and_opaque_arg(port_, arg0, arg1),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueNormalAndOpaqueArgConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueNormalAndOpaqueArgConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_normal_and_opaque_arg",
+        argNames: ["a", "b"],
+      );
+
+  @override
+  Future<void> rustAutoOpaquePlusSignArg(
+      {required BoxMyTraitTwinNormal arg, dynamic hint}) {
+    var arg0 = api2wire_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_rust_auto_opaque_plus_sign_arg(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaquePlusSignArgConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaquePlusSignArgConstMeta => const TaskConstMeta(
+        debugName: "rust_auto_opaque_plus_sign_arg",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<BoxMyTraitTwinNormal> rustAutoOpaquePlusSignReturn({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_rust_auto_opaque_plus_sign_return(port_),
+      parseSuccessData:
+          _wire2api_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaquePlusSignReturnConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaquePlusSignReturnConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_plus_sign_return",
+        argNames: [],
+      );
+
+  @override
+  Future<NonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwn({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_rust_auto_opaque_return_own(port_),
+      parseSuccessData: _wire2api_non_clone_simple_twin_normal,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueReturnOwnConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueReturnOwnConstMeta => const TaskConstMeta(
+        debugName: "rust_auto_opaque_return_own",
+        argNames: [],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrow(
+      {required StructWithGoodAndOpaqueFieldTwinNormal arg, dynamic hint}) {
+    var arg0 =
+        api2wire_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire
+          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(
+              port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrow(
+      {required MutStructWithGoodAndOpaqueFieldTwinNormal arg, dynamic hint}) {
+    var arg0 =
+        api2wire_RustAutoOpaque_mutStructWithGoodAndOpaqueFieldTwinNormal(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire
+          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(
+              port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwn(
+      {required StructWithGoodAndOpaqueFieldTwinNormal arg, dynamic hint}) {
+    var arg0 =
+        api2wire_box_autoadd_struct_with_good_and_opaque_field_twin_normal(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
+              port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_own",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<StructWithGoodAndOpaqueFieldTwinNormal>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwn({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire
+          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own(
+              port_),
+      parseSuccessData: _wire2api_struct_with_good_and_opaque_field_twin_normal,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_return_own",
+            argNames: [],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueTraitObjectArgBorrow(
+      {required BoxHelloTraitTwinNormal arg,
+      required String expect,
+      dynamic hint}) {
+    var arg0 = api2wire_RustAutoOpaque_BoxdynHelloTraitTwinNormal(arg);
+    var arg1 = api2wire_String(expect);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_rust_auto_opaque_trait_object_arg_borrow(port_, arg0, arg1),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueTraitObjectArgBorrowConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTraitObjectArgBorrowConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_trait_object_arg_borrow",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueTraitObjectArgMutBorrow(
+      {required MutBoxHelloTraitTwinNormal arg,
+      required String expect,
+      dynamic hint}) {
+    var arg0 = api2wire_RustAutoOpaque_mutBoxdynHelloTraitTwinNormal(arg);
+    var arg1 = api2wire_String(expect);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire
+          .wire_rust_auto_opaque_trait_object_arg_mut_borrow(port_, arg0, arg1),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueTraitObjectArgMutBorrowConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTraitObjectArgMutBorrowConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_trait_object_arg_mut_borrow",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueTraitObjectArgOwn(
+      {required BoxHelloTraitTwinNormal arg,
+      required String expect,
+      dynamic hint}) {
+    var arg0 = api2wire_RustAutoOpaque_box_dynHelloTraitTwinNormal(arg);
+    var arg1 = api2wire_String(expect);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_rust_auto_opaque_trait_object_arg_own(port_, arg0, arg1),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueTraitObjectArgOwnConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTraitObjectArgOwnConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_trait_object_arg_own",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  Future<BoxHelloTraitTwinNormal> rustAutoOpaqueTraitObjectReturnOwnOne(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_rust_auto_opaque_trait_object_return_own_one(port_),
+      parseSuccessData: _wire2api_RustAutoOpaque_box_dynHelloTraitTwinNormal,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueTraitObjectReturnOwnOneConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTraitObjectReturnOwnOneConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_trait_object_return_own_one",
+        argNames: [],
+      );
+
+  @override
+  Future<BoxHelloTraitTwinNormal> rustAutoOpaqueTraitObjectReturnOwnTwo(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_rust_auto_opaque_trait_object_return_own_two(port_),
+      parseSuccessData: _wire2api_RustAutoOpaque_box_dynHelloTraitTwinNormal,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueTraitObjectReturnOwnTwoConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTraitObjectReturnOwnTwoConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_trait_object_return_own_two",
+        argNames: [],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueTwoArgs(
+      {required NonCloneSimpleTwinNormal a,
+      required NonCloneSimpleTwinNormal b,
+      dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_non_clone_simple_twin_normal(a);
+    var arg1 = api2wire_box_autoadd_non_clone_simple_twin_normal(b);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_rust_auto_opaque_two_args(port_, arg0, arg1),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueTwoArgsConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTwoArgsConstMeta => const TaskConstMeta(
+        debugName: "rust_auto_opaque_two_args",
+        argNames: ["a", "b"],
+      );
+
+  @override
   Future<EnumOpaqueTwinNormalArray5> createArrayOpaqueEnumTwinNormal(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -16295,6 +17144,84 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinNormal => wire
+          .rust_arc_increment_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormal => wire
+          .rust_arc_decrement_strong_count_RustAutoOpaque_BoxdynHelloTraitTwinNormal;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_NonCloneSimpleTwinNormal => wire
+          .rust_arc_increment_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_NonCloneSimpleTwinNormal => wire
+          .rust_arc_decrement_strong_count_RustAutoOpaque_NonCloneSimpleTwinNormal;
+
+  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_Self =>
+      wire.rust_arc_increment_strong_count_RustAutoOpaque_Self;
+
+  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_Self =>
+      wire.rust_arc_decrement_strong_count_RustAutoOpaque_Self;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_StructWithGoodAndOpaqueFieldTwinNormal =>
+          wire.rust_arc_increment_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormal =>
+          wire.rust_arc_decrement_strong_count_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxFnStringString => wire
+          .rust_arc_increment_strong_count_RustAutoOpaque_box_dynFnStringString;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxFnStringString => wire
+          .rust_arc_decrement_strong_count_RustAutoOpaque_box_dynFnStringString;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxHelloTraitTwinNormal => wire
+          .rust_arc_increment_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormal => wire
+          .rust_arc_decrement_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_BoxMyTraitTwinNormal => wire
+          .rust_arc_increment_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinNormal => wire
+          .rust_arc_decrement_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MutBoxHelloTraitTwinNormal => wire
+          .rust_arc_increment_strong_count_RustAutoOpaque_mutBoxdynHelloTraitTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MutBoxHelloTraitTwinNormal => wire
+          .rust_arc_decrement_strong_count_RustAutoOpaque_mutBoxdynHelloTraitTwinNormal;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MutNonCloneSimpleTwinNormal => wire
+          .rust_arc_increment_strong_count_RustAutoOpaque_mutNonCloneSimpleTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MutNonCloneSimpleTwinNormal => wire
+          .rust_arc_decrement_strong_count_RustAutoOpaque_mutNonCloneSimpleTwinNormal;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_MutStructWithGoodAndOpaqueFieldTwinNormal =>
+          wire.rust_arc_increment_strong_count_RustAutoOpaque_mutStructWithGoodAndOpaqueFieldTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_MutStructWithGoodAndOpaqueFieldTwinNormal =>
+          wire.rust_arc_decrement_strong_count_RustAutoOpaque_mutStructWithGoodAndOpaqueFieldTwinNormal;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_MutexHideData =>
           wire.rust_arc_increment_strong_count_RustOpaque_MutexHideData;
 
@@ -16415,6 +17342,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   ObjectArray1 _wire2api_DartOpaque_array_1(dynamic raw) {
     return ObjectArray1(
         (raw as List<dynamic>).map(_wire2api_DartOpaque).toList());
+  }
+
+  Self _wire2api_RustAutoOpaque_Self(dynamic raw) {
+    return Self.fromWire(raw);
+  }
+
+  BoxFnStringString _wire2api_RustAutoOpaque_box_dynFnStringString(
+      dynamic raw) {
+    return BoxFnStringString.fromWire(raw);
+  }
+
+  BoxHelloTraitTwinNormal _wire2api_RustAutoOpaque_box_dynHelloTraitTwinNormal(
+      dynamic raw) {
+    return BoxHelloTraitTwinNormal.fromWire(raw);
+  }
+
+  BoxMyTraitTwinNormal
+      _wire2api_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync(dynamic raw) {
+    return BoxMyTraitTwinNormal.fromWire(raw);
   }
 
   MutexHideData _wire2api_RustOpaque_MutexHideData(dynamic raw) {
@@ -18959,6 +19905,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
+  NonCloneSimpleTwinNormal _wire2api_non_clone_simple_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return NonCloneSimpleTwinNormal(
+      inner: _wire2api_i_32(arr[0]),
+    );
+  }
+
   Numbers _wire2api_numbers(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
@@ -19513,6 +20468,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     );
   }
 
+  StructWithGoodAndOpaqueFieldTwinNormal
+      _wire2api_struct_with_good_and_opaque_field_twin_normal(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return StructWithGoodAndOpaqueFieldTwinNormal(
+      good: _wire2api_String(arr[0]),
+      opaque: _wire2api_non_clone_simple_twin_normal(arr[1]),
+    );
+  }
+
   StructWithOneFieldTwinNormal _wire2api_struct_with_one_field_twin_normal(
       dynamic raw) {
     final arr = raw as List<dynamic>;
@@ -20013,6 +20979,61 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 }
 
 // Section: api2wire_funcs
+
+PlatformPointer api2wire_RustAutoOpaque_BoxdynHelloTraitTwinNormal(
+    BoxHelloTraitTwinNormal raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.api2wire();
+}
+
+PlatformPointer api2wire_RustAutoOpaque_NonCloneSimpleTwinNormal(
+    NonCloneSimpleTwinNormal raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.api2wire();
+}
+
+PlatformPointer api2wire_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
+    StructWithGoodAndOpaqueFieldTwinNormal raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.api2wire();
+}
+
+PlatformPointer api2wire_RustAutoOpaque_box_dynFnStringString(
+    BoxFnStringString raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.api2wire();
+}
+
+PlatformPointer api2wire_RustAutoOpaque_box_dynHelloTraitTwinNormal(
+    BoxHelloTraitTwinNormal raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.api2wire();
+}
+
+PlatformPointer api2wire_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync(
+    BoxMyTraitTwinNormal raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.api2wire();
+}
+
+PlatformPointer api2wire_RustAutoOpaque_mutBoxdynHelloTraitTwinNormal(
+    MutBoxHelloTraitTwinNormal raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.api2wire();
+}
+
+PlatformPointer api2wire_RustAutoOpaque_mutNonCloneSimpleTwinNormal(
+    MutNonCloneSimpleTwinNormal raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.api2wire();
+}
+
+PlatformPointer
+    api2wire_RustAutoOpaque_mutStructWithGoodAndOpaqueFieldTwinNormal(
+        MutStructWithGoodAndOpaqueFieldTwinNormal raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.api2wire();
+}
 
 PlatformPointer api2wire_RustOpaque_MutexHideData(MutexHideData raw) {
   // ignore: invalid_use_of_internal_member
