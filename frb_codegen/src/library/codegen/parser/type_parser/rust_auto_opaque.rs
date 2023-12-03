@@ -29,13 +29,14 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         };
 
         if (subtree_types_except_rust_opaque.iter()).any(|x| matches!(x, IrType::Unencodable(_))) {
-            return Ok(IrType::RustAutoOpaque(IrTypeRustAutoOpaque::new(
-                todo!(),
-                ty_raw,
-            )));
+            return Ok(self.parse_rust_auto_opaque(ty_raw));
         }
 
         Ok(ty_raw)
+    }
+
+    fn parse_rust_auto_opaque(&self, ty_raw: IrType) -> IrType {
+        IrType::RustAutoOpaque(IrTypeRustAutoOpaque::new(TODO, ty_raw))
     }
 }
 
