@@ -3,6 +3,7 @@
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:flutter_rust_bridge/src/droppable/droppable.dart';
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/rust_opaque_twin_sync.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
@@ -70,7 +71,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
     data.dispose();
-    await expectRustPanic(() => runOpaqueTwinSync(opaque: data), 'TwinSync');
+    await expectLater(() => runOpaqueTwinSync(opaque: data),
+        throwsA(isA<DroppableDisposedException>()));
   });
 
   test('dispose before complete', () async {
@@ -86,7 +88,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
         "lifetime: \"static str\" "
         "})");
-    await expectRustPanic(() => runOpaqueTwinSync(opaque: data), 'TwinSync');
+    await expectLater(() => runOpaqueTwinSync(opaque: data),
+        throwsA(isA<DroppableDisposedException>()));
   });
 
   test('create array of opaque type', () async {
@@ -102,7 +105,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
           "lifetime: \"static str\" "
           "})");
       v.dispose();
-      await expectRustPanic(() => runOpaqueTwinSync(opaque: v), 'TwinSync');
+      await expectLater(() => runOpaqueTwinSync(opaque: v),
+          throwsA(isA<DroppableDisposedException>()));
     }
   });
 
@@ -147,8 +151,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \\\"static str\\\" "
         "})\"");
     (data[4] as EnumOpaqueTwinSync_RwLock).field0.dispose();
-    await expectRustPanic(
-        () => runEnumOpaqueTwinSync(opaque: data[4]), 'TwinSync');
+    await expectLater(() => runEnumOpaqueTwinSync(opaque: data[4]),
+        throwsA(isA<DroppableDisposedException>()));
   });
 
   test('opaque field', () async {
@@ -174,10 +178,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
     data.first.dispose();
-    await expectRustPanic(
-        () => runOpaqueTwinSync(opaque: data.first), 'TwinSync');
-    await expectRustPanic(
-        () => runNestedOpaqueTwinSync(opaque: data), 'TwinSync');
+    await expectLater(() => runOpaqueTwinSync(opaque: data.first),
+        throwsA(isA<DroppableDisposedException>()));
+    await expectLater(() => runNestedOpaqueTwinSync(opaque: data),
+        throwsA(isA<DroppableDisposedException>()));
     expect(
         await runOpaqueTwinSync(opaque: data.second),
         "content - Some(PrivateData "
@@ -205,7 +209,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
 
-    await expectRustPanic(() => opaqueArrayRunTwinSync(data: data), 'TwinSync');
+    await expectLater(() => opaqueArrayRunTwinSync(data: data),
+        throwsA(isA<DroppableDisposedException>()));
     data[1].dispose();
   });
 
@@ -224,7 +229,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
 
-    await expectRustPanic(() => opaqueVecRunTwinSync(data: data), 'TwinSync');
+    await expectLater(() => opaqueVecRunTwinSync(data: data),
+        throwsA(isA<DroppableDisposedException>()));
     data[1].dispose();
   });
 
