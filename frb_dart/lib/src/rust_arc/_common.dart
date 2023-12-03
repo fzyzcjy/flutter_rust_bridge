@@ -1,3 +1,4 @@
+import 'package:flutter_rust_bridge/src/droppable/_common.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:flutter_rust_bridge/src/rust_arc/_io.dart'
     if (dart.library.html) '_web.dart';
@@ -22,18 +23,18 @@ import 'package:meta/meta.dart';
 /// The Rust `std::sync::Arc` on the Dart side.
 // Note: Use `extends`, instead of making the `_Droppable` a field,
 // in order to ensure the `ffi.Finalizable` works well.
-abstract class RustArc extends _Droppable<PlatformPointer> {
-  /// Either the pointer that `std::sync::Arc::into_raw` gives,
-  /// or a null pointer.
+abstract class RustArc extends Droppable {
+  /// The pointer that `std::sync::Arc::into_raw` gives.
   ///
-  /// In other words, when non-null, it is very similar to `std::sync::Arc.ptr`,
+  /// In other words, it is very similar to `std::sync::Arc.ptr`,
   /// but only with a small constant offset.
   // We do this no-op override merely to provide documentations.
   @override
-  PlatformPointer? get _resource => super._resource;
+  @protected
+  PlatformPointer? get resource => super.resource;
 
   /// Mimic `std::sync::Arc::from_raw`
-  RustArc.fromRaw({required int ptr, required super.size})
+  RustArc.fromRaw({required int ptr, required super.externalSizeOnNative})
       : super(ptrOrNullFromInt(ptr));
 
   /// See comments in [RustArcPerTypeData] for details.
