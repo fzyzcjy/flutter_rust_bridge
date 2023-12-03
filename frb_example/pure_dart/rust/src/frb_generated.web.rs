@@ -3306,15 +3306,6 @@ impl Wire2Api<[flutter_rust_bridge::DartOpaque; 1]>
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
-impl Wire2Api<flutter_rust_bridge::RustOpaque<AssertUnwindSafe<Box<dyn Fn(String) -> String>>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn wire2api(
-        self,
-    ) -> flutter_rust_bridge::RustOpaque<AssertUnwindSafe<Box<dyn Fn(String) -> String>>> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
 impl Wire2Api<flutter_rust_bridge::RustOpaque<Mutex<HideData>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -3322,24 +3313,10 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<Mutex<HideData>>>
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
-impl Wire2Api<flutter_rust_bridge::RustOpaque<NonCloneSimpleTwinNormal>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<NonCloneSimpleTwinNormal> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
 impl Wire2Api<flutter_rust_bridge::RustOpaque<RwLock<HideData>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<RwLock<HideData>> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
-impl Wire2Api<flutter_rust_bridge::RustOpaque<StructWithGoodAndOpaqueFieldTwinNormal>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<StructWithGoodAndOpaqueFieldTwinNormal> {
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
@@ -3361,20 +3338,6 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
-impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn HelloTraitTwinNormal>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn HelloTraitTwinNormal>> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
-impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn MyTraitTwinNormal + Send + Sync>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn MyTraitTwinNormal + Send + Sync>> {
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
@@ -8559,160 +8522,8 @@ pub fn wire_test_raw_string_item_struct_twin_normal(
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_arg_borrow(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_rust_auto_opaque_arg_borrow_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_arg_mut_borrow(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_rust_auto_opaque_arg_mut_borrow_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_arg_own(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_rust_auto_opaque_arg_own_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_arg_own_and_return_own(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_rust_auto_opaque_arg_own_and_return_own_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_callable_arg(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_rust_auto_opaque_callable_arg_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_callable_return(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-) {
-    wire_rust_auto_opaque_callable_return_impl(port_)
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_normal_and_opaque_arg(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    b: String,
-) {
-    wire_rust_auto_opaque_normal_and_opaque_arg_impl(port_, a, b)
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_plus_sign_arg(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_rust_auto_opaque_plus_sign_arg_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_plus_sign_return(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-) {
-    wire_rust_auto_opaque_plus_sign_return_impl(port_)
-}
-
-#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_return_own(port_: flutter_rust_bridge::for_generated::MessagePort) {
     wire_rust_auto_opaque_return_own_impl(port_)
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_impl(port_)
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_trait_object_arg_borrow(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    expect: String,
-) {
-    wire_rust_auto_opaque_trait_object_arg_borrow_impl(port_, arg, expect)
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_trait_object_arg_mut_borrow(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    expect: String,
-) {
-    wire_rust_auto_opaque_trait_object_arg_mut_borrow_impl(port_, arg, expect)
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_trait_object_arg_own(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    expect: String,
-) {
-    wire_rust_auto_opaque_trait_object_arg_own_impl(port_, arg, expect)
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_trait_object_return_own_one(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-) {
-    wire_rust_auto_opaque_trait_object_return_own_one_impl(port_)
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_trait_object_return_own_two(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-) {
-    wire_rust_auto_opaque_trait_object_return_own_two_impl(port_)
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_two_args(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_rust_auto_opaque_two_args_impl(port_, a, b)
 }
 
 #[wasm_bindgen]
@@ -9041,28 +8852,6 @@ pub fn wire_handle_uuids_twin_normal(
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            AssertUnwindSafe<Box<dyn Fn(String) -> String>>,
-        >(ptr);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            AssertUnwindSafe<Box<dyn Fn(String) -> String>>,
-        >(ptr);
-    }
-}
-
-#[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_MutexHideData(ptr: *const std::ffi::c_void) {
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<Mutex<HideData>>(ptr);
@@ -9113,28 +8902,6 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_RwLockHideData(ptr: *const std
         flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<RwLock<HideData>>(
             ptr,
         );
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            StructWithGoodAndOpaqueFieldTwinNormal,
-        >(ptr);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            StructWithGoodAndOpaqueFieldTwinNormal,
-        >(ptr);
     }
 }
 
@@ -9200,50 +8967,6 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync(
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
             Box<dyn DartDebugTwinSync>,
-        >(ptr);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            Box<dyn HelloTraitTwinNormal>,
-        >(ptr);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            Box<dyn HelloTraitTwinNormal>,
-        >(ptr);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            Box<dyn MyTraitTwinNormal + Send + Sync>,
-        >(ptr);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            Box<dyn MyTraitTwinNormal + Send + Sync>,
         >(ptr);
     }
 }

@@ -120,10 +120,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_BoxFnStringStringPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString;
-
-  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_MutexHideDataPtr =>
           wire.rust_arc_decrement_strong_count_RustOpaque_MutexHideData;
 
@@ -136,10 +132,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           wire.rust_arc_decrement_strong_count_RustOpaque_RwLockHideData;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormalPtr =>
-          wire.rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal;
-
-  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxDartDebugTwinNormalPtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormal;
 
@@ -150,14 +142,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxDartDebugTwinSyncPtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormal;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_BoxMyTraitTwinNormalPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync;
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_FrbOpaqueReturnPtr =>
@@ -5682,87 +5666,8 @@ class RustLibWire extends BaseWire {
   void wire_test_raw_string_item_struct_twin_normal(NativePortType port_) =>
       wasmModule.wire_test_raw_string_item_struct_twin_normal(port_);
 
-  void wire_rust_auto_opaque_arg_borrow(NativePortType port_, Object arg) =>
-      wasmModule.wire_rust_auto_opaque_arg_borrow(port_, arg);
-
-  void wire_rust_auto_opaque_arg_mut_borrow(NativePortType port_, Object arg) =>
-      wasmModule.wire_rust_auto_opaque_arg_mut_borrow(port_, arg);
-
-  void wire_rust_auto_opaque_arg_own(NativePortType port_, Object arg) =>
-      wasmModule.wire_rust_auto_opaque_arg_own(port_, arg);
-
-  void wire_rust_auto_opaque_arg_own_and_return_own(
-          NativePortType port_, Object arg) =>
-      wasmModule.wire_rust_auto_opaque_arg_own_and_return_own(port_, arg);
-
-  void wire_rust_auto_opaque_callable_arg(NativePortType port_, Object arg) =>
-      wasmModule.wire_rust_auto_opaque_callable_arg(port_, arg);
-
-  void wire_rust_auto_opaque_callable_return(NativePortType port_) =>
-      wasmModule.wire_rust_auto_opaque_callable_return(port_);
-
-  void wire_rust_auto_opaque_normal_and_opaque_arg(
-          NativePortType port_, Object a, String b) =>
-      wasmModule.wire_rust_auto_opaque_normal_and_opaque_arg(port_, a, b);
-
-  void wire_rust_auto_opaque_plus_sign_arg(NativePortType port_, Object arg) =>
-      wasmModule.wire_rust_auto_opaque_plus_sign_arg(port_, arg);
-
-  void wire_rust_auto_opaque_plus_sign_return(NativePortType port_) =>
-      wasmModule.wire_rust_auto_opaque_plus_sign_return(port_);
-
   void wire_rust_auto_opaque_return_own(NativePortType port_) =>
       wasmModule.wire_rust_auto_opaque_return_own(port_);
-
-  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(
-          NativePortType port_, Object arg) =>
-      wasmModule
-          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(
-              port_, arg);
-
-  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(
-          NativePortType port_, Object arg) =>
-      wasmModule
-          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(
-              port_, arg);
-
-  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
-          NativePortType port_, Object arg) =>
-      wasmModule
-          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
-              port_, arg);
-
-  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own(
-          NativePortType port_) =>
-      wasmModule
-          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own(
-              port_);
-
-  void wire_rust_auto_opaque_trait_object_arg_borrow(
-          NativePortType port_, Object arg, String expect) =>
-      wasmModule.wire_rust_auto_opaque_trait_object_arg_borrow(
-          port_, arg, expect);
-
-  void wire_rust_auto_opaque_trait_object_arg_mut_borrow(
-          NativePortType port_, Object arg, String expect) =>
-      wasmModule.wire_rust_auto_opaque_trait_object_arg_mut_borrow(
-          port_, arg, expect);
-
-  void wire_rust_auto_opaque_trait_object_arg_own(
-          NativePortType port_, Object arg, String expect) =>
-      wasmModule.wire_rust_auto_opaque_trait_object_arg_own(port_, arg, expect);
-
-  void wire_rust_auto_opaque_trait_object_return_own_one(
-          NativePortType port_) =>
-      wasmModule.wire_rust_auto_opaque_trait_object_return_own_one(port_);
-
-  void wire_rust_auto_opaque_trait_object_return_own_two(
-          NativePortType port_) =>
-      wasmModule.wire_rust_auto_opaque_trait_object_return_own_two(port_);
-
-  void wire_rust_auto_opaque_two_args(
-          NativePortType port_, Object a, Object b) =>
-      wasmModule.wire_rust_auto_opaque_two_args(port_, a, b);
 
   void wire_create_array_opaque_enum_twin_normal(NativePortType port_) =>
       wasmModule.wire_create_array_opaque_enum_twin_normal(port_);
@@ -5925,18 +5830,6 @@ class RustLibWire extends BaseWire {
   void wire_handle_uuids_twin_normal(NativePortType port_, Uint8List ids) =>
       wasmModule.wire_handle_uuids_twin_normal(port_, ids);
 
-  void rust_arc_increment_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(
-              ptr);
-
   void rust_arc_increment_strong_count_RustOpaque_MutexHideData(dynamic ptr) =>
       wasmModule.rust_arc_increment_strong_count_RustOpaque_MutexHideData(ptr);
 
@@ -5960,18 +5853,6 @@ class RustLibWire extends BaseWire {
 
   void rust_arc_decrement_strong_count_RustOpaque_RwLockHideData(dynamic ptr) =>
       wasmModule.rust_arc_decrement_strong_count_RustOpaque_RwLockHideData(ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
-              ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal(
           dynamic ptr) =>
@@ -6007,30 +5888,6 @@ class RustLibWire extends BaseWire {
           dynamic ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_frb_opaque_return(
@@ -7974,64 +7831,7 @@ class RustLibWasmModule implements WasmModule {
   external void wire_test_raw_string_item_struct_twin_normal(
       NativePortType port_);
 
-  external void wire_rust_auto_opaque_arg_borrow(
-      NativePortType port_, Object arg);
-
-  external void wire_rust_auto_opaque_arg_mut_borrow(
-      NativePortType port_, Object arg);
-
-  external void wire_rust_auto_opaque_arg_own(NativePortType port_, Object arg);
-
-  external void wire_rust_auto_opaque_arg_own_and_return_own(
-      NativePortType port_, Object arg);
-
-  external void wire_rust_auto_opaque_callable_arg(
-      NativePortType port_, Object arg);
-
-  external void wire_rust_auto_opaque_callable_return(NativePortType port_);
-
-  external void wire_rust_auto_opaque_normal_and_opaque_arg(
-      NativePortType port_, Object a, String b);
-
-  external void wire_rust_auto_opaque_plus_sign_arg(
-      NativePortType port_, Object arg);
-
-  external void wire_rust_auto_opaque_plus_sign_return(NativePortType port_);
-
   external void wire_rust_auto_opaque_return_own(NativePortType port_);
-
-  external void
-      wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(
-          NativePortType port_, Object arg);
-
-  external void
-      wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(
-          NativePortType port_, Object arg);
-
-  external void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
-      NativePortType port_, Object arg);
-
-  external void
-      wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own(
-          NativePortType port_);
-
-  external void wire_rust_auto_opaque_trait_object_arg_borrow(
-      NativePortType port_, Object arg, String expect);
-
-  external void wire_rust_auto_opaque_trait_object_arg_mut_borrow(
-      NativePortType port_, Object arg, String expect);
-
-  external void wire_rust_auto_opaque_trait_object_arg_own(
-      NativePortType port_, Object arg, String expect);
-
-  external void wire_rust_auto_opaque_trait_object_return_own_one(
-      NativePortType port_);
-
-  external void wire_rust_auto_opaque_trait_object_return_own_two(
-      NativePortType port_);
-
-  external void wire_rust_auto_opaque_two_args(
-      NativePortType port_, Object a, Object b);
 
   external void wire_create_array_opaque_enum_twin_normal(NativePortType port_);
 
@@ -8155,14 +7955,6 @@ class RustLibWasmModule implements WasmModule {
   external void wire_handle_uuids_twin_normal(
       NativePortType port_, Uint8List ids);
 
-  external void
-      rust_arc_increment_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(
-          dynamic ptr);
-
   external void rust_arc_increment_strong_count_RustOpaque_MutexHideData(
       dynamic ptr);
 
@@ -8182,14 +7974,6 @@ class RustLibWasmModule implements WasmModule {
 
   external void rust_arc_decrement_strong_count_RustOpaque_RwLockHideData(
       dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
-          dynamic ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal(
@@ -8213,22 +7997,6 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(
           dynamic ptr);
 
   external void rust_arc_increment_strong_count_RustOpaque_frb_opaque_return(
