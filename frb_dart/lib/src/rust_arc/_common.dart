@@ -28,9 +28,9 @@ abstract class RustArc extends RustArcBase {
     }
   }
 
-  /// See comments in [RustArcTypeInfo] for details.
+  /// See comments in [RustArcPerTypeData] for details.
   @protected
-  RustArcTypeInfo get typeInfo;
+  RustArcPerTypeData get typeInfo;
 }
 
 /// Should have exactly *one* instance per *type*.
@@ -38,7 +38,7 @@ abstract class RustArc extends RustArcBase {
 /// For example, all `std::sync::Arc<Apple>` objects should use one
 /// `RustArcTypeInfo` object, while all `std::sync::Arc<Orange>`
 /// objects should use another.
-abstract class RustArcTypeInfo {
+abstract class RustArcPerTypeData {
   // TODO refactor?
   // TODO comments
   /// Finalizer for the subtype.
