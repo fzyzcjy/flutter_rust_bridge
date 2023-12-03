@@ -30,24 +30,21 @@ abstract class RustArc extends RustArcBase {
 
   // TODO refactor?
   // TODO comments
-  /// A native finalizer rust opaque type.
-  /// It should be *static* for each subtype.
+  /// Finalizer for the subtype.
+  // TODO can we ensure this static?
+  /// It should be static for each subtype.
   @protected
   ArcTypeFinalizer get staticFinalizer;
 
   // TODO rename: dropFn -> rust_arc_decrement_strong_count
   // TODO comments
-  /// Rust type specific drop function.
-  ///
-  /// This function should never be called manually.
+  /// Directly calls `std::sync::Arc::decrement_strong_count(ptr)`
   @protected
   void staticRustArcDecrementStrongCount(PlatformPointer ptr);
 
   // TODO rename: shareFn -> rust_arc_increment_strong_count
   // TODO comments
-  /// Rust type specific share function.
-  ///
-  /// This function should never be called manually.
+  /// Directly calls `std::sync::Arc::increment_strong_count(ptr)`
   @protected
   void staticRustArcIncrementStrongCount(PlatformPointer ptr);
 }
