@@ -32,3 +32,14 @@ unsafe fn wire2api_rust_opaque_inner<T: DartSafe>(ptr: *const T) -> RustOpaque<T
         ptr: (!ptr.is_null()).then(|| Arc::from_raw(ptr)),
     }
 }
+
+pub unsafe fn rust_opaque_arc_incr_count<T>(
+    ptr: *const std::ffi::c_void,
+) -> *const std::ffi::c_void {
+    Arc::<T>::increment_strong_count(ptr as _);
+    ptr
+}
+
+pub unsafe fn rust_opaque_arc_decr_count<T>(ptr: *const std::ffi::c_void) {
+    Arc::<T>::decrement_strong_count(ptr as _);
+}

@@ -81,7 +81,7 @@ impl<'a> WireRustGeneratorDart2RustTrait for RustOpaqueWireRustGenerator<'a> {
                     params: vec![param_ptr.clone()],
                     return_type: None,
                     body: format!(
-                        "unsafe {{std::sync::Arc::<{}>::decrement_strong_count(ptr as _);}}",
+                        "unsafe {{ flutter_rust_bridge::for_generated::rust_opaque_arc_decr_count::<{}>(ptr); }}",
                         self.ir.inner.rust_api_type()
                     ),
                     target,
@@ -91,7 +91,7 @@ impl<'a> WireRustGeneratorDart2RustTrait for RustOpaqueWireRustGenerator<'a> {
                     params: vec![param_ptr.clone()],
                     return_type: Some("*const std::ffi::c_void".to_string()),
                     body: format!(
-                        "unsafe {{std::sync::Arc::<{}>::increment_strong_count(ptr as _); ptr}}",
+                        "unsafe {{ flutter_rust_bridge::for_generated::rust_opaque_arc_incr_count::<{}>(ptr) }}",
                         self.ir.inner.rust_api_type()
                     ),
                     target,
