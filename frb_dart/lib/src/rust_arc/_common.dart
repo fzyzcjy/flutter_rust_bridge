@@ -47,4 +47,6 @@ abstract class RustArc extends RustArcBase {
       RustArcBase.finalizerAttach(this, _ptr, size, staticFinalizer);
     }
   }
+
+  RustArcTypeInfo get typeInfo;
 }
