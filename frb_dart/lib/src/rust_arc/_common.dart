@@ -25,13 +25,7 @@ class RustArc<T> extends Droppable {
   /// Mimic `std::sync::Arc::clone`
   RustArc<T> clone() {
     final ptr = _ptr;
-    if (ptr == null) {
-      return RustArc.fromRaw(
-        ptr: 0,
-        externalSizeOnNative: externalSizeOnNative,
-        staticData: _staticData,
-      );
-    }
+    if (ptr == null) throw const RustArcDisposedException();
 
     _staticData._rustArcIncrementStrongCount(ptr);
 
@@ -47,11 +41,21 @@ class RustArc<T> extends Droppable {
     // Almost 1:1 implementation to `std::sync::Arc::into_raw` impl.
     final ptr = _ptr;
     forget();
-    return ptr ?? (throw StateError('Try to use RustArc after it is disposed'));
+    return ptr ?? (throw const RustArcDisposedException());
   }
 
   @override
   DroppableStaticData get staticData => _staticData;
+}
+
+/// Thrown when use after dispose
+class RustArcDisposedException {
+  /// Thrown when use after dispose
+  const RustArcDisposedException();
+
+  @override
+  String toString() => 'RustArcDisposedException: '
+      'Try to use RustArc after it has been disposed';
 }
 
 /// Should have exactly *one* instance per *type*.
