@@ -35,19 +35,19 @@ abstract class RustArc extends RustArcBase {
   @protected
   ArcTypeFinalizer get staticFinalizer;
 
-  // TODO rename
+  // TODO rename: dropFn -> rust_arc_decrement_strong_count
   // TODO comments
   /// Rust type specific drop function.
   ///
   /// This function should never be called manually.
   @protected
-  ArcDropFnType get dropFn;
+  void staticRustArcDecrementStrongCount(PlatformPointer ptr);
 
-  // TODO rename
+  // TODO rename: shareFn -> rust_arc_increment_strong_count
   // TODO comments
   /// Rust type specific share function.
   ///
   /// This function should never be called manually.
   @protected
-  ArcShareFnType get shareFn;
+  void staticRustArcIncrementStrongCount(PlatformPointer ptr);
 }
