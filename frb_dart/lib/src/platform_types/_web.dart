@@ -27,6 +27,9 @@ class PlatformPointerUtil {
   static PlatformPointer ptrFromInt(int ptr) => ptr;
 
   /// {@macro flutter_rust_bridge.internal}
+  static int ptrToInt(int ptr) => ptr;
+
+  /// {@macro flutter_rust_bridge.internal}
   static PlatformPointer nullPtr() => 0;
 
   /// {@macro flutter_rust_bridge.internal}

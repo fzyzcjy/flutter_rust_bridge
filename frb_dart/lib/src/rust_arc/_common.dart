@@ -40,7 +40,9 @@ abstract class RustArc<T extends RustArc<T>> extends Droppable {
     }
 
     staticData._rustArcIncrementStrongCount(ptr);
-    return constructor(ptr: _ptr, externalSizeOnNative: externalSizeOnNative);
+    return constructor(
+        ptr: PlatformPointerUtil.ptrToInt(ptr),
+        externalSizeOnNative: externalSizeOnNative);
   }
 
   /// Mimic `std::sync::Arc::into_raw`
