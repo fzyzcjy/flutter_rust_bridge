@@ -71,7 +71,7 @@ pub fn rust_auto_opaque_callable_arg(arg: AssertUnwindSafe<Box<dyn Fn(String) ->
 }
 
 pub fn rust_auto_opaque_callable_return() -> AssertUnwindSafe<Box<dyn Fn(String) -> String>> {
-    Box::new(|x| x.repeat(2)).into()
+    AssertUnwindSafe(Box::new(|x: String| x.repeat(2)))
 }
 
 // ==================================== trait object =======================================
