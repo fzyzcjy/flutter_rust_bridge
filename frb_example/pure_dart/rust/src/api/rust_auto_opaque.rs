@@ -37,8 +37,44 @@ pub fn rust_auto_opaque_normal_and_opaque_arg(a: NonCloneSimpleTwinNormal, b: St
     assert_eq!(b, "hello");
 }
 
-// TODO static methods
-// TODO instance methods
+impl NonCloneSimpleTwinNormal {
+    pub fn static_method_arg_own(arg: NonCloneSimpleTwinNormal) {
+        assert_eq!(arg.inner, 42);
+    }
+
+    pub fn static_method_arg_borrow(arg: &NonCloneSimpleTwinNormal) {
+        assert_eq!(arg.inner, 42);
+    }
+
+    pub fn static_method_arg_mut_borrow(arg: &mut NonCloneSimpleTwinNormal) {
+        assert_eq!(arg.inner, 42);
+        arg.inner += 1;
+    }
+
+    pub fn static_method_return_own() -> NonCloneSimpleTwinNormal {
+        NonCloneSimpleTwinNormal { inner: 42 }
+    }
+}
+
+impl NonCloneSimpleTwinNormal {
+    pub fn instance_method_arg_own(self) {
+        assert_eq!(self.inner, 42);
+    }
+
+    pub fn instance_method_arg_borrow(&self) {
+        assert_eq!(self.inner, 42);
+    }
+
+    pub fn instance_method_arg_mut_borrow(&mut self) {
+        assert_eq!(self.inner, 42);
+        self.inner += 1;
+    }
+
+    pub fn instance_method_return_own() -> Self {
+        Self { inner: 42 }
+    }
+}
+
 // TODO dyn trait
 // TODO complex type signature
 // TODO opaque *inside* other objects, especially ref/mutref ---- a bit hard, do it later
