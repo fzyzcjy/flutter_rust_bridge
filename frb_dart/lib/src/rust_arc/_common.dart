@@ -6,7 +6,7 @@ import 'package:meta/meta.dart';
 /// Handles the release of the [_resource]. It will be:
 /// 1. Either, released when this object is garbaged collected, via Dart finalizer.
 /// 2. Or, released when the [dispose] is called.
-abstract class _Droppable<T extends Object> {
+abstract class _Droppable<T extends Object> implements DroppableBase {
   T? get _resource => __resource;
   T? __resource;
 
@@ -68,8 +68,7 @@ class _DroppablePerTypeData<T> {
 }
 
 /// The Rust `std::sync::Arc` on the Dart side.
-abstract class RustArc extends _Droppable<PlatformPointer>
-    implements RustArcBase {
+abstract class RustArc extends _Droppable<PlatformPointer> {
   /// Either the pointer that `std::sync::Arc::into_raw` gives,
   /// or a null pointer.
   ///
