@@ -15563,6 +15563,41 @@ class RustLibWire implements BaseWire {
       _wire_rust_auto_opaque_arg_borrowPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
+  void wire_rust_auto_opaque_arg_mut_borrow(
+    int port_,
+    ffi.Pointer<ffi.Void> arg,
+  ) {
+    return _wire_rust_auto_opaque_arg_mut_borrow(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_arg_mut_borrowPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_rust_auto_opaque_arg_mut_borrow');
+  late final _wire_rust_auto_opaque_arg_mut_borrow =
+      _wire_rust_auto_opaque_arg_mut_borrowPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_rust_auto_opaque_arg_own(
+    int port_,
+    ffi.Pointer<ffi.Void> arg,
+  ) {
+    return _wire_rust_auto_opaque_arg_own(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_arg_ownPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_rust_auto_opaque_arg_own');
+  late final _wire_rust_auto_opaque_arg_own = _wire_rust_auto_opaque_arg_ownPtr
+      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
   void wire_rust_auto_opaque_return_own(
     int port_,
   ) {

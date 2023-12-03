@@ -1898,6 +1898,12 @@ abstract class RustLibApi extends BaseApi {
   Future<void> rustAutoOpaqueArgBorrow(
       {required NonCloneSimpleTwinNormal arg, dynamic hint});
 
+  Future<void> rustAutoOpaqueArgMutBorrow(
+      {required NonCloneSimpleTwinNormal arg, dynamic hint});
+
+  Future<void> rustAutoOpaqueArgOwn(
+      {required NonCloneSimpleTwinNormal arg, dynamic hint});
+
   Future<NonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwn({dynamic hint});
 
   Future<EnumOpaqueTwinNormalArray5> createArrayOpaqueEnumTwinNormal(
@@ -15426,6 +15432,47 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kRustAutoOpaqueArgBorrowConstMeta => const TaskConstMeta(
         debugName: "rust_auto_opaque_arg_borrow",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueArgMutBorrow(
+      {required NonCloneSimpleTwinNormal arg, dynamic hint}) {
+    var arg0 = api2wire_Auto_RustOpaque_NonCloneSimpleTwinNormal(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_rust_auto_opaque_arg_mut_borrow(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueArgMutBorrowConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgMutBorrowConstMeta => const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_mut_borrow",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueArgOwn(
+      {required NonCloneSimpleTwinNormal arg, dynamic hint}) {
+    var arg0 = api2wire_Auto_RustOpaque_NonCloneSimpleTwinNormal(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_rust_auto_opaque_arg_own(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueArgOwnConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgOwnConstMeta => const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_own",
         argNames: ["arg"],
       );
 

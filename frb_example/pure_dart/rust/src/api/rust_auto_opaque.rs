@@ -9,19 +9,19 @@ pub struct NonCloneSimpleTwinNormal {
 }
 
 // ==================================== simple =======================================
-//
-// pub fn rust_auto_opaque_arg_own(arg: NonCloneSimpleTwinNormal) {
-//     assert_eq!(arg.inner, 42);
-// }
+
+pub fn rust_auto_opaque_arg_own(arg: NonCloneSimpleTwinNormal) {
+    assert_eq!(arg.inner, 42);
+}
 
 pub fn rust_auto_opaque_arg_borrow(arg: &NonCloneSimpleTwinNormal) {
     assert_eq!(arg.inner, 42);
 }
 
-// pub fn rust_auto_opaque_arg_mut_borrow(arg: &mut NonCloneSimpleTwinNormal) {
-//     assert_eq!(arg.inner, 42);
-//     arg.inner += 1;
-// }
+pub fn rust_auto_opaque_arg_mut_borrow(arg: &mut NonCloneSimpleTwinNormal) {
+    assert_eq!(arg.inner, 42);
+    arg.inner += 1;
+}
 
 pub fn rust_auto_opaque_return_own() -> NonCloneSimpleTwinNormal {
     NonCloneSimpleTwinNormal { inner: 42 }
