@@ -63,6 +63,10 @@ impl<'a> WireRustGeneratorDart2RustTrait for RustOpaqueWireRustGenerator<'a> {
         }
         .into()
     }
+
+    fn rust_wire_is_pointer(&self, target: Target) -> bool {
+        target != Target::Wasm
+    }
 }
 
 fn generate_impl_wire2api_body() -> &'static str {
