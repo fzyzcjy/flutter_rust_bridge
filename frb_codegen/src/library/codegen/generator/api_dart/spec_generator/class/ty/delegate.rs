@@ -40,12 +40,11 @@ fn generate_array(
         };
 
     Some(ApiDartGeneratedClass {
-        namespace: array.namespace.clone(),
-        deduplicate_key: TODO,
         header: DartBasicHeaderCode {
             import: "import 'package:collection/collection.dart';\n".to_owned(),
             ..Default::default()
         },
+        namespace: array.namespace.clone(),
         code: format!(
             "
             class {self_dart_api_type} extends NonGrowableListView<{inner_dart_api_type}> {{
