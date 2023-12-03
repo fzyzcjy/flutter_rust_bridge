@@ -26,7 +26,7 @@ abstract class Droppable<T extends Object> implements DroppableBase {
       // Note: The finalizer attaches to the `_ptr` at *current* time,
       // thus even if we assign `RustArc._ptr = something-new`, this finalizer
       // attachment will not be changed.
-      perTypeData._finalizer.attachCrossPlatform(this, _resource,
+      staticData._finalizer.attachCrossPlatform(this, _resource,
           detach: this, externalSizeOnNative: size);
     }
   }
@@ -46,8 +46,8 @@ abstract class Droppable<T extends Object> implements DroppableBase {
       _resource = null;
       assert(isDisposed());
 
-      perTypeData._finalizer.detach(this);
-      perTypeData._releaseFn(resource);
+      staticData._finalizer.detach(this);
+      staticData._releaseFn(resource);
     }
   }
 
@@ -57,14 +57,16 @@ abstract class Droppable<T extends Object> implements DroppableBase {
   /// actually been reclaimed.
   bool isDisposed() => _resource == null;
 
-  // TODO mention this should be static
+  /// See comments in [DroppableStaticData].
   @protected
-  DroppablePerTypeData get perTypeData;
+  DroppableStaticData get staticData;
 }
 
-// TODO wrong, should say "static data", since *finalizer* should be static and not GCed itself
-/// {@macro flutter_rust_bridge.internal}
-class DroppablePerTypeData<T> {
+/// This data SHOULD be held as *static variable*, and only one object
+/// for all instances of the type.
+///
+/// This is because the [_finalizer] should be static.
+class DroppableStaticData<T> {
   // TODO rename type etc
   final void Function(T) _releaseFn;
 
@@ -74,7 +76,7 @@ class DroppablePerTypeData<T> {
   late final _finalizer = CrossPlatformFinalizer(_releaseFnPtr);
 
   /// Constructs the data
-  DroppablePerTypeData({
+  DroppableStaticData({
     required void Function(T) releaseFn,
     required CrossPlatformFinalizerArg releaseFnPtr,
   })  : _releaseFn = releaseFn,
