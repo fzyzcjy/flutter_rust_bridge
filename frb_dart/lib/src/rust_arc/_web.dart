@@ -7,9 +7,14 @@ typedef ArcTypeFinalizer = Finalizer<PlatformPointer>;
 typedef ArcTypeFinalizerArg = void Function(PlatformPointer);
 
 /// {@macro flutter_rust_bridge.internal}
-class RustArcBase {
+class RustArcBase {}
+
+/// {@macro flutter_rust_bridge.internal}
+extension ExtFinalizer on Finalizer<PlatformPointer> {
   /// {@macro flutter_rust_bridge.internal}
-  static void finalizerAttach(RustArcBase object, PlatformPointer ptr, int _,
-          ArcTypeFinalizer finalizer) =>
-      finalizer.attach(object, ptr, detach: object);
+  void attachCrossPlatform(Object value, PlatformPointer finalizationToken,
+          // ignore: unused_element
+          {Object? detach,
+          int? externalSize}) =>
+      attach(value, finalizationToken, detach: detach);
 }
