@@ -8,7 +8,7 @@ pub use crate::generalized_isolate::Channel;
 pub use crate::generalized_isolate::IntoDartExceptPrimitive;
 pub use crate::handler::handler::{FfiCallMode, TaskInfo};
 pub use crate::misc::manual_impl::*;
-pub use crate::misc::rust_arc::{rust_opaque_arc_decr_count, rust_opaque_arc_incr_count};
+pub use crate::misc::rust_arc::{rust_arc_decrement_strong_count, rust_arc_increment_strong_count};
 pub use crate::platform_types::DartAbi;
 pub use crate::platform_types::{MessagePort, WireSyncReturn};
 pub use crate::rust_opaque::dart2rust::wire2api_rust_opaque;
