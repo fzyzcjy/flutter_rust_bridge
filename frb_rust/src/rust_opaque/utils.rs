@@ -52,6 +52,10 @@ impl<T: DartSafe> RustOpaque<T> {
     pub fn try_unwrap(self) -> Result<T, Self> {
         Arc::try_unwrap(self.arc).map_err(RustOpaque::from)
     }
+
+    pub fn into_inner(&self) -> Option<T> {
+        Arc::into_inner(self.arc)
+    }
 }
 
 impl<T: ?Sized + DartSafe> Clone for RustOpaque<T> {
