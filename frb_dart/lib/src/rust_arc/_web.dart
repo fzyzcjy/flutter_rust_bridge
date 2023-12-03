@@ -12,9 +12,12 @@ class RustArcBase {}
 /// {@macro flutter_rust_bridge.internal}
 extension ExtFinalizer on Finalizer<PlatformPointer> {
   /// {@macro flutter_rust_bridge.internal}
-  void attachCrossPlatform(Object value, PlatformPointer finalizationToken,
-          // ignore: unused_element
-          {Object? detach,
-          int? externalSize}) =>
+  void attachCrossPlatform(
+    Object value,
+    PlatformPointer finalizationToken, {
+    Object? detach,
+    // ignore: unused_element
+    int? externalSizeOnNative,
+  }) =>
       attach(value, finalizationToken, detach: detach);
 }

@@ -14,7 +14,11 @@ class RustArcBase implements ffi.Finalizable {}
 /// {@macro flutter_rust_bridge.internal}
 extension ExtFinalizer on ffi.NativeFinalizer {
   /// {@macro flutter_rust_bridge.internal}
-  void attachCrossPlatform(ffi.Finalizable value, ffi.Pointer<ffi.Void> token,
-          {Object? detach, int? externalSize}) =>
-      attach(value, token, detach: detach, externalSize: externalSize);
+  void attachCrossPlatform(
+    ffi.Finalizable value,
+    ffi.Pointer<ffi.Void> token, {
+    Object? detach,
+    int? externalSizeOnNative,
+  }) =>
+      attach(value, token, detach: detach, externalSize: externalSizeOnNative);
 }
