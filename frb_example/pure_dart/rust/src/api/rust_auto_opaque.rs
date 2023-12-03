@@ -1,5 +1,7 @@
-use flutter_rust_bridge::DartSafe;
+use flutter_rust_bridge::{frb, DartSafe};
 
+// TODO auto determine it is opaque or not later
+#[frb(opaque)]
 // Do *NOT* make it Clone or serializable
 pub struct NonCloneSimpleTwinNormal {
     inner: i32,
@@ -177,6 +179,7 @@ impl NonCloneSimpleTwinNormal {
 
 // ================ types with both encodable and opaque fields ===================
 
+#[frb(opaque)]
 pub struct StructWithGoodAndOpaqueFieldTwinNormal {
     pub good: String,
     pub opaque: NonCloneSimpleTwinNormal,
