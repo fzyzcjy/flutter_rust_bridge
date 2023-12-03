@@ -38,8 +38,11 @@ abstract class RustArc extends Droppable {
   }
 
   /// Mimic `std::sync::Arc::into_raw`
-  PlatformPointer intoRaw() {
-    return TODO;
+  PlatformPointer? intoRaw() {
+    // Almost 1:1 implementation to `std::sync::Arc::into_raw` impl.
+    final ptr = _ptr;
+    forget();
+    return ptr;
   }
 
   /// See comments in [RustArcStaticData] for details.

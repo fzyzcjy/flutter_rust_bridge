@@ -52,6 +52,13 @@ abstract class Droppable implements DroppableBase {
     }
   }
 
+  /// Mimic `std::mem::forget`
+  void forget() {
+    if (!isDisposed) {
+      TODO;
+    }
+  }
+
   /// Check whether the resource is disposed.
   bool get isDisposed => _ptr == null;
 
