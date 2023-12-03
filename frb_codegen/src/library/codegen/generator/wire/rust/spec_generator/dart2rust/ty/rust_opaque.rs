@@ -17,13 +17,13 @@ use std::borrow::Cow;
 impl<'a> WireRustGeneratorDart2RustTrait for RustOpaqueWireRustGenerator<'a> {
     fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
         Acc {
-            io: Some(generate_impl_wire2api_body().into()),
+            io: Some(generalized_rust_opaque_generate_impl_wire2api_body().into()),
             ..Default::default()
         }
     }
 
     fn generate_impl_wire2api_jsvalue_body(&self) -> Option<Cow<str>> {
-        Some(generate_impl_wire2api_body().into())
+        Some(generalized_rust_opaque_generate_impl_wire2api_body().into())
     }
 
     fn generate_related_funcs(&self) -> Acc<WireRustOutputCode> {
@@ -35,7 +35,7 @@ impl<'a> WireRustGeneratorDart2RustTrait for RustOpaqueWireRustGenerator<'a> {
     }
 }
 
-fn generate_impl_wire2api_body() -> &'static str {
+pub(super) fn generalized_rust_opaque_generate_impl_wire2api_body() -> &'static str {
     r#"unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }"#
 }
 
