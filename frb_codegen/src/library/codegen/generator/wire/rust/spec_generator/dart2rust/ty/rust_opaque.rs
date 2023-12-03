@@ -15,14 +15,6 @@ use itertools::Itertools;
 use std::borrow::Cow;
 
 impl<'a> WireRustGeneratorDart2RustTrait for RustOpaqueWireRustGenerator<'a> {
-    fn generate_wire2api_class(&self) -> Option<String> {
-        Some(generate_class_from_fields(
-            self.ir.clone(),
-            self.context,
-            &["ptr: *const core::ffi::c_void".to_owned()],
-        ))
-    }
-
     fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
         Acc {
             io: Some(generate_impl_wire2api_body().into()),
