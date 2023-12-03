@@ -1,6 +1,7 @@
 use crate::codegen::ir::pack::DistinctTypeGatherer;
 use crate::codegen::ir::ty::rust_auto_opaque::IrTypeRustAutoOpaque;
 use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
+use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType::RustOpaque;
 use crate::codegen::ir::ty::{IrType, IrTypeModifier};
 use crate::codegen::parser::type_parser::rust_opaque::SimpleParsedTypesParserInfo;
@@ -48,5 +49,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 pub(super) type RustAutoOpaqueParserInfo = SimpleParsedTypesParserInfo<IrTypeRustAutoOpaque>;
 
 fn parse_ir_type_modifier(ty: &IrType) -> (IrTypeModifier, IrType) {
-    todo!()
+    if let IrType::Unencodable(IrTypeUnencodable { string, .. }) = ty {
+        let ast: syn::Type = syn::parse_str(string).unwrap();
+        (TODO, TODO)
+    }
+
+    (IrTypeModifier::Owned, ty.clone())
 }
