@@ -37,27 +37,14 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         pat_type: &PatType,
     ) -> anyhow::Result<FunctionPartialInfo> {
         let ty = pat_type.ty.as_ref();
-        match &ty {
-            Type::Path(TypePath { path, .. }) => {
-                if let Some(ans) =
-                    self.parse_fn_arg_type_stream_sink(path, argument_index, context)?
-                {
-                    Ok(ans)
-                } else {
-                    partial_info_for_normal_type(
-                        self.type_parser.parse_type(ty, context)?,
-                        pat_type,
-                    )
-                }
+
+        if let Type::Path(TypePath { path, .. }) = &ty {
+            if let Some(ans) = self.parse_fn_arg_type_stream_sink(path, argument_index, context)? {
+                return Ok(ans);
             }
-            Type::Array(_) => {
-                partial_info_for_normal_type(self.type_parser.parse_type(ty, context)?, pat_type)
-            }
-            _ => bail!(
-                "Failed to parse function argument type `{}`",
-                type_to_string(ty)
-            ),
         }
+
+        partial_info_for_normal_type(self.type_parser.parse_type(ty, context)?, pat_type)
     }
 
     fn parse_fn_arg_receiver(
