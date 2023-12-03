@@ -22,6 +22,7 @@ import 'package:meta/meta.dart';
 // Note: Use `extends`, instead of making the `_Droppable` a field,
 // in order to ensure the `ffi.Finalizable` works well.
 abstract class RustArc extends Droppable {
+  // TODO this should not be exposed at all...
   /// The pointer that `std::sync::Arc::into_raw` gives.
   ///
   /// In other words, it is very similar to `std::sync::Arc.ptr`,
