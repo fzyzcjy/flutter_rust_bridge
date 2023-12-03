@@ -30,7 +30,7 @@ abstract class RustArc extends Droppable {
   // We do this no-op override merely to provide documentations.
   @override
   @protected
-  PlatformPointer? get resource => super.resource;
+  PlatformPointer? get internalResource => super.internalResource;
 
   /// Mimic `std::sync::Arc::from_raw`
   RustArc.fromRaw({required int ptr, required super.externalSizeOnNative})

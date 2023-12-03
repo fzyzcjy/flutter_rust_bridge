@@ -3,14 +3,14 @@ import 'package:flutter_rust_bridge/src/droppable/_io.dart'
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:meta/meta.dart';
 
-/// Encapsulates the [resource] release logic.
+/// Encapsulates the [internalResource] release logic.
 ///
 /// In Rust, it is simple to release some resource: Just implement `Drop` trait.
 /// However, there are two possible chances to release resource in Dart:
 /// 1. When the object is garbage collected, the Dart finalizer will call a callback you choose.
 /// 2. When the user explicitly calls `dispose()` function, you can do releasing job.
 ///
-/// But we want to release the [resource] *once and exactly once*.
+/// But we want to release the [internalResource] *once and exactly once*.
 /// That's what this class does.
 ///
 /// You just implement the `releaseFn` (and `releaseFnPtr`), and this class
@@ -18,16 +18,16 @@ import 'package:meta/meta.dart';
 abstract class Droppable implements DroppableBase {
   /// {@macro flutter_rust_bridge.internal}
   @protected
-  PlatformPointer? get resource => _resource;
-  PlatformPointer? _resource;
+  PlatformPointer? get internalResource => _internalResource;
+  PlatformPointer? _internalResource;
 
   /// {@macro flutter_rust_bridge.internal}
-  Droppable(this._resource, {required int externalSizeOnNative}) {
-    if (_resource != null) {
+  Droppable(this._internalResource, {required int externalSizeOnNative}) {
+    if (_internalResource != null) {
       // Note: The finalizer attaches to the `_ptr` at *current* time,
       // thus even if we assign `RustArc._ptr = something-new`, this finalizer
       // attachment will not be changed.
-      staticData._finalizer.attachCrossPlatform(this, _resource!,
+      staticData._finalizer.attachCrossPlatform(this, _internalResource!,
           detach: this, externalSizeOnNative: externalSizeOnNative);
     }
   }
@@ -39,8 +39,8 @@ abstract class Droppable implements DroppableBase {
       // If the contrary, when something bad happens in between,
       // the data will be released at least twice - one by calling releaseFn,
       // another by future call to `dispose` or the auto invocation of `finalizer`.
-      final resource = _resource!;
-      _resource = null;
+      final resource = _internalResource!;
+      _internalResource = null;
       assert(isDisposed);
 
       // Similar to above, `detach` finalizer before calling `releaseFn`
@@ -52,7 +52,7 @@ abstract class Droppable implements DroppableBase {
   }
 
   /// Check whether the resource is disposed.
-  bool get isDisposed => _resource == null;
+  bool get isDisposed => _internalResource == null;
 
   /// See comments in [DroppableStaticData] for requirements.
   @protected
