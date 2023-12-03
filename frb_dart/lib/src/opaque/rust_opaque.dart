@@ -2,7 +2,6 @@ import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:flutter_rust_bridge/src/rust_arc/_common.dart';
 import 'package:meta/meta.dart';
 
-// TODO this should be Finalizable as well?
 // TODO comments
 /// An opaque pointer to a native Rust type.
 /// Recipients of this type should call [dispose] at least once during runtime.
