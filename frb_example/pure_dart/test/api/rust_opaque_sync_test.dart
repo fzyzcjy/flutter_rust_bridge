@@ -1,6 +1,6 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync"]}
 
-import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:flutter_rust_bridge/src/droppable/droppable.dart';
 import 'package:frb_example_pure_dart/src/rust/api/rust_opaque.dart';
 import 'package:frb_example_pure_dart/src/rust/api/rust_opaque_sync.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
@@ -50,7 +50,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     data.dispose();
   });
 
-  test('call after drop', () {
+  test('call after drop', () async {
     var data = syncCreateSyncOpaqueTwinNormal();
     expect(
         syncRunOpaqueTwinNormal(opaque: data),
@@ -62,8 +62,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
     data.dispose();
-    expect(() => syncRunOpaqueTwinNormal(opaque: data),
-        throwsA(isA<PanicException>()));
+    await expectLater(() => syncRunOpaqueTwinNormal(opaque: data),
+        throwsA(isA<DroppableDisposedException>()));
   });
 
   test('check generator', () {
