@@ -7580,8 +7580,8 @@ impl Default for wire_numbers {
 impl NewWithNullPtr for wire_opaque_nested_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
-            first: Default::default(),
-            second: Default::default(),
+            first: core::ptr::null_mut(),
+            second: core::ptr::null_mut(),
         }
     }
 }
@@ -7593,8 +7593,8 @@ impl Default for wire_opaque_nested_twin_normal {
 impl NewWithNullPtr for wire_opaque_nested_twin_rust_async {
     fn new_with_null_ptr() -> Self {
         Self {
-            first: Default::default(),
-            second: Default::default(),
+            first: core::ptr::null_mut(),
+            second: core::ptr::null_mut(),
         }
     }
 }
@@ -7606,8 +7606,8 @@ impl Default for wire_opaque_nested_twin_rust_async {
 impl NewWithNullPtr for wire_opaque_nested_twin_sync {
     fn new_with_null_ptr() -> Self {
         Self {
-            first: Default::default(),
-            second: Default::default(),
+            first: core::ptr::null_mut(),
+            second: core::ptr::null_mut(),
         }
     }
 }
@@ -13725,10 +13725,7 @@ pub extern "C" fn new_list_DartOpaque(len: i32) -> *mut wire_list_DartOpaque {
 #[no_mangle]
 pub extern "C" fn new_list_RustOpaque_hide_data(len: i32) -> *mut wire_list_RustOpaque_hide_data {
     let wrap = wire_list_RustOpaque_hide_data {
-        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
-            <*const std::ffi::c_void>::new_with_null_ptr(),
-            len,
-        ),
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
         len,
     };
     flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
