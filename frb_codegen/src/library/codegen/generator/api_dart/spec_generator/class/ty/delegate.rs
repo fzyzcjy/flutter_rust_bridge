@@ -59,5 +59,6 @@ fn generate_array(
             "
         ),
         needs_freezed: false,
+        ..Default::default()
     })
 }
