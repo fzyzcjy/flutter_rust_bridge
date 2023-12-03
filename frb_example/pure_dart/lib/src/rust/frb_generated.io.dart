@@ -2613,11 +2613,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     _api_fill_to_wire_DartOpaque(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_RustOpaque_hide_data(
-      HideData apiObj, ffi.Pointer<PlatformPointer> wireObj) {
-    _api_fill_to_wire_RustOpaque_hide_data(apiObj, wireObj.ref);
-  }
-
   void _api_fill_to_wire_box_autoadd_a_twin_normal(
       ATwinNormal apiObj, ffi.Pointer<wire_a_twin_normal> wireObj) {
     _api_fill_to_wire_a_twin_normal(apiObj, wireObj.ref);

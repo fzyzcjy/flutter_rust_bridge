@@ -5,8 +5,9 @@ use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::dart2rust::ty::primitive::dart_native_type_of_primitive;
 use crate::codegen::generator::wire::dart::spec_generator::dart2rust::ty::WireDartGeneratorDart2RustTrait;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGenerator;
+use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
 use crate::codegen::ir::ty::IrType::StructRef;
-use crate::codegen::ir::ty::IrTypeTrait;
+use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use crate::library::codegen::generator::wire::rust::spec_generator::dart2rust::ty::WireRustGeneratorDart2RustTrait;
 
 impl<'a> WireDartGeneratorDart2RustTrait for BoxedWireDartGenerator<'a> {
@@ -42,7 +43,10 @@ impl<'a> WireDartGeneratorDart2RustTrait for BoxedWireDartGenerator<'a> {
 
         if self.ir.inner.is_array() {
             Some(format!("wireObj = api2wire_{inner_safe_ident}(apiObj);"))
-        } else if !self.ir.inner.is_primitive() && !is_empty_struct(self) {
+        } else if !self.ir.inner.is_primitive()
+            && !matches!(*self.ir.inner, IrType::RustOpaque(_))
+            && !is_empty_struct(self)
+        {
             Some(format!(
                 "_api_fill_to_wire_{inner_safe_ident}(apiObj, wireObj.ref);"
             ))
