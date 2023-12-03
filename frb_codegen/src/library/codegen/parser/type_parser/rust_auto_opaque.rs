@@ -9,6 +9,7 @@ use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use std::collections::HashMap;
+use IrType::RustAutoOpaque;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn transform_type_rust_auto_opaque(
@@ -30,14 +31,16 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         };
 
         if (subtree_types_except_rust_opaque.iter()).any(|x| matches!(x, IrType::Unencodable(_))) {
-            return Ok(self.parse_rust_auto_opaque(ty_raw));
+            return Ok(self.parse_rust_auto_opaque(&ty_raw));
         }
 
         Ok(ty_raw)
     }
 
-    fn parse_rust_auto_opaque(&self, ty_raw: IrType) -> IrType {
-        IrType::RustAutoOpaque(IrTypeRustAutoOpaque::new(TODO, ty_raw))
+    fn parse_rust_auto_opaque(&self, ty: &IrType) -> IrType {
+        let new_ir =
+            IrTypeRustAutoOpaque::new(self.context.initiated_namespace.clone(), ty.clone());
+        RustAutoOpaque((self.inner.rust_auto_opaque_parser_info).get_or_insert(ty, new_ir))
     }
 }
 
