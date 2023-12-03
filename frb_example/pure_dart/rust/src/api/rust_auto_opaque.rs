@@ -125,6 +125,16 @@ impl NonCloneSimpleTwinNormal {
 // ==================================== instance method =======================================
 
 impl NonCloneSimpleTwinNormal {
+    /// unnamed constructor
+    pub fn new() -> Self {
+        Self { inner: 42 }
+    }
+
+    /// named constructor
+    pub fn new_custom_name() -> Self {
+        Self { inner: 42 }
+    }
+
     pub fn instance_method_arg_own(self) {
         assert_eq!(self.inner, 42);
     }
@@ -138,11 +148,11 @@ impl NonCloneSimpleTwinNormal {
         self.inner += 1;
     }
 
-    pub fn instance_method_return_own() -> Self {
+    pub fn instance_method_return_own(&self) -> Self {
         Self { inner: 42 }
     }
 }
 
 // TODO complex type signature
-// TODO opaque *inside* other objects, especially ref/mutref ---- a bit hard, do it later
+// TODO opaque *inside* other objects, especially ref/mutref ---- as long as a part is unencodable, then make whole obj opaque
 // TODO return borrow ---- hard?
