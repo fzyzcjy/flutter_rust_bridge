@@ -23,10 +23,6 @@ abstract class RustOpaque {
           staticData: staticData,
         );
 
-  // TODO change this semantics?
-  /// Increments inner reference counter and returns pointer to the underlying
-  /// Rust object.
-  ///
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @internal
   PlatformPointer api2wire() {

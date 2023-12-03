@@ -9,7 +9,7 @@ impl<'a> WireDartGeneratorDart2RustTrait for RustOpaqueWireDartGenerator<'a> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         Acc::new_common(Some(format!(
             "// ignore: invalid_use_of_internal_member
-            return raw.shareOrMove();",
+            return raw.api2wire();",
         )))
     }
 
