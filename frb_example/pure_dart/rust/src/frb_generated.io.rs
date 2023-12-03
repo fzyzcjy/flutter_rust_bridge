@@ -13725,7 +13725,7 @@ pub extern "C" fn new_list_DartOpaque(len: i32) -> *mut wire_list_DartOpaque {
 #[no_mangle]
 pub extern "C" fn new_list_RustOpaque_hide_data(len: i32) -> *mut wire_list_RustOpaque_hide_data {
     let wrap = wire_list_RustOpaque_hide_data {
-        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(Default::default(), len),
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(core::ptr::null_mut(), len),
         len,
     };
     flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
