@@ -19,8 +19,9 @@ pub(super) fn transform_fn_info(info: FunctionPartialInfo) -> FunctionPartialInf
 }
 
 fn transform_fn_arg_or_output_type(ty: IrType) -> IrType {
-    if children_type_has_unencodable && !children_type_has_rust_opaque {
-        return IrType::RustAutoOpaque(IrTypeRustAutoOpaque::new(TODO, ty));
-    }
-    ty
+    todo!()
+    // if children_type_has_unencodable && !children_type_has_rust_opaque {
+    //     return IrType::RustAutoOpaque(IrTypeRustAutoOpaque::new(TODO, ty));
+    // }
+    // ty
 }
