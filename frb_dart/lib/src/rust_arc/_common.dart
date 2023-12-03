@@ -59,6 +59,7 @@ abstract class _Droppable<T extends Object> implements DroppableBase {
   _DroppablePerTypeData get perTypeData;
 }
 
+// TODO wrong, should say "static data", since *finalizer* should be static and not GCed itself
 class _DroppablePerTypeData<T> {
   // TODO rename type etc
   final void Function(T) _releaseFn;
