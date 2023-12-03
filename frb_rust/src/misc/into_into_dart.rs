@@ -1,6 +1,6 @@
 use crate::dart_opaque::DartOpaque;
 use crate::generalized_isolate::{IntoDart, ZeroCopyBuffer};
-use crate::misc::rust_opaque::{DartSafe, RustOpaque};
+use crate::rust_opaque::definition::{DartSafe, RustOpaque};
 
 /// Basically the Into trait.
 /// We need this separate trait because we need to implement it for Vec<T> etc.

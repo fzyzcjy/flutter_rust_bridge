@@ -1,4 +1,4 @@
-mod dart2rust;
-mod definition;
-mod rust2dart;
-mod utils;
+pub(crate) mod dart2rust;
+pub(crate) mod definition;
+pub(crate) mod rust2dart;
+pub(crate) mod utils;
