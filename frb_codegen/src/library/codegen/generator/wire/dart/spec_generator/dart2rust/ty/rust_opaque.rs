@@ -15,7 +15,7 @@ impl<'a> WireDartGeneratorDart2RustTrait for RustOpaqueWireDartGenerator<'a> {
 
     fn dart_wire_type(&self, target: Target) -> String {
         match target {
-            Target::Io => "ffi.Pointer<ffi.Void>",
+            Target::Io => "PlatformPointer",
             Target::Wasm => "Object",
         }
         .into()

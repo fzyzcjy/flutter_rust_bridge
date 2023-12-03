@@ -272,7 +272,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<ffi.Pointer<ffi.Void>> api2wire_box_autoadd_RustOpaque_hide_data(
+  ffi.Pointer<PlatformPointer> api2wire_box_autoadd_RustOpaque_hide_data(
       HideData raw) {
     final ptr = wire.new_box_autoadd_RustOpaque_hide_data();
     _api_fill_to_wire_RustOpaque_hide_data(raw, ptr.ref);
@@ -2111,8 +2111,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<ffi.Pointer<ffi.Void>>
-      api2wire_opt_box_autoadd_RustOpaque_hide_data(HideData? raw) {
+  ffi.Pointer<PlatformPointer> api2wire_opt_box_autoadd_RustOpaque_hide_data(
+      HideData? raw) {
     return raw == null
         ? ffi.nullptr
         : api2wire_box_autoadd_RustOpaque_hide_data(raw);
@@ -2614,7 +2614,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   void _api_fill_to_wire_box_autoadd_RustOpaque_hide_data(
-      HideData apiObj, ffi.Pointer<ffi.Pointer<ffi.Void>> wireObj) {
+      HideData apiObj, ffi.Pointer<PlatformPointer> wireObj) {
     _api_fill_to_wire_RustOpaque_hide_data(apiObj, wireObj.ref);
   }
 
