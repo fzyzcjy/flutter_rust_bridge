@@ -17,24 +17,6 @@ abstract class RustOpaque extends RustOpaqueBase {
   @internal
   RustOpaque.fromWire(dynamic wire) : this._raw(wire[0], wire[1]);
 
-  /// Call Rust destructors on the backing memory of this pointer.
-  ///
-  /// This function should be run at least once during the lifetime of the
-  /// program, and can be run many times.
-  ///
-  /// When passed into a Rust function, Rust enacts *shared ownership*,
-  /// if this pointer is shared with Rust when [dispose] is called,
-  /// ownership is fully transferred to Rust else this pointer is cleared.
-  void dispose() {
-    if (!isDisposed()) {
-      var ptr = _ptr;
-      _ptr = PlatformPointerUtil.nullPtr();
-
-      staticFinalizer.detach(this);
-      dropFn(ptr);
-    }
-  }
-
   /// Increments inner reference counter and returns pointer to the underlying
   /// Rust object.
   ///

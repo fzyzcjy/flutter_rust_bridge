@@ -28,10 +28,29 @@ abstract class RustArc extends RustArcBase {
     }
   }
 
+  // TODO comments
   /// Checks whether [dispose] has been called at any point during the lifetime
   /// of this pointer. This does not guarantee that the backing memory has
   /// actually been reclaimed.
   bool isDisposed() => PlatformPointerUtil.isNullPtr(_ptr);
+
+  /// Call Rust destructors on the backing memory of this pointer.
+  ///
+  /// This function should be run at least once during the lifetime of the
+  /// program, and can be run many times.
+  ///
+  /// When passed into a Rust function, Rust enacts *shared ownership*,
+  /// if this pointer is shared with Rust when [dispose] is called,
+  /// ownership is fully transferred to Rust else this pointer is cleared.
+  void dispose() {
+    if (!isDisposed()) {
+      var ptr = _ptr;
+      _ptr = PlatformPointerUtil.nullPtr();
+
+      staticFinalizer.detach(this);
+      dropFn(ptr);
+    }
+  }
 
   /// See comments in [RustArcPerTypeData] for details.
   @protected
