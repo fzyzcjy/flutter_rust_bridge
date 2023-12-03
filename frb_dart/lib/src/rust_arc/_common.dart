@@ -16,6 +16,8 @@ abstract class RustArc extends RustArcBase {
   ///
   /// In other words, it is very similar to `std::sync::Arc.ptr`, but only
   /// with a small constant offset.
+  ///
+  /// It can be a null pointer.
   PlatformPointer _ptr;
 
   /// Mimic `std::sync::Arc::from_raw`
