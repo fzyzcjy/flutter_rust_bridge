@@ -39,12 +39,15 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 
     fn parse_rust_auto_opaque(&mut self, ty: &IrType) -> IrType {
-        let (ownership_mode, inner) = parse_ir_type_modifier(ty);
+        let (ownership_mode, inner) = match ty {
+            IrType::Ownership(o) => (o.mode.clone(), o.inner.clone()),
+            _ => (IrTypeOwnershipMode::Owned, Box::new(ty.clone())),
+        };
         let new_ir = IrTypeRustAutoOpaque {
             ownership_mode,
             inner: IrTypeRustOpaque {
                 namespace: self.context.initiated_namespace.clone(),
-                inner: Box::new(inner),
+                inner,
             },
         };
 
@@ -53,27 +56,3 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 }
 
 pub(super) type RustAutoOpaqueParserInfo = SimpleParsedTypesParserInfo<IrTypeRustAutoOpaque>;
-
-fn parse_ir_type_modifier(ty: &IrType) -> (IrTypeOwnershipMode, IrType) {
-    todo!()
-    // TDOO refactor, no need to parse like this
-    //     if let IrType::Unencodable(IrTypeUnencodable { string, .. }) = ty {
-    //         let ast: Type = syn::parse_str(string).unwrap();
-    //         if let Type::Reference(r) = &ast {
-    //             let modifier = if r.mutability.is_some() {
-    //                 IrTypeOwnershipMode::RefMut
-    //             } else {
-    //                 IrTypeOwnershipMode::Ref
-    //             };
-    //
-    //             let ty_without_modifier = IrType::Unencodable(IrTypeUnencodable {
-    //                 string: r.elem.to_token_stream().to_string(),
-    //                 segments: vec![],
-    //             });
-    //
-    //             return (modifier, ty_without_modifier);
-    //         }
-    //     }
-    //
-    //     (IrTypeOwnershipMode::Owned, ty.clone())
-}
