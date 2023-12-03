@@ -29,7 +29,7 @@ pub fn is_js_value(ty: &IrType) -> bool {
         IrType::Delegate(inner) => is_js_value(&inner.get_delegate()),
         IrType::Optional(inner) => is_js_value(&inner.inner),
         IrType::Primitive(_) | IrType::PrimitiveList(_) => false,
-        IrType::Dynamic(_) | IrType::Unencodable(_) => unreachable!(),
+        IrType::Dynamic(_) | IrType::Ownership(_) | IrType::Unencodable(_) => unreachable!(),
     }
 }
 

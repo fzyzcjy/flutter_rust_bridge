@@ -8,6 +8,7 @@ use crate::codegen::ir::ty::enumeration::IrTypeEnumRef;
 use crate::codegen::ir::ty::general_list::IrTypeGeneralList;
 use crate::codegen::ir::ty::optional::IrTypeOptional;
 use crate::codegen::ir::ty::optional_list::IrTypeOptionalList;
+use crate::codegen::ir::ty::ownership::IrTypeOwnership;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
 use crate::codegen::ir::ty::record::IrTypeRecord;
@@ -32,6 +33,7 @@ pub(crate) enum ApiDartGenerator<'a> {
     GeneralList(GeneralListApiDartGenerator<'a>),
     Optional(OptionalApiDartGenerator<'a>),
     OptionalList(OptionalListApiDartGenerator<'a>),
+    Ownership(OwnershipApiDartGenerator<'a>),
     Primitive(PrimitiveApiDartGenerator<'a>),
     PrimitiveList(PrimitiveListApiDartGenerator<'a>),
     Record(RecordApiDartGenerator<'a>),
@@ -52,6 +54,7 @@ codegen_generator_structs!(
     GeneralList,
     Optional,
     OptionalList,
+    Ownership,
     Primitive,
     PrimitiveList,
     Record,

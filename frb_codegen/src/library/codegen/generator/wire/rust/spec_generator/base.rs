@@ -12,6 +12,7 @@ use crate::codegen::ir::ty::enumeration::IrTypeEnumRef;
 use crate::codegen::ir::ty::general_list::IrTypeGeneralList;
 use crate::codegen::ir::ty::optional::IrTypeOptional;
 use crate::codegen::ir::ty::optional_list::IrTypeOptionalList;
+use crate::codegen::ir::ty::ownership::IrTypeOwnership;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
 use crate::codegen::ir::ty::record::IrTypeRecord;
@@ -38,6 +39,7 @@ pub(crate) enum WireRustGenerator<'a> {
     GeneralList(GeneralListWireRustGenerator<'a>),
     Optional(OptionalWireRustGenerator<'a>),
     OptionalList(OptionalListWireRustGenerator<'a>),
+    Ownership(OwnershipWireRustGenerator<'a>),
     Primitive(PrimitiveWireRustGenerator<'a>),
     PrimitiveList(PrimitiveListWireRustGenerator<'a>),
     Record(RecordWireRustGenerator<'a>),
@@ -58,6 +60,7 @@ codegen_generator_structs!(
     GeneralList,
     Optional,
     OptionalList,
+    Ownership,
     Primitive,
     PrimitiveList,
     Record,
