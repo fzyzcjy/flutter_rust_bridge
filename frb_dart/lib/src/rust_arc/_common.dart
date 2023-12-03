@@ -19,8 +19,9 @@ class RustArc<T> extends Droppable {
     required int ptr,
     required super.externalSizeOnNative,
     required RustArcStaticData<T> staticData,
-  })  : _staticData = staticData,
-        super(ptr: ptrOrNullFromInt(ptr));
+  })  : assert(ptr != 0),
+        _staticData = staticData,
+        super(ptr: PlatformPointerUtil.ptrFromInt(ptr));
 
   /// Mimic `std::sync::Arc::clone`
   RustArc<T> clone() {

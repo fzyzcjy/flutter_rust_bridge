@@ -9,9 +9,3 @@ abstract class BaseExternalLibrary {
 
   const BaseExternalLibrary({required this.debugInfo});
 }
-
-/// {@macro flutter_rust_bridge.internal}
-PlatformPointer? ptrOrNullFromInt(int ptr) {
-  final p = PlatformPointerUtil.ptrFromInt(ptr);
-  return PlatformPointerUtil.isNullPtr(p) ? null : p;
-}
