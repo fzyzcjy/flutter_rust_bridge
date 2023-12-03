@@ -6,6 +6,7 @@ pub(crate) mod delegate;
 pub(crate) mod enumeration;
 pub(crate) mod enumeration_complex;
 pub(crate) mod enumeration_simple;
+pub(crate) mod rust_auto_opaque;
 pub(crate) mod rust_opaque;
 pub(crate) mod structure;
 mod structure_freezed;

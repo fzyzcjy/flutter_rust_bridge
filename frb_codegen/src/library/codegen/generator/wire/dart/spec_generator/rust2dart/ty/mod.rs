@@ -11,10 +11,10 @@ mod optional_list;
 mod primitive;
 mod primitive_list;
 mod record;
+mod rust_auto_opaque;
 mod rust_opaque;
 mod structure;
 mod unencodable;
-
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
