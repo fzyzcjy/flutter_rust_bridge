@@ -6,47 +6,18 @@ import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:flutter_rust_bridge/src/utils/port_generator.dart';
 import 'package:meta/meta.dart';
 
-/// The type of [RustOpaque] drop function
-typedef OpaqueDropFnType = void Function(PlatformPointer);
-
-/// The type of [RustOpaque] share function
-typedef OpaqueShareFnType = PlatformPointer Function(PlatformPointer);
-
 /// An opaque pointer to a native C or Rust type.
 /// Recipients of this type should call [dispose] at least once during runtime.
 /// If passed to a native function after being [dispose]d, an exception will be thrown.
 abstract class RustOpaque extends RustOpaqueBase {
-  /// Pointer to this opaque Rust type.
-  PlatformPointer _ptr;
-
-  /// A native finalizer rust opaque type.
-  /// Is static for each frb api class instance.
-  OpaqueTypeFinalizer get staticFinalizer;
-
   /// Displays the need to release ownership when sending to rust.
   bool _move = false;
 
   set move(bool move) => _move = move;
 
-  /// Rust type specific drop function.
-  ///
-  /// This function should never be called manually.
-  OpaqueDropFnType get dropFn;
-
-  /// Rust type specific share function.
-  ///
-  /// This function should never be called manually.
-  OpaqueShareFnType get shareFn;
-
   /// This constructor should never be called manually.
   @internal
   RustOpaque.fromWire(dynamic wire) : this._raw(wire[0], wire[1]);
-
-  RustOpaque._raw(int ptr, int size) : _ptr = RustOpaqueBase.initPtr(ptr) {
-    if (ptr != 0) {
-      RustOpaqueBase.finalizerAttach(this, _ptr, size, staticFinalizer);
-    }
-  }
 
   /// Call Rust destructors on the backing memory of this pointer.
   ///
