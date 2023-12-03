@@ -27,8 +27,8 @@ pub struct IrStruct {
 }
 
 impl IrTypeStructRef {
-    pub fn get<'a>(&self, f: &'a IrPack) -> &'a IrStruct {
-        &f.struct_pool[&self.ident]
+    pub fn get<'a>(&self, ir_context: &'a impl IrContext) -> &'a IrStruct {
+        &ir_context.struct_pool()[&self.ident]
     }
 }
 

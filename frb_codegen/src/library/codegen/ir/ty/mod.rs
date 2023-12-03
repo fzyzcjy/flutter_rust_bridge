@@ -15,7 +15,7 @@ pub(crate) mod structure;
 pub(crate) mod unencodable;
 
 use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::pack::IrPack;
+use crate::codegen::ir::pack::{IrEnumPool, IrPack, IrStructPool};
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use enum_dispatch::enum_dispatch;
@@ -145,6 +145,18 @@ impl Serialize for IrType {
     }
 }
 
-pub(crate) trait IrContext {}
+pub(crate) trait IrContext {
+    fn struct_pool(&self) -> &IrStructPool;
 
-impl IrContext for IrPack {}
+    fn enum_pool(&self) -> &IrEnumPool;
+}
+
+impl IrContext for IrPack {
+    fn struct_pool(&self) -> &IrStructPool {
+        &self.struct_pool
+    }
+
+    fn enum_pool(&self) -> &IrEnumPool {
+        &self.enum_pool
+    }
+}

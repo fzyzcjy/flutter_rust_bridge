@@ -46,8 +46,8 @@ pub enum IrVariantKind {
 
 impl IrTypeEnumRef {
     #[inline]
-    pub fn get<'a>(&self, file: &'a IrPack) -> &'a IrEnum {
-        &file.enum_pool[&self.ident]
+    pub fn get<'a>(&self, file: &'a impl IrContext) -> &'a IrEnum {
+        &file.enum_pool()[&self.ident]
     }
 }
 
