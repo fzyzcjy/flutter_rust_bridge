@@ -12,10 +12,7 @@ use std::collections::HashMap;
 use IrType::RustAutoOpaque;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
-    pub(crate) fn transform_type_rust_auto_opaque(
-        &mut self,
-        ty_raw: IrType,
-    ) -> anyhow::Result<IrType> {
+    pub(crate) fn transform_type_rust_auto_opaque(&mut self, ty_raw: &IrType) -> IrType {
         let subtree_types_except_rust_opaque = {
             let mut gatherer = DistinctTypeGatherer::new();
             ty_raw.visit_types(
@@ -31,10 +28,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         };
 
         if (subtree_types_except_rust_opaque.iter()).any(|x| matches!(x, IrType::Unencodable(_))) {
-            return Ok(self.parse_rust_auto_opaque(&ty_raw));
+            return self.parse_rust_auto_opaque(&ty_raw);
         }
 
-        Ok(ty_raw)
+        ty_raw.clone()
     }
 
     fn parse_rust_auto_opaque(&self, ty: &IrType) -> IrType {

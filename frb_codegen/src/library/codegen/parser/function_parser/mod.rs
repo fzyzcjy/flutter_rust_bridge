@@ -73,7 +73,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             info = info.merge(self.parse_fn_arg(i, sig_input, &owner, &context)?)?;
         }
         info = info.merge(self.parse_fn_output(sig, &context)?)?;
-        info = self.transform_fn_info(info);
+        info = self.transform_fn_info(info, &context);
 
         let mode = compute_func_mode(attributes, &info);
 

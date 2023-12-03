@@ -75,6 +75,18 @@ impl<'a> TypeParser<'a> {
         }
         .parse_type(ty)
     }
+
+    pub(crate) fn transform_type_rust_auto_opaque(
+        &mut self,
+        ty: &IrType,
+        context: &TypeParserParsingContext,
+    ) -> IrType {
+        TypeParserWithContext {
+            inner: self,
+            context,
+        }
+        .transform_type_rust_auto_opaque(ty)
+    }
 }
 
 pub(crate) struct TypeParserWithContext<'a, 'b, 'c> {
