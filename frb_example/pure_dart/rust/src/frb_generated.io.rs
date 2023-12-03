@@ -13,41 +13,6 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: impl_wire2api
 
-impl Wire2Api<flutter_rust_bridge::RustOpaque<NonCloneSimpleTwinNormal>>
-    for *const std::ffi::c_void
-{
-    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<NonCloneSimpleTwinNormal> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
-impl Wire2Api<flutter_rust_bridge::RustOpaque<StructWithGoodAndOpaqueFieldTwinNormal>>
-    for *const std::ffi::c_void
-{
-    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<StructWithGoodAndOpaqueFieldTwinNormal> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
-impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn Fn(String) -> String>>>
-    for *const std::ffi::c_void
-{
-    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn Fn(String) -> String>> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
-impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn HelloTraitTwinNormal>>>
-    for *const std::ffi::c_void
-{
-    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn HelloTraitTwinNormal>> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
-impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn MyTraitTwinNormal + Send + Sync>>>
-    for *const std::ffi::c_void
-{
-    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn MyTraitTwinNormal + Send + Sync>> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
 impl Wire2Api<chrono::Duration> for i64 {
     fn wire2api(self) -> chrono::Duration {
         chrono::Duration::microseconds(self)

@@ -3254,41 +3254,6 @@ impl Wire2Api<crate::api::pseudo_manual::attribute_twin_sync::UserIdTwinSync>
         }
     }
 }
-impl Wire2Api<flutter_rust_bridge::RustOpaque<NonCloneSimpleTwinNormal>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<NonCloneSimpleTwinNormal> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
-impl Wire2Api<flutter_rust_bridge::RustOpaque<StructWithGoodAndOpaqueFieldTwinNormal>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<StructWithGoodAndOpaqueFieldTwinNormal> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
-impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn Fn(String) -> String>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn Fn(String) -> String>> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
-impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn HelloTraitTwinNormal>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn HelloTraitTwinNormal>> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
-impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn MyTraitTwinNormal + Send + Sync>>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<Box<dyn MyTraitTwinNormal + Send + Sync>> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
 impl Wire2Api<chrono::Duration> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn wire2api(self) -> chrono::Duration {
         Wire2Api::<i64>::wire2api(self).wire2api()
