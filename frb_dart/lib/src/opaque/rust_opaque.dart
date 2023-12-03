@@ -6,7 +6,7 @@ import 'package:meta/meta.dart';
 /// An opaque pointer to a native Rust type.
 /// Recipients of this type should call [dispose] at least once during runtime.
 /// If passed to a native function after being [dispose]d, an exception will be thrown.
-abstract class RustOpaque extends RustOpaqueBase {
+abstract class RustOpaque {
   /// Displays the need to release ownership when sending to rust.
   bool _move = false;
 
