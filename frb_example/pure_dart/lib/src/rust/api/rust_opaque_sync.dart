@@ -29,6 +29,7 @@ String syncRunOpaqueTwinNormal(
 FrbOpaqueSyncReturn frbSyncGeneratorTestTwinNormal({dynamic hint}) =>
     RustLib.instance.api.frbSyncGeneratorTestTwinNormal(hint: hint);
 
+// Rust type: flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::FrbOpaqueSyncReturn>
 @sealed
 class FrbOpaqueSyncReturn extends RustOpaque {
   FrbOpaqueSyncReturn.fromWire(dynamic wire)

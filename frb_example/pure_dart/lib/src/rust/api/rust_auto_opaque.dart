@@ -103,6 +103,7 @@ Future<StructWithGoodAndOpaqueFieldTwinNormal>
         RustLib.instance.api
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwn(hint: hint);
 
+// Rust type: & Box < dyn HelloTraitTwinNormal >
 @sealed
 class BoxHelloTraitTwinNormal extends RustAutoOpaque {
   BoxHelloTraitTwinNormal.fromWire(dynamic wire)
@@ -118,6 +119,7 @@ class BoxHelloTraitTwinNormal extends RustAutoOpaque {
   );
 }
 
+// Rust type: & NonCloneSimpleTwinNormal
 @sealed
 class NonCloneSimpleTwinNormal extends RustAutoOpaque {
   NonCloneSimpleTwinNormal.fromWire(dynamic wire)
@@ -133,6 +135,7 @@ class NonCloneSimpleTwinNormal extends RustAutoOpaque {
   );
 }
 
+// Rust type: & StructWithGoodAndOpaqueFieldTwinNormal
 @sealed
 class StructWithGoodAndOpaqueFieldTwinNormal extends RustAutoOpaque {
   StructWithGoodAndOpaqueFieldTwinNormal.fromWire(dynamic wire)
@@ -148,6 +151,7 @@ class StructWithGoodAndOpaqueFieldTwinNormal extends RustAutoOpaque {
   );
 }
 
+// Rust type: Box<dyn Fn (String) -> String>
 @sealed
 class BoxFnStringString extends RustAutoOpaque {
   BoxFnStringString.fromWire(dynamic wire) : super.fromWire(wire, _kStaticData);
@@ -162,6 +166,7 @@ class BoxFnStringString extends RustAutoOpaque {
   );
 }
 
+// Rust type: Box<dyn HelloTraitTwinNormal>
 @sealed
 class BoxHelloTraitTwinNormal extends RustAutoOpaque {
   BoxHelloTraitTwinNormal.fromWire(dynamic wire)
@@ -177,6 +182,7 @@ class BoxHelloTraitTwinNormal extends RustAutoOpaque {
   );
 }
 
+// Rust type: Box<dyn MyTraitTwinNormal + Send + Sync>
 @sealed
 class BoxMyTraitTwinNormal extends RustAutoOpaque {
   BoxMyTraitTwinNormal.fromWire(dynamic wire)
@@ -192,6 +198,7 @@ class BoxMyTraitTwinNormal extends RustAutoOpaque {
   );
 }
 
+// Rust type: & mut Box < dyn HelloTraitTwinNormal >
 @sealed
 class MutBoxHelloTraitTwinNormal extends RustAutoOpaque {
   MutBoxHelloTraitTwinNormal.fromWire(dynamic wire)
@@ -207,6 +214,7 @@ class MutBoxHelloTraitTwinNormal extends RustAutoOpaque {
   );
 }
 
+// Rust type: & mut NonCloneSimpleTwinNormal
 @sealed
 class MutNonCloneSimpleTwinNormal extends RustAutoOpaque {
   MutNonCloneSimpleTwinNormal.fromWire(dynamic wire)
@@ -222,6 +230,7 @@ class MutNonCloneSimpleTwinNormal extends RustAutoOpaque {
   );
 }
 
+// Rust type: & mut StructWithGoodAndOpaqueFieldTwinNormal
 @sealed
 class MutStructWithGoodAndOpaqueFieldTwinNormal extends RustAutoOpaque {
   MutStructWithGoodAndOpaqueFieldTwinNormal.fromWire(dynamic wire)

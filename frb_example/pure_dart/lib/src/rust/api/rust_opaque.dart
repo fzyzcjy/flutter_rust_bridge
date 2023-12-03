@@ -72,6 +72,7 @@ Future<String> unwrapRustOpaqueTwinNormal(
 Future<FrbOpaqueReturn> frbGeneratorTestTwinNormal({dynamic hint}) =>
     RustLib.instance.api.frbGeneratorTestTwinNormal(hint: hint);
 
+// Rust type: flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinNormal>>
 @sealed
 class BoxDartDebugTwinNormal extends RustOpaque {
   BoxDartDebugTwinNormal.fromWire(dynamic wire)

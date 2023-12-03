@@ -75,6 +75,7 @@ Future<String> unwrapRustOpaqueTwinRustAsync(
 Future<FrbOpaqueReturn> frbGeneratorTestTwinRustAsync({dynamic hint}) =>
     RustLib.instance.api.frbGeneratorTestTwinRustAsync(hint: hint);
 
+// Rust type: flutter_rust_bridge::RustOpaque<Mutex < HideData >>
 @sealed
 class MutexHideData extends RustOpaque {
   MutexHideData.fromWire(dynamic wire) : super.fromWire(wire, _kStaticData);
@@ -89,6 +90,7 @@ class MutexHideData extends RustOpaque {
   );
 }
 
+// Rust type: flutter_rust_bridge::RustOpaque<RwLock < HideData >>
 @sealed
 class RwLockHideData extends RustOpaque {
   RwLockHideData.fromWire(dynamic wire) : super.fromWire(wire, _kStaticData);
@@ -103,6 +105,7 @@ class RwLockHideData extends RustOpaque {
   );
 }
 
+// Rust type: flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinRustAsync>>
 @sealed
 class BoxDartDebugTwinRustAsync extends RustOpaque {
   BoxDartDebugTwinRustAsync.fromWire(dynamic wire)
@@ -118,6 +121,7 @@ class BoxDartDebugTwinRustAsync extends RustOpaque {
   );
 }
 
+// Rust type: flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::FrbOpaqueReturn>
 @sealed
 class FrbOpaqueReturn extends RustOpaque {
   FrbOpaqueReturn.fromWire(dynamic wire) : super.fromWire(wire, _kStaticData);
@@ -132,6 +136,7 @@ class FrbOpaqueReturn extends RustOpaque {
   );
 }
 
+// Rust type: flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>
 @sealed
 class HideData extends RustOpaque {
   HideData.fromWire(dynamic wire) : super.fromWire(wire, _kStaticData);
@@ -156,6 +161,7 @@ class HideDataArray2 extends NonGrowableListView<HideData> {
       : super(List<HideData>.filled(arraySize, fill));
 }
 
+// Rust type: flutter_rust_bridge::RustOpaque<i32>
 @sealed
 class I32 extends RustOpaque {
   I32.fromWire(dynamic wire) : super.fromWire(wire, _kStaticData);
@@ -170,6 +176,7 @@ class I32 extends RustOpaque {
   );
 }
 
+// Rust type: flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData>
 @sealed
 class NonCloneData extends RustOpaque {
   NonCloneData.fromWire(dynamic wire) : super.fromWire(wire, _kStaticData);
@@ -184,6 +191,7 @@ class NonCloneData extends RustOpaque {
   );
 }
 
+// Rust type: flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonSendHideData>
 @sealed
 class NonSendHideData extends RustOpaque {
   NonSendHideData.fromWire(dynamic wire) : super.fromWire(wire, _kStaticData);
