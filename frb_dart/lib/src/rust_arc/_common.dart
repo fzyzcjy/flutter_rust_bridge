@@ -21,7 +21,7 @@ import 'package:meta/meta.dart';
 /// The Rust `std::sync::Arc` on the Dart side.
 // Note: Use `extends`, instead of making the `_Droppable` a field,
 // in order to ensure the `ffi.Finalizable` works well.
-abstract class RustArc extends Droppable {
+abstract class RustArc<T extends RustArc<T>> extends Droppable {
   /// The pointer that `std::sync::Arc::into_raw` gives.
   ///
   /// In other words, it is very similar to `std::sync::Arc.ptr`,
@@ -33,8 +33,14 @@ abstract class RustArc extends Droppable {
       : super(ptrOrNullFromInt(ptr));
 
   /// Mimic `std::sync::Arc::clone`
-  RustArc clone() {
-    return TODO;
+  T clone() {
+    final ptr = _ptr;
+    if (ptr == null) {
+      return constructor(ptr: 0, externalSizeOnNative: externalSizeOnNative);
+    }
+
+    staticData._rustArcIncrementStrongCount(ptr);
+    return constructor(ptr: _ptr, externalSizeOnNative: externalSizeOnNative);
   }
 
   /// Mimic `std::sync::Arc::into_raw`
@@ -49,6 +55,10 @@ abstract class RustArc extends Droppable {
   @override
   @protected
   RustArcStaticData get staticData;
+
+  /// {@macro flutter_rust_bridge.internal}
+  @protected
+  T constructor({required int ptr, required int externalSizeOnNative});
 }
 
 /// Should have exactly *one* instance per *type*.
