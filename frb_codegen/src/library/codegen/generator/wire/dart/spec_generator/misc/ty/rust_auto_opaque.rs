@@ -4,11 +4,4 @@ use crate::codegen::generator::wire::dart::spec_generator::misc::ty::rust_opaque
 use crate::codegen::generator::wire::dart::spec_generator::misc::ty::WireDartGeneratorMiscTrait;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 
-impl<'a> WireDartGeneratorMiscTrait for RustAutoOpaqueWireDartGenerator<'a> {
-    fn generate_extra_functions(&self) -> Option<Acc<WireDartOutputCode>> {
-        Some(generate_rust_arc_functions(
-            self.ir.clone().into(),
-            self.context,
-        ))
-    }
-}
+impl<'a> WireDartGeneratorMiscTrait for RustAutoOpaqueWireDartGenerator<'a> {}
