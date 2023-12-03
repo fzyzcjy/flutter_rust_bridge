@@ -32,6 +32,16 @@ abstract class RustArc extends Droppable {
   RustArc.fromRaw({required int ptr, required super.externalSizeOnNative})
       : super(ptrOrNullFromInt(ptr));
 
+  /// Mimic `std::sync::Arc::clone`
+  RustArc clone() {
+    return TODO;
+  }
+
+  /// Mimic `std::sync::Arc::into_raw`
+  PlatformPointer intoRaw() {
+    return TODO;
+  }
+
   /// See comments in [RustArcStaticData] for details.
   @override
   @protected
