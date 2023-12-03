@@ -20,7 +20,7 @@ abstract class Droppable implements DroppableBase {
   /// otherwise all encapsulation breaks down.
   @protected
   PlatformPointer dangerousReadInternalPtr() =>
-      _ptr ?? (throw _DroppableDisposedException('$runtimeType'));
+      _ptr ?? (throw DroppableDisposedException('$runtimeType'));
   PlatformPointer? _ptr;
 
   /// {@macro flutter_rust_bridge.internal}
@@ -88,12 +88,15 @@ class DroppableStaticData {
         _releaseFnPtr = releaseFnPtr;
 }
 
-class _DroppableDisposedException {
+/// {@macro flutter_rust_bridge.internal}
+class DroppableDisposedException {
+  /// {@macro flutter_rust_bridge.internal}
   final String name;
 
-  const _DroppableDisposedException(this.name);
+  /// {@macro flutter_rust_bridge.internal}
+  const DroppableDisposedException(this.name);
 
   @override
-  String toString() => '_DroppableDisposedException: '
+  String toString() => 'DroppableDisposedException: '
       'Try to use `$name` after it has been disposed';
 }

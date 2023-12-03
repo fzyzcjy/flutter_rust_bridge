@@ -1,4 +1,5 @@
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:flutter_rust_bridge/src/droppable/droppable.dart';
 import 'package:frb_example_pure_dart/src/rust/api/rust_opaque.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
@@ -66,8 +67,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
     data.dispose();
-    await expectRustPanic(
-        () => runOpaqueTwinNormal(opaque: data), 'TwinNormal');
+    await expectLater(() => runOpaqueTwinNormal(opaque: data),
+        throwsA(isA<DroppableDisposedException>()));
   });
 
   test('dispose before complete', () async {
@@ -83,8 +84,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
         "lifetime: \"static str\" "
         "})");
-    await expectRustPanic(
-        () => runOpaqueTwinNormal(opaque: data), 'TwinNormal');
+    await expectLater(() => runOpaqueTwinNormal(opaque: data),
+        throwsA(isA<DroppableDisposedException>()));
   });
 
   test('create array of opaque type', () async {
@@ -100,7 +101,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
           "lifetime: \"static str\" "
           "})");
       v.dispose();
-      await expectRustPanic(() => runOpaqueTwinNormal(opaque: v), 'TwinNormal');
+      await expectLater(() => runOpaqueTwinNormal(opaque: v),
+          throwsA(isA<DroppableDisposedException>()));
     }
   });
 
@@ -145,8 +147,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \\\"static str\\\" "
         "})\"");
     (data[4] as EnumOpaqueTwinNormal_RwLock).field0.dispose();
-    await expectRustPanic(
-        () => runEnumOpaqueTwinNormal(opaque: data[4]), 'TwinNormal');
+    await expectLater(() => runEnumOpaqueTwinNormal(opaque: data[4]),
+        throwsA(isA<DroppableDisposedException>()));
   });
 
   test('opaque field', () async {
@@ -172,10 +174,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
     data.first.dispose();
-    await expectRustPanic(
-        () => runOpaqueTwinNormal(opaque: data.first), 'TwinNormal');
-    await expectRustPanic(
-        () => runNestedOpaqueTwinNormal(opaque: data), 'TwinNormal');
+    await expectLater(() => runOpaqueTwinNormal(opaque: data.first),
+        throwsA(isA<DroppableDisposedException>()));
+    await expectLater(() => runNestedOpaqueTwinNormal(opaque: data),
+        throwsA(isA<DroppableDisposedException>()));
     expect(
         await runOpaqueTwinNormal(opaque: data.second),
         "content - Some(PrivateData "
@@ -203,8 +205,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
 
-    await expectRustPanic(
-        () => opaqueArrayRunTwinNormal(data: data), 'TwinNormal');
+    await expectLater(() => opaqueArrayRunTwinNormal(data: data),
+        throwsA(isA<DroppableDisposedException>()));
     data[1].dispose();
   });
 
@@ -223,8 +225,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         "lifetime: \"static str\" "
         "})");
 
-    await expectRustPanic(
-        () => opaqueVecRunTwinNormal(data: data), 'TwinNormal');
+    await expectLater(() => opaqueVecRunTwinNormal(data: data),
+        throwsA(isA<DroppableDisposedException>()));
     data[1].dispose();
   });
 
