@@ -3651,18 +3651,6 @@ void rust_arc_increment_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSend
 
 void rust_arc_decrement_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync(const void *ptr);
 
-void rust_arc_increment_strong_count_RustAutoOpaque_mutBoxdynHelloTraitTwinNormal(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustAutoOpaque_mutBoxdynHelloTraitTwinNormal(const void *ptr);
-
-void rust_arc_increment_strong_count_RustAutoOpaque_mutNonCloneSimpleTwinNormal(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustAutoOpaque_mutNonCloneSimpleTwinNormal(const void *ptr);
-
-void rust_arc_increment_strong_count_RustAutoOpaque_mutStructWithGoodAndOpaqueFieldTwinNormal(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustAutoOpaque_mutStructWithGoodAndOpaqueFieldTwinNormal(const void *ptr);
-
 void rust_arc_increment_strong_count_RustOpaque_MutexHideData(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_MutexHideData(const void *ptr);
@@ -4208,9 +4196,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustAutoOpaque_box_dynFnStringString);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync);
-    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustAutoOpaque_mutBoxdynHelloTraitTwinNormal);
-    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustAutoOpaque_mutNonCloneSimpleTwinNormal);
-    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustAutoOpaque_mutStructWithGoodAndOpaqueFieldTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_MutexHideData);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_RwLockHideData);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormal);
@@ -4228,9 +4213,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustAutoOpaque_box_dynFnStringString);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustAutoOpaque_box_dynHelloTraitTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync);
-    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustAutoOpaque_mutBoxdynHelloTraitTwinNormal);
-    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustAutoOpaque_mutNonCloneSimpleTwinNormal);
-    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustAutoOpaque_mutStructWithGoodAndOpaqueFieldTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_MutexHideData);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_RwLockHideData);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal);

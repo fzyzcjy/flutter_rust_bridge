@@ -145,18 +145,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           ._rust_arc_decrement_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSyncPtr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_MutBoxHelloTraitTwinNormalPtr => wire
-          ._rust_arc_decrement_strong_count_RustAutoOpaque_mutBoxdynHelloTraitTwinNormalPtr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_MutNonCloneSimpleTwinNormalPtr => wire
-          ._rust_arc_decrement_strong_count_RustAutoOpaque_mutNonCloneSimpleTwinNormalPtr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_MutStructWithGoodAndOpaqueFieldTwinNormalPtr =>
-          wire._rust_arc_decrement_strong_count_RustAutoOpaque_mutStructWithGoodAndOpaqueFieldTwinNormalPtr;
-
-  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_MutexHideDataPtr =>
           wire._rust_arc_decrement_strong_count_RustOpaque_MutexHideDataPtr;
 
@@ -20050,102 +20038,6 @@ class RustLibWire implements BaseWire {
           'rust_arc_decrement_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync');
   late final _rust_arc_decrement_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync =
       _rust_arc_decrement_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSyncPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_increment_strong_count_RustAutoOpaque_mutBoxdynHelloTraitTwinNormal(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustAutoOpaque_mutBoxdynHelloTraitTwinNormal(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustAutoOpaque_mutBoxdynHelloTraitTwinNormalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_increment_strong_count_RustAutoOpaque_mutBoxdynHelloTraitTwinNormal');
-  late final _rust_arc_increment_strong_count_RustAutoOpaque_mutBoxdynHelloTraitTwinNormal =
-      _rust_arc_increment_strong_count_RustAutoOpaque_mutBoxdynHelloTraitTwinNormalPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_decrement_strong_count_RustAutoOpaque_mutBoxdynHelloTraitTwinNormal(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustAutoOpaque_mutBoxdynHelloTraitTwinNormal(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustAutoOpaque_mutBoxdynHelloTraitTwinNormalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_decrement_strong_count_RustAutoOpaque_mutBoxdynHelloTraitTwinNormal');
-  late final _rust_arc_decrement_strong_count_RustAutoOpaque_mutBoxdynHelloTraitTwinNormal =
-      _rust_arc_decrement_strong_count_RustAutoOpaque_mutBoxdynHelloTraitTwinNormalPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_increment_strong_count_RustAutoOpaque_mutNonCloneSimpleTwinNormal(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustAutoOpaque_mutNonCloneSimpleTwinNormal(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustAutoOpaque_mutNonCloneSimpleTwinNormalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_increment_strong_count_RustAutoOpaque_mutNonCloneSimpleTwinNormal');
-  late final _rust_arc_increment_strong_count_RustAutoOpaque_mutNonCloneSimpleTwinNormal =
-      _rust_arc_increment_strong_count_RustAutoOpaque_mutNonCloneSimpleTwinNormalPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_decrement_strong_count_RustAutoOpaque_mutNonCloneSimpleTwinNormal(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustAutoOpaque_mutNonCloneSimpleTwinNormal(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustAutoOpaque_mutNonCloneSimpleTwinNormalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_decrement_strong_count_RustAutoOpaque_mutNonCloneSimpleTwinNormal');
-  late final _rust_arc_decrement_strong_count_RustAutoOpaque_mutNonCloneSimpleTwinNormal =
-      _rust_arc_decrement_strong_count_RustAutoOpaque_mutNonCloneSimpleTwinNormalPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_increment_strong_count_RustAutoOpaque_mutStructWithGoodAndOpaqueFieldTwinNormal(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustAutoOpaque_mutStructWithGoodAndOpaqueFieldTwinNormal(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustAutoOpaque_mutStructWithGoodAndOpaqueFieldTwinNormalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_increment_strong_count_RustAutoOpaque_mutStructWithGoodAndOpaqueFieldTwinNormal');
-  late final _rust_arc_increment_strong_count_RustAutoOpaque_mutStructWithGoodAndOpaqueFieldTwinNormal =
-      _rust_arc_increment_strong_count_RustAutoOpaque_mutStructWithGoodAndOpaqueFieldTwinNormalPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_decrement_strong_count_RustAutoOpaque_mutStructWithGoodAndOpaqueFieldTwinNormal(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustAutoOpaque_mutStructWithGoodAndOpaqueFieldTwinNormal(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustAutoOpaque_mutStructWithGoodAndOpaqueFieldTwinNormalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_decrement_strong_count_RustAutoOpaque_mutStructWithGoodAndOpaqueFieldTwinNormal');
-  late final _rust_arc_decrement_strong_count_RustAutoOpaque_mutStructWithGoodAndOpaqueFieldTwinNormal =
-      _rust_arc_decrement_strong_count_RustAutoOpaque_mutStructWithGoodAndOpaqueFieldTwinNormalPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void rust_arc_increment_strong_count_RustOpaque_MutexHideData(

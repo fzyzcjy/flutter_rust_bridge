@@ -1917,7 +1917,7 @@ abstract class RustLibApi extends BaseApi {
       {required NonCloneSimpleTwinNormal arg, dynamic hint});
 
   Future<void> nonCloneSimpleTwinNormalStaticMethodArgMutBorrow(
-      {required MutNonCloneSimpleTwinNormal arg, dynamic hint});
+      {required NonCloneSimpleTwinNormal arg, dynamic hint});
 
   Future<void> nonCloneSimpleTwinNormalStaticMethodArgOwn(
       {required NonCloneSimpleTwinNormal arg, dynamic hint});
@@ -1929,7 +1929,7 @@ abstract class RustLibApi extends BaseApi {
       {required NonCloneSimpleTwinNormal arg, dynamic hint});
 
   Future<void> rustAutoOpaqueArgMutBorrow(
-      {required MutNonCloneSimpleTwinNormal arg, dynamic hint});
+      {required NonCloneSimpleTwinNormal arg, dynamic hint});
 
   Future<void> rustAutoOpaqueArgOwn(
       {required NonCloneSimpleTwinNormal arg, dynamic hint});
@@ -1956,7 +1956,7 @@ abstract class RustLibApi extends BaseApi {
       {required StructWithGoodAndOpaqueFieldTwinNormal arg, dynamic hint});
 
   Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrow(
-      {required MutStructWithGoodAndOpaqueFieldTwinNormal arg, dynamic hint});
+      {required StructWithGoodAndOpaqueFieldTwinNormal arg, dynamic hint});
 
   Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwn(
       {required StructWithGoodAndOpaqueFieldTwinNormal arg, dynamic hint});
@@ -1970,7 +1970,7 @@ abstract class RustLibApi extends BaseApi {
       dynamic hint});
 
   Future<void> rustAutoOpaqueTraitObjectArgMutBorrow(
-      {required MutBoxHelloTraitTwinNormal arg,
+      {required BoxHelloTraitTwinNormal arg,
       required String expect,
       dynamic hint});
 
@@ -2161,33 +2161,6 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxMyTraitTwinNormalPtr;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_MutBoxHelloTraitTwinNormal;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_MutBoxHelloTraitTwinNormal;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_MutBoxHelloTraitTwinNormalPtr;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_MutNonCloneSimpleTwinNormal;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_MutNonCloneSimpleTwinNormal;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_MutNonCloneSimpleTwinNormalPtr;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_MutStructWithGoodAndOpaqueFieldTwinNormal;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_MutStructWithGoodAndOpaqueFieldTwinNormal;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_MutStructWithGoodAndOpaqueFieldTwinNormalPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_MutexHideData;
@@ -15729,8 +15702,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> nonCloneSimpleTwinNormalStaticMethodArgMutBorrow(
-      {required MutNonCloneSimpleTwinNormal arg, dynamic hint}) {
-    var arg0 = api2wire_RustAutoOpaque_mutNonCloneSimpleTwinNormal(arg);
+      {required NonCloneSimpleTwinNormal arg, dynamic hint}) {
+    var arg0 = api2wire_RustAutoOpaque_NonCloneSimpleTwinNormal(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
           wire.wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow(
@@ -15816,8 +15789,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueArgMutBorrow(
-      {required MutNonCloneSimpleTwinNormal arg, dynamic hint}) {
-    var arg0 = api2wire_RustAutoOpaque_mutNonCloneSimpleTwinNormal(arg);
+      {required NonCloneSimpleTwinNormal arg, dynamic hint}) {
+    var arg0 = api2wire_RustAutoOpaque_NonCloneSimpleTwinNormal(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
           wire.wire_rust_auto_opaque_arg_mut_borrow(port_, arg0),
@@ -16025,9 +15998,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrow(
-      {required MutStructWithGoodAndOpaqueFieldTwinNormal arg, dynamic hint}) {
+      {required StructWithGoodAndOpaqueFieldTwinNormal arg, dynamic hint}) {
     var arg0 =
-        api2wire_RustAutoOpaque_mutStructWithGoodAndOpaqueFieldTwinNormal(arg);
+        api2wire_RustAutoOpaque_StructWithGoodAndOpaqueFieldTwinNormal(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire
           .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(
@@ -16127,10 +16100,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueTraitObjectArgMutBorrow(
-      {required MutBoxHelloTraitTwinNormal arg,
+      {required BoxHelloTraitTwinNormal arg,
       required String expect,
       dynamic hint}) {
-    var arg0 = api2wire_RustAutoOpaque_mutBoxdynHelloTraitTwinNormal(arg);
+    var arg0 = api2wire_RustAutoOpaque_BoxdynHelloTraitTwinNormal(arg);
     var arg1 = api2wire_String(expect);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire
@@ -17188,30 +17161,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_BoxMyTraitTwinNormal => wire
           .rust_arc_decrement_strong_count_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_MutBoxHelloTraitTwinNormal => wire
-          .rust_arc_increment_strong_count_RustAutoOpaque_mutBoxdynHelloTraitTwinNormal;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_MutBoxHelloTraitTwinNormal => wire
-          .rust_arc_decrement_strong_count_RustAutoOpaque_mutBoxdynHelloTraitTwinNormal;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_MutNonCloneSimpleTwinNormal => wire
-          .rust_arc_increment_strong_count_RustAutoOpaque_mutNonCloneSimpleTwinNormal;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_MutNonCloneSimpleTwinNormal => wire
-          .rust_arc_decrement_strong_count_RustAutoOpaque_mutNonCloneSimpleTwinNormal;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_MutStructWithGoodAndOpaqueFieldTwinNormal =>
-          wire.rust_arc_increment_strong_count_RustAutoOpaque_mutStructWithGoodAndOpaqueFieldTwinNormal;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_MutStructWithGoodAndOpaqueFieldTwinNormal =>
-          wire.rust_arc_decrement_strong_count_RustAutoOpaque_mutStructWithGoodAndOpaqueFieldTwinNormal;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_MutexHideData =>
@@ -21000,25 +20949,6 @@ PlatformPointer api2wire_RustAutoOpaque_box_dynHelloTraitTwinNormal(
 
 PlatformPointer api2wire_RustAutoOpaque_box_dynMyTraitTwinNormalSendSync(
     BoxMyTraitTwinNormal raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.api2wire();
-}
-
-PlatformPointer api2wire_RustAutoOpaque_mutBoxdynHelloTraitTwinNormal(
-    MutBoxHelloTraitTwinNormal raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.api2wire();
-}
-
-PlatformPointer api2wire_RustAutoOpaque_mutNonCloneSimpleTwinNormal(
-    MutNonCloneSimpleTwinNormal raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.api2wire();
-}
-
-PlatformPointer
-    api2wire_RustAutoOpaque_mutStructWithGoodAndOpaqueFieldTwinNormal(
-        MutStructWithGoodAndOpaqueFieldTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire();
 }

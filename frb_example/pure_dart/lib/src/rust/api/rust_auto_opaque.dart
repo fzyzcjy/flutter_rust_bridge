@@ -15,7 +15,7 @@ Future<void> rustAutoOpaqueArgBorrow(
     RustLib.instance.api.rustAutoOpaqueArgBorrow(arg: arg, hint: hint);
 
 Future<void> rustAutoOpaqueArgMutBorrow(
-        {required MutNonCloneSimpleTwinNormal arg, dynamic hint}) =>
+        {required NonCloneSimpleTwinNormal arg, dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueArgMutBorrow(arg: arg, hint: hint);
 
 Future<NonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwn({dynamic hint}) =>
@@ -68,7 +68,7 @@ Future<void> rustAutoOpaqueTraitObjectArgBorrow(
         arg: arg, expect: expect, hint: hint);
 
 Future<void> rustAutoOpaqueTraitObjectArgMutBorrow(
-        {required MutBoxHelloTraitTwinNormal arg,
+        {required BoxHelloTraitTwinNormal arg,
         required String expect,
         dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueTraitObjectArgMutBorrow(
@@ -93,8 +93,7 @@ Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrow(
         arg: arg, hint: hint);
 
 Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrow(
-        {required MutStructWithGoodAndOpaqueFieldTwinNormal arg,
-        dynamic hint}) =>
+        {required StructWithGoodAndOpaqueFieldTwinNormal arg, dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrow(
         arg: arg, hint: hint);
 
@@ -103,7 +102,7 @@ Future<StructWithGoodAndOpaqueFieldTwinNormal>
         RustLib.instance.api
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwn(hint: hint);
 
-// Rust type: & Box < dyn HelloTraitTwinNormal >
+// Rust type: Box < dyn HelloTraitTwinNormal >
 @sealed
 class BoxHelloTraitTwinNormal extends RustAutoOpaque {
   BoxHelloTraitTwinNormal.fromWire(dynamic wire)
@@ -119,7 +118,7 @@ class BoxHelloTraitTwinNormal extends RustAutoOpaque {
   );
 }
 
-// Rust type: & NonCloneSimpleTwinNormal
+// Rust type: NonCloneSimpleTwinNormal
 @sealed
 class NonCloneSimpleTwinNormal extends RustAutoOpaque {
   NonCloneSimpleTwinNormal.fromWire(dynamic wire)
@@ -135,7 +134,7 @@ class NonCloneSimpleTwinNormal extends RustAutoOpaque {
   );
 }
 
-// Rust type: & StructWithGoodAndOpaqueFieldTwinNormal
+// Rust type: StructWithGoodAndOpaqueFieldTwinNormal
 @sealed
 class StructWithGoodAndOpaqueFieldTwinNormal extends RustAutoOpaque {
   StructWithGoodAndOpaqueFieldTwinNormal.fromWire(dynamic wire)
@@ -198,54 +197,6 @@ class BoxMyTraitTwinNormal extends RustAutoOpaque {
   );
 }
 
-// Rust type: & mut Box < dyn HelloTraitTwinNormal >
-@sealed
-class MutBoxHelloTraitTwinNormal extends RustAutoOpaque {
-  MutBoxHelloTraitTwinNormal.fromWire(dynamic wire)
-      : super.fromWire(wire, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_MutBoxHelloTraitTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_MutBoxHelloTraitTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_MutBoxHelloTraitTwinNormalPtr,
-  );
-}
-
-// Rust type: & mut NonCloneSimpleTwinNormal
-@sealed
-class MutNonCloneSimpleTwinNormal extends RustAutoOpaque {
-  MutNonCloneSimpleTwinNormal.fromWire(dynamic wire)
-      : super.fromWire(wire, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_MutNonCloneSimpleTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_MutNonCloneSimpleTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_MutNonCloneSimpleTwinNormalPtr,
-  );
-}
-
-// Rust type: & mut StructWithGoodAndOpaqueFieldTwinNormal
-@sealed
-class MutStructWithGoodAndOpaqueFieldTwinNormal extends RustAutoOpaque {
-  MutStructWithGoodAndOpaqueFieldTwinNormal.fromWire(dynamic wire)
-      : super.fromWire(wire, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib.instance.api
-        .rust_arc_increment_strong_count_MutStructWithGoodAndOpaqueFieldTwinNormal,
-    rustArcDecrementStrongCount: RustLib.instance.api
-        .rust_arc_decrement_strong_count_MutStructWithGoodAndOpaqueFieldTwinNormal,
-    rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_MutStructWithGoodAndOpaqueFieldTwinNormalPtr,
-  );
-}
-
 class NonCloneSimpleTwinNormal {
   final int inner;
 
@@ -288,7 +239,7 @@ class NonCloneSimpleTwinNormal {
           .nonCloneSimpleTwinNormalStaticMethodArgBorrow(arg: arg, hint: hint);
 
   static Future<void> staticMethodArgMutBorrow(
-          {required MutNonCloneSimpleTwinNormal arg, dynamic hint}) =>
+          {required NonCloneSimpleTwinNormal arg, dynamic hint}) =>
       RustLib.instance.api.nonCloneSimpleTwinNormalStaticMethodArgMutBorrow(
           arg: arg, hint: hint);
 
