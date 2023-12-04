@@ -111,7 +111,7 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
         let eh = self.error_handler;
         let eh2 = self.error_handler;
 
-        rust_async::spawn(async move {
+        self.async_runtime.spawn(async move {
             let TaskInfo { port, mode, .. } = task_info;
             let port = port.unwrap();
             let port2 = port.clone();

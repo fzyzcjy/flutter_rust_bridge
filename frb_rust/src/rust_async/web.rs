@@ -2,15 +2,20 @@ use std::future::Future;
 use std::panic::RefUnwindSafe;
 use wasm_bindgen_futures::spawn_local;
 
-pub fn spawn<F>(future: F)
-where
-    F: Future<Output = ()> + 'static,
-{
-    spawn_local(future)
-}
-
 pub trait BaseAsyncRuntime: RefUnwindSafe {
     fn spawn<F>(future: F)
     where
         F: Future<Output = ()> + 'static;
+}
+
+#[derive(Debug, Clone, Copy)]
+pub struct SimpleAsyncRuntime;
+
+impl BaseAsyncRuntime for SimpleAsyncRuntime {
+    fn spawn<F>(future: F)
+    where
+        F: Future<Output = ()> + 'static,
+    {
+        spawn_local(future)
+    }
 }
