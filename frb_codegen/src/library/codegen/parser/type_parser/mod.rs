@@ -70,11 +70,7 @@ impl<'a> TypeParser<'a> {
         ty: &Type,
         context: &TypeParserParsingContext,
     ) -> anyhow::Result<IrType> {
-        TypeParserWithContext {
-            inner: self,
-            context,
-        }
-        .parse_type(ty)
+        TypeParserWithContext::new(self, context).parse_type(ty)
     }
 
     pub(crate) fn transform_type_rust_auto_opaque(
@@ -82,17 +78,27 @@ impl<'a> TypeParser<'a> {
         ty: &IrType,
         context: &TypeParserParsingContext,
     ) -> IrType {
-        TypeParserWithContext {
-            inner: self,
-            context,
-        }
-        .transform_type_rust_auto_opaque(ty)
+        TypeParserWithContext::new(self, context).transform_type_rust_auto_opaque(ty)
+    }
+
+    pub(crate) fn check_candidate_rust_auto_opaque(
+        &mut self,
+        ty: &IrType,
+        context: &TypeParserParsingContext,
+    ) -> bool {
+        TypeParserWithContext::new(self, context).check_candidate_rust_auto_opaque(ty)
     }
 }
 
 pub(crate) struct TypeParserWithContext<'a, 'b, 'c> {
     pub inner: &'b mut TypeParser<'a>,
     pub context: &'c TypeParserParsingContext,
+}
+
+impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
+    pub fn new(inner: &'b mut TypeParser<'a>, context: &'c TypeParserParsingContext) -> Self {
+        Self { inner, context }
+    }
 }
 
 pub(crate) struct TypeParserParsingContext {

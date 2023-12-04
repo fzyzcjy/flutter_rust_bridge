@@ -10,7 +10,7 @@ use crate::codegen::parser::function_parser::{
     type_to_string, FunctionParser, FunctionPartialInfo, STREAM_SINK_IDENT,
 };
 use crate::codegen::parser::type_parser::misc::parse_comments;
-use crate::codegen::parser::type_parser::TypeParserParsingContext;
+use crate::codegen::parser::type_parser::{TypeParser, TypeParserParsingContext};
 use crate::if_then_some;
 use anyhow::{bail, ensure, Context};
 use syn::*;
@@ -62,7 +62,12 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let name = "that".to_owned();
 
         partial_info_for_normal_type_raw(
-            parse_receiver_ownership(self.type_parser.parse_type(&ty, context)?, receiver),
+            parse_receiver_ownership(
+                self.type_parser.parse_type(&ty, context)?,
+                receiver,
+                self.type_parser,
+                context,
+            ),
             &receiver.attrs,
             name,
         )
@@ -158,8 +163,13 @@ fn parse_name_from_pat_type(pat_type: &PatType) -> anyhow::Result<String> {
     }
 }
 
-fn parse_receiver_ownership(inner: IrType, receiver: &Receiver) -> IrType {
-    let should_parse_ownership = TODO;
+fn parse_receiver_ownership(
+    inner: IrType,
+    receiver: &Receiver,
+    type_parser: &mut TypeParser,
+    context: TypeParserParsingContext,
+) -> IrType {
+    let should_parse_ownership = type_parser.check_candidate_rust_auto_opaque(&inner, context);
 
     if receiver.reference.is_none() || !should_parse_ownership {
         return inner;

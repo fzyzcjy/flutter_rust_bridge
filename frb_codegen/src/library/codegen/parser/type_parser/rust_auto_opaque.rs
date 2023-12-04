@@ -18,14 +18,14 @@ use IrType::RustAutoOpaque;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn transform_type_rust_auto_opaque(&mut self, ty_raw: &IrType) -> IrType {
-        if self.is_candidate_rust_auto_opaque(ty_raw) {
+        if self.check_candidate_rust_auto_opaque(ty_raw) {
             return self.parse_rust_auto_opaque(&ty_raw);
         }
 
         ty_raw.clone()
     }
 
-    pub(crate) fn is_candidate_rust_auto_opaque(&self, ty_raw: &IrType) -> bool {
+    pub(crate) fn check_candidate_rust_auto_opaque(&self, ty_raw: &IrType) -> bool {
         let subtree_types_except_rust_opaque = {
             let mut gatherer = DistinctTypeGatherer::new();
             ty_raw.visit_types(
