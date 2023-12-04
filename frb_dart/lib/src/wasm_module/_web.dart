@@ -20,12 +20,6 @@ abstract class WasmModule {
   /// Create a new WASM module initializer that is bound to the specified binary.
   WasmModule bind(dynamic thisArg, String moduleName);
 
-  // TODO
-  // /// Cast the module into type `T`
-  // static Future<T> cast<T extends WasmModule>(FutureOr<WasmModule> module) {
-  //   return Future.value(module).then((module) => module as T);
-  // }
-
   /// Initialize a [WasmModule] with the specified kind of [Modules].
   static Future<Object> initialize(
           {required Modules kind, WasmModule Function()? module}) =>

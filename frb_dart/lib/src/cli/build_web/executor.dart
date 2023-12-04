@@ -62,14 +62,9 @@ Future<void> executeBuildWeb(BuildWebArgs args) async {
     await _executeWasmBindgen(args, rustCrateName: rustCrateName);
   }
 
-  // if (config.cliOpts.dartInput != null) {
   if (args.dartCompileJsEntrypoint != null) {
     await _executeDartCompile(args);
   }
-  // TODO
-  // } else {
-  //   await _executeFlutterBuildWeb(config);
-  // }
 }
 
 final _commandWhich = Platform.isWindows ? 'where.exe' : 'which';
@@ -188,9 +183,6 @@ Future<void> _executeWasmBindgen(BuildWebArgs args,
 }
 
 Future<void> _executeDartCompile(BuildWebArgs args) async {
-  // TODO this may not be very accurate, since package name != folder name; maybe try to use `app` as name
-  // final output = p.basename(args.dartRoot);
-
   await runCommand('dart', [
     'compile',
     'js',
@@ -202,11 +194,3 @@ Future<void> _executeDartCompile(BuildWebArgs args) async {
     args.dartCompileJsEntrypoint!,
   ]);
 }
-
-// TODO we may not need this, since we want to use `flutter run (web)` itself instead
-// Future<void> _executeFlutterBuildWeb(BuildWebArgs config) async {
-//   await runCommand(
-//     'flutter',
-//     ['build', 'web', if (!config.release) '--profile'] + config.restArgs,
-//   );
-// }

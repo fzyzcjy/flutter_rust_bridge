@@ -63,11 +63,6 @@ class Config {
           'If specified, compile Dart into JavaScript and use this option as entrypoint')
   late String? dartCompileJsEntrypoint;
 
-// TODO rm
-// /// {@macro flutter_rust_bridge.cli}
-// @CliOption(abbr: 'h', help: 'Print this help message', negatable: false)
-// late bool help;
-
 // migrate to `wasmPackArgs`
 // /// {@macro flutter_rust_bridge.cli}
 // @CliOption(
@@ -99,11 +94,6 @@ class Config {
 }
 
 BuildWebArgs _parseConfigToArgs(Config config) {
-  // TODO rm
-  // if (config.help) {
-  //   _printHelpAndExit();
-  // }
-
   return BuildWebArgs(
     output: config.output ?? _fallbackOutput(dartRoot: config.dartRoot),
     release: config.release,
@@ -117,15 +107,3 @@ BuildWebArgs _parseConfigToArgs(Config config) {
 
 String _fallbackOutput({required String? dartRoot}) =>
     path.join(dartRoot!, 'web');
-
-// TODO rm
-// Never _printHelpAndExit() {
-//   print("""
-// USAGE:
-// \t[OPTIONS]
-//
-// OPTIONS:""");
-//   print(_$parserForConfig.usage);
-//
-//   exit(0);
-// }
