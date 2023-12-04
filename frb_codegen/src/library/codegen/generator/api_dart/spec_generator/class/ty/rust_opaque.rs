@@ -33,7 +33,7 @@ pub(super) fn generalized_rust_opaque_generate_class(
     let dart_api_type = ApiDartGenerator::new(ir, context).dart_api_type();
 
     let methods = generate_api_methods(
-        &NamespacedName::new(namespace.clone(), dart_api_type.clone()),
+        &NamespacedName::new(namespace.clone(), rust_api_type.clone()),
         context,
     )
     .join("\n");
