@@ -47,13 +47,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             IrType::Ownership(o) => (o.mode.clone(), *o.inner.clone()),
             _ => (IrTypeOwnershipMode::Owned, ty.clone()),
         };
-
-        let lock_type = if TODO {
-            "std::sync::RwLock"
-        } else {
-            "tokio::sync::RwLock"
-        };
-
         let new_ir = IrTypeRustAutoOpaque {
             ownership_mode,
             inner: IrTypeRustOpaque {
@@ -61,7 +54,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 inner: Box::new(IrType::Unencodable(IrTypeUnencodable {
                     namespace: None,
                     // TODO when all usages of a type do not require `&mut`, can drop this Mutex
-                    string: format!("{lock_type}<{}>", inner.rust_api_type()),
+                    string: format!("std::sync::RwLock<{}>", inner.rust_api_type()),
                     segments: vec![],
                 })),
             },
