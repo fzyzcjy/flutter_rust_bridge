@@ -39,7 +39,7 @@ impl<EH: ErrorHandler, TP: BaseThreadPool, AR: BaseAsyncRuntime> SimpleExecutor<
     }
 
     pub fn thread_pool(&self) -> &TP {
-        &self.thread_pool.0
+        &self.thread_pool
     }
 }
 

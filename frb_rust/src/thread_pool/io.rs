@@ -1,4 +1,4 @@
-use std::panic::RefUnwindSafe;
+use std::panic::{AssertUnwindSafe, RefUnwindSafe};
 pub use threadpool::ThreadPool;
 
 pub trait BaseThreadPool: RefUnwindSafe {
@@ -7,11 +7,11 @@ pub trait BaseThreadPool: RefUnwindSafe {
         F: FnOnce() + Send + 'static;
 }
 
-impl BaseThreadPool for ThreadPool {
+impl BaseThreadPool for AssertUnwindSafe<ThreadPool> {
     fn execute<F>(&self, job: F)
     where
         F: FnOnce() + Send + 'static,
     {
-        self.execute(job)
+        ThreadPool::execute(self, job)
     }
 }
