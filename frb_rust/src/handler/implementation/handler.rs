@@ -59,24 +59,9 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         TaskRetData: IntoDart,
         Er: IntoDart + 'static,
     {
-        // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
-        // Why do this: As nomicon says, unwind across languages is undefined behavior (UB).
-        // Therefore, we should wrap a [catch_unwind] outside of *each and every* line of code
-        // that can cause panic. Otherwise we may touch UB.
-        // Why do not report error or something like that if this outer [catch_unwind] really
-        // catches something: Because if we report error, that line of code itself can cause panic
-        // as well. Then that new panic will go across language boundary and cause UB.
-        // ref https://doc.rust-lang.org/nomicon/unwinding.html
-        let _ = panic::catch_unwind(move || {
-            let task_info2 = task_info.clone();
-            if let Err(error) = panic::catch_unwind(move || {
-                let task = prepare();
-                self.executor.execute_normal(task_info2, task);
-            }) {
-                self.error_handler
-                    .handle_error(task_info.port.unwrap(), Error::Panic(error));
-            }
-        });
+        self.wrap_simple(task_info, prepare, |task_info, task| {
+            self.executor.execute_normal(task_info, task)
+        })
     }
 
     fn wrap_sync<SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
@@ -124,12 +109,36 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         TaskRetData: IntoDart,
         Er: IntoDart + 'static,
     {
-        // TODO temporary copy-and-paste, should merge with case above later
+        self.wrap_simple(task_info, prepare, |task_info, task| {
+            self.executor.execute_async(task_info, task)
+        })
+    }
+}
+
+impl<E: Executor, EH: ErrorHandler> SimpleHandler<E, EH> {
+    fn wrap_simple<PrepareFn, TaskFn, TaskFnRet, ExecuteFn>(
+        &self,
+        task_info: TaskInfo,
+        prepare: PrepareFn,
+        execute: ExecuteFn,
+    ) where
+        PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
+        TaskFn: FnOnce(TaskContext) -> TaskFnRet,
+        ExecuteFn: FnOnce(TaskInfo, TaskFn) + UnwindSafe,
+    {
+        // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
+        // Why do this: As nomicon says, unwind across languages is undefined behavior (UB).
+        // Therefore, we should wrap a [catch_unwind] outside of *each and every* line of code
+        // that can cause panic. Otherwise we may touch UB.
+        // Why do not report error or something like that if this outer [catch_unwind] really
+        // catches something: Because if we report error, that line of code itself can cause panic
+        // as well. Then that new panic will go across language boundary and cause UB.
+        // ref https://doc.rust-lang.org/nomicon/unwinding.html
         let _ = panic::catch_unwind(move || {
             let task_info2 = task_info.clone();
             if let Err(error) = panic::catch_unwind(move || {
                 let task = prepare();
-                self.executor.execute_async(task_info2, task);
+                execute(task_info2, task);
             }) {
                 self.error_handler
                     .handle_error(task_info.port.unwrap(), Error::Panic(error));
