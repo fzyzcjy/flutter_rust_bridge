@@ -27,10 +27,16 @@ pub(crate) fn generate_wire_func(
     let inner_func_params = generate_inner_func_params(func, ir_pack, context);
     let wrap_info_obj = generate_wrap_info_obj(func);
     let code_wire2api = generate_code_wire2api(func);
+    let code_inner_wire2api = generate_code_inner_wire2api(func);
     let code_call_inner_func_result = generate_code_call_inner_func_result(func, inner_func_params);
     let handler_func_name = generate_handler_func_name(func, ir_pack, context);
     let return_type = generate_return_type(func);
-    let code_closure = generate_code_closure(func, &code_wire2api, &code_call_inner_func_result);
+    let code_closure = generate_code_closure(
+        func,
+        &code_wire2api,
+        &code_inner_wire2api,
+        &code_call_inner_func_result,
+    );
     let func_name = wire_func_name(func);
 
     Acc::new(|target| match target {
@@ -161,6 +167,10 @@ fn generate_code_wire2api(func: &IrFunc) -> String {
         .join("")
 }
 
+fn generate_code_inner_wire2api(func: &IrFunc) -> String {
+    TODO;
+}
+
 fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_params: Vec<String>) -> String {
     let mut ans = match &func.owner {
         IrFuncOwnerInfo::Function => {
@@ -236,16 +246,18 @@ fn generate_return_type(func: &IrFunc) -> Option<String> {
 fn generate_code_closure(
     func: &IrFunc,
     code_wire2api: &str,
+    code_inner_wire2api: &str,
     code_call_inner_func_result: &str,
 ) -> String {
     match func.mode {
         IrFuncMode::Sync => format!(
             "{code_wire2api}
-                {code_call_inner_func_result}"
+            {code_inner_wire2api}
+            {code_call_inner_func_result}"
         ),
         IrFuncMode::Normal | IrFuncMode::Stream { .. } => {
             let maybe_async_move = if func.rust_async { "async move" } else { "" };
-            format!("{code_wire2api} move |context| {maybe_async_move} {{ {code_call_inner_func_result} }}")
+            format!("{code_wire2api} move |context| {maybe_async_move} {{ {code_inner_wire2api} {code_call_inner_func_result} }}")
         }
     }
 }
