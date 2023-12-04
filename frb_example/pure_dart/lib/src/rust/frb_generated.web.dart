@@ -177,6 +177,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinNormalPtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal;
 
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinNormalPtr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal;
+
   @protected
   Object api2wire_Chrono_Duration(Duration raw) {
     return api2wire_i_64(raw.inMilliseconds);
@@ -5710,6 +5714,30 @@ class RustLibWire extends BaseWire {
   void wire_rust_auto_opaque_return_own(NativePortType port_) =>
       wasmModule.wire_rust_auto_opaque_return_own(port_);
 
+  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(
+          NativePortType port_, Object arg) =>
+      wasmModule
+          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(
+              port_, arg);
+
+  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(
+          NativePortType port_, Object arg) =>
+      wasmModule
+          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(
+              port_, arg);
+
+  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
+          NativePortType port_, Object arg) =>
+      wasmModule
+          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
+              port_, arg);
+
+  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own(
+          NativePortType port_) =>
+      wasmModule
+          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own(
+              port_);
+
   void wire_rust_auto_opaque_trait_object_arg_borrow(
           NativePortType port_, Object arg, String expect) =>
       wasmModule.wire_rust_auto_opaque_trait_object_arg_borrow(
@@ -6041,6 +6069,18 @@ class RustLibWire extends BaseWire {
           dynamic ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
               ptr);
 }
 
@@ -7960,6 +8000,21 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_rust_auto_opaque_return_own(NativePortType port_);
 
+  external void
+      wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(
+          NativePortType port_, Object arg);
+
+  external void
+      wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(
+          NativePortType port_, Object arg);
+
+  external void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
+      NativePortType port_, Object arg);
+
+  external void
+      wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own(
+          NativePortType port_);
+
   external void wire_rust_auto_opaque_trait_object_arg_borrow(
       NativePortType port_, Object arg, String expect);
 
@@ -8202,5 +8257,13 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+          dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           dynamic ptr);
 }

@@ -1926,6 +1926,21 @@ abstract class RustLibApi extends BaseApi {
   Future<RwLockNonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwn(
       {dynamic hint});
 
+  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrow(
+      {required RwLockStructWithGoodAndOpaqueFieldTwinNormal arg,
+      dynamic hint});
+
+  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrow(
+      {required RwLockStructWithGoodAndOpaqueFieldTwinNormal arg,
+      dynamic hint});
+
+  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwn(
+      {required RwLockStructWithGoodAndOpaqueFieldTwinNormal arg,
+      dynamic hint});
+
+  Future<RwLockStructWithGoodAndOpaqueFieldTwinNormal>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwn({dynamic hint});
+
   Future<void> rustAutoOpaqueTraitObjectArgBorrow(
       {required RwLockBoxHelloTraitTwinNormal arg,
       required String expect,
@@ -2199,6 +2214,15 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinNormalPtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -15708,6 +15732,116 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrow(
+      {required RwLockStructWithGoodAndOpaqueFieldTwinNormal arg,
+      dynamic hint}) {
+    var arg0 =
+        api2wire_Auto_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+            arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire
+          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(
+              port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrow(
+      {required RwLockStructWithGoodAndOpaqueFieldTwinNormal arg,
+      dynamic hint}) {
+    var arg0 =
+        api2wire_Auto_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+            arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire
+          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(
+              port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta:
+          kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwn(
+      {required RwLockStructWithGoodAndOpaqueFieldTwinNormal arg,
+      dynamic hint}) {
+    var arg0 =
+        api2wire_Auto_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+            arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
+              port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_own",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<RwLockStructWithGoodAndOpaqueFieldTwinNormal>
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwn({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire
+          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own(
+              port_),
+      parseSuccessData:
+          _wire2api_Auto_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "rust_auto_opaque_struct_with_good_and_opaque_field_return_own",
+            argNames: [],
+          );
+
+  @override
   Future<void> rustAutoOpaqueTraitObjectArgBorrow(
       {required RwLockBoxHelloTraitTwinNormal arg,
       required String expect,
@@ -16873,6 +17007,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinNormal => wire
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal;
 
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinNormal =>
+          wire.rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinNormal =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal;
+
   AnyhowException _wire2api_AnyhowException(dynamic raw) {
     return AnyhowException(raw as String);
   }
@@ -16899,6 +17041,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       _wire2api_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
           dynamic raw) {
     return RwLockNonCloneSimpleTwinNormal.fromWire(raw);
+  }
+
+  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+      _wire2api_Auto_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          dynamic raw) {
+    return RwLockStructWithGoodAndOpaqueFieldTwinNormal.fromWire(raw);
   }
 
   Duration _wire2api_Chrono_Duration(dynamic raw) {
@@ -17007,6 +17155,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RwLockNonCloneSimpleTwinNormal
       _wire2api_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(dynamic raw) {
     return RwLockNonCloneSimpleTwinNormal.fromWire(raw);
+  }
+
+  RwLockStructWithGoodAndOpaqueFieldTwinNormal
+      _wire2api_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          dynamic raw) {
+    return RwLockStructWithGoodAndOpaqueFieldTwinNormal.fromWire(raw);
   }
 
   String _wire2api_String(dynamic raw) {
@@ -20581,6 +20735,13 @@ PlatformPointer api2wire_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
   return raw.api2wire();
 }
 
+PlatformPointer
+    api2wire_Auto_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+        RwLockStructWithGoodAndOpaqueFieldTwinNormal raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.api2wire();
+}
+
 PlatformPointer api2wire_RustOpaque_MutexHideData(MutexHideData raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire();
@@ -20651,6 +20812,13 @@ PlatformPointer
 
 PlatformPointer api2wire_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
     RwLockNonCloneSimpleTwinNormal raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.api2wire();
+}
+
+PlatformPointer
+    api2wire_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+        RwLockStructWithGoodAndOpaqueFieldTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire();
 }

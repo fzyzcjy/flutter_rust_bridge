@@ -84,6 +84,29 @@ Future<RwLockBoxHelloTraitTwinNormal> rustAutoOpaqueTraitObjectReturnOwnTwo(
         {dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueTraitObjectReturnOwnTwo(hint: hint);
 
+Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwn(
+        {required RwLockStructWithGoodAndOpaqueFieldTwinNormal arg,
+        dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwn(arg: arg, hint: hint);
+
+Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrow(
+        {required RwLockStructWithGoodAndOpaqueFieldTwinNormal arg,
+        dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrow(
+        arg: arg, hint: hint);
+
+Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrow(
+        {required RwLockStructWithGoodAndOpaqueFieldTwinNormal arg,
+        dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrow(
+        arg: arg, hint: hint);
+
+Future<RwLockStructWithGoodAndOpaqueFieldTwinNormal>
+    rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwn({dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwn(hint: hint);
+
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn Fn (String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>>>
 @sealed
 class RwLockBoxFnStringString extends RustOpaque {
@@ -145,5 +168,21 @@ class RwLockNonCloneSimpleTwinNormal extends RustOpaque {
         .rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinNormal,
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinNormalPtr,
+  );
+}
+
+// Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>>
+@sealed
+class RwLockStructWithGoodAndOpaqueFieldTwinNormal extends RustOpaque {
+  RwLockStructWithGoodAndOpaqueFieldTwinNormal.fromWire(dynamic wire)
+      : super.fromWire(wire, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinNormal,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
+        .rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinNormalPtr,
   );
 }

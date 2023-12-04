@@ -162,6 +162,18 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTw
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
+impl
+    Wire2Api<
+        flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>>,
+    > for *const std::ffi::c_void
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>>
+    {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
 impl Wire2Api<String> for *mut wire_list_prim_u_8 {
     fn wire2api(self) -> String {
         let vec: Vec<u8> = self.wire2api();
@@ -12321,6 +12333,35 @@ pub extern "C" fn wire_rust_auto_opaque_return_own(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+) {
+    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+) {
+    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+) {
+    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own(port_: i64) {
+    wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_rust_auto_opaque_trait_object_arg_borrow(
     port_: i64,
     arg: *const std::ffi::c_void,
@@ -14577,6 +14618,28 @@ pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonClo
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
             std::sync::RwLock<NonCloneSimpleTwinNormal>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>,
         >(ptr);
     }
 }

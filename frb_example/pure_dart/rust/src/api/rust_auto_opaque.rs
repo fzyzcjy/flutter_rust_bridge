@@ -135,93 +135,93 @@ pub fn rust_auto_opaque_trait_object_return_own_two() -> Box<dyn HelloTraitTwinN
     Box::new(HelloTwoEnumTwinNormal::B)
 }
 
-// // ==================================== static method =======================================
-//
-// impl NonCloneSimpleTwinNormal {
-//     pub fn static_method_arg_own(arg: NonCloneSimpleTwinNormal) {
-//         assert_eq!(arg.inner, 42);
-//     }
-//
-//     pub fn static_method_arg_borrow(arg: &NonCloneSimpleTwinNormal) {
-//         assert_eq!(arg.inner, 42);
-//     }
-//
-//     pub fn static_method_arg_mut_borrow(arg: &mut NonCloneSimpleTwinNormal) {
-//         assert_eq!(arg.inner, 42);
-//         arg.inner += 1;
-//     }
-//
-//     pub fn static_method_return_own() -> NonCloneSimpleTwinNormal {
-//         NonCloneSimpleTwinNormal { inner: 42 }
-//     }
-// }
-//
-// // ==================================== instance method =======================================
-//
-// impl NonCloneSimpleTwinNormal {
-//     /// unnamed constructor
-//     pub fn new() -> NonCloneSimpleTwinNormal {
-//         Self { inner: 42 }
-//     }
-//
-//     /// named constructor
-//     pub fn new_custom_name() -> NonCloneSimpleTwinNormal {
-//         Self { inner: 42 }
-//     }
-//
-//     pub fn instance_method_arg_own(self) {
-//         assert_eq!(self.inner, 42);
-//     }
-//
-//     pub fn instance_method_arg_borrow(&self) {
-//         assert_eq!(self.inner, 42);
-//     }
-//
-//     pub fn instance_method_arg_mut_borrow(&mut self) {
-//         assert_eq!(self.inner, 42);
-//         self.inner += 1;
-//     }
-//
-//     pub fn instance_method_return_own(&self) -> NonCloneSimpleTwinNormal {
-//         Self { inner: 42 }
-//     }
-// }
-//
-// // ================ types with both encodable and opaque fields ===================
-//
-// #[frb(opaque)]
-// pub struct StructWithGoodAndOpaqueFieldTwinNormal {
-//     pub good: String,
-//     pub opaque: NonCloneSimpleTwinNormal,
-// }
-//
-// pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
-//     arg: StructWithGoodAndOpaqueFieldTwinNormal,
-// ) {
-//     assert_eq!(&arg.good, "hello");
-//     assert_eq!(arg.opaque.inner, 42);
-// }
-//
-// pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(
-//     arg: &StructWithGoodAndOpaqueFieldTwinNormal,
-// ) {
-//     assert_eq!(&arg.good, "hello");
-//     assert_eq!(arg.opaque.inner, 42);
-// }
-//
-// pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(
-//     arg: &mut StructWithGoodAndOpaqueFieldTwinNormal,
-// ) {
-//     assert_eq!(&arg.good, "hello");
-//     assert_eq!(arg.opaque.inner, 42);
-//     arg.good += "world";
-//     arg.opaque.inner += 1;
-// }
-//
-// pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own(
-// ) -> StructWithGoodAndOpaqueFieldTwinNormal {
-//     StructWithGoodAndOpaqueFieldTwinNormal {
-//         good: "hello".to_string(),
-//         opaque: NonCloneSimpleTwinNormal { inner: 42 },
-//     }
-// }
+// ==================================== static method =======================================
+
+impl NonCloneSimpleTwinNormal {
+    pub fn static_method_arg_own(arg: NonCloneSimpleTwinNormal) {
+        assert_eq!(arg.inner, 42);
+    }
+
+    pub fn static_method_arg_borrow(arg: &NonCloneSimpleTwinNormal) {
+        assert_eq!(arg.inner, 42);
+    }
+
+    pub fn static_method_arg_mut_borrow(arg: &mut NonCloneSimpleTwinNormal) {
+        assert_eq!(arg.inner, 42);
+        arg.inner += 1;
+    }
+
+    pub fn static_method_return_own() -> NonCloneSimpleTwinNormal {
+        NonCloneSimpleTwinNormal { inner: 42 }
+    }
+}
+
+// ==================================== instance method =======================================
+
+impl NonCloneSimpleTwinNormal {
+    /// unnamed constructor
+    pub fn new() -> NonCloneSimpleTwinNormal {
+        Self { inner: 42 }
+    }
+
+    /// named constructor
+    pub fn new_custom_name() -> NonCloneSimpleTwinNormal {
+        Self { inner: 42 }
+    }
+
+    pub fn instance_method_arg_own(self) {
+        assert_eq!(self.inner, 42);
+    }
+
+    pub fn instance_method_arg_borrow(&self) {
+        assert_eq!(self.inner, 42);
+    }
+
+    pub fn instance_method_arg_mut_borrow(&mut self) {
+        assert_eq!(self.inner, 42);
+        self.inner += 1;
+    }
+
+    pub fn instance_method_return_own(&self) -> NonCloneSimpleTwinNormal {
+        Self { inner: 42 }
+    }
+}
+
+// ================ types with both encodable and opaque fields ===================
+
+#[frb(opaque)]
+pub struct StructWithGoodAndOpaqueFieldTwinNormal {
+    pub good: String,
+    pub opaque: NonCloneSimpleTwinNormal,
+}
+
+pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
+    arg: StructWithGoodAndOpaqueFieldTwinNormal,
+) {
+    assert_eq!(&arg.good, "hello");
+    assert_eq!(arg.opaque.inner, 42);
+}
+
+pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(
+    arg: &StructWithGoodAndOpaqueFieldTwinNormal,
+) {
+    assert_eq!(&arg.good, "hello");
+    assert_eq!(arg.opaque.inner, 42);
+}
+
+pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(
+    arg: &mut StructWithGoodAndOpaqueFieldTwinNormal,
+) {
+    assert_eq!(&arg.good, "hello");
+    assert_eq!(arg.opaque.inner, 42);
+    arg.good += "world";
+    arg.opaque.inner += 1;
+}
+
+pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own(
+) -> StructWithGoodAndOpaqueFieldTwinNormal {
+    StructWithGoodAndOpaqueFieldTwinNormal {
+        good: "hello".to_string(),
+        opaque: NonCloneSimpleTwinNormal { inner: 42 },
+    }
+}

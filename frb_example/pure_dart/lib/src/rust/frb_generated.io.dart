@@ -178,6 +178,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinNormalPtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormalPtr;
 
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinNormalPtr =>
+          wire._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormalPtr;
+
   @protected
   int api2wire_Chrono_Duration(Duration raw) {
     return api2wire_i_64(raw.inMicroseconds);
@@ -15730,6 +15734,78 @@ class RustLibWire implements BaseWire {
   late final _wire_rust_auto_opaque_return_own =
       _wire_rust_auto_opaque_return_ownPtr.asFunction<void Function(int)>();
 
+  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(
+    int port_,
+    ffi.Pointer<ffi.Void> arg,
+  ) {
+    return _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrowPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          'wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow');
+  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow =
+      _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrowPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(
+    int port_,
+    ffi.Pointer<ffi.Void> arg,
+  ) {
+    return _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrowPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          'wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow');
+  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow =
+      _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrowPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
+    int port_,
+    ffi.Pointer<ffi.Void> arg,
+  ) {
+    return _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_ownPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          'wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own');
+  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own =
+      _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_ownPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own(
+    int port_,
+  ) {
+    return _wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own(
+      port_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_ownPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own');
+  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own =
+      _wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_ownPtr
+          .asFunction<void Function(int)>();
+
   void wire_rust_auto_opaque_trait_object_arg_borrow(
     int port_,
     ffi.Pointer<ffi.Void> arg,
@@ -19949,6 +20025,38 @@ class RustLibWire implements BaseWire {
           'rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal');
   late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal =
       _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormalPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal');
+  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal =
+      _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormalPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal');
+  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal =
+      _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormalPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   ffi.Pointer<AbcTwinNormalKind> inflate_AbcTwinNormal_A() {

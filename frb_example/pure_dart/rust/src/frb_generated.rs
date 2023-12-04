@@ -7429,6 +7429,44 @@ fn wire_rust_auto_opaque_return_own_impl(port_: flutter_rust_bridge::for_generat
         },
     )
 }
+fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: impl Wire2Api<
+            flutter_rust_bridge::RustOpaque<
+                std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>,
+            >,
+        > + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  { let api_arg = api_arg.rust_auto_opaque_wire2api_ref()?;
+ Result::<_,anyhow::Error>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(&api_arg)) } })
+}
+fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: impl Wire2Api<
+            flutter_rust_bridge::RustOpaque<
+                std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>,
+            >,
+        > + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  { let mut api_arg = api_arg.rust_auto_opaque_wire2api_ref_mut()?;
+ Result::<_,anyhow::Error>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(&mut api_arg)) } })
+}
+fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: impl Wire2Api<
+            flutter_rust_bridge::RustOpaque<
+                std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>,
+            >,
+        > + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_struct_with_good_and_opaque_field_arg_own", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  { let api_arg = api_arg.rust_auto_opaque_wire2api_owned()?;
+ Result::<_,anyhow::Error>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(api_arg)) } })
+}
+fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_struct_with_good_and_opaque_field_return_own", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  Result::<_,()>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_api2wire(crate::api::rust_auto_opaque::rust_auto_opaque_struct_with_good_and_opaque_field_return_own())) } })
+}
 fn wire_rust_auto_opaque_trait_object_arg_borrow_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>>>
