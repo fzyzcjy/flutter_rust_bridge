@@ -7293,7 +7293,7 @@ fn wire_rust_auto_opaque_arg_borrow_impl(
             let api_arg = arg.wire2api();
             move |context| {
                 Result::<_, ()>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_arg_borrow(
-                    &api_arg,
+                    api_arg,
                 ))
             }
         },
