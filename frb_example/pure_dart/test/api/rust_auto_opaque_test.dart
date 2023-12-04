@@ -95,18 +95,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
     });
 
     group('concurrent calls', () {
-      test('cannot call multiple `T` concurrently', () async {
-        final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
-        await expectLater(() async {
-          return Future.wait([
-            futurizeVoidTwinNormal(
-                rustAutoOpaqueArgOwnTwinNormal(arg: obj, expect: 100)),
-            futurizeVoidTwinNormal(
-                rustAutoOpaqueArgOwnTwinNormal(arg: obj, expect: 100)),
-          ]);
-        }, throwsA(isA<DroppableDisposedException>()));
-      });
-
       test('can call multiple `&T` concurrently', () async {
         final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
         await Future.wait([
@@ -117,29 +105,44 @@ Future<void> main({bool skipRustLibInit = false}) async {
         ]);
       });
 
-      test('cannot call multiple `&mut T` concurrently', () async {
-        final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
-        await expectLater(() async {
-          return Future.wait([
-            futurizeVoidTwinNormal(rustAutoOpaqueArgMutBorrowTwinNormal(
-                arg: obj, expect: 100, adder: 1)),
-            futurizeVoidTwinNormal(rustAutoOpaqueArgMutBorrowTwinNormal(
-                arg: obj, expect: 100, adder: 1)),
-          ]);
-        }, throwsA(isA<DroppableDisposedException>()));
-      });
-
-      test('cannot call one `&T` and one `&mut T` concurrently', () async {
-        final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
-        await expectLater(() async {
-          return Future.wait([
-            futurizeVoidTwinNormal(
-                rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 100)),
-            futurizeVoidTwinNormal(rustAutoOpaqueArgMutBorrowTwinNormal(
-                arg: obj, expect: 100, adder: 1)),
-          ]);
-        }, throwsA(isA<DroppableDisposedException>()));
-      });
+      // Not test yet, since this requires one function to acquire the Rust RwLock
+      // before the other releases it, thus require some timing.
+      //
+      // test('cannot call multiple `T` concurrently', () async {
+      //   final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
+      //   await expectLater(() async {
+      //     return Future.wait([
+      //       futurizeVoidTwinNormal(
+      //           rustAutoOpaqueArgOwnTwinNormal(arg: obj, expect: 100)),
+      //       futurizeVoidTwinNormal(
+      //           rustAutoOpaqueArgOwnTwinNormal(arg: obj, expect: 100)),
+      //     ]);
+      //   }, throwsA(isA<DroppableDisposedException>()));
+      // });
+      //
+      // test('cannot call multiple `&mut T` concurrently', () async {
+      //   final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
+      //   await expectLater(() async {
+      //     return Future.wait([
+      //       futurizeVoidTwinNormal(rustAutoOpaqueArgMutBorrowTwinNormal(
+      //           arg: obj, expect: 100, adder: 1)),
+      //       futurizeVoidTwinNormal(rustAutoOpaqueArgMutBorrowTwinNormal(
+      //           arg: obj, expect: 100, adder: 1)),
+      //     ]);
+      //   }, throwsA(isA<DroppableDisposedException>()));
+      // });
+      //
+      // test('cannot call one `&T` and one `&mut T` concurrently', () async {
+      //   final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
+      //   await expectLater(() async {
+      //     return Future.wait([
+      //       futurizeVoidTwinNormal(
+      //           rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 100)),
+      //       futurizeVoidTwinNormal(rustAutoOpaqueArgMutBorrowTwinNormal(
+      //           arg: obj, expect: 100, adder: 1)),
+      //     ]);
+      //   }, throwsA(isA<DroppableDisposedException>()));
+      // });
     });
   });
 
