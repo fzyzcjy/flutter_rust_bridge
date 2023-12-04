@@ -107,9 +107,6 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool> Executor for SimpleExecutor<EH
         TaskRetData: IntoDart,
         Er: IntoDart + 'static,
     {
-        // TODO merge with `execute` case later
-        // TODO avoid lock later
-
         let eh = self.error_handler;
         let eh2 = self.error_handler;
 
@@ -117,7 +114,6 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool> Executor for SimpleExecutor<EH
             let TaskInfo { port, mode, .. } = task_info;
             let port2 = port.as_ref().cloned();
 
-            // TODO rename variable (not "thread" anymore)
             let thread_result = async {
                 let port2 = port2.expect("(worker) thread");
                 #[allow(clippy::clone_on_copy)]
