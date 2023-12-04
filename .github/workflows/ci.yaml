@@ -252,6 +252,11 @@ jobs:
       # execute
       - run: ./frb_internal test-rust
 
+      # report
+      - uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
   test_dart_native:
     name: 'Test :: Dart :: Native'
     runs-on: ${{ matrix.image }}
@@ -292,6 +297,11 @@ jobs:
 
       # execute
       - run: ./frb_internal test-dart-native --package ${{ matrix.package }}
+
+      # report
+      - uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   test_dart_web:
     name: 'Test :: Dart :: Web'
@@ -338,6 +348,11 @@ jobs:
 
       # execute
       - run: ./frb_internal test-dart-web --package ${{ matrix.package }}
+
+      # report
+      - uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   test_dart_valgrind:
     name: 'Test :: Dart :: Valgrind'
