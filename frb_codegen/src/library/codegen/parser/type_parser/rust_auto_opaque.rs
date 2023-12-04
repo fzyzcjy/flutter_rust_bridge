@@ -53,7 +53,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         };
 
         let lock_type = if context_rust_async {
-            "tokio::sync::RwLock"
+            "flutter_rust_bridge::for_generated::tokio::sync::RwLock"
         } else {
             "std::sync::RwLock"
         };

@@ -142,6 +142,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           .rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync;
 
   CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockBoxFnStringStringPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinRustAsyncPtr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynHelloTraitTwinRustAsync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinRustAsyncPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinRustAsyncPtr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockNonCloneSimpleTwinRustAsync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinRustAsyncPtr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync;
+
+  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_FrbOpaqueReturnPtr =>
           wire.rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return;
 
@@ -194,26 +214,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSyncPtr =>
           wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxFnStringStringPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinRustAsyncPtr =>
-          wire.rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockBoxdynHelloTraitTwinRustAsync;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinRustAsyncPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinRustAsyncPtr =>
-          wire.rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockNonCloneSimpleTwinRustAsync;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinRustAsyncPtr =>
-          wire.rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync;
 
   @protected
   Object api2wire_Chrono_Duration(Duration raw) {
@@ -6403,6 +6403,66 @@ class RustLibWire extends BaseWire {
           .rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync(
               ptr);
 
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynHelloTraitTwinRustAsync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynHelloTraitTwinRustAsync(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynHelloTraitTwinRustAsync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynHelloTraitTwinRustAsync(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockNonCloneSimpleTwinRustAsync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockNonCloneSimpleTwinRustAsync(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockNonCloneSimpleTwinRustAsync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockNonCloneSimpleTwinRustAsync(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+              ptr);
+
   void rust_arc_increment_strong_count_RustOpaque_frb_opaque_return(
           dynamic ptr) =>
       wasmModule
@@ -6547,66 +6607,6 @@ class RustLibWire extends BaseWire {
           dynamic ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockBoxdynHelloTraitTwinRustAsync(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockBoxdynHelloTraitTwinRustAsync(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockBoxdynHelloTraitTwinRustAsync(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockBoxdynHelloTraitTwinRustAsync(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockNonCloneSimpleTwinRustAsync(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockNonCloneSimpleTwinRustAsync(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockNonCloneSimpleTwinRustAsync(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockNonCloneSimpleTwinRustAsync(
-              ptr);
-
-  void rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
               ptr);
 }
 
@@ -8968,6 +8968,46 @@ class RustLibWasmModule implements WasmModule {
       rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync(
           dynamic ptr);
 
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+          dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynHelloTraitTwinRustAsync(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynHelloTraitTwinRustAsync(
+          dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+          dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockNonCloneSimpleTwinRustAsync(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockNonCloneSimpleTwinRustAsync(
+          dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          dynamic ptr);
+
   external void rust_arc_increment_strong_count_RustOpaque_frb_opaque_return(
       dynamic ptr);
 
@@ -9066,45 +9106,5 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockBoxdynHelloTraitTwinRustAsync(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockBoxdynHelloTraitTwinRustAsync(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockNonCloneSimpleTwinRustAsync(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockNonCloneSimpleTwinRustAsync(
-          dynamic ptr);
-
-  external void
-      rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
           dynamic ptr);
 }

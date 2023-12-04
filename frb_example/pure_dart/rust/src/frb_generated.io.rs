@@ -74,6 +74,95 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<Box<dyn DartDebugTwinSync>>>
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
+impl
+    Wire2Api<
+        flutter_rust_bridge::RustOpaque<
+            flutter_rust_bridge::for_generated::tokio::sync::RwLock<
+                Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>,
+            >,
+        >,
+    > for *const std::ffi::c_void
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::for_generated::tokio::sync::RwLock<
+            Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>,
+        >,
+    > {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl
+    Wire2Api<
+        flutter_rust_bridge::RustOpaque<
+            flutter_rust_bridge::for_generated::tokio::sync::RwLock<
+                Box<dyn HelloTraitTwinRustAsync>,
+            >,
+        >,
+    > for *const std::ffi::c_void
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::for_generated::tokio::sync::RwLock<Box<dyn HelloTraitTwinRustAsync>>,
+    > {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl
+    Wire2Api<
+        flutter_rust_bridge::RustOpaque<
+            flutter_rust_bridge::for_generated::tokio::sync::RwLock<
+                Box<dyn MyTraitTwinRustAsync + Send + Sync>,
+            >,
+        >,
+    > for *const std::ffi::c_void
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::for_generated::tokio::sync::RwLock<
+            Box<dyn MyTraitTwinRustAsync + Send + Sync>,
+        >,
+    > {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl
+    Wire2Api<
+        flutter_rust_bridge::RustOpaque<
+            flutter_rust_bridge::for_generated::tokio::sync::RwLock<NonCloneSimpleTwinRustAsync>,
+        >,
+    > for *const std::ffi::c_void
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::for_generated::tokio::sync::RwLock<NonCloneSimpleTwinRustAsync>,
+    > {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl
+    Wire2Api<
+        flutter_rust_bridge::RustOpaque<
+            flutter_rust_bridge::for_generated::tokio::sync::RwLock<
+                StructWithGoodAndOpaqueFieldTwinRustAsync,
+            >,
+        >,
+    > for *const std::ffi::c_void
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::for_generated::tokio::sync::RwLock<
+            StructWithGoodAndOpaqueFieldTwinRustAsync,
+        >,
+    > {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
 impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
     for *const std::ffi::c_void
 {
@@ -198,75 +287,6 @@ impl
         self,
     ) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinSync>>
     {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
-impl
-    Wire2Api<
-        flutter_rust_bridge::RustOpaque<
-            tokio::sync::RwLock<
-                Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>,
-            >,
-        >,
-    > for *const std::ffi::c_void
-{
-    fn wire2api(
-        self,
-    ) -> flutter_rust_bridge::RustOpaque<
-        tokio::sync::RwLock<
-            Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>,
-        >,
-    > {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
-impl
-    Wire2Api<flutter_rust_bridge::RustOpaque<tokio::sync::RwLock<Box<dyn HelloTraitTwinRustAsync>>>>
-    for *const std::ffi::c_void
-{
-    fn wire2api(
-        self,
-    ) -> flutter_rust_bridge::RustOpaque<tokio::sync::RwLock<Box<dyn HelloTraitTwinRustAsync>>>
-    {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
-impl
-    Wire2Api<
-        flutter_rust_bridge::RustOpaque<
-            tokio::sync::RwLock<Box<dyn MyTraitTwinRustAsync + Send + Sync>>,
-        >,
-    > for *const std::ffi::c_void
-{
-    fn wire2api(
-        self,
-    ) -> flutter_rust_bridge::RustOpaque<
-        tokio::sync::RwLock<Box<dyn MyTraitTwinRustAsync + Send + Sync>>,
-    > {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
-impl Wire2Api<flutter_rust_bridge::RustOpaque<tokio::sync::RwLock<NonCloneSimpleTwinRustAsync>>>
-    for *const std::ffi::c_void
-{
-    fn wire2api(
-        self,
-    ) -> flutter_rust_bridge::RustOpaque<tokio::sync::RwLock<NonCloneSimpleTwinRustAsync>> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
-impl
-    Wire2Api<
-        flutter_rust_bridge::RustOpaque<
-            tokio::sync::RwLock<StructWithGoodAndOpaqueFieldTwinRustAsync>,
-        >,
-    > for *const std::ffi::c_void
-{
-    fn wire2api(
-        self,
-    ) -> flutter_rust_bridge::RustOpaque<
-        tokio::sync::RwLock<StructWithGoodAndOpaqueFieldTwinRustAsync>,
-    > {
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
@@ -15040,6 +15060,132 @@ pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwi
 }
 
 #[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            flutter_rust_bridge::for_generated::tokio::sync::RwLock<
+                Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>,
+            >,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            flutter_rust_bridge::for_generated::tokio::sync::RwLock<
+                Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>,
+            >,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynHelloTraitTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            flutter_rust_bridge::for_generated::tokio::sync::RwLock<
+                Box<dyn HelloTraitTwinRustAsync>,
+            >,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynHelloTraitTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            flutter_rust_bridge::for_generated::tokio::sync::RwLock<
+                Box<dyn HelloTraitTwinRustAsync>,
+            >,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            flutter_rust_bridge::for_generated::tokio::sync::RwLock<
+                Box<dyn MyTraitTwinRustAsync + Send + Sync>,
+            >,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            flutter_rust_bridge::for_generated::tokio::sync::RwLock<
+                Box<dyn MyTraitTwinRustAsync + Send + Sync>,
+            >,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockNonCloneSimpleTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            flutter_rust_bridge::for_generated::tokio::sync::RwLock<NonCloneSimpleTwinRustAsync>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockNonCloneSimpleTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            flutter_rust_bridge::for_generated::tokio::sync::RwLock<NonCloneSimpleTwinRustAsync>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            flutter_rust_bridge::for_generated::tokio::sync::RwLock<
+                StructWithGoodAndOpaqueFieldTwinRustAsync,
+            >,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            flutter_rust_bridge::for_generated::tokio::sync::RwLock<
+                StructWithGoodAndOpaqueFieldTwinRustAsync,
+            >,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
 pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_frb_opaque_return(
     ptr: *const std::ffi::c_void,
 ) {
@@ -15335,120 +15481,6 @@ pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStruct
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
             std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinSync>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            tokio::sync::RwLock<
-                Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>,
-            >,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            tokio::sync::RwLock<
-                Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>,
-            >,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockBoxdynHelloTraitTwinRustAsync(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            tokio::sync::RwLock<Box<dyn HelloTraitTwinRustAsync>>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockBoxdynHelloTraitTwinRustAsync(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            tokio::sync::RwLock<Box<dyn HelloTraitTwinRustAsync>>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            tokio::sync::RwLock<Box<dyn MyTraitTwinRustAsync + Send + Sync>>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            tokio::sync::RwLock<Box<dyn MyTraitTwinRustAsync + Send + Sync>>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockNonCloneSimpleTwinRustAsync(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            tokio::sync::RwLock<NonCloneSimpleTwinRustAsync>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockNonCloneSimpleTwinRustAsync(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            tokio::sync::RwLock<NonCloneSimpleTwinRustAsync>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            tokio::sync::RwLock<StructWithGoodAndOpaqueFieldTwinRustAsync>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            tokio::sync::RwLock<StructWithGoodAndOpaqueFieldTwinRustAsync>,
         >(ptr);
     }
 }

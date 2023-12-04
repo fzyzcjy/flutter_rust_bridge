@@ -21,5 +21,7 @@ pub use cast::*;
 pub use js_sys;
 pub use lazy_static::lazy_static;
 pub use pointer::*;
+#[cfg(feature = "rust-async")]
+pub use tokio;
 #[cfg(wasm)]
 pub use wasm_bindgen;
