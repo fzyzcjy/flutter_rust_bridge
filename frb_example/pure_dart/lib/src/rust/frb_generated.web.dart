@@ -124,10 +124,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           wire.rust_arc_decrement_strong_count_RustOpaque_MutexHideData;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonCloneSimpleTwinNormalPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormal;
-
-  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_RwLockHideDataPtr =>
           wire.rust_arc_decrement_strong_count_RustOpaque_RwLockHideData;
 
@@ -164,6 +160,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_NonSendHideDataPtr =>
           wire.rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinNormalPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal;
 
   @protected
   Object api2wire_Chrono_Duration(Duration raw) {
@@ -5845,18 +5845,6 @@ class RustLibWire extends BaseWire {
   void rust_arc_decrement_strong_count_RustOpaque_MutexHideData(dynamic ptr) =>
       wasmModule.rust_arc_decrement_strong_count_RustOpaque_MutexHideData(ptr);
 
-  void rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormal(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormal(
-              ptr);
-
-  void rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormal(
-          dynamic ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormal(
-              ptr);
-
   void rust_arc_increment_strong_count_RustOpaque_RwLockHideData(dynamic ptr) =>
       wasmModule.rust_arc_increment_strong_count_RustOpaque_RwLockHideData(ptr);
 
@@ -5948,6 +5936,18 @@ class RustLibWire extends BaseWire {
           dynamic ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data(ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+              ptr);
 }
 
 @JS('wasm_bindgen')
@@ -7978,14 +7978,6 @@ class RustLibWasmModule implements WasmModule {
   external void rust_arc_decrement_strong_count_RustOpaque_MutexHideData(
       dynamic ptr);
 
-  external void
-      rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormal(
-          dynamic ptr);
-
-  external void
-      rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormal(
-          dynamic ptr);
-
   external void rust_arc_increment_strong_count_RustOpaque_RwLockHideData(
       dynamic ptr);
 
@@ -8051,4 +8043,12 @@ class RustLibWasmModule implements WasmModule {
 
   external void rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data(
       dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+          dynamic ptr);
 }

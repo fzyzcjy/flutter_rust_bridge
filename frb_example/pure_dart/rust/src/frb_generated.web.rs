@@ -3314,13 +3314,6 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<Mutex<HideData>>>
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
-impl Wire2Api<flutter_rust_bridge::RustOpaque<NonCloneSimpleTwinNormal>>
-    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
-{
-    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<NonCloneSimpleTwinNormal> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
 impl Wire2Api<flutter_rust_bridge::RustOpaque<RwLock<HideData>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -3389,6 +3382,15 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::No
     fn wire2api(
         self,
     ) -> flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonSendHideData> {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>> {
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
@@ -8898,28 +8900,6 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_MutexHideData(ptr: *const std:
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormal(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            NonCloneSimpleTwinNormal,
-        >(ptr);
-    }
-}
-
-#[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormal(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            NonCloneSimpleTwinNormal,
-        >(ptr);
-    }
-}
-
-#[wasm_bindgen]
 pub fn rust_arc_increment_strong_count_RustOpaque_RwLockHideData(ptr: *const std::ffi::c_void) {
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<RwLock<HideData>>(
@@ -9107,6 +9087,28 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data(ptr: *const
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
             crate::auxiliary::sample_types::NonSendHideData,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<NonCloneSimpleTwinNormal>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<NonCloneSimpleTwinNormal>,
         >(ptr);
     }
 }

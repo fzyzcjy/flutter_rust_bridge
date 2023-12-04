@@ -3547,10 +3547,6 @@ void rust_arc_increment_strong_count_RustOpaque_MutexHideData(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_MutexHideData(const void *ptr);
 
-void rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormal(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormal(const void *ptr);
-
 void rust_arc_increment_strong_count_RustOpaque_RwLockHideData(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_RwLockHideData(const void *ptr);
@@ -3590,6 +3586,10 @@ void rust_arc_decrement_strong_count_RustOpaque_non_clone_data(const void *ptr);
 void rust_arc_increment_strong_count_RustOpaque_non_send_hide_data(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(const void *ptr);
 
 union AbcTwinNormalKind *inflate_AbcTwinNormal_A(void);
 
@@ -4085,7 +4085,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_list_weekdays_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) new_list_weekdays_twin_sync);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_MutexHideData);
-    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_RwLockHideData);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync);
@@ -4096,8 +4095,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_i_32);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_non_clone_data);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_MutexHideData);
-    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_RwLockHideData);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync);
@@ -4108,6 +4107,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_i_32);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_non_clone_data);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_non_send_hide_data);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal);
     dummy_var ^= ((int64_t) (void*) store_dart_post_cobject);
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinNormal_concatenate_static_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinNormal_concatenate_twin_normal);

@@ -125,10 +125,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           wire._rust_arc_decrement_strong_count_RustOpaque_MutexHideDataPtr;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonCloneSimpleTwinNormalPtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormalPtr;
-
-  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_RwLockHideDataPtr =>
           wire._rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataPtr;
 
@@ -165,6 +161,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_NonSendHideDataPtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_non_send_hide_dataPtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinNormalPtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormalPtr;
 
   @protected
   int api2wire_Chrono_Duration(Duration raw) {
@@ -19289,36 +19289,6 @@ class RustLibWire implements BaseWire {
       _rust_arc_decrement_strong_count_RustOpaque_MutexHideDataPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
-  void rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormal(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormal(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormal');
-  late final _rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormal =
-      _rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormalPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormal(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormal(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormal');
-  late final _rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormal =
-      _rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormalPtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
   void rust_arc_increment_strong_count_RustOpaque_RwLockHideData(
     ffi.Pointer<ffi.Void> ptr,
   ) {
@@ -19617,6 +19587,38 @@ class RustLibWire implements BaseWire {
           'rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data');
   late final _rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data =
       _rust_arc_decrement_strong_count_RustOpaque_non_send_hide_dataPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal');
+  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal =
+      _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormalPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal');
+  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal =
+      _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormalPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   ffi.Pointer<AbcTwinNormalKind> inflate_AbcTwinNormal_A() {

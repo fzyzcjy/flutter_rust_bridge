@@ -1896,15 +1896,16 @@ abstract class RustLibApi extends BaseApi {
       {dynamic hint});
 
   Future<void> rustAutoOpaqueArgBorrow(
-      {required NonCloneSimpleTwinNormal arg, dynamic hint});
+      {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint});
 
   Future<void> rustAutoOpaqueArgMutBorrow(
-      {required NonCloneSimpleTwinNormal arg, dynamic hint});
+      {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint});
 
   Future<void> rustAutoOpaqueArgOwn(
-      {required NonCloneSimpleTwinNormal arg, dynamic hint});
+      {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint});
 
-  Future<NonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwn({dynamic hint});
+  Future<RwLockNonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwn(
+      {dynamic hint});
 
   Future<EnumOpaqueTwinNormalArray5> createArrayOpaqueEnumTwinNormal(
       {dynamic hint});
@@ -2034,15 +2035,6 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_MutexHideDataPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_NonCloneSimpleTwinNormal;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_NonCloneSimpleTwinNormal;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonCloneSimpleTwinNormalPtr;
-
-  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_RwLockHideData;
 
   RustArcDecrementStrongCountFnType
@@ -2126,6 +2118,15 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_NonSendHideDataPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockNonCloneSimpleTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinNormalPtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -15417,8 +15418,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueArgBorrow(
-      {required NonCloneSimpleTwinNormal arg, dynamic hint}) {
-    var arg0 = api2wire_Auto_RustOpaque_NonCloneSimpleTwinNormal(arg);
+      {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) {
+    var arg0 =
+        api2wire_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_rust_auto_opaque_arg_borrow(port_, arg0),
       parseSuccessData: _wire2api_unit,
@@ -15437,8 +15439,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueArgMutBorrow(
-      {required NonCloneSimpleTwinNormal arg, dynamic hint}) {
-    var arg0 = api2wire_Auto_RustOpaque_NonCloneSimpleTwinNormal(arg);
+      {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) {
+    var arg0 =
+        api2wire_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
           wire.wire_rust_auto_opaque_arg_mut_borrow(port_, arg0),
@@ -15458,8 +15461,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueArgOwn(
-      {required NonCloneSimpleTwinNormal arg, dynamic hint}) {
-    var arg0 = api2wire_Auto_RustOpaque_NonCloneSimpleTwinNormal(arg);
+      {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) {
+    var arg0 =
+        api2wire_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_rust_auto_opaque_arg_own(port_, arg0),
       parseSuccessData: _wire2api_unit,
@@ -15477,10 +15481,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<NonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwn({dynamic hint}) {
+  Future<RwLockNonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwn(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_rust_auto_opaque_return_own(port_),
-      parseSuccessData: _wire2api_Auto_RustOpaque_NonCloneSimpleTwinNormal,
+      parseSuccessData:
+          _wire2api_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueReturnOwnConstMeta,
       argValues: [],
@@ -16403,14 +16409,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           wire.rust_arc_decrement_strong_count_RustOpaque_MutexHideData;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_NonCloneSimpleTwinNormal => wire
-          .rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormal;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_NonCloneSimpleTwinNormal => wire
-          .rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormal;
-
-  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_RwLockHideData =>
           wire.rust_arc_increment_strong_count_RustOpaque_RwLockHideData;
 
@@ -16488,13 +16486,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get rust_arc_decrement_strong_count_NonSendHideData =>
           wire.rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data;
 
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockNonCloneSimpleTwinNormal => wire
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinNormal => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal;
+
   AnyhowException _wire2api_AnyhowException(dynamic raw) {
     return AnyhowException(raw as String);
   }
 
-  NonCloneSimpleTwinNormal _wire2api_Auto_RustOpaque_NonCloneSimpleTwinNormal(
-      dynamic raw) {
-    return NonCloneSimpleTwinNormal.fromWire(raw);
+  RwLockNonCloneSimpleTwinNormal
+      _wire2api_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+          dynamic raw) {
+    return RwLockNonCloneSimpleTwinNormal.fromWire(raw);
   }
 
   Duration _wire2api_Chrono_Duration(dynamic raw) {
@@ -16532,11 +16539,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   MutexHideData _wire2api_RustOpaque_MutexHideData(dynamic raw) {
     return MutexHideData.fromWire(raw);
-  }
-
-  NonCloneSimpleTwinNormal _wire2api_RustOpaque_NonCloneSimpleTwinNormal(
-      dynamic raw) {
-    return NonCloneSimpleTwinNormal.fromWire(raw);
   }
 
   RwLockHideData _wire2api_RustOpaque_RwLockHideData(dynamic raw) {
@@ -16585,6 +16587,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   NonSendHideData _wire2api_RustOpaque_non_send_hide_data(dynamic raw) {
     return NonSendHideData.fromWire(raw);
+  }
+
+  RwLockNonCloneSimpleTwinNormal
+      _wire2api_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(dynamic raw) {
+    return RwLockNonCloneSimpleTwinNormal.fromWire(raw);
   }
 
   String _wire2api_String(dynamic raw) {
@@ -20132,19 +20139,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
 // Section: api2wire_funcs
 
-PlatformPointer api2wire_Auto_RustOpaque_NonCloneSimpleTwinNormal(
-    NonCloneSimpleTwinNormal raw) {
+PlatformPointer api2wire_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+    RwLockNonCloneSimpleTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire();
 }
 
 PlatformPointer api2wire_RustOpaque_MutexHideData(MutexHideData raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.api2wire();
-}
-
-PlatformPointer api2wire_RustOpaque_NonCloneSimpleTwinNormal(
-    NonCloneSimpleTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire();
 }
@@ -20188,6 +20189,12 @@ PlatformPointer api2wire_RustOpaque_non_clone_data(NonCloneData raw) {
 }
 
 PlatformPointer api2wire_RustOpaque_non_send_hide_data(NonSendHideData raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.api2wire();
+}
+
+PlatformPointer api2wire_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+    RwLockNonCloneSimpleTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire();
 }

@@ -7,32 +7,33 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<void> rustAutoOpaqueArgOwn(
-        {required NonCloneSimpleTwinNormal arg, dynamic hint}) =>
+        {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueArgOwn(arg: arg, hint: hint);
 
 Future<void> rustAutoOpaqueArgBorrow(
-        {required NonCloneSimpleTwinNormal arg, dynamic hint}) =>
+        {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueArgBorrow(arg: arg, hint: hint);
 
 Future<void> rustAutoOpaqueArgMutBorrow(
-        {required NonCloneSimpleTwinNormal arg, dynamic hint}) =>
+        {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueArgMutBorrow(arg: arg, hint: hint);
 
-Future<NonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwn({dynamic hint}) =>
+Future<RwLockNonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwn(
+        {dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueReturnOwn(hint: hint);
 
-// Rust type: flutter_rust_bridge::RustOpaque<NonCloneSimpleTwinNormal>
+// Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>
 @sealed
-class NonCloneSimpleTwinNormal extends RustOpaque {
-  NonCloneSimpleTwinNormal.fromWire(dynamic wire)
+class RwLockNonCloneSimpleTwinNormal extends RustOpaque {
+  RwLockNonCloneSimpleTwinNormal.fromWire(dynamic wire)
       : super.fromWire(wire, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_NonCloneSimpleTwinNormal,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_NonCloneSimpleTwinNormal,
+    rustArcIncrementStrongCount: RustLib.instance.api
+        .rust_arc_increment_strong_count_RwLockNonCloneSimpleTwinNormal,
+    rustArcDecrementStrongCount: RustLib.instance.api
+        .rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinNormal,
     rustArcDecrementStrongCountPtr: RustLib.instance.api
-        .rust_arc_decrement_strong_count_NonCloneSimpleTwinNormalPtr,
+        .rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinNormalPtr,
   );
 }
