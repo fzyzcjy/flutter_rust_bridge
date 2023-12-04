@@ -59,7 +59,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         TaskRetData: IntoDart,
         Er: IntoDart + 'static,
     {
-        self.wrap_simple(task_info, prepare, |task_info, task| {
+        self.wrap_normal_or_async(task_info, prepare, |task_info, task| {
             self.executor.execute_normal(task_info, task)
         })
     }
@@ -109,14 +109,14 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         TaskRetData: IntoDart,
         Er: IntoDart + 'static,
     {
-        self.wrap_simple(task_info, prepare, |task_info, task| {
+        self.wrap_normal_or_async(task_info, prepare, |task_info, task| {
             self.executor.execute_async(task_info, task)
         })
     }
 }
 
 impl<E: Executor, EH: ErrorHandler> SimpleHandler<E, EH> {
-    fn wrap_simple<PrepareFn, TaskFn, TaskFnRet, ExecuteFn>(
+    fn wrap_normal_or_async<PrepareFn, TaskFn, TaskFnRet, ExecuteFn>(
         &self,
         task_info: TaskInfo,
         prepare: PrepareFn,
