@@ -48,7 +48,7 @@ impl<E: Executor, H: ErrorHandler> SimpleHandler<E, H> {
 }
 
 macro_rules! wrap_simple {
-    ($self:ident, $task_info:ident, $prepare:ident, $execute_func:ident) => {{
+    ($execute_func:ident) => {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
         // Why do this: As nomicon says, unwind across languages is undefined behavior (UB).
         // Therefore, we should wrap a [catch_unwind] outside of *each and every* line of code
@@ -58,17 +58,16 @@ macro_rules! wrap_simple {
         // as well. Then that new panic will go across language boundary and cause UB.
         // ref https://doc.rust-lang.org/nomicon/unwinding.html
         let _ = panic::catch_unwind(move || {
-            let task_info2 = $task_info.clone();
+            let task_info2 = task_info.clone();
             if let Err(error) = panic::catch_unwind(move || {
-                let task = $prepare();
-                $self.executor.$execute_func(task_info2, task);
+                let task = prepare();
+                self.executor.$execute_func(task_info2, task);
             }) {
-                $self
-                    .error_handler
-                    .handle_error($task_info.port.unwrap(), Error::Panic(error));
+                self.error_handler
+                    .handle_error(task_info.port.unwrap(), Error::Panic(error));
             }
         });
-    }};
+    };
 }
 
 impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
@@ -83,7 +82,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         TaskRetData: IntoDart,
         Er: IntoDart + 'static,
     {
-        wrap_simple!(self, task_info, prepare, execute_normal)
+        wrap_simple!(execute_normal)
     }
 
     fn wrap_sync<SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
@@ -131,6 +130,16 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         TaskRetData: IntoDart,
         Er: IntoDart + 'static,
     {
-        wrap_simple!(self, task_info, prepare, execute_async)
+        // TODO temporary copy-and-paste, should merge with case above later
+        let _ = panic::catch_unwind(move || {
+            let task_info2 = task_info.clone();
+            if let Err(error) = panic::catch_unwind(move || {
+                let task = prepare();
+                self.executor.execute_async(task_info2, task);
+            }) {
+                self.error_handler
+                    .handle_error(task_info.port.unwrap(), Error::Panic(error));
+            }
+        });
     }
 }
