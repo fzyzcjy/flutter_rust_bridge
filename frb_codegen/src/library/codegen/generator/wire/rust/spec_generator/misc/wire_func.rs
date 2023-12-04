@@ -67,7 +67,13 @@ fn generate_inner_func_params(
     let mut ans = func
         .inputs
         .iter()
-        .map(|field| format!("api_{}", field.name.rust_style()))
+        .map(|field| {
+            let mut ans = format!("api_{}", field.name.rust_style());
+            if matches!(&field.ty, IrType::RustAutoOpaque(_)) {
+                ans = format!("{ans}.rust_auto_opaque_wire2api()");
+            }
+            ans
+        })
         .collect_vec();
 
     if let IrFuncMode::Stream { argument_index } = func.mode {
@@ -181,6 +187,10 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_params: Vec<St
 
     if func.rust_async {
         ans = format!("{ans}.await");
+    }
+
+    if matches!(&func.output, IrType::RustAutoOpaque(_)) {
+        ans = format!("flutter_rust_bridge::RustOpaque::new({ans})");
     }
 
     if !func.fallible() {
