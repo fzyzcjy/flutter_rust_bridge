@@ -23,10 +23,15 @@ impl ErrorHandler for ReportDartErrorHandler {
         log::warn!("hack!!!!!!!!!");
         crate::console_error!("hi port={:?}", port);
         let ch1 = Channel::new(port);
+        // GOOD
         // let ch2 = handle_to_channel(&channel_to_handle(&ch1));
+        // GOOD
         let ch2 = Channel::new(PortLike::broadcast(
             &ch1.broadcast_name().expect("Not a BroadcastChannel"),
         ));
+        // try clone - BAD
+        // let ch1 = Channel::new(port.clone());
+        // let ch2 = Channel::new(port.clone());
         crate::console_error!(
             "hi (old)ch1={:?} (new)ch2={:?} ch1.name={:?} ch2.name={:?}",
             ch1,
