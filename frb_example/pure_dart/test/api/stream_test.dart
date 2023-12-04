@@ -16,8 +16,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     funcStreamSinkArgPositionTwinNormal(a: 100, b: 200);
   });
 
-  test('call funcStreamReturnErrorTwinNormal', skip: 'wait until #11281',
-      () async {
+  test('call funcStreamReturnErrorTwinNormal', () async {
     await expectLater(
       () async {
         await for (final _ in funcStreamReturnErrorTwinNormal()) {}

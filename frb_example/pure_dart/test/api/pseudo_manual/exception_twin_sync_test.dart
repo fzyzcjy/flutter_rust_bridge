@@ -236,8 +236,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
             'TwinSync', throwsA(isA<FrbException>()));
       });
 
-      test('Stream sink throw anyhow error', skip: 'wait until #11281',
-          () async {
+      test('Stream sink throw anyhow error', () async {
         expect(
           () async {
             await for (final _ in streamSinkThrowAnyhowTwinSync()) {}
