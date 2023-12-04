@@ -11,6 +11,7 @@ use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRust
 use crate::codegen::ir::func::IrFuncOwnerInfoMethodMode::Instance;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod};
 use crate::codegen::ir::pack::IrPack;
+use crate::codegen::ir::ty::ownership::IrTypeOwnershipMode;
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::spec_generator::rust2dart::ty::WireRustGeneratorRust2DartTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
@@ -75,7 +76,17 @@ fn generate_inner_func_params(
     let mut ans = func
         .inputs
         .iter()
-        .map(|field| format!("api_{}", field.name.rust_style()))
+        .map(|field| {
+            let mut ans = format!("api_{}", field.name.rust_style());
+            if let IrType::RustAutoOpaque(o) = &field.ty {
+                ans = match o.ownership_mode {
+                    IrTypeOwnershipMode::Ref => format!("&{ans}"),
+                    IrTypeOwnershipMode::RefMut => format!("&mut {ans}"),
+                    _ => ans,
+                };
+            }
+            ans
+        })
         .collect_vec();
 
     if let IrFuncMode::Stream { argument_index } = func.mode {

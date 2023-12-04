@@ -7209,7 +7209,7 @@ fn wire_rust_auto_opaque_arg_borrow_impl(
             move |context| {
                 let api_arg = api_arg.rust_auto_opaque_wire2api_ref()?;
                 Result::<_, anyhow::Error>::Ok(
-                    crate::api::rust_auto_opaque::rust_auto_opaque_arg_borrow(api_arg),
+                    crate::api::rust_auto_opaque::rust_auto_opaque_arg_borrow(&api_arg),
                 )
             }
         },
@@ -7231,7 +7231,7 @@ fn wire_rust_auto_opaque_arg_mut_borrow_impl(
             move |context| {
                 let api_arg = api_arg.rust_auto_opaque_wire2api_ref_mut()?;
                 Result::<_, anyhow::Error>::Ok(
-                    crate::api::rust_auto_opaque::rust_auto_opaque_arg_mut_borrow(api_arg),
+                    crate::api::rust_auto_opaque::rust_auto_opaque_arg_mut_borrow(&mut api_arg),
                 )
             }
         },
