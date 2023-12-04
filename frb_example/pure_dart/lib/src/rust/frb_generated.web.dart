@@ -77,6 +77,8 @@ import 'api/pseudo_manual/primitive_twin_rust_async.dart';
 import 'api/pseudo_manual/primitive_twin_sync.dart';
 import 'api/pseudo_manual/raw_string_twin_rust_async.dart';
 import 'api/pseudo_manual/raw_string_twin_sync.dart';
+import 'api/pseudo_manual/rust_auto_opaque_twin_rust_async.dart';
+import 'api/pseudo_manual/rust_auto_opaque_twin_sync.dart';
 import 'api/pseudo_manual/rust_opaque_twin_rust_async.dart';
 import 'api/pseudo_manual/rust_opaque_twin_sync.dart';
 import 'api/pseudo_manual/simple_twin_rust_async.dart';
@@ -170,16 +172,48 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal;
 
   CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinRustAsyncPtr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinSyncPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync;
+
+  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinNormalPtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinRustAsyncPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinSyncPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync;
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinNormalPtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal;
 
   CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinRustAsyncPtr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinSyncPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync;
+
+  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinNormalPtr =>
           wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinRustAsyncPtr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSyncPtr =>
+          wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync;
 
   @protected
   Object api2wire_Chrono_Duration(Duration raw) {
@@ -5420,6 +5454,331 @@ class RustLibWire extends BaseWire {
       wire_test_raw_string_item_struct_twin_sync() =>
           wasmModule.wire_test_raw_string_item_struct_twin_sync();
 
+  void wire_NonCloneSimpleTwinRustAsync_instance_method_arg_borrow_twin_rust_async(
+          NativePortType port_, Object that) =>
+      wasmModule
+          .wire_NonCloneSimpleTwinRustAsync_instance_method_arg_borrow_twin_rust_async(
+              port_, that);
+
+  void wire_NonCloneSimpleTwinRustAsync_instance_method_arg_mut_borrow_twin_rust_async(
+          NativePortType port_, Object that) =>
+      wasmModule
+          .wire_NonCloneSimpleTwinRustAsync_instance_method_arg_mut_borrow_twin_rust_async(
+              port_, that);
+
+  void wire_NonCloneSimpleTwinRustAsync_instance_method_arg_own_twin_rust_async(
+          NativePortType port_, Object that) =>
+      wasmModule
+          .wire_NonCloneSimpleTwinRustAsync_instance_method_arg_own_twin_rust_async(
+              port_, that);
+
+  void wire_NonCloneSimpleTwinRustAsync_instance_method_return_own_twin_rust_async(
+          NativePortType port_, Object that) =>
+      wasmModule
+          .wire_NonCloneSimpleTwinRustAsync_instance_method_return_own_twin_rust_async(
+              port_, that);
+
+  void wire_NonCloneSimpleTwinRustAsync_new_custom_name_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire_NonCloneSimpleTwinRustAsync_new_custom_name_twin_rust_async(
+              port_);
+
+  void wire_NonCloneSimpleTwinRustAsync_new_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule.wire_NonCloneSimpleTwinRustAsync_new_twin_rust_async(port_);
+
+  void wire_NonCloneSimpleTwinRustAsync_static_method_arg_borrow_twin_rust_async(
+          NativePortType port_, Object arg) =>
+      wasmModule
+          .wire_NonCloneSimpleTwinRustAsync_static_method_arg_borrow_twin_rust_async(
+              port_, arg);
+
+  void wire_NonCloneSimpleTwinRustAsync_static_method_arg_mut_borrow_twin_rust_async(
+          NativePortType port_, Object arg) =>
+      wasmModule
+          .wire_NonCloneSimpleTwinRustAsync_static_method_arg_mut_borrow_twin_rust_async(
+              port_, arg);
+
+  void wire_NonCloneSimpleTwinRustAsync_static_method_arg_own_twin_rust_async(
+          NativePortType port_, Object arg) =>
+      wasmModule
+          .wire_NonCloneSimpleTwinRustAsync_static_method_arg_own_twin_rust_async(
+              port_, arg);
+
+  void wire_NonCloneSimpleTwinRustAsync_static_method_return_own_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire_NonCloneSimpleTwinRustAsync_static_method_return_own_twin_rust_async(
+              port_);
+
+  void wire_rust_auto_opaque_arg_borrow_twin_rust_async(
+          NativePortType port_, Object arg, int expect) =>
+      wasmModule.wire_rust_auto_opaque_arg_borrow_twin_rust_async(
+          port_, arg, expect);
+
+  void wire_rust_auto_opaque_arg_mut_borrow_twin_rust_async(
+          NativePortType port_, Object arg, int expect, int adder) =>
+      wasmModule.wire_rust_auto_opaque_arg_mut_borrow_twin_rust_async(
+          port_, arg, expect, adder);
+
+  void wire_rust_auto_opaque_arg_own_and_return_own_twin_rust_async(
+          NativePortType port_, Object arg) =>
+      wasmModule.wire_rust_auto_opaque_arg_own_and_return_own_twin_rust_async(
+          port_, arg);
+
+  void wire_rust_auto_opaque_arg_own_twin_rust_async(
+          NativePortType port_, Object arg, int expect) =>
+      wasmModule.wire_rust_auto_opaque_arg_own_twin_rust_async(
+          port_, arg, expect);
+
+  void wire_rust_auto_opaque_callable_arg_twin_rust_async(
+          NativePortType port_, Object arg) =>
+      wasmModule.wire_rust_auto_opaque_callable_arg_twin_rust_async(port_, arg);
+
+  void wire_rust_auto_opaque_callable_return_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule.wire_rust_auto_opaque_callable_return_twin_rust_async(port_);
+
+  void wire_rust_auto_opaque_normal_and_opaque_arg_twin_rust_async(
+          NativePortType port_, Object a, String b) =>
+      wasmModule.wire_rust_auto_opaque_normal_and_opaque_arg_twin_rust_async(
+          port_, a, b);
+
+  void wire_rust_auto_opaque_plus_sign_arg_twin_rust_async(
+          NativePortType port_, Object arg) =>
+      wasmModule.wire_rust_auto_opaque_plus_sign_arg_twin_rust_async(
+          port_, arg);
+
+  void wire_rust_auto_opaque_plus_sign_return_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule.wire_rust_auto_opaque_plus_sign_return_twin_rust_async(port_);
+
+  void wire_rust_auto_opaque_return_own_twin_rust_async(
+          NativePortType port_, int initial) =>
+      wasmModule.wire_rust_auto_opaque_return_own_twin_rust_async(
+          port_, initial);
+
+  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async(
+          NativePortType port_, Object arg) =>
+      wasmModule
+          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async(
+              port_, arg);
+
+  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async(
+          NativePortType port_, Object arg) =>
+      wasmModule
+          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async(
+              port_, arg);
+
+  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async(
+          NativePortType port_, Object arg) =>
+      wasmModule
+          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async(
+              port_, arg);
+
+  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async(
+              port_);
+
+  void wire_rust_auto_opaque_trait_object_arg_borrow_twin_rust_async(
+          NativePortType port_, Object arg, String expect) =>
+      wasmModule.wire_rust_auto_opaque_trait_object_arg_borrow_twin_rust_async(
+          port_, arg, expect);
+
+  void wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async(
+          NativePortType port_, Object arg, String expect) =>
+      wasmModule
+          .wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async(
+              port_, arg, expect);
+
+  void wire_rust_auto_opaque_trait_object_arg_own_twin_rust_async(
+          NativePortType port_, Object arg, String expect) =>
+      wasmModule.wire_rust_auto_opaque_trait_object_arg_own_twin_rust_async(
+          port_, arg, expect);
+
+  void wire_rust_auto_opaque_trait_object_return_own_one_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire_rust_auto_opaque_trait_object_return_own_one_twin_rust_async(
+              port_);
+
+  void wire_rust_auto_opaque_trait_object_return_own_two_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire_rust_auto_opaque_trait_object_return_own_two_twin_rust_async(
+              port_);
+
+  void wire_rust_auto_opaque_two_args_twin_rust_async(
+          NativePortType port_, Object a, Object b) =>
+      wasmModule.wire_rust_auto_opaque_two_args_twin_rust_async(port_, a, b);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync(
+              Object that) =>
+          wasmModule
+              .wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync(
+                  that);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync(
+              Object that) =>
+          wasmModule
+              .wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync(
+                  that);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync(
+              Object that) =>
+          wasmModule
+              .wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync(
+                  that);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync(
+              Object that) =>
+          wasmModule
+              .wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync(
+                  that);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync() =>
+          wasmModule.wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync();
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_NonCloneSimpleTwinSync_new_twin_sync() =>
+          wasmModule.wire_NonCloneSimpleTwinSync_new_twin_sync();
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync(
+              Object arg) =>
+          wasmModule
+              .wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync(
+                  arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync(
+              Object arg) =>
+          wasmModule
+              .wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync(
+                  arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync(Object arg) =>
+          wasmModule
+              .wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync() =>
+          wasmModule
+              .wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync();
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_arg_borrow_twin_sync(Object arg, int expect) =>
+          wasmModule.wire_rust_auto_opaque_arg_borrow_twin_sync(arg, expect);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_arg_mut_borrow_twin_sync(
+              Object arg, int expect, int adder) =>
+          wasmModule.wire_rust_auto_opaque_arg_mut_borrow_twin_sync(
+              arg, expect, adder);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_arg_own_and_return_own_twin_sync(Object arg) =>
+          wasmModule
+              .wire_rust_auto_opaque_arg_own_and_return_own_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_arg_own_twin_sync(Object arg, int expect) =>
+          wasmModule.wire_rust_auto_opaque_arg_own_twin_sync(arg, expect);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_callable_arg_twin_sync(Object arg) =>
+          wasmModule.wire_rust_auto_opaque_callable_arg_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_callable_return_twin_sync() =>
+          wasmModule.wire_rust_auto_opaque_callable_return_twin_sync();
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync(
+              Object a, String b) =>
+          wasmModule.wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync(
+              a, b);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_plus_sign_arg_twin_sync(Object arg) =>
+          wasmModule.wire_rust_auto_opaque_plus_sign_arg_twin_sync(arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_plus_sign_return_twin_sync() =>
+          wasmModule.wire_rust_auto_opaque_plus_sign_return_twin_sync();
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_return_own_twin_sync(int initial) =>
+          wasmModule.wire_rust_auto_opaque_return_own_twin_sync(initial);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync(
+              Object arg) =>
+          wasmModule
+              .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync(
+                  arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync(
+              Object arg) =>
+          wasmModule
+              .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync(
+                  arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
+              Object arg) =>
+          wasmModule
+              .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
+                  arg);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync() =>
+          wasmModule
+              .wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync();
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync(
+              Object arg, String expect) =>
+          wasmModule.wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync(
+              arg, expect);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync(
+              Object arg, String expect) =>
+          wasmModule
+              .wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync(
+                  arg, expect);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_trait_object_arg_own_twin_sync(
+              Object arg, String expect) =>
+          wasmModule.wire_rust_auto_opaque_trait_object_arg_own_twin_sync(
+              arg, expect);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_trait_object_return_own_one_twin_sync() =>
+          wasmModule
+              .wire_rust_auto_opaque_trait_object_return_own_one_twin_sync();
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_trait_object_return_own_two_twin_sync() =>
+          wasmModule
+              .wire_rust_auto_opaque_trait_object_return_own_two_twin_sync();
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_two_args_twin_sync(Object a, Object b) =>
+          wasmModule.wire_rust_auto_opaque_two_args_twin_sync(a, b);
+
   void wire_create_array_opaque_enum_twin_rust_async(NativePortType port_) =>
       wasmModule.wire_create_array_opaque_enum_twin_rust_async(port_);
 
@@ -6118,6 +6477,30 @@ class RustLibWire extends BaseWire {
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
               ptr);
 
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+              ptr);
+
   void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
           dynamic ptr) =>
       wasmModule
@@ -6128,6 +6511,30 @@ class RustLibWire extends BaseWire {
           dynamic ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
               ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
@@ -6142,6 +6549,30 @@ class RustLibWire extends BaseWire {
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
               ptr);
 
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+              ptr);
+
   void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           dynamic ptr) =>
       wasmModule
@@ -6152,6 +6583,30 @@ class RustLibWire extends BaseWire {
           dynamic ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
               ptr);
 }
 
@@ -7844,6 +8299,215 @@ class RustLibWasmModule implements WasmModule {
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
       wire_test_raw_string_item_struct_twin_sync();
 
+  external void
+      wire_NonCloneSimpleTwinRustAsync_instance_method_arg_borrow_twin_rust_async(
+          NativePortType port_, Object that);
+
+  external void
+      wire_NonCloneSimpleTwinRustAsync_instance_method_arg_mut_borrow_twin_rust_async(
+          NativePortType port_, Object that);
+
+  external void
+      wire_NonCloneSimpleTwinRustAsync_instance_method_arg_own_twin_rust_async(
+          NativePortType port_, Object that);
+
+  external void
+      wire_NonCloneSimpleTwinRustAsync_instance_method_return_own_twin_rust_async(
+          NativePortType port_, Object that);
+
+  external void
+      wire_NonCloneSimpleTwinRustAsync_new_custom_name_twin_rust_async(
+          NativePortType port_);
+
+  external void wire_NonCloneSimpleTwinRustAsync_new_twin_rust_async(
+      NativePortType port_);
+
+  external void
+      wire_NonCloneSimpleTwinRustAsync_static_method_arg_borrow_twin_rust_async(
+          NativePortType port_, Object arg);
+
+  external void
+      wire_NonCloneSimpleTwinRustAsync_static_method_arg_mut_borrow_twin_rust_async(
+          NativePortType port_, Object arg);
+
+  external void
+      wire_NonCloneSimpleTwinRustAsync_static_method_arg_own_twin_rust_async(
+          NativePortType port_, Object arg);
+
+  external void
+      wire_NonCloneSimpleTwinRustAsync_static_method_return_own_twin_rust_async(
+          NativePortType port_);
+
+  external void wire_rust_auto_opaque_arg_borrow_twin_rust_async(
+      NativePortType port_, Object arg, int expect);
+
+  external void wire_rust_auto_opaque_arg_mut_borrow_twin_rust_async(
+      NativePortType port_, Object arg, int expect, int adder);
+
+  external void wire_rust_auto_opaque_arg_own_and_return_own_twin_rust_async(
+      NativePortType port_, Object arg);
+
+  external void wire_rust_auto_opaque_arg_own_twin_rust_async(
+      NativePortType port_, Object arg, int expect);
+
+  external void wire_rust_auto_opaque_callable_arg_twin_rust_async(
+      NativePortType port_, Object arg);
+
+  external void wire_rust_auto_opaque_callable_return_twin_rust_async(
+      NativePortType port_);
+
+  external void wire_rust_auto_opaque_normal_and_opaque_arg_twin_rust_async(
+      NativePortType port_, Object a, String b);
+
+  external void wire_rust_auto_opaque_plus_sign_arg_twin_rust_async(
+      NativePortType port_, Object arg);
+
+  external void wire_rust_auto_opaque_plus_sign_return_twin_rust_async(
+      NativePortType port_);
+
+  external void wire_rust_auto_opaque_return_own_twin_rust_async(
+      NativePortType port_, int initial);
+
+  external void
+      wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async(
+          NativePortType port_, Object arg);
+
+  external void
+      wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async(
+          NativePortType port_, Object arg);
+
+  external void
+      wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async(
+          NativePortType port_, Object arg);
+
+  external void
+      wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async(
+          NativePortType port_);
+
+  external void wire_rust_auto_opaque_trait_object_arg_borrow_twin_rust_async(
+      NativePortType port_, Object arg, String expect);
+
+  external void
+      wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async(
+          NativePortType port_, Object arg, String expect);
+
+  external void wire_rust_auto_opaque_trait_object_arg_own_twin_rust_async(
+      NativePortType port_, Object arg, String expect);
+
+  external void
+      wire_rust_auto_opaque_trait_object_return_own_one_twin_rust_async(
+          NativePortType port_);
+
+  external void
+      wire_rust_auto_opaque_trait_object_return_own_two_twin_rust_async(
+          NativePortType port_);
+
+  external void wire_rust_auto_opaque_two_args_twin_rust_async(
+      NativePortType port_, Object a, Object b);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync(
+          Object that);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync(
+          Object that);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync(
+          Object that);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync(
+          Object that);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync();
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_NonCloneSimpleTwinSync_new_twin_sync();
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync(
+          Object arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync(
+          Object arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync(Object arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync();
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_arg_borrow_twin_sync(Object arg, int expect);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_arg_mut_borrow_twin_sync(
+          Object arg, int expect, int adder);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_arg_own_and_return_own_twin_sync(Object arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_arg_own_twin_sync(Object arg, int expect);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_callable_arg_twin_sync(Object arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_callable_return_twin_sync();
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync(Object a, String b);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_plus_sign_arg_twin_sync(Object arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_plus_sign_return_twin_sync();
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_return_own_twin_sync(int initial);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync(
+          Object arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync(
+          Object arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
+          Object arg);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync();
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync(
+          Object arg, String expect);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync(
+          Object arg, String expect);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_trait_object_arg_own_twin_sync(
+          Object arg, String expect);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_trait_object_return_own_one_twin_sync();
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_trait_object_return_own_two_twin_sync();
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_rust_auto_opaque_two_args_twin_sync(Object a, Object b);
+
   external void wire_create_array_opaque_enum_twin_rust_async(
       NativePortType port_);
 
@@ -8357,11 +9021,43 @@ class RustLibWasmModule implements WasmModule {
           dynamic ptr);
 
   external void
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
+          dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+          dynamic ptr);
+
+  external void
       rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
           dynamic ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+          dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+          dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
           dynamic ptr);
 
   external void
@@ -8373,10 +9069,42 @@ class RustLibWasmModule implements WasmModule {
           dynamic ptr);
 
   external void
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+          dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+          dynamic ptr);
+
+  external void
       rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           dynamic ptr);
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+          dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+          dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
           dynamic ptr);
 }

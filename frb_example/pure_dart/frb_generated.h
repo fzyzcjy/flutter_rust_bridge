@@ -2855,6 +2855,155 @@ WireSyncReturn wire_test_more_than_just_one_raw_string_struct_twin_sync(void);
 
 WireSyncReturn wire_test_raw_string_item_struct_twin_sync(void);
 
+void wire_NonCloneSimpleTwinRustAsync_instance_method_arg_borrow_twin_rust_async(int64_t port_,
+                                                                                 const void *that);
+
+void wire_NonCloneSimpleTwinRustAsync_instance_method_arg_mut_borrow_twin_rust_async(int64_t port_,
+                                                                                     const void *that);
+
+void wire_NonCloneSimpleTwinRustAsync_instance_method_arg_own_twin_rust_async(int64_t port_,
+                                                                              const void *that);
+
+void wire_NonCloneSimpleTwinRustAsync_instance_method_return_own_twin_rust_async(int64_t port_,
+                                                                                 const void *that);
+
+void wire_NonCloneSimpleTwinRustAsync_new_custom_name_twin_rust_async(int64_t port_);
+
+void wire_NonCloneSimpleTwinRustAsync_new_twin_rust_async(int64_t port_);
+
+void wire_NonCloneSimpleTwinRustAsync_static_method_arg_borrow_twin_rust_async(int64_t port_,
+                                                                               const void *arg);
+
+void wire_NonCloneSimpleTwinRustAsync_static_method_arg_mut_borrow_twin_rust_async(int64_t port_,
+                                                                                   const void *arg);
+
+void wire_NonCloneSimpleTwinRustAsync_static_method_arg_own_twin_rust_async(int64_t port_,
+                                                                            const void *arg);
+
+void wire_NonCloneSimpleTwinRustAsync_static_method_return_own_twin_rust_async(int64_t port_);
+
+void wire_rust_auto_opaque_arg_borrow_twin_rust_async(int64_t port_,
+                                                      const void *arg,
+                                                      int32_t expect);
+
+void wire_rust_auto_opaque_arg_mut_borrow_twin_rust_async(int64_t port_,
+                                                          const void *arg,
+                                                          int32_t expect,
+                                                          int32_t adder);
+
+void wire_rust_auto_opaque_arg_own_and_return_own_twin_rust_async(int64_t port_, const void *arg);
+
+void wire_rust_auto_opaque_arg_own_twin_rust_async(int64_t port_, const void *arg, int32_t expect);
+
+void wire_rust_auto_opaque_callable_arg_twin_rust_async(int64_t port_, const void *arg);
+
+void wire_rust_auto_opaque_callable_return_twin_rust_async(int64_t port_);
+
+void wire_rust_auto_opaque_normal_and_opaque_arg_twin_rust_async(int64_t port_,
+                                                                 const void *a,
+                                                                 struct wire_list_prim_u_8 *b);
+
+void wire_rust_auto_opaque_plus_sign_arg_twin_rust_async(int64_t port_, const void *arg);
+
+void wire_rust_auto_opaque_plus_sign_return_twin_rust_async(int64_t port_);
+
+void wire_rust_auto_opaque_return_own_twin_rust_async(int64_t port_, int32_t initial);
+
+void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async(int64_t port_,
+                                                                                        const void *arg);
+
+void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async(int64_t port_,
+                                                                                            const void *arg);
+
+void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async(int64_t port_,
+                                                                                     const void *arg);
+
+void wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async(int64_t port_);
+
+void wire_rust_auto_opaque_trait_object_arg_borrow_twin_rust_async(int64_t port_,
+                                                                   const void *arg,
+                                                                   struct wire_list_prim_u_8 *expect);
+
+void wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async(int64_t port_,
+                                                                       const void *arg,
+                                                                       struct wire_list_prim_u_8 *expect);
+
+void wire_rust_auto_opaque_trait_object_arg_own_twin_rust_async(int64_t port_,
+                                                                const void *arg,
+                                                                struct wire_list_prim_u_8 *expect);
+
+void wire_rust_auto_opaque_trait_object_return_own_one_twin_rust_async(int64_t port_);
+
+void wire_rust_auto_opaque_trait_object_return_own_two_twin_rust_async(int64_t port_);
+
+void wire_rust_auto_opaque_two_args_twin_rust_async(int64_t port_, const void *a, const void *b);
+
+WireSyncReturn wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync(const void *that);
+
+WireSyncReturn wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync(const void *that);
+
+WireSyncReturn wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync(const void *that);
+
+WireSyncReturn wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync(const void *that);
+
+WireSyncReturn wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync(void);
+
+WireSyncReturn wire_NonCloneSimpleTwinSync_new_twin_sync(void);
+
+WireSyncReturn wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync(const void *arg);
+
+WireSyncReturn wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync(const void *arg);
+
+WireSyncReturn wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync(const void *arg);
+
+WireSyncReturn wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync(void);
+
+WireSyncReturn wire_rust_auto_opaque_arg_borrow_twin_sync(const void *arg, int32_t expect);
+
+WireSyncReturn wire_rust_auto_opaque_arg_mut_borrow_twin_sync(const void *arg,
+                                                              int32_t expect,
+                                                              int32_t adder);
+
+WireSyncReturn wire_rust_auto_opaque_arg_own_and_return_own_twin_sync(const void *arg);
+
+WireSyncReturn wire_rust_auto_opaque_arg_own_twin_sync(const void *arg, int32_t expect);
+
+WireSyncReturn wire_rust_auto_opaque_callable_arg_twin_sync(const void *arg);
+
+WireSyncReturn wire_rust_auto_opaque_callable_return_twin_sync(void);
+
+WireSyncReturn wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync(const void *a,
+                                                                     struct wire_list_prim_u_8 *b);
+
+WireSyncReturn wire_rust_auto_opaque_plus_sign_arg_twin_sync(const void *arg);
+
+WireSyncReturn wire_rust_auto_opaque_plus_sign_return_twin_sync(void);
+
+WireSyncReturn wire_rust_auto_opaque_return_own_twin_sync(int32_t initial);
+
+WireSyncReturn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync(const void *arg);
+
+WireSyncReturn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync(const void *arg);
+
+WireSyncReturn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(const void *arg);
+
+WireSyncReturn wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync(void);
+
+WireSyncReturn wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync(const void *arg,
+                                                                       struct wire_list_prim_u_8 *expect);
+
+WireSyncReturn wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync(const void *arg,
+                                                                           struct wire_list_prim_u_8 *expect);
+
+WireSyncReturn wire_rust_auto_opaque_trait_object_arg_own_twin_sync(const void *arg,
+                                                                    struct wire_list_prim_u_8 *expect);
+
+WireSyncReturn wire_rust_auto_opaque_trait_object_return_own_one_twin_sync(void);
+
+WireSyncReturn wire_rust_auto_opaque_trait_object_return_own_two_twin_sync(void);
+
+WireSyncReturn wire_rust_auto_opaque_two_args_twin_sync(const void *a, const void *b);
+
 void wire_create_array_opaque_enum_twin_rust_async(int64_t port_);
 
 void wire_create_nested_opaque_twin_rust_async(int64_t port_);
@@ -3668,17 +3817,49 @@ void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwi
 
 void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(const void *ptr);
 
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(const void *ptr);
+
 void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(const void *ptr);
 
 void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(const void *ptr);
 
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(const void *ptr);
+
 void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(const void *ptr);
 
 union AbcTwinNormalKind *inflate_AbcTwinNormal_A(void);
 
@@ -4186,9 +4367,17 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_MutexHideData);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_RwLockHideData);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal);
@@ -4202,9 +4391,17 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_non_send_hide_data);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync);
     dummy_var ^= ((int64_t) (void*) store_dart_post_cobject);
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinNormal_concatenate_static_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinNormal_concatenate_twin_normal);
@@ -4255,6 +4452,26 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_static_method_return_own_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinRustAsync_instance_method_arg_borrow_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinRustAsync_instance_method_arg_mut_borrow_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinRustAsync_instance_method_arg_own_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinRustAsync_instance_method_return_own_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinRustAsync_new_custom_name_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinRustAsync_new_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinRustAsync_static_method_arg_borrow_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinRustAsync_static_method_arg_mut_borrow_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinRustAsync_static_method_arg_own_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinRustAsync_static_method_return_own_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSync_new_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinNormal_new_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinNormal_non_static_return_err_custom_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinNormal_non_static_return_ok_custom_error_twin_normal);
@@ -4805,25 +5022,65 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_run_opaque_with_delay_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_run_opaque_with_delay_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_borrow_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_borrow_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_borrow_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_mut_borrow_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_mut_borrow_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_mut_borrow_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_own_and_return_own_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_own_and_return_own_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_own_and_return_own_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_own_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_own_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_own_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_callable_arg_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_callable_arg_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_callable_arg_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_callable_return_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_callable_return_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_callable_return_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_normal_and_opaque_arg_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_plus_sign_arg_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_plus_sign_arg_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_plus_sign_arg_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_plus_sign_return_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_plus_sign_return_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_plus_sign_return_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_return_own_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_return_own_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_return_own_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_borrow_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_own_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_own_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_own_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_return_own_one_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_return_own_one_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_return_own_one_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_return_own_two_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_return_own_two_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_return_own_two_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_two_args_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_two_args_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_two_args_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque_twin_sync);

@@ -4,6 +4,8 @@
 // Section: imports
 
 use super::*;
+use crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::*;
+use crate::api::pseudo_manual::rust_auto_opaque_twin_sync::*;
 use crate::api::pseudo_manual::rust_opaque_twin_rust_async::*;
 use crate::api::pseudo_manual::rust_opaque_twin_sync::*;
 use crate::api::rust_auto_opaque::*;
@@ -139,6 +141,24 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTra
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
+impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinRustAsync>>>>
+    for *const std::ffi::c_void
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinRustAsync>>> {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinSync>>>>
+    for *const std::ffi::c_void
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinSync>>> {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
 impl
     Wire2Api<
         flutter_rust_bridge::RustOpaque<
@@ -153,12 +173,57 @@ impl
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
+impl
+    Wire2Api<
+        flutter_rust_bridge::RustOpaque<
+            std::sync::RwLock<Box<dyn MyTraitTwinRustAsync + Send + Sync>>,
+        >,
+    > for *const std::ffi::c_void
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<
+        std::sync::RwLock<Box<dyn MyTraitTwinRustAsync + Send + Sync>>,
+    > {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl
+    Wire2Api<
+        flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn MyTraitTwinSync + Send + Sync>>>,
+    > for *const std::ffi::c_void
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn MyTraitTwinSync + Send + Sync>>>
+    {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
 impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
     for *const std::ffi::c_void
 {
     fn wire2api(
         self,
     ) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>> {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinRustAsync>>>
+    for *const std::ffi::c_void
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinRustAsync>> {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>>>
+    for *const std::ffi::c_void
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinSync>> {
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
@@ -170,6 +235,32 @@ impl
     fn wire2api(
         self,
     ) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>>
+    {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl
+    Wire2Api<
+        flutter_rust_bridge::RustOpaque<
+            std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinRustAsync>,
+        >,
+    > for *const std::ffi::c_void
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinRustAsync>>
+    {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl
+    Wire2Api<
+        flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinSync>>,
+    > for *const std::ffi::c_void
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinSync>>
     {
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
@@ -11835,6 +11926,449 @@ pub extern "C" fn wire_test_raw_string_item_struct_twin_sync(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinRustAsync_instance_method_arg_borrow_twin_rust_async(
+    port_: i64,
+    that: *const std::ffi::c_void,
+) {
+    wire_NonCloneSimpleTwinRustAsync_instance_method_arg_borrow_twin_rust_async_impl(port_, that)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinRustAsync_instance_method_arg_mut_borrow_twin_rust_async(
+    port_: i64,
+    that: *const std::ffi::c_void,
+) {
+    wire_NonCloneSimpleTwinRustAsync_instance_method_arg_mut_borrow_twin_rust_async_impl(
+        port_, that,
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinRustAsync_instance_method_arg_own_twin_rust_async(
+    port_: i64,
+    that: *const std::ffi::c_void,
+) {
+    wire_NonCloneSimpleTwinRustAsync_instance_method_arg_own_twin_rust_async_impl(port_, that)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinRustAsync_instance_method_return_own_twin_rust_async(
+    port_: i64,
+    that: *const std::ffi::c_void,
+) {
+    wire_NonCloneSimpleTwinRustAsync_instance_method_return_own_twin_rust_async_impl(port_, that)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinRustAsync_new_custom_name_twin_rust_async(port_: i64) {
+    wire_NonCloneSimpleTwinRustAsync_new_custom_name_twin_rust_async_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinRustAsync_new_twin_rust_async(port_: i64) {
+    wire_NonCloneSimpleTwinRustAsync_new_twin_rust_async_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinRustAsync_static_method_arg_borrow_twin_rust_async(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+) {
+    wire_NonCloneSimpleTwinRustAsync_static_method_arg_borrow_twin_rust_async_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinRustAsync_static_method_arg_mut_borrow_twin_rust_async(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+) {
+    wire_NonCloneSimpleTwinRustAsync_static_method_arg_mut_borrow_twin_rust_async_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinRustAsync_static_method_arg_own_twin_rust_async(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+) {
+    wire_NonCloneSimpleTwinRustAsync_static_method_arg_own_twin_rust_async_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinRustAsync_static_method_return_own_twin_rust_async(
+    port_: i64,
+) {
+    wire_NonCloneSimpleTwinRustAsync_static_method_return_own_twin_rust_async_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_arg_borrow_twin_rust_async(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+    expect: i32,
+) {
+    wire_rust_auto_opaque_arg_borrow_twin_rust_async_impl(port_, arg, expect)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_arg_mut_borrow_twin_rust_async(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+    expect: i32,
+    adder: i32,
+) {
+    wire_rust_auto_opaque_arg_mut_borrow_twin_rust_async_impl(port_, arg, expect, adder)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_arg_own_and_return_own_twin_rust_async(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+) {
+    wire_rust_auto_opaque_arg_own_and_return_own_twin_rust_async_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_arg_own_twin_rust_async(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+    expect: i32,
+) {
+    wire_rust_auto_opaque_arg_own_twin_rust_async_impl(port_, arg, expect)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_callable_arg_twin_rust_async(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+) {
+    wire_rust_auto_opaque_callable_arg_twin_rust_async_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_callable_return_twin_rust_async(port_: i64) {
+    wire_rust_auto_opaque_callable_return_twin_rust_async_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_normal_and_opaque_arg_twin_rust_async(
+    port_: i64,
+    a: *const std::ffi::c_void,
+    b: *mut wire_list_prim_u_8,
+) {
+    wire_rust_auto_opaque_normal_and_opaque_arg_twin_rust_async_impl(port_, a, b)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_plus_sign_arg_twin_rust_async(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+) {
+    wire_rust_auto_opaque_plus_sign_arg_twin_rust_async_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_plus_sign_return_twin_rust_async(port_: i64) {
+    wire_rust_auto_opaque_plus_sign_return_twin_rust_async_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_return_own_twin_rust_async(port_: i64, initial: i32) {
+    wire_rust_auto_opaque_return_own_twin_rust_async_impl(port_, initial)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+) {
+    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async_impl(
+        port_, arg,
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+) {
+    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async_impl(
+        port_, arg,
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+) {
+    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async(
+    port_: i64,
+) {
+    wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_trait_object_arg_borrow_twin_rust_async(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+    expect: *mut wire_list_prim_u_8,
+) {
+    wire_rust_auto_opaque_trait_object_arg_borrow_twin_rust_async_impl(port_, arg, expect)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+    expect: *mut wire_list_prim_u_8,
+) {
+    wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async_impl(port_, arg, expect)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_trait_object_arg_own_twin_rust_async(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+    expect: *mut wire_list_prim_u_8,
+) {
+    wire_rust_auto_opaque_trait_object_arg_own_twin_rust_async_impl(port_, arg, expect)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_trait_object_return_own_one_twin_rust_async(port_: i64) {
+    wire_rust_auto_opaque_trait_object_return_own_one_twin_rust_async_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_trait_object_return_own_two_twin_rust_async(port_: i64) {
+    wire_rust_auto_opaque_trait_object_return_own_two_twin_rust_async_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_two_args_twin_rust_async(
+    port_: i64,
+    a: *const std::ffi::c_void,
+    b: *const std::ffi::c_void,
+) {
+    wire_rust_auto_opaque_two_args_twin_rust_async_impl(port_, a, b)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync(
+    that: *const std::ffi::c_void,
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync(
+    that: *const std::ffi::c_void,
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync(
+    that: *const std::ffi::c_void,
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync(
+    that: *const std::ffi::c_void,
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync_impl(that)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync(
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinSync_new_twin_sync(
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_NonCloneSimpleTwinSync_new_twin_sync_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync(
+    arg: *const std::ffi::c_void,
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync(
+    arg: *const std::ffi::c_void,
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync(
+    arg: *const std::ffi::c_void,
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync(
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_arg_borrow_twin_sync(
+    arg: *const std::ffi::c_void,
+    expect: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_rust_auto_opaque_arg_borrow_twin_sync_impl(arg, expect)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_arg_mut_borrow_twin_sync(
+    arg: *const std::ffi::c_void,
+    expect: i32,
+    adder: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_rust_auto_opaque_arg_mut_borrow_twin_sync_impl(arg, expect, adder)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_arg_own_and_return_own_twin_sync(
+    arg: *const std::ffi::c_void,
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_rust_auto_opaque_arg_own_and_return_own_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_arg_own_twin_sync(
+    arg: *const std::ffi::c_void,
+    expect: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_rust_auto_opaque_arg_own_twin_sync_impl(arg, expect)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_callable_arg_twin_sync(
+    arg: *const std::ffi::c_void,
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_rust_auto_opaque_callable_arg_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_callable_return_twin_sync(
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_rust_auto_opaque_callable_return_twin_sync_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync(
+    a: *const std::ffi::c_void,
+    b: *mut wire_list_prim_u_8,
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync_impl(a, b)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_plus_sign_arg_twin_sync(
+    arg: *const std::ffi::c_void,
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_rust_auto_opaque_plus_sign_arg_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_plus_sign_return_twin_sync(
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_rust_auto_opaque_plus_sign_return_twin_sync_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_return_own_twin_sync(
+    initial: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_rust_auto_opaque_return_own_twin_sync_impl(initial)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync(
+    arg: *const std::ffi::c_void,
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync(
+    arg: *const std::ffi::c_void,
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
+    arg: *const std::ffi::c_void,
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync(
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync(
+    arg: *const std::ffi::c_void,
+    expect: *mut wire_list_prim_u_8,
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync_impl(arg, expect)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync(
+    arg: *const std::ffi::c_void,
+    expect: *mut wire_list_prim_u_8,
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync_impl(arg, expect)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_trait_object_arg_own_twin_sync(
+    arg: *const std::ffi::c_void,
+    expect: *mut wire_list_prim_u_8,
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_rust_auto_opaque_trait_object_arg_own_twin_sync_impl(arg, expect)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_trait_object_return_own_one_twin_sync(
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_rust_auto_opaque_trait_object_return_own_one_twin_sync_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_trait_object_return_own_two_twin_sync(
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_rust_auto_opaque_trait_object_return_own_two_twin_sync_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_two_args_twin_sync(
+    a: *const std::ffi::c_void,
+    b: *const std::ffi::c_void,
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_rust_auto_opaque_two_args_twin_sync_impl(a, b)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_create_array_opaque_enum_twin_rust_async(port_: i64) {
     wire_create_array_opaque_enum_twin_rust_async_impl(port_)
 }
@@ -14673,6 +15207,50 @@ pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdyn
 }
 
 #[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<Box<dyn HelloTraitTwinRustAsync>>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<Box<dyn HelloTraitTwinRustAsync>>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<Box<dyn HelloTraitTwinSync>>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<Box<dyn HelloTraitTwinSync>>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
 pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
     ptr: *const std::ffi::c_void,
 ) {
@@ -14690,6 +15268,50 @@ pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdyn
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
             std::sync::RwLock<Box<dyn MyTraitTwinNormal + Send + Sync>>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<Box<dyn MyTraitTwinRustAsync + Send + Sync>>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<Box<dyn MyTraitTwinRustAsync + Send + Sync>>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<Box<dyn MyTraitTwinSync + Send + Sync>>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<Box<dyn MyTraitTwinSync + Send + Sync>>,
         >(ptr);
     }
 }
@@ -14717,6 +15339,50 @@ pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonClo
 }
 
 #[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<NonCloneSimpleTwinRustAsync>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<NonCloneSimpleTwinRustAsync>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<NonCloneSimpleTwinSync>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<NonCloneSimpleTwinSync>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
 pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
     ptr: *const std::ffi::c_void,
 ) {
@@ -14734,6 +15400,50 @@ pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStruct
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
             std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinRustAsync>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinRustAsync>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinSync>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinSync>,
         >(ptr);
     }
 }
