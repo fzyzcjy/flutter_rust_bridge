@@ -7270,9 +7270,11 @@ fn wire_rust_auto_opaque_return_own_impl(port_: flutter_rust_bridge::for_generat
         },
         move || {
             move |context| {
-                Result::<_, ()>::Ok(flutter_rust_bridge::RustOpaque::new(
-                    crate::api::rust_auto_opaque::rust_auto_opaque_return_own(),
-                ))
+                Result::<_, ()>::Ok(
+                    flutter_rust_bridge::for_generated::rust_auto_opaque_api2wire(
+                        crate::api::rust_auto_opaque::rust_auto_opaque_return_own(),
+                    ),
+                )
             }
         },
     )

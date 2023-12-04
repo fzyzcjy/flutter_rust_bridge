@@ -220,7 +220,7 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_params: Vec<St
     }
 
     if matches!(&func.output, IrType::RustAutoOpaque(_)) {
-        ans = format!("flutter_rust_bridge::RustOpaque::new({ans})");
+        ans = format!("flutter_rust_bridge::for_generated::rust_auto_opaque_api2wire({ans})");
     }
 
     if !func.fallible() {
