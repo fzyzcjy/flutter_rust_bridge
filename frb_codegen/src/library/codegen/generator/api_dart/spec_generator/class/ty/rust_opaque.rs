@@ -18,7 +18,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
         let dart_api_type = ApiDartGenerator::new(self.ir.clone(), self.context).dart_api_type();
 
         let methods = generate_api_methods(
-            &NamespacedName::new(self.ir.namespace.clone(), rust_api_type.clone()),
+            &NamespacedName::new(self.ir.namespace.clone(), TODO),
             self.context,
         )
         .join("\n");
