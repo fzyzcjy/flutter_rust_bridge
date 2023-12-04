@@ -171,6 +171,39 @@ Future<void> main({bool skipRustLibInit = false}) async {
     });
   });
 
+  group('complex type signatures', () {
+    test('plus sign', () async {
+      final obj = await rustAutoOpaquePlusSignReturnTwinNormal();
+      await futurizeVoidTwinNormal(
+          rustAutoOpaquePlusSignArgTwinNormal(arg: obj));
+    });
+
+    test('callable', () async {
+      final obj = await rustAutoOpaqueCallableReturnTwinNormal();
+      await futurizeVoidTwinNormal(
+          rustAutoOpaqueCallableArgTwinNormal(arg: obj));
+    });
+  });
+
+  group('trait object', () {
+    Future<void> _body(RwLockBoxHelloTraitTwinNormal obj, String expect) async {
+      await rustAutoOpaqueTraitObjectArgBorrowTwinNormal(
+          arg: obj, expect: expect);
+      await rustAutoOpaqueTraitObjectArgMutBorrowTwinNormal(
+          arg: obj, expect: expect);
+      await rustAutoOpaqueTraitObjectArgOwnTwinNormal(arg: obj, expect: expect);
+    }
+
+    test(
+        'case one',
+        () async => await _body(
+            await rustAutoOpaqueTraitObjectReturnOwnOneTwinNormal(), 'hello'));
+    test(
+        'case two',
+        () async => await _body(
+            await rustAutoOpaqueTraitObjectReturnOwnTwoTwinNormal(), 'B'));
+  });
+
   group('TODO', () {
     TODO;
   });
