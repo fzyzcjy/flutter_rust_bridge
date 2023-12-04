@@ -62,7 +62,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let name = "that".to_owned();
 
         partial_info_for_normal_type_raw(
-            parse_receiver(self.type_parser.parse_type(&ty, context)?, receiver),
+            parse_receiver_ownership(self.type_parser.parse_type(&ty, context)?, receiver),
             &receiver.attrs,
             name,
         )
@@ -158,7 +158,7 @@ fn parse_name_from_pat_type(pat_type: &PatType) -> anyhow::Result<String> {
     }
 }
 
-fn parse_receiver(inner: IrType, receiver: &Receiver) -> IrType {
+fn parse_receiver_ownership(inner: IrType, receiver: &Receiver) -> IrType {
     if receiver.reference.is_some() {
         let mode = if receiver.mutability.is_some() {
             IrTypeOwnershipMode::RefMut
