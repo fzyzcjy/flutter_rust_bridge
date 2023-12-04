@@ -9,10 +9,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('simple functions', () async {
     final obj = await rustAutoOpaqueReturnOwnTwinNormal();
-    await futurizeVoidTwinNormal(rustAutoOpaqueArgOwnTwinNormal(arg: obj));
+
     await futurizeVoidTwinNormal(rustAutoOpaqueArgBorrowTwinNormal(arg: obj));
+    expect(obj.isDisposed, false);
+
     await futurizeVoidTwinNormal(
         rustAutoOpaqueArgMutBorrowTwinNormal(arg: obj));
+    expect(obj.isDisposed, false);
+
+    await futurizeVoidTwinNormal(rustAutoOpaqueArgOwnTwinNormal(arg: obj));
+    expect(obj.isDisposed, true);
   });
 
   // TODO after `T` call, should auto dispose
