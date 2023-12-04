@@ -159,7 +159,7 @@ fn parse_name_from_pat_type(pat_type: &PatType) -> anyhow::Result<String> {
 }
 
 fn parse_receiver_ownership(inner: IrType, receiver: &Receiver) -> IrType {
-    let should_parse_ownership = TODO; // TODO for non-RustAutoOpaque, no need to parse
+    let should_parse_ownership = TODO;
 
     if receiver.reference.is_none() || !should_parse_ownership {
         return inner;
