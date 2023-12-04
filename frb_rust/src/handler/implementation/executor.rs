@@ -24,9 +24,7 @@ use std::panic::{AssertUnwindSafe, UnwindSafe};
 /// handled by a different thread.
 pub struct SimpleExecutor<EH: ErrorHandler, TP: BaseThreadPool, AR: BaseAsyncRuntime> {
     error_handler: EH,
-    // TODO remove `AssertUnwindSafe` after the Rust bug is fixed:
-    // https://github.com/rust-lang/rust/issues/118009
-    thread_pool: AssertUnwindSafe<TP>,
+    thread_pool: TP,
     async_runtime: AR,
 }
 
@@ -35,7 +33,7 @@ impl<EH: ErrorHandler, TP: BaseThreadPool, AR: BaseAsyncRuntime> SimpleExecutor<
     pub fn new(error_handler: EH, thread_pool: TP, async_runtime: AR) -> Self {
         SimpleExecutor {
             error_handler,
-            thread_pool: AssertUnwindSafe(thread_pool),
+            thread_pool,
             async_runtime,
         }
     }
