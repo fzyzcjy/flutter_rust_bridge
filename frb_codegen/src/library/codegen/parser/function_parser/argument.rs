@@ -167,7 +167,7 @@ fn parse_receiver_ownership(
     inner: IrType,
     receiver: &Receiver,
     type_parser: &mut TypeParser,
-    context: TypeParserParsingContext,
+    context: &TypeParserParsingContext,
 ) -> IrType {
     let should_parse_ownership = type_parser.check_candidate_rust_auto_opaque(&inner, context);
 
