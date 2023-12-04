@@ -28,8 +28,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 // Section: wire_class
 
 class RustLibWire extends BaseWire {
-  // TODO
-  // : super(WasmModule.cast<RustLibWasmModule>(lib.wasmModule));
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
   dynamic /* flutter_rust_bridge::support::WireSyncReturn */ wire_greet(

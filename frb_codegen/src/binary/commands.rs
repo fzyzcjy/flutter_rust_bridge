@@ -157,6 +157,4 @@ pub(crate) struct BuildWebCommandArgs {
 }
 
 #[derive(Debug, Args)]
-pub(crate) struct InternalGenerateCommandArgs {
-    // TODO
-}
+pub(crate) struct InternalGenerateCommandArgs {}

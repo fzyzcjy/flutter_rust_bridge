@@ -94,39 +94,6 @@ fn generate_execute_func_name(func: &IrFunc) -> &str {
 
 fn generate_parse_success_data(func: &IrFunc) -> String {
     format!("_wire2api_{}", func.output.safe_ident())
-
-    // TODO
-    // let input_0 = func.inputs.get(0).as_ref().map(|x| &x.ty);
-    // let input_0_struct_name = if let Some(StructRef(IrTypeStructRef { name, .. })) = &input_0 {
-    //     Some(name)
-    // } else {
-    //     None
-    // };
-    // let f = FunctionName::deserialize(&func.name);
-    // let func_output_struct_name = if let StructRef(IrTypeStructRef { name, .. }) = &func.output {
-    //     Some(name)
-    // } else {
-    //     None
-    // };
-    //
-    // if (f.is_static_method()
-    //     && f.struct_name().unwrap() == {
-    //     if let IrType::StructRef(IrTypeStructRef { name, .. }) = &func.output {
-    //         name.clone()
-    //     } else {
-    //         String::new()
-    //     }
-    // })
-    //     // If struct has a method with first element `input0`
-    //     || (input_0_struct_name.is_some() && has_methods_for_struct_name(input_0_struct_name.unwrap(), context.ir_pack))
-    //     //If output is a struct with methods
-    //     || (func_output_struct_name.is_some()
-    //     && has_methods_for_struct_name(func_output_struct_name.unwrap(), context.ir_pack))
-    // {
-    //     format!("(d) => _wire2api_{}(d)", func.output.safe_ident())
-    // } else {
-    //     format!("_wire2api_{}", func.output.safe_ident())
-    // }
 }
 
 fn generate_parse_error_data(func: &IrFunc) -> String {
@@ -175,10 +142,3 @@ fn generate_arg_values(func: &IrFunc) -> String {
         .map(|input| input.name.dart_style())
         .join(", ")
 }
-
-// TODO
-// fn has_methods_for_struct_name(struct_name: &str, ir_pack: &IrPack) -> bool {
-//     (ir_pack.funcs.iter()).any(
-//         |f| matches!(&f.owner, IrFuncOwnerInfo::Method(m) if m.enum_or_struct_name == struct_name),
-//     )
-// }

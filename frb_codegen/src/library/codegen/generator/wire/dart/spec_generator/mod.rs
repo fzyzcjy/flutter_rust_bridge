@@ -13,7 +13,6 @@ use std::path::PathBuf;
 pub(crate) mod base;
 pub mod dart2rust;
 mod dump;
-mod function;
 pub(crate) mod misc;
 pub(crate) mod output_code;
 pub mod rust2dart;

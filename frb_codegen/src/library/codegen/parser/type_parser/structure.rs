@@ -94,17 +94,6 @@ impl EnumOrStructParser<IrStructIdent, IrStruct, Struct, ItemStruct>
         Ok(StructRef(IrTypeStructRef {
             ident,
             is_exception: false,
-            // TODO rm
-            // freezed: self
-            //     .struct_pool
-            //     .get(&ident_string)
-            //     .map(IrStruct::using_freezed)
-            //     .unwrap_or(false),
-            // empty: self
-            //     .struct_pool
-            //     .get(&ident_string)
-            //     .map(IrStruct::is_empty)
-            //     .unwrap_or(false),
         }))
     }
 

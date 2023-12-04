@@ -24,7 +24,6 @@ use std::path::{Path, PathBuf};
 use syn::File;
 use ConfigDumpContent::SourceGraph;
 
-// TODO handle multi file correctly
 pub(crate) fn parse(
     config: &ParserInternalConfig,
     cached_rust_reader: &mut CachedRustReader,

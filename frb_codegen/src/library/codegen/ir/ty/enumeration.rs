@@ -21,7 +21,6 @@ pub struct IrEnum {
     pub wrapper_name: Option<String>,
     pub comments: Vec<IrComment>,
     pub variants: Vec<IrVariant>,
-    // TODO old: `is_struct: bool`
     pub mode: IrEnumMode,
 }
 

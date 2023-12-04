@@ -11,12 +11,6 @@ use serde::Serialize;
 
 #[derive(Clone, Debug, Serialize)]
 pub(crate) struct ExternFunc {
-    // TODO handle platform
-    // if matches!(target, Io) {
-    //     self.names.push(func_name.to_string());
-    // } else if (target == Target::Wasm) && !func_name.starts_with("wire_") {
-    //     self.wasm_exports.push(...)
-    // }
     pub(crate) func_name: String,
     pub(crate) params: Vec<ExternFuncParam>,
     pub(crate) return_type: Option<String>,
@@ -61,34 +55,6 @@ impl ExternFunc {
                 .map_or("".to_owned(), |r| format!("-> {r}")),
         )
     }
-
-    // TODO migrated from: ExternFuncCollector.wasm_exports.push(...)
-    // comment out, since not migrate `IrFuncDisplay` yet
-    // pub(crate) fn wasm_export() -> Option<IrFuncDisplay> {
-    //     /// Functions starting with "wire_" are assumed to be from the original set of IrFuncs
-    //     /// and not re-exported to WASM.
-    //     if func_name.starts_with("wire_") {
-    //         None
-    //     } else {
-    //         Some(IrFuncDisplay {
-    //             name: func_name.to_owned(),
-    //             inputs: params
-    //                 .iter()
-    //                 // TODO (verbatim, dart) ---> (name + rust_type, dart_type)
-    //                 .map(|(verbatim, dart)| {
-    //                     let verbatim = format!("{verbatim}");
-    //                     let (key, _) = verbatim.split_once(':').expect("Missing middle colon");
-    //                     IrParam {
-    //                         name: key.to_owned(),
-    //                         ty: format!("{dart}"),
-    //                     }
-    //                 })
-    //                 .collect(),
-    //             output: return_type.map(String::from).unwrap_or_default(),
-    //             has_port_argument: false,
-    //         })
-    //     }
-    // }
 }
 
 impl ExternFuncParam {

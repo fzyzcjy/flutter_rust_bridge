@@ -7,9 +7,6 @@ use std::path::Path;
 use std::str::FromStr;
 
 lazy_static! {
-    // TODO rm?
-    // pub(crate) static ref FFI_REQUIREMENT: VersionReq =
-    //     VersionReq::parse(">= 2.0.1, < 3.0.0").unwrap();
     pub(crate) static ref FFIGEN_REQUIREMENT: VersionReq =
         VersionReq::parse(">= 8.0.0, < 10.0.0").unwrap();
 }
@@ -21,8 +18,6 @@ pub fn ensure_tools_available(dart_root: &Path, enable_deps_check: bool) -> anyh
     }
 
     if enable_deps_check {
-        // TODO rm?
-        // repo.has_specified_and_installed("ffi", DartDependencyMode::Main, &FFI_REQUIREMENT)?;
         repo.has_specified_and_installed("ffigen", DartDependencyMode::Dev, &FFIGEN_REQUIREMENT)?;
     }
 
