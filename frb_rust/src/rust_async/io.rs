@@ -1,6 +1,7 @@
 use lazy_static::lazy_static;
 use parking_lot::Mutex;
 use std::future::Future;
+use std::panic::RefUnwindSafe;
 use tokio::runtime::Runtime;
 use tokio::task::JoinHandle;
 
@@ -18,7 +19,7 @@ where
     runtime.spawn(future)
 }
 
-pub trait BaseAsyncRuntime {
+pub trait BaseAsyncRuntime: RefUnwindSafe {
     fn spawn<F>(future: F) -> JoinHandle<F::Output>
     where
         F: Future + Send + 'static,
