@@ -7199,7 +7199,7 @@ fn wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_impl(
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_instance_method_arg_borrow", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.wire2api(); move |context|  { let api_that = api_that.rust_auto_opaque_wire2api_ref()?;
- Result::<_,anyhow::Error>::Ok(crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::instance_method_arg_borrow(&&api_that)) } })
+ Result::<_,anyhow::Error>::Ok(crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::instance_method_arg_borrow(&api_that)) } })
 }
 fn wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -7207,7 +7207,7 @@ fn wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_impl(
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.wire2api(); move |context|  { let mut api_that = api_that.rust_auto_opaque_wire2api_ref_mut()?;
- Result::<_,anyhow::Error>::Ok(crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::instance_method_arg_mut_borrow(&&mut api_that)) } })
+ Result::<_,anyhow::Error>::Ok(crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::instance_method_arg_mut_borrow(&mut api_that)) } })
 }
 fn wire_NonCloneSimpleTwinNormal_instance_method_arg_own_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -7226,7 +7226,7 @@ fn wire_NonCloneSimpleTwinNormal_instance_method_arg_own_impl(
                 let api_that = api_that.rust_auto_opaque_wire2api_owned()?;
                 Result::<_, anyhow::Error>::Ok(
                     crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::instance_method_arg_own(
-                        &api_that,
+                        api_that,
                     ),
                 )
             }
@@ -7239,7 +7239,7 @@ fn wire_NonCloneSimpleTwinNormal_instance_method_return_own_impl(
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_instance_method_return_own", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.wire2api(); move |context|  { let api_that = api_that.rust_auto_opaque_wire2api_ref()?;
- Result::<_,anyhow::Error>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_api2wire(crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::instance_method_return_own(&&api_that))) } })
+ Result::<_,anyhow::Error>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_api2wire(crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::instance_method_return_own(&api_that))) } })
 }
 fn wire_NonCloneSimpleTwinNormal_new_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, flutter_rust_bridge::RustOpaque<

@@ -76,7 +76,8 @@ fn generate_inner_func_params(
     let mut ans = func
         .inputs
         .iter()
-        .map(|field| {
+        .enumerate()
+        .map(|(index, field)| {
             let mut ans = format!("api_{}", field.name.rust_style());
             if let IrType::RustAutoOpaque(o) = &field.ty {
                 ans = match o.ownership_mode {
@@ -84,6 +85,8 @@ fn generate_inner_func_params(
                     IrTypeOwnershipMode::RefMut => format!("&mut {ans}"),
                     _ => ans,
                 };
+            } else if index == 0 && matches!(&func.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod { mode, .. }) if mode == &Instance) {
+                ans = format!("&{ans}");
             }
             ans
         })
@@ -97,11 +100,6 @@ fn generate_inner_func_params(
                 WireRustGenerator::new(func.output.clone(), context).intodart_type(ir_pack)
             ),
         );
-    }
-
-    if matches!(&func.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod { mode, .. }) if mode == &Instance)
-    {
-        ans[0] = format!("&{}", ans[0]);
     }
 
     ans
