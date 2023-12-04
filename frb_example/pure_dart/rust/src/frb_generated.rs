@@ -7208,7 +7208,7 @@ fn wire_rust_auto_opaque_arg_borrow_impl(
             let api_arg = arg.wire2api();
             move |context| {
                 let api_arg = api_arg.rust_auto_opaque_wire2api_ref()?;
-                Result::<_, ()>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_arg_borrow(
+                Result::<_, _>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_arg_borrow(
                     api_arg,
                 ))
             }
@@ -7230,7 +7230,7 @@ fn wire_rust_auto_opaque_arg_mut_borrow_impl(
             let api_arg = arg.wire2api();
             move |context| {
                 let api_arg = api_arg.rust_auto_opaque_wire2api_ref_mut()?;
-                Result::<_, ()>::Ok(
+                Result::<_, _>::Ok(
                     crate::api::rust_auto_opaque::rust_auto_opaque_arg_mut_borrow(api_arg),
                 )
             }
@@ -7252,7 +7252,7 @@ fn wire_rust_auto_opaque_arg_own_impl(
             let api_arg = arg.wire2api();
             move |context| {
                 let api_arg = api_arg.rust_auto_opaque_wire2api_owned()?;
-                Result::<_, ()>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_arg_own(
+                Result::<_, _>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_arg_own(
                     api_arg,
                 ))
             }
@@ -7270,7 +7270,7 @@ fn wire_rust_auto_opaque_return_own_impl(port_: flutter_rust_bridge::for_generat
         },
         move || {
             move |context| {
-                Result::<_, _>::Ok(flutter_rust_bridge::RustOpaque::new(
+                Result::<_, ()>::Ok(flutter_rust_bridge::RustOpaque::new(
                     crate::api::rust_auto_opaque::rust_auto_opaque_return_own(),
                 ))
             }
