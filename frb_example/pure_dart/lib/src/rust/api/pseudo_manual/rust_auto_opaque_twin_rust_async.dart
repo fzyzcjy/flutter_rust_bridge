@@ -132,7 +132,7 @@ Future<RwLockStructWithGoodAndOpaqueFieldTwinRustAsync>
             .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsync(
                 hint: hint);
 
-// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::tokio::sync::RwLock<Box<dyn Fn (String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>>>
+// Rust type: flutter_rust_bridge::RustOpaque<tokio::sync::RwLock<Box<dyn Fn (String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>>>
 @sealed
 class RwLockBoxFnStringString extends RustOpaque {
   RwLockBoxFnStringString.fromWire(dynamic wire)
@@ -148,7 +148,7 @@ class RwLockBoxFnStringString extends RustOpaque {
   );
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::tokio::sync::RwLock<Box<dyn HelloTraitTwinRustAsync>>>
+// Rust type: flutter_rust_bridge::RustOpaque<tokio::sync::RwLock<Box<dyn HelloTraitTwinRustAsync>>>
 @sealed
 class RwLockBoxHelloTraitTwinRustAsync extends RustOpaque {
   RwLockBoxHelloTraitTwinRustAsync.fromWire(dynamic wire)
@@ -164,7 +164,7 @@ class RwLockBoxHelloTraitTwinRustAsync extends RustOpaque {
   );
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::tokio::sync::RwLock<Box<dyn MyTraitTwinRustAsync + Send + Sync>>>
+// Rust type: flutter_rust_bridge::RustOpaque<tokio::sync::RwLock<Box<dyn MyTraitTwinRustAsync + Send + Sync>>>
 @sealed
 class RwLockBoxMyTraitTwinRustAsync extends RustOpaque {
   RwLockBoxMyTraitTwinRustAsync.fromWire(dynamic wire)
@@ -180,7 +180,7 @@ class RwLockBoxMyTraitTwinRustAsync extends RustOpaque {
   );
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::tokio::sync::RwLock<NonCloneSimpleTwinRustAsync>>
+// Rust type: flutter_rust_bridge::RustOpaque<tokio::sync::RwLock<NonCloneSimpleTwinRustAsync>>
 @sealed
 class RwLockNonCloneSimpleTwinRustAsync extends RustOpaque {
   RwLockNonCloneSimpleTwinRustAsync.fromWire(dynamic wire)
@@ -256,7 +256,7 @@ class RwLockNonCloneSimpleTwinRustAsync extends RustOpaque {
               hint: hint);
 }
 
-// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::tokio::sync::RwLock<StructWithGoodAndOpaqueFieldTwinRustAsync>>
+// Rust type: flutter_rust_bridge::RustOpaque<tokio::sync::RwLock<StructWithGoodAndOpaqueFieldTwinRustAsync>>
 @sealed
 class RwLockStructWithGoodAndOpaqueFieldTwinRustAsync extends RustOpaque {
   RwLockStructWithGoodAndOpaqueFieldTwinRustAsync.fromWire(dynamic wire)

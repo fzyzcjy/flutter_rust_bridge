@@ -3785,26 +3785,6 @@ void rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSync(const v
 
 void rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync(const void *ptr);
 
-void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynHelloTraitTwinRustAsync(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynHelloTraitTwinRustAsync(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockNonCloneSimpleTwinRustAsync(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockNonCloneSimpleTwinRustAsync(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(const void *ptr);
-
 void rust_arc_increment_strong_count_RustOpaque_frb_opaque_return(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return(const void *ptr);
@@ -3860,6 +3840,26 @@ void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOp
 void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockBoxdynHelloTraitTwinRustAsync(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockBoxdynHelloTraitTwinRustAsync(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockNonCloneSimpleTwinRustAsync(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockNonCloneSimpleTwinRustAsync(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(const void *ptr);
 
 union AbcTwinNormalKind *inflate_AbcTwinNormal_A(void);
 
@@ -4359,11 +4359,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync);
-    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe);
-    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynHelloTraitTwinRustAsync);
-    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync);
-    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockNonCloneSimpleTwinRustAsync);
-    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_return);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_hide_data);
@@ -4378,16 +4373,16 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockBoxdynHelloTraitTwinRustAsync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockNonCloneSimpleTwinRustAsync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_MutexHideData);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_RwLockHideData);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSync);
-    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe);
-    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynHelloTraitTwinRustAsync);
-    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync);
-    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockNonCloneSimpleTwinRustAsync);
-    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedtokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_frb_opaque_return);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_frb_opaque_sync_return);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_hide_data);
@@ -4402,6 +4397,11 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockBoxdynHelloTraitTwinRustAsync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockNonCloneSimpleTwinRustAsync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync);
     dummy_var ^= ((int64_t) (void*) store_dart_post_cobject);
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinNormal_concatenate_static_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinNormal_concatenate_twin_normal);
