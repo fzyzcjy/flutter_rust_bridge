@@ -15742,38 +15742,44 @@ class RustLibWire implements BaseWire {
   void wire_rust_auto_opaque_arg_borrow_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> arg,
+    int expect,
   ) {
     return _wire_rust_auto_opaque_arg_borrow_twin_normal(
       port_,
       arg,
+      expect,
     );
   }
 
   late final _wire_rust_auto_opaque_arg_borrow_twin_normalPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_auto_opaque_arg_borrow_twin_normal');
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+              ffi.Int32)>>('wire_rust_auto_opaque_arg_borrow_twin_normal');
   late final _wire_rust_auto_opaque_arg_borrow_twin_normal =
       _wire_rust_auto_opaque_arg_borrow_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>, int)>();
 
   void wire_rust_auto_opaque_arg_mut_borrow_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> arg,
+    int expect,
+    int adder,
   ) {
     return _wire_rust_auto_opaque_arg_mut_borrow_twin_normal(
       port_,
       arg,
+      expect,
+      adder,
     );
   }
 
   late final _wire_rust_auto_opaque_arg_mut_borrow_twin_normalPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_auto_opaque_arg_mut_borrow_twin_normal');
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>, ffi.Int32,
+              ffi.Int32)>>('wire_rust_auto_opaque_arg_mut_borrow_twin_normal');
   late final _wire_rust_auto_opaque_arg_mut_borrow_twin_normal =
       _wire_rust_auto_opaque_arg_mut_borrow_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>, int, int)>();
 
   void wire_rust_auto_opaque_arg_own_and_return_own_twin_normal(
     int port_,
@@ -15797,20 +15803,22 @@ class RustLibWire implements BaseWire {
   void wire_rust_auto_opaque_arg_own_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> arg,
+    int expect,
   ) {
     return _wire_rust_auto_opaque_arg_own_twin_normal(
       port_,
       arg,
+      expect,
     );
   }
 
   late final _wire_rust_auto_opaque_arg_own_twin_normalPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_auto_opaque_arg_own_twin_normal');
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+              ffi.Int32)>>('wire_rust_auto_opaque_arg_own_twin_normal');
   late final _wire_rust_auto_opaque_arg_own_twin_normal =
       _wire_rust_auto_opaque_arg_own_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>, int)>();
 
   void wire_rust_auto_opaque_callable_arg_twin_normal(
     int port_,
@@ -15903,18 +15911,20 @@ class RustLibWire implements BaseWire {
 
   void wire_rust_auto_opaque_return_own_twin_normal(
     int port_,
+    int initial,
   ) {
     return _wire_rust_auto_opaque_return_own_twin_normal(
       port_,
+      initial,
     );
   }
 
   late final _wire_rust_auto_opaque_return_own_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
           'wire_rust_auto_opaque_return_own_twin_normal');
   late final _wire_rust_auto_opaque_return_own_twin_normal =
       _wire_rust_auto_opaque_return_own_twin_normalPtr
-          .asFunction<void Function(int)>();
+          .asFunction<void Function(int, int)>();
 
   void
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal(

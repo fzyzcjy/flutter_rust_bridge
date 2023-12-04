@@ -1927,17 +1927,24 @@ abstract class RustLibApi extends BaseApi {
       nonCloneSimpleTwinNormalStaticMethodReturnOwnTwinNormal({dynamic hint});
 
   Future<void> rustAutoOpaqueArgBorrowTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint});
+      {required RwLockNonCloneSimpleTwinNormal arg,
+      required int expect,
+      dynamic hint});
 
   Future<void> rustAutoOpaqueArgMutBorrowTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint});
+      {required RwLockNonCloneSimpleTwinNormal arg,
+      required int expect,
+      required int adder,
+      dynamic hint});
 
   Future<RwLockNonCloneSimpleTwinNormal>
       rustAutoOpaqueArgOwnAndReturnOwnTwinNormal(
           {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint});
 
   Future<void> rustAutoOpaqueArgOwnTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint});
+      {required RwLockNonCloneSimpleTwinNormal arg,
+      required int expect,
+      dynamic hint});
 
   Future<void> rustAutoOpaqueCallableArgTwinNormal(
       {required RwLockBoxFnStringString arg, dynamic hint});
@@ -1957,7 +1964,7 @@ abstract class RustLibApi extends BaseApi {
       {dynamic hint});
 
   Future<RwLockNonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwnTwinNormal(
-      {dynamic hint});
+      {required int initial, dynamic hint});
 
   Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinNormal(
       {required RwLockStructWithGoodAndOpaqueFieldTwinNormal arg,
@@ -15808,16 +15815,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueArgBorrowTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) {
+      {required RwLockNonCloneSimpleTwinNormal arg,
+      required int expect,
+      dynamic hint}) {
     var arg0 =
         api2wire_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(arg);
+    var arg1 = api2wire_i_32(expect);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_arg_borrow_twin_normal(port_, arg0),
+          wire.wire_rust_auto_opaque_arg_borrow_twin_normal(port_, arg0, arg1),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueArgBorrowTwinNormalConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -15826,21 +15836,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kRustAutoOpaqueArgBorrowTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "rust_auto_opaque_arg_borrow_twin_normal",
-        argNames: ["arg"],
+        argNames: ["arg", "expect"],
       );
 
   @override
   Future<void> rustAutoOpaqueArgMutBorrowTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) {
+      {required RwLockNonCloneSimpleTwinNormal arg,
+      required int expect,
+      required int adder,
+      dynamic hint}) {
     var arg0 =
         api2wire_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(arg);
+    var arg1 = api2wire_i_32(expect);
+    var arg2 = api2wire_i_32(adder);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_arg_mut_borrow_twin_normal(port_, arg0),
+      callFfi: (port_) => wire.wire_rust_auto_opaque_arg_mut_borrow_twin_normal(
+          port_, arg0, arg1, arg2),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueArgMutBorrowTwinNormalConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect, adder],
       apiImpl: this,
       hint: hint,
     ));
@@ -15849,7 +15864,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kRustAutoOpaqueArgMutBorrowTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "rust_auto_opaque_arg_mut_borrow_twin_normal",
-        argNames: ["arg"],
+        argNames: ["arg", "expect", "adder"],
       );
 
   @override
@@ -15880,16 +15895,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustAutoOpaqueArgOwnTwinNormal(
-      {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) {
+      {required RwLockNonCloneSimpleTwinNormal arg,
+      required int expect,
+      dynamic hint}) {
     var arg0 =
         api2wire_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(arg);
+    var arg1 = api2wire_i_32(expect);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_arg_own_twin_normal(port_, arg0),
+          wire.wire_rust_auto_opaque_arg_own_twin_normal(port_, arg0, arg1),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueArgOwnTwinNormalConstMeta,
-      argValues: [arg],
+      argValues: [arg, expect],
       apiImpl: this,
       hint: hint,
     ));
@@ -15898,7 +15916,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kRustAutoOpaqueArgOwnTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "rust_auto_opaque_arg_own_twin_normal",
-        argNames: ["arg"],
+        argNames: ["arg", "expect"],
       );
 
   @override
@@ -16022,15 +16040,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<RwLockNonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwnTwinNormal(
-      {dynamic hint}) {
+      {required int initial, dynamic hint}) {
+    var arg0 = api2wire_i_32(initial);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_return_own_twin_normal(port_),
+          wire.wire_rust_auto_opaque_return_own_twin_normal(port_, arg0),
       parseSuccessData:
           _wire2api_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueReturnOwnTwinNormalConstMeta,
-      argValues: [],
+      argValues: [initial],
       apiImpl: this,
       hint: hint,
     ));
@@ -16039,7 +16058,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kRustAutoOpaqueReturnOwnTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "rust_auto_opaque_return_own_twin_normal",
-        argNames: [],
+        argNames: ["initial"],
       );
 
   @override

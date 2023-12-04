@@ -7,22 +7,31 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<void> rustAutoOpaqueArgOwnTwinNormal(
-        {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) =>
-    RustLib.instance.api.rustAutoOpaqueArgOwnTwinNormal(arg: arg, hint: hint);
+        {required RwLockNonCloneSimpleTwinNormal arg,
+        required int expect,
+        dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueArgOwnTwinNormal(arg: arg, expect: expect, hint: hint);
 
 Future<void> rustAutoOpaqueArgBorrowTwinNormal(
-        {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) =>
-    RustLib.instance.api
-        .rustAutoOpaqueArgBorrowTwinNormal(arg: arg, hint: hint);
+        {required RwLockNonCloneSimpleTwinNormal arg,
+        required int expect,
+        dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueArgBorrowTwinNormal(
+        arg: arg, expect: expect, hint: hint);
 
 Future<void> rustAutoOpaqueArgMutBorrowTwinNormal(
-        {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) =>
-    RustLib.instance.api
-        .rustAutoOpaqueArgMutBorrowTwinNormal(arg: arg, hint: hint);
+        {required RwLockNonCloneSimpleTwinNormal arg,
+        required int expect,
+        required int adder,
+        dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueArgMutBorrowTwinNormal(
+        arg: arg, expect: expect, adder: adder, hint: hint);
 
 Future<RwLockNonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwnTwinNormal(
-        {dynamic hint}) =>
-    RustLib.instance.api.rustAutoOpaqueReturnOwnTwinNormal(hint: hint);
+        {required int initial, dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueReturnOwnTwinNormal(initial: initial, hint: hint);
 
 Future<RwLockNonCloneSimpleTwinNormal>
     rustAutoOpaqueArgOwnAndReturnOwnTwinNormal(

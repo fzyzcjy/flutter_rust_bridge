@@ -3030,13 +3030,16 @@ void wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal(int64_t por
 
 void wire_NonCloneSimpleTwinNormal_static_method_return_own_twin_normal(int64_t port_);
 
-void wire_rust_auto_opaque_arg_borrow_twin_normal(int64_t port_, const void *arg);
+void wire_rust_auto_opaque_arg_borrow_twin_normal(int64_t port_, const void *arg, int32_t expect);
 
-void wire_rust_auto_opaque_arg_mut_borrow_twin_normal(int64_t port_, const void *arg);
+void wire_rust_auto_opaque_arg_mut_borrow_twin_normal(int64_t port_,
+                                                      const void *arg,
+                                                      int32_t expect,
+                                                      int32_t adder);
 
 void wire_rust_auto_opaque_arg_own_and_return_own_twin_normal(int64_t port_, const void *arg);
 
-void wire_rust_auto_opaque_arg_own_twin_normal(int64_t port_, const void *arg);
+void wire_rust_auto_opaque_arg_own_twin_normal(int64_t port_, const void *arg, int32_t expect);
 
 void wire_rust_auto_opaque_callable_arg_twin_normal(int64_t port_, const void *arg);
 
@@ -3050,7 +3053,7 @@ void wire_rust_auto_opaque_plus_sign_arg_twin_normal(int64_t port_, const void *
 
 void wire_rust_auto_opaque_plus_sign_return_twin_normal(int64_t port_);
 
-void wire_rust_auto_opaque_return_own_twin_normal(int64_t port_);
+void wire_rust_auto_opaque_return_own_twin_normal(int64_t port_, int32_t initial);
 
 void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal(int64_t port_,
                                                                                     const void *arg);

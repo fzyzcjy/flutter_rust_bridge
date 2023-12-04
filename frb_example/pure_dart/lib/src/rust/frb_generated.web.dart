@@ -5739,12 +5739,14 @@ class RustLibWire extends BaseWire {
               port_);
 
   void wire_rust_auto_opaque_arg_borrow_twin_normal(
-          NativePortType port_, Object arg) =>
-      wasmModule.wire_rust_auto_opaque_arg_borrow_twin_normal(port_, arg);
+          NativePortType port_, Object arg, int expect) =>
+      wasmModule.wire_rust_auto_opaque_arg_borrow_twin_normal(
+          port_, arg, expect);
 
   void wire_rust_auto_opaque_arg_mut_borrow_twin_normal(
-          NativePortType port_, Object arg) =>
-      wasmModule.wire_rust_auto_opaque_arg_mut_borrow_twin_normal(port_, arg);
+          NativePortType port_, Object arg, int expect, int adder) =>
+      wasmModule.wire_rust_auto_opaque_arg_mut_borrow_twin_normal(
+          port_, arg, expect, adder);
 
   void wire_rust_auto_opaque_arg_own_and_return_own_twin_normal(
           NativePortType port_, Object arg) =>
@@ -5752,8 +5754,8 @@ class RustLibWire extends BaseWire {
           port_, arg);
 
   void wire_rust_auto_opaque_arg_own_twin_normal(
-          NativePortType port_, Object arg) =>
-      wasmModule.wire_rust_auto_opaque_arg_own_twin_normal(port_, arg);
+          NativePortType port_, Object arg, int expect) =>
+      wasmModule.wire_rust_auto_opaque_arg_own_twin_normal(port_, arg, expect);
 
   void wire_rust_auto_opaque_callable_arg_twin_normal(
           NativePortType port_, Object arg) =>
@@ -5776,8 +5778,9 @@ class RustLibWire extends BaseWire {
           NativePortType port_) =>
       wasmModule.wire_rust_auto_opaque_plus_sign_return_twin_normal(port_);
 
-  void wire_rust_auto_opaque_return_own_twin_normal(NativePortType port_) =>
-      wasmModule.wire_rust_auto_opaque_return_own_twin_normal(port_);
+  void wire_rust_auto_opaque_return_own_twin_normal(
+          NativePortType port_, int initial) =>
+      wasmModule.wire_rust_auto_opaque_return_own_twin_normal(port_, initial);
 
   void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal(
           NativePortType port_, Object arg) =>
@@ -8080,16 +8083,16 @@ class RustLibWasmModule implements WasmModule {
           NativePortType port_);
 
   external void wire_rust_auto_opaque_arg_borrow_twin_normal(
-      NativePortType port_, Object arg);
+      NativePortType port_, Object arg, int expect);
 
   external void wire_rust_auto_opaque_arg_mut_borrow_twin_normal(
-      NativePortType port_, Object arg);
+      NativePortType port_, Object arg, int expect, int adder);
 
   external void wire_rust_auto_opaque_arg_own_and_return_own_twin_normal(
       NativePortType port_, Object arg);
 
   external void wire_rust_auto_opaque_arg_own_twin_normal(
-      NativePortType port_, Object arg);
+      NativePortType port_, Object arg, int expect);
 
   external void wire_rust_auto_opaque_callable_arg_twin_normal(
       NativePortType port_, Object arg);
@@ -8107,7 +8110,7 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_);
 
   external void wire_rust_auto_opaque_return_own_twin_normal(
-      NativePortType port_);
+      NativePortType port_, int initial);
 
   external void
       wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal(

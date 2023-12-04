@@ -12350,16 +12350,19 @@ pub extern "C" fn wire_NonCloneSimpleTwinNormal_static_method_return_own_twin_no
 pub extern "C" fn wire_rust_auto_opaque_arg_borrow_twin_normal(
     port_: i64,
     arg: *const std::ffi::c_void,
+    expect: i32,
 ) {
-    wire_rust_auto_opaque_arg_borrow_twin_normal_impl(port_, arg)
+    wire_rust_auto_opaque_arg_borrow_twin_normal_impl(port_, arg, expect)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_rust_auto_opaque_arg_mut_borrow_twin_normal(
     port_: i64,
     arg: *const std::ffi::c_void,
+    expect: i32,
+    adder: i32,
 ) {
-    wire_rust_auto_opaque_arg_mut_borrow_twin_normal_impl(port_, arg)
+    wire_rust_auto_opaque_arg_mut_borrow_twin_normal_impl(port_, arg, expect, adder)
 }
 
 #[no_mangle]
@@ -12374,8 +12377,9 @@ pub extern "C" fn wire_rust_auto_opaque_arg_own_and_return_own_twin_normal(
 pub extern "C" fn wire_rust_auto_opaque_arg_own_twin_normal(
     port_: i64,
     arg: *const std::ffi::c_void,
+    expect: i32,
 ) {
-    wire_rust_auto_opaque_arg_own_twin_normal_impl(port_, arg)
+    wire_rust_auto_opaque_arg_own_twin_normal_impl(port_, arg, expect)
 }
 
 #[no_mangle]
@@ -12414,8 +12418,8 @@ pub extern "C" fn wire_rust_auto_opaque_plus_sign_return_twin_normal(port_: i64)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_auto_opaque_return_own_twin_normal(port_: i64) {
-    wire_rust_auto_opaque_return_own_twin_normal_impl(port_)
+pub extern "C" fn wire_rust_auto_opaque_return_own_twin_normal(port_: i64, initial: i32) {
+    wire_rust_auto_opaque_return_own_twin_normal_impl(port_, initial)
 }
 
 #[no_mangle]
