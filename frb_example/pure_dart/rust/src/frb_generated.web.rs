@@ -8537,22 +8537,6 @@ pub fn wire_rust_auto_opaque_arg_borrow(
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_arg_mut_borrow(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_rust_auto_opaque_arg_mut_borrow_impl(port_, arg)
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_arg_own(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) {
-    wire_rust_auto_opaque_arg_own_impl(port_, arg)
-}
-
-#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_return_own(port_: flutter_rust_bridge::for_generated::MessagePort) {
     wire_rust_auto_opaque_return_own_impl(port_)
 }

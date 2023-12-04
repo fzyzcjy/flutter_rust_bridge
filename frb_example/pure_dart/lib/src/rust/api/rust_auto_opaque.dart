@@ -6,17 +6,9 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<void> rustAutoOpaqueArgOwn(
-        {required NonCloneSimpleTwinNormal arg, dynamic hint}) =>
-    RustLib.instance.api.rustAutoOpaqueArgOwn(arg: arg, hint: hint);
-
 Future<void> rustAutoOpaqueArgBorrow(
         {required NonCloneSimpleTwinNormal arg, dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueArgBorrow(arg: arg, hint: hint);
-
-Future<void> rustAutoOpaqueArgMutBorrow(
-        {required NonCloneSimpleTwinNormal arg, dynamic hint}) =>
-    RustLib.instance.api.rustAutoOpaqueArgMutBorrow(arg: arg, hint: hint);
 
 Future<NonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwn({dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueReturnOwn(hint: hint);
