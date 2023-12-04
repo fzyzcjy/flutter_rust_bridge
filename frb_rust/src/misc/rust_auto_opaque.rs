@@ -17,3 +17,13 @@ impl<T: DartSafe> RustOpaque<RwLock<T>> {
         Ok(TODO)
     }
 }
+
+pub trait RustAutoOpaqueWire2ApiIntermediate<'a, T: 'a> {
+    fn utilize(&self) -> T;
+}
+
+impl<T> RustAutoOpaqueWire2ApiIntermediate<&T> for T {
+    fn utilize(&self) -> &T {
+        self
+    }
+}
