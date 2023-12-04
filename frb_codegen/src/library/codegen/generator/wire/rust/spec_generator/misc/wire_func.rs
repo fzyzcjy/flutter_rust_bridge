@@ -71,7 +71,7 @@ fn generate_inner_func_params(
         .map(|field| {
             let mut ans = format!("api_{}", field.name.rust_style());
             if matches!(&field.ty, IrType::RustAutoOpaque(_)) {
-                ans = format!("{ans}.rust_auto_opaque_wire2api()");
+                ans = format!("{ans}.rust_auto_opaque_wire2api()?");
             }
             ans
         })
