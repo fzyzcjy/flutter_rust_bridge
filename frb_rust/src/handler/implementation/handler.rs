@@ -49,7 +49,7 @@ impl<E: Executor, H: ErrorHandler> SimpleHandler<E, H> {
 
 impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
     // TODO rename all these series (e.g. wrap -> wrap_normal)
-    fn wrap<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(
+    fn wrap_normal<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(
         &self,
         task_info: TaskInfo,
         prepare: PrepareFn,
@@ -72,7 +72,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
             let task_info2 = task_info.clone();
             if let Err(error) = panic::catch_unwind(move || {
                 let task = prepare();
-                self.executor.execute(task_info2, task);
+                self.executor.execute_normal(task_info2, task);
             }) {
                 self.error_handler
                     .handle_error(task_info.port.unwrap(), Error::Panic(error));

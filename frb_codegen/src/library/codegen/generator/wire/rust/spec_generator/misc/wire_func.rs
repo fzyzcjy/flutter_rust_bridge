@@ -246,7 +246,7 @@ fn generate_handler_func_name(
             let name = if func.rust_async {
                 "wrap_async"
             } else {
-                "wrap"
+                "wrap_normal"
             };
 
             let output = if matches!(func.mode, IrFuncMode::Stream { .. }) {

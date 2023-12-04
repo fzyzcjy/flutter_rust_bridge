@@ -23,7 +23,7 @@ fn wire_minimal_adder_impl(
     a: impl Wire2Api<i32> + core::panic::UnwindSafe,
     b: impl Wire2Api<i32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, i32, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "minimal_adder",
             port: Some(port_),

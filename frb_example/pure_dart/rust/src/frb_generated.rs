@@ -28,7 +28,7 @@ fn wire_boxed_blob_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     blob: impl Wire2Api<Box<[u8; 1600]>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::array::BlobTwinNormal, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, crate::api::array::BlobTwinNormal, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "boxed_blob_twin_normal",
             port: Some(port_),
@@ -44,7 +44,7 @@ fn wire_func_test_id_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     id: impl Wire2Api<crate::api::array::TestIdTwinNormal> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::array::TestIdTwinNormal, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, crate::api::array::TestIdTwinNormal, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "func_test_id_twin_normal",
             port: Some(port_),
@@ -57,7 +57,7 @@ fn wire_func_test_id_twin_normal_impl(
     )
 }
 fn wire_get_array_twin_normal_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [u8; 5], _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, [u8; 5], _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "get_array_twin_normal",
             port: Some(port_),
@@ -67,7 +67,7 @@ fn wire_get_array_twin_normal_impl(port_: flutter_rust_bridge::for_generated::Me
     )
 }
 fn wire_get_complex_array_twin_normal_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [crate::api::array::PointTwinNormal; 2], _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, [crate::api::array::PointTwinNormal; 2], _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "get_complex_array_twin_normal",
             port: Some(port_),
@@ -82,7 +82,7 @@ fn wire_last_number_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     array: impl Wire2Api<[f64; 16]> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, f64, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, f64, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "last_number_twin_normal",
             port: Some(port_),
@@ -100,7 +100,7 @@ fn wire_nested_id_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     id: impl Wire2Api<[crate::api::array::TestIdTwinNormal; 4]> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [crate::api::array::TestIdTwinNormal; 2], _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, [crate::api::array::TestIdTwinNormal; 2], _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "nested_id_twin_normal",
             port: Some(port_),
@@ -116,7 +116,7 @@ fn wire_new_msgid_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     id: impl Wire2Api<[u8; 32]> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::array::MessageIdTwinNormal, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, crate::api::array::MessageIdTwinNormal, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "new_msgid_twin_normal",
             port: Some(port_),
@@ -132,7 +132,7 @@ fn wire_return_boxed_feed_id_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     id: impl Wire2Api<[u8; 8]> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::array::FeedIdTwinNormal, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, crate::api::array::FeedIdTwinNormal, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "return_boxed_feed_id_twin_normal",
             port: Some(port_),
@@ -150,7 +150,7 @@ fn wire_return_boxed_raw_feed_id_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     id: impl Wire2Api<crate::api::array::FeedIdTwinNormal> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [u8; 8], _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, [u8; 8], _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "return_boxed_raw_feed_id_twin_normal",
             port: Some(port_),
@@ -170,7 +170,7 @@ fn wire_use_boxed_blob_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     blob: impl Wire2Api<Box<crate::api::array::BlobTwinNormal>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [u8; 1600], _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, [u8; 1600], _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "use_boxed_blob_twin_normal",
             port: Some(port_),
@@ -188,7 +188,7 @@ fn wire_use_msgid_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     id: impl Wire2Api<crate::api::array::MessageIdTwinNormal> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [u8; 32], _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, [u8; 32], _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "use_msgid_twin_normal",
             port: Some(port_),
@@ -240,7 +240,7 @@ fn wire_handle_customized_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     val: impl Wire2Api<crate::api::attribute::CustomizedTwinNormal> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "handle_customized_struct_twin_normal",
             port: Some(port_),
@@ -260,7 +260,7 @@ fn wire_next_user_id_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     user_id: impl Wire2Api<crate::api::attribute::UserIdTwinNormal> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::attribute::UserIdTwinNormal, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, crate::api::attribute::UserIdTwinNormal, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "next_user_id_twin_normal",
             port: Some(port_),
@@ -278,7 +278,7 @@ fn wire_benchmark_input_bytes_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     bytes: impl Wire2Api<Vec<u8>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, i32, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "benchmark_input_bytes_twin_normal",
             port: Some(port_),
@@ -298,7 +298,7 @@ fn wire_benchmark_output_bytes_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     size: impl Wire2Api<i32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<u8>, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, Vec<u8>, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "benchmark_output_bytes_twin_normal",
             port: Some(port_),
@@ -315,7 +315,7 @@ fn wire_benchmark_output_bytes_twin_normal_impl(
     )
 }
 fn wire_benchmark_void_twin_normal_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "benchmark_void_twin_normal",
             port: Some(port_),
@@ -332,7 +332,7 @@ fn wire_datetime_local_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     d: impl Wire2Api<chrono::DateTime<chrono::Local>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, chrono::DateTime<chrono::Local>, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, chrono::DateTime<chrono::Local>, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "datetime_local_twin_normal",
             port: Some(port_),
@@ -350,7 +350,7 @@ fn wire_datetime_utc_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     d: impl Wire2Api<chrono::DateTime<chrono::Utc>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, chrono::DateTime<chrono::Utc>, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, chrono::DateTime<chrono::Utc>, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "datetime_utc_twin_normal",
             port: Some(port_),
@@ -368,7 +368,7 @@ fn wire_duration_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     d: impl Wire2Api<chrono::Duration> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, chrono::Duration, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, chrono::Duration, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "duration_twin_normal",
             port: Some(port_),
@@ -385,7 +385,7 @@ fn wire_handle_durations_twin_normal_impl(
     durations: impl Wire2Api<Vec<chrono::Duration>> + core::panic::UnwindSafe,
     since: impl Wire2Api<chrono::DateTime<chrono::Local>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<chrono::DateTime<chrono::Local>>, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, Vec<chrono::DateTime<chrono::Local>>, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "handle_durations_twin_normal",
             port: Some(port_),
@@ -408,7 +408,7 @@ fn wire_handle_timestamps_twin_normal_impl(
     timestamps: impl Wire2Api<Vec<chrono::NaiveDateTime>> + core::panic::UnwindSafe,
     epoch: impl Wire2Api<chrono::NaiveDateTime> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<chrono::Duration>, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, Vec<chrono::Duration>, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "handle_timestamps_twin_normal",
             port: Some(port_),
@@ -430,7 +430,7 @@ fn wire_how_long_does_it_take_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     mine: impl Wire2Api<crate::api::chrono_type::FeatureChronoTwinNormal> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, chrono::Duration, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, chrono::Duration, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "how_long_does_it_take_twin_normal",
             port: Some(port_),
@@ -446,7 +446,7 @@ fn wire_naivedatetime_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     d: impl Wire2Api<chrono::NaiveDateTime> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, chrono::NaiveDateTime, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, chrono::NaiveDateTime, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "naivedatetime_twin_normal",
             port: Some(port_),
@@ -464,7 +464,7 @@ fn wire_optional_empty_datetime_utc_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     d: impl Wire2Api<Option<chrono::DateTime<chrono::Utc>>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<chrono::DateTime<chrono::Utc>>, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, Option<chrono::DateTime<chrono::Utc>>, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "optional_empty_datetime_utc_twin_normal",
             port: Some(port_),
@@ -481,38 +481,42 @@ fn wire_optional_empty_datetime_utc_twin_normal_impl(
     )
 }
 fn wire_test_chrono_twin_normal_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::chrono_type::TestChronoTwinNormal, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "test_chrono_twin_normal",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            move |context| Result::<_, ()>::Ok(crate::api::chrono_type::test_chrono_twin_normal())
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER
+        .wrap_normal::<_, _, _, crate::api::chrono_type::TestChronoTwinNormal, _>(
+            flutter_rust_bridge::for_generated::TaskInfo {
+                debug_name: "test_chrono_twin_normal",
+                port: Some(port_),
+                mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            },
+            move || {
+                move |context| {
+                    Result::<_, ()>::Ok(crate::api::chrono_type::test_chrono_twin_normal())
+                }
+            },
+        )
 }
 fn wire_test_precise_chrono_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::chrono_type::TestChronoTwinNormal, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "test_precise_chrono_twin_normal",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            move |context| {
-                Result::<_, ()>::Ok(crate::api::chrono_type::test_precise_chrono_twin_normal())
-            }
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER
+        .wrap_normal::<_, _, _, crate::api::chrono_type::TestChronoTwinNormal, _>(
+            flutter_rust_bridge::for_generated::TaskInfo {
+                debug_name: "test_precise_chrono_twin_normal",
+                port: Some(port_),
+                mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            },
+            move || {
+                move |context| {
+                    Result::<_, ()>::Ok(crate::api::chrono_type::test_precise_chrono_twin_normal())
+                }
+            },
+        )
 }
 fn wire_StructWithCommentsTwinNormal_instance_method_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: impl Wire2Api<crate::api::comment::StructWithCommentsTwinNormal> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "StructWithCommentsTwinNormal_instance_method_twin_normal",
             port: Some(port_),
@@ -533,7 +537,7 @@ fn wire_StructWithCommentsTwinNormal_instance_method_twin_normal_impl(
 fn wire_StructWithCommentsTwinNormal_static_method_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "StructWithCommentsTwinNormal_static_method_twin_normal",
             port: Some(port_),
@@ -551,7 +555,7 @@ fn wire_StructWithCommentsTwinNormal_static_method_twin_normal_impl(
 fn wire_function_with_comments_slash_star_star_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "function_with_comments_slash_star_star_twin_normal",
             port: Some(port_),
@@ -569,7 +573,7 @@ fn wire_function_with_comments_slash_star_star_twin_normal_impl(
 fn wire_function_with_comments_triple_slash_multi_line_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "function_with_comments_triple_slash_multi_line_twin_normal",
             port: Some(port_),
@@ -588,29 +592,30 @@ fn wire_function_with_comments_triple_slash_multi_line_twin_normal_impl(
 fn wire_function_with_comments_triple_slash_single_line_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "function_with_comments_triple_slash_single_line_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  Result::<_,()>::Ok(crate::api::comment::function_with_comments_triple_slash_single_line_twin_normal()) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "function_with_comments_triple_slash_single_line_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  Result::<_,()>::Ok(crate::api::comment::function_with_comments_triple_slash_single_line_twin_normal()) } })
 }
 fn wire_return_dart_dynamic_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, flutter_rust_bridge::for_generated::DartAbi, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "return_dart_dynamic_twin_normal",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            move |context| {
-                Result::<_, ()>::Ok(crate::api::dart_dynamic::return_dart_dynamic_twin_normal())
-            }
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER
+        .wrap_normal::<_, _, _, flutter_rust_bridge::for_generated::DartAbi, _>(
+            flutter_rust_bridge::for_generated::TaskInfo {
+                debug_name: "return_dart_dynamic_twin_normal",
+                port: Some(port_),
+                mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            },
+            move || {
+                move |context| {
+                    Result::<_, ()>::Ok(crate::api::dart_dynamic::return_dart_dynamic_twin_normal())
+                }
+            },
+        )
 }
 fn wire_async_accept_dart_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, String, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "async_accept_dart_opaque_twin_normal",
             port: Some(port_),
@@ -631,7 +636,7 @@ fn wire_create_enum_dart_opaque_twin_normal_impl(
     opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, crate::api::dart_opaque::EnumDartOpaqueTwinNormal, _>(
+        .wrap_normal::<_, _, _, crate::api::dart_opaque::EnumDartOpaqueTwinNormal, _>(
             flutter_rust_bridge::for_generated::TaskInfo {
                 debug_name: "create_enum_dart_opaque_twin_normal",
                 port: Some(port_),
@@ -653,7 +658,7 @@ fn wire_create_nested_dart_opaque_twin_normal_impl(
     opaque2: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, crate::api::dart_opaque::DartOpaqueNestedTwinNormal, _>(
+        .wrap_normal::<_, _, _, crate::api::dart_opaque::DartOpaqueNestedTwinNormal, _>(
             flutter_rust_bridge::for_generated::TaskInfo {
                 debug_name: "create_nested_dart_opaque_twin_normal",
                 port: Some(port_),
@@ -676,7 +681,7 @@ fn wire_create_nested_dart_opaque_twin_normal_impl(
 fn wire_drop_static_dart_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "drop_static_dart_opaque_twin_normal",
             port: Some(port_),
@@ -693,7 +698,7 @@ fn wire_get_enum_dart_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: impl Wire2Api<crate::api::dart_opaque::EnumDartOpaqueTwinNormal> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "get_enum_dart_opaque_twin_normal",
             port: Some(port_),
@@ -713,7 +718,7 @@ fn wire_get_nested_dart_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: impl Wire2Api<crate::api::dart_opaque::DartOpaqueNestedTwinNormal> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "get_nested_dart_opaque_twin_normal",
             port: Some(port_),
@@ -733,7 +738,7 @@ fn wire_loop_back_array_get_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: impl Wire2Api<[flutter_rust_bridge::DartOpaque; 1]> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "loop_back_array_get_twin_normal",
             port: Some(port_),
@@ -753,7 +758,7 @@ fn wire_loop_back_array_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [flutter_rust_bridge::DartOpaque; 1], _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, [flutter_rust_bridge::DartOpaque; 1], _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "loop_back_array_twin_normal",
             port: Some(port_),
@@ -773,7 +778,7 @@ fn wire_loop_back_option_get_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: impl Wire2Api<Option<flutter_rust_bridge::DartOpaque>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "loop_back_option_get_twin_normal",
             port: Some(port_),
@@ -793,7 +798,7 @@ fn wire_loop_back_option_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<flutter_rust_bridge::DartOpaque>, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, Option<flutter_rust_bridge::DartOpaque>, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "loop_back_option_twin_normal",
             port: Some(port_),
@@ -813,7 +818,7 @@ fn wire_loop_back_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, flutter_rust_bridge::DartOpaque, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, flutter_rust_bridge::DartOpaque, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "loop_back_twin_normal",
             port: Some(port_),
@@ -831,7 +836,7 @@ fn wire_loop_back_vec_get_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: impl Wire2Api<Vec<flutter_rust_bridge::DartOpaque>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "loop_back_vec_get_twin_normal",
             port: Some(port_),
@@ -851,7 +856,7 @@ fn wire_loop_back_vec_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<flutter_rust_bridge::DartOpaque>, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, Vec<flutter_rust_bridge::DartOpaque>, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "loop_back_vec_twin_normal",
             port: Some(port_),
@@ -871,7 +876,7 @@ fn wire_panic_unwrap_dart_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "panic_unwrap_dart_opaque_twin_normal",
             port: Some(port_),
@@ -891,7 +896,7 @@ fn wire_set_static_dart_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "set_static_dart_opaque_twin_normal",
             port: Some(port_),
@@ -1013,28 +1018,29 @@ fn wire_func_enum_simple_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<crate::api::enumeration::EnumSimpleTwinNormal> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::enumeration::EnumSimpleTwinNormal, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "func_enum_simple_twin_normal",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let api_arg = arg.wire2api();
-            move |context| {
-                Result::<_, ()>::Ok(crate::api::enumeration::func_enum_simple_twin_normal(
-                    api_arg,
-                ))
-            }
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER
+        .wrap_normal::<_, _, _, crate::api::enumeration::EnumSimpleTwinNormal, _>(
+            flutter_rust_bridge::for_generated::TaskInfo {
+                debug_name: "func_enum_simple_twin_normal",
+                port: Some(port_),
+                mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            },
+            move || {
+                let api_arg = arg.wire2api();
+                move |context| {
+                    Result::<_, ()>::Ok(crate::api::enumeration::func_enum_simple_twin_normal(
+                        api_arg,
+                    ))
+                }
+            },
+        )
 }
 fn wire_func_enum_with_item_mixed_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<crate::api::enumeration::EnumWithItemMixedTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, crate::api::enumeration::EnumWithItemMixedTwinNormal, _>(
+        .wrap_normal::<_, _, _, crate::api::enumeration::EnumWithItemMixedTwinNormal, _>(
             flutter_rust_bridge::for_generated::TaskInfo {
                 debug_name: "func_enum_with_item_mixed_twin_normal",
                 port: Some(port_),
@@ -1055,7 +1061,7 @@ fn wire_func_enum_with_item_struct_twin_normal_impl(
     arg: impl Wire2Api<crate::api::enumeration::EnumWithItemStructTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, crate::api::enumeration::EnumWithItemStructTwinNormal, _>(
+        .wrap_normal::<_, _, _, crate::api::enumeration::EnumWithItemStructTwinNormal, _>(
             flutter_rust_bridge::for_generated::TaskInfo {
                 debug_name: "func_enum_with_item_struct_twin_normal",
                 port: Some(port_),
@@ -1076,7 +1082,7 @@ fn wire_func_enum_with_item_tuple_twin_normal_impl(
     arg: impl Wire2Api<crate::api::enumeration::EnumWithItemTupleTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, crate::api::enumeration::EnumWithItemTupleTwinNormal, _>(
+        .wrap_normal::<_, _, _, crate::api::enumeration::EnumWithItemTupleTwinNormal, _>(
             flutter_rust_bridge::for_generated::TaskInfo {
                 debug_name: "func_enum_with_item_tuple_twin_normal",
                 port: Some(port_),
@@ -1096,48 +1102,50 @@ fn wire_handle_enum_parameter_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     weekday: impl Wire2Api<crate::api::misc_example::WeekdaysTwinNormal> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::misc_example::WeekdaysTwinNormal, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "handle_enum_parameter_twin_normal",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let api_weekday = weekday.wire2api();
-            move |context| {
-                Result::<_, ()>::Ok(crate::api::enumeration::handle_enum_parameter_twin_normal(
-                    api_weekday,
-                ))
-            }
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER
+        .wrap_normal::<_, _, _, crate::api::misc_example::WeekdaysTwinNormal, _>(
+            flutter_rust_bridge::for_generated::TaskInfo {
+                debug_name: "handle_enum_parameter_twin_normal",
+                port: Some(port_),
+                mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            },
+            move || {
+                let api_weekday = weekday.wire2api();
+                move |context| {
+                    Result::<_, ()>::Ok(crate::api::enumeration::handle_enum_parameter_twin_normal(
+                        api_weekday,
+                    ))
+                }
+            },
+        )
 }
 fn wire_handle_enum_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     val: impl Wire2Api<crate::api::enumeration::KitchenSinkTwinNormal> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::enumeration::KitchenSinkTwinNormal, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "handle_enum_struct_twin_normal",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let api_val = val.wire2api();
-            move |context| {
-                Result::<_, ()>::Ok(crate::api::enumeration::handle_enum_struct_twin_normal(
-                    api_val,
-                ))
-            }
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER
+        .wrap_normal::<_, _, _, crate::api::enumeration::KitchenSinkTwinNormal, _>(
+            flutter_rust_bridge::for_generated::TaskInfo {
+                debug_name: "handle_enum_struct_twin_normal",
+                port: Some(port_),
+                mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            },
+            move || {
+                let api_val = val.wire2api();
+                move |context| {
+                    Result::<_, ()>::Ok(crate::api::enumeration::handle_enum_struct_twin_normal(
+                        api_val,
+                    ))
+                }
+            },
+        )
 }
 fn wire_handle_return_enum_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     input: impl Wire2Api<String> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, Option<crate::api::misc_example::WeekdaysTwinNormal>, _>(
+        .wrap_normal::<_, _, _, Option<crate::api::misc_example::WeekdaysTwinNormal>, _>(
             flutter_rust_bridge::for_generated::TaskInfo {
                 debug_name: "handle_return_enum_twin_normal",
                 port: Some(port_),
@@ -1158,7 +1166,7 @@ fn wire_multiply_by_ten_twin_normal_impl(
     measure: impl Wire2Api<crate::api::enumeration::MeasureTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, Option<crate::api::enumeration::MeasureTwinNormal>, _>(
+        .wrap_normal::<_, _, _, Option<crate::api::enumeration::MeasureTwinNormal>, _>(
             flutter_rust_bridge::for_generated::TaskInfo {
                 debug_name: "multiply_by_ten_twin_normal",
                 port: Some(port_),
@@ -1178,25 +1186,26 @@ fn wire_print_note_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     note: impl Wire2Api<crate::api::enumeration::NoteTwinNormal> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, flutter_rust_bridge::ZeroCopyBuffer<Vec<u8>>, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "print_note_twin_normal",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let api_note = note.wire2api();
-            move |context| {
-                Result::<_, ()>::Ok(crate::api::enumeration::print_note_twin_normal(api_note))
-            }
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER
+        .wrap_normal::<_, _, _, flutter_rust_bridge::ZeroCopyBuffer<Vec<u8>>, _>(
+            flutter_rust_bridge::for_generated::TaskInfo {
+                debug_name: "print_note_twin_normal",
+                port: Some(port_),
+                mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            },
+            move || {
+                let api_note = note.wire2api();
+                move |context| {
+                    Result::<_, ()>::Ok(crate::api::enumeration::print_note_twin_normal(api_note))
+                }
+            },
+        )
 }
 fn wire_EventTwinNormal_as_string_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: impl Wire2Api<crate::api::event_listener::EventTwinNormal> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, String, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "EventTwinNormal_as_string_twin_normal",
             port: Some(port_),
@@ -1215,7 +1224,7 @@ fn wire_EventTwinNormal_as_string_twin_normal_impl(
 fn wire_close_event_listener_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "close_event_listener_twin_normal",
             port: Some(port_),
@@ -1233,7 +1242,7 @@ fn wire_create_event_twin_normal_impl(
     address: impl Wire2Api<String> + core::panic::UnwindSafe,
     payload: impl Wire2Api<String> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "create_event_twin_normal",
             port: Some(port_),
@@ -1254,7 +1263,7 @@ fn wire_create_event_twin_normal_impl(
 fn wire_register_event_listener_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "register_event_listener_twin_normal",
             port: Some(port_),
@@ -1275,90 +1284,92 @@ fn wire_CustomStructTwinNormal_new_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     message: impl Wire2Api<String> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::exception::CustomStructTwinNormal, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "CustomStructTwinNormal_new_twin_normal",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let api_message = message.wire2api();
-            move |context| {
-                Result::<_, ()>::Ok(
-                    crate::api::exception::CustomStructTwinNormal::new_twin_normal(api_message),
-                )
-            }
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER
+        .wrap_normal::<_, _, _, crate::api::exception::CustomStructTwinNormal, _>(
+            flutter_rust_bridge::for_generated::TaskInfo {
+                debug_name: "CustomStructTwinNormal_new_twin_normal",
+                port: Some(port_),
+                mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            },
+            move || {
+                let api_message = message.wire2api();
+                move |context| {
+                    Result::<_, ()>::Ok(
+                        crate::api::exception::CustomStructTwinNormal::new_twin_normal(api_message),
+                    )
+                }
+            },
+        )
 }
 fn wire_CustomStructTwinNormal_nonstatic_return_custom_struct_error_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: impl Wire2Api<crate::api::exception::CustomStructTwinNormal> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "CustomStructTwinNormal_nonstatic_return_custom_struct_error_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.wire2api(); move |context|  {  crate::api::exception::CustomStructTwinNormal::nonstatic_return_custom_struct_error_twin_normal(&api_that) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "CustomStructTwinNormal_nonstatic_return_custom_struct_error_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.wire2api(); move |context|  {  crate::api::exception::CustomStructTwinNormal::nonstatic_return_custom_struct_error_twin_normal(&api_that) } })
 }
 fn wire_CustomStructTwinNormal_nonstatic_return_custom_struct_ok_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: impl Wire2Api<crate::api::exception::CustomStructTwinNormal> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,u32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "CustomStructTwinNormal_nonstatic_return_custom_struct_ok_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.wire2api(); move |context|  {  crate::api::exception::CustomStructTwinNormal::nonstatic_return_custom_struct_ok_twin_normal(&api_that) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,u32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "CustomStructTwinNormal_nonstatic_return_custom_struct_ok_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.wire2api(); move |context|  {  crate::api::exception::CustomStructTwinNormal::nonstatic_return_custom_struct_ok_twin_normal(&api_that) } })
 }
 fn wire_CustomStructTwinNormal_static_return_custom_struct_error_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "CustomStructTwinNormal_static_return_custom_struct_error_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  crate::api::exception::CustomStructTwinNormal::static_return_custom_struct_error_twin_normal() } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "CustomStructTwinNormal_static_return_custom_struct_error_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  crate::api::exception::CustomStructTwinNormal::static_return_custom_struct_error_twin_normal() } })
 }
 fn wire_CustomStructTwinNormal_static_return_custom_struct_ok_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,u32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "CustomStructTwinNormal_static_return_custom_struct_ok_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  crate::api::exception::CustomStructTwinNormal::static_return_custom_struct_ok_twin_normal() } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,u32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "CustomStructTwinNormal_static_return_custom_struct_ok_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  crate::api::exception::CustomStructTwinNormal::static_return_custom_struct_ok_twin_normal() } })
 }
 fn wire_SomeStructTwinNormal_new_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     value: impl Wire2Api<u32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::exception::SomeStructTwinNormal, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "SomeStructTwinNormal_new_twin_normal",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let api_value = value.wire2api();
-            move |context| {
-                Result::<_, ()>::Ok(
-                    crate::api::exception::SomeStructTwinNormal::new_twin_normal(api_value),
-                )
-            }
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER
+        .wrap_normal::<_, _, _, crate::api::exception::SomeStructTwinNormal, _>(
+            flutter_rust_bridge::for_generated::TaskInfo {
+                debug_name: "SomeStructTwinNormal_new_twin_normal",
+                port: Some(port_),
+                mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            },
+            move || {
+                let api_value = value.wire2api();
+                move |context| {
+                    Result::<_, ()>::Ok(
+                        crate::api::exception::SomeStructTwinNormal::new_twin_normal(api_value),
+                    )
+                }
+            },
+        )
 }
 fn wire_SomeStructTwinNormal_non_static_return_err_custom_error_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: impl Wire2Api<crate::api::exception::SomeStructTwinNormal> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,u32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "SomeStructTwinNormal_non_static_return_err_custom_error_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.wire2api(); move |context|  {  crate::api::exception::SomeStructTwinNormal::non_static_return_err_custom_error_twin_normal(&api_that) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,u32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "SomeStructTwinNormal_non_static_return_err_custom_error_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.wire2api(); move |context|  {  crate::api::exception::SomeStructTwinNormal::non_static_return_err_custom_error_twin_normal(&api_that) } })
 }
 fn wire_SomeStructTwinNormal_non_static_return_ok_custom_error_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: impl Wire2Api<crate::api::exception::SomeStructTwinNormal> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,u32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "SomeStructTwinNormal_non_static_return_ok_custom_error_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.wire2api(); move |context|  {  crate::api::exception::SomeStructTwinNormal::non_static_return_ok_custom_error_twin_normal(&api_that) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,u32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "SomeStructTwinNormal_non_static_return_ok_custom_error_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.wire2api(); move |context|  {  crate::api::exception::SomeStructTwinNormal::non_static_return_ok_custom_error_twin_normal(&api_that) } })
 }
 fn wire_SomeStructTwinNormal_static_return_err_custom_error_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,u32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "SomeStructTwinNormal_static_return_err_custom_error_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  crate::api::exception::SomeStructTwinNormal::static_return_err_custom_error_twin_normal() } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,u32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "SomeStructTwinNormal_static_return_err_custom_error_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  crate::api::exception::SomeStructTwinNormal::static_return_err_custom_error_twin_normal() } })
 }
 fn wire_SomeStructTwinNormal_static_return_ok_custom_error_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,u32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "SomeStructTwinNormal_static_return_ok_custom_error_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  crate::api::exception::SomeStructTwinNormal::static_return_ok_custom_error_twin_normal() } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,u32,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "SomeStructTwinNormal_static_return_ok_custom_error_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  crate::api::exception::SomeStructTwinNormal::static_return_ok_custom_error_twin_normal() } })
 }
 fn wire_custom_enum_error_panic_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "custom_enum_error_panic_twin_normal",
             port: Some(port_),
@@ -1370,7 +1381,7 @@ fn wire_custom_enum_error_panic_twin_normal_impl(
 fn wire_custom_enum_error_return_error_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, u32, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "custom_enum_error_return_error_twin_normal",
             port: Some(port_),
@@ -1383,7 +1394,7 @@ fn wire_custom_enum_error_return_ok_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<u32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, u32, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "custom_enum_error_return_ok_twin_normal",
             port: Some(port_),
@@ -1400,7 +1411,7 @@ fn wire_custom_nested_error_return_error_twin_normal_impl(
     arg: impl Wire2Api<crate::api::exception::CustomNestedErrorOuterTwinNormal>
         + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "custom_nested_error_return_error_twin_normal",
             port: Some(port_),
@@ -1418,7 +1429,7 @@ fn wire_custom_struct_error_return_error_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<crate::api::exception::CustomStructErrorTwinNormal> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "custom_struct_error_return_error_twin_normal",
             port: Some(port_),
@@ -1433,7 +1444,7 @@ fn wire_custom_struct_error_return_error_twin_normal_impl(
     )
 }
 fn wire_func_return_error_twin_normal_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, i32, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "func_return_error_twin_normal",
             port: Some(port_),
@@ -1445,7 +1456,7 @@ fn wire_func_return_error_twin_normal_impl(port_: flutter_rust_bridge::for_gener
 fn wire_func_type_fallible_panic_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, i32, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "func_type_fallible_panic_twin_normal",
             port: Some(port_),
@@ -1457,7 +1468,7 @@ fn wire_func_type_fallible_panic_twin_normal_impl(
 fn wire_func_type_infallible_panic_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, i32, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "func_type_infallible_panic_twin_normal",
             port: Some(port_),
@@ -1473,7 +1484,7 @@ fn wire_func_type_infallible_panic_twin_normal_impl(
 fn wire_panic_with_custom_result_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "panic_with_custom_result_twin_normal",
             port: Some(port_),
@@ -1485,7 +1496,7 @@ fn wire_panic_with_custom_result_twin_normal_impl(
 fn wire_return_custom_nested_error_1_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "return_custom_nested_error_1_twin_normal",
             port: Some(port_),
@@ -1497,7 +1508,7 @@ fn wire_return_custom_nested_error_1_twin_normal_impl(
 fn wire_return_custom_nested_error_1_variant1_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "return_custom_nested_error_1_variant1_twin_normal",
             port: Some(port_),
@@ -1513,7 +1524,7 @@ fn wire_return_custom_nested_error_1_variant1_twin_normal_impl(
 fn wire_return_custom_nested_error_2_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "return_custom_nested_error_2_twin_normal",
             port: Some(port_),
@@ -1525,7 +1536,7 @@ fn wire_return_custom_nested_error_2_twin_normal_impl(
 fn wire_return_custom_struct_error_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "return_custom_struct_error_twin_normal",
             port: Some(port_),
@@ -1537,7 +1548,7 @@ fn wire_return_custom_struct_error_twin_normal_impl(
 fn wire_return_custom_struct_ok_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, u32, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "return_custom_struct_ok_twin_normal",
             port: Some(port_),
@@ -1549,7 +1560,7 @@ fn wire_return_custom_struct_ok_twin_normal_impl(
 fn wire_return_err_custom_error_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, u32, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "return_err_custom_error_twin_normal",
             port: Some(port_),
@@ -1562,7 +1573,7 @@ fn wire_return_error_variant_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     variant: impl Wire2Api<u32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, u32, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "return_error_variant_twin_normal",
             port: Some(port_),
@@ -1577,7 +1588,7 @@ fn wire_return_error_variant_twin_normal_impl(
 fn wire_return_ok_custom_error_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, u32, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "return_ok_custom_error_twin_normal",
             port: Some(port_),
@@ -1589,7 +1600,7 @@ fn wire_return_ok_custom_error_twin_normal_impl(
 fn wire_stream_sink_throw_anyhow_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "stream_sink_throw_anyhow_twin_normal",
             port: Some(port_),
@@ -1605,7 +1616,7 @@ fn wire_stream_sink_throw_anyhow_twin_normal_impl(
     )
 }
 fn wire_throw_anyhow_twin_normal_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "throw_anyhow_twin_normal",
             port: Some(port_),
@@ -1618,7 +1629,7 @@ fn wire_call_new_module_system_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, crate::auxiliary::new_module_system::sub_module::NewSimpleStruct, _>(
+        .wrap_normal::<_, _, _, crate::auxiliary::new_module_system::sub_module::NewSimpleStruct, _>(
             flutter_rust_bridge::for_generated::TaskInfo {
                 debug_name: "call_new_module_system_twin_normal",
                 port: Some(port_),
@@ -1637,7 +1648,7 @@ fn wire_call_old_module_system_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, crate::auxiliary::old_module_system::sub_module::OldSimpleStruct, _>(
+        .wrap_normal::<_, _, _, crate::auxiliary::old_module_system::sub_module::OldSimpleStruct, _>(
             flutter_rust_bridge::for_generated::TaskInfo {
                 debug_name: "call_old_module_system_twin_normal",
                 port: Some(port_),
@@ -1656,7 +1667,7 @@ fn wire_use_imported_enum_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     my_enum: impl Wire2Api<crate::auxiliary::sample_types::MyEnum> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, bool, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, bool, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "use_imported_enum_twin_normal",
             port: Some(port_),
@@ -1676,7 +1687,7 @@ fn wire_use_imported_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     my_struct: impl Wire2Api<crate::auxiliary::sample_types::MyStruct> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, bool, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, bool, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "use_imported_struct_twin_normal",
             port: Some(port_),
@@ -1697,13 +1708,13 @@ fn wire_use_imported_struct_twin_normal_impl(
 fn wire_another_macro_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,crate::api::inside_macro::AnotherMacroStructTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "another_macro_struct_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  Result::<_,()>::Ok(crate::api::inside_macro::another_macro_struct_twin_normal()) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,crate::api::inside_macro::AnotherMacroStructTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "another_macro_struct_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  Result::<_,()>::Ok(crate::api::inside_macro::another_macro_struct_twin_normal()) } })
 }
 fn wire_func_macro_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<crate::api::inside_macro::MacroStruct> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::inside_macro::MacroStruct, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, crate::api::inside_macro::MacroStruct, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "func_macro_struct_twin_normal",
             port: Some(port_),
@@ -1724,7 +1735,7 @@ fn wire_ConcatenateWithTwinNormal_concatenate_static_twin_normal_impl(
     a: impl Wire2Api<String> + core::panic::UnwindSafe,
     b: impl Wire2Api<String> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, String, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "ConcatenateWithTwinNormal_concatenate_static_twin_normal",
             port: Some(port_),
@@ -1748,7 +1759,7 @@ fn wire_ConcatenateWithTwinNormal_concatenate_twin_normal_impl(
     that: impl Wire2Api<crate::api::method::ConcatenateWithTwinNormal> + core::panic::UnwindSafe,
     b: impl Wire2Api<String> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, String, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "ConcatenateWithTwinNormal_concatenate_twin_normal",
             port: Some(port_),
@@ -1770,20 +1781,20 @@ fn wire_ConcatenateWithTwinNormal_concatenate_twin_normal_impl(
 fn wire_ConcatenateWithTwinNormal_handle_some_static_stream_sink_single_arg_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinNormal_handle_some_static_stream_sink_single_arg_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || {  move |context|  {  Result::<_,()>::Ok(crate::api::method::ConcatenateWithTwinNormal::handle_some_static_stream_sink_single_arg_twin_normal(context.rust2dart_context().stream_sink::<_,u32>())) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinNormal_handle_some_static_stream_sink_single_arg_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || {  move |context|  {  Result::<_,()>::Ok(crate::api::method::ConcatenateWithTwinNormal::handle_some_static_stream_sink_single_arg_twin_normal(context.rust2dart_context().stream_sink::<_,u32>())) } })
 }
 fn wire_ConcatenateWithTwinNormal_handle_some_static_stream_sink_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     key: impl Wire2Api<u32> + core::panic::UnwindSafe,
     max: impl Wire2Api<u32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinNormal_handle_some_static_stream_sink_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { let api_key = key.wire2api();let api_max = max.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::method::ConcatenateWithTwinNormal::handle_some_static_stream_sink_twin_normal(api_key, api_max, context.rust2dart_context().stream_sink::<_,crate::api::method::Log2TwinNormal>())) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinNormal_handle_some_static_stream_sink_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { let api_key = key.wire2api();let api_max = max.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::method::ConcatenateWithTwinNormal::handle_some_static_stream_sink_twin_normal(api_key, api_max, context.rust2dart_context().stream_sink::<_,crate::api::method::Log2TwinNormal>())) } })
 }
 fn wire_ConcatenateWithTwinNormal_handle_some_stream_sink_at_1_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: impl Wire2Api<crate::api::method::ConcatenateWithTwinNormal> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinNormal_handle_some_stream_sink_at_1_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { let api_that = that.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::method::ConcatenateWithTwinNormal::handle_some_stream_sink_at_1_twin_normal(&api_that, context.rust2dart_context().stream_sink::<_,u32>())) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinNormal_handle_some_stream_sink_at_1_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { let api_that = that.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::method::ConcatenateWithTwinNormal::handle_some_stream_sink_at_1_twin_normal(&api_that, context.rust2dart_context().stream_sink::<_,u32>())) } })
 }
 fn wire_ConcatenateWithTwinNormal_handle_some_stream_sink_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -1791,27 +1802,28 @@ fn wire_ConcatenateWithTwinNormal_handle_some_stream_sink_twin_normal_impl(
     key: impl Wire2Api<u32> + core::panic::UnwindSafe,
     max: impl Wire2Api<u32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinNormal_handle_some_stream_sink_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { let api_that = that.wire2api();let api_key = key.wire2api();let api_max = max.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::method::ConcatenateWithTwinNormal::handle_some_stream_sink_twin_normal(&api_that, api_key, api_max, context.rust2dart_context().stream_sink::<_,crate::api::method::Log2TwinNormal>())) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinNormal_handle_some_stream_sink_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { let api_that = that.wire2api();let api_key = key.wire2api();let api_max = max.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::method::ConcatenateWithTwinNormal::handle_some_stream_sink_twin_normal(&api_that, api_key, api_max, context.rust2dart_context().stream_sink::<_,crate::api::method::Log2TwinNormal>())) } })
 }
 fn wire_ConcatenateWithTwinNormal_new_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: impl Wire2Api<String> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::method::ConcatenateWithTwinNormal, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "ConcatenateWithTwinNormal_new_twin_normal",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let api_a = a.wire2api();
-            move |context| {
-                Result::<_, ()>::Ok(
-                    crate::api::method::ConcatenateWithTwinNormal::new_twin_normal(api_a),
-                )
-            }
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER
+        .wrap_normal::<_, _, _, crate::api::method::ConcatenateWithTwinNormal, _>(
+            flutter_rust_bridge::for_generated::TaskInfo {
+                debug_name: "ConcatenateWithTwinNormal_new_twin_normal",
+                port: Some(port_),
+                mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            },
+            move || {
+                let api_a = a.wire2api();
+                move |context| {
+                    Result::<_, ()>::Ok(
+                        crate::api::method::ConcatenateWithTwinNormal::new_twin_normal(api_a),
+                    )
+                }
+            },
+        )
 }
 fn wire_SumWithTwinNormal_sum_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -1819,7 +1831,7 @@ fn wire_SumWithTwinNormal_sum_twin_normal_impl(
     y: impl Wire2Api<u32> + core::panic::UnwindSafe,
     z: impl Wire2Api<u32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, u32, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "SumWithTwinNormal_sum_twin_normal",
             port: Some(port_),
@@ -1843,31 +1855,32 @@ fn wire_get_sum_array_twin_normal_impl(
     b: impl Wire2Api<u32> + core::panic::UnwindSafe,
     c: impl Wire2Api<u32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [crate::api::method::SumWithTwinNormal; 3], _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "get_sum_array_twin_normal",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let api_a = a.wire2api();
-            let api_b = b.wire2api();
-            let api_c = c.wire2api();
-            move |context| {
-                Result::<_, ()>::Ok(crate::api::method::get_sum_array_twin_normal(
-                    api_a, api_b, api_c,
-                ))
-            }
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER
+        .wrap_normal::<_, _, _, [crate::api::method::SumWithTwinNormal; 3], _>(
+            flutter_rust_bridge::for_generated::TaskInfo {
+                debug_name: "get_sum_array_twin_normal",
+                port: Some(port_),
+                mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            },
+            move || {
+                let api_a = a.wire2api();
+                let api_b = b.wire2api();
+                let api_c = c.wire2api();
+                move |context| {
+                    Result::<_, ()>::Ok(crate::api::method::get_sum_array_twin_normal(
+                        api_a, api_b, api_c,
+                    ))
+                }
+            },
+        )
 }
 fn wire_get_sum_struct_twin_normal_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,crate::api::method::SumWithTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "get_sum_struct_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  Result::<_,()>::Ok(crate::api::method::get_sum_struct_twin_normal()) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,crate::api::method::SumWithTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "get_sum_struct_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  Result::<_,()>::Ok(crate::api::method::get_sum_struct_twin_normal()) } })
 }
 fn wire_app_settings_stream_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "app_settings_stream_twin_normal",
             port: Some(port_),
@@ -1887,7 +1900,7 @@ fn wire_app_settings_stream_twin_normal_impl(
 fn wire_app_settings_vec_stream_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "app_settings_vec_stream_twin_normal",
             port: Some(port_),
@@ -1908,7 +1921,7 @@ fn wire_first_number_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     nums: impl Wire2Api<crate::api::pseudo_manual::mirror_twin_sync::Numbers> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<i32>, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, Option<i32>, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "first_number_twin_normal",
             port: Some(port_),
@@ -1927,7 +1940,7 @@ fn wire_first_sequence_twin_normal_impl(
     seqs: impl Wire2Api<crate::api::pseudo_manual::mirror_twin_sync::Sequences>
         + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<i32>, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, Option<i32>, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "first_sequence_twin_normal",
             port: Some(port_),
@@ -1942,7 +1955,7 @@ fn wire_first_sequence_twin_normal_impl(
     )
 }
 fn wire_get_app_settings_twin_normal_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_ApplicationSettings, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, mirror_ApplicationSettings, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "get_app_settings_twin_normal",
             port: Some(port_),
@@ -1956,7 +1969,7 @@ fn wire_get_app_settings_twin_normal_impl(port_: flutter_rust_bridge::for_genera
 fn wire_get_fallible_app_settings_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_ApplicationSettings, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, mirror_ApplicationSettings, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "get_fallible_app_settings_twin_normal",
             port: Some(port_),
@@ -1966,7 +1979,7 @@ fn wire_get_fallible_app_settings_twin_normal_impl(
     )
 }
 fn wire_get_message_twin_normal_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_ApplicationMessage, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, mirror_ApplicationMessage, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "get_message_twin_normal",
             port: Some(port_),
@@ -1980,7 +1993,7 @@ fn wire_is_app_embedded_twin_normal_impl(
     app_settings: impl Wire2Api<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>
         + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, bool, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, bool, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "is_app_embedded_twin_normal",
             port: Some(port_),
@@ -1999,7 +2012,7 @@ fn wire_is_app_embedded_twin_normal_impl(
 fn wire_mirror_struct_stream_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "mirror_struct_stream_twin_normal",
             port: Some(port_),
@@ -2019,14 +2032,14 @@ fn wire_mirror_struct_stream_twin_normal_impl(
 fn wire_mirror_tuple_stream_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_tuple_stream_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || {  move |context|  {  Result::<_,()>::Ok(crate::api::mirror::mirror_tuple_stream_twin_normal(context.rust2dart_context().stream_sink::<_,(mirror_ApplicationSettings,mirror_RawStringEnumMirrored,)>())) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_tuple_stream_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || {  move |context|  {  Result::<_,()>::Ok(crate::api::mirror::mirror_tuple_stream_twin_normal(context.rust2dart_context().stream_sink::<_,(mirror_ApplicationSettings, mirror_RawStringEnumMirrored,)>())) } })
 }
 fn wire_repeat_number_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     num: impl Wire2Api<i32> + core::panic::UnwindSafe,
     times: impl Wire2Api<usize> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_Numbers, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, mirror_Numbers, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "repeat_number_twin_normal",
             port: Some(port_),
@@ -2048,7 +2061,7 @@ fn wire_repeat_sequence_twin_normal_impl(
     seq: impl Wire2Api<i32> + core::panic::UnwindSafe,
     times: impl Wire2Api<usize> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_Sequences, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, mirror_Sequences, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "repeat_sequence_twin_normal",
             port: Some(port_),
@@ -2069,7 +2082,7 @@ fn wire_test_contains_mirrored_sub_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, crate::api::mirror::ContainsMirroredSubStructTwinNormal, _>(
+        .wrap_normal::<_, _, _, crate::api::mirror::ContainsMirroredSubStructTwinNormal, _>(
             flutter_rust_bridge::for_generated::TaskInfo {
                 debug_name: "test_contains_mirrored_sub_struct_twin_normal",
                 port: Some(port_),
@@ -2087,7 +2100,7 @@ fn wire_test_contains_mirrored_sub_struct_twin_normal_impl(
 fn wire_test_fallible_of_raw_string_mirrored_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<mirror_RawStringMirrored>, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, Vec<mirror_RawStringMirrored>, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "test_fallible_of_raw_string_mirrored_twin_normal",
             port: Some(port_),
@@ -2101,7 +2114,7 @@ fn wire_test_fallible_of_raw_string_mirrored_twin_normal_impl(
 fn wire_test_list_of_nested_enums_mirrored_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<mirror_RawStringEnumMirrored>, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, Vec<mirror_RawStringEnumMirrored>, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "test_list_of_nested_enums_mirrored_twin_normal",
             port: Some(port_),
@@ -2119,7 +2132,7 @@ fn wire_test_list_of_nested_enums_mirrored_twin_normal_impl(
 fn wire_test_list_of_raw_nested_string_mirrored_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_ListOfNestedRawStringMirrored, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, mirror_ListOfNestedRawStringMirrored, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "test_list_of_raw_nested_string_mirrored_twin_normal",
             port: Some(port_),
@@ -2137,7 +2150,7 @@ fn wire_test_list_of_raw_nested_string_mirrored_twin_normal_impl(
 fn wire_test_nested_raw_string_mirrored_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_NestedRawStringMirrored, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, mirror_NestedRawStringMirrored, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "test_nested_raw_string_mirrored_twin_normal",
             port: Some(port_),
@@ -2156,7 +2169,7 @@ fn wire_test_raw_string_enum_mirrored_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     nested: impl Wire2Api<bool> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_RawStringEnumMirrored, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, mirror_RawStringEnumMirrored, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "test_raw_string_enum_mirrored_twin_normal",
             port: Some(port_),
@@ -2175,7 +2188,7 @@ fn wire_test_raw_string_enum_mirrored_twin_normal_impl(
 fn wire_test_raw_string_mirrored_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_RawStringMirrored, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, mirror_RawStringMirrored, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "test_raw_string_mirrored_twin_normal",
             port: Some(port_),
@@ -2191,45 +2204,47 @@ fn wire_test_raw_string_mirrored_twin_normal_impl(
 fn wire_handle_big_buffers_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::misc_example::BigBuffersTwinNormal, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "handle_big_buffers_twin_normal",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            move |context| {
-                Result::<_, ()>::Ok(crate::api::misc_example::handle_big_buffers_twin_normal())
-            }
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER
+        .wrap_normal::<_, _, _, crate::api::misc_example::BigBuffersTwinNormal, _>(
+            flutter_rust_bridge::for_generated::TaskInfo {
+                debug_name: "handle_big_buffers_twin_normal",
+                port: Some(port_),
+                mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            },
+            move || {
+                move |context| {
+                    Result::<_, ()>::Ok(crate::api::misc_example::handle_big_buffers_twin_normal())
+                }
+            },
+        )
 }
 fn wire_handle_complex_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     s: impl Wire2Api<crate::api::misc_example::MyTreeNodeTwinNormal> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::misc_example::MyTreeNodeTwinNormal, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "handle_complex_struct_twin_normal",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let api_s = s.wire2api();
-            move |context| {
-                Result::<_, ()>::Ok(crate::api::misc_example::handle_complex_struct_twin_normal(
-                    api_s,
-                ))
-            }
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER
+        .wrap_normal::<_, _, _, crate::api::misc_example::MyTreeNodeTwinNormal, _>(
+            flutter_rust_bridge::for_generated::TaskInfo {
+                debug_name: "handle_complex_struct_twin_normal",
+                port: Some(port_),
+                mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            },
+            move || {
+                let api_s = s.wire2api();
+                move |context| {
+                    Result::<_, ()>::Ok(
+                        crate::api::misc_example::handle_complex_struct_twin_normal(api_s),
+                    )
+                }
+            },
+        )
 }
 fn wire_handle_nested_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     s: impl Wire2Api<crate::api::misc_example::MyNestedStructTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, crate::api::misc_example::MyNestedStructTwinNormal, _>(
+        .wrap_normal::<_, _, _, crate::api::misc_example::MyNestedStructTwinNormal, _>(
             flutter_rust_bridge::for_generated::TaskInfo {
                 debug_name: "handle_nested_struct_twin_normal",
                 port: Some(port_),
@@ -2249,7 +2264,7 @@ fn wire_handle_string_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     s: impl Wire2Api<String> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, String, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "handle_string_twin_normal",
             port: Some(port_),
@@ -2268,7 +2283,7 @@ fn wire_handle_struct_twin_normal_impl(
     arg: impl Wire2Api<crate::auxiliary::sample_types::MySize> + core::panic::UnwindSafe,
     boxed: impl Wire2Api<Box<crate::auxiliary::sample_types::MySize>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::auxiliary::sample_types::MySize, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, crate::auxiliary::sample_types::MySize, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "handle_struct_twin_normal",
             port: Some(port_),
@@ -2289,7 +2304,7 @@ fn wire_handle_vec_u8_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     v: impl Wire2Api<Vec<u8>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<u8>, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, Vec<u8>, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "handle_vec_u8_twin_normal",
             port: Some(port_),
@@ -2308,7 +2323,7 @@ fn wire_list_of_primitive_enums_twin_normal_impl(
     weekdays: impl Wire2Api<Vec<crate::api::misc_example::WeekdaysTwinNormal>> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, Vec<crate::api::misc_example::WeekdaysTwinNormal>, _>(
+        .wrap_normal::<_, _, _, Vec<crate::api::misc_example::WeekdaysTwinNormal>, _>(
             flutter_rust_bridge::for_generated::TaskInfo {
                 debug_name: "list_of_primitive_enums_twin_normal",
                 port: Some(port_),
@@ -2328,7 +2343,7 @@ fn wire_test_abc_enum_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     abc: impl Wire2Api<crate::api::misc_example::AbcTwinNormal> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::misc_example::AbcTwinNormal, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, crate::api::misc_example::AbcTwinNormal, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "test_abc_enum_twin_normal",
             port: Some(port_),
@@ -2347,7 +2362,7 @@ fn wire_test_struct_with_enum_twin_normal_impl(
     se: impl Wire2Api<crate::api::misc_example::StructWithEnumTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, crate::api::misc_example::StructWithEnumTwinNormal, _>(
+        .wrap_normal::<_, _, _, crate::api::misc_example::StructWithEnumTwinNormal, _>(
             flutter_rust_bridge::for_generated::TaskInfo {
                 debug_name: "test_struct_with_enum_twin_normal",
                 port: Some(port_),
@@ -2367,7 +2382,7 @@ fn wire_empty_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     empty: impl Wire2Api<crate::api::misc_type::EmptyTwinNormal> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::misc_type::EmptyTwinNormal, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, crate::api::misc_type::EmptyTwinNormal, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "empty_struct_twin_normal",
             port: Some(port_),
@@ -2382,13 +2397,13 @@ fn wire_empty_struct_twin_normal_impl(
     )
 }
 fn wire_func_return_unit_twin_normal_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_return_unit_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  Result::<_,()>::Ok(crate::api::misc_type::func_return_unit_twin_normal()) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "func_return_unit_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  Result::<_,()>::Ok(crate::api::misc_type::func_return_unit_twin_normal()) } })
 }
 fn wire_func_string_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<String> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, String, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "func_string_twin_normal",
             port: Some(port_),
@@ -2406,27 +2421,28 @@ fn wire_handle_list_of_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     l: impl Wire2Api<Vec<crate::auxiliary::sample_types::MySize>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<crate::auxiliary::sample_types::MySize>, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "handle_list_of_struct_twin_normal",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let api_l = l.wire2api();
-            move |context| {
-                Result::<_, ()>::Ok(crate::api::misc_type::handle_list_of_struct_twin_normal(
-                    api_l,
-                ))
-            }
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER
+        .wrap_normal::<_, _, _, Vec<crate::auxiliary::sample_types::MySize>, _>(
+            flutter_rust_bridge::for_generated::TaskInfo {
+                debug_name: "handle_list_of_struct_twin_normal",
+                port: Some(port_),
+                mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            },
+            move || {
+                let api_l = l.wire2api();
+                move |context| {
+                    Result::<_, ()>::Ok(crate::api::misc_type::handle_list_of_struct_twin_normal(
+                        api_l,
+                    ))
+                }
+            },
+        )
 }
 fn wire_handle_string_list_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     names: impl Wire2Api<Vec<String>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<String>, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, Vec<String>, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "handle_string_list_twin_normal",
             port: Some(port_),
@@ -2447,7 +2463,7 @@ fn wire_handle_newtype_twin_normal_impl(
     arg: impl Wire2Api<crate::api::newtype_pattern::NewTypeIntTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, crate::api::newtype_pattern::NewTypeIntTwinNormal, _>(
+        .wrap_normal::<_, _, _, crate::api::newtype_pattern::NewTypeIntTwinNormal, _>(
             flutter_rust_bridge::for_generated::TaskInfo {
                 debug_name: "handle_newtype_twin_normal",
                 port: Some(port_),
@@ -2467,7 +2483,7 @@ fn wire_handle_increment_boxed_optional_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     opt: impl Wire2Api<Option<Box<f64>>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, f64, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, f64, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "handle_increment_boxed_optional_twin_normal",
             port: Some(port_),
@@ -2494,7 +2510,7 @@ fn wire_handle_option_box_arguments_twin_normal_impl(
     structbox: impl Wire2Api<Option<Box<crate::api::optional::ExoticOptionalsTwinNormal>>>
         + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, String, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "handle_option_box_arguments_twin_normal",
             port: Some(port_),
@@ -2530,7 +2546,7 @@ fn wire_handle_optional_increment_twin_normal_impl(
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, Option<crate::api::optional::ExoticOptionalsTwinNormal>, _>(
+        .wrap_normal::<_, _, _, Option<crate::api::optional::ExoticOptionalsTwinNormal>, _>(
             flutter_rust_bridge::for_generated::TaskInfo {
                 debug_name: "handle_optional_increment_twin_normal",
                 port: Some(port_),
@@ -2551,7 +2567,7 @@ fn wire_handle_optional_return_twin_normal_impl(
     left: impl Wire2Api<f64> + core::panic::UnwindSafe,
     right: impl Wire2Api<f64> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<f64>, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, Option<f64>, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "handle_optional_return_twin_normal",
             port: Some(port_),
@@ -2572,27 +2588,28 @@ fn wire_handle_optional_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     document: impl Wire2Api<Option<String>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<crate::api::optional::ElementTwinNormal>, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "handle_optional_struct_twin_normal",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let api_document = document.wire2api();
-            move |context| {
-                Result::<_, ()>::Ok(crate::api::optional::handle_optional_struct_twin_normal(
-                    api_document,
-                ))
-            }
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER
+        .wrap_normal::<_, _, _, Option<crate::api::optional::ElementTwinNormal>, _>(
+            flutter_rust_bridge::for_generated::TaskInfo {
+                debug_name: "handle_optional_struct_twin_normal",
+                port: Some(port_),
+                mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            },
+            move || {
+                let api_document = document.wire2api();
+                move |context| {
+                    Result::<_, ()>::Ok(crate::api::optional::handle_optional_struct_twin_normal(
+                        api_document,
+                    ))
+                }
+            },
+        )
 }
 fn wire_handle_vec_of_opts_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     opt: impl Wire2Api<crate::api::optional::OptVecsTwinNormal> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::optional::OptVecsTwinNormal, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, crate::api::optional::OptVecsTwinNormal, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "handle_vec_of_opts_twin_normal",
             port: Some(port_),
@@ -2615,7 +2632,7 @@ fn wire_primitive_optional_types_twin_normal_impl(
     my_f64: impl Wire2Api<Option<f64>> + core::panic::UnwindSafe,
     my_bool: impl Wire2Api<Option<bool>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<i32>, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, Option<i32>, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "primitive_optional_types_twin_normal",
             port: Some(port_),
@@ -2644,7 +2661,7 @@ fn wire_handle_vec_of_primitive_twin_normal_impl(
     n: impl Wire2Api<i32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, crate::api::primitive_list_misc::VecOfPrimitivePackTwinNormal, _>(
+        .wrap_normal::<_, _, _, crate::api::primitive_list_misc::VecOfPrimitivePackTwinNormal, _>(
             flutter_rust_bridge::for_generated::TaskInfo {
                 debug_name: "handle_vec_of_primitive_twin_normal",
                 port: Some(port_),
@@ -2664,7 +2681,7 @@ fn wire_handle_zero_copy_vec_of_primitive_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     n: impl Wire2Api<i32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,crate::api::primitive_list_misc::ZeroCopyVecOfPrimitivePackTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_zero_copy_vec_of_primitive_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_n = n.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::primitive_list_misc::handle_zero_copy_vec_of_primitive_twin_normal(api_n)) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,crate::api::primitive_list_misc::ZeroCopyVecOfPrimitivePackTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "handle_zero_copy_vec_of_primitive_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_n = n.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::primitive_list_misc::handle_zero_copy_vec_of_primitive_twin_normal(api_n)) } })
 }
 fn wire_primitive_types_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -2673,7 +2690,7 @@ fn wire_primitive_types_twin_normal_impl(
     my_f64: impl Wire2Api<f64> + core::panic::UnwindSafe,
     my_bool: impl Wire2Api<bool> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, i32, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "primitive_types_twin_normal",
             port: Some(port_),
@@ -2699,7 +2716,7 @@ fn wire_primitive_u32_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     my_u32: impl Wire2Api<u32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, u32, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "primitive_u32_twin_normal",
             port: Some(port_),
@@ -4020,7 +4037,7 @@ fn wire_create_event_twin_sync_impl(
 fn wire_register_event_listener_twin_sync_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "register_event_listener_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || {  move |context|  {  crate::api::pseudo_manual::event_listener_twin_sync::register_event_listener_twin_sync(context.rust2dart_context().stream_sink::<_,crate::api::pseudo_manual::event_listener_twin_sync::EventTwinSync>()) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "register_event_listener_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || {  move |context|  {  crate::api::pseudo_manual::event_listener_twin_sync::register_event_listener_twin_sync(context.rust2dart_context().stream_sink::<_,crate::api::pseudo_manual::event_listener_twin_sync::EventTwinSync>()) } })
 }
 fn wire_CustomStructTwinRustAsync_new_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -4451,7 +4468,7 @@ fn wire_return_ok_custom_error_twin_sync_impl() -> flutter_rust_bridge::for_gene
 fn wire_stream_sink_throw_anyhow_twin_sync_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "stream_sink_throw_anyhow_twin_sync",
             port: Some(port_),
@@ -4603,21 +4620,21 @@ fn wire_ConcatenateWithTwinSync_concatenate_twin_sync_impl(
 fn wire_ConcatenateWithTwinSync_handle_some_static_stream_sink_single_arg_twin_sync_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinSync_handle_some_static_stream_sink_single_arg_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || {  move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::handle_some_static_stream_sink_single_arg_twin_sync(context.rust2dart_context().stream_sink::<_,u32>())) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinSync_handle_some_static_stream_sink_single_arg_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || {  move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::handle_some_static_stream_sink_single_arg_twin_sync(context.rust2dart_context().stream_sink::<_,u32>())) } })
 }
 fn wire_ConcatenateWithTwinSync_handle_some_static_stream_sink_twin_sync_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     key: impl Wire2Api<u32> + core::panic::UnwindSafe,
     max: impl Wire2Api<u32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinSync_handle_some_static_stream_sink_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { let api_key = key.wire2api();let api_max = max.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::handle_some_static_stream_sink_twin_sync(api_key, api_max, context.rust2dart_context().stream_sink::<_,crate::api::pseudo_manual::method_twin_sync::Log2TwinSync>())) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinSync_handle_some_static_stream_sink_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { let api_key = key.wire2api();let api_max = max.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::handle_some_static_stream_sink_twin_sync(api_key, api_max, context.rust2dart_context().stream_sink::<_,crate::api::pseudo_manual::method_twin_sync::Log2TwinSync>())) } })
 }
 fn wire_ConcatenateWithTwinSync_handle_some_stream_sink_at_1_twin_sync_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: impl Wire2Api<crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync>
         + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinSync_handle_some_stream_sink_at_1_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { let api_that = that.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::handle_some_stream_sink_at_1_twin_sync(&api_that, context.rust2dart_context().stream_sink::<_,u32>())) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinSync_handle_some_stream_sink_at_1_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { let api_that = that.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::handle_some_stream_sink_at_1_twin_sync(&api_that, context.rust2dart_context().stream_sink::<_,u32>())) } })
 }
 fn wire_ConcatenateWithTwinSync_handle_some_stream_sink_twin_sync_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -4626,7 +4643,7 @@ fn wire_ConcatenateWithTwinSync_handle_some_stream_sink_twin_sync_impl(
     key: impl Wire2Api<u32> + core::panic::UnwindSafe,
     max: impl Wire2Api<u32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinSync_handle_some_stream_sink_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { let api_that = that.wire2api();let api_key = key.wire2api();let api_max = max.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::handle_some_stream_sink_twin_sync(&api_that, api_key, api_max, context.rust2dart_context().stream_sink::<_,crate::api::pseudo_manual::method_twin_sync::Log2TwinSync>())) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "ConcatenateWithTwinSync_handle_some_stream_sink_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || { let api_that = that.wire2api();let api_key = key.wire2api();let api_max = max.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::method_twin_sync::ConcatenateWithTwinSync::handle_some_stream_sink_twin_sync(&api_that, api_key, api_max, context.rust2dart_context().stream_sink::<_,crate::api::pseudo_manual::method_twin_sync::Log2TwinSync>())) } })
 }
 fn wire_ConcatenateWithTwinSync_new_twin_sync_impl(
     a: impl Wire2Api<String> + core::panic::UnwindSafe,
@@ -4827,7 +4844,7 @@ fn wire_test_raw_string_mirrored_twin_rust_async_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_,_,_,_,mirror_RawStringMirrored,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "test_raw_string_mirrored_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_rust_async::test_raw_string_mirrored_twin_rust_async().await) } })
 }
 fn wire_app_settings_stream_twin_sync_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "app_settings_stream_twin_sync",
             port: Some(port_),
@@ -4849,7 +4866,7 @@ fn wire_app_settings_stream_twin_sync_impl(port_: flutter_rust_bridge::for_gener
 fn wire_app_settings_vec_stream_twin_sync_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "app_settings_vec_stream_twin_sync",
             port: Some(port_),
@@ -4965,10 +4982,10 @@ fn wire_is_app_embedded_twin_sync_impl(
 fn wire_mirror_struct_stream_twin_sync_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_struct_stream_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || {  move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::mirror_struct_stream_twin_sync(context.rust2dart_context().stream_sink::<_,crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync>())) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_struct_stream_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || {  move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::mirror_struct_stream_twin_sync(context.rust2dart_context().stream_sink::<_,crate::api::pseudo_manual::mirror_twin_sync::MirrorStructTwinSync>())) } })
 }
 fn wire_mirror_tuple_stream_twin_sync_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_tuple_stream_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || {  move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::mirror_tuple_stream_twin_sync(context.rust2dart_context().stream_sink::<_,(mirror_ApplicationSettings,mirror_RawStringEnumMirrored,)>())) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "mirror_tuple_stream_twin_sync", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Stream }, move || {  move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::mirror_twin_sync::mirror_tuple_stream_twin_sync(context.rust2dart_context().stream_sink::<_,(mirror_ApplicationSettings, mirror_RawStringEnumMirrored,)>())) } })
 }
 fn wire_repeat_number_twin_sync_impl(
     num: impl Wire2Api<i32> + core::panic::UnwindSafe,
@@ -5416,67 +5433,67 @@ fn wire_example_optional_primitive_type_bool_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<Option<bool>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,Option<bool>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_bool_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_bool_twin_normal(api_arg)) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,Option<bool>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_bool_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_bool_twin_normal(api_arg)) } })
 }
 fn wire_example_optional_primitive_type_f32_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<Option<f32>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,Option<f32>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_f32_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_f32_twin_normal(api_arg)) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,Option<f32>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_f32_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_f32_twin_normal(api_arg)) } })
 }
 fn wire_example_optional_primitive_type_f64_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<Option<f64>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,Option<f64>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_f64_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_f64_twin_normal(api_arg)) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,Option<f64>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_f64_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_f64_twin_normal(api_arg)) } })
 }
 fn wire_example_optional_primitive_type_i16_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<Option<i16>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,Option<i16>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_i16_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_i16_twin_normal(api_arg)) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,Option<i16>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_i16_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_i16_twin_normal(api_arg)) } })
 }
 fn wire_example_optional_primitive_type_i32_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<Option<i32>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,Option<i32>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_i32_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_i32_twin_normal(api_arg)) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,Option<i32>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_i32_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_i32_twin_normal(api_arg)) } })
 }
 fn wire_example_optional_primitive_type_i64_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<Option<i64>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,Option<i64>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_i64_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_i64_twin_normal(api_arg)) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,Option<i64>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_i64_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_i64_twin_normal(api_arg)) } })
 }
 fn wire_example_optional_primitive_type_i8_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<Option<i8>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,Option<i8>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_i8_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_i8_twin_normal(api_arg)) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,Option<i8>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_i8_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_i8_twin_normal(api_arg)) } })
 }
 fn wire_example_optional_primitive_type_u16_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<Option<u16>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,Option<u16>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_u16_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_u16_twin_normal(api_arg)) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,Option<u16>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_u16_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_u16_twin_normal(api_arg)) } })
 }
 fn wire_example_optional_primitive_type_u32_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<Option<u32>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,Option<u32>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_u32_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_u32_twin_normal(api_arg)) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,Option<u32>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_u32_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_u32_twin_normal(api_arg)) } })
 }
 fn wire_example_optional_primitive_type_u64_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<Option<u64>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,Option<u64>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_u64_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_u64_twin_normal(api_arg)) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,Option<u64>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_u64_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_u64_twin_normal(api_arg)) } })
 }
 fn wire_example_optional_primitive_type_u8_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<Option<u8>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,Option<u8>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_u8_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_u8_twin_normal(api_arg)) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,Option<u8>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_optional_primitive_type_u8_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::optional_primitive::example_optional_primitive_type_u8_twin_normal(api_arg)) } })
 }
 fn wire_primitive_optional_types_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -5766,7 +5783,7 @@ fn wire_example_primitive_type_bool_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<bool> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, bool, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, bool, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "example_primitive_type_bool_twin_normal",
             port: Some(port_),
@@ -5788,7 +5805,7 @@ fn wire_example_primitive_type_f32_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<f32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, f32, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, f32, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "example_primitive_type_f32_twin_normal",
             port: Some(port_),
@@ -5810,7 +5827,7 @@ fn wire_example_primitive_type_f64_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<f64> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, f64, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, f64, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "example_primitive_type_f64_twin_normal",
             port: Some(port_),
@@ -5832,7 +5849,7 @@ fn wire_example_primitive_type_i16_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<i16> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i16, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, i16, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "example_primitive_type_i16_twin_normal",
             port: Some(port_),
@@ -5854,7 +5871,7 @@ fn wire_example_primitive_type_i32_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<i32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, i32, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "example_primitive_type_i32_twin_normal",
             port: Some(port_),
@@ -5876,7 +5893,7 @@ fn wire_example_primitive_type_i64_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<i64> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i64, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, i64, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "example_primitive_type_i64_twin_normal",
             port: Some(port_),
@@ -5898,7 +5915,7 @@ fn wire_example_primitive_type_i8_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<i8> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i8, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, i8, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "example_primitive_type_i8_twin_normal",
             port: Some(port_),
@@ -5920,7 +5937,7 @@ fn wire_example_primitive_type_u16_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<u16> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u16, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, u16, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "example_primitive_type_u16_twin_normal",
             port: Some(port_),
@@ -5942,7 +5959,7 @@ fn wire_example_primitive_type_u32_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<u32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, u32, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "example_primitive_type_u32_twin_normal",
             port: Some(port_),
@@ -5964,7 +5981,7 @@ fn wire_example_primitive_type_u64_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<u64> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u64, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, u64, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "example_primitive_type_u64_twin_normal",
             port: Some(port_),
@@ -5986,7 +6003,7 @@ fn wire_example_primitive_type_u8_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<u8> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u8, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, u8, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "example_primitive_type_u8_twin_normal",
             port: Some(port_),
@@ -6008,67 +6025,67 @@ fn wire_example_primitive_list_type_bool_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<Vec<bool>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,Vec<bool>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_bool_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_bool_twin_normal(api_arg)) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,Vec<bool>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_bool_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_bool_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_list_type_f32_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<Vec<f32>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,Vec<f32>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_f32_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_f32_twin_normal(api_arg)) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,Vec<f32>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_f32_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_f32_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_list_type_f64_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<Vec<f64>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,Vec<f64>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_f64_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_f64_twin_normal(api_arg)) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,Vec<f64>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_f64_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_f64_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_list_type_i16_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<Vec<i16>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,Vec<i16>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_i16_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_i16_twin_normal(api_arg)) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,Vec<i16>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_i16_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_i16_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_list_type_i32_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<Vec<i32>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,Vec<i32>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_i32_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_i32_twin_normal(api_arg)) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,Vec<i32>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_i32_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_i32_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_list_type_i64_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<Vec<i64>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,Vec<i64>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_i64_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_i64_twin_normal(api_arg)) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,Vec<i64>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_i64_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_i64_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_list_type_i8_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<Vec<i8>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,Vec<i8>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_i8_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_i8_twin_normal(api_arg)) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,Vec<i8>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_i8_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_i8_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_list_type_u16_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<Vec<u16>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,Vec<u16>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_u16_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_u16_twin_normal(api_arg)) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,Vec<u16>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_u16_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_u16_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_list_type_u32_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<Vec<u32>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,Vec<u32>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_u32_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_u32_twin_normal(api_arg)) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,Vec<u32>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_u32_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_u32_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_list_type_u64_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<Vec<u64>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,Vec<u64>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_u64_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_u64_twin_normal(api_arg)) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,Vec<u64>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_u64_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_u64_twin_normal(api_arg)) } })
 }
 fn wire_example_primitive_list_type_u8_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<Vec<u8>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,Vec<u8>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_u8_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_u8_twin_normal(api_arg)) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,Vec<u8>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "example_primitive_list_type_u8_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  {  Result::<_,()>::Ok(crate::api::pseudo_manual::primitive_list::example_primitive_list_type_u8_twin_normal(api_arg)) } })
 }
 fn wire_handle_vec_of_primitive_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -7385,13 +7402,13 @@ fn wire_handle_uuids_twin_sync_impl(
 fn wire_test_more_than_just_one_raw_string_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,crate::api::raw_string::MoreThanJustOneRawStringStructTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "test_more_than_just_one_raw_string_struct_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  Result::<_,()>::Ok(crate::api::raw_string::test_more_than_just_one_raw_string_struct_twin_normal()) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,crate::api::raw_string::MoreThanJustOneRawStringStructTwinNormal,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "test_more_than_just_one_raw_string_struct_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  Result::<_,()>::Ok(crate::api::raw_string::test_more_than_just_one_raw_string_struct_twin_normal()) } })
 }
 fn wire_test_raw_string_item_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, crate::api::raw_string::RawStringItemStructTwinNormal, _>(
+        .wrap_normal::<_, _, _, crate::api::raw_string::RawStringItemStructTwinNormal, _>(
             flutter_rust_bridge::for_generated::TaskInfo {
                 debug_name: "test_raw_string_item_struct_twin_normal",
                 port: Some(port_),
@@ -7411,7 +7428,7 @@ fn wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal_impl(
     that: impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
         + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.wire2api(); move |context|  { let api_that = api_that.rust_auto_opaque_wire2api_ref()?;
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.wire2api(); move |context|  { let api_that = api_that.rust_auto_opaque_wire2api_ref()?;
  Result::<_,anyhow::Error>::Ok(crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::instance_method_arg_borrow_twin_normal(&api_that)) } })
 }
 fn wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal_impl(
@@ -7419,7 +7436,7 @@ fn wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal_impl
     that: impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
         + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.wire2api(); move |context|  { let mut api_that = api_that.rust_auto_opaque_wire2api_ref_mut()?;
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.wire2api(); move |context|  { let mut api_that = api_that.rust_auto_opaque_wire2api_ref_mut()?;
  Result::<_,anyhow::Error>::Ok(crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::instance_method_arg_mut_borrow_twin_normal(&mut api_that)) } })
 }
 fn wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal_impl(
@@ -7427,7 +7444,7 @@ fn wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal_impl(
     that: impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
         + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.wire2api(); move |context|  { let api_that = api_that.rust_auto_opaque_wire2api_owned()?;
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.wire2api(); move |context|  { let api_that = api_that.rust_auto_opaque_wire2api_owned()?;
  Result::<_,anyhow::Error>::Ok(crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::instance_method_arg_own_twin_normal(api_that)) } })
 }
 fn wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal_impl(
@@ -7435,18 +7452,18 @@ fn wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal_impl(
     that: impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
         + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.wire2api(); move |context|  { let api_that = api_that.rust_auto_opaque_wire2api_ref()?;
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_that = that.wire2api(); move |context|  { let api_that = api_that.rust_auto_opaque_wire2api_ref()?;
  Result::<_,anyhow::Error>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_api2wire(crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::instance_method_return_own_twin_normal(&api_that))) } })
 }
 fn wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_new_custom_name_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  Result::<_,()>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_api2wire(crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::new_custom_name_twin_normal())) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_new_custom_name_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  Result::<_,()>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_api2wire(crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::new_custom_name_twin_normal())) } })
 }
 fn wire_NonCloneSimpleTwinNormal_new_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, flutter_rust_bridge::RustOpaque<
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, flutter_rust_bridge::RustOpaque<
         std::sync::RwLock<NonCloneSimpleTwinNormal>,
     >, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -7470,7 +7487,7 @@ fn wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal_impl(
     arg: impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
         + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  { let api_arg = api_arg.rust_auto_opaque_wire2api_ref()?;
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  { let api_arg = api_arg.rust_auto_opaque_wire2api_ref()?;
  Result::<_,anyhow::Error>::Ok(crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::static_method_arg_borrow_twin_normal(&api_arg)) } })
 }
 fn wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal_impl(
@@ -7478,7 +7495,7 @@ fn wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal_impl(
     arg: impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
         + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  { let mut api_arg = api_arg.rust_auto_opaque_wire2api_ref_mut()?;
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  { let mut api_arg = api_arg.rust_auto_opaque_wire2api_ref_mut()?;
  Result::<_,anyhow::Error>::Ok(crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::static_method_arg_mut_borrow_twin_normal(&mut api_arg)) } })
 }
 fn wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal_impl(
@@ -7486,13 +7503,13 @@ fn wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal_impl(
     arg: impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
         + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  { let api_arg = api_arg.rust_auto_opaque_wire2api_owned()?;
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  { let api_arg = api_arg.rust_auto_opaque_wire2api_owned()?;
  Result::<_,anyhow::Error>::Ok(crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::static_method_arg_own_twin_normal(api_arg)) } })
 }
 fn wire_NonCloneSimpleTwinNormal_static_method_return_own_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_static_method_return_own_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  Result::<_,()>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_api2wire(crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::static_method_return_own_twin_normal())) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "NonCloneSimpleTwinNormal_static_method_return_own_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  Result::<_,()>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_api2wire(crate::api::rust_auto_opaque::NonCloneSimpleTwinNormal::static_method_return_own_twin_normal())) } })
 }
 fn wire_rust_auto_opaque_arg_borrow_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -7500,7 +7517,7 @@ fn wire_rust_auto_opaque_arg_borrow_twin_normal_impl(
         + core::panic::UnwindSafe,
     expect: impl Wire2Api<i32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "rust_auto_opaque_arg_borrow_twin_normal",
             port: Some(port_),
@@ -7527,7 +7544,7 @@ fn wire_rust_auto_opaque_arg_mut_borrow_twin_normal_impl(
     expect: impl Wire2Api<i32> + core::panic::UnwindSafe,
     adder: impl Wire2Api<i32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "rust_auto_opaque_arg_mut_borrow_twin_normal",
             port: Some(port_),
@@ -7555,7 +7572,7 @@ fn wire_rust_auto_opaque_arg_own_and_return_own_twin_normal_impl(
     arg: impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
         + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_arg_own_and_return_own_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  { let api_arg = api_arg.rust_auto_opaque_wire2api_owned()?;
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_arg_own_and_return_own_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  { let api_arg = api_arg.rust_auto_opaque_wire2api_owned()?;
  Result::<_,anyhow::Error>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_api2wire(crate::api::rust_auto_opaque::rust_auto_opaque_arg_own_and_return_own_twin_normal(api_arg))) } })
 }
 fn wire_rust_auto_opaque_arg_own_twin_normal_impl(
@@ -7564,7 +7581,7 @@ fn wire_rust_auto_opaque_arg_own_twin_normal_impl(
         + core::panic::UnwindSafe,
     expect: impl Wire2Api<i32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "rust_auto_opaque_arg_own_twin_normal",
             port: Some(port_),
@@ -7594,7 +7611,7 @@ fn wire_rust_auto_opaque_callable_arg_twin_normal_impl(
             >,
         > + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "rust_auto_opaque_callable_arg_twin_normal",
             port: Some(port_),
@@ -7616,7 +7633,7 @@ fn wire_rust_auto_opaque_callable_arg_twin_normal_impl(
 fn wire_rust_auto_opaque_callable_return_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, flutter_rust_bridge::RustOpaque<
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, flutter_rust_bridge::RustOpaque<
         std::sync::RwLock<Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>>,
     >, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -7642,7 +7659,7 @@ fn wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal_impl(
         + core::panic::UnwindSafe,
     b: impl Wire2Api<String> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_normal_and_opaque_arg_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_a = a.wire2api();let api_b = b.wire2api(); move |context|  { let api_a = api_a.rust_auto_opaque_wire2api_owned()?;
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_normal_and_opaque_arg_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_a = a.wire2api();let api_b = b.wire2api(); move |context|  { let api_a = api_a.rust_auto_opaque_wire2api_owned()?;
  Result::<_,anyhow::Error>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_normal_and_opaque_arg_twin_normal(api_a, api_b)) } })
 }
 fn wire_rust_auto_opaque_plus_sign_arg_twin_normal_impl(
@@ -7653,7 +7670,7 @@ fn wire_rust_auto_opaque_plus_sign_arg_twin_normal_impl(
             >,
         > + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "rust_auto_opaque_plus_sign_arg_twin_normal",
             port: Some(port_),
@@ -7675,7 +7692,7 @@ fn wire_rust_auto_opaque_plus_sign_arg_twin_normal_impl(
 fn wire_rust_auto_opaque_plus_sign_return_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, flutter_rust_bridge::RustOpaque<
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, flutter_rust_bridge::RustOpaque<
         std::sync::RwLock<Box<dyn MyTraitTwinNormal + Send + Sync>>,
     >, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -7699,7 +7716,7 @@ fn wire_rust_auto_opaque_return_own_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     initial: impl Wire2Api<i32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, flutter_rust_bridge::RustOpaque<
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, flutter_rust_bridge::RustOpaque<
         std::sync::RwLock<NonCloneSimpleTwinNormal>,
     >, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -7729,7 +7746,7 @@ fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_norma
             >,
         > + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  { let api_arg = api_arg.rust_auto_opaque_wire2api_ref()?;
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  { let api_arg = api_arg.rust_auto_opaque_wire2api_ref()?;
  Result::<_,anyhow::Error>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal(&api_arg)) } })
 }
 fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal_impl(
@@ -7740,7 +7757,7 @@ fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_n
             >,
         > + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  { let mut api_arg = api_arg.rust_auto_opaque_wire2api_ref_mut()?;
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  { let mut api_arg = api_arg.rust_auto_opaque_wire2api_ref_mut()?;
  Result::<_,anyhow::Error>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal(&mut api_arg)) } })
 }
 fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal_impl(
@@ -7751,13 +7768,13 @@ fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal_i
             >,
         > + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  { let api_arg = api_arg.rust_auto_opaque_wire2api_owned()?;
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api(); move |context|  { let api_arg = api_arg.rust_auto_opaque_wire2api_owned()?;
  Result::<_,anyhow::Error>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal(api_arg)) } })
 }
 fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  Result::<_,()>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_api2wire(crate::api::rust_auto_opaque::rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal())) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  Result::<_,()>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_api2wire(crate::api::rust_auto_opaque::rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal())) } })
 }
 fn wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -7765,7 +7782,7 @@ fn wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal_impl(
         + core::panic::UnwindSafe,
     expect: impl Wire2Api<String> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_arg_borrow_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api();let api_expect = expect.wire2api(); move |context|  { let api_arg = api_arg.rust_auto_opaque_wire2api_ref()?;
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_arg_borrow_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api();let api_expect = expect.wire2api(); move |context|  { let api_arg = api_arg.rust_auto_opaque_wire2api_ref()?;
  Result::<_,anyhow::Error>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_trait_object_arg_borrow_twin_normal(&api_arg, api_expect)) } })
 }
 fn wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal_impl(
@@ -7774,7 +7791,7 @@ fn wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal_impl(
         + core::panic::UnwindSafe,
     expect: impl Wire2Api<String> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api();let api_expect = expect.wire2api(); move |context|  { let mut api_arg = api_arg.rust_auto_opaque_wire2api_ref_mut()?;
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_arg = arg.wire2api();let api_expect = expect.wire2api(); move |context|  { let mut api_arg = api_arg.rust_auto_opaque_wire2api_ref_mut()?;
  Result::<_,anyhow::Error>::Ok(crate::api::rust_auto_opaque::rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal(&mut api_arg, api_expect)) } })
 }
 fn wire_rust_auto_opaque_trait_object_arg_own_twin_normal_impl(
@@ -7783,7 +7800,7 @@ fn wire_rust_auto_opaque_trait_object_arg_own_twin_normal_impl(
         + core::panic::UnwindSafe,
     expect: impl Wire2Api<String> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "rust_auto_opaque_trait_object_arg_own_twin_normal",
             port: Some(port_),
@@ -7806,12 +7823,12 @@ fn wire_rust_auto_opaque_trait_object_arg_own_twin_normal_impl(
 fn wire_rust_auto_opaque_trait_object_return_own_one_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_return_own_one_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  Result::<_,()>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_api2wire(crate::api::rust_auto_opaque::rust_auto_opaque_trait_object_return_own_one_twin_normal())) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_return_own_one_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  Result::<_,()>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_api2wire(crate::api::rust_auto_opaque::rust_auto_opaque_trait_object_return_own_one_twin_normal())) } })
 }
 fn wire_rust_auto_opaque_trait_object_return_own_two_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_return_own_two_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  Result::<_,()>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_api2wire(crate::api::rust_auto_opaque::rust_auto_opaque_trait_object_return_own_two_twin_normal())) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_,_,_,flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>>,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_auto_opaque_trait_object_return_own_two_twin_normal", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context|  {  Result::<_,()>::Ok(flutter_rust_bridge::for_generated::rust_auto_opaque_api2wire(crate::api::rust_auto_opaque::rust_auto_opaque_trait_object_return_own_two_twin_normal())) } })
 }
 fn wire_rust_auto_opaque_two_args_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -7820,7 +7837,7 @@ fn wire_rust_auto_opaque_two_args_twin_normal_impl(
     b: impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
         + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "rust_auto_opaque_two_args_twin_normal",
             port: Some(port_),
@@ -7845,7 +7862,7 @@ fn wire_create_array_opaque_enum_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, [crate::api::rust_opaque::EnumOpaqueTwinNormal; 5], _>(
+        .wrap_normal::<_, _, _, [crate::api::rust_opaque::EnumOpaqueTwinNormal; 5], _>(
             flutter_rust_bridge::for_generated::TaskInfo {
                 debug_name: "create_array_opaque_enum_twin_normal",
                 port: Some(port_),
@@ -7863,21 +7880,22 @@ fn wire_create_array_opaque_enum_twin_normal_impl(
 fn wire_create_nested_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::rust_opaque::OpaqueNestedTwinNormal, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "create_nested_opaque_twin_normal",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            move |context| {
-                Result::<_, ()>::Ok(crate::api::rust_opaque::create_nested_opaque_twin_normal())
-            }
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER
+        .wrap_normal::<_, _, _, crate::api::rust_opaque::OpaqueNestedTwinNormal, _>(
+            flutter_rust_bridge::for_generated::TaskInfo {
+                debug_name: "create_nested_opaque_twin_normal",
+                port: Some(port_),
+                mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            },
+            move || {
+                move |context| {
+                    Result::<_, ()>::Ok(crate::api::rust_opaque::create_nested_opaque_twin_normal())
+                }
+            },
+        )
 }
 fn wire_create_opaque_twin_normal_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, flutter_rust_bridge::RustOpaque<
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, flutter_rust_bridge::RustOpaque<
         crate::auxiliary::sample_types::HideData,
     >, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -7895,7 +7913,7 @@ fn wire_create_option_opaque_twin_normal_impl(
     opaque: impl Wire2Api<Option<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>>
         + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, Option<
         flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>,
     >, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -7916,7 +7934,7 @@ fn wire_create_option_opaque_twin_normal_impl(
 fn wire_create_sync_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, flutter_rust_bridge::RustOpaque<
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, flutter_rust_bridge::RustOpaque<
         crate::auxiliary::sample_types::NonSendHideData,
     >, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -7934,7 +7952,7 @@ fn wire_create_sync_opaque_twin_normal_impl(
 fn wire_frb_generator_test_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, flutter_rust_bridge::RustOpaque<
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, flutter_rust_bridge::RustOpaque<
         crate::auxiliary::sample_types::FrbOpaqueReturn,
     >, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -7954,7 +7972,7 @@ fn wire_opaque_array_run_twin_normal_impl(
     data: impl Wire2Api<[flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>; 2]>
         + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "opaque_array_run_twin_normal",
             port: Some(port_),
@@ -7971,7 +7989,7 @@ fn wire_opaque_array_run_twin_normal_impl(
     )
 }
 fn wire_opaque_array_twin_normal_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [flutter_rust_bridge::RustOpaque<
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, [flutter_rust_bridge::RustOpaque<
         crate::auxiliary::sample_types::HideData,
     >; 2], _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -7989,7 +8007,7 @@ fn wire_opaque_vec_run_twin_normal_impl(
     data: impl Wire2Api<Vec<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>>
         + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "opaque_vec_run_twin_normal",
             port: Some(port_),
@@ -8006,7 +8024,7 @@ fn wire_opaque_vec_run_twin_normal_impl(
     )
 }
 fn wire_opaque_vec_twin_normal_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, Vec<
         flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>,
     >, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -8023,7 +8041,7 @@ fn wire_run_enum_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: impl Wire2Api<crate::api::rust_opaque::EnumOpaqueTwinNormal> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, String, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "run_enum_opaque_twin_normal",
             port: Some(port_),
@@ -8043,7 +8061,7 @@ fn wire_run_nested_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: impl Wire2Api<crate::api::rust_opaque::OpaqueNestedTwinNormal> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "run_nested_opaque_twin_normal",
             port: Some(port_),
@@ -8064,7 +8082,7 @@ fn wire_run_non_clone_twin_normal_impl(
     clone: impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::NonCloneData>>
         + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, String, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "run_non_clone_twin_normal",
             port: Some(port_),
@@ -8085,7 +8103,7 @@ fn wire_run_opaque_twin_normal_impl(
     opaque: impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
         + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, String, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "run_opaque_twin_normal",
             port: Some(port_),
@@ -8104,7 +8122,7 @@ fn wire_run_opaque_with_delay_twin_normal_impl(
     opaque: impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
         + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, String, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "run_opaque_with_delay_twin_normal",
             port: Some(port_),
@@ -8125,7 +8143,7 @@ fn wire_unwrap_rust_opaque_twin_normal_impl(
     opaque: impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::HideData>>
         + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, String, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "unwrap_rust_opaque_twin_normal",
             port: Some(port_),
@@ -8221,7 +8239,7 @@ fn wire_simple_adder_twin_normal_impl(
     a: impl Wire2Api<i32> + core::panic::UnwindSafe,
     b: impl Wire2Api<i32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, i32, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "simple_adder_twin_normal",
             port: Some(port_),
@@ -8239,7 +8257,7 @@ fn wire_simple_adder_twin_normal_impl(
 fn wire_func_stream_return_error_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "func_stream_return_error_twin_normal",
             port: Some(port_),
@@ -8257,7 +8275,7 @@ fn wire_func_stream_return_error_twin_normal_impl(
 fn wire_func_stream_return_panic_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "func_stream_return_panic_twin_normal",
             port: Some(port_),
@@ -8277,7 +8295,7 @@ fn wire_func_stream_sink_arg_position_twin_normal_impl(
     a: impl Wire2Api<u32> + core::panic::UnwindSafe,
     b: impl Wire2Api<u32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "func_stream_sink_arg_position_twin_normal",
             port: Some(port_),
@@ -8301,7 +8319,7 @@ fn wire_func_stream_sink_arg_position_twin_normal_impl(
 fn wire_handle_stream_of_struct_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "handle_stream_of_struct_twin_normal",
             port: Some(port_),
@@ -8323,7 +8341,7 @@ fn wire_handle_stream_sink_at_1_twin_normal_impl(
     key: impl Wire2Api<u32> + core::panic::UnwindSafe,
     max: impl Wire2Api<u32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "handle_stream_sink_at_1_twin_normal",
             port: Some(port_),
@@ -8349,7 +8367,7 @@ fn wire_handle_stream_sink_at_2_twin_normal_impl(
     key: impl Wire2Api<u32> + core::panic::UnwindSafe,
     max: impl Wire2Api<u32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "handle_stream_sink_at_2_twin_normal",
             port: Some(port_),
@@ -8375,7 +8393,7 @@ fn wire_handle_stream_sink_at_3_twin_normal_impl(
     key: impl Wire2Api<u32> + core::panic::UnwindSafe,
     max: impl Wire2Api<u32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "handle_stream_sink_at_3_twin_normal",
             port: Some(port_),
@@ -8400,7 +8418,7 @@ fn wire_func_stream_realistic_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<String> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "func_stream_realistic_twin_normal",
             port: Some(port_),
@@ -8422,7 +8440,7 @@ fn wire_func_struct_with_one_field_twin_normal_impl(
     arg: impl Wire2Api<crate::api::structure::StructWithOneFieldTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, crate::api::structure::StructWithOneFieldTwinNormal, _>(
+        .wrap_normal::<_, _, _, crate::api::structure::StructWithOneFieldTwinNormal, _>(
             flutter_rust_bridge::for_generated::TaskInfo {
                 debug_name: "func_struct_with_one_field_twin_normal",
                 port: Some(port_),
@@ -8443,7 +8461,7 @@ fn wire_func_struct_with_two_field_twin_normal_impl(
     arg: impl Wire2Api<crate::api::structure::StructWithTwoFieldTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, crate::api::structure::StructWithTwoFieldTwinNormal, _>(
+        .wrap_normal::<_, _, _, crate::api::structure::StructWithTwoFieldTwinNormal, _>(
             flutter_rust_bridge::for_generated::TaskInfo {
                 debug_name: "func_struct_with_two_field_twin_normal",
                 port: Some(port_),
@@ -8464,7 +8482,7 @@ fn wire_func_struct_with_zero_field_twin_normal_impl(
     arg: impl Wire2Api<crate::api::structure::StructWithZeroFieldTwinNormal> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, crate::api::structure::StructWithZeroFieldTwinNormal, _>(
+        .wrap_normal::<_, _, _, crate::api::structure::StructWithZeroFieldTwinNormal, _>(
             flutter_rust_bridge::for_generated::TaskInfo {
                 debug_name: "func_struct_with_zero_field_twin_normal",
                 port: Some(port_),
@@ -8486,7 +8504,7 @@ fn wire_func_tuple_struct_with_one_field_twin_normal_impl(
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, crate::api::structure::TupleStructWithOneFieldTwinNormal, _>(
+        .wrap_normal::<_, _, _, crate::api::structure::TupleStructWithOneFieldTwinNormal, _>(
             flutter_rust_bridge::for_generated::TaskInfo {
                 debug_name: "func_tuple_struct_with_one_field_twin_normal",
                 port: Some(port_),
@@ -8510,7 +8528,7 @@ fn wire_func_tuple_struct_with_two_field_twin_normal_impl(
         + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
-        .wrap::<_, _, _, crate::api::structure::TupleStructWithTwoFieldTwinNormal, _>(
+        .wrap_normal::<_, _, _, crate::api::structure::TupleStructWithTwoFieldTwinNormal, _>(
             flutter_rust_bridge::for_generated::TaskInfo {
                 debug_name: "func_tuple_struct_with_two_field_twin_normal",
                 port: Some(port_),
@@ -8532,7 +8550,7 @@ fn wire_test_tuple_2_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     value: impl Wire2Api<Vec<(String, i32)>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "test_tuple_2_twin_normal",
             port: Some(port_),
@@ -8550,7 +8568,7 @@ fn wire_test_tuple_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     value: impl Wire2Api<Option<(String, i32)>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (String, i32), _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (String, i32), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "test_tuple_twin_normal",
             port: Some(port_),
@@ -8566,7 +8584,7 @@ fn wire_handle_type_alias_id_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     input: impl Wire2Api<u64> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u64, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, u64, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "handle_type_alias_id_twin_normal",
             port: Some(port_),
@@ -8586,27 +8604,28 @@ fn wire_handle_type_alias_model_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     input: impl Wire2Api<u64> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::type_alias::TestModelTwinNormal, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "handle_type_alias_model_twin_normal",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let api_input = input.wire2api();
-            move |context| {
-                Result::<_, ()>::Ok(crate::api::type_alias::handle_type_alias_model_twin_normal(
-                    api_input,
-                ))
-            }
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER
+        .wrap_normal::<_, _, _, crate::api::type_alias::TestModelTwinNormal, _>(
+            flutter_rust_bridge::for_generated::TaskInfo {
+                debug_name: "handle_type_alias_model_twin_normal",
+                port: Some(port_),
+                mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            },
+            move || {
+                let api_input = input.wire2api();
+                move |context| {
+                    Result::<_, ()>::Ok(
+                        crate::api::type_alias::handle_type_alias_model_twin_normal(api_input),
+                    )
+                }
+            },
+        )
 }
 fn wire_handle_type_nest_alias_id_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     input: impl Wire2Api<u64> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u64, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, u64, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "handle_type_nest_alias_id_twin_normal",
             port: Some(port_),
@@ -8626,23 +8645,24 @@ fn wire_handle_nested_uuids_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ids: impl Wire2Api<crate::api::uuid_type::FeatureUuidTwinNormal> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, crate::api::uuid_type::FeatureUuidTwinNormal, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "handle_nested_uuids_twin_normal",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let api_ids = ids.wire2api();
-            move |context| crate::api::uuid_type::handle_nested_uuids_twin_normal(api_ids)
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER
+        .wrap_normal::<_, _, _, crate::api::uuid_type::FeatureUuidTwinNormal, _>(
+            flutter_rust_bridge::for_generated::TaskInfo {
+                debug_name: "handle_nested_uuids_twin_normal",
+                port: Some(port_),
+                mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            },
+            move || {
+                let api_ids = ids.wire2api();
+                move |context| crate::api::uuid_type::handle_nested_uuids_twin_normal(api_ids)
+            },
+        )
 }
 fn wire_handle_uuid_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     id: impl Wire2Api<uuid::Uuid> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, uuid::Uuid, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, uuid::Uuid, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "handle_uuid_twin_normal",
             port: Some(port_),
@@ -8658,7 +8678,7 @@ fn wire_handle_uuids_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ids: impl Wire2Api<Vec<uuid::Uuid>> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<uuid::Uuid>, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, Vec<uuid::Uuid>, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "handle_uuids_twin_normal",
             port: Some(port_),

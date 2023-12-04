@@ -43,8 +43,11 @@ impl<EH: ErrorHandler, TP: BaseThreadPool> SimpleExecutor<EH, TP> {
 }
 
 impl<EH: ErrorHandler + Sync, TP: BaseThreadPool> Executor for SimpleExecutor<EH, TP> {
-    fn execute<TaskFn, TaskRetDirect, TaskRetData, Er>(&self, task_info: TaskInfo, task: TaskFn)
-    where
+    fn execute_normal<TaskFn, TaskRetDirect, TaskRetData, Er>(
+        &self,
+        task_info: TaskInfo,
+        task: TaskFn,
+    ) where
         TaskFn: FnOnce(TaskContext) -> Result<TaskRetDirect, Er> + Send + UnwindSafe + 'static,
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,

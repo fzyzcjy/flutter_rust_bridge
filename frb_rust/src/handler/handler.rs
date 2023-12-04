@@ -17,7 +17,7 @@ pub trait Handler {
     ///
     /// If a Rust function is marked `sync`, it must be called with
     /// [`wrap_sync`](Handler::wrap_sync) instead.
-    fn wrap<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(
+    fn wrap_normal<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(
         &self,
         task_info: TaskInfo,
         prepare: PrepareFn,
