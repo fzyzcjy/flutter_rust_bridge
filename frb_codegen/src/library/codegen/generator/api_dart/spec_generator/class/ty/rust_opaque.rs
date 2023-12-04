@@ -60,7 +60,6 @@ fn compute_api_method_query_name(
         static ref FILTER: Regex = Regex::new(r"^std::sync::RwLock<(.*)>$").unwrap();
     }
 
-    let inner_dart_api_type: String =
-        ApiDartGenerator::new(ir.inner.clone(), context).dart_api_type();
+    let inner_dart_api_type: String = ir.inner.rust_api_type();
     FILTER.replace_all(&inner_dart_api_type, "$1").to_string()
 }
