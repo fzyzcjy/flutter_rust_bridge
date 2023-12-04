@@ -12,4 +12,8 @@ impl<T: DartSafe> RustOpaque<RwLock<T>> {
     pub fn rust_auto_opaque_wire2api_ref(&self) -> Result<&T> {
         Ok(&self)
     }
+
+    pub fn rust_auto_opaque_wire2api_ref_mut(&self) -> Result<&mut T> {
+        Ok(TODO)
+    }
 }
