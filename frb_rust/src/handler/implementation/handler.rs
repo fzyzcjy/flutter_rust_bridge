@@ -48,7 +48,6 @@ impl<E: Executor, H: ErrorHandler> SimpleHandler<E, H> {
 }
 
 impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
-    // TODO rename all these series (e.g. wrap -> wrap_normal)
     fn wrap_normal<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(
         &self,
         task_info: TaskInfo,
