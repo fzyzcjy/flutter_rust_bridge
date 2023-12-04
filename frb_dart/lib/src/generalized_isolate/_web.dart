@@ -44,16 +44,21 @@ class _MessageChannelWrapper implements Channel {
 }
 
 class _BroadcastChannelWrapper implements Channel {
-  final BroadcastChannel channel;
+  final BroadcastChannel _sendChannel;
+  final BroadcastChannel _receiveChannel;
 
   _BroadcastChannelWrapper(String channelName)
-      : channel = BroadcastChannel(channelName);
+      // Note: It is *wrong* to reuse the same HTML BroadcastChannel object,
+      // because HTML BroadcastChannel spec says that, the event will not be fired
+      // at the object which sends it. Therefore, we need two different objects.
+      : _sendChannel = BroadcastChannel(channelName),
+        _receiveChannel = BroadcastChannel(channelName);
 
   @override
-  SendPort get sendPort => PortLike.broadcastChannel(channel);
+  SendPort get sendPort => PortLike.broadcastChannel(_sendChannel);
 
   @override
-  SendPort get receivePort => sendPort;
+  SendPort get receivePort => PortLike.broadcastChannel(_receiveChannel);
 }
 
 /// Wrapper around a [MessageChannel].
