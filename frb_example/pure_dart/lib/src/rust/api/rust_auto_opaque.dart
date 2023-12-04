@@ -5,7 +5,7 @@
 
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'pseudo_manual/rust_auto_opaque_twin_rust_async.dart';
+import 'pseudo_manual/rust_auto_opaque_twin_sync.dart';
 
 Future<void> rustAutoOpaqueArgOwnTwinNormal(
         {required RwLockNonCloneSimpleTwinNormal arg,

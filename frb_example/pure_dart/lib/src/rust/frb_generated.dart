@@ -77,7 +77,6 @@ import 'api/pseudo_manual/primitive_twin_rust_async.dart';
 import 'api/pseudo_manual/primitive_twin_sync.dart';
 import 'api/pseudo_manual/raw_string_twin_rust_async.dart';
 import 'api/pseudo_manual/raw_string_twin_sync.dart';
-import 'api/pseudo_manual/rust_auto_opaque_twin_rust_async.dart';
 import 'api/pseudo_manual/rust_auto_opaque_twin_sync.dart';
 import 'api/pseudo_manual/rust_opaque_twin_rust_async.dart';
 import 'api/pseudo_manual/rust_opaque_twin_sync.dart';
@@ -1715,123 +1714,6 @@ abstract class RustLibApi extends BaseApi {
 
   RawStringItemStructTwinSync testRawStringItemStructTwinSync({dynamic hint});
 
-  Future<void> nonCloneSimpleTwinRustAsyncInstanceMethodArgBorrowTwinRustAsync(
-      {required RwLockNonCloneSimpleTwinRustAsync that, dynamic hint});
-
-  Future<void>
-      nonCloneSimpleTwinRustAsyncInstanceMethodArgMutBorrowTwinRustAsync(
-          {required RwLockNonCloneSimpleTwinRustAsync that, dynamic hint});
-
-  Future<void> nonCloneSimpleTwinRustAsyncInstanceMethodArgOwnTwinRustAsync(
-      {required RwLockNonCloneSimpleTwinRustAsync that, dynamic hint});
-
-  Future<RwLockNonCloneSimpleTwinRustAsync>
-      nonCloneSimpleTwinRustAsyncInstanceMethodReturnOwnTwinRustAsync(
-          {required RwLockNonCloneSimpleTwinRustAsync that, dynamic hint});
-
-  Future<RwLockNonCloneSimpleTwinRustAsync>
-      nonCloneSimpleTwinRustAsyncNewCustomNameTwinRustAsync({dynamic hint});
-
-  Future<RwLockNonCloneSimpleTwinRustAsync>
-      nonCloneSimpleTwinRustAsyncNewTwinRustAsync({dynamic hint});
-
-  Future<void> nonCloneSimpleTwinRustAsyncStaticMethodArgBorrowTwinRustAsync(
-      {required RwLockNonCloneSimpleTwinRustAsync arg, dynamic hint});
-
-  Future<void> nonCloneSimpleTwinRustAsyncStaticMethodArgMutBorrowTwinRustAsync(
-      {required RwLockNonCloneSimpleTwinRustAsync arg, dynamic hint});
-
-  Future<void> nonCloneSimpleTwinRustAsyncStaticMethodArgOwnTwinRustAsync(
-      {required RwLockNonCloneSimpleTwinRustAsync arg, dynamic hint});
-
-  Future<RwLockNonCloneSimpleTwinRustAsync>
-      nonCloneSimpleTwinRustAsyncStaticMethodReturnOwnTwinRustAsync(
-          {dynamic hint});
-
-  Future<void> rustAutoOpaqueArgBorrowTwinRustAsync(
-      {required RwLockNonCloneSimpleTwinRustAsync arg,
-      required int expect,
-      dynamic hint});
-
-  Future<void> rustAutoOpaqueArgMutBorrowTwinRustAsync(
-      {required RwLockNonCloneSimpleTwinRustAsync arg,
-      required int expect,
-      required int adder,
-      dynamic hint});
-
-  Future<RwLockNonCloneSimpleTwinRustAsync>
-      rustAutoOpaqueArgOwnAndReturnOwnTwinRustAsync(
-          {required RwLockNonCloneSimpleTwinRustAsync arg, dynamic hint});
-
-  Future<void> rustAutoOpaqueArgOwnTwinRustAsync(
-      {required RwLockNonCloneSimpleTwinRustAsync arg,
-      required int expect,
-      dynamic hint});
-
-  Future<void> rustAutoOpaqueCallableArgTwinRustAsync(
-      {required RwLockBoxFnStringString arg, dynamic hint});
-
-  Future<RwLockBoxFnStringString> rustAutoOpaqueCallableReturnTwinRustAsync(
-      {dynamic hint});
-
-  Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinRustAsync(
-      {required RwLockNonCloneSimpleTwinRustAsync a,
-      required String b,
-      dynamic hint});
-
-  Future<void> rustAutoOpaquePlusSignArgTwinRustAsync(
-      {required RwLockBoxMyTraitTwinRustAsync arg, dynamic hint});
-
-  Future<RwLockBoxMyTraitTwinRustAsync>
-      rustAutoOpaquePlusSignReturnTwinRustAsync({dynamic hint});
-
-  Future<RwLockNonCloneSimpleTwinRustAsync>
-      rustAutoOpaqueReturnOwnTwinRustAsync(
-          {required int initial, dynamic hint});
-
-  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinRustAsync(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinRustAsync arg,
-      dynamic hint});
-
-  Future<void>
-      rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinRustAsync(
-          {required RwLockStructWithGoodAndOpaqueFieldTwinRustAsync arg,
-          dynamic hint});
-
-  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsync(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinRustAsync arg,
-      dynamic hint});
-
-  Future<RwLockStructWithGoodAndOpaqueFieldTwinRustAsync>
-      rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsync(
-          {dynamic hint});
-
-  Future<void> rustAutoOpaqueTraitObjectArgBorrowTwinRustAsync(
-      {required RwLockBoxHelloTraitTwinRustAsync arg,
-      required String expect,
-      dynamic hint});
-
-  Future<void> rustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsync(
-      {required RwLockBoxHelloTraitTwinRustAsync arg,
-      required String expect,
-      dynamic hint});
-
-  Future<void> rustAutoOpaqueTraitObjectArgOwnTwinRustAsync(
-      {required RwLockBoxHelloTraitTwinRustAsync arg,
-      required String expect,
-      dynamic hint});
-
-  Future<RwLockBoxHelloTraitTwinRustAsync>
-      rustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsync({dynamic hint});
-
-  Future<RwLockBoxHelloTraitTwinRustAsync>
-      rustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsync({dynamic hint});
-
-  Future<void> rustAutoOpaqueTwoArgsTwinRustAsync(
-      {required RwLockNonCloneSimpleTwinRustAsync a,
-      required RwLockNonCloneSimpleTwinRustAsync b,
-      dynamic hint});
-
   void nonCloneSimpleTwinSyncInstanceMethodArgBorrowTwinSync(
       {required RwLockNonCloneSimpleTwinSync that, dynamic hint});
 
@@ -2465,15 +2347,6 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinNormalPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockBoxHelloTraitTwinRustAsync;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinRustAsync;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinRustAsyncPtr;
-
-  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_RwLockBoxHelloTraitTwinSync;
 
   RustArcDecrementStrongCountFnType
@@ -2490,15 +2363,6 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinNormalPtr;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockBoxMyTraitTwinRustAsync;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinRustAsync;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinRustAsyncPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_RwLockBoxMyTraitTwinSync;
@@ -2519,15 +2383,6 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinNormalPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockNonCloneSimpleTwinRustAsync;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinRustAsync;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinRustAsyncPtr;
-
-  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_RwLockNonCloneSimpleTwinSync;
 
   RustArcDecrementStrongCountFnType
@@ -2544,15 +2399,6 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinNormalPtr;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinRustAsync;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinRustAsync;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinRustAsyncPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSync;
@@ -14445,815 +14291,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> nonCloneSimpleTwinRustAsyncInstanceMethodArgBorrowTwinRustAsync(
-      {required RwLockNonCloneSimpleTwinRustAsync that, dynamic hint}) {
-    var arg0 =
-        api2wire_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
-            that);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_NonCloneSimpleTwinRustAsync_instance_method_arg_borrow_twin_rust_async(
-              port_, arg0),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta:
-          kNonCloneSimpleTwinRustAsyncInstanceMethodArgBorrowTwinRustAsyncConstMeta,
-      argValues: [that],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kNonCloneSimpleTwinRustAsyncInstanceMethodArgBorrowTwinRustAsyncConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "NonCloneSimpleTwinRustAsync_instance_method_arg_borrow_twin_rust_async",
-            argNames: ["that"],
-          );
-
-  @override
-  Future<void>
-      nonCloneSimpleTwinRustAsyncInstanceMethodArgMutBorrowTwinRustAsync(
-          {required RwLockNonCloneSimpleTwinRustAsync that, dynamic hint}) {
-    var arg0 =
-        api2wire_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
-            that);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_NonCloneSimpleTwinRustAsync_instance_method_arg_mut_borrow_twin_rust_async(
-              port_, arg0),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta:
-          kNonCloneSimpleTwinRustAsyncInstanceMethodArgMutBorrowTwinRustAsyncConstMeta,
-      argValues: [that],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kNonCloneSimpleTwinRustAsyncInstanceMethodArgMutBorrowTwinRustAsyncConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "NonCloneSimpleTwinRustAsync_instance_method_arg_mut_borrow_twin_rust_async",
-            argNames: ["that"],
-          );
-
-  @override
-  Future<void> nonCloneSimpleTwinRustAsyncInstanceMethodArgOwnTwinRustAsync(
-      {required RwLockNonCloneSimpleTwinRustAsync that, dynamic hint}) {
-    var arg0 =
-        api2wire_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
-            that);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_NonCloneSimpleTwinRustAsync_instance_method_arg_own_twin_rust_async(
-              port_, arg0),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta:
-          kNonCloneSimpleTwinRustAsyncInstanceMethodArgOwnTwinRustAsyncConstMeta,
-      argValues: [that],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kNonCloneSimpleTwinRustAsyncInstanceMethodArgOwnTwinRustAsyncConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "NonCloneSimpleTwinRustAsync_instance_method_arg_own_twin_rust_async",
-            argNames: ["that"],
-          );
-
-  @override
-  Future<RwLockNonCloneSimpleTwinRustAsync>
-      nonCloneSimpleTwinRustAsyncInstanceMethodReturnOwnTwinRustAsync(
-          {required RwLockNonCloneSimpleTwinRustAsync that, dynamic hint}) {
-    var arg0 =
-        api2wire_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
-            that);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_NonCloneSimpleTwinRustAsync_instance_method_return_own_twin_rust_async(
-              port_, arg0),
-      parseSuccessData:
-          _wire2api_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync,
-      parseErrorData: null,
-      constMeta:
-          kNonCloneSimpleTwinRustAsyncInstanceMethodReturnOwnTwinRustAsyncConstMeta,
-      argValues: [that],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kNonCloneSimpleTwinRustAsyncInstanceMethodReturnOwnTwinRustAsyncConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "NonCloneSimpleTwinRustAsync_instance_method_return_own_twin_rust_async",
-            argNames: ["that"],
-          );
-
-  @override
-  Future<RwLockNonCloneSimpleTwinRustAsync>
-      nonCloneSimpleTwinRustAsyncNewCustomNameTwinRustAsync({dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_NonCloneSimpleTwinRustAsync_new_custom_name_twin_rust_async(
-              port_),
-      parseSuccessData:
-          _wire2api_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync,
-      parseErrorData: null,
-      constMeta:
-          kNonCloneSimpleTwinRustAsyncNewCustomNameTwinRustAsyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kNonCloneSimpleTwinRustAsyncNewCustomNameTwinRustAsyncConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "NonCloneSimpleTwinRustAsync_new_custom_name_twin_rust_async",
-            argNames: [],
-          );
-
-  @override
-  Future<RwLockNonCloneSimpleTwinRustAsync>
-      nonCloneSimpleTwinRustAsyncNewTwinRustAsync({dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_NonCloneSimpleTwinRustAsync_new_twin_rust_async(port_),
-      parseSuccessData:
-          _wire2api_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync,
-      parseErrorData: null,
-      constMeta: kNonCloneSimpleTwinRustAsyncNewTwinRustAsyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kNonCloneSimpleTwinRustAsyncNewTwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "NonCloneSimpleTwinRustAsync_new_twin_rust_async",
-        argNames: [],
-      );
-
-  @override
-  Future<void> nonCloneSimpleTwinRustAsyncStaticMethodArgBorrowTwinRustAsync(
-      {required RwLockNonCloneSimpleTwinRustAsync arg, dynamic hint}) {
-    var arg0 =
-        api2wire_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
-            arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_NonCloneSimpleTwinRustAsync_static_method_arg_borrow_twin_rust_async(
-              port_, arg0),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta:
-          kNonCloneSimpleTwinRustAsyncStaticMethodArgBorrowTwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kNonCloneSimpleTwinRustAsyncStaticMethodArgBorrowTwinRustAsyncConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "NonCloneSimpleTwinRustAsync_static_method_arg_borrow_twin_rust_async",
-            argNames: ["arg"],
-          );
-
-  @override
-  Future<void> nonCloneSimpleTwinRustAsyncStaticMethodArgMutBorrowTwinRustAsync(
-      {required RwLockNonCloneSimpleTwinRustAsync arg, dynamic hint}) {
-    var arg0 =
-        api2wire_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
-            arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_NonCloneSimpleTwinRustAsync_static_method_arg_mut_borrow_twin_rust_async(
-              port_, arg0),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta:
-          kNonCloneSimpleTwinRustAsyncStaticMethodArgMutBorrowTwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kNonCloneSimpleTwinRustAsyncStaticMethodArgMutBorrowTwinRustAsyncConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "NonCloneSimpleTwinRustAsync_static_method_arg_mut_borrow_twin_rust_async",
-            argNames: ["arg"],
-          );
-
-  @override
-  Future<void> nonCloneSimpleTwinRustAsyncStaticMethodArgOwnTwinRustAsync(
-      {required RwLockNonCloneSimpleTwinRustAsync arg, dynamic hint}) {
-    var arg0 =
-        api2wire_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
-            arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_NonCloneSimpleTwinRustAsync_static_method_arg_own_twin_rust_async(
-              port_, arg0),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta:
-          kNonCloneSimpleTwinRustAsyncStaticMethodArgOwnTwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kNonCloneSimpleTwinRustAsyncStaticMethodArgOwnTwinRustAsyncConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "NonCloneSimpleTwinRustAsync_static_method_arg_own_twin_rust_async",
-            argNames: ["arg"],
-          );
-
-  @override
-  Future<RwLockNonCloneSimpleTwinRustAsync>
-      nonCloneSimpleTwinRustAsyncStaticMethodReturnOwnTwinRustAsync(
-          {dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_NonCloneSimpleTwinRustAsync_static_method_return_own_twin_rust_async(
-              port_),
-      parseSuccessData:
-          _wire2api_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync,
-      parseErrorData: null,
-      constMeta:
-          kNonCloneSimpleTwinRustAsyncStaticMethodReturnOwnTwinRustAsyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kNonCloneSimpleTwinRustAsyncStaticMethodReturnOwnTwinRustAsyncConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "NonCloneSimpleTwinRustAsync_static_method_return_own_twin_rust_async",
-            argNames: [],
-          );
-
-  @override
-  Future<void> rustAutoOpaqueArgBorrowTwinRustAsync(
-      {required RwLockNonCloneSimpleTwinRustAsync arg,
-      required int expect,
-      dynamic hint}) {
-    var arg0 =
-        api2wire_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
-            arg);
-    var arg1 = api2wire_i_32(expect);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_rust_auto_opaque_arg_borrow_twin_rust_async(
-          port_, arg0, arg1),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta: kRustAutoOpaqueArgBorrowTwinRustAsyncConstMeta,
-      argValues: [arg, expect],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kRustAutoOpaqueArgBorrowTwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "rust_auto_opaque_arg_borrow_twin_rust_async",
-        argNames: ["arg", "expect"],
-      );
-
-  @override
-  Future<void> rustAutoOpaqueArgMutBorrowTwinRustAsync(
-      {required RwLockNonCloneSimpleTwinRustAsync arg,
-      required int expect,
-      required int adder,
-      dynamic hint}) {
-    var arg0 =
-        api2wire_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
-            arg);
-    var arg1 = api2wire_i_32(expect);
-    var arg2 = api2wire_i_32(adder);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_arg_mut_borrow_twin_rust_async(
-              port_, arg0, arg1, arg2),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta: kRustAutoOpaqueArgMutBorrowTwinRustAsyncConstMeta,
-      argValues: [arg, expect, adder],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kRustAutoOpaqueArgMutBorrowTwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "rust_auto_opaque_arg_mut_borrow_twin_rust_async",
-        argNames: ["arg", "expect", "adder"],
-      );
-
-  @override
-  Future<RwLockNonCloneSimpleTwinRustAsync>
-      rustAutoOpaqueArgOwnAndReturnOwnTwinRustAsync(
-          {required RwLockNonCloneSimpleTwinRustAsync arg, dynamic hint}) {
-    var arg0 =
-        api2wire_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
-            arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_arg_own_and_return_own_twin_rust_async(
-              port_, arg0),
-      parseSuccessData:
-          _wire2api_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync,
-      parseErrorData: null,
-      constMeta: kRustAutoOpaqueArgOwnAndReturnOwnTwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kRustAutoOpaqueArgOwnAndReturnOwnTwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "rust_auto_opaque_arg_own_and_return_own_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<void> rustAutoOpaqueArgOwnTwinRustAsync(
-      {required RwLockNonCloneSimpleTwinRustAsync arg,
-      required int expect,
-      dynamic hint}) {
-    var arg0 =
-        api2wire_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
-            arg);
-    var arg1 = api2wire_i_32(expect);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_arg_own_twin_rust_async(port_, arg0, arg1),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta: kRustAutoOpaqueArgOwnTwinRustAsyncConstMeta,
-      argValues: [arg, expect],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kRustAutoOpaqueArgOwnTwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "rust_auto_opaque_arg_own_twin_rust_async",
-        argNames: ["arg", "expect"],
-      );
-
-  @override
-  Future<void> rustAutoOpaqueCallableArgTwinRustAsync(
-      {required RwLockBoxFnStringString arg, dynamic hint}) {
-    var arg0 =
-        api2wire_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-            arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_callable_arg_twin_rust_async(port_, arg0),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta: kRustAutoOpaqueCallableArgTwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kRustAutoOpaqueCallableArgTwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "rust_auto_opaque_callable_arg_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<RwLockBoxFnStringString> rustAutoOpaqueCallableReturnTwinRustAsync(
-      {dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_callable_return_twin_rust_async(port_),
-      parseSuccessData:
-          _wire2api_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe,
-      parseErrorData: null,
-      constMeta: kRustAutoOpaqueCallableReturnTwinRustAsyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kRustAutoOpaqueCallableReturnTwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "rust_auto_opaque_callable_return_twin_rust_async",
-        argNames: [],
-      );
-
-  @override
-  Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinRustAsync(
-      {required RwLockNonCloneSimpleTwinRustAsync a,
-      required String b,
-      dynamic hint}) {
-    var arg0 =
-        api2wire_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
-            a);
-    var arg1 = api2wire_String(b);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_normal_and_opaque_arg_twin_rust_async(
-              port_, arg0, arg1),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta: kRustAutoOpaqueNormalAndOpaqueArgTwinRustAsyncConstMeta,
-      argValues: [a, b],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kRustAutoOpaqueNormalAndOpaqueArgTwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "rust_auto_opaque_normal_and_opaque_arg_twin_rust_async",
-        argNames: ["a", "b"],
-      );
-
-  @override
-  Future<void> rustAutoOpaquePlusSignArgTwinRustAsync(
-      {required RwLockBoxMyTraitTwinRustAsync arg, dynamic hint}) {
-    var arg0 =
-        api2wire_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
-            arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_plus_sign_arg_twin_rust_async(port_, arg0),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta: kRustAutoOpaquePlusSignArgTwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kRustAutoOpaquePlusSignArgTwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "rust_auto_opaque_plus_sign_arg_twin_rust_async",
-        argNames: ["arg"],
-      );
-
-  @override
-  Future<RwLockBoxMyTraitTwinRustAsync>
-      rustAutoOpaquePlusSignReturnTwinRustAsync({dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_plus_sign_return_twin_rust_async(port_),
-      parseSuccessData:
-          _wire2api_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync,
-      parseErrorData: null,
-      constMeta: kRustAutoOpaquePlusSignReturnTwinRustAsyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kRustAutoOpaquePlusSignReturnTwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "rust_auto_opaque_plus_sign_return_twin_rust_async",
-        argNames: [],
-      );
-
-  @override
-  Future<RwLockNonCloneSimpleTwinRustAsync>
-      rustAutoOpaqueReturnOwnTwinRustAsync(
-          {required int initial, dynamic hint}) {
-    var arg0 = api2wire_i_32(initial);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_return_own_twin_rust_async(port_, arg0),
-      parseSuccessData:
-          _wire2api_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync,
-      parseErrorData: null,
-      constMeta: kRustAutoOpaqueReturnOwnTwinRustAsyncConstMeta,
-      argValues: [initial],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kRustAutoOpaqueReturnOwnTwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "rust_auto_opaque_return_own_twin_rust_async",
-        argNames: ["initial"],
-      );
-
-  @override
-  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinRustAsync(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinRustAsync arg,
-      dynamic hint}) {
-    var arg0 =
-        api2wire_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
-            arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async(
-              port_, arg0),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta:
-          kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinRustAsyncConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_rust_async",
-            argNames: ["arg"],
-          );
-
-  @override
-  Future<void>
-      rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinRustAsync(
-          {required RwLockStructWithGoodAndOpaqueFieldTwinRustAsync arg,
-          dynamic hint}) {
-    var arg0 =
-        api2wire_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
-            arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async(
-              port_, arg0),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta:
-          kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinRustAsyncConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_rust_async",
-            argNames: ["arg"],
-          );
-
-  @override
-  Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsync(
-      {required RwLockStructWithGoodAndOpaqueFieldTwinRustAsync arg,
-      dynamic hint}) {
-    var arg0 =
-        api2wire_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
-            arg);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async(
-              port_, arg0),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta:
-          kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsyncConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_rust_async",
-            argNames: ["arg"],
-          );
-
-  @override
-  Future<RwLockStructWithGoodAndOpaqueFieldTwinRustAsync>
-      rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsync(
-          {dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async(
-              port_),
-      parseSuccessData:
-          _wire2api_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync,
-      parseErrorData: null,
-      constMeta:
-          kRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsyncConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_rust_async",
-            argNames: [],
-          );
-
-  @override
-  Future<void> rustAutoOpaqueTraitObjectArgBorrowTwinRustAsync(
-      {required RwLockBoxHelloTraitTwinRustAsync arg,
-      required String expect,
-      dynamic hint}) {
-    var arg0 =
-        api2wire_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
-            arg);
-    var arg1 = api2wire_String(expect);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_trait_object_arg_borrow_twin_rust_async(
-              port_, arg0, arg1),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta: kRustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncConstMeta,
-      argValues: [arg, expect],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kRustAutoOpaqueTraitObjectArgBorrowTwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "rust_auto_opaque_trait_object_arg_borrow_twin_rust_async",
-        argNames: ["arg", "expect"],
-      );
-
-  @override
-  Future<void> rustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsync(
-      {required RwLockBoxHelloTraitTwinRustAsync arg,
-      required String expect,
-      dynamic hint}) {
-    var arg0 =
-        api2wire_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
-            arg);
-    var arg1 = api2wire_String(expect);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async(
-              port_, arg0, arg1),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta: kRustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncConstMeta,
-      argValues: [arg, expect],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kRustAutoOpaqueTraitObjectArgMutBorrowTwinRustAsyncConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "rust_auto_opaque_trait_object_arg_mut_borrow_twin_rust_async",
-            argNames: ["arg", "expect"],
-          );
-
-  @override
-  Future<void> rustAutoOpaqueTraitObjectArgOwnTwinRustAsync(
-      {required RwLockBoxHelloTraitTwinRustAsync arg,
-      required String expect,
-      dynamic hint}) {
-    var arg0 =
-        api2wire_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
-            arg);
-    var arg1 = api2wire_String(expect);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_trait_object_arg_own_twin_rust_async(
-              port_, arg0, arg1),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta: kRustAutoOpaqueTraitObjectArgOwnTwinRustAsyncConstMeta,
-      argValues: [arg, expect],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kRustAutoOpaqueTraitObjectArgOwnTwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "rust_auto_opaque_trait_object_arg_own_twin_rust_async",
-        argNames: ["arg", "expect"],
-      );
-
-  @override
-  Future<RwLockBoxHelloTraitTwinRustAsync>
-      rustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsync({dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_rust_auto_opaque_trait_object_return_own_one_twin_rust_async(
-              port_),
-      parseSuccessData:
-          _wire2api_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync,
-      parseErrorData: null,
-      constMeta: kRustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kRustAutoOpaqueTraitObjectReturnOwnOneTwinRustAsyncConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "rust_auto_opaque_trait_object_return_own_one_twin_rust_async",
-            argNames: [],
-          );
-
-  @override
-  Future<RwLockBoxHelloTraitTwinRustAsync>
-      rustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsync({dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_rust_auto_opaque_trait_object_return_own_two_twin_rust_async(
-              port_),
-      parseSuccessData:
-          _wire2api_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync,
-      parseErrorData: null,
-      constMeta: kRustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta
-      get kRustAutoOpaqueTraitObjectReturnOwnTwoTwinRustAsyncConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "rust_auto_opaque_trait_object_return_own_two_twin_rust_async",
-            argNames: [],
-          );
-
-  @override
-  Future<void> rustAutoOpaqueTwoArgsTwinRustAsync(
-      {required RwLockNonCloneSimpleTwinRustAsync a,
-      required RwLockNonCloneSimpleTwinRustAsync b,
-      dynamic hint}) {
-    var arg0 =
-        api2wire_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
-            a);
-    var arg1 =
-        api2wire_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
-            b);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_rust_auto_opaque_two_args_twin_rust_async(
-          port_, arg0, arg1),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta: kRustAutoOpaqueTwoArgsTwinRustAsyncConstMeta,
-      argValues: [a, b],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kRustAutoOpaqueTwoArgsTwinRustAsyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "rust_auto_opaque_two_args_twin_rust_async",
-        argNames: ["a", "b"],
-      );
-
-  @override
   void nonCloneSimpleTwinSyncInstanceMethodArgBorrowTwinSync(
       {required RwLockNonCloneSimpleTwinSync that, dynamic hint}) {
     var arg0 =
@@ -19203,14 +18240,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockBoxHelloTraitTwinRustAsync => wire
-          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinRustAsync => wire
-          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync;
-
-  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_RwLockBoxHelloTraitTwinSync => wire
           .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync;
 
@@ -19225,14 +18254,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinNormal => wire
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockBoxMyTraitTwinRustAsync => wire
-          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinRustAsync => wire
-          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_RwLockBoxMyTraitTwinSync => wire
@@ -19251,14 +18272,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockNonCloneSimpleTwinRustAsync => wire
-          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinRustAsync => wire
-          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync;
-
-  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_RwLockNonCloneSimpleTwinSync => wire
           .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync;
 
@@ -19273,14 +18286,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinNormal =>
           wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinRustAsync =>
-          wire.rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinRustAsync =>
-          wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSync =>
@@ -19306,12 +18311,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return RwLockBoxHelloTraitTwinNormal.fromWire(raw);
   }
 
-  RwLockBoxHelloTraitTwinRustAsync
-      _wire2api_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
-          dynamic raw) {
-    return RwLockBoxHelloTraitTwinRustAsync.fromWire(raw);
-  }
-
   RwLockBoxHelloTraitTwinSync
       _wire2api_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
           dynamic raw) {
@@ -19322,12 +18321,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       _wire2api_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
           dynamic raw) {
     return RwLockBoxMyTraitTwinNormal.fromWire(raw);
-  }
-
-  RwLockBoxMyTraitTwinRustAsync
-      _wire2api_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
-          dynamic raw) {
-    return RwLockBoxMyTraitTwinRustAsync.fromWire(raw);
   }
 
   RwLockBoxMyTraitTwinSync
@@ -19342,12 +18335,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return RwLockNonCloneSimpleTwinNormal.fromWire(raw);
   }
 
-  RwLockNonCloneSimpleTwinRustAsync
-      _wire2api_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
-          dynamic raw) {
-    return RwLockNonCloneSimpleTwinRustAsync.fromWire(raw);
-  }
-
   RwLockNonCloneSimpleTwinSync
       _wire2api_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
           dynamic raw) {
@@ -19358,12 +18345,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       _wire2api_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           dynamic raw) {
     return RwLockStructWithGoodAndOpaqueFieldTwinNormal.fromWire(raw);
-  }
-
-  RwLockStructWithGoodAndOpaqueFieldTwinRustAsync
-      _wire2api_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
-          dynamic raw) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinRustAsync.fromWire(raw);
   }
 
   RwLockStructWithGoodAndOpaqueFieldTwinSync
@@ -19469,12 +18450,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return RwLockBoxHelloTraitTwinNormal.fromWire(raw);
   }
 
-  RwLockBoxHelloTraitTwinRustAsync
-      _wire2api_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
-          dynamic raw) {
-    return RwLockBoxHelloTraitTwinRustAsync.fromWire(raw);
-  }
-
   RwLockBoxHelloTraitTwinSync
       _wire2api_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(dynamic raw) {
     return RwLockBoxHelloTraitTwinSync.fromWire(raw);
@@ -19484,12 +18459,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       _wire2api_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
           dynamic raw) {
     return RwLockBoxMyTraitTwinNormal.fromWire(raw);
-  }
-
-  RwLockBoxMyTraitTwinRustAsync
-      _wire2api_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
-          dynamic raw) {
-    return RwLockBoxMyTraitTwinRustAsync.fromWire(raw);
   }
 
   RwLockBoxMyTraitTwinSync
@@ -19503,12 +18472,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return RwLockNonCloneSimpleTwinNormal.fromWire(raw);
   }
 
-  RwLockNonCloneSimpleTwinRustAsync
-      _wire2api_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
-          dynamic raw) {
-    return RwLockNonCloneSimpleTwinRustAsync.fromWire(raw);
-  }
-
   RwLockNonCloneSimpleTwinSync
       _wire2api_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(dynamic raw) {
     return RwLockNonCloneSimpleTwinSync.fromWire(raw);
@@ -19518,12 +18481,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       _wire2api_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
           dynamic raw) {
     return RwLockStructWithGoodAndOpaqueFieldTwinNormal.fromWire(raw);
-  }
-
-  RwLockStructWithGoodAndOpaqueFieldTwinRustAsync
-      _wire2api_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
-          dynamic raw) {
-    return RwLockStructWithGoodAndOpaqueFieldTwinRustAsync.fromWire(raw);
   }
 
   RwLockStructWithGoodAndOpaqueFieldTwinSync
@@ -23092,13 +22049,6 @@ PlatformPointer
 }
 
 PlatformPointer
-    api2wire_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
-        RwLockBoxHelloTraitTwinRustAsync raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.api2wire(move: true);
-}
-
-PlatformPointer
     api2wire_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
         RwLockBoxHelloTraitTwinSync raw) {
   // ignore: invalid_use_of_internal_member
@@ -23108,13 +22058,6 @@ PlatformPointer
 PlatformPointer
     api2wire_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
         RwLockBoxMyTraitTwinNormal raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.api2wire(move: true);
-}
-
-PlatformPointer
-    api2wire_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
-        RwLockBoxMyTraitTwinRustAsync raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire(move: true);
 }
@@ -23134,13 +22077,6 @@ PlatformPointer
 }
 
 PlatformPointer
-    api2wire_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
-        RwLockNonCloneSimpleTwinRustAsync raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.api2wire(move: true);
-}
-
-PlatformPointer
     api2wire_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
         RwLockNonCloneSimpleTwinSync raw) {
   // ignore: invalid_use_of_internal_member
@@ -23150,13 +22086,6 @@ PlatformPointer
 PlatformPointer
     api2wire_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
         RwLockStructWithGoodAndOpaqueFieldTwinNormal raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.api2wire(move: true);
-}
-
-PlatformPointer
-    api2wire_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
-        RwLockStructWithGoodAndOpaqueFieldTwinRustAsync raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire(move: true);
 }
@@ -23176,13 +22105,6 @@ PlatformPointer
 }
 
 PlatformPointer
-    api2wire_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
-        RwLockBoxHelloTraitTwinRustAsync raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.api2wire(move: false);
-}
-
-PlatformPointer
     api2wire_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
         RwLockBoxHelloTraitTwinSync raw) {
   // ignore: invalid_use_of_internal_member
@@ -23192,13 +22114,6 @@ PlatformPointer
 PlatformPointer
     api2wire_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
         RwLockNonCloneSimpleTwinNormal raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.api2wire(move: false);
-}
-
-PlatformPointer
-    api2wire_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
-        RwLockNonCloneSimpleTwinRustAsync raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire(move: false);
 }
@@ -23218,13 +22133,6 @@ PlatformPointer
 }
 
 PlatformPointer
-    api2wire_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
-        RwLockStructWithGoodAndOpaqueFieldTwinRustAsync raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.api2wire(move: false);
-}
-
-PlatformPointer
     api2wire_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
         RwLockStructWithGoodAndOpaqueFieldTwinSync raw) {
   // ignore: invalid_use_of_internal_member
@@ -23234,13 +22142,6 @@ PlatformPointer
 PlatformPointer
     api2wire_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
         RwLockBoxHelloTraitTwinNormal raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.api2wire(move: false);
-}
-
-PlatformPointer
-    api2wire_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
-        RwLockBoxHelloTraitTwinRustAsync raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire(move: false);
 }
@@ -23260,13 +22161,6 @@ PlatformPointer
 }
 
 PlatformPointer
-    api2wire_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
-        RwLockNonCloneSimpleTwinRustAsync raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.api2wire(move: false);
-}
-
-PlatformPointer
     api2wire_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
         RwLockNonCloneSimpleTwinSync raw) {
   // ignore: invalid_use_of_internal_member
@@ -23276,13 +22170,6 @@ PlatformPointer
 PlatformPointer
     api2wire_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
         RwLockStructWithGoodAndOpaqueFieldTwinNormal raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.api2wire(move: false);
-}
-
-PlatformPointer
-    api2wire_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
-        RwLockStructWithGoodAndOpaqueFieldTwinRustAsync raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire(move: false);
 }
@@ -23355,12 +22242,6 @@ PlatformPointer api2wire_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
   return raw.api2wire();
 }
 
-PlatformPointer api2wire_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(
-    RwLockBoxHelloTraitTwinRustAsync raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.api2wire();
-}
-
 PlatformPointer api2wire_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
     RwLockBoxHelloTraitTwinSync raw) {
   // ignore: invalid_use_of_internal_member
@@ -23370,13 +22251,6 @@ PlatformPointer api2wire_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
 PlatformPointer
     api2wire_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
         RwLockBoxMyTraitTwinNormal raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.api2wire();
-}
-
-PlatformPointer
-    api2wire_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(
-        RwLockBoxMyTraitTwinRustAsync raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire();
 }
@@ -23393,12 +22267,6 @@ PlatformPointer api2wire_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
   return raw.api2wire();
 }
 
-PlatformPointer api2wire_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(
-    RwLockNonCloneSimpleTwinRustAsync raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.api2wire();
-}
-
 PlatformPointer api2wire_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
     RwLockNonCloneSimpleTwinSync raw) {
   // ignore: invalid_use_of_internal_member
@@ -23408,13 +22276,6 @@ PlatformPointer api2wire_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
 PlatformPointer
     api2wire_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
         RwLockStructWithGoodAndOpaqueFieldTwinNormal raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.api2wire();
-}
-
-PlatformPointer
-    api2wire_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(
-        RwLockStructWithGoodAndOpaqueFieldTwinRustAsync raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire();
 }
