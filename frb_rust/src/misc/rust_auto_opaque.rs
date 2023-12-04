@@ -8,7 +8,7 @@ impl<T: DartSafe> RustOpaque<RwLock<T>> {
             .context("Cannot convert RustOpaque to inner value. This is probably because you are having more than one references to it.")
     }
 
-    pub fn rust_auto_opaque_wire2api_ref(&self) -> &Result<T> {
+    pub fn rust_auto_opaque_wire2api_ref(&self) -> Result<&T> {
         Ok(&self)
     }
 }
