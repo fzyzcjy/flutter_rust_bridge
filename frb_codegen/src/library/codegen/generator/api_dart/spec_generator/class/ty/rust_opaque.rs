@@ -57,7 +57,7 @@ fn compute_api_method_query_name(
     context: ApiDartGeneratorContext,
 ) -> String {
     lazy_static! {
-        static ref FILTER: Regex = Regex::new(r"^std::sync::RwLock<(.*)>$").unwrap();
+        static ref FILTER: Regex = Regex::new(r"^(std::sync|tokio::sync)::RwLock<(.*)>$").unwrap();
     }
 
     let inner_dart_api_type: String = ir.inner.rust_api_type();
