@@ -44,8 +44,8 @@ pub fn rust_auto_opaque_two_args_twin_normal(
     a: NonCloneSimpleTwinNormal,
     b: NonCloneSimpleTwinNormal,
 ) {
-    assert_eq!(a.inner, 42);
-    assert_eq!(b.inner, 42);
+    assert_eq!(a.inner, 10);
+    assert_eq!(b.inner, 20);
 }
 
 pub fn rust_auto_opaque_normal_and_opaque_arg_twin_normal(a: NonCloneSimpleTwinNormal, b: String) {

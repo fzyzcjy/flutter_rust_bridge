@@ -146,5 +146,32 @@ Future<void> main({bool skipRustLibInit = false}) async {
     });
   });
 
-  // TODO other apis
+  group('with other args', () {
+    test('call rustAutoOpaqueArgOwnAndReturnOwnTwinNormal', () async {
+      final a = await rustAutoOpaqueReturnOwnTwinNormal(initial: 42);
+
+      final b = await rustAutoOpaqueArgOwnAndReturnOwnTwinNormal(arg: a);
+
+      await futurizeVoidTwinNormal(
+          rustAutoOpaqueArgOwnTwinNormal(arg: b, expect: 42));
+    });
+
+    test('call rustAutoOpaqueTwoArgsTwinNormal', () async {
+      final a = await rustAutoOpaqueReturnOwnTwinNormal(initial: 10);
+      final b = await rustAutoOpaqueReturnOwnTwinNormal(initial: 20);
+
+      await futurizeVoidTwinNormal(rustAutoOpaqueTwoArgsTwinNormal(a: a, b: b));
+    });
+
+    test('call rustAutoOpaqueNormalAndOpaqueArgTwinNormal', () async {
+      final a = await rustAutoOpaqueReturnOwnTwinNormal(initial: 42);
+
+      await futurizeVoidTwinNormal(
+          rustAutoOpaqueNormalAndOpaqueArgTwinNormal(a: a, b: 'hello'));
+    });
+  });
+
+  group('TODO', () {
+    TODO;
+  });
 }
