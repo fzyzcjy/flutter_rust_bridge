@@ -32,7 +32,7 @@ pub(super) fn generalized_rust_opaque_generate_class(
     let rust_api_type = ir.rust_api_type();
     let dart_api_type = ApiDartGenerator::new(ir, context).dart_api_type();
 
-    let methods = generate_api_methods(context.ir_pack, &dart_api_type, context).join("\n");
+    let methods = generate_api_methods(&dart_api_type, context).join("\n");
 
     ApiDartGeneratedClass {
         namespace,

@@ -15,7 +15,7 @@ impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
         let comments = generate_dart_comments(&src.comments);
         let metadata = generate_dart_metadata(&src.dart_metadata);
 
-        let methods = generate_api_methods(self.context.ir_pack, &src.name, self.context);
+        let methods = generate_api_methods(&src.name, self.context);
 
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),

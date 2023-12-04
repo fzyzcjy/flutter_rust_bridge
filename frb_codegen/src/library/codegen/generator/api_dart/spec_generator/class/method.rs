@@ -16,13 +16,10 @@ use convert_case::{Case, Casing};
 use itertools::Itertools;
 
 pub(crate) fn generate_api_methods(
-    ir_pack: &IrPack,
     generalized_class_name: &NamespacedName,
     context: ApiDartGeneratorContext,
 ) -> Vec<String> {
-    ir_pack
-        .funcs
-        .iter()
+    (context.ir_pack.funcs.iter())
         .filter(|f| {
             matches!(&f.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod{ enum_or_struct_name, .. }) if enum_or_struct_name == generalized_class_name)
         })
