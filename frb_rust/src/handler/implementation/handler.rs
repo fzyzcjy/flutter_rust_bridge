@@ -14,7 +14,6 @@ use std::future::Future;
 use std::panic;
 use std::panic::UnwindSafe;
 
-// TODO the name: DefaultHandler vs SimpleHandler?
 /// The default handler used by the generated code.
 pub type DefaultHandler<TP> =
     SimpleHandler<SimpleExecutor<ReportDartErrorHandler, TP>, ReportDartErrorHandler>;

@@ -10,7 +10,5 @@ pub use web::*;
 
 #[no_mangle]
 pub extern "C" fn initialize_frb_rust() {
-    // TODO
-    // #[cfg(feature = "rust-async")]
-    // crate::rust_async::init();
+    // Nothing yet
 }
