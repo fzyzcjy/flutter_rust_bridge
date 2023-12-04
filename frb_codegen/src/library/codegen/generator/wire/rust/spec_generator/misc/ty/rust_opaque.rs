@@ -4,13 +4,7 @@ use crate::codegen::ir::namespace::Namespace;
 
 impl<'a> WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'a> {
     fn generate_imports(&self) -> Option<Vec<String>> {
-        generalized_rust_opaque_generate_imports(&self.ir.namespace)
+        // To expose the `pub use`s inside that file
+        Some(vec![format!("use {}::*;", self.ir.namespace.joined_path)])
     }
-}
-
-pub(super) fn generalized_rust_opaque_generate_imports(
-    namespace: &Namespace,
-) -> Option<Vec<String>> {
-    // To expose the `pub use`s inside that file
-    Some(vec![format!("use {}::*;", namespace.joined_path)])
 }

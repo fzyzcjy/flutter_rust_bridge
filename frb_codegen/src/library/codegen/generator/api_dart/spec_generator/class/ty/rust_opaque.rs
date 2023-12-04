@@ -11,39 +11,24 @@ use IrType::RustOpaque;
 
 impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
-        Some(generalized_rust_opaque_generate_class(
-            self.ir.clone().into(),
-            self.ir.namespace.clone(),
+        let dart_entrypoint_class_name = &self.context.config.dart_entrypoint_class_name;
+        let dart_api_instance = format!("{dart_entrypoint_class_name}.instance.api");
+
+        let rust_api_type = self.ir.rust_api_type();
+        let dart_api_type = ApiDartGenerator::new(self.ir.clone(), self.context).dart_api_type();
+
+        let methods = generate_api_methods(
+            &NamespacedName::new(self.ir.namespace.clone(), rust_api_type.clone()),
             self.context,
-            "RustOpaque",
-        ))
-    }
-}
+        )
+        .join("\n");
 
-pub(super) fn generalized_rust_opaque_generate_class(
-    ir: IrType,
-    namespace: Namespace,
-    context: ApiDartGeneratorContext,
-    base_class: &str,
-) -> ApiDartGeneratedClass {
-    let dart_entrypoint_class_name = &context.config.dart_entrypoint_class_name;
-    let dart_api_instance = format!("{dart_entrypoint_class_name}.instance.api");
-
-    let rust_api_type = ir.rust_api_type();
-    let dart_api_type = ApiDartGenerator::new(ir, context).dart_api_type();
-
-    let methods = generate_api_methods(
-        &NamespacedName::new(namespace.clone(), rust_api_type.clone()),
-        context,
-    )
-    .join("\n");
-
-    ApiDartGeneratedClass {
-        namespace,
-        code: format!(
-            "
+        Some(ApiDartGeneratedClass {
+            namespace: self.ir.namespace.clone(),
+            code: format!(
+                "
             // Rust type: {rust_api_type}
-            @sealed class {dart_api_type} extends {base_class} {{
+            @sealed class {dart_api_type} extends RustOpaque {{
                 {dart_api_type}.fromWire(dynamic wire): super.fromWire(wire, _kStaticData);
 
                 static final _kStaticData = RustArcStaticData(
@@ -54,8 +39,9 @@ pub(super) fn generalized_rust_opaque_generate_class(
 
                 {methods}
             }}"
-        ),
-        needs_freezed: false,
-        ..Default::default()
+            ),
+            needs_freezed: false,
+            ..Default::default()
+        })
     }
 }
