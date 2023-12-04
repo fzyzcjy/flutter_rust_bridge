@@ -58,41 +58,39 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool> Executor for SimpleExecutor<EH
 
         let TaskInfo { port, mode, .. } = task_info;
 
-        self.thread_pool.execute(transfer!(|port: Option<MessagePort>| {
-            let port2 = port.as_ref().cloned();
-            let thread_result = panic::catch_unwind(move || {
-                let port2 = port2.expect("(worker) thread");
-                #[allow(clippy::clone_on_copy)]
+        self.thread_pool
+            .execute(transfer!(|port: Option<MessagePort>| {
+                let port2 = port.as_ref().cloned();
+                let thread_result = panic::catch_unwind(move || {
+                    let port2 = port2.expect("(worker) thread");
+                    #[allow(clippy::clone_on_copy)]
                     let sender = Rust2DartSender::new(Channel::new(port2.clone()));
 
-                let task_context = TaskContext::new(TaskRust2DartContext::new(sender.clone()));
-                let ret = task(task_context)
-                    .map(|e| e.into_into_dart().into_dart());
+                    let task_context = TaskContext::new(TaskRust2DartContext::new(sender.clone()));
+                    let ret = task(task_context).map(|e| e.into_into_dart().into_dart());
 
-                match ret {
-                    Ok(result) => {
-                        match mode {
-                            FfiCallMode::Normal => {
-                                sender.send(Api2Wire::success(result));
-                            }
-                            FfiCallMode::Stream => {
-                                // nothing - ignore the return value of a Stream-typed function
-                            }
-                            FfiCallMode::Sync => {
-                                unreachable!("FfiCallMode::Sync should not call execute, please call execute_sync instead")
+                    match ret {
+                        Ok(result) => {
+                            match mode {
+                                FfiCallMode::Normal => {
+                                    sender.send(Api2Wire::success(result));
+                                }
+                                FfiCallMode::Stream => {
+                                    // nothing - ignore the return value of a Stream-typed function
+                                }
+                                _ => unreachable!(),
                             }
                         }
-                    }
-                    Err(error) => {
-                        eh2.handle_error(port2, Error::CustomError(Box::new(error)));
-                    }
-                };
-            });
+                        Err(error) => {
+                            eh2.handle_error(port2, Error::CustomError(Box::new(error)));
+                        }
+                    };
+                });
 
-            if let Err(error) = thread_result {
-                eh.handle_error(port.expect("(worker) eh"), Error::Panic(error));
-            }
-        }));
+                if let Err(error) = thread_result {
+                    eh.handle_error(port.expect("(worker) eh"), Error::Panic(error));
+                }
+            }));
     }
 
     fn execute_sync<SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
@@ -137,7 +135,7 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool> Executor for SimpleExecutor<EH
             let thread_result = async {
                 let port2 = port2.expect("(worker) thread");
                 #[allow(clippy::clone_on_copy)]
-                    let sender = Rust2DartSender::new(Channel::new(port2.clone()));
+                let sender = Rust2DartSender::new(Channel::new(port2.clone()));
 
                 let task_context = TaskContext::new(TaskRust2DartContext::new(sender.clone()));
                 let ret = task(task_context)
@@ -153,16 +151,16 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool> Executor for SimpleExecutor<EH
                             FfiCallMode::Stream => {
                                 // nothing - ignore the return value of a Stream-typed function
                             }
-                            FfiCallMode::Sync => {
-                                unreachable!("FfiCallMode::Sync should not call execute, please call execute_sync instead")
-                            }
+                            _ => unreachable!(),
                         }
                     }
                     Err(error) => {
                         eh2.handle_error(port2, Error::CustomError(Box::new(error)));
                     }
                 };
-            }.catch_unwind().await;
+            }
+            .catch_unwind()
+            .await;
 
             if let Err(error) = thread_result {
                 eh.handle_error(port.expect("(worker) eh"), Error::Panic(error));
