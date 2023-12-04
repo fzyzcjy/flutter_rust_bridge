@@ -213,7 +213,8 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_params: Vec<St
     }
 
     if !func.fallible() {
-        let error_type = if matches!(&func.output, IrType::RustAutoOpaque(_)) {
+        let error_type = if (func.inputs.iter()).any(|x| matches!(x.ty, IrType::RustAutoOpaque(_)))
+        {
             "_"
         } else {
             "()"
