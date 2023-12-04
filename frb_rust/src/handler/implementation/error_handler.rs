@@ -1,4 +1,4 @@
-use crate::generalized_isolate::{Channel, IntoDart};
+use crate::generalized_isolate::{channel_to_handle, handle_to_channel, Channel, IntoDart};
 use crate::handler::error::Error;
 use crate::handler::error_handler::ErrorHandler;
 use crate::platform_types::{MessagePort, WireSyncReturn};
@@ -17,7 +17,12 @@ impl ErrorHandler for ReportDartErrorHandler {
             e @ Error::CustomError(_) => Api2Wire::error(e),
             e @ Error::Panic(_) => Api2Wire::panic(e),
         };
-        Rust2DartSender::new(Channel::new(port)).send(msg);
+
+        log::warn!("hack!!!!!!!!!");
+        // TODO HACK!!!
+        let ch = Channel::new(port);
+        let ch = handle_to_channel(&channel_to_handle(&ch));
+        Rust2DartSender::new(ch).send(msg);
     }
 
     fn handle_error_sync(&self, error: Error) -> WireSyncReturnSrc {
