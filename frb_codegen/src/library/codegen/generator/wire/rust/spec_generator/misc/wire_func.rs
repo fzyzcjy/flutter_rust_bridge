@@ -68,13 +68,7 @@ fn generate_inner_func_params(
     let mut ans = func
         .inputs
         .iter()
-        .map(|field| {
-            let mut ans = format!("api_{}", field.name.rust_style());
-            if matches!(&field.ty, IrType::RustAutoOpaque(_)) {
-                ans = format!("{ans}.rust_auto_opaque_wire2api()?");
-            }
-            ans
-        })
+        .map(|field| format!("api_{}", field.name.rust_style()))
         .collect_vec();
 
     if let IrFuncMode::Stream { argument_index } = func.mode {
