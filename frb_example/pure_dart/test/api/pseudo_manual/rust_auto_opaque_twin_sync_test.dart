@@ -191,11 +191,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   group('trait object', () {
     Future<void> _body(RwLockBoxHelloTraitTwinSync obj, String expect) async {
-      await rustAutoOpaqueTraitObjectArgBorrowTwinSync(
-          arg: obj, expect: expect);
-      await rustAutoOpaqueTraitObjectArgMutBorrowTwinSync(
-          arg: obj, expect: expect);
-      await rustAutoOpaqueTraitObjectArgOwnTwinSync(arg: obj, expect: expect);
+      await futurizeVoidTwinSync(
+          rustAutoOpaqueTraitObjectArgBorrowTwinSync(arg: obj, expect: expect));
+      await futurizeVoidTwinSync(rustAutoOpaqueTraitObjectArgMutBorrowTwinSync(
+          arg: obj, expect: expect));
+      await futurizeVoidTwinSync(
+          rustAutoOpaqueTraitObjectArgOwnTwinSync(arg: obj, expect: expect));
     }
 
     test(
