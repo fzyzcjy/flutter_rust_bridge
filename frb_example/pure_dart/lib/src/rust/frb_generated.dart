@@ -21050,34 +21050,34 @@ PlatformPointer
     api2wire_Auto_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
         RwLockBoxFnStringString raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.api2wire();
+  return raw.api2wire(move: true);
 }
 
 PlatformPointer
     api2wire_Auto_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
         RwLockBoxHelloTraitTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.api2wire();
+  return raw.api2wire(move: false);
 }
 
 PlatformPointer
     api2wire_Auto_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
         RwLockBoxMyTraitTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.api2wire();
+  return raw.api2wire(move: true);
 }
 
 PlatformPointer api2wire_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
     RwLockNonCloneSimpleTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.api2wire();
+  return raw.api2wire(move: false);
 }
 
 PlatformPointer
     api2wire_Auto_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
         RwLockStructWithGoodAndOpaqueFieldTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.api2wire();
+  return raw.api2wire(move: false);
 }
 
 PlatformPointer api2wire_RustOpaque_MutexHideData(MutexHideData raw) {
