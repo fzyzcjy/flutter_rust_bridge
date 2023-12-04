@@ -65,7 +65,12 @@ S _transformRust2DartMessage<S, E extends Object>(List<dynamic> raw,
 
     case _Rust2DartAction.error:
       assert(raw.length == 2);
-      throw parseErrorData!(raw[1]);
+      if (parseErrorData == null) {
+        throw Exception(
+            'transformRust2DartMessage received error message, but no parseErrorData to parse it. '
+            'Raw data: $raw');
+      }
+      throw parseErrorData(raw[1]);
 
     case _Rust2DartAction.panic:
       assert(raw.length == 2);
