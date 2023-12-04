@@ -4,7 +4,7 @@ use crate::platform_types::MessagePort;
 use wasm_bindgen::JsCast;
 use web_sys::BroadcastChannel;
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct Channel {
     port: MessagePort,
 }

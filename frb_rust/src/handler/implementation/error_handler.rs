@@ -18,11 +18,13 @@ impl ErrorHandler for ReportDartErrorHandler {
             e @ Error::Panic(_) => Api2Wire::panic(e),
         };
 
-        log::warn!("hack!!!!!!!!!");
         // TODO HACK!!!
-        let ch = Channel::new(port);
-        let ch = handle_to_channel(&channel_to_handle(&ch));
-        Rust2DartSender::new(ch).send(msg);
+        log::warn!("hack!!!!!!!!!");
+        crate::console_error!("hi port={:?}", port);
+        let ch1 = Channel::new(port);
+        let ch2 = handle_to_channel(&channel_to_handle(&ch1));
+        crate::console_error!("hi (old)ch1={:?} (new)ch2={:?}", ch1, ch2);
+        Rust2DartSender::new(ch2).send(msg);
     }
 
     fn handle_error_sync(&self, error: Error) -> WireSyncReturnSrc {
