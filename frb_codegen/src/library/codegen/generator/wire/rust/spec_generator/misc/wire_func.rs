@@ -15,6 +15,7 @@ use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::spec_generator::rust2dart::ty::WireRustGeneratorRust2DartTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use crate::misc::consts::HANDLER_NAME;
+use convert_case::{Case, Casing};
 use itertools::Itertools;
 use std::convert::TryInto;
 
@@ -168,7 +169,20 @@ fn generate_code_wire2api(func: &IrFunc) -> String {
 }
 
 fn generate_code_inner_wire2api(func: &IrFunc) -> String {
-    TODO;
+    func.inputs
+        .iter()
+        .filter_map(|field| {
+            if let IrType::RustAutoOpaque(o) = &field.ty {
+                let mode = o.ownership_mode.to_string().to_case(Case::Snake);
+                Some(format!(
+                    "let api_{name} = api_{name}.rust_auto_opaque_wire2api_{mode}()?;\n",
+                    name = field.name.rust_style()
+                ))
+            } else {
+                None
+            }
+        })
+        .join("")
 }
 
 fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_params: Vec<String>) -> String {
