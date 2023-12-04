@@ -24,7 +24,7 @@ pub(crate) fn generate_api_methods(
         .funcs
         .iter()
         .filter(|f| {
-            matches!(&f.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod{ enum_or_struct_name, .. }) if enum_or_struct_name == &generalized_class_name)
+            matches!(&f.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod{ enum_or_struct_name, .. }) if enum_or_struct_name == generalized_class_name)
         })
         .map(|func| generate_api_method(func, &generalized_class_name.name, context))
         .collect_vec()
