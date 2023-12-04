@@ -3809,9 +3809,17 @@ void rust_arc_increment_strong_count_RustOpaque_non_send_hide_data(const void *p
 
 void rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data(const void *ptr);
 
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(const void *ptr);
+
 void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync(const void *ptr);
 
 void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(const void *ptr);
 
@@ -3821,6 +3829,10 @@ void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNo
 
 void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(const void *ptr);
 
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(const void *ptr);
+
 void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(const void *ptr);
@@ -3828,6 +3840,10 @@ void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSy
 void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync(const void *ptr);
 
 void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(const void *ptr);
 
@@ -3837,29 +3853,13 @@ void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOp
 
 void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(const void *ptr);
 
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(const void *ptr);
+
 void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockBoxdynHelloTraitTwinRustAsync(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockBoxdynHelloTraitTwinRustAsync(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockNonCloneSimpleTwinRustAsync(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockNonCloneSimpleTwinRustAsync(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync(const void *ptr);
 
 union AbcTwinNormalKind *inflate_AbcTwinNormal_A(void);
 
@@ -4365,19 +4365,19 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_i_32);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_non_clone_data);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync);
-    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe);
-    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockBoxdynHelloTraitTwinRustAsync);
-    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync);
-    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockNonCloneSimpleTwinRustAsync);
-    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_tokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_MutexHideData);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_RwLockHideData);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal);
@@ -4389,19 +4389,19 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_i_32);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_non_clone_data);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_non_send_hide_data);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinRustAsync);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinRustAsyncSendSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinRustAsync);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync);
-    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe);
-    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockBoxdynHelloTraitTwinRustAsync);
-    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockBoxdynMyTraitTwinRustAsyncSendSync);
-    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockNonCloneSimpleTwinRustAsync);
-    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_tokiosyncRwLockStructWithGoodAndOpaqueFieldTwinRustAsync);
     dummy_var ^= ((int64_t) (void*) store_dart_post_cobject);
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinNormal_concatenate_static_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinNormal_concatenate_twin_normal);
