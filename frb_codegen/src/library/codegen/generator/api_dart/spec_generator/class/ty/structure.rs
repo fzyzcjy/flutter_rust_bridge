@@ -1,4 +1,4 @@
-use crate::codegen::generator::api_dart::spec_generator::class::ty::structure_method::generate_api_method;
+use crate::codegen::generator::api_dart::spec_generator::class::method::generate_api_method;
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
 use crate::codegen::generator::api_dart::spec_generator::misc::{

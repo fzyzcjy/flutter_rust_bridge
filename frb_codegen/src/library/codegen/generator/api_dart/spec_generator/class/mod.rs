@@ -3,6 +3,7 @@ use crate::utils::basic_code::DartBasicHeaderCode;
 use serde::Serialize;
 
 pub(crate) mod field;
+mod method;
 pub(crate) mod ty;
 
 #[derive(Debug, Serialize, Default)]

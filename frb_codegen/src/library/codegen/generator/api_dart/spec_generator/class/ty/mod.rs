@@ -10,7 +10,6 @@ pub(crate) mod rust_auto_opaque;
 pub(crate) mod rust_opaque;
 pub(crate) mod structure;
 mod structure_freezed;
-mod structure_method;
 mod structure_non_freezed;
 
 #[enum_dispatch]
