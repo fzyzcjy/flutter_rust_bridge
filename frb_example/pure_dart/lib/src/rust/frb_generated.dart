@@ -15580,7 +15580,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> rustAutoOpaqueCallableArg(
       {required RwLockBoxFnStringString arg, dynamic hint}) {
     var arg0 =
-        api2wire_Auto_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafe(
+        api2wire_Auto_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
             arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_rust_auto_opaque_callable_arg(port_, arg0),
@@ -15603,7 +15603,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_rust_auto_opaque_callable_return(port_),
       parseSuccessData:
-          _wire2api_Auto_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafe,
+          _wire2api_Auto_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueCallableReturnConstMeta,
       argValues: [],
@@ -16843,11 +16843,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_RwLockBoxFnStringString => wire
-          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafe;
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe;
 
   RustArcDecrementStrongCountFnType
       get rust_arc_decrement_strong_count_RwLockBoxFnStringString => wire
-          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafe;
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_RwLockBoxHelloTraitTwinNormal => wire
@@ -16878,7 +16878,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   RwLockBoxFnStringString
-      _wire2api_Auto_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafe(
+      _wire2api_Auto_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
           dynamic raw) {
     return RwLockBoxFnStringString.fromWire(raw);
   }
@@ -16987,7 +16987,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   RwLockBoxFnStringString
-      _wire2api_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafe(
+      _wire2api_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
           dynamic raw) {
     return RwLockBoxFnStringString.fromWire(raw);
   }
@@ -20555,7 +20555,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 // Section: api2wire_funcs
 
 PlatformPointer
-    api2wire_Auto_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafe(
+    api2wire_Auto_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
         RwLockBoxFnStringString raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire();
@@ -20630,7 +20630,7 @@ PlatformPointer api2wire_RustOpaque_non_send_hide_data(NonSendHideData raw) {
 }
 
 PlatformPointer
-    api2wire_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafe(
+    api2wire_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
         RwLockBoxFnStringString raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire();

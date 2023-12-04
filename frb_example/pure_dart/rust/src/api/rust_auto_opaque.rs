@@ -1,5 +1,5 @@
 use flutter_rust_bridge::{frb, DartSafe};
-pub use std::panic::UnwindSafe;
+pub use std::panic::{RefUnwindSafe, UnwindSafe};
 
 // TODO auto determine it is opaque or not later
 #[frb(opaque)]
@@ -67,13 +67,13 @@ pub fn rust_auto_opaque_plus_sign_return() -> Box<dyn MyTraitTwinNormal + Send +
 }
 
 pub fn rust_auto_opaque_callable_arg(
-    arg: Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe>,
+    arg: Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>,
 ) {
     assert_eq!(&arg("hello".into()), "hellohello");
 }
 
-pub fn rust_auto_opaque_callable_return() -> Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe>
-{
+pub fn rust_auto_opaque_callable_return(
+) -> Box<dyn Fn(String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe> {
     Box::new(|x: String| x.repeat(2))
 }
 
