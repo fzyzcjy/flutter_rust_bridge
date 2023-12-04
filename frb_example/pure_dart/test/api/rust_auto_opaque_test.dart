@@ -204,15 +204,37 @@ Future<void> main({bool skipRustLibInit = false}) async {
             await rustAutoOpaqueTraitObjectReturnOwnTwoTwinNormal(), 'B'));
   });
 
-  group('static method', () {
-    TODO;
+  test('static method', () async {
+    final obj =
+        await RwLockNonCloneSimpleTwinNormal.staticMethodReturnOwnTwinNormal();
+    await futurizeVoidTwinNormal(
+        RwLockNonCloneSimpleTwinNormal.staticMethodArgBorrowTwinNormal(
+            arg: obj));
+    await futurizeVoidTwinNormal(
+        RwLockNonCloneSimpleTwinNormal.staticMethodArgMutBorrowTwinNormal(
+            arg: obj));
+    await futurizeVoidTwinNormal(
+        RwLockNonCloneSimpleTwinNormal.staticMethodArgOwnTwinNormal(arg: obj));
   });
 
-  group('instance method', () {
-    TODO;
+  test('instance method', () async {
+    final obj = await RwLockNonCloneSimpleTwinNormal.newTwinNormal();
+    await futurizeVoidTwinNormal(obj.instanceMethodArgBorrowTwinNormal());
+    await futurizeVoidTwinNormal(obj.instanceMethodArgMutBorrowTwinNormal());
+    await futurizeVoidTwinNormal(obj.instanceMethodArgOwnTwinNormal());
+    await futurizeVoidTwinNormal(obj.instanceMethodReturnOwnTwinNormal());
   });
 
-  group('types with both encodable and opaque fields', () {
-    TODO;
+  test('types with both encodable and opaque fields', () async {
+    final obj =
+        await rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinNormal();
+    await futurizeVoidTwinNormal(
+        rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinNormal(
+            arg: obj));
+    await futurizeVoidTwinNormal(
+        rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinNormal(
+            arg: obj));
+    await futurizeVoidTwinNormal(
+        rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinNormal(arg: obj));
   });
 }

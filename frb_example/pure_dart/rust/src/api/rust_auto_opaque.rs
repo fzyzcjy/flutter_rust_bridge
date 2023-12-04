@@ -158,7 +158,6 @@ impl NonCloneSimpleTwinNormal {
 
     pub fn static_method_arg_mut_borrow_twin_normal(arg: &mut NonCloneSimpleTwinNormal) {
         assert_eq!(arg.inner, 42);
-        arg.inner += 1;
     }
 
     pub fn static_method_return_own_twin_normal() -> NonCloneSimpleTwinNormal {
@@ -189,7 +188,6 @@ impl NonCloneSimpleTwinNormal {
 
     pub fn instance_method_arg_mut_borrow_twin_normal(&mut self) {
         assert_eq!(self.inner, 42);
-        self.inner += 1;
     }
 
     pub fn instance_method_return_own_twin_normal(&self) -> NonCloneSimpleTwinNormal {
@@ -224,8 +222,6 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_no
 ) {
     assert_eq!(&arg.good, "hello");
     assert_eq!(arg.opaque.inner, 42);
-    arg.good += "world";
-    arg.opaque.inner += 1;
 }
 
 pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal(
