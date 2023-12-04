@@ -264,11 +264,9 @@ fn generate_code_closure(
     code_call_inner_func_result: &str,
 ) -> String {
     match func.mode {
-        IrFuncMode::Sync => format!(
-            "{code_wire2api}
-            {code_inner_wire2api}
-            {code_call_inner_func_result}"
-        ),
+        IrFuncMode::Sync => {
+            format!("{code_wire2api}{code_inner_wire2api}{code_call_inner_func_result}")
+        }
         IrFuncMode::Normal | IrFuncMode::Stream { .. } => {
             let maybe_async_move = if func.rust_async { "async move" } else { "" };
             format!("{code_wire2api} move |context| {maybe_async_move} {{ {code_inner_wire2api} {code_call_inner_func_result} }}")
