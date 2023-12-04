@@ -1,6 +1,6 @@
 use crate::{DartSafe, RustOpaque};
 use anyhow::{Context, Result};
-use parking_lot::RwLock;
+use std::sync::RwLock;
 
 impl<T: DartSafe> RustOpaque<RwLock<T>> {
     pub fn rust_auto_opaque_wire2api_owned(self) -> Result<T> {
