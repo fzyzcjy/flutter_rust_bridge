@@ -1,3 +1,4 @@
+use crate::generalized_isolate::PortLike;
 use crate::generalized_isolate::{channel_to_handle, handle_to_channel, Channel, IntoDart};
 use crate::handler::error::Error;
 use crate::handler::error_handler::ErrorHandler;
@@ -22,8 +23,17 @@ impl ErrorHandler for ReportDartErrorHandler {
         log::warn!("hack!!!!!!!!!");
         crate::console_error!("hi port={:?}", port);
         let ch1 = Channel::new(port);
-        let ch2 = handle_to_channel(&channel_to_handle(&ch1));
-        crate::console_error!("hi (old)ch1={:?} (new)ch2={:?}", ch1, ch2);
+        // let ch2 = handle_to_channel(&channel_to_handle(&ch1));
+        let ch2 = Channel::new(PortLike::broadcast(
+            &ch1.broadcast_name().expect("Not a BroadcastChannel"),
+        ));
+        crate::console_error!(
+            "hi (old)ch1={:?} (new)ch2={:?} ch1.name={:?} ch2.name={:?}",
+            ch1,
+            ch2,
+            ch1.broadcast_name(),
+            ch2.broadcast_name()
+        );
         Rust2DartSender::new(ch2).send(msg);
     }
 
