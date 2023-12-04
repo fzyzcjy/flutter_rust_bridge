@@ -3009,50 +3009,7 @@ void wire_rust_auto_opaque_arg_mut_borrow(int64_t port_, const void *arg);
 
 void wire_rust_auto_opaque_arg_own(int64_t port_, const void *arg);
 
-void wire_rust_auto_opaque_arg_own_and_return_own(int64_t port_, const void *arg);
-
-void wire_rust_auto_opaque_callable_arg(int64_t port_, const void *arg);
-
-void wire_rust_auto_opaque_callable_return(int64_t port_);
-
-void wire_rust_auto_opaque_normal_and_opaque_arg(int64_t port_,
-                                                 const void *a,
-                                                 struct wire_list_prim_u_8 *b);
-
-void wire_rust_auto_opaque_plus_sign_arg(int64_t port_, const void *arg);
-
-void wire_rust_auto_opaque_plus_sign_return(int64_t port_);
-
 void wire_rust_auto_opaque_return_own(int64_t port_);
-
-void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(int64_t port_,
-                                                                        const void *arg);
-
-void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(int64_t port_,
-                                                                            const void *arg);
-
-void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(int64_t port_,
-                                                                     const void *arg);
-
-void wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own(int64_t port_);
-
-void wire_rust_auto_opaque_trait_object_arg_borrow(int64_t port_,
-                                                   const void *arg,
-                                                   struct wire_list_prim_u_8 *expect);
-
-void wire_rust_auto_opaque_trait_object_arg_mut_borrow(int64_t port_,
-                                                       const void *arg,
-                                                       struct wire_list_prim_u_8 *expect);
-
-void wire_rust_auto_opaque_trait_object_arg_own(int64_t port_,
-                                                const void *arg,
-                                                struct wire_list_prim_u_8 *expect);
-
-void wire_rust_auto_opaque_trait_object_return_own_one(int64_t port_);
-
-void wire_rust_auto_opaque_trait_object_return_own_two(int64_t port_);
-
-void wire_rust_auto_opaque_two_args(int64_t port_, const void *a, const void *b);
 
 void wire_create_array_opaque_enum_twin_normal(int64_t port_);
 
@@ -3586,10 +3543,6 @@ struct wire_list_weekdays_twin_rust_async *new_list_weekdays_twin_rust_async(int
 
 struct wire_list_weekdays_twin_sync *new_list_weekdays_twin_sync(int32_t len);
 
-void rust_arc_increment_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(const void *ptr);
-
 void rust_arc_increment_strong_count_RustOpaque_MutexHideData(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_MutexHideData(const void *ptr);
@@ -3602,10 +3555,6 @@ void rust_arc_increment_strong_count_RustOpaque_RwLockHideData(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_RwLockHideData(const void *ptr);
 
-void rust_arc_increment_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(const void *ptr);
-
 void rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormal(const void *ptr);
@@ -3617,14 +3566,6 @@ void rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync(co
 void rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSync(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(const void *ptr);
 
 void rust_arc_increment_strong_count_RustOpaque_frb_opaque_return(const void *ptr);
 
@@ -4143,32 +4084,24 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_list_weekdays_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_list_weekdays_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) new_list_weekdays_twin_sync);
-    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_MutexHideData);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_NonCloneSimpleTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_RwLockHideData);
-    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync);
-    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormal);
-    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_return);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_hide_data);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_i_32);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_non_clone_data);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data);
-    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_MutexHideData);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_NonCloneSimpleTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_RwLockHideData);
-    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSync);
-    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_box_dynHelloTraitTwinNormal);
-    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_frb_opaque_return);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_frb_opaque_sync_return);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_hide_data);
@@ -4767,23 +4700,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_borrow);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_mut_borrow);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_own);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_own_and_return_own);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_callable_arg);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_callable_return);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_normal_and_opaque_arg);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_plus_sign_arg);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_plus_sign_return);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_return_own);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_borrow);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_mut_borrow);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_own);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_return_own_one);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_return_own_two);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_two_args);
     dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque_twin_sync);
