@@ -40,14 +40,18 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
     fn parse_rust_auto_opaque(&mut self, ty: &IrType) -> IrType {
         let (ownership_mode, inner) = match ty {
-            IrType::Ownership(o) => (o.mode.clone(), o.inner.clone()),
-            _ => (IrTypeOwnershipMode::Owned, Box::new(ty.clone())),
+            IrType::Ownership(o) => (o.mode.clone(), *o.inner.clone()),
+            _ => (IrTypeOwnershipMode::Owned, ty.clone()),
         };
         let new_ir = IrTypeRustAutoOpaque {
             ownership_mode,
             inner: IrTypeRustOpaque {
                 namespace: self.context.initiated_namespace.clone(),
-                inner,
+                inner: Box::new(IrType::Unencodable(IrTypeUnencodable {
+                    // TODO when all usages of a type do not require `&mut`, can drop this Mutex
+                    string: format!("std::sync::RwLock<{}>", inner.rust_api_type()),
+                    segments: vec![],
+                })),
             },
         };
 
