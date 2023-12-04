@@ -24,7 +24,7 @@ pub type DefaultHandler<TP> = SimpleHandler<
 impl<TP: BaseThreadPool> DefaultHandler<TP> {
     pub fn new_simple(thread_pool: TP) -> Self {
         Self::new(
-            SimpleExecutor::new(ReportDartErrorHandler, thread_pool),
+            SimpleExecutor::new(ReportDartErrorHandler, thread_pool, Default::default()),
             ReportDartErrorHandler,
         )
     }
