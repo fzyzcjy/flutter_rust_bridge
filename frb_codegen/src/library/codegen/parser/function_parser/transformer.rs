@@ -10,19 +10,24 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     pub(super) fn transform_fn_info(
         &mut self,
         info: FunctionPartialInfo,
+        rust_async: bool,
         context: &TypeParserParsingContext,
     ) -> FunctionPartialInfo {
         FunctionPartialInfo {
             inputs: (info.inputs.into_iter())
                 .map(|x| IrField {
-                    ty: self.transform_fn_arg_or_output_type_to_rust_auto_opaque(x.ty, context),
+                    ty: self.transform_fn_arg_or_output_type_to_rust_auto_opaque(
+                        x.ty, rust_async, context,
+                    ),
                     ..x
                 })
                 .collect_vec(),
-            ok_output: (info.ok_output)
-                .map(|x| self.transform_fn_arg_or_output_type_to_rust_auto_opaque(x, context)),
-            error_output: (info.error_output)
-                .map(|x| self.transform_fn_arg_or_output_type_to_rust_auto_opaque(x, context)),
+            ok_output: (info.ok_output).map(|x| {
+                self.transform_fn_arg_or_output_type_to_rust_auto_opaque(x, rust_async, context)
+            }),
+            error_output: (info.error_output).map(|x| {
+                self.transform_fn_arg_or_output_type_to_rust_auto_opaque(x, rust_async, context)
+            }),
             mode: info.mode,
         }
     }
@@ -30,9 +35,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     fn transform_fn_arg_or_output_type_to_rust_auto_opaque(
         &mut self,
         ty: IrType,
+        rust_async: bool,
         context: &TypeParserParsingContext,
     ) -> IrType {
         self.type_parser
-            .transform_type_rust_auto_opaque(&ty, context)
+            .transform_type_rust_auto_opaque(&ty, rust_async, context)
     }
 }
