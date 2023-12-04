@@ -47,18 +47,8 @@ impl<E: Executor, H: ErrorHandler> SimpleHandler<E, H> {
     }
 }
 
-impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
-    fn wrap_normal<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(
-        &self,
-        task_info: TaskInfo,
-        prepare: PrepareFn,
-    ) where
-        PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
-        TaskFn: FnOnce(TaskContext) -> Result<TaskRetDirect, Er> + Send + UnwindSafe + 'static,
-        TaskRetDirect: IntoIntoDart<TaskRetData>,
-        TaskRetData: IntoDart,
-        Er: IntoDart + 'static,
-    {
+macro_rules! wrap_simple {
+    ($execute_func:ident) => {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
         // Why do this: As nomicon says, unwind across languages is undefined behavior (UB).
         // Therefore, we should wrap a [catch_unwind] outside of *each and every* line of code
@@ -71,12 +61,28 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
             let task_info2 = task_info.clone();
             if let Err(error) = panic::catch_unwind(move || {
                 let task = prepare();
-                self.executor.execute_normal(task_info2, task);
+                self.executor.$execute_func(task_info2, task);
             }) {
                 self.error_handler
                     .handle_error(task_info.port.unwrap(), Error::Panic(error));
             }
         });
+    };
+}
+
+impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
+    fn wrap_normal<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(
+        &self,
+        task_info: TaskInfo,
+        prepare: PrepareFn,
+    ) where
+        PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
+        TaskFn: FnOnce(TaskContext) -> Result<TaskRetDirect, Er> + Send + UnwindSafe + 'static,
+        TaskRetDirect: IntoIntoDart<TaskRetData>,
+        TaskRetData: IntoDart,
+        Er: IntoDart + 'static,
+    {
+        wrap_simple!(execute_normal)
     }
 
     fn wrap_sync<SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
