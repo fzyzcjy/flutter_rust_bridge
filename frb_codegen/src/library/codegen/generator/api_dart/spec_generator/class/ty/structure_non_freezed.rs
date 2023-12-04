@@ -19,7 +19,7 @@ impl<'a> StructRefApiDartGenerator<'a> {
         methods: &[String],
     ) -> String {
         let field_declarations = self.generate_field_declarations(src);
-        let constructor_params = self.generate_mode_non_freezed_constructor_params(src, methods);
+        let constructor_params = self.generate_mode_non_freezed_constructor_params(src);
 
         let const_capable = src.fields.iter().all(|field| field.is_final);
         let name_str = &self.ir.ident.0.name;
@@ -61,11 +61,7 @@ impl<'a> StructRefApiDartGenerator<'a> {
         field_declarations.join("\n")
     }
 
-    fn generate_mode_non_freezed_constructor_params(
-        &self,
-        src: &IrStruct,
-        _methods: &[String],
-    ) -> String {
+    fn generate_mode_non_freezed_constructor_params(&self, src: &IrStruct) -> String {
         let ans = src
             .fields
             .iter()
