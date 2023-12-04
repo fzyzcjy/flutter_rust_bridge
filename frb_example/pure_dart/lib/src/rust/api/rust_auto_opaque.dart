@@ -169,6 +169,56 @@ class RwLockNonCloneSimpleTwinNormal extends RustOpaque {
     rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinNormalPtr,
   );
+
+  Future<void> instanceMethodArgBorrow({dynamic hint}) =>
+      RustLib.instance.api.nonCloneSimpleTwinNormalInstanceMethodArgBorrow(
+        that: this,
+      );
+
+  Future<void> instanceMethodArgMutBorrow({dynamic hint}) =>
+      RustLib.instance.api.nonCloneSimpleTwinNormalInstanceMethodArgMutBorrow(
+        that: this,
+      );
+
+  Future<void> instanceMethodArgOwn({dynamic hint}) =>
+      RustLib.instance.api.nonCloneSimpleTwinNormalInstanceMethodArgOwn(
+        that: this,
+      );
+
+  Future<RwLockNonCloneSimpleTwinNormal> instanceMethodReturnOwn(
+          {dynamic hint}) =>
+      RustLib.instance.api.nonCloneSimpleTwinNormalInstanceMethodReturnOwn(
+        that: this,
+      );
+
+  /// unnamed constructor
+  static Future<RwLockNonCloneSimpleTwinNormal> newNonCloneSimpleTwinNormal(
+          {dynamic hint}) =>
+      RustLib.instance.api.nonCloneSimpleTwinNormalNew(hint: hint);
+
+  /// named constructor
+  static Future<RwLockNonCloneSimpleTwinNormal> newCustomName({dynamic hint}) =>
+      RustLib.instance.api.nonCloneSimpleTwinNormalNewCustomName(hint: hint);
+
+  static Future<void> staticMethodArgBorrow(
+          {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) =>
+      RustLib.instance.api
+          .nonCloneSimpleTwinNormalStaticMethodArgBorrow(arg: arg, hint: hint);
+
+  static Future<void> staticMethodArgMutBorrow(
+          {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) =>
+      RustLib.instance.api.nonCloneSimpleTwinNormalStaticMethodArgMutBorrow(
+          arg: arg, hint: hint);
+
+  static Future<void> staticMethodArgOwn(
+          {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) =>
+      RustLib.instance.api
+          .nonCloneSimpleTwinNormalStaticMethodArgOwn(arg: arg, hint: hint);
+
+  static Future<RwLockNonCloneSimpleTwinNormal> staticMethodReturnOwn(
+          {dynamic hint}) =>
+      RustLib.instance.api
+          .nonCloneSimpleTwinNormalStaticMethodReturnOwn(hint: hint);
 }
 
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>>
