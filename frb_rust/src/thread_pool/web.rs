@@ -4,19 +4,19 @@ use std::panic::RefUnwindSafe;
 use std::thread::LocalKey;
 use wasm_bindgen::JsValue;
 
-pub use crate::third_party::wasm_bindgen::worker_pool::WorkerPool as ThreadPool;
+pub use crate::third_party::wasm_bindgen::worker_pool::WorkerPool as SimpleThreadPool;
 
 pub trait BaseThreadPool: RefUnwindSafe {
     fn execute(&self, closure: TransferClosure<JsValue>) -> Result<(), JsValue>;
 }
 
-impl BaseThreadPool for ThreadPool {
+impl BaseThreadPool for SimpleThreadPool {
     fn execute(&self, closure: TransferClosure<JsValue>) -> Result<(), JsValue> {
         self.execute(closure)
     }
 }
 
-impl BaseThreadPool for &'static LocalKey<ThreadPool> {
+impl BaseThreadPool for &'static LocalKey<SimpleThreadPool> {
     fn execute(&self, closure: TransferClosure<JsValue>) -> Result<(), JsValue> {
         self.with(|inner| inner.execute(closure))
     }

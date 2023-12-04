@@ -10,7 +10,7 @@ use crate::platform_types::WireSyncReturn;
 use crate::rust2dart::action::Rust2DartAction;
 use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
 use crate::rust_async::BaseAsyncRuntime;
-use crate::thread_pool::{BaseThreadPool, ThreadPool};
+use crate::thread_pool::BaseThreadPool;
 use std::future::Future;
 use std::panic;
 use std::panic::UnwindSafe;

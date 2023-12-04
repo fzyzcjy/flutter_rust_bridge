@@ -13,7 +13,7 @@ pub use crate::misc::rust_auto_opaque::rust_auto_opaque_api2wire;
 pub use crate::platform_types::DartAbi;
 pub use crate::platform_types::{MessagePort, WireSyncReturn};
 pub use crate::rust_opaque::dart2rust::wire2api_rust_opaque;
-pub use crate::thread_pool::{BaseThreadPool, ThreadPool};
+pub use crate::thread_pool::{BaseThreadPool, SimpleThreadPool};
 #[cfg(wasm)]
 pub use crate::web_transfer::transfer_closure::TransferClosure;
 pub use cast::*;
