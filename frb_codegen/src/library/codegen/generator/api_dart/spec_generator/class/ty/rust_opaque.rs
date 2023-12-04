@@ -1,7 +1,7 @@
 use crate::codegen::generator::api_dart::spec_generator::class::method::generate_api_methods;
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
-use crate::codegen::ir::namespace::Namespace;
+use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
@@ -32,7 +32,11 @@ pub(super) fn generalized_rust_opaque_generate_class(
     let rust_api_type = ir.rust_api_type();
     let dart_api_type = ApiDartGenerator::new(ir, context).dart_api_type();
 
-    let methods = generate_api_methods(&dart_api_type, context).join("\n");
+    let methods = generate_api_methods(
+        &NamespacedName::new(namespace.clone(), dart_api_type.clone()),
+        context,
+    )
+    .join("\n");
 
     ApiDartGeneratedClass {
         namespace,
