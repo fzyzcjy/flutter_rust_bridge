@@ -12276,206 +12276,225 @@ pub extern "C" fn wire_test_raw_string_item_struct_twin_normal(port_: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow(
+pub extern "C" fn wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal(
     port_: i64,
     that: *const std::ffi::c_void,
 ) {
-    wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_impl(port_, that)
+    wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal_impl(port_, that)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow(
+pub extern "C" fn wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal(
     port_: i64,
     that: *const std::ffi::c_void,
 ) {
-    wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_impl(port_, that)
+    wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal_impl(port_, that)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_NonCloneSimpleTwinNormal_instance_method_arg_own(
+pub extern "C" fn wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal(
     port_: i64,
     that: *const std::ffi::c_void,
 ) {
-    wire_NonCloneSimpleTwinNormal_instance_method_arg_own_impl(port_, that)
+    wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal_impl(port_, that)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_NonCloneSimpleTwinNormal_instance_method_return_own(
+pub extern "C" fn wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal(
     port_: i64,
     that: *const std::ffi::c_void,
 ) {
-    wire_NonCloneSimpleTwinNormal_instance_method_return_own_impl(port_, that)
+    wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal_impl(port_, that)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_NonCloneSimpleTwinNormal_new(port_: i64) {
-    wire_NonCloneSimpleTwinNormal_new_impl(port_)
+pub extern "C" fn wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal(port_: i64) {
+    wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_NonCloneSimpleTwinNormal_new_custom_name(port_: i64) {
-    wire_NonCloneSimpleTwinNormal_new_custom_name_impl(port_)
+pub extern "C" fn wire_NonCloneSimpleTwinNormal_new_twin_normal(port_: i64) {
+    wire_NonCloneSimpleTwinNormal_new_twin_normal_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_NonCloneSimpleTwinNormal_static_method_arg_borrow(
+pub extern "C" fn wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal(
     port_: i64,
     arg: *const std::ffi::c_void,
 ) {
-    wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_impl(port_, arg)
+    wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow(
+pub extern "C" fn wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal(
     port_: i64,
     arg: *const std::ffi::c_void,
 ) {
-    wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_impl(port_, arg)
+    wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_NonCloneSimpleTwinNormal_static_method_arg_own(
+pub extern "C" fn wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal(
     port_: i64,
     arg: *const std::ffi::c_void,
 ) {
-    wire_NonCloneSimpleTwinNormal_static_method_arg_own_impl(port_, arg)
+    wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_NonCloneSimpleTwinNormal_static_method_return_own(port_: i64) {
-    wire_NonCloneSimpleTwinNormal_static_method_return_own_impl(port_)
+pub extern "C" fn wire_NonCloneSimpleTwinNormal_static_method_return_own_twin_normal(port_: i64) {
+    wire_NonCloneSimpleTwinNormal_static_method_return_own_twin_normal_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_auto_opaque_arg_borrow(port_: i64, arg: *const std::ffi::c_void) {
-    wire_rust_auto_opaque_arg_borrow_impl(port_, arg)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_rust_auto_opaque_arg_mut_borrow(port_: i64, arg: *const std::ffi::c_void) {
-    wire_rust_auto_opaque_arg_mut_borrow_impl(port_, arg)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_rust_auto_opaque_arg_own(port_: i64, arg: *const std::ffi::c_void) {
-    wire_rust_auto_opaque_arg_own_impl(port_, arg)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_rust_auto_opaque_arg_own_and_return_own(
+pub extern "C" fn wire_rust_auto_opaque_arg_borrow_twin_normal(
     port_: i64,
     arg: *const std::ffi::c_void,
 ) {
-    wire_rust_auto_opaque_arg_own_and_return_own_impl(port_, arg)
+    wire_rust_auto_opaque_arg_borrow_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_auto_opaque_callable_arg(port_: i64, arg: *const std::ffi::c_void) {
-    wire_rust_auto_opaque_callable_arg_impl(port_, arg)
+pub extern "C" fn wire_rust_auto_opaque_arg_mut_borrow_twin_normal(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+) {
+    wire_rust_auto_opaque_arg_mut_borrow_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_auto_opaque_callable_return(port_: i64) {
-    wire_rust_auto_opaque_callable_return_impl(port_)
+pub extern "C" fn wire_rust_auto_opaque_arg_own_and_return_own_twin_normal(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+) {
+    wire_rust_auto_opaque_arg_own_and_return_own_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_auto_opaque_normal_and_opaque_arg(
+pub extern "C" fn wire_rust_auto_opaque_arg_own_twin_normal(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+) {
+    wire_rust_auto_opaque_arg_own_twin_normal_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_callable_arg_twin_normal(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+) {
+    wire_rust_auto_opaque_callable_arg_twin_normal_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_callable_return_twin_normal(port_: i64) {
+    wire_rust_auto_opaque_callable_return_twin_normal_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal(
     port_: i64,
     a: *const std::ffi::c_void,
     b: *mut wire_list_prim_u_8,
 ) {
-    wire_rust_auto_opaque_normal_and_opaque_arg_impl(port_, a, b)
+    wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal_impl(port_, a, b)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_auto_opaque_plus_sign_arg(port_: i64, arg: *const std::ffi::c_void) {
-    wire_rust_auto_opaque_plus_sign_arg_impl(port_, arg)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_rust_auto_opaque_plus_sign_return(port_: i64) {
-    wire_rust_auto_opaque_plus_sign_return_impl(port_)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_rust_auto_opaque_return_own(port_: i64) {
-    wire_rust_auto_opaque_return_own_impl(port_)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(
+pub extern "C" fn wire_rust_auto_opaque_plus_sign_arg_twin_normal(
     port_: i64,
     arg: *const std::ffi::c_void,
 ) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_impl(port_, arg)
+    wire_rust_auto_opaque_plus_sign_arg_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(
+pub extern "C" fn wire_rust_auto_opaque_plus_sign_return_twin_normal(port_: i64) {
+    wire_rust_auto_opaque_plus_sign_return_twin_normal_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_return_own_twin_normal(port_: i64) {
+    wire_rust_auto_opaque_return_own_twin_normal_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal(
     port_: i64,
     arg: *const std::ffi::c_void,
 ) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_impl(port_, arg)
+    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
+pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal(
     port_: i64,
     arg: *const std::ffi::c_void,
 ) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_impl(port_, arg)
+    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal_impl(
+        port_, arg,
+    )
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own(port_: i64) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_impl(port_)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_rust_auto_opaque_trait_object_arg_borrow(
+pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal(
     port_: i64,
     arg: *const std::ffi::c_void,
-    expect: *mut wire_list_prim_u_8,
 ) {
-    wire_rust_auto_opaque_trait_object_arg_borrow_impl(port_, arg, expect)
+    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_auto_opaque_trait_object_arg_mut_borrow(
+pub extern "C" fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal(
     port_: i64,
-    arg: *const std::ffi::c_void,
-    expect: *mut wire_list_prim_u_8,
 ) {
-    wire_rust_auto_opaque_trait_object_arg_mut_borrow_impl(port_, arg, expect)
+    wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_auto_opaque_trait_object_arg_own(
+pub extern "C" fn wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal(
     port_: i64,
     arg: *const std::ffi::c_void,
     expect: *mut wire_list_prim_u_8,
 ) {
-    wire_rust_auto_opaque_trait_object_arg_own_impl(port_, arg, expect)
+    wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal_impl(port_, arg, expect)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_auto_opaque_trait_object_return_own_one(port_: i64) {
-    wire_rust_auto_opaque_trait_object_return_own_one_impl(port_)
+pub extern "C" fn wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+    expect: *mut wire_list_prim_u_8,
+) {
+    wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal_impl(port_, arg, expect)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_auto_opaque_trait_object_return_own_two(port_: i64) {
-    wire_rust_auto_opaque_trait_object_return_own_two_impl(port_)
+pub extern "C" fn wire_rust_auto_opaque_trait_object_arg_own_twin_normal(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+    expect: *mut wire_list_prim_u_8,
+) {
+    wire_rust_auto_opaque_trait_object_arg_own_twin_normal_impl(port_, arg, expect)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_auto_opaque_two_args(
+pub extern "C" fn wire_rust_auto_opaque_trait_object_return_own_one_twin_normal(port_: i64) {
+    wire_rust_auto_opaque_trait_object_return_own_one_twin_normal_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_trait_object_return_own_two_twin_normal(port_: i64) {
+    wire_rust_auto_opaque_trait_object_return_own_two_twin_normal_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_two_args_twin_normal(
     port_: i64,
     a: *const std::ffi::c_void,
     b: *const std::ffi::c_void,
 ) {
-    wire_rust_auto_opaque_two_args_impl(port_, a, b)
+    wire_rust_auto_opaque_two_args_twin_normal_impl(port_, a, b)
 }
 
 #[no_mangle]

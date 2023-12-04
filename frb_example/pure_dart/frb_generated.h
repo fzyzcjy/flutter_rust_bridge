@@ -3003,76 +3003,83 @@ void wire_test_more_than_just_one_raw_string_struct_twin_normal(int64_t port_);
 
 void wire_test_raw_string_item_struct_twin_normal(int64_t port_);
 
-void wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow(int64_t port_, const void *that);
+void wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal(int64_t port_,
+                                                                          const void *that);
 
-void wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow(int64_t port_, const void *that);
+void wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal(int64_t port_,
+                                                                              const void *that);
 
-void wire_NonCloneSimpleTwinNormal_instance_method_arg_own(int64_t port_, const void *that);
+void wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal(int64_t port_,
+                                                                       const void *that);
 
-void wire_NonCloneSimpleTwinNormal_instance_method_return_own(int64_t port_, const void *that);
+void wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal(int64_t port_,
+                                                                          const void *that);
 
-void wire_NonCloneSimpleTwinNormal_new(int64_t port_);
+void wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal(int64_t port_);
 
-void wire_NonCloneSimpleTwinNormal_new_custom_name(int64_t port_);
+void wire_NonCloneSimpleTwinNormal_new_twin_normal(int64_t port_);
 
-void wire_NonCloneSimpleTwinNormal_static_method_arg_borrow(int64_t port_, const void *arg);
-
-void wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow(int64_t port_, const void *arg);
-
-void wire_NonCloneSimpleTwinNormal_static_method_arg_own(int64_t port_, const void *arg);
-
-void wire_NonCloneSimpleTwinNormal_static_method_return_own(int64_t port_);
-
-void wire_rust_auto_opaque_arg_borrow(int64_t port_, const void *arg);
-
-void wire_rust_auto_opaque_arg_mut_borrow(int64_t port_, const void *arg);
-
-void wire_rust_auto_opaque_arg_own(int64_t port_, const void *arg);
-
-void wire_rust_auto_opaque_arg_own_and_return_own(int64_t port_, const void *arg);
-
-void wire_rust_auto_opaque_callable_arg(int64_t port_, const void *arg);
-
-void wire_rust_auto_opaque_callable_return(int64_t port_);
-
-void wire_rust_auto_opaque_normal_and_opaque_arg(int64_t port_,
-                                                 const void *a,
-                                                 struct wire_list_prim_u_8 *b);
-
-void wire_rust_auto_opaque_plus_sign_arg(int64_t port_, const void *arg);
-
-void wire_rust_auto_opaque_plus_sign_return(int64_t port_);
-
-void wire_rust_auto_opaque_return_own(int64_t port_);
-
-void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(int64_t port_,
+void wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal(int64_t port_,
                                                                         const void *arg);
 
-void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(int64_t port_,
+void wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal(int64_t port_,
                                                                             const void *arg);
 
-void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(int64_t port_,
+void wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal(int64_t port_,
                                                                      const void *arg);
 
-void wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own(int64_t port_);
+void wire_NonCloneSimpleTwinNormal_static_method_return_own_twin_normal(int64_t port_);
 
-void wire_rust_auto_opaque_trait_object_arg_borrow(int64_t port_,
-                                                   const void *arg,
-                                                   struct wire_list_prim_u_8 *expect);
+void wire_rust_auto_opaque_arg_borrow_twin_normal(int64_t port_, const void *arg);
 
-void wire_rust_auto_opaque_trait_object_arg_mut_borrow(int64_t port_,
-                                                       const void *arg,
-                                                       struct wire_list_prim_u_8 *expect);
+void wire_rust_auto_opaque_arg_mut_borrow_twin_normal(int64_t port_, const void *arg);
 
-void wire_rust_auto_opaque_trait_object_arg_own(int64_t port_,
-                                                const void *arg,
-                                                struct wire_list_prim_u_8 *expect);
+void wire_rust_auto_opaque_arg_own_and_return_own_twin_normal(int64_t port_, const void *arg);
 
-void wire_rust_auto_opaque_trait_object_return_own_one(int64_t port_);
+void wire_rust_auto_opaque_arg_own_twin_normal(int64_t port_, const void *arg);
 
-void wire_rust_auto_opaque_trait_object_return_own_two(int64_t port_);
+void wire_rust_auto_opaque_callable_arg_twin_normal(int64_t port_, const void *arg);
 
-void wire_rust_auto_opaque_two_args(int64_t port_, const void *a, const void *b);
+void wire_rust_auto_opaque_callable_return_twin_normal(int64_t port_);
+
+void wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal(int64_t port_,
+                                                             const void *a,
+                                                             struct wire_list_prim_u_8 *b);
+
+void wire_rust_auto_opaque_plus_sign_arg_twin_normal(int64_t port_, const void *arg);
+
+void wire_rust_auto_opaque_plus_sign_return_twin_normal(int64_t port_);
+
+void wire_rust_auto_opaque_return_own_twin_normal(int64_t port_);
+
+void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal(int64_t port_,
+                                                                                    const void *arg);
+
+void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal(int64_t port_,
+                                                                                        const void *arg);
+
+void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal(int64_t port_,
+                                                                                 const void *arg);
+
+void wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal(int64_t port_);
+
+void wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal(int64_t port_,
+                                                               const void *arg,
+                                                               struct wire_list_prim_u_8 *expect);
+
+void wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal(int64_t port_,
+                                                                   const void *arg,
+                                                                   struct wire_list_prim_u_8 *expect);
+
+void wire_rust_auto_opaque_trait_object_arg_own_twin_normal(int64_t port_,
+                                                            const void *arg,
+                                                            struct wire_list_prim_u_8 *expect);
+
+void wire_rust_auto_opaque_trait_object_return_own_one_twin_normal(int64_t port_);
+
+void wire_rust_auto_opaque_trait_object_return_own_two_twin_normal(int64_t port_);
+
+void wire_rust_auto_opaque_two_args_twin_normal(int64_t port_, const void *a, const void *b);
 
 void wire_create_array_opaque_enum_twin_normal(int64_t port_);
 
@@ -4235,16 +4242,16 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_EventTwinNormal_as_string_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_EventTwinRustAsync_as_string_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_EventTwinSync_as_string_twin_sync);
-    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow);
-    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow);
-    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_instance_method_arg_own);
-    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_instance_method_return_own);
-    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_new);
-    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_new_custom_name);
-    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_static_method_arg_borrow);
-    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow);
-    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_static_method_arg_own);
-    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_static_method_return_own);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_new_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_static_method_return_own_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinNormal_new_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinNormal_non_static_return_err_custom_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinNormal_non_static_return_ok_custom_error_twin_normal);
@@ -4794,26 +4801,26 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_run_opaque_with_delay_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_run_opaque_with_delay_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_run_opaque_with_delay_twin_sync);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_borrow);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_mut_borrow);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_own);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_own_and_return_own);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_callable_arg);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_callable_return);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_normal_and_opaque_arg);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_plus_sign_arg);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_plus_sign_return);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_return_own);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_borrow);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_mut_borrow);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_own);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_return_own_one);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_return_own_two);
-    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_two_args);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_borrow_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_mut_borrow_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_own_and_return_own_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_own_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_callable_arg_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_callable_return_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_plus_sign_arg_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_plus_sign_return_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_return_own_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_own_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_return_own_one_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_return_own_two_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_two_args_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque_twin_sync);

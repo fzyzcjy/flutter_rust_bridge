@@ -15561,541 +15561,556 @@ class RustLibWire implements BaseWire {
       _wire_test_raw_string_item_struct_twin_normalPtr
           .asFunction<void Function(int)>();
 
-  void wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow(
+  void wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> that,
   ) {
-    return _wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow(
+    return _wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal(
       port_,
       that,
     );
   }
 
-  late final _wire_NonCloneSimpleTwinNormal_instance_method_arg_borrowPtr =
+  late final _wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normalPtr =
       _lookup<
               ffi.NativeFunction<
                   ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-          'wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow');
-  late final _wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow =
-      _wire_NonCloneSimpleTwinNormal_instance_method_arg_borrowPtr
+          'wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal');
+  late final _wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal =
+      _wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
-  void wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow(
+  void wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> that,
   ) {
-    return _wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow(
+    return _wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal(
       port_,
       that,
     );
   }
 
-  late final _wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrowPtr =
+  late final _wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normalPtr =
       _lookup<
               ffi.NativeFunction<
                   ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-          'wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow');
-  late final _wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow =
-      _wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrowPtr
+          'wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal');
+  late final _wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal =
+      _wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
-  void wire_NonCloneSimpleTwinNormal_instance_method_arg_own(
+  void wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> that,
   ) {
-    return _wire_NonCloneSimpleTwinNormal_instance_method_arg_own(
+    return _wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal(
       port_,
       that,
     );
   }
 
-  late final _wire_NonCloneSimpleTwinNormal_instance_method_arg_ownPtr =
+  late final _wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normalPtr =
       _lookup<
               ffi.NativeFunction<
                   ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-          'wire_NonCloneSimpleTwinNormal_instance_method_arg_own');
-  late final _wire_NonCloneSimpleTwinNormal_instance_method_arg_own =
-      _wire_NonCloneSimpleTwinNormal_instance_method_arg_ownPtr
+          'wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal');
+  late final _wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal =
+      _wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
-  void wire_NonCloneSimpleTwinNormal_instance_method_return_own(
+  void wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> that,
   ) {
-    return _wire_NonCloneSimpleTwinNormal_instance_method_return_own(
+    return _wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal(
       port_,
       that,
     );
   }
 
-  late final _wire_NonCloneSimpleTwinNormal_instance_method_return_ownPtr =
+  late final _wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normalPtr =
       _lookup<
               ffi.NativeFunction<
                   ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-          'wire_NonCloneSimpleTwinNormal_instance_method_return_own');
-  late final _wire_NonCloneSimpleTwinNormal_instance_method_return_own =
-      _wire_NonCloneSimpleTwinNormal_instance_method_return_ownPtr
+          'wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal');
+  late final _wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal =
+      _wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
-  void wire_NonCloneSimpleTwinNormal_new(
+  void wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal(
     int port_,
   ) {
-    return _wire_NonCloneSimpleTwinNormal_new(
+    return _wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal(
       port_,
     );
   }
 
-  late final _wire_NonCloneSimpleTwinNormal_newPtr =
+  late final _wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_NonCloneSimpleTwinNormal_new');
-  late final _wire_NonCloneSimpleTwinNormal_new =
-      _wire_NonCloneSimpleTwinNormal_newPtr.asFunction<void Function(int)>();
-
-  void wire_NonCloneSimpleTwinNormal_new_custom_name(
-    int port_,
-  ) {
-    return _wire_NonCloneSimpleTwinNormal_new_custom_name(
-      port_,
-    );
-  }
-
-  late final _wire_NonCloneSimpleTwinNormal_new_custom_namePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_NonCloneSimpleTwinNormal_new_custom_name');
-  late final _wire_NonCloneSimpleTwinNormal_new_custom_name =
-      _wire_NonCloneSimpleTwinNormal_new_custom_namePtr
+          'wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal');
+  late final _wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal =
+      _wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normalPtr
           .asFunction<void Function(int)>();
 
-  void wire_NonCloneSimpleTwinNormal_static_method_arg_borrow(
+  void wire_NonCloneSimpleTwinNormal_new_twin_normal(
+    int port_,
+  ) {
+    return _wire_NonCloneSimpleTwinNormal_new_twin_normal(
+      port_,
+    );
+  }
+
+  late final _wire_NonCloneSimpleTwinNormal_new_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_NonCloneSimpleTwinNormal_new_twin_normal');
+  late final _wire_NonCloneSimpleTwinNormal_new_twin_normal =
+      _wire_NonCloneSimpleTwinNormal_new_twin_normalPtr
+          .asFunction<void Function(int)>();
+
+  void wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> arg,
   ) {
-    return _wire_NonCloneSimpleTwinNormal_static_method_arg_borrow(
+    return _wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_NonCloneSimpleTwinNormal_static_method_arg_borrowPtr =
+  late final _wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normalPtr =
       _lookup<
               ffi.NativeFunction<
                   ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-          'wire_NonCloneSimpleTwinNormal_static_method_arg_borrow');
-  late final _wire_NonCloneSimpleTwinNormal_static_method_arg_borrow =
-      _wire_NonCloneSimpleTwinNormal_static_method_arg_borrowPtr
+          'wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal');
+  late final _wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal =
+      _wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
-  void wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow(
+  void wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> arg,
   ) {
-    return _wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow(
+    return _wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrowPtr =
+  late final _wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normalPtr =
       _lookup<
               ffi.NativeFunction<
                   ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-          'wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow');
-  late final _wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow =
-      _wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrowPtr
+          'wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal');
+  late final _wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal =
+      _wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
-  void wire_NonCloneSimpleTwinNormal_static_method_arg_own(
+  void wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> arg,
   ) {
-    return _wire_NonCloneSimpleTwinNormal_static_method_arg_own(
+    return _wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_NonCloneSimpleTwinNormal_static_method_arg_ownPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_NonCloneSimpleTwinNormal_static_method_arg_own');
-  late final _wire_NonCloneSimpleTwinNormal_static_method_arg_own =
-      _wire_NonCloneSimpleTwinNormal_static_method_arg_ownPtr
+  late final _wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          'wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal');
+  late final _wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal =
+      _wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
-  void wire_NonCloneSimpleTwinNormal_static_method_return_own(
+  void wire_NonCloneSimpleTwinNormal_static_method_return_own_twin_normal(
     int port_,
   ) {
-    return _wire_NonCloneSimpleTwinNormal_static_method_return_own(
+    return _wire_NonCloneSimpleTwinNormal_static_method_return_own_twin_normal(
       port_,
     );
   }
 
-  late final _wire_NonCloneSimpleTwinNormal_static_method_return_ownPtr =
+  late final _wire_NonCloneSimpleTwinNormal_static_method_return_own_twin_normalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_NonCloneSimpleTwinNormal_static_method_return_own');
-  late final _wire_NonCloneSimpleTwinNormal_static_method_return_own =
-      _wire_NonCloneSimpleTwinNormal_static_method_return_ownPtr
+          'wire_NonCloneSimpleTwinNormal_static_method_return_own_twin_normal');
+  late final _wire_NonCloneSimpleTwinNormal_static_method_return_own_twin_normal =
+      _wire_NonCloneSimpleTwinNormal_static_method_return_own_twin_normalPtr
           .asFunction<void Function(int)>();
 
-  void wire_rust_auto_opaque_arg_borrow(
+  void wire_rust_auto_opaque_arg_borrow_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> arg,
   ) {
-    return _wire_rust_auto_opaque_arg_borrow(
+    return _wire_rust_auto_opaque_arg_borrow_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_rust_auto_opaque_arg_borrowPtr = _lookup<
+  late final _wire_rust_auto_opaque_arg_borrow_twin_normalPtr = _lookup<
           ffi
           .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_auto_opaque_arg_borrow');
-  late final _wire_rust_auto_opaque_arg_borrow =
-      _wire_rust_auto_opaque_arg_borrowPtr
+      'wire_rust_auto_opaque_arg_borrow_twin_normal');
+  late final _wire_rust_auto_opaque_arg_borrow_twin_normal =
+      _wire_rust_auto_opaque_arg_borrow_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
-  void wire_rust_auto_opaque_arg_mut_borrow(
+  void wire_rust_auto_opaque_arg_mut_borrow_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> arg,
   ) {
-    return _wire_rust_auto_opaque_arg_mut_borrow(
+    return _wire_rust_auto_opaque_arg_mut_borrow_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_rust_auto_opaque_arg_mut_borrowPtr = _lookup<
+  late final _wire_rust_auto_opaque_arg_mut_borrow_twin_normalPtr = _lookup<
           ffi
           .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_auto_opaque_arg_mut_borrow');
-  late final _wire_rust_auto_opaque_arg_mut_borrow =
-      _wire_rust_auto_opaque_arg_mut_borrowPtr
+      'wire_rust_auto_opaque_arg_mut_borrow_twin_normal');
+  late final _wire_rust_auto_opaque_arg_mut_borrow_twin_normal =
+      _wire_rust_auto_opaque_arg_mut_borrow_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
-  void wire_rust_auto_opaque_arg_own(
+  void wire_rust_auto_opaque_arg_own_and_return_own_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> arg,
   ) {
-    return _wire_rust_auto_opaque_arg_own(
+    return _wire_rust_auto_opaque_arg_own_and_return_own_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_rust_auto_opaque_arg_ownPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_auto_opaque_arg_own');
-  late final _wire_rust_auto_opaque_arg_own = _wire_rust_auto_opaque_arg_ownPtr
-      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
-
-  void wire_rust_auto_opaque_arg_own_and_return_own(
-    int port_,
-    ffi.Pointer<ffi.Void> arg,
-  ) {
-    return _wire_rust_auto_opaque_arg_own_and_return_own(
-      port_,
-      arg,
-    );
-  }
-
-  late final _wire_rust_auto_opaque_arg_own_and_return_ownPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_auto_opaque_arg_own_and_return_own');
-  late final _wire_rust_auto_opaque_arg_own_and_return_own =
-      _wire_rust_auto_opaque_arg_own_and_return_ownPtr
+  late final _wire_rust_auto_opaque_arg_own_and_return_own_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          'wire_rust_auto_opaque_arg_own_and_return_own_twin_normal');
+  late final _wire_rust_auto_opaque_arg_own_and_return_own_twin_normal =
+      _wire_rust_auto_opaque_arg_own_and_return_own_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
-  void wire_rust_auto_opaque_callable_arg(
+  void wire_rust_auto_opaque_arg_own_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> arg,
   ) {
-    return _wire_rust_auto_opaque_callable_arg(
+    return _wire_rust_auto_opaque_arg_own_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_rust_auto_opaque_callable_argPtr = _lookup<
+  late final _wire_rust_auto_opaque_arg_own_twin_normalPtr = _lookup<
           ffi
           .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_auto_opaque_callable_arg');
-  late final _wire_rust_auto_opaque_callable_arg =
-      _wire_rust_auto_opaque_callable_argPtr
+      'wire_rust_auto_opaque_arg_own_twin_normal');
+  late final _wire_rust_auto_opaque_arg_own_twin_normal =
+      _wire_rust_auto_opaque_arg_own_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
-  void wire_rust_auto_opaque_callable_return(
+  void wire_rust_auto_opaque_callable_arg_twin_normal(
+    int port_,
+    ffi.Pointer<ffi.Void> arg,
+  ) {
+    return _wire_rust_auto_opaque_callable_arg_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_callable_arg_twin_normalPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_rust_auto_opaque_callable_arg_twin_normal');
+  late final _wire_rust_auto_opaque_callable_arg_twin_normal =
+      _wire_rust_auto_opaque_callable_arg_twin_normalPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_rust_auto_opaque_callable_return_twin_normal(
     int port_,
   ) {
-    return _wire_rust_auto_opaque_callable_return(
+    return _wire_rust_auto_opaque_callable_return_twin_normal(
       port_,
     );
   }
 
-  late final _wire_rust_auto_opaque_callable_returnPtr =
+  late final _wire_rust_auto_opaque_callable_return_twin_normalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_rust_auto_opaque_callable_return');
-  late final _wire_rust_auto_opaque_callable_return =
-      _wire_rust_auto_opaque_callable_returnPtr
+          'wire_rust_auto_opaque_callable_return_twin_normal');
+  late final _wire_rust_auto_opaque_callable_return_twin_normal =
+      _wire_rust_auto_opaque_callable_return_twin_normalPtr
           .asFunction<void Function(int)>();
 
-  void wire_rust_auto_opaque_normal_and_opaque_arg(
+  void wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> a,
     ffi.Pointer<wire_list_prim_u_8> b,
   ) {
-    return _wire_rust_auto_opaque_normal_and_opaque_arg(
+    return _wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal(
       port_,
       a,
       b,
     );
   }
 
-  late final _wire_rust_auto_opaque_normal_and_opaque_argPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
-                  ffi.Pointer<wire_list_prim_u_8>)>>(
-      'wire_rust_auto_opaque_normal_and_opaque_arg');
-  late final _wire_rust_auto_opaque_normal_and_opaque_arg =
-      _wire_rust_auto_opaque_normal_and_opaque_argPtr.asFunction<
+  late final _wire_rust_auto_opaque_normal_and_opaque_arg_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+                      ffi.Pointer<wire_list_prim_u_8>)>>(
+          'wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal');
+  late final _wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal =
+      _wire_rust_auto_opaque_normal_and_opaque_arg_twin_normalPtr.asFunction<
           void Function(
               int, ffi.Pointer<ffi.Void>, ffi.Pointer<wire_list_prim_u_8>)>();
 
-  void wire_rust_auto_opaque_plus_sign_arg(
+  void wire_rust_auto_opaque_plus_sign_arg_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> arg,
   ) {
-    return _wire_rust_auto_opaque_plus_sign_arg(
+    return _wire_rust_auto_opaque_plus_sign_arg_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_rust_auto_opaque_plus_sign_argPtr = _lookup<
+  late final _wire_rust_auto_opaque_plus_sign_arg_twin_normalPtr = _lookup<
           ffi
           .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_auto_opaque_plus_sign_arg');
-  late final _wire_rust_auto_opaque_plus_sign_arg =
-      _wire_rust_auto_opaque_plus_sign_argPtr
+      'wire_rust_auto_opaque_plus_sign_arg_twin_normal');
+  late final _wire_rust_auto_opaque_plus_sign_arg_twin_normal =
+      _wire_rust_auto_opaque_plus_sign_arg_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
-  void wire_rust_auto_opaque_plus_sign_return(
+  void wire_rust_auto_opaque_plus_sign_return_twin_normal(
     int port_,
   ) {
-    return _wire_rust_auto_opaque_plus_sign_return(
+    return _wire_rust_auto_opaque_plus_sign_return_twin_normal(
       port_,
     );
   }
 
-  late final _wire_rust_auto_opaque_plus_sign_returnPtr =
+  late final _wire_rust_auto_opaque_plus_sign_return_twin_normalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_rust_auto_opaque_plus_sign_return');
-  late final _wire_rust_auto_opaque_plus_sign_return =
-      _wire_rust_auto_opaque_plus_sign_returnPtr
+          'wire_rust_auto_opaque_plus_sign_return_twin_normal');
+  late final _wire_rust_auto_opaque_plus_sign_return_twin_normal =
+      _wire_rust_auto_opaque_plus_sign_return_twin_normalPtr
           .asFunction<void Function(int)>();
 
-  void wire_rust_auto_opaque_return_own(
+  void wire_rust_auto_opaque_return_own_twin_normal(
     int port_,
   ) {
-    return _wire_rust_auto_opaque_return_own(
+    return _wire_rust_auto_opaque_return_own_twin_normal(
       port_,
     );
   }
 
-  late final _wire_rust_auto_opaque_return_ownPtr =
+  late final _wire_rust_auto_opaque_return_own_twin_normalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_rust_auto_opaque_return_own');
-  late final _wire_rust_auto_opaque_return_own =
-      _wire_rust_auto_opaque_return_ownPtr.asFunction<void Function(int)>();
-
-  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(
-    int port_,
-    ffi.Pointer<ffi.Void> arg,
-  ) {
-    return _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(
-      port_,
-      arg,
-    );
-  }
-
-  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrowPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-          'wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow');
-  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow =
-      _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrowPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
-
-  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(
-    int port_,
-    ffi.Pointer<ffi.Void> arg,
-  ) {
-    return _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(
-      port_,
-      arg,
-    );
-  }
-
-  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrowPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-          'wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow');
-  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow =
-      _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrowPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
-
-  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
-    int port_,
-    ffi.Pointer<ffi.Void> arg,
-  ) {
-    return _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
-      port_,
-      arg,
-    );
-  }
-
-  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_ownPtr =
-      _lookup<
-              ffi.NativeFunction<
-                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-          'wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own');
-  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own =
-      _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_ownPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
-
-  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own(
-    int port_,
-  ) {
-    return _wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own(
-      port_,
-    );
-  }
-
-  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_ownPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own');
-  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own =
-      _wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_ownPtr
+          'wire_rust_auto_opaque_return_own_twin_normal');
+  late final _wire_rust_auto_opaque_return_own_twin_normal =
+      _wire_rust_auto_opaque_return_own_twin_normalPtr
           .asFunction<void Function(int)>();
 
-  void wire_rust_auto_opaque_trait_object_arg_borrow(
+  void
+      wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal(
+    int port_,
+    ffi.Pointer<ffi.Void> arg,
+  ) {
+    return _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          'wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal');
+  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal =
+      _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normalPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void
+      wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal(
+    int port_,
+    ffi.Pointer<ffi.Void> arg,
+  ) {
+    return _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          'wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal');
+  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal =
+      _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normalPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void
+      wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal(
+    int port_,
+    ffi.Pointer<ffi.Void> arg,
+  ) {
+    return _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          'wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal');
+  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal =
+      _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normalPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void
+      wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal(
+    int port_,
+  ) {
+    return _wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal(
+      port_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal');
+  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal =
+      _wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normalPtr
+          .asFunction<void Function(int)>();
+
+  void wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> arg,
     ffi.Pointer<wire_list_prim_u_8> expect,
   ) {
-    return _wire_rust_auto_opaque_trait_object_arg_borrow(
+    return _wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal(
       port_,
       arg,
       expect,
     );
   }
 
-  late final _wire_rust_auto_opaque_trait_object_arg_borrowPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
-                  ffi.Pointer<wire_list_prim_u_8>)>>(
-      'wire_rust_auto_opaque_trait_object_arg_borrow');
-  late final _wire_rust_auto_opaque_trait_object_arg_borrow =
-      _wire_rust_auto_opaque_trait_object_arg_borrowPtr.asFunction<
+  late final _wire_rust_auto_opaque_trait_object_arg_borrow_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+                      ffi.Pointer<wire_list_prim_u_8>)>>(
+          'wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal');
+  late final _wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal =
+      _wire_rust_auto_opaque_trait_object_arg_borrow_twin_normalPtr.asFunction<
           void Function(
               int, ffi.Pointer<ffi.Void>, ffi.Pointer<wire_list_prim_u_8>)>();
 
-  void wire_rust_auto_opaque_trait_object_arg_mut_borrow(
+  void wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> arg,
     ffi.Pointer<wire_list_prim_u_8> expect,
   ) {
-    return _wire_rust_auto_opaque_trait_object_arg_mut_borrow(
+    return _wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal(
       port_,
       arg,
       expect,
     );
   }
 
-  late final _wire_rust_auto_opaque_trait_object_arg_mut_borrowPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
-                  ffi.Pointer<wire_list_prim_u_8>)>>(
-      'wire_rust_auto_opaque_trait_object_arg_mut_borrow');
-  late final _wire_rust_auto_opaque_trait_object_arg_mut_borrow =
-      _wire_rust_auto_opaque_trait_object_arg_mut_borrowPtr.asFunction<
-          void Function(
-              int, ffi.Pointer<ffi.Void>, ffi.Pointer<wire_list_prim_u_8>)>();
+  late final _wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+                      ffi.Pointer<wire_list_prim_u_8>)>>(
+          'wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal');
+  late final _wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal =
+      _wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normalPtr
+          .asFunction<
+              void Function(int, ffi.Pointer<ffi.Void>,
+                  ffi.Pointer<wire_list_prim_u_8>)>();
 
-  void wire_rust_auto_opaque_trait_object_arg_own(
+  void wire_rust_auto_opaque_trait_object_arg_own_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> arg,
     ffi.Pointer<wire_list_prim_u_8> expect,
   ) {
-    return _wire_rust_auto_opaque_trait_object_arg_own(
+    return _wire_rust_auto_opaque_trait_object_arg_own_twin_normal(
       port_,
       arg,
       expect,
     );
   }
 
-  late final _wire_rust_auto_opaque_trait_object_arg_ownPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
-                  ffi.Pointer<wire_list_prim_u_8>)>>(
-      'wire_rust_auto_opaque_trait_object_arg_own');
-  late final _wire_rust_auto_opaque_trait_object_arg_own =
-      _wire_rust_auto_opaque_trait_object_arg_ownPtr.asFunction<
+  late final _wire_rust_auto_opaque_trait_object_arg_own_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+                      ffi.Pointer<wire_list_prim_u_8>)>>(
+          'wire_rust_auto_opaque_trait_object_arg_own_twin_normal');
+  late final _wire_rust_auto_opaque_trait_object_arg_own_twin_normal =
+      _wire_rust_auto_opaque_trait_object_arg_own_twin_normalPtr.asFunction<
           void Function(
               int, ffi.Pointer<ffi.Void>, ffi.Pointer<wire_list_prim_u_8>)>();
 
-  void wire_rust_auto_opaque_trait_object_return_own_one(
+  void wire_rust_auto_opaque_trait_object_return_own_one_twin_normal(
     int port_,
   ) {
-    return _wire_rust_auto_opaque_trait_object_return_own_one(
+    return _wire_rust_auto_opaque_trait_object_return_own_one_twin_normal(
       port_,
     );
   }
 
-  late final _wire_rust_auto_opaque_trait_object_return_own_onePtr =
+  late final _wire_rust_auto_opaque_trait_object_return_own_one_twin_normalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_rust_auto_opaque_trait_object_return_own_one');
-  late final _wire_rust_auto_opaque_trait_object_return_own_one =
-      _wire_rust_auto_opaque_trait_object_return_own_onePtr
+          'wire_rust_auto_opaque_trait_object_return_own_one_twin_normal');
+  late final _wire_rust_auto_opaque_trait_object_return_own_one_twin_normal =
+      _wire_rust_auto_opaque_trait_object_return_own_one_twin_normalPtr
           .asFunction<void Function(int)>();
 
-  void wire_rust_auto_opaque_trait_object_return_own_two(
+  void wire_rust_auto_opaque_trait_object_return_own_two_twin_normal(
     int port_,
   ) {
-    return _wire_rust_auto_opaque_trait_object_return_own_two(
+    return _wire_rust_auto_opaque_trait_object_return_own_two_twin_normal(
       port_,
     );
   }
 
-  late final _wire_rust_auto_opaque_trait_object_return_own_twoPtr =
+  late final _wire_rust_auto_opaque_trait_object_return_own_two_twin_normalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_rust_auto_opaque_trait_object_return_own_two');
-  late final _wire_rust_auto_opaque_trait_object_return_own_two =
-      _wire_rust_auto_opaque_trait_object_return_own_twoPtr
+          'wire_rust_auto_opaque_trait_object_return_own_two_twin_normal');
+  late final _wire_rust_auto_opaque_trait_object_return_own_two_twin_normal =
+      _wire_rust_auto_opaque_trait_object_return_own_two_twin_normalPtr
           .asFunction<void Function(int)>();
 
-  void wire_rust_auto_opaque_two_args(
+  void wire_rust_auto_opaque_two_args_twin_normal(
     int port_,
     ffi.Pointer<ffi.Void> a,
     ffi.Pointer<ffi.Void> b,
   ) {
-    return _wire_rust_auto_opaque_two_args(
+    return _wire_rust_auto_opaque_two_args_twin_normal(
       port_,
       a,
       b,
     );
   }
 
-  late final _wire_rust_auto_opaque_two_argsPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>)>>('wire_rust_auto_opaque_two_args');
-  late final _wire_rust_auto_opaque_two_args =
-      _wire_rust_auto_opaque_two_argsPtr.asFunction<
+  late final _wire_rust_auto_opaque_two_args_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
+      'wire_rust_auto_opaque_two_args_twin_normal');
+  late final _wire_rust_auto_opaque_two_args_twin_normal =
+      _wire_rust_auto_opaque_two_args_twin_normalPtr.asFunction<
           void Function(int, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
 
   void wire_create_array_opaque_enum_twin_normal(

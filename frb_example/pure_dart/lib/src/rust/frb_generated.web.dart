@@ -5682,132 +5682,155 @@ class RustLibWire extends BaseWire {
   void wire_test_raw_string_item_struct_twin_normal(NativePortType port_) =>
       wasmModule.wire_test_raw_string_item_struct_twin_normal(port_);
 
-  void wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow(
+  void wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal(
           NativePortType port_, Object that) =>
-      wasmModule.wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow(
-          port_, that);
-
-  void wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow(
-          NativePortType port_, Object that) =>
-      wasmModule.wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow(
-          port_, that);
-
-  void wire_NonCloneSimpleTwinNormal_instance_method_arg_own(
-          NativePortType port_, Object that) =>
-      wasmModule.wire_NonCloneSimpleTwinNormal_instance_method_arg_own(
-          port_, that);
-
-  void wire_NonCloneSimpleTwinNormal_instance_method_return_own(
-          NativePortType port_, Object that) =>
-      wasmModule.wire_NonCloneSimpleTwinNormal_instance_method_return_own(
-          port_, that);
-
-  void wire_NonCloneSimpleTwinNormal_new(NativePortType port_) =>
-      wasmModule.wire_NonCloneSimpleTwinNormal_new(port_);
-
-  void wire_NonCloneSimpleTwinNormal_new_custom_name(NativePortType port_) =>
-      wasmModule.wire_NonCloneSimpleTwinNormal_new_custom_name(port_);
-
-  void wire_NonCloneSimpleTwinNormal_static_method_arg_borrow(
-          NativePortType port_, Object arg) =>
-      wasmModule.wire_NonCloneSimpleTwinNormal_static_method_arg_borrow(
-          port_, arg);
-
-  void wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow(
-          NativePortType port_, Object arg) =>
-      wasmModule.wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow(
-          port_, arg);
-
-  void wire_NonCloneSimpleTwinNormal_static_method_arg_own(
-          NativePortType port_, Object arg) =>
-      wasmModule.wire_NonCloneSimpleTwinNormal_static_method_arg_own(
-          port_, arg);
-
-  void wire_NonCloneSimpleTwinNormal_static_method_return_own(
-          NativePortType port_) =>
-      wasmModule.wire_NonCloneSimpleTwinNormal_static_method_return_own(port_);
-
-  void wire_rust_auto_opaque_arg_borrow(NativePortType port_, Object arg) =>
-      wasmModule.wire_rust_auto_opaque_arg_borrow(port_, arg);
-
-  void wire_rust_auto_opaque_arg_mut_borrow(NativePortType port_, Object arg) =>
-      wasmModule.wire_rust_auto_opaque_arg_mut_borrow(port_, arg);
-
-  void wire_rust_auto_opaque_arg_own(NativePortType port_, Object arg) =>
-      wasmModule.wire_rust_auto_opaque_arg_own(port_, arg);
-
-  void wire_rust_auto_opaque_arg_own_and_return_own(
-          NativePortType port_, Object arg) =>
-      wasmModule.wire_rust_auto_opaque_arg_own_and_return_own(port_, arg);
-
-  void wire_rust_auto_opaque_callable_arg(NativePortType port_, Object arg) =>
-      wasmModule.wire_rust_auto_opaque_callable_arg(port_, arg);
-
-  void wire_rust_auto_opaque_callable_return(NativePortType port_) =>
-      wasmModule.wire_rust_auto_opaque_callable_return(port_);
-
-  void wire_rust_auto_opaque_normal_and_opaque_arg(
-          NativePortType port_, Object a, String b) =>
-      wasmModule.wire_rust_auto_opaque_normal_and_opaque_arg(port_, a, b);
-
-  void wire_rust_auto_opaque_plus_sign_arg(NativePortType port_, Object arg) =>
-      wasmModule.wire_rust_auto_opaque_plus_sign_arg(port_, arg);
-
-  void wire_rust_auto_opaque_plus_sign_return(NativePortType port_) =>
-      wasmModule.wire_rust_auto_opaque_plus_sign_return(port_);
-
-  void wire_rust_auto_opaque_return_own(NativePortType port_) =>
-      wasmModule.wire_rust_auto_opaque_return_own(port_);
-
-  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(
-          NativePortType port_, Object arg) =>
       wasmModule
-          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(
-              port_, arg);
+          .wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal(
+              port_, that);
 
-  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(
-          NativePortType port_, Object arg) =>
+  void wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal(
+          NativePortType port_, Object that) =>
       wasmModule
-          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(
-              port_, arg);
+          .wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal(
+              port_, that);
 
-  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
-          NativePortType port_, Object arg) =>
+  void wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal(
+          NativePortType port_, Object that) =>
       wasmModule
-          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
-              port_, arg);
+          .wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal(
+              port_, that);
 
-  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own(
+  void wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal(
+          NativePortType port_, Object that) =>
+      wasmModule
+          .wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal(
+              port_, that);
+
+  void wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal(
           NativePortType port_) =>
       wasmModule
-          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own(
+          .wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal(port_);
+
+  void wire_NonCloneSimpleTwinNormal_new_twin_normal(NativePortType port_) =>
+      wasmModule.wire_NonCloneSimpleTwinNormal_new_twin_normal(port_);
+
+  void wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal(
+          NativePortType port_, Object arg) =>
+      wasmModule
+          .wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal(
+              port_, arg);
+
+  void wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal(
+          NativePortType port_, Object arg) =>
+      wasmModule
+          .wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal(
+              port_, arg);
+
+  void wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal(
+          NativePortType port_, Object arg) =>
+      wasmModule
+          .wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal(
+              port_, arg);
+
+  void wire_NonCloneSimpleTwinNormal_static_method_return_own_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire_NonCloneSimpleTwinNormal_static_method_return_own_twin_normal(
               port_);
 
-  void wire_rust_auto_opaque_trait_object_arg_borrow(
+  void wire_rust_auto_opaque_arg_borrow_twin_normal(
+          NativePortType port_, Object arg) =>
+      wasmModule.wire_rust_auto_opaque_arg_borrow_twin_normal(port_, arg);
+
+  void wire_rust_auto_opaque_arg_mut_borrow_twin_normal(
+          NativePortType port_, Object arg) =>
+      wasmModule.wire_rust_auto_opaque_arg_mut_borrow_twin_normal(port_, arg);
+
+  void wire_rust_auto_opaque_arg_own_and_return_own_twin_normal(
+          NativePortType port_, Object arg) =>
+      wasmModule.wire_rust_auto_opaque_arg_own_and_return_own_twin_normal(
+          port_, arg);
+
+  void wire_rust_auto_opaque_arg_own_twin_normal(
+          NativePortType port_, Object arg) =>
+      wasmModule.wire_rust_auto_opaque_arg_own_twin_normal(port_, arg);
+
+  void wire_rust_auto_opaque_callable_arg_twin_normal(
+          NativePortType port_, Object arg) =>
+      wasmModule.wire_rust_auto_opaque_callable_arg_twin_normal(port_, arg);
+
+  void wire_rust_auto_opaque_callable_return_twin_normal(
+          NativePortType port_) =>
+      wasmModule.wire_rust_auto_opaque_callable_return_twin_normal(port_);
+
+  void wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal(
+          NativePortType port_, Object a, String b) =>
+      wasmModule.wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal(
+          port_, a, b);
+
+  void wire_rust_auto_opaque_plus_sign_arg_twin_normal(
+          NativePortType port_, Object arg) =>
+      wasmModule.wire_rust_auto_opaque_plus_sign_arg_twin_normal(port_, arg);
+
+  void wire_rust_auto_opaque_plus_sign_return_twin_normal(
+          NativePortType port_) =>
+      wasmModule.wire_rust_auto_opaque_plus_sign_return_twin_normal(port_);
+
+  void wire_rust_auto_opaque_return_own_twin_normal(NativePortType port_) =>
+      wasmModule.wire_rust_auto_opaque_return_own_twin_normal(port_);
+
+  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal(
+          NativePortType port_, Object arg) =>
+      wasmModule
+          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal(
+              port_, arg);
+
+  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal(
+          NativePortType port_, Object arg) =>
+      wasmModule
+          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal(
+              port_, arg);
+
+  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal(
+          NativePortType port_, Object arg) =>
+      wasmModule
+          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal(
+              port_, arg);
+
+  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal(
+              port_);
+
+  void wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal(
           NativePortType port_, Object arg, String expect) =>
-      wasmModule.wire_rust_auto_opaque_trait_object_arg_borrow(
+      wasmModule.wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal(
           port_, arg, expect);
 
-  void wire_rust_auto_opaque_trait_object_arg_mut_borrow(
+  void wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal(
           NativePortType port_, Object arg, String expect) =>
-      wasmModule.wire_rust_auto_opaque_trait_object_arg_mut_borrow(
+      wasmModule.wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal(
           port_, arg, expect);
 
-  void wire_rust_auto_opaque_trait_object_arg_own(
+  void wire_rust_auto_opaque_trait_object_arg_own_twin_normal(
           NativePortType port_, Object arg, String expect) =>
-      wasmModule.wire_rust_auto_opaque_trait_object_arg_own(port_, arg, expect);
+      wasmModule.wire_rust_auto_opaque_trait_object_arg_own_twin_normal(
+          port_, arg, expect);
 
-  void wire_rust_auto_opaque_trait_object_return_own_one(
+  void wire_rust_auto_opaque_trait_object_return_own_one_twin_normal(
           NativePortType port_) =>
-      wasmModule.wire_rust_auto_opaque_trait_object_return_own_one(port_);
+      wasmModule
+          .wire_rust_auto_opaque_trait_object_return_own_one_twin_normal(port_);
 
-  void wire_rust_auto_opaque_trait_object_return_own_two(
+  void wire_rust_auto_opaque_trait_object_return_own_two_twin_normal(
           NativePortType port_) =>
-      wasmModule.wire_rust_auto_opaque_trait_object_return_own_two(port_);
+      wasmModule
+          .wire_rust_auto_opaque_trait_object_return_own_two_twin_normal(port_);
 
-  void wire_rust_auto_opaque_two_args(
+  void wire_rust_auto_opaque_two_args_twin_normal(
           NativePortType port_, Object a, Object b) =>
-      wasmModule.wire_rust_auto_opaque_two_args(port_, a, b);
+      wasmModule.wire_rust_auto_opaque_two_args_twin_normal(port_, a, b);
 
   void wire_create_array_opaque_enum_twin_normal(NativePortType port_) =>
       wasmModule.wire_create_array_opaque_enum_twin_normal(port_);
@@ -8019,92 +8042,105 @@ class RustLibWasmModule implements WasmModule {
   external void wire_test_raw_string_item_struct_twin_normal(
       NativePortType port_);
 
-  external void wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow(
-      NativePortType port_, Object that);
-
-  external void wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow(
-      NativePortType port_, Object that);
-
-  external void wire_NonCloneSimpleTwinNormal_instance_method_arg_own(
-      NativePortType port_, Object that);
-
-  external void wire_NonCloneSimpleTwinNormal_instance_method_return_own(
-      NativePortType port_, Object that);
-
-  external void wire_NonCloneSimpleTwinNormal_new(NativePortType port_);
-
-  external void wire_NonCloneSimpleTwinNormal_new_custom_name(
-      NativePortType port_);
-
-  external void wire_NonCloneSimpleTwinNormal_static_method_arg_borrow(
-      NativePortType port_, Object arg);
-
-  external void wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow(
-      NativePortType port_, Object arg);
-
-  external void wire_NonCloneSimpleTwinNormal_static_method_arg_own(
-      NativePortType port_, Object arg);
-
-  external void wire_NonCloneSimpleTwinNormal_static_method_return_own(
-      NativePortType port_);
-
-  external void wire_rust_auto_opaque_arg_borrow(
-      NativePortType port_, Object arg);
-
-  external void wire_rust_auto_opaque_arg_mut_borrow(
-      NativePortType port_, Object arg);
-
-  external void wire_rust_auto_opaque_arg_own(NativePortType port_, Object arg);
-
-  external void wire_rust_auto_opaque_arg_own_and_return_own(
-      NativePortType port_, Object arg);
-
-  external void wire_rust_auto_opaque_callable_arg(
-      NativePortType port_, Object arg);
-
-  external void wire_rust_auto_opaque_callable_return(NativePortType port_);
-
-  external void wire_rust_auto_opaque_normal_and_opaque_arg(
-      NativePortType port_, Object a, String b);
-
-  external void wire_rust_auto_opaque_plus_sign_arg(
-      NativePortType port_, Object arg);
-
-  external void wire_rust_auto_opaque_plus_sign_return(NativePortType port_);
-
-  external void wire_rust_auto_opaque_return_own(NativePortType port_);
+  external void
+      wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal(
+          NativePortType port_, Object that);
 
   external void
-      wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(
+      wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal(
+          NativePortType port_, Object that);
+
+  external void
+      wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal(
+          NativePortType port_, Object that);
+
+  external void
+      wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal(
+          NativePortType port_, Object that);
+
+  external void wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal(
+      NativePortType port_);
+
+  external void wire_NonCloneSimpleTwinNormal_new_twin_normal(
+      NativePortType port_);
+
+  external void
+      wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal(
           NativePortType port_, Object arg);
 
   external void
-      wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(
+      wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal(
           NativePortType port_, Object arg);
 
-  external void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
+  external void wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal(
       NativePortType port_, Object arg);
 
   external void
-      wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own(
+      wire_NonCloneSimpleTwinNormal_static_method_return_own_twin_normal(
           NativePortType port_);
 
-  external void wire_rust_auto_opaque_trait_object_arg_borrow(
-      NativePortType port_, Object arg, String expect);
+  external void wire_rust_auto_opaque_arg_borrow_twin_normal(
+      NativePortType port_, Object arg);
 
-  external void wire_rust_auto_opaque_trait_object_arg_mut_borrow(
-      NativePortType port_, Object arg, String expect);
+  external void wire_rust_auto_opaque_arg_mut_borrow_twin_normal(
+      NativePortType port_, Object arg);
 
-  external void wire_rust_auto_opaque_trait_object_arg_own(
-      NativePortType port_, Object arg, String expect);
+  external void wire_rust_auto_opaque_arg_own_and_return_own_twin_normal(
+      NativePortType port_, Object arg);
 
-  external void wire_rust_auto_opaque_trait_object_return_own_one(
+  external void wire_rust_auto_opaque_arg_own_twin_normal(
+      NativePortType port_, Object arg);
+
+  external void wire_rust_auto_opaque_callable_arg_twin_normal(
+      NativePortType port_, Object arg);
+
+  external void wire_rust_auto_opaque_callable_return_twin_normal(
       NativePortType port_);
 
-  external void wire_rust_auto_opaque_trait_object_return_own_two(
+  external void wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal(
+      NativePortType port_, Object a, String b);
+
+  external void wire_rust_auto_opaque_plus_sign_arg_twin_normal(
+      NativePortType port_, Object arg);
+
+  external void wire_rust_auto_opaque_plus_sign_return_twin_normal(
       NativePortType port_);
 
-  external void wire_rust_auto_opaque_two_args(
+  external void wire_rust_auto_opaque_return_own_twin_normal(
+      NativePortType port_);
+
+  external void
+      wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal(
+          NativePortType port_, Object arg);
+
+  external void
+      wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal(
+          NativePortType port_, Object arg);
+
+  external void
+      wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal(
+          NativePortType port_, Object arg);
+
+  external void
+      wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal(
+          NativePortType port_);
+
+  external void wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal(
+      NativePortType port_, Object arg, String expect);
+
+  external void wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal(
+      NativePortType port_, Object arg, String expect);
+
+  external void wire_rust_auto_opaque_trait_object_arg_own_twin_normal(
+      NativePortType port_, Object arg, String expect);
+
+  external void wire_rust_auto_opaque_trait_object_return_own_one_twin_normal(
+      NativePortType port_);
+
+  external void wire_rust_auto_opaque_trait_object_return_own_two_twin_normal(
+      NativePortType port_);
+
+  external void wire_rust_auto_opaque_two_args_twin_normal(
       NativePortType port_, Object a, Object b);
 
   external void wire_create_array_opaque_enum_twin_normal(NativePortType port_);

@@ -6,106 +6,121 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<void> rustAutoOpaqueArgOwn(
+Future<void> rustAutoOpaqueArgOwnTwinNormal(
         {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) =>
-    RustLib.instance.api.rustAutoOpaqueArgOwn(arg: arg, hint: hint);
+    RustLib.instance.api.rustAutoOpaqueArgOwnTwinNormal(arg: arg, hint: hint);
 
-Future<void> rustAutoOpaqueArgBorrow(
+Future<void> rustAutoOpaqueArgBorrowTwinNormal(
         {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) =>
-    RustLib.instance.api.rustAutoOpaqueArgBorrow(arg: arg, hint: hint);
+    RustLib.instance.api
+        .rustAutoOpaqueArgBorrowTwinNormal(arg: arg, hint: hint);
 
-Future<void> rustAutoOpaqueArgMutBorrow(
+Future<void> rustAutoOpaqueArgMutBorrowTwinNormal(
         {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) =>
-    RustLib.instance.api.rustAutoOpaqueArgMutBorrow(arg: arg, hint: hint);
+    RustLib.instance.api
+        .rustAutoOpaqueArgMutBorrowTwinNormal(arg: arg, hint: hint);
 
-Future<RwLockNonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwn(
+Future<RwLockNonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwnTwinNormal(
         {dynamic hint}) =>
-    RustLib.instance.api.rustAutoOpaqueReturnOwn(hint: hint);
+    RustLib.instance.api.rustAutoOpaqueReturnOwnTwinNormal(hint: hint);
 
-Future<RwLockNonCloneSimpleTwinNormal> rustAutoOpaqueArgOwnAndReturnOwn(
-        {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) =>
-    RustLib.instance.api.rustAutoOpaqueArgOwnAndReturnOwn(arg: arg, hint: hint);
+Future<RwLockNonCloneSimpleTwinNormal>
+    rustAutoOpaqueArgOwnAndReturnOwnTwinNormal(
+            {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueArgOwnAndReturnOwnTwinNormal(arg: arg, hint: hint);
 
-Future<void> rustAutoOpaqueTwoArgs(
+Future<void> rustAutoOpaqueTwoArgsTwinNormal(
         {required RwLockNonCloneSimpleTwinNormal a,
         required RwLockNonCloneSimpleTwinNormal b,
         dynamic hint}) =>
-    RustLib.instance.api.rustAutoOpaqueTwoArgs(a: a, b: b, hint: hint);
+    RustLib.instance.api
+        .rustAutoOpaqueTwoArgsTwinNormal(a: a, b: b, hint: hint);
 
-Future<void> rustAutoOpaqueNormalAndOpaqueArg(
+Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinNormal(
         {required RwLockNonCloneSimpleTwinNormal a,
         required String b,
         dynamic hint}) =>
     RustLib.instance.api
-        .rustAutoOpaqueNormalAndOpaqueArg(a: a, b: b, hint: hint);
+        .rustAutoOpaqueNormalAndOpaqueArgTwinNormal(a: a, b: b, hint: hint);
 
 /// "+" inside the type signature
-Future<void> rustAutoOpaquePlusSignArg(
+Future<void> rustAutoOpaquePlusSignArgTwinNormal(
         {required RwLockBoxMyTraitTwinNormal arg, dynamic hint}) =>
-    RustLib.instance.api.rustAutoOpaquePlusSignArg(arg: arg, hint: hint);
+    RustLib.instance.api
+        .rustAutoOpaquePlusSignArgTwinNormal(arg: arg, hint: hint);
 
-Future<RwLockBoxMyTraitTwinNormal> rustAutoOpaquePlusSignReturn(
+Future<RwLockBoxMyTraitTwinNormal> rustAutoOpaquePlusSignReturnTwinNormal(
         {dynamic hint}) =>
-    RustLib.instance.api.rustAutoOpaquePlusSignReturn(hint: hint);
+    RustLib.instance.api.rustAutoOpaquePlusSignReturnTwinNormal(hint: hint);
 
-Future<void> rustAutoOpaqueCallableArg(
+Future<void> rustAutoOpaqueCallableArgTwinNormal(
         {required RwLockBoxFnStringString arg, dynamic hint}) =>
-    RustLib.instance.api.rustAutoOpaqueCallableArg(arg: arg, hint: hint);
-
-Future<RwLockBoxFnStringString> rustAutoOpaqueCallableReturn({dynamic hint}) =>
-    RustLib.instance.api.rustAutoOpaqueCallableReturn(hint: hint);
-
-Future<void> rustAutoOpaqueTraitObjectArgOwn(
-        {required RwLockBoxHelloTraitTwinNormal arg,
-        required String expect,
-        dynamic hint}) =>
     RustLib.instance.api
-        .rustAutoOpaqueTraitObjectArgOwn(arg: arg, expect: expect, hint: hint);
+        .rustAutoOpaqueCallableArgTwinNormal(arg: arg, hint: hint);
 
-Future<void> rustAutoOpaqueTraitObjectArgBorrow(
+Future<RwLockBoxFnStringString> rustAutoOpaqueCallableReturnTwinNormal(
+        {dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueCallableReturnTwinNormal(hint: hint);
+
+Future<void> rustAutoOpaqueTraitObjectArgOwnTwinNormal(
         {required RwLockBoxHelloTraitTwinNormal arg,
         required String expect,
         dynamic hint}) =>
-    RustLib.instance.api.rustAutoOpaqueTraitObjectArgBorrow(
+    RustLib.instance.api.rustAutoOpaqueTraitObjectArgOwnTwinNormal(
         arg: arg, expect: expect, hint: hint);
 
-Future<void> rustAutoOpaqueTraitObjectArgMutBorrow(
+Future<void> rustAutoOpaqueTraitObjectArgBorrowTwinNormal(
         {required RwLockBoxHelloTraitTwinNormal arg,
         required String expect,
         dynamic hint}) =>
-    RustLib.instance.api.rustAutoOpaqueTraitObjectArgMutBorrow(
+    RustLib.instance.api.rustAutoOpaqueTraitObjectArgBorrowTwinNormal(
         arg: arg, expect: expect, hint: hint);
 
-Future<RwLockBoxHelloTraitTwinNormal> rustAutoOpaqueTraitObjectReturnOwnOne(
-        {dynamic hint}) =>
-    RustLib.instance.api.rustAutoOpaqueTraitObjectReturnOwnOne(hint: hint);
+Future<void> rustAutoOpaqueTraitObjectArgMutBorrowTwinNormal(
+        {required RwLockBoxHelloTraitTwinNormal arg,
+        required String expect,
+        dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueTraitObjectArgMutBorrowTwinNormal(
+        arg: arg, expect: expect, hint: hint);
 
-Future<RwLockBoxHelloTraitTwinNormal> rustAutoOpaqueTraitObjectReturnOwnTwo(
-        {dynamic hint}) =>
-    RustLib.instance.api.rustAutoOpaqueTraitObjectReturnOwnTwo(hint: hint);
+Future<RwLockBoxHelloTraitTwinNormal>
+    rustAutoOpaqueTraitObjectReturnOwnOneTwinNormal({dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueTraitObjectReturnOwnOneTwinNormal(hint: hint);
 
-Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwn(
+Future<RwLockBoxHelloTraitTwinNormal>
+    rustAutoOpaqueTraitObjectReturnOwnTwoTwinNormal({dynamic hint}) =>
+        RustLib.instance.api
+            .rustAutoOpaqueTraitObjectReturnOwnTwoTwinNormal(hint: hint);
+
+Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinNormal(
         {required RwLockStructWithGoodAndOpaqueFieldTwinNormal arg,
         dynamic hint}) =>
     RustLib.instance.api
-        .rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwn(arg: arg, hint: hint);
+        .rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinNormal(
+            arg: arg, hint: hint);
 
-Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrow(
+Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinNormal(
         {required RwLockStructWithGoodAndOpaqueFieldTwinNormal arg,
         dynamic hint}) =>
-    RustLib.instance.api.rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrow(
-        arg: arg, hint: hint);
+    RustLib.instance.api
+        .rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinNormal(
+            arg: arg, hint: hint);
 
-Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrow(
+Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinNormal(
         {required RwLockStructWithGoodAndOpaqueFieldTwinNormal arg,
         dynamic hint}) =>
-    RustLib.instance.api.rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrow(
-        arg: arg, hint: hint);
+    RustLib.instance.api
+        .rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinNormal(
+            arg: arg, hint: hint);
 
 Future<RwLockStructWithGoodAndOpaqueFieldTwinNormal>
-    rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwn({dynamic hint}) =>
+    rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinNormal(
+            {dynamic hint}) =>
         RustLib.instance.api
-            .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwn(hint: hint);
+            .rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinNormal(
+                hint: hint);
 
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn Fn (String) -> String + Send + Sync + UnwindSafe + RefUnwindSafe>>>
 @sealed
@@ -170,55 +185,62 @@ class RwLockNonCloneSimpleTwinNormal extends RustOpaque {
         .rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinNormalPtr,
   );
 
-  Future<void> instanceMethodArgBorrow({dynamic hint}) =>
-      RustLib.instance.api.nonCloneSimpleTwinNormalInstanceMethodArgBorrow(
+  Future<void> instanceMethodArgBorrowTwinNormal({dynamic hint}) =>
+      RustLib.instance.api
+          .nonCloneSimpleTwinNormalInstanceMethodArgBorrowTwinNormal(
         that: this,
       );
 
-  Future<void> instanceMethodArgMutBorrow({dynamic hint}) =>
-      RustLib.instance.api.nonCloneSimpleTwinNormalInstanceMethodArgMutBorrow(
+  Future<void> instanceMethodArgMutBorrowTwinNormal({dynamic hint}) =>
+      RustLib.instance.api
+          .nonCloneSimpleTwinNormalInstanceMethodArgMutBorrowTwinNormal(
         that: this,
       );
 
-  Future<void> instanceMethodArgOwn({dynamic hint}) =>
-      RustLib.instance.api.nonCloneSimpleTwinNormalInstanceMethodArgOwn(
+  Future<void> instanceMethodArgOwnTwinNormal({dynamic hint}) =>
+      RustLib.instance.api
+          .nonCloneSimpleTwinNormalInstanceMethodArgOwnTwinNormal(
         that: this,
       );
 
-  Future<RwLockNonCloneSimpleTwinNormal> instanceMethodReturnOwn(
+  Future<RwLockNonCloneSimpleTwinNormal> instanceMethodReturnOwnTwinNormal(
           {dynamic hint}) =>
-      RustLib.instance.api.nonCloneSimpleTwinNormalInstanceMethodReturnOwn(
+      RustLib.instance.api
+          .nonCloneSimpleTwinNormalInstanceMethodReturnOwnTwinNormal(
         that: this,
       );
-
-  /// unnamed constructor
-  static Future<RwLockNonCloneSimpleTwinNormal> newNonCloneSimpleTwinNormal(
-          {dynamic hint}) =>
-      RustLib.instance.api.nonCloneSimpleTwinNormalNew(hint: hint);
 
   /// named constructor
-  static Future<RwLockNonCloneSimpleTwinNormal> newCustomName({dynamic hint}) =>
-      RustLib.instance.api.nonCloneSimpleTwinNormalNewCustomName(hint: hint);
-
-  static Future<void> staticMethodArgBorrow(
-          {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) =>
-      RustLib.instance.api
-          .nonCloneSimpleTwinNormalStaticMethodArgBorrow(arg: arg, hint: hint);
-
-  static Future<void> staticMethodArgMutBorrow(
-          {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) =>
-      RustLib.instance.api.nonCloneSimpleTwinNormalStaticMethodArgMutBorrow(
-          arg: arg, hint: hint);
-
-  static Future<void> staticMethodArgOwn(
-          {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) =>
-      RustLib.instance.api
-          .nonCloneSimpleTwinNormalStaticMethodArgOwn(arg: arg, hint: hint);
-
-  static Future<RwLockNonCloneSimpleTwinNormal> staticMethodReturnOwn(
+  static Future<RwLockNonCloneSimpleTwinNormal> newCustomNameTwinNormal(
           {dynamic hint}) =>
       RustLib.instance.api
-          .nonCloneSimpleTwinNormalStaticMethodReturnOwn(hint: hint);
+          .nonCloneSimpleTwinNormalNewCustomNameTwinNormal(hint: hint);
+
+  /// unnamed constructor
+  static Future<RwLockNonCloneSimpleTwinNormal> newTwinNormal({dynamic hint}) =>
+      RustLib.instance.api.nonCloneSimpleTwinNormalNewTwinNormal(hint: hint);
+
+  static Future<void> staticMethodArgBorrowTwinNormal(
+          {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) =>
+      RustLib.instance.api
+          .nonCloneSimpleTwinNormalStaticMethodArgBorrowTwinNormal(
+              arg: arg, hint: hint);
+
+  static Future<void> staticMethodArgMutBorrowTwinNormal(
+          {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) =>
+      RustLib.instance.api
+          .nonCloneSimpleTwinNormalStaticMethodArgMutBorrowTwinNormal(
+              arg: arg, hint: hint);
+
+  static Future<void> staticMethodArgOwnTwinNormal(
+          {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) =>
+      RustLib.instance.api.nonCloneSimpleTwinNormalStaticMethodArgOwnTwinNormal(
+          arg: arg, hint: hint);
+
+  static Future<RwLockNonCloneSimpleTwinNormal> staticMethodReturnOwnTwinNormal(
+          {dynamic hint}) =>
+      RustLib.instance.api
+          .nonCloneSimpleTwinNormalStaticMethodReturnOwnTwinNormal(hint: hint);
 }
 
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinNormal>>

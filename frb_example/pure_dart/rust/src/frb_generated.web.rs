@@ -8583,235 +8583,241 @@ pub fn wire_test_raw_string_item_struct_twin_normal(
 }
 
 #[wasm_bindgen]
-pub fn wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow(
+pub fn wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_impl(port_, that)
+    wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal_impl(port_, that)
 }
 
 #[wasm_bindgen]
-pub fn wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow(
+pub fn wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_impl(port_, that)
+    wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal_impl(port_, that)
 }
 
 #[wasm_bindgen]
-pub fn wire_NonCloneSimpleTwinNormal_instance_method_arg_own(
+pub fn wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_NonCloneSimpleTwinNormal_instance_method_arg_own_impl(port_, that)
+    wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal_impl(port_, that)
 }
 
 #[wasm_bindgen]
-pub fn wire_NonCloneSimpleTwinNormal_instance_method_return_own(
+pub fn wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     that: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_NonCloneSimpleTwinNormal_instance_method_return_own_impl(port_, that)
+    wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal_impl(port_, that)
 }
 
 #[wasm_bindgen]
-pub fn wire_NonCloneSimpleTwinNormal_new(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    wire_NonCloneSimpleTwinNormal_new_impl(port_)
-}
-
-#[wasm_bindgen]
-pub fn wire_NonCloneSimpleTwinNormal_new_custom_name(
+pub fn wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    wire_NonCloneSimpleTwinNormal_new_custom_name_impl(port_)
+    wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_NonCloneSimpleTwinNormal_static_method_arg_borrow(
+pub fn wire_NonCloneSimpleTwinNormal_new_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_impl(port_, arg)
+    wire_NonCloneSimpleTwinNormal_new_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow(
+pub fn wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_impl(port_, arg)
+    wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_NonCloneSimpleTwinNormal_static_method_arg_own(
+pub fn wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_NonCloneSimpleTwinNormal_static_method_arg_own_impl(port_, arg)
+    wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_NonCloneSimpleTwinNormal_static_method_return_own(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-) {
-    wire_NonCloneSimpleTwinNormal_static_method_return_own_impl(port_)
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_arg_borrow(
+pub fn wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_rust_auto_opaque_arg_borrow_impl(port_, arg)
+    wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_arg_mut_borrow(
+pub fn wire_NonCloneSimpleTwinNormal_static_method_return_own_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_NonCloneSimpleTwinNormal_static_method_return_own_twin_normal_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_arg_borrow_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_rust_auto_opaque_arg_mut_borrow_impl(port_, arg)
+    wire_rust_auto_opaque_arg_borrow_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_arg_own(
+pub fn wire_rust_auto_opaque_arg_mut_borrow_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_rust_auto_opaque_arg_own_impl(port_, arg)
+    wire_rust_auto_opaque_arg_mut_borrow_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_arg_own_and_return_own(
+pub fn wire_rust_auto_opaque_arg_own_and_return_own_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_rust_auto_opaque_arg_own_and_return_own_impl(port_, arg)
+    wire_rust_auto_opaque_arg_own_and_return_own_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_callable_arg(
+pub fn wire_rust_auto_opaque_arg_own_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_rust_auto_opaque_callable_arg_impl(port_, arg)
+    wire_rust_auto_opaque_arg_own_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_callable_return(
+pub fn wire_rust_auto_opaque_callable_arg_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_auto_opaque_callable_arg_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_callable_return_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    wire_rust_auto_opaque_callable_return_impl(port_)
+    wire_rust_auto_opaque_callable_return_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_normal_and_opaque_arg(
+pub fn wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: String,
 ) {
-    wire_rust_auto_opaque_normal_and_opaque_arg_impl(port_, a, b)
+    wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal_impl(port_, a, b)
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_plus_sign_arg(
+pub fn wire_rust_auto_opaque_plus_sign_arg_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_rust_auto_opaque_plus_sign_arg_impl(port_, arg)
+    wire_rust_auto_opaque_plus_sign_arg_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_plus_sign_return(
+pub fn wire_rust_auto_opaque_plus_sign_return_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    wire_rust_auto_opaque_plus_sign_return_impl(port_)
+    wire_rust_auto_opaque_plus_sign_return_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_return_own(port_: flutter_rust_bridge::for_generated::MessagePort) {
-    wire_rust_auto_opaque_return_own_impl(port_)
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(
+pub fn wire_rust_auto_opaque_return_own_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_impl(port_, arg)
+    wire_rust_auto_opaque_return_own_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(
+pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_impl(port_, arg)
+    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
+pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_impl(port_, arg)
+    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal_impl(
+        port_, arg,
+    )
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
-) {
-    wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_impl(port_)
-}
-
-#[wasm_bindgen]
-pub fn wire_rust_auto_opaque_trait_object_arg_borrow(
+pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    expect: String,
 ) {
-    wire_rust_auto_opaque_trait_object_arg_borrow_impl(port_, arg, expect)
+    wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_trait_object_arg_mut_borrow(
+pub fn wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: String,
 ) {
-    wire_rust_auto_opaque_trait_object_arg_mut_borrow_impl(port_, arg, expect)
+    wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal_impl(port_, arg, expect)
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_trait_object_arg_own(
+pub fn wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     expect: String,
 ) {
-    wire_rust_auto_opaque_trait_object_arg_own_impl(port_, arg, expect)
+    wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal_impl(port_, arg, expect)
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_trait_object_return_own_one(
+pub fn wire_rust_auto_opaque_trait_object_arg_own_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: String,
+) {
+    wire_rust_auto_opaque_trait_object_arg_own_twin_normal_impl(port_, arg, expect)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_trait_object_return_own_one_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    wire_rust_auto_opaque_trait_object_return_own_one_impl(port_)
+    wire_rust_auto_opaque_trait_object_return_own_one_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_trait_object_return_own_two(
+pub fn wire_rust_auto_opaque_trait_object_return_own_two_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    wire_rust_auto_opaque_trait_object_return_own_two_impl(port_)
+    wire_rust_auto_opaque_trait_object_return_own_two_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn wire_rust_auto_opaque_two_args(
+pub fn wire_rust_auto_opaque_two_args_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
     b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_rust_auto_opaque_two_args_impl(port_, a, b)
+    wire_rust_auto_opaque_two_args_twin_normal_impl(port_, a, b)
 }
 
 #[wasm_bindgen]
