@@ -41,6 +41,7 @@ pub trait Handler {
         TaskRetData: IntoDart,
         Er: IntoDart + 'static;
 
+    /// Same as [`wrap`][Handler::wrap], but for async Rust.
     #[cfg(feature = "rust-async")]
     fn wrap_async<PrepareFn, TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(
         &self,
