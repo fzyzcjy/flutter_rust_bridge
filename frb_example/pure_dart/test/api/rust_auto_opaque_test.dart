@@ -204,7 +204,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
             await rustAutoOpaqueTraitObjectReturnOwnTwoTwinNormal(), 'B'));
   });
 
-  group('TODO', () {
+  group('static method', () {
+    TODO;
+  });
+
+  group('instance method', () {
+    TODO;
+  });
+
+  group('types with both encodable and opaque fields', () {
     TODO;
   });
 }
