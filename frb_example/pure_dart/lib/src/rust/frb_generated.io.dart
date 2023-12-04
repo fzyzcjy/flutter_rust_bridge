@@ -121,6 +121,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxFnStringStringPtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringStringPtr;
+
+  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_MutexHideDataPtr =>
           wire._rust_arc_decrement_strong_count_RustOpaque_MutexHideDataPtr;
 
@@ -133,6 +137,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           wire._rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataPtr;
 
   CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_StructWithGoodAndOpaqueFieldTwinNormalPtr =>
+          wire._rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormalPtr;
+
+  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxDartDebugTwinNormalPtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormalPtr;
 
@@ -143,6 +151,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_BoxDartDebugTwinSyncPtr => wire
           ._rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSyncPtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxHelloTraitTwinNormalPtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormalPtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_BoxMyTraitTwinNormalPtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSyncPtr;
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_FrbOpaqueReturnPtr =>
@@ -15545,6 +15561,165 @@ class RustLibWire implements BaseWire {
       _wire_test_raw_string_item_struct_twin_normalPtr
           .asFunction<void Function(int)>();
 
+  void wire_rust_auto_opaque_arg_borrow(
+    int port_,
+    ffi.Pointer<ffi.Void> arg,
+  ) {
+    return _wire_rust_auto_opaque_arg_borrow(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_arg_borrowPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_rust_auto_opaque_arg_borrow');
+  late final _wire_rust_auto_opaque_arg_borrow =
+      _wire_rust_auto_opaque_arg_borrowPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_rust_auto_opaque_arg_mut_borrow(
+    int port_,
+    ffi.Pointer<ffi.Void> arg,
+  ) {
+    return _wire_rust_auto_opaque_arg_mut_borrow(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_arg_mut_borrowPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_rust_auto_opaque_arg_mut_borrow');
+  late final _wire_rust_auto_opaque_arg_mut_borrow =
+      _wire_rust_auto_opaque_arg_mut_borrowPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_rust_auto_opaque_arg_own(
+    int port_,
+    ffi.Pointer<ffi.Void> arg,
+  ) {
+    return _wire_rust_auto_opaque_arg_own(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_arg_ownPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_rust_auto_opaque_arg_own');
+  late final _wire_rust_auto_opaque_arg_own = _wire_rust_auto_opaque_arg_ownPtr
+      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_rust_auto_opaque_arg_own_and_return_own(
+    int port_,
+    ffi.Pointer<ffi.Void> arg,
+  ) {
+    return _wire_rust_auto_opaque_arg_own_and_return_own(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_arg_own_and_return_ownPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_rust_auto_opaque_arg_own_and_return_own');
+  late final _wire_rust_auto_opaque_arg_own_and_return_own =
+      _wire_rust_auto_opaque_arg_own_and_return_ownPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_rust_auto_opaque_callable_arg(
+    int port_,
+    ffi.Pointer<ffi.Void> arg,
+  ) {
+    return _wire_rust_auto_opaque_callable_arg(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_callable_argPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_rust_auto_opaque_callable_arg');
+  late final _wire_rust_auto_opaque_callable_arg =
+      _wire_rust_auto_opaque_callable_argPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_rust_auto_opaque_callable_return(
+    int port_,
+  ) {
+    return _wire_rust_auto_opaque_callable_return(
+      port_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_callable_returnPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_rust_auto_opaque_callable_return');
+  late final _wire_rust_auto_opaque_callable_return =
+      _wire_rust_auto_opaque_callable_returnPtr
+          .asFunction<void Function(int)>();
+
+  void wire_rust_auto_opaque_normal_and_opaque_arg(
+    int port_,
+    ffi.Pointer<ffi.Void> a,
+    ffi.Pointer<wire_list_prim_u_8> b,
+  ) {
+    return _wire_rust_auto_opaque_normal_and_opaque_arg(
+      port_,
+      a,
+      b,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_normal_and_opaque_argPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+                  ffi.Pointer<wire_list_prim_u_8>)>>(
+      'wire_rust_auto_opaque_normal_and_opaque_arg');
+  late final _wire_rust_auto_opaque_normal_and_opaque_arg =
+      _wire_rust_auto_opaque_normal_and_opaque_argPtr.asFunction<
+          void Function(
+              int, ffi.Pointer<ffi.Void>, ffi.Pointer<wire_list_prim_u_8>)>();
+
+  void wire_rust_auto_opaque_plus_sign_arg(
+    int port_,
+    ffi.Pointer<ffi.Void> arg,
+  ) {
+    return _wire_rust_auto_opaque_plus_sign_arg(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_plus_sign_argPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_rust_auto_opaque_plus_sign_arg');
+  late final _wire_rust_auto_opaque_plus_sign_arg =
+      _wire_rust_auto_opaque_plus_sign_argPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_rust_auto_opaque_plus_sign_return(
+    int port_,
+  ) {
+    return _wire_rust_auto_opaque_plus_sign_return(
+      port_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_plus_sign_returnPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_rust_auto_opaque_plus_sign_return');
+  late final _wire_rust_auto_opaque_plus_sign_return =
+      _wire_rust_auto_opaque_plus_sign_returnPtr
+          .asFunction<void Function(int)>();
+
   void wire_rust_auto_opaque_return_own(
     int port_,
   ) {
@@ -15558,6 +15733,194 @@ class RustLibWire implements BaseWire {
           'wire_rust_auto_opaque_return_own');
   late final _wire_rust_auto_opaque_return_own =
       _wire_rust_auto_opaque_return_ownPtr.asFunction<void Function(int)>();
+
+  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(
+    int port_,
+    ffi.Pointer<ffi.Void> arg,
+  ) {
+    return _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrowPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          'wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow');
+  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow =
+      _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrowPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(
+    int port_,
+    ffi.Pointer<ffi.Void> arg,
+  ) {
+    return _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrowPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          'wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow');
+  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow =
+      _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrowPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
+    int port_,
+    ffi.Pointer<ffi.Void> arg,
+  ) {
+    return _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_ownPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          'wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own');
+  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own =
+      _wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_ownPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own(
+    int port_,
+  ) {
+    return _wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own(
+      port_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_ownPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own');
+  late final _wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own =
+      _wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_ownPtr
+          .asFunction<void Function(int)>();
+
+  void wire_rust_auto_opaque_trait_object_arg_borrow(
+    int port_,
+    ffi.Pointer<ffi.Void> arg,
+    ffi.Pointer<wire_list_prim_u_8> expect,
+  ) {
+    return _wire_rust_auto_opaque_trait_object_arg_borrow(
+      port_,
+      arg,
+      expect,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_trait_object_arg_borrowPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+                  ffi.Pointer<wire_list_prim_u_8>)>>(
+      'wire_rust_auto_opaque_trait_object_arg_borrow');
+  late final _wire_rust_auto_opaque_trait_object_arg_borrow =
+      _wire_rust_auto_opaque_trait_object_arg_borrowPtr.asFunction<
+          void Function(
+              int, ffi.Pointer<ffi.Void>, ffi.Pointer<wire_list_prim_u_8>)>();
+
+  void wire_rust_auto_opaque_trait_object_arg_mut_borrow(
+    int port_,
+    ffi.Pointer<ffi.Void> arg,
+    ffi.Pointer<wire_list_prim_u_8> expect,
+  ) {
+    return _wire_rust_auto_opaque_trait_object_arg_mut_borrow(
+      port_,
+      arg,
+      expect,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_trait_object_arg_mut_borrowPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+                  ffi.Pointer<wire_list_prim_u_8>)>>(
+      'wire_rust_auto_opaque_trait_object_arg_mut_borrow');
+  late final _wire_rust_auto_opaque_trait_object_arg_mut_borrow =
+      _wire_rust_auto_opaque_trait_object_arg_mut_borrowPtr.asFunction<
+          void Function(
+              int, ffi.Pointer<ffi.Void>, ffi.Pointer<wire_list_prim_u_8>)>();
+
+  void wire_rust_auto_opaque_trait_object_arg_own(
+    int port_,
+    ffi.Pointer<ffi.Void> arg,
+    ffi.Pointer<wire_list_prim_u_8> expect,
+  ) {
+    return _wire_rust_auto_opaque_trait_object_arg_own(
+      port_,
+      arg,
+      expect,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_trait_object_arg_ownPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+                  ffi.Pointer<wire_list_prim_u_8>)>>(
+      'wire_rust_auto_opaque_trait_object_arg_own');
+  late final _wire_rust_auto_opaque_trait_object_arg_own =
+      _wire_rust_auto_opaque_trait_object_arg_ownPtr.asFunction<
+          void Function(
+              int, ffi.Pointer<ffi.Void>, ffi.Pointer<wire_list_prim_u_8>)>();
+
+  void wire_rust_auto_opaque_trait_object_return_own_one(
+    int port_,
+  ) {
+    return _wire_rust_auto_opaque_trait_object_return_own_one(
+      port_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_trait_object_return_own_onePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_rust_auto_opaque_trait_object_return_own_one');
+  late final _wire_rust_auto_opaque_trait_object_return_own_one =
+      _wire_rust_auto_opaque_trait_object_return_own_onePtr
+          .asFunction<void Function(int)>();
+
+  void wire_rust_auto_opaque_trait_object_return_own_two(
+    int port_,
+  ) {
+    return _wire_rust_auto_opaque_trait_object_return_own_two(
+      port_,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_trait_object_return_own_twoPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_rust_auto_opaque_trait_object_return_own_two');
+  late final _wire_rust_auto_opaque_trait_object_return_own_two =
+      _wire_rust_auto_opaque_trait_object_return_own_twoPtr
+          .asFunction<void Function(int)>();
+
+  void wire_rust_auto_opaque_two_args(
+    int port_,
+    ffi.Pointer<ffi.Void> a,
+    ffi.Pointer<ffi.Void> b,
+  ) {
+    return _wire_rust_auto_opaque_two_args(
+      port_,
+      a,
+      b,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_two_argsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+              ffi.Pointer<ffi.Void>)>>('wire_rust_auto_opaque_two_args');
+  late final _wire_rust_auto_opaque_two_args =
+      _wire_rust_auto_opaque_two_argsPtr.asFunction<
+          void Function(int, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
 
   void wire_create_array_opaque_enum_twin_normal(
     int port_,
@@ -19206,6 +19569,38 @@ class RustLibWire implements BaseWire {
   late final _new_list_weekdays_twin_sync = _new_list_weekdays_twin_syncPtr
       .asFunction<ffi.Pointer<wire_list_weekdays_twin_sync> Function(int)>();
 
+  void
+      rust_arc_increment_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringStringPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_increment_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString');
+  late final _rust_arc_increment_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString =
+      _rust_arc_increment_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringStringPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringStringPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_decrement_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString');
+  late final _rust_arc_decrement_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringString =
+      _rust_arc_decrement_strong_count_RustOpaque_AssertUnwindSafeBoxdynFnStringStringPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
   void rust_arc_increment_strong_count_RustOpaque_MutexHideData(
     ffi.Pointer<ffi.Void> ptr,
   ) {
@@ -19296,6 +19691,38 @@ class RustLibWire implements BaseWire {
       _rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
+  void
+      rust_arc_increment_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_increment_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal');
+  late final _rust_arc_increment_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal =
+      _rust_arc_increment_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormalPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal');
+  late final _rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormal =
+      _rust_arc_decrement_strong_count_RustOpaque_StructWithGoodAndOpaqueFieldTwinNormalPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
   void rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal(
     ffi.Pointer<ffi.Void> ptr,
   ) {
@@ -19384,6 +19811,68 @@ class RustLibWire implements BaseWire {
           'rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync');
   late final _rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync =
       _rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSyncPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_increment_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_box_dynHelloTraitTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_increment_strong_count_RustOpaque_box_dynHelloTraitTwinNormal');
+  late final _rust_arc_increment_strong_count_RustOpaque_box_dynHelloTraitTwinNormal =
+      _rust_arc_increment_strong_count_RustOpaque_box_dynHelloTraitTwinNormalPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormal(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormalPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormal');
+  late final _rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormal =
+      _rust_arc_decrement_strong_count_RustOpaque_box_dynHelloTraitTwinNormalPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_increment_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync');
+  late final _rust_arc_increment_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync =
+      _rust_arc_increment_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSyncPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSyncPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync');
+  late final _rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSync =
+      _rust_arc_decrement_strong_count_RustOpaque_box_dynMyTraitTwinNormalSendSyncPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void rust_arc_increment_strong_count_RustOpaque_frb_opaque_return(
