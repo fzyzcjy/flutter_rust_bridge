@@ -17,13 +17,9 @@ use syn::Type;
 use IrType::RustAutoOpaque;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
-    pub(crate) fn transform_type_rust_auto_opaque(
-        &mut self,
-        ty_raw: &IrType,
-        context_rust_async: bool,
-    ) -> IrType {
+    pub(crate) fn transform_type_rust_auto_opaque(&mut self, ty_raw: &IrType) -> IrType {
         if self.check_candidate_rust_auto_opaque(ty_raw) {
-            return self.parse_rust_auto_opaque(&ty_raw, context_rust_async);
+            return self.parse_rust_auto_opaque(&ty_raw);
         }
 
         ty_raw.clone()
@@ -46,16 +42,16 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         (subtree_types_except_rust_opaque.iter()).any(|x| matches!(x, IrType::Unencodable(_)))
     }
 
-    fn parse_rust_auto_opaque(&mut self, ty: &IrType, context_rust_async: bool) -> IrType {
+    fn parse_rust_auto_opaque(&mut self, ty: &IrType) -> IrType {
         let (ownership_mode, inner) = match ty {
             IrType::Ownership(o) => (o.mode.clone(), *o.inner.clone()),
             _ => (IrTypeOwnershipMode::Owned, ty.clone()),
         };
 
-        let lock_type = if context_rust_async {
-            "tokio::sync::RwLock"
-        } else {
+        let lock_type = if TODO {
             "std::sync::RwLock"
+        } else {
+            "tokio::sync::RwLock"
         };
 
         let new_ir = IrTypeRustAutoOpaque {

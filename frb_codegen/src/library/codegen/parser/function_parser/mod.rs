@@ -67,14 +67,13 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let func_name = parse_name(sig, &owner);
         let attributes = FrbAttributes::parse(func.attrs())?;
-        let rust_async = sig.asyncness.is_some();
 
         let mut info = FunctionPartialInfo::default();
         for (i, sig_input) in sig.inputs.iter().enumerate() {
             info = info.merge(self.parse_fn_arg(i, sig_input, &owner, &context)?)?;
         }
         info = info.merge(self.parse_fn_output(sig, &context)?)?;
-        info = self.transform_fn_info(info, rust_async, &context);
+        info = self.transform_fn_info(info, &context);
 
         let mode = compute_func_mode(attributes, &info);
 
@@ -85,7 +84,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             error_output: info.error_output,
             owner,
             mode,
-            rust_async,
+            rust_async: sig.asyncness.is_some(),
             comments: parse_comments(func.attrs()),
             src_lineno,
         }))
