@@ -30,7 +30,9 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
 
   _EntrypointState<A> get _state =>
       __state ??
-      (throw StateError('flutter_rust_bridge has not been initialized'));
+      (throw StateError('flutter_rust_bridge has not been initialized. '
+          'Did you forget to call `await RustLib.init();`? '
+          '(If you have configured a different lib name, change `RustLib` to your name.)'));
   _EntrypointState<A>? __state;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
