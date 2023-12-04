@@ -14,16 +14,16 @@ impl<T: DartSafe> RustOpaque<RwLock<T>> {
     }
 
     pub fn rust_auto_opaque_wire2api_ref_mut(&self) -> Result<&mut T> {
-        Ok(TODO)
+        Ok(todo!())
     }
 }
 
 pub trait RustAutoOpaqueWire2ApiIntermediate<'a, T: 'a> {
-    fn utilize(&self) -> T;
+    fn utilize(&'a self) -> T;
 }
 
-impl<T> RustAutoOpaqueWire2ApiIntermediate<&T> for T {
-    fn utilize(&self) -> &T {
+impl<'a, T> RustAutoOpaqueWire2ApiIntermediate<'a, &'a T> for T {
+    fn utilize(&'a self) -> &'a T {
         self
     }
 }
