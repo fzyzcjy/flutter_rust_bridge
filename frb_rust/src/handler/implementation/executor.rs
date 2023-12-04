@@ -70,7 +70,7 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool> Executor for SimpleExecutor<EH
                     let task_context = TaskContext::new(TaskRust2DartContext::new(sender.clone()));
                     let ret = task(task_context).map(|e| e.into_into_dart().into_dart());
 
-                    handle_result_normal_or_async(ret, mode, sender, eh2, port2);
+                    ExecuteNormalOrAsyncUtils::handle_result(ret, mode, sender, eh2, port2);
                 });
 
                 if let Err(error) = thread_result {
@@ -128,7 +128,7 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool> Executor for SimpleExecutor<EH
                     .await
                     .map(|e| e.into_into_dart().into_dart());
 
-                handle_result_normal_or_async(ret, mode, sender, eh2, port2);
+                ExecuteNormalOrAsyncUtils::handle_result(ret, mode, sender, eh2, port2);
             }
             .catch_unwind()
             .await;
@@ -140,27 +140,31 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool> Executor for SimpleExecutor<EH
     }
 }
 
-fn handle_result_normal_or_async<EH: ErrorHandler + Sync, Er: IntoDart + 'static>(
-    ret: Result<DartCObject, Er>,
-    mode: FfiCallMode,
-    sender: Rust2DartSender,
-    eh: EH,
-    port: MessagePort,
-) {
-    match ret {
-        Ok(result) => {
-            match mode {
-                FfiCallMode::Normal => {
-                    sender.send(Api2Wire::success(result));
+struct ExecuteNormalOrAsyncUtils;
+
+impl ExecuteNormalOrAsyncUtils {
+    fn handle_result<EH: ErrorHandler + Sync, Er: IntoDart + 'static>(
+        ret: Result<DartCObject, Er>,
+        mode: FfiCallMode,
+        sender: Rust2DartSender,
+        eh: EH,
+        port: MessagePort,
+    ) {
+        match ret {
+            Ok(result) => {
+                match mode {
+                    FfiCallMode::Normal => {
+                        sender.send(Api2Wire::success(result));
+                    }
+                    FfiCallMode::Stream => {
+                        // nothing - ignore the return value of a Stream-typed function
+                    }
+                    _ => unreachable!(),
                 }
-                FfiCallMode::Stream => {
-                    // nothing - ignore the return value of a Stream-typed function
-                }
-                _ => unreachable!(),
             }
-        }
-        Err(error) => {
-            eh.handle_error(port, Error::CustomError(Box::new(error)));
-        }
-    };
+            Err(error) => {
+                eh.handle_error(port, Error::CustomError(Box::new(error)));
+            }
+        };
+    }
 }
