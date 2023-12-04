@@ -79,7 +79,7 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool> Executor for SimpleExecutor<EH
                                 // nothing - ignore the return value of a Stream-typed function
                             }
                             FfiCallMode::Sync => {
-                                panic!("FfiCallMode::Sync should not call execute, please call execute_sync instead")
+                                unreachable!("FfiCallMode::Sync should not call execute, please call execute_sync instead")
                             }
                         }
                     }
@@ -154,7 +154,7 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool> Executor for SimpleExecutor<EH
                                 // nothing - ignore the return value of a Stream-typed function
                             }
                             FfiCallMode::Sync => {
-                                panic!("FfiCallMode::Sync should not call execute, please call execute_sync instead")
+                                unreachable!("FfiCallMode::Sync should not call execute, please call execute_sync instead")
                             }
                         }
                     }
