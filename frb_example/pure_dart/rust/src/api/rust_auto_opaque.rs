@@ -10,21 +10,25 @@ pub struct NonCloneSimpleTwinNormal {
 
 // ==================================== simple =======================================
 
-pub fn rust_auto_opaque_arg_own_twin_normal(arg: NonCloneSimpleTwinNormal) {
-    assert_eq!(arg.inner, 42);
+pub fn rust_auto_opaque_arg_own_twin_normal(arg: NonCloneSimpleTwinNormal, expect: i32) {
+    assert_eq!(arg.inner, expect);
 }
 
-pub fn rust_auto_opaque_arg_borrow_twin_normal(arg: &NonCloneSimpleTwinNormal) {
-    assert_eq!(arg.inner, 42);
+pub fn rust_auto_opaque_arg_borrow_twin_normal(arg: &NonCloneSimpleTwinNormal, expect: i32) {
+    assert_eq!(arg.inner, expect);
 }
 
-pub fn rust_auto_opaque_arg_mut_borrow_twin_normal(arg: &mut NonCloneSimpleTwinNormal) {
-    assert_eq!(arg.inner, 42);
-    arg.inner += 1;
+pub fn rust_auto_opaque_arg_mut_borrow_twin_normal(
+    arg: &mut NonCloneSimpleTwinNormal,
+    expect: i32,
+    adder: i32,
+) {
+    assert_eq!(arg.inner, expect);
+    arg.inner += adder;
 }
 
-pub fn rust_auto_opaque_return_own_twin_normal() -> NonCloneSimpleTwinNormal {
-    NonCloneSimpleTwinNormal { inner: 42 }
+pub fn rust_auto_opaque_return_own_twin_normal(initial: i32) -> NonCloneSimpleTwinNormal {
+    NonCloneSimpleTwinNormal { inner: initial }
 }
 
 // ==================================== with other args =======================================
