@@ -5682,6 +5682,51 @@ class RustLibWire extends BaseWire {
   void wire_test_raw_string_item_struct_twin_normal(NativePortType port_) =>
       wasmModule.wire_test_raw_string_item_struct_twin_normal(port_);
 
+  void wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow(
+          NativePortType port_, Object that) =>
+      wasmModule.wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow(
+          port_, that);
+
+  void wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow(
+          NativePortType port_, Object that) =>
+      wasmModule.wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow(
+          port_, that);
+
+  void wire_NonCloneSimpleTwinNormal_instance_method_arg_own(
+          NativePortType port_, Object that) =>
+      wasmModule.wire_NonCloneSimpleTwinNormal_instance_method_arg_own(
+          port_, that);
+
+  void wire_NonCloneSimpleTwinNormal_instance_method_return_own(
+          NativePortType port_, Object that) =>
+      wasmModule.wire_NonCloneSimpleTwinNormal_instance_method_return_own(
+          port_, that);
+
+  void wire_NonCloneSimpleTwinNormal_new(NativePortType port_) =>
+      wasmModule.wire_NonCloneSimpleTwinNormal_new(port_);
+
+  void wire_NonCloneSimpleTwinNormal_new_custom_name(NativePortType port_) =>
+      wasmModule.wire_NonCloneSimpleTwinNormal_new_custom_name(port_);
+
+  void wire_NonCloneSimpleTwinNormal_static_method_arg_borrow(
+          NativePortType port_, Object arg) =>
+      wasmModule.wire_NonCloneSimpleTwinNormal_static_method_arg_borrow(
+          port_, arg);
+
+  void wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow(
+          NativePortType port_, Object arg) =>
+      wasmModule.wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow(
+          port_, arg);
+
+  void wire_NonCloneSimpleTwinNormal_static_method_arg_own(
+          NativePortType port_, Object arg) =>
+      wasmModule.wire_NonCloneSimpleTwinNormal_static_method_arg_own(
+          port_, arg);
+
+  void wire_NonCloneSimpleTwinNormal_static_method_return_own(
+          NativePortType port_) =>
+      wasmModule.wire_NonCloneSimpleTwinNormal_static_method_return_own(port_);
+
   void wire_rust_auto_opaque_arg_borrow(NativePortType port_, Object arg) =>
       wasmModule.wire_rust_auto_opaque_arg_borrow(port_, arg);
 
@@ -7972,6 +8017,35 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_);
 
   external void wire_test_raw_string_item_struct_twin_normal(
+      NativePortType port_);
+
+  external void wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow(
+      NativePortType port_, Object that);
+
+  external void wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow(
+      NativePortType port_, Object that);
+
+  external void wire_NonCloneSimpleTwinNormal_instance_method_arg_own(
+      NativePortType port_, Object that);
+
+  external void wire_NonCloneSimpleTwinNormal_instance_method_return_own(
+      NativePortType port_, Object that);
+
+  external void wire_NonCloneSimpleTwinNormal_new(NativePortType port_);
+
+  external void wire_NonCloneSimpleTwinNormal_new_custom_name(
+      NativePortType port_);
+
+  external void wire_NonCloneSimpleTwinNormal_static_method_arg_borrow(
+      NativePortType port_, Object arg);
+
+  external void wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow(
+      NativePortType port_, Object arg);
+
+  external void wire_NonCloneSimpleTwinNormal_static_method_arg_own(
+      NativePortType port_, Object arg);
+
+  external void wire_NonCloneSimpleTwinNormal_static_method_return_own(
       NativePortType port_);
 
   external void wire_rust_auto_opaque_arg_borrow(

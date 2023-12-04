@@ -15561,6 +15561,182 @@ class RustLibWire implements BaseWire {
       _wire_test_raw_string_item_struct_twin_normalPtr
           .asFunction<void Function(int)>();
 
+  void wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow(
+    int port_,
+    ffi.Pointer<ffi.Void> that,
+  ) {
+    return _wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_NonCloneSimpleTwinNormal_instance_method_arg_borrowPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          'wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow');
+  late final _wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow =
+      _wire_NonCloneSimpleTwinNormal_instance_method_arg_borrowPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow(
+    int port_,
+    ffi.Pointer<ffi.Void> that,
+  ) {
+    return _wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrowPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          'wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow');
+  late final _wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow =
+      _wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrowPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_NonCloneSimpleTwinNormal_instance_method_arg_own(
+    int port_,
+    ffi.Pointer<ffi.Void> that,
+  ) {
+    return _wire_NonCloneSimpleTwinNormal_instance_method_arg_own(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_NonCloneSimpleTwinNormal_instance_method_arg_ownPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          'wire_NonCloneSimpleTwinNormal_instance_method_arg_own');
+  late final _wire_NonCloneSimpleTwinNormal_instance_method_arg_own =
+      _wire_NonCloneSimpleTwinNormal_instance_method_arg_ownPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_NonCloneSimpleTwinNormal_instance_method_return_own(
+    int port_,
+    ffi.Pointer<ffi.Void> that,
+  ) {
+    return _wire_NonCloneSimpleTwinNormal_instance_method_return_own(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_NonCloneSimpleTwinNormal_instance_method_return_ownPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          'wire_NonCloneSimpleTwinNormal_instance_method_return_own');
+  late final _wire_NonCloneSimpleTwinNormal_instance_method_return_own =
+      _wire_NonCloneSimpleTwinNormal_instance_method_return_ownPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_NonCloneSimpleTwinNormal_new(
+    int port_,
+  ) {
+    return _wire_NonCloneSimpleTwinNormal_new(
+      port_,
+    );
+  }
+
+  late final _wire_NonCloneSimpleTwinNormal_newPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_NonCloneSimpleTwinNormal_new');
+  late final _wire_NonCloneSimpleTwinNormal_new =
+      _wire_NonCloneSimpleTwinNormal_newPtr.asFunction<void Function(int)>();
+
+  void wire_NonCloneSimpleTwinNormal_new_custom_name(
+    int port_,
+  ) {
+    return _wire_NonCloneSimpleTwinNormal_new_custom_name(
+      port_,
+    );
+  }
+
+  late final _wire_NonCloneSimpleTwinNormal_new_custom_namePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_NonCloneSimpleTwinNormal_new_custom_name');
+  late final _wire_NonCloneSimpleTwinNormal_new_custom_name =
+      _wire_NonCloneSimpleTwinNormal_new_custom_namePtr
+          .asFunction<void Function(int)>();
+
+  void wire_NonCloneSimpleTwinNormal_static_method_arg_borrow(
+    int port_,
+    ffi.Pointer<ffi.Void> arg,
+  ) {
+    return _wire_NonCloneSimpleTwinNormal_static_method_arg_borrow(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_NonCloneSimpleTwinNormal_static_method_arg_borrowPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          'wire_NonCloneSimpleTwinNormal_static_method_arg_borrow');
+  late final _wire_NonCloneSimpleTwinNormal_static_method_arg_borrow =
+      _wire_NonCloneSimpleTwinNormal_static_method_arg_borrowPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow(
+    int port_,
+    ffi.Pointer<ffi.Void> arg,
+  ) {
+    return _wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrowPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          'wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow');
+  late final _wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow =
+      _wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrowPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_NonCloneSimpleTwinNormal_static_method_arg_own(
+    int port_,
+    ffi.Pointer<ffi.Void> arg,
+  ) {
+    return _wire_NonCloneSimpleTwinNormal_static_method_arg_own(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_NonCloneSimpleTwinNormal_static_method_arg_ownPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_NonCloneSimpleTwinNormal_static_method_arg_own');
+  late final _wire_NonCloneSimpleTwinNormal_static_method_arg_own =
+      _wire_NonCloneSimpleTwinNormal_static_method_arg_ownPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_NonCloneSimpleTwinNormal_static_method_return_own(
+    int port_,
+  ) {
+    return _wire_NonCloneSimpleTwinNormal_static_method_return_own(
+      port_,
+    );
+  }
+
+  late final _wire_NonCloneSimpleTwinNormal_static_method_return_ownPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_NonCloneSimpleTwinNormal_static_method_return_own');
+  late final _wire_NonCloneSimpleTwinNormal_static_method_return_own =
+      _wire_NonCloneSimpleTwinNormal_static_method_return_ownPtr
+          .asFunction<void Function(int)>();
+
   void wire_rust_auto_opaque_arg_borrow(
     int port_,
     ffi.Pointer<ffi.Void> arg,

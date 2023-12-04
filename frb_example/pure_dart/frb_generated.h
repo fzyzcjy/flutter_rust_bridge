@@ -3003,6 +3003,26 @@ void wire_test_more_than_just_one_raw_string_struct_twin_normal(int64_t port_);
 
 void wire_test_raw_string_item_struct_twin_normal(int64_t port_);
 
+void wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow(int64_t port_, const void *that);
+
+void wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow(int64_t port_, const void *that);
+
+void wire_NonCloneSimpleTwinNormal_instance_method_arg_own(int64_t port_, const void *that);
+
+void wire_NonCloneSimpleTwinNormal_instance_method_return_own(int64_t port_, const void *that);
+
+void wire_NonCloneSimpleTwinNormal_new(int64_t port_);
+
+void wire_NonCloneSimpleTwinNormal_new_custom_name(int64_t port_);
+
+void wire_NonCloneSimpleTwinNormal_static_method_arg_borrow(int64_t port_, const void *arg);
+
+void wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow(int64_t port_, const void *arg);
+
+void wire_NonCloneSimpleTwinNormal_static_method_arg_own(int64_t port_, const void *arg);
+
+void wire_NonCloneSimpleTwinNormal_static_method_return_own(int64_t port_);
+
 void wire_rust_auto_opaque_arg_borrow(int64_t port_, const void *arg);
 
 void wire_rust_auto_opaque_arg_mut_borrow(int64_t port_, const void *arg);
@@ -4215,6 +4235,16 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_EventTwinNormal_as_string_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_EventTwinRustAsync_as_string_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_EventTwinSync_as_string_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_instance_method_arg_own);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_instance_method_return_own);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_new);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_new_custom_name);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_static_method_arg_borrow);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_static_method_arg_own);
+    dummy_var ^= ((int64_t) (void*) wire_NonCloneSimpleTwinNormal_static_method_return_own);
     dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinNormal_new_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinNormal_non_static_return_err_custom_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_SomeStructTwinNormal_non_static_return_ok_custom_error_twin_normal);

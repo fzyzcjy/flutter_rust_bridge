@@ -1895,6 +1895,37 @@ abstract class RustLibApi extends BaseApi {
   Future<RawStringItemStructTwinNormal> testRawStringItemStructTwinNormal(
       {dynamic hint});
 
+  Future<void> nonCloneSimpleTwinNormalInstanceMethodArgBorrow(
+      {required RwLockNonCloneSimpleTwinNormal that, dynamic hint});
+
+  Future<void> nonCloneSimpleTwinNormalInstanceMethodArgMutBorrow(
+      {required RwLockNonCloneSimpleTwinNormal that, dynamic hint});
+
+  Future<void> nonCloneSimpleTwinNormalInstanceMethodArgOwn(
+      {required RwLockNonCloneSimpleTwinNormal that, dynamic hint});
+
+  Future<RwLockNonCloneSimpleTwinNormal>
+      nonCloneSimpleTwinNormalInstanceMethodReturnOwn(
+          {required RwLockNonCloneSimpleTwinNormal that, dynamic hint});
+
+  Future<RwLockNonCloneSimpleTwinNormal> nonCloneSimpleTwinNormalNew(
+      {dynamic hint});
+
+  Future<RwLockNonCloneSimpleTwinNormal> nonCloneSimpleTwinNormalNewCustomName(
+      {dynamic hint});
+
+  Future<void> nonCloneSimpleTwinNormalStaticMethodArgBorrow(
+      {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint});
+
+  Future<void> nonCloneSimpleTwinNormalStaticMethodArgMutBorrow(
+      {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint});
+
+  Future<void> nonCloneSimpleTwinNormalStaticMethodArgOwn(
+      {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint});
+
+  Future<RwLockNonCloneSimpleTwinNormal>
+      nonCloneSimpleTwinNormalStaticMethodReturnOwn({dynamic hint});
+
   Future<void> rustAutoOpaqueArgBorrow(
       {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint});
 
@@ -15509,6 +15540,241 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kTestRawStringItemStructTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "test_raw_string_item_struct_twin_normal",
+        argNames: [],
+      );
+
+  @override
+  Future<void> nonCloneSimpleTwinNormalInstanceMethodArgBorrow(
+      {required RwLockNonCloneSimpleTwinNormal that, dynamic hint}) {
+    var arg0 =
+        api2wire_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(that);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow(
+              port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kNonCloneSimpleTwinNormalInstanceMethodArgBorrowConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNonCloneSimpleTwinNormalInstanceMethodArgBorrowConstMeta =>
+      const TaskConstMeta(
+        debugName: "NonCloneSimpleTwinNormal_instance_method_arg_borrow",
+        argNames: ["that"],
+      );
+
+  @override
+  Future<void> nonCloneSimpleTwinNormalInstanceMethodArgMutBorrow(
+      {required RwLockNonCloneSimpleTwinNormal that, dynamic hint}) {
+    var arg0 =
+        api2wire_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(that);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow(
+              port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kNonCloneSimpleTwinNormalInstanceMethodArgMutBorrowConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinNormalInstanceMethodArgMutBorrowConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow",
+            argNames: ["that"],
+          );
+
+  @override
+  Future<void> nonCloneSimpleTwinNormalInstanceMethodArgOwn(
+      {required RwLockNonCloneSimpleTwinNormal that, dynamic hint}) {
+    var arg0 =
+        api2wire_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(that);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire
+          .wire_NonCloneSimpleTwinNormal_instance_method_arg_own(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kNonCloneSimpleTwinNormalInstanceMethodArgOwnConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNonCloneSimpleTwinNormalInstanceMethodArgOwnConstMeta =>
+      const TaskConstMeta(
+        debugName: "NonCloneSimpleTwinNormal_instance_method_arg_own",
+        argNames: ["that"],
+      );
+
+  @override
+  Future<RwLockNonCloneSimpleTwinNormal>
+      nonCloneSimpleTwinNormalInstanceMethodReturnOwn(
+          {required RwLockNonCloneSimpleTwinNormal that, dynamic hint}) {
+    var arg0 =
+        api2wire_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(that);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_NonCloneSimpleTwinNormal_instance_method_return_own(
+              port_, arg0),
+      parseSuccessData:
+          _wire2api_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
+      parseErrorData: null,
+      constMeta: kNonCloneSimpleTwinNormalInstanceMethodReturnOwnConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNonCloneSimpleTwinNormalInstanceMethodReturnOwnConstMeta =>
+      const TaskConstMeta(
+        debugName: "NonCloneSimpleTwinNormal_instance_method_return_own",
+        argNames: ["that"],
+      );
+
+  @override
+  Future<RwLockNonCloneSimpleTwinNormal> nonCloneSimpleTwinNormalNew(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_NonCloneSimpleTwinNormal_new(port_),
+      parseSuccessData:
+          _wire2api_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
+      parseErrorData: null,
+      constMeta: kNonCloneSimpleTwinNormalNewConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNonCloneSimpleTwinNormalNewConstMeta =>
+      const TaskConstMeta(
+        debugName: "NonCloneSimpleTwinNormal_new",
+        argNames: [],
+      );
+
+  @override
+  Future<RwLockNonCloneSimpleTwinNormal> nonCloneSimpleTwinNormalNewCustomName(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_NonCloneSimpleTwinNormal_new_custom_name(port_),
+      parseSuccessData:
+          _wire2api_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
+      parseErrorData: null,
+      constMeta: kNonCloneSimpleTwinNormalNewCustomNameConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNonCloneSimpleTwinNormalNewCustomNameConstMeta =>
+      const TaskConstMeta(
+        debugName: "NonCloneSimpleTwinNormal_new_custom_name",
+        argNames: [],
+      );
+
+  @override
+  Future<void> nonCloneSimpleTwinNormalStaticMethodArgBorrow(
+      {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) {
+    var arg0 =
+        api2wire_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire
+          .wire_NonCloneSimpleTwinNormal_static_method_arg_borrow(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kNonCloneSimpleTwinNormalStaticMethodArgBorrowConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNonCloneSimpleTwinNormalStaticMethodArgBorrowConstMeta =>
+      const TaskConstMeta(
+        debugName: "NonCloneSimpleTwinNormal_static_method_arg_borrow",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<void> nonCloneSimpleTwinNormalStaticMethodArgMutBorrow(
+      {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) {
+    var arg0 =
+        api2wire_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow(
+              port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kNonCloneSimpleTwinNormalStaticMethodArgMutBorrowConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta
+      get kNonCloneSimpleTwinNormalStaticMethodArgMutBorrowConstMeta =>
+          const TaskConstMeta(
+            debugName: "NonCloneSimpleTwinNormal_static_method_arg_mut_borrow",
+            argNames: ["arg"],
+          );
+
+  @override
+  Future<void> nonCloneSimpleTwinNormalStaticMethodArgOwn(
+      {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) {
+    var arg0 =
+        api2wire_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_NonCloneSimpleTwinNormal_static_method_arg_own(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kNonCloneSimpleTwinNormalStaticMethodArgOwnConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNonCloneSimpleTwinNormalStaticMethodArgOwnConstMeta =>
+      const TaskConstMeta(
+        debugName: "NonCloneSimpleTwinNormal_static_method_arg_own",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<RwLockNonCloneSimpleTwinNormal>
+      nonCloneSimpleTwinNormalStaticMethodReturnOwn({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_NonCloneSimpleTwinNormal_static_method_return_own(port_),
+      parseSuccessData:
+          _wire2api_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
+      parseErrorData: null,
+      constMeta: kNonCloneSimpleTwinNormalStaticMethodReturnOwnConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNonCloneSimpleTwinNormalStaticMethodReturnOwnConstMeta =>
+      const TaskConstMeta(
+        debugName: "NonCloneSimpleTwinNormal_static_method_return_own",
         argNames: [],
       );
 

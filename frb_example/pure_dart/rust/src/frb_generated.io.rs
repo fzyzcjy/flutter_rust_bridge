@@ -12276,6 +12276,77 @@ pub extern "C" fn wire_test_raw_string_item_struct_twin_normal(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow(
+    port_: i64,
+    that: *const std::ffi::c_void,
+) {
+    wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_impl(port_, that)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow(
+    port_: i64,
+    that: *const std::ffi::c_void,
+) {
+    wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_impl(port_, that)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinNormal_instance_method_arg_own(
+    port_: i64,
+    that: *const std::ffi::c_void,
+) {
+    wire_NonCloneSimpleTwinNormal_instance_method_arg_own_impl(port_, that)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinNormal_instance_method_return_own(
+    port_: i64,
+    that: *const std::ffi::c_void,
+) {
+    wire_NonCloneSimpleTwinNormal_instance_method_return_own_impl(port_, that)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinNormal_new(port_: i64) {
+    wire_NonCloneSimpleTwinNormal_new_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinNormal_new_custom_name(port_: i64) {
+    wire_NonCloneSimpleTwinNormal_new_custom_name_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinNormal_static_method_arg_borrow(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+) {
+    wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+) {
+    wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinNormal_static_method_arg_own(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+) {
+    wire_NonCloneSimpleTwinNormal_static_method_arg_own_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_NonCloneSimpleTwinNormal_static_method_return_own(port_: i64) {
+    wire_NonCloneSimpleTwinNormal_static_method_return_own_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_rust_auto_opaque_arg_borrow(port_: i64, arg: *const std::ffi::c_void) {
     wire_rust_auto_opaque_arg_borrow_impl(port_, arg)
 }
