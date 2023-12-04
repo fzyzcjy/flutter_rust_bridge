@@ -7,15 +7,32 @@ use crate::codegen::generator::api_dart::spec_generator::misc::{
 use crate::codegen::ir::func::{
     IrFunc, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
 };
+use crate::codegen::ir::namespace::NamespacedName;
+use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::structure::IrStruct;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 
-pub(crate) fn generate_api_method(
+pub(crate) fn generate_api_methods(
+    ir_pack: &IrPack,
+    generalized_class_name: &NamespacedName,
+    context: ApiDartGeneratorContext,
+) -> Vec<String> {
+    ir_pack
+        .funcs
+        .iter()
+        .filter(|f| {
+            matches!(&f.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod{ enum_or_struct_name, .. }) if enum_or_struct_name == &generalized_class_name)
+        })
+        .map(|func| generate_api_method(func, &generalized_class_name.name, context))
+        .collect_vec()
+}
+
+fn generate_api_method(
     func: &IrFunc,
-    ir_struct: &IrStruct,
+    generalized_class_name: &str,
     context: ApiDartGeneratorContext,
 ) -> String {
     let method_info = if let IrFuncOwnerInfo::Method(info) = &func.owner {
@@ -30,7 +47,7 @@ pub(crate) fn generate_api_method(
 
     let params = generate_params(func, context, is_static_method, skip_count);
     let comments = generate_dart_comments(&func.comments);
-    let signature = generate_signature(func, ir_struct, context, method_info, params);
+    let signature = generate_signature(func, generalized_class_name, context, method_info, params);
     let arg_names = generate_arg_names(func, is_static_method, skip_count).concat();
     let implementation = generate_implementation(func, context, is_static_method, arg_names);
 
@@ -63,7 +80,7 @@ fn generate_params(
 
 fn generate_signature(
     func: &IrFunc,
-    ir_struct: &IrStruct,
+    generalized_class_name: &str,
     context: ApiDartGeneratorContext,
     method_info: &IrFuncOwnerInfoMethod,
     func_params: Vec<String>,
@@ -75,7 +92,7 @@ fn generate_signature(
         &ApiDartGenerator::new(func.output.clone(), context).dart_api_type(),
     );
     let method_name = if is_static_method && method_info.actual_method_name == "new" {
-        format!("new{}", ir_struct.name.name)
+        format!("new{}", generalized_class_name)
     } else {
         method_info.actual_method_name.to_case(Case::Camel)
     };
