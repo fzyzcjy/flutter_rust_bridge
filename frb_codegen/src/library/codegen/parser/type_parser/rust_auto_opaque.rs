@@ -48,6 +48,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             inner: IrTypeRustOpaque {
                 namespace: self.context.initiated_namespace.clone(),
                 inner: Box::new(IrType::Unencodable(IrTypeUnencodable {
+                    namespace: None,
                     // TODO when all usages of a type do not require `&mut`, can drop this Mutex
                     string: format!("std::sync::RwLock<{}>", inner.rust_api_type()),
                     segments: vec![],

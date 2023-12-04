@@ -1,4 +1,5 @@
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
+use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::source_graph::modules::StructOrEnumWrapper;
@@ -26,14 +27,19 @@ where
         if let Some(src_object) = self.src_objects().get(*name) {
             let src_object = (*src_object).clone();
 
+            let namespace = Namespace::new(pop_last(src_object.inner().path.clone()));
+            let namespaced_name = NamespacedName::new(namespace, name.to_string());
+
             let attrs = FrbAttributes::parse(src_object.attrs())?;
             if attrs.opaque() {
                 debug!("Recognize {name} has opaque attribute");
-                return Ok(None);
+                return Ok(Some(IrType::Unencodable(IrTypeUnencodable {
+                    namespace: Some(namespaced_name.namespace),
+                    string: namespaced_name.name,
+                    segments: vec![],
+                })));
             }
 
-            let namespace = Namespace::new(pop_last(src_object.inner().path.clone()));
-            let namespaced_name = NamespacedName::new(namespace, name.to_string());
             let ident: Id = namespaced_name.clone().into();
 
             if (self.parser_info().parsing_or_parsed_objects).insert(namespaced_name.clone()) {

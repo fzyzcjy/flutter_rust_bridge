@@ -1,3 +1,4 @@
+use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 use lazy_static::lazy_static;
@@ -5,6 +6,7 @@ use regex::Regex;
 
 crate::ir! {
 pub struct IrTypeUnencodable {
+    pub namespace: Option<Namespace>,
     pub string: String,
     pub segments: Vec<NameComponent>,
 }
@@ -38,5 +40,9 @@ impl IrTypeTrait for IrTypeUnencodable {
 
     fn rust_api_type(&self) -> String {
         self.string.clone()
+    }
+
+    fn self_namespace(&self) -> Option<Namespace> {
+        self.namespace.clone()
     }
 }

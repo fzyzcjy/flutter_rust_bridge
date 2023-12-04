@@ -15,6 +15,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             Type::Tuple(type_tuple) => self.parse_type_tuple(&type_tuple)?,
             Type::Reference(type_reference) => self.parse_type_reference(&type_reference)?,
             _ => IrType::Unencodable(IrTypeUnencodable {
+                namespace: None,
                 string: resolve_ty.to_token_stream().to_string(),
                 segments: vec![],
             }),

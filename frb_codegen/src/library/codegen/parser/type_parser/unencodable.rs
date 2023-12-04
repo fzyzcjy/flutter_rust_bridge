@@ -33,6 +33,7 @@ pub(crate) fn parse_path_type_to_unencodable(
     splayed_segments: &[SplayedSegment],
 ) -> IrType {
     Unencodable(IrTypeUnencodable {
+        namespace: None,
         string: type_path.to_token_stream().to_string(),
         segments: splayed_segments
             .iter()
