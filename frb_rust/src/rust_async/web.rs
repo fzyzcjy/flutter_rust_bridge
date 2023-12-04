@@ -8,7 +8,7 @@ pub trait BaseAsyncRuntime: RefUnwindSafe {
         F: Future<Output = ()> + 'static;
 }
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, Default)]
 pub struct SimpleAsyncRuntime;
 
 impl BaseAsyncRuntime for SimpleAsyncRuntime {
