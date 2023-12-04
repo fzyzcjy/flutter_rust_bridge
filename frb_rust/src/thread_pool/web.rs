@@ -10,12 +10,6 @@ pub trait BaseThreadPool: RefUnwindSafe {
     fn execute(&self, closure: TransferClosure<JsValue>) -> Result<(), JsValue>;
 }
 
-impl BaseThreadPool for SimpleThreadPool {
-    fn execute(&self, closure: TransferClosure<JsValue>) -> Result<(), JsValue> {
-        self.execute(closure)
-    }
-}
-
 impl BaseThreadPool for &'static LocalKey<SimpleThreadPool> {
     fn execute(&self, closure: TransferClosure<JsValue>) -> Result<(), JsValue> {
         self.with(|inner| inner.execute(closure))
