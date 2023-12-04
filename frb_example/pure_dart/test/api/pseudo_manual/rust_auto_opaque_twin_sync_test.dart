@@ -2,6 +2,8 @@
 // and is auto-generated from `rust_auto_opaque_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
+// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["rustAsync"]}
+
 import 'package:flutter_rust_bridge/src/droppable/droppable.dart';
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/rust_auto_opaque_twin_sync.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';

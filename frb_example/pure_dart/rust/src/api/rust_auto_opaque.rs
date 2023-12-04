@@ -1,3 +1,5 @@
+// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["rustAsync"]}
+
 use flutter_rust_bridge::{frb, DartSafe};
 pub use std::panic::{RefUnwindSafe, UnwindSafe};
 
