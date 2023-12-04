@@ -64,8 +64,8 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool> Executor for SimpleExecutor<EH
             let thread_result = panic::catch_unwind(|| {
                 #[allow(clippy::clone_on_copy)]
                 let sender = Rust2DartSender::new(Channel::new(port2.clone()));
-
                 let task_context = TaskContext::new(TaskRust2DartContext::new(sender.clone()));
+
                 let ret = task(task_context).map(|e| e.into_into_dart().into_dart());
 
                 ExecuteNormalOrAsyncUtils::handle_result(ret, mode, sender, eh2, port2);
@@ -116,8 +116,8 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool> Executor for SimpleExecutor<EH
             let async_result = async {
                 #[allow(clippy::clone_on_copy)]
                 let sender = Rust2DartSender::new(Channel::new(port2.clone()));
-
                 let task_context = TaskContext::new(TaskRust2DartContext::new(sender.clone()));
+
                 let ret = task(task_context)
                     .await
                     .map(|e| e.into_into_dart().into_dart());
