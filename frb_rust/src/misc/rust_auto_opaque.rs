@@ -18,13 +18,3 @@ impl<T: DartSafe> RustOpaque<RwLock<T>> {
         self.write().map_err(|_| anyhow!("lock is poisioned"))
     }
 }
-
-pub trait RustAutoOpaqueWire2ApiIntermediate<'a, T: 'a> {
-    fn utilize(&'a self) -> T;
-}
-
-impl<'a, T> RustAutoOpaqueWire2ApiIntermediate<'a, &'a T> for T {
-    fn utilize(&'a self) -> &'a T {
-        self
-    }
-}
