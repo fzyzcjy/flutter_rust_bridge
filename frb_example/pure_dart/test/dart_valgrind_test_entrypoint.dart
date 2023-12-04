@@ -120,6 +120,10 @@ import 'api/pseudo_manual/raw_string_twin_rust_async_test.dart'
     as raw_string_twin_rust_async_test;
 import 'api/pseudo_manual/raw_string_twin_sync_test.dart'
     as raw_string_twin_sync_test;
+import 'api/pseudo_manual/rust_auto_opaque_twin_rust_async_test.dart'
+    as rust_auto_opaque_twin_rust_async_test;
+import 'api/pseudo_manual/rust_auto_opaque_twin_sync_test.dart'
+    as rust_auto_opaque_twin_sync_test;
 import 'api/pseudo_manual/rust_opaque_twin_rust_async_test.dart'
     as rust_opaque_twin_rust_async_test;
 import 'api/pseudo_manual/rust_opaque_twin_sync_test.dart'
@@ -145,6 +149,7 @@ import 'api/pseudo_manual/uuid_type_twin_rust_async_test.dart'
 import 'api/pseudo_manual/uuid_type_twin_sync_test.dart'
     as uuid_type_twin_sync_test;
 import 'api/raw_string_test.dart' as raw_string_test;
+import 'api/rust_auto_opaque_test.dart' as rust_auto_opaque_test;
 import 'api/rust_opaque_sync_test.dart' as rust_opaque_sync_test;
 import 'api/rust_opaque_test.dart' as rust_opaque_test;
 import 'api/simple_test.dart' as simple_test;
@@ -244,6 +249,8 @@ Future<void> callFileEntrypoints() async {
   await primitive_twin_sync_test.main(skipRustLibInit: true);
   await raw_string_twin_rust_async_test.main(skipRustLibInit: true);
   await raw_string_twin_sync_test.main(skipRustLibInit: true);
+  await rust_auto_opaque_twin_rust_async_test.main(skipRustLibInit: true);
+  await rust_auto_opaque_twin_sync_test.main(skipRustLibInit: true);
   await rust_opaque_twin_rust_async_test.main(skipRustLibInit: true);
   await rust_opaque_twin_sync_test.main(skipRustLibInit: true);
   await simple_twin_rust_async_test.main(skipRustLibInit: true);
@@ -258,6 +265,7 @@ Future<void> callFileEntrypoints() async {
   await uuid_type_twin_rust_async_test.main(skipRustLibInit: true);
   await uuid_type_twin_sync_test.main(skipRustLibInit: true);
   await raw_string_test.main(skipRustLibInit: true);
+  await rust_auto_opaque_test.main(skipRustLibInit: true);
   await rust_opaque_sync_test.main(skipRustLibInit: true);
   await rust_opaque_test.main(skipRustLibInit: true);
   await simple_test.main(skipRustLibInit: true);
