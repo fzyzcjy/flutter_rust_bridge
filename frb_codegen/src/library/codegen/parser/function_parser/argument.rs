@@ -2,6 +2,7 @@ use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::func::{IrFuncMode, IrFuncOwnerInfo};
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
+use crate::codegen::ir::ty::ownership::{IrTypeOwnership, IrTypeOwnershipMode};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Boxed;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
@@ -61,7 +62,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let name = "that".to_owned();
 
         partial_info_for_normal_type_raw(
-            self.type_parser.parse_type(&ty, context)?,
+            parse_receiver(self.type_parser.parse_type(&ty, context)?, receiver),
             &receiver.attrs,
             name,
         )
@@ -154,5 +155,21 @@ fn parse_name_from_pat_type(pat_type: &PatType) -> anyhow::Result<String> {
             "Unexpected pattern: {}",
             quote::quote!(#pat_type).to_string(),
         )
+    }
+}
+
+fn parse_receiver(inner: IrType, receiver: &Receiver) -> IrType {
+    if receiver.reference.is_some() {
+        let mode = if receiver.mutability.is_some() {
+            IrTypeOwnershipMode::RefMut
+        } else {
+            IrTypeOwnershipMode::Ref
+        };
+        IrType::Ownership(IrTypeOwnership {
+            mode,
+            inner: Box::new(inner),
+        })
+    } else {
+        inner
     }
 }
