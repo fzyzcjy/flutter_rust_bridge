@@ -9,9 +9,9 @@ abstract class RustOpaque {
 
   /// If true, when sending this object to Rust, the ownership of this object
   /// will be released, mimicking the "move" semantics in Rust.
-  bool _move = false;
+  bool? _move;
 
-  set move(bool move) => _move = move;
+  set move(bool? move) => _move = move;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @internal
@@ -24,8 +24,12 @@ abstract class RustOpaque {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @internal
-  PlatformPointer api2wire() {
-    final target = _move ? _arc : _arc.clone();
+  PlatformPointer api2wire({bool? move}) {
+    assert(move == null || _move == null,
+        'Cannot specify move semantics in two places');
+    final effectiveMoveMode = move ?? _move ?? false;
+
+    final target = effectiveMoveMode ? _arc : _arc.clone();
     return target.intoRaw();
   }
 
