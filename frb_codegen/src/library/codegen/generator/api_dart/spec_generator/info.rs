@@ -127,7 +127,8 @@ impl<'a> ApiDartGeneratorInfoTrait for OptionalListApiDartGenerator<'a> {
 
 impl<'a> ApiDartGeneratorInfoTrait for OwnershipApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        unreachable!()
+        let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context);
+        format!("{}_{}", self.ir.mode, inner.dart_api_type())
     }
 }
 
