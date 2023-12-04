@@ -46,13 +46,6 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<Mutex<HideData>>> for *const std::
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
-impl Wire2Api<flutter_rust_bridge::RustOpaque<NonCloneSimpleTwinNormal>>
-    for *const std::ffi::c_void
-{
-    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<NonCloneSimpleTwinNormal> {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
 impl Wire2Api<flutter_rust_bridge::RustOpaque<RwLock<HideData>>> for *const std::ffi::c_void {
     fn wire2api(self) -> flutter_rust_bridge::RustOpaque<RwLock<HideData>> {
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
@@ -12219,11 +12212,6 @@ pub extern "C" fn wire_test_more_than_just_one_raw_string_struct_twin_normal(por
 #[no_mangle]
 pub extern "C" fn wire_test_raw_string_item_struct_twin_normal(port_: i64) {
     wire_test_raw_string_item_struct_twin_normal_impl(port_)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_rust_auto_opaque_arg_borrow(port_: i64, arg: *const std::ffi::c_void) {
-    wire_rust_auto_opaque_arg_borrow_impl(port_, arg)
 }
 
 #[no_mangle]
