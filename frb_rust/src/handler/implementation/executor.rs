@@ -114,7 +114,7 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool> Executor for SimpleExecutor<EH
             let TaskInfo { port, mode, .. } = task_info;
             let port2 = port.as_ref().cloned();
 
-            let thread_result = async {
+            let async_result = async {
                 let port2 = port2.expect("(worker) thread");
                 #[allow(clippy::clone_on_copy)]
                 let sender = Rust2DartSender::new(Channel::new(port2.clone()));
@@ -129,7 +129,7 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool> Executor for SimpleExecutor<EH
             .catch_unwind()
             .await;
 
-            if let Err(error) = thread_result {
+            if let Err(error) = async_result {
                 eh.handle_error(port.expect("(worker) eh"), Error::Panic(error));
             }
         });
