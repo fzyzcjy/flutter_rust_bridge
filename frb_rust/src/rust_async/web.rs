@@ -7,3 +7,9 @@ where
 {
     spawn_local(future)
 }
+
+pub trait BaseAsyncRuntime {
+    fn spawn<F>(future: F)
+    where
+        F: Future<Output = ()> + 'static;
+}

@@ -17,3 +17,10 @@ where
     let runtime = ASYNC_RUNTIME.lock();
     runtime.spawn(future)
 }
+
+pub trait BaseAsyncRuntime {
+    fn spawn<F>(future: F) -> JoinHandle<F::Output>
+    where
+        F: Future + Send + 'static,
+        F::Output: Send + 'static;
+}

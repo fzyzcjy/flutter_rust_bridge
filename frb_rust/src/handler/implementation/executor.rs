@@ -10,6 +10,7 @@ use crate::rust2dart::api2wire::Api2Wire;
 use crate::rust2dart::context::TaskRust2DartContext;
 use crate::rust2dart::sender::Rust2DartSender;
 use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
+use crate::rust_async::BaseAsyncRuntime;
 use crate::thread_pool::{BaseThreadPool, ThreadPool};
 use crate::{rust_async, transfer};
 use futures::FutureExt;
@@ -21,19 +22,21 @@ use std::panic::{AssertUnwindSafe, UnwindSafe};
 /// The default executor used.
 /// It creates an internal thread pool, and each call to a Rust function is
 /// handled by a different thread.
-pub struct SimpleExecutor<EH: ErrorHandler, TP: BaseThreadPool> {
+pub struct SimpleExecutor<EH: ErrorHandler, TP: BaseThreadPool, AR: BaseAsyncRuntime> {
     error_handler: EH,
     // TODO remove `AssertUnwindSafe` after the Rust bug is fixed:
     // https://github.com/rust-lang/rust/issues/118009
     thread_pool: AssertUnwindSafe<TP>,
+    async_runtime: AR,
 }
 
-impl<EH: ErrorHandler, TP: BaseThreadPool> SimpleExecutor<EH, TP> {
+impl<EH: ErrorHandler, TP: BaseThreadPool, AR: BaseAsyncRuntime> SimpleExecutor<EH, TP, AR> {
     /// Create a new executor backed by a thread pool.
-    pub fn new(error_handler: EH, thread_pool: TP) -> Self {
+    pub fn new(error_handler: EH, thread_pool: TP, async_runtime: AR) -> Self {
         SimpleExecutor {
             error_handler,
             thread_pool: AssertUnwindSafe(thread_pool),
+            async_runtime,
         }
     }
 
@@ -42,7 +45,9 @@ impl<EH: ErrorHandler, TP: BaseThreadPool> SimpleExecutor<EH, TP> {
     }
 }
 
-impl<EH: ErrorHandler + Sync, TP: BaseThreadPool> Executor for SimpleExecutor<EH, TP> {
+impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
+    for SimpleExecutor<EH, TP, AR>
+{
     fn execute_normal<TaskFn, TaskRetDirect, TaskRetData, Er>(
         &self,
         task_info: TaskInfo,
