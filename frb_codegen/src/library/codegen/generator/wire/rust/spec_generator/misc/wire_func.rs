@@ -185,8 +185,9 @@ fn generate_code_inner_wire2api(func: &IrFunc) -> String {
         .filter_map(|field| {
             if let IrType::RustAutoOpaque(o) = &field.ty {
                 let mode = o.ownership_mode.to_string().to_case(Case::Snake);
+                let mutability = if o.ownership_mode == IrTypeOwnershipMode::RefMut { "mut " } else {""};
                 Some(format!(
-                    "let api_{name} = api_{name}.rust_auto_opaque_wire2api_{mode}()?;\n",
+                    "let {mutability}api_{name} = api_{name}.rust_auto_opaque_wire2api_{mode}()?;\n",
                     name = field.name.rust_style()
                 ))
             } else {

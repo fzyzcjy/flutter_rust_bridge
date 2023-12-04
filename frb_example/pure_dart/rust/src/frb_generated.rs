@@ -7229,7 +7229,7 @@ fn wire_rust_auto_opaque_arg_mut_borrow_impl(
         move || {
             let api_arg = arg.wire2api();
             move |context| {
-                let api_arg = api_arg.rust_auto_opaque_wire2api_ref_mut()?;
+                let mut api_arg = api_arg.rust_auto_opaque_wire2api_ref_mut()?;
                 Result::<_, anyhow::Error>::Ok(
                     crate::api::rust_auto_opaque::rust_auto_opaque_arg_mut_borrow(&mut api_arg),
                 )
