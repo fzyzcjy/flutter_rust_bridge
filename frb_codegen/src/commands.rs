@@ -24,7 +24,7 @@ lazy_static! {
     pub(crate) static ref FFI_REQUIREMENT: VersionReq =
         VersionReq::parse(">= 2.0.1, < 3.0.0").unwrap();
     pub(crate) static ref FFIGEN_REQUIREMENT: VersionReq =
-        VersionReq::parse(">= 8.0.0, < 10.0.0").unwrap();
+        VersionReq::parse(">= 8.0.0, < 11.0.0").unwrap();
 }
 
 pub fn ensure_tools_available(dart_root: &str, skip_deps_check: bool) -> Result<(), Error> {

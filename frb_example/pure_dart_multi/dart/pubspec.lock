@@ -197,10 +197,10 @@ packages:
     dependency: "direct dev"
     description:
       name: ffigen
-      sha256: "3a80687577e7e51ba915114742f389a128e8aa241c52ce69a0f70aecb8e14365"
+      sha256: "0a4e9c5437c5c4600fa583141508beaf90fe29b58b0fd7437a9b022cda228747"
       url: "https://pub.dev"
     source: hosted
-    version: "9.0.1"
+    version: "10.0.0"
   file:
     dependency: transitive
     description:
@@ -649,4 +649,4 @@ packages:
     source: hosted
     version: "2.1.1"
 sdks:
-  dart: ">=3.1.0 <4.0.0"
+  dart: ">=3.2.0 <4.0.0"
