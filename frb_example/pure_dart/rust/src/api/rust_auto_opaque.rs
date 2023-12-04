@@ -27,25 +27,25 @@ pub fn rust_auto_opaque_return_own() -> NonCloneSimpleTwinNormal {
     NonCloneSimpleTwinNormal { inner: 42 }
 }
 
-// // ==================================== with other args =======================================
-//
-// pub fn rust_auto_opaque_arg_own_and_return_own(
-//     arg: NonCloneSimpleTwinNormal,
-// ) -> NonCloneSimpleTwinNormal {
-//     assert_eq!(arg.inner, 42);
-//     arg
-// }
-//
-// pub fn rust_auto_opaque_two_args(a: NonCloneSimpleTwinNormal, b: NonCloneSimpleTwinNormal) {
-//     assert_eq!(a.inner, 42);
-//     assert_eq!(b.inner, 42);
-// }
-//
-// pub fn rust_auto_opaque_normal_and_opaque_arg(a: NonCloneSimpleTwinNormal, b: String) {
-//     assert_eq!(a.inner, 42);
-//     assert_eq!(b, "hello");
-// }
-//
+// ==================================== with other args =======================================
+
+pub fn rust_auto_opaque_arg_own_and_return_own(
+    arg: NonCloneSimpleTwinNormal,
+) -> NonCloneSimpleTwinNormal {
+    assert_eq!(arg.inner, 42);
+    arg
+}
+
+pub fn rust_auto_opaque_two_args(a: NonCloneSimpleTwinNormal, b: NonCloneSimpleTwinNormal) {
+    assert_eq!(a.inner, 42);
+    assert_eq!(b.inner, 42);
+}
+
+pub fn rust_auto_opaque_normal_and_opaque_arg(a: NonCloneSimpleTwinNormal, b: String) {
+    assert_eq!(a.inner, 42);
+    assert_eq!(b, "hello");
+}
+
 // // ==================================== complex type signatures =======================================
 //
 // pub trait MyTraitTwinNormal: DartSafe {

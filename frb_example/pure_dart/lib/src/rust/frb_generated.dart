@@ -1904,8 +1904,21 @@ abstract class RustLibApi extends BaseApi {
   Future<void> rustAutoOpaqueArgOwn(
       {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint});
 
+  Future<RwLockNonCloneSimpleTwinNormal> rustAutoOpaqueArgOwnAndReturnOwn(
+      {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint});
+
+  Future<void> rustAutoOpaqueNormalAndOpaqueArg(
+      {required RwLockNonCloneSimpleTwinNormal a,
+      required String b,
+      dynamic hint});
+
   Future<RwLockNonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwn(
       {dynamic hint});
+
+  Future<void> rustAutoOpaqueTwoArgs(
+      {required RwLockNonCloneSimpleTwinNormal a,
+      required RwLockNonCloneSimpleTwinNormal b,
+      dynamic hint});
 
   Future<EnumOpaqueTwinNormalArray5> createArrayOpaqueEnumTwinNormal(
       {dynamic hint});
@@ -15481,6 +15494,56 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<RwLockNonCloneSimpleTwinNormal> rustAutoOpaqueArgOwnAndReturnOwn(
+      {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) {
+    var arg0 =
+        api2wire_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_rust_auto_opaque_arg_own_and_return_own(port_, arg0),
+      parseSuccessData:
+          _wire2api_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueArgOwnAndReturnOwnConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueArgOwnAndReturnOwnConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_arg_own_and_return_own",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueNormalAndOpaqueArg(
+      {required RwLockNonCloneSimpleTwinNormal a,
+      required String b,
+      dynamic hint}) {
+    var arg0 =
+        api2wire_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(a);
+    var arg1 = api2wire_String(b);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_rust_auto_opaque_normal_and_opaque_arg(port_, arg0, arg1),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueNormalAndOpaqueArgConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueNormalAndOpaqueArgConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_normal_and_opaque_arg",
+        argNames: ["a", "b"],
+      );
+
+  @override
   Future<RwLockNonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwn(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -15498,6 +15561,32 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kRustAutoOpaqueReturnOwnConstMeta => const TaskConstMeta(
         debugName: "rust_auto_opaque_return_own",
         argNames: [],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueTwoArgs(
+      {required RwLockNonCloneSimpleTwinNormal a,
+      required RwLockNonCloneSimpleTwinNormal b,
+      dynamic hint}) {
+    var arg0 =
+        api2wire_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(a);
+    var arg1 =
+        api2wire_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(b);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_rust_auto_opaque_two_args(port_, arg0, arg1),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueTwoArgsConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTwoArgsConstMeta => const TaskConstMeta(
+        debugName: "rust_auto_opaque_two_args",
+        argNames: ["a", "b"],
       );
 
   @override

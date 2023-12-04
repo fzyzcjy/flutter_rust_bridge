@@ -12239,8 +12239,34 @@ pub extern "C" fn wire_rust_auto_opaque_arg_own(port_: i64, arg: *const std::ffi
 }
 
 #[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_arg_own_and_return_own(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+) {
+    wire_rust_auto_opaque_arg_own_and_return_own_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_normal_and_opaque_arg(
+    port_: i64,
+    a: *const std::ffi::c_void,
+    b: *mut wire_list_prim_u_8,
+) {
+    wire_rust_auto_opaque_normal_and_opaque_arg_impl(port_, a, b)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_rust_auto_opaque_return_own(port_: i64) {
     wire_rust_auto_opaque_return_own_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_two_args(
+    port_: i64,
+    a: *const std::ffi::c_void,
+    b: *const std::ffi::c_void,
+) {
+    wire_rust_auto_opaque_two_args_impl(port_, a, b)
 }
 
 #[no_mangle]

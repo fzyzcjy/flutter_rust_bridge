@@ -15598,6 +15598,46 @@ class RustLibWire implements BaseWire {
   late final _wire_rust_auto_opaque_arg_own = _wire_rust_auto_opaque_arg_ownPtr
       .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
+  void wire_rust_auto_opaque_arg_own_and_return_own(
+    int port_,
+    ffi.Pointer<ffi.Void> arg,
+  ) {
+    return _wire_rust_auto_opaque_arg_own_and_return_own(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_arg_own_and_return_ownPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_rust_auto_opaque_arg_own_and_return_own');
+  late final _wire_rust_auto_opaque_arg_own_and_return_own =
+      _wire_rust_auto_opaque_arg_own_and_return_ownPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_rust_auto_opaque_normal_and_opaque_arg(
+    int port_,
+    ffi.Pointer<ffi.Void> a,
+    ffi.Pointer<wire_list_prim_u_8> b,
+  ) {
+    return _wire_rust_auto_opaque_normal_and_opaque_arg(
+      port_,
+      a,
+      b,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_normal_and_opaque_argPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+                  ffi.Pointer<wire_list_prim_u_8>)>>(
+      'wire_rust_auto_opaque_normal_and_opaque_arg');
+  late final _wire_rust_auto_opaque_normal_and_opaque_arg =
+      _wire_rust_auto_opaque_normal_and_opaque_argPtr.asFunction<
+          void Function(
+              int, ffi.Pointer<ffi.Void>, ffi.Pointer<wire_list_prim_u_8>)>();
+
   void wire_rust_auto_opaque_return_own(
     int port_,
   ) {
@@ -15611,6 +15651,26 @@ class RustLibWire implements BaseWire {
           'wire_rust_auto_opaque_return_own');
   late final _wire_rust_auto_opaque_return_own =
       _wire_rust_auto_opaque_return_ownPtr.asFunction<void Function(int)>();
+
+  void wire_rust_auto_opaque_two_args(
+    int port_,
+    ffi.Pointer<ffi.Void> a,
+    ffi.Pointer<ffi.Void> b,
+  ) {
+    return _wire_rust_auto_opaque_two_args(
+      port_,
+      a,
+      b,
+    );
+  }
+
+  late final _wire_rust_auto_opaque_two_argsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>,
+              ffi.Pointer<ffi.Void>)>>('wire_rust_auto_opaque_two_args');
+  late final _wire_rust_auto_opaque_two_args =
+      _wire_rust_auto_opaque_two_argsPtr.asFunction<
+          void Function(int, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
 
   void wire_create_array_opaque_enum_twin_normal(
     int port_,

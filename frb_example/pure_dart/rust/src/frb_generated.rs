@@ -7259,6 +7259,60 @@ fn wire_rust_auto_opaque_arg_own_impl(
         },
     )
 }
+fn wire_rust_auto_opaque_arg_own_and_return_own_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
+        + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, flutter_rust_bridge::RustOpaque<
+        std::sync::RwLock<NonCloneSimpleTwinNormal>,
+    >, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "rust_auto_opaque_arg_own_and_return_own",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |context| {
+                let api_arg = api_arg.rust_auto_opaque_wire2api_owned()?;
+                Result::<_, anyhow::Error>::Ok(
+                    flutter_rust_bridge::for_generated::rust_auto_opaque_api2wire(
+                        crate::api::rust_auto_opaque::rust_auto_opaque_arg_own_and_return_own(
+                            api_arg,
+                        ),
+                    ),
+                )
+            }
+        },
+    )
+}
+fn wire_rust_auto_opaque_normal_and_opaque_arg_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    a: impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
+        + core::panic::UnwindSafe,
+    b: impl Wire2Api<String> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "rust_auto_opaque_normal_and_opaque_arg",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_a = a.wire2api();
+            let api_b = b.wire2api();
+            move |context| {
+                let api_a = api_a.rust_auto_opaque_wire2api_owned()?;
+                Result::<_, anyhow::Error>::Ok(
+                    crate::api::rust_auto_opaque::rust_auto_opaque_normal_and_opaque_arg(
+                        api_a, api_b,
+                    ),
+                )
+            }
+        },
+    )
+}
 fn wire_rust_auto_opaque_return_own_impl(port_: flutter_rust_bridge::for_generated::MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, flutter_rust_bridge::RustOpaque<
         std::sync::RwLock<NonCloneSimpleTwinNormal>,
@@ -7274,6 +7328,32 @@ fn wire_rust_auto_opaque_return_own_impl(port_: flutter_rust_bridge::for_generat
                     flutter_rust_bridge::for_generated::rust_auto_opaque_api2wire(
                         crate::api::rust_auto_opaque::rust_auto_opaque_return_own(),
                     ),
+                )
+            }
+        },
+    )
+}
+fn wire_rust_auto_opaque_two_args_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    a: impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
+        + core::panic::UnwindSafe,
+    b: impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
+        + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "rust_auto_opaque_two_args",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_a = a.wire2api();
+            let api_b = b.wire2api();
+            move |context| {
+                let api_a = api_a.rust_auto_opaque_wire2api_owned()?;
+                let api_b = api_b.rust_auto_opaque_wire2api_owned()?;
+                Result::<_, anyhow::Error>::Ok(
+                    crate::api::rust_auto_opaque::rust_auto_opaque_two_args(api_a, api_b),
                 )
             }
         },

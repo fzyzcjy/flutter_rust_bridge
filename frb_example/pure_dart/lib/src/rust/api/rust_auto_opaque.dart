@@ -22,6 +22,23 @@ Future<RwLockNonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwn(
         {dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueReturnOwn(hint: hint);
 
+Future<RwLockNonCloneSimpleTwinNormal> rustAutoOpaqueArgOwnAndReturnOwn(
+        {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueArgOwnAndReturnOwn(arg: arg, hint: hint);
+
+Future<void> rustAutoOpaqueTwoArgs(
+        {required RwLockNonCloneSimpleTwinNormal a,
+        required RwLockNonCloneSimpleTwinNormal b,
+        dynamic hint}) =>
+    RustLib.instance.api.rustAutoOpaqueTwoArgs(a: a, b: b, hint: hint);
+
+Future<void> rustAutoOpaqueNormalAndOpaqueArg(
+        {required RwLockNonCloneSimpleTwinNormal a,
+        required String b,
+        dynamic hint}) =>
+    RustLib.instance.api
+        .rustAutoOpaqueNormalAndOpaqueArg(a: a, b: b, hint: hint);
+
 // Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>
 @sealed
 class RwLockNonCloneSimpleTwinNormal extends RustOpaque {

@@ -3009,7 +3009,15 @@ void wire_rust_auto_opaque_arg_mut_borrow(int64_t port_, const void *arg);
 
 void wire_rust_auto_opaque_arg_own(int64_t port_, const void *arg);
 
+void wire_rust_auto_opaque_arg_own_and_return_own(int64_t port_, const void *arg);
+
+void wire_rust_auto_opaque_normal_and_opaque_arg(int64_t port_,
+                                                 const void *a,
+                                                 struct wire_list_prim_u_8 *b);
+
 void wire_rust_auto_opaque_return_own(int64_t port_);
+
+void wire_rust_auto_opaque_two_args(int64_t port_, const void *a, const void *b);
 
 void wire_create_array_opaque_enum_twin_normal(int64_t port_);
 
@@ -4700,7 +4708,10 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_borrow);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_mut_borrow);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_own);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_own_and_return_own);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_normal_and_opaque_arg);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_return_own);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_two_args);
     dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque_twin_sync);

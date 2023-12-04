@@ -5675,8 +5675,20 @@ class RustLibWire extends BaseWire {
   void wire_rust_auto_opaque_arg_own(NativePortType port_, Object arg) =>
       wasmModule.wire_rust_auto_opaque_arg_own(port_, arg);
 
+  void wire_rust_auto_opaque_arg_own_and_return_own(
+          NativePortType port_, Object arg) =>
+      wasmModule.wire_rust_auto_opaque_arg_own_and_return_own(port_, arg);
+
+  void wire_rust_auto_opaque_normal_and_opaque_arg(
+          NativePortType port_, Object a, String b) =>
+      wasmModule.wire_rust_auto_opaque_normal_and_opaque_arg(port_, a, b);
+
   void wire_rust_auto_opaque_return_own(NativePortType port_) =>
       wasmModule.wire_rust_auto_opaque_return_own(port_);
+
+  void wire_rust_auto_opaque_two_args(
+          NativePortType port_, Object a, Object b) =>
+      wasmModule.wire_rust_auto_opaque_two_args(port_, a, b);
 
   void wire_create_array_opaque_enum_twin_normal(NativePortType port_) =>
       wasmModule.wire_create_array_opaque_enum_twin_normal(port_);
@@ -7848,7 +7860,16 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_rust_auto_opaque_arg_own(NativePortType port_, Object arg);
 
+  external void wire_rust_auto_opaque_arg_own_and_return_own(
+      NativePortType port_, Object arg);
+
+  external void wire_rust_auto_opaque_normal_and_opaque_arg(
+      NativePortType port_, Object a, String b);
+
   external void wire_rust_auto_opaque_return_own(NativePortType port_);
+
+  external void wire_rust_auto_opaque_two_args(
+      NativePortType port_, Object a, Object b);
 
   external void wire_create_array_opaque_enum_twin_normal(NativePortType port_);
 

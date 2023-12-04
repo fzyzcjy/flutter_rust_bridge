@@ -8555,8 +8555,34 @@ pub fn wire_rust_auto_opaque_arg_own(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_arg_own_and_return_own(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_auto_opaque_arg_own_and_return_own_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_normal_and_opaque_arg(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    b: String,
+) {
+    wire_rust_auto_opaque_normal_and_opaque_arg_impl(port_, a, b)
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_return_own(port_: flutter_rust_bridge::for_generated::MessagePort) {
     wire_rust_auto_opaque_return_own_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_two_args(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    b: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_auto_opaque_two_args_impl(port_, a, b)
 }
 
 #[wasm_bindgen]
