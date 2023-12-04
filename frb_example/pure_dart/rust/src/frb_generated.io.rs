@@ -113,6 +113,44 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::No
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
+impl
+    Wire2Api<
+        flutter_rust_bridge::RustOpaque<
+            std::sync::RwLock<AssertUnwindSafe<Box<dyn Fn(String) -> String>>>,
+        >,
+    > for *const std::ffi::c_void
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<
+        std::sync::RwLock<AssertUnwindSafe<Box<dyn Fn(String) -> String>>>,
+    > {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>>>
+    for *const std::ffi::c_void
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>> {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl
+    Wire2Api<
+        flutter_rust_bridge::RustOpaque<
+            std::sync::RwLock<Box<dyn MyTraitTwinNormal + Send + Sync>>,
+        >,
+    > for *const std::ffi::c_void
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn MyTraitTwinNormal + Send + Sync>>>
+    {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
 impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
     for *const std::ffi::c_void
 {
@@ -12247,6 +12285,16 @@ pub extern "C" fn wire_rust_auto_opaque_arg_own_and_return_own(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_callable_arg(port_: i64, arg: *const std::ffi::c_void) {
+    wire_rust_auto_opaque_callable_arg_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_callable_return(port_: i64) {
+    wire_rust_auto_opaque_callable_return_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_rust_auto_opaque_normal_and_opaque_arg(
     port_: i64,
     a: *const std::ffi::c_void,
@@ -12256,8 +12304,55 @@ pub extern "C" fn wire_rust_auto_opaque_normal_and_opaque_arg(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_plus_sign_arg(port_: i64, arg: *const std::ffi::c_void) {
+    wire_rust_auto_opaque_plus_sign_arg_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_plus_sign_return(port_: i64) {
+    wire_rust_auto_opaque_plus_sign_return_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_rust_auto_opaque_return_own(port_: i64) {
     wire_rust_auto_opaque_return_own_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_trait_object_arg_borrow(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+    expect: *mut wire_list_prim_u_8,
+) {
+    wire_rust_auto_opaque_trait_object_arg_borrow_impl(port_, arg, expect)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_trait_object_arg_mut_borrow(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+    expect: *mut wire_list_prim_u_8,
+) {
+    wire_rust_auto_opaque_trait_object_arg_mut_borrow_impl(port_, arg, expect)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_trait_object_arg_own(
+    port_: i64,
+    arg: *const std::ffi::c_void,
+    expect: *mut wire_list_prim_u_8,
+) {
+    wire_rust_auto_opaque_trait_object_arg_own_impl(port_, arg, expect)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_trait_object_return_own_one(port_: i64) {
+    wire_rust_auto_opaque_trait_object_return_own_one_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_rust_auto_opaque_trait_object_return_own_two(port_: i64) {
+    wire_rust_auto_opaque_trait_object_return_own_two_impl(port_)
 }
 
 #[no_mangle]
@@ -14388,6 +14483,72 @@ pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data(
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
             crate::auxiliary::sample_types::NonSendHideData,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringString(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<AssertUnwindSafe<Box<dyn Fn(String) -> String>>>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringString(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<AssertUnwindSafe<Box<dyn Fn(String) -> String>>>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<Box<dyn MyTraitTwinNormal + Send + Sync>>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<Box<dyn MyTraitTwinNormal + Send + Sync>>,
         >(ptr);
     }
 }

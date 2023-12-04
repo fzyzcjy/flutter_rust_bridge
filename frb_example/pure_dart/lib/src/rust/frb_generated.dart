@@ -1907,12 +1907,44 @@ abstract class RustLibApi extends BaseApi {
   Future<RwLockNonCloneSimpleTwinNormal> rustAutoOpaqueArgOwnAndReturnOwn(
       {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint});
 
+  Future<void> rustAutoOpaqueCallableArg(
+      {required RwLockBoxFnStringString arg, dynamic hint});
+
+  Future<RwLockBoxFnStringString> rustAutoOpaqueCallableReturn({dynamic hint});
+
   Future<void> rustAutoOpaqueNormalAndOpaqueArg(
       {required RwLockNonCloneSimpleTwinNormal a,
       required String b,
       dynamic hint});
 
+  Future<void> rustAutoOpaquePlusSignArg(
+      {required RwLockBoxMyTraitTwinNormal arg, dynamic hint});
+
+  Future<RwLockBoxMyTraitTwinNormal> rustAutoOpaquePlusSignReturn(
+      {dynamic hint});
+
   Future<RwLockNonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwn(
+      {dynamic hint});
+
+  Future<void> rustAutoOpaqueTraitObjectArgBorrow(
+      {required RwLockBoxHelloTraitTwinNormal arg,
+      required String expect,
+      dynamic hint});
+
+  Future<void> rustAutoOpaqueTraitObjectArgMutBorrow(
+      {required RwLockBoxHelloTraitTwinNormal arg,
+      required String expect,
+      dynamic hint});
+
+  Future<void> rustAutoOpaqueTraitObjectArgOwn(
+      {required RwLockBoxHelloTraitTwinNormal arg,
+      required String expect,
+      dynamic hint});
+
+  Future<RwLockBoxHelloTraitTwinNormal> rustAutoOpaqueTraitObjectReturnOwnOne(
+      {dynamic hint});
+
+  Future<RwLockBoxHelloTraitTwinNormal> rustAutoOpaqueTraitObjectReturnOwnTwo(
       {dynamic hint});
 
   Future<void> rustAutoOpaqueTwoArgs(
@@ -2131,6 +2163,33 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_NonSendHideDataPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockBoxFnStringString;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockBoxFnStringString;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockBoxFnStringStringPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockBoxHelloTraitTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinNormalPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockBoxMyTraitTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinNormalPtr;
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_RwLockNonCloneSimpleTwinNormal;
@@ -15518,6 +15577,48 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<void> rustAutoOpaqueCallableArg(
+      {required RwLockBoxFnStringString arg, dynamic hint}) {
+    var arg0 =
+        api2wire_Auto_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringString(
+            arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_rust_auto_opaque_callable_arg(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueCallableArgConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueCallableArgConstMeta => const TaskConstMeta(
+        debugName: "rust_auto_opaque_callable_arg",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<RwLockBoxFnStringString> rustAutoOpaqueCallableReturn({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_rust_auto_opaque_callable_return(port_),
+      parseSuccessData:
+          _wire2api_Auto_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringString,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueCallableReturnConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueCallableReturnConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_callable_return",
+        argNames: [],
+      );
+
+  @override
   Future<void> rustAutoOpaqueNormalAndOpaqueArg(
       {required RwLockNonCloneSimpleTwinNormal a,
       required String b,
@@ -15544,6 +15645,49 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<void> rustAutoOpaquePlusSignArg(
+      {required RwLockBoxMyTraitTwinNormal arg, dynamic hint}) {
+    var arg0 =
+        api2wire_Auto_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+            arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_rust_auto_opaque_plus_sign_arg(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaquePlusSignArgConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaquePlusSignArgConstMeta => const TaskConstMeta(
+        debugName: "rust_auto_opaque_plus_sign_arg",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<RwLockBoxMyTraitTwinNormal> rustAutoOpaquePlusSignReturn(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_rust_auto_opaque_plus_sign_return(port_),
+      parseSuccessData:
+          _wire2api_Auto_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaquePlusSignReturnConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaquePlusSignReturnConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_plus_sign_return",
+        argNames: [],
+      );
+
+  @override
   Future<RwLockNonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwn(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
@@ -15560,6 +15704,128 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kRustAutoOpaqueReturnOwnConstMeta => const TaskConstMeta(
         debugName: "rust_auto_opaque_return_own",
+        argNames: [],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueTraitObjectArgBorrow(
+      {required RwLockBoxHelloTraitTwinNormal arg,
+      required String expect,
+      dynamic hint}) {
+    var arg0 =
+        api2wire_Auto_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(arg);
+    var arg1 = api2wire_String(expect);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_rust_auto_opaque_trait_object_arg_borrow(port_, arg0, arg1),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueTraitObjectArgBorrowConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTraitObjectArgBorrowConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_trait_object_arg_borrow",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueTraitObjectArgMutBorrow(
+      {required RwLockBoxHelloTraitTwinNormal arg,
+      required String expect,
+      dynamic hint}) {
+    var arg0 =
+        api2wire_Auto_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(arg);
+    var arg1 = api2wire_String(expect);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire
+          .wire_rust_auto_opaque_trait_object_arg_mut_borrow(port_, arg0, arg1),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueTraitObjectArgMutBorrowConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTraitObjectArgMutBorrowConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_trait_object_arg_mut_borrow",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  Future<void> rustAutoOpaqueTraitObjectArgOwn(
+      {required RwLockBoxHelloTraitTwinNormal arg,
+      required String expect,
+      dynamic hint}) {
+    var arg0 =
+        api2wire_Auto_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(arg);
+    var arg1 = api2wire_String(expect);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_rust_auto_opaque_trait_object_arg_own(port_, arg0, arg1),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueTraitObjectArgOwnConstMeta,
+      argValues: [arg, expect],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTraitObjectArgOwnConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_trait_object_arg_own",
+        argNames: ["arg", "expect"],
+      );
+
+  @override
+  Future<RwLockBoxHelloTraitTwinNormal> rustAutoOpaqueTraitObjectReturnOwnOne(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_rust_auto_opaque_trait_object_return_own_one(port_),
+      parseSuccessData:
+          _wire2api_Auto_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueTraitObjectReturnOwnOneConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTraitObjectReturnOwnOneConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_trait_object_return_own_one",
+        argNames: [],
+      );
+
+  @override
+  Future<RwLockBoxHelloTraitTwinNormal> rustAutoOpaqueTraitObjectReturnOwnTwo(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_rust_auto_opaque_trait_object_return_own_two(port_),
+      parseSuccessData:
+          _wire2api_Auto_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal,
+      parseErrorData: null,
+      constMeta: kRustAutoOpaqueTraitObjectReturnOwnTwoConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustAutoOpaqueTraitObjectReturnOwnTwoConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_auto_opaque_trait_object_return_own_two",
         argNames: [],
       );
 
@@ -16576,6 +16842,30 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           wire.rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data;
 
   RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockBoxFnStringString => wire
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringString;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockBoxFnStringString => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringString;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockBoxHelloTraitTwinNormal => wire
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinNormal => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockBoxMyTraitTwinNormal => wire
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinNormal => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync;
+
+  RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_RwLockNonCloneSimpleTwinNormal => wire
           .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal;
 
@@ -16585,6 +16875,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   AnyhowException _wire2api_AnyhowException(dynamic raw) {
     return AnyhowException(raw as String);
+  }
+
+  RwLockBoxFnStringString
+      _wire2api_Auto_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringString(
+          dynamic raw) {
+    return RwLockBoxFnStringString.fromWire(raw);
+  }
+
+  RwLockBoxHelloTraitTwinNormal
+      _wire2api_Auto_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          dynamic raw) {
+    return RwLockBoxHelloTraitTwinNormal.fromWire(raw);
+  }
+
+  RwLockBoxMyTraitTwinNormal
+      _wire2api_Auto_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+          dynamic raw) {
+    return RwLockBoxMyTraitTwinNormal.fromWire(raw);
   }
 
   RwLockNonCloneSimpleTwinNormal
@@ -16676,6 +16984,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   NonSendHideData _wire2api_RustOpaque_non_send_hide_data(dynamic raw) {
     return NonSendHideData.fromWire(raw);
+  }
+
+  RwLockBoxFnStringString
+      _wire2api_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringString(
+          dynamic raw) {
+    return RwLockBoxFnStringString.fromWire(raw);
+  }
+
+  RwLockBoxHelloTraitTwinNormal
+      _wire2api_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          dynamic raw) {
+    return RwLockBoxHelloTraitTwinNormal.fromWire(raw);
+  }
+
+  RwLockBoxMyTraitTwinNormal
+      _wire2api_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+          dynamic raw) {
+    return RwLockBoxMyTraitTwinNormal.fromWire(raw);
   }
 
   RwLockNonCloneSimpleTwinNormal
@@ -20228,6 +20554,27 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
 // Section: api2wire_funcs
 
+PlatformPointer
+    api2wire_Auto_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringString(
+        RwLockBoxFnStringString raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.api2wire();
+}
+
+PlatformPointer
+    api2wire_Auto_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+        RwLockBoxHelloTraitTwinNormal raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.api2wire();
+}
+
+PlatformPointer
+    api2wire_Auto_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+        RwLockBoxMyTraitTwinNormal raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.api2wire();
+}
+
 PlatformPointer api2wire_Auto_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
     RwLockNonCloneSimpleTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
@@ -20278,6 +20625,26 @@ PlatformPointer api2wire_RustOpaque_non_clone_data(NonCloneData raw) {
 }
 
 PlatformPointer api2wire_RustOpaque_non_send_hide_data(NonSendHideData raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.api2wire();
+}
+
+PlatformPointer
+    api2wire_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringString(
+        RwLockBoxFnStringString raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.api2wire();
+}
+
+PlatformPointer api2wire_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+    RwLockBoxHelloTraitTwinNormal raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.api2wire();
+}
+
+PlatformPointer
+    api2wire_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+        RwLockBoxMyTraitTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire();
 }

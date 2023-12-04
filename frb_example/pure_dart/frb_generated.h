@@ -3011,11 +3011,35 @@ void wire_rust_auto_opaque_arg_own(int64_t port_, const void *arg);
 
 void wire_rust_auto_opaque_arg_own_and_return_own(int64_t port_, const void *arg);
 
+void wire_rust_auto_opaque_callable_arg(int64_t port_, const void *arg);
+
+void wire_rust_auto_opaque_callable_return(int64_t port_);
+
 void wire_rust_auto_opaque_normal_and_opaque_arg(int64_t port_,
                                                  const void *a,
                                                  struct wire_list_prim_u_8 *b);
 
+void wire_rust_auto_opaque_plus_sign_arg(int64_t port_, const void *arg);
+
+void wire_rust_auto_opaque_plus_sign_return(int64_t port_);
+
 void wire_rust_auto_opaque_return_own(int64_t port_);
+
+void wire_rust_auto_opaque_trait_object_arg_borrow(int64_t port_,
+                                                   const void *arg,
+                                                   struct wire_list_prim_u_8 *expect);
+
+void wire_rust_auto_opaque_trait_object_arg_mut_borrow(int64_t port_,
+                                                       const void *arg,
+                                                       struct wire_list_prim_u_8 *expect);
+
+void wire_rust_auto_opaque_trait_object_arg_own(int64_t port_,
+                                                const void *arg,
+                                                struct wire_list_prim_u_8 *expect);
+
+void wire_rust_auto_opaque_trait_object_return_own_one(int64_t port_);
+
+void wire_rust_auto_opaque_trait_object_return_own_two(int64_t port_);
 
 void wire_rust_auto_opaque_two_args(int64_t port_, const void *a, const void *b);
 
@@ -3595,6 +3619,18 @@ void rust_arc_increment_strong_count_RustOpaque_non_send_hide_data(const void *p
 
 void rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data(const void *ptr);
 
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringString(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringString(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(const void *ptr);
+
 void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(const void *ptr);
@@ -4103,6 +4139,9 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_i_32);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_non_clone_data);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringString);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal);
+    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_MutexHideData);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_RwLockHideData);
@@ -4115,6 +4154,9 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_i_32);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_non_clone_data);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_non_send_hide_data);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringString);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal);
+    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal);
     dummy_var ^= ((int64_t) (void*) store_dart_post_cobject);
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinNormal_concatenate_static_twin_normal);
@@ -4709,8 +4751,17 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_mut_borrow);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_own);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_arg_own_and_return_own);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_callable_arg);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_callable_return);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_normal_and_opaque_arg);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_plus_sign_arg);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_plus_sign_return);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_return_own);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_borrow);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_mut_borrow);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_arg_own);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_return_own_one);
+    dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_return_own_two);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_two_args);
     dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque_twin_rust_async);

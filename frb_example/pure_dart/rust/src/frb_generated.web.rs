@@ -3384,6 +3384,44 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::No
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
+impl
+    Wire2Api<
+        flutter_rust_bridge::RustOpaque<
+            std::sync::RwLock<AssertUnwindSafe<Box<dyn Fn(String) -> String>>>,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<
+        std::sync::RwLock<AssertUnwindSafe<Box<dyn Fn(String) -> String>>>,
+    > {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>> {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
+impl
+    Wire2Api<
+        flutter_rust_bridge::RustOpaque<
+            std::sync::RwLock<Box<dyn MyTraitTwinNormal + Send + Sync>>,
+        >,
+    > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<Box<dyn MyTraitTwinNormal + Send + Sync>>>
+    {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
 impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<NonCloneSimpleTwinNormal>>>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
@@ -8563,6 +8601,21 @@ pub fn wire_rust_auto_opaque_arg_own_and_return_own(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_callable_arg(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_auto_opaque_callable_arg_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_callable_return(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_rust_auto_opaque_callable_return_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_normal_and_opaque_arg(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     a: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -8572,8 +8625,64 @@ pub fn wire_rust_auto_opaque_normal_and_opaque_arg(
 }
 
 #[wasm_bindgen]
+pub fn wire_rust_auto_opaque_plus_sign_arg(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_auto_opaque_plus_sign_arg_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_plus_sign_return(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_rust_auto_opaque_plus_sign_return_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_rust_auto_opaque_return_own(port_: flutter_rust_bridge::for_generated::MessagePort) {
     wire_rust_auto_opaque_return_own_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_trait_object_arg_borrow(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: String,
+) {
+    wire_rust_auto_opaque_trait_object_arg_borrow_impl(port_, arg, expect)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_trait_object_arg_mut_borrow(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: String,
+) {
+    wire_rust_auto_opaque_trait_object_arg_mut_borrow_impl(port_, arg, expect)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_trait_object_arg_own(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    arg: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    expect: String,
+) {
+    wire_rust_auto_opaque_trait_object_arg_own_impl(port_, arg, expect)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_trait_object_return_own_one(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_rust_auto_opaque_trait_object_return_own_one_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_auto_opaque_trait_object_return_own_two(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    wire_rust_auto_opaque_trait_object_return_own_two_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -9112,6 +9221,72 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data(ptr: *const
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
             crate::auxiliary::sample_types::NonSendHideData,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringString(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<AssertUnwindSafe<Box<dyn Fn(String) -> String>>>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringString(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<AssertUnwindSafe<Box<dyn Fn(String) -> String>>>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<Box<dyn HelloTraitTwinNormal>>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<Box<dyn MyTraitTwinNormal + Send + Sync>>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<Box<dyn MyTraitTwinNormal + Send + Sync>>,
         >(ptr);
     }
 }

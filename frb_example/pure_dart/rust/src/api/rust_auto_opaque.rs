@@ -46,92 +46,92 @@ pub fn rust_auto_opaque_normal_and_opaque_arg(a: NonCloneSimpleTwinNormal, b: St
     assert_eq!(b, "hello");
 }
 
-// // ==================================== complex type signatures =======================================
-//
-// pub trait MyTraitTwinNormal: DartSafe {
-//     fn f(&self) -> &str;
-// }
-// impl MyTraitTwinNormal for String {
-//     fn f(&self) -> &str {
-//         self
-//     }
-// }
-//
-// /// "+" inside the type signature
-// pub fn rust_auto_opaque_plus_sign_arg(arg: Box<dyn MyTraitTwinNormal + Send + Sync>) {
-//     assert_eq!(arg.f(), "hello");
-// }
-//
-// pub fn rust_auto_opaque_plus_sign_return() -> Box<dyn MyTraitTwinNormal + Send + Sync> {
-//     Box::new("hello".to_owned())
-// }
-//
-// pub fn rust_auto_opaque_callable_arg(arg: AssertUnwindSafe<Box<dyn Fn(String) -> String>>) {
-//     assert_eq!(&arg("hello".into()), "hellohello");
-// }
-//
-// pub fn rust_auto_opaque_callable_return() -> AssertUnwindSafe<Box<dyn Fn(String) -> String>> {
-//     AssertUnwindSafe(Box::new(|x: String| x.repeat(2)))
-// }
-//
-// // ==================================== trait object =======================================
-//
-// pub trait HelloTraitTwinNormal: DartSafe + Send + Sync {
-//     fn func_hello(&self) -> &str;
-// }
-//
-// pub struct HelloOneStructTwinNormal {
-//     inner: String,
-// }
-//
-// impl HelloTraitTwinNormal for HelloOneStructTwinNormal {
-//     fn func_hello(&self) -> &str {
-//         &self.inner
-//     }
-// }
-//
-// pub enum HelloTwoEnumTwinNormal {
-//     A,
-//     B,
-// }
-//
-// impl HelloTraitTwinNormal for HelloTwoEnumTwinNormal {
-//     fn func_hello(&self) -> &str {
-//         match self {
-//             HelloTwoEnumTwinNormal::A => "A",
-//             HelloTwoEnumTwinNormal::B => "B",
-//         }
-//     }
-// }
-//
-// pub fn rust_auto_opaque_trait_object_arg_own(arg: Box<dyn HelloTraitTwinNormal>, expect: String) {
-//     assert_eq!(arg.func_hello(), expect);
-// }
-//
-// pub fn rust_auto_opaque_trait_object_arg_borrow(
-//     arg: &Box<dyn HelloTraitTwinNormal>,
-//     expect: String,
-// ) {
-//     assert_eq!(arg.func_hello(), expect);
-// }
-//
-// pub fn rust_auto_opaque_trait_object_arg_mut_borrow(
-//     arg: &mut Box<dyn HelloTraitTwinNormal>,
-//     expect: String,
-// ) {
-//     assert_eq!(arg.func_hello(), expect);
-// }
-//
-// pub fn rust_auto_opaque_trait_object_return_own_one() -> Box<dyn HelloTraitTwinNormal> {
-//     Box::new(HelloOneStructTwinNormal {
-//         inner: "hello".into(),
-//     })
-// }
-//
-// pub fn rust_auto_opaque_trait_object_return_own_two() -> Box<dyn HelloTraitTwinNormal> {
-//     Box::new(HelloTwoEnumTwinNormal::B)
-// }
-//
+// ==================================== complex type signatures =======================================
+
+pub trait MyTraitTwinNormal: DartSafe {
+    fn f(&self) -> &str;
+}
+impl MyTraitTwinNormal for String {
+    fn f(&self) -> &str {
+        self
+    }
+}
+
+/// "+" inside the type signature
+pub fn rust_auto_opaque_plus_sign_arg(arg: Box<dyn MyTraitTwinNormal + Send + Sync>) {
+    assert_eq!(arg.f(), "hello");
+}
+
+pub fn rust_auto_opaque_plus_sign_return() -> Box<dyn MyTraitTwinNormal + Send + Sync> {
+    Box::new("hello".to_owned())
+}
+
+pub fn rust_auto_opaque_callable_arg(arg: AssertUnwindSafe<Box<dyn Fn(String) -> String>>) {
+    assert_eq!(&arg("hello".into()), "hellohello");
+}
+
+pub fn rust_auto_opaque_callable_return() -> AssertUnwindSafe<Box<dyn Fn(String) -> String>> {
+    AssertUnwindSafe(Box::new(|x: String| x.repeat(2)))
+}
+
+// ==================================== trait object =======================================
+
+pub trait HelloTraitTwinNormal: DartSafe + Send + Sync {
+    fn func_hello(&self) -> &str;
+}
+
+pub struct HelloOneStructTwinNormal {
+    inner: String,
+}
+
+impl HelloTraitTwinNormal for HelloOneStructTwinNormal {
+    fn func_hello(&self) -> &str {
+        &self.inner
+    }
+}
+
+pub enum HelloTwoEnumTwinNormal {
+    A,
+    B,
+}
+
+impl HelloTraitTwinNormal for HelloTwoEnumTwinNormal {
+    fn func_hello(&self) -> &str {
+        match self {
+            HelloTwoEnumTwinNormal::A => "A",
+            HelloTwoEnumTwinNormal::B => "B",
+        }
+    }
+}
+
+pub fn rust_auto_opaque_trait_object_arg_own(arg: Box<dyn HelloTraitTwinNormal>, expect: String) {
+    assert_eq!(arg.func_hello(), expect);
+}
+
+pub fn rust_auto_opaque_trait_object_arg_borrow(
+    arg: &Box<dyn HelloTraitTwinNormal>,
+    expect: String,
+) {
+    assert_eq!(arg.func_hello(), expect);
+}
+
+pub fn rust_auto_opaque_trait_object_arg_mut_borrow(
+    arg: &mut Box<dyn HelloTraitTwinNormal>,
+    expect: String,
+) {
+    assert_eq!(arg.func_hello(), expect);
+}
+
+pub fn rust_auto_opaque_trait_object_return_own_one() -> Box<dyn HelloTraitTwinNormal> {
+    Box::new(HelloOneStructTwinNormal {
+        inner: "hello".into(),
+    })
+}
+
+pub fn rust_auto_opaque_trait_object_return_own_two() -> Box<dyn HelloTraitTwinNormal> {
+    Box::new(HelloTwoEnumTwinNormal::B)
+}
+
 // // ==================================== static method =======================================
 //
 // impl NonCloneSimpleTwinNormal {

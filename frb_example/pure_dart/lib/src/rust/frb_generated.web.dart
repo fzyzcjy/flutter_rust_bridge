@@ -162,6 +162,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           wire.rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data;
 
   CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockBoxFnStringStringPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringString;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinNormalPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinNormalPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync;
+
+  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinNormalPtr => wire
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal;
 
@@ -5679,12 +5691,46 @@ class RustLibWire extends BaseWire {
           NativePortType port_, Object arg) =>
       wasmModule.wire_rust_auto_opaque_arg_own_and_return_own(port_, arg);
 
+  void wire_rust_auto_opaque_callable_arg(NativePortType port_, Object arg) =>
+      wasmModule.wire_rust_auto_opaque_callable_arg(port_, arg);
+
+  void wire_rust_auto_opaque_callable_return(NativePortType port_) =>
+      wasmModule.wire_rust_auto_opaque_callable_return(port_);
+
   void wire_rust_auto_opaque_normal_and_opaque_arg(
           NativePortType port_, Object a, String b) =>
       wasmModule.wire_rust_auto_opaque_normal_and_opaque_arg(port_, a, b);
 
+  void wire_rust_auto_opaque_plus_sign_arg(NativePortType port_, Object arg) =>
+      wasmModule.wire_rust_auto_opaque_plus_sign_arg(port_, arg);
+
+  void wire_rust_auto_opaque_plus_sign_return(NativePortType port_) =>
+      wasmModule.wire_rust_auto_opaque_plus_sign_return(port_);
+
   void wire_rust_auto_opaque_return_own(NativePortType port_) =>
       wasmModule.wire_rust_auto_opaque_return_own(port_);
+
+  void wire_rust_auto_opaque_trait_object_arg_borrow(
+          NativePortType port_, Object arg, String expect) =>
+      wasmModule.wire_rust_auto_opaque_trait_object_arg_borrow(
+          port_, arg, expect);
+
+  void wire_rust_auto_opaque_trait_object_arg_mut_borrow(
+          NativePortType port_, Object arg, String expect) =>
+      wasmModule.wire_rust_auto_opaque_trait_object_arg_mut_borrow(
+          port_, arg, expect);
+
+  void wire_rust_auto_opaque_trait_object_arg_own(
+          NativePortType port_, Object arg, String expect) =>
+      wasmModule.wire_rust_auto_opaque_trait_object_arg_own(port_, arg, expect);
+
+  void wire_rust_auto_opaque_trait_object_return_own_one(
+          NativePortType port_) =>
+      wasmModule.wire_rust_auto_opaque_trait_object_return_own_one(port_);
+
+  void wire_rust_auto_opaque_trait_object_return_own_two(
+          NativePortType port_) =>
+      wasmModule.wire_rust_auto_opaque_trait_object_return_own_two(port_);
 
   void wire_rust_auto_opaque_two_args(
           NativePortType port_, Object a, Object b) =>
@@ -5948,6 +5994,42 @@ class RustLibWire extends BaseWire {
           dynamic ptr) =>
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data(ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringString(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringString(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringString(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringString(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+              ptr);
 
   void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
           dynamic ptr) =>
@@ -7863,10 +7945,35 @@ class RustLibWasmModule implements WasmModule {
   external void wire_rust_auto_opaque_arg_own_and_return_own(
       NativePortType port_, Object arg);
 
+  external void wire_rust_auto_opaque_callable_arg(
+      NativePortType port_, Object arg);
+
+  external void wire_rust_auto_opaque_callable_return(NativePortType port_);
+
   external void wire_rust_auto_opaque_normal_and_opaque_arg(
       NativePortType port_, Object a, String b);
 
+  external void wire_rust_auto_opaque_plus_sign_arg(
+      NativePortType port_, Object arg);
+
+  external void wire_rust_auto_opaque_plus_sign_return(NativePortType port_);
+
   external void wire_rust_auto_opaque_return_own(NativePortType port_);
+
+  external void wire_rust_auto_opaque_trait_object_arg_borrow(
+      NativePortType port_, Object arg, String expect);
+
+  external void wire_rust_auto_opaque_trait_object_arg_mut_borrow(
+      NativePortType port_, Object arg, String expect);
+
+  external void wire_rust_auto_opaque_trait_object_arg_own(
+      NativePortType port_, Object arg, String expect);
+
+  external void wire_rust_auto_opaque_trait_object_return_own_one(
+      NativePortType port_);
+
+  external void wire_rust_auto_opaque_trait_object_return_own_two(
+      NativePortType port_);
 
   external void wire_rust_auto_opaque_two_args(
       NativePortType port_, Object a, Object b);
@@ -8064,6 +8171,30 @@ class RustLibWasmModule implements WasmModule {
 
   external void rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data(
       dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringString(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringString(
+          dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+          dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+          dynamic ptr);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
