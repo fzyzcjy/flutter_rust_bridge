@@ -61,7 +61,6 @@ Future<void> lintRustClippy(LintConfig config) async {
 }
 
 Future<void> lintDart(LintConfig config) async {
-  // await dartPubGet();
   await lintDartFormat(config);
   await lintDartAnalyze(config);
   await lintDartPana(config);
@@ -87,11 +86,4 @@ Future<void> lintDartPana(LintConfig config) async {
   await exec('flutter pub global activate pana');
   await exec('$pana --no-warning --line-length 80 --exit-code-threshold 0',
       relativePwd: 'frb_dart');
-}
-
-Future<void> dartPubGet() async {
-  for (final package in kDartPackages) {
-    // TODO `with_flutter` is `flutter pub get`
-    await exec('dart pub get', relativePwd: package);
-  }
 }

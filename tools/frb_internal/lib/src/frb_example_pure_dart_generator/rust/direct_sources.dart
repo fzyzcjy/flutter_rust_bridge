@@ -5,8 +5,6 @@ Map<String, String> generateRustDirectSources() {
     'pseudo_manual/primitive.rs': _generatePrimitive(),
     'pseudo_manual/optional_primitive.rs': _generateOptionalPrimitive(),
     'pseudo_manual/primitive_list.rs': _generatePrimitiveList(),
-//  TODO
-//     'pseudo_manual/structure.rs': _generateStructure(),
   };
 }
 
@@ -35,33 +33,6 @@ String _generateOptionalPrimitive() {
   }
   return builder.toString();
 }
-
-//  TODO
-// // TODO corresponding tests in dart
-// String _generateStructure() {
-//   final builder = RustFileBuilder();
-//
-//   builder.body += '''
-// pub struct StructSimpleTwinNormal {
-//     pub field: i32,
-// }
-//
-// #[frb(dart_metadata = ("freezed"))]
-// pub struct StructFreezedTwinNormal {
-//     pub field: i32,
-// }
-//   ''';
-//
-//   for (final (ty, partialName) in [
-//     ('StructSimpleTwinNormal', 'func_struct_simple'),
-//     ('StructFreezedTwinNormal', 'func_struct_freezed'),
-//   ]) {
-//     builder.addIdentityFunction(ty, partialName);
-//     builder.addIdentityFunction('Box<$ty>', '${partialName}_boxed');
-//   }
-//
-//   return builder.toString();
-// }
 
 class PrimitiveTypeInfo {
   final String name;
