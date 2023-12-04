@@ -3387,14 +3387,14 @@ impl Wire2Api<flutter_rust_bridge::RustOpaque<crate::auxiliary::sample_types::No
 impl
     Wire2Api<
         flutter_rust_bridge::RustOpaque<
-            std::sync::RwLock<AssertUnwindSafe<Box<dyn Fn(String) -> String>>>,
+            std::sync::RwLock<AssertUnwindSafe<Box<dyn Fn(String) -> String + Send>>>,
         >,
     > for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(
         self,
     ) -> flutter_rust_bridge::RustOpaque<
-        std::sync::RwLock<AssertUnwindSafe<Box<dyn Fn(String) -> String>>>,
+        std::sync::RwLock<AssertUnwindSafe<Box<dyn Fn(String) -> String + Send>>>,
     > {
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
@@ -9226,23 +9226,23 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data(ptr: *const
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringString(
+pub fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringStringSend(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            std::sync::RwLock<AssertUnwindSafe<Box<dyn Fn(String) -> String>>>,
+            std::sync::RwLock<AssertUnwindSafe<Box<dyn Fn(String) -> String + Send>>>,
         >(ptr);
     }
 }
 
 #[wasm_bindgen]
-pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringString(
+pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringStringSend(
     ptr: *const std::ffi::c_void,
 ) {
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            std::sync::RwLock<AssertUnwindSafe<Box<dyn Fn(String) -> String>>>,
+            std::sync::RwLock<AssertUnwindSafe<Box<dyn Fn(String) -> String + Send>>>,
         >(ptr);
     }
 }

@@ -84,7 +84,7 @@ Future<RwLockBoxHelloTraitTwinNormal> rustAutoOpaqueTraitObjectReturnOwnTwo(
         {dynamic hint}) =>
     RustLib.instance.api.rustAutoOpaqueTraitObjectReturnOwnTwo(hint: hint);
 
-// Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<AssertUnwindSafe < Box < dyn Fn (String) -> String > >>>
+// Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<AssertUnwindSafe < Box < dyn Fn (String) -> String + Send > >>>
 @sealed
 class RwLockBoxFnStringString extends RustOpaque {
   RwLockBoxFnStringString.fromWire(dynamic wire)

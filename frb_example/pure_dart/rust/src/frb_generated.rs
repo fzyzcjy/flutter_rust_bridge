@@ -7291,7 +7291,7 @@ fn wire_rust_auto_opaque_callable_arg_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     arg: impl Wire2Api<
             flutter_rust_bridge::RustOpaque<
-                std::sync::RwLock<AssertUnwindSafe<Box<dyn Fn(String) -> String>>>,
+                std::sync::RwLock<AssertUnwindSafe<Box<dyn Fn(String) -> String + Send>>>,
             >,
         > + core::panic::UnwindSafe,
 ) {
@@ -7316,7 +7316,7 @@ fn wire_rust_auto_opaque_callable_return_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, flutter_rust_bridge::RustOpaque<
-        std::sync::RwLock<AssertUnwindSafe<Box<dyn Fn(String) -> String>>>,
+        std::sync::RwLock<AssertUnwindSafe<Box<dyn Fn(String) -> String + Send>>>,
     >, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "rust_auto_opaque_callable_return",

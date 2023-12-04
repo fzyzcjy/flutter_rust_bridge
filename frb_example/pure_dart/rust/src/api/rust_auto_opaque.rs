@@ -66,11 +66,12 @@ pub fn rust_auto_opaque_plus_sign_return() -> Box<dyn MyTraitTwinNormal + Send +
     Box::new("hello".to_owned())
 }
 
-pub fn rust_auto_opaque_callable_arg(arg: AssertUnwindSafe<Box<dyn Fn(String) -> String>>) {
+pub fn rust_auto_opaque_callable_arg(arg: AssertUnwindSafe<Box<dyn Fn(String) -> String + Send>>) {
     assert_eq!(&arg("hello".into()), "hellohello");
 }
 
-pub fn rust_auto_opaque_callable_return() -> AssertUnwindSafe<Box<dyn Fn(String) -> String>> {
+pub fn rust_auto_opaque_callable_return() -> AssertUnwindSafe<Box<dyn Fn(String) -> String + Send>>
+{
     AssertUnwindSafe(Box::new(|x: String| x.repeat(2)))
 }
 
