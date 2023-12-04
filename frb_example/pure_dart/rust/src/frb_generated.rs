@@ -19,6 +19,7 @@ use crate::api::pseudo_manual::rust_opaque_twin_sync::*;
 use crate::api::rust_auto_opaque::*;
 use crate::api::rust_opaque::*;
 use crate::api::rust_opaque_sync::*;
+use flutter_rust_bridge::for_generated::RustAutoOpaqueWire2Api;
 use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: wire_funcs

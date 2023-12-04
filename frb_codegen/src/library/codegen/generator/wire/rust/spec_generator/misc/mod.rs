@@ -77,7 +77,9 @@ fn generate_imports(
         .join("\n");
 
     // NOTE Do *not* use imports when possible, instead use fully specified name directly
-    let static_imports = "use flutter_rust_bridge::{Handler, IntoIntoDart};\n";
+    let static_imports = "use flutter_rust_bridge::{Handler, IntoIntoDart};
+    use flutter_rust_bridge::for_generated::RustAutoOpaqueWire2Api;
+    ";
 
     Acc::new(|target| {
         let platform_imports = match target {
