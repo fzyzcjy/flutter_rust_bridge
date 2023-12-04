@@ -15,7 +15,7 @@ export 'src/main_components/api.dart';
 export 'src/main_components/api_impl.dart';
 export 'src/main_components/entrypoint.dart';
 export 'src/main_components/handler.dart';
-export 'src/main_components/wire/_common.dart';
+export 'src/main_components/wire.dart';
 export 'src/manual_impl/_common.dart';
 export 'src/opaque/dart_opaque.dart';
 export 'src/opaque/rust_opaque.dart';
