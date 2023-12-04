@@ -11,3 +11,9 @@ impl<T> RustAutoOpaqueWire2Api<T> for RustOpaque<T> {
             .context("Cannot convert RustOpaque to inner value. This is probably because you are having more than one references to it.")
     }
 }
+
+impl<'a, T> RustAutoOpaqueWire2Api<&'a T> for &'a RustOpaque<T> {
+    fn rust_auto_opaque_wire2api(self) -> Result<&'a T> {
+        &self
+    }
+}
