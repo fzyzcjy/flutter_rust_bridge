@@ -61,5 +61,5 @@ fn compute_api_method_query_name(
     }
 
     let inner_dart_api_type: String = ir.inner.rust_api_type();
-    FILTER.replace_all(&inner_dart_api_type, "$1").to_string()
+    FILTER.replace_all(&inner_dart_api_type, "$2").to_string()
 }
