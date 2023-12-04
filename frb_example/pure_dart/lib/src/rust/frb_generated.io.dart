@@ -164,7 +164,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_RwLockBoxFnStringStringPtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringStringSendSyncPtr;
+          ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafePtr;
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinNormalPtr => wire
@@ -19824,35 +19824,35 @@ class RustLibWire implements BaseWire {
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void
-      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringStringSendSync(
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafe(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringStringSendSync(
+    return _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafe(
       ptr,
     );
   }
 
-  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringStringSendSyncPtr =
+  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringStringSendSync');
-  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringStringSendSync =
-      _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringStringSendSyncPtr
+          'rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafe');
+  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafe =
+      _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void
-      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringStringSendSync(
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafe(
     ffi.Pointer<ffi.Void> ptr,
   ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringStringSendSync(
+    return _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafe(
       ptr,
     );
   }
 
-  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringStringSendSyncPtr =
+  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringStringSendSync');
-  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringStringSendSync =
-      _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockAssertUnwindSafeBoxdynFnStringStringSendSyncPtr
+          'rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafe');
+  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafe =
+      _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void
