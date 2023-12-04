@@ -140,12 +140,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(output.test.value, "test");
     expect(output.test2.a, "test");
   });
-
-  // TODO rm?
-  // test("sync return mirror", () {
-  //   final settings = syncReturnMirror();
-  //   testAppSettings(settings);
-  // });
 }
 
 int _createGarbage() {

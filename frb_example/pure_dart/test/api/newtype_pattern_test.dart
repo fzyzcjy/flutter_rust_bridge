@@ -10,10 +10,4 @@ Future<void> main({bool skipRustLibInit = false}) async {
         await handleNewtypeTwinNormal(arg: NewTypeIntTwinNormal(field0: 42));
     expect(newtypeResp.field0.toInt(), 84);
   });
-
-  // TODO rm?
-  // test('dart call handleNewtypeSync', () {
-  //   final newtypeResp = handleNewtypeSync(arg: NewTypeInt(field0: 42));
-  //   expect(newtypeResp.field0, 84);
-  // });
 }
