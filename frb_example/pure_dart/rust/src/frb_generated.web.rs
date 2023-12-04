@@ -11,7 +11,6 @@ use crate::api::rust_opaque::*;
 use crate::api::rust_opaque_sync::*;
 use flutter_rust_bridge::for_generated::wasm_bindgen;
 use flutter_rust_bridge::for_generated::wasm_bindgen::prelude::*;
-use flutter_rust_bridge::for_generated::RustAutoOpaqueWire2Api;
 use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: impl_wire2api
