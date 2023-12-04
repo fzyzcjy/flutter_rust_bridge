@@ -62,5 +62,5 @@ fn compute_api_method_query_name(
 
     let inner_dart_api_type: String =
         ApiDartGenerator::new(ir.inner.clone(), context).dart_api_type();
-    FILTER.replace_all(&inner_dart_api_type, "$1").into_string()
+    FILTER.replace_all(&inner_dart_api_type, "$1").to_string()
 }
