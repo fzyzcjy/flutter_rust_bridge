@@ -1,5 +1,3 @@
-use crate::for_generated::box_from_leak_ptr;
-use crate::platform_types::WireSyncReturn;
 pub use allo_isolate::*;
 use dart_sys::Dart_DeletePersistentHandle_DL;
 use dart_sys::Dart_Handle;
@@ -8,12 +6,14 @@ use dart_sys::Dart_InitializeApiDL;
 use dart_sys::Dart_NewPersistentHandle_DL;
 use dart_sys::Dart_PersistentHandle;
 use libc::c_void;
+use crate::for_generated::box_from_leak_ptr;
+use crate::platform_types::WireSyncReturn;
 
 /// # Safety
 ///
 /// This function should never be called manually.
 #[no_mangle]
-pub unsafe extern "C" fn dart_opaque_new(handle: Dart_Handle) -> usize {
+pub unsafe extern "C" fn new_dart_opaque(handle: Dart_Handle) -> usize {
     Dart_NewPersistentHandle_DL.expect("dart_api_dl has not been initialized")(handle) as _
 }
 
@@ -21,7 +21,7 @@ pub unsafe extern "C" fn dart_opaque_new(handle: Dart_Handle) -> usize {
 ///
 /// This function should never be called manually.
 #[no_mangle]
-pub unsafe extern "C" fn dart_opaque_get(ptr: usize) -> Dart_Handle {
+pub unsafe extern "C" fn get_dart_object(ptr: usize) -> Dart_Handle {
     let handle = ptr as _;
     let res = Dart_HandleFromPersistent_DL.expect("dart_api_dl has not been initialized")(handle);
     Dart_DeletePersistentHandle_DL.expect("dart_api_dl has not been initialized")(handle);
@@ -32,7 +32,7 @@ pub unsafe extern "C" fn dart_opaque_get(ptr: usize) -> Dart_Handle {
 ///
 /// This function should never be called manually.
 #[no_mangle]
-pub unsafe extern "C" fn dart_opaque_drop(ptr: usize) {
+pub unsafe extern "C" fn drop_dart_object(ptr: usize) {
     Dart_DeletePersistentHandle_DL.expect("dart_api_dl has not been initialized")(ptr as _);
 }
 

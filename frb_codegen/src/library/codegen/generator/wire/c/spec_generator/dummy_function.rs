@@ -32,7 +32,7 @@ fn compute_dummy_var_operations(func_names: &[String]) -> String {
 
 const EXTRA_EXTERN_FUNC_NAMES: &[&str] = &[
     "store_dart_post_cobject",
-    "dart_opaque_get",
-    "dart_opaque_drop",
-    "dart_opaque_new",
+    "get_dart_object",
+    "drop_dart_object",
+    "new_dart_opaque",
 ];

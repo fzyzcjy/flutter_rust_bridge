@@ -6,7 +6,7 @@ use wasm_bindgen::JsValue;
 ///
 /// Only for generated code. Never call manually.
 #[wasm_bindgen]
-pub unsafe fn dart_opaque_get(ptr: usize) -> JsValue {
+pub unsafe fn get_dart_object(ptr: usize) -> JsValue {
     *box_from_leak_ptr(ptr as _)
 }
 
@@ -14,7 +14,7 @@ pub unsafe fn dart_opaque_get(ptr: usize) -> JsValue {
 ///
 /// Only for generated code. Never call manually.
 #[wasm_bindgen]
-pub unsafe fn dart_opaque_drop(ptr: usize) {
+pub unsafe fn drop_dart_object(ptr: usize) {
     drop(box_from_leak_ptr::<JsValue>(ptr as _));
 }
 
