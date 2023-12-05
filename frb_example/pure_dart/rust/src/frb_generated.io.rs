@@ -31,9 +31,9 @@ impl Wire2Api<Vec<chrono::NaiveDateTime>> for *mut wire_list_prim_i_64 {
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
-impl Wire2Api<flutter_rust_bridge::DartOpaque> for wire_DartOpaque {
+impl Wire2Api<flutter_rust_bridge::DartOpaque> for *const std::ffi::c_void {
     fn wire2api(self) -> flutter_rust_bridge::DartOpaque {
-        unsafe { flutter_rust_bridge::DartOpaque::new(self.handle as _, self.port) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_dart_opaque(self) }
     }
 }
 impl Wire2Api<[flutter_rust_bridge::DartOpaque; 1]> for *mut wire_list_DartOpaque {
@@ -490,7 +490,7 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for *mut i64 {
         Wire2Api::<chrono::DateTime<chrono::Utc>>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<flutter_rust_bridge::DartOpaque> for *mut wire_DartOpaque {
+impl Wire2Api<flutter_rust_bridge::DartOpaque> for *mut *const std::ffi::c_void {
     fn wire2api(self) -> flutter_rust_bridge::DartOpaque {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
         Wire2Api::<flutter_rust_bridge::DartOpaque>::wire2api(*wrap).into()
@@ -4233,13 +4233,6 @@ impl Wire2Api<crate::api::pseudo_manual::attribute_twin_sync::UserIdTwinSync>
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_DartOpaque {
-    port: i64,
-    handle: usize,
-}
-
-#[repr(C)]
-#[derive(Clone)]
 pub struct wire_StringList {
     ptr: *mut *mut wire_list_prim_u_8,
     len: i32,
@@ -4695,22 +4688,22 @@ pub struct wire_customized_twin_sync {
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_dart_opaque_nested_twin_normal {
-    first: wire_DartOpaque,
-    second: wire_DartOpaque,
+    first: *const std::ffi::c_void,
+    second: *const std::ffi::c_void,
 }
 
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_dart_opaque_nested_twin_rust_async {
-    first: wire_DartOpaque,
-    second: wire_DartOpaque,
+    first: *const std::ffi::c_void,
+    second: *const std::ffi::c_void,
 }
 
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_dart_opaque_nested_twin_sync {
-    first: wire_DartOpaque,
-    second: wire_DartOpaque,
+    first: *const std::ffi::c_void,
+    second: *const std::ffi::c_void,
 }
 #[repr(C)]
 #[derive(Clone)]
@@ -4811,7 +4804,7 @@ pub struct wire_EnumDartOpaqueTwinNormal_Primitive {
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_EnumDartOpaqueTwinNormal_Opaque {
-    field0: wire_DartOpaque,
+    field0: *const std::ffi::c_void,
 }
 #[repr(C)]
 #[derive(Clone)]
@@ -4835,7 +4828,7 @@ pub struct wire_EnumDartOpaqueTwinRustAsync_Primitive {
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_EnumDartOpaqueTwinRustAsync_Opaque {
-    field0: wire_DartOpaque,
+    field0: *const std::ffi::c_void,
 }
 #[repr(C)]
 #[derive(Clone)]
@@ -4859,7 +4852,7 @@ pub struct wire_EnumDartOpaqueTwinSync_Primitive {
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_EnumDartOpaqueTwinSync_Opaque {
-    field0: wire_DartOpaque,
+    field0: *const std::ffi::c_void,
 }
 #[repr(C)]
 #[derive(Clone)]
@@ -5535,7 +5528,7 @@ pub struct wire_KitchenSinkTwinSync_Enums {
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_list_DartOpaque {
-    ptr: *mut wire_DartOpaque,
+    ptr: *mut *const std::ffi::c_void,
     len: i32,
 }
 
@@ -6330,11 +6323,6 @@ impl<T> NewWithNullPtr for *mut T {
         std::ptr::null_mut()
     }
 }
-impl NewWithNullPtr for wire_DartOpaque {
-    fn new_with_null_ptr() -> Self {
-        Self { port: 0, handle: 0 }
-    }
-}
 impl NewWithNullPtr for wire_a_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -6826,8 +6814,8 @@ impl Default for wire_customized_twin_sync {
 impl NewWithNullPtr for wire_dart_opaque_nested_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
-            first: wire_DartOpaque::new_with_null_ptr(),
-            second: wire_DartOpaque::new_with_null_ptr(),
+            first: core::ptr::null_mut(),
+            second: core::ptr::null_mut(),
         }
     }
 }
@@ -6839,8 +6827,8 @@ impl Default for wire_dart_opaque_nested_twin_normal {
 impl NewWithNullPtr for wire_dart_opaque_nested_twin_rust_async {
     fn new_with_null_ptr() -> Self {
         Self {
-            first: wire_DartOpaque::new_with_null_ptr(),
-            second: wire_DartOpaque::new_with_null_ptr(),
+            first: core::ptr::null_mut(),
+            second: core::ptr::null_mut(),
         }
     }
 }
@@ -6852,8 +6840,8 @@ impl Default for wire_dart_opaque_nested_twin_rust_async {
 impl NewWithNullPtr for wire_dart_opaque_nested_twin_sync {
     fn new_with_null_ptr() -> Self {
         Self {
-            first: wire_DartOpaque::new_with_null_ptr(),
-            second: wire_DartOpaque::new_with_null_ptr(),
+            first: core::ptr::null_mut(),
+            second: core::ptr::null_mut(),
         }
     }
 }
@@ -8435,25 +8423,31 @@ pub extern "C" fn wire_return_dart_dynamic_twin_normal(port_: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_call_dart_simple(port_: i64, callback: wire_DartOpaque) {
+pub extern "C" fn wire_rust_call_dart_simple(port_: i64, callback: *const std::ffi::c_void) {
     wire_rust_call_dart_simple_impl(port_, callback)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_async_accept_dart_opaque_twin_normal(port_: i64, opaque: wire_DartOpaque) {
+pub extern "C" fn wire_async_accept_dart_opaque_twin_normal(
+    port_: i64,
+    opaque: *const std::ffi::c_void,
+) {
     wire_async_accept_dart_opaque_twin_normal_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_create_enum_dart_opaque_twin_normal(port_: i64, opaque: wire_DartOpaque) {
+pub extern "C" fn wire_create_enum_dart_opaque_twin_normal(
+    port_: i64,
+    opaque: *const std::ffi::c_void,
+) {
     wire_create_enum_dart_opaque_twin_normal_impl(port_, opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_create_nested_dart_opaque_twin_normal(
     port_: i64,
-    opaque1: wire_DartOpaque,
-    opaque2: wire_DartOpaque,
+    opaque1: *const std::ffi::c_void,
+    opaque2: *const std::ffi::c_void,
 ) {
     wire_create_nested_dart_opaque_twin_normal_impl(port_, opaque1, opaque2)
 }
@@ -8488,22 +8482,25 @@ pub extern "C" fn wire_loop_back_array_get_twin_normal(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_loop_back_array_twin_normal(port_: i64, opaque: wire_DartOpaque) {
+pub extern "C" fn wire_loop_back_array_twin_normal(port_: i64, opaque: *const std::ffi::c_void) {
     wire_loop_back_array_twin_normal_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_loop_back_option_get_twin_normal(port_: i64, opaque: *mut wire_DartOpaque) {
+pub extern "C" fn wire_loop_back_option_get_twin_normal(
+    port_: i64,
+    opaque: *mut *const std::ffi::c_void,
+) {
     wire_loop_back_option_get_twin_normal_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_loop_back_option_twin_normal(port_: i64, opaque: wire_DartOpaque) {
+pub extern "C" fn wire_loop_back_option_twin_normal(port_: i64, opaque: *const std::ffi::c_void) {
     wire_loop_back_option_twin_normal_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_loop_back_twin_normal(port_: i64, opaque: wire_DartOpaque) {
+pub extern "C" fn wire_loop_back_twin_normal(port_: i64, opaque: *const std::ffi::c_void) {
     wire_loop_back_twin_normal_impl(port_, opaque)
 }
 
@@ -8516,58 +8513,64 @@ pub extern "C" fn wire_loop_back_vec_get_twin_normal(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_loop_back_vec_twin_normal(port_: i64, opaque: wire_DartOpaque) {
+pub extern "C" fn wire_loop_back_vec_twin_normal(port_: i64, opaque: *const std::ffi::c_void) {
     wire_loop_back_vec_twin_normal_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_panic_unwrap_dart_opaque_twin_normal(port_: i64, opaque: wire_DartOpaque) {
+pub extern "C" fn wire_panic_unwrap_dart_opaque_twin_normal(
+    port_: i64,
+    opaque: *const std::ffi::c_void,
+) {
     wire_panic_unwrap_dart_opaque_twin_normal_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_set_static_dart_opaque_twin_normal(port_: i64, opaque: wire_DartOpaque) {
+pub extern "C" fn wire_set_static_dart_opaque_twin_normal(
+    port_: i64,
+    opaque: *const std::ffi::c_void,
+) {
     wire_set_static_dart_opaque_twin_normal_impl(port_, opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_return_non_droppable_dart_opaque_twin_normal(
-    opaque: wire_DartOpaque,
+    opaque: *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     wire_return_non_droppable_dart_opaque_twin_normal_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_sync_accept_dart_opaque_twin_normal(
-    opaque: wire_DartOpaque,
+    opaque: *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     wire_sync_accept_dart_opaque_twin_normal_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_sync_loopback_twin_normal(
-    opaque: wire_DartOpaque,
+    opaque: *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     wire_sync_loopback_twin_normal_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_sync_option_dart_opaque_twin_normal(
-    opaque: wire_DartOpaque,
+    opaque: *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     wire_sync_option_dart_opaque_twin_normal_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_sync_option_loopback_twin_normal(
-    opaque: *mut wire_DartOpaque,
+    opaque: *mut *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     wire_sync_option_loopback_twin_normal_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_unwrap_dart_opaque_twin_normal(
-    opaque: wire_DartOpaque,
+    opaque: *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     wire_unwrap_dart_opaque_twin_normal_impl(opaque)
 }
@@ -9637,7 +9640,7 @@ pub extern "C" fn wire_return_dart_dynamic_twin_sync(
 #[no_mangle]
 pub extern "C" fn wire_async_accept_dart_opaque_twin_rust_async(
     port_: i64,
-    opaque: wire_DartOpaque,
+    opaque: *const std::ffi::c_void,
 ) {
     wire_async_accept_dart_opaque_twin_rust_async_impl(port_, opaque)
 }
@@ -9645,7 +9648,7 @@ pub extern "C" fn wire_async_accept_dart_opaque_twin_rust_async(
 #[no_mangle]
 pub extern "C" fn wire_create_enum_dart_opaque_twin_rust_async(
     port_: i64,
-    opaque: wire_DartOpaque,
+    opaque: *const std::ffi::c_void,
 ) {
     wire_create_enum_dart_opaque_twin_rust_async_impl(port_, opaque)
 }
@@ -9653,8 +9656,8 @@ pub extern "C" fn wire_create_enum_dart_opaque_twin_rust_async(
 #[no_mangle]
 pub extern "C" fn wire_create_nested_dart_opaque_twin_rust_async(
     port_: i64,
-    opaque1: wire_DartOpaque,
-    opaque2: wire_DartOpaque,
+    opaque1: *const std::ffi::c_void,
+    opaque2: *const std::ffi::c_void,
 ) {
     wire_create_nested_dart_opaque_twin_rust_async_impl(port_, opaque1, opaque2)
 }
@@ -9689,25 +9692,31 @@ pub extern "C" fn wire_loop_back_array_get_twin_rust_async(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_loop_back_array_twin_rust_async(port_: i64, opaque: wire_DartOpaque) {
+pub extern "C" fn wire_loop_back_array_twin_rust_async(
+    port_: i64,
+    opaque: *const std::ffi::c_void,
+) {
     wire_loop_back_array_twin_rust_async_impl(port_, opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_loop_back_option_get_twin_rust_async(
     port_: i64,
-    opaque: *mut wire_DartOpaque,
+    opaque: *mut *const std::ffi::c_void,
 ) {
     wire_loop_back_option_get_twin_rust_async_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_loop_back_option_twin_rust_async(port_: i64, opaque: wire_DartOpaque) {
+pub extern "C" fn wire_loop_back_option_twin_rust_async(
+    port_: i64,
+    opaque: *const std::ffi::c_void,
+) {
     wire_loop_back_option_twin_rust_async_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_loop_back_twin_rust_async(port_: i64, opaque: wire_DartOpaque) {
+pub extern "C" fn wire_loop_back_twin_rust_async(port_: i64, opaque: *const std::ffi::c_void) {
     wire_loop_back_twin_rust_async_impl(port_, opaque)
 }
 
@@ -9720,41 +9729,44 @@ pub extern "C" fn wire_loop_back_vec_get_twin_rust_async(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_loop_back_vec_twin_rust_async(port_: i64, opaque: wire_DartOpaque) {
+pub extern "C" fn wire_loop_back_vec_twin_rust_async(port_: i64, opaque: *const std::ffi::c_void) {
     wire_loop_back_vec_twin_rust_async_impl(port_, opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_panic_unwrap_dart_opaque_twin_rust_async(
     port_: i64,
-    opaque: wire_DartOpaque,
+    opaque: *const std::ffi::c_void,
 ) {
     wire_panic_unwrap_dart_opaque_twin_rust_async_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_set_static_dart_opaque_twin_rust_async(port_: i64, opaque: wire_DartOpaque) {
+pub extern "C" fn wire_set_static_dart_opaque_twin_rust_async(
+    port_: i64,
+    opaque: *const std::ffi::c_void,
+) {
     wire_set_static_dart_opaque_twin_rust_async_impl(port_, opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_async_accept_dart_opaque_twin_sync(
-    opaque: wire_DartOpaque,
+    opaque: *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     wire_async_accept_dart_opaque_twin_sync_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_create_enum_dart_opaque_twin_sync(
-    opaque: wire_DartOpaque,
+    opaque: *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     wire_create_enum_dart_opaque_twin_sync_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_create_nested_dart_opaque_twin_sync(
-    opaque1: wire_DartOpaque,
-    opaque2: wire_DartOpaque,
+    opaque1: *const std::ffi::c_void,
+    opaque2: *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     wire_create_nested_dart_opaque_twin_sync_impl(opaque1, opaque2)
 }
@@ -9788,28 +9800,28 @@ pub extern "C" fn wire_loop_back_array_get_twin_sync(
 
 #[no_mangle]
 pub extern "C" fn wire_loop_back_array_twin_sync(
-    opaque: wire_DartOpaque,
+    opaque: *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     wire_loop_back_array_twin_sync_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_loop_back_option_get_twin_sync(
-    opaque: *mut wire_DartOpaque,
+    opaque: *mut *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     wire_loop_back_option_get_twin_sync_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_loop_back_option_twin_sync(
-    opaque: wire_DartOpaque,
+    opaque: *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     wire_loop_back_option_twin_sync_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_loop_back_twin_sync(
-    opaque: wire_DartOpaque,
+    opaque: *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     wire_loop_back_twin_sync_impl(opaque)
 }
@@ -9823,21 +9835,21 @@ pub extern "C" fn wire_loop_back_vec_get_twin_sync(
 
 #[no_mangle]
 pub extern "C" fn wire_loop_back_vec_twin_sync(
-    opaque: wire_DartOpaque,
+    opaque: *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     wire_loop_back_vec_twin_sync_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_panic_unwrap_dart_opaque_twin_sync(
-    opaque: wire_DartOpaque,
+    opaque: *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     wire_panic_unwrap_dart_opaque_twin_sync_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_set_static_dart_opaque_twin_sync(
-    opaque: wire_DartOpaque,
+    opaque: *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     wire_set_static_dart_opaque_twin_sync_impl(opaque)
 }
@@ -13035,11 +13047,6 @@ pub extern "C" fn wire_handle_uuids_twin_normal(port_: i64, ids: *mut wire_list_
 }
 
 #[no_mangle]
-pub extern "C" fn new_DartOpaque() -> wire_DartOpaque {
-    wire_DartOpaque::new_with_null_ptr()
-}
-
-#[no_mangle]
 pub extern "C" fn new_StringList(len: i32) -> *mut wire_StringList {
     let wrap = wire_StringList {
         ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
@@ -13062,8 +13069,10 @@ pub extern "C" fn new_box_autoadd_Chrono_Utc(value: i64) -> *mut i64 {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_DartOpaque() -> *mut wire_DartOpaque {
-    flutter_rust_bridge::for_generated::new_leak_box_ptr(wire_DartOpaque::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_DartOpaque(
+    value: *const std::ffi::c_void,
+) -> *mut *const std::ffi::c_void {
+    flutter_rust_bridge::for_generated::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
@@ -14268,10 +14277,7 @@ pub extern "C" fn new_box_weekdays_twin_sync(value: i32) -> *mut i32 {
 #[no_mangle]
 pub extern "C" fn new_list_DartOpaque(len: i32) -> *mut wire_list_DartOpaque {
     let wrap = wire_list_DartOpaque {
-        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(
-            <wire_DartOpaque>::new_with_null_ptr(),
-            len,
-        ),
+        ptr: flutter_rust_bridge::for_generated::new_leak_vec_ptr(core::ptr::null_mut(), len),
         len,
     };
     flutter_rust_bridge::for_generated::new_leak_box_ptr(wrap)
@@ -15391,7 +15397,7 @@ pub extern "C" fn inflate_EnumDartOpaqueTwinNormal_Opaque() -> *mut EnumDartOpaq
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumDartOpaqueTwinNormalKind {
         Opaque: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumDartOpaqueTwinNormal_Opaque {
-                field0: wire_DartOpaque::new_with_null_ptr(),
+                field0: core::ptr::null_mut(),
             },
         ),
     })
@@ -15415,7 +15421,7 @@ pub extern "C" fn inflate_EnumDartOpaqueTwinRustAsync_Opaque(
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumDartOpaqueTwinRustAsyncKind {
         Opaque: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumDartOpaqueTwinRustAsync_Opaque {
-                field0: wire_DartOpaque::new_with_null_ptr(),
+                field0: core::ptr::null_mut(),
             },
         ),
     })
@@ -15437,7 +15443,7 @@ pub extern "C" fn inflate_EnumDartOpaqueTwinSync_Opaque() -> *mut EnumDartOpaque
     flutter_rust_bridge::for_generated::new_leak_box_ptr(EnumDartOpaqueTwinSyncKind {
         Opaque: flutter_rust_bridge::for_generated::new_leak_box_ptr(
             wire_EnumDartOpaqueTwinSync_Opaque {
-                field0: wire_DartOpaque::new_with_null_ptr(),
+                field0: core::ptr::null_mut(),
             },
         ),
     })

@@ -45,10 +45,7 @@ impl Wire2Api<flutter_rust_bridge::DartOpaque>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> flutter_rust_bridge::DartOpaque {
-        let arr = self
-            .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
-            .unwrap();
-        unsafe { flutter_rust_bridge::DartOpaque::new(arr.get(0), arr.get(1)) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_dart_opaque(self) }
     }
 }
 impl Wire2Api<String> for String {
