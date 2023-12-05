@@ -7,7 +7,7 @@ pub struct DemoStructForRustCallDart {
     pub name: String,
 }
 
-pub async fn rust_call_dart_simple(callback: DartFn<impl Fn() -> BoxFuture<'static, ()>>) {
+pub async fn rust_call_dart_simple(callback: DartFn<fn() -> BoxFuture<'static, ()>>) {
     println!("rust_call_dart_simple before");
     callback().await;
     println!("rust_call_dart_simple after");
