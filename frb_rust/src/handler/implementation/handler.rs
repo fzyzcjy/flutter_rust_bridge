@@ -8,6 +8,7 @@ use crate::handler::implementation::error_handler::ReportDartErrorHandler;
 use crate::handler::implementation::executor::SimpleExecutor;
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::platform_types::DartAbi;
+use crate::platform_types::MessagePort;
 use crate::platform_types::WireSyncReturn;
 use crate::rust2dart::action::Rust2DartAction;
 use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
