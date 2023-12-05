@@ -15,4 +15,8 @@ impl<'a> WireRustGeneratorDart2RustTrait for DartFnWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
         WireRustGenerator::new(self.ir.get_delegate(), self.context).rust_wire_type(target)
     }
+
+    fn generate_wire_func_call_wire2api(&self, name: &str) -> String {
+        format!("TODO_generate_wire_func_call_wire2api")
+    }
 }

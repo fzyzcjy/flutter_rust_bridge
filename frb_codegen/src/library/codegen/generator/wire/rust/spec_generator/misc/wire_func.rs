@@ -28,7 +28,7 @@ pub(crate) fn generate_wire_func(
     let params = generate_params(func, context);
     let inner_func_params = generate_inner_func_params(func, ir_pack, context);
     let wrap_info_obj = generate_wrap_info_obj(func);
-    let code_wire2api = generate_code_wire2api(func);
+    let code_wire2api = generate_code_wire2api(func, context);
     let code_inner_wire2api = generate_code_inner_wire2api(func);
     let code_call_inner_func_result = generate_code_call_inner_func_result(func, inner_func_params);
     let handler_func_name = generate_handler_func_name(func, ir_pack, context);
@@ -165,14 +165,14 @@ fn generate_wrap_info_obj(func: &IrFunc) -> String {
     )
 }
 
-fn generate_code_wire2api(func: &IrFunc) -> String {
+fn generate_code_wire2api(func: &IrFunc, context: WireRustGeneratorContext) -> String {
     func.inputs
         .iter()
         .map(|field| {
-            format!(
-                "let api_{name} = {name}.wire2api();",
-                name = field.name.rust_style()
-            )
+            let name = field.name.rust_style();
+            let wire_func_call_wire2api = WireRustGenerator::new(field.ty.clone(), context)
+                .generate_wire_func_call_wire2api();
+            format!("let api_{name} = {wire_func_call_wire2api};")
         })
         .join("")
 }

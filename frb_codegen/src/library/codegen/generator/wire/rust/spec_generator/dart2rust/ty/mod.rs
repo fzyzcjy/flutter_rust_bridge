@@ -50,6 +50,10 @@ pub(crate) trait WireRustGeneratorDart2RustTrait {
         Default::default()
     }
 
+    fn generate_wire_func_call_wire2api(&self, name: &str) -> String {
+        format!("{name}.wire2api()")
+    }
+
     fn rust_wire_type(&self, target: Target) -> String;
 
     fn rust_wire_modifier(&self, target: Target) -> String {
