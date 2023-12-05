@@ -102,6 +102,9 @@ pub type DartOpaqueWireType = *const std::ffi::c_void;
 pub type DartOpaqueWireType = wasm_bindgen::JsValue;
 
 // TODO improve
-pub unsafe fn wire2api_dart_opaque(raw: DartOpaqueWireType) -> DartOpaque {
-    DartOpaque::new(raw as _)
+pub unsafe fn wire2api_dart_opaque(
+    raw: DartOpaqueWireType,
+    drop_port: SendableMessagePortHandle,
+) -> DartOpaque {
+    DartOpaque::new(raw as _, drop_port)
 }

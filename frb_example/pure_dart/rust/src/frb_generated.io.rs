@@ -33,7 +33,7 @@ impl Wire2Api<Vec<chrono::NaiveDateTime>> for *mut wire_list_prim_i_64 {
 }
 impl Wire2Api<flutter_rust_bridge::DartOpaque> for *const std::ffi::c_void {
     fn wire2api(self) -> flutter_rust_bridge::DartOpaque {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_dart_opaque(self) }
+        unsafe { FLUTTER_RUST_BRIDGE_HANDLER.wire2api_dart_opaque(self) }
     }
 }
 impl Wire2Api<[flutter_rust_bridge::DartOpaque; 1]> for *mut wire_list_DartOpaque {

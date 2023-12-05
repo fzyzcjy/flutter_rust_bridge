@@ -142,6 +142,13 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         })
     }
 
+    unsafe fn wire2api_dart_opaque(&self, raw: DartOpaqueWireType) -> DartOpaque {
+        let drop_port = (self.config.lock().expect("cannot get config lock"))
+            .expect("no handler config")
+            .dart_opaque_drop_port;
+        crate::dart_opaque::wire2api_dart_opaque(raw, drop_port)
+    }
+
     fn dart_fn_invoke<Ret>(&self, dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<Ret> {
         todo!()
     }
