@@ -17,7 +17,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             Type::Reference(type_reference) => self.parse_type_reference(&type_reference)?,
             Type::ImplTrait(type_impl_trait) => self
                 .parse_type_impl_trait_dart_fn(&type_impl_trait)
-                .context("when trying to parse DartFn"),
+                .context("when trying to parse DartFn")?,
             _ => IrType::Unencodable(IrTypeUnencodable {
                 namespace: None,
                 string: resolve_ty.to_token_stream().to_string(),

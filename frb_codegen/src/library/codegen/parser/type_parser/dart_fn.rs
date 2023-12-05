@@ -20,7 +20,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_impl_trait_dart_fn(
         &mut self,
         type_impl_trait: &TypeImplTrait,
-    ) -> anyhow::Result<Option<IrType>> {
+    ) -> anyhow::Result<IrType> {
         let trait_bound = (type_impl_trait.bounds.iter())
             .filter_map(
                 |x| if_then_some!(let TypeParamBound::Trait(trait_bound) = x, trait_bound.clone()),
@@ -38,10 +38,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
             let output = Box::new(self.parse_dart_fn_output(&arguments.output)?);
 
-            return Ok(Some(IrType::DartFn(IrTypeDartFn { inputs, output })));
+            return Ok(IrType::DartFn(IrTypeDartFn { inputs, output }));
         }
 
-        Ok(None)
+        bail!("Fail to parse DartFn")
     }
 
     fn parse_dart_fn_output(&mut self, return_type: &ReturnType) -> anyhow::Result<IrType> {
