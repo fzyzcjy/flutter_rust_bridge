@@ -22362,6 +22362,41 @@ PlatformPointer
   return raw.api2wire(move: false);
 }
 
+wire_DartOpaque api2wire_DartFn_Inputs_DartOpaque_Output_unit(
+    void Function(Object) raw) {
+  return api2wire_DartOpaque(raw);
+}
+
+wire_DartOpaque api2wire_DartFn_Inputs_String_Output_unit(
+    void Function(String) raw) {
+  return api2wire_DartOpaque(raw);
+}
+
+wire_DartOpaque
+    api2wire_DartFn_Inputs_String_demo_struct_for_rust_call_dart_Output_unit(
+        void Function(String, DemoStructForRustCallDart) raw) {
+  return api2wire_DartOpaque(raw);
+}
+
+wire_DartOpaque api2wire_DartFn_Inputs__Output_DartOpaque(
+    Object Function() raw) {
+  return api2wire_DartOpaque(raw);
+}
+
+wire_DartOpaque api2wire_DartFn_Inputs__Output_String(String Function() raw) {
+  return api2wire_DartOpaque(raw);
+}
+
+wire_DartOpaque api2wire_DartFn_Inputs__Output_unit(void Function() raw) {
+  return api2wire_DartOpaque(raw);
+}
+
+wire_DartOpaque
+    api2wire_DartFn_Inputs_demo_struct_for_rust_call_dart_Output_demo_struct_for_rust_call_dart(
+        DemoStructForRustCallDart Function(DemoStructForRustCallDart) raw) {
+  return api2wire_DartOpaque(raw);
+}
+
 PlatformPointer api2wire_RustOpaque_MutexHideData(MutexHideData raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire();

@@ -1,4 +1,5 @@
 use crate::codegen::ir::pack::IrPack;
+use crate::codegen::ir::ty::dart_opaque::IrTypeDartOpaque;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 use itertools::Itertools;
 
@@ -15,6 +16,8 @@ impl IrTypeTrait for IrTypeDartFn {
         f: &mut F,
         ir_context: &impl IrContext,
     ) {
+        self.get_delegate().visit_types(f, ir_context);
+
         for x in &self.inputs {
             x.visit_types(f, ir_context);
         }
@@ -31,5 +34,11 @@ impl IrTypeTrait for IrTypeDartFn {
 
     fn rust_api_type(&self) -> String {
         "TODO_rust_api_type".into()
+    }
+}
+
+impl IrTypeDartFn {
+    pub(crate) fn get_delegate(&self) -> IrType {
+        IrType::DartOpaque(IrTypeDartOpaque)
     }
 }

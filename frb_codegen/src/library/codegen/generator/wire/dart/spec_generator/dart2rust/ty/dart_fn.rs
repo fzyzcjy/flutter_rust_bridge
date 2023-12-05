@@ -11,7 +11,6 @@ impl<'a> WireDartGeneratorDart2RustTrait for DartFnWireDartGenerator<'a> {
     }
 
     fn dart_wire_type(&self, target: Target) -> String {
-        WireDartGenerator::new(IrType::DartOpaque(IrTypeDartOpaque), self.context)
-            .dart_wire_type(target)
+        WireDartGenerator::new(self.ir.get_delegate(), self.context).dart_wire_type(target)
     }
 }
