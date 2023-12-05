@@ -134,31 +134,29 @@ fn generate_static_checks(types: &[IrType], context: WireRustGeneratorContext) -
 }
 
 fn generate_boilerplate() -> Acc<Vec<WireRustOutputCode>> {
+    let inner: Vec<WireRustOutputCode> = vec![ExternFunc {
+        func_name: "frb_initialize_rust".into(),
+        params: vec![
+            ExternFuncParam {
+                name: "dart_opaque_drop_port".to_owned(),
+                rust_type: "flutter_rust_bridge::for_generated::MessagePort".to_owned(),
+                dart_type: "TODO_darttype".to_owned(),
+            },
+            ExternFuncParam {
+                name: "dart_fn_invoke_port".to_owned(),
+                rust_type: "flutter_rust_bridge::for_generated::MessagePort".to_owned(),
+                dart_type: "TODO_darttype".to_owned(),
+            },
+        ],
+        return_type: None,
+        body: format!("{HANDLER_NAME}.initialize(dart_opaque_drop_port, dart_fn_invoke_port)"),
+        target: Target::Io,
+    }
+    .into()];
+
     Acc {
-        io: vec![ExternFunc {
-            func_name: "frb_initialize_rust".into(),
-            params: vec![
-                ExternFuncParam {
-                    name: "dart_opaque_drop_port".to_owned(),
-                    rust_type: "flutter_rust_bridge::for_generated::MessagePort".to_owned(),
-                    dart_type: "TODO_darttype".to_owned(),
-                },
-                ExternFuncParam {
-                    name: "dart_fn_invoke_port".to_owned(),
-                    rust_type: "flutter_rust_bridge::for_generated::MessagePort".to_owned(),
-                    dart_type: "TODO_darttype".to_owned(),
-                },
-            ],
-            return_type: None,
-            body: format!("{HANDLER_NAME}.initialize(dart_opaque_drop_port, dart_fn_invoke_port)"),
-            target: Target::Io,
-        }
-        .into()],
-        wasm: vec![format!(
-            "
-            "
-        )
-        .into()],
+        io: inner.clone(),
+        wasm: inner,
         ..Default::default()
     }
 }
