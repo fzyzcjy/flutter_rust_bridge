@@ -48,7 +48,6 @@ class RustLibWasmModule implements WasmModule {
   @override
   external RustLibWasmModule bind(dynamic thisArg, String moduleName);
 
-  @override
   external void frb_initialize_rust(
     NativePortType dart_opaque_drop_port,
     NativePortType dart_fn_invoke_port,
