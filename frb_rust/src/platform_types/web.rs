@@ -9,7 +9,7 @@ pub type MessagePort = crate::generalized_isolate::PortLike;
 
 pub type DartAbi = wasm_bindgen::JsValue;
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct SendableMessagePortHandle(String);
 
 pub fn message_port_to_handle(port: &MessagePort) -> SendableMessagePortHandle {
