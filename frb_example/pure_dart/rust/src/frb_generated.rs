@@ -10799,6 +10799,76 @@ impl
         self
     }
 }
+impl flutter_rust_bridge::IntoDart for crate::api::attribute::CustomizedTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![
+            self.final_field.into_into_dart().into_dart(),
+            self.non_final_field.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::attribute::CustomizedTwinNormal
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::attribute::CustomizedTwinNormal>
+    for crate::api::attribute::CustomizedTwinNormal
+{
+    fn into_into_dart(self) -> crate::api::attribute::CustomizedTwinNormal {
+        self
+    }
+}
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::attribute_twin_rust_async::CustomizedTwinRustAsync
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![
+            self.final_field.into_into_dart().into_dart(),
+            self.non_final_field.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::attribute_twin_rust_async::CustomizedTwinRustAsync
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::attribute_twin_rust_async::CustomizedTwinRustAsync,
+    > for crate::api::pseudo_manual::attribute_twin_rust_async::CustomizedTwinRustAsync
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::attribute_twin_rust_async::CustomizedTwinRustAsync {
+        self
+    }
+}
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::attribute_twin_sync::CustomizedTwinSync
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![
+            self.final_field.into_into_dart().into_dart(),
+            self.non_final_field.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::attribute_twin_sync::CustomizedTwinSync
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::attribute_twin_sync::CustomizedTwinSync,
+    > for crate::api::pseudo_manual::attribute_twin_sync::CustomizedTwinSync
+{
+    fn into_into_dart(self) -> crate::api::pseudo_manual::attribute_twin_sync::CustomizedTwinSync {
+        self
+    }
+}
 impl flutter_rust_bridge::IntoDart for crate::api::dart_opaque::DartOpaqueNestedTwinNormal {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         vec![
@@ -10868,6 +10938,22 @@ impl
     fn into_into_dart(
         self,
     ) -> crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueNestedTwinSync {
+        self
+    }
+}
+impl flutter_rust_bridge::IntoDart for crate::api::dart_fn::DemoStructForRustCallDart {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![self.name.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::dart_fn::DemoStructForRustCallDart
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::dart_fn::DemoStructForRustCallDart>
+    for crate::api::dart_fn::DemoStructForRustCallDart
+{
+    fn into_into_dart(self) -> crate::api::dart_fn::DemoStructForRustCallDart {
         self
     }
 }
@@ -11696,6 +11782,84 @@ impl
     fn into_into_dart(
         self,
     ) -> crate::api::pseudo_manual::optional_twin_sync::ExoticOptionalsTwinSync {
+        self
+    }
+}
+impl flutter_rust_bridge::IntoDart for crate::api::chrono_type::FeatureChronoTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![
+            self.utc.into_into_dart().into_dart(),
+            self.local.into_into_dart().into_dart(),
+            self.duration.into_into_dart().into_dart(),
+            self.naive.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::chrono_type::FeatureChronoTwinNormal
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::chrono_type::FeatureChronoTwinNormal>
+    for crate::api::chrono_type::FeatureChronoTwinNormal
+{
+    fn into_into_dart(self) -> crate::api::chrono_type::FeatureChronoTwinNormal {
+        self
+    }
+}
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::chrono_type_twin_rust_async::FeatureChronoTwinRustAsync
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![
+            self.utc.into_into_dart().into_dart(),
+            self.local.into_into_dart().into_dart(),
+            self.duration.into_into_dart().into_dart(),
+            self.naive.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::chrono_type_twin_rust_async::FeatureChronoTwinRustAsync
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::chrono_type_twin_rust_async::FeatureChronoTwinRustAsync,
+    > for crate::api::pseudo_manual::chrono_type_twin_rust_async::FeatureChronoTwinRustAsync
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::chrono_type_twin_rust_async::FeatureChronoTwinRustAsync {
+        self
+    }
+}
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChronoTwinSync
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![
+            self.utc.into_into_dart().into_dart(),
+            self.local.into_into_dart().into_dart(),
+            self.duration.into_into_dart().into_dart(),
+            self.naive.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChronoTwinSync
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChronoTwinSync,
+    > for crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChronoTwinSync
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChronoTwinSync {
         self
     }
 }
@@ -12714,6 +12878,76 @@ impl
         self
     }
 }
+impl flutter_rust_bridge::IntoDart for crate::api::enumeration::NoteTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![
+            self.day.into_into_dart().into_dart(),
+            self.body.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::enumeration::NoteTwinNormal
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::enumeration::NoteTwinNormal>
+    for crate::api::enumeration::NoteTwinNormal
+{
+    fn into_into_dart(self) -> crate::api::enumeration::NoteTwinNormal {
+        self
+    }
+}
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::enumeration_twin_rust_async::NoteTwinRustAsync
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![
+            self.day.into_into_dart().into_dart(),
+            self.body.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::enumeration_twin_rust_async::NoteTwinRustAsync
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::enumeration_twin_rust_async::NoteTwinRustAsync,
+    > for crate::api::pseudo_manual::enumeration_twin_rust_async::NoteTwinRustAsync
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::enumeration_twin_rust_async::NoteTwinRustAsync {
+        self
+    }
+}
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::enumeration_twin_sync::NoteTwinSync
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![
+            self.day.into_into_dart().into_dart(),
+            self.body.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::enumeration_twin_sync::NoteTwinSync
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::enumeration_twin_sync::NoteTwinSync,
+    > for crate::api::pseudo_manual::enumeration_twin_sync::NoteTwinSync
+{
+    fn into_into_dart(self) -> crate::api::pseudo_manual::enumeration_twin_sync::NoteTwinSync {
+        self
+    }
+}
 impl flutter_rust_bridge::IntoDart for mirror_Numbers {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         vec![self.0 .0.into_into_dart().into_dart()].into_dart()
@@ -13197,6 +13431,66 @@ impl
     > for crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSync
 {
     fn into_into_dart(self) -> crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSync {
+        self
+    }
+}
+impl flutter_rust_bridge::IntoDart for crate::api::comment::StructWithCommentsTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![self.field_with_comments.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::comment::StructWithCommentsTwinNormal
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::comment::StructWithCommentsTwinNormal>
+    for crate::api::comment::StructWithCommentsTwinNormal
+{
+    fn into_into_dart(self) -> crate::api::comment::StructWithCommentsTwinNormal {
+        self
+    }
+}
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::comment_twin_rust_async::StructWithCommentsTwinRustAsync
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![self.field_with_comments.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::comment_twin_rust_async::StructWithCommentsTwinRustAsync
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::comment_twin_rust_async::StructWithCommentsTwinRustAsync,
+    > for crate::api::pseudo_manual::comment_twin_rust_async::StructWithCommentsTwinRustAsync
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::comment_twin_rust_async::StructWithCommentsTwinRustAsync {
+        self
+    }
+}
+impl flutter_rust_bridge::IntoDart
+    for crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        vec![self.field_with_comments.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync,
+    > for crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync {
         self
     }
 }

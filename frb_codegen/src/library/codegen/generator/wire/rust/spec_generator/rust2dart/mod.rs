@@ -21,7 +21,7 @@ pub(crate) fn generate(
 ) -> WireRustOutputSpecRust2Dart {
     WireRustOutputSpecRust2Dart {
         impl_into_dart: cache
-            .distinct_output_types
+            .distinct_types
             .iter()
             .filter_map(|ty| WireRustGenerator::new(ty.clone(), context).generate_impl_into_dart())
             .map(|x| Acc::new_common(x.into()))
