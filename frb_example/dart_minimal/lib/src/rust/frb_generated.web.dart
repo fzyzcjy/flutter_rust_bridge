@@ -3,13 +3,11 @@
 
 // ignore_for_file: unused_import, unused_element, duplicate_ignore
 
+import 'api/minimal.dart';
 import 'dart:async';
 import 'dart:convert';
-
-import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
-
-import 'api/minimal.dart';
 import 'frb_generated.dart';
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
 
 abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   RustLibApiImplPlatform({
@@ -24,6 +22,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
 class RustLibWire extends BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
+
+  void frb_initialize_rust(
+    NativePortType dart_opaque_drop_port,
+    NativePortType dart_fn_invoke_port,
+  ) =>
+      wasmModule.frb_initialize_rust(
+        dart_opaque_drop_port,
+        dart_fn_invoke_port,
+      );
 
   void wire_minimal_adder(NativePortType port_, int a, int b) =>
       wasmModule.wire_minimal_adder(port_, a, b);
@@ -40,6 +47,12 @@ class RustLibWasmModule implements WasmModule {
 
   @override
   external RustLibWasmModule bind(dynamic thisArg, String moduleName);
+
+  @override
+  external void frb_initialize_rust(
+    NativePortType dart_opaque_drop_port,
+    NativePortType dart_fn_invoke_port,
+  );
 
   external void wire_minimal_adder(NativePortType port_, int a, int b);
 }
