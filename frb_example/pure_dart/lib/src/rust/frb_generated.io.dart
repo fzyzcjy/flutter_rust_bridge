@@ -238,6 +238,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  wire_DartOpaque api2wire_DartFn_Inputs__Output_unit(void Function() raw) {
+    return api2wire_DartOpaque(raw);
+  }
+
+  @protected
   wire_DartOpaque api2wire_DartOpaque(Object raw) {
     final ptr = wire.new_DartOpaque();
     _api_fill_to_wire_DartOpaque(raw, ptr);

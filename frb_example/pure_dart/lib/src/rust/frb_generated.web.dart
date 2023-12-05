@@ -235,6 +235,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  Object api2wire_DartFn_Inputs__Output_unit(void Function() raw) {
+    return api2wire_DartOpaque(raw);
+  }
+
+  @protected
   Object api2wire_DartOpaque(Object raw) {
     return [raw, portManager.dartOpaqueDropPort];
   }
@@ -3142,14 +3147,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 class RustLibWire extends BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
-  void frb_initialize_rust(
-    NativePortType dart_opaque_drop_port,
-    NativePortType dart_fn_invoke_port,
-  ) =>
+  void frb_initialize_rust(NativePortType dart_opaque_drop_port,
+          NativePortType dart_fn_invoke_port) =>
       wasmModule.frb_initialize_rust(
-        dart_opaque_drop_port,
-        dart_fn_invoke_port,
-      );
+          dart_opaque_drop_port, dart_fn_invoke_port);
 
   void wire_boxed_blob_twin_normal(NativePortType port_, Uint8List blob) =>
       wasmModule.wire_boxed_blob_twin_normal(port_, blob);
@@ -6408,9 +6409,7 @@ class RustLibWasmModule implements WasmModule {
   external RustLibWasmModule bind(dynamic thisArg, String moduleName);
 
   external void frb_initialize_rust(
-    NativePortType dart_opaque_drop_port,
-    NativePortType dart_fn_invoke_port,
-  );
+      NativePortType dart_opaque_drop_port, NativePortType dart_fn_invoke_port);
 
   external void wire_boxed_blob_twin_normal(
       NativePortType port_, Uint8List blob);

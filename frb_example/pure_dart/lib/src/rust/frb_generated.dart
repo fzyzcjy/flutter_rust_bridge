@@ -22205,10 +22205,6 @@ PlatformPointer
   return raw.api2wire(move: false);
 }
 
-wire_DartOpaque api2wire_DartFn_Inputs__Output_unit(void Function() raw) {
-  return api2wire_DartOpaque(raw);
-}
-
 PlatformPointer api2wire_RustOpaque_MutexHideData(MutexHideData raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire();

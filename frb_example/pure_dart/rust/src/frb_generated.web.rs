@@ -3971,8 +3971,8 @@ impl Wire2Api<crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSyn
     }
 }
 
-#[no_mangle]
-pub extern "C" fn frb_initialize_rust(
+#[wasm_bindgen]
+pub fn frb_initialize_rust(
     dart_opaque_drop_port: flutter_rust_bridge::for_generated::MessagePort,
     dart_fn_invoke_port: flutter_rust_bridge::for_generated::MessagePort,
 ) {
