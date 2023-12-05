@@ -93,7 +93,12 @@ impl Drop for DartOpaque {
     }
 }
 
+#[cfg(not(wasm))]
+pub type DartOpaqueWireType = *const std::ffi::c_void;
+#[cfg(wasm)]
+pub type DartOpaqueWireType = wasm_bindgen::JsValue;
+
 // TODO improve
-pub unsafe fn wire2api_dart_opaque(raw: i64) -> DartOpaque {
+pub unsafe fn wire2api_dart_opaque(raw: DartOpaqueWireType) -> DartOpaque {
     DartOpaque::new(raw as _, todo!("should remove the port argument"))
 }
