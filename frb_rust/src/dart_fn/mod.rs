@@ -8,6 +8,6 @@ use std::pin::Pin;
 /// Roughly speaking, just BoxFuture + UnwindSafe.
 pub type DartFnFuture<T> = Pin<Box<dyn Future<Output = T> + Send + UnwindSafe + 'static>>;
 
-pub fn dart_fn_invoke<Ret>(closure_and_args: Vec<DartAbi>) -> DartFnFuture<Ret> {
+pub fn dart_fn_invoke<Ret>(dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<Ret> {
     todo!()
 }
