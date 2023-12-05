@@ -115,7 +115,9 @@ class _EntrypointState<A extends BaseApi> {
   }) {
     _setUpRustToDartCommunication(generalizedFrbRustBinding);
     _initializeApiDlData(generalizedFrbRustBinding);
-    TODO_call_rust_initialize();
+    api.frbInitializeRust(
+        dartOpaqueDropPort: dartOpaqueDropPort,
+        dartFnInvokePort: dartFnInvokePort);
   }
 
   void dispose() {
