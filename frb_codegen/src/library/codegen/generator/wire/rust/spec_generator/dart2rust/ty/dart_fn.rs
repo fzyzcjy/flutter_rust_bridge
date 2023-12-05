@@ -11,6 +11,10 @@ use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRust
 use crate::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireRustGeneratorDart2RustTrait for DartFnWireRustGenerator<'a> {
+    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
+        Acc::new_common(Some("TODO_impl_wire2api_body".into()))
+    }
+
     fn rust_wire_type(&self, target: Target) -> String {
         WireRustGenerator::new(self.ir.get_delegate(), self.context).rust_wire_type(target)
     }

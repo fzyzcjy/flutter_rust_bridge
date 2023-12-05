@@ -9044,6 +9044,142 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
         )
     }
 }
+impl
+    Wire2Api<
+        flutter_rust_bridge::DartFn<
+            fn(
+                flutter_rust_bridge::DartOpaque,
+            )
+                -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, ()>,
+        >,
+    > for wire_DartOpaque
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::DartFn<
+        fn(
+            flutter_rust_bridge::DartOpaque,
+        ) -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, ()>,
+    > {
+        TODO_impl_wire2api_body
+    }
+}
+impl
+    Wire2Api<
+        flutter_rust_bridge::DartFn<
+            fn(
+                String,
+            )
+                -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, ()>,
+        >,
+    > for wire_DartOpaque
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::DartFn<
+        fn(String) -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, ()>,
+    > {
+        TODO_impl_wire2api_body
+    }
+}
+impl
+    Wire2Api<
+        flutter_rust_bridge::DartFn<
+            fn(
+                String,
+                crate::api::dart_fn::DemoStructForRustCallDart,
+            )
+                -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, ()>,
+        >,
+    > for wire_DartOpaque
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::DartFn<
+        fn(
+            String,
+            crate::api::dart_fn::DemoStructForRustCallDart,
+        ) -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, ()>,
+    > {
+        TODO_impl_wire2api_body
+    }
+}
+impl
+    Wire2Api<
+        flutter_rust_bridge::DartFn<
+            fn() -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<
+                'static,
+                flutter_rust_bridge::DartOpaque,
+            >,
+        >,
+    > for wire_DartOpaque
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::DartFn<
+        fn() -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<
+            'static,
+            flutter_rust_bridge::DartOpaque,
+        >,
+    > {
+        TODO_impl_wire2api_body
+    }
+}
+impl
+    Wire2Api<
+        flutter_rust_bridge::DartFn<
+            fn() -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, String>,
+        >,
+    > for wire_DartOpaque
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::DartFn<
+        fn() -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, String>,
+    > {
+        TODO_impl_wire2api_body
+    }
+}
+impl
+    Wire2Api<
+        flutter_rust_bridge::DartFn<
+            fn() -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, ()>,
+        >,
+    > for wire_DartOpaque
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::DartFn<
+        fn() -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, ()>,
+    > {
+        TODO_impl_wire2api_body
+    }
+}
+impl
+    Wire2Api<
+        flutter_rust_bridge::DartFn<
+            fn(
+                crate::api::dart_fn::DemoStructForRustCallDart,
+            ) -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<
+                'static,
+                crate::api::dart_fn::DemoStructForRustCallDart,
+            >,
+        >,
+    > for wire_DartOpaque
+{
+    fn wire2api(
+        self,
+    ) -> flutter_rust_bridge::DartFn<
+        fn(
+            crate::api::dart_fn::DemoStructForRustCallDart,
+        ) -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<
+            'static,
+            crate::api::dart_fn::DemoStructForRustCallDart,
+        >,
+    > {
+        TODO_impl_wire2api_body
+    }
+}
 impl Wire2Api<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode> for i32 {
     fn wire2api(self) -> crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode {
         match self {
