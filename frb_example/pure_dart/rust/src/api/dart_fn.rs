@@ -3,7 +3,7 @@
 use flutter_rust_bridge::{DartFn, DartOpaque};
 use futures::future::BoxFuture;
 
-struct DemoStructForRustCallDart {
+pub struct DemoStructForRustCallDart {
     pub name: String,
 }
 
