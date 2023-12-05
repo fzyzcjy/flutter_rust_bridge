@@ -9,6 +9,7 @@ use crate::codegen::generator::wire::rust::spec_generator::dart2rust::ty::WireRu
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::ir::ty::IrTypeTrait;
+use crate::misc::consts::HANDLER_NAME;
 use itertools::Itertools;
 
 impl<'a> WireRustGeneratorDart2RustTrait for DartFnWireRustGenerator<'a> {
