@@ -174,7 +174,7 @@ fn generate_code_wire2api(func: &IrFunc, context: WireRustGeneratorContext) -> S
         .map(|field| {
             let name = field.name.rust_style();
             let wire_func_call_wire2api = WireRustGenerator::new(field.ty.clone(), context)
-                .generate_wire_func_call_wire2api();
+                .generate_wire_func_call_wire2api(name);
             format!("let api_{name} = {wire_func_call_wire2api};")
         })
         .join("")
