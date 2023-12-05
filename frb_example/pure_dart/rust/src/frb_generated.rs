@@ -8876,27 +8876,6 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
         )
     }
 }
-impl
-    Wire2Api<
-        flutter_rust_bridge::DartFn<
-            fn() -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, ()>,
-        >,
-    > for wire_DartOpaque
-{
-    fn wire2api(
-        self,
-    ) -> flutter_rust_bridge::DartFn<
-        fn() -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, ()>,
-    > {
-        use flutter_rust_bridge::IntoDart;
-        let dart_opaque: flutter_rust_bridge::DartOpaque = self.wire2api();
-        flutter_rust_bridge::DartFn::new(move || {
-            flutter_rust_bridge::for_generated::dart_fn_invoke(vec![dart_opaque
-                .into_into_dart()
-                .into_dart()])
-        })
-    }
-}
 impl Wire2Api<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode> for i32 {
     fn wire2api(self) -> crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode {
         match self {

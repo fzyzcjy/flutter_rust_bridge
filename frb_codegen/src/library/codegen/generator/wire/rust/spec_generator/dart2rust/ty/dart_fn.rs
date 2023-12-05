@@ -12,29 +12,6 @@ use crate::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireRustGeneratorDart2RustTrait for DartFnWireRustGenerator<'a> {
-    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
-        let closure_args = (0..self.ir.inputs.len())
-            .map(|i| format!("arg{i}"))
-            .collect_vec();
-        let closure_args_str = closure_args.join(", ");
-        let closure_args_into_dart_str = closure_args
-            .iter()
-            .map(|x| format!("{x}.into_into_dart().into_dart()"))
-            .join(", ");
-
-        Acc::new_common(Some(format!(
-            "
-            use flutter_rust_bridge::IntoDart;
-            let dart_opaque: flutter_rust_bridge::DartOpaque = self.wire2api();
-            flutter_rust_bridge::DartFn::new(move |{closure_args_str}| {{
-                flutter_rust_bridge::for_generated::dart_fn_invoke(vec![
-                    dart_opaque.into_into_dart().into_dart(), {closure_args_into_dart_str}
-                ])
-            }})
-            "
-        )))
-    }
-
     fn rust_wire_type(&self, target: Target) -> String {
         WireRustGenerator::new(self.ir.get_delegate(), self.context).rust_wire_type(target)
     }
