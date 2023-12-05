@@ -53,7 +53,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                         PathArguments::AngleBracketed(AngleBracketedGenericArguments { args, .. }),
                 }) = path.segments.first()
                 {
-                    if &ident.to_string() == "BoxFuture" {
+                    if &ident.to_string() == "DartFnFuture" {
                         if let GenericArgument::Type(inner_ty) = (args.iter())
                             .filter(|arg| matches!(arg, GenericArgument::Type(_)))
                             .next()
@@ -66,7 +66,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             }
         }
 
-        bail!("DartFn does not support return types except `BoxFuture<T>` yet")
+        bail!("DartFn does not support return types except `DartFnFuture<T>` yet")
     }
 }
 
