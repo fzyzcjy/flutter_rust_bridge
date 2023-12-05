@@ -1,5 +1,5 @@
-use crate::generalized_isolate::IntoDart;
-use crate::platform_types::{DartAbi, SendableMessagePortHandle};
+use crate::generalized_isolate::{Channel, IntoDart};
+use crate::platform_types::{handle_to_message_port, DartAbi, SendableMessagePortHandle};
 use log::warn;
 use std::thread::ThreadId;
 
@@ -85,7 +85,7 @@ impl Drop for DartOpaque {
     fn drop(&mut self) {
         if let Some(inner) = self.handle.take() {
             if std::thread::current().id() != self.thread_id {
-                let channel = inner.channel();
+                let channel = Channel::new(handle_to_message_port(&self.drop_port));
                 let ptr = inner.into_raw();
 
                 if !channel.post(ptr) {
