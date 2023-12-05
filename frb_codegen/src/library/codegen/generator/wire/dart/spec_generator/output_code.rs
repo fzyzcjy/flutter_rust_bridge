@@ -84,7 +84,7 @@ impl WireDartOutputCode {
                 "
                 class {api_impl_class_name} extends {api_impl_platform_class_name} implements {api_class_name} {{
                   {api_impl_class_name}({{
-                    super.handler,
+                    required super.handler,
                     required super.wire,
                     required super.generalizedFrbRustBinding,
                     required super.portManager,
@@ -99,7 +99,7 @@ impl WireDartOutputCode {
                 "
                 abstract class {api_impl_platform_class_name} extends BaseApiImpl<{wire_class_name}> {{
                   {api_impl_platform_class_name}({{
-                    super.handler,
+                    required super.handler,
                     required super.wire,
                     required super.generalizedFrbRustBinding,
                     required super.portManager,
