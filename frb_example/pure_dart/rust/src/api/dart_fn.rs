@@ -58,3 +58,5 @@ pub async fn rust_call_dart_simple(callback: impl FnOnce() -> DartFnFuture<()> +
 // ) -> DartOpaque {
 //     callback().await
 // }
+//
+// pub async fn TODO_dart_closure_be_async(){}
