@@ -624,7 +624,8 @@ fn wire_rust_call_dart_simple_impl(
         move || {
             let api_callback = {
                 use flutter_rust_bridge::IntoDart;
-                let dart_opaque: flutter_rust_bridge::DartOpaque = callback.wire2api();
+                // let dart_opaque: flutter_rust_bridge::DartOpaque = callback.wire2api();
+                let dart_opaque = "TODO_dummy_dart_opaqque".to_owned();
 
                 move || {
                     flutter_rust_bridge::for_generated::dart_fn_invoke(vec![dart_opaque
