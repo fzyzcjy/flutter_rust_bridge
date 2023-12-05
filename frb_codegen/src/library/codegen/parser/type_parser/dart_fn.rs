@@ -12,7 +12,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
         Ok(Some(match last_segment {
-            ("DartFn", Some(Generic(IrType::Unencodable(IrTypeUnencodable { string, .. })))) => {
+            ("DartFn", Some(Generic([IrType::Unencodable(IrTypeUnencodable { string, .. })]))) => {
                 self.parse_dart_fn(string)
             }
 
