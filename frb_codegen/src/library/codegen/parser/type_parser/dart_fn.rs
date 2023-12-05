@@ -35,7 +35,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 .map(|x| self.parse_type(&x.ty))
                 .collect::<anyhow::Result<Vec<_>>>()?;
 
-            let output = self.parse_dart_fn_output(&bare_fn)?;
+            let output = Box::new(self.parse_dart_fn_output(&bare_fn.output)?);
 
             return Ok(Some(IrType::DartFn(IrTypeDartFn { inputs, output })));
         }
@@ -45,7 +45,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
     fn parse_dart_fn_output(&mut self, return_type: &ReturnType) -> anyhow::Result<IrType> {
         if let ReturnType::Type(_, ret_ty) = return_type {
-            if let Type::Path(TypePath { qself: _, path }) = ret_ty {
+            if let Type::Path(TypePath { ref path, .. }) = **ret_ty {
                 if let Some(PathSegment {
                     ident,
                     arguments:
