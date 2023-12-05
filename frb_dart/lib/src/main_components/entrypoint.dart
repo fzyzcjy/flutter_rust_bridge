@@ -46,7 +46,7 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
     handler ??= BaseHandler();
     final generalizedFrbRustBinding =
         GeneralizedFrbRustBinding(externalLibrary);
-    final portManager = PortManager(generalizedFrbRustBinding);
+    final portManager = PortManager(generalizedFrbRustBinding, handler);
     api ??= _createDefaultApi(
         handler, generalizedFrbRustBinding, portManager, externalLibrary);
 

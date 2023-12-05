@@ -1,4 +1,5 @@
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
+import 'package:flutter_rust_bridge/src/main_components/handler.dart';
 import 'package:flutter_rust_bridge/src/misc/dart_fn.dart';
 import 'package:flutter_rust_bridge/src/misc/dart_opaque.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
@@ -9,10 +10,11 @@ class PortManager {
   final DartFnInvokePortManager _dartFnInvokePortManager;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  PortManager(GeneralizedFrbRustBinding generalizedFrbRustBinding)
+  PortManager(
+      GeneralizedFrbRustBinding generalizedFrbRustBinding, BaseHandler handler)
       : _dartOpaqueDropPortManager =
             DartOpaqueDropPortManager(generalizedFrbRustBinding),
-        _dartFnInvokePortManager = DartFnInvokePortManager();
+        _dartFnInvokePortManager = DartFnInvokePortManager(handler);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   NativePortType get dartOpaqueDropPort => _dartOpaqueDropPortManager.port;

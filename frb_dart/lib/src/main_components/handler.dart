@@ -54,6 +54,11 @@ class BaseHandler {
       }
     }
   }
+
+  /// When Rust invokes a Dart function
+  void dartFnInvoke(Object? message) {
+    throw Exception('TODO');
+  }
 }
 
 S _transformRust2DartMessage<S, E extends Object>(List<dynamic> raw,
