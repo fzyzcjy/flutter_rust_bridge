@@ -24,3 +24,13 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         todo!("{}", raw)
     }
 }
+
+// Use this unit "test" to see how a type will be parsed into a tree
+// #[cfg(test)]
+// mod tests {
+//     #[test]
+//     fn test_syn_parse_example() {
+//         let ans: syn::Type = syn::parse_str("fn(DartOpaque) -> BoxFuture<String>").unwrap();
+//         println!("{ans:#?}");
+//     }
+// }
