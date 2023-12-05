@@ -1,4 +1,5 @@
 mod boxed;
+mod dart_fn;
 mod dart_opaque;
 mod delegate;
 mod dynamic;

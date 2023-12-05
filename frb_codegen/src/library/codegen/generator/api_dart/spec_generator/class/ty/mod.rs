@@ -21,6 +21,7 @@ pub(crate) trait ApiDartGeneratorClassTrait {
 
 // the following have empty implementation
 impl<'a> ApiDartGeneratorClassTrait for BoxedApiDartGenerator<'a> {}
+impl<'a> ApiDartGeneratorClassTrait for DartFnApiDartGenerator<'a> {}
 impl<'a> ApiDartGeneratorClassTrait for DartOpaqueApiDartGenerator<'a> {}
 impl<'a> ApiDartGeneratorClassTrait for DynamicApiDartGenerator<'a> {}
 impl<'a> ApiDartGeneratorClassTrait for GeneralListApiDartGenerator<'a> {}

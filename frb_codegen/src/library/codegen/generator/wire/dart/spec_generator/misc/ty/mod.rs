@@ -1,6 +1,7 @@
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 
 mod boxed;
+mod dart_fn;
 mod dart_opaque;
 mod delegate;
 mod dynamic;
