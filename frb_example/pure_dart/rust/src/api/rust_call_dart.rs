@@ -1,22 +1,7 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync"]}
 
-use flutter_rust_bridge::DartOpaque;
+use flutter_rust_bridge::{DartFn, DartOpaque};
 use futures::future::BoxFuture;
-use std::future::Future;
-
-// TODO
-struct DartFn<F> {
-    inner: F,
-}
-
-// https://github.com/rust-lang/rust/issues/29625#issuecomment-1692602873
-impl<F> std::ops::Deref for DartFn<F> {
-    type Target = F;
-
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
 
 struct DemoStructForRustCallDart {
     pub name: String,
