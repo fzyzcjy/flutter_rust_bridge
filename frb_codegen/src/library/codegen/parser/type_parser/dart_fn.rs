@@ -7,7 +7,11 @@ use crate::codegen::parser::type_parser::unencodable::{ArgsRefs, SplayedSegment}
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use anyhow::bail;
 use itertools::Itertools;
-use syn::{Path, PathSegment, ReturnType, Type, TypeBareFn, TypePath};
+use quote::__private::ext::RepToTokensExt;
+use syn::{
+    AngleBracketedGenericArguments, GenericArgument, Path, PathArguments, PathSegment, ReturnType,
+    Type, TypeBareFn, TypePath,
+};
 use ArgsRefs::Generic;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
@@ -42,10 +46,16 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     fn parse_dart_fn_output(&mut self, return_type: &ReturnType) -> anyhow::Result<IrType> {
         if let ReturnType::Type(_, ret_ty) = return_type {
             if let Type::Path(TypePath { qself: _, path }) = ret_ty {
-                if let Some(PathSegment { ident, arguments }) = path.segments.first() {
+                if let Some(PathSegment {
+                    ident,
+                    arguments:
+                        PathArguments::AngleBracketed(AngleBracketedGenericArguments { args, .. }),
+                }) = path.segments.first()
+                {
                     if &ident.to_string() == "BoxFuture" {
-                        arguments.
-                        return Ok(TODO);
+                        if let GenericArgument::Type(inner_ty) = args.first().unwrap() {
+                            return self.parse_type(inner_ty);
+                        }
                     }
                 }
             }
