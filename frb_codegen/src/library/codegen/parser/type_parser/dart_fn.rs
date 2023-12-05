@@ -70,7 +70,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 // mod tests {
 //     #[test]
 //     fn test_syn_parse_example() {
-//         let ans: syn::Type = syn::parse_str("fn(DartOpaque) -> BoxFuture<String>").unwrap();
+//         let ans: syn::Type =
+//             syn::parse_str("fn(DartOpaque) -> BoxFuture<'static, String>").unwrap();
 //         println!("{ans:#?}");
 //     }
 // }
