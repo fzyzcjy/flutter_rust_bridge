@@ -2,6 +2,7 @@ use crate::platform_types::DartAbi;
 use futures::future::BoxFuture;
 use std::ops::Deref;
 
+// TODO rm
 pub struct DartFn<F> {
     inner: F,
 }
