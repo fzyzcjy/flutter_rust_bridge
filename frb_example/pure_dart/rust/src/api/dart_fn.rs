@@ -1,14 +1,18 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync"]}
 
-use flutter_rust_bridge::DartOpaque;
-use futures::future::BoxFuture;
+use std::future::Future;
 use std::panic::UnwindSafe;
+use std::pin::Pin;
 
 pub struct DemoStructForRustCallDart {
     pub name: String,
 }
 
-pub async fn rust_call_dart_simple(callback: impl Fn() -> BoxFuture<'static, ()> + UnwindSafe) {
+// TODO
+/// Roughly speaking, BoxFuture + UnwindSafe
+type MyFuture<T> = Pin<Box<dyn Future<Output = T> + Send + UnwindSafe + 'static>>;
+
+pub async fn rust_call_dart_simple(callback: impl Fn() -> MyFuture<()> + UnwindSafe) {
     println!("rust_call_dart_simple before");
     callback().await;
     println!("rust_call_dart_simple after");
