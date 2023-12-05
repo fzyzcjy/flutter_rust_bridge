@@ -53,6 +53,10 @@ impl<E: Executor, H: ErrorHandler> SimpleHandler<E, H> {
 }
 
 impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
+    fn initialize(&mut self, dart_opaque_drop_port: MessagePort, dart_fn_invoke_port: MessagePort) {
+        todo!()
+    }
+
     fn wrap_normal<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(
         &self,
         task_info: TaskInfo,
