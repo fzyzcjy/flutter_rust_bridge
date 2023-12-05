@@ -1,6 +1,8 @@
 use crate::generalized_isolate::IntoDart;
 use crate::generalized_isolate::PortLike;
+use crate::platform_types::handle_to_message_port;
 use crate::platform_types::MessagePort;
+use crate::platform_types::{message_port_to_handle, SendableMessagePortHandle};
 use wasm_bindgen::JsCast;
 use web_sys::BroadcastChannel;
 
@@ -31,12 +33,12 @@ impl Channel {
 // TODO the name should reflect "broadcast" channel?
 /// A handle to a [`web_sys::BroadcastChannel`] that implements `Send`.
 #[derive(Clone)]
-pub struct SendableChannelHandle(String);
+pub struct SendableChannelHandle(SendableMessagePortHandle);
 
 pub fn channel_to_handle(channel: &Channel) -> SendableChannelHandle {
-    SendableChannelHandle(message_port_to_handle(channel.port))
+    SendableChannelHandle(message_port_to_handle(&channel.port))
 }
 
 pub fn handle_to_channel(handle: &SendableChannelHandle) -> Channel {
-    Channel::new(handle_to_message_port(handle))
+    Channel::new(handle_to_message_port(&handle.0))
 }
