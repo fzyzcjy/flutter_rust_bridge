@@ -1572,6 +1572,8 @@ int32_t benchmark_raw_input_bytes(struct benchmark_raw_list_prim_u_8 bytes);
 
 void benchmark_raw_output_bytes(MessagePort port, int32_t message_id, int32_t size);
 
+void frb_initialize_rust(MessagePort dart_opaque_drop_port, MessagePort dart_fn_invoke_port);
+
 void wire_boxed_blob_twin_normal(int64_t port_, struct wire_list_prim_u_8 *blob);
 
 void wire_func_test_id_twin_normal(int64_t port_, struct wire_test_id_twin_normal *id);
@@ -3946,6 +3948,7 @@ union SpeedTwinSyncKind *inflate_SpeedTwinSync_GPS(void);
 static int64_t dummy_method_to_enforce_bundling(void) {
     int64_t dummy_var = 0;
     dummy_var ^= ((int64_t) (void*) drop_dart_object);
+    dummy_var ^= ((int64_t) (void*) frb_initialize_rust);
     dummy_var ^= ((int64_t) (void*) get_dart_object);
     dummy_var ^= ((int64_t) (void*) inflate_AbcTwinNormal_A);
     dummy_var ^= ((int64_t) (void*) inflate_AbcTwinNormal_B);

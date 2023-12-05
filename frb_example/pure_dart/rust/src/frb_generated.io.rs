@@ -8231,6 +8231,14 @@ impl Default for wire_user_id_twin_sync {
 }
 
 #[no_mangle]
+pub extern "C" fn frb_initialize_rust(
+    dart_opaque_drop_port: flutter_rust_bridge::for_generated::MessagePort,
+    dart_fn_invoke_port: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.initialize(dart_opaque_drop_port, dart_fn_invoke_port)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_boxed_blob_twin_normal(port_: i64, blob: *mut wire_list_prim_u_8) {
     wire_boxed_blob_twin_normal_impl(port_, blob)
 }

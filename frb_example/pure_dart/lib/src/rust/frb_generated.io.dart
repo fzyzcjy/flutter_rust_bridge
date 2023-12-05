@@ -4996,6 +4996,22 @@ class RustLibWire implements BaseWire {
   late final _benchmark_raw_output_bytes =
       _benchmark_raw_output_bytesPtr.asFunction<void Function(int, int, int)>();
 
+  void frb_initialize_rust(
+    int dart_opaque_drop_port,
+    int dart_fn_invoke_port,
+  ) {
+    return _frb_initialize_rust(
+      dart_opaque_drop_port,
+      dart_fn_invoke_port,
+    );
+  }
+
+  late final _frb_initialize_rustPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int, ffi.Int)>>(
+          'frb_initialize_rust');
+  late final _frb_initialize_rust =
+      _frb_initialize_rustPtr.asFunction<void Function(int, int)>();
+
   void wire_boxed_blob_twin_normal(
     int port_,
     ffi.Pointer<wire_list_prim_u_8> blob,
