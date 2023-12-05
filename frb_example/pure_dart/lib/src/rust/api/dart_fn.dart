@@ -7,34 +7,37 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<void> rustCallDartSimple(
-        {required TODO_dart_api_type callback, dynamic hint}) =>
+        {required void Function() callback, dynamic hint}) =>
     RustLib.instance.api.rustCallDartSimple(callback: callback, hint: hint);
 
 Future<void> rustCallDartOneArg(
-        {required TODO_dart_api_type callback, dynamic hint}) =>
+        {required void Function(String) callback, dynamic hint}) =>
     RustLib.instance.api.rustCallDartOneArg(callback: callback, hint: hint);
 
 Future<void> rustCallDartTwoArgs(
-        {required TODO_dart_api_type callback, dynamic hint}) =>
+        {required void Function(String, DemoStructForRustCallDart) callback,
+        dynamic hint}) =>
     RustLib.instance.api.rustCallDartTwoArgs(callback: callback, hint: hint);
 
 Future<void> rustCallDartReturn(
-        {required TODO_dart_api_type callback, dynamic hint}) =>
+        {required String Function() callback, dynamic hint}) =>
     RustLib.instance.api.rustCallDartReturn(callback: callback, hint: hint);
 
 Future<void> rustCallDartLoopback(
-        {required TODO_dart_api_type callback, dynamic hint}) =>
+        {required DemoStructForRustCallDart Function(DemoStructForRustCallDart)
+            callback,
+        dynamic hint}) =>
     RustLib.instance.api.rustCallDartLoopback(callback: callback, hint: hint);
 
 Future<void> rustCallDartWithDartOpaqueArg(
         {required Object input,
-        required TODO_dart_api_type callback,
+        required void Function(Object) callback,
         dynamic hint}) =>
     RustLib.instance.api.rustCallDartWithDartOpaqueArg(
         input: input, callback: callback, hint: hint);
 
 Future<Object> rustCallDartWithDartOpaqueResult(
-        {required TODO_dart_api_type callback, dynamic hint}) =>
+        {required Object Function() callback, dynamic hint}) =>
     RustLib.instance.api
         .rustCallDartWithDartOpaqueResult(callback: callback, hint: hint);
 

@@ -188,25 +188,25 @@ ffi.Pointer<wire_list_prim_i_64> api2wire_Chrono_NaiveList(List<DateTime> raw) {
 int api2wire_Chrono_Utc(DateTime raw) {
                             return api2wire_i_64(raw.microsecondsSinceEpoch);
                         }@protected
-todo_dart_wire_type api2wire_DartFn_Inputs_DartOpaque_Output_unit(TODO_dart_api_type raw) {
+todo_dart_wire_type api2wire_DartFn_Inputs_DartOpaque_Output_unit(void Function(Object) raw) {
                             todo_api2wire_body
                         }@protected
-todo_dart_wire_type api2wire_DartFn_Inputs_String_Output_unit(TODO_dart_api_type raw) {
+todo_dart_wire_type api2wire_DartFn_Inputs_String_Output_unit(void Function(String) raw) {
                             todo_api2wire_body
                         }@protected
-todo_dart_wire_type api2wire_DartFn_Inputs_String_demo_struct_for_rust_call_dart_Output_unit(TODO_dart_api_type raw) {
+todo_dart_wire_type api2wire_DartFn_Inputs_String_demo_struct_for_rust_call_dart_Output_unit(void Function(String, DemoStructForRustCallDart) raw) {
                             todo_api2wire_body
                         }@protected
-todo_dart_wire_type api2wire_DartFn_Inputs__Output_DartOpaque(TODO_dart_api_type raw) {
+todo_dart_wire_type api2wire_DartFn_Inputs__Output_DartOpaque(Object Function() raw) {
                             todo_api2wire_body
                         }@protected
-todo_dart_wire_type api2wire_DartFn_Inputs__Output_String(TODO_dart_api_type raw) {
+todo_dart_wire_type api2wire_DartFn_Inputs__Output_String(String Function() raw) {
                             todo_api2wire_body
                         }@protected
-todo_dart_wire_type api2wire_DartFn_Inputs__Output_unit(TODO_dart_api_type raw) {
+todo_dart_wire_type api2wire_DartFn_Inputs__Output_unit(void Function() raw) {
                             todo_api2wire_body
                         }@protected
-todo_dart_wire_type api2wire_DartFn_Inputs_demo_struct_for_rust_call_dart_Output_demo_struct_for_rust_call_dart(TODO_dart_api_type raw) {
+todo_dart_wire_type api2wire_DartFn_Inputs_demo_struct_for_rust_call_dart_Output_demo_struct_for_rust_call_dart(DemoStructForRustCallDart Function(DemoStructForRustCallDart) raw) {
                             todo_api2wire_body
                         }@protected
 wire_DartOpaque api2wire_DartOpaque(Object raw) {

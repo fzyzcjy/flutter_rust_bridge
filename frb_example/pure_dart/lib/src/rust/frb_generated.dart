@@ -255,27 +255,30 @@ abstract class RustLibApi extends BaseApi {
   Future<dynamic> returnDartDynamicTwinNormal({dynamic hint});
 
   Future<void> rustCallDartLoopback(
-      {required TODO_dart_api_type callback, dynamic hint});
+      {required DemoStructForRustCallDart Function(DemoStructForRustCallDart)
+          callback,
+      dynamic hint});
 
   Future<void> rustCallDartOneArg(
-      {required TODO_dart_api_type callback, dynamic hint});
+      {required void Function(String) callback, dynamic hint});
 
   Future<void> rustCallDartReturn(
-      {required TODO_dart_api_type callback, dynamic hint});
+      {required String Function() callback, dynamic hint});
 
   Future<void> rustCallDartSimple(
-      {required TODO_dart_api_type callback, dynamic hint});
+      {required void Function() callback, dynamic hint});
 
   Future<void> rustCallDartTwoArgs(
-      {required TODO_dart_api_type callback, dynamic hint});
+      {required void Function(String, DemoStructForRustCallDart) callback,
+      dynamic hint});
 
   Future<void> rustCallDartWithDartOpaqueArg(
       {required Object input,
-      required TODO_dart_api_type callback,
+      required void Function(Object) callback,
       dynamic hint});
 
   Future<Object> rustCallDartWithDartOpaqueResult(
-      {required TODO_dart_api_type callback, dynamic hint});
+      {required Object Function() callback, dynamic hint});
 
   Future<String> asyncAcceptDartOpaqueTwinNormal(
       {required Object opaque, dynamic hint});
@@ -3148,7 +3151,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustCallDartLoopback(
-      {required TODO_dart_api_type callback, dynamic hint}) {
+      {required DemoStructForRustCallDart Function(DemoStructForRustCallDart)
+          callback,
+      dynamic hint}) {
     var arg0 =
         api2wire_DartFn_Inputs_demo_struct_for_rust_call_dart_Output_demo_struct_for_rust_call_dart(
             callback);
@@ -3170,7 +3175,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustCallDartOneArg(
-      {required TODO_dart_api_type callback, dynamic hint}) {
+      {required void Function(String) callback, dynamic hint}) {
     var arg0 = api2wire_DartFn_Inputs_String_Output_unit(callback);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_rust_call_dart_one_arg(port_, arg0),
@@ -3190,7 +3195,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustCallDartReturn(
-      {required TODO_dart_api_type callback, dynamic hint}) {
+      {required String Function() callback, dynamic hint}) {
     var arg0 = api2wire_DartFn_Inputs__Output_String(callback);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_rust_call_dart_return(port_, arg0),
@@ -3210,7 +3215,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustCallDartSimple(
-      {required TODO_dart_api_type callback, dynamic hint}) {
+      {required void Function() callback, dynamic hint}) {
     var arg0 = api2wire_DartFn_Inputs__Output_unit(callback);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_rust_call_dart_simple(port_, arg0),
@@ -3230,7 +3235,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustCallDartTwoArgs(
-      {required TODO_dart_api_type callback, dynamic hint}) {
+      {required void Function(String, DemoStructForRustCallDart) callback,
+      dynamic hint}) {
     var arg0 =
         api2wire_DartFn_Inputs_String_demo_struct_for_rust_call_dart_Output_unit(
             callback);
@@ -3253,7 +3259,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> rustCallDartWithDartOpaqueArg(
       {required Object input,
-      required TODO_dart_api_type callback,
+      required void Function(Object) callback,
       dynamic hint}) {
     var arg0 = api2wire_DartOpaque(input);
     var arg1 = api2wire_DartFn_Inputs_DartOpaque_Output_unit(callback);
@@ -3277,7 +3283,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<Object> rustCallDartWithDartOpaqueResult(
-      {required TODO_dart_api_type callback, dynamic hint}) {
+      {required Object Function() callback, dynamic hint}) {
     var arg0 = api2wire_DartFn_Inputs__Output_DartOpaque(callback);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
