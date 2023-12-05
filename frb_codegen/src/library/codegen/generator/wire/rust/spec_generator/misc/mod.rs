@@ -155,7 +155,7 @@ fn generate_boilerplate() -> Acc<Vec<WireRustOutputCode>> {
         }
         .into()]
         .into(),
-        TargetOrCommon::Common => "".into(),
+        TargetOrCommon::Common => vec!["".into()].into(),
     })
 }
 
