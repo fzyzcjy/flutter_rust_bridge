@@ -23,17 +23,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 class RustLibWire extends BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
-  void frb_initialize_rust(
-    NativePortType dart_opaque_drop_port,
-    NativePortType dart_fn_invoke_port,
-  ) =>
-      wasmModule.frb_initialize_rust(
-        dart_opaque_drop_port,
-        dart_fn_invoke_port,
-      );
-
-  void frb_initialize_rust(TODO_darttype dart_opaque_drop_port,
-          TODO_darttype dart_fn_invoke_port) =>
+  void frb_initialize_rust(NativePortType dart_opaque_drop_port,
+          NativePortType dart_fn_invoke_port) =>
       wasmModule.frb_initialize_rust(
           dart_opaque_drop_port, dart_fn_invoke_port);
 
@@ -54,12 +45,7 @@ class RustLibWasmModule implements WasmModule {
   external RustLibWasmModule bind(dynamic thisArg, String moduleName);
 
   external void frb_initialize_rust(
-    NativePortType dart_opaque_drop_port,
-    NativePortType dart_fn_invoke_port,
-  );
-
-  external void frb_initialize_rust(
-      TODO_darttype dart_opaque_drop_port, TODO_darttype dart_fn_invoke_port);
+      NativePortType dart_opaque_drop_port, NativePortType dart_fn_invoke_port);
 
   external void wire_minimal_adder(NativePortType port_, int a, int b);
 }
