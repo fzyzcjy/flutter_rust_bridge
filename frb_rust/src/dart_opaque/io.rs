@@ -18,12 +18,12 @@ impl DartOpaqueBase {
         }
     }
 
-    pub fn into_raw(self) -> Dart_PersistentHandle {
-        self.inner.into_raw()
-    }
-
     pub fn unwrap(self) -> DartHandleWrap {
         self.inner
+    }
+
+    pub fn into_raw(self) -> Dart_PersistentHandle {
+        self.inner.into_raw()
     }
 
     pub fn channel(&self) -> Option<Channel> {
