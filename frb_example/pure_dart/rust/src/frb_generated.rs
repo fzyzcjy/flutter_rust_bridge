@@ -613,11 +613,7 @@ fn wire_return_dart_dynamic_twin_normal_impl(
 }
 fn wire_rust_call_dart_simple_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl Wire2Api<
-            flutter_rust_bridge::DartFn<
-                fn() -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, ()>,
-            >,
-        > + core::panic::UnwindSafe,
+    callback: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_, _, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
