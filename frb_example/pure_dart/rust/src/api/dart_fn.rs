@@ -2,12 +2,13 @@
 
 use flutter_rust_bridge::DartOpaque;
 use futures::future::BoxFuture;
+use std::panic::UnwindSafe;
 
 pub struct DemoStructForRustCallDart {
     pub name: String,
 }
 
-pub async fn rust_call_dart_simple(callback: impl Fn() -> BoxFuture<'static, ()>) {
+pub async fn rust_call_dart_simple(callback: impl Fn() -> BoxFuture<'static, ()> + UnwindSafe) {
     println!("rust_call_dart_simple before");
     callback().await;
     println!("rust_call_dart_simple after");
