@@ -11,14 +11,12 @@ pub type DartObject = wasm_bindgen::JsValue;
 #[derive(Debug)]
 pub struct DartOpaqueBase {
     inner: Box<JsValue>,
-    drop_port: Option<String>,
 }
 
 impl DartOpaqueBase {
-    pub fn new(handle: JsValue, port: Option<JsValue>) -> Self {
+    pub fn new(handle: JsValue) -> Self {
         Self {
             inner: Box::new(handle),
-            drop_port: port.map(|p| p.dyn_ref::<BroadcastChannel>().unwrap().name()),
         }
     }
 

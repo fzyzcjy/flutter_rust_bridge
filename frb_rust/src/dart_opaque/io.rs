@@ -1,6 +1,6 @@
-use dart_sys::{Dart_DeletePersistentHandle_DL, Dart_PersistentHandle};
 use crate::generalized_isolate::Channel;
 use crate::platform_types::MessagePort;
+use dart_sys::{Dart_DeletePersistentHandle_DL, Dart_PersistentHandle};
 
 pub type OpaqueMessagePort = i64;
 pub type DartWrapObject = DartHandleWrap;
@@ -9,14 +9,12 @@ pub type DartObject = Dart_PersistentHandle;
 #[derive(Debug)]
 pub struct DartOpaqueBase {
     inner: DartHandleWrap,
-    drop_port: Option<MessagePort>,
 }
 
 impl DartOpaqueBase {
-    pub fn new(handle: Dart_PersistentHandle, drop_port: Option<MessagePort>) -> Self {
+    pub fn new(handle: Dart_PersistentHandle) -> Self {
         Self {
             inner: DartHandleWrap::from_raw(handle),
-            drop_port,
         }
     }
 
@@ -62,4 +60,3 @@ impl Drop for DartHandleWrap {
         }
     }
 }
-

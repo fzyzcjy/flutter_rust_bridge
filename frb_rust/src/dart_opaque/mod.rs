@@ -36,9 +36,9 @@ impl DartOpaque {
     /// # Safety
     ///
     /// The [DartObject] must be created on the current thread.
-    pub unsafe fn new(handle: DartObject, port: OpaqueMessagePort) -> Self {
+    pub unsafe fn new(handle: DartObject) -> Self {
         Self {
-            handle: Some(DartOpaqueBase::new(handle, Some(port))),
+            handle: Some(DartOpaqueBase::new(handle)),
             thread_id: std::thread::current().id(),
         }
     }
@@ -53,7 +53,9 @@ impl DartOpaque {
     /// on a non-parent [DartObject] thread.
     pub unsafe fn new_non_droppable(handle: DartObject) -> Self {
         Self {
-            handle: Some(DartOpaqueBase::new(handle, None)),
+            // TODO originally this was "dropport=none" while `new` was `dropport=some...`, but now no port at all
+            // handle: Some(DartOpaqueBase::new(handle, None)),
+            handle: Some(DartOpaqueBase::new(handle)),
             thread_id: std::thread::current().id(),
         }
     }
@@ -100,5 +102,5 @@ pub type DartOpaqueWireType = wasm_bindgen::JsValue;
 
 // TODO improve
 pub unsafe fn wire2api_dart_opaque(raw: DartOpaqueWireType) -> DartOpaque {
-    DartOpaque::new(raw as _, todo!("should remove the port argument"))
+    DartOpaque::new(raw as _)
 }
