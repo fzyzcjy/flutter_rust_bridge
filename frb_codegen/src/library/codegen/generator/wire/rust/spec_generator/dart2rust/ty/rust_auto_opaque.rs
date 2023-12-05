@@ -6,7 +6,8 @@ use crate::codegen::generator::wire::rust::spec_generator::dart2rust::misc::{
     generate_class_from_fields, rust_wire_type_add_prefix_or_js_value, JS_VALUE,
 };
 use crate::codegen::generator::wire::rust::spec_generator::dart2rust::ty::rust_opaque::{
-    generalized_rust_opaque_generate_impl_wire2api_body, generalized_rust_opaque_rust_wire_type,
+    dart_opaque_or_generalized_rust_opaque_rust_wire_type,
+    generalized_rust_opaque_generate_impl_wire2api_body,
 };
 use crate::codegen::generator::wire::rust::spec_generator::dart2rust::ty::WireRustGeneratorDart2RustTrait;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
@@ -19,6 +20,6 @@ use std::borrow::Cow;
 
 impl<'a> WireRustGeneratorDart2RustTrait for RustAutoOpaqueWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
-        generalized_rust_opaque_rust_wire_type(target)
+        dart_opaque_or_generalized_rust_opaque_rust_wire_type(target)
     }
 }

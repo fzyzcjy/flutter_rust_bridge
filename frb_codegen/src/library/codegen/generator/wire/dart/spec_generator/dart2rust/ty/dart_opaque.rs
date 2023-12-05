@@ -1,6 +1,7 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
+use crate::codegen::generator::wire::dart::spec_generator::dart2rust::ty::rust_opaque::dart_or_rust_opaque_dart_wire_type;
 use crate::codegen::generator::wire::dart::spec_generator::dart2rust::ty::WireDartGeneratorDart2RustTrait;
 
 impl<'a> WireDartGeneratorDart2RustTrait for DartOpaqueWireDartGenerator<'a> {
@@ -14,10 +15,6 @@ impl<'a> WireDartGeneratorDart2RustTrait for DartOpaqueWireDartGenerator<'a> {
     }
 
     fn dart_wire_type(&self, target: Target) -> String {
-        match target {
-            Target::Io => "int",
-            Target::Wasm => "Object",
-        }
-        .to_owned()
+        dart_or_rust_opaque_dart_wire_type(target)
     }
 }

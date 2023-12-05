@@ -5,6 +5,7 @@ use crate::codegen::generator::wire::rust::spec_generator::dart2rust::impl_new_w
 use crate::codegen::generator::wire::rust::spec_generator::dart2rust::misc::{
     generate_class_from_fields, rust_wire_type_add_prefix_or_js_value, JS_VALUE,
 };
+use crate::codegen::generator::wire::rust::spec_generator::dart2rust::ty::rust_opaque::dart_opaque_or_generalized_rust_opaque_rust_wire_type;
 use crate::codegen::generator::wire::rust::spec_generator::dart2rust::ty::WireRustGeneratorDart2RustTrait;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
@@ -21,10 +22,6 @@ impl<'a> WireRustGeneratorDart2RustTrait for DartOpaqueWireRustGenerator<'a> {
     }
 
     fn rust_wire_type(&self, target: Target) -> String {
-        match target {
-            Target::Io => "int64_t",
-            Target::Wasm => JS_VALUE,
-        }
-        .into()
+        dart_opaque_or_generalized_rust_opaque_rust_wire_type(target)
     }
 }

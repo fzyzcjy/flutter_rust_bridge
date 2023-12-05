@@ -31,7 +31,7 @@ impl<'a> WireRustGeneratorDart2RustTrait for RustOpaqueWireRustGenerator<'a> {
     }
 
     fn rust_wire_type(&self, target: Target) -> String {
-        generalized_rust_opaque_rust_wire_type(target)
+        dart_opaque_or_generalized_rust_opaque_rust_wire_type(target)
     }
 }
 
@@ -39,7 +39,7 @@ pub(super) fn generalized_rust_opaque_generate_impl_wire2api_body() -> &'static 
     r#"unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }"#
 }
 
-pub(super) fn generalized_rust_opaque_rust_wire_type(target: Target) -> String {
+pub(super) fn dart_opaque_or_generalized_rust_opaque_rust_wire_type(target: Target) -> String {
     match target {
         Target::Io => "*const std::ffi::c_void",
         Target::Wasm => JS_VALUE,
