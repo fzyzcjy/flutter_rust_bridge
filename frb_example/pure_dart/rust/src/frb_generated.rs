@@ -613,7 +613,14 @@ fn wire_return_dart_dynamic_twin_normal_impl(
 }
 fn wire_rust_call_dart_loopback_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl Wire2Api<TODO_rust_api_type> + core::panic::UnwindSafe,
+    callback: impl Wire2Api<
+            flutter_rust_bridge::DartFn<
+                fn(
+                    crate::api::dart_fn::DemoStructForRustCallDart,
+                )
+                    -> BoxFuture<'static, crate::api::dart_fn::DemoStructForRustCallDart>,
+            >,
+        > + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_, _, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -633,7 +640,8 @@ fn wire_rust_call_dart_loopback_impl(
 }
 fn wire_rust_call_dart_one_arg_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl Wire2Api<TODO_rust_api_type> + core::panic::UnwindSafe,
+    callback: impl Wire2Api<flutter_rust_bridge::DartFn<fn(String) -> BoxFuture<'static, unit>>>
+        + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_, _, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -651,7 +659,8 @@ fn wire_rust_call_dart_one_arg_impl(
 }
 fn wire_rust_call_dart_return_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl Wire2Api<TODO_rust_api_type> + core::panic::UnwindSafe,
+    callback: impl Wire2Api<flutter_rust_bridge::DartFn<fn() -> BoxFuture<'static, String>>>
+        + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_, _, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -669,7 +678,8 @@ fn wire_rust_call_dart_return_impl(
 }
 fn wire_rust_call_dart_simple_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl Wire2Api<TODO_rust_api_type> + core::panic::UnwindSafe,
+    callback: impl Wire2Api<flutter_rust_bridge::DartFn<fn() -> BoxFuture<'static, unit>>>
+        + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_, _, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -687,7 +697,14 @@ fn wire_rust_call_dart_simple_impl(
 }
 fn wire_rust_call_dart_two_args_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl Wire2Api<TODO_rust_api_type> + core::panic::UnwindSafe,
+    callback: impl Wire2Api<
+            flutter_rust_bridge::DartFn<
+                fn(
+                    String,
+                    crate::api::dart_fn::DemoStructForRustCallDart,
+                ) -> BoxFuture<'static, unit>,
+            >,
+        > + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_, _, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -708,7 +725,11 @@ fn wire_rust_call_dart_two_args_impl(
 fn wire_rust_call_dart_with_dart_opaque_arg_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     input: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
-    callback: impl Wire2Api<TODO_rust_api_type> + core::panic::UnwindSafe,
+    callback: impl Wire2Api<
+            flutter_rust_bridge::DartFn<
+                fn(flutter_rust_bridge::DartOpaque) -> BoxFuture<'static, unit>,
+            >,
+        > + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_, _, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -733,7 +754,11 @@ fn wire_rust_call_dart_with_dart_opaque_arg_impl(
 }
 fn wire_rust_call_dart_with_dart_opaque_result_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl Wire2Api<TODO_rust_api_type> + core::panic::UnwindSafe,
+    callback: impl Wire2Api<
+            flutter_rust_bridge::DartFn<
+                fn() -> BoxFuture<'static, flutter_rust_bridge::DartOpaque>,
+            >,
+        > + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_, _, _, _, flutter_rust_bridge::DartOpaque, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
