@@ -29,7 +29,13 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             .context("cannot find trait_bound")?;
 
         let segment = (trait_bound.path.segments.last()).context("cannot get segment")?;
-        ensure!(&segment.ident.to_string() == "Fn");
+
+        let segment_ident = segment.ident.to_string();
+        match &segment_ident[..] {
+            "FnOnce" => {} // Ok
+            "Fn" => bail!("DartFn with `Fn` (instead of `FnOnce`) is to be implemented. Create an issue at GitHub if you want it."),
+            _ => bail!("Unknown ident: {segment_ident}")
+        }
 
         if let PathArguments::Parenthesized(arguments) = &segment.arguments {
             let inputs = (arguments.inputs.iter())
