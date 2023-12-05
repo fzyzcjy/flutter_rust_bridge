@@ -1,4 +1,5 @@
 use crate::platform_types::DartAbi;
+use futures::future::BoxFuture;
 use std::ops::Deref;
 
 pub struct DartFn<F> {
@@ -20,6 +21,6 @@ impl<F> Deref for DartFn<F> {
     }
 }
 
-pub fn dart_fn_invoke(closure_and_args: Vec<DartAbi>) {
+pub fn dart_fn_invoke<Ret>(closure_and_args: Vec<DartAbi>) -> BoxFuture<'static, Ret> {
     todo!()
 }
