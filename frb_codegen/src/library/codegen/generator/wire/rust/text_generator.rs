@@ -50,10 +50,11 @@ fn generate_merged_code(spec: &WireRustOutputSpec) -> Acc<WireRustOutputCode> {
     add("", &spec.misc.code_header);
     add("", &spec.misc.file_attributes);
     add("imports", &spec.misc.imports);
+    add("boilerplate", &spec.misc.boilerplate);
+    add("executor", &spec.misc.executor);
     add("wire_funcs", &spec.misc.wire_funcs);
     add("wrapper_structs", &spec.misc.wrapper_structs);
     add("static_checks", &spec.misc.static_checks);
-    add("executor", &spec.misc.executor);
     add("allocate_funcs", &spec.dart2rust.allocate_funcs);
     add("related_funcs", &spec.dart2rust.related_funcs);
     add("impl_wire2api", &spec.dart2rust.impl_wire2api);

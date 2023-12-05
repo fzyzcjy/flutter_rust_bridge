@@ -25,10 +25,11 @@ pub(crate) struct WireRustOutputSpecMisc {
     pub code_header: Acc<Vec<WireRustOutputCode>>,
     pub file_attributes: Acc<Vec<WireRustOutputCode>>,
     pub imports: Acc<Vec<WireRustOutputCode>>,
+    pub boilerplate: Acc<Vec<WireRustOutputCode>>,
+    pub executor: Acc<Vec<WireRustOutputCode>>,
     pub wire_funcs: Acc<Vec<WireRustOutputCode>>,
     pub wrapper_structs: Acc<Vec<WireRustOutputCode>>,
     pub static_checks: Acc<Vec<WireRustOutputCode>>,
-    pub executor: Acc<Vec<WireRustOutputCode>>,
     pub extern_struct_names: Vec<String>,
 }
 
@@ -40,6 +41,8 @@ pub(crate) fn generate(
         code_header: Acc::new(|_| vec![(generate_code_header() + "\n\n").into()]),
         file_attributes: Acc::new_common(vec![FILE_ATTRIBUTES.to_string().into()]),
         imports: generate_imports(&cache.distinct_types, context),
+        executor: Acc::new_common(vec![generate_executor(context.ir_pack).into()]),
+        boilerplate: generate_boilerplate(),
         wire_funcs: context
             .ir_pack
             .funcs
@@ -57,7 +60,6 @@ pub(crate) fn generate(
             context,
         )
         .into()]),
-        executor: Acc::new_common(vec![generate_executor(context.ir_pack).into()]),
         extern_struct_names: generate_extern_struct_names(context, cache),
     })
 }
@@ -126,6 +128,14 @@ fn generate_static_checks(types: &[IrType], context: WireRustGeneratorContext) -
     lines.extend(raw);
     lines.push("};".to_owned());
     lines.join("\n")
+}
+
+fn generate_boilerplate() -> Acc<Vec<WireRustOutputCode>> {
+    Acc {
+        io: vec![format!("TODO").into()],
+        wasm: vec![format!("TODO").into()],
+        ..Default::default()
+    }
 }
 
 fn generate_executor(ir_pack: &IrPack) -> String {
