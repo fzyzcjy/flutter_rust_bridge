@@ -9,7 +9,7 @@ use std::panic::UnwindSafe;
 
 /// Provide your own handler to customize how to execute your function calls, etc.
 pub trait Handler {
-    fn initialize(&mut self, dart_opaque_drop_port: MessagePort, dart_fn_invoke_port: MessagePort);
+    fn initialize(&self, dart_opaque_drop_port: MessagePort, dart_fn_invoke_port: MessagePort);
 
     /// Prepares the arguments, executes a Rust function and sets up its return value.
     ///
