@@ -24,10 +24,6 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
   @internal
   A get api => _state.api;
 
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
-  @internal
-  NativePortType get dropPort => _state.portManager.dropPort;
-
   _EntrypointState<A> get _state =>
       __state ??
       (throw StateError('flutter_rust_bridge has not been initialized. '
