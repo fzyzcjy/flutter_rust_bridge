@@ -35,7 +35,7 @@ jobs:
           components: rustfmt
       - uses: dart-lang/setup-dart@v1
         with:
-          sdk: "3.0.0"
+          sdk: stable
           architecture: x64
       - uses: actions/setup-python@v2
         with:
