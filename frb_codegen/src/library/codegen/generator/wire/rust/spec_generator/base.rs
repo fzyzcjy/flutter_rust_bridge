@@ -33,6 +33,7 @@ use paste::paste;
 #[enum_dispatch(WireRustGeneratorMiscTrait)]
 pub(crate) enum WireRustGenerator<'a> {
     Boxed(BoxedWireRustGenerator<'a>),
+    DartFn(DartFnWireRustGenerator<'a>),
     DartOpaque(DartOpaqueWireRustGenerator<'a>),
     Delegate(DelegateWireRustGenerator<'a>),
     Dynamic(DynamicWireRustGenerator<'a>),

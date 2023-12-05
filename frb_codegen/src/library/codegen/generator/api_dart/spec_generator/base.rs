@@ -27,6 +27,7 @@ use paste::paste;
 #[enum_dispatch(ApiDartGeneratorClassTrait)]
 pub(crate) enum ApiDartGenerator<'a> {
     Boxed(BoxedApiDartGenerator<'a>),
+    DartFn(DartFnApiDartGenerator<'a>),
     DartOpaque(DartOpaqueApiDartGenerator<'a>),
     Delegate(DelegateApiDartGenerator<'a>),
     Dynamic(DynamicApiDartGenerator<'a>),

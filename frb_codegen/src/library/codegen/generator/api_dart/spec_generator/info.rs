@@ -27,6 +27,12 @@ impl<'a> ApiDartGeneratorInfoTrait for BoxedApiDartGenerator<'a> {
     }
 }
 
+impl<'a> ApiDartGeneratorInfoTrait for DartFnApiDartGenerator<'a> {
+    fn dart_api_type(&self) -> String {
+        todo!()
+    }
+}
+
 impl<'a> ApiDartGeneratorInfoTrait for DartOpaqueApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         "Object".to_owned()

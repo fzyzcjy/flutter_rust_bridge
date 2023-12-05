@@ -36,6 +36,7 @@ use paste::paste;
 #[enum_dispatch(WireDartGeneratorRust2DartTrait)]
 pub(crate) enum WireDartGenerator<'a> {
     Boxed(BoxedWireDartGenerator<'a>),
+    DartFn(DartFnWireDartGenerator<'a>),
     DartOpaque(DartOpaqueWireDartGenerator<'a>),
     Delegate(DelegateWireDartGenerator<'a>),
     Dynamic(DynamicWireDartGenerator<'a>),
