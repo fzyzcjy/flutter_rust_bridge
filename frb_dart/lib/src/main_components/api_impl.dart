@@ -1,8 +1,8 @@
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 import 'package:flutter_rust_bridge/src/main_components/api.dart';
 import 'package:flutter_rust_bridge/src/main_components/handler.dart';
+import 'package:flutter_rust_bridge/src/main_components/port_manager.dart';
 import 'package:flutter_rust_bridge/src/main_components/wire.dart';
-import 'package:flutter_rust_bridge/src/opaque/dart_opaque.dart';
 import 'package:meta/meta.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
@@ -19,14 +19,14 @@ abstract class BaseApiImpl<W extends BaseWire> implements BaseApi {
   final GeneralizedFrbRustBinding generalizedFrbRustBinding;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  final DropPortManager dropPortManager;
+  final PortManager portManager;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   BaseApiImpl({
     BaseHandler? handler,
     required this.wire,
     required this.generalizedFrbRustBinding,
-    required this.dropPortManager,
+    required this.portManager,
   }) : handler = handler ?? BaseHandler();
 }
 
@@ -36,5 +36,5 @@ typedef ApiImplConstructor<A extends BaseApiImpl, W extends BaseWire> = A
   BaseHandler? handler,
   required W wire,
   required GeneralizedFrbRustBinding generalizedFrbRustBinding,
-  required DropPortManager dropPortManager,
+  required PortManager portManager,
 });
