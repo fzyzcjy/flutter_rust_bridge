@@ -17,6 +17,7 @@ use crate::thread_pool::BaseThreadPool;
 use std::future::Future;
 use std::panic;
 use std::panic::UnwindSafe;
+use std::sync::Mutex;
 
 /// The default handler used by the generated code.
 pub type DefaultHandler<TP> = SimpleHandler<
@@ -41,6 +42,12 @@ impl<TP: BaseThreadPool> DefaultHandler<TP> {
 pub struct SimpleHandler<E: Executor, EH: ErrorHandler> {
     executor: E,
     error_handler: EH,
+    config: Mutex<Option<SimpleHandlerConfig>>,
+}
+
+struct SimpleHandlerConfig {
+    dart_opaque_drop_port: MessagePort,
+    dart_fn_invoke_port: MessagePort,
 }
 
 impl<E: Executor, H: ErrorHandler> SimpleHandler<E, H> {
@@ -49,13 +56,17 @@ impl<E: Executor, H: ErrorHandler> SimpleHandler<E, H> {
         SimpleHandler {
             executor,
             error_handler,
+            config: Mutex::new(None),
         }
     }
 }
 
 impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
     fn initialize(&self, dart_opaque_drop_port: MessagePort, dart_fn_invoke_port: MessagePort) {
-        todo!()
+        *self.config.lock() = Some(SimpleHandlerConfig {
+            dart_opaque_drop_port,
+            dart_fn_invoke_port,
+        });
     }
 
     fn wrap_normal<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(
