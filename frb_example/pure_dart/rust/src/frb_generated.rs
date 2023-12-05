@@ -627,9 +627,8 @@ fn wire_rust_call_dart_simple_impl(
                 let dart_opaque: flutter_rust_bridge::DartOpaque = callback.wire2api();
 
                 move || {
-                    flutter_rust_bridge::for_generated::dart_fn_invoke(vec![dart_opaque
-                        .into_into_dart()
-                        .into_dart()])
+                    FLUTTER_RUST_BRIDGE_HANDLER
+                        .dart_fn_invoke(vec![dart_opaque.into_into_dart().into_dart()])
                 }
             };
             move |context| async move {

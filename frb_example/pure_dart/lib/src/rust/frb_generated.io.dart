@@ -2458,7 +2458,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   void _api_fill_to_wire_DartOpaque(Object apiObj, wire_DartOpaque wireObj) {
     wireObj.handle = generalizedFrbRustBinding.newDartOpaque(apiObj);
-    wireObj.port = portManager.dropPort;
+    wireObj.port = portManager.dartOpaqueDropPort;
   }
 
   void _api_fill_to_wire_a_twin_normal(
