@@ -254,31 +254,8 @@ abstract class RustLibApi extends BaseApi {
 
   Future<dynamic> returnDartDynamicTwinNormal({dynamic hint});
 
-  Future<void> rustCallDartLoopback(
-      {required DemoStructForRustCallDart Function(DemoStructForRustCallDart)
-          callback,
-      dynamic hint});
-
-  Future<void> rustCallDartOneArg(
-      {required void Function(String) callback, dynamic hint});
-
-  Future<void> rustCallDartReturn(
-      {required String Function() callback, dynamic hint});
-
   Future<void> rustCallDartSimple(
       {required void Function() callback, dynamic hint});
-
-  Future<void> rustCallDartTwoArgs(
-      {required void Function(String, DemoStructForRustCallDart) callback,
-      dynamic hint});
-
-  Future<void> rustCallDartWithDartOpaqueArg(
-      {required Object input,
-      required void Function(Object) callback,
-      dynamic hint});
-
-  Future<Object> rustCallDartWithDartOpaqueResult(
-      {required Object Function() callback, dynamic hint});
 
   Future<String> asyncAcceptDartOpaqueTwinNormal(
       {required Object opaque, dynamic hint});
@@ -3150,70 +3127,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> rustCallDartLoopback(
-      {required DemoStructForRustCallDart Function(DemoStructForRustCallDart)
-          callback,
-      dynamic hint}) {
-    var arg0 =
-        api2wire_DartFn_Inputs_demo_struct_for_rust_call_dart_Output_demo_struct_for_rust_call_dart(
-            callback);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_rust_call_dart_loopback(port_, arg0),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta: kRustCallDartLoopbackConstMeta,
-      argValues: [callback],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kRustCallDartLoopbackConstMeta => const TaskConstMeta(
-        debugName: "rust_call_dart_loopback",
-        argNames: ["callback"],
-      );
-
-  @override
-  Future<void> rustCallDartOneArg(
-      {required void Function(String) callback, dynamic hint}) {
-    var arg0 = api2wire_DartFn_Inputs_String_Output_unit(callback);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_rust_call_dart_one_arg(port_, arg0),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta: kRustCallDartOneArgConstMeta,
-      argValues: [callback],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kRustCallDartOneArgConstMeta => const TaskConstMeta(
-        debugName: "rust_call_dart_one_arg",
-        argNames: ["callback"],
-      );
-
-  @override
-  Future<void> rustCallDartReturn(
-      {required String Function() callback, dynamic hint}) {
-    var arg0 = api2wire_DartFn_Inputs__Output_String(callback);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_rust_call_dart_return(port_, arg0),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta: kRustCallDartReturnConstMeta,
-      argValues: [callback],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kRustCallDartReturnConstMeta => const TaskConstMeta(
-        debugName: "rust_call_dart_return",
-        argNames: ["callback"],
-      );
-
-  @override
   Future<void> rustCallDartSimple(
       {required void Function() callback, dynamic hint}) {
     var arg0 = api2wire_DartFn_Inputs__Output_unit(callback);
@@ -3230,76 +3143,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kRustCallDartSimpleConstMeta => const TaskConstMeta(
         debugName: "rust_call_dart_simple",
-        argNames: ["callback"],
-      );
-
-  @override
-  Future<void> rustCallDartTwoArgs(
-      {required void Function(String, DemoStructForRustCallDart) callback,
-      dynamic hint}) {
-    var arg0 =
-        api2wire_DartFn_Inputs_String_demo_struct_for_rust_call_dart_Output_unit(
-            callback);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_rust_call_dart_two_args(port_, arg0),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta: kRustCallDartTwoArgsConstMeta,
-      argValues: [callback],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kRustCallDartTwoArgsConstMeta => const TaskConstMeta(
-        debugName: "rust_call_dart_two_args",
-        argNames: ["callback"],
-      );
-
-  @override
-  Future<void> rustCallDartWithDartOpaqueArg(
-      {required Object input,
-      required void Function(Object) callback,
-      dynamic hint}) {
-    var arg0 = api2wire_DartOpaque(input);
-    var arg1 = api2wire_DartFn_Inputs_DartOpaque_Output_unit(callback);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_rust_call_dart_with_dart_opaque_arg(port_, arg0, arg1),
-      parseSuccessData: _wire2api_unit,
-      parseErrorData: null,
-      constMeta: kRustCallDartWithDartOpaqueArgConstMeta,
-      argValues: [input, callback],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kRustCallDartWithDartOpaqueArgConstMeta =>
-      const TaskConstMeta(
-        debugName: "rust_call_dart_with_dart_opaque_arg",
-        argNames: ["input", "callback"],
-      );
-
-  @override
-  Future<Object> rustCallDartWithDartOpaqueResult(
-      {required Object Function() callback, dynamic hint}) {
-    var arg0 = api2wire_DartFn_Inputs__Output_DartOpaque(callback);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_rust_call_dart_with_dart_opaque_result(port_, arg0),
-      parseSuccessData: _wire2api_DartOpaque,
-      parseErrorData: null,
-      constMeta: kRustCallDartWithDartOpaqueResultConstMeta,
-      argValues: [callback],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kRustCallDartWithDartOpaqueResultConstMeta =>
-      const TaskConstMeta(
-        debugName: "rust_call_dart_with_dart_opaque_result",
         argNames: ["callback"],
       );
 
@@ -22362,38 +22205,7 @@ PlatformPointer
   return raw.api2wire(move: false);
 }
 
-wire_DartOpaque api2wire_DartFn_Inputs_DartOpaque_Output_unit(
-    void Function(Object) raw) {
-  return api2wire_DartOpaque(raw);
-}
-
-wire_DartOpaque api2wire_DartFn_Inputs_String_Output_unit(
-    void Function(String) raw) {
-  return api2wire_DartOpaque(raw);
-}
-
-wire_DartOpaque
-    api2wire_DartFn_Inputs_String_demo_struct_for_rust_call_dart_Output_unit(
-        void Function(String, DemoStructForRustCallDart) raw) {
-  return api2wire_DartOpaque(raw);
-}
-
-wire_DartOpaque api2wire_DartFn_Inputs__Output_DartOpaque(
-    Object Function() raw) {
-  return api2wire_DartOpaque(raw);
-}
-
-wire_DartOpaque api2wire_DartFn_Inputs__Output_String(String Function() raw) {
-  return api2wire_DartOpaque(raw);
-}
-
 wire_DartOpaque api2wire_DartFn_Inputs__Output_unit(void Function() raw) {
-  return api2wire_DartOpaque(raw);
-}
-
-wire_DartOpaque
-    api2wire_DartFn_Inputs_demo_struct_for_rust_call_dart_Output_demo_struct_for_rust_call_dart(
-        DemoStructForRustCallDart Function(DemoStructForRustCallDart) raw) {
   return api2wire_DartOpaque(raw);
 }
 

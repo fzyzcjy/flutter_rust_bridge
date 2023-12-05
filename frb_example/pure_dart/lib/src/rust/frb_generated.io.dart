@@ -3735,12 +3735,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     wireObj.second = api2wire_DartOpaque(apiObj.second);
   }
 
-  void _api_fill_to_wire_demo_struct_for_rust_call_dart(
-      DemoStructForRustCallDart apiObj,
-      wire_demo_struct_for_rust_call_dart wireObj) {
-    wireObj.name = api2wire_String(apiObj.name);
-  }
-
   void _api_fill_to_wire_distance_twin_normal(
       DistanceTwinNormal apiObj, wire_distance_twin_normal wireObj) {
     if (apiObj is DistanceTwinNormal_Unknown) {
@@ -5577,54 +5571,6 @@ class RustLibWire implements BaseWire {
   late final _wire_return_dart_dynamic_twin_normal =
       _wire_return_dart_dynamic_twin_normalPtr.asFunction<void Function(int)>();
 
-  void wire_rust_call_dart_loopback(
-    int port_,
-    wire_DartOpaque callback,
-  ) {
-    return _wire_rust_call_dart_loopback(
-      port_,
-      callback,
-    );
-  }
-
-  late final _wire_rust_call_dart_loopbackPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_DartOpaque)>>(
-      'wire_rust_call_dart_loopback');
-  late final _wire_rust_call_dart_loopback = _wire_rust_call_dart_loopbackPtr
-      .asFunction<void Function(int, wire_DartOpaque)>();
-
-  void wire_rust_call_dart_one_arg(
-    int port_,
-    wire_DartOpaque callback,
-  ) {
-    return _wire_rust_call_dart_one_arg(
-      port_,
-      callback,
-    );
-  }
-
-  late final _wire_rust_call_dart_one_argPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_DartOpaque)>>(
-      'wire_rust_call_dart_one_arg');
-  late final _wire_rust_call_dart_one_arg = _wire_rust_call_dart_one_argPtr
-      .asFunction<void Function(int, wire_DartOpaque)>();
-
-  void wire_rust_call_dart_return(
-    int port_,
-    wire_DartOpaque callback,
-  ) {
-    return _wire_rust_call_dart_return(
-      port_,
-      callback,
-    );
-  }
-
-  late final _wire_rust_call_dart_returnPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_DartOpaque)>>(
-      'wire_rust_call_dart_return');
-  late final _wire_rust_call_dart_return = _wire_rust_call_dart_returnPtr
-      .asFunction<void Function(int, wire_DartOpaque)>();
-
   void wire_rust_call_dart_simple(
     int port_,
     wire_DartOpaque callback,
@@ -5640,59 +5586,6 @@ class RustLibWire implements BaseWire {
       'wire_rust_call_dart_simple');
   late final _wire_rust_call_dart_simple = _wire_rust_call_dart_simplePtr
       .asFunction<void Function(int, wire_DartOpaque)>();
-
-  void wire_rust_call_dart_two_args(
-    int port_,
-    wire_DartOpaque callback,
-  ) {
-    return _wire_rust_call_dart_two_args(
-      port_,
-      callback,
-    );
-  }
-
-  late final _wire_rust_call_dart_two_argsPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_DartOpaque)>>(
-      'wire_rust_call_dart_two_args');
-  late final _wire_rust_call_dart_two_args = _wire_rust_call_dart_two_argsPtr
-      .asFunction<void Function(int, wire_DartOpaque)>();
-
-  void wire_rust_call_dart_with_dart_opaque_arg(
-    int port_,
-    wire_DartOpaque input,
-    wire_DartOpaque callback,
-  ) {
-    return _wire_rust_call_dart_with_dart_opaque_arg(
-      port_,
-      input,
-      callback,
-    );
-  }
-
-  late final _wire_rust_call_dart_with_dart_opaque_argPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, wire_DartOpaque,
-              wire_DartOpaque)>>('wire_rust_call_dart_with_dart_opaque_arg');
-  late final _wire_rust_call_dart_with_dart_opaque_arg =
-      _wire_rust_call_dart_with_dart_opaque_argPtr
-          .asFunction<void Function(int, wire_DartOpaque, wire_DartOpaque)>();
-
-  void wire_rust_call_dart_with_dart_opaque_result(
-    int port_,
-    wire_DartOpaque callback,
-  ) {
-    return _wire_rust_call_dart_with_dart_opaque_result(
-      port_,
-      callback,
-    );
-  }
-
-  late final _wire_rust_call_dart_with_dart_opaque_resultPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_DartOpaque)>>(
-      'wire_rust_call_dart_with_dart_opaque_result');
-  late final _wire_rust_call_dart_with_dart_opaque_result =
-      _wire_rust_call_dart_with_dart_opaque_resultPtr
-          .asFunction<void Function(int, wire_DartOpaque)>();
 
   void wire_async_accept_dart_opaque_twin_normal(
     int port_,

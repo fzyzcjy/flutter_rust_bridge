@@ -2341,15 +2341,6 @@ impl Wire2Api<crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueNested
         }
     }
 }
-impl Wire2Api<crate::api::dart_fn::DemoStructForRustCallDart>
-    for wire_demo_struct_for_rust_call_dart
-{
-    fn wire2api(self) -> crate::api::dart_fn::DemoStructForRustCallDart {
-        crate::api::dart_fn::DemoStructForRustCallDart {
-            name: self.name.wire2api(),
-        }
-    }
-}
 impl Wire2Api<crate::api::enumeration::DistanceTwinNormal> for wire_distance_twin_normal {
     fn wire2api(self) -> crate::api::enumeration::DistanceTwinNormal {
         match self.tag {
@@ -4721,12 +4712,6 @@ pub struct wire_dart_opaque_nested_twin_sync {
     first: wire_DartOpaque,
     second: wire_DartOpaque,
 }
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_demo_struct_for_rust_call_dart {
-    name: *mut wire_list_prim_u_8,
-}
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_distance_twin_normal {
@@ -6877,18 +6862,6 @@ impl Default for wire_dart_opaque_nested_twin_sync {
         Self::new_with_null_ptr()
     }
 }
-impl NewWithNullPtr for wire_demo_struct_for_rust_call_dart {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            name: core::ptr::null_mut(),
-        }
-    }
-}
-impl Default for wire_demo_struct_for_rust_call_dart {
-    fn default() -> Self {
-        Self::new_with_null_ptr()
-    }
-}
 impl NewWithNullPtr for wire_distance_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -8454,45 +8427,8 @@ pub extern "C" fn wire_return_dart_dynamic_twin_normal(port_: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_call_dart_loopback(port_: i64, callback: wire_DartOpaque) {
-    wire_rust_call_dart_loopback_impl(port_, callback)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_rust_call_dart_one_arg(port_: i64, callback: wire_DartOpaque) {
-    wire_rust_call_dart_one_arg_impl(port_, callback)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_rust_call_dart_return(port_: i64, callback: wire_DartOpaque) {
-    wire_rust_call_dart_return_impl(port_, callback)
-}
-
-#[no_mangle]
 pub extern "C" fn wire_rust_call_dart_simple(port_: i64, callback: wire_DartOpaque) {
     wire_rust_call_dart_simple_impl(port_, callback)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_rust_call_dart_two_args(port_: i64, callback: wire_DartOpaque) {
-    wire_rust_call_dart_two_args_impl(port_, callback)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_rust_call_dart_with_dart_opaque_arg(
-    port_: i64,
-    input: wire_DartOpaque,
-    callback: wire_DartOpaque,
-) {
-    wire_rust_call_dart_with_dart_opaque_arg_impl(port_, input, callback)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_rust_call_dart_with_dart_opaque_result(
-    port_: i64,
-    callback: wire_DartOpaque,
-) {
-    wire_rust_call_dart_with_dart_opaque_result_impl(port_, callback)
 }
 
 #[no_mangle]

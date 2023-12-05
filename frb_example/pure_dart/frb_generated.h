@@ -1647,21 +1647,7 @@ void wire_function_with_comments_triple_slash_single_line_twin_normal(int64_t po
 
 void wire_return_dart_dynamic_twin_normal(int64_t port_);
 
-void wire_rust_call_dart_loopback(int64_t port_, struct wire_DartOpaque callback);
-
-void wire_rust_call_dart_one_arg(int64_t port_, struct wire_DartOpaque callback);
-
-void wire_rust_call_dart_return(int64_t port_, struct wire_DartOpaque callback);
-
 void wire_rust_call_dart_simple(int64_t port_, struct wire_DartOpaque callback);
-
-void wire_rust_call_dart_two_args(int64_t port_, struct wire_DartOpaque callback);
-
-void wire_rust_call_dart_with_dart_opaque_arg(int64_t port_,
-                                              struct wire_DartOpaque input,
-                                              struct wire_DartOpaque callback);
-
-void wire_rust_call_dart_with_dart_opaque_result(int64_t port_, struct wire_DartOpaque callback);
 
 void wire_async_accept_dart_opaque_twin_normal(int64_t port_, struct wire_DartOpaque opaque);
 
@@ -4960,13 +4946,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_trait_object_return_own_two_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_two_args_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_rust_auto_opaque_two_args_twin_sync);
-    dummy_var ^= ((int64_t) (void*) wire_rust_call_dart_loopback);
-    dummy_var ^= ((int64_t) (void*) wire_rust_call_dart_one_arg);
-    dummy_var ^= ((int64_t) (void*) wire_rust_call_dart_return);
     dummy_var ^= ((int64_t) (void*) wire_rust_call_dart_simple);
-    dummy_var ^= ((int64_t) (void*) wire_rust_call_dart_two_args);
-    dummy_var ^= ((int64_t) (void*) wire_rust_call_dart_with_dart_opaque_arg);
-    dummy_var ^= ((int64_t) (void*) wire_rust_call_dart_with_dart_opaque_result);
     dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_set_static_dart_opaque_twin_sync);

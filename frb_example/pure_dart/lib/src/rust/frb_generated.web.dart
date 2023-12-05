@@ -1628,12 +1628,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> api2wire_demo_struct_for_rust_call_dart(
-      DemoStructForRustCallDart raw) {
-    return [api2wire_String(raw.name)];
-  }
-
-  @protected
   List<dynamic> api2wire_distance_twin_normal(DistanceTwinNormal raw) {
     if (raw is DistanceTwinNormal_Unknown) {
       return [0];
@@ -3272,29 +3266,8 @@ class RustLibWire extends BaseWire {
   void wire_return_dart_dynamic_twin_normal(NativePortType port_) =>
       wasmModule.wire_return_dart_dynamic_twin_normal(port_);
 
-  void wire_rust_call_dart_loopback(NativePortType port_, Object callback) =>
-      wasmModule.wire_rust_call_dart_loopback(port_, callback);
-
-  void wire_rust_call_dart_one_arg(NativePortType port_, Object callback) =>
-      wasmModule.wire_rust_call_dart_one_arg(port_, callback);
-
-  void wire_rust_call_dart_return(NativePortType port_, Object callback) =>
-      wasmModule.wire_rust_call_dart_return(port_, callback);
-
   void wire_rust_call_dart_simple(NativePortType port_, Object callback) =>
       wasmModule.wire_rust_call_dart_simple(port_, callback);
-
-  void wire_rust_call_dart_two_args(NativePortType port_, Object callback) =>
-      wasmModule.wire_rust_call_dart_two_args(port_, callback);
-
-  void wire_rust_call_dart_with_dart_opaque_arg(
-          NativePortType port_, Object input, Object callback) =>
-      wasmModule.wire_rust_call_dart_with_dart_opaque_arg(
-          port_, input, callback);
-
-  void wire_rust_call_dart_with_dart_opaque_result(
-          NativePortType port_, Object callback) =>
-      wasmModule.wire_rust_call_dart_with_dart_opaque_result(port_, callback);
 
   void wire_async_accept_dart_opaque_twin_normal(
           NativePortType port_, Object opaque) =>
@@ -6515,25 +6488,7 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_return_dart_dynamic_twin_normal(NativePortType port_);
 
-  external void wire_rust_call_dart_loopback(
-      NativePortType port_, Object callback);
-
-  external void wire_rust_call_dart_one_arg(
-      NativePortType port_, Object callback);
-
-  external void wire_rust_call_dart_return(
-      NativePortType port_, Object callback);
-
   external void wire_rust_call_dart_simple(
-      NativePortType port_, Object callback);
-
-  external void wire_rust_call_dart_two_args(
-      NativePortType port_, Object callback);
-
-  external void wire_rust_call_dart_with_dart_opaque_arg(
-      NativePortType port_, Object input, Object callback);
-
-  external void wire_rust_call_dart_with_dart_opaque_result(
       NativePortType port_, Object callback);
 
   external void wire_async_accept_dart_opaque_twin_normal(
