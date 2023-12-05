@@ -18402,7 +18402,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   Object _wire2api_DartOpaque(dynamic raw) {
-    return generalizedFrbRustBinding.getDartObject(raw);
+    return wire2apiDartOpaque(raw, generalizedFrbRustBinding);
   }
 
   ObjectArray1 _wire2api_DartOpaque_array_1(dynamic raw) {

@@ -3,6 +3,6 @@ use crate::codegen::generator::wire::dart::spec_generator::rust2dart::ty::WireDa
 
 impl<'a> WireDartGeneratorRust2DartTrait for DartOpaqueWireDartGenerator<'a> {
     fn generate_impl_wire2api_body(&self) -> String {
-        "return generalizedFrbRustBinding.getDartObject(raw);".into()
+        "return wire2apiDartOpaque(raw, generalizedFrbRustBinding);".into()
     }
 }
