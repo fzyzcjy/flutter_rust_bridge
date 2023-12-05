@@ -1,3 +1,4 @@
+use crate::platform_types::DartAbi;
 use std::ops::Deref;
 
 pub struct DartFn<F> {
@@ -17,4 +18,8 @@ impl<F> Deref for DartFn<F> {
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
+}
+
+pub fn dart_fn_invoke(closure_and_args: Vec<DartAbi>) {
+    todo!()
 }
