@@ -15,7 +15,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     super.handler,
     required super.wire,
     required super.generalizedFrbRustBinding,
-    required super.dropPortManager,
+    required super.portManager,
   });
 }
 
@@ -45,6 +45,22 @@ class RustLibWire implements BaseWire {
       ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName)
           lookup)
       : _lookup = lookup;
+
+  void frb_initialize_rust(
+    int dart_opaque_drop_port,
+    int dart_fn_invoke_port,
+  ) {
+    return _frb_initialize_rust(
+      dart_opaque_drop_port,
+      dart_fn_invoke_port,
+    );
+  }
+
+  late final _frb_initialize_rustPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int, ffi.Int)>>(
+          'frb_initialize_rust');
+  late final _frb_initialize_rust =
+      _frb_initialize_rustPtr.asFunction<void Function(int, int)>();
 
   void wire_minimal_adder(
     int port_,

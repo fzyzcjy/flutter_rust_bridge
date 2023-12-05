@@ -14,15 +14,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     super.handler,
     required super.wire,
     required super.generalizedFrbRustBinding,
-    required super.dropPortManager,
+    required super.portManager,
   });
 }
 
 // Section: wire_class
 
 class RustLibWire extends BaseWire {
-  // TODO
-  // : super(WasmModule.cast<RustLibWasmModule>(lib.wasmModule));
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
   void wire_minimal_adder(NativePortType port_, int a, int b) =>

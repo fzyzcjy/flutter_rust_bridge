@@ -19,6 +19,14 @@ impl<T> NewWithNullPtr for *mut T {
 }
 
 #[no_mangle]
+pub extern "C" fn frb_initialize_rust(
+    dart_opaque_drop_port: flutter_rust_bridge::for_generated::MessagePort,
+    dart_fn_invoke_port: flutter_rust_bridge::for_generated::MessagePort,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.initialize(dart_opaque_drop_port, dart_fn_invoke_port)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_minimal_adder(port_: i64, a: i32, b: i32) {
     wire_minimal_adder_impl(port_, a, b)
 }
