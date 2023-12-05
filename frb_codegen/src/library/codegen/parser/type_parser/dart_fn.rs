@@ -29,7 +29,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             let inputs = (bare_fn.inputs.iter())
                 .map(|x| self.parse_type(&x.ty))
                 .collect::<anyhow::Result<Vec<_>>>()?;
-            let output = self.parse_return_type(&bare_fn.output)?;
+            let output = Box::new(self.parse_return_type(&bare_fn.output)?);
             return Ok(Some(IrType::DartFn(IrTypeDartFn { inputs, output })));
         }
 

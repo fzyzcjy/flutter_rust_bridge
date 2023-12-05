@@ -8,7 +8,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_return_type(&mut self, ty: &ReturnType) -> anyhow::Result<IrType> {
         match &ty {
             ReturnType::Default => Ok(Primitive(IrTypePrimitive::Unit)),
-            ReturnType::Type(_, ret_ty) => self.parse_type(ret_ty)?,
+            ReturnType::Type(_, ret_ty) => self.parse_type(ret_ty),
         }
     }
 }

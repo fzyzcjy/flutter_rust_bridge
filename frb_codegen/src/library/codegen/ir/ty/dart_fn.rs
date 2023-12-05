@@ -5,7 +5,7 @@ use itertools::Itertools;
 crate::ir! {
 pub struct IrTypeDartFn {
     pub inputs: Vec<IrType>,
-    pub output: IrType,
+    pub output: Box<IrType>,
 }
 }
 

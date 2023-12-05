@@ -12,6 +12,6 @@ use crate::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireRustGeneratorDart2RustTrait for DartFnWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
-        "todo_rust_wire_type"
+        "todo_rust_wire_type".into()
     }
 }
