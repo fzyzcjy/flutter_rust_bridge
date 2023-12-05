@@ -6,8 +6,8 @@ use crate::codegen::generator::wire::dart::spec_generator::dart2rust::ty::WireDa
 impl<'a> WireDartGeneratorDart2RustTrait for DartFnWireDartGenerator<'a> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         Acc {
-            io: Some("todo_api2wire_body".into()),
-            wasm: Some("todo_api2wire_body".into()),
+            io: Some("todo_api2wire_body;".into()),
+            wasm: Some("todo_api2wire_body;".into()),
             ..Default::default()
         }
     }
