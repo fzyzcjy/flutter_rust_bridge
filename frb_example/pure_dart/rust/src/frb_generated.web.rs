@@ -4,6 +4,7 @@
 // Section: imports
 
 use super::*;
+use crate::api::dart_fn::*;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_sync::*;
 use crate::api::pseudo_manual::rust_opaque_twin_rust_async::*;
 use crate::api::pseudo_manual::rust_opaque_twin_sync::*;
@@ -3488,6 +3489,13 @@ impl
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
+impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<TODO_rust_api_type>>>
+    for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+{
+    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<TODO_rust_api_type>> {
+        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
+    }
+}
 impl Wire2Api<String> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn wire2api(self) -> String {
         self.as_string().expect("non-UTF-8 string, or not a string")
@@ -4220,6 +4228,63 @@ pub fn wire_return_dart_dynamic_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     wire_return_dart_dynamic_twin_normal_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_loopback(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_loopback_impl(port_, callback)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_one_arg(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_one_arg_impl(port_, callback)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_return(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_return_impl(port_, callback)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_simple(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_simple_impl(port_, callback)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_two_args(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_two_args_impl(port_, callback)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_with_dart_opaque_arg(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    input: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_with_dart_opaque_arg_impl(port_, input, callback)
+}
+
+#[wasm_bindgen]
+pub fn wire_rust_call_dart_with_dart_opaque_result(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_rust_call_dart_with_dart_opaque_result_impl(port_, callback)
 }
 
 #[wasm_bindgen]
@@ -9808,6 +9873,28 @@ pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAnd
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
             std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinSync>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            std::sync::RwLock<TODO_rust_api_type>,
+        >(ptr);
+    }
+}
+
+#[wasm_bindgen]
+pub fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            std::sync::RwLock<TODO_rust_api_type>,
         >(ptr);
     }
 }

@@ -10,6 +10,7 @@ import 'api/benchmark_api.dart';
 import 'api/chrono_type.dart';
 import 'api/comment.dart';
 import 'api/dart_dynamic.dart';
+import 'api/dart_fn.dart';
 import 'api/dart_opaque.dart';
 import 'api/dart_opaque_sync.dart';
 import 'api/enumeration.dart';
@@ -252,6 +253,29 @@ abstract class RustLibApi extends BaseApi {
       {dynamic hint});
 
   Future<dynamic> returnDartDynamicTwinNormal({dynamic hint});
+
+  Future<void> rustCallDartLoopback(
+      {required RwLockTodoRustApiType callback, dynamic hint});
+
+  Future<void> rustCallDartOneArg(
+      {required RwLockTodoRustApiType callback, dynamic hint});
+
+  Future<void> rustCallDartReturn(
+      {required RwLockTodoRustApiType callback, dynamic hint});
+
+  Future<void> rustCallDartSimple(
+      {required RwLockTodoRustApiType callback, dynamic hint});
+
+  Future<void> rustCallDartTwoArgs(
+      {required RwLockTodoRustApiType callback, dynamic hint});
+
+  Future<void> rustCallDartWithDartOpaqueArg(
+      {required Object input,
+      required RwLockTodoRustApiType callback,
+      dynamic hint});
+
+  Future<Object> rustCallDartWithDartOpaqueResult(
+      {required RwLockTodoRustApiType callback, dynamic hint});
 
   Future<String> asyncAcceptDartOpaqueTwinNormal(
       {required Object opaque, dynamic hint});
@@ -2408,6 +2432,15 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSyncPtr;
+
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockTodoRustApiType;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockTodoRustApiType;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockTodoRustApiTypePtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -3120,6 +3153,160 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(
         debugName: "return_dart_dynamic_twin_normal",
         argNames: [],
+      );
+
+  @override
+  Future<void> rustCallDartLoopback(
+      {required RwLockTodoRustApiType callback, dynamic hint}) {
+    var arg0 = api2wire_Auto_Owned_RustOpaque_stdsyncRwLockTODO_rust_api_type(
+        callback);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_rust_call_dart_loopback(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustCallDartLoopbackConstMeta,
+      argValues: [callback],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustCallDartLoopbackConstMeta => const TaskConstMeta(
+        debugName: "rust_call_dart_loopback",
+        argNames: ["callback"],
+      );
+
+  @override
+  Future<void> rustCallDartOneArg(
+      {required RwLockTodoRustApiType callback, dynamic hint}) {
+    var arg0 = api2wire_Auto_Owned_RustOpaque_stdsyncRwLockTODO_rust_api_type(
+        callback);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_rust_call_dart_one_arg(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustCallDartOneArgConstMeta,
+      argValues: [callback],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustCallDartOneArgConstMeta => const TaskConstMeta(
+        debugName: "rust_call_dart_one_arg",
+        argNames: ["callback"],
+      );
+
+  @override
+  Future<void> rustCallDartReturn(
+      {required RwLockTodoRustApiType callback, dynamic hint}) {
+    var arg0 = api2wire_Auto_Owned_RustOpaque_stdsyncRwLockTODO_rust_api_type(
+        callback);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_rust_call_dart_return(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustCallDartReturnConstMeta,
+      argValues: [callback],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustCallDartReturnConstMeta => const TaskConstMeta(
+        debugName: "rust_call_dart_return",
+        argNames: ["callback"],
+      );
+
+  @override
+  Future<void> rustCallDartSimple(
+      {required RwLockTodoRustApiType callback, dynamic hint}) {
+    var arg0 = api2wire_Auto_Owned_RustOpaque_stdsyncRwLockTODO_rust_api_type(
+        callback);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_rust_call_dart_simple(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustCallDartSimpleConstMeta,
+      argValues: [callback],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustCallDartSimpleConstMeta => const TaskConstMeta(
+        debugName: "rust_call_dart_simple",
+        argNames: ["callback"],
+      );
+
+  @override
+  Future<void> rustCallDartTwoArgs(
+      {required RwLockTodoRustApiType callback, dynamic hint}) {
+    var arg0 = api2wire_Auto_Owned_RustOpaque_stdsyncRwLockTODO_rust_api_type(
+        callback);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_rust_call_dart_two_args(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustCallDartTwoArgsConstMeta,
+      argValues: [callback],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustCallDartTwoArgsConstMeta => const TaskConstMeta(
+        debugName: "rust_call_dart_two_args",
+        argNames: ["callback"],
+      );
+
+  @override
+  Future<void> rustCallDartWithDartOpaqueArg(
+      {required Object input,
+      required RwLockTodoRustApiType callback,
+      dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(input);
+    var arg1 = api2wire_Auto_Owned_RustOpaque_stdsyncRwLockTODO_rust_api_type(
+        callback);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_rust_call_dart_with_dart_opaque_arg(port_, arg0, arg1),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kRustCallDartWithDartOpaqueArgConstMeta,
+      argValues: [input, callback],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustCallDartWithDartOpaqueArgConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_call_dart_with_dart_opaque_arg",
+        argNames: ["input", "callback"],
+      );
+
+  @override
+  Future<Object> rustCallDartWithDartOpaqueResult(
+      {required RwLockTodoRustApiType callback, dynamic hint}) {
+    var arg0 = api2wire_Auto_Owned_RustOpaque_stdsyncRwLockTODO_rust_api_type(
+        callback);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_rust_call_dart_with_dart_opaque_result(port_, arg0),
+      parseSuccessData: _wire2api_DartOpaque,
+      parseErrorData: null,
+      constMeta: kRustCallDartWithDartOpaqueResultConstMeta,
+      argValues: [callback],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRustCallDartWithDartOpaqueResultConstMeta =>
+      const TaskConstMeta(
+        debugName: "rust_call_dart_with_dart_opaque_result",
+        argNames: ["callback"],
       );
 
   @override
@@ -18295,6 +18482,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSync =>
           wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync;
 
+  RustArcIncrementStrongCountFnType
+      get rust_arc_increment_strong_count_RwLockTodoRustApiType => wire
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type;
+
+  RustArcDecrementStrongCountFnType
+      get rust_arc_decrement_strong_count_RwLockTodoRustApiType => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type;
+
   AnyhowException _wire2api_AnyhowException(dynamic raw) {
     return AnyhowException(raw as String);
   }
@@ -22097,6 +22292,12 @@ PlatformPointer
   return raw.api2wire(move: true);
 }
 
+PlatformPointer api2wire_Auto_Owned_RustOpaque_stdsyncRwLockTODO_rust_api_type(
+    RwLockTodoRustApiType raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.api2wire(move: true);
+}
+
 PlatformPointer
     api2wire_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
         RwLockBoxHelloTraitTwinNormal raw) {
@@ -22283,6 +22484,12 @@ PlatformPointer
 PlatformPointer
     api2wire_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
         RwLockStructWithGoodAndOpaqueFieldTwinSync raw) {
+  // ignore: invalid_use_of_internal_member
+  return raw.api2wire();
+}
+
+PlatformPointer api2wire_RustOpaque_stdsyncRwLockTODO_rust_api_type(
+    RwLockTodoRustApiType raw) {
   // ignore: invalid_use_of_internal_member
   return raw.api2wire();
 }

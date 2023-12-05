@@ -10,6 +10,7 @@ import 'api/benchmark_api.dart';
 import 'api/chrono_type.dart';
 import 'api/comment.dart';
 import 'api/dart_dynamic.dart';
+import 'api/dart_fn.dart';
 import 'api/dart_opaque.dart';
 import 'api/dart_opaque_sync.dart';
 import 'api/enumeration.dart';
@@ -197,6 +198,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSyncPtr =>
           wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockTodoRustApiTypePtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type;
 
   @protected
   Object api2wire_Chrono_Duration(Duration raw) {
@@ -3139,8 +3144,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 // Section: wire_class
 
 class RustLibWire extends BaseWire {
-  // TODO
-  // : super(WasmModule.cast<RustLibWasmModule>(lib.wasmModule));
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
   void wire_boxed_blob_twin_normal(NativePortType port_, Uint8List blob) =>
@@ -3266,6 +3269,30 @@ class RustLibWire extends BaseWire {
 
   void wire_return_dart_dynamic_twin_normal(NativePortType port_) =>
       wasmModule.wire_return_dart_dynamic_twin_normal(port_);
+
+  void wire_rust_call_dart_loopback(NativePortType port_, Object callback) =>
+      wasmModule.wire_rust_call_dart_loopback(port_, callback);
+
+  void wire_rust_call_dart_one_arg(NativePortType port_, Object callback) =>
+      wasmModule.wire_rust_call_dart_one_arg(port_, callback);
+
+  void wire_rust_call_dart_return(NativePortType port_, Object callback) =>
+      wasmModule.wire_rust_call_dart_return(port_, callback);
+
+  void wire_rust_call_dart_simple(NativePortType port_, Object callback) =>
+      wasmModule.wire_rust_call_dart_simple(port_, callback);
+
+  void wire_rust_call_dart_two_args(NativePortType port_, Object callback) =>
+      wasmModule.wire_rust_call_dart_two_args(port_, callback);
+
+  void wire_rust_call_dart_with_dart_opaque_arg(
+          NativePortType port_, Object input, Object callback) =>
+      wasmModule.wire_rust_call_dart_with_dart_opaque_arg(
+          port_, input, callback);
+
+  void wire_rust_call_dart_with_dart_opaque_result(
+          NativePortType port_, Object callback) =>
+      wasmModule.wire_rust_call_dart_with_dart_opaque_result(port_, callback);
 
   void wire_async_accept_dart_opaque_twin_normal(
           NativePortType port_, Object opaque) =>
@@ -6382,6 +6409,18 @@ class RustLibWire extends BaseWire {
       wasmModule
           .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
               ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type(
+          dynamic ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type(
+              ptr);
 }
 
 @JS('wasm_bindgen')
@@ -6485,6 +6524,27 @@ class RustLibWasmModule implements WasmModule {
           NativePortType port_);
 
   external void wire_return_dart_dynamic_twin_normal(NativePortType port_);
+
+  external void wire_rust_call_dart_loopback(
+      NativePortType port_, Object callback);
+
+  external void wire_rust_call_dart_one_arg(
+      NativePortType port_, Object callback);
+
+  external void wire_rust_call_dart_return(
+      NativePortType port_, Object callback);
+
+  external void wire_rust_call_dart_simple(
+      NativePortType port_, Object callback);
+
+  external void wire_rust_call_dart_two_args(
+      NativePortType port_, Object callback);
+
+  external void wire_rust_call_dart_with_dart_opaque_arg(
+      NativePortType port_, Object input, Object callback);
+
+  external void wire_rust_call_dart_with_dart_opaque_result(
+      NativePortType port_, Object callback);
 
   external void wire_async_accept_dart_opaque_twin_normal(
       NativePortType port_, Object opaque);
@@ -8742,5 +8802,13 @@ class RustLibWasmModule implements WasmModule {
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+          dynamic ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type(
+          dynamic ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type(
           dynamic ptr);
 }

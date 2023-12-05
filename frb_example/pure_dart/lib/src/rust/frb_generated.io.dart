@@ -10,6 +10,7 @@ import 'api/benchmark_api.dart';
 import 'api/chrono_type.dart';
 import 'api/comment.dart';
 import 'api/dart_dynamic.dart';
+import 'api/dart_fn.dart';
 import 'api/dart_opaque.dart';
 import 'api/dart_opaque_sync.dart';
 import 'api/enumeration.dart';
@@ -198,6 +199,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSyncPtr =>
           wire._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncPtr;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RwLockTodoRustApiTypePtr => wire
+          ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_typePtr;
 
   @protected
   int api2wire_Chrono_Duration(Duration raw) {
@@ -5569,6 +5574,130 @@ class RustLibWire implements BaseWire {
           'wire_return_dart_dynamic_twin_normal');
   late final _wire_return_dart_dynamic_twin_normal =
       _wire_return_dart_dynamic_twin_normalPtr.asFunction<void Function(int)>();
+
+  void wire_rust_call_dart_loopback(
+    int port_,
+    ffi.Pointer<ffi.Void> callback,
+  ) {
+    return _wire_rust_call_dart_loopback(
+      port_,
+      callback,
+    );
+  }
+
+  late final _wire_rust_call_dart_loopbackPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_rust_call_dart_loopback');
+  late final _wire_rust_call_dart_loopback = _wire_rust_call_dart_loopbackPtr
+      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_rust_call_dart_one_arg(
+    int port_,
+    ffi.Pointer<ffi.Void> callback,
+  ) {
+    return _wire_rust_call_dart_one_arg(
+      port_,
+      callback,
+    );
+  }
+
+  late final _wire_rust_call_dart_one_argPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_rust_call_dart_one_arg');
+  late final _wire_rust_call_dart_one_arg = _wire_rust_call_dart_one_argPtr
+      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_rust_call_dart_return(
+    int port_,
+    ffi.Pointer<ffi.Void> callback,
+  ) {
+    return _wire_rust_call_dart_return(
+      port_,
+      callback,
+    );
+  }
+
+  late final _wire_rust_call_dart_returnPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_rust_call_dart_return');
+  late final _wire_rust_call_dart_return = _wire_rust_call_dart_returnPtr
+      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_rust_call_dart_simple(
+    int port_,
+    ffi.Pointer<ffi.Void> callback,
+  ) {
+    return _wire_rust_call_dart_simple(
+      port_,
+      callback,
+    );
+  }
+
+  late final _wire_rust_call_dart_simplePtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_rust_call_dart_simple');
+  late final _wire_rust_call_dart_simple = _wire_rust_call_dart_simplePtr
+      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_rust_call_dart_two_args(
+    int port_,
+    ffi.Pointer<ffi.Void> callback,
+  ) {
+    return _wire_rust_call_dart_two_args(
+      port_,
+      callback,
+    );
+  }
+
+  late final _wire_rust_call_dart_two_argsPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_rust_call_dart_two_args');
+  late final _wire_rust_call_dart_two_args = _wire_rust_call_dart_two_argsPtr
+      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_rust_call_dart_with_dart_opaque_arg(
+    int port_,
+    wire_DartOpaque input,
+    ffi.Pointer<ffi.Void> callback,
+  ) {
+    return _wire_rust_call_dart_with_dart_opaque_arg(
+      port_,
+      input,
+      callback,
+    );
+  }
+
+  late final _wire_rust_call_dart_with_dart_opaque_argPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, wire_DartOpaque, ffi.Pointer<ffi.Void>)>>(
+      'wire_rust_call_dart_with_dart_opaque_arg');
+  late final _wire_rust_call_dart_with_dart_opaque_arg =
+      _wire_rust_call_dart_with_dart_opaque_argPtr.asFunction<
+          void Function(int, wire_DartOpaque, ffi.Pointer<ffi.Void>)>();
+
+  void wire_rust_call_dart_with_dart_opaque_result(
+    int port_,
+    ffi.Pointer<ffi.Void> callback,
+  ) {
+    return _wire_rust_call_dart_with_dart_opaque_result(
+      port_,
+      callback,
+    );
+  }
+
+  late final _wire_rust_call_dart_with_dart_opaque_resultPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_rust_call_dart_with_dart_opaque_result');
+  late final _wire_rust_call_dart_with_dart_opaque_result =
+      _wire_rust_call_dart_with_dart_opaque_resultPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
   void wire_async_accept_dart_opaque_twin_normal(
     int port_,
@@ -20892,6 +21021,38 @@ class RustLibWire implements BaseWire {
           'rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync');
   late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync =
       _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncPtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_typePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type');
+  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type =
+      _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_typePtr
+          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  void
+      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type(
+      ptr,
+    );
+  }
+
+  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_typePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type');
+  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type =
+      _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_typePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   ffi.Pointer<AbcTwinNormalKind> inflate_AbcTwinNormal_A() {
