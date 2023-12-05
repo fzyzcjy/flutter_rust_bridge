@@ -141,12 +141,12 @@ fn generate_boilerplate() -> Acc<Vec<WireRustOutputCode>> {
                 ExternFuncParam {
                     name: "dart_opaque_drop_port".to_owned(),
                     rust_type: "flutter_rust_bridge::for_generated::MessagePort".to_owned(),
-                    dart_type: "TODO_darttype".to_owned(),
+                    dart_type: "NativePortType".to_owned(),
                 },
                 ExternFuncParam {
                     name: "dart_fn_invoke_port".to_owned(),
                     rust_type: "flutter_rust_bridge::for_generated::MessagePort".to_owned(),
-                    dart_type: "TODO_darttype".to_owned(),
+                    dart_type: "NativePortType".to_owned(),
                 },
             ],
             return_type: None,
