@@ -115,7 +115,7 @@ import 'package:uuid/uuid.dart';
 
 abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   RustLibApiImplPlatform({
-    super.handler,
+    required super.handler,
     required super.wire,
     required super.generalizedFrbRustBinding,
     required super.portManager,
@@ -3141,6 +3141,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
 class RustLibWire extends BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
+
+  void frb_initialize_rust(
+    NativePortType dart_opaque_drop_port,
+    NativePortType dart_fn_invoke_port,
+  ) =>
+      wasmModule.frb_initialize_rust(
+        dart_opaque_drop_port,
+        dart_fn_invoke_port,
+      );
 
   void wire_boxed_blob_twin_normal(NativePortType port_, Uint8List blob) =>
       wasmModule.wire_boxed_blob_twin_normal(port_, blob);
@@ -6397,6 +6406,11 @@ class RustLibWasmModule implements WasmModule {
 
   @override
   external RustLibWasmModule bind(dynamic thisArg, String moduleName);
+
+  external void frb_initialize_rust(
+    NativePortType dart_opaque_drop_port,
+    NativePortType dart_fn_invoke_port,
+  );
 
   external void wire_boxed_blob_twin_normal(
       NativePortType port_, Uint8List blob);

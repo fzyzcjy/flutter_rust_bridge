@@ -116,7 +116,7 @@ import 'package:uuid/uuid.dart';
 
 abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   RustLibApiImplPlatform({
-    super.handler,
+    required super.handler,
     required super.wire,
     required super.generalizedFrbRustBinding,
     required super.portManager,

@@ -2416,7 +2416,7 @@ abstract class RustLibApi extends BaseApi {
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RustLibApiImpl({
-    super.handler,
+    required super.handler,
     required super.wire,
     required super.generalizedFrbRustBinding,
     required super.portManager,
