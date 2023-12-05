@@ -9,10 +9,22 @@ use crate::codegen::generator::wire::rust::spec_generator::dart2rust::ty::WireRu
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::ir::ty::IrTypeTrait;
+use itertools::Itertools;
 
 impl<'a> WireRustGeneratorDart2RustTrait for DartFnWireRustGenerator<'a> {
     fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
-        Acc::new_common(Some("TODO_impl_wire2api_body".into()))
+        let closure_args = (0..self.ir.inputs.len())
+            .map(|i| format!("arg{i}"))
+            .join(", ");
+
+        Acc::new_common(Some(format!(
+            "
+            let dart_opaque: flutter_rust_bridge::DartOpaque = self.wire2api();
+            flutter_rust_bridge::DartFn::new(|{closure_args}| move {{
+                flutter_rust_bridge::for_generated::dart_fn_invoke(vec![dart_opaque, {closure_args}])
+            }})
+            "
+        )))
     }
 
     fn rust_wire_type(&self, target: Target) -> String {
