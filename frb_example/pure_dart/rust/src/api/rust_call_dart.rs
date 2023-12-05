@@ -1,5 +1,6 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync"]}
 
+use flutter_rust_bridge::DartOpaque;
 use futures::future::BoxFuture;
 use std::future::Future;
 
@@ -53,4 +54,17 @@ pub async fn rust_call_dart_loopback(
 ) {
     let result = callback(DemoStructForRustCallDart { name: "a".into() }).await;
     assert_eq!(&result.name, "a");
+}
+
+pub async fn rust_call_dart_with_dart_opaque_arg(
+    input: DartOpaque,
+    callback: DartFn<fn(DartOpaque) -> BoxFuture<()>>,
+) {
+    callback(input).await
+}
+
+pub async fn rust_call_dart_with_dart_opaque_result(
+    callback: DartFn<fn() -> BoxFuture<DartOpaque>>,
+) -> DartOpaque {
+    callback().await
 }
