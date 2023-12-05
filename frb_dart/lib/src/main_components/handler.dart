@@ -57,9 +57,9 @@ class BaseHandler {
 
   /// When Rust invokes a Dart function
   Future<void> dartFnInvoke(List<dynamic> message) async {
-    final [closure, ...args] = message;
-    final output = await Future.value(closure(TODO));
-    TODO_call_rust;
+    final [closure, argsList] = message;
+    final output = await Future.value((closure as Function(dynamic))(argsList));
+    throw Exception("call rust");
   }
 }
 
