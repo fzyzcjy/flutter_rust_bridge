@@ -33,7 +33,11 @@ impl IrTypeTrait for IrTypeDartFn {
     }
 
     fn rust_api_type(&self) -> String {
-        "TODO_rust_api_type".into()
+        format!(
+            "flutter_rust_bridge::DartFn<fn({}) -> BoxFuture<'static, {}>>",
+            self.inputs.iter().map(|x| x.rust_api_type()).join(", "),
+            self.output.rust_api_type()
+        )
     }
 }
 
