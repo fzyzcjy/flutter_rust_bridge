@@ -18,6 +18,7 @@ pub use crate::thread_pool::{BaseThreadPool, SimpleThreadPool};
 #[cfg(wasm)]
 pub use crate::web_transfer::transfer_closure::TransferClosure;
 pub use cast::*;
+pub use futures;
 #[cfg(wasm)]
 pub use js_sys;
 pub use lazy_static::lazy_static;
