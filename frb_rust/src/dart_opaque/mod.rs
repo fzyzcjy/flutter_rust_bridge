@@ -85,15 +85,12 @@ impl Drop for DartOpaque {
     fn drop(&mut self) {
         if let Some(inner) = self.handle.take() {
             if std::thread::current().id() != self.thread_id {
-                if let Some(channel) = inner.channel() {
-                    let ptr = inner.into_raw();
+                let channel = inner.channel();
+                let ptr = inner.into_raw();
 
-                    if !channel.post(ptr) {
-                        warn!("Drop DartOpaque after closing the port.");
-                    };
-                } else {
-                    warn!("Drop non droppable DartOpaque.");
-                }
+                if !channel.post(ptr) {
+                    warn!("Drop DartOpaque after closing the port.");
+                };
             }
         }
     }
