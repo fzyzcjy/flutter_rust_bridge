@@ -46,8 +46,8 @@ pub struct SimpleHandler<E: Executor, EH: ErrorHandler> {
 }
 
 struct SimpleHandlerConfig {
-    dart_opaque_drop_port: MessagePort,
-    dart_fn_invoke_port: MessagePort,
+    dart_opaque_drop_port: SendableMessagePortHandle,
+    dart_fn_invoke_port: SendableMessagePortHandle,
 }
 
 impl<E: Executor, H: ErrorHandler> SimpleHandler<E, H> {
@@ -67,8 +67,8 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         let _ = panic::catch_unwind(|| {
             if let Ok(mut config) = self.config.lock() {
                 *config = Some(SimpleHandlerConfig {
-                    dart_opaque_drop_port,
-                    dart_fn_invoke_port,
+                    dart_opaque_drop_port: message_port_to_handle(&dart_opaque_drop_port),
+                    dart_fn_invoke_port: message_port_to_handle(&dart_fn_invoke_port),
                 });
             }
         });
