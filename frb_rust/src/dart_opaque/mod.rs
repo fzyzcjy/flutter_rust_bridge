@@ -1,5 +1,5 @@
 use crate::generalized_isolate::IntoDart;
-use crate::platform_types::DartAbi;
+use crate::platform_types::{DartAbi, SendableMessagePortHandle};
 use log::warn;
 use std::thread::ThreadId;
 
@@ -21,6 +21,8 @@ pub struct DartOpaque {
 
     /// The ID of the thread on which the Dart Object was created.
     thread_id: ThreadId,
+    /// The port to drop object (when we cannot drop in current thread)
+    drop_port: SendableMessagePortHandle,
 }
 
 /// # Safety
@@ -36,10 +38,11 @@ impl DartOpaque {
     /// # Safety
     ///
     /// The [DartObject] must be created on the current thread.
-    pub unsafe fn new(handle: DartObject) -> Self {
+    pub unsafe fn new(handle: DartObject, drop_port: SendableMessagePortHandle) -> Self {
         Self {
             handle: Some(DartOpaqueBase::new(handle)),
             thread_id: std::thread::current().id(),
+            drop_port,
         }
     }
 
@@ -52,12 +55,13 @@ impl DartOpaque {
     /// The [DartOpaque] created by this method must not be dropped
     /// on a non-parent [DartObject] thread.
     pub unsafe fn new_non_droppable(handle: DartObject) -> Self {
-        Self {
-            // TODO originally this was "dropport=none" while `new` was `dropport=some...`, but now no port at all
-            // handle: Some(DartOpaqueBase::new(handle, None)),
-            handle: Some(DartOpaqueBase::new(handle)),
-            thread_id: std::thread::current().id(),
-        }
+        todo!("new_non_droppable")
+        // Self {
+        //     // TODO originally this was "dropport=none" while `new` was `dropport=some...`, but now no port at all
+        //     // handle: Some(DartOpaqueBase::new(handle, None)),
+        //     handle: Some(DartOpaqueBase::new(handle)),
+        //     thread_id: std::thread::current().id(),
+        // }
     }
 
     /// Tries to get a Dart [DartObject].
