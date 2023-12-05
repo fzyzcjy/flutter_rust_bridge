@@ -9061,9 +9061,13 @@ impl
             flutter_rust_bridge::DartOpaque,
         ) -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, ()>,
     > {
+        use flutter_rust_bridge::IntoDart;
         let dart_opaque: flutter_rust_bridge::DartOpaque = self.wire2api();
         flutter_rust_bridge::DartFn::new(move |arg0| {
-            flutter_rust_bridge::for_generated::dart_fn_invoke(vec![dart_opaque, arg0])
+            flutter_rust_bridge::for_generated::dart_fn_invoke(vec![
+                dart_opaque.into_into_dart().into_dart(),
+                arg0.into_into_dart().into_dart(),
+            ])
         })
     }
 }
@@ -9082,9 +9086,13 @@ impl
     ) -> flutter_rust_bridge::DartFn<
         fn(String) -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, ()>,
     > {
+        use flutter_rust_bridge::IntoDart;
         let dart_opaque: flutter_rust_bridge::DartOpaque = self.wire2api();
         flutter_rust_bridge::DartFn::new(move |arg0| {
-            flutter_rust_bridge::for_generated::dart_fn_invoke(vec![dart_opaque, arg0])
+            flutter_rust_bridge::for_generated::dart_fn_invoke(vec![
+                dart_opaque.into_into_dart().into_dart(),
+                arg0.into_into_dart().into_dart(),
+            ])
         })
     }
 }
@@ -9107,9 +9115,14 @@ impl
             crate::api::dart_fn::DemoStructForRustCallDart,
         ) -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, ()>,
     > {
+        use flutter_rust_bridge::IntoDart;
         let dart_opaque: flutter_rust_bridge::DartOpaque = self.wire2api();
         flutter_rust_bridge::DartFn::new(move |arg0, arg1| {
-            flutter_rust_bridge::for_generated::dart_fn_invoke(vec![dart_opaque, arg0, arg1])
+            flutter_rust_bridge::for_generated::dart_fn_invoke(vec![
+                dart_opaque.into_into_dart().into_dart(),
+                arg0.into_into_dart().into_dart(),
+                arg1.into_into_dart().into_dart(),
+            ])
         })
     }
 }
@@ -9131,9 +9144,12 @@ impl
             flutter_rust_bridge::DartOpaque,
         >,
     > {
+        use flutter_rust_bridge::IntoDart;
         let dart_opaque: flutter_rust_bridge::DartOpaque = self.wire2api();
         flutter_rust_bridge::DartFn::new(move || {
-            flutter_rust_bridge::for_generated::dart_fn_invoke(vec![dart_opaque])
+            flutter_rust_bridge::for_generated::dart_fn_invoke(vec![dart_opaque
+                .into_into_dart()
+                .into_dart()])
         })
     }
 }
@@ -9149,9 +9165,12 @@ impl
     ) -> flutter_rust_bridge::DartFn<
         fn() -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, String>,
     > {
+        use flutter_rust_bridge::IntoDart;
         let dart_opaque: flutter_rust_bridge::DartOpaque = self.wire2api();
         flutter_rust_bridge::DartFn::new(move || {
-            flutter_rust_bridge::for_generated::dart_fn_invoke(vec![dart_opaque])
+            flutter_rust_bridge::for_generated::dart_fn_invoke(vec![dart_opaque
+                .into_into_dart()
+                .into_dart()])
         })
     }
 }
@@ -9167,9 +9186,12 @@ impl
     ) -> flutter_rust_bridge::DartFn<
         fn() -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, ()>,
     > {
+        use flutter_rust_bridge::IntoDart;
         let dart_opaque: flutter_rust_bridge::DartOpaque = self.wire2api();
         flutter_rust_bridge::DartFn::new(move || {
-            flutter_rust_bridge::for_generated::dart_fn_invoke(vec![dart_opaque])
+            flutter_rust_bridge::for_generated::dart_fn_invoke(vec![dart_opaque
+                .into_into_dart()
+                .into_dart()])
         })
     }
 }
@@ -9195,9 +9217,13 @@ impl
             crate::api::dart_fn::DemoStructForRustCallDart,
         >,
     > {
+        use flutter_rust_bridge::IntoDart;
         let dart_opaque: flutter_rust_bridge::DartOpaque = self.wire2api();
         flutter_rust_bridge::DartFn::new(move |arg0| {
-            flutter_rust_bridge::for_generated::dart_fn_invoke(vec![dart_opaque, arg0])
+            flutter_rust_bridge::for_generated::dart_fn_invoke(vec![
+                dart_opaque.into_into_dart().into_dart(),
+                arg0.into_into_dart().into_dart(),
+            ])
         })
     }
 }
