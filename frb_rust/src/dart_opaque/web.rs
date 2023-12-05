@@ -27,8 +27,4 @@ impl DartOpaqueBase {
     pub fn into_raw(self) -> *mut JsValue {
         Box::into_raw(self.inner)
     }
-
-    pub fn channel(&self) -> Option<Channel> {
-        Some(Channel::new(PortLike::broadcast(self.drop_port.as_ref()?)))
-    }
 }

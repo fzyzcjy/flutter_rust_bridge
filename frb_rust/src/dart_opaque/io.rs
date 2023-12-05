@@ -25,10 +25,6 @@ impl DartOpaqueBase {
     pub fn into_raw(self) -> Dart_PersistentHandle {
         self.inner.into_raw()
     }
-
-    pub fn channel(&self) -> Option<Channel> {
-        Some(Channel::new(self.drop_port?))
-    }
 }
 
 #[derive(Debug)]
