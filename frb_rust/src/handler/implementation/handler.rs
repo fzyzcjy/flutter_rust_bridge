@@ -63,9 +63,14 @@ impl<E: Executor, H: ErrorHandler> SimpleHandler<E, H> {
 
 impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
     fn initialize(&self, dart_opaque_drop_port: MessagePort, dart_fn_invoke_port: MessagePort) {
-        *self.config.lock() = Some(SimpleHandlerConfig {
-            dart_opaque_drop_port,
-            dart_fn_invoke_port,
+        // Again, as mentioned below, ensure panics never cross FFI boundary
+        let _ = panic::catch_unwind(|| {
+            if let Ok(mut config) = self.config.lock() {
+                *config = Some(SimpleHandlerConfig {
+                    dart_opaque_drop_port,
+                    dart_fn_invoke_port,
+                });
+            }
         });
     }
 
