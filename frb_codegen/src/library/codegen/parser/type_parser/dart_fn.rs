@@ -5,8 +5,9 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Primitive;
 use crate::codegen::parser::type_parser::unencodable::{ArgsRefs, SplayedSegment};
 use crate::codegen::parser::type_parser::TypeParserWithContext;
+use anyhow::bail;
 use itertools::Itertools;
-use syn::{ReturnType, Type};
+use syn::{Path, PathSegment, ReturnType, Type, TypeBareFn, TypePath};
 use ArgsRefs::Generic;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
@@ -29,11 +30,28 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             let inputs = (bare_fn.inputs.iter())
                 .map(|x| self.parse_type(&x.ty))
                 .collect::<anyhow::Result<Vec<_>>>()?;
-            let output = Box::new(self.parse_return_type(&bare_fn.output)?);
+
+            let output = self.parse_dart_fn_output(&bare_fn)?;
+
             return Ok(Some(IrType::DartFn(IrTypeDartFn { inputs, output })));
         }
 
         Ok(None)
+    }
+
+    fn parse_dart_fn_output(&mut self, return_type: &ReturnType) -> anyhow::Result<IrType> {
+        if let ReturnType::Type(_, ret_ty) = return_type {
+            if let Type::Path(TypePath { qself: _, path }) = ret_ty {
+                if let Some(PathSegment { ident, arguments }) = path.segments.first() {
+                    if &ident.to_string() == "BoxFuture" {
+                        arguments.
+                        return Ok(TODO);
+                    }
+                }
+            }
+        }
+
+        bail!("DartFn does not support return types except `BoxFuture<T>` yet")
     }
 }
 
