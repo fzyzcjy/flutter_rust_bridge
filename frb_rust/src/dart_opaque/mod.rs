@@ -92,3 +92,8 @@ impl Drop for DartOpaque {
         }
     }
 }
+
+// TODO improve
+pub(crate) unsafe fn wire2api_dart_opaque(raw: i64) -> DartOpaque {
+    DartOpaque::new(raw as _)
+}
