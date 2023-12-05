@@ -114,4807 +114,2541 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
 import 'package:meta/meta.dart' as meta;
 import 'package:uuid/uuid.dart';
 
-abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
-  RustLibApiImplPlatform({
-    super.handler,
-    required super.wire,
-    required super.generalizedFrbRustBinding,
-    required super.dropPortManager,
-  });
 
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_MutexHideDataPtr =>
-          wire._rust_arc_decrement_strong_count_RustOpaque_MutexHideDataPtr;
 
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockHideDataPtr =>
-          wire._rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataPtr;
 
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_BoxDartDebugTwinNormalPtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormalPtr;
+                abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
+                  RustLibApiImplPlatform({
+                    super.handler,
+                    required super.wire,
+                    required super.generalizedFrbRustBinding,
+                    required super.dropPortManager,
+                  });
+
+                  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_MutexHideDataPtr => wire._rust_arc_decrement_strong_count_RustOpaque_MutexHideDataPtr;
+
+CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RwLockHideDataPtr => wire._rust_arc_decrement_strong_count_RustOpaque_RwLockHideDataPtr;
+
+CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_BoxDartDebugTwinNormalPtr => wire._rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormalPtr;
+
+CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_BoxDartDebugTwinRustAsyncPtr => wire._rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsyncPtr;
+
+CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_BoxDartDebugTwinSyncPtr => wire._rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSyncPtr;
+
+CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_FrbOpaqueReturnPtr => wire._rust_arc_decrement_strong_count_RustOpaque_frb_opaque_returnPtr;
+
+CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_FrbOpaqueSyncReturnPtr => wire._rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_returnPtr;
+
+CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_HideDataPtr => wire._rust_arc_decrement_strong_count_RustOpaque_hide_dataPtr;
+
+CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_I32Ptr => wire._rust_arc_decrement_strong_count_RustOpaque_i_32Ptr;
+
+CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_NonCloneDataPtr => wire._rust_arc_decrement_strong_count_RustOpaque_non_clone_dataPtr;
+
+CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_NonSendHideDataPtr => wire._rust_arc_decrement_strong_count_RustOpaque_non_send_hide_dataPtr;
+
+CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RwLockBoxFnStringStringPtr => wire._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafePtr;
+
+CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinNormalPtr => wire._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormalPtr;
+
+CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinSyncPtr => wire._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncPtr;
+
+CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinNormalPtr => wire._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSyncPtr;
+
+CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinSyncPtr => wire._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSyncPtr;
+
+CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinNormalPtr => wire._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormalPtr;
+
+CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinSyncPtr => wire._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncPtr;
+
+CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinNormalPtr => wire._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormalPtr;
+
+CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSyncPtr => wire._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncPtr;
+
+@protected
+int api2wire_Chrono_Duration(Duration raw) {
+                            return api2wire_i_64(raw.inMicroseconds);
+                        }@protected
+ffi.Pointer<wire_list_prim_i_64> api2wire_Chrono_DurationList(List<Duration> raw) {
+                            final ans = Int64List(raw.length);
+                for (var i=0; i < raw.length; ++i) ans[i] = api2wire_Chrono_Duration(raw[i]);
+                return api2wire_list_prim_i_64(ans);
+                        }@protected
+int api2wire_Chrono_Local(DateTime raw) {
+                            return api2wire_i_64(raw.microsecondsSinceEpoch);
+                        }@protected
+int api2wire_Chrono_Naive(DateTime raw) {
+                            return api2wire_i_64(raw.microsecondsSinceEpoch);
+                        }@protected
+ffi.Pointer<wire_list_prim_i_64> api2wire_Chrono_NaiveList(List<DateTime> raw) {
+                            final ans = Int64List(raw.length);
+                for (var i=0; i < raw.length; ++i) ans[i] = api2wire_Chrono_Naive(raw[i]);
+                return api2wire_list_prim_i_64(ans);
+                        }@protected
+int api2wire_Chrono_Utc(DateTime raw) {
+                            return api2wire_i_64(raw.microsecondsSinceEpoch);
+                        }@protected
+todo_dart_wire_type api2wire_DartFn_Inputs_DartOpaque_Output_unit(TODO_dart_api_type raw) {
+                            todo_api2wire_body
+                        }@protected
+todo_dart_wire_type api2wire_DartFn_Inputs_String_Output_unit(TODO_dart_api_type raw) {
+                            todo_api2wire_body
+                        }@protected
+todo_dart_wire_type api2wire_DartFn_Inputs_String_demo_struct_for_rust_call_dart_Output_unit(TODO_dart_api_type raw) {
+                            todo_api2wire_body
+                        }@protected
+todo_dart_wire_type api2wire_DartFn_Inputs__Output_DartOpaque(TODO_dart_api_type raw) {
+                            todo_api2wire_body
+                        }@protected
+todo_dart_wire_type api2wire_DartFn_Inputs__Output_String(TODO_dart_api_type raw) {
+                            todo_api2wire_body
+                        }@protected
+todo_dart_wire_type api2wire_DartFn_Inputs__Output_unit(TODO_dart_api_type raw) {
+                            todo_api2wire_body
+                        }@protected
+todo_dart_wire_type api2wire_DartFn_Inputs_demo_struct_for_rust_call_dart_Output_demo_struct_for_rust_call_dart(TODO_dart_api_type raw) {
+                            todo_api2wire_body
+                        }@protected
+wire_DartOpaque api2wire_DartOpaque(Object raw) {
+                            
+                final ptr = wire.new_DartOpaque();
+                _api_fill_to_wire_DartOpaque(raw, ptr);
+                return ptr;
+                
+                        }@protected
+ffi.Pointer<wire_list_DartOpaque> api2wire_DartOpaque_array_1(ObjectArray1 raw) {
+                            return api2wire_list_DartOpaque(raw);
+                        }@protected
+ffi.Pointer<wire_list_RustOpaque_hide_data> api2wire_RustOpaque_hide_data_array_2(HideDataArray2 raw) {
+                            return api2wire_list_RustOpaque_hide_data(raw);
+                        }@protected
+ffi.Pointer<wire_list_prim_u_8> api2wire_String(String raw) {
+                            return api2wire_list_prim_u_8(utf8.encoder.convert(raw));
+                        }@protected
+ffi.Pointer<wire_StringList> api2wire_StringList(List<String> raw) {
+                            final ans = wire.new_StringList(raw.length);
+                    for (var i = 0; i < raw.length; i++){
+                        ans.ref.ptr[i] = api2wire_String(raw[i]);
+                    }
+                    return ans;
+                        }@protected
+ffi.Pointer<wire_list_prim_u_8> api2wire_Uuid(UuidValue raw) {
+                            return api2wire_list_prim_u_8(raw.toBytes());
+                        }@protected
+ffi.Pointer<wire_list_prim_u_8> api2wire_Uuids(List<UuidValue> raw) {
+                            final builder = BytesBuilder();
+                for (final element in raw) {
+                  builder.add(element.toBytes());
+                }
+                return api2wire_list_prim_u_8(builder.toBytes());
+                        }@protected
+ffi.Pointer<wire_list_prim_u_8> api2wire_ZeroCopyBuffer_list_prim_u_8(Uint8List raw) {
+                            return api2wire_list_prim_u_8(raw);
+                        }@protected
+ffi.Pointer<wire_application_env> api2wire_box_application_env(ApplicationEnv raw) {
+                            final ptr = wire.new_box_application_env();
+                    _api_fill_to_wire_application_env(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<ffi.Int64> api2wire_box_autoadd_Chrono_Utc(DateTime raw) {
+                            return wire.new_box_autoadd_Chrono_Utc(api2wire_Chrono_Utc(raw));
+                        }@protected
+ffi.Pointer<wire_DartOpaque> api2wire_box_autoadd_DartOpaque(Object raw) {
+                            final ptr = wire.new_box_autoadd_DartOpaque();
+                    _api_fill_to_wire_DartOpaque(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<PlatformPointer> api2wire_box_autoadd_RustOpaque_hide_data(HideData raw) {
+                            return wire.new_box_autoadd_RustOpaque_hide_data(api2wire_RustOpaque_hide_data(raw));
+                        }@protected
+ffi.Pointer<wire_a_twin_normal> api2wire_box_autoadd_a_twin_normal(ATwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_a_twin_normal();
+                    _api_fill_to_wire_a_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_a_twin_rust_async> api2wire_box_autoadd_a_twin_rust_async(ATwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_a_twin_rust_async();
+                    _api_fill_to_wire_a_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_a_twin_sync> api2wire_box_autoadd_a_twin_sync(ATwinSync raw) {
+                            final ptr = wire.new_box_autoadd_a_twin_sync();
+                    _api_fill_to_wire_a_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_abc_twin_normal> api2wire_box_autoadd_abc_twin_normal(AbcTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_abc_twin_normal();
+                    _api_fill_to_wire_abc_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_abc_twin_rust_async> api2wire_box_autoadd_abc_twin_rust_async(AbcTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_abc_twin_rust_async();
+                    _api_fill_to_wire_abc_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_abc_twin_sync> api2wire_box_autoadd_abc_twin_sync(AbcTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_abc_twin_sync();
+                    _api_fill_to_wire_abc_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_application_env> api2wire_box_autoadd_application_env(ApplicationEnv raw) {
+                            final ptr = wire.new_box_autoadd_application_env();
+                    _api_fill_to_wire_application_env(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_application_settings> api2wire_box_autoadd_application_settings(ApplicationSettings raw) {
+                            final ptr = wire.new_box_autoadd_application_settings();
+                    _api_fill_to_wire_application_settings(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_attribute_twin_normal> api2wire_box_autoadd_attribute_twin_normal(AttributeTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_attribute_twin_normal();
+                    _api_fill_to_wire_attribute_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_attribute_twin_rust_async> api2wire_box_autoadd_attribute_twin_rust_async(AttributeTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_attribute_twin_rust_async();
+                    _api_fill_to_wire_attribute_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_attribute_twin_sync> api2wire_box_autoadd_attribute_twin_sync(AttributeTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_attribute_twin_sync();
+                    _api_fill_to_wire_attribute_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_b_twin_normal> api2wire_box_autoadd_b_twin_normal(BTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_b_twin_normal();
+                    _api_fill_to_wire_b_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_b_twin_rust_async> api2wire_box_autoadd_b_twin_rust_async(BTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_b_twin_rust_async();
+                    _api_fill_to_wire_b_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_b_twin_sync> api2wire_box_autoadd_b_twin_sync(BTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_b_twin_sync();
+                    _api_fill_to_wire_b_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<ffi.Bool> api2wire_box_autoadd_bool(bool raw) {
+                            return wire.new_box_autoadd_bool(api2wire_bool(raw));
+                        }@protected
+ffi.Pointer<wire_c_twin_normal> api2wire_box_autoadd_c_twin_normal(CTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_c_twin_normal();
+                    _api_fill_to_wire_c_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_c_twin_rust_async> api2wire_box_autoadd_c_twin_rust_async(CTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_c_twin_rust_async();
+                    _api_fill_to_wire_c_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_c_twin_sync> api2wire_box_autoadd_c_twin_sync(CTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_c_twin_sync();
+                    _api_fill_to_wire_c_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_concatenate_with_twin_normal> api2wire_box_autoadd_concatenate_with_twin_normal(ConcatenateWithTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_concatenate_with_twin_normal();
+                    _api_fill_to_wire_concatenate_with_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_concatenate_with_twin_rust_async> api2wire_box_autoadd_concatenate_with_twin_rust_async(ConcatenateWithTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_concatenate_with_twin_rust_async();
+                    _api_fill_to_wire_concatenate_with_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_concatenate_with_twin_sync> api2wire_box_autoadd_concatenate_with_twin_sync(ConcatenateWithTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_concatenate_with_twin_sync();
+                    _api_fill_to_wire_concatenate_with_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_custom_nested_error_inner_twin_normal> api2wire_box_autoadd_custom_nested_error_inner_twin_normal(CustomNestedErrorInnerTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_custom_nested_error_inner_twin_normal();
+                    _api_fill_to_wire_custom_nested_error_inner_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_custom_nested_error_inner_twin_rust_async> api2wire_box_autoadd_custom_nested_error_inner_twin_rust_async(CustomNestedErrorInnerTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_custom_nested_error_inner_twin_rust_async();
+                    _api_fill_to_wire_custom_nested_error_inner_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_custom_nested_error_inner_twin_sync> api2wire_box_autoadd_custom_nested_error_inner_twin_sync(CustomNestedErrorInnerTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_custom_nested_error_inner_twin_sync();
+                    _api_fill_to_wire_custom_nested_error_inner_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_custom_nested_error_outer_twin_normal> api2wire_box_autoadd_custom_nested_error_outer_twin_normal(CustomNestedErrorOuterTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_custom_nested_error_outer_twin_normal();
+                    _api_fill_to_wire_custom_nested_error_outer_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_custom_nested_error_outer_twin_rust_async> api2wire_box_autoadd_custom_nested_error_outer_twin_rust_async(CustomNestedErrorOuterTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_custom_nested_error_outer_twin_rust_async();
+                    _api_fill_to_wire_custom_nested_error_outer_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_custom_nested_error_outer_twin_sync> api2wire_box_autoadd_custom_nested_error_outer_twin_sync(CustomNestedErrorOuterTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_custom_nested_error_outer_twin_sync();
+                    _api_fill_to_wire_custom_nested_error_outer_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_custom_struct_error_twin_normal> api2wire_box_autoadd_custom_struct_error_twin_normal(CustomStructErrorTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_custom_struct_error_twin_normal();
+                    _api_fill_to_wire_custom_struct_error_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_custom_struct_error_twin_rust_async> api2wire_box_autoadd_custom_struct_error_twin_rust_async(CustomStructErrorTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_custom_struct_error_twin_rust_async();
+                    _api_fill_to_wire_custom_struct_error_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_custom_struct_error_twin_sync> api2wire_box_autoadd_custom_struct_error_twin_sync(CustomStructErrorTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_custom_struct_error_twin_sync();
+                    _api_fill_to_wire_custom_struct_error_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_custom_struct_twin_normal> api2wire_box_autoadd_custom_struct_twin_normal(CustomStructTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_custom_struct_twin_normal();
+                    _api_fill_to_wire_custom_struct_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_custom_struct_twin_rust_async> api2wire_box_autoadd_custom_struct_twin_rust_async(CustomStructTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_custom_struct_twin_rust_async();
+                    _api_fill_to_wire_custom_struct_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_custom_struct_twin_sync> api2wire_box_autoadd_custom_struct_twin_sync(CustomStructTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_custom_struct_twin_sync();
+                    _api_fill_to_wire_custom_struct_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_customized_twin_normal> api2wire_box_autoadd_customized_twin_normal(CustomizedTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_customized_twin_normal();
+                    _api_fill_to_wire_customized_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_customized_twin_rust_async> api2wire_box_autoadd_customized_twin_rust_async(CustomizedTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_customized_twin_rust_async();
+                    _api_fill_to_wire_customized_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_customized_twin_sync> api2wire_box_autoadd_customized_twin_sync(CustomizedTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_customized_twin_sync();
+                    _api_fill_to_wire_customized_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_dart_opaque_nested_twin_normal> api2wire_box_autoadd_dart_opaque_nested_twin_normal(DartOpaqueNestedTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_dart_opaque_nested_twin_normal();
+                    _api_fill_to_wire_dart_opaque_nested_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_dart_opaque_nested_twin_rust_async> api2wire_box_autoadd_dart_opaque_nested_twin_rust_async(DartOpaqueNestedTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_dart_opaque_nested_twin_rust_async();
+                    _api_fill_to_wire_dart_opaque_nested_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_dart_opaque_nested_twin_sync> api2wire_box_autoadd_dart_opaque_nested_twin_sync(DartOpaqueNestedTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_dart_opaque_nested_twin_sync();
+                    _api_fill_to_wire_dart_opaque_nested_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_empty_twin_normal> api2wire_box_autoadd_empty_twin_normal(EmptyTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_empty_twin_normal();
+                    
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_empty_twin_rust_async> api2wire_box_autoadd_empty_twin_rust_async(EmptyTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_empty_twin_rust_async();
+                    
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_empty_twin_sync> api2wire_box_autoadd_empty_twin_sync(EmptyTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_empty_twin_sync();
+                    
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_enum_dart_opaque_twin_normal> api2wire_box_autoadd_enum_dart_opaque_twin_normal(EnumDartOpaqueTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_enum_dart_opaque_twin_normal();
+                    _api_fill_to_wire_enum_dart_opaque_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_enum_dart_opaque_twin_rust_async> api2wire_box_autoadd_enum_dart_opaque_twin_rust_async(EnumDartOpaqueTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_enum_dart_opaque_twin_rust_async();
+                    _api_fill_to_wire_enum_dart_opaque_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_enum_dart_opaque_twin_sync> api2wire_box_autoadd_enum_dart_opaque_twin_sync(EnumDartOpaqueTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_enum_dart_opaque_twin_sync();
+                    _api_fill_to_wire_enum_dart_opaque_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_enum_opaque_twin_normal> api2wire_box_autoadd_enum_opaque_twin_normal(EnumOpaqueTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_enum_opaque_twin_normal();
+                    _api_fill_to_wire_enum_opaque_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_enum_opaque_twin_rust_async> api2wire_box_autoadd_enum_opaque_twin_rust_async(EnumOpaqueTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_enum_opaque_twin_rust_async();
+                    _api_fill_to_wire_enum_opaque_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_enum_opaque_twin_sync> api2wire_box_autoadd_enum_opaque_twin_sync(EnumOpaqueTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_enum_opaque_twin_sync();
+                    _api_fill_to_wire_enum_opaque_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_enum_with_item_mixed_twin_normal> api2wire_box_autoadd_enum_with_item_mixed_twin_normal(EnumWithItemMixedTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_enum_with_item_mixed_twin_normal();
+                    _api_fill_to_wire_enum_with_item_mixed_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_enum_with_item_mixed_twin_rust_async> api2wire_box_autoadd_enum_with_item_mixed_twin_rust_async(EnumWithItemMixedTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_enum_with_item_mixed_twin_rust_async();
+                    _api_fill_to_wire_enum_with_item_mixed_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_enum_with_item_mixed_twin_sync> api2wire_box_autoadd_enum_with_item_mixed_twin_sync(EnumWithItemMixedTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_enum_with_item_mixed_twin_sync();
+                    _api_fill_to_wire_enum_with_item_mixed_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_enum_with_item_struct_twin_normal> api2wire_box_autoadd_enum_with_item_struct_twin_normal(EnumWithItemStructTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_enum_with_item_struct_twin_normal();
+                    _api_fill_to_wire_enum_with_item_struct_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_enum_with_item_struct_twin_rust_async> api2wire_box_autoadd_enum_with_item_struct_twin_rust_async(EnumWithItemStructTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_enum_with_item_struct_twin_rust_async();
+                    _api_fill_to_wire_enum_with_item_struct_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_enum_with_item_struct_twin_sync> api2wire_box_autoadd_enum_with_item_struct_twin_sync(EnumWithItemStructTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_enum_with_item_struct_twin_sync();
+                    _api_fill_to_wire_enum_with_item_struct_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_enum_with_item_tuple_twin_normal> api2wire_box_autoadd_enum_with_item_tuple_twin_normal(EnumWithItemTupleTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_enum_with_item_tuple_twin_normal();
+                    _api_fill_to_wire_enum_with_item_tuple_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_enum_with_item_tuple_twin_rust_async> api2wire_box_autoadd_enum_with_item_tuple_twin_rust_async(EnumWithItemTupleTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_enum_with_item_tuple_twin_rust_async();
+                    _api_fill_to_wire_enum_with_item_tuple_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_enum_with_item_tuple_twin_sync> api2wire_box_autoadd_enum_with_item_tuple_twin_sync(EnumWithItemTupleTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_enum_with_item_tuple_twin_sync();
+                    _api_fill_to_wire_enum_with_item_tuple_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_event_twin_normal> api2wire_box_autoadd_event_twin_normal(EventTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_event_twin_normal();
+                    _api_fill_to_wire_event_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_event_twin_rust_async> api2wire_box_autoadd_event_twin_rust_async(EventTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_event_twin_rust_async();
+                    _api_fill_to_wire_event_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_event_twin_sync> api2wire_box_autoadd_event_twin_sync(EventTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_event_twin_sync();
+                    _api_fill_to_wire_event_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_exotic_optionals_twin_normal> api2wire_box_autoadd_exotic_optionals_twin_normal(ExoticOptionalsTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_exotic_optionals_twin_normal();
+                    _api_fill_to_wire_exotic_optionals_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_exotic_optionals_twin_rust_async> api2wire_box_autoadd_exotic_optionals_twin_rust_async(ExoticOptionalsTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_exotic_optionals_twin_rust_async();
+                    _api_fill_to_wire_exotic_optionals_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_exotic_optionals_twin_sync> api2wire_box_autoadd_exotic_optionals_twin_sync(ExoticOptionalsTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_exotic_optionals_twin_sync();
+                    _api_fill_to_wire_exotic_optionals_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<ffi.Float> api2wire_box_autoadd_f_32(double raw) {
+                            return wire.new_box_autoadd_f_32(api2wire_f_32(raw));
+                        }@protected
+ffi.Pointer<ffi.Double> api2wire_box_autoadd_f_64(double raw) {
+                            return wire.new_box_autoadd_f_64(api2wire_f_64(raw));
+                        }@protected
+ffi.Pointer<wire_feature_chrono_twin_normal> api2wire_box_autoadd_feature_chrono_twin_normal(FeatureChronoTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_feature_chrono_twin_normal();
+                    _api_fill_to_wire_feature_chrono_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_feature_chrono_twin_rust_async> api2wire_box_autoadd_feature_chrono_twin_rust_async(FeatureChronoTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_feature_chrono_twin_rust_async();
+                    _api_fill_to_wire_feature_chrono_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_feature_chrono_twin_sync> api2wire_box_autoadd_feature_chrono_twin_sync(FeatureChronoTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_feature_chrono_twin_sync();
+                    _api_fill_to_wire_feature_chrono_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_feature_uuid_twin_normal> api2wire_box_autoadd_feature_uuid_twin_normal(FeatureUuidTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_feature_uuid_twin_normal();
+                    _api_fill_to_wire_feature_uuid_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_feature_uuid_twin_rust_async> api2wire_box_autoadd_feature_uuid_twin_rust_async(FeatureUuidTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_feature_uuid_twin_rust_async();
+                    _api_fill_to_wire_feature_uuid_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_feature_uuid_twin_sync> api2wire_box_autoadd_feature_uuid_twin_sync(FeatureUuidTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_feature_uuid_twin_sync();
+                    _api_fill_to_wire_feature_uuid_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_feed_id_twin_normal> api2wire_box_autoadd_feed_id_twin_normal(FeedIdTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_feed_id_twin_normal();
+                    _api_fill_to_wire_feed_id_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_feed_id_twin_rust_async> api2wire_box_autoadd_feed_id_twin_rust_async(FeedIdTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_feed_id_twin_rust_async();
+                    _api_fill_to_wire_feed_id_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_feed_id_twin_sync> api2wire_box_autoadd_feed_id_twin_sync(FeedIdTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_feed_id_twin_sync();
+                    _api_fill_to_wire_feed_id_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<ffi.Int16> api2wire_box_autoadd_i_16(int raw) {
+                            return wire.new_box_autoadd_i_16(api2wire_i_16(raw));
+                        }@protected
+ffi.Pointer<ffi.Int32> api2wire_box_autoadd_i_32(int raw) {
+                            return wire.new_box_autoadd_i_32(api2wire_i_32(raw));
+                        }@protected
+ffi.Pointer<ffi.Int64> api2wire_box_autoadd_i_64(int raw) {
+                            return wire.new_box_autoadd_i_64(api2wire_i_64(raw));
+                        }@protected
+ffi.Pointer<ffi.Int8> api2wire_box_autoadd_i_8(int raw) {
+                            return wire.new_box_autoadd_i_8(api2wire_i_8(raw));
+                        }@protected
+ffi.Pointer<wire_kitchen_sink_twin_normal> api2wire_box_autoadd_kitchen_sink_twin_normal(KitchenSinkTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_kitchen_sink_twin_normal();
+                    _api_fill_to_wire_kitchen_sink_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_kitchen_sink_twin_rust_async> api2wire_box_autoadd_kitchen_sink_twin_rust_async(KitchenSinkTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_kitchen_sink_twin_rust_async();
+                    _api_fill_to_wire_kitchen_sink_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_kitchen_sink_twin_sync> api2wire_box_autoadd_kitchen_sink_twin_sync(KitchenSinkTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_kitchen_sink_twin_sync();
+                    _api_fill_to_wire_kitchen_sink_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_macro_struct> api2wire_box_autoadd_macro_struct(MacroStruct raw) {
+                            final ptr = wire.new_box_autoadd_macro_struct();
+                    _api_fill_to_wire_macro_struct(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_measure_twin_normal> api2wire_box_autoadd_measure_twin_normal(MeasureTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_measure_twin_normal();
+                    _api_fill_to_wire_measure_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_measure_twin_rust_async> api2wire_box_autoadd_measure_twin_rust_async(MeasureTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_measure_twin_rust_async();
+                    _api_fill_to_wire_measure_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_measure_twin_sync> api2wire_box_autoadd_measure_twin_sync(MeasureTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_measure_twin_sync();
+                    _api_fill_to_wire_measure_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_message_id_twin_normal> api2wire_box_autoadd_message_id_twin_normal(MessageIdTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_message_id_twin_normal();
+                    _api_fill_to_wire_message_id_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_message_id_twin_rust_async> api2wire_box_autoadd_message_id_twin_rust_async(MessageIdTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_message_id_twin_rust_async();
+                    _api_fill_to_wire_message_id_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_message_id_twin_sync> api2wire_box_autoadd_message_id_twin_sync(MessageIdTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_message_id_twin_sync();
+                    _api_fill_to_wire_message_id_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_my_nested_struct_twin_normal> api2wire_box_autoadd_my_nested_struct_twin_normal(MyNestedStructTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_my_nested_struct_twin_normal();
+                    _api_fill_to_wire_my_nested_struct_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_my_nested_struct_twin_rust_async> api2wire_box_autoadd_my_nested_struct_twin_rust_async(MyNestedStructTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_my_nested_struct_twin_rust_async();
+                    _api_fill_to_wire_my_nested_struct_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_my_nested_struct_twin_sync> api2wire_box_autoadd_my_nested_struct_twin_sync(MyNestedStructTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_my_nested_struct_twin_sync();
+                    _api_fill_to_wire_my_nested_struct_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_my_size> api2wire_box_autoadd_my_size(MySize raw) {
+                            final ptr = wire.new_box_autoadd_my_size();
+                    _api_fill_to_wire_my_size(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_my_struct> api2wire_box_autoadd_my_struct(MyStruct raw) {
+                            final ptr = wire.new_box_autoadd_my_struct();
+                    _api_fill_to_wire_my_struct(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_my_tree_node_twin_normal> api2wire_box_autoadd_my_tree_node_twin_normal(MyTreeNodeTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_my_tree_node_twin_normal();
+                    _api_fill_to_wire_my_tree_node_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_my_tree_node_twin_rust_async> api2wire_box_autoadd_my_tree_node_twin_rust_async(MyTreeNodeTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_my_tree_node_twin_rust_async();
+                    _api_fill_to_wire_my_tree_node_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_my_tree_node_twin_sync> api2wire_box_autoadd_my_tree_node_twin_sync(MyTreeNodeTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_my_tree_node_twin_sync();
+                    _api_fill_to_wire_my_tree_node_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_new_type_int_twin_normal> api2wire_box_autoadd_new_type_int_twin_normal(NewTypeIntTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_new_type_int_twin_normal();
+                    _api_fill_to_wire_new_type_int_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_new_type_int_twin_rust_async> api2wire_box_autoadd_new_type_int_twin_rust_async(NewTypeIntTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_new_type_int_twin_rust_async();
+                    _api_fill_to_wire_new_type_int_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_new_type_int_twin_sync> api2wire_box_autoadd_new_type_int_twin_sync(NewTypeIntTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_new_type_int_twin_sync();
+                    _api_fill_to_wire_new_type_int_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_note_twin_normal> api2wire_box_autoadd_note_twin_normal(NoteTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_note_twin_normal();
+                    _api_fill_to_wire_note_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_note_twin_rust_async> api2wire_box_autoadd_note_twin_rust_async(NoteTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_note_twin_rust_async();
+                    _api_fill_to_wire_note_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_note_twin_sync> api2wire_box_autoadd_note_twin_sync(NoteTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_note_twin_sync();
+                    _api_fill_to_wire_note_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_numbers> api2wire_box_autoadd_numbers(Numbers raw) {
+                            final ptr = wire.new_box_autoadd_numbers();
+                    _api_fill_to_wire_numbers(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_opaque_nested_twin_normal> api2wire_box_autoadd_opaque_nested_twin_normal(OpaqueNestedTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_opaque_nested_twin_normal();
+                    _api_fill_to_wire_opaque_nested_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_opaque_nested_twin_rust_async> api2wire_box_autoadd_opaque_nested_twin_rust_async(OpaqueNestedTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_opaque_nested_twin_rust_async();
+                    _api_fill_to_wire_opaque_nested_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_opaque_nested_twin_sync> api2wire_box_autoadd_opaque_nested_twin_sync(OpaqueNestedTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_opaque_nested_twin_sync();
+                    _api_fill_to_wire_opaque_nested_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_opt_vecs_twin_normal> api2wire_box_autoadd_opt_vecs_twin_normal(OptVecsTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_opt_vecs_twin_normal();
+                    _api_fill_to_wire_opt_vecs_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_opt_vecs_twin_rust_async> api2wire_box_autoadd_opt_vecs_twin_rust_async(OptVecsTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_opt_vecs_twin_rust_async();
+                    _api_fill_to_wire_opt_vecs_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_opt_vecs_twin_sync> api2wire_box_autoadd_opt_vecs_twin_sync(OptVecsTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_opt_vecs_twin_sync();
+                    _api_fill_to_wire_opt_vecs_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_record_string_i_32> api2wire_box_autoadd_record_string_i_32((String,int) raw) {
+                            final ptr = wire.new_box_autoadd_record_string_i_32();
+                    _api_fill_to_wire_record_string_i_32(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_sequences> api2wire_box_autoadd_sequences(Sequences raw) {
+                            final ptr = wire.new_box_autoadd_sequences();
+                    _api_fill_to_wire_sequences(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_some_struct_twin_normal> api2wire_box_autoadd_some_struct_twin_normal(SomeStructTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_some_struct_twin_normal();
+                    _api_fill_to_wire_some_struct_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_some_struct_twin_rust_async> api2wire_box_autoadd_some_struct_twin_rust_async(SomeStructTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_some_struct_twin_rust_async();
+                    _api_fill_to_wire_some_struct_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_some_struct_twin_sync> api2wire_box_autoadd_some_struct_twin_sync(SomeStructTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_some_struct_twin_sync();
+                    _api_fill_to_wire_some_struct_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_struct_with_comments_twin_normal> api2wire_box_autoadd_struct_with_comments_twin_normal(StructWithCommentsTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_struct_with_comments_twin_normal();
+                    _api_fill_to_wire_struct_with_comments_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_struct_with_comments_twin_rust_async> api2wire_box_autoadd_struct_with_comments_twin_rust_async(StructWithCommentsTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_struct_with_comments_twin_rust_async();
+                    _api_fill_to_wire_struct_with_comments_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_struct_with_comments_twin_sync> api2wire_box_autoadd_struct_with_comments_twin_sync(StructWithCommentsTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_struct_with_comments_twin_sync();
+                    _api_fill_to_wire_struct_with_comments_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_struct_with_enum_twin_normal> api2wire_box_autoadd_struct_with_enum_twin_normal(StructWithEnumTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_struct_with_enum_twin_normal();
+                    _api_fill_to_wire_struct_with_enum_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_struct_with_enum_twin_rust_async> api2wire_box_autoadd_struct_with_enum_twin_rust_async(StructWithEnumTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_struct_with_enum_twin_rust_async();
+                    _api_fill_to_wire_struct_with_enum_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_struct_with_enum_twin_sync> api2wire_box_autoadd_struct_with_enum_twin_sync(StructWithEnumTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_struct_with_enum_twin_sync();
+                    _api_fill_to_wire_struct_with_enum_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_struct_with_one_field_twin_normal> api2wire_box_autoadd_struct_with_one_field_twin_normal(StructWithOneFieldTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_struct_with_one_field_twin_normal();
+                    _api_fill_to_wire_struct_with_one_field_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_struct_with_one_field_twin_rust_async> api2wire_box_autoadd_struct_with_one_field_twin_rust_async(StructWithOneFieldTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_struct_with_one_field_twin_rust_async();
+                    _api_fill_to_wire_struct_with_one_field_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_struct_with_one_field_twin_sync> api2wire_box_autoadd_struct_with_one_field_twin_sync(StructWithOneFieldTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_struct_with_one_field_twin_sync();
+                    _api_fill_to_wire_struct_with_one_field_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_struct_with_two_field_twin_normal> api2wire_box_autoadd_struct_with_two_field_twin_normal(StructWithTwoFieldTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_struct_with_two_field_twin_normal();
+                    _api_fill_to_wire_struct_with_two_field_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_struct_with_two_field_twin_rust_async> api2wire_box_autoadd_struct_with_two_field_twin_rust_async(StructWithTwoFieldTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_struct_with_two_field_twin_rust_async();
+                    _api_fill_to_wire_struct_with_two_field_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_struct_with_two_field_twin_sync> api2wire_box_autoadd_struct_with_two_field_twin_sync(StructWithTwoFieldTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_struct_with_two_field_twin_sync();
+                    _api_fill_to_wire_struct_with_two_field_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_struct_with_zero_field_twin_normal> api2wire_box_autoadd_struct_with_zero_field_twin_normal(StructWithZeroFieldTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_struct_with_zero_field_twin_normal();
+                    
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_struct_with_zero_field_twin_rust_async> api2wire_box_autoadd_struct_with_zero_field_twin_rust_async(StructWithZeroFieldTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_struct_with_zero_field_twin_rust_async();
+                    
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_struct_with_zero_field_twin_sync> api2wire_box_autoadd_struct_with_zero_field_twin_sync(StructWithZeroFieldTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_struct_with_zero_field_twin_sync();
+                    
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_sum_with_twin_normal> api2wire_box_autoadd_sum_with_twin_normal(SumWithTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_sum_with_twin_normal();
+                    _api_fill_to_wire_sum_with_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_sum_with_twin_rust_async> api2wire_box_autoadd_sum_with_twin_rust_async(SumWithTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_sum_with_twin_rust_async();
+                    _api_fill_to_wire_sum_with_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_sum_with_twin_sync> api2wire_box_autoadd_sum_with_twin_sync(SumWithTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_sum_with_twin_sync();
+                    _api_fill_to_wire_sum_with_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_test_id_twin_normal> api2wire_box_autoadd_test_id_twin_normal(TestIdTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_test_id_twin_normal();
+                    _api_fill_to_wire_test_id_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_test_id_twin_rust_async> api2wire_box_autoadd_test_id_twin_rust_async(TestIdTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_test_id_twin_rust_async();
+                    _api_fill_to_wire_test_id_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_test_id_twin_sync> api2wire_box_autoadd_test_id_twin_sync(TestIdTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_test_id_twin_sync();
+                    _api_fill_to_wire_test_id_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_tuple_struct_with_one_field_twin_normal> api2wire_box_autoadd_tuple_struct_with_one_field_twin_normal(TupleStructWithOneFieldTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_tuple_struct_with_one_field_twin_normal();
+                    _api_fill_to_wire_tuple_struct_with_one_field_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_tuple_struct_with_one_field_twin_rust_async> api2wire_box_autoadd_tuple_struct_with_one_field_twin_rust_async(TupleStructWithOneFieldTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_tuple_struct_with_one_field_twin_rust_async();
+                    _api_fill_to_wire_tuple_struct_with_one_field_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_tuple_struct_with_one_field_twin_sync> api2wire_box_autoadd_tuple_struct_with_one_field_twin_sync(TupleStructWithOneFieldTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_tuple_struct_with_one_field_twin_sync();
+                    _api_fill_to_wire_tuple_struct_with_one_field_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_tuple_struct_with_two_field_twin_normal> api2wire_box_autoadd_tuple_struct_with_two_field_twin_normal(TupleStructWithTwoFieldTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_tuple_struct_with_two_field_twin_normal();
+                    _api_fill_to_wire_tuple_struct_with_two_field_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_tuple_struct_with_two_field_twin_rust_async> api2wire_box_autoadd_tuple_struct_with_two_field_twin_rust_async(TupleStructWithTwoFieldTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_tuple_struct_with_two_field_twin_rust_async();
+                    _api_fill_to_wire_tuple_struct_with_two_field_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_tuple_struct_with_two_field_twin_sync> api2wire_box_autoadd_tuple_struct_with_two_field_twin_sync(TupleStructWithTwoFieldTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_tuple_struct_with_two_field_twin_sync();
+                    _api_fill_to_wire_tuple_struct_with_two_field_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<ffi.Uint16> api2wire_box_autoadd_u_16(int raw) {
+                            return wire.new_box_autoadd_u_16(api2wire_u_16(raw));
+                        }@protected
+ffi.Pointer<ffi.Uint32> api2wire_box_autoadd_u_32(int raw) {
+                            return wire.new_box_autoadd_u_32(api2wire_u_32(raw));
+                        }@protected
+ffi.Pointer<ffi.Uint64> api2wire_box_autoadd_u_64(int raw) {
+                            return wire.new_box_autoadd_u_64(api2wire_u_64(raw));
+                        }@protected
+ffi.Pointer<ffi.Uint8> api2wire_box_autoadd_u_8(int raw) {
+                            return wire.new_box_autoadd_u_8(api2wire_u_8(raw));
+                        }@protected
+ffi.Pointer<wire_user_id_twin_normal> api2wire_box_autoadd_user_id_twin_normal(UserIdTwinNormal raw) {
+                            final ptr = wire.new_box_autoadd_user_id_twin_normal();
+                    _api_fill_to_wire_user_id_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_user_id_twin_rust_async> api2wire_box_autoadd_user_id_twin_rust_async(UserIdTwinRustAsync raw) {
+                            final ptr = wire.new_box_autoadd_user_id_twin_rust_async();
+                    _api_fill_to_wire_user_id_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_user_id_twin_sync> api2wire_box_autoadd_user_id_twin_sync(UserIdTwinSync raw) {
+                            final ptr = wire.new_box_autoadd_user_id_twin_sync();
+                    _api_fill_to_wire_user_id_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<ffi.Int32> api2wire_box_autoadd_weekdays_twin_normal(WeekdaysTwinNormal raw) {
+                            return wire.new_box_autoadd_weekdays_twin_normal(api2wire_weekdays_twin_normal(raw));
+                        }@protected
+ffi.Pointer<ffi.Int32> api2wire_box_autoadd_weekdays_twin_rust_async(WeekdaysTwinRustAsync raw) {
+                            return wire.new_box_autoadd_weekdays_twin_rust_async(api2wire_weekdays_twin_rust_async(raw));
+                        }@protected
+ffi.Pointer<ffi.Int32> api2wire_box_autoadd_weekdays_twin_sync(WeekdaysTwinSync raw) {
+                            return wire.new_box_autoadd_weekdays_twin_sync(api2wire_weekdays_twin_sync(raw));
+                        }@protected
+ffi.Pointer<wire_blob_twin_normal> api2wire_box_blob_twin_normal(BlobTwinNormal raw) {
+                            final ptr = wire.new_box_blob_twin_normal();
+                    _api_fill_to_wire_blob_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_blob_twin_rust_async> api2wire_box_blob_twin_rust_async(BlobTwinRustAsync raw) {
+                            final ptr = wire.new_box_blob_twin_rust_async();
+                    _api_fill_to_wire_blob_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_blob_twin_sync> api2wire_box_blob_twin_sync(BlobTwinSync raw) {
+                            final ptr = wire.new_box_blob_twin_sync();
+                    _api_fill_to_wire_blob_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<ffi.Bool> api2wire_box_bool(bool raw) {
+                            return wire.new_box_bool(api2wire_bool(raw));
+                        }@protected
+ffi.Pointer<wire_distance_twin_normal> api2wire_box_distance_twin_normal(DistanceTwinNormal raw) {
+                            final ptr = wire.new_box_distance_twin_normal();
+                    _api_fill_to_wire_distance_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_distance_twin_rust_async> api2wire_box_distance_twin_rust_async(DistanceTwinRustAsync raw) {
+                            final ptr = wire.new_box_distance_twin_rust_async();
+                    _api_fill_to_wire_distance_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_distance_twin_sync> api2wire_box_distance_twin_sync(DistanceTwinSync raw) {
+                            final ptr = wire.new_box_distance_twin_sync();
+                    _api_fill_to_wire_distance_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_exotic_optionals_twin_normal> api2wire_box_exotic_optionals_twin_normal(ExoticOptionalsTwinNormal raw) {
+                            final ptr = wire.new_box_exotic_optionals_twin_normal();
+                    _api_fill_to_wire_exotic_optionals_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_exotic_optionals_twin_rust_async> api2wire_box_exotic_optionals_twin_rust_async(ExoticOptionalsTwinRustAsync raw) {
+                            final ptr = wire.new_box_exotic_optionals_twin_rust_async();
+                    _api_fill_to_wire_exotic_optionals_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_exotic_optionals_twin_sync> api2wire_box_exotic_optionals_twin_sync(ExoticOptionalsTwinSync raw) {
+                            final ptr = wire.new_box_exotic_optionals_twin_sync();
+                    _api_fill_to_wire_exotic_optionals_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<ffi.Double> api2wire_box_f_64(double raw) {
+                            return wire.new_box_f_64(api2wire_f_64(raw));
+                        }@protected
+ffi.Pointer<ffi.Int32> api2wire_box_i_32(int raw) {
+                            return wire.new_box_i_32(api2wire_i_32(raw));
+                        }@protected
+ffi.Pointer<ffi.Int64> api2wire_box_i_64(int raw) {
+                            return wire.new_box_i_64(api2wire_i_64(raw));
+                        }@protected
+ffi.Pointer<ffi.Int8> api2wire_box_i_8(int raw) {
+                            return wire.new_box_i_8(api2wire_i_8(raw));
+                        }@protected
+ffi.Pointer<wire_kitchen_sink_twin_normal> api2wire_box_kitchen_sink_twin_normal(KitchenSinkTwinNormal raw) {
+                            final ptr = wire.new_box_kitchen_sink_twin_normal();
+                    _api_fill_to_wire_kitchen_sink_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_kitchen_sink_twin_rust_async> api2wire_box_kitchen_sink_twin_rust_async(KitchenSinkTwinRustAsync raw) {
+                            final ptr = wire.new_box_kitchen_sink_twin_rust_async();
+                    _api_fill_to_wire_kitchen_sink_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_kitchen_sink_twin_sync> api2wire_box_kitchen_sink_twin_sync(KitchenSinkTwinSync raw) {
+                            final ptr = wire.new_box_kitchen_sink_twin_sync();
+                    _api_fill_to_wire_kitchen_sink_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_my_size> api2wire_box_my_size(MySize raw) {
+                            final ptr = wire.new_box_my_size();
+                    _api_fill_to_wire_my_size(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_speed_twin_normal> api2wire_box_speed_twin_normal(SpeedTwinNormal raw) {
+                            final ptr = wire.new_box_speed_twin_normal();
+                    _api_fill_to_wire_speed_twin_normal(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_speed_twin_rust_async> api2wire_box_speed_twin_rust_async(SpeedTwinRustAsync raw) {
+                            final ptr = wire.new_box_speed_twin_rust_async();
+                    _api_fill_to_wire_speed_twin_rust_async(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<wire_speed_twin_sync> api2wire_box_speed_twin_sync(SpeedTwinSync raw) {
+                            final ptr = wire.new_box_speed_twin_sync();
+                    _api_fill_to_wire_speed_twin_sync(raw, ptr.ref);
+                    return ptr;
+                        }@protected
+ffi.Pointer<ffi.Uint8> api2wire_box_u_8(int raw) {
+                            return wire.new_box_u_8(api2wire_u_8(raw));
+                        }@protected
+ffi.Pointer<wire_list_prim_u_8> api2wire_box_u_8_array_1600(U8Array1600 raw) {
+                            return api2wire_u_8_array_1600(raw);
+                        }@protected
+ffi.Pointer<ffi.Int32> api2wire_box_weekdays_twin_normal(WeekdaysTwinNormal raw) {
+                            return wire.new_box_weekdays_twin_normal(api2wire_weekdays_twin_normal(raw));
+                        }@protected
+ffi.Pointer<ffi.Int32> api2wire_box_weekdays_twin_rust_async(WeekdaysTwinRustAsync raw) {
+                            return wire.new_box_weekdays_twin_rust_async(api2wire_weekdays_twin_rust_async(raw));
+                        }@protected
+ffi.Pointer<ffi.Int32> api2wire_box_weekdays_twin_sync(WeekdaysTwinSync raw) {
+                            return wire.new_box_weekdays_twin_sync(api2wire_weekdays_twin_sync(raw));
+                        }@protected
+ffi.Pointer<wire_list_prim_f_64> api2wire_f_64_array_16(F64Array16 raw) {
+                            final ans = wire.new_list_prim_f_64(16);
+                        ans.ref.ptr.asTypedList(16).setAll(0, raw);
+                        return ans;
+                        }@protected
+ffi.Pointer<wire_list_prim_i_32> api2wire_i_32_array_2(I32Array2 raw) {
+                            final ans = wire.new_list_prim_i_32(2);
+                        ans.ref.ptr.asTypedList(2).setAll(0, raw);
+                        return ans;
+                        }@protected
+int api2wire_i_64(int raw) {
+                            return raw.toInt();
+                        }@protected
+ffi.Pointer<wire_list_DartOpaque> api2wire_list_DartOpaque(List<Object> raw) {
+                            final ans = wire.new_list_DartOpaque(raw.length);
+                for (var i = 0; i < raw.length; ++i) {
+                    _api_fill_to_wire_DartOpaque(raw[i], ans.ref.ptr[i]);
+                }
+                return ans;
+                
+                        }@protected
+ffi.Pointer<wire_list_RustOpaque_hide_data> api2wire_list_RustOpaque_hide_data(List<HideData> raw) {
+                            final ans = wire.new_list_RustOpaque_hide_data(raw.length);
+                for (var i = 0; i < raw.length; ++i) {
+                    ans.ref.ptr[i] = api2wire_RustOpaque_hide_data(raw[i]);
+                }
+                return ans;
+                
+                        }@protected
+ffi.Pointer<wire_list_application_env_var> api2wire_list_application_env_var(List<ApplicationEnvVar> raw) {
+                            final ans = wire.new_list_application_env_var(raw.length);
+                for (var i = 0; i < raw.length; ++i) {
+                    _api_fill_to_wire_application_env_var(raw[i], ans.ref.ptr[i]);
+                }
+                return ans;
+                
+                        }@protected
+ffi.Pointer<wire_list_attribute_twin_normal> api2wire_list_attribute_twin_normal(List<AttributeTwinNormal> raw) {
+                            final ans = wire.new_list_attribute_twin_normal(raw.length);
+                for (var i = 0; i < raw.length; ++i) {
+                    _api_fill_to_wire_attribute_twin_normal(raw[i], ans.ref.ptr[i]);
+                }
+                return ans;
+                
+                        }@protected
+ffi.Pointer<wire_list_attribute_twin_rust_async> api2wire_list_attribute_twin_rust_async(List<AttributeTwinRustAsync> raw) {
+                            final ans = wire.new_list_attribute_twin_rust_async(raw.length);
+                for (var i = 0; i < raw.length; ++i) {
+                    _api_fill_to_wire_attribute_twin_rust_async(raw[i], ans.ref.ptr[i]);
+                }
+                return ans;
+                
+                        }@protected
+ffi.Pointer<wire_list_attribute_twin_sync> api2wire_list_attribute_twin_sync(List<AttributeTwinSync> raw) {
+                            final ans = wire.new_list_attribute_twin_sync(raw.length);
+                for (var i = 0; i < raw.length; ++i) {
+                    _api_fill_to_wire_attribute_twin_sync(raw[i], ans.ref.ptr[i]);
+                }
+                return ans;
+                
+                        }@protected
+ffi.Pointer<wire_list_bool> api2wire_list_bool(List<bool> raw) {
+                            final ans = wire.new_list_bool(raw.length);
+                for (var i = 0; i < raw.length; ++i) {
+                    ans.ref.ptr[i] = api2wire_bool(raw[i]);
+                }
+                return ans;
+                
+                        }@protected
+ffi.Pointer<wire_list_my_size> api2wire_list_my_size(List<MySize> raw) {
+                            final ans = wire.new_list_my_size(raw.length);
+                for (var i = 0; i < raw.length; ++i) {
+                    _api_fill_to_wire_my_size(raw[i], ans.ref.ptr[i]);
+                }
+                return ans;
+                
+                        }@protected
+ffi.Pointer<wire_list_my_tree_node_twin_normal> api2wire_list_my_tree_node_twin_normal(List<MyTreeNodeTwinNormal> raw) {
+                            final ans = wire.new_list_my_tree_node_twin_normal(raw.length);
+                for (var i = 0; i < raw.length; ++i) {
+                    _api_fill_to_wire_my_tree_node_twin_normal(raw[i], ans.ref.ptr[i]);
+                }
+                return ans;
+                
+                        }@protected
+ffi.Pointer<wire_list_my_tree_node_twin_rust_async> api2wire_list_my_tree_node_twin_rust_async(List<MyTreeNodeTwinRustAsync> raw) {
+                            final ans = wire.new_list_my_tree_node_twin_rust_async(raw.length);
+                for (var i = 0; i < raw.length; ++i) {
+                    _api_fill_to_wire_my_tree_node_twin_rust_async(raw[i], ans.ref.ptr[i]);
+                }
+                return ans;
+                
+                        }@protected
+ffi.Pointer<wire_list_my_tree_node_twin_sync> api2wire_list_my_tree_node_twin_sync(List<MyTreeNodeTwinSync> raw) {
+                            final ans = wire.new_list_my_tree_node_twin_sync(raw.length);
+                for (var i = 0; i < raw.length; ++i) {
+                    _api_fill_to_wire_my_tree_node_twin_sync(raw[i], ans.ref.ptr[i]);
+                }
+                return ans;
+                
+                        }@protected
+ffi.Pointer<wire_list_opt_String> api2wire_list_opt_String(List<String?> raw) {
+                            final ans = wire.new_list_opt_String(raw.length);
+                for (var i = 0; i < raw.length; ++i) {
+                    final item = raw[i];
+                    if (item == null) continue;
+                    ans.ref.ptr[i] = api2wire_String(item);
+                }
+                return ans;
+                        }@protected
+ffi.Pointer<wire_list_opt_box_autoadd_attribute_twin_normal> api2wire_list_opt_box_autoadd_attribute_twin_normal(List<AttributeTwinNormal?> raw) {
+                            final ans = wire.new_list_opt_box_autoadd_attribute_twin_normal(raw.length);
+                for (var i = 0; i < raw.length; ++i) {
+                    final item = raw[i];
+                    if (item == null) continue;
+                    ans.ref.ptr[i] = api2wire_box_autoadd_attribute_twin_normal(item);
+                }
+                return ans;
+                        }@protected
+ffi.Pointer<wire_list_opt_box_autoadd_attribute_twin_rust_async> api2wire_list_opt_box_autoadd_attribute_twin_rust_async(List<AttributeTwinRustAsync?> raw) {
+                            final ans = wire.new_list_opt_box_autoadd_attribute_twin_rust_async(raw.length);
+                for (var i = 0; i < raw.length; ++i) {
+                    final item = raw[i];
+                    if (item == null) continue;
+                    ans.ref.ptr[i] = api2wire_box_autoadd_attribute_twin_rust_async(item);
+                }
+                return ans;
+                        }@protected
+ffi.Pointer<wire_list_opt_box_autoadd_attribute_twin_sync> api2wire_list_opt_box_autoadd_attribute_twin_sync(List<AttributeTwinSync?> raw) {
+                            final ans = wire.new_list_opt_box_autoadd_attribute_twin_sync(raw.length);
+                for (var i = 0; i < raw.length; ++i) {
+                    final item = raw[i];
+                    if (item == null) continue;
+                    ans.ref.ptr[i] = api2wire_box_autoadd_attribute_twin_sync(item);
+                }
+                return ans;
+                        }@protected
+ffi.Pointer<wire_list_opt_box_autoadd_i_32> api2wire_list_opt_box_autoadd_i_32(List<int?> raw) {
+                            final ans = wire.new_list_opt_box_autoadd_i_32(raw.length);
+                for (var i = 0; i < raw.length; ++i) {
+                    final item = raw[i];
+                    if (item == null) continue;
+                    ans.ref.ptr[i] = api2wire_box_autoadd_i_32(item);
+                }
+                return ans;
+                        }@protected
+ffi.Pointer<wire_list_opt_box_autoadd_weekdays_twin_normal> api2wire_list_opt_box_autoadd_weekdays_twin_normal(List<WeekdaysTwinNormal?> raw) {
+                            final ans = wire.new_list_opt_box_autoadd_weekdays_twin_normal(raw.length);
+                for (var i = 0; i < raw.length; ++i) {
+                    final item = raw[i];
+                    if (item == null) continue;
+                    ans.ref.ptr[i] = api2wire_box_autoadd_weekdays_twin_normal(item);
+                }
+                return ans;
+                        }@protected
+ffi.Pointer<wire_list_opt_box_autoadd_weekdays_twin_rust_async> api2wire_list_opt_box_autoadd_weekdays_twin_rust_async(List<WeekdaysTwinRustAsync?> raw) {
+                            final ans = wire.new_list_opt_box_autoadd_weekdays_twin_rust_async(raw.length);
+                for (var i = 0; i < raw.length; ++i) {
+                    final item = raw[i];
+                    if (item == null) continue;
+                    ans.ref.ptr[i] = api2wire_box_autoadd_weekdays_twin_rust_async(item);
+                }
+                return ans;
+                        }@protected
+ffi.Pointer<wire_list_opt_box_autoadd_weekdays_twin_sync> api2wire_list_opt_box_autoadd_weekdays_twin_sync(List<WeekdaysTwinSync?> raw) {
+                            final ans = wire.new_list_opt_box_autoadd_weekdays_twin_sync(raw.length);
+                for (var i = 0; i < raw.length; ++i) {
+                    final item = raw[i];
+                    if (item == null) continue;
+                    ans.ref.ptr[i] = api2wire_box_autoadd_weekdays_twin_sync(item);
+                }
+                return ans;
+                        }@protected
+ffi.Pointer<wire_list_opt_list_prim_i_32> api2wire_list_opt_list_prim_i_32(List<Int32List?> raw) {
+                            final ans = wire.new_list_opt_list_prim_i_32(raw.length);
+                for (var i = 0; i < raw.length; ++i) {
+                    final item = raw[i];
+                    if (item == null) continue;
+                    ans.ref.ptr[i] = api2wire_list_prim_i_32(item);
+                }
+                return ans;
+                        }@protected
+ffi.Pointer<wire_list_prim_f_32> api2wire_list_prim_f_32(Float32List raw) {
+                            final ans = wire.new_list_prim_f_32(raw.length);
+                ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+                return ans;
+                        }@protected
+ffi.Pointer<wire_list_prim_f_64> api2wire_list_prim_f_64(Float64List raw) {
+                            final ans = wire.new_list_prim_f_64(raw.length);
+                ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+                return ans;
+                        }@protected
+ffi.Pointer<wire_list_prim_i_16> api2wire_list_prim_i_16(Int16List raw) {
+                            final ans = wire.new_list_prim_i_16(raw.length);
+                ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+                return ans;
+                        }@protected
+ffi.Pointer<wire_list_prim_i_32> api2wire_list_prim_i_32(Int32List raw) {
+                            final ans = wire.new_list_prim_i_32(raw.length);
+                ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+                return ans;
+                        }@protected
+ffi.Pointer<wire_list_prim_i_64> api2wire_list_prim_i_64(Int64List raw) {
+                            final ans = wire.new_list_prim_i_64(raw.length);
+                ans.ref.ptr.asTypedList(raw.length).setAll(0, raw.inner);
+                return ans;
+                        }@protected
+ffi.Pointer<wire_list_prim_i_8> api2wire_list_prim_i_8(Int8List raw) {
+                            final ans = wire.new_list_prim_i_8(raw.length);
+                ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+                return ans;
+                        }@protected
+ffi.Pointer<wire_list_prim_u_16> api2wire_list_prim_u_16(Uint16List raw) {
+                            final ans = wire.new_list_prim_u_16(raw.length);
+                ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+                return ans;
+                        }@protected
+ffi.Pointer<wire_list_prim_u_32> api2wire_list_prim_u_32(Uint32List raw) {
+                            final ans = wire.new_list_prim_u_32(raw.length);
+                ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+                return ans;
+                        }@protected
+ffi.Pointer<wire_list_prim_u_64> api2wire_list_prim_u_64(Uint64List raw) {
+                            final ans = wire.new_list_prim_u_64(raw.length);
+                ans.ref.ptr.asTypedList(raw.length).setAll(0, raw.inner);
+                return ans;
+                        }@protected
+ffi.Pointer<wire_list_prim_u_8> api2wire_list_prim_u_8(Uint8List raw) {
+                            final ans = wire.new_list_prim_u_8(raw.length);
+                ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+                return ans;
+                        }@protected
+ffi.Pointer<wire_list_record_string_i_32> api2wire_list_record_string_i_32(List<(String,int)> raw) {
+                            final ans = wire.new_list_record_string_i_32(raw.length);
+                for (var i = 0; i < raw.length; ++i) {
+                    _api_fill_to_wire_record_string_i_32(raw[i], ans.ref.ptr[i]);
+                }
+                return ans;
+                
+                        }@protected
+ffi.Pointer<wire_list_test_id_twin_normal> api2wire_list_test_id_twin_normal(List<TestIdTwinNormal> raw) {
+                            final ans = wire.new_list_test_id_twin_normal(raw.length);
+                for (var i = 0; i < raw.length; ++i) {
+                    _api_fill_to_wire_test_id_twin_normal(raw[i], ans.ref.ptr[i]);
+                }
+                return ans;
+                
+                        }@protected
+ffi.Pointer<wire_list_test_id_twin_rust_async> api2wire_list_test_id_twin_rust_async(List<TestIdTwinRustAsync> raw) {
+                            final ans = wire.new_list_test_id_twin_rust_async(raw.length);
+                for (var i = 0; i < raw.length; ++i) {
+                    _api_fill_to_wire_test_id_twin_rust_async(raw[i], ans.ref.ptr[i]);
+                }
+                return ans;
+                
+                        }@protected
+ffi.Pointer<wire_list_test_id_twin_sync> api2wire_list_test_id_twin_sync(List<TestIdTwinSync> raw) {
+                            final ans = wire.new_list_test_id_twin_sync(raw.length);
+                for (var i = 0; i < raw.length; ++i) {
+                    _api_fill_to_wire_test_id_twin_sync(raw[i], ans.ref.ptr[i]);
+                }
+                return ans;
+                
+                        }@protected
+ffi.Pointer<wire_list_weekdays_twin_normal> api2wire_list_weekdays_twin_normal(List<WeekdaysTwinNormal> raw) {
+                            final ans = wire.new_list_weekdays_twin_normal(raw.length);
+                for (var i = 0; i < raw.length; ++i) {
+                    ans.ref.ptr[i] = api2wire_weekdays_twin_normal(raw[i]);
+                }
+                return ans;
+                
+                        }@protected
+ffi.Pointer<wire_list_weekdays_twin_rust_async> api2wire_list_weekdays_twin_rust_async(List<WeekdaysTwinRustAsync> raw) {
+                            final ans = wire.new_list_weekdays_twin_rust_async(raw.length);
+                for (var i = 0; i < raw.length; ++i) {
+                    ans.ref.ptr[i] = api2wire_weekdays_twin_rust_async(raw[i]);
+                }
+                return ans;
+                
+                        }@protected
+ffi.Pointer<wire_list_weekdays_twin_sync> api2wire_list_weekdays_twin_sync(List<WeekdaysTwinSync> raw) {
+                            final ans = wire.new_list_weekdays_twin_sync(raw.length);
+                for (var i = 0; i < raw.length; ++i) {
+                    ans.ref.ptr[i] = api2wire_weekdays_twin_sync(raw[i]);
+                }
+                return ans;
+                
+                        }@protected
+ffi.Pointer<wire_list_prim_u_8> api2wire_opt_String(String? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_String(raw);
+                        }@protected
+ffi.Pointer<wire_list_prim_u_8> api2wire_opt_ZeroCopyBuffer_list_prim_u_8(Uint8List? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_ZeroCopyBuffer_list_prim_u_8(raw);
+                        }@protected
+ffi.Pointer<ffi.Int64> api2wire_opt_box_autoadd_Chrono_Utc(DateTime? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_autoadd_Chrono_Utc(raw);
+                        }@protected
+ffi.Pointer<wire_DartOpaque> api2wire_opt_box_autoadd_DartOpaque(Object? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_autoadd_DartOpaque(raw);
+                        }@protected
+ffi.Pointer<PlatformPointer> api2wire_opt_box_autoadd_RustOpaque_hide_data(HideData? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_autoadd_RustOpaque_hide_data(raw);
+                        }@protected
+ffi.Pointer<wire_application_env> api2wire_opt_box_autoadd_application_env(ApplicationEnv? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_autoadd_application_env(raw);
+                        }@protected
+ffi.Pointer<ffi.Bool> api2wire_opt_box_autoadd_bool(bool? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_autoadd_bool(raw);
+                        }@protected
+ffi.Pointer<wire_exotic_optionals_twin_normal> api2wire_opt_box_autoadd_exotic_optionals_twin_normal(ExoticOptionalsTwinNormal? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_autoadd_exotic_optionals_twin_normal(raw);
+                        }@protected
+ffi.Pointer<wire_exotic_optionals_twin_rust_async> api2wire_opt_box_autoadd_exotic_optionals_twin_rust_async(ExoticOptionalsTwinRustAsync? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_autoadd_exotic_optionals_twin_rust_async(raw);
+                        }@protected
+ffi.Pointer<wire_exotic_optionals_twin_sync> api2wire_opt_box_autoadd_exotic_optionals_twin_sync(ExoticOptionalsTwinSync? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_autoadd_exotic_optionals_twin_sync(raw);
+                        }@protected
+ffi.Pointer<ffi.Float> api2wire_opt_box_autoadd_f_32(double? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_autoadd_f_32(raw);
+                        }@protected
+ffi.Pointer<ffi.Double> api2wire_opt_box_autoadd_f_64(double? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_autoadd_f_64(raw);
+                        }@protected
+ffi.Pointer<ffi.Int16> api2wire_opt_box_autoadd_i_16(int? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_autoadd_i_16(raw);
+                        }@protected
+ffi.Pointer<ffi.Int32> api2wire_opt_box_autoadd_i_32(int? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_autoadd_i_32(raw);
+                        }@protected
+ffi.Pointer<ffi.Int64> api2wire_opt_box_autoadd_i_64(int? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_autoadd_i_64(raw);
+                        }@protected
+ffi.Pointer<ffi.Int8> api2wire_opt_box_autoadd_i_8(int? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_autoadd_i_8(raw);
+                        }@protected
+ffi.Pointer<wire_new_type_int_twin_normal> api2wire_opt_box_autoadd_new_type_int_twin_normal(NewTypeIntTwinNormal? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_autoadd_new_type_int_twin_normal(raw);
+                        }@protected
+ffi.Pointer<wire_new_type_int_twin_rust_async> api2wire_opt_box_autoadd_new_type_int_twin_rust_async(NewTypeIntTwinRustAsync? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_autoadd_new_type_int_twin_rust_async(raw);
+                        }@protected
+ffi.Pointer<wire_new_type_int_twin_sync> api2wire_opt_box_autoadd_new_type_int_twin_sync(NewTypeIntTwinSync? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_autoadd_new_type_int_twin_sync(raw);
+                        }@protected
+ffi.Pointer<wire_record_string_i_32> api2wire_opt_box_autoadd_record_string_i_32((String,int)? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_autoadd_record_string_i_32(raw);
+                        }@protected
+ffi.Pointer<ffi.Uint16> api2wire_opt_box_autoadd_u_16(int? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_autoadd_u_16(raw);
+                        }@protected
+ffi.Pointer<ffi.Uint32> api2wire_opt_box_autoadd_u_32(int? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_autoadd_u_32(raw);
+                        }@protected
+ffi.Pointer<ffi.Uint64> api2wire_opt_box_autoadd_u_64(int? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_autoadd_u_64(raw);
+                        }@protected
+ffi.Pointer<ffi.Uint8> api2wire_opt_box_autoadd_u_8(int? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_autoadd_u_8(raw);
+                        }@protected
+ffi.Pointer<ffi.Bool> api2wire_opt_box_bool(bool? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_bool(raw);
+                        }@protected
+ffi.Pointer<wire_exotic_optionals_twin_normal> api2wire_opt_box_exotic_optionals_twin_normal(ExoticOptionalsTwinNormal? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_exotic_optionals_twin_normal(raw);
+                        }@protected
+ffi.Pointer<wire_exotic_optionals_twin_rust_async> api2wire_opt_box_exotic_optionals_twin_rust_async(ExoticOptionalsTwinRustAsync? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_exotic_optionals_twin_rust_async(raw);
+                        }@protected
+ffi.Pointer<wire_exotic_optionals_twin_sync> api2wire_opt_box_exotic_optionals_twin_sync(ExoticOptionalsTwinSync? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_exotic_optionals_twin_sync(raw);
+                        }@protected
+ffi.Pointer<ffi.Double> api2wire_opt_box_f_64(double? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_f_64(raw);
+                        }@protected
+ffi.Pointer<ffi.Int32> api2wire_opt_box_i_32(int? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_i_32(raw);
+                        }@protected
+ffi.Pointer<ffi.Int64> api2wire_opt_box_i_64(int? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_i_64(raw);
+                        }@protected
+ffi.Pointer<ffi.Int8> api2wire_opt_box_i_8(int? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_i_8(raw);
+                        }@protected
+ffi.Pointer<ffi.Uint8> api2wire_opt_box_u_8(int? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_box_u_8(raw);
+                        }@protected
+ffi.Pointer<wire_list_attribute_twin_normal> api2wire_opt_list_attribute_twin_normal(List<AttributeTwinNormal>? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_list_attribute_twin_normal(raw);
+                        }@protected
+ffi.Pointer<wire_list_attribute_twin_rust_async> api2wire_opt_list_attribute_twin_rust_async(List<AttributeTwinRustAsync>? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_list_attribute_twin_rust_async(raw);
+                        }@protected
+ffi.Pointer<wire_list_attribute_twin_sync> api2wire_opt_list_attribute_twin_sync(List<AttributeTwinSync>? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_list_attribute_twin_sync(raw);
+                        }@protected
+ffi.Pointer<wire_list_opt_box_autoadd_attribute_twin_normal> api2wire_opt_list_opt_box_autoadd_attribute_twin_normal(List<AttributeTwinNormal?>? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_list_opt_box_autoadd_attribute_twin_normal(raw);
+                        }@protected
+ffi.Pointer<wire_list_opt_box_autoadd_attribute_twin_rust_async> api2wire_opt_list_opt_box_autoadd_attribute_twin_rust_async(List<AttributeTwinRustAsync?>? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_list_opt_box_autoadd_attribute_twin_rust_async(raw);
+                        }@protected
+ffi.Pointer<wire_list_opt_box_autoadd_attribute_twin_sync> api2wire_opt_list_opt_box_autoadd_attribute_twin_sync(List<AttributeTwinSync?>? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_list_opt_box_autoadd_attribute_twin_sync(raw);
+                        }@protected
+ffi.Pointer<wire_list_prim_f_32> api2wire_opt_list_prim_f_32(Float32List? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_list_prim_f_32(raw);
+                        }@protected
+ffi.Pointer<wire_list_prim_f_64> api2wire_opt_list_prim_f_64(Float64List? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_list_prim_f_64(raw);
+                        }@protected
+ffi.Pointer<wire_list_prim_i_32> api2wire_opt_list_prim_i_32(Int32List? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_list_prim_i_32(raw);
+                        }@protected
+ffi.Pointer<wire_list_prim_i_8> api2wire_opt_list_prim_i_8(Int8List? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_list_prim_i_8(raw);
+                        }@protected
+ffi.Pointer<wire_list_prim_u_8> api2wire_opt_list_prim_u_8(Uint8List? raw) {
+                            return raw == null ? ffi.nullptr : api2wire_list_prim_u_8(raw);
+                        }@protected
+ffi.Pointer<wire_list_test_id_twin_normal> api2wire_test_id_twin_normal_array_4(TestIdTwinNormalArray4 raw) {
+                            return api2wire_list_test_id_twin_normal(raw);
+                        }@protected
+ffi.Pointer<wire_list_test_id_twin_rust_async> api2wire_test_id_twin_rust_async_array_4(TestIdTwinRustAsyncArray4 raw) {
+                            return api2wire_list_test_id_twin_rust_async(raw);
+                        }@protected
+ffi.Pointer<wire_list_test_id_twin_sync> api2wire_test_id_twin_sync_array_4(TestIdTwinSyncArray4 raw) {
+                            return api2wire_list_test_id_twin_sync(raw);
+                        }@protected
+int api2wire_u_64(int raw) {
+                            return raw.toInt();
+                        }@protected
+ffi.Pointer<wire_list_prim_u_8> api2wire_u_8_array_1600(U8Array1600 raw) {
+                            final ans = wire.new_list_prim_u_8(1600);
+                        ans.ref.ptr.asTypedList(1600).setAll(0, raw);
+                        return ans;
+                        }@protected
+ffi.Pointer<wire_list_prim_u_8> api2wire_u_8_array_32(U8Array32 raw) {
+                            final ans = wire.new_list_prim_u_8(32);
+                        ans.ref.ptr.asTypedList(32).setAll(0, raw);
+                        return ans;
+                        }@protected
+ffi.Pointer<wire_list_prim_u_8> api2wire_u_8_array_8(U8Array8 raw) {
+                            final ans = wire.new_list_prim_u_8(8);
+                        ans.ref.ptr.asTypedList(8).setAll(0, raw);
+                        return ans;
+                        }void _api_fill_to_wire_DartOpaque(Object apiObj, wire_DartOpaque wireObj) {
+                    wireObj.handle = generalizedFrbRustBinding.newDartOpaque(apiObj);
+            wireObj.port = dropPortManager.dropPort;
+                }void _api_fill_to_wire_a_twin_normal(ATwinNormal apiObj, wire_a_twin_normal wireObj) {
+                    wireObj.a = api2wire_String(apiObj.a);
+                }void _api_fill_to_wire_a_twin_rust_async(ATwinRustAsync apiObj, wire_a_twin_rust_async wireObj) {
+                    wireObj.a = api2wire_String(apiObj.a);
+                }void _api_fill_to_wire_a_twin_sync(ATwinSync apiObj, wire_a_twin_sync wireObj) {
+                    wireObj.a = api2wire_String(apiObj.a);
+                }void _api_fill_to_wire_abc_twin_normal(AbcTwinNormal apiObj, wire_abc_twin_normal wireObj) {
+                    if (apiObj is AbcTwinNormal_A) {
+                var pre_field0 = api2wire_box_autoadd_a_twin_normal(apiObj.field0);wireObj.tag = 0;wireObj.kind = wire.inflate_AbcTwinNormal_A();wireObj.kind.ref.A.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is AbcTwinNormal_B) {
+                var pre_field0 = api2wire_box_autoadd_b_twin_normal(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_AbcTwinNormal_B();wireObj.kind.ref.B.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is AbcTwinNormal_C) {
+                var pre_field0 = api2wire_box_autoadd_c_twin_normal(apiObj.field0);wireObj.tag = 2;wireObj.kind = wire.inflate_AbcTwinNormal_C();wireObj.kind.ref.C.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is AbcTwinNormal_JustInt) {
+                var pre_field0 = api2wire_i_32(apiObj.field0);wireObj.tag = 3;wireObj.kind = wire.inflate_AbcTwinNormal_JustInt();wireObj.kind.ref.JustInt.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_abc_twin_rust_async(AbcTwinRustAsync apiObj, wire_abc_twin_rust_async wireObj) {
+                    if (apiObj is AbcTwinRustAsync_A) {
+                var pre_field0 = api2wire_box_autoadd_a_twin_rust_async(apiObj.field0);wireObj.tag = 0;wireObj.kind = wire.inflate_AbcTwinRustAsync_A();wireObj.kind.ref.A.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is AbcTwinRustAsync_B) {
+                var pre_field0 = api2wire_box_autoadd_b_twin_rust_async(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_AbcTwinRustAsync_B();wireObj.kind.ref.B.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is AbcTwinRustAsync_C) {
+                var pre_field0 = api2wire_box_autoadd_c_twin_rust_async(apiObj.field0);wireObj.tag = 2;wireObj.kind = wire.inflate_AbcTwinRustAsync_C();wireObj.kind.ref.C.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is AbcTwinRustAsync_JustInt) {
+                var pre_field0 = api2wire_i_32(apiObj.field0);wireObj.tag = 3;wireObj.kind = wire.inflate_AbcTwinRustAsync_JustInt();wireObj.kind.ref.JustInt.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_abc_twin_sync(AbcTwinSync apiObj, wire_abc_twin_sync wireObj) {
+                    if (apiObj is AbcTwinSync_A) {
+                var pre_field0 = api2wire_box_autoadd_a_twin_sync(apiObj.field0);wireObj.tag = 0;wireObj.kind = wire.inflate_AbcTwinSync_A();wireObj.kind.ref.A.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is AbcTwinSync_B) {
+                var pre_field0 = api2wire_box_autoadd_b_twin_sync(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_AbcTwinSync_B();wireObj.kind.ref.B.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is AbcTwinSync_C) {
+                var pre_field0 = api2wire_box_autoadd_c_twin_sync(apiObj.field0);wireObj.tag = 2;wireObj.kind = wire.inflate_AbcTwinSync_C();wireObj.kind.ref.C.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is AbcTwinSync_JustInt) {
+                var pre_field0 = api2wire_i_32(apiObj.field0);wireObj.tag = 3;wireObj.kind = wire.inflate_AbcTwinSync_JustInt();wireObj.kind.ref.JustInt.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_application_env(ApplicationEnv apiObj, wire_application_env wireObj) {
+                    wireObj.vars = api2wire_list_application_env_var(apiObj.vars);
+                }void _api_fill_to_wire_application_env_var(ApplicationEnvVar apiObj, wire_application_env_var wireObj) {
+                    wireObj.field0 = api2wire_String(apiObj.field0);
+wireObj.field1 = api2wire_bool(apiObj.field1);
+                }void _api_fill_to_wire_application_settings(ApplicationSettings apiObj, wire_application_settings wireObj) {
+                    wireObj.name = api2wire_String(apiObj.name);
+wireObj.version = api2wire_String(apiObj.version);
+wireObj.mode = api2wire_application_mode(apiObj.mode);
+wireObj.env = api2wire_box_application_env(apiObj.env);
+wireObj.env_optional = api2wire_opt_box_autoadd_application_env(apiObj.envOptional);
+                }void _api_fill_to_wire_attribute_twin_normal(AttributeTwinNormal apiObj, wire_attribute_twin_normal wireObj) {
+                    wireObj.key = api2wire_String(apiObj.key);
+wireObj.value = api2wire_String(apiObj.value);
+                }void _api_fill_to_wire_attribute_twin_rust_async(AttributeTwinRustAsync apiObj, wire_attribute_twin_rust_async wireObj) {
+                    wireObj.key = api2wire_String(apiObj.key);
+wireObj.value = api2wire_String(apiObj.value);
+                }void _api_fill_to_wire_attribute_twin_sync(AttributeTwinSync apiObj, wire_attribute_twin_sync wireObj) {
+                    wireObj.key = api2wire_String(apiObj.key);
+wireObj.value = api2wire_String(apiObj.value);
+                }void _api_fill_to_wire_b_twin_normal(BTwinNormal apiObj, wire_b_twin_normal wireObj) {
+                    wireObj.b = api2wire_i_32(apiObj.b);
+                }void _api_fill_to_wire_b_twin_rust_async(BTwinRustAsync apiObj, wire_b_twin_rust_async wireObj) {
+                    wireObj.b = api2wire_i_32(apiObj.b);
+                }void _api_fill_to_wire_b_twin_sync(BTwinSync apiObj, wire_b_twin_sync wireObj) {
+                    wireObj.b = api2wire_i_32(apiObj.b);
+                }void _api_fill_to_wire_blob_twin_normal(BlobTwinNormal apiObj, wire_blob_twin_normal wireObj) {
+                    wireObj.field0 = api2wire_u_8_array_1600(apiObj.field0);
+                }void _api_fill_to_wire_blob_twin_rust_async(BlobTwinRustAsync apiObj, wire_blob_twin_rust_async wireObj) {
+                    wireObj.field0 = api2wire_u_8_array_1600(apiObj.field0);
+                }void _api_fill_to_wire_blob_twin_sync(BlobTwinSync apiObj, wire_blob_twin_sync wireObj) {
+                    wireObj.field0 = api2wire_u_8_array_1600(apiObj.field0);
+                }void _api_fill_to_wire_box_application_env(ApplicationEnv apiObj, ffi.Pointer<wire_application_env> wireObj) {
+                    _api_fill_to_wire_application_env(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_DartOpaque(Object apiObj, ffi.Pointer<wire_DartOpaque> wireObj) {
+                    _api_fill_to_wire_DartOpaque(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_a_twin_normal(ATwinNormal apiObj, ffi.Pointer<wire_a_twin_normal> wireObj) {
+                    _api_fill_to_wire_a_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_a_twin_rust_async(ATwinRustAsync apiObj, ffi.Pointer<wire_a_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_a_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_a_twin_sync(ATwinSync apiObj, ffi.Pointer<wire_a_twin_sync> wireObj) {
+                    _api_fill_to_wire_a_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_abc_twin_normal(AbcTwinNormal apiObj, ffi.Pointer<wire_abc_twin_normal> wireObj) {
+                    _api_fill_to_wire_abc_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_abc_twin_rust_async(AbcTwinRustAsync apiObj, ffi.Pointer<wire_abc_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_abc_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_abc_twin_sync(AbcTwinSync apiObj, ffi.Pointer<wire_abc_twin_sync> wireObj) {
+                    _api_fill_to_wire_abc_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_application_env(ApplicationEnv apiObj, ffi.Pointer<wire_application_env> wireObj) {
+                    _api_fill_to_wire_application_env(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_application_settings(ApplicationSettings apiObj, ffi.Pointer<wire_application_settings> wireObj) {
+                    _api_fill_to_wire_application_settings(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_attribute_twin_normal(AttributeTwinNormal apiObj, ffi.Pointer<wire_attribute_twin_normal> wireObj) {
+                    _api_fill_to_wire_attribute_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_attribute_twin_rust_async(AttributeTwinRustAsync apiObj, ffi.Pointer<wire_attribute_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_attribute_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_attribute_twin_sync(AttributeTwinSync apiObj, ffi.Pointer<wire_attribute_twin_sync> wireObj) {
+                    _api_fill_to_wire_attribute_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_b_twin_normal(BTwinNormal apiObj, ffi.Pointer<wire_b_twin_normal> wireObj) {
+                    _api_fill_to_wire_b_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_b_twin_rust_async(BTwinRustAsync apiObj, ffi.Pointer<wire_b_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_b_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_b_twin_sync(BTwinSync apiObj, ffi.Pointer<wire_b_twin_sync> wireObj) {
+                    _api_fill_to_wire_b_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_c_twin_normal(CTwinNormal apiObj, ffi.Pointer<wire_c_twin_normal> wireObj) {
+                    _api_fill_to_wire_c_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_c_twin_rust_async(CTwinRustAsync apiObj, ffi.Pointer<wire_c_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_c_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_c_twin_sync(CTwinSync apiObj, ffi.Pointer<wire_c_twin_sync> wireObj) {
+                    _api_fill_to_wire_c_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_concatenate_with_twin_normal(ConcatenateWithTwinNormal apiObj, ffi.Pointer<wire_concatenate_with_twin_normal> wireObj) {
+                    _api_fill_to_wire_concatenate_with_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_concatenate_with_twin_rust_async(ConcatenateWithTwinRustAsync apiObj, ffi.Pointer<wire_concatenate_with_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_concatenate_with_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_concatenate_with_twin_sync(ConcatenateWithTwinSync apiObj, ffi.Pointer<wire_concatenate_with_twin_sync> wireObj) {
+                    _api_fill_to_wire_concatenate_with_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_custom_nested_error_inner_twin_normal(CustomNestedErrorInnerTwinNormal apiObj, ffi.Pointer<wire_custom_nested_error_inner_twin_normal> wireObj) {
+                    _api_fill_to_wire_custom_nested_error_inner_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_custom_nested_error_inner_twin_rust_async(CustomNestedErrorInnerTwinRustAsync apiObj, ffi.Pointer<wire_custom_nested_error_inner_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_custom_nested_error_inner_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_custom_nested_error_inner_twin_sync(CustomNestedErrorInnerTwinSync apiObj, ffi.Pointer<wire_custom_nested_error_inner_twin_sync> wireObj) {
+                    _api_fill_to_wire_custom_nested_error_inner_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_custom_nested_error_outer_twin_normal(CustomNestedErrorOuterTwinNormal apiObj, ffi.Pointer<wire_custom_nested_error_outer_twin_normal> wireObj) {
+                    _api_fill_to_wire_custom_nested_error_outer_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_custom_nested_error_outer_twin_rust_async(CustomNestedErrorOuterTwinRustAsync apiObj, ffi.Pointer<wire_custom_nested_error_outer_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_custom_nested_error_outer_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_custom_nested_error_outer_twin_sync(CustomNestedErrorOuterTwinSync apiObj, ffi.Pointer<wire_custom_nested_error_outer_twin_sync> wireObj) {
+                    _api_fill_to_wire_custom_nested_error_outer_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_custom_struct_error_twin_normal(CustomStructErrorTwinNormal apiObj, ffi.Pointer<wire_custom_struct_error_twin_normal> wireObj) {
+                    _api_fill_to_wire_custom_struct_error_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_custom_struct_error_twin_rust_async(CustomStructErrorTwinRustAsync apiObj, ffi.Pointer<wire_custom_struct_error_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_custom_struct_error_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_custom_struct_error_twin_sync(CustomStructErrorTwinSync apiObj, ffi.Pointer<wire_custom_struct_error_twin_sync> wireObj) {
+                    _api_fill_to_wire_custom_struct_error_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_custom_struct_twin_normal(CustomStructTwinNormal apiObj, ffi.Pointer<wire_custom_struct_twin_normal> wireObj) {
+                    _api_fill_to_wire_custom_struct_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_custom_struct_twin_rust_async(CustomStructTwinRustAsync apiObj, ffi.Pointer<wire_custom_struct_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_custom_struct_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_custom_struct_twin_sync(CustomStructTwinSync apiObj, ffi.Pointer<wire_custom_struct_twin_sync> wireObj) {
+                    _api_fill_to_wire_custom_struct_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_customized_twin_normal(CustomizedTwinNormal apiObj, ffi.Pointer<wire_customized_twin_normal> wireObj) {
+                    _api_fill_to_wire_customized_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_customized_twin_rust_async(CustomizedTwinRustAsync apiObj, ffi.Pointer<wire_customized_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_customized_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_customized_twin_sync(CustomizedTwinSync apiObj, ffi.Pointer<wire_customized_twin_sync> wireObj) {
+                    _api_fill_to_wire_customized_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_dart_opaque_nested_twin_normal(DartOpaqueNestedTwinNormal apiObj, ffi.Pointer<wire_dart_opaque_nested_twin_normal> wireObj) {
+                    _api_fill_to_wire_dart_opaque_nested_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_dart_opaque_nested_twin_rust_async(DartOpaqueNestedTwinRustAsync apiObj, ffi.Pointer<wire_dart_opaque_nested_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_dart_opaque_nested_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_dart_opaque_nested_twin_sync(DartOpaqueNestedTwinSync apiObj, ffi.Pointer<wire_dart_opaque_nested_twin_sync> wireObj) {
+                    _api_fill_to_wire_dart_opaque_nested_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_enum_dart_opaque_twin_normal(EnumDartOpaqueTwinNormal apiObj, ffi.Pointer<wire_enum_dart_opaque_twin_normal> wireObj) {
+                    _api_fill_to_wire_enum_dart_opaque_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_enum_dart_opaque_twin_rust_async(EnumDartOpaqueTwinRustAsync apiObj, ffi.Pointer<wire_enum_dart_opaque_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_enum_dart_opaque_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_enum_dart_opaque_twin_sync(EnumDartOpaqueTwinSync apiObj, ffi.Pointer<wire_enum_dart_opaque_twin_sync> wireObj) {
+                    _api_fill_to_wire_enum_dart_opaque_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_enum_opaque_twin_normal(EnumOpaqueTwinNormal apiObj, ffi.Pointer<wire_enum_opaque_twin_normal> wireObj) {
+                    _api_fill_to_wire_enum_opaque_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_enum_opaque_twin_rust_async(EnumOpaqueTwinRustAsync apiObj, ffi.Pointer<wire_enum_opaque_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_enum_opaque_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_enum_opaque_twin_sync(EnumOpaqueTwinSync apiObj, ffi.Pointer<wire_enum_opaque_twin_sync> wireObj) {
+                    _api_fill_to_wire_enum_opaque_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_enum_with_item_mixed_twin_normal(EnumWithItemMixedTwinNormal apiObj, ffi.Pointer<wire_enum_with_item_mixed_twin_normal> wireObj) {
+                    _api_fill_to_wire_enum_with_item_mixed_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_enum_with_item_mixed_twin_rust_async(EnumWithItemMixedTwinRustAsync apiObj, ffi.Pointer<wire_enum_with_item_mixed_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_enum_with_item_mixed_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_enum_with_item_mixed_twin_sync(EnumWithItemMixedTwinSync apiObj, ffi.Pointer<wire_enum_with_item_mixed_twin_sync> wireObj) {
+                    _api_fill_to_wire_enum_with_item_mixed_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_enum_with_item_struct_twin_normal(EnumWithItemStructTwinNormal apiObj, ffi.Pointer<wire_enum_with_item_struct_twin_normal> wireObj) {
+                    _api_fill_to_wire_enum_with_item_struct_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_enum_with_item_struct_twin_rust_async(EnumWithItemStructTwinRustAsync apiObj, ffi.Pointer<wire_enum_with_item_struct_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_enum_with_item_struct_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_enum_with_item_struct_twin_sync(EnumWithItemStructTwinSync apiObj, ffi.Pointer<wire_enum_with_item_struct_twin_sync> wireObj) {
+                    _api_fill_to_wire_enum_with_item_struct_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_enum_with_item_tuple_twin_normal(EnumWithItemTupleTwinNormal apiObj, ffi.Pointer<wire_enum_with_item_tuple_twin_normal> wireObj) {
+                    _api_fill_to_wire_enum_with_item_tuple_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_enum_with_item_tuple_twin_rust_async(EnumWithItemTupleTwinRustAsync apiObj, ffi.Pointer<wire_enum_with_item_tuple_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_enum_with_item_tuple_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_enum_with_item_tuple_twin_sync(EnumWithItemTupleTwinSync apiObj, ffi.Pointer<wire_enum_with_item_tuple_twin_sync> wireObj) {
+                    _api_fill_to_wire_enum_with_item_tuple_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_event_twin_normal(EventTwinNormal apiObj, ffi.Pointer<wire_event_twin_normal> wireObj) {
+                    _api_fill_to_wire_event_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_event_twin_rust_async(EventTwinRustAsync apiObj, ffi.Pointer<wire_event_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_event_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_event_twin_sync(EventTwinSync apiObj, ffi.Pointer<wire_event_twin_sync> wireObj) {
+                    _api_fill_to_wire_event_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_exotic_optionals_twin_normal(ExoticOptionalsTwinNormal apiObj, ffi.Pointer<wire_exotic_optionals_twin_normal> wireObj) {
+                    _api_fill_to_wire_exotic_optionals_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_exotic_optionals_twin_rust_async(ExoticOptionalsTwinRustAsync apiObj, ffi.Pointer<wire_exotic_optionals_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_exotic_optionals_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_exotic_optionals_twin_sync(ExoticOptionalsTwinSync apiObj, ffi.Pointer<wire_exotic_optionals_twin_sync> wireObj) {
+                    _api_fill_to_wire_exotic_optionals_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_feature_chrono_twin_normal(FeatureChronoTwinNormal apiObj, ffi.Pointer<wire_feature_chrono_twin_normal> wireObj) {
+                    _api_fill_to_wire_feature_chrono_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_feature_chrono_twin_rust_async(FeatureChronoTwinRustAsync apiObj, ffi.Pointer<wire_feature_chrono_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_feature_chrono_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_feature_chrono_twin_sync(FeatureChronoTwinSync apiObj, ffi.Pointer<wire_feature_chrono_twin_sync> wireObj) {
+                    _api_fill_to_wire_feature_chrono_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_feature_uuid_twin_normal(FeatureUuidTwinNormal apiObj, ffi.Pointer<wire_feature_uuid_twin_normal> wireObj) {
+                    _api_fill_to_wire_feature_uuid_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_feature_uuid_twin_rust_async(FeatureUuidTwinRustAsync apiObj, ffi.Pointer<wire_feature_uuid_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_feature_uuid_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_feature_uuid_twin_sync(FeatureUuidTwinSync apiObj, ffi.Pointer<wire_feature_uuid_twin_sync> wireObj) {
+                    _api_fill_to_wire_feature_uuid_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_feed_id_twin_normal(FeedIdTwinNormal apiObj, ffi.Pointer<wire_feed_id_twin_normal> wireObj) {
+                    _api_fill_to_wire_feed_id_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_feed_id_twin_rust_async(FeedIdTwinRustAsync apiObj, ffi.Pointer<wire_feed_id_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_feed_id_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_feed_id_twin_sync(FeedIdTwinSync apiObj, ffi.Pointer<wire_feed_id_twin_sync> wireObj) {
+                    _api_fill_to_wire_feed_id_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_kitchen_sink_twin_normal(KitchenSinkTwinNormal apiObj, ffi.Pointer<wire_kitchen_sink_twin_normal> wireObj) {
+                    _api_fill_to_wire_kitchen_sink_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_kitchen_sink_twin_rust_async(KitchenSinkTwinRustAsync apiObj, ffi.Pointer<wire_kitchen_sink_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_kitchen_sink_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_kitchen_sink_twin_sync(KitchenSinkTwinSync apiObj, ffi.Pointer<wire_kitchen_sink_twin_sync> wireObj) {
+                    _api_fill_to_wire_kitchen_sink_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_macro_struct(MacroStruct apiObj, ffi.Pointer<wire_macro_struct> wireObj) {
+                    _api_fill_to_wire_macro_struct(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_measure_twin_normal(MeasureTwinNormal apiObj, ffi.Pointer<wire_measure_twin_normal> wireObj) {
+                    _api_fill_to_wire_measure_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_measure_twin_rust_async(MeasureTwinRustAsync apiObj, ffi.Pointer<wire_measure_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_measure_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_measure_twin_sync(MeasureTwinSync apiObj, ffi.Pointer<wire_measure_twin_sync> wireObj) {
+                    _api_fill_to_wire_measure_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_message_id_twin_normal(MessageIdTwinNormal apiObj, ffi.Pointer<wire_message_id_twin_normal> wireObj) {
+                    _api_fill_to_wire_message_id_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_message_id_twin_rust_async(MessageIdTwinRustAsync apiObj, ffi.Pointer<wire_message_id_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_message_id_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_message_id_twin_sync(MessageIdTwinSync apiObj, ffi.Pointer<wire_message_id_twin_sync> wireObj) {
+                    _api_fill_to_wire_message_id_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_my_nested_struct_twin_normal(MyNestedStructTwinNormal apiObj, ffi.Pointer<wire_my_nested_struct_twin_normal> wireObj) {
+                    _api_fill_to_wire_my_nested_struct_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_my_nested_struct_twin_rust_async(MyNestedStructTwinRustAsync apiObj, ffi.Pointer<wire_my_nested_struct_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_my_nested_struct_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_my_nested_struct_twin_sync(MyNestedStructTwinSync apiObj, ffi.Pointer<wire_my_nested_struct_twin_sync> wireObj) {
+                    _api_fill_to_wire_my_nested_struct_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_my_size(MySize apiObj, ffi.Pointer<wire_my_size> wireObj) {
+                    _api_fill_to_wire_my_size(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_my_struct(MyStruct apiObj, ffi.Pointer<wire_my_struct> wireObj) {
+                    _api_fill_to_wire_my_struct(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_my_tree_node_twin_normal(MyTreeNodeTwinNormal apiObj, ffi.Pointer<wire_my_tree_node_twin_normal> wireObj) {
+                    _api_fill_to_wire_my_tree_node_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_my_tree_node_twin_rust_async(MyTreeNodeTwinRustAsync apiObj, ffi.Pointer<wire_my_tree_node_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_my_tree_node_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_my_tree_node_twin_sync(MyTreeNodeTwinSync apiObj, ffi.Pointer<wire_my_tree_node_twin_sync> wireObj) {
+                    _api_fill_to_wire_my_tree_node_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_new_type_int_twin_normal(NewTypeIntTwinNormal apiObj, ffi.Pointer<wire_new_type_int_twin_normal> wireObj) {
+                    _api_fill_to_wire_new_type_int_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_new_type_int_twin_rust_async(NewTypeIntTwinRustAsync apiObj, ffi.Pointer<wire_new_type_int_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_new_type_int_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_new_type_int_twin_sync(NewTypeIntTwinSync apiObj, ffi.Pointer<wire_new_type_int_twin_sync> wireObj) {
+                    _api_fill_to_wire_new_type_int_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_note_twin_normal(NoteTwinNormal apiObj, ffi.Pointer<wire_note_twin_normal> wireObj) {
+                    _api_fill_to_wire_note_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_note_twin_rust_async(NoteTwinRustAsync apiObj, ffi.Pointer<wire_note_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_note_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_note_twin_sync(NoteTwinSync apiObj, ffi.Pointer<wire_note_twin_sync> wireObj) {
+                    _api_fill_to_wire_note_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_numbers(Numbers apiObj, ffi.Pointer<wire_numbers> wireObj) {
+                    _api_fill_to_wire_numbers(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_opaque_nested_twin_normal(OpaqueNestedTwinNormal apiObj, ffi.Pointer<wire_opaque_nested_twin_normal> wireObj) {
+                    _api_fill_to_wire_opaque_nested_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_opaque_nested_twin_rust_async(OpaqueNestedTwinRustAsync apiObj, ffi.Pointer<wire_opaque_nested_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_opaque_nested_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_opaque_nested_twin_sync(OpaqueNestedTwinSync apiObj, ffi.Pointer<wire_opaque_nested_twin_sync> wireObj) {
+                    _api_fill_to_wire_opaque_nested_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_opt_vecs_twin_normal(OptVecsTwinNormal apiObj, ffi.Pointer<wire_opt_vecs_twin_normal> wireObj) {
+                    _api_fill_to_wire_opt_vecs_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_opt_vecs_twin_rust_async(OptVecsTwinRustAsync apiObj, ffi.Pointer<wire_opt_vecs_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_opt_vecs_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_opt_vecs_twin_sync(OptVecsTwinSync apiObj, ffi.Pointer<wire_opt_vecs_twin_sync> wireObj) {
+                    _api_fill_to_wire_opt_vecs_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_record_string_i_32((String,int) apiObj, ffi.Pointer<wire_record_string_i_32> wireObj) {
+                    _api_fill_to_wire_record_string_i_32(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_sequences(Sequences apiObj, ffi.Pointer<wire_sequences> wireObj) {
+                    _api_fill_to_wire_sequences(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_some_struct_twin_normal(SomeStructTwinNormal apiObj, ffi.Pointer<wire_some_struct_twin_normal> wireObj) {
+                    _api_fill_to_wire_some_struct_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_some_struct_twin_rust_async(SomeStructTwinRustAsync apiObj, ffi.Pointer<wire_some_struct_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_some_struct_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_some_struct_twin_sync(SomeStructTwinSync apiObj, ffi.Pointer<wire_some_struct_twin_sync> wireObj) {
+                    _api_fill_to_wire_some_struct_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_struct_with_comments_twin_normal(StructWithCommentsTwinNormal apiObj, ffi.Pointer<wire_struct_with_comments_twin_normal> wireObj) {
+                    _api_fill_to_wire_struct_with_comments_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_struct_with_comments_twin_rust_async(StructWithCommentsTwinRustAsync apiObj, ffi.Pointer<wire_struct_with_comments_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_struct_with_comments_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_struct_with_comments_twin_sync(StructWithCommentsTwinSync apiObj, ffi.Pointer<wire_struct_with_comments_twin_sync> wireObj) {
+                    _api_fill_to_wire_struct_with_comments_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_struct_with_enum_twin_normal(StructWithEnumTwinNormal apiObj, ffi.Pointer<wire_struct_with_enum_twin_normal> wireObj) {
+                    _api_fill_to_wire_struct_with_enum_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_struct_with_enum_twin_rust_async(StructWithEnumTwinRustAsync apiObj, ffi.Pointer<wire_struct_with_enum_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_struct_with_enum_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_struct_with_enum_twin_sync(StructWithEnumTwinSync apiObj, ffi.Pointer<wire_struct_with_enum_twin_sync> wireObj) {
+                    _api_fill_to_wire_struct_with_enum_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_struct_with_one_field_twin_normal(StructWithOneFieldTwinNormal apiObj, ffi.Pointer<wire_struct_with_one_field_twin_normal> wireObj) {
+                    _api_fill_to_wire_struct_with_one_field_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_struct_with_one_field_twin_rust_async(StructWithOneFieldTwinRustAsync apiObj, ffi.Pointer<wire_struct_with_one_field_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_struct_with_one_field_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_struct_with_one_field_twin_sync(StructWithOneFieldTwinSync apiObj, ffi.Pointer<wire_struct_with_one_field_twin_sync> wireObj) {
+                    _api_fill_to_wire_struct_with_one_field_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_struct_with_two_field_twin_normal(StructWithTwoFieldTwinNormal apiObj, ffi.Pointer<wire_struct_with_two_field_twin_normal> wireObj) {
+                    _api_fill_to_wire_struct_with_two_field_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_struct_with_two_field_twin_rust_async(StructWithTwoFieldTwinRustAsync apiObj, ffi.Pointer<wire_struct_with_two_field_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_struct_with_two_field_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_struct_with_two_field_twin_sync(StructWithTwoFieldTwinSync apiObj, ffi.Pointer<wire_struct_with_two_field_twin_sync> wireObj) {
+                    _api_fill_to_wire_struct_with_two_field_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_sum_with_twin_normal(SumWithTwinNormal apiObj, ffi.Pointer<wire_sum_with_twin_normal> wireObj) {
+                    _api_fill_to_wire_sum_with_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_sum_with_twin_rust_async(SumWithTwinRustAsync apiObj, ffi.Pointer<wire_sum_with_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_sum_with_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_sum_with_twin_sync(SumWithTwinSync apiObj, ffi.Pointer<wire_sum_with_twin_sync> wireObj) {
+                    _api_fill_to_wire_sum_with_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_test_id_twin_normal(TestIdTwinNormal apiObj, ffi.Pointer<wire_test_id_twin_normal> wireObj) {
+                    _api_fill_to_wire_test_id_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_test_id_twin_rust_async(TestIdTwinRustAsync apiObj, ffi.Pointer<wire_test_id_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_test_id_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_test_id_twin_sync(TestIdTwinSync apiObj, ffi.Pointer<wire_test_id_twin_sync> wireObj) {
+                    _api_fill_to_wire_test_id_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_tuple_struct_with_one_field_twin_normal(TupleStructWithOneFieldTwinNormal apiObj, ffi.Pointer<wire_tuple_struct_with_one_field_twin_normal> wireObj) {
+                    _api_fill_to_wire_tuple_struct_with_one_field_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_tuple_struct_with_one_field_twin_rust_async(TupleStructWithOneFieldTwinRustAsync apiObj, ffi.Pointer<wire_tuple_struct_with_one_field_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_tuple_struct_with_one_field_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_tuple_struct_with_one_field_twin_sync(TupleStructWithOneFieldTwinSync apiObj, ffi.Pointer<wire_tuple_struct_with_one_field_twin_sync> wireObj) {
+                    _api_fill_to_wire_tuple_struct_with_one_field_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_tuple_struct_with_two_field_twin_normal(TupleStructWithTwoFieldTwinNormal apiObj, ffi.Pointer<wire_tuple_struct_with_two_field_twin_normal> wireObj) {
+                    _api_fill_to_wire_tuple_struct_with_two_field_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_tuple_struct_with_two_field_twin_rust_async(TupleStructWithTwoFieldTwinRustAsync apiObj, ffi.Pointer<wire_tuple_struct_with_two_field_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_tuple_struct_with_two_field_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_tuple_struct_with_two_field_twin_sync(TupleStructWithTwoFieldTwinSync apiObj, ffi.Pointer<wire_tuple_struct_with_two_field_twin_sync> wireObj) {
+                    _api_fill_to_wire_tuple_struct_with_two_field_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_user_id_twin_normal(UserIdTwinNormal apiObj, ffi.Pointer<wire_user_id_twin_normal> wireObj) {
+                    _api_fill_to_wire_user_id_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_user_id_twin_rust_async(UserIdTwinRustAsync apiObj, ffi.Pointer<wire_user_id_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_user_id_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_autoadd_user_id_twin_sync(UserIdTwinSync apiObj, ffi.Pointer<wire_user_id_twin_sync> wireObj) {
+                    _api_fill_to_wire_user_id_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_blob_twin_normal(BlobTwinNormal apiObj, ffi.Pointer<wire_blob_twin_normal> wireObj) {
+                    _api_fill_to_wire_blob_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_blob_twin_rust_async(BlobTwinRustAsync apiObj, ffi.Pointer<wire_blob_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_blob_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_blob_twin_sync(BlobTwinSync apiObj, ffi.Pointer<wire_blob_twin_sync> wireObj) {
+                    _api_fill_to_wire_blob_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_distance_twin_normal(DistanceTwinNormal apiObj, ffi.Pointer<wire_distance_twin_normal> wireObj) {
+                    _api_fill_to_wire_distance_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_distance_twin_rust_async(DistanceTwinRustAsync apiObj, ffi.Pointer<wire_distance_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_distance_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_distance_twin_sync(DistanceTwinSync apiObj, ffi.Pointer<wire_distance_twin_sync> wireObj) {
+                    _api_fill_to_wire_distance_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_exotic_optionals_twin_normal(ExoticOptionalsTwinNormal apiObj, ffi.Pointer<wire_exotic_optionals_twin_normal> wireObj) {
+                    _api_fill_to_wire_exotic_optionals_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_exotic_optionals_twin_rust_async(ExoticOptionalsTwinRustAsync apiObj, ffi.Pointer<wire_exotic_optionals_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_exotic_optionals_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_exotic_optionals_twin_sync(ExoticOptionalsTwinSync apiObj, ffi.Pointer<wire_exotic_optionals_twin_sync> wireObj) {
+                    _api_fill_to_wire_exotic_optionals_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_kitchen_sink_twin_normal(KitchenSinkTwinNormal apiObj, ffi.Pointer<wire_kitchen_sink_twin_normal> wireObj) {
+                    _api_fill_to_wire_kitchen_sink_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_kitchen_sink_twin_rust_async(KitchenSinkTwinRustAsync apiObj, ffi.Pointer<wire_kitchen_sink_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_kitchen_sink_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_kitchen_sink_twin_sync(KitchenSinkTwinSync apiObj, ffi.Pointer<wire_kitchen_sink_twin_sync> wireObj) {
+                    _api_fill_to_wire_kitchen_sink_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_my_size(MySize apiObj, ffi.Pointer<wire_my_size> wireObj) {
+                    _api_fill_to_wire_my_size(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_speed_twin_normal(SpeedTwinNormal apiObj, ffi.Pointer<wire_speed_twin_normal> wireObj) {
+                    _api_fill_to_wire_speed_twin_normal(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_speed_twin_rust_async(SpeedTwinRustAsync apiObj, ffi.Pointer<wire_speed_twin_rust_async> wireObj) {
+                    _api_fill_to_wire_speed_twin_rust_async(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_speed_twin_sync(SpeedTwinSync apiObj, ffi.Pointer<wire_speed_twin_sync> wireObj) {
+                    _api_fill_to_wire_speed_twin_sync(apiObj, wireObj.ref);
+                }void _api_fill_to_wire_box_u_8_array_1600(U8Array1600 apiObj, ffi.Pointer<wire_list_prim_u_8> wireObj) {
+                    wireObj = api2wire_u_8_array_1600(apiObj);
+                }void _api_fill_to_wire_c_twin_normal(CTwinNormal apiObj, wire_c_twin_normal wireObj) {
+                    wireObj.c = api2wire_bool(apiObj.c);
+                }void _api_fill_to_wire_c_twin_rust_async(CTwinRustAsync apiObj, wire_c_twin_rust_async wireObj) {
+                    wireObj.c = api2wire_bool(apiObj.c);
+                }void _api_fill_to_wire_c_twin_sync(CTwinSync apiObj, wire_c_twin_sync wireObj) {
+                    wireObj.c = api2wire_bool(apiObj.c);
+                }void _api_fill_to_wire_concatenate_with_twin_normal(ConcatenateWithTwinNormal apiObj, wire_concatenate_with_twin_normal wireObj) {
+                    wireObj.a = api2wire_String(apiObj.a);
+                }void _api_fill_to_wire_concatenate_with_twin_rust_async(ConcatenateWithTwinRustAsync apiObj, wire_concatenate_with_twin_rust_async wireObj) {
+                    wireObj.a = api2wire_String(apiObj.a);
+                }void _api_fill_to_wire_concatenate_with_twin_sync(ConcatenateWithTwinSync apiObj, wire_concatenate_with_twin_sync wireObj) {
+                    wireObj.a = api2wire_String(apiObj.a);
+                }void _api_fill_to_wire_custom_nested_error_inner_twin_normal(CustomNestedErrorInnerTwinNormal apiObj, wire_custom_nested_error_inner_twin_normal wireObj) {
+                    if (apiObj is CustomNestedErrorInnerTwinNormal_Three) {
+                var pre_field0 = api2wire_String(apiObj.field0);wireObj.tag = 0;wireObj.kind = wire.inflate_CustomNestedErrorInnerTwinNormal_Three();wireObj.kind.ref.Three.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is CustomNestedErrorInnerTwinNormal_Four) {
+                var pre_field0 = api2wire_u_32(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_CustomNestedErrorInnerTwinNormal_Four();wireObj.kind.ref.Four.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_custom_nested_error_inner_twin_rust_async(CustomNestedErrorInnerTwinRustAsync apiObj, wire_custom_nested_error_inner_twin_rust_async wireObj) {
+                    if (apiObj is CustomNestedErrorInnerTwinRustAsync_Three) {
+                var pre_field0 = api2wire_String(apiObj.field0);wireObj.tag = 0;wireObj.kind = wire.inflate_CustomNestedErrorInnerTwinRustAsync_Three();wireObj.kind.ref.Three.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is CustomNestedErrorInnerTwinRustAsync_Four) {
+                var pre_field0 = api2wire_u_32(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_CustomNestedErrorInnerTwinRustAsync_Four();wireObj.kind.ref.Four.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_custom_nested_error_inner_twin_sync(CustomNestedErrorInnerTwinSync apiObj, wire_custom_nested_error_inner_twin_sync wireObj) {
+                    if (apiObj is CustomNestedErrorInnerTwinSync_Three) {
+                var pre_field0 = api2wire_String(apiObj.field0);wireObj.tag = 0;wireObj.kind = wire.inflate_CustomNestedErrorInnerTwinSync_Three();wireObj.kind.ref.Three.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is CustomNestedErrorInnerTwinSync_Four) {
+                var pre_field0 = api2wire_u_32(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_CustomNestedErrorInnerTwinSync_Four();wireObj.kind.ref.Four.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_custom_nested_error_outer_twin_normal(CustomNestedErrorOuterTwinNormal apiObj, wire_custom_nested_error_outer_twin_normal wireObj) {
+                    if (apiObj is CustomNestedErrorOuterTwinNormal_One) {
+                var pre_field0 = api2wire_String(apiObj.field0);wireObj.tag = 0;wireObj.kind = wire.inflate_CustomNestedErrorOuterTwinNormal_One();wireObj.kind.ref.One.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is CustomNestedErrorOuterTwinNormal_Two) {
+                var pre_field0 = api2wire_box_autoadd_custom_nested_error_inner_twin_normal(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_CustomNestedErrorOuterTwinNormal_Two();wireObj.kind.ref.Two.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_custom_nested_error_outer_twin_rust_async(CustomNestedErrorOuterTwinRustAsync apiObj, wire_custom_nested_error_outer_twin_rust_async wireObj) {
+                    if (apiObj is CustomNestedErrorOuterTwinRustAsync_One) {
+                var pre_field0 = api2wire_String(apiObj.field0);wireObj.tag = 0;wireObj.kind = wire.inflate_CustomNestedErrorOuterTwinRustAsync_One();wireObj.kind.ref.One.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is CustomNestedErrorOuterTwinRustAsync_Two) {
+                var pre_field0 = api2wire_box_autoadd_custom_nested_error_inner_twin_rust_async(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_CustomNestedErrorOuterTwinRustAsync_Two();wireObj.kind.ref.Two.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_custom_nested_error_outer_twin_sync(CustomNestedErrorOuterTwinSync apiObj, wire_custom_nested_error_outer_twin_sync wireObj) {
+                    if (apiObj is CustomNestedErrorOuterTwinSync_One) {
+                var pre_field0 = api2wire_String(apiObj.field0);wireObj.tag = 0;wireObj.kind = wire.inflate_CustomNestedErrorOuterTwinSync_One();wireObj.kind.ref.One.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is CustomNestedErrorOuterTwinSync_Two) {
+                var pre_field0 = api2wire_box_autoadd_custom_nested_error_inner_twin_sync(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_CustomNestedErrorOuterTwinSync_Two();wireObj.kind.ref.Two.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_custom_struct_error_twin_normal(CustomStructErrorTwinNormal apiObj, wire_custom_struct_error_twin_normal wireObj) {
+                    wireObj.a = api2wire_String(apiObj.a);
+                }void _api_fill_to_wire_custom_struct_error_twin_rust_async(CustomStructErrorTwinRustAsync apiObj, wire_custom_struct_error_twin_rust_async wireObj) {
+                    wireObj.a = api2wire_String(apiObj.a);
+                }void _api_fill_to_wire_custom_struct_error_twin_sync(CustomStructErrorTwinSync apiObj, wire_custom_struct_error_twin_sync wireObj) {
+                    wireObj.a = api2wire_String(apiObj.a);
+                }void _api_fill_to_wire_custom_struct_twin_normal(CustomStructTwinNormal apiObj, wire_custom_struct_twin_normal wireObj) {
+                    wireObj.message = api2wire_String(apiObj.message);
+                }void _api_fill_to_wire_custom_struct_twin_rust_async(CustomStructTwinRustAsync apiObj, wire_custom_struct_twin_rust_async wireObj) {
+                    wireObj.message = api2wire_String(apiObj.message);
+                }void _api_fill_to_wire_custom_struct_twin_sync(CustomStructTwinSync apiObj, wire_custom_struct_twin_sync wireObj) {
+                    wireObj.message = api2wire_String(apiObj.message);
+                }void _api_fill_to_wire_customized_twin_normal(CustomizedTwinNormal apiObj, wire_customized_twin_normal wireObj) {
+                    wireObj.final_field = api2wire_String(apiObj.finalField);
+wireObj.non_final_field = api2wire_opt_String(apiObj.nonFinalField);
+                }void _api_fill_to_wire_customized_twin_rust_async(CustomizedTwinRustAsync apiObj, wire_customized_twin_rust_async wireObj) {
+                    wireObj.final_field = api2wire_String(apiObj.finalField);
+wireObj.non_final_field = api2wire_opt_String(apiObj.nonFinalField);
+                }void _api_fill_to_wire_customized_twin_sync(CustomizedTwinSync apiObj, wire_customized_twin_sync wireObj) {
+                    wireObj.final_field = api2wire_String(apiObj.finalField);
+wireObj.non_final_field = api2wire_opt_String(apiObj.nonFinalField);
+                }void _api_fill_to_wire_dart_opaque_nested_twin_normal(DartOpaqueNestedTwinNormal apiObj, wire_dart_opaque_nested_twin_normal wireObj) {
+                    wireObj.first = api2wire_DartOpaque(apiObj.first);
+wireObj.second = api2wire_DartOpaque(apiObj.second);
+                }void _api_fill_to_wire_dart_opaque_nested_twin_rust_async(DartOpaqueNestedTwinRustAsync apiObj, wire_dart_opaque_nested_twin_rust_async wireObj) {
+                    wireObj.first = api2wire_DartOpaque(apiObj.first);
+wireObj.second = api2wire_DartOpaque(apiObj.second);
+                }void _api_fill_to_wire_dart_opaque_nested_twin_sync(DartOpaqueNestedTwinSync apiObj, wire_dart_opaque_nested_twin_sync wireObj) {
+                    wireObj.first = api2wire_DartOpaque(apiObj.first);
+wireObj.second = api2wire_DartOpaque(apiObj.second);
+                }void _api_fill_to_wire_demo_struct_for_rust_call_dart(DemoStructForRustCallDart apiObj, wire_demo_struct_for_rust_call_dart wireObj) {
+                    wireObj.name = api2wire_String(apiObj.name);
+                }void _api_fill_to_wire_distance_twin_normal(DistanceTwinNormal apiObj, wire_distance_twin_normal wireObj) {
+                    if (apiObj is DistanceTwinNormal_Unknown) {
+                wireObj.tag = 0;
+                return;
+            }
+if (apiObj is DistanceTwinNormal_Map) {
+                var pre_field0 = api2wire_f_64(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_DistanceTwinNormal_Map();wireObj.kind.ref.Map.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_distance_twin_rust_async(DistanceTwinRustAsync apiObj, wire_distance_twin_rust_async wireObj) {
+                    if (apiObj is DistanceTwinRustAsync_Unknown) {
+                wireObj.tag = 0;
+                return;
+            }
+if (apiObj is DistanceTwinRustAsync_Map) {
+                var pre_field0 = api2wire_f_64(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_DistanceTwinRustAsync_Map();wireObj.kind.ref.Map.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_distance_twin_sync(DistanceTwinSync apiObj, wire_distance_twin_sync wireObj) {
+                    if (apiObj is DistanceTwinSync_Unknown) {
+                wireObj.tag = 0;
+                return;
+            }
+if (apiObj is DistanceTwinSync_Map) {
+                var pre_field0 = api2wire_f_64(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_DistanceTwinSync_Map();wireObj.kind.ref.Map.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_empty_twin_normal(EmptyTwinNormal apiObj, wire_empty_twin_normal wireObj) {
+                    
+                }void _api_fill_to_wire_empty_twin_rust_async(EmptyTwinRustAsync apiObj, wire_empty_twin_rust_async wireObj) {
+                    
+                }void _api_fill_to_wire_empty_twin_sync(EmptyTwinSync apiObj, wire_empty_twin_sync wireObj) {
+                    
+                }void _api_fill_to_wire_enum_dart_opaque_twin_normal(EnumDartOpaqueTwinNormal apiObj, wire_enum_dart_opaque_twin_normal wireObj) {
+                    if (apiObj is EnumDartOpaqueTwinNormal_Primitive) {
+                var pre_field0 = api2wire_i_32(apiObj.field0);wireObj.tag = 0;wireObj.kind = wire.inflate_EnumDartOpaqueTwinNormal_Primitive();wireObj.kind.ref.Primitive.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is EnumDartOpaqueTwinNormal_Opaque) {
+                var pre_field0 = api2wire_DartOpaque(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_EnumDartOpaqueTwinNormal_Opaque();wireObj.kind.ref.Opaque.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_enum_dart_opaque_twin_rust_async(EnumDartOpaqueTwinRustAsync apiObj, wire_enum_dart_opaque_twin_rust_async wireObj) {
+                    if (apiObj is EnumDartOpaqueTwinRustAsync_Primitive) {
+                var pre_field0 = api2wire_i_32(apiObj.field0);wireObj.tag = 0;wireObj.kind = wire.inflate_EnumDartOpaqueTwinRustAsync_Primitive();wireObj.kind.ref.Primitive.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is EnumDartOpaqueTwinRustAsync_Opaque) {
+                var pre_field0 = api2wire_DartOpaque(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_EnumDartOpaqueTwinRustAsync_Opaque();wireObj.kind.ref.Opaque.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_enum_dart_opaque_twin_sync(EnumDartOpaqueTwinSync apiObj, wire_enum_dart_opaque_twin_sync wireObj) {
+                    if (apiObj is EnumDartOpaqueTwinSync_Primitive) {
+                var pre_field0 = api2wire_i_32(apiObj.field0);wireObj.tag = 0;wireObj.kind = wire.inflate_EnumDartOpaqueTwinSync_Primitive();wireObj.kind.ref.Primitive.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is EnumDartOpaqueTwinSync_Opaque) {
+                var pre_field0 = api2wire_DartOpaque(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_EnumDartOpaqueTwinSync_Opaque();wireObj.kind.ref.Opaque.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_enum_opaque_twin_normal(EnumOpaqueTwinNormal apiObj, wire_enum_opaque_twin_normal wireObj) {
+                    if (apiObj is EnumOpaqueTwinNormal_Struct) {
+                var pre_field0 = api2wire_RustOpaque_hide_data(apiObj.field0);wireObj.tag = 0;wireObj.kind = wire.inflate_EnumOpaqueTwinNormal_Struct();wireObj.kind.ref.Struct.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is EnumOpaqueTwinNormal_Primitive) {
+                var pre_field0 = api2wire_RustOpaque_i_32(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_EnumOpaqueTwinNormal_Primitive();wireObj.kind.ref.Primitive.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is EnumOpaqueTwinNormal_TraitObj) {
+                var pre_field0 = api2wire_RustOpaque_box_dynDartDebugTwinNormal(apiObj.field0);wireObj.tag = 2;wireObj.kind = wire.inflate_EnumOpaqueTwinNormal_TraitObj();wireObj.kind.ref.TraitObj.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is EnumOpaqueTwinNormal_Mutex) {
+                var pre_field0 = api2wire_RustOpaque_MutexHideData(apiObj.field0);wireObj.tag = 3;wireObj.kind = wire.inflate_EnumOpaqueTwinNormal_Mutex();wireObj.kind.ref.Mutex.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is EnumOpaqueTwinNormal_RwLock) {
+                var pre_field0 = api2wire_RustOpaque_RwLockHideData(apiObj.field0);wireObj.tag = 4;wireObj.kind = wire.inflate_EnumOpaqueTwinNormal_RwLock();wireObj.kind.ref.RwLock.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_enum_opaque_twin_rust_async(EnumOpaqueTwinRustAsync apiObj, wire_enum_opaque_twin_rust_async wireObj) {
+                    if (apiObj is EnumOpaqueTwinRustAsync_Struct) {
+                var pre_field0 = api2wire_RustOpaque_hide_data(apiObj.field0);wireObj.tag = 0;wireObj.kind = wire.inflate_EnumOpaqueTwinRustAsync_Struct();wireObj.kind.ref.Struct.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is EnumOpaqueTwinRustAsync_Primitive) {
+                var pre_field0 = api2wire_RustOpaque_i_32(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_EnumOpaqueTwinRustAsync_Primitive();wireObj.kind.ref.Primitive.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is EnumOpaqueTwinRustAsync_TraitObj) {
+                var pre_field0 = api2wire_RustOpaque_box_dynDartDebugTwinRustAsync(apiObj.field0);wireObj.tag = 2;wireObj.kind = wire.inflate_EnumOpaqueTwinRustAsync_TraitObj();wireObj.kind.ref.TraitObj.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is EnumOpaqueTwinRustAsync_Mutex) {
+                var pre_field0 = api2wire_RustOpaque_MutexHideData(apiObj.field0);wireObj.tag = 3;wireObj.kind = wire.inflate_EnumOpaqueTwinRustAsync_Mutex();wireObj.kind.ref.Mutex.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is EnumOpaqueTwinRustAsync_RwLock) {
+                var pre_field0 = api2wire_RustOpaque_RwLockHideData(apiObj.field0);wireObj.tag = 4;wireObj.kind = wire.inflate_EnumOpaqueTwinRustAsync_RwLock();wireObj.kind.ref.RwLock.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_enum_opaque_twin_sync(EnumOpaqueTwinSync apiObj, wire_enum_opaque_twin_sync wireObj) {
+                    if (apiObj is EnumOpaqueTwinSync_Struct) {
+                var pre_field0 = api2wire_RustOpaque_hide_data(apiObj.field0);wireObj.tag = 0;wireObj.kind = wire.inflate_EnumOpaqueTwinSync_Struct();wireObj.kind.ref.Struct.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is EnumOpaqueTwinSync_Primitive) {
+                var pre_field0 = api2wire_RustOpaque_i_32(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_EnumOpaqueTwinSync_Primitive();wireObj.kind.ref.Primitive.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is EnumOpaqueTwinSync_TraitObj) {
+                var pre_field0 = api2wire_RustOpaque_box_dynDartDebugTwinSync(apiObj.field0);wireObj.tag = 2;wireObj.kind = wire.inflate_EnumOpaqueTwinSync_TraitObj();wireObj.kind.ref.TraitObj.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is EnumOpaqueTwinSync_Mutex) {
+                var pre_field0 = api2wire_RustOpaque_MutexHideData(apiObj.field0);wireObj.tag = 3;wireObj.kind = wire.inflate_EnumOpaqueTwinSync_Mutex();wireObj.kind.ref.Mutex.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is EnumOpaqueTwinSync_RwLock) {
+                var pre_field0 = api2wire_RustOpaque_RwLockHideData(apiObj.field0);wireObj.tag = 4;wireObj.kind = wire.inflate_EnumOpaqueTwinSync_RwLock();wireObj.kind.ref.RwLock.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_enum_with_item_mixed_twin_normal(EnumWithItemMixedTwinNormal apiObj, wire_enum_with_item_mixed_twin_normal wireObj) {
+                    if (apiObj is EnumWithItemMixedTwinNormal_A) {
+                wireObj.tag = 0;
+                return;
+            }
+if (apiObj is EnumWithItemMixedTwinNormal_B) {
+                var pre_field0 = api2wire_list_prim_u_8(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_EnumWithItemMixedTwinNormal_B();wireObj.kind.ref.B.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is EnumWithItemMixedTwinNormal_C) {
+                var pre_c_field = api2wire_String(apiObj.cField);wireObj.tag = 2;wireObj.kind = wire.inflate_EnumWithItemMixedTwinNormal_C();wireObj.kind.ref.C.ref.c_field = pre_c_field;
+                return;
+            }
+                }void _api_fill_to_wire_enum_with_item_mixed_twin_rust_async(EnumWithItemMixedTwinRustAsync apiObj, wire_enum_with_item_mixed_twin_rust_async wireObj) {
+                    if (apiObj is EnumWithItemMixedTwinRustAsync_A) {
+                wireObj.tag = 0;
+                return;
+            }
+if (apiObj is EnumWithItemMixedTwinRustAsync_B) {
+                var pre_field0 = api2wire_list_prim_u_8(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_EnumWithItemMixedTwinRustAsync_B();wireObj.kind.ref.B.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is EnumWithItemMixedTwinRustAsync_C) {
+                var pre_c_field = api2wire_String(apiObj.cField);wireObj.tag = 2;wireObj.kind = wire.inflate_EnumWithItemMixedTwinRustAsync_C();wireObj.kind.ref.C.ref.c_field = pre_c_field;
+                return;
+            }
+                }void _api_fill_to_wire_enum_with_item_mixed_twin_sync(EnumWithItemMixedTwinSync apiObj, wire_enum_with_item_mixed_twin_sync wireObj) {
+                    if (apiObj is EnumWithItemMixedTwinSync_A) {
+                wireObj.tag = 0;
+                return;
+            }
+if (apiObj is EnumWithItemMixedTwinSync_B) {
+                var pre_field0 = api2wire_list_prim_u_8(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_EnumWithItemMixedTwinSync_B();wireObj.kind.ref.B.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is EnumWithItemMixedTwinSync_C) {
+                var pre_c_field = api2wire_String(apiObj.cField);wireObj.tag = 2;wireObj.kind = wire.inflate_EnumWithItemMixedTwinSync_C();wireObj.kind.ref.C.ref.c_field = pre_c_field;
+                return;
+            }
+                }void _api_fill_to_wire_enum_with_item_struct_twin_normal(EnumWithItemStructTwinNormal apiObj, wire_enum_with_item_struct_twin_normal wireObj) {
+                    if (apiObj is EnumWithItemStructTwinNormal_A) {
+                var pre_a_field = api2wire_list_prim_u_8(apiObj.aField);wireObj.tag = 0;wireObj.kind = wire.inflate_EnumWithItemStructTwinNormal_A();wireObj.kind.ref.A.ref.a_field = pre_a_field;
+                return;
+            }
+if (apiObj is EnumWithItemStructTwinNormal_B) {
+                var pre_b_field = api2wire_list_prim_i_32(apiObj.bField);wireObj.tag = 1;wireObj.kind = wire.inflate_EnumWithItemStructTwinNormal_B();wireObj.kind.ref.B.ref.b_field = pre_b_field;
+                return;
+            }
+                }void _api_fill_to_wire_enum_with_item_struct_twin_rust_async(EnumWithItemStructTwinRustAsync apiObj, wire_enum_with_item_struct_twin_rust_async wireObj) {
+                    if (apiObj is EnumWithItemStructTwinRustAsync_A) {
+                var pre_a_field = api2wire_list_prim_u_8(apiObj.aField);wireObj.tag = 0;wireObj.kind = wire.inflate_EnumWithItemStructTwinRustAsync_A();wireObj.kind.ref.A.ref.a_field = pre_a_field;
+                return;
+            }
+if (apiObj is EnumWithItemStructTwinRustAsync_B) {
+                var pre_b_field = api2wire_list_prim_i_32(apiObj.bField);wireObj.tag = 1;wireObj.kind = wire.inflate_EnumWithItemStructTwinRustAsync_B();wireObj.kind.ref.B.ref.b_field = pre_b_field;
+                return;
+            }
+                }void _api_fill_to_wire_enum_with_item_struct_twin_sync(EnumWithItemStructTwinSync apiObj, wire_enum_with_item_struct_twin_sync wireObj) {
+                    if (apiObj is EnumWithItemStructTwinSync_A) {
+                var pre_a_field = api2wire_list_prim_u_8(apiObj.aField);wireObj.tag = 0;wireObj.kind = wire.inflate_EnumWithItemStructTwinSync_A();wireObj.kind.ref.A.ref.a_field = pre_a_field;
+                return;
+            }
+if (apiObj is EnumWithItemStructTwinSync_B) {
+                var pre_b_field = api2wire_list_prim_i_32(apiObj.bField);wireObj.tag = 1;wireObj.kind = wire.inflate_EnumWithItemStructTwinSync_B();wireObj.kind.ref.B.ref.b_field = pre_b_field;
+                return;
+            }
+                }void _api_fill_to_wire_enum_with_item_tuple_twin_normal(EnumWithItemTupleTwinNormal apiObj, wire_enum_with_item_tuple_twin_normal wireObj) {
+                    if (apiObj is EnumWithItemTupleTwinNormal_A) {
+                var pre_field0 = api2wire_list_prim_u_8(apiObj.field0);wireObj.tag = 0;wireObj.kind = wire.inflate_EnumWithItemTupleTwinNormal_A();wireObj.kind.ref.A.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is EnumWithItemTupleTwinNormal_B) {
+                var pre_field0 = api2wire_list_prim_i_32(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_EnumWithItemTupleTwinNormal_B();wireObj.kind.ref.B.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_enum_with_item_tuple_twin_rust_async(EnumWithItemTupleTwinRustAsync apiObj, wire_enum_with_item_tuple_twin_rust_async wireObj) {
+                    if (apiObj is EnumWithItemTupleTwinRustAsync_A) {
+                var pre_field0 = api2wire_list_prim_u_8(apiObj.field0);wireObj.tag = 0;wireObj.kind = wire.inflate_EnumWithItemTupleTwinRustAsync_A();wireObj.kind.ref.A.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is EnumWithItemTupleTwinRustAsync_B) {
+                var pre_field0 = api2wire_list_prim_i_32(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_EnumWithItemTupleTwinRustAsync_B();wireObj.kind.ref.B.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_enum_with_item_tuple_twin_sync(EnumWithItemTupleTwinSync apiObj, wire_enum_with_item_tuple_twin_sync wireObj) {
+                    if (apiObj is EnumWithItemTupleTwinSync_A) {
+                var pre_field0 = api2wire_list_prim_u_8(apiObj.field0);wireObj.tag = 0;wireObj.kind = wire.inflate_EnumWithItemTupleTwinSync_A();wireObj.kind.ref.A.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is EnumWithItemTupleTwinSync_B) {
+                var pre_field0 = api2wire_list_prim_i_32(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_EnumWithItemTupleTwinSync_B();wireObj.kind.ref.B.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_event_twin_normal(EventTwinNormal apiObj, wire_event_twin_normal wireObj) {
+                    wireObj.address = api2wire_String(apiObj.address);
+wireObj.payload = api2wire_String(apiObj.payload);
+                }void _api_fill_to_wire_event_twin_rust_async(EventTwinRustAsync apiObj, wire_event_twin_rust_async wireObj) {
+                    wireObj.address = api2wire_String(apiObj.address);
+wireObj.payload = api2wire_String(apiObj.payload);
+                }void _api_fill_to_wire_event_twin_sync(EventTwinSync apiObj, wire_event_twin_sync wireObj) {
+                    wireObj.address = api2wire_String(apiObj.address);
+wireObj.payload = api2wire_String(apiObj.payload);
+                }void _api_fill_to_wire_exotic_optionals_twin_normal(ExoticOptionalsTwinNormal apiObj, wire_exotic_optionals_twin_normal wireObj) {
+                    wireObj.int32 = api2wire_opt_box_autoadd_i_32(apiObj.int32);
+wireObj.int64 = api2wire_opt_box_autoadd_i_64(apiObj.int64);
+wireObj.float64 = api2wire_opt_box_autoadd_f_64(apiObj.float64);
+wireObj.boolean = api2wire_opt_box_autoadd_bool(apiObj.boolean);
+wireObj.zerocopy = api2wire_opt_ZeroCopyBuffer_list_prim_u_8(apiObj.zerocopy);
+wireObj.int8list = api2wire_opt_list_prim_i_8(apiObj.int8List);
+wireObj.uint8list = api2wire_opt_list_prim_u_8(apiObj.uint8List);
+wireObj.int32list = api2wire_opt_list_prim_i_32(apiObj.int32List);
+wireObj.float32list = api2wire_opt_list_prim_f_32(apiObj.float32List);
+wireObj.float64list = api2wire_opt_list_prim_f_64(apiObj.float64List);
+wireObj.attributes = api2wire_opt_list_attribute_twin_normal(apiObj.attributes);
+wireObj.attributes_nullable = api2wire_list_opt_box_autoadd_attribute_twin_normal(apiObj.attributesNullable);
+wireObj.nullable_attributes = api2wire_opt_list_opt_box_autoadd_attribute_twin_normal(apiObj.nullableAttributes);
+wireObj.newtypeint = api2wire_opt_box_autoadd_new_type_int_twin_normal(apiObj.newtypeint);
+                }void _api_fill_to_wire_exotic_optionals_twin_rust_async(ExoticOptionalsTwinRustAsync apiObj, wire_exotic_optionals_twin_rust_async wireObj) {
+                    wireObj.int32 = api2wire_opt_box_autoadd_i_32(apiObj.int32);
+wireObj.int64 = api2wire_opt_box_autoadd_i_64(apiObj.int64);
+wireObj.float64 = api2wire_opt_box_autoadd_f_64(apiObj.float64);
+wireObj.boolean = api2wire_opt_box_autoadd_bool(apiObj.boolean);
+wireObj.zerocopy = api2wire_opt_ZeroCopyBuffer_list_prim_u_8(apiObj.zerocopy);
+wireObj.int8list = api2wire_opt_list_prim_i_8(apiObj.int8List);
+wireObj.uint8list = api2wire_opt_list_prim_u_8(apiObj.uint8List);
+wireObj.int32list = api2wire_opt_list_prim_i_32(apiObj.int32List);
+wireObj.float32list = api2wire_opt_list_prim_f_32(apiObj.float32List);
+wireObj.float64list = api2wire_opt_list_prim_f_64(apiObj.float64List);
+wireObj.attributes = api2wire_opt_list_attribute_twin_rust_async(apiObj.attributes);
+wireObj.attributes_nullable = api2wire_list_opt_box_autoadd_attribute_twin_rust_async(apiObj.attributesNullable);
+wireObj.nullable_attributes = api2wire_opt_list_opt_box_autoadd_attribute_twin_rust_async(apiObj.nullableAttributes);
+wireObj.newtypeint = api2wire_opt_box_autoadd_new_type_int_twin_rust_async(apiObj.newtypeint);
+                }void _api_fill_to_wire_exotic_optionals_twin_sync(ExoticOptionalsTwinSync apiObj, wire_exotic_optionals_twin_sync wireObj) {
+                    wireObj.int32 = api2wire_opt_box_autoadd_i_32(apiObj.int32);
+wireObj.int64 = api2wire_opt_box_autoadd_i_64(apiObj.int64);
+wireObj.float64 = api2wire_opt_box_autoadd_f_64(apiObj.float64);
+wireObj.boolean = api2wire_opt_box_autoadd_bool(apiObj.boolean);
+wireObj.zerocopy = api2wire_opt_ZeroCopyBuffer_list_prim_u_8(apiObj.zerocopy);
+wireObj.int8list = api2wire_opt_list_prim_i_8(apiObj.int8List);
+wireObj.uint8list = api2wire_opt_list_prim_u_8(apiObj.uint8List);
+wireObj.int32list = api2wire_opt_list_prim_i_32(apiObj.int32List);
+wireObj.float32list = api2wire_opt_list_prim_f_32(apiObj.float32List);
+wireObj.float64list = api2wire_opt_list_prim_f_64(apiObj.float64List);
+wireObj.attributes = api2wire_opt_list_attribute_twin_sync(apiObj.attributes);
+wireObj.attributes_nullable = api2wire_list_opt_box_autoadd_attribute_twin_sync(apiObj.attributesNullable);
+wireObj.nullable_attributes = api2wire_opt_list_opt_box_autoadd_attribute_twin_sync(apiObj.nullableAttributes);
+wireObj.newtypeint = api2wire_opt_box_autoadd_new_type_int_twin_sync(apiObj.newtypeint);
+                }void _api_fill_to_wire_feature_chrono_twin_normal(FeatureChronoTwinNormal apiObj, wire_feature_chrono_twin_normal wireObj) {
+                    wireObj.utc = api2wire_Chrono_Utc(apiObj.utc);
+wireObj.local = api2wire_Chrono_Local(apiObj.local);
+wireObj.duration = api2wire_Chrono_Duration(apiObj.duration);
+wireObj.naive = api2wire_Chrono_Naive(apiObj.naive);
+                }void _api_fill_to_wire_feature_chrono_twin_rust_async(FeatureChronoTwinRustAsync apiObj, wire_feature_chrono_twin_rust_async wireObj) {
+                    wireObj.utc = api2wire_Chrono_Utc(apiObj.utc);
+wireObj.local = api2wire_Chrono_Local(apiObj.local);
+wireObj.duration = api2wire_Chrono_Duration(apiObj.duration);
+wireObj.naive = api2wire_Chrono_Naive(apiObj.naive);
+                }void _api_fill_to_wire_feature_chrono_twin_sync(FeatureChronoTwinSync apiObj, wire_feature_chrono_twin_sync wireObj) {
+                    wireObj.utc = api2wire_Chrono_Utc(apiObj.utc);
+wireObj.local = api2wire_Chrono_Local(apiObj.local);
+wireObj.duration = api2wire_Chrono_Duration(apiObj.duration);
+wireObj.naive = api2wire_Chrono_Naive(apiObj.naive);
+                }void _api_fill_to_wire_feature_uuid_twin_normal(FeatureUuidTwinNormal apiObj, wire_feature_uuid_twin_normal wireObj) {
+                    wireObj.one = api2wire_Uuid(apiObj.one);
+wireObj.many = api2wire_Uuids(apiObj.many);
+                }void _api_fill_to_wire_feature_uuid_twin_rust_async(FeatureUuidTwinRustAsync apiObj, wire_feature_uuid_twin_rust_async wireObj) {
+                    wireObj.one = api2wire_Uuid(apiObj.one);
+wireObj.many = api2wire_Uuids(apiObj.many);
+                }void _api_fill_to_wire_feature_uuid_twin_sync(FeatureUuidTwinSync apiObj, wire_feature_uuid_twin_sync wireObj) {
+                    wireObj.one = api2wire_Uuid(apiObj.one);
+wireObj.many = api2wire_Uuids(apiObj.many);
+                }void _api_fill_to_wire_feed_id_twin_normal(FeedIdTwinNormal apiObj, wire_feed_id_twin_normal wireObj) {
+                    wireObj.field0 = api2wire_u_8_array_8(apiObj.field0);
+                }void _api_fill_to_wire_feed_id_twin_rust_async(FeedIdTwinRustAsync apiObj, wire_feed_id_twin_rust_async wireObj) {
+                    wireObj.field0 = api2wire_u_8_array_8(apiObj.field0);
+                }void _api_fill_to_wire_feed_id_twin_sync(FeedIdTwinSync apiObj, wire_feed_id_twin_sync wireObj) {
+                    wireObj.field0 = api2wire_u_8_array_8(apiObj.field0);
+                }void _api_fill_to_wire_kitchen_sink_twin_normal(KitchenSinkTwinNormal apiObj, wire_kitchen_sink_twin_normal wireObj) {
+                    if (apiObj is KitchenSinkTwinNormal_Empty) {
+                wireObj.tag = 0;
+                return;
+            }
+if (apiObj is KitchenSinkTwinNormal_Primitives) {
+                var pre_int32 = api2wire_i_32(apiObj.int32);
+var pre_float64 = api2wire_f_64(apiObj.float64);
+var pre_boolean = api2wire_bool(apiObj.boolean);wireObj.tag = 1;wireObj.kind = wire.inflate_KitchenSinkTwinNormal_Primitives();wireObj.kind.ref.Primitives.ref.int32 = pre_int32;
+wireObj.kind.ref.Primitives.ref.float64 = pre_float64;
+wireObj.kind.ref.Primitives.ref.boolean = pre_boolean;
+                return;
+            }
+if (apiObj is KitchenSinkTwinNormal_Nested) {
+                var pre_field0 = api2wire_i_32(apiObj.field0);
+var pre_field1 = api2wire_box_kitchen_sink_twin_normal(apiObj.field1);wireObj.tag = 2;wireObj.kind = wire.inflate_KitchenSinkTwinNormal_Nested();wireObj.kind.ref.Nested.ref.field0 = pre_field0;
+wireObj.kind.ref.Nested.ref.field1 = pre_field1;
+                return;
+            }
+if (apiObj is KitchenSinkTwinNormal_Optional) {
+                var pre_field0 = api2wire_opt_box_autoadd_i_32(apiObj.field0);
+var pre_field1 = api2wire_opt_box_autoadd_i_32(apiObj.field1);wireObj.tag = 3;wireObj.kind = wire.inflate_KitchenSinkTwinNormal_Optional();wireObj.kind.ref.Optional.ref.field0 = pre_field0;
+wireObj.kind.ref.Optional.ref.field1 = pre_field1;
+                return;
+            }
+if (apiObj is KitchenSinkTwinNormal_Buffer) {
+                var pre_field0 = api2wire_ZeroCopyBuffer_list_prim_u_8(apiObj.field0);wireObj.tag = 4;wireObj.kind = wire.inflate_KitchenSinkTwinNormal_Buffer();wireObj.kind.ref.Buffer.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is KitchenSinkTwinNormal_Enums) {
+                var pre_field0 = api2wire_weekdays_twin_normal(apiObj.field0);wireObj.tag = 5;wireObj.kind = wire.inflate_KitchenSinkTwinNormal_Enums();wireObj.kind.ref.Enums.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_kitchen_sink_twin_rust_async(KitchenSinkTwinRustAsync apiObj, wire_kitchen_sink_twin_rust_async wireObj) {
+                    if (apiObj is KitchenSinkTwinRustAsync_Empty) {
+                wireObj.tag = 0;
+                return;
+            }
+if (apiObj is KitchenSinkTwinRustAsync_Primitives) {
+                var pre_int32 = api2wire_i_32(apiObj.int32);
+var pre_float64 = api2wire_f_64(apiObj.float64);
+var pre_boolean = api2wire_bool(apiObj.boolean);wireObj.tag = 1;wireObj.kind = wire.inflate_KitchenSinkTwinRustAsync_Primitives();wireObj.kind.ref.Primitives.ref.int32 = pre_int32;
+wireObj.kind.ref.Primitives.ref.float64 = pre_float64;
+wireObj.kind.ref.Primitives.ref.boolean = pre_boolean;
+                return;
+            }
+if (apiObj is KitchenSinkTwinRustAsync_Nested) {
+                var pre_field0 = api2wire_i_32(apiObj.field0);
+var pre_field1 = api2wire_box_kitchen_sink_twin_rust_async(apiObj.field1);wireObj.tag = 2;wireObj.kind = wire.inflate_KitchenSinkTwinRustAsync_Nested();wireObj.kind.ref.Nested.ref.field0 = pre_field0;
+wireObj.kind.ref.Nested.ref.field1 = pre_field1;
+                return;
+            }
+if (apiObj is KitchenSinkTwinRustAsync_Optional) {
+                var pre_field0 = api2wire_opt_box_autoadd_i_32(apiObj.field0);
+var pre_field1 = api2wire_opt_box_autoadd_i_32(apiObj.field1);wireObj.tag = 3;wireObj.kind = wire.inflate_KitchenSinkTwinRustAsync_Optional();wireObj.kind.ref.Optional.ref.field0 = pre_field0;
+wireObj.kind.ref.Optional.ref.field1 = pre_field1;
+                return;
+            }
+if (apiObj is KitchenSinkTwinRustAsync_Buffer) {
+                var pre_field0 = api2wire_ZeroCopyBuffer_list_prim_u_8(apiObj.field0);wireObj.tag = 4;wireObj.kind = wire.inflate_KitchenSinkTwinRustAsync_Buffer();wireObj.kind.ref.Buffer.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is KitchenSinkTwinRustAsync_Enums) {
+                var pre_field0 = api2wire_weekdays_twin_rust_async(apiObj.field0);wireObj.tag = 5;wireObj.kind = wire.inflate_KitchenSinkTwinRustAsync_Enums();wireObj.kind.ref.Enums.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_kitchen_sink_twin_sync(KitchenSinkTwinSync apiObj, wire_kitchen_sink_twin_sync wireObj) {
+                    if (apiObj is KitchenSinkTwinSync_Empty) {
+                wireObj.tag = 0;
+                return;
+            }
+if (apiObj is KitchenSinkTwinSync_Primitives) {
+                var pre_int32 = api2wire_i_32(apiObj.int32);
+var pre_float64 = api2wire_f_64(apiObj.float64);
+var pre_boolean = api2wire_bool(apiObj.boolean);wireObj.tag = 1;wireObj.kind = wire.inflate_KitchenSinkTwinSync_Primitives();wireObj.kind.ref.Primitives.ref.int32 = pre_int32;
+wireObj.kind.ref.Primitives.ref.float64 = pre_float64;
+wireObj.kind.ref.Primitives.ref.boolean = pre_boolean;
+                return;
+            }
+if (apiObj is KitchenSinkTwinSync_Nested) {
+                var pre_field0 = api2wire_i_32(apiObj.field0);
+var pre_field1 = api2wire_box_kitchen_sink_twin_sync(apiObj.field1);wireObj.tag = 2;wireObj.kind = wire.inflate_KitchenSinkTwinSync_Nested();wireObj.kind.ref.Nested.ref.field0 = pre_field0;
+wireObj.kind.ref.Nested.ref.field1 = pre_field1;
+                return;
+            }
+if (apiObj is KitchenSinkTwinSync_Optional) {
+                var pre_field0 = api2wire_opt_box_autoadd_i_32(apiObj.field0);
+var pre_field1 = api2wire_opt_box_autoadd_i_32(apiObj.field1);wireObj.tag = 3;wireObj.kind = wire.inflate_KitchenSinkTwinSync_Optional();wireObj.kind.ref.Optional.ref.field0 = pre_field0;
+wireObj.kind.ref.Optional.ref.field1 = pre_field1;
+                return;
+            }
+if (apiObj is KitchenSinkTwinSync_Buffer) {
+                var pre_field0 = api2wire_ZeroCopyBuffer_list_prim_u_8(apiObj.field0);wireObj.tag = 4;wireObj.kind = wire.inflate_KitchenSinkTwinSync_Buffer();wireObj.kind.ref.Buffer.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is KitchenSinkTwinSync_Enums) {
+                var pre_field0 = api2wire_weekdays_twin_sync(apiObj.field0);wireObj.tag = 5;wireObj.kind = wire.inflate_KitchenSinkTwinSync_Enums();wireObj.kind.ref.Enums.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_macro_struct(MacroStruct apiObj, wire_macro_struct wireObj) {
+                    wireObj.data = api2wire_i_32(apiObj.data);
+                }void _api_fill_to_wire_measure_twin_normal(MeasureTwinNormal apiObj, wire_measure_twin_normal wireObj) {
+                    if (apiObj is MeasureTwinNormal_Speed) {
+                var pre_field0 = api2wire_box_speed_twin_normal(apiObj.field0);wireObj.tag = 0;wireObj.kind = wire.inflate_MeasureTwinNormal_Speed();wireObj.kind.ref.Speed.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is MeasureTwinNormal_Distance) {
+                var pre_field0 = api2wire_box_distance_twin_normal(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_MeasureTwinNormal_Distance();wireObj.kind.ref.Distance.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_measure_twin_rust_async(MeasureTwinRustAsync apiObj, wire_measure_twin_rust_async wireObj) {
+                    if (apiObj is MeasureTwinRustAsync_Speed) {
+                var pre_field0 = api2wire_box_speed_twin_rust_async(apiObj.field0);wireObj.tag = 0;wireObj.kind = wire.inflate_MeasureTwinRustAsync_Speed();wireObj.kind.ref.Speed.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is MeasureTwinRustAsync_Distance) {
+                var pre_field0 = api2wire_box_distance_twin_rust_async(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_MeasureTwinRustAsync_Distance();wireObj.kind.ref.Distance.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_measure_twin_sync(MeasureTwinSync apiObj, wire_measure_twin_sync wireObj) {
+                    if (apiObj is MeasureTwinSync_Speed) {
+                var pre_field0 = api2wire_box_speed_twin_sync(apiObj.field0);wireObj.tag = 0;wireObj.kind = wire.inflate_MeasureTwinSync_Speed();wireObj.kind.ref.Speed.ref.field0 = pre_field0;
+                return;
+            }
+if (apiObj is MeasureTwinSync_Distance) {
+                var pre_field0 = api2wire_box_distance_twin_sync(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_MeasureTwinSync_Distance();wireObj.kind.ref.Distance.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_message_id_twin_normal(MessageIdTwinNormal apiObj, wire_message_id_twin_normal wireObj) {
+                    wireObj.field0 = api2wire_u_8_array_32(apiObj.field0);
+                }void _api_fill_to_wire_message_id_twin_rust_async(MessageIdTwinRustAsync apiObj, wire_message_id_twin_rust_async wireObj) {
+                    wireObj.field0 = api2wire_u_8_array_32(apiObj.field0);
+                }void _api_fill_to_wire_message_id_twin_sync(MessageIdTwinSync apiObj, wire_message_id_twin_sync wireObj) {
+                    wireObj.field0 = api2wire_u_8_array_32(apiObj.field0);
+                }void _api_fill_to_wire_my_nested_struct_twin_normal(MyNestedStructTwinNormal apiObj, wire_my_nested_struct_twin_normal wireObj) {
+                    _api_fill_to_wire_my_tree_node_twin_normal(apiObj.treeNode, wireObj.tree_node);
+wireObj.weekday = api2wire_weekdays_twin_normal(apiObj.weekday);
+                }void _api_fill_to_wire_my_nested_struct_twin_rust_async(MyNestedStructTwinRustAsync apiObj, wire_my_nested_struct_twin_rust_async wireObj) {
+                    _api_fill_to_wire_my_tree_node_twin_rust_async(apiObj.treeNode, wireObj.tree_node);
+wireObj.weekday = api2wire_weekdays_twin_rust_async(apiObj.weekday);
+                }void _api_fill_to_wire_my_nested_struct_twin_sync(MyNestedStructTwinSync apiObj, wire_my_nested_struct_twin_sync wireObj) {
+                    _api_fill_to_wire_my_tree_node_twin_sync(apiObj.treeNode, wireObj.tree_node);
+wireObj.weekday = api2wire_weekdays_twin_sync(apiObj.weekday);
+                }void _api_fill_to_wire_my_size(MySize apiObj, wire_my_size wireObj) {
+                    wireObj.width = api2wire_i_32(apiObj.width);
+wireObj.height = api2wire_i_32(apiObj.height);
+                }void _api_fill_to_wire_my_struct(MyStruct apiObj, wire_my_struct wireObj) {
+                    wireObj.content = api2wire_bool(apiObj.content);
+                }void _api_fill_to_wire_my_tree_node_twin_normal(MyTreeNodeTwinNormal apiObj, wire_my_tree_node_twin_normal wireObj) {
+                    wireObj.value_i32 = api2wire_i_32(apiObj.valueI32);
+wireObj.value_vec_u8 = api2wire_list_prim_u_8(apiObj.valueVecU8);
+wireObj.value_boolean = api2wire_bool(apiObj.valueBoolean);
+wireObj.children = api2wire_list_my_tree_node_twin_normal(apiObj.children);
+                }void _api_fill_to_wire_my_tree_node_twin_rust_async(MyTreeNodeTwinRustAsync apiObj, wire_my_tree_node_twin_rust_async wireObj) {
+                    wireObj.value_i32 = api2wire_i_32(apiObj.valueI32);
+wireObj.value_vec_u8 = api2wire_list_prim_u_8(apiObj.valueVecU8);
+wireObj.value_boolean = api2wire_bool(apiObj.valueBoolean);
+wireObj.children = api2wire_list_my_tree_node_twin_rust_async(apiObj.children);
+                }void _api_fill_to_wire_my_tree_node_twin_sync(MyTreeNodeTwinSync apiObj, wire_my_tree_node_twin_sync wireObj) {
+                    wireObj.value_i32 = api2wire_i_32(apiObj.valueI32);
+wireObj.value_vec_u8 = api2wire_list_prim_u_8(apiObj.valueVecU8);
+wireObj.value_boolean = api2wire_bool(apiObj.valueBoolean);
+wireObj.children = api2wire_list_my_tree_node_twin_sync(apiObj.children);
+                }void _api_fill_to_wire_new_type_int_twin_normal(NewTypeIntTwinNormal apiObj, wire_new_type_int_twin_normal wireObj) {
+                    wireObj.field0 = api2wire_i_64(apiObj.field0);
+                }void _api_fill_to_wire_new_type_int_twin_rust_async(NewTypeIntTwinRustAsync apiObj, wire_new_type_int_twin_rust_async wireObj) {
+                    wireObj.field0 = api2wire_i_64(apiObj.field0);
+                }void _api_fill_to_wire_new_type_int_twin_sync(NewTypeIntTwinSync apiObj, wire_new_type_int_twin_sync wireObj) {
+                    wireObj.field0 = api2wire_i_64(apiObj.field0);
+                }void _api_fill_to_wire_note_twin_normal(NoteTwinNormal apiObj, wire_note_twin_normal wireObj) {
+                    wireObj.day = api2wire_box_weekdays_twin_normal(apiObj.day);
+wireObj.body = api2wire_String(apiObj.body);
+                }void _api_fill_to_wire_note_twin_rust_async(NoteTwinRustAsync apiObj, wire_note_twin_rust_async wireObj) {
+                    wireObj.day = api2wire_box_weekdays_twin_rust_async(apiObj.day);
+wireObj.body = api2wire_String(apiObj.body);
+                }void _api_fill_to_wire_note_twin_sync(NoteTwinSync apiObj, wire_note_twin_sync wireObj) {
+                    wireObj.day = api2wire_box_weekdays_twin_sync(apiObj.day);
+wireObj.body = api2wire_String(apiObj.body);
+                }void _api_fill_to_wire_numbers(Numbers apiObj, wire_numbers wireObj) {
+                    wireObj.field0 = api2wire_list_prim_i_32(apiObj.field0);
+                }void _api_fill_to_wire_opaque_nested_twin_normal(OpaqueNestedTwinNormal apiObj, wire_opaque_nested_twin_normal wireObj) {
+                    wireObj.first = api2wire_RustOpaque_hide_data(apiObj.first);
+wireObj.second = api2wire_RustOpaque_hide_data(apiObj.second);
+                }void _api_fill_to_wire_opaque_nested_twin_rust_async(OpaqueNestedTwinRustAsync apiObj, wire_opaque_nested_twin_rust_async wireObj) {
+                    wireObj.first = api2wire_RustOpaque_hide_data(apiObj.first);
+wireObj.second = api2wire_RustOpaque_hide_data(apiObj.second);
+                }void _api_fill_to_wire_opaque_nested_twin_sync(OpaqueNestedTwinSync apiObj, wire_opaque_nested_twin_sync wireObj) {
+                    wireObj.first = api2wire_RustOpaque_hide_data(apiObj.first);
+wireObj.second = api2wire_RustOpaque_hide_data(apiObj.second);
+                }void _api_fill_to_wire_opt_vecs_twin_normal(OptVecsTwinNormal apiObj, wire_opt_vecs_twin_normal wireObj) {
+                    wireObj.i32 = api2wire_list_opt_box_autoadd_i_32(apiObj.i32);
+wireObj.enums = api2wire_list_opt_box_autoadd_weekdays_twin_normal(apiObj.enums);
+wireObj.strings = api2wire_list_opt_String(apiObj.strings);
+wireObj.buffers = api2wire_list_opt_list_prim_i_32(apiObj.buffers);
+                }void _api_fill_to_wire_opt_vecs_twin_rust_async(OptVecsTwinRustAsync apiObj, wire_opt_vecs_twin_rust_async wireObj) {
+                    wireObj.i32 = api2wire_list_opt_box_autoadd_i_32(apiObj.i32);
+wireObj.enums = api2wire_list_opt_box_autoadd_weekdays_twin_rust_async(apiObj.enums);
+wireObj.strings = api2wire_list_opt_String(apiObj.strings);
+wireObj.buffers = api2wire_list_opt_list_prim_i_32(apiObj.buffers);
+                }void _api_fill_to_wire_opt_vecs_twin_sync(OptVecsTwinSync apiObj, wire_opt_vecs_twin_sync wireObj) {
+                    wireObj.i32 = api2wire_list_opt_box_autoadd_i_32(apiObj.i32);
+wireObj.enums = api2wire_list_opt_box_autoadd_weekdays_twin_sync(apiObj.enums);
+wireObj.strings = api2wire_list_opt_String(apiObj.strings);
+wireObj.buffers = api2wire_list_opt_list_prim_i_32(apiObj.buffers);
+                }void _api_fill_to_wire_record_string_i_32((String,int) apiObj, wire_record_string_i_32 wireObj) {
+                    wireObj.field0 = api2wire_String(apiObj.$1);
+wireObj.field1 = api2wire_i_32(apiObj.$2);
+                }void _api_fill_to_wire_sequences(Sequences apiObj, wire_sequences wireObj) {
+                    wireObj.field0 = api2wire_list_prim_i_32(apiObj.field0);
+                }void _api_fill_to_wire_some_struct_twin_normal(SomeStructTwinNormal apiObj, wire_some_struct_twin_normal wireObj) {
+                    wireObj.value = api2wire_u_32(apiObj.value);
+                }void _api_fill_to_wire_some_struct_twin_rust_async(SomeStructTwinRustAsync apiObj, wire_some_struct_twin_rust_async wireObj) {
+                    wireObj.value = api2wire_u_32(apiObj.value);
+                }void _api_fill_to_wire_some_struct_twin_sync(SomeStructTwinSync apiObj, wire_some_struct_twin_sync wireObj) {
+                    wireObj.value = api2wire_u_32(apiObj.value);
+                }void _api_fill_to_wire_speed_twin_normal(SpeedTwinNormal apiObj, wire_speed_twin_normal wireObj) {
+                    if (apiObj is SpeedTwinNormal_Unknown) {
+                wireObj.tag = 0;
+                return;
+            }
+if (apiObj is SpeedTwinNormal_GPS) {
+                var pre_field0 = api2wire_f_64(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_SpeedTwinNormal_GPS();wireObj.kind.ref.GPS.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_speed_twin_rust_async(SpeedTwinRustAsync apiObj, wire_speed_twin_rust_async wireObj) {
+                    if (apiObj is SpeedTwinRustAsync_Unknown) {
+                wireObj.tag = 0;
+                return;
+            }
+if (apiObj is SpeedTwinRustAsync_GPS) {
+                var pre_field0 = api2wire_f_64(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_SpeedTwinRustAsync_GPS();wireObj.kind.ref.GPS.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_speed_twin_sync(SpeedTwinSync apiObj, wire_speed_twin_sync wireObj) {
+                    if (apiObj is SpeedTwinSync_Unknown) {
+                wireObj.tag = 0;
+                return;
+            }
+if (apiObj is SpeedTwinSync_GPS) {
+                var pre_field0 = api2wire_f_64(apiObj.field0);wireObj.tag = 1;wireObj.kind = wire.inflate_SpeedTwinSync_GPS();wireObj.kind.ref.GPS.ref.field0 = pre_field0;
+                return;
+            }
+                }void _api_fill_to_wire_struct_with_comments_twin_normal(StructWithCommentsTwinNormal apiObj, wire_struct_with_comments_twin_normal wireObj) {
+                    wireObj.field_with_comments = api2wire_i_32(apiObj.fieldWithComments);
+                }void _api_fill_to_wire_struct_with_comments_twin_rust_async(StructWithCommentsTwinRustAsync apiObj, wire_struct_with_comments_twin_rust_async wireObj) {
+                    wireObj.field_with_comments = api2wire_i_32(apiObj.fieldWithComments);
+                }void _api_fill_to_wire_struct_with_comments_twin_sync(StructWithCommentsTwinSync apiObj, wire_struct_with_comments_twin_sync wireObj) {
+                    wireObj.field_with_comments = api2wire_i_32(apiObj.fieldWithComments);
+                }void _api_fill_to_wire_struct_with_enum_twin_normal(StructWithEnumTwinNormal apiObj, wire_struct_with_enum_twin_normal wireObj) {
+                    _api_fill_to_wire_abc_twin_normal(apiObj.abc1, wireObj.abc1);
+_api_fill_to_wire_abc_twin_normal(apiObj.abc2, wireObj.abc2);
+                }void _api_fill_to_wire_struct_with_enum_twin_rust_async(StructWithEnumTwinRustAsync apiObj, wire_struct_with_enum_twin_rust_async wireObj) {
+                    _api_fill_to_wire_abc_twin_rust_async(apiObj.abc1, wireObj.abc1);
+_api_fill_to_wire_abc_twin_rust_async(apiObj.abc2, wireObj.abc2);
+                }void _api_fill_to_wire_struct_with_enum_twin_sync(StructWithEnumTwinSync apiObj, wire_struct_with_enum_twin_sync wireObj) {
+                    _api_fill_to_wire_abc_twin_sync(apiObj.abc1, wireObj.abc1);
+_api_fill_to_wire_abc_twin_sync(apiObj.abc2, wireObj.abc2);
+                }void _api_fill_to_wire_struct_with_one_field_twin_normal(StructWithOneFieldTwinNormal apiObj, wire_struct_with_one_field_twin_normal wireObj) {
+                    wireObj.a = api2wire_i_32(apiObj.a);
+                }void _api_fill_to_wire_struct_with_one_field_twin_rust_async(StructWithOneFieldTwinRustAsync apiObj, wire_struct_with_one_field_twin_rust_async wireObj) {
+                    wireObj.a = api2wire_i_32(apiObj.a);
+                }void _api_fill_to_wire_struct_with_one_field_twin_sync(StructWithOneFieldTwinSync apiObj, wire_struct_with_one_field_twin_sync wireObj) {
+                    wireObj.a = api2wire_i_32(apiObj.a);
+                }void _api_fill_to_wire_struct_with_two_field_twin_normal(StructWithTwoFieldTwinNormal apiObj, wire_struct_with_two_field_twin_normal wireObj) {
+                    wireObj.a = api2wire_i_32(apiObj.a);
+wireObj.b = api2wire_i_32(apiObj.b);
+                }void _api_fill_to_wire_struct_with_two_field_twin_rust_async(StructWithTwoFieldTwinRustAsync apiObj, wire_struct_with_two_field_twin_rust_async wireObj) {
+                    wireObj.a = api2wire_i_32(apiObj.a);
+wireObj.b = api2wire_i_32(apiObj.b);
+                }void _api_fill_to_wire_struct_with_two_field_twin_sync(StructWithTwoFieldTwinSync apiObj, wire_struct_with_two_field_twin_sync wireObj) {
+                    wireObj.a = api2wire_i_32(apiObj.a);
+wireObj.b = api2wire_i_32(apiObj.b);
+                }void _api_fill_to_wire_struct_with_zero_field_twin_normal(StructWithZeroFieldTwinNormal apiObj, wire_struct_with_zero_field_twin_normal wireObj) {
+                    
+                }void _api_fill_to_wire_struct_with_zero_field_twin_rust_async(StructWithZeroFieldTwinRustAsync apiObj, wire_struct_with_zero_field_twin_rust_async wireObj) {
+                    
+                }void _api_fill_to_wire_struct_with_zero_field_twin_sync(StructWithZeroFieldTwinSync apiObj, wire_struct_with_zero_field_twin_sync wireObj) {
+                    
+                }void _api_fill_to_wire_sum_with_twin_normal(SumWithTwinNormal apiObj, wire_sum_with_twin_normal wireObj) {
+                    wireObj.x = api2wire_u_32(apiObj.x);
+                }void _api_fill_to_wire_sum_with_twin_rust_async(SumWithTwinRustAsync apiObj, wire_sum_with_twin_rust_async wireObj) {
+                    wireObj.x = api2wire_u_32(apiObj.x);
+                }void _api_fill_to_wire_sum_with_twin_sync(SumWithTwinSync apiObj, wire_sum_with_twin_sync wireObj) {
+                    wireObj.x = api2wire_u_32(apiObj.x);
+                }void _api_fill_to_wire_test_id_twin_normal(TestIdTwinNormal apiObj, wire_test_id_twin_normal wireObj) {
+                    wireObj.field0 = api2wire_i_32_array_2(apiObj.field0);
+                }void _api_fill_to_wire_test_id_twin_rust_async(TestIdTwinRustAsync apiObj, wire_test_id_twin_rust_async wireObj) {
+                    wireObj.field0 = api2wire_i_32_array_2(apiObj.field0);
+                }void _api_fill_to_wire_test_id_twin_sync(TestIdTwinSync apiObj, wire_test_id_twin_sync wireObj) {
+                    wireObj.field0 = api2wire_i_32_array_2(apiObj.field0);
+                }void _api_fill_to_wire_tuple_struct_with_one_field_twin_normal(TupleStructWithOneFieldTwinNormal apiObj, wire_tuple_struct_with_one_field_twin_normal wireObj) {
+                    wireObj.field0 = api2wire_i_32(apiObj.field0);
+                }void _api_fill_to_wire_tuple_struct_with_one_field_twin_rust_async(TupleStructWithOneFieldTwinRustAsync apiObj, wire_tuple_struct_with_one_field_twin_rust_async wireObj) {
+                    wireObj.field0 = api2wire_i_32(apiObj.field0);
+                }void _api_fill_to_wire_tuple_struct_with_one_field_twin_sync(TupleStructWithOneFieldTwinSync apiObj, wire_tuple_struct_with_one_field_twin_sync wireObj) {
+                    wireObj.field0 = api2wire_i_32(apiObj.field0);
+                }void _api_fill_to_wire_tuple_struct_with_two_field_twin_normal(TupleStructWithTwoFieldTwinNormal apiObj, wire_tuple_struct_with_two_field_twin_normal wireObj) {
+                    wireObj.field0 = api2wire_i_32(apiObj.field0);
+wireObj.field1 = api2wire_i_32(apiObj.field1);
+                }void _api_fill_to_wire_tuple_struct_with_two_field_twin_rust_async(TupleStructWithTwoFieldTwinRustAsync apiObj, wire_tuple_struct_with_two_field_twin_rust_async wireObj) {
+                    wireObj.field0 = api2wire_i_32(apiObj.field0);
+wireObj.field1 = api2wire_i_32(apiObj.field1);
+                }void _api_fill_to_wire_tuple_struct_with_two_field_twin_sync(TupleStructWithTwoFieldTwinSync apiObj, wire_tuple_struct_with_two_field_twin_sync wireObj) {
+                    wireObj.field0 = api2wire_i_32(apiObj.field0);
+wireObj.field1 = api2wire_i_32(apiObj.field1);
+                }void _api_fill_to_wire_user_id_twin_normal(UserIdTwinNormal apiObj, wire_user_id_twin_normal wireObj) {
+                    wireObj.value = api2wire_u_32(apiObj.value);
+                }void _api_fill_to_wire_user_id_twin_rust_async(UserIdTwinRustAsync apiObj, wire_user_id_twin_rust_async wireObj) {
+                    wireObj.value = api2wire_u_32(apiObj.value);
+                }void _api_fill_to_wire_user_id_twin_sync(UserIdTwinSync apiObj, wire_user_id_twin_sync wireObj) {
+                    wireObj.value = api2wire_u_32(apiObj.value);
+                }
+                }
+                
 
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_BoxDartDebugTwinRustAsyncPtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsyncPtr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_BoxDartDebugTwinSyncPtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSyncPtr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_FrbOpaqueReturnPtr =>
-          wire._rust_arc_decrement_strong_count_RustOpaque_frb_opaque_returnPtr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_FrbOpaqueSyncReturnPtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_returnPtr;
-
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_HideDataPtr =>
-      wire._rust_arc_decrement_strong_count_RustOpaque_hide_dataPtr;
-
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_I32Ptr =>
-      wire._rust_arc_decrement_strong_count_RustOpaque_i_32Ptr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonCloneDataPtr =>
-          wire._rust_arc_decrement_strong_count_RustOpaque_non_clone_dataPtr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_NonSendHideDataPtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_non_send_hide_dataPtr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxFnStringStringPtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafePtr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinNormalPtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormalPtr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxHelloTraitTwinSyncPtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSyncPtr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinNormalPtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSyncPtr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockBoxMyTraitTwinSyncPtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSyncPtr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinNormalPtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormalPtr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockNonCloneSimpleTwinSyncPtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSyncPtr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinNormalPtr =>
-          wire._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormalPtr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSyncPtr =>
-          wire._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncPtr;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockTodoRustApiTypePtr => wire
-          ._rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_typePtr;
-
-  @protected
-  int api2wire_Chrono_Duration(Duration raw) {
-    return api2wire_i_64(raw.inMicroseconds);
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_i_64> api2wire_Chrono_DurationList(
-      List<Duration> raw) {
-    final ans = Int64List(raw.length);
-    for (var i = 0; i < raw.length; ++i)
-      ans[i] = api2wire_Chrono_Duration(raw[i]);
-    return api2wire_list_prim_i_64(ans);
-  }
-
-  @protected
-  int api2wire_Chrono_Local(DateTime raw) {
-    return api2wire_i_64(raw.microsecondsSinceEpoch);
-  }
-
-  @protected
-  int api2wire_Chrono_Naive(DateTime raw) {
-    return api2wire_i_64(raw.microsecondsSinceEpoch);
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_i_64> api2wire_Chrono_NaiveList(
-      List<DateTime> raw) {
-    final ans = Int64List(raw.length);
-    for (var i = 0; i < raw.length; ++i) ans[i] = api2wire_Chrono_Naive(raw[i]);
-    return api2wire_list_prim_i_64(ans);
-  }
-
-  @protected
-  int api2wire_Chrono_Utc(DateTime raw) {
-    return api2wire_i_64(raw.microsecondsSinceEpoch);
-  }
-
-  @protected
-  wire_DartOpaque api2wire_DartOpaque(Object raw) {
-    final ptr = wire.new_DartOpaque();
-    _api_fill_to_wire_DartOpaque(raw, ptr);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_DartOpaque> api2wire_DartOpaque_array_1(
-      ObjectArray1 raw) {
-    return api2wire_list_DartOpaque(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_list_RustOpaque_hide_data>
-      api2wire_RustOpaque_hide_data_array_2(HideDataArray2 raw) {
-    return api2wire_list_RustOpaque_hide_data(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_u_8> api2wire_String(String raw) {
-    return api2wire_list_prim_u_8(utf8.encoder.convert(raw));
-  }
-
-  @protected
-  ffi.Pointer<wire_StringList> api2wire_StringList(List<String> raw) {
-    final ans = wire.new_StringList(raw.length);
-    for (var i = 0; i < raw.length; i++) {
-      ans.ref.ptr[i] = api2wire_String(raw[i]);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_u_8> api2wire_Uuid(UuidValue raw) {
-    return api2wire_list_prim_u_8(raw.toBytes());
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_u_8> api2wire_Uuids(List<UuidValue> raw) {
-    final builder = BytesBuilder();
-    for (final element in raw) {
-      builder.add(element.toBytes());
-    }
-    return api2wire_list_prim_u_8(builder.toBytes());
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_u_8> api2wire_ZeroCopyBuffer_list_prim_u_8(
-      Uint8List raw) {
-    return api2wire_list_prim_u_8(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_application_env> api2wire_box_application_env(
-      ApplicationEnv raw) {
-    final ptr = wire.new_box_application_env();
-    _api_fill_to_wire_application_env(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<ffi.Int64> api2wire_box_autoadd_Chrono_Utc(DateTime raw) {
-    return wire.new_box_autoadd_Chrono_Utc(api2wire_Chrono_Utc(raw));
-  }
-
-  @protected
-  ffi.Pointer<wire_DartOpaque> api2wire_box_autoadd_DartOpaque(Object raw) {
-    final ptr = wire.new_box_autoadd_DartOpaque();
-    _api_fill_to_wire_DartOpaque(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<PlatformPointer> api2wire_box_autoadd_RustOpaque_hide_data(
-      HideData raw) {
-    return wire.new_box_autoadd_RustOpaque_hide_data(
-        api2wire_RustOpaque_hide_data(raw));
-  }
-
-  @protected
-  ffi.Pointer<wire_a_twin_normal> api2wire_box_autoadd_a_twin_normal(
-      ATwinNormal raw) {
-    final ptr = wire.new_box_autoadd_a_twin_normal();
-    _api_fill_to_wire_a_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_a_twin_rust_async> api2wire_box_autoadd_a_twin_rust_async(
-      ATwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_a_twin_rust_async();
-    _api_fill_to_wire_a_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_a_twin_sync> api2wire_box_autoadd_a_twin_sync(
-      ATwinSync raw) {
-    final ptr = wire.new_box_autoadd_a_twin_sync();
-    _api_fill_to_wire_a_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_abc_twin_normal> api2wire_box_autoadd_abc_twin_normal(
-      AbcTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_abc_twin_normal();
-    _api_fill_to_wire_abc_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_abc_twin_rust_async>
-      api2wire_box_autoadd_abc_twin_rust_async(AbcTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_abc_twin_rust_async();
-    _api_fill_to_wire_abc_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_abc_twin_sync> api2wire_box_autoadd_abc_twin_sync(
-      AbcTwinSync raw) {
-    final ptr = wire.new_box_autoadd_abc_twin_sync();
-    _api_fill_to_wire_abc_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_application_env> api2wire_box_autoadd_application_env(
-      ApplicationEnv raw) {
-    final ptr = wire.new_box_autoadd_application_env();
-    _api_fill_to_wire_application_env(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_application_settings>
-      api2wire_box_autoadd_application_settings(ApplicationSettings raw) {
-    final ptr = wire.new_box_autoadd_application_settings();
-    _api_fill_to_wire_application_settings(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_attribute_twin_normal>
-      api2wire_box_autoadd_attribute_twin_normal(AttributeTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_attribute_twin_normal();
-    _api_fill_to_wire_attribute_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_attribute_twin_rust_async>
-      api2wire_box_autoadd_attribute_twin_rust_async(
-          AttributeTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_attribute_twin_rust_async();
-    _api_fill_to_wire_attribute_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_attribute_twin_sync>
-      api2wire_box_autoadd_attribute_twin_sync(AttributeTwinSync raw) {
-    final ptr = wire.new_box_autoadd_attribute_twin_sync();
-    _api_fill_to_wire_attribute_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_b_twin_normal> api2wire_box_autoadd_b_twin_normal(
-      BTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_b_twin_normal();
-    _api_fill_to_wire_b_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_b_twin_rust_async> api2wire_box_autoadd_b_twin_rust_async(
-      BTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_b_twin_rust_async();
-    _api_fill_to_wire_b_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_b_twin_sync> api2wire_box_autoadd_b_twin_sync(
-      BTwinSync raw) {
-    final ptr = wire.new_box_autoadd_b_twin_sync();
-    _api_fill_to_wire_b_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<ffi.Bool> api2wire_box_autoadd_bool(bool raw) {
-    return wire.new_box_autoadd_bool(api2wire_bool(raw));
-  }
-
-  @protected
-  ffi.Pointer<wire_c_twin_normal> api2wire_box_autoadd_c_twin_normal(
-      CTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_c_twin_normal();
-    _api_fill_to_wire_c_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_c_twin_rust_async> api2wire_box_autoadd_c_twin_rust_async(
-      CTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_c_twin_rust_async();
-    _api_fill_to_wire_c_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_c_twin_sync> api2wire_box_autoadd_c_twin_sync(
-      CTwinSync raw) {
-    final ptr = wire.new_box_autoadd_c_twin_sync();
-    _api_fill_to_wire_c_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_concatenate_with_twin_normal>
-      api2wire_box_autoadd_concatenate_with_twin_normal(
-          ConcatenateWithTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_concatenate_with_twin_normal();
-    _api_fill_to_wire_concatenate_with_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_concatenate_with_twin_rust_async>
-      api2wire_box_autoadd_concatenate_with_twin_rust_async(
-          ConcatenateWithTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_concatenate_with_twin_rust_async();
-    _api_fill_to_wire_concatenate_with_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_concatenate_with_twin_sync>
-      api2wire_box_autoadd_concatenate_with_twin_sync(
-          ConcatenateWithTwinSync raw) {
-    final ptr = wire.new_box_autoadd_concatenate_with_twin_sync();
-    _api_fill_to_wire_concatenate_with_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_custom_nested_error_inner_twin_normal>
-      api2wire_box_autoadd_custom_nested_error_inner_twin_normal(
-          CustomNestedErrorInnerTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_custom_nested_error_inner_twin_normal();
-    _api_fill_to_wire_custom_nested_error_inner_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_custom_nested_error_inner_twin_rust_async>
-      api2wire_box_autoadd_custom_nested_error_inner_twin_rust_async(
-          CustomNestedErrorInnerTwinRustAsync raw) {
-    final ptr =
-        wire.new_box_autoadd_custom_nested_error_inner_twin_rust_async();
-    _api_fill_to_wire_custom_nested_error_inner_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_custom_nested_error_inner_twin_sync>
-      api2wire_box_autoadd_custom_nested_error_inner_twin_sync(
-          CustomNestedErrorInnerTwinSync raw) {
-    final ptr = wire.new_box_autoadd_custom_nested_error_inner_twin_sync();
-    _api_fill_to_wire_custom_nested_error_inner_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_custom_nested_error_outer_twin_normal>
-      api2wire_box_autoadd_custom_nested_error_outer_twin_normal(
-          CustomNestedErrorOuterTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_custom_nested_error_outer_twin_normal();
-    _api_fill_to_wire_custom_nested_error_outer_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_custom_nested_error_outer_twin_rust_async>
-      api2wire_box_autoadd_custom_nested_error_outer_twin_rust_async(
-          CustomNestedErrorOuterTwinRustAsync raw) {
-    final ptr =
-        wire.new_box_autoadd_custom_nested_error_outer_twin_rust_async();
-    _api_fill_to_wire_custom_nested_error_outer_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_custom_nested_error_outer_twin_sync>
-      api2wire_box_autoadd_custom_nested_error_outer_twin_sync(
-          CustomNestedErrorOuterTwinSync raw) {
-    final ptr = wire.new_box_autoadd_custom_nested_error_outer_twin_sync();
-    _api_fill_to_wire_custom_nested_error_outer_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_custom_struct_error_twin_normal>
-      api2wire_box_autoadd_custom_struct_error_twin_normal(
-          CustomStructErrorTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_custom_struct_error_twin_normal();
-    _api_fill_to_wire_custom_struct_error_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_custom_struct_error_twin_rust_async>
-      api2wire_box_autoadd_custom_struct_error_twin_rust_async(
-          CustomStructErrorTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_custom_struct_error_twin_rust_async();
-    _api_fill_to_wire_custom_struct_error_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_custom_struct_error_twin_sync>
-      api2wire_box_autoadd_custom_struct_error_twin_sync(
-          CustomStructErrorTwinSync raw) {
-    final ptr = wire.new_box_autoadd_custom_struct_error_twin_sync();
-    _api_fill_to_wire_custom_struct_error_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_custom_struct_twin_normal>
-      api2wire_box_autoadd_custom_struct_twin_normal(
-          CustomStructTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_custom_struct_twin_normal();
-    _api_fill_to_wire_custom_struct_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_custom_struct_twin_rust_async>
-      api2wire_box_autoadd_custom_struct_twin_rust_async(
-          CustomStructTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_custom_struct_twin_rust_async();
-    _api_fill_to_wire_custom_struct_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_custom_struct_twin_sync>
-      api2wire_box_autoadd_custom_struct_twin_sync(CustomStructTwinSync raw) {
-    final ptr = wire.new_box_autoadd_custom_struct_twin_sync();
-    _api_fill_to_wire_custom_struct_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_customized_twin_normal>
-      api2wire_box_autoadd_customized_twin_normal(CustomizedTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_customized_twin_normal();
-    _api_fill_to_wire_customized_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_customized_twin_rust_async>
-      api2wire_box_autoadd_customized_twin_rust_async(
-          CustomizedTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_customized_twin_rust_async();
-    _api_fill_to_wire_customized_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_customized_twin_sync>
-      api2wire_box_autoadd_customized_twin_sync(CustomizedTwinSync raw) {
-    final ptr = wire.new_box_autoadd_customized_twin_sync();
-    _api_fill_to_wire_customized_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_dart_opaque_nested_twin_normal>
-      api2wire_box_autoadd_dart_opaque_nested_twin_normal(
-          DartOpaqueNestedTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_dart_opaque_nested_twin_normal();
-    _api_fill_to_wire_dart_opaque_nested_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_dart_opaque_nested_twin_rust_async>
-      api2wire_box_autoadd_dart_opaque_nested_twin_rust_async(
-          DartOpaqueNestedTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_dart_opaque_nested_twin_rust_async();
-    _api_fill_to_wire_dart_opaque_nested_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_dart_opaque_nested_twin_sync>
-      api2wire_box_autoadd_dart_opaque_nested_twin_sync(
-          DartOpaqueNestedTwinSync raw) {
-    final ptr = wire.new_box_autoadd_dart_opaque_nested_twin_sync();
-    _api_fill_to_wire_dart_opaque_nested_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_empty_twin_normal> api2wire_box_autoadd_empty_twin_normal(
-      EmptyTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_empty_twin_normal();
-
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_empty_twin_rust_async>
-      api2wire_box_autoadd_empty_twin_rust_async(EmptyTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_empty_twin_rust_async();
-
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_empty_twin_sync> api2wire_box_autoadd_empty_twin_sync(
-      EmptyTwinSync raw) {
-    final ptr = wire.new_box_autoadd_empty_twin_sync();
-
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_enum_dart_opaque_twin_normal>
-      api2wire_box_autoadd_enum_dart_opaque_twin_normal(
-          EnumDartOpaqueTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_enum_dart_opaque_twin_normal();
-    _api_fill_to_wire_enum_dart_opaque_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_enum_dart_opaque_twin_rust_async>
-      api2wire_box_autoadd_enum_dart_opaque_twin_rust_async(
-          EnumDartOpaqueTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_enum_dart_opaque_twin_rust_async();
-    _api_fill_to_wire_enum_dart_opaque_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_enum_dart_opaque_twin_sync>
-      api2wire_box_autoadd_enum_dart_opaque_twin_sync(
-          EnumDartOpaqueTwinSync raw) {
-    final ptr = wire.new_box_autoadd_enum_dart_opaque_twin_sync();
-    _api_fill_to_wire_enum_dart_opaque_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_enum_opaque_twin_normal>
-      api2wire_box_autoadd_enum_opaque_twin_normal(EnumOpaqueTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_enum_opaque_twin_normal();
-    _api_fill_to_wire_enum_opaque_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_enum_opaque_twin_rust_async>
-      api2wire_box_autoadd_enum_opaque_twin_rust_async(
-          EnumOpaqueTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_enum_opaque_twin_rust_async();
-    _api_fill_to_wire_enum_opaque_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_enum_opaque_twin_sync>
-      api2wire_box_autoadd_enum_opaque_twin_sync(EnumOpaqueTwinSync raw) {
-    final ptr = wire.new_box_autoadd_enum_opaque_twin_sync();
-    _api_fill_to_wire_enum_opaque_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_enum_with_item_mixed_twin_normal>
-      api2wire_box_autoadd_enum_with_item_mixed_twin_normal(
-          EnumWithItemMixedTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_enum_with_item_mixed_twin_normal();
-    _api_fill_to_wire_enum_with_item_mixed_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_enum_with_item_mixed_twin_rust_async>
-      api2wire_box_autoadd_enum_with_item_mixed_twin_rust_async(
-          EnumWithItemMixedTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_enum_with_item_mixed_twin_rust_async();
-    _api_fill_to_wire_enum_with_item_mixed_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_enum_with_item_mixed_twin_sync>
-      api2wire_box_autoadd_enum_with_item_mixed_twin_sync(
-          EnumWithItemMixedTwinSync raw) {
-    final ptr = wire.new_box_autoadd_enum_with_item_mixed_twin_sync();
-    _api_fill_to_wire_enum_with_item_mixed_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_enum_with_item_struct_twin_normal>
-      api2wire_box_autoadd_enum_with_item_struct_twin_normal(
-          EnumWithItemStructTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_enum_with_item_struct_twin_normal();
-    _api_fill_to_wire_enum_with_item_struct_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_enum_with_item_struct_twin_rust_async>
-      api2wire_box_autoadd_enum_with_item_struct_twin_rust_async(
-          EnumWithItemStructTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_enum_with_item_struct_twin_rust_async();
-    _api_fill_to_wire_enum_with_item_struct_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_enum_with_item_struct_twin_sync>
-      api2wire_box_autoadd_enum_with_item_struct_twin_sync(
-          EnumWithItemStructTwinSync raw) {
-    final ptr = wire.new_box_autoadd_enum_with_item_struct_twin_sync();
-    _api_fill_to_wire_enum_with_item_struct_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_enum_with_item_tuple_twin_normal>
-      api2wire_box_autoadd_enum_with_item_tuple_twin_normal(
-          EnumWithItemTupleTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_enum_with_item_tuple_twin_normal();
-    _api_fill_to_wire_enum_with_item_tuple_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_enum_with_item_tuple_twin_rust_async>
-      api2wire_box_autoadd_enum_with_item_tuple_twin_rust_async(
-          EnumWithItemTupleTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_enum_with_item_tuple_twin_rust_async();
-    _api_fill_to_wire_enum_with_item_tuple_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_enum_with_item_tuple_twin_sync>
-      api2wire_box_autoadd_enum_with_item_tuple_twin_sync(
-          EnumWithItemTupleTwinSync raw) {
-    final ptr = wire.new_box_autoadd_enum_with_item_tuple_twin_sync();
-    _api_fill_to_wire_enum_with_item_tuple_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_event_twin_normal> api2wire_box_autoadd_event_twin_normal(
-      EventTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_event_twin_normal();
-    _api_fill_to_wire_event_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_event_twin_rust_async>
-      api2wire_box_autoadd_event_twin_rust_async(EventTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_event_twin_rust_async();
-    _api_fill_to_wire_event_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_event_twin_sync> api2wire_box_autoadd_event_twin_sync(
-      EventTwinSync raw) {
-    final ptr = wire.new_box_autoadd_event_twin_sync();
-    _api_fill_to_wire_event_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_exotic_optionals_twin_normal>
-      api2wire_box_autoadd_exotic_optionals_twin_normal(
-          ExoticOptionalsTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_exotic_optionals_twin_normal();
-    _api_fill_to_wire_exotic_optionals_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_exotic_optionals_twin_rust_async>
-      api2wire_box_autoadd_exotic_optionals_twin_rust_async(
-          ExoticOptionalsTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_exotic_optionals_twin_rust_async();
-    _api_fill_to_wire_exotic_optionals_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_exotic_optionals_twin_sync>
-      api2wire_box_autoadd_exotic_optionals_twin_sync(
-          ExoticOptionalsTwinSync raw) {
-    final ptr = wire.new_box_autoadd_exotic_optionals_twin_sync();
-    _api_fill_to_wire_exotic_optionals_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<ffi.Float> api2wire_box_autoadd_f_32(double raw) {
-    return wire.new_box_autoadd_f_32(api2wire_f_32(raw));
-  }
-
-  @protected
-  ffi.Pointer<ffi.Double> api2wire_box_autoadd_f_64(double raw) {
-    return wire.new_box_autoadd_f_64(api2wire_f_64(raw));
-  }
-
-  @protected
-  ffi.Pointer<wire_feature_chrono_twin_normal>
-      api2wire_box_autoadd_feature_chrono_twin_normal(
-          FeatureChronoTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_feature_chrono_twin_normal();
-    _api_fill_to_wire_feature_chrono_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_feature_chrono_twin_rust_async>
-      api2wire_box_autoadd_feature_chrono_twin_rust_async(
-          FeatureChronoTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_feature_chrono_twin_rust_async();
-    _api_fill_to_wire_feature_chrono_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_feature_chrono_twin_sync>
-      api2wire_box_autoadd_feature_chrono_twin_sync(FeatureChronoTwinSync raw) {
-    final ptr = wire.new_box_autoadd_feature_chrono_twin_sync();
-    _api_fill_to_wire_feature_chrono_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_feature_uuid_twin_normal>
-      api2wire_box_autoadd_feature_uuid_twin_normal(FeatureUuidTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_feature_uuid_twin_normal();
-    _api_fill_to_wire_feature_uuid_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_feature_uuid_twin_rust_async>
-      api2wire_box_autoadd_feature_uuid_twin_rust_async(
-          FeatureUuidTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_feature_uuid_twin_rust_async();
-    _api_fill_to_wire_feature_uuid_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_feature_uuid_twin_sync>
-      api2wire_box_autoadd_feature_uuid_twin_sync(FeatureUuidTwinSync raw) {
-    final ptr = wire.new_box_autoadd_feature_uuid_twin_sync();
-    _api_fill_to_wire_feature_uuid_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_feed_id_twin_normal>
-      api2wire_box_autoadd_feed_id_twin_normal(FeedIdTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_feed_id_twin_normal();
-    _api_fill_to_wire_feed_id_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_feed_id_twin_rust_async>
-      api2wire_box_autoadd_feed_id_twin_rust_async(FeedIdTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_feed_id_twin_rust_async();
-    _api_fill_to_wire_feed_id_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_feed_id_twin_sync> api2wire_box_autoadd_feed_id_twin_sync(
-      FeedIdTwinSync raw) {
-    final ptr = wire.new_box_autoadd_feed_id_twin_sync();
-    _api_fill_to_wire_feed_id_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<ffi.Int16> api2wire_box_autoadd_i_16(int raw) {
-    return wire.new_box_autoadd_i_16(api2wire_i_16(raw));
-  }
-
-  @protected
-  ffi.Pointer<ffi.Int32> api2wire_box_autoadd_i_32(int raw) {
-    return wire.new_box_autoadd_i_32(api2wire_i_32(raw));
-  }
-
-  @protected
-  ffi.Pointer<ffi.Int64> api2wire_box_autoadd_i_64(int raw) {
-    return wire.new_box_autoadd_i_64(api2wire_i_64(raw));
-  }
-
-  @protected
-  ffi.Pointer<ffi.Int8> api2wire_box_autoadd_i_8(int raw) {
-    return wire.new_box_autoadd_i_8(api2wire_i_8(raw));
-  }
-
-  @protected
-  ffi.Pointer<wire_kitchen_sink_twin_normal>
-      api2wire_box_autoadd_kitchen_sink_twin_normal(KitchenSinkTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_kitchen_sink_twin_normal();
-    _api_fill_to_wire_kitchen_sink_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_kitchen_sink_twin_rust_async>
-      api2wire_box_autoadd_kitchen_sink_twin_rust_async(
-          KitchenSinkTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_kitchen_sink_twin_rust_async();
-    _api_fill_to_wire_kitchen_sink_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_kitchen_sink_twin_sync>
-      api2wire_box_autoadd_kitchen_sink_twin_sync(KitchenSinkTwinSync raw) {
-    final ptr = wire.new_box_autoadd_kitchen_sink_twin_sync();
-    _api_fill_to_wire_kitchen_sink_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_macro_struct> api2wire_box_autoadd_macro_struct(
-      MacroStruct raw) {
-    final ptr = wire.new_box_autoadd_macro_struct();
-    _api_fill_to_wire_macro_struct(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_measure_twin_normal>
-      api2wire_box_autoadd_measure_twin_normal(MeasureTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_measure_twin_normal();
-    _api_fill_to_wire_measure_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_measure_twin_rust_async>
-      api2wire_box_autoadd_measure_twin_rust_async(MeasureTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_measure_twin_rust_async();
-    _api_fill_to_wire_measure_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_measure_twin_sync> api2wire_box_autoadd_measure_twin_sync(
-      MeasureTwinSync raw) {
-    final ptr = wire.new_box_autoadd_measure_twin_sync();
-    _api_fill_to_wire_measure_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_message_id_twin_normal>
-      api2wire_box_autoadd_message_id_twin_normal(MessageIdTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_message_id_twin_normal();
-    _api_fill_to_wire_message_id_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_message_id_twin_rust_async>
-      api2wire_box_autoadd_message_id_twin_rust_async(
-          MessageIdTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_message_id_twin_rust_async();
-    _api_fill_to_wire_message_id_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_message_id_twin_sync>
-      api2wire_box_autoadd_message_id_twin_sync(MessageIdTwinSync raw) {
-    final ptr = wire.new_box_autoadd_message_id_twin_sync();
-    _api_fill_to_wire_message_id_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_my_nested_struct_twin_normal>
-      api2wire_box_autoadd_my_nested_struct_twin_normal(
-          MyNestedStructTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_my_nested_struct_twin_normal();
-    _api_fill_to_wire_my_nested_struct_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_my_nested_struct_twin_rust_async>
-      api2wire_box_autoadd_my_nested_struct_twin_rust_async(
-          MyNestedStructTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_my_nested_struct_twin_rust_async();
-    _api_fill_to_wire_my_nested_struct_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_my_nested_struct_twin_sync>
-      api2wire_box_autoadd_my_nested_struct_twin_sync(
-          MyNestedStructTwinSync raw) {
-    final ptr = wire.new_box_autoadd_my_nested_struct_twin_sync();
-    _api_fill_to_wire_my_nested_struct_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_my_size> api2wire_box_autoadd_my_size(MySize raw) {
-    final ptr = wire.new_box_autoadd_my_size();
-    _api_fill_to_wire_my_size(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_my_struct> api2wire_box_autoadd_my_struct(MyStruct raw) {
-    final ptr = wire.new_box_autoadd_my_struct();
-    _api_fill_to_wire_my_struct(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_my_tree_node_twin_normal>
-      api2wire_box_autoadd_my_tree_node_twin_normal(MyTreeNodeTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_my_tree_node_twin_normal();
-    _api_fill_to_wire_my_tree_node_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_my_tree_node_twin_rust_async>
-      api2wire_box_autoadd_my_tree_node_twin_rust_async(
-          MyTreeNodeTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_my_tree_node_twin_rust_async();
-    _api_fill_to_wire_my_tree_node_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_my_tree_node_twin_sync>
-      api2wire_box_autoadd_my_tree_node_twin_sync(MyTreeNodeTwinSync raw) {
-    final ptr = wire.new_box_autoadd_my_tree_node_twin_sync();
-    _api_fill_to_wire_my_tree_node_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_new_type_int_twin_normal>
-      api2wire_box_autoadd_new_type_int_twin_normal(NewTypeIntTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_new_type_int_twin_normal();
-    _api_fill_to_wire_new_type_int_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_new_type_int_twin_rust_async>
-      api2wire_box_autoadd_new_type_int_twin_rust_async(
-          NewTypeIntTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_new_type_int_twin_rust_async();
-    _api_fill_to_wire_new_type_int_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_new_type_int_twin_sync>
-      api2wire_box_autoadd_new_type_int_twin_sync(NewTypeIntTwinSync raw) {
-    final ptr = wire.new_box_autoadd_new_type_int_twin_sync();
-    _api_fill_to_wire_new_type_int_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_note_twin_normal> api2wire_box_autoadd_note_twin_normal(
-      NoteTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_note_twin_normal();
-    _api_fill_to_wire_note_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_note_twin_rust_async>
-      api2wire_box_autoadd_note_twin_rust_async(NoteTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_note_twin_rust_async();
-    _api_fill_to_wire_note_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_note_twin_sync> api2wire_box_autoadd_note_twin_sync(
-      NoteTwinSync raw) {
-    final ptr = wire.new_box_autoadd_note_twin_sync();
-    _api_fill_to_wire_note_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_numbers> api2wire_box_autoadd_numbers(Numbers raw) {
-    final ptr = wire.new_box_autoadd_numbers();
-    _api_fill_to_wire_numbers(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_opaque_nested_twin_normal>
-      api2wire_box_autoadd_opaque_nested_twin_normal(
-          OpaqueNestedTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_opaque_nested_twin_normal();
-    _api_fill_to_wire_opaque_nested_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_opaque_nested_twin_rust_async>
-      api2wire_box_autoadd_opaque_nested_twin_rust_async(
-          OpaqueNestedTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_opaque_nested_twin_rust_async();
-    _api_fill_to_wire_opaque_nested_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_opaque_nested_twin_sync>
-      api2wire_box_autoadd_opaque_nested_twin_sync(OpaqueNestedTwinSync raw) {
-    final ptr = wire.new_box_autoadd_opaque_nested_twin_sync();
-    _api_fill_to_wire_opaque_nested_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_opt_vecs_twin_normal>
-      api2wire_box_autoadd_opt_vecs_twin_normal(OptVecsTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_opt_vecs_twin_normal();
-    _api_fill_to_wire_opt_vecs_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_opt_vecs_twin_rust_async>
-      api2wire_box_autoadd_opt_vecs_twin_rust_async(OptVecsTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_opt_vecs_twin_rust_async();
-    _api_fill_to_wire_opt_vecs_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_opt_vecs_twin_sync> api2wire_box_autoadd_opt_vecs_twin_sync(
-      OptVecsTwinSync raw) {
-    final ptr = wire.new_box_autoadd_opt_vecs_twin_sync();
-    _api_fill_to_wire_opt_vecs_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_record_string_i_32> api2wire_box_autoadd_record_string_i_32(
-      (String, int) raw) {
-    final ptr = wire.new_box_autoadd_record_string_i_32();
-    _api_fill_to_wire_record_string_i_32(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_sequences> api2wire_box_autoadd_sequences(Sequences raw) {
-    final ptr = wire.new_box_autoadd_sequences();
-    _api_fill_to_wire_sequences(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_some_struct_twin_normal>
-      api2wire_box_autoadd_some_struct_twin_normal(SomeStructTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_some_struct_twin_normal();
-    _api_fill_to_wire_some_struct_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_some_struct_twin_rust_async>
-      api2wire_box_autoadd_some_struct_twin_rust_async(
-          SomeStructTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_some_struct_twin_rust_async();
-    _api_fill_to_wire_some_struct_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_some_struct_twin_sync>
-      api2wire_box_autoadd_some_struct_twin_sync(SomeStructTwinSync raw) {
-    final ptr = wire.new_box_autoadd_some_struct_twin_sync();
-    _api_fill_to_wire_some_struct_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_struct_with_comments_twin_normal>
-      api2wire_box_autoadd_struct_with_comments_twin_normal(
-          StructWithCommentsTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_struct_with_comments_twin_normal();
-    _api_fill_to_wire_struct_with_comments_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_struct_with_comments_twin_rust_async>
-      api2wire_box_autoadd_struct_with_comments_twin_rust_async(
-          StructWithCommentsTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_struct_with_comments_twin_rust_async();
-    _api_fill_to_wire_struct_with_comments_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_struct_with_comments_twin_sync>
-      api2wire_box_autoadd_struct_with_comments_twin_sync(
-          StructWithCommentsTwinSync raw) {
-    final ptr = wire.new_box_autoadd_struct_with_comments_twin_sync();
-    _api_fill_to_wire_struct_with_comments_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_struct_with_enum_twin_normal>
-      api2wire_box_autoadd_struct_with_enum_twin_normal(
-          StructWithEnumTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_struct_with_enum_twin_normal();
-    _api_fill_to_wire_struct_with_enum_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_struct_with_enum_twin_rust_async>
-      api2wire_box_autoadd_struct_with_enum_twin_rust_async(
-          StructWithEnumTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_struct_with_enum_twin_rust_async();
-    _api_fill_to_wire_struct_with_enum_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_struct_with_enum_twin_sync>
-      api2wire_box_autoadd_struct_with_enum_twin_sync(
-          StructWithEnumTwinSync raw) {
-    final ptr = wire.new_box_autoadd_struct_with_enum_twin_sync();
-    _api_fill_to_wire_struct_with_enum_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_struct_with_one_field_twin_normal>
-      api2wire_box_autoadd_struct_with_one_field_twin_normal(
-          StructWithOneFieldTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_struct_with_one_field_twin_normal();
-    _api_fill_to_wire_struct_with_one_field_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_struct_with_one_field_twin_rust_async>
-      api2wire_box_autoadd_struct_with_one_field_twin_rust_async(
-          StructWithOneFieldTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_struct_with_one_field_twin_rust_async();
-    _api_fill_to_wire_struct_with_one_field_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_struct_with_one_field_twin_sync>
-      api2wire_box_autoadd_struct_with_one_field_twin_sync(
-          StructWithOneFieldTwinSync raw) {
-    final ptr = wire.new_box_autoadd_struct_with_one_field_twin_sync();
-    _api_fill_to_wire_struct_with_one_field_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_struct_with_two_field_twin_normal>
-      api2wire_box_autoadd_struct_with_two_field_twin_normal(
-          StructWithTwoFieldTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_struct_with_two_field_twin_normal();
-    _api_fill_to_wire_struct_with_two_field_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_struct_with_two_field_twin_rust_async>
-      api2wire_box_autoadd_struct_with_two_field_twin_rust_async(
-          StructWithTwoFieldTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_struct_with_two_field_twin_rust_async();
-    _api_fill_to_wire_struct_with_two_field_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_struct_with_two_field_twin_sync>
-      api2wire_box_autoadd_struct_with_two_field_twin_sync(
-          StructWithTwoFieldTwinSync raw) {
-    final ptr = wire.new_box_autoadd_struct_with_two_field_twin_sync();
-    _api_fill_to_wire_struct_with_two_field_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_struct_with_zero_field_twin_normal>
-      api2wire_box_autoadd_struct_with_zero_field_twin_normal(
-          StructWithZeroFieldTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_struct_with_zero_field_twin_normal();
-
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_struct_with_zero_field_twin_rust_async>
-      api2wire_box_autoadd_struct_with_zero_field_twin_rust_async(
-          StructWithZeroFieldTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_struct_with_zero_field_twin_rust_async();
-
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_struct_with_zero_field_twin_sync>
-      api2wire_box_autoadd_struct_with_zero_field_twin_sync(
-          StructWithZeroFieldTwinSync raw) {
-    final ptr = wire.new_box_autoadd_struct_with_zero_field_twin_sync();
-
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_sum_with_twin_normal>
-      api2wire_box_autoadd_sum_with_twin_normal(SumWithTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_sum_with_twin_normal();
-    _api_fill_to_wire_sum_with_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_sum_with_twin_rust_async>
-      api2wire_box_autoadd_sum_with_twin_rust_async(SumWithTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_sum_with_twin_rust_async();
-    _api_fill_to_wire_sum_with_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_sum_with_twin_sync> api2wire_box_autoadd_sum_with_twin_sync(
-      SumWithTwinSync raw) {
-    final ptr = wire.new_box_autoadd_sum_with_twin_sync();
-    _api_fill_to_wire_sum_with_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_test_id_twin_normal>
-      api2wire_box_autoadd_test_id_twin_normal(TestIdTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_test_id_twin_normal();
-    _api_fill_to_wire_test_id_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_test_id_twin_rust_async>
-      api2wire_box_autoadd_test_id_twin_rust_async(TestIdTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_test_id_twin_rust_async();
-    _api_fill_to_wire_test_id_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_test_id_twin_sync> api2wire_box_autoadd_test_id_twin_sync(
-      TestIdTwinSync raw) {
-    final ptr = wire.new_box_autoadd_test_id_twin_sync();
-    _api_fill_to_wire_test_id_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_tuple_struct_with_one_field_twin_normal>
-      api2wire_box_autoadd_tuple_struct_with_one_field_twin_normal(
-          TupleStructWithOneFieldTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_tuple_struct_with_one_field_twin_normal();
-    _api_fill_to_wire_tuple_struct_with_one_field_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_tuple_struct_with_one_field_twin_rust_async>
-      api2wire_box_autoadd_tuple_struct_with_one_field_twin_rust_async(
-          TupleStructWithOneFieldTwinRustAsync raw) {
-    final ptr =
-        wire.new_box_autoadd_tuple_struct_with_one_field_twin_rust_async();
-    _api_fill_to_wire_tuple_struct_with_one_field_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_tuple_struct_with_one_field_twin_sync>
-      api2wire_box_autoadd_tuple_struct_with_one_field_twin_sync(
-          TupleStructWithOneFieldTwinSync raw) {
-    final ptr = wire.new_box_autoadd_tuple_struct_with_one_field_twin_sync();
-    _api_fill_to_wire_tuple_struct_with_one_field_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_tuple_struct_with_two_field_twin_normal>
-      api2wire_box_autoadd_tuple_struct_with_two_field_twin_normal(
-          TupleStructWithTwoFieldTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_tuple_struct_with_two_field_twin_normal();
-    _api_fill_to_wire_tuple_struct_with_two_field_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_tuple_struct_with_two_field_twin_rust_async>
-      api2wire_box_autoadd_tuple_struct_with_two_field_twin_rust_async(
-          TupleStructWithTwoFieldTwinRustAsync raw) {
-    final ptr =
-        wire.new_box_autoadd_tuple_struct_with_two_field_twin_rust_async();
-    _api_fill_to_wire_tuple_struct_with_two_field_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_tuple_struct_with_two_field_twin_sync>
-      api2wire_box_autoadd_tuple_struct_with_two_field_twin_sync(
-          TupleStructWithTwoFieldTwinSync raw) {
-    final ptr = wire.new_box_autoadd_tuple_struct_with_two_field_twin_sync();
-    _api_fill_to_wire_tuple_struct_with_two_field_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<ffi.Uint16> api2wire_box_autoadd_u_16(int raw) {
-    return wire.new_box_autoadd_u_16(api2wire_u_16(raw));
-  }
-
-  @protected
-  ffi.Pointer<ffi.Uint32> api2wire_box_autoadd_u_32(int raw) {
-    return wire.new_box_autoadd_u_32(api2wire_u_32(raw));
-  }
-
-  @protected
-  ffi.Pointer<ffi.Uint64> api2wire_box_autoadd_u_64(int raw) {
-    return wire.new_box_autoadd_u_64(api2wire_u_64(raw));
-  }
-
-  @protected
-  ffi.Pointer<ffi.Uint8> api2wire_box_autoadd_u_8(int raw) {
-    return wire.new_box_autoadd_u_8(api2wire_u_8(raw));
-  }
-
-  @protected
-  ffi.Pointer<wire_user_id_twin_normal>
-      api2wire_box_autoadd_user_id_twin_normal(UserIdTwinNormal raw) {
-    final ptr = wire.new_box_autoadd_user_id_twin_normal();
-    _api_fill_to_wire_user_id_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_user_id_twin_rust_async>
-      api2wire_box_autoadd_user_id_twin_rust_async(UserIdTwinRustAsync raw) {
-    final ptr = wire.new_box_autoadd_user_id_twin_rust_async();
-    _api_fill_to_wire_user_id_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_user_id_twin_sync> api2wire_box_autoadd_user_id_twin_sync(
-      UserIdTwinSync raw) {
-    final ptr = wire.new_box_autoadd_user_id_twin_sync();
-    _api_fill_to_wire_user_id_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<ffi.Int32> api2wire_box_autoadd_weekdays_twin_normal(
-      WeekdaysTwinNormal raw) {
-    return wire.new_box_autoadd_weekdays_twin_normal(
-        api2wire_weekdays_twin_normal(raw));
-  }
-
-  @protected
-  ffi.Pointer<ffi.Int32> api2wire_box_autoadd_weekdays_twin_rust_async(
-      WeekdaysTwinRustAsync raw) {
-    return wire.new_box_autoadd_weekdays_twin_rust_async(
-        api2wire_weekdays_twin_rust_async(raw));
-  }
-
-  @protected
-  ffi.Pointer<ffi.Int32> api2wire_box_autoadd_weekdays_twin_sync(
-      WeekdaysTwinSync raw) {
-    return wire
-        .new_box_autoadd_weekdays_twin_sync(api2wire_weekdays_twin_sync(raw));
-  }
-
-  @protected
-  ffi.Pointer<wire_blob_twin_normal> api2wire_box_blob_twin_normal(
-      BlobTwinNormal raw) {
-    final ptr = wire.new_box_blob_twin_normal();
-    _api_fill_to_wire_blob_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_blob_twin_rust_async> api2wire_box_blob_twin_rust_async(
-      BlobTwinRustAsync raw) {
-    final ptr = wire.new_box_blob_twin_rust_async();
-    _api_fill_to_wire_blob_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_blob_twin_sync> api2wire_box_blob_twin_sync(
-      BlobTwinSync raw) {
-    final ptr = wire.new_box_blob_twin_sync();
-    _api_fill_to_wire_blob_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<ffi.Bool> api2wire_box_bool(bool raw) {
-    return wire.new_box_bool(api2wire_bool(raw));
-  }
-
-  @protected
-  ffi.Pointer<wire_distance_twin_normal> api2wire_box_distance_twin_normal(
-      DistanceTwinNormal raw) {
-    final ptr = wire.new_box_distance_twin_normal();
-    _api_fill_to_wire_distance_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_distance_twin_rust_async>
-      api2wire_box_distance_twin_rust_async(DistanceTwinRustAsync raw) {
-    final ptr = wire.new_box_distance_twin_rust_async();
-    _api_fill_to_wire_distance_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_distance_twin_sync> api2wire_box_distance_twin_sync(
-      DistanceTwinSync raw) {
-    final ptr = wire.new_box_distance_twin_sync();
-    _api_fill_to_wire_distance_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_exotic_optionals_twin_normal>
-      api2wire_box_exotic_optionals_twin_normal(ExoticOptionalsTwinNormal raw) {
-    final ptr = wire.new_box_exotic_optionals_twin_normal();
-    _api_fill_to_wire_exotic_optionals_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_exotic_optionals_twin_rust_async>
-      api2wire_box_exotic_optionals_twin_rust_async(
-          ExoticOptionalsTwinRustAsync raw) {
-    final ptr = wire.new_box_exotic_optionals_twin_rust_async();
-    _api_fill_to_wire_exotic_optionals_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_exotic_optionals_twin_sync>
-      api2wire_box_exotic_optionals_twin_sync(ExoticOptionalsTwinSync raw) {
-    final ptr = wire.new_box_exotic_optionals_twin_sync();
-    _api_fill_to_wire_exotic_optionals_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<ffi.Double> api2wire_box_f_64(double raw) {
-    return wire.new_box_f_64(api2wire_f_64(raw));
-  }
-
-  @protected
-  ffi.Pointer<ffi.Int32> api2wire_box_i_32(int raw) {
-    return wire.new_box_i_32(api2wire_i_32(raw));
-  }
-
-  @protected
-  ffi.Pointer<ffi.Int64> api2wire_box_i_64(int raw) {
-    return wire.new_box_i_64(api2wire_i_64(raw));
-  }
-
-  @protected
-  ffi.Pointer<ffi.Int8> api2wire_box_i_8(int raw) {
-    return wire.new_box_i_8(api2wire_i_8(raw));
-  }
-
-  @protected
-  ffi.Pointer<wire_kitchen_sink_twin_normal>
-      api2wire_box_kitchen_sink_twin_normal(KitchenSinkTwinNormal raw) {
-    final ptr = wire.new_box_kitchen_sink_twin_normal();
-    _api_fill_to_wire_kitchen_sink_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_kitchen_sink_twin_rust_async>
-      api2wire_box_kitchen_sink_twin_rust_async(KitchenSinkTwinRustAsync raw) {
-    final ptr = wire.new_box_kitchen_sink_twin_rust_async();
-    _api_fill_to_wire_kitchen_sink_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_kitchen_sink_twin_sync> api2wire_box_kitchen_sink_twin_sync(
-      KitchenSinkTwinSync raw) {
-    final ptr = wire.new_box_kitchen_sink_twin_sync();
-    _api_fill_to_wire_kitchen_sink_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_my_size> api2wire_box_my_size(MySize raw) {
-    final ptr = wire.new_box_my_size();
-    _api_fill_to_wire_my_size(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_speed_twin_normal> api2wire_box_speed_twin_normal(
-      SpeedTwinNormal raw) {
-    final ptr = wire.new_box_speed_twin_normal();
-    _api_fill_to_wire_speed_twin_normal(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_speed_twin_rust_async> api2wire_box_speed_twin_rust_async(
-      SpeedTwinRustAsync raw) {
-    final ptr = wire.new_box_speed_twin_rust_async();
-    _api_fill_to_wire_speed_twin_rust_async(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<wire_speed_twin_sync> api2wire_box_speed_twin_sync(
-      SpeedTwinSync raw) {
-    final ptr = wire.new_box_speed_twin_sync();
-    _api_fill_to_wire_speed_twin_sync(raw, ptr.ref);
-    return ptr;
-  }
-
-  @protected
-  ffi.Pointer<ffi.Uint8> api2wire_box_u_8(int raw) {
-    return wire.new_box_u_8(api2wire_u_8(raw));
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_u_8> api2wire_box_u_8_array_1600(U8Array1600 raw) {
-    return api2wire_u_8_array_1600(raw);
-  }
-
-  @protected
-  ffi.Pointer<ffi.Int32> api2wire_box_weekdays_twin_normal(
-      WeekdaysTwinNormal raw) {
-    return wire
-        .new_box_weekdays_twin_normal(api2wire_weekdays_twin_normal(raw));
-  }
-
-  @protected
-  ffi.Pointer<ffi.Int32> api2wire_box_weekdays_twin_rust_async(
-      WeekdaysTwinRustAsync raw) {
-    return wire.new_box_weekdays_twin_rust_async(
-        api2wire_weekdays_twin_rust_async(raw));
-  }
-
-  @protected
-  ffi.Pointer<ffi.Int32> api2wire_box_weekdays_twin_sync(WeekdaysTwinSync raw) {
-    return wire.new_box_weekdays_twin_sync(api2wire_weekdays_twin_sync(raw));
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_f_64> api2wire_f_64_array_16(F64Array16 raw) {
-    final ans = wire.new_list_prim_f_64(16);
-    ans.ref.ptr.asTypedList(16).setAll(0, raw);
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_i_32> api2wire_i_32_array_2(I32Array2 raw) {
-    final ans = wire.new_list_prim_i_32(2);
-    ans.ref.ptr.asTypedList(2).setAll(0, raw);
-    return ans;
-  }
-
-  @protected
-  int api2wire_i_64(int raw) {
-    return raw.toInt();
-  }
-
-  @protected
-  ffi.Pointer<wire_list_DartOpaque> api2wire_list_DartOpaque(List<Object> raw) {
-    final ans = wire.new_list_DartOpaque(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      _api_fill_to_wire_DartOpaque(raw[i], ans.ref.ptr[i]);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_RustOpaque_hide_data>
-      api2wire_list_RustOpaque_hide_data(List<HideData> raw) {
-    final ans = wire.new_list_RustOpaque_hide_data(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      ans.ref.ptr[i] = api2wire_RustOpaque_hide_data(raw[i]);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_application_env_var> api2wire_list_application_env_var(
-      List<ApplicationEnvVar> raw) {
-    final ans = wire.new_list_application_env_var(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      _api_fill_to_wire_application_env_var(raw[i], ans.ref.ptr[i]);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_attribute_twin_normal>
-      api2wire_list_attribute_twin_normal(List<AttributeTwinNormal> raw) {
-    final ans = wire.new_list_attribute_twin_normal(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      _api_fill_to_wire_attribute_twin_normal(raw[i], ans.ref.ptr[i]);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_attribute_twin_rust_async>
-      api2wire_list_attribute_twin_rust_async(
-          List<AttributeTwinRustAsync> raw) {
-    final ans = wire.new_list_attribute_twin_rust_async(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      _api_fill_to_wire_attribute_twin_rust_async(raw[i], ans.ref.ptr[i]);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_attribute_twin_sync> api2wire_list_attribute_twin_sync(
-      List<AttributeTwinSync> raw) {
-    final ans = wire.new_list_attribute_twin_sync(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      _api_fill_to_wire_attribute_twin_sync(raw[i], ans.ref.ptr[i]);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_bool> api2wire_list_bool(List<bool> raw) {
-    final ans = wire.new_list_bool(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      ans.ref.ptr[i] = api2wire_bool(raw[i]);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_my_size> api2wire_list_my_size(List<MySize> raw) {
-    final ans = wire.new_list_my_size(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      _api_fill_to_wire_my_size(raw[i], ans.ref.ptr[i]);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_my_tree_node_twin_normal>
-      api2wire_list_my_tree_node_twin_normal(List<MyTreeNodeTwinNormal> raw) {
-    final ans = wire.new_list_my_tree_node_twin_normal(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      _api_fill_to_wire_my_tree_node_twin_normal(raw[i], ans.ref.ptr[i]);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_my_tree_node_twin_rust_async>
-      api2wire_list_my_tree_node_twin_rust_async(
-          List<MyTreeNodeTwinRustAsync> raw) {
-    final ans = wire.new_list_my_tree_node_twin_rust_async(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      _api_fill_to_wire_my_tree_node_twin_rust_async(raw[i], ans.ref.ptr[i]);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_my_tree_node_twin_sync>
-      api2wire_list_my_tree_node_twin_sync(List<MyTreeNodeTwinSync> raw) {
-    final ans = wire.new_list_my_tree_node_twin_sync(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      _api_fill_to_wire_my_tree_node_twin_sync(raw[i], ans.ref.ptr[i]);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_opt_String> api2wire_list_opt_String(
-      List<String?> raw) {
-    final ans = wire.new_list_opt_String(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      final item = raw[i];
-      if (item == null) continue;
-      ans.ref.ptr[i] = api2wire_String(item);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_opt_box_autoadd_attribute_twin_normal>
-      api2wire_list_opt_box_autoadd_attribute_twin_normal(
-          List<AttributeTwinNormal?> raw) {
-    final ans = wire.new_list_opt_box_autoadd_attribute_twin_normal(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      final item = raw[i];
-      if (item == null) continue;
-      ans.ref.ptr[i] = api2wire_box_autoadd_attribute_twin_normal(item);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_opt_box_autoadd_attribute_twin_rust_async>
-      api2wire_list_opt_box_autoadd_attribute_twin_rust_async(
-          List<AttributeTwinRustAsync?> raw) {
-    final ans =
-        wire.new_list_opt_box_autoadd_attribute_twin_rust_async(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      final item = raw[i];
-      if (item == null) continue;
-      ans.ref.ptr[i] = api2wire_box_autoadd_attribute_twin_rust_async(item);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_opt_box_autoadd_attribute_twin_sync>
-      api2wire_list_opt_box_autoadd_attribute_twin_sync(
-          List<AttributeTwinSync?> raw) {
-    final ans = wire.new_list_opt_box_autoadd_attribute_twin_sync(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      final item = raw[i];
-      if (item == null) continue;
-      ans.ref.ptr[i] = api2wire_box_autoadd_attribute_twin_sync(item);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_opt_box_autoadd_i_32>
-      api2wire_list_opt_box_autoadd_i_32(List<int?> raw) {
-    final ans = wire.new_list_opt_box_autoadd_i_32(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      final item = raw[i];
-      if (item == null) continue;
-      ans.ref.ptr[i] = api2wire_box_autoadd_i_32(item);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_opt_box_autoadd_weekdays_twin_normal>
-      api2wire_list_opt_box_autoadd_weekdays_twin_normal(
-          List<WeekdaysTwinNormal?> raw) {
-    final ans = wire.new_list_opt_box_autoadd_weekdays_twin_normal(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      final item = raw[i];
-      if (item == null) continue;
-      ans.ref.ptr[i] = api2wire_box_autoadd_weekdays_twin_normal(item);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_opt_box_autoadd_weekdays_twin_rust_async>
-      api2wire_list_opt_box_autoadd_weekdays_twin_rust_async(
-          List<WeekdaysTwinRustAsync?> raw) {
-    final ans =
-        wire.new_list_opt_box_autoadd_weekdays_twin_rust_async(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      final item = raw[i];
-      if (item == null) continue;
-      ans.ref.ptr[i] = api2wire_box_autoadd_weekdays_twin_rust_async(item);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_opt_box_autoadd_weekdays_twin_sync>
-      api2wire_list_opt_box_autoadd_weekdays_twin_sync(
-          List<WeekdaysTwinSync?> raw) {
-    final ans = wire.new_list_opt_box_autoadd_weekdays_twin_sync(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      final item = raw[i];
-      if (item == null) continue;
-      ans.ref.ptr[i] = api2wire_box_autoadd_weekdays_twin_sync(item);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_opt_list_prim_i_32> api2wire_list_opt_list_prim_i_32(
-      List<Int32List?> raw) {
-    final ans = wire.new_list_opt_list_prim_i_32(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      final item = raw[i];
-      if (item == null) continue;
-      ans.ref.ptr[i] = api2wire_list_prim_i_32(item);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_f_32> api2wire_list_prim_f_32(Float32List raw) {
-    final ans = wire.new_list_prim_f_32(raw.length);
-    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_f_64> api2wire_list_prim_f_64(Float64List raw) {
-    final ans = wire.new_list_prim_f_64(raw.length);
-    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_i_16> api2wire_list_prim_i_16(Int16List raw) {
-    final ans = wire.new_list_prim_i_16(raw.length);
-    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_i_32> api2wire_list_prim_i_32(Int32List raw) {
-    final ans = wire.new_list_prim_i_32(raw.length);
-    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_i_64> api2wire_list_prim_i_64(Int64List raw) {
-    final ans = wire.new_list_prim_i_64(raw.length);
-    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw.inner);
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_i_8> api2wire_list_prim_i_8(Int8List raw) {
-    final ans = wire.new_list_prim_i_8(raw.length);
-    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_u_16> api2wire_list_prim_u_16(Uint16List raw) {
-    final ans = wire.new_list_prim_u_16(raw.length);
-    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_u_32> api2wire_list_prim_u_32(Uint32List raw) {
-    final ans = wire.new_list_prim_u_32(raw.length);
-    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_u_64> api2wire_list_prim_u_64(Uint64List raw) {
-    final ans = wire.new_list_prim_u_64(raw.length);
-    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw.inner);
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_u_8> api2wire_list_prim_u_8(Uint8List raw) {
-    final ans = wire.new_list_prim_u_8(raw.length);
-    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_record_string_i_32> api2wire_list_record_string_i_32(
-      List<(String, int)> raw) {
-    final ans = wire.new_list_record_string_i_32(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      _api_fill_to_wire_record_string_i_32(raw[i], ans.ref.ptr[i]);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_test_id_twin_normal> api2wire_list_test_id_twin_normal(
-      List<TestIdTwinNormal> raw) {
-    final ans = wire.new_list_test_id_twin_normal(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      _api_fill_to_wire_test_id_twin_normal(raw[i], ans.ref.ptr[i]);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_test_id_twin_rust_async>
-      api2wire_list_test_id_twin_rust_async(List<TestIdTwinRustAsync> raw) {
-    final ans = wire.new_list_test_id_twin_rust_async(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      _api_fill_to_wire_test_id_twin_rust_async(raw[i], ans.ref.ptr[i]);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_test_id_twin_sync> api2wire_list_test_id_twin_sync(
-      List<TestIdTwinSync> raw) {
-    final ans = wire.new_list_test_id_twin_sync(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      _api_fill_to_wire_test_id_twin_sync(raw[i], ans.ref.ptr[i]);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_weekdays_twin_normal>
-      api2wire_list_weekdays_twin_normal(List<WeekdaysTwinNormal> raw) {
-    final ans = wire.new_list_weekdays_twin_normal(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      ans.ref.ptr[i] = api2wire_weekdays_twin_normal(raw[i]);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_weekdays_twin_rust_async>
-      api2wire_list_weekdays_twin_rust_async(List<WeekdaysTwinRustAsync> raw) {
-    final ans = wire.new_list_weekdays_twin_rust_async(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      ans.ref.ptr[i] = api2wire_weekdays_twin_rust_async(raw[i]);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_weekdays_twin_sync> api2wire_list_weekdays_twin_sync(
-      List<WeekdaysTwinSync> raw) {
-    final ans = wire.new_list_weekdays_twin_sync(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      ans.ref.ptr[i] = api2wire_weekdays_twin_sync(raw[i]);
-    }
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_u_8> api2wire_opt_String(String? raw) {
-    return raw == null ? ffi.nullptr : api2wire_String(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_u_8> api2wire_opt_ZeroCopyBuffer_list_prim_u_8(
-      Uint8List? raw) {
-    return raw == null
-        ? ffi.nullptr
-        : api2wire_ZeroCopyBuffer_list_prim_u_8(raw);
-  }
-
-  @protected
-  ffi.Pointer<ffi.Int64> api2wire_opt_box_autoadd_Chrono_Utc(DateTime? raw) {
-    return raw == null ? ffi.nullptr : api2wire_box_autoadd_Chrono_Utc(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_DartOpaque> api2wire_opt_box_autoadd_DartOpaque(
-      Object? raw) {
-    return raw == null ? ffi.nullptr : api2wire_box_autoadd_DartOpaque(raw);
-  }
-
-  @protected
-  ffi.Pointer<PlatformPointer> api2wire_opt_box_autoadd_RustOpaque_hide_data(
-      HideData? raw) {
-    return raw == null
-        ? ffi.nullptr
-        : api2wire_box_autoadd_RustOpaque_hide_data(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_application_env> api2wire_opt_box_autoadd_application_env(
-      ApplicationEnv? raw) {
-    return raw == null
-        ? ffi.nullptr
-        : api2wire_box_autoadd_application_env(raw);
-  }
-
-  @protected
-  ffi.Pointer<ffi.Bool> api2wire_opt_box_autoadd_bool(bool? raw) {
-    return raw == null ? ffi.nullptr : api2wire_box_autoadd_bool(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_exotic_optionals_twin_normal>
-      api2wire_opt_box_autoadd_exotic_optionals_twin_normal(
-          ExoticOptionalsTwinNormal? raw) {
-    return raw == null
-        ? ffi.nullptr
-        : api2wire_box_autoadd_exotic_optionals_twin_normal(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_exotic_optionals_twin_rust_async>
-      api2wire_opt_box_autoadd_exotic_optionals_twin_rust_async(
-          ExoticOptionalsTwinRustAsync? raw) {
-    return raw == null
-        ? ffi.nullptr
-        : api2wire_box_autoadd_exotic_optionals_twin_rust_async(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_exotic_optionals_twin_sync>
-      api2wire_opt_box_autoadd_exotic_optionals_twin_sync(
-          ExoticOptionalsTwinSync? raw) {
-    return raw == null
-        ? ffi.nullptr
-        : api2wire_box_autoadd_exotic_optionals_twin_sync(raw);
-  }
-
-  @protected
-  ffi.Pointer<ffi.Float> api2wire_opt_box_autoadd_f_32(double? raw) {
-    return raw == null ? ffi.nullptr : api2wire_box_autoadd_f_32(raw);
-  }
-
-  @protected
-  ffi.Pointer<ffi.Double> api2wire_opt_box_autoadd_f_64(double? raw) {
-    return raw == null ? ffi.nullptr : api2wire_box_autoadd_f_64(raw);
-  }
-
-  @protected
-  ffi.Pointer<ffi.Int16> api2wire_opt_box_autoadd_i_16(int? raw) {
-    return raw == null ? ffi.nullptr : api2wire_box_autoadd_i_16(raw);
-  }
-
-  @protected
-  ffi.Pointer<ffi.Int32> api2wire_opt_box_autoadd_i_32(int? raw) {
-    return raw == null ? ffi.nullptr : api2wire_box_autoadd_i_32(raw);
-  }
-
-  @protected
-  ffi.Pointer<ffi.Int64> api2wire_opt_box_autoadd_i_64(int? raw) {
-    return raw == null ? ffi.nullptr : api2wire_box_autoadd_i_64(raw);
-  }
-
-  @protected
-  ffi.Pointer<ffi.Int8> api2wire_opt_box_autoadd_i_8(int? raw) {
-    return raw == null ? ffi.nullptr : api2wire_box_autoadd_i_8(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_new_type_int_twin_normal>
-      api2wire_opt_box_autoadd_new_type_int_twin_normal(
-          NewTypeIntTwinNormal? raw) {
-    return raw == null
-        ? ffi.nullptr
-        : api2wire_box_autoadd_new_type_int_twin_normal(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_new_type_int_twin_rust_async>
-      api2wire_opt_box_autoadd_new_type_int_twin_rust_async(
-          NewTypeIntTwinRustAsync? raw) {
-    return raw == null
-        ? ffi.nullptr
-        : api2wire_box_autoadd_new_type_int_twin_rust_async(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_new_type_int_twin_sync>
-      api2wire_opt_box_autoadd_new_type_int_twin_sync(NewTypeIntTwinSync? raw) {
-    return raw == null
-        ? ffi.nullptr
-        : api2wire_box_autoadd_new_type_int_twin_sync(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_record_string_i_32>
-      api2wire_opt_box_autoadd_record_string_i_32((String, int)? raw) {
-    return raw == null
-        ? ffi.nullptr
-        : api2wire_box_autoadd_record_string_i_32(raw);
-  }
-
-  @protected
-  ffi.Pointer<ffi.Uint16> api2wire_opt_box_autoadd_u_16(int? raw) {
-    return raw == null ? ffi.nullptr : api2wire_box_autoadd_u_16(raw);
-  }
-
-  @protected
-  ffi.Pointer<ffi.Uint32> api2wire_opt_box_autoadd_u_32(int? raw) {
-    return raw == null ? ffi.nullptr : api2wire_box_autoadd_u_32(raw);
-  }
-
-  @protected
-  ffi.Pointer<ffi.Uint64> api2wire_opt_box_autoadd_u_64(int? raw) {
-    return raw == null ? ffi.nullptr : api2wire_box_autoadd_u_64(raw);
-  }
-
-  @protected
-  ffi.Pointer<ffi.Uint8> api2wire_opt_box_autoadd_u_8(int? raw) {
-    return raw == null ? ffi.nullptr : api2wire_box_autoadd_u_8(raw);
-  }
-
-  @protected
-  ffi.Pointer<ffi.Bool> api2wire_opt_box_bool(bool? raw) {
-    return raw == null ? ffi.nullptr : api2wire_box_bool(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_exotic_optionals_twin_normal>
-      api2wire_opt_box_exotic_optionals_twin_normal(
-          ExoticOptionalsTwinNormal? raw) {
-    return raw == null
-        ? ffi.nullptr
-        : api2wire_box_exotic_optionals_twin_normal(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_exotic_optionals_twin_rust_async>
-      api2wire_opt_box_exotic_optionals_twin_rust_async(
-          ExoticOptionalsTwinRustAsync? raw) {
-    return raw == null
-        ? ffi.nullptr
-        : api2wire_box_exotic_optionals_twin_rust_async(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_exotic_optionals_twin_sync>
-      api2wire_opt_box_exotic_optionals_twin_sync(
-          ExoticOptionalsTwinSync? raw) {
-    return raw == null
-        ? ffi.nullptr
-        : api2wire_box_exotic_optionals_twin_sync(raw);
-  }
-
-  @protected
-  ffi.Pointer<ffi.Double> api2wire_opt_box_f_64(double? raw) {
-    return raw == null ? ffi.nullptr : api2wire_box_f_64(raw);
-  }
-
-  @protected
-  ffi.Pointer<ffi.Int32> api2wire_opt_box_i_32(int? raw) {
-    return raw == null ? ffi.nullptr : api2wire_box_i_32(raw);
-  }
-
-  @protected
-  ffi.Pointer<ffi.Int64> api2wire_opt_box_i_64(int? raw) {
-    return raw == null ? ffi.nullptr : api2wire_box_i_64(raw);
-  }
-
-  @protected
-  ffi.Pointer<ffi.Int8> api2wire_opt_box_i_8(int? raw) {
-    return raw == null ? ffi.nullptr : api2wire_box_i_8(raw);
-  }
-
-  @protected
-  ffi.Pointer<ffi.Uint8> api2wire_opt_box_u_8(int? raw) {
-    return raw == null ? ffi.nullptr : api2wire_box_u_8(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_list_attribute_twin_normal>
-      api2wire_opt_list_attribute_twin_normal(List<AttributeTwinNormal>? raw) {
-    return raw == null ? ffi.nullptr : api2wire_list_attribute_twin_normal(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_list_attribute_twin_rust_async>
-      api2wire_opt_list_attribute_twin_rust_async(
-          List<AttributeTwinRustAsync>? raw) {
-    return raw == null
-        ? ffi.nullptr
-        : api2wire_list_attribute_twin_rust_async(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_list_attribute_twin_sync>
-      api2wire_opt_list_attribute_twin_sync(List<AttributeTwinSync>? raw) {
-    return raw == null ? ffi.nullptr : api2wire_list_attribute_twin_sync(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_list_opt_box_autoadd_attribute_twin_normal>
-      api2wire_opt_list_opt_box_autoadd_attribute_twin_normal(
-          List<AttributeTwinNormal?>? raw) {
-    return raw == null
-        ? ffi.nullptr
-        : api2wire_list_opt_box_autoadd_attribute_twin_normal(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_list_opt_box_autoadd_attribute_twin_rust_async>
-      api2wire_opt_list_opt_box_autoadd_attribute_twin_rust_async(
-          List<AttributeTwinRustAsync?>? raw) {
-    return raw == null
-        ? ffi.nullptr
-        : api2wire_list_opt_box_autoadd_attribute_twin_rust_async(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_list_opt_box_autoadd_attribute_twin_sync>
-      api2wire_opt_list_opt_box_autoadd_attribute_twin_sync(
-          List<AttributeTwinSync?>? raw) {
-    return raw == null
-        ? ffi.nullptr
-        : api2wire_list_opt_box_autoadd_attribute_twin_sync(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_f_32> api2wire_opt_list_prim_f_32(
-      Float32List? raw) {
-    return raw == null ? ffi.nullptr : api2wire_list_prim_f_32(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_f_64> api2wire_opt_list_prim_f_64(
-      Float64List? raw) {
-    return raw == null ? ffi.nullptr : api2wire_list_prim_f_64(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_i_32> api2wire_opt_list_prim_i_32(Int32List? raw) {
-    return raw == null ? ffi.nullptr : api2wire_list_prim_i_32(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_i_8> api2wire_opt_list_prim_i_8(Int8List? raw) {
-    return raw == null ? ffi.nullptr : api2wire_list_prim_i_8(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_u_8> api2wire_opt_list_prim_u_8(Uint8List? raw) {
-    return raw == null ? ffi.nullptr : api2wire_list_prim_u_8(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_list_test_id_twin_normal>
-      api2wire_test_id_twin_normal_array_4(TestIdTwinNormalArray4 raw) {
-    return api2wire_list_test_id_twin_normal(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_list_test_id_twin_rust_async>
-      api2wire_test_id_twin_rust_async_array_4(TestIdTwinRustAsyncArray4 raw) {
-    return api2wire_list_test_id_twin_rust_async(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_list_test_id_twin_sync> api2wire_test_id_twin_sync_array_4(
-      TestIdTwinSyncArray4 raw) {
-    return api2wire_list_test_id_twin_sync(raw);
-  }
-
-  @protected
-  int api2wire_u_64(int raw) {
-    return raw.toInt();
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_u_8> api2wire_u_8_array_1600(U8Array1600 raw) {
-    final ans = wire.new_list_prim_u_8(1600);
-    ans.ref.ptr.asTypedList(1600).setAll(0, raw);
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_u_8> api2wire_u_8_array_32(U8Array32 raw) {
-    final ans = wire.new_list_prim_u_8(32);
-    ans.ref.ptr.asTypedList(32).setAll(0, raw);
-    return ans;
-  }
-
-  @protected
-  ffi.Pointer<wire_list_prim_u_8> api2wire_u_8_array_8(U8Array8 raw) {
-    final ans = wire.new_list_prim_u_8(8);
-    ans.ref.ptr.asTypedList(8).setAll(0, raw);
-    return ans;
-  }
-
-  void _api_fill_to_wire_DartOpaque(Object apiObj, wire_DartOpaque wireObj) {
-    wireObj.handle = generalizedFrbRustBinding.newDartOpaque(apiObj);
-    wireObj.port = dropPortManager.dropPort;
-  }
-
-  void _api_fill_to_wire_a_twin_normal(
-      ATwinNormal apiObj, wire_a_twin_normal wireObj) {
-    wireObj.a = api2wire_String(apiObj.a);
-  }
-
-  void _api_fill_to_wire_a_twin_rust_async(
-      ATwinRustAsync apiObj, wire_a_twin_rust_async wireObj) {
-    wireObj.a = api2wire_String(apiObj.a);
-  }
-
-  void _api_fill_to_wire_a_twin_sync(
-      ATwinSync apiObj, wire_a_twin_sync wireObj) {
-    wireObj.a = api2wire_String(apiObj.a);
-  }
-
-  void _api_fill_to_wire_abc_twin_normal(
-      AbcTwinNormal apiObj, wire_abc_twin_normal wireObj) {
-    if (apiObj is AbcTwinNormal_A) {
-      var pre_field0 = api2wire_box_autoadd_a_twin_normal(apiObj.field0);
-      wireObj.tag = 0;
-      wireObj.kind = wire.inflate_AbcTwinNormal_A();
-      wireObj.kind.ref.A.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is AbcTwinNormal_B) {
-      var pre_field0 = api2wire_box_autoadd_b_twin_normal(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_AbcTwinNormal_B();
-      wireObj.kind.ref.B.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is AbcTwinNormal_C) {
-      var pre_field0 = api2wire_box_autoadd_c_twin_normal(apiObj.field0);
-      wireObj.tag = 2;
-      wireObj.kind = wire.inflate_AbcTwinNormal_C();
-      wireObj.kind.ref.C.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is AbcTwinNormal_JustInt) {
-      var pre_field0 = api2wire_i_32(apiObj.field0);
-      wireObj.tag = 3;
-      wireObj.kind = wire.inflate_AbcTwinNormal_JustInt();
-      wireObj.kind.ref.JustInt.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_abc_twin_rust_async(
-      AbcTwinRustAsync apiObj, wire_abc_twin_rust_async wireObj) {
-    if (apiObj is AbcTwinRustAsync_A) {
-      var pre_field0 = api2wire_box_autoadd_a_twin_rust_async(apiObj.field0);
-      wireObj.tag = 0;
-      wireObj.kind = wire.inflate_AbcTwinRustAsync_A();
-      wireObj.kind.ref.A.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is AbcTwinRustAsync_B) {
-      var pre_field0 = api2wire_box_autoadd_b_twin_rust_async(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_AbcTwinRustAsync_B();
-      wireObj.kind.ref.B.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is AbcTwinRustAsync_C) {
-      var pre_field0 = api2wire_box_autoadd_c_twin_rust_async(apiObj.field0);
-      wireObj.tag = 2;
-      wireObj.kind = wire.inflate_AbcTwinRustAsync_C();
-      wireObj.kind.ref.C.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is AbcTwinRustAsync_JustInt) {
-      var pre_field0 = api2wire_i_32(apiObj.field0);
-      wireObj.tag = 3;
-      wireObj.kind = wire.inflate_AbcTwinRustAsync_JustInt();
-      wireObj.kind.ref.JustInt.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_abc_twin_sync(
-      AbcTwinSync apiObj, wire_abc_twin_sync wireObj) {
-    if (apiObj is AbcTwinSync_A) {
-      var pre_field0 = api2wire_box_autoadd_a_twin_sync(apiObj.field0);
-      wireObj.tag = 0;
-      wireObj.kind = wire.inflate_AbcTwinSync_A();
-      wireObj.kind.ref.A.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is AbcTwinSync_B) {
-      var pre_field0 = api2wire_box_autoadd_b_twin_sync(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_AbcTwinSync_B();
-      wireObj.kind.ref.B.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is AbcTwinSync_C) {
-      var pre_field0 = api2wire_box_autoadd_c_twin_sync(apiObj.field0);
-      wireObj.tag = 2;
-      wireObj.kind = wire.inflate_AbcTwinSync_C();
-      wireObj.kind.ref.C.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is AbcTwinSync_JustInt) {
-      var pre_field0 = api2wire_i_32(apiObj.field0);
-      wireObj.tag = 3;
-      wireObj.kind = wire.inflate_AbcTwinSync_JustInt();
-      wireObj.kind.ref.JustInt.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_application_env(
-      ApplicationEnv apiObj, wire_application_env wireObj) {
-    wireObj.vars = api2wire_list_application_env_var(apiObj.vars);
-  }
-
-  void _api_fill_to_wire_application_env_var(
-      ApplicationEnvVar apiObj, wire_application_env_var wireObj) {
-    wireObj.field0 = api2wire_String(apiObj.field0);
-    wireObj.field1 = api2wire_bool(apiObj.field1);
-  }
-
-  void _api_fill_to_wire_application_settings(
-      ApplicationSettings apiObj, wire_application_settings wireObj) {
-    wireObj.name = api2wire_String(apiObj.name);
-    wireObj.version = api2wire_String(apiObj.version);
-    wireObj.mode = api2wire_application_mode(apiObj.mode);
-    wireObj.env = api2wire_box_application_env(apiObj.env);
-    wireObj.env_optional =
-        api2wire_opt_box_autoadd_application_env(apiObj.envOptional);
-  }
-
-  void _api_fill_to_wire_attribute_twin_normal(
-      AttributeTwinNormal apiObj, wire_attribute_twin_normal wireObj) {
-    wireObj.key = api2wire_String(apiObj.key);
-    wireObj.value = api2wire_String(apiObj.value);
-  }
-
-  void _api_fill_to_wire_attribute_twin_rust_async(
-      AttributeTwinRustAsync apiObj, wire_attribute_twin_rust_async wireObj) {
-    wireObj.key = api2wire_String(apiObj.key);
-    wireObj.value = api2wire_String(apiObj.value);
-  }
-
-  void _api_fill_to_wire_attribute_twin_sync(
-      AttributeTwinSync apiObj, wire_attribute_twin_sync wireObj) {
-    wireObj.key = api2wire_String(apiObj.key);
-    wireObj.value = api2wire_String(apiObj.value);
-  }
-
-  void _api_fill_to_wire_b_twin_normal(
-      BTwinNormal apiObj, wire_b_twin_normal wireObj) {
-    wireObj.b = api2wire_i_32(apiObj.b);
-  }
-
-  void _api_fill_to_wire_b_twin_rust_async(
-      BTwinRustAsync apiObj, wire_b_twin_rust_async wireObj) {
-    wireObj.b = api2wire_i_32(apiObj.b);
-  }
-
-  void _api_fill_to_wire_b_twin_sync(
-      BTwinSync apiObj, wire_b_twin_sync wireObj) {
-    wireObj.b = api2wire_i_32(apiObj.b);
-  }
-
-  void _api_fill_to_wire_blob_twin_normal(
-      BlobTwinNormal apiObj, wire_blob_twin_normal wireObj) {
-    wireObj.field0 = api2wire_u_8_array_1600(apiObj.field0);
-  }
-
-  void _api_fill_to_wire_blob_twin_rust_async(
-      BlobTwinRustAsync apiObj, wire_blob_twin_rust_async wireObj) {
-    wireObj.field0 = api2wire_u_8_array_1600(apiObj.field0);
-  }
-
-  void _api_fill_to_wire_blob_twin_sync(
-      BlobTwinSync apiObj, wire_blob_twin_sync wireObj) {
-    wireObj.field0 = api2wire_u_8_array_1600(apiObj.field0);
-  }
-
-  void _api_fill_to_wire_box_application_env(
-      ApplicationEnv apiObj, ffi.Pointer<wire_application_env> wireObj) {
-    _api_fill_to_wire_application_env(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_DartOpaque(
-      Object apiObj, ffi.Pointer<wire_DartOpaque> wireObj) {
-    _api_fill_to_wire_DartOpaque(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_a_twin_normal(
-      ATwinNormal apiObj, ffi.Pointer<wire_a_twin_normal> wireObj) {
-    _api_fill_to_wire_a_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_a_twin_rust_async(
-      ATwinRustAsync apiObj, ffi.Pointer<wire_a_twin_rust_async> wireObj) {
-    _api_fill_to_wire_a_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_a_twin_sync(
-      ATwinSync apiObj, ffi.Pointer<wire_a_twin_sync> wireObj) {
-    _api_fill_to_wire_a_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_abc_twin_normal(
-      AbcTwinNormal apiObj, ffi.Pointer<wire_abc_twin_normal> wireObj) {
-    _api_fill_to_wire_abc_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_abc_twin_rust_async(
-      AbcTwinRustAsync apiObj, ffi.Pointer<wire_abc_twin_rust_async> wireObj) {
-    _api_fill_to_wire_abc_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_abc_twin_sync(
-      AbcTwinSync apiObj, ffi.Pointer<wire_abc_twin_sync> wireObj) {
-    _api_fill_to_wire_abc_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_application_env(
-      ApplicationEnv apiObj, ffi.Pointer<wire_application_env> wireObj) {
-    _api_fill_to_wire_application_env(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_application_settings(
-      ApplicationSettings apiObj,
-      ffi.Pointer<wire_application_settings> wireObj) {
-    _api_fill_to_wire_application_settings(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_attribute_twin_normal(
-      AttributeTwinNormal apiObj,
-      ffi.Pointer<wire_attribute_twin_normal> wireObj) {
-    _api_fill_to_wire_attribute_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_attribute_twin_rust_async(
-      AttributeTwinRustAsync apiObj,
-      ffi.Pointer<wire_attribute_twin_rust_async> wireObj) {
-    _api_fill_to_wire_attribute_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_attribute_twin_sync(
-      AttributeTwinSync apiObj, ffi.Pointer<wire_attribute_twin_sync> wireObj) {
-    _api_fill_to_wire_attribute_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_b_twin_normal(
-      BTwinNormal apiObj, ffi.Pointer<wire_b_twin_normal> wireObj) {
-    _api_fill_to_wire_b_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_b_twin_rust_async(
-      BTwinRustAsync apiObj, ffi.Pointer<wire_b_twin_rust_async> wireObj) {
-    _api_fill_to_wire_b_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_b_twin_sync(
-      BTwinSync apiObj, ffi.Pointer<wire_b_twin_sync> wireObj) {
-    _api_fill_to_wire_b_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_c_twin_normal(
-      CTwinNormal apiObj, ffi.Pointer<wire_c_twin_normal> wireObj) {
-    _api_fill_to_wire_c_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_c_twin_rust_async(
-      CTwinRustAsync apiObj, ffi.Pointer<wire_c_twin_rust_async> wireObj) {
-    _api_fill_to_wire_c_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_c_twin_sync(
-      CTwinSync apiObj, ffi.Pointer<wire_c_twin_sync> wireObj) {
-    _api_fill_to_wire_c_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_concatenate_with_twin_normal(
-      ConcatenateWithTwinNormal apiObj,
-      ffi.Pointer<wire_concatenate_with_twin_normal> wireObj) {
-    _api_fill_to_wire_concatenate_with_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_concatenate_with_twin_rust_async(
-      ConcatenateWithTwinRustAsync apiObj,
-      ffi.Pointer<wire_concatenate_with_twin_rust_async> wireObj) {
-    _api_fill_to_wire_concatenate_with_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_concatenate_with_twin_sync(
-      ConcatenateWithTwinSync apiObj,
-      ffi.Pointer<wire_concatenate_with_twin_sync> wireObj) {
-    _api_fill_to_wire_concatenate_with_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_custom_nested_error_inner_twin_normal(
-      CustomNestedErrorInnerTwinNormal apiObj,
-      ffi.Pointer<wire_custom_nested_error_inner_twin_normal> wireObj) {
-    _api_fill_to_wire_custom_nested_error_inner_twin_normal(
-        apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_custom_nested_error_inner_twin_rust_async(
-      CustomNestedErrorInnerTwinRustAsync apiObj,
-      ffi.Pointer<wire_custom_nested_error_inner_twin_rust_async> wireObj) {
-    _api_fill_to_wire_custom_nested_error_inner_twin_rust_async(
-        apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_custom_nested_error_inner_twin_sync(
-      CustomNestedErrorInnerTwinSync apiObj,
-      ffi.Pointer<wire_custom_nested_error_inner_twin_sync> wireObj) {
-    _api_fill_to_wire_custom_nested_error_inner_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_custom_nested_error_outer_twin_normal(
-      CustomNestedErrorOuterTwinNormal apiObj,
-      ffi.Pointer<wire_custom_nested_error_outer_twin_normal> wireObj) {
-    _api_fill_to_wire_custom_nested_error_outer_twin_normal(
-        apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_custom_nested_error_outer_twin_rust_async(
-      CustomNestedErrorOuterTwinRustAsync apiObj,
-      ffi.Pointer<wire_custom_nested_error_outer_twin_rust_async> wireObj) {
-    _api_fill_to_wire_custom_nested_error_outer_twin_rust_async(
-        apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_custom_nested_error_outer_twin_sync(
-      CustomNestedErrorOuterTwinSync apiObj,
-      ffi.Pointer<wire_custom_nested_error_outer_twin_sync> wireObj) {
-    _api_fill_to_wire_custom_nested_error_outer_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_custom_struct_error_twin_normal(
-      CustomStructErrorTwinNormal apiObj,
-      ffi.Pointer<wire_custom_struct_error_twin_normal> wireObj) {
-    _api_fill_to_wire_custom_struct_error_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_custom_struct_error_twin_rust_async(
-      CustomStructErrorTwinRustAsync apiObj,
-      ffi.Pointer<wire_custom_struct_error_twin_rust_async> wireObj) {
-    _api_fill_to_wire_custom_struct_error_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_custom_struct_error_twin_sync(
-      CustomStructErrorTwinSync apiObj,
-      ffi.Pointer<wire_custom_struct_error_twin_sync> wireObj) {
-    _api_fill_to_wire_custom_struct_error_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_custom_struct_twin_normal(
-      CustomStructTwinNormal apiObj,
-      ffi.Pointer<wire_custom_struct_twin_normal> wireObj) {
-    _api_fill_to_wire_custom_struct_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_custom_struct_twin_rust_async(
-      CustomStructTwinRustAsync apiObj,
-      ffi.Pointer<wire_custom_struct_twin_rust_async> wireObj) {
-    _api_fill_to_wire_custom_struct_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_custom_struct_twin_sync(
-      CustomStructTwinSync apiObj,
-      ffi.Pointer<wire_custom_struct_twin_sync> wireObj) {
-    _api_fill_to_wire_custom_struct_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_customized_twin_normal(
-      CustomizedTwinNormal apiObj,
-      ffi.Pointer<wire_customized_twin_normal> wireObj) {
-    _api_fill_to_wire_customized_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_customized_twin_rust_async(
-      CustomizedTwinRustAsync apiObj,
-      ffi.Pointer<wire_customized_twin_rust_async> wireObj) {
-    _api_fill_to_wire_customized_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_customized_twin_sync(
-      CustomizedTwinSync apiObj,
-      ffi.Pointer<wire_customized_twin_sync> wireObj) {
-    _api_fill_to_wire_customized_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_dart_opaque_nested_twin_normal(
-      DartOpaqueNestedTwinNormal apiObj,
-      ffi.Pointer<wire_dart_opaque_nested_twin_normal> wireObj) {
-    _api_fill_to_wire_dart_opaque_nested_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_dart_opaque_nested_twin_rust_async(
-      DartOpaqueNestedTwinRustAsync apiObj,
-      ffi.Pointer<wire_dart_opaque_nested_twin_rust_async> wireObj) {
-    _api_fill_to_wire_dart_opaque_nested_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_dart_opaque_nested_twin_sync(
-      DartOpaqueNestedTwinSync apiObj,
-      ffi.Pointer<wire_dart_opaque_nested_twin_sync> wireObj) {
-    _api_fill_to_wire_dart_opaque_nested_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_enum_dart_opaque_twin_normal(
-      EnumDartOpaqueTwinNormal apiObj,
-      ffi.Pointer<wire_enum_dart_opaque_twin_normal> wireObj) {
-    _api_fill_to_wire_enum_dart_opaque_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_enum_dart_opaque_twin_rust_async(
-      EnumDartOpaqueTwinRustAsync apiObj,
-      ffi.Pointer<wire_enum_dart_opaque_twin_rust_async> wireObj) {
-    _api_fill_to_wire_enum_dart_opaque_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_enum_dart_opaque_twin_sync(
-      EnumDartOpaqueTwinSync apiObj,
-      ffi.Pointer<wire_enum_dart_opaque_twin_sync> wireObj) {
-    _api_fill_to_wire_enum_dart_opaque_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_enum_opaque_twin_normal(
-      EnumOpaqueTwinNormal apiObj,
-      ffi.Pointer<wire_enum_opaque_twin_normal> wireObj) {
-    _api_fill_to_wire_enum_opaque_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_enum_opaque_twin_rust_async(
-      EnumOpaqueTwinRustAsync apiObj,
-      ffi.Pointer<wire_enum_opaque_twin_rust_async> wireObj) {
-    _api_fill_to_wire_enum_opaque_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_enum_opaque_twin_sync(
-      EnumOpaqueTwinSync apiObj,
-      ffi.Pointer<wire_enum_opaque_twin_sync> wireObj) {
-    _api_fill_to_wire_enum_opaque_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_enum_with_item_mixed_twin_normal(
-      EnumWithItemMixedTwinNormal apiObj,
-      ffi.Pointer<wire_enum_with_item_mixed_twin_normal> wireObj) {
-    _api_fill_to_wire_enum_with_item_mixed_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_enum_with_item_mixed_twin_rust_async(
-      EnumWithItemMixedTwinRustAsync apiObj,
-      ffi.Pointer<wire_enum_with_item_mixed_twin_rust_async> wireObj) {
-    _api_fill_to_wire_enum_with_item_mixed_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_enum_with_item_mixed_twin_sync(
-      EnumWithItemMixedTwinSync apiObj,
-      ffi.Pointer<wire_enum_with_item_mixed_twin_sync> wireObj) {
-    _api_fill_to_wire_enum_with_item_mixed_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_enum_with_item_struct_twin_normal(
-      EnumWithItemStructTwinNormal apiObj,
-      ffi.Pointer<wire_enum_with_item_struct_twin_normal> wireObj) {
-    _api_fill_to_wire_enum_with_item_struct_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_enum_with_item_struct_twin_rust_async(
-      EnumWithItemStructTwinRustAsync apiObj,
-      ffi.Pointer<wire_enum_with_item_struct_twin_rust_async> wireObj) {
-    _api_fill_to_wire_enum_with_item_struct_twin_rust_async(
-        apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_enum_with_item_struct_twin_sync(
-      EnumWithItemStructTwinSync apiObj,
-      ffi.Pointer<wire_enum_with_item_struct_twin_sync> wireObj) {
-    _api_fill_to_wire_enum_with_item_struct_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_enum_with_item_tuple_twin_normal(
-      EnumWithItemTupleTwinNormal apiObj,
-      ffi.Pointer<wire_enum_with_item_tuple_twin_normal> wireObj) {
-    _api_fill_to_wire_enum_with_item_tuple_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_enum_with_item_tuple_twin_rust_async(
-      EnumWithItemTupleTwinRustAsync apiObj,
-      ffi.Pointer<wire_enum_with_item_tuple_twin_rust_async> wireObj) {
-    _api_fill_to_wire_enum_with_item_tuple_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_enum_with_item_tuple_twin_sync(
-      EnumWithItemTupleTwinSync apiObj,
-      ffi.Pointer<wire_enum_with_item_tuple_twin_sync> wireObj) {
-    _api_fill_to_wire_enum_with_item_tuple_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_event_twin_normal(
-      EventTwinNormal apiObj, ffi.Pointer<wire_event_twin_normal> wireObj) {
-    _api_fill_to_wire_event_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_event_twin_rust_async(
-      EventTwinRustAsync apiObj,
-      ffi.Pointer<wire_event_twin_rust_async> wireObj) {
-    _api_fill_to_wire_event_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_event_twin_sync(
-      EventTwinSync apiObj, ffi.Pointer<wire_event_twin_sync> wireObj) {
-    _api_fill_to_wire_event_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_exotic_optionals_twin_normal(
-      ExoticOptionalsTwinNormal apiObj,
-      ffi.Pointer<wire_exotic_optionals_twin_normal> wireObj) {
-    _api_fill_to_wire_exotic_optionals_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_exotic_optionals_twin_rust_async(
-      ExoticOptionalsTwinRustAsync apiObj,
-      ffi.Pointer<wire_exotic_optionals_twin_rust_async> wireObj) {
-    _api_fill_to_wire_exotic_optionals_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_exotic_optionals_twin_sync(
-      ExoticOptionalsTwinSync apiObj,
-      ffi.Pointer<wire_exotic_optionals_twin_sync> wireObj) {
-    _api_fill_to_wire_exotic_optionals_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_feature_chrono_twin_normal(
-      FeatureChronoTwinNormal apiObj,
-      ffi.Pointer<wire_feature_chrono_twin_normal> wireObj) {
-    _api_fill_to_wire_feature_chrono_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_feature_chrono_twin_rust_async(
-      FeatureChronoTwinRustAsync apiObj,
-      ffi.Pointer<wire_feature_chrono_twin_rust_async> wireObj) {
-    _api_fill_to_wire_feature_chrono_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_feature_chrono_twin_sync(
-      FeatureChronoTwinSync apiObj,
-      ffi.Pointer<wire_feature_chrono_twin_sync> wireObj) {
-    _api_fill_to_wire_feature_chrono_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_feature_uuid_twin_normal(
-      FeatureUuidTwinNormal apiObj,
-      ffi.Pointer<wire_feature_uuid_twin_normal> wireObj) {
-    _api_fill_to_wire_feature_uuid_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_feature_uuid_twin_rust_async(
-      FeatureUuidTwinRustAsync apiObj,
-      ffi.Pointer<wire_feature_uuid_twin_rust_async> wireObj) {
-    _api_fill_to_wire_feature_uuid_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_feature_uuid_twin_sync(
-      FeatureUuidTwinSync apiObj,
-      ffi.Pointer<wire_feature_uuid_twin_sync> wireObj) {
-    _api_fill_to_wire_feature_uuid_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_feed_id_twin_normal(
-      FeedIdTwinNormal apiObj, ffi.Pointer<wire_feed_id_twin_normal> wireObj) {
-    _api_fill_to_wire_feed_id_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_feed_id_twin_rust_async(
-      FeedIdTwinRustAsync apiObj,
-      ffi.Pointer<wire_feed_id_twin_rust_async> wireObj) {
-    _api_fill_to_wire_feed_id_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_feed_id_twin_sync(
-      FeedIdTwinSync apiObj, ffi.Pointer<wire_feed_id_twin_sync> wireObj) {
-    _api_fill_to_wire_feed_id_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_kitchen_sink_twin_normal(
-      KitchenSinkTwinNormal apiObj,
-      ffi.Pointer<wire_kitchen_sink_twin_normal> wireObj) {
-    _api_fill_to_wire_kitchen_sink_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_kitchen_sink_twin_rust_async(
-      KitchenSinkTwinRustAsync apiObj,
-      ffi.Pointer<wire_kitchen_sink_twin_rust_async> wireObj) {
-    _api_fill_to_wire_kitchen_sink_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_kitchen_sink_twin_sync(
-      KitchenSinkTwinSync apiObj,
-      ffi.Pointer<wire_kitchen_sink_twin_sync> wireObj) {
-    _api_fill_to_wire_kitchen_sink_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_macro_struct(
-      MacroStruct apiObj, ffi.Pointer<wire_macro_struct> wireObj) {
-    _api_fill_to_wire_macro_struct(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_measure_twin_normal(
-      MeasureTwinNormal apiObj, ffi.Pointer<wire_measure_twin_normal> wireObj) {
-    _api_fill_to_wire_measure_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_measure_twin_rust_async(
-      MeasureTwinRustAsync apiObj,
-      ffi.Pointer<wire_measure_twin_rust_async> wireObj) {
-    _api_fill_to_wire_measure_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_measure_twin_sync(
-      MeasureTwinSync apiObj, ffi.Pointer<wire_measure_twin_sync> wireObj) {
-    _api_fill_to_wire_measure_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_message_id_twin_normal(
-      MessageIdTwinNormal apiObj,
-      ffi.Pointer<wire_message_id_twin_normal> wireObj) {
-    _api_fill_to_wire_message_id_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_message_id_twin_rust_async(
-      MessageIdTwinRustAsync apiObj,
-      ffi.Pointer<wire_message_id_twin_rust_async> wireObj) {
-    _api_fill_to_wire_message_id_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_message_id_twin_sync(
-      MessageIdTwinSync apiObj,
-      ffi.Pointer<wire_message_id_twin_sync> wireObj) {
-    _api_fill_to_wire_message_id_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_my_nested_struct_twin_normal(
-      MyNestedStructTwinNormal apiObj,
-      ffi.Pointer<wire_my_nested_struct_twin_normal> wireObj) {
-    _api_fill_to_wire_my_nested_struct_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_my_nested_struct_twin_rust_async(
-      MyNestedStructTwinRustAsync apiObj,
-      ffi.Pointer<wire_my_nested_struct_twin_rust_async> wireObj) {
-    _api_fill_to_wire_my_nested_struct_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_my_nested_struct_twin_sync(
-      MyNestedStructTwinSync apiObj,
-      ffi.Pointer<wire_my_nested_struct_twin_sync> wireObj) {
-    _api_fill_to_wire_my_nested_struct_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_my_size(
-      MySize apiObj, ffi.Pointer<wire_my_size> wireObj) {
-    _api_fill_to_wire_my_size(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_my_struct(
-      MyStruct apiObj, ffi.Pointer<wire_my_struct> wireObj) {
-    _api_fill_to_wire_my_struct(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_my_tree_node_twin_normal(
-      MyTreeNodeTwinNormal apiObj,
-      ffi.Pointer<wire_my_tree_node_twin_normal> wireObj) {
-    _api_fill_to_wire_my_tree_node_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_my_tree_node_twin_rust_async(
-      MyTreeNodeTwinRustAsync apiObj,
-      ffi.Pointer<wire_my_tree_node_twin_rust_async> wireObj) {
-    _api_fill_to_wire_my_tree_node_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_my_tree_node_twin_sync(
-      MyTreeNodeTwinSync apiObj,
-      ffi.Pointer<wire_my_tree_node_twin_sync> wireObj) {
-    _api_fill_to_wire_my_tree_node_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_new_type_int_twin_normal(
-      NewTypeIntTwinNormal apiObj,
-      ffi.Pointer<wire_new_type_int_twin_normal> wireObj) {
-    _api_fill_to_wire_new_type_int_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_new_type_int_twin_rust_async(
-      NewTypeIntTwinRustAsync apiObj,
-      ffi.Pointer<wire_new_type_int_twin_rust_async> wireObj) {
-    _api_fill_to_wire_new_type_int_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_new_type_int_twin_sync(
-      NewTypeIntTwinSync apiObj,
-      ffi.Pointer<wire_new_type_int_twin_sync> wireObj) {
-    _api_fill_to_wire_new_type_int_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_note_twin_normal(
-      NoteTwinNormal apiObj, ffi.Pointer<wire_note_twin_normal> wireObj) {
-    _api_fill_to_wire_note_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_note_twin_rust_async(
-      NoteTwinRustAsync apiObj,
-      ffi.Pointer<wire_note_twin_rust_async> wireObj) {
-    _api_fill_to_wire_note_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_note_twin_sync(
-      NoteTwinSync apiObj, ffi.Pointer<wire_note_twin_sync> wireObj) {
-    _api_fill_to_wire_note_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_numbers(
-      Numbers apiObj, ffi.Pointer<wire_numbers> wireObj) {
-    _api_fill_to_wire_numbers(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_opaque_nested_twin_normal(
-      OpaqueNestedTwinNormal apiObj,
-      ffi.Pointer<wire_opaque_nested_twin_normal> wireObj) {
-    _api_fill_to_wire_opaque_nested_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_opaque_nested_twin_rust_async(
-      OpaqueNestedTwinRustAsync apiObj,
-      ffi.Pointer<wire_opaque_nested_twin_rust_async> wireObj) {
-    _api_fill_to_wire_opaque_nested_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_opaque_nested_twin_sync(
-      OpaqueNestedTwinSync apiObj,
-      ffi.Pointer<wire_opaque_nested_twin_sync> wireObj) {
-    _api_fill_to_wire_opaque_nested_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_opt_vecs_twin_normal(
-      OptVecsTwinNormal apiObj,
-      ffi.Pointer<wire_opt_vecs_twin_normal> wireObj) {
-    _api_fill_to_wire_opt_vecs_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_opt_vecs_twin_rust_async(
-      OptVecsTwinRustAsync apiObj,
-      ffi.Pointer<wire_opt_vecs_twin_rust_async> wireObj) {
-    _api_fill_to_wire_opt_vecs_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_opt_vecs_twin_sync(
-      OptVecsTwinSync apiObj, ffi.Pointer<wire_opt_vecs_twin_sync> wireObj) {
-    _api_fill_to_wire_opt_vecs_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_record_string_i_32(
-      (String, int) apiObj, ffi.Pointer<wire_record_string_i_32> wireObj) {
-    _api_fill_to_wire_record_string_i_32(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_sequences(
-      Sequences apiObj, ffi.Pointer<wire_sequences> wireObj) {
-    _api_fill_to_wire_sequences(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_some_struct_twin_normal(
-      SomeStructTwinNormal apiObj,
-      ffi.Pointer<wire_some_struct_twin_normal> wireObj) {
-    _api_fill_to_wire_some_struct_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_some_struct_twin_rust_async(
-      SomeStructTwinRustAsync apiObj,
-      ffi.Pointer<wire_some_struct_twin_rust_async> wireObj) {
-    _api_fill_to_wire_some_struct_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_some_struct_twin_sync(
-      SomeStructTwinSync apiObj,
-      ffi.Pointer<wire_some_struct_twin_sync> wireObj) {
-    _api_fill_to_wire_some_struct_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_struct_with_comments_twin_normal(
-      StructWithCommentsTwinNormal apiObj,
-      ffi.Pointer<wire_struct_with_comments_twin_normal> wireObj) {
-    _api_fill_to_wire_struct_with_comments_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_struct_with_comments_twin_rust_async(
-      StructWithCommentsTwinRustAsync apiObj,
-      ffi.Pointer<wire_struct_with_comments_twin_rust_async> wireObj) {
-    _api_fill_to_wire_struct_with_comments_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_struct_with_comments_twin_sync(
-      StructWithCommentsTwinSync apiObj,
-      ffi.Pointer<wire_struct_with_comments_twin_sync> wireObj) {
-    _api_fill_to_wire_struct_with_comments_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_struct_with_enum_twin_normal(
-      StructWithEnumTwinNormal apiObj,
-      ffi.Pointer<wire_struct_with_enum_twin_normal> wireObj) {
-    _api_fill_to_wire_struct_with_enum_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_struct_with_enum_twin_rust_async(
-      StructWithEnumTwinRustAsync apiObj,
-      ffi.Pointer<wire_struct_with_enum_twin_rust_async> wireObj) {
-    _api_fill_to_wire_struct_with_enum_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_struct_with_enum_twin_sync(
-      StructWithEnumTwinSync apiObj,
-      ffi.Pointer<wire_struct_with_enum_twin_sync> wireObj) {
-    _api_fill_to_wire_struct_with_enum_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_struct_with_one_field_twin_normal(
-      StructWithOneFieldTwinNormal apiObj,
-      ffi.Pointer<wire_struct_with_one_field_twin_normal> wireObj) {
-    _api_fill_to_wire_struct_with_one_field_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_struct_with_one_field_twin_rust_async(
-      StructWithOneFieldTwinRustAsync apiObj,
-      ffi.Pointer<wire_struct_with_one_field_twin_rust_async> wireObj) {
-    _api_fill_to_wire_struct_with_one_field_twin_rust_async(
-        apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_struct_with_one_field_twin_sync(
-      StructWithOneFieldTwinSync apiObj,
-      ffi.Pointer<wire_struct_with_one_field_twin_sync> wireObj) {
-    _api_fill_to_wire_struct_with_one_field_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_struct_with_two_field_twin_normal(
-      StructWithTwoFieldTwinNormal apiObj,
-      ffi.Pointer<wire_struct_with_two_field_twin_normal> wireObj) {
-    _api_fill_to_wire_struct_with_two_field_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_struct_with_two_field_twin_rust_async(
-      StructWithTwoFieldTwinRustAsync apiObj,
-      ffi.Pointer<wire_struct_with_two_field_twin_rust_async> wireObj) {
-    _api_fill_to_wire_struct_with_two_field_twin_rust_async(
-        apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_struct_with_two_field_twin_sync(
-      StructWithTwoFieldTwinSync apiObj,
-      ffi.Pointer<wire_struct_with_two_field_twin_sync> wireObj) {
-    _api_fill_to_wire_struct_with_two_field_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_sum_with_twin_normal(
-      SumWithTwinNormal apiObj,
-      ffi.Pointer<wire_sum_with_twin_normal> wireObj) {
-    _api_fill_to_wire_sum_with_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_sum_with_twin_rust_async(
-      SumWithTwinRustAsync apiObj,
-      ffi.Pointer<wire_sum_with_twin_rust_async> wireObj) {
-    _api_fill_to_wire_sum_with_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_sum_with_twin_sync(
-      SumWithTwinSync apiObj, ffi.Pointer<wire_sum_with_twin_sync> wireObj) {
-    _api_fill_to_wire_sum_with_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_test_id_twin_normal(
-      TestIdTwinNormal apiObj, ffi.Pointer<wire_test_id_twin_normal> wireObj) {
-    _api_fill_to_wire_test_id_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_test_id_twin_rust_async(
-      TestIdTwinRustAsync apiObj,
-      ffi.Pointer<wire_test_id_twin_rust_async> wireObj) {
-    _api_fill_to_wire_test_id_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_test_id_twin_sync(
-      TestIdTwinSync apiObj, ffi.Pointer<wire_test_id_twin_sync> wireObj) {
-    _api_fill_to_wire_test_id_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_tuple_struct_with_one_field_twin_normal(
-      TupleStructWithOneFieldTwinNormal apiObj,
-      ffi.Pointer<wire_tuple_struct_with_one_field_twin_normal> wireObj) {
-    _api_fill_to_wire_tuple_struct_with_one_field_twin_normal(
-        apiObj, wireObj.ref);
-  }
-
-  void
-      _api_fill_to_wire_box_autoadd_tuple_struct_with_one_field_twin_rust_async(
-          TupleStructWithOneFieldTwinRustAsync apiObj,
-          ffi.Pointer<wire_tuple_struct_with_one_field_twin_rust_async>
-              wireObj) {
-    _api_fill_to_wire_tuple_struct_with_one_field_twin_rust_async(
-        apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_tuple_struct_with_one_field_twin_sync(
-      TupleStructWithOneFieldTwinSync apiObj,
-      ffi.Pointer<wire_tuple_struct_with_one_field_twin_sync> wireObj) {
-    _api_fill_to_wire_tuple_struct_with_one_field_twin_sync(
-        apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_tuple_struct_with_two_field_twin_normal(
-      TupleStructWithTwoFieldTwinNormal apiObj,
-      ffi.Pointer<wire_tuple_struct_with_two_field_twin_normal> wireObj) {
-    _api_fill_to_wire_tuple_struct_with_two_field_twin_normal(
-        apiObj, wireObj.ref);
-  }
-
-  void
-      _api_fill_to_wire_box_autoadd_tuple_struct_with_two_field_twin_rust_async(
-          TupleStructWithTwoFieldTwinRustAsync apiObj,
-          ffi.Pointer<wire_tuple_struct_with_two_field_twin_rust_async>
-              wireObj) {
-    _api_fill_to_wire_tuple_struct_with_two_field_twin_rust_async(
-        apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_tuple_struct_with_two_field_twin_sync(
-      TupleStructWithTwoFieldTwinSync apiObj,
-      ffi.Pointer<wire_tuple_struct_with_two_field_twin_sync> wireObj) {
-    _api_fill_to_wire_tuple_struct_with_two_field_twin_sync(
-        apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_user_id_twin_normal(
-      UserIdTwinNormal apiObj, ffi.Pointer<wire_user_id_twin_normal> wireObj) {
-    _api_fill_to_wire_user_id_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_user_id_twin_rust_async(
-      UserIdTwinRustAsync apiObj,
-      ffi.Pointer<wire_user_id_twin_rust_async> wireObj) {
-    _api_fill_to_wire_user_id_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_user_id_twin_sync(
-      UserIdTwinSync apiObj, ffi.Pointer<wire_user_id_twin_sync> wireObj) {
-    _api_fill_to_wire_user_id_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_blob_twin_normal(
-      BlobTwinNormal apiObj, ffi.Pointer<wire_blob_twin_normal> wireObj) {
-    _api_fill_to_wire_blob_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_blob_twin_rust_async(BlobTwinRustAsync apiObj,
-      ffi.Pointer<wire_blob_twin_rust_async> wireObj) {
-    _api_fill_to_wire_blob_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_blob_twin_sync(
-      BlobTwinSync apiObj, ffi.Pointer<wire_blob_twin_sync> wireObj) {
-    _api_fill_to_wire_blob_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_distance_twin_normal(DistanceTwinNormal apiObj,
-      ffi.Pointer<wire_distance_twin_normal> wireObj) {
-    _api_fill_to_wire_distance_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_distance_twin_rust_async(
-      DistanceTwinRustAsync apiObj,
-      ffi.Pointer<wire_distance_twin_rust_async> wireObj) {
-    _api_fill_to_wire_distance_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_distance_twin_sync(
-      DistanceTwinSync apiObj, ffi.Pointer<wire_distance_twin_sync> wireObj) {
-    _api_fill_to_wire_distance_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_exotic_optionals_twin_normal(
-      ExoticOptionalsTwinNormal apiObj,
-      ffi.Pointer<wire_exotic_optionals_twin_normal> wireObj) {
-    _api_fill_to_wire_exotic_optionals_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_exotic_optionals_twin_rust_async(
-      ExoticOptionalsTwinRustAsync apiObj,
-      ffi.Pointer<wire_exotic_optionals_twin_rust_async> wireObj) {
-    _api_fill_to_wire_exotic_optionals_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_exotic_optionals_twin_sync(
-      ExoticOptionalsTwinSync apiObj,
-      ffi.Pointer<wire_exotic_optionals_twin_sync> wireObj) {
-    _api_fill_to_wire_exotic_optionals_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_kitchen_sink_twin_normal(
-      KitchenSinkTwinNormal apiObj,
-      ffi.Pointer<wire_kitchen_sink_twin_normal> wireObj) {
-    _api_fill_to_wire_kitchen_sink_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_kitchen_sink_twin_rust_async(
-      KitchenSinkTwinRustAsync apiObj,
-      ffi.Pointer<wire_kitchen_sink_twin_rust_async> wireObj) {
-    _api_fill_to_wire_kitchen_sink_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_kitchen_sink_twin_sync(KitchenSinkTwinSync apiObj,
-      ffi.Pointer<wire_kitchen_sink_twin_sync> wireObj) {
-    _api_fill_to_wire_kitchen_sink_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_my_size(
-      MySize apiObj, ffi.Pointer<wire_my_size> wireObj) {
-    _api_fill_to_wire_my_size(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_speed_twin_normal(
-      SpeedTwinNormal apiObj, ffi.Pointer<wire_speed_twin_normal> wireObj) {
-    _api_fill_to_wire_speed_twin_normal(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_speed_twin_rust_async(SpeedTwinRustAsync apiObj,
-      ffi.Pointer<wire_speed_twin_rust_async> wireObj) {
-    _api_fill_to_wire_speed_twin_rust_async(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_speed_twin_sync(
-      SpeedTwinSync apiObj, ffi.Pointer<wire_speed_twin_sync> wireObj) {
-    _api_fill_to_wire_speed_twin_sync(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_u_8_array_1600(
-      U8Array1600 apiObj, ffi.Pointer<wire_list_prim_u_8> wireObj) {
-    wireObj = api2wire_u_8_array_1600(apiObj);
-  }
-
-  void _api_fill_to_wire_c_twin_normal(
-      CTwinNormal apiObj, wire_c_twin_normal wireObj) {
-    wireObj.c = api2wire_bool(apiObj.c);
-  }
-
-  void _api_fill_to_wire_c_twin_rust_async(
-      CTwinRustAsync apiObj, wire_c_twin_rust_async wireObj) {
-    wireObj.c = api2wire_bool(apiObj.c);
-  }
-
-  void _api_fill_to_wire_c_twin_sync(
-      CTwinSync apiObj, wire_c_twin_sync wireObj) {
-    wireObj.c = api2wire_bool(apiObj.c);
-  }
-
-  void _api_fill_to_wire_concatenate_with_twin_normal(
-      ConcatenateWithTwinNormal apiObj,
-      wire_concatenate_with_twin_normal wireObj) {
-    wireObj.a = api2wire_String(apiObj.a);
-  }
-
-  void _api_fill_to_wire_concatenate_with_twin_rust_async(
-      ConcatenateWithTwinRustAsync apiObj,
-      wire_concatenate_with_twin_rust_async wireObj) {
-    wireObj.a = api2wire_String(apiObj.a);
-  }
-
-  void _api_fill_to_wire_concatenate_with_twin_sync(
-      ConcatenateWithTwinSync apiObj, wire_concatenate_with_twin_sync wireObj) {
-    wireObj.a = api2wire_String(apiObj.a);
-  }
-
-  void _api_fill_to_wire_custom_nested_error_inner_twin_normal(
-      CustomNestedErrorInnerTwinNormal apiObj,
-      wire_custom_nested_error_inner_twin_normal wireObj) {
-    if (apiObj is CustomNestedErrorInnerTwinNormal_Three) {
-      var pre_field0 = api2wire_String(apiObj.field0);
-      wireObj.tag = 0;
-      wireObj.kind = wire.inflate_CustomNestedErrorInnerTwinNormal_Three();
-      wireObj.kind.ref.Three.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is CustomNestedErrorInnerTwinNormal_Four) {
-      var pre_field0 = api2wire_u_32(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_CustomNestedErrorInnerTwinNormal_Four();
-      wireObj.kind.ref.Four.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_custom_nested_error_inner_twin_rust_async(
-      CustomNestedErrorInnerTwinRustAsync apiObj,
-      wire_custom_nested_error_inner_twin_rust_async wireObj) {
-    if (apiObj is CustomNestedErrorInnerTwinRustAsync_Three) {
-      var pre_field0 = api2wire_String(apiObj.field0);
-      wireObj.tag = 0;
-      wireObj.kind = wire.inflate_CustomNestedErrorInnerTwinRustAsync_Three();
-      wireObj.kind.ref.Three.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is CustomNestedErrorInnerTwinRustAsync_Four) {
-      var pre_field0 = api2wire_u_32(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_CustomNestedErrorInnerTwinRustAsync_Four();
-      wireObj.kind.ref.Four.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_custom_nested_error_inner_twin_sync(
-      CustomNestedErrorInnerTwinSync apiObj,
-      wire_custom_nested_error_inner_twin_sync wireObj) {
-    if (apiObj is CustomNestedErrorInnerTwinSync_Three) {
-      var pre_field0 = api2wire_String(apiObj.field0);
-      wireObj.tag = 0;
-      wireObj.kind = wire.inflate_CustomNestedErrorInnerTwinSync_Three();
-      wireObj.kind.ref.Three.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is CustomNestedErrorInnerTwinSync_Four) {
-      var pre_field0 = api2wire_u_32(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_CustomNestedErrorInnerTwinSync_Four();
-      wireObj.kind.ref.Four.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_custom_nested_error_outer_twin_normal(
-      CustomNestedErrorOuterTwinNormal apiObj,
-      wire_custom_nested_error_outer_twin_normal wireObj) {
-    if (apiObj is CustomNestedErrorOuterTwinNormal_One) {
-      var pre_field0 = api2wire_String(apiObj.field0);
-      wireObj.tag = 0;
-      wireObj.kind = wire.inflate_CustomNestedErrorOuterTwinNormal_One();
-      wireObj.kind.ref.One.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is CustomNestedErrorOuterTwinNormal_Two) {
-      var pre_field0 =
-          api2wire_box_autoadd_custom_nested_error_inner_twin_normal(
-              apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_CustomNestedErrorOuterTwinNormal_Two();
-      wireObj.kind.ref.Two.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_custom_nested_error_outer_twin_rust_async(
-      CustomNestedErrorOuterTwinRustAsync apiObj,
-      wire_custom_nested_error_outer_twin_rust_async wireObj) {
-    if (apiObj is CustomNestedErrorOuterTwinRustAsync_One) {
-      var pre_field0 = api2wire_String(apiObj.field0);
-      wireObj.tag = 0;
-      wireObj.kind = wire.inflate_CustomNestedErrorOuterTwinRustAsync_One();
-      wireObj.kind.ref.One.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is CustomNestedErrorOuterTwinRustAsync_Two) {
-      var pre_field0 =
-          api2wire_box_autoadd_custom_nested_error_inner_twin_rust_async(
-              apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_CustomNestedErrorOuterTwinRustAsync_Two();
-      wireObj.kind.ref.Two.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_custom_nested_error_outer_twin_sync(
-      CustomNestedErrorOuterTwinSync apiObj,
-      wire_custom_nested_error_outer_twin_sync wireObj) {
-    if (apiObj is CustomNestedErrorOuterTwinSync_One) {
-      var pre_field0 = api2wire_String(apiObj.field0);
-      wireObj.tag = 0;
-      wireObj.kind = wire.inflate_CustomNestedErrorOuterTwinSync_One();
-      wireObj.kind.ref.One.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is CustomNestedErrorOuterTwinSync_Two) {
-      var pre_field0 = api2wire_box_autoadd_custom_nested_error_inner_twin_sync(
-          apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_CustomNestedErrorOuterTwinSync_Two();
-      wireObj.kind.ref.Two.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_custom_struct_error_twin_normal(
-      CustomStructErrorTwinNormal apiObj,
-      wire_custom_struct_error_twin_normal wireObj) {
-    wireObj.a = api2wire_String(apiObj.a);
-  }
-
-  void _api_fill_to_wire_custom_struct_error_twin_rust_async(
-      CustomStructErrorTwinRustAsync apiObj,
-      wire_custom_struct_error_twin_rust_async wireObj) {
-    wireObj.a = api2wire_String(apiObj.a);
-  }
-
-  void _api_fill_to_wire_custom_struct_error_twin_sync(
-      CustomStructErrorTwinSync apiObj,
-      wire_custom_struct_error_twin_sync wireObj) {
-    wireObj.a = api2wire_String(apiObj.a);
-  }
-
-  void _api_fill_to_wire_custom_struct_twin_normal(
-      CustomStructTwinNormal apiObj, wire_custom_struct_twin_normal wireObj) {
-    wireObj.message = api2wire_String(apiObj.message);
-  }
-
-  void _api_fill_to_wire_custom_struct_twin_rust_async(
-      CustomStructTwinRustAsync apiObj,
-      wire_custom_struct_twin_rust_async wireObj) {
-    wireObj.message = api2wire_String(apiObj.message);
-  }
-
-  void _api_fill_to_wire_custom_struct_twin_sync(
-      CustomStructTwinSync apiObj, wire_custom_struct_twin_sync wireObj) {
-    wireObj.message = api2wire_String(apiObj.message);
-  }
-
-  void _api_fill_to_wire_customized_twin_normal(
-      CustomizedTwinNormal apiObj, wire_customized_twin_normal wireObj) {
-    wireObj.final_field = api2wire_String(apiObj.finalField);
-    wireObj.non_final_field = api2wire_opt_String(apiObj.nonFinalField);
-  }
-
-  void _api_fill_to_wire_customized_twin_rust_async(
-      CustomizedTwinRustAsync apiObj, wire_customized_twin_rust_async wireObj) {
-    wireObj.final_field = api2wire_String(apiObj.finalField);
-    wireObj.non_final_field = api2wire_opt_String(apiObj.nonFinalField);
-  }
-
-  void _api_fill_to_wire_customized_twin_sync(
-      CustomizedTwinSync apiObj, wire_customized_twin_sync wireObj) {
-    wireObj.final_field = api2wire_String(apiObj.finalField);
-    wireObj.non_final_field = api2wire_opt_String(apiObj.nonFinalField);
-  }
-
-  void _api_fill_to_wire_dart_opaque_nested_twin_normal(
-      DartOpaqueNestedTwinNormal apiObj,
-      wire_dart_opaque_nested_twin_normal wireObj) {
-    wireObj.first = api2wire_DartOpaque(apiObj.first);
-    wireObj.second = api2wire_DartOpaque(apiObj.second);
-  }
-
-  void _api_fill_to_wire_dart_opaque_nested_twin_rust_async(
-      DartOpaqueNestedTwinRustAsync apiObj,
-      wire_dart_opaque_nested_twin_rust_async wireObj) {
-    wireObj.first = api2wire_DartOpaque(apiObj.first);
-    wireObj.second = api2wire_DartOpaque(apiObj.second);
-  }
-
-  void _api_fill_to_wire_dart_opaque_nested_twin_sync(
-      DartOpaqueNestedTwinSync apiObj,
-      wire_dart_opaque_nested_twin_sync wireObj) {
-    wireObj.first = api2wire_DartOpaque(apiObj.first);
-    wireObj.second = api2wire_DartOpaque(apiObj.second);
-  }
-
-  void _api_fill_to_wire_distance_twin_normal(
-      DistanceTwinNormal apiObj, wire_distance_twin_normal wireObj) {
-    if (apiObj is DistanceTwinNormal_Unknown) {
-      wireObj.tag = 0;
-      return;
-    }
-    if (apiObj is DistanceTwinNormal_Map) {
-      var pre_field0 = api2wire_f_64(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_DistanceTwinNormal_Map();
-      wireObj.kind.ref.Map.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_distance_twin_rust_async(
-      DistanceTwinRustAsync apiObj, wire_distance_twin_rust_async wireObj) {
-    if (apiObj is DistanceTwinRustAsync_Unknown) {
-      wireObj.tag = 0;
-      return;
-    }
-    if (apiObj is DistanceTwinRustAsync_Map) {
-      var pre_field0 = api2wire_f_64(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_DistanceTwinRustAsync_Map();
-      wireObj.kind.ref.Map.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_distance_twin_sync(
-      DistanceTwinSync apiObj, wire_distance_twin_sync wireObj) {
-    if (apiObj is DistanceTwinSync_Unknown) {
-      wireObj.tag = 0;
-      return;
-    }
-    if (apiObj is DistanceTwinSync_Map) {
-      var pre_field0 = api2wire_f_64(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_DistanceTwinSync_Map();
-      wireObj.kind.ref.Map.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_empty_twin_normal(
-      EmptyTwinNormal apiObj, wire_empty_twin_normal wireObj) {}
-  void _api_fill_to_wire_empty_twin_rust_async(
-      EmptyTwinRustAsync apiObj, wire_empty_twin_rust_async wireObj) {}
-  void _api_fill_to_wire_empty_twin_sync(
-      EmptyTwinSync apiObj, wire_empty_twin_sync wireObj) {}
-  void _api_fill_to_wire_enum_dart_opaque_twin_normal(
-      EnumDartOpaqueTwinNormal apiObj,
-      wire_enum_dart_opaque_twin_normal wireObj) {
-    if (apiObj is EnumDartOpaqueTwinNormal_Primitive) {
-      var pre_field0 = api2wire_i_32(apiObj.field0);
-      wireObj.tag = 0;
-      wireObj.kind = wire.inflate_EnumDartOpaqueTwinNormal_Primitive();
-      wireObj.kind.ref.Primitive.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is EnumDartOpaqueTwinNormal_Opaque) {
-      var pre_field0 = api2wire_DartOpaque(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_EnumDartOpaqueTwinNormal_Opaque();
-      wireObj.kind.ref.Opaque.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_enum_dart_opaque_twin_rust_async(
-      EnumDartOpaqueTwinRustAsync apiObj,
-      wire_enum_dart_opaque_twin_rust_async wireObj) {
-    if (apiObj is EnumDartOpaqueTwinRustAsync_Primitive) {
-      var pre_field0 = api2wire_i_32(apiObj.field0);
-      wireObj.tag = 0;
-      wireObj.kind = wire.inflate_EnumDartOpaqueTwinRustAsync_Primitive();
-      wireObj.kind.ref.Primitive.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is EnumDartOpaqueTwinRustAsync_Opaque) {
-      var pre_field0 = api2wire_DartOpaque(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_EnumDartOpaqueTwinRustAsync_Opaque();
-      wireObj.kind.ref.Opaque.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_enum_dart_opaque_twin_sync(
-      EnumDartOpaqueTwinSync apiObj, wire_enum_dart_opaque_twin_sync wireObj) {
-    if (apiObj is EnumDartOpaqueTwinSync_Primitive) {
-      var pre_field0 = api2wire_i_32(apiObj.field0);
-      wireObj.tag = 0;
-      wireObj.kind = wire.inflate_EnumDartOpaqueTwinSync_Primitive();
-      wireObj.kind.ref.Primitive.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is EnumDartOpaqueTwinSync_Opaque) {
-      var pre_field0 = api2wire_DartOpaque(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_EnumDartOpaqueTwinSync_Opaque();
-      wireObj.kind.ref.Opaque.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_enum_opaque_twin_normal(
-      EnumOpaqueTwinNormal apiObj, wire_enum_opaque_twin_normal wireObj) {
-    if (apiObj is EnumOpaqueTwinNormal_Struct) {
-      var pre_field0 = api2wire_RustOpaque_hide_data(apiObj.field0);
-      wireObj.tag = 0;
-      wireObj.kind = wire.inflate_EnumOpaqueTwinNormal_Struct();
-      wireObj.kind.ref.Struct.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is EnumOpaqueTwinNormal_Primitive) {
-      var pre_field0 = api2wire_RustOpaque_i_32(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_EnumOpaqueTwinNormal_Primitive();
-      wireObj.kind.ref.Primitive.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is EnumOpaqueTwinNormal_TraitObj) {
-      var pre_field0 =
-          api2wire_RustOpaque_box_dynDartDebugTwinNormal(apiObj.field0);
-      wireObj.tag = 2;
-      wireObj.kind = wire.inflate_EnumOpaqueTwinNormal_TraitObj();
-      wireObj.kind.ref.TraitObj.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is EnumOpaqueTwinNormal_Mutex) {
-      var pre_field0 = api2wire_RustOpaque_MutexHideData(apiObj.field0);
-      wireObj.tag = 3;
-      wireObj.kind = wire.inflate_EnumOpaqueTwinNormal_Mutex();
-      wireObj.kind.ref.Mutex.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is EnumOpaqueTwinNormal_RwLock) {
-      var pre_field0 = api2wire_RustOpaque_RwLockHideData(apiObj.field0);
-      wireObj.tag = 4;
-      wireObj.kind = wire.inflate_EnumOpaqueTwinNormal_RwLock();
-      wireObj.kind.ref.RwLock.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_enum_opaque_twin_rust_async(
-      EnumOpaqueTwinRustAsync apiObj,
-      wire_enum_opaque_twin_rust_async wireObj) {
-    if (apiObj is EnumOpaqueTwinRustAsync_Struct) {
-      var pre_field0 = api2wire_RustOpaque_hide_data(apiObj.field0);
-      wireObj.tag = 0;
-      wireObj.kind = wire.inflate_EnumOpaqueTwinRustAsync_Struct();
-      wireObj.kind.ref.Struct.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is EnumOpaqueTwinRustAsync_Primitive) {
-      var pre_field0 = api2wire_RustOpaque_i_32(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_EnumOpaqueTwinRustAsync_Primitive();
-      wireObj.kind.ref.Primitive.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is EnumOpaqueTwinRustAsync_TraitObj) {
-      var pre_field0 =
-          api2wire_RustOpaque_box_dynDartDebugTwinRustAsync(apiObj.field0);
-      wireObj.tag = 2;
-      wireObj.kind = wire.inflate_EnumOpaqueTwinRustAsync_TraitObj();
-      wireObj.kind.ref.TraitObj.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is EnumOpaqueTwinRustAsync_Mutex) {
-      var pre_field0 = api2wire_RustOpaque_MutexHideData(apiObj.field0);
-      wireObj.tag = 3;
-      wireObj.kind = wire.inflate_EnumOpaqueTwinRustAsync_Mutex();
-      wireObj.kind.ref.Mutex.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is EnumOpaqueTwinRustAsync_RwLock) {
-      var pre_field0 = api2wire_RustOpaque_RwLockHideData(apiObj.field0);
-      wireObj.tag = 4;
-      wireObj.kind = wire.inflate_EnumOpaqueTwinRustAsync_RwLock();
-      wireObj.kind.ref.RwLock.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_enum_opaque_twin_sync(
-      EnumOpaqueTwinSync apiObj, wire_enum_opaque_twin_sync wireObj) {
-    if (apiObj is EnumOpaqueTwinSync_Struct) {
-      var pre_field0 = api2wire_RustOpaque_hide_data(apiObj.field0);
-      wireObj.tag = 0;
-      wireObj.kind = wire.inflate_EnumOpaqueTwinSync_Struct();
-      wireObj.kind.ref.Struct.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is EnumOpaqueTwinSync_Primitive) {
-      var pre_field0 = api2wire_RustOpaque_i_32(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_EnumOpaqueTwinSync_Primitive();
-      wireObj.kind.ref.Primitive.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is EnumOpaqueTwinSync_TraitObj) {
-      var pre_field0 =
-          api2wire_RustOpaque_box_dynDartDebugTwinSync(apiObj.field0);
-      wireObj.tag = 2;
-      wireObj.kind = wire.inflate_EnumOpaqueTwinSync_TraitObj();
-      wireObj.kind.ref.TraitObj.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is EnumOpaqueTwinSync_Mutex) {
-      var pre_field0 = api2wire_RustOpaque_MutexHideData(apiObj.field0);
-      wireObj.tag = 3;
-      wireObj.kind = wire.inflate_EnumOpaqueTwinSync_Mutex();
-      wireObj.kind.ref.Mutex.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is EnumOpaqueTwinSync_RwLock) {
-      var pre_field0 = api2wire_RustOpaque_RwLockHideData(apiObj.field0);
-      wireObj.tag = 4;
-      wireObj.kind = wire.inflate_EnumOpaqueTwinSync_RwLock();
-      wireObj.kind.ref.RwLock.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_enum_with_item_mixed_twin_normal(
-      EnumWithItemMixedTwinNormal apiObj,
-      wire_enum_with_item_mixed_twin_normal wireObj) {
-    if (apiObj is EnumWithItemMixedTwinNormal_A) {
-      wireObj.tag = 0;
-      return;
-    }
-    if (apiObj is EnumWithItemMixedTwinNormal_B) {
-      var pre_field0 = api2wire_list_prim_u_8(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_EnumWithItemMixedTwinNormal_B();
-      wireObj.kind.ref.B.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is EnumWithItemMixedTwinNormal_C) {
-      var pre_c_field = api2wire_String(apiObj.cField);
-      wireObj.tag = 2;
-      wireObj.kind = wire.inflate_EnumWithItemMixedTwinNormal_C();
-      wireObj.kind.ref.C.ref.c_field = pre_c_field;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_enum_with_item_mixed_twin_rust_async(
-      EnumWithItemMixedTwinRustAsync apiObj,
-      wire_enum_with_item_mixed_twin_rust_async wireObj) {
-    if (apiObj is EnumWithItemMixedTwinRustAsync_A) {
-      wireObj.tag = 0;
-      return;
-    }
-    if (apiObj is EnumWithItemMixedTwinRustAsync_B) {
-      var pre_field0 = api2wire_list_prim_u_8(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_EnumWithItemMixedTwinRustAsync_B();
-      wireObj.kind.ref.B.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is EnumWithItemMixedTwinRustAsync_C) {
-      var pre_c_field = api2wire_String(apiObj.cField);
-      wireObj.tag = 2;
-      wireObj.kind = wire.inflate_EnumWithItemMixedTwinRustAsync_C();
-      wireObj.kind.ref.C.ref.c_field = pre_c_field;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_enum_with_item_mixed_twin_sync(
-      EnumWithItemMixedTwinSync apiObj,
-      wire_enum_with_item_mixed_twin_sync wireObj) {
-    if (apiObj is EnumWithItemMixedTwinSync_A) {
-      wireObj.tag = 0;
-      return;
-    }
-    if (apiObj is EnumWithItemMixedTwinSync_B) {
-      var pre_field0 = api2wire_list_prim_u_8(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_EnumWithItemMixedTwinSync_B();
-      wireObj.kind.ref.B.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is EnumWithItemMixedTwinSync_C) {
-      var pre_c_field = api2wire_String(apiObj.cField);
-      wireObj.tag = 2;
-      wireObj.kind = wire.inflate_EnumWithItemMixedTwinSync_C();
-      wireObj.kind.ref.C.ref.c_field = pre_c_field;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_enum_with_item_struct_twin_normal(
-      EnumWithItemStructTwinNormal apiObj,
-      wire_enum_with_item_struct_twin_normal wireObj) {
-    if (apiObj is EnumWithItemStructTwinNormal_A) {
-      var pre_a_field = api2wire_list_prim_u_8(apiObj.aField);
-      wireObj.tag = 0;
-      wireObj.kind = wire.inflate_EnumWithItemStructTwinNormal_A();
-      wireObj.kind.ref.A.ref.a_field = pre_a_field;
-      return;
-    }
-    if (apiObj is EnumWithItemStructTwinNormal_B) {
-      var pre_b_field = api2wire_list_prim_i_32(apiObj.bField);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_EnumWithItemStructTwinNormal_B();
-      wireObj.kind.ref.B.ref.b_field = pre_b_field;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_enum_with_item_struct_twin_rust_async(
-      EnumWithItemStructTwinRustAsync apiObj,
-      wire_enum_with_item_struct_twin_rust_async wireObj) {
-    if (apiObj is EnumWithItemStructTwinRustAsync_A) {
-      var pre_a_field = api2wire_list_prim_u_8(apiObj.aField);
-      wireObj.tag = 0;
-      wireObj.kind = wire.inflate_EnumWithItemStructTwinRustAsync_A();
-      wireObj.kind.ref.A.ref.a_field = pre_a_field;
-      return;
-    }
-    if (apiObj is EnumWithItemStructTwinRustAsync_B) {
-      var pre_b_field = api2wire_list_prim_i_32(apiObj.bField);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_EnumWithItemStructTwinRustAsync_B();
-      wireObj.kind.ref.B.ref.b_field = pre_b_field;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_enum_with_item_struct_twin_sync(
-      EnumWithItemStructTwinSync apiObj,
-      wire_enum_with_item_struct_twin_sync wireObj) {
-    if (apiObj is EnumWithItemStructTwinSync_A) {
-      var pre_a_field = api2wire_list_prim_u_8(apiObj.aField);
-      wireObj.tag = 0;
-      wireObj.kind = wire.inflate_EnumWithItemStructTwinSync_A();
-      wireObj.kind.ref.A.ref.a_field = pre_a_field;
-      return;
-    }
-    if (apiObj is EnumWithItemStructTwinSync_B) {
-      var pre_b_field = api2wire_list_prim_i_32(apiObj.bField);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_EnumWithItemStructTwinSync_B();
-      wireObj.kind.ref.B.ref.b_field = pre_b_field;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_enum_with_item_tuple_twin_normal(
-      EnumWithItemTupleTwinNormal apiObj,
-      wire_enum_with_item_tuple_twin_normal wireObj) {
-    if (apiObj is EnumWithItemTupleTwinNormal_A) {
-      var pre_field0 = api2wire_list_prim_u_8(apiObj.field0);
-      wireObj.tag = 0;
-      wireObj.kind = wire.inflate_EnumWithItemTupleTwinNormal_A();
-      wireObj.kind.ref.A.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is EnumWithItemTupleTwinNormal_B) {
-      var pre_field0 = api2wire_list_prim_i_32(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_EnumWithItemTupleTwinNormal_B();
-      wireObj.kind.ref.B.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_enum_with_item_tuple_twin_rust_async(
-      EnumWithItemTupleTwinRustAsync apiObj,
-      wire_enum_with_item_tuple_twin_rust_async wireObj) {
-    if (apiObj is EnumWithItemTupleTwinRustAsync_A) {
-      var pre_field0 = api2wire_list_prim_u_8(apiObj.field0);
-      wireObj.tag = 0;
-      wireObj.kind = wire.inflate_EnumWithItemTupleTwinRustAsync_A();
-      wireObj.kind.ref.A.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is EnumWithItemTupleTwinRustAsync_B) {
-      var pre_field0 = api2wire_list_prim_i_32(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_EnumWithItemTupleTwinRustAsync_B();
-      wireObj.kind.ref.B.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_enum_with_item_tuple_twin_sync(
-      EnumWithItemTupleTwinSync apiObj,
-      wire_enum_with_item_tuple_twin_sync wireObj) {
-    if (apiObj is EnumWithItemTupleTwinSync_A) {
-      var pre_field0 = api2wire_list_prim_u_8(apiObj.field0);
-      wireObj.tag = 0;
-      wireObj.kind = wire.inflate_EnumWithItemTupleTwinSync_A();
-      wireObj.kind.ref.A.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is EnumWithItemTupleTwinSync_B) {
-      var pre_field0 = api2wire_list_prim_i_32(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_EnumWithItemTupleTwinSync_B();
-      wireObj.kind.ref.B.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_event_twin_normal(
-      EventTwinNormal apiObj, wire_event_twin_normal wireObj) {
-    wireObj.address = api2wire_String(apiObj.address);
-    wireObj.payload = api2wire_String(apiObj.payload);
-  }
-
-  void _api_fill_to_wire_event_twin_rust_async(
-      EventTwinRustAsync apiObj, wire_event_twin_rust_async wireObj) {
-    wireObj.address = api2wire_String(apiObj.address);
-    wireObj.payload = api2wire_String(apiObj.payload);
-  }
-
-  void _api_fill_to_wire_event_twin_sync(
-      EventTwinSync apiObj, wire_event_twin_sync wireObj) {
-    wireObj.address = api2wire_String(apiObj.address);
-    wireObj.payload = api2wire_String(apiObj.payload);
-  }
-
-  void _api_fill_to_wire_exotic_optionals_twin_normal(
-      ExoticOptionalsTwinNormal apiObj,
-      wire_exotic_optionals_twin_normal wireObj) {
-    wireObj.int32 = api2wire_opt_box_autoadd_i_32(apiObj.int32);
-    wireObj.int64 = api2wire_opt_box_autoadd_i_64(apiObj.int64);
-    wireObj.float64 = api2wire_opt_box_autoadd_f_64(apiObj.float64);
-    wireObj.boolean = api2wire_opt_box_autoadd_bool(apiObj.boolean);
-    wireObj.zerocopy =
-        api2wire_opt_ZeroCopyBuffer_list_prim_u_8(apiObj.zerocopy);
-    wireObj.int8list = api2wire_opt_list_prim_i_8(apiObj.int8List);
-    wireObj.uint8list = api2wire_opt_list_prim_u_8(apiObj.uint8List);
-    wireObj.int32list = api2wire_opt_list_prim_i_32(apiObj.int32List);
-    wireObj.float32list = api2wire_opt_list_prim_f_32(apiObj.float32List);
-    wireObj.float64list = api2wire_opt_list_prim_f_64(apiObj.float64List);
-    wireObj.attributes =
-        api2wire_opt_list_attribute_twin_normal(apiObj.attributes);
-    wireObj.attributes_nullable =
-        api2wire_list_opt_box_autoadd_attribute_twin_normal(
-            apiObj.attributesNullable);
-    wireObj.nullable_attributes =
-        api2wire_opt_list_opt_box_autoadd_attribute_twin_normal(
-            apiObj.nullableAttributes);
-    wireObj.newtypeint =
-        api2wire_opt_box_autoadd_new_type_int_twin_normal(apiObj.newtypeint);
-  }
-
-  void _api_fill_to_wire_exotic_optionals_twin_rust_async(
-      ExoticOptionalsTwinRustAsync apiObj,
-      wire_exotic_optionals_twin_rust_async wireObj) {
-    wireObj.int32 = api2wire_opt_box_autoadd_i_32(apiObj.int32);
-    wireObj.int64 = api2wire_opt_box_autoadd_i_64(apiObj.int64);
-    wireObj.float64 = api2wire_opt_box_autoadd_f_64(apiObj.float64);
-    wireObj.boolean = api2wire_opt_box_autoadd_bool(apiObj.boolean);
-    wireObj.zerocopy =
-        api2wire_opt_ZeroCopyBuffer_list_prim_u_8(apiObj.zerocopy);
-    wireObj.int8list = api2wire_opt_list_prim_i_8(apiObj.int8List);
-    wireObj.uint8list = api2wire_opt_list_prim_u_8(apiObj.uint8List);
-    wireObj.int32list = api2wire_opt_list_prim_i_32(apiObj.int32List);
-    wireObj.float32list = api2wire_opt_list_prim_f_32(apiObj.float32List);
-    wireObj.float64list = api2wire_opt_list_prim_f_64(apiObj.float64List);
-    wireObj.attributes =
-        api2wire_opt_list_attribute_twin_rust_async(apiObj.attributes);
-    wireObj.attributes_nullable =
-        api2wire_list_opt_box_autoadd_attribute_twin_rust_async(
-            apiObj.attributesNullable);
-    wireObj.nullable_attributes =
-        api2wire_opt_list_opt_box_autoadd_attribute_twin_rust_async(
-            apiObj.nullableAttributes);
-    wireObj.newtypeint = api2wire_opt_box_autoadd_new_type_int_twin_rust_async(
-        apiObj.newtypeint);
-  }
-
-  void _api_fill_to_wire_exotic_optionals_twin_sync(
-      ExoticOptionalsTwinSync apiObj, wire_exotic_optionals_twin_sync wireObj) {
-    wireObj.int32 = api2wire_opt_box_autoadd_i_32(apiObj.int32);
-    wireObj.int64 = api2wire_opt_box_autoadd_i_64(apiObj.int64);
-    wireObj.float64 = api2wire_opt_box_autoadd_f_64(apiObj.float64);
-    wireObj.boolean = api2wire_opt_box_autoadd_bool(apiObj.boolean);
-    wireObj.zerocopy =
-        api2wire_opt_ZeroCopyBuffer_list_prim_u_8(apiObj.zerocopy);
-    wireObj.int8list = api2wire_opt_list_prim_i_8(apiObj.int8List);
-    wireObj.uint8list = api2wire_opt_list_prim_u_8(apiObj.uint8List);
-    wireObj.int32list = api2wire_opt_list_prim_i_32(apiObj.int32List);
-    wireObj.float32list = api2wire_opt_list_prim_f_32(apiObj.float32List);
-    wireObj.float64list = api2wire_opt_list_prim_f_64(apiObj.float64List);
-    wireObj.attributes =
-        api2wire_opt_list_attribute_twin_sync(apiObj.attributes);
-    wireObj.attributes_nullable =
-        api2wire_list_opt_box_autoadd_attribute_twin_sync(
-            apiObj.attributesNullable);
-    wireObj.nullable_attributes =
-        api2wire_opt_list_opt_box_autoadd_attribute_twin_sync(
-            apiObj.nullableAttributes);
-    wireObj.newtypeint =
-        api2wire_opt_box_autoadd_new_type_int_twin_sync(apiObj.newtypeint);
-  }
-
-  void _api_fill_to_wire_feature_chrono_twin_normal(
-      FeatureChronoTwinNormal apiObj, wire_feature_chrono_twin_normal wireObj) {
-    wireObj.utc = api2wire_Chrono_Utc(apiObj.utc);
-    wireObj.local = api2wire_Chrono_Local(apiObj.local);
-    wireObj.duration = api2wire_Chrono_Duration(apiObj.duration);
-    wireObj.naive = api2wire_Chrono_Naive(apiObj.naive);
-  }
-
-  void _api_fill_to_wire_feature_chrono_twin_rust_async(
-      FeatureChronoTwinRustAsync apiObj,
-      wire_feature_chrono_twin_rust_async wireObj) {
-    wireObj.utc = api2wire_Chrono_Utc(apiObj.utc);
-    wireObj.local = api2wire_Chrono_Local(apiObj.local);
-    wireObj.duration = api2wire_Chrono_Duration(apiObj.duration);
-    wireObj.naive = api2wire_Chrono_Naive(apiObj.naive);
-  }
-
-  void _api_fill_to_wire_feature_chrono_twin_sync(
-      FeatureChronoTwinSync apiObj, wire_feature_chrono_twin_sync wireObj) {
-    wireObj.utc = api2wire_Chrono_Utc(apiObj.utc);
-    wireObj.local = api2wire_Chrono_Local(apiObj.local);
-    wireObj.duration = api2wire_Chrono_Duration(apiObj.duration);
-    wireObj.naive = api2wire_Chrono_Naive(apiObj.naive);
-  }
-
-  void _api_fill_to_wire_feature_uuid_twin_normal(
-      FeatureUuidTwinNormal apiObj, wire_feature_uuid_twin_normal wireObj) {
-    wireObj.one = api2wire_Uuid(apiObj.one);
-    wireObj.many = api2wire_Uuids(apiObj.many);
-  }
-
-  void _api_fill_to_wire_feature_uuid_twin_rust_async(
-      FeatureUuidTwinRustAsync apiObj,
-      wire_feature_uuid_twin_rust_async wireObj) {
-    wireObj.one = api2wire_Uuid(apiObj.one);
-    wireObj.many = api2wire_Uuids(apiObj.many);
-  }
-
-  void _api_fill_to_wire_feature_uuid_twin_sync(
-      FeatureUuidTwinSync apiObj, wire_feature_uuid_twin_sync wireObj) {
-    wireObj.one = api2wire_Uuid(apiObj.one);
-    wireObj.many = api2wire_Uuids(apiObj.many);
-  }
-
-  void _api_fill_to_wire_feed_id_twin_normal(
-      FeedIdTwinNormal apiObj, wire_feed_id_twin_normal wireObj) {
-    wireObj.field0 = api2wire_u_8_array_8(apiObj.field0);
-  }
-
-  void _api_fill_to_wire_feed_id_twin_rust_async(
-      FeedIdTwinRustAsync apiObj, wire_feed_id_twin_rust_async wireObj) {
-    wireObj.field0 = api2wire_u_8_array_8(apiObj.field0);
-  }
-
-  void _api_fill_to_wire_feed_id_twin_sync(
-      FeedIdTwinSync apiObj, wire_feed_id_twin_sync wireObj) {
-    wireObj.field0 = api2wire_u_8_array_8(apiObj.field0);
-  }
-
-  void _api_fill_to_wire_kitchen_sink_twin_normal(
-      KitchenSinkTwinNormal apiObj, wire_kitchen_sink_twin_normal wireObj) {
-    if (apiObj is KitchenSinkTwinNormal_Empty) {
-      wireObj.tag = 0;
-      return;
-    }
-    if (apiObj is KitchenSinkTwinNormal_Primitives) {
-      var pre_int32 = api2wire_i_32(apiObj.int32);
-      var pre_float64 = api2wire_f_64(apiObj.float64);
-      var pre_boolean = api2wire_bool(apiObj.boolean);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_KitchenSinkTwinNormal_Primitives();
-      wireObj.kind.ref.Primitives.ref.int32 = pre_int32;
-      wireObj.kind.ref.Primitives.ref.float64 = pre_float64;
-      wireObj.kind.ref.Primitives.ref.boolean = pre_boolean;
-      return;
-    }
-    if (apiObj is KitchenSinkTwinNormal_Nested) {
-      var pre_field0 = api2wire_i_32(apiObj.field0);
-      var pre_field1 = api2wire_box_kitchen_sink_twin_normal(apiObj.field1);
-      wireObj.tag = 2;
-      wireObj.kind = wire.inflate_KitchenSinkTwinNormal_Nested();
-      wireObj.kind.ref.Nested.ref.field0 = pre_field0;
-      wireObj.kind.ref.Nested.ref.field1 = pre_field1;
-      return;
-    }
-    if (apiObj is KitchenSinkTwinNormal_Optional) {
-      var pre_field0 = api2wire_opt_box_autoadd_i_32(apiObj.field0);
-      var pre_field1 = api2wire_opt_box_autoadd_i_32(apiObj.field1);
-      wireObj.tag = 3;
-      wireObj.kind = wire.inflate_KitchenSinkTwinNormal_Optional();
-      wireObj.kind.ref.Optional.ref.field0 = pre_field0;
-      wireObj.kind.ref.Optional.ref.field1 = pre_field1;
-      return;
-    }
-    if (apiObj is KitchenSinkTwinNormal_Buffer) {
-      var pre_field0 = api2wire_ZeroCopyBuffer_list_prim_u_8(apiObj.field0);
-      wireObj.tag = 4;
-      wireObj.kind = wire.inflate_KitchenSinkTwinNormal_Buffer();
-      wireObj.kind.ref.Buffer.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is KitchenSinkTwinNormal_Enums) {
-      var pre_field0 = api2wire_weekdays_twin_normal(apiObj.field0);
-      wireObj.tag = 5;
-      wireObj.kind = wire.inflate_KitchenSinkTwinNormal_Enums();
-      wireObj.kind.ref.Enums.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_kitchen_sink_twin_rust_async(
-      KitchenSinkTwinRustAsync apiObj,
-      wire_kitchen_sink_twin_rust_async wireObj) {
-    if (apiObj is KitchenSinkTwinRustAsync_Empty) {
-      wireObj.tag = 0;
-      return;
-    }
-    if (apiObj is KitchenSinkTwinRustAsync_Primitives) {
-      var pre_int32 = api2wire_i_32(apiObj.int32);
-      var pre_float64 = api2wire_f_64(apiObj.float64);
-      var pre_boolean = api2wire_bool(apiObj.boolean);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_KitchenSinkTwinRustAsync_Primitives();
-      wireObj.kind.ref.Primitives.ref.int32 = pre_int32;
-      wireObj.kind.ref.Primitives.ref.float64 = pre_float64;
-      wireObj.kind.ref.Primitives.ref.boolean = pre_boolean;
-      return;
-    }
-    if (apiObj is KitchenSinkTwinRustAsync_Nested) {
-      var pre_field0 = api2wire_i_32(apiObj.field0);
-      var pre_field1 = api2wire_box_kitchen_sink_twin_rust_async(apiObj.field1);
-      wireObj.tag = 2;
-      wireObj.kind = wire.inflate_KitchenSinkTwinRustAsync_Nested();
-      wireObj.kind.ref.Nested.ref.field0 = pre_field0;
-      wireObj.kind.ref.Nested.ref.field1 = pre_field1;
-      return;
-    }
-    if (apiObj is KitchenSinkTwinRustAsync_Optional) {
-      var pre_field0 = api2wire_opt_box_autoadd_i_32(apiObj.field0);
-      var pre_field1 = api2wire_opt_box_autoadd_i_32(apiObj.field1);
-      wireObj.tag = 3;
-      wireObj.kind = wire.inflate_KitchenSinkTwinRustAsync_Optional();
-      wireObj.kind.ref.Optional.ref.field0 = pre_field0;
-      wireObj.kind.ref.Optional.ref.field1 = pre_field1;
-      return;
-    }
-    if (apiObj is KitchenSinkTwinRustAsync_Buffer) {
-      var pre_field0 = api2wire_ZeroCopyBuffer_list_prim_u_8(apiObj.field0);
-      wireObj.tag = 4;
-      wireObj.kind = wire.inflate_KitchenSinkTwinRustAsync_Buffer();
-      wireObj.kind.ref.Buffer.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is KitchenSinkTwinRustAsync_Enums) {
-      var pre_field0 = api2wire_weekdays_twin_rust_async(apiObj.field0);
-      wireObj.tag = 5;
-      wireObj.kind = wire.inflate_KitchenSinkTwinRustAsync_Enums();
-      wireObj.kind.ref.Enums.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_kitchen_sink_twin_sync(
-      KitchenSinkTwinSync apiObj, wire_kitchen_sink_twin_sync wireObj) {
-    if (apiObj is KitchenSinkTwinSync_Empty) {
-      wireObj.tag = 0;
-      return;
-    }
-    if (apiObj is KitchenSinkTwinSync_Primitives) {
-      var pre_int32 = api2wire_i_32(apiObj.int32);
-      var pre_float64 = api2wire_f_64(apiObj.float64);
-      var pre_boolean = api2wire_bool(apiObj.boolean);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_KitchenSinkTwinSync_Primitives();
-      wireObj.kind.ref.Primitives.ref.int32 = pre_int32;
-      wireObj.kind.ref.Primitives.ref.float64 = pre_float64;
-      wireObj.kind.ref.Primitives.ref.boolean = pre_boolean;
-      return;
-    }
-    if (apiObj is KitchenSinkTwinSync_Nested) {
-      var pre_field0 = api2wire_i_32(apiObj.field0);
-      var pre_field1 = api2wire_box_kitchen_sink_twin_sync(apiObj.field1);
-      wireObj.tag = 2;
-      wireObj.kind = wire.inflate_KitchenSinkTwinSync_Nested();
-      wireObj.kind.ref.Nested.ref.field0 = pre_field0;
-      wireObj.kind.ref.Nested.ref.field1 = pre_field1;
-      return;
-    }
-    if (apiObj is KitchenSinkTwinSync_Optional) {
-      var pre_field0 = api2wire_opt_box_autoadd_i_32(apiObj.field0);
-      var pre_field1 = api2wire_opt_box_autoadd_i_32(apiObj.field1);
-      wireObj.tag = 3;
-      wireObj.kind = wire.inflate_KitchenSinkTwinSync_Optional();
-      wireObj.kind.ref.Optional.ref.field0 = pre_field0;
-      wireObj.kind.ref.Optional.ref.field1 = pre_field1;
-      return;
-    }
-    if (apiObj is KitchenSinkTwinSync_Buffer) {
-      var pre_field0 = api2wire_ZeroCopyBuffer_list_prim_u_8(apiObj.field0);
-      wireObj.tag = 4;
-      wireObj.kind = wire.inflate_KitchenSinkTwinSync_Buffer();
-      wireObj.kind.ref.Buffer.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is KitchenSinkTwinSync_Enums) {
-      var pre_field0 = api2wire_weekdays_twin_sync(apiObj.field0);
-      wireObj.tag = 5;
-      wireObj.kind = wire.inflate_KitchenSinkTwinSync_Enums();
-      wireObj.kind.ref.Enums.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_macro_struct(
-      MacroStruct apiObj, wire_macro_struct wireObj) {
-    wireObj.data = api2wire_i_32(apiObj.data);
-  }
-
-  void _api_fill_to_wire_measure_twin_normal(
-      MeasureTwinNormal apiObj, wire_measure_twin_normal wireObj) {
-    if (apiObj is MeasureTwinNormal_Speed) {
-      var pre_field0 = api2wire_box_speed_twin_normal(apiObj.field0);
-      wireObj.tag = 0;
-      wireObj.kind = wire.inflate_MeasureTwinNormal_Speed();
-      wireObj.kind.ref.Speed.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is MeasureTwinNormal_Distance) {
-      var pre_field0 = api2wire_box_distance_twin_normal(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_MeasureTwinNormal_Distance();
-      wireObj.kind.ref.Distance.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_measure_twin_rust_async(
-      MeasureTwinRustAsync apiObj, wire_measure_twin_rust_async wireObj) {
-    if (apiObj is MeasureTwinRustAsync_Speed) {
-      var pre_field0 = api2wire_box_speed_twin_rust_async(apiObj.field0);
-      wireObj.tag = 0;
-      wireObj.kind = wire.inflate_MeasureTwinRustAsync_Speed();
-      wireObj.kind.ref.Speed.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is MeasureTwinRustAsync_Distance) {
-      var pre_field0 = api2wire_box_distance_twin_rust_async(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_MeasureTwinRustAsync_Distance();
-      wireObj.kind.ref.Distance.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_measure_twin_sync(
-      MeasureTwinSync apiObj, wire_measure_twin_sync wireObj) {
-    if (apiObj is MeasureTwinSync_Speed) {
-      var pre_field0 = api2wire_box_speed_twin_sync(apiObj.field0);
-      wireObj.tag = 0;
-      wireObj.kind = wire.inflate_MeasureTwinSync_Speed();
-      wireObj.kind.ref.Speed.ref.field0 = pre_field0;
-      return;
-    }
-    if (apiObj is MeasureTwinSync_Distance) {
-      var pre_field0 = api2wire_box_distance_twin_sync(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_MeasureTwinSync_Distance();
-      wireObj.kind.ref.Distance.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_message_id_twin_normal(
-      MessageIdTwinNormal apiObj, wire_message_id_twin_normal wireObj) {
-    wireObj.field0 = api2wire_u_8_array_32(apiObj.field0);
-  }
-
-  void _api_fill_to_wire_message_id_twin_rust_async(
-      MessageIdTwinRustAsync apiObj, wire_message_id_twin_rust_async wireObj) {
-    wireObj.field0 = api2wire_u_8_array_32(apiObj.field0);
-  }
-
-  void _api_fill_to_wire_message_id_twin_sync(
-      MessageIdTwinSync apiObj, wire_message_id_twin_sync wireObj) {
-    wireObj.field0 = api2wire_u_8_array_32(apiObj.field0);
-  }
-
-  void _api_fill_to_wire_my_nested_struct_twin_normal(
-      MyNestedStructTwinNormal apiObj,
-      wire_my_nested_struct_twin_normal wireObj) {
-    _api_fill_to_wire_my_tree_node_twin_normal(
-        apiObj.treeNode, wireObj.tree_node);
-    wireObj.weekday = api2wire_weekdays_twin_normal(apiObj.weekday);
-  }
-
-  void _api_fill_to_wire_my_nested_struct_twin_rust_async(
-      MyNestedStructTwinRustAsync apiObj,
-      wire_my_nested_struct_twin_rust_async wireObj) {
-    _api_fill_to_wire_my_tree_node_twin_rust_async(
-        apiObj.treeNode, wireObj.tree_node);
-    wireObj.weekday = api2wire_weekdays_twin_rust_async(apiObj.weekday);
-  }
-
-  void _api_fill_to_wire_my_nested_struct_twin_sync(
-      MyNestedStructTwinSync apiObj, wire_my_nested_struct_twin_sync wireObj) {
-    _api_fill_to_wire_my_tree_node_twin_sync(
-        apiObj.treeNode, wireObj.tree_node);
-    wireObj.weekday = api2wire_weekdays_twin_sync(apiObj.weekday);
-  }
-
-  void _api_fill_to_wire_my_size(MySize apiObj, wire_my_size wireObj) {
-    wireObj.width = api2wire_i_32(apiObj.width);
-    wireObj.height = api2wire_i_32(apiObj.height);
-  }
-
-  void _api_fill_to_wire_my_struct(MyStruct apiObj, wire_my_struct wireObj) {
-    wireObj.content = api2wire_bool(apiObj.content);
-  }
-
-  void _api_fill_to_wire_my_tree_node_twin_normal(
-      MyTreeNodeTwinNormal apiObj, wire_my_tree_node_twin_normal wireObj) {
-    wireObj.value_i32 = api2wire_i_32(apiObj.valueI32);
-    wireObj.value_vec_u8 = api2wire_list_prim_u_8(apiObj.valueVecU8);
-    wireObj.value_boolean = api2wire_bool(apiObj.valueBoolean);
-    wireObj.children = api2wire_list_my_tree_node_twin_normal(apiObj.children);
-  }
-
-  void _api_fill_to_wire_my_tree_node_twin_rust_async(
-      MyTreeNodeTwinRustAsync apiObj,
-      wire_my_tree_node_twin_rust_async wireObj) {
-    wireObj.value_i32 = api2wire_i_32(apiObj.valueI32);
-    wireObj.value_vec_u8 = api2wire_list_prim_u_8(apiObj.valueVecU8);
-    wireObj.value_boolean = api2wire_bool(apiObj.valueBoolean);
-    wireObj.children =
-        api2wire_list_my_tree_node_twin_rust_async(apiObj.children);
-  }
-
-  void _api_fill_to_wire_my_tree_node_twin_sync(
-      MyTreeNodeTwinSync apiObj, wire_my_tree_node_twin_sync wireObj) {
-    wireObj.value_i32 = api2wire_i_32(apiObj.valueI32);
-    wireObj.value_vec_u8 = api2wire_list_prim_u_8(apiObj.valueVecU8);
-    wireObj.value_boolean = api2wire_bool(apiObj.valueBoolean);
-    wireObj.children = api2wire_list_my_tree_node_twin_sync(apiObj.children);
-  }
-
-  void _api_fill_to_wire_new_type_int_twin_normal(
-      NewTypeIntTwinNormal apiObj, wire_new_type_int_twin_normal wireObj) {
-    wireObj.field0 = api2wire_i_64(apiObj.field0);
-  }
-
-  void _api_fill_to_wire_new_type_int_twin_rust_async(
-      NewTypeIntTwinRustAsync apiObj,
-      wire_new_type_int_twin_rust_async wireObj) {
-    wireObj.field0 = api2wire_i_64(apiObj.field0);
-  }
-
-  void _api_fill_to_wire_new_type_int_twin_sync(
-      NewTypeIntTwinSync apiObj, wire_new_type_int_twin_sync wireObj) {
-    wireObj.field0 = api2wire_i_64(apiObj.field0);
-  }
-
-  void _api_fill_to_wire_note_twin_normal(
-      NoteTwinNormal apiObj, wire_note_twin_normal wireObj) {
-    wireObj.day = api2wire_box_weekdays_twin_normal(apiObj.day);
-    wireObj.body = api2wire_String(apiObj.body);
-  }
-
-  void _api_fill_to_wire_note_twin_rust_async(
-      NoteTwinRustAsync apiObj, wire_note_twin_rust_async wireObj) {
-    wireObj.day = api2wire_box_weekdays_twin_rust_async(apiObj.day);
-    wireObj.body = api2wire_String(apiObj.body);
-  }
-
-  void _api_fill_to_wire_note_twin_sync(
-      NoteTwinSync apiObj, wire_note_twin_sync wireObj) {
-    wireObj.day = api2wire_box_weekdays_twin_sync(apiObj.day);
-    wireObj.body = api2wire_String(apiObj.body);
-  }
-
-  void _api_fill_to_wire_numbers(Numbers apiObj, wire_numbers wireObj) {
-    wireObj.field0 = api2wire_list_prim_i_32(apiObj.field0);
-  }
-
-  void _api_fill_to_wire_opaque_nested_twin_normal(
-      OpaqueNestedTwinNormal apiObj, wire_opaque_nested_twin_normal wireObj) {
-    wireObj.first = api2wire_RustOpaque_hide_data(apiObj.first);
-    wireObj.second = api2wire_RustOpaque_hide_data(apiObj.second);
-  }
-
-  void _api_fill_to_wire_opaque_nested_twin_rust_async(
-      OpaqueNestedTwinRustAsync apiObj,
-      wire_opaque_nested_twin_rust_async wireObj) {
-    wireObj.first = api2wire_RustOpaque_hide_data(apiObj.first);
-    wireObj.second = api2wire_RustOpaque_hide_data(apiObj.second);
-  }
-
-  void _api_fill_to_wire_opaque_nested_twin_sync(
-      OpaqueNestedTwinSync apiObj, wire_opaque_nested_twin_sync wireObj) {
-    wireObj.first = api2wire_RustOpaque_hide_data(apiObj.first);
-    wireObj.second = api2wire_RustOpaque_hide_data(apiObj.second);
-  }
-
-  void _api_fill_to_wire_opt_vecs_twin_normal(
-      OptVecsTwinNormal apiObj, wire_opt_vecs_twin_normal wireObj) {
-    wireObj.i32 = api2wire_list_opt_box_autoadd_i_32(apiObj.i32);
-    wireObj.enums =
-        api2wire_list_opt_box_autoadd_weekdays_twin_normal(apiObj.enums);
-    wireObj.strings = api2wire_list_opt_String(apiObj.strings);
-    wireObj.buffers = api2wire_list_opt_list_prim_i_32(apiObj.buffers);
-  }
-
-  void _api_fill_to_wire_opt_vecs_twin_rust_async(
-      OptVecsTwinRustAsync apiObj, wire_opt_vecs_twin_rust_async wireObj) {
-    wireObj.i32 = api2wire_list_opt_box_autoadd_i_32(apiObj.i32);
-    wireObj.enums =
-        api2wire_list_opt_box_autoadd_weekdays_twin_rust_async(apiObj.enums);
-    wireObj.strings = api2wire_list_opt_String(apiObj.strings);
-    wireObj.buffers = api2wire_list_opt_list_prim_i_32(apiObj.buffers);
-  }
-
-  void _api_fill_to_wire_opt_vecs_twin_sync(
-      OptVecsTwinSync apiObj, wire_opt_vecs_twin_sync wireObj) {
-    wireObj.i32 = api2wire_list_opt_box_autoadd_i_32(apiObj.i32);
-    wireObj.enums =
-        api2wire_list_opt_box_autoadd_weekdays_twin_sync(apiObj.enums);
-    wireObj.strings = api2wire_list_opt_String(apiObj.strings);
-    wireObj.buffers = api2wire_list_opt_list_prim_i_32(apiObj.buffers);
-  }
-
-  void _api_fill_to_wire_record_string_i_32(
-      (String, int) apiObj, wire_record_string_i_32 wireObj) {
-    wireObj.field0 = api2wire_String(apiObj.$1);
-    wireObj.field1 = api2wire_i_32(apiObj.$2);
-  }
-
-  void _api_fill_to_wire_sequences(Sequences apiObj, wire_sequences wireObj) {
-    wireObj.field0 = api2wire_list_prim_i_32(apiObj.field0);
-  }
-
-  void _api_fill_to_wire_some_struct_twin_normal(
-      SomeStructTwinNormal apiObj, wire_some_struct_twin_normal wireObj) {
-    wireObj.value = api2wire_u_32(apiObj.value);
-  }
-
-  void _api_fill_to_wire_some_struct_twin_rust_async(
-      SomeStructTwinRustAsync apiObj,
-      wire_some_struct_twin_rust_async wireObj) {
-    wireObj.value = api2wire_u_32(apiObj.value);
-  }
-
-  void _api_fill_to_wire_some_struct_twin_sync(
-      SomeStructTwinSync apiObj, wire_some_struct_twin_sync wireObj) {
-    wireObj.value = api2wire_u_32(apiObj.value);
-  }
-
-  void _api_fill_to_wire_speed_twin_normal(
-      SpeedTwinNormal apiObj, wire_speed_twin_normal wireObj) {
-    if (apiObj is SpeedTwinNormal_Unknown) {
-      wireObj.tag = 0;
-      return;
-    }
-    if (apiObj is SpeedTwinNormal_GPS) {
-      var pre_field0 = api2wire_f_64(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_SpeedTwinNormal_GPS();
-      wireObj.kind.ref.GPS.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_speed_twin_rust_async(
-      SpeedTwinRustAsync apiObj, wire_speed_twin_rust_async wireObj) {
-    if (apiObj is SpeedTwinRustAsync_Unknown) {
-      wireObj.tag = 0;
-      return;
-    }
-    if (apiObj is SpeedTwinRustAsync_GPS) {
-      var pre_field0 = api2wire_f_64(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_SpeedTwinRustAsync_GPS();
-      wireObj.kind.ref.GPS.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_speed_twin_sync(
-      SpeedTwinSync apiObj, wire_speed_twin_sync wireObj) {
-    if (apiObj is SpeedTwinSync_Unknown) {
-      wireObj.tag = 0;
-      return;
-    }
-    if (apiObj is SpeedTwinSync_GPS) {
-      var pre_field0 = api2wire_f_64(apiObj.field0);
-      wireObj.tag = 1;
-      wireObj.kind = wire.inflate_SpeedTwinSync_GPS();
-      wireObj.kind.ref.GPS.ref.field0 = pre_field0;
-      return;
-    }
-  }
-
-  void _api_fill_to_wire_struct_with_comments_twin_normal(
-      StructWithCommentsTwinNormal apiObj,
-      wire_struct_with_comments_twin_normal wireObj) {
-    wireObj.field_with_comments = api2wire_i_32(apiObj.fieldWithComments);
-  }
-
-  void _api_fill_to_wire_struct_with_comments_twin_rust_async(
-      StructWithCommentsTwinRustAsync apiObj,
-      wire_struct_with_comments_twin_rust_async wireObj) {
-    wireObj.field_with_comments = api2wire_i_32(apiObj.fieldWithComments);
-  }
-
-  void _api_fill_to_wire_struct_with_comments_twin_sync(
-      StructWithCommentsTwinSync apiObj,
-      wire_struct_with_comments_twin_sync wireObj) {
-    wireObj.field_with_comments = api2wire_i_32(apiObj.fieldWithComments);
-  }
-
-  void _api_fill_to_wire_struct_with_enum_twin_normal(
-      StructWithEnumTwinNormal apiObj,
-      wire_struct_with_enum_twin_normal wireObj) {
-    _api_fill_to_wire_abc_twin_normal(apiObj.abc1, wireObj.abc1);
-    _api_fill_to_wire_abc_twin_normal(apiObj.abc2, wireObj.abc2);
-  }
-
-  void _api_fill_to_wire_struct_with_enum_twin_rust_async(
-      StructWithEnumTwinRustAsync apiObj,
-      wire_struct_with_enum_twin_rust_async wireObj) {
-    _api_fill_to_wire_abc_twin_rust_async(apiObj.abc1, wireObj.abc1);
-    _api_fill_to_wire_abc_twin_rust_async(apiObj.abc2, wireObj.abc2);
-  }
-
-  void _api_fill_to_wire_struct_with_enum_twin_sync(
-      StructWithEnumTwinSync apiObj, wire_struct_with_enum_twin_sync wireObj) {
-    _api_fill_to_wire_abc_twin_sync(apiObj.abc1, wireObj.abc1);
-    _api_fill_to_wire_abc_twin_sync(apiObj.abc2, wireObj.abc2);
-  }
-
-  void _api_fill_to_wire_struct_with_one_field_twin_normal(
-      StructWithOneFieldTwinNormal apiObj,
-      wire_struct_with_one_field_twin_normal wireObj) {
-    wireObj.a = api2wire_i_32(apiObj.a);
-  }
-
-  void _api_fill_to_wire_struct_with_one_field_twin_rust_async(
-      StructWithOneFieldTwinRustAsync apiObj,
-      wire_struct_with_one_field_twin_rust_async wireObj) {
-    wireObj.a = api2wire_i_32(apiObj.a);
-  }
-
-  void _api_fill_to_wire_struct_with_one_field_twin_sync(
-      StructWithOneFieldTwinSync apiObj,
-      wire_struct_with_one_field_twin_sync wireObj) {
-    wireObj.a = api2wire_i_32(apiObj.a);
-  }
-
-  void _api_fill_to_wire_struct_with_two_field_twin_normal(
-      StructWithTwoFieldTwinNormal apiObj,
-      wire_struct_with_two_field_twin_normal wireObj) {
-    wireObj.a = api2wire_i_32(apiObj.a);
-    wireObj.b = api2wire_i_32(apiObj.b);
-  }
-
-  void _api_fill_to_wire_struct_with_two_field_twin_rust_async(
-      StructWithTwoFieldTwinRustAsync apiObj,
-      wire_struct_with_two_field_twin_rust_async wireObj) {
-    wireObj.a = api2wire_i_32(apiObj.a);
-    wireObj.b = api2wire_i_32(apiObj.b);
-  }
-
-  void _api_fill_to_wire_struct_with_two_field_twin_sync(
-      StructWithTwoFieldTwinSync apiObj,
-      wire_struct_with_two_field_twin_sync wireObj) {
-    wireObj.a = api2wire_i_32(apiObj.a);
-    wireObj.b = api2wire_i_32(apiObj.b);
-  }
-
-  void _api_fill_to_wire_struct_with_zero_field_twin_normal(
-      StructWithZeroFieldTwinNormal apiObj,
-      wire_struct_with_zero_field_twin_normal wireObj) {}
-  void _api_fill_to_wire_struct_with_zero_field_twin_rust_async(
-      StructWithZeroFieldTwinRustAsync apiObj,
-      wire_struct_with_zero_field_twin_rust_async wireObj) {}
-  void _api_fill_to_wire_struct_with_zero_field_twin_sync(
-      StructWithZeroFieldTwinSync apiObj,
-      wire_struct_with_zero_field_twin_sync wireObj) {}
-  void _api_fill_to_wire_sum_with_twin_normal(
-      SumWithTwinNormal apiObj, wire_sum_with_twin_normal wireObj) {
-    wireObj.x = api2wire_u_32(apiObj.x);
-  }
-
-  void _api_fill_to_wire_sum_with_twin_rust_async(
-      SumWithTwinRustAsync apiObj, wire_sum_with_twin_rust_async wireObj) {
-    wireObj.x = api2wire_u_32(apiObj.x);
-  }
-
-  void _api_fill_to_wire_sum_with_twin_sync(
-      SumWithTwinSync apiObj, wire_sum_with_twin_sync wireObj) {
-    wireObj.x = api2wire_u_32(apiObj.x);
-  }
-
-  void _api_fill_to_wire_test_id_twin_normal(
-      TestIdTwinNormal apiObj, wire_test_id_twin_normal wireObj) {
-    wireObj.field0 = api2wire_i_32_array_2(apiObj.field0);
-  }
-
-  void _api_fill_to_wire_test_id_twin_rust_async(
-      TestIdTwinRustAsync apiObj, wire_test_id_twin_rust_async wireObj) {
-    wireObj.field0 = api2wire_i_32_array_2(apiObj.field0);
-  }
-
-  void _api_fill_to_wire_test_id_twin_sync(
-      TestIdTwinSync apiObj, wire_test_id_twin_sync wireObj) {
-    wireObj.field0 = api2wire_i_32_array_2(apiObj.field0);
-  }
-
-  void _api_fill_to_wire_tuple_struct_with_one_field_twin_normal(
-      TupleStructWithOneFieldTwinNormal apiObj,
-      wire_tuple_struct_with_one_field_twin_normal wireObj) {
-    wireObj.field0 = api2wire_i_32(apiObj.field0);
-  }
-
-  void _api_fill_to_wire_tuple_struct_with_one_field_twin_rust_async(
-      TupleStructWithOneFieldTwinRustAsync apiObj,
-      wire_tuple_struct_with_one_field_twin_rust_async wireObj) {
-    wireObj.field0 = api2wire_i_32(apiObj.field0);
-  }
-
-  void _api_fill_to_wire_tuple_struct_with_one_field_twin_sync(
-      TupleStructWithOneFieldTwinSync apiObj,
-      wire_tuple_struct_with_one_field_twin_sync wireObj) {
-    wireObj.field0 = api2wire_i_32(apiObj.field0);
-  }
-
-  void _api_fill_to_wire_tuple_struct_with_two_field_twin_normal(
-      TupleStructWithTwoFieldTwinNormal apiObj,
-      wire_tuple_struct_with_two_field_twin_normal wireObj) {
-    wireObj.field0 = api2wire_i_32(apiObj.field0);
-    wireObj.field1 = api2wire_i_32(apiObj.field1);
-  }
-
-  void _api_fill_to_wire_tuple_struct_with_two_field_twin_rust_async(
-      TupleStructWithTwoFieldTwinRustAsync apiObj,
-      wire_tuple_struct_with_two_field_twin_rust_async wireObj) {
-    wireObj.field0 = api2wire_i_32(apiObj.field0);
-    wireObj.field1 = api2wire_i_32(apiObj.field1);
-  }
-
-  void _api_fill_to_wire_tuple_struct_with_two_field_twin_sync(
-      TupleStructWithTwoFieldTwinSync apiObj,
-      wire_tuple_struct_with_two_field_twin_sync wireObj) {
-    wireObj.field0 = api2wire_i_32(apiObj.field0);
-    wireObj.field1 = api2wire_i_32(apiObj.field1);
-  }
-
-  void _api_fill_to_wire_user_id_twin_normal(
-      UserIdTwinNormal apiObj, wire_user_id_twin_normal wireObj) {
-    wireObj.value = api2wire_u_32(apiObj.value);
-  }
-
-  void _api_fill_to_wire_user_id_twin_rust_async(
-      UserIdTwinRustAsync apiObj, wire_user_id_twin_rust_async wireObj) {
-    wireObj.value = api2wire_u_32(apiObj.value);
-  }
-
-  void _api_fill_to_wire_user_id_twin_sync(
-      UserIdTwinSync apiObj, wire_user_id_twin_sync wireObj) {
-    wireObj.value = api2wire_u_32(apiObj.value);
-  }
-}
 
 // Section: wire_class
 
@@ -4926,9 +2660,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
 /// generated by flutter_rust_bridge
 class RustLibWire implements BaseWire {
-  factory RustLibWire.fromExternalLibrary(ExternalLibrary lib) =>
-      RustLibWire(lib.ffiDynamicLibrary);
 
+                factory RustLibWire.fromExternalLibrary(ExternalLibrary lib) =>
+                  RustLibWire(lib.ffiDynamicLibrary);
+                
   /// Holds the symbol lookup function.
   final ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName)
       _lookup;
@@ -5577,7 +3312,7 @@ class RustLibWire implements BaseWire {
 
   void wire_rust_call_dart_loopback(
     int port_,
-    ffi.Pointer<ffi.Void> callback,
+    int callback,
   ) {
     return _wire_rust_call_dart_loopback(
       port_,
@@ -5585,16 +3320,15 @@ class RustLibWire implements BaseWire {
     );
   }
 
-  late final _wire_rust_call_dart_loopbackPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_call_dart_loopback');
-  late final _wire_rust_call_dart_loopback = _wire_rust_call_dart_loopbackPtr
-      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+  late final _wire_rust_call_dart_loopbackPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int)>>(
+          'wire_rust_call_dart_loopback');
+  late final _wire_rust_call_dart_loopback =
+      _wire_rust_call_dart_loopbackPtr.asFunction<void Function(int, int)>();
 
   void wire_rust_call_dart_one_arg(
     int port_,
-    ffi.Pointer<ffi.Void> callback,
+    int callback,
   ) {
     return _wire_rust_call_dart_one_arg(
       port_,
@@ -5602,16 +3336,15 @@ class RustLibWire implements BaseWire {
     );
   }
 
-  late final _wire_rust_call_dart_one_argPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_call_dart_one_arg');
-  late final _wire_rust_call_dart_one_arg = _wire_rust_call_dart_one_argPtr
-      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+  late final _wire_rust_call_dart_one_argPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int)>>(
+          'wire_rust_call_dart_one_arg');
+  late final _wire_rust_call_dart_one_arg =
+      _wire_rust_call_dart_one_argPtr.asFunction<void Function(int, int)>();
 
   void wire_rust_call_dart_return(
     int port_,
-    ffi.Pointer<ffi.Void> callback,
+    int callback,
   ) {
     return _wire_rust_call_dart_return(
       port_,
@@ -5619,16 +3352,15 @@ class RustLibWire implements BaseWire {
     );
   }
 
-  late final _wire_rust_call_dart_returnPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_call_dart_return');
-  late final _wire_rust_call_dart_return = _wire_rust_call_dart_returnPtr
-      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+  late final _wire_rust_call_dart_returnPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int)>>(
+          'wire_rust_call_dart_return');
+  late final _wire_rust_call_dart_return =
+      _wire_rust_call_dart_returnPtr.asFunction<void Function(int, int)>();
 
   void wire_rust_call_dart_simple(
     int port_,
-    ffi.Pointer<ffi.Void> callback,
+    int callback,
   ) {
     return _wire_rust_call_dart_simple(
       port_,
@@ -5636,16 +3368,15 @@ class RustLibWire implements BaseWire {
     );
   }
 
-  late final _wire_rust_call_dart_simplePtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_call_dart_simple');
-  late final _wire_rust_call_dart_simple = _wire_rust_call_dart_simplePtr
-      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+  late final _wire_rust_call_dart_simplePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int)>>(
+          'wire_rust_call_dart_simple');
+  late final _wire_rust_call_dart_simple =
+      _wire_rust_call_dart_simplePtr.asFunction<void Function(int, int)>();
 
   void wire_rust_call_dart_two_args(
     int port_,
-    ffi.Pointer<ffi.Void> callback,
+    int callback,
   ) {
     return _wire_rust_call_dart_two_args(
       port_,
@@ -5653,17 +3384,16 @@ class RustLibWire implements BaseWire {
     );
   }
 
-  late final _wire_rust_call_dart_two_argsPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_call_dart_two_args');
-  late final _wire_rust_call_dart_two_args = _wire_rust_call_dart_two_argsPtr
-      .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+  late final _wire_rust_call_dart_two_argsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int)>>(
+          'wire_rust_call_dart_two_args');
+  late final _wire_rust_call_dart_two_args =
+      _wire_rust_call_dart_two_argsPtr.asFunction<void Function(int, int)>();
 
   void wire_rust_call_dart_with_dart_opaque_arg(
     int port_,
     wire_DartOpaque input,
-    ffi.Pointer<ffi.Void> callback,
+    int callback,
   ) {
     return _wire_rust_call_dart_with_dart_opaque_arg(
       port_,
@@ -5673,17 +3403,16 @@ class RustLibWire implements BaseWire {
   }
 
   late final _wire_rust_call_dart_with_dart_opaque_argPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(
-                  ffi.Int64, wire_DartOpaque, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_call_dart_with_dart_opaque_arg');
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, wire_DartOpaque,
+              ffi.Int)>>('wire_rust_call_dart_with_dart_opaque_arg');
   late final _wire_rust_call_dart_with_dart_opaque_arg =
-      _wire_rust_call_dart_with_dart_opaque_argPtr.asFunction<
-          void Function(int, wire_DartOpaque, ffi.Pointer<ffi.Void>)>();
+      _wire_rust_call_dart_with_dart_opaque_argPtr
+          .asFunction<void Function(int, wire_DartOpaque, int)>();
 
   void wire_rust_call_dart_with_dart_opaque_result(
     int port_,
-    ffi.Pointer<ffi.Void> callback,
+    int callback,
   ) {
     return _wire_rust_call_dart_with_dart_opaque_result(
       port_,
@@ -5691,13 +3420,12 @@ class RustLibWire implements BaseWire {
     );
   }
 
-  late final _wire_rust_call_dart_with_dart_opaque_resultPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
-      'wire_rust_call_dart_with_dart_opaque_result');
+  late final _wire_rust_call_dart_with_dart_opaque_resultPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int)>>(
+          'wire_rust_call_dart_with_dart_opaque_result');
   late final _wire_rust_call_dart_with_dart_opaque_result =
       _wire_rust_call_dart_with_dart_opaque_resultPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_async_accept_dart_opaque_twin_normal(
     int port_,
@@ -21023,38 +18751,6 @@ class RustLibWire implements BaseWire {
       _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSyncPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
-  void
-      rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_typePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type');
-  late final _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type =
-      _rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_typePtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-      rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_typePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-          'rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type');
-  late final _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type =
-      _rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_typePtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
   ffi.Pointer<AbcTwinNormalKind> inflate_AbcTwinNormal_A() {
     return _inflate_AbcTwinNormal_A();
   }
@@ -22146,6 +19842,10 @@ class RustLibWire implements BaseWire {
   late final _dummy_method_to_enforce_bundling =
       _dummy_method_to_enforce_bundlingPtr.asFunction<int Function()>();
 }
+
+
+
+
 
 final class benchmark_raw_list_prim_u_8 extends ffi.Struct {
   external ffi.Pointer<ffi.Uint8> ptr;
@@ -24115,3 +21815,5 @@ final class wire_feature_uuid_twin_normal extends ffi.Struct {
 
   external ffi.Pointer<wire_list_prim_u_8> many;
 }
+
+

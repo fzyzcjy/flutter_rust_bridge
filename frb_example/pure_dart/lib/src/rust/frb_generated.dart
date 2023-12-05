@@ -255,27 +255,27 @@ abstract class RustLibApi extends BaseApi {
   Future<dynamic> returnDartDynamicTwinNormal({dynamic hint});
 
   Future<void> rustCallDartLoopback(
-      {required RwLockTodoRustApiType callback, dynamic hint});
+      {required TODO_dart_api_type callback, dynamic hint});
 
   Future<void> rustCallDartOneArg(
-      {required RwLockTodoRustApiType callback, dynamic hint});
+      {required TODO_dart_api_type callback, dynamic hint});
 
   Future<void> rustCallDartReturn(
-      {required RwLockTodoRustApiType callback, dynamic hint});
+      {required TODO_dart_api_type callback, dynamic hint});
 
   Future<void> rustCallDartSimple(
-      {required RwLockTodoRustApiType callback, dynamic hint});
+      {required TODO_dart_api_type callback, dynamic hint});
 
   Future<void> rustCallDartTwoArgs(
-      {required RwLockTodoRustApiType callback, dynamic hint});
+      {required TODO_dart_api_type callback, dynamic hint});
 
   Future<void> rustCallDartWithDartOpaqueArg(
       {required Object input,
-      required RwLockTodoRustApiType callback,
+      required TODO_dart_api_type callback,
       dynamic hint});
 
   Future<Object> rustCallDartWithDartOpaqueResult(
-      {required RwLockTodoRustApiType callback, dynamic hint});
+      {required TODO_dart_api_type callback, dynamic hint});
 
   Future<String> asyncAcceptDartOpaqueTwinNormal(
       {required Object opaque, dynamic hint});
@@ -2432,15 +2432,6 @@ abstract class RustLibApi extends BaseApi {
 
   CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSyncPtr;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockTodoRustApiType;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockTodoRustApiType;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_RwLockTodoRustApiTypePtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -3157,9 +3148,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustCallDartLoopback(
-      {required RwLockTodoRustApiType callback, dynamic hint}) {
-    var arg0 = api2wire_Auto_Owned_RustOpaque_stdsyncRwLockTODO_rust_api_type(
-        callback);
+      {required TODO_dart_api_type callback, dynamic hint}) {
+    var arg0 =
+        api2wire_DartFn_Inputs_demo_struct_for_rust_call_dart_Output_demo_struct_for_rust_call_dart(
+            callback);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_rust_call_dart_loopback(port_, arg0),
       parseSuccessData: _wire2api_unit,
@@ -3178,9 +3170,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustCallDartOneArg(
-      {required RwLockTodoRustApiType callback, dynamic hint}) {
-    var arg0 = api2wire_Auto_Owned_RustOpaque_stdsyncRwLockTODO_rust_api_type(
-        callback);
+      {required TODO_dart_api_type callback, dynamic hint}) {
+    var arg0 = api2wire_DartFn_Inputs_String_Output_unit(callback);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_rust_call_dart_one_arg(port_, arg0),
       parseSuccessData: _wire2api_unit,
@@ -3199,9 +3190,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustCallDartReturn(
-      {required RwLockTodoRustApiType callback, dynamic hint}) {
-    var arg0 = api2wire_Auto_Owned_RustOpaque_stdsyncRwLockTODO_rust_api_type(
-        callback);
+      {required TODO_dart_api_type callback, dynamic hint}) {
+    var arg0 = api2wire_DartFn_Inputs__Output_String(callback);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_rust_call_dart_return(port_, arg0),
       parseSuccessData: _wire2api_unit,
@@ -3220,9 +3210,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustCallDartSimple(
-      {required RwLockTodoRustApiType callback, dynamic hint}) {
-    var arg0 = api2wire_Auto_Owned_RustOpaque_stdsyncRwLockTODO_rust_api_type(
-        callback);
+      {required TODO_dart_api_type callback, dynamic hint}) {
+    var arg0 = api2wire_DartFn_Inputs__Output_unit(callback);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_rust_call_dart_simple(port_, arg0),
       parseSuccessData: _wire2api_unit,
@@ -3241,9 +3230,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> rustCallDartTwoArgs(
-      {required RwLockTodoRustApiType callback, dynamic hint}) {
-    var arg0 = api2wire_Auto_Owned_RustOpaque_stdsyncRwLockTODO_rust_api_type(
-        callback);
+      {required TODO_dart_api_type callback, dynamic hint}) {
+    var arg0 =
+        api2wire_DartFn_Inputs_String_demo_struct_for_rust_call_dart_Output_unit(
+            callback);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_rust_call_dart_two_args(port_, arg0),
       parseSuccessData: _wire2api_unit,
@@ -3263,11 +3253,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> rustCallDartWithDartOpaqueArg(
       {required Object input,
-      required RwLockTodoRustApiType callback,
+      required TODO_dart_api_type callback,
       dynamic hint}) {
     var arg0 = api2wire_DartOpaque(input);
-    var arg1 = api2wire_Auto_Owned_RustOpaque_stdsyncRwLockTODO_rust_api_type(
-        callback);
+    var arg1 = api2wire_DartFn_Inputs_DartOpaque_Output_unit(callback);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
           wire.wire_rust_call_dart_with_dart_opaque_arg(port_, arg0, arg1),
@@ -3288,9 +3277,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<Object> rustCallDartWithDartOpaqueResult(
-      {required RwLockTodoRustApiType callback, dynamic hint}) {
-    var arg0 = api2wire_Auto_Owned_RustOpaque_stdsyncRwLockTODO_rust_api_type(
-        callback);
+      {required TODO_dart_api_type callback, dynamic hint}) {
+    var arg0 = api2wire_DartFn_Inputs__Output_DartOpaque(callback);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
           wire.wire_rust_call_dart_with_dart_opaque_result(port_, arg0),
@@ -18482,14 +18470,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       get rust_arc_decrement_strong_count_RwLockStructWithGoodAndOpaqueFieldTwinSync =>
           wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync;
 
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RwLockTodoRustApiType => wire
-          .rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RwLockTodoRustApiType => wire
-          .rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type;
-
   AnyhowException _wire2api_AnyhowException(dynamic raw) {
     return AnyhowException(raw as String);
   }
@@ -22292,12 +22272,6 @@ PlatformPointer
   return raw.api2wire(move: true);
 }
 
-PlatformPointer api2wire_Auto_Owned_RustOpaque_stdsyncRwLockTODO_rust_api_type(
-    RwLockTodoRustApiType raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.api2wire(move: true);
-}
-
 PlatformPointer
     api2wire_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
         RwLockBoxHelloTraitTwinNormal raw) {
@@ -22488,12 +22462,6 @@ PlatformPointer
   return raw.api2wire();
 }
 
-PlatformPointer api2wire_RustOpaque_stdsyncRwLockTODO_rust_api_type(
-    RwLockTodoRustApiType raw) {
-  // ignore: invalid_use_of_internal_member
-  return raw.api2wire();
-}
-
 int api2wire_application_mode(ApplicationMode raw) {
   return api2wire_i_32(raw.index);
 }
@@ -22547,6 +22515,10 @@ int api2wire_u_32(int raw) {
 }
 
 int api2wire_u_8(int raw) {
+  return raw;
+}
+
+void api2wire_unit(void raw) {
   return raw;
 }
 

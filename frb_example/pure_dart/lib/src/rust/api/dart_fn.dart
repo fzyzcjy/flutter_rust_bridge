@@ -7,49 +7,51 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<void> rustCallDartSimple(
-        {required RwLockTodoRustApiType callback, dynamic hint}) =>
+        {required TODO_dart_api_type callback, dynamic hint}) =>
     RustLib.instance.api.rustCallDartSimple(callback: callback, hint: hint);
 
 Future<void> rustCallDartOneArg(
-        {required RwLockTodoRustApiType callback, dynamic hint}) =>
+        {required TODO_dart_api_type callback, dynamic hint}) =>
     RustLib.instance.api.rustCallDartOneArg(callback: callback, hint: hint);
 
 Future<void> rustCallDartTwoArgs(
-        {required RwLockTodoRustApiType callback, dynamic hint}) =>
+        {required TODO_dart_api_type callback, dynamic hint}) =>
     RustLib.instance.api.rustCallDartTwoArgs(callback: callback, hint: hint);
 
 Future<void> rustCallDartReturn(
-        {required RwLockTodoRustApiType callback, dynamic hint}) =>
+        {required TODO_dart_api_type callback, dynamic hint}) =>
     RustLib.instance.api.rustCallDartReturn(callback: callback, hint: hint);
 
 Future<void> rustCallDartLoopback(
-        {required RwLockTodoRustApiType callback, dynamic hint}) =>
+        {required TODO_dart_api_type callback, dynamic hint}) =>
     RustLib.instance.api.rustCallDartLoopback(callback: callback, hint: hint);
 
 Future<void> rustCallDartWithDartOpaqueArg(
         {required Object input,
-        required RwLockTodoRustApiType callback,
+        required TODO_dart_api_type callback,
         dynamic hint}) =>
     RustLib.instance.api.rustCallDartWithDartOpaqueArg(
         input: input, callback: callback, hint: hint);
 
 Future<Object> rustCallDartWithDartOpaqueResult(
-        {required RwLockTodoRustApiType callback, dynamic hint}) =>
+        {required TODO_dart_api_type callback, dynamic hint}) =>
     RustLib.instance.api
         .rustCallDartWithDartOpaqueResult(callback: callback, hint: hint);
 
-// Rust type: flutter_rust_bridge::RustOpaque<std::sync::RwLock<TODO_rust_api_type>>
-@sealed
-class RwLockTodoRustApiType extends RustOpaque {
-  RwLockTodoRustApiType.fromWire(dynamic wire)
-      : super.fromWire(wire, _kStaticData);
+class DemoStructForRustCallDart {
+  final String name;
 
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_RwLockTodoRustApiType,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_RwLockTodoRustApiType,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_RwLockTodoRustApiTypePtr,
-  );
+  const DemoStructForRustCallDart({
+    required this.name,
+  });
+
+  @override
+  int get hashCode => name.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is DemoStructForRustCallDart &&
+          runtimeType == other.runtimeType &&
+          name == other.name;
 }

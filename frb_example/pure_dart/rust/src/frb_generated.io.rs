@@ -4,7 +4,6 @@
 // Section: imports
 
 use super::*;
-use crate::api::dart_fn::*;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_sync::*;
 use crate::api::pseudo_manual::rust_opaque_twin_rust_async::*;
 use crate::api::pseudo_manual::rust_opaque_twin_sync::*;
@@ -215,13 +214,6 @@ impl
         self,
     ) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinSync>>
     {
-        unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
-    }
-}
-impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<TODO_rust_api_type>>>
-    for *const std::ffi::c_void
-{
-    fn wire2api(self) -> flutter_rust_bridge::RustOpaque<std::sync::RwLock<TODO_rust_api_type>> {
         unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }
     }
 }
@@ -2346,6 +2338,15 @@ impl Wire2Api<crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueNested
         crate::api::pseudo_manual::dart_opaque_twin_sync::DartOpaqueNestedTwinSync {
             first: self.first.wire2api(),
             second: self.second.wire2api(),
+        }
+    }
+}
+impl Wire2Api<crate::api::dart_fn::DemoStructForRustCallDart>
+    for wire_demo_struct_for_rust_call_dart
+{
+    fn wire2api(self) -> crate::api::dart_fn::DemoStructForRustCallDart {
+        crate::api::dart_fn::DemoStructForRustCallDart {
+            name: self.name.wire2api(),
         }
     }
 }
@@ -4720,6 +4721,12 @@ pub struct wire_dart_opaque_nested_twin_sync {
     first: wire_DartOpaque,
     second: wire_DartOpaque,
 }
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_demo_struct_for_rust_call_dart {
+    name: *mut wire_list_prim_u_8,
+}
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_distance_twin_normal {
@@ -6870,6 +6877,18 @@ impl Default for wire_dart_opaque_nested_twin_sync {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_demo_struct_for_rust_call_dart {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            name: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_demo_struct_for_rust_call_dart {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 impl NewWithNullPtr for wire_distance_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -8435,27 +8454,27 @@ pub extern "C" fn wire_return_dart_dynamic_twin_normal(port_: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_call_dart_loopback(port_: i64, callback: *const std::ffi::c_void) {
+pub extern "C" fn wire_rust_call_dart_loopback(port_: i64, callback: todo_rust_wire_type) {
     wire_rust_call_dart_loopback_impl(port_, callback)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_call_dart_one_arg(port_: i64, callback: *const std::ffi::c_void) {
+pub extern "C" fn wire_rust_call_dart_one_arg(port_: i64, callback: todo_rust_wire_type) {
     wire_rust_call_dart_one_arg_impl(port_, callback)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_call_dart_return(port_: i64, callback: *const std::ffi::c_void) {
+pub extern "C" fn wire_rust_call_dart_return(port_: i64, callback: todo_rust_wire_type) {
     wire_rust_call_dart_return_impl(port_, callback)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_call_dart_simple(port_: i64, callback: *const std::ffi::c_void) {
+pub extern "C" fn wire_rust_call_dart_simple(port_: i64, callback: todo_rust_wire_type) {
     wire_rust_call_dart_simple_impl(port_, callback)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_call_dart_two_args(port_: i64, callback: *const std::ffi::c_void) {
+pub extern "C" fn wire_rust_call_dart_two_args(port_: i64, callback: todo_rust_wire_type) {
     wire_rust_call_dart_two_args_impl(port_, callback)
 }
 
@@ -8463,7 +8482,7 @@ pub extern "C" fn wire_rust_call_dart_two_args(port_: i64, callback: *const std:
 pub extern "C" fn wire_rust_call_dart_with_dart_opaque_arg(
     port_: i64,
     input: wire_DartOpaque,
-    callback: *const std::ffi::c_void,
+    callback: todo_rust_wire_type,
 ) {
     wire_rust_call_dart_with_dart_opaque_arg_impl(port_, input, callback)
 }
@@ -8471,7 +8490,7 @@ pub extern "C" fn wire_rust_call_dart_with_dart_opaque_arg(
 #[no_mangle]
 pub extern "C" fn wire_rust_call_dart_with_dart_opaque_result(
     port_: i64,
-    callback: *const std::ffi::c_void,
+    callback: todo_rust_wire_type,
 ) {
     wire_rust_call_dart_with_dart_opaque_result_impl(port_, callback)
 }
@@ -15126,28 +15145,6 @@ pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStruct
     unsafe {
         flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
             std::sync::RwLock<StructWithGoodAndOpaqueFieldTwinSync>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
-            std::sync::RwLock<TODO_rust_api_type>,
-        >(ptr);
-    }
-}
-
-#[no_mangle]
-pub extern "C" fn rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type(
-    ptr: *const std::ffi::c_void,
-) {
-    unsafe {
-        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
-            std::sync::RwLock<TODO_rust_api_type>,
         >(ptr);
     }
 }

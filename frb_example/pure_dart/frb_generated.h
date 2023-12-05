@@ -1647,21 +1647,21 @@ void wire_function_with_comments_triple_slash_single_line_twin_normal(int64_t po
 
 void wire_return_dart_dynamic_twin_normal(int64_t port_);
 
-void wire_rust_call_dart_loopback(int64_t port_, const void *callback);
+void wire_rust_call_dart_loopback(int64_t port_, todo_rust_wire_type callback);
 
-void wire_rust_call_dart_one_arg(int64_t port_, const void *callback);
+void wire_rust_call_dart_one_arg(int64_t port_, todo_rust_wire_type callback);
 
-void wire_rust_call_dart_return(int64_t port_, const void *callback);
+void wire_rust_call_dart_return(int64_t port_, todo_rust_wire_type callback);
 
-void wire_rust_call_dart_simple(int64_t port_, const void *callback);
+void wire_rust_call_dart_simple(int64_t port_, todo_rust_wire_type callback);
 
-void wire_rust_call_dart_two_args(int64_t port_, const void *callback);
+void wire_rust_call_dart_two_args(int64_t port_, todo_rust_wire_type callback);
 
 void wire_rust_call_dart_with_dart_opaque_arg(int64_t port_,
                                               struct wire_DartOpaque input,
-                                              const void *callback);
+                                              todo_rust_wire_type callback);
 
-void wire_rust_call_dart_with_dart_opaque_result(int64_t port_, const void *callback);
+void wire_rust_call_dart_with_dart_opaque_result(int64_t port_, todo_rust_wire_type callback);
 
 void wire_async_accept_dart_opaque_twin_normal(int64_t port_, struct wire_DartOpaque opaque);
 
@@ -3778,10 +3778,6 @@ void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOp
 
 void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(const void *ptr);
 
-void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type(const void *ptr);
-
 union AbcTwinNormalKind *inflate_AbcTwinNormal_A(void);
 
 union AbcTwinNormalKind *inflate_AbcTwinNormal_B(void);
@@ -4295,7 +4291,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync);
-    dummy_var ^= ((int64_t) (void*) rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_MutexHideData);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_RwLockHideData);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal);
@@ -4316,7 +4311,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal);
     dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync);
-    dummy_var ^= ((int64_t) (void*) rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockTODO_rust_api_type);
     dummy_var ^= ((int64_t) (void*) store_dart_post_cobject);
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinNormal_concatenate_static_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_ConcatenateWithTwinNormal_concatenate_twin_normal);

@@ -14,7 +14,6 @@
 
 // Section: imports
 
-use crate::api::dart_fn::*;
 use crate::api::pseudo_manual::rust_auto_opaque_twin_sync::*;
 use crate::api::pseudo_manual::rust_opaque_twin_rust_async::*;
 use crate::api::pseudo_manual::rust_opaque_twin_sync::*;
@@ -614,8 +613,7 @@ fn wire_return_dart_dynamic_twin_normal_impl(
 }
 fn wire_rust_call_dart_loopback_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<TODO_rust_api_type>>>
-        + core::panic::UnwindSafe,
+    callback: impl Wire2Api<TODO_rust_api_type> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_, _, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -626,8 +624,7 @@ fn wire_rust_call_dart_loopback_impl(
         move || {
             let api_callback = callback.wire2api();
             move |context| async move {
-                let api_callback = api_callback.rust_auto_opaque_wire2api_owned()?;
-                Result::<_, anyhow::Error>::Ok(
+                Result::<_, ()>::Ok(
                     crate::api::dart_fn::rust_call_dart_loopback(api_callback).await,
                 )
             }
@@ -636,8 +633,7 @@ fn wire_rust_call_dart_loopback_impl(
 }
 fn wire_rust_call_dart_one_arg_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<TODO_rust_api_type>>>
-        + core::panic::UnwindSafe,
+    callback: impl Wire2Api<TODO_rust_api_type> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_, _, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -648,18 +644,14 @@ fn wire_rust_call_dart_one_arg_impl(
         move || {
             let api_callback = callback.wire2api();
             move |context| async move {
-                let api_callback = api_callback.rust_auto_opaque_wire2api_owned()?;
-                Result::<_, anyhow::Error>::Ok(
-                    crate::api::dart_fn::rust_call_dart_one_arg(api_callback).await,
-                )
+                Result::<_, ()>::Ok(crate::api::dart_fn::rust_call_dart_one_arg(api_callback).await)
             }
         },
     )
 }
 fn wire_rust_call_dart_return_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<TODO_rust_api_type>>>
-        + core::panic::UnwindSafe,
+    callback: impl Wire2Api<TODO_rust_api_type> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_, _, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -670,18 +662,14 @@ fn wire_rust_call_dart_return_impl(
         move || {
             let api_callback = callback.wire2api();
             move |context| async move {
-                let api_callback = api_callback.rust_auto_opaque_wire2api_owned()?;
-                Result::<_, anyhow::Error>::Ok(
-                    crate::api::dart_fn::rust_call_dart_return(api_callback).await,
-                )
+                Result::<_, ()>::Ok(crate::api::dart_fn::rust_call_dart_return(api_callback).await)
             }
         },
     )
 }
 fn wire_rust_call_dart_simple_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<TODO_rust_api_type>>>
-        + core::panic::UnwindSafe,
+    callback: impl Wire2Api<TODO_rust_api_type> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_, _, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -692,18 +680,14 @@ fn wire_rust_call_dart_simple_impl(
         move || {
             let api_callback = callback.wire2api();
             move |context| async move {
-                let api_callback = api_callback.rust_auto_opaque_wire2api_owned()?;
-                Result::<_, anyhow::Error>::Ok(
-                    crate::api::dart_fn::rust_call_dart_simple(api_callback).await,
-                )
+                Result::<_, ()>::Ok(crate::api::dart_fn::rust_call_dart_simple(api_callback).await)
             }
         },
     )
 }
 fn wire_rust_call_dart_two_args_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<TODO_rust_api_type>>>
-        + core::panic::UnwindSafe,
+    callback: impl Wire2Api<TODO_rust_api_type> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_, _, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -714,8 +698,7 @@ fn wire_rust_call_dart_two_args_impl(
         move || {
             let api_callback = callback.wire2api();
             move |context| async move {
-                let api_callback = api_callback.rust_auto_opaque_wire2api_owned()?;
-                Result::<_, anyhow::Error>::Ok(
+                Result::<_, ()>::Ok(
                     crate::api::dart_fn::rust_call_dart_two_args(api_callback).await,
                 )
             }
@@ -725,8 +708,7 @@ fn wire_rust_call_dart_two_args_impl(
 fn wire_rust_call_dart_with_dart_opaque_arg_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     input: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
-    callback: impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<TODO_rust_api_type>>>
-        + core::panic::UnwindSafe,
+    callback: impl Wire2Api<TODO_rust_api_type> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_, _, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -738,8 +720,7 @@ fn wire_rust_call_dart_with_dart_opaque_arg_impl(
             let api_input = input.wire2api();
             let api_callback = callback.wire2api();
             move |context| async move {
-                let api_callback = api_callback.rust_auto_opaque_wire2api_owned()?;
-                Result::<_, anyhow::Error>::Ok(
+                Result::<_, ()>::Ok(
                     crate::api::dart_fn::rust_call_dart_with_dart_opaque_arg(
                         api_input,
                         api_callback,
@@ -752,8 +733,7 @@ fn wire_rust_call_dart_with_dart_opaque_arg_impl(
 }
 fn wire_rust_call_dart_with_dart_opaque_result_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl Wire2Api<flutter_rust_bridge::RustOpaque<std::sync::RwLock<TODO_rust_api_type>>>
-        + core::panic::UnwindSafe,
+    callback: impl Wire2Api<TODO_rust_api_type> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_, _, _, _, flutter_rust_bridge::DartOpaque, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -764,8 +744,7 @@ fn wire_rust_call_dart_with_dart_opaque_result_impl(
         move || {
             let api_callback = callback.wire2api();
             move |context| async move {
-                let api_callback = api_callback.rust_auto_opaque_wire2api_owned()?;
-                Result::<_, anyhow::Error>::Ok(
+                Result::<_, ()>::Ok(
                     crate::api::dart_fn::rust_call_dart_with_dart_opaque_result(api_callback).await,
                 )
             }
@@ -9116,6 +9095,11 @@ impl Wire2Api<u64> for u64 {
 }
 impl Wire2Api<u8> for u8 {
     fn wire2api(self) -> u8 {
+        self
+    }
+}
+impl Wire2Api<unit> for unit {
+    fn wire2api(self) -> unit {
         self
     }
 }
