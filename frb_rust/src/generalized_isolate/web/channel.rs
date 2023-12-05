@@ -34,9 +34,9 @@ impl Channel {
 pub struct SendableChannelHandle(String);
 
 pub fn channel_to_handle(channel: &Channel) -> SendableChannelHandle {
-    SendableChannelHandle(channel.broadcast_name().expect("Not a BroadcastChannel"))
+    SendableChannelHandle(message_port_to_handle(channel.port))
 }
 
 pub fn handle_to_channel(handle: &SendableChannelHandle) -> Channel {
-    Channel::new(PortLike::broadcast(&handle.0))
+    Channel::new(handle_to_message_port(handle))
 }
