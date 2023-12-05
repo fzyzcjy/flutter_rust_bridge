@@ -20,7 +20,7 @@ impl<'a> WireRustGeneratorDart2RustTrait for DartFnWireRustGenerator<'a> {
         Acc::new_common(Some(format!(
             "
             let dart_opaque: flutter_rust_bridge::DartOpaque = self.wire2api();
-            flutter_rust_bridge::DartFn::new(|{closure_args}| move {{
+            flutter_rust_bridge::DartFn::new(move |{closure_args}| {{
                 flutter_rust_bridge::for_generated::dart_fn_invoke(vec![dart_opaque, {closure_args}])
             }})
             "
