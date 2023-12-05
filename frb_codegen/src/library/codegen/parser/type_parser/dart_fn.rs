@@ -6,7 +6,7 @@ use crate::codegen::ir::ty::IrType::Primitive;
 use crate::codegen::parser::type_parser::unencodable::{ArgsRefs, SplayedSegment};
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::if_then_some;
-use anyhow::{bail, Context};
+use anyhow::{bail, ensure, Context};
 use enum_iterator::next;
 use itertools::{unfold, Itertools};
 use quote::__private::ext::RepToTokensExt;
@@ -28,23 +28,15 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             .next()
             .context("cannot find trait_bound")?;
 
-        match last_segment {
-            ("DartFn", Some(Generic([IrType::Unencodable(IrTypeUnencodable { string, .. })]))) => {
-                self.parse_dart_fn(string)
-            }
-            _ => Ok(None),
-        }
-    }
+        let segment = (trait_bound.path.segments.last()).context("cannot get segment")?;
+        ensure!(&segment.ident.to_string() == "Fn");
 
-    fn parse_dart_fn(&mut self, raw: &str) -> anyhow::Result<Option<IrType>> {
-        let ty: syn::Type = syn::parse_str(raw)?;
-
-        if let Type::BareFn(bare_fn) = ty {
-            let inputs = (bare_fn.inputs.iter())
-                .map(|x| self.parse_type(&x.ty))
+        if let PathArguments::Parenthesized(arguments) = &segment.arguments {
+            let inputs = (arguments.inputs.iter())
+                .map(|x| self.parse_type(x))
                 .collect::<anyhow::Result<Vec<_>>>()?;
 
-            let output = Box::new(self.parse_dart_fn_output(&bare_fn.output)?);
+            let output = Box::new(self.parse_dart_fn_output(&arguments.output)?);
 
             return Ok(Some(IrType::DartFn(IrTypeDartFn { inputs, output })));
         }
