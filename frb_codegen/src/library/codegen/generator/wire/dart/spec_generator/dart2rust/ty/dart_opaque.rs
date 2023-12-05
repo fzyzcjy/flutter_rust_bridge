@@ -14,7 +14,7 @@ impl<'a> WireDartGeneratorDart2RustTrait for DartOpaqueWireDartGenerator<'a> {
                 "
                 .to_owned(),
             ),
-            wasm: Some("return[raw, portManager.dropPort];".to_owned()),
+            wasm: Some("return[raw, portManager.dartOpaqueDropPort];".to_owned()),
             ..Default::default()
         }
     }
@@ -22,7 +22,7 @@ impl<'a> WireDartGeneratorDart2RustTrait for DartOpaqueWireDartGenerator<'a> {
     fn api_fill_to_wire_body(&self) -> Option<String> {
         Some(
             "wireObj.handle = generalizedFrbRustBinding.newDartOpaque(apiObj);
-            wireObj.port = portManager.dropPort;"
+            wireObj.port = portManager.dartOpaqueDropPort;"
                 .to_owned(),
         )
     }

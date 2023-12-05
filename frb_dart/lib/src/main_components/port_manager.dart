@@ -4,17 +4,18 @@ import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 class PortManager {
-  final DropPortManager _dropPortManager;
+  final DartOpaqueDropPortManager _dartOpaqueDropPortManager;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   PortManager(GeneralizedFrbRustBinding generalizedFrbRustBinding)
-      : _dropPortManager = DropPortManager(generalizedFrbRustBinding);
+      : _dartOpaqueDropPortManager =
+            DartOpaqueDropPortManager(generalizedFrbRustBinding);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  NativePortType get dropPort => _dropPortManager.port;
+  NativePortType get dartOpaqueDropPort => _dartOpaqueDropPortManager.port;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void dispose() {
-    _dropPortManager.dispose();
+    _dartOpaqueDropPortManager.dispose();
   }
 }

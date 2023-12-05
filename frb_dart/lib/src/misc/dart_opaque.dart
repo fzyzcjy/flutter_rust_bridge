@@ -2,12 +2,12 @@ import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized
 import 'package:flutter_rust_bridge/src/utils/base_lazy_port_manager.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-class DropPortManager extends BaseLazyPortManager {
+class DartOpaqueDropPortManager extends BaseLazyPortManager {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   final GeneralizedFrbRustBinding _generalizedFrbRustBinding;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  DropPortManager(this._generalizedFrbRustBinding);
+  DartOpaqueDropPortManager(this._generalizedFrbRustBinding);
 
   @override
   void onData(dynamic message) =>
