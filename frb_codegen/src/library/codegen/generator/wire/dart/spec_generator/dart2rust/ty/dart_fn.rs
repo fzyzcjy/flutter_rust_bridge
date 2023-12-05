@@ -5,10 +5,14 @@ use crate::codegen::generator::wire::dart::spec_generator::dart2rust::ty::WireDa
 
 impl<'a> WireDartGeneratorDart2RustTrait for DartFnWireDartGenerator<'a> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
-        todo!()
+        Acc {
+            io: Some("todo_api2wire_body".into()),
+            wasm: Some("todo_api2wire_body".into()),
+            ..Default::default()
+        }
     }
 
     fn dart_wire_type(&self, target: Target) -> String {
-        todo!()
+        "todo_dart_wire_type".into()
     }
 }

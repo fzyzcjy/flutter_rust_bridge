@@ -29,7 +29,7 @@ impl<'a> ApiDartGeneratorInfoTrait for BoxedApiDartGenerator<'a> {
 
 impl<'a> ApiDartGeneratorInfoTrait for DartFnApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        todo!()
+        "TODO_dart_api_type".into()
     }
 }
 

@@ -1,5 +1,6 @@
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
+use itertools::Itertools;
 
 crate::ir! {
 pub struct IrTypeDartFn {
@@ -11,17 +12,24 @@ pub struct IrTypeDartFn {
 impl IrTypeTrait for IrTypeDartFn {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(
         &self,
-        _f: &mut F,
-        _ir_context: &impl IrContext,
+        f: &mut F,
+        ir_context: &impl IrContext,
     ) {
-        todo!()
+        for x in &self.inputs {
+            x.visit_types(f, ir_context);
+        }
+        self.output.visit_types(f, ir_context);
     }
 
     fn safe_ident(&self) -> String {
-        todo!()
+        format!(
+            "DartFn_Inputs_{}_Output_{}",
+            self.inputs.iter().map(|x| x.safe_ident()).join("_"),
+            self.output.safe_ident()
+        )
     }
 
     fn rust_api_type(&self) -> String {
-        todo!()
+        "TODO_rust_api_type".into()
     }
 }
