@@ -229,6 +229,7 @@ dependencies = [
  "chrono",
  "flutter_rust_bridge",
  "frb_example_pure_dart_exapmle_external_lib",
+ "futures",
  "lazy_static",
  "log",
  "tempfile",

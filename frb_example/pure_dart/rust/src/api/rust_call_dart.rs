@@ -1,5 +1,8 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync"]}
 
+use futures::future::BoxFuture;
+use std::future::Future;
+
 // TODO
 struct DartFn<F> {
     inner: F,
@@ -14,6 +17,8 @@ impl<F> std::ops::Deref for DartFn<F> {
     }
 }
 
-pub async fn rust_call_dart_simple(callback: DartFn<fn()>) {
-    callback()
+pub async fn rust_call_dart_simple(callback: DartFn<fn() -> BoxFuture<()>>) {
+    println!("rust_call_dart_simple before");
+    callback().await;
+    println!("rust_call_dart_simple after");
 }
