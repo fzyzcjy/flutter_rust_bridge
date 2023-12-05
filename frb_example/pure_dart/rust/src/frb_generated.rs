@@ -648,7 +648,7 @@ fn wire_rust_call_dart_one_arg_impl(
                 fn(
                     String,
                 )
-                    -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, unit>,
+                    -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, ()>,
             >,
         > + core::panic::UnwindSafe,
 ) {
@@ -695,8 +695,7 @@ fn wire_rust_call_dart_simple_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     callback: impl Wire2Api<
             flutter_rust_bridge::DartFn<
-                fn()
-                    -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, unit>,
+                fn() -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, ()>,
             >,
         > + core::panic::UnwindSafe,
 ) {
@@ -722,7 +721,7 @@ fn wire_rust_call_dart_two_args_impl(
                     String,
                     crate::api::dart_fn::DemoStructForRustCallDart,
                 )
-                    -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, unit>,
+                    -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, ()>,
             >,
         > + core::panic::UnwindSafe,
 ) {
@@ -750,7 +749,7 @@ fn wire_rust_call_dart_with_dart_opaque_arg_impl(
                 fn(
                     flutter_rust_bridge::DartOpaque,
                 )
-                    -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, unit>,
+                    -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, ()>,
             >,
         > + core::panic::UnwindSafe,
 ) {

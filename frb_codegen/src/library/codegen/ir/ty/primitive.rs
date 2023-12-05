@@ -43,7 +43,7 @@ impl IrTypeTrait for IrTypePrimitive {
             IrTypePrimitive::U32 => "u32",
             IrTypePrimitive::I32 => "i32",
             IrTypePrimitive::U64 => "u64",
-            IrTypePrimitive::Unit => "unit",
+            IrTypePrimitive::Unit => "()",
             IrTypePrimitive::Usize => "usize",
             IrTypePrimitive::Isize => "isize",
             IrTypePrimitive::I64 => "i64",
