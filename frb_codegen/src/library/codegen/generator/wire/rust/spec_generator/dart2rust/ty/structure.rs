@@ -87,15 +87,9 @@ impl<'a> WireRustGeneratorDart2RustTrait for StructRefWireRustGenerator<'a> {
                         field.name.rust_style(),
                         if WireRustGenerator::new(field.ty.clone(), self.context)
                             .rust_wire_is_pointer(Target::Io)
-                            || matches!(field.ty, IrType::RustOpaque(_))
+                            || matches!(field.ty, IrType::RustOpaque(_) | IrType::DartOpaque(_))
                         {
                             "core::ptr::null_mut()".to_owned()
-                        } else if matches!(field.ty, IrType::DartOpaque(_)) {
-                            format!(
-                                "{}::new_with_null_ptr()",
-                                WireRustGenerator::new(field.ty.clone(), self.context)
-                                    .rust_wire_type(Target::Io)
-                            )
                         } else {
                             "Default::default()".to_owned()
                         }

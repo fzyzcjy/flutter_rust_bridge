@@ -115,7 +115,7 @@ pub(crate) fn generate_list_generate_allocate_func(
                 // A primitive enum list can use a default value since
                 // `<i32>::new_with_null_ptr()` isn't implemented.
                 "Default::default()".to_string()
-            } else if matches!(inner, IrType::RustOpaque(_)) {
+            } else if matches!(inner, IrType::RustOpaque(_) | IrType::DartOpaque(_)) {
                 "core::ptr::null_mut()".to_string()
             } else {
                 format!(

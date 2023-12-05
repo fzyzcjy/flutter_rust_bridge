@@ -18,7 +18,12 @@ impl<'a> WireDartGeneratorDart2RustTrait for BoxedWireDartGenerator<'a> {
 
         Acc {
             io: Some(
-                if self.ir.inner.is_primitive() || matches!(*self.ir.inner, IrType::RustOpaque(_)) {
+                if self.ir.inner.is_primitive()
+                    || matches!(
+                        *self.ir.inner,
+                        IrType::RustOpaque(_) | IrType::DartOpaque(_)
+                    )
+                {
                     format!("return wire.new_{ir_safe_ident}(api2wire_{inner_safe_ident}(raw));")
                 } else if self.ir.inner.is_array() {
                     format!("return api2wire_{inner_safe_ident}(raw);")
@@ -46,7 +51,10 @@ impl<'a> WireDartGeneratorDart2RustTrait for BoxedWireDartGenerator<'a> {
         if self.ir.inner.is_array() {
             Some(format!("wireObj = api2wire_{inner_safe_ident}(apiObj);"))
         } else if !self.ir.inner.is_primitive()
-            && !matches!(*self.ir.inner, IrType::RustOpaque(_))
+            && !matches!(
+                *self.ir.inner,
+                IrType::RustOpaque(_) | IrType::DartOpaque(_)
+            )
             && !is_empty_struct(self)
         {
             Some(format!(

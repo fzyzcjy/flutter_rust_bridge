@@ -61,7 +61,12 @@ impl<'a> WireRustGeneratorDart2RustTrait for BoxedWireRustGenerator<'a> {
             return Acc::default();
         }
         let func_name = format!("new_{}", self.ir.safe_ident());
-        if self.ir.inner.is_primitive() || matches!(*self.ir.inner, IrType::RustOpaque(_)) {
+        if self.ir.inner.is_primitive()
+            || matches!(
+                *self.ir.inner,
+                IrType::RustOpaque(_) | IrType::DartOpaque(_)
+            )
+        {
             Acc {
                 io: ExternFunc {
                     func_name,
