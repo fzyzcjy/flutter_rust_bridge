@@ -137,7 +137,9 @@ fn generate_params(func: &IrFunc, context: WireRustGeneratorContext) -> Acc<Vec<
                     name: name.clone(),
                     rust_type: format!(
                         "impl Wire2Api<{}> + core::panic::UnwindSafe",
-                        field.ty.rust_api_type()
+                        WireRustGenerator::new(field.ty.clone(), context)
+                            .generate_wire_func_param_api_type()
+                            .unwrap_or(field.ty.rust_api_type())
                     ),
                     dart_type: "THIS_TYPE_SHOULD_NOT_BE_USED".into(),
                 },

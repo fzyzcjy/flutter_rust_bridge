@@ -12,11 +12,15 @@ use crate::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireRustGeneratorDart2RustTrait for DartFnWireRustGenerator<'a> {
-    fn rust_wire_type(&self, target: Target) -> String {
-        WireRustGenerator::new(self.ir.get_delegate(), self.context).rust_wire_type(target)
-    }
-
     fn generate_wire_func_call_wire2api(&self, name: &str) -> String {
         format!("TODO_generate_wire_func_call_wire2api")
+    }
+
+    fn generate_wire_func_param_api_type(&self) -> Option<String> {
+        Some(format!("TODO_generate_wire_func_param_api_type"))
+    }
+
+    fn rust_wire_type(&self, target: Target) -> String {
+        WireRustGenerator::new(self.ir.get_delegate(), self.context).rust_wire_type(target)
     }
 }
