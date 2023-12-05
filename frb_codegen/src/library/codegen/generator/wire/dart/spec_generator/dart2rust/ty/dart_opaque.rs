@@ -13,17 +13,9 @@ impl<'a> WireDartGeneratorDart2RustTrait for DartOpaqueWireDartGenerator<'a> {
         })
     }
 
-    fn api_fill_to_wire_body(&self) -> Option<String> {
-        Some(
-            "wireObj.handle = generalizedFrbRustBinding.newDartOpaque(apiObj);
-            wireObj.port = portManager.dartOpaqueDropPort;"
-                .to_owned(),
-        )
-    }
-
     fn dart_wire_type(&self, target: Target) -> String {
         match target {
-            Target::Io => "wire_DartOpaque",
+            Target::Io => "int",
             Target::Wasm => "Object",
         }
         .to_owned()
