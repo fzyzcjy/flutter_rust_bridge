@@ -1,4 +1,5 @@
 use crate::dart_fn::DartFnFuture;
+use crate::dart_opaque::{DartOpaque, DartOpaqueWireType};
 use crate::generalized_isolate::IntoDart;
 use crate::handler::error::Error;
 use crate::handler::error_handler::ErrorHandler;
@@ -144,8 +145,10 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
 
     unsafe fn wire2api_dart_opaque(&self, raw: DartOpaqueWireType) -> DartOpaque {
         let drop_port = (self.config.lock().expect("cannot get config lock"))
+            .as_ref()
             .expect("no handler config")
-            .dart_opaque_drop_port;
+            .dart_opaque_drop_port
+            .to_owned();
         crate::dart_opaque::wire2api_dart_opaque(raw, drop_port)
     }
 
