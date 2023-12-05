@@ -2419,7 +2419,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     super.handler,
     required super.wire,
     required super.generalizedFrbRustBinding,
-    required super.dropPortManager,
+    required super.portManager,
   });
 
   @override

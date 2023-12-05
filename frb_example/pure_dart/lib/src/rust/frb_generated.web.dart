@@ -118,7 +118,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     super.handler,
     required super.wire,
     required super.generalizedFrbRustBinding,
-    required super.dropPortManager,
+    required super.portManager,
   });
 
   CrossPlatformFinalizerArg
@@ -236,7 +236,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Object api2wire_DartOpaque(Object raw) {
-    return [raw, dropPortManager.dropPort];
+    return [raw, portManager.dropPort];
   }
 
   @protected
