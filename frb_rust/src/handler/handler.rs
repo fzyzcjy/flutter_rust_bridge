@@ -54,6 +54,8 @@ pub trait Handler {
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
         Er: IntoDart + 'static;
+
+    fn dart_fn_invoke<Ret>(&self, dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<Ret>;
 }
 
 /// Supporting information for a task

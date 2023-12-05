@@ -29,7 +29,7 @@ impl<'a> WireRustGeneratorDart2RustTrait for DartFnWireRustGenerator<'a> {
                 let dart_opaque: flutter_rust_bridge::DartOpaque = {name}.wire2api();
 
                 move |{closure_args_str}| {{    
-                    flutter_rust_bridge::for_generated::dart_fn_invoke(vec![
+                    {HANDLER_NAME}.dart_fn_invoke(vec![
                         dart_opaque.into_into_dart().into_dart(),
                         {closure_args_into_dart_str}
                     ])
