@@ -9,5 +9,5 @@ class DartFnInvokePortManager extends BaseLazyPortManager {
   DartFnInvokePortManager(this._handler);
 
   @override
-  void onData(Object? message) => _handler.dartFnInvoke(message);
+  void onData(dynamic message) => _handler.dartFnInvoke(message);
 }
