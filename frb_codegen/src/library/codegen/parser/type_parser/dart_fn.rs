@@ -5,20 +5,29 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Primitive;
 use crate::codegen::parser::type_parser::unencodable::{ArgsRefs, SplayedSegment};
 use crate::codegen::parser::type_parser::TypeParserWithContext;
-use anyhow::bail;
-use itertools::Itertools;
+use crate::if_then_some;
+use anyhow::{bail, Context};
+use enum_iterator::next;
+use itertools::{unfold, Itertools};
 use quote::__private::ext::RepToTokensExt;
 use syn::{
     AngleBracketedGenericArguments, GenericArgument, Path, PathArguments, PathSegment, ReturnType,
-    Type, TypeBareFn, TypePath,
+    Type, TypeBareFn, TypeImplTrait, TypeParamBound, TypePath,
 };
 use ArgsRefs::Generic;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
-    pub(crate) fn parse_type_path_data_dart_fn(
+    pub(crate) fn parse_type_impl_trait_dart_fn(
         &mut self,
-        last_segment: &SplayedSegment,
+        type_impl_trait: &TypeImplTrait,
     ) -> anyhow::Result<Option<IrType>> {
+        let trait_bound = (type_impl_trait.bounds.iter())
+            .filter_map(
+                |x| if_then_some!(let TypeParamBound::Trait(trait_bound) = x, trait_bound.clone()),
+            )
+            .next()
+            .context("cannot find trait_bound")?;
+
         match last_segment {
             ("DartFn", Some(Generic([IrType::Unencodable(IrTypeUnencodable { string, .. })]))) => {
                 self.parse_dart_fn(string)

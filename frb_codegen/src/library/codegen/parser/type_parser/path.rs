@@ -56,9 +56,6 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             if let Some(ans) = self.parse_type_path_data_optional(type_path, last_segment)? {
                 return Ok(ans);
             }
-            if let Some(ans) = self.parse_type_path_data_dart_fn(last_segment)? {
-                return Ok(ans);
-            }
         }
 
         Ok(parse_path_type_to_unencodable(type_path, &splayed_segments))
