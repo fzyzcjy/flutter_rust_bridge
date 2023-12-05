@@ -4,6 +4,7 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Primitive;
 use crate::codegen::parser::type_parser::unencodable::{ArgsRefs, SplayedSegment};
 use crate::codegen::parser::type_parser::TypeParserWithContext;
+use syn::Type;
 use ArgsRefs::Generic;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
@@ -11,17 +12,22 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
-        Ok(Some(match last_segment {
+        match last_segment {
             ("DartFn", Some(Generic([IrType::Unencodable(IrTypeUnencodable { string, .. })]))) => {
                 self.parse_dart_fn(string)
             }
-
-            _ => return Ok(None),
-        }))
+            _ => Ok(None),
+        }
     }
 
-    fn parse_dart_fn(&mut self, raw: &str) -> IrType {
-        todo!("{}", raw)
+    fn parse_dart_fn(&mut self, raw: &str) -> anyhow::Result<Option<IrType>> {
+        let ty: syn::Type = syn::parse_str(raw)?;
+
+        if let Type::BareFn(bare_fn) = ty {
+            todo!()
+        }
+
+        Ok(None)
     }
 }
 
