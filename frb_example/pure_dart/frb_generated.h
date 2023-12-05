@@ -1647,21 +1647,21 @@ void wire_function_with_comments_triple_slash_single_line_twin_normal(int64_t po
 
 void wire_return_dart_dynamic_twin_normal(int64_t port_);
 
-void wire_rust_call_dart_loopback(int64_t port_, todo_rust_wire_type callback);
+void wire_rust_call_dart_loopback(int64_t port_, struct wire_DartOpaque callback);
 
-void wire_rust_call_dart_one_arg(int64_t port_, todo_rust_wire_type callback);
+void wire_rust_call_dart_one_arg(int64_t port_, struct wire_DartOpaque callback);
 
-void wire_rust_call_dart_return(int64_t port_, todo_rust_wire_type callback);
+void wire_rust_call_dart_return(int64_t port_, struct wire_DartOpaque callback);
 
-void wire_rust_call_dart_simple(int64_t port_, todo_rust_wire_type callback);
+void wire_rust_call_dart_simple(int64_t port_, struct wire_DartOpaque callback);
 
-void wire_rust_call_dart_two_args(int64_t port_, todo_rust_wire_type callback);
+void wire_rust_call_dart_two_args(int64_t port_, struct wire_DartOpaque callback);
 
 void wire_rust_call_dart_with_dart_opaque_arg(int64_t port_,
                                               struct wire_DartOpaque input,
-                                              todo_rust_wire_type callback);
+                                              struct wire_DartOpaque callback);
 
-void wire_rust_call_dart_with_dart_opaque_result(int64_t port_, todo_rust_wire_type callback);
+void wire_rust_call_dart_with_dart_opaque_result(int64_t port_, struct wire_DartOpaque callback);
 
 void wire_async_accept_dart_opaque_twin_normal(int64_t port_, struct wire_DartOpaque opaque);
 

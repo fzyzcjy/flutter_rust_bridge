@@ -4248,7 +4248,7 @@ pub fn wire_return_dart_dynamic_twin_normal(
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_loopback(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: todo_rust_wire_type,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_rust_call_dart_loopback_impl(port_, callback)
 }
@@ -4256,7 +4256,7 @@ pub fn wire_rust_call_dart_loopback(
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_one_arg(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: todo_rust_wire_type,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_rust_call_dart_one_arg_impl(port_, callback)
 }
@@ -4264,7 +4264,7 @@ pub fn wire_rust_call_dart_one_arg(
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_return(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: todo_rust_wire_type,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_rust_call_dart_return_impl(port_, callback)
 }
@@ -4272,7 +4272,7 @@ pub fn wire_rust_call_dart_return(
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_simple(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: todo_rust_wire_type,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_rust_call_dart_simple_impl(port_, callback)
 }
@@ -4280,7 +4280,7 @@ pub fn wire_rust_call_dart_simple(
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_two_args(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: todo_rust_wire_type,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_rust_call_dart_two_args_impl(port_, callback)
 }
@@ -4289,7 +4289,7 @@ pub fn wire_rust_call_dart_two_args(
 pub fn wire_rust_call_dart_with_dart_opaque_arg(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     input: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-    callback: todo_rust_wire_type,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_rust_call_dart_with_dart_opaque_arg_impl(port_, input, callback)
 }
@@ -4297,7 +4297,7 @@ pub fn wire_rust_call_dart_with_dart_opaque_arg(
 #[wasm_bindgen]
 pub fn wire_rust_call_dart_with_dart_opaque_result(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: todo_rust_wire_type,
+    callback: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
     wire_rust_call_dart_with_dart_opaque_result_impl(port_, callback)
 }

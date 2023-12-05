@@ -8454,27 +8454,27 @@ pub extern "C" fn wire_return_dart_dynamic_twin_normal(port_: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_call_dart_loopback(port_: i64, callback: todo_rust_wire_type) {
+pub extern "C" fn wire_rust_call_dart_loopback(port_: i64, callback: wire_DartOpaque) {
     wire_rust_call_dart_loopback_impl(port_, callback)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_call_dart_one_arg(port_: i64, callback: todo_rust_wire_type) {
+pub extern "C" fn wire_rust_call_dart_one_arg(port_: i64, callback: wire_DartOpaque) {
     wire_rust_call_dart_one_arg_impl(port_, callback)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_call_dart_return(port_: i64, callback: todo_rust_wire_type) {
+pub extern "C" fn wire_rust_call_dart_return(port_: i64, callback: wire_DartOpaque) {
     wire_rust_call_dart_return_impl(port_, callback)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_call_dart_simple(port_: i64, callback: todo_rust_wire_type) {
+pub extern "C" fn wire_rust_call_dart_simple(port_: i64, callback: wire_DartOpaque) {
     wire_rust_call_dart_simple_impl(port_, callback)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_rust_call_dart_two_args(port_: i64, callback: todo_rust_wire_type) {
+pub extern "C" fn wire_rust_call_dart_two_args(port_: i64, callback: wire_DartOpaque) {
     wire_rust_call_dart_two_args_impl(port_, callback)
 }
 
@@ -8482,7 +8482,7 @@ pub extern "C" fn wire_rust_call_dart_two_args(port_: i64, callback: todo_rust_w
 pub extern "C" fn wire_rust_call_dart_with_dart_opaque_arg(
     port_: i64,
     input: wire_DartOpaque,
-    callback: todo_rust_wire_type,
+    callback: wire_DartOpaque,
 ) {
     wire_rust_call_dart_with_dart_opaque_arg_impl(port_, input, callback)
 }
@@ -8490,7 +8490,7 @@ pub extern "C" fn wire_rust_call_dart_with_dart_opaque_arg(
 #[no_mangle]
 pub extern "C" fn wire_rust_call_dart_with_dart_opaque_result(
     port_: i64,
-    callback: todo_rust_wire_type,
+    callback: wire_DartOpaque,
 ) {
     wire_rust_call_dart_with_dart_opaque_result_impl(port_, callback)
 }
