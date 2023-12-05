@@ -2,7 +2,9 @@ use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 
 crate::ir! {
-pub struct IrTypeDartFn;
+pub struct IrTypeDartFn {
+    // TODO
+}
 }
 
 impl IrTypeTrait for IrTypeDartFn {

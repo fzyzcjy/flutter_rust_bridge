@@ -1,3 +1,4 @@
+use crate::codegen::ir::ty::dart_fn::IrTypeDartFn;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
@@ -24,7 +25,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         let ty: syn::Type = syn::parse_str(raw)?;
 
         if let Type::BareFn(bare_fn) = ty {
-            todo!()
+            return Ok(Some(IrType::DartFn(IrTypeDartFn {})));
         }
 
         Ok(None)
