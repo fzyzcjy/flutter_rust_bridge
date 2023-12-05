@@ -31,7 +31,7 @@ impl<'a> WireRustGeneratorDart2RustTrait for DartFnWireRustGenerator<'a> {
                 move |{closure_args_str}| {{    
                     flutter_rust_bridge::for_generated::dart_fn_invoke(vec![
                         dart_opaque.into_into_dart().into_dart(),
-                        {closure_args_into_dart_str},
+                        {closure_args_into_dart_str}
                     ])
                 }}
             }}
