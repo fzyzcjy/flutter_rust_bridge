@@ -9061,7 +9061,10 @@ impl
             flutter_rust_bridge::DartOpaque,
         ) -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, ()>,
     > {
-        TODO_impl_wire2api_body
+        let dart_opaque: flutter_rust_bridge::DartOpaque = self.wire2api();
+        flutter_rust_bridge::DartFn::new(move |arg0| {
+            flutter_rust_bridge::for_generated::dart_fn_invoke(vec![dart_opaque, arg0])
+        })
     }
 }
 impl
@@ -9079,7 +9082,10 @@ impl
     ) -> flutter_rust_bridge::DartFn<
         fn(String) -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, ()>,
     > {
-        TODO_impl_wire2api_body
+        let dart_opaque: flutter_rust_bridge::DartOpaque = self.wire2api();
+        flutter_rust_bridge::DartFn::new(move |arg0| {
+            flutter_rust_bridge::for_generated::dart_fn_invoke(vec![dart_opaque, arg0])
+        })
     }
 }
 impl
@@ -9101,7 +9107,10 @@ impl
             crate::api::dart_fn::DemoStructForRustCallDart,
         ) -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, ()>,
     > {
-        TODO_impl_wire2api_body
+        let dart_opaque: flutter_rust_bridge::DartOpaque = self.wire2api();
+        flutter_rust_bridge::DartFn::new(move |arg0, arg1| {
+            flutter_rust_bridge::for_generated::dart_fn_invoke(vec![dart_opaque, arg0, arg1])
+        })
     }
 }
 impl
@@ -9122,7 +9131,10 @@ impl
             flutter_rust_bridge::DartOpaque,
         >,
     > {
-        TODO_impl_wire2api_body
+        let dart_opaque: flutter_rust_bridge::DartOpaque = self.wire2api();
+        flutter_rust_bridge::DartFn::new(move || {
+            flutter_rust_bridge::for_generated::dart_fn_invoke(vec![dart_opaque])
+        })
     }
 }
 impl
@@ -9137,7 +9149,10 @@ impl
     ) -> flutter_rust_bridge::DartFn<
         fn() -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, String>,
     > {
-        TODO_impl_wire2api_body
+        let dart_opaque: flutter_rust_bridge::DartOpaque = self.wire2api();
+        flutter_rust_bridge::DartFn::new(move || {
+            flutter_rust_bridge::for_generated::dart_fn_invoke(vec![dart_opaque])
+        })
     }
 }
 impl
@@ -9152,7 +9167,10 @@ impl
     ) -> flutter_rust_bridge::DartFn<
         fn() -> flutter_rust_bridge::for_generated::futures::future::BoxFuture<'static, ()>,
     > {
-        TODO_impl_wire2api_body
+        let dart_opaque: flutter_rust_bridge::DartOpaque = self.wire2api();
+        flutter_rust_bridge::DartFn::new(move || {
+            flutter_rust_bridge::for_generated::dart_fn_invoke(vec![dart_opaque])
+        })
     }
 }
 impl
@@ -9177,7 +9195,10 @@ impl
             crate::api::dart_fn::DemoStructForRustCallDart,
         >,
     > {
-        TODO_impl_wire2api_body
+        let dart_opaque: flutter_rust_bridge::DartOpaque = self.wire2api();
+        flutter_rust_bridge::DartFn::new(move |arg0| {
+            flutter_rust_bridge::for_generated::dart_fn_invoke(vec![dart_opaque, arg0])
+        })
     }
 }
 impl Wire2Api<crate::api::pseudo_manual::mirror_twin_sync::ApplicationMode> for i32 {
