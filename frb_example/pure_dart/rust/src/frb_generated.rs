@@ -613,7 +613,7 @@ fn wire_return_dart_dynamic_twin_normal_impl(
 }
 fn wire_rust_call_dart_simple_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    callback: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+    callback: impl Wire2Api<TODO_generate_wire_func_param_api_type> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_, _, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -622,7 +622,7 @@ fn wire_rust_call_dart_simple_impl(
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
-            let api_callback = || todo!();
+            let api_callback = TODO_generate_wire_func_call_wire2api;
             move |context| async move {
                 Result::<_, ()>::Ok(crate::api::dart_fn::rust_call_dart_simple(api_callback).await)
             }
