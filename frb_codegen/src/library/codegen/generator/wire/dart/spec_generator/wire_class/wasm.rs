@@ -36,6 +36,14 @@ fn generate_wire_class(
         "class {wire_class_name} extends BaseWire {{
             {wire_class_name}.fromExternalLibrary(ExternalLibrary lib);
 
+            void frb_initialize_rust(
+              NativePortType dart_opaque_drop_port,
+              NativePortType dart_fn_invoke_port,
+            ) => wasmModule.frb_initialize_rust(
+                dart_opaque_drop_port,
+                dart_fn_invoke_port,
+              );
+
             {body}
         }}
         ",
@@ -64,6 +72,12 @@ fn generate_wasm_module_class(
 
             @override
             external {wasm_module_name} bind(dynamic thisArg, String moduleName);
+
+            @override
+            external void frb_initialize_rust(
+              NativePortType dart_opaque_drop_port,
+              NativePortType dart_fn_invoke_port,
+            );
 
             {body}
         }}
