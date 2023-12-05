@@ -14,7 +14,7 @@ impl<'a> WireDartGeneratorDart2RustTrait for DartOpaqueWireDartGenerator<'a> {
                 "
                 .to_owned(),
             ),
-            wasm: Some("return[raw, portManager.dartOpaqueDropPort];".to_owned()),
+            wasm: Some("return api2wireDartOpaque(raw);".to_owned()),
             ..Default::default()
         }
     }
