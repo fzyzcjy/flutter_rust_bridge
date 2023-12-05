@@ -9098,11 +9098,6 @@ impl Wire2Api<u8> for u8 {
         self
     }
 }
-impl Wire2Api<unit> for unit {
-    fn wire2api(self) -> unit {
-        self
-    }
-}
 impl Wire2Api<usize> for usize {
     fn wire2api(self) -> usize {
         self

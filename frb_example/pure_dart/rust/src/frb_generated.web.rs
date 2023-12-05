@@ -3960,11 +3960,6 @@ impl Wire2Api<[u8; 8]> for flutter_rust_bridge::for_generated::wasm_bindgen::JsV
         flutter_rust_bridge::for_generated::from_vec_to_array(vec)
     }
 }
-impl Wire2Api<unit> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-    fn wire2api(self) -> unit {
-        self.unchecked_into_f64() as _
-    }
-}
 impl Wire2Api<usize> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
     fn wire2api(self) -> usize {
         self.unchecked_into_f64() as _
