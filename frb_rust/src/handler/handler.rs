@@ -1,5 +1,7 @@
+use crate::dart_fn::DartFnFuture;
 use crate::generalized_isolate::IntoDart;
 use crate::misc::into_into_dart::IntoIntoDart;
+use crate::platform_types::DartAbi;
 use crate::platform_types::{MessagePort, WireSyncReturn};
 use crate::rust2dart::context::TaskRust2DartContext;
 use std::future::Future;

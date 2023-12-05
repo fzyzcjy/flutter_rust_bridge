@@ -4,7 +4,6 @@
 mod cast;
 mod pointer;
 
-pub use crate::dart_fn::dart_fn_invoke;
 pub use crate::generalized_isolate::Channel;
 pub use crate::generalized_isolate::IntoDartExceptPrimitive;
 pub use crate::handler::handler::{FfiCallMode, TaskInfo};

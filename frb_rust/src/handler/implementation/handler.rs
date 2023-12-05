@@ -1,3 +1,4 @@
+use crate::dart_fn::DartFnFuture;
 use crate::generalized_isolate::IntoDart;
 use crate::handler::error::Error;
 use crate::handler::error_handler::ErrorHandler;
@@ -6,6 +7,7 @@ use crate::handler::handler::{Handler, TaskContext, TaskInfo, TaskRetFutTrait};
 use crate::handler::implementation::error_handler::ReportDartErrorHandler;
 use crate::handler::implementation::executor::SimpleExecutor;
 use crate::misc::into_into_dart::IntoIntoDart;
+use crate::platform_types::DartAbi;
 use crate::platform_types::WireSyncReturn;
 use crate::rust2dart::action::Rust2DartAction;
 use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
@@ -115,6 +117,10 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         self.wrap_normal_or_async(task_info, prepare, |task_info, task| {
             self.executor.execute_async(task_info, task)
         })
+    }
+
+    fn dart_fn_invoke<Ret>(&self, dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<Ret> {
+        todo!()
     }
 }
 
