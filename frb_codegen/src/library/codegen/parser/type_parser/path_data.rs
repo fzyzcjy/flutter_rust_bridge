@@ -60,10 +60,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             .map(|ty| self.parse_type(ty))
             .collect::<Result<Vec<_>>>()?;
 
-        let output_type = match &args.output {
-            syn::ReturnType::Default => Primitive(IrTypePrimitive::Unit),
-            syn::ReturnType::Type(_, ret_ty) => self.parse_type(ret_ty)?,
-        };
+        let output_type = self.parse_return_type(&args.output)?;
 
         Ok({
             let mut ans = vec![output_type];

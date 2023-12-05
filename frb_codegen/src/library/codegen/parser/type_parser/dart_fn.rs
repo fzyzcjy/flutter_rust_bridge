@@ -27,17 +27,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
         if let Type::BareFn(bare_fn) = ty {
             let inputs = bare_fn.inputs.iter().map(TODO).collect_vec();
-            let output = self.parse_dart_fn_output(&bare_fn.output)?;
+            let output = self.parse_return_type(&bare_fn.output)?;
             return Ok(Some(IrType::DartFn(IrTypeDartFn { inputs, output })));
         }
 
         Ok(None)
-    }
-    fn parse_dart_fn_output(&self, raw: &ReturnType) -> anyhow::Result<IrType> {
-        match raw {
-            ReturnType::Default => Ok(Primitive(IrTypePrimitive::Unit)),
-            ReturnType::Type(_, _) => {}
-        }
     }
 }
 

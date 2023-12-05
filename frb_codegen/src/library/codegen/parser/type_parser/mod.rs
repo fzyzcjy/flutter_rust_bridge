@@ -9,6 +9,7 @@ pub(crate) mod path;
 pub(crate) mod path_data;
 pub(crate) mod primitive;
 pub(crate) mod reference;
+mod return_type;
 pub(crate) mod rust_auto_opaque;
 mod rust_opaque;
 pub(crate) mod structure;
