@@ -14,7 +14,7 @@ pub(crate) mod rust_async;
 pub(crate) mod rust_opaque;
 pub(crate) mod web_transfer;
 
-pub use crate::dart_fn::DartFn;
+pub use crate::dart_fn::DartFnFuture;
 pub use crate::dart_opaque::DartOpaque;
 pub use crate::generalized_isolate::{IntoDart, ZeroCopyBuffer};
 pub use crate::handler::handler::Handler;
