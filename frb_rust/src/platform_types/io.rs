@@ -7,9 +7,9 @@ pub type DartAbi = allo_isolate::ffi::DartCObject;
 pub type SendableMessagePort = MessagePort;
 
 pub fn message_port_to_handle(port: &MessagePort) -> SendableMessagePort {
-    port
+    *port
 }
 
 pub fn handle_to_message_port(handle: &SendableMessagePort) -> MessagePort {
-    handle
+    *handle
 }
