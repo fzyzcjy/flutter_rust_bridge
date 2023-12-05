@@ -13,6 +13,7 @@ use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerI
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::ownership::IrTypeOwnershipMode;
 use crate::codegen::ir::ty::IrType;
+use crate::library::codegen::generator::wire::rust::spec_generator::dart2rust::ty::WireRustGeneratorDart2RustTrait;
 use crate::library::codegen::generator::wire::rust::spec_generator::rust2dart::ty::WireRustGeneratorRust2DartTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use crate::misc::consts::HANDLER_NAME;
