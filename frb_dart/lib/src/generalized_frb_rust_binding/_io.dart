@@ -28,9 +28,6 @@ class GeneralizedFrbRustBinding {
       _binding.init_frb_dart_api_dl(ffi.NativeApi.initializeApiDLData);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  void initializeFrbRust() => _binding.initialize_frb_rust();
-
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
   Object getDartObject(int ptr) => _binding.get_dart_object(ptr);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}

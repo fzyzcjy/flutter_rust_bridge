@@ -114,7 +114,6 @@ class _EntrypointState<A extends BaseApi> {
   }) {
     _setUpRustToDartCommunication(generalizedFrbRustBinding);
     _initializeApiDlData(generalizedFrbRustBinding);
-    generalizedFrbRustBinding.initializeFrbRust();
   }
 
   void dispose() {
