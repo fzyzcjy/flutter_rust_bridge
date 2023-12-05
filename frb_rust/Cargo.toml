@@ -22,7 +22,7 @@ backtrace = { workspace = true }
 futures = { version = "0.3.29", optional = true }
 
 [target.'cfg(not(target_family = "wasm"))'.dependencies]
-allo-isolate = { workspace = true, features = ["anyhow", "backtrace"] }
+allo-isolate = { workspace = true, features = ["anyhow", "backtrace", "zero-copy"] }
 libc = "0.2"
 parking_lot = { version = "0.12.1" }
 threadpool = { version = "1.8.1" }
@@ -35,15 +35,15 @@ wasm-bindgen = { version = "0.2.81" }
 wasm-bindgen-futures = "0.4.39"
 js-sys = { version = "0.3.60" }
 web-sys = { version = "0.3.58", features = [
-  "DedicatedWorkerGlobalScope",
-  "MessageEvent",
-  "MessagePort",
-  "ErrorEvent",
-  "Blob",
-  "BlobPropertyBag",
-  "Worker",
-  "Url",
-  "BroadcastChannel",
+    "DedicatedWorkerGlobalScope",
+    "MessageEvent",
+    "MessagePort",
+    "ErrorEvent",
+    "Blob",
+    "BlobPropertyBag",
+    "Worker",
+    "Url",
+    "BroadcastChannel",
 ] }
 
 [build-dependencies]
@@ -54,9 +54,8 @@ build-target = "0.4.0"
 wasm-bindgen-test = "0.3.32"
 
 [features]
-default = ["chrono", "wasm-start", "zero-copy", "rust-async"]
+default = ["chrono", "wasm-start", "rust-async"]
 uuid = ["dep:uuid", "allo-isolate/uuid"]
 chrono = ["dep:chrono", "allo-isolate/chrono"]
 wasm-start = ["console_error_panic_hook"]
-zero-copy = ["allo-isolate/zero-copy"]
 rust-async = ["dep:tokio", "dep:futures"]
