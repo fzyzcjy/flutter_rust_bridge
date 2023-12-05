@@ -129,6 +129,7 @@ impl Serialize for IrType {
         }
         match self {
             IrType::Boxed(inner) => ser::<S, _>(&mut state, "Boxed", inner),
+            IrType::DartFn(inner) => ser::<S, _>(&mut state, "DartFn", inner),
             IrType::DartOpaque(inner) => ser::<S, _>(&mut state, "DartOpaque", inner),
             IrType::Delegate(inner) => ser::<S, _>(&mut state, "Delegate", inner),
             IrType::Dynamic(inner) => ser::<S, _>(&mut state, "Dynamic", inner),

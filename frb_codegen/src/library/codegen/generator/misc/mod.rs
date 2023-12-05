@@ -24,6 +24,7 @@ pub fn is_js_value(ty: &IrType) -> bool {
         | IrType::RustAutoOpaque(_)
         | IrType::RustOpaque(_)
         | IrType::DartOpaque(_)
+        | IrType::DartFn(_)
         | IrType::Record(_) => true,
         IrType::Boxed(IrTypeBoxed { inner, .. }) => is_js_value(inner),
         IrType::Delegate(inner) => is_js_value(&inner.get_delegate()),

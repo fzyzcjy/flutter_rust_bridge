@@ -2,8 +2,9 @@ use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::optional::IrTypeOptional;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{
-    Boxed, DartOpaque, Delegate, Dynamic, EnumRef, GeneralList, Optional, OptionalList, Ownership,
-    Primitive, PrimitiveList, Record, RustAutoOpaque, RustOpaque, StructRef, Unencodable,
+    Boxed, DartFn, DartOpaque, Delegate, Dynamic, EnumRef, GeneralList, Optional, OptionalList,
+    Ownership, Primitive, PrimitiveList, Record, RustAutoOpaque, RustOpaque, StructRef,
+    Unencodable,
 };
 use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
@@ -30,6 +31,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 | RustAutoOpaque(..)
                 | RustOpaque(..)
                 | DartOpaque(..)
+                | DartFn(..)
                 | Primitive(..)
                 | Record(..)
                 | Delegate(IrTypeDelegate::PrimitiveEnum(..)) => {
