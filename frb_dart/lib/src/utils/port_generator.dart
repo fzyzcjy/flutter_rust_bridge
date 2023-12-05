@@ -15,9 +15,9 @@ class ExecuteStreamPortGenerator {
 
 /// {@macro flutter_rust_bridge.internal}
 @internal
-class DropIdPortGenerator {
+class BaseLazyPortIdGenerator {
   static int _nextPort = 0;
 
   /// {@macro flutter_rust_bridge.internal}
-  static String create() => '__frb_dart_opaque_drop_${_nextPort++}';
+  static String create() => '__frb_lazy_port_${_nextPort++}';
 }
