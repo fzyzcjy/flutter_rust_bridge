@@ -1,4 +1,5 @@
 pub(crate) mod boxed;
+pub(crate) mod dart_fn;
 pub(crate) mod dart_opaque;
 pub(crate) mod delegate;
 pub(crate) mod dynamic;
@@ -30,6 +31,7 @@ crate::ir! {
 pub enum IrType {
     // alphabetical order
     Boxed(boxed::IrTypeBoxed),
+    DartFn(dart_fn::IrTypeDartFn),
     DartOpaque(dart_opaque::IrTypeDartOpaque),
     Delegate(delegate::IrTypeDelegate),
     Dynamic(dynamic::IrTypeDynamic),
