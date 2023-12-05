@@ -53,7 +53,11 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 }) = path.segments.first()
                 {
                     if &ident.to_string() == "BoxFuture" {
-                        if let GenericArgument::Type(inner_ty) = args.first().unwrap() {
+                        if let GenericArgument::Type(inner_ty) = (args.iter())
+                            .filter(|arg| matches!(arg, GenericArgument::Type(_)))
+                            .next()
+                            .unwrap()
+                        {
                             return self.parse_type(inner_ty);
                         }
                     }
