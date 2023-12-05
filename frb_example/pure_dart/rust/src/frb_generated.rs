@@ -626,7 +626,7 @@ fn wire_rust_call_dart_simple_impl(
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
-            let api_callback = callback.wire2api();
+            let api_callback = || todo!();
             move |context| async move {
                 Result::<_, ()>::Ok(crate::api::dart_fn::rust_call_dart_simple(api_callback).await)
             }
