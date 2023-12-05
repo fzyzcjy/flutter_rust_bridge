@@ -3,7 +3,8 @@ use crate::codegen::ir::ty::{IrContext, IrType, IrTypeTrait};
 
 crate::ir! {
 pub struct IrTypeDartFn {
-    // TODO
+    pub inputs: Vec<IrType>,
+    pub output: IrType,
 }
 }
 

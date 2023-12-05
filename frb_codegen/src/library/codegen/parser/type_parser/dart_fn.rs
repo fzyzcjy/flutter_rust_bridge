@@ -5,7 +5,8 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Primitive;
 use crate::codegen::parser::type_parser::unencodable::{ArgsRefs, SplayedSegment};
 use crate::codegen::parser::type_parser::TypeParserWithContext;
-use syn::Type;
+use itertools::Itertools;
+use syn::{ReturnType, Type};
 use ArgsRefs::Generic;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
@@ -25,10 +26,18 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         let ty: syn::Type = syn::parse_str(raw)?;
 
         if let Type::BareFn(bare_fn) = ty {
-            return Ok(Some(IrType::DartFn(IrTypeDartFn {})));
+            let inputs = bare_fn.inputs.iter().map(TODO).collect_vec();
+            let output = self.parse_dart_fn_output(&bare_fn.output)?;
+            return Ok(Some(IrType::DartFn(IrTypeDartFn { inputs, output })));
         }
 
         Ok(None)
+    }
+    fn parse_dart_fn_output(&self, raw: &ReturnType) -> anyhow::Result<IrType> {
+        match raw {
+            ReturnType::Default => Ok(Primitive(IrTypePrimitive::Unit)),
+            ReturnType::Type(_, _) => {}
+        }
     }
 }
 
