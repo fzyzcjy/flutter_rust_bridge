@@ -43,6 +43,7 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
     }
 
     externalLibrary ??= await _loadDefaultExternalLibrary();
+    handler ??= BaseHandler();
     final generalizedFrbRustBinding =
         GeneralizedFrbRustBinding(externalLibrary);
     final portManager = PortManager(generalizedFrbRustBinding);
@@ -88,7 +89,7 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
       await loadExternalLibrary(defaultExternalLibraryLoaderConfig);
 
   A _createDefaultApi(
-    BaseHandler? handler,
+    BaseHandler handler,
     GeneralizedFrbRustBinding generalizedFrbRustBinding,
     PortManager portManager,
     ExternalLibrary externalLibrary,
