@@ -29,7 +29,13 @@ impl<'a> ApiDartGeneratorInfoTrait for BoxedApiDartGenerator<'a> {
 
 impl<'a> ApiDartGeneratorInfoTrait for DartFnApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        "TODO_dart_api_type".into()
+        format!(
+            "{} Function({})",
+            ApiDartGenerator::new(self.ir.output.clone(), self.context).dart_api_type(),
+            (self.ir.inputs.iter())
+                .map(|x| ApiDartGenerator::new(x.clone(), self.context).dart_api_type())
+                .join(", "),
+        )
     }
 }
 
