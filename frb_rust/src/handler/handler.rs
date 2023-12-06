@@ -119,7 +119,7 @@ impl TaskContext {
 }
 
 pub fn handler_initialize<H: Handler>(
-    handler: H,
+    handler: &H,
     dart_opaque_drop_port: MessagePort,
     dart_fn_invoke_port: MessagePort,
 ) {

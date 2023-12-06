@@ -9,7 +9,7 @@ use dart_sys::Dart_NewPersistentHandle_DL;
 use log::warn;
 use std::thread::ThreadId;
 
-pub unsafe fn wire2api_dart_opaque(raw: usize) -> DartOpaque {
+pub unsafe fn wire2api_dart_opaque(raw: *const std::ffi::c_void) -> DartOpaque {
     *box_from_leak_ptr(raw as _)
 }
 

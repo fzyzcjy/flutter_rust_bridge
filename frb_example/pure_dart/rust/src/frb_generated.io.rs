@@ -8224,7 +8224,7 @@ pub extern "C" fn frb_initialize_rust(
     dart_fn_invoke_port: flutter_rust_bridge::for_generated::MessagePort,
 ) {
     flutter_rust_bridge::for_generated::handler_initialize(
-        FLUTTER_RUST_BRIDGE_HANDLER,
+        &FLUTTER_RUST_BRIDGE_HANDLER,
         dart_opaque_drop_port,
         dart_fn_invoke_port,
     )
