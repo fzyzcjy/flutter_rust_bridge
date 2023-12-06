@@ -31,12 +31,11 @@ use enum_dispatch::enum_dispatch;
 use paste::paste;
 
 codegen_generator_structs!(
-    WireDartGenerator;
-
     #[enum_dispatch(WireDartGeneratorImplTrait)]
     #[enum_dispatch(WireDartGeneratorMiscTrait)]
     #[enum_dispatch(WireDartGeneratorDart2RustTrait)]
     #[enum_dispatch(WireDartGeneratorRust2DartTrait)]
+    WireDartGenerator
 );
 
 #[derive(Debug, Clone, Copy)]

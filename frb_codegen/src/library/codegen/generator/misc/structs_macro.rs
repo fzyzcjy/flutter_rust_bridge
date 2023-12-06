@@ -1,6 +1,6 @@
 #[macro_export]
 macro_rules! codegen_generator_structs_inner {
-    ($generator_name:ident; $(#[$attribute:meta])*; $($name:ident),*,) => (
+    ($(#[$attribute:meta])* $generator_name:ident ; $($name:ident),*,) => (
         paste! {
             $(
             #[$attribute]
@@ -51,11 +51,10 @@ macro_rules! codegen_generator_structs_inner {
 
 #[macro_export]
 macro_rules! codegen_generator_structs {
-    ($generator_name:ident; $(#[$attribute:meta])*) => (
+    ($(#[$attribute:meta])* $generator_name:ident) => (
         crate::codegen_generator_structs_inner!(
+            $(#[$attribute])*
             $generator_name;
-
-            $(#[$attribute])*;
 
             Boxed,
             DartFn,

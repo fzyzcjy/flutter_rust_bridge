@@ -24,10 +24,9 @@ use enum_dispatch::enum_dispatch;
 use paste::paste;
 
 codegen_generator_structs!(
-    ApiDartGenerator;
-
     #[enum_dispatch(ApiDartGeneratorInfoTrait)]
     #[enum_dispatch(ApiDartGeneratorClassTrait)]
+    ApiDartGenerator
 );
 
 #[derive(Debug, Clone, Copy)]

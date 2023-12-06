@@ -28,12 +28,11 @@ use enum_dispatch::enum_dispatch;
 use paste::paste;
 
 codegen_generator_structs!(
-    WireRustGenerator;
-
     #[enum_dispatch(WireRustGeneratorImplTrait)]
     #[enum_dispatch(WireRustGeneratorRust2DartTrait)]
     #[enum_dispatch(WireRustGeneratorDart2RustTrait)]
     #[enum_dispatch(WireRustGeneratorMiscTrait)]
+    WireRustGenerator
 );
 
 #[derive(Debug, Clone, Copy)]
