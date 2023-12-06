@@ -14676,7 +14676,7 @@ pub extern "C" fn dart_opaque_dart2rust_api2wire(
         flutter_rust_bridge::for_generated::dart_opaque_dart2rust_api2wire(
             &*FLUTTER_RUST_BRIDGE_HANDLER,
             handle,
-        );
+        )
     }
 }
 
