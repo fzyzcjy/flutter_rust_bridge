@@ -86,7 +86,6 @@ fn drop_thread_box_persistent_handle_via_port(
     };
 }
 
-// TODO old name: `drop_dart_object`, rename all users
 #[no_mangle]
 pub unsafe extern "C" fn dart_opaque_drop_thread_box_persistent_handle(ptr: usize) {
     let value: ThreadBox<GeneralizedAutoDropDartPersistentHandle> = *box_from_leak_ptr(ptr as _);

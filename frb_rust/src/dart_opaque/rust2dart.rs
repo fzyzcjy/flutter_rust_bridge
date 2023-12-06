@@ -13,7 +13,6 @@ impl From<DartOpaque> for DartAbi {
     }
 }
 
-// TODO old name: `get_dart_object`, rename all users
 #[cfg(wasm)]
 #[wasm_bindgen]
 pub unsafe fn dart_opaque_rust2dart_wire2api(ptr: usize) -> GeneralizedDartHandle {
