@@ -20,8 +20,8 @@ pub use io::*;
 #[cfg(not(wasm))]
 mod auto_drop_dart_persistent_handle;
 
-mod dart2rust;
-mod rust2dart;
+pub(crate) mod dart2rust;
+pub(crate) mod rust2dart;
 mod thread_box;
 
 /// Arbitrary Dart object, whose type can be even non-encodable and non-transferable.
@@ -36,13 +36,18 @@ pub struct DartOpaque {
 }
 
 impl DartOpaque {
-    pub fn new(handle: Dart_Handle, drop_port: SendableMessagePortHandle) -> Self {
+    pub fn new(handle: DartOpaqueWireType, drop_port: SendableMessagePortHandle) -> Self {
         let auto_drop_persistent_handle =
             GeneralizedAutoDropDartPersistentHandle::new_from_non_persistent_handle(handle);
         Self {
             persistent_handle: Some(ThreadBox::new(auto_drop_persistent_handle)),
             drop_port,
         }
+    }
+
+    // TODO "Dart_Handle" is not cross-platform, so (1) change type (2) rename func (3) rename inner func
+    fn create_dart_handle(&self) -> Dart_Handle {
+        (self.persistent_handle.unwrap().unwrap()).create_dart_handle()
     }
 }
 
@@ -75,6 +80,6 @@ fn drop_thread_box_persistent_handle_via_port(
 // TODO old name: `drop_dart_object`, rename all users
 #[no_mangle]
 pub unsafe extern "C" fn dart_opaque_drop_thread_box_persistent_handle(ptr: usize) {
-    let value: ThreadBox<GeneralizedAutoDropDartPersistentHandle> = box_from_leak_ptr(ptr as _);
+    let value: ThreadBox<GeneralizedAutoDropDartPersistentHandle> = *box_from_leak_ptr(ptr as _);
     drop(value);
 }

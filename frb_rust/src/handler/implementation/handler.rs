@@ -161,7 +161,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
             .expect("no handler config")
             .dart_opaque_drop_port
             .to_owned();
-        crate::dart_opaque::wire2api_dart_opaque(raw, drop_port)
+        crate::dart_opaque::dart2rust::wire2api_dart_opaque(raw, drop_port)
     }
 
     fn dart_fn_invoke<Ret>(&self, dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<Ret> {

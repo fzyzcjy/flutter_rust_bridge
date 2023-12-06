@@ -9,3 +9,4 @@ use dart_sys::{
 use std::ffi::c_void;
 
 pub type GeneralizedAutoDropDartPersistentHandle = AutoDropDartPersistentHandle;
+pub type DartOpaqueWireType = Dart_Handle;

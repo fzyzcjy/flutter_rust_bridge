@@ -7,3 +7,4 @@ use wasm_bindgen::JsValue;
 use web_sys::BroadcastChannel;
 
 pub type GeneralizedAutoDropDartPersistentHandle = wasm_bindgen::JsValue;
+pub type DartOpaqueWireType = wasm_bindgen::JsValue;

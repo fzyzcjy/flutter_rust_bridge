@@ -1,3 +1,6 @@
+use std::fmt::Debug;
+use std::thread::ThreadId;
+
 /// Only allows manipulation at the thread which it is created.
 /// It is a "black box" that nobody can open it when it is on another thread.
 ///
@@ -8,14 +11,15 @@
 ///
 /// Therefore, even though it is `Send`/`Sync` among threads,
 /// it is just a blackbox on all other threads, so we are safe.
-pub struct ThreadBox<T> {
+#[derive(Debug)]
+pub struct ThreadBox<T: Debug> {
     // `Option` is used for correct drop.
     inner: Option<T>,
     /// The ID of the thread on which it was created.
     thread_id: ThreadId,
 }
 
-impl<T> ThreadBox<T> {
+impl<T: Debug> ThreadBox<T> {
     pub fn new(inner: T) -> Self {
         Self {
             inner: Some(inner),
@@ -35,7 +39,7 @@ impl<T> ThreadBox<T> {
     }
 }
 
-impl<T> Drop for ThreadBox<T> {
+impl<T: Debug> Drop for ThreadBox<T> {
     fn drop(&mut self) {
         if self.inner.is_some() && !self.is_on_creation_thread() {
             panic!("ThreadBox can only be dropped on the creation thread.")
@@ -46,9 +50,9 @@ impl<T> Drop for ThreadBox<T> {
 /// # Safety
 ///
 /// See documentation of `ThreadBox` struct
-unsafe impl<T> Send for ThreadBox<T> {}
+unsafe impl<T: Debug> Send for ThreadBox<T> {}
 
 /// # Safety
 ///
 /// See documentation of `ThreadBox` struct
-unsafe impl<T> Sync for ThreadBox<T> {}
+unsafe impl<T: Debug> Sync for ThreadBox<T> {}
