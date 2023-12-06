@@ -16,14 +16,14 @@ pub use io::*;
 #[cfg(not(wasm))]
 mod dart_persistent_handle_auto_drop;
 
+mod thread_box;
+
 /// Arbitrary Dart object, whose type can be even non-encodable and non-transferable.
 #[derive(Debug)]
 pub struct DartOpaque {
     /// Dart object
     handle: Option<DartOpaqueBase>,
 
-    /// The ID of the thread on which the Dart Object was created.
-    thread_id: ThreadId,
     /// The port to drop object (when we cannot drop in current thread)
     drop_port: SendableMessagePortHandle,
 }
@@ -47,7 +47,6 @@ impl DartOpaque {
     ) -> Self {
         Self {
             handle: Some(DartOpaqueBase::new(handle)),
-            thread_id: std::thread::current().id(),
             drop_port,
         }
     }
