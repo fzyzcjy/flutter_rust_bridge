@@ -7,7 +7,7 @@ use dart_sys::{Dart_NewPersistentHandle_DL, Dart_PersistentHandle};
 pub struct AutoDropDartPersistentHandle(Option<Dart_PersistentHandle>);
 
 impl AutoDropDartPersistentHandle {
-    pub fn new_from_non_persistent_handle(non_persistent_handle: Dart_Handle) {
+    pub fn new_from_non_persistent_handle(non_persistent_handle: Dart_Handle) -> Self {
         unsafe {
             let persistent_handle = Dart_NewPersistentHandle_DL
                 .expect("dart_api_dl has not been initialized")(
