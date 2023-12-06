@@ -24,6 +24,7 @@ pub(crate) mod rust2dart;
 mod thread_box;
 
 /// Arbitrary Dart object, whose type can be even non-encodable and non-transferable.
+// Implementation: Just [DartOpaqueInner] + Arc, in order to support `clone`
 #[derive(Debug)]
 pub struct DartOpaque {
     // TODO `Arc` is for `DartOpaque` to be clone-able.
