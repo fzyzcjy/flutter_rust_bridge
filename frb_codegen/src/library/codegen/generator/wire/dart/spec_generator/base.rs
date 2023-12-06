@@ -25,7 +25,7 @@ use crate::codegen::ir::ty::structure::IrTypeStructRef;
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::*;
-use crate::codegen_generator_structs;
+use crate::codegen_generator_structs_outer;
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGeneratorContext;
 use enum_dispatch::enum_dispatch;
 use paste::paste;
@@ -54,27 +54,7 @@ pub(crate) enum WireDartGenerator<'a> {
     Unencodable(UnencodableWireDartGenerator<'a>),
 }
 
-codegen_generator_structs!(
-    WireDartGenerator;
-
-    Boxed,
-    DartFn,
-    DartOpaque,
-    Delegate,
-    Dynamic,
-    EnumRef,
-    GeneralList,
-    Optional,
-    OptionalList,
-    Ownership,
-    Primitive,
-    PrimitiveList,
-    Record,
-    RustAutoOpaque,
-    RustOpaque,
-    StructRef,
-    Unencodable,
-);
+codegen_generator_structs_outer!(WireDartGenerator);
 
 #[derive(Debug, Clone, Copy)]
 pub(crate) struct WireDartGeneratorContext<'a> {

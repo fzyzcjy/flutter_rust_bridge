@@ -1,6 +1,6 @@
 #[doc(hidden)]
 #[macro_export]
-macro_rules! codegen_generator_structs {
+macro_rules! codegen_generator_structs_inner {
     ($generator_name:ident;$($name:ident),*,) => (
         paste! {
             impl<'a> $generator_name<'a> {
@@ -38,5 +38,33 @@ macro_rules! codegen_generator_structs {
                 }
             )*
         }
+    )
+}
+
+#[doc(hidden)]
+#[macro_export]
+macro_rules! codegen_generator_structs_outer {
+    ($generator_name:ident) => (
+        codegen_generator_structs_inner!(
+            $generator_name;
+
+            Boxed,
+            DartFn,
+            DartOpaque,
+            Delegate,
+            Dynamic,
+            EnumRef,
+            GeneralList,
+            Optional,
+            OptionalList,
+            Ownership,
+            Primitive,
+            PrimitiveList,
+            Record,
+            RustAutoOpaque,
+            RustOpaque,
+            StructRef,
+            Unencodable,
+        );
     )
 }
