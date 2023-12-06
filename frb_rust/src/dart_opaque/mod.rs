@@ -13,6 +13,7 @@ pub use web::*;
 #[cfg(not(wasm))]
 mod io;
 use crate::dart_opaque::thread_box::ThreadBox;
+use crate::for_generated::{box_from_leak_ptr, new_leak_box_ptr};
 #[cfg(not(wasm))]
 pub use io::*;
 
@@ -25,7 +26,8 @@ mod thread_box;
 #[derive(Debug)]
 pub struct DartOpaque {
     /// The internal persistent handle
-    persistent_handle: ThreadBox<GeneralizedAutoDropDartPersistentHandle>,
+    // `Option` is used for correct drop.
+    persistent_handle: Option<ThreadBox<GeneralizedAutoDropDartPersistentHandle>>,
 
     /// The port to drop object (when we cannot drop in current thread)
     drop_port: SendableMessagePortHandle,
@@ -36,7 +38,7 @@ impl DartOpaque {
         let auto_drop_persistent_handle =
             GeneralizedAutoDropDartPersistentHandle::new_from_non_persistent_handle(handle);
         Self {
-            persistent_handle: ThreadBox::new(auto_drop_persistent_handle),
+            persistent_handle: Some(ThreadBox::new(auto_drop_persistent_handle)),
             drop_port,
         }
     }
@@ -48,6 +50,32 @@ pub unsafe fn wire2api_dart_opaque(
     drop_port: SendableMessagePortHandle,
 ) -> DartOpaque {
     DartOpaque::new(raw, drop_port)
+}
+
+impl Drop for DartOpaque {
+    fn drop(&mut self) {
+        if let Some(persistent_handle) = self.persistent_handle.take() {
+            if !persistent_handle.is_on_creation_thread() {
+                let channel = Channel::new(handle_to_message_port(&self.drop_port));
+                let ptr = new_leak_box_ptr(persistent_handle) as usize;
+
+                if !channel.post(ptr) {
+                    warn!("Drop DartOpaque after closing the port, thus the object will be leaked forever.");
+                    // In case logs are disabled
+                    println!("Drop DartOpaque after closing the port, thus the object will be leaked forever.");
+                };
+            }
+        }
+    }
+}
+
+// TODO rename,
+//      (1) have "dart opaque" in name
+//      (2) make it clear that it is used for dropping ThreadBox<GeneralizedAutoDropDartPersistentHandle>
+#[no_mangle]
+pub unsafe extern "C" fn drop_dart_object(ptr: usize) {
+    let value: ThreadBox<GeneralizedAutoDropDartPersistentHandle> = box_from_leak_ptr(ptr as _);
+    drop(value);
 }
 
 // TODO things below not migrated yet --------------------------------------------------------
@@ -80,23 +108,24 @@ impl From<DartOpaque> for DartAbi {
     }
 }
 
-impl Drop for DartOpaque {
-    fn drop(&mut self) {
-        // TODO about thread
-        if let Some(inner) = self.persistent_handle.take() {
-            if std::thread::current().id() != self.thread_id {
-                let channel = Channel::new(handle_to_message_port(&self.drop_port));
-                let ptr = inner.into_raw();
-
-                if !channel.post(ptr) {
-                    warn!("Drop DartOpaque after closing the port, thus the object will be leaked forever.");
-                    // In case logs are disabled
-                    println!("Drop DartOpaque after closing the port, thus the object will be leaked forever.");
-                };
-            }
-        }
-    }
-}
+// TODO rm
+// impl Drop for DartOpaque {
+//     fn drop(&mut self) {
+//         // TODO about thread
+//         if let Some(inner) = self.persistent_handle.take() {
+//             if std::thread::current().id() != self.thread_id {
+//                 let channel = Channel::new(handle_to_message_port(&self.drop_port));
+//                 let ptr = inner.into_raw();
+//
+//                 if !channel.post(ptr) {
+//                     warn!("Drop DartOpaque after closing the port, thus the object will be leaked forever.");
+//                     // In case logs are disabled
+//                     println!("Drop DartOpaque after closing the port, thus the object will be leaked forever.");
+//                 };
+//             }
+//         }
+//     }
+// }
 
 #[cfg(not(wasm))]
 pub type DartOpaqueWireType = *const std::ffi::c_void;

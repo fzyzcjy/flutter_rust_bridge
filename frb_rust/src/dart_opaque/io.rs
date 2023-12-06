@@ -46,14 +46,15 @@ pub unsafe extern "C" fn get_dart_object(ptr: usize) -> Dart_Handle {
     handle.create_dart_handle()
 }
 
-/// # Safety
-///
-/// This function should never be called manually.
-#[no_mangle]
-pub unsafe extern "C" fn drop_dart_object(ptr: usize) {
-    drop(AutoDropDartPersistentHandle::from_raw(ptr as _))
-}
-
+// TODO rm
+// /// # Safety
+// ///
+// /// This function should never be called manually.
+// #[no_mangle]
+// pub unsafe extern "C" fn drop_dart_object(ptr: usize) {
+//     drop(AutoDropDartPersistentHandle::from_raw(ptr as _))
+// }
+//
 // TODO rm
 // /// # Safety
 // ///
