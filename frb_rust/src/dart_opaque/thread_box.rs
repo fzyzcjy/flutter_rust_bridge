@@ -37,13 +37,10 @@ impl<T: Debug> ThreadBox<T> {
         }
     }
 
-    // TODO rm? since no use yet
-    // pub fn into_inner(mut self) -> T {
-    //     if !self.is_on_creation_thread() {
-    //         panic!("ThreadBox can only be used on the creation thread.")
-    //     }
-    //     self.inner.take().unwrap()
-    // }
+    pub fn into_inner(self) -> T {
+        self.ensure_on_creation_thread();
+        self.inner.unwrap()
+    }
 }
 
 impl<T: Debug> AsRef<T> for ThreadBox<T> {

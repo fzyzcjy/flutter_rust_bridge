@@ -45,6 +45,10 @@ impl DartOpaque {
         }
     }
 
+    pub fn into_inner(self) -> Dart_Handle {
+        self.persistent_handle.unwrap().into_inner()
+    }
+
     // TODO "Dart_Handle" is not cross-platform, so (1) change type (2) rename func (3) rename inner func
     fn create_dart_handle(&self) -> Dart_Handle {
         (self.persistent_handle.as_ref().unwrap().as_ref()).create_dart_handle()
