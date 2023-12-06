@@ -783,6 +783,9 @@ abstract class RustLibApi extends BaseApi {
   Future<String> asyncAcceptDartOpaqueTwinRustAsync(
       {required Object opaque, dynamic hint});
 
+  Future<List<Object>> cloneDartOpaqueTwinRustAsync(
+      {required Object opaque, dynamic hint});
+
   Future<EnumDartOpaqueTwinRustAsync> createEnumDartOpaqueTwinRustAsync(
       {required Object opaque, dynamic hint});
 
@@ -824,6 +827,8 @@ abstract class RustLibApi extends BaseApi {
       {required int id, required Object opaque, dynamic hint});
 
   String asyncAcceptDartOpaqueTwinSync({required Object opaque, dynamic hint});
+
+  List<Object> cloneDartOpaqueTwinSync({required Object opaque, dynamic hint});
 
   EnumDartOpaqueTwinSync createEnumDartOpaqueTwinSync(
       {required Object opaque, dynamic hint});
@@ -7146,6 +7151,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<List<Object>> cloneDartOpaqueTwinRustAsync(
+      {required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_clone_dart_opaque_twin_rust_async(port_, arg0),
+      parseSuccessData: _wire2api_list_DartOpaque,
+      parseErrorData: null,
+      constMeta: kCloneDartOpaqueTwinRustAsyncConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCloneDartOpaqueTwinRustAsyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "clone_dart_opaque_twin_rust_async",
+        argNames: ["opaque"],
+      );
+
+  @override
   Future<EnumDartOpaqueTwinRustAsync> createEnumDartOpaqueTwinRustAsync(
       {required Object opaque, dynamic hint}) {
     var arg0 = api2wire_DartOpaque(opaque);
@@ -7465,6 +7492,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kAsyncAcceptDartOpaqueTwinSyncConstMeta =>
       const TaskConstMeta(
         debugName: "async_accept_dart_opaque_twin_sync",
+        argNames: ["opaque"],
+      );
+
+  @override
+  List<Object> cloneDartOpaqueTwinSync({required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_clone_dart_opaque_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_DartOpaque,
+      parseErrorData: null,
+      constMeta: kCloneDartOpaqueTwinSyncConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCloneDartOpaqueTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "clone_dart_opaque_twin_sync",
         argNames: ["opaque"],
       );
 

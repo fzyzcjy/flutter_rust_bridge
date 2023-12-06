@@ -5659,6 +5659,14 @@ pub fn wire_async_accept_dart_opaque_twin_rust_async(
 }
 
 #[wasm_bindgen]
+pub fn wire_clone_dart_opaque_twin_rust_async(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_clone_dart_opaque_twin_rust_async_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
 pub fn wire_create_enum_dart_opaque_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
@@ -5777,6 +5785,13 @@ pub fn wire_async_accept_dart_opaque_twin_sync(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     wire_async_accept_dart_opaque_twin_sync_impl(opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_clone_dart_opaque_twin_sync(
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_clone_dart_opaque_twin_sync_impl(opaque)
 }
 
 #[wasm_bindgen]

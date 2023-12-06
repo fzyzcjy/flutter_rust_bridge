@@ -4029,6 +4029,10 @@ class RustLibWire extends BaseWire {
           NativePortType port_, Object opaque) =>
       wasmModule.wire_async_accept_dart_opaque_twin_rust_async(port_, opaque);
 
+  void wire_clone_dart_opaque_twin_rust_async(
+          NativePortType port_, Object opaque) =>
+      wasmModule.wire_clone_dart_opaque_twin_rust_async(port_, opaque);
+
   void wire_create_enum_dart_opaque_twin_rust_async(
           NativePortType port_, Object opaque) =>
       wasmModule.wire_create_enum_dart_opaque_twin_rust_async(port_, opaque);
@@ -4088,6 +4092,10 @@ class RustLibWire extends BaseWire {
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
       wire_async_accept_dart_opaque_twin_sync(Object opaque) =>
           wasmModule.wire_async_accept_dart_opaque_twin_sync(opaque);
+
+  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_clone_dart_opaque_twin_sync(Object opaque) =>
+          wasmModule.wire_clone_dart_opaque_twin_sync(opaque);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
       wire_create_enum_dart_opaque_twin_sync(Object opaque) =>
@@ -7064,6 +7072,9 @@ class RustLibWasmModule implements WasmModule {
   external void wire_async_accept_dart_opaque_twin_rust_async(
       NativePortType port_, Object opaque);
 
+  external void wire_clone_dart_opaque_twin_rust_async(
+      NativePortType port_, Object opaque);
+
   external void wire_create_enum_dart_opaque_twin_rust_async(
       NativePortType port_, Object opaque);
 
@@ -7108,6 +7119,9 @@ class RustLibWasmModule implements WasmModule {
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
       wire_async_accept_dart_opaque_twin_sync(Object opaque);
+
+  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
+      wire_clone_dart_opaque_twin_sync(Object opaque);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
       wire_create_enum_dart_opaque_twin_sync(Object opaque);

@@ -9649,6 +9649,14 @@ pub extern "C" fn wire_async_accept_dart_opaque_twin_rust_async(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_clone_dart_opaque_twin_rust_async(
+    port_: i64,
+    opaque: *const std::ffi::c_void,
+) {
+    wire_clone_dart_opaque_twin_rust_async_impl(port_, opaque)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_create_enum_dart_opaque_twin_rust_async(
     port_: i64,
     opaque: *const std::ffi::c_void,
@@ -9758,6 +9766,13 @@ pub extern "C" fn wire_async_accept_dart_opaque_twin_sync(
     opaque: *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     wire_async_accept_dart_opaque_twin_sync_impl(opaque)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_clone_dart_opaque_twin_sync(
+    opaque: *const std::ffi::c_void,
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_clone_dart_opaque_twin_sync_impl(opaque)
 }
 
 #[no_mangle]

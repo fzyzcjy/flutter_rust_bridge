@@ -2084,6 +2084,8 @@ WireSyncReturn wire_return_dart_dynamic_twin_sync(void);
 
 void wire_async_accept_dart_opaque_twin_rust_async(int64_t port_, const void *opaque);
 
+void wire_clone_dart_opaque_twin_rust_async(int64_t port_, const void *opaque);
+
 void wire_create_enum_dart_opaque_twin_rust_async(int64_t port_, const void *opaque);
 
 void wire_create_nested_dart_opaque_twin_rust_async(int64_t port_,
@@ -2117,6 +2119,8 @@ void wire_panic_unwrap_dart_opaque_twin_rust_async(int64_t port_, const void *op
 void wire_set_static_dart_opaque_twin_rust_async(int64_t port_, int32_t id, const void *opaque);
 
 WireSyncReturn wire_async_accept_dart_opaque_twin_sync(const void *opaque);
+
+WireSyncReturn wire_clone_dart_opaque_twin_sync(const void *opaque);
 
 WireSyncReturn wire_create_enum_dart_opaque_twin_sync(const void *opaque);
 
@@ -4407,6 +4411,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_call_old_module_system_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_call_old_module_system_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_clone_dart_opaque_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_clone_dart_opaque_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) wire_clone_dart_opaque_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_close_event_listener_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_close_event_listener_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_close_event_listener_twin_sync);

@@ -67,6 +67,9 @@ void setStaticDartOpaqueTwinSync(
 void dropStaticDartOpaqueTwinSync({required int id, dynamic hint}) =>
     RustLib.instance.api.dropStaticDartOpaqueTwinSync(id: id, hint: hint);
 
+List<Object> cloneDartOpaqueTwinSync({required Object opaque, dynamic hint}) =>
+    RustLib.instance.api.cloneDartOpaqueTwinSync(opaque: opaque, hint: hint);
+
 class DartOpaqueNestedTwinSync {
   final Object first;
   final Object second;

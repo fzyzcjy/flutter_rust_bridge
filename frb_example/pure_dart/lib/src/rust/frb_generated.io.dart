@@ -8846,6 +8846,24 @@ class RustLibWire implements BaseWire {
       _wire_async_accept_dart_opaque_twin_rust_asyncPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
+  void wire_clone_dart_opaque_twin_rust_async(
+    int port_,
+    ffi.Pointer<ffi.Void> opaque,
+  ) {
+    return _wire_clone_dart_opaque_twin_rust_async(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_clone_dart_opaque_twin_rust_asyncPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_clone_dart_opaque_twin_rust_async');
+  late final _wire_clone_dart_opaque_twin_rust_async =
+      _wire_clone_dart_opaque_twin_rust_asyncPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
   void wire_create_enum_dart_opaque_twin_rust_async(
     int port_,
     ffi.Pointer<ffi.Void> opaque,
@@ -9120,6 +9138,21 @@ class RustLibWire implements BaseWire {
       'wire_async_accept_dart_opaque_twin_sync');
   late final _wire_async_accept_dart_opaque_twin_sync =
       _wire_async_accept_dart_opaque_twin_syncPtr
+          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+
+  WireSyncReturn wire_clone_dart_opaque_twin_sync(
+    ffi.Pointer<ffi.Void> opaque,
+  ) {
+    return _wire_clone_dart_opaque_twin_sync(
+      opaque,
+    );
+  }
+
+  late final _wire_clone_dart_opaque_twin_syncPtr = _lookup<
+          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
+      'wire_clone_dart_opaque_twin_sync');
+  late final _wire_clone_dart_opaque_twin_sync =
+      _wire_clone_dart_opaque_twin_syncPtr
           .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
 
   WireSyncReturn wire_create_enum_dart_opaque_twin_sync(

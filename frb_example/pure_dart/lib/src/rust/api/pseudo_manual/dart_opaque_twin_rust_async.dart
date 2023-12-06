@@ -80,6 +80,11 @@ Future<void> dropStaticDartOpaqueTwinRustAsync(
         {required int id, dynamic hint}) =>
     RustLib.instance.api.dropStaticDartOpaqueTwinRustAsync(id: id, hint: hint);
 
+Future<List<Object>> cloneDartOpaqueTwinRustAsync(
+        {required Object opaque, dynamic hint}) =>
+    RustLib.instance.api
+        .cloneDartOpaqueTwinRustAsync(opaque: opaque, hint: hint);
+
 class DartOpaqueNestedTwinRustAsync {
   final Object first;
   final Object second;
