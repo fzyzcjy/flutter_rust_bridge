@@ -10,6 +10,7 @@ pub use web::*;
 
 #[cfg(not(wasm))]
 mod io;
+use crate::dart_opaque::thread_box::ThreadBox;
 #[cfg(not(wasm))]
 pub use io::*;
 
@@ -22,7 +23,7 @@ mod thread_box;
 #[derive(Debug)]
 pub struct DartOpaque {
     /// Dart object
-    handle: Option<DartOpaqueBase>,
+    handle: ThreadBox<GeneralizedAutoDropDartPersistentHandle>,
 
     /// The port to drop object (when we cannot drop in current thread)
     drop_port: SendableMessagePortHandle,
