@@ -1,9 +1,12 @@
 use super::dart_persistent_handle_auto_drop::DartPersistentHandleAutoDrop;
 use crate::generalized_isolate::Channel;
 use crate::platform_types::MessagePort;
+use dart_sys::Dart_Handle;
+use dart_sys::Dart_NewPersistentHandle_DL;
 use dart_sys::{
     Dart_DeletePersistentHandle_DL, Dart_HandleFromPersistent_DL, Dart_PersistentHandle,
 };
+use std::ffi::c_void;
 
 pub type GeneralizedDartPersistentHandleWrapper = DartPersistentHandleAutoDrop;
 pub type GeneralizedDartPersistentHandle = Dart_PersistentHandle;
@@ -52,5 +55,5 @@ pub unsafe extern "C" fn drop_dart_object(ptr: usize) {
 /// This function should never be called manually.
 #[no_mangle]
 pub unsafe extern "C" fn dart_new_persistent_handle(handle: Dart_Handle) -> *const c_void {
-    Dart_NewPersistentHandle_DL.expect("dart_api_dl has not been initialized")(handle)
+    Dart_NewPersistentHandle_DL.expect("dart_api_dl has not been initialized")(handle) as _
 }
