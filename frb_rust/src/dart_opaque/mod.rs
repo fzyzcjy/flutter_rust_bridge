@@ -77,9 +77,9 @@ impl Drop for DartOpaque {
                 let ptr = inner.into_raw();
 
                 if !channel.post(ptr) {
-                    warn!("Drop DartOpaque after closing the port, thus the object will be leaked forever.");
-                    // In case logs are disabled
-                    println!("Drop DartOpaque after closing the port, thus the object will be leaked forever.");
+                    let msg = format!("Drop DartOpaque after closing the port, thus the object will be leaked forever. channel={channel:?}");
+                    warn!("{}", msg);
+                    println!("{}", msg); // In case logs are disabled
                 };
             }
         }
