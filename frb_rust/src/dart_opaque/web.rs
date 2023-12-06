@@ -6,7 +6,9 @@ use wasm_bindgen::JsCast;
 use wasm_bindgen::JsValue;
 use web_sys::BroadcastChannel;
 
-pub type GeneralizedDartPersistentHandleWrapper = wasm_bindgen::JsValue;
+pub type GeneralizedAutoDropDartPersistentHandle = wasm_bindgen::JsValue;
+
+// TODO rm?
 pub type GeneralizedDartPersistentHandle = wasm_bindgen::JsValue;
 
 #[derive(Debug)]

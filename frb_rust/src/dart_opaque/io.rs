@@ -8,7 +8,9 @@ use dart_sys::{
 };
 use std::ffi::c_void;
 
-pub type GeneralizedDartPersistentHandleWrapper = AutoDropDartPersistentHandle;
+pub type GeneralizedAutoDropDartPersistentHandle = AutoDropDartPersistentHandle;
+
+// TODO rm?
 pub type GeneralizedDartPersistentHandle = Dart_PersistentHandle;
 
 // TODO remove or rename this?
