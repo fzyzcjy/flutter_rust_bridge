@@ -13,7 +13,7 @@ pub struct DartOpaqueBase {
 impl DartOpaqueBase {
     pub fn new(handle: Dart_PersistentHandle) -> Self {
         Self {
-            inner: DartPersistentHandleWrapper::from_raw(handle),
+            inner: unsafe { DartPersistentHandleWrapper::from_raw(handle) },
         }
     }
 
@@ -32,7 +32,8 @@ impl DartOpaqueBase {
 pub struct DartPersistentHandleWrapper(Option<Dart_PersistentHandle>);
 
 impl DartPersistentHandleWrapper {
-    pub fn from_raw(ptr: Dart_PersistentHandle) -> Self {
+    // `from_raw` is `unsafe` while `into_raw` is not, mimicking `Box::*` counterpart.
+    pub unsafe fn from_raw(ptr: Dart_PersistentHandle) -> Self {
         Self(Some(ptr))
     }
 
