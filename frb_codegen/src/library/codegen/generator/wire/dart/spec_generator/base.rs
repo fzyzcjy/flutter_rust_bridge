@@ -30,29 +30,32 @@ use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartG
 use enum_dispatch::enum_dispatch;
 use paste::paste;
 
-#[enum_dispatch(WireDartGeneratorImplTrait)]
-#[enum_dispatch(WireDartGeneratorMiscTrait)]
-#[enum_dispatch(WireDartGeneratorDart2RustTrait)]
-#[enum_dispatch(WireDartGeneratorRust2DartTrait)]
-pub(crate) enum WireDartGenerator<'a> {
-    Boxed(BoxedWireDartGenerator<'a>),
-    DartFn(DartFnWireDartGenerator<'a>),
-    DartOpaque(DartOpaqueWireDartGenerator<'a>),
-    Delegate(DelegateWireDartGenerator<'a>),
-    Dynamic(DynamicWireDartGenerator<'a>),
-    EnumRef(EnumRefWireDartGenerator<'a>),
-    GeneralList(GeneralListWireDartGenerator<'a>),
-    Optional(OptionalWireDartGenerator<'a>),
-    OptionalList(OptionalListWireDartGenerator<'a>),
-    Ownership(OwnershipWireDartGenerator<'a>),
-    Primitive(PrimitiveWireDartGenerator<'a>),
-    PrimitiveList(PrimitiveListWireDartGenerator<'a>),
-    Record(RecordWireDartGenerator<'a>),
-    RustAutoOpaque(RustAutoOpaqueWireDartGenerator<'a>),
-    RustOpaque(RustOpaqueWireDartGenerator<'a>),
-    StructRef(StructRefWireDartGenerator<'a>),
-    Unencodable(UnencodableWireDartGenerator<'a>),
-}
+crate::hello!(
+    WireDartGenerator;
+
+    #[enum_dispatch(WireDartGeneratorImplTrait)]
+    #[enum_dispatch(WireDartGeneratorMiscTrait)]
+    #[enum_dispatch(WireDartGeneratorDart2RustTrait)]
+    #[enum_dispatch(WireDartGeneratorRust2DartTrait)];
+
+    Boxed,
+    DartFn,
+    DartOpaque,
+    Delegate,
+    Dynamic,
+    EnumRef,
+    GeneralList,
+    Optional,
+    OptionalList,
+    Ownership,
+    Primitive,
+    PrimitiveList,
+    Record,
+    RustAutoOpaque,
+    RustOpaque,
+    StructRef,
+    Unencodable,
+);
 
 codegen_generator_structs!(
     WireDartGenerator;

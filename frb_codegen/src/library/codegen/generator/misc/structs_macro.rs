@@ -40,3 +40,19 @@ macro_rules! codegen_generator_structs {
         }
     )
 }
+
+#[macro_export]
+macro_rules! hello {
+    ($generator_name:ident; $(#[$cfgs:meta])*; $($name:ident),*,) => (
+        paste! {
+            $(
+            #[$cfgs]
+            )*
+            pub(crate) enum $generator_name<'a> {
+                $(
+                    $name([<$name $generator_name>]<'a>),
+                )*
+            }
+        }
+    )
+}
