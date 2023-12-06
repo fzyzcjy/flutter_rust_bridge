@@ -3,22 +3,22 @@ use crate::platform_types::MessagePort;
 use dart_sys::{Dart_DeletePersistentHandle_DL, Dart_PersistentHandle};
 
 pub type OpaqueMessagePort = i64;
-pub type DartWrapObject = DartHandleWrap;
+pub type DartWrapObject = DartPersistentHandleWrapper;
 pub type DartObject = Dart_PersistentHandle;
 
 #[derive(Debug)]
 pub struct DartOpaqueBase {
-    inner: DartHandleWrap,
+    inner: DartPersistentHandleWrapper,
 }
 
 impl DartOpaqueBase {
     pub fn new(handle: Dart_PersistentHandle) -> Self {
         Self {
-            inner: DartHandleWrap::from_raw(handle),
+            inner: DartPersistentHandleWrapper::from_raw(handle),
         }
     }
 
-    pub fn unwrap(self) -> DartHandleWrap {
+    pub fn unwrap(self) -> DartPersistentHandleWrapper {
         self.inner
     }
 
@@ -29,9 +29,9 @@ impl DartOpaqueBase {
 
 #[derive(Debug)]
 /// Option for correct drop.
-pub struct DartHandleWrap(Option<Dart_PersistentHandle>);
+pub struct DartPersistentHandleWrapper(Option<Dart_PersistentHandle>);
 
-impl DartHandleWrap {
+impl DartPersistentHandleWrapper {
     pub fn from_raw(ptr: Dart_PersistentHandle) -> Self {
         Self(Some(ptr))
     }
@@ -41,13 +41,13 @@ impl DartHandleWrap {
     }
 }
 
-impl From<DartHandleWrap> for Dart_PersistentHandle {
-    fn from(warp: DartHandleWrap) -> Self {
+impl From<DartPersistentHandleWrapper> for Dart_PersistentHandle {
+    fn from(warp: DartPersistentHandleWrapper) -> Self {
         warp.into_raw()
     }
 }
 
-impl Drop for DartHandleWrap {
+impl Drop for DartPersistentHandleWrapper {
     fn drop(&mut self) {
         if let Some(inner) = self.0 {
             unsafe {
