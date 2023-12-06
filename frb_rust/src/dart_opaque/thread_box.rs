@@ -34,15 +34,11 @@ impl<T: Debug> ThreadBox<T> {
 
     fn ensure_on_creation_thread(&self) {
         if !self.is_on_creation_thread() {
-            self.panic_because_not_on_creation_thread()
+            panic!(
+                "ThreadBox can only be used on the creation thread. current_thread={:?} creation_thread={:?}",
+                std::thread::current().id(), self.thread_id,
+            )
         }
-    }
-
-    fn panic_because_not_on_creation_thread(&self) -> ! {
-        panic!(
-            "ThreadBox can only be used on the creation thread. current_thread={:?} creation_thread={:?}",
-            std::thread::current().id(), self.thread_id,
-        )
     }
 
     pub fn into_inner(mut self) -> T {
@@ -60,18 +56,8 @@ impl<T: Debug> AsRef<T> for ThreadBox<T> {
 
 impl<T: Debug> Drop for ThreadBox<T> {
     fn drop(&mut self) {
-        if self.inner.is_some() && !self.is_on_creation_thread() {
-            if std::thread::panicking() {
-                let msg = "ThreadBox.drop cannot drop data because it is not on creation thread. \
-However, system is already panicking so we should not panic again. \
-Therefore, we have to make a memory leak for the data.";
-                warn!("{}", msg);
-                println!("{}", msg);
-
-                std::mem::forget(self.inner.take());
-            } else {
-                self.panic_because_not_on_creation_thread()
-            }
+        if self.inner.is_some() {
+            self.ensure_on_creation_thread()
         }
     }
 }
