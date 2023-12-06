@@ -37,9 +37,9 @@ impl<T: Debug> ThreadBox<T> {
         }
     }
 
-    pub fn into_inner(self) -> T {
+    pub fn into_inner(mut self) -> T {
         self.ensure_on_creation_thread();
-        self.inner.unwrap()
+        self.inner.take().unwrap()
     }
 }
 

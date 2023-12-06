@@ -45,8 +45,8 @@ impl DartOpaque {
         }
     }
 
-    pub fn into_inner(self) -> Dart_Handle {
-        self.persistent_handle.unwrap().into_inner()
+    pub fn into_inner(mut self) -> GeneralizedAutoDropDartPersistentHandle {
+        self.persistent_handle.take().unwrap().into_inner()
     }
 
     // TODO "Dart_Handle" is not cross-platform, so (1) change type (2) rename func (3) rename inner func
