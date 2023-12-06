@@ -16,7 +16,9 @@ pub unsafe fn wire2api_dart_opaque(
     DartOpaque::new(raw, drop_port)
 }
 
-#[no_mangle]
-pub unsafe extern "C" fn dart_opaque_dart2rust_api2wire(handle: Dart_Handle) -> usize {
-    new_leak_box_ptr(DartOpaque::new(handle, TODO))
+pub unsafe fn dart_opaque_dart2rust_api2wire(
+    handle: Dart_Handle,
+    drop_port: SendableMessagePortHandle,
+) -> usize {
+    new_leak_box_ptr(DartOpaque::new(handle, drop_port)) as _
 }
