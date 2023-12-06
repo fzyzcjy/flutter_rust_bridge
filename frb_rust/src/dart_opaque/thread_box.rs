@@ -27,7 +27,7 @@ impl<T: Debug> ThreadBox<T> {
         }
     }
 
-    pub fn unwrap(mut self) -> T {
+    pub fn into_inner(mut self) -> T {
         if !self.is_on_creation_thread() {
             panic!("ThreadBox can only be used on the creation thread.")
         }
