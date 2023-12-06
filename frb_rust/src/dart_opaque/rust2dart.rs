@@ -4,6 +4,7 @@ use crate::generalized_isolate::{Channel, IntoDart};
 use crate::platform_types::{handle_to_message_port, DartAbi, SendableMessagePortHandle};
 use log::warn;
 use std::thread::ThreadId;
+#[cfg(wasm)]
 use wasm_bindgen::prelude::*;
 
 impl From<DartOpaque> for DartAbi {
