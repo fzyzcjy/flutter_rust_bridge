@@ -13,6 +13,9 @@ mod io;
 #[cfg(not(wasm))]
 pub use io::*;
 
+#[cfg(not(wasm))]
+mod dart_persistent_handle_auto_drop;
+
 /// Arbitrary Dart object, whose type can be even non-encodable and non-transferable.
 #[derive(Debug)]
 pub struct DartOpaque {
