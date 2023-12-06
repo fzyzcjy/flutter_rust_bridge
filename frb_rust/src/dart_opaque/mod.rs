@@ -42,11 +42,12 @@ impl DartOpaque {
     }
 }
 
+// TODO the api2wire side: just send the object itself, nothing more
 pub unsafe fn wire2api_dart_opaque(
-    raw: DartOpaqueWireType,
+    raw: Dart_Handle,
     drop_port: SendableMessagePortHandle,
 ) -> DartOpaque {
-    DartOpaque::new(raw as _, drop_port)
+    DartOpaque::new(raw, drop_port)
 }
 
 // TODO things below not migrated yet --------------------------------------------------------
