@@ -48,6 +48,14 @@ impl DartOpaque {
     fn create_dart_handle(&self) -> GeneralizedDartHandle {
         self.arc.create_dart_handle()
     }
+
+    pub fn into_raw(self) -> *const std::ffi::c_void {
+        new_leak_box_ptr(self) as _
+    }
+
+    pub unsafe fn from_raw(raw: *const std::ffi::c_void) -> Self {
+        *box_from_leak_ptr(raw as _)
+    }
 }
 
 impl Clone for DartOpaque {

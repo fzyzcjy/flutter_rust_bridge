@@ -9,7 +9,7 @@ use wasm_bindgen::prelude::*;
 
 impl From<DartOpaque> for DartAbi {
     fn from(data: DartOpaque) -> Self {
-        (new_leak_box_ptr(data) as usize).into_dart()
+        (data.into_raw() as usize).into_dart()
     }
 }
 
@@ -26,6 +26,6 @@ pub unsafe extern "C" fn dart_opaque_rust2dart_wire2api(ptr: usize) -> Generaliz
 }
 
 unsafe fn dart_opaque_rust2dart_wire2api_inner(ptr: usize) -> GeneralizedDartHandle {
-    let value: DartOpaque = *box_from_leak_ptr(ptr as _);
-    value.create_dart_handle()
+    let opaque = DartOpaque::from_raw(ptr as _);
+    opaque.create_dart_handle()
 }
