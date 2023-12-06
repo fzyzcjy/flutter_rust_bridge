@@ -55,6 +55,7 @@ pub unsafe fn wire2api_dart_opaque(
 impl Drop for DartOpaque {
     fn drop(&mut self) {
         if let Some(persistent_handle) = self.persistent_handle.take() {
+            // If we forget to do so, ThreadBox will panic because it requires things to be dropped on creation thread
             if !persistent_handle.is_on_creation_thread() {
                 let channel = Channel::new(handle_to_message_port(&self.drop_port));
                 let ptr = new_leak_box_ptr(persistent_handle) as usize;
