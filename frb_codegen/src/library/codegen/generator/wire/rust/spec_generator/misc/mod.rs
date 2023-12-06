@@ -150,7 +150,15 @@ fn generate_boilerplate() -> Acc<Vec<WireRustOutputCode>> {
                 },
             ],
             return_type: None,
-            body: format!("{HANDLER_NAME}.initialize(dart_opaque_drop_port, dart_fn_invoke_port)"),
+            body: format!(
+                "
+                flutter_rust_bridge::for_generated::handler_initialize(
+                    &*{HANDLER_NAME},
+                    dart_opaque_drop_port,
+                    dart_fn_invoke_port,
+                )
+                "
+            ),
             target: target.try_into().unwrap(),
         }
         .into()]
