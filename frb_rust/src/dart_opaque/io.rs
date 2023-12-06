@@ -13,29 +13,29 @@ pub type GeneralizedAutoDropDartPersistentHandle = AutoDropDartPersistentHandle;
 // TODO things below not migrated yet --------------------------------------------------------
 
 // TODO rm?
-pub type GeneralizedDartPersistentHandle = Dart_PersistentHandle;
-
-// TODO remove or rename this?
-#[derive(Debug)]
-pub struct DartOpaqueBase {
-    inner: AutoDropDartPersistentHandle,
-}
-
-impl DartOpaqueBase {
-    pub fn new(handle: Dart_PersistentHandle) -> Self {
-        Self {
-            inner: unsafe { AutoDropDartPersistentHandle::from_raw(handle) },
-        }
-    }
-
-    pub fn unwrap(self) -> AutoDropDartPersistentHandle {
-        self.inner
-    }
-
-    pub fn into_raw(self) -> Dart_PersistentHandle {
-        self.inner.into_raw()
-    }
-}
+// pub type GeneralizedDartPersistentHandle = Dart_PersistentHandle;
+//
+// // TODO remove or rename this?
+// #[derive(Debug)]
+// pub struct DartOpaqueBase {
+//     inner: AutoDropDartPersistentHandle,
+// }
+//
+// impl DartOpaqueBase {
+//     pub fn new(handle: Dart_PersistentHandle) -> Self {
+//         Self {
+//             inner: unsafe { AutoDropDartPersistentHandle::from_raw(handle) },
+//         }
+//     }
+//
+//     pub fn unwrap(self) -> AutoDropDartPersistentHandle {
+//         self.inner
+//     }
+//
+//     pub fn into_raw(self) -> Dart_PersistentHandle {
+//         self.inner.into_raw()
+//     }
+// }
 
 /// # Safety
 ///

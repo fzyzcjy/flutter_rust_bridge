@@ -11,26 +11,26 @@ pub type GeneralizedAutoDropDartPersistentHandle = wasm_bindgen::JsValue;
 // TODO things below not migrated yet --------------------------------------------------------
 
 // TODO rm?
-pub type GeneralizedDartPersistentHandle = wasm_bindgen::JsValue;
-
-#[derive(Debug)]
-pub struct DartOpaqueBase {
-    inner: JsValue,
-}
-
-impl DartOpaqueBase {
-    pub fn new(handle: JsValue) -> Self {
-        Self { inner: handle }
-    }
-
-    pub fn unwrap(self) -> JsValue {
-        self.inner
-    }
-
-    pub fn into_raw(self) -> *mut JsValue {
-        new_leak_box_ptr(self.inner)
-    }
-}
+// pub type GeneralizedDartPersistentHandle = wasm_bindgen::JsValue;
+//
+// #[derive(Debug)]
+// pub struct DartOpaqueBase {
+//     inner: JsValue,
+// }
+//
+// impl DartOpaqueBase {
+//     pub fn new(handle: JsValue) -> Self {
+//         Self { inner: handle }
+//     }
+//
+//     pub fn unwrap(self) -> JsValue {
+//         self.inner
+//     }
+//
+//     pub fn into_raw(self) -> *mut JsValue {
+//         new_leak_box_ptr(self.inner)
+//     }
+// }
 
 /// # Safety
 ///
