@@ -29,14 +29,12 @@ class GeneralizedFrbRustBinding {
       _binding.init_frb_dart_api_dl(ffi.NativeApi.initializeApiDLData);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  Object getDartObject(int ptr) => _binding.get_dart_object(ptr);
+  Object dartOpaqueRust2DartWire2Api(int ptr) =>
+      _binding.dart_opaque_rust2dart_wire2api(ptr);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  void dropDartObject(int ptr) => _binding.drop_dart_object(ptr);
-
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
-  PlatformPointer dartNewPersistentHandle(Object obj) =>
-      _binding.dart_new_persistent_handle(obj);
+  void dartOpaqueDropThreadBoxPersistentHandle(int ptr) =>
+      _binding.dart_opaque_drop_thread_box_persistent_handle(ptr);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void freeWireSyncReturn(WireSyncReturn val) =>

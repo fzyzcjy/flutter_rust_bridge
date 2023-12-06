@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
 import 'package:js/js.dart';
 
@@ -13,10 +15,12 @@ class GeneralizedFrbRustBinding {
   void initFrbDartApiDl() {}
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  Object getDartObject(int ptr) => _getDartObject(ptr);
+  Object dartOpaqueRust2DartWire2Api(int ptr) =>
+      _dart_opaque_rust2dart_wire2api(ptr);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  void dropDartObject(int ptr) => _dropDartObject(ptr);
+  void dartOpaqueDropThreadBoxPersistentHandle(int ptr) =>
+      _dart_opaque_drop_thread_box_persistent_handle(ptr);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   int newDartOpaque(Object obj, NativePortType port) =>
@@ -27,9 +31,9 @@ class GeneralizedFrbRustBinding {
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-@JS("wasm_bindgen.get_dart_object")
-external Object _getDartObject(int ptr);
+@JS("wasm_bindgen.dart_opaque_rust2dart_wire2api")
+external Object _dart_opaque_rust2dart_wire2api(int ptr);
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-@JS("wasm_bindgen.drop_dart_object")
-external void _dropDartObject(int ptr);
+@JS("wasm_bindgen.dart_opaque_drop_thread_box_persistent_handle")
+external void _dart_opaque_drop_thread_box_persistent_handle(int ptr);
