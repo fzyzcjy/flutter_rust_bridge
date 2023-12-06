@@ -28,12 +28,10 @@ class GeneralizedFrbRustBinding {
       _binding.init_frb_dart_api_dl(ffi.NativeApi.initializeApiDLData);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  Object getDartObject(ffi.Pointer<ffi.Void> persistentHandle) =>
-      _binding.get_dart_object(persistentHandle);
+  Object getDartObject(int ptr) => _binding.get_dart_object(ptr);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  void dropDartObject(ffi.Pointer<ffi.Void> persistentHandle) =>
-      _binding.drop_dart_object(persistentHandle);
+  void dropDartObject(int ptr) => _binding.drop_dart_object(ptr);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   int newDartOpaque(Object obj) => _binding.new_dart_opaque(obj);
