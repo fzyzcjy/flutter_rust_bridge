@@ -32,9 +32,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
         let segment_ident = segment.ident.to_string();
         match &segment_ident[..] {
-            "FnOnce" => {} // Ok
-            "Fn" => bail!("DartFn with `Fn` (instead of `FnOnce`) is to be implemented. Create an issue at GitHub if you want it."),
-            _ => bail!("Unknown ident: {segment_ident}")
+            // TODO Currently, we treat `FnOnce` same as `Fn`,
+            //      but in the future we can optimize this because we no longer need Arc or Clone for this case.
+            "FnOnce" | "Fn" => {} // Ok
+            _ => bail!("Unknown ident: {segment_ident}"),
         }
 
         if let PathArguments::Parenthesized(arguments) = &segment.arguments {
