@@ -71,8 +71,11 @@ impl From<DartOpaque> for DartAbi {
 
 impl Drop for DartOpaque {
     fn drop(&mut self) {
+        println!("hi DartOpaque.drop start self={self:?}");
         if let Some(inner) = self.handle.take() {
+            println!("hi DartOpaque.drop has inner");
             if std::thread::current().id() != self.thread_id {
+                println!("hi DartOpaque.drop not same thread");
                 let channel = Channel::new(handle_to_message_port(&self.drop_port));
                 let ptr = inner.into_raw();
 

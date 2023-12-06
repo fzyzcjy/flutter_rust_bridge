@@ -29,8 +29,13 @@ impl DartPersistentHandleAutoDrop {
 
 impl Drop for DartPersistentHandleAutoDrop {
     fn drop(&mut self) {
+        println!("hi DartPersistentHandleAutoDrop.drop start");
         if let Some(inner) = self.0 {
+            println!("hi DartPersistentHandleAutoDrop.drop has inner");
             unsafe {
+                println!(
+                    "hi DartPersistentHandleAutoDrop.drop call Dart_DeletePersistentHandle_DL"
+                );
                 Dart_DeletePersistentHandle_DL.expect("dart_api_dl has not been initialized")(inner)
             }
         }
