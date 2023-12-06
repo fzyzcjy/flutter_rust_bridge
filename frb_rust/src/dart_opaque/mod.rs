@@ -64,12 +64,9 @@ impl Drop for DartOpaque {
     }
 }
 
-// TODO rename,
-//      (1) have "dart opaque" in name
-//      (2) make it clear that it is used for dropping ThreadBox<GeneralizedAutoDropDartPersistentHandle>
-//      (3) also make it clear, it is called from that DropPortManager
+// TODO old name: `drop_dart_object`, rename all users
 #[no_mangle]
-pub unsafe extern "C" fn drop_dart_object(ptr: usize) {
+pub unsafe extern "C" fn dart_opaque_drop_thread_box_persistent_handle(ptr: usize) {
     let value: ThreadBox<GeneralizedAutoDropDartPersistentHandle> = box_from_leak_ptr(ptr as _);
     drop(value);
 }

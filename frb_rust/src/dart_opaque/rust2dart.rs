@@ -11,9 +11,9 @@ impl From<DartOpaque> for DartAbi {
     }
 }
 
-// TODO rename
+// TODO old name: `get_dart_object`, rename all users
 #[no_mangle]
-pub unsafe extern "C" fn get_dart_object(ptr: usize) -> Dart_Handle {
+pub unsafe extern "C" fn dart_opaque_rust2dart_wire2api(ptr: usize) -> Dart_Handle {
     let value: DartOpaque = box_from_leak_ptr(ptr as _);
     handle.create_dart_handle()
 }
