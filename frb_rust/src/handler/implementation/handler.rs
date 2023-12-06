@@ -48,7 +48,6 @@ pub struct SimpleHandler<E: Executor, EH: ErrorHandler> {
     config: Mutex<Option<SimpleHandlerConfig>>,
 }
 
-#[derive(Debug)]
 struct SimpleHandlerConfig {
     dart_opaque_drop_port: SendableMessagePortHandle,
     dart_fn_invoke_port: SendableMessagePortHandle,
@@ -74,10 +73,6 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
                     dart_opaque_drop_port: message_port_to_handle(&dart_opaque_drop_port),
                     dart_fn_invoke_port: message_port_to_handle(&dart_fn_invoke_port),
                 });
-                println!(
-                    "hi Handler.initialize self(ptr)={:?} now config={config:?}",
-                    self as *const _
-                );
             }
         });
     }
@@ -154,12 +149,6 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
             .expect("no handler config")
             .dart_opaque_drop_port
             .to_owned();
-
-        println!(
-            "hi Handler.wire2api_dart_opaque self(ptr)={:?} drop_port={drop_port:?}",
-            self as *const _
-        );
-
         crate::dart_opaque::wire2api_dart_opaque(raw, drop_port)
     }
 

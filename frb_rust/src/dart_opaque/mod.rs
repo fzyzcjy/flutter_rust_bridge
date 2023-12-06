@@ -45,7 +45,6 @@ impl DartOpaque {
         handle: GeneralizedDartPersistentHandle,
         drop_port: SendableMessagePortHandle,
     ) -> Self {
-        println!("hi DartOpaque.new drop_port={drop_port:?}");
         Self {
             handle: Some(DartOpaqueBase::new(handle)),
             thread_id: std::thread::current().id(),
