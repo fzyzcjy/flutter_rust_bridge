@@ -33,7 +33,10 @@ impl<T: Debug> ThreadBox<T> {
 
     fn ensure_on_creation_thread(&self) {
         if !self.is_on_creation_thread() {
-            panic!("ThreadBox can only be used on the creation thread.")
+            panic!(
+                "ThreadBox can only be used on the creation thread. current_thread={:?} creation_thread={:?}",
+                std::thread::current().id(), self.thread_id,
+            )
         }
     }
 
