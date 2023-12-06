@@ -1,6 +1,7 @@
 use crate::generalized_isolate::{Channel, IntoDart};
 use crate::platform_types::{handle_to_message_port, DartAbi, SendableMessagePortHandle};
 use log::warn;
+use std::sync::Arc;
 use std::thread::ThreadId;
 
 #[cfg(wasm)]
@@ -25,6 +26,31 @@ mod thread_box;
 /// Arbitrary Dart object, whose type can be even non-encodable and non-transferable.
 #[derive(Debug)]
 pub struct DartOpaque {
+    // TODO `Arc` is for `DartOpaque` to be clone-able.
+    //      When users do not need clone (e.g. NOT used in a DartFn that is called multiple times),
+    //      we can generate and use the non-Arc version to speed up.
+    inner: Arc<DartOpaqueInner>,
+}
+
+impl DartOpaque {
+    pub fn new(handle: GeneralizedDartHandle, drop_port: SendableMessagePortHandle) -> Self {
+        Self {
+            inner: Arc::new(DartOpaqueInner::new(handle, drop_port)),
+        }
+    }
+
+    pub fn into_inner(mut self) -> Result<GeneralizedAutoDropDartPersistentHandle, Self> {
+        let inner = Arc::try_unwrap(self.inner).map_err(|x| Self { inner: x })?;
+        Ok(inner.into_inner())
+    }
+
+    fn create_dart_handle(&self) -> GeneralizedDartHandle {
+        self.inner.create_dart_handle()
+    }
+}
+
+#[derive(Debug)]
+struct DartOpaqueInner {
     /// The internal persistent handle
     // `Option` is used for correct drop.
     persistent_handle: Option<ThreadBox<GeneralizedAutoDropDartPersistentHandle>>,
@@ -33,8 +59,8 @@ pub struct DartOpaque {
     drop_port: SendableMessagePortHandle,
 }
 
-impl DartOpaque {
-    pub fn new(handle: GeneralizedDartHandle, drop_port: SendableMessagePortHandle) -> Self {
+impl DartOpaqueInner {
+    fn new(handle: GeneralizedDartHandle, drop_port: SendableMessagePortHandle) -> Self {
         let auto_drop_persistent_handle =
             GeneralizedAutoDropDartPersistentHandle::new_from_non_persistent_handle(handle);
         Self {
@@ -43,7 +69,7 @@ impl DartOpaque {
         }
     }
 
-    pub fn into_inner(mut self) -> GeneralizedAutoDropDartPersistentHandle {
+    fn into_inner(mut self) -> GeneralizedAutoDropDartPersistentHandle {
         // Though inner ThreadBox has a check, we still check here
         // to avoid (auto) invoking ThreadBox.drop during its panicking,
         // which causes either leak or abort.
@@ -60,7 +86,7 @@ impl DartOpaque {
     }
 }
 
-impl Drop for DartOpaque {
+impl Drop for DartOpaqueInner {
     fn drop(&mut self) {
         if let Some(persistent_handle) = self.persistent_handle.take() {
             // If we forget to do so, ThreadBox will panic because it requires things to be dropped on creation thread

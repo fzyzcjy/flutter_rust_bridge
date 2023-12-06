@@ -45,7 +45,7 @@ pub async fn loop_back_vec_get_twin_rust_async(opaque: Vec<DartOpaque>) {}
 /// [DartWrapObject] cannot be obtained
 /// on a thread other than the thread it was created on.
 pub async fn panic_unwrap_dart_opaque_twin_rust_async(opaque: DartOpaque) {
-    let _handle = opaque.into_inner();
+    let _handle = opaque.into_inner().unwrap();
 }
 
 pub enum EnumDartOpaqueTwinRustAsync {
