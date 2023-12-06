@@ -1,4 +1,4 @@
-use super::dart_persistent_handle_auto_drop::DartPersistentHandleAutoDrop;
+use super::auto_drop_dart_persistent_handle::AutoDropDartPersistentHandle;
 use crate::generalized_isolate::Channel;
 use crate::platform_types::MessagePort;
 use dart_sys::Dart_Handle;
@@ -8,23 +8,23 @@ use dart_sys::{
 };
 use std::ffi::c_void;
 
-pub type GeneralizedDartPersistentHandleWrapper = DartPersistentHandleAutoDrop;
+pub type GeneralizedDartPersistentHandleWrapper = AutoDropDartPersistentHandle;
 pub type GeneralizedDartPersistentHandle = Dart_PersistentHandle;
 
 // TODO remove or rename this?
 #[derive(Debug)]
 pub struct DartOpaqueBase {
-    inner: DartPersistentHandleAutoDrop,
+    inner: AutoDropDartPersistentHandle,
 }
 
 impl DartOpaqueBase {
     pub fn new(handle: Dart_PersistentHandle) -> Self {
         Self {
-            inner: unsafe { DartPersistentHandleAutoDrop::from_raw(handle) },
+            inner: unsafe { AutoDropDartPersistentHandle::from_raw(handle) },
         }
     }
 
-    pub fn unwrap(self) -> DartPersistentHandleAutoDrop {
+    pub fn unwrap(self) -> AutoDropDartPersistentHandle {
         self.inner
     }
 
@@ -38,7 +38,7 @@ impl DartOpaqueBase {
 /// This function should never be called manually.
 #[no_mangle]
 pub unsafe extern "C" fn get_dart_object(ptr: usize) -> Dart_Handle {
-    let handle = DartPersistentHandleAutoDrop::from_raw(ptr as _);
+    let handle = AutoDropDartPersistentHandle::from_raw(ptr as _);
     handle.create_dart_handle()
 }
 
@@ -47,7 +47,7 @@ pub unsafe extern "C" fn get_dart_object(ptr: usize) -> Dart_Handle {
 /// This function should never be called manually.
 #[no_mangle]
 pub unsafe extern "C" fn drop_dart_object(ptr: usize) {
-    drop(DartPersistentHandleAutoDrop::from_raw(ptr as _))
+    drop(AutoDropDartPersistentHandle::from_raw(ptr as _))
 }
 
 /// # Safety

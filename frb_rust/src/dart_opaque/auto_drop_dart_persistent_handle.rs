@@ -4,9 +4,9 @@ use dart_sys::{Dart_NewPersistentHandle_DL, Dart_PersistentHandle};
 #[derive(Debug)]
 /// A [Dart_PersistentHandle] that delete the handle when `Drop`ped
 // `Option` is used for correct drop.
-pub struct DartPersistentHandleAutoDrop(Option<Dart_PersistentHandle>);
+pub struct AutoDropDartPersistentHandle(Option<Dart_PersistentHandle>);
 
-impl DartPersistentHandleAutoDrop {
+impl AutoDropDartPersistentHandle {
     // `from_raw` is `unsafe` while `into_raw` is not, mimicking `Box::*` counterpart.
     pub unsafe fn from_raw(ptr: Dart_PersistentHandle) -> Self {
         Self(Some(ptr))
@@ -27,7 +27,7 @@ impl DartPersistentHandleAutoDrop {
     }
 }
 
-impl Drop for DartPersistentHandleAutoDrop {
+impl Drop for AutoDropDartPersistentHandle {
     fn drop(&mut self) {
         if let Some(inner) = self.0 {
             unsafe {

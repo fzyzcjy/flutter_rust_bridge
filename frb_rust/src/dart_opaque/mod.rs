@@ -14,7 +14,7 @@ mod io;
 pub use io::*;
 
 #[cfg(not(wasm))]
-mod dart_persistent_handle_auto_drop;
+mod auto_drop_dart_persistent_handle;
 
 mod thread_box;
 
