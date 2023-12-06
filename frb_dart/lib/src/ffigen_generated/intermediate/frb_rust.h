@@ -15,26 +15,9 @@ extern struct Result_JsValue close(const PortLike *this_);
 
 extern void js_console_error(const str *msg);
 
-/**
- * # Safety
- *
- * This function should never be called manually.
- */
-const void *dart_new_persistent_handle(Dart_Handle handle);
+void dart_opaque_drop_thread_box_persistent_handle(uintptr_t ptr);
 
-/**
- * # Safety
- *
- * This function should never be called manually.
- */
-Dart_Handle get_dart_object(uintptr_t ptr);
-
-/**
- * # Safety
- *
- * This function should never be called manually.
- */
-void drop_dart_object(uintptr_t ptr);
+Dart_Handle dart_opaque_rust2dart_wire2api(uintptr_t ptr);
 
 /**
  * # Safety

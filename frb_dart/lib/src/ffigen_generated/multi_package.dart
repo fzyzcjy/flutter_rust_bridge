@@ -233,56 +233,34 @@ class MultiPackageCBinding {
   late final _js_console_error =
       _js_console_errorPtr.asFunction<void Function(ffi.Pointer<ffi.Int>)>();
 
-  /// # Safety
-  ///
-  /// This function should never be called manually.
-  ffi.Pointer<ffi.Void> dart_new_persistent_handle(
-    Object handle,
-  ) {
-    return _dart_new_persistent_handle(
-      handle,
-    );
-  }
-
-  late final _dart_new_persistent_handlePtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Handle)>>(
-          'dart_new_persistent_handle');
-  late final _dart_new_persistent_handle = _dart_new_persistent_handlePtr
-      .asFunction<ffi.Pointer<ffi.Void> Function(Object)>();
-
-  /// # Safety
-  ///
-  /// This function should never be called manually.
-  Object get_dart_object(
+  void dart_opaque_drop_thread_box_persistent_handle(
     int ptr,
   ) {
-    return _get_dart_object(
+    return _dart_opaque_drop_thread_box_persistent_handle(
       ptr,
     );
   }
 
-  late final _get_dart_objectPtr =
-      _lookup<ffi.NativeFunction<ffi.Handle Function(ffi.UintPtr)>>(
-          'get_dart_object');
-  late final _get_dart_object =
-      _get_dart_objectPtr.asFunction<Object Function(int)>();
-
-  /// # Safety
-  ///
-  /// This function should never be called manually.
-  void drop_dart_object(
-    int ptr,
-  ) {
-    return _drop_dart_object(
-      ptr,
-    );
-  }
-
-  late final _drop_dart_objectPtr =
+  late final _dart_opaque_drop_thread_box_persistent_handlePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.UintPtr)>>(
-          'drop_dart_object');
-  late final _drop_dart_object =
-      _drop_dart_objectPtr.asFunction<void Function(int)>();
+          'dart_opaque_drop_thread_box_persistent_handle');
+  late final _dart_opaque_drop_thread_box_persistent_handle =
+      _dart_opaque_drop_thread_box_persistent_handlePtr
+          .asFunction<void Function(int)>();
+
+  Object dart_opaque_rust2dart_wire2api(
+    int ptr,
+  ) {
+    return _dart_opaque_rust2dart_wire2api(
+      ptr,
+    );
+  }
+
+  late final _dart_opaque_rust2dart_wire2apiPtr =
+      _lookup<ffi.NativeFunction<ffi.Handle Function(ffi.UintPtr)>>(
+          'dart_opaque_rust2dart_wire2api');
+  late final _dart_opaque_rust2dart_wire2api =
+      _dart_opaque_rust2dart_wire2apiPtr.asFunction<Object Function(int)>();
 
   /// # Safety
   ///
