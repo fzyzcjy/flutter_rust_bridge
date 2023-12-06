@@ -14,6 +14,8 @@ use std::panic::UnwindSafe;
 pub trait Handler {
     fn initialize(&self, config: HandlerConfig);
 
+    fn config(&self) -> &HandlerConfig;
+
     /// Prepares the arguments, executes a Rust function and sets up its return value.
     ///
     /// Why separate `PrepareFn` and `TaskFn`: because some things cannot be [`Send`] (e.g. raw

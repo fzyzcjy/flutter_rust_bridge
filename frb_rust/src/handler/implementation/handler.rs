@@ -82,6 +82,10 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         });
     }
 
+    fn config(&self) -> &HandlerConfig {
+        &self.config
+    }
+
     fn wrap_normal<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(
         &self,
         task_info: TaskInfo,
