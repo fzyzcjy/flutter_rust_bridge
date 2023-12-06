@@ -649,7 +649,7 @@ fn wire_rust_call_dart_simple_impl(
 
                 move || {
                     FLUTTER_RUST_BRIDGE_HANDLER
-                        .dart_fn_invoke(vec![dart_opaque.into_into_dart().into_dart()])
+                        .dart_fn_invoke(vec![dart_opaque.clone().into_into_dart().into_dart()])
                 }
             };
             move |context| async move {
