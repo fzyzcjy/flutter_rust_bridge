@@ -53,7 +53,13 @@ Future<void> main() async {
   group('dart opaque type', () {
     group('GC', () {
       test('drop', () async {
-        Uint8List? strongRef = createLargeList(mb: 300);
+        // NOTE: If large list + create dart persistent handle,
+        // then the `weakRef.target` will run for a long time, and it seems
+        // this time is related to the Uint8List size here.
+        // So we make a small list here.
+        // https://github.com/fzyzcjy/yplusplus/issues/11352#issuecomment-1841943168
+        // Uint8List? strongRef = createLargeList(mb: 300);
+        Uint8List? strongRef = Uint8List(10000);
         final weakRef = WeakReference(strongRef);
         await setStaticDartOpaqueTwinNormal(opaque: strongRef);
         strongRef = null;
