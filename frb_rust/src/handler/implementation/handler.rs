@@ -147,10 +147,6 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         })
     }
 
-    unsafe fn wire2api_dart_opaque(&self, raw: DartOpaqueWireType) -> DartOpaque {
-        crate::dart_opaque::dart2rust::wire2api_dart_opaque(raw, self.dart_opaque_drop_port())
-    }
-
     fn dart_fn_invoke<Ret>(&self, dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<Ret> {
         todo!()
     }

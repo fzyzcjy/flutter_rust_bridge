@@ -61,9 +61,6 @@ pub trait Handler {
         TaskRetData: IntoDart,
         Er: IntoDart + 'static;
 
-    // Put it here, because we want to access the drop port stored in handler
-    unsafe fn wire2api_dart_opaque(&self, raw: DartOpaqueWireType) -> DartOpaque;
-
     fn dart_fn_invoke<Ret>(&self, dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<Ret>;
 }
 
