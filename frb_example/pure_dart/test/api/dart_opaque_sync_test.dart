@@ -38,13 +38,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
         throwsA(isA<PanicException>()));
   });
 
-  test('unwrapped dart opaque', () async {
-    String f() => "magic";
-    var res = returnNonDroppableDartOpaqueTwinNormal(opaque: f);
-    expect(identical(res, f), isTrue);
-    var syncBack = syncLoopbackTwinNormal(opaque: f);
-    expect(
-        identical(syncOptionLoopbackTwinNormal(opaque: syncBack), f), isTrue);
-    expect(syncOptionLoopbackTwinNormal(opaque: null), isNull);
-  });
+  // `returnNonDroppableDartOpaqueTwinNormal` is removed
+  // test('unwrapped dart opaque', () async {
+  //   String f() => "magic";
+  //   var res = returnNonDroppableDartOpaqueTwinNormal(opaque: f);
+  //   expect(identical(res, f), isTrue);
+  //   var syncBack = syncLoopbackTwinNormal(opaque: f);
+  //   expect(
+  //       identical(syncOptionLoopbackTwinNormal(opaque: syncBack), f), isTrue);
+  //   expect(syncOptionLoopbackTwinNormal(opaque: null), isNull);
+  // });
 }
