@@ -30,13 +30,13 @@ pub struct DartOpaque {
     // TODO `Arc` is for `DartOpaque` to be clone-able.
     //      When users do not need clone (e.g. NOT used in a DartFn that is called multiple times),
     //      we can generate and use the non-Arc version to speed up.
-    arc: Arc<DartOpaqueInner>,
+    arc: Arc<DartOpaqueNonClone>,
 }
 
 impl DartOpaque {
     pub fn new(handle: GeneralizedDartHandle, drop_port: SendableMessagePortHandle) -> Self {
         Self {
-            arc: Arc::new(DartOpaqueInner::new(handle, drop_port)),
+            arc: Arc::new(DartOpaqueNonClone::new(handle, drop_port)),
         }
     }
 
@@ -69,7 +69,7 @@ impl Clone for DartOpaque {
 }
 
 #[derive(Debug)]
-struct DartOpaqueInner {
+struct DartOpaqueNonClone {
     /// The internal persistent handle
     // `Option` is used for correct drop.
     persistent_handle: Option<ThreadBox<GeneralizedAutoDropDartPersistentHandle>>,
@@ -78,7 +78,7 @@ struct DartOpaqueInner {
     drop_port: SendableMessagePortHandle,
 }
 
-impl DartOpaqueInner {
+impl DartOpaqueNonClone {
     fn new(handle: GeneralizedDartHandle, drop_port: SendableMessagePortHandle) -> Self {
         let auto_drop_persistent_handle =
             GeneralizedAutoDropDartPersistentHandle::new_from_non_persistent_handle(handle);
@@ -105,7 +105,7 @@ impl DartOpaqueInner {
     }
 }
 
-impl Drop for DartOpaqueInner {
+impl Drop for DartOpaqueNonClone {
     fn drop(&mut self) {
         if let Some(persistent_handle) = self.persistent_handle.take() {
             // If we forget to do so, ThreadBox will panic because it requires things to be dropped on creation thread
