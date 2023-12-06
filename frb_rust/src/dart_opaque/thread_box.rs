@@ -23,19 +23,18 @@ impl<T> ThreadBox<T> {
         }
     }
 
-    pub fn try_unwrap(mut self) -> Result<T, Self> {
-        if std::thread::current().id() == self.thread_id {
-            Ok(self.inner.take().unwrap())
-        } else {
-            Err(self)
+    pub fn unwrap(mut self) -> T {
+        if std::thread::current().id() != self.thread_id {
+            panic!("ThreadBox can only be used on the creation thread.")
         }
+        self.inner.take().unwrap()
     }
 }
 
 impl<T> Drop for ThreadBox<T> {
     fn drop(&mut self) {
         if self.inner.is_some() && std::thread::current().id() != self.thread_id {
-            panic!("ThreadBox should never be dropped on a thread other than creation thread.")
+            panic!("ThreadBox can only be dropped on the creation thread.")
         }
     }
 }
