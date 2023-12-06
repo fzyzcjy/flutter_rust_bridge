@@ -35,7 +35,7 @@ impl<'a> WireRustGeneratorDart2RustTrait for DartOpaqueWireRustGenerator<'a> {
                     dart_type: "NOT_USED".into(),
                 }.clone()],
                 return_type: Some("*const std::ffi::c_void".into()),
-                body: "unsafe { flutter_rust_bridge::for_generated::dart_opaque_dart2rust_api2wire(&*{HANDLER_NAME}, handle); }".into(),
+                body: format!("unsafe {{ flutter_rust_bridge::for_generated::dart_opaque_dart2rust_api2wire(&*{HANDLER_NAME}, handle); }}").into(),
                 target: Target::Io,
             }].into(),
             ..Default::default()
