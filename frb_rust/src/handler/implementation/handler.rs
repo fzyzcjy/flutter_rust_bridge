@@ -17,7 +17,6 @@ use crate::rust2dart::action::Rust2DartAction;
 use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
 use crate::rust_async::{BaseAsyncRuntime, SimpleAsyncRuntime};
 use crate::thread_pool::BaseThreadPool;
-use rand::prelude::*;
 use std::future::Future;
 use std::panic;
 use std::panic::UnwindSafe;
@@ -47,7 +46,6 @@ pub struct SimpleHandler<E: Executor, EH: ErrorHandler> {
     executor: E,
     error_handler: EH,
     config: Mutex<Option<SimpleHandlerConfig>>,
-    debug_name: String,
 }
 
 #[derive(Debug)]
@@ -63,7 +61,6 @@ impl<E: Executor, H: ErrorHandler> SimpleHandler<E, H> {
             executor,
             error_handler,
             config: Mutex::new(None),
-            debug_name: format!("dbg_{}", rand::random::<i32>()),
         }
     }
 }
@@ -78,8 +75,8 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
                     dart_fn_invoke_port: message_port_to_handle(&dart_fn_invoke_port),
                 });
                 println!(
-                    "hi Handler.initialize self={} now config={config:?}",
-                    self.debug_name
+                    "hi Handler.initialize self(ptr)={:?} now config={config:?}",
+                    self as *const _
                 );
             }
         });
@@ -159,8 +156,8 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
             .to_owned();
 
         println!(
-            "hi Handler.wire2api_dart_opaque self={} drop_port={drop_port:?}",
-            self.debug_name
+            "hi Handler.wire2api_dart_opaque self(ptr)={:?} drop_port={drop_port:?}",
+            self as *const _
         );
 
         crate::dart_opaque::wire2api_dart_opaque(raw, drop_port)
