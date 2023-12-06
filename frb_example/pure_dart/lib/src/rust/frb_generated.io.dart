@@ -244,7 +244,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   PlatformPointer api2wire_DartOpaque(Object raw) {
-    return api2wireDartOpaque(raw, generalizedFrbRustBinding);
+    return api2wireDartOpaque(raw);
   }
 
   @protected
