@@ -67,22 +67,22 @@ Future<void> main() async {
         print('hi dorptest 4');
         strongRef = null;
 
-        // print('hi dorptest 5');
-        // await vmService.gc();
-        // print('hi dorptest 6');
-        // await Future<void>.delayed(const Duration(milliseconds: 10));
-        // print('hi dorptest 7');
-        // expect(weakRef.target, isNotNull);
-        //
-        // print('hi dorptest 8');
+        print('hi dorptest 5');
+        await vmService.gc();
+        print('hi dorptest 6');
+        await Future<void>.delayed(const Duration(milliseconds: 10));
+        print('hi dorptest 7');
+        expect(weakRef.target, isNotNull);
+
+        print('hi dorptest 8');
         // TODO
         // TODO
         // TODO
         // await dropStaticDartOpaqueTwinNormal();
-        // print('hi dorptest 9');
-        // await vmService.gc();
-        // print('hi dorptest 10');
-        // await Future<void>.delayed(const Duration(milliseconds: 10));
+        print('hi dorptest 9');
+        await vmService.gc();
+        print('hi dorptest 10');
+        await Future<void>.delayed(const Duration(milliseconds: 10));
         print('hi dorptest 11');
         expect(weakRef.target, isNull);
         print('hi dorptest 12');
