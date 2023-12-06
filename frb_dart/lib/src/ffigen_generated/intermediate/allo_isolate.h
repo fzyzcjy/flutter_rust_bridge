@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 typedef struct _Dart_Handle* Dart_Handle;
+typedef Dart_Handle Dart_PersistentHandle;
 #include "dart_api.h"
 
 /**
