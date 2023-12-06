@@ -57,28 +57,6 @@ crate::hello!(
     Unencodable,
 );
 
-codegen_generator_structs!(
-    WireDartGenerator;
-
-    Boxed,
-    DartFn,
-    DartOpaque,
-    Delegate,
-    Dynamic,
-    EnumRef,
-    GeneralList,
-    Optional,
-    OptionalList,
-    Ownership,
-    Primitive,
-    PrimitiveList,
-    Record,
-    RustAutoOpaque,
-    RustOpaque,
-    StructRef,
-    Unencodable,
-);
-
 #[derive(Debug, Clone, Copy)]
 pub(crate) struct WireDartGeneratorContext<'a> {
     pub(crate) ir_pack: &'a IrPack,
