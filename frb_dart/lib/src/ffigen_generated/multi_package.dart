@@ -219,19 +219,28 @@ class MultiPackageCBinding {
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr
       .asFunction<void Function(DartPostCObjectFnType)>();
 
-  void js_console_error(
+  void initialize_frb_rust() {
+    return _initialize_frb_rust();
+  }
+
+  late final _initialize_frb_rustPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('initialize_frb_rust');
+  late final _initialize_frb_rust =
+      _initialize_frb_rustPtr.asFunction<void Function()>();
+
+  void error(
     ffi.Pointer<ffi.Int> msg,
   ) {
-    return _js_console_error(
+    return _error(
       msg,
     );
   }
 
-  late final _js_console_errorPtr =
+  late final _errorPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Int>)>>(
-          'js_console_error');
-  late final _js_console_error =
-      _js_console_errorPtr.asFunction<void Function(ffi.Pointer<ffi.Int>)>();
+          'error');
+  late final _error =
+      _errorPtr.asFunction<void Function(ffi.Pointer<ffi.Int>)>();
 
   /// # Safety
   ///
@@ -254,35 +263,35 @@ class MultiPackageCBinding {
   ///
   /// This function should never be called manually.
   Object get_dart_object(
-    ffi.Pointer<ffi.Void> persistent_handle,
+    int ptr,
   ) {
     return _get_dart_object(
-      persistent_handle,
+      ptr,
     );
   }
 
   late final _get_dart_objectPtr =
-      _lookup<ffi.NativeFunction<ffi.Handle Function(ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<ffi.Handle Function(ffi.UintPtr)>>(
           'get_dart_object');
   late final _get_dart_object =
-      _get_dart_objectPtr.asFunction<Object Function(ffi.Pointer<ffi.Void>)>();
+      _get_dart_objectPtr.asFunction<Object Function(int)>();
 
   /// # Safety
   ///
   /// This function should never be called manually.
   void drop_dart_object(
-    ffi.Pointer<ffi.Void> persistent_handle,
+    int ptr,
   ) {
     return _drop_dart_object(
-      persistent_handle,
+      ptr,
     );
   }
 
   late final _drop_dart_objectPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.UintPtr)>>(
           'drop_dart_object');
   late final _drop_dart_object =
-      _drop_dart_objectPtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+      _drop_dart_objectPtr.asFunction<void Function(int)>();
 
   /// # Safety
   ///
