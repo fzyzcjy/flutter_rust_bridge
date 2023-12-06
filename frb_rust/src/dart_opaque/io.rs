@@ -1,7 +1,9 @@
 use super::dart_persistent_handle_auto_drop::DartPersistentHandleAutoDrop;
 use crate::generalized_isolate::Channel;
 use crate::platform_types::MessagePort;
-use dart_sys::{Dart_DeletePersistentHandle_DL, Dart_PersistentHandle};
+use dart_sys::{
+    Dart_DeletePersistentHandle_DL, Dart_HandleFromPersistent_DL, Dart_PersistentHandle,
+};
 
 pub type GeneralizedDartPersistentHandleWrapper = DartPersistentHandleAutoDrop;
 pub type GeneralizedDartPersistentHandle = Dart_PersistentHandle;
