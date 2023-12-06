@@ -69,6 +69,10 @@ Future<void> main() async {
         expect(weakRef.target, isNotNull);
 
         await dropStaticDartOpaqueTwinNormal();
+
+        // create another unused big object to trigger GC
+        createLargeList(mb: 300);
+
         await vmService.gc();
         await Future<void>.delayed(const Duration(milliseconds: 10));
         expect(weakRef.target, isNull);
