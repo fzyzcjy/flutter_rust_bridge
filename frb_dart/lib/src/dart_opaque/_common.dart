@@ -16,6 +16,6 @@ class DartOpaqueDropPortManager extends BaseLazyPortManager {
   DartOpaqueDropPortManager(this._generalizedFrbRustBinding);
 
   @override
-  void onData(dynamic message) =>
-      _generalizedFrbRustBinding.dropDartObject(message);
+  void onData(dynamic message) => _generalizedFrbRustBinding
+      .dartOpaqueDropThreadBoxPersistentHandle(message);
 }
