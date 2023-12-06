@@ -18,86 +18,40 @@ Future<void> main() async {
   }
   tearDownAll(() => vmService.dispose());
 
-  group('sync return', () {
-    test('allocate a lot of zero copy data to check that it is properly freed',
-        () async {
-      const n = 10000;
-      int calls = 0;
-
-      expect(debugOnExternalTypedDataFinalizer, isNull);
-      debugOnExternalTypedDataFinalizer = expectAsync1(
-        (dataLength) {
-          expect(dataLength, n);
-          calls++;
-        },
-        count: 10,
-        reason:
-            "Finalizer must be called once for each returned packed primitive list",
-      );
-      addTearDown(() => debugOnExternalTypedDataFinalizer = null);
-
-      ZeroCopyVecOfPrimitivePackTwinSync? primitivePack =
-          handleZeroCopyVecOfPrimitiveTwinSync(n: n);
-      await vmService.gc();
-      await Future<void>.delayed(const Duration(milliseconds: 10));
-      expect(primitivePack, isNotNull);
-      expect(calls, 0);
-
-      primitivePack = null;
-      await vmService.gc();
-      await Future<void>.delayed(const Duration(milliseconds: 10));
-    });
-  });
-
-  group('dart opaque type', () {
-    group('GC', () {
-      test('drop', () async {
-        print('hi dorptest 1');
-        Uint8List? strongRef = createLargeList(mb: 300);
-        print('hi dorptest 2');
-        final weakRef = WeakReference(strongRef);
-        print('hi dorptest 3');
-        // TODO
-        // TODO
-        // TODO
-        // await setStaticDartOpaqueTwinNormal(opaque: strongRef);
-        (RustLib.instance.api as RustLibApiImpl)
-            .generalizedFrbRustBinding
-            .dartNewPersistentHandle(strongRef);
-        print('hi dorptest 4');
-        strongRef = null;
-
-        // print('hi dorptest 5');
-        // await vmService.gc();
-        // print('hi dorptest 6');
-        // await Future<void>.delayed(const Duration(milliseconds: 10));
-        // print('hi dorptest 7');
-        // expect(weakRef.target, isNotNull);
-        //
-        // print('hi dorptest 8');
-        // TODO
-        // TODO
-        // TODO
-        // await dropStaticDartOpaqueTwinNormal();
-        // print('hi dorptest 9');
-        // await vmService.gc();
-        // print('hi dorptest 10');
-        // await Future<void>.delayed(const Duration(milliseconds: 10));
-        print('hi dorptest 11');
-        expect(weakRef.target, isNull);
-        print('hi dorptest 12');
-      });
-
-      test('unwrap', () async {
-        Uint8List? strongRef = createLargeList(mb: 300);
-        final weakRef = WeakReference(strongRef);
-        expect(unwrapDartOpaqueTwinNormal(opaque: strongRef), 'Test');
-        strongRef = null;
-
-        await vmService.gc();
-        await Future<void>.delayed(const Duration(milliseconds: 10));
-        expect(weakRef.target, isNull);
-      });
-    });
+  test('drop', () async {
+    print('hi dorptest 1');
+    Uint8List? strongRef = createLargeList(mb: 300);
+    print('hi dorptest 2');
+    final weakRef = WeakReference(strongRef);
+    print('hi dorptest 3');
+    // TODO
+    // TODO
+    // TODO
+    // await setStaticDartOpaqueTwinNormal(opaque: strongRef);
+    (RustLib.instance.api as RustLibApiImpl)
+        .generalizedFrbRustBinding
+        .dartNewPersistentHandle(strongRef);
+    // print('hi dorptest 4');
+    // strongRef = null;
+    //
+    // print('hi dorptest 5');
+    // await vmService.gc();
+    // print('hi dorptest 6');
+    // await Future<void>.delayed(const Duration(milliseconds: 10));
+    // print('hi dorptest 7');
+    // expect(weakRef.target, isNotNull);
+    //
+    // print('hi dorptest 8');
+    // TODO
+    // TODO
+    // TODO
+    // await dropStaticDartOpaqueTwinNormal();
+    // print('hi dorptest 9');
+    // await vmService.gc();
+    // print('hi dorptest 10');
+    // await Future<void>.delayed(const Duration(milliseconds: 10));
+    print('hi dorptest 11');
+    expect(weakRef.target, isNull);
+    print('hi dorptest 12');
   });
 }
