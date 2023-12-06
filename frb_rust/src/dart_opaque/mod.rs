@@ -70,6 +70,20 @@ pub unsafe fn wire2api_dart_opaque(
     DartOpaque::new(raw, drop_port)
 }
 
+// TODO split to rust2dart.rs etc
+impl From<DartOpaque> for DartAbi {
+    fn from(data: DartOpaque) -> Self {
+        (new_leak_box_ptr(data) as usize).into_dart()
+    }
+}
+
+// TODO rename
+#[no_mangle]
+pub unsafe extern "C" fn get_dart_object(ptr: usize) -> Dart_Handle {
+    let value: DartOpaque = box_from_leak_ptr(ptr as _);
+    handle.create_dart_handle()
+}
+
 // TODO rename,
 //      (1) have "dart opaque" in name
 //      (2) make it clear that it is used for dropping ThreadBox<GeneralizedAutoDropDartPersistentHandle>
@@ -99,17 +113,6 @@ pub unsafe extern "C" fn drop_dart_object(ptr: usize) {
 //         }
 //     }
 // }
-
-impl From<DartOpaque> for DartAbi {
-    fn from(mut data: DartOpaque) -> Self {
-        data.persistent_handle
-            .take()
-            .unwrap()
-            .into_raw()
-            .into_dart()
-    }
-}
-
 // TODO rm
 // impl Drop for DartOpaque {
 //     fn drop(&mut self) {

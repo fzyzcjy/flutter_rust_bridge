@@ -36,16 +36,16 @@ pub type GeneralizedAutoDropDartPersistentHandle = AutoDropDartPersistentHandle;
 //         self.inner.into_raw()
 //     }
 // }
-
-/// # Safety
-///
-/// This function should never be called manually.
-#[no_mangle]
-pub unsafe extern "C" fn get_dart_object(ptr: usize) -> Dart_Handle {
-    let handle = AutoDropDartPersistentHandle::from_raw(ptr as _);
-    handle.create_dart_handle()
-}
-
+//
+// /// # Safety
+// ///
+// /// This function should never be called manually.
+// #[no_mangle]
+// pub unsafe extern "C" fn get_dart_object(ptr: usize) -> Dart_Handle {
+//     let handle = AutoDropDartPersistentHandle::from_raw(ptr as _);
+//     handle.create_dart_handle()
+// }
+//
 // TODO rm
 // /// # Safety
 // ///
