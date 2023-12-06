@@ -22,12 +22,14 @@ mod thread_box;
 /// Arbitrary Dart object, whose type can be even non-encodable and non-transferable.
 #[derive(Debug)]
 pub struct DartOpaque {
-    /// Dart object
+    /// The internal handle
     handle: ThreadBox<GeneralizedAutoDropDartPersistentHandle>,
 
     /// The port to drop object (when we cannot drop in current thread)
     drop_port: SendableMessagePortHandle,
 }
+
+// TODO things below not migrated yet --------------------------------------------------------
 
 impl DartOpaque {
     /// Creates a new [DartOpaque].

@@ -8,6 +8,8 @@ use web_sys::BroadcastChannel;
 
 pub type GeneralizedAutoDropDartPersistentHandle = wasm_bindgen::JsValue;
 
+// TODO things below not migrated yet --------------------------------------------------------
+
 // TODO rm?
 pub type GeneralizedDartPersistentHandle = wasm_bindgen::JsValue;
 

@@ -10,6 +10,8 @@ use std::ffi::c_void;
 
 pub type GeneralizedAutoDropDartPersistentHandle = AutoDropDartPersistentHandle;
 
+// TODO things below not migrated yet --------------------------------------------------------
+
 // TODO rm?
 pub type GeneralizedDartPersistentHandle = Dart_PersistentHandle;
 
