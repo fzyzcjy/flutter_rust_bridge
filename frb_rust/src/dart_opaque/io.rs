@@ -2,8 +2,8 @@ use crate::generalized_isolate::Channel;
 use crate::platform_types::MessagePort;
 use dart_sys::{Dart_DeletePersistentHandle_DL, Dart_PersistentHandle};
 
-pub type DartObjectWrapper = DartPersistentHandleWrapper;
-pub type DartObject = Dart_PersistentHandle;
+pub type GeneralizedDartPersistentHandleWrapper = DartPersistentHandleWrapper;
+pub type GeneralizedDartPersistentHandle = Dart_PersistentHandle;
 
 #[derive(Debug)]
 pub struct DartOpaqueBase {

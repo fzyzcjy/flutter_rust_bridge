@@ -4,8 +4,8 @@ use wasm_bindgen::JsCast;
 use wasm_bindgen::JsValue;
 use web_sys::BroadcastChannel;
 
-pub type DartWrapObject = wasm_bindgen::JsValue;
-pub type DartObject = wasm_bindgen::JsValue;
+pub type GeneralizedDartPersistentHandleWrapper = wasm_bindgen::JsValue;
+pub type GeneralizedDartPersistentHandle = wasm_bindgen::JsValue;
 
 #[derive(Debug)]
 pub struct DartOpaqueBase {

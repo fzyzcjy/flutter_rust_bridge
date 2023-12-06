@@ -37,8 +37,11 @@ impl DartOpaque {
     ///
     /// # Safety
     ///
-    /// The [DartObject] must be created on the current thread.
-    pub unsafe fn new(handle: DartObject, drop_port: SendableMessagePortHandle) -> Self {
+    /// The [GeneralizedDartPersistentHandle] must be created on the current thread.
+    pub unsafe fn new(
+        handle: GeneralizedDartPersistentHandle,
+        drop_port: SendableMessagePortHandle,
+    ) -> Self {
         Self {
             handle: Some(DartOpaqueBase::new(handle)),
             thread_id: std::thread::current().id(),
@@ -46,9 +49,9 @@ impl DartOpaque {
         }
     }
 
-    /// Tries to get a Dart [DartObject].
-    /// Returns the [DartObject] if the [DartOpaque] was created on the current thread.
-    pub fn try_unwrap(mut self) -> Result<DartObjectWrapper, Self> {
+    /// Tries to get a Dart [GeneralizedDartPersistentHandle].
+    /// Returns the [GeneralizedDartPersistentHandle] if the [DartOpaque] was created on the current thread.
+    pub fn try_unwrap(mut self) -> Result<GeneralizedDartPersistentHandleWrapper, Self> {
         if std::thread::current().id() == self.thread_id {
             Ok(self.handle.take().unwrap().unwrap())
         } else {
