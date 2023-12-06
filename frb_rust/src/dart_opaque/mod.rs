@@ -51,17 +51,25 @@ impl Drop for DartOpaque {
         if let Some(persistent_handle) = self.persistent_handle.take() {
             // If we forget to do so, ThreadBox will panic because it requires things to be dropped on creation thread
             if !persistent_handle.is_on_creation_thread() {
-                let channel = Channel::new(handle_to_message_port(&self.drop_port));
-                let ptr = new_leak_box_ptr(persistent_handle) as usize;
-
-                if !channel.post(ptr) {
-                    warn!("Drop DartOpaque after closing the port, thus the object will be leaked forever.");
-                    // In case logs are disabled
-                    println!("Drop DartOpaque after closing the port, thus the object will be leaked forever.");
-                };
+                drop_thread_box_persistent_handle_via_port(persistent_handle, &self.drop_port)
             }
         }
     }
+}
+
+/// Drop by sending to a Dart port and let the handler there call [dart_opaque_drop_thread_box_persistent_handle]
+fn drop_thread_box_persistent_handle_via_port(
+    persistent_handle: ThreadBox<GeneralizedAutoDropDartPersistentHandle>,
+    drop_port: &SendableMessagePortHandle,
+) {
+    let channel = Channel::new(handle_to_message_port(drop_port));
+    let ptr = new_leak_box_ptr(persistent_handle) as usize;
+
+    if !channel.post(ptr) {
+        warn!("Drop DartOpaque after closing the port, thus the object will be leaked forever.");
+        // In case logs are disabled
+        println!("Drop DartOpaque after closing the port, thus the object will be leaked forever.");
+    };
 }
 
 // TODO old name: `drop_dart_object`, rename all users
