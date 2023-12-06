@@ -30,7 +30,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartG
 use enum_dispatch::enum_dispatch;
 use paste::paste;
 
-crate::hello!(
+crate::codegen_generator_structs!(
     WireDartGenerator;
 
     #[enum_dispatch(WireDartGeneratorImplTrait)]

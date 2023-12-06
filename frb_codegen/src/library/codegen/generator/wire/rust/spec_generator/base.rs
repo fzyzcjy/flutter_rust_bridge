@@ -27,32 +27,13 @@ use crate::codegen_generator_structs;
 use enum_dispatch::enum_dispatch;
 use paste::paste;
 
-#[enum_dispatch(WireRustGeneratorImplTrait)]
-#[enum_dispatch(WireRustGeneratorRust2DartTrait)]
-#[enum_dispatch(WireRustGeneratorDart2RustTrait)]
-#[enum_dispatch(WireRustGeneratorMiscTrait)]
-pub(crate) enum WireRustGenerator<'a> {
-    Boxed(BoxedWireRustGenerator<'a>),
-    DartFn(DartFnWireRustGenerator<'a>),
-    DartOpaque(DartOpaqueWireRustGenerator<'a>),
-    Delegate(DelegateWireRustGenerator<'a>),
-    Dynamic(DynamicWireRustGenerator<'a>),
-    EnumRef(EnumRefWireRustGenerator<'a>),
-    GeneralList(GeneralListWireRustGenerator<'a>),
-    Optional(OptionalWireRustGenerator<'a>),
-    OptionalList(OptionalListWireRustGenerator<'a>),
-    Ownership(OwnershipWireRustGenerator<'a>),
-    Primitive(PrimitiveWireRustGenerator<'a>),
-    PrimitiveList(PrimitiveListWireRustGenerator<'a>),
-    Record(RecordWireRustGenerator<'a>),
-    RustAutoOpaque(RustAutoOpaqueWireRustGenerator<'a>),
-    RustOpaque(RustOpaqueWireRustGenerator<'a>),
-    StructRef(StructRefWireRustGenerator<'a>),
-    Unencodable(UnencodableWireRustGenerator<'a>),
-}
-
 codegen_generator_structs!(
     WireRustGenerator;
+
+    #[enum_dispatch(WireRustGeneratorImplTrait)]
+    #[enum_dispatch(WireRustGeneratorRust2DartTrait)]
+    #[enum_dispatch(WireRustGeneratorDart2RustTrait)]
+    #[enum_dispatch(WireRustGeneratorMiscTrait)];
 
     Boxed,
     DartFn,
