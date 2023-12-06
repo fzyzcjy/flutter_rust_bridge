@@ -6,6 +6,7 @@
 
 use flutter_rust_bridge::DartOpaque;
 use lazy_static::lazy_static;
+use std::collections::HashMap;
 use std::sync::Mutex;
 
 // TODO about sync
@@ -102,15 +103,15 @@ pub fn create_enum_dart_opaque_twin_sync(opaque: DartOpaque) -> EnumDartOpaqueTw
 pub fn get_enum_dart_opaque_twin_sync(opaque: EnumDartOpaqueTwinSync) {}
 
 lazy_static! {
-    static ref DART_OPAQUE: Mutex<Option<DartOpaque>> = Default::default();
+    static ref DART_OPAQUE: Mutex<HashMap<i32, DartOpaque>> = Default::default();
 }
 
 #[flutter_rust_bridge::frb(sync)]
-pub fn set_static_dart_opaque_twin_sync(opaque: DartOpaque) {
-    *DART_OPAQUE.lock().unwrap() = Some(opaque);
+pub fn set_static_dart_opaque_twin_sync(id: i32, opaque: DartOpaque) {
+    DART_OPAQUE.lock().unwrap()[id] = opaque;
 }
 
 #[flutter_rust_bridge::frb(sync)]
-pub fn drop_static_dart_opaque_twin_sync() {
-    drop(DART_OPAQUE.lock().unwrap().take());
+pub fn drop_static_dart_opaque_twin_sync(id: i32) {
+    drop(DART_OPAQUE.lock().unwrap().remove(&id));
 }

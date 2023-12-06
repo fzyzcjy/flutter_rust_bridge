@@ -3292,8 +3292,8 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_create_nested_dart_opaque_twin_normal(
           port_, opaque1, opaque2);
 
-  void wire_drop_static_dart_opaque_twin_normal(NativePortType port_) =>
-      wasmModule.wire_drop_static_dart_opaque_twin_normal(port_);
+  void wire_drop_static_dart_opaque_twin_normal(NativePortType port_, int id) =>
+      wasmModule.wire_drop_static_dart_opaque_twin_normal(port_, id);
 
   void wire_get_enum_dart_opaque_twin_normal(
           NativePortType port_, List<dynamic> opaque) =>
@@ -3332,8 +3332,8 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_panic_unwrap_dart_opaque_twin_normal(port_, opaque);
 
   void wire_set_static_dart_opaque_twin_normal(
-          NativePortType port_, Object opaque) =>
-      wasmModule.wire_set_static_dart_opaque_twin_normal(port_, opaque);
+          NativePortType port_, int id, Object opaque) =>
+      wasmModule.wire_set_static_dart_opaque_twin_normal(port_, id, opaque);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
       wire_sync_accept_dart_opaque_twin_normal(Object opaque) =>
@@ -4034,8 +4034,9 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_create_nested_dart_opaque_twin_rust_async(
           port_, opaque1, opaque2);
 
-  void wire_drop_static_dart_opaque_twin_rust_async(NativePortType port_) =>
-      wasmModule.wire_drop_static_dart_opaque_twin_rust_async(port_);
+  void wire_drop_static_dart_opaque_twin_rust_async(
+          NativePortType port_, int id) =>
+      wasmModule.wire_drop_static_dart_opaque_twin_rust_async(port_, id);
 
   void wire_get_enum_dart_opaque_twin_rust_async(
           NativePortType port_, List<dynamic> opaque) =>
@@ -4077,8 +4078,8 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_panic_unwrap_dart_opaque_twin_rust_async(port_, opaque);
 
   void wire_set_static_dart_opaque_twin_rust_async(
-          NativePortType port_, Object opaque) =>
-      wasmModule.wire_set_static_dart_opaque_twin_rust_async(port_, opaque);
+          NativePortType port_, int id, Object opaque) =>
+      wasmModule.wire_set_static_dart_opaque_twin_rust_async(port_, id, opaque);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
       wire_async_accept_dart_opaque_twin_sync(Object opaque) =>
@@ -4094,8 +4095,8 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_create_nested_dart_opaque_twin_sync(opaque1, opaque2);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
-      wire_drop_static_dart_opaque_twin_sync() =>
-          wasmModule.wire_drop_static_dart_opaque_twin_sync();
+      wire_drop_static_dart_opaque_twin_sync(int id) =>
+          wasmModule.wire_drop_static_dart_opaque_twin_sync(id);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
       wire_get_enum_dart_opaque_twin_sync(List<dynamic> opaque) =>
@@ -4138,8 +4139,8 @@ class RustLibWire extends BaseWire {
           wasmModule.wire_panic_unwrap_dart_opaque_twin_sync(opaque);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
-      wire_set_static_dart_opaque_twin_sync(Object opaque) =>
-          wasmModule.wire_set_static_dart_opaque_twin_sync(opaque);
+      wire_set_static_dart_opaque_twin_sync(int id, Object opaque) =>
+          wasmModule.wire_set_static_dart_opaque_twin_sync(id, opaque);
 
   void wire_func_enum_simple_twin_rust_async(NativePortType port_, int arg) =>
       wasmModule.wire_func_enum_simple_twin_rust_async(port_, arg);
@@ -6509,7 +6510,8 @@ class RustLibWasmModule implements WasmModule {
   external void wire_create_nested_dart_opaque_twin_normal(
       NativePortType port_, Object opaque1, Object opaque2);
 
-  external void wire_drop_static_dart_opaque_twin_normal(NativePortType port_);
+  external void wire_drop_static_dart_opaque_twin_normal(
+      NativePortType port_, int id);
 
   external void wire_get_enum_dart_opaque_twin_normal(
       NativePortType port_, List<dynamic> opaque);
@@ -6541,7 +6543,7 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, Object opaque);
 
   external void wire_set_static_dart_opaque_twin_normal(
-      NativePortType port_, Object opaque);
+      NativePortType port_, int id, Object opaque);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
       wire_sync_accept_dart_opaque_twin_normal(Object opaque);
@@ -7062,7 +7064,7 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, Object opaque1, Object opaque2);
 
   external void wire_drop_static_dart_opaque_twin_rust_async(
-      NativePortType port_);
+      NativePortType port_, int id);
 
   external void wire_get_enum_dart_opaque_twin_rust_async(
       NativePortType port_, List<dynamic> opaque);
@@ -7095,7 +7097,7 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, Object opaque);
 
   external void wire_set_static_dart_opaque_twin_rust_async(
-      NativePortType port_, Object opaque);
+      NativePortType port_, int id, Object opaque);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
       wire_async_accept_dart_opaque_twin_sync(Object opaque);
@@ -7107,7 +7109,7 @@ class RustLibWasmModule implements WasmModule {
       wire_create_nested_dart_opaque_twin_sync(Object opaque1, Object opaque2);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
-      wire_drop_static_dart_opaque_twin_sync();
+      wire_drop_static_dart_opaque_twin_sync(int id);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
       wire_get_enum_dart_opaque_twin_sync(List<dynamic> opaque);
@@ -7140,7 +7142,7 @@ class RustLibWasmModule implements WasmModule {
       wire_panic_unwrap_dart_opaque_twin_sync(Object opaque);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
-      wire_set_static_dart_opaque_twin_sync(Object opaque);
+      wire_set_static_dart_opaque_twin_sync(int id, Object opaque);
 
   external void wire_func_enum_simple_twin_rust_async(
       NativePortType port_, int arg);

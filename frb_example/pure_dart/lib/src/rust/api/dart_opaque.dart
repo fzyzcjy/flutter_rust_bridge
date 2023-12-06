@@ -69,12 +69,12 @@ Future<void> getEnumDartOpaqueTwinNormal(
         .getEnumDartOpaqueTwinNormal(opaque: opaque, hint: hint);
 
 Future<void> setStaticDartOpaqueTwinNormal(
-        {required Object opaque, dynamic hint}) =>
+        {required int id, required Object opaque, dynamic hint}) =>
     RustLib.instance.api
-        .setStaticDartOpaqueTwinNormal(opaque: opaque, hint: hint);
+        .setStaticDartOpaqueTwinNormal(id: id, opaque: opaque, hint: hint);
 
-Future<void> dropStaticDartOpaqueTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.dropStaticDartOpaqueTwinNormal(hint: hint);
+Future<void> dropStaticDartOpaqueTwinNormal({required int id, dynamic hint}) =>
+    RustLib.instance.api.dropStaticDartOpaqueTwinNormal(id: id, hint: hint);
 
 class ObjectArray1 extends NonGrowableListView<Object> {
   static const arraySize = 1;

@@ -266,7 +266,7 @@ abstract class RustLibApi extends BaseApi {
   Future<DartOpaqueNestedTwinNormal> createNestedDartOpaqueTwinNormal(
       {required Object opaque1, required Object opaque2, dynamic hint});
 
-  Future<void> dropStaticDartOpaqueTwinNormal({dynamic hint});
+  Future<void> dropStaticDartOpaqueTwinNormal({required int id, dynamic hint});
 
   Future<void> getEnumDartOpaqueTwinNormal(
       {required EnumDartOpaqueTwinNormal opaque, dynamic hint});
@@ -297,7 +297,7 @@ abstract class RustLibApi extends BaseApi {
       {required Object opaque, dynamic hint});
 
   Future<void> setStaticDartOpaqueTwinNormal(
-      {required Object opaque, dynamic hint});
+      {required int id, required Object opaque, dynamic hint});
 
   String syncAcceptDartOpaqueTwinNormal({required Object opaque, dynamic hint});
 
@@ -786,7 +786,8 @@ abstract class RustLibApi extends BaseApi {
   Future<DartOpaqueNestedTwinRustAsync> createNestedDartOpaqueTwinRustAsync(
       {required Object opaque1, required Object opaque2, dynamic hint});
 
-  Future<void> dropStaticDartOpaqueTwinRustAsync({dynamic hint});
+  Future<void> dropStaticDartOpaqueTwinRustAsync(
+      {required int id, dynamic hint});
 
   Future<void> getEnumDartOpaqueTwinRustAsync(
       {required EnumDartOpaqueTwinRustAsync opaque, dynamic hint});
@@ -817,7 +818,7 @@ abstract class RustLibApi extends BaseApi {
       {required Object opaque, dynamic hint});
 
   Future<void> setStaticDartOpaqueTwinRustAsync(
-      {required Object opaque, dynamic hint});
+      {required int id, required Object opaque, dynamic hint});
 
   String asyncAcceptDartOpaqueTwinSync({required Object opaque, dynamic hint});
 
@@ -827,7 +828,7 @@ abstract class RustLibApi extends BaseApi {
   DartOpaqueNestedTwinSync createNestedDartOpaqueTwinSync(
       {required Object opaque1, required Object opaque2, dynamic hint});
 
-  void dropStaticDartOpaqueTwinSync({dynamic hint});
+  void dropStaticDartOpaqueTwinSync({required int id, dynamic hint});
 
   void getEnumDartOpaqueTwinSync(
       {required EnumDartOpaqueTwinSync opaque, dynamic hint});
@@ -851,7 +852,8 @@ abstract class RustLibApi extends BaseApi {
 
   void panicUnwrapDartOpaqueTwinSync({required Object opaque, dynamic hint});
 
-  void setStaticDartOpaqueTwinSync({required Object opaque, dynamic hint});
+  void setStaticDartOpaqueTwinSync(
+      {required int id, required Object opaque, dynamic hint});
 
   Future<EnumSimpleTwinRustAsync> funcEnumSimpleTwinRustAsync(
       {required EnumSimpleTwinRustAsync arg, dynamic hint});
@@ -3211,13 +3213,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> dropStaticDartOpaqueTwinNormal({dynamic hint}) {
+  Future<void> dropStaticDartOpaqueTwinNormal({required int id, dynamic hint}) {
+    var arg0 = api2wire_i_32(id);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_drop_static_dart_opaque_twin_normal(port_),
+      callFfi: (port_) =>
+          wire.wire_drop_static_dart_opaque_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
       constMeta: kDropStaticDartOpaqueTwinNormalConstMeta,
-      argValues: [],
+      argValues: [id],
       apiImpl: this,
       hint: hint,
     ));
@@ -3226,7 +3230,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kDropStaticDartOpaqueTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "drop_static_dart_opaque_twin_normal",
-        argNames: [],
+        argNames: ["id"],
       );
 
   @override
@@ -3438,15 +3442,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> setStaticDartOpaqueTwinNormal(
-      {required Object opaque, dynamic hint}) {
-    var arg0 = api2wire_DartOpaque(opaque);
+      {required int id, required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_i_32(id);
+    var arg1 = api2wire_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
-          wire.wire_set_static_dart_opaque_twin_normal(port_, arg0),
+          wire.wire_set_static_dart_opaque_twin_normal(port_, arg0, arg1),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
       constMeta: kSetStaticDartOpaqueTwinNormalConstMeta,
-      argValues: [opaque],
+      argValues: [id, opaque],
       apiImpl: this,
       hint: hint,
     ));
@@ -3455,7 +3460,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kSetStaticDartOpaqueTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "set_static_dart_opaque_twin_normal",
-        argNames: ["opaque"],
+        argNames: ["id", "opaque"],
       );
 
   @override
@@ -7163,14 +7168,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> dropStaticDartOpaqueTwinRustAsync({dynamic hint}) {
+  Future<void> dropStaticDartOpaqueTwinRustAsync(
+      {required int id, dynamic hint}) {
+    var arg0 = api2wire_i_32(id);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
-          wire.wire_drop_static_dart_opaque_twin_rust_async(port_),
+          wire.wire_drop_static_dart_opaque_twin_rust_async(port_, arg0),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
       constMeta: kDropStaticDartOpaqueTwinRustAsyncConstMeta,
-      argValues: [],
+      argValues: [id],
       apiImpl: this,
       hint: hint,
     ));
@@ -7179,7 +7186,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kDropStaticDartOpaqueTwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "drop_static_dart_opaque_twin_rust_async",
-        argNames: [],
+        argNames: ["id"],
       );
 
   @override
@@ -7397,15 +7404,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> setStaticDartOpaqueTwinRustAsync(
-      {required Object opaque, dynamic hint}) {
-    var arg0 = api2wire_DartOpaque(opaque);
+      {required int id, required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_i_32(id);
+    var arg1 = api2wire_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
-          wire.wire_set_static_dart_opaque_twin_rust_async(port_, arg0),
+          wire.wire_set_static_dart_opaque_twin_rust_async(port_, arg0, arg1),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
       constMeta: kSetStaticDartOpaqueTwinRustAsyncConstMeta,
-      argValues: [opaque],
+      argValues: [id, opaque],
       apiImpl: this,
       hint: hint,
     ));
@@ -7414,7 +7422,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kSetStaticDartOpaqueTwinRustAsyncConstMeta =>
       const TaskConstMeta(
         debugName: "set_static_dart_opaque_twin_rust_async",
-        argNames: ["opaque"],
+        argNames: ["id", "opaque"],
       );
 
   @override
@@ -7481,13 +7489,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  void dropStaticDartOpaqueTwinSync({dynamic hint}) {
+  void dropStaticDartOpaqueTwinSync({required int id, dynamic hint}) {
+    var arg0 = api2wire_i_32(id);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_drop_static_dart_opaque_twin_sync(),
+      callFfi: () => wire.wire_drop_static_dart_opaque_twin_sync(arg0),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
       constMeta: kDropStaticDartOpaqueTwinSyncConstMeta,
-      argValues: [],
+      argValues: [id],
       apiImpl: this,
       hint: hint,
     ));
@@ -7496,7 +7505,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kDropStaticDartOpaqueTwinSyncConstMeta =>
       const TaskConstMeta(
         debugName: "drop_static_dart_opaque_twin_sync",
-        argNames: [],
+        argNames: ["id"],
       );
 
   @override
@@ -7694,14 +7703,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  void setStaticDartOpaqueTwinSync({required Object opaque, dynamic hint}) {
-    var arg0 = api2wire_DartOpaque(opaque);
+  void setStaticDartOpaqueTwinSync(
+      {required int id, required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_i_32(id);
+    var arg1 = api2wire_DartOpaque(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_set_static_dart_opaque_twin_sync(arg0),
+      callFfi: () => wire.wire_set_static_dart_opaque_twin_sync(arg0, arg1),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
       constMeta: kSetStaticDartOpaqueTwinSyncConstMeta,
-      argValues: [opaque],
+      argValues: [id, opaque],
       apiImpl: this,
       hint: hint,
     ));
@@ -7710,7 +7721,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kSetStaticDartOpaqueTwinSyncConstMeta =>
       const TaskConstMeta(
         debugName: "set_static_dart_opaque_twin_sync",
-        argNames: ["opaque"],
+        argNames: ["id", "opaque"],
       );
 
   @override

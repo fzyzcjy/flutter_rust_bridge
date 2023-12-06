@@ -5654,18 +5654,20 @@ class RustLibWire implements BaseWire {
 
   void wire_drop_static_dart_opaque_twin_normal(
     int port_,
+    int id,
   ) {
     return _wire_drop_static_dart_opaque_twin_normal(
       port_,
+      id,
     );
   }
 
   late final _wire_drop_static_dart_opaque_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
           'wire_drop_static_dart_opaque_twin_normal');
   late final _wire_drop_static_dart_opaque_twin_normal =
       _wire_drop_static_dart_opaque_twin_normalPtr
-          .asFunction<void Function(int)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_get_enum_dart_opaque_twin_normal(
     int port_,
@@ -5852,21 +5854,23 @@ class RustLibWire implements BaseWire {
 
   void wire_set_static_dart_opaque_twin_normal(
     int port_,
+    int id,
     ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_set_static_dart_opaque_twin_normal(
       port_,
+      id,
       opaque,
     );
   }
 
   late final _wire_set_static_dart_opaque_twin_normalPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Pointer<ffi.Void>)>>(
       'wire_set_static_dart_opaque_twin_normal');
   late final _wire_set_static_dart_opaque_twin_normal =
       _wire_set_static_dart_opaque_twin_normalPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int, ffi.Pointer<ffi.Void>)>();
 
   WireSyncReturn wire_sync_accept_dart_opaque_twin_normal(
     ffi.Pointer<ffi.Void> opaque,
@@ -8865,18 +8869,20 @@ class RustLibWire implements BaseWire {
 
   void wire_drop_static_dart_opaque_twin_rust_async(
     int port_,
+    int id,
   ) {
     return _wire_drop_static_dart_opaque_twin_rust_async(
       port_,
+      id,
     );
   }
 
   late final _wire_drop_static_dart_opaque_twin_rust_asyncPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
           'wire_drop_static_dart_opaque_twin_rust_async');
   late final _wire_drop_static_dart_opaque_twin_rust_async =
       _wire_drop_static_dart_opaque_twin_rust_asyncPtr
-          .asFunction<void Function(int)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_get_enum_dart_opaque_twin_rust_async(
     int port_,
@@ -9065,21 +9071,23 @@ class RustLibWire implements BaseWire {
 
   void wire_set_static_dart_opaque_twin_rust_async(
     int port_,
+    int id,
     ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_set_static_dart_opaque_twin_rust_async(
       port_,
+      id,
       opaque,
     );
   }
 
   late final _wire_set_static_dart_opaque_twin_rust_asyncPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Pointer<ffi.Void>)>>(
       'wire_set_static_dart_opaque_twin_rust_async');
   late final _wire_set_static_dart_opaque_twin_rust_async =
       _wire_set_static_dart_opaque_twin_rust_asyncPtr
-          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+          .asFunction<void Function(int, int, ffi.Pointer<ffi.Void>)>();
 
   WireSyncReturn wire_async_accept_dart_opaque_twin_sync(
     ffi.Pointer<ffi.Void> opaque,
@@ -9131,16 +9139,20 @@ class RustLibWire implements BaseWire {
           WireSyncReturn Function(
               ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn wire_drop_static_dart_opaque_twin_sync() {
-    return _wire_drop_static_dart_opaque_twin_sync();
+  WireSyncReturn wire_drop_static_dart_opaque_twin_sync(
+    int id,
+  ) {
+    return _wire_drop_static_dart_opaque_twin_sync(
+      id,
+    );
   }
 
   late final _wire_drop_static_dart_opaque_twin_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int32)>>(
           'wire_drop_static_dart_opaque_twin_sync');
   late final _wire_drop_static_dart_opaque_twin_sync =
       _wire_drop_static_dart_opaque_twin_syncPtr
-          .asFunction<WireSyncReturn Function()>();
+          .asFunction<WireSyncReturn Function(int)>();
 
   WireSyncReturn wire_get_enum_dart_opaque_twin_sync(
     ffi.Pointer<wire_enum_dart_opaque_twin_sync> opaque,
@@ -9300,19 +9312,22 @@ class RustLibWire implements BaseWire {
           .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
 
   WireSyncReturn wire_set_static_dart_opaque_twin_sync(
+    int id,
     ffi.Pointer<ffi.Void> opaque,
   ) {
     return _wire_set_static_dart_opaque_twin_sync(
+      id,
       opaque,
     );
   }
 
   late final _wire_set_static_dart_opaque_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
-      'wire_set_static_dart_opaque_twin_sync');
+      ffi.NativeFunction<
+          WireSyncReturn Function(ffi.Int32,
+              ffi.Pointer<ffi.Void>)>>('wire_set_static_dart_opaque_twin_sync');
   late final _wire_set_static_dart_opaque_twin_sync =
       _wire_set_static_dart_opaque_twin_syncPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
+          .asFunction<WireSyncReturn Function(int, ffi.Pointer<ffi.Void>)>();
 
   void wire_func_enum_simple_twin_rust_async(
     int port_,

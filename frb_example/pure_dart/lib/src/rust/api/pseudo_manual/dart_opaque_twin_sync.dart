@@ -59,12 +59,13 @@ void getEnumDartOpaqueTwinSync(
         {required EnumDartOpaqueTwinSync opaque, dynamic hint}) =>
     RustLib.instance.api.getEnumDartOpaqueTwinSync(opaque: opaque, hint: hint);
 
-void setStaticDartOpaqueTwinSync({required Object opaque, dynamic hint}) =>
+void setStaticDartOpaqueTwinSync(
+        {required int id, required Object opaque, dynamic hint}) =>
     RustLib.instance.api
-        .setStaticDartOpaqueTwinSync(opaque: opaque, hint: hint);
+        .setStaticDartOpaqueTwinSync(id: id, opaque: opaque, hint: hint);
 
-void dropStaticDartOpaqueTwinSync({dynamic hint}) =>
-    RustLib.instance.api.dropStaticDartOpaqueTwinSync(hint: hint);
+void dropStaticDartOpaqueTwinSync({required int id, dynamic hint}) =>
+    RustLib.instance.api.dropStaticDartOpaqueTwinSync(id: id, hint: hint);
 
 class DartOpaqueNestedTwinSync {
   final Object first;

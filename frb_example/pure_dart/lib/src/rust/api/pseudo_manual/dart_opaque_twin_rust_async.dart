@@ -72,12 +72,13 @@ Future<void> getEnumDartOpaqueTwinRustAsync(
         .getEnumDartOpaqueTwinRustAsync(opaque: opaque, hint: hint);
 
 Future<void> setStaticDartOpaqueTwinRustAsync(
-        {required Object opaque, dynamic hint}) =>
+        {required int id, required Object opaque, dynamic hint}) =>
     RustLib.instance.api
-        .setStaticDartOpaqueTwinRustAsync(opaque: opaque, hint: hint);
+        .setStaticDartOpaqueTwinRustAsync(id: id, opaque: opaque, hint: hint);
 
-Future<void> dropStaticDartOpaqueTwinRustAsync({dynamic hint}) =>
-    RustLib.instance.api.dropStaticDartOpaqueTwinRustAsync(hint: hint);
+Future<void> dropStaticDartOpaqueTwinRustAsync(
+        {required int id, dynamic hint}) =>
+    RustLib.instance.api.dropStaticDartOpaqueTwinRustAsync(id: id, hint: hint);
 
 class DartOpaqueNestedTwinRustAsync {
   final Object first;

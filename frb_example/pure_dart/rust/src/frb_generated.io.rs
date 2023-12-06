@@ -8453,8 +8453,8 @@ pub extern "C" fn wire_create_nested_dart_opaque_twin_normal(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_drop_static_dart_opaque_twin_normal(port_: i64) {
-    wire_drop_static_dart_opaque_twin_normal_impl(port_)
+pub extern "C" fn wire_drop_static_dart_opaque_twin_normal(port_: i64, id: i32) {
+    wire_drop_static_dart_opaque_twin_normal_impl(port_, id)
 }
 
 #[no_mangle]
@@ -8528,9 +8528,10 @@ pub extern "C" fn wire_panic_unwrap_dart_opaque_twin_normal(
 #[no_mangle]
 pub extern "C" fn wire_set_static_dart_opaque_twin_normal(
     port_: i64,
+    id: i32,
     opaque: *const std::ffi::c_void,
 ) {
-    wire_set_static_dart_opaque_twin_normal_impl(port_, opaque)
+    wire_set_static_dart_opaque_twin_normal_impl(port_, id, opaque)
 }
 
 #[no_mangle]
@@ -9656,8 +9657,8 @@ pub extern "C" fn wire_create_nested_dart_opaque_twin_rust_async(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_drop_static_dart_opaque_twin_rust_async(port_: i64) {
-    wire_drop_static_dart_opaque_twin_rust_async_impl(port_)
+pub extern "C" fn wire_drop_static_dart_opaque_twin_rust_async(port_: i64, id: i32) {
+    wire_drop_static_dart_opaque_twin_rust_async_impl(port_, id)
 }
 
 #[no_mangle]
@@ -9737,9 +9738,10 @@ pub extern "C" fn wire_panic_unwrap_dart_opaque_twin_rust_async(
 #[no_mangle]
 pub extern "C" fn wire_set_static_dart_opaque_twin_rust_async(
     port_: i64,
+    id: i32,
     opaque: *const std::ffi::c_void,
 ) {
-    wire_set_static_dart_opaque_twin_rust_async_impl(port_, opaque)
+    wire_set_static_dart_opaque_twin_rust_async_impl(port_, id, opaque)
 }
 
 #[no_mangle]
@@ -9766,8 +9768,9 @@ pub extern "C" fn wire_create_nested_dart_opaque_twin_sync(
 
 #[no_mangle]
 pub extern "C" fn wire_drop_static_dart_opaque_twin_sync(
+    id: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
-    wire_drop_static_dart_opaque_twin_sync_impl()
+    wire_drop_static_dart_opaque_twin_sync_impl(id)
 }
 
 #[no_mangle]
@@ -9842,9 +9845,10 @@ pub extern "C" fn wire_panic_unwrap_dart_opaque_twin_sync(
 
 #[no_mangle]
 pub extern "C" fn wire_set_static_dart_opaque_twin_sync(
+    id: i32,
     opaque: *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
-    wire_set_static_dart_opaque_twin_sync_impl(opaque)
+    wire_set_static_dart_opaque_twin_sync_impl(id, opaque)
 }
 
 #[no_mangle]

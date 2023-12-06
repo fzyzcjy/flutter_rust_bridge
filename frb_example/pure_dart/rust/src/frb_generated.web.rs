@@ -4263,8 +4263,9 @@ pub fn wire_create_nested_dart_opaque_twin_normal(
 #[wasm_bindgen]
 pub fn wire_drop_static_dart_opaque_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    id: i32,
 ) {
-    wire_drop_static_dart_opaque_twin_normal_impl(port_)
+    wire_drop_static_dart_opaque_twin_normal_impl(port_, id)
 }
 
 #[wasm_bindgen]
@@ -4350,9 +4351,10 @@ pub fn wire_panic_unwrap_dart_opaque_twin_normal(
 #[wasm_bindgen]
 pub fn wire_set_static_dart_opaque_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    id: i32,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_set_static_dart_opaque_twin_normal_impl(port_, opaque)
+    wire_set_static_dart_opaque_twin_normal_impl(port_, id, opaque)
 }
 
 #[wasm_bindgen]
@@ -5659,8 +5661,9 @@ pub fn wire_create_nested_dart_opaque_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_drop_static_dart_opaque_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    id: i32,
 ) {
-    wire_drop_static_dart_opaque_twin_rust_async_impl(port_)
+    wire_drop_static_dart_opaque_twin_rust_async_impl(port_, id)
 }
 
 #[wasm_bindgen]
@@ -5746,9 +5749,10 @@ pub fn wire_panic_unwrap_dart_opaque_twin_rust_async(
 #[wasm_bindgen]
 pub fn wire_set_static_dart_opaque_twin_rust_async(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    id: i32,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) {
-    wire_set_static_dart_opaque_twin_rust_async_impl(port_, opaque)
+    wire_set_static_dart_opaque_twin_rust_async_impl(port_, id, opaque)
 }
 
 #[wasm_bindgen]
@@ -5774,9 +5778,10 @@ pub fn wire_create_nested_dart_opaque_twin_sync(
 }
 
 #[wasm_bindgen]
-pub fn wire_drop_static_dart_opaque_twin_sync() -> flutter_rust_bridge::for_generated::WireSyncReturn
-{
-    wire_drop_static_dart_opaque_twin_sync_impl()
+pub fn wire_drop_static_dart_opaque_twin_sync(
+    id: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncReturn {
+    wire_drop_static_dart_opaque_twin_sync_impl(id)
 }
 
 #[wasm_bindgen]
@@ -5851,9 +5856,10 @@ pub fn wire_panic_unwrap_dart_opaque_twin_sync(
 
 #[wasm_bindgen]
 pub fn wire_set_static_dart_opaque_twin_sync(
+    id: i32,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
-    wire_set_static_dart_opaque_twin_sync_impl(opaque)
+    wire_set_static_dart_opaque_twin_sync_impl(id, opaque)
 }
 
 #[wasm_bindgen]

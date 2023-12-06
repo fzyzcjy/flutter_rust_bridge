@@ -727,6 +727,7 @@ fn wire_create_nested_dart_opaque_twin_normal_impl(
 }
 fn wire_drop_static_dart_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    id: impl Wire2Api<i32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -735,8 +736,11 @@ fn wire_drop_static_dart_opaque_twin_normal_impl(
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
+            let api_id = id.wire2api();
             move |context| {
-                Result::<_, ()>::Ok(crate::api::dart_opaque::drop_static_dart_opaque_twin_normal())
+                Result::<_, ()>::Ok(
+                    crate::api::dart_opaque::drop_static_dart_opaque_twin_normal(api_id),
+                )
             }
         },
     )
@@ -941,6 +945,7 @@ fn wire_panic_unwrap_dart_opaque_twin_normal_impl(
 }
 fn wire_set_static_dart_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    id: impl Wire2Api<i32> + core::panic::UnwindSafe,
     opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, (), _>(
@@ -950,10 +955,11 @@ fn wire_set_static_dart_opaque_twin_normal_impl(
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
+            let api_id = id.wire2api();
             let api_opaque = opaque.wire2api();
             move |context| {
                 Result::<_, ()>::Ok(crate::api::dart_opaque::set_static_dart_opaque_twin_normal(
-                    api_opaque,
+                    api_id, api_opaque,
                 ))
             }
         },
@@ -3452,8 +3458,9 @@ fn wire_create_nested_dart_opaque_twin_rust_async_impl(
 }
 fn wire_drop_static_dart_opaque_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    id: impl Wire2Api<i32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "drop_static_dart_opaque_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {  move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_rust_async::drop_static_dart_opaque_twin_rust_async().await) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "drop_static_dart_opaque_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_id = id.wire2api(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_rust_async::drop_static_dart_opaque_twin_rust_async(api_id).await) } })
 }
 fn wire_get_enum_dart_opaque_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -3521,9 +3528,10 @@ fn wire_panic_unwrap_dart_opaque_twin_rust_async_impl(
 }
 fn wire_set_static_dart_opaque_twin_rust_async_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    id: impl Wire2Api<i32> + core::panic::UnwindSafe,
     opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "set_static_dart_opaque_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_opaque = opaque.wire2api(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_rust_async::set_static_dart_opaque_twin_rust_async(api_opaque).await) } })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<_,_,_,_,(),_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "set_static_dart_opaque_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { let api_id = id.wire2api();let api_opaque = opaque.wire2api(); move |context| async move {  Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_rust_async::set_static_dart_opaque_twin_rust_async(api_id, api_opaque).await) } })
 }
 fn wire_async_accept_dart_opaque_twin_sync_impl(
     opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
@@ -3556,6 +3564,7 @@ fn wire_create_nested_dart_opaque_twin_sync_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "create_nested_dart_opaque_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_opaque1 = opaque1.wire2api();let api_opaque2 = opaque2.wire2api();Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_sync::create_nested_dart_opaque_twin_sync(api_opaque1, api_opaque2)) })
 }
 fn wire_drop_static_dart_opaque_twin_sync_impl(
+    id: impl Wire2Api<i32> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -3564,8 +3573,10 @@ fn wire_drop_static_dart_opaque_twin_sync_impl(
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
         move || {
+            let api_id = id.wire2api();
             Result::<_, ()>::Ok(
                 crate::api::pseudo_manual::dart_opaque_twin_sync::drop_static_dart_opaque_twin_sync(
+                    api_id,
                 ),
             )
         },
@@ -3748,6 +3759,7 @@ fn wire_panic_unwrap_dart_opaque_twin_sync_impl(
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "panic_unwrap_dart_opaque_twin_sync", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { let api_opaque = opaque.wire2api();Result::<_,()>::Ok(crate::api::pseudo_manual::dart_opaque_twin_sync::panic_unwrap_dart_opaque_twin_sync(api_opaque)) })
 }
 fn wire_set_static_dart_opaque_twin_sync_impl(
+    id: impl Wire2Api<i32> + core::panic::UnwindSafe,
     opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
@@ -3757,10 +3769,11 @@ fn wire_set_static_dart_opaque_twin_sync_impl(
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
         move || {
+            let api_id = id.wire2api();
             let api_opaque = opaque.wire2api();
             Result::<_, ()>::Ok(
                 crate::api::pseudo_manual::dart_opaque_twin_sync::set_static_dart_opaque_twin_sync(
-                    api_opaque,
+                    api_id, api_opaque,
                 ),
             )
         },

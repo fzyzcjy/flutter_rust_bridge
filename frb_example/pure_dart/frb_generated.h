@@ -1654,7 +1654,7 @@ void wire_create_nested_dart_opaque_twin_normal(int64_t port_,
                                                 const void *opaque1,
                                                 const void *opaque2);
 
-void wire_drop_static_dart_opaque_twin_normal(int64_t port_);
+void wire_drop_static_dart_opaque_twin_normal(int64_t port_, int32_t id);
 
 void wire_get_enum_dart_opaque_twin_normal(int64_t port_,
                                            struct wire_enum_dart_opaque_twin_normal *opaque);
@@ -1678,7 +1678,7 @@ void wire_loop_back_vec_twin_normal(int64_t port_, const void *opaque);
 
 void wire_panic_unwrap_dart_opaque_twin_normal(int64_t port_, const void *opaque);
 
-void wire_set_static_dart_opaque_twin_normal(int64_t port_, const void *opaque);
+void wire_set_static_dart_opaque_twin_normal(int64_t port_, int32_t id, const void *opaque);
 
 WireSyncReturn wire_sync_accept_dart_opaque_twin_normal(const void *opaque);
 
@@ -2088,7 +2088,7 @@ void wire_create_nested_dart_opaque_twin_rust_async(int64_t port_,
                                                     const void *opaque1,
                                                     const void *opaque2);
 
-void wire_drop_static_dart_opaque_twin_rust_async(int64_t port_);
+void wire_drop_static_dart_opaque_twin_rust_async(int64_t port_, int32_t id);
 
 void wire_get_enum_dart_opaque_twin_rust_async(int64_t port_,
                                                struct wire_enum_dart_opaque_twin_rust_async *opaque);
@@ -2112,7 +2112,7 @@ void wire_loop_back_vec_twin_rust_async(int64_t port_, const void *opaque);
 
 void wire_panic_unwrap_dart_opaque_twin_rust_async(int64_t port_, const void *opaque);
 
-void wire_set_static_dart_opaque_twin_rust_async(int64_t port_, const void *opaque);
+void wire_set_static_dart_opaque_twin_rust_async(int64_t port_, int32_t id, const void *opaque);
 
 WireSyncReturn wire_async_accept_dart_opaque_twin_sync(const void *opaque);
 
@@ -2120,7 +2120,7 @@ WireSyncReturn wire_create_enum_dart_opaque_twin_sync(const void *opaque);
 
 WireSyncReturn wire_create_nested_dart_opaque_twin_sync(const void *opaque1, const void *opaque2);
 
-WireSyncReturn wire_drop_static_dart_opaque_twin_sync(void);
+WireSyncReturn wire_drop_static_dart_opaque_twin_sync(int32_t id);
 
 WireSyncReturn wire_get_enum_dart_opaque_twin_sync(struct wire_enum_dart_opaque_twin_sync *opaque);
 
@@ -2142,7 +2142,7 @@ WireSyncReturn wire_loop_back_vec_twin_sync(const void *opaque);
 
 WireSyncReturn wire_panic_unwrap_dart_opaque_twin_sync(const void *opaque);
 
-WireSyncReturn wire_set_static_dart_opaque_twin_sync(const void *opaque);
+WireSyncReturn wire_set_static_dart_opaque_twin_sync(int32_t id, const void *opaque);
 
 void wire_func_enum_simple_twin_rust_async(int64_t port_, int32_t arg);
 
