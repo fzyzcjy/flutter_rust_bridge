@@ -5,17 +5,8 @@ use dart_sys::Dart_NewPersistentHandle_DL;
 use log::warn;
 use std::thread::ThreadId;
 
-#[cfg(wasm)]
-mod web;
-#[cfg(wasm)]
-pub use web::*;
-
-#[cfg(not(wasm))]
-mod io;
 use crate::dart_opaque::thread_box::ThreadBox;
 use crate::for_generated::{box_from_leak_ptr, new_leak_box_ptr};
-#[cfg(not(wasm))]
-pub use io::*;
 
 #[cfg(not(wasm))]
 mod auto_drop_dart_persistent_handle;
@@ -23,6 +14,12 @@ mod auto_drop_dart_persistent_handle;
 mod dart2rust;
 mod rust2dart;
 mod thread_box;
+
+#[cfg(not(wasm))]
+pub type GeneralizedAutoDropDartPersistentHandle =
+    auto_drop_dart_persistent_handle::AutoDropDartPersistentHandle;
+#[cfg(wasm)]
+pub type GeneralizedAutoDropDartPersistentHandle = wasm_bindgen::JsValue;
 
 /// Arbitrary Dart object, whose type can be even non-encodable and non-transferable.
 #[derive(Debug)]
