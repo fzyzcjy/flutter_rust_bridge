@@ -10,22 +10,20 @@ pub type GeneralizedDartPersistentHandle = wasm_bindgen::JsValue;
 
 #[derive(Debug)]
 pub struct DartOpaqueBase {
-    inner: Box<JsValue>,
+    inner: JsValue,
 }
 
 impl DartOpaqueBase {
     pub fn new(handle: JsValue) -> Self {
-        Self {
-            inner: Box::new(handle),
-        }
+        Self { inner: handle }
     }
 
     pub fn unwrap(self) -> JsValue {
-        *self.inner
+        self.inner
     }
 
     pub fn into_raw(self) -> *mut JsValue {
-        Box::into_raw(self.inner)
+        Box::into_raw(Box::new(self.inner))
     }
 }
 
