@@ -3,7 +3,7 @@ use crate::platform_types::MessagePort;
 use dart_sys::{Dart_DeletePersistentHandle_DL, Dart_PersistentHandle};
 
 pub type OpaqueMessagePort = i64;
-pub type DartWrapObject = DartPersistentHandleWrapper;
+pub type DartObjectWrapper = DartPersistentHandleWrapper;
 pub type DartObject = Dart_PersistentHandle;
 
 #[derive(Debug)]

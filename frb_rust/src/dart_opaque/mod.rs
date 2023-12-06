@@ -48,7 +48,7 @@ impl DartOpaque {
 
     /// Tries to get a Dart [DartObject].
     /// Returns the [DartObject] if the [DartOpaque] was created on the current thread.
-    pub fn try_unwrap(mut self) -> Result<DartWrapObject, Self> {
+    pub fn try_unwrap(mut self) -> Result<DartObjectWrapper, Self> {
         if std::thread::current().id() == self.thread_id {
             Ok(self.handle.take().unwrap().unwrap())
         } else {
