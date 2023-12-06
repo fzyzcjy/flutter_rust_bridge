@@ -17,9 +17,10 @@ use crate::misc::consts::HANDLER_NAME;
 impl<'a> WireRustGeneratorDart2RustTrait for DartOpaqueWireRustGenerator<'a> {
     fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
         Acc::new(|target| match target {
-            TargetOrCommon::Io | TargetOrCommon::Wasm => {
-                Some("unsafe { wire2api_dart_opaque(self) }".to_owned())
-            }
+            TargetOrCommon::Io | TargetOrCommon::Wasm => Some(
+                "unsafe { flutter_rust_bridge::for_generated::wire2api_dart_opaque(self) }"
+                    .to_owned(),
+            ),
             TargetOrCommon::Common => None,
         })
     }
