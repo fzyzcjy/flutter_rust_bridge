@@ -238,12 +238,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  PlatformPointer api2wire_DartFn_Inputs__Output_unit(void Function() raw) {
+  Object api2wire_DartFn_Inputs__Output_unit(void Function() raw) {
     return api2wire_DartOpaque(raw);
   }
 
   @protected
-  PlatformPointer api2wire_DartOpaque(Object raw) {
+  Object api2wire_DartOpaque(Object raw) {
     return api2wireDartOpaque(raw);
   }
 
@@ -307,7 +307,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<PlatformPointer> api2wire_box_autoadd_DartOpaque(Object raw) {
+  ffi.Pointer<Object> api2wire_box_autoadd_DartOpaque(Object raw) {
     return wire.new_box_autoadd_DartOpaque(api2wire_DartOpaque(raw));
   }
 
@@ -2144,8 +2144,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<PlatformPointer> api2wire_opt_box_autoadd_DartOpaque(
-      Object? raw) {
+  ffi.Pointer<Object> api2wire_opt_box_autoadd_DartOpaque(Object? raw) {
     return raw == null ? ffi.nullptr : api2wire_box_autoadd_DartOpaque(raw);
   }
 
