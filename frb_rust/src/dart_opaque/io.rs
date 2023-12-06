@@ -43,10 +43,8 @@ pub unsafe extern "C" fn dart_new_persistent_handle(handle: Dart_Handle) -> *con
 /// This function should never be called manually.
 #[no_mangle]
 pub unsafe extern "C" fn get_dart_object(ptr: usize) -> Dart_Handle {
-    let handle = ptr as _;
-    let res = Dart_HandleFromPersistent_DL.expect("dart_api_dl has not been initialized")(handle);
-    Dart_DeletePersistentHandle_DL.expect("dart_api_dl has not been initialized")(handle);
-    res
+    let handle = DartPersistentHandleAutoDrop::from_raw(ptr as _);
+    handle.create_dart_handle()
 }
 
 /// # Safety
