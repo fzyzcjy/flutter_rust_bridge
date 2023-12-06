@@ -4253,6 +4253,14 @@ pub fn wire_async_accept_dart_opaque_twin_normal(
 }
 
 #[wasm_bindgen]
+pub fn wire_clone_dart_opaque_twin_normal(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
+) {
+    wire_clone_dart_opaque_twin_normal_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
 pub fn wire_create_enum_dart_opaque_twin_normal(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,

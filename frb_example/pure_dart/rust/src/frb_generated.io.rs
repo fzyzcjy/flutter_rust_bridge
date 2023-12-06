@@ -8440,6 +8440,11 @@ pub extern "C" fn wire_async_accept_dart_opaque_twin_normal(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_clone_dart_opaque_twin_normal(port_: i64, opaque: *const std::ffi::c_void) {
+    wire_clone_dart_opaque_twin_normal_impl(port_, opaque)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_create_enum_dart_opaque_twin_normal(
     port_: i64,
     opaque: *const std::ffi::c_void,

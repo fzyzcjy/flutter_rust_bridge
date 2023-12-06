@@ -678,6 +678,26 @@ fn wire_async_accept_dart_opaque_twin_normal_impl(
         },
     )
 }
+fn wire_clone_dart_opaque_twin_normal_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, Vec<flutter_rust_bridge::DartOpaque>, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "clone_dart_opaque_twin_normal",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            move |context| {
+                Result::<_, ()>::Ok(crate::api::dart_opaque::clone_dart_opaque_twin_normal(
+                    api_opaque,
+                ))
+            }
+        },
+    )
+}
 fn wire_create_enum_dart_opaque_twin_normal_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     opaque: impl Wire2Api<flutter_rust_bridge::DartOpaque> + core::panic::UnwindSafe,

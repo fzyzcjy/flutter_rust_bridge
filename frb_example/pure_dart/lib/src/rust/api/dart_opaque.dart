@@ -76,6 +76,10 @@ Future<void> setStaticDartOpaqueTwinNormal(
 Future<void> dropStaticDartOpaqueTwinNormal({required int id, dynamic hint}) =>
     RustLib.instance.api.dropStaticDartOpaqueTwinNormal(id: id, hint: hint);
 
+Future<List<Object>> cloneDartOpaqueTwinNormal(
+        {required Object opaque, dynamic hint}) =>
+    RustLib.instance.api.cloneDartOpaqueTwinNormal(opaque: opaque, hint: hint);
+
 class ObjectArray1 extends NonGrowableListView<Object> {
   static const arraySize = 1;
   ObjectArray1(List<Object> inner)

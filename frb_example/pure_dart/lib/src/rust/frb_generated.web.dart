@@ -3283,6 +3283,10 @@ class RustLibWire extends BaseWire {
           NativePortType port_, Object opaque) =>
       wasmModule.wire_async_accept_dart_opaque_twin_normal(port_, opaque);
 
+  void wire_clone_dart_opaque_twin_normal(
+          NativePortType port_, Object opaque) =>
+      wasmModule.wire_clone_dart_opaque_twin_normal(port_, opaque);
+
   void wire_create_enum_dart_opaque_twin_normal(
           NativePortType port_, Object opaque) =>
       wasmModule.wire_create_enum_dart_opaque_twin_normal(port_, opaque);
@@ -6502,6 +6506,9 @@ class RustLibWasmModule implements WasmModule {
       NativePortType port_, Object callback);
 
   external void wire_async_accept_dart_opaque_twin_normal(
+      NativePortType port_, Object opaque);
+
+  external void wire_clone_dart_opaque_twin_normal(
       NativePortType port_, Object opaque);
 
   external void wire_create_enum_dart_opaque_twin_normal(

@@ -3,14 +3,6 @@
 
 // ignore_for_file: unused_import, unused_element, duplicate_ignore
 
-import 'dart:async';
-import 'dart:convert';
-import 'dart:ffi' as ffi;
-
-import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
-import 'package:meta/meta.dart' as meta;
-import 'package:uuid/uuid.dart';
-
 import 'api/array.dart';
 import 'api/async_misc.dart';
 import 'api/attribute.dart';
@@ -114,7 +106,13 @@ import 'api/uuid_type.dart';
 import 'auxiliary/new_module_system/sub_module.dart';
 import 'auxiliary/old_module_system/sub_module.dart';
 import 'auxiliary/sample_types.dart';
+import 'dart:async';
+import 'dart:convert';
+import 'dart:ffi' as ffi;
 import 'frb_generated.dart';
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
+import 'package:meta/meta.dart' as meta;
+import 'package:uuid/uuid.dart';
 
 abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   RustLibApiImplPlatform({
@@ -5613,6 +5611,24 @@ class RustLibWire implements BaseWire {
       'wire_async_accept_dart_opaque_twin_normal');
   late final _wire_async_accept_dart_opaque_twin_normal =
       _wire_async_accept_dart_opaque_twin_normalPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
+
+  void wire_clone_dart_opaque_twin_normal(
+    int port_,
+    ffi.Pointer<ffi.Void> opaque,
+  ) {
+    return _wire_clone_dart_opaque_twin_normal(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _wire_clone_dart_opaque_twin_normalPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+      'wire_clone_dart_opaque_twin_normal');
+  late final _wire_clone_dart_opaque_twin_normal =
+      _wire_clone_dart_opaque_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
   void wire_create_enum_dart_opaque_twin_normal(

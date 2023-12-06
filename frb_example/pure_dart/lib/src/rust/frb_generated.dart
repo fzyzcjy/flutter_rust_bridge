@@ -260,6 +260,9 @@ abstract class RustLibApi extends BaseApi {
   Future<String> asyncAcceptDartOpaqueTwinNormal(
       {required Object opaque, dynamic hint});
 
+  Future<List<Object>> cloneDartOpaqueTwinNormal(
+      {required Object opaque, dynamic hint});
+
   Future<EnumDartOpaqueTwinNormal> createEnumDartOpaqueTwinNormal(
       {required Object opaque, dynamic hint});
 
@@ -3164,6 +3167,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kAsyncAcceptDartOpaqueTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "async_accept_dart_opaque_twin_normal",
+        argNames: ["opaque"],
+      );
+
+  @override
+  Future<List<Object>> cloneDartOpaqueTwinNormal(
+      {required Object opaque, dynamic hint}) {
+    var arg0 = api2wire_DartOpaque(opaque);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_clone_dart_opaque_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_list_DartOpaque,
+      parseErrorData: null,
+      constMeta: kCloneDartOpaqueTwinNormalConstMeta,
+      argValues: [opaque],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCloneDartOpaqueTwinNormalConstMeta => const TaskConstMeta(
+        debugName: "clone_dart_opaque_twin_normal",
         argNames: ["opaque"],
       );
 
