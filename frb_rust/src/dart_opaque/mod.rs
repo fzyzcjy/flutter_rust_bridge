@@ -46,6 +46,14 @@ impl DartOpaque {
     }
 
     pub fn into_inner(mut self) -> GeneralizedAutoDropDartPersistentHandle {
+        // Though inner ThreadBox has a check, we still check here
+        // to avoid (auto) invoking ThreadBox.drop during its panicking,
+        // which causes either leak or abort.
+        // In addition, here we have more user friendly error message.
+        if !(self.persistent_handle.as_ref().unwrap()).is_on_creation_thread() {
+            panic!("DartOpaque can only be used on the creation thread");
+        }
+
         self.persistent_handle.take().unwrap().into_inner()
     }
 
