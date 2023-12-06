@@ -35,7 +35,8 @@ class GeneralizedFrbRustBinding {
   void dropDartObject(int ptr) => _binding.drop_dart_object(ptr);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  PlatformPointer newDartOpaque(Object obj) => _binding.new_dart_opaque(obj);
+  PlatformPointer dartNewPersistentHandle(Object obj) =>
+      _binding.dart_new_persistent_handle(obj);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void freeWireSyncReturn(WireSyncReturn val) =>

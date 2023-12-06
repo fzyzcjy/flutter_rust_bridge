@@ -4,5 +4,5 @@ import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 PlatformPointer api2wireDartOpaque(
     Object raw, GeneralizedFrbRustBinding generalizedFrbRustBinding) {
-  return generalizedFrbRustBinding.newDartOpaque(raw);
+  return generalizedFrbRustBinding.dartNewPersistentHandle(raw);
 }

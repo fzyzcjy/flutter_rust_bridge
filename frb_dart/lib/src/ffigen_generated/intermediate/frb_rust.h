@@ -20,7 +20,7 @@ extern void js_console_error(const str *msg);
  *
  * This function should never be called manually.
  */
-const void *new_dart_opaque(Dart_Handle handle);
+const void *dart_new_persistent_handle(Dart_Handle handle);
 
 /**
  * # Safety

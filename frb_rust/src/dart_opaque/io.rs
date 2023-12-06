@@ -33,7 +33,7 @@ impl DartOpaqueBase {
 ///
 /// This function should never be called manually.
 #[no_mangle]
-pub unsafe extern "C" fn new_dart_opaque(handle: Dart_Handle) -> *const c_void {
+pub unsafe extern "C" fn dart_new_persistent_handle(handle: Dart_Handle) -> *const c_void {
     Dart_NewPersistentHandle_DL.expect("dart_api_dl has not been initialized")(handle)
 }
 

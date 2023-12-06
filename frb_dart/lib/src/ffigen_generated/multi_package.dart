@@ -236,19 +236,19 @@ class MultiPackageCBinding {
   /// # Safety
   ///
   /// This function should never be called manually.
-  ffi.Pointer<ffi.Void> new_dart_opaque(
+  ffi.Pointer<ffi.Void> dart_new_persistent_handle(
     Object handle,
   ) {
-    return _new_dart_opaque(
+    return _dart_new_persistent_handle(
       handle,
     );
   }
 
-  late final _new_dart_opaquePtr =
+  late final _dart_new_persistent_handlePtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Handle)>>(
-          'new_dart_opaque');
-  late final _new_dart_opaque =
-      _new_dart_opaquePtr.asFunction<ffi.Pointer<ffi.Void> Function(Object)>();
+          'dart_new_persistent_handle');
+  late final _dart_new_persistent_handle = _dart_new_persistent_handlePtr
+      .asFunction<ffi.Pointer<ffi.Void> Function(Object)>();
 
   /// # Safety
   ///
