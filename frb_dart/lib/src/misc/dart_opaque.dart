@@ -9,7 +9,7 @@ Object api2wireDartOpaque(Object raw) {
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 Object wire2apiDartOpaque(
     dynamic raw, GeneralizedFrbRustBinding generalizedFrbRustBinding) {
-  return generalizedFrbRustBinding.getDartObject(raw);
+  return generalizedFrbRustBinding.dartOpaqueRust2DartWire2Api(raw);
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
