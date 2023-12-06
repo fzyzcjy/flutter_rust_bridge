@@ -1,9 +1,9 @@
 #[macro_export]
 macro_rules! codegen_generator_structs {
-    ($generator_name:ident; $(#[$cfgs:meta])*; $($name:ident),*,) => (
+    ($generator_name:ident; $(#[$attribute:meta])*; $($name:ident),*,) => (
         paste! {
             $(
-            #[$cfgs]
+            #[$attribute]
             )*
             pub(crate) enum $generator_name<'a> {
                 $(
