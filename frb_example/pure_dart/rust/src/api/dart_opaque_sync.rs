@@ -25,11 +25,12 @@ pub fn unwrap_dart_opaque_twin_normal(opaque: DartOpaque) -> String {
     "Test".to_owned()
 }
 
-#[frb(sync)]
-pub fn return_non_droppable_dart_opaque_twin_normal(opaque: DartOpaque) -> DartOpaque {
-    let raw = opaque.try_unwrap().unwrap();
-    unsafe { DartOpaque::new_non_droppable(raw.into()) }
-}
+// This API is removed in v2, because we can always provide the drop port
+// #[frb(sync)]
+// pub fn return_non_droppable_dart_opaque_twin_normal(opaque: DartOpaque) -> DartOpaque {
+//     let raw = opaque.try_unwrap().unwrap();
+//     unsafe { DartOpaque::new_non_droppable(raw.into()) }
+// }
 
 #[frb(sync)]
 pub fn sync_option_dart_opaque_twin_normal(

@@ -299,9 +299,6 @@ abstract class RustLibApi extends BaseApi {
   Future<void> setStaticDartOpaqueTwinNormal(
       {required Object opaque, dynamic hint});
 
-  Object returnNonDroppableDartOpaqueTwinNormal(
-      {required Object opaque, dynamic hint});
-
   String syncAcceptDartOpaqueTwinNormal({required Object opaque, dynamic hint});
 
   Object syncLoopbackTwinNormal({required Object opaque, dynamic hint});
@@ -3458,28 +3455,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kSetStaticDartOpaqueTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "set_static_dart_opaque_twin_normal",
-        argNames: ["opaque"],
-      );
-
-  @override
-  Object returnNonDroppableDartOpaqueTwinNormal(
-      {required Object opaque, dynamic hint}) {
-    var arg0 = api2wire_DartOpaque(opaque);
-    return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_return_non_droppable_dart_opaque_twin_normal(arg0),
-      parseSuccessData: _wire2api_DartOpaque,
-      parseErrorData: null,
-      constMeta: kReturnNonDroppableDartOpaqueTwinNormalConstMeta,
-      argValues: [opaque],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kReturnNonDroppableDartOpaqueTwinNormalConstMeta =>
-      const TaskConstMeta(
-        debugName: "return_non_droppable_dart_opaque_twin_normal",
         argNames: ["opaque"],
       );
 

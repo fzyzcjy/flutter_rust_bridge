@@ -5868,21 +5868,6 @@ class RustLibWire implements BaseWire {
       _wire_set_static_dart_opaque_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Void>)>();
 
-  WireSyncReturn wire_return_non_droppable_dart_opaque_twin_normal(
-    ffi.Pointer<ffi.Void> opaque,
-  ) {
-    return _wire_return_non_droppable_dart_opaque_twin_normal(
-      opaque,
-    );
-  }
-
-  late final _wire_return_non_droppable_dart_opaque_twin_normalPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>>(
-      'wire_return_non_droppable_dart_opaque_twin_normal');
-  late final _wire_return_non_droppable_dart_opaque_twin_normal =
-      _wire_return_non_droppable_dart_opaque_twin_normalPtr
-          .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Void>)>();
-
   WireSyncReturn wire_sync_accept_dart_opaque_twin_normal(
     ffi.Pointer<ffi.Void> opaque,
   ) {

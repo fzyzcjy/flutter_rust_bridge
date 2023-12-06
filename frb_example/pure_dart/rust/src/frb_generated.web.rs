@@ -4356,13 +4356,6 @@ pub fn wire_set_static_dart_opaque_twin_normal(
 }
 
 #[wasm_bindgen]
-pub fn wire_return_non_droppable_dart_opaque_twin_normal(
-    opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
-    wire_return_non_droppable_dart_opaque_twin_normal_impl(opaque)
-}
-
-#[wasm_bindgen]
 pub fn wire_sync_accept_dart_opaque_twin_normal(
     opaque: flutter_rust_bridge::for_generated::wasm_bindgen::JsValue,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {

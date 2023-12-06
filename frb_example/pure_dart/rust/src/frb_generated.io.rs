@@ -8534,13 +8534,6 @@ pub extern "C" fn wire_set_static_dart_opaque_twin_normal(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_return_non_droppable_dart_opaque_twin_normal(
-    opaque: *const std::ffi::c_void,
-) -> flutter_rust_bridge::for_generated::WireSyncReturn {
-    wire_return_non_droppable_dart_opaque_twin_normal_impl(opaque)
-}
-
-#[no_mangle]
 pub extern "C" fn wire_sync_accept_dart_opaque_twin_normal(
     opaque: *const std::ffi::c_void,
 ) -> flutter_rust_bridge::for_generated::WireSyncReturn {

@@ -21,11 +21,6 @@ String syncAcceptDartOpaqueTwinNormal({required Object opaque, dynamic hint}) =>
 String unwrapDartOpaqueTwinNormal({required Object opaque, dynamic hint}) =>
     RustLib.instance.api.unwrapDartOpaqueTwinNormal(opaque: opaque, hint: hint);
 
-Object returnNonDroppableDartOpaqueTwinNormal(
-        {required Object opaque, dynamic hint}) =>
-    RustLib.instance.api
-        .returnNonDroppableDartOpaqueTwinNormal(opaque: opaque, hint: hint);
-
 Object? syncOptionDartOpaqueTwinNormal(
         {required Object opaque, dynamic hint}) =>
     RustLib.instance.api

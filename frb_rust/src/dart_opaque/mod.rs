@@ -46,24 +46,6 @@ impl DartOpaque {
         }
     }
 
-    /// Creates a [DartOpaque] for sending to dart.
-    ///
-    /// # Safety
-    ///
-    /// The [DartObject] must be created on the current thread.
-    ///
-    /// The [DartOpaque] created by this method must not be dropped
-    /// on a non-parent [DartObject] thread.
-    pub unsafe fn new_non_droppable(handle: DartObject) -> Self {
-        todo!("new_non_droppable")
-        // Self {
-        //     // TODO originally this was "dropport=none" while `new` was `dropport=some...`, but now no port at all
-        //     // handle: Some(DartOpaqueBase::new(handle, None)),
-        //     handle: Some(DartOpaqueBase::new(handle)),
-        //     thread_id: std::thread::current().id(),
-        // }
-    }
-
     /// Tries to get a Dart [DartObject].
     /// Returns the [DartObject] if the [DartOpaque] was created on the current thread.
     pub fn try_unwrap(mut self) -> Result<DartWrapObject, Self> {

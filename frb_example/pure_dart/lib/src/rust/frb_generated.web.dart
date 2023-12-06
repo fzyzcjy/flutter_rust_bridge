@@ -3336,10 +3336,6 @@ class RustLibWire extends BaseWire {
       wasmModule.wire_set_static_dart_opaque_twin_normal(port_, opaque);
 
   dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
-      wire_return_non_droppable_dart_opaque_twin_normal(Object opaque) =>
-          wasmModule.wire_return_non_droppable_dart_opaque_twin_normal(opaque);
-
-  dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
       wire_sync_accept_dart_opaque_twin_normal(Object opaque) =>
           wasmModule.wire_sync_accept_dart_opaque_twin_normal(opaque);
 
@@ -6546,9 +6542,6 @@ class RustLibWasmModule implements WasmModule {
 
   external void wire_set_static_dart_opaque_twin_normal(
       NativePortType port_, Object opaque);
-
-  external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
-      wire_return_non_droppable_dart_opaque_twin_normal(Object opaque);
 
   external dynamic /* flutter_rust_bridge::for_generated::WireSyncReturn */
       wire_sync_accept_dart_opaque_twin_normal(Object opaque);

@@ -1680,8 +1680,6 @@ void wire_panic_unwrap_dart_opaque_twin_normal(int64_t port_, const void *opaque
 
 void wire_set_static_dart_opaque_twin_normal(int64_t port_, const void *opaque);
 
-WireSyncReturn wire_return_non_droppable_dart_opaque_twin_normal(const void *opaque);
-
 WireSyncReturn wire_sync_accept_dart_opaque_twin_normal(const void *opaque);
 
 WireSyncReturn wire_sync_loopback_twin_normal(const void *opaque);
@@ -4881,7 +4879,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_return_error_variant_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_return_error_variant_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_return_error_variant_twin_sync);
-    dummy_var ^= ((int64_t) (void*) wire_return_non_droppable_dart_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_return_ok_custom_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_return_ok_custom_error_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) wire_return_ok_custom_error_twin_sync);
