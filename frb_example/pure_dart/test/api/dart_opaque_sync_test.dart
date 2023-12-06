@@ -31,11 +31,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('unwrap', () async {
-    // TODO
-    // TODO
-    // TODO
-    // expect(
-    //     unwrapDartOpaqueTwinNormal(opaque: createLargeList(mb: 200)), 'Test');
+    expect(
+        unwrapDartOpaqueTwinNormal(opaque: createLargeList(mb: 200)), 'Test');
     await expectLater(
         () => panicUnwrapDartOpaqueTwinNormal(opaque: createLargeList(mb: 200)),
         throwsA(isA<PanicException>()));
