@@ -50,16 +50,6 @@ impl DartOpaque {
             drop_port,
         }
     }
-
-    /// Tries to get a Dart [GeneralizedDartPersistentHandle].
-    /// Returns the [GeneralizedDartPersistentHandle] if the [DartOpaque] was created on the current thread.
-    pub fn try_unwrap(mut self) -> Result<GeneralizedDartPersistentHandleWrapper, Self> {
-        if std::thread::current().id() == self.thread_id {
-            Ok(self.handle.take().unwrap().unwrap())
-        } else {
-            Err(self)
-        }
-    }
 }
 
 impl From<DartOpaque> for DartAbi {

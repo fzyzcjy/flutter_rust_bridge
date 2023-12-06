@@ -13,4 +13,12 @@ impl<T> ThreadBox<T> {
             thread_id: std::thread::current().id(),
         }
     }
+
+    pub fn try_unwrap(mut self) -> Result<T, Self> {
+        if std::thread::current().id() == self.thread_id {
+            Ok(self.inner.take().unwrap().unwrap())
+        } else {
+            Err(self)
+        }
+    }
 }
