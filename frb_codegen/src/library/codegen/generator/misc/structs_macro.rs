@@ -1,6 +1,32 @@
 #[macro_export]
-macro_rules! codegen_generator_structs_inner {
-    ($(#[$attribute:meta])* $generator_name:ident ; $($name:ident),*,) => (
+macro_rules! codegen_generator_structs {
+    ($(#[$attribute:meta])* $generator_name:ident) => (
+        crate::codegen_generator_structs!(
+            @private
+
+            $(#[$attribute])*
+            $generator_name;
+
+            Boxed,
+            DartFn,
+            DartOpaque,
+            Delegate,
+            Dynamic,
+            EnumRef,
+            GeneralList,
+            Optional,
+            OptionalList,
+            Ownership,
+            Primitive,
+            PrimitiveList,
+            Record,
+            RustAutoOpaque,
+            RustOpaque,
+            StructRef,
+            Unencodable,
+        );
+    );
+    (@private $(#[$attribute:meta])* $generator_name:ident ; $($name:ident),*,) => (
         paste! {
             $(
             #[$attribute]
@@ -46,33 +72,5 @@ macro_rules! codegen_generator_structs_inner {
                 }
             )*
         }
-    )
-}
-
-#[macro_export]
-macro_rules! codegen_generator_structs {
-    ($(#[$attribute:meta])* $generator_name:ident) => (
-        crate::codegen_generator_structs_inner!(
-            $(#[$attribute])*
-            $generator_name;
-
-            Boxed,
-            DartFn,
-            DartOpaque,
-            Delegate,
-            Dynamic,
-            EnumRef,
-            GeneralList,
-            Optional,
-            OptionalList,
-            Ownership,
-            Primitive,
-            PrimitiveList,
-            Record,
-            RustAutoOpaque,
-            RustOpaque,
-            StructRef,
-            Unencodable,
-        );
     )
 }
