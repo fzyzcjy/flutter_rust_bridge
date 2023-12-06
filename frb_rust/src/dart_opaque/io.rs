@@ -48,8 +48,9 @@ pub unsafe extern "C" fn get_dart_object(ptr: usize) -> Dart_Handle {
 /// This function should never be called manually.
 #[no_mangle]
 pub unsafe extern "C" fn drop_dart_object(ptr: usize) {
-    println!("hi rust drop_dart_object ptr={ptr:?}");
-    drop(DartPersistentHandleAutoDrop::from_raw(ptr as _))
+    println!("hi rust drop_dart_object START ptr={ptr:?}");
+    drop(DartPersistentHandleAutoDrop::from_raw(ptr as _));
+    println!("hi rust drop_dart_object END ptr={ptr:?}");
 }
 
 /// # Safety
@@ -57,6 +58,9 @@ pub unsafe extern "C" fn drop_dart_object(ptr: usize) {
 /// This function should never be called manually.
 #[no_mangle]
 pub unsafe extern "C" fn dart_new_persistent_handle(handle: Dart_Handle) -> *const c_void {
-    println!("hi rust dart_new_persistent_handle handle={handle:?}");
-    Dart_NewPersistentHandle_DL.expect("dart_api_dl has not been initialized")(handle) as _
+    println!("hi rust dart_new_persistent_handle START handle={handle:?} thus call Dart_NewPersistentHandle_DL");
+    let ans =
+        Dart_NewPersistentHandle_DL.expect("dart_api_dl has not been initialized")(handle) as _;
+    println!("hi rust dart_new_persistent_handle END handle={handle:?}");
+    ans
 }

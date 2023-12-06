@@ -19,6 +19,7 @@ impl DartPersistentHandleAutoDrop {
     /// https://github.com/dart-lang/sdk/blob/af20a8ab0394408ee48483c5c06c75281e7ba52c/runtime/include/dart_api.h#L424C8-L424C8
     /// "Allocates a handle in the current scope from a persistent handle."
     pub fn create_dart_handle(&self) -> Dart_Handle {
+        println!("hi create_dart_handle.drop start");
         unsafe {
             Dart_HandleFromPersistent_DL.expect("dart_api_dl has not been initialized")(
                 self.0.unwrap(),
@@ -29,7 +30,7 @@ impl DartPersistentHandleAutoDrop {
 
 impl Drop for DartPersistentHandleAutoDrop {
     fn drop(&mut self) {
-        println!("hi DartPersistentHandleAutoDrop.drop start");
+        println!("hi DartPersistentHandleAutoDrop.drop START self={self:?}");
         if let Some(inner) = self.0 {
             println!("hi DartPersistentHandleAutoDrop.drop has inner");
             unsafe {
@@ -39,5 +40,6 @@ impl Drop for DartPersistentHandleAutoDrop {
                 Dart_DeletePersistentHandle_DL.expect("dart_api_dl has not been initialized")(inner)
             }
         }
+        println!("hi DartPersistentHandleAutoDrop.drop END");
     }
 }
