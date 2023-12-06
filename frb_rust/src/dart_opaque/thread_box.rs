@@ -63,7 +63,7 @@ impl<T: Debug> Drop for ThreadBox<T> {
         if self.inner.is_some() && !self.is_on_creation_thread() {
             if std::thread::panicking() {
                 let msg = "ThreadBox.drop cannot drop data because it is not on creation thread. \
-However, system is already panicking so we cannot panic twice. \
+However, system is already panicking so we should not panic again. \
 Therefore, we have to make a memory leak for the data.";
                 warn!("{}", msg);
                 println!("{}", msg);
