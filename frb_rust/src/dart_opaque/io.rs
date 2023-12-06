@@ -27,7 +27,8 @@ impl DartOpaqueBase {
 }
 
 #[derive(Debug)]
-/// Option for correct drop.
+/// A [Dart_PersistentHandle] that delete the handle when `Drop`ped
+// `Option` is used for correct drop.
 pub struct DartPersistentHandleWrapper(Option<Dart_PersistentHandle>);
 
 impl DartPersistentHandleWrapper {
