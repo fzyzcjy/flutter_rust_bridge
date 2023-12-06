@@ -3,6 +3,7 @@ use crate::dart_opaque::DartOpaqueWireType;
 use crate::generalized_isolate::IntoDart;
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::platform_types::DartAbi;
+use crate::platform_types::SendableMessagePortHandle;
 use crate::platform_types::{MessagePort, WireSyncReturn};
 use crate::rust2dart::context::TaskRust2DartContext;
 use crate::DartOpaque;

@@ -4,6 +4,7 @@ use crate::generalized_isolate::IntoDart;
 use crate::handler::error::Error;
 use crate::handler::error_handler::ErrorHandler;
 use crate::handler::executor::Executor;
+use crate::handler::handler::HandlerConfig;
 use crate::handler::handler::{Handler, TaskContext, TaskInfo, TaskRetFutTrait};
 use crate::handler::implementation::error_handler::ReportDartErrorHandler;
 use crate::handler::implementation::executor::SimpleExecutor;
@@ -46,7 +47,7 @@ impl<TP: BaseThreadPool> DefaultHandler<TP> {
 pub struct SimpleHandler<E: Executor, EH: ErrorHandler> {
     executor: E,
     error_handler: EH,
-    config: Mutex<Option<SimpleHandlerConfig>>,
+    config: Mutex<Option<HandlerConfig>>,
 }
 
 impl<E: Executor, H: ErrorHandler> SimpleHandler<E, H> {
