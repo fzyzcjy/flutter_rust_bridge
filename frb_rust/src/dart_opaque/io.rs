@@ -28,7 +28,6 @@ impl DartOpaqueBase {
     }
 }
 
-// TODO rename (e.g. persistent handle)
 /// # Safety
 ///
 /// This function should never be called manually.
