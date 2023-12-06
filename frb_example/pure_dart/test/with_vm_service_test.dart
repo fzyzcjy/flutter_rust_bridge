@@ -71,7 +71,9 @@ Future<void> main() async {
         await dropStaticDartOpaqueTwinNormal();
 
         // create another unused big object to trigger GC
-        createLargeList(mb: 300);
+        final dummyBigListToTriggerGc = createLargeList(mb: 300);
+        // print s.t. ensure it is not optimized away
+        print('dummyBigListToTriggerGc=${dummyBigListToTriggerGc.length}');
 
         await vmService.gc();
         await Future<void>.delayed(const Duration(milliseconds: 10));
