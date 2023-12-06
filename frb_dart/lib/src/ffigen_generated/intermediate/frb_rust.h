@@ -2,7 +2,6 @@
 #include <stdint.h>
 #include <stdlib.h>
 typedef struct _Dart_Handle* Dart_Handle;
-typedef Dart_Handle Dart_PersistentHandle;
 #include "dart_api.h"
 #include "dart_native_api.h"
 
@@ -10,11 +9,13 @@ typedef struct Result_JsValue Result_JsValue;
 
 typedef Dart_CObject *WireSyncReturn;
 
+void initialize_frb_rust(void);
+
+extern void error(const str *msg);
+
 extern struct Result_JsValue post_message(const PortLike *this_, const JsValue *value);
 
 extern struct Result_JsValue close(const PortLike *this_);
-
-extern void js_console_error(const str *msg);
 
 /**
  * # Safety
@@ -28,14 +29,14 @@ uintptr_t new_dart_opaque(Dart_Handle handle);
  *
  * This function should never be called manually.
  */
-Dart_Handle get_dart_object(Dart_PersistentHandle persistent_handle);
+Dart_Handle get_dart_object(uintptr_t ptr);
 
 /**
  * # Safety
  *
  * This function should never be called manually.
  */
-void drop_dart_object(Dart_PersistentHandle persistent_handle);
+void drop_dart_object(uintptr_t ptr);
 
 /**
  * # Safety
