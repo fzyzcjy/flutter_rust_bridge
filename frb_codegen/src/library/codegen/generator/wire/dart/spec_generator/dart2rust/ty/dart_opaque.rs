@@ -8,7 +8,7 @@ impl<'a> WireDartGeneratorDart2RustTrait for DartOpaqueWireDartGenerator<'a> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         Acc::new(|target| match target {
             TargetOrCommon::Io | TargetOrCommon::Wasm => {
-                Some("return api2wireDartOpaque(raw, generalizedFrbRustBinding);".to_owned())
+                Some("return api2wireDartOpaque(raw);".to_owned())
             }
             TargetOrCommon::Common => None,
         })
