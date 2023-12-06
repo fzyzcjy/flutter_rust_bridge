@@ -33,25 +33,7 @@ codegen_generator_structs!(
     #[enum_dispatch(WireRustGeneratorImplTrait)]
     #[enum_dispatch(WireRustGeneratorRust2DartTrait)]
     #[enum_dispatch(WireRustGeneratorDart2RustTrait)]
-    #[enum_dispatch(WireRustGeneratorMiscTrait)];
-
-    Boxed,
-    DartFn,
-    DartOpaque,
-    Delegate,
-    Dynamic,
-    EnumRef,
-    GeneralList,
-    Optional,
-    OptionalList,
-    Ownership,
-    Primitive,
-    PrimitiveList,
-    Record,
-    RustAutoOpaque,
-    RustOpaque,
-    StructRef,
-    Unencodable,
+    #[enum_dispatch(WireRustGeneratorMiscTrait)]
 );
 
 #[derive(Debug, Clone, Copy)]

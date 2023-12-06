@@ -27,25 +27,7 @@ codegen_generator_structs!(
     ApiDartGenerator;
 
     #[enum_dispatch(ApiDartGeneratorInfoTrait)]
-    #[enum_dispatch(ApiDartGeneratorClassTrait)];
-
-    Boxed,
-    DartFn,
-    DartOpaque,
-    Delegate,
-    Dynamic,
-    EnumRef,
-    GeneralList,
-    Optional,
-    OptionalList,
-    Ownership,
-    Primitive,
-    PrimitiveList,
-    Record,
-    RustAutoOpaque,
-    RustOpaque,
-    StructRef,
-    Unencodable,
+    #[enum_dispatch(ApiDartGeneratorClassTrait)]
 );
 
 #[derive(Debug, Clone, Copy)]
