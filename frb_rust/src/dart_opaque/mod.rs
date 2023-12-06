@@ -71,7 +71,7 @@ impl From<DartOpaque> for DartAbi {
 
 impl Drop for DartOpaque {
     fn drop(&mut self) {
-        println!("hi DartOpaque.drop START self={self:?}");
+        println!("hi DartOpaque.drop start self={self:?}");
         if let Some(inner) = self.handle.take() {
             println!("hi DartOpaque.drop has inner");
             if std::thread::current().id() != self.thread_id {
@@ -86,7 +86,6 @@ impl Drop for DartOpaque {
                 };
             }
         }
-        println!("hi DartOpaque.drop END");
     }
 }
 
