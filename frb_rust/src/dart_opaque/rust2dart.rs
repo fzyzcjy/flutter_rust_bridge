@@ -2,7 +2,6 @@ use super::DartOpaque;
 use crate::for_generated::{box_from_leak_ptr, new_leak_box_ptr};
 use crate::generalized_isolate::{Channel, IntoDart};
 use crate::platform_types::{handle_to_message_port, DartAbi, SendableMessagePortHandle};
-use dart_sys::Dart_Handle;
 use log::warn;
 use std::thread::ThreadId;
 
@@ -13,8 +12,9 @@ impl From<DartOpaque> for DartAbi {
 }
 
 // TODO old name: `get_dart_object`, rename all users
+#[cfg(not(wasm))]
 #[no_mangle]
-pub unsafe extern "C" fn dart_opaque_rust2dart_wire2api(ptr: usize) -> Dart_Handle {
+pub unsafe extern "C" fn dart_opaque_rust2dart_wire2api(ptr: usize) -> dart_sys::Dart_Handle {
     let value: DartOpaque = *box_from_leak_ptr(ptr as _);
     value.create_dart_handle()
 }

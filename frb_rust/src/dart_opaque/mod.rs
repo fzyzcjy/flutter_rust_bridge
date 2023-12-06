@@ -34,7 +34,7 @@ pub struct DartOpaque {
 }
 
 impl DartOpaque {
-    pub fn new(handle: DartOpaqueWireType, drop_port: SendableMessagePortHandle) -> Self {
+    pub fn new(handle: GeneralizedDartHandle, drop_port: SendableMessagePortHandle) -> Self {
         let auto_drop_persistent_handle =
             GeneralizedAutoDropDartPersistentHandle::new_from_non_persistent_handle(handle);
         Self {
@@ -55,7 +55,7 @@ impl DartOpaque {
         self.persistent_handle.take().unwrap().into_inner()
     }
 
-    fn create_dart_handle(&self) -> Dart_Handle {
+    fn create_dart_handle(&self) -> GeneralizedDartHandle {
         (self.persistent_handle.as_ref().unwrap().as_ref()).create_dart_handle()
     }
 }
