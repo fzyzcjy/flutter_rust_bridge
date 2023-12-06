@@ -28,13 +28,6 @@ pub struct DartOpaque {
     drop_port: SendableMessagePortHandle,
 }
 
-/// # Safety
-///
-/// The implementation checks the current thread
-/// and delegates it to the Dart thread when it is drops.
-unsafe impl Send for DartOpaque {}
-unsafe impl Sync for DartOpaque {}
-
 impl DartOpaque {
     /// Creates a new [DartOpaque].
     ///
@@ -60,6 +53,7 @@ impl From<DartOpaque> for DartAbi {
 
 impl Drop for DartOpaque {
     fn drop(&mut self) {
+        // TODO about thread
         if let Some(inner) = self.handle.take() {
             if std::thread::current().id() != self.thread_id {
                 let channel = Channel::new(handle_to_message_port(&self.drop_port));
