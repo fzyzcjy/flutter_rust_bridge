@@ -1,3 +1,5 @@
+use dart_sys::Dart_DeletePersistentHandle_DL;
+
 #[derive(Debug)]
 /// A [Dart_PersistentHandle] that delete the handle when `Drop`ped
 // `Option` is used for correct drop.
