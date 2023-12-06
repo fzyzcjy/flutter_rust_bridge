@@ -2,6 +2,7 @@ import 'dart:ffi' as ffi;
 
 import 'package:flutter_rust_bridge/src/ffigen_generated/multi_package.dart';
 import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
+import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 class GeneralizedFrbRustBinding {
@@ -34,7 +35,7 @@ class GeneralizedFrbRustBinding {
   void dropDartObject(int ptr) => _binding.drop_dart_object(ptr);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  int newDartOpaque(Object obj) => _binding.new_dart_opaque(obj);
+  PlatformPointer newDartOpaque(Object obj) => _binding.new_dart_opaque(obj);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void freeWireSyncReturn(WireSyncReturn val) =>

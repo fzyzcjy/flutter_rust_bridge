@@ -9,20 +9,18 @@ typedef struct Result_JsValue Result_JsValue;
 
 typedef Dart_CObject *WireSyncReturn;
 
-void initialize_frb_rust(void);
-
-extern void error(const str *msg);
-
 extern struct Result_JsValue post_message(const PortLike *this_, const JsValue *value);
 
 extern struct Result_JsValue close(const PortLike *this_);
+
+extern void js_console_error(const str *msg);
 
 /**
  * # Safety
  *
  * This function should never be called manually.
  */
-uintptr_t new_dart_opaque(Dart_Handle handle);
+const void *new_dart_opaque(Dart_Handle handle);
 
 /**
  * # Safety

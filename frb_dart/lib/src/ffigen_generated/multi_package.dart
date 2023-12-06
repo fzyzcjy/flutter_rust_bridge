@@ -219,33 +219,24 @@ class MultiPackageCBinding {
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr
       .asFunction<void Function(DartPostCObjectFnType)>();
 
-  void initialize_frb_rust() {
-    return _initialize_frb_rust();
-  }
-
-  late final _initialize_frb_rustPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function()>>('initialize_frb_rust');
-  late final _initialize_frb_rust =
-      _initialize_frb_rustPtr.asFunction<void Function()>();
-
-  void error(
+  void js_console_error(
     ffi.Pointer<ffi.Int> msg,
   ) {
-    return _error(
+    return _js_console_error(
       msg,
     );
   }
 
-  late final _errorPtr =
+  late final _js_console_errorPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Int>)>>(
-          'error');
-  late final _error =
-      _errorPtr.asFunction<void Function(ffi.Pointer<ffi.Int>)>();
+          'js_console_error');
+  late final _js_console_error =
+      _js_console_errorPtr.asFunction<void Function(ffi.Pointer<ffi.Int>)>();
 
   /// # Safety
   ///
   /// This function should never be called manually.
-  int new_dart_opaque(
+  ffi.Pointer<ffi.Void> new_dart_opaque(
     Object handle,
   ) {
     return _new_dart_opaque(
@@ -254,10 +245,10 @@ class MultiPackageCBinding {
   }
 
   late final _new_dart_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.UintPtr Function(ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Handle)>>(
           'new_dart_opaque');
   late final _new_dart_opaque =
-      _new_dart_opaquePtr.asFunction<int Function(Object)>();
+      _new_dart_opaquePtr.asFunction<ffi.Pointer<ffi.Void> Function(Object)>();
 
   /// # Safety
   ///

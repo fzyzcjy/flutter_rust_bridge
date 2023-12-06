@@ -1,3 +1,5 @@
+use crate::for_generated::box_from_leak_ptr;
+use crate::platform_types::WireSyncReturn;
 pub use allo_isolate::*;
 use dart_sys::Dart_DeletePersistentHandle_DL;
 use dart_sys::Dart_Handle;
@@ -6,15 +8,14 @@ use dart_sys::Dart_InitializeApiDL;
 use dart_sys::Dart_NewPersistentHandle_DL;
 use dart_sys::Dart_PersistentHandle;
 use libc::c_void;
-use crate::for_generated::box_from_leak_ptr;
-use crate::platform_types::WireSyncReturn;
 
+// TODO rename (e.g. persistent handle)
 /// # Safety
 ///
 /// This function should never be called manually.
 #[no_mangle]
-pub unsafe extern "C" fn new_dart_opaque(handle: Dart_Handle) -> usize {
-    Dart_NewPersistentHandle_DL.expect("dart_api_dl has not been initialized")(handle) as _
+pub unsafe extern "C" fn new_dart_opaque(handle: Dart_Handle) -> *const c_void {
+    Dart_NewPersistentHandle_DL.expect("dart_api_dl has not been initialized")(handle)
 }
 
 /// # Safety
