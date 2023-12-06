@@ -20,6 +20,7 @@ uuid = { workspace = true, optional = true }
 log = "0.4"
 backtrace = { workspace = true }
 futures = { version = "0.3.29", optional = true }
+rand = "0.8"
 
 [target.'cfg(not(target_family = "wasm"))'.dependencies]
 allo-isolate = { workspace = true, features = ["anyhow", "backtrace", "zero-copy"] }
