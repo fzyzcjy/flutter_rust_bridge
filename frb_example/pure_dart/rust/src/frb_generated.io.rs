@@ -14669,10 +14669,12 @@ pub extern "C" fn new_list_weekdays_twin_sync(len: i32) -> *mut wire_list_weekda
 }
 
 #[no_mangle]
-pub extern "C" fn dart_opaque_dart2rust_api2wire(handle: Dart_Handle) -> *const std::ffi::c_void {
+pub extern "C" fn dart_opaque_dart2rust_api2wire(
+    handle: flutter_rust_bridge::for_generated::dart_sys::Dart_Handle,
+) -> *const std::ffi::c_void {
     unsafe {
         flutter_rust_bridge::for_generated::dart_opaque_dart2rust_api2wire(
-            &*{ HANDLER_NAME },
+            &*FLUTTER_RUST_BRIDGE_HANDLER,
             handle,
         );
     }
