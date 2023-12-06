@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
 import 'package:frb_example_pure_dart/src/rust/api/dart_opaque.dart';
 import 'package:frb_example_pure_dart/src/rust/api/dart_opaque_sync.dart';
@@ -53,6 +55,8 @@ Future<void> main() async {
   group('dart opaque type', () {
     group('GC', () {
       test('drop', () async {
+        final id = Random().nextInt(1000000000);
+
         // NOTE: If large list + create dart persistent handle,
         // then the `weakRef.target` will run for a long time, and it seems
         // this time is related to the Uint8List size here.
@@ -61,14 +65,14 @@ Future<void> main() async {
         // Uint8List? strongRef = createLargeList(mb: 300);
         Uint8List? strongRef = Uint8List(10000);
         final weakRef = WeakReference(strongRef);
-        await setStaticDartOpaqueTwinNormal(opaque: strongRef);
+        await setStaticDartOpaqueTwinNormal(id: id, opaque: strongRef);
         strongRef = null;
 
         await vmService.gc();
         await Future<void>.delayed(const Duration(milliseconds: 10));
         expect(weakRef.target, isNotNull);
 
-        await dropStaticDartOpaqueTwinNormal();
+        await dropStaticDartOpaqueTwinNormal(id: id);
 
         final anotherWeakRef = WeakReference(createLargeList(mb: 300));
 
