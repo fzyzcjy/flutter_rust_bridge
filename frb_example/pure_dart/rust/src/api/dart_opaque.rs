@@ -41,7 +41,7 @@ pub fn loop_back_vec_get_twin_normal(opaque: Vec<DartOpaque>) {}
 /// [DartWrapObject] cannot be obtained
 /// on a thread other than the thread it was created on.
 pub fn panic_unwrap_dart_opaque_twin_normal(opaque: DartOpaque) {
-    let _handle = opaque.try_unwrap().unwrap();
+    let _handle = opaque.into_inner();
 }
 
 pub enum EnumDartOpaqueTwinNormal {
