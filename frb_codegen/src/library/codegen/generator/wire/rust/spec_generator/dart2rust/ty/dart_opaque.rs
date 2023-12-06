@@ -15,7 +15,7 @@ impl<'a> WireRustGeneratorDart2RustTrait for DartOpaqueWireRustGenerator<'a> {
     fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
         Acc::new(|target| match target {
             TargetOrCommon::Io | TargetOrCommon::Wasm => {
-                Some("unsafe { FLUTTER_RUST_BRIDGE_HANDLER.wire2api_dart_opaque(self) }".to_owned())
+                Some("unsafe { wire2api_dart_opaque(self) }".to_owned())
             }
             TargetOrCommon::Common => None,
         })
