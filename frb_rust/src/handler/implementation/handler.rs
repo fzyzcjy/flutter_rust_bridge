@@ -76,7 +76,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
                     let msg = "SimpleHandler.initialize is called multiple times.
 * If you are hot-restarting Dart (Flutter) while reusing the same Rust, it is usually normal.
 * However, if you are running two live FRB Dart instances while one FRB Rust instance, it is usually problematic.
-* If you see this in unit tests, try `dart test --concurrency=1`";
+* Thus, if you are running `dart test`, try `dart test --concurrency=1` to avoid 'two live instance' problem.";
                     warn!("{}", msg);
                     println!("{}", msg); // when users do not enable log
                 }
