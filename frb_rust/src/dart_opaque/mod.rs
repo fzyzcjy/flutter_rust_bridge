@@ -30,23 +30,23 @@ pub struct DartOpaque {
     // TODO `Arc` is for `DartOpaque` to be clone-able.
     //      When users do not need clone (e.g. NOT used in a DartFn that is called multiple times),
     //      we can generate and use the non-Arc version to speed up.
-    inner: Arc<DartOpaqueInner>,
+    arc: Arc<DartOpaqueInner>,
 }
 
 impl DartOpaque {
     pub fn new(handle: GeneralizedDartHandle, drop_port: SendableMessagePortHandle) -> Self {
         Self {
-            inner: Arc::new(DartOpaqueInner::new(handle, drop_port)),
+            arc: Arc::new(DartOpaqueInner::new(handle, drop_port)),
         }
     }
 
     pub fn into_inner(mut self) -> Result<GeneralizedAutoDropDartPersistentHandle, Self> {
-        let inner = Arc::try_unwrap(self.inner).map_err(|x| Self { inner: x })?;
+        let inner = Arc::try_unwrap(self.arc).map_err(|x| Self { arc: x })?;
         Ok(inner.into_inner())
     }
 
     fn create_dart_handle(&self) -> GeneralizedDartHandle {
-        self.inner.create_dart_handle()
+        self.arc.create_dart_handle()
     }
 }
 
