@@ -62,19 +62,26 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
         let TaskInfo { port, mode, .. } = task_info;
         let port = port.unwrap();
 
+        println!("hi 1");
         self.thread_pool.execute(transfer!(|port: MessagePort| {
+            println!("hi 2");
             let port2 = port.clone();
             let thread_result = panic::catch_unwind(|| {
+                println!("hi 3");
                 #[allow(clippy::clone_on_copy)]
                 let sender = Rust2DartSender::new(Channel::new(port2.clone()));
                 let task_context = TaskContext::new(TaskRust2DartContext::new(sender.clone()));
 
+                println!("hi 4");
                 let ret = task(task_context);
+                println!("hi 5");
 
                 ExecuteNormalOrAsyncUtils::handle_result(ret, mode, sender, eh2, port2);
             });
 
+            println!("hi 6");
             if let Err(error) = thread_result {
+                println!("hi 7");
                 eh.handle_error(port, Error::Panic(error));
             }
         }));
