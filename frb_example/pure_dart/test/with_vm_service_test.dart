@@ -70,16 +70,13 @@ Future<void> main() async {
 
         await dropStaticDartOpaqueTwinNormal();
 
-        for (var i = 0; i < 10; ++i) {
-          // create another unused big object to trigger GC
-          final dummyBigListToTriggerGc = createLargeList(mb: 300);
-          // print s.t. ensure it is not optimized away
-          print('dummyBigListToTriggerGc=${dummyBigListToTriggerGc.length}');
+        final anotherWeakRef = WeakReference(createLargeList(mb: 300));
 
-          await vmService.gc();
-          await Future<void>.delayed(const Duration(milliseconds: 10));
-        }
+        await vmService.gc();
+        await Future<void>.delayed(const Duration(milliseconds: 10));
 
+        expect(anotherWeakRef.target, isNull,
+            reason: 'to ensure GC is triggered');
         expect(weakRef.target, isNull);
       });
 
