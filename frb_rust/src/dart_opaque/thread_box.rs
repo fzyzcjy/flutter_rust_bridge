@@ -40,6 +40,15 @@ impl<T: Debug> ThreadBox<T> {
     // }
 }
 
+impl<T: Debug> AsRef<T> for ThreadBox<T> {
+    fn as_ref(&self) -> &T {
+        if !self.is_on_creation_thread() {
+            panic!("ThreadBox can only be used on the creation thread.")
+        }
+        self.inner.as_ref().unwrap()
+    }
+}
+
 impl<T: Debug> Drop for ThreadBox<T> {
     fn drop(&mut self) {
         if self.inner.is_some() && !self.is_on_creation_thread() {
