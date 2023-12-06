@@ -14,7 +14,7 @@ impl<'a> WireDartGeneratorDart2RustTrait for DartOpaqueWireDartGenerator<'a> {
         })
     }
 
-    fn dart_wire_type(&self, target: Target) -> String {
-        dart_or_rust_opaque_dart_wire_type(target)
+    fn dart_wire_type(&self, _target: Target) -> String {
+        "Object".into()
     }
 }
