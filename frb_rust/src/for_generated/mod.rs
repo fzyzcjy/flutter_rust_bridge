@@ -20,6 +20,7 @@ pub use crate::thread_pool::{BaseThreadPool, SimpleThreadPool};
 #[cfg(wasm)]
 pub use crate::web_transfer::transfer_closure::TransferClosure;
 pub use cast::*;
+#[cfg(not(wasm))]
 pub use dart_sys;
 pub use futures;
 #[cfg(wasm)]

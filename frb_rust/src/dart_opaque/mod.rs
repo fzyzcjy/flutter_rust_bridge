@@ -1,7 +1,5 @@
 use crate::generalized_isolate::{Channel, IntoDart};
 use crate::platform_types::{handle_to_message_port, DartAbi, SendableMessagePortHandle};
-use dart_sys::Dart_Handle;
-use dart_sys::Dart_NewPersistentHandle_DL;
 use log::warn;
 use std::thread::ThreadId;
 
@@ -57,7 +55,6 @@ impl DartOpaque {
         self.persistent_handle.take().unwrap().into_inner()
     }
 
-    // TODO "Dart_Handle" is not cross-platform, so (1) change type (2) rename func (3) rename inner func
     fn create_dart_handle(&self) -> Dart_Handle {
         (self.persistent_handle.as_ref().unwrap().as_ref()).create_dart_handle()
     }

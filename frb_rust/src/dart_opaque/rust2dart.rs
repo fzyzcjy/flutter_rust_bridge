@@ -3,7 +3,6 @@ use crate::for_generated::{box_from_leak_ptr, new_leak_box_ptr};
 use crate::generalized_isolate::{Channel, IntoDart};
 use crate::platform_types::{handle_to_message_port, DartAbi, SendableMessagePortHandle};
 use dart_sys::Dart_Handle;
-use dart_sys::Dart_NewPersistentHandle_DL;
 use log::warn;
 use std::thread::ThreadId;
 
