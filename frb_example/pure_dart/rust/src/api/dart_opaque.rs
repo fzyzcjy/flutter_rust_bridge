@@ -96,3 +96,7 @@ pub fn set_static_dart_opaque_twin_normal(id: i32, opaque: DartOpaque) {
 pub fn drop_static_dart_opaque_twin_normal(id: i32) {
     drop(DART_OPAQUE.lock().unwrap().remove(&id));
 }
+
+pub fn clone_dart_opaque_twin_normal(opaque: DartOpaque) -> Vec<DartOpaque> {
+    vec![opaque; 10]
+}
