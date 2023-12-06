@@ -93,27 +93,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
         kIsWeb ? "Hello\u0000world!Hello\u0000world!" : "");
   });
 
-  // TODO rm?
-  // test('dart call handleStringSync', () {
-  //   expect(handleStringSync(s: "Hello, world!"), "Hello, world!Hello, world!");
-  // });
-  // test('dart call handleStringSync with nul-containing string', () {
-  //   expect(handleStringSync(s: "Hello\u0000world!"), kIsWeb ? "Hello\u0000world!Hello\u0000world!" : "");
-  // });
-
   test('dart call handleVecU8', () async {
     final len = 100000;
     expect(
         await handleVecU8TwinSync(v: Uint8List.fromList(List.filled(len, 127))),
         Uint8List.fromList(List.filled(len * 2, 127)));
   });
-
-  // TODO rm?
-  // test('dart call handleVecU8Sync', () {
-  //   final len = 100000;
-  //   expect(
-  //       handleVecU8Sync(v: Uint8List.fromList(List.filled(len, 127))), Uint8List.fromList(List.filled(len * 2, 127)));
-  // });
 
   test('dart call handleStruct', () async {
     final structResp = await handleStructTwinSync(
@@ -122,35 +107,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(structResp.width, 42 + 1000);
     expect(structResp.height, 100 + 10000);
   });
-
-  // TODO rm?
-  // test('dart call handleStructSync', () {
-  //   final structResp = handleStructSync(arg: MySize(width: 42, height: 100), boxed: MySize(width: 1000, height: 10000));
-  //   expect(structResp.width, 42 + 1000);
-  //   expect(structResp.height, 100 + 10000);
-  // });
-
-  // TODO rm?
-  // test('dart call handleStructSyncFreezed', () {
-  //   final structResp = handleStructSyncFreezedTwinSync(
-  //       arg: MySizeFreezedTwinSync(width: 42, height: 100),
-  //       boxed: MySizeFreezedTwinSync(width: 1000, height: 10000));
-  //   expect(structResp.width, 42 + 1000);
-  //   expect(structResp.height, 100 + 10000);
-  //   // Only freezed classes have copyWith
-  //   expect(structResp.copyWith, isNotNull);
-  // });
-
-  // TODO rm?
-  // test('dart call handleComplexStructSync', () {
-  //   final arrLen = 5;
-  //   final complexStructResp = handleComplexStructSync(s: _createMyTreeNode(arrLen: arrLen));
-  //   expect(complexStructResp.valueI32, 100);
-  //   expect(complexStructResp.valueVecU8, List.filled(arrLen, 100));
-  //   expect(complexStructResp.children[0].valueVecU8, List.filled(arrLen, 110));
-  //   expect(complexStructResp.children[0].children[0].valueVecU8, List.filled(arrLen, 111));
-  //   expect(complexStructResp.children[1].valueVecU8, List.filled(arrLen, 120));
-  // });
 }
 
 MyTreeNodeTwinSync _createMyTreeNode({required int arrLen}) {

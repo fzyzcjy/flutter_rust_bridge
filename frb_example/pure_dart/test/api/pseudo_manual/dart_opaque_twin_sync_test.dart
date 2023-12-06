@@ -53,4 +53,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
     var en = await createEnumDartOpaqueTwinSync(opaque: f);
     await futurizeVoidTwinSync(getEnumDartOpaqueTwinSync(opaque: en));
   });
+
+  test('clone DartOpaque at rust side', () async {
+    final opaque = (int a) => a + 1;
+    final output = await cloneDartOpaqueTwinSync(opaque: opaque);
+    expect(output.length, 10);
+    for (final x in output) {
+      expect(identical(x, opaque), true);
+      expect((x as Function)(42), 42 + 1);
+    }
+  });
 }

@@ -102,3 +102,7 @@ pub async fn set_static_dart_opaque_twin_rust_async(id: i32, opaque: DartOpaque)
 pub async fn drop_static_dart_opaque_twin_rust_async(id: i32) {
     drop(DART_OPAQUE.lock().unwrap().remove(&id));
 }
+
+pub async fn clone_dart_opaque_twin_rust_async(opaque: DartOpaque) -> Vec<DartOpaque> {
+    vec![opaque; 10]
+}

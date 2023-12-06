@@ -115,3 +115,8 @@ pub fn set_static_dart_opaque_twin_sync(id: i32, opaque: DartOpaque) {
 pub fn drop_static_dart_opaque_twin_sync(id: i32) {
     drop(DART_OPAQUE.lock().unwrap().remove(&id));
 }
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn clone_dart_opaque_twin_sync(opaque: DartOpaque) -> Vec<DartOpaque> {
+    vec![opaque; 10]
+}

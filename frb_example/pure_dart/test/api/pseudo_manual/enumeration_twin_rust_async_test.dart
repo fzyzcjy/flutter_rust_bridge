@@ -49,11 +49,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
           WeekdaysTwinRustAsync.saturday);
     });
 
-    // TODO rm since sync?
-    // test('dart call handleEnumParameter', () async {
-    //   expect(handleEnumSyncFreezed(value: MyEnumFreezed.a(1)), MyEnumFreezed.b('hello'));
-    // });
-
     test('dart call handleEnumStruct', () async {
       expect(
           await handleEnumStructTwinRustAsync(

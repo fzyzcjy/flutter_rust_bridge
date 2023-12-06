@@ -31,28 +31,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(listOfStructResp[3].width, 420);
   });
 
-  // TODO rm? since we have auto sync test
-  // test('dart call handleListOfStructSync', () {
-  //   final listOfStructResp =
-  //       handleListOfStructSync(l: [MySize(width: 42, height: 100), MySize(width: 420, height: 1000)]);
-  //   expect(listOfStructResp.length, 4);
-  //   expect(listOfStructResp[0].width, 42);
-  //   expect(listOfStructResp[1].width, 420);
-  //   expect(listOfStructResp[2].width, 42);
-  //   expect(listOfStructResp[3].width, 420);
-  // });
-
   test('dart call handleStringList', () async {
     final names =
         await handleStringListTwinSync(names: ['Steve', 'Bob', 'Alex']);
     expect(names, ['Steve', 'Bob', 'Alex']);
   });
-
-  // TODO rm?
-  // test('dart call handleStringListSync', () {
-  //   final names = handleStringListSync(names: ['Steve', 'Bob', 'Alex']);
-  //   expect(names, ['Steve', 'Bob', 'Alex']);
-  // });
 
   test('dart call handleVecOfOpts', () async {
     const loops = 20;

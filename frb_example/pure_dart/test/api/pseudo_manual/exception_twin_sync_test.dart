@@ -66,45 +66,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   group('example-based tests', () {
-    // TODO rm since sync?
-    // // Test if sync return is working as expected.
-    // test('dart call handle_sync_return', () async {
-    //   expect(handleSyncReturn(mode: 'NORMAL'), List.filled(100, 42));
-    //
-    //   try {
-    //     handleSyncReturn(mode: 'RESULT_ERR');
-    //     fail("exception not thrown");
-    //   } on AnyhowException catch (e) {
-    //     print('dart catch anyhow e: $e');
-    //   }
-    //
-    //   try {
-    //     handleSyncReturn(mode: 'PANIC');
-    //     fail("exception not thrown");
-    //   } on PanicException catch (e) {
-    //     print('dart catch panic e: $e');
-    //   }
-    // });
-    //
-    // test('dart call returnErr', () async {
-    //   try {
-    //     await returnErr();
-    //     fail("exception not thrown");
-    //   } on AnyhowException catch (e) {
-    //     print('dart catch e: $e');
-    //   }
-    // });
-    //
-    // test('dart call returnPanic', () async {
-    //   try {
-    //     await returnPanic();
-    //     fail("exception not thrown");
-    //   } catch (e) {
-    //     print('dart catch e: $e');
-    //     expect(e, isA<PanicException>());
-    //   }
-    // });
-
     group('custom errors', () {
       // The first time a backtrace is created, symbol resolution
       // takes a significant amount of time.

@@ -88,12 +88,4 @@ Future<void> main({bool skipRustLibInit = false}) async {
       print(optional10);
     }
   });
-
-  // TODO rm?
-  // test('option', () async {
-  //   var data = syncOptionTwinRustAsync();
-  //   var data2 = syncOptionNullTwinRustAsync();
-  //   expect(data, isNotNull);
-  //   expect(data2, isNull);
-  // });
 }
