@@ -50,7 +50,7 @@ impl DartOpaque {
     }
 }
 
-impl Clone for RustOpaque {
+impl Clone for DartOpaque {
     fn clone(&self) -> Self {
         Self {
             arc: self.arc.clone(),
