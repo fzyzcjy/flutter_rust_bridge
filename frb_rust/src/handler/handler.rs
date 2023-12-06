@@ -1,5 +1,4 @@
 use crate::dart_fn::DartFnFuture;
-use crate::dart_opaque::DartOpaqueWireType;
 use crate::generalized_isolate::{channel_to_handle, IntoDart};
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::platform_types::SendableMessagePortHandle;

@@ -1,5 +1,4 @@
 use super::DartOpaque;
-use crate::dart_opaque::DartOpaqueWireType;
 use crate::for_generated::{box_from_leak_ptr, new_leak_box_ptr};
 use crate::generalized_isolate::{Channel, IntoDart};
 use crate::platform_types::{handle_to_message_port, DartAbi, SendableMessagePortHandle};

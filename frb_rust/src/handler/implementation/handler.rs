@@ -1,5 +1,5 @@
 use crate::dart_fn::DartFnFuture;
-use crate::dart_opaque::{DartOpaque, DartOpaqueWireType};
+use crate::dart_opaque::DartOpaque;
 use crate::generalized_isolate::IntoDart;
 use crate::handler::error::Error;
 use crate::handler::error_handler::ErrorHandler;
