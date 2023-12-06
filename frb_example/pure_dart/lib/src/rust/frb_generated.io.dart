@@ -3,6 +3,14 @@
 
 // ignore_for_file: unused_import, unused_element, duplicate_ignore
 
+import 'dart:async';
+import 'dart:convert';
+import 'dart:ffi' as ffi;
+
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
+import 'package:meta/meta.dart' as meta;
+import 'package:uuid/uuid.dart';
+
 import 'api/array.dart';
 import 'api/async_misc.dart';
 import 'api/attribute.dart';
@@ -106,13 +114,7 @@ import 'api/uuid_type.dart';
 import 'auxiliary/new_module_system/sub_module.dart';
 import 'auxiliary/old_module_system/sub_module.dart';
 import 'auxiliary/sample_types.dart';
-import 'dart:async';
-import 'dart:convert';
-import 'dart:ffi' as ffi;
 import 'frb_generated.dart';
-import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
-import 'package:meta/meta.dart' as meta;
-import 'package:uuid/uuid.dart';
 
 abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   RustLibApiImplPlatform({
@@ -244,7 +246,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   PlatformPointer api2wire_DartOpaque(Object raw) {
-    return dart_opaque_dart2rust_api2wire(raw);
+    return wire.dart_opaque_dart2rust_api2wire(raw);
   }
 
   @protected
