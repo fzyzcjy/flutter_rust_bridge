@@ -50,6 +50,14 @@ impl DartOpaque {
     }
 }
 
+impl Clone for RustOpaque {
+    fn clone(&self) -> Self {
+        Self {
+            arc: self.arc.clone(),
+        }
+    }
+}
+
 #[derive(Debug)]
 struct DartOpaqueInner {
     /// The internal persistent handle
