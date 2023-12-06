@@ -17,6 +17,7 @@ use crate::rust2dart::action::Rust2DartAction;
 use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
 use crate::rust_async::{BaseAsyncRuntime, SimpleAsyncRuntime};
 use crate::thread_pool::BaseThreadPool;
+use log::warn;
 use std::future::Future;
 use std::panic;
 use std::panic::UnwindSafe;
@@ -69,6 +70,15 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         // Again, as mentioned below, ensure panics never cross FFI boundary
         let _ = panic::catch_unwind(|| {
             if let Ok(mut config) = self.config.lock() {
+                if config.is_some() {
+                    let msg = "SimpleHandler.initialize is called multiple times.
+* If you are hot-restarting Dart (Flutter) while reusing the same Rust, it is usually normal.
+* However, if you are running two live FRB Dart instances while one FRB Rust instance, it is usually problematic.
+* If you see this in unit tests, try `dart test --concurrency=1`";
+                    warn!("{}", msg);
+                    println!("{}", msg); // when users do not enable log
+                }
+
                 *config = Some(SimpleHandlerConfig {
                     dart_opaque_drop_port: message_port_to_handle(&dart_opaque_drop_port),
                     dart_fn_invoke_port: message_port_to_handle(&dart_fn_invoke_port),
