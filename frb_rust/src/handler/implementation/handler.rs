@@ -49,11 +49,6 @@ pub struct SimpleHandler<E: Executor, EH: ErrorHandler> {
     config: Mutex<Option<SimpleHandlerConfig>>,
 }
 
-struct SimpleHandlerConfig {
-    dart_opaque_drop_port: SendableMessagePortHandle,
-    dart_fn_invoke_port: SendableMessagePortHandle,
-}
-
 impl<E: Executor, H: ErrorHandler> SimpleHandler<E, H> {
     /// Create a new default handler.
     pub fn new(executor: E, error_handler: H) -> Self {
@@ -66,11 +61,11 @@ impl<E: Executor, H: ErrorHandler> SimpleHandler<E, H> {
 }
 
 impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
-    fn initialize(&self, dart_opaque_drop_port: MessagePort, dart_fn_invoke_port: MessagePort) {
+    fn initialize(&self, config: HandlerConfig) {
         // Again, as mentioned below, ensure panics never cross FFI boundary
         let _ = panic::catch_unwind(|| {
-            if let Ok(mut config) = self.config.lock() {
-                if config.is_some() {
+            if let Ok(mut self_config) = self.config.lock() {
+                if self_config.is_some() {
                     // internal link: https://github.com/fzyzcjy/yplusplus/issues/11352
                     // (If you are interested in more details, create an issue and let me write a doc for it)
                     let msg = "SimpleHandler.initialize is called multiple times.
@@ -81,10 +76,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
                     println!("{}", msg); // when users do not enable log
                 }
 
-                *config = Some(SimpleHandlerConfig {
-                    dart_opaque_drop_port: message_port_to_handle(&dart_opaque_drop_port),
-                    dart_fn_invoke_port: message_port_to_handle(&dart_fn_invoke_port),
-                });
+                *self_config = Some(config);
             }
         });
     }

@@ -11,7 +11,7 @@ use std::panic::UnwindSafe;
 
 /// Provide your own handler to customize how to execute your function calls, etc.
 pub trait Handler {
-    fn initialize(&self, dart_opaque_drop_port: MessagePort, dart_fn_invoke_port: MessagePort);
+    fn initialize(&self, config: HandlerConfig);
 
     /// Prepares the arguments, executes a Rust function and sets up its return value.
     ///
@@ -65,6 +65,12 @@ pub trait Handler {
     unsafe fn wire2api_dart_opaque(&self, raw: DartOpaqueWireType) -> DartOpaque;
 
     fn dart_fn_invoke<Ret>(&self, dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<Ret>;
+}
+
+#[derive(Clone, Debug)]
+pub struct HandlerConfig {
+    pub dart_opaque_drop_port: SendableMessagePortHandle,
+    pub dart_fn_invoke_port: SendableMessagePortHandle,
 }
 
 /// Supporting information for a task
