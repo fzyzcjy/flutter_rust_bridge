@@ -34,14 +34,6 @@ impl DartOpaqueBase {
 ///
 /// This function should never be called manually.
 #[no_mangle]
-pub unsafe extern "C" fn dart_new_persistent_handle(handle: Dart_Handle) -> *const c_void {
-    Dart_NewPersistentHandle_DL.expect("dart_api_dl has not been initialized")(handle)
-}
-
-/// # Safety
-///
-/// This function should never be called manually.
-#[no_mangle]
 pub unsafe extern "C" fn get_dart_object(ptr: usize) -> Dart_Handle {
     let handle = DartPersistentHandleAutoDrop::from_raw(ptr as _);
     handle.create_dart_handle()
@@ -53,4 +45,12 @@ pub unsafe extern "C" fn get_dart_object(ptr: usize) -> Dart_Handle {
 #[no_mangle]
 pub unsafe extern "C" fn drop_dart_object(ptr: usize) {
     drop(DartPersistentHandleAutoDrop::from_raw(ptr as _))
+}
+
+/// # Safety
+///
+/// This function should never be called manually.
+#[no_mangle]
+pub unsafe extern "C" fn dart_new_persistent_handle(handle: Dart_Handle) -> *const c_void {
+    Dart_NewPersistentHandle_DL.expect("dart_api_dl has not been initialized")(handle)
 }
