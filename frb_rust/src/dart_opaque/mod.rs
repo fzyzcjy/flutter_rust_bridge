@@ -24,8 +24,8 @@ mod thread_box;
 /// Arbitrary Dart object, whose type can be even non-encodable and non-transferable.
 #[derive(Debug)]
 pub struct DartOpaque {
-    /// The internal handle
-    handle: ThreadBox<GeneralizedAutoDropDartPersistentHandle>,
+    /// The internal persistent handle
+    persistent_handle: ThreadBox<GeneralizedAutoDropDartPersistentHandle>,
 
     /// The port to drop object (when we cannot drop in current thread)
     drop_port: SendableMessagePortHandle,
@@ -36,7 +36,7 @@ impl DartOpaque {
         let auto_drop_persistent_handle =
             GeneralizedAutoDropDartPersistentHandle::new_from_non_persistent_handle(handle);
         Self {
-            handle: ThreadBox::new(auto_drop_persistent_handle),
+            persistent_handle: ThreadBox::new(auto_drop_persistent_handle),
             drop_port,
         }
     }
@@ -71,14 +71,18 @@ pub unsafe fn wire2api_dart_opaque(
 
 impl From<DartOpaque> for DartAbi {
     fn from(mut data: DartOpaque) -> Self {
-        data.handle.take().unwrap().into_raw().into_dart()
+        data.persistent_handle
+            .take()
+            .unwrap()
+            .into_raw()
+            .into_dart()
     }
 }
 
 impl Drop for DartOpaque {
     fn drop(&mut self) {
         // TODO about thread
-        if let Some(inner) = self.handle.take() {
+        if let Some(inner) = self.persistent_handle.take() {
             if std::thread::current().id() != self.thread_id {
                 let channel = Channel::new(handle_to_message_port(&self.drop_port));
                 let ptr = inner.into_raw();
