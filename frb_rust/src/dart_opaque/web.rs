@@ -1,4 +1,4 @@
-use crate::for_generated::box_from_leak_ptr;
+use crate::for_generated::{box_from_leak_ptr, new_leak_box_ptr};
 use crate::generalized_isolate::Channel;
 use crate::generalized_isolate::PortLike;
 use wasm_bindgen::JsCast;
@@ -23,7 +23,7 @@ impl DartOpaqueBase {
     }
 
     pub fn into_raw(self) -> *mut JsValue {
-        Box::into_raw(Box::new(self.inner))
+        new_leak_box_ptr(self.inner)
     }
 }
 
