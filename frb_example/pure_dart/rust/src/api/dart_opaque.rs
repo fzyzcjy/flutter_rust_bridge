@@ -90,7 +90,7 @@ lazy_static! {
 }
 
 pub fn set_static_dart_opaque_twin_normal(id: i32, opaque: DartOpaque) {
-    DART_OPAQUE.lock().unwrap()[id] = opaque;
+    DART_OPAQUE.lock().unwrap().insert(id, opaque);
 }
 
 pub fn drop_static_dart_opaque_twin_normal(id: i32) {

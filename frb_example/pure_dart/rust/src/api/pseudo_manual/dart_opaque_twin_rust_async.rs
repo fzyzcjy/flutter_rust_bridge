@@ -96,7 +96,7 @@ lazy_static! {
 }
 
 pub async fn set_static_dart_opaque_twin_rust_async(id: i32, opaque: DartOpaque) {
-    DART_OPAQUE.lock().unwrap()[id] = opaque;
+    DART_OPAQUE.lock().unwrap().insert(id, opaque);
 }
 
 pub async fn drop_static_dart_opaque_twin_rust_async(id: i32) {

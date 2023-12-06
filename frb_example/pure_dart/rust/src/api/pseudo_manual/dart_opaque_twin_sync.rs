@@ -108,7 +108,7 @@ lazy_static! {
 
 #[flutter_rust_bridge::frb(sync)]
 pub fn set_static_dart_opaque_twin_sync(id: i32, opaque: DartOpaque) {
-    DART_OPAQUE.lock().unwrap()[id] = opaque;
+    DART_OPAQUE.lock().unwrap().insert(id, opaque);
 }
 
 #[flutter_rust_bridge::frb(sync)]
