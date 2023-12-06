@@ -17,10 +17,12 @@ impl DartPersistentHandleAutoDrop {
 
     /// https://github.com/dart-lang/sdk/blob/af20a8ab0394408ee48483c5c06c75281e7ba52c/runtime/include/dart_api.h#L424C8-L424C8
     /// "Allocates a handle in the current scope from a persistent handle."
-    pub unsafe fn create_dart_handle(&self) -> Dart_Handle {
-        Dart_HandleFromPersistent_DL.expect("dart_api_dl has not been initialized")(
-            self.0.unwrap(),
-        );
+    pub fn create_dart_handle(&self) -> Dart_Handle {
+        unsafe {
+            Dart_HandleFromPersistent_DL.expect("dart_api_dl has not been initialized")(
+                self.0.unwrap(),
+            );
+        }
     }
 }
 
