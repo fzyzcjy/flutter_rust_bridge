@@ -71,6 +71,8 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         let _ = panic::catch_unwind(|| {
             if let Ok(mut config) = self.config.lock() {
                 if config.is_some() {
+                    // internal link: https://github.com/fzyzcjy/yplusplus/issues/11352
+                    // (If you are interested in more details, create an issue and let me write a doc for it)
                     let msg = "SimpleHandler.initialize is called multiple times.
 * If you are hot-restarting Dart (Flutter) while reusing the same Rust, it is usually normal.
 * However, if you are running two live FRB Dart instances while one FRB Rust instance, it is usually problematic.
