@@ -20,6 +20,8 @@ pub use io::*;
 #[cfg(not(wasm))]
 mod auto_drop_dart_persistent_handle;
 
+mod dart2rust;
+mod rust2dart;
 mod thread_box;
 
 /// Arbitrary Dart object, whose type can be even non-encodable and non-transferable.
@@ -60,28 +62,6 @@ impl Drop for DartOpaque {
             }
         }
     }
-}
-
-// TODO the api2wire side: just send the object itself, nothing more
-pub unsafe fn wire2api_dart_opaque(
-    raw: Dart_Handle,
-    drop_port: SendableMessagePortHandle,
-) -> DartOpaque {
-    DartOpaque::new(raw, drop_port)
-}
-
-// TODO split to rust2dart.rs etc
-impl From<DartOpaque> for DartAbi {
-    fn from(data: DartOpaque) -> Self {
-        (new_leak_box_ptr(data) as usize).into_dart()
-    }
-}
-
-// TODO rename
-#[no_mangle]
-pub unsafe extern "C" fn get_dart_object(ptr: usize) -> Dart_Handle {
-    let value: DartOpaque = box_from_leak_ptr(ptr as _);
-    handle.create_dart_handle()
 }
 
 // TODO rename,
