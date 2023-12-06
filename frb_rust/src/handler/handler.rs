@@ -1,9 +1,9 @@
 use crate::dart_fn::DartFnFuture;
 use crate::dart_opaque::DartOpaqueWireType;
-use crate::generalized_isolate::IntoDart;
+use crate::generalized_isolate::{channel_to_handle, IntoDart};
 use crate::misc::into_into_dart::IntoIntoDart;
-use crate::platform_types::DartAbi;
 use crate::platform_types::SendableMessagePortHandle;
+use crate::platform_types::{message_port_to_handle, DartAbi};
 use crate::platform_types::{MessagePort, WireSyncReturn};
 use crate::rust2dart::context::TaskRust2DartContext;
 use crate::DartOpaque;
@@ -116,4 +116,15 @@ impl TaskContext {
     pub fn rust2dart_context(&self) -> &TaskRust2DartContext {
         &self.rust2dart_context
     }
+}
+
+pub fn handler_initialize<H: Handler>(
+    handler: H,
+    dart_opaque_drop_port: MessagePort,
+    dart_fn_invoke_port: MessagePort,
+) {
+    handler.initialize(HandlerConfig {
+        dart_opaque_drop_port: message_port_to_handle(&dart_opaque_drop_port),
+        dart_fn_invoke_port: message_port_to_handle(&dart_fn_invoke_port),
+    })
 }

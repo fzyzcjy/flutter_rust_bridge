@@ -7,7 +7,7 @@ mod pointer;
 pub use crate::dart_opaque::dart2rust::wire2api_dart_opaque;
 pub use crate::generalized_isolate::Channel;
 pub use crate::generalized_isolate::IntoDartExceptPrimitive;
-pub use crate::handler::handler::{FfiCallMode, TaskInfo};
+pub use crate::handler::handler::{handler_initialize, FfiCallMode, TaskInfo};
 pub use crate::misc::manual_impl::*;
 pub use crate::misc::rust_arc::{rust_arc_decrement_strong_count, rust_arc_increment_strong_count};
 pub use crate::misc::rust_auto_opaque::rust_auto_opaque_api2wire;
