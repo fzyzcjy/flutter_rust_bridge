@@ -5,7 +5,8 @@ mod cast;
 mod pointer;
 
 #[cfg(not(wasm))]
-pub use crate::dart_opaque::dart2rust::{dart_opaque_dart2rust_api2wire, wire2api_dart_opaque};
+pub use crate::dart_opaque::dart2rust::dart_opaque_dart2rust_api2wire;
+pub use crate::dart_opaque::dart2rust::wire2api_dart_opaque;
 pub use crate::generalized_isolate::Channel;
 pub use crate::generalized_isolate::IntoDartExceptPrimitive;
 pub use crate::handler::handler::{handler_initialize, FfiCallMode, TaskInfo};

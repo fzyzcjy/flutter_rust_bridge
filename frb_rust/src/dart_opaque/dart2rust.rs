@@ -6,6 +6,15 @@ use crate::Handler;
 use log::warn;
 use std::thread::ThreadId;
 
+#[cfg(wasm)]
+pub unsafe fn wire2api_dart_opaque<H: Handler>(
+    handler: &H,
+    raw: wasm_bindgen::JsValue,
+) -> DartOpaque {
+    let drop_port = handler.dart_opaque_drop_port();
+    DartOpaque::new(raw, drop_port)
+}
+
 #[cfg(not(wasm))]
 pub unsafe fn wire2api_dart_opaque(raw: *const std::ffi::c_void) -> DartOpaque {
     *box_from_leak_ptr(raw as _)
