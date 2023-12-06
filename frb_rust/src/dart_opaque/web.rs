@@ -1,3 +1,4 @@
+use crate::for_generated::box_from_leak_ptr;
 use crate::generalized_isolate::Channel;
 use crate::generalized_isolate::PortLike;
 use wasm_bindgen::JsCast;
