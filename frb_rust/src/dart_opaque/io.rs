@@ -41,12 +41,6 @@ impl DartPersistentHandleWrapper {
     }
 }
 
-impl From<DartPersistentHandleWrapper> for Dart_PersistentHandle {
-    fn from(warp: DartPersistentHandleWrapper) -> Self {
-        warp.into_raw()
-    }
-}
-
 impl Drop for DartPersistentHandleWrapper {
     fn drop(&mut self) {
         if let Some(inner) = self.0 {
