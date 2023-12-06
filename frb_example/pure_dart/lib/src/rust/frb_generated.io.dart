@@ -244,7 +244,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   PlatformPointer api2wire_DartOpaque(Object raw) {
-    return api2wireDartOpaque(raw);
+    return dart_opaque_dart2rust_api2wire(raw);
   }
 
   @protected
@@ -20319,6 +20319,21 @@ class RustLibWire implements BaseWire {
               ffi.Int32)>>('new_list_weekdays_twin_sync');
   late final _new_list_weekdays_twin_sync = _new_list_weekdays_twin_syncPtr
       .asFunction<ffi.Pointer<wire_list_weekdays_twin_sync> Function(int)>();
+
+  ffi.Pointer<ffi.Void> dart_opaque_dart2rust_api2wire(
+    Object handle,
+  ) {
+    return _dart_opaque_dart2rust_api2wire(
+      handle,
+    );
+  }
+
+  late final _dart_opaque_dart2rust_api2wirePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Handle)>>(
+          'dart_opaque_dart2rust_api2wire');
+  late final _dart_opaque_dart2rust_api2wire =
+      _dart_opaque_dart2rust_api2wirePtr
+          .asFunction<ffi.Pointer<ffi.Void> Function(Object)>();
 
   void rust_arc_increment_strong_count_RustOpaque_MutexHideData(
     ffi.Pointer<ffi.Void> ptr,

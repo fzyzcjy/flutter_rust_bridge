@@ -3676,6 +3676,8 @@ struct wire_list_weekdays_twin_rust_async *new_list_weekdays_twin_rust_async(int
 
 struct wire_list_weekdays_twin_sync *new_list_weekdays_twin_sync(int32_t len);
 
+const void *dart_opaque_dart2rust_api2wire(Dart_Handle handle);
+
 void rust_arc_increment_strong_count_RustOpaque_MutexHideData(const void *ptr);
 
 void rust_arc_decrement_strong_count_RustOpaque_MutexHideData(const void *ptr);
@@ -3937,6 +3939,7 @@ union SpeedTwinRustAsyncKind *inflate_SpeedTwinRustAsync_GPS(void);
 union SpeedTwinSyncKind *inflate_SpeedTwinSync_GPS(void);
 static int64_t dummy_method_to_enforce_bundling(void) {
     int64_t dummy_var = 0;
+    dummy_var ^= ((int64_t) (void*) dart_opaque_dart2rust_api2wire);
     dummy_var ^= ((int64_t) (void*) drop_dart_object);
     dummy_var ^= ((int64_t) (void*) frb_initialize_rust);
     dummy_var ^= ((int64_t) (void*) get_dart_object);

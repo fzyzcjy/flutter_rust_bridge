@@ -45,7 +45,7 @@ impl Wire2Api<flutter_rust_bridge::DartOpaque>
     for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
 {
     fn wire2api(self) -> flutter_rust_bridge::DartOpaque {
-        unsafe { FLUTTER_RUST_BRIDGE_HANDLER.wire2api_dart_opaque(self) }
+        unsafe { flutter_rust_bridge::for_generated::wire2api_dart_opaque(self) }
     }
 }
 impl Wire2Api<String> for String {
@@ -3973,7 +3973,11 @@ pub fn frb_initialize_rust(
     dart_opaque_drop_port: flutter_rust_bridge::for_generated::MessagePort,
     dart_fn_invoke_port: flutter_rust_bridge::for_generated::MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.initialize(dart_opaque_drop_port, dart_fn_invoke_port)
+    flutter_rust_bridge::for_generated::handler_initialize(
+        &*FLUTTER_RUST_BRIDGE_HANDLER,
+        dart_opaque_drop_port,
+        dart_fn_invoke_port,
+    )
 }
 
 #[wasm_bindgen]

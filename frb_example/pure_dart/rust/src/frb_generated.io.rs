@@ -14669,6 +14669,16 @@ pub extern "C" fn new_list_weekdays_twin_sync(len: i32) -> *mut wire_list_weekda
 }
 
 #[no_mangle]
+pub extern "C" fn dart_opaque_dart2rust_api2wire(handle: Dart_Handle) -> *const std::ffi::c_void {
+    unsafe {
+        flutter_rust_bridge::for_generated::dart_opaque_dart2rust_api2wire(
+            &*{ HANDLER_NAME },
+            handle,
+        );
+    }
+}
+
+#[no_mangle]
 pub extern "C" fn rust_arc_increment_strong_count_RustOpaque_MutexHideData(
     ptr: *const std::ffi::c_void,
 ) {
