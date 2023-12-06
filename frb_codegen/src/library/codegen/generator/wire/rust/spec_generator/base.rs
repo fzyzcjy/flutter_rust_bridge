@@ -23,7 +23,7 @@ use crate::codegen::ir::ty::structure::IrTypeStructRef;
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::*;
-use crate::codegen_generator_structs_outer;
+use crate::codegen_generator_structs;
 use enum_dispatch::enum_dispatch;
 use paste::paste;
 
@@ -51,7 +51,27 @@ pub(crate) enum WireRustGenerator<'a> {
     Unencodable(UnencodableWireRustGenerator<'a>),
 }
 
-codegen_generator_structs_outer!(WireRustGenerator);
+codegen_generator_structs!(
+    WireRustGenerator;
+
+    Boxed,
+    DartFn,
+    DartOpaque,
+    Delegate,
+    Dynamic,
+    EnumRef,
+    GeneralList,
+    Optional,
+    OptionalList,
+    Ownership,
+    Primitive,
+    PrimitiveList,
+    Record,
+    RustAutoOpaque,
+    RustOpaque,
+    StructRef,
+    Unencodable,
+);
 
 #[derive(Debug, Clone, Copy)]
 pub(crate) struct WireRustGeneratorContext<'a> {
