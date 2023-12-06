@@ -18,13 +18,14 @@ impl AutoDropDartPersistentHandle {
     }
 
     // `from_raw` is `unsafe` while `into_raw` is not, mimicking `Box::*` counterpart.
-    pub unsafe fn from_raw(ptr: Dart_PersistentHandle) -> Self {
+    unsafe fn from_raw(ptr: Dart_PersistentHandle) -> Self {
         Self(Some(ptr))
     }
 
-    pub fn into_raw(mut self) -> Dart_PersistentHandle {
-        self.0.take().unwrap()
-    }
+    // TODO rm?
+    // pub fn into_raw(mut self) -> Dart_PersistentHandle {
+    //     self.0.take().unwrap()
+    // }
 
     /// https://github.com/dart-lang/sdk/blob/af20a8ab0394408ee48483c5c06c75281e7ba52c/runtime/include/dart_api.h#L424C8-L424C8
     /// "Allocates a handle in the current scope from a persistent handle."
