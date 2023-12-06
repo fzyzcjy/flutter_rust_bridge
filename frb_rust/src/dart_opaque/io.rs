@@ -5,6 +5,7 @@ use dart_sys::{Dart_DeletePersistentHandle_DL, Dart_PersistentHandle};
 pub type GeneralizedDartPersistentHandleWrapper = DartPersistentHandleWrapper;
 pub type GeneralizedDartPersistentHandle = Dart_PersistentHandle;
 
+// TODO remove or rename this?
 #[derive(Debug)]
 pub struct DartOpaqueBase {
     inner: DartPersistentHandleWrapper,
