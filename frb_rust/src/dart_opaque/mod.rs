@@ -44,14 +44,6 @@ impl DartOpaque {
     }
 }
 
-// TODO the api2wire side: just send the object itself, nothing more
-pub unsafe fn wire2api_dart_opaque(
-    raw: Dart_Handle,
-    drop_port: SendableMessagePortHandle,
-) -> DartOpaque {
-    DartOpaque::new(raw, drop_port)
-}
-
 impl Drop for DartOpaque {
     fn drop(&mut self) {
         if let Some(persistent_handle) = self.persistent_handle.take() {
@@ -68,6 +60,14 @@ impl Drop for DartOpaque {
             }
         }
     }
+}
+
+// TODO the api2wire side: just send the object itself, nothing more
+pub unsafe fn wire2api_dart_opaque(
+    raw: Dart_Handle,
+    drop_port: SendableMessagePortHandle,
+) -> DartOpaque {
+    DartOpaque::new(raw, drop_port)
 }
 
 // TODO rename,
