@@ -16,7 +16,7 @@ pub unsafe fn wire2api_dart_opaque(raw: *const std::ffi::c_void) -> DartOpaque {
 pub unsafe fn dart_opaque_dart2rust_api2wire<H: Handler>(
     handler: &H,
     handle: Dart_Handle,
-) -> usize {
+) -> *const std::ffi::c_void {
     let drop_port = handler.dart_opaque_drop_port();
     new_leak_box_ptr(DartOpaque::new(handle, drop_port)) as _
 }
