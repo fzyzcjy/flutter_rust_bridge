@@ -7,8 +7,7 @@ use crate::codegen::generator::wire::dart::spec_generator::dart2rust::ty::WireDa
 impl<'a> WireDartGeneratorDart2RustTrait for DartOpaqueWireDartGenerator<'a> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         Acc::new(|target| match target {
-            // TODO generate a method that calls `dart_opaque_dart2rust_api2wire`
-            TargetOrCommon::Io => Some("return TODO;".to_owned()),
+            TargetOrCommon::Io => Some("return dart_opaque_dart2rust_api2wire(raw);".to_owned()),
             TargetOrCommon::Wasm => Some("return raw;".to_owned()),
             TargetOrCommon::Common => None,
         })
