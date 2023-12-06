@@ -33,12 +33,8 @@ pub struct DartOpaque {
 
 impl DartOpaque {
     pub fn new(handle: Dart_Handle, drop_port: SendableMessagePortHandle) -> Self {
-        let auto_drop_persistent_handle = unsafe {
-            let persistent_handle =
-                Dart_NewPersistentHandle_DL.expect("dart_api_dl has not been initialized")(handle);
-            GeneralizedAutoDropDartPersistentHandle::from_raw(persistent_handle)
-        };
-
+        let auto_drop_persistent_handle =
+            GeneralizedAutoDropDartPersistentHandle::new_from_non_persistent_handle(handle);
         Self {
             handle: ThreadBox::new(auto_drop_persistent_handle),
             drop_port,

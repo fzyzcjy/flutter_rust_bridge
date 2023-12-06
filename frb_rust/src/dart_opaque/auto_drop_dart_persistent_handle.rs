@@ -7,6 +7,16 @@ use dart_sys::{Dart_NewPersistentHandle_DL, Dart_PersistentHandle};
 pub struct AutoDropDartPersistentHandle(Option<Dart_PersistentHandle>);
 
 impl AutoDropDartPersistentHandle {
+    pub fn new_from_non_persistent_handle(non_persistent_handle: Dart_Handle) {
+        unsafe {
+            let persistent_handle = Dart_NewPersistentHandle_DL
+                .expect("dart_api_dl has not been initialized")(
+                non_persistent_handle
+            );
+            Self::from_raw(persistent_handle)
+        }
+    }
+
     // `from_raw` is `unsafe` while `into_raw` is not, mimicking `Box::*` counterpart.
     pub unsafe fn from_raw(ptr: Dart_PersistentHandle) -> Self {
         Self(Some(ptr))
