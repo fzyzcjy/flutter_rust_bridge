@@ -156,12 +156,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
     }
 
     unsafe fn wire2api_dart_opaque(&self, raw: DartOpaqueWireType) -> DartOpaque {
-        let drop_port = (self.config.lock().expect("cannot get config lock"))
-            .as_ref()
-            .expect("no handler config")
-            .dart_opaque_drop_port
-            .to_owned();
-        crate::dart_opaque::dart2rust::wire2api_dart_opaque(raw, drop_port)
+        crate::dart_opaque::dart2rust::wire2api_dart_opaque(raw, self.dart_opaque_drop_port())
     }
 
     fn dart_fn_invoke<Ret>(&self, dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<Ret> {
@@ -170,6 +165,14 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
 }
 
 impl<E: Executor, EH: ErrorHandler> SimpleHandler<E, EH> {
+    fn dart_opaque_drop_port(&self) -> SendableMessagePortHandle {
+        (self.config.lock().expect("cannot get config lock"))
+            .as_ref()
+            .expect("no handler config")
+            .dart_opaque_drop_port
+            .to_owned()
+    }
+
     fn wrap_normal_or_async<PrepareFn, TaskFn, TaskFnRet, ExecuteFn>(
         &self,
         task_info: TaskInfo,
