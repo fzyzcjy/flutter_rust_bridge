@@ -17,6 +17,6 @@ pub unsafe fn dart_opaque_dart2rust_api2wire<H: Handler>(
     handler: &H,
     handle: Dart_Handle,
 ) -> usize {
-    let drop_port = handler.config().dart_opaque_drop_port.clone();
+    let drop_port = handler.dart_opaque_drop_port();
     new_leak_box_ptr(DartOpaque::new(handle, drop_port)) as _
 }

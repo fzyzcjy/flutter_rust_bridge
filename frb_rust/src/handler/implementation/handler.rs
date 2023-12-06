@@ -82,8 +82,20 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         });
     }
 
-    fn config(&self) -> &HandlerConfig {
-        &self.config
+    fn dart_opaque_drop_port(&self) -> SendableMessagePortHandle {
+        (self.config.lock().expect("cannot get config lock"))
+            .as_ref()
+            .expect("no handler config")
+            .dart_opaque_drop_port
+            .to_owned()
+    }
+
+    fn dart_fn_invoke_port(&self) -> SendableMessagePortHandle {
+        (self.config.lock().expect("cannot get config lock"))
+            .as_ref()
+            .expect("no handler config")
+            .dart_fn_invoke_port
+            .to_owned()
     }
 
     fn wrap_normal<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(
@@ -158,14 +170,6 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
 }
 
 impl<E: Executor, EH: ErrorHandler> SimpleHandler<E, EH> {
-    fn dart_opaque_drop_port(&self) -> SendableMessagePortHandle {
-        (self.config.lock().expect("cannot get config lock"))
-            .as_ref()
-            .expect("no handler config")
-            .dart_opaque_drop_port
-            .to_owned()
-    }
-
     fn wrap_normal_or_async<PrepareFn, TaskFn, TaskFnRet, ExecuteFn>(
         &self,
         task_info: TaskInfo,

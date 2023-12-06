@@ -14,7 +14,9 @@ use std::panic::UnwindSafe;
 pub trait Handler {
     fn initialize(&self, config: HandlerConfig);
 
-    fn config(&self) -> &HandlerConfig;
+    fn dart_opaque_drop_port(&self) -> SendableMessagePortHandle;
+
+    fn dart_fn_invoke_port(&self) -> SendableMessagePortHandle;
 
     /// Prepares the arguments, executes a Rust function and sets up its return value.
     ///
