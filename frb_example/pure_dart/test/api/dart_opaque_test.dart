@@ -56,7 +56,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(output.length, 10);
     for (final x in output) {
       expect(identical(x, opaque), true);
-      expect(x(42), 42 + 1);
+      expect((x as Function)(42), 42 + 1);
     }
   });
 }
