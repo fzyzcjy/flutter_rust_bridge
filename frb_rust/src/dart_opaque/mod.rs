@@ -1,5 +1,7 @@
 use crate::generalized_isolate::{Channel, IntoDart};
 use crate::platform_types::{handle_to_message_port, DartAbi, SendableMessagePortHandle};
+use dart_sys::Dart_Handle;
+use dart_sys::Dart_NewPersistentHandle_DL;
 use log::warn;
 use std::thread::ThreadId;
 
@@ -29,24 +31,47 @@ pub struct DartOpaque {
     drop_port: SendableMessagePortHandle,
 }
 
-// TODO things below not migrated yet --------------------------------------------------------
-
 impl DartOpaque {
-    /// Creates a new [DartOpaque].
-    ///
-    /// # Safety
-    ///
-    /// The [GeneralizedDartPersistentHandle] must be created on the current thread.
-    pub unsafe fn new(
-        handle: GeneralizedDartPersistentHandle,
-        drop_port: SendableMessagePortHandle,
-    ) -> Self {
+    pub fn new(handle: Dart_Handle, drop_port: SendableMessagePortHandle) -> Self {
+        let auto_drop_persistent_handle = unsafe {
+            let persistent_handle =
+                Dart_NewPersistentHandle_DL.expect("dart_api_dl has not been initialized")(handle);
+            GeneralizedAutoDropDartPersistentHandle::from_raw(persistent_handle)
+        };
+
         Self {
-            handle: Some(DartOpaqueBase::new(handle)),
+            handle: ThreadBox::new(auto_drop_persistent_handle),
             drop_port,
         }
     }
 }
+
+pub unsafe fn wire2api_dart_opaque(
+    raw: DartOpaqueWireType,
+    drop_port: SendableMessagePortHandle,
+) -> DartOpaque {
+    DartOpaque::new(raw as _, drop_port)
+}
+
+// TODO things below not migrated yet --------------------------------------------------------
+
+// TODO rm
+// impl DartOpaque {
+//     /// Creates a new [DartOpaque].
+//     ///
+//     /// # Safety
+//     ///
+//     /// The [GeneralizedDartPersistentHandle] must be created on the current thread.
+//     pub unsafe fn new(
+//         handle: GeneralizedDartPersistentHandle,
+//         drop_port: SendableMessagePortHandle,
+//     ) -> Self {
+//         Self {
+//             handle: Some(DartOpaqueBase::new(handle)),
+//             drop_port,
+//         }
+//     }
+// }
 
 impl From<DartOpaque> for DartAbi {
     fn from(mut data: DartOpaque) -> Self {
@@ -77,10 +102,10 @@ pub type DartOpaqueWireType = *const std::ffi::c_void;
 #[cfg(wasm)]
 pub type DartOpaqueWireType = wasm_bindgen::JsValue;
 
-// TODO improve
-pub unsafe fn wire2api_dart_opaque(
-    raw: DartOpaqueWireType,
-    drop_port: SendableMessagePortHandle,
-) -> DartOpaque {
-    DartOpaque::new(raw as _, drop_port)
-}
+// TODO rm
+// pub unsafe fn wire2api_dart_opaque(
+//     raw: DartOpaqueWireType,
+//     drop_port: SendableMessagePortHandle,
+// ) -> DartOpaque {
+//     DartOpaque::new(raw as _, drop_port)
+// }
