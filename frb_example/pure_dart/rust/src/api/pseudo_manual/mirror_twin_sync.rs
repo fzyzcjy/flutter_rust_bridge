@@ -60,7 +60,7 @@ pub fn is_app_embedded_twin_sync(app_settings: ApplicationSettings) -> bool {
 
 // use a stream of a mirrored type
 #[flutter_rust_bridge::frb(sync)]
-pub fn app_settings_stream_twin_sync(sink: StreamSink<ApplicationSettings>) {
+pub fn app_settings_stream_twin_sync(sink: impl StreamSink<ApplicationSettings>) {
     let app_settings = frb_example_pure_dart_exapmle_external_lib::get_app_settings();
     sink.add(app_settings);
     sink.close();
@@ -68,7 +68,7 @@ pub fn app_settings_stream_twin_sync(sink: StreamSink<ApplicationSettings>) {
 
 // use a stream of a vec of mirrored type
 #[flutter_rust_bridge::frb(sync)]
-pub fn app_settings_vec_stream_twin_sync(sink: StreamSink<Vec<ApplicationSettings>>) {
+pub fn app_settings_vec_stream_twin_sync(sink: impl StreamSink<Vec<ApplicationSettings>>) {
     let app_settings = vec![
         frb_example_pure_dart_exapmle_external_lib::get_app_settings(),
         frb_example_pure_dart_exapmle_external_lib::get_app_settings(),
@@ -86,7 +86,7 @@ pub struct MirrorStructTwinSync {
 
 // use a Struct consisting of mirror types as argument to a Stream
 #[flutter_rust_bridge::frb(sync)]
-pub fn mirror_struct_stream_twin_sync(sink: StreamSink<MirrorStructTwinSync>) {
+pub fn mirror_struct_stream_twin_sync(sink: impl StreamSink<MirrorStructTwinSync>) {
     let val = MirrorStructTwinSync {
         a: frb_example_pure_dart_exapmle_external_lib::get_app_settings(),
         b: MyStruct { content: true },
@@ -103,7 +103,7 @@ pub fn mirror_struct_stream_twin_sync(sink: StreamSink<MirrorStructTwinSync>) {
 // usa a tuple of Mirror types for a StreamSink
 #[flutter_rust_bridge::frb(sync)]
 pub fn mirror_tuple_stream_twin_sync(
-    sink: StreamSink<(ApplicationSettings, RawStringEnumMirrored)>,
+    sink: impl StreamSink<(ApplicationSettings, RawStringEnumMirrored)>,
 ) {
     let tuple = (
         frb_example_pure_dart_exapmle_external_lib::get_app_settings(),

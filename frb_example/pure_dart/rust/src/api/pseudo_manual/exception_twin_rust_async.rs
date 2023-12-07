@@ -245,6 +245,8 @@ pub async fn panic_with_custom_result_twin_rust_async() -> Result<(), CustomErro
     panic!("just a panic");
 }
 
-pub async fn stream_sink_throw_anyhow_twin_rust_async(_sink: StreamSink<String>) -> Result<()> {
+pub async fn stream_sink_throw_anyhow_twin_rust_async(
+    _sink: impl StreamSink<String>,
+) -> Result<()> {
     Err(anyhow!("anyhow error"))
 }

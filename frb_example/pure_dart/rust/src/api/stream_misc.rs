@@ -10,7 +10,7 @@ use std::thread::sleep;
 use std::time::Duration;
 
 // Do not test this on web+async, since atomic is not allowed there
-pub fn func_stream_realistic_twin_normal(sink: StreamSink<String>, arg: String) {
+pub fn func_stream_realistic_twin_normal(sink: impl StreamSink<String>, arg: String) {
     info!("handle_stream_realistic arg={}", arg);
 
     let cnt = Arc::new(AtomicI32::new(0));

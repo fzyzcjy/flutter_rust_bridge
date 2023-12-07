@@ -5,12 +5,12 @@
 // event listener test
 
 use anyhow::{anyhow, Result};
-use flutter_rust_bridge::{frb, StreamSink};
+use flutter_rust_bridge::{frb, StreamSink, StreamSinkImpl};
 use lazy_static::lazy_static;
 use std::sync::Mutex;
 
 lazy_static! {
-    static ref EVENTS: Mutex<Option<StreamSink<EventTwinRustAsync>>> = Default::default();
+    static ref EVENTS: Mutex<Option<StreamSinkImpl<EventTwinRustAsync>>> = Default::default();
 }
 
 #[frb(dart_metadata = ("freezed"))]
@@ -27,7 +27,7 @@ impl EventTwinRustAsync {
 }
 
 pub async fn register_event_listener_twin_rust_async(
-    listener: StreamSink<EventTwinRustAsync>,
+    listener: impl StreamSink<EventTwinRustAsync>,
 ) -> Result<()> {
     match EVENTS.lock() {
         Ok(mut guard) => {

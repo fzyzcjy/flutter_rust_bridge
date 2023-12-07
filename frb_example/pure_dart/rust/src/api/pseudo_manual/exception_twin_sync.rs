@@ -258,6 +258,6 @@ pub fn panic_with_custom_result_twin_sync() -> Result<(), CustomErrorTwinSync> {
 }
 
 #[flutter_rust_bridge::frb(sync)]
-pub fn stream_sink_throw_anyhow_twin_sync(_sink: StreamSink<String>) -> Result<()> {
+pub fn stream_sink_throw_anyhow_twin_sync(_sink: impl StreamSink<String>) -> Result<()> {
     Err(anyhow!("anyhow error"))
 }

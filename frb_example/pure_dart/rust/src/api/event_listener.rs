@@ -1,12 +1,12 @@
 // event listener test
 
 use anyhow::{anyhow, Result};
-use flutter_rust_bridge::{frb, StreamSink};
+use flutter_rust_bridge::{frb, StreamSink, StreamSinkImpl};
 use lazy_static::lazy_static;
 use std::sync::Mutex;
 
 lazy_static! {
-    static ref EVENTS: Mutex<Option<StreamSink<EventTwinNormal>>> = Default::default();
+    static ref EVENTS: Mutex<Option<StreamSinkImpl<EventTwinNormal>>> = Default::default();
 }
 
 #[frb(dart_metadata = ("freezed"))]
@@ -22,7 +22,9 @@ impl EventTwinNormal {
     }
 }
 
-pub fn register_event_listener_twin_normal(listener: StreamSink<EventTwinNormal>) -> Result<()> {
+pub fn register_event_listener_twin_normal(
+    listener: impl StreamSink<EventTwinNormal>,
+) -> Result<()> {
     match EVENTS.lock() {
         Ok(mut guard) => {
             *guard = Some(listener);

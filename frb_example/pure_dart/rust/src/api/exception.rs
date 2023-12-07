@@ -230,6 +230,6 @@ pub fn panic_with_custom_result_twin_normal() -> Result<(), CustomErrorTwinNorma
     panic!("just a panic");
 }
 
-pub fn stream_sink_throw_anyhow_twin_normal(_sink: StreamSink<String>) -> Result<()> {
+pub fn stream_sink_throw_anyhow_twin_normal(_sink: impl StreamSink<String>) -> Result<()> {
     Err(anyhow!("anyhow error"))
 }
