@@ -15,8 +15,8 @@ class GeneralizedFrbRustBinding {
   void initFrbDartApiDl() {}
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  Object dartOpaqueRust2DartWire2Api(int ptr) =>
-      _dart_opaque_rust2dart_wire2api(ptr);
+  Object dartOpaqueRust2DartDecode(int ptr) =>
+      _dart_opaque_rust2dart_decode(ptr);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void dartOpaqueDropThreadBoxPersistentHandle(int ptr) =>
@@ -31,8 +31,8 @@ class GeneralizedFrbRustBinding {
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-@JS("wasm_bindgen.dart_opaque_rust2dart_wire2api")
-external Object _dart_opaque_rust2dart_wire2api(int ptr);
+@JS("wasm_bindgen.dart_opaque_rust2dart_decode")
+external Object _dart_opaque_rust2dart_decode(int ptr);
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 @JS("wasm_bindgen.dart_opaque_drop_thread_box_persistent_handle")
