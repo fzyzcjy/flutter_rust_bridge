@@ -45,8 +45,10 @@ pub(crate) fn generate_api_impl_normal_function(
                   {stmt_prepare_args}
                   return wire.{wire_func_name}({wire_param_list});
                 }},
-                parseSuccessData: {parse_success_data},
-                parseErrorData: {parse_error_data},
+                codec: const DcoCodec(
+                  parseSuccessData: {parse_success_data},
+                  parseErrorData: {parse_error_data},
+                ),
                 constMeta: {const_meta_field_name},
                 argValues: [{arg_values}],
                 apiImpl: this,
