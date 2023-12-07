@@ -147,6 +147,7 @@ class BytesWriter {
     _bufferByteDataView = ByteData.view(_buffer.buffer);
   }
 
+  /// {@macro flutter_rust_bridge.internal}
   Uint8List takeBytes() {
     if (_length == 0) return _emptyList;
     var buffer = Uint8List.view(_buffer.buffer, _buffer.offsetInBytes, _length);
