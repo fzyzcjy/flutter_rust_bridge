@@ -26,9 +26,9 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for BoxedWireDartTransferCstGe
                         IrType::RustOpaque(_) | IrType::DartOpaque(_)
                     )
                 {
-                    format!("return wire.new_{ir_safe_ident}(api2wire_{inner_safe_ident}(raw));")
+                    format!("return wire.new_{ir_safe_ident}(cst_encode_{inner_safe_ident}(raw));")
                 } else if self.ir.inner.is_array() {
-                    format!("return api2wire_{inner_safe_ident}(raw);")
+                    format!("return cst_encode_{inner_safe_ident}(raw);")
                 } else {
                     format!(
                         "final ptr = wire.new_{ir_safe_ident}();
@@ -42,7 +42,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for BoxedWireDartTransferCstGe
                     )
                 },
             ),
-            wasm: Some(format!("return api2wire_{inner_safe_ident}(raw);")),
+            wasm: Some(format!("return cst_encode_{inner_safe_ident}(raw);")),
             ..Default::default()
         }
     }
@@ -51,7 +51,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for BoxedWireDartTransferCstGe
         let inner_safe_ident = self.ir.inner.safe_ident();
 
         if self.ir.inner.is_array() {
-            Some(format!("wireObj = api2wire_{inner_safe_ident}(apiObj);"))
+            Some(format!("wireObj = cst_encode_{inner_safe_ident}(apiObj);"))
         } else if !self.ir.inner.is_primitive()
             && !matches!(
                 *self.ir.inner,

@@ -17,7 +17,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for DelegateWireDartTransferCs
         match &self.ir {
             IrTypeDelegate::Array(ref array) => match &array.mode {
                 IrTypeDelegateArrayMode::General(_) => Acc::distribute(Some(format!(
-                    "return api2wire_{}(raw);",
+                    "return cst_encode_{}(raw);",
                     array.get_delegate().safe_ident(),
                 ))),
                 IrTypeDelegateArrayMode::Primitive(_) => Acc {
@@ -42,7 +42,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for DelegateWireDartTransferCs
 
             IrTypeDelegate::String => Acc {
                 io: Some(format!(
-                    "return api2wire_{}(utf8.encoder.convert(raw));",
+                    "return cst_encode_{}(utf8.encoder.convert(raw));",
                     uint8list_safe_ident()
                 )),
                 wasm: Some("return raw;".into()),
@@ -52,7 +52,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for DelegateWireDartTransferCs
                 // In this case, even though the body is the same, their types are different
                 // and must be split.
                 let body = format!(
-                    "return api2wire_{}(raw);",
+                    "return cst_encode_{}(raw);",
                     self.ir.get_delegate().safe_ident()
                 );
                 Acc::distribute(Some(body))
@@ -61,7 +61,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for DelegateWireDartTransferCs
                 io: Some(
                     "final ans = wire.new_StringList(raw.length);
                     for (var i = 0; i < raw.length; i++){
-                        ans.ref.ptr[i] = api2wire_String(raw[i]);
+                        ans.ref.ptr[i] = cst_encode_String(raw[i]);
                     }
                     return ans;"
                         .to_string(),
@@ -70,30 +70,30 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for DelegateWireDartTransferCs
                 ..Default::default()
             },
             IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ref repr, .. }) => {
-                format!("return api2wire_{}(raw.index);", repr.safe_ident()).into()
+                format!("return cst_encode_{}(raw.index);", repr.safe_ident()).into()
             }
             IrTypeDelegate::Time(ir) => match ir {
                 IrTypeDelegateTime::Utc | IrTypeDelegateTime::Local | IrTypeDelegateTime::Naive => {
                     Acc {
-                        io: Some("return api2wire_i_64(raw.microsecondsSinceEpoch);".into()),
-                        wasm: Some("return api2wire_i_64(raw.millisecondsSinceEpoch);".into()),
+                        io: Some("return cst_encode_i_64(raw.microsecondsSinceEpoch);".into()),
+                        wasm: Some("return cst_encode_i_64(raw.millisecondsSinceEpoch);".into()),
                         ..Default::default()
                     }
                 }
                 IrTypeDelegateTime::Duration => Acc {
-                    io: Some("return api2wire_i_64(raw.inMicroseconds);".into()),
-                    wasm: Some("return api2wire_i_64(raw.inMilliseconds);".into()),
+                    io: Some("return cst_encode_i_64(raw.inMicroseconds);".into()),
+                    wasm: Some("return cst_encode_i_64(raw.inMilliseconds);".into()),
                     ..Default::default()
                 },
             },
             IrTypeDelegate::TimeList(t) => Acc::distribute(Some(format!(
                 "final ans = Int64List(raw.length);
-                for (var i=0; i < raw.length; ++i) ans[i] = api2wire_{}(raw[i]);
-                return api2wire_list_prim_i_64(ans);",
+                for (var i=0; i < raw.length; ++i) ans[i] = cst_encode_{}(raw[i]);
+                return cst_encode_list_prim_i_64(ans);",
                 IrTypeDelegate::Time(*t).safe_ident()
             ))),
             IrTypeDelegate::Uuid => Acc::distribute(Some(format!(
-                "return api2wire_{}(raw.toBytes());",
+                "return cst_encode_{}(raw.toBytes());",
                 uint8list_safe_ident()
             ))),
             IrTypeDelegate::Uuids => Acc::distribute(Some(format!(
@@ -101,7 +101,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for DelegateWireDartTransferCs
                 for (final element in raw) {{
                   builder.add(element.toBytes());
                 }}
-                return api2wire_{}(builder.toBytes());",
+                return cst_encode_{}(builder.toBytes());",
                 uint8list_safe_ident()
             ))),
             IrTypeDelegate::Backtrace => unimplemented!(),

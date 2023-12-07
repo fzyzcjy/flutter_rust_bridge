@@ -54,7 +54,7 @@ fn generate_encode_func(
             raw_body
                 .map(|raw_body| {
                     let code = format!(
-                        "{} api2wire_{}({} raw) {{
+                        "{} cst_encode_{}({} raw) {{
                             {raw_body}
                         }}",
                         WireDartTransferCstGenerator::new(ty.clone(), context)

@@ -28,14 +28,14 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for GeneralListWireDartTransfe
                     // Handle primitive enums list.
                     // This is similar to `StringList` in
                     // `frb_codegen/src/generator/dart/ty_delegate.rs`
-                    format!("ans.ref.ptr[i] = api2wire_{inner}(raw[i]);")
+                    format!("ans.ref.ptr[i] = cst_encode_{inner}(raw[i]);")
                 } else {
                     format!("_api_fill_to_wire_{inner}(raw[i], ans.ref.ptr[i]);")
                 }
             )),
             wasm: self.context.config.wasm_enabled.then(|| {
                 format!(
-                    "return raw.map(api2wire_{}).toList();",
+                    "return raw.map(cst_encode_{}).toList();",
                     self.ir.inner.safe_ident()
                 )
             }),

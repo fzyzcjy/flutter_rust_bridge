@@ -15,13 +15,13 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for OptionalListWireDartTransf
                 for (var i = 0; i < raw.length; ++i) {{
                     final item = raw[i];
                     if (item == null) continue;
-                    ans.ref.ptr[i] = api2wire_{inner}(item);
+                    ans.ref.ptr[i] = cst_encode_{inner}(item);
                 }}
                 return ans;",
                 safe_ident = self.ir.safe_ident(),
             )),
             wasm: (self.context.config.wasm_enabled)
-                .then(|| format!("return mapNonNull(raw, api2wire_{inner});")),
+                .then(|| format!("return mapNonNull(raw, cst_encode_{inner});")),
             ..Default::default()
         }
     }

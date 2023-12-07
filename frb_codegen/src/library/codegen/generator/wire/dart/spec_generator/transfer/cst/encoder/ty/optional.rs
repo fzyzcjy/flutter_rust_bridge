@@ -9,7 +9,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for OptionalWireDartTransferCs
     fn encode_func_body(&self) -> Acc<Option<String>> {
         Acc::new(|target| match target {
             TargetOrCommon::Io | TargetOrCommon::Wasm => Some(format!(
-                "return raw == null ? {} : api2wire_{}(raw);",
+                "return raw == null ? {} : cst_encode_{}(raw);",
                 if target == TargetOrCommon::Wasm {
                     "null"
                 } else {

@@ -9,7 +9,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for DartOpaqueWireDartTransfer
     fn encode_func_body(&self) -> Acc<Option<String>> {
         Acc::new(|target| match target {
             TargetOrCommon::Io => {
-                Some("return wire.dart_opaque_dart2rust_api2wire(raw);".to_owned())
+                Some("return wire.dart_opaque_dart2rust_cst_encode(raw);".to_owned())
             }
             TargetOrCommon::Wasm => Some("return raw;".to_owned()),
             TargetOrCommon::Common => None,
