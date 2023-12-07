@@ -23,7 +23,7 @@ impl WireDartCodecEntrypointTrait for DcoWireDartCodecEntrypoint {
 
         format!(
             "
-            const DcoCodec(
+            DcoCodec(
               parseSuccessData: {parse_success_data},
               parseErrorData: {parse_error_data},
             )

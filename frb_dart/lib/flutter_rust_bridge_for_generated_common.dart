@@ -9,6 +9,9 @@ export 'dart:typed_data' hide Int64List, Uint64List;
 export 'package:meta/meta.dart' show internal, protected, sealed;
 
 export 'flutter_rust_bridge.dart';
+export 'src/codec/cst.dart';
+export 'src/codec/dco.dart';
+export 'src/codec/sse.dart';
 export 'src/dart_opaque/_common.dart';
 export 'src/exceptions.dart';
 export 'src/loader/_common.dart';
