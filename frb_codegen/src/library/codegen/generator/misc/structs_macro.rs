@@ -27,7 +27,7 @@ macro_rules! codegen_generator_structs {
         );
     );
     (@private $(#[$attribute:meta])* $generator_name:ident ; $($name:ident),*,) => (
-        paste! {
+        paste::paste! {
             $(
             #[$attribute]
             )*
