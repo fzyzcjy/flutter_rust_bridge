@@ -1,10 +1,7 @@
-use crate::codegen::generator::wire::rust::spec_generator::base::*;
-use crate::codegen::generator::wire::rust::spec_generator::rust2dart::misc::generate_impl_into_into_dart;
-use crate::codegen::generator::wire::rust::spec_generator::rust2dart::ty::WireRustGeneratorRust2DartTrait;
-use crate::codegen::ir::namespace::NamespacedName;
-use crate::codegen::ir::pack::IrPack;
-use crate::codegen::ir::ty::enumeration::IrVariantKind;
-use crate::codegen::ir::ty::IrTypeTrait;
-use itertools::Itertools;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::direct::base::*;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::direct::encoder::ty::WireDartTransferDirectGeneratorEncoderTrait;
 
-impl<'a> WireRustGeneratorRust2DartTrait for EnumRefWireRustGenerator<'a> {}
+impl<'a> WireDartTransferDirectGeneratorEncoderTrait
+    for EnumRefWireDartTransferDirectGenerator<'a>
+{
+}

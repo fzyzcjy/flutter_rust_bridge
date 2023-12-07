@@ -17,14 +17,8 @@ mod structure;
 mod unencodable;
 
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorImplTrait;
-use crate::codegen_generator_structs;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use enum_dispatch::enum_dispatch;
 
-codegen_generator_structs!(
-    #[enum_dispatch(WireDartDart2RustTransferDirectGeneratorTrait)]
-    WireDartDart2RustTransferDirectGenerator
-);
-
 #[enum_dispatch]
-pub(crate) trait WireDartDart2RustTransferDirectGeneratorTrait {}
+pub(crate) trait WireDartTransferDirectGeneratorEncoderTrait {}

@@ -1,4 +1,7 @@
-use crate::codegen::generator::wire::rust::spec_generator::base::*;
-use crate::codegen::generator::wire::rust::spec_generator::rust2dart::ty::WireRustGeneratorRust2DartTrait;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::direct::base::*;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::direct::encoder::ty::WireDartTransferDirectGeneratorEncoderTrait;
 
-impl<'a> WireRustGeneratorRust2DartTrait for RustAutoOpaqueWireRustGenerator<'a> {}
+impl<'a> WireDartTransferDirectGeneratorEncoderTrait
+    for RustAutoOpaqueWireDartTransferDirectGenerator<'a>
+{
+}
