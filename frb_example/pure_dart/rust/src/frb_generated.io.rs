@@ -588,10 +588,7 @@ impl CstDecodable<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettin
 {
     fn cst_decode(self) -> crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-        CstDecodable::<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>::cst_decode(
-            *wrap,
-        )
-        .into()
+        CstDecodable::<crate::api::pseudo_manual::mirror_twin_sync::ApplicationSettings>::cst_decode(*wrap).into()
     }
 }
 impl CstDecodable<crate::api::optional::AttributeTwinNormal>
@@ -617,10 +614,7 @@ impl CstDecodable<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSy
 {
     fn cst_decode(self) -> crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-        CstDecodable::<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync>::cst_decode(
-            *wrap,
-        )
-        .into()
+        CstDecodable::<crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync>::cst_decode(*wrap).into()
     }
 }
 impl CstDecodable<crate::api::misc_example::BTwinNormal> for *mut wire_cst_b_twin_normal {
@@ -1309,10 +1303,7 @@ impl CstDecodable<crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwinS
 {
     fn cst_decode(self) -> crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwinSync {
         let wrap = unsafe { flutter_rust_bridge::for_generated::box_from_leak_ptr(self) };
-        CstDecodable::<crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwinSync>::cst_decode(
-            *wrap,
-        )
-        .into()
+        CstDecodable::<crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwinSync>::cst_decode(*wrap).into()
     }
 }
 impl CstDecodable<crate::api::array::MessageIdTwinNormal> for *mut wire_cst_message_id_twin_normal {
