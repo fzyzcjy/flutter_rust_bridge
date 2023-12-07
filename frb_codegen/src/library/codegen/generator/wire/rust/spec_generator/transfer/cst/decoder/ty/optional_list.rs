@@ -29,10 +29,6 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for OptionalListWireRustTransf
         ))
     }
 
-    fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
-        general_list_impl_decode_body()
-    }
-
     fn generate_allocate_funcs(&self) -> Acc<WireRustOutputCode> {
         Acc {
             io: ExternFunc {
@@ -52,13 +48,5 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for OptionalListWireRustTransf
             }.into(),
             ..Default::default()
         }
-    }
-
-    fn rust_wire_type(&self, target: Target) -> String {
-        rust_wire_type_add_prefix_or_js_value(&self.ir, target)
-    }
-
-    fn rust_wire_is_pointer(&self, target: Target) -> bool {
-        target != Target::Wasm
     }
 }
