@@ -44,3 +44,12 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for RecordWireRustTransferCstG
         rust_wire_type_add_prefix_or_js_value(&self.ir, target)
     }
 }
+
+impl RecordWireRustTransferCstGenerator<'_> {
+    pub(crate) fn as_struct_generator(&self) -> StructRefWireRustTransferCstGenerator {
+        StructRefWireRustTransferCstGenerator {
+            ir: self.ir.inner.clone(),
+            context: self.context,
+        }
+    }
+}
