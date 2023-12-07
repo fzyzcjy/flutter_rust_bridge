@@ -1,5 +1,6 @@
 use crate::codegen::generator::wire::dart::spec_generator::transfer::base::WireDartTransferEntrypointTrait;
 use crate::codegen::ir::func::IrFunc;
+use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
 pub(crate) struct CstWireDartTransferEntrypoint {}
