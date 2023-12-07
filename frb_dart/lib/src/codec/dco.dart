@@ -1,4 +1,5 @@
 import 'package:flutter_rust_bridge/src/codec/base.dart';
+import 'package:flutter_rust_bridge/src/manual_impl/manual_impl.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 class DcoCodec<S, E extends Object> extends BaseCodec {
