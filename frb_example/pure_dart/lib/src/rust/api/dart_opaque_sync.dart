@@ -3,9 +3,8 @@
 
 // ignore_for_file: invalid_use_of_internal_member, unused_import
 
-import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-
 import '../frb_generated.dart';
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Object syncLoopbackTwinNormal({required Object opaque, dynamic hint}) =>
     RustLib.instance.api.syncLoopbackTwinNormal(opaque: opaque, hint: hint);

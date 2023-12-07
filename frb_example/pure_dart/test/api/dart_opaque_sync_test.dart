@@ -15,10 +15,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('loopback', () {
     var syncBack = syncLoopbackTwinNormal(opaque: f);
-    print(f); // make the object no GC (though it should not be GCed at all)
-
-    return;
-
     expect(
         identical(syncOptionLoopbackTwinNormal(opaque: syncBack), f), isTrue);
     expect(syncOptionLoopbackTwinNormal(opaque: null), isNull);
