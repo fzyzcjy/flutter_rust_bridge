@@ -6,7 +6,7 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFu
 use std::path::PathBuf;
 
 pub(crate) mod internal_config;
-pub(super) mod spec_generator;
+pub(crate) mod spec_generator;
 mod text_generator;
 
 pub(crate) struct GeneratorWireDartOutput {

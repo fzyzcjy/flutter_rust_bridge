@@ -1,6 +1,7 @@
 use crate::codegen::generator::api_dart;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::base::WireDartTransferEntrypoint;
 use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::wire_func_name;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode};
@@ -12,12 +13,14 @@ pub(crate) fn generate_api_impl_normal_function(
     func: &IrFunc,
     context: WireDartGeneratorContext,
 ) -> anyhow::Result<WireDartOutputCode> {
+    let transfer: WireDartTransferEntrypoint = TODO;
+
     let api_dart_func =
         api_dart::spec_generator::function::generate(func, context.as_api_dart_context())?;
 
     let const_meta_field_name = format!("k{}ConstMeta", func.name.name.to_case(Case::Pascal));
 
-    let stmt_prepare_args = generate_stmt_prepare_args(func);
+    let stmt_prepare_args = transfer.generate_func_stmt_prepare_args(func);
     let wire_param_list = generate_wire_param_list(func, stmt_prepare_args.len()).join(", ");
     let execute_func_name = generate_execute_func_name(func);
 
@@ -56,20 +59,6 @@ pub(crate) fn generate_api_impl_normal_function(
         api_impl_body: format!("{function_implementation}\n\n{companion_field_implementation}\n\n"),
         ..Default::default()
     })
-}
-
-fn generate_stmt_prepare_args(func: &IrFunc) -> Vec<String> {
-    func.inputs
-        .iter()
-        .enumerate()
-        .map(|(index, input)| {
-            format!(
-                "var arg{index} = cst_encode_{ty_ident}({name});",
-                ty_ident = input.ty.safe_ident(),
-                name = &input.name.dart_style()
-            )
-        })
-        .collect_vec()
 }
 
 fn generate_wire_param_list(func: &IrFunc, num_prepare_args: usize) -> Vec<String> {
