@@ -5,6 +5,7 @@ use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::
 };
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use crate::library::codegen::generator::wire::rust::spec_generator::dart2rust::ty::WireRustGeneratorDart2RustTrait;
+use crate::library::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
 
 pub(crate) fn generate_class_from_fields(
     ty: impl Into<IrType>,
