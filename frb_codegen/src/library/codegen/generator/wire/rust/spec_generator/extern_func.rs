@@ -1,9 +1,15 @@
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGenerator;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::base::WireDartTransferCstGenerator;
 use crate::codegen::generator::wire::rust::spec_generator::base::{
     WireRustGenerator, WireRustGeneratorContext,
 };
+use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::{
+    WireRustTransferCstGenerator, WireRustTransferCstGeneratorContext,
+};
 use crate::codegen::ir::ty::IrType;
+use crate::library::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartTransferCstGeneratorEncoderTrait;
+use crate::library::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
 use itertools::Itertools;
 use serde::Serialize;
 
@@ -56,14 +62,16 @@ impl ExternFunc {
 }
 
 impl ExternFuncParam {
+    // TODO move this func to cst-specific
     pub(crate) fn new(
         name: String,
         target: Target,
         ty: &IrType,
-        context: WireRustGeneratorContext,
+        context: WireRustTransferCstGeneratorContext,
     ) -> Self {
-        let rust_gen = WireRustGenerator::new(ty.clone(), context);
-        let dart_gen = WireDartGenerator::new(ty.clone(), context.as_wire_dart_context());
+        let rust_gen = WireRustTransferCstGenerator::new(ty.clone(), context);
+        let dart_gen =
+            WireDartTransferCstGenerator::new(ty.clone(), context.as_wire_dart_context());
 
         Self {
             name,
