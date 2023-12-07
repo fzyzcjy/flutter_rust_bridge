@@ -1,10 +1,10 @@
 pub(crate) trait BaseCodec {}
 
-pub(crate) struct CstCodec;
+pub struct CstCodec;
 impl BaseCodec for CstCodec {}
 
-pub(crate) struct DcoCodec;
+pub struct DcoCodec;
 impl BaseCodec for DcoCodec {}
 
-pub(crate) struct SseCodec;
+pub struct SseCodec;
 impl BaseCodec for SseCodec {}

@@ -193,10 +193,13 @@ fn generate_handler_func_name(
     ir_pack: &IrPack,
     context: WireRustGeneratorContext,
 ) -> String {
-    let codec = &func.codec_mode_pack.rust2dart;
+    let codec = format!(
+        "flutter_rust_bridge::for_generated::{}Codec",
+        &func.codec_mode_pack.rust2dart
+    );
 
     match func.mode {
-        IrFuncMode::Sync => "wrap_sync::<{codec},_,_,_,_>".to_owned(),
+        IrFuncMode::Sync => format!("wrap_sync::<{codec},_,_,_,_>"),
         IrFuncMode::Normal | IrFuncMode::Stream { .. } => {
             let name = if func.rust_async {
                 "wrap_async"
