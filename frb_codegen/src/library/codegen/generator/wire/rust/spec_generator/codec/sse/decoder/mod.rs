@@ -25,5 +25,42 @@ pub(crate) fn generate_impl_decode(
     types: &[IrType],
     context: WireRustCodecSseGeneratorContext,
 ) -> Acc<Vec<WireRustOutputCode>> {
-    todo!()
+    let mut lines = Acc::<Vec<WireRustOutputCode>>::default();
+    lines.push_acc(generate_impl_decode_misc());
+    lines += (types.iter())
+        .map(|ty| generate_impl_decode_for_type(ty, context))
+        .collect();
+    lines
+}
+
+fn generate_impl_decode_misc() -> Acc<WireRustOutputCode> {
+    Acc::new_common(
+        "
+        pub trait SseDecodable {
+            fn sse_decode(reader: &mut SseReader) -> Self;
+        }
+        "
+        .into(),
+    )
+}
+
+fn generate_impl_decode_for_type(
+    ty: &IrType,
+    context: WireRustCodecSseGeneratorContext,
+) -> Acc<WireRustOutputCode> {
+    let rust_api_type = ty.rust_api_type();
+    let body = TODO;
+
+    Acc::new_common(
+        format!(
+            "
+            impl SseDecodable for {rust_api_type} {{
+                fn sse_decode(reader: &mut SseReader) -> Self {{
+                    {body}
+                }}
+            }}
+            "
+        )
+        .into(),
+    )
 }
