@@ -12,17 +12,17 @@ use std::marker::PhantomData;
 /// Represented as a Dart
 /// [`Stream`](https://api.dart.dev/stable/dart-async/Stream-class.html).
 #[derive(Clone)]
-pub struct StreamSink<T> {
+pub struct StreamSink<T, Rust2DartCodec: BaseCodec = DcoCodec> {
     sendable_channel_handle: SendableChannelHandle,
-    _phantom_data: PhantomData<T>,
+    _phantom_data: (PhantomData<T>, PhantomData<Rust2DartCodec>),
 }
 
-impl<T> StreamSink<T> {
+impl<T, Rust2DartCodec: BaseCodec> StreamSink<T, Rust2DartCodec> {
     /// Create a new sink from a port wrapper.
     pub fn new(sender: Rust2DartSender) -> Self {
         Self {
             sendable_channel_handle: channel_to_handle(&sender.channel),
-            _phantom_data: PhantomData,
+            _phantom_data: Default::default(),
         }
     }
 
@@ -36,8 +36,7 @@ impl<T> StreamSink<T> {
     where
         T: IntoIntoDart<D>,
     {
-        // TODO do not hardcode!
-        self.sender().send(DcoCodec::encode(
+        self.sender().send(Rust2DartCodec::encode(
             value.into_into_dart(),
             Rust2DartAction::Success,
         ))
@@ -46,8 +45,7 @@ impl<T> StreamSink<T> {
     /// Close the stream and ignore further messages. Returns false when
     /// the stream could not be closed, or when it has already been closed.
     pub fn close(&self) -> bool {
-        // TODO do not hardcode!
         self.sender()
-            .send(DcoCodec::encode((), Rust2DartAction::CloseStream))
+            .send(Rust2DartCodec::encode((), Rust2DartAction::CloseStream))
     }
 }
