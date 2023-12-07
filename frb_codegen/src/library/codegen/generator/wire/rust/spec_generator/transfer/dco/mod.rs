@@ -1,2 +1,2 @@
 pub(crate) mod base;
-mod encoder;
+pub(crate) mod encoder;

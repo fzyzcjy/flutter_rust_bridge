@@ -13,7 +13,7 @@ mod dump;
 pub(crate) mod extern_func;
 pub(crate) mod misc;
 pub mod output_code;
-mod transfer;
+pub(crate) mod transfer;
 
 #[derive(Serialize)]
 pub(super) struct WireRustOutputSpec {

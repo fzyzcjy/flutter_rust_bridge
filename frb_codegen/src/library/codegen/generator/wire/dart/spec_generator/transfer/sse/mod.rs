@@ -1,3 +1,3 @@
-mod base;
-mod decoder;
-mod encoder;
+pub(crate) mod base;
+pub(crate) mod decoder;
+pub(crate) mod encoder;
