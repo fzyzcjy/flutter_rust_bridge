@@ -2,7 +2,7 @@ use crate::generalized_isolate::IntoDart;
 use crate::handler::error::Error;
 use crate::platform_types::DartAbi;
 
-#[derive(Debug)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Rust2DartAction {
     Success = 0,
     Error = 1,
