@@ -2,6 +2,8 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::base::WireDartTransferCstGeneratorContext;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::base::WireDartTransferDcoGeneratorContext;
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::ir::ty::IrType::*;
@@ -41,6 +43,23 @@ impl WireDartGeneratorContext<'_> {
         ApiDartGeneratorContext {
             ir_pack: self.ir_pack,
             config: self.api_dart_config,
+        }
+    }
+
+    pub(crate) fn as_wire_dart_transfer_cst_context(&self) -> WireDartTransferCstGeneratorContext {
+        WireDartTransferCstGeneratorContext {
+            ir_pack: self.ir_pack,
+            config: self.config,
+            wire_rust_config: self.wire_rust_config,
+            api_dart_config: self.api_dart_config,
+        }
+    }
+
+    pub(crate) fn as_wire_dart_transfer_dco_context(&self) -> WireDartTransferDcoGeneratorContext {
+        WireDartTransferDcoGeneratorContext {
+            ir_pack: self.ir_pack,
+            config: self.config,
+            api_dart_config: self.api_dart_config,
         }
     }
 }

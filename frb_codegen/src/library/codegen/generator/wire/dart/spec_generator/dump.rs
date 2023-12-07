@@ -2,7 +2,9 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::base::{
     WireDartGenerator, WireDartGeneratorContext,
 };
+use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::base::WireDartTransferCstGenerator;
 use crate::codegen::ir::pack::IrPackComputedCache;
+use crate::library::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartTransferCstGeneratorEncoderTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use serde::Serialize;
 use std::collections::HashMap;
@@ -28,7 +30,10 @@ pub(super) fn generate_dump_info(
             .distinct_types
             .iter()
             .map(|ty| {
-                let gen = WireDartGenerator::new(ty.clone(), context);
+                let gen = WireDartTransferCstGenerator::new(
+                    ty.clone(),
+                    context.as_wire_dart_transfer_cst_context(),
+                );
                 WireDartDumpInfoType {
                     safe_ident: ty.safe_ident(),
                     dart_wire_type: Target::iter()

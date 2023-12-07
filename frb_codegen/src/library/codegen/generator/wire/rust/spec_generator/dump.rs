@@ -2,8 +2,10 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::rust::spec_generator::base::{
     WireRustGenerator, WireRustGeneratorContext,
 };
+use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::WireRustTransferCstGenerator;
 use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
+use crate::library::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use serde::Serialize;
 use std::collections::HashMap;
@@ -34,13 +36,17 @@ pub(super) fn generate_dump_info(
             .iter()
             .map(|ty| {
                 let gen = WireRustGenerator::new(ty.clone(), context);
+                let cst_gen = WireRustTransferCstGenerator::new(
+                    ty.clone(),
+                    context.as_wire_rust_transfer_cst_context(),
+                );
                 WireRustDumpInfoType {
                     safe_ident: ty.safe_ident(),
                     rust_wire_type: Target::iter()
-                        .map(|target| (target, gen.rust_wire_type(target)))
+                        .map(|target| (target, cst_gen.rust_wire_type(target)))
                         .collect(),
                     rust_wire_modifier: Target::iter()
-                        .map(|target| (target, gen.rust_wire_modifier(target)))
+                        .map(|target| (target, cst_gen.rust_wire_modifier(target)))
                         .collect(),
                     // intodart_type: gen.intodart_type(context.ir_pack),
                     wrapper_struct_name: gen.wrapper_struct_name(),
