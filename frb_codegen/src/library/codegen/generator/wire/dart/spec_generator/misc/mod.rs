@@ -20,7 +20,6 @@ use serde::Serialize;
 use std::path::{Path, PathBuf};
 
 mod api_impl_body;
-mod api_impl_opaque;
 pub(crate) mod ty;
 
 #[derive(Clone, Serialize)]
