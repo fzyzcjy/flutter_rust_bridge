@@ -93,12 +93,12 @@ fn generate_execute_func_name(func: &IrFunc) -> &str {
 }
 
 fn generate_parse_success_data(func: &IrFunc) -> String {
-    format!("_wire2api_{}", func.output.safe_ident())
+    format!("_dco_decode_{}", func.output.safe_ident())
 }
 
 fn generate_parse_error_data(func: &IrFunc) -> String {
     if let Some(error_output) = &func.error_output {
-        format!("_wire2api_{}", error_output.safe_ident())
+        format!("_dco_decode_{}", error_output.safe_ident())
     } else {
         "null".to_string()
     }

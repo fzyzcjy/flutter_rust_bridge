@@ -31,15 +31,15 @@ pub(crate) fn generate_wire_func(
     let params = generate_params(func, context);
     let inner_func_params = generate_inner_func_params(func, ir_pack, context);
     let wrap_info_obj = generate_wrap_info_obj(func);
-    let code_wire2api = generate_code_wire2api(func, context);
-    let code_inner_wire2api = generate_code_inner_wire2api(func);
+    let code_decode = generate_code_decode(func, context);
+    let code_inner_decode = generate_code_inner_decode(func);
     let code_call_inner_func_result = generate_code_call_inner_func_result(func, inner_func_params);
     let handler_func_name = generate_handler_func_name(func, ir_pack, context);
     let return_type = generate_return_type(func);
     let code_closure = generate_code_closure(
         func,
-        &code_wire2api,
-        &code_inner_wire2api,
+        &code_decode,
+        &code_inner_decode,
         &code_call_inner_func_result,
     );
     let func_name = wire_func_name(func);
@@ -143,7 +143,7 @@ fn generate_params(func: &IrFunc, context: WireRustGeneratorContext) -> Acc<Vec<
                 TargetOrCommon::Common => ExternFuncParam {
                     name: name.clone(),
                     rust_type: format!(
-                        "impl Wire2Api<{}> + core::panic::UnwindSafe",
+                        "impl CstDecode<{}> + core::panic::UnwindSafe",
                         WireRustTransferCstGenerator::new(
                             field.ty.clone(),
                             context.as_wire_rust_transfer_cst_context()
@@ -182,30 +182,34 @@ fn generate_wrap_info_obj(func: &IrFunc) -> String {
     )
 }
 
-fn generate_code_wire2api(func: &IrFunc, context: WireRustGeneratorContext) -> String {
+fn generate_code_decode(func: &IrFunc, context: WireRustGeneratorContext) -> String {
     func.inputs
         .iter()
         .map(|field| {
             let name = field.name.rust_style();
-            let wire_func_call_wire2api = WireRustTransferCstGenerator::new(
+            let wire_func_call_decode = WireRustTransferCstGenerator::new(
                 field.ty.clone(),
                 context.as_wire_rust_transfer_cst_context(),
             )
             .generate_wire_func_call_decode(name);
-            format!("let api_{name} = {wire_func_call_wire2api};")
+            format!("let api_{name} = {wire_func_call_decode};")
         })
         .join("")
 }
 
-fn generate_code_inner_wire2api(func: &IrFunc) -> String {
+fn generate_code_inner_decode(func: &IrFunc) -> String {
     func.inputs
         .iter()
         .filter_map(|field| {
             if let IrType::RustAutoOpaque(o) = &field.ty {
                 let mode = o.ownership_mode.to_string().to_case(Case::Snake);
-                let mutability = if o.ownership_mode == IrTypeOwnershipMode::RefMut { "mut " } else {""};
+                let mutability = if o.ownership_mode == IrTypeOwnershipMode::RefMut {
+                    "mut "
+                } else {
+                    ""
+                };
                 Some(format!(
-                    "let {mutability}api_{name} = api_{name}.rust_auto_opaque_wire2api_{mode}()?;\n",
+                    "let {mutability}api_{name} = api_{name}.rust_auto_opaque_decode_{mode}()?;\n",
                     name = field.name.rust_style()
                 ))
             } else {
@@ -299,17 +303,17 @@ fn generate_return_type(func: &IrFunc) -> Option<String> {
 
 fn generate_code_closure(
     func: &IrFunc,
-    code_wire2api: &str,
-    code_inner_wire2api: &str,
+    code_decode: &str,
+    code_inner_decode: &str,
     code_call_inner_func_result: &str,
 ) -> String {
     match func.mode {
         IrFuncMode::Sync => {
-            format!("{code_wire2api}{code_inner_wire2api}{code_call_inner_func_result}")
+            format!("{code_decode}{code_inner_decode}{code_call_inner_func_result}")
         }
         IrFuncMode::Normal | IrFuncMode::Stream { .. } => {
             let maybe_async_move = if func.rust_async { "async move" } else { "" };
-            format!("{code_wire2api} move |context| {maybe_async_move} {{ {code_inner_wire2api} {code_call_inner_func_result} }}")
+            format!("{code_decode} move |context| {maybe_async_move} {{ {code_inner_decode} {code_call_inner_func_result} }}")
         }
     }
 }
