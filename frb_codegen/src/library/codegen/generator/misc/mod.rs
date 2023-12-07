@@ -11,6 +11,7 @@ use strum::IntoEnumIterator;
 pub(crate) mod structs_macro;
 pub(crate) mod target;
 pub(crate) mod text_generator_utils;
+pub(crate) mod transfer;
 
 /// In WASM, these types belong to the JS scope-local heap, **NOT** the Rust heap and
 /// therefore do not implement [Send]. More specifically, these are types wasm-bindgen
