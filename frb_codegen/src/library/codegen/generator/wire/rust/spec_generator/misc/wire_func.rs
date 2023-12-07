@@ -8,11 +8,15 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::WireRustTransferCstGenerator;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::dco::base::WireRustTransferDcoGenerator;
 use crate::codegen::ir::func::IrFuncOwnerInfoMethodMode::Instance;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod};
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::ownership::IrTypeOwnershipMode;
 use crate::codegen::ir::ty::IrType;
+use crate::library::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
+use crate::library::codegen::generator::wire::rust::spec_generator::transfer::dco::encoder::ty::WireRustTransferDcoGeneratorEncoderTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use crate::misc::consts::HANDLER_NAME;
 use convert_case::{Case, Casing};
@@ -96,7 +100,11 @@ fn generate_inner_func_params(
             argument_index,
             format!(
                 "context.rust2dart_context().stream_sink::<_,{}>()",
-                WireRustGenerator::new(func.output.clone(), context).intodart_type(ir_pack)
+                WireRustTransferDcoGenerator::new(
+                    func.output.clone(),
+                    context.as_wire_rust_transfer_dco_context()
+                )
+                .intodart_type(ir_pack)
             ),
         );
     }
@@ -136,15 +144,23 @@ fn generate_params(func: &IrFunc, context: WireRustGeneratorContext) -> Acc<Vec<
                     name: name.clone(),
                     rust_type: format!(
                         "impl Wire2Api<{}> + core::panic::UnwindSafe",
-                        WireRustGenerator::new(field.ty.clone(), context)
-                            .generate_wire_func_param_api_type()
-                            .unwrap_or(field.ty.rust_api_type())
+                        WireRustTransferCstGenerator::new(
+                            field.ty.clone(),
+                            context.as_wire_rust_transfer_cst_context()
+                        )
+                        .generate_wire_func_param_api_type()
+                        .unwrap_or(field.ty.rust_api_type())
                     ),
                     dart_type: "THIS_TYPE_SHOULD_NOT_BE_USED".into(),
                 },
                 TargetOrCommon::Io | TargetOrCommon::Wasm => {
                     let target: Target = target.try_into().unwrap();
-                    ExternFuncParam::new(name.clone(), target, &field.ty, context)
+                    ExternFuncParam::new(
+                        name.clone(),
+                        target,
+                        &field.ty,
+                        context.as_wire_rust_transfer_cst_context(),
+                    )
                 }
             })
         })
@@ -171,8 +187,11 @@ fn generate_code_wire2api(func: &IrFunc, context: WireRustGeneratorContext) -> S
         .iter()
         .map(|field| {
             let name = field.name.rust_style();
-            let wire_func_call_wire2api = WireRustGenerator::new(field.ty.clone(), context)
-                .generate_wire_func_call_wire2api(name);
+            let wire_func_call_wire2api = WireRustTransferCstGenerator::new(
+                field.ty.clone(),
+                context.as_wire_rust_transfer_cst_context(),
+            )
+            .generate_wire_func_call_wire2api(name);
             format!("let api_{name} = {wire_func_call_wire2api};")
         })
         .join("")
@@ -253,7 +272,11 @@ fn generate_handler_func_name(
             let output = if matches!(func.mode, IrFuncMode::Stream { .. }) {
                 "()".to_owned()
             } else {
-                WireRustGenerator::new(func.output.clone(), context).intodart_type(ir_pack)
+                WireRustTransferDcoGenerator::new(
+                    func.output.clone(),
+                    context.as_wire_rust_transfer_dco_context(),
+                )
+                .intodart_type(ir_pack)
             };
 
             let generic_args = if func.rust_async {
