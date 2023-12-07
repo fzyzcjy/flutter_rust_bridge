@@ -2,6 +2,6 @@ use crate::codegen::generator::wire::rust::spec_generator::transfer::direct::bas
 use crate::codegen::generator::wire::rust::spec_generator::transfer::direct::encoder::ty::WireRustTransferDirectGeneratorEncoderTrait;
 
 impl<'a> WireRustTransferDirectGeneratorEncoderTrait
-    for RustOpaqueWireRustTransferDirectGenerator<'a>
+    for DartOpaqueWireRustTransferDirectGenerator<'a>
 {
 }
