@@ -37,7 +37,7 @@ impl ConcatenateWithTwinSync {
         &self,
         key: u32,
         max: u32,
-        sink: impl StreamSink<Log2TwinSync>,
+        sink: StreamSink<Log2TwinSync>,
     ) {
         let a = self.a.clone();
         (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
@@ -52,7 +52,7 @@ impl ConcatenateWithTwinSync {
     }
 
     #[flutter_rust_bridge::frb(sync)]
-    pub fn handle_some_stream_sink_at_1_twin_sync(&self, sink: impl StreamSink<u32>) {
+    pub fn handle_some_stream_sink_at_1_twin_sync(&self, sink: StreamSink<u32>) {
         (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             for i in 0..5 {
                 sink.add(i);
@@ -65,7 +65,7 @@ impl ConcatenateWithTwinSync {
     pub fn handle_some_static_stream_sink_twin_sync(
         key: u32,
         max: u32,
-        sink: impl StreamSink<Log2TwinSync>,
+        sink: StreamSink<Log2TwinSync>,
     ) {
         (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             for i in 0..max {
@@ -79,7 +79,7 @@ impl ConcatenateWithTwinSync {
     }
 
     #[flutter_rust_bridge::frb(sync)]
-    pub fn handle_some_static_stream_sink_single_arg_twin_sync(sink: impl StreamSink<u32>) {
+    pub fn handle_some_static_stream_sink_single_arg_twin_sync(sink: StreamSink<u32>) {
         (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             for i in 0..5 {
                 sink.add(i);

@@ -10,24 +10,19 @@ use flutter_rust_bridge::for_generated::BaseThreadPool;
 use flutter_rust_bridge::{transfer, StreamSink};
 
 pub async fn func_stream_return_error_twin_rust_async(
-    _sink: impl StreamSink<String>,
+    _sink: StreamSink<String>,
 ) -> anyhow::Result<()> {
     Err(anyhow!("deliberate error"))
 }
 
 pub async fn func_stream_return_panic_twin_rust_async(
-    _sink: impl StreamSink<String>,
+    _sink: StreamSink<String>,
 ) -> anyhow::Result<()> {
     panic!("deliberate panic")
 }
 
 #[allow(unused_variables)]
-pub async fn func_stream_sink_arg_position_twin_rust_async(
-    a: u32,
-    b: u32,
-    c: impl StreamSink<u32>,
-) {
-}
+pub async fn func_stream_sink_arg_position_twin_rust_async(a: u32, b: u32, c: StreamSink<u32>) {}
 
 pub struct MyStreamEntryTwinRustAsync {
     pub hello: String,
@@ -36,7 +31,7 @@ pub struct MyStreamEntryTwinRustAsync {
 // TODO #11193
 // https://github.com/fzyzcjy/flutter_rust_bridge/issues/398 reports a compile error like this
 pub async fn handle_stream_of_struct_twin_rust_async(
-    _sink: impl StreamSink<MyStreamEntryTwinRustAsync>,
+    _sink: StreamSink<MyStreamEntryTwinRustAsync>,
 ) {
     // Ok(())
 }
@@ -50,7 +45,7 @@ pub struct LogTwinRustAsync {
 pub async fn handle_stream_sink_at_1_twin_rust_async(
     key: u32,
     max: u32,
-    sink: impl StreamSink<LogTwinRustAsync>,
+    sink: StreamSink<LogTwinRustAsync>,
 ) {
     (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool())
         .execute(transfer!(|| { handle_stream_inner(key, max, sink) }));
@@ -58,7 +53,7 @@ pub async fn handle_stream_sink_at_1_twin_rust_async(
 
 pub async fn handle_stream_sink_at_2_twin_rust_async(
     key: u32,
-    sink: impl StreamSink<LogTwinRustAsync>,
+    sink: StreamSink<LogTwinRustAsync>,
     max: u32,
 ) {
     (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool())
@@ -66,7 +61,7 @@ pub async fn handle_stream_sink_at_2_twin_rust_async(
 }
 
 pub async fn handle_stream_sink_at_3_twin_rust_async(
-    sink: impl StreamSink<LogTwinRustAsync>,
+    sink: StreamSink<LogTwinRustAsync>,
     key: u32,
     max: u32,
 ) {
@@ -74,7 +69,7 @@ pub async fn handle_stream_sink_at_3_twin_rust_async(
         .execute(transfer!(|| { handle_stream_inner(key, max, sink) }));
 }
 
-fn handle_stream_inner(key: u32, max: u32, sink: impl StreamSink<LogTwinRustAsync>) {
+fn handle_stream_inner(key: u32, max: u32, sink: StreamSink<LogTwinRustAsync>) {
     for i in 0..max {
         let _ = sink.add(LogTwinRustAsync { key, value: i });
     }

@@ -52,14 +52,14 @@ pub fn is_app_embedded_twin_normal(app_settings: ApplicationSettings) -> bool {
 }
 
 // use a stream of a mirrored type
-pub fn app_settings_stream_twin_normal(sink: impl StreamSink<ApplicationSettings>) {
+pub fn app_settings_stream_twin_normal(sink: StreamSink<ApplicationSettings>) {
     let app_settings = frb_example_pure_dart_exapmle_external_lib::get_app_settings();
     sink.add(app_settings);
     sink.close();
 }
 
 // use a stream of a vec of mirrored type
-pub fn app_settings_vec_stream_twin_normal(sink: impl StreamSink<Vec<ApplicationSettings>>) {
+pub fn app_settings_vec_stream_twin_normal(sink: StreamSink<Vec<ApplicationSettings>>) {
     let app_settings = vec![
         frb_example_pure_dart_exapmle_external_lib::get_app_settings(),
         frb_example_pure_dart_exapmle_external_lib::get_app_settings(),
@@ -76,7 +76,7 @@ pub struct MirrorStructTwinNormal {
 }
 
 // use a Struct consisting of mirror types as argument to a Stream
-pub fn mirror_struct_stream_twin_normal(sink: impl StreamSink<MirrorStructTwinNormal>) {
+pub fn mirror_struct_stream_twin_normal(sink: StreamSink<MirrorStructTwinNormal>) {
     let val = MirrorStructTwinNormal {
         a: frb_example_pure_dart_exapmle_external_lib::get_app_settings(),
         b: MyStruct { content: true },
@@ -92,7 +92,7 @@ pub fn mirror_struct_stream_twin_normal(sink: impl StreamSink<MirrorStructTwinNo
 
 // usa a tuple of Mirror types for a StreamSink
 pub fn mirror_tuple_stream_twin_normal(
-    sink: impl StreamSink<(ApplicationSettings, RawStringEnumMirrored)>,
+    sink: StreamSink<(ApplicationSettings, RawStringEnumMirrored)>,
 ) {
     let tuple = (
         frb_example_pure_dart_exapmle_external_lib::get_app_settings(),

@@ -29,7 +29,7 @@ impl ConcatenateWithTwinNormal {
         &self,
         key: u32,
         max: u32,
-        sink: impl StreamSink<Log2TwinNormal>,
+        sink: StreamSink<Log2TwinNormal>,
     ) {
         let a = self.a.clone();
         (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
@@ -43,7 +43,7 @@ impl ConcatenateWithTwinNormal {
         }));
     }
 
-    pub fn handle_some_stream_sink_at_1_twin_normal(&self, sink: impl StreamSink<u32>) {
+    pub fn handle_some_stream_sink_at_1_twin_normal(&self, sink: StreamSink<u32>) {
         (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             for i in 0..5 {
                 sink.add(i);
@@ -55,7 +55,7 @@ impl ConcatenateWithTwinNormal {
     pub fn handle_some_static_stream_sink_twin_normal(
         key: u32,
         max: u32,
-        sink: impl StreamSink<Log2TwinNormal>,
+        sink: StreamSink<Log2TwinNormal>,
     ) {
         (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             for i in 0..max {
@@ -68,7 +68,7 @@ impl ConcatenateWithTwinNormal {
         }));
     }
 
-    pub fn handle_some_static_stream_sink_single_arg_twin_normal(sink: impl StreamSink<u32>) {
+    pub fn handle_some_static_stream_sink_single_arg_twin_normal(sink: StreamSink<u32>) {
         (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             for i in 0..5 {
                 sink.add(i);
