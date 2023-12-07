@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
 import 'package:flutter_rust_bridge/src/manual_impl/manual_impl.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
@@ -20,7 +21,16 @@ class BaseHandler {
 
   /// Similar to [executeNormal], except that this will return synchronously
   S executeSync<S, E extends Object>(SyncTask<S, E> task) {
-    final syncReturn = task.callFfi();
+    final WireSyncReturn syncReturn;
+    try {
+      syncReturn = task.callFfi();
+    } catch (e, s) {
+      if (e is FrbException) rethrow;
+      // When in Web, because Rust only support `abort` (and not `unwind`)
+      // we will get `JSObject0:<RuntimeError: unreachable>`.
+      // Here we translate the exception.
+      throw PanicException('EXECUTE_SYNC_ABORT $e $s');
+    }
     try {
       final syncReturnAsDartObject = wireSyncReturnIntoDart(syncReturn);
       return _transformRust2DartMessage(
