@@ -16,6 +16,7 @@ mod dump;
 pub(crate) mod misc;
 pub(crate) mod output_code;
 pub mod rust2dart;
+mod transfer;
 pub(super) mod wire_class;
 
 #[derive(Clone, Serialize)]
