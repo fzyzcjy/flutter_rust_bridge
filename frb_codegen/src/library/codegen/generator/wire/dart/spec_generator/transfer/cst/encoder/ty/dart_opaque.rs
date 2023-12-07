@@ -1,8 +1,8 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
-use crate::codegen::generator::wire::dart::spec_generator::dart2rust::ty::rust_opaque::dart_or_rust_opaque_dart_wire_type;
-use crate::codegen::generator::wire::dart::spec_generator::dart2rust::ty::WireDartGeneratorDart2RustTrait;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::rust_opaque::dart_or_rust_opaque_dart_wire_type;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartGeneratorDart2RustTrait;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartTransferCstGeneratorEncoderTrait;
 

@@ -1,7 +1,7 @@
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
-use crate::codegen::generator::wire::dart::spec_generator::rust2dart::ty::WireDartGeneratorRust2DartTrait;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::base::*;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::decoder::ty::WireDartGeneratorRust2DartTrait;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::decoder::ty::WireDartTransferDcoGeneratorDecoderTrait;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::decoder::ty::WireDartTransferDcoGeneratorDecoderTrait;
 use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
