@@ -116,7 +116,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for EnumRefWireRustTransferCst
     }
 }
 
-impl<'a> EnumRefWireRustGenerator<'a> {
+impl<'a> EnumRefWireRustTransferCstGenerator<'a> {
     fn generate_wire2api_class_variant(&self, variant: &IrVariant) -> String {
         let fields = match &variant.kind {
             IrVariantKind::Value => vec![],

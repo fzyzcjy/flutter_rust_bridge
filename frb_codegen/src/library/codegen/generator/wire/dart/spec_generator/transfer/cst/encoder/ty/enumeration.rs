@@ -43,7 +43,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for EnumRefWireDartTransferCst
     }
 }
 
-impl<'a> EnumRefWireDartGenerator<'a> {
+impl<'a> EnumRefWireDartTransferCstGenerator<'a> {
     fn generate_api_fill_to_wire_body_variant(&self, index: usize, variant: &IrVariant) -> String {
         let ident = &self.ir.ident.0.name;
         let wrapper_name = &variant.wrapper_name;

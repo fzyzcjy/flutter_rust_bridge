@@ -4,7 +4,9 @@ use crate::codegen::generator::wire::dart::spec_generator::base::{
     WireDartGenerator, WireDartGeneratorContext,
 };
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::base::WireDartTransferCstGenerator;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::base::{
+    WireDartTransferCstGenerator, WireDartTransferCstGeneratorContext,
+};
 use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Optional;
@@ -23,7 +25,7 @@ pub(crate) struct WireDartOutputSpecTransferCstEncoder {
 }
 
 pub(crate) fn generate(
-    context: WireDartGeneratorContext,
+    context: WireDartTransferCstGeneratorContext,
     cache: &IrPackComputedCache,
 ) -> WireDartOutputSpecTransferCstEncoder {
     WireDartOutputSpecTransferCstEncoder {
@@ -42,7 +44,7 @@ pub(crate) fn generate(
 
 fn generate_api2wire_func(
     ty: &IrType,
-    context: WireDartGeneratorContext,
+    context: WireDartTransferCstGeneratorContext,
 ) -> Acc<WireDartOutputCode> {
     let generator = WireDartTransferCstGenerator::new(ty.clone(), context);
     generator
