@@ -6,6 +6,7 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFu
 use crate::codegen::generator::wire::rust::spec_generator::transfer::base::WireRustTransferEntrypointTrait;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::WireRustTransferCstGenerator;
 use crate::codegen::ir::func::IrFunc;
+use itertools::Itertools;
 
 pub(crate) struct CstWireRustTransferEntrypoint {}
 
@@ -69,5 +70,24 @@ impl WireRustTransferEntrypointTrait for CstWireRustTransferEntrypoint {
             .collect();
 
         params
+    }
+
+    fn generate_func_call_decode(
+        &self,
+        func: &IrFunc,
+        context: WireRustGeneratorContext,
+    ) -> String {
+        func.inputs
+            .iter()
+            .map(|field| {
+                let name = field.name.rust_style();
+                let wire_func_call_decode = WireRustTransferCstGenerator::new(
+                    field.ty.clone(),
+                    context.as_wire_rust_transfer_cst_context(),
+                )
+                .generate_wire_func_call_decode(name);
+                format!("let api_{name} = {wire_func_call_decode};")
+            })
+            .join("")
     }
 }

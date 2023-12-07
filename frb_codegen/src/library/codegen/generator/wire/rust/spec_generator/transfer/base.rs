@@ -18,4 +18,7 @@ pub(crate) trait WireRustTransferEntrypointTrait {
         func: &IrFunc,
         context: WireRustGeneratorContext,
     ) -> Acc<Vec<ExternFuncParam>>;
+
+    fn generate_func_call_decode(&self, func: &IrFunc, context: WireRustGeneratorContext)
+        -> String;
 }
