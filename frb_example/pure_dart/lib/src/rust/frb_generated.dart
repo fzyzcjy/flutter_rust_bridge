@@ -2432,9 +2432,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<BlobTwinNormal> boxedBlobTwinNormal(
       {required U8Array1600 blob, dynamic hint}) {
-    var arg0 = cst_encode_box_u_8_array_1600(blob);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_boxed_blob_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_u_8_array_1600(blob);
+        return wire.wire_boxed_blob_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_blob_twin_normal,
       parseErrorData: null,
       constMeta: kBoxedBlobTwinNormalConstMeta,
@@ -2452,9 +2454,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<TestIdTwinNormal> funcTestIdTwinNormal(
       {required TestIdTwinNormal id, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_test_id_twin_normal(id);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_func_test_id_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_test_id_twin_normal(id);
+        return wire.wire_func_test_id_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_test_id_twin_normal,
       parseErrorData: null,
       constMeta: kFuncTestIdTwinNormalConstMeta,
@@ -2472,7 +2476,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<U8Array5> getArrayTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_get_array_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_get_array_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_u_8_array_5,
       parseErrorData: null,
       constMeta: kGetArrayTwinNormalConstMeta,
@@ -2490,7 +2496,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<PointTwinNormalArray2> getComplexArrayTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_get_complex_array_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_get_complex_array_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_point_twin_normal_array_2,
       parseErrorData: null,
       constMeta: kGetComplexArrayTwinNormalConstMeta,
@@ -2508,9 +2516,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<double> lastNumberTwinNormal(
       {required F64Array16 array, dynamic hint}) {
-    var arg0 = cst_encode_f_64_array_16(array);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_last_number_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_f_64_array_16(array);
+        return wire.wire_last_number_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_f_64,
       parseErrorData: null,
       constMeta: kLastNumberTwinNormalConstMeta,
@@ -2528,9 +2538,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<TestIdTwinNormalArray2> nestedIdTwinNormal(
       {required TestIdTwinNormalArray4 id, dynamic hint}) {
-    var arg0 = cst_encode_test_id_twin_normal_array_4(id);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_nested_id_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_test_id_twin_normal_array_4(id);
+        return wire.wire_nested_id_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_test_id_twin_normal_array_2,
       parseErrorData: null,
       constMeta: kNestedIdTwinNormalConstMeta,
@@ -2548,9 +2560,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<MessageIdTwinNormal> newMsgidTwinNormal(
       {required U8Array32 id, dynamic hint}) {
-    var arg0 = cst_encode_u_8_array_32(id);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_new_msgid_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_8_array_32(id);
+        return wire.wire_new_msgid_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_message_id_twin_normal,
       parseErrorData: null,
       constMeta: kNewMsgidTwinNormalConstMeta,
@@ -2568,10 +2582,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<FeedIdTwinNormal> returnBoxedFeedIdTwinNormal(
       {required U8Array8 id, dynamic hint}) {
-    var arg0 = cst_encode_u_8_array_8(id);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_return_boxed_feed_id_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_8_array_8(id);
+        return wire.wire_return_boxed_feed_id_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_box_feed_id_twin_normal,
       parseErrorData: null,
       constMeta: kReturnBoxedFeedIdTwinNormalConstMeta,
@@ -2590,10 +2605,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<U8Array8> returnBoxedRawFeedIdTwinNormal(
       {required FeedIdTwinNormal id, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_feed_id_twin_normal(id);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_return_boxed_raw_feed_id_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_feed_id_twin_normal(id);
+        return wire.wire_return_boxed_raw_feed_id_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_box_u_8_array_8,
       parseErrorData: null,
       constMeta: kReturnBoxedRawFeedIdTwinNormalConstMeta,
@@ -2612,9 +2628,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<U8Array1600> useBoxedBlobTwinNormal(
       {required BlobTwinNormal blob, dynamic hint}) {
-    var arg0 = cst_encode_box_blob_twin_normal(blob);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_use_boxed_blob_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_blob_twin_normal(blob);
+        return wire.wire_use_boxed_blob_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_8_array_1600,
       parseErrorData: null,
       constMeta: kUseBoxedBlobTwinNormalConstMeta,
@@ -2632,9 +2650,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<U8Array32> useMsgidTwinNormal(
       {required MessageIdTwinNormal id, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_message_id_twin_normal(id);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_use_msgid_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_message_id_twin_normal(id);
+        return wire.wire_use_msgid_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_8_array_32,
       parseErrorData: null,
       constMeta: kUseMsgidTwinNormalConstMeta,
@@ -2652,10 +2672,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> funcAsyncSimpleAdd(
       {required int a, required int b, dynamic hint}) {
-    var arg0 = cst_encode_i_32(a);
-    var arg1 = cst_encode_i_32(b);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_func_async_simple_add(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(a);
+        var arg1 = cst_encode_i_32(b);
+        return wire.wire_func_async_simple_add(port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_i_32,
       parseErrorData: null,
       constMeta: kFuncAsyncSimpleAddConstMeta,
@@ -2673,7 +2695,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> funcAsyncVoid({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_func_async_void(port_),
+      callFfi: (port_) {
+        return wire.wire_func_async_void(port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kFuncAsyncVoidConstMeta,
@@ -2691,10 +2715,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> handleCustomizedStructTwinNormal(
       {required CustomizedTwinNormal val, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_customized_twin_normal(val);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_customized_struct_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_customized_twin_normal(val);
+        return wire.wire_handle_customized_struct_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kHandleCustomizedStructTwinNormalConstMeta,
@@ -2713,9 +2738,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<UserIdTwinNormal> nextUserIdTwinNormal(
       {required UserIdTwinNormal userId, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_user_id_twin_normal(userId);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_next_user_id_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_user_id_twin_normal(userId);
+        return wire.wire_next_user_id_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_user_id_twin_normal,
       parseErrorData: null,
       constMeta: kNextUserIdTwinNormalConstMeta,
@@ -2733,10 +2760,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> benchmarkInputBytesTwinNormal(
       {required Uint8List bytes, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_u_8(bytes);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_benchmark_input_bytes_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_u_8(bytes);
+        return wire.wire_benchmark_input_bytes_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_i_32,
       parseErrorData: null,
       constMeta: kBenchmarkInputBytesTwinNormalConstMeta,
@@ -2755,10 +2783,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Uint8List> benchmarkOutputBytesTwinNormal(
       {required int size, dynamic hint}) {
-    var arg0 = cst_encode_i_32(size);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_benchmark_output_bytes_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(size);
+        return wire.wire_benchmark_output_bytes_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_u_8,
       parseErrorData: null,
       constMeta: kBenchmarkOutputBytesTwinNormalConstMeta,
@@ -2777,7 +2806,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> benchmarkVoidTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_benchmark_void_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_benchmark_void_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kBenchmarkVoidTwinNormalConstMeta,
@@ -2795,9 +2826,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<DateTime> datetimeLocalTwinNormal(
       {required DateTime d, dynamic hint}) {
-    var arg0 = cst_encode_Chrono_Local(d);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_datetime_local_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_Chrono_Local(d);
+        return wire.wire_datetime_local_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_Chrono_Local,
       parseErrorData: null,
       constMeta: kDatetimeLocalTwinNormalConstMeta,
@@ -2814,9 +2847,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<DateTime> datetimeUtcTwinNormal({required DateTime d, dynamic hint}) {
-    var arg0 = cst_encode_Chrono_Utc(d);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_datetime_utc_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_Chrono_Utc(d);
+        return wire.wire_datetime_utc_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_Chrono_Utc,
       parseErrorData: null,
       constMeta: kDatetimeUtcTwinNormalConstMeta,
@@ -2833,9 +2868,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<Duration> durationTwinNormal({required Duration d, dynamic hint}) {
-    var arg0 = cst_encode_Chrono_Duration(d);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_duration_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_Chrono_Duration(d);
+        return wire.wire_duration_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_Chrono_Duration,
       parseErrorData: null,
       constMeta: kDurationTwinNormalConstMeta,
@@ -2855,11 +2892,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<Duration> durations,
       required DateTime since,
       dynamic hint}) {
-    var arg0 = cst_encode_Chrono_DurationList(durations);
-    var arg1 = cst_encode_Chrono_Local(since);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_durations_twin_normal(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_Chrono_DurationList(durations);
+        var arg1 = cst_encode_Chrono_Local(since);
+        return wire.wire_handle_durations_twin_normal(port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_Chrono_LocalList,
       parseErrorData: null,
       constMeta: kHandleDurationsTwinNormalConstMeta,
@@ -2879,11 +2917,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<DateTime> timestamps,
       required DateTime epoch,
       dynamic hint}) {
-    var arg0 = cst_encode_Chrono_NaiveList(timestamps);
-    var arg1 = cst_encode_Chrono_Naive(epoch);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_timestamps_twin_normal(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_Chrono_NaiveList(timestamps);
+        var arg1 = cst_encode_Chrono_Naive(epoch);
+        return wire.wire_handle_timestamps_twin_normal(port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_Chrono_DurationList,
       parseErrorData: null,
       constMeta: kHandleTimestampsTwinNormalConstMeta,
@@ -2901,10 +2940,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Duration> howLongDoesItTakeTwinNormal(
       {required FeatureChronoTwinNormal mine, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_feature_chrono_twin_normal(mine);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_how_long_does_it_take_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_feature_chrono_twin_normal(mine);
+        return wire.wire_how_long_does_it_take_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_Chrono_Duration,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kHowLongDoesItTakeTwinNormalConstMeta,
@@ -2923,9 +2963,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<DateTime> naivedatetimeTwinNormal(
       {required DateTime d, dynamic hint}) {
-    var arg0 = cst_encode_Chrono_Naive(d);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_naivedatetime_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_Chrono_Naive(d);
+        return wire.wire_naivedatetime_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_Chrono_Naive,
       parseErrorData: null,
       constMeta: kNaivedatetimeTwinNormalConstMeta,
@@ -2943,10 +2985,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<DateTime?> optionalEmptyDatetimeUtcTwinNormal(
       {DateTime? d, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_Chrono_Utc(d);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_optional_empty_datetime_utc_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_Chrono_Utc(d);
+        return wire.wire_optional_empty_datetime_utc_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_Chrono_Utc,
       parseErrorData: null,
       constMeta: kOptionalEmptyDatetimeUtcTwinNormalConstMeta,
@@ -2965,7 +3008,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<TestChronoTwinNormal> testChronoTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_test_chrono_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_test_chrono_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_test_chrono_twin_normal,
       parseErrorData: null,
       constMeta: kTestChronoTwinNormalConstMeta,
@@ -2983,7 +3028,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<TestChronoTwinNormal> testPreciseChronoTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_test_precise_chrono_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_test_precise_chrono_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_test_chrono_twin_normal,
       parseErrorData: null,
       constMeta: kTestPreciseChronoTwinNormalConstMeta,
@@ -3002,11 +3049,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> structWithCommentsTwinNormalInstanceMethodTwinNormal(
       {required StructWithCommentsTwinNormal that, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_struct_with_comments_twin_normal(that);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_StructWithCommentsTwinNormal_instance_method_twin_normal(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_struct_with_comments_twin_normal(that);
+        return wire
+            .wire_StructWithCommentsTwinNormal_instance_method_twin_normal(
+                port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kStructWithCommentsTwinNormalInstanceMethodTwinNormalConstMeta,
@@ -3028,8 +3078,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> structWithCommentsTwinNormalStaticMethodTwinNormal(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_StructWithCommentsTwinNormal_static_method_twin_normal(port_),
+      callFfi: (port_) {
+        return wire
+            .wire_StructWithCommentsTwinNormal_static_method_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kStructWithCommentsTwinNormalStaticMethodTwinNormalConstMeta,
@@ -3049,8 +3101,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> functionWithCommentsSlashStarStarTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_function_with_comments_slash_star_star_twin_normal(port_),
+      callFfi: (port_) {
+        return wire
+            .wire_function_with_comments_slash_star_star_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kFunctionWithCommentsSlashStarStarTwinNormalConstMeta,
@@ -3070,9 +3124,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> functionWithCommentsTripleSlashMultiLineTwinNormal(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_function_with_comments_triple_slash_multi_line_twin_normal(
-              port_),
+      callFfi: (port_) {
+        return wire
+            .wire_function_with_comments_triple_slash_multi_line_twin_normal(
+                port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kFunctionWithCommentsTripleSlashMultiLineTwinNormalConstMeta,
@@ -3094,9 +3150,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> functionWithCommentsTripleSlashSingleLineTwinNormal(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_function_with_comments_triple_slash_single_line_twin_normal(
-              port_),
+      callFfi: (port_) {
+        return wire
+            .wire_function_with_comments_triple_slash_single_line_twin_normal(
+                port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kFunctionWithCommentsTripleSlashSingleLineTwinNormalConstMeta,
@@ -3117,7 +3175,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<dynamic> returnDartDynamicTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_return_dart_dynamic_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_return_dart_dynamic_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_dartabi,
       parseErrorData: null,
       constMeta: kReturnDartDynamicTwinNormalConstMeta,
@@ -3136,9 +3196,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> rustCallDartSimple(
       {required void Function() callback, dynamic hint}) {
-    var arg0 = cst_encode_DartFn_Inputs__Output_unit(callback);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_rust_call_dart_simple(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_DartFn_Inputs__Output_unit(callback);
+        return wire.wire_rust_call_dart_simple(port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kRustCallDartSimpleConstMeta,
@@ -3156,10 +3218,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<String> asyncAcceptDartOpaqueTwinNormal(
       {required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_async_accept_dart_opaque_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_async_accept_dart_opaque_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kAsyncAcceptDartOpaqueTwinNormalConstMeta,
@@ -3178,9 +3241,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<List<Object>> cloneDartOpaqueTwinNormal(
       {required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_clone_dart_opaque_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_clone_dart_opaque_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_DartOpaque,
       parseErrorData: null,
       constMeta: kCloneDartOpaqueTwinNormalConstMeta,
@@ -3198,10 +3263,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<EnumDartOpaqueTwinNormal> createEnumDartOpaqueTwinNormal(
       {required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_create_enum_dart_opaque_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_create_enum_dart_opaque_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_enum_dart_opaque_twin_normal,
       parseErrorData: null,
       constMeta: kCreateEnumDartOpaqueTwinNormalConstMeta,
@@ -3220,11 +3286,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<DartOpaqueNestedTwinNormal> createNestedDartOpaqueTwinNormal(
       {required Object opaque1, required Object opaque2, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque1);
-    var arg1 = cst_encode_DartOpaque(opaque2);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_create_nested_dart_opaque_twin_normal(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_DartOpaque(opaque1);
+        var arg1 = cst_encode_DartOpaque(opaque2);
+        return wire.wire_create_nested_dart_opaque_twin_normal(
+            port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_dart_opaque_nested_twin_normal,
       parseErrorData: null,
       constMeta: kCreateNestedDartOpaqueTwinNormalConstMeta,
@@ -3242,10 +3310,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> dropStaticDartOpaqueTwinNormal({required int id, dynamic hint}) {
-    var arg0 = cst_encode_i_32(id);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_drop_static_dart_opaque_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(id);
+        return wire.wire_drop_static_dart_opaque_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kDropStaticDartOpaqueTwinNormalConstMeta,
@@ -3264,10 +3333,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> getEnumDartOpaqueTwinNormal(
       {required EnumDartOpaqueTwinNormal opaque, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_enum_dart_opaque_twin_normal(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_get_enum_dart_opaque_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_enum_dart_opaque_twin_normal(opaque);
+        return wire.wire_get_enum_dart_opaque_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kGetEnumDartOpaqueTwinNormalConstMeta,
@@ -3286,10 +3356,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> getNestedDartOpaqueTwinNormal(
       {required DartOpaqueNestedTwinNormal opaque, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_dart_opaque_nested_twin_normal(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_get_nested_dart_opaque_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_dart_opaque_nested_twin_normal(opaque);
+        return wire.wire_get_nested_dart_opaque_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kGetNestedDartOpaqueTwinNormalConstMeta,
@@ -3308,10 +3380,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> loopBackArrayGetTwinNormal(
       {required ObjectArray1 opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque_array_1(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_loop_back_array_get_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_DartOpaque_array_1(opaque);
+        return wire.wire_loop_back_array_get_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kLoopBackArrayGetTwinNormalConstMeta,
@@ -3329,9 +3402,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<ObjectArray1> loopBackArrayTwinNormal(
       {required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_loop_back_array_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_loop_back_array_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_DartOpaque_array_1,
       parseErrorData: null,
       constMeta: kLoopBackArrayTwinNormalConstMeta,
@@ -3348,10 +3423,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> loopBackOptionGetTwinNormal({Object? opaque, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_loop_back_option_get_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_DartOpaque(opaque);
+        return wire.wire_loop_back_option_get_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kLoopBackOptionGetTwinNormalConstMeta,
@@ -3370,9 +3446,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Object?> loopBackOptionTwinNormal(
       {required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_loop_back_option_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_loop_back_option_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_DartOpaque,
       parseErrorData: null,
       constMeta: kLoopBackOptionTwinNormalConstMeta,
@@ -3389,9 +3467,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<Object> loopBackTwinNormal({required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_loop_back_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_loop_back_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_DartOpaque,
       parseErrorData: null,
       constMeta: kLoopBackTwinNormalConstMeta,
@@ -3409,9 +3489,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> loopBackVecGetTwinNormal(
       {required List<Object> opaque, dynamic hint}) {
-    var arg0 = cst_encode_list_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_loop_back_vec_get_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_DartOpaque(opaque);
+        return wire.wire_loop_back_vec_get_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kLoopBackVecGetTwinNormalConstMeta,
@@ -3429,9 +3511,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<List<Object>> loopBackVecTwinNormal(
       {required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_loop_back_vec_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_loop_back_vec_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_DartOpaque,
       parseErrorData: null,
       constMeta: kLoopBackVecTwinNormalConstMeta,
@@ -3449,10 +3533,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> panicUnwrapDartOpaqueTwinNormal(
       {required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_panic_unwrap_dart_opaque_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_panic_unwrap_dart_opaque_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kPanicUnwrapDartOpaqueTwinNormalConstMeta,
@@ -3471,11 +3556,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> setStaticDartOpaqueTwinNormal(
       {required int id, required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_i_32(id);
-    var arg1 = cst_encode_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_set_static_dart_opaque_twin_normal(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(id);
+        var arg1 = cst_encode_DartOpaque(opaque);
+        return wire.wire_set_static_dart_opaque_twin_normal(port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kSetStaticDartOpaqueTwinNormalConstMeta,
@@ -3494,9 +3580,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   String syncAcceptDartOpaqueTwinNormal(
       {required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_accept_dart_opaque_twin_normal(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_sync_accept_dart_opaque_twin_normal(arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kSyncAcceptDartOpaqueTwinNormalConstMeta,
@@ -3514,9 +3602,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Object syncLoopbackTwinNormal({required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_loopback_twin_normal(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_sync_loopback_twin_normal(arg0);
+      },
       parseSuccessData: _dco_decode_DartOpaque,
       parseErrorData: null,
       constMeta: kSyncLoopbackTwinNormalConstMeta,
@@ -3534,9 +3624,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Object? syncOptionDartOpaqueTwinNormal(
       {required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_option_dart_opaque_twin_normal(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_sync_option_dart_opaque_twin_normal(arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_DartOpaque,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kSyncOptionDartOpaqueTwinNormalConstMeta,
@@ -3554,9 +3646,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Object? syncOptionLoopbackTwinNormal({Object? opaque, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_DartOpaque(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_option_loopback_twin_normal(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_DartOpaque(opaque);
+        return wire.wire_sync_option_loopback_twin_normal(arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_DartOpaque,
       parseErrorData: null,
       constMeta: kSyncOptionLoopbackTwinNormalConstMeta,
@@ -3574,9 +3668,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   String unwrapDartOpaqueTwinNormal({required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_unwrap_dart_opaque_twin_normal(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_unwrap_dart_opaque_twin_normal(arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kUnwrapDartOpaqueTwinNormalConstMeta,
@@ -3594,9 +3690,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<EnumSimpleTwinNormal> funcEnumSimpleTwinNormal(
       {required EnumSimpleTwinNormal arg, dynamic hint}) {
-    var arg0 = cst_encode_enum_simple_twin_normal(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_func_enum_simple_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_enum_simple_twin_normal(arg);
+        return wire.wire_func_enum_simple_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_enum_simple_twin_normal,
       parseErrorData: null,
       constMeta: kFuncEnumSimpleTwinNormalConstMeta,
@@ -3614,10 +3712,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<EnumWithItemMixedTwinNormal> funcEnumWithItemMixedTwinNormal(
       {required EnumWithItemMixedTwinNormal arg, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_enum_with_item_mixed_twin_normal(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_func_enum_with_item_mixed_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_enum_with_item_mixed_twin_normal(arg);
+        return wire.wire_func_enum_with_item_mixed_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_enum_with_item_mixed_twin_normal,
       parseErrorData: null,
       constMeta: kFuncEnumWithItemMixedTwinNormalConstMeta,
@@ -3636,10 +3735,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<EnumWithItemStructTwinNormal> funcEnumWithItemStructTwinNormal(
       {required EnumWithItemStructTwinNormal arg, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_enum_with_item_struct_twin_normal(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_func_enum_with_item_struct_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_enum_with_item_struct_twin_normal(arg);
+        return wire.wire_func_enum_with_item_struct_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_enum_with_item_struct_twin_normal,
       parseErrorData: null,
       constMeta: kFuncEnumWithItemStructTwinNormalConstMeta,
@@ -3658,10 +3759,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<EnumWithItemTupleTwinNormal> funcEnumWithItemTupleTwinNormal(
       {required EnumWithItemTupleTwinNormal arg, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_enum_with_item_tuple_twin_normal(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_func_enum_with_item_tuple_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_enum_with_item_tuple_twin_normal(arg);
+        return wire.wire_func_enum_with_item_tuple_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_enum_with_item_tuple_twin_normal,
       parseErrorData: null,
       constMeta: kFuncEnumWithItemTupleTwinNormalConstMeta,
@@ -3680,10 +3782,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<WeekdaysTwinNormal> handleEnumParameterTwinNormal(
       {required WeekdaysTwinNormal weekday, dynamic hint}) {
-    var arg0 = cst_encode_weekdays_twin_normal(weekday);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_enum_parameter_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_weekdays_twin_normal(weekday);
+        return wire.wire_handle_enum_parameter_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_weekdays_twin_normal,
       parseErrorData: null,
       constMeta: kHandleEnumParameterTwinNormalConstMeta,
@@ -3702,9 +3805,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<KitchenSinkTwinNormal> handleEnumStructTwinNormal(
       {required KitchenSinkTwinNormal val, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_kitchen_sink_twin_normal(val);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_enum_struct_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_kitchen_sink_twin_normal(val);
+        return wire.wire_handle_enum_struct_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_kitchen_sink_twin_normal,
       parseErrorData: null,
       constMeta: kHandleEnumStructTwinNormalConstMeta,
@@ -3722,9 +3827,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<WeekdaysTwinNormal?> handleReturnEnumTwinNormal(
       {required String input, dynamic hint}) {
-    var arg0 = cst_encode_String(input);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_return_enum_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(input);
+        return wire.wire_handle_return_enum_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_weekdays_twin_normal,
       parseErrorData: null,
       constMeta: kHandleReturnEnumTwinNormalConstMeta,
@@ -3742,9 +3849,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<MeasureTwinNormal?> multiplyByTenTwinNormal(
       {required MeasureTwinNormal measure, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_measure_twin_normal(measure);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_multiply_by_ten_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_measure_twin_normal(measure);
+        return wire.wire_multiply_by_ten_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_measure_twin_normal,
       parseErrorData: null,
       constMeta: kMultiplyByTenTwinNormalConstMeta,
@@ -3762,9 +3871,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Uint8List> printNoteTwinNormal(
       {required NoteTwinNormal note, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_note_twin_normal(note);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_print_note_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_note_twin_normal(note);
+        return wire.wire_print_note_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_ZeroCopyBuffer_list_prim_u_8,
       parseErrorData: null,
       constMeta: kPrintNoteTwinNormalConstMeta,
@@ -3782,10 +3893,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<String> eventTwinNormalAsStringTwinNormal(
       {required EventTwinNormal that, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_event_twin_normal(that);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_EventTwinNormal_as_string_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_event_twin_normal(that);
+        return wire.wire_EventTwinNormal_as_string_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kEventTwinNormalAsStringTwinNormalConstMeta,
@@ -3804,7 +3916,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> closeEventListenerTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_close_event_listener_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_close_event_listener_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kCloseEventListenerTwinNormalConstMeta,
@@ -3823,10 +3937,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> createEventTwinNormal(
       {required String address, required String payload, dynamic hint}) {
-    var arg0 = cst_encode_String(address);
-    var arg1 = cst_encode_String(payload);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_create_event_twin_normal(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(address);
+        var arg1 = cst_encode_String(payload);
+        return wire.wire_create_event_twin_normal(port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kCreateEventTwinNormalConstMeta,
@@ -3844,7 +3960,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<EventTwinNormal> registerEventListenerTwinNormal({dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_register_event_listener_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_register_event_listener_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_event_twin_normal,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kRegisterEventListenerTwinNormalConstMeta,
@@ -3863,10 +3981,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<CustomStructTwinNormal> customStructTwinNormalNewTwinNormal(
       {required String message, dynamic hint}) {
-    var arg0 = cst_encode_String(message);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_CustomStructTwinNormal_new_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(message);
+        return wire.wire_CustomStructTwinNormal_new_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_custom_struct_twin_normal,
       parseErrorData: null,
       constMeta: kCustomStructTwinNormalNewTwinNormalConstMeta,
@@ -3885,11 +4004,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> customStructTwinNormalNonstaticReturnCustomStructErrorTwinNormal(
       {required CustomStructTwinNormal that, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_custom_struct_twin_normal(that);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_CustomStructTwinNormal_nonstatic_return_custom_struct_error_twin_normal(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_custom_struct_twin_normal(that);
+        return wire
+            .wire_CustomStructTwinNormal_nonstatic_return_custom_struct_error_twin_normal(
+                port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_struct_error_another_twin_normal,
       constMeta:
@@ -3911,11 +4032,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> customStructTwinNormalNonstaticReturnCustomStructOkTwinNormal(
       {required CustomStructTwinNormal that, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_custom_struct_twin_normal(that);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_CustomStructTwinNormal_nonstatic_return_custom_struct_ok_twin_normal(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_custom_struct_twin_normal(that);
+        return wire
+            .wire_CustomStructTwinNormal_nonstatic_return_custom_struct_ok_twin_normal(
+                port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_struct_error_another_twin_normal,
       constMeta:
@@ -3938,9 +4061,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> customStructTwinNormalStaticReturnCustomStructErrorTwinNormal(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_CustomStructTwinNormal_static_return_custom_struct_error_twin_normal(
-              port_),
+      callFfi: (port_) {
+        return wire
+            .wire_CustomStructTwinNormal_static_return_custom_struct_error_twin_normal(
+                port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_struct_error_another_twin_normal,
       constMeta:
@@ -3963,9 +4088,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<int> customStructTwinNormalStaticReturnCustomStructOkTwinNormal(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_CustomStructTwinNormal_static_return_custom_struct_ok_twin_normal(
-              port_),
+      callFfi: (port_) {
+        return wire
+            .wire_CustomStructTwinNormal_static_return_custom_struct_ok_twin_normal(
+                port_);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_struct_error_another_twin_normal,
       constMeta:
@@ -3987,10 +4114,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<SomeStructTwinNormal> someStructTwinNormalNewTwinNormal(
       {required int value, dynamic hint}) {
-    var arg0 = cst_encode_u_32(value);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_SomeStructTwinNormal_new_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(value);
+        return wire.wire_SomeStructTwinNormal_new_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_some_struct_twin_normal,
       parseErrorData: null,
       constMeta: kSomeStructTwinNormalNewTwinNormalConstMeta,
@@ -4009,11 +4137,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> someStructTwinNormalNonStaticReturnErrCustomErrorTwinNormal(
       {required SomeStructTwinNormal that, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_some_struct_twin_normal(that);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_SomeStructTwinNormal_non_static_return_err_custom_error_twin_normal(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_some_struct_twin_normal(that);
+        return wire
+            .wire_SomeStructTwinNormal_non_static_return_err_custom_error_twin_normal(
+                port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_error_twin_normal,
       constMeta:
@@ -4035,11 +4165,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> someStructTwinNormalNonStaticReturnOkCustomErrorTwinNormal(
       {required SomeStructTwinNormal that, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_some_struct_twin_normal(that);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_SomeStructTwinNormal_non_static_return_ok_custom_error_twin_normal(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_some_struct_twin_normal(that);
+        return wire
+            .wire_SomeStructTwinNormal_non_static_return_ok_custom_error_twin_normal(
+                port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_error_twin_normal,
       constMeta:
@@ -4062,9 +4194,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<int> someStructTwinNormalStaticReturnErrCustomErrorTwinNormal(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_SomeStructTwinNormal_static_return_err_custom_error_twin_normal(
-              port_),
+      callFfi: (port_) {
+        return wire
+            .wire_SomeStructTwinNormal_static_return_err_custom_error_twin_normal(
+                port_);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_error_twin_normal,
       constMeta:
@@ -4087,9 +4221,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<int> someStructTwinNormalStaticReturnOkCustomErrorTwinNormal(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_SomeStructTwinNormal_static_return_ok_custom_error_twin_normal(
-              port_),
+      callFfi: (port_) {
+        return wire
+            .wire_SomeStructTwinNormal_static_return_ok_custom_error_twin_normal(
+                port_);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_error_twin_normal,
       constMeta:
@@ -4111,7 +4247,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> customEnumErrorPanicTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_custom_enum_error_panic_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_custom_enum_error_panic_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_enum_error_twin_normal,
       constMeta: kCustomEnumErrorPanicTwinNormalConstMeta,
@@ -4130,8 +4268,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> customEnumErrorReturnErrorTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_custom_enum_error_return_error_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_custom_enum_error_return_error_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_enum_error_twin_normal,
       constMeta: kCustomEnumErrorReturnErrorTwinNormalConstMeta,
@@ -4150,10 +4289,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> customEnumErrorReturnOkTwinNormal(
       {required int arg, dynamic hint}) {
-    var arg0 = cst_encode_u_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_custom_enum_error_return_ok_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(arg);
+        return wire.wire_custom_enum_error_return_ok_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_enum_error_twin_normal,
       constMeta: kCustomEnumErrorReturnOkTwinNormalConstMeta,
@@ -4172,11 +4312,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> customNestedErrorReturnErrorTwinNormal(
       {required CustomNestedErrorOuterTwinNormal arg, dynamic hint}) {
-    var arg0 =
-        cst_encode_box_autoadd_custom_nested_error_outer_twin_normal(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_custom_nested_error_return_error_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_custom_nested_error_outer_twin_normal(arg);
+        return wire.wire_custom_nested_error_return_error_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_nested_error_outer_twin_normal,
       constMeta: kCustomNestedErrorReturnErrorTwinNormalConstMeta,
@@ -4195,10 +4337,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> customStructErrorReturnErrorTwinNormal(
       {required CustomStructErrorTwinNormal arg, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_custom_struct_error_twin_normal(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_custom_struct_error_return_error_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_custom_struct_error_twin_normal(arg);
+        return wire.wire_custom_struct_error_return_error_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_struct_error_twin_normal,
       constMeta: kCustomStructErrorReturnErrorTwinNormalConstMeta,
@@ -4217,7 +4361,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> funcReturnErrorTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_func_return_error_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_func_return_error_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_i_32,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kFuncReturnErrorTwinNormalConstMeta,
@@ -4235,7 +4381,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> funcTypeFalliblePanicTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_func_type_fallible_panic_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_func_type_fallible_panic_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_i_32,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kFuncTypeFalliblePanicTwinNormalConstMeta,
@@ -4254,8 +4402,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> funcTypeInfalliblePanicTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_func_type_infallible_panic_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_func_type_infallible_panic_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_i_32,
       parseErrorData: null,
       constMeta: kFuncTypeInfalliblePanicTwinNormalConstMeta,
@@ -4274,7 +4423,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> panicWithCustomResultTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_panic_with_custom_result_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_panic_with_custom_result_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_error_twin_normal,
       constMeta: kPanicWithCustomResultTwinNormalConstMeta,
@@ -4293,8 +4444,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> returnCustomNestedError1TwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_return_custom_nested_error_1_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_return_custom_nested_error_1_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_nested_error_1_twin_normal,
       constMeta: kReturnCustomNestedError1TwinNormalConstMeta,
@@ -4313,8 +4465,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> returnCustomNestedError1Variant1TwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_return_custom_nested_error_1_variant1_twin_normal(port_),
+      callFfi: (port_) {
+        return wire
+            .wire_return_custom_nested_error_1_variant1_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_nested_error_1_twin_normal,
       constMeta: kReturnCustomNestedError1Variant1TwinNormalConstMeta,
@@ -4333,8 +4487,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> returnCustomNestedError2TwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_return_custom_nested_error_2_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_return_custom_nested_error_2_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_nested_error_2_twin_normal,
       constMeta: kReturnCustomNestedError2TwinNormalConstMeta,
@@ -4353,8 +4508,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> returnCustomStructErrorTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_return_custom_struct_error_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_return_custom_struct_error_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_struct_error_another_twin_normal,
       constMeta: kReturnCustomStructErrorTwinNormalConstMeta,
@@ -4373,7 +4529,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> returnCustomStructOkTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_return_custom_struct_ok_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_return_custom_struct_ok_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_struct_error_another_twin_normal,
       constMeta: kReturnCustomStructOkTwinNormalConstMeta,
@@ -4392,7 +4550,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> returnErrCustomErrorTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_return_err_custom_error_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_return_err_custom_error_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_error_twin_normal,
       constMeta: kReturnErrCustomErrorTwinNormalConstMeta,
@@ -4411,10 +4571,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> returnErrorVariantTwinNormal(
       {required int variant, dynamic hint}) {
-    var arg0 = cst_encode_u_32(variant);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_return_error_variant_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(variant);
+        return wire.wire_return_error_variant_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_error_twin_normal,
       constMeta: kReturnErrorVariantTwinNormalConstMeta,
@@ -4433,7 +4594,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> returnOkCustomErrorTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_return_ok_custom_error_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_return_ok_custom_error_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_error_twin_normal,
       constMeta: kReturnOkCustomErrorTwinNormalConstMeta,
@@ -4452,7 +4615,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<String> streamSinkThrowAnyhowTwinNormal({dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_stream_sink_throw_anyhow_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_stream_sink_throw_anyhow_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kStreamSinkThrowAnyhowTwinNormalConstMeta,
@@ -4471,7 +4636,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> throwAnyhowTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_throw_anyhow_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_throw_anyhow_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kThrowAnyhowTwinNormalConstMeta,
@@ -4489,7 +4656,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<NewSimpleStruct> callNewModuleSystemTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_call_new_module_system_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_call_new_module_system_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_new_simple_struct,
       parseErrorData: null,
       constMeta: kCallNewModuleSystemTwinNormalConstMeta,
@@ -4508,7 +4677,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<OldSimpleStruct> callOldModuleSystemTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_call_old_module_system_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_call_old_module_system_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_old_simple_struct,
       parseErrorData: null,
       constMeta: kCallOldModuleSystemTwinNormalConstMeta,
@@ -4527,9 +4698,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<bool> useImportedEnumTwinNormal(
       {required MyEnum myEnum, dynamic hint}) {
-    var arg0 = cst_encode_my_enum(myEnum);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_use_imported_enum_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_my_enum(myEnum);
+        return wire.wire_use_imported_enum_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_bool,
       parseErrorData: null,
       constMeta: kUseImportedEnumTwinNormalConstMeta,
@@ -4547,10 +4720,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<bool> useImportedStructTwinNormal(
       {required MyStruct myStruct, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_my_struct(myStruct);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_use_imported_struct_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_my_struct(myStruct);
+        return wire.wire_use_imported_struct_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_bool,
       parseErrorData: null,
       constMeta: kUseImportedStructTwinNormalConstMeta,
@@ -4570,7 +4744,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<AnotherMacroStructTwinNormal> anotherMacroStructTwinNormal(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_another_macro_struct_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_another_macro_struct_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_another_macro_struct_twin_normal,
       parseErrorData: null,
       constMeta: kAnotherMacroStructTwinNormalConstMeta,
@@ -4589,9 +4765,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<MacroStruct> funcMacroStructTwinNormal(
       {required MacroStruct arg, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_macro_struct(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_func_macro_struct_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_macro_struct(arg);
+        return wire.wire_func_macro_struct_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_macro_struct,
       parseErrorData: null,
       constMeta: kFuncMacroStructTwinNormalConstMeta,
@@ -4609,12 +4787,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<String> concatenateWithTwinNormalConcatenateStaticTwinNormal(
       {required String a, required String b, dynamic hint}) {
-    var arg0 = cst_encode_String(a);
-    var arg1 = cst_encode_String(b);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_ConcatenateWithTwinNormal_concatenate_static_twin_normal(
-              port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(a);
+        var arg1 = cst_encode_String(b);
+        return wire
+            .wire_ConcatenateWithTwinNormal_concatenate_static_twin_normal(
+                port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kConcatenateWithTwinNormalConcatenateStaticTwinNormalConstMeta,
@@ -4637,12 +4817,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required ConcatenateWithTwinNormal that,
       required String b,
       dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_concatenate_with_twin_normal(that);
-    var arg1 = cst_encode_String(b);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_ConcatenateWithTwinNormal_concatenate_twin_normal(
-              port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_concatenate_with_twin_normal(that);
+        var arg1 = cst_encode_String(b);
+        return wire.wire_ConcatenateWithTwinNormal_concatenate_twin_normal(
+            port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kConcatenateWithTwinNormalConcatenateTwinNormalConstMeta,
@@ -4663,9 +4844,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       concatenateWithTwinNormalHandleSomeStaticStreamSinkSingleArgTwinNormal(
           {dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire
-          .wire_ConcatenateWithTwinNormal_handle_some_static_stream_sink_single_arg_twin_normal(
-              port_),
+      callFfi: (port_) {
+        return wire
+            .wire_ConcatenateWithTwinNormal_handle_some_static_stream_sink_single_arg_twin_normal(
+                port_);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: null,
       constMeta:
@@ -4688,12 +4871,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<Log2TwinNormal>
       concatenateWithTwinNormalHandleSomeStaticStreamSinkTwinNormal(
           {required int key, required int max, dynamic hint}) {
-    var arg0 = cst_encode_u_32(key);
-    var arg1 = cst_encode_u_32(max);
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire
-          .wire_ConcatenateWithTwinNormal_handle_some_static_stream_sink_twin_normal(
-              port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(key);
+        var arg1 = cst_encode_u_32(max);
+        return wire
+            .wire_ConcatenateWithTwinNormal_handle_some_static_stream_sink_twin_normal(
+                port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_log_2_twin_normal,
       parseErrorData: null,
       constMeta:
@@ -4715,11 +4900,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<int> concatenateWithTwinNormalHandleSomeStreamSinkAt1TwinNormal(
       {required ConcatenateWithTwinNormal that, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_concatenate_with_twin_normal(that);
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire
-          .wire_ConcatenateWithTwinNormal_handle_some_stream_sink_at_1_twin_normal(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_concatenate_with_twin_normal(that);
+        return wire
+            .wire_ConcatenateWithTwinNormal_handle_some_stream_sink_at_1_twin_normal(
+                port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: null,
       constMeta:
@@ -4745,13 +4932,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required int key,
           required int max,
           dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_concatenate_with_twin_normal(that);
-    var arg1 = cst_encode_u_32(key);
-    var arg2 = cst_encode_u_32(max);
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire
-          .wire_ConcatenateWithTwinNormal_handle_some_stream_sink_twin_normal(
-              port_, arg0, arg1, arg2),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_concatenate_with_twin_normal(that);
+        var arg1 = cst_encode_u_32(key);
+        var arg2 = cst_encode_u_32(max);
+        return wire
+            .wire_ConcatenateWithTwinNormal_handle_some_stream_sink_twin_normal(
+                port_, arg0, arg1, arg2);
+      },
       parseSuccessData: _dco_decode_log_2_twin_normal,
       parseErrorData: null,
       constMeta:
@@ -4773,10 +4962,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<ConcatenateWithTwinNormal> concatenateWithTwinNormalNewTwinNormal(
       {required String a, dynamic hint}) {
-    var arg0 = cst_encode_String(a);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_ConcatenateWithTwinNormal_new_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(a);
+        return wire.wire_ConcatenateWithTwinNormal_new_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_concatenate_with_twin_normal,
       parseErrorData: null,
       constMeta: kConcatenateWithTwinNormalNewTwinNormalConstMeta,
@@ -4798,12 +4988,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       required int y,
       required int z,
       dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_sum_with_twin_normal(that);
-    var arg1 = cst_encode_u_32(y);
-    var arg2 = cst_encode_u_32(z);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_SumWithTwinNormal_sum_twin_normal(port_, arg0, arg1, arg2),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_sum_with_twin_normal(that);
+        var arg1 = cst_encode_u_32(y);
+        var arg2 = cst_encode_u_32(z);
+        return wire.wire_SumWithTwinNormal_sum_twin_normal(
+            port_, arg0, arg1, arg2);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: null,
       constMeta: kSumWithTwinNormalSumTwinNormalConstMeta,
@@ -4822,12 +5014,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<SumWithTwinNormalArray3> getSumArrayTwinNormal(
       {required int a, required int b, required int c, dynamic hint}) {
-    var arg0 = cst_encode_u_32(a);
-    var arg1 = cst_encode_u_32(b);
-    var arg2 = cst_encode_u_32(c);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_get_sum_array_twin_normal(port_, arg0, arg1, arg2),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(a);
+        var arg1 = cst_encode_u_32(b);
+        var arg2 = cst_encode_u_32(c);
+        return wire.wire_get_sum_array_twin_normal(port_, arg0, arg1, arg2);
+      },
       parseSuccessData: _dco_decode_sum_with_twin_normal_array_3,
       parseErrorData: null,
       constMeta: kGetSumArrayTwinNormalConstMeta,
@@ -4845,7 +5038,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<SumWithTwinNormal> getSumStructTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_get_sum_struct_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_get_sum_struct_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_sum_with_twin_normal,
       parseErrorData: null,
       constMeta: kGetSumStructTwinNormalConstMeta,
@@ -4863,7 +5058,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<ApplicationSettings> appSettingsStreamTwinNormal({dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_app_settings_stream_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_app_settings_stream_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_application_settings,
       parseErrorData: null,
       constMeta: kAppSettingsStreamTwinNormalConstMeta,
@@ -4883,7 +5080,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<List<ApplicationSettings>> appSettingsVecStreamTwinNormal(
       {dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_app_settings_vec_stream_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_app_settings_vec_stream_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_list_application_settings,
       parseErrorData: null,
       constMeta: kAppSettingsVecStreamTwinNormalConstMeta,
@@ -4901,9 +5100,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<int?> firstNumberTwinNormal({required Numbers nums, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_numbers(nums);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_first_number_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_numbers(nums);
+        return wire.wire_first_number_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
       parseErrorData: null,
       constMeta: kFirstNumberTwinNormalConstMeta,
@@ -4921,9 +5122,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int?> firstSequenceTwinNormal(
       {required Sequences seqs, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_sequences(seqs);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_first_sequence_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_sequences(seqs);
+        return wire.wire_first_sequence_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
       parseErrorData: null,
       constMeta: kFirstSequenceTwinNormalConstMeta,
@@ -4941,7 +5144,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<ApplicationSettings> getAppSettingsTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_get_app_settings_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_get_app_settings_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_application_settings,
       parseErrorData: null,
       constMeta: kGetAppSettingsTwinNormalConstMeta,
@@ -4959,8 +5164,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<ApplicationSettings> getFallibleAppSettingsTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_get_fallible_app_settings_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_get_fallible_app_settings_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_application_settings,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kGetFallibleAppSettingsTwinNormalConstMeta,
@@ -4979,7 +5185,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<ApplicationMessage> getMessageTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_get_message_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_get_message_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_application_message,
       parseErrorData: null,
       constMeta: kGetMessageTwinNormalConstMeta,
@@ -4997,9 +5205,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<bool> isAppEmbeddedTwinNormal(
       {required ApplicationSettings appSettings, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_application_settings(appSettings);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_is_app_embedded_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_application_settings(appSettings);
+        return wire.wire_is_app_embedded_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_bool,
       parseErrorData: null,
       constMeta: kIsAppEmbeddedTwinNormalConstMeta,
@@ -5017,7 +5227,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<MirrorStructTwinNormal> mirrorStructStreamTwinNormal({dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_mirror_struct_stream_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_mirror_struct_stream_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_mirror_struct_twin_normal,
       parseErrorData: null,
       constMeta: kMirrorStructStreamTwinNormalConstMeta,
@@ -5037,7 +5249,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<(ApplicationSettings, RawStringEnumMirrored)>
       mirrorTupleStreamTwinNormal({dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_mirror_tuple_stream_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_mirror_tuple_stream_twin_normal(port_);
+      },
       parseSuccessData:
           _dco_decode_record_application_settings_raw_string_enum_mirrored,
       parseErrorData: null,
@@ -5057,11 +5271,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Numbers> repeatNumberTwinNormal(
       {required int num, required int times, dynamic hint}) {
-    var arg0 = cst_encode_i_32(num);
-    var arg1 = cst_encode_usize(times);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_repeat_number_twin_normal(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(num);
+        var arg1 = cst_encode_usize(times);
+        return wire.wire_repeat_number_twin_normal(port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_numbers,
       parseErrorData: null,
       constMeta: kRepeatNumberTwinNormalConstMeta,
@@ -5079,11 +5294,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Sequences> repeatSequenceTwinNormal(
       {required int seq, required int times, dynamic hint}) {
-    var arg0 = cst_encode_i_32(seq);
-    var arg1 = cst_encode_usize(times);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_repeat_sequence_twin_normal(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(seq);
+        var arg1 = cst_encode_usize(times);
+        return wire.wire_repeat_sequence_twin_normal(port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_sequences,
       parseErrorData: null,
       constMeta: kRepeatSequenceTwinNormalConstMeta,
@@ -5102,8 +5318,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<ContainsMirroredSubStructTwinNormal>
       testContainsMirroredSubStructTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_test_contains_mirrored_sub_struct_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_test_contains_mirrored_sub_struct_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_contains_mirrored_sub_struct_twin_normal,
       parseErrorData: null,
       constMeta: kTestContainsMirroredSubStructTwinNormalConstMeta,
@@ -5123,8 +5340,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<List<RawStringMirrored>> testFallibleOfRawStringMirroredTwinNormal(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_test_fallible_of_raw_string_mirrored_twin_normal(port_),
+      callFfi: (port_) {
+        return wire
+            .wire_test_fallible_of_raw_string_mirrored_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_list_raw_string_mirrored,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kTestFallibleOfRawStringMirroredTwinNormalConstMeta,
@@ -5144,8 +5363,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<List<RawStringEnumMirrored>> testListOfNestedEnumsMirroredTwinNormal(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_test_list_of_nested_enums_mirrored_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_test_list_of_nested_enums_mirrored_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_list_raw_string_enum_mirrored,
       parseErrorData: null,
       constMeta: kTestListOfNestedEnumsMirroredTwinNormalConstMeta,
@@ -5165,8 +5385,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<ListOfNestedRawStringMirrored>
       testListOfRawNestedStringMirroredTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_test_list_of_raw_nested_string_mirrored_twin_normal(port_),
+      callFfi: (port_) {
+        return wire
+            .wire_test_list_of_raw_nested_string_mirrored_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_list_of_nested_raw_string_mirrored,
       parseErrorData: null,
       constMeta: kTestListOfRawNestedStringMirroredTwinNormalConstMeta,
@@ -5186,8 +5408,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<NestedRawStringMirrored> testNestedRawStringMirroredTwinNormal(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_test_nested_raw_string_mirrored_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_test_nested_raw_string_mirrored_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_nested_raw_string_mirrored,
       parseErrorData: null,
       constMeta: kTestNestedRawStringMirroredTwinNormalConstMeta,
@@ -5206,10 +5429,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<RawStringEnumMirrored> testRawStringEnumMirroredTwinNormal(
       {required bool nested, dynamic hint}) {
-    var arg0 = cst_encode_bool(nested);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_test_raw_string_enum_mirrored_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_bool(nested);
+        return wire.wire_test_raw_string_enum_mirrored_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_raw_string_enum_mirrored,
       parseErrorData: null,
       constMeta: kTestRawStringEnumMirroredTwinNormalConstMeta,
@@ -5228,7 +5452,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<RawStringMirrored> testRawStringMirroredTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_test_raw_string_mirrored_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_test_raw_string_mirrored_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_raw_string_mirrored,
       parseErrorData: null,
       constMeta: kTestRawStringMirroredTwinNormalConstMeta,
@@ -5247,7 +5473,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<BigBuffersTwinNormal> handleBigBuffersTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_big_buffers_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_handle_big_buffers_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_big_buffers_twin_normal,
       parseErrorData: null,
       constMeta: kHandleBigBuffersTwinNormalConstMeta,
@@ -5265,10 +5493,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<MyTreeNodeTwinNormal> handleComplexStructTwinNormal(
       {required MyTreeNodeTwinNormal s, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_my_tree_node_twin_normal(s);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_complex_struct_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_my_tree_node_twin_normal(s);
+        return wire.wire_handle_complex_struct_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_my_tree_node_twin_normal,
       parseErrorData: null,
       constMeta: kHandleComplexStructTwinNormalConstMeta,
@@ -5287,10 +5516,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<MyNestedStructTwinNormal> handleNestedStructTwinNormal(
       {required MyNestedStructTwinNormal s, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_my_nested_struct_twin_normal(s);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_nested_struct_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_my_nested_struct_twin_normal(s);
+        return wire.wire_handle_nested_struct_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_my_nested_struct_twin_normal,
       parseErrorData: null,
       constMeta: kHandleNestedStructTwinNormalConstMeta,
@@ -5308,9 +5538,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> handleStringTwinNormal({required String s, dynamic hint}) {
-    var arg0 = cst_encode_String(s);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_string_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(s);
+        return wire.wire_handle_string_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kHandleStringTwinNormalConstMeta,
@@ -5328,11 +5560,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<MySize> handleStructTwinNormal(
       {required MySize arg, required MySize boxed, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_my_size(arg);
-    var arg1 = cst_encode_box_my_size(boxed);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_struct_twin_normal(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_my_size(arg);
+        var arg1 = cst_encode_box_my_size(boxed);
+        return wire.wire_handle_struct_twin_normal(port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_my_size,
       parseErrorData: null,
       constMeta: kHandleStructTwinNormalConstMeta,
@@ -5350,9 +5583,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Uint8List> handleVecU8TwinNormal(
       {required Uint8List v, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_u_8(v);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_vec_u8_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_u_8(v);
+        return wire.wire_handle_vec_u8_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_u_8,
       parseErrorData: null,
       constMeta: kHandleVecU8TwinNormalConstMeta,
@@ -5370,10 +5605,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<List<WeekdaysTwinNormal>> listOfPrimitiveEnumsTwinNormal(
       {required List<WeekdaysTwinNormal> weekdays, dynamic hint}) {
-    var arg0 = cst_encode_list_weekdays_twin_normal(weekdays);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_list_of_primitive_enums_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_weekdays_twin_normal(weekdays);
+        return wire.wire_list_of_primitive_enums_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_weekdays_twin_normal,
       parseErrorData: null,
       constMeta: kListOfPrimitiveEnumsTwinNormalConstMeta,
@@ -5392,9 +5628,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<AbcTwinNormal> testAbcEnumTwinNormal(
       {required AbcTwinNormal abc, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_abc_twin_normal(abc);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_test_abc_enum_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_abc_twin_normal(abc);
+        return wire.wire_test_abc_enum_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_abc_twin_normal,
       parseErrorData: null,
       constMeta: kTestAbcEnumTwinNormalConstMeta,
@@ -5412,10 +5650,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<StructWithEnumTwinNormal> testStructWithEnumTwinNormal(
       {required StructWithEnumTwinNormal se, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_struct_with_enum_twin_normal(se);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_test_struct_with_enum_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_struct_with_enum_twin_normal(se);
+        return wire.wire_test_struct_with_enum_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_struct_with_enum_twin_normal,
       parseErrorData: null,
       constMeta: kTestStructWithEnumTwinNormalConstMeta,
@@ -5434,9 +5673,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<EmptyTwinNormal> emptyStructTwinNormal(
       {required EmptyTwinNormal empty, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_empty_twin_normal(empty);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_empty_struct_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_empty_twin_normal(empty);
+        return wire.wire_empty_struct_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_empty_twin_normal,
       parseErrorData: null,
       constMeta: kEmptyStructTwinNormalConstMeta,
@@ -5454,7 +5695,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> funcReturnUnitTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_func_return_unit_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_func_return_unit_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kFuncReturnUnitTwinNormalConstMeta,
@@ -5471,9 +5714,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> funcStringTwinNormal({required String arg, dynamic hint}) {
-    var arg0 = cst_encode_String(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_func_string_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(arg);
+        return wire.wire_func_string_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kFuncStringTwinNormalConstMeta,
@@ -5491,10 +5736,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<List<MySize>> handleListOfStructTwinNormal(
       {required List<MySize> l, dynamic hint}) {
-    var arg0 = cst_encode_list_my_size(l);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_list_of_struct_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_my_size(l);
+        return wire.wire_handle_list_of_struct_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_my_size,
       parseErrorData: null,
       constMeta: kHandleListOfStructTwinNormalConstMeta,
@@ -5513,9 +5759,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<List<String>> handleStringListTwinNormal(
       {required List<String> names, dynamic hint}) {
-    var arg0 = cst_encode_StringList(names);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_string_list_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_StringList(names);
+        return wire.wire_handle_string_list_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_StringList,
       parseErrorData: null,
       constMeta: kHandleStringListTwinNormalConstMeta,
@@ -5533,9 +5781,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<NewTypeIntTwinNormal> handleNewtypeTwinNormal(
       {required NewTypeIntTwinNormal arg, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_new_type_int_twin_normal(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_newtype_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_new_type_int_twin_normal(arg);
+        return wire.wire_handle_newtype_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_new_type_int_twin_normal,
       parseErrorData: null,
       constMeta: kHandleNewtypeTwinNormalConstMeta,
@@ -5553,10 +5803,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<double> handleIncrementBoxedOptionalTwinNormal(
       {double? opt, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_f_64(opt);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_increment_boxed_optional_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_f_64(opt);
+        return wire.wire_handle_increment_boxed_optional_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_f_64,
       parseErrorData: null,
       constMeta: kHandleIncrementBoxedOptionalTwinNormalConstMeta,
@@ -5582,16 +5834,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       bool? boolbox,
       ExoticOptionalsTwinNormal? structbox,
       dynamic hint}) {
-    var arg0 = cst_encode_opt_box_i_8(i8Box);
-    var arg1 = cst_encode_opt_box_u_8(u8Box);
-    var arg2 = cst_encode_opt_box_i_32(i32Box);
-    var arg3 = cst_encode_opt_box_i_64(i64Box);
-    var arg4 = cst_encode_opt_box_f_64(f64Box);
-    var arg5 = cst_encode_opt_box_bool(boolbox);
-    var arg6 = cst_encode_opt_box_exotic_optionals_twin_normal(structbox);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_option_box_arguments_twin_normal(
-          port_, arg0, arg1, arg2, arg3, arg4, arg5, arg6),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_i_8(i8Box);
+        var arg1 = cst_encode_opt_box_u_8(u8Box);
+        var arg2 = cst_encode_opt_box_i_32(i32Box);
+        var arg3 = cst_encode_opt_box_i_64(i64Box);
+        var arg4 = cst_encode_opt_box_f_64(f64Box);
+        var arg5 = cst_encode_opt_box_bool(boolbox);
+        var arg6 = cst_encode_opt_box_exotic_optionals_twin_normal(structbox);
+        return wire.wire_handle_option_box_arguments_twin_normal(
+            port_, arg0, arg1, arg2, arg3, arg4, arg5, arg6);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kHandleOptionBoxArgumentsTwinNormalConstMeta,
@@ -5618,10 +5872,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<ExoticOptionalsTwinNormal?> handleOptionalIncrementTwinNormal(
       {ExoticOptionalsTwinNormal? opt, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_exotic_optionals_twin_normal(opt);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_optional_increment_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_exotic_optionals_twin_normal(opt);
+        return wire.wire_handle_optional_increment_twin_normal(port_, arg0);
+      },
       parseSuccessData:
           _dco_decode_opt_box_autoadd_exotic_optionals_twin_normal,
       parseErrorData: null,
@@ -5641,11 +5896,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<double?> handleOptionalReturnTwinNormal(
       {required double left, required double right, dynamic hint}) {
-    var arg0 = cst_encode_f_64(left);
-    var arg1 = cst_encode_f_64(right);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_optional_return_twin_normal(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_f_64(left);
+        var arg1 = cst_encode_f_64(right);
+        return wire.wire_handle_optional_return_twin_normal(port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_f_64,
       parseErrorData: null,
       constMeta: kHandleOptionalReturnTwinNormalConstMeta,
@@ -5664,10 +5920,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<ElementTwinNormal?> handleOptionalStructTwinNormal(
       {String? document, dynamic hint}) {
-    var arg0 = cst_encode_opt_String(document);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_optional_struct_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_String(document);
+        return wire.wire_handle_optional_struct_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_element_twin_normal,
       parseErrorData: null,
       constMeta: kHandleOptionalStructTwinNormalConstMeta,
@@ -5686,9 +5943,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<OptVecsTwinNormal> handleVecOfOptsTwinNormal(
       {required OptVecsTwinNormal opt, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_opt_vecs_twin_normal(opt);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_vec_of_opts_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_opt_vecs_twin_normal(opt);
+        return wire.wire_handle_vec_of_opts_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_vecs_twin_normal,
       parseErrorData: null,
       constMeta: kHandleVecOfOptsTwinNormalConstMeta,
@@ -5706,13 +5965,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int?> primitiveOptionalTypesTwinNormal(
       {int? myI32, int? myI64, double? myF64, bool? myBool, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_i_32(myI32);
-    var arg1 = cst_encode_opt_box_autoadd_i_64(myI64);
-    var arg2 = cst_encode_opt_box_autoadd_f_64(myF64);
-    var arg3 = cst_encode_opt_box_autoadd_bool(myBool);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_primitive_optional_types_twin_normal(
-          port_, arg0, arg1, arg2, arg3),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_i_32(myI32);
+        var arg1 = cst_encode_opt_box_autoadd_i_64(myI64);
+        var arg2 = cst_encode_opt_box_autoadd_f_64(myF64);
+        var arg3 = cst_encode_opt_box_autoadd_bool(myBool);
+        return wire.wire_primitive_optional_types_twin_normal(
+            port_, arg0, arg1, arg2, arg3);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
       parseErrorData: null,
       constMeta: kPrimitiveOptionalTypesTwinNormalConstMeta,
@@ -5731,10 +5992,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<VecOfPrimitivePackTwinNormal> handleVecOfPrimitiveTwinNormal(
       {required int n, dynamic hint}) {
-    var arg0 = cst_encode_i_32(n);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_vec_of_primitive_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(n);
+        return wire.wire_handle_vec_of_primitive_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_vec_of_primitive_pack_twin_normal,
       parseErrorData: null,
       constMeta: kHandleVecOfPrimitiveTwinNormalConstMeta,
@@ -5753,10 +6015,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<ZeroCopyVecOfPrimitivePackTwinNormal>
       handleZeroCopyVecOfPrimitiveTwinNormal({required int n, dynamic hint}) {
-    var arg0 = cst_encode_i_32(n);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_zero_copy_vec_of_primitive_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(n);
+        return wire.wire_handle_zero_copy_vec_of_primitive_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_zero_copy_vec_of_primitive_pack_twin_normal,
       parseErrorData: null,
       constMeta: kHandleZeroCopyVecOfPrimitiveTwinNormalConstMeta,
@@ -5779,13 +6043,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       required double myF64,
       required bool myBool,
       dynamic hint}) {
-    var arg0 = cst_encode_i_32(myI32);
-    var arg1 = cst_encode_i_64(myI64);
-    var arg2 = cst_encode_f_64(myF64);
-    var arg3 = cst_encode_bool(myBool);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_primitive_types_twin_normal(port_, arg0, arg1, arg2, arg3),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(myI32);
+        var arg1 = cst_encode_i_64(myI64);
+        var arg2 = cst_encode_f_64(myF64);
+        var arg3 = cst_encode_bool(myBool);
+        return wire.wire_primitive_types_twin_normal(
+            port_, arg0, arg1, arg2, arg3);
+      },
       parseSuccessData: _dco_decode_i_32,
       parseErrorData: null,
       constMeta: kPrimitiveTypesTwinNormalConstMeta,
@@ -5802,9 +6068,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<int> primitiveU32TwinNormal({required int myU32, dynamic hint}) {
-    var arg0 = cst_encode_u_32(myU32);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_primitive_u32_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(myU32);
+        return wire.wire_primitive_u32_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: null,
       constMeta: kPrimitiveU32TwinNormalConstMeta,
@@ -5822,9 +6090,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<BlobTwinRustAsync> boxedBlobTwinRustAsync(
       {required U8Array1600 blob, dynamic hint}) {
-    var arg0 = cst_encode_box_u_8_array_1600(blob);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_boxed_blob_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_u_8_array_1600(blob);
+        return wire.wire_boxed_blob_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_blob_twin_rust_async,
       parseErrorData: null,
       constMeta: kBoxedBlobTwinRustAsyncConstMeta,
@@ -5842,9 +6112,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<TestIdTwinRustAsync> funcTestIdTwinRustAsync(
       {required TestIdTwinRustAsync id, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_test_id_twin_rust_async(id);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_func_test_id_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_test_id_twin_rust_async(id);
+        return wire.wire_func_test_id_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_test_id_twin_rust_async,
       parseErrorData: null,
       constMeta: kFuncTestIdTwinRustAsyncConstMeta,
@@ -5862,7 +6134,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<U8Array5> getArrayTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_get_array_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_get_array_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_u_8_array_5,
       parseErrorData: null,
       constMeta: kGetArrayTwinRustAsyncConstMeta,
@@ -5881,7 +6155,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<PointTwinRustAsyncArray2> getComplexArrayTwinRustAsync(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_get_complex_array_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_get_complex_array_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_point_twin_rust_async_array_2,
       parseErrorData: null,
       constMeta: kGetComplexArrayTwinRustAsyncConstMeta,
@@ -5900,9 +6176,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<double> lastNumberTwinRustAsync(
       {required F64Array16 array, dynamic hint}) {
-    var arg0 = cst_encode_f_64_array_16(array);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_last_number_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_f_64_array_16(array);
+        return wire.wire_last_number_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_f_64,
       parseErrorData: null,
       constMeta: kLastNumberTwinRustAsyncConstMeta,
@@ -5920,9 +6198,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<TestIdTwinRustAsyncArray2> nestedIdTwinRustAsync(
       {required TestIdTwinRustAsyncArray4 id, dynamic hint}) {
-    var arg0 = cst_encode_test_id_twin_rust_async_array_4(id);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_nested_id_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_test_id_twin_rust_async_array_4(id);
+        return wire.wire_nested_id_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_test_id_twin_rust_async_array_2,
       parseErrorData: null,
       constMeta: kNestedIdTwinRustAsyncConstMeta,
@@ -5940,9 +6220,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<MessageIdTwinRustAsync> newMsgidTwinRustAsync(
       {required U8Array32 id, dynamic hint}) {
-    var arg0 = cst_encode_u_8_array_32(id);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_new_msgid_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_8_array_32(id);
+        return wire.wire_new_msgid_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_message_id_twin_rust_async,
       parseErrorData: null,
       constMeta: kNewMsgidTwinRustAsyncConstMeta,
@@ -5960,10 +6242,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<FeedIdTwinRustAsync> returnBoxedFeedIdTwinRustAsync(
       {required U8Array8 id, dynamic hint}) {
-    var arg0 = cst_encode_u_8_array_8(id);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_return_boxed_feed_id_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_8_array_8(id);
+        return wire.wire_return_boxed_feed_id_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_box_feed_id_twin_rust_async,
       parseErrorData: null,
       constMeta: kReturnBoxedFeedIdTwinRustAsyncConstMeta,
@@ -5982,10 +6265,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<U8Array8> returnBoxedRawFeedIdTwinRustAsync(
       {required FeedIdTwinRustAsync id, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_feed_id_twin_rust_async(id);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_return_boxed_raw_feed_id_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_feed_id_twin_rust_async(id);
+        return wire.wire_return_boxed_raw_feed_id_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_box_u_8_array_8,
       parseErrorData: null,
       constMeta: kReturnBoxedRawFeedIdTwinRustAsyncConstMeta,
@@ -6004,9 +6288,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<U8Array1600> useBoxedBlobTwinRustAsync(
       {required BlobTwinRustAsync blob, dynamic hint}) {
-    var arg0 = cst_encode_box_blob_twin_rust_async(blob);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_use_boxed_blob_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_blob_twin_rust_async(blob);
+        return wire.wire_use_boxed_blob_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_8_array_1600,
       parseErrorData: null,
       constMeta: kUseBoxedBlobTwinRustAsyncConstMeta,
@@ -6024,9 +6310,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<U8Array32> useMsgidTwinRustAsync(
       {required MessageIdTwinRustAsync id, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_message_id_twin_rust_async(id);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_use_msgid_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_message_id_twin_rust_async(id);
+        return wire.wire_use_msgid_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_8_array_32,
       parseErrorData: null,
       constMeta: kUseMsgidTwinRustAsyncConstMeta,
@@ -6043,9 +6331,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   BlobTwinSync boxedBlobTwinSync({required U8Array1600 blob, dynamic hint}) {
-    var arg0 = cst_encode_box_u_8_array_1600(blob);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_boxed_blob_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_u_8_array_1600(blob);
+        return wire.wire_boxed_blob_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_blob_twin_sync,
       parseErrorData: null,
       constMeta: kBoxedBlobTwinSyncConstMeta,
@@ -6063,9 +6353,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   TestIdTwinSync funcTestIdTwinSync(
       {required TestIdTwinSync id, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_test_id_twin_sync(id);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_test_id_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_test_id_twin_sync(id);
+        return wire.wire_func_test_id_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_test_id_twin_sync,
       parseErrorData: null,
       constMeta: kFuncTestIdTwinSyncConstMeta,
@@ -6083,7 +6375,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   U8Array5 getArrayTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_get_array_twin_sync(),
+      callFfi: () {
+        return wire.wire_get_array_twin_sync();
+      },
       parseSuccessData: _dco_decode_u_8_array_5,
       parseErrorData: null,
       constMeta: kGetArrayTwinSyncConstMeta,
@@ -6101,7 +6395,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   PointTwinSyncArray2 getComplexArrayTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_get_complex_array_twin_sync(),
+      callFfi: () {
+        return wire.wire_get_complex_array_twin_sync();
+      },
       parseSuccessData: _dco_decode_point_twin_sync_array_2,
       parseErrorData: null,
       constMeta: kGetComplexArrayTwinSyncConstMeta,
@@ -6118,9 +6414,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   double lastNumberTwinSync({required F64Array16 array, dynamic hint}) {
-    var arg0 = cst_encode_f_64_array_16(array);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_last_number_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_f_64_array_16(array);
+        return wire.wire_last_number_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_f_64,
       parseErrorData: null,
       constMeta: kLastNumberTwinSyncConstMeta,
@@ -6138,9 +6436,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   TestIdTwinSyncArray2 nestedIdTwinSync(
       {required TestIdTwinSyncArray4 id, dynamic hint}) {
-    var arg0 = cst_encode_test_id_twin_sync_array_4(id);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_nested_id_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_test_id_twin_sync_array_4(id);
+        return wire.wire_nested_id_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_test_id_twin_sync_array_2,
       parseErrorData: null,
       constMeta: kNestedIdTwinSyncConstMeta,
@@ -6157,9 +6457,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   MessageIdTwinSync newMsgidTwinSync({required U8Array32 id, dynamic hint}) {
-    var arg0 = cst_encode_u_8_array_32(id);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_new_msgid_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_u_8_array_32(id);
+        return wire.wire_new_msgid_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_message_id_twin_sync,
       parseErrorData: null,
       constMeta: kNewMsgidTwinSyncConstMeta,
@@ -6177,9 +6479,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   FeedIdTwinSync returnBoxedFeedIdTwinSync(
       {required U8Array8 id, dynamic hint}) {
-    var arg0 = cst_encode_u_8_array_8(id);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_return_boxed_feed_id_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_u_8_array_8(id);
+        return wire.wire_return_boxed_feed_id_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_box_feed_id_twin_sync,
       parseErrorData: null,
       constMeta: kReturnBoxedFeedIdTwinSyncConstMeta,
@@ -6197,9 +6501,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   U8Array8 returnBoxedRawFeedIdTwinSync(
       {required FeedIdTwinSync id, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_feed_id_twin_sync(id);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_return_boxed_raw_feed_id_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_feed_id_twin_sync(id);
+        return wire.wire_return_boxed_raw_feed_id_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_box_u_8_array_8,
       parseErrorData: null,
       constMeta: kReturnBoxedRawFeedIdTwinSyncConstMeta,
@@ -6217,9 +6523,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   U8Array1600 useBoxedBlobTwinSync({required BlobTwinSync blob, dynamic hint}) {
-    var arg0 = cst_encode_box_blob_twin_sync(blob);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_use_boxed_blob_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_blob_twin_sync(blob);
+        return wire.wire_use_boxed_blob_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_u_8_array_1600,
       parseErrorData: null,
       constMeta: kUseBoxedBlobTwinSyncConstMeta,
@@ -6236,9 +6544,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   U8Array32 useMsgidTwinSync({required MessageIdTwinSync id, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_message_id_twin_sync(id);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_use_msgid_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_message_id_twin_sync(id);
+        return wire.wire_use_msgid_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_u_8_array_32,
       parseErrorData: null,
       constMeta: kUseMsgidTwinSyncConstMeta,
@@ -6256,10 +6566,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> handleCustomizedStructTwinRustAsync(
       {required CustomizedTwinRustAsync val, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_customized_twin_rust_async(val);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_customized_struct_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_customized_twin_rust_async(val);
+        return wire.wire_handle_customized_struct_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kHandleCustomizedStructTwinRustAsyncConstMeta,
@@ -6278,9 +6589,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<UserIdTwinRustAsync> nextUserIdTwinRustAsync(
       {required UserIdTwinRustAsync userId, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_user_id_twin_rust_async(userId);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_next_user_id_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_user_id_twin_rust_async(userId);
+        return wire.wire_next_user_id_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_user_id_twin_rust_async,
       parseErrorData: null,
       constMeta: kNextUserIdTwinRustAsyncConstMeta,
@@ -6298,9 +6611,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void handleCustomizedStructTwinSync(
       {required CustomizedTwinSync val, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_customized_twin_sync(val);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_customized_struct_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_customized_twin_sync(val);
+        return wire.wire_handle_customized_struct_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kHandleCustomizedStructTwinSyncConstMeta,
@@ -6319,9 +6634,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   UserIdTwinSync nextUserIdTwinSync(
       {required UserIdTwinSync userId, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_user_id_twin_sync(userId);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_next_user_id_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_user_id_twin_sync(userId);
+        return wire.wire_next_user_id_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_user_id_twin_sync,
       parseErrorData: null,
       constMeta: kNextUserIdTwinSyncConstMeta,
@@ -6339,10 +6656,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> benchmarkInputBytesTwinRustAsync(
       {required Uint8List bytes, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_u_8(bytes);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_benchmark_input_bytes_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_u_8(bytes);
+        return wire.wire_benchmark_input_bytes_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_i_32,
       parseErrorData: null,
       constMeta: kBenchmarkInputBytesTwinRustAsyncConstMeta,
@@ -6361,10 +6679,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Uint8List> benchmarkOutputBytesTwinRustAsync(
       {required int size, dynamic hint}) {
-    var arg0 = cst_encode_i_32(size);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_benchmark_output_bytes_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(size);
+        return wire.wire_benchmark_output_bytes_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_u_8,
       parseErrorData: null,
       constMeta: kBenchmarkOutputBytesTwinRustAsyncConstMeta,
@@ -6383,7 +6702,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> benchmarkVoidTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_benchmark_void_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_benchmark_void_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kBenchmarkVoidTwinRustAsyncConstMeta,
@@ -6400,9 +6721,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   int benchmarkInputBytesTwinSync({required Uint8List bytes, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_u_8(bytes);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_benchmark_input_bytes_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_list_prim_u_8(bytes);
+        return wire.wire_benchmark_input_bytes_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_i_32,
       parseErrorData: null,
       constMeta: kBenchmarkInputBytesTwinSyncConstMeta,
@@ -6420,9 +6743,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Uint8List benchmarkOutputBytesTwinSync({required int size, dynamic hint}) {
-    var arg0 = cst_encode_i_32(size);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_benchmark_output_bytes_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_i_32(size);
+        return wire.wire_benchmark_output_bytes_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_u_8,
       parseErrorData: null,
       constMeta: kBenchmarkOutputBytesTwinSyncConstMeta,
@@ -6441,7 +6766,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void benchmarkVoidTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_benchmark_void_twin_sync(),
+      callFfi: () {
+        return wire.wire_benchmark_void_twin_sync();
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kBenchmarkVoidTwinSyncConstMeta,
@@ -6459,9 +6786,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<DateTime> datetimeLocalTwinRustAsync(
       {required DateTime d, dynamic hint}) {
-    var arg0 = cst_encode_Chrono_Local(d);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_datetime_local_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_Chrono_Local(d);
+        return wire.wire_datetime_local_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_Chrono_Local,
       parseErrorData: null,
       constMeta: kDatetimeLocalTwinRustAsyncConstMeta,
@@ -6479,9 +6808,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<DateTime> datetimeUtcTwinRustAsync(
       {required DateTime d, dynamic hint}) {
-    var arg0 = cst_encode_Chrono_Utc(d);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_datetime_utc_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_Chrono_Utc(d);
+        return wire.wire_datetime_utc_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_Chrono_Utc,
       parseErrorData: null,
       constMeta: kDatetimeUtcTwinRustAsyncConstMeta,
@@ -6498,9 +6829,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<Duration> durationTwinRustAsync({required Duration d, dynamic hint}) {
-    var arg0 = cst_encode_Chrono_Duration(d);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_duration_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_Chrono_Duration(d);
+        return wire.wire_duration_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_Chrono_Duration,
       parseErrorData: null,
       constMeta: kDurationTwinRustAsyncConstMeta,
@@ -6520,11 +6853,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<Duration> durations,
       required DateTime since,
       dynamic hint}) {
-    var arg0 = cst_encode_Chrono_DurationList(durations);
-    var arg1 = cst_encode_Chrono_Local(since);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_durations_twin_rust_async(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_Chrono_DurationList(durations);
+        var arg1 = cst_encode_Chrono_Local(since);
+        return wire.wire_handle_durations_twin_rust_async(port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_Chrono_LocalList,
       parseErrorData: null,
       constMeta: kHandleDurationsTwinRustAsyncConstMeta,
@@ -6545,11 +6879,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<DateTime> timestamps,
       required DateTime epoch,
       dynamic hint}) {
-    var arg0 = cst_encode_Chrono_NaiveList(timestamps);
-    var arg1 = cst_encode_Chrono_Naive(epoch);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_timestamps_twin_rust_async(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_Chrono_NaiveList(timestamps);
+        var arg1 = cst_encode_Chrono_Naive(epoch);
+        return wire.wire_handle_timestamps_twin_rust_async(port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_Chrono_DurationList,
       parseErrorData: null,
       constMeta: kHandleTimestampsTwinRustAsyncConstMeta,
@@ -6568,10 +6903,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Duration> howLongDoesItTakeTwinRustAsync(
       {required FeatureChronoTwinRustAsync mine, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_feature_chrono_twin_rust_async(mine);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_how_long_does_it_take_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_feature_chrono_twin_rust_async(mine);
+        return wire.wire_how_long_does_it_take_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_Chrono_Duration,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kHowLongDoesItTakeTwinRustAsyncConstMeta,
@@ -6590,9 +6926,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<DateTime> naivedatetimeTwinRustAsync(
       {required DateTime d, dynamic hint}) {
-    var arg0 = cst_encode_Chrono_Naive(d);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_naivedatetime_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_Chrono_Naive(d);
+        return wire.wire_naivedatetime_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_Chrono_Naive,
       parseErrorData: null,
       constMeta: kNaivedatetimeTwinRustAsyncConstMeta,
@@ -6610,10 +6948,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<DateTime?> optionalEmptyDatetimeUtcTwinRustAsync(
       {DateTime? d, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_Chrono_Utc(d);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_optional_empty_datetime_utc_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_Chrono_Utc(d);
+        return wire.wire_optional_empty_datetime_utc_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_Chrono_Utc,
       parseErrorData: null,
       constMeta: kOptionalEmptyDatetimeUtcTwinRustAsyncConstMeta,
@@ -6632,7 +6972,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<TestChronoTwinRustAsync> testChronoTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_test_chrono_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_test_chrono_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_test_chrono_twin_rust_async,
       parseErrorData: null,
       constMeta: kTestChronoTwinRustAsyncConstMeta,
@@ -6651,7 +6993,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<TestChronoTwinRustAsync> testPreciseChronoTwinRustAsync(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_test_precise_chrono_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_test_precise_chrono_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_test_chrono_twin_rust_async,
       parseErrorData: null,
       constMeta: kTestPreciseChronoTwinRustAsyncConstMeta,
@@ -6669,9 +7013,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   DateTime datetimeLocalTwinSync({required DateTime d, dynamic hint}) {
-    var arg0 = cst_encode_Chrono_Local(d);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_datetime_local_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_Chrono_Local(d);
+        return wire.wire_datetime_local_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_Chrono_Local,
       parseErrorData: null,
       constMeta: kDatetimeLocalTwinSyncConstMeta,
@@ -6688,9 +7034,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   DateTime datetimeUtcTwinSync({required DateTime d, dynamic hint}) {
-    var arg0 = cst_encode_Chrono_Utc(d);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_datetime_utc_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_Chrono_Utc(d);
+        return wire.wire_datetime_utc_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_Chrono_Utc,
       parseErrorData: null,
       constMeta: kDatetimeUtcTwinSyncConstMeta,
@@ -6707,9 +7055,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Duration durationTwinSync({required Duration d, dynamic hint}) {
-    var arg0 = cst_encode_Chrono_Duration(d);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_duration_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_Chrono_Duration(d);
+        return wire.wire_duration_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_Chrono_Duration,
       parseErrorData: null,
       constMeta: kDurationTwinSyncConstMeta,
@@ -6729,10 +7079,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<Duration> durations,
       required DateTime since,
       dynamic hint}) {
-    var arg0 = cst_encode_Chrono_DurationList(durations);
-    var arg1 = cst_encode_Chrono_Local(since);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_durations_twin_sync(arg0, arg1),
+      callFfi: () {
+        var arg0 = cst_encode_Chrono_DurationList(durations);
+        var arg1 = cst_encode_Chrono_Local(since);
+        return wire.wire_handle_durations_twin_sync(arg0, arg1);
+      },
       parseSuccessData: _dco_decode_Chrono_LocalList,
       parseErrorData: null,
       constMeta: kHandleDurationsTwinSyncConstMeta,
@@ -6752,10 +7104,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required List<DateTime> timestamps,
       required DateTime epoch,
       dynamic hint}) {
-    var arg0 = cst_encode_Chrono_NaiveList(timestamps);
-    var arg1 = cst_encode_Chrono_Naive(epoch);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_timestamps_twin_sync(arg0, arg1),
+      callFfi: () {
+        var arg0 = cst_encode_Chrono_NaiveList(timestamps);
+        var arg1 = cst_encode_Chrono_Naive(epoch);
+        return wire.wire_handle_timestamps_twin_sync(arg0, arg1);
+      },
       parseSuccessData: _dco_decode_Chrono_DurationList,
       parseErrorData: null,
       constMeta: kHandleTimestampsTwinSyncConstMeta,
@@ -6773,9 +7127,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Duration howLongDoesItTakeTwinSync(
       {required FeatureChronoTwinSync mine, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_feature_chrono_twin_sync(mine);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_how_long_does_it_take_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_feature_chrono_twin_sync(mine);
+        return wire.wire_how_long_does_it_take_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_Chrono_Duration,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kHowLongDoesItTakeTwinSyncConstMeta,
@@ -6792,9 +7148,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   DateTime naivedatetimeTwinSync({required DateTime d, dynamic hint}) {
-    var arg0 = cst_encode_Chrono_Naive(d);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_naivedatetime_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_Chrono_Naive(d);
+        return wire.wire_naivedatetime_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_Chrono_Naive,
       parseErrorData: null,
       constMeta: kNaivedatetimeTwinSyncConstMeta,
@@ -6811,9 +7169,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   DateTime? optionalEmptyDatetimeUtcTwinSync({DateTime? d, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_Chrono_Utc(d);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_optional_empty_datetime_utc_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_Chrono_Utc(d);
+        return wire.wire_optional_empty_datetime_utc_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_Chrono_Utc,
       parseErrorData: null,
       constMeta: kOptionalEmptyDatetimeUtcTwinSyncConstMeta,
@@ -6832,7 +7192,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   TestChronoTwinSync testChronoTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_test_chrono_twin_sync(),
+      callFfi: () {
+        return wire.wire_test_chrono_twin_sync();
+      },
       parseSuccessData: _dco_decode_test_chrono_twin_sync,
       parseErrorData: null,
       constMeta: kTestChronoTwinSyncConstMeta,
@@ -6850,7 +7212,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   TestChronoTwinSync testPreciseChronoTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_test_precise_chrono_twin_sync(),
+      callFfi: () {
+        return wire.wire_test_precise_chrono_twin_sync();
+      },
       parseSuccessData: _dco_decode_test_chrono_twin_sync,
       parseErrorData: null,
       constMeta: kTestPreciseChronoTwinSyncConstMeta,
@@ -6868,12 +7232,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> structWithCommentsTwinRustAsyncInstanceMethodTwinRustAsync(
       {required StructWithCommentsTwinRustAsync that, dynamic hint}) {
-    var arg0 =
-        cst_encode_box_autoadd_struct_with_comments_twin_rust_async(that);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_StructWithCommentsTwinRustAsync_instance_method_twin_rust_async(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_struct_with_comments_twin_rust_async(that);
+        return wire
+            .wire_StructWithCommentsTwinRustAsync_instance_method_twin_rust_async(
+                port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta:
@@ -6896,9 +7262,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> structWithCommentsTwinRustAsyncStaticMethodTwinRustAsync(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_StructWithCommentsTwinRustAsync_static_method_twin_rust_async(
-              port_),
+      callFfi: (port_) {
+        return wire
+            .wire_StructWithCommentsTwinRustAsync_static_method_twin_rust_async(
+                port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta:
@@ -6920,8 +7288,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> functionWithCommentsSlashStarStarTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_function_with_comments_slash_star_star_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire
+            .wire_function_with_comments_slash_star_star_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kFunctionWithCommentsSlashStarStarTwinRustAsyncConstMeta,
@@ -6941,9 +7311,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> functionWithCommentsTripleSlashMultiLineTwinRustAsync(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_function_with_comments_triple_slash_multi_line_twin_rust_async(
-              port_),
+      callFfi: (port_) {
+        return wire
+            .wire_function_with_comments_triple_slash_multi_line_twin_rust_async(
+                port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta:
@@ -6966,9 +7338,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> functionWithCommentsTripleSlashSingleLineTwinRustAsync(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_function_with_comments_triple_slash_single_line_twin_rust_async(
-              port_),
+      callFfi: (port_) {
+        return wire
+            .wire_function_with_comments_triple_slash_single_line_twin_rust_async(
+                port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta:
@@ -6990,10 +7364,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void structWithCommentsTwinSyncInstanceMethodTwinSync(
       {required StructWithCommentsTwinSync that, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_struct_with_comments_twin_sync(that);
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_StructWithCommentsTwinSync_instance_method_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_struct_with_comments_twin_sync(that);
+        return wire
+            .wire_StructWithCommentsTwinSync_instance_method_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kStructWithCommentsTwinSyncInstanceMethodTwinSyncConstMeta,
@@ -7013,8 +7389,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void structWithCommentsTwinSyncStaticMethodTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_StructWithCommentsTwinSync_static_method_twin_sync(),
+      callFfi: () {
+        return wire.wire_StructWithCommentsTwinSync_static_method_twin_sync();
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kStructWithCommentsTwinSyncStaticMethodTwinSyncConstMeta,
@@ -7033,8 +7410,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void functionWithCommentsSlashStarStarTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_function_with_comments_slash_star_star_twin_sync(),
+      callFfi: () {
+        return wire.wire_function_with_comments_slash_star_star_twin_sync();
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kFunctionWithCommentsSlashStarStarTwinSyncConstMeta,
@@ -7053,8 +7431,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void functionWithCommentsTripleSlashMultiLineTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_function_with_comments_triple_slash_multi_line_twin_sync(),
+      callFfi: () {
+        return wire
+            .wire_function_with_comments_triple_slash_multi_line_twin_sync();
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kFunctionWithCommentsTripleSlashMultiLineTwinSyncConstMeta,
@@ -7075,8 +7455,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void functionWithCommentsTripleSlashSingleLineTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_function_with_comments_triple_slash_single_line_twin_sync(),
+      callFfi: () {
+        return wire
+            .wire_function_with_comments_triple_slash_single_line_twin_sync();
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kFunctionWithCommentsTripleSlashSingleLineTwinSyncConstMeta,
@@ -7097,7 +7479,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<dynamic> returnDartDynamicTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_return_dart_dynamic_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_return_dart_dynamic_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_dartabi,
       parseErrorData: null,
       constMeta: kReturnDartDynamicTwinRustAsyncConstMeta,
@@ -7116,7 +7500,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   dynamic returnDartDynamicTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_return_dart_dynamic_twin_sync(),
+      callFfi: () {
+        return wire.wire_return_dart_dynamic_twin_sync();
+      },
       parseSuccessData: _dco_decode_dartabi,
       parseErrorData: null,
       constMeta: kReturnDartDynamicTwinSyncConstMeta,
@@ -7134,10 +7520,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<String> asyncAcceptDartOpaqueTwinRustAsync(
       {required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_async_accept_dart_opaque_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_async_accept_dart_opaque_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kAsyncAcceptDartOpaqueTwinRustAsyncConstMeta,
@@ -7156,10 +7543,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<List<Object>> cloneDartOpaqueTwinRustAsync(
       {required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_clone_dart_opaque_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_clone_dart_opaque_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_DartOpaque,
       parseErrorData: null,
       constMeta: kCloneDartOpaqueTwinRustAsyncConstMeta,
@@ -7178,10 +7566,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<EnumDartOpaqueTwinRustAsync> createEnumDartOpaqueTwinRustAsync(
       {required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_create_enum_dart_opaque_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_create_enum_dart_opaque_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_enum_dart_opaque_twin_rust_async,
       parseErrorData: null,
       constMeta: kCreateEnumDartOpaqueTwinRustAsyncConstMeta,
@@ -7200,11 +7589,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<DartOpaqueNestedTwinRustAsync> createNestedDartOpaqueTwinRustAsync(
       {required Object opaque1, required Object opaque2, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque1);
-    var arg1 = cst_encode_DartOpaque(opaque2);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_create_nested_dart_opaque_twin_rust_async(
-          port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_DartOpaque(opaque1);
+        var arg1 = cst_encode_DartOpaque(opaque2);
+        return wire.wire_create_nested_dart_opaque_twin_rust_async(
+            port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_dart_opaque_nested_twin_rust_async,
       parseErrorData: null,
       constMeta: kCreateNestedDartOpaqueTwinRustAsyncConstMeta,
@@ -7223,10 +7614,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> dropStaticDartOpaqueTwinRustAsync(
       {required int id, dynamic hint}) {
-    var arg0 = cst_encode_i_32(id);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_drop_static_dart_opaque_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(id);
+        return wire.wire_drop_static_dart_opaque_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kDropStaticDartOpaqueTwinRustAsyncConstMeta,
@@ -7245,10 +7637,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> getEnumDartOpaqueTwinRustAsync(
       {required EnumDartOpaqueTwinRustAsync opaque, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_enum_dart_opaque_twin_rust_async(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_get_enum_dart_opaque_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_enum_dart_opaque_twin_rust_async(opaque);
+        return wire.wire_get_enum_dart_opaque_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kGetEnumDartOpaqueTwinRustAsyncConstMeta,
@@ -7267,11 +7661,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> getNestedDartOpaqueTwinRustAsync(
       {required DartOpaqueNestedTwinRustAsync opaque, dynamic hint}) {
-    var arg0 =
-        cst_encode_box_autoadd_dart_opaque_nested_twin_rust_async(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_get_nested_dart_opaque_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_dart_opaque_nested_twin_rust_async(opaque);
+        return wire.wire_get_nested_dart_opaque_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kGetNestedDartOpaqueTwinRustAsyncConstMeta,
@@ -7290,10 +7685,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> loopBackArrayGetTwinRustAsync(
       {required ObjectArray1 opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque_array_1(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_loop_back_array_get_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_DartOpaque_array_1(opaque);
+        return wire.wire_loop_back_array_get_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kLoopBackArrayGetTwinRustAsyncConstMeta,
@@ -7312,10 +7708,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<ObjectArray1> loopBackArrayTwinRustAsync(
       {required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_loop_back_array_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_loop_back_array_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_DartOpaque_array_1,
       parseErrorData: null,
       constMeta: kLoopBackArrayTwinRustAsyncConstMeta,
@@ -7332,10 +7729,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> loopBackOptionGetTwinRustAsync({Object? opaque, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_loop_back_option_get_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_DartOpaque(opaque);
+        return wire.wire_loop_back_option_get_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kLoopBackOptionGetTwinRustAsyncConstMeta,
@@ -7354,10 +7752,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Object?> loopBackOptionTwinRustAsync(
       {required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_loop_back_option_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_loop_back_option_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_DartOpaque,
       parseErrorData: null,
       constMeta: kLoopBackOptionTwinRustAsyncConstMeta,
@@ -7375,9 +7774,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<Object> loopBackTwinRustAsync({required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_loop_back_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_loop_back_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_DartOpaque,
       parseErrorData: null,
       constMeta: kLoopBackTwinRustAsyncConstMeta,
@@ -7395,10 +7796,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> loopBackVecGetTwinRustAsync(
       {required List<Object> opaque, dynamic hint}) {
-    var arg0 = cst_encode_list_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_loop_back_vec_get_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_DartOpaque(opaque);
+        return wire.wire_loop_back_vec_get_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kLoopBackVecGetTwinRustAsyncConstMeta,
@@ -7417,9 +7819,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<List<Object>> loopBackVecTwinRustAsync(
       {required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_loop_back_vec_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_loop_back_vec_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_DartOpaque,
       parseErrorData: null,
       constMeta: kLoopBackVecTwinRustAsyncConstMeta,
@@ -7437,10 +7841,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> panicUnwrapDartOpaqueTwinRustAsync(
       {required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_panic_unwrap_dart_opaque_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_panic_unwrap_dart_opaque_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kPanicUnwrapDartOpaqueTwinRustAsyncConstMeta,
@@ -7459,11 +7864,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> setStaticDartOpaqueTwinRustAsync(
       {required int id, required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_i_32(id);
-    var arg1 = cst_encode_DartOpaque(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_set_static_dart_opaque_twin_rust_async(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(id);
+        var arg1 = cst_encode_DartOpaque(opaque);
+        return wire.wire_set_static_dart_opaque_twin_rust_async(
+            port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kSetStaticDartOpaqueTwinRustAsyncConstMeta,
@@ -7481,9 +7888,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   String asyncAcceptDartOpaqueTwinSync({required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_async_accept_dart_opaque_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_async_accept_dart_opaque_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kAsyncAcceptDartOpaqueTwinSyncConstMeta,
@@ -7501,9 +7910,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   List<Object> cloneDartOpaqueTwinSync({required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_clone_dart_opaque_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_clone_dart_opaque_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_list_DartOpaque,
       parseErrorData: null,
       constMeta: kCloneDartOpaqueTwinSyncConstMeta,
@@ -7521,9 +7932,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   EnumDartOpaqueTwinSync createEnumDartOpaqueTwinSync(
       {required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_create_enum_dart_opaque_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_create_enum_dart_opaque_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_enum_dart_opaque_twin_sync,
       parseErrorData: null,
       constMeta: kCreateEnumDartOpaqueTwinSyncConstMeta,
@@ -7542,10 +7955,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   DartOpaqueNestedTwinSync createNestedDartOpaqueTwinSync(
       {required Object opaque1, required Object opaque2, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque1);
-    var arg1 = cst_encode_DartOpaque(opaque2);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_create_nested_dart_opaque_twin_sync(arg0, arg1),
+      callFfi: () {
+        var arg0 = cst_encode_DartOpaque(opaque1);
+        var arg1 = cst_encode_DartOpaque(opaque2);
+        return wire.wire_create_nested_dart_opaque_twin_sync(arg0, arg1);
+      },
       parseSuccessData: _dco_decode_dart_opaque_nested_twin_sync,
       parseErrorData: null,
       constMeta: kCreateNestedDartOpaqueTwinSyncConstMeta,
@@ -7563,9 +7978,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void dropStaticDartOpaqueTwinSync({required int id, dynamic hint}) {
-    var arg0 = cst_encode_i_32(id);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_drop_static_dart_opaque_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_i_32(id);
+        return wire.wire_drop_static_dart_opaque_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kDropStaticDartOpaqueTwinSyncConstMeta,
@@ -7584,9 +8001,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void getEnumDartOpaqueTwinSync(
       {required EnumDartOpaqueTwinSync opaque, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_enum_dart_opaque_twin_sync(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_get_enum_dart_opaque_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_enum_dart_opaque_twin_sync(opaque);
+        return wire.wire_get_enum_dart_opaque_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kGetEnumDartOpaqueTwinSyncConstMeta,
@@ -7604,9 +8023,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void getNestedDartOpaqueTwinSync(
       {required DartOpaqueNestedTwinSync opaque, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_dart_opaque_nested_twin_sync(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_get_nested_dart_opaque_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_dart_opaque_nested_twin_sync(opaque);
+        return wire.wire_get_nested_dart_opaque_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kGetNestedDartOpaqueTwinSyncConstMeta,
@@ -7624,9 +8045,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void loopBackArrayGetTwinSync({required ObjectArray1 opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque_array_1(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_loop_back_array_get_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_DartOpaque_array_1(opaque);
+        return wire.wire_loop_back_array_get_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kLoopBackArrayGetTwinSyncConstMeta,
@@ -7643,9 +8066,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   ObjectArray1 loopBackArrayTwinSync({required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_loop_back_array_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_loop_back_array_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_DartOpaque_array_1,
       parseErrorData: null,
       constMeta: kLoopBackArrayTwinSyncConstMeta,
@@ -7662,9 +8087,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void loopBackOptionGetTwinSync({Object? opaque, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_DartOpaque(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_loop_back_option_get_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_DartOpaque(opaque);
+        return wire.wire_loop_back_option_get_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kLoopBackOptionGetTwinSyncConstMeta,
@@ -7681,9 +8108,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Object? loopBackOptionTwinSync({required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_loop_back_option_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_loop_back_option_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_DartOpaque,
       parseErrorData: null,
       constMeta: kLoopBackOptionTwinSyncConstMeta,
@@ -7700,9 +8129,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Object loopBackTwinSync({required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_loop_back_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_loop_back_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_DartOpaque,
       parseErrorData: null,
       constMeta: kLoopBackTwinSyncConstMeta,
@@ -7719,9 +8150,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void loopBackVecGetTwinSync({required List<Object> opaque, dynamic hint}) {
-    var arg0 = cst_encode_list_DartOpaque(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_loop_back_vec_get_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_list_DartOpaque(opaque);
+        return wire.wire_loop_back_vec_get_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kLoopBackVecGetTwinSyncConstMeta,
@@ -7738,9 +8171,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   List<Object> loopBackVecTwinSync({required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_loop_back_vec_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_loop_back_vec_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_list_DartOpaque,
       parseErrorData: null,
       constMeta: kLoopBackVecTwinSyncConstMeta,
@@ -7757,9 +8192,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void panicUnwrapDartOpaqueTwinSync({required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_DartOpaque(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_panic_unwrap_dart_opaque_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_DartOpaque(opaque);
+        return wire.wire_panic_unwrap_dart_opaque_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kPanicUnwrapDartOpaqueTwinSyncConstMeta,
@@ -7778,10 +8215,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void setStaticDartOpaqueTwinSync(
       {required int id, required Object opaque, dynamic hint}) {
-    var arg0 = cst_encode_i_32(id);
-    var arg1 = cst_encode_DartOpaque(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_set_static_dart_opaque_twin_sync(arg0, arg1),
+      callFfi: () {
+        var arg0 = cst_encode_i_32(id);
+        var arg1 = cst_encode_DartOpaque(opaque);
+        return wire.wire_set_static_dart_opaque_twin_sync(arg0, arg1);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kSetStaticDartOpaqueTwinSyncConstMeta,
@@ -7800,10 +8239,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<EnumSimpleTwinRustAsync> funcEnumSimpleTwinRustAsync(
       {required EnumSimpleTwinRustAsync arg, dynamic hint}) {
-    var arg0 = cst_encode_enum_simple_twin_rust_async(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_func_enum_simple_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_enum_simple_twin_rust_async(arg);
+        return wire.wire_func_enum_simple_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_enum_simple_twin_rust_async,
       parseErrorData: null,
       constMeta: kFuncEnumSimpleTwinRustAsyncConstMeta,
@@ -7822,10 +8262,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<EnumWithItemMixedTwinRustAsync> funcEnumWithItemMixedTwinRustAsync(
       {required EnumWithItemMixedTwinRustAsync arg, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_enum_with_item_mixed_twin_rust_async(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_func_enum_with_item_mixed_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_enum_with_item_mixed_twin_rust_async(arg);
+        return wire.wire_func_enum_with_item_mixed_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_enum_with_item_mixed_twin_rust_async,
       parseErrorData: null,
       constMeta: kFuncEnumWithItemMixedTwinRustAsyncConstMeta,
@@ -7844,11 +8286,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<EnumWithItemStructTwinRustAsync> funcEnumWithItemStructTwinRustAsync(
       {required EnumWithItemStructTwinRustAsync arg, dynamic hint}) {
-    var arg0 =
-        cst_encode_box_autoadd_enum_with_item_struct_twin_rust_async(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_func_enum_with_item_struct_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_enum_with_item_struct_twin_rust_async(arg);
+        return wire.wire_func_enum_with_item_struct_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_enum_with_item_struct_twin_rust_async,
       parseErrorData: null,
       constMeta: kFuncEnumWithItemStructTwinRustAsyncConstMeta,
@@ -7867,10 +8311,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<EnumWithItemTupleTwinRustAsync> funcEnumWithItemTupleTwinRustAsync(
       {required EnumWithItemTupleTwinRustAsync arg, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_enum_with_item_tuple_twin_rust_async(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_func_enum_with_item_tuple_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_enum_with_item_tuple_twin_rust_async(arg);
+        return wire.wire_func_enum_with_item_tuple_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_enum_with_item_tuple_twin_rust_async,
       parseErrorData: null,
       constMeta: kFuncEnumWithItemTupleTwinRustAsyncConstMeta,
@@ -7889,10 +8335,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<WeekdaysTwinRustAsync> handleEnumParameterTwinRustAsync(
       {required WeekdaysTwinRustAsync weekday, dynamic hint}) {
-    var arg0 = cst_encode_weekdays_twin_rust_async(weekday);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_enum_parameter_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_weekdays_twin_rust_async(weekday);
+        return wire.wire_handle_enum_parameter_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_weekdays_twin_rust_async,
       parseErrorData: null,
       constMeta: kHandleEnumParameterTwinRustAsyncConstMeta,
@@ -7911,10 +8358,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<KitchenSinkTwinRustAsync> handleEnumStructTwinRustAsync(
       {required KitchenSinkTwinRustAsync val, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_kitchen_sink_twin_rust_async(val);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_enum_struct_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_kitchen_sink_twin_rust_async(val);
+        return wire.wire_handle_enum_struct_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_kitchen_sink_twin_rust_async,
       parseErrorData: null,
       constMeta: kHandleEnumStructTwinRustAsyncConstMeta,
@@ -7933,10 +8381,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<WeekdaysTwinRustAsync?> handleReturnEnumTwinRustAsync(
       {required String input, dynamic hint}) {
-    var arg0 = cst_encode_String(input);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_return_enum_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(input);
+        return wire.wire_handle_return_enum_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_weekdays_twin_rust_async,
       parseErrorData: null,
       constMeta: kHandleReturnEnumTwinRustAsyncConstMeta,
@@ -7955,10 +8404,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<MeasureTwinRustAsync?> multiplyByTenTwinRustAsync(
       {required MeasureTwinRustAsync measure, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_measure_twin_rust_async(measure);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_multiply_by_ten_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_measure_twin_rust_async(measure);
+        return wire.wire_multiply_by_ten_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_measure_twin_rust_async,
       parseErrorData: null,
       constMeta: kMultiplyByTenTwinRustAsyncConstMeta,
@@ -7976,9 +8426,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Uint8List> printNoteTwinRustAsync(
       {required NoteTwinRustAsync note, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_note_twin_rust_async(note);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_print_note_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_note_twin_rust_async(note);
+        return wire.wire_print_note_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_ZeroCopyBuffer_list_prim_u_8,
       parseErrorData: null,
       constMeta: kPrintNoteTwinRustAsyncConstMeta,
@@ -7996,9 +8448,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   EnumSimpleTwinSync funcEnumSimpleTwinSync(
       {required EnumSimpleTwinSync arg, dynamic hint}) {
-    var arg0 = cst_encode_enum_simple_twin_sync(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_enum_simple_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_enum_simple_twin_sync(arg);
+        return wire.wire_func_enum_simple_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_enum_simple_twin_sync,
       parseErrorData: null,
       constMeta: kFuncEnumSimpleTwinSyncConstMeta,
@@ -8016,9 +8470,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   EnumWithItemMixedTwinSync funcEnumWithItemMixedTwinSync(
       {required EnumWithItemMixedTwinSync arg, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_enum_with_item_mixed_twin_sync(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_enum_with_item_mixed_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_enum_with_item_mixed_twin_sync(arg);
+        return wire.wire_func_enum_with_item_mixed_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_enum_with_item_mixed_twin_sync,
       parseErrorData: null,
       constMeta: kFuncEnumWithItemMixedTwinSyncConstMeta,
@@ -8037,9 +8493,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   EnumWithItemStructTwinSync funcEnumWithItemStructTwinSync(
       {required EnumWithItemStructTwinSync arg, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_enum_with_item_struct_twin_sync(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_enum_with_item_struct_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_enum_with_item_struct_twin_sync(arg);
+        return wire.wire_func_enum_with_item_struct_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_enum_with_item_struct_twin_sync,
       parseErrorData: null,
       constMeta: kFuncEnumWithItemStructTwinSyncConstMeta,
@@ -8058,9 +8516,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   EnumWithItemTupleTwinSync funcEnumWithItemTupleTwinSync(
       {required EnumWithItemTupleTwinSync arg, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_enum_with_item_tuple_twin_sync(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_enum_with_item_tuple_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_enum_with_item_tuple_twin_sync(arg);
+        return wire.wire_func_enum_with_item_tuple_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_enum_with_item_tuple_twin_sync,
       parseErrorData: null,
       constMeta: kFuncEnumWithItemTupleTwinSyncConstMeta,
@@ -8079,9 +8539,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   WeekdaysTwinSync handleEnumParameterTwinSync(
       {required WeekdaysTwinSync weekday, dynamic hint}) {
-    var arg0 = cst_encode_weekdays_twin_sync(weekday);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_enum_parameter_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_weekdays_twin_sync(weekday);
+        return wire.wire_handle_enum_parameter_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_weekdays_twin_sync,
       parseErrorData: null,
       constMeta: kHandleEnumParameterTwinSyncConstMeta,
@@ -8100,9 +8562,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   KitchenSinkTwinSync handleEnumStructTwinSync(
       {required KitchenSinkTwinSync val, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_kitchen_sink_twin_sync(val);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_enum_struct_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_kitchen_sink_twin_sync(val);
+        return wire.wire_handle_enum_struct_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_kitchen_sink_twin_sync,
       parseErrorData: null,
       constMeta: kHandleEnumStructTwinSyncConstMeta,
@@ -8120,9 +8584,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   WeekdaysTwinSync? handleReturnEnumTwinSync(
       {required String input, dynamic hint}) {
-    var arg0 = cst_encode_String(input);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_return_enum_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_String(input);
+        return wire.wire_handle_return_enum_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_weekdays_twin_sync,
       parseErrorData: null,
       constMeta: kHandleReturnEnumTwinSyncConstMeta,
@@ -8140,9 +8606,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   MeasureTwinSync? multiplyByTenTwinSync(
       {required MeasureTwinSync measure, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_measure_twin_sync(measure);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_multiply_by_ten_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_measure_twin_sync(measure);
+        return wire.wire_multiply_by_ten_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_measure_twin_sync,
       parseErrorData: null,
       constMeta: kMultiplyByTenTwinSyncConstMeta,
@@ -8159,9 +8627,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Uint8List printNoteTwinSync({required NoteTwinSync note, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_note_twin_sync(note);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_print_note_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_note_twin_sync(note);
+        return wire.wire_print_note_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_ZeroCopyBuffer_list_prim_u_8,
       parseErrorData: null,
       constMeta: kPrintNoteTwinSyncConstMeta,
@@ -8179,10 +8649,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<String> eventTwinRustAsyncAsStringTwinRustAsync(
       {required EventTwinRustAsync that, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_event_twin_rust_async(that);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_EventTwinRustAsync_as_string_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_event_twin_rust_async(that);
+        return wire.wire_EventTwinRustAsync_as_string_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kEventTwinRustAsyncAsStringTwinRustAsyncConstMeta,
@@ -8201,7 +8673,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> closeEventListenerTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_close_event_listener_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_close_event_listener_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kCloseEventListenerTwinRustAsyncConstMeta,
@@ -8220,11 +8694,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> createEventTwinRustAsync(
       {required String address, required String payload, dynamic hint}) {
-    var arg0 = cst_encode_String(address);
-    var arg1 = cst_encode_String(payload);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_create_event_twin_rust_async(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(address);
+        var arg1 = cst_encode_String(payload);
+        return wire.wire_create_event_twin_rust_async(port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kCreateEventTwinRustAsyncConstMeta,
@@ -8243,8 +8718,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<EventTwinRustAsync> registerEventListenerTwinRustAsync(
       {dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) =>
-          wire.wire_register_event_listener_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_register_event_listener_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_event_twin_rust_async,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kRegisterEventListenerTwinRustAsyncConstMeta,
@@ -8263,9 +8739,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   String eventTwinSyncAsStringTwinSync(
       {required EventTwinSync that, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_event_twin_sync(that);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_EventTwinSync_as_string_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_event_twin_sync(that);
+        return wire.wire_EventTwinSync_as_string_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kEventTwinSyncAsStringTwinSyncConstMeta,
@@ -8284,7 +8762,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void closeEventListenerTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_close_event_listener_twin_sync(),
+      callFfi: () {
+        return wire.wire_close_event_listener_twin_sync();
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kCloseEventListenerTwinSyncConstMeta,
@@ -8302,10 +8782,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void createEventTwinSync(
       {required String address, required String payload, dynamic hint}) {
-    var arg0 = cst_encode_String(address);
-    var arg1 = cst_encode_String(payload);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_create_event_twin_sync(arg0, arg1),
+      callFfi: () {
+        var arg0 = cst_encode_String(address);
+        var arg1 = cst_encode_String(payload);
+        return wire.wire_create_event_twin_sync(arg0, arg1);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kCreateEventTwinSyncConstMeta,
@@ -8323,7 +8805,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<EventTwinSync> registerEventListenerTwinSync({dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_register_event_listener_twin_sync(port_),
+      callFfi: (port_) {
+        return wire.wire_register_event_listener_twin_sync(port_);
+      },
       parseSuccessData: _dco_decode_event_twin_sync,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kRegisterEventListenerTwinSyncConstMeta,
@@ -8342,10 +8826,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<CustomStructTwinRustAsync> customStructTwinRustAsyncNewTwinRustAsync(
       {required String message, dynamic hint}) {
-    var arg0 = cst_encode_String(message);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_CustomStructTwinRustAsync_new_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(message);
+        return wire.wire_CustomStructTwinRustAsync_new_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_custom_struct_twin_rust_async,
       parseErrorData: null,
       constMeta: kCustomStructTwinRustAsyncNewTwinRustAsyncConstMeta,
@@ -8365,11 +8851,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void>
       customStructTwinRustAsyncNonstaticReturnCustomStructErrorTwinRustAsync(
           {required CustomStructTwinRustAsync that, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_custom_struct_twin_rust_async(that);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_CustomStructTwinRustAsync_nonstatic_return_custom_struct_error_twin_rust_async(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_custom_struct_twin_rust_async(that);
+        return wire
+            .wire_CustomStructTwinRustAsync_nonstatic_return_custom_struct_error_twin_rust_async(
+                port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_struct_error_another_twin_rust_async,
       constMeta:
@@ -8392,11 +8880,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<int>
       customStructTwinRustAsyncNonstaticReturnCustomStructOkTwinRustAsync(
           {required CustomStructTwinRustAsync that, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_custom_struct_twin_rust_async(that);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_CustomStructTwinRustAsync_nonstatic_return_custom_struct_ok_twin_rust_async(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_custom_struct_twin_rust_async(that);
+        return wire
+            .wire_CustomStructTwinRustAsync_nonstatic_return_custom_struct_ok_twin_rust_async(
+                port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_struct_error_another_twin_rust_async,
       constMeta:
@@ -8420,9 +8910,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       customStructTwinRustAsyncStaticReturnCustomStructErrorTwinRustAsync(
           {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_CustomStructTwinRustAsync_static_return_custom_struct_error_twin_rust_async(
-              port_),
+      callFfi: (port_) {
+        return wire
+            .wire_CustomStructTwinRustAsync_static_return_custom_struct_error_twin_rust_async(
+                port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_struct_error_another_twin_rust_async,
       constMeta:
@@ -8445,9 +8937,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<int> customStructTwinRustAsyncStaticReturnCustomStructOkTwinRustAsync(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_CustomStructTwinRustAsync_static_return_custom_struct_ok_twin_rust_async(
-              port_),
+      callFfi: (port_) {
+        return wire
+            .wire_CustomStructTwinRustAsync_static_return_custom_struct_ok_twin_rust_async(
+                port_);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_struct_error_another_twin_rust_async,
       constMeta:
@@ -8469,10 +8963,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<SomeStructTwinRustAsync> someStructTwinRustAsyncNewTwinRustAsync(
       {required int value, dynamic hint}) {
-    var arg0 = cst_encode_u_32(value);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_SomeStructTwinRustAsync_new_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(value);
+        return wire.wire_SomeStructTwinRustAsync_new_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_some_struct_twin_rust_async,
       parseErrorData: null,
       constMeta: kSomeStructTwinRustAsyncNewTwinRustAsyncConstMeta,
@@ -8491,11 +8987,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> someStructTwinRustAsyncNonStaticReturnErrCustomErrorTwinRustAsync(
       {required SomeStructTwinRustAsync that, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_some_struct_twin_rust_async(that);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_SomeStructTwinRustAsync_non_static_return_err_custom_error_twin_rust_async(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_some_struct_twin_rust_async(that);
+        return wire
+            .wire_SomeStructTwinRustAsync_non_static_return_err_custom_error_twin_rust_async(
+                port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_error_twin_rust_async,
       constMeta:
@@ -8517,11 +9015,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> someStructTwinRustAsyncNonStaticReturnOkCustomErrorTwinRustAsync(
       {required SomeStructTwinRustAsync that, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_some_struct_twin_rust_async(that);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_SomeStructTwinRustAsync_non_static_return_ok_custom_error_twin_rust_async(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_some_struct_twin_rust_async(that);
+        return wire
+            .wire_SomeStructTwinRustAsync_non_static_return_ok_custom_error_twin_rust_async(
+                port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_error_twin_rust_async,
       constMeta:
@@ -8544,9 +9044,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<int> someStructTwinRustAsyncStaticReturnErrCustomErrorTwinRustAsync(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_SomeStructTwinRustAsync_static_return_err_custom_error_twin_rust_async(
-              port_),
+      callFfi: (port_) {
+        return wire
+            .wire_SomeStructTwinRustAsync_static_return_err_custom_error_twin_rust_async(
+                port_);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_error_twin_rust_async,
       constMeta:
@@ -8569,9 +9071,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<int> someStructTwinRustAsyncStaticReturnOkCustomErrorTwinRustAsync(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_SomeStructTwinRustAsync_static_return_ok_custom_error_twin_rust_async(
-              port_),
+      callFfi: (port_) {
+        return wire
+            .wire_SomeStructTwinRustAsync_static_return_ok_custom_error_twin_rust_async(
+                port_);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_error_twin_rust_async,
       constMeta:
@@ -8593,8 +9097,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> customEnumErrorPanicTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_custom_enum_error_panic_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_custom_enum_error_panic_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_enum_error_twin_rust_async,
       constMeta: kCustomEnumErrorPanicTwinRustAsyncConstMeta,
@@ -8613,8 +9118,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> customEnumErrorReturnErrorTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_custom_enum_error_return_error_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_custom_enum_error_return_error_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_enum_error_twin_rust_async,
       constMeta: kCustomEnumErrorReturnErrorTwinRustAsyncConstMeta,
@@ -8633,10 +9139,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> customEnumErrorReturnOkTwinRustAsync(
       {required int arg, dynamic hint}) {
-    var arg0 = cst_encode_u_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_custom_enum_error_return_ok_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(arg);
+        return wire.wire_custom_enum_error_return_ok_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_enum_error_twin_rust_async,
       constMeta: kCustomEnumErrorReturnOkTwinRustAsyncConstMeta,
@@ -8655,11 +9163,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> customNestedErrorReturnErrorTwinRustAsync(
       {required CustomNestedErrorOuterTwinRustAsync arg, dynamic hint}) {
-    var arg0 =
-        cst_encode_box_autoadd_custom_nested_error_outer_twin_rust_async(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_custom_nested_error_return_error_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_custom_nested_error_outer_twin_rust_async(
+                arg);
+        return wire.wire_custom_nested_error_return_error_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_nested_error_outer_twin_rust_async,
       constMeta: kCustomNestedErrorReturnErrorTwinRustAsyncConstMeta,
@@ -8678,10 +9189,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> customStructErrorReturnErrorTwinRustAsync(
       {required CustomStructErrorTwinRustAsync arg, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_custom_struct_error_twin_rust_async(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_custom_struct_error_return_error_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_custom_struct_error_twin_rust_async(arg);
+        return wire.wire_custom_struct_error_return_error_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_struct_error_twin_rust_async,
       constMeta: kCustomStructErrorReturnErrorTwinRustAsyncConstMeta,
@@ -8700,7 +9214,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> funcReturnErrorTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_func_return_error_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_func_return_error_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_i_32,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kFuncReturnErrorTwinRustAsyncConstMeta,
@@ -8719,8 +9235,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> funcTypeFalliblePanicTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_func_type_fallible_panic_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_func_type_fallible_panic_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_i_32,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kFuncTypeFalliblePanicTwinRustAsyncConstMeta,
@@ -8739,8 +9256,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> funcTypeInfalliblePanicTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_func_type_infallible_panic_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_func_type_infallible_panic_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_i_32,
       parseErrorData: null,
       constMeta: kFuncTypeInfalliblePanicTwinRustAsyncConstMeta,
@@ -8759,8 +9277,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> panicWithCustomResultTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_panic_with_custom_result_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_panic_with_custom_result_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_error_twin_rust_async,
       constMeta: kPanicWithCustomResultTwinRustAsyncConstMeta,
@@ -8779,8 +9298,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> returnCustomNestedError1TwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_return_custom_nested_error_1_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_return_custom_nested_error_1_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_nested_error_1_twin_rust_async,
       constMeta: kReturnCustomNestedError1TwinRustAsyncConstMeta,
@@ -8799,8 +9319,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> returnCustomNestedError1Variant1TwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_return_custom_nested_error_1_variant1_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire
+            .wire_return_custom_nested_error_1_variant1_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_nested_error_1_twin_rust_async,
       constMeta: kReturnCustomNestedError1Variant1TwinRustAsyncConstMeta,
@@ -8819,8 +9341,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> returnCustomNestedError2TwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_return_custom_nested_error_2_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_return_custom_nested_error_2_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_nested_error_2_twin_rust_async,
       constMeta: kReturnCustomNestedError2TwinRustAsyncConstMeta,
@@ -8839,8 +9362,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> returnCustomStructErrorTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_return_custom_struct_error_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_return_custom_struct_error_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_struct_error_another_twin_rust_async,
       constMeta: kReturnCustomStructErrorTwinRustAsyncConstMeta,
@@ -8859,8 +9383,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> returnCustomStructOkTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_return_custom_struct_ok_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_return_custom_struct_ok_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_struct_error_another_twin_rust_async,
       constMeta: kReturnCustomStructOkTwinRustAsyncConstMeta,
@@ -8879,8 +9404,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> returnErrCustomErrorTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_return_err_custom_error_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_return_err_custom_error_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_error_twin_rust_async,
       constMeta: kReturnErrCustomErrorTwinRustAsyncConstMeta,
@@ -8899,10 +9425,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> returnErrorVariantTwinRustAsync(
       {required int variant, dynamic hint}) {
-    var arg0 = cst_encode_u_32(variant);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_return_error_variant_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(variant);
+        return wire.wire_return_error_variant_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_error_twin_rust_async,
       constMeta: kReturnErrorVariantTwinRustAsyncConstMeta,
@@ -8921,8 +9448,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> returnOkCustomErrorTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_return_ok_custom_error_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_return_ok_custom_error_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_error_twin_rust_async,
       constMeta: kReturnOkCustomErrorTwinRustAsyncConstMeta,
@@ -8941,8 +9469,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<String> streamSinkThrowAnyhowTwinRustAsync({dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) =>
-          wire.wire_stream_sink_throw_anyhow_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_stream_sink_throw_anyhow_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kStreamSinkThrowAnyhowTwinRustAsyncConstMeta,
@@ -8961,7 +9490,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> throwAnyhowTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_throw_anyhow_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_throw_anyhow_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kThrowAnyhowTwinRustAsyncConstMeta,
@@ -8979,9 +9510,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   CustomStructTwinSync customStructTwinSyncNewTwinSync(
       {required String message, dynamic hint}) {
-    var arg0 = cst_encode_String(message);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_CustomStructTwinSync_new_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_String(message);
+        return wire.wire_CustomStructTwinSync_new_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_custom_struct_twin_sync,
       parseErrorData: null,
       constMeta: kCustomStructTwinSyncNewTwinSyncConstMeta,
@@ -9000,11 +9533,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void customStructTwinSyncNonstaticReturnCustomStructErrorTwinSync(
       {required CustomStructTwinSync that, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_custom_struct_twin_sync(that);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire
-          .wire_CustomStructTwinSync_nonstatic_return_custom_struct_error_twin_sync(
-              arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_custom_struct_twin_sync(that);
+        return wire
+            .wire_CustomStructTwinSync_nonstatic_return_custom_struct_error_twin_sync(
+                arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_struct_error_another_twin_sync,
       constMeta:
@@ -9026,11 +9561,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   int customStructTwinSyncNonstaticReturnCustomStructOkTwinSync(
       {required CustomStructTwinSync that, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_custom_struct_twin_sync(that);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire
-          .wire_CustomStructTwinSync_nonstatic_return_custom_struct_ok_twin_sync(
-              arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_custom_struct_twin_sync(that);
+        return wire
+            .wire_CustomStructTwinSync_nonstatic_return_custom_struct_ok_twin_sync(
+                arg0);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_struct_error_another_twin_sync,
       constMeta:
@@ -9053,8 +9590,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void customStructTwinSyncStaticReturnCustomStructErrorTwinSync(
       {dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire
-          .wire_CustomStructTwinSync_static_return_custom_struct_error_twin_sync(),
+      callFfi: () {
+        return wire
+            .wire_CustomStructTwinSync_static_return_custom_struct_error_twin_sync();
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_struct_error_another_twin_sync,
       constMeta:
@@ -9076,8 +9615,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   int customStructTwinSyncStaticReturnCustomStructOkTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire
-          .wire_CustomStructTwinSync_static_return_custom_struct_ok_twin_sync(),
+      callFfi: () {
+        return wire
+            .wire_CustomStructTwinSync_static_return_custom_struct_ok_twin_sync();
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_struct_error_another_twin_sync,
       constMeta:
@@ -9099,9 +9640,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   SomeStructTwinSync someStructTwinSyncNewTwinSync(
       {required int value, dynamic hint}) {
-    var arg0 = cst_encode_u_32(value);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_SomeStructTwinSync_new_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_u_32(value);
+        return wire.wire_SomeStructTwinSync_new_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_some_struct_twin_sync,
       parseErrorData: null,
       constMeta: kSomeStructTwinSyncNewTwinSyncConstMeta,
@@ -9120,11 +9663,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   int someStructTwinSyncNonStaticReturnErrCustomErrorTwinSync(
       {required SomeStructTwinSync that, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_some_struct_twin_sync(that);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire
-          .wire_SomeStructTwinSync_non_static_return_err_custom_error_twin_sync(
-              arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_some_struct_twin_sync(that);
+        return wire
+            .wire_SomeStructTwinSync_non_static_return_err_custom_error_twin_sync(
+                arg0);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_error_twin_sync,
       constMeta:
@@ -9146,11 +9691,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   int someStructTwinSyncNonStaticReturnOkCustomErrorTwinSync(
       {required SomeStructTwinSync that, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_some_struct_twin_sync(that);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire
-          .wire_SomeStructTwinSync_non_static_return_ok_custom_error_twin_sync(
-              arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_some_struct_twin_sync(that);
+        return wire
+            .wire_SomeStructTwinSync_non_static_return_ok_custom_error_twin_sync(
+                arg0);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_error_twin_sync,
       constMeta:
@@ -9172,8 +9719,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   int someStructTwinSyncStaticReturnErrCustomErrorTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire
-          .wire_SomeStructTwinSync_static_return_err_custom_error_twin_sync(),
+      callFfi: () {
+        return wire
+            .wire_SomeStructTwinSync_static_return_err_custom_error_twin_sync();
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_error_twin_sync,
       constMeta: kSomeStructTwinSyncStaticReturnErrCustomErrorTwinSyncConstMeta,
@@ -9194,8 +9743,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   int someStructTwinSyncStaticReturnOkCustomErrorTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire
-          .wire_SomeStructTwinSync_static_return_ok_custom_error_twin_sync(),
+      callFfi: () {
+        return wire
+            .wire_SomeStructTwinSync_static_return_ok_custom_error_twin_sync();
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_error_twin_sync,
       constMeta: kSomeStructTwinSyncStaticReturnOkCustomErrorTwinSyncConstMeta,
@@ -9216,7 +9767,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void customEnumErrorPanicTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_custom_enum_error_panic_twin_sync(),
+      callFfi: () {
+        return wire.wire_custom_enum_error_panic_twin_sync();
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_enum_error_twin_sync,
       constMeta: kCustomEnumErrorPanicTwinSyncConstMeta,
@@ -9235,7 +9788,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   int customEnumErrorReturnErrorTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_custom_enum_error_return_error_twin_sync(),
+      callFfi: () {
+        return wire.wire_custom_enum_error_return_error_twin_sync();
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_enum_error_twin_sync,
       constMeta: kCustomEnumErrorReturnErrorTwinSyncConstMeta,
@@ -9253,9 +9808,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   int customEnumErrorReturnOkTwinSync({required int arg, dynamic hint}) {
-    var arg0 = cst_encode_u_32(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_custom_enum_error_return_ok_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_u_32(arg);
+        return wire.wire_custom_enum_error_return_ok_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_enum_error_twin_sync,
       constMeta: kCustomEnumErrorReturnOkTwinSyncConstMeta,
@@ -9274,9 +9831,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void customNestedErrorReturnErrorTwinSync(
       {required CustomNestedErrorOuterTwinSync arg, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_custom_nested_error_outer_twin_sync(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_custom_nested_error_return_error_twin_sync(arg0),
+      callFfi: () {
+        var arg0 =
+            cst_encode_box_autoadd_custom_nested_error_outer_twin_sync(arg);
+        return wire.wire_custom_nested_error_return_error_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_nested_error_outer_twin_sync,
       constMeta: kCustomNestedErrorReturnErrorTwinSyncConstMeta,
@@ -9295,9 +9855,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void customStructErrorReturnErrorTwinSync(
       {required CustomStructErrorTwinSync arg, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_custom_struct_error_twin_sync(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_custom_struct_error_return_error_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_custom_struct_error_twin_sync(arg);
+        return wire.wire_custom_struct_error_return_error_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_struct_error_twin_sync,
       constMeta: kCustomStructErrorReturnErrorTwinSyncConstMeta,
@@ -9316,7 +9878,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   int funcReturnErrorTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_return_error_twin_sync(),
+      callFfi: () {
+        return wire.wire_func_return_error_twin_sync();
+      },
       parseSuccessData: _dco_decode_i_32,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kFuncReturnErrorTwinSyncConstMeta,
@@ -9334,7 +9898,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   int funcTypeFalliblePanicTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_type_fallible_panic_twin_sync(),
+      callFfi: () {
+        return wire.wire_func_type_fallible_panic_twin_sync();
+      },
       parseSuccessData: _dco_decode_i_32,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kFuncTypeFalliblePanicTwinSyncConstMeta,
@@ -9353,7 +9919,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   int funcTypeInfalliblePanicTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_type_infallible_panic_twin_sync(),
+      callFfi: () {
+        return wire.wire_func_type_infallible_panic_twin_sync();
+      },
       parseSuccessData: _dco_decode_i_32,
       parseErrorData: null,
       constMeta: kFuncTypeInfalliblePanicTwinSyncConstMeta,
@@ -9372,7 +9940,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void panicWithCustomResultTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_panic_with_custom_result_twin_sync(),
+      callFfi: () {
+        return wire.wire_panic_with_custom_result_twin_sync();
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_error_twin_sync,
       constMeta: kPanicWithCustomResultTwinSyncConstMeta,
@@ -9391,7 +9961,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void returnCustomNestedError1TwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_return_custom_nested_error_1_twin_sync(),
+      callFfi: () {
+        return wire.wire_return_custom_nested_error_1_twin_sync();
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_nested_error_1_twin_sync,
       constMeta: kReturnCustomNestedError1TwinSyncConstMeta,
@@ -9410,8 +9982,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void returnCustomNestedError1Variant1TwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_return_custom_nested_error_1_variant1_twin_sync(),
+      callFfi: () {
+        return wire.wire_return_custom_nested_error_1_variant1_twin_sync();
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_nested_error_1_twin_sync,
       constMeta: kReturnCustomNestedError1Variant1TwinSyncConstMeta,
@@ -9430,7 +10003,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void returnCustomNestedError2TwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_return_custom_nested_error_2_twin_sync(),
+      callFfi: () {
+        return wire.wire_return_custom_nested_error_2_twin_sync();
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_nested_error_2_twin_sync,
       constMeta: kReturnCustomNestedError2TwinSyncConstMeta,
@@ -9449,7 +10024,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void returnCustomStructErrorTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_return_custom_struct_error_twin_sync(),
+      callFfi: () {
+        return wire.wire_return_custom_struct_error_twin_sync();
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_custom_struct_error_another_twin_sync,
       constMeta: kReturnCustomStructErrorTwinSyncConstMeta,
@@ -9468,7 +10045,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   int returnCustomStructOkTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_return_custom_struct_ok_twin_sync(),
+      callFfi: () {
+        return wire.wire_return_custom_struct_ok_twin_sync();
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_struct_error_another_twin_sync,
       constMeta: kReturnCustomStructOkTwinSyncConstMeta,
@@ -9487,7 +10066,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   int returnErrCustomErrorTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_return_err_custom_error_twin_sync(),
+      callFfi: () {
+        return wire.wire_return_err_custom_error_twin_sync();
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_error_twin_sync,
       constMeta: kReturnErrCustomErrorTwinSyncConstMeta,
@@ -9505,9 +10086,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   int returnErrorVariantTwinSync({required int variant, dynamic hint}) {
-    var arg0 = cst_encode_u_32(variant);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_return_error_variant_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_u_32(variant);
+        return wire.wire_return_error_variant_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_error_twin_sync,
       constMeta: kReturnErrorVariantTwinSyncConstMeta,
@@ -9525,7 +10108,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   int returnOkCustomErrorTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_return_ok_custom_error_twin_sync(),
+      callFfi: () {
+        return wire.wire_return_ok_custom_error_twin_sync();
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: _dco_decode_custom_error_twin_sync,
       constMeta: kReturnOkCustomErrorTwinSyncConstMeta,
@@ -9544,7 +10129,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<String> streamSinkThrowAnyhowTwinSync({dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_stream_sink_throw_anyhow_twin_sync(port_),
+      callFfi: (port_) {
+        return wire.wire_stream_sink_throw_anyhow_twin_sync(port_);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kStreamSinkThrowAnyhowTwinSyncConstMeta,
@@ -9563,7 +10150,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void throwAnyhowTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_throw_anyhow_twin_sync(),
+      callFfi: () {
+        return wire.wire_throw_anyhow_twin_sync();
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kThrowAnyhowTwinSyncConstMeta,
@@ -9581,8 +10170,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<NewSimpleStruct> callNewModuleSystemTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_call_new_module_system_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_call_new_module_system_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_new_simple_struct,
       parseErrorData: null,
       constMeta: kCallNewModuleSystemTwinRustAsyncConstMeta,
@@ -9601,8 +10191,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<OldSimpleStruct> callOldModuleSystemTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_call_old_module_system_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_call_old_module_system_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_old_simple_struct,
       parseErrorData: null,
       constMeta: kCallOldModuleSystemTwinRustAsyncConstMeta,
@@ -9621,10 +10212,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<bool> useImportedEnumTwinRustAsync(
       {required MyEnum myEnum, dynamic hint}) {
-    var arg0 = cst_encode_my_enum(myEnum);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_use_imported_enum_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_my_enum(myEnum);
+        return wire.wire_use_imported_enum_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_bool,
       parseErrorData: null,
       constMeta: kUseImportedEnumTwinRustAsyncConstMeta,
@@ -9643,10 +10235,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<bool> useImportedStructTwinRustAsync(
       {required MyStruct myStruct, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_my_struct(myStruct);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_use_imported_struct_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_my_struct(myStruct);
+        return wire.wire_use_imported_struct_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_bool,
       parseErrorData: null,
       constMeta: kUseImportedStructTwinRustAsyncConstMeta,
@@ -9665,7 +10258,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   NewSimpleStruct callNewModuleSystemTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_call_new_module_system_twin_sync(),
+      callFfi: () {
+        return wire.wire_call_new_module_system_twin_sync();
+      },
       parseSuccessData: _dco_decode_new_simple_struct,
       parseErrorData: null,
       constMeta: kCallNewModuleSystemTwinSyncConstMeta,
@@ -9684,7 +10279,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   OldSimpleStruct callOldModuleSystemTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_call_old_module_system_twin_sync(),
+      callFfi: () {
+        return wire.wire_call_old_module_system_twin_sync();
+      },
       parseSuccessData: _dco_decode_old_simple_struct,
       parseErrorData: null,
       constMeta: kCallOldModuleSystemTwinSyncConstMeta,
@@ -9702,9 +10299,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   bool useImportedEnumTwinSync({required MyEnum myEnum, dynamic hint}) {
-    var arg0 = cst_encode_my_enum(myEnum);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_use_imported_enum_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_my_enum(myEnum);
+        return wire.wire_use_imported_enum_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_bool,
       parseErrorData: null,
       constMeta: kUseImportedEnumTwinSyncConstMeta,
@@ -9721,9 +10320,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   bool useImportedStructTwinSync({required MyStruct myStruct, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_my_struct(myStruct);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_use_imported_struct_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_my_struct(myStruct);
+        return wire.wire_use_imported_struct_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_bool,
       parseErrorData: null,
       constMeta: kUseImportedStructTwinSyncConstMeta,
@@ -9741,12 +10342,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<String> concatenateWithTwinRustAsyncConcatenateStaticTwinRustAsync(
       {required String a, required String b, dynamic hint}) {
-    var arg0 = cst_encode_String(a);
-    var arg1 = cst_encode_String(b);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_ConcatenateWithTwinRustAsync_concatenate_static_twin_rust_async(
-              port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(a);
+        var arg1 = cst_encode_String(b);
+        return wire
+            .wire_ConcatenateWithTwinRustAsync_concatenate_static_twin_rust_async(
+                port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta:
@@ -9770,12 +10373,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required ConcatenateWithTwinRustAsync that,
       required String b,
       dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_concatenate_with_twin_rust_async(that);
-    var arg1 = cst_encode_String(b);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_ConcatenateWithTwinRustAsync_concatenate_twin_rust_async(
-              port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_concatenate_with_twin_rust_async(that);
+        var arg1 = cst_encode_String(b);
+        return wire
+            .wire_ConcatenateWithTwinRustAsync_concatenate_twin_rust_async(
+                port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kConcatenateWithTwinRustAsyncConcatenateTwinRustAsyncConstMeta,
@@ -9798,9 +10404,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       concatenateWithTwinRustAsyncHandleSomeStaticStreamSinkSingleArgTwinRustAsync(
           {dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire
-          .wire_ConcatenateWithTwinRustAsync_handle_some_static_stream_sink_single_arg_twin_rust_async(
-              port_),
+      callFfi: (port_) {
+        return wire
+            .wire_ConcatenateWithTwinRustAsync_handle_some_static_stream_sink_single_arg_twin_rust_async(
+                port_);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: null,
       constMeta:
@@ -9823,12 +10431,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<Log2TwinRustAsync>
       concatenateWithTwinRustAsyncHandleSomeStaticStreamSinkTwinRustAsync(
           {required int key, required int max, dynamic hint}) {
-    var arg0 = cst_encode_u_32(key);
-    var arg1 = cst_encode_u_32(max);
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire
-          .wire_ConcatenateWithTwinRustAsync_handle_some_static_stream_sink_twin_rust_async(
-              port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(key);
+        var arg1 = cst_encode_u_32(max);
+        return wire
+            .wire_ConcatenateWithTwinRustAsync_handle_some_static_stream_sink_twin_rust_async(
+                port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_log_2_twin_rust_async,
       parseErrorData: null,
       constMeta:
@@ -9850,11 +10460,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<int> concatenateWithTwinRustAsyncHandleSomeStreamSinkAt1TwinRustAsync(
       {required ConcatenateWithTwinRustAsync that, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_concatenate_with_twin_rust_async(that);
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire
-          .wire_ConcatenateWithTwinRustAsync_handle_some_stream_sink_at_1_twin_rust_async(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_concatenate_with_twin_rust_async(that);
+        return wire
+            .wire_ConcatenateWithTwinRustAsync_handle_some_stream_sink_at_1_twin_rust_async(
+                port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: null,
       constMeta:
@@ -9880,13 +10493,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           required int key,
           required int max,
           dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_concatenate_with_twin_rust_async(that);
-    var arg1 = cst_encode_u_32(key);
-    var arg2 = cst_encode_u_32(max);
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire
-          .wire_ConcatenateWithTwinRustAsync_handle_some_stream_sink_twin_rust_async(
-              port_, arg0, arg1, arg2),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_concatenate_with_twin_rust_async(that);
+        var arg1 = cst_encode_u_32(key);
+        var arg2 = cst_encode_u_32(max);
+        return wire
+            .wire_ConcatenateWithTwinRustAsync_handle_some_stream_sink_twin_rust_async(
+                port_, arg0, arg1, arg2);
+      },
       parseSuccessData: _dco_decode_log_2_twin_rust_async,
       parseErrorData: null,
       constMeta:
@@ -9909,10 +10525,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<ConcatenateWithTwinRustAsync>
       concatenateWithTwinRustAsyncNewTwinRustAsync(
           {required String a, dynamic hint}) {
-    var arg0 = cst_encode_String(a);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_ConcatenateWithTwinRustAsync_new_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(a);
+        return wire.wire_ConcatenateWithTwinRustAsync_new_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_concatenate_with_twin_rust_async,
       parseErrorData: null,
       constMeta: kConcatenateWithTwinRustAsyncNewTwinRustAsyncConstMeta,
@@ -9934,12 +10552,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       required int y,
       required int z,
       dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_sum_with_twin_rust_async(that);
-    var arg1 = cst_encode_u_32(y);
-    var arg2 = cst_encode_u_32(z);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_SumWithTwinRustAsync_sum_twin_rust_async(
-          port_, arg0, arg1, arg2),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_sum_with_twin_rust_async(that);
+        var arg1 = cst_encode_u_32(y);
+        var arg2 = cst_encode_u_32(z);
+        return wire.wire_SumWithTwinRustAsync_sum_twin_rust_async(
+            port_, arg0, arg1, arg2);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: null,
       constMeta: kSumWithTwinRustAsyncSumTwinRustAsyncConstMeta,
@@ -9958,12 +10578,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<SumWithTwinRustAsyncArray3> getSumArrayTwinRustAsync(
       {required int a, required int b, required int c, dynamic hint}) {
-    var arg0 = cst_encode_u_32(a);
-    var arg1 = cst_encode_u_32(b);
-    var arg2 = cst_encode_u_32(c);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_get_sum_array_twin_rust_async(port_, arg0, arg1, arg2),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(a);
+        var arg1 = cst_encode_u_32(b);
+        var arg2 = cst_encode_u_32(c);
+        return wire.wire_get_sum_array_twin_rust_async(port_, arg0, arg1, arg2);
+      },
       parseSuccessData: _dco_decode_sum_with_twin_rust_async_array_3,
       parseErrorData: null,
       constMeta: kGetSumArrayTwinRustAsyncConstMeta,
@@ -9981,7 +10602,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<SumWithTwinRustAsync> getSumStructTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_get_sum_struct_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_get_sum_struct_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_sum_with_twin_rust_async,
       parseErrorData: null,
       constMeta: kGetSumStructTwinRustAsyncConstMeta,
@@ -9999,12 +10622,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   String concatenateWithTwinSyncConcatenateStaticTwinSync(
       {required String a, required String b, dynamic hint}) {
-    var arg0 = cst_encode_String(a);
-    var arg1 = cst_encode_String(b);
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_ConcatenateWithTwinSync_concatenate_static_twin_sync(
-              arg0, arg1),
+      callFfi: () {
+        var arg0 = cst_encode_String(a);
+        var arg1 = cst_encode_String(b);
+        return wire.wire_ConcatenateWithTwinSync_concatenate_static_twin_sync(
+            arg0, arg1);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kConcatenateWithTwinSyncConcatenateStaticTwinSyncConstMeta,
@@ -10026,11 +10650,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required ConcatenateWithTwinSync that,
       required String b,
       dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_concatenate_with_twin_sync(that);
-    var arg1 = cst_encode_String(b);
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_ConcatenateWithTwinSync_concatenate_twin_sync(arg0, arg1),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_concatenate_with_twin_sync(that);
+        var arg1 = cst_encode_String(b);
+        return wire.wire_ConcatenateWithTwinSync_concatenate_twin_sync(
+            arg0, arg1);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kConcatenateWithTwinSyncConcatenateTwinSyncConstMeta,
@@ -10051,9 +10677,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       concatenateWithTwinSyncHandleSomeStaticStreamSinkSingleArgTwinSync(
           {dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire
-          .wire_ConcatenateWithTwinSync_handle_some_static_stream_sink_single_arg_twin_sync(
-              port_),
+      callFfi: (port_) {
+        return wire
+            .wire_ConcatenateWithTwinSync_handle_some_static_stream_sink_single_arg_twin_sync(
+                port_);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: null,
       constMeta:
@@ -10076,12 +10704,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<Log2TwinSync>
       concatenateWithTwinSyncHandleSomeStaticStreamSinkTwinSync(
           {required int key, required int max, dynamic hint}) {
-    var arg0 = cst_encode_u_32(key);
-    var arg1 = cst_encode_u_32(max);
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire
-          .wire_ConcatenateWithTwinSync_handle_some_static_stream_sink_twin_sync(
-              port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(key);
+        var arg1 = cst_encode_u_32(max);
+        return wire
+            .wire_ConcatenateWithTwinSync_handle_some_static_stream_sink_twin_sync(
+                port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_log_2_twin_sync,
       parseErrorData: null,
       constMeta:
@@ -10103,11 +10733,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<int> concatenateWithTwinSyncHandleSomeStreamSinkAt1TwinSync(
       {required ConcatenateWithTwinSync that, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_concatenate_with_twin_sync(that);
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire
-          .wire_ConcatenateWithTwinSync_handle_some_stream_sink_at_1_twin_sync(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_concatenate_with_twin_sync(that);
+        return wire
+            .wire_ConcatenateWithTwinSync_handle_some_stream_sink_at_1_twin_sync(
+                port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: null,
       constMeta:
@@ -10132,13 +10764,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       required int key,
       required int max,
       dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_concatenate_with_twin_sync(that);
-    var arg1 = cst_encode_u_32(key);
-    var arg2 = cst_encode_u_32(max);
     return handler.executeStream(StreamTask(
-      callFfi: (port_) =>
-          wire.wire_ConcatenateWithTwinSync_handle_some_stream_sink_twin_sync(
-              port_, arg0, arg1, arg2),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_concatenate_with_twin_sync(that);
+        var arg1 = cst_encode_u_32(key);
+        var arg2 = cst_encode_u_32(max);
+        return wire
+            .wire_ConcatenateWithTwinSync_handle_some_stream_sink_twin_sync(
+                port_, arg0, arg1, arg2);
+      },
       parseSuccessData: _dco_decode_log_2_twin_sync,
       parseErrorData: null,
       constMeta: kConcatenateWithTwinSyncHandleSomeStreamSinkTwinSyncConstMeta,
@@ -10159,9 +10793,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   ConcatenateWithTwinSync concatenateWithTwinSyncNewTwinSync(
       {required String a, dynamic hint}) {
-    var arg0 = cst_encode_String(a);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_ConcatenateWithTwinSync_new_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_String(a);
+        return wire.wire_ConcatenateWithTwinSync_new_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_concatenate_with_twin_sync,
       parseErrorData: null,
       constMeta: kConcatenateWithTwinSyncNewTwinSyncConstMeta,
@@ -10183,11 +10819,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       required int y,
       required int z,
       dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_sum_with_twin_sync(that);
-    var arg1 = cst_encode_u_32(y);
-    var arg2 = cst_encode_u_32(z);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_SumWithTwinSync_sum_twin_sync(arg0, arg1, arg2),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_sum_with_twin_sync(that);
+        var arg1 = cst_encode_u_32(y);
+        var arg2 = cst_encode_u_32(z);
+        return wire.wire_SumWithTwinSync_sum_twin_sync(arg0, arg1, arg2);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: null,
       constMeta: kSumWithTwinSyncSumTwinSyncConstMeta,
@@ -10205,11 +10843,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   SumWithTwinSyncArray3 getSumArrayTwinSync(
       {required int a, required int b, required int c, dynamic hint}) {
-    var arg0 = cst_encode_u_32(a);
-    var arg1 = cst_encode_u_32(b);
-    var arg2 = cst_encode_u_32(c);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_get_sum_array_twin_sync(arg0, arg1, arg2),
+      callFfi: () {
+        var arg0 = cst_encode_u_32(a);
+        var arg1 = cst_encode_u_32(b);
+        var arg2 = cst_encode_u_32(c);
+        return wire.wire_get_sum_array_twin_sync(arg0, arg1, arg2);
+      },
       parseSuccessData: _dco_decode_sum_with_twin_sync_array_3,
       parseErrorData: null,
       constMeta: kGetSumArrayTwinSyncConstMeta,
@@ -10227,7 +10867,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   SumWithTwinSync getSumStructTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_get_sum_struct_twin_sync(),
+      callFfi: () {
+        return wire.wire_get_sum_struct_twin_sync();
+      },
       parseSuccessData: _dco_decode_sum_with_twin_sync,
       parseErrorData: null,
       constMeta: kGetSumStructTwinSyncConstMeta,
@@ -10245,7 +10887,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<ApplicationSettings> appSettingsStreamTwinRustAsync({dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_app_settings_stream_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_app_settings_stream_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_application_settings,
       parseErrorData: null,
       constMeta: kAppSettingsStreamTwinRustAsyncConstMeta,
@@ -10265,8 +10909,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<List<ApplicationSettings>> appSettingsVecStreamTwinRustAsync(
       {dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) =>
-          wire.wire_app_settings_vec_stream_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_app_settings_vec_stream_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_list_application_settings,
       parseErrorData: null,
       constMeta: kAppSettingsVecStreamTwinRustAsyncConstMeta,
@@ -10284,9 +10929,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<int?> firstNumberTwinRustAsync({required Numbers nums, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_numbers(nums);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_first_number_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_numbers(nums);
+        return wire.wire_first_number_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
       parseErrorData: null,
       constMeta: kFirstNumberTwinRustAsyncConstMeta,
@@ -10304,9 +10951,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int?> firstSequenceTwinRustAsync(
       {required Sequences seqs, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_sequences(seqs);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_first_sequence_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_sequences(seqs);
+        return wire.wire_first_sequence_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
       parseErrorData: null,
       constMeta: kFirstSequenceTwinRustAsyncConstMeta,
@@ -10324,7 +10973,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<ApplicationSettings> getAppSettingsTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_get_app_settings_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_get_app_settings_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_application_settings,
       parseErrorData: null,
       constMeta: kGetAppSettingsTwinRustAsyncConstMeta,
@@ -10344,8 +10995,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<ApplicationSettings> getFallibleAppSettingsTwinRustAsync(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_get_fallible_app_settings_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_get_fallible_app_settings_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_application_settings,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kGetFallibleAppSettingsTwinRustAsyncConstMeta,
@@ -10364,7 +11016,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<ApplicationMessage> getMessageTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_get_message_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_get_message_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_application_message,
       parseErrorData: null,
       constMeta: kGetMessageTwinRustAsyncConstMeta,
@@ -10382,10 +11036,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<bool> isAppEmbeddedTwinRustAsync(
       {required ApplicationSettings appSettings, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_application_settings(appSettings);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_is_app_embedded_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_application_settings(appSettings);
+        return wire.wire_is_app_embedded_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_bool,
       parseErrorData: null,
       constMeta: kIsAppEmbeddedTwinRustAsyncConstMeta,
@@ -10404,7 +11059,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<MirrorStructTwinRustAsync> mirrorStructStreamTwinRustAsync(
       {dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_mirror_struct_stream_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_mirror_struct_stream_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_mirror_struct_twin_rust_async,
       parseErrorData: null,
       constMeta: kMirrorStructStreamTwinRustAsyncConstMeta,
@@ -10424,7 +11081,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<(ApplicationSettings, RawStringEnumMirrored)>
       mirrorTupleStreamTwinRustAsync({dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_mirror_tuple_stream_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_mirror_tuple_stream_twin_rust_async(port_);
+      },
       parseSuccessData:
           _dco_decode_record_application_settings_raw_string_enum_mirrored,
       parseErrorData: null,
@@ -10444,11 +11103,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Numbers> repeatNumberTwinRustAsync(
       {required int num, required int times, dynamic hint}) {
-    var arg0 = cst_encode_i_32(num);
-    var arg1 = cst_encode_usize(times);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_repeat_number_twin_rust_async(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(num);
+        var arg1 = cst_encode_usize(times);
+        return wire.wire_repeat_number_twin_rust_async(port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_numbers,
       parseErrorData: null,
       constMeta: kRepeatNumberTwinRustAsyncConstMeta,
@@ -10466,11 +11126,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Sequences> repeatSequenceTwinRustAsync(
       {required int seq, required int times, dynamic hint}) {
-    var arg0 = cst_encode_i_32(seq);
-    var arg1 = cst_encode_usize(times);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_repeat_sequence_twin_rust_async(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(seq);
+        var arg1 = cst_encode_usize(times);
+        return wire.wire_repeat_sequence_twin_rust_async(port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_sequences,
       parseErrorData: null,
       constMeta: kRepeatSequenceTwinRustAsyncConstMeta,
@@ -10490,8 +11151,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<ContainsMirroredSubStructTwinRustAsync>
       testContainsMirroredSubStructTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_test_contains_mirrored_sub_struct_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire
+            .wire_test_contains_mirrored_sub_struct_twin_rust_async(port_);
+      },
       parseSuccessData:
           _dco_decode_contains_mirrored_sub_struct_twin_rust_async,
       parseErrorData: null,
@@ -10512,8 +11175,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<List<RawStringMirrored>> testFallibleOfRawStringMirroredTwinRustAsync(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_test_fallible_of_raw_string_mirrored_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire
+            .wire_test_fallible_of_raw_string_mirrored_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_list_raw_string_mirrored,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kTestFallibleOfRawStringMirroredTwinRustAsyncConstMeta,
@@ -10533,8 +11198,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<List<RawStringEnumMirrored>>
       testListOfNestedEnumsMirroredTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_test_list_of_nested_enums_mirrored_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire
+            .wire_test_list_of_nested_enums_mirrored_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_list_raw_string_enum_mirrored,
       parseErrorData: null,
       constMeta: kTestListOfNestedEnumsMirroredTwinRustAsyncConstMeta,
@@ -10554,8 +11221,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<ListOfNestedRawStringMirrored>
       testListOfRawNestedStringMirroredTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_test_list_of_raw_nested_string_mirrored_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire
+            .wire_test_list_of_raw_nested_string_mirrored_twin_rust_async(
+                port_);
+      },
       parseSuccessData: _dco_decode_list_of_nested_raw_string_mirrored,
       parseErrorData: null,
       constMeta: kTestListOfRawNestedStringMirroredTwinRustAsyncConstMeta,
@@ -10575,8 +11245,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<NestedRawStringMirrored> testNestedRawStringMirroredTwinRustAsync(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_test_nested_raw_string_mirrored_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_test_nested_raw_string_mirrored_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_nested_raw_string_mirrored,
       parseErrorData: null,
       constMeta: kTestNestedRawStringMirroredTwinRustAsyncConstMeta,
@@ -10595,10 +11266,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<RawStringEnumMirrored> testRawStringEnumMirroredTwinRustAsync(
       {required bool nested, dynamic hint}) {
-    var arg0 = cst_encode_bool(nested);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_test_raw_string_enum_mirrored_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_bool(nested);
+        return wire.wire_test_raw_string_enum_mirrored_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_raw_string_enum_mirrored,
       parseErrorData: null,
       constMeta: kTestRawStringEnumMirroredTwinRustAsyncConstMeta,
@@ -10617,8 +11290,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<RawStringMirrored> testRawStringMirroredTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_test_raw_string_mirrored_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_test_raw_string_mirrored_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_raw_string_mirrored,
       parseErrorData: null,
       constMeta: kTestRawStringMirroredTwinRustAsyncConstMeta,
@@ -10637,7 +11311,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<ApplicationSettings> appSettingsStreamTwinSync({dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_app_settings_stream_twin_sync(port_),
+      callFfi: (port_) {
+        return wire.wire_app_settings_stream_twin_sync(port_);
+      },
       parseSuccessData: _dco_decode_application_settings,
       parseErrorData: null,
       constMeta: kAppSettingsStreamTwinSyncConstMeta,
@@ -10656,7 +11332,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<List<ApplicationSettings>> appSettingsVecStreamTwinSync(
       {dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_app_settings_vec_stream_twin_sync(port_),
+      callFfi: (port_) {
+        return wire.wire_app_settings_vec_stream_twin_sync(port_);
+      },
       parseSuccessData: _dco_decode_list_application_settings,
       parseErrorData: null,
       constMeta: kAppSettingsVecStreamTwinSyncConstMeta,
@@ -10674,9 +11352,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   int? firstNumberTwinSync({required Numbers nums, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_numbers(nums);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_first_number_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_numbers(nums);
+        return wire.wire_first_number_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
       parseErrorData: null,
       constMeta: kFirstNumberTwinSyncConstMeta,
@@ -10693,9 +11373,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   int? firstSequenceTwinSync({required Sequences seqs, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_sequences(seqs);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_first_sequence_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_sequences(seqs);
+        return wire.wire_first_sequence_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
       parseErrorData: null,
       constMeta: kFirstSequenceTwinSyncConstMeta,
@@ -10713,7 +11395,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   ApplicationSettings getAppSettingsTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_get_app_settings_twin_sync(),
+      callFfi: () {
+        return wire.wire_get_app_settings_twin_sync();
+      },
       parseSuccessData: _dco_decode_application_settings,
       parseErrorData: null,
       constMeta: kGetAppSettingsTwinSyncConstMeta,
@@ -10731,7 +11415,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   ApplicationSettings getFallibleAppSettingsTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_get_fallible_app_settings_twin_sync(),
+      callFfi: () {
+        return wire.wire_get_fallible_app_settings_twin_sync();
+      },
       parseSuccessData: _dco_decode_application_settings,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kGetFallibleAppSettingsTwinSyncConstMeta,
@@ -10750,7 +11436,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   ApplicationMessage getMessageTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_get_message_twin_sync(),
+      callFfi: () {
+        return wire.wire_get_message_twin_sync();
+      },
       parseSuccessData: _dco_decode_application_message,
       parseErrorData: null,
       constMeta: kGetMessageTwinSyncConstMeta,
@@ -10768,9 +11456,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   bool isAppEmbeddedTwinSync(
       {required ApplicationSettings appSettings, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_application_settings(appSettings);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_is_app_embedded_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_application_settings(appSettings);
+        return wire.wire_is_app_embedded_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_bool,
       parseErrorData: null,
       constMeta: kIsAppEmbeddedTwinSyncConstMeta,
@@ -10788,7 +11478,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<MirrorStructTwinSync> mirrorStructStreamTwinSync({dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_mirror_struct_stream_twin_sync(port_),
+      callFfi: (port_) {
+        return wire.wire_mirror_struct_stream_twin_sync(port_);
+      },
       parseSuccessData: _dco_decode_mirror_struct_twin_sync,
       parseErrorData: null,
       constMeta: kMirrorStructStreamTwinSyncConstMeta,
@@ -10807,7 +11499,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<(ApplicationSettings, RawStringEnumMirrored)>
       mirrorTupleStreamTwinSync({dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_mirror_tuple_stream_twin_sync(port_),
+      callFfi: (port_) {
+        return wire.wire_mirror_tuple_stream_twin_sync(port_);
+      },
       parseSuccessData:
           _dco_decode_record_application_settings_raw_string_enum_mirrored,
       parseErrorData: null,
@@ -10826,10 +11520,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Numbers repeatNumberTwinSync(
       {required int num, required int times, dynamic hint}) {
-    var arg0 = cst_encode_i_32(num);
-    var arg1 = cst_encode_usize(times);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_repeat_number_twin_sync(arg0, arg1),
+      callFfi: () {
+        var arg0 = cst_encode_i_32(num);
+        var arg1 = cst_encode_usize(times);
+        return wire.wire_repeat_number_twin_sync(arg0, arg1);
+      },
       parseSuccessData: _dco_decode_numbers,
       parseErrorData: null,
       constMeta: kRepeatNumberTwinSyncConstMeta,
@@ -10847,10 +11543,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Sequences repeatSequenceTwinSync(
       {required int seq, required int times, dynamic hint}) {
-    var arg0 = cst_encode_i_32(seq);
-    var arg1 = cst_encode_usize(times);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_repeat_sequence_twin_sync(arg0, arg1),
+      callFfi: () {
+        var arg0 = cst_encode_i_32(seq);
+        var arg1 = cst_encode_usize(times);
+        return wire.wire_repeat_sequence_twin_sync(arg0, arg1);
+      },
       parseSuccessData: _dco_decode_sequences,
       parseErrorData: null,
       constMeta: kRepeatSequenceTwinSyncConstMeta,
@@ -10869,7 +11567,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   ContainsMirroredSubStructTwinSync testContainsMirroredSubStructTwinSync(
       {dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_test_contains_mirrored_sub_struct_twin_sync(),
+      callFfi: () {
+        return wire.wire_test_contains_mirrored_sub_struct_twin_sync();
+      },
       parseSuccessData: _dco_decode_contains_mirrored_sub_struct_twin_sync,
       parseErrorData: null,
       constMeta: kTestContainsMirroredSubStructTwinSyncConstMeta,
@@ -10889,7 +11589,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<RawStringMirrored> testFallibleOfRawStringMirroredTwinSync(
       {dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_test_fallible_of_raw_string_mirrored_twin_sync(),
+      callFfi: () {
+        return wire.wire_test_fallible_of_raw_string_mirrored_twin_sync();
+      },
       parseSuccessData: _dco_decode_list_raw_string_mirrored,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kTestFallibleOfRawStringMirroredTwinSyncConstMeta,
@@ -10909,7 +11611,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   List<RawStringEnumMirrored> testListOfNestedEnumsMirroredTwinSync(
       {dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_test_list_of_nested_enums_mirrored_twin_sync(),
+      callFfi: () {
+        return wire.wire_test_list_of_nested_enums_mirrored_twin_sync();
+      },
       parseSuccessData: _dco_decode_list_raw_string_enum_mirrored,
       parseErrorData: null,
       constMeta: kTestListOfNestedEnumsMirroredTwinSyncConstMeta,
@@ -10929,8 +11633,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   ListOfNestedRawStringMirrored testListOfRawNestedStringMirroredTwinSync(
       {dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_test_list_of_raw_nested_string_mirrored_twin_sync(),
+      callFfi: () {
+        return wire.wire_test_list_of_raw_nested_string_mirrored_twin_sync();
+      },
       parseSuccessData: _dco_decode_list_of_nested_raw_string_mirrored,
       parseErrorData: null,
       constMeta: kTestListOfRawNestedStringMirroredTwinSyncConstMeta,
@@ -10949,7 +11654,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   NestedRawStringMirrored testNestedRawStringMirroredTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_test_nested_raw_string_mirrored_twin_sync(),
+      callFfi: () {
+        return wire.wire_test_nested_raw_string_mirrored_twin_sync();
+      },
       parseSuccessData: _dco_decode_nested_raw_string_mirrored,
       parseErrorData: null,
       constMeta: kTestNestedRawStringMirroredTwinSyncConstMeta,
@@ -10968,9 +11675,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   RawStringEnumMirrored testRawStringEnumMirroredTwinSync(
       {required bool nested, dynamic hint}) {
-    var arg0 = cst_encode_bool(nested);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_test_raw_string_enum_mirrored_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_bool(nested);
+        return wire.wire_test_raw_string_enum_mirrored_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_raw_string_enum_mirrored,
       parseErrorData: null,
       constMeta: kTestRawStringEnumMirroredTwinSyncConstMeta,
@@ -10989,7 +11698,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   RawStringMirrored testRawStringMirroredTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_test_raw_string_mirrored_twin_sync(),
+      callFfi: () {
+        return wire.wire_test_raw_string_mirrored_twin_sync();
+      },
       parseSuccessData: _dco_decode_raw_string_mirrored,
       parseErrorData: null,
       constMeta: kTestRawStringMirroredTwinSyncConstMeta,
@@ -11009,7 +11720,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<BigBuffersTwinRustAsync> handleBigBuffersTwinRustAsync(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_big_buffers_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_handle_big_buffers_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_big_buffers_twin_rust_async,
       parseErrorData: null,
       constMeta: kHandleBigBuffersTwinRustAsyncConstMeta,
@@ -11028,10 +11741,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<MyTreeNodeTwinRustAsync> handleComplexStructTwinRustAsync(
       {required MyTreeNodeTwinRustAsync s, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_my_tree_node_twin_rust_async(s);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_complex_struct_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_my_tree_node_twin_rust_async(s);
+        return wire.wire_handle_complex_struct_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_my_tree_node_twin_rust_async,
       parseErrorData: null,
       constMeta: kHandleComplexStructTwinRustAsyncConstMeta,
@@ -11050,10 +11764,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<MyNestedStructTwinRustAsync> handleNestedStructTwinRustAsync(
       {required MyNestedStructTwinRustAsync s, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_my_nested_struct_twin_rust_async(s);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_nested_struct_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_my_nested_struct_twin_rust_async(s);
+        return wire.wire_handle_nested_struct_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_my_nested_struct_twin_rust_async,
       parseErrorData: null,
       constMeta: kHandleNestedStructTwinRustAsyncConstMeta,
@@ -11071,9 +11786,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> handleStringTwinRustAsync({required String s, dynamic hint}) {
-    var arg0 = cst_encode_String(s);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_string_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(s);
+        return wire.wire_handle_string_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kHandleStringTwinRustAsyncConstMeta,
@@ -11091,11 +11808,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<MySize> handleStructTwinRustAsync(
       {required MySize arg, required MySize boxed, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_my_size(arg);
-    var arg1 = cst_encode_box_my_size(boxed);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_struct_twin_rust_async(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_my_size(arg);
+        var arg1 = cst_encode_box_my_size(boxed);
+        return wire.wire_handle_struct_twin_rust_async(port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_my_size,
       parseErrorData: null,
       constMeta: kHandleStructTwinRustAsyncConstMeta,
@@ -11113,9 +11831,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Uint8List> handleVecU8TwinRustAsync(
       {required Uint8List v, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_u_8(v);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_vec_u8_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_u_8(v);
+        return wire.wire_handle_vec_u8_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_u_8,
       parseErrorData: null,
       constMeta: kHandleVecU8TwinRustAsyncConstMeta,
@@ -11133,10 +11853,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<List<WeekdaysTwinRustAsync>> listOfPrimitiveEnumsTwinRustAsync(
       {required List<WeekdaysTwinRustAsync> weekdays, dynamic hint}) {
-    var arg0 = cst_encode_list_weekdays_twin_rust_async(weekdays);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_list_of_primitive_enums_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_weekdays_twin_rust_async(weekdays);
+        return wire.wire_list_of_primitive_enums_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_weekdays_twin_rust_async,
       parseErrorData: null,
       constMeta: kListOfPrimitiveEnumsTwinRustAsyncConstMeta,
@@ -11155,9 +11876,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<AbcTwinRustAsync> testAbcEnumTwinRustAsync(
       {required AbcTwinRustAsync abc, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_abc_twin_rust_async(abc);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_test_abc_enum_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_abc_twin_rust_async(abc);
+        return wire.wire_test_abc_enum_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_abc_twin_rust_async,
       parseErrorData: null,
       constMeta: kTestAbcEnumTwinRustAsyncConstMeta,
@@ -11175,10 +11898,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<StructWithEnumTwinRustAsync> testStructWithEnumTwinRustAsync(
       {required StructWithEnumTwinRustAsync se, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_struct_with_enum_twin_rust_async(se);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_test_struct_with_enum_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_struct_with_enum_twin_rust_async(se);
+        return wire.wire_test_struct_with_enum_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_struct_with_enum_twin_rust_async,
       parseErrorData: null,
       constMeta: kTestStructWithEnumTwinRustAsyncConstMeta,
@@ -11197,7 +11921,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   BigBuffersTwinSync handleBigBuffersTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_big_buffers_twin_sync(),
+      callFfi: () {
+        return wire.wire_handle_big_buffers_twin_sync();
+      },
       parseSuccessData: _dco_decode_big_buffers_twin_sync,
       parseErrorData: null,
       constMeta: kHandleBigBuffersTwinSyncConstMeta,
@@ -11215,9 +11941,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   MyTreeNodeTwinSync handleComplexStructTwinSync(
       {required MyTreeNodeTwinSync s, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_my_tree_node_twin_sync(s);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_complex_struct_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_my_tree_node_twin_sync(s);
+        return wire.wire_handle_complex_struct_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_my_tree_node_twin_sync,
       parseErrorData: null,
       constMeta: kHandleComplexStructTwinSyncConstMeta,
@@ -11236,9 +11964,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   MyNestedStructTwinSync handleNestedStructTwinSync(
       {required MyNestedStructTwinSync s, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_my_nested_struct_twin_sync(s);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_nested_struct_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_my_nested_struct_twin_sync(s);
+        return wire.wire_handle_nested_struct_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_my_nested_struct_twin_sync,
       parseErrorData: null,
       constMeta: kHandleNestedStructTwinSyncConstMeta,
@@ -11255,9 +11985,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   String handleStringTwinSync({required String s, dynamic hint}) {
-    var arg0 = cst_encode_String(s);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_string_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_String(s);
+        return wire.wire_handle_string_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kHandleStringTwinSyncConstMeta,
@@ -11275,10 +12007,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   MySize handleStructTwinSync(
       {required MySize arg, required MySize boxed, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_my_size(arg);
-    var arg1 = cst_encode_box_my_size(boxed);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_struct_twin_sync(arg0, arg1),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_my_size(arg);
+        var arg1 = cst_encode_box_my_size(boxed);
+        return wire.wire_handle_struct_twin_sync(arg0, arg1);
+      },
       parseSuccessData: _dco_decode_my_size,
       parseErrorData: null,
       constMeta: kHandleStructTwinSyncConstMeta,
@@ -11295,9 +12029,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Uint8List handleVecU8TwinSync({required Uint8List v, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_u_8(v);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_vec_u8_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_list_prim_u_8(v);
+        return wire.wire_handle_vec_u8_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_u_8,
       parseErrorData: null,
       constMeta: kHandleVecU8TwinSyncConstMeta,
@@ -11315,9 +12051,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   List<WeekdaysTwinSync> listOfPrimitiveEnumsTwinSync(
       {required List<WeekdaysTwinSync> weekdays, dynamic hint}) {
-    var arg0 = cst_encode_list_weekdays_twin_sync(weekdays);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_list_of_primitive_enums_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_list_weekdays_twin_sync(weekdays);
+        return wire.wire_list_of_primitive_enums_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_list_weekdays_twin_sync,
       parseErrorData: null,
       constMeta: kListOfPrimitiveEnumsTwinSyncConstMeta,
@@ -11335,9 +12073,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   AbcTwinSync testAbcEnumTwinSync({required AbcTwinSync abc, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_abc_twin_sync(abc);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_test_abc_enum_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_abc_twin_sync(abc);
+        return wire.wire_test_abc_enum_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_abc_twin_sync,
       parseErrorData: null,
       constMeta: kTestAbcEnumTwinSyncConstMeta,
@@ -11355,9 +12095,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   StructWithEnumTwinSync testStructWithEnumTwinSync(
       {required StructWithEnumTwinSync se, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_struct_with_enum_twin_sync(se);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_test_struct_with_enum_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_struct_with_enum_twin_sync(se);
+        return wire.wire_test_struct_with_enum_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_struct_with_enum_twin_sync,
       parseErrorData: null,
       constMeta: kTestStructWithEnumTwinSyncConstMeta,
@@ -11375,9 +12117,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<EmptyTwinRustAsync> emptyStructTwinRustAsync(
       {required EmptyTwinRustAsync empty, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_empty_twin_rust_async(empty);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_empty_struct_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_empty_twin_rust_async(empty);
+        return wire.wire_empty_struct_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_empty_twin_rust_async,
       parseErrorData: null,
       constMeta: kEmptyStructTwinRustAsyncConstMeta,
@@ -11395,7 +12139,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> funcReturnUnitTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_func_return_unit_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_func_return_unit_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kFuncReturnUnitTwinRustAsyncConstMeta,
@@ -11413,9 +12159,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> funcStringTwinRustAsync({required String arg, dynamic hint}) {
-    var arg0 = cst_encode_String(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_func_string_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(arg);
+        return wire.wire_func_string_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kFuncStringTwinRustAsyncConstMeta,
@@ -11433,10 +12181,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<List<MySize>> handleListOfStructTwinRustAsync(
       {required List<MySize> l, dynamic hint}) {
-    var arg0 = cst_encode_list_my_size(l);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_list_of_struct_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_my_size(l);
+        return wire.wire_handle_list_of_struct_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_my_size,
       parseErrorData: null,
       constMeta: kHandleListOfStructTwinRustAsyncConstMeta,
@@ -11455,10 +12204,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<List<String>> handleStringListTwinRustAsync(
       {required List<String> names, dynamic hint}) {
-    var arg0 = cst_encode_StringList(names);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_string_list_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_StringList(names);
+        return wire.wire_handle_string_list_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_StringList,
       parseErrorData: null,
       constMeta: kHandleStringListTwinRustAsyncConstMeta,
@@ -11477,9 +12227,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   EmptyTwinSync emptyStructTwinSync(
       {required EmptyTwinSync empty, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_empty_twin_sync(empty);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_empty_struct_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_empty_twin_sync(empty);
+        return wire.wire_empty_struct_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_empty_twin_sync,
       parseErrorData: null,
       constMeta: kEmptyStructTwinSyncConstMeta,
@@ -11497,7 +12249,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void funcReturnUnitTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_return_unit_twin_sync(),
+      callFfi: () {
+        return wire.wire_func_return_unit_twin_sync();
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kFuncReturnUnitTwinSyncConstMeta,
@@ -11514,9 +12268,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   String funcStringTwinSync({required String arg, dynamic hint}) {
-    var arg0 = cst_encode_String(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_string_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_String(arg);
+        return wire.wire_func_string_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kFuncStringTwinSyncConstMeta,
@@ -11534,9 +12290,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   List<MySize> handleListOfStructTwinSync(
       {required List<MySize> l, dynamic hint}) {
-    var arg0 = cst_encode_list_my_size(l);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_list_of_struct_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_list_my_size(l);
+        return wire.wire_handle_list_of_struct_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_list_my_size,
       parseErrorData: null,
       constMeta: kHandleListOfStructTwinSyncConstMeta,
@@ -11554,9 +12312,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   List<String> handleStringListTwinSync(
       {required List<String> names, dynamic hint}) {
-    var arg0 = cst_encode_StringList(names);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_string_list_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_StringList(names);
+        return wire.wire_handle_string_list_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_StringList,
       parseErrorData: null,
       constMeta: kHandleStringListTwinSyncConstMeta,
@@ -11574,9 +12334,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<NewTypeIntTwinRustAsync> handleNewtypeTwinRustAsync(
       {required NewTypeIntTwinRustAsync arg, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_new_type_int_twin_rust_async(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_newtype_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_new_type_int_twin_rust_async(arg);
+        return wire.wire_handle_newtype_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_new_type_int_twin_rust_async,
       parseErrorData: null,
       constMeta: kHandleNewtypeTwinRustAsyncConstMeta,
@@ -11594,9 +12356,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   NewTypeIntTwinSync handleNewtypeTwinSync(
       {required NewTypeIntTwinSync arg, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_new_type_int_twin_sync(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_newtype_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_new_type_int_twin_sync(arg);
+        return wire.wire_handle_newtype_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_new_type_int_twin_sync,
       parseErrorData: null,
       constMeta: kHandleNewtypeTwinSyncConstMeta,
@@ -11614,10 +12378,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<bool?> exampleOptionalPrimitiveTypeBoolTwinNormal(
       {bool? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_bool(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_optional_primitive_type_bool_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_bool(arg);
+        return wire.wire_example_optional_primitive_type_bool_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_bool,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeBoolTwinNormalConstMeta,
@@ -11636,10 +12402,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<double?> exampleOptionalPrimitiveTypeF32TwinNormal(
       {double? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_f_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_optional_primitive_type_f32_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_f_32(arg);
+        return wire.wire_example_optional_primitive_type_f32_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_f_32,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeF32TwinNormalConstMeta,
@@ -11658,10 +12426,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<double?> exampleOptionalPrimitiveTypeF64TwinNormal(
       {double? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_f_64(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_optional_primitive_type_f64_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_f_64(arg);
+        return wire.wire_example_optional_primitive_type_f64_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_f_64,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeF64TwinNormalConstMeta,
@@ -11680,10 +12450,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int?> exampleOptionalPrimitiveTypeI16TwinNormal(
       {int? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_i_16(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_optional_primitive_type_i16_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_i_16(arg);
+        return wire.wire_example_optional_primitive_type_i16_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_i_16,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeI16TwinNormalConstMeta,
@@ -11702,10 +12474,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int?> exampleOptionalPrimitiveTypeI32TwinNormal(
       {int? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_i_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_optional_primitive_type_i32_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_i_32(arg);
+        return wire.wire_example_optional_primitive_type_i32_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeI32TwinNormalConstMeta,
@@ -11724,10 +12498,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int?> exampleOptionalPrimitiveTypeI64TwinNormal(
       {int? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_i_64(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_optional_primitive_type_i64_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_i_64(arg);
+        return wire.wire_example_optional_primitive_type_i64_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_i_64,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeI64TwinNormalConstMeta,
@@ -11746,10 +12522,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int?> exampleOptionalPrimitiveTypeI8TwinNormal(
       {int? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_i_8(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_optional_primitive_type_i8_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_i_8(arg);
+        return wire.wire_example_optional_primitive_type_i8_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_i_8,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeI8TwinNormalConstMeta,
@@ -11768,10 +12546,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int?> exampleOptionalPrimitiveTypeU16TwinNormal(
       {int? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_u_16(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_optional_primitive_type_u16_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_u_16(arg);
+        return wire.wire_example_optional_primitive_type_u16_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_u_16,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeU16TwinNormalConstMeta,
@@ -11790,10 +12570,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int?> exampleOptionalPrimitiveTypeU32TwinNormal(
       {int? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_u_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_optional_primitive_type_u32_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_u_32(arg);
+        return wire.wire_example_optional_primitive_type_u32_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_u_32,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeU32TwinNormalConstMeta,
@@ -11812,10 +12594,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int?> exampleOptionalPrimitiveTypeU64TwinNormal(
       {int? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_u_64(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_optional_primitive_type_u64_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_u_64(arg);
+        return wire.wire_example_optional_primitive_type_u64_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_u_64,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeU64TwinNormalConstMeta,
@@ -11834,10 +12618,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int?> exampleOptionalPrimitiveTypeU8TwinNormal(
       {int? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_u_8(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_optional_primitive_type_u8_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_u_8(arg);
+        return wire.wire_example_optional_primitive_type_u8_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_u_8,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeU8TwinNormalConstMeta,
@@ -11856,13 +12642,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int?> primitiveOptionalTypesTwinRustAsync(
       {int? myI32, int? myI64, double? myF64, bool? myBool, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_i_32(myI32);
-    var arg1 = cst_encode_opt_box_autoadd_i_64(myI64);
-    var arg2 = cst_encode_opt_box_autoadd_f_64(myF64);
-    var arg3 = cst_encode_opt_box_autoadd_bool(myBool);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_primitive_optional_types_twin_rust_async(
-          port_, arg0, arg1, arg2, arg3),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_i_32(myI32);
+        var arg1 = cst_encode_opt_box_autoadd_i_64(myI64);
+        var arg2 = cst_encode_opt_box_autoadd_f_64(myF64);
+        var arg3 = cst_encode_opt_box_autoadd_bool(myBool);
+        return wire.wire_primitive_optional_types_twin_rust_async(
+            port_, arg0, arg1, arg2, arg3);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
       parseErrorData: null,
       constMeta: kPrimitiveOptionalTypesTwinRustAsyncConstMeta,
@@ -11881,13 +12669,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   int? primitiveOptionalTypesTwinSync(
       {int? myI32, int? myI64, double? myF64, bool? myBool, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_i_32(myI32);
-    var arg1 = cst_encode_opt_box_autoadd_i_64(myI64);
-    var arg2 = cst_encode_opt_box_autoadd_f_64(myF64);
-    var arg3 = cst_encode_opt_box_autoadd_bool(myBool);
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_primitive_optional_types_twin_sync(arg0, arg1, arg2, arg3),
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_i_32(myI32);
+        var arg1 = cst_encode_opt_box_autoadd_i_64(myI64);
+        var arg2 = cst_encode_opt_box_autoadd_f_64(myF64);
+        var arg3 = cst_encode_opt_box_autoadd_bool(myBool);
+        return wire.wire_primitive_optional_types_twin_sync(
+            arg0, arg1, arg2, arg3);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
       parseErrorData: null,
       constMeta: kPrimitiveOptionalTypesTwinSyncConstMeta,
@@ -11906,11 +12696,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<bool?> exampleOptionalPrimitiveTypeBoolTwinRustAsync(
       {bool? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_bool(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_optional_primitive_type_bool_twin_rust_async(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_bool(arg);
+        return wire.wire_example_optional_primitive_type_bool_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_bool,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeBoolTwinRustAsyncConstMeta,
@@ -11929,11 +12720,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<double?> exampleOptionalPrimitiveTypeF32TwinRustAsync(
       {double? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_f_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_optional_primitive_type_f32_twin_rust_async(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_f_32(arg);
+        return wire.wire_example_optional_primitive_type_f32_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_f_32,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeF32TwinRustAsyncConstMeta,
@@ -11952,11 +12744,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<double?> exampleOptionalPrimitiveTypeF64TwinRustAsync(
       {double? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_f_64(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_optional_primitive_type_f64_twin_rust_async(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_f_64(arg);
+        return wire.wire_example_optional_primitive_type_f64_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_f_64,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeF64TwinRustAsyncConstMeta,
@@ -11975,11 +12768,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int?> exampleOptionalPrimitiveTypeI16TwinRustAsync(
       {int? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_i_16(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_optional_primitive_type_i16_twin_rust_async(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_i_16(arg);
+        return wire.wire_example_optional_primitive_type_i16_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_i_16,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeI16TwinRustAsyncConstMeta,
@@ -11998,11 +12792,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int?> exampleOptionalPrimitiveTypeI32TwinRustAsync(
       {int? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_i_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_optional_primitive_type_i32_twin_rust_async(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_i_32(arg);
+        return wire.wire_example_optional_primitive_type_i32_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeI32TwinRustAsyncConstMeta,
@@ -12021,11 +12816,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int?> exampleOptionalPrimitiveTypeI64TwinRustAsync(
       {int? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_i_64(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_optional_primitive_type_i64_twin_rust_async(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_i_64(arg);
+        return wire.wire_example_optional_primitive_type_i64_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_i_64,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeI64TwinRustAsyncConstMeta,
@@ -12044,10 +12840,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int?> exampleOptionalPrimitiveTypeI8TwinRustAsync(
       {int? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_i_8(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_optional_primitive_type_i8_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_i_8(arg);
+        return wire.wire_example_optional_primitive_type_i8_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_i_8,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeI8TwinRustAsyncConstMeta,
@@ -12066,11 +12864,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int?> exampleOptionalPrimitiveTypeU16TwinRustAsync(
       {int? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_u_16(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_optional_primitive_type_u16_twin_rust_async(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_u_16(arg);
+        return wire.wire_example_optional_primitive_type_u16_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_u_16,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeU16TwinRustAsyncConstMeta,
@@ -12089,11 +12888,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int?> exampleOptionalPrimitiveTypeU32TwinRustAsync(
       {int? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_u_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_optional_primitive_type_u32_twin_rust_async(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_u_32(arg);
+        return wire.wire_example_optional_primitive_type_u32_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_u_32,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeU32TwinRustAsyncConstMeta,
@@ -12112,11 +12912,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int?> exampleOptionalPrimitiveTypeU64TwinRustAsync(
       {int? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_u_64(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_optional_primitive_type_u64_twin_rust_async(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_u_64(arg);
+        return wire.wire_example_optional_primitive_type_u64_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_u_64,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeU64TwinRustAsyncConstMeta,
@@ -12135,10 +12936,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int?> exampleOptionalPrimitiveTypeU8TwinRustAsync(
       {int? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_u_8(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_optional_primitive_type_u8_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_u_8(arg);
+        return wire.wire_example_optional_primitive_type_u8_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_u_8,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeU8TwinRustAsyncConstMeta,
@@ -12156,10 +12959,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   bool? exampleOptionalPrimitiveTypeBoolTwinSync({bool? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_bool(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_example_optional_primitive_type_bool_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_bool(arg);
+        return wire.wire_example_optional_primitive_type_bool_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_bool,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeBoolTwinSyncConstMeta,
@@ -12177,10 +12981,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   double? exampleOptionalPrimitiveTypeF32TwinSync({double? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_f_32(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_example_optional_primitive_type_f32_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_f_32(arg);
+        return wire.wire_example_optional_primitive_type_f32_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_f_32,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeF32TwinSyncConstMeta,
@@ -12198,10 +13003,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   double? exampleOptionalPrimitiveTypeF64TwinSync({double? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_f_64(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_example_optional_primitive_type_f64_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_f_64(arg);
+        return wire.wire_example_optional_primitive_type_f64_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_f_64,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeF64TwinSyncConstMeta,
@@ -12219,10 +13025,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   int? exampleOptionalPrimitiveTypeI16TwinSync({int? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_i_16(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_example_optional_primitive_type_i16_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_i_16(arg);
+        return wire.wire_example_optional_primitive_type_i16_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_i_16,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeI16TwinSyncConstMeta,
@@ -12240,10 +13047,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   int? exampleOptionalPrimitiveTypeI32TwinSync({int? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_i_32(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_example_optional_primitive_type_i32_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_i_32(arg);
+        return wire.wire_example_optional_primitive_type_i32_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeI32TwinSyncConstMeta,
@@ -12261,10 +13069,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   int? exampleOptionalPrimitiveTypeI64TwinSync({int? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_i_64(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_example_optional_primitive_type_i64_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_i_64(arg);
+        return wire.wire_example_optional_primitive_type_i64_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_i_64,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeI64TwinSyncConstMeta,
@@ -12282,10 +13091,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   int? exampleOptionalPrimitiveTypeI8TwinSync({int? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_i_8(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_example_optional_primitive_type_i8_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_i_8(arg);
+        return wire.wire_example_optional_primitive_type_i8_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_i_8,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeI8TwinSyncConstMeta,
@@ -12303,10 +13113,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   int? exampleOptionalPrimitiveTypeU16TwinSync({int? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_u_16(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_example_optional_primitive_type_u16_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_u_16(arg);
+        return wire.wire_example_optional_primitive_type_u16_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_u_16,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeU16TwinSyncConstMeta,
@@ -12324,10 +13135,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   int? exampleOptionalPrimitiveTypeU32TwinSync({int? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_u_32(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_example_optional_primitive_type_u32_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_u_32(arg);
+        return wire.wire_example_optional_primitive_type_u32_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_u_32,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeU32TwinSyncConstMeta,
@@ -12345,10 +13157,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   int? exampleOptionalPrimitiveTypeU64TwinSync({int? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_u_64(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_example_optional_primitive_type_u64_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_u_64(arg);
+        return wire.wire_example_optional_primitive_type_u64_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_u_64,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeU64TwinSyncConstMeta,
@@ -12366,10 +13179,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   int? exampleOptionalPrimitiveTypeU8TwinSync({int? arg, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_u_8(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_example_optional_primitive_type_u8_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_u_8(arg);
+        return wire.wire_example_optional_primitive_type_u8_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_u_8,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeU8TwinSyncConstMeta,
@@ -12388,10 +13202,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<double> handleIncrementBoxedOptionalTwinRustAsync(
       {double? opt, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_f_64(opt);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_handle_increment_boxed_optional_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_f_64(opt);
+        return wire.wire_handle_increment_boxed_optional_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_f_64,
       parseErrorData: null,
       constMeta: kHandleIncrementBoxedOptionalTwinRustAsyncConstMeta,
@@ -12417,16 +13233,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       bool? boolbox,
       ExoticOptionalsTwinRustAsync? structbox,
       dynamic hint}) {
-    var arg0 = cst_encode_opt_box_i_8(i8Box);
-    var arg1 = cst_encode_opt_box_u_8(u8Box);
-    var arg2 = cst_encode_opt_box_i_32(i32Box);
-    var arg3 = cst_encode_opt_box_i_64(i64Box);
-    var arg4 = cst_encode_opt_box_f_64(f64Box);
-    var arg5 = cst_encode_opt_box_bool(boolbox);
-    var arg6 = cst_encode_opt_box_exotic_optionals_twin_rust_async(structbox);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_option_box_arguments_twin_rust_async(
-          port_, arg0, arg1, arg2, arg3, arg4, arg5, arg6),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_i_8(i8Box);
+        var arg1 = cst_encode_opt_box_u_8(u8Box);
+        var arg2 = cst_encode_opt_box_i_32(i32Box);
+        var arg3 = cst_encode_opt_box_i_64(i64Box);
+        var arg4 = cst_encode_opt_box_f_64(f64Box);
+        var arg5 = cst_encode_opt_box_bool(boolbox);
+        var arg6 =
+            cst_encode_opt_box_exotic_optionals_twin_rust_async(structbox);
+        return wire.wire_handle_option_box_arguments_twin_rust_async(
+            port_, arg0, arg1, arg2, arg3, arg4, arg5, arg6);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kHandleOptionBoxArgumentsTwinRustAsyncConstMeta,
@@ -12453,10 +13272,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<ExoticOptionalsTwinRustAsync?> handleOptionalIncrementTwinRustAsync(
       {ExoticOptionalsTwinRustAsync? opt, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_exotic_optionals_twin_rust_async(opt);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_optional_increment_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_opt_box_autoadd_exotic_optionals_twin_rust_async(opt);
+        return wire.wire_handle_optional_increment_twin_rust_async(port_, arg0);
+      },
       parseSuccessData:
           _dco_decode_opt_box_autoadd_exotic_optionals_twin_rust_async,
       parseErrorData: null,
@@ -12476,11 +13297,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<double?> handleOptionalReturnTwinRustAsync(
       {required double left, required double right, dynamic hint}) {
-    var arg0 = cst_encode_f_64(left);
-    var arg1 = cst_encode_f_64(right);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_optional_return_twin_rust_async(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_f_64(left);
+        var arg1 = cst_encode_f_64(right);
+        return wire.wire_handle_optional_return_twin_rust_async(
+            port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_f_64,
       parseErrorData: null,
       constMeta: kHandleOptionalReturnTwinRustAsyncConstMeta,
@@ -12499,10 +13322,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<ElementTwinRustAsync?> handleOptionalStructTwinRustAsync(
       {String? document, dynamic hint}) {
-    var arg0 = cst_encode_opt_String(document);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_optional_struct_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_String(document);
+        return wire.wire_handle_optional_struct_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_element_twin_rust_async,
       parseErrorData: null,
       constMeta: kHandleOptionalStructTwinRustAsyncConstMeta,
@@ -12521,10 +13345,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<OptVecsTwinRustAsync> handleVecOfOptsTwinRustAsync(
       {required OptVecsTwinRustAsync opt, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_opt_vecs_twin_rust_async(opt);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_vec_of_opts_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_opt_vecs_twin_rust_async(opt);
+        return wire.wire_handle_vec_of_opts_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_vecs_twin_rust_async,
       parseErrorData: null,
       constMeta: kHandleVecOfOptsTwinRustAsyncConstMeta,
@@ -12542,9 +13367,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   double handleIncrementBoxedOptionalTwinSync({double? opt, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_f_64(opt);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_increment_boxed_optional_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_f_64(opt);
+        return wire.wire_handle_increment_boxed_optional_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_f_64,
       parseErrorData: null,
       constMeta: kHandleIncrementBoxedOptionalTwinSyncConstMeta,
@@ -12570,16 +13397,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       bool? boolbox,
       ExoticOptionalsTwinSync? structbox,
       dynamic hint}) {
-    var arg0 = cst_encode_opt_box_i_8(i8Box);
-    var arg1 = cst_encode_opt_box_u_8(u8Box);
-    var arg2 = cst_encode_opt_box_i_32(i32Box);
-    var arg3 = cst_encode_opt_box_i_64(i64Box);
-    var arg4 = cst_encode_opt_box_f_64(f64Box);
-    var arg5 = cst_encode_opt_box_bool(boolbox);
-    var arg6 = cst_encode_opt_box_exotic_optionals_twin_sync(structbox);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_option_box_arguments_twin_sync(
-          arg0, arg1, arg2, arg3, arg4, arg5, arg6),
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_i_8(i8Box);
+        var arg1 = cst_encode_opt_box_u_8(u8Box);
+        var arg2 = cst_encode_opt_box_i_32(i32Box);
+        var arg3 = cst_encode_opt_box_i_64(i64Box);
+        var arg4 = cst_encode_opt_box_f_64(f64Box);
+        var arg5 = cst_encode_opt_box_bool(boolbox);
+        var arg6 = cst_encode_opt_box_exotic_optionals_twin_sync(structbox);
+        return wire.wire_handle_option_box_arguments_twin_sync(
+            arg0, arg1, arg2, arg3, arg4, arg5, arg6);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kHandleOptionBoxArgumentsTwinSyncConstMeta,
@@ -12606,9 +13435,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   ExoticOptionalsTwinSync? handleOptionalIncrementTwinSync(
       {ExoticOptionalsTwinSync? opt, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_exotic_optionals_twin_sync(opt);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_optional_increment_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_exotic_optionals_twin_sync(opt);
+        return wire.wire_handle_optional_increment_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_exotic_optionals_twin_sync,
       parseErrorData: null,
       constMeta: kHandleOptionalIncrementTwinSyncConstMeta,
@@ -12627,10 +13458,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   double? handleOptionalReturnTwinSync(
       {required double left, required double right, dynamic hint}) {
-    var arg0 = cst_encode_f_64(left);
-    var arg1 = cst_encode_f_64(right);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_optional_return_twin_sync(arg0, arg1),
+      callFfi: () {
+        var arg0 = cst_encode_f_64(left);
+        var arg1 = cst_encode_f_64(right);
+        return wire.wire_handle_optional_return_twin_sync(arg0, arg1);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_f_64,
       parseErrorData: null,
       constMeta: kHandleOptionalReturnTwinSyncConstMeta,
@@ -12649,9 +13482,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   ElementTwinSync? handleOptionalStructTwinSync(
       {String? document, dynamic hint}) {
-    var arg0 = cst_encode_opt_String(document);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_optional_struct_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_opt_String(document);
+        return wire.wire_handle_optional_struct_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_element_twin_sync,
       parseErrorData: null,
       constMeta: kHandleOptionalStructTwinSyncConstMeta,
@@ -12670,9 +13505,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   OptVecsTwinSync handleVecOfOptsTwinSync(
       {required OptVecsTwinSync opt, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_opt_vecs_twin_sync(opt);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_vec_of_opts_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_opt_vecs_twin_sync(opt);
+        return wire.wire_handle_vec_of_opts_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_opt_vecs_twin_sync,
       parseErrorData: null,
       constMeta: kHandleVecOfOptsTwinSyncConstMeta,
@@ -12690,10 +13527,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<bool> examplePrimitiveTypeBoolTwinNormal(
       {required bool arg, dynamic hint}) {
-    var arg0 = cst_encode_bool(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_bool_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_bool(arg);
+        return wire.wire_example_primitive_type_bool_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_bool,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeBoolTwinNormalConstMeta,
@@ -12712,10 +13550,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<double> examplePrimitiveTypeF32TwinNormal(
       {required double arg, dynamic hint}) {
-    var arg0 = cst_encode_f_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_f32_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_f_32(arg);
+        return wire.wire_example_primitive_type_f32_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_f_32,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeF32TwinNormalConstMeta,
@@ -12734,10 +13573,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<double> examplePrimitiveTypeF64TwinNormal(
       {required double arg, dynamic hint}) {
-    var arg0 = cst_encode_f_64(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_f64_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_f_64(arg);
+        return wire.wire_example_primitive_type_f64_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_f_64,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeF64TwinNormalConstMeta,
@@ -12756,10 +13596,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> examplePrimitiveTypeI16TwinNormal(
       {required int arg, dynamic hint}) {
-    var arg0 = cst_encode_i_16(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_i16_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_16(arg);
+        return wire.wire_example_primitive_type_i16_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_i_16,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeI16TwinNormalConstMeta,
@@ -12778,10 +13619,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> examplePrimitiveTypeI32TwinNormal(
       {required int arg, dynamic hint}) {
-    var arg0 = cst_encode_i_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_i32_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(arg);
+        return wire.wire_example_primitive_type_i32_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_i_32,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeI32TwinNormalConstMeta,
@@ -12800,10 +13642,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> examplePrimitiveTypeI64TwinNormal(
       {required int arg, dynamic hint}) {
-    var arg0 = cst_encode_i_64(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_i64_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_64(arg);
+        return wire.wire_example_primitive_type_i64_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_i_64,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeI64TwinNormalConstMeta,
@@ -12822,10 +13665,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> examplePrimitiveTypeI8TwinNormal(
       {required int arg, dynamic hint}) {
-    var arg0 = cst_encode_i_8(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_i8_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_8(arg);
+        return wire.wire_example_primitive_type_i8_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_i_8,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeI8TwinNormalConstMeta,
@@ -12844,10 +13688,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> examplePrimitiveTypeU16TwinNormal(
       {required int arg, dynamic hint}) {
-    var arg0 = cst_encode_u_16(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_u16_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_16(arg);
+        return wire.wire_example_primitive_type_u16_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_16,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeU16TwinNormalConstMeta,
@@ -12866,10 +13711,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> examplePrimitiveTypeU32TwinNormal(
       {required int arg, dynamic hint}) {
-    var arg0 = cst_encode_u_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_u32_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(arg);
+        return wire.wire_example_primitive_type_u32_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeU32TwinNormalConstMeta,
@@ -12888,10 +13734,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> examplePrimitiveTypeU64TwinNormal(
       {required int arg, dynamic hint}) {
-    var arg0 = cst_encode_u_64(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_u64_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_64(arg);
+        return wire.wire_example_primitive_type_u64_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_64,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeU64TwinNormalConstMeta,
@@ -12910,10 +13757,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> examplePrimitiveTypeU8TwinNormal(
       {required int arg, dynamic hint}) {
-    var arg0 = cst_encode_u_8(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_u8_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_8(arg);
+        return wire.wire_example_primitive_type_u8_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_8,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeU8TwinNormalConstMeta,
@@ -12932,10 +13780,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<List<bool>> examplePrimitiveListTypeBoolTwinNormal(
       {required List<bool> arg, dynamic hint}) {
-    var arg0 = cst_encode_list_bool(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_list_type_bool_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_bool(arg);
+        return wire.wire_example_primitive_list_type_bool_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_bool,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeBoolTwinNormalConstMeta,
@@ -12954,10 +13804,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Float32List> examplePrimitiveListTypeF32TwinNormal(
       {required Float32List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_f_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_list_type_f32_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_f_32(arg);
+        return wire.wire_example_primitive_list_type_f32_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_f_32,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeF32TwinNormalConstMeta,
@@ -12976,10 +13828,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Float64List> examplePrimitiveListTypeF64TwinNormal(
       {required Float64List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_f_64(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_list_type_f64_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_f_64(arg);
+        return wire.wire_example_primitive_list_type_f64_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_f_64,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeF64TwinNormalConstMeta,
@@ -12998,10 +13852,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Int16List> examplePrimitiveListTypeI16TwinNormal(
       {required Int16List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_i_16(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_list_type_i16_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_i_16(arg);
+        return wire.wire_example_primitive_list_type_i16_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_i_16,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeI16TwinNormalConstMeta,
@@ -13020,10 +13876,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Int32List> examplePrimitiveListTypeI32TwinNormal(
       {required Int32List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_i_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_list_type_i32_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_i_32(arg);
+        return wire.wire_example_primitive_list_type_i32_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_i_32,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeI32TwinNormalConstMeta,
@@ -13042,10 +13900,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Int64List> examplePrimitiveListTypeI64TwinNormal(
       {required Int64List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_i_64(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_list_type_i64_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_i_64(arg);
+        return wire.wire_example_primitive_list_type_i64_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_i_64,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeI64TwinNormalConstMeta,
@@ -13064,10 +13924,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Int8List> examplePrimitiveListTypeI8TwinNormal(
       {required Int8List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_i_8(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_list_type_i8_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_i_8(arg);
+        return wire.wire_example_primitive_list_type_i8_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_i_8,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeI8TwinNormalConstMeta,
@@ -13086,10 +13948,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Uint16List> examplePrimitiveListTypeU16TwinNormal(
       {required Uint16List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_u_16(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_list_type_u16_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_u_16(arg);
+        return wire.wire_example_primitive_list_type_u16_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_u_16,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeU16TwinNormalConstMeta,
@@ -13108,10 +13972,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Uint32List> examplePrimitiveListTypeU32TwinNormal(
       {required Uint32List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_u_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_list_type_u32_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_u_32(arg);
+        return wire.wire_example_primitive_list_type_u32_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_u_32,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeU32TwinNormalConstMeta,
@@ -13130,10 +13996,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Uint64List> examplePrimitiveListTypeU64TwinNormal(
       {required Uint64List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_u_64(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_list_type_u64_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_u_64(arg);
+        return wire.wire_example_primitive_list_type_u64_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_u_64,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeU64TwinNormalConstMeta,
@@ -13152,10 +14020,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Uint8List> examplePrimitiveListTypeU8TwinNormal(
       {required Uint8List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_u_8(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_list_type_u8_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_u_8(arg);
+        return wire.wire_example_primitive_list_type_u8_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_u_8,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeU8TwinNormalConstMeta,
@@ -13174,10 +14044,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<VecOfPrimitivePackTwinRustAsync> handleVecOfPrimitiveTwinRustAsync(
       {required int n, dynamic hint}) {
-    var arg0 = cst_encode_i_32(n);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_vec_of_primitive_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(n);
+        return wire.wire_handle_vec_of_primitive_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_vec_of_primitive_pack_twin_rust_async,
       parseErrorData: null,
       constMeta: kHandleVecOfPrimitiveTwinRustAsyncConstMeta,
@@ -13197,10 +14068,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<ZeroCopyVecOfPrimitivePackTwinRustAsync>
       handleZeroCopyVecOfPrimitiveTwinRustAsync(
           {required int n, dynamic hint}) {
-    var arg0 = cst_encode_i_32(n);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_handle_zero_copy_vec_of_primitive_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(n);
+        return wire.wire_handle_zero_copy_vec_of_primitive_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData:
           _dco_decode_zero_copy_vec_of_primitive_pack_twin_rust_async,
       parseErrorData: null,
@@ -13220,9 +14093,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   VecOfPrimitivePackTwinSync handleVecOfPrimitiveTwinSync(
       {required int n, dynamic hint}) {
-    var arg0 = cst_encode_i_32(n);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_vec_of_primitive_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_i_32(n);
+        return wire.wire_handle_vec_of_primitive_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_vec_of_primitive_pack_twin_sync,
       parseErrorData: null,
       constMeta: kHandleVecOfPrimitiveTwinSyncConstMeta,
@@ -13241,10 +14116,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   ZeroCopyVecOfPrimitivePackTwinSync handleZeroCopyVecOfPrimitiveTwinSync(
       {required int n, dynamic hint}) {
-    var arg0 = cst_encode_i_32(n);
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_handle_zero_copy_vec_of_primitive_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_i_32(n);
+        return wire.wire_handle_zero_copy_vec_of_primitive_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_zero_copy_vec_of_primitive_pack_twin_sync,
       parseErrorData: null,
       constMeta: kHandleZeroCopyVecOfPrimitiveTwinSyncConstMeta,
@@ -13263,10 +14139,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<List<bool>> examplePrimitiveListTypeBoolTwinRustAsync(
       {required List<bool> arg, dynamic hint}) {
-    var arg0 = cst_encode_list_bool(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_primitive_list_type_bool_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_bool(arg);
+        return wire.wire_example_primitive_list_type_bool_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_bool,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeBoolTwinRustAsyncConstMeta,
@@ -13285,10 +14163,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Float32List> examplePrimitiveListTypeF32TwinRustAsync(
       {required Float32List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_f_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_primitive_list_type_f32_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_f_32(arg);
+        return wire.wire_example_primitive_list_type_f32_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_f_32,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeF32TwinRustAsyncConstMeta,
@@ -13307,10 +14187,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Float64List> examplePrimitiveListTypeF64TwinRustAsync(
       {required Float64List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_f_64(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_primitive_list_type_f64_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_f_64(arg);
+        return wire.wire_example_primitive_list_type_f64_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_f_64,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeF64TwinRustAsyncConstMeta,
@@ -13329,10 +14211,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Int16List> examplePrimitiveListTypeI16TwinRustAsync(
       {required Int16List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_i_16(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_primitive_list_type_i16_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_i_16(arg);
+        return wire.wire_example_primitive_list_type_i16_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_i_16,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeI16TwinRustAsyncConstMeta,
@@ -13351,10 +14235,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Int32List> examplePrimitiveListTypeI32TwinRustAsync(
       {required Int32List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_i_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_primitive_list_type_i32_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_i_32(arg);
+        return wire.wire_example_primitive_list_type_i32_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_i_32,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeI32TwinRustAsyncConstMeta,
@@ -13373,10 +14259,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Int64List> examplePrimitiveListTypeI64TwinRustAsync(
       {required Int64List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_i_64(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_primitive_list_type_i64_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_i_64(arg);
+        return wire.wire_example_primitive_list_type_i64_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_i_64,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeI64TwinRustAsyncConstMeta,
@@ -13395,10 +14283,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Int8List> examplePrimitiveListTypeI8TwinRustAsync(
       {required Int8List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_i_8(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_list_type_i8_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_i_8(arg);
+        return wire.wire_example_primitive_list_type_i8_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_i_8,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeI8TwinRustAsyncConstMeta,
@@ -13417,10 +14307,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Uint16List> examplePrimitiveListTypeU16TwinRustAsync(
       {required Uint16List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_u_16(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_primitive_list_type_u16_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_u_16(arg);
+        return wire.wire_example_primitive_list_type_u16_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_u_16,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeU16TwinRustAsyncConstMeta,
@@ -13439,10 +14331,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Uint32List> examplePrimitiveListTypeU32TwinRustAsync(
       {required Uint32List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_u_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_primitive_list_type_u32_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_u_32(arg);
+        return wire.wire_example_primitive_list_type_u32_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_u_32,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeU32TwinRustAsyncConstMeta,
@@ -13461,10 +14355,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Uint64List> examplePrimitiveListTypeU64TwinRustAsync(
       {required Uint64List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_u_64(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_example_primitive_list_type_u64_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_u_64(arg);
+        return wire.wire_example_primitive_list_type_u64_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_u_64,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeU64TwinRustAsyncConstMeta,
@@ -13483,10 +14379,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<Uint8List> examplePrimitiveListTypeU8TwinRustAsync(
       {required Uint8List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_u_8(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_list_type_u8_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_prim_u_8(arg);
+        return wire.wire_example_primitive_list_type_u8_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_u_8,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeU8TwinRustAsyncConstMeta,
@@ -13505,9 +14403,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   List<bool> examplePrimitiveListTypeBoolTwinSync(
       {required List<bool> arg, dynamic hint}) {
-    var arg0 = cst_encode_list_bool(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_list_type_bool_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_list_bool(arg);
+        return wire.wire_example_primitive_list_type_bool_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_list_bool,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeBoolTwinSyncConstMeta,
@@ -13526,9 +14426,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Float32List examplePrimitiveListTypeF32TwinSync(
       {required Float32List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_f_32(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_list_type_f32_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_list_prim_f_32(arg);
+        return wire.wire_example_primitive_list_type_f32_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_f_32,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeF32TwinSyncConstMeta,
@@ -13547,9 +14449,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Float64List examplePrimitiveListTypeF64TwinSync(
       {required Float64List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_f_64(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_list_type_f64_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_list_prim_f_64(arg);
+        return wire.wire_example_primitive_list_type_f64_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_f_64,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeF64TwinSyncConstMeta,
@@ -13568,9 +14472,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Int16List examplePrimitiveListTypeI16TwinSync(
       {required Int16List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_i_16(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_list_type_i16_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_list_prim_i_16(arg);
+        return wire.wire_example_primitive_list_type_i16_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_i_16,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeI16TwinSyncConstMeta,
@@ -13589,9 +14495,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Int32List examplePrimitiveListTypeI32TwinSync(
       {required Int32List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_i_32(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_list_type_i32_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_list_prim_i_32(arg);
+        return wire.wire_example_primitive_list_type_i32_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_i_32,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeI32TwinSyncConstMeta,
@@ -13610,9 +14518,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Int64List examplePrimitiveListTypeI64TwinSync(
       {required Int64List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_i_64(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_list_type_i64_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_list_prim_i_64(arg);
+        return wire.wire_example_primitive_list_type_i64_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_i_64,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeI64TwinSyncConstMeta,
@@ -13631,9 +14541,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Int8List examplePrimitiveListTypeI8TwinSync(
       {required Int8List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_i_8(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_list_type_i8_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_list_prim_i_8(arg);
+        return wire.wire_example_primitive_list_type_i8_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_i_8,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeI8TwinSyncConstMeta,
@@ -13652,9 +14564,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Uint16List examplePrimitiveListTypeU16TwinSync(
       {required Uint16List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_u_16(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_list_type_u16_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_list_prim_u_16(arg);
+        return wire.wire_example_primitive_list_type_u16_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_u_16,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeU16TwinSyncConstMeta,
@@ -13673,9 +14587,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Uint32List examplePrimitiveListTypeU32TwinSync(
       {required Uint32List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_u_32(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_list_type_u32_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_list_prim_u_32(arg);
+        return wire.wire_example_primitive_list_type_u32_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_u_32,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeU32TwinSyncConstMeta,
@@ -13694,9 +14610,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Uint64List examplePrimitiveListTypeU64TwinSync(
       {required Uint64List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_u_64(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_list_type_u64_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_list_prim_u_64(arg);
+        return wire.wire_example_primitive_list_type_u64_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_u_64,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeU64TwinSyncConstMeta,
@@ -13715,9 +14633,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Uint8List examplePrimitiveListTypeU8TwinSync(
       {required Uint8List arg, dynamic hint}) {
-    var arg0 = cst_encode_list_prim_u_8(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_list_type_u8_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_list_prim_u_8(arg);
+        return wire.wire_example_primitive_list_type_u8_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_list_prim_u_8,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeU8TwinSyncConstMeta,
@@ -13740,13 +14660,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       required double myF64,
       required bool myBool,
       dynamic hint}) {
-    var arg0 = cst_encode_i_32(myI32);
-    var arg1 = cst_encode_i_64(myI64);
-    var arg2 = cst_encode_f_64(myF64);
-    var arg3 = cst_encode_bool(myBool);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_primitive_types_twin_rust_async(
-          port_, arg0, arg1, arg2, arg3),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(myI32);
+        var arg1 = cst_encode_i_64(myI64);
+        var arg2 = cst_encode_f_64(myF64);
+        var arg3 = cst_encode_bool(myBool);
+        return wire.wire_primitive_types_twin_rust_async(
+            port_, arg0, arg1, arg2, arg3);
+      },
       parseSuccessData: _dco_decode_i_32,
       parseErrorData: null,
       constMeta: kPrimitiveTypesTwinRustAsyncConstMeta,
@@ -13764,9 +14686,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<int> primitiveU32TwinRustAsync({required int myU32, dynamic hint}) {
-    var arg0 = cst_encode_u_32(myU32);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_primitive_u32_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(myU32);
+        return wire.wire_primitive_u32_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: null,
       constMeta: kPrimitiveU32TwinRustAsyncConstMeta,
@@ -13788,13 +14712,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       required double myF64,
       required bool myBool,
       dynamic hint}) {
-    var arg0 = cst_encode_i_32(myI32);
-    var arg1 = cst_encode_i_64(myI64);
-    var arg2 = cst_encode_f_64(myF64);
-    var arg3 = cst_encode_bool(myBool);
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_primitive_types_twin_sync(arg0, arg1, arg2, arg3),
+      callFfi: () {
+        var arg0 = cst_encode_i_32(myI32);
+        var arg1 = cst_encode_i_64(myI64);
+        var arg2 = cst_encode_f_64(myF64);
+        var arg3 = cst_encode_bool(myBool);
+        return wire.wire_primitive_types_twin_sync(arg0, arg1, arg2, arg3);
+      },
       parseSuccessData: _dco_decode_i_32,
       parseErrorData: null,
       constMeta: kPrimitiveTypesTwinSyncConstMeta,
@@ -13811,9 +14736,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   int primitiveU32TwinSync({required int myU32, dynamic hint}) {
-    var arg0 = cst_encode_u_32(myU32);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_primitive_u32_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_u_32(myU32);
+        return wire.wire_primitive_u32_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: null,
       constMeta: kPrimitiveU32TwinSyncConstMeta,
@@ -13831,10 +14758,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<bool> examplePrimitiveTypeBoolTwinRustAsync(
       {required bool arg, dynamic hint}) {
-    var arg0 = cst_encode_bool(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_bool_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_bool(arg);
+        return wire.wire_example_primitive_type_bool_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_bool,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeBoolTwinRustAsyncConstMeta,
@@ -13853,10 +14782,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<double> examplePrimitiveTypeF32TwinRustAsync(
       {required double arg, dynamic hint}) {
-    var arg0 = cst_encode_f_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_f32_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_f_32(arg);
+        return wire.wire_example_primitive_type_f32_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_f_32,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeF32TwinRustAsyncConstMeta,
@@ -13875,10 +14806,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<double> examplePrimitiveTypeF64TwinRustAsync(
       {required double arg, dynamic hint}) {
-    var arg0 = cst_encode_f_64(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_f64_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_f_64(arg);
+        return wire.wire_example_primitive_type_f64_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_f_64,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeF64TwinRustAsyncConstMeta,
@@ -13897,10 +14830,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> examplePrimitiveTypeI16TwinRustAsync(
       {required int arg, dynamic hint}) {
-    var arg0 = cst_encode_i_16(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_i16_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_16(arg);
+        return wire.wire_example_primitive_type_i16_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_i_16,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeI16TwinRustAsyncConstMeta,
@@ -13919,10 +14854,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> examplePrimitiveTypeI32TwinRustAsync(
       {required int arg, dynamic hint}) {
-    var arg0 = cst_encode_i_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_i32_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(arg);
+        return wire.wire_example_primitive_type_i32_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_i_32,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeI32TwinRustAsyncConstMeta,
@@ -13941,10 +14878,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> examplePrimitiveTypeI64TwinRustAsync(
       {required int arg, dynamic hint}) {
-    var arg0 = cst_encode_i_64(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_i64_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_64(arg);
+        return wire.wire_example_primitive_type_i64_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_i_64,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeI64TwinRustAsyncConstMeta,
@@ -13963,10 +14902,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> examplePrimitiveTypeI8TwinRustAsync(
       {required int arg, dynamic hint}) {
-    var arg0 = cst_encode_i_8(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_i8_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_8(arg);
+        return wire.wire_example_primitive_type_i8_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_i_8,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeI8TwinRustAsyncConstMeta,
@@ -13985,10 +14925,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> examplePrimitiveTypeU16TwinRustAsync(
       {required int arg, dynamic hint}) {
-    var arg0 = cst_encode_u_16(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_u16_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_16(arg);
+        return wire.wire_example_primitive_type_u16_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_16,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeU16TwinRustAsyncConstMeta,
@@ -14007,10 +14949,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> examplePrimitiveTypeU32TwinRustAsync(
       {required int arg, dynamic hint}) {
-    var arg0 = cst_encode_u_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_u32_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(arg);
+        return wire.wire_example_primitive_type_u32_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeU32TwinRustAsyncConstMeta,
@@ -14029,10 +14973,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> examplePrimitiveTypeU64TwinRustAsync(
       {required int arg, dynamic hint}) {
-    var arg0 = cst_encode_u_64(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_u64_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_64(arg);
+        return wire.wire_example_primitive_type_u64_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_64,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeU64TwinRustAsyncConstMeta,
@@ -14051,10 +14997,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> examplePrimitiveTypeU8TwinRustAsync(
       {required int arg, dynamic hint}) {
-    var arg0 = cst_encode_u_8(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_example_primitive_type_u8_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_8(arg);
+        return wire.wire_example_primitive_type_u8_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_8,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeU8TwinRustAsyncConstMeta,
@@ -14072,9 +15019,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   bool examplePrimitiveTypeBoolTwinSync({required bool arg, dynamic hint}) {
-    var arg0 = cst_encode_bool(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_type_bool_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_bool(arg);
+        return wire.wire_example_primitive_type_bool_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_bool,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeBoolTwinSyncConstMeta,
@@ -14092,9 +15041,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   double examplePrimitiveTypeF32TwinSync({required double arg, dynamic hint}) {
-    var arg0 = cst_encode_f_32(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_type_f32_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_f_32(arg);
+        return wire.wire_example_primitive_type_f32_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_f_32,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeF32TwinSyncConstMeta,
@@ -14112,9 +15063,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   double examplePrimitiveTypeF64TwinSync({required double arg, dynamic hint}) {
-    var arg0 = cst_encode_f_64(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_type_f64_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_f_64(arg);
+        return wire.wire_example_primitive_type_f64_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_f_64,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeF64TwinSyncConstMeta,
@@ -14132,9 +15085,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   int examplePrimitiveTypeI16TwinSync({required int arg, dynamic hint}) {
-    var arg0 = cst_encode_i_16(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_type_i16_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_i_16(arg);
+        return wire.wire_example_primitive_type_i16_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_i_16,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeI16TwinSyncConstMeta,
@@ -14152,9 +15107,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   int examplePrimitiveTypeI32TwinSync({required int arg, dynamic hint}) {
-    var arg0 = cst_encode_i_32(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_type_i32_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_i_32(arg);
+        return wire.wire_example_primitive_type_i32_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_i_32,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeI32TwinSyncConstMeta,
@@ -14172,9 +15129,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   int examplePrimitiveTypeI64TwinSync({required int arg, dynamic hint}) {
-    var arg0 = cst_encode_i_64(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_type_i64_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_i_64(arg);
+        return wire.wire_example_primitive_type_i64_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_i_64,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeI64TwinSyncConstMeta,
@@ -14192,9 +15151,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   int examplePrimitiveTypeI8TwinSync({required int arg, dynamic hint}) {
-    var arg0 = cst_encode_i_8(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_type_i8_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_i_8(arg);
+        return wire.wire_example_primitive_type_i8_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_i_8,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeI8TwinSyncConstMeta,
@@ -14212,9 +15173,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   int examplePrimitiveTypeU16TwinSync({required int arg, dynamic hint}) {
-    var arg0 = cst_encode_u_16(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_type_u16_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_u_16(arg);
+        return wire.wire_example_primitive_type_u16_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_u_16,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeU16TwinSyncConstMeta,
@@ -14232,9 +15195,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   int examplePrimitiveTypeU32TwinSync({required int arg, dynamic hint}) {
-    var arg0 = cst_encode_u_32(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_type_u32_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_u_32(arg);
+        return wire.wire_example_primitive_type_u32_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeU32TwinSyncConstMeta,
@@ -14252,9 +15217,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   int examplePrimitiveTypeU64TwinSync({required int arg, dynamic hint}) {
-    var arg0 = cst_encode_u_64(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_type_u64_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_u_64(arg);
+        return wire.wire_example_primitive_type_u64_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_u_64,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeU64TwinSyncConstMeta,
@@ -14272,9 +15239,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   int examplePrimitiveTypeU8TwinSync({required int arg, dynamic hint}) {
-    var arg0 = cst_encode_u_8(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_primitive_type_u8_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_u_8(arg);
+        return wire.wire_example_primitive_type_u8_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_u_8,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeU8TwinSyncConstMeta,
@@ -14294,9 +15263,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<MoreThanJustOneRawStringStructTwinRustAsync>
       testMoreThanJustOneRawStringStructTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_test_more_than_just_one_raw_string_struct_twin_rust_async(
-              port_),
+      callFfi: (port_) {
+        return wire
+            .wire_test_more_than_just_one_raw_string_struct_twin_rust_async(
+                port_);
+      },
       parseSuccessData:
           _dco_decode_more_than_just_one_raw_string_struct_twin_rust_async,
       parseErrorData: null,
@@ -14317,8 +15288,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<RawStringItemStructTwinRustAsync> testRawStringItemStructTwinRustAsync(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_test_raw_string_item_struct_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_test_raw_string_item_struct_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_raw_string_item_struct_twin_rust_async,
       parseErrorData: null,
       constMeta: kTestRawStringItemStructTwinRustAsyncConstMeta,
@@ -14338,8 +15310,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   MoreThanJustOneRawStringStructTwinSync
       testMoreThanJustOneRawStringStructTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_test_more_than_just_one_raw_string_struct_twin_sync(),
+      callFfi: () {
+        return wire.wire_test_more_than_just_one_raw_string_struct_twin_sync();
+      },
       parseSuccessData:
           _dco_decode_more_than_just_one_raw_string_struct_twin_sync,
       parseErrorData: null,
@@ -14359,7 +15332,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   RawStringItemStructTwinSync testRawStringItemStructTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_test_raw_string_item_struct_twin_sync(),
+      callFfi: () {
+        return wire.wire_test_raw_string_item_struct_twin_sync();
+      },
       parseSuccessData: _dco_decode_raw_string_item_struct_twin_sync,
       parseErrorData: null,
       constMeta: kTestRawStringItemStructTwinSyncConstMeta,
@@ -14378,13 +15353,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void nonCloneSimpleTwinSyncInstanceMethodArgBorrowTwinSync(
       {required RwLockNonCloneSimpleTwinSync that, dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-            that);
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync(
-              arg0),
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+                that);
+        return wire
+            .wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync(
+                arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta:
@@ -14406,13 +15383,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void nonCloneSimpleTwinSyncInstanceMethodArgMutBorrowTwinSync(
       {required RwLockNonCloneSimpleTwinSync that, dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-            that);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire
-          .wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync(
-              arg0),
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+                that);
+        return wire
+            .wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync(
+                arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta:
@@ -14434,12 +15413,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void nonCloneSimpleTwinSyncInstanceMethodArgOwnTwinSync(
       {required RwLockNonCloneSimpleTwinSync that, dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-            that);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire
-          .wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync(arg0),
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+                that);
+        return wire
+            .wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync(
+                arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kNonCloneSimpleTwinSyncInstanceMethodArgOwnTwinSyncConstMeta,
@@ -14461,13 +15443,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RwLockNonCloneSimpleTwinSync
       nonCloneSimpleTwinSyncInstanceMethodReturnOwnTwinSync(
           {required RwLockNonCloneSimpleTwinSync that, dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-            that);
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync(
-              arg0),
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+                that);
+        return wire
+            .wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync(
+                arg0);
+      },
       parseSuccessData:
           _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync,
       parseErrorData: null,
@@ -14491,8 +15475,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RwLockNonCloneSimpleTwinSync nonCloneSimpleTwinSyncNewCustomNameTwinSync(
       {dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync(),
+      callFfi: () {
+        return wire.wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync();
+      },
       parseSuccessData:
           _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync,
       parseErrorData: null,
@@ -14513,7 +15498,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RwLockNonCloneSimpleTwinSync nonCloneSimpleTwinSyncNewTwinSync(
       {dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_NonCloneSimpleTwinSync_new_twin_sync(),
+      callFfi: () {
+        return wire.wire_NonCloneSimpleTwinSync_new_twin_sync();
+      },
       parseSuccessData:
           _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync,
       parseErrorData: null,
@@ -14533,11 +15520,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void nonCloneSimpleTwinSyncStaticMethodArgBorrowTwinSync(
       {required RwLockNonCloneSimpleTwinSync arg, dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire
-          .wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync(arg0),
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+                arg);
+        return wire
+            .wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync(
+                arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kNonCloneSimpleTwinSyncStaticMethodArgBorrowTwinSyncConstMeta,
@@ -14558,13 +15549,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void nonCloneSimpleTwinSyncStaticMethodArgMutBorrowTwinSync(
       {required RwLockNonCloneSimpleTwinSync arg, dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-            arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire
-          .wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync(
-              arg0),
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+                arg);
+        return wire
+            .wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync(
+                arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta:
@@ -14586,12 +15579,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void nonCloneSimpleTwinSyncStaticMethodArgOwnTwinSync(
       {required RwLockNonCloneSimpleTwinSync arg, dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-            arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire
-          .wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync(arg0),
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+                arg);
+        return wire
+            .wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kNonCloneSimpleTwinSyncStaticMethodArgOwnTwinSyncConstMeta,
@@ -14612,8 +15607,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RwLockNonCloneSimpleTwinSync
       nonCloneSimpleTwinSyncStaticMethodReturnOwnTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync(),
+      callFfi: () {
+        return wire
+            .wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync();
+      },
       parseSuccessData:
           _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync,
       parseErrorData: null,
@@ -14637,12 +15634,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required RwLockNonCloneSimpleTwinSync arg,
       required int expect,
       dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(arg);
-    var arg1 = cst_encode_i_32(expect);
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_rust_auto_opaque_arg_borrow_twin_sync(arg0, arg1),
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+                arg);
+        var arg1 = cst_encode_i_32(expect);
+        return wire.wire_rust_auto_opaque_arg_borrow_twin_sync(arg0, arg1);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueArgBorrowTwinSyncConstMeta,
@@ -14664,14 +15663,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       required int expect,
       required int adder,
       dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-            arg);
-    var arg1 = cst_encode_i_32(expect);
-    var arg2 = cst_encode_i_32(adder);
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_rust_auto_opaque_arg_mut_borrow_twin_sync(arg0, arg1, arg2),
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+                arg);
+        var arg1 = cst_encode_i_32(expect);
+        var arg2 = cst_encode_i_32(adder);
+        return wire.wire_rust_auto_opaque_arg_mut_borrow_twin_sync(
+            arg0, arg1, arg2);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueArgMutBorrowTwinSyncConstMeta,
@@ -14690,12 +15691,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   RwLockNonCloneSimpleTwinSync rustAutoOpaqueArgOwnAndReturnOwnTwinSync(
       {required RwLockNonCloneSimpleTwinSync arg, dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-            arg);
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_rust_auto_opaque_arg_own_and_return_own_twin_sync(arg0),
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+                arg);
+        return wire
+            .wire_rust_auto_opaque_arg_own_and_return_own_twin_sync(arg0);
+      },
       parseSuccessData:
           _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync,
       parseErrorData: null,
@@ -14717,12 +15720,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required RwLockNonCloneSimpleTwinSync arg,
       required int expect,
       dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
-            arg);
-    var arg1 = cst_encode_i_32(expect);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_rust_auto_opaque_arg_own_twin_sync(arg0, arg1),
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+                arg);
+        var arg1 = cst_encode_i_32(expect);
+        return wire.wire_rust_auto_opaque_arg_own_twin_sync(arg0, arg1);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueArgOwnTwinSyncConstMeta,
@@ -14741,11 +15746,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void rustAutoOpaqueCallableArgTwinSync(
       {required RwLockBoxFnStringString arg, dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-            arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_rust_auto_opaque_callable_arg_twin_sync(arg0),
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+                arg);
+        return wire.wire_rust_auto_opaque_callable_arg_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueCallableArgTwinSyncConstMeta,
@@ -14764,7 +15771,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   RwLockBoxFnStringString rustAutoOpaqueCallableReturnTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_rust_auto_opaque_callable_return_twin_sync(),
+      callFfi: () {
+        return wire.wire_rust_auto_opaque_callable_return_twin_sync();
+      },
       parseSuccessData:
           _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe,
       parseErrorData: null,
@@ -14786,12 +15795,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required RwLockNonCloneSimpleTwinSync a,
       required String b,
       dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(a);
-    var arg1 = cst_encode_String(b);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync(
-          arg0, arg1),
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+                a);
+        var arg1 = cst_encode_String(b);
+        return wire.wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync(
+            arg0, arg1);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueNormalAndOpaqueArgTwinSyncConstMeta,
@@ -14810,11 +15822,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void rustAutoOpaquePlusSignArgTwinSync(
       {required RwLockBoxMyTraitTwinSync arg, dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
-            arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_rust_auto_opaque_plus_sign_arg_twin_sync(arg0),
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
+                arg);
+        return wire.wire_rust_auto_opaque_plus_sign_arg_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kRustAutoOpaquePlusSignArgTwinSyncConstMeta,
@@ -14834,7 +15848,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RwLockBoxMyTraitTwinSync rustAutoOpaquePlusSignReturnTwinSync(
       {dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_rust_auto_opaque_plus_sign_return_twin_sync(),
+      callFfi: () {
+        return wire.wire_rust_auto_opaque_plus_sign_return_twin_sync();
+      },
       parseSuccessData:
           _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync,
       parseErrorData: null,
@@ -14854,9 +15870,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   RwLockNonCloneSimpleTwinSync rustAutoOpaqueReturnOwnTwinSync(
       {required int initial, dynamic hint}) {
-    var arg0 = cst_encode_i_32(initial);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_rust_auto_opaque_return_own_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_i_32(initial);
+        return wire.wire_rust_auto_opaque_return_own_twin_sync(arg0);
+      },
       parseSuccessData:
           _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync,
       parseErrorData: null,
@@ -14876,13 +15894,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSync(
       {required RwLockStructWithGoodAndOpaqueFieldTwinSync arg, dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-            arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire
-          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync(
-              arg0),
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+                arg);
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync(
+                arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta:
@@ -14904,13 +15924,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSync(
       {required RwLockStructWithGoodAndOpaqueFieldTwinSync arg, dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-            arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire
-          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync(
-              arg0),
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+                arg);
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync(
+                arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta:
@@ -14932,13 +15954,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSync(
       {required RwLockStructWithGoodAndOpaqueFieldTwinSync arg, dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
-            arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire
-          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
-              arg0),
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
+                arg);
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
+                arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta:
@@ -14962,8 +15986,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSync(
           {dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire
-          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync(),
+      callFfi: () {
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync();
+      },
       parseSuccessData:
           _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync,
       parseErrorData: null,
@@ -14988,13 +16014,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required RwLockBoxHelloTraitTwinSync arg,
       required String expect,
       dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-            arg);
-    var arg1 = cst_encode_String(expect);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire
-          .wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync(arg0, arg1),
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+                arg);
+        var arg1 = cst_encode_String(expect);
+        return wire.wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync(
+            arg0, arg1);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueTraitObjectArgBorrowTwinSyncConstMeta,
@@ -15015,14 +16043,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required RwLockBoxHelloTraitTwinSync arg,
       required String expect,
       dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-            arg);
-    var arg1 = cst_encode_String(expect);
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync(
-              arg0, arg1),
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+                arg);
+        var arg1 = cst_encode_String(expect);
+        return wire.wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync(
+            arg0, arg1);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueTraitObjectArgMutBorrowTwinSyncConstMeta,
@@ -15043,13 +16072,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required RwLockBoxHelloTraitTwinSync arg,
       required String expect,
       dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
-            arg);
-    var arg1 = cst_encode_String(expect);
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_rust_auto_opaque_trait_object_arg_own_twin_sync(arg0, arg1),
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
+                arg);
+        var arg1 = cst_encode_String(expect);
+        return wire.wire_rust_auto_opaque_trait_object_arg_own_twin_sync(
+            arg0, arg1);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueTraitObjectArgOwnTwinSyncConstMeta,
@@ -15069,8 +16100,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RwLockBoxHelloTraitTwinSync rustAutoOpaqueTraitObjectReturnOwnOneTwinSync(
       {dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_rust_auto_opaque_trait_object_return_own_one_twin_sync(),
+      callFfi: () {
+        return wire
+            .wire_rust_auto_opaque_trait_object_return_own_one_twin_sync();
+      },
       parseSuccessData:
           _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync,
       parseErrorData: null,
@@ -15091,8 +16124,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RwLockBoxHelloTraitTwinSync rustAutoOpaqueTraitObjectReturnOwnTwoTwinSync(
       {dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () =>
-          wire.wire_rust_auto_opaque_trait_object_return_own_two_twin_sync(),
+      callFfi: () {
+        return wire
+            .wire_rust_auto_opaque_trait_object_return_own_two_twin_sync();
+      },
       parseSuccessData:
           _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync,
       parseErrorData: null,
@@ -15114,12 +16149,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required RwLockNonCloneSimpleTwinSync a,
       required RwLockNonCloneSimpleTwinSync b,
       dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(a);
-    var arg1 =
-        cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(b);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_rust_auto_opaque_two_args_twin_sync(arg0, arg1),
+      callFfi: () {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+                a);
+        var arg1 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
+                b);
+        return wire.wire_rust_auto_opaque_two_args_twin_sync(arg0, arg1);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueTwoArgsTwinSyncConstMeta,
@@ -15139,8 +16178,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<EnumOpaqueTwinRustAsyncArray5> createArrayOpaqueEnumTwinRustAsync(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_create_array_opaque_enum_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_create_array_opaque_enum_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_enum_opaque_twin_rust_async_array_5,
       parseErrorData: null,
       constMeta: kCreateArrayOpaqueEnumTwinRustAsyncConstMeta,
@@ -15160,7 +16200,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<OpaqueNestedTwinRustAsync> createNestedOpaqueTwinRustAsync(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_create_nested_opaque_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_create_nested_opaque_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_opaque_nested_twin_rust_async,
       parseErrorData: null,
       constMeta: kCreateNestedOpaqueTwinRustAsyncConstMeta,
@@ -15179,7 +16221,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<HideData> createOpaqueTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_create_opaque_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_create_opaque_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_RustOpaque_hide_data,
       parseErrorData: null,
       constMeta: kCreateOpaqueTwinRustAsyncConstMeta,
@@ -15197,10 +16241,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<HideData?> createOptionOpaqueTwinRustAsync(
       {HideData? opaque, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_RustOpaque_hide_data(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_create_option_opaque_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_RustOpaque_hide_data(opaque);
+        return wire.wire_create_option_opaque_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_RustOpaque_hide_data,
       parseErrorData: null,
       constMeta: kCreateOptionOpaqueTwinRustAsyncConstMeta,
@@ -15219,7 +16264,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<NonSendHideData> createSyncOpaqueTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_create_sync_opaque_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_create_sync_opaque_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_RustOpaque_non_send_hide_data,
       parseErrorData: null,
       constMeta: kCreateSyncOpaqueTwinRustAsyncConstMeta,
@@ -15238,7 +16285,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<FrbOpaqueReturn> frbGeneratorTestTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_frb_generator_test_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_frb_generator_test_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_RustOpaque_frb_opaque_return,
       parseErrorData: null,
       constMeta: kFrbGeneratorTestTwinRustAsyncConstMeta,
@@ -15257,10 +16306,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> opaqueArrayRunTwinRustAsync(
       {required HideDataArray2 data, dynamic hint}) {
-    var arg0 = cst_encode_RustOpaque_hide_data_array_2(data);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_opaque_array_run_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_RustOpaque_hide_data_array_2(data);
+        return wire.wire_opaque_array_run_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kOpaqueArrayRunTwinRustAsyncConstMeta,
@@ -15279,7 +16329,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<HideDataArray2> opaqueArrayTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_opaque_array_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_opaque_array_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_RustOpaque_hide_data_array_2,
       parseErrorData: null,
       constMeta: kOpaqueArrayTwinRustAsyncConstMeta,
@@ -15297,9 +16349,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> opaqueVecRunTwinRustAsync(
       {required List<HideData> data, dynamic hint}) {
-    var arg0 = cst_encode_list_RustOpaque_hide_data(data);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_opaque_vec_run_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_RustOpaque_hide_data(data);
+        return wire.wire_opaque_vec_run_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kOpaqueVecRunTwinRustAsyncConstMeta,
@@ -15317,7 +16371,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<List<HideData>> opaqueVecTwinRustAsync({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_opaque_vec_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_opaque_vec_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_list_RustOpaque_hide_data,
       parseErrorData: null,
       constMeta: kOpaqueVecTwinRustAsyncConstMeta,
@@ -15335,10 +16391,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<String> runEnumOpaqueTwinRustAsync(
       {required EnumOpaqueTwinRustAsync opaque, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_enum_opaque_twin_rust_async(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_run_enum_opaque_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_enum_opaque_twin_rust_async(opaque);
+        return wire.wire_run_enum_opaque_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kRunEnumOpaqueTwinRustAsyncConstMeta,
@@ -15356,10 +16413,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> runNestedOpaqueTwinRustAsync(
       {required OpaqueNestedTwinRustAsync opaque, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_opaque_nested_twin_rust_async(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_run_nested_opaque_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_opaque_nested_twin_rust_async(opaque);
+        return wire.wire_run_nested_opaque_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kRunNestedOpaqueTwinRustAsyncConstMeta,
@@ -15378,9 +16436,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<String> runNonCloneTwinRustAsync(
       {required NonCloneData clone, dynamic hint}) {
-    var arg0 = cst_encode_RustOpaque_non_clone_data(clone);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_run_non_clone_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_RustOpaque_non_clone_data(clone);
+        return wire.wire_run_non_clone_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kRunNonCloneTwinRustAsyncConstMeta,
@@ -15398,9 +16458,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<String> runOpaqueTwinRustAsync(
       {required HideData opaque, dynamic hint}) {
-    var arg0 = cst_encode_RustOpaque_hide_data(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_run_opaque_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        return wire.wire_run_opaque_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kRunOpaqueTwinRustAsyncConstMeta,
@@ -15418,10 +16480,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<String> runOpaqueWithDelayTwinRustAsync(
       {required HideData opaque, dynamic hint}) {
-    var arg0 = cst_encode_RustOpaque_hide_data(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_run_opaque_with_delay_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        return wire.wire_run_opaque_with_delay_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kRunOpaqueWithDelayTwinRustAsyncConstMeta,
@@ -15440,10 +16503,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<String> unwrapRustOpaqueTwinRustAsync(
       {required HideData opaque, dynamic hint}) {
-    var arg0 = cst_encode_RustOpaque_hide_data(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_unwrap_rust_opaque_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        return wire.wire_unwrap_rust_opaque_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kUnwrapRustOpaqueTwinRustAsyncConstMeta,
@@ -15462,7 +16526,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   EnumOpaqueTwinSyncArray5 createArrayOpaqueEnumTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_create_array_opaque_enum_twin_sync(),
+      callFfi: () {
+        return wire.wire_create_array_opaque_enum_twin_sync();
+      },
       parseSuccessData: _dco_decode_enum_opaque_twin_sync_array_5,
       parseErrorData: null,
       constMeta: kCreateArrayOpaqueEnumTwinSyncConstMeta,
@@ -15481,7 +16547,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   OpaqueNestedTwinSync createNestedOpaqueTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_create_nested_opaque_twin_sync(),
+      callFfi: () {
+        return wire.wire_create_nested_opaque_twin_sync();
+      },
       parseSuccessData: _dco_decode_opaque_nested_twin_sync,
       parseErrorData: null,
       constMeta: kCreateNestedOpaqueTwinSyncConstMeta,
@@ -15499,7 +16567,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   HideData createOpaqueTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_create_opaque_twin_sync(),
+      callFfi: () {
+        return wire.wire_create_opaque_twin_sync();
+      },
       parseSuccessData: _dco_decode_RustOpaque_hide_data,
       parseErrorData: null,
       constMeta: kCreateOpaqueTwinSyncConstMeta,
@@ -15516,9 +16586,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   HideData? createOptionOpaqueTwinSync({HideData? opaque, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_RustOpaque_hide_data(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_create_option_opaque_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_RustOpaque_hide_data(opaque);
+        return wire.wire_create_option_opaque_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_RustOpaque_hide_data,
       parseErrorData: null,
       constMeta: kCreateOptionOpaqueTwinSyncConstMeta,
@@ -15536,7 +16608,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   NonSendHideData createSyncOpaqueTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_create_sync_opaque_twin_sync(),
+      callFfi: () {
+        return wire.wire_create_sync_opaque_twin_sync();
+      },
       parseSuccessData: _dco_decode_RustOpaque_non_send_hide_data,
       parseErrorData: null,
       constMeta: kCreateSyncOpaqueTwinSyncConstMeta,
@@ -15554,7 +16628,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   FrbOpaqueReturn frbGeneratorTestTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_frb_generator_test_twin_sync(),
+      callFfi: () {
+        return wire.wire_frb_generator_test_twin_sync();
+      },
       parseSuccessData: _dco_decode_RustOpaque_frb_opaque_return,
       parseErrorData: null,
       constMeta: kFrbGeneratorTestTwinSyncConstMeta,
@@ -15571,9 +16647,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void opaqueArrayRunTwinSync({required HideDataArray2 data, dynamic hint}) {
-    var arg0 = cst_encode_RustOpaque_hide_data_array_2(data);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_opaque_array_run_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_RustOpaque_hide_data_array_2(data);
+        return wire.wire_opaque_array_run_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kOpaqueArrayRunTwinSyncConstMeta,
@@ -15591,7 +16669,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   HideDataArray2 opaqueArrayTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_opaque_array_twin_sync(),
+      callFfi: () {
+        return wire.wire_opaque_array_twin_sync();
+      },
       parseSuccessData: _dco_decode_RustOpaque_hide_data_array_2,
       parseErrorData: null,
       constMeta: kOpaqueArrayTwinSyncConstMeta,
@@ -15608,9 +16688,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void opaqueVecRunTwinSync({required List<HideData> data, dynamic hint}) {
-    var arg0 = cst_encode_list_RustOpaque_hide_data(data);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_opaque_vec_run_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_list_RustOpaque_hide_data(data);
+        return wire.wire_opaque_vec_run_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kOpaqueVecRunTwinSyncConstMeta,
@@ -15628,7 +16710,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   List<HideData> opaqueVecTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_opaque_vec_twin_sync(),
+      callFfi: () {
+        return wire.wire_opaque_vec_twin_sync();
+      },
       parseSuccessData: _dco_decode_list_RustOpaque_hide_data,
       parseErrorData: null,
       constMeta: kOpaqueVecTwinSyncConstMeta,
@@ -15646,9 +16730,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   String runEnumOpaqueTwinSync(
       {required EnumOpaqueTwinSync opaque, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_enum_opaque_twin_sync(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_run_enum_opaque_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_enum_opaque_twin_sync(opaque);
+        return wire.wire_run_enum_opaque_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kRunEnumOpaqueTwinSyncConstMeta,
@@ -15666,9 +16752,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void runNestedOpaqueTwinSync(
       {required OpaqueNestedTwinSync opaque, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_opaque_nested_twin_sync(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_run_nested_opaque_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_opaque_nested_twin_sync(opaque);
+        return wire.wire_run_nested_opaque_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kRunNestedOpaqueTwinSyncConstMeta,
@@ -15685,9 +16773,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   String runNonCloneTwinSync({required NonCloneData clone, dynamic hint}) {
-    var arg0 = cst_encode_RustOpaque_non_clone_data(clone);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_run_non_clone_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_RustOpaque_non_clone_data(clone);
+        return wire.wire_run_non_clone_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kRunNonCloneTwinSyncConstMeta,
@@ -15704,9 +16794,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   String runOpaqueTwinSync({required HideData opaque, dynamic hint}) {
-    var arg0 = cst_encode_RustOpaque_hide_data(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_run_opaque_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        return wire.wire_run_opaque_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kRunOpaqueTwinSyncConstMeta,
@@ -15723,9 +16815,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   String runOpaqueWithDelayTwinSync({required HideData opaque, dynamic hint}) {
-    var arg0 = cst_encode_RustOpaque_hide_data(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_run_opaque_with_delay_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        return wire.wire_run_opaque_with_delay_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kRunOpaqueWithDelayTwinSyncConstMeta,
@@ -15742,9 +16836,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   String unwrapRustOpaqueTwinSync({required HideData opaque, dynamic hint}) {
-    var arg0 = cst_encode_RustOpaque_hide_data(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_unwrap_rust_opaque_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        return wire.wire_unwrap_rust_opaque_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kUnwrapRustOpaqueTwinSyncConstMeta,
@@ -15762,11 +16858,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> simpleAdderTwinRustAsync(
       {required int a, required int b, dynamic hint}) {
-    var arg0 = cst_encode_i_32(a);
-    var arg1 = cst_encode_i_32(b);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_simple_adder_twin_rust_async(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(a);
+        var arg1 = cst_encode_i_32(b);
+        return wire.wire_simple_adder_twin_rust_async(port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_i_32,
       parseErrorData: null,
       constMeta: kSimpleAdderTwinRustAsyncConstMeta,
@@ -15783,10 +16880,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   int simpleAdderTwinSync({required int a, required int b, dynamic hint}) {
-    var arg0 = cst_encode_i_32(a);
-    var arg1 = cst_encode_i_32(b);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_simple_adder_twin_sync(arg0, arg1),
+      callFfi: () {
+        var arg0 = cst_encode_i_32(a);
+        var arg1 = cst_encode_i_32(b);
+        return wire.wire_simple_adder_twin_sync(arg0, arg1);
+      },
       parseSuccessData: _dco_decode_i_32,
       parseErrorData: null,
       constMeta: kSimpleAdderTwinSyncConstMeta,
@@ -15804,8 +16903,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<String> funcStreamReturnErrorTwinRustAsync({dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) =>
-          wire.wire_func_stream_return_error_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_func_stream_return_error_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kFuncStreamReturnErrorTwinRustAsyncConstMeta,
@@ -15824,8 +16924,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<String> funcStreamReturnPanicTwinRustAsync({dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) =>
-          wire.wire_func_stream_return_panic_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_func_stream_return_panic_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kFuncStreamReturnPanicTwinRustAsyncConstMeta,
@@ -15844,12 +16945,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<int> funcStreamSinkArgPositionTwinRustAsync(
       {required int a, required int b, dynamic hint}) {
-    var arg0 = cst_encode_u_32(a);
-    var arg1 = cst_encode_u_32(b);
     return handler.executeStream(StreamTask(
-      callFfi: (port_) =>
-          wire.wire_func_stream_sink_arg_position_twin_rust_async(
-              port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(a);
+        var arg1 = cst_encode_u_32(b);
+        return wire.wire_func_stream_sink_arg_position_twin_rust_async(
+            port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: null,
       constMeta: kFuncStreamSinkArgPositionTwinRustAsyncConstMeta,
@@ -15869,8 +16971,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<MyStreamEntryTwinRustAsync> handleStreamOfStructTwinRustAsync(
       {dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) =>
-          wire.wire_handle_stream_of_struct_twin_rust_async(port_),
+      callFfi: (port_) {
+        return wire.wire_handle_stream_of_struct_twin_rust_async(port_);
+      },
       parseSuccessData: _dco_decode_my_stream_entry_twin_rust_async,
       parseErrorData: null,
       constMeta: kHandleStreamOfStructTwinRustAsyncConstMeta,
@@ -15889,11 +16992,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<LogTwinRustAsync> handleStreamSinkAt1TwinRustAsync(
       {required int key, required int max, dynamic hint}) {
-    var arg0 = cst_encode_u_32(key);
-    var arg1 = cst_encode_u_32(max);
     return handler.executeStream(StreamTask(
-      callFfi: (port_) =>
-          wire.wire_handle_stream_sink_at_1_twin_rust_async(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(key);
+        var arg1 = cst_encode_u_32(max);
+        return wire.wire_handle_stream_sink_at_1_twin_rust_async(
+            port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_log_twin_rust_async,
       parseErrorData: null,
       constMeta: kHandleStreamSinkAt1TwinRustAsyncConstMeta,
@@ -15912,11 +17017,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<LogTwinRustAsync> handleStreamSinkAt2TwinRustAsync(
       {required int key, required int max, dynamic hint}) {
-    var arg0 = cst_encode_u_32(key);
-    var arg1 = cst_encode_u_32(max);
     return handler.executeStream(StreamTask(
-      callFfi: (port_) =>
-          wire.wire_handle_stream_sink_at_2_twin_rust_async(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(key);
+        var arg1 = cst_encode_u_32(max);
+        return wire.wire_handle_stream_sink_at_2_twin_rust_async(
+            port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_log_twin_rust_async,
       parseErrorData: null,
       constMeta: kHandleStreamSinkAt2TwinRustAsyncConstMeta,
@@ -15935,11 +17042,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<LogTwinRustAsync> handleStreamSinkAt3TwinRustAsync(
       {required int key, required int max, dynamic hint}) {
-    var arg0 = cst_encode_u_32(key);
-    var arg1 = cst_encode_u_32(max);
     return handler.executeStream(StreamTask(
-      callFfi: (port_) =>
-          wire.wire_handle_stream_sink_at_3_twin_rust_async(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(key);
+        var arg1 = cst_encode_u_32(max);
+        return wire.wire_handle_stream_sink_at_3_twin_rust_async(
+            port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_log_twin_rust_async,
       parseErrorData: null,
       constMeta: kHandleStreamSinkAt3TwinRustAsyncConstMeta,
@@ -15958,11 +17067,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<StructWithOneFieldTwinRustAsync> funcStructWithOneFieldTwinRustAsync(
       {required StructWithOneFieldTwinRustAsync arg, dynamic hint}) {
-    var arg0 =
-        cst_encode_box_autoadd_struct_with_one_field_twin_rust_async(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_func_struct_with_one_field_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_struct_with_one_field_twin_rust_async(arg);
+        return wire.wire_func_struct_with_one_field_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_struct_with_one_field_twin_rust_async,
       parseErrorData: null,
       constMeta: kFuncStructWithOneFieldTwinRustAsyncConstMeta,
@@ -15981,11 +17092,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<StructWithTwoFieldTwinRustAsync> funcStructWithTwoFieldTwinRustAsync(
       {required StructWithTwoFieldTwinRustAsync arg, dynamic hint}) {
-    var arg0 =
-        cst_encode_box_autoadd_struct_with_two_field_twin_rust_async(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_func_struct_with_two_field_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_struct_with_two_field_twin_rust_async(arg);
+        return wire.wire_func_struct_with_two_field_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_struct_with_two_field_twin_rust_async,
       parseErrorData: null,
       constMeta: kFuncStructWithTwoFieldTwinRustAsyncConstMeta,
@@ -16004,11 +17117,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<StructWithZeroFieldTwinRustAsync> funcStructWithZeroFieldTwinRustAsync(
       {required StructWithZeroFieldTwinRustAsync arg, dynamic hint}) {
-    var arg0 =
-        cst_encode_box_autoadd_struct_with_zero_field_twin_rust_async(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_func_struct_with_zero_field_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_struct_with_zero_field_twin_rust_async(arg);
+        return wire.wire_func_struct_with_zero_field_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_struct_with_zero_field_twin_rust_async,
       parseErrorData: null,
       constMeta: kFuncStructWithZeroFieldTwinRustAsyncConstMeta,
@@ -16028,11 +17143,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<TupleStructWithOneFieldTwinRustAsync>
       funcTupleStructWithOneFieldTwinRustAsync(
           {required TupleStructWithOneFieldTwinRustAsync arg, dynamic hint}) {
-    var arg0 =
-        cst_encode_box_autoadd_tuple_struct_with_one_field_twin_rust_async(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_func_tuple_struct_with_one_field_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_tuple_struct_with_one_field_twin_rust_async(
+                arg);
+        return wire.wire_func_tuple_struct_with_one_field_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_tuple_struct_with_one_field_twin_rust_async,
       parseErrorData: null,
       constMeta: kFuncTupleStructWithOneFieldTwinRustAsyncConstMeta,
@@ -16052,11 +17170,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<TupleStructWithTwoFieldTwinRustAsync>
       funcTupleStructWithTwoFieldTwinRustAsync(
           {required TupleStructWithTwoFieldTwinRustAsync arg, dynamic hint}) {
-    var arg0 =
-        cst_encode_box_autoadd_tuple_struct_with_two_field_twin_rust_async(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_func_tuple_struct_with_two_field_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_tuple_struct_with_two_field_twin_rust_async(
+                arg);
+        return wire.wire_func_tuple_struct_with_two_field_twin_rust_async(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_tuple_struct_with_two_field_twin_rust_async,
       parseErrorData: null,
       constMeta: kFuncTupleStructWithTwoFieldTwinRustAsyncConstMeta,
@@ -16075,9 +17196,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   StructWithOneFieldTwinSync funcStructWithOneFieldTwinSync(
       {required StructWithOneFieldTwinSync arg, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_struct_with_one_field_twin_sync(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_struct_with_one_field_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_struct_with_one_field_twin_sync(arg);
+        return wire.wire_func_struct_with_one_field_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_struct_with_one_field_twin_sync,
       parseErrorData: null,
       constMeta: kFuncStructWithOneFieldTwinSyncConstMeta,
@@ -16096,9 +17219,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   StructWithTwoFieldTwinSync funcStructWithTwoFieldTwinSync(
       {required StructWithTwoFieldTwinSync arg, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_struct_with_two_field_twin_sync(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_struct_with_two_field_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_struct_with_two_field_twin_sync(arg);
+        return wire.wire_func_struct_with_two_field_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_struct_with_two_field_twin_sync,
       parseErrorData: null,
       constMeta: kFuncStructWithTwoFieldTwinSyncConstMeta,
@@ -16117,9 +17242,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   StructWithZeroFieldTwinSync funcStructWithZeroFieldTwinSync(
       {required StructWithZeroFieldTwinSync arg, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_struct_with_zero_field_twin_sync(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_struct_with_zero_field_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_struct_with_zero_field_twin_sync(arg);
+        return wire.wire_func_struct_with_zero_field_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_struct_with_zero_field_twin_sync,
       parseErrorData: null,
       constMeta: kFuncStructWithZeroFieldTwinSyncConstMeta,
@@ -16138,10 +17265,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   TupleStructWithOneFieldTwinSync funcTupleStructWithOneFieldTwinSync(
       {required TupleStructWithOneFieldTwinSync arg, dynamic hint}) {
-    var arg0 =
-        cst_encode_box_autoadd_tuple_struct_with_one_field_twin_sync(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_tuple_struct_with_one_field_twin_sync(arg0),
+      callFfi: () {
+        var arg0 =
+            cst_encode_box_autoadd_tuple_struct_with_one_field_twin_sync(arg);
+        return wire.wire_func_tuple_struct_with_one_field_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_tuple_struct_with_one_field_twin_sync,
       parseErrorData: null,
       constMeta: kFuncTupleStructWithOneFieldTwinSyncConstMeta,
@@ -16160,10 +17289,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   TupleStructWithTwoFieldTwinSync funcTupleStructWithTwoFieldTwinSync(
       {required TupleStructWithTwoFieldTwinSync arg, dynamic hint}) {
-    var arg0 =
-        cst_encode_box_autoadd_tuple_struct_with_two_field_twin_sync(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_func_tuple_struct_with_two_field_twin_sync(arg0),
+      callFfi: () {
+        var arg0 =
+            cst_encode_box_autoadd_tuple_struct_with_two_field_twin_sync(arg);
+        return wire.wire_func_tuple_struct_with_two_field_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_tuple_struct_with_two_field_twin_sync,
       parseErrorData: null,
       constMeta: kFuncTupleStructWithTwoFieldTwinSyncConstMeta,
@@ -16182,9 +17313,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> testTuple2TwinRustAsync(
       {required List<(String, int)> value, dynamic hint}) {
-    var arg0 = cst_encode_list_record_string_i_32(value);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_test_tuple_2_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_record_string_i_32(value);
+        return wire.wire_test_tuple_2_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kTestTuple2TwinRustAsyncConstMeta,
@@ -16202,9 +17335,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<(String, int)> testTupleTwinRustAsync(
       {(String, int)? value, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_record_string_i_32(value);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_test_tuple_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_record_string_i_32(value);
+        return wire.wire_test_tuple_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_record_string_i_32,
       parseErrorData: null,
       constMeta: kTestTupleTwinRustAsyncConstMeta,
@@ -16221,9 +17356,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   void testTuple2TwinSync({required List<(String, int)> value, dynamic hint}) {
-    var arg0 = cst_encode_list_record_string_i_32(value);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_test_tuple_2_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_list_record_string_i_32(value);
+        return wire.wire_test_tuple_2_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kTestTuple2TwinSyncConstMeta,
@@ -16240,9 +17377,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   (String, int) testTupleTwinSync({(String, int)? value, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_record_string_i_32(value);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_test_tuple_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_opt_box_autoadd_record_string_i_32(value);
+        return wire.wire_test_tuple_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_record_string_i_32,
       parseErrorData: null,
       constMeta: kTestTupleTwinSyncConstMeta,
@@ -16260,10 +17399,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> handleTypeAliasIdTwinRustAsync(
       {required int input, dynamic hint}) {
-    var arg0 = cst_encode_u_64(input);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_type_alias_id_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_64(input);
+        return wire.wire_handle_type_alias_id_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_64,
       parseErrorData: null,
       constMeta: kHandleTypeAliasIdTwinRustAsyncConstMeta,
@@ -16282,10 +17422,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<TestModelTwinRustAsync> handleTypeAliasModelTwinRustAsync(
       {required int input, dynamic hint}) {
-    var arg0 = cst_encode_u_64(input);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_type_alias_model_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_64(input);
+        return wire.wire_handle_type_alias_model_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_test_model_twin_rust_async,
       parseErrorData: null,
       constMeta: kHandleTypeAliasModelTwinRustAsyncConstMeta,
@@ -16304,10 +17445,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> handleTypeNestAliasIdTwinRustAsync(
       {required int input, dynamic hint}) {
-    var arg0 = cst_encode_u_64(input);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_type_nest_alias_id_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_64(input);
+        return wire.wire_handle_type_nest_alias_id_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_64,
       parseErrorData: null,
       constMeta: kHandleTypeNestAliasIdTwinRustAsyncConstMeta,
@@ -16325,9 +17467,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   int handleTypeAliasIdTwinSync({required int input, dynamic hint}) {
-    var arg0 = cst_encode_u_64(input);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_type_alias_id_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_u_64(input);
+        return wire.wire_handle_type_alias_id_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_u_64,
       parseErrorData: null,
       constMeta: kHandleTypeAliasIdTwinSyncConstMeta,
@@ -16345,9 +17489,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   TestModelTwinSync handleTypeAliasModelTwinSync(
       {required int input, dynamic hint}) {
-    var arg0 = cst_encode_u_64(input);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_type_alias_model_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_u_64(input);
+        return wire.wire_handle_type_alias_model_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_test_model_twin_sync,
       parseErrorData: null,
       constMeta: kHandleTypeAliasModelTwinSyncConstMeta,
@@ -16365,9 +17511,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   int handleTypeNestAliasIdTwinSync({required int input, dynamic hint}) {
-    var arg0 = cst_encode_u_64(input);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_type_nest_alias_id_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_u_64(input);
+        return wire.wire_handle_type_nest_alias_id_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_u_64,
       parseErrorData: null,
       constMeta: kHandleTypeNestAliasIdTwinSyncConstMeta,
@@ -16386,10 +17534,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<FeatureUuidTwinRustAsync> handleNestedUuidsTwinRustAsync(
       {required FeatureUuidTwinRustAsync ids, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_feature_uuid_twin_rust_async(ids);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_nested_uuids_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_feature_uuid_twin_rust_async(ids);
+        return wire.wire_handle_nested_uuids_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_feature_uuid_twin_rust_async,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kHandleNestedUuidsTwinRustAsyncConstMeta,
@@ -16408,9 +17557,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<UuidValue> handleUuidTwinRustAsync(
       {required UuidValue id, dynamic hint}) {
-    var arg0 = cst_encode_Uuid(id);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_uuid_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_Uuid(id);
+        return wire.wire_handle_uuid_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_Uuid,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kHandleUuidTwinRustAsyncConstMeta,
@@ -16428,9 +17579,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<List<UuidValue>> handleUuidsTwinRustAsync(
       {required List<UuidValue> ids, dynamic hint}) {
-    var arg0 = cst_encode_Uuids(ids);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_uuids_twin_rust_async(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_Uuids(ids);
+        return wire.wire_handle_uuids_twin_rust_async(port_, arg0);
+      },
       parseSuccessData: _dco_decode_Uuids,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kHandleUuidsTwinRustAsyncConstMeta,
@@ -16448,9 +17601,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   FeatureUuidTwinSync handleNestedUuidsTwinSync(
       {required FeatureUuidTwinSync ids, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_feature_uuid_twin_sync(ids);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_nested_uuids_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_box_autoadd_feature_uuid_twin_sync(ids);
+        return wire.wire_handle_nested_uuids_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_feature_uuid_twin_sync,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kHandleNestedUuidsTwinSyncConstMeta,
@@ -16467,9 +17622,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   UuidValue handleUuidTwinSync({required UuidValue id, dynamic hint}) {
-    var arg0 = cst_encode_Uuid(id);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_uuid_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_Uuid(id);
+        return wire.wire_handle_uuid_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_Uuid,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kHandleUuidTwinSyncConstMeta,
@@ -16487,9 +17644,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   List<UuidValue> handleUuidsTwinSync(
       {required List<UuidValue> ids, dynamic hint}) {
-    var arg0 = cst_encode_Uuids(ids);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_handle_uuids_twin_sync(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_Uuids(ids);
+        return wire.wire_handle_uuids_twin_sync(arg0);
+      },
       parseSuccessData: _dco_decode_Uuids,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kHandleUuidsTwinSyncConstMeta,
@@ -16508,8 +17667,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<MoreThanJustOneRawStringStructTwinNormal>
       testMoreThanJustOneRawStringStructTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_test_more_than_just_one_raw_string_struct_twin_normal(port_),
+      callFfi: (port_) {
+        return wire
+            .wire_test_more_than_just_one_raw_string_struct_twin_normal(port_);
+      },
       parseSuccessData:
           _dco_decode_more_than_just_one_raw_string_struct_twin_normal,
       parseErrorData: null,
@@ -16530,8 +17691,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<RawStringItemStructTwinNormal> testRawStringItemStructTwinNormal(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_test_raw_string_item_struct_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_test_raw_string_item_struct_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_raw_string_item_struct_twin_normal,
       parseErrorData: null,
       constMeta: kTestRawStringItemStructTwinNormalConstMeta,
@@ -16550,13 +17712,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> nonCloneSimpleTwinNormalInstanceMethodArgBorrowTwinNormal(
       {required RwLockNonCloneSimpleTwinNormal that, dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-            that);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+                that);
+        return wire
+            .wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal(
+                port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta:
@@ -16578,13 +17742,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> nonCloneSimpleTwinNormalInstanceMethodArgMutBorrowTwinNormal(
       {required RwLockNonCloneSimpleTwinNormal that, dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-            that);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+                that);
+        return wire
+            .wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal(
+                port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta:
@@ -16606,13 +17772,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> nonCloneSimpleTwinNormalInstanceMethodArgOwnTwinNormal(
       {required RwLockNonCloneSimpleTwinNormal that, dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-            that);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+                that);
+        return wire
+            .wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal(
+                port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta:
@@ -16635,13 +17803,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<RwLockNonCloneSimpleTwinNormal>
       nonCloneSimpleTwinNormalInstanceMethodReturnOwnTwinNormal(
           {required RwLockNonCloneSimpleTwinNormal that, dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-            that);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+                that);
+        return wire
+            .wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal(
+                port_, arg0);
+      },
       parseSuccessData:
           _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
       parseErrorData: null,
@@ -16665,8 +17835,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<RwLockNonCloneSimpleTwinNormal>
       nonCloneSimpleTwinNormalNewCustomNameTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal(port_),
+      callFfi: (port_) {
+        return wire
+            .wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal(port_);
+      },
       parseSuccessData:
           _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
       parseErrorData: null,
@@ -16687,8 +17859,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<RwLockNonCloneSimpleTwinNormal> nonCloneSimpleTwinNormalNewTwinNormal(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_NonCloneSimpleTwinNormal_new_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_NonCloneSimpleTwinNormal_new_twin_normal(port_);
+      },
       parseSuccessData:
           _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
       parseErrorData: null,
@@ -16708,13 +17881,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> nonCloneSimpleTwinNormalStaticMethodArgBorrowTwinNormal(
       {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-            arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+                arg);
+        return wire
+            .wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal(
+                port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta:
@@ -16736,13 +17911,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> nonCloneSimpleTwinNormalStaticMethodArgMutBorrowTwinNormal(
       {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-            arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+                arg);
+        return wire
+            .wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal(
+                port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta:
@@ -16764,13 +17941,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> nonCloneSimpleTwinNormalStaticMethodArgOwnTwinNormal(
       {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-            arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+                arg);
+        return wire
+            .wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal(
+                port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kNonCloneSimpleTwinNormalStaticMethodArgOwnTwinNormalConstMeta,
@@ -16792,9 +17971,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<RwLockNonCloneSimpleTwinNormal>
       nonCloneSimpleTwinNormalStaticMethodReturnOwnTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_NonCloneSimpleTwinNormal_static_method_return_own_twin_normal(
-              port_),
+      callFfi: (port_) {
+        return wire
+            .wire_NonCloneSimpleTwinNormal_static_method_return_own_twin_normal(
+                port_);
+      },
       parseSuccessData:
           _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
       parseErrorData: null,
@@ -16819,13 +18000,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required RwLockNonCloneSimpleTwinNormal arg,
       required int expect,
       dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-            arg);
-    var arg1 = cst_encode_i_32(expect);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_arg_borrow_twin_normal(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+                arg);
+        var arg1 = cst_encode_i_32(expect);
+        return wire.wire_rust_auto_opaque_arg_borrow_twin_normal(
+            port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueArgBorrowTwinNormalConstMeta,
@@ -16847,14 +18030,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       required int expect,
       required int adder,
       dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-            arg);
-    var arg1 = cst_encode_i_32(expect);
-    var arg2 = cst_encode_i_32(adder);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_rust_auto_opaque_arg_mut_borrow_twin_normal(
-          port_, arg0, arg1, arg2),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+                arg);
+        var arg1 = cst_encode_i_32(expect);
+        var arg2 = cst_encode_i_32(adder);
+        return wire.wire_rust_auto_opaque_arg_mut_borrow_twin_normal(
+            port_, arg0, arg1, arg2);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueArgMutBorrowTwinNormalConstMeta,
@@ -16874,13 +18059,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<RwLockNonCloneSimpleTwinNormal>
       rustAutoOpaqueArgOwnAndReturnOwnTwinNormal(
           {required RwLockNonCloneSimpleTwinNormal arg, dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-            arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_arg_own_and_return_own_twin_normal(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+                arg);
+        return wire.wire_rust_auto_opaque_arg_own_and_return_own_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData:
           _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
       parseErrorData: null,
@@ -16902,13 +18088,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required RwLockNonCloneSimpleTwinNormal arg,
       required int expect,
       dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-            arg);
-    var arg1 = cst_encode_i_32(expect);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_arg_own_twin_normal(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+                arg);
+        var arg1 = cst_encode_i_32(expect);
+        return wire.wire_rust_auto_opaque_arg_own_twin_normal(
+            port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueArgOwnTwinNormalConstMeta,
@@ -16927,12 +18115,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> rustAutoOpaqueCallableArgTwinNormal(
       {required RwLockBoxFnStringString arg, dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
-            arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_callable_arg_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
+                arg);
+        return wire.wire_rust_auto_opaque_callable_arg_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueCallableArgTwinNormalConstMeta,
@@ -16952,8 +18141,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<RwLockBoxFnStringString> rustAutoOpaqueCallableReturnTwinNormal(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_callable_return_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_rust_auto_opaque_callable_return_twin_normal(port_);
+      },
       parseSuccessData:
           _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe,
       parseErrorData: null,
@@ -16975,14 +18165,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required RwLockNonCloneSimpleTwinNormal a,
       required String b,
       dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-            a);
-    var arg1 = cst_encode_String(b);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal(
-              port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+                a);
+        var arg1 = cst_encode_String(b);
+        return wire.wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal(
+            port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueNormalAndOpaqueArgTwinNormalConstMeta,
@@ -17001,12 +18192,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> rustAutoOpaquePlusSignArgTwinNormal(
       {required RwLockBoxMyTraitTwinNormal arg, dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
-            arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_plus_sign_arg_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
+                arg);
+        return wire.wire_rust_auto_opaque_plus_sign_arg_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kRustAutoOpaquePlusSignArgTwinNormalConstMeta,
@@ -17026,8 +18219,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<RwLockBoxMyTraitTwinNormal> rustAutoOpaquePlusSignReturnTwinNormal(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_plus_sign_return_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_rust_auto_opaque_plus_sign_return_twin_normal(port_);
+      },
       parseSuccessData:
           _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync,
       parseErrorData: null,
@@ -17047,10 +18241,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<RwLockNonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwnTwinNormal(
       {required int initial, dynamic hint}) {
-    var arg0 = cst_encode_i_32(initial);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_return_own_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(initial);
+        return wire.wire_rust_auto_opaque_return_own_twin_normal(port_, arg0);
+      },
       parseSuccessData:
           _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
       parseErrorData: null,
@@ -17071,13 +18266,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinNormal(
       {required RwLockStructWithGoodAndOpaqueFieldTwinNormal arg,
       dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-            arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+                arg);
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal(
+                port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta:
@@ -17100,13 +18297,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinNormal(
       {required RwLockStructWithGoodAndOpaqueFieldTwinNormal arg,
       dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-            arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+                arg);
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal(
+                port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta:
@@ -17129,13 +18328,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinNormal(
       {required RwLockStructWithGoodAndOpaqueFieldTwinNormal arg,
       dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
-            arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal(
-              port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
+                arg);
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal(
+                port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta:
@@ -17159,9 +18360,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinNormal(
           {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal(
-              port_),
+      callFfi: (port_) {
+        return wire
+            .wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal(
+                port_);
+      },
       parseSuccessData:
           _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal,
       parseErrorData: null,
@@ -17186,14 +18389,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required RwLockBoxHelloTraitTwinNormal arg,
       required String expect,
       dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-            arg);
-    var arg1 = cst_encode_String(expect);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal(
-              port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+                arg);
+        var arg1 = cst_encode_String(expect);
+        return wire.wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal(
+            port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueTraitObjectArgBorrowTwinNormalConstMeta,
@@ -17214,14 +18418,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required RwLockBoxHelloTraitTwinNormal arg,
       required String expect,
       dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-            arg);
-    var arg1 = cst_encode_String(expect);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal(
-              port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+                arg);
+        var arg1 = cst_encode_String(expect);
+        return wire
+            .wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal(
+                port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueTraitObjectArgMutBorrowTwinNormalConstMeta,
@@ -17242,14 +18448,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required RwLockBoxHelloTraitTwinNormal arg,
       required String expect,
       dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
-            arg);
-    var arg1 = cst_encode_String(expect);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_trait_object_arg_own_twin_normal(
-              port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
+                arg);
+        var arg1 = cst_encode_String(expect);
+        return wire.wire_rust_auto_opaque_trait_object_arg_own_twin_normal(
+            port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueTraitObjectArgOwnTwinNormalConstMeta,
@@ -17269,8 +18476,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<RwLockBoxHelloTraitTwinNormal>
       rustAutoOpaqueTraitObjectReturnOwnOneTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_rust_auto_opaque_trait_object_return_own_one_twin_normal(port_),
+      callFfi: (port_) {
+        return wire
+            .wire_rust_auto_opaque_trait_object_return_own_one_twin_normal(
+                port_);
+      },
       parseSuccessData:
           _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal,
       parseErrorData: null,
@@ -17291,8 +18501,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<RwLockBoxHelloTraitTwinNormal>
       rustAutoOpaqueTraitObjectReturnOwnTwoTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire
-          .wire_rust_auto_opaque_trait_object_return_own_two_twin_normal(port_),
+      callFfi: (port_) {
+        return wire
+            .wire_rust_auto_opaque_trait_object_return_own_two_twin_normal(
+                port_);
+      },
       parseSuccessData:
           _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal,
       parseErrorData: null,
@@ -17314,15 +18527,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required RwLockNonCloneSimpleTwinNormal a,
       required RwLockNonCloneSimpleTwinNormal b,
       dynamic hint}) {
-    var arg0 =
-        cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-            a);
-    var arg1 =
-        cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
-            b);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_rust_auto_opaque_two_args_twin_normal(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+                a);
+        var arg1 =
+            cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
+                b);
+        return wire.wire_rust_auto_opaque_two_args_twin_normal(
+            port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kRustAutoOpaqueTwoArgsTwinNormalConstMeta,
@@ -17342,7 +18557,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<EnumOpaqueTwinNormalArray5> createArrayOpaqueEnumTwinNormal(
       {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_create_array_opaque_enum_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_create_array_opaque_enum_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_enum_opaque_twin_normal_array_5,
       parseErrorData: null,
       constMeta: kCreateArrayOpaqueEnumTwinNormalConstMeta,
@@ -17361,7 +18578,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<OpaqueNestedTwinNormal> createNestedOpaqueTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_create_nested_opaque_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_create_nested_opaque_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_opaque_nested_twin_normal,
       parseErrorData: null,
       constMeta: kCreateNestedOpaqueTwinNormalConstMeta,
@@ -17380,7 +18599,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<HideData> createOpaqueTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_create_opaque_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_create_opaque_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_RustOpaque_hide_data,
       parseErrorData: null,
       constMeta: kCreateOpaqueTwinNormalConstMeta,
@@ -17398,10 +18619,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<HideData?> createOptionOpaqueTwinNormal(
       {HideData? opaque, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_RustOpaque_hide_data(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_create_option_opaque_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_RustOpaque_hide_data(opaque);
+        return wire.wire_create_option_opaque_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_RustOpaque_hide_data,
       parseErrorData: null,
       constMeta: kCreateOptionOpaqueTwinNormalConstMeta,
@@ -17420,7 +18642,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<NonSendHideData> createSyncOpaqueTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_create_sync_opaque_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_create_sync_opaque_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_RustOpaque_non_send_hide_data,
       parseErrorData: null,
       constMeta: kCreateSyncOpaqueTwinNormalConstMeta,
@@ -17438,7 +18662,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<FrbOpaqueReturn> frbGeneratorTestTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_frb_generator_test_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_frb_generator_test_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_RustOpaque_frb_opaque_return,
       parseErrorData: null,
       constMeta: kFrbGeneratorTestTwinNormalConstMeta,
@@ -17456,9 +18682,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> opaqueArrayRunTwinNormal(
       {required HideDataArray2 data, dynamic hint}) {
-    var arg0 = cst_encode_RustOpaque_hide_data_array_2(data);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_opaque_array_run_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_RustOpaque_hide_data_array_2(data);
+        return wire.wire_opaque_array_run_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kOpaqueArrayRunTwinNormalConstMeta,
@@ -17476,7 +18704,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<HideDataArray2> opaqueArrayTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_opaque_array_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_opaque_array_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_RustOpaque_hide_data_array_2,
       parseErrorData: null,
       constMeta: kOpaqueArrayTwinNormalConstMeta,
@@ -17494,9 +18724,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> opaqueVecRunTwinNormal(
       {required List<HideData> data, dynamic hint}) {
-    var arg0 = cst_encode_list_RustOpaque_hide_data(data);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_opaque_vec_run_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_RustOpaque_hide_data(data);
+        return wire.wire_opaque_vec_run_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kOpaqueVecRunTwinNormalConstMeta,
@@ -17514,7 +18746,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<List<HideData>> opaqueVecTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_opaque_vec_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_opaque_vec_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_list_RustOpaque_hide_data,
       parseErrorData: null,
       constMeta: kOpaqueVecTwinNormalConstMeta,
@@ -17532,9 +18766,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<String> runEnumOpaqueTwinNormal(
       {required EnumOpaqueTwinNormal opaque, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_enum_opaque_twin_normal(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_run_enum_opaque_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_enum_opaque_twin_normal(opaque);
+        return wire.wire_run_enum_opaque_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kRunEnumOpaqueTwinNormalConstMeta,
@@ -17552,9 +18788,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> runNestedOpaqueTwinNormal(
       {required OpaqueNestedTwinNormal opaque, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_opaque_nested_twin_normal(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_run_nested_opaque_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_opaque_nested_twin_normal(opaque);
+        return wire.wire_run_nested_opaque_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kRunNestedOpaqueTwinNormalConstMeta,
@@ -17572,9 +18810,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<String> runNonCloneTwinNormal(
       {required NonCloneData clone, dynamic hint}) {
-    var arg0 = cst_encode_RustOpaque_non_clone_data(clone);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_run_non_clone_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_RustOpaque_non_clone_data(clone);
+        return wire.wire_run_non_clone_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kRunNonCloneTwinNormalConstMeta,
@@ -17591,9 +18831,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> runOpaqueTwinNormal({required HideData opaque, dynamic hint}) {
-    var arg0 = cst_encode_RustOpaque_hide_data(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_run_opaque_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        return wire.wire_run_opaque_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kRunOpaqueTwinNormalConstMeta,
@@ -17611,10 +18853,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<String> runOpaqueWithDelayTwinNormal(
       {required HideData opaque, dynamic hint}) {
-    var arg0 = cst_encode_RustOpaque_hide_data(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_run_opaque_with_delay_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        return wire.wire_run_opaque_with_delay_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kRunOpaqueWithDelayTwinNormalConstMeta,
@@ -17633,9 +18876,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<String> unwrapRustOpaqueTwinNormal(
       {required HideData opaque, dynamic hint}) {
-    var arg0 = cst_encode_RustOpaque_hide_data(opaque);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_unwrap_rust_opaque_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_RustOpaque_hide_data(opaque);
+        return wire.wire_unwrap_rust_opaque_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kUnwrapRustOpaqueTwinNormalConstMeta,
@@ -17653,7 +18898,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   FrbOpaqueSyncReturn frbSyncGeneratorTestTwinNormal({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_frb_sync_generator_test_twin_normal(),
+      callFfi: () {
+        return wire.wire_frb_sync_generator_test_twin_normal();
+      },
       parseSuccessData: _dco_decode_RustOpaque_frb_opaque_sync_return,
       parseErrorData: null,
       constMeta: kFrbSyncGeneratorTestTwinNormalConstMeta,
@@ -17672,7 +18919,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   NonCloneData syncCreateNonCloneTwinNormal({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_create_non_clone_twin_normal(),
+      callFfi: () {
+        return wire.wire_sync_create_non_clone_twin_normal();
+      },
       parseSuccessData: _dco_decode_RustOpaque_non_clone_data,
       parseErrorData: null,
       constMeta: kSyncCreateNonCloneTwinNormalConstMeta,
@@ -17691,7 +18940,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   HideData syncCreateOpaqueTwinNormal({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_create_opaque_twin_normal(),
+      callFfi: () {
+        return wire.wire_sync_create_opaque_twin_normal();
+      },
       parseSuccessData: _dco_decode_RustOpaque_hide_data,
       parseErrorData: null,
       constMeta: kSyncCreateOpaqueTwinNormalConstMeta,
@@ -17709,7 +18960,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   NonSendHideData syncCreateSyncOpaqueTwinNormal({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_create_sync_opaque_twin_normal(),
+      callFfi: () {
+        return wire.wire_sync_create_sync_opaque_twin_normal();
+      },
       parseSuccessData: _dco_decode_RustOpaque_non_send_hide_data,
       parseErrorData: null,
       constMeta: kSyncCreateSyncOpaqueTwinNormalConstMeta,
@@ -17728,7 +18981,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   HideData? syncOptionRustOpaqueTwinNormal({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_option_rust_opaque_twin_normal(),
+      callFfi: () {
+        return wire.wire_sync_option_rust_opaque_twin_normal();
+      },
       parseSuccessData: _dco_decode_opt_box_autoadd_RustOpaque_hide_data,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kSyncOptionRustOpaqueTwinNormalConstMeta,
@@ -17747,9 +19002,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   String syncRunOpaqueTwinNormal(
       {required NonSendHideData opaque, dynamic hint}) {
-    var arg0 = cst_encode_RustOpaque_non_send_hide_data(opaque);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_sync_run_opaque_twin_normal(arg0),
+      callFfi: () {
+        var arg0 = cst_encode_RustOpaque_non_send_hide_data(opaque);
+        return wire.wire_sync_run_opaque_twin_normal(arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kSyncRunOpaqueTwinNormalConstMeta,
@@ -17767,10 +19024,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> simpleAdderTwinNormal(
       {required int a, required int b, dynamic hint}) {
-    var arg0 = cst_encode_i_32(a);
-    var arg1 = cst_encode_i_32(b);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_simple_adder_twin_normal(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(a);
+        var arg1 = cst_encode_i_32(b);
+        return wire.wire_simple_adder_twin_normal(port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_i_32,
       parseErrorData: null,
       constMeta: kSimpleAdderTwinNormalConstMeta,
@@ -17788,7 +19047,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<String> funcStreamReturnErrorTwinNormal({dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_func_stream_return_error_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_func_stream_return_error_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kFuncStreamReturnErrorTwinNormalConstMeta,
@@ -17807,7 +19068,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<String> funcStreamReturnPanicTwinNormal({dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_func_stream_return_panic_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_func_stream_return_panic_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kFuncStreamReturnPanicTwinNormalConstMeta,
@@ -17826,11 +19089,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<int> funcStreamSinkArgPositionTwinNormal(
       {required int a, required int b, dynamic hint}) {
-    var arg0 = cst_encode_u_32(a);
-    var arg1 = cst_encode_u_32(b);
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_func_stream_sink_arg_position_twin_normal(
-          port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(a);
+        var arg1 = cst_encode_u_32(b);
+        return wire.wire_func_stream_sink_arg_position_twin_normal(
+            port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_u_32,
       parseErrorData: null,
       constMeta: kFuncStreamSinkArgPositionTwinNormalConstMeta,
@@ -17850,7 +19115,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Stream<MyStreamEntryTwinNormal> handleStreamOfStructTwinNormal(
       {dynamic hint}) {
     return handler.executeStream(StreamTask(
-      callFfi: (port_) => wire.wire_handle_stream_of_struct_twin_normal(port_),
+      callFfi: (port_) {
+        return wire.wire_handle_stream_of_struct_twin_normal(port_);
+      },
       parseSuccessData: _dco_decode_my_stream_entry_twin_normal,
       parseErrorData: null,
       constMeta: kHandleStreamOfStructTwinNormalConstMeta,
@@ -17869,11 +19136,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<LogTwinNormal> handleStreamSinkAt1TwinNormal(
       {required int key, required int max, dynamic hint}) {
-    var arg0 = cst_encode_u_32(key);
-    var arg1 = cst_encode_u_32(max);
     return handler.executeStream(StreamTask(
-      callFfi: (port_) =>
-          wire.wire_handle_stream_sink_at_1_twin_normal(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(key);
+        var arg1 = cst_encode_u_32(max);
+        return wire.wire_handle_stream_sink_at_1_twin_normal(port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_log_twin_normal,
       parseErrorData: null,
       constMeta: kHandleStreamSinkAt1TwinNormalConstMeta,
@@ -17892,11 +19160,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<LogTwinNormal> handleStreamSinkAt2TwinNormal(
       {required int key, required int max, dynamic hint}) {
-    var arg0 = cst_encode_u_32(key);
-    var arg1 = cst_encode_u_32(max);
     return handler.executeStream(StreamTask(
-      callFfi: (port_) =>
-          wire.wire_handle_stream_sink_at_2_twin_normal(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(key);
+        var arg1 = cst_encode_u_32(max);
+        return wire.wire_handle_stream_sink_at_2_twin_normal(port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_log_twin_normal,
       parseErrorData: null,
       constMeta: kHandleStreamSinkAt2TwinNormalConstMeta,
@@ -17915,11 +19184,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<LogTwinNormal> handleStreamSinkAt3TwinNormal(
       {required int key, required int max, dynamic hint}) {
-    var arg0 = cst_encode_u_32(key);
-    var arg1 = cst_encode_u_32(max);
     return handler.executeStream(StreamTask(
-      callFfi: (port_) =>
-          wire.wire_handle_stream_sink_at_3_twin_normal(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_32(key);
+        var arg1 = cst_encode_u_32(max);
+        return wire.wire_handle_stream_sink_at_3_twin_normal(port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_log_twin_normal,
       parseErrorData: null,
       constMeta: kHandleStreamSinkAt3TwinNormalConstMeta,
@@ -17938,10 +19208,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<String> funcStreamRealisticTwinNormal(
       {required String arg, dynamic hint}) {
-    var arg0 = cst_encode_String(arg);
     return handler.executeStream(StreamTask(
-      callFfi: (port_) =>
-          wire.wire_func_stream_realistic_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_String(arg);
+        return wire.wire_func_stream_realistic_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_String,
       parseErrorData: null,
       constMeta: kFuncStreamRealisticTwinNormalConstMeta,
@@ -17960,10 +19231,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<StructWithOneFieldTwinNormal> funcStructWithOneFieldTwinNormal(
       {required StructWithOneFieldTwinNormal arg, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_struct_with_one_field_twin_normal(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_func_struct_with_one_field_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_struct_with_one_field_twin_normal(arg);
+        return wire.wire_func_struct_with_one_field_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_struct_with_one_field_twin_normal,
       parseErrorData: null,
       constMeta: kFuncStructWithOneFieldTwinNormalConstMeta,
@@ -17982,10 +19255,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<StructWithTwoFieldTwinNormal> funcStructWithTwoFieldTwinNormal(
       {required StructWithTwoFieldTwinNormal arg, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_struct_with_two_field_twin_normal(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_func_struct_with_two_field_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_struct_with_two_field_twin_normal(arg);
+        return wire.wire_func_struct_with_two_field_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_struct_with_two_field_twin_normal,
       parseErrorData: null,
       constMeta: kFuncStructWithTwoFieldTwinNormalConstMeta,
@@ -18004,10 +19279,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<StructWithZeroFieldTwinNormal> funcStructWithZeroFieldTwinNormal(
       {required StructWithZeroFieldTwinNormal arg, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_struct_with_zero_field_twin_normal(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_func_struct_with_zero_field_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_struct_with_zero_field_twin_normal(arg);
+        return wire.wire_func_struct_with_zero_field_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_struct_with_zero_field_twin_normal,
       parseErrorData: null,
       constMeta: kFuncStructWithZeroFieldTwinNormalConstMeta,
@@ -18027,11 +19304,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<TupleStructWithOneFieldTwinNormal>
       funcTupleStructWithOneFieldTwinNormal(
           {required TupleStructWithOneFieldTwinNormal arg, dynamic hint}) {
-    var arg0 =
-        cst_encode_box_autoadd_tuple_struct_with_one_field_twin_normal(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_func_tuple_struct_with_one_field_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_tuple_struct_with_one_field_twin_normal(arg);
+        return wire.wire_func_tuple_struct_with_one_field_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_tuple_struct_with_one_field_twin_normal,
       parseErrorData: null,
       constMeta: kFuncTupleStructWithOneFieldTwinNormalConstMeta,
@@ -18051,11 +19330,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<TupleStructWithTwoFieldTwinNormal>
       funcTupleStructWithTwoFieldTwinNormal(
           {required TupleStructWithTwoFieldTwinNormal arg, dynamic hint}) {
-    var arg0 =
-        cst_encode_box_autoadd_tuple_struct_with_two_field_twin_normal(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_func_tuple_struct_with_two_field_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 =
+            cst_encode_box_autoadd_tuple_struct_with_two_field_twin_normal(arg);
+        return wire.wire_func_tuple_struct_with_two_field_twin_normal(
+            port_, arg0);
+      },
       parseSuccessData: _dco_decode_tuple_struct_with_two_field_twin_normal,
       parseErrorData: null,
       constMeta: kFuncTupleStructWithTwoFieldTwinNormalConstMeta,
@@ -18074,9 +19355,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<void> testTuple2TwinNormal(
       {required List<(String, int)> value, dynamic hint}) {
-    var arg0 = cst_encode_list_record_string_i_32(value);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_test_tuple_2_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_list_record_string_i_32(value);
+        return wire.wire_test_tuple_2_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_unit,
       parseErrorData: null,
       constMeta: kTestTuple2TwinNormalConstMeta,
@@ -18094,9 +19377,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<(String, int)> testTupleTwinNormal(
       {(String, int)? value, dynamic hint}) {
-    var arg0 = cst_encode_opt_box_autoadd_record_string_i_32(value);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_test_tuple_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_opt_box_autoadd_record_string_i_32(value);
+        return wire.wire_test_tuple_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_record_string_i_32,
       parseErrorData: null,
       constMeta: kTestTupleTwinNormalConstMeta,
@@ -18113,10 +19398,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<int> handleTypeAliasIdTwinNormal({required int input, dynamic hint}) {
-    var arg0 = cst_encode_u_64(input);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_type_alias_id_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_64(input);
+        return wire.wire_handle_type_alias_id_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_64,
       parseErrorData: null,
       constMeta: kHandleTypeAliasIdTwinNormalConstMeta,
@@ -18135,10 +19421,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<TestModelTwinNormal> handleTypeAliasModelTwinNormal(
       {required int input, dynamic hint}) {
-    var arg0 = cst_encode_u_64(input);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_type_alias_model_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_64(input);
+        return wire.wire_handle_type_alias_model_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_test_model_twin_normal,
       parseErrorData: null,
       constMeta: kHandleTypeAliasModelTwinNormalConstMeta,
@@ -18157,10 +19444,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<int> handleTypeNestAliasIdTwinNormal(
       {required int input, dynamic hint}) {
-    var arg0 = cst_encode_u_64(input);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_type_nest_alias_id_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_u_64(input);
+        return wire.wire_handle_type_nest_alias_id_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_u_64,
       parseErrorData: null,
       constMeta: kHandleTypeNestAliasIdTwinNormalConstMeta,
@@ -18179,10 +19467,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<FeatureUuidTwinNormal> handleNestedUuidsTwinNormal(
       {required FeatureUuidTwinNormal ids, dynamic hint}) {
-    var arg0 = cst_encode_box_autoadd_feature_uuid_twin_normal(ids);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_handle_nested_uuids_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_box_autoadd_feature_uuid_twin_normal(ids);
+        return wire.wire_handle_nested_uuids_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_feature_uuid_twin_normal,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kHandleNestedUuidsTwinNormalConstMeta,
@@ -18201,9 +19490,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<UuidValue> handleUuidTwinNormal(
       {required UuidValue id, dynamic hint}) {
-    var arg0 = cst_encode_Uuid(id);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_uuid_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_Uuid(id);
+        return wire.wire_handle_uuid_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_Uuid,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kHandleUuidTwinNormalConstMeta,
@@ -18221,9 +19512,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Future<List<UuidValue>> handleUuidsTwinNormal(
       {required List<UuidValue> ids, dynamic hint}) {
-    var arg0 = cst_encode_Uuids(ids);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_handle_uuids_twin_normal(port_, arg0),
+      callFfi: (port_) {
+        var arg0 = cst_encode_Uuids(ids);
+        return wire.wire_handle_uuids_twin_normal(port_, arg0);
+      },
       parseSuccessData: _dco_decode_Uuids,
       parseErrorData: _dco_decode_AnyhowException,
       constMeta: kHandleUuidsTwinNormalConstMeta,

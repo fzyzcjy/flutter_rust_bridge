@@ -69,10 +69,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<int> minimalAdder({required int a, required int b, dynamic hint}) {
-    var arg0 = cst_encode_i_32(a);
-    var arg1 = cst_encode_i_32(b);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_minimal_adder(port_, arg0, arg1),
+      callFfi: (port_) {
+        var arg0 = cst_encode_i_32(a);
+        var arg1 = cst_encode_i_32(b);
+        return wire.wire_minimal_adder(port_, arg0, arg1);
+      },
       parseSuccessData: _dco_decode_i_32,
       parseErrorData: null,
       constMeta: kMinimalAdderConstMeta,
