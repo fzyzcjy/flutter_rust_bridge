@@ -37,14 +37,14 @@ pub(crate) enum GeneralizedStructGeneratorMode {
 
 pub(crate) struct GeneralizedStructGenerator<'a> {
     ir: IrTypeStructRef,
-    context: WireDartGeneratorContext<'a>,
+    context: WireDartTransferCstGeneratorContext<'a>,
     mode: GeneralizedStructGeneratorMode,
 }
 
 impl<'a> GeneralizedStructGenerator<'a> {
     pub(crate) fn new(
         ir: IrTypeStructRef,
-        context: WireDartGeneratorContext<'a>,
+        context: WireDartTransferCstGeneratorContext<'a>,
         mode: GeneralizedStructGeneratorMode,
     ) -> Self {
         Self { ir, context, mode }
