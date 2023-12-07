@@ -4,25 +4,11 @@ use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::entryp
 use crate::codegen::generator::wire::dart::spec_generator::transfer::sse::entrypoint::SseWireDartTransferEntrypoint;
 use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::ir::func::IrFunc;
+use crate::codegen_transfer_structs;
 use enum_dispatch::enum_dispatch;
 use std::{format, vec};
 
-#[enum_dispatch(WireDartTransferEntrypointTrait)]
-pub(crate) enum WireDartTransferEntrypoint {
-    Cst(CstWireDartTransferEntrypoint),
-    Dco(DcoWireDartTransferEntrypoint),
-    Sse(SseWireDartTransferEntrypoint),
-}
-
-impl WireDartTransferEntrypoint {
-    pub(crate) fn new(mode: TransferMode) -> Self {
-        match mode {
-            TransferMode::Cst => Self::Cst(CstWireDartTransferEntrypoint {}),
-            TransferMode::Dco => Self::Dco(DcoWireDartTransferEntrypoint {}),
-            TransferMode::Sse => Self::Sse(SseWireDartTransferEntrypoint {}),
-        }
-    }
-}
+codegen_transfer_structs!(WireDartTransferEntrypoint);
 
 #[enum_dispatch]
 pub(crate) trait WireDartTransferEntrypointTrait {
