@@ -113,7 +113,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for DelegateWireDartTransferCs
         match (&self.ir, target) {
             (IrTypeDelegate::String, Target::Wasm) => "String".into(),
             (IrTypeDelegate::StringList, Target::Wasm) => "List<String>".into(),
-            (IrTypeDelegate::StringList, _) => "ffi.Pointer<wire_StringList>".to_owned(),
+            (IrTypeDelegate::StringList, _) => "ffi.Pointer<wire_cst_StringList>".to_owned(),
             _ => WireDartTransferCstGenerator::new(self.ir.get_delegate(), self.context)
                 .dart_wire_type(target),
         }

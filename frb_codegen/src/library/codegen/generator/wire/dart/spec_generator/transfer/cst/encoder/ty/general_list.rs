@@ -50,7 +50,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for GeneralListWireDartTransfe
 
 pub(super) fn general_or_optional_list_dart_wire_type(target: Target, ir: &IrType) -> String {
     match target {
-        Target::Io => format!("ffi.Pointer<wire_{}>", ir.safe_ident()),
+        Target::Io => format!("ffi.Pointer<wire_cst_{}>", ir.safe_ident()),
         Target::Wasm => "List<dynamic>".into(),
     }
 }

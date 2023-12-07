@@ -206,7 +206,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_i_64> cst_encode_Chrono_DurationList(
+  ffi.Pointer<wire_cst_list_prim_i_64> cst_encode_Chrono_DurationList(
       List<Duration> raw) {
     final ans = Int64List(raw.length);
     for (var i = 0; i < raw.length; ++i)
@@ -225,7 +225,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_i_64> cst_encode_Chrono_NaiveList(
+  ffi.Pointer<wire_cst_list_prim_i_64> cst_encode_Chrono_NaiveList(
       List<DateTime> raw) {
     final ans = Int64List(raw.length);
     for (var i = 0; i < raw.length; ++i)
@@ -249,24 +249,24 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_DartOpaque> cst_encode_DartOpaque_array_1(
+  ffi.Pointer<wire_cst_list_DartOpaque> cst_encode_DartOpaque_array_1(
       ObjectArray1 raw) {
     return cst_encode_list_DartOpaque(raw);
   }
 
   @protected
-  ffi.Pointer<wire_list_RustOpaque_hide_data>
+  ffi.Pointer<wire_cst_list_RustOpaque_hide_data>
       cst_encode_RustOpaque_hide_data_array_2(HideDataArray2 raw) {
     return cst_encode_list_RustOpaque_hide_data(raw);
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_u_8> cst_encode_String(String raw) {
+  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_String(String raw) {
     return cst_encode_list_prim_u_8(utf8.encoder.convert(raw));
   }
 
   @protected
-  ffi.Pointer<wire_StringList> cst_encode_StringList(List<String> raw) {
+  ffi.Pointer<wire_cst_StringList> cst_encode_StringList(List<String> raw) {
     final ans = wire.cst_new_StringList(raw.length);
     for (var i = 0; i < raw.length; i++) {
       ans.ref.ptr[i] = cst_encode_String(raw[i]);
@@ -275,12 +275,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_u_8> cst_encode_Uuid(UuidValue raw) {
+  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_Uuid(UuidValue raw) {
     return cst_encode_list_prim_u_8(raw.toBytes());
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_u_8> cst_encode_Uuids(List<UuidValue> raw) {
+  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_Uuids(List<UuidValue> raw) {
     final builder = BytesBuilder();
     for (final element in raw) {
       builder.add(element.toBytes());
@@ -289,7 +289,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_u_8> cst_encode_ZeroCopyBuffer_list_prim_u_8(
+  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_ZeroCopyBuffer_list_prim_u_8(
       Uint8List raw) {
     return cst_encode_list_prim_u_8(raw);
   }
@@ -1744,7 +1744,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_u_8> cst_encode_box_u_8_array_1600(
+  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_box_u_8_array_1600(
       U8Array1600 raw) {
     return cst_encode_u_8_array_1600(raw);
   }
@@ -1771,14 +1771,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_f_64> cst_encode_f_64_array_16(F64Array16 raw) {
+  ffi.Pointer<wire_cst_list_prim_f_64> cst_encode_f_64_array_16(
+      F64Array16 raw) {
     final ans = wire.cst_new_list_prim_f_64(16);
     ans.ref.ptr.asTypedList(16).setAll(0, raw);
     return ans;
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_i_32> cst_encode_i_32_array_2(I32Array2 raw) {
+  ffi.Pointer<wire_cst_list_prim_i_32> cst_encode_i_32_array_2(I32Array2 raw) {
     final ans = wire.cst_new_list_prim_i_32(2);
     ans.ref.ptr.asTypedList(2).setAll(0, raw);
     return ans;
@@ -1790,7 +1791,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_DartOpaque> cst_encode_list_DartOpaque(
+  ffi.Pointer<wire_cst_list_DartOpaque> cst_encode_list_DartOpaque(
       List<Object> raw) {
     final ans = wire.cst_new_list_DartOpaque(raw.length);
     for (var i = 0; i < raw.length; ++i) {
@@ -1800,7 +1801,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_RustOpaque_hide_data>
+  ffi.Pointer<wire_cst_list_RustOpaque_hide_data>
       cst_encode_list_RustOpaque_hide_data(List<HideData> raw) {
     final ans = wire.cst_new_list_RustOpaque_hide_data(raw.length);
     for (var i = 0; i < raw.length; ++i) {
@@ -1810,7 +1811,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_application_env_var>
+  ffi.Pointer<wire_cst_list_application_env_var>
       cst_encode_list_application_env_var(List<ApplicationEnvVar> raw) {
     final ans = wire.cst_new_list_application_env_var(raw.length);
     for (var i = 0; i < raw.length; ++i) {
@@ -1820,7 +1821,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_attribute_twin_normal>
+  ffi.Pointer<wire_cst_list_attribute_twin_normal>
       cst_encode_list_attribute_twin_normal(List<AttributeTwinNormal> raw) {
     final ans = wire.cst_new_list_attribute_twin_normal(raw.length);
     for (var i = 0; i < raw.length; ++i) {
@@ -1830,7 +1831,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_attribute_twin_rust_async>
+  ffi.Pointer<wire_cst_list_attribute_twin_rust_async>
       cst_encode_list_attribute_twin_rust_async(
           List<AttributeTwinRustAsync> raw) {
     final ans = wire.cst_new_list_attribute_twin_rust_async(raw.length);
@@ -1841,7 +1842,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_attribute_twin_sync>
+  ffi.Pointer<wire_cst_list_attribute_twin_sync>
       cst_encode_list_attribute_twin_sync(List<AttributeTwinSync> raw) {
     final ans = wire.cst_new_list_attribute_twin_sync(raw.length);
     for (var i = 0; i < raw.length; ++i) {
@@ -1851,7 +1852,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_bool> cst_encode_list_bool(List<bool> raw) {
+  ffi.Pointer<wire_cst_list_bool> cst_encode_list_bool(List<bool> raw) {
     final ans = wire.cst_new_list_bool(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       ans.ref.ptr[i] = cst_encode_bool(raw[i]);
@@ -1860,7 +1861,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_my_size> cst_encode_list_my_size(List<MySize> raw) {
+  ffi.Pointer<wire_cst_list_my_size> cst_encode_list_my_size(List<MySize> raw) {
     final ans = wire.cst_new_list_my_size(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       _cst_api_fill_to_wire_my_size(raw[i], ans.ref.ptr[i]);
@@ -1869,7 +1870,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_my_tree_node_twin_normal>
+  ffi.Pointer<wire_cst_list_my_tree_node_twin_normal>
       cst_encode_list_my_tree_node_twin_normal(List<MyTreeNodeTwinNormal> raw) {
     final ans = wire.cst_new_list_my_tree_node_twin_normal(raw.length);
     for (var i = 0; i < raw.length; ++i) {
@@ -1879,7 +1880,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_my_tree_node_twin_rust_async>
+  ffi.Pointer<wire_cst_list_my_tree_node_twin_rust_async>
       cst_encode_list_my_tree_node_twin_rust_async(
           List<MyTreeNodeTwinRustAsync> raw) {
     final ans = wire.cst_new_list_my_tree_node_twin_rust_async(raw.length);
@@ -1891,7 +1892,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_my_tree_node_twin_sync>
+  ffi.Pointer<wire_cst_list_my_tree_node_twin_sync>
       cst_encode_list_my_tree_node_twin_sync(List<MyTreeNodeTwinSync> raw) {
     final ans = wire.cst_new_list_my_tree_node_twin_sync(raw.length);
     for (var i = 0; i < raw.length; ++i) {
@@ -1901,7 +1902,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_opt_String> cst_encode_list_opt_String(
+  ffi.Pointer<wire_cst_list_opt_String> cst_encode_list_opt_String(
       List<String?> raw) {
     final ans = wire.cst_new_list_opt_String(raw.length);
     for (var i = 0; i < raw.length; ++i) {
@@ -1913,7 +1914,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_opt_box_autoadd_attribute_twin_normal>
+  ffi.Pointer<wire_cst_list_opt_box_autoadd_attribute_twin_normal>
       cst_encode_list_opt_box_autoadd_attribute_twin_normal(
           List<AttributeTwinNormal?> raw) {
     final ans =
@@ -1927,7 +1928,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_opt_box_autoadd_attribute_twin_rust_async>
+  ffi.Pointer<wire_cst_list_opt_box_autoadd_attribute_twin_rust_async>
       cst_encode_list_opt_box_autoadd_attribute_twin_rust_async(
           List<AttributeTwinRustAsync?> raw) {
     final ans =
@@ -1941,7 +1942,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_opt_box_autoadd_attribute_twin_sync>
+  ffi.Pointer<wire_cst_list_opt_box_autoadd_attribute_twin_sync>
       cst_encode_list_opt_box_autoadd_attribute_twin_sync(
           List<AttributeTwinSync?> raw) {
     final ans =
@@ -1955,7 +1956,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_opt_box_autoadd_i_32>
+  ffi.Pointer<wire_cst_list_opt_box_autoadd_i_32>
       cst_encode_list_opt_box_autoadd_i_32(List<int?> raw) {
     final ans = wire.cst_new_list_opt_box_autoadd_i_32(raw.length);
     for (var i = 0; i < raw.length; ++i) {
@@ -1967,7 +1968,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_opt_box_autoadd_weekdays_twin_normal>
+  ffi.Pointer<wire_cst_list_opt_box_autoadd_weekdays_twin_normal>
       cst_encode_list_opt_box_autoadd_weekdays_twin_normal(
           List<WeekdaysTwinNormal?> raw) {
     final ans =
@@ -1981,7 +1982,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_opt_box_autoadd_weekdays_twin_rust_async>
+  ffi.Pointer<wire_cst_list_opt_box_autoadd_weekdays_twin_rust_async>
       cst_encode_list_opt_box_autoadd_weekdays_twin_rust_async(
           List<WeekdaysTwinRustAsync?> raw) {
     final ans =
@@ -1995,7 +1996,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_opt_box_autoadd_weekdays_twin_sync>
+  ffi.Pointer<wire_cst_list_opt_box_autoadd_weekdays_twin_sync>
       cst_encode_list_opt_box_autoadd_weekdays_twin_sync(
           List<WeekdaysTwinSync?> raw) {
     final ans =
@@ -2009,8 +2010,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_opt_list_prim_i_32> cst_encode_list_opt_list_prim_i_32(
-      List<Int32List?> raw) {
+  ffi.Pointer<wire_cst_list_opt_list_prim_i_32>
+      cst_encode_list_opt_list_prim_i_32(List<Int32List?> raw) {
     final ans = wire.cst_new_list_opt_list_prim_i_32(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       final item = raw[i];
@@ -2021,78 +2022,86 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_f_32> cst_encode_list_prim_f_32(Float32List raw) {
+  ffi.Pointer<wire_cst_list_prim_f_32> cst_encode_list_prim_f_32(
+      Float32List raw) {
     final ans = wire.cst_new_list_prim_f_32(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_f_64> cst_encode_list_prim_f_64(Float64List raw) {
+  ffi.Pointer<wire_cst_list_prim_f_64> cst_encode_list_prim_f_64(
+      Float64List raw) {
     final ans = wire.cst_new_list_prim_f_64(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_i_16> cst_encode_list_prim_i_16(Int16List raw) {
+  ffi.Pointer<wire_cst_list_prim_i_16> cst_encode_list_prim_i_16(
+      Int16List raw) {
     final ans = wire.cst_new_list_prim_i_16(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_i_32> cst_encode_list_prim_i_32(Int32List raw) {
+  ffi.Pointer<wire_cst_list_prim_i_32> cst_encode_list_prim_i_32(
+      Int32List raw) {
     final ans = wire.cst_new_list_prim_i_32(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_i_64> cst_encode_list_prim_i_64(Int64List raw) {
+  ffi.Pointer<wire_cst_list_prim_i_64> cst_encode_list_prim_i_64(
+      Int64List raw) {
     final ans = wire.cst_new_list_prim_i_64(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw.inner);
     return ans;
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_i_8> cst_encode_list_prim_i_8(Int8List raw) {
+  ffi.Pointer<wire_cst_list_prim_i_8> cst_encode_list_prim_i_8(Int8List raw) {
     final ans = wire.cst_new_list_prim_i_8(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_u_16> cst_encode_list_prim_u_16(Uint16List raw) {
+  ffi.Pointer<wire_cst_list_prim_u_16> cst_encode_list_prim_u_16(
+      Uint16List raw) {
     final ans = wire.cst_new_list_prim_u_16(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_u_32> cst_encode_list_prim_u_32(Uint32List raw) {
+  ffi.Pointer<wire_cst_list_prim_u_32> cst_encode_list_prim_u_32(
+      Uint32List raw) {
     final ans = wire.cst_new_list_prim_u_32(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_u_64> cst_encode_list_prim_u_64(Uint64List raw) {
+  ffi.Pointer<wire_cst_list_prim_u_64> cst_encode_list_prim_u_64(
+      Uint64List raw) {
     final ans = wire.cst_new_list_prim_u_64(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw.inner);
     return ans;
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_u_8> cst_encode_list_prim_u_8(Uint8List raw) {
+  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_list_prim_u_8(Uint8List raw) {
     final ans = wire.cst_new_list_prim_u_8(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
   }
 
   @protected
-  ffi.Pointer<wire_list_record_string_i_32> cst_encode_list_record_string_i_32(
-      List<(String, int)> raw) {
+  ffi.Pointer<wire_cst_list_record_string_i_32>
+      cst_encode_list_record_string_i_32(List<(String, int)> raw) {
     final ans = wire.cst_new_list_record_string_i_32(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       _cst_api_fill_to_wire_record_string_i_32(raw[i], ans.ref.ptr[i]);
@@ -2101,7 +2110,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_test_id_twin_normal>
+  ffi.Pointer<wire_cst_list_test_id_twin_normal>
       cst_encode_list_test_id_twin_normal(List<TestIdTwinNormal> raw) {
     final ans = wire.cst_new_list_test_id_twin_normal(raw.length);
     for (var i = 0; i < raw.length; ++i) {
@@ -2111,7 +2120,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_test_id_twin_rust_async>
+  ffi.Pointer<wire_cst_list_test_id_twin_rust_async>
       cst_encode_list_test_id_twin_rust_async(List<TestIdTwinRustAsync> raw) {
     final ans = wire.cst_new_list_test_id_twin_rust_async(raw.length);
     for (var i = 0; i < raw.length; ++i) {
@@ -2121,8 +2130,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_test_id_twin_sync> cst_encode_list_test_id_twin_sync(
-      List<TestIdTwinSync> raw) {
+  ffi.Pointer<wire_cst_list_test_id_twin_sync>
+      cst_encode_list_test_id_twin_sync(List<TestIdTwinSync> raw) {
     final ans = wire.cst_new_list_test_id_twin_sync(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       _cst_api_fill_to_wire_test_id_twin_sync(raw[i], ans.ref.ptr[i]);
@@ -2131,7 +2140,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_weekdays_twin_normal>
+  ffi.Pointer<wire_cst_list_weekdays_twin_normal>
       cst_encode_list_weekdays_twin_normal(List<WeekdaysTwinNormal> raw) {
     final ans = wire.cst_new_list_weekdays_twin_normal(raw.length);
     for (var i = 0; i < raw.length; ++i) {
@@ -2141,7 +2150,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_weekdays_twin_rust_async>
+  ffi.Pointer<wire_cst_list_weekdays_twin_rust_async>
       cst_encode_list_weekdays_twin_rust_async(
           List<WeekdaysTwinRustAsync> raw) {
     final ans = wire.cst_new_list_weekdays_twin_rust_async(raw.length);
@@ -2152,8 +2161,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_weekdays_twin_sync> cst_encode_list_weekdays_twin_sync(
-      List<WeekdaysTwinSync> raw) {
+  ffi.Pointer<wire_cst_list_weekdays_twin_sync>
+      cst_encode_list_weekdays_twin_sync(List<WeekdaysTwinSync> raw) {
     final ans = wire.cst_new_list_weekdays_twin_sync(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       ans.ref.ptr[i] = cst_encode_weekdays_twin_sync(raw[i]);
@@ -2162,13 +2171,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_u_8> cst_encode_opt_String(String? raw) {
+  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_opt_String(String? raw) {
     return raw == null ? ffi.nullptr : cst_encode_String(raw);
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_u_8> cst_encode_opt_ZeroCopyBuffer_list_prim_u_8(
-      Uint8List? raw) {
+  ffi.Pointer<wire_cst_list_prim_u_8>
+      cst_encode_opt_ZeroCopyBuffer_list_prim_u_8(Uint8List? raw) {
     return raw == null
         ? ffi.nullptr
         : cst_encode_ZeroCopyBuffer_list_prim_u_8(raw);
@@ -2376,7 +2385,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_attribute_twin_normal>
+  ffi.Pointer<wire_cst_list_attribute_twin_normal>
       cst_encode_opt_list_attribute_twin_normal(
           List<AttributeTwinNormal>? raw) {
     return raw == null
@@ -2385,7 +2394,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_attribute_twin_rust_async>
+  ffi.Pointer<wire_cst_list_attribute_twin_rust_async>
       cst_encode_opt_list_attribute_twin_rust_async(
           List<AttributeTwinRustAsync>? raw) {
     return raw == null
@@ -2394,13 +2403,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_attribute_twin_sync>
+  ffi.Pointer<wire_cst_list_attribute_twin_sync>
       cst_encode_opt_list_attribute_twin_sync(List<AttributeTwinSync>? raw) {
     return raw == null ? ffi.nullptr : cst_encode_list_attribute_twin_sync(raw);
   }
 
   @protected
-  ffi.Pointer<wire_list_opt_box_autoadd_attribute_twin_normal>
+  ffi.Pointer<wire_cst_list_opt_box_autoadd_attribute_twin_normal>
       cst_encode_opt_list_opt_box_autoadd_attribute_twin_normal(
           List<AttributeTwinNormal?>? raw) {
     return raw == null
@@ -2409,7 +2418,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_opt_box_autoadd_attribute_twin_rust_async>
+  ffi.Pointer<wire_cst_list_opt_box_autoadd_attribute_twin_rust_async>
       cst_encode_opt_list_opt_box_autoadd_attribute_twin_rust_async(
           List<AttributeTwinRustAsync?>? raw) {
     return raw == null
@@ -2418,7 +2427,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_opt_box_autoadd_attribute_twin_sync>
+  ffi.Pointer<wire_cst_list_opt_box_autoadd_attribute_twin_sync>
       cst_encode_opt_list_opt_box_autoadd_attribute_twin_sync(
           List<AttributeTwinSync?>? raw) {
     return raw == null
@@ -2427,49 +2436,51 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_f_32> cst_encode_opt_list_prim_f_32(
+  ffi.Pointer<wire_cst_list_prim_f_32> cst_encode_opt_list_prim_f_32(
       Float32List? raw) {
     return raw == null ? ffi.nullptr : cst_encode_list_prim_f_32(raw);
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_f_64> cst_encode_opt_list_prim_f_64(
+  ffi.Pointer<wire_cst_list_prim_f_64> cst_encode_opt_list_prim_f_64(
       Float64List? raw) {
     return raw == null ? ffi.nullptr : cst_encode_list_prim_f_64(raw);
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_i_32> cst_encode_opt_list_prim_i_32(
+  ffi.Pointer<wire_cst_list_prim_i_32> cst_encode_opt_list_prim_i_32(
       Int32List? raw) {
     return raw == null ? ffi.nullptr : cst_encode_list_prim_i_32(raw);
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_i_8> cst_encode_opt_list_prim_i_8(Int8List? raw) {
+  ffi.Pointer<wire_cst_list_prim_i_8> cst_encode_opt_list_prim_i_8(
+      Int8List? raw) {
     return raw == null ? ffi.nullptr : cst_encode_list_prim_i_8(raw);
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_u_8> cst_encode_opt_list_prim_u_8(Uint8List? raw) {
+  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_opt_list_prim_u_8(
+      Uint8List? raw) {
     return raw == null ? ffi.nullptr : cst_encode_list_prim_u_8(raw);
   }
 
   @protected
-  ffi.Pointer<wire_list_test_id_twin_normal>
+  ffi.Pointer<wire_cst_list_test_id_twin_normal>
       cst_encode_test_id_twin_normal_array_4(TestIdTwinNormalArray4 raw) {
     return cst_encode_list_test_id_twin_normal(raw);
   }
 
   @protected
-  ffi.Pointer<wire_list_test_id_twin_rust_async>
+  ffi.Pointer<wire_cst_list_test_id_twin_rust_async>
       cst_encode_test_id_twin_rust_async_array_4(
           TestIdTwinRustAsyncArray4 raw) {
     return cst_encode_list_test_id_twin_rust_async(raw);
   }
 
   @protected
-  ffi.Pointer<wire_list_test_id_twin_sync> cst_encode_test_id_twin_sync_array_4(
-      TestIdTwinSyncArray4 raw) {
+  ffi.Pointer<wire_cst_list_test_id_twin_sync>
+      cst_encode_test_id_twin_sync_array_4(TestIdTwinSyncArray4 raw) {
     return cst_encode_list_test_id_twin_sync(raw);
   }
 
@@ -2479,21 +2490,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_u_8> cst_encode_u_8_array_1600(U8Array1600 raw) {
+  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_u_8_array_1600(
+      U8Array1600 raw) {
     final ans = wire.cst_new_list_prim_u_8(1600);
     ans.ref.ptr.asTypedList(1600).setAll(0, raw);
     return ans;
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_u_8> cst_encode_u_8_array_32(U8Array32 raw) {
+  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_u_8_array_32(U8Array32 raw) {
     final ans = wire.cst_new_list_prim_u_8(32);
     ans.ref.ptr.asTypedList(32).setAll(0, raw);
     return ans;
   }
 
   @protected
-  ffi.Pointer<wire_list_prim_u_8> cst_encode_u_8_array_8(U8Array8 raw) {
+  ffi.Pointer<wire_cst_list_prim_u_8> cst_encode_u_8_array_8(U8Array8 raw) {
     final ans = wire.cst_new_list_prim_u_8(8);
     ans.ref.ptr.asTypedList(8).setAll(0, raw);
     return ans;
@@ -3569,7 +3581,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   void _cst_api_fill_to_wire_box_u_8_array_1600(
-      U8Array1600 apiObj, ffi.Pointer<wire_list_prim_u_8> wireObj) {
+      U8Array1600 apiObj, ffi.Pointer<wire_cst_list_prim_u_8> wireObj) {
     wireObj = cst_encode_u_8_array_1600(apiObj);
   }
 

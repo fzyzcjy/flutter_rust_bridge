@@ -46,7 +46,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait
     fn dart_wire_type(&self, target: Target) -> String {
         match target {
             Target::Io => {
-                format!("ffi.Pointer<wire_{}>", self.ir.safe_ident())
+                format!("ffi.Pointer<wire_cst_{}>", self.ir.safe_ident())
             }
             Target::Wasm => match self.ir.primitive {
                 IrTypePrimitive::I64 | IrTypePrimitive::U64 => {
