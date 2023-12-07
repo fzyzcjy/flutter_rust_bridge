@@ -15,7 +15,7 @@ impl<'a> WireDartTransferDcoGeneratorDecoderTrait for RustOpaqueWireDartTransfer
 
 pub(super) fn generalized_rust_opaque_generate_impl_wire2api_body(
     ir: IrType,
-    context: WireDartGeneratorContext,
+    context: WireDartTransferDcoGeneratorContext,
 ) -> String {
     format!(
         "return {}.fromWire(raw);",

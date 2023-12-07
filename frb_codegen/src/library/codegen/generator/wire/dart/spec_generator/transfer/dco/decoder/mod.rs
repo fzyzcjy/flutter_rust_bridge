@@ -1,8 +1,7 @@
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::wire::dart::spec_generator::base::{
-    WireDartGenerator, WireDartGeneratorContext,
-};
+use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGenerator;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::base::WireDartTransferDcoGeneratorContext;
 use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
@@ -19,7 +18,7 @@ pub(crate) struct WireDartOutputSpecTransferDcoDecoder {
 }
 
 pub(crate) fn generate(
-    context: WireDartGeneratorContext,
+    context: WireDartTransferDcoGeneratorContext,
     cache: &IrPackComputedCache,
 ) -> WireDartOutputSpecTransferDcoDecoder {
     WireDartOutputSpecTransferDcoDecoder {
@@ -31,7 +30,10 @@ pub(crate) fn generate(
     }
 }
 
-fn generate_impl_wire2api(ty: &IrType, context: WireDartGeneratorContext) -> WireDartOutputCode {
+fn generate_impl_wire2api(
+    ty: &IrType,
+    context: WireDartTransferDcoGeneratorContext,
+) -> WireDartOutputCode {
     let body = WireDartGenerator::new(ty.clone(), context).generate_impl_wire2api_body();
     let api_impl_body = format!(
         "{dart_api_type} _wire2api_{safe_ident}(dynamic raw) {{
