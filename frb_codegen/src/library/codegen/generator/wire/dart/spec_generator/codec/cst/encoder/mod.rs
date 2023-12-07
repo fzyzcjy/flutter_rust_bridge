@@ -3,6 +3,7 @@ use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::dart::spec_generator::base::{
     WireDartGenerator, WireDartGeneratorContext,
 };
+use crate::codegen::generator::wire::dart::spec_generator::codec::base::WireDartCodecOutputSpec;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::{
     WireDartCodecCstGenerator, WireDartCodecCstGeneratorContext,
 };
@@ -24,6 +25,8 @@ pub(crate) struct WireDartOutputSpecCodecCstEncoder {
     pub(crate) encode_funcs: Acc<Vec<WireDartOutputCode>>,
     pub(crate) encode_api_fill_to_wire_funcs: Acc<Vec<WireDartOutputCode>>,
 }
+
+impl WireDartCodecOutputSpec for WireDartOutputSpecCodecCstEncoder {}
 
 pub(crate) fn generate(
     context: WireDartCodecCstGeneratorContext,

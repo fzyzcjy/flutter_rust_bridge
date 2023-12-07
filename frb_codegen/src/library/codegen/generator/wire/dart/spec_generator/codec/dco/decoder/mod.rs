@@ -1,5 +1,6 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGenerator;
+use crate::codegen::generator::wire::dart::spec_generator::codec::base::WireDartCodecOutputSpec;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::WireDartCodecCstGenerator;
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::{
     WireDartCodecDcoGenerator, WireDartCodecDcoGeneratorContext,
@@ -20,6 +21,8 @@ pub(crate) mod ty;
 pub(crate) struct WireDartOutputSpecCodecDcoDecoder {
     pub(crate) impl_decode: Acc<Vec<WireDartOutputCode>>,
 }
+
+impl WireDartCodecOutputSpec for WireDartOutputSpecCodecDcoDecoder {}
 
 pub(crate) fn generate(
     context: WireDartCodecDcoGeneratorContext,

@@ -1,12 +1,37 @@
-use crate::codegen::generator::wire::dart::spec_generator::codec::base::WireDartCodecEntrypointTrait;
+use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
+use crate::codegen::generator::wire::dart::spec_generator::codec::base::{
+    WireDartCodecEntrypointTrait, WireDartCodecOutputSpec,
+};
+use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder;
+use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::WireDartCodecDcoGeneratorContext;
 use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::ir::func::IrFunc;
+use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
 pub(crate) struct CstWireDartCodecEntrypoint {}
 
 impl WireDartCodecEntrypointTrait for CstWireDartCodecEntrypoint {
+    fn generate_encode(
+        &self,
+        context: WireDartGeneratorContext,
+        types: &[IrType],
+    ) -> Box<dyn WireDartCodecOutputSpec> {
+        Box::new(encoder::generate(
+            context.as_wire_dart_codec_cst_context(),
+            types,
+        ))
+    }
+
+    fn generate_decode(
+        &self,
+        _context: WireDartGeneratorContext,
+        _types: &[IrType],
+    ) -> Box<dyn WireDartCodecOutputSpec> {
+        unreachable!()
+    }
+
     fn generate_dart2rust_func_stmt_prepare_args(&self, func: &IrFunc) -> Vec<String> {
         func.inputs
             .iter()
