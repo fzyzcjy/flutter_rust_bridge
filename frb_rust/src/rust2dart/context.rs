@@ -1,7 +1,7 @@
 use crate::generalized_isolate::IntoDart;
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::rust2dart::sender::Rust2DartSender;
-use crate::rust2dart::stream_sink::{StreamSink, StreamSinkImpl};
+use crate::rust2dart::stream_sink::StreamSink;
 
 /// A context for task execution related to Rust2Dart
 pub struct TaskRust2DartContext {
@@ -15,11 +15,11 @@ impl TaskRust2DartContext {
     }
 
     /// Create a new [StreamSink] of the specified type.
-    pub fn stream_sink<T, D>(&self) -> impl StreamSink<T>
-    where
-        T: IntoIntoDart<D>,
-        D: IntoDart,
+    pub fn stream_sink<T, D>(&self) -> StreamSink<T>
+        where
+            T: IntoIntoDart<D>,
+            D: IntoDart,
     {
-        StreamSinkImpl::new(self.sender.clone())
+        StreamSink::new(self.sender.clone())
     }
 }

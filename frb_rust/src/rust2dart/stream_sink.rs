@@ -8,7 +8,7 @@ use crate::rust2dart::action::Rust2DartAction;
 use crate::rust2dart::sender::Rust2DartSender;
 use std::marker::PhantomData;
 
-pub trait StreamSink<T> {
+trait StreamSink<T> {
     fn add<D: IntoDart>(&self, value: T) -> bool
     where
         T: IntoIntoDart<D>;
@@ -42,7 +42,7 @@ impl<T> StreamSinkImpl<T> {
 impl<T> StreamSink<T> for StreamSinkImpl<T> {
     /// Add data to the stream. Returns false when data could not be sent,
     /// or the stream has been closed.
-    fn add<D: IntoDart>(&self, value: T) -> bool
+    pub fn add<D: IntoDart>(&self, value: T) -> bool
     where
         T: IntoIntoDart<D>,
     {
@@ -55,7 +55,7 @@ impl<T> StreamSink<T> for StreamSinkImpl<T> {
 
     /// Close the stream and ignore further messages. Returns false when
     /// the stream could not be closed, or when it has already been closed.
-    fn close(&self) -> bool {
+    pub fn close(&self) -> bool {
         // TODO do not hardcode!
         self.sender()
             .send(DcoCodec::encode((), Rust2DartAction::CloseStream))
