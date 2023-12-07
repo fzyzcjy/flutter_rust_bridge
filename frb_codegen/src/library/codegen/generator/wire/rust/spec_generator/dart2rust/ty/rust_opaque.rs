@@ -15,36 +15,9 @@ use itertools::Itertools;
 use std::borrow::Cow;
 
 impl<'a> WireRustGeneratorDart2RustTrait for RustOpaqueWireRustGenerator<'a> {
-    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
-        Acc {
-            io: Some(generalized_rust_opaque_generate_impl_wire2api_body().into()),
-            ..Default::default()
-        }
-    }
-
-    fn generate_impl_wire2api_jsvalue_body(&self) -> Option<Cow<str>> {
-        Some(generalized_rust_opaque_generate_impl_wire2api_body().into())
-    }
-
     fn generate_related_funcs(&self) -> Acc<WireRustOutputCode> {
         generate_rust_arc_functions(self.ir.clone().into(), &*self.ir.inner)
     }
-
-    fn rust_wire_type(&self, target: Target) -> String {
-        dart_opaque_or_generalized_rust_opaque_rust_wire_type(target)
-    }
-}
-
-pub(super) fn generalized_rust_opaque_generate_impl_wire2api_body() -> &'static str {
-    r#"unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }"#
-}
-
-pub(super) fn dart_opaque_or_generalized_rust_opaque_rust_wire_type(target: Target) -> String {
-    match target {
-        Target::Io => "*const std::ffi::c_void",
-        Target::Wasm => JS_VALUE,
-    }
-    .into()
 }
 
 pub(super) fn generate_rust_arc_functions(ir: IrType, inner: &IrType) -> Acc<WireRustOutputCode> {

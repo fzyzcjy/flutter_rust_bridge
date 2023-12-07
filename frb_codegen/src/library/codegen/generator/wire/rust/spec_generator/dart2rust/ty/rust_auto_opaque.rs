@@ -18,8 +18,4 @@ use crate::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 use std::borrow::Cow;
 
-impl<'a> WireRustGeneratorDart2RustTrait for RustAutoOpaqueWireRustGenerator<'a> {
-    fn rust_wire_type(&self, target: Target) -> String {
-        dart_opaque_or_generalized_rust_opaque_rust_wire_type(target)
-    }
-}
+impl<'a> WireRustGeneratorDart2RustTrait for RustAutoOpaqueWireRustGenerator<'a> {}
