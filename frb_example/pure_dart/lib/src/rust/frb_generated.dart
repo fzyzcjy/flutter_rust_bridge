@@ -2437,8 +2437,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_u_8_array_1600(blob);
         return wire.wire_boxed_blob_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_blob_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_blob_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kBoxedBlobTwinNormalConstMeta,
       argValues: [blob],
       apiImpl: this,
@@ -2459,8 +2461,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_test_id_twin_normal(id);
         return wire.wire_func_test_id_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_test_id_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_test_id_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kFuncTestIdTwinNormalConstMeta,
       argValues: [id],
       apiImpl: this,
@@ -2479,8 +2483,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_get_array_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_u_8_array_5,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_8_array_5,
+        parseErrorData: null,
+      ),
       constMeta: kGetArrayTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -2499,8 +2505,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_get_complex_array_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_point_twin_normal_array_2,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_point_twin_normal_array_2,
+        parseErrorData: null,
+      ),
       constMeta: kGetComplexArrayTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -2521,8 +2529,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_f_64_array_16(array);
         return wire.wire_last_number_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_f_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_f_64,
+        parseErrorData: null,
+      ),
       constMeta: kLastNumberTwinNormalConstMeta,
       argValues: [array],
       apiImpl: this,
@@ -2543,8 +2553,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_test_id_twin_normal_array_4(id);
         return wire.wire_nested_id_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_test_id_twin_normal_array_2,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_test_id_twin_normal_array_2,
+        parseErrorData: null,
+      ),
       constMeta: kNestedIdTwinNormalConstMeta,
       argValues: [id],
       apiImpl: this,
@@ -2565,8 +2577,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_8_array_32(id);
         return wire.wire_new_msgid_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_message_id_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_message_id_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kNewMsgidTwinNormalConstMeta,
       argValues: [id],
       apiImpl: this,
@@ -2587,8 +2601,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_8_array_8(id);
         return wire.wire_return_boxed_feed_id_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_box_feed_id_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_box_feed_id_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kReturnBoxedFeedIdTwinNormalConstMeta,
       argValues: [id],
       apiImpl: this,
@@ -2610,8 +2626,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_feed_id_twin_normal(id);
         return wire.wire_return_boxed_raw_feed_id_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_box_u_8_array_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_box_u_8_array_8,
+        parseErrorData: null,
+      ),
       constMeta: kReturnBoxedRawFeedIdTwinNormalConstMeta,
       argValues: [id],
       apiImpl: this,
@@ -2633,8 +2651,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_blob_twin_normal(blob);
         return wire.wire_use_boxed_blob_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_8_array_1600,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_8_array_1600,
+        parseErrorData: null,
+      ),
       constMeta: kUseBoxedBlobTwinNormalConstMeta,
       argValues: [blob],
       apiImpl: this,
@@ -2655,8 +2675,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_message_id_twin_normal(id);
         return wire.wire_use_msgid_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_8_array_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_8_array_32,
+        parseErrorData: null,
+      ),
       constMeta: kUseMsgidTwinNormalConstMeta,
       argValues: [id],
       apiImpl: this,
@@ -2678,8 +2700,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_i_32(b);
         return wire.wire_func_async_simple_add(port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kFuncAsyncSimpleAddConstMeta,
       argValues: [a, b],
       apiImpl: this,
@@ -2698,8 +2722,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_func_async_void(port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kFuncAsyncVoidConstMeta,
       argValues: [],
       apiImpl: this,
@@ -2720,8 +2746,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_customized_twin_normal(val);
         return wire.wire_handle_customized_struct_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kHandleCustomizedStructTwinNormalConstMeta,
       argValues: [val],
       apiImpl: this,
@@ -2743,8 +2771,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_user_id_twin_normal(userId);
         return wire.wire_next_user_id_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_user_id_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_user_id_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kNextUserIdTwinNormalConstMeta,
       argValues: [userId],
       apiImpl: this,
@@ -2765,8 +2795,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_prim_u_8(bytes);
         return wire.wire_benchmark_input_bytes_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kBenchmarkInputBytesTwinNormalConstMeta,
       argValues: [bytes],
       apiImpl: this,
@@ -2788,8 +2820,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_i_32(size);
         return wire.wire_benchmark_output_bytes_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_u_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_u_8,
+        parseErrorData: null,
+      ),
       constMeta: kBenchmarkOutputBytesTwinNormalConstMeta,
       argValues: [size],
       apiImpl: this,
@@ -2809,8 +2843,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_benchmark_void_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kBenchmarkVoidTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -2831,8 +2867,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_Chrono_Local(d);
         return wire.wire_datetime_local_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_Chrono_Local,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_Chrono_Local,
+        parseErrorData: null,
+      ),
       constMeta: kDatetimeLocalTwinNormalConstMeta,
       argValues: [d],
       apiImpl: this,
@@ -2852,8 +2890,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_Chrono_Utc(d);
         return wire.wire_datetime_utc_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_Chrono_Utc,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_Chrono_Utc,
+        parseErrorData: null,
+      ),
       constMeta: kDatetimeUtcTwinNormalConstMeta,
       argValues: [d],
       apiImpl: this,
@@ -2873,8 +2913,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_Chrono_Duration(d);
         return wire.wire_duration_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_Chrono_Duration,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_Chrono_Duration,
+        parseErrorData: null,
+      ),
       constMeta: kDurationTwinNormalConstMeta,
       argValues: [d],
       apiImpl: this,
@@ -2898,8 +2940,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_Chrono_Local(since);
         return wire.wire_handle_durations_twin_normal(port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_Chrono_LocalList,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_Chrono_LocalList,
+        parseErrorData: null,
+      ),
       constMeta: kHandleDurationsTwinNormalConstMeta,
       argValues: [durations, since],
       apiImpl: this,
@@ -2923,8 +2967,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_Chrono_Naive(epoch);
         return wire.wire_handle_timestamps_twin_normal(port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_Chrono_DurationList,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_Chrono_DurationList,
+        parseErrorData: null,
+      ),
       constMeta: kHandleTimestampsTwinNormalConstMeta,
       argValues: [timestamps, epoch],
       apiImpl: this,
@@ -2945,8 +2991,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_feature_chrono_twin_normal(mine);
         return wire.wire_how_long_does_it_take_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_Chrono_Duration,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_Chrono_Duration,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kHowLongDoesItTakeTwinNormalConstMeta,
       argValues: [mine],
       apiImpl: this,
@@ -2968,8 +3016,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_Chrono_Naive(d);
         return wire.wire_naivedatetime_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_Chrono_Naive,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_Chrono_Naive,
+        parseErrorData: null,
+      ),
       constMeta: kNaivedatetimeTwinNormalConstMeta,
       argValues: [d],
       apiImpl: this,
@@ -2990,8 +3040,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_box_autoadd_Chrono_Utc(d);
         return wire.wire_optional_empty_datetime_utc_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_Chrono_Utc,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_Chrono_Utc,
+        parseErrorData: null,
+      ),
       constMeta: kOptionalEmptyDatetimeUtcTwinNormalConstMeta,
       argValues: [d],
       apiImpl: this,
@@ -3011,8 +3063,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_test_chrono_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_test_chrono_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_test_chrono_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kTestChronoTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -3031,8 +3085,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_test_precise_chrono_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_test_chrono_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_test_chrono_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kTestPreciseChronoTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -3057,8 +3113,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_StructWithCommentsTwinNormal_instance_method_twin_normal(
                 port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kStructWithCommentsTwinNormalInstanceMethodTwinNormalConstMeta,
       argValues: [that],
       apiImpl: this,
@@ -3082,8 +3140,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire
             .wire_StructWithCommentsTwinNormal_static_method_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kStructWithCommentsTwinNormalStaticMethodTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -3105,8 +3165,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire
             .wire_function_with_comments_slash_star_star_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kFunctionWithCommentsSlashStarStarTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -3129,8 +3191,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_function_with_comments_triple_slash_multi_line_twin_normal(
                 port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kFunctionWithCommentsTripleSlashMultiLineTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -3155,8 +3219,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_function_with_comments_triple_slash_single_line_twin_normal(
                 port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kFunctionWithCommentsTripleSlashSingleLineTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -3178,8 +3244,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_return_dart_dynamic_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_dartabi,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_dartabi,
+        parseErrorData: null,
+      ),
       constMeta: kReturnDartDynamicTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -3201,8 +3269,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartFn_Inputs__Output_unit(callback);
         return wire.wire_rust_call_dart_simple(port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kRustCallDartSimpleConstMeta,
       argValues: [callback],
       apiImpl: this,
@@ -3223,8 +3293,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_async_accept_dart_opaque_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kAsyncAcceptDartOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -3246,8 +3318,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_clone_dart_opaque_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_DartOpaque,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_DartOpaque,
+        parseErrorData: null,
+      ),
       constMeta: kCloneDartOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -3268,8 +3342,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_create_enum_dart_opaque_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_enum_dart_opaque_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_enum_dart_opaque_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kCreateEnumDartOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -3293,8 +3369,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_create_nested_dart_opaque_twin_normal(
             port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_dart_opaque_nested_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_dart_opaque_nested_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kCreateNestedDartOpaqueTwinNormalConstMeta,
       argValues: [opaque1, opaque2],
       apiImpl: this,
@@ -3315,8 +3393,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_i_32(id);
         return wire.wire_drop_static_dart_opaque_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kDropStaticDartOpaqueTwinNormalConstMeta,
       argValues: [id],
       apiImpl: this,
@@ -3338,8 +3418,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_enum_dart_opaque_twin_normal(opaque);
         return wire.wire_get_enum_dart_opaque_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kGetEnumDartOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -3362,8 +3444,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             cst_encode_box_autoadd_dart_opaque_nested_twin_normal(opaque);
         return wire.wire_get_nested_dart_opaque_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kGetNestedDartOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -3385,8 +3469,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque_array_1(opaque);
         return wire.wire_loop_back_array_get_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kLoopBackArrayGetTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -3407,8 +3493,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_loop_back_array_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_DartOpaque_array_1,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_DartOpaque_array_1,
+        parseErrorData: null,
+      ),
       constMeta: kLoopBackArrayTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -3428,8 +3516,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_box_autoadd_DartOpaque(opaque);
         return wire.wire_loop_back_option_get_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kLoopBackOptionGetTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -3451,8 +3541,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_loop_back_option_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_DartOpaque,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_DartOpaque,
+        parseErrorData: null,
+      ),
       constMeta: kLoopBackOptionTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -3472,8 +3564,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_loop_back_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_DartOpaque,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_DartOpaque,
+        parseErrorData: null,
+      ),
       constMeta: kLoopBackTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -3494,8 +3588,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_DartOpaque(opaque);
         return wire.wire_loop_back_vec_get_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kLoopBackVecGetTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -3516,8 +3612,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_loop_back_vec_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_DartOpaque,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_DartOpaque,
+        parseErrorData: null,
+      ),
       constMeta: kLoopBackVecTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -3538,8 +3636,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_panic_unwrap_dart_opaque_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kPanicUnwrapDartOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -3562,8 +3662,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_DartOpaque(opaque);
         return wire.wire_set_static_dart_opaque_twin_normal(port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kSetStaticDartOpaqueTwinNormalConstMeta,
       argValues: [id, opaque],
       apiImpl: this,
@@ -3585,8 +3687,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_sync_accept_dart_opaque_twin_normal(arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kSyncAcceptDartOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -3607,8 +3711,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_sync_loopback_twin_normal(arg0);
       },
-      parseSuccessData: _dco_decode_DartOpaque,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_DartOpaque,
+        parseErrorData: null,
+      ),
       constMeta: kSyncLoopbackTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -3629,8 +3735,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_sync_option_dart_opaque_twin_normal(arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_DartOpaque,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_DartOpaque,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kSyncOptionDartOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -3651,8 +3759,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_box_autoadd_DartOpaque(opaque);
         return wire.wire_sync_option_loopback_twin_normal(arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_DartOpaque,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_DartOpaque,
+        parseErrorData: null,
+      ),
       constMeta: kSyncOptionLoopbackTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -3673,8 +3783,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_unwrap_dart_opaque_twin_normal(arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kUnwrapDartOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -3695,8 +3807,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_enum_simple_twin_normal(arg);
         return wire.wire_func_enum_simple_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_enum_simple_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_enum_simple_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kFuncEnumSimpleTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -3717,8 +3831,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_enum_with_item_mixed_twin_normal(arg);
         return wire.wire_func_enum_with_item_mixed_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_enum_with_item_mixed_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_enum_with_item_mixed_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kFuncEnumWithItemMixedTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -3741,8 +3857,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             cst_encode_box_autoadd_enum_with_item_struct_twin_normal(arg);
         return wire.wire_func_enum_with_item_struct_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_enum_with_item_struct_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_enum_with_item_struct_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kFuncEnumWithItemStructTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -3764,8 +3882,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_enum_with_item_tuple_twin_normal(arg);
         return wire.wire_func_enum_with_item_tuple_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_enum_with_item_tuple_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_enum_with_item_tuple_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kFuncEnumWithItemTupleTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -3787,8 +3907,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_weekdays_twin_normal(weekday);
         return wire.wire_handle_enum_parameter_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_weekdays_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_weekdays_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kHandleEnumParameterTwinNormalConstMeta,
       argValues: [weekday],
       apiImpl: this,
@@ -3810,8 +3932,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_kitchen_sink_twin_normal(val);
         return wire.wire_handle_enum_struct_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_kitchen_sink_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_kitchen_sink_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kHandleEnumStructTwinNormalConstMeta,
       argValues: [val],
       apiImpl: this,
@@ -3832,8 +3956,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_String(input);
         return wire.wire_handle_return_enum_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_weekdays_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_weekdays_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kHandleReturnEnumTwinNormalConstMeta,
       argValues: [input],
       apiImpl: this,
@@ -3854,8 +3980,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_measure_twin_normal(measure);
         return wire.wire_multiply_by_ten_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_measure_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_measure_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kMultiplyByTenTwinNormalConstMeta,
       argValues: [measure],
       apiImpl: this,
@@ -3876,8 +4004,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_note_twin_normal(note);
         return wire.wire_print_note_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_ZeroCopyBuffer_list_prim_u_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_ZeroCopyBuffer_list_prim_u_8,
+        parseErrorData: null,
+      ),
       constMeta: kPrintNoteTwinNormalConstMeta,
       argValues: [note],
       apiImpl: this,
@@ -3898,8 +4028,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_event_twin_normal(that);
         return wire.wire_EventTwinNormal_as_string_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kEventTwinNormalAsStringTwinNormalConstMeta,
       argValues: [that],
       apiImpl: this,
@@ -3919,8 +4051,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_close_event_listener_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kCloseEventListenerTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -3943,8 +4077,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_String(payload);
         return wire.wire_create_event_twin_normal(port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kCreateEventTwinNormalConstMeta,
       argValues: [address, payload],
       apiImpl: this,
@@ -3963,8 +4099,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_register_event_listener_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_event_twin_normal,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_event_twin_normal,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kRegisterEventListenerTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -3986,8 +4124,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_String(message);
         return wire.wire_CustomStructTwinNormal_new_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_custom_struct_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_custom_struct_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kCustomStructTwinNormalNewTwinNormalConstMeta,
       argValues: [message],
       apiImpl: this,
@@ -4011,8 +4151,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_CustomStructTwinNormal_nonstatic_return_custom_struct_error_twin_normal(
                 port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_struct_error_another_twin_normal,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_struct_error_another_twin_normal,
+      ),
       constMeta:
           kCustomStructTwinNormalNonstaticReturnCustomStructErrorTwinNormalConstMeta,
       argValues: [that],
@@ -4039,8 +4181,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_CustomStructTwinNormal_nonstatic_return_custom_struct_ok_twin_normal(
                 port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_struct_error_another_twin_normal,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_struct_error_another_twin_normal,
+      ),
       constMeta:
           kCustomStructTwinNormalNonstaticReturnCustomStructOkTwinNormalConstMeta,
       argValues: [that],
@@ -4066,8 +4210,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_CustomStructTwinNormal_static_return_custom_struct_error_twin_normal(
                 port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_struct_error_another_twin_normal,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_struct_error_another_twin_normal,
+      ),
       constMeta:
           kCustomStructTwinNormalStaticReturnCustomStructErrorTwinNormalConstMeta,
       argValues: [],
@@ -4093,8 +4239,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_CustomStructTwinNormal_static_return_custom_struct_ok_twin_normal(
                 port_);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_struct_error_another_twin_normal,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_struct_error_another_twin_normal,
+      ),
       constMeta:
           kCustomStructTwinNormalStaticReturnCustomStructOkTwinNormalConstMeta,
       argValues: [],
@@ -4119,8 +4267,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_32(value);
         return wire.wire_SomeStructTwinNormal_new_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_some_struct_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_some_struct_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kSomeStructTwinNormalNewTwinNormalConstMeta,
       argValues: [value],
       apiImpl: this,
@@ -4144,8 +4294,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_SomeStructTwinNormal_non_static_return_err_custom_error_twin_normal(
                 port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_error_twin_normal,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_error_twin_normal,
+      ),
       constMeta:
           kSomeStructTwinNormalNonStaticReturnErrCustomErrorTwinNormalConstMeta,
       argValues: [that],
@@ -4172,8 +4324,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_SomeStructTwinNormal_non_static_return_ok_custom_error_twin_normal(
                 port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_error_twin_normal,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_error_twin_normal,
+      ),
       constMeta:
           kSomeStructTwinNormalNonStaticReturnOkCustomErrorTwinNormalConstMeta,
       argValues: [that],
@@ -4199,8 +4353,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_SomeStructTwinNormal_static_return_err_custom_error_twin_normal(
                 port_);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_error_twin_normal,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_error_twin_normal,
+      ),
       constMeta:
           kSomeStructTwinNormalStaticReturnErrCustomErrorTwinNormalConstMeta,
       argValues: [],
@@ -4226,8 +4382,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_SomeStructTwinNormal_static_return_ok_custom_error_twin_normal(
                 port_);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_error_twin_normal,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_error_twin_normal,
+      ),
       constMeta:
           kSomeStructTwinNormalStaticReturnOkCustomErrorTwinNormalConstMeta,
       argValues: [],
@@ -4250,8 +4408,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_custom_enum_error_panic_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_enum_error_twin_normal,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_enum_error_twin_normal,
+      ),
       constMeta: kCustomEnumErrorPanicTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -4271,8 +4431,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_custom_enum_error_return_error_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_enum_error_twin_normal,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_enum_error_twin_normal,
+      ),
       constMeta: kCustomEnumErrorReturnErrorTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -4294,8 +4456,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_32(arg);
         return wire.wire_custom_enum_error_return_ok_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_enum_error_twin_normal,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_enum_error_twin_normal,
+      ),
       constMeta: kCustomEnumErrorReturnOkTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -4319,8 +4483,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_custom_nested_error_return_error_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_nested_error_outer_twin_normal,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_nested_error_outer_twin_normal,
+      ),
       constMeta: kCustomNestedErrorReturnErrorTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -4343,8 +4509,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_custom_struct_error_return_error_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_struct_error_twin_normal,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_struct_error_twin_normal,
+      ),
       constMeta: kCustomStructErrorReturnErrorTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -4364,8 +4532,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_func_return_error_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_i_32,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_32,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kFuncReturnErrorTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -4384,8 +4554,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_func_type_fallible_panic_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_i_32,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_32,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kFuncTypeFalliblePanicTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -4405,8 +4577,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_func_type_infallible_panic_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kFuncTypeInfalliblePanicTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -4426,8 +4600,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_panic_with_custom_result_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_error_twin_normal,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_error_twin_normal,
+      ),
       constMeta: kPanicWithCustomResultTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -4447,8 +4623,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_return_custom_nested_error_1_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_nested_error_1_twin_normal,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_nested_error_1_twin_normal,
+      ),
       constMeta: kReturnCustomNestedError1TwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -4469,8 +4647,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire
             .wire_return_custom_nested_error_1_variant1_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_nested_error_1_twin_normal,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_nested_error_1_twin_normal,
+      ),
       constMeta: kReturnCustomNestedError1Variant1TwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -4490,8 +4670,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_return_custom_nested_error_2_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_nested_error_2_twin_normal,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_nested_error_2_twin_normal,
+      ),
       constMeta: kReturnCustomNestedError2TwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -4511,8 +4693,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_return_custom_struct_error_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_struct_error_another_twin_normal,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_struct_error_another_twin_normal,
+      ),
       constMeta: kReturnCustomStructErrorTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -4532,8 +4716,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_return_custom_struct_ok_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_struct_error_another_twin_normal,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_struct_error_another_twin_normal,
+      ),
       constMeta: kReturnCustomStructOkTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -4553,8 +4739,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_return_err_custom_error_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_error_twin_normal,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_error_twin_normal,
+      ),
       constMeta: kReturnErrCustomErrorTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -4576,8 +4764,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_32(variant);
         return wire.wire_return_error_variant_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_error_twin_normal,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_error_twin_normal,
+      ),
       constMeta: kReturnErrorVariantTwinNormalConstMeta,
       argValues: [variant],
       apiImpl: this,
@@ -4597,8 +4787,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_return_ok_custom_error_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_error_twin_normal,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_error_twin_normal,
+      ),
       constMeta: kReturnOkCustomErrorTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -4618,8 +4810,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_stream_sink_throw_anyhow_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kStreamSinkThrowAnyhowTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -4639,8 +4833,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_throw_anyhow_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kThrowAnyhowTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -4659,8 +4855,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_call_new_module_system_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_new_simple_struct,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_new_simple_struct,
+        parseErrorData: null,
+      ),
       constMeta: kCallNewModuleSystemTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -4680,8 +4878,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_call_old_module_system_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_old_simple_struct,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_old_simple_struct,
+        parseErrorData: null,
+      ),
       constMeta: kCallOldModuleSystemTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -4703,8 +4903,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_my_enum(myEnum);
         return wire.wire_use_imported_enum_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_bool,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_bool,
+        parseErrorData: null,
+      ),
       constMeta: kUseImportedEnumTwinNormalConstMeta,
       argValues: [myEnum],
       apiImpl: this,
@@ -4725,8 +4927,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_my_struct(myStruct);
         return wire.wire_use_imported_struct_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_bool,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_bool,
+        parseErrorData: null,
+      ),
       constMeta: kUseImportedStructTwinNormalConstMeta,
       argValues: [myStruct],
       apiImpl: this,
@@ -4747,8 +4951,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_another_macro_struct_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_another_macro_struct_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_another_macro_struct_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kAnotherMacroStructTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -4770,8 +4976,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_macro_struct(arg);
         return wire.wire_func_macro_struct_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_macro_struct,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_macro_struct,
+        parseErrorData: null,
+      ),
       constMeta: kFuncMacroStructTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -4795,8 +5003,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_ConcatenateWithTwinNormal_concatenate_static_twin_normal(
                 port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kConcatenateWithTwinNormalConcatenateStaticTwinNormalConstMeta,
       argValues: [a, b],
       apiImpl: this,
@@ -4824,8 +5034,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_ConcatenateWithTwinNormal_concatenate_twin_normal(
             port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kConcatenateWithTwinNormalConcatenateTwinNormalConstMeta,
       argValues: [that, b],
       apiImpl: this,
@@ -4849,8 +5061,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_ConcatenateWithTwinNormal_handle_some_static_stream_sink_single_arg_twin_normal(
                 port_);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: null,
+      ),
       constMeta:
           kConcatenateWithTwinNormalHandleSomeStaticStreamSinkSingleArgTwinNormalConstMeta,
       argValues: [],
@@ -4879,8 +5093,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_ConcatenateWithTwinNormal_handle_some_static_stream_sink_twin_normal(
                 port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_log_2_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_log_2_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta:
           kConcatenateWithTwinNormalHandleSomeStaticStreamSinkTwinNormalConstMeta,
       argValues: [key, max],
@@ -4907,8 +5123,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_ConcatenateWithTwinNormal_handle_some_stream_sink_at_1_twin_normal(
                 port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: null,
+      ),
       constMeta:
           kConcatenateWithTwinNormalHandleSomeStreamSinkAt1TwinNormalConstMeta,
       argValues: [that],
@@ -4941,8 +5159,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_ConcatenateWithTwinNormal_handle_some_stream_sink_twin_normal(
                 port_, arg0, arg1, arg2);
       },
-      parseSuccessData: _dco_decode_log_2_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_log_2_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta:
           kConcatenateWithTwinNormalHandleSomeStreamSinkTwinNormalConstMeta,
       argValues: [that, key, max],
@@ -4967,8 +5187,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_String(a);
         return wire.wire_ConcatenateWithTwinNormal_new_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_concatenate_with_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_concatenate_with_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kConcatenateWithTwinNormalNewTwinNormalConstMeta,
       argValues: [a],
       apiImpl: this,
@@ -4996,8 +5218,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_SumWithTwinNormal_sum_twin_normal(
             port_, arg0, arg1, arg2);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: null,
+      ),
       constMeta: kSumWithTwinNormalSumTwinNormalConstMeta,
       argValues: [that, y, z],
       apiImpl: this,
@@ -5021,8 +5245,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg2 = cst_encode_u_32(c);
         return wire.wire_get_sum_array_twin_normal(port_, arg0, arg1, arg2);
       },
-      parseSuccessData: _dco_decode_sum_with_twin_normal_array_3,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_sum_with_twin_normal_array_3,
+        parseErrorData: null,
+      ),
       constMeta: kGetSumArrayTwinNormalConstMeta,
       argValues: [a, b, c],
       apiImpl: this,
@@ -5041,8 +5267,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_get_sum_struct_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_sum_with_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_sum_with_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kGetSumStructTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -5061,8 +5289,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_app_settings_stream_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_application_settings,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_application_settings,
+        parseErrorData: null,
+      ),
       constMeta: kAppSettingsStreamTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -5083,8 +5313,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_app_settings_vec_stream_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_list_application_settings,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_application_settings,
+        parseErrorData: null,
+      ),
       constMeta: kAppSettingsVecStreamTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -5105,8 +5337,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_numbers(nums);
         return wire.wire_first_number_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kFirstNumberTwinNormalConstMeta,
       argValues: [nums],
       apiImpl: this,
@@ -5127,8 +5361,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_sequences(seqs);
         return wire.wire_first_sequence_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kFirstSequenceTwinNormalConstMeta,
       argValues: [seqs],
       apiImpl: this,
@@ -5147,8 +5383,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_get_app_settings_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_application_settings,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_application_settings,
+        parseErrorData: null,
+      ),
       constMeta: kGetAppSettingsTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -5167,8 +5405,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_get_fallible_app_settings_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_application_settings,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_application_settings,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kGetFallibleAppSettingsTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -5188,8 +5428,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_get_message_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_application_message,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_application_message,
+        parseErrorData: null,
+      ),
       constMeta: kGetMessageTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -5210,8 +5452,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_application_settings(appSettings);
         return wire.wire_is_app_embedded_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_bool,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_bool,
+        parseErrorData: null,
+      ),
       constMeta: kIsAppEmbeddedTwinNormalConstMeta,
       argValues: [appSettings],
       apiImpl: this,
@@ -5230,8 +5474,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_mirror_struct_stream_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_mirror_struct_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_mirror_struct_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kMirrorStructStreamTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -5252,9 +5498,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_mirror_tuple_stream_twin_normal(port_);
       },
-      parseSuccessData:
-          _dco_decode_record_application_settings_raw_string_enum_mirrored,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_record_application_settings_raw_string_enum_mirrored,
+        parseErrorData: null,
+      ),
       constMeta: kMirrorTupleStreamTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -5277,8 +5525,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_usize(times);
         return wire.wire_repeat_number_twin_normal(port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_numbers,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_numbers,
+        parseErrorData: null,
+      ),
       constMeta: kRepeatNumberTwinNormalConstMeta,
       argValues: [num, times],
       apiImpl: this,
@@ -5300,8 +5550,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_usize(times);
         return wire.wire_repeat_sequence_twin_normal(port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_sequences,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_sequences,
+        parseErrorData: null,
+      ),
       constMeta: kRepeatSequenceTwinNormalConstMeta,
       argValues: [seq, times],
       apiImpl: this,
@@ -5321,8 +5573,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_test_contains_mirrored_sub_struct_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_contains_mirrored_sub_struct_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_contains_mirrored_sub_struct_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kTestContainsMirroredSubStructTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -5344,8 +5598,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire
             .wire_test_fallible_of_raw_string_mirrored_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_list_raw_string_mirrored,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_raw_string_mirrored,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kTestFallibleOfRawStringMirroredTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -5366,8 +5622,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_test_list_of_nested_enums_mirrored_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_list_raw_string_enum_mirrored,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_raw_string_enum_mirrored,
+        parseErrorData: null,
+      ),
       constMeta: kTestListOfNestedEnumsMirroredTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -5389,8 +5647,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire
             .wire_test_list_of_raw_nested_string_mirrored_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_list_of_nested_raw_string_mirrored,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_of_nested_raw_string_mirrored,
+        parseErrorData: null,
+      ),
       constMeta: kTestListOfRawNestedStringMirroredTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -5411,8 +5671,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_test_nested_raw_string_mirrored_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_nested_raw_string_mirrored,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_nested_raw_string_mirrored,
+        parseErrorData: null,
+      ),
       constMeta: kTestNestedRawStringMirroredTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -5434,8 +5696,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_bool(nested);
         return wire.wire_test_raw_string_enum_mirrored_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_raw_string_enum_mirrored,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_raw_string_enum_mirrored,
+        parseErrorData: null,
+      ),
       constMeta: kTestRawStringEnumMirroredTwinNormalConstMeta,
       argValues: [nested],
       apiImpl: this,
@@ -5455,8 +5719,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_test_raw_string_mirrored_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_raw_string_mirrored,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_raw_string_mirrored,
+        parseErrorData: null,
+      ),
       constMeta: kTestRawStringMirroredTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -5476,8 +5742,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_handle_big_buffers_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_big_buffers_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_big_buffers_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kHandleBigBuffersTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -5498,8 +5766,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_my_tree_node_twin_normal(s);
         return wire.wire_handle_complex_struct_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_my_tree_node_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_my_tree_node_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kHandleComplexStructTwinNormalConstMeta,
       argValues: [s],
       apiImpl: this,
@@ -5521,8 +5791,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_my_nested_struct_twin_normal(s);
         return wire.wire_handle_nested_struct_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_my_nested_struct_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_my_nested_struct_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kHandleNestedStructTwinNormalConstMeta,
       argValues: [s],
       apiImpl: this,
@@ -5543,8 +5815,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_String(s);
         return wire.wire_handle_string_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kHandleStringTwinNormalConstMeta,
       argValues: [s],
       apiImpl: this,
@@ -5566,8 +5840,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_box_my_size(boxed);
         return wire.wire_handle_struct_twin_normal(port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_my_size,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_my_size,
+        parseErrorData: null,
+      ),
       constMeta: kHandleStructTwinNormalConstMeta,
       argValues: [arg, boxed],
       apiImpl: this,
@@ -5588,8 +5864,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_prim_u_8(v);
         return wire.wire_handle_vec_u8_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_u_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_u_8,
+        parseErrorData: null,
+      ),
       constMeta: kHandleVecU8TwinNormalConstMeta,
       argValues: [v],
       apiImpl: this,
@@ -5610,8 +5888,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_weekdays_twin_normal(weekdays);
         return wire.wire_list_of_primitive_enums_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_weekdays_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_weekdays_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kListOfPrimitiveEnumsTwinNormalConstMeta,
       argValues: [weekdays],
       apiImpl: this,
@@ -5633,8 +5913,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_abc_twin_normal(abc);
         return wire.wire_test_abc_enum_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_abc_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_abc_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kTestAbcEnumTwinNormalConstMeta,
       argValues: [abc],
       apiImpl: this,
@@ -5655,8 +5937,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_struct_with_enum_twin_normal(se);
         return wire.wire_test_struct_with_enum_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_struct_with_enum_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_struct_with_enum_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kTestStructWithEnumTwinNormalConstMeta,
       argValues: [se],
       apiImpl: this,
@@ -5678,8 +5962,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_empty_twin_normal(empty);
         return wire.wire_empty_struct_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_empty_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_empty_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kEmptyStructTwinNormalConstMeta,
       argValues: [empty],
       apiImpl: this,
@@ -5698,8 +5984,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_func_return_unit_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kFuncReturnUnitTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -5719,8 +6007,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_String(arg);
         return wire.wire_func_string_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kFuncStringTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -5741,8 +6031,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_my_size(l);
         return wire.wire_handle_list_of_struct_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_my_size,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_my_size,
+        parseErrorData: null,
+      ),
       constMeta: kHandleListOfStructTwinNormalConstMeta,
       argValues: [l],
       apiImpl: this,
@@ -5764,8 +6056,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_StringList(names);
         return wire.wire_handle_string_list_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_StringList,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_StringList,
+        parseErrorData: null,
+      ),
       constMeta: kHandleStringListTwinNormalConstMeta,
       argValues: [names],
       apiImpl: this,
@@ -5786,8 +6080,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_new_type_int_twin_normal(arg);
         return wire.wire_handle_newtype_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_new_type_int_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_new_type_int_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kHandleNewtypeTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -5809,8 +6105,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_increment_boxed_optional_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_f_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_f_64,
+        parseErrorData: null,
+      ),
       constMeta: kHandleIncrementBoxedOptionalTwinNormalConstMeta,
       argValues: [opt],
       apiImpl: this,
@@ -5846,8 +6144,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_option_box_arguments_twin_normal(
             port_, arg0, arg1, arg2, arg3, arg4, arg5, arg6);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kHandleOptionBoxArgumentsTwinNormalConstMeta,
       argValues: [i8Box, u8Box, i32Box, i64Box, f64Box, boolbox, structbox],
       apiImpl: this,
@@ -5877,9 +6177,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_box_autoadd_exotic_optionals_twin_normal(opt);
         return wire.wire_handle_optional_increment_twin_normal(port_, arg0);
       },
-      parseSuccessData:
-          _dco_decode_opt_box_autoadd_exotic_optionals_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_opt_box_autoadd_exotic_optionals_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kHandleOptionalIncrementTwinNormalConstMeta,
       argValues: [opt],
       apiImpl: this,
@@ -5902,8 +6204,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_f_64(right);
         return wire.wire_handle_optional_return_twin_normal(port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_f_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_f_64,
+        parseErrorData: null,
+      ),
       constMeta: kHandleOptionalReturnTwinNormalConstMeta,
       argValues: [left, right],
       apiImpl: this,
@@ -5925,8 +6229,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_String(document);
         return wire.wire_handle_optional_struct_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_element_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_element_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kHandleOptionalStructTwinNormalConstMeta,
       argValues: [document],
       apiImpl: this,
@@ -5948,8 +6254,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_opt_vecs_twin_normal(opt);
         return wire.wire_handle_vec_of_opts_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_vecs_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_vecs_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kHandleVecOfOptsTwinNormalConstMeta,
       argValues: [opt],
       apiImpl: this,
@@ -5974,8 +6282,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_primitive_optional_types_twin_normal(
             port_, arg0, arg1, arg2, arg3);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kPrimitiveOptionalTypesTwinNormalConstMeta,
       argValues: [myI32, myI64, myF64, myBool],
       apiImpl: this,
@@ -5997,8 +6307,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_i_32(n);
         return wire.wire_handle_vec_of_primitive_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_vec_of_primitive_pack_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_vec_of_primitive_pack_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kHandleVecOfPrimitiveTwinNormalConstMeta,
       argValues: [n],
       apiImpl: this,
@@ -6021,8 +6333,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_zero_copy_vec_of_primitive_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_zero_copy_vec_of_primitive_pack_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_zero_copy_vec_of_primitive_pack_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kHandleZeroCopyVecOfPrimitiveTwinNormalConstMeta,
       argValues: [n],
       apiImpl: this,
@@ -6052,8 +6367,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_primitive_types_twin_normal(
             port_, arg0, arg1, arg2, arg3);
       },
-      parseSuccessData: _dco_decode_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kPrimitiveTypesTwinNormalConstMeta,
       argValues: [myI32, myI64, myF64, myBool],
       apiImpl: this,
@@ -6073,8 +6390,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_32(myU32);
         return wire.wire_primitive_u32_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: null,
+      ),
       constMeta: kPrimitiveU32TwinNormalConstMeta,
       argValues: [myU32],
       apiImpl: this,
@@ -6095,8 +6414,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_u_8_array_1600(blob);
         return wire.wire_boxed_blob_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_blob_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_blob_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kBoxedBlobTwinRustAsyncConstMeta,
       argValues: [blob],
       apiImpl: this,
@@ -6117,8 +6438,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_test_id_twin_rust_async(id);
         return wire.wire_func_test_id_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_test_id_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_test_id_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kFuncTestIdTwinRustAsyncConstMeta,
       argValues: [id],
       apiImpl: this,
@@ -6137,8 +6460,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_get_array_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_u_8_array_5,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_8_array_5,
+        parseErrorData: null,
+      ),
       constMeta: kGetArrayTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -6158,8 +6483,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_get_complex_array_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_point_twin_rust_async_array_2,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_point_twin_rust_async_array_2,
+        parseErrorData: null,
+      ),
       constMeta: kGetComplexArrayTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -6181,8 +6508,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_f_64_array_16(array);
         return wire.wire_last_number_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_f_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_f_64,
+        parseErrorData: null,
+      ),
       constMeta: kLastNumberTwinRustAsyncConstMeta,
       argValues: [array],
       apiImpl: this,
@@ -6203,8 +6532,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_test_id_twin_rust_async_array_4(id);
         return wire.wire_nested_id_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_test_id_twin_rust_async_array_2,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_test_id_twin_rust_async_array_2,
+        parseErrorData: null,
+      ),
       constMeta: kNestedIdTwinRustAsyncConstMeta,
       argValues: [id],
       apiImpl: this,
@@ -6225,8 +6556,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_8_array_32(id);
         return wire.wire_new_msgid_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_message_id_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_message_id_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kNewMsgidTwinRustAsyncConstMeta,
       argValues: [id],
       apiImpl: this,
@@ -6247,8 +6580,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_8_array_8(id);
         return wire.wire_return_boxed_feed_id_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_box_feed_id_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_box_feed_id_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kReturnBoxedFeedIdTwinRustAsyncConstMeta,
       argValues: [id],
       apiImpl: this,
@@ -6270,8 +6605,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_feed_id_twin_rust_async(id);
         return wire.wire_return_boxed_raw_feed_id_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_box_u_8_array_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_box_u_8_array_8,
+        parseErrorData: null,
+      ),
       constMeta: kReturnBoxedRawFeedIdTwinRustAsyncConstMeta,
       argValues: [id],
       apiImpl: this,
@@ -6293,8 +6630,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_blob_twin_rust_async(blob);
         return wire.wire_use_boxed_blob_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_8_array_1600,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_8_array_1600,
+        parseErrorData: null,
+      ),
       constMeta: kUseBoxedBlobTwinRustAsyncConstMeta,
       argValues: [blob],
       apiImpl: this,
@@ -6315,8 +6654,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_message_id_twin_rust_async(id);
         return wire.wire_use_msgid_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_8_array_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_8_array_32,
+        parseErrorData: null,
+      ),
       constMeta: kUseMsgidTwinRustAsyncConstMeta,
       argValues: [id],
       apiImpl: this,
@@ -6336,8 +6677,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_u_8_array_1600(blob);
         return wire.wire_boxed_blob_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_blob_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_blob_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kBoxedBlobTwinSyncConstMeta,
       argValues: [blob],
       apiImpl: this,
@@ -6358,8 +6701,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_test_id_twin_sync(id);
         return wire.wire_func_test_id_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_test_id_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_test_id_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kFuncTestIdTwinSyncConstMeta,
       argValues: [id],
       apiImpl: this,
@@ -6378,8 +6723,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_get_array_twin_sync();
       },
-      parseSuccessData: _dco_decode_u_8_array_5,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_8_array_5,
+        parseErrorData: null,
+      ),
       constMeta: kGetArrayTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -6398,8 +6745,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_get_complex_array_twin_sync();
       },
-      parseSuccessData: _dco_decode_point_twin_sync_array_2,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_point_twin_sync_array_2,
+        parseErrorData: null,
+      ),
       constMeta: kGetComplexArrayTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -6419,8 +6768,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_f_64_array_16(array);
         return wire.wire_last_number_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_f_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_f_64,
+        parseErrorData: null,
+      ),
       constMeta: kLastNumberTwinSyncConstMeta,
       argValues: [array],
       apiImpl: this,
@@ -6441,8 +6792,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_test_id_twin_sync_array_4(id);
         return wire.wire_nested_id_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_test_id_twin_sync_array_2,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_test_id_twin_sync_array_2,
+        parseErrorData: null,
+      ),
       constMeta: kNestedIdTwinSyncConstMeta,
       argValues: [id],
       apiImpl: this,
@@ -6462,8 +6815,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_8_array_32(id);
         return wire.wire_new_msgid_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_message_id_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_message_id_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kNewMsgidTwinSyncConstMeta,
       argValues: [id],
       apiImpl: this,
@@ -6484,8 +6839,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_8_array_8(id);
         return wire.wire_return_boxed_feed_id_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_box_feed_id_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_box_feed_id_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kReturnBoxedFeedIdTwinSyncConstMeta,
       argValues: [id],
       apiImpl: this,
@@ -6506,8 +6863,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_feed_id_twin_sync(id);
         return wire.wire_return_boxed_raw_feed_id_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_box_u_8_array_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_box_u_8_array_8,
+        parseErrorData: null,
+      ),
       constMeta: kReturnBoxedRawFeedIdTwinSyncConstMeta,
       argValues: [id],
       apiImpl: this,
@@ -6528,8 +6887,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_blob_twin_sync(blob);
         return wire.wire_use_boxed_blob_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_u_8_array_1600,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_8_array_1600,
+        parseErrorData: null,
+      ),
       constMeta: kUseBoxedBlobTwinSyncConstMeta,
       argValues: [blob],
       apiImpl: this,
@@ -6549,8 +6910,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_message_id_twin_sync(id);
         return wire.wire_use_msgid_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_u_8_array_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_8_array_32,
+        parseErrorData: null,
+      ),
       constMeta: kUseMsgidTwinSyncConstMeta,
       argValues: [id],
       apiImpl: this,
@@ -6571,8 +6934,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_customized_twin_rust_async(val);
         return wire.wire_handle_customized_struct_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kHandleCustomizedStructTwinRustAsyncConstMeta,
       argValues: [val],
       apiImpl: this,
@@ -6594,8 +6959,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_user_id_twin_rust_async(userId);
         return wire.wire_next_user_id_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_user_id_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_user_id_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kNextUserIdTwinRustAsyncConstMeta,
       argValues: [userId],
       apiImpl: this,
@@ -6616,8 +6983,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_customized_twin_sync(val);
         return wire.wire_handle_customized_struct_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kHandleCustomizedStructTwinSyncConstMeta,
       argValues: [val],
       apiImpl: this,
@@ -6639,8 +7008,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_user_id_twin_sync(userId);
         return wire.wire_next_user_id_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_user_id_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_user_id_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kNextUserIdTwinSyncConstMeta,
       argValues: [userId],
       apiImpl: this,
@@ -6661,8 +7032,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_prim_u_8(bytes);
         return wire.wire_benchmark_input_bytes_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kBenchmarkInputBytesTwinRustAsyncConstMeta,
       argValues: [bytes],
       apiImpl: this,
@@ -6684,8 +7057,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_i_32(size);
         return wire.wire_benchmark_output_bytes_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_u_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_u_8,
+        parseErrorData: null,
+      ),
       constMeta: kBenchmarkOutputBytesTwinRustAsyncConstMeta,
       argValues: [size],
       apiImpl: this,
@@ -6705,8 +7080,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_benchmark_void_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kBenchmarkVoidTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -6726,8 +7103,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_prim_u_8(bytes);
         return wire.wire_benchmark_input_bytes_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kBenchmarkInputBytesTwinSyncConstMeta,
       argValues: [bytes],
       apiImpl: this,
@@ -6748,8 +7127,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_i_32(size);
         return wire.wire_benchmark_output_bytes_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_u_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_u_8,
+        parseErrorData: null,
+      ),
       constMeta: kBenchmarkOutputBytesTwinSyncConstMeta,
       argValues: [size],
       apiImpl: this,
@@ -6769,8 +7150,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_benchmark_void_twin_sync();
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kBenchmarkVoidTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -6791,8 +7174,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_Chrono_Local(d);
         return wire.wire_datetime_local_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_Chrono_Local,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_Chrono_Local,
+        parseErrorData: null,
+      ),
       constMeta: kDatetimeLocalTwinRustAsyncConstMeta,
       argValues: [d],
       apiImpl: this,
@@ -6813,8 +7198,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_Chrono_Utc(d);
         return wire.wire_datetime_utc_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_Chrono_Utc,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_Chrono_Utc,
+        parseErrorData: null,
+      ),
       constMeta: kDatetimeUtcTwinRustAsyncConstMeta,
       argValues: [d],
       apiImpl: this,
@@ -6834,8 +7221,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_Chrono_Duration(d);
         return wire.wire_duration_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_Chrono_Duration,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_Chrono_Duration,
+        parseErrorData: null,
+      ),
       constMeta: kDurationTwinRustAsyncConstMeta,
       argValues: [d],
       apiImpl: this,
@@ -6859,8 +7248,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_Chrono_Local(since);
         return wire.wire_handle_durations_twin_rust_async(port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_Chrono_LocalList,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_Chrono_LocalList,
+        parseErrorData: null,
+      ),
       constMeta: kHandleDurationsTwinRustAsyncConstMeta,
       argValues: [durations, since],
       apiImpl: this,
@@ -6885,8 +7276,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_Chrono_Naive(epoch);
         return wire.wire_handle_timestamps_twin_rust_async(port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_Chrono_DurationList,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_Chrono_DurationList,
+        parseErrorData: null,
+      ),
       constMeta: kHandleTimestampsTwinRustAsyncConstMeta,
       argValues: [timestamps, epoch],
       apiImpl: this,
@@ -6908,8 +7301,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_feature_chrono_twin_rust_async(mine);
         return wire.wire_how_long_does_it_take_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_Chrono_Duration,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_Chrono_Duration,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kHowLongDoesItTakeTwinRustAsyncConstMeta,
       argValues: [mine],
       apiImpl: this,
@@ -6931,8 +7326,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_Chrono_Naive(d);
         return wire.wire_naivedatetime_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_Chrono_Naive,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_Chrono_Naive,
+        parseErrorData: null,
+      ),
       constMeta: kNaivedatetimeTwinRustAsyncConstMeta,
       argValues: [d],
       apiImpl: this,
@@ -6954,8 +7351,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_optional_empty_datetime_utc_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_Chrono_Utc,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_Chrono_Utc,
+        parseErrorData: null,
+      ),
       constMeta: kOptionalEmptyDatetimeUtcTwinRustAsyncConstMeta,
       argValues: [d],
       apiImpl: this,
@@ -6975,8 +7374,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_test_chrono_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_test_chrono_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_test_chrono_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kTestChronoTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -6996,8 +7397,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_test_precise_chrono_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_test_chrono_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_test_chrono_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kTestPreciseChronoTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -7018,8 +7421,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_Chrono_Local(d);
         return wire.wire_datetime_local_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_Chrono_Local,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_Chrono_Local,
+        parseErrorData: null,
+      ),
       constMeta: kDatetimeLocalTwinSyncConstMeta,
       argValues: [d],
       apiImpl: this,
@@ -7039,8 +7444,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_Chrono_Utc(d);
         return wire.wire_datetime_utc_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_Chrono_Utc,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_Chrono_Utc,
+        parseErrorData: null,
+      ),
       constMeta: kDatetimeUtcTwinSyncConstMeta,
       argValues: [d],
       apiImpl: this,
@@ -7060,8 +7467,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_Chrono_Duration(d);
         return wire.wire_duration_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_Chrono_Duration,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_Chrono_Duration,
+        parseErrorData: null,
+      ),
       constMeta: kDurationTwinSyncConstMeta,
       argValues: [d],
       apiImpl: this,
@@ -7085,8 +7494,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_Chrono_Local(since);
         return wire.wire_handle_durations_twin_sync(arg0, arg1);
       },
-      parseSuccessData: _dco_decode_Chrono_LocalList,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_Chrono_LocalList,
+        parseErrorData: null,
+      ),
       constMeta: kHandleDurationsTwinSyncConstMeta,
       argValues: [durations, since],
       apiImpl: this,
@@ -7110,8 +7521,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_Chrono_Naive(epoch);
         return wire.wire_handle_timestamps_twin_sync(arg0, arg1);
       },
-      parseSuccessData: _dco_decode_Chrono_DurationList,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_Chrono_DurationList,
+        parseErrorData: null,
+      ),
       constMeta: kHandleTimestampsTwinSyncConstMeta,
       argValues: [timestamps, epoch],
       apiImpl: this,
@@ -7132,8 +7545,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_feature_chrono_twin_sync(mine);
         return wire.wire_how_long_does_it_take_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_Chrono_Duration,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_Chrono_Duration,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kHowLongDoesItTakeTwinSyncConstMeta,
       argValues: [mine],
       apiImpl: this,
@@ -7153,8 +7568,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_Chrono_Naive(d);
         return wire.wire_naivedatetime_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_Chrono_Naive,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_Chrono_Naive,
+        parseErrorData: null,
+      ),
       constMeta: kNaivedatetimeTwinSyncConstMeta,
       argValues: [d],
       apiImpl: this,
@@ -7174,8 +7591,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_box_autoadd_Chrono_Utc(d);
         return wire.wire_optional_empty_datetime_utc_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_Chrono_Utc,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_Chrono_Utc,
+        parseErrorData: null,
+      ),
       constMeta: kOptionalEmptyDatetimeUtcTwinSyncConstMeta,
       argValues: [d],
       apiImpl: this,
@@ -7195,8 +7614,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_test_chrono_twin_sync();
       },
-      parseSuccessData: _dco_decode_test_chrono_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_test_chrono_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kTestChronoTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -7215,8 +7636,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_test_precise_chrono_twin_sync();
       },
-      parseSuccessData: _dco_decode_test_chrono_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_test_chrono_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kTestPreciseChronoTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -7240,8 +7663,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_StructWithCommentsTwinRustAsync_instance_method_twin_rust_async(
                 port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta:
           kStructWithCommentsTwinRustAsyncInstanceMethodTwinRustAsyncConstMeta,
       argValues: [that],
@@ -7267,8 +7692,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_StructWithCommentsTwinRustAsync_static_method_twin_rust_async(
                 port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta:
           kStructWithCommentsTwinRustAsyncStaticMethodTwinRustAsyncConstMeta,
       argValues: [],
@@ -7292,8 +7719,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire
             .wire_function_with_comments_slash_star_star_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kFunctionWithCommentsSlashStarStarTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -7316,8 +7745,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_function_with_comments_triple_slash_multi_line_twin_rust_async(
                 port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta:
           kFunctionWithCommentsTripleSlashMultiLineTwinRustAsyncConstMeta,
       argValues: [],
@@ -7343,8 +7774,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_function_with_comments_triple_slash_single_line_twin_rust_async(
                 port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta:
           kFunctionWithCommentsTripleSlashSingleLineTwinRustAsyncConstMeta,
       argValues: [],
@@ -7370,8 +7803,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire
             .wire_StructWithCommentsTwinSync_instance_method_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kStructWithCommentsTwinSyncInstanceMethodTwinSyncConstMeta,
       argValues: [that],
       apiImpl: this,
@@ -7392,8 +7827,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_StructWithCommentsTwinSync_static_method_twin_sync();
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kStructWithCommentsTwinSyncStaticMethodTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -7413,8 +7850,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_function_with_comments_slash_star_star_twin_sync();
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kFunctionWithCommentsSlashStarStarTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -7435,8 +7874,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire
             .wire_function_with_comments_triple_slash_multi_line_twin_sync();
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kFunctionWithCommentsTripleSlashMultiLineTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -7459,8 +7900,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire
             .wire_function_with_comments_triple_slash_single_line_twin_sync();
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kFunctionWithCommentsTripleSlashSingleLineTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -7482,8 +7925,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_return_dart_dynamic_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_dartabi,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_dartabi,
+        parseErrorData: null,
+      ),
       constMeta: kReturnDartDynamicTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -7503,8 +7948,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_return_dart_dynamic_twin_sync();
       },
-      parseSuccessData: _dco_decode_dartabi,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_dartabi,
+        parseErrorData: null,
+      ),
       constMeta: kReturnDartDynamicTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -7525,8 +7972,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_async_accept_dart_opaque_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kAsyncAcceptDartOpaqueTwinRustAsyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -7548,8 +7997,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_clone_dart_opaque_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_DartOpaque,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_DartOpaque,
+        parseErrorData: null,
+      ),
       constMeta: kCloneDartOpaqueTwinRustAsyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -7571,8 +8022,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_create_enum_dart_opaque_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_enum_dart_opaque_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_enum_dart_opaque_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kCreateEnumDartOpaqueTwinRustAsyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -7596,8 +8049,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_create_nested_dart_opaque_twin_rust_async(
             port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_dart_opaque_nested_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_dart_opaque_nested_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kCreateNestedDartOpaqueTwinRustAsyncConstMeta,
       argValues: [opaque1, opaque2],
       apiImpl: this,
@@ -7619,8 +8074,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_i_32(id);
         return wire.wire_drop_static_dart_opaque_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kDropStaticDartOpaqueTwinRustAsyncConstMeta,
       argValues: [id],
       apiImpl: this,
@@ -7643,8 +8100,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             cst_encode_box_autoadd_enum_dart_opaque_twin_rust_async(opaque);
         return wire.wire_get_enum_dart_opaque_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kGetEnumDartOpaqueTwinRustAsyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -7667,8 +8126,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             cst_encode_box_autoadd_dart_opaque_nested_twin_rust_async(opaque);
         return wire.wire_get_nested_dart_opaque_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kGetNestedDartOpaqueTwinRustAsyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -7690,8 +8151,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque_array_1(opaque);
         return wire.wire_loop_back_array_get_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kLoopBackArrayGetTwinRustAsyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -7713,8 +8176,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_loop_back_array_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_DartOpaque_array_1,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_DartOpaque_array_1,
+        parseErrorData: null,
+      ),
       constMeta: kLoopBackArrayTwinRustAsyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -7734,8 +8199,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_box_autoadd_DartOpaque(opaque);
         return wire.wire_loop_back_option_get_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kLoopBackOptionGetTwinRustAsyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -7757,8 +8224,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_loop_back_option_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_DartOpaque,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_DartOpaque,
+        parseErrorData: null,
+      ),
       constMeta: kLoopBackOptionTwinRustAsyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -7779,8 +8248,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_loop_back_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_DartOpaque,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_DartOpaque,
+        parseErrorData: null,
+      ),
       constMeta: kLoopBackTwinRustAsyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -7801,8 +8272,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_DartOpaque(opaque);
         return wire.wire_loop_back_vec_get_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kLoopBackVecGetTwinRustAsyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -7824,8 +8297,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_loop_back_vec_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_DartOpaque,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_DartOpaque,
+        parseErrorData: null,
+      ),
       constMeta: kLoopBackVecTwinRustAsyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -7846,8 +8321,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_panic_unwrap_dart_opaque_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kPanicUnwrapDartOpaqueTwinRustAsyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -7871,8 +8348,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_set_static_dart_opaque_twin_rust_async(
             port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kSetStaticDartOpaqueTwinRustAsyncConstMeta,
       argValues: [id, opaque],
       apiImpl: this,
@@ -7893,8 +8372,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_async_accept_dart_opaque_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kAsyncAcceptDartOpaqueTwinSyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -7915,8 +8396,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_clone_dart_opaque_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_list_DartOpaque,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_DartOpaque,
+        parseErrorData: null,
+      ),
       constMeta: kCloneDartOpaqueTwinSyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -7937,8 +8420,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_create_enum_dart_opaque_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_enum_dart_opaque_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_enum_dart_opaque_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kCreateEnumDartOpaqueTwinSyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -7961,8 +8446,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_DartOpaque(opaque2);
         return wire.wire_create_nested_dart_opaque_twin_sync(arg0, arg1);
       },
-      parseSuccessData: _dco_decode_dart_opaque_nested_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_dart_opaque_nested_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kCreateNestedDartOpaqueTwinSyncConstMeta,
       argValues: [opaque1, opaque2],
       apiImpl: this,
@@ -7983,8 +8470,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_i_32(id);
         return wire.wire_drop_static_dart_opaque_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kDropStaticDartOpaqueTwinSyncConstMeta,
       argValues: [id],
       apiImpl: this,
@@ -8006,8 +8495,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_enum_dart_opaque_twin_sync(opaque);
         return wire.wire_get_enum_dart_opaque_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kGetEnumDartOpaqueTwinSyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -8028,8 +8519,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_dart_opaque_nested_twin_sync(opaque);
         return wire.wire_get_nested_dart_opaque_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kGetNestedDartOpaqueTwinSyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -8050,8 +8543,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque_array_1(opaque);
         return wire.wire_loop_back_array_get_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kLoopBackArrayGetTwinSyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -8071,8 +8566,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_loop_back_array_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_DartOpaque_array_1,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_DartOpaque_array_1,
+        parseErrorData: null,
+      ),
       constMeta: kLoopBackArrayTwinSyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -8092,8 +8589,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_box_autoadd_DartOpaque(opaque);
         return wire.wire_loop_back_option_get_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kLoopBackOptionGetTwinSyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -8113,8 +8612,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_loop_back_option_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_DartOpaque,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_DartOpaque,
+        parseErrorData: null,
+      ),
       constMeta: kLoopBackOptionTwinSyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -8134,8 +8635,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_loop_back_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_DartOpaque,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_DartOpaque,
+        parseErrorData: null,
+      ),
       constMeta: kLoopBackTwinSyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -8155,8 +8658,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_DartOpaque(opaque);
         return wire.wire_loop_back_vec_get_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kLoopBackVecGetTwinSyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -8176,8 +8681,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_loop_back_vec_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_list_DartOpaque,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_DartOpaque,
+        parseErrorData: null,
+      ),
       constMeta: kLoopBackVecTwinSyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -8197,8 +8704,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_DartOpaque(opaque);
         return wire.wire_panic_unwrap_dart_opaque_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kPanicUnwrapDartOpaqueTwinSyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -8221,8 +8730,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_DartOpaque(opaque);
         return wire.wire_set_static_dart_opaque_twin_sync(arg0, arg1);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kSetStaticDartOpaqueTwinSyncConstMeta,
       argValues: [id, opaque],
       apiImpl: this,
@@ -8244,8 +8755,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_enum_simple_twin_rust_async(arg);
         return wire.wire_func_enum_simple_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_enum_simple_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_enum_simple_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kFuncEnumSimpleTwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -8268,8 +8781,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             cst_encode_box_autoadd_enum_with_item_mixed_twin_rust_async(arg);
         return wire.wire_func_enum_with_item_mixed_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_enum_with_item_mixed_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_enum_with_item_mixed_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kFuncEnumWithItemMixedTwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -8293,8 +8808,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_enum_with_item_struct_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_enum_with_item_struct_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_enum_with_item_struct_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kFuncEnumWithItemStructTwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -8317,8 +8834,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             cst_encode_box_autoadd_enum_with_item_tuple_twin_rust_async(arg);
         return wire.wire_func_enum_with_item_tuple_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_enum_with_item_tuple_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_enum_with_item_tuple_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kFuncEnumWithItemTupleTwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -8340,8 +8859,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_weekdays_twin_rust_async(weekday);
         return wire.wire_handle_enum_parameter_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_weekdays_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_weekdays_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kHandleEnumParameterTwinRustAsyncConstMeta,
       argValues: [weekday],
       apiImpl: this,
@@ -8363,8 +8884,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_kitchen_sink_twin_rust_async(val);
         return wire.wire_handle_enum_struct_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_kitchen_sink_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_kitchen_sink_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kHandleEnumStructTwinRustAsyncConstMeta,
       argValues: [val],
       apiImpl: this,
@@ -8386,8 +8909,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_String(input);
         return wire.wire_handle_return_enum_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_weekdays_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_weekdays_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kHandleReturnEnumTwinRustAsyncConstMeta,
       argValues: [input],
       apiImpl: this,
@@ -8409,8 +8934,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_measure_twin_rust_async(measure);
         return wire.wire_multiply_by_ten_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_measure_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_measure_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kMultiplyByTenTwinRustAsyncConstMeta,
       argValues: [measure],
       apiImpl: this,
@@ -8431,8 +8958,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_note_twin_rust_async(note);
         return wire.wire_print_note_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_ZeroCopyBuffer_list_prim_u_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_ZeroCopyBuffer_list_prim_u_8,
+        parseErrorData: null,
+      ),
       constMeta: kPrintNoteTwinRustAsyncConstMeta,
       argValues: [note],
       apiImpl: this,
@@ -8453,8 +8982,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_enum_simple_twin_sync(arg);
         return wire.wire_func_enum_simple_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_enum_simple_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_enum_simple_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kFuncEnumSimpleTwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -8475,8 +9006,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_enum_with_item_mixed_twin_sync(arg);
         return wire.wire_func_enum_with_item_mixed_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_enum_with_item_mixed_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_enum_with_item_mixed_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kFuncEnumWithItemMixedTwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -8498,8 +9031,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_enum_with_item_struct_twin_sync(arg);
         return wire.wire_func_enum_with_item_struct_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_enum_with_item_struct_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_enum_with_item_struct_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kFuncEnumWithItemStructTwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -8521,8 +9056,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_enum_with_item_tuple_twin_sync(arg);
         return wire.wire_func_enum_with_item_tuple_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_enum_with_item_tuple_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_enum_with_item_tuple_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kFuncEnumWithItemTupleTwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -8544,8 +9081,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_weekdays_twin_sync(weekday);
         return wire.wire_handle_enum_parameter_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_weekdays_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_weekdays_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kHandleEnumParameterTwinSyncConstMeta,
       argValues: [weekday],
       apiImpl: this,
@@ -8567,8 +9106,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_kitchen_sink_twin_sync(val);
         return wire.wire_handle_enum_struct_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_kitchen_sink_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_kitchen_sink_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kHandleEnumStructTwinSyncConstMeta,
       argValues: [val],
       apiImpl: this,
@@ -8589,8 +9130,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_String(input);
         return wire.wire_handle_return_enum_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_weekdays_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_weekdays_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kHandleReturnEnumTwinSyncConstMeta,
       argValues: [input],
       apiImpl: this,
@@ -8611,8 +9154,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_measure_twin_sync(measure);
         return wire.wire_multiply_by_ten_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_measure_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_measure_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kMultiplyByTenTwinSyncConstMeta,
       argValues: [measure],
       apiImpl: this,
@@ -8632,8 +9177,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_note_twin_sync(note);
         return wire.wire_print_note_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_ZeroCopyBuffer_list_prim_u_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_ZeroCopyBuffer_list_prim_u_8,
+        parseErrorData: null,
+      ),
       constMeta: kPrintNoteTwinSyncConstMeta,
       argValues: [note],
       apiImpl: this,
@@ -8655,8 +9202,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_EventTwinRustAsync_as_string_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kEventTwinRustAsyncAsStringTwinRustAsyncConstMeta,
       argValues: [that],
       apiImpl: this,
@@ -8676,8 +9225,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_close_event_listener_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kCloseEventListenerTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -8700,8 +9251,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_String(payload);
         return wire.wire_create_event_twin_rust_async(port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kCreateEventTwinRustAsyncConstMeta,
       argValues: [address, payload],
       apiImpl: this,
@@ -8721,8 +9274,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_register_event_listener_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_event_twin_rust_async,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_event_twin_rust_async,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kRegisterEventListenerTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -8744,8 +9299,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_event_twin_sync(that);
         return wire.wire_EventTwinSync_as_string_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kEventTwinSyncAsStringTwinSyncConstMeta,
       argValues: [that],
       apiImpl: this,
@@ -8765,8 +9322,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_close_event_listener_twin_sync();
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kCloseEventListenerTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -8788,8 +9347,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_String(payload);
         return wire.wire_create_event_twin_sync(arg0, arg1);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kCreateEventTwinSyncConstMeta,
       argValues: [address, payload],
       apiImpl: this,
@@ -8808,8 +9369,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_register_event_listener_twin_sync(port_);
       },
-      parseSuccessData: _dco_decode_event_twin_sync,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_event_twin_sync,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kRegisterEventListenerTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -8832,8 +9395,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_CustomStructTwinRustAsync_new_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_custom_struct_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_custom_struct_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kCustomStructTwinRustAsyncNewTwinRustAsyncConstMeta,
       argValues: [message],
       apiImpl: this,
@@ -8858,8 +9423,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_CustomStructTwinRustAsync_nonstatic_return_custom_struct_error_twin_rust_async(
                 port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_struct_error_another_twin_rust_async,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_struct_error_another_twin_rust_async,
+      ),
       constMeta:
           kCustomStructTwinRustAsyncNonstaticReturnCustomStructErrorTwinRustAsyncConstMeta,
       argValues: [that],
@@ -8887,8 +9454,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_CustomStructTwinRustAsync_nonstatic_return_custom_struct_ok_twin_rust_async(
                 port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_struct_error_another_twin_rust_async,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_struct_error_another_twin_rust_async,
+      ),
       constMeta:
           kCustomStructTwinRustAsyncNonstaticReturnCustomStructOkTwinRustAsyncConstMeta,
       argValues: [that],
@@ -8915,8 +9484,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_CustomStructTwinRustAsync_static_return_custom_struct_error_twin_rust_async(
                 port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_struct_error_another_twin_rust_async,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_struct_error_another_twin_rust_async,
+      ),
       constMeta:
           kCustomStructTwinRustAsyncStaticReturnCustomStructErrorTwinRustAsyncConstMeta,
       argValues: [],
@@ -8942,8 +9513,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_CustomStructTwinRustAsync_static_return_custom_struct_ok_twin_rust_async(
                 port_);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_struct_error_another_twin_rust_async,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_struct_error_another_twin_rust_async,
+      ),
       constMeta:
           kCustomStructTwinRustAsyncStaticReturnCustomStructOkTwinRustAsyncConstMeta,
       argValues: [],
@@ -8969,8 +9542,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_SomeStructTwinRustAsync_new_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_some_struct_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_some_struct_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kSomeStructTwinRustAsyncNewTwinRustAsyncConstMeta,
       argValues: [value],
       apiImpl: this,
@@ -8994,8 +9569,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_SomeStructTwinRustAsync_non_static_return_err_custom_error_twin_rust_async(
                 port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_error_twin_rust_async,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_error_twin_rust_async,
+      ),
       constMeta:
           kSomeStructTwinRustAsyncNonStaticReturnErrCustomErrorTwinRustAsyncConstMeta,
       argValues: [that],
@@ -9022,8 +9599,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_SomeStructTwinRustAsync_non_static_return_ok_custom_error_twin_rust_async(
                 port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_error_twin_rust_async,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_error_twin_rust_async,
+      ),
       constMeta:
           kSomeStructTwinRustAsyncNonStaticReturnOkCustomErrorTwinRustAsyncConstMeta,
       argValues: [that],
@@ -9049,8 +9628,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_SomeStructTwinRustAsync_static_return_err_custom_error_twin_rust_async(
                 port_);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_error_twin_rust_async,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_error_twin_rust_async,
+      ),
       constMeta:
           kSomeStructTwinRustAsyncStaticReturnErrCustomErrorTwinRustAsyncConstMeta,
       argValues: [],
@@ -9076,8 +9657,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_SomeStructTwinRustAsync_static_return_ok_custom_error_twin_rust_async(
                 port_);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_error_twin_rust_async,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_error_twin_rust_async,
+      ),
       constMeta:
           kSomeStructTwinRustAsyncStaticReturnOkCustomErrorTwinRustAsyncConstMeta,
       argValues: [],
@@ -9100,8 +9683,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_custom_enum_error_panic_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_enum_error_twin_rust_async,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_enum_error_twin_rust_async,
+      ),
       constMeta: kCustomEnumErrorPanicTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -9121,8 +9706,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_custom_enum_error_return_error_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_enum_error_twin_rust_async,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_enum_error_twin_rust_async,
+      ),
       constMeta: kCustomEnumErrorReturnErrorTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -9145,8 +9732,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_custom_enum_error_return_ok_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_enum_error_twin_rust_async,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_enum_error_twin_rust_async,
+      ),
       constMeta: kCustomEnumErrorReturnOkTwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -9171,8 +9760,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_custom_nested_error_return_error_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_nested_error_outer_twin_rust_async,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_nested_error_outer_twin_rust_async,
+      ),
       constMeta: kCustomNestedErrorReturnErrorTwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -9196,8 +9787,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_custom_struct_error_return_error_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_struct_error_twin_rust_async,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_struct_error_twin_rust_async,
+      ),
       constMeta: kCustomStructErrorReturnErrorTwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -9217,8 +9810,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_func_return_error_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_i_32,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_32,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kFuncReturnErrorTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -9238,8 +9833,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_func_type_fallible_panic_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_i_32,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_32,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kFuncTypeFalliblePanicTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -9259,8 +9856,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_func_type_infallible_panic_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kFuncTypeInfalliblePanicTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -9280,8 +9879,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_panic_with_custom_result_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_error_twin_rust_async,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_error_twin_rust_async,
+      ),
       constMeta: kPanicWithCustomResultTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -9301,8 +9902,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_return_custom_nested_error_1_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_nested_error_1_twin_rust_async,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_nested_error_1_twin_rust_async,
+      ),
       constMeta: kReturnCustomNestedError1TwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -9323,8 +9926,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire
             .wire_return_custom_nested_error_1_variant1_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_nested_error_1_twin_rust_async,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_nested_error_1_twin_rust_async,
+      ),
       constMeta: kReturnCustomNestedError1Variant1TwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -9344,8 +9949,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_return_custom_nested_error_2_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_nested_error_2_twin_rust_async,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_nested_error_2_twin_rust_async,
+      ),
       constMeta: kReturnCustomNestedError2TwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -9365,8 +9972,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_return_custom_struct_error_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_struct_error_another_twin_rust_async,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_struct_error_another_twin_rust_async,
+      ),
       constMeta: kReturnCustomStructErrorTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -9386,8 +9995,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_return_custom_struct_ok_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_struct_error_another_twin_rust_async,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_struct_error_another_twin_rust_async,
+      ),
       constMeta: kReturnCustomStructOkTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -9407,8 +10018,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_return_err_custom_error_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_error_twin_rust_async,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_error_twin_rust_async,
+      ),
       constMeta: kReturnErrCustomErrorTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -9430,8 +10043,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_32(variant);
         return wire.wire_return_error_variant_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_error_twin_rust_async,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_error_twin_rust_async,
+      ),
       constMeta: kReturnErrorVariantTwinRustAsyncConstMeta,
       argValues: [variant],
       apiImpl: this,
@@ -9451,8 +10066,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_return_ok_custom_error_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_error_twin_rust_async,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_error_twin_rust_async,
+      ),
       constMeta: kReturnOkCustomErrorTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -9472,8 +10089,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_stream_sink_throw_anyhow_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kStreamSinkThrowAnyhowTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -9493,8 +10112,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_throw_anyhow_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kThrowAnyhowTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -9515,8 +10136,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_String(message);
         return wire.wire_CustomStructTwinSync_new_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_custom_struct_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_custom_struct_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kCustomStructTwinSyncNewTwinSyncConstMeta,
       argValues: [message],
       apiImpl: this,
@@ -9540,8 +10163,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_CustomStructTwinSync_nonstatic_return_custom_struct_error_twin_sync(
                 arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_struct_error_another_twin_sync,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_struct_error_another_twin_sync,
+      ),
       constMeta:
           kCustomStructTwinSyncNonstaticReturnCustomStructErrorTwinSyncConstMeta,
       argValues: [that],
@@ -9568,8 +10193,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_CustomStructTwinSync_nonstatic_return_custom_struct_ok_twin_sync(
                 arg0);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_struct_error_another_twin_sync,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_struct_error_another_twin_sync,
+      ),
       constMeta:
           kCustomStructTwinSyncNonstaticReturnCustomStructOkTwinSyncConstMeta,
       argValues: [that],
@@ -9594,8 +10221,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire
             .wire_CustomStructTwinSync_static_return_custom_struct_error_twin_sync();
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_struct_error_another_twin_sync,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_struct_error_another_twin_sync,
+      ),
       constMeta:
           kCustomStructTwinSyncStaticReturnCustomStructErrorTwinSyncConstMeta,
       argValues: [],
@@ -9619,8 +10248,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire
             .wire_CustomStructTwinSync_static_return_custom_struct_ok_twin_sync();
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_struct_error_another_twin_sync,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_struct_error_another_twin_sync,
+      ),
       constMeta:
           kCustomStructTwinSyncStaticReturnCustomStructOkTwinSyncConstMeta,
       argValues: [],
@@ -9645,8 +10276,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_32(value);
         return wire.wire_SomeStructTwinSync_new_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_some_struct_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_some_struct_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kSomeStructTwinSyncNewTwinSyncConstMeta,
       argValues: [value],
       apiImpl: this,
@@ -9670,8 +10303,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_SomeStructTwinSync_non_static_return_err_custom_error_twin_sync(
                 arg0);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_error_twin_sync,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_error_twin_sync,
+      ),
       constMeta:
           kSomeStructTwinSyncNonStaticReturnErrCustomErrorTwinSyncConstMeta,
       argValues: [that],
@@ -9698,8 +10333,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_SomeStructTwinSync_non_static_return_ok_custom_error_twin_sync(
                 arg0);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_error_twin_sync,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_error_twin_sync,
+      ),
       constMeta:
           kSomeStructTwinSyncNonStaticReturnOkCustomErrorTwinSyncConstMeta,
       argValues: [that],
@@ -9723,8 +10360,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire
             .wire_SomeStructTwinSync_static_return_err_custom_error_twin_sync();
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_error_twin_sync,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_error_twin_sync,
+      ),
       constMeta: kSomeStructTwinSyncStaticReturnErrCustomErrorTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -9747,8 +10386,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire
             .wire_SomeStructTwinSync_static_return_ok_custom_error_twin_sync();
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_error_twin_sync,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_error_twin_sync,
+      ),
       constMeta: kSomeStructTwinSyncStaticReturnOkCustomErrorTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -9770,8 +10411,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_custom_enum_error_panic_twin_sync();
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_enum_error_twin_sync,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_enum_error_twin_sync,
+      ),
       constMeta: kCustomEnumErrorPanicTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -9791,8 +10434,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_custom_enum_error_return_error_twin_sync();
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_enum_error_twin_sync,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_enum_error_twin_sync,
+      ),
       constMeta: kCustomEnumErrorReturnErrorTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -9813,8 +10458,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_32(arg);
         return wire.wire_custom_enum_error_return_ok_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_enum_error_twin_sync,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_enum_error_twin_sync,
+      ),
       constMeta: kCustomEnumErrorReturnOkTwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -9837,8 +10484,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             cst_encode_box_autoadd_custom_nested_error_outer_twin_sync(arg);
         return wire.wire_custom_nested_error_return_error_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_nested_error_outer_twin_sync,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_nested_error_outer_twin_sync,
+      ),
       constMeta: kCustomNestedErrorReturnErrorTwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -9860,8 +10509,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_custom_struct_error_twin_sync(arg);
         return wire.wire_custom_struct_error_return_error_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_struct_error_twin_sync,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_struct_error_twin_sync,
+      ),
       constMeta: kCustomStructErrorReturnErrorTwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -9881,8 +10532,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_func_return_error_twin_sync();
       },
-      parseSuccessData: _dco_decode_i_32,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_32,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kFuncReturnErrorTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -9901,8 +10554,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_func_type_fallible_panic_twin_sync();
       },
-      parseSuccessData: _dco_decode_i_32,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_32,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kFuncTypeFalliblePanicTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -9922,8 +10577,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_func_type_infallible_panic_twin_sync();
       },
-      parseSuccessData: _dco_decode_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kFuncTypeInfalliblePanicTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -9943,8 +10600,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_panic_with_custom_result_twin_sync();
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_error_twin_sync,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_error_twin_sync,
+      ),
       constMeta: kPanicWithCustomResultTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -9964,8 +10623,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_return_custom_nested_error_1_twin_sync();
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_nested_error_1_twin_sync,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_nested_error_1_twin_sync,
+      ),
       constMeta: kReturnCustomNestedError1TwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -9985,8 +10646,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_return_custom_nested_error_1_variant1_twin_sync();
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_nested_error_1_twin_sync,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_nested_error_1_twin_sync,
+      ),
       constMeta: kReturnCustomNestedError1Variant1TwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -10006,8 +10669,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_return_custom_nested_error_2_twin_sync();
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_nested_error_2_twin_sync,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_nested_error_2_twin_sync,
+      ),
       constMeta: kReturnCustomNestedError2TwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -10027,8 +10692,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_return_custom_struct_error_twin_sync();
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_custom_struct_error_another_twin_sync,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_custom_struct_error_another_twin_sync,
+      ),
       constMeta: kReturnCustomStructErrorTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -10048,8 +10715,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_return_custom_struct_ok_twin_sync();
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_struct_error_another_twin_sync,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_struct_error_another_twin_sync,
+      ),
       constMeta: kReturnCustomStructOkTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -10069,8 +10738,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_return_err_custom_error_twin_sync();
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_error_twin_sync,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_error_twin_sync,
+      ),
       constMeta: kReturnErrCustomErrorTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -10091,8 +10762,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_32(variant);
         return wire.wire_return_error_variant_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_error_twin_sync,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_error_twin_sync,
+      ),
       constMeta: kReturnErrorVariantTwinSyncConstMeta,
       argValues: [variant],
       apiImpl: this,
@@ -10111,8 +10784,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_return_ok_custom_error_twin_sync();
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: _dco_decode_custom_error_twin_sync,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: _dco_decode_custom_error_twin_sync,
+      ),
       constMeta: kReturnOkCustomErrorTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -10132,8 +10807,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_stream_sink_throw_anyhow_twin_sync(port_);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kStreamSinkThrowAnyhowTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -10153,8 +10830,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_throw_anyhow_twin_sync();
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kThrowAnyhowTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -10173,8 +10852,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_call_new_module_system_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_new_simple_struct,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_new_simple_struct,
+        parseErrorData: null,
+      ),
       constMeta: kCallNewModuleSystemTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -10194,8 +10875,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_call_old_module_system_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_old_simple_struct,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_old_simple_struct,
+        parseErrorData: null,
+      ),
       constMeta: kCallOldModuleSystemTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -10217,8 +10900,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_my_enum(myEnum);
         return wire.wire_use_imported_enum_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_bool,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_bool,
+        parseErrorData: null,
+      ),
       constMeta: kUseImportedEnumTwinRustAsyncConstMeta,
       argValues: [myEnum],
       apiImpl: this,
@@ -10240,8 +10925,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_my_struct(myStruct);
         return wire.wire_use_imported_struct_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_bool,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_bool,
+        parseErrorData: null,
+      ),
       constMeta: kUseImportedStructTwinRustAsyncConstMeta,
       argValues: [myStruct],
       apiImpl: this,
@@ -10261,8 +10948,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_call_new_module_system_twin_sync();
       },
-      parseSuccessData: _dco_decode_new_simple_struct,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_new_simple_struct,
+        parseErrorData: null,
+      ),
       constMeta: kCallNewModuleSystemTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -10282,8 +10971,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_call_old_module_system_twin_sync();
       },
-      parseSuccessData: _dco_decode_old_simple_struct,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_old_simple_struct,
+        parseErrorData: null,
+      ),
       constMeta: kCallOldModuleSystemTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -10304,8 +10995,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_my_enum(myEnum);
         return wire.wire_use_imported_enum_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_bool,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_bool,
+        parseErrorData: null,
+      ),
       constMeta: kUseImportedEnumTwinSyncConstMeta,
       argValues: [myEnum],
       apiImpl: this,
@@ -10325,8 +11018,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_my_struct(myStruct);
         return wire.wire_use_imported_struct_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_bool,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_bool,
+        parseErrorData: null,
+      ),
       constMeta: kUseImportedStructTwinSyncConstMeta,
       argValues: [myStruct],
       apiImpl: this,
@@ -10350,8 +11045,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_ConcatenateWithTwinRustAsync_concatenate_static_twin_rust_async(
                 port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta:
           kConcatenateWithTwinRustAsyncConcatenateStaticTwinRustAsyncConstMeta,
       argValues: [a, b],
@@ -10382,8 +11079,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_ConcatenateWithTwinRustAsync_concatenate_twin_rust_async(
                 port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kConcatenateWithTwinRustAsyncConcatenateTwinRustAsyncConstMeta,
       argValues: [that, b],
       apiImpl: this,
@@ -10409,8 +11108,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_ConcatenateWithTwinRustAsync_handle_some_static_stream_sink_single_arg_twin_rust_async(
                 port_);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: null,
+      ),
       constMeta:
           kConcatenateWithTwinRustAsyncHandleSomeStaticStreamSinkSingleArgTwinRustAsyncConstMeta,
       argValues: [],
@@ -10439,8 +11140,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_ConcatenateWithTwinRustAsync_handle_some_static_stream_sink_twin_rust_async(
                 port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_log_2_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_log_2_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta:
           kConcatenateWithTwinRustAsyncHandleSomeStaticStreamSinkTwinRustAsyncConstMeta,
       argValues: [key, max],
@@ -10468,8 +11171,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_ConcatenateWithTwinRustAsync_handle_some_stream_sink_at_1_twin_rust_async(
                 port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: null,
+      ),
       constMeta:
           kConcatenateWithTwinRustAsyncHandleSomeStreamSinkAt1TwinRustAsyncConstMeta,
       argValues: [that],
@@ -10503,8 +11208,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_ConcatenateWithTwinRustAsync_handle_some_stream_sink_twin_rust_async(
                 port_, arg0, arg1, arg2);
       },
-      parseSuccessData: _dco_decode_log_2_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_log_2_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta:
           kConcatenateWithTwinRustAsyncHandleSomeStreamSinkTwinRustAsyncConstMeta,
       argValues: [that, key, max],
@@ -10531,8 +11238,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_ConcatenateWithTwinRustAsync_new_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_concatenate_with_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_concatenate_with_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kConcatenateWithTwinRustAsyncNewTwinRustAsyncConstMeta,
       argValues: [a],
       apiImpl: this,
@@ -10560,8 +11269,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_SumWithTwinRustAsync_sum_twin_rust_async(
             port_, arg0, arg1, arg2);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: null,
+      ),
       constMeta: kSumWithTwinRustAsyncSumTwinRustAsyncConstMeta,
       argValues: [that, y, z],
       apiImpl: this,
@@ -10585,8 +11296,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg2 = cst_encode_u_32(c);
         return wire.wire_get_sum_array_twin_rust_async(port_, arg0, arg1, arg2);
       },
-      parseSuccessData: _dco_decode_sum_with_twin_rust_async_array_3,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_sum_with_twin_rust_async_array_3,
+        parseErrorData: null,
+      ),
       constMeta: kGetSumArrayTwinRustAsyncConstMeta,
       argValues: [a, b, c],
       apiImpl: this,
@@ -10605,8 +11318,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_get_sum_struct_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_sum_with_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_sum_with_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kGetSumStructTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -10629,8 +11344,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_ConcatenateWithTwinSync_concatenate_static_twin_sync(
             arg0, arg1);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kConcatenateWithTwinSyncConcatenateStaticTwinSyncConstMeta,
       argValues: [a, b],
       apiImpl: this,
@@ -10657,8 +11374,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_ConcatenateWithTwinSync_concatenate_twin_sync(
             arg0, arg1);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kConcatenateWithTwinSyncConcatenateTwinSyncConstMeta,
       argValues: [that, b],
       apiImpl: this,
@@ -10682,8 +11401,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_ConcatenateWithTwinSync_handle_some_static_stream_sink_single_arg_twin_sync(
                 port_);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: null,
+      ),
       constMeta:
           kConcatenateWithTwinSyncHandleSomeStaticStreamSinkSingleArgTwinSyncConstMeta,
       argValues: [],
@@ -10712,8 +11433,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_ConcatenateWithTwinSync_handle_some_static_stream_sink_twin_sync(
                 port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_log_2_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_log_2_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta:
           kConcatenateWithTwinSyncHandleSomeStaticStreamSinkTwinSyncConstMeta,
       argValues: [key, max],
@@ -10740,8 +11463,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_ConcatenateWithTwinSync_handle_some_stream_sink_at_1_twin_sync(
                 port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: null,
+      ),
       constMeta:
           kConcatenateWithTwinSyncHandleSomeStreamSinkAt1TwinSyncConstMeta,
       argValues: [that],
@@ -10773,8 +11498,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_ConcatenateWithTwinSync_handle_some_stream_sink_twin_sync(
                 port_, arg0, arg1, arg2);
       },
-      parseSuccessData: _dco_decode_log_2_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_log_2_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kConcatenateWithTwinSyncHandleSomeStreamSinkTwinSyncConstMeta,
       argValues: [that, key, max],
       apiImpl: this,
@@ -10798,8 +11525,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_String(a);
         return wire.wire_ConcatenateWithTwinSync_new_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_concatenate_with_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_concatenate_with_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kConcatenateWithTwinSyncNewTwinSyncConstMeta,
       argValues: [a],
       apiImpl: this,
@@ -10826,8 +11555,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg2 = cst_encode_u_32(z);
         return wire.wire_SumWithTwinSync_sum_twin_sync(arg0, arg1, arg2);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: null,
+      ),
       constMeta: kSumWithTwinSyncSumTwinSyncConstMeta,
       argValues: [that, y, z],
       apiImpl: this,
@@ -10850,8 +11581,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg2 = cst_encode_u_32(c);
         return wire.wire_get_sum_array_twin_sync(arg0, arg1, arg2);
       },
-      parseSuccessData: _dco_decode_sum_with_twin_sync_array_3,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_sum_with_twin_sync_array_3,
+        parseErrorData: null,
+      ),
       constMeta: kGetSumArrayTwinSyncConstMeta,
       argValues: [a, b, c],
       apiImpl: this,
@@ -10870,8 +11603,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_get_sum_struct_twin_sync();
       },
-      parseSuccessData: _dco_decode_sum_with_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_sum_with_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kGetSumStructTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -10890,8 +11625,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_app_settings_stream_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_application_settings,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_application_settings,
+        parseErrorData: null,
+      ),
       constMeta: kAppSettingsStreamTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -10912,8 +11649,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_app_settings_vec_stream_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_list_application_settings,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_application_settings,
+        parseErrorData: null,
+      ),
       constMeta: kAppSettingsVecStreamTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -10934,8 +11673,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_numbers(nums);
         return wire.wire_first_number_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kFirstNumberTwinRustAsyncConstMeta,
       argValues: [nums],
       apiImpl: this,
@@ -10956,8 +11697,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_sequences(seqs);
         return wire.wire_first_sequence_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kFirstSequenceTwinRustAsyncConstMeta,
       argValues: [seqs],
       apiImpl: this,
@@ -10976,8 +11719,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_get_app_settings_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_application_settings,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_application_settings,
+        parseErrorData: null,
+      ),
       constMeta: kGetAppSettingsTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -10998,8 +11743,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_get_fallible_app_settings_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_application_settings,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_application_settings,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kGetFallibleAppSettingsTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -11019,8 +11766,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_get_message_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_application_message,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_application_message,
+        parseErrorData: null,
+      ),
       constMeta: kGetMessageTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -11041,8 +11790,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_application_settings(appSettings);
         return wire.wire_is_app_embedded_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_bool,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_bool,
+        parseErrorData: null,
+      ),
       constMeta: kIsAppEmbeddedTwinRustAsyncConstMeta,
       argValues: [appSettings],
       apiImpl: this,
@@ -11062,8 +11813,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_mirror_struct_stream_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_mirror_struct_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_mirror_struct_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kMirrorStructStreamTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -11084,9 +11837,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_mirror_tuple_stream_twin_rust_async(port_);
       },
-      parseSuccessData:
-          _dco_decode_record_application_settings_raw_string_enum_mirrored,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_record_application_settings_raw_string_enum_mirrored,
+        parseErrorData: null,
+      ),
       constMeta: kMirrorTupleStreamTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -11109,8 +11864,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_usize(times);
         return wire.wire_repeat_number_twin_rust_async(port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_numbers,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_numbers,
+        parseErrorData: null,
+      ),
       constMeta: kRepeatNumberTwinRustAsyncConstMeta,
       argValues: [num, times],
       apiImpl: this,
@@ -11132,8 +11889,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_usize(times);
         return wire.wire_repeat_sequence_twin_rust_async(port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_sequences,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_sequences,
+        parseErrorData: null,
+      ),
       constMeta: kRepeatSequenceTwinRustAsyncConstMeta,
       argValues: [seq, times],
       apiImpl: this,
@@ -11155,9 +11914,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire
             .wire_test_contains_mirrored_sub_struct_twin_rust_async(port_);
       },
-      parseSuccessData:
-          _dco_decode_contains_mirrored_sub_struct_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_contains_mirrored_sub_struct_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kTestContainsMirroredSubStructTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -11179,8 +11940,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire
             .wire_test_fallible_of_raw_string_mirrored_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_list_raw_string_mirrored,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_raw_string_mirrored,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kTestFallibleOfRawStringMirroredTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -11202,8 +11965,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire
             .wire_test_list_of_nested_enums_mirrored_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_list_raw_string_enum_mirrored,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_raw_string_enum_mirrored,
+        parseErrorData: null,
+      ),
       constMeta: kTestListOfNestedEnumsMirroredTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -11226,8 +11991,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_test_list_of_raw_nested_string_mirrored_twin_rust_async(
                 port_);
       },
-      parseSuccessData: _dco_decode_list_of_nested_raw_string_mirrored,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_of_nested_raw_string_mirrored,
+        parseErrorData: null,
+      ),
       constMeta: kTestListOfRawNestedStringMirroredTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -11248,8 +12015,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_test_nested_raw_string_mirrored_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_nested_raw_string_mirrored,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_nested_raw_string_mirrored,
+        parseErrorData: null,
+      ),
       constMeta: kTestNestedRawStringMirroredTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -11272,8 +12041,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_test_raw_string_enum_mirrored_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_raw_string_enum_mirrored,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_raw_string_enum_mirrored,
+        parseErrorData: null,
+      ),
       constMeta: kTestRawStringEnumMirroredTwinRustAsyncConstMeta,
       argValues: [nested],
       apiImpl: this,
@@ -11293,8 +12064,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_test_raw_string_mirrored_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_raw_string_mirrored,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_raw_string_mirrored,
+        parseErrorData: null,
+      ),
       constMeta: kTestRawStringMirroredTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -11314,8 +12087,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_app_settings_stream_twin_sync(port_);
       },
-      parseSuccessData: _dco_decode_application_settings,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_application_settings,
+        parseErrorData: null,
+      ),
       constMeta: kAppSettingsStreamTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -11335,8 +12110,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_app_settings_vec_stream_twin_sync(port_);
       },
-      parseSuccessData: _dco_decode_list_application_settings,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_application_settings,
+        parseErrorData: null,
+      ),
       constMeta: kAppSettingsVecStreamTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -11357,8 +12134,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_numbers(nums);
         return wire.wire_first_number_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kFirstNumberTwinSyncConstMeta,
       argValues: [nums],
       apiImpl: this,
@@ -11378,8 +12157,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_sequences(seqs);
         return wire.wire_first_sequence_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kFirstSequenceTwinSyncConstMeta,
       argValues: [seqs],
       apiImpl: this,
@@ -11398,8 +12179,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_get_app_settings_twin_sync();
       },
-      parseSuccessData: _dco_decode_application_settings,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_application_settings,
+        parseErrorData: null,
+      ),
       constMeta: kGetAppSettingsTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -11418,8 +12201,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_get_fallible_app_settings_twin_sync();
       },
-      parseSuccessData: _dco_decode_application_settings,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_application_settings,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kGetFallibleAppSettingsTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -11439,8 +12224,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_get_message_twin_sync();
       },
-      parseSuccessData: _dco_decode_application_message,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_application_message,
+        parseErrorData: null,
+      ),
       constMeta: kGetMessageTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -11461,8 +12248,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_application_settings(appSettings);
         return wire.wire_is_app_embedded_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_bool,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_bool,
+        parseErrorData: null,
+      ),
       constMeta: kIsAppEmbeddedTwinSyncConstMeta,
       argValues: [appSettings],
       apiImpl: this,
@@ -11481,8 +12270,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_mirror_struct_stream_twin_sync(port_);
       },
-      parseSuccessData: _dco_decode_mirror_struct_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_mirror_struct_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kMirrorStructStreamTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -11502,9 +12293,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_mirror_tuple_stream_twin_sync(port_);
       },
-      parseSuccessData:
-          _dco_decode_record_application_settings_raw_string_enum_mirrored,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_record_application_settings_raw_string_enum_mirrored,
+        parseErrorData: null,
+      ),
       constMeta: kMirrorTupleStreamTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -11526,8 +12319,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_usize(times);
         return wire.wire_repeat_number_twin_sync(arg0, arg1);
       },
-      parseSuccessData: _dco_decode_numbers,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_numbers,
+        parseErrorData: null,
+      ),
       constMeta: kRepeatNumberTwinSyncConstMeta,
       argValues: [num, times],
       apiImpl: this,
@@ -11549,8 +12344,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_usize(times);
         return wire.wire_repeat_sequence_twin_sync(arg0, arg1);
       },
-      parseSuccessData: _dco_decode_sequences,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_sequences,
+        parseErrorData: null,
+      ),
       constMeta: kRepeatSequenceTwinSyncConstMeta,
       argValues: [seq, times],
       apiImpl: this,
@@ -11570,8 +12367,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_test_contains_mirrored_sub_struct_twin_sync();
       },
-      parseSuccessData: _dco_decode_contains_mirrored_sub_struct_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_contains_mirrored_sub_struct_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kTestContainsMirroredSubStructTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -11592,8 +12391,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_test_fallible_of_raw_string_mirrored_twin_sync();
       },
-      parseSuccessData: _dco_decode_list_raw_string_mirrored,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_raw_string_mirrored,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kTestFallibleOfRawStringMirroredTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -11614,8 +12415,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_test_list_of_nested_enums_mirrored_twin_sync();
       },
-      parseSuccessData: _dco_decode_list_raw_string_enum_mirrored,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_raw_string_enum_mirrored,
+        parseErrorData: null,
+      ),
       constMeta: kTestListOfNestedEnumsMirroredTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -11636,8 +12439,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_test_list_of_raw_nested_string_mirrored_twin_sync();
       },
-      parseSuccessData: _dco_decode_list_of_nested_raw_string_mirrored,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_of_nested_raw_string_mirrored,
+        parseErrorData: null,
+      ),
       constMeta: kTestListOfRawNestedStringMirroredTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -11657,8 +12462,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_test_nested_raw_string_mirrored_twin_sync();
       },
-      parseSuccessData: _dco_decode_nested_raw_string_mirrored,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_nested_raw_string_mirrored,
+        parseErrorData: null,
+      ),
       constMeta: kTestNestedRawStringMirroredTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -11680,8 +12487,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_bool(nested);
         return wire.wire_test_raw_string_enum_mirrored_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_raw_string_enum_mirrored,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_raw_string_enum_mirrored,
+        parseErrorData: null,
+      ),
       constMeta: kTestRawStringEnumMirroredTwinSyncConstMeta,
       argValues: [nested],
       apiImpl: this,
@@ -11701,8 +12510,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_test_raw_string_mirrored_twin_sync();
       },
-      parseSuccessData: _dco_decode_raw_string_mirrored,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_raw_string_mirrored,
+        parseErrorData: null,
+      ),
       constMeta: kTestRawStringMirroredTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -11723,8 +12534,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_handle_big_buffers_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_big_buffers_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_big_buffers_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kHandleBigBuffersTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -11746,8 +12559,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_my_tree_node_twin_rust_async(s);
         return wire.wire_handle_complex_struct_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_my_tree_node_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_my_tree_node_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kHandleComplexStructTwinRustAsyncConstMeta,
       argValues: [s],
       apiImpl: this,
@@ -11769,8 +12584,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_my_nested_struct_twin_rust_async(s);
         return wire.wire_handle_nested_struct_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_my_nested_struct_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_my_nested_struct_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kHandleNestedStructTwinRustAsyncConstMeta,
       argValues: [s],
       apiImpl: this,
@@ -11791,8 +12608,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_String(s);
         return wire.wire_handle_string_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kHandleStringTwinRustAsyncConstMeta,
       argValues: [s],
       apiImpl: this,
@@ -11814,8 +12633,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_box_my_size(boxed);
         return wire.wire_handle_struct_twin_rust_async(port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_my_size,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_my_size,
+        parseErrorData: null,
+      ),
       constMeta: kHandleStructTwinRustAsyncConstMeta,
       argValues: [arg, boxed],
       apiImpl: this,
@@ -11836,8 +12657,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_prim_u_8(v);
         return wire.wire_handle_vec_u8_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_u_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_u_8,
+        parseErrorData: null,
+      ),
       constMeta: kHandleVecU8TwinRustAsyncConstMeta,
       argValues: [v],
       apiImpl: this,
@@ -11858,8 +12681,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_weekdays_twin_rust_async(weekdays);
         return wire.wire_list_of_primitive_enums_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_weekdays_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_weekdays_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kListOfPrimitiveEnumsTwinRustAsyncConstMeta,
       argValues: [weekdays],
       apiImpl: this,
@@ -11881,8 +12706,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_abc_twin_rust_async(abc);
         return wire.wire_test_abc_enum_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_abc_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_abc_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kTestAbcEnumTwinRustAsyncConstMeta,
       argValues: [abc],
       apiImpl: this,
@@ -11903,8 +12730,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_struct_with_enum_twin_rust_async(se);
         return wire.wire_test_struct_with_enum_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_struct_with_enum_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_struct_with_enum_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kTestStructWithEnumTwinRustAsyncConstMeta,
       argValues: [se],
       apiImpl: this,
@@ -11924,8 +12753,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_handle_big_buffers_twin_sync();
       },
-      parseSuccessData: _dco_decode_big_buffers_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_big_buffers_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kHandleBigBuffersTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -11946,8 +12777,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_my_tree_node_twin_sync(s);
         return wire.wire_handle_complex_struct_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_my_tree_node_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_my_tree_node_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kHandleComplexStructTwinSyncConstMeta,
       argValues: [s],
       apiImpl: this,
@@ -11969,8 +12802,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_my_nested_struct_twin_sync(s);
         return wire.wire_handle_nested_struct_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_my_nested_struct_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_my_nested_struct_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kHandleNestedStructTwinSyncConstMeta,
       argValues: [s],
       apiImpl: this,
@@ -11990,8 +12825,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_String(s);
         return wire.wire_handle_string_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kHandleStringTwinSyncConstMeta,
       argValues: [s],
       apiImpl: this,
@@ -12013,8 +12850,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_box_my_size(boxed);
         return wire.wire_handle_struct_twin_sync(arg0, arg1);
       },
-      parseSuccessData: _dco_decode_my_size,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_my_size,
+        parseErrorData: null,
+      ),
       constMeta: kHandleStructTwinSyncConstMeta,
       argValues: [arg, boxed],
       apiImpl: this,
@@ -12034,8 +12873,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_prim_u_8(v);
         return wire.wire_handle_vec_u8_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_u_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_u_8,
+        parseErrorData: null,
+      ),
       constMeta: kHandleVecU8TwinSyncConstMeta,
       argValues: [v],
       apiImpl: this,
@@ -12056,8 +12897,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_weekdays_twin_sync(weekdays);
         return wire.wire_list_of_primitive_enums_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_list_weekdays_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_weekdays_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kListOfPrimitiveEnumsTwinSyncConstMeta,
       argValues: [weekdays],
       apiImpl: this,
@@ -12078,8 +12921,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_abc_twin_sync(abc);
         return wire.wire_test_abc_enum_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_abc_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_abc_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kTestAbcEnumTwinSyncConstMeta,
       argValues: [abc],
       apiImpl: this,
@@ -12100,8 +12945,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_struct_with_enum_twin_sync(se);
         return wire.wire_test_struct_with_enum_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_struct_with_enum_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_struct_with_enum_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kTestStructWithEnumTwinSyncConstMeta,
       argValues: [se],
       apiImpl: this,
@@ -12122,8 +12969,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_empty_twin_rust_async(empty);
         return wire.wire_empty_struct_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_empty_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_empty_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kEmptyStructTwinRustAsyncConstMeta,
       argValues: [empty],
       apiImpl: this,
@@ -12142,8 +12991,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_func_return_unit_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kFuncReturnUnitTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -12164,8 +13015,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_String(arg);
         return wire.wire_func_string_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kFuncStringTwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -12186,8 +13039,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_my_size(l);
         return wire.wire_handle_list_of_struct_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_my_size,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_my_size,
+        parseErrorData: null,
+      ),
       constMeta: kHandleListOfStructTwinRustAsyncConstMeta,
       argValues: [l],
       apiImpl: this,
@@ -12209,8 +13064,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_StringList(names);
         return wire.wire_handle_string_list_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_StringList,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_StringList,
+        parseErrorData: null,
+      ),
       constMeta: kHandleStringListTwinRustAsyncConstMeta,
       argValues: [names],
       apiImpl: this,
@@ -12232,8 +13089,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_empty_twin_sync(empty);
         return wire.wire_empty_struct_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_empty_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_empty_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kEmptyStructTwinSyncConstMeta,
       argValues: [empty],
       apiImpl: this,
@@ -12252,8 +13111,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_func_return_unit_twin_sync();
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kFuncReturnUnitTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -12273,8 +13134,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_String(arg);
         return wire.wire_func_string_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kFuncStringTwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -12295,8 +13158,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_my_size(l);
         return wire.wire_handle_list_of_struct_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_list_my_size,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_my_size,
+        parseErrorData: null,
+      ),
       constMeta: kHandleListOfStructTwinSyncConstMeta,
       argValues: [l],
       apiImpl: this,
@@ -12317,8 +13182,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_StringList(names);
         return wire.wire_handle_string_list_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_StringList,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_StringList,
+        parseErrorData: null,
+      ),
       constMeta: kHandleStringListTwinSyncConstMeta,
       argValues: [names],
       apiImpl: this,
@@ -12339,8 +13206,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_new_type_int_twin_rust_async(arg);
         return wire.wire_handle_newtype_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_new_type_int_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_new_type_int_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kHandleNewtypeTwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -12361,8 +13230,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_new_type_int_twin_sync(arg);
         return wire.wire_handle_newtype_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_new_type_int_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_new_type_int_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kHandleNewtypeTwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -12384,8 +13255,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_bool_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_bool,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_bool,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeBoolTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -12408,8 +13281,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_f32_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_f_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_f_32,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeF32TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -12432,8 +13307,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_f64_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_f_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_f_64,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeF64TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -12456,8 +13333,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_i16_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_i_16,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_i_16,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeI16TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -12480,8 +13359,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_i32_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeI32TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -12504,8 +13385,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_i64_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_i_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_i_64,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeI64TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -12528,8 +13411,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_i8_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_i_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_i_8,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeI8TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -12552,8 +13437,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_u16_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_u_16,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_u_16,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeU16TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -12576,8 +13463,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_u32_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_u_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_u_32,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeU32TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -12600,8 +13489,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_u64_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_u_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_u_64,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeU64TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -12624,8 +13515,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_u8_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_u_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_u_8,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeU8TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -12651,8 +13544,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_primitive_optional_types_twin_rust_async(
             port_, arg0, arg1, arg2, arg3);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kPrimitiveOptionalTypesTwinRustAsyncConstMeta,
       argValues: [myI32, myI64, myF64, myBool],
       apiImpl: this,
@@ -12678,8 +13573,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_primitive_optional_types_twin_sync(
             arg0, arg1, arg2, arg3);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kPrimitiveOptionalTypesTwinSyncConstMeta,
       argValues: [myI32, myI64, myF64, myBool],
       apiImpl: this,
@@ -12702,8 +13599,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_bool_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_bool,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_bool,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeBoolTwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -12726,8 +13625,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_f32_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_f_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_f_32,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeF32TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -12750,8 +13651,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_f64_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_f_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_f_64,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeF64TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -12774,8 +13677,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_i16_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_i_16,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_i_16,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeI16TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -12798,8 +13703,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_i32_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeI32TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -12822,8 +13729,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_i64_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_i_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_i_64,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeI64TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -12846,8 +13755,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_i8_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_i_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_i_8,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeI8TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -12870,8 +13781,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_u16_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_u_16,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_u_16,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeU16TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -12894,8 +13807,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_u32_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_u_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_u_32,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeU32TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -12918,8 +13833,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_u64_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_u_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_u_64,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeU64TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -12942,8 +13859,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_optional_primitive_type_u8_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_u_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_u_8,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeU8TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -12964,8 +13883,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_box_autoadd_bool(arg);
         return wire.wire_example_optional_primitive_type_bool_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_bool,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_bool,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeBoolTwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -12986,8 +13907,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_box_autoadd_f_32(arg);
         return wire.wire_example_optional_primitive_type_f32_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_f_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_f_32,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeF32TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13008,8 +13931,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_box_autoadd_f_64(arg);
         return wire.wire_example_optional_primitive_type_f64_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_f_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_f_64,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeF64TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13030,8 +13955,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_box_autoadd_i_16(arg);
         return wire.wire_example_optional_primitive_type_i16_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_i_16,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_i_16,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeI16TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13052,8 +13979,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_box_autoadd_i_32(arg);
         return wire.wire_example_optional_primitive_type_i32_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeI32TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13074,8 +14003,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_box_autoadd_i_64(arg);
         return wire.wire_example_optional_primitive_type_i64_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_i_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_i_64,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeI64TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13096,8 +14027,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_box_autoadd_i_8(arg);
         return wire.wire_example_optional_primitive_type_i8_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_i_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_i_8,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeI8TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13118,8 +14051,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_box_autoadd_u_16(arg);
         return wire.wire_example_optional_primitive_type_u16_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_u_16,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_u_16,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeU16TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13140,8 +14075,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_box_autoadd_u_32(arg);
         return wire.wire_example_optional_primitive_type_u32_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_u_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_u_32,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeU32TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13162,8 +14099,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_box_autoadd_u_64(arg);
         return wire.wire_example_optional_primitive_type_u64_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_u_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_u_64,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeU64TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13184,8 +14123,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_box_autoadd_u_8(arg);
         return wire.wire_example_optional_primitive_type_u8_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_u_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_u_8,
+        parseErrorData: null,
+      ),
       constMeta: kExampleOptionalPrimitiveTypeU8TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13208,8 +14149,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_increment_boxed_optional_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_f_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_f_64,
+        parseErrorData: null,
+      ),
       constMeta: kHandleIncrementBoxedOptionalTwinRustAsyncConstMeta,
       argValues: [opt],
       apiImpl: this,
@@ -13246,8 +14189,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_option_box_arguments_twin_rust_async(
             port_, arg0, arg1, arg2, arg3, arg4, arg5, arg6);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kHandleOptionBoxArgumentsTwinRustAsyncConstMeta,
       argValues: [i8Box, u8Box, i32Box, i64Box, f64Box, boolbox, structbox],
       apiImpl: this,
@@ -13278,9 +14223,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             cst_encode_opt_box_autoadd_exotic_optionals_twin_rust_async(opt);
         return wire.wire_handle_optional_increment_twin_rust_async(port_, arg0);
       },
-      parseSuccessData:
-          _dco_decode_opt_box_autoadd_exotic_optionals_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_opt_box_autoadd_exotic_optionals_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kHandleOptionalIncrementTwinRustAsyncConstMeta,
       argValues: [opt],
       apiImpl: this,
@@ -13304,8 +14251,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_optional_return_twin_rust_async(
             port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_f_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_f_64,
+        parseErrorData: null,
+      ),
       constMeta: kHandleOptionalReturnTwinRustAsyncConstMeta,
       argValues: [left, right],
       apiImpl: this,
@@ -13327,8 +14276,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_String(document);
         return wire.wire_handle_optional_struct_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_element_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_element_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kHandleOptionalStructTwinRustAsyncConstMeta,
       argValues: [document],
       apiImpl: this,
@@ -13350,8 +14301,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_opt_vecs_twin_rust_async(opt);
         return wire.wire_handle_vec_of_opts_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_vecs_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_vecs_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kHandleVecOfOptsTwinRustAsyncConstMeta,
       argValues: [opt],
       apiImpl: this,
@@ -13372,8 +14325,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_box_f_64(opt);
         return wire.wire_handle_increment_boxed_optional_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_f_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_f_64,
+        parseErrorData: null,
+      ),
       constMeta: kHandleIncrementBoxedOptionalTwinSyncConstMeta,
       argValues: [opt],
       apiImpl: this,
@@ -13409,8 +14364,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_option_box_arguments_twin_sync(
             arg0, arg1, arg2, arg3, arg4, arg5, arg6);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kHandleOptionBoxArgumentsTwinSyncConstMeta,
       argValues: [i8Box, u8Box, i32Box, i64Box, f64Box, boolbox, structbox],
       apiImpl: this,
@@ -13440,8 +14397,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_box_autoadd_exotic_optionals_twin_sync(opt);
         return wire.wire_handle_optional_increment_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_exotic_optionals_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_opt_box_autoadd_exotic_optionals_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kHandleOptionalIncrementTwinSyncConstMeta,
       argValues: [opt],
       apiImpl: this,
@@ -13464,8 +14424,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_f_64(right);
         return wire.wire_handle_optional_return_twin_sync(arg0, arg1);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_f_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_f_64,
+        parseErrorData: null,
+      ),
       constMeta: kHandleOptionalReturnTwinSyncConstMeta,
       argValues: [left, right],
       apiImpl: this,
@@ -13487,8 +14449,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_String(document);
         return wire.wire_handle_optional_struct_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_element_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_element_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kHandleOptionalStructTwinSyncConstMeta,
       argValues: [document],
       apiImpl: this,
@@ -13510,8 +14474,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_opt_vecs_twin_sync(opt);
         return wire.wire_handle_vec_of_opts_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_opt_vecs_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_vecs_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kHandleVecOfOptsTwinSyncConstMeta,
       argValues: [opt],
       apiImpl: this,
@@ -13532,8 +14498,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_bool(arg);
         return wire.wire_example_primitive_type_bool_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_bool,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_bool,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeBoolTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13555,8 +14523,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_f_32(arg);
         return wire.wire_example_primitive_type_f32_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_f_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_f_32,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeF32TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13578,8 +14548,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_f_64(arg);
         return wire.wire_example_primitive_type_f64_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_f_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_f_64,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeF64TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13601,8 +14573,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_i_16(arg);
         return wire.wire_example_primitive_type_i16_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_i_16,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_16,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeI16TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13624,8 +14598,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_i_32(arg);
         return wire.wire_example_primitive_type_i32_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeI32TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13647,8 +14623,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_i_64(arg);
         return wire.wire_example_primitive_type_i64_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_i_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_64,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeI64TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13670,8 +14648,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_i_8(arg);
         return wire.wire_example_primitive_type_i8_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_i_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_8,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeI8TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13693,8 +14673,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_16(arg);
         return wire.wire_example_primitive_type_u16_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_16,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_16,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeU16TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13716,8 +14698,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_32(arg);
         return wire.wire_example_primitive_type_u32_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeU32TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13739,8 +14723,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_64(arg);
         return wire.wire_example_primitive_type_u64_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_64,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeU64TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13762,8 +14748,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_8(arg);
         return wire.wire_example_primitive_type_u8_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_8,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeU8TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13786,8 +14774,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_bool_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_bool,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_bool,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeBoolTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13810,8 +14800,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_f32_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_f_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_f_32,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeF32TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13834,8 +14826,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_f64_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_f_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_f_64,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeF64TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13858,8 +14852,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_i16_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_i_16,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_i_16,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeI16TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13882,8 +14878,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_i32_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeI32TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13906,8 +14904,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_i64_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_i_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_i_64,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeI64TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13930,8 +14930,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_i8_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_i_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_i_8,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeI8TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13954,8 +14956,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_u16_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_u_16,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_u_16,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeU16TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -13978,8 +14982,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_u32_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_u_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_u_32,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeU32TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14002,8 +15008,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_u64_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_u_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_u_64,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeU64TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14026,8 +15034,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_u8_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_u_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_u_8,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeU8TwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14049,8 +15059,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_i_32(n);
         return wire.wire_handle_vec_of_primitive_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_vec_of_primitive_pack_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_vec_of_primitive_pack_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kHandleVecOfPrimitiveTwinRustAsyncConstMeta,
       argValues: [n],
       apiImpl: this,
@@ -14074,9 +15086,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_zero_copy_vec_of_primitive_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData:
-          _dco_decode_zero_copy_vec_of_primitive_pack_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_zero_copy_vec_of_primitive_pack_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kHandleZeroCopyVecOfPrimitiveTwinRustAsyncConstMeta,
       argValues: [n],
       apiImpl: this,
@@ -14098,8 +15112,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_i_32(n);
         return wire.wire_handle_vec_of_primitive_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_vec_of_primitive_pack_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_vec_of_primitive_pack_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kHandleVecOfPrimitiveTwinSyncConstMeta,
       argValues: [n],
       apiImpl: this,
@@ -14121,8 +15137,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_i_32(n);
         return wire.wire_handle_zero_copy_vec_of_primitive_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_zero_copy_vec_of_primitive_pack_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_zero_copy_vec_of_primitive_pack_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kHandleZeroCopyVecOfPrimitiveTwinSyncConstMeta,
       argValues: [n],
       apiImpl: this,
@@ -14145,8 +15163,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_bool_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_bool,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_bool,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeBoolTwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14169,8 +15189,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_f32_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_f_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_f_32,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeF32TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14193,8 +15215,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_f64_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_f_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_f_64,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeF64TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14217,8 +15241,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_i16_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_i_16,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_i_16,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeI16TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14241,8 +15267,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_i32_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeI32TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14265,8 +15293,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_i64_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_i_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_i_64,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeI64TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14289,8 +15319,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_i8_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_i_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_i_8,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeI8TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14313,8 +15345,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_u16_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_u_16,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_u_16,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeU16TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14337,8 +15371,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_u32_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_u_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_u_32,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeU32TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14361,8 +15397,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_u64_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_u_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_u_64,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeU64TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14385,8 +15423,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_list_type_u8_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_u_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_u_8,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeU8TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14408,8 +15448,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_bool(arg);
         return wire.wire_example_primitive_list_type_bool_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_list_bool,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_bool,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeBoolTwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14431,8 +15473,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_prim_f_32(arg);
         return wire.wire_example_primitive_list_type_f32_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_f_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_f_32,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeF32TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14454,8 +15498,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_prim_f_64(arg);
         return wire.wire_example_primitive_list_type_f64_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_f_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_f_64,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeF64TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14477,8 +15523,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_prim_i_16(arg);
         return wire.wire_example_primitive_list_type_i16_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_i_16,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_i_16,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeI16TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14500,8 +15548,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_prim_i_32(arg);
         return wire.wire_example_primitive_list_type_i32_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeI32TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14523,8 +15573,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_prim_i_64(arg);
         return wire.wire_example_primitive_list_type_i64_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_i_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_i_64,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeI64TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14546,8 +15598,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_prim_i_8(arg);
         return wire.wire_example_primitive_list_type_i8_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_i_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_i_8,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeI8TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14569,8 +15623,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_prim_u_16(arg);
         return wire.wire_example_primitive_list_type_u16_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_u_16,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_u_16,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeU16TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14592,8 +15648,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_prim_u_32(arg);
         return wire.wire_example_primitive_list_type_u32_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_u_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_u_32,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeU32TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14615,8 +15673,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_prim_u_64(arg);
         return wire.wire_example_primitive_list_type_u64_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_u_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_u_64,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeU64TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14638,8 +15698,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_prim_u_8(arg);
         return wire.wire_example_primitive_list_type_u8_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_list_prim_u_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_prim_u_8,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveListTypeU8TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14669,8 +15731,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_primitive_types_twin_rust_async(
             port_, arg0, arg1, arg2, arg3);
       },
-      parseSuccessData: _dco_decode_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kPrimitiveTypesTwinRustAsyncConstMeta,
       argValues: [myI32, myI64, myF64, myBool],
       apiImpl: this,
@@ -14691,8 +15755,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_32(myU32);
         return wire.wire_primitive_u32_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: null,
+      ),
       constMeta: kPrimitiveU32TwinRustAsyncConstMeta,
       argValues: [myU32],
       apiImpl: this,
@@ -14720,8 +15786,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg3 = cst_encode_bool(myBool);
         return wire.wire_primitive_types_twin_sync(arg0, arg1, arg2, arg3);
       },
-      parseSuccessData: _dco_decode_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kPrimitiveTypesTwinSyncConstMeta,
       argValues: [myI32, myI64, myF64, myBool],
       apiImpl: this,
@@ -14741,8 +15809,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_32(myU32);
         return wire.wire_primitive_u32_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: null,
+      ),
       constMeta: kPrimitiveU32TwinSyncConstMeta,
       argValues: [myU32],
       apiImpl: this,
@@ -14764,8 +15834,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_bool_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_bool,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_bool,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeBoolTwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14788,8 +15860,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_f32_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_f_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_f_32,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeF32TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14812,8 +15886,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_f64_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_f_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_f_64,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeF64TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14836,8 +15912,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_i16_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_i_16,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_16,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeI16TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14860,8 +15938,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_i32_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeI32TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14884,8 +15964,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_i64_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_i_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_64,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeI64TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14907,8 +15989,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_i_8(arg);
         return wire.wire_example_primitive_type_i8_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_i_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_8,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeI8TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14931,8 +16015,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_u16_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_16,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_16,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeU16TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14955,8 +16041,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_u32_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeU32TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -14979,8 +16067,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_example_primitive_type_u64_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_64,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeU64TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -15002,8 +16092,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_8(arg);
         return wire.wire_example_primitive_type_u8_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_8,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeU8TwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -15024,8 +16116,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_bool(arg);
         return wire.wire_example_primitive_type_bool_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_bool,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_bool,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeBoolTwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -15046,8 +16140,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_f_32(arg);
         return wire.wire_example_primitive_type_f32_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_f_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_f_32,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeF32TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -15068,8 +16164,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_f_64(arg);
         return wire.wire_example_primitive_type_f64_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_f_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_f_64,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeF64TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -15090,8 +16188,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_i_16(arg);
         return wire.wire_example_primitive_type_i16_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_i_16,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_16,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeI16TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -15112,8 +16212,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_i_32(arg);
         return wire.wire_example_primitive_type_i32_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeI32TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -15134,8 +16236,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_i_64(arg);
         return wire.wire_example_primitive_type_i64_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_i_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_64,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeI64TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -15156,8 +16260,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_i_8(arg);
         return wire.wire_example_primitive_type_i8_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_i_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_8,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeI8TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -15178,8 +16284,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_16(arg);
         return wire.wire_example_primitive_type_u16_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_u_16,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_16,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeU16TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -15200,8 +16308,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_32(arg);
         return wire.wire_example_primitive_type_u32_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeU32TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -15222,8 +16332,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_64(arg);
         return wire.wire_example_primitive_type_u64_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_u_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_64,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeU64TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -15244,8 +16356,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_8(arg);
         return wire.wire_example_primitive_type_u8_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_u_8,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_8,
+        parseErrorData: null,
+      ),
       constMeta: kExamplePrimitiveTypeU8TwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -15268,9 +16382,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_test_more_than_just_one_raw_string_struct_twin_rust_async(
                 port_);
       },
-      parseSuccessData:
-          _dco_decode_more_than_just_one_raw_string_struct_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_more_than_just_one_raw_string_struct_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kTestMoreThanJustOneRawStringStructTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -15291,8 +16407,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_test_raw_string_item_struct_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_raw_string_item_struct_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_raw_string_item_struct_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kTestRawStringItemStructTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -15313,9 +16431,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_test_more_than_just_one_raw_string_struct_twin_sync();
       },
-      parseSuccessData:
-          _dco_decode_more_than_just_one_raw_string_struct_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_more_than_just_one_raw_string_struct_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kTestMoreThanJustOneRawStringStructTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -15335,8 +16455,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_test_raw_string_item_struct_twin_sync();
       },
-      parseSuccessData: _dco_decode_raw_string_item_struct_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_raw_string_item_struct_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kTestRawStringItemStructTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -15362,8 +16484,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_NonCloneSimpleTwinSync_instance_method_arg_borrow_twin_sync(
                 arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta:
           kNonCloneSimpleTwinSyncInstanceMethodArgBorrowTwinSyncConstMeta,
       argValues: [that],
@@ -15392,8 +16516,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_NonCloneSimpleTwinSync_instance_method_arg_mut_borrow_twin_sync(
                 arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta:
           kNonCloneSimpleTwinSyncInstanceMethodArgMutBorrowTwinSyncConstMeta,
       argValues: [that],
@@ -15422,8 +16548,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_NonCloneSimpleTwinSync_instance_method_arg_own_twin_sync(
                 arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kNonCloneSimpleTwinSyncInstanceMethodArgOwnTwinSyncConstMeta,
       argValues: [that],
       apiImpl: this,
@@ -15452,9 +16580,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_NonCloneSimpleTwinSync_instance_method_return_own_twin_sync(
                 arg0);
       },
-      parseSuccessData:
-          _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync,
+        parseErrorData: null,
+      ),
       constMeta:
           kNonCloneSimpleTwinSyncInstanceMethodReturnOwnTwinSyncConstMeta,
       argValues: [that],
@@ -15478,9 +16608,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_NonCloneSimpleTwinSync_new_custom_name_twin_sync();
       },
-      parseSuccessData:
-          _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync,
+        parseErrorData: null,
+      ),
       constMeta: kNonCloneSimpleTwinSyncNewCustomNameTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -15501,9 +16633,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_NonCloneSimpleTwinSync_new_twin_sync();
       },
-      parseSuccessData:
-          _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync,
+        parseErrorData: null,
+      ),
       constMeta: kNonCloneSimpleTwinSyncNewTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -15529,8 +16663,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_NonCloneSimpleTwinSync_static_method_arg_borrow_twin_sync(
                 arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kNonCloneSimpleTwinSyncStaticMethodArgBorrowTwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -15558,8 +16694,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_NonCloneSimpleTwinSync_static_method_arg_mut_borrow_twin_sync(
                 arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta:
           kNonCloneSimpleTwinSyncStaticMethodArgMutBorrowTwinSyncConstMeta,
       argValues: [arg],
@@ -15587,8 +16725,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire
             .wire_NonCloneSimpleTwinSync_static_method_arg_own_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kNonCloneSimpleTwinSyncStaticMethodArgOwnTwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -15611,9 +16751,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire
             .wire_NonCloneSimpleTwinSync_static_method_return_own_twin_sync();
       },
-      parseSuccessData:
-          _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync,
+        parseErrorData: null,
+      ),
       constMeta: kNonCloneSimpleTwinSyncStaticMethodReturnOwnTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -15642,8 +16784,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_i_32(expect);
         return wire.wire_rust_auto_opaque_arg_borrow_twin_sync(arg0, arg1);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueArgBorrowTwinSyncConstMeta,
       argValues: [arg, expect],
       apiImpl: this,
@@ -15673,8 +16817,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_rust_auto_opaque_arg_mut_borrow_twin_sync(
             arg0, arg1, arg2);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueArgMutBorrowTwinSyncConstMeta,
       argValues: [arg, expect, adder],
       apiImpl: this,
@@ -15699,9 +16845,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire
             .wire_rust_auto_opaque_arg_own_and_return_own_twin_sync(arg0);
       },
-      parseSuccessData:
-          _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueArgOwnAndReturnOwnTwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -15728,8 +16876,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_i_32(expect);
         return wire.wire_rust_auto_opaque_arg_own_twin_sync(arg0, arg1);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueArgOwnTwinSyncConstMeta,
       argValues: [arg, expect],
       apiImpl: this,
@@ -15753,8 +16903,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 arg);
         return wire.wire_rust_auto_opaque_callable_arg_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueCallableArgTwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -15774,9 +16926,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_rust_auto_opaque_callable_return_twin_sync();
       },
-      parseSuccessData:
-          _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueCallableReturnTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -15804,8 +16958,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_rust_auto_opaque_normal_and_opaque_arg_twin_sync(
             arg0, arg1);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueNormalAndOpaqueArgTwinSyncConstMeta,
       argValues: [a, b],
       apiImpl: this,
@@ -15829,8 +16985,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 arg);
         return wire.wire_rust_auto_opaque_plus_sign_arg_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaquePlusSignArgTwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -15851,9 +17009,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_rust_auto_opaque_plus_sign_return_twin_sync();
       },
-      parseSuccessData:
-          _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaquePlusSignReturnTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -15875,9 +17035,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_i_32(initial);
         return wire.wire_rust_auto_opaque_return_own_twin_sync(arg0);
       },
-      parseSuccessData:
-          _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueReturnOwnTwinSyncConstMeta,
       argValues: [initial],
       apiImpl: this,
@@ -15903,8 +17065,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_sync(
                 arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta:
           kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinSyncConstMeta,
       argValues: [arg],
@@ -15933,8 +17097,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_sync(
                 arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta:
           kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinSyncConstMeta,
       argValues: [arg],
@@ -15963,8 +17129,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync(
                 arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta:
           kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSyncConstMeta,
       argValues: [arg],
@@ -15990,9 +17158,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire
             .wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync();
       },
-      parseSuccessData:
-          _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync,
+        parseErrorData: null,
+      ),
       constMeta:
           kRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSyncConstMeta,
       argValues: [],
@@ -16023,8 +17193,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_rust_auto_opaque_trait_object_arg_borrow_twin_sync(
             arg0, arg1);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueTraitObjectArgBorrowTwinSyncConstMeta,
       argValues: [arg, expect],
       apiImpl: this,
@@ -16052,8 +17224,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_sync(
             arg0, arg1);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueTraitObjectArgMutBorrowTwinSyncConstMeta,
       argValues: [arg, expect],
       apiImpl: this,
@@ -16081,8 +17255,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_rust_auto_opaque_trait_object_arg_own_twin_sync(
             arg0, arg1);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueTraitObjectArgOwnTwinSyncConstMeta,
       argValues: [arg, expect],
       apiImpl: this,
@@ -16104,9 +17280,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire
             .wire_rust_auto_opaque_trait_object_return_own_one_twin_sync();
       },
-      parseSuccessData:
-          _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueTraitObjectReturnOwnOneTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -16128,9 +17306,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire
             .wire_rust_auto_opaque_trait_object_return_own_two_twin_sync();
       },
-      parseSuccessData:
-          _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueTraitObjectReturnOwnTwoTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -16159,8 +17339,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 b);
         return wire.wire_rust_auto_opaque_two_args_twin_sync(arg0, arg1);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueTwoArgsTwinSyncConstMeta,
       argValues: [a, b],
       apiImpl: this,
@@ -16181,8 +17363,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_create_array_opaque_enum_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_enum_opaque_twin_rust_async_array_5,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_enum_opaque_twin_rust_async_array_5,
+        parseErrorData: null,
+      ),
       constMeta: kCreateArrayOpaqueEnumTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -16203,8 +17387,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_create_nested_opaque_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_opaque_nested_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opaque_nested_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kCreateNestedOpaqueTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -16224,8 +17410,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_create_opaque_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_RustOpaque_hide_data,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_RustOpaque_hide_data,
+        parseErrorData: null,
+      ),
       constMeta: kCreateOpaqueTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -16246,8 +17434,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_box_autoadd_RustOpaque_hide_data(opaque);
         return wire.wire_create_option_opaque_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_RustOpaque_hide_data,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_RustOpaque_hide_data,
+        parseErrorData: null,
+      ),
       constMeta: kCreateOptionOpaqueTwinRustAsyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -16267,8 +17457,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_create_sync_opaque_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_RustOpaque_non_send_hide_data,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_RustOpaque_non_send_hide_data,
+        parseErrorData: null,
+      ),
       constMeta: kCreateSyncOpaqueTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -16288,8 +17480,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_frb_generator_test_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_RustOpaque_frb_opaque_return,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_RustOpaque_frb_opaque_return,
+        parseErrorData: null,
+      ),
       constMeta: kFrbGeneratorTestTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -16311,8 +17505,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_RustOpaque_hide_data_array_2(data);
         return wire.wire_opaque_array_run_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kOpaqueArrayRunTwinRustAsyncConstMeta,
       argValues: [data],
       apiImpl: this,
@@ -16332,8 +17528,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_opaque_array_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_RustOpaque_hide_data_array_2,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_RustOpaque_hide_data_array_2,
+        parseErrorData: null,
+      ),
       constMeta: kOpaqueArrayTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -16354,8 +17552,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_RustOpaque_hide_data(data);
         return wire.wire_opaque_vec_run_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kOpaqueVecRunTwinRustAsyncConstMeta,
       argValues: [data],
       apiImpl: this,
@@ -16374,8 +17574,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_opaque_vec_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_list_RustOpaque_hide_data,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_RustOpaque_hide_data,
+        parseErrorData: null,
+      ),
       constMeta: kOpaqueVecTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -16396,8 +17598,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_enum_opaque_twin_rust_async(opaque);
         return wire.wire_run_enum_opaque_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kRunEnumOpaqueTwinRustAsyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -16418,8 +17622,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_opaque_nested_twin_rust_async(opaque);
         return wire.wire_run_nested_opaque_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kRunNestedOpaqueTwinRustAsyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -16441,8 +17647,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_RustOpaque_non_clone_data(clone);
         return wire.wire_run_non_clone_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kRunNonCloneTwinRustAsyncConstMeta,
       argValues: [clone],
       apiImpl: this,
@@ -16463,8 +17671,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_RustOpaque_hide_data(opaque);
         return wire.wire_run_opaque_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kRunOpaqueTwinRustAsyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -16485,8 +17695,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_RustOpaque_hide_data(opaque);
         return wire.wire_run_opaque_with_delay_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kRunOpaqueWithDelayTwinRustAsyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -16508,8 +17720,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_RustOpaque_hide_data(opaque);
         return wire.wire_unwrap_rust_opaque_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kUnwrapRustOpaqueTwinRustAsyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -16529,8 +17743,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_create_array_opaque_enum_twin_sync();
       },
-      parseSuccessData: _dco_decode_enum_opaque_twin_sync_array_5,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_enum_opaque_twin_sync_array_5,
+        parseErrorData: null,
+      ),
       constMeta: kCreateArrayOpaqueEnumTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -16550,8 +17766,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_create_nested_opaque_twin_sync();
       },
-      parseSuccessData: _dco_decode_opaque_nested_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opaque_nested_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kCreateNestedOpaqueTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -16570,8 +17788,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_create_opaque_twin_sync();
       },
-      parseSuccessData: _dco_decode_RustOpaque_hide_data,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_RustOpaque_hide_data,
+        parseErrorData: null,
+      ),
       constMeta: kCreateOpaqueTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -16591,8 +17811,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_box_autoadd_RustOpaque_hide_data(opaque);
         return wire.wire_create_option_opaque_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_RustOpaque_hide_data,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_RustOpaque_hide_data,
+        parseErrorData: null,
+      ),
       constMeta: kCreateOptionOpaqueTwinSyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -16611,8 +17833,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_create_sync_opaque_twin_sync();
       },
-      parseSuccessData: _dco_decode_RustOpaque_non_send_hide_data,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_RustOpaque_non_send_hide_data,
+        parseErrorData: null,
+      ),
       constMeta: kCreateSyncOpaqueTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -16631,8 +17855,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_frb_generator_test_twin_sync();
       },
-      parseSuccessData: _dco_decode_RustOpaque_frb_opaque_return,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_RustOpaque_frb_opaque_return,
+        parseErrorData: null,
+      ),
       constMeta: kFrbGeneratorTestTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -16652,8 +17878,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_RustOpaque_hide_data_array_2(data);
         return wire.wire_opaque_array_run_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kOpaqueArrayRunTwinSyncConstMeta,
       argValues: [data],
       apiImpl: this,
@@ -16672,8 +17900,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_opaque_array_twin_sync();
       },
-      parseSuccessData: _dco_decode_RustOpaque_hide_data_array_2,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_RustOpaque_hide_data_array_2,
+        parseErrorData: null,
+      ),
       constMeta: kOpaqueArrayTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -16693,8 +17923,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_RustOpaque_hide_data(data);
         return wire.wire_opaque_vec_run_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kOpaqueVecRunTwinSyncConstMeta,
       argValues: [data],
       apiImpl: this,
@@ -16713,8 +17945,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_opaque_vec_twin_sync();
       },
-      parseSuccessData: _dco_decode_list_RustOpaque_hide_data,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_RustOpaque_hide_data,
+        parseErrorData: null,
+      ),
       constMeta: kOpaqueVecTwinSyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -16735,8 +17969,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_enum_opaque_twin_sync(opaque);
         return wire.wire_run_enum_opaque_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kRunEnumOpaqueTwinSyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -16757,8 +17993,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_opaque_nested_twin_sync(opaque);
         return wire.wire_run_nested_opaque_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kRunNestedOpaqueTwinSyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -16778,8 +18016,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_RustOpaque_non_clone_data(clone);
         return wire.wire_run_non_clone_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kRunNonCloneTwinSyncConstMeta,
       argValues: [clone],
       apiImpl: this,
@@ -16799,8 +18039,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_RustOpaque_hide_data(opaque);
         return wire.wire_run_opaque_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kRunOpaqueTwinSyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -16820,8 +18062,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_RustOpaque_hide_data(opaque);
         return wire.wire_run_opaque_with_delay_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kRunOpaqueWithDelayTwinSyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -16841,8 +18085,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_RustOpaque_hide_data(opaque);
         return wire.wire_unwrap_rust_opaque_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kUnwrapRustOpaqueTwinSyncConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -16864,8 +18110,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_i_32(b);
         return wire.wire_simple_adder_twin_rust_async(port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kSimpleAdderTwinRustAsyncConstMeta,
       argValues: [a, b],
       apiImpl: this,
@@ -16886,8 +18134,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_i_32(b);
         return wire.wire_simple_adder_twin_sync(arg0, arg1);
       },
-      parseSuccessData: _dco_decode_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kSimpleAdderTwinSyncConstMeta,
       argValues: [a, b],
       apiImpl: this,
@@ -16906,8 +18156,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_func_stream_return_error_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kFuncStreamReturnErrorTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -16927,8 +18179,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_func_stream_return_panic_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kFuncStreamReturnPanicTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -16952,8 +18206,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_stream_sink_arg_position_twin_rust_async(
             port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: null,
+      ),
       constMeta: kFuncStreamSinkArgPositionTwinRustAsyncConstMeta,
       argValues: [a, b],
       apiImpl: this,
@@ -16974,8 +18230,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_handle_stream_of_struct_twin_rust_async(port_);
       },
-      parseSuccessData: _dco_decode_my_stream_entry_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_my_stream_entry_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kHandleStreamOfStructTwinRustAsyncConstMeta,
       argValues: [],
       apiImpl: this,
@@ -16999,8 +18257,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_stream_sink_at_1_twin_rust_async(
             port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_log_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_log_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kHandleStreamSinkAt1TwinRustAsyncConstMeta,
       argValues: [key, max],
       apiImpl: this,
@@ -17024,8 +18284,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_stream_sink_at_2_twin_rust_async(
             port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_log_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_log_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kHandleStreamSinkAt2TwinRustAsyncConstMeta,
       argValues: [key, max],
       apiImpl: this,
@@ -17049,8 +18311,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_handle_stream_sink_at_3_twin_rust_async(
             port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_log_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_log_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kHandleStreamSinkAt3TwinRustAsyncConstMeta,
       argValues: [key, max],
       apiImpl: this,
@@ -17074,8 +18338,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_struct_with_one_field_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_struct_with_one_field_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_struct_with_one_field_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kFuncStructWithOneFieldTwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -17099,8 +18365,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_struct_with_two_field_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_struct_with_two_field_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_struct_with_two_field_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kFuncStructWithTwoFieldTwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -17124,8 +18392,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_struct_with_zero_field_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_struct_with_zero_field_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_struct_with_zero_field_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kFuncStructWithZeroFieldTwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -17151,8 +18421,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_tuple_struct_with_one_field_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_tuple_struct_with_one_field_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_tuple_struct_with_one_field_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kFuncTupleStructWithOneFieldTwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -17178,8 +18451,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_tuple_struct_with_two_field_twin_rust_async(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_tuple_struct_with_two_field_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_tuple_struct_with_two_field_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kFuncTupleStructWithTwoFieldTwinRustAsyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -17201,8 +18477,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_struct_with_one_field_twin_sync(arg);
         return wire.wire_func_struct_with_one_field_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_struct_with_one_field_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_struct_with_one_field_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kFuncStructWithOneFieldTwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -17224,8 +18502,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_struct_with_two_field_twin_sync(arg);
         return wire.wire_func_struct_with_two_field_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_struct_with_two_field_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_struct_with_two_field_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kFuncStructWithTwoFieldTwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -17247,8 +18527,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_struct_with_zero_field_twin_sync(arg);
         return wire.wire_func_struct_with_zero_field_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_struct_with_zero_field_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_struct_with_zero_field_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kFuncStructWithZeroFieldTwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -17271,8 +18553,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             cst_encode_box_autoadd_tuple_struct_with_one_field_twin_sync(arg);
         return wire.wire_func_tuple_struct_with_one_field_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_tuple_struct_with_one_field_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_tuple_struct_with_one_field_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kFuncTupleStructWithOneFieldTwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -17295,8 +18579,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             cst_encode_box_autoadd_tuple_struct_with_two_field_twin_sync(arg);
         return wire.wire_func_tuple_struct_with_two_field_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_tuple_struct_with_two_field_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_tuple_struct_with_two_field_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kFuncTupleStructWithTwoFieldTwinSyncConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -17318,8 +18604,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_record_string_i_32(value);
         return wire.wire_test_tuple_2_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kTestTuple2TwinRustAsyncConstMeta,
       argValues: [value],
       apiImpl: this,
@@ -17340,8 +18628,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_box_autoadd_record_string_i_32(value);
         return wire.wire_test_tuple_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_record_string_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_record_string_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kTestTupleTwinRustAsyncConstMeta,
       argValues: [value],
       apiImpl: this,
@@ -17361,8 +18651,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_record_string_i_32(value);
         return wire.wire_test_tuple_2_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kTestTuple2TwinSyncConstMeta,
       argValues: [value],
       apiImpl: this,
@@ -17382,8 +18674,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_box_autoadd_record_string_i_32(value);
         return wire.wire_test_tuple_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_record_string_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_record_string_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kTestTupleTwinSyncConstMeta,
       argValues: [value],
       apiImpl: this,
@@ -17404,8 +18698,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_64(input);
         return wire.wire_handle_type_alias_id_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_64,
+        parseErrorData: null,
+      ),
       constMeta: kHandleTypeAliasIdTwinRustAsyncConstMeta,
       argValues: [input],
       apiImpl: this,
@@ -17427,8 +18723,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_64(input);
         return wire.wire_handle_type_alias_model_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_test_model_twin_rust_async,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_test_model_twin_rust_async,
+        parseErrorData: null,
+      ),
       constMeta: kHandleTypeAliasModelTwinRustAsyncConstMeta,
       argValues: [input],
       apiImpl: this,
@@ -17450,8 +18748,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_64(input);
         return wire.wire_handle_type_nest_alias_id_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_64,
+        parseErrorData: null,
+      ),
       constMeta: kHandleTypeNestAliasIdTwinRustAsyncConstMeta,
       argValues: [input],
       apiImpl: this,
@@ -17472,8 +18772,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_64(input);
         return wire.wire_handle_type_alias_id_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_u_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_64,
+        parseErrorData: null,
+      ),
       constMeta: kHandleTypeAliasIdTwinSyncConstMeta,
       argValues: [input],
       apiImpl: this,
@@ -17494,8 +18796,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_64(input);
         return wire.wire_handle_type_alias_model_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_test_model_twin_sync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_test_model_twin_sync,
+        parseErrorData: null,
+      ),
       constMeta: kHandleTypeAliasModelTwinSyncConstMeta,
       argValues: [input],
       apiImpl: this,
@@ -17516,8 +18820,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_64(input);
         return wire.wire_handle_type_nest_alias_id_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_u_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_64,
+        parseErrorData: null,
+      ),
       constMeta: kHandleTypeNestAliasIdTwinSyncConstMeta,
       argValues: [input],
       apiImpl: this,
@@ -17539,8 +18845,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_feature_uuid_twin_rust_async(ids);
         return wire.wire_handle_nested_uuids_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_feature_uuid_twin_rust_async,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_feature_uuid_twin_rust_async,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kHandleNestedUuidsTwinRustAsyncConstMeta,
       argValues: [ids],
       apiImpl: this,
@@ -17562,8 +18870,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_Uuid(id);
         return wire.wire_handle_uuid_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_Uuid,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_Uuid,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kHandleUuidTwinRustAsyncConstMeta,
       argValues: [id],
       apiImpl: this,
@@ -17584,8 +18894,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_Uuids(ids);
         return wire.wire_handle_uuids_twin_rust_async(port_, arg0);
       },
-      parseSuccessData: _dco_decode_Uuids,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_Uuids,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kHandleUuidsTwinRustAsyncConstMeta,
       argValues: [ids],
       apiImpl: this,
@@ -17606,8 +18918,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_feature_uuid_twin_sync(ids);
         return wire.wire_handle_nested_uuids_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_feature_uuid_twin_sync,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_feature_uuid_twin_sync,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kHandleNestedUuidsTwinSyncConstMeta,
       argValues: [ids],
       apiImpl: this,
@@ -17627,8 +18941,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_Uuid(id);
         return wire.wire_handle_uuid_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_Uuid,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_Uuid,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kHandleUuidTwinSyncConstMeta,
       argValues: [id],
       apiImpl: this,
@@ -17649,8 +18965,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_Uuids(ids);
         return wire.wire_handle_uuids_twin_sync(arg0);
       },
-      parseSuccessData: _dco_decode_Uuids,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_Uuids,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kHandleUuidsTwinSyncConstMeta,
       argValues: [ids],
       apiImpl: this,
@@ -17671,9 +18989,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire
             .wire_test_more_than_just_one_raw_string_struct_twin_normal(port_);
       },
-      parseSuccessData:
-          _dco_decode_more_than_just_one_raw_string_struct_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_more_than_just_one_raw_string_struct_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kTestMoreThanJustOneRawStringStructTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -17694,8 +19014,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_test_raw_string_item_struct_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_raw_string_item_struct_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_raw_string_item_struct_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kTestRawStringItemStructTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -17721,8 +19043,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_NonCloneSimpleTwinNormal_instance_method_arg_borrow_twin_normal(
                 port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta:
           kNonCloneSimpleTwinNormalInstanceMethodArgBorrowTwinNormalConstMeta,
       argValues: [that],
@@ -17751,8 +19075,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_NonCloneSimpleTwinNormal_instance_method_arg_mut_borrow_twin_normal(
                 port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta:
           kNonCloneSimpleTwinNormalInstanceMethodArgMutBorrowTwinNormalConstMeta,
       argValues: [that],
@@ -17781,8 +19107,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_NonCloneSimpleTwinNormal_instance_method_arg_own_twin_normal(
                 port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta:
           kNonCloneSimpleTwinNormalInstanceMethodArgOwnTwinNormalConstMeta,
       argValues: [that],
@@ -17812,9 +19140,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_NonCloneSimpleTwinNormal_instance_method_return_own_twin_normal(
                 port_, arg0);
       },
-      parseSuccessData:
-          _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
+        parseErrorData: null,
+      ),
       constMeta:
           kNonCloneSimpleTwinNormalInstanceMethodReturnOwnTwinNormalConstMeta,
       argValues: [that],
@@ -17839,9 +19169,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire
             .wire_NonCloneSimpleTwinNormal_new_custom_name_twin_normal(port_);
       },
-      parseSuccessData:
-          _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
+        parseErrorData: null,
+      ),
       constMeta: kNonCloneSimpleTwinNormalNewCustomNameTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -17862,9 +19194,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_NonCloneSimpleTwinNormal_new_twin_normal(port_);
       },
-      parseSuccessData:
-          _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
+        parseErrorData: null,
+      ),
       constMeta: kNonCloneSimpleTwinNormalNewTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -17890,8 +19224,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_NonCloneSimpleTwinNormal_static_method_arg_borrow_twin_normal(
                 port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta:
           kNonCloneSimpleTwinNormalStaticMethodArgBorrowTwinNormalConstMeta,
       argValues: [arg],
@@ -17920,8 +19256,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_NonCloneSimpleTwinNormal_static_method_arg_mut_borrow_twin_normal(
                 port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta:
           kNonCloneSimpleTwinNormalStaticMethodArgMutBorrowTwinNormalConstMeta,
       argValues: [arg],
@@ -17950,8 +19288,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_NonCloneSimpleTwinNormal_static_method_arg_own_twin_normal(
                 port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kNonCloneSimpleTwinNormalStaticMethodArgOwnTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -17976,9 +19316,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_NonCloneSimpleTwinNormal_static_method_return_own_twin_normal(
                 port_);
       },
-      parseSuccessData:
-          _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
+        parseErrorData: null,
+      ),
       constMeta:
           kNonCloneSimpleTwinNormalStaticMethodReturnOwnTwinNormalConstMeta,
       argValues: [],
@@ -18009,8 +19351,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_rust_auto_opaque_arg_borrow_twin_normal(
             port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueArgBorrowTwinNormalConstMeta,
       argValues: [arg, expect],
       apiImpl: this,
@@ -18040,8 +19384,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_rust_auto_opaque_arg_mut_borrow_twin_normal(
             port_, arg0, arg1, arg2);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueArgMutBorrowTwinNormalConstMeta,
       argValues: [arg, expect, adder],
       apiImpl: this,
@@ -18067,9 +19413,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_rust_auto_opaque_arg_own_and_return_own_twin_normal(
             port_, arg0);
       },
-      parseSuccessData:
-          _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueArgOwnAndReturnOwnTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -18097,8 +19445,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_rust_auto_opaque_arg_own_twin_normal(
             port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueArgOwnTwinNormalConstMeta,
       argValues: [arg, expect],
       apiImpl: this,
@@ -18122,8 +19472,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 arg);
         return wire.wire_rust_auto_opaque_callable_arg_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueCallableArgTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -18144,9 +19496,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_rust_auto_opaque_callable_return_twin_normal(port_);
       },
-      parseSuccessData:
-          _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueCallableReturnTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -18174,8 +19528,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_rust_auto_opaque_normal_and_opaque_arg_twin_normal(
             port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueNormalAndOpaqueArgTwinNormalConstMeta,
       argValues: [a, b],
       apiImpl: this,
@@ -18200,8 +19556,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_rust_auto_opaque_plus_sign_arg_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaquePlusSignArgTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -18222,9 +19580,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_rust_auto_opaque_plus_sign_return_twin_normal(port_);
       },
-      parseSuccessData:
-          _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaquePlusSignReturnTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -18246,9 +19606,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_i_32(initial);
         return wire.wire_rust_auto_opaque_return_own_twin_normal(port_, arg0);
       },
-      parseSuccessData:
-          _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueReturnOwnTwinNormalConstMeta,
       argValues: [initial],
       apiImpl: this,
@@ -18275,8 +19637,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_borrow_twin_normal(
                 port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta:
           kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgBorrowTwinNormalConstMeta,
       argValues: [arg],
@@ -18306,8 +19670,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_mut_borrow_twin_normal(
                 port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta:
           kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgMutBorrowTwinNormalConstMeta,
       argValues: [arg],
@@ -18337,8 +19703,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_normal(
                 port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta:
           kRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinNormalConstMeta,
       argValues: [arg],
@@ -18365,9 +19733,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_normal(
                 port_);
       },
-      parseSuccessData:
-          _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal,
+        parseErrorData: null,
+      ),
       constMeta:
           kRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinNormalConstMeta,
       argValues: [],
@@ -18398,8 +19768,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_rust_auto_opaque_trait_object_arg_borrow_twin_normal(
             port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueTraitObjectArgBorrowTwinNormalConstMeta,
       argValues: [arg, expect],
       apiImpl: this,
@@ -18428,8 +19800,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_rust_auto_opaque_trait_object_arg_mut_borrow_twin_normal(
                 port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueTraitObjectArgMutBorrowTwinNormalConstMeta,
       argValues: [arg, expect],
       apiImpl: this,
@@ -18457,8 +19831,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_rust_auto_opaque_trait_object_arg_own_twin_normal(
             port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueTraitObjectArgOwnTwinNormalConstMeta,
       argValues: [arg, expect],
       apiImpl: this,
@@ -18481,9 +19857,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_rust_auto_opaque_trait_object_return_own_one_twin_normal(
                 port_);
       },
-      parseSuccessData:
-          _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueTraitObjectReturnOwnOneTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -18506,9 +19884,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             .wire_rust_auto_opaque_trait_object_return_own_two_twin_normal(
                 port_);
       },
-      parseSuccessData:
-          _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData:
+            _dco_decode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueTraitObjectReturnOwnTwoTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -18538,8 +19918,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_rust_auto_opaque_two_args_twin_normal(
             port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kRustAutoOpaqueTwoArgsTwinNormalConstMeta,
       argValues: [a, b],
       apiImpl: this,
@@ -18560,8 +19942,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_create_array_opaque_enum_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_enum_opaque_twin_normal_array_5,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_enum_opaque_twin_normal_array_5,
+        parseErrorData: null,
+      ),
       constMeta: kCreateArrayOpaqueEnumTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -18581,8 +19965,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_create_nested_opaque_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_opaque_nested_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opaque_nested_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kCreateNestedOpaqueTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -18602,8 +19988,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_create_opaque_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_RustOpaque_hide_data,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_RustOpaque_hide_data,
+        parseErrorData: null,
+      ),
       constMeta: kCreateOpaqueTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -18624,8 +20012,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_box_autoadd_RustOpaque_hide_data(opaque);
         return wire.wire_create_option_opaque_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_RustOpaque_hide_data,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_RustOpaque_hide_data,
+        parseErrorData: null,
+      ),
       constMeta: kCreateOptionOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -18645,8 +20035,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_create_sync_opaque_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_RustOpaque_non_send_hide_data,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_RustOpaque_non_send_hide_data,
+        parseErrorData: null,
+      ),
       constMeta: kCreateSyncOpaqueTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -18665,8 +20057,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_frb_generator_test_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_RustOpaque_frb_opaque_return,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_RustOpaque_frb_opaque_return,
+        parseErrorData: null,
+      ),
       constMeta: kFrbGeneratorTestTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -18687,8 +20081,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_RustOpaque_hide_data_array_2(data);
         return wire.wire_opaque_array_run_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kOpaqueArrayRunTwinNormalConstMeta,
       argValues: [data],
       apiImpl: this,
@@ -18707,8 +20103,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_opaque_array_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_RustOpaque_hide_data_array_2,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_RustOpaque_hide_data_array_2,
+        parseErrorData: null,
+      ),
       constMeta: kOpaqueArrayTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -18729,8 +20127,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_RustOpaque_hide_data(data);
         return wire.wire_opaque_vec_run_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kOpaqueVecRunTwinNormalConstMeta,
       argValues: [data],
       apiImpl: this,
@@ -18749,8 +20149,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_opaque_vec_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_list_RustOpaque_hide_data,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_list_RustOpaque_hide_data,
+        parseErrorData: null,
+      ),
       constMeta: kOpaqueVecTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -18771,8 +20173,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_enum_opaque_twin_normal(opaque);
         return wire.wire_run_enum_opaque_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kRunEnumOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -18793,8 +20197,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_opaque_nested_twin_normal(opaque);
         return wire.wire_run_nested_opaque_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kRunNestedOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -18815,8 +20221,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_RustOpaque_non_clone_data(clone);
         return wire.wire_run_non_clone_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kRunNonCloneTwinNormalConstMeta,
       argValues: [clone],
       apiImpl: this,
@@ -18836,8 +20244,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_RustOpaque_hide_data(opaque);
         return wire.wire_run_opaque_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kRunOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -18858,8 +20268,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_RustOpaque_hide_data(opaque);
         return wire.wire_run_opaque_with_delay_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kRunOpaqueWithDelayTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -18881,8 +20293,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_RustOpaque_hide_data(opaque);
         return wire.wire_unwrap_rust_opaque_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kUnwrapRustOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -18901,8 +20315,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_frb_sync_generator_test_twin_normal();
       },
-      parseSuccessData: _dco_decode_RustOpaque_frb_opaque_sync_return,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_RustOpaque_frb_opaque_sync_return,
+        parseErrorData: null,
+      ),
       constMeta: kFrbSyncGeneratorTestTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -18922,8 +20338,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_sync_create_non_clone_twin_normal();
       },
-      parseSuccessData: _dco_decode_RustOpaque_non_clone_data,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_RustOpaque_non_clone_data,
+        parseErrorData: null,
+      ),
       constMeta: kSyncCreateNonCloneTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -18943,8 +20361,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_sync_create_opaque_twin_normal();
       },
-      parseSuccessData: _dco_decode_RustOpaque_hide_data,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_RustOpaque_hide_data,
+        parseErrorData: null,
+      ),
       constMeta: kSyncCreateOpaqueTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -18963,8 +20383,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_sync_create_sync_opaque_twin_normal();
       },
-      parseSuccessData: _dco_decode_RustOpaque_non_send_hide_data,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_RustOpaque_non_send_hide_data,
+        parseErrorData: null,
+      ),
       constMeta: kSyncCreateSyncOpaqueTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -18984,8 +20406,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         return wire.wire_sync_option_rust_opaque_twin_normal();
       },
-      parseSuccessData: _dco_decode_opt_box_autoadd_RustOpaque_hide_data,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_opt_box_autoadd_RustOpaque_hide_data,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kSyncOptionRustOpaqueTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -19007,8 +20431,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_RustOpaque_non_send_hide_data(opaque);
         return wire.wire_sync_run_opaque_twin_normal(arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kSyncRunOpaqueTwinNormalConstMeta,
       argValues: [opaque],
       apiImpl: this,
@@ -19030,8 +20456,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_i_32(b);
         return wire.wire_simple_adder_twin_normal(port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kSimpleAdderTwinNormalConstMeta,
       argValues: [a, b],
       apiImpl: this,
@@ -19050,8 +20478,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_func_stream_return_error_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kFuncStreamReturnErrorTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -19071,8 +20501,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_func_stream_return_panic_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kFuncStreamReturnPanicTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -19096,8 +20528,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_stream_sink_arg_position_twin_normal(
             port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_u_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_32,
+        parseErrorData: null,
+      ),
       constMeta: kFuncStreamSinkArgPositionTwinNormalConstMeta,
       argValues: [a, b],
       apiImpl: this,
@@ -19118,8 +20552,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         return wire.wire_handle_stream_of_struct_twin_normal(port_);
       },
-      parseSuccessData: _dco_decode_my_stream_entry_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_my_stream_entry_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kHandleStreamOfStructTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
@@ -19142,8 +20578,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_u_32(max);
         return wire.wire_handle_stream_sink_at_1_twin_normal(port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_log_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_log_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kHandleStreamSinkAt1TwinNormalConstMeta,
       argValues: [key, max],
       apiImpl: this,
@@ -19166,8 +20604,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_u_32(max);
         return wire.wire_handle_stream_sink_at_2_twin_normal(port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_log_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_log_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kHandleStreamSinkAt2TwinNormalConstMeta,
       argValues: [key, max],
       apiImpl: this,
@@ -19190,8 +20630,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_u_32(max);
         return wire.wire_handle_stream_sink_at_3_twin_normal(port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_log_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_log_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kHandleStreamSinkAt3TwinNormalConstMeta,
       argValues: [key, max],
       apiImpl: this,
@@ -19213,8 +20655,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_String(arg);
         return wire.wire_func_stream_realistic_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_String,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_String,
+        parseErrorData: null,
+      ),
       constMeta: kFuncStreamRealisticTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -19237,8 +20681,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             cst_encode_box_autoadd_struct_with_one_field_twin_normal(arg);
         return wire.wire_func_struct_with_one_field_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_struct_with_one_field_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_struct_with_one_field_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kFuncStructWithOneFieldTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -19261,8 +20707,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             cst_encode_box_autoadd_struct_with_two_field_twin_normal(arg);
         return wire.wire_func_struct_with_two_field_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_struct_with_two_field_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_struct_with_two_field_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kFuncStructWithTwoFieldTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -19285,8 +20733,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             cst_encode_box_autoadd_struct_with_zero_field_twin_normal(arg);
         return wire.wire_func_struct_with_zero_field_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_struct_with_zero_field_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_struct_with_zero_field_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kFuncStructWithZeroFieldTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -19311,8 +20761,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_tuple_struct_with_one_field_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_tuple_struct_with_one_field_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_tuple_struct_with_one_field_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kFuncTupleStructWithOneFieldTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -19337,8 +20789,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         return wire.wire_func_tuple_struct_with_two_field_twin_normal(
             port_, arg0);
       },
-      parseSuccessData: _dco_decode_tuple_struct_with_two_field_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_tuple_struct_with_two_field_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kFuncTupleStructWithTwoFieldTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
@@ -19360,8 +20814,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_list_record_string_i_32(value);
         return wire.wire_test_tuple_2_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_unit,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_unit,
+        parseErrorData: null,
+      ),
       constMeta: kTestTuple2TwinNormalConstMeta,
       argValues: [value],
       apiImpl: this,
@@ -19382,8 +20838,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_opt_box_autoadd_record_string_i_32(value);
         return wire.wire_test_tuple_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_record_string_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_record_string_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kTestTupleTwinNormalConstMeta,
       argValues: [value],
       apiImpl: this,
@@ -19403,8 +20861,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_64(input);
         return wire.wire_handle_type_alias_id_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_64,
+        parseErrorData: null,
+      ),
       constMeta: kHandleTypeAliasIdTwinNormalConstMeta,
       argValues: [input],
       apiImpl: this,
@@ -19426,8 +20886,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_64(input);
         return wire.wire_handle_type_alias_model_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_test_model_twin_normal,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_test_model_twin_normal,
+        parseErrorData: null,
+      ),
       constMeta: kHandleTypeAliasModelTwinNormalConstMeta,
       argValues: [input],
       apiImpl: this,
@@ -19449,8 +20911,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_u_64(input);
         return wire.wire_handle_type_nest_alias_id_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_u_64,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_u_64,
+        parseErrorData: null,
+      ),
       constMeta: kHandleTypeNestAliasIdTwinNormalConstMeta,
       argValues: [input],
       apiImpl: this,
@@ -19472,8 +20936,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_box_autoadd_feature_uuid_twin_normal(ids);
         return wire.wire_handle_nested_uuids_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_feature_uuid_twin_normal,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_feature_uuid_twin_normal,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kHandleNestedUuidsTwinNormalConstMeta,
       argValues: [ids],
       apiImpl: this,
@@ -19495,8 +20961,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_Uuid(id);
         return wire.wire_handle_uuid_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_Uuid,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_Uuid,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kHandleUuidTwinNormalConstMeta,
       argValues: [id],
       apiImpl: this,
@@ -19517,8 +20985,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg0 = cst_encode_Uuids(ids);
         return wire.wire_handle_uuids_twin_normal(port_, arg0);
       },
-      parseSuccessData: _dco_decode_Uuids,
-      parseErrorData: _dco_decode_AnyhowException,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_Uuids,
+        parseErrorData: _dco_decode_AnyhowException,
+      ),
       constMeta: kHandleUuidsTwinNormalConstMeta,
       argValues: [ids],
       apiImpl: this,

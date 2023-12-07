@@ -75,8 +75,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var arg1 = cst_encode_i_32(b);
         return wire.wire_minimal_adder(port_, arg0, arg1);
       },
-      parseSuccessData: _dco_decode_i_32,
-      parseErrorData: null,
+      codec: DcoCodec(
+        parseSuccessData: _dco_decode_i_32,
+        parseErrorData: null,
+      ),
       constMeta: kMinimalAdderConstMeta,
       argValues: [a, b],
       apiImpl: this,
