@@ -1,5 +1,7 @@
 import 'dart:ffi' as ffi;
 
+import 'package:test/test.dart';
+
 Future<void> main() async {
   final lib = ffi.DynamicLibrary.open(
     // 'rust/target/debug/libfrb_example_dart_minimal.dylib',
@@ -8,9 +10,13 @@ Future<void> main() async {
   final binding = MultiPackageCBinding(lib);
   binding.init_frb_dart_api_dl(ffi.NativeApi.initializeApiDLData);
 
-  int x = 42;
-  final persistentHandle = binding.naive_NewPersistentHandle(x);
-  binding.naive_HandleFromPersistent(persistentHandle);
+  // NOTE: you can remove this `test(...)` closure and directly run the code,
+  // and it is the same
+  test('hello test', () {
+    int x = 42;
+    final persistentHandle = binding.naive_NewPersistentHandle(x);
+    binding.naive_HandleFromPersistent(persistentHandle);
+  });
 }
 
 class MultiPackageCBinding {
