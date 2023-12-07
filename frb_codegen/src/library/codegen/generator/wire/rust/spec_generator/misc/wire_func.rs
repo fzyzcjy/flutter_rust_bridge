@@ -1,5 +1,6 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
+use crate::codegen::generator::misc::transfer::TransferMode;
 use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::generator::wire::rust::spec_generator::base::{
     WireRustGenerator, WireRustGeneratorContext,
@@ -8,6 +9,7 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::base::WireRustTransferEntrypoint;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::WireRustTransferCstGenerator;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::dco::base::WireRustTransferDcoGenerator;
 use crate::codegen::ir::func::IrFuncOwnerInfoMethodMode::Instance;
@@ -27,6 +29,9 @@ pub(crate) fn generate_wire_func(
     func: &IrFunc,
     context: WireRustGeneratorContext,
 ) -> Acc<WireRustOutputCode> {
+    let transfer_mode = TransferMode::Cst; // TODO
+    let transfer = WireRustTransferEntrypoint::new(transfer_mode);
+
     let ir_pack = context.ir_pack;
     let params = generate_params(func, context);
     let inner_func_params = generate_inner_func_params(func, ir_pack, context);
