@@ -15,6 +15,7 @@ pub(crate) mod extern_func;
 pub(crate) mod misc;
 pub mod output_code;
 pub(crate) mod rust2dart;
+mod transfer;
 
 #[derive(Serialize)]
 pub(super) struct WireRustOutputSpec {
