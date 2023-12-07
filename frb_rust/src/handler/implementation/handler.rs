@@ -112,7 +112,8 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         Codec: BaseCodec,
     {
         self.wrap_normal_or_async(task_info, prepare, |task_info, task| {
-            self.executor.execute_normal(task_info, task)
+            self.executor
+                .execute_normal::<_, _, _, _, Codec>(task_info, task)
         })
     }
 
@@ -132,7 +133,10 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         // For reason, see comments in [wrap]
         panic::catch_unwind(move || {
             let catch_unwind_result = panic::catch_unwind(move || {
-                match self.executor.execute_sync(task_info, sync_task) {
+                match self
+                    .executor
+                    .execute_sync::<_, _, _, _, Codec>(task_info, sync_task)
+                {
                     Ok(data) => data,
                     Err(err) => self
                         .error_handler
@@ -164,7 +168,8 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         Codec: BaseCodec,
     {
         self.wrap_normal_or_async(task_info, prepare, |task_info, task| {
-            self.executor.execute_async(task_info, task)
+            self.executor
+                .execute_async::<_, _, _, _, _, Codec>(task_info, task)
         })
     }
 

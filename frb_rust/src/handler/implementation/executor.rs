@@ -13,7 +13,7 @@ use crate::rust2dart::sender::Rust2DartSender;
 use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
 use crate::rust_async::BaseAsyncRuntime;
 use crate::thread_pool::BaseThreadPool;
-use crate::{codec, rust_async};
+use crate::{rust_async, transfer};
 use futures::FutureExt;
 use parking_lot::Mutex;
 use std::future::Future;
