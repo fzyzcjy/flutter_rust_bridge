@@ -7,6 +7,7 @@ use crate::codegen::generator::wire::rust::spec_generator::transfer::dco::base::
     WireRustTransferDcoGenerator, WireRustTransferDcoGeneratorContext,
 };
 use crate::codegen::generator::wire::rust::IrPackComputedCache;
+use crate::library::codegen::generator::wire::rust::spec_generator::transfer::dco::encoder::ty::WireRustTransferDcoGeneratorEncoderTrait;
 use serde::Serialize;
 
 mod misc;

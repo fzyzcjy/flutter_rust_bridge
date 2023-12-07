@@ -12,6 +12,7 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Optional;
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
+use crate::library::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartTransferCstGeneratorEncoderTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use serde::Serialize;
 
@@ -82,7 +83,7 @@ fn generate_api2wire_func(
 
 fn generate_api_fill_to_wire_func(
     ty: &IrType,
-    context: WireDartGeneratorContext,
+    context: WireDartTransferCstGeneratorContext,
 ) -> WireDartOutputCode {
     if let Some(body) =
         WireDartTransferCstGenerator::new(ty.clone(), context).api_fill_to_wire_body()
