@@ -4,48 +4,60 @@ import 'dart:typed_data';
 const Endian _kEndian = Endian.little;
 
 // also ref https://github.com/brendan-duncan/archive/blob/main/lib/src/util/input_stream.dart
+/// {@macro flutter_rust_bridge.internal}
 class BytesReader {
+  /// {@macro flutter_rust_bridge.internal}
   final Uint8List bytes;
 
-  get index => _index;
+  /// {@macro flutter_rust_bridge.internal}
+  int get index => _index;
   var _index = 0;
 
   // ref: protobuf
   // https://github.com/fzyzcjy/yplusplus/issues/9598#issuecomment-1602114654
+  /// {@macro flutter_rust_bridge.internal}
   final ByteData byteData;
 
+  /// {@macro flutter_rust_bridge.internal}
   BytesReader(this.bytes) : byteData = ByteData.view(bytes.buffer);
 
+  /// {@macro flutter_rust_bridge.internal}
   Uint8List readBytes(int num) {
     final oldIndex = _index;
     _index += num;
     return bytes.buffer.asUint8List(oldIndex, num);
   }
 
+  /// {@macro flutter_rust_bridge.internal}
   int readUint8() => bytes[_index++];
 
+  /// {@macro flutter_rust_bridge.internal}
   int readInt64() {
     final ans = byteData.getInt64(_index, _kEndian);
     _index += 8;
     return ans;
   }
 
+  /// {@macro flutter_rust_bridge.internal}
   double readFloat32() {
     final ans = byteData.getFloat32(_index, _kEndian);
     _index += 4;
     return ans;
   }
 
+  /// {@macro flutter_rust_bridge.internal}
   double readFloat64() {
     final ans = byteData.getFloat64(_index, _kEndian);
     _index += 8;
     return ans;
   }
 
+  /// {@macro flutter_rust_bridge.internal}
   bool get eof => index == bytes.length;
 }
 
 // ref Dart [BytesWriter]
+/// {@macro flutter_rust_bridge.internal}
 class BytesWriter {
   /// Initial size of internal buffer.
   static const int _initSize = 1024;
@@ -64,16 +76,19 @@ class BytesWriter {
   Uint8List _buffer;
   ByteData _bufferByteDataView;
 
+  /// {@macro flutter_rust_bridge.internal}
   BytesWriter()
       : _buffer = _emptyList,
         _bufferByteDataView = ByteData.view(_emptyList.buffer);
 
+  /// {@macro flutter_rust_bridge.internal}
   @pragma('vm:prefer-inline')
   void writeBytes(List<int> bytes) {
     _write(bytes.length,
         () => _buffer.setRange(_length, _length + bytes.length, bytes));
   }
 
+  /// {@macro flutter_rust_bridge.internal}
   @pragma('vm:prefer-inline')
   void writeUint8(int value) {
     final required = _length + 1;
@@ -82,16 +97,19 @@ class BytesWriter {
     _length = required;
   }
 
+  /// {@macro flutter_rust_bridge.internal}
   @pragma('vm:prefer-inline')
   void writeInt64(int value) {
     _write(8, () => _bufferByteDataView.setInt64(_length, value, _kEndian));
   }
 
+  /// {@macro flutter_rust_bridge.internal}
   @pragma('vm:prefer-inline')
   void writeFloat32(double value) {
     _write(4, () => _bufferByteDataView.setFloat32(_length, value, _kEndian));
   }
 
+  /// {@macro flutter_rust_bridge.internal}
   @pragma('vm:prefer-inline')
   void writeFloat64(double value) {
     _write(8, () => _bufferByteDataView.setFloat64(_length, value, _kEndian));
@@ -135,8 +153,10 @@ class BytesWriter {
     return buffer;
   }
 
+  /// {@macro flutter_rust_bridge.internal}
   int get length => _length;
 
+  /// {@macro flutter_rust_bridge.internal}
   void clear() {
     _clear();
   }
