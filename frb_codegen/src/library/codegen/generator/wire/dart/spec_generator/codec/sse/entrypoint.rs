@@ -28,7 +28,7 @@ impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, Box<dyn WireDartCode
     }
 }
 
-impl WireDartCodecEntrypointTrait for SseWireDartCodecEntrypoint {
+impl WireDartCodecEntrypointTrait<'_> for SseWireDartCodecEntrypoint {
     fn generate_dart2rust_func_stmt_prepare_args(&self, func: &IrFunc) -> Vec<String> {
         todo!()
     }
