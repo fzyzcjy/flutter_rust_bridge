@@ -143,7 +143,7 @@ fn generate_params(func: &IrFunc, context: WireRustGeneratorContext) -> Acc<Vec<
                 TargetOrCommon::Common => ExternFuncParam {
                     name: name.clone(),
                     rust_type: format!(
-                        "impl CstDecode<{}> + core::panic::UnwindSafe",
+                        "impl CstDecoder<{}> + core::panic::UnwindSafe",
                         WireRustTransferCstGenerator::new(
                             field.ty.clone(),
                             context.as_wire_rust_transfer_cst_context()
