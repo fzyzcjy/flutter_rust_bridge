@@ -13,7 +13,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for GeneralListWireDartTransfe
 
         Acc {
             io: Some(format!(
-                "final ans = wire.new_{ident}(raw.length);
+                "final ans = wire.cst_new_{ident}(raw.length);
                 for (var i = 0; i < raw.length; ++i) {{
                     {}
                 }}

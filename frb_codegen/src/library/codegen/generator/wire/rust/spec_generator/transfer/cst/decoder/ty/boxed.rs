@@ -62,7 +62,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for BoxedWireRustTransferCstGe
         if self.ir.inner.is_array() {
             return Acc::default();
         }
-        let func_name = format!("new_{}", self.ir.safe_ident());
+        let func_name = format!("cst_new_{}", self.ir.safe_ident());
         if self.ir.inner.is_primitive()
             || matches!(
                 *self.ir.inner,

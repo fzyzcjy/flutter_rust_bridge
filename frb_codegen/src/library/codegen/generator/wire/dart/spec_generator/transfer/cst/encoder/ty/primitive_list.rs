@@ -23,7 +23,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait
             // by another dylib (e.g. my_rust_code.so), especially in Android platform. It can be
             // undefined behavior.
             io: Some(format!(
-                "final ans = wire.new_{}(raw.length);
+                "final ans = wire.cst_new_{}(raw.length);
                 ans.ref.ptr.asTypedList(raw.length).setAll(0, {});
                 return ans;",
                 self.ir.safe_ident(),

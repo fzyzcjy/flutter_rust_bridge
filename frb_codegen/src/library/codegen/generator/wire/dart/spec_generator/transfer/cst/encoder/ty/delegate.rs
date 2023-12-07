@@ -22,7 +22,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for DelegateWireDartTransferCs
                 ))),
                 IrTypeDelegateArrayMode::Primitive(_) => Acc {
                     io: Some(format!(
-                        "final ans = wire.new_{}({length});
+                        "final ans = wire.cst_new_{}({length});
                         ans.ref.ptr.asTypedList({length}).setAll(0, raw);
                         return ans;",
                         array.get_delegate().safe_ident(),
@@ -59,7 +59,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for DelegateWireDartTransferCs
             }
             IrTypeDelegate::StringList => Acc {
                 io: Some(
-                    "final ans = wire.new_StringList(raw.length);
+                    "final ans = wire.cst_new_StringList(raw.length);
                     for (var i = 0; i < raw.length; i++){
                         ans.ref.ptr[i] = cst_encode_String(raw[i]);
                     }
