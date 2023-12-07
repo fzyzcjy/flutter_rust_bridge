@@ -23,16 +23,4 @@ use crate::library::codegen::ir::ty::IrTypeTrait;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
-pub(crate) trait WireRustGeneratorRust2DartTrait: WireRustGeneratorImplTrait {
-    fn intodart_type(&self, _ir_pack: &IrPack) -> String {
-        self.ir_type().rust_api_type()
-    }
-
-    fn generate_impl_into_dart(&self) -> Option<String> {
-        None
-    }
-
-    fn generate_access_object_core(&self, obj: String) -> String {
-        obj
-    }
-}
+pub(crate) trait WireRustGeneratorRust2DartTrait: WireRustGeneratorImplTrait {}
