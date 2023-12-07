@@ -1,10 +1,10 @@
-pub(crate) trait TransferHandler {}
+pub(crate) trait CodecHandler {}
 
-pub(crate) struct CstTransferHandler;
-impl TransferHandler for CstTransferHandler {}
+pub(crate) struct CstCodecHandler;
+impl CodecHandler for CstCodecHandler {}
 
-pub(crate) struct DcoTransferHandler;
-impl TransferHandler for DcoTransferHandler {}
+pub(crate) struct DcoCodecHandler;
+impl CodecHandler for DcoCodecHandler {}
 
-pub(crate) struct SseTransferHandler;
-impl TransferHandler for SseTransferHandler {}
+pub(crate) struct SseCodecHandler;
+impl CodecHandler for SseCodecHandler {}

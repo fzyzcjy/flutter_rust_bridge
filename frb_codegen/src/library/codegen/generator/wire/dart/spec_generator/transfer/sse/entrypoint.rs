@@ -1,9 +1,9 @@
-use crate::codegen::generator::wire::dart::spec_generator::transfer::base::WireDartTransferEntrypointTrait;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::base::WireDartCodecEntrypointTrait;
 use crate::codegen::ir::func::IrFunc;
 
-pub(crate) struct SseWireDartTransferEntrypoint {}
+pub(crate) struct SseWireDartCodecEntrypoint {}
 
-impl WireDartTransferEntrypointTrait for SseWireDartTransferEntrypoint {
+impl WireDartCodecEntrypointTrait for SseWireDartCodecEntrypoint {
     fn generate_func_stmt_prepare_args(&self, func: &IrFunc) -> Vec<String> {
         todo!()
     }

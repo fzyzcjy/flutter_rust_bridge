@@ -3,9 +3,9 @@ use crate::codegen::generator::misc::is_js_value;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::*;
-use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 
-impl<'a> WireRustTransferCstGeneratorDecoderTrait for OptionalWireRustTransferCstGenerator<'a> {
+impl<'a> WireRustCodecCstGeneratorDecoderTrait for OptionalWireRustCodecCstGenerator<'a> {
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         Acc {
             wasm: (!is_js_value(&self.ir.inner)
@@ -17,8 +17,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for OptionalWireRustTransferCs
     }
 
     fn rust_wire_type(&self, target: Target) -> String {
-        let inner_generator =
-            WireRustTransferCstGenerator::new(self.ir.inner.clone(), self.context);
+        let inner_generator = WireRustCodecCstGenerator::new(self.ir.inner.clone(), self.context);
 
         if inner_generator.rust_wire_is_pointer(target)
             || (target == Target::Wasm)
@@ -34,7 +33,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for OptionalWireRustTransferCs
 
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
         target != Target::Wasm
-            || WireRustTransferCstGenerator::new(self.ir.inner.clone(), self.context)
+            || WireRustCodecCstGenerator::new(self.ir.inner.clone(), self.context)
                 .rust_wire_is_pointer(target)
     }
 }

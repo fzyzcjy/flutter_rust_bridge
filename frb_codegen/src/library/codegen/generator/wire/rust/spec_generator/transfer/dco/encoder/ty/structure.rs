@@ -1,12 +1,12 @@
 use crate::codegen::generator::wire::rust::spec_generator::transfer::dco::base::*;
-use crate::codegen::generator::wire::rust::spec_generator::transfer::dco::encoder::ty::WireRustTransferDcoGeneratorEncoderTrait;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::dco::encoder::misc::generate_impl_into_into_dart;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::dco::encoder::ty::enumeration::parse_wrapper_name_into_dart_name_and_self_path;
 
-impl<'a> WireRustTransferDcoGeneratorEncoderTrait for StructRefWireRustTransferDcoGenerator<'a> {
+impl<'a> WireRustCodecDcoGeneratorEncoderTrait for StructRefWireRustCodecDcoGenerator<'a> {
     fn intodart_type(&self, ir_pack: &IrPack) -> String {
         let wrapper = &self.ir.get(ir_pack).wrapper_name;
         wrapper.clone().unwrap_or(self.ir.rust_api_type())

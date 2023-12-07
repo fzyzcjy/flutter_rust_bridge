@@ -3,9 +3,9 @@ use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::rust_opaque::dart_or_rust_opaque_dart_wire_type;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::base::*;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartTransferCstGeneratorEncoderTrait;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 
-impl<'a> WireDartTransferCstGeneratorEncoderTrait for DartOpaqueWireDartTransferCstGenerator<'a> {
+impl<'a> WireDartCodecCstGeneratorEncoderTrait for DartOpaqueWireDartCodecCstGenerator<'a> {
     fn encode_func_body(&self) -> Acc<Option<String>> {
         Acc::new(|target| match target {
             TargetOrCommon::Io => Some("return wire.dart_opaque_dart2rust_encode(raw);".to_owned()),

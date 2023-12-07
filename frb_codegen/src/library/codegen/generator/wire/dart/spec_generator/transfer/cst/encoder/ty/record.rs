@@ -6,10 +6,10 @@ use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encode
     GeneralizedStructGenerator, GeneralizedStructGeneratorMode,
 };
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::base::*;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartTransferCstGeneratorEncoderTrait;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 use GeneralizedStructGeneratorMode::Record;
 
-impl<'a> WireDartTransferCstGeneratorEncoderTrait for RecordWireDartTransferCstGenerator<'a> {
+impl<'a> WireDartCodecCstGeneratorEncoderTrait for RecordWireDartCodecCstGenerator<'a> {
     fn encode_func_body(&self) -> Acc<Option<String>> {
         self.new_generalized_generator().encode_func_body()
     }
@@ -23,7 +23,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for RecordWireDartTransferCstG
     }
 }
 
-impl<'a> RecordWireDartTransferCstGenerator<'a> {
+impl<'a> RecordWireDartCodecCstGenerator<'a> {
     fn new_generalized_generator(&self) -> GeneralizedStructGenerator {
         GeneralizedStructGenerator::new(self.ir.inner.clone(), self.context, Record)
     }

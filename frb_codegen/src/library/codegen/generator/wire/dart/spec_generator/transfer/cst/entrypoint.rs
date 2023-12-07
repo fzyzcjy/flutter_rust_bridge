@@ -1,12 +1,12 @@
-use crate::codegen::generator::wire::dart::spec_generator::transfer::base::WireDartTransferEntrypointTrait;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::base::WireDartCodecEntrypointTrait;
 use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::ir::func::IrFunc;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
-pub(crate) struct CstWireDartTransferEntrypoint {}
+pub(crate) struct CstWireDartCodecEntrypoint {}
 
-impl WireDartTransferEntrypointTrait for CstWireDartTransferEntrypoint {
+impl WireDartCodecEntrypointTrait for CstWireDartCodecEntrypoint {
     fn generate_func_stmt_prepare_args(&self, func: &IrFunc) -> Vec<String> {
         func.inputs
             .iter()

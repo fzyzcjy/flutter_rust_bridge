@@ -1,9 +1,9 @@
 use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::base::*;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::decoder::ty::WireDartTransferDcoGeneratorDecoderTrait;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::decoder::ty::WireDartCodecDcoGeneratorDecoderTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
-impl<'a> WireDartTransferDcoGeneratorDecoderTrait for RecordWireDartTransferDcoGenerator<'a> {
+impl<'a> WireDartCodecDcoGeneratorDecoderTrait for RecordWireDartCodecDcoGenerator<'a> {
     fn generate_impl_decode_body(&self) -> String {
         let len = self.ir.values.len();
         let values = self

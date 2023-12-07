@@ -25,7 +25,7 @@ use enum_dispatch::enum_dispatch;
 use std::borrow::Cow;
 
 #[enum_dispatch]
-pub(crate) trait WireRustTransferCstGeneratorDecoderTrait {
+pub(crate) trait WireRustCodecCstGeneratorDecoderTrait {
     fn generate_decoder_class(&self) -> Option<String> {
         None
     }

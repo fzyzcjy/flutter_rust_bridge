@@ -1,11 +1,11 @@
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::base::*;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::decoder::ty::WireDartTransferDcoGeneratorDecoderTrait;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::decoder::ty::WireDartCodecDcoGeneratorDecoderTrait;
 use crate::codegen::ir::ty::enumeration::{IrEnumMode, IrVariantKind};
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
-impl<'a> WireDartTransferDcoGeneratorDecoderTrait for EnumRefWireDartTransferDcoGenerator<'a> {
+impl<'a> WireDartCodecDcoGeneratorDecoderTrait for EnumRefWireDartCodecDcoGenerator<'a> {
     fn generate_impl_decode_body(&self) -> String {
         let enu = self.ir.get(self.context.ir_pack);
         assert_eq!(enu.mode, IrEnumMode::Complex);

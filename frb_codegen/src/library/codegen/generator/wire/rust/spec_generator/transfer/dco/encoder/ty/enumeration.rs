@@ -1,13 +1,13 @@
 use crate::codegen::generator::wire::rust::spec_generator::transfer::dco::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::dco::encoder::misc::generate_impl_into_into_dart;
-use crate::codegen::generator::wire::rust::spec_generator::transfer::dco::encoder::ty::WireRustTransferDcoGeneratorEncoderTrait;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::enumeration::IrVariantKind;
 use crate::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
-impl<'a> WireRustTransferDcoGeneratorEncoderTrait for EnumRefWireRustTransferDcoGenerator<'a> {
+impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenerator<'a> {
     fn intodart_type(&self, ir_pack: &IrPack) -> String {
         match &self.ir.get(ir_pack).wrapper_name {
             Some(wrapper) => wrapper.clone(),

@@ -2,12 +2,12 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::*;
-use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::IrTypeTrait;
 use IrTypePrimitive::Unit;
 
-impl<'a> WireRustTransferCstGeneratorDecoderTrait for PrimitiveWireRustTransferCstGenerator<'a> {
+impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveWireRustCodecCstGenerator<'a> {
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         match self.ir {
             Unit => Acc::new(|_| None),

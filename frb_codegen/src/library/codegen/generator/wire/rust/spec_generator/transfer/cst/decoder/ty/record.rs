@@ -4,9 +4,9 @@ use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::misc::rust_wire_type_add_prefix_or_js_value;
-use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 
-impl<'a> WireRustTransferCstGeneratorDecoderTrait for RecordWireRustTransferCstGenerator<'a> {
+impl<'a> WireRustCodecCstGeneratorDecoderTrait for RecordWireRustCodecCstGenerator<'a> {
     fn generate_decoder_class(&self) -> Option<String> {
         self.as_struct_generator().generate_decoder_class()
     }
@@ -45,9 +45,9 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for RecordWireRustTransferCstG
     }
 }
 
-impl RecordWireRustTransferCstGenerator<'_> {
-    pub(crate) fn as_struct_generator(&self) -> StructRefWireRustTransferCstGenerator {
-        StructRefWireRustTransferCstGenerator {
+impl RecordWireRustCodecCstGenerator<'_> {
+    pub(crate) fn as_struct_generator(&self) -> StructRefWireRustCodecCstGenerator {
+        StructRefWireRustCodecCstGenerator {
             ir: self.ir.inner.clone(),
             context: self.context,
         }

@@ -2,11 +2,11 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::base::*;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartTransferCstGeneratorEncoderTrait;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 use crate::codegen::ir::ty::dart_opaque::IrTypeDartOpaque;
 use crate::codegen::ir::ty::IrType;
 
-impl<'a> WireDartTransferCstGeneratorEncoderTrait for DartFnWireDartTransferCstGenerator<'a> {
+impl<'a> WireDartCodecCstGeneratorEncoderTrait for DartFnWireDartCodecCstGenerator<'a> {
     fn encode_func_body(&self) -> Acc<Option<String>> {
         Acc::new(|target| match target {
             TargetOrCommon::Io | TargetOrCommon::Wasm => {
@@ -17,7 +17,6 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for DartFnWireDartTransferCstG
     }
 
     fn dart_wire_type(&self, target: Target) -> String {
-        WireDartTransferCstGenerator::new(self.ir.get_delegate(), self.context)
-            .dart_wire_type(target)
+        WireDartCodecCstGenerator::new(self.ir.get_delegate(), self.context).dart_wire_type(target)
     }
 }

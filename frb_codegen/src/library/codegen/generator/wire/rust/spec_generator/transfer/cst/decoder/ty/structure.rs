@@ -7,11 +7,11 @@ use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decode
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::*;
-use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use itertools::Itertools;
 
-impl<'a> WireRustTransferCstGeneratorDecoderTrait for StructRefWireRustTransferCstGenerator<'a> {
+impl<'a> WireRustCodecCstGeneratorDecoderTrait for StructRefWireRustCodecCstGenerator<'a> {
     fn generate_decoder_class(&self) -> Option<String> {
         let s = self.ir.get(self.context.ir_pack);
         Some(generate_class_from_fields(
@@ -21,7 +21,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for StructRefWireRustTransferC
                 .iter()
                 .map(|field| {
                     let field_generator =
-                        WireRustTransferCstGenerator::new(field.ty.clone(), self.context);
+                        WireRustCodecCstGenerator::new(field.ty.clone(), self.context);
                     format!(
                         "{}: {}{}",
                         field.name.rust_style(),
@@ -87,7 +87,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for StructRefWireRustTransferC
                     format!(
                         "{}: {},",
                         field.name.rust_style(),
-                        if WireRustTransferCstGenerator::new(field.ty.clone(), self.context)
+                        if WireRustCodecCstGenerator::new(field.ty.clone(), self.context)
                             .rust_wire_is_pointer(Target::Io)
                             || matches!(field.ty, IrType::RustOpaque(_) | IrType::DartOpaque(_))
                         {

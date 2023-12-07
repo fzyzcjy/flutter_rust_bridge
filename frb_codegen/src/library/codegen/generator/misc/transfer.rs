@@ -1,16 +1,16 @@
 use serde::Serialize;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Hash)]
-pub(crate) enum TransferMode {
+pub(crate) enum CodecMode {
     Cst,
     Dco,
     Sse,
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Hash)]
-pub(crate) struct TransferModePack {
-    pub dart2rust: TransferMode,
-    pub rust2dart: TransferMode,
+pub(crate) struct CodecModePack {
+    pub dart2rust: CodecMode,
+    pub rust2dart: CodecMode,
 }
 
 #[doc(hidden)]
@@ -37,10 +37,10 @@ macro_rules! codegen_transfer_structs {
             }
 
             impl $enum_name {
-                pub(crate) fn new(mode: TransferMode) -> Self {
+                pub(crate) fn new(mode: CodecMode) -> Self {
                     match mode {
                         $(
-                        TransferMode::$name => Self::$name([<$name $enum_name>] {}),
+                        CodecMode::$name => Self::$name([<$name $enum_name>] {}),
                         )*
                     }
                 }

@@ -1,4 +1,4 @@
 use crate::codegen::generator::wire::rust::spec_generator::transfer::dco::base::*;
-use crate::codegen::generator::wire::rust::spec_generator::transfer::dco::encoder::ty::WireRustTransferDcoGeneratorEncoderTrait;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
 
-impl<'a> WireRustTransferDcoGeneratorEncoderTrait for DartOpaqueWireRustTransferDcoGenerator<'a> {}
+impl<'a> WireRustCodecDcoGeneratorEncoderTrait for DartOpaqueWireRustCodecDcoGenerator<'a> {}

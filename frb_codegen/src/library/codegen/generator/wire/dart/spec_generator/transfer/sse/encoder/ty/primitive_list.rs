@@ -1,7 +1,4 @@
 use crate::codegen::generator::wire::dart::spec_generator::transfer::sse::base::*;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::sse::encoder::ty::WireDartTransferSseGeneratorEncoderTrait;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::sse::encoder::ty::WireDartCodecSseGeneratorEncoderTrait;
 
-impl<'a> WireDartTransferSseGeneratorEncoderTrait
-    for PrimitiveListWireDartTransferSseGenerator<'a>
-{
-}
+impl<'a> WireDartCodecSseGeneratorEncoderTrait for PrimitiveListWireDartCodecSseGenerator<'a> {}

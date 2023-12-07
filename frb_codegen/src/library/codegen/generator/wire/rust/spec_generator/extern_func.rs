@@ -1,15 +1,15 @@
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGenerator;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::base::WireDartTransferCstGenerator;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::base::WireDartCodecCstGenerator;
 use crate::codegen::generator::wire::rust::spec_generator::base::{
     WireRustGenerator, WireRustGeneratorContext,
 };
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::{
-    WireRustTransferCstGenerator, WireRustTransferCstGeneratorContext,
+    WireRustCodecCstGenerator, WireRustCodecCstGeneratorContext,
 };
 use crate::codegen::ir::ty::IrType;
-use crate::library::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartTransferCstGeneratorEncoderTrait;
-use crate::library::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
+use crate::library::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
+use crate::library::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use itertools::Itertools;
 use serde::Serialize;
 
@@ -67,11 +67,10 @@ impl ExternFuncParam {
         name: String,
         target: Target,
         ty: &IrType,
-        context: WireRustTransferCstGeneratorContext,
+        context: WireRustCodecCstGeneratorContext,
     ) -> Self {
-        let rust_gen = WireRustTransferCstGenerator::new(ty.clone(), context);
-        let dart_gen =
-            WireDartTransferCstGenerator::new(ty.clone(), context.as_wire_dart_context());
+        let rust_gen = WireRustCodecCstGenerator::new(ty.clone(), context);
+        let dart_gen = WireDartCodecCstGenerator::new(ty.clone(), context.as_wire_dart_context());
 
         Self {
             name,

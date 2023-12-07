@@ -1,11 +1,11 @@
 use crate::codegen::generator::api_dart;
-use crate::codegen::generator::misc::transfer::TransferMode;
+use crate::codegen::generator::misc::transfer::CodecMode;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::base::WireDartTransferEntrypoint;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::base::WireDartCodecEntrypoint;
 use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::wire_func_name;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode};
-use crate::library::codegen::generator::wire::dart::spec_generator::transfer::base::WireDartTransferEntrypointTrait;
+use crate::library::codegen::generator::wire::dart::spec_generator::transfer::base::WireDartCodecEntrypointTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
@@ -14,7 +14,7 @@ pub(crate) fn generate_api_impl_normal_function(
     func: &IrFunc,
     context: WireDartGeneratorContext,
 ) -> anyhow::Result<WireDartOutputCode> {
-    let dart2rust_transfer = WireDartTransferEntrypoint::new(func.transfer_mode_pack.dart2rust);
+    let dart2rust_transfer = WireDartCodecEntrypoint::new(func.transfer_mode_pack.dart2rust);
 
     let api_dart_func =
         api_dart::spec_generator::function::generate(func, context.as_api_dart_context())?;

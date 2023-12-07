@@ -12,9 +12,9 @@ use crate::misc::consts::HANDLER_NAME;
 use itertools::Itertools;
 
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::*;
-use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 
-impl<'a> WireRustTransferCstGeneratorDecoderTrait for DartFnWireRustTransferCstGenerator<'a> {
+impl<'a> WireRustCodecCstGeneratorDecoderTrait for DartFnWireRustCodecCstGenerator<'a> {
     fn generate_wire_func_call_decode(&self, name: &str) -> String {
         let closure_args = (0..self.ir.inputs.len())
             .map(|i| format!("arg{i}"))
@@ -47,7 +47,6 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for DartFnWireRustTransferCstG
     }
 
     fn rust_wire_type(&self, target: Target) -> String {
-        WireRustTransferCstGenerator::new(self.ir.get_delegate(), self.context)
-            .rust_wire_type(target)
+        WireRustCodecCstGenerator::new(self.ir.get_delegate(), self.context).rust_wire_type(target)
     }
 }

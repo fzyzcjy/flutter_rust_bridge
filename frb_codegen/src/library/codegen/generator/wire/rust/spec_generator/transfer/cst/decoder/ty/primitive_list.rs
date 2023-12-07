@@ -9,14 +9,12 @@ use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::misc::{
     generate_class_from_fields, JS_VALUE,
 };
-use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
 use crate::codegen::ir::ty::IrTypeTrait;
 
-impl<'a> WireRustTransferCstGeneratorDecoderTrait
-    for PrimitiveListWireRustTransferCstGenerator<'a>
-{
+impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveListWireRustCodecCstGenerator<'a> {
     fn generate_decoder_class(&self) -> Option<String> {
         Some(generate_class_from_fields(
             self.ir.clone(),
@@ -24,7 +22,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait
             &[
                 format!(
                     "ptr: *mut {}",
-                    WireRustTransferCstGenerator::new(self.ir.primitive.clone(), self.context)
+                    WireRustCodecCstGenerator::new(self.ir.primitive.clone(), self.context)
                         .rust_wire_type(Target::Io)
                 ),
                 "len: i32".to_string(),

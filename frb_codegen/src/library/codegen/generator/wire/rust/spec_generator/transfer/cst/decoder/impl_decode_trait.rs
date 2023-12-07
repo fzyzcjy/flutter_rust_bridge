@@ -3,15 +3,15 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGenerator;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::{
-    WireRustTransferCstGenerator, WireRustTransferCstGeneratorContext,
+    WireRustCodecCstGenerator, WireRustCodecCstGeneratorContext,
 };
 use crate::codegen::ir::ty::IrType;
-use crate::library::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
+use crate::library::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
 pub(crate) fn generate_impl_decode(
     types: &[IrType],
-    context: WireRustTransferCstGeneratorContext,
+    context: WireRustCodecCstGeneratorContext,
 ) -> Acc<Vec<WireRustOutputCode>> {
     let mut lines = Acc::<Vec<WireRustOutputCode>>::default();
     lines.push_acc(generate_impl_decode_misc());
@@ -57,9 +57,9 @@ fn generate_impl_decode_misc() -> Acc<WireRustOutputCode> {
 
 fn generate_impl_decode_for_type(
     ty: &IrType,
-    context: WireRustTransferCstGeneratorContext,
+    context: WireRustCodecCstGeneratorContext,
 ) -> Acc<WireRustOutputCode> {
-    let generator = WireRustTransferCstGenerator::new(ty.clone(), context);
+    let generator = WireRustCodecCstGenerator::new(ty.clone(), context);
     let raw: Acc<Option<String>> = generator.generate_impl_decode_body();
     raw.map(|body, target| {
         body.map(|body| {
@@ -83,9 +83,9 @@ fn generate_impl_decode_for_type(
 
 fn generate_impl_decode_jsvalue_for_type(
     ty: &IrType,
-    context: WireRustTransferCstGeneratorContext,
+    context: WireRustCodecCstGeneratorContext,
 ) -> Acc<WireRustOutputCode> {
-    let generator = WireRustTransferCstGenerator::new(ty.clone(), context);
+    let generator = WireRustCodecCstGenerator::new(ty.clone(), context);
     generator
         .generate_impl_decode_jsvalue_body()
         .map(|body| Acc {

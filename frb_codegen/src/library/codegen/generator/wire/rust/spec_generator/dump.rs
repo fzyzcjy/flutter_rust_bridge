@@ -2,10 +2,10 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::rust::spec_generator::base::{
     WireRustGenerator, WireRustGeneratorContext,
 };
-use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::WireRustTransferCstGenerator;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::WireRustCodecCstGenerator;
 use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
-use crate::library::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
+use crate::library::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use serde::Serialize;
 use std::collections::HashMap;
@@ -36,7 +36,7 @@ pub(super) fn generate_dump_info(
             .iter()
             .map(|ty| {
                 let gen = WireRustGenerator::new(ty.clone(), context);
-                let cst_gen = WireRustTransferCstGenerator::new(
+                let cst_gen = WireRustCodecCstGenerator::new(
                     ty.clone(),
                     context.as_wire_rust_transfer_cst_context(),
                 );

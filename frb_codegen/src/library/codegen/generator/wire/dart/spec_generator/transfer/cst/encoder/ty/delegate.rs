@@ -2,7 +2,7 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::base::*;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartTransferCstGeneratorEncoderTrait;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 use crate::codegen::ir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegateArrayMode, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
 };
@@ -12,7 +12,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartG
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
-impl<'a> WireDartTransferCstGeneratorEncoderTrait for DelegateWireDartTransferCstGenerator<'a> {
+impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGenerator<'a> {
     fn encode_func_body(&self) -> Acc<Option<String>> {
         match &self.ir {
             IrTypeDelegate::Array(ref array) => match &array.mode {
@@ -114,7 +114,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for DelegateWireDartTransferCs
             (IrTypeDelegate::String, Target::Wasm) => "String".into(),
             (IrTypeDelegate::StringList, Target::Wasm) => "List<String>".into(),
             (IrTypeDelegate::StringList, _) => "ffi.Pointer<wire_cst_StringList>".to_owned(),
-            _ => WireDartTransferCstGenerator::new(self.ir.get_delegate(), self.context)
+            _ => WireDartCodecCstGenerator::new(self.ir.get_delegate(), self.context)
                 .dart_wire_type(target),
         }
     }

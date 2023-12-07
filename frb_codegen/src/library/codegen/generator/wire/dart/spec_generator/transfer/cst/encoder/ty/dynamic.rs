@@ -1,9 +1,9 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::base::*;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartTransferCstGeneratorEncoderTrait;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 
-impl<'a> WireDartTransferCstGeneratorEncoderTrait for DynamicWireDartTransferCstGenerator<'a> {
+impl<'a> WireDartCodecCstGeneratorEncoderTrait for DynamicWireDartCodecCstGenerator<'a> {
     fn encode_func_body(&self) -> Acc<Option<String>> {
         Acc::default()
     }

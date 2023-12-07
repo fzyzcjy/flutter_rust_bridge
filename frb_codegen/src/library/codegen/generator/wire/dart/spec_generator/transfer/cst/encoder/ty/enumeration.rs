@@ -3,12 +3,12 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::misc::dart_wire_type_from_rust_wire_type_or_wasm;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartTransferCstGeneratorEncoderTrait;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 use crate::codegen::ir::ty::enumeration::{IrVariant, IrVariantKind};
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
-impl<'a> WireDartTransferCstGeneratorEncoderTrait for EnumRefWireDartTransferCstGenerator<'a> {
+impl<'a> WireDartCodecCstGeneratorEncoderTrait for EnumRefWireDartCodecCstGenerator<'a> {
     fn encode_func_body(&self) -> Acc<Option<String>> {
         let variants = (self.ir.get(self.context.ir_pack).variants())
             .iter()
@@ -43,7 +43,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for EnumRefWireDartTransferCst
     }
 }
 
-impl<'a> EnumRefWireDartTransferCstGenerator<'a> {
+impl<'a> EnumRefWireDartCodecCstGenerator<'a> {
     fn generate_api_fill_to_wire_body_variant(&self, index: usize, variant: &IrVariant) -> String {
         let ident = &self.ir.ident.0.name;
         let wrapper_name = &variant.wrapper_name;

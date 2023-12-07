@@ -1,4 +1,4 @@
 use crate::codegen::generator::wire::rust::spec_generator::transfer::sse::base::*;
-use crate::codegen::generator::wire::rust::spec_generator::transfer::sse::decoder::ty::WireRustTransferSseGeneratorDecoderTrait;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::sse::decoder::ty::WireRustCodecSseGeneratorDecoderTrait;
 
-impl<'a> WireRustTransferSseGeneratorDecoderTrait for RecordWireRustTransferSseGenerator<'a> {}
+impl<'a> WireRustCodecSseGeneratorDecoderTrait for RecordWireRustCodecSseGenerator<'a> {}

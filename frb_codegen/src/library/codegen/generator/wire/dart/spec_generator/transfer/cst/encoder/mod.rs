@@ -5,14 +5,14 @@ use crate::codegen::generator::wire::dart::spec_generator::base::{
 };
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::base::{
-    WireDartTransferCstGenerator, WireDartTransferCstGeneratorContext,
+    WireDartCodecCstGenerator, WireDartCodecCstGeneratorContext,
 };
 use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Optional;
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
-use crate::library::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartTransferCstGeneratorEncoderTrait;
+use crate::library::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use serde::Serialize;
 
@@ -20,16 +20,16 @@ mod misc;
 pub(crate) mod ty;
 
 #[derive(Clone, Serialize)]
-pub(crate) struct WireDartOutputSpecTransferCstEncoder {
+pub(crate) struct WireDartOutputSpecCodecCstEncoder {
     pub(crate) encode_funcs: Acc<Vec<WireDartOutputCode>>,
     pub(crate) encode_api_fill_to_wire_funcs: Acc<Vec<WireDartOutputCode>>,
 }
 
 pub(crate) fn generate(
-    context: WireDartTransferCstGeneratorContext,
+    context: WireDartCodecCstGeneratorContext,
     cache: &IrPackComputedCache,
-) -> WireDartOutputSpecTransferCstEncoder {
-    WireDartOutputSpecTransferCstEncoder {
+) -> WireDartOutputSpecCodecCstEncoder {
+    WireDartOutputSpecCodecCstEncoder {
         encode_funcs: cache
             .distinct_input_types
             .iter()
@@ -45,9 +45,9 @@ pub(crate) fn generate(
 
 fn generate_encode_func(
     ty: &IrType,
-    context: WireDartTransferCstGeneratorContext,
+    context: WireDartCodecCstGeneratorContext,
 ) -> Acc<WireDartOutputCode> {
-    let generator = WireDartTransferCstGenerator::new(ty.clone(), context);
+    let generator = WireDartCodecCstGenerator::new(ty.clone(), context);
     generator
         .encode_func_body()
         .map(|raw_body, target: TargetOrCommon| {
@@ -57,7 +57,7 @@ fn generate_encode_func(
                         "{} cst_encode_{}({} raw) {{
                             {raw_body}
                         }}",
-                        WireDartTransferCstGenerator::new(ty.clone(), context)
+                        WireDartCodecCstGenerator::new(ty.clone(), context)
                             .dart_wire_type(target.as_target_or(Target::Io)),
                         ty.safe_ident(),
                         ApiDartGenerator::new(ty.clone(), context.as_api_dart_context())
@@ -83,10 +83,10 @@ fn generate_encode_func(
 
 fn generate_encode_api_fill_to_wire_func(
     ty: &IrType,
-    context: WireDartTransferCstGeneratorContext,
+    context: WireDartCodecCstGeneratorContext,
 ) -> WireDartOutputCode {
     if let Some(body) =
-        WireDartTransferCstGenerator::new(ty.clone(), context).encode_api_fill_to_wire_body()
+        WireDartCodecCstGenerator::new(ty.clone(), context).encode_api_fill_to_wire_body()
     {
         let target_wire_type = match ty {
             Optional(inner) => &inner.inner,
@@ -100,7 +100,7 @@ fn generate_encode_api_fill_to_wire_func(
                 }}",
                 ty.safe_ident(),
                 ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type(),
-                WireDartTransferCstGenerator::new(target_wire_type.clone(), context)
+                WireDartCodecCstGenerator::new(target_wire_type.clone(), context)
                     .dart_wire_type(Target::Io),
             ),
             ..Default::default()

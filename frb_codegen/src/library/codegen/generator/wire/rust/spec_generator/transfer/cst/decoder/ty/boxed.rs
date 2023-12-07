@@ -13,9 +13,9 @@ use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::*;
-use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 
-impl<'a> WireRustTransferCstGeneratorDecoderTrait for BoxedWireRustTransferCstGenerator<'a> {
+impl<'a> WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerator<'a> {
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         let box_inner = self.ir.inner.as_ref();
         let exist_in_real_api = self.ir.exist_in_real_api;
@@ -80,7 +80,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for BoxedWireRustTransferCstGe
                     )],
                     return_type: Some(format!(
                         "*mut {}",
-                        WireRustTransferCstGenerator::new(self.ir.inner.clone(), self.context)
+                        WireRustCodecCstGenerator::new(self.ir.inner.clone(), self.context)
                             .rust_wire_type(Target::Io)
                     )),
                     body: "flutter_rust_bridge::for_generated::new_leak_box_ptr(value)".to_owned(),
@@ -103,7 +103,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for BoxedWireRustTransferCstGe
                     ),
                     body: format!(
                         "flutter_rust_bridge::for_generated::new_leak_box_ptr({}::new_with_null_ptr())",
-                        WireRustTransferCstGenerator::new(self.ir.inner.clone(), self.context)
+                        WireRustCodecCstGenerator::new(self.ir.inner.clone(), self.context)
                             .rust_wire_type(Target::Io)
                     ),
                     target: Target::Io,
@@ -118,7 +118,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for BoxedWireRustTransferCstGe
         if target == Target::Wasm && self.ir.inner.is_primitive() {
             JS_VALUE.into()
         } else {
-            WireRustTransferCstGenerator::new(self.ir.inner.clone(), self.context)
+            WireRustCodecCstGenerator::new(self.ir.inner.clone(), self.context)
                 .rust_wire_type(target)
         }
     }

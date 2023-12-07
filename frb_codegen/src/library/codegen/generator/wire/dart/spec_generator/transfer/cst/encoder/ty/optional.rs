@@ -2,10 +2,10 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::base::*;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartTransferCstGeneratorEncoderTrait;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
-impl<'a> WireDartTransferCstGeneratorEncoderTrait for OptionalWireDartTransferCstGenerator<'a> {
+impl<'a> WireDartCodecCstGeneratorEncoderTrait for OptionalWireDartCodecCstGenerator<'a> {
     fn encode_func_body(&self) -> Acc<Option<String>> {
         Acc::new(|target| match target {
             TargetOrCommon::Io | TargetOrCommon::Wasm => Some(format!(
@@ -25,11 +25,11 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for OptionalWireDartTransferCs
         if target == Target::Wasm {
             format!(
                 "{}?",
-                WireDartTransferCstGenerator::new(self.ir.inner.clone(), self.context)
+                WireDartCodecCstGenerator::new(self.ir.inner.clone(), self.context)
                     .dart_wire_type(target)
             )
         } else {
-            WireDartTransferCstGenerator::new(self.ir.inner.clone(), self.context)
+            WireDartCodecCstGenerator::new(self.ir.inner.clone(), self.context)
                 .dart_wire_type(target)
         }
     }

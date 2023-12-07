@@ -3,16 +3,16 @@ use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFuncParam;
-use crate::codegen::generator::wire::rust::spec_generator::transfer::base::WireRustTransferEntrypointTrait;
-use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::WireRustTransferCstGenerator;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::base::WireRustCodecEntrypointTrait;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::WireRustCodecCstGenerator;
 use crate::codegen::ir::func::IrFunc;
-use crate::library::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
+use crate::library::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
-pub(crate) struct CstWireRustTransferEntrypoint {}
+pub(crate) struct CstWireRustCodecEntrypoint {}
 
-impl WireRustTransferEntrypointTrait for CstWireRustTransferEntrypoint {
+impl WireRustCodecEntrypointTrait for CstWireRustCodecEntrypoint {
     fn generate_func_params(
         &self,
         func: &IrFunc,
@@ -49,7 +49,7 @@ impl WireRustTransferEntrypointTrait for CstWireRustTransferEntrypoint {
                         name: name.clone(),
                         rust_type: format!(
                             "impl CstDecoder<{}> + core::panic::UnwindSafe",
-                            WireRustTransferCstGenerator::new(
+                            WireRustCodecCstGenerator::new(
                                 field.ty.clone(),
                                 context.as_wire_rust_transfer_cst_context()
                             )
@@ -83,7 +83,7 @@ impl WireRustTransferEntrypointTrait for CstWireRustTransferEntrypoint {
             .iter()
             .map(|field| {
                 let name = field.name.rust_style();
-                let wire_func_call_decode = WireRustTransferCstGenerator::new(
+                let wire_func_call_decode = WireRustCodecCstGenerator::new(
                     field.ty.clone(),
                     context.as_wire_rust_transfer_cst_context(),
                 )

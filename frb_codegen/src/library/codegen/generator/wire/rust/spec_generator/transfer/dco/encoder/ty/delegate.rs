@@ -1,12 +1,12 @@
 use crate::codegen::generator::wire::rust::spec_generator::transfer::dco::base::*;
-use crate::codegen::generator::wire::rust::spec_generator::transfer::dco::encoder::ty::WireRustTransferDcoGeneratorEncoderTrait;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
 use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
 use itertools::Itertools;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::dco::encoder::misc::generate_impl_into_into_dart;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::dco::encoder::ty::enumeration::parse_wrapper_name_into_dart_name_and_self_path;
 use crate::codegen::ir::ty::IrType::EnumRef;
 
-impl<'a> WireRustTransferDcoGeneratorEncoderTrait for DelegateWireRustTransferDcoGenerator<'a> {
+impl<'a> WireRustCodecDcoGeneratorEncoderTrait for DelegateWireRustCodecDcoGenerator<'a> {
     fn generate_impl_into_dart(&self) -> Option<String> {
         if let IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) = &self.ir {
             let src = ir.get(self.context.ir_pack);
@@ -40,7 +40,7 @@ impl<'a> WireRustTransferDcoGeneratorEncoderTrait for DelegateWireRustTransferDc
 
     fn generate_access_object_core(&self, obj: String) -> String {
         if let IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) = &self.ir {
-            WireRustTransferDcoGenerator::new(EnumRef(ir.clone()), self.context)
+            WireRustCodecDcoGenerator::new(EnumRef(ir.clone()), self.context)
                 .generate_access_object_core(obj)
         } else {
             obj

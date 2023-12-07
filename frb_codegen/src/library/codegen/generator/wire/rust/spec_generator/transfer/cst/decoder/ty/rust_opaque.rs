@@ -10,12 +10,12 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::*;
-use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use itertools::Itertools;
 use std::borrow::Cow;
 
-impl<'a> WireRustTransferCstGeneratorDecoderTrait for RustOpaqueWireRustTransferCstGenerator<'a> {
+impl<'a> WireRustCodecCstGeneratorDecoderTrait for RustOpaqueWireRustCodecCstGenerator<'a> {
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         Acc {
             io: Some(generalized_rust_opaque_generate_impl_decode_body().into()),

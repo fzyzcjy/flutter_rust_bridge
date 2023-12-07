@@ -3,14 +3,14 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::misc::dart_wire_type_from_rust_wire_type_or_wasm;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartTransferCstGeneratorEncoderTrait;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::ty::structure::IrTypeStructRef;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 use GeneralizedStructGeneratorMode::Struct;
 
-impl<'a> WireDartTransferCstGeneratorEncoderTrait for StructRefWireDartTransferCstGenerator<'a> {
+impl<'a> WireDartCodecCstGeneratorEncoderTrait for StructRefWireDartCodecCstGenerator<'a> {
     fn encode_func_body(&self) -> Acc<Option<String>> {
         self.new_generalized_generator().encode_func_body()
     }
@@ -24,7 +24,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for StructRefWireDartTransferC
     }
 }
 
-impl<'a> StructRefWireDartTransferCstGenerator<'a> {
+impl<'a> StructRefWireDartCodecCstGenerator<'a> {
     fn new_generalized_generator(&self) -> GeneralizedStructGenerator {
         GeneralizedStructGenerator::new(self.ir.clone(), self.context, Struct)
     }
@@ -37,14 +37,14 @@ pub(crate) enum GeneralizedStructGeneratorMode {
 
 pub(crate) struct GeneralizedStructGenerator<'a> {
     ir: IrTypeStructRef,
-    context: WireDartTransferCstGeneratorContext<'a>,
+    context: WireDartCodecCstGeneratorContext<'a>,
     mode: GeneralizedStructGeneratorMode,
 }
 
 impl<'a> GeneralizedStructGenerator<'a> {
     pub(crate) fn new(
         ir: IrTypeStructRef,
-        context: WireDartTransferCstGeneratorContext<'a>,
+        context: WireDartCodecCstGeneratorContext<'a>,
         mode: GeneralizedStructGeneratorMode,
     ) -> Self {
         Self { ir, context, mode }

@@ -21,4 +21,4 @@ use crate::library::codegen::ir::ty::IrTypeTrait;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
-pub(crate) trait WireDartTransferSseGeneratorEncoderTrait {}
+pub(crate) trait WireDartCodecSseGeneratorEncoderTrait {}

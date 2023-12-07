@@ -1,11 +1,11 @@
-use crate::library::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
+use crate::library::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::rust::spec_generator::base::{
     WireRustGenerator, WireRustGeneratorContext,
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::{
-    WireRustTransferCstGenerator, WireRustTransferCstGeneratorContext,
+    WireRustCodecCstGenerator, WireRustCodecCstGeneratorContext,
 };
 use crate::codegen::generator::wire::rust::IrPackComputedCache;
 use serde::Serialize;
@@ -18,7 +18,7 @@ mod misc;
 pub(crate) mod ty;
 
 #[derive(Serialize)]
-pub(crate) struct WireDartOutputSpecTransferCstDecoder {
+pub(crate) struct WireDartOutputSpecCodecCstDecoder {
     pub allocate_funcs: Acc<Vec<WireRustOutputCode>>,
     pub impl_decode: Acc<Vec<WireRustOutputCode>>,
     pub decoder_class: Acc<Vec<WireRustOutputCode>>,
@@ -26,16 +26,14 @@ pub(crate) struct WireDartOutputSpecTransferCstDecoder {
 }
 
 pub(crate) fn generate(
-    context: WireRustTransferCstGeneratorContext,
+    context: WireRustCodecCstGeneratorContext,
     cache: &IrPackComputedCache,
-) -> WireDartOutputSpecTransferCstDecoder {
-    WireDartOutputSpecTransferCstDecoder {
+) -> WireDartOutputSpecCodecCstDecoder {
+    WireDartOutputSpecCodecCstDecoder {
         allocate_funcs: cache
             .distinct_input_types
             .iter()
-            .map(|ty| {
-                WireRustTransferCstGenerator::new(ty.clone(), context).generate_allocate_funcs()
-            })
+            .map(|ty| WireRustCodecCstGenerator::new(ty.clone(), context).generate_allocate_funcs())
             .collect(),
         impl_decode: generate_impl_decode(&cache.distinct_input_types, context),
         decoder_class: Acc::new_io(
@@ -43,7 +41,7 @@ pub(crate) fn generate(
                 .distinct_input_types
                 .iter()
                 .filter_map(|ty| {
-                    WireRustTransferCstGenerator::new(ty.clone(), context).generate_decoder_class()
+                    WireRustCodecCstGenerator::new(ty.clone(), context).generate_decoder_class()
                 })
                 .map(|x| x.into())
                 .collect(),

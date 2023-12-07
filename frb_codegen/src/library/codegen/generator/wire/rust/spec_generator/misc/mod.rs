@@ -9,12 +9,12 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
 };
 use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::generate_wire_func;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::WireRustTransferCstGenerator;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::WireRustCodecCstGenerator;
 use crate::codegen::generator::wire::rust::IrPackComputedCache;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
-use crate::library::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
+use crate::library::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use crate::misc::consts::HANDLER_NAME;
 use itertools::Itertools;
@@ -212,11 +212,8 @@ fn generate_extern_struct_names(
         .iter()
         .filter(|ty| matches!(&ty, IrType::StructRef(_)))
         .map(|ty| {
-            WireRustTransferCstGenerator::new(
-                ty.clone(),
-                context.as_wire_rust_transfer_cst_context(),
-            )
-            .rust_wire_type(Target::Io)
+            WireRustCodecCstGenerator::new(ty.clone(), context.as_wire_rust_transfer_cst_context())
+                .rust_wire_type(Target::Io)
         })
         .collect()
 }

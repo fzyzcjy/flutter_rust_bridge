@@ -4,7 +4,7 @@ use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::*;
-use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumMode, IrVariant, IrVariantKind};
 use crate::codegen::ir::ty::IrType;
@@ -12,7 +12,7 @@ use itertools::Itertools;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::impl_new_with_nullptr::generate_impl_new_with_nullptr_code_block;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::misc::rust_wire_type_add_prefix_or_js_value;
 
-impl<'a> WireRustTransferCstGeneratorDecoderTrait for EnumRefWireRustTransferCstGenerator<'a> {
+impl<'a> WireRustCodecCstGeneratorDecoderTrait for EnumRefWireRustCodecCstGenerator<'a> {
     fn generate_decoder_class(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_pack);
         if src.mode == IrEnumMode::Simple {
@@ -116,7 +116,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for EnumRefWireRustTransferCst
     }
 }
 
-impl<'a> EnumRefWireRustTransferCstGenerator<'a> {
+impl<'a> EnumRefWireRustCodecCstGenerator<'a> {
     fn generate_decoder_class_variant(&self, variant: &IrVariant) -> String {
         let fields = match &variant.kind {
             IrVariantKind::Value => vec![],
@@ -125,7 +125,7 @@ impl<'a> EnumRefWireRustTransferCstGenerator<'a> {
                 .iter()
                 .map(|field| {
                     let field_generator =
-                        WireRustTransferCstGenerator::new(field.ty.clone(), self.context);
+                        WireRustCodecCstGenerator::new(field.ty.clone(), self.context);
                     format!(
                         "{}: {}{},",
                         field.name.rust_style(),
@@ -176,7 +176,7 @@ impl<'a> EnumRefWireRustTransferCstGenerator<'a> {
     }
 
     fn generate_impl_new_with_nullptr_variant_field(&self, field: &IrField) -> String {
-        let ty_generator = WireRustTransferCstGenerator::new(field.ty.clone(), self.context);
+        let ty_generator = WireRustCodecCstGenerator::new(field.ty.clone(), self.context);
 
         let init = if ty_generator.rust_wire_is_pointer(Target::Io)
             || matches!(field.ty, IrType::RustOpaque(_) | IrType::DartOpaque(_))

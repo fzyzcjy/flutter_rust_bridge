@@ -21,6 +21,6 @@ use crate::library::codegen::ir::ty::IrTypeTrait;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
-pub(crate) trait WireDartTransferDcoGeneratorDecoderTrait {
+pub(crate) trait WireDartCodecDcoGeneratorDecoderTrait {
     fn generate_impl_decode_body(&self) -> String;
 }

@@ -2,8 +2,8 @@ use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::dump::generate_dump_info;
 use crate::codegen::generator::wire::dart::spec_generator::misc::WireDartOutputSpecMisc;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::WireDartOutputSpecTransferCstEncoder;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::decoder::WireDartOutputSpecTransferDcoDecoder;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::WireDartOutputSpecCodecCstEncoder;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::decoder::WireDartOutputSpecCodecDcoDecoder;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen::ConfigDumpContent::GeneratorInfo;
@@ -20,8 +20,8 @@ pub(super) mod wire_class;
 #[derive(Clone, Serialize)]
 pub(crate) struct WireDartOutputSpec {
     pub(super) misc: WireDartOutputSpecMisc,
-    pub(super) rust2dart: WireDartOutputSpecTransferDcoDecoder,
-    pub(super) dart2rust: WireDartOutputSpecTransferCstEncoder,
+    pub(super) rust2dart: WireDartOutputSpecCodecDcoDecoder,
+    pub(super) dart2rust: WireDartOutputSpecCodecCstEncoder,
 }
 
 pub(crate) fn generate(

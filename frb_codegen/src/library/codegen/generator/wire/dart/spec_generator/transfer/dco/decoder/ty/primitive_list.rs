@@ -1,11 +1,9 @@
 use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::decoder::misc::gen_decode_simple_type_cast;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::decoder::ty::WireDartTransferDcoGeneratorDecoderTrait;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::decoder::ty::WireDartCodecDcoGeneratorDecoderTrait;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 
-impl<'a> WireDartTransferDcoGeneratorDecoderTrait
-    for PrimitiveListWireDartTransferDcoGenerator<'a>
-{
+impl<'a> WireDartCodecDcoGeneratorDecoderTrait for PrimitiveListWireDartCodecDcoGenerator<'a> {
     fn generate_impl_decode_body(&self) -> String {
         match &self.ir.primitive {
             IrTypePrimitive::I64 => "return Int64List.from(raw);".into(),

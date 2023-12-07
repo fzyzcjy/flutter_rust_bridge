@@ -4,30 +4,30 @@ use crate::codegen::generator::wire::rust::spec_generator::base::{
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::dco::base::{
-    WireRustTransferDcoGenerator, WireRustTransferDcoGeneratorContext,
+    WireRustCodecDcoGenerator, WireRustCodecDcoGeneratorContext,
 };
 use crate::codegen::generator::wire::rust::IrPackComputedCache;
-use crate::library::codegen::generator::wire::rust::spec_generator::transfer::dco::encoder::ty::WireRustTransferDcoGeneratorEncoderTrait;
+use crate::library::codegen::generator::wire::rust::spec_generator::transfer::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
 use serde::Serialize;
 
 mod misc;
 pub(crate) mod ty;
 
 #[derive(Serialize)]
-pub(crate) struct WireDartOutputSpecTransferDcoEncoder {
+pub(crate) struct WireDartOutputSpecCodecDcoEncoder {
     pub impl_into_dart: Acc<Vec<WireRustOutputCode>>,
 }
 
 pub(crate) fn generate(
-    context: WireRustTransferDcoGeneratorContext,
+    context: WireRustCodecDcoGeneratorContext,
     cache: &IrPackComputedCache,
-) -> WireDartOutputSpecTransferDcoEncoder {
-    WireDartOutputSpecTransferDcoEncoder {
+) -> WireDartOutputSpecCodecDcoEncoder {
+    WireDartOutputSpecCodecDcoEncoder {
         impl_into_dart: cache
             .distinct_types
             .iter()
             .filter_map(|ty| {
-                WireRustTransferDcoGenerator::new(ty.clone(), context).generate_impl_into_dart()
+                WireRustCodecDcoGenerator::new(ty.clone(), context).generate_impl_into_dart()
             })
             .map(|x| Acc::new_common(x.into()))
             .collect(),

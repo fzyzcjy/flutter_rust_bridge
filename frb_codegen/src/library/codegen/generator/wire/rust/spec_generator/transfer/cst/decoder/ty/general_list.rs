@@ -9,13 +9,13 @@ use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::misc::{
     generate_class_from_fields, rust_wire_type_add_prefix_or_js_value,
 };
-use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::general_list::IrTypeGeneralList;
 use crate::codegen::ir::ty::IrType::{Delegate, Optional};
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 
-impl<'a> WireRustTransferCstGeneratorDecoderTrait for GeneralListWireRustTransferCstGenerator<'a> {
+impl<'a> WireRustCodecCstGeneratorDecoderTrait for GeneralListWireRustCodecCstGenerator<'a> {
     fn generate_decoder_class(&self) -> Option<String> {
         Some(generate_class_from_fields(
             self.ir.clone(),
@@ -24,7 +24,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for GeneralListWireRustTransfe
                 format!(
                     "ptr: *mut {}{}",
                     general_list_maybe_extra_pointer_indirection(&self.ir),
-                    WireRustTransferCstGenerator::new(self.ir.inner.clone(), self.context)
+                    WireRustCodecCstGenerator::new(self.ir.inner.clone(), self.context)
                         .rust_wire_type(Target::Io)
                 ),
                 "len: i32".to_string(),
@@ -89,9 +89,9 @@ pub(crate) fn generate_list_generate_allocate_func(
     safe_ident: &str,
     list: &IrType,
     inner: &IrType,
-    context: WireRustTransferCstGeneratorContext,
+    context: WireRustCodecCstGeneratorContext,
 ) -> ExternFunc {
-    let list_generator = WireRustTransferCstGenerator::new(list.clone(), context);
+    let list_generator = WireRustCodecCstGenerator::new(list.clone(), context);
 
     // let wasm = false;
     ExternFunc {
@@ -124,7 +124,7 @@ pub(crate) fn generate_list_generate_allocate_func(
                     general_list_maybe_extra_pointer_indirection(&IrTypeGeneralList {
                         inner: Box::new(inner.clone())
                     }),
-                    WireRustTransferCstGenerator::new(inner.clone(), context).rust_wire_type(Target::Io)
+                    WireRustCodecCstGenerator::new(inner.clone(), context).rust_wire_type(Target::Io)
                 )
             }
         ),

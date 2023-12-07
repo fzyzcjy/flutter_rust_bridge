@@ -4,15 +4,15 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::primitive::dart_native_type_of_primitive;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartTransferCstGeneratorEncoderTrait;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGenerator;
-use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::WireRustTransferCstGenerator;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::WireRustCodecCstGenerator;
 use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
 use crate::codegen::ir::ty::IrType::StructRef;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
-use crate::library::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
+use crate::library::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 
-impl<'a> WireDartTransferCstGeneratorEncoderTrait for BoxedWireDartTransferCstGenerator<'a> {
+impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerator<'a> {
     fn encode_func_body(&self) -> Acc<Option<String>> {
         let ir_safe_ident = self.ir.safe_ident();
         let inner_safe_ident = self.ir.inner.safe_ident();
@@ -76,12 +76,12 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for BoxedWireDartTransferCstGe
                     || self.ir.inner.is_array()
                     || self.ir.inner.is_primitive()
                 {
-                    WireDartTransferCstGenerator::new(self.ir.inner.clone(), self.context)
+                    WireDartCodecCstGenerator::new(self.ir.inner.clone(), self.context)
                         .dart_wire_type(target)
                 } else {
                     format!(
                         "int /* *{} */",
-                        WireRustTransferCstGenerator::new(
+                        WireRustCodecCstGenerator::new(
                             self.ir.inner.clone(),
                             self.context.as_wire_rust_context()
                         )
@@ -91,7 +91,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for BoxedWireDartTransferCstGe
             }
             Target::Io => {
                 if self.ir.inner.is_array() {
-                    return WireDartTransferCstGenerator::new(self.ir.inner.clone(), self.context)
+                    return WireDartCodecCstGenerator::new(self.ir.inner.clone(), self.context)
                         .dart_wire_type(Target::Io);
                 }
                 let wire_type = self
@@ -100,7 +100,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for BoxedWireDartTransferCstGe
                     .as_primitive()
                     .map(|prim| dart_native_type_of_primitive(prim).to_owned())
                     .unwrap_or_else(|| {
-                        WireDartTransferCstGenerator::new(self.ir.inner.clone(), self.context)
+                        WireDartCodecCstGenerator::new(self.ir.inner.clone(), self.context)
                             .dart_wire_type(target)
                     });
                 format!("ffi.Pointer<{wire_type}>")
@@ -109,7 +109,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for BoxedWireDartTransferCstGe
     }
 }
 
-fn is_empty_struct(ty: &BoxedWireDartTransferCstGenerator) -> bool {
+fn is_empty_struct(ty: &BoxedWireDartCodecCstGenerator) -> bool {
     if let StructRef(ref s) = ty.ir.inner.as_ref() {
         s.get(ty.context.ir_pack).fields.is_empty()
     } else {

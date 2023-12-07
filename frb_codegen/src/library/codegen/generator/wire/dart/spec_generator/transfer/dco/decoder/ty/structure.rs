@@ -1,11 +1,11 @@
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::base::*;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::decoder::ty::WireDartTransferDcoGeneratorDecoderTrait;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::decoder::ty::WireDartCodecDcoGeneratorDecoderTrait;
 use crate::codegen::ir::func::IrFuncOwnerInfo;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
-impl<'a> WireDartTransferDcoGeneratorDecoderTrait for StructRefWireDartTransferDcoGenerator<'a> {
+impl<'a> WireDartCodecDcoGeneratorDecoderTrait for StructRefWireDartCodecDcoGenerator<'a> {
     fn generate_impl_decode_body(&self) -> String {
         let s = self.ir.get(self.context.ir_pack);
 
