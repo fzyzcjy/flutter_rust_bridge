@@ -97,6 +97,7 @@ class BytesWriter {
     _length = required;
   }
 
+  // TODO use codegen instead of closure to be faster
   /// {@macro flutter_rust_bridge.internal}
   @pragma('vm:prefer-inline')
   void writeInt64(int value) {
