@@ -14,14 +14,14 @@ impl<'a> WireRustGeneratorMiscTrait for DartOpaqueWireRustGenerator<'a> {
     fn generate_related_funcs(&self) -> Acc<WireRustOutputCode> {
         Acc {
             io: vec![ExternFunc {
-                func_name: "dart_opaque_dart2rust_api2wire".into(),
+                func_name: "dart_opaque_dart2rust_encode".into(),
                 params: vec![ExternFuncParam {
                     name: "handle".to_owned(),
                     rust_type: "flutter_rust_bridge::for_generated::dart_sys::Dart_Handle".to_owned(),
                     dart_type: "NOT_USED".into(),
                 }.clone()],
                 return_type: Some("*const std::ffi::c_void".into()),
-                body: format!("unsafe {{ flutter_rust_bridge::for_generated::dart_opaque_dart2rust_api2wire(&*{HANDLER_NAME}, handle) }}").into(),
+                body: format!("unsafe {{ flutter_rust_bridge::for_generated::dart_opaque_dart2rust_encode(&*{HANDLER_NAME}, handle) }}").into(),
                 target: Target::Io,
             }].into(),
             ..Default::default()
