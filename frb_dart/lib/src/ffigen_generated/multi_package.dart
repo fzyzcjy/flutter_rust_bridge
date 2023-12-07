@@ -248,19 +248,19 @@ class MultiPackageCBinding {
       _dart_opaque_drop_thread_box_persistent_handlePtr
           .asFunction<void Function(int)>();
 
-  Object dart_opaque_rust2dart_wire2api(
+  int dart_opaque_rust2dart_decode(
     int ptr,
   ) {
-    return _dart_opaque_rust2dart_wire2api(
+    return _dart_opaque_rust2dart_decode(
       ptr,
     );
   }
 
-  late final _dart_opaque_rust2dart_wire2apiPtr =
-      _lookup<ffi.NativeFunction<ffi.Handle Function(ffi.UintPtr)>>(
-          'dart_opaque_rust2dart_wire2api');
-  late final _dart_opaque_rust2dart_wire2api =
-      _dart_opaque_rust2dart_wire2apiPtr.asFunction<Object Function(int)>();
+  late final _dart_opaque_rust2dart_decodePtr =
+      _lookup<ffi.NativeFunction<GeneralizedDartHandle Function(ffi.UintPtr)>>(
+          'dart_opaque_rust2dart_decode');
+  late final _dart_opaque_rust2dart_decode =
+      _dart_opaque_rust2dart_decodePtr.asFunction<int Function(int)>();
 
   /// # Safety
   ///
@@ -503,4 +503,6 @@ typedef DartDartPort = int;
 
 final class Result_JsValue extends ffi.Opaque {}
 
+typedef GeneralizedDartHandle = ffi.Int;
+typedef DartGeneralizedDartHandle = int;
 typedef WireSyncReturn = ffi.Pointer<Dart_CObject>;

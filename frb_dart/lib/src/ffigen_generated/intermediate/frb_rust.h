@@ -7,6 +7,10 @@ typedef struct _Dart_Handle* Dart_Handle;
 
 typedef struct Result_JsValue Result_JsValue;
 
+typedef JsValue GeneralizedDartHandle;
+
+typedef Dart_Handle GeneralizedDartHandle;
+
 typedef Dart_CObject *WireSyncReturn;
 
 extern struct Result_JsValue post_message(const PortLike *this_, const JsValue *value);
@@ -17,7 +21,7 @@ extern void js_console_error(const str *msg);
 
 void dart_opaque_drop_thread_box_persistent_handle(uintptr_t ptr);
 
-Dart_Handle dart_opaque_rust2dart_wire2api(uintptr_t ptr);
+GeneralizedDartHandle dart_opaque_rust2dart_decode(uintptr_t ptr);
 
 /**
  * # Safety
