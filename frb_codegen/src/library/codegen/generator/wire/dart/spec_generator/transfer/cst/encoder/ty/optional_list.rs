@@ -25,8 +25,4 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for OptionalListWireDartTransf
             ..Default::default()
         }
     }
-
-    fn dart_wire_type(&self, target: Target) -> String {
-        general_or_optional_list_dart_wire_type(target, &self.ir.clone().into())
-    }
 }
