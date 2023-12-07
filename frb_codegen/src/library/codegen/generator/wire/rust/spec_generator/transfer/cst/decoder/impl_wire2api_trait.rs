@@ -6,7 +6,6 @@ use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::
     WireRustTransferCstGenerator, WireRustTransferCstGeneratorContext,
 };
 use crate::codegen::ir::ty::IrType;
-use crate::library::codegen::generator::wire::rust::spec_generator::dart2rust::ty::WireRustGeneratorDart2RustTrait;
 use crate::library::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 

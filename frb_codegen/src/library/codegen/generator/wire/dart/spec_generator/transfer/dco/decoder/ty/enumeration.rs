@@ -1,6 +1,5 @@
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::base::*;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::decoder::ty::WireDartGeneratorRust2DartTrait;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::decoder::ty::WireDartTransferDcoGeneratorDecoderTrait;
 use crate::codegen::ir::ty::enumeration::{IrEnumMode, IrVariantKind};
 use crate::library::codegen::ir::ty::IrTypeTrait;

@@ -4,7 +4,6 @@ use crate::codegen::generator::wire::rust::spec_generator::base::{
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::IrPackComputedCache;
-use crate::library::codegen::generator::wire::rust::spec_generator::rust2dart::ty::WireRustGeneratorRust2DartTrait;
 use serde::Serialize;
 
 mod misc;

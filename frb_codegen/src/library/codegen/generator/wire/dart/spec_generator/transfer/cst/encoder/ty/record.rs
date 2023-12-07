@@ -5,7 +5,6 @@ use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encode
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::structure::{
     GeneralizedStructGenerator, GeneralizedStructGeneratorMode,
 };
-use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartGeneratorDart2RustTrait;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartTransferCstGeneratorEncoderTrait;
 use GeneralizedStructGeneratorMode::Record;
