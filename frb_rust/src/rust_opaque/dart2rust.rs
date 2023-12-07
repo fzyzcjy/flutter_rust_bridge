@@ -11,21 +11,21 @@ use std::{mem, ops};
 /// Retrieving an opaque pointer from Dart is an implementation detail, so this
 /// function is not guaranteed to be API-stable.
 #[cfg(not(wasm))]
-pub unsafe fn wire2api_rust_opaque<T: DartSafe>(ptr: *const core::ffi::c_void) -> RustOpaque<T> {
-    wire2api_rust_opaque_inner(ptr as _)
+pub unsafe fn decode_rust_opaque<T: DartSafe>(ptr: *const core::ffi::c_void) -> RustOpaque<T> {
+    decode_rust_opaque_inner(ptr as _)
 }
 
 #[cfg(wasm)]
-pub unsafe fn wire2api_rust_opaque<T: DartSafe>(raw: wasm_bindgen::JsValue) -> RustOpaque<T> {
+pub unsafe fn decode_rust_opaque<T: DartSafe>(raw: wasm_bindgen::JsValue) -> RustOpaque<T> {
     #[cfg(target_pointer_width = "64")]
     {
         compile_error!("64-bit pointers are not supported.");
     }
 
-    wire2api_rust_opaque_inner((raw.as_f64().unwrap() as usize) as _)
+    decode_rust_opaque_inner((raw.as_f64().unwrap() as usize) as _)
 }
 
-unsafe fn wire2api_rust_opaque_inner<T: DartSafe>(ptr: *const T) -> RustOpaque<T> {
+unsafe fn decode_rust_opaque_inner<T: DartSafe>(ptr: *const T) -> RustOpaque<T> {
     assert!(!ptr.is_null());
     RustOpaque {
         arc: Arc::from_raw(ptr),

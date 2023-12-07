@@ -7,7 +7,7 @@ use log::warn;
 use std::thread::ThreadId;
 
 #[cfg(wasm)]
-pub unsafe fn wire2api_dart_opaque<H: Handler>(
+pub unsafe fn cst_decode_dart_opaque<H: Handler>(
     handler: &H,
     raw: wasm_bindgen::JsValue,
 ) -> DartOpaque {
@@ -16,7 +16,7 @@ pub unsafe fn wire2api_dart_opaque<H: Handler>(
 }
 
 #[cfg(not(wasm))]
-pub unsafe fn wire2api_dart_opaque(raw: *const std::ffi::c_void) -> DartOpaque {
+pub unsafe fn cst_decode_dart_opaque(raw: *const std::ffi::c_void) -> DartOpaque {
     DartOpaque::from_raw(raw)
 }
 

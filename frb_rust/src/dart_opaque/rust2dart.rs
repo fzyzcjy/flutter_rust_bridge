@@ -15,17 +15,17 @@ impl From<DartOpaque> for DartAbi {
 
 #[cfg(wasm)]
 #[wasm_bindgen]
-pub unsafe fn dart_opaque_rust2dart_wire2api(ptr: usize) -> GeneralizedDartHandle {
-    dart_opaque_rust2dart_wire2api_inner(ptr)
+pub unsafe fn dart_opaque_rust2dart_decode(ptr: usize) -> GeneralizedDartHandle {
+    dart_opaque_rust2dart_decode_inner(ptr)
 }
 
 #[cfg(not(wasm))]
 #[no_mangle]
-pub unsafe extern "C" fn dart_opaque_rust2dart_wire2api(ptr: usize) -> GeneralizedDartHandle {
-    dart_opaque_rust2dart_wire2api_inner(ptr)
+pub unsafe extern "C" fn dart_opaque_rust2dart_decode(ptr: usize) -> GeneralizedDartHandle {
+    dart_opaque_rust2dart_decode_inner(ptr)
 }
 
-unsafe fn dart_opaque_rust2dart_wire2api_inner(ptr: usize) -> GeneralizedDartHandle {
+unsafe fn dart_opaque_rust2dart_decode_inner(ptr: usize) -> GeneralizedDartHandle {
     let opaque = DartOpaque::from_raw(ptr as _);
     opaque.create_dart_handle()
 }
