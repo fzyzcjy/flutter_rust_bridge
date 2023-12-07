@@ -13,7 +13,7 @@ use std::panic::{RefUnwindSafe, UnwindSafe};
 pub trait Executor: RefUnwindSafe {
     /// Executes a Rust function and transforms its return value into a Dart-compatible
     /// value, i.e. types that implement [`IntoDart`].
-    fn execute_normal<TaskFn, TaskRetDirect, TaskRetData, Er, Codec>(
+    fn execute_normal<Codec, TaskFn, TaskRetDirect, TaskRetData, Er>(
         &self,
         task_info: TaskInfo,
         task: TaskFn,
@@ -25,7 +25,7 @@ pub trait Executor: RefUnwindSafe {
         Codec: BaseCodec;
 
     /// Executes a synchronous Rust function
-    fn execute_sync<SyncTaskFn, TaskRetDirect, TaskRetData, Er, Codec>(
+    fn execute_sync<Codec, SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
         &self,
         task_info: TaskInfo,
         sync_task: SyncTaskFn,
@@ -38,7 +38,7 @@ pub trait Executor: RefUnwindSafe {
         Codec: BaseCodec;
 
     #[cfg(feature = "rust-async")]
-    fn execute_async<TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er, Codec>(
+    fn execute_async<Codec, TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(
         &self,
         task_info: TaskInfo,
         task: TaskFn,

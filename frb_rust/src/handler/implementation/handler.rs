@@ -99,7 +99,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
             .to_owned()
     }
 
-    fn wrap_normal<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er, Codec>(
+    fn wrap_normal<Codec, PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(
         &self,
         task_info: TaskInfo,
         prepare: PrepareFn,
@@ -113,11 +113,11 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
     {
         self.wrap_normal_or_async(task_info, prepare, |task_info, task| {
             self.executor
-                .execute_normal::<_, _, _, _, Codec>(task_info, task)
+                .execute_normal::<Codec, _, _, _, _>(task_info, task)
         })
     }
 
-    fn wrap_sync<SyncTaskFn, TaskRetDirect, TaskRetData, Er, Codec>(
+    fn wrap_sync<Codec, SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
         &self,
         task_info: TaskInfo,
         sync_task: SyncTaskFn,
@@ -135,7 +135,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
             let catch_unwind_result = panic::catch_unwind(move || {
                 match self
                     .executor
-                    .execute_sync::<_, _, _, _, Codec>(task_info, sync_task)
+                    .execute_sync::<Codec, _, _, _, _>(task_info, sync_task)
                 {
                     Ok(data) => data,
                     Err(err) => self
@@ -154,7 +154,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
     }
 
     #[cfg(feature = "rust-async")]
-    fn wrap_async<PrepareFn, TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er, Codec>(
+    fn wrap_async<Codec, PrepareFn, TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(
         &self,
         task_info: TaskInfo,
         prepare: PrepareFn,
@@ -169,7 +169,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
     {
         self.wrap_normal_or_async(task_info, prepare, |task_info, task| {
             self.executor
-                .execute_async::<_, _, _, _, _, Codec>(task_info, task)
+                .execute_async::<Codec, _, _, _, _, _>(task_info, task)
         })
     }
 

@@ -47,7 +47,7 @@ impl<EH: ErrorHandler, TP: BaseThreadPool, AR: BaseAsyncRuntime> SimpleExecutor<
 impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
     for SimpleExecutor<EH, TP, AR>
 {
-    fn execute_normal<TaskFn, TaskRetDirect, TaskRetData, Er, Codec>(
+    fn execute_normal<Codec, TaskFn, TaskRetDirect, TaskRetData, Er>(
         &self,
         task_info: TaskInfo,
         task: TaskFn,
@@ -82,7 +82,7 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
         }));
     }
 
-    fn execute_sync<SyncTaskFn, TaskRetDirect, TaskRetData, Er, Codec>(
+    fn execute_sync<Codec, SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
         &self,
         _task_info: TaskInfo,
         sync_task: SyncTaskFn,
@@ -100,7 +100,7 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
     }
 
     #[cfg(feature = "rust-async")]
-    fn execute_async<TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er, Codec>(
+    fn execute_async<Codec, TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(
         &self,
         task_info: TaskInfo,
         task: TaskFn,

@@ -28,7 +28,7 @@ pub trait Handler {
     ///
     /// If a Rust function is marked `sync`, it must be called with
     /// [`wrap_sync`](Handler::wrap_sync) instead.
-    fn wrap_normal<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er, Codec>(
+    fn wrap_normal<Codec, PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(
         &self,
         task_info: TaskInfo,
         prepare: PrepareFn,
@@ -42,7 +42,7 @@ pub trait Handler {
 
     /// Same as [`wrap`][Handler::wrap], but the Rust function will be called synchronously and
     /// need not implement [Send].
-    fn wrap_sync<SyncTaskFn, TaskRetDirect, TaskRetData, Er, Codec>(
+    fn wrap_sync<Codec, SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
         &self,
         task_info: TaskInfo,
         sync_task: SyncTaskFn,
@@ -56,7 +56,7 @@ pub trait Handler {
 
     /// Same as [`wrap`][Handler::wrap], but for async Rust.
     #[cfg(feature = "rust-async")]
-    fn wrap_async<PrepareFn, TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er, Codec>(
+    fn wrap_async<Codec, PrepareFn, TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(
         &self,
         task_info: TaskInfo,
         prepare: PrepareFn,
