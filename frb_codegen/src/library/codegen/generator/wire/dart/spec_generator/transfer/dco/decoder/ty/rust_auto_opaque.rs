@@ -1,4 +1,5 @@
 use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::base::*;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::decoder::ty::rust_opaque::generalized_rust_opaque_generate_impl_wire2api_body;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::decoder::ty::WireDartTransferDcoGeneratorDecoderTrait;
 
 impl<'a> WireDartTransferDcoGeneratorDecoderTrait

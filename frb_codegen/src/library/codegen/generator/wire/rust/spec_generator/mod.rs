@@ -1,9 +1,7 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
-use crate::codegen::generator::wire::rust::spec_generator::dart2rust::WireDartOutputSpecTransferCstDecoder;
 use crate::codegen::generator::wire::rust::spec_generator::dump::generate_dump_info;
 use crate::codegen::generator::wire::rust::spec_generator::misc::WireRustOutputSpecMisc;
-use crate::codegen::generator::wire::rust::spec_generator::rust2dart::WireDartOutputSpecTransferDcoEncoder;
 use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen::ConfigDumpContent::GeneratorInfo;
 use serde::Serialize;

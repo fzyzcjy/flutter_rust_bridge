@@ -16,6 +16,8 @@ mod rust_opaque;
 mod structure;
 mod unencodable;
 
+use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorImplTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;

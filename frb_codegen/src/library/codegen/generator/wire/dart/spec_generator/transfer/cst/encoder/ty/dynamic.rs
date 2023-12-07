@@ -1,3 +1,5 @@
+use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartTransferCstGeneratorEncoderTrait;
 
