@@ -16,27 +16,28 @@ class DcoCodec<S, E extends Object> extends BaseCodec {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @override
-  S decode(List<dynamic> raw) {
-    switch (_Rust2DartAction.values[raw[0]]) {
+  S decode(dynamic raw) {
+    final rawList = raw as List<dynamic>;
+    switch (_Rust2DartAction.values[rawList[0]]) {
       case _Rust2DartAction.success:
-        assert(raw.length == 2);
-        return parseSuccessData(raw[1]);
+        assert(rawList.length == 2);
+        return parseSuccessData(rawList[1]);
 
       case _Rust2DartAction.error:
-        assert(raw.length == 2);
+        assert(rawList.length == 2);
         if (parseErrorData == null) {
           throw Exception(
               'transformRust2DartMessage received error message, but no parseErrorData to parse it. '
-              'Raw data: $raw');
+              'Raw data: $rawList');
         }
-        throw parseErrorData(raw[1]);
+        throw parseErrorData(rawList[1]);
 
       case _Rust2DartAction.panic:
-        assert(raw.length == 2);
-        throw dcoDecodePanicError(raw[1]);
+        assert(rawList.length == 2);
+        throw dcoDecodePanicError(rawList[1]);
 
       case _Rust2DartAction.closeStream:
-        assert(raw.length == 1);
+        assert(rawList.length == 1);
         throw _CloseStreamException();
 
       default:
