@@ -200,1322 +200,1332 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           wire.rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync;
 
   @protected
-  Object api2wire_Chrono_Duration(Duration raw) {
-    return api2wire_i_64(raw.inMilliseconds);
+  Object cst_encode_Chrono_Duration(Duration raw) {
+    return cst_encode_i_64(raw.inMilliseconds);
   }
 
   @protected
-  Object /* BigInt64Array */ api2wire_Chrono_DurationList(List<Duration> raw) {
+  Object /* BigInt64Array */ cst_encode_Chrono_DurationList(
+      List<Duration> raw) {
     final ans = Int64List(raw.length);
     for (var i = 0; i < raw.length; ++i)
-      ans[i] = api2wire_Chrono_Duration(raw[i]);
-    return api2wire_list_prim_i_64(ans);
+      ans[i] = cst_encode_Chrono_Duration(raw[i]);
+    return cst_encode_list_prim_i_64(ans);
   }
 
   @protected
-  Object api2wire_Chrono_Local(DateTime raw) {
-    return api2wire_i_64(raw.millisecondsSinceEpoch);
+  Object cst_encode_Chrono_Local(DateTime raw) {
+    return cst_encode_i_64(raw.millisecondsSinceEpoch);
   }
 
   @protected
-  Object api2wire_Chrono_Naive(DateTime raw) {
-    return api2wire_i_64(raw.millisecondsSinceEpoch);
+  Object cst_encode_Chrono_Naive(DateTime raw) {
+    return cst_encode_i_64(raw.millisecondsSinceEpoch);
   }
 
   @protected
-  Object /* BigInt64Array */ api2wire_Chrono_NaiveList(List<DateTime> raw) {
+  Object /* BigInt64Array */ cst_encode_Chrono_NaiveList(List<DateTime> raw) {
     final ans = Int64List(raw.length);
-    for (var i = 0; i < raw.length; ++i) ans[i] = api2wire_Chrono_Naive(raw[i]);
-    return api2wire_list_prim_i_64(ans);
+    for (var i = 0; i < raw.length; ++i)
+      ans[i] = cst_encode_Chrono_Naive(raw[i]);
+    return cst_encode_list_prim_i_64(ans);
   }
 
   @protected
-  Object api2wire_Chrono_Utc(DateTime raw) {
-    return api2wire_i_64(raw.millisecondsSinceEpoch);
+  Object cst_encode_Chrono_Utc(DateTime raw) {
+    return cst_encode_i_64(raw.millisecondsSinceEpoch);
   }
 
   @protected
-  Object api2wire_DartFn_Inputs__Output_unit(void Function() raw) {
-    return api2wire_DartOpaque(raw);
+  Object cst_encode_DartFn_Inputs__Output_unit(void Function() raw) {
+    return cst_encode_DartOpaque(raw);
   }
 
   @protected
-  Object api2wire_DartOpaque(Object raw) {
+  Object cst_encode_DartOpaque(Object raw) {
     return raw;
   }
 
   @protected
-  List<dynamic> api2wire_DartOpaque_array_1(ObjectArray1 raw) {
-    return api2wire_list_DartOpaque(raw);
+  List<dynamic> cst_encode_DartOpaque_array_1(ObjectArray1 raw) {
+    return cst_encode_list_DartOpaque(raw);
   }
 
   @protected
-  List<dynamic> api2wire_RustOpaque_hide_data_array_2(HideDataArray2 raw) {
-    return api2wire_list_RustOpaque_hide_data(raw);
+  List<dynamic> cst_encode_RustOpaque_hide_data_array_2(HideDataArray2 raw) {
+    return cst_encode_list_RustOpaque_hide_data(raw);
   }
 
   @protected
-  String api2wire_String(String raw) {
+  String cst_encode_String(String raw) {
     return raw;
   }
 
   @protected
-  List<String> api2wire_StringList(List<String> raw) {
+  List<String> cst_encode_StringList(List<String> raw) {
     return raw;
   }
 
   @protected
-  Uint8List api2wire_Uuid(UuidValue raw) {
-    return api2wire_list_prim_u_8(raw.toBytes());
+  Uint8List cst_encode_Uuid(UuidValue raw) {
+    return cst_encode_list_prim_u_8(raw.toBytes());
   }
 
   @protected
-  Uint8List api2wire_Uuids(List<UuidValue> raw) {
+  Uint8List cst_encode_Uuids(List<UuidValue> raw) {
     final builder = BytesBuilder();
     for (final element in raw) {
       builder.add(element.toBytes());
     }
-    return api2wire_list_prim_u_8(builder.toBytes());
+    return cst_encode_list_prim_u_8(builder.toBytes());
   }
 
   @protected
-  Uint8List api2wire_ZeroCopyBuffer_list_prim_u_8(Uint8List raw) {
-    return api2wire_list_prim_u_8(raw);
+  Uint8List cst_encode_ZeroCopyBuffer_list_prim_u_8(Uint8List raw) {
+    return cst_encode_list_prim_u_8(raw);
   }
 
   @protected
-  List<dynamic> api2wire_a_twin_normal(ATwinNormal raw) {
-    return [api2wire_String(raw.a)];
+  List<dynamic> cst_encode_a_twin_normal(ATwinNormal raw) {
+    return [cst_encode_String(raw.a)];
   }
 
   @protected
-  List<dynamic> api2wire_a_twin_rust_async(ATwinRustAsync raw) {
-    return [api2wire_String(raw.a)];
+  List<dynamic> cst_encode_a_twin_rust_async(ATwinRustAsync raw) {
+    return [cst_encode_String(raw.a)];
   }
 
   @protected
-  List<dynamic> api2wire_a_twin_sync(ATwinSync raw) {
-    return [api2wire_String(raw.a)];
+  List<dynamic> cst_encode_a_twin_sync(ATwinSync raw) {
+    return [cst_encode_String(raw.a)];
   }
 
   @protected
-  List<dynamic> api2wire_abc_twin_normal(AbcTwinNormal raw) {
+  List<dynamic> cst_encode_abc_twin_normal(AbcTwinNormal raw) {
     if (raw is AbcTwinNormal_A) {
-      return [0, api2wire_box_autoadd_a_twin_normal(raw.field0)];
+      return [0, cst_encode_box_autoadd_a_twin_normal(raw.field0)];
     }
     if (raw is AbcTwinNormal_B) {
-      return [1, api2wire_box_autoadd_b_twin_normal(raw.field0)];
+      return [1, cst_encode_box_autoadd_b_twin_normal(raw.field0)];
     }
     if (raw is AbcTwinNormal_C) {
-      return [2, api2wire_box_autoadd_c_twin_normal(raw.field0)];
+      return [2, cst_encode_box_autoadd_c_twin_normal(raw.field0)];
     }
     if (raw is AbcTwinNormal_JustInt) {
-      return [3, api2wire_i_32(raw.field0)];
+      return [3, cst_encode_i_32(raw.field0)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_abc_twin_rust_async(AbcTwinRustAsync raw) {
+  List<dynamic> cst_encode_abc_twin_rust_async(AbcTwinRustAsync raw) {
     if (raw is AbcTwinRustAsync_A) {
-      return [0, api2wire_box_autoadd_a_twin_rust_async(raw.field0)];
+      return [0, cst_encode_box_autoadd_a_twin_rust_async(raw.field0)];
     }
     if (raw is AbcTwinRustAsync_B) {
-      return [1, api2wire_box_autoadd_b_twin_rust_async(raw.field0)];
+      return [1, cst_encode_box_autoadd_b_twin_rust_async(raw.field0)];
     }
     if (raw is AbcTwinRustAsync_C) {
-      return [2, api2wire_box_autoadd_c_twin_rust_async(raw.field0)];
+      return [2, cst_encode_box_autoadd_c_twin_rust_async(raw.field0)];
     }
     if (raw is AbcTwinRustAsync_JustInt) {
-      return [3, api2wire_i_32(raw.field0)];
+      return [3, cst_encode_i_32(raw.field0)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_abc_twin_sync(AbcTwinSync raw) {
+  List<dynamic> cst_encode_abc_twin_sync(AbcTwinSync raw) {
     if (raw is AbcTwinSync_A) {
-      return [0, api2wire_box_autoadd_a_twin_sync(raw.field0)];
+      return [0, cst_encode_box_autoadd_a_twin_sync(raw.field0)];
     }
     if (raw is AbcTwinSync_B) {
-      return [1, api2wire_box_autoadd_b_twin_sync(raw.field0)];
+      return [1, cst_encode_box_autoadd_b_twin_sync(raw.field0)];
     }
     if (raw is AbcTwinSync_C) {
-      return [2, api2wire_box_autoadd_c_twin_sync(raw.field0)];
+      return [2, cst_encode_box_autoadd_c_twin_sync(raw.field0)];
     }
     if (raw is AbcTwinSync_JustInt) {
-      return [3, api2wire_i_32(raw.field0)];
+      return [3, cst_encode_i_32(raw.field0)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_application_env(ApplicationEnv raw) {
-    return [api2wire_list_application_env_var(raw.vars)];
+  List<dynamic> cst_encode_application_env(ApplicationEnv raw) {
+    return [cst_encode_list_application_env_var(raw.vars)];
   }
 
   @protected
-  List<dynamic> api2wire_application_env_var(ApplicationEnvVar raw) {
-    return [api2wire_String(raw.field0), api2wire_bool(raw.field1)];
+  List<dynamic> cst_encode_application_env_var(ApplicationEnvVar raw) {
+    return [cst_encode_String(raw.field0), cst_encode_bool(raw.field1)];
   }
 
   @protected
-  List<dynamic> api2wire_application_settings(ApplicationSettings raw) {
+  List<dynamic> cst_encode_application_settings(ApplicationSettings raw) {
     return [
-      api2wire_String(raw.name),
-      api2wire_String(raw.version),
-      api2wire_application_mode(raw.mode),
-      api2wire_box_application_env(raw.env),
-      api2wire_opt_box_autoadd_application_env(raw.envOptional)
+      cst_encode_String(raw.name),
+      cst_encode_String(raw.version),
+      cst_encode_application_mode(raw.mode),
+      cst_encode_box_application_env(raw.env),
+      cst_encode_opt_box_autoadd_application_env(raw.envOptional)
     ];
   }
 
   @protected
-  List<dynamic> api2wire_attribute_twin_normal(AttributeTwinNormal raw) {
-    return [api2wire_String(raw.key), api2wire_String(raw.value)];
+  List<dynamic> cst_encode_attribute_twin_normal(AttributeTwinNormal raw) {
+    return [cst_encode_String(raw.key), cst_encode_String(raw.value)];
   }
 
   @protected
-  List<dynamic> api2wire_attribute_twin_rust_async(AttributeTwinRustAsync raw) {
-    return [api2wire_String(raw.key), api2wire_String(raw.value)];
-  }
-
-  @protected
-  List<dynamic> api2wire_attribute_twin_sync(AttributeTwinSync raw) {
-    return [api2wire_String(raw.key), api2wire_String(raw.value)];
-  }
-
-  @protected
-  List<dynamic> api2wire_b_twin_normal(BTwinNormal raw) {
-    return [api2wire_i_32(raw.b)];
-  }
-
-  @protected
-  List<dynamic> api2wire_b_twin_rust_async(BTwinRustAsync raw) {
-    return [api2wire_i_32(raw.b)];
-  }
-
-  @protected
-  List<dynamic> api2wire_b_twin_sync(BTwinSync raw) {
-    return [api2wire_i_32(raw.b)];
-  }
-
-  @protected
-  List<dynamic> api2wire_blob_twin_normal(BlobTwinNormal raw) {
-    return [api2wire_u_8_array_1600(raw.field0)];
-  }
-
-  @protected
-  List<dynamic> api2wire_blob_twin_rust_async(BlobTwinRustAsync raw) {
-    return [api2wire_u_8_array_1600(raw.field0)];
-  }
-
-  @protected
-  List<dynamic> api2wire_blob_twin_sync(BlobTwinSync raw) {
-    return [api2wire_u_8_array_1600(raw.field0)];
-  }
-
-  @protected
-  List<dynamic> api2wire_box_application_env(ApplicationEnv raw) {
-    return api2wire_application_env(raw);
-  }
-
-  @protected
-  Object api2wire_box_autoadd_Chrono_Utc(DateTime raw) {
-    return api2wire_Chrono_Utc(raw);
-  }
-
-  @protected
-  Object api2wire_box_autoadd_DartOpaque(Object raw) {
-    return api2wire_DartOpaque(raw);
-  }
-
-  @protected
-  Object api2wire_box_autoadd_RustOpaque_hide_data(HideData raw) {
-    return api2wire_RustOpaque_hide_data(raw);
-  }
-
-  @protected
-  List<dynamic> api2wire_box_autoadd_a_twin_normal(ATwinNormal raw) {
-    return api2wire_a_twin_normal(raw);
-  }
-
-  @protected
-  List<dynamic> api2wire_box_autoadd_a_twin_rust_async(ATwinRustAsync raw) {
-    return api2wire_a_twin_rust_async(raw);
-  }
-
-  @protected
-  List<dynamic> api2wire_box_autoadd_a_twin_sync(ATwinSync raw) {
-    return api2wire_a_twin_sync(raw);
-  }
-
-  @protected
-  List<dynamic> api2wire_box_autoadd_abc_twin_normal(AbcTwinNormal raw) {
-    return api2wire_abc_twin_normal(raw);
-  }
-
-  @protected
-  List<dynamic> api2wire_box_autoadd_abc_twin_rust_async(AbcTwinRustAsync raw) {
-    return api2wire_abc_twin_rust_async(raw);
-  }
-
-  @protected
-  List<dynamic> api2wire_box_autoadd_abc_twin_sync(AbcTwinSync raw) {
-    return api2wire_abc_twin_sync(raw);
-  }
-
-  @protected
-  List<dynamic> api2wire_box_autoadd_application_env(ApplicationEnv raw) {
-    return api2wire_application_env(raw);
-  }
-
-  @protected
-  List<dynamic> api2wire_box_autoadd_application_settings(
-      ApplicationSettings raw) {
-    return api2wire_application_settings(raw);
-  }
-
-  @protected
-  List<dynamic> api2wire_box_autoadd_attribute_twin_normal(
-      AttributeTwinNormal raw) {
-    return api2wire_attribute_twin_normal(raw);
-  }
-
-  @protected
-  List<dynamic> api2wire_box_autoadd_attribute_twin_rust_async(
+  List<dynamic> cst_encode_attribute_twin_rust_async(
       AttributeTwinRustAsync raw) {
-    return api2wire_attribute_twin_rust_async(raw);
+    return [cst_encode_String(raw.key), cst_encode_String(raw.value)];
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_attribute_twin_sync(
+  List<dynamic> cst_encode_attribute_twin_sync(AttributeTwinSync raw) {
+    return [cst_encode_String(raw.key), cst_encode_String(raw.value)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_b_twin_normal(BTwinNormal raw) {
+    return [cst_encode_i_32(raw.b)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_b_twin_rust_async(BTwinRustAsync raw) {
+    return [cst_encode_i_32(raw.b)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_b_twin_sync(BTwinSync raw) {
+    return [cst_encode_i_32(raw.b)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_blob_twin_normal(BlobTwinNormal raw) {
+    return [cst_encode_u_8_array_1600(raw.field0)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_blob_twin_rust_async(BlobTwinRustAsync raw) {
+    return [cst_encode_u_8_array_1600(raw.field0)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_blob_twin_sync(BlobTwinSync raw) {
+    return [cst_encode_u_8_array_1600(raw.field0)];
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_application_env(ApplicationEnv raw) {
+    return cst_encode_application_env(raw);
+  }
+
+  @protected
+  Object cst_encode_box_autoadd_Chrono_Utc(DateTime raw) {
+    return cst_encode_Chrono_Utc(raw);
+  }
+
+  @protected
+  Object cst_encode_box_autoadd_DartOpaque(Object raw) {
+    return cst_encode_DartOpaque(raw);
+  }
+
+  @protected
+  Object cst_encode_box_autoadd_RustOpaque_hide_data(HideData raw) {
+    return cst_encode_RustOpaque_hide_data(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_a_twin_normal(ATwinNormal raw) {
+    return cst_encode_a_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_a_twin_rust_async(ATwinRustAsync raw) {
+    return cst_encode_a_twin_rust_async(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_a_twin_sync(ATwinSync raw) {
+    return cst_encode_a_twin_sync(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_abc_twin_normal(AbcTwinNormal raw) {
+    return cst_encode_abc_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_abc_twin_rust_async(
+      AbcTwinRustAsync raw) {
+    return cst_encode_abc_twin_rust_async(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_abc_twin_sync(AbcTwinSync raw) {
+    return cst_encode_abc_twin_sync(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_application_env(ApplicationEnv raw) {
+    return cst_encode_application_env(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_application_settings(
+      ApplicationSettings raw) {
+    return cst_encode_application_settings(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_attribute_twin_normal(
+      AttributeTwinNormal raw) {
+    return cst_encode_attribute_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_attribute_twin_rust_async(
+      AttributeTwinRustAsync raw) {
+    return cst_encode_attribute_twin_rust_async(raw);
+  }
+
+  @protected
+  List<dynamic> cst_encode_box_autoadd_attribute_twin_sync(
       AttributeTwinSync raw) {
-    return api2wire_attribute_twin_sync(raw);
+    return cst_encode_attribute_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_b_twin_normal(BTwinNormal raw) {
-    return api2wire_b_twin_normal(raw);
+  List<dynamic> cst_encode_box_autoadd_b_twin_normal(BTwinNormal raw) {
+    return cst_encode_b_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_b_twin_rust_async(BTwinRustAsync raw) {
-    return api2wire_b_twin_rust_async(raw);
+  List<dynamic> cst_encode_box_autoadd_b_twin_rust_async(BTwinRustAsync raw) {
+    return cst_encode_b_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_b_twin_sync(BTwinSync raw) {
-    return api2wire_b_twin_sync(raw);
+  List<dynamic> cst_encode_box_autoadd_b_twin_sync(BTwinSync raw) {
+    return cst_encode_b_twin_sync(raw);
   }
 
   @protected
-  bool api2wire_box_autoadd_bool(bool raw) {
-    return api2wire_bool(raw);
+  bool cst_encode_box_autoadd_bool(bool raw) {
+    return cst_encode_bool(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_c_twin_normal(CTwinNormal raw) {
-    return api2wire_c_twin_normal(raw);
+  List<dynamic> cst_encode_box_autoadd_c_twin_normal(CTwinNormal raw) {
+    return cst_encode_c_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_c_twin_rust_async(CTwinRustAsync raw) {
-    return api2wire_c_twin_rust_async(raw);
+  List<dynamic> cst_encode_box_autoadd_c_twin_rust_async(CTwinRustAsync raw) {
+    return cst_encode_c_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_c_twin_sync(CTwinSync raw) {
-    return api2wire_c_twin_sync(raw);
+  List<dynamic> cst_encode_box_autoadd_c_twin_sync(CTwinSync raw) {
+    return cst_encode_c_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_concatenate_with_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_concatenate_with_twin_normal(
       ConcatenateWithTwinNormal raw) {
-    return api2wire_concatenate_with_twin_normal(raw);
+    return cst_encode_concatenate_with_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_concatenate_with_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_concatenate_with_twin_rust_async(
       ConcatenateWithTwinRustAsync raw) {
-    return api2wire_concatenate_with_twin_rust_async(raw);
+    return cst_encode_concatenate_with_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_concatenate_with_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_concatenate_with_twin_sync(
       ConcatenateWithTwinSync raw) {
-    return api2wire_concatenate_with_twin_sync(raw);
+    return cst_encode_concatenate_with_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_custom_nested_error_inner_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_custom_nested_error_inner_twin_normal(
       CustomNestedErrorInnerTwinNormal raw) {
-    return api2wire_custom_nested_error_inner_twin_normal(raw);
+    return cst_encode_custom_nested_error_inner_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_custom_nested_error_inner_twin_rust_async(
-      CustomNestedErrorInnerTwinRustAsync raw) {
-    return api2wire_custom_nested_error_inner_twin_rust_async(raw);
+  List<dynamic>
+      cst_encode_box_autoadd_custom_nested_error_inner_twin_rust_async(
+          CustomNestedErrorInnerTwinRustAsync raw) {
+    return cst_encode_custom_nested_error_inner_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_custom_nested_error_inner_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_custom_nested_error_inner_twin_sync(
       CustomNestedErrorInnerTwinSync raw) {
-    return api2wire_custom_nested_error_inner_twin_sync(raw);
+    return cst_encode_custom_nested_error_inner_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_custom_nested_error_outer_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_custom_nested_error_outer_twin_normal(
       CustomNestedErrorOuterTwinNormal raw) {
-    return api2wire_custom_nested_error_outer_twin_normal(raw);
+    return cst_encode_custom_nested_error_outer_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_custom_nested_error_outer_twin_rust_async(
-      CustomNestedErrorOuterTwinRustAsync raw) {
-    return api2wire_custom_nested_error_outer_twin_rust_async(raw);
+  List<dynamic>
+      cst_encode_box_autoadd_custom_nested_error_outer_twin_rust_async(
+          CustomNestedErrorOuterTwinRustAsync raw) {
+    return cst_encode_custom_nested_error_outer_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_custom_nested_error_outer_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_custom_nested_error_outer_twin_sync(
       CustomNestedErrorOuterTwinSync raw) {
-    return api2wire_custom_nested_error_outer_twin_sync(raw);
+    return cst_encode_custom_nested_error_outer_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_custom_struct_error_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_custom_struct_error_twin_normal(
       CustomStructErrorTwinNormal raw) {
-    return api2wire_custom_struct_error_twin_normal(raw);
+    return cst_encode_custom_struct_error_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_custom_struct_error_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_custom_struct_error_twin_rust_async(
       CustomStructErrorTwinRustAsync raw) {
-    return api2wire_custom_struct_error_twin_rust_async(raw);
+    return cst_encode_custom_struct_error_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_custom_struct_error_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_custom_struct_error_twin_sync(
       CustomStructErrorTwinSync raw) {
-    return api2wire_custom_struct_error_twin_sync(raw);
+    return cst_encode_custom_struct_error_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_custom_struct_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_custom_struct_twin_normal(
       CustomStructTwinNormal raw) {
-    return api2wire_custom_struct_twin_normal(raw);
+    return cst_encode_custom_struct_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_custom_struct_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_custom_struct_twin_rust_async(
       CustomStructTwinRustAsync raw) {
-    return api2wire_custom_struct_twin_rust_async(raw);
+    return cst_encode_custom_struct_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_custom_struct_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_custom_struct_twin_sync(
       CustomStructTwinSync raw) {
-    return api2wire_custom_struct_twin_sync(raw);
+    return cst_encode_custom_struct_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_customized_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_customized_twin_normal(
       CustomizedTwinNormal raw) {
-    return api2wire_customized_twin_normal(raw);
+    return cst_encode_customized_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_customized_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_customized_twin_rust_async(
       CustomizedTwinRustAsync raw) {
-    return api2wire_customized_twin_rust_async(raw);
+    return cst_encode_customized_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_customized_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_customized_twin_sync(
       CustomizedTwinSync raw) {
-    return api2wire_customized_twin_sync(raw);
+    return cst_encode_customized_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_dart_opaque_nested_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_dart_opaque_nested_twin_normal(
       DartOpaqueNestedTwinNormal raw) {
-    return api2wire_dart_opaque_nested_twin_normal(raw);
+    return cst_encode_dart_opaque_nested_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_dart_opaque_nested_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_dart_opaque_nested_twin_rust_async(
       DartOpaqueNestedTwinRustAsync raw) {
-    return api2wire_dart_opaque_nested_twin_rust_async(raw);
+    return cst_encode_dart_opaque_nested_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_dart_opaque_nested_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_dart_opaque_nested_twin_sync(
       DartOpaqueNestedTwinSync raw) {
-    return api2wire_dart_opaque_nested_twin_sync(raw);
+    return cst_encode_dart_opaque_nested_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_empty_twin_normal(EmptyTwinNormal raw) {
-    return api2wire_empty_twin_normal(raw);
+  List<dynamic> cst_encode_box_autoadd_empty_twin_normal(EmptyTwinNormal raw) {
+    return cst_encode_empty_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_empty_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_empty_twin_rust_async(
       EmptyTwinRustAsync raw) {
-    return api2wire_empty_twin_rust_async(raw);
+    return cst_encode_empty_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_empty_twin_sync(EmptyTwinSync raw) {
-    return api2wire_empty_twin_sync(raw);
+  List<dynamic> cst_encode_box_autoadd_empty_twin_sync(EmptyTwinSync raw) {
+    return cst_encode_empty_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_enum_dart_opaque_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_enum_dart_opaque_twin_normal(
       EnumDartOpaqueTwinNormal raw) {
-    return api2wire_enum_dart_opaque_twin_normal(raw);
+    return cst_encode_enum_dart_opaque_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_enum_dart_opaque_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_enum_dart_opaque_twin_rust_async(
       EnumDartOpaqueTwinRustAsync raw) {
-    return api2wire_enum_dart_opaque_twin_rust_async(raw);
+    return cst_encode_enum_dart_opaque_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_enum_dart_opaque_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_enum_dart_opaque_twin_sync(
       EnumDartOpaqueTwinSync raw) {
-    return api2wire_enum_dart_opaque_twin_sync(raw);
+    return cst_encode_enum_dart_opaque_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_enum_opaque_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_enum_opaque_twin_normal(
       EnumOpaqueTwinNormal raw) {
-    return api2wire_enum_opaque_twin_normal(raw);
+    return cst_encode_enum_opaque_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_enum_opaque_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_enum_opaque_twin_rust_async(
       EnumOpaqueTwinRustAsync raw) {
-    return api2wire_enum_opaque_twin_rust_async(raw);
+    return cst_encode_enum_opaque_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_enum_opaque_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_enum_opaque_twin_sync(
       EnumOpaqueTwinSync raw) {
-    return api2wire_enum_opaque_twin_sync(raw);
+    return cst_encode_enum_opaque_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_enum_with_item_mixed_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_enum_with_item_mixed_twin_normal(
       EnumWithItemMixedTwinNormal raw) {
-    return api2wire_enum_with_item_mixed_twin_normal(raw);
+    return cst_encode_enum_with_item_mixed_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_enum_with_item_mixed_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_enum_with_item_mixed_twin_rust_async(
       EnumWithItemMixedTwinRustAsync raw) {
-    return api2wire_enum_with_item_mixed_twin_rust_async(raw);
+    return cst_encode_enum_with_item_mixed_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_enum_with_item_mixed_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_enum_with_item_mixed_twin_sync(
       EnumWithItemMixedTwinSync raw) {
-    return api2wire_enum_with_item_mixed_twin_sync(raw);
+    return cst_encode_enum_with_item_mixed_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_enum_with_item_struct_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_enum_with_item_struct_twin_normal(
       EnumWithItemStructTwinNormal raw) {
-    return api2wire_enum_with_item_struct_twin_normal(raw);
+    return cst_encode_enum_with_item_struct_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_enum_with_item_struct_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_enum_with_item_struct_twin_rust_async(
       EnumWithItemStructTwinRustAsync raw) {
-    return api2wire_enum_with_item_struct_twin_rust_async(raw);
+    return cst_encode_enum_with_item_struct_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_enum_with_item_struct_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_enum_with_item_struct_twin_sync(
       EnumWithItemStructTwinSync raw) {
-    return api2wire_enum_with_item_struct_twin_sync(raw);
+    return cst_encode_enum_with_item_struct_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_enum_with_item_tuple_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_enum_with_item_tuple_twin_normal(
       EnumWithItemTupleTwinNormal raw) {
-    return api2wire_enum_with_item_tuple_twin_normal(raw);
+    return cst_encode_enum_with_item_tuple_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_enum_with_item_tuple_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_enum_with_item_tuple_twin_rust_async(
       EnumWithItemTupleTwinRustAsync raw) {
-    return api2wire_enum_with_item_tuple_twin_rust_async(raw);
+    return cst_encode_enum_with_item_tuple_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_enum_with_item_tuple_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_enum_with_item_tuple_twin_sync(
       EnumWithItemTupleTwinSync raw) {
-    return api2wire_enum_with_item_tuple_twin_sync(raw);
+    return cst_encode_enum_with_item_tuple_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_event_twin_normal(EventTwinNormal raw) {
-    return api2wire_event_twin_normal(raw);
+  List<dynamic> cst_encode_box_autoadd_event_twin_normal(EventTwinNormal raw) {
+    return cst_encode_event_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_event_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_event_twin_rust_async(
       EventTwinRustAsync raw) {
-    return api2wire_event_twin_rust_async(raw);
+    return cst_encode_event_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_event_twin_sync(EventTwinSync raw) {
-    return api2wire_event_twin_sync(raw);
+  List<dynamic> cst_encode_box_autoadd_event_twin_sync(EventTwinSync raw) {
+    return cst_encode_event_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_exotic_optionals_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_exotic_optionals_twin_normal(
       ExoticOptionalsTwinNormal raw) {
-    return api2wire_exotic_optionals_twin_normal(raw);
+    return cst_encode_exotic_optionals_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_exotic_optionals_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_exotic_optionals_twin_rust_async(
       ExoticOptionalsTwinRustAsync raw) {
-    return api2wire_exotic_optionals_twin_rust_async(raw);
+    return cst_encode_exotic_optionals_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_exotic_optionals_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_exotic_optionals_twin_sync(
       ExoticOptionalsTwinSync raw) {
-    return api2wire_exotic_optionals_twin_sync(raw);
+    return cst_encode_exotic_optionals_twin_sync(raw);
   }
 
   @protected
-  double api2wire_box_autoadd_f_32(double raw) {
-    return api2wire_f_32(raw);
+  double cst_encode_box_autoadd_f_32(double raw) {
+    return cst_encode_f_32(raw);
   }
 
   @protected
-  double api2wire_box_autoadd_f_64(double raw) {
-    return api2wire_f_64(raw);
+  double cst_encode_box_autoadd_f_64(double raw) {
+    return cst_encode_f_64(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_feature_chrono_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_feature_chrono_twin_normal(
       FeatureChronoTwinNormal raw) {
-    return api2wire_feature_chrono_twin_normal(raw);
+    return cst_encode_feature_chrono_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_feature_chrono_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_feature_chrono_twin_rust_async(
       FeatureChronoTwinRustAsync raw) {
-    return api2wire_feature_chrono_twin_rust_async(raw);
+    return cst_encode_feature_chrono_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_feature_chrono_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_feature_chrono_twin_sync(
       FeatureChronoTwinSync raw) {
-    return api2wire_feature_chrono_twin_sync(raw);
+    return cst_encode_feature_chrono_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_feature_uuid_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_feature_uuid_twin_normal(
       FeatureUuidTwinNormal raw) {
-    return api2wire_feature_uuid_twin_normal(raw);
+    return cst_encode_feature_uuid_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_feature_uuid_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_feature_uuid_twin_rust_async(
       FeatureUuidTwinRustAsync raw) {
-    return api2wire_feature_uuid_twin_rust_async(raw);
+    return cst_encode_feature_uuid_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_feature_uuid_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_feature_uuid_twin_sync(
       FeatureUuidTwinSync raw) {
-    return api2wire_feature_uuid_twin_sync(raw);
+    return cst_encode_feature_uuid_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_feed_id_twin_normal(FeedIdTwinNormal raw) {
-    return api2wire_feed_id_twin_normal(raw);
+  List<dynamic> cst_encode_box_autoadd_feed_id_twin_normal(
+      FeedIdTwinNormal raw) {
+    return cst_encode_feed_id_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_feed_id_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_feed_id_twin_rust_async(
       FeedIdTwinRustAsync raw) {
-    return api2wire_feed_id_twin_rust_async(raw);
+    return cst_encode_feed_id_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_feed_id_twin_sync(FeedIdTwinSync raw) {
-    return api2wire_feed_id_twin_sync(raw);
+  List<dynamic> cst_encode_box_autoadd_feed_id_twin_sync(FeedIdTwinSync raw) {
+    return cst_encode_feed_id_twin_sync(raw);
   }
 
   @protected
-  int api2wire_box_autoadd_i_16(int raw) {
-    return api2wire_i_16(raw);
+  int cst_encode_box_autoadd_i_16(int raw) {
+    return cst_encode_i_16(raw);
   }
 
   @protected
-  int api2wire_box_autoadd_i_32(int raw) {
-    return api2wire_i_32(raw);
+  int cst_encode_box_autoadd_i_32(int raw) {
+    return cst_encode_i_32(raw);
   }
 
   @protected
-  Object api2wire_box_autoadd_i_64(int raw) {
-    return api2wire_i_64(raw);
+  Object cst_encode_box_autoadd_i_64(int raw) {
+    return cst_encode_i_64(raw);
   }
 
   @protected
-  int api2wire_box_autoadd_i_8(int raw) {
-    return api2wire_i_8(raw);
+  int cst_encode_box_autoadd_i_8(int raw) {
+    return cst_encode_i_8(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_kitchen_sink_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_kitchen_sink_twin_normal(
       KitchenSinkTwinNormal raw) {
-    return api2wire_kitchen_sink_twin_normal(raw);
+    return cst_encode_kitchen_sink_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_kitchen_sink_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_kitchen_sink_twin_rust_async(
       KitchenSinkTwinRustAsync raw) {
-    return api2wire_kitchen_sink_twin_rust_async(raw);
+    return cst_encode_kitchen_sink_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_kitchen_sink_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_kitchen_sink_twin_sync(
       KitchenSinkTwinSync raw) {
-    return api2wire_kitchen_sink_twin_sync(raw);
+    return cst_encode_kitchen_sink_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_macro_struct(MacroStruct raw) {
-    return api2wire_macro_struct(raw);
+  List<dynamic> cst_encode_box_autoadd_macro_struct(MacroStruct raw) {
+    return cst_encode_macro_struct(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_measure_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_measure_twin_normal(
       MeasureTwinNormal raw) {
-    return api2wire_measure_twin_normal(raw);
+    return cst_encode_measure_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_measure_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_measure_twin_rust_async(
       MeasureTwinRustAsync raw) {
-    return api2wire_measure_twin_rust_async(raw);
+    return cst_encode_measure_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_measure_twin_sync(MeasureTwinSync raw) {
-    return api2wire_measure_twin_sync(raw);
+  List<dynamic> cst_encode_box_autoadd_measure_twin_sync(MeasureTwinSync raw) {
+    return cst_encode_measure_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_message_id_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_message_id_twin_normal(
       MessageIdTwinNormal raw) {
-    return api2wire_message_id_twin_normal(raw);
+    return cst_encode_message_id_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_message_id_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_message_id_twin_rust_async(
       MessageIdTwinRustAsync raw) {
-    return api2wire_message_id_twin_rust_async(raw);
+    return cst_encode_message_id_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_message_id_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_message_id_twin_sync(
       MessageIdTwinSync raw) {
-    return api2wire_message_id_twin_sync(raw);
+    return cst_encode_message_id_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_my_nested_struct_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_my_nested_struct_twin_normal(
       MyNestedStructTwinNormal raw) {
-    return api2wire_my_nested_struct_twin_normal(raw);
+    return cst_encode_my_nested_struct_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_my_nested_struct_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_my_nested_struct_twin_rust_async(
       MyNestedStructTwinRustAsync raw) {
-    return api2wire_my_nested_struct_twin_rust_async(raw);
+    return cst_encode_my_nested_struct_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_my_nested_struct_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_my_nested_struct_twin_sync(
       MyNestedStructTwinSync raw) {
-    return api2wire_my_nested_struct_twin_sync(raw);
+    return cst_encode_my_nested_struct_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_my_size(MySize raw) {
-    return api2wire_my_size(raw);
+  List<dynamic> cst_encode_box_autoadd_my_size(MySize raw) {
+    return cst_encode_my_size(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_my_struct(MyStruct raw) {
-    return api2wire_my_struct(raw);
+  List<dynamic> cst_encode_box_autoadd_my_struct(MyStruct raw) {
+    return cst_encode_my_struct(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_my_tree_node_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_my_tree_node_twin_normal(
       MyTreeNodeTwinNormal raw) {
-    return api2wire_my_tree_node_twin_normal(raw);
+    return cst_encode_my_tree_node_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_my_tree_node_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_my_tree_node_twin_rust_async(
       MyTreeNodeTwinRustAsync raw) {
-    return api2wire_my_tree_node_twin_rust_async(raw);
+    return cst_encode_my_tree_node_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_my_tree_node_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_my_tree_node_twin_sync(
       MyTreeNodeTwinSync raw) {
-    return api2wire_my_tree_node_twin_sync(raw);
+    return cst_encode_my_tree_node_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_new_type_int_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_new_type_int_twin_normal(
       NewTypeIntTwinNormal raw) {
-    return api2wire_new_type_int_twin_normal(raw);
+    return cst_encode_new_type_int_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_new_type_int_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_new_type_int_twin_rust_async(
       NewTypeIntTwinRustAsync raw) {
-    return api2wire_new_type_int_twin_rust_async(raw);
+    return cst_encode_new_type_int_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_new_type_int_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_new_type_int_twin_sync(
       NewTypeIntTwinSync raw) {
-    return api2wire_new_type_int_twin_sync(raw);
+    return cst_encode_new_type_int_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_note_twin_normal(NoteTwinNormal raw) {
-    return api2wire_note_twin_normal(raw);
+  List<dynamic> cst_encode_box_autoadd_note_twin_normal(NoteTwinNormal raw) {
+    return cst_encode_note_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_note_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_note_twin_rust_async(
       NoteTwinRustAsync raw) {
-    return api2wire_note_twin_rust_async(raw);
+    return cst_encode_note_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_note_twin_sync(NoteTwinSync raw) {
-    return api2wire_note_twin_sync(raw);
+  List<dynamic> cst_encode_box_autoadd_note_twin_sync(NoteTwinSync raw) {
+    return cst_encode_note_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_numbers(Numbers raw) {
-    return api2wire_numbers(raw);
+  List<dynamic> cst_encode_box_autoadd_numbers(Numbers raw) {
+    return cst_encode_numbers(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_opaque_nested_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_opaque_nested_twin_normal(
       OpaqueNestedTwinNormal raw) {
-    return api2wire_opaque_nested_twin_normal(raw);
+    return cst_encode_opaque_nested_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_opaque_nested_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_opaque_nested_twin_rust_async(
       OpaqueNestedTwinRustAsync raw) {
-    return api2wire_opaque_nested_twin_rust_async(raw);
+    return cst_encode_opaque_nested_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_opaque_nested_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_opaque_nested_twin_sync(
       OpaqueNestedTwinSync raw) {
-    return api2wire_opaque_nested_twin_sync(raw);
+    return cst_encode_opaque_nested_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_opt_vecs_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_opt_vecs_twin_normal(
       OptVecsTwinNormal raw) {
-    return api2wire_opt_vecs_twin_normal(raw);
+    return cst_encode_opt_vecs_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_opt_vecs_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_opt_vecs_twin_rust_async(
       OptVecsTwinRustAsync raw) {
-    return api2wire_opt_vecs_twin_rust_async(raw);
+    return cst_encode_opt_vecs_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_opt_vecs_twin_sync(OptVecsTwinSync raw) {
-    return api2wire_opt_vecs_twin_sync(raw);
+  List<dynamic> cst_encode_box_autoadd_opt_vecs_twin_sync(OptVecsTwinSync raw) {
+    return cst_encode_opt_vecs_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_record_string_i_32((String, int) raw) {
-    return api2wire_record_string_i_32(raw);
+  List<dynamic> cst_encode_box_autoadd_record_string_i_32((String, int) raw) {
+    return cst_encode_record_string_i_32(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_sequences(Sequences raw) {
-    return api2wire_sequences(raw);
+  List<dynamic> cst_encode_box_autoadd_sequences(Sequences raw) {
+    return cst_encode_sequences(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_some_struct_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_some_struct_twin_normal(
       SomeStructTwinNormal raw) {
-    return api2wire_some_struct_twin_normal(raw);
+    return cst_encode_some_struct_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_some_struct_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_some_struct_twin_rust_async(
       SomeStructTwinRustAsync raw) {
-    return api2wire_some_struct_twin_rust_async(raw);
+    return cst_encode_some_struct_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_some_struct_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_some_struct_twin_sync(
       SomeStructTwinSync raw) {
-    return api2wire_some_struct_twin_sync(raw);
+    return cst_encode_some_struct_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_struct_with_comments_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_struct_with_comments_twin_normal(
       StructWithCommentsTwinNormal raw) {
-    return api2wire_struct_with_comments_twin_normal(raw);
+    return cst_encode_struct_with_comments_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_struct_with_comments_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_struct_with_comments_twin_rust_async(
       StructWithCommentsTwinRustAsync raw) {
-    return api2wire_struct_with_comments_twin_rust_async(raw);
+    return cst_encode_struct_with_comments_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_struct_with_comments_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_struct_with_comments_twin_sync(
       StructWithCommentsTwinSync raw) {
-    return api2wire_struct_with_comments_twin_sync(raw);
+    return cst_encode_struct_with_comments_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_struct_with_enum_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_struct_with_enum_twin_normal(
       StructWithEnumTwinNormal raw) {
-    return api2wire_struct_with_enum_twin_normal(raw);
+    return cst_encode_struct_with_enum_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_struct_with_enum_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_struct_with_enum_twin_rust_async(
       StructWithEnumTwinRustAsync raw) {
-    return api2wire_struct_with_enum_twin_rust_async(raw);
+    return cst_encode_struct_with_enum_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_struct_with_enum_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_struct_with_enum_twin_sync(
       StructWithEnumTwinSync raw) {
-    return api2wire_struct_with_enum_twin_sync(raw);
+    return cst_encode_struct_with_enum_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_struct_with_one_field_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_struct_with_one_field_twin_normal(
       StructWithOneFieldTwinNormal raw) {
-    return api2wire_struct_with_one_field_twin_normal(raw);
+    return cst_encode_struct_with_one_field_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_struct_with_one_field_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_struct_with_one_field_twin_rust_async(
       StructWithOneFieldTwinRustAsync raw) {
-    return api2wire_struct_with_one_field_twin_rust_async(raw);
+    return cst_encode_struct_with_one_field_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_struct_with_one_field_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_struct_with_one_field_twin_sync(
       StructWithOneFieldTwinSync raw) {
-    return api2wire_struct_with_one_field_twin_sync(raw);
+    return cst_encode_struct_with_one_field_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_struct_with_two_field_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_struct_with_two_field_twin_normal(
       StructWithTwoFieldTwinNormal raw) {
-    return api2wire_struct_with_two_field_twin_normal(raw);
+    return cst_encode_struct_with_two_field_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_struct_with_two_field_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_struct_with_two_field_twin_rust_async(
       StructWithTwoFieldTwinRustAsync raw) {
-    return api2wire_struct_with_two_field_twin_rust_async(raw);
+    return cst_encode_struct_with_two_field_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_struct_with_two_field_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_struct_with_two_field_twin_sync(
       StructWithTwoFieldTwinSync raw) {
-    return api2wire_struct_with_two_field_twin_sync(raw);
+    return cst_encode_struct_with_two_field_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_struct_with_zero_field_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_struct_with_zero_field_twin_normal(
       StructWithZeroFieldTwinNormal raw) {
-    return api2wire_struct_with_zero_field_twin_normal(raw);
+    return cst_encode_struct_with_zero_field_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_struct_with_zero_field_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_struct_with_zero_field_twin_rust_async(
       StructWithZeroFieldTwinRustAsync raw) {
-    return api2wire_struct_with_zero_field_twin_rust_async(raw);
+    return cst_encode_struct_with_zero_field_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_struct_with_zero_field_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_struct_with_zero_field_twin_sync(
       StructWithZeroFieldTwinSync raw) {
-    return api2wire_struct_with_zero_field_twin_sync(raw);
+    return cst_encode_struct_with_zero_field_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_sum_with_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_sum_with_twin_normal(
       SumWithTwinNormal raw) {
-    return api2wire_sum_with_twin_normal(raw);
+    return cst_encode_sum_with_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_sum_with_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_sum_with_twin_rust_async(
       SumWithTwinRustAsync raw) {
-    return api2wire_sum_with_twin_rust_async(raw);
+    return cst_encode_sum_with_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_sum_with_twin_sync(SumWithTwinSync raw) {
-    return api2wire_sum_with_twin_sync(raw);
+  List<dynamic> cst_encode_box_autoadd_sum_with_twin_sync(SumWithTwinSync raw) {
+    return cst_encode_sum_with_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_test_id_twin_normal(TestIdTwinNormal raw) {
-    return api2wire_test_id_twin_normal(raw);
+  List<dynamic> cst_encode_box_autoadd_test_id_twin_normal(
+      TestIdTwinNormal raw) {
+    return cst_encode_test_id_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_test_id_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_test_id_twin_rust_async(
       TestIdTwinRustAsync raw) {
-    return api2wire_test_id_twin_rust_async(raw);
+    return cst_encode_test_id_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_test_id_twin_sync(TestIdTwinSync raw) {
-    return api2wire_test_id_twin_sync(raw);
+  List<dynamic> cst_encode_box_autoadd_test_id_twin_sync(TestIdTwinSync raw) {
+    return cst_encode_test_id_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_tuple_struct_with_one_field_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_tuple_struct_with_one_field_twin_normal(
       TupleStructWithOneFieldTwinNormal raw) {
-    return api2wire_tuple_struct_with_one_field_twin_normal(raw);
+    return cst_encode_tuple_struct_with_one_field_twin_normal(raw);
   }
 
   @protected
   List<dynamic>
-      api2wire_box_autoadd_tuple_struct_with_one_field_twin_rust_async(
+      cst_encode_box_autoadd_tuple_struct_with_one_field_twin_rust_async(
           TupleStructWithOneFieldTwinRustAsync raw) {
-    return api2wire_tuple_struct_with_one_field_twin_rust_async(raw);
+    return cst_encode_tuple_struct_with_one_field_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_tuple_struct_with_one_field_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_tuple_struct_with_one_field_twin_sync(
       TupleStructWithOneFieldTwinSync raw) {
-    return api2wire_tuple_struct_with_one_field_twin_sync(raw);
+    return cst_encode_tuple_struct_with_one_field_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_tuple_struct_with_two_field_twin_normal(
+  List<dynamic> cst_encode_box_autoadd_tuple_struct_with_two_field_twin_normal(
       TupleStructWithTwoFieldTwinNormal raw) {
-    return api2wire_tuple_struct_with_two_field_twin_normal(raw);
+    return cst_encode_tuple_struct_with_two_field_twin_normal(raw);
   }
 
   @protected
   List<dynamic>
-      api2wire_box_autoadd_tuple_struct_with_two_field_twin_rust_async(
+      cst_encode_box_autoadd_tuple_struct_with_two_field_twin_rust_async(
           TupleStructWithTwoFieldTwinRustAsync raw) {
-    return api2wire_tuple_struct_with_two_field_twin_rust_async(raw);
+    return cst_encode_tuple_struct_with_two_field_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_tuple_struct_with_two_field_twin_sync(
+  List<dynamic> cst_encode_box_autoadd_tuple_struct_with_two_field_twin_sync(
       TupleStructWithTwoFieldTwinSync raw) {
-    return api2wire_tuple_struct_with_two_field_twin_sync(raw);
+    return cst_encode_tuple_struct_with_two_field_twin_sync(raw);
   }
 
   @protected
-  int api2wire_box_autoadd_u_16(int raw) {
-    return api2wire_u_16(raw);
+  int cst_encode_box_autoadd_u_16(int raw) {
+    return cst_encode_u_16(raw);
   }
 
   @protected
-  int api2wire_box_autoadd_u_32(int raw) {
-    return api2wire_u_32(raw);
+  int cst_encode_box_autoadd_u_32(int raw) {
+    return cst_encode_u_32(raw);
   }
 
   @protected
-  Object api2wire_box_autoadd_u_64(int raw) {
-    return api2wire_u_64(raw);
+  Object cst_encode_box_autoadd_u_64(int raw) {
+    return cst_encode_u_64(raw);
   }
 
   @protected
-  int api2wire_box_autoadd_u_8(int raw) {
-    return api2wire_u_8(raw);
+  int cst_encode_box_autoadd_u_8(int raw) {
+    return cst_encode_u_8(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_user_id_twin_normal(UserIdTwinNormal raw) {
-    return api2wire_user_id_twin_normal(raw);
+  List<dynamic> cst_encode_box_autoadd_user_id_twin_normal(
+      UserIdTwinNormal raw) {
+    return cst_encode_user_id_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_user_id_twin_rust_async(
+  List<dynamic> cst_encode_box_autoadd_user_id_twin_rust_async(
       UserIdTwinRustAsync raw) {
-    return api2wire_user_id_twin_rust_async(raw);
+    return cst_encode_user_id_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_user_id_twin_sync(UserIdTwinSync raw) {
-    return api2wire_user_id_twin_sync(raw);
+  List<dynamic> cst_encode_box_autoadd_user_id_twin_sync(UserIdTwinSync raw) {
+    return cst_encode_user_id_twin_sync(raw);
   }
 
   @protected
-  int api2wire_box_autoadd_weekdays_twin_normal(WeekdaysTwinNormal raw) {
-    return api2wire_weekdays_twin_normal(raw);
+  int cst_encode_box_autoadd_weekdays_twin_normal(WeekdaysTwinNormal raw) {
+    return cst_encode_weekdays_twin_normal(raw);
   }
 
   @protected
-  int api2wire_box_autoadd_weekdays_twin_rust_async(WeekdaysTwinRustAsync raw) {
-    return api2wire_weekdays_twin_rust_async(raw);
+  int cst_encode_box_autoadd_weekdays_twin_rust_async(
+      WeekdaysTwinRustAsync raw) {
+    return cst_encode_weekdays_twin_rust_async(raw);
   }
 
   @protected
-  int api2wire_box_autoadd_weekdays_twin_sync(WeekdaysTwinSync raw) {
-    return api2wire_weekdays_twin_sync(raw);
+  int cst_encode_box_autoadd_weekdays_twin_sync(WeekdaysTwinSync raw) {
+    return cst_encode_weekdays_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_blob_twin_normal(BlobTwinNormal raw) {
-    return api2wire_blob_twin_normal(raw);
+  List<dynamic> cst_encode_box_blob_twin_normal(BlobTwinNormal raw) {
+    return cst_encode_blob_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_blob_twin_rust_async(BlobTwinRustAsync raw) {
-    return api2wire_blob_twin_rust_async(raw);
+  List<dynamic> cst_encode_box_blob_twin_rust_async(BlobTwinRustAsync raw) {
+    return cst_encode_blob_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_blob_twin_sync(BlobTwinSync raw) {
-    return api2wire_blob_twin_sync(raw);
+  List<dynamic> cst_encode_box_blob_twin_sync(BlobTwinSync raw) {
+    return cst_encode_blob_twin_sync(raw);
   }
 
   @protected
-  bool api2wire_box_bool(bool raw) {
-    return api2wire_bool(raw);
+  bool cst_encode_box_bool(bool raw) {
+    return cst_encode_bool(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_distance_twin_normal(DistanceTwinNormal raw) {
-    return api2wire_distance_twin_normal(raw);
+  List<dynamic> cst_encode_box_distance_twin_normal(DistanceTwinNormal raw) {
+    return cst_encode_distance_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_distance_twin_rust_async(
+  List<dynamic> cst_encode_box_distance_twin_rust_async(
       DistanceTwinRustAsync raw) {
-    return api2wire_distance_twin_rust_async(raw);
+    return cst_encode_distance_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_distance_twin_sync(DistanceTwinSync raw) {
-    return api2wire_distance_twin_sync(raw);
+  List<dynamic> cst_encode_box_distance_twin_sync(DistanceTwinSync raw) {
+    return cst_encode_distance_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_exotic_optionals_twin_normal(
+  List<dynamic> cst_encode_box_exotic_optionals_twin_normal(
       ExoticOptionalsTwinNormal raw) {
-    return api2wire_exotic_optionals_twin_normal(raw);
+    return cst_encode_exotic_optionals_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_exotic_optionals_twin_rust_async(
+  List<dynamic> cst_encode_box_exotic_optionals_twin_rust_async(
       ExoticOptionalsTwinRustAsync raw) {
-    return api2wire_exotic_optionals_twin_rust_async(raw);
+    return cst_encode_exotic_optionals_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_exotic_optionals_twin_sync(
+  List<dynamic> cst_encode_box_exotic_optionals_twin_sync(
       ExoticOptionalsTwinSync raw) {
-    return api2wire_exotic_optionals_twin_sync(raw);
+    return cst_encode_exotic_optionals_twin_sync(raw);
   }
 
   @protected
-  double api2wire_box_f_64(double raw) {
-    return api2wire_f_64(raw);
+  double cst_encode_box_f_64(double raw) {
+    return cst_encode_f_64(raw);
   }
 
   @protected
-  int api2wire_box_i_32(int raw) {
-    return api2wire_i_32(raw);
+  int cst_encode_box_i_32(int raw) {
+    return cst_encode_i_32(raw);
   }
 
   @protected
-  Object api2wire_box_i_64(int raw) {
-    return api2wire_i_64(raw);
+  Object cst_encode_box_i_64(int raw) {
+    return cst_encode_i_64(raw);
   }
 
   @protected
-  int api2wire_box_i_8(int raw) {
-    return api2wire_i_8(raw);
+  int cst_encode_box_i_8(int raw) {
+    return cst_encode_i_8(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_kitchen_sink_twin_normal(
+  List<dynamic> cst_encode_box_kitchen_sink_twin_normal(
       KitchenSinkTwinNormal raw) {
-    return api2wire_kitchen_sink_twin_normal(raw);
+    return cst_encode_kitchen_sink_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_kitchen_sink_twin_rust_async(
+  List<dynamic> cst_encode_box_kitchen_sink_twin_rust_async(
       KitchenSinkTwinRustAsync raw) {
-    return api2wire_kitchen_sink_twin_rust_async(raw);
+    return cst_encode_kitchen_sink_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_kitchen_sink_twin_sync(KitchenSinkTwinSync raw) {
-    return api2wire_kitchen_sink_twin_sync(raw);
+  List<dynamic> cst_encode_box_kitchen_sink_twin_sync(KitchenSinkTwinSync raw) {
+    return cst_encode_kitchen_sink_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_my_size(MySize raw) {
-    return api2wire_my_size(raw);
+  List<dynamic> cst_encode_box_my_size(MySize raw) {
+    return cst_encode_my_size(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_speed_twin_normal(SpeedTwinNormal raw) {
-    return api2wire_speed_twin_normal(raw);
+  List<dynamic> cst_encode_box_speed_twin_normal(SpeedTwinNormal raw) {
+    return cst_encode_speed_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_speed_twin_rust_async(SpeedTwinRustAsync raw) {
-    return api2wire_speed_twin_rust_async(raw);
+  List<dynamic> cst_encode_box_speed_twin_rust_async(SpeedTwinRustAsync raw) {
+    return cst_encode_speed_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_speed_twin_sync(SpeedTwinSync raw) {
-    return api2wire_speed_twin_sync(raw);
+  List<dynamic> cst_encode_box_speed_twin_sync(SpeedTwinSync raw) {
+    return cst_encode_speed_twin_sync(raw);
   }
 
   @protected
-  int api2wire_box_u_8(int raw) {
-    return api2wire_u_8(raw);
+  int cst_encode_box_u_8(int raw) {
+    return cst_encode_u_8(raw);
   }
 
   @protected
-  Uint8List api2wire_box_u_8_array_1600(U8Array1600 raw) {
-    return api2wire_u_8_array_1600(raw);
+  Uint8List cst_encode_box_u_8_array_1600(U8Array1600 raw) {
+    return cst_encode_u_8_array_1600(raw);
   }
 
   @protected
-  int api2wire_box_weekdays_twin_normal(WeekdaysTwinNormal raw) {
-    return api2wire_weekdays_twin_normal(raw);
+  int cst_encode_box_weekdays_twin_normal(WeekdaysTwinNormal raw) {
+    return cst_encode_weekdays_twin_normal(raw);
   }
 
   @protected
-  int api2wire_box_weekdays_twin_rust_async(WeekdaysTwinRustAsync raw) {
-    return api2wire_weekdays_twin_rust_async(raw);
+  int cst_encode_box_weekdays_twin_rust_async(WeekdaysTwinRustAsync raw) {
+    return cst_encode_weekdays_twin_rust_async(raw);
   }
 
   @protected
-  int api2wire_box_weekdays_twin_sync(WeekdaysTwinSync raw) {
-    return api2wire_weekdays_twin_sync(raw);
+  int cst_encode_box_weekdays_twin_sync(WeekdaysTwinSync raw) {
+    return cst_encode_weekdays_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_c_twin_normal(CTwinNormal raw) {
-    return [api2wire_bool(raw.c)];
+  List<dynamic> cst_encode_c_twin_normal(CTwinNormal raw) {
+    return [cst_encode_bool(raw.c)];
   }
 
   @protected
-  List<dynamic> api2wire_c_twin_rust_async(CTwinRustAsync raw) {
-    return [api2wire_bool(raw.c)];
+  List<dynamic> cst_encode_c_twin_rust_async(CTwinRustAsync raw) {
+    return [cst_encode_bool(raw.c)];
   }
 
   @protected
-  List<dynamic> api2wire_c_twin_sync(CTwinSync raw) {
-    return [api2wire_bool(raw.c)];
+  List<dynamic> cst_encode_c_twin_sync(CTwinSync raw) {
+    return [cst_encode_bool(raw.c)];
   }
 
   @protected
-  List<dynamic> api2wire_concatenate_with_twin_normal(
+  List<dynamic> cst_encode_concatenate_with_twin_normal(
       ConcatenateWithTwinNormal raw) {
-    return [api2wire_String(raw.a)];
+    return [cst_encode_String(raw.a)];
   }
 
   @protected
-  List<dynamic> api2wire_concatenate_with_twin_rust_async(
+  List<dynamic> cst_encode_concatenate_with_twin_rust_async(
       ConcatenateWithTwinRustAsync raw) {
-    return [api2wire_String(raw.a)];
+    return [cst_encode_String(raw.a)];
   }
 
   @protected
-  List<dynamic> api2wire_concatenate_with_twin_sync(
+  List<dynamic> cst_encode_concatenate_with_twin_sync(
       ConcatenateWithTwinSync raw) {
-    return [api2wire_String(raw.a)];
+    return [cst_encode_String(raw.a)];
   }
 
   @protected
-  List<dynamic> api2wire_custom_nested_error_inner_twin_normal(
+  List<dynamic> cst_encode_custom_nested_error_inner_twin_normal(
       CustomNestedErrorInnerTwinNormal raw) {
     if (raw is CustomNestedErrorInnerTwinNormal_Three) {
-      return [0, api2wire_String(raw.field0)];
+      return [0, cst_encode_String(raw.field0)];
     }
     if (raw is CustomNestedErrorInnerTwinNormal_Four) {
-      return [1, api2wire_u_32(raw.field0)];
+      return [1, cst_encode_u_32(raw.field0)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_custom_nested_error_inner_twin_rust_async(
+  List<dynamic> cst_encode_custom_nested_error_inner_twin_rust_async(
       CustomNestedErrorInnerTwinRustAsync raw) {
     if (raw is CustomNestedErrorInnerTwinRustAsync_Three) {
-      return [0, api2wire_String(raw.field0)];
+      return [0, cst_encode_String(raw.field0)];
     }
     if (raw is CustomNestedErrorInnerTwinRustAsync_Four) {
-      return [1, api2wire_u_32(raw.field0)];
+      return [1, cst_encode_u_32(raw.field0)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_custom_nested_error_inner_twin_sync(
+  List<dynamic> cst_encode_custom_nested_error_inner_twin_sync(
       CustomNestedErrorInnerTwinSync raw) {
     if (raw is CustomNestedErrorInnerTwinSync_Three) {
-      return [0, api2wire_String(raw.field0)];
+      return [0, cst_encode_String(raw.field0)];
     }
     if (raw is CustomNestedErrorInnerTwinSync_Four) {
-      return [1, api2wire_u_32(raw.field0)];
+      return [1, cst_encode_u_32(raw.field0)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_custom_nested_error_outer_twin_normal(
+  List<dynamic> cst_encode_custom_nested_error_outer_twin_normal(
       CustomNestedErrorOuterTwinNormal raw) {
     if (raw is CustomNestedErrorOuterTwinNormal_One) {
-      return [0, api2wire_String(raw.field0)];
+      return [0, cst_encode_String(raw.field0)];
     }
     if (raw is CustomNestedErrorOuterTwinNormal_Two) {
       return [
         1,
-        api2wire_box_autoadd_custom_nested_error_inner_twin_normal(raw.field0)
+        cst_encode_box_autoadd_custom_nested_error_inner_twin_normal(raw.field0)
       ];
     }
 
@@ -1523,15 +1533,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> api2wire_custom_nested_error_outer_twin_rust_async(
+  List<dynamic> cst_encode_custom_nested_error_outer_twin_rust_async(
       CustomNestedErrorOuterTwinRustAsync raw) {
     if (raw is CustomNestedErrorOuterTwinRustAsync_One) {
-      return [0, api2wire_String(raw.field0)];
+      return [0, cst_encode_String(raw.field0)];
     }
     if (raw is CustomNestedErrorOuterTwinRustAsync_Two) {
       return [
         1,
-        api2wire_box_autoadd_custom_nested_error_inner_twin_rust_async(
+        cst_encode_box_autoadd_custom_nested_error_inner_twin_rust_async(
             raw.field0)
       ];
     }
@@ -1540,15 +1550,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> api2wire_custom_nested_error_outer_twin_sync(
+  List<dynamic> cst_encode_custom_nested_error_outer_twin_sync(
       CustomNestedErrorOuterTwinSync raw) {
     if (raw is CustomNestedErrorOuterTwinSync_One) {
-      return [0, api2wire_String(raw.field0)];
+      return [0, cst_encode_String(raw.field0)];
     }
     if (raw is CustomNestedErrorOuterTwinSync_Two) {
       return [
         1,
-        api2wire_box_autoadd_custom_nested_error_inner_twin_sync(raw.field0)
+        cst_encode_box_autoadd_custom_nested_error_inner_twin_sync(raw.field0)
       ];
     }
 
@@ -1556,562 +1566,576 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  List<dynamic> api2wire_custom_struct_error_twin_normal(
+  List<dynamic> cst_encode_custom_struct_error_twin_normal(
       CustomStructErrorTwinNormal raw) {
-    return [api2wire_String(raw.a)];
+    return [cst_encode_String(raw.a)];
   }
 
   @protected
-  List<dynamic> api2wire_custom_struct_error_twin_rust_async(
+  List<dynamic> cst_encode_custom_struct_error_twin_rust_async(
       CustomStructErrorTwinRustAsync raw) {
-    return [api2wire_String(raw.a)];
+    return [cst_encode_String(raw.a)];
   }
 
   @protected
-  List<dynamic> api2wire_custom_struct_error_twin_sync(
+  List<dynamic> cst_encode_custom_struct_error_twin_sync(
       CustomStructErrorTwinSync raw) {
-    return [api2wire_String(raw.a)];
+    return [cst_encode_String(raw.a)];
   }
 
   @protected
-  List<dynamic> api2wire_custom_struct_twin_normal(CustomStructTwinNormal raw) {
-    return [api2wire_String(raw.message)];
+  List<dynamic> cst_encode_custom_struct_twin_normal(
+      CustomStructTwinNormal raw) {
+    return [cst_encode_String(raw.message)];
   }
 
   @protected
-  List<dynamic> api2wire_custom_struct_twin_rust_async(
+  List<dynamic> cst_encode_custom_struct_twin_rust_async(
       CustomStructTwinRustAsync raw) {
-    return [api2wire_String(raw.message)];
+    return [cst_encode_String(raw.message)];
   }
 
   @protected
-  List<dynamic> api2wire_custom_struct_twin_sync(CustomStructTwinSync raw) {
-    return [api2wire_String(raw.message)];
+  List<dynamic> cst_encode_custom_struct_twin_sync(CustomStructTwinSync raw) {
+    return [cst_encode_String(raw.message)];
   }
 
   @protected
-  List<dynamic> api2wire_customized_twin_normal(CustomizedTwinNormal raw) {
+  List<dynamic> cst_encode_customized_twin_normal(CustomizedTwinNormal raw) {
     return [
-      api2wire_String(raw.finalField),
-      api2wire_opt_String(raw.nonFinalField)
+      cst_encode_String(raw.finalField),
+      cst_encode_opt_String(raw.nonFinalField)
     ];
   }
 
   @protected
-  List<dynamic> api2wire_customized_twin_rust_async(
+  List<dynamic> cst_encode_customized_twin_rust_async(
       CustomizedTwinRustAsync raw) {
     return [
-      api2wire_String(raw.finalField),
-      api2wire_opt_String(raw.nonFinalField)
+      cst_encode_String(raw.finalField),
+      cst_encode_opt_String(raw.nonFinalField)
     ];
   }
 
   @protected
-  List<dynamic> api2wire_customized_twin_sync(CustomizedTwinSync raw) {
+  List<dynamic> cst_encode_customized_twin_sync(CustomizedTwinSync raw) {
     return [
-      api2wire_String(raw.finalField),
-      api2wire_opt_String(raw.nonFinalField)
+      cst_encode_String(raw.finalField),
+      cst_encode_opt_String(raw.nonFinalField)
     ];
   }
 
   @protected
-  List<dynamic> api2wire_dart_opaque_nested_twin_normal(
+  List<dynamic> cst_encode_dart_opaque_nested_twin_normal(
       DartOpaqueNestedTwinNormal raw) {
-    return [api2wire_DartOpaque(raw.first), api2wire_DartOpaque(raw.second)];
+    return [
+      cst_encode_DartOpaque(raw.first),
+      cst_encode_DartOpaque(raw.second)
+    ];
   }
 
   @protected
-  List<dynamic> api2wire_dart_opaque_nested_twin_rust_async(
+  List<dynamic> cst_encode_dart_opaque_nested_twin_rust_async(
       DartOpaqueNestedTwinRustAsync raw) {
-    return [api2wire_DartOpaque(raw.first), api2wire_DartOpaque(raw.second)];
+    return [
+      cst_encode_DartOpaque(raw.first),
+      cst_encode_DartOpaque(raw.second)
+    ];
   }
 
   @protected
-  List<dynamic> api2wire_dart_opaque_nested_twin_sync(
+  List<dynamic> cst_encode_dart_opaque_nested_twin_sync(
       DartOpaqueNestedTwinSync raw) {
-    return [api2wire_DartOpaque(raw.first), api2wire_DartOpaque(raw.second)];
+    return [
+      cst_encode_DartOpaque(raw.first),
+      cst_encode_DartOpaque(raw.second)
+    ];
   }
 
   @protected
-  List<dynamic> api2wire_distance_twin_normal(DistanceTwinNormal raw) {
+  List<dynamic> cst_encode_distance_twin_normal(DistanceTwinNormal raw) {
     if (raw is DistanceTwinNormal_Unknown) {
       return [0];
     }
     if (raw is DistanceTwinNormal_Map) {
-      return [1, api2wire_f_64(raw.field0)];
+      return [1, cst_encode_f_64(raw.field0)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_distance_twin_rust_async(DistanceTwinRustAsync raw) {
+  List<dynamic> cst_encode_distance_twin_rust_async(DistanceTwinRustAsync raw) {
     if (raw is DistanceTwinRustAsync_Unknown) {
       return [0];
     }
     if (raw is DistanceTwinRustAsync_Map) {
-      return [1, api2wire_f_64(raw.field0)];
+      return [1, cst_encode_f_64(raw.field0)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_distance_twin_sync(DistanceTwinSync raw) {
+  List<dynamic> cst_encode_distance_twin_sync(DistanceTwinSync raw) {
     if (raw is DistanceTwinSync_Unknown) {
       return [0];
     }
     if (raw is DistanceTwinSync_Map) {
-      return [1, api2wire_f_64(raw.field0)];
+      return [1, cst_encode_f_64(raw.field0)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_empty_twin_normal(EmptyTwinNormal raw) {
+  List<dynamic> cst_encode_empty_twin_normal(EmptyTwinNormal raw) {
     return [];
   }
 
   @protected
-  List<dynamic> api2wire_empty_twin_rust_async(EmptyTwinRustAsync raw) {
+  List<dynamic> cst_encode_empty_twin_rust_async(EmptyTwinRustAsync raw) {
     return [];
   }
 
   @protected
-  List<dynamic> api2wire_empty_twin_sync(EmptyTwinSync raw) {
+  List<dynamic> cst_encode_empty_twin_sync(EmptyTwinSync raw) {
     return [];
   }
 
   @protected
-  List<dynamic> api2wire_enum_dart_opaque_twin_normal(
+  List<dynamic> cst_encode_enum_dart_opaque_twin_normal(
       EnumDartOpaqueTwinNormal raw) {
     if (raw is EnumDartOpaqueTwinNormal_Primitive) {
-      return [0, api2wire_i_32(raw.field0)];
+      return [0, cst_encode_i_32(raw.field0)];
     }
     if (raw is EnumDartOpaqueTwinNormal_Opaque) {
-      return [1, api2wire_DartOpaque(raw.field0)];
+      return [1, cst_encode_DartOpaque(raw.field0)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_enum_dart_opaque_twin_rust_async(
+  List<dynamic> cst_encode_enum_dart_opaque_twin_rust_async(
       EnumDartOpaqueTwinRustAsync raw) {
     if (raw is EnumDartOpaqueTwinRustAsync_Primitive) {
-      return [0, api2wire_i_32(raw.field0)];
+      return [0, cst_encode_i_32(raw.field0)];
     }
     if (raw is EnumDartOpaqueTwinRustAsync_Opaque) {
-      return [1, api2wire_DartOpaque(raw.field0)];
+      return [1, cst_encode_DartOpaque(raw.field0)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_enum_dart_opaque_twin_sync(
+  List<dynamic> cst_encode_enum_dart_opaque_twin_sync(
       EnumDartOpaqueTwinSync raw) {
     if (raw is EnumDartOpaqueTwinSync_Primitive) {
-      return [0, api2wire_i_32(raw.field0)];
+      return [0, cst_encode_i_32(raw.field0)];
     }
     if (raw is EnumDartOpaqueTwinSync_Opaque) {
-      return [1, api2wire_DartOpaque(raw.field0)];
+      return [1, cst_encode_DartOpaque(raw.field0)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_enum_opaque_twin_normal(EnumOpaqueTwinNormal raw) {
+  List<dynamic> cst_encode_enum_opaque_twin_normal(EnumOpaqueTwinNormal raw) {
     if (raw is EnumOpaqueTwinNormal_Struct) {
-      return [0, api2wire_RustOpaque_hide_data(raw.field0)];
+      return [0, cst_encode_RustOpaque_hide_data(raw.field0)];
     }
     if (raw is EnumOpaqueTwinNormal_Primitive) {
-      return [1, api2wire_RustOpaque_i_32(raw.field0)];
+      return [1, cst_encode_RustOpaque_i_32(raw.field0)];
     }
     if (raw is EnumOpaqueTwinNormal_TraitObj) {
-      return [2, api2wire_RustOpaque_box_dynDartDebugTwinNormal(raw.field0)];
+      return [2, cst_encode_RustOpaque_box_dynDartDebugTwinNormal(raw.field0)];
     }
     if (raw is EnumOpaqueTwinNormal_Mutex) {
-      return [3, api2wire_RustOpaque_MutexHideData(raw.field0)];
+      return [3, cst_encode_RustOpaque_MutexHideData(raw.field0)];
     }
     if (raw is EnumOpaqueTwinNormal_RwLock) {
-      return [4, api2wire_RustOpaque_RwLockHideData(raw.field0)];
+      return [4, cst_encode_RustOpaque_RwLockHideData(raw.field0)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_enum_opaque_twin_rust_async(
+  List<dynamic> cst_encode_enum_opaque_twin_rust_async(
       EnumOpaqueTwinRustAsync raw) {
     if (raw is EnumOpaqueTwinRustAsync_Struct) {
-      return [0, api2wire_RustOpaque_hide_data(raw.field0)];
+      return [0, cst_encode_RustOpaque_hide_data(raw.field0)];
     }
     if (raw is EnumOpaqueTwinRustAsync_Primitive) {
-      return [1, api2wire_RustOpaque_i_32(raw.field0)];
+      return [1, cst_encode_RustOpaque_i_32(raw.field0)];
     }
     if (raw is EnumOpaqueTwinRustAsync_TraitObj) {
-      return [2, api2wire_RustOpaque_box_dynDartDebugTwinRustAsync(raw.field0)];
+      return [
+        2,
+        cst_encode_RustOpaque_box_dynDartDebugTwinRustAsync(raw.field0)
+      ];
     }
     if (raw is EnumOpaqueTwinRustAsync_Mutex) {
-      return [3, api2wire_RustOpaque_MutexHideData(raw.field0)];
+      return [3, cst_encode_RustOpaque_MutexHideData(raw.field0)];
     }
     if (raw is EnumOpaqueTwinRustAsync_RwLock) {
-      return [4, api2wire_RustOpaque_RwLockHideData(raw.field0)];
+      return [4, cst_encode_RustOpaque_RwLockHideData(raw.field0)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_enum_opaque_twin_sync(EnumOpaqueTwinSync raw) {
+  List<dynamic> cst_encode_enum_opaque_twin_sync(EnumOpaqueTwinSync raw) {
     if (raw is EnumOpaqueTwinSync_Struct) {
-      return [0, api2wire_RustOpaque_hide_data(raw.field0)];
+      return [0, cst_encode_RustOpaque_hide_data(raw.field0)];
     }
     if (raw is EnumOpaqueTwinSync_Primitive) {
-      return [1, api2wire_RustOpaque_i_32(raw.field0)];
+      return [1, cst_encode_RustOpaque_i_32(raw.field0)];
     }
     if (raw is EnumOpaqueTwinSync_TraitObj) {
-      return [2, api2wire_RustOpaque_box_dynDartDebugTwinSync(raw.field0)];
+      return [2, cst_encode_RustOpaque_box_dynDartDebugTwinSync(raw.field0)];
     }
     if (raw is EnumOpaqueTwinSync_Mutex) {
-      return [3, api2wire_RustOpaque_MutexHideData(raw.field0)];
+      return [3, cst_encode_RustOpaque_MutexHideData(raw.field0)];
     }
     if (raw is EnumOpaqueTwinSync_RwLock) {
-      return [4, api2wire_RustOpaque_RwLockHideData(raw.field0)];
+      return [4, cst_encode_RustOpaque_RwLockHideData(raw.field0)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_enum_with_item_mixed_twin_normal(
+  List<dynamic> cst_encode_enum_with_item_mixed_twin_normal(
       EnumWithItemMixedTwinNormal raw) {
     if (raw is EnumWithItemMixedTwinNormal_A) {
       return [0];
     }
     if (raw is EnumWithItemMixedTwinNormal_B) {
-      return [1, api2wire_list_prim_u_8(raw.field0)];
+      return [1, cst_encode_list_prim_u_8(raw.field0)];
     }
     if (raw is EnumWithItemMixedTwinNormal_C) {
-      return [2, api2wire_String(raw.cField)];
+      return [2, cst_encode_String(raw.cField)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_enum_with_item_mixed_twin_rust_async(
+  List<dynamic> cst_encode_enum_with_item_mixed_twin_rust_async(
       EnumWithItemMixedTwinRustAsync raw) {
     if (raw is EnumWithItemMixedTwinRustAsync_A) {
       return [0];
     }
     if (raw is EnumWithItemMixedTwinRustAsync_B) {
-      return [1, api2wire_list_prim_u_8(raw.field0)];
+      return [1, cst_encode_list_prim_u_8(raw.field0)];
     }
     if (raw is EnumWithItemMixedTwinRustAsync_C) {
-      return [2, api2wire_String(raw.cField)];
+      return [2, cst_encode_String(raw.cField)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_enum_with_item_mixed_twin_sync(
+  List<dynamic> cst_encode_enum_with_item_mixed_twin_sync(
       EnumWithItemMixedTwinSync raw) {
     if (raw is EnumWithItemMixedTwinSync_A) {
       return [0];
     }
     if (raw is EnumWithItemMixedTwinSync_B) {
-      return [1, api2wire_list_prim_u_8(raw.field0)];
+      return [1, cst_encode_list_prim_u_8(raw.field0)];
     }
     if (raw is EnumWithItemMixedTwinSync_C) {
-      return [2, api2wire_String(raw.cField)];
+      return [2, cst_encode_String(raw.cField)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_enum_with_item_struct_twin_normal(
+  List<dynamic> cst_encode_enum_with_item_struct_twin_normal(
       EnumWithItemStructTwinNormal raw) {
     if (raw is EnumWithItemStructTwinNormal_A) {
-      return [0, api2wire_list_prim_u_8(raw.aField)];
+      return [0, cst_encode_list_prim_u_8(raw.aField)];
     }
     if (raw is EnumWithItemStructTwinNormal_B) {
-      return [1, api2wire_list_prim_i_32(raw.bField)];
+      return [1, cst_encode_list_prim_i_32(raw.bField)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_enum_with_item_struct_twin_rust_async(
+  List<dynamic> cst_encode_enum_with_item_struct_twin_rust_async(
       EnumWithItemStructTwinRustAsync raw) {
     if (raw is EnumWithItemStructTwinRustAsync_A) {
-      return [0, api2wire_list_prim_u_8(raw.aField)];
+      return [0, cst_encode_list_prim_u_8(raw.aField)];
     }
     if (raw is EnumWithItemStructTwinRustAsync_B) {
-      return [1, api2wire_list_prim_i_32(raw.bField)];
+      return [1, cst_encode_list_prim_i_32(raw.bField)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_enum_with_item_struct_twin_sync(
+  List<dynamic> cst_encode_enum_with_item_struct_twin_sync(
       EnumWithItemStructTwinSync raw) {
     if (raw is EnumWithItemStructTwinSync_A) {
-      return [0, api2wire_list_prim_u_8(raw.aField)];
+      return [0, cst_encode_list_prim_u_8(raw.aField)];
     }
     if (raw is EnumWithItemStructTwinSync_B) {
-      return [1, api2wire_list_prim_i_32(raw.bField)];
+      return [1, cst_encode_list_prim_i_32(raw.bField)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_enum_with_item_tuple_twin_normal(
+  List<dynamic> cst_encode_enum_with_item_tuple_twin_normal(
       EnumWithItemTupleTwinNormal raw) {
     if (raw is EnumWithItemTupleTwinNormal_A) {
-      return [0, api2wire_list_prim_u_8(raw.field0)];
+      return [0, cst_encode_list_prim_u_8(raw.field0)];
     }
     if (raw is EnumWithItemTupleTwinNormal_B) {
-      return [1, api2wire_list_prim_i_32(raw.field0)];
+      return [1, cst_encode_list_prim_i_32(raw.field0)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_enum_with_item_tuple_twin_rust_async(
+  List<dynamic> cst_encode_enum_with_item_tuple_twin_rust_async(
       EnumWithItemTupleTwinRustAsync raw) {
     if (raw is EnumWithItemTupleTwinRustAsync_A) {
-      return [0, api2wire_list_prim_u_8(raw.field0)];
+      return [0, cst_encode_list_prim_u_8(raw.field0)];
     }
     if (raw is EnumWithItemTupleTwinRustAsync_B) {
-      return [1, api2wire_list_prim_i_32(raw.field0)];
+      return [1, cst_encode_list_prim_i_32(raw.field0)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_enum_with_item_tuple_twin_sync(
+  List<dynamic> cst_encode_enum_with_item_tuple_twin_sync(
       EnumWithItemTupleTwinSync raw) {
     if (raw is EnumWithItemTupleTwinSync_A) {
-      return [0, api2wire_list_prim_u_8(raw.field0)];
+      return [0, cst_encode_list_prim_u_8(raw.field0)];
     }
     if (raw is EnumWithItemTupleTwinSync_B) {
-      return [1, api2wire_list_prim_i_32(raw.field0)];
+      return [1, cst_encode_list_prim_i_32(raw.field0)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_event_twin_normal(EventTwinNormal raw) {
-    return [api2wire_String(raw.address), api2wire_String(raw.payload)];
+  List<dynamic> cst_encode_event_twin_normal(EventTwinNormal raw) {
+    return [cst_encode_String(raw.address), cst_encode_String(raw.payload)];
   }
 
   @protected
-  List<dynamic> api2wire_event_twin_rust_async(EventTwinRustAsync raw) {
-    return [api2wire_String(raw.address), api2wire_String(raw.payload)];
+  List<dynamic> cst_encode_event_twin_rust_async(EventTwinRustAsync raw) {
+    return [cst_encode_String(raw.address), cst_encode_String(raw.payload)];
   }
 
   @protected
-  List<dynamic> api2wire_event_twin_sync(EventTwinSync raw) {
-    return [api2wire_String(raw.address), api2wire_String(raw.payload)];
+  List<dynamic> cst_encode_event_twin_sync(EventTwinSync raw) {
+    return [cst_encode_String(raw.address), cst_encode_String(raw.payload)];
   }
 
   @protected
-  List<dynamic> api2wire_exotic_optionals_twin_normal(
+  List<dynamic> cst_encode_exotic_optionals_twin_normal(
       ExoticOptionalsTwinNormal raw) {
     return [
-      api2wire_opt_box_autoadd_i_32(raw.int32),
-      api2wire_opt_box_autoadd_i_64(raw.int64),
-      api2wire_opt_box_autoadd_f_64(raw.float64),
-      api2wire_opt_box_autoadd_bool(raw.boolean),
-      api2wire_opt_ZeroCopyBuffer_list_prim_u_8(raw.zerocopy),
-      api2wire_opt_list_prim_i_8(raw.int8List),
-      api2wire_opt_list_prim_u_8(raw.uint8List),
-      api2wire_opt_list_prim_i_32(raw.int32List),
-      api2wire_opt_list_prim_f_32(raw.float32List),
-      api2wire_opt_list_prim_f_64(raw.float64List),
-      api2wire_opt_list_attribute_twin_normal(raw.attributes),
-      api2wire_list_opt_box_autoadd_attribute_twin_normal(
+      cst_encode_opt_box_autoadd_i_32(raw.int32),
+      cst_encode_opt_box_autoadd_i_64(raw.int64),
+      cst_encode_opt_box_autoadd_f_64(raw.float64),
+      cst_encode_opt_box_autoadd_bool(raw.boolean),
+      cst_encode_opt_ZeroCopyBuffer_list_prim_u_8(raw.zerocopy),
+      cst_encode_opt_list_prim_i_8(raw.int8List),
+      cst_encode_opt_list_prim_u_8(raw.uint8List),
+      cst_encode_opt_list_prim_i_32(raw.int32List),
+      cst_encode_opt_list_prim_f_32(raw.float32List),
+      cst_encode_opt_list_prim_f_64(raw.float64List),
+      cst_encode_opt_list_attribute_twin_normal(raw.attributes),
+      cst_encode_list_opt_box_autoadd_attribute_twin_normal(
           raw.attributesNullable),
-      api2wire_opt_list_opt_box_autoadd_attribute_twin_normal(
+      cst_encode_opt_list_opt_box_autoadd_attribute_twin_normal(
           raw.nullableAttributes),
-      api2wire_opt_box_autoadd_new_type_int_twin_normal(raw.newtypeint)
+      cst_encode_opt_box_autoadd_new_type_int_twin_normal(raw.newtypeint)
     ];
   }
 
   @protected
-  List<dynamic> api2wire_exotic_optionals_twin_rust_async(
+  List<dynamic> cst_encode_exotic_optionals_twin_rust_async(
       ExoticOptionalsTwinRustAsync raw) {
     return [
-      api2wire_opt_box_autoadd_i_32(raw.int32),
-      api2wire_opt_box_autoadd_i_64(raw.int64),
-      api2wire_opt_box_autoadd_f_64(raw.float64),
-      api2wire_opt_box_autoadd_bool(raw.boolean),
-      api2wire_opt_ZeroCopyBuffer_list_prim_u_8(raw.zerocopy),
-      api2wire_opt_list_prim_i_8(raw.int8List),
-      api2wire_opt_list_prim_u_8(raw.uint8List),
-      api2wire_opt_list_prim_i_32(raw.int32List),
-      api2wire_opt_list_prim_f_32(raw.float32List),
-      api2wire_opt_list_prim_f_64(raw.float64List),
-      api2wire_opt_list_attribute_twin_rust_async(raw.attributes),
-      api2wire_list_opt_box_autoadd_attribute_twin_rust_async(
+      cst_encode_opt_box_autoadd_i_32(raw.int32),
+      cst_encode_opt_box_autoadd_i_64(raw.int64),
+      cst_encode_opt_box_autoadd_f_64(raw.float64),
+      cst_encode_opt_box_autoadd_bool(raw.boolean),
+      cst_encode_opt_ZeroCopyBuffer_list_prim_u_8(raw.zerocopy),
+      cst_encode_opt_list_prim_i_8(raw.int8List),
+      cst_encode_opt_list_prim_u_8(raw.uint8List),
+      cst_encode_opt_list_prim_i_32(raw.int32List),
+      cst_encode_opt_list_prim_f_32(raw.float32List),
+      cst_encode_opt_list_prim_f_64(raw.float64List),
+      cst_encode_opt_list_attribute_twin_rust_async(raw.attributes),
+      cst_encode_list_opt_box_autoadd_attribute_twin_rust_async(
           raw.attributesNullable),
-      api2wire_opt_list_opt_box_autoadd_attribute_twin_rust_async(
+      cst_encode_opt_list_opt_box_autoadd_attribute_twin_rust_async(
           raw.nullableAttributes),
-      api2wire_opt_box_autoadd_new_type_int_twin_rust_async(raw.newtypeint)
+      cst_encode_opt_box_autoadd_new_type_int_twin_rust_async(raw.newtypeint)
     ];
   }
 
   @protected
-  List<dynamic> api2wire_exotic_optionals_twin_sync(
+  List<dynamic> cst_encode_exotic_optionals_twin_sync(
       ExoticOptionalsTwinSync raw) {
     return [
-      api2wire_opt_box_autoadd_i_32(raw.int32),
-      api2wire_opt_box_autoadd_i_64(raw.int64),
-      api2wire_opt_box_autoadd_f_64(raw.float64),
-      api2wire_opt_box_autoadd_bool(raw.boolean),
-      api2wire_opt_ZeroCopyBuffer_list_prim_u_8(raw.zerocopy),
-      api2wire_opt_list_prim_i_8(raw.int8List),
-      api2wire_opt_list_prim_u_8(raw.uint8List),
-      api2wire_opt_list_prim_i_32(raw.int32List),
-      api2wire_opt_list_prim_f_32(raw.float32List),
-      api2wire_opt_list_prim_f_64(raw.float64List),
-      api2wire_opt_list_attribute_twin_sync(raw.attributes),
-      api2wire_list_opt_box_autoadd_attribute_twin_sync(raw.attributesNullable),
-      api2wire_opt_list_opt_box_autoadd_attribute_twin_sync(
+      cst_encode_opt_box_autoadd_i_32(raw.int32),
+      cst_encode_opt_box_autoadd_i_64(raw.int64),
+      cst_encode_opt_box_autoadd_f_64(raw.float64),
+      cst_encode_opt_box_autoadd_bool(raw.boolean),
+      cst_encode_opt_ZeroCopyBuffer_list_prim_u_8(raw.zerocopy),
+      cst_encode_opt_list_prim_i_8(raw.int8List),
+      cst_encode_opt_list_prim_u_8(raw.uint8List),
+      cst_encode_opt_list_prim_i_32(raw.int32List),
+      cst_encode_opt_list_prim_f_32(raw.float32List),
+      cst_encode_opt_list_prim_f_64(raw.float64List),
+      cst_encode_opt_list_attribute_twin_sync(raw.attributes),
+      cst_encode_list_opt_box_autoadd_attribute_twin_sync(
+          raw.attributesNullable),
+      cst_encode_opt_list_opt_box_autoadd_attribute_twin_sync(
           raw.nullableAttributes),
-      api2wire_opt_box_autoadd_new_type_int_twin_sync(raw.newtypeint)
+      cst_encode_opt_box_autoadd_new_type_int_twin_sync(raw.newtypeint)
     ];
   }
 
   @protected
-  Float64List api2wire_f_64_array_16(F64Array16 raw) {
+  Float64List cst_encode_f_64_array_16(F64Array16 raw) {
     return Float64List.fromList(raw);
   }
 
   @protected
-  List<dynamic> api2wire_feature_chrono_twin_normal(
+  List<dynamic> cst_encode_feature_chrono_twin_normal(
       FeatureChronoTwinNormal raw) {
     return [
-      api2wire_Chrono_Utc(raw.utc),
-      api2wire_Chrono_Local(raw.local),
-      api2wire_Chrono_Duration(raw.duration),
-      api2wire_Chrono_Naive(raw.naive)
+      cst_encode_Chrono_Utc(raw.utc),
+      cst_encode_Chrono_Local(raw.local),
+      cst_encode_Chrono_Duration(raw.duration),
+      cst_encode_Chrono_Naive(raw.naive)
     ];
   }
 
   @protected
-  List<dynamic> api2wire_feature_chrono_twin_rust_async(
+  List<dynamic> cst_encode_feature_chrono_twin_rust_async(
       FeatureChronoTwinRustAsync raw) {
     return [
-      api2wire_Chrono_Utc(raw.utc),
-      api2wire_Chrono_Local(raw.local),
-      api2wire_Chrono_Duration(raw.duration),
-      api2wire_Chrono_Naive(raw.naive)
+      cst_encode_Chrono_Utc(raw.utc),
+      cst_encode_Chrono_Local(raw.local),
+      cst_encode_Chrono_Duration(raw.duration),
+      cst_encode_Chrono_Naive(raw.naive)
     ];
   }
 
   @protected
-  List<dynamic> api2wire_feature_chrono_twin_sync(FeatureChronoTwinSync raw) {
+  List<dynamic> cst_encode_feature_chrono_twin_sync(FeatureChronoTwinSync raw) {
     return [
-      api2wire_Chrono_Utc(raw.utc),
-      api2wire_Chrono_Local(raw.local),
-      api2wire_Chrono_Duration(raw.duration),
-      api2wire_Chrono_Naive(raw.naive)
+      cst_encode_Chrono_Utc(raw.utc),
+      cst_encode_Chrono_Local(raw.local),
+      cst_encode_Chrono_Duration(raw.duration),
+      cst_encode_Chrono_Naive(raw.naive)
     ];
   }
 
   @protected
-  List<dynamic> api2wire_feature_uuid_twin_normal(FeatureUuidTwinNormal raw) {
-    return [api2wire_Uuid(raw.one), api2wire_Uuids(raw.many)];
+  List<dynamic> cst_encode_feature_uuid_twin_normal(FeatureUuidTwinNormal raw) {
+    return [cst_encode_Uuid(raw.one), cst_encode_Uuids(raw.many)];
   }
 
   @protected
-  List<dynamic> api2wire_feature_uuid_twin_rust_async(
+  List<dynamic> cst_encode_feature_uuid_twin_rust_async(
       FeatureUuidTwinRustAsync raw) {
-    return [api2wire_Uuid(raw.one), api2wire_Uuids(raw.many)];
+    return [cst_encode_Uuid(raw.one), cst_encode_Uuids(raw.many)];
   }
 
   @protected
-  List<dynamic> api2wire_feature_uuid_twin_sync(FeatureUuidTwinSync raw) {
-    return [api2wire_Uuid(raw.one), api2wire_Uuids(raw.many)];
+  List<dynamic> cst_encode_feature_uuid_twin_sync(FeatureUuidTwinSync raw) {
+    return [cst_encode_Uuid(raw.one), cst_encode_Uuids(raw.many)];
   }
 
   @protected
-  List<dynamic> api2wire_feed_id_twin_normal(FeedIdTwinNormal raw) {
-    return [api2wire_u_8_array_8(raw.field0)];
+  List<dynamic> cst_encode_feed_id_twin_normal(FeedIdTwinNormal raw) {
+    return [cst_encode_u_8_array_8(raw.field0)];
   }
 
   @protected
-  List<dynamic> api2wire_feed_id_twin_rust_async(FeedIdTwinRustAsync raw) {
-    return [api2wire_u_8_array_8(raw.field0)];
+  List<dynamic> cst_encode_feed_id_twin_rust_async(FeedIdTwinRustAsync raw) {
+    return [cst_encode_u_8_array_8(raw.field0)];
   }
 
   @protected
-  List<dynamic> api2wire_feed_id_twin_sync(FeedIdTwinSync raw) {
-    return [api2wire_u_8_array_8(raw.field0)];
+  List<dynamic> cst_encode_feed_id_twin_sync(FeedIdTwinSync raw) {
+    return [cst_encode_u_8_array_8(raw.field0)];
   }
 
   @protected
-  Int32List api2wire_i_32_array_2(I32Array2 raw) {
+  Int32List cst_encode_i_32_array_2(I32Array2 raw) {
     return Int32List.fromList(raw);
   }
 
   @protected
-  Object api2wire_i_64(int raw) {
+  Object cst_encode_i_64(int raw) {
     return castNativeBigInt(raw);
   }
 
   @protected
-  List<dynamic> api2wire_kitchen_sink_twin_normal(KitchenSinkTwinNormal raw) {
+  List<dynamic> cst_encode_kitchen_sink_twin_normal(KitchenSinkTwinNormal raw) {
     if (raw is KitchenSinkTwinNormal_Empty) {
       return [0];
     }
     if (raw is KitchenSinkTwinNormal_Primitives) {
       return [
         1,
-        api2wire_i_32(raw.int32),
-        api2wire_f_64(raw.float64),
-        api2wire_bool(raw.boolean)
+        cst_encode_i_32(raw.int32),
+        cst_encode_f_64(raw.float64),
+        cst_encode_bool(raw.boolean)
       ];
     }
     if (raw is KitchenSinkTwinNormal_Nested) {
       return [
         2,
-        api2wire_i_32(raw.field0),
-        api2wire_box_kitchen_sink_twin_normal(raw.field1)
+        cst_encode_i_32(raw.field0),
+        cst_encode_box_kitchen_sink_twin_normal(raw.field1)
       ];
     }
     if (raw is KitchenSinkTwinNormal_Optional) {
       return [
         3,
-        api2wire_opt_box_autoadd_i_32(raw.field0),
-        api2wire_opt_box_autoadd_i_32(raw.field1)
+        cst_encode_opt_box_autoadd_i_32(raw.field0),
+        cst_encode_opt_box_autoadd_i_32(raw.field1)
       ];
     }
     if (raw is KitchenSinkTwinNormal_Buffer) {
-      return [4, api2wire_ZeroCopyBuffer_list_prim_u_8(raw.field0)];
+      return [4, cst_encode_ZeroCopyBuffer_list_prim_u_8(raw.field0)];
     }
     if (raw is KitchenSinkTwinNormal_Enums) {
-      return [5, api2wire_weekdays_twin_normal(raw.field0)];
+      return [5, cst_encode_weekdays_twin_normal(raw.field0)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_kitchen_sink_twin_rust_async(
+  List<dynamic> cst_encode_kitchen_sink_twin_rust_async(
       KitchenSinkTwinRustAsync raw) {
     if (raw is KitchenSinkTwinRustAsync_Empty) {
       return [0];
@@ -2119,1026 +2143,1038 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     if (raw is KitchenSinkTwinRustAsync_Primitives) {
       return [
         1,
-        api2wire_i_32(raw.int32),
-        api2wire_f_64(raw.float64),
-        api2wire_bool(raw.boolean)
+        cst_encode_i_32(raw.int32),
+        cst_encode_f_64(raw.float64),
+        cst_encode_bool(raw.boolean)
       ];
     }
     if (raw is KitchenSinkTwinRustAsync_Nested) {
       return [
         2,
-        api2wire_i_32(raw.field0),
-        api2wire_box_kitchen_sink_twin_rust_async(raw.field1)
+        cst_encode_i_32(raw.field0),
+        cst_encode_box_kitchen_sink_twin_rust_async(raw.field1)
       ];
     }
     if (raw is KitchenSinkTwinRustAsync_Optional) {
       return [
         3,
-        api2wire_opt_box_autoadd_i_32(raw.field0),
-        api2wire_opt_box_autoadd_i_32(raw.field1)
+        cst_encode_opt_box_autoadd_i_32(raw.field0),
+        cst_encode_opt_box_autoadd_i_32(raw.field1)
       ];
     }
     if (raw is KitchenSinkTwinRustAsync_Buffer) {
-      return [4, api2wire_ZeroCopyBuffer_list_prim_u_8(raw.field0)];
+      return [4, cst_encode_ZeroCopyBuffer_list_prim_u_8(raw.field0)];
     }
     if (raw is KitchenSinkTwinRustAsync_Enums) {
-      return [5, api2wire_weekdays_twin_rust_async(raw.field0)];
+      return [5, cst_encode_weekdays_twin_rust_async(raw.field0)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_kitchen_sink_twin_sync(KitchenSinkTwinSync raw) {
+  List<dynamic> cst_encode_kitchen_sink_twin_sync(KitchenSinkTwinSync raw) {
     if (raw is KitchenSinkTwinSync_Empty) {
       return [0];
     }
     if (raw is KitchenSinkTwinSync_Primitives) {
       return [
         1,
-        api2wire_i_32(raw.int32),
-        api2wire_f_64(raw.float64),
-        api2wire_bool(raw.boolean)
+        cst_encode_i_32(raw.int32),
+        cst_encode_f_64(raw.float64),
+        cst_encode_bool(raw.boolean)
       ];
     }
     if (raw is KitchenSinkTwinSync_Nested) {
       return [
         2,
-        api2wire_i_32(raw.field0),
-        api2wire_box_kitchen_sink_twin_sync(raw.field1)
+        cst_encode_i_32(raw.field0),
+        cst_encode_box_kitchen_sink_twin_sync(raw.field1)
       ];
     }
     if (raw is KitchenSinkTwinSync_Optional) {
       return [
         3,
-        api2wire_opt_box_autoadd_i_32(raw.field0),
-        api2wire_opt_box_autoadd_i_32(raw.field1)
+        cst_encode_opt_box_autoadd_i_32(raw.field0),
+        cst_encode_opt_box_autoadd_i_32(raw.field1)
       ];
     }
     if (raw is KitchenSinkTwinSync_Buffer) {
-      return [4, api2wire_ZeroCopyBuffer_list_prim_u_8(raw.field0)];
+      return [4, cst_encode_ZeroCopyBuffer_list_prim_u_8(raw.field0)];
     }
     if (raw is KitchenSinkTwinSync_Enums) {
-      return [5, api2wire_weekdays_twin_sync(raw.field0)];
+      return [5, cst_encode_weekdays_twin_sync(raw.field0)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_list_DartOpaque(List<Object> raw) {
-    return raw.map(api2wire_DartOpaque).toList();
+  List<dynamic> cst_encode_list_DartOpaque(List<Object> raw) {
+    return raw.map(cst_encode_DartOpaque).toList();
   }
 
   @protected
-  List<dynamic> api2wire_list_RustOpaque_hide_data(List<HideData> raw) {
-    return raw.map(api2wire_RustOpaque_hide_data).toList();
+  List<dynamic> cst_encode_list_RustOpaque_hide_data(List<HideData> raw) {
+    return raw.map(cst_encode_RustOpaque_hide_data).toList();
   }
 
   @protected
-  List<dynamic> api2wire_list_application_env_var(List<ApplicationEnvVar> raw) {
-    return raw.map(api2wire_application_env_var).toList();
+  List<dynamic> cst_encode_list_application_env_var(
+      List<ApplicationEnvVar> raw) {
+    return raw.map(cst_encode_application_env_var).toList();
   }
 
   @protected
-  List<dynamic> api2wire_list_attribute_twin_normal(
+  List<dynamic> cst_encode_list_attribute_twin_normal(
       List<AttributeTwinNormal> raw) {
-    return raw.map(api2wire_attribute_twin_normal).toList();
+    return raw.map(cst_encode_attribute_twin_normal).toList();
   }
 
   @protected
-  List<dynamic> api2wire_list_attribute_twin_rust_async(
+  List<dynamic> cst_encode_list_attribute_twin_rust_async(
       List<AttributeTwinRustAsync> raw) {
-    return raw.map(api2wire_attribute_twin_rust_async).toList();
+    return raw.map(cst_encode_attribute_twin_rust_async).toList();
   }
 
   @protected
-  List<dynamic> api2wire_list_attribute_twin_sync(List<AttributeTwinSync> raw) {
-    return raw.map(api2wire_attribute_twin_sync).toList();
+  List<dynamic> cst_encode_list_attribute_twin_sync(
+      List<AttributeTwinSync> raw) {
+    return raw.map(cst_encode_attribute_twin_sync).toList();
   }
 
   @protected
-  List<dynamic> api2wire_list_bool(List<bool> raw) {
-    return raw.map(api2wire_bool).toList();
+  List<dynamic> cst_encode_list_bool(List<bool> raw) {
+    return raw.map(cst_encode_bool).toList();
   }
 
   @protected
-  List<dynamic> api2wire_list_my_size(List<MySize> raw) {
-    return raw.map(api2wire_my_size).toList();
+  List<dynamic> cst_encode_list_my_size(List<MySize> raw) {
+    return raw.map(cst_encode_my_size).toList();
   }
 
   @protected
-  List<dynamic> api2wire_list_my_tree_node_twin_normal(
+  List<dynamic> cst_encode_list_my_tree_node_twin_normal(
       List<MyTreeNodeTwinNormal> raw) {
-    return raw.map(api2wire_my_tree_node_twin_normal).toList();
+    return raw.map(cst_encode_my_tree_node_twin_normal).toList();
   }
 
   @protected
-  List<dynamic> api2wire_list_my_tree_node_twin_rust_async(
+  List<dynamic> cst_encode_list_my_tree_node_twin_rust_async(
       List<MyTreeNodeTwinRustAsync> raw) {
-    return raw.map(api2wire_my_tree_node_twin_rust_async).toList();
+    return raw.map(cst_encode_my_tree_node_twin_rust_async).toList();
   }
 
   @protected
-  List<dynamic> api2wire_list_my_tree_node_twin_sync(
+  List<dynamic> cst_encode_list_my_tree_node_twin_sync(
       List<MyTreeNodeTwinSync> raw) {
-    return raw.map(api2wire_my_tree_node_twin_sync).toList();
+    return raw.map(cst_encode_my_tree_node_twin_sync).toList();
   }
 
   @protected
-  List<dynamic> api2wire_list_opt_String(List<String?> raw) {
-    return mapNonNull(raw, api2wire_String);
+  List<dynamic> cst_encode_list_opt_String(List<String?> raw) {
+    return mapNonNull(raw, cst_encode_String);
   }
 
   @protected
-  List<dynamic> api2wire_list_opt_box_autoadd_attribute_twin_normal(
+  List<dynamic> cst_encode_list_opt_box_autoadd_attribute_twin_normal(
       List<AttributeTwinNormal?> raw) {
-    return mapNonNull(raw, api2wire_box_autoadd_attribute_twin_normal);
+    return mapNonNull(raw, cst_encode_box_autoadd_attribute_twin_normal);
   }
 
   @protected
-  List<dynamic> api2wire_list_opt_box_autoadd_attribute_twin_rust_async(
+  List<dynamic> cst_encode_list_opt_box_autoadd_attribute_twin_rust_async(
       List<AttributeTwinRustAsync?> raw) {
-    return mapNonNull(raw, api2wire_box_autoadd_attribute_twin_rust_async);
+    return mapNonNull(raw, cst_encode_box_autoadd_attribute_twin_rust_async);
   }
 
   @protected
-  List<dynamic> api2wire_list_opt_box_autoadd_attribute_twin_sync(
+  List<dynamic> cst_encode_list_opt_box_autoadd_attribute_twin_sync(
       List<AttributeTwinSync?> raw) {
-    return mapNonNull(raw, api2wire_box_autoadd_attribute_twin_sync);
+    return mapNonNull(raw, cst_encode_box_autoadd_attribute_twin_sync);
   }
 
   @protected
-  List<dynamic> api2wire_list_opt_box_autoadd_i_32(List<int?> raw) {
-    return mapNonNull(raw, api2wire_box_autoadd_i_32);
+  List<dynamic> cst_encode_list_opt_box_autoadd_i_32(List<int?> raw) {
+    return mapNonNull(raw, cst_encode_box_autoadd_i_32);
   }
 
   @protected
-  List<dynamic> api2wire_list_opt_box_autoadd_weekdays_twin_normal(
+  List<dynamic> cst_encode_list_opt_box_autoadd_weekdays_twin_normal(
       List<WeekdaysTwinNormal?> raw) {
-    return mapNonNull(raw, api2wire_box_autoadd_weekdays_twin_normal);
+    return mapNonNull(raw, cst_encode_box_autoadd_weekdays_twin_normal);
   }
 
   @protected
-  List<dynamic> api2wire_list_opt_box_autoadd_weekdays_twin_rust_async(
+  List<dynamic> cst_encode_list_opt_box_autoadd_weekdays_twin_rust_async(
       List<WeekdaysTwinRustAsync?> raw) {
-    return mapNonNull(raw, api2wire_box_autoadd_weekdays_twin_rust_async);
+    return mapNonNull(raw, cst_encode_box_autoadd_weekdays_twin_rust_async);
   }
 
   @protected
-  List<dynamic> api2wire_list_opt_box_autoadd_weekdays_twin_sync(
+  List<dynamic> cst_encode_list_opt_box_autoadd_weekdays_twin_sync(
       List<WeekdaysTwinSync?> raw) {
-    return mapNonNull(raw, api2wire_box_autoadd_weekdays_twin_sync);
+    return mapNonNull(raw, cst_encode_box_autoadd_weekdays_twin_sync);
   }
 
   @protected
-  List<dynamic> api2wire_list_opt_list_prim_i_32(List<Int32List?> raw) {
-    return mapNonNull(raw, api2wire_list_prim_i_32);
+  List<dynamic> cst_encode_list_opt_list_prim_i_32(List<Int32List?> raw) {
+    return mapNonNull(raw, cst_encode_list_prim_i_32);
   }
 
   @protected
-  Float32List api2wire_list_prim_f_32(Float32List raw) {
+  Float32List cst_encode_list_prim_f_32(Float32List raw) {
     return raw;
   }
 
   @protected
-  Float64List api2wire_list_prim_f_64(Float64List raw) {
+  Float64List cst_encode_list_prim_f_64(Float64List raw) {
     return raw;
   }
 
   @protected
-  Int16List api2wire_list_prim_i_16(Int16List raw) {
+  Int16List cst_encode_list_prim_i_16(Int16List raw) {
     return raw;
   }
 
   @protected
-  Int32List api2wire_list_prim_i_32(Int32List raw) {
+  Int32List cst_encode_list_prim_i_32(Int32List raw) {
     return raw;
   }
 
   @protected
-  Object /* BigInt64Array */ api2wire_list_prim_i_64(Int64List raw) {
+  Object /* BigInt64Array */ cst_encode_list_prim_i_64(Int64List raw) {
     return raw.inner;
   }
 
   @protected
-  Int8List api2wire_list_prim_i_8(Int8List raw) {
+  Int8List cst_encode_list_prim_i_8(Int8List raw) {
     return raw;
   }
 
   @protected
-  Uint16List api2wire_list_prim_u_16(Uint16List raw) {
+  Uint16List cst_encode_list_prim_u_16(Uint16List raw) {
     return raw;
   }
 
   @protected
-  Uint32List api2wire_list_prim_u_32(Uint32List raw) {
+  Uint32List cst_encode_list_prim_u_32(Uint32List raw) {
     return raw;
   }
 
   @protected
-  Object /* BigInt64Array */ api2wire_list_prim_u_64(Uint64List raw) {
+  Object /* BigInt64Array */ cst_encode_list_prim_u_64(Uint64List raw) {
     return raw.inner;
   }
 
   @protected
-  Uint8List api2wire_list_prim_u_8(Uint8List raw) {
+  Uint8List cst_encode_list_prim_u_8(Uint8List raw) {
     return raw;
   }
 
   @protected
-  List<dynamic> api2wire_list_record_string_i_32(List<(String, int)> raw) {
-    return raw.map(api2wire_record_string_i_32).toList();
+  List<dynamic> cst_encode_list_record_string_i_32(List<(String, int)> raw) {
+    return raw.map(cst_encode_record_string_i_32).toList();
   }
 
   @protected
-  List<dynamic> api2wire_list_test_id_twin_normal(List<TestIdTwinNormal> raw) {
-    return raw.map(api2wire_test_id_twin_normal).toList();
+  List<dynamic> cst_encode_list_test_id_twin_normal(
+      List<TestIdTwinNormal> raw) {
+    return raw.map(cst_encode_test_id_twin_normal).toList();
   }
 
   @protected
-  List<dynamic> api2wire_list_test_id_twin_rust_async(
+  List<dynamic> cst_encode_list_test_id_twin_rust_async(
       List<TestIdTwinRustAsync> raw) {
-    return raw.map(api2wire_test_id_twin_rust_async).toList();
+    return raw.map(cst_encode_test_id_twin_rust_async).toList();
   }
 
   @protected
-  List<dynamic> api2wire_list_test_id_twin_sync(List<TestIdTwinSync> raw) {
-    return raw.map(api2wire_test_id_twin_sync).toList();
+  List<dynamic> cst_encode_list_test_id_twin_sync(List<TestIdTwinSync> raw) {
+    return raw.map(cst_encode_test_id_twin_sync).toList();
   }
 
   @protected
-  List<dynamic> api2wire_list_weekdays_twin_normal(
+  List<dynamic> cst_encode_list_weekdays_twin_normal(
       List<WeekdaysTwinNormal> raw) {
-    return raw.map(api2wire_weekdays_twin_normal).toList();
+    return raw.map(cst_encode_weekdays_twin_normal).toList();
   }
 
   @protected
-  List<dynamic> api2wire_list_weekdays_twin_rust_async(
+  List<dynamic> cst_encode_list_weekdays_twin_rust_async(
       List<WeekdaysTwinRustAsync> raw) {
-    return raw.map(api2wire_weekdays_twin_rust_async).toList();
+    return raw.map(cst_encode_weekdays_twin_rust_async).toList();
   }
 
   @protected
-  List<dynamic> api2wire_list_weekdays_twin_sync(List<WeekdaysTwinSync> raw) {
-    return raw.map(api2wire_weekdays_twin_sync).toList();
+  List<dynamic> cst_encode_list_weekdays_twin_sync(List<WeekdaysTwinSync> raw) {
+    return raw.map(cst_encode_weekdays_twin_sync).toList();
   }
 
   @protected
-  List<dynamic> api2wire_macro_struct(MacroStruct raw) {
-    return [api2wire_i_32(raw.data)];
+  List<dynamic> cst_encode_macro_struct(MacroStruct raw) {
+    return [cst_encode_i_32(raw.data)];
   }
 
   @protected
-  List<dynamic> api2wire_measure_twin_normal(MeasureTwinNormal raw) {
+  List<dynamic> cst_encode_measure_twin_normal(MeasureTwinNormal raw) {
     if (raw is MeasureTwinNormal_Speed) {
-      return [0, api2wire_box_speed_twin_normal(raw.field0)];
+      return [0, cst_encode_box_speed_twin_normal(raw.field0)];
     }
     if (raw is MeasureTwinNormal_Distance) {
-      return [1, api2wire_box_distance_twin_normal(raw.field0)];
+      return [1, cst_encode_box_distance_twin_normal(raw.field0)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_measure_twin_rust_async(MeasureTwinRustAsync raw) {
+  List<dynamic> cst_encode_measure_twin_rust_async(MeasureTwinRustAsync raw) {
     if (raw is MeasureTwinRustAsync_Speed) {
-      return [0, api2wire_box_speed_twin_rust_async(raw.field0)];
+      return [0, cst_encode_box_speed_twin_rust_async(raw.field0)];
     }
     if (raw is MeasureTwinRustAsync_Distance) {
-      return [1, api2wire_box_distance_twin_rust_async(raw.field0)];
+      return [1, cst_encode_box_distance_twin_rust_async(raw.field0)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_measure_twin_sync(MeasureTwinSync raw) {
+  List<dynamic> cst_encode_measure_twin_sync(MeasureTwinSync raw) {
     if (raw is MeasureTwinSync_Speed) {
-      return [0, api2wire_box_speed_twin_sync(raw.field0)];
+      return [0, cst_encode_box_speed_twin_sync(raw.field0)];
     }
     if (raw is MeasureTwinSync_Distance) {
-      return [1, api2wire_box_distance_twin_sync(raw.field0)];
+      return [1, cst_encode_box_distance_twin_sync(raw.field0)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_message_id_twin_normal(MessageIdTwinNormal raw) {
-    return [api2wire_u_8_array_32(raw.field0)];
+  List<dynamic> cst_encode_message_id_twin_normal(MessageIdTwinNormal raw) {
+    return [cst_encode_u_8_array_32(raw.field0)];
   }
 
   @protected
-  List<dynamic> api2wire_message_id_twin_rust_async(
+  List<dynamic> cst_encode_message_id_twin_rust_async(
       MessageIdTwinRustAsync raw) {
-    return [api2wire_u_8_array_32(raw.field0)];
+    return [cst_encode_u_8_array_32(raw.field0)];
   }
 
   @protected
-  List<dynamic> api2wire_message_id_twin_sync(MessageIdTwinSync raw) {
-    return [api2wire_u_8_array_32(raw.field0)];
+  List<dynamic> cst_encode_message_id_twin_sync(MessageIdTwinSync raw) {
+    return [cst_encode_u_8_array_32(raw.field0)];
   }
 
   @protected
-  List<dynamic> api2wire_my_nested_struct_twin_normal(
+  List<dynamic> cst_encode_my_nested_struct_twin_normal(
       MyNestedStructTwinNormal raw) {
     return [
-      api2wire_my_tree_node_twin_normal(raw.treeNode),
-      api2wire_weekdays_twin_normal(raw.weekday)
+      cst_encode_my_tree_node_twin_normal(raw.treeNode),
+      cst_encode_weekdays_twin_normal(raw.weekday)
     ];
   }
 
   @protected
-  List<dynamic> api2wire_my_nested_struct_twin_rust_async(
+  List<dynamic> cst_encode_my_nested_struct_twin_rust_async(
       MyNestedStructTwinRustAsync raw) {
     return [
-      api2wire_my_tree_node_twin_rust_async(raw.treeNode),
-      api2wire_weekdays_twin_rust_async(raw.weekday)
+      cst_encode_my_tree_node_twin_rust_async(raw.treeNode),
+      cst_encode_weekdays_twin_rust_async(raw.weekday)
     ];
   }
 
   @protected
-  List<dynamic> api2wire_my_nested_struct_twin_sync(
+  List<dynamic> cst_encode_my_nested_struct_twin_sync(
       MyNestedStructTwinSync raw) {
     return [
-      api2wire_my_tree_node_twin_sync(raw.treeNode),
-      api2wire_weekdays_twin_sync(raw.weekday)
+      cst_encode_my_tree_node_twin_sync(raw.treeNode),
+      cst_encode_weekdays_twin_sync(raw.weekday)
     ];
   }
 
   @protected
-  List<dynamic> api2wire_my_size(MySize raw) {
-    return [api2wire_i_32(raw.width), api2wire_i_32(raw.height)];
+  List<dynamic> cst_encode_my_size(MySize raw) {
+    return [cst_encode_i_32(raw.width), cst_encode_i_32(raw.height)];
   }
 
   @protected
-  List<dynamic> api2wire_my_struct(MyStruct raw) {
-    return [api2wire_bool(raw.content)];
+  List<dynamic> cst_encode_my_struct(MyStruct raw) {
+    return [cst_encode_bool(raw.content)];
   }
 
   @protected
-  List<dynamic> api2wire_my_tree_node_twin_normal(MyTreeNodeTwinNormal raw) {
+  List<dynamic> cst_encode_my_tree_node_twin_normal(MyTreeNodeTwinNormal raw) {
     return [
-      api2wire_i_32(raw.valueI32),
-      api2wire_list_prim_u_8(raw.valueVecU8),
-      api2wire_bool(raw.valueBoolean),
-      api2wire_list_my_tree_node_twin_normal(raw.children)
+      cst_encode_i_32(raw.valueI32),
+      cst_encode_list_prim_u_8(raw.valueVecU8),
+      cst_encode_bool(raw.valueBoolean),
+      cst_encode_list_my_tree_node_twin_normal(raw.children)
     ];
   }
 
   @protected
-  List<dynamic> api2wire_my_tree_node_twin_rust_async(
+  List<dynamic> cst_encode_my_tree_node_twin_rust_async(
       MyTreeNodeTwinRustAsync raw) {
     return [
-      api2wire_i_32(raw.valueI32),
-      api2wire_list_prim_u_8(raw.valueVecU8),
-      api2wire_bool(raw.valueBoolean),
-      api2wire_list_my_tree_node_twin_rust_async(raw.children)
+      cst_encode_i_32(raw.valueI32),
+      cst_encode_list_prim_u_8(raw.valueVecU8),
+      cst_encode_bool(raw.valueBoolean),
+      cst_encode_list_my_tree_node_twin_rust_async(raw.children)
     ];
   }
 
   @protected
-  List<dynamic> api2wire_my_tree_node_twin_sync(MyTreeNodeTwinSync raw) {
+  List<dynamic> cst_encode_my_tree_node_twin_sync(MyTreeNodeTwinSync raw) {
     return [
-      api2wire_i_32(raw.valueI32),
-      api2wire_list_prim_u_8(raw.valueVecU8),
-      api2wire_bool(raw.valueBoolean),
-      api2wire_list_my_tree_node_twin_sync(raw.children)
+      cst_encode_i_32(raw.valueI32),
+      cst_encode_list_prim_u_8(raw.valueVecU8),
+      cst_encode_bool(raw.valueBoolean),
+      cst_encode_list_my_tree_node_twin_sync(raw.children)
     ];
   }
 
   @protected
-  List<dynamic> api2wire_new_type_int_twin_normal(NewTypeIntTwinNormal raw) {
-    return [api2wire_i_64(raw.field0)];
+  List<dynamic> cst_encode_new_type_int_twin_normal(NewTypeIntTwinNormal raw) {
+    return [cst_encode_i_64(raw.field0)];
   }
 
   @protected
-  List<dynamic> api2wire_new_type_int_twin_rust_async(
+  List<dynamic> cst_encode_new_type_int_twin_rust_async(
       NewTypeIntTwinRustAsync raw) {
-    return [api2wire_i_64(raw.field0)];
+    return [cst_encode_i_64(raw.field0)];
   }
 
   @protected
-  List<dynamic> api2wire_new_type_int_twin_sync(NewTypeIntTwinSync raw) {
-    return [api2wire_i_64(raw.field0)];
+  List<dynamic> cst_encode_new_type_int_twin_sync(NewTypeIntTwinSync raw) {
+    return [cst_encode_i_64(raw.field0)];
   }
 
   @protected
-  List<dynamic> api2wire_note_twin_normal(NoteTwinNormal raw) {
+  List<dynamic> cst_encode_note_twin_normal(NoteTwinNormal raw) {
     return [
-      api2wire_box_weekdays_twin_normal(raw.day),
-      api2wire_String(raw.body)
+      cst_encode_box_weekdays_twin_normal(raw.day),
+      cst_encode_String(raw.body)
     ];
   }
 
   @protected
-  List<dynamic> api2wire_note_twin_rust_async(NoteTwinRustAsync raw) {
+  List<dynamic> cst_encode_note_twin_rust_async(NoteTwinRustAsync raw) {
     return [
-      api2wire_box_weekdays_twin_rust_async(raw.day),
-      api2wire_String(raw.body)
+      cst_encode_box_weekdays_twin_rust_async(raw.day),
+      cst_encode_String(raw.body)
     ];
   }
 
   @protected
-  List<dynamic> api2wire_note_twin_sync(NoteTwinSync raw) {
+  List<dynamic> cst_encode_note_twin_sync(NoteTwinSync raw) {
     return [
-      api2wire_box_weekdays_twin_sync(raw.day),
-      api2wire_String(raw.body)
+      cst_encode_box_weekdays_twin_sync(raw.day),
+      cst_encode_String(raw.body)
     ];
   }
 
   @protected
-  List<dynamic> api2wire_numbers(Numbers raw) {
-    return [api2wire_list_prim_i_32(raw.field0)];
+  List<dynamic> cst_encode_numbers(Numbers raw) {
+    return [cst_encode_list_prim_i_32(raw.field0)];
   }
 
   @protected
-  List<dynamic> api2wire_opaque_nested_twin_normal(OpaqueNestedTwinNormal raw) {
+  List<dynamic> cst_encode_opaque_nested_twin_normal(
+      OpaqueNestedTwinNormal raw) {
     return [
-      api2wire_RustOpaque_hide_data(raw.first),
-      api2wire_RustOpaque_hide_data(raw.second)
+      cst_encode_RustOpaque_hide_data(raw.first),
+      cst_encode_RustOpaque_hide_data(raw.second)
     ];
   }
 
   @protected
-  List<dynamic> api2wire_opaque_nested_twin_rust_async(
+  List<dynamic> cst_encode_opaque_nested_twin_rust_async(
       OpaqueNestedTwinRustAsync raw) {
     return [
-      api2wire_RustOpaque_hide_data(raw.first),
-      api2wire_RustOpaque_hide_data(raw.second)
+      cst_encode_RustOpaque_hide_data(raw.first),
+      cst_encode_RustOpaque_hide_data(raw.second)
     ];
   }
 
   @protected
-  List<dynamic> api2wire_opaque_nested_twin_sync(OpaqueNestedTwinSync raw) {
+  List<dynamic> cst_encode_opaque_nested_twin_sync(OpaqueNestedTwinSync raw) {
     return [
-      api2wire_RustOpaque_hide_data(raw.first),
-      api2wire_RustOpaque_hide_data(raw.second)
+      cst_encode_RustOpaque_hide_data(raw.first),
+      cst_encode_RustOpaque_hide_data(raw.second)
     ];
   }
 
   @protected
-  String? api2wire_opt_String(String? raw) {
-    return raw == null ? null : api2wire_String(raw);
+  String? cst_encode_opt_String(String? raw) {
+    return raw == null ? null : cst_encode_String(raw);
   }
 
   @protected
-  Uint8List? api2wire_opt_ZeroCopyBuffer_list_prim_u_8(Uint8List? raw) {
-    return raw == null ? null : api2wire_ZeroCopyBuffer_list_prim_u_8(raw);
+  Uint8List? cst_encode_opt_ZeroCopyBuffer_list_prim_u_8(Uint8List? raw) {
+    return raw == null ? null : cst_encode_ZeroCopyBuffer_list_prim_u_8(raw);
   }
 
   @protected
-  Object? api2wire_opt_box_autoadd_Chrono_Utc(DateTime? raw) {
-    return raw == null ? null : api2wire_box_autoadd_Chrono_Utc(raw);
+  Object? cst_encode_opt_box_autoadd_Chrono_Utc(DateTime? raw) {
+    return raw == null ? null : cst_encode_box_autoadd_Chrono_Utc(raw);
   }
 
   @protected
-  Object? api2wire_opt_box_autoadd_DartOpaque(Object? raw) {
-    return raw == null ? null : api2wire_box_autoadd_DartOpaque(raw);
+  Object? cst_encode_opt_box_autoadd_DartOpaque(Object? raw) {
+    return raw == null ? null : cst_encode_box_autoadd_DartOpaque(raw);
   }
 
   @protected
-  Object? api2wire_opt_box_autoadd_RustOpaque_hide_data(HideData? raw) {
-    return raw == null ? null : api2wire_box_autoadd_RustOpaque_hide_data(raw);
+  Object? cst_encode_opt_box_autoadd_RustOpaque_hide_data(HideData? raw) {
+    return raw == null
+        ? null
+        : cst_encode_box_autoadd_RustOpaque_hide_data(raw);
   }
 
   @protected
-  List<dynamic>? api2wire_opt_box_autoadd_application_env(ApplicationEnv? raw) {
-    return raw == null ? null : api2wire_box_autoadd_application_env(raw);
+  List<dynamic>? cst_encode_opt_box_autoadd_application_env(
+      ApplicationEnv? raw) {
+    return raw == null ? null : cst_encode_box_autoadd_application_env(raw);
   }
 
   @protected
-  bool? api2wire_opt_box_autoadd_bool(bool? raw) {
-    return raw == null ? null : api2wire_box_autoadd_bool(raw);
+  bool? cst_encode_opt_box_autoadd_bool(bool? raw) {
+    return raw == null ? null : cst_encode_box_autoadd_bool(raw);
   }
 
   @protected
-  List<dynamic>? api2wire_opt_box_autoadd_exotic_optionals_twin_normal(
+  List<dynamic>? cst_encode_opt_box_autoadd_exotic_optionals_twin_normal(
       ExoticOptionalsTwinNormal? raw) {
     return raw == null
         ? null
-        : api2wire_box_autoadd_exotic_optionals_twin_normal(raw);
+        : cst_encode_box_autoadd_exotic_optionals_twin_normal(raw);
   }
 
   @protected
-  List<dynamic>? api2wire_opt_box_autoadd_exotic_optionals_twin_rust_async(
+  List<dynamic>? cst_encode_opt_box_autoadd_exotic_optionals_twin_rust_async(
       ExoticOptionalsTwinRustAsync? raw) {
     return raw == null
         ? null
-        : api2wire_box_autoadd_exotic_optionals_twin_rust_async(raw);
+        : cst_encode_box_autoadd_exotic_optionals_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic>? api2wire_opt_box_autoadd_exotic_optionals_twin_sync(
+  List<dynamic>? cst_encode_opt_box_autoadd_exotic_optionals_twin_sync(
       ExoticOptionalsTwinSync? raw) {
     return raw == null
         ? null
-        : api2wire_box_autoadd_exotic_optionals_twin_sync(raw);
+        : cst_encode_box_autoadd_exotic_optionals_twin_sync(raw);
   }
 
   @protected
-  double? api2wire_opt_box_autoadd_f_32(double? raw) {
-    return raw == null ? null : api2wire_box_autoadd_f_32(raw);
+  double? cst_encode_opt_box_autoadd_f_32(double? raw) {
+    return raw == null ? null : cst_encode_box_autoadd_f_32(raw);
   }
 
   @protected
-  double? api2wire_opt_box_autoadd_f_64(double? raw) {
-    return raw == null ? null : api2wire_box_autoadd_f_64(raw);
+  double? cst_encode_opt_box_autoadd_f_64(double? raw) {
+    return raw == null ? null : cst_encode_box_autoadd_f_64(raw);
   }
 
   @protected
-  int? api2wire_opt_box_autoadd_i_16(int? raw) {
-    return raw == null ? null : api2wire_box_autoadd_i_16(raw);
+  int? cst_encode_opt_box_autoadd_i_16(int? raw) {
+    return raw == null ? null : cst_encode_box_autoadd_i_16(raw);
   }
 
   @protected
-  int? api2wire_opt_box_autoadd_i_32(int? raw) {
-    return raw == null ? null : api2wire_box_autoadd_i_32(raw);
+  int? cst_encode_opt_box_autoadd_i_32(int? raw) {
+    return raw == null ? null : cst_encode_box_autoadd_i_32(raw);
   }
 
   @protected
-  Object? api2wire_opt_box_autoadd_i_64(int? raw) {
-    return raw == null ? null : api2wire_box_autoadd_i_64(raw);
+  Object? cst_encode_opt_box_autoadd_i_64(int? raw) {
+    return raw == null ? null : cst_encode_box_autoadd_i_64(raw);
   }
 
   @protected
-  int? api2wire_opt_box_autoadd_i_8(int? raw) {
-    return raw == null ? null : api2wire_box_autoadd_i_8(raw);
+  int? cst_encode_opt_box_autoadd_i_8(int? raw) {
+    return raw == null ? null : cst_encode_box_autoadd_i_8(raw);
   }
 
   @protected
-  List<dynamic>? api2wire_opt_box_autoadd_new_type_int_twin_normal(
+  List<dynamic>? cst_encode_opt_box_autoadd_new_type_int_twin_normal(
       NewTypeIntTwinNormal? raw) {
     return raw == null
         ? null
-        : api2wire_box_autoadd_new_type_int_twin_normal(raw);
+        : cst_encode_box_autoadd_new_type_int_twin_normal(raw);
   }
 
   @protected
-  List<dynamic>? api2wire_opt_box_autoadd_new_type_int_twin_rust_async(
+  List<dynamic>? cst_encode_opt_box_autoadd_new_type_int_twin_rust_async(
       NewTypeIntTwinRustAsync? raw) {
     return raw == null
         ? null
-        : api2wire_box_autoadd_new_type_int_twin_rust_async(raw);
+        : cst_encode_box_autoadd_new_type_int_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic>? api2wire_opt_box_autoadd_new_type_int_twin_sync(
+  List<dynamic>? cst_encode_opt_box_autoadd_new_type_int_twin_sync(
       NewTypeIntTwinSync? raw) {
     return raw == null
         ? null
-        : api2wire_box_autoadd_new_type_int_twin_sync(raw);
+        : cst_encode_box_autoadd_new_type_int_twin_sync(raw);
   }
 
   @protected
-  List<dynamic>? api2wire_opt_box_autoadd_record_string_i_32(
+  List<dynamic>? cst_encode_opt_box_autoadd_record_string_i_32(
       (String, int)? raw) {
-    return raw == null ? null : api2wire_box_autoadd_record_string_i_32(raw);
+    return raw == null ? null : cst_encode_box_autoadd_record_string_i_32(raw);
   }
 
   @protected
-  int? api2wire_opt_box_autoadd_u_16(int? raw) {
-    return raw == null ? null : api2wire_box_autoadd_u_16(raw);
+  int? cst_encode_opt_box_autoadd_u_16(int? raw) {
+    return raw == null ? null : cst_encode_box_autoadd_u_16(raw);
   }
 
   @protected
-  int? api2wire_opt_box_autoadd_u_32(int? raw) {
-    return raw == null ? null : api2wire_box_autoadd_u_32(raw);
+  int? cst_encode_opt_box_autoadd_u_32(int? raw) {
+    return raw == null ? null : cst_encode_box_autoadd_u_32(raw);
   }
 
   @protected
-  Object? api2wire_opt_box_autoadd_u_64(int? raw) {
-    return raw == null ? null : api2wire_box_autoadd_u_64(raw);
+  Object? cst_encode_opt_box_autoadd_u_64(int? raw) {
+    return raw == null ? null : cst_encode_box_autoadd_u_64(raw);
   }
 
   @protected
-  int? api2wire_opt_box_autoadd_u_8(int? raw) {
-    return raw == null ? null : api2wire_box_autoadd_u_8(raw);
+  int? cst_encode_opt_box_autoadd_u_8(int? raw) {
+    return raw == null ? null : cst_encode_box_autoadd_u_8(raw);
   }
 
   @protected
-  bool? api2wire_opt_box_bool(bool? raw) {
-    return raw == null ? null : api2wire_box_bool(raw);
+  bool? cst_encode_opt_box_bool(bool? raw) {
+    return raw == null ? null : cst_encode_box_bool(raw);
   }
 
   @protected
-  List<dynamic>? api2wire_opt_box_exotic_optionals_twin_normal(
+  List<dynamic>? cst_encode_opt_box_exotic_optionals_twin_normal(
       ExoticOptionalsTwinNormal? raw) {
-    return raw == null ? null : api2wire_box_exotic_optionals_twin_normal(raw);
+    return raw == null
+        ? null
+        : cst_encode_box_exotic_optionals_twin_normal(raw);
   }
 
   @protected
-  List<dynamic>? api2wire_opt_box_exotic_optionals_twin_rust_async(
+  List<dynamic>? cst_encode_opt_box_exotic_optionals_twin_rust_async(
       ExoticOptionalsTwinRustAsync? raw) {
     return raw == null
         ? null
-        : api2wire_box_exotic_optionals_twin_rust_async(raw);
+        : cst_encode_box_exotic_optionals_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic>? api2wire_opt_box_exotic_optionals_twin_sync(
+  List<dynamic>? cst_encode_opt_box_exotic_optionals_twin_sync(
       ExoticOptionalsTwinSync? raw) {
-    return raw == null ? null : api2wire_box_exotic_optionals_twin_sync(raw);
+    return raw == null ? null : cst_encode_box_exotic_optionals_twin_sync(raw);
   }
 
   @protected
-  double? api2wire_opt_box_f_64(double? raw) {
-    return raw == null ? null : api2wire_box_f_64(raw);
+  double? cst_encode_opt_box_f_64(double? raw) {
+    return raw == null ? null : cst_encode_box_f_64(raw);
   }
 
   @protected
-  int? api2wire_opt_box_i_32(int? raw) {
-    return raw == null ? null : api2wire_box_i_32(raw);
+  int? cst_encode_opt_box_i_32(int? raw) {
+    return raw == null ? null : cst_encode_box_i_32(raw);
   }
 
   @protected
-  Object? api2wire_opt_box_i_64(int? raw) {
-    return raw == null ? null : api2wire_box_i_64(raw);
+  Object? cst_encode_opt_box_i_64(int? raw) {
+    return raw == null ? null : cst_encode_box_i_64(raw);
   }
 
   @protected
-  int? api2wire_opt_box_i_8(int? raw) {
-    return raw == null ? null : api2wire_box_i_8(raw);
+  int? cst_encode_opt_box_i_8(int? raw) {
+    return raw == null ? null : cst_encode_box_i_8(raw);
   }
 
   @protected
-  int? api2wire_opt_box_u_8(int? raw) {
-    return raw == null ? null : api2wire_box_u_8(raw);
+  int? cst_encode_opt_box_u_8(int? raw) {
+    return raw == null ? null : cst_encode_box_u_8(raw);
   }
 
   @protected
-  List<dynamic>? api2wire_opt_list_attribute_twin_normal(
+  List<dynamic>? cst_encode_opt_list_attribute_twin_normal(
       List<AttributeTwinNormal>? raw) {
-    return raw == null ? null : api2wire_list_attribute_twin_normal(raw);
+    return raw == null ? null : cst_encode_list_attribute_twin_normal(raw);
   }
 
   @protected
-  List<dynamic>? api2wire_opt_list_attribute_twin_rust_async(
+  List<dynamic>? cst_encode_opt_list_attribute_twin_rust_async(
       List<AttributeTwinRustAsync>? raw) {
-    return raw == null ? null : api2wire_list_attribute_twin_rust_async(raw);
+    return raw == null ? null : cst_encode_list_attribute_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic>? api2wire_opt_list_attribute_twin_sync(
+  List<dynamic>? cst_encode_opt_list_attribute_twin_sync(
       List<AttributeTwinSync>? raw) {
-    return raw == null ? null : api2wire_list_attribute_twin_sync(raw);
+    return raw == null ? null : cst_encode_list_attribute_twin_sync(raw);
   }
 
   @protected
-  List<dynamic>? api2wire_opt_list_opt_box_autoadd_attribute_twin_normal(
+  List<dynamic>? cst_encode_opt_list_opt_box_autoadd_attribute_twin_normal(
       List<AttributeTwinNormal?>? raw) {
     return raw == null
         ? null
-        : api2wire_list_opt_box_autoadd_attribute_twin_normal(raw);
+        : cst_encode_list_opt_box_autoadd_attribute_twin_normal(raw);
   }
 
   @protected
-  List<dynamic>? api2wire_opt_list_opt_box_autoadd_attribute_twin_rust_async(
+  List<dynamic>? cst_encode_opt_list_opt_box_autoadd_attribute_twin_rust_async(
       List<AttributeTwinRustAsync?>? raw) {
     return raw == null
         ? null
-        : api2wire_list_opt_box_autoadd_attribute_twin_rust_async(raw);
+        : cst_encode_list_opt_box_autoadd_attribute_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic>? api2wire_opt_list_opt_box_autoadd_attribute_twin_sync(
+  List<dynamic>? cst_encode_opt_list_opt_box_autoadd_attribute_twin_sync(
       List<AttributeTwinSync?>? raw) {
     return raw == null
         ? null
-        : api2wire_list_opt_box_autoadd_attribute_twin_sync(raw);
+        : cst_encode_list_opt_box_autoadd_attribute_twin_sync(raw);
   }
 
   @protected
-  Float32List? api2wire_opt_list_prim_f_32(Float32List? raw) {
-    return raw == null ? null : api2wire_list_prim_f_32(raw);
+  Float32List? cst_encode_opt_list_prim_f_32(Float32List? raw) {
+    return raw == null ? null : cst_encode_list_prim_f_32(raw);
   }
 
   @protected
-  Float64List? api2wire_opt_list_prim_f_64(Float64List? raw) {
-    return raw == null ? null : api2wire_list_prim_f_64(raw);
+  Float64List? cst_encode_opt_list_prim_f_64(Float64List? raw) {
+    return raw == null ? null : cst_encode_list_prim_f_64(raw);
   }
 
   @protected
-  Int32List? api2wire_opt_list_prim_i_32(Int32List? raw) {
-    return raw == null ? null : api2wire_list_prim_i_32(raw);
+  Int32List? cst_encode_opt_list_prim_i_32(Int32List? raw) {
+    return raw == null ? null : cst_encode_list_prim_i_32(raw);
   }
 
   @protected
-  Int8List? api2wire_opt_list_prim_i_8(Int8List? raw) {
-    return raw == null ? null : api2wire_list_prim_i_8(raw);
+  Int8List? cst_encode_opt_list_prim_i_8(Int8List? raw) {
+    return raw == null ? null : cst_encode_list_prim_i_8(raw);
   }
 
   @protected
-  Uint8List? api2wire_opt_list_prim_u_8(Uint8List? raw) {
-    return raw == null ? null : api2wire_list_prim_u_8(raw);
+  Uint8List? cst_encode_opt_list_prim_u_8(Uint8List? raw) {
+    return raw == null ? null : cst_encode_list_prim_u_8(raw);
   }
 
   @protected
-  List<dynamic> api2wire_opt_vecs_twin_normal(OptVecsTwinNormal raw) {
+  List<dynamic> cst_encode_opt_vecs_twin_normal(OptVecsTwinNormal raw) {
     return [
-      api2wire_list_opt_box_autoadd_i_32(raw.i32),
-      api2wire_list_opt_box_autoadd_weekdays_twin_normal(raw.enums),
-      api2wire_list_opt_String(raw.strings),
-      api2wire_list_opt_list_prim_i_32(raw.buffers)
+      cst_encode_list_opt_box_autoadd_i_32(raw.i32),
+      cst_encode_list_opt_box_autoadd_weekdays_twin_normal(raw.enums),
+      cst_encode_list_opt_String(raw.strings),
+      cst_encode_list_opt_list_prim_i_32(raw.buffers)
     ];
   }
 
   @protected
-  List<dynamic> api2wire_opt_vecs_twin_rust_async(OptVecsTwinRustAsync raw) {
+  List<dynamic> cst_encode_opt_vecs_twin_rust_async(OptVecsTwinRustAsync raw) {
     return [
-      api2wire_list_opt_box_autoadd_i_32(raw.i32),
-      api2wire_list_opt_box_autoadd_weekdays_twin_rust_async(raw.enums),
-      api2wire_list_opt_String(raw.strings),
-      api2wire_list_opt_list_prim_i_32(raw.buffers)
+      cst_encode_list_opt_box_autoadd_i_32(raw.i32),
+      cst_encode_list_opt_box_autoadd_weekdays_twin_rust_async(raw.enums),
+      cst_encode_list_opt_String(raw.strings),
+      cst_encode_list_opt_list_prim_i_32(raw.buffers)
     ];
   }
 
   @protected
-  List<dynamic> api2wire_opt_vecs_twin_sync(OptVecsTwinSync raw) {
+  List<dynamic> cst_encode_opt_vecs_twin_sync(OptVecsTwinSync raw) {
     return [
-      api2wire_list_opt_box_autoadd_i_32(raw.i32),
-      api2wire_list_opt_box_autoadd_weekdays_twin_sync(raw.enums),
-      api2wire_list_opt_String(raw.strings),
-      api2wire_list_opt_list_prim_i_32(raw.buffers)
+      cst_encode_list_opt_box_autoadd_i_32(raw.i32),
+      cst_encode_list_opt_box_autoadd_weekdays_twin_sync(raw.enums),
+      cst_encode_list_opt_String(raw.strings),
+      cst_encode_list_opt_list_prim_i_32(raw.buffers)
     ];
   }
 
   @protected
-  List<dynamic> api2wire_record_string_i_32((String, int) raw) {
-    return [api2wire_String(raw.$1), api2wire_i_32(raw.$2)];
+  List<dynamic> cst_encode_record_string_i_32((String, int) raw) {
+    return [cst_encode_String(raw.$1), cst_encode_i_32(raw.$2)];
   }
 
   @protected
-  List<dynamic> api2wire_sequences(Sequences raw) {
-    return [api2wire_list_prim_i_32(raw.field0)];
+  List<dynamic> cst_encode_sequences(Sequences raw) {
+    return [cst_encode_list_prim_i_32(raw.field0)];
   }
 
   @protected
-  List<dynamic> api2wire_some_struct_twin_normal(SomeStructTwinNormal raw) {
-    return [api2wire_u_32(raw.value)];
+  List<dynamic> cst_encode_some_struct_twin_normal(SomeStructTwinNormal raw) {
+    return [cst_encode_u_32(raw.value)];
   }
 
   @protected
-  List<dynamic> api2wire_some_struct_twin_rust_async(
+  List<dynamic> cst_encode_some_struct_twin_rust_async(
       SomeStructTwinRustAsync raw) {
-    return [api2wire_u_32(raw.value)];
+    return [cst_encode_u_32(raw.value)];
   }
 
   @protected
-  List<dynamic> api2wire_some_struct_twin_sync(SomeStructTwinSync raw) {
-    return [api2wire_u_32(raw.value)];
+  List<dynamic> cst_encode_some_struct_twin_sync(SomeStructTwinSync raw) {
+    return [cst_encode_u_32(raw.value)];
   }
 
   @protected
-  List<dynamic> api2wire_speed_twin_normal(SpeedTwinNormal raw) {
+  List<dynamic> cst_encode_speed_twin_normal(SpeedTwinNormal raw) {
     if (raw is SpeedTwinNormal_Unknown) {
       return [0];
     }
     if (raw is SpeedTwinNormal_GPS) {
-      return [1, api2wire_f_64(raw.field0)];
+      return [1, cst_encode_f_64(raw.field0)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_speed_twin_rust_async(SpeedTwinRustAsync raw) {
+  List<dynamic> cst_encode_speed_twin_rust_async(SpeedTwinRustAsync raw) {
     if (raw is SpeedTwinRustAsync_Unknown) {
       return [0];
     }
     if (raw is SpeedTwinRustAsync_GPS) {
-      return [1, api2wire_f_64(raw.field0)];
+      return [1, cst_encode_f_64(raw.field0)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_speed_twin_sync(SpeedTwinSync raw) {
+  List<dynamic> cst_encode_speed_twin_sync(SpeedTwinSync raw) {
     if (raw is SpeedTwinSync_Unknown) {
       return [0];
     }
     if (raw is SpeedTwinSync_GPS) {
-      return [1, api2wire_f_64(raw.field0)];
+      return [1, cst_encode_f_64(raw.field0)];
     }
 
     throw Exception('unreachable');
   }
 
   @protected
-  List<dynamic> api2wire_struct_with_comments_twin_normal(
+  List<dynamic> cst_encode_struct_with_comments_twin_normal(
       StructWithCommentsTwinNormal raw) {
-    return [api2wire_i_32(raw.fieldWithComments)];
+    return [cst_encode_i_32(raw.fieldWithComments)];
   }
 
   @protected
-  List<dynamic> api2wire_struct_with_comments_twin_rust_async(
+  List<dynamic> cst_encode_struct_with_comments_twin_rust_async(
       StructWithCommentsTwinRustAsync raw) {
-    return [api2wire_i_32(raw.fieldWithComments)];
+    return [cst_encode_i_32(raw.fieldWithComments)];
   }
 
   @protected
-  List<dynamic> api2wire_struct_with_comments_twin_sync(
+  List<dynamic> cst_encode_struct_with_comments_twin_sync(
       StructWithCommentsTwinSync raw) {
-    return [api2wire_i_32(raw.fieldWithComments)];
+    return [cst_encode_i_32(raw.fieldWithComments)];
   }
 
   @protected
-  List<dynamic> api2wire_struct_with_enum_twin_normal(
+  List<dynamic> cst_encode_struct_with_enum_twin_normal(
       StructWithEnumTwinNormal raw) {
     return [
-      api2wire_abc_twin_normal(raw.abc1),
-      api2wire_abc_twin_normal(raw.abc2)
+      cst_encode_abc_twin_normal(raw.abc1),
+      cst_encode_abc_twin_normal(raw.abc2)
     ];
   }
 
   @protected
-  List<dynamic> api2wire_struct_with_enum_twin_rust_async(
+  List<dynamic> cst_encode_struct_with_enum_twin_rust_async(
       StructWithEnumTwinRustAsync raw) {
     return [
-      api2wire_abc_twin_rust_async(raw.abc1),
-      api2wire_abc_twin_rust_async(raw.abc2)
+      cst_encode_abc_twin_rust_async(raw.abc1),
+      cst_encode_abc_twin_rust_async(raw.abc2)
     ];
   }
 
   @protected
-  List<dynamic> api2wire_struct_with_enum_twin_sync(
+  List<dynamic> cst_encode_struct_with_enum_twin_sync(
       StructWithEnumTwinSync raw) {
-    return [api2wire_abc_twin_sync(raw.abc1), api2wire_abc_twin_sync(raw.abc2)];
+    return [
+      cst_encode_abc_twin_sync(raw.abc1),
+      cst_encode_abc_twin_sync(raw.abc2)
+    ];
   }
 
   @protected
-  List<dynamic> api2wire_struct_with_one_field_twin_normal(
+  List<dynamic> cst_encode_struct_with_one_field_twin_normal(
       StructWithOneFieldTwinNormal raw) {
-    return [api2wire_i_32(raw.a)];
+    return [cst_encode_i_32(raw.a)];
   }
 
   @protected
-  List<dynamic> api2wire_struct_with_one_field_twin_rust_async(
+  List<dynamic> cst_encode_struct_with_one_field_twin_rust_async(
       StructWithOneFieldTwinRustAsync raw) {
-    return [api2wire_i_32(raw.a)];
+    return [cst_encode_i_32(raw.a)];
   }
 
   @protected
-  List<dynamic> api2wire_struct_with_one_field_twin_sync(
+  List<dynamic> cst_encode_struct_with_one_field_twin_sync(
       StructWithOneFieldTwinSync raw) {
-    return [api2wire_i_32(raw.a)];
+    return [cst_encode_i_32(raw.a)];
   }
 
   @protected
-  List<dynamic> api2wire_struct_with_two_field_twin_normal(
+  List<dynamic> cst_encode_struct_with_two_field_twin_normal(
       StructWithTwoFieldTwinNormal raw) {
-    return [api2wire_i_32(raw.a), api2wire_i_32(raw.b)];
+    return [cst_encode_i_32(raw.a), cst_encode_i_32(raw.b)];
   }
 
   @protected
-  List<dynamic> api2wire_struct_with_two_field_twin_rust_async(
+  List<dynamic> cst_encode_struct_with_two_field_twin_rust_async(
       StructWithTwoFieldTwinRustAsync raw) {
-    return [api2wire_i_32(raw.a), api2wire_i_32(raw.b)];
+    return [cst_encode_i_32(raw.a), cst_encode_i_32(raw.b)];
   }
 
   @protected
-  List<dynamic> api2wire_struct_with_two_field_twin_sync(
+  List<dynamic> cst_encode_struct_with_two_field_twin_sync(
       StructWithTwoFieldTwinSync raw) {
-    return [api2wire_i_32(raw.a), api2wire_i_32(raw.b)];
+    return [cst_encode_i_32(raw.a), cst_encode_i_32(raw.b)];
   }
 
   @protected
-  List<dynamic> api2wire_struct_with_zero_field_twin_normal(
+  List<dynamic> cst_encode_struct_with_zero_field_twin_normal(
       StructWithZeroFieldTwinNormal raw) {
     return [];
   }
 
   @protected
-  List<dynamic> api2wire_struct_with_zero_field_twin_rust_async(
+  List<dynamic> cst_encode_struct_with_zero_field_twin_rust_async(
       StructWithZeroFieldTwinRustAsync raw) {
     return [];
   }
 
   @protected
-  List<dynamic> api2wire_struct_with_zero_field_twin_sync(
+  List<dynamic> cst_encode_struct_with_zero_field_twin_sync(
       StructWithZeroFieldTwinSync raw) {
     return [];
   }
 
   @protected
-  List<dynamic> api2wire_sum_with_twin_normal(SumWithTwinNormal raw) {
-    return [api2wire_u_32(raw.x)];
+  List<dynamic> cst_encode_sum_with_twin_normal(SumWithTwinNormal raw) {
+    return [cst_encode_u_32(raw.x)];
   }
 
   @protected
-  List<dynamic> api2wire_sum_with_twin_rust_async(SumWithTwinRustAsync raw) {
-    return [api2wire_u_32(raw.x)];
+  List<dynamic> cst_encode_sum_with_twin_rust_async(SumWithTwinRustAsync raw) {
+    return [cst_encode_u_32(raw.x)];
   }
 
   @protected
-  List<dynamic> api2wire_sum_with_twin_sync(SumWithTwinSync raw) {
-    return [api2wire_u_32(raw.x)];
+  List<dynamic> cst_encode_sum_with_twin_sync(SumWithTwinSync raw) {
+    return [cst_encode_u_32(raw.x)];
   }
 
   @protected
-  List<dynamic> api2wire_test_id_twin_normal(TestIdTwinNormal raw) {
-    return [api2wire_i_32_array_2(raw.field0)];
+  List<dynamic> cst_encode_test_id_twin_normal(TestIdTwinNormal raw) {
+    return [cst_encode_i_32_array_2(raw.field0)];
   }
 
   @protected
-  List<dynamic> api2wire_test_id_twin_normal_array_4(
+  List<dynamic> cst_encode_test_id_twin_normal_array_4(
       TestIdTwinNormalArray4 raw) {
-    return api2wire_list_test_id_twin_normal(raw);
+    return cst_encode_list_test_id_twin_normal(raw);
   }
 
   @protected
-  List<dynamic> api2wire_test_id_twin_rust_async(TestIdTwinRustAsync raw) {
-    return [api2wire_i_32_array_2(raw.field0)];
+  List<dynamic> cst_encode_test_id_twin_rust_async(TestIdTwinRustAsync raw) {
+    return [cst_encode_i_32_array_2(raw.field0)];
   }
 
   @protected
-  List<dynamic> api2wire_test_id_twin_rust_async_array_4(
+  List<dynamic> cst_encode_test_id_twin_rust_async_array_4(
       TestIdTwinRustAsyncArray4 raw) {
-    return api2wire_list_test_id_twin_rust_async(raw);
+    return cst_encode_list_test_id_twin_rust_async(raw);
   }
 
   @protected
-  List<dynamic> api2wire_test_id_twin_sync(TestIdTwinSync raw) {
-    return [api2wire_i_32_array_2(raw.field0)];
+  List<dynamic> cst_encode_test_id_twin_sync(TestIdTwinSync raw) {
+    return [cst_encode_i_32_array_2(raw.field0)];
   }
 
   @protected
-  List<dynamic> api2wire_test_id_twin_sync_array_4(TestIdTwinSyncArray4 raw) {
-    return api2wire_list_test_id_twin_sync(raw);
+  List<dynamic> cst_encode_test_id_twin_sync_array_4(TestIdTwinSyncArray4 raw) {
+    return cst_encode_list_test_id_twin_sync(raw);
   }
 
   @protected
-  List<dynamic> api2wire_tuple_struct_with_one_field_twin_normal(
+  List<dynamic> cst_encode_tuple_struct_with_one_field_twin_normal(
       TupleStructWithOneFieldTwinNormal raw) {
-    return [api2wire_i_32(raw.field0)];
+    return [cst_encode_i_32(raw.field0)];
   }
 
   @protected
-  List<dynamic> api2wire_tuple_struct_with_one_field_twin_rust_async(
+  List<dynamic> cst_encode_tuple_struct_with_one_field_twin_rust_async(
       TupleStructWithOneFieldTwinRustAsync raw) {
-    return [api2wire_i_32(raw.field0)];
+    return [cst_encode_i_32(raw.field0)];
   }
 
   @protected
-  List<dynamic> api2wire_tuple_struct_with_one_field_twin_sync(
+  List<dynamic> cst_encode_tuple_struct_with_one_field_twin_sync(
       TupleStructWithOneFieldTwinSync raw) {
-    return [api2wire_i_32(raw.field0)];
+    return [cst_encode_i_32(raw.field0)];
   }
 
   @protected
-  List<dynamic> api2wire_tuple_struct_with_two_field_twin_normal(
+  List<dynamic> cst_encode_tuple_struct_with_two_field_twin_normal(
       TupleStructWithTwoFieldTwinNormal raw) {
-    return [api2wire_i_32(raw.field0), api2wire_i_32(raw.field1)];
+    return [cst_encode_i_32(raw.field0), cst_encode_i_32(raw.field1)];
   }
 
   @protected
-  List<dynamic> api2wire_tuple_struct_with_two_field_twin_rust_async(
+  List<dynamic> cst_encode_tuple_struct_with_two_field_twin_rust_async(
       TupleStructWithTwoFieldTwinRustAsync raw) {
-    return [api2wire_i_32(raw.field0), api2wire_i_32(raw.field1)];
+    return [cst_encode_i_32(raw.field0), cst_encode_i_32(raw.field1)];
   }
 
   @protected
-  List<dynamic> api2wire_tuple_struct_with_two_field_twin_sync(
+  List<dynamic> cst_encode_tuple_struct_with_two_field_twin_sync(
       TupleStructWithTwoFieldTwinSync raw) {
-    return [api2wire_i_32(raw.field0), api2wire_i_32(raw.field1)];
+    return [cst_encode_i_32(raw.field0), cst_encode_i_32(raw.field1)];
   }
 
   @protected
-  Object api2wire_u_64(int raw) {
+  Object cst_encode_u_64(int raw) {
     return castNativeBigInt(raw);
   }
 
   @protected
-  Uint8List api2wire_u_8_array_1600(U8Array1600 raw) {
+  Uint8List cst_encode_u_8_array_1600(U8Array1600 raw) {
     return Uint8List.fromList(raw);
   }
 
   @protected
-  Uint8List api2wire_u_8_array_32(U8Array32 raw) {
+  Uint8List cst_encode_u_8_array_32(U8Array32 raw) {
     return Uint8List.fromList(raw);
   }
 
   @protected
-  Uint8List api2wire_u_8_array_8(U8Array8 raw) {
+  Uint8List cst_encode_u_8_array_8(U8Array8 raw) {
     return Uint8List.fromList(raw);
   }
 
   @protected
-  List<dynamic> api2wire_user_id_twin_normal(UserIdTwinNormal raw) {
-    return [api2wire_u_32(raw.value)];
+  List<dynamic> cst_encode_user_id_twin_normal(UserIdTwinNormal raw) {
+    return [cst_encode_u_32(raw.value)];
   }
 
   @protected
-  List<dynamic> api2wire_user_id_twin_rust_async(UserIdTwinRustAsync raw) {
-    return [api2wire_u_32(raw.value)];
+  List<dynamic> cst_encode_user_id_twin_rust_async(UserIdTwinRustAsync raw) {
+    return [cst_encode_u_32(raw.value)];
   }
 
   @protected
-  List<dynamic> api2wire_user_id_twin_sync(UserIdTwinSync raw) {
-    return [api2wire_u_32(raw.value)];
+  List<dynamic> cst_encode_user_id_twin_sync(UserIdTwinSync raw) {
+    return [cst_encode_u_32(raw.value)];
   }
 }
 
