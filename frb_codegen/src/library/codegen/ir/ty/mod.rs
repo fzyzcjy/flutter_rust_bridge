@@ -6,7 +6,6 @@ pub(crate) mod dynamic;
 pub(crate) mod enumeration;
 pub(crate) mod general_list;
 pub(crate) mod optional;
-pub(crate) mod optional_list;
 pub(crate) mod ownership;
 pub(crate) mod primitive;
 pub(crate) mod primitive_list;
@@ -38,7 +37,6 @@ pub enum IrType {
     EnumRef(enumeration::IrTypeEnumRef),
     GeneralList(general_list::IrTypeGeneralList),
     Optional(optional::IrTypeOptional),
-    OptionalList(optional_list::IrTypeOptionalList),
     Ownership(ownership::IrTypeOwnership),
     Primitive(primitive::IrTypePrimitive),
     PrimitiveList(primitive_list::IrTypePrimitiveList),
