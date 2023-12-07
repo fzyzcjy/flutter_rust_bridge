@@ -11,4 +11,8 @@ impl WireDartCodecEntrypointTrait for SseWireDartCodecEntrypoint {
     fn generate_func_wire_param_list(&self, func: &IrFunc, num_prepare_args: usize) -> Vec<String> {
         todo!()
     }
+
+    fn generate_rust2dart_codec_object(&self, func: &IrFunc) -> String {
+        todo!()
+    }
 }

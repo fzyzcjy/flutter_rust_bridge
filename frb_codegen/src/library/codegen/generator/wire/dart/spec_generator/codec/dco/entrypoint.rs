@@ -1,5 +1,6 @@
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::WireDartCodecEntrypointTrait;
 use crate::codegen::ir::func::IrFunc;
+use crate::library::codegen::ir::ty::IrTypeTrait;
 
 pub(crate) struct DcoWireDartCodecEntrypoint {}
 
