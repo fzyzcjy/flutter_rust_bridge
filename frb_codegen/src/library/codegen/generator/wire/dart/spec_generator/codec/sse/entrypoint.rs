@@ -1,3 +1,4 @@
+use crate::codegen::generator::misc::codec::BaseCodecEntrypointTrait;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::{
     WireDartCodecEntrypointTrait, WireDartCodecOutputSpec,
@@ -7,7 +8,9 @@ use crate::codegen::ir::ty::IrType;
 
 pub(crate) struct SseWireDartCodecEntrypoint {}
 
-impl WireDartCodecEntrypointTrait for SseWireDartCodecEntrypoint {
+impl BaseCodecEntrypointTrait<WireDartGeneratorContext<'_>, Box<dyn WireDartCodecOutputSpec>>
+    for SseWireDartCodecEntrypoint
+{
     fn generate_encode(
         &self,
         context: WireDartGeneratorContext,
@@ -23,7 +26,9 @@ impl WireDartCodecEntrypointTrait for SseWireDartCodecEntrypoint {
     ) -> Option<Box<dyn WireDartCodecOutputSpec>> {
         None // TODO
     }
+}
 
+impl WireDartCodecEntrypointTrait for SseWireDartCodecEntrypoint {
     fn generate_dart2rust_func_stmt_prepare_args(&self, func: &IrFunc) -> Vec<String> {
         todo!()
     }
