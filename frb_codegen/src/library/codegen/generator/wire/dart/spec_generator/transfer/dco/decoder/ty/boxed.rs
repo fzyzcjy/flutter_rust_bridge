@@ -8,7 +8,7 @@ use crate::codegen::ir::ty::IrType::*;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireDartTransferDcoGeneratorDecoderTrait for BoxedWireDartTransferDcoGenerator<'a> {
-    fn generate_impl_wire2api_body(&self) -> String {
+    fn generate_impl_decode_body(&self) -> String {
         match &*self.ir.inner {
             StructRef(_)
             | DartOpaque(_)

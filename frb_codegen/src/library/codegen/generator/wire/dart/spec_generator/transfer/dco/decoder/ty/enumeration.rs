@@ -6,7 +6,7 @@ use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireDartTransferDcoGeneratorDecoderTrait for EnumRefWireDartTransferDcoGenerator<'a> {
-    fn generate_impl_wire2api_body(&self) -> String {
+    fn generate_impl_decode_body(&self) -> String {
         let enu = self.ir.get(self.context.ir_pack);
         assert_eq!(enu.mode, IrEnumMode::Complex);
 

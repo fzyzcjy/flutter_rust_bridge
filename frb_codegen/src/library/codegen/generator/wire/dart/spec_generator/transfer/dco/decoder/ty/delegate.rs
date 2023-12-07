@@ -11,7 +11,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartG
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireDartTransferDcoGeneratorDecoderTrait for DelegateWireDartTransferDcoGenerator<'a> {
-    fn generate_impl_wire2api_body(&self) -> String {
+    fn generate_impl_decode_body(&self) -> String {
         match &self.ir {
             IrTypeDelegate::Array(array) => match &array.mode {
                 IrTypeDelegateArrayMode::General(general) => format!(

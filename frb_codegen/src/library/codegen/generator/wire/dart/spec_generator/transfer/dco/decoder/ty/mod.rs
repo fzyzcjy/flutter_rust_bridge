@@ -23,5 +23,5 @@ use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
 pub(crate) trait WireDartTransferDcoGeneratorDecoderTrait {
-    fn generate_impl_wire2api_body(&self) -> String;
+    fn generate_impl_decode_body(&self) -> String;
 }

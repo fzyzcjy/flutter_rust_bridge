@@ -8,12 +8,12 @@ use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartG
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 
 impl<'a> WireDartTransferDcoGeneratorDecoderTrait for RustOpaqueWireDartTransferDcoGenerator<'a> {
-    fn generate_impl_wire2api_body(&self) -> String {
-        generalized_rust_opaque_generate_impl_wire2api_body(self.ir.clone().into(), self.context)
+    fn generate_impl_decode_body(&self) -> String {
+        generalized_rust_opaque_generate_impl_decode_body(self.ir.clone().into(), self.context)
     }
 }
 
-pub(super) fn generalized_rust_opaque_generate_impl_wire2api_body(
+pub(super) fn generalized_rust_opaque_generate_impl_decode_body(
     ir: IrType,
     context: WireDartTransferDcoGeneratorContext,
 ) -> String {

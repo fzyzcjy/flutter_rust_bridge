@@ -18,7 +18,7 @@ pub(crate) mod ty;
 
 #[derive(Clone, Serialize)]
 pub(crate) struct WireDartOutputSpecTransferDcoDecoder {
-    pub(crate) impl_wire2api: Acc<Vec<WireDartOutputCode>>,
+    pub(crate) impl_decode: Acc<Vec<WireDartOutputCode>>,
 }
 
 pub(crate) fn generate(
@@ -26,19 +26,19 @@ pub(crate) fn generate(
     cache: &IrPackComputedCache,
 ) -> WireDartOutputSpecTransferDcoDecoder {
     WireDartOutputSpecTransferDcoDecoder {
-        impl_wire2api: cache
+        impl_decode: cache
             .distinct_output_types
             .iter()
-            .map(|ty| Acc::new_common(generate_impl_wire2api(ty, context)))
+            .map(|ty| Acc::new_common(generate_impl_decode(ty, context)))
             .collect(),
     }
 }
 
-fn generate_impl_wire2api(
+fn generate_impl_decode(
     ty: &IrType,
     context: WireDartTransferDcoGeneratorContext,
 ) -> WireDartOutputCode {
-    let body = WireDartTransferDcoGenerator::new(ty.clone(), context).generate_impl_wire2api_body();
+    let body = WireDartTransferDcoGenerator::new(ty.clone(), context).generate_impl_decode_body();
     let api_impl_body = format!(
         "{dart_api_type} _wire2api_{safe_ident}(dynamic raw) {{
             {body}

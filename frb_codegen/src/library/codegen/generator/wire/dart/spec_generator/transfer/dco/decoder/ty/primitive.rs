@@ -5,7 +5,7 @@ use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::decode
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 
 impl<'a> WireDartTransferDcoGeneratorDecoderTrait for PrimitiveWireDartTransferDcoGenerator<'a> {
-    fn generate_impl_wire2api_body(&self) -> String {
+    fn generate_impl_decode_body(&self) -> String {
         match self.ir {
             IrTypePrimitive::Unit => "return;".to_owned(),
             IrTypePrimitive::I64 | IrTypePrimitive::U64 | IrTypePrimitive::Usize => {

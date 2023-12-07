@@ -6,7 +6,7 @@ use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireDartTransferDcoGeneratorDecoderTrait for StructRefWireDartTransferDcoGenerator<'a> {
-    fn generate_impl_wire2api_body(&self) -> String {
+    fn generate_impl_decode_body(&self) -> String {
         let s = self.ir.get(self.context.ir_pack);
 
         let _has_methods = (self.context.ir_pack.funcs.iter())
