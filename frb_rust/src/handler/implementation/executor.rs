@@ -6,8 +6,8 @@ use crate::handler::handler::{FfiCallMode, TaskContext, TaskInfo, TaskRetFutTrai
 use crate::misc::into_into_dart::IntoIntoDart;
 use crate::platform_types::{DartAbi, MessagePort};
 use crate::rust2dart::action::Rust2DartAction;
-use crate::rust2dart::api2wire::Api2Wire;
 use crate::rust2dart::context::TaskRust2DartContext;
+use crate::rust2dart::encoder::Encoder;
 use crate::rust2dart::sender::Rust2DartSender;
 use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
 use crate::rust_async::BaseAsyncRuntime;
@@ -154,7 +154,7 @@ impl ExecuteNormalOrAsyncUtils {
             Ok(result) => {
                 match mode {
                     FfiCallMode::Normal => {
-                        sender.send(Api2Wire::success(result.into_into_dart().into_dart()));
+                        sender.send(Encoder::success(result.into_into_dart().into_dart()));
                     }
                     FfiCallMode::Stream => {
                         // nothing - ignore the return value of a Stream-typed function

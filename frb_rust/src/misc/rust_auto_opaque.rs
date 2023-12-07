@@ -19,6 +19,6 @@ impl<T: DartSafe> RustOpaque<RwLock<T>> {
     }
 }
 
-pub fn rust_auto_opaque_api2wire<T>(value: T) -> RustOpaque<RwLock<T>> {
+pub fn rust_auto_opaque_encode<T>(value: T) -> RustOpaque<RwLock<T>> {
     RustOpaque::new(RwLock::new(value))
 }

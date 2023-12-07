@@ -13072,7 +13072,7 @@ pub extern "C" fn dart_opaque_dart2rust_api2wire(
     handle: flutter_rust_bridge::for_generated::dart_sys::Dart_Handle,
 ) -> *const std::ffi::c_void {
     unsafe {
-        flutter_rust_bridge::for_generated::dart_opaque_dart2rust_api2wire(
+        flutter_rust_bridge::for_generated::dart_opaque_dart2rust_encode(
             &*FLUTTER_RUST_BRIDGE_HANDLER,
             handle,
         )

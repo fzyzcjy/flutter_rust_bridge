@@ -2,9 +2,9 @@ use crate::generalized_isolate::IntoDart;
 use crate::platform_types::DartAbi;
 use crate::rust2dart::action::Rust2DartAction;
 
-pub struct Api2Wire;
+pub struct Encoder;
 
-impl Api2Wire {
+impl Encoder {
     /// A success
     pub fn success(result: impl IntoDart) -> DartAbi {
         vec![Rust2DartAction::Success.into_dart(), result.into_dart()].into_dart()

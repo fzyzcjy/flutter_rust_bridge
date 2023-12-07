@@ -21,7 +21,7 @@ pub unsafe fn wire2api_dart_opaque(raw: *const std::ffi::c_void) -> DartOpaque {
 }
 
 #[cfg(not(wasm))]
-pub unsafe fn dart_opaque_dart2rust_api2wire<H: Handler>(
+pub unsafe fn dart_opaque_dart2rust_encode<H: Handler>(
     handler: &H,
     handle: dart_sys::Dart_Handle,
 ) -> *const std::ffi::c_void {
