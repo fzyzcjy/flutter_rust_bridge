@@ -157,7 +157,7 @@ impl<'a> EnumRefWireRustTransferCstGenerator<'a> {
         };
 
         Some(ExternFunc {
-            func_name: format!("inflate_{typ}"),
+            func_name: format!("cst_inflate_{typ}"),
             params: vec![],
             return_type: Some(format!("*mut {}Kind", self.ir.ident.0.name)),
             body: format!(

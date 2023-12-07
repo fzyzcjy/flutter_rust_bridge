@@ -66,7 +66,7 @@ impl<'a> EnumRefWireDartTransferCstGenerator<'a> {
                     .join("\n");
 
                 let stmt_set_kind =
-                    format!("wireObj.kind = wire.inflate_{ident}_{variant_name}();");
+                    format!("wireObj.kind = wire.cst_inflate_{ident}_{variant_name}();");
 
                 let r = format!("wireObj.kind.ref.{variant_name}.ref");
                 let body = st
