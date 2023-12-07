@@ -1,3 +1,4 @@
+#[doc(hidden)]
 #[macro_export]
 macro_rules! codegen_generator_structs {
     ($(#[$attribute:meta])* $generator_name:ident) => (
