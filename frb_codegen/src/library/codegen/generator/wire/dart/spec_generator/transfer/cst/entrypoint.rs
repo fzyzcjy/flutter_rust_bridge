@@ -1,4 +1,5 @@
 use crate::codegen::generator::wire::dart::spec_generator::transfer::base::WireDartTransferEntrypointTrait;
+use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::ir::func::IrFunc;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
@@ -18,5 +19,19 @@ impl WireDartTransferEntrypointTrait for CstWireDartTransferEntrypoint {
                 )
             })
             .collect_vec()
+    }
+
+    fn generate_func_wire_param_list(&self, func: &IrFunc, num_prepare_args: usize) -> Vec<String> {
+        [
+            if has_port_argument(func.mode) {
+                vec!["port_".to_owned()]
+            } else {
+                vec![]
+            },
+            (0..num_prepare_args)
+                .map(|index| format!("arg{index}"))
+                .collect_vec(),
+        ]
+        .concat()
     }
 }

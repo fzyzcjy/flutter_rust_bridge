@@ -1,9 +1,11 @@
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::entrypoint::CstWireDartTransferEntrypoint;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::entrypoint::DcoWireDartTransferEntrypoint;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::sse::entrypoint::SseWireDartTransferEntrypoint;
+use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::misc::transfer::TransferMode;
 use enum_dispatch::enum_dispatch;
+use std::{format, vec};
 
 #[enum_dispatch(WireDartTransferEntrypointTrait)]
 pub(crate) enum WireDartTransferEntrypoint {
@@ -25,4 +27,6 @@ impl WireDartTransferEntrypoint {
 #[enum_dispatch]
 pub(crate) trait WireDartTransferEntrypointTrait {
     fn generate_func_stmt_prepare_args(&self, func: &IrFunc) -> Vec<String>;
+
+    fn generate_func_wire_param_list(&self, func: &IrFunc, num_prepare_args: usize) -> Vec<String>;
 }

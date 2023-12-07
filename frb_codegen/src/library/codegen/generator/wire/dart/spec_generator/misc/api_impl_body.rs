@@ -2,7 +2,6 @@ use crate::codegen::generator::api_dart;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::base::WireDartTransferEntrypoint;
-use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::wire_func_name;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode};
 use crate::codegen::misc::transfer::TransferMode;
@@ -24,7 +23,9 @@ pub(crate) fn generate_api_impl_normal_function(
     let const_meta_field_name = format!("k{}ConstMeta", func.name.name.to_case(Case::Pascal));
 
     let stmt_prepare_args = transfer.generate_func_stmt_prepare_args(func);
-    let wire_param_list = generate_wire_param_list(func, stmt_prepare_args.len()).join(", ");
+    let wire_param_list = transfer
+        .generate_func_wire_param_list(func, stmt_prepare_args.len())
+        .join(", ");
     let execute_func_name = generate_execute_func_name(func);
 
     let parse_success_data = generate_parse_success_data(func);
@@ -62,20 +63,6 @@ pub(crate) fn generate_api_impl_normal_function(
         api_impl_body: format!("{function_implementation}\n\n{companion_field_implementation}\n\n"),
         ..Default::default()
     })
-}
-
-fn generate_wire_param_list(func: &IrFunc, num_prepare_args: usize) -> Vec<String> {
-    [
-        if has_port_argument(func.mode) {
-            vec!["port_".to_owned()]
-        } else {
-            vec![]
-        },
-        (0..num_prepare_args)
-            .map(|index| format!("arg{index}"))
-            .collect_vec(),
-    ]
-    .concat()
 }
 
 fn generate_execute_func_name(func: &IrFunc) -> &str {
