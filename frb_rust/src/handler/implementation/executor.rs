@@ -47,7 +47,7 @@ impl<EH: ErrorHandler, TP: BaseThreadPool, AR: BaseAsyncRuntime> SimpleExecutor<
 impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
     for SimpleExecutor<EH, TP, AR>
 {
-    fn execute_normal<Codec, TaskFn, TaskRetDirect, TaskRetData, Er>(
+    fn execute_normal<Rust2DartCodec, TaskFn, TaskRetDirect, TaskRetData, Er>(
         &self,
         task_info: TaskInfo,
         task: TaskFn,
@@ -56,7 +56,7 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
         Er: IntoDart + 'static,
-        Codec: BaseCodec,
+        Rust2DartCodec: BaseCodec,
     {
         let eh = self.error_handler;
         let eh2 = self.error_handler;
@@ -82,7 +82,7 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
         }));
     }
 
-    fn execute_sync<Codec, SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
+    fn execute_sync<Rust2DartCodec, SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
         &self,
         _task_info: TaskInfo,
         sync_task: SyncTaskFn,
@@ -92,7 +92,7 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
         Er: IntoDart,
-        Codec: BaseCodec,
+        Rust2DartCodec: BaseCodec,
     {
         sync_task().map(|value| {
             WireSyncReturnSrc::new_from_data(value.into_into_dart(), Rust2DartAction::Success)
@@ -100,7 +100,7 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
     }
 
     #[cfg(feature = "rust-async")]
-    fn execute_async<Codec, TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(
+    fn execute_async<Rust2DartCodec, TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(
         &self,
         task_info: TaskInfo,
         task: TaskFn,
@@ -110,7 +110,7 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
         Er: IntoDart + 'static,
-        Codec: BaseCodec,
+        Rust2DartCodec: BaseCodec,
     {
         let eh = self.error_handler;
         let eh2 = self.error_handler;

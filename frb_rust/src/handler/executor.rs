@@ -13,7 +13,7 @@ use std::panic::{RefUnwindSafe, UnwindSafe};
 pub trait Executor: RefUnwindSafe {
     /// Executes a Rust function and transforms its return value into a Dart-compatible
     /// value, i.e. types that implement [`IntoDart`].
-    fn execute_normal<Codec, TaskFn, TaskRetDirect, TaskRetData, Er>(
+    fn execute_normal<Rust2DartCodec, TaskFn, TaskRetDirect, TaskRetData, Er>(
         &self,
         task_info: TaskInfo,
         task: TaskFn,
@@ -22,10 +22,10 @@ pub trait Executor: RefUnwindSafe {
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
         Er: IntoDart + 'static,
-        Codec: BaseCodec;
+        Rust2DartCodec: BaseCodec;
 
     /// Executes a synchronous Rust function
-    fn execute_sync<Codec, SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
+    fn execute_sync<Rust2DartCodec, SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
         &self,
         task_info: TaskInfo,
         sync_task: SyncTaskFn,
@@ -35,10 +35,10 @@ pub trait Executor: RefUnwindSafe {
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
         Er: IntoDart + 'static,
-        Codec: BaseCodec;
+        Rust2DartCodec: BaseCodec;
 
     #[cfg(feature = "rust-async")]
-    fn execute_async<Codec, TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(
+    fn execute_async<Rust2DartCodec, TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(
         &self,
         task_info: TaskInfo,
         task: TaskFn,
@@ -48,5 +48,5 @@ pub trait Executor: RefUnwindSafe {
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
         Er: IntoDart + 'static,
-        Codec: BaseCodec;
+        Rust2DartCodec: BaseCodec;
 }

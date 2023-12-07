@@ -99,7 +99,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
             .to_owned()
     }
 
-    fn wrap_normal<Codec, PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(
+    fn wrap_normal<Rust2DartCodec, PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(
         &self,
         task_info: TaskInfo,
         prepare: PrepareFn,
@@ -109,15 +109,15 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
         Er: IntoDart + 'static,
-        Codec: BaseCodec,
+        Rust2DartCodec: BaseCodec,
     {
         self.wrap_normal_or_async(task_info, prepare, |task_info, task| {
             self.executor
-                .execute_normal::<Codec, _, _, _, _>(task_info, task)
+                .execute_normal::<Rust2DartCodec, _, _, _, _>(task_info, task)
         })
     }
 
-    fn wrap_sync<Codec, SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
+    fn wrap_sync<Rust2DartCodec, SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
         &self,
         task_info: TaskInfo,
         sync_task: SyncTaskFn,
@@ -127,7 +127,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
         Er: IntoDart + 'static,
-        Codec: BaseCodec,
+        Rust2DartCodec: BaseCodec,
     {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
         // For reason, see comments in [wrap]
@@ -135,7 +135,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
             let catch_unwind_result = panic::catch_unwind(move || {
                 match self
                     .executor
-                    .execute_sync::<Codec, _, _, _, _>(task_info, sync_task)
+                    .execute_sync::<Rust2DartCodec, _, _, _, _>(task_info, sync_task)
                 {
                     Ok(data) => data,
                     Err(err) => self
@@ -154,7 +154,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
     }
 
     #[cfg(feature = "rust-async")]
-    fn wrap_async<Codec, PrepareFn, TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(
+    fn wrap_async<Rust2DartCodec, PrepareFn, TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(
         &self,
         task_info: TaskInfo,
         prepare: PrepareFn,
@@ -165,11 +165,11 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
         Er: IntoDart + 'static,
-        Codec: BaseCodec,
+        Rust2DartCodec: BaseCodec,
     {
         self.wrap_normal_or_async(task_info, prepare, |task_info, task| {
             self.executor
-                .execute_async::<Codec, _, _, _, _, _>(task_info, task)
+                .execute_async::<Rust2DartCodec, _, _, _, _, _>(task_info, task)
         })
     }
 
