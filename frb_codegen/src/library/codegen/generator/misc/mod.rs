@@ -18,7 +18,6 @@ pub(crate) mod text_generator_utils;
 pub fn is_js_value(ty: &IrType) -> bool {
     match ty {
         IrType::GeneralList(_)
-        | IrType::OptionalList(_)
         | IrType::StructRef(_)
         | IrType::EnumRef(_)
         | IrType::RustAutoOpaque(_)
