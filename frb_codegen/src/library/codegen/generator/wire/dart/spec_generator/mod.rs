@@ -47,7 +47,13 @@ pub(crate) fn generate(
             api_dart_actual_output_paths,
             rust_extern_funcs,
         )?,
-        rust2dart: codec::dco::decoder::generate(context.as_wire_dart_codec_dco_context(), &cache),
-        dart2rust: codec::cst::encoder::generate(context.as_wire_dart_codec_cst_context(), &cache),
+        rust2dart: codec::dco::decoder::generate(
+            context.as_wire_dart_codec_dco_context(),
+            &cache.distinct_output_types,
+        ),
+        dart2rust: codec::cst::encoder::generate(
+            context.as_wire_dart_codec_cst_context(),
+            &cache.distinct_input_types,
+        ),
     })
 }

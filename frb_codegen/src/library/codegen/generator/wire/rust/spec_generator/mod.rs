@@ -36,7 +36,13 @@ pub(super) fn generate(
 
     Ok(WireRustOutputSpec {
         misc: misc::generate(context, &cache)?,
-        dart2rust: codec::cst::decoder::generate(context.as_wire_rust_codec_cst_context(), &cache),
-        rust2dart: codec::dco::encoder::generate(context.as_wire_rust_codec_dco_context(), &cache),
+        dart2rust: codec::cst::decoder::generate(
+            context.as_wire_rust_codec_cst_context(),
+            &cache.distinct_input_types,
+        ),
+        rust2dart: codec::dco::encoder::generate(
+            context.as_wire_rust_codec_dco_context(),
+            &cache.distinct_types,
+        ),
     })
 }

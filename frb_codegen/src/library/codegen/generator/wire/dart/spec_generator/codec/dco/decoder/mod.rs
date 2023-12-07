@@ -23,12 +23,10 @@ pub(crate) struct WireDartOutputSpecCodecDcoDecoder {
 
 pub(crate) fn generate(
     context: WireDartCodecDcoGeneratorContext,
-    cache: &IrPackComputedCache,
+    types: &[IrType],
 ) -> WireDartOutputSpecCodecDcoDecoder {
     WireDartOutputSpecCodecDcoDecoder {
-        impl_decode: cache
-            .distinct_output_types
-            .iter()
+        impl_decode: (types.iter())
             .map(|ty| Acc::new_common(generate_impl_decode(ty, context)))
             .collect(),
     }

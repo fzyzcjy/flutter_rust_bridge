@@ -11,6 +11,7 @@ use crate::codegen::generator::wire::rust::IrPackComputedCache;
 use serde::Serialize;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::impl_new_with_nullptr::generate_impl_new_with_nullptr;
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::impl_decode_trait::generate_impl_decode;
+use crate::codegen::ir::ty::IrType;
 
 mod impl_decode_trait;
 mod impl_new_with_nullptr;
@@ -27,28 +28,21 @@ pub(crate) struct WireDartOutputSpecCodecCstDecoder {
 
 pub(crate) fn generate(
     context: WireRustCodecCstGeneratorContext,
-    cache: &IrPackComputedCache,
+    types: &[IrType],
 ) -> WireDartOutputSpecCodecCstDecoder {
     WireDartOutputSpecCodecCstDecoder {
-        allocate_funcs: cache
-            .distinct_input_types
-            .iter()
+        allocate_funcs: (types.iter())
             .map(|ty| WireRustCodecCstGenerator::new(ty.clone(), context).generate_allocate_funcs())
             .collect(),
-        impl_decode: generate_impl_decode(&cache.distinct_input_types, context),
+        impl_decode: generate_impl_decode(&types, context),
         decoder_class: Acc::new_io(
-            cache
-                .distinct_input_types
-                .iter()
+            (types.iter())
                 .filter_map(|ty| {
                     WireRustCodecCstGenerator::new(ty.clone(), context).generate_decoder_class()
                 })
                 .map(|x| x.into())
                 .collect(),
         ),
-        impl_new_with_nullptr: Acc::new_io(generate_impl_new_with_nullptr(
-            &cache.distinct_input_types,
-            context,
-        )),
+        impl_new_with_nullptr: Acc::new_io(generate_impl_new_with_nullptr(types, context)),
     }
 }

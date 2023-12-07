@@ -27,17 +27,13 @@ pub(crate) struct WireDartOutputSpecCodecCstEncoder {
 
 pub(crate) fn generate(
     context: WireDartCodecCstGeneratorContext,
-    cache: &IrPackComputedCache,
+    types: &[IrType],
 ) -> WireDartOutputSpecCodecCstEncoder {
     WireDartOutputSpecCodecCstEncoder {
-        encode_funcs: cache
-            .distinct_input_types
-            .iter()
+        encode_funcs: (types.iter())
             .map(|ty| generate_encode_func(ty, context))
             .collect(),
-        encode_api_fill_to_wire_funcs: cache
-            .distinct_input_types
-            .iter()
+        encode_api_fill_to_wire_funcs: (types.iter())
             .map(|ty| Acc::new_io(generate_encode_api_fill_to_wire_func(ty, context)))
             .collect(),
     }
