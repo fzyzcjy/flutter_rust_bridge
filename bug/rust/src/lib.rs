@@ -1,12 +1,6 @@
 use dart_sys::*;
 
 #[no_mangle]
-pub unsafe extern "C" fn init_frb_dart_api_dl(data: *mut std::ffi::c_void) -> isize {
-    println!("hi init_frb_dart_api_dl data={data:?}");
-    Dart_InitializeApiDL(data)
-}
-
-#[no_mangle]
 pub unsafe extern "C" fn naive_NewPersistentHandle(non_persistent_handle: Dart_Handle) -> usize {
     println!("hi naive_NewPersistentHandle START non_persistent_handle={non_persistent_handle:?}");
     let persistent_handle = Dart_NewPersistentHandle_DL.unwrap()(non_persistent_handle);
