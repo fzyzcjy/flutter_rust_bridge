@@ -73,11 +73,13 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
 
                 let ret = task(task_context);
 
-                ExecuteNormalOrAsyncUtils::handle_result(ret, mode, sender, eh2, port2);
+                ExecuteNormalOrAsyncUtils::handle_result::<Rust2DartCodec, _, _, _, _>(
+                    ret, mode, sender, eh2, port2,
+                );
             });
 
             if let Err(error) = thread_result {
-                eh.handle_error(port, Error::Panic(error));
+                eh.handle_error::<Rust2DartCodec>(port, Error::Panic(error));
             }
         }));
     }
@@ -127,13 +129,15 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
 
                 let ret = task(task_context).await;
 
-                ExecuteNormalOrAsyncUtils::handle_result(ret, mode, sender, eh2, port2);
+                ExecuteNormalOrAsyncUtils::handle_result::<Rust2DartCodec, _, _, _, _>(
+                    ret, mode, sender, eh2, port2,
+                );
             }
             .catch_unwind()
             .await;
 
             if let Err(error) = async_result {
-                eh.handle_error(port, Error::Panic(error));
+                eh.handle_error::<Rust2DartCodec>(port, Error::Panic(error));
             }
         });
     }
@@ -142,7 +146,7 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
 struct ExecuteNormalOrAsyncUtils;
 
 impl ExecuteNormalOrAsyncUtils {
-    fn handle_result<EH, Er, TaskRetDirect, TaskRetData>(
+    fn handle_result<Rust2DartCodec, EH, Er, TaskRetDirect, TaskRetData>(
         ret: Result<TaskRetDirect, Er>,
         mode: FfiCallMode,
         sender: Rust2DartSender,
@@ -153,6 +157,7 @@ impl ExecuteNormalOrAsyncUtils {
         Er: IntoDart + 'static,
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
+        Rust2DartCodec: BaseCodec,
     {
         match ret {
             Ok(result) => {
@@ -167,7 +172,7 @@ impl ExecuteNormalOrAsyncUtils {
                 }
             }
             Err(error) => {
-                eh.handle_error(port, Error::CustomError(Box::new(error)));
+                eh.handle_error::<Rust2DartCodec>(port, Error::CustomError(Box::new(error)));
             }
         };
     }

@@ -111,10 +111,14 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         Er: IntoDart + 'static,
         Rust2DartCodec: BaseCodec,
     {
-        self.wrap_normal_or_async(task_info, prepare, |task_info, task| {
-            self.executor
-                .execute_normal::<Rust2DartCodec, _, _, _, _>(task_info, task)
-        })
+        self.wrap_normal_or_async::<Rust2DartCodec, _, _, _, _>(
+            task_info,
+            prepare,
+            |task_info, task| {
+                self.executor
+                    .execute_normal::<Rust2DartCodec, _, _, _, _>(task_info, task)
+            },
+        )
     }
 
     fn wrap_sync<Rust2DartCodec, SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
@@ -140,11 +144,14 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
                     Ok(data) => data,
                     Err(err) => self
                         .error_handler
-                        .handle_error_sync(Error::CustomError(Box::new(err))),
+                        .handle_error_sync::<Rust2DartCodec>(Error::CustomError(Box::new(err))),
                 }
             });
             catch_unwind_result
-                .unwrap_or_else(|error| self.error_handler.handle_error_sync(Error::Panic(error)))
+                .unwrap_or_else(|error| {
+                    self.error_handler
+                        .handle_error_sync::<Rust2DartCodec>(Error::Panic(error))
+                })
                 .leak()
         })
         // Deliberately construct simplest possible WireSyncReturn object
@@ -167,10 +174,14 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         Er: IntoDart + 'static,
         Rust2DartCodec: BaseCodec,
     {
-        self.wrap_normal_or_async(task_info, prepare, |task_info, task| {
-            self.executor
-                .execute_async::<Rust2DartCodec, _, _, _, _, _>(task_info, task)
-        })
+        self.wrap_normal_or_async::<Rust2DartCodec, _, _, _, _>(
+            task_info,
+            prepare,
+            |task_info, task| {
+                self.executor
+                    .execute_async::<Rust2DartCodec, _, _, _, _, _>(task_info, task)
+            },
+        )
     }
 
     fn dart_fn_invoke<Ret>(&self, dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<Ret> {
@@ -179,7 +190,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
 }
 
 impl<E: Executor, EH: ErrorHandler> SimpleHandler<E, EH> {
-    fn wrap_normal_or_async<PrepareFn, TaskFn, TaskFnRet, ExecuteFn>(
+    fn wrap_normal_or_async<Rust2DartCodec, PrepareFn, TaskFn, TaskFnRet, ExecuteFn>(
         &self,
         task_info: TaskInfo,
         prepare: PrepareFn,
@@ -188,6 +199,7 @@ impl<E: Executor, EH: ErrorHandler> SimpleHandler<E, EH> {
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce(TaskContext) -> TaskFnRet,
         ExecuteFn: FnOnce(TaskInfo, TaskFn) + UnwindSafe,
+        Rust2DartCodec: BaseCodec,
     {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
         // Why do this: As nomicon says, unwind across languages is undefined behavior (UB).
@@ -204,7 +216,7 @@ impl<E: Executor, EH: ErrorHandler> SimpleHandler<E, EH> {
                 execute(task_info2, task);
             }) {
                 self.error_handler
-                    .handle_error(task_info.port.unwrap(), Error::Panic(error));
+                    .handle_error::<Rust2DartCodec>(task_info.port.unwrap(), Error::Panic(error));
             }
         });
     }
