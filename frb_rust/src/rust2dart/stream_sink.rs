@@ -1,3 +1,5 @@
+use crate::codec::BaseCodec;
+use crate::for_generated::DcoCodec;
 use crate::generalized_isolate::{
     channel_to_handle, handle_to_channel, IntoDart, SendableChannelHandle,
 };
@@ -34,7 +36,8 @@ impl<T> StreamSink<T> {
     where
         T: IntoIntoDart<D>,
     {
-        self.sender().send(Rust2DartCodec::encode(
+        // TODO do not hardcode!
+        self.sender().send(DcoCodec::encode(
             value.into_into_dart(),
             Rust2DartAction::Success,
         ))
@@ -43,7 +46,8 @@ impl<T> StreamSink<T> {
     /// Close the stream and ignore further messages. Returns false when
     /// the stream could not be closed, or when it has already been closed.
     pub fn close(&self) -> bool {
+        // TODO do not hardcode!
         self.sender()
-            .send(Rust2DartCodec::encode((), Rust2DartAction::CloseStream))
+            .send(DcoCodec::encode((), Rust2DartAction::CloseStream))
     }
 }
