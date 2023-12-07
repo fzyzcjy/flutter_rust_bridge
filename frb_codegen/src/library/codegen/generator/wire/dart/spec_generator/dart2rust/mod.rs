@@ -14,6 +14,7 @@ use crate::library::codegen::ir::ty::IrTypeTrait;
 use serde::Serialize;
 
 mod misc;
+mod transfer;
 pub(crate) mod ty;
 
 #[derive(Clone, Serialize)]
