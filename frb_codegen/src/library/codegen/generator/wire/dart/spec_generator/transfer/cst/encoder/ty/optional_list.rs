@@ -6,23 +6,4 @@ use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::base::
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartTransferCstGeneratorEncoderTrait;
 use crate::codegen::ir::ty::IrTypeTrait;
 
-impl<'a> WireDartTransferCstGeneratorEncoderTrait for OptionalListWireDartTransferCstGenerator<'a> {
-    fn encode_func_body(&self) -> Acc<Option<String>> {
-        let inner = self.ir.inner.safe_ident();
-        Acc {
-            io: Some(format!(
-                "final ans = wire.cst_new_{safe_ident}(raw.length);
-                for (var i = 0; i < raw.length; ++i) {{
-                    final item = raw[i];
-                    if (item == null) continue;
-                    ans.ref.ptr[i] = cst_encode_{inner}(item);
-                }}
-                return ans;",
-                safe_ident = self.ir.safe_ident(),
-            )),
-            wasm: (self.context.config.wasm_enabled)
-                .then(|| format!("return mapNonNull(raw, cst_encode_{inner});")),
-            ..Default::default()
-        }
-    }
-}
+impl<'a> WireDartTransferCstGeneratorEncoderTrait for OptionalListWireDartTransferCstGenerator<'a> {}

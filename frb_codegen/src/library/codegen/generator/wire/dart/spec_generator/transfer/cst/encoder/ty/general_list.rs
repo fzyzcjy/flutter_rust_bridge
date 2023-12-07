@@ -22,7 +22,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for GeneralListWireDartTransfe
                 if self.ir.inner.is_primitive()
                     || matches!(
                         *self.ir.inner,
-                        IrType::RustOpaque(_) | IrType::DartOpaque(_)
+                        IrType::Optional(_) | IrType::RustOpaque(_) | IrType::DartOpaque(_)
                     )
                 {
                     // Handle primitive enums list.
