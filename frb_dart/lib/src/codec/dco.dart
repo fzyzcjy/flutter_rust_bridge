@@ -1,13 +1,22 @@
 import 'package:flutter_rust_bridge/src/codec/base.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-class DcoCodec extends BaseCodec {
+class DcoCodec<S, E extends Object> extends BaseCodec {
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  final S Function(dynamic) parseSuccessData;
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  final E Function(dynamic)? parseErrorData;
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  const DcoCodec({
+    required this.parseSuccessData,
+    required this.parseErrorData,
+  });
+
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @override
-  S decode<S, E extends Object>(
-      List<dynamic> raw,
-      S Function(dynamic) parseSuccessData,
-      E Function(dynamic)? parseErrorData) {
+  S decode(List<dynamic> raw) {
     switch (_Rust2DartAction.values[raw[0]]) {
       case _Rust2DartAction.success:
         assert(raw.length == 2);
