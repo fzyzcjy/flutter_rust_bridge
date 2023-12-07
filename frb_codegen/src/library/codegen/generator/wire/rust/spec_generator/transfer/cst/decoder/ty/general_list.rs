@@ -89,7 +89,7 @@ pub(crate) fn generate_list_generate_allocate_func(
     safe_ident: &str,
     list: &IrType,
     inner: &IrType,
-    context: WireRustGeneratorContext,
+    context: WireRustTransferCstGeneratorContext,
 ) -> ExternFunc {
     let list_generator = WireRustTransferCstGenerator::new(list.clone(), context);
 

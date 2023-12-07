@@ -1,15 +1,15 @@
 use crate::codegen::generator::misc::target::Target;
-use crate::codegen::generator::wire::rust::spec_generator::base::{
-    WireRustGenerator, WireRustGeneratorContext,
-};
+use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGenerator;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::WireRustTransferCstGenerator;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::{
+    WireRustTransferCstGenerator, WireRustTransferCstGeneratorContext,
+};
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::spec_generator::dart2rust::ty::WireRustGeneratorDart2RustTrait;
 
 pub(crate) fn generate_impl_new_with_nullptr(
     types: &[IrType],
-    context: WireRustGeneratorContext,
+    context: WireRustTransferCstGeneratorContext,
 ) -> Vec<WireRustOutputCode> {
     let mut ans = vec![];
 
@@ -37,7 +37,7 @@ fn generate_impl_new_with_nullptr_misc() -> &'static str {
 
 pub(crate) fn generate_impl_new_with_nullptr_code_block(
     ir: impl Into<IrType>,
-    context: WireRustGeneratorContext,
+    context: WireRustTransferCstGeneratorContext,
     body: &str,
     impl_default: bool,
 ) -> String {

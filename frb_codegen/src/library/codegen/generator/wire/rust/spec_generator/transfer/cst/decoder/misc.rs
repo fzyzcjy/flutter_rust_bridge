@@ -1,14 +1,14 @@
 use crate::codegen::generator::misc::target::Target;
-use crate::codegen::generator::wire::rust::spec_generator::base::{
-    WireRustGenerator, WireRustGeneratorContext,
+use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGenerator;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::{
+    WireRustTransferCstGenerator, WireRustTransferCstGeneratorContext,
 };
-use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::WireRustTransferCstGenerator;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use crate::library::codegen::generator::wire::rust::spec_generator::dart2rust::ty::WireRustGeneratorDart2RustTrait;
 
 pub(crate) fn generate_class_from_fields(
     ty: impl Into<IrType>,
-    context: WireRustGeneratorContext,
+    context: WireRustTransferCstGeneratorContext,
     fields: &[String],
 ) -> String {
     let struct_name =
