@@ -15,6 +15,7 @@ pub(crate) fn generate_api_impl_normal_function(
     context: WireDartGeneratorContext,
 ) -> anyhow::Result<WireDartOutputCode> {
     let dart2rust_codec = WireDartCodecEntrypoint::new(func.codec_mode_pack.dart2rust);
+    let rust2dart_codec = WireDartCodecEntrypoint::new(func.codec_mode_pack.rust2dart);
 
     let api_dart_func =
         api_dart::spec_generator::function::generate(func, context.as_api_dart_context())?;
@@ -27,8 +28,7 @@ pub(crate) fn generate_api_impl_normal_function(
         .join(", ");
     let execute_func_name = generate_execute_func_name(func);
 
-    let parse_success_data = generate_parse_success_data(func);
-    let parse_error_data = generate_parse_error_data(func);
+    let codec = rust2dart_codec.generate_rust2dart_codec_object(func);
     let call_ffi_args = generate_call_ffi_args(func);
     let arg_values = generate_arg_values(func);
 
@@ -45,10 +45,7 @@ pub(crate) fn generate_api_impl_normal_function(
                   {stmt_prepare_args}
                   return wire.{wire_func_name}({wire_param_list});
                 }},
-                codec: const DcoCodec(
-                  parseSuccessData: {parse_success_data},
-                  parseErrorData: {parse_error_data},
-                ),
+                codec: {codec},
                 constMeta: {const_meta_field_name},
                 argValues: [{arg_values}],
                 apiImpl: this,
@@ -71,18 +68,6 @@ fn generate_execute_func_name(func: &IrFunc) -> &str {
         IrFuncMode::Normal => "executeNormal",
         IrFuncMode::Sync => "executeSync",
         IrFuncMode::Stream { .. } => "executeStream",
-    }
-}
-
-fn generate_parse_success_data(func: &IrFunc) -> String {
-    format!("_dco_decode_{}", func.output.safe_ident())
-}
-
-fn generate_parse_error_data(func: &IrFunc) -> String {
-    if let Some(error_output) = &func.error_output {
-        format!("_dco_decode_{}", error_output.safe_ident())
-    } else {
-        "null".to_string()
     }
 }
 
