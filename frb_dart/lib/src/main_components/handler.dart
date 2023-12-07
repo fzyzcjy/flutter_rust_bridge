@@ -81,7 +81,7 @@ S _transformRust2DartMessage<S, E extends Object>(List<dynamic> raw,
 
     case _Rust2DartAction.panic:
       assert(raw.length == 2);
-      throw wire2apiPanicError(raw[1]);
+      throw dcoDecodePanicError(raw[1]);
 
     case _Rust2DartAction.closeStream:
       assert(raw.length == 1);

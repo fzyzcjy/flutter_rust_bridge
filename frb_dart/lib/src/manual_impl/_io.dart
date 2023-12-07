@@ -10,4 +10,4 @@ List<dynamic> wireSyncReturnIntoDart(WireSyncReturn syncReturn) =>
     dartCObjectIntoDart(syncReturn.ref);
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-int wire2apiI64OrU64(dynamic raw) => raw;
+int dcoDecodeI64OrU64(dynamic raw) => raw;

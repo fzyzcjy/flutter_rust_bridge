@@ -24,7 +24,7 @@ abstract class RustOpaque {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @internal
-  PlatformPointer api2wire({bool? move}) {
+  PlatformPointer cstEncode({bool? move}) {
     assert(move == null || _move == null,
         'Cannot specify move semantics in two places');
     final effectiveMoveMode = move ?? _move ?? false;

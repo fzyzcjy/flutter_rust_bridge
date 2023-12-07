@@ -2,9 +2,9 @@ import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized
 import 'package:flutter_rust_bridge/src/utils/base_lazy_port_manager.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-Object wire2apiDartOpaque(
+Object dcoDecodeDartOpaque(
     dynamic raw, GeneralizedFrbRustBinding generalizedFrbRustBinding) {
-  return generalizedFrbRustBinding.dartOpaqueRust2DartWire2Api(raw);
+  return generalizedFrbRustBinding.dartOpaqueRust2DartDecode(raw);
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}

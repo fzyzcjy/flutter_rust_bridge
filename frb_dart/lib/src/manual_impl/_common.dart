@@ -1,13 +1,13 @@
 import 'package:flutter_rust_bridge/src/consts.dart';
 import 'package:flutter_rust_bridge/src/exceptions.dart';
 
-// ------------------------------------- wire2api -------------------------------------------
+// ------------------------------------- dco decode -------------------------------------------
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-PanicException wire2apiPanicError(dynamic raw) => PanicException(raw as String);
+PanicException dcoDecodePanicError(dynamic raw) => PanicException(raw as String);
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-DateTime wire2apiTimestamp({required int ts, required bool isUtc}) {
+DateTime dcoDecodeTimestamp({required int ts, required bool isUtc}) {
   if (kIsWeb) {
     return DateTime.fromMillisecondsSinceEpoch(ts, isUtc: isUtc);
   }
@@ -15,7 +15,7 @@ DateTime wire2apiTimestamp({required int ts, required bool isUtc}) {
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-Duration wire2apiDuration(int ts) {
+Duration dcoDecodeDuration(int ts) {
   if (kIsWeb) {
     return Duration(milliseconds: ts);
   }
