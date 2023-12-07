@@ -175,7 +175,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for DelegateWireRustTransferCs
     fn rust_wire_type(&self, target: Target) -> String {
         match (&self.ir, target) {
             (IrTypeDelegate::String, Target::Wasm) => "String".into(),
-            (IrTypeDelegate::StringList, Target::Io) => "wire_StringList".to_owned(),
+            (IrTypeDelegate::StringList, Target::Io) => "wire_cst_StringList".to_owned(),
             (IrTypeDelegate::StringList, Target::Wasm) => JS_VALUE.into(),
             _ => WireRustTransferCstGenerator::new(self.ir.get_delegate(), self.context)
                 .rust_wire_type(target),

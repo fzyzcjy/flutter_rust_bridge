@@ -100,7 +100,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait
                 _ => format!("Box<[{}]>", self.ir.primitive.rust_api_type()),
             }
         } else {
-            format!("wire_{}", self.ir.safe_ident())
+            format!("wire_cst_{}", self.ir.safe_ident())
         }
     }
 

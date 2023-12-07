@@ -30,7 +30,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for EnumRefWireRustTransferCst
             .iter()
             .map(|variant| {
                 format!(
-                    "{0}: *mut wire_{1}_{0},",
+                    "{0}: *mut wire_cst_{1}_{0},",
                     variant.name, self.ir.ident.0.name
                 )
             })
@@ -138,7 +138,7 @@ impl<'a> EnumRefWireRustTransferCstGenerator<'a> {
         format!(
             "#[repr(C)]
             #[derive(Clone)]
-            pub struct wire_{}_{} {{ {} }}",
+            pub struct wire_cst_{}_{} {{ {} }}",
             self.ir.ident.0.name,
             variant.name,
             fields.join("\n")
@@ -168,7 +168,7 @@ impl<'a> EnumRefWireRustTransferCstGenerator<'a> {
                 }})",
                 self.ir.ident.0.name,
                 variant.name.rust_style(),
-                format_args!("wire_{typ}"),
+                format_args!("wire_cst_{typ}"),
                 body.join(",")
             ),
             target: Target::Io,
