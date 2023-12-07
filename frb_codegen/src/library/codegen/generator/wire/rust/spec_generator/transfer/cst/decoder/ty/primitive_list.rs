@@ -24,7 +24,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait
             &[
                 format!(
                     "ptr: *mut {}",
-                    WireRustGenerator::new(self.ir.primitive.clone(), self.context)
+                    WireRustTransferCstGenerator::new(self.ir.primitive.clone(), self.context)
                         .rust_wire_type(Target::Io)
                 ),
                 "len: i32".to_string(),

@@ -47,6 +47,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for DartFnWireRustTransferCstG
     }
 
     fn rust_wire_type(&self, target: Target) -> String {
-        WireRustGenerator::new(self.ir.get_delegate(), self.context).rust_wire_type(target)
+        WireRustTransferCstGenerator::new(self.ir.get_delegate(), self.context)
+            .rust_wire_type(target)
     }
 }

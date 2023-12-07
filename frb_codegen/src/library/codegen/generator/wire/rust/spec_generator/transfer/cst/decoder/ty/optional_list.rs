@@ -21,7 +21,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for OptionalListWireRustTransf
             &[
                 format!(
                     "ptr: *mut *mut {}",
-                    WireRustGenerator::new(self.ir.inner.clone(), self.context)
+                    WireRustTransferCstGenerator::new(self.ir.inner.clone(), self.context)
                         .rust_wire_type(Target::Io)
                 ),
                 "len: i32".to_string(),

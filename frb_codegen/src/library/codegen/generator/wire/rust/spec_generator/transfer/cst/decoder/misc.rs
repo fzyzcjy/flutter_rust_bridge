@@ -10,7 +10,8 @@ pub(crate) fn generate_class_from_fields(
     context: WireRustGeneratorContext,
     fields: &[String],
 ) -> String {
-    let struct_name = WireRustGenerator::new(ty.into(), context).rust_wire_type(Target::Io);
+    let struct_name =
+        WireRustTransferCstGenerator::new(ty.into(), context).rust_wire_type(Target::Io);
     format!(
         r###"
             #[repr(C)]

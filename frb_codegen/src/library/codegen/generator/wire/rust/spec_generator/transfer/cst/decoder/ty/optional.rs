@@ -17,7 +17,8 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for OptionalWireRustTransferCs
     }
 
     fn rust_wire_type(&self, target: Target) -> String {
-        let inner_generator = WireRustGenerator::new(self.ir.inner.clone(), self.context);
+        let inner_generator =
+            WireRustTransferCstGenerator::new(self.ir.inner.clone(), self.context);
 
         if inner_generator.rust_wire_is_pointer(target)
             || (target == Target::Wasm)
@@ -33,7 +34,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for OptionalWireRustTransferCs
 
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
         target != Target::Wasm
-            || WireRustGenerator::new(self.ir.inner.clone(), self.context)
+            || WireRustTransferCstGenerator::new(self.ir.inner.clone(), self.context)
                 .rust_wire_is_pointer(target)
     }
 }

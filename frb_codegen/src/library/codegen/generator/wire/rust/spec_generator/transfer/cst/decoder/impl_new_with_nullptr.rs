@@ -15,7 +15,7 @@ pub(crate) fn generate_impl_new_with_nullptr(
     ans.push(generate_impl_new_with_nullptr_misc().to_string().into());
 
     ans.extend(types.iter().filter_map(|ty| {
-        WireRustGenerator::new(ty.clone(), context).generate_impl_new_with_nullptr()
+        WireRustTransferCstGenerator::new(ty.clone(), context).generate_impl_new_with_nullptr()
     }));
 
     ans
@@ -40,7 +40,8 @@ pub(crate) fn generate_impl_new_with_nullptr_code_block(
     body: &str,
     impl_default: bool,
 ) -> String {
-    let rust_wire_type = WireRustGenerator::new(ir.into(), context).rust_wire_type(Target::Io);
+    let rust_wire_type =
+        WireRustTransferCstGenerator::new(ir.into(), context).rust_wire_type(Target::Io);
 
     format!(
         "impl NewWithNullPtr for {rust_wire_type} {{

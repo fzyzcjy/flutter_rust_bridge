@@ -20,7 +20,8 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for StructRefWireRustTransferC
             &s.fields
                 .iter()
                 .map(|field| {
-                    let field_generator = WireRustGenerator::new(field.ty.clone(), self.context);
+                    let field_generator =
+                        WireRustTransferCstGenerator::new(field.ty.clone(), self.context);
                     format!(
                         "{}: {}{}",
                         field.name.rust_style(),
@@ -86,7 +87,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for StructRefWireRustTransferC
                     format!(
                         "{}: {},",
                         field.name.rust_style(),
-                        if WireRustGenerator::new(field.ty.clone(), self.context)
+                        if WireRustTransferCstGenerator::new(field.ty.clone(), self.context)
                             .rust_wire_is_pointer(Target::Io)
                             || matches!(field.ty, IrType::RustOpaque(_) | IrType::DartOpaque(_))
                         {

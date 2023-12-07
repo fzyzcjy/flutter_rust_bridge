@@ -27,7 +27,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for DelegateWireRustTransferCs
                 &[
                     format!(
                         "ptr: *mut *mut {}",
-                        WireRustGenerator::new(ty.get_delegate(), self.context)
+                        WireRustTransferCstGenerator::new(ty.get_delegate(), self.context)
                             .rust_wire_type(Target::Io)
                     ),
                     "len: i32".to_owned(),
@@ -134,7 +134,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for DelegateWireRustTransferCs
             }
             IrTypeDelegate::PrimitiveEnum (IrTypeDelegatePrimitiveEnum { repr, .. }) => format!(
                 "(self.unchecked_into_f64() as {}).wire2api()",
-                WireRustGenerator::new(repr.clone(), self.context).rust_wire_type(Target::Wasm)
+                WireRustTransferCstGenerator::new(repr.clone(), self.context).rust_wire_type(Target::Wasm)
             )
                 .into(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
@@ -177,13 +177,13 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for DelegateWireRustTransferCs
             (IrTypeDelegate::String, Target::Wasm) => "String".into(),
             (IrTypeDelegate::StringList, Target::Io) => "wire_StringList".to_owned(),
             (IrTypeDelegate::StringList, Target::Wasm) => JS_VALUE.into(),
-            _ => {
-                WireRustGenerator::new(self.ir.get_delegate(), self.context).rust_wire_type(target)
-            }
+            _ => WireRustTransferCstGenerator::new(self.ir.get_delegate(), self.context)
+                .rust_wire_type(target),
         }
     }
 
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
-        WireRustGenerator::new(self.ir.get_delegate(), self.context).rust_wire_is_pointer(target)
+        WireRustTransferCstGenerator::new(self.ir.get_delegate(), self.context)
+            .rust_wire_is_pointer(target)
     }
 }

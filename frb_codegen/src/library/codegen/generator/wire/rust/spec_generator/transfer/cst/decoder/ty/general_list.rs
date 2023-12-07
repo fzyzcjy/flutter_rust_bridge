@@ -24,7 +24,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for GeneralListWireRustTransfe
                 format!(
                     "ptr: *mut {}{}",
                     general_list_maybe_extra_pointer_indirection(&self.ir),
-                    WireRustGenerator::new(self.ir.inner.clone(), self.context)
+                    WireRustTransferCstGenerator::new(self.ir.inner.clone(), self.context)
                         .rust_wire_type(Target::Io)
                 ),
                 "len: i32".to_string(),
@@ -91,7 +91,7 @@ pub(crate) fn generate_list_generate_allocate_func(
     inner: &IrType,
     context: WireRustGeneratorContext,
 ) -> ExternFunc {
-    let list_generator = WireRustGenerator::new(list.clone(), context);
+    let list_generator = WireRustTransferCstGenerator::new(list.clone(), context);
 
     // let wasm = false;
     ExternFunc {
@@ -124,7 +124,7 @@ pub(crate) fn generate_list_generate_allocate_func(
                     general_list_maybe_extra_pointer_indirection(&IrTypeGeneralList {
                         inner: Box::new(inner.clone())
                     }),
-                    WireRustGenerator::new(inner.clone(), context).rust_wire_type(Target::Io)
+                    WireRustTransferCstGenerator::new(inner.clone(), context).rust_wire_type(Target::Io)
                 )
             }
         ),

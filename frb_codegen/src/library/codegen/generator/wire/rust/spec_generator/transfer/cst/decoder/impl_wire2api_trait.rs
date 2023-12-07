@@ -58,7 +58,7 @@ fn generate_impl_wire2api_for_type(
     ty: &IrType,
     context: WireRustGeneratorContext,
 ) -> Acc<WireRustOutputCode> {
-    let generator = WireRustGenerator::new(ty.clone(), context);
+    let generator = WireRustTransferCstGenerator::new(ty.clone(), context);
     let raw: Acc<Option<String>> = generator.generate_impl_wire2api_body();
     raw.map(|body, target| {
         body.map(|body| {
@@ -84,7 +84,7 @@ fn generate_impl_wire2api_jsvalue_for_type(
     ty: &IrType,
     context: WireRustGeneratorContext,
 ) -> Acc<WireRustOutputCode> {
-    let generator = WireRustGenerator::new(ty.clone(), context);
+    let generator = WireRustTransferCstGenerator::new(ty.clone(), context);
     generator
         .generate_impl_wire2api_jsvalue_body()
         .map(|body| Acc {

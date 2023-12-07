@@ -80,7 +80,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for BoxedWireRustTransferCstGe
                     )],
                     return_type: Some(format!(
                         "*mut {}",
-                        WireRustGenerator::new(self.ir.inner.clone(), self.context)
+                        WireRustTransferCstGenerator::new(self.ir.inner.clone(), self.context)
                             .rust_wire_type(Target::Io)
                     )),
                     body: "flutter_rust_bridge::for_generated::new_leak_box_ptr(value)".to_owned(),
@@ -103,7 +103,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for BoxedWireRustTransferCstGe
                     ),
                     body: format!(
                         "flutter_rust_bridge::for_generated::new_leak_box_ptr({}::new_with_null_ptr())",
-                        WireRustGenerator::new(self.ir.inner.clone(), self.context)
+                        WireRustTransferCstGenerator::new(self.ir.inner.clone(), self.context)
                             .rust_wire_type(Target::Io)
                     ),
                     target: Target::Io,
@@ -118,7 +118,8 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for BoxedWireRustTransferCstGe
         if target == Target::Wasm && self.ir.inner.is_primitive() {
             JS_VALUE.into()
         } else {
-            WireRustGenerator::new(self.ir.inner.clone(), self.context).rust_wire_type(target)
+            WireRustTransferCstGenerator::new(self.ir.inner.clone(), self.context)
+                .rust_wire_type(target)
         }
     }
 
