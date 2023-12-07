@@ -2,7 +2,7 @@ use crate::generalized_isolate::{
     channel_to_handle, handle_to_channel, IntoDart, SendableChannelHandle,
 };
 use crate::misc::into_into_dart::IntoIntoDart;
-use crate::rust2dart::encoder::Encoder;
+use crate::rust2dart::action::Rust2DartAction;
 use crate::rust2dart::sender::Rust2DartSender;
 use std::marker::PhantomData;
 
@@ -34,13 +34,16 @@ impl<T> StreamSink<T> {
     where
         T: IntoIntoDart<D>,
     {
-        self.sender()
-            .send(Encoder::success(value.into_into_dart().into_dart()))
+        self.sender().send(Rust2DartCodec::encode(
+            value.into_into_dart().into_dart(),
+            Rust2DartAction::Success,
+        ))
     }
 
     /// Close the stream and ignore further messages. Returns false when
     /// the stream could not be closed, or when it has already been closed.
     pub fn close(&self) -> bool {
-        self.sender().send(Encoder::close_stream())
+        self.sender()
+            .send(Rust2DartCodec::encode((), Rust2DartAction::CloseStream))
     }
 }

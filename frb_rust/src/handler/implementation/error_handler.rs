@@ -4,7 +4,6 @@ use crate::handler::error::Error;
 use crate::handler::error_handler::ErrorHandler;
 use crate::platform_types::{MessagePort, WireSyncReturn};
 use crate::rust2dart::action::Rust2DartAction;
-use crate::rust2dart::encoder::Encoder;
 use crate::rust2dart::sender::Rust2DartSender;
 use crate::rust2dart::wire_sync_return_src::WireSyncReturnSrc;
 
@@ -18,8 +17,8 @@ impl ErrorHandler for ReportDartErrorHandler {
         Rust2DartCodec: BaseCodec,
     {
         let msg = match error {
-            e @ Error::CustomError(_) => Encoder::error(e),
-            e @ Error::Panic(_) => Encoder::panic(e),
+            e @ Error::CustomError(_) => Rust2DartCodec::encode(e, Rust2DartAction::Error),
+            e @ Error::Panic(_) => Rust2DartCodec::encode(e, Rust2DartAction::Panic),
         };
         Rust2DartSender::new(Channel::new(port)).send(msg);
     }
