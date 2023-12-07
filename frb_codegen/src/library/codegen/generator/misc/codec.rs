@@ -1,6 +1,7 @@
 use serde::Serialize;
+use strum_macros::Display;
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Hash)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Hash, Display)]
 pub(crate) enum CodecMode {
     Cst,
     Dco,

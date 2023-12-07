@@ -193,7 +193,7 @@ fn generate_handler_func_name(
     ir_pack: &IrPack,
     context: WireRustGeneratorContext,
 ) -> String {
-    let codec = &func.codec_mode_pack;
+    let codec = &func.codec_mode_pack.rust2dart;
 
     match func.mode {
         IrFuncMode::Sync => "wrap_sync::<{codec},_,_,_,_>".to_owned(),
