@@ -10,7 +10,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for RustOpaqueWireDartTransfer
     fn encode_func_body(&self) -> Acc<Option<String>> {
         Acc::new_common(Some(format!(
             "// ignore: invalid_use_of_internal_member
-            return raw.cst_encode();",
+            return raw.cstEncode();",
         )))
     }
 

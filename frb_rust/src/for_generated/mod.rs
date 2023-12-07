@@ -16,7 +16,7 @@ pub use crate::misc::rust_auto_opaque::rust_auto_opaque_encode;
 pub use crate::platform_types::DartAbi;
 pub use crate::platform_types::{MessagePort, WireSyncReturn};
 pub use crate::rust_async::{BaseAsyncRuntime, SimpleAsyncRuntime};
-pub use crate::rust_opaque::dart2rust::decode_rust_opaque;
+pub use crate::rust_opaque::dart2rust::cst_decode_rust_opaque;
 pub use crate::thread_pool::{BaseThreadPool, SimpleThreadPool};
 #[cfg(wasm)]
 pub use crate::web_transfer::transfer_closure::TransferClosure;

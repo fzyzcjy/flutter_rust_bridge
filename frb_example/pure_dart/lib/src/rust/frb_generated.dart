@@ -22188,254 +22188,254 @@ PlatformPointer
     cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
         RwLockBoxFnStringString raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode(move: true);
+  return raw.cstEncode(move: true);
 }
 
 PlatformPointer
     cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
         RwLockBoxHelloTraitTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode(move: true);
+  return raw.cstEncode(move: true);
 }
 
 PlatformPointer
     cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
         RwLockBoxHelloTraitTwinSync raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode(move: true);
+  return raw.cstEncode(move: true);
 }
 
 PlatformPointer
     cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
         RwLockBoxMyTraitTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode(move: true);
+  return raw.cstEncode(move: true);
 }
 
 PlatformPointer
     cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
         RwLockBoxMyTraitTwinSync raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode(move: true);
+  return raw.cstEncode(move: true);
 }
 
 PlatformPointer
     cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
         RwLockNonCloneSimpleTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode(move: true);
+  return raw.cstEncode(move: true);
 }
 
 PlatformPointer
     cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
         RwLockNonCloneSimpleTwinSync raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode(move: true);
+  return raw.cstEncode(move: true);
 }
 
 PlatformPointer
     cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
         RwLockStructWithGoodAndOpaqueFieldTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode(move: true);
+  return raw.cstEncode(move: true);
 }
 
 PlatformPointer
     cst_encode_Auto_Owned_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
         RwLockStructWithGoodAndOpaqueFieldTwinSync raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode(move: true);
+  return raw.cstEncode(move: true);
 }
 
 PlatformPointer
     cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
         RwLockBoxHelloTraitTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode(move: false);
+  return raw.cstEncode(move: false);
 }
 
 PlatformPointer
     cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
         RwLockBoxHelloTraitTwinSync raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode(move: false);
+  return raw.cstEncode(move: false);
 }
 
 PlatformPointer
     cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
         RwLockNonCloneSimpleTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode(move: false);
+  return raw.cstEncode(move: false);
 }
 
 PlatformPointer
     cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
         RwLockNonCloneSimpleTwinSync raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode(move: false);
+  return raw.cstEncode(move: false);
 }
 
 PlatformPointer
     cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
         RwLockStructWithGoodAndOpaqueFieldTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode(move: false);
+  return raw.cstEncode(move: false);
 }
 
 PlatformPointer
     cst_encode_Auto_RefMut_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
         RwLockStructWithGoodAndOpaqueFieldTwinSync raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode(move: false);
+  return raw.cstEncode(move: false);
 }
 
 PlatformPointer
     cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
         RwLockBoxHelloTraitTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode(move: false);
+  return raw.cstEncode(move: false);
 }
 
 PlatformPointer
     cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
         RwLockBoxHelloTraitTwinSync raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode(move: false);
+  return raw.cstEncode(move: false);
 }
 
 PlatformPointer
     cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
         RwLockNonCloneSimpleTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode(move: false);
+  return raw.cstEncode(move: false);
 }
 
 PlatformPointer
     cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
         RwLockNonCloneSimpleTwinSync raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode(move: false);
+  return raw.cstEncode(move: false);
 }
 
 PlatformPointer
     cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
         RwLockStructWithGoodAndOpaqueFieldTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode(move: false);
+  return raw.cstEncode(move: false);
 }
 
 PlatformPointer
     cst_encode_Auto_Ref_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
         RwLockStructWithGoodAndOpaqueFieldTwinSync raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode(move: false);
+  return raw.cstEncode(move: false);
 }
 
 PlatformPointer cst_encode_RustOpaque_MutexHideData(MutexHideData raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode();
+  return raw.cstEncode();
 }
 
 PlatformPointer cst_encode_RustOpaque_RwLockHideData(RwLockHideData raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode();
+  return raw.cstEncode();
 }
 
 PlatformPointer cst_encode_RustOpaque_box_dynDartDebugTwinNormal(
     BoxDartDebugTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode();
+  return raw.cstEncode();
 }
 
 PlatformPointer cst_encode_RustOpaque_box_dynDartDebugTwinRustAsync(
     BoxDartDebugTwinRustAsync raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode();
+  return raw.cstEncode();
 }
 
 PlatformPointer cst_encode_RustOpaque_box_dynDartDebugTwinSync(
     BoxDartDebugTwinSync raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode();
+  return raw.cstEncode();
 }
 
 PlatformPointer cst_encode_RustOpaque_hide_data(HideData raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode();
+  return raw.cstEncode();
 }
 
 PlatformPointer cst_encode_RustOpaque_i_32(I32 raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode();
+  return raw.cstEncode();
 }
 
 PlatformPointer cst_encode_RustOpaque_non_clone_data(NonCloneData raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode();
+  return raw.cstEncode();
 }
 
 PlatformPointer cst_encode_RustOpaque_non_send_hide_data(NonSendHideData raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode();
+  return raw.cstEncode();
 }
 
 PlatformPointer
     cst_encode_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(
         RwLockBoxFnStringString raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode();
+  return raw.cstEncode();
 }
 
 PlatformPointer cst_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(
     RwLockBoxHelloTraitTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode();
+  return raw.cstEncode();
 }
 
 PlatformPointer cst_encode_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(
     RwLockBoxHelloTraitTwinSync raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode();
+  return raw.cstEncode();
 }
 
 PlatformPointer
     cst_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(
         RwLockBoxMyTraitTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode();
+  return raw.cstEncode();
 }
 
 PlatformPointer
     cst_encode_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(
         RwLockBoxMyTraitTwinSync raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode();
+  return raw.cstEncode();
 }
 
 PlatformPointer cst_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(
     RwLockNonCloneSimpleTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode();
+  return raw.cstEncode();
 }
 
 PlatformPointer cst_encode_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(
     RwLockNonCloneSimpleTwinSync raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode();
+  return raw.cstEncode();
 }
 
 PlatformPointer
     cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(
         RwLockStructWithGoodAndOpaqueFieldTwinNormal raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode();
+  return raw.cstEncode();
 }
 
 PlatformPointer
     cst_encode_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(
         RwLockStructWithGoodAndOpaqueFieldTwinSync raw) {
   // ignore: invalid_use_of_internal_member
-  return raw.cst_encode();
+  return raw.cstEncode();
 }
 
 int cst_encode_application_mode(ApplicationMode raw) {

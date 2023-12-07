@@ -15,7 +15,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait
         let enable_move = self.ir.ownership_mode == IrTypeOwnershipMode::Owned;
         Acc::new_common(Some(format!(
             "// ignore: invalid_use_of_internal_member
-            return raw.cst_encode(move: {enable_move});",
+            return raw.cstEncode(move: {enable_move});",
         )))
     }
 
