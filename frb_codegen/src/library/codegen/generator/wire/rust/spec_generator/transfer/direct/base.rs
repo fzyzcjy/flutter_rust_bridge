@@ -3,7 +3,7 @@ use enum_dispatch::enum_dispatch;
 
 codegen_generator_structs!(
     #[enum_dispatch(WireRustTransferDirectGeneratorEncoderTrait)]
-    // #[enum_dispatch(WireRustTransferDirectGeneratorDecoderTrait)] // TODO
+    #[enum_dispatch(WireRustTransferDirectGeneratorDecoderTrait)]
     WireRustTransferDirectGenerator
 );
 
