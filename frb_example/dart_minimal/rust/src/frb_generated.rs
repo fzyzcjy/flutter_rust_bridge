@@ -44,18 +44,19 @@ fn wire_minimal_adder_impl(
     a: impl CstDecoder<i32> + core::panic::UnwindSafe,
     b: impl CstDecoder<i32> + core::panic::UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, i32, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "minimal_adder",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
-        },
-        move || {
-            let api_a = a.cst_decode();
-            let api_b = b.cst_decode();
-            move |context| Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(api_a, api_b))
-        },
-    )
+    FLUTTER_RUST_BRIDGE_HANDLER
+        .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, i32, _>(
+            flutter_rust_bridge::for_generated::TaskInfo {
+                debug_name: "minimal_adder",
+                port: Some(port_),
+                mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            },
+            move || {
+                let api_a = a.cst_decode();
+                let api_b = b.cst_decode();
+                move |context| Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(api_a, api_b))
+            },
+        )
 }
 
 // Section: impl_decode
