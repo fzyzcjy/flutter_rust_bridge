@@ -6,6 +6,7 @@ use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::wire_func_name;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode};
 use crate::codegen::misc::transfer::TransferMode;
+use crate::library::codegen::generator::wire::dart::spec_generator::transfer::base::WireDartTransferEntrypointTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
