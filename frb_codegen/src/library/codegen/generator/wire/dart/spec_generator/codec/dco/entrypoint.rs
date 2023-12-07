@@ -15,19 +15,19 @@ impl WireDartCodecEntrypointTrait for DcoWireDartCodecEntrypoint {
         &self,
         _context: WireDartGeneratorContext,
         _types: &[IrType],
-    ) -> Box<dyn WireDartCodecOutputSpec> {
-        unreachable!()
+    ) -> Option<Box<dyn WireDartCodecOutputSpec>> {
+        None
     }
 
     fn generate_decode(
         &self,
         context: WireDartGeneratorContext,
         types: &[IrType],
-    ) -> Box<dyn WireDartCodecOutputSpec> {
-        Box::new(decoder::generate(
+    ) -> Option<Box<dyn WireDartCodecOutputSpec>> {
+        Some(Box::new(decoder::generate(
             context.as_wire_dart_codec_dco_context(),
             types,
-        ))
+        )))
     }
 
     fn generate_dart2rust_func_stmt_prepare_args(&self, func: &IrFunc) -> Vec<String> {

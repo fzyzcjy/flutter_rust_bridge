@@ -12,16 +12,16 @@ impl WireDartCodecEntrypointTrait for SseWireDartCodecEntrypoint {
         &self,
         context: WireDartGeneratorContext,
         types: &[IrType],
-    ) -> Box<dyn WireDartCodecOutputSpec> {
-        todo!()
+    ) -> Option<Box<dyn WireDartCodecOutputSpec>> {
+        None // TODO
     }
 
     fn generate_decode(
         &self,
         context: WireDartGeneratorContext,
         types: &[IrType],
-    ) -> Box<dyn WireDartCodecOutputSpec> {
-        todo!()
+    ) -> Option<Box<dyn WireDartCodecOutputSpec>> {
+        None // TODO
     }
 
     fn generate_dart2rust_func_stmt_prepare_args(&self, func: &IrFunc) -> Vec<String> {

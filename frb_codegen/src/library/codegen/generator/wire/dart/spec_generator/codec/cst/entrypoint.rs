@@ -17,19 +17,19 @@ impl WireDartCodecEntrypointTrait for CstWireDartCodecEntrypoint {
         &self,
         context: WireDartGeneratorContext,
         types: &[IrType],
-    ) -> Box<dyn WireDartCodecOutputSpec> {
-        Box::new(encoder::generate(
+    ) -> Option<Box<dyn WireDartCodecOutputSpec>> {
+        Some(Box::new(encoder::generate(
             context.as_wire_dart_codec_cst_context(),
             types,
-        ))
+        )))
     }
 
     fn generate_decode(
         &self,
         _context: WireDartGeneratorContext,
         _types: &[IrType],
-    ) -> Box<dyn WireDartCodecOutputSpec> {
-        unreachable!()
+    ) -> Option<Box<dyn WireDartCodecOutputSpec>> {
+        None
     }
 
     fn generate_dart2rust_func_stmt_prepare_args(&self, func: &IrFunc) -> Vec<String> {
