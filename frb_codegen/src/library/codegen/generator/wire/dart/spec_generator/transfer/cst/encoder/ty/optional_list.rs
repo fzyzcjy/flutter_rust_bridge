@@ -7,7 +7,7 @@ use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encode
 use crate::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireDartTransferCstGeneratorEncoderTrait for OptionalListWireDartTransferCstGenerator<'a> {
-    fn api2wire_body(&self) -> Acc<Option<String>> {
+    fn encode_func_body(&self) -> Acc<Option<String>> {
         let inner = self.ir.inner.safe_ident();
         Acc {
             io: Some(format!(

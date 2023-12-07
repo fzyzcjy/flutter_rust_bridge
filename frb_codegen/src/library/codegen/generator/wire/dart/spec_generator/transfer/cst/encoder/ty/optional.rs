@@ -6,7 +6,7 @@ use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encode
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireDartTransferCstGeneratorEncoderTrait for OptionalWireDartTransferCstGenerator<'a> {
-    fn api2wire_body(&self) -> Acc<Option<String>> {
+    fn encode_func_body(&self) -> Acc<Option<String>> {
         Acc::new(|target| match target {
             TargetOrCommon::Io | TargetOrCommon::Wasm => Some(format!(
                 "return raw == null ? {} : api2wire_{}(raw);",

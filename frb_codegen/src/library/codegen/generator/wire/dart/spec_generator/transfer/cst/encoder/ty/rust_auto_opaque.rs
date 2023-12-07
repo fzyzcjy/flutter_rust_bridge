@@ -11,7 +11,7 @@ use crate::codegen::ir::ty::IrTypeTrait;
 impl<'a> WireDartTransferCstGeneratorEncoderTrait
     for RustAutoOpaqueWireDartTransferCstGenerator<'a>
 {
-    fn api2wire_body(&self) -> Acc<Option<String>> {
+    fn encode_func_body(&self) -> Acc<Option<String>> {
         let enable_move = self.ir.ownership_mode == IrTypeOwnershipMode::Owned;
         Acc::new_common(Some(format!(
             "// ignore: invalid_use_of_internal_member

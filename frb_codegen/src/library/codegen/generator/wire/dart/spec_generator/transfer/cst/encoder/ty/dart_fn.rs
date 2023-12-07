@@ -7,7 +7,7 @@ use crate::codegen::ir::ty::dart_opaque::IrTypeDartOpaque;
 use crate::codegen::ir::ty::IrType;
 
 impl<'a> WireDartTransferCstGeneratorEncoderTrait for DartFnWireDartTransferCstGenerator<'a> {
-    fn api2wire_body(&self) -> Acc<Option<String>> {
+    fn encode_func_body(&self) -> Acc<Option<String>> {
         Acc::new(|target| match target {
             TargetOrCommon::Io | TargetOrCommon::Wasm => {
                 Some("return api2wire_DartOpaque(raw);".to_owned())

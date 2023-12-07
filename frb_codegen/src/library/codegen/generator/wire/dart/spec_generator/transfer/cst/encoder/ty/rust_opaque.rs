@@ -7,7 +7,7 @@ use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encode
 use crate::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireDartTransferCstGeneratorEncoderTrait for RustOpaqueWireDartTransferCstGenerator<'a> {
-    fn api2wire_body(&self) -> Acc<Option<String>> {
+    fn encode_func_body(&self) -> Acc<Option<String>> {
         Acc::new_common(Some(format!(
             "// ignore: invalid_use_of_internal_member
             return raw.api2wire();",

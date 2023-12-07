@@ -21,8 +21,8 @@ pub(crate) mod ty;
 
 #[derive(Clone, Serialize)]
 pub(crate) struct WireDartOutputSpecTransferCstEncoder {
-    pub(crate) api2wire_funcs: Acc<Vec<WireDartOutputCode>>,
-    pub(crate) api_fill_to_wire_funcs: Acc<Vec<WireDartOutputCode>>,
+    pub(crate) encode_funcs: Acc<Vec<WireDartOutputCode>>,
+    pub(crate) encode_api_fill_to_wire_funcs: Acc<Vec<WireDartOutputCode>>,
 }
 
 pub(crate) fn generate(
@@ -30,26 +30,26 @@ pub(crate) fn generate(
     cache: &IrPackComputedCache,
 ) -> WireDartOutputSpecTransferCstEncoder {
     WireDartOutputSpecTransferCstEncoder {
-        api2wire_funcs: cache
+        encode_funcs: cache
             .distinct_input_types
             .iter()
-            .map(|ty| generate_api2wire_func(ty, context))
+            .map(|ty| generate_encode_func(ty, context))
             .collect(),
-        api_fill_to_wire_funcs: cache
+        encode_api_fill_to_wire_funcs: cache
             .distinct_input_types
             .iter()
-            .map(|ty| Acc::new_io(generate_api_fill_to_wire_func(ty, context)))
+            .map(|ty| Acc::new_io(generate_encode_api_fill_to_wire_func(ty, context)))
             .collect(),
     }
 }
 
-fn generate_api2wire_func(
+fn generate_encode_func(
     ty: &IrType,
     context: WireDartTransferCstGeneratorContext,
 ) -> Acc<WireDartOutputCode> {
     let generator = WireDartTransferCstGenerator::new(ty.clone(), context);
     generator
-        .api2wire_body()
+        .encode_func_body()
         .map(|raw_body, target: TargetOrCommon| {
             raw_body
                 .map(|raw_body| {
@@ -81,12 +81,12 @@ fn generate_api2wire_func(
         })
 }
 
-fn generate_api_fill_to_wire_func(
+fn generate_encode_api_fill_to_wire_func(
     ty: &IrType,
     context: WireDartTransferCstGeneratorContext,
 ) -> WireDartOutputCode {
     if let Some(body) =
-        WireDartTransferCstGenerator::new(ty.clone(), context).api_fill_to_wire_body()
+        WireDartTransferCstGenerator::new(ty.clone(), context).encode_api_fill_to_wire_body()
     {
         let target_wire_type = match ty {
             Optional(inner) => &inner.inner,

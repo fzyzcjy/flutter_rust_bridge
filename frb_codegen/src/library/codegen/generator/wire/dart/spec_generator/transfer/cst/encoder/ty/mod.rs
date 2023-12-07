@@ -25,9 +25,9 @@ use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
 pub(crate) trait WireDartTransferCstGeneratorEncoderTrait {
-    fn api2wire_body(&self) -> Acc<Option<String>>;
+    fn encode_func_body(&self) -> Acc<Option<String>>;
 
-    fn api_fill_to_wire_body(&self) -> Option<String> {
+    fn encode_api_fill_to_wire_body(&self) -> Option<String> {
         None
     }
 

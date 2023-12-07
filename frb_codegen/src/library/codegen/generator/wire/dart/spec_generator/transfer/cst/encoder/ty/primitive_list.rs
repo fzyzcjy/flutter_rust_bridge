@@ -11,7 +11,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartG
 impl<'a> WireDartTransferCstGeneratorEncoderTrait
     for PrimitiveListWireDartTransferCstGenerator<'a>
 {
-    fn api2wire_body(&self) -> Acc<Option<String>> {
+    fn encode_func_body(&self) -> Acc<Option<String>> {
         Acc {
             // NOTE Dart code *only* allocates memory. It never *release* memory by itself.
             // Instead, Rust receives that pointer and now it is in control of Rust.

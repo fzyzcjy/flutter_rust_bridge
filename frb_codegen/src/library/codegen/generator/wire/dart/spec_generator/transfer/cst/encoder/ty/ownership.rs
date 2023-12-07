@@ -6,7 +6,7 @@ use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encode
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartTransferCstGeneratorEncoderTrait;
 
 impl<'a> WireDartTransferCstGeneratorEncoderTrait for OwnershipWireDartTransferCstGenerator<'a> {
-    fn api2wire_body(&self) -> Acc<Option<String>> {
+    fn encode_func_body(&self) -> Acc<Option<String>> {
         unreachable!()
     }
 

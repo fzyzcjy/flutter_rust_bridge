@@ -8,7 +8,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartG
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 
 impl<'a> WireDartTransferCstGeneratorEncoderTrait for PrimitiveWireDartTransferCstGenerator<'a> {
-    fn api2wire_body(&self) -> Acc<Option<String>> {
+    fn encode_func_body(&self) -> Acc<Option<String>> {
         match self.ir {
             IrTypePrimitive::I64 | IrTypePrimitive::U64 => Acc {
                 io: Some("return raw.toInt();".into()),

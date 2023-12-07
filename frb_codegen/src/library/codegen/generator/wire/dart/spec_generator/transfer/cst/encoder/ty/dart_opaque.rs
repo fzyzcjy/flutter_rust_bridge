@@ -6,7 +6,7 @@ use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::base::
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartTransferCstGeneratorEncoderTrait;
 
 impl<'a> WireDartTransferCstGeneratorEncoderTrait for DartOpaqueWireDartTransferCstGenerator<'a> {
-    fn api2wire_body(&self) -> Acc<Option<String>> {
+    fn encode_func_body(&self) -> Acc<Option<String>> {
         Acc::new(|target| match target {
             TargetOrCommon::Io => {
                 Some("return wire.dart_opaque_dart2rust_api2wire(raw);".to_owned())

@@ -11,11 +11,11 @@ use itertools::Itertools;
 use GeneralizedStructGeneratorMode::Struct;
 
 impl<'a> WireDartTransferCstGeneratorEncoderTrait for StructRefWireDartTransferCstGenerator<'a> {
-    fn api2wire_body(&self) -> Acc<Option<String>> {
+    fn encode_func_body(&self) -> Acc<Option<String>> {
         self.new_generalized_generator().api2wire_body()
     }
 
-    fn api_fill_to_wire_body(&self) -> Option<String> {
+    fn encode_api_fill_to_wire_body(&self) -> Option<String> {
         self.new_generalized_generator().api_fill_to_wire_body()
     }
 

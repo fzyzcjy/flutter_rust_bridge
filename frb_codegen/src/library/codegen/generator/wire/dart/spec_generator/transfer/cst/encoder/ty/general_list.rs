@@ -6,7 +6,7 @@ use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encode
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 
 impl<'a> WireDartTransferCstGeneratorEncoderTrait for GeneralListWireDartTransferCstGenerator<'a> {
-    fn api2wire_body(&self) -> Acc<Option<String>> {
+    fn encode_func_body(&self) -> Acc<Option<String>> {
         // NOTE the memory strategy is same as PrimitiveList, see comments there.
         let ident = self.ir.safe_ident();
         let inner = self.ir.inner.safe_ident();
