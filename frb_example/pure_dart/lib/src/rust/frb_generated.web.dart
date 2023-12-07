@@ -2273,53 +2273,57 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<dynamic> cst_encode_list_opt_String(List<String?> raw) {
-    return mapNonNull(raw, cst_encode_String);
+    return raw.map(cst_encode_opt_String).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_opt_box_autoadd_attribute_twin_normal(
       List<AttributeTwinNormal?> raw) {
-    return mapNonNull(raw, cst_encode_box_autoadd_attribute_twin_normal);
+    return raw.map(cst_encode_opt_box_autoadd_attribute_twin_normal).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_opt_box_autoadd_attribute_twin_rust_async(
       List<AttributeTwinRustAsync?> raw) {
-    return mapNonNull(raw, cst_encode_box_autoadd_attribute_twin_rust_async);
+    return raw
+        .map(cst_encode_opt_box_autoadd_attribute_twin_rust_async)
+        .toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_opt_box_autoadd_attribute_twin_sync(
       List<AttributeTwinSync?> raw) {
-    return mapNonNull(raw, cst_encode_box_autoadd_attribute_twin_sync);
+    return raw.map(cst_encode_opt_box_autoadd_attribute_twin_sync).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_opt_box_autoadd_i_32(List<int?> raw) {
-    return mapNonNull(raw, cst_encode_box_autoadd_i_32);
+    return raw.map(cst_encode_opt_box_autoadd_i_32).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_opt_box_autoadd_weekdays_twin_normal(
       List<WeekdaysTwinNormal?> raw) {
-    return mapNonNull(raw, cst_encode_box_autoadd_weekdays_twin_normal);
+    return raw.map(cst_encode_opt_box_autoadd_weekdays_twin_normal).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_opt_box_autoadd_weekdays_twin_rust_async(
       List<WeekdaysTwinRustAsync?> raw) {
-    return mapNonNull(raw, cst_encode_box_autoadd_weekdays_twin_rust_async);
+    return raw
+        .map(cst_encode_opt_box_autoadd_weekdays_twin_rust_async)
+        .toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_opt_box_autoadd_weekdays_twin_sync(
       List<WeekdaysTwinSync?> raw) {
-    return mapNonNull(raw, cst_encode_box_autoadd_weekdays_twin_sync);
+    return raw.map(cst_encode_opt_box_autoadd_weekdays_twin_sync).toList();
   }
 
   @protected
   List<dynamic> cst_encode_list_opt_list_prim_i_32(List<Int32List?> raw) {
-    return mapNonNull(raw, cst_encode_list_prim_i_32);
+    return raw.map(cst_encode_opt_list_prim_i_32).toList();
   }
 
   @protected
@@ -2641,6 +2645,28 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic>? cst_encode_opt_box_autoadd_attribute_twin_normal(
+      AttributeTwinNormal? raw) {
+    return raw == null
+        ? null
+        : cst_encode_box_autoadd_attribute_twin_normal(raw);
+  }
+
+  @protected
+  List<dynamic>? cst_encode_opt_box_autoadd_attribute_twin_rust_async(
+      AttributeTwinRustAsync? raw) {
+    return raw == null
+        ? null
+        : cst_encode_box_autoadd_attribute_twin_rust_async(raw);
+  }
+
+  @protected
+  List<dynamic>? cst_encode_opt_box_autoadd_attribute_twin_sync(
+      AttributeTwinSync? raw) {
+    return raw == null ? null : cst_encode_box_autoadd_attribute_twin_sync(raw);
+  }
+
+  @protected
   bool? cst_encode_opt_box_autoadd_bool(bool? raw) {
     return raw == null ? null : cst_encode_box_autoadd_bool(raw);
   }
@@ -2747,6 +2773,27 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int? cst_encode_opt_box_autoadd_u_8(int? raw) {
     return raw == null ? null : cst_encode_box_autoadd_u_8(raw);
+  }
+
+  @protected
+  int? cst_encode_opt_box_autoadd_weekdays_twin_normal(
+      WeekdaysTwinNormal? raw) {
+    return raw == null
+        ? null
+        : cst_encode_box_autoadd_weekdays_twin_normal(raw);
+  }
+
+  @protected
+  int? cst_encode_opt_box_autoadd_weekdays_twin_rust_async(
+      WeekdaysTwinRustAsync? raw) {
+    return raw == null
+        ? null
+        : cst_encode_box_autoadd_weekdays_twin_rust_async(raw);
+  }
+
+  @protected
+  int? cst_encode_opt_box_autoadd_weekdays_twin_sync(WeekdaysTwinSync? raw) {
+    return raw == null ? null : cst_encode_box_autoadd_weekdays_twin_sync(raw);
   }
 
   @protected

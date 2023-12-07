@@ -1906,9 +1906,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<String?> raw) {
     final ans = wire.cst_new_list_opt_String(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      final item = raw[i];
-      if (item == null) continue;
-      ans.ref.ptr[i] = cst_encode_String(item);
+      ans.ref.ptr[i] = cst_encode_opt_String(raw[i]);
     }
     return ans;
   }
@@ -1920,9 +1918,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     final ans =
         wire.cst_new_list_opt_box_autoadd_attribute_twin_normal(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      final item = raw[i];
-      if (item == null) continue;
-      ans.ref.ptr[i] = cst_encode_box_autoadd_attribute_twin_normal(item);
+      ans.ref.ptr[i] = cst_encode_opt_box_autoadd_attribute_twin_normal(raw[i]);
     }
     return ans;
   }
@@ -1934,9 +1930,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     final ans =
         wire.cst_new_list_opt_box_autoadd_attribute_twin_rust_async(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      final item = raw[i];
-      if (item == null) continue;
-      ans.ref.ptr[i] = cst_encode_box_autoadd_attribute_twin_rust_async(item);
+      ans.ref.ptr[i] =
+          cst_encode_opt_box_autoadd_attribute_twin_rust_async(raw[i]);
     }
     return ans;
   }
@@ -1948,9 +1943,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     final ans =
         wire.cst_new_list_opt_box_autoadd_attribute_twin_sync(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      final item = raw[i];
-      if (item == null) continue;
-      ans.ref.ptr[i] = cst_encode_box_autoadd_attribute_twin_sync(item);
+      ans.ref.ptr[i] = cst_encode_opt_box_autoadd_attribute_twin_sync(raw[i]);
     }
     return ans;
   }
@@ -1960,9 +1953,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_opt_box_autoadd_i_32(List<int?> raw) {
     final ans = wire.cst_new_list_opt_box_autoadd_i_32(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      final item = raw[i];
-      if (item == null) continue;
-      ans.ref.ptr[i] = cst_encode_box_autoadd_i_32(item);
+      ans.ref.ptr[i] = cst_encode_opt_box_autoadd_i_32(raw[i]);
     }
     return ans;
   }
@@ -1974,9 +1965,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     final ans =
         wire.cst_new_list_opt_box_autoadd_weekdays_twin_normal(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      final item = raw[i];
-      if (item == null) continue;
-      ans.ref.ptr[i] = cst_encode_box_autoadd_weekdays_twin_normal(item);
+      ans.ref.ptr[i] = cst_encode_opt_box_autoadd_weekdays_twin_normal(raw[i]);
     }
     return ans;
   }
@@ -1988,9 +1977,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     final ans =
         wire.cst_new_list_opt_box_autoadd_weekdays_twin_rust_async(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      final item = raw[i];
-      if (item == null) continue;
-      ans.ref.ptr[i] = cst_encode_box_autoadd_weekdays_twin_rust_async(item);
+      ans.ref.ptr[i] =
+          cst_encode_opt_box_autoadd_weekdays_twin_rust_async(raw[i]);
     }
     return ans;
   }
@@ -2002,9 +1990,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     final ans =
         wire.cst_new_list_opt_box_autoadd_weekdays_twin_sync(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      final item = raw[i];
-      if (item == null) continue;
-      ans.ref.ptr[i] = cst_encode_box_autoadd_weekdays_twin_sync(item);
+      ans.ref.ptr[i] = cst_encode_opt_box_autoadd_weekdays_twin_sync(raw[i]);
     }
     return ans;
   }
@@ -2014,9 +2000,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_list_opt_list_prim_i_32(List<Int32List?> raw) {
     final ans = wire.cst_new_list_opt_list_prim_i_32(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      final item = raw[i];
-      if (item == null) continue;
-      ans.ref.ptr[i] = cst_encode_list_prim_i_32(item);
+      ans.ref.ptr[i] = cst_encode_opt_list_prim_i_32(raw[i]);
     }
     return ans;
   }
@@ -2211,6 +2195,32 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  ffi.Pointer<wire_cst_attribute_twin_normal>
+      cst_encode_opt_box_autoadd_attribute_twin_normal(
+          AttributeTwinNormal? raw) {
+    return raw == null
+        ? ffi.nullptr
+        : cst_encode_box_autoadd_attribute_twin_normal(raw);
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_attribute_twin_rust_async>
+      cst_encode_opt_box_autoadd_attribute_twin_rust_async(
+          AttributeTwinRustAsync? raw) {
+    return raw == null
+        ? ffi.nullptr
+        : cst_encode_box_autoadd_attribute_twin_rust_async(raw);
+  }
+
+  @protected
+  ffi.Pointer<wire_cst_attribute_twin_sync>
+      cst_encode_opt_box_autoadd_attribute_twin_sync(AttributeTwinSync? raw) {
+    return raw == null
+        ? ffi.nullptr
+        : cst_encode_box_autoadd_attribute_twin_sync(raw);
+  }
+
+  @protected
   ffi.Pointer<ffi.Bool> cst_encode_opt_box_autoadd_bool(bool? raw) {
     return raw == null ? ffi.nullptr : cst_encode_box_autoadd_bool(raw);
   }
@@ -2325,6 +2335,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   ffi.Pointer<ffi.Uint8> cst_encode_opt_box_autoadd_u_8(int? raw) {
     return raw == null ? ffi.nullptr : cst_encode_box_autoadd_u_8(raw);
+  }
+
+  @protected
+  ffi.Pointer<ffi.Int32> cst_encode_opt_box_autoadd_weekdays_twin_normal(
+      WeekdaysTwinNormal? raw) {
+    return raw == null
+        ? ffi.nullptr
+        : cst_encode_box_autoadd_weekdays_twin_normal(raw);
+  }
+
+  @protected
+  ffi.Pointer<ffi.Int32> cst_encode_opt_box_autoadd_weekdays_twin_rust_async(
+      WeekdaysTwinRustAsync? raw) {
+    return raw == null
+        ? ffi.nullptr
+        : cst_encode_box_autoadd_weekdays_twin_rust_async(raw);
+  }
+
+  @protected
+  ffi.Pointer<ffi.Int32> cst_encode_opt_box_autoadd_weekdays_twin_sync(
+      WeekdaysTwinSync? raw) {
+    return raw == null
+        ? ffi.nullptr
+        : cst_encode_box_autoadd_weekdays_twin_sync(raw);
   }
 
   @protected

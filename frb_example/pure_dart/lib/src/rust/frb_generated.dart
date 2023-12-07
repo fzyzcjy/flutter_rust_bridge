@@ -20587,51 +20587,59 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   List<String?> _dco_decode_list_opt_String(dynamic raw) {
-    return mapNonNull(raw as List<dynamic>, _dco_decode_String);
+    return (raw as List<dynamic>).map(_dco_decode_opt_String).toList();
   }
 
   List<AttributeTwinNormal?>
       _dco_decode_list_opt_box_autoadd_attribute_twin_normal(dynamic raw) {
-    return mapNonNull(
-        raw as List<dynamic>, _dco_decode_box_autoadd_attribute_twin_normal);
+    return (raw as List<dynamic>)
+        .map(_dco_decode_opt_box_autoadd_attribute_twin_normal)
+        .toList();
   }
 
   List<AttributeTwinRustAsync?>
       _dco_decode_list_opt_box_autoadd_attribute_twin_rust_async(dynamic raw) {
-    return mapNonNull(raw as List<dynamic>,
-        _dco_decode_box_autoadd_attribute_twin_rust_async);
+    return (raw as List<dynamic>)
+        .map(_dco_decode_opt_box_autoadd_attribute_twin_rust_async)
+        .toList();
   }
 
   List<AttributeTwinSync?> _dco_decode_list_opt_box_autoadd_attribute_twin_sync(
       dynamic raw) {
-    return mapNonNull(
-        raw as List<dynamic>, _dco_decode_box_autoadd_attribute_twin_sync);
+    return (raw as List<dynamic>)
+        .map(_dco_decode_opt_box_autoadd_attribute_twin_sync)
+        .toList();
   }
 
   List<int?> _dco_decode_list_opt_box_autoadd_i_32(dynamic raw) {
-    return mapNonNull(raw as List<dynamic>, _dco_decode_box_autoadd_i_32);
+    return (raw as List<dynamic>)
+        .map(_dco_decode_opt_box_autoadd_i_32)
+        .toList();
   }
 
   List<WeekdaysTwinNormal?>
       _dco_decode_list_opt_box_autoadd_weekdays_twin_normal(dynamic raw) {
-    return mapNonNull(
-        raw as List<dynamic>, _dco_decode_box_autoadd_weekdays_twin_normal);
+    return (raw as List<dynamic>)
+        .map(_dco_decode_opt_box_autoadd_weekdays_twin_normal)
+        .toList();
   }
 
   List<WeekdaysTwinRustAsync?>
       _dco_decode_list_opt_box_autoadd_weekdays_twin_rust_async(dynamic raw) {
-    return mapNonNull(
-        raw as List<dynamic>, _dco_decode_box_autoadd_weekdays_twin_rust_async);
+    return (raw as List<dynamic>)
+        .map(_dco_decode_opt_box_autoadd_weekdays_twin_rust_async)
+        .toList();
   }
 
   List<WeekdaysTwinSync?> _dco_decode_list_opt_box_autoadd_weekdays_twin_sync(
       dynamic raw) {
-    return mapNonNull(
-        raw as List<dynamic>, _dco_decode_box_autoadd_weekdays_twin_sync);
+    return (raw as List<dynamic>)
+        .map(_dco_decode_opt_box_autoadd_weekdays_twin_sync)
+        .toList();
   }
 
   List<Int32List?> _dco_decode_list_opt_list_prim_i_32(dynamic raw) {
-    return mapNonNull(raw as List<dynamic>, _dco_decode_list_prim_i_32);
+    return (raw as List<dynamic>).map(_dco_decode_opt_list_prim_i_32).toList();
   }
 
   List<PointTwinNormal> _dco_decode_list_point_twin_normal(dynamic raw) {
@@ -21195,6 +21203,27 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   ApplicationEnv? _dco_decode_opt_box_autoadd_application_env(dynamic raw) {
     return raw == null ? null : _dco_decode_box_autoadd_application_env(raw);
+  }
+
+  AttributeTwinNormal? _dco_decode_opt_box_autoadd_attribute_twin_normal(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : _dco_decode_box_autoadd_attribute_twin_normal(raw);
+  }
+
+  AttributeTwinRustAsync? _dco_decode_opt_box_autoadd_attribute_twin_rust_async(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : _dco_decode_box_autoadd_attribute_twin_rust_async(raw);
+  }
+
+  AttributeTwinSync? _dco_decode_opt_box_autoadd_attribute_twin_sync(
+      dynamic raw) {
+    return raw == null
+        ? null
+        : _dco_decode_box_autoadd_attribute_twin_sync(raw);
   }
 
   bool? _dco_decode_opt_box_autoadd_bool(dynamic raw) {
