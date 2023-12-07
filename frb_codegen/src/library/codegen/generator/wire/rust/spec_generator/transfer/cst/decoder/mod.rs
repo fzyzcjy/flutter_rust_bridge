@@ -20,7 +20,6 @@ pub(crate) mod ty;
 #[derive(Serialize)]
 pub(crate) struct WireDartOutputSpecTransferCstDecoder {
     pub allocate_funcs: Acc<Vec<WireRustOutputCode>>,
-    pub related_funcs: Acc<Vec<WireRustOutputCode>>,
     pub impl_wire2api: Acc<Vec<WireRustOutputCode>>,
     pub wire2api_class: Acc<Vec<WireRustOutputCode>>,
     pub impl_new_with_nullptr: Acc<Vec<WireRustOutputCode>>,
@@ -36,13 +35,6 @@ pub(crate) fn generate(
             .iter()
             .map(|ty| {
                 WireRustTransferCstGenerator::new(ty.clone(), context).generate_allocate_funcs()
-            })
-            .collect(),
-        related_funcs: cache
-            .distinct_types
-            .iter()
-            .map(|ty| {
-                WireRustTransferCstGenerator::new(ty.clone(), context).generate_related_funcs()
             })
             .collect(),
         impl_wire2api: generate_impl_wire2api(&cache.distinct_input_types, context),

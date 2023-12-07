@@ -35,6 +35,7 @@ pub(crate) struct WireRustOutputSpecMisc {
     pub wrapper_structs: Acc<Vec<WireRustOutputCode>>,
     pub static_checks: Acc<Vec<WireRustOutputCode>>,
     pub extern_struct_names: Vec<String>,
+    pub related_funcs: Acc<Vec<WireRustOutputCode>>,
 }
 
 pub(crate) fn generate(
@@ -65,6 +66,11 @@ pub(crate) fn generate(
         )
         .into()]),
         extern_struct_names: generate_extern_struct_names(context, cache),
+        related_funcs: cache
+            .distinct_types
+            .iter()
+            .map(|ty| WireRustGenerator::new(ty.clone(), context).generate_related_funcs())
+            .collect(),
     })
 }
 
