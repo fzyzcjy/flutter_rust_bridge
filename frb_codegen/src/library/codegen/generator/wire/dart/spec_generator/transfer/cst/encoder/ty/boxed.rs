@@ -4,13 +4,11 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::primitive::dart_native_type_of_primitive;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartGeneratorDart2RustTrait;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::ty::WireDartTransferCstGeneratorEncoderTrait;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGenerator;
 use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
 use crate::codegen::ir::ty::IrType::StructRef;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
-use crate::library::codegen::generator::wire::rust::spec_generator::transfer::cst::encoder::ty::WireRustGeneratorDart2RustTrait;
 
 impl<'a> WireDartTransferCstGeneratorEncoderTrait for BoxedWireDartTransferCstGenerator<'a> {
     fn api2wire_body(&self) -> Acc<Option<String>> {

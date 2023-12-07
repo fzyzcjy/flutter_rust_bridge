@@ -3,7 +3,6 @@ use crate::codegen::generator::wire::dart::spec_generator::base::{
     WireDartGenerator, WireDartGeneratorContext,
 };
 use crate::codegen::ir::pack::IrPackComputedCache;
-use crate::library::codegen::generator::wire::dart::spec_generator::dart2rust::ty::WireDartGeneratorDart2RustTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use serde::Serialize;
 use std::collections::HashMap;
