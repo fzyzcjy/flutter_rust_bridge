@@ -12,7 +12,7 @@ pub(crate) mod base;
 mod dump;
 pub(crate) mod misc;
 pub(crate) mod output_code;
-mod transfer;
+pub(crate) mod transfer;
 pub(super) mod wire_class;
 
 #[derive(Clone, Serialize)]

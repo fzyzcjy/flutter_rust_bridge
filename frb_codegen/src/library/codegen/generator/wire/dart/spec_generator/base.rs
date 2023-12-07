@@ -26,6 +26,7 @@ pub(crate) struct WireDartGeneratorContext<'a> {
     pub(crate) api_dart_config: &'a GeneratorApiDartInternalConfig,
 }
 
+// TODO duplicated with `WireDartTransferCstGeneratorContext`
 impl WireDartGeneratorContext<'_> {
     pub(crate) fn as_wire_rust_context(&self) -> WireRustGeneratorContext {
         WireRustGeneratorContext {
