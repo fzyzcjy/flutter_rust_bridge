@@ -12,6 +12,7 @@ pub(crate) mod ffi_binding;
 pub mod for_generated;
 pub(crate) mod rust_async;
 pub(crate) mod rust_opaque;
+pub(crate) mod transfer;
 pub(crate) mod web_transfer;
 
 pub use crate::dart_fn::DartFnFuture;
