@@ -18,6 +18,8 @@ mod rust_opaque;
 mod structure;
 mod unencodable;
 
+use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
@@ -32,5 +34,9 @@ pub(crate) trait WireRustGeneratorMiscTrait {
 
     fn generate_imports(&self) -> Option<Vec<String>> {
         None
+    }
+
+    fn generate_related_funcs(&self) -> Acc<WireRustOutputCode> {
+        Default::default()
     }
 }

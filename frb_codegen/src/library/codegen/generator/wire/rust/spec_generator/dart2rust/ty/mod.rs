@@ -25,9 +25,4 @@ use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRust
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
-pub(crate) trait WireRustGeneratorDart2RustTrait {
-    // TODO rename
-    fn generate_related_funcs(&self) -> Acc<WireRustOutputCode> {
-        Default::default()
-    }
-}
+pub(crate) trait WireRustGeneratorDart2RustTrait {}
