@@ -4,6 +4,7 @@ pub(crate) mod config;
 pub(crate) mod dumper;
 mod generator;
 pub(crate) mod ir;
+pub(crate) mod misc;
 pub(crate) mod parser;
 mod polisher;
 mod preparer;
