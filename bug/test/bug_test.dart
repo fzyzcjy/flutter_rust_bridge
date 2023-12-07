@@ -1,7 +1,6 @@
 import 'dart:ffi' as ffi;
 
 Future<void> main() async {
-  // TODO build release?
   final lib = ffi.DynamicLibrary.open(
     // 'rust/target/debug/libfrb_example_dart_minimal.dylib',
     '/Volumes/MyExternal/ExternalRefCode/flutter_rust_bridge/bug/rust/target/debug/libfrb_example_dart_minimal.dylib',
@@ -9,8 +8,8 @@ Future<void> main() async {
   final binding = MultiPackageCBinding(lib);
   binding.init_frb_dart_api_dl(ffi.NativeApi.initializeApiDLData);
 
-  String f() => 'Test_String';
-  final persistentHandle = binding.naive_NewPersistentHandle(f);
+  int x = 42;
+  final persistentHandle = binding.naive_NewPersistentHandle(x);
   binding.naive_HandleFromPersistent(persistentHandle);
 }
 
