@@ -26,12 +26,12 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerato
                     extra = if exist_in_real_api { "" } else { "*" }
                 )),
                 (Io | Wasm, ir) if ir.is_array() => Some(format!(
-                    "CstDecoder::<{}>::cst_decode(self).into()",
+                    "CstDecodable::<{}>::cst_decode(self).into()",
                     box_inner.rust_api_type()
                 )),
                 (Io, _) => Some(format!(
                     "let wrap = unsafe {{ flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }};
-                CstDecoder::<{}>::cst_decode(*wrap).into()",
+                CstDecodable::<{}>::cst_decode(*wrap).into()",
                     box_inner.rust_api_type()
                 )),
                 _ => None,

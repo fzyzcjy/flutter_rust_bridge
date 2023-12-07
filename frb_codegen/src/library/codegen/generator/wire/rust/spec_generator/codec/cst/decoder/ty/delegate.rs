@@ -109,7 +109,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             IrTypeDelegate::TimeList(_) => {
                 Acc::distribute(
                     Some(
-                        "let vec: Vec<i64> = self.cst_decode(); vec.into_iter().map(CstDecoder::cst_decode).collect()".into()
+                        "let vec: Vec<i64> = self.cst_decode(); vec.into_iter().map(CstDecodable::cst_decode).collect()".into()
                     )
                 )
             }
@@ -140,9 +140,9 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGener
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 "flutter_rust_bridge::ZeroCopyBuffer(self.cst_decode())".into()
             }
-            IrTypeDelegate::Time(_) => "CstDecoder::<i64>::cst_decode(self).cst_decode()".into(),
+            IrTypeDelegate::Time(_) => "CstDecodable::<i64>::cst_decode(self).cst_decode()".into(),
             IrTypeDelegate::TimeList(_) =>
-                "self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::BigInt64Array>().to_vec().into_iter().map(CstDecoder::cst_decode).collect()".into(),
+                "self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::BigInt64Array>().to_vec().into_iter().map(CstDecodable::cst_decode).collect()".into(),
             IrTypeDelegate::Uuid | IrTypeDelegate::Uuids => {
                 "self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint8Array>().to_vec().into_boxed_slice().cst_decode()"
                     .into()

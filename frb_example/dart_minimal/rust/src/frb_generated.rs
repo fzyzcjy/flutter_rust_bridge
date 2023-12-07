@@ -41,8 +41,8 @@ flutter_rust_bridge::for_generated::lazy_static! {
 
 fn wire_minimal_adder_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: impl CstDecoder<i32> + core::panic::UnwindSafe,
-    b: impl CstDecoder<i32> + core::panic::UnwindSafe,
+    a: impl CstDecodable<i32> + core::panic::UnwindSafe,
+    b: impl CstDecodable<i32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER
         .wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _, _, i32, _>(
@@ -61,19 +61,19 @@ fn wire_minimal_adder_impl(
 
 // Section: impl_decode
 
-pub trait CstDecoder<T> {
+pub trait CstDecodable<T> {
     fn cst_decode(self) -> T;
 }
 
-impl<T, S> CstDecoder<Option<T>> for *mut S
+impl<T, S> CstDecodable<Option<T>> for *mut S
 where
-    *mut S: CstDecoder<T>,
+    *mut S: CstDecodable<T>,
 {
     fn cst_decode(self) -> Option<T> {
         (!self.is_null()).then(|| self.cst_decode())
     }
 }
-impl CstDecoder<i32> for i32 {
+impl CstDecodable<i32> for i32 {
     fn cst_decode(self) -> i32 {
         self
     }
