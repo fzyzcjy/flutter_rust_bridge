@@ -1,4 +1,4 @@
-use crate::codegen::generator::misc::codec::CodecMode;
+use crate::codegen::generator::misc::codec::{BaseCodecEntrypointTrait, CodecMode};
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::entrypoint::CstWireDartCodecEntrypoint;
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::WireDartCodecDcoGeneratorContext;
@@ -12,19 +12,9 @@ use enum_dispatch::enum_dispatch;
 codegen_codec_structs!(WireDartCodecEntrypoint);
 
 #[enum_dispatch]
-pub(crate) trait WireDartCodecEntrypointTrait {
-    fn generate_encode(
-        &self,
-        context: WireDartGeneratorContext,
-        types: &[IrType],
-    ) -> Option<Box<dyn WireDartCodecOutputSpec>>;
-
-    fn generate_decode(
-        &self,
-        context: WireDartGeneratorContext,
-        types: &[IrType],
-    ) -> Option<Box<dyn WireDartCodecOutputSpec>>;
-
+pub(crate) trait WireDartCodecEntrypointTrait:
+    BaseCodecEntrypointTrait<WireDartGeneratorContext, dyn WireDartCodecOutputSpec>
+{
     fn generate_dart2rust_func_stmt_prepare_args(&self, func: &IrFunc) -> Vec<String>;
 
     fn generate_dart2rust_func_wire_param_list(
