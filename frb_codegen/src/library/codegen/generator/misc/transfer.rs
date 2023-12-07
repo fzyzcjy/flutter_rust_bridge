@@ -5,6 +5,12 @@ pub(crate) enum TransferMode {
     Sse,
 }
 
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub(crate) struct TransferModePack {
+    dart2rust: TransferMode,
+    rust2dart: TransferMode,
+}
+
 #[doc(hidden)]
 #[macro_export]
 macro_rules! codegen_transfer_structs {
