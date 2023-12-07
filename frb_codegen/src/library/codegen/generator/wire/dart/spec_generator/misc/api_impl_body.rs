@@ -5,6 +5,7 @@ use crate::codegen::generator::wire::dart::spec_generator::transfer::base::WireD
 use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::generator::wire::rust::spec_generator::misc::wire_func::wire_func_name;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode};
+use crate::codegen::misc::transfer::TransferMode;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
@@ -13,7 +14,8 @@ pub(crate) fn generate_api_impl_normal_function(
     func: &IrFunc,
     context: WireDartGeneratorContext,
 ) -> anyhow::Result<WireDartOutputCode> {
-    let transfer: WireDartTransferEntrypoint = TODO;
+    let transfer_mode = TransferMode::Cst; // TODO
+    let transfer = WireDartTransferEntrypoint::new(transfer_mode);
 
     let api_dart_func =
         api_dart::spec_generator::function::generate(func, context.as_api_dart_context())?;
