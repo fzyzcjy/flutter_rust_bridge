@@ -10,6 +10,7 @@ use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::
 use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
 use crate::codegen::ir::ty::IrType::StructRef;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
+use crate::library::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
 
 impl<'a> WireDartTransferCstGeneratorEncoderTrait for BoxedWireDartTransferCstGenerator<'a> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
