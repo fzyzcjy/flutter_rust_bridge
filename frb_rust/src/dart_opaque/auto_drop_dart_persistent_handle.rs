@@ -8,12 +8,22 @@ pub struct AutoDropDartPersistentHandle(Option<Dart_PersistentHandle>);
 
 impl AutoDropDartPersistentHandle {
     pub fn new_from_non_persistent_handle(non_persistent_handle: Dart_Handle) -> Self {
+        println!(
+            "hi new_from_non_persistent_handle call Dart_NewPersistentHandle_DL non_persistent_handle={non_persistent_handle:?} thread={:?}",
+            std::thread::current().id()
+        );
         unsafe {
             let persistent_handle = Dart_NewPersistentHandle_DL
                 .expect("dart_api_dl has not been initialized")(
                 non_persistent_handle
             );
-            Self::from_raw(persistent_handle)
+            println!("hi new_from_non_persistent_handle persistent_handle={persistent_handle:?}");
+            let ans = Self::from_raw(persistent_handle);
+
+            println!("hi call extra create_dart_handle");
+            ans.create_dart_handle();
+
+            ans
         }
     }
 
@@ -25,10 +35,17 @@ impl AutoDropDartPersistentHandle {
     /// https://github.com/dart-lang/sdk/blob/af20a8ab0394408ee48483c5c06c75281e7ba52c/runtime/include/dart_api.h#L424C8-L424C8
     /// "Allocates a handle in the current scope from a persistent handle."
     pub fn create_dart_handle(&self) -> Dart_Handle {
+        println!(
+            "hi call Dart_HandleFromPersistent_DL START self={self:?} thread={:?}",
+            std::thread::current().id()
+        );
         unsafe {
-            Dart_HandleFromPersistent_DL.expect("dart_api_dl has not been initialized")(
+            let ans = Dart_HandleFromPersistent_DL.expect("dart_api_dl has not been initialized")(
                 self.0.unwrap(),
-            )
+            );
+            println!("hi call Dart_HandleFromPersistent_DL END ans={ans:?}",);
+
+            ans
         }
     }
 }
@@ -37,6 +54,7 @@ impl Drop for AutoDropDartPersistentHandle {
     fn drop(&mut self) {
         if let Some(inner) = self.0 {
             unsafe {
+                println!("hi call Dart_DeletePersistentHandle_DL");
                 Dart_DeletePersistentHandle_DL.expect("dart_api_dl has not been initialized")(inner)
             }
         }
