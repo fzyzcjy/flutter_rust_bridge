@@ -24,8 +24,9 @@ class BaseHandler {
     final WireSyncReturn syncReturn;
     try {
       syncReturn = task.callFfi();
-    } catch (err, st) {
-      throw PanicException('EXECUTE_SYNC_ABORT $err $st');
+    } catch (e, s) {
+      if (e is FrbException) rethrow;
+      throw PanicException('EXECUTE_SYNC_ABORT $e $s');
     }
     try {
       final syncReturnAsDartObject = wireSyncReturnIntoDart(syncReturn);
