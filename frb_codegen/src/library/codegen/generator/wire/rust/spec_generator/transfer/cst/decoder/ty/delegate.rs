@@ -8,7 +8,6 @@ use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decode
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::general_list::{
     general_list_impl_wire2api_body, generate_list_generate_allocate_func,
 };
-use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustGeneratorDart2RustTrait;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;

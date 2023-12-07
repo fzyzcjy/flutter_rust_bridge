@@ -3,7 +3,6 @@ use crate::codegen::generator::misc::is_js_value;
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::*;
-use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustGeneratorDart2RustTrait;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
 
 impl<'a> WireRustTransferCstGeneratorDecoderTrait for OptionalWireRustTransferCstGenerator<'a> {

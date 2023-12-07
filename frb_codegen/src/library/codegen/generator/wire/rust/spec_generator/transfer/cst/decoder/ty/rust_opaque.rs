@@ -5,7 +5,6 @@ use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decode
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::misc::{
     generate_class_from_fields, rust_wire_type_add_prefix_or_js_value, JS_VALUE,
 };
-use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustGeneratorDart2RustTrait;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };

@@ -9,7 +9,6 @@ use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::misc::{
     generate_class_from_fields, rust_wire_type_add_prefix_or_js_value,
 };
-use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustGeneratorDart2RustTrait;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::general_list::IrTypeGeneralList;
