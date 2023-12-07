@@ -16,8 +16,7 @@ class BaseHandler {
     final completer = Completer<dynamic>();
     final SendPort sendPort = singleCompletePort(completer);
     task.callFfi(sendPort.nativePort);
-    return completer.future.then((dynamic raw) => _transformRust2DartMessage(
-        raw, task.parseSuccessData, task.parseErrorData));
+    return completer.future.then(task.codec.decode);
   }
 
   /// Similar to [executeNormal], except that this will return synchronously
@@ -34,8 +33,7 @@ class BaseHandler {
     }
     try {
       final syncReturnAsDartObject = wireSyncReturnIntoDart(syncReturn);
-      return _transformRust2DartMessage(
-          syncReturnAsDartObject, task.parseSuccessData, task.parseErrorData);
+      return task.codec.decode(syncReturnAsDartObject);
     } finally {
       task.apiImpl.generalizedFrbRustBinding.freeWireSyncReturn(syncReturn);
     }
@@ -51,8 +49,7 @@ class BaseHandler {
 
     await for (final raw in receivePort) {
       try {
-        yield _transformRust2DartMessage(
-            raw, task.parseSuccessData, task.parseErrorData);
+        yield task.codec.decode(raw);
       } on CloseStreamException {
         receivePort.close();
         break;
