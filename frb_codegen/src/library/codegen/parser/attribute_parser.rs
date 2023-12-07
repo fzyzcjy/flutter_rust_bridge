@@ -1,3 +1,4 @@
+use crate::codegen::generator::misc::transfer::{TransferMode, TransferModePack};
 use crate::codegen::ir::annotation::IrDartAnnotation;
 use crate::codegen::ir::default::IrDefaultValue;
 use crate::codegen::ir::import::IrDartImport;
@@ -61,6 +62,20 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::Opaque)
     }
 
+    pub(crate) fn transfer_mode_pack(&self) -> TransferModePack {
+        if self.any_eq(&FrbAttribute::Serialize) {
+            TransferModePack {
+                dart2rust: TransferMode::Sse,
+                rust2dart: TransferMode::Sse,
+            }
+        } else {
+            TransferModePack {
+                dart2rust: TransferMode::Cst,
+                rust2dart: TransferMode::Dco,
+            }
+        }
+    }
+
     fn any_eq(&self, target: &FrbAttribute) -> bool {
         self.0.iter().any(|item| item == target)
     }
@@ -91,6 +106,7 @@ mod frb_keyword {
     syn::custom_keyword!(non_final);
     syn::custom_keyword!(sync);
     syn::custom_keyword!(opaque);
+    syn::custom_keyword!(serialize);
     syn::custom_keyword!(dart_metadata);
     syn::custom_keyword!(import);
 }
@@ -101,6 +117,7 @@ enum FrbAttribute {
     NonFinal,
     Sync,
     Opaque,
+    Serialize,
     Metadata(NamedOption<frb_keyword::dart_metadata, FrbAttributeDartMetadata>),
     Default(FrbAttributeDefaultValue),
 }
@@ -125,6 +142,10 @@ impl Parse for OptionFrbAttribute {
             input
                 .parse::<frb_keyword::opaque>()
                 .map(|_| FrbAttribute::Opaque)?
+        } else if lookahead.peek(frb_keyword::serialize) {
+            input
+                .parse::<frb_keyword::serialize>()
+                .map(|_| FrbAttribute::Serialize)?
         } else if lookahead.peek(frb_keyword::dart_metadata) {
             input.parse().map(FrbAttribute::Metadata)?
         } else if lookahead.peek(Token![default]) {

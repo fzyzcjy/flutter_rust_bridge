@@ -7,8 +7,8 @@ pub(crate) enum TransferMode {
 
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub(crate) struct TransferModePack {
-    dart2rust: TransferMode,
-    rust2dart: TransferMode,
+    pub dart2rust: TransferMode,
+    pub rust2dart: TransferMode,
 }
 
 #[doc(hidden)]
