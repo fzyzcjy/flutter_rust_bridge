@@ -27,15 +27,15 @@ use std::borrow::Cow;
 
 #[enum_dispatch]
 pub(crate) trait WireRustTransferCstGeneratorDecoderTrait {
-    fn generate_wire2api_class(&self) -> Option<String> {
+    fn generate_decoder_class(&self) -> Option<String> {
         None
     }
 
-    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
+    fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         Default::default()
     }
 
-    fn generate_impl_wire2api_jsvalue_body(&self) -> Option<Cow<str>> {
+    fn generate_impl_decode_jsvalue_body(&self) -> Option<Cow<str>> {
         None
     }
 

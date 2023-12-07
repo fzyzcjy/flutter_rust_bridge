@@ -9,24 +9,24 @@ use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
-pub(crate) fn generate_impl_wire2api(
+pub(crate) fn generate_impl_decode(
     types: &[IrType],
     context: WireRustTransferCstGeneratorContext,
 ) -> Acc<Vec<WireRustOutputCode>> {
     let mut lines = Acc::<Vec<WireRustOutputCode>>::default();
-    lines.push_acc(generate_impl_wire2api_misc());
+    lines.push_acc(generate_impl_decode_misc());
     lines += types
         .iter()
-        .map(|ty| generate_impl_wire2api_for_type(ty, context))
+        .map(|ty| generate_impl_decode_for_type(ty, context))
         .collect();
     lines += types
         .iter()
-        .map(|ty| generate_impl_wire2api_jsvalue_for_type(ty, context))
+        .map(|ty| generate_impl_decode_jsvalue_for_type(ty, context))
         .collect();
     lines
 }
 
-fn generate_impl_wire2api_misc() -> Acc<WireRustOutputCode> {
+fn generate_impl_decode_misc() -> Acc<WireRustOutputCode> {
     Acc {
         common: r#"
             pub trait Wire2Api<T> {
@@ -55,12 +55,12 @@ fn generate_impl_wire2api_misc() -> Acc<WireRustOutputCode> {
     }
 }
 
-fn generate_impl_wire2api_for_type(
+fn generate_impl_decode_for_type(
     ty: &IrType,
     context: WireRustTransferCstGeneratorContext,
 ) -> Acc<WireRustOutputCode> {
     let generator = WireRustTransferCstGenerator::new(ty.clone(), context);
-    let raw: Acc<Option<String>> = generator.generate_impl_wire2api_body();
+    let raw: Acc<Option<String>> = generator.generate_impl_decode_body();
     raw.map(|body, target| {
         body.map(|body| {
             // When target==Common, it means things like `rust_wire_type` should be the same
@@ -81,13 +81,13 @@ fn generate_impl_wire2api_for_type(
     })
 }
 
-fn generate_impl_wire2api_jsvalue_for_type(
+fn generate_impl_decode_jsvalue_for_type(
     ty: &IrType,
     context: WireRustTransferCstGeneratorContext,
 ) -> Acc<WireRustOutputCode> {
     let generator = WireRustTransferCstGenerator::new(ty.clone(), context);
     generator
-        .generate_impl_wire2api_jsvalue_body()
+        .generate_impl_decode_jsvalue_body()
         .map(|body| Acc {
             wasm: generate_impl_wire2api_code_block(
                 &ty.rust_api_type(),

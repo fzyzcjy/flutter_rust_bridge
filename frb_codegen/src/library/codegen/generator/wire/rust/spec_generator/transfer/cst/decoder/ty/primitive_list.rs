@@ -17,7 +17,7 @@ use crate::codegen::ir::ty::IrTypeTrait;
 impl<'a> WireRustTransferCstGeneratorDecoderTrait
     for PrimitiveListWireRustTransferCstGenerator<'a>
 {
-    fn generate_wire2api_class(&self) -> Option<String> {
+    fn generate_decoder_class(&self) -> Option<String> {
         Some(generate_class_from_fields(
             self.ir.clone(),
             self.context,
@@ -32,7 +32,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait
         ))
     }
 
-    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
+    fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         Acc {
             wasm: Some("self.into_vec()".into()),
             io: Some(
@@ -46,7 +46,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait
         }
     }
 
-    fn generate_impl_wire2api_jsvalue_body(&self) -> Option<std::borrow::Cow<str>> {
+    fn generate_impl_decode_jsvalue_body(&self) -> Option<std::borrow::Cow<str>> {
         match self.ir.primitive {
             IrTypePrimitive::Bool | IrTypePrimitive::Unit => Some("todo!()".into()),
             IrTypePrimitive::I64 | IrTypePrimitive::U64 => Some(

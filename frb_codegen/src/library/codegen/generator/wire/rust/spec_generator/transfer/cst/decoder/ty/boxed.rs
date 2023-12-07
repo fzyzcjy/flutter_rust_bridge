@@ -16,7 +16,7 @@ use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
 
 impl<'a> WireRustTransferCstGeneratorDecoderTrait for BoxedWireRustTransferCstGenerator<'a> {
-    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
+    fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         let box_inner = self.ir.inner.as_ref();
         let exist_in_real_api = self.ir.exist_in_real_api;
         Acc::new(|target| {
@@ -39,7 +39,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for BoxedWireRustTransferCstGe
         })
     }
 
-    fn generate_impl_wire2api_jsvalue_body(&self) -> Option<std::borrow::Cow<str>> {
+    fn generate_impl_decode_jsvalue_body(&self) -> Option<std::borrow::Cow<str>> {
         (self.ir.exist_in_real_api).then(|| match &*self.ir.inner {
             IrType::Delegate(IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum {
                                                                repr,

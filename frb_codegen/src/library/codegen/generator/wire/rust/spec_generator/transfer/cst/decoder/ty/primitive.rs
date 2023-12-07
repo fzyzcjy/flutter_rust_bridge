@@ -8,14 +8,14 @@ use crate::codegen::ir::ty::IrTypeTrait;
 use IrTypePrimitive::Unit;
 
 impl<'a> WireRustTransferCstGeneratorDecoderTrait for PrimitiveWireRustTransferCstGenerator<'a> {
-    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
+    fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         match self.ir {
             Unit => Acc::new(|_| None),
             _ => "self".into(),
         }
     }
 
-    fn generate_impl_wire2api_jsvalue_body(&self) -> Option<std::borrow::Cow<str>> {
+    fn generate_impl_decode_jsvalue_body(&self) -> Option<std::borrow::Cow<str>> {
         use IrTypePrimitive::*;
         Some(match &self.ir {
             Unit => return None,

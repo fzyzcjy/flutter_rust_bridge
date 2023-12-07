@@ -19,7 +19,7 @@ use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireRustTransferCstGeneratorDecoderTrait for DelegateWireRustTransferCstGenerator<'a> {
-    fn generate_wire2api_class(&self) -> Option<String> {
+    fn generate_decoder_class(&self) -> Option<String> {
         match &self.ir {
             ty @ IrTypeDelegate::StringList => Some(generate_class_from_fields(
                 self.ir.clone(),
@@ -37,7 +37,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for DelegateWireRustTransferCs
         }
     }
 
-    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
+    fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         match &self.ir {
             IrTypeDelegate::Array(array) => {
                 let acc =
@@ -127,7 +127,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for DelegateWireRustTransferCs
         }
     }
 
-    fn generate_impl_wire2api_jsvalue_body(&self) -> Option<std::borrow::Cow<str>> {
+    fn generate_impl_decode_jsvalue_body(&self) -> Option<std::borrow::Cow<str>> {
         Some(match &self.ir {
             IrTypeDelegate::String => {
                 "self.as_string().expect(\"non-UTF-8 string, or not a string\")".into()

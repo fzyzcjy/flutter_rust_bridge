@@ -12,7 +12,7 @@ use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use itertools::Itertools;
 
 impl<'a> WireRustTransferCstGeneratorDecoderTrait for StructRefWireRustTransferCstGenerator<'a> {
-    fn generate_wire2api_class(&self) -> Option<String> {
+    fn generate_decoder_class(&self) -> Option<String> {
         let s = self.ir.get(self.context.ir_pack);
         Some(generate_class_from_fields(
             self.ir.clone(),
@@ -33,7 +33,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for StructRefWireRustTransferC
         ))
     }
 
-    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
+    fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         let api_struct = self.ir.get(self.context.ir_pack);
         let fields: Acc<Vec<_>> = api_struct
             .fields

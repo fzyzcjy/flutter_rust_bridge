@@ -6,7 +6,7 @@ use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
 
 impl<'a> WireRustTransferCstGeneratorDecoderTrait for OptionalWireRustTransferCstGenerator<'a> {
-    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
+    fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         Acc {
             wasm: (!is_js_value(&self.ir.inner)
                 && !self.ir.is_primitive()

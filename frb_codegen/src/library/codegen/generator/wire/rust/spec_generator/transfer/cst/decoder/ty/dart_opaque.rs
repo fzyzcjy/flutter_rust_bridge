@@ -16,7 +16,7 @@ use crate::codegen::ir::ty::IrTypeTrait;
 use crate::misc::consts::HANDLER_NAME;
 
 impl<'a> WireRustTransferCstGeneratorDecoderTrait for DartOpaqueWireRustTransferCstGenerator<'a> {
-    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
+    fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         Acc::new(|target| {
             match target {
                 TargetOrCommon::Io => Some(

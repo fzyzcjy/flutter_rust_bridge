@@ -16,7 +16,7 @@ use crate::codegen::ir::ty::IrType::{Delegate, Optional};
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 
 impl<'a> WireRustTransferCstGeneratorDecoderTrait for GeneralListWireRustTransferCstGenerator<'a> {
-    fn generate_wire2api_class(&self) -> Option<String> {
+    fn generate_decoder_class(&self) -> Option<String> {
         Some(generate_class_from_fields(
             self.ir.clone(),
             self.context,
@@ -32,7 +32,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for GeneralListWireRustTransfe
         ))
     }
 
-    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
+    fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         general_list_impl_wire2api_body()
     }
 

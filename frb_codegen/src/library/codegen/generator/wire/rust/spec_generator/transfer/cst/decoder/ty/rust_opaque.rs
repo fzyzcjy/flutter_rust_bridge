@@ -16,14 +16,14 @@ use itertools::Itertools;
 use std::borrow::Cow;
 
 impl<'a> WireRustTransferCstGeneratorDecoderTrait for RustOpaqueWireRustTransferCstGenerator<'a> {
-    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
+    fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         Acc {
             io: Some(generalized_rust_opaque_generate_impl_wire2api_body().into()),
             ..Default::default()
         }
     }
 
-    fn generate_impl_wire2api_jsvalue_body(&self) -> Option<Cow<str>> {
+    fn generate_impl_decode_jsvalue_body(&self) -> Option<Cow<str>> {
         Some(generalized_rust_opaque_generate_impl_wire2api_body().into())
     }
 

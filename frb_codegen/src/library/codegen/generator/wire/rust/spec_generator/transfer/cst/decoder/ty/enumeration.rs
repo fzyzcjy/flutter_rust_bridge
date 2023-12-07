@@ -13,7 +13,7 @@ use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decode
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::misc::rust_wire_type_add_prefix_or_js_value;
 
 impl<'a> WireRustTransferCstGeneratorDecoderTrait for EnumRefWireRustTransferCstGenerator<'a> {
-    fn generate_wire2api_class(&self) -> Option<String> {
+    fn generate_decoder_class(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_pack);
         if src.mode == IrEnumMode::Simple {
             return None;
@@ -53,7 +53,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for EnumRefWireRustTransferCst
         ))
     }
 
-    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
+    fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         let enu = self.ir.get(self.context.ir_pack);
         Acc::new(|target| {
             if matches!(target, TargetOrCommon::Common) {

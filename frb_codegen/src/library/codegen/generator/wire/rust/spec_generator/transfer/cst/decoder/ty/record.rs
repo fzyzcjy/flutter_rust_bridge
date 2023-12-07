@@ -7,11 +7,11 @@ use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decode
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
 
 impl<'a> WireRustTransferCstGeneratorDecoderTrait for RecordWireRustTransferCstGenerator<'a> {
-    fn generate_wire2api_class(&self) -> Option<String> {
-        self.as_struct_generator().generate_wire2api_class()
+    fn generate_decoder_class(&self) -> Option<String> {
+        self.as_struct_generator().generate_decoder_class()
     }
 
-    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
+    fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         let ir = self.ir.inner.get(self.context.ir_pack);
         let len = ir.fields.len();
         let values: Acc<Vec<_>> = ir

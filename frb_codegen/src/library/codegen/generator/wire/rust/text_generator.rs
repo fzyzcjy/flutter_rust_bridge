@@ -57,8 +57,8 @@ fn generate_merged_code(spec: &WireRustOutputSpec) -> Acc<WireRustOutputCode> {
     add("static_checks", &spec.misc.static_checks);
     add("related_funcs", &spec.misc.related_funcs);
     add("allocate_funcs", &spec.dart2rust.allocate_funcs);
-    add("impl_wire2api", &spec.dart2rust.impl_wire2api);
-    add("wire2api_class", &spec.dart2rust.wire2api_class);
+    add("impl_wire2api", &spec.dart2rust.impl_decode);
+    add("decoderre2api_class", &spec.dart2rust.decoder_class);
     add(
         "impl_new_with_nullptr",
         &spec.dart2rust.impl_new_with_nullptr,
