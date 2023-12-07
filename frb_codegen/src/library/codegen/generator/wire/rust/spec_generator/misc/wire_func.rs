@@ -17,6 +17,7 @@ use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerI
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::ownership::IrTypeOwnershipMode;
 use crate::codegen::ir::ty::IrType;
+use crate::library::codegen::generator::wire::rust::spec_generator::transfer::base::WireRustTransferEntrypointTrait;
 use crate::library::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
 use crate::library::codegen::generator::wire::rust::spec_generator::transfer::dco::encoder::ty::WireRustTransferDcoGeneratorEncoderTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
@@ -36,7 +37,7 @@ pub(crate) fn generate_wire_func(
     let params = transfer.generate_func_params(func, context);
     let inner_func_args = generate_inner_func_args(func, ir_pack, context);
     let wrap_info_obj = generate_wrap_info_obj(func);
-    let code_decode = transfer.generate_func_code_decode(func, context);
+    let code_decode = transfer.generate_func_call_decode(func, context);
     let code_inner_decode = generate_code_inner_decode(func);
     let code_call_inner_func_result = generate_code_call_inner_func_result(func, inner_func_args);
     let handler_func_name = generate_handler_func_name(func, ir_pack, context);

@@ -6,6 +6,8 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFu
 use crate::codegen::generator::wire::rust::spec_generator::transfer::base::WireRustTransferEntrypointTrait;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::WireRustTransferCstGenerator;
 use crate::codegen::ir::func::IrFunc;
+use crate::library::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
+use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
 pub(crate) struct CstWireRustTransferEntrypoint {}
