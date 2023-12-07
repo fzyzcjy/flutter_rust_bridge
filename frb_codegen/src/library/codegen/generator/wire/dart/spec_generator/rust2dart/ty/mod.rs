@@ -21,6 +21,4 @@ mod unencodable;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
-pub(crate) trait WireDartGeneratorRust2DartTrait {
-    fn generate_impl_wire2api_body(&self) -> String;
-}
+pub(crate) trait WireDartGeneratorRust2DartTrait {}
