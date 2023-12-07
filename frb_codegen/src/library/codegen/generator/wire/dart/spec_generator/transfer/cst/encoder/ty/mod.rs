@@ -22,4 +22,12 @@ use crate::library::codegen::ir::ty::IrTypeTrait;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
-pub(crate) trait WireDartTransferCstGeneratorEncoderTrait {}
+pub(crate) trait WireDartTransferCstGeneratorEncoderTrait {
+    fn api2wire_body(&self) -> Acc<Option<String>>;
+
+    fn api_fill_to_wire_body(&self) -> Option<String> {
+        None
+    }
+
+    fn dart_wire_type(&self, target: Target) -> String;
+}

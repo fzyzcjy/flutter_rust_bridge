@@ -22,12 +22,4 @@ use crate::codegen::generator::wire::dart::spec_generator::dart2rust::WireDartGe
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
-pub(crate) trait WireDartGeneratorDart2RustTrait {
-    fn api2wire_body(&self) -> Acc<Option<String>>;
-
-    fn api_fill_to_wire_body(&self) -> Option<String> {
-        None
-    }
-
-    fn dart_wire_type(&self, target: Target) -> String;
-}
+pub(crate) trait WireDartGeneratorDart2RustTrait {}

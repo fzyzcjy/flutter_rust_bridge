@@ -8,22 +8,4 @@ use crate::codegen::generator::wire::dart::spec_generator::dart2rust::ty::struct
 use crate::codegen::generator::wire::dart::spec_generator::dart2rust::ty::WireDartGeneratorDart2RustTrait;
 use GeneralizedStructGeneratorMode::Record;
 
-impl<'a> WireDartGeneratorDart2RustTrait for RecordWireDartGenerator<'a> {
-    fn api2wire_body(&self) -> Acc<Option<String>> {
-        self.new_generalized_generator().api2wire_body()
-    }
-
-    fn api_fill_to_wire_body(&self) -> Option<String> {
-        self.new_generalized_generator().api_fill_to_wire_body()
-    }
-
-    fn dart_wire_type(&self, target: Target) -> String {
-        dart_wire_type_from_rust_wire_type_or_wasm(self, target, "List<dynamic>".into())
-    }
-}
-
-impl<'a> RecordWireDartGenerator<'a> {
-    fn new_generalized_generator(&self) -> GeneralizedStructGenerator {
-        GeneralizedStructGenerator::new(self.ir.inner.clone(), self.context, Record)
-    }
-}
+impl<'a> WireDartGeneratorDart2RustTrait for RecordWireDartGenerator<'a> {}

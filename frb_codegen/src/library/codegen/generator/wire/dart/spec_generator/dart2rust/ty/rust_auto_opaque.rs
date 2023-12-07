@@ -7,16 +7,4 @@ use crate::codegen::generator::wire::dart::spec_generator::dart2rust::ty::WireDa
 use crate::codegen::ir::ty::ownership::IrTypeOwnershipMode;
 use crate::codegen::ir::ty::IrTypeTrait;
 
-impl<'a> WireDartGeneratorDart2RustTrait for RustAutoOpaqueWireDartGenerator<'a> {
-    fn api2wire_body(&self) -> Acc<Option<String>> {
-        let enable_move = self.ir.ownership_mode == IrTypeOwnershipMode::Owned;
-        Acc::new_common(Some(format!(
-            "// ignore: invalid_use_of_internal_member
-            return raw.api2wire(move: {enable_move});",
-        )))
-    }
-
-    fn dart_wire_type(&self, target: Target) -> String {
-        dart_or_rust_opaque_dart_wire_type(target)
-    }
-}
+impl<'a> WireDartGeneratorDart2RustTrait for RustAutoOpaqueWireDartGenerator<'a> {}
