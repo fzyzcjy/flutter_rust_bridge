@@ -1,6 +1,6 @@
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::base::*;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::decoder::ty::WireDartCodecDcoGeneratorDecoderTrait;
+use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::*;
+use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::ty::WireDartCodecDcoGeneratorDecoderTrait;
 use crate::codegen::ir::func::IrFuncOwnerInfo;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;

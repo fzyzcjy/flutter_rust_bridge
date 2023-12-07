@@ -1,4 +1,4 @@
-use crate::codegen::generator::wire::dart::spec_generator::transfer::base::WireDartCodecEntrypointTrait;
+use crate::codegen::generator::wire::dart::spec_generator::codec::base::WireDartCodecEntrypointTrait;
 use crate::codegen::ir::func::IrFunc;
 
 pub(crate) struct DcoWireDartCodecEntrypoint {}

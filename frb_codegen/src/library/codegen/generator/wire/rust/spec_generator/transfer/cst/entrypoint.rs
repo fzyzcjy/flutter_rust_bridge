@@ -2,11 +2,11 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
+use crate::codegen::generator::wire::rust::spec_generator::codec::base::WireRustCodecEntrypointTrait;
+use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::WireRustCodecCstGenerator;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFuncParam;
-use crate::codegen::generator::wire::rust::spec_generator::transfer::base::WireRustCodecEntrypointTrait;
-use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::WireRustCodecCstGenerator;
 use crate::codegen::ir::func::IrFunc;
-use crate::library::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
+use crate::library::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
@@ -51,7 +51,7 @@ impl WireRustCodecEntrypointTrait for CstWireRustCodecEntrypoint {
                             "impl CstDecoder<{}> + core::panic::UnwindSafe",
                             WireRustCodecCstGenerator::new(
                                 field.ty.clone(),
-                                context.as_wire_rust_transfer_cst_context()
+                                context.as_wire_rust_codec_cst_context()
                             )
                             .generate_wire_func_param_api_type()
                             .unwrap_or(field.ty.rust_api_type())
@@ -64,7 +64,7 @@ impl WireRustCodecEntrypointTrait for CstWireRustCodecEntrypoint {
                             name.clone(),
                             target,
                             &field.ty,
-                            context.as_wire_rust_transfer_cst_context(),
+                            context.as_wire_rust_codec_cst_context(),
                         )
                     }
                 })
@@ -85,7 +85,7 @@ impl WireRustCodecEntrypointTrait for CstWireRustCodecEntrypoint {
                 let name = field.name.rust_style();
                 let wire_func_call_decode = WireRustCodecCstGenerator::new(
                     field.ty.clone(),
-                    context.as_wire_rust_transfer_cst_context(),
+                    context.as_wire_rust_codec_cst_context(),
                 )
                 .generate_wire_func_call_decode(name);
                 format!("let api_{name} = {wire_func_call_decode};")

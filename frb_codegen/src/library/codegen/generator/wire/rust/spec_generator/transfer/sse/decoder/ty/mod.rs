@@ -16,7 +16,7 @@ mod structure;
 mod unencodable;
 
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorImplTrait;
-use crate::codegen::generator::wire::rust::spec_generator::transfer::sse::base::*;
+use crate::codegen::generator::wire::rust::spec_generator::codec::sse::base::*;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use enum_dispatch::enum_dispatch;
 

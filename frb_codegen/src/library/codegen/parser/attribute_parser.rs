@@ -1,4 +1,4 @@
-use crate::codegen::generator::misc::transfer::{CodecMode, CodecModePack};
+use crate::codegen::generator::misc::codec::{CodecMode, CodecModePack};
 use crate::codegen::ir::annotation::IrDartAnnotation;
 use crate::codegen::ir::default::IrDefaultValue;
 use crate::codegen::ir::import::IrDartImport;
@@ -62,7 +62,7 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::Opaque)
     }
 
-    pub(crate) fn transfer_mode_pack(&self) -> CodecModePack {
+    pub(crate) fn codec_mode_pack(&self) -> CodecModePack {
         if self.any_eq(&FrbAttribute::Serialize) {
             CodecModePack {
                 dart2rust: CodecMode::Sse,

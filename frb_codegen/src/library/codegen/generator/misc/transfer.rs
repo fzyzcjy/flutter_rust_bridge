@@ -15,9 +15,9 @@ pub(crate) struct CodecModePack {
 
 #[doc(hidden)]
 #[macro_export]
-macro_rules! codegen_transfer_structs {
+macro_rules! codegen_codec_structs {
     ($enum_name:ident) => (
-        crate::codegen_transfer_structs!(
+        crate::codegen_codec_structs!(
             @private
 
             $enum_name;

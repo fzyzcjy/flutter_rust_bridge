@@ -1,12 +1,12 @@
-use crate::codegen::generator::misc::transfer::CodecMode;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::entrypoint::CstWireDartCodecEntrypoint;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::entrypoint::DcoWireDartCodecEntrypoint;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::sse::entrypoint::SseWireDartCodecEntrypoint;
+use crate::codegen::generator::misc::codec::CodecMode;
+use crate::codegen::generator::wire::dart::spec_generator::codec::cst::entrypoint::CstWireDartCodecEntrypoint;
+use crate::codegen::generator::wire::dart::spec_generator::codec::dco::entrypoint::DcoWireDartCodecEntrypoint;
+use crate::codegen::generator::wire::dart::spec_generator::codec::sse::entrypoint::SseWireDartCodecEntrypoint;
 use crate::codegen::ir::func::IrFunc;
-use crate::codegen_transfer_structs;
+use crate::codegen_codec_structs;
 use enum_dispatch::enum_dispatch;
 
-codegen_transfer_structs!(WireDartCodecEntrypoint);
+codegen_codec_structs!(WireDartCodecEntrypoint);
 
 #[enum_dispatch]
 pub(crate) trait WireDartCodecEntrypointTrait {

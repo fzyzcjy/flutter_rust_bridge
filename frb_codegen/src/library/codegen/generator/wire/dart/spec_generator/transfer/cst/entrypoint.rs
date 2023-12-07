@@ -1,4 +1,4 @@
-use crate::codegen::generator::wire::dart::spec_generator::transfer::base::WireDartCodecEntrypointTrait;
+use crate::codegen::generator::wire::dart::spec_generator::codec::base::WireDartCodecEntrypointTrait;
 use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::ir::func::IrFunc;
 use crate::library::codegen::ir::ty::IrTypeTrait;

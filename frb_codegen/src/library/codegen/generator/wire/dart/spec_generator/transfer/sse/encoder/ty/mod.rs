@@ -15,7 +15,7 @@ mod rust_opaque;
 mod structure;
 mod unencodable;
 
-use crate::codegen::generator::wire::dart::spec_generator::transfer::sse::base::*;
+use crate::codegen::generator::wire::dart::spec_generator::codec::sse::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorImplTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use enum_dispatch::enum_dispatch;

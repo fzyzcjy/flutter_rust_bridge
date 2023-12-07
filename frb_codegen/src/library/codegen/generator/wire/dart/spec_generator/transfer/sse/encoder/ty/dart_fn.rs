@@ -1,4 +1,4 @@
-use crate::codegen::generator::wire::dart::spec_generator::transfer::sse::base::*;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::sse::encoder::ty::WireDartCodecSseGeneratorEncoderTrait;
+use crate::codegen::generator::wire::dart::spec_generator::codec::sse::base::*;
+use crate::codegen::generator::wire::dart::spec_generator::codec::sse::encoder::ty::WireDartCodecSseGeneratorEncoderTrait;
 
 impl<'a> WireDartCodecSseGeneratorEncoderTrait for DartFnWireDartCodecSseGenerator<'a> {}

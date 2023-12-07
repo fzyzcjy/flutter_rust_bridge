@@ -1,25 +1,25 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::misc::codec::CodecMode;
 use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
-use crate::codegen::generator::misc::transfer::CodecMode;
 use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::generator::wire::rust::spec_generator::base::{
     WireRustGenerator, WireRustGeneratorContext,
 };
+use crate::codegen::generator::wire::rust::spec_generator::codec::base::WireRustCodecEntrypoint;
+use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::WireRustCodecCstGenerator;
+use crate::codegen::generator::wire::rust::spec_generator::codec::dco::base::WireRustCodecDcoGenerator;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::generator::wire::rust::spec_generator::transfer::base::WireRustCodecEntrypoint;
-use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::WireRustCodecCstGenerator;
-use crate::codegen::generator::wire::rust::spec_generator::transfer::dco::base::WireRustCodecDcoGenerator;
 use crate::codegen::ir::func::IrFuncOwnerInfoMethodMode::Instance;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod};
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::ownership::IrTypeOwnershipMode;
 use crate::codegen::ir::ty::IrType;
-use crate::library::codegen::generator::wire::rust::spec_generator::transfer::base::WireRustCodecEntrypointTrait;
-use crate::library::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
-use crate::library::codegen::generator::wire::rust::spec_generator::transfer::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
+use crate::library::codegen::generator::wire::rust::spec_generator::codec::base::WireRustCodecEntrypointTrait;
+use crate::library::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
+use crate::library::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use crate::misc::consts::HANDLER_NAME;
 use convert_case::{Case, Casing};
@@ -30,13 +30,13 @@ pub(crate) fn generate_wire_func(
     func: &IrFunc,
     context: WireRustGeneratorContext,
 ) -> Acc<WireRustOutputCode> {
-    let dart2rust_transfer = WireRustCodecEntrypoint::new(func.transfer_mode_pack.dart2rust);
+    let dart2rust_codec = WireRustCodecEntrypoint::new(func.codec_mode_pack.dart2rust);
 
     let ir_pack = context.ir_pack;
-    let params = dart2rust_transfer.generate_func_params(func, context);
+    let params = dart2rust_codec.generate_func_params(func, context);
     let inner_func_args = generate_inner_func_args(func, ir_pack, context);
     let wrap_info_obj = generate_wrap_info_obj(func);
-    let code_decode = dart2rust_transfer.generate_func_call_decode(func, context);
+    let code_decode = dart2rust_codec.generate_func_call_decode(func, context);
     let code_inner_decode = generate_code_inner_decode(func);
     let code_call_inner_func_result = generate_code_call_inner_func_result(func, inner_func_args);
     let handler_func_name = generate_handler_func_name(func, ir_pack, context);
@@ -107,7 +107,7 @@ fn generate_inner_func_args(
                 "context.rust2dart_context().stream_sink::<_,{}>()",
                 WireRustCodecDcoGenerator::new(
                     func.output.clone(),
-                    context.as_wire_rust_transfer_dco_context()
+                    context.as_wire_rust_codec_dco_context()
                 )
                 .intodart_type(ir_pack)
             ),
@@ -207,7 +207,7 @@ fn generate_handler_func_name(
             } else {
                 WireRustCodecDcoGenerator::new(
                     func.output.clone(),
-                    context.as_wire_rust_transfer_dco_context(),
+                    context.as_wire_rust_codec_dco_context(),
                 )
                 .intodart_type(ir_pack)
             };

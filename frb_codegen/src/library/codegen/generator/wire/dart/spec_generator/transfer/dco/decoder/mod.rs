@@ -1,15 +1,15 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGenerator;
-use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::base::WireDartCodecCstGenerator;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::base::{
+use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::WireDartCodecCstGenerator;
+use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::{
     WireDartCodecDcoGenerator, WireDartCodecDcoGeneratorContext,
 };
+use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
-use crate::library::codegen::generator::wire::dart::spec_generator::transfer::dco::decoder::ty::WireDartCodecDcoGeneratorDecoderTrait;
+use crate::library::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::ty::WireDartCodecDcoGeneratorDecoderTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use serde::Serialize;
 

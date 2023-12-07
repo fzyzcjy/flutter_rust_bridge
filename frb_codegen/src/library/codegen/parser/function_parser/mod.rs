@@ -75,7 +75,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         info = info.merge(self.parse_fn_output(sig, &context)?)?;
         info = self.transform_fn_info(info, &context);
 
-        let transfer_mode_pack = attributes.transfer_mode_pack();
+        let codec_mode_pack = attributes.codec_mode_pack();
         let mode = compute_func_mode(&attributes, &info);
 
         Ok(Some(IrFunc {
@@ -87,7 +87,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             mode,
             rust_async: sig.asyncness.is_some(),
             comments: parse_comments(func.attrs()),
-            transfer_mode_pack,
+            codec_mode_pack,
             src_lineno,
         }))
     }

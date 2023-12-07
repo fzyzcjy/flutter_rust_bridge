@@ -1,9 +1,9 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
+use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::WireDartOutputSpecCodecCstEncoder;
+use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::WireDartOutputSpecCodecDcoDecoder;
 use crate::codegen::generator::wire::dart::spec_generator::dump::generate_dump_info;
 use crate::codegen::generator::wire::dart::spec_generator::misc::WireDartOutputSpecMisc;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::encoder::WireDartOutputSpecCodecCstEncoder;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::decoder::WireDartOutputSpecCodecDcoDecoder;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen::ConfigDumpContent::GeneratorInfo;
@@ -11,10 +11,10 @@ use serde::Serialize;
 use std::path::PathBuf;
 
 pub(crate) mod base;
+pub(crate) mod codec;
 mod dump;
 pub(crate) mod misc;
 pub(crate) mod output_code;
-pub(crate) mod transfer;
 pub(super) mod wire_class;
 
 #[derive(Clone, Serialize)]
@@ -47,13 +47,7 @@ pub(crate) fn generate(
             api_dart_actual_output_paths,
             rust_extern_funcs,
         )?,
-        rust2dart: transfer::dco::decoder::generate(
-            context.as_wire_dart_transfer_dco_context(),
-            &cache,
-        ),
-        dart2rust: transfer::cst::encoder::generate(
-            context.as_wire_dart_transfer_cst_context(),
-            &cache,
-        ),
+        rust2dart: codec::dco::decoder::generate(context.as_wire_dart_codec_dco_context(), &cache),
+        dart2rust: codec::cst::encoder::generate(context.as_wire_dart_codec_cst_context(), &cache),
     })
 }
