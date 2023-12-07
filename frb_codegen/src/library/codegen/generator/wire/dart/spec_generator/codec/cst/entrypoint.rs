@@ -7,7 +7,7 @@ use itertools::Itertools;
 pub(crate) struct CstWireDartCodecEntrypoint {}
 
 impl WireDartCodecEntrypointTrait for CstWireDartCodecEntrypoint {
-    fn generate_func_stmt_prepare_args(&self, func: &IrFunc) -> Vec<String> {
+    fn generate_dart2rust_func_stmt_prepare_args(&self, func: &IrFunc) -> Vec<String> {
         func.inputs
             .iter()
             .enumerate()
@@ -21,7 +21,11 @@ impl WireDartCodecEntrypointTrait for CstWireDartCodecEntrypoint {
             .collect_vec()
     }
 
-    fn generate_func_wire_param_list(&self, func: &IrFunc, num_prepare_args: usize) -> Vec<String> {
+    fn generate_dart2rust_func_wire_param_list(
+        &self,
+        func: &IrFunc,
+        num_prepare_args: usize,
+    ) -> Vec<String> {
         [
             if has_port_argument(func.mode) {
                 vec!["port_".to_owned()]

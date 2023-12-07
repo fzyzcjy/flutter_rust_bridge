@@ -10,9 +10,13 @@ codegen_codec_structs!(WireDartCodecEntrypoint);
 
 #[enum_dispatch]
 pub(crate) trait WireDartCodecEntrypointTrait {
-    fn generate_func_stmt_prepare_args(&self, func: &IrFunc) -> Vec<String>;
+    fn generate_dart2rust_func_stmt_prepare_args(&self, func: &IrFunc) -> Vec<String>;
 
-    fn generate_func_wire_param_list(&self, func: &IrFunc, num_prepare_args: usize) -> Vec<String>;
+    fn generate_dart2rust_func_wire_param_list(
+        &self,
+        func: &IrFunc,
+        num_prepare_args: usize,
+    ) -> Vec<String>;
 
     fn generate_rust2dart_codec_object(&self, func: &IrFunc) -> String;
 }

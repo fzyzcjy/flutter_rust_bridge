@@ -5,11 +5,15 @@ use crate::library::codegen::ir::ty::IrTypeTrait;
 pub(crate) struct DcoWireDartCodecEntrypoint {}
 
 impl WireDartCodecEntrypointTrait for DcoWireDartCodecEntrypoint {
-    fn generate_func_stmt_prepare_args(&self, func: &IrFunc) -> Vec<String> {
+    fn generate_dart2rust_func_stmt_prepare_args(&self, func: &IrFunc) -> Vec<String> {
         unreachable!()
     }
 
-    fn generate_func_wire_param_list(&self, func: &IrFunc, num_prepare_args: usize) -> Vec<String> {
+    fn generate_dart2rust_func_wire_param_list(
+        &self,
+        func: &IrFunc,
+        num_prepare_args: usize,
+    ) -> Vec<String> {
         unreachable!()
     }
 

@@ -22,9 +22,9 @@ pub(crate) fn generate_api_impl_normal_function(
 
     let const_meta_field_name = format!("k{}ConstMeta", func.name.name.to_case(Case::Pascal));
 
-    let stmt_prepare_args = dart2rust_codec.generate_func_stmt_prepare_args(func);
+    let stmt_prepare_args = dart2rust_codec.generate_dart2rust_func_stmt_prepare_args(func);
     let wire_param_list = dart2rust_codec
-        .generate_func_wire_param_list(func, stmt_prepare_args.len())
+        .generate_dart2rust_func_wire_param_list(func, stmt_prepare_args.len())
         .join(", ");
     let execute_func_name = generate_execute_func_name(func);
 
