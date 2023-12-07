@@ -41,8 +41,8 @@ flutter_rust_bridge::for_generated::lazy_static! {
 
 fn wire_minimal_adder_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: impl Wire2Api<i32> + core::panic::UnwindSafe,
-    b: impl Wire2Api<i32> + core::panic::UnwindSafe,
+    a: impl CstDecoder<i32> + core::panic::UnwindSafe,
+    b: impl CstDecoder<i32> + core::panic::UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<_, _, _, i32, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
@@ -51,29 +51,29 @@ fn wire_minimal_adder_impl(
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
-            let api_a = a.wire2api();
-            let api_b = b.wire2api();
+            let api_a = a.cst_decode();
+            let api_b = b.cst_decode();
             move |context| Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(api_a, api_b))
         },
     )
 }
 
-// Section: impl_wire2api
+// Section: impl_decode
 
-pub trait Wire2Api<T> {
-    fn wire2api(self) -> T;
+pub trait CstDecoder<T> {
+    fn cst_decode(self) -> T;
 }
 
-impl<T, S> Wire2Api<Option<T>> for *mut S
+impl<T, S> CstDecoder<Option<T>> for *mut S
 where
-    *mut S: Wire2Api<T>,
+    *mut S: CstDecoder<T>,
 {
-    fn wire2api(self) -> Option<T> {
-        (!self.is_null()).then(|| self.wire2api())
+    fn cst_decode(self) -> Option<T> {
+        (!self.is_null()).then(|| self.cst_decode())
     }
 }
-impl Wire2Api<i32> for i32 {
-    fn wire2api(self) -> i32 {
+impl CstDecoder<i32> for i32 {
+    fn cst_decode(self) -> i32 {
         self
     }
 }
