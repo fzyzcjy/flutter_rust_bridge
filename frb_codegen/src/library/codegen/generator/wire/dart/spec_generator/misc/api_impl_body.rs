@@ -34,9 +34,11 @@ pub(crate) fn generate_api_impl_normal_function(
 
     let function_implementation = format!(
         "@override {func_expr} {{
-            {stmt_prepare_args}
             return handler.{execute_func_name}({task_class}(
-                callFfi: ({call_ffi_args}) => wire.{wire_func_name}({wire_param_list}),
+                callFfi: ({call_ffi_args}) {{
+                  {stmt_prepare_args}
+                  return wire.{wire_func_name}({wire_param_list});
+                }},
                 parseSuccessData: {parse_success_data},
                 parseErrorData: {parse_error_data},
                 constMeta: {const_meta_field_name},
