@@ -1,5 +1,5 @@
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-abstract class BaseCodec<S> {
+abstract class BaseCodec<S, E extends Object> {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   const BaseCodec();
 

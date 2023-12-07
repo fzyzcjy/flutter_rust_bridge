@@ -1,3 +1,4 @@
+import 'package:flutter_rust_bridge/src/codec/base.dart';
 import 'package:flutter_rust_bridge/src/main_components/api_impl.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:meta/meta.dart';
@@ -11,10 +12,7 @@ import 'package:meta/meta.dart';
 @immutable
 abstract class BaseTask<S, E extends Object> {
   /// Parse the returned data from the underlying function
-  final S Function(dynamic) parseSuccessData;
-
-  /// Parse the returned error data from the underlying function
-  final E Function(dynamic)? parseErrorData;
+  final BaseCodec<S, E> codec;
 
   /// Metadata that does not change across different method calls.
   final TaskConstMeta constMeta;
@@ -30,8 +28,7 @@ abstract class BaseTask<S, E extends Object> {
 
   /// Create a new task.
   const BaseTask({
-    required this.parseSuccessData,
-    required this.parseErrorData,
+    required this.codec,
     required this.constMeta,
     required this.argValues,
     required this.apiImpl,
@@ -56,8 +53,7 @@ class NormalTask<S, E extends Object> extends BaseTask<S, E> {
   /// Create a new task.
   const NormalTask({
     required this.callFfi,
-    required super.parseSuccessData,
-    required super.parseErrorData,
+    required super.codec,
     required super.constMeta,
     required super.argValues,
     required super.apiImpl,
@@ -76,8 +72,7 @@ class SyncTask<S, E extends Object> extends BaseTask<S, E> {
   /// Create a new task.
   const SyncTask({
     required this.callFfi,
-    required super.parseSuccessData,
-    required super.parseErrorData,
+    required super.codec,
     required super.constMeta,
     required super.argValues,
     required super.apiImpl,
@@ -96,8 +91,7 @@ class StreamTask<S, E extends Object> extends BaseTask<S, E> {
   /// Create a new task.
   const StreamTask({
     required this.callFfi,
-    required super.parseSuccessData,
-    required super.parseErrorData,
+    required super.codec,
     required super.constMeta,
     required super.argValues,
     required super.apiImpl,
