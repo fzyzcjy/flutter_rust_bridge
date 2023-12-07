@@ -6,7 +6,6 @@ import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 class GeneralizedFrbRustBinding {
-  MultiPackageCBinding get binding => _binding;
   final MultiPackageCBinding _binding;
   final String _externalLibraryDebugInfo;
 
