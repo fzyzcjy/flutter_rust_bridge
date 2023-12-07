@@ -15,15 +15,15 @@ mod misc;
 pub(crate) mod ty;
 
 #[derive(Clone, Serialize)]
-pub(crate) struct WireDartOutputSpecRust2Dart {
+pub(crate) struct WireDartOutputSpecTransferDcoDecoder {
     pub(crate) impl_wire2api: Acc<Vec<WireDartOutputCode>>,
 }
 
 pub(crate) fn generate(
     context: WireDartGeneratorContext,
     cache: &IrPackComputedCache,
-) -> WireDartOutputSpecRust2Dart {
-    WireDartOutputSpecRust2Dart {
+) -> WireDartOutputSpecTransferDcoDecoder {
+    WireDartOutputSpecTransferDcoDecoder {
         impl_wire2api: cache
             .distinct_output_types
             .iter()

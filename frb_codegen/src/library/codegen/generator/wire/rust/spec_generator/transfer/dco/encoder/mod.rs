@@ -11,15 +11,15 @@ mod misc;
 pub(crate) mod ty;
 
 #[derive(Serialize)]
-pub(crate) struct WireRustOutputSpecRust2Dart {
+pub(crate) struct WireDartOutputSpecTransferDcoEncoder {
     pub impl_into_dart: Acc<Vec<WireRustOutputCode>>,
 }
 
 pub(crate) fn generate(
     context: WireRustGeneratorContext,
     cache: &IrPackComputedCache,
-) -> WireRustOutputSpecRust2Dart {
-    WireRustOutputSpecRust2Dart {
+) -> WireDartOutputSpecTransferDcoEncoder {
+    WireDartOutputSpecTransferDcoEncoder {
         impl_into_dart: cache
             .distinct_types
             .iter()
