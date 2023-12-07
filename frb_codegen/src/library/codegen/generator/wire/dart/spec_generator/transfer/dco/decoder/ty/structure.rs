@@ -18,7 +18,7 @@ impl<'a> WireDartTransferDcoGeneratorDecoderTrait for StructRefWireDartTransferD
             .enumerate()
             .map(|(idx, field)| {
                 format!(
-                    "{}: _wire2api_{}(arr[{}]),",
+                    "{}: _dco_decode_{}(arr[{}]),",
                     field.name.dart_style(),
                     field.ty.safe_ident(),
                     idx

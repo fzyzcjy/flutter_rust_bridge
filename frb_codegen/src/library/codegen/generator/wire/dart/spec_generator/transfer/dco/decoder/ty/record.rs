@@ -11,7 +11,7 @@ impl<'a> WireDartTransferDcoGeneratorDecoderTrait for RecordWireDartTransferDcoG
             .values
             .iter()
             .enumerate()
-            .map(|(idx, ty)| format!("_wire2api_{}(arr[{idx}])", ty.safe_ident()))
+            .map(|(idx, ty)| format!("_dco_decode_{}(arr[{idx}])", ty.safe_ident()))
             .collect_vec()
             .join(",");
         format!(

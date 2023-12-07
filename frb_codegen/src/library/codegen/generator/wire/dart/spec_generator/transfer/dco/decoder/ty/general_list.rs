@@ -5,7 +5,7 @@ use crate::library::codegen::ir::ty::IrTypeTrait;
 impl<'a> WireDartTransferDcoGeneratorDecoderTrait for GeneralListWireDartTransferDcoGenerator<'a> {
     fn generate_impl_decode_body(&self) -> String {
         format!(
-            "return (raw as List<dynamic>).map(_wire2api_{}).toList();",
+            "return (raw as List<dynamic>).map(_dco_decode_{}).toList();",
             self.ir.inner.safe_ident()
         )
     }

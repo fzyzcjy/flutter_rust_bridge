@@ -40,7 +40,7 @@ fn generate_impl_decode(
 ) -> WireDartOutputCode {
     let body = WireDartTransferDcoGenerator::new(ty.clone(), context).generate_impl_decode_body();
     let api_impl_body = format!(
-        "{dart_api_type} _wire2api_{safe_ident}(dynamic raw) {{
+        "{dart_api_type} _dco_decode_{safe_ident}(dynamic raw) {{
             {body}
         }}
         ",

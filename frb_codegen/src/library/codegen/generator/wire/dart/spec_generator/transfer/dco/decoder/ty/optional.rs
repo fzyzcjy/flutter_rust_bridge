@@ -5,7 +5,7 @@ use crate::library::codegen::ir::ty::IrTypeTrait;
 impl<'a> WireDartTransferDcoGeneratorDecoderTrait for OptionalWireDartTransferDcoGenerator<'a> {
     fn generate_impl_decode_body(&self) -> String {
         format!(
-            "return raw == null ? null : _wire2api_{}(raw);",
+            "return raw == null ? null : _dco_decode_{}(raw);",
             self.ir.inner.safe_ident()
         )
     }

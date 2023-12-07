@@ -16,11 +16,11 @@ impl<'a> WireDartTransferDcoGeneratorDecoderTrait for BoxedWireDartTransferDcoGe
             | EnumRef(_)
             | Primitive(IrTypePrimitive::I64 | IrTypePrimitive::U64 | IrTypePrimitive::Usize)
             | Delegate(IrTypeDelegate::Array(_) | IrTypeDelegate::PrimitiveEnum { .. }) => {
-                format!("return _wire2api_{}(raw);", self.ir.inner.safe_ident())
+                format!("return _dco_decode_{}(raw);", self.ir.inner.safe_ident())
             }
             // TODO merge with above
             Delegate(IrTypeDelegate::Time(time)) => {
-                format!("return _wire2api_Chrono_{}(raw);", time)
+                format!("return _dco_decode_Chrono_{}(raw);", time)
             }
             _ => gen_decode_simple_type_cast(self.ir.clone().into(), self.context),
         }

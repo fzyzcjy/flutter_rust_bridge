@@ -15,13 +15,13 @@ impl<'a> WireDartTransferDcoGeneratorDecoderTrait for DelegateWireDartTransferDc
         match &self.ir {
             IrTypeDelegate::Array(array) => match &array.mode {
                 IrTypeDelegateArrayMode::General(general) => format!(
-                    r"return {}((raw as List<dynamic>).map(_wire2api_{}).toList());",
+                    r"return {}((raw as List<dynamic>).map(_dco_decode_{}).toList());",
                     ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
                         .dart_api_type(),
                     general.safe_ident(),
                 ),
                 IrTypeDelegateArrayMode::Primitive(_) => format!(
-                    r"return {}(_wire2api_{}(raw));",
+                    r"return {}(_dco_decode_{}(raw));",
                     ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
                         .dart_api_type(),
                     array.get_delegate().safe_ident(),
@@ -32,7 +32,7 @@ impl<'a> WireDartTransferDcoGeneratorDecoderTrait for DelegateWireDartTransferDc
                 IrTypePrimitive::I64 | IrTypePrimitive::U64,
             ) => {
                 format!(
-                    "return _wire2api_{}(raw);",
+                    "return _dco_decode_{}(raw);",
                     self.ir.get_delegate().safe_ident()
                 )
             }
@@ -53,26 +53,26 @@ impl<'a> WireDartTransferDcoGeneratorDecoderTrait for DelegateWireDartTransferDc
             }
             IrTypeDelegate::Time(ir) => {
                 if ir == &IrTypeDelegateTime::Duration {
-                    "return wire2apiDuration(_wire2api_i_64(raw).toInt());".to_owned()
+                    "return dcoDecodeDuration(_dco_decode_i_64(raw).toInt());".to_owned()
                 } else {
                     format!(
-                        "return wire2apiTimestamp(ts: _wire2api_i_64(raw).toInt(), isUtc: {is_utc});",
+                        "return dcoDecodeTimestamp(ts: _dco_decode_i_64(raw).toInt(), isUtc: {is_utc});",
                         is_utc = matches!(ir, IrTypeDelegateTime::Naive | IrTypeDelegateTime::Utc)
                     )
                 }
             }
             IrTypeDelegate::TimeList(t) => {
                 format!(
-                    "return (raw as List<dynamic>).map(_wire2api_{}).toList();",
+                    "return (raw as List<dynamic>).map(_dco_decode_{}).toList();",
                     IrTypeDelegate::Time(*t).safe_ident()
                 )
             }
             IrTypeDelegate::Uuid => {
-                "return UuidValue.fromByteList(_wire2api_list_prim_u_8(raw));".to_owned()
+                "return UuidValue.fromByteList(_dco_decode_list_prim_u_8(raw));".to_owned()
             }
             IrTypeDelegate::Uuids =>
                 "const kUuidSizeInBytes = 16;
-                final bytes = _wire2api_list_prim_u_8(raw);
+                final bytes = _dco_decode_list_prim_u_8(raw);
                 return List.generate(
                   bytes.lengthInBytes ~/ kUuidSizeInBytes,
                   (i) => UuidValue.fromByteList(Uint8List.view(bytes.buffer, i * kUuidSizeInBytes, kUuidSizeInBytes)),
