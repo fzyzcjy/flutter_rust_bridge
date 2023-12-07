@@ -25,10 +25,12 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for OptionalWireDartTransferCs
         if target == Target::Wasm {
             format!(
                 "{}?",
-                WireDartGenerator::new(self.ir.inner.clone(), self.context).dart_wire_type(target)
+                WireDartTransferCstGenerator::new(self.ir.inner.clone(), self.context)
+                    .dart_wire_type(target)
             )
         } else {
-            WireDartGenerator::new(self.ir.inner.clone(), self.context).dart_wire_type(target)
+            WireDartTransferCstGenerator::new(self.ir.inner.clone(), self.context)
+                .dart_wire_type(target)
         }
     }
 }

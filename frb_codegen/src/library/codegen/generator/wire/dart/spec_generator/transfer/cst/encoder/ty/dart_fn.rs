@@ -17,6 +17,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for DartFnWireDartTransferCstG
     }
 
     fn dart_wire_type(&self, target: Target) -> String {
-        WireDartGenerator::new(self.ir.get_delegate(), self.context).dart_wire_type(target)
+        WireDartTransferCstGenerator::new(self.ir.get_delegate(), self.context)
+            .dart_wire_type(target)
     }
 }

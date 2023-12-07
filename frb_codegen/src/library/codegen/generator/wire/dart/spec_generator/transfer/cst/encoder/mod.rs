@@ -4,6 +4,7 @@ use crate::codegen::generator::wire::dart::spec_generator::base::{
     WireDartGenerator, WireDartGeneratorContext,
 };
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::cst::base::WireDartTransferCstGenerator;
 use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Optional;
@@ -43,7 +44,7 @@ fn generate_api2wire_func(
     ty: &IrType,
     context: WireDartGeneratorContext,
 ) -> Acc<WireDartOutputCode> {
-    let generator = WireDartGenerator::new(ty.clone(), context);
+    let generator = WireDartTransferCstGenerator::new(ty.clone(), context);
     generator
         .api2wire_body()
         .map(|raw_body, target: TargetOrCommon| {
@@ -53,7 +54,7 @@ fn generate_api2wire_func(
                         "{} api2wire_{}({} raw) {{
                             {raw_body}
                         }}",
-                        WireDartGenerator::new(ty.clone(), context)
+                        WireDartTransferCstGenerator::new(ty.clone(), context)
                             .dart_wire_type(target.as_target_or(Target::Io)),
                         ty.safe_ident(),
                         ApiDartGenerator::new(ty.clone(), context.as_api_dart_context())
@@ -81,7 +82,9 @@ fn generate_api_fill_to_wire_func(
     ty: &IrType,
     context: WireDartGeneratorContext,
 ) -> WireDartOutputCode {
-    if let Some(body) = WireDartGenerator::new(ty.clone(), context).api_fill_to_wire_body() {
+    if let Some(body) =
+        WireDartTransferCstGenerator::new(ty.clone(), context).api_fill_to_wire_body()
+    {
         let target_wire_type = match ty {
             Optional(inner) => &inner.inner,
             it => it,
@@ -94,7 +97,7 @@ fn generate_api_fill_to_wire_func(
                 }}",
                 ty.safe_ident(),
                 ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type(),
-                WireDartGenerator::new(target_wire_type.clone(), context)
+                WireDartTransferCstGenerator::new(target_wire_type.clone(), context)
                     .dart_wire_type(Target::Io),
             ),
             ..Default::default()
