@@ -35,7 +35,7 @@ impl<T> StreamSink<T> {
         T: IntoIntoDart<D>,
     {
         self.sender().send(Rust2DartCodec::encode(
-            value.into_into_dart().into_dart(),
+            value.into_into_dart(),
             Rust2DartAction::Success,
         ))
     }

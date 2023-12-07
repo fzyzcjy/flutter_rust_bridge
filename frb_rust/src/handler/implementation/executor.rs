@@ -166,7 +166,7 @@ impl ExecuteNormalOrAsyncUtils {
                 match mode {
                     FfiCallMode::Normal => {
                         sender.send(Rust2DartCodec::encode(
-                            result.into_into_dart().into_dart(),
+                            result.into_into_dart(),
                             Rust2DartAction::Success,
                         ));
                     }
