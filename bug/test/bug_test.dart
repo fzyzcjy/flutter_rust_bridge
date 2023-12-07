@@ -5,6 +5,8 @@ Future<void> main() async {
   final lib = ffi.DynamicLibrary.open(
       'rust/target/debug/libfrb_example_dart_minimal.dylib');
   final binding = MultiPackageCBinding(lib);
+  binding.init_frb_dart_api_dl(ffi.NativeApi.initializeApiDLData);
+
   String f() => 'Test_String';
   final persistentHandle = binding.naive_NewPersistentHandle(f);
   binding.naive_HandleFromPersistent(persistentHandle);
@@ -24,6 +26,20 @@ class MultiPackageCBinding {
       ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName)
           lookup)
       : _lookup = lookup;
+
+  int init_frb_dart_api_dl(
+    ffi.Pointer<ffi.Void> data,
+  ) {
+    return _init_frb_dart_api_dl(
+      data,
+    );
+  }
+
+  late final _init_frb_dart_api_dlPtr =
+      _lookup<ffi.NativeFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>)>>(
+          'init_frb_dart_api_dl');
+  late final _init_frb_dart_api_dl = _init_frb_dart_api_dlPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Void>)>();
 
   int naive_NewPersistentHandle(
     Object non_persistent_handle,
