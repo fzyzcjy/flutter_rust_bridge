@@ -18,7 +18,10 @@ pub trait Executor: RefUnwindSafe {
         task_info: TaskInfo,
         task: TaskFn,
     ) where
-        TaskFn: FnOnce(TaskContext) -> Result<TaskRetDirect, Er> + Send + UnwindSafe + 'static,
+        TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> Result<TaskRetDirect, Er>
+            + Send
+            + UnwindSafe
+            + 'static,
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
         Er: IntoDart + 'static,
@@ -43,7 +46,7 @@ pub trait Executor: RefUnwindSafe {
         task_info: TaskInfo,
         task: TaskFn,
     ) where
-        TaskFn: FnOnce(TaskContext) -> TaskRetFut + Send + UnwindSafe + 'static,
+        TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> TaskRetFut + Send + UnwindSafe + 'static,
         TaskRetFut: Future<Output = Result<TaskRetDirect, Er>> + TaskRetFutTrait + UnwindSafe,
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,

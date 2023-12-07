@@ -34,7 +34,10 @@ pub trait Handler {
         prepare: PrepareFn,
     ) where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
-        TaskFn: FnOnce(TaskContext) -> Result<TaskRetDirect, Er> + Send + UnwindSafe + 'static,
+        TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> Result<TaskRetDirect, Er>
+            + Send
+            + UnwindSafe
+            + 'static,
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
         Er: IntoDart + 'static,
@@ -62,7 +65,7 @@ pub trait Handler {
         prepare: PrepareFn,
     ) where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
-        TaskFn: FnOnce(TaskContext) -> TaskRetFut + Send + UnwindSafe + 'static,
+        TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> TaskRetFut + Send + UnwindSafe + 'static,
         TaskRetFut: Future<Output = Result<TaskRetDirect, Er>> + TaskRetFutTrait + UnwindSafe,
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
@@ -111,16 +114,16 @@ pub trait TaskRetFutTrait {}
 impl<T> TaskRetFutTrait for T {}
 
 /// A context for task execution
-pub struct TaskContext {
-    rust2dart_context: TaskRust2DartContext,
+pub struct TaskContext<Rust2DartCodec: BaseCodec> {
+    rust2dart_context: TaskRust2DartContext<Rust2DartCodec>,
 }
 
-impl TaskContext {
-    pub fn new(rust2dart_context: TaskRust2DartContext) -> Self {
+impl<Rust2DartCodec: BaseCodec> TaskContext<Rust2DartCodec> {
+    pub fn new(rust2dart_context: TaskRust2DartContext<Rust2DartCodec>) -> Self {
         Self { rust2dart_context }
     }
 
-    pub fn rust2dart_context(&self) -> &TaskRust2DartContext {
+    pub fn rust2dart_context(&self) -> &TaskRust2DartContext<Rust2DartCodec> {
         &self.rust2dart_context
     }
 }

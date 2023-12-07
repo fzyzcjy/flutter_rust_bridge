@@ -105,7 +105,10 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         prepare: PrepareFn,
     ) where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
-        TaskFn: FnOnce(TaskContext) -> Result<TaskRetDirect, Er> + Send + UnwindSafe + 'static,
+        TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> Result<TaskRetDirect, Er>
+            + Send
+            + UnwindSafe
+            + 'static,
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
         Er: IntoDart + 'static,
@@ -167,7 +170,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         prepare: PrepareFn,
     ) where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
-        TaskFn: FnOnce(TaskContext) -> TaskRetFut + Send + UnwindSafe + 'static,
+        TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> TaskRetFut + Send + UnwindSafe + 'static,
         TaskRetFut: Future<Output = Result<TaskRetDirect, Er>> + TaskRetFutTrait + UnwindSafe,
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
@@ -197,7 +200,7 @@ impl<E: Executor, EH: ErrorHandler> SimpleHandler<E, EH> {
         execute: ExecuteFn,
     ) where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
-        TaskFn: FnOnce(TaskContext) -> TaskFnRet,
+        TaskFn: FnOnce(TaskContext<Rust2DartCodec>) -> TaskFnRet,
         ExecuteFn: FnOnce(TaskInfo, TaskFn) + UnwindSafe,
         Rust2DartCodec: BaseCodec,
     {
