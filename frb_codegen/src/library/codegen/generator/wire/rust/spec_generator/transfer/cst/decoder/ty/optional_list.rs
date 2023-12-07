@@ -14,21 +14,6 @@ use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decode
 use crate::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireRustTransferCstGeneratorDecoderTrait for OptionalListWireRustTransferCstGenerator<'a> {
-    fn generate_decoder_class(&self) -> Option<String> {
-        Some(generate_class_from_fields(
-            self.ir.clone(),
-            self.context,
-            &[
-                format!(
-                    "ptr: *mut *mut {}",
-                    WireRustTransferCstGenerator::new(self.ir.inner.clone(), self.context)
-                        .rust_wire_type(Target::Io)
-                ),
-                "len: i32".to_string(),
-            ],
-        ))
-    }
-
     fn generate_allocate_funcs(&self) -> Acc<WireRustOutputCode> {
         Acc {
             io: ExternFunc {
