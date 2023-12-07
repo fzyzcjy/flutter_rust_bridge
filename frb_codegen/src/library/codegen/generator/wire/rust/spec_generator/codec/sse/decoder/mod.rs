@@ -3,6 +3,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::sse::base::Wir
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::codegen::ir::ty::IrType;
+use crate::library::codegen::ir::ty::IrTypeTrait;
 use serde::Serialize;
 
 pub(crate) mod ty;
@@ -49,7 +50,7 @@ fn generate_impl_decode_for_type(
     context: WireRustCodecSseGeneratorContext,
 ) -> Acc<WireRustOutputCode> {
     let rust_api_type = ty.rust_api_type();
-    let body = TODO;
+    let body: String = todo!();
 
     Acc::new_common(
         format!(
