@@ -193,8 +193,10 @@ fn generate_handler_func_name(
     ir_pack: &IrPack,
     context: WireRustGeneratorContext,
 ) -> String {
+    let codec = &func.codec_mode_pack;
+
     match func.mode {
-        IrFuncMode::Sync => "wrap_sync".to_owned(),
+        IrFuncMode::Sync => "wrap_sync::<{codec},_,_,_,_>".to_owned(),
         IrFuncMode::Normal | IrFuncMode::Stream { .. } => {
             let name = if func.rust_async {
                 "wrap_async"
@@ -213,9 +215,9 @@ fn generate_handler_func_name(
             };
 
             let generic_args = if func.rust_async {
-                format!("<_,_,_,_,{output},_>")
+                format!("<{codec},_,_,_,_,{output},_>")
             } else {
-                format!("<_,_,_,{output},_>")
+                format!("<{codec},_,_,_,{output},_>")
             };
 
             format!("{name}::{generic_args}")
