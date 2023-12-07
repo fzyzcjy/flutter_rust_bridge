@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter_rust_bridge/src/codec/base.dart';
 import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
 import 'package:flutter_rust_bridge/src/manual_impl/manual_impl.dart';
@@ -52,7 +53,7 @@ class BaseHandler {
       try {
         yield _transformRust2DartMessage(
             raw, task.parseSuccessData, task.parseErrorData);
-      } on _CloseStreamException {
+      } on CloseStreamException {
         receivePort.close();
         break;
       }
@@ -66,5 +67,3 @@ class BaseHandler {
     throw Exception("call rust");
   }
 }
-
-class _CloseStreamException implements Exception {}

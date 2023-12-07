@@ -25,6 +25,7 @@ class DcoCodec<S, E extends Object> extends BaseCodec {
 
       case _Rust2DartAction.error:
         assert(rawList.length == 2);
+        final parseErrorData = this.parseErrorData;
         if (parseErrorData == null) {
           throw Exception(
               'transformRust2DartMessage received error message, but no parseErrorData to parse it. '
@@ -38,7 +39,7 @@ class DcoCodec<S, E extends Object> extends BaseCodec {
 
       case _Rust2DartAction.closeStream:
         assert(rawList.length == 1);
-        throw _CloseStreamException();
+        throw CloseStreamException();
 
       default:
         throw Exception('Unsupported message (raw=$raw)');
