@@ -295,34 +295,6 @@ class MultiPackageCBinding {
           'free_wire_sync_return');
   late final _free_wire_sync_return =
       _free_wire_sync_returnPtr.asFunction<void Function(WireSyncReturn)>();
-
-  int naive_NewPersistentHandle(
-    Object non_persistent_handle,
-  ) {
-    return _naive_NewPersistentHandle(
-      non_persistent_handle,
-    );
-  }
-
-  late final _naive_NewPersistentHandlePtr =
-      _lookup<ffi.NativeFunction<ffi.UintPtr Function(ffi.Handle)>>(
-          'naive_NewPersistentHandle');
-  late final _naive_NewPersistentHandle =
-      _naive_NewPersistentHandlePtr.asFunction<int Function(Object)>();
-
-  int naive_HandleFromPersistent(
-    int persistent_handle,
-  ) {
-    return _naive_HandleFromPersistent(
-      persistent_handle,
-    );
-  }
-
-  late final _naive_HandleFromPersistentPtr =
-      _lookup<ffi.NativeFunction<ffi.UintPtr Function(ffi.UintPtr)>>(
-          'naive_HandleFromPersistent');
-  late final _naive_HandleFromPersistent =
-      _naive_HandleFromPersistentPtr.asFunction<int Function(int)>();
 }
 
 /// A Dart_CObject is used for representing Dart objects as native C

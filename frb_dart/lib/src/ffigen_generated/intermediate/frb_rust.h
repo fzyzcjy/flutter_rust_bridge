@@ -36,7 +36,3 @@ intptr_t init_frb_dart_api_dl(void *data);
  * This function should never be called manually.
  */
 void free_wire_sync_return(WireSyncReturn ptr);
-
-uintptr_t naive_NewPersistentHandle(Dart_Handle non_persistent_handle);
-
-uintptr_t naive_HandleFromPersistent(uintptr_t persistent_handle);
