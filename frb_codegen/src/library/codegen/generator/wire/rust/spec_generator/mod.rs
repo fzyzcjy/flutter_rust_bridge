@@ -9,12 +9,10 @@ use crate::codegen::ConfigDumpContent::GeneratorInfo;
 use serde::Serialize;
 
 pub(crate) mod base;
-pub(crate) mod dart2rust;
 mod dump;
 pub(crate) mod extern_func;
 pub(crate) mod misc;
 pub mod output_code;
-pub(crate) mod rust2dart;
 mod transfer;
 
 #[derive(Serialize)]
