@@ -1,5 +1,73 @@
+use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
+use crate::codegen::generator::wire::misc::has_port_argument;
+use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
+use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFuncParam;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::base::WireRustTransferEntrypointTrait;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::WireRustTransferCstGenerator;
+use crate::codegen::ir::func::IrFunc;
 
 pub(crate) struct CstWireRustTransferEntrypoint {}
 
-impl WireRustTransferEntrypointTrait for CstWireRustTransferEntrypoint {}
+impl WireRustTransferEntrypointTrait for CstWireRustTransferEntrypoint {
+    fn generate_func_params(
+        &self,
+        func: &IrFunc,
+        context: WireRustGeneratorContext,
+    ) -> Acc<Vec<ExternFuncParam>> {
+        let mut params = if has_port_argument(func.mode) {
+            Acc::new(|target| {
+                let rust_type = match target {
+                    // NOTE Though in `io`, i64 == our MessagePort, but it will affect the cbindgen
+                    // and ffigen and make code tricker, so we manually write down "i64" here.
+                    TargetOrCommon::Io => "i64",
+                    TargetOrCommon::Common | TargetOrCommon::Wasm => {
+                        "flutter_rust_bridge::for_generated::MessagePort"
+                    }
+                }
+                .to_owned();
+                vec![ExternFuncParam {
+                    name: "port_".to_owned(),
+                    rust_type,
+                    dart_type: "NativePortType".to_owned(),
+                }]
+            })
+        } else {
+            Acc::default()
+        };
+
+        params += func
+            .inputs
+            .iter()
+            .map(|field| {
+                let name = field.name.rust_style().to_owned();
+                Acc::new(|target| match target {
+                    TargetOrCommon::Common => ExternFuncParam {
+                        name: name.clone(),
+                        rust_type: format!(
+                            "impl CstDecoder<{}> + core::panic::UnwindSafe",
+                            WireRustTransferCstGenerator::new(
+                                field.ty.clone(),
+                                context.as_wire_rust_transfer_cst_context()
+                            )
+                            .generate_wire_func_param_api_type()
+                            .unwrap_or(field.ty.rust_api_type())
+                        ),
+                        dart_type: "THIS_TYPE_SHOULD_NOT_BE_USED".into(),
+                    },
+                    TargetOrCommon::Io | TargetOrCommon::Wasm => {
+                        let target: Target = target.try_into().unwrap();
+                        ExternFuncParam::new(
+                            name.clone(),
+                            target,
+                            &field.ty,
+                            context.as_wire_rust_transfer_cst_context(),
+                        )
+                    }
+                })
+            })
+            .collect();
+
+        params
+    }
+}
