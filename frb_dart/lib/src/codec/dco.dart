@@ -30,7 +30,7 @@ class DcoCodec<S, E extends Object> extends BaseCodec {
         if (parseErrorData == null) {
           throw Exception(
               'transformRust2DartMessage received error message, but no parseErrorData to parse it. '
-              'Raw data: $rawList');
+              'Raw data: $raw');
         }
         throw parseErrorData(rawList[1]);
 
