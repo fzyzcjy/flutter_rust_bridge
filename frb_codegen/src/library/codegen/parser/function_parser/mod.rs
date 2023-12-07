@@ -75,7 +75,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         info = info.merge(self.parse_fn_output(sig, &context)?)?;
         info = self.transform_fn_info(info, &context);
 
-        let mode = compute_func_mode(attributes, &info);
+        let transfer_mode_pack = attributes.transfer_mode_pack();
+        let mode = compute_func_mode(&attributes, &info);
 
         Ok(Some(IrFunc {
             name: NamespacedName::new(namespace, func_name),
@@ -86,7 +87,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             mode,
             rust_async: sig.asyncness.is_some(),
             comments: parse_comments(func.attrs()),
-            transfer_mode_pack: attributes.transfer_mode_pack(),
+            transfer_mode_pack,
             src_lineno,
         }))
     }
@@ -144,7 +145,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     }
 }
 
-fn compute_func_mode(attributes: FrbAttributes, info: &FunctionPartialInfo) -> IrFuncMode {
+fn compute_func_mode(attributes: &FrbAttributes, info: &FunctionPartialInfo) -> IrFuncMode {
     info.mode.unwrap_or(if attributes.sync() {
         IrFuncMode::Sync
     } else {
