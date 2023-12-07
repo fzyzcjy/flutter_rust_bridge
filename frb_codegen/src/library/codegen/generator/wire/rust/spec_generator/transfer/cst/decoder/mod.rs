@@ -10,10 +10,10 @@ use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::
 use crate::codegen::generator::wire::rust::IrPackComputedCache;
 use serde::Serialize;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::impl_new_with_nullptr::generate_impl_new_with_nullptr;
-use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::impl_wire2api_trait::generate_impl_decode;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::impl_decode_trait::generate_impl_decode;
 
+mod impl_decode_trait;
 mod impl_new_with_nullptr;
-mod impl_wire2api_trait;
 mod misc;
 pub(crate) mod ty;
 

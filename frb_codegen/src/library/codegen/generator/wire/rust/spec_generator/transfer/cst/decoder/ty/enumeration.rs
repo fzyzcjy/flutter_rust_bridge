@@ -23,7 +23,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for EnumRefWireRustTransferCst
 
         let variant_structs = variants
             .iter()
-            .map(|variant| self.generate_wire2api_class_variant(variant))
+            .map(|variant| self.generate_decoder_class_variant(variant))
             .join("\n\n");
 
         let union_fields = variants
@@ -117,7 +117,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for EnumRefWireRustTransferCst
 }
 
 impl<'a> EnumRefWireRustTransferCstGenerator<'a> {
-    fn generate_wire2api_class_variant(&self, variant: &IrVariant) -> String {
+    fn generate_decoder_class_variant(&self, variant: &IrVariant) -> String {
         let fields = match &variant.kind {
             IrVariantKind::Value => vec![],
             IrVariantKind::Struct(s) => s

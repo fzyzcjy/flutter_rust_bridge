@@ -15,7 +15,7 @@ use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::WireRustTransferCstGeneratorDecoderTrait;
 
 impl<'a> WireRustTransferCstGeneratorDecoderTrait for DartFnWireRustTransferCstGenerator<'a> {
-    fn generate_wire_func_call_wire2api(&self, name: &str) -> String {
+    fn generate_wire_func_call_decode(&self, name: &str) -> String {
         let closure_args = (0..self.ir.inputs.len())
             .map(|i| format!("arg{i}"))
             .collect_vec();

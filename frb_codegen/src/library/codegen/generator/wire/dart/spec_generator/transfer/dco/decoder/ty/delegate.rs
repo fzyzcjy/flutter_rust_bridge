@@ -1,6 +1,6 @@
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::base::*;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::decoder::misc::gen_wire2api_simple_type_cast;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::decoder::misc::gen_decode_simple_type_cast;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::decoder::ty::WireDartTransferDcoGeneratorDecoderTrait;
 use crate::codegen::ir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegateArrayMode, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
@@ -39,7 +39,7 @@ impl<'a> WireDartTransferDcoGeneratorDecoderTrait for DelegateWireDartTransferDc
             IrTypeDelegate::String
             | IrTypeDelegate::Backtrace
             | IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                gen_wire2api_simple_type_cast(self.ir.clone().into(), self.context)
+                gen_decode_simple_type_cast(self.ir.clone().into(), self.context)
             }
             IrTypeDelegate::StringList => {
                 "return (raw as List<dynamic>).cast<String>();".to_owned()

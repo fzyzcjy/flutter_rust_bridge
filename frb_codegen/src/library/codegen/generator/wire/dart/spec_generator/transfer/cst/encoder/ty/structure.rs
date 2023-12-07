@@ -12,7 +12,7 @@ use GeneralizedStructGeneratorMode::Struct;
 
 impl<'a> WireDartTransferCstGeneratorEncoderTrait for StructRefWireDartTransferCstGenerator<'a> {
     fn encode_func_body(&self) -> Acc<Option<String>> {
-        self.new_generalized_generator().api2wire_body()
+        self.new_generalized_generator().encode_func_body()
     }
 
     fn encode_api_fill_to_wire_body(&self) -> Option<String> {
@@ -50,7 +50,7 @@ impl<'a> GeneralizedStructGenerator<'a> {
         Self { ir, context, mode }
     }
 
-    pub(crate) fn api2wire_body(&self) -> Acc<Option<String>> {
+    pub(crate) fn encode_func_body(&self) -> Acc<Option<String>> {
         Acc {
             wasm: self.context.config.wasm_enabled.then(|| {
                 let values = self

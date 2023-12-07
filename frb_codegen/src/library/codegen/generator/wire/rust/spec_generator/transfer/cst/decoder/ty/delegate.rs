@@ -6,7 +6,7 @@ use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decode
     generate_class_from_fields, JS_VALUE,
 };
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::general_list::{
-    general_list_impl_wire2api_body, generate_list_generate_allocate_func,
+    general_list_impl_decode_body, generate_list_generate_allocate_func,
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::base::*;
@@ -65,7 +65,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for DelegateWireRustTransferCs
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 Acc::distribute(Some("flutter_rust_bridge::ZeroCopyBuffer(self.wire2api())".into()))
             },
-            IrTypeDelegate::StringList => general_list_impl_wire2api_body(),
+            IrTypeDelegate::StringList => general_list_impl_decode_body(),
             IrTypeDelegate::PrimitiveEnum (IrTypeDelegatePrimitiveEnum{ ir, .. }) => {
                 let enu = ir.get(self.context.ir_pack);
                 let variants =

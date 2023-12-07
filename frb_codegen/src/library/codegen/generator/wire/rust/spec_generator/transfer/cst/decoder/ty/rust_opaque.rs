@@ -18,13 +18,13 @@ use std::borrow::Cow;
 impl<'a> WireRustTransferCstGeneratorDecoderTrait for RustOpaqueWireRustTransferCstGenerator<'a> {
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         Acc {
-            io: Some(generalized_rust_opaque_generate_impl_wire2api_body().into()),
+            io: Some(generalized_rust_opaque_generate_impl_decode_body().into()),
             ..Default::default()
         }
     }
 
     fn generate_impl_decode_jsvalue_body(&self) -> Option<Cow<str>> {
-        Some(generalized_rust_opaque_generate_impl_wire2api_body().into())
+        Some(generalized_rust_opaque_generate_impl_decode_body().into())
     }
 
     fn rust_wire_type(&self, target: Target) -> String {
@@ -32,7 +32,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for RustOpaqueWireRustTransfer
     }
 }
 
-pub(super) fn generalized_rust_opaque_generate_impl_wire2api_body() -> &'static str {
+pub(super) fn generalized_rust_opaque_generate_impl_decode_body() -> &'static str {
     r#"unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }"#
 }
 

@@ -4,7 +4,7 @@ use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::misc::{
     generate_class_from_fields, rust_wire_type_add_prefix_or_js_value,
 };
-use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::general_list::general_list_impl_wire2api_body;
+use crate::codegen::generator::wire::rust::spec_generator::transfer::cst::decoder::ty::general_list::general_list_impl_decode_body;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
@@ -30,7 +30,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for OptionalListWireRustTransf
     }
 
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
-        general_list_impl_wire2api_body()
+        general_list_impl_decode_body()
     }
 
     fn generate_allocate_funcs(&self) -> Acc<WireRustOutputCode> {

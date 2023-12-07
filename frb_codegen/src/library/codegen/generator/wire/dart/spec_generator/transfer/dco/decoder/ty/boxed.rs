@@ -1,6 +1,6 @@
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::base::*;
-use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::decoder::misc::gen_wire2api_simple_type_cast;
+use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::decoder::misc::gen_decode_simple_type_cast;
 use crate::codegen::generator::wire::dart::spec_generator::transfer::dco::decoder::ty::WireDartTransferDcoGeneratorDecoderTrait;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
@@ -22,7 +22,7 @@ impl<'a> WireDartTransferDcoGeneratorDecoderTrait for BoxedWireDartTransferDcoGe
             Delegate(IrTypeDelegate::Time(time)) => {
                 format!("return _wire2api_Chrono_{}(raw);", time)
             }
-            _ => gen_wire2api_simple_type_cast(self.ir.clone().into(), self.context),
+            _ => gen_decode_simple_type_cast(self.ir.clone().into(), self.context),
         }
     }
 }

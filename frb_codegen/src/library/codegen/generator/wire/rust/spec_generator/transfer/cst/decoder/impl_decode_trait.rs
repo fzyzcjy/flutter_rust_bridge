@@ -70,7 +70,7 @@ fn generate_impl_decode_for_type(
             let rust_wire_modifier = generator.rust_wire_modifier(target);
             let rust_wire_type = generator.rust_wire_type(target);
 
-            generate_impl_wire2api_code_block(
+            generate_impl_decode_code_block(
                 &ty.rust_api_type(),
                 &format!("{rust_wire_modifier}{rust_wire_type}"),
                 &body,
@@ -89,7 +89,7 @@ fn generate_impl_decode_jsvalue_for_type(
     generator
         .generate_impl_decode_jsvalue_body()
         .map(|body| Acc {
-            wasm: generate_impl_wire2api_code_block(
+            wasm: generate_impl_decode_code_block(
                 &ty.rust_api_type(),
                 "flutter_rust_bridge::for_generated::wasm_bindgen::JsValue",
                 body.as_ref(),
@@ -100,7 +100,7 @@ fn generate_impl_decode_jsvalue_for_type(
         .unwrap_or_default()
 }
 
-fn generate_impl_wire2api_code_block(api: &str, wire: &str, body: &str) -> String {
+fn generate_impl_decode_code_block(api: &str, wire: &str, body: &str) -> String {
     format!(
         "impl Wire2Api<{api}> for {wire} {{
             fn wire2api(self) -> {api} {{

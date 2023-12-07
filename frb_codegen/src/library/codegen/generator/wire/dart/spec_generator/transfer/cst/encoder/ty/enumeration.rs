@@ -13,7 +13,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for EnumRefWireDartTransferCst
         let variants = (self.ir.get(self.context.ir_pack).variants())
             .iter()
             .enumerate()
-            .map(|(idx, variant)| generate_api2wire_body_variant(idx, variant))
+            .map(|(idx, variant)| generate_encode_body_variant(idx, variant))
             .join("\n");
 
         Acc {
@@ -90,7 +90,7 @@ impl<'a> EnumRefWireDartTransferCstGenerator<'a> {
     }
 }
 
-fn generate_api2wire_body_variant(index: usize, variant: &IrVariant) -> String {
+fn generate_encode_body_variant(index: usize, variant: &IrVariant) -> String {
     let fields = match &variant.kind {
         IrVariantKind::Value => vec![],
         IrVariantKind::Struct(st) => (st.fields)

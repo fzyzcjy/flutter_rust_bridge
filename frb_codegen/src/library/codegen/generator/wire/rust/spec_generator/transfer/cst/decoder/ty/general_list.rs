@@ -33,7 +33,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for GeneralListWireRustTransfe
     }
 
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
-        general_list_impl_wire2api_body()
+        general_list_impl_decode_body()
     }
 
     fn generate_allocate_funcs(&self) -> Acc<WireRustOutputCode> {
@@ -67,22 +67,22 @@ pub(crate) fn general_list_maybe_extra_pointer_indirection(ir: &IrTypeGeneralLis
     }
 }
 
-pub(crate) fn general_list_impl_wire2api_body() -> Acc<Option<String>> {
+pub(crate) fn general_list_impl_decode_body() -> Acc<Option<String>> {
     Acc {
-        wasm: Some(WIRE2API_BODY_WASM.to_owned()),
-        io: Some(WIRE2API_BODY_IO.to_owned()),
+        wasm: Some(DECODE_BODY_WASM.to_owned()),
+        io: Some(DECODE_BODY_IO.to_owned()),
         ..Default::default()
     }
 }
 
-const WIRE2API_BODY_IO: &str = "
+const DECODE_BODY_IO: &str = "
     let vec = unsafe {
         let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
         flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
     };
     vec.into_iter().map(Wire2Api::wire2api).collect()
 ";
-const WIRE2API_BODY_WASM: &str =
+const DECODE_BODY_WASM: &str =
     "self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap().iter().map(Wire2Api::wire2api).collect()";
 
 pub(crate) fn generate_list_generate_allocate_func(

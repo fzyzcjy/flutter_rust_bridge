@@ -47,7 +47,7 @@ pub(crate) trait WireRustTransferCstGeneratorDecoderTrait {
         Default::default()
     }
 
-    fn generate_wire_func_call_wire2api(&self, name: &str) -> String {
+    fn generate_wire_func_call_decode(&self, name: &str) -> String {
         format!("{name}.wire2api()")
     }
 
