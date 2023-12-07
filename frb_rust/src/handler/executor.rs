@@ -1,3 +1,4 @@
+use crate::codec::BaseCodec;
 use crate::generalized_isolate::IntoDart;
 use crate::handler::handler::{TaskContext, TaskInfo, TaskRetFutTrait};
 use crate::misc::into_into_dart::IntoIntoDart;
@@ -12,7 +13,7 @@ use std::panic::{RefUnwindSafe, UnwindSafe};
 pub trait Executor: RefUnwindSafe {
     /// Executes a Rust function and transforms its return value into a Dart-compatible
     /// value, i.e. types that implement [`IntoDart`].
-    fn execute_normal<TaskFn, TaskRetDirect, TaskRetData, Er>(
+    fn execute_normal<TaskFn, TaskRetDirect, TaskRetData, Er, Codec>(
         &self,
         task_info: TaskInfo,
         task: TaskFn,
@@ -20,10 +21,11 @@ pub trait Executor: RefUnwindSafe {
         TaskFn: FnOnce(TaskContext) -> Result<TaskRetDirect, Er> + Send + UnwindSafe + 'static,
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
-        Er: IntoDart + 'static;
+        Er: IntoDart + 'static,
+        Codec: BaseCodec;
 
     /// Executes a synchronous Rust function
-    fn execute_sync<SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
+    fn execute_sync<SyncTaskFn, TaskRetDirect, TaskRetData, Er, Codec>(
         &self,
         task_info: TaskInfo,
         sync_task: SyncTaskFn,
@@ -32,10 +34,11 @@ pub trait Executor: RefUnwindSafe {
         SyncTaskFn: FnOnce() -> Result<TaskRetDirect, Er> + UnwindSafe,
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
-        Er: IntoDart + 'static;
+        Er: IntoDart + 'static,
+        Codec: BaseCodec;
 
     #[cfg(feature = "rust-async")]
-    fn execute_async<TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(
+    fn execute_async<TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er, Codec>(
         &self,
         task_info: TaskInfo,
         task: TaskFn,
@@ -44,5 +47,6 @@ pub trait Executor: RefUnwindSafe {
         TaskRetFut: Future<Output = Result<TaskRetDirect, Er>> + TaskRetFutTrait + UnwindSafe,
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
-        Er: IntoDart + 'static;
+        Er: IntoDart + 'static,
+        Codec: BaseCodec;
 }

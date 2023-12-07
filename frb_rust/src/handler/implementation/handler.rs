@@ -1,3 +1,4 @@
+use crate::codec::BaseCodec;
 use crate::dart_fn::DartFnFuture;
 use crate::dart_opaque::DartOpaque;
 use crate::generalized_isolate::IntoDart;
@@ -98,7 +99,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
             .to_owned()
     }
 
-    fn wrap_normal<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(
+    fn wrap_normal<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er, Codec>(
         &self,
         task_info: TaskInfo,
         prepare: PrepareFn,
@@ -108,13 +109,14 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
         Er: IntoDart + 'static,
+        Codec: BaseCodec,
     {
         self.wrap_normal_or_async(task_info, prepare, |task_info, task| {
             self.executor.execute_normal(task_info, task)
         })
     }
 
-    fn wrap_sync<SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
+    fn wrap_sync<SyncTaskFn, TaskRetDirect, TaskRetData, Er, Codec>(
         &self,
         task_info: TaskInfo,
         sync_task: SyncTaskFn,
@@ -124,6 +126,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
         Er: IntoDart + 'static,
+        Codec: BaseCodec,
     {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
         // For reason, see comments in [wrap]
@@ -147,7 +150,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
     }
 
     #[cfg(feature = "rust-async")]
-    fn wrap_async<PrepareFn, TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(
+    fn wrap_async<PrepareFn, TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er, Codec>(
         &self,
         task_info: TaskInfo,
         prepare: PrepareFn,
@@ -158,6 +161,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
         Er: IntoDart + 'static,
+        Codec: BaseCodec,
     {
         self.wrap_normal_or_async(task_info, prepare, |task_info, task| {
             self.executor.execute_async(task_info, task)

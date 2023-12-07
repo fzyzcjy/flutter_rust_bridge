@@ -1,3 +1,4 @@
+use crate::codec::BaseCodec;
 use crate::generalized_isolate::{Channel, IntoDart};
 use crate::handler::error::Error;
 use crate::handler::error_handler::ErrorHandler;
@@ -46,7 +47,7 @@ impl<EH: ErrorHandler, TP: BaseThreadPool, AR: BaseAsyncRuntime> SimpleExecutor<
 impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
     for SimpleExecutor<EH, TP, AR>
 {
-    fn execute_normal<TaskFn, TaskRetDirect, TaskRetData, Er>(
+    fn execute_normal<TaskFn, TaskRetDirect, TaskRetData, Er, Codec>(
         &self,
         task_info: TaskInfo,
         task: TaskFn,
@@ -55,6 +56,7 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
         Er: IntoDart + 'static,
+        Codec: BaseCodec,
     {
         let eh = self.error_handler;
         let eh2 = self.error_handler;
@@ -80,7 +82,7 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
         }));
     }
 
-    fn execute_sync<SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
+    fn execute_sync<SyncTaskFn, TaskRetDirect, TaskRetData, Er, Codec>(
         &self,
         _task_info: TaskInfo,
         sync_task: SyncTaskFn,
@@ -90,6 +92,7 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
         Er: IntoDart,
+        Codec: BaseCodec,
     {
         sync_task().map(|value| {
             WireSyncReturnSrc::new_from_data(value.into_into_dart(), Rust2DartAction::Success)
@@ -97,7 +100,7 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
     }
 
     #[cfg(feature = "rust-async")]
-    fn execute_async<TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(
+    fn execute_async<TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er, Codec>(
         &self,
         task_info: TaskInfo,
         task: TaskFn,
@@ -107,6 +110,7 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
         Er: IntoDart + 'static,
+        Codec: BaseCodec,
     {
         let eh = self.error_handler;
         let eh2 = self.error_handler;

@@ -1,3 +1,4 @@
+use crate::codec::BaseCodec;
 use crate::dart_fn::DartFnFuture;
 use crate::generalized_isolate::{channel_to_handle, IntoDart};
 use crate::misc::into_into_dart::IntoIntoDart;
@@ -27,7 +28,7 @@ pub trait Handler {
     ///
     /// If a Rust function is marked `sync`, it must be called with
     /// [`wrap_sync`](Handler::wrap_sync) instead.
-    fn wrap_normal<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er>(
+    fn wrap_normal<PrepareFn, TaskFn, TaskRetDirect, TaskRetData, Er, Codec>(
         &self,
         task_info: TaskInfo,
         prepare: PrepareFn,
@@ -36,11 +37,12 @@ pub trait Handler {
         TaskFn: FnOnce(TaskContext) -> Result<TaskRetDirect, Er> + Send + UnwindSafe + 'static,
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
-        Er: IntoDart + 'static;
+        Er: IntoDart + 'static,
+        Codec: BaseCodec;
 
     /// Same as [`wrap`][Handler::wrap], but the Rust function will be called synchronously and
     /// need not implement [Send].
-    fn wrap_sync<SyncTaskFn, TaskRetDirect, TaskRetData, Er>(
+    fn wrap_sync<SyncTaskFn, TaskRetDirect, TaskRetData, Er, Codec>(
         &self,
         task_info: TaskInfo,
         sync_task: SyncTaskFn,
@@ -49,11 +51,12 @@ pub trait Handler {
         SyncTaskFn: FnOnce() -> Result<TaskRetDirect, Er> + UnwindSafe,
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
-        Er: IntoDart + 'static;
+        Er: IntoDart + 'static,
+        Codec: BaseCodec;
 
     /// Same as [`wrap`][Handler::wrap], but for async Rust.
     #[cfg(feature = "rust-async")]
-    fn wrap_async<PrepareFn, TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er>(
+    fn wrap_async<PrepareFn, TaskFn, TaskRetFut, TaskRetDirect, TaskRetData, Er, Codec>(
         &self,
         task_info: TaskInfo,
         prepare: PrepareFn,
@@ -63,7 +66,8 @@ pub trait Handler {
         TaskRetFut: Future<Output = Result<TaskRetDirect, Er>> + TaskRetFutTrait + UnwindSafe,
         TaskRetDirect: IntoIntoDart<TaskRetData>,
         TaskRetData: IntoDart,
-        Er: IntoDart + 'static;
+        Er: IntoDart + 'static,
+        Codec: BaseCodec;
 
     fn dart_fn_invoke<Ret>(&self, dart_fn_and_args: Vec<DartAbi>) -> DartFnFuture<Ret>;
 }
