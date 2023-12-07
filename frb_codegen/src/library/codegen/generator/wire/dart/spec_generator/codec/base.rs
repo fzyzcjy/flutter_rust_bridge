@@ -12,8 +12,8 @@ use enum_dispatch::enum_dispatch;
 codegen_codec_structs!(WireDartCodecEntrypoint);
 
 #[enum_dispatch]
-pub(crate) trait WireDartCodecEntrypointTrait<'a>:
-    BaseCodecEntrypointTrait<WireDartGeneratorContext<'a>, Box<dyn WireDartCodecOutputSpec>>
+pub(crate) trait WireDartCodecEntrypointTrait:
+    for<'a> BaseCodecEntrypointTrait<WireDartGeneratorContext<'a>, Box<dyn WireDartCodecOutputSpec>>
 {
     fn generate_dart2rust_func_stmt_prepare_args(&self, func: &IrFunc) -> Vec<String>;
 
