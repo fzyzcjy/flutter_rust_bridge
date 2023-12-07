@@ -1,3 +1,4 @@
+use crate::codegen::generator::misc::transfer::TransferModePack;
 use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::namespace::NamespacedName;
@@ -14,6 +15,7 @@ pub struct IrFunc {
     pub mode: IrFuncMode,
     pub rust_async: bool,
     pub comments: Vec<IrComment>,
+    pub transfer_mode_pack: TransferModePack,
     // Currently, we use serde only for tests. Since lineno can be unstable, we skip this field for comparison
     #[serde(skip_serializing)]
     pub src_lineno: usize,

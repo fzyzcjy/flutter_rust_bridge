@@ -1,11 +1,13 @@
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+use serde::Serialize;
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Hash)]
 pub(crate) enum TransferMode {
     Cst,
     Dco,
     Sse,
 }
 
-#[derive(Clone, Debug, PartialEq, Eq)]
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Hash)]
 pub(crate) struct TransferModePack {
     pub dart2rust: TransferMode,
     pub rust2dart: TransferMode,
