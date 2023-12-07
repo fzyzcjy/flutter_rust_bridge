@@ -3246,6 +3246,88 @@ void wire_handle_uuid_twin_normal(int64_t port_, struct wire_list_prim_u_8 *id);
 
 void wire_handle_uuids_twin_normal(int64_t port_, struct wire_list_prim_u_8 *ids);
 
+const void *dart_opaque_dart2rust_api2wire(Dart_Handle handle);
+
+void rust_arc_increment_strong_count_RustOpaque_MutexHideData(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_MutexHideData(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_RwLockHideData(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_RwLockHideData(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormal(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSync(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_frb_opaque_return(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_frb_opaque_sync_return(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_return(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_hide_data(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_hide_data(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_i_32(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_i_32(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_non_clone_data(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_non_clone_data(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_non_send_hide_data(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(const void *ptr);
+
+void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(const void *ptr);
+
+void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(const void *ptr);
+
 struct wire_StringList *new_StringList(int32_t len);
 
 struct wire_application_env *new_box_application_env(void);
@@ -3681,88 +3763,6 @@ struct wire_list_weekdays_twin_normal *new_list_weekdays_twin_normal(int32_t len
 struct wire_list_weekdays_twin_rust_async *new_list_weekdays_twin_rust_async(int32_t len);
 
 struct wire_list_weekdays_twin_sync *new_list_weekdays_twin_sync(int32_t len);
-
-const void *dart_opaque_dart2rust_api2wire(Dart_Handle handle);
-
-void rust_arc_increment_strong_count_RustOpaque_MutexHideData(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_MutexHideData(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_RwLockHideData(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_RwLockHideData(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinNormal(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinNormal(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinRustAsync(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_box_dynDartDebugTwinSync(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_box_dynDartDebugTwinSync(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_frb_opaque_return(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_frb_opaque_return(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_frb_opaque_sync_return(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_frb_opaque_sync_return(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_hide_data(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_hide_data(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_i_32(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_i_32(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_non_clone_data(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_non_clone_data(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_non_send_hide_data(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_non_send_hide_data(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynFnStringStringSendSyncUnwindSafeRefUnwindSafe(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinNormal(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynHelloTraitTwinSync(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinNormalSendSync(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockBoxdynMyTraitTwinSyncSendSync(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinNormal(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockNonCloneSimpleTwinSync(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinNormal(const void *ptr);
-
-void rust_arc_increment_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(const void *ptr);
-
-void rust_arc_decrement_strong_count_RustOpaque_stdsyncRwLockStructWithGoodAndOpaqueFieldTwinSync(const void *ptr);
 
 union AbcTwinNormalKind *inflate_AbcTwinNormal_A(void);
 
