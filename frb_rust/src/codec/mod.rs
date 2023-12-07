@@ -6,6 +6,6 @@ pub(crate) mod cst;
 pub(crate) mod dco;
 pub(crate) mod sse;
 
-pub(crate) trait BaseCodec {
+pub(crate) trait BaseCodec: Clone + Copy {
     fn encode<T: IntoDart>(data: T, result_code: Rust2DartAction) -> DartAbi;
 }
