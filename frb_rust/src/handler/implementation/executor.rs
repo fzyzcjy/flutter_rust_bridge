@@ -97,7 +97,10 @@ impl<EH: ErrorHandler + Sync, TP: BaseThreadPool, AR: BaseAsyncRuntime> Executor
         Rust2DartCodec: BaseCodec,
     {
         sync_task().map(|value| {
-            WireSyncReturnSrc::new_from_data(value.into_into_dart(), Rust2DartAction::Success)
+            WireSyncReturnSrc::new(Rust2DartCodec::encode(
+                value.into_into_dart(),
+                Rust2DartAction::Success,
+            ))
         })
     }
 

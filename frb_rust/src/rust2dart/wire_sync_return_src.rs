@@ -9,11 +9,7 @@ use crate::rust2dart::action::Rust2DartAction;
 pub struct WireSyncReturnSrc(DartAbi);
 
 impl WireSyncReturnSrc {
-    pub fn new_from_data<T: IntoDart>(data: T, result_code: Rust2DartAction) -> Self {
-        Self::new_raw(vec![result_code.into_dart(), data.into_dart()].into_dart())
-    }
-
-    pub fn new_raw(inner: DartAbi) -> Self {
+    pub fn new(inner: DartAbi) -> Self {
         Self(inner)
     }
 

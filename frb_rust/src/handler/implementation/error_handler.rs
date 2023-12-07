@@ -29,6 +29,6 @@ impl ErrorHandler for ReportDartErrorHandler {
         Rust2DartCodec: BaseCodec,
     {
         let result_code = (&error).into();
-        WireSyncReturnSrc::new_from_data(error.into_dart(), result_code)
+        WireSyncReturnSrc::new(Rust2DartCodec::encode(error, result_code))
     }
 }
