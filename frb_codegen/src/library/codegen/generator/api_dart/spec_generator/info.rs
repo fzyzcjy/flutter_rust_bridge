@@ -130,13 +130,6 @@ impl<'a> ApiDartGeneratorInfoTrait for OptionalApiDartGenerator<'a> {
     }
 }
 
-impl<'a> ApiDartGeneratorInfoTrait for OptionalListApiDartGenerator<'a> {
-    fn dart_api_type(&self) -> String {
-        let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context);
-        format!("List<{}?>", inner.dart_api_type())
-    }
-}
-
 impl<'a> ApiDartGeneratorInfoTrait for OwnershipApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context);
