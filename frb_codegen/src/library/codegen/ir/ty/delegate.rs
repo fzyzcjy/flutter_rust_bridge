@@ -198,17 +198,3 @@ impl IrTypeDelegateArray {
         }
     }
 }
-
-#[doc(hidden)]
-#[macro_export]
-macro_rules! forward_delegate_primitive_enum {
-    ($self:ident, $func:ident($($tokens:tt)*), $ret:expr) => {
-        if let IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum {ir, ..}) = &$self.ir {
-            $crate::library::codegen::generator::wire::rust::spec_generator::base::WireRustGenerator::new(
-                $crate::library::codegen::ir::ty::IrType::EnumRef(ir.clone()), $self.context)
-            .$func($($tokens)*)
-        } else {
-            $ret
-        }
-    };
-}
