@@ -8,16 +8,24 @@ use crate::rust2dart::action::Rust2DartAction;
 use crate::rust2dart::sender::Rust2DartSender;
 use std::marker::PhantomData;
 
+trait StreamSink<T> {
+    fn add<D: IntoDart>(&self, value: T) -> bool
+    where
+        T: IntoIntoDart<D>;
+
+    fn close(&self) -> bool;
+}
+
 /// A sink to send asynchronous data back to Dart.
 /// Represented as a Dart
 /// [`Stream`](https://api.dart.dev/stable/dart-async/Stream-class.html).
 #[derive(Clone)]
-pub struct StreamSink<T> {
+pub struct StreamSinkImpl<T> {
     sendable_channel_handle: SendableChannelHandle,
     _phantom_data: PhantomData<T>,
 }
 
-impl<T> StreamSink<T> {
+impl<T> StreamSinkImpl<T> {
     /// Create a new sink from a port wrapper.
     pub fn new(sender: Rust2DartSender) -> Self {
         Self {
@@ -29,7 +37,9 @@ impl<T> StreamSink<T> {
     fn sender(&self) -> Rust2DartSender {
         Rust2DartSender::new(handle_to_channel(&self.sendable_channel_handle))
     }
+}
 
+impl<T> StreamSink<T> for StreamSinkImpl<T> {
     /// Add data to the stream. Returns false when data could not be sent,
     /// or the stream has been closed.
     pub fn add<D: IntoDart>(&self, value: T) -> bool
