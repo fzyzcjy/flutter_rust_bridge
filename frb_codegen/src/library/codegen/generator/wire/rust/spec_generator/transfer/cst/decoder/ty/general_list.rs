@@ -80,10 +80,10 @@ const DECODE_BODY_IO: &str = "
         let wrap = flutter_rust_bridge::for_generated::box_from_leak_ptr(self);
         flutter_rust_bridge::for_generated::vec_from_leak_ptr(wrap.ptr, wrap.len)
     };
-    vec.into_iter().map(Wire2Api::wire2api).collect()
+    vec.into_iter().map(CstDecode::cst_decode).collect()
 ";
 const DECODE_BODY_WASM: &str =
-    "self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap().iter().map(Wire2Api::wire2api).collect()";
+    "self.dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>().unwrap().iter().map(CstDecode::cst_decode).collect()";
 
 pub(crate) fn generate_list_generate_allocate_func(
     safe_ident: &str,

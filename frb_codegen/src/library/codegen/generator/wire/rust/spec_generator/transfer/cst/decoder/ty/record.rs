@@ -19,8 +19,8 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for RecordWireRustTransferCstG
             .iter()
             .enumerate()
             .map(|(idx, field)| Acc {
-                wasm: format!("self_.get({idx}).wire2api()"),
-                io: format!("self.{}.wire2api()", field.name.rust_style()),
+                wasm: format!("self_.get({idx}).cst_decode()"),
+                io: format!("self.{}.cst_decode()", field.name.rust_style()),
                 ..Default::default()
             })
             .collect();

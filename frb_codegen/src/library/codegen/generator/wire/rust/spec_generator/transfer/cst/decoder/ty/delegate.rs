@@ -43,7 +43,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for DelegateWireRustTransferCs
                 let acc =
                     Some(
                         format!(
-                            "let vec: Vec<{}> = self.wire2api(); flutter_rust_bridge::for_generated::from_vec_to_array(vec)",
+                            "let vec: Vec<{}> = self.cst_decode(); flutter_rust_bridge::for_generated::from_vec_to_array(vec)",
                             array.inner().rust_api_type()
                         ),
                     );
@@ -58,12 +58,12 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for DelegateWireRustTransferCs
             IrTypeDelegate::String => {
                 Acc {
                     wasm: Some("self".into()),
-                    io: Some("let vec: Vec<u8> = self.wire2api(); String::from_utf8_lossy(&vec).into_owned()".into()),
+                    io: Some("let vec: Vec<u8> = self.cst_decode(); String::from_utf8_lossy(&vec).into_owned()".into()),
                     ..Default::default()
                 }
             },
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                Acc::distribute(Some("flutter_rust_bridge::ZeroCopyBuffer(self.wire2api())".into()))
+                Acc::distribute(Some("flutter_rust_bridge::ZeroCopyBuffer(self.cst_decode())".into()))
             },
             IrTypeDelegate::StringList => general_list_impl_decode_body(),
             IrTypeDelegate::PrimitiveEnum (IrTypeDelegatePrimitiveEnum{ ir, .. }) => {
@@ -90,7 +90,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for DelegateWireRustTransferCs
                         ..Default::default()
                     };
                 }
-                let codegen_timestamp = "let flutter_rust_bridge::for_generated::Timestamp { s, ns } = flutter_rust_bridge::for_generated::wire2api_timestamp(self);";
+                let codegen_timestamp = "let flutter_rust_bridge::for_generated::Timestamp { s, ns } = flutter_rust_bridge::for_generated::cst_decode_timestamp(self);";
                 let codegen_naive =
                     "chrono::NaiveDateTime::from_timestamp_opt(s, ns).expect(\"invalid or out-of-range datetime\")";
                 let codegen_utc = format!("chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset({codegen_naive}, chrono::Utc)");
@@ -109,21 +109,21 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for DelegateWireRustTransferCs
             IrTypeDelegate::TimeList(_) => {
                 Acc::distribute(
                     Some(
-                        "let vec: Vec<i64> = self.wire2api(); vec.into_iter().map(Wire2Api::wire2api).collect()".into()
+                        "let vec: Vec<i64> = self.cst_decode(); vec.into_iter().map(CstDecode::cst_decode).collect()".into()
                     )
                 )
             }
             IrTypeDelegate::Uuid => Acc::distribute(
                 Some(
-                    "let single: Vec<u8> = self.wire2api(); flutter_rust_bridge::for_generated::wire2api_uuid_ref(single.as_slice())".into(),
+                    "let single: Vec<u8> = self.cst_decode(); flutter_rust_bridge::for_generated::cst_decode_uuid_ref(single.as_slice())".into(),
                 ),
             ),
             IrTypeDelegate::Uuids => Acc::distribute(
                 Some(
-                    "let multiple: Vec<u8> = self.wire2api(); flutter_rust_bridge::for_generated::wire2api_uuids(multiple)".into(),
+                    "let multiple: Vec<u8> = self.cst_decode(); flutter_rust_bridge::for_generated::cst_decode_uuids(multiple)".into(),
                 ),
             ),
-            IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "self.wire2api()".into(),
+            IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "self.cst_decode()".into(),
         }
     }
 
@@ -133,22 +133,22 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for DelegateWireRustTransferCs
                 "self.as_string().expect(\"non-UTF-8 string, or not a string\")".into()
             }
             IrTypeDelegate::PrimitiveEnum (IrTypeDelegatePrimitiveEnum { repr, .. }) => format!(
-                "(self.unchecked_into_f64() as {}).wire2api()",
+                "(self.unchecked_into_f64() as {}).cst_decode()",
                 WireRustTransferCstGenerator::new(repr.clone(), self.context).rust_wire_type(Target::Wasm)
             )
                 .into(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                "flutter_rust_bridge::ZeroCopyBuffer(self.wire2api())".into()
+                "flutter_rust_bridge::ZeroCopyBuffer(self.cst_decode())".into()
             }
-            IrTypeDelegate::Time(_) => "Wire2Api::<i64>::wire2api(self).wire2api()".into(),
+            IrTypeDelegate::Time(_) => "CstDecode::<i64>::cst_decode(self).cst_decode()".into(),
             IrTypeDelegate::TimeList(_) =>
-                "self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::BigInt64Array>().to_vec().into_iter().map(Wire2Api::wire2api).collect()".into(),
+                "self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::BigInt64Array>().to_vec().into_iter().map(CstDecode::cst_decode).collect()".into(),
             IrTypeDelegate::Uuid | IrTypeDelegate::Uuids => {
-                "self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint8Array>().to_vec().into_boxed_slice().wire2api()"
+                "self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint8Array>().to_vec().into_boxed_slice().cst_decode()"
                     .into()
             }
             IrTypeDelegate::Array(array) => format!(
-                "let vec: Vec<{}> = self.wire2api(); flutter_rust_bridge::for_generated::from_vec_to_array(vec)",
+                "let vec: Vec<{}> = self.cst_decode(); flutter_rust_bridge::for_generated::from_vec_to_array(vec)",
                 array.inner().rust_api_type()
             )
                 .into(),

@@ -48,8 +48,8 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for StructRefWireRustTransferC
                 };
 
                 Acc {
-                    wasm: format!("{field_} self_.get({idx}).wire2api()"),
-                    io: format!("{field_} self.{field_name}.wire2api()"),
+                    wasm: format!("{field_} self_.get({idx}).cst_decode()"),
+                    io: format!("{field_} self.{field_name}.cst_decode()"),
                     ..Default::default()
                 }
             })

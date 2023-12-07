@@ -26,12 +26,12 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for BoxedWireRustTransferCstGe
                     extra = if exist_in_real_api { "" } else { "*" }
                 )),
                 (Io | Wasm, ir) if ir.is_array() => Some(format!(
-                    "Wire2Api::<{}>::wire2api(self).into()",
+                    "CstDecode::<{}>::cst_decode(self).into()",
                     box_inner.rust_api_type()
                 )),
                 (Io, _) => Some(format!(
                     "let wrap = unsafe {{ flutter_rust_bridge::for_generated::box_from_leak_ptr(self) }};
-                Wire2Api::<{}>::wire2api(*wrap).into()",
+                CstDecode::<{}>::cst_decode(*wrap).into()",
                     box_inner.rust_api_type()
                 )),
                 _ => None,
@@ -45,16 +45,16 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for BoxedWireRustTransferCstGe
                                                                repr,
                                                                ..
                                                            })) => format!(
-                "let ptr: Box<{}> = self.wire2api(); Box::new(ptr.wire2api())",
+                "let ptr: Box<{}> = self.cst_decode(); Box::new(ptr.cst_decode())",
                 repr.rust_api_type()
             )
                 .into(),
             IrType::Delegate(IrTypeDelegate::Array(array)) => format!(
-                "let vec: Vec<{}> = self.wire2api(); Box::new(flutter_rust_bridge::for_generated::from_vec_to_array(vec))",
+                "let vec: Vec<{}> = self.cst_decode(); Box::new(flutter_rust_bridge::for_generated::from_vec_to_array(vec))",
                 array.inner().rust_api_type()
             )
                 .into(),
-            _ => "Box::new(self.wire2api())".into(),
+            _ => "Box::new(self.cst_decode())".into(),
         })
     }
 

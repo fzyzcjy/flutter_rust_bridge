@@ -29,7 +29,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for DartFnWireRustTransferCstG
             "
             {{
                 use flutter_rust_bridge::IntoDart;
-                let dart_opaque: flutter_rust_bridge::DartOpaque = {name}.wire2api();
+                let dart_opaque: flutter_rust_bridge::DartOpaque = {name}.cst_decode();
 
                 move |{closure_args_str}| {{    
                     {HANDLER_NAME}.dart_fn_invoke(vec![

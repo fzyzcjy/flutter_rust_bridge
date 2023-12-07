@@ -66,7 +66,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for EnumRefWireRustTransferCst
                 .iter()
                 .enumerate()
                 .map(|(idx, variant)| {
-                    generate_impl_wire2api_body_variant(enu, target, idx, variant)
+                    generate_impl_cst_decode_body_variant(enu, target, idx, variant)
                 })
                 .join("\n");
 
@@ -190,7 +190,7 @@ impl<'a> EnumRefWireRustTransferCstGenerator<'a> {
     }
 }
 
-fn generate_impl_wire2api_body_variant(
+fn generate_impl_cst_decode_body_variant(
     enu: &IrEnum,
     target: TargetOrCommon,
     idx: usize,
@@ -214,9 +214,9 @@ fn generate_impl_wire2api_body_variant(
                     };
 
                     if target != TargetOrCommon::Wasm {
-                        format!("{field_} ans.{field_name}.wire2api()")
+                        format!("{field_} ans.{field_name}.cst_decode()")
                     } else {
-                        format!("{field_} self_.get({}).wire2api()", idx + 1)
+                        format!("{field_} self_.get({}).cst_decode()", idx + 1)
                     }
                 })
                 .join(",");

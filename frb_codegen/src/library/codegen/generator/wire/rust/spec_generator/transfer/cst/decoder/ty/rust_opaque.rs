@@ -33,7 +33,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for RustOpaqueWireRustTransfer
 }
 
 pub(super) fn generalized_rust_opaque_generate_impl_decode_body() -> &'static str {
-    r#"unsafe { flutter_rust_bridge::for_generated::wire2api_rust_opaque(self) }"#
+    r#"unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }"#
 }
 
 pub(super) fn dart_opaque_or_generalized_rust_opaque_rust_wire_type(target: Target) -> String {

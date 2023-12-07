@@ -20,11 +20,11 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for DartOpaqueWireRustTransfer
         Acc::new(|target| {
             match target {
                 TargetOrCommon::Io => Some(
-                    "unsafe { flutter_rust_bridge::for_generated::wire2api_dart_opaque(self) }"
+                    "unsafe { flutter_rust_bridge::for_generated::cst_decode_dart_opaque(self) }"
                         .to_owned(),
                 ),
                 TargetOrCommon::Wasm => Some(
-                    format!("unsafe {{ flutter_rust_bridge::for_generated::wire2api_dart_opaque(&*{HANDLER_NAME}, self) }}"),
+                    format!("unsafe {{ flutter_rust_bridge::for_generated::cst_decode_dart_opaque(&*{HANDLER_NAME}, self) }}"),
                 ),
                 TargetOrCommon::Common => None,
             }

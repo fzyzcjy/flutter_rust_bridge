@@ -48,7 +48,7 @@ pub(crate) trait WireRustTransferCstGeneratorDecoderTrait {
     }
 
     fn generate_wire_func_call_decode(&self, name: &str) -> String {
-        format!("{name}.wire2api()")
+        format!("{name}.cst_decode()")
     }
 
     fn generate_wire_func_param_api_type(&self) -> Option<String> {

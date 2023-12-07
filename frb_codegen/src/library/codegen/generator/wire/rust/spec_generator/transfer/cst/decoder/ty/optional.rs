@@ -11,7 +11,7 @@ impl<'a> WireRustTransferCstGeneratorDecoderTrait for OptionalWireRustTransferCs
             wasm: (!is_js_value(&self.ir.inner)
                 && !self.ir.is_primitive()
                 && !self.ir.is_boxed_primitive())
-            .then(|| "self.map(Wire2Api::wire2api)".into()),
+            .then(|| "self.map(CstDecode::cst_decode)".into()),
             ..Default::default()
         }
     }

@@ -29,25 +29,25 @@ pub(crate) fn generate_impl_decode(
 fn generate_impl_decode_misc() -> Acc<WireRustOutputCode> {
     Acc {
         common: r#"
-            pub trait Wire2Api<T> {
-                fn wire2api(self) -> T;
+            pub trait CstDecode<T> {
+                fn cst_decode(self) -> T;
             }
 
-            impl<T, S> Wire2Api<Option<T>> for *mut S
+            impl<T, S> CstDecode<Option<T>> for *mut S
             where
-                *mut S: Wire2Api<T>
+                *mut S: CstDecode<T>
             {
-                fn wire2api(self) -> Option<T> {
-                    (!self.is_null()).then(|| self.wire2api())
+                fn cst_decode(self) -> Option<T> {
+                    (!self.is_null()).then(|| self.cst_decode())
                 }
             }
         "#
         .into(),
         io: "".into(),
         wasm: r#"
-            impl<T> Wire2Api<Option<T>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue where JsValue: Wire2Api<T> {
-                fn wire2api(self) -> Option<T> {
-                    (!self.is_null() && !self.is_undefined()).then(|| self.wire2api())
+            impl<T> CstDecode<Option<T>> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue where JsValue: CstDecode<T> {
+                fn cst_decode(self) -> Option<T> {
+                    (!self.is_null() && !self.is_undefined()).then(|| self.cst_decode())
                 }
             }
         "#
@@ -102,8 +102,8 @@ fn generate_impl_decode_jsvalue_for_type(
 
 fn generate_impl_decode_code_block(api: &str, wire: &str, body: &str) -> String {
     format!(
-        "impl Wire2Api<{api}> for {wire} {{
-            fn wire2api(self) -> {api} {{
+        "impl CstDecode<{api}> for {wire} {{
+            fn cst_decode(self) -> {api} {{
                 {body}
             }}
         }}",
