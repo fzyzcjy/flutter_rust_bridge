@@ -95,7 +95,7 @@ fn generate_encode_api_fill_to_wire_func(
 
         WireDartOutputCode {
             api_impl_body: format!(
-                "void _api_fill_to_wire_{}({} apiObj, {} wireObj) {{
+                "void _cst_api_fill_to_wire_{}({} apiObj, {} wireObj) {{
                     {body}
                 }}",
                 ty.safe_ident(),

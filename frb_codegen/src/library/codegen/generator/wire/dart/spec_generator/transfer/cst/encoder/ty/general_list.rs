@@ -30,7 +30,7 @@ impl<'a> WireDartTransferCstGeneratorEncoderTrait for GeneralListWireDartTransfe
                     // `frb_codegen/src/generator/dart/ty_delegate.rs`
                     format!("ans.ref.ptr[i] = cst_encode_{inner}(raw[i]);")
                 } else {
-                    format!("_api_fill_to_wire_{inner}(raw[i], ans.ref.ptr[i]);")
+                    format!("_cst_api_fill_to_wire_{inner}(raw[i], ans.ref.ptr[i]);")
                 }
             )),
             wasm: self.context.config.wasm_enabled.then(|| {
