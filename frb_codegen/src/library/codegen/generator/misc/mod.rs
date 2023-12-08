@@ -1,5 +1,6 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::{TargetOrCommon, TargetOrCommonMap};
+use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::IrType;
 use crate::utils::file_utils::create_dir_all_and_write;
@@ -95,4 +96,13 @@ pub(crate) fn generate_code_header() -> String {
 pub(crate) enum StructOrRecord {
     Struct,
     Record,
+}
+
+impl StructOrRecord {
+    pub(crate) fn field_name_dart_style(&self, index: usize, field: &IrField) -> String {
+        match self {
+            StructOrRecord::Struct => field.name.dart_style(),
+            StructOrRecord::Record => format!("${}", index + 1),
+        }
+    }
 }

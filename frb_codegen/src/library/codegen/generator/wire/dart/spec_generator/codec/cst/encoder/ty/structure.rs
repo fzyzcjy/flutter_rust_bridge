@@ -60,7 +60,7 @@ impl<'a> GeneralizedStructGenerator<'a> {
                         format!(
                             "cst_encode_{}(raw.{})",
                             field.ty.safe_ident(),
-                            self.field_name_dart_style(index, field)
+                            self.mode.field_name_dart_style(index, field)
                         )
                     })
                     .join(",");
@@ -86,7 +86,7 @@ impl<'a> GeneralizedStructGenerator<'a> {
 
     fn generate_api_fill_to_wire_body_struct_field(&self, index: usize, field: &IrField) -> String {
         let safe_ident = field.ty.safe_ident();
-        let dart_style = self.field_name_dart_style(index, field);
+        let dart_style = self.mode.field_name_dart_style(index, field);
         let rust_style = field.name.rust_style();
 
         if field.ty.is_struct_or_enum_or_record() {
@@ -95,13 +95,6 @@ impl<'a> GeneralizedStructGenerator<'a> {
             )
         } else {
             format!("wireObj.{rust_style} = cst_encode_{safe_ident}(apiObj.{dart_style});")
-        }
-    }
-
-    fn field_name_dart_style(&self, index: usize, field: &IrField) -> String {
-        match self.mode {
-            Struct => field.name.dart_style(),
-            Record => format!("${}", index + 1),
         }
     }
 }
