@@ -159,7 +159,7 @@ where
     T: SseEncode,
     E: SseEncode,
 {
-    TODO;
+    flutter_rust_bridge::for_generated::SseCodec::encode(TODO)
 }
 
 // TODO put it there
