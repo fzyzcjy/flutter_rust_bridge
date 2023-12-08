@@ -4,6 +4,9 @@ library;
 import 'dart:math' as math;
 import 'dart:typed_data';
 
+import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
+import 'package:flutter_rust_bridge/src/misc/rust_vec_u8.dart';
+
 /// Write-only buffer for incrementally building a [ByteData] instance.
 ///
 /// A WriteBuffer instance can be used only once. Attempts to reuse will result
@@ -15,17 +18,19 @@ class WriteBuffer {
   /// [startCapacity] determines the start size of the [WriteBuffer] in bytes.
   /// The closer that value is to the real size used, the better the
   /// performance.
-  factory WriteBuffer({int startCapacity = 8}) {
+  factory WriteBuffer(
+      {int startCapacity = 8, required GeneralizedFrbRustBinding binding}) {
     assert(startCapacity > 0);
     final ByteData eightBytes = ByteData(8);
     final Uint8List eightBytesAsList = eightBytes.buffer.asUint8List();
     return WriteBuffer._(
-        Uint8List(startCapacity), eightBytes, eightBytesAsList);
+        RustVecU8(startCapacity, binding), eightBytes, eightBytesAsList);
   }
 
   WriteBuffer._(this._buffer, this._eightBytes, this._eightBytesAsList);
 
-  Uint8List _buffer;
+  // NOTE MODIFIED: Uint8List -> RustVecU8
+  RustVecU8 _buffer;
   int _currentSize = 0;
   bool _isDone = false;
   final ByteData _eightBytes;
