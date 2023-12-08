@@ -27,7 +27,7 @@ impl<'a> CodecSseTyTrait for PrimitiveCodecSseTy<'a> {
                 ),
                 Lang::RustLang(_) => {
                     format!(
-                        "serializer.cursor.read_{}::<NativeEndian>()",
+                        "deserializer.cursor.read_{}::<NativeEndian>()",
                         self.ir.rust_api_type()
                     )
                 }
