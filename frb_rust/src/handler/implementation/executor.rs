@@ -157,7 +157,8 @@ impl ExecuteNormalOrAsyncUtils {
                 }
             }
             Err(error) => {
-                el.handle_error::<Rust2DartCodec>(port, Error::CustomError);
+                el.on_error(Error::CustomError);
+                sender.send(error);
             }
         };
     }
