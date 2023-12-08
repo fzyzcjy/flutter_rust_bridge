@@ -116,7 +116,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
             prepare,
             |task_info, task| {
                 self.executor
-                    .execute_normal::<Rust2DartCodec, _, _, _, _>(task_info, task)
+                    .execute_normal::<Rust2DartCodec, _>(task_info, task)
             },
         )
     }
@@ -139,7 +139,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
             let catch_unwind_result = panic::catch_unwind(move || {
                 match self
                     .executor
-                    .execute_sync::<Rust2DartCodec, _, _, _, _>(task_info, sync_task)
+                    .execute_sync::<Rust2DartCodec, _>(task_info, sync_task)
                 {
                     Ok(data) => data,
                     Err(err) => self
@@ -177,7 +177,7 @@ This is problematic *if* you are running two *live* FRB Dart instances while one
             prepare,
             |task_info, task| {
                 self.executor
-                    .execute_async::<Rust2DartCodec, _, _, _, _, _>(task_info, task)
+                    .execute_async::<Rust2DartCodec, _, _>(task_info, task)
             },
         )
     }
