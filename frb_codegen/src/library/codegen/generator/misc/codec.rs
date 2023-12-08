@@ -1,8 +1,9 @@
 use crate::codegen::ir::ty::IrType;
 use serde::Serialize;
-use strum_macros::Display;
+use strum::IntoEnumIterator;
+use strum_macros::{Display, EnumIter};
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Hash, Display)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Hash, Display, EnumIter)]
 pub(crate) enum CodecMode {
     Cst,
     Dco,
@@ -60,4 +61,10 @@ pub(crate) trait BaseCodecEntrypointTrait<C, O> {
     fn generate_encode(&self, context: C, types: &[IrType]) -> Option<O>;
 
     fn generate_decode(&self, context: C, types: &[IrType]) -> Option<O>;
+}
+
+pub(crate) fn generate_codec_encode_decode() {
+    for codec in CodecMode::iter() {
+        todo!()
+    }
 }
