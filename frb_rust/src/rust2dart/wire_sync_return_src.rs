@@ -7,6 +7,8 @@ use crate::platform_types::{
 };
 use crate::rust2dart::action::Rust2DartAction;
 
+// TODO change comments
+// TODO mv
 /// An object that can be converted into `WireSyncReturn*`
 /// This object is safe (no worries about memory leak, etc), while `WireSyncReturn` is not.
 /// That is why we have this intermediate object - we can safely play with this one.
