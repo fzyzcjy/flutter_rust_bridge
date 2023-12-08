@@ -44,7 +44,8 @@ class GeneralizedFrbRustBinding {
   ffi.Pointer<ffi.Uint8> rustVecU8New(int len) => _binding.rust_vec_u8_new(len);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  void rustVecU8Resize(ffi.Pointer<ffi.Uint8> ptr, int oldLen, int newLen) =>
+  ffi.Pointer<ffi.Uint8> rustVecU8Resize(
+          ffi.Pointer<ffi.Uint8> ptr, int oldLen, int newLen) =>
       _binding.rust_vec_u8_resize(ptr, oldLen, newLen);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
