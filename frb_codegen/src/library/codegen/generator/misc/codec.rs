@@ -31,15 +31,14 @@ macro_rules! codegen_codec_structs {
     );
     (@private $enum_name:ident ; $($name:ident),*,) => (
         paste::paste! {
-            #[enum_dispatch(BaseCodecEntrypointTrait<WireDartGeneratorContext<'a>, Box<dyn WireDartCodecOutputSpec>>)]
             #[enum_dispatch([<$enum_name Trait>])]
-            pub(crate) enum $enum_name<'a> {
+            pub(crate) enum $enum_name {
                 $(
                 $name([<$name $enum_name>]),
                 )*
             }
 
-            impl<'a> $enum_name<'a> {
+            impl $enum_name {
                 pub(crate) fn new(mode: CodecMode) -> Self {
                     match mode {
                         $(
