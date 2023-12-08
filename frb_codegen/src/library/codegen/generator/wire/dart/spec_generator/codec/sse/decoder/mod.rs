@@ -1,7 +1,7 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::codec::sse::lang::Lang::DartLang;
-use crate::codegen::generator::codec::sse::ty::CodecSseTy;
+use crate::codegen::generator::codec::sse::ty::{CodecSseTy, CodecSseTyContext};
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::WireDartCodecOutputSpec;
 use crate::codegen::generator::wire::dart::spec_generator::codec::sse::base::WireDartCodecSseGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
@@ -25,7 +25,8 @@ fn generate_for_type(
     let dart_api_type =
         ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type();
     let safe_ident = ty.safe_ident();
-    let body = CodecSseTy::new(ty, context).generate_decode(&DartLang);
+    let body =
+        CodecSseTy::new(ty, CodecSseTyContext::new(context.ir_pack)).generate_decode(&DartLang);
 
     Acc::new_common(
         format!(

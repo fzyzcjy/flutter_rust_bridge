@@ -32,6 +32,12 @@ pub(crate) struct CodecSseTyContext<'a> {
     pub(crate) ir_pack: &'a IrPack,
 }
 
+impl<'a> CodecSseTyContext<'a> {
+    pub fn new(ir_pack: &'a IrPack) -> Self {
+        Self { ir_pack }
+    }
+}
+
 #[enum_dispatch]
 pub(crate) trait CodecSseTyTrait {
     fn generate_encode(&self, lang: &Lang) -> String;
