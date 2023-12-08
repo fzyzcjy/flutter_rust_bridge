@@ -23,6 +23,12 @@ class SseCodec<S, E extends Object> extends BaseCodec<S, E> {
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 class SseSerializer {
   // TODO
+
+  // TODO reuse current infra of allocate/use `Vec<u8>`
+  // TODO return pointer
+  (int, int) createLeakedNative() {
+    return TODO;
+  }
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
