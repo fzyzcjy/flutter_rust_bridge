@@ -4,6 +4,8 @@ use web_sys::BroadcastChannel;
 
 /// cbindgen:ignore
 pub type WireSyncReturnDco = wasm_bindgen::JsValue;
+/// cbindgen:ignore
+pub type WireSyncReturnSse = wasm_bindgen::JsValue;
 
 pub type MessagePort = crate::generalized_isolate::PortLike;
 
