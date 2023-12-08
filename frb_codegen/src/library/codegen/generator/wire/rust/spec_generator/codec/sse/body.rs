@@ -16,10 +16,26 @@ pub(super) fn generate_encode_or_decode(
     mode: EncodeOrDecode,
 ) -> WireRustCodecOutputSpec {
     let mut inner = Default::default();
+    inner += generate_misc();
     inner += (types.iter())
         .map(|ty| generate_encode_or_decode_for_type(ty, context, mode))
         .collect();
     WireRustCodecOutputSpec { inner }
+}
+
+fn generate_misc() -> Acc<WireRustOutputCode> {
+    Acc::new_common(
+        r#"
+        pub trait SseEncode {
+            fn sse_encode(self, serializer: Serializer);
+        }
+
+        pub trait SseDecode {
+            fn sse_decode(deserializer: Deserializer) -> T;
+        }
+        "#
+        .into(),
+    )
 }
 
 fn generate_encode_or_decode_for_type(
@@ -35,15 +51,19 @@ fn generate_encode_or_decode_for_type(
     let code = match mode {
         EncodeOrDecode::Encode => format!(
             "
-            void _sse_encode_{safe_ident}(Serializer serializer, {rust_api_type} src) {{
-                {body}
+            impl SseEncode for {rust_api_type} {{
+                fn sse_encode(self, serializer: Serializer) {{
+                    {body}
+                }}
             }}
             "
         ),
         EncodeOrDecode::Decode => format!(
             "
-            {rust_api_type} _sse_decode_{safe_ident}(Serializer serializer) {{
-                {body}
+            impl SseDecode for {rust_api_type} {{
+                fn sse_decode(deserializer: Deserializer) -> Self {{
+                    {body}
+                }}
             }}
             "
         ),
